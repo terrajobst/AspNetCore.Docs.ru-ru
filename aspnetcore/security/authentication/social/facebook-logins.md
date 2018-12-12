@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc, seodec18
 ms.date: 11/11/2018
 uid: security/authentication/facebook-logins
-ms.openlocfilehash: 8bb22dc6df9879e827ff9a5ac11e9e3ad5346dc2
-ms.sourcegitcommit: 49faca2644590fc081d86db46ea5e29edfc28b7b
+ms.openlocfilehash: d4f3e210b0d3c79eaf2233f97a29a6d96cd69b39
+ms.sourcegitcommit: b34b25da2ab68e6495b2460ff570468f16a9bf0d
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 12/09/2018
-ms.locfileid: "53121509"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53284387"
 ---
 # <a name="facebook-external-login-setup-in-aspnet-core"></a>Настройка внешней учетной записи Facebook в ASP.NET Core
 
@@ -121,7 +121,7 @@ app.UseFacebookAuthentication(new FacebookOptions()
 
 Запустите приложение и нажмите кнопку **вход**. Отображается параметр выполнить вход с использованием Facebook.
 
-![Веб-приложения: пользователь не прошел проверку подлинности](index/_static/DoneFacebook.png)
+![Веб-приложение: Пользователь не прошел проверку подлинности](index/_static/DoneFacebook.png)
 
 Когда вы щелкаете **Facebook**, вы будете перенаправлены на Facebook для проверки подлинности:
 
@@ -135,13 +135,13 @@ app.UseFacebookAuthentication(new FacebookOptions()
 
 Теперь вы вошли с использованием учетных данных Facebook:
 
-![Веб-приложения: пользователь прошел проверку подлинности](index/_static/Done.png)
+![Веб-приложение: Пользователь прошел проверку подлинности](index/_static/Done.png)
 
 [!INCLUDE[Forward request information when behind a proxy or load balancer section](includes/forwarded-headers-middleware.md)]
 
 ## <a name="troubleshooting"></a>Устранение неполадок
 
-* **ASP.NET Core 2.x только:** Если удостоверение не настроена, вызвав `services.AddIdentity` в `ConfigureServices`, пытающиеся выполнить проверку подлинности приведет к *ArgumentException: необходимо указать параметр «SignInScheme»*. Шаблон проекта, используемый в этом руководстве гарантирует, что это будет сделано.
+* **ASP.NET Core 2.x только:** Если удостоверение не настроена, вызвав `services.AddIdentity` в `ConfigureServices`, пытающиеся выполнить проверку подлинности приведет к *ArgumentException: Необходимо указать параметр «SignInScheme»*. Шаблон проекта, используемый в этом руководстве гарантирует, что это будет сделано.
 * Если база данных сайта не был создан путем применения первоначальной миграции, вы получаете *сбой операции из базы данных при обработке запроса* ошибки. Коснитесь **применить миграции** для создания базы данных и обновить, чтобы продолжить выполнение после ошибки.
 
 ## <a name="next-steps"></a>Следующие шаги

@@ -1,6 +1,6 @@
 ---
 uid: signalr/overview/getting-started/tutorial-server-broadcast-with-signalr
-title: 'Руководство: Передача сообщений с сервера с помощью SignalR 2 | Документация Майкрософт'
+title: Учебник. Передача сообщений с сервера с помощью SignalR 2 | Документация Майкрософт
 author: tdykstra
 description: Этом руководстве показано, как создать веб-приложения, использующего ASP.NET SignalR 2 для предоставления широковещательных функциональные возможности сервера. Вещание сервера означает, что commun...
 ms.author: riande
@@ -8,16 +8,18 @@ ms.date: 10/13/2014
 ms.assetid: 1568247f-60b5-4eca-96e0-e661fbb2b273
 msc.legacyurl: /signalr/overview/getting-started/tutorial-server-broadcast-with-signalr
 msc.type: authoredcontent
-ms.openlocfilehash: 7a85a704dc5d830ec793540fbc44a3ce7ec8c934
-ms.sourcegitcommit: a4dcca4f1cb81227c5ed3c92dc0e28be6e99447b
+ms.openlocfilehash: ad2eee8742d5bc45dc2bdc90f76736b4dc94d14b
+ms.sourcegitcommit: 74e3be25ea37b5fc8b4b433b0b872547b4b99186
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "48911549"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53288023"
 ---
-<a name="tutorial-server-broadcast-with-signalr-2"></a>Руководство: Передача сообщений с сервера с помощью SignalR 2
+<a name="tutorial-server-broadcast-with-signalr-2"></a>Учебник. Передача сообщений с сервера с помощью SignalR 2
 ====================
 по [том Дайкстра](https://github.com/tdykstra), [Tom FitzMacken](https://github.com/tfitzmac)
+
+[!INCLUDE [Consider ASP.NET Core SignalR](~/includes/signalr/signalr-version-disambiguation.md)]
 
 > Этом руководстве показано, как создать веб-приложения, использующего ASP.NET SignalR 2 для предоставления широковещательных функциональные возможности сервера. Рассылка сервера означает, что связям клиентам инициируются сервером. Данный сценарий требует другого подхода программирования, чем peer-to-peer сценариев, таких как приложения чата, в которых инициируется связям клиентам по одному или нескольким из клиентов.
 >
@@ -52,7 +54,6 @@ ms.locfileid: "48911549"
 > ## <a name="questions-and-comments"></a>Вопросы и комментарии
 >
 > Оставьте свои отзывы на том, как вам понравилось, и этот учебник и что можно улучшить в комментариях в нижней части страницы. Если у вас есть вопросы, которые не имеют отношения к руководству, их можно разместить [форум по ASP.NET SignalR](https://forums.asp.net/1254.aspx/1?ASP+NET+SignalR) или [StackOverflow.com](http://stackoverflow.com/).
-
 
 ## <a name="overview"></a>Обзор
 

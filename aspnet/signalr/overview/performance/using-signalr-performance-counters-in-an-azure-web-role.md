@@ -9,16 +9,18 @@ ms.date: 10/03/2018
 ms.assetid: 2a127d3b-21ed-4cc9-bec0-cdab4e742a25
 msc.legacyurl: /signalr/overview/performance/using-signalr-performance-counters-in-an-azure-web-role
 msc.type: authoredcontent
-ms.openlocfilehash: 7304ff17bb53f94bdee1e90602d206bf32184e37
-ms.sourcegitcommit: 7890dfb5a8f8c07d813f166d3ab0c263f893d0c6
+ms.openlocfilehash: bdd875201895c6eaf155b54582d0898c2570d93c
+ms.sourcegitcommit: 74e3be25ea37b5fc8b4b433b0b872547b4b99186
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/04/2018
-ms.locfileid: "48795464"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53287720"
 ---
 # <a name="using-signalr-performance-counters-in-an-azure-web-role"></a>Использование счетчиков производительности SignalR в веб-роли Azure
 
 Автор [Люк Латэм](https://github.com/guardrex) (Luke Latham)
+
+[!INCLUDE [Consider ASP.NET Core SignalR](~/includes/signalr/signalr-version-disambiguation.md)]
 
 Счетчики производительности SignalR используются для отслеживания производительности приложения в веб-роли Azure. Счетчики регистрируются с помощью системы диагностики Microsoft Azure. Установка счетчиков производительности SignalR в Azure с помощью *signalr.exe*, тот же инструмент, используемое для изолированными, так и локальных приложений. Так как роли Azure являются временными, Настройка приложения для установки и регистрации счетчиков производительности SignalR при запуске.
 
@@ -26,13 +28,13 @@ ms.locfileid: "48795464"
 
 * Visual Studio 2015 или [2017 г.](https://visualstudio.microsoft.com/downloads/?utm_medium=microsoft&utm_source=docs.microsoft.com&utm_campaign=button+cta&utm_content=download+vs2017)
 * [Microsoft Azure SDK для Visual Studio](https://azure.microsoft.com/downloads/) **Примечание: Перезагрузите компьютер после установки пакета SDK.**
-* Подписки Microsoft Azure: чтобы зарегистрироваться для получения бесплатной пробной учетной записи Azure, см. в разделе [бесплатной пробной версии Azure](https://azure.microsoft.com/free/).
+* Подписка Microsoft Azure: Чтобы зарегистрироваться для получения бесплатной пробной учетной записи Azure, см. в разделе [бесплатной пробной версии Azure](https://azure.microsoft.com/free/).
 
 ## <a name="creating-an-azure-web-role-application-that-exposes-signalr-performance-counters"></a>Создание приложения веб-роли Azure, предоставляет счетчики производительности SignalR
 
 1. Запустите Visual Studio.
 
-2. В Visual Studio выберите **файл** > **New** > **проекта**.
+2. В Visual Studio последовательно выберите **Файл** > **Создать** > **Проект**.
 
 3. В **новый проект** выберите **Visual C#** > **Cloud** категории с левой стороны экрана, а затем выберите **облачной службы Azure** шаблона. Присвойте приложению имя **SignalRPerfCounters** и выберите **ОК**.
 

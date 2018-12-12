@@ -8,16 +8,18 @@ ms.date: 04/17/2013
 ms.assetid: dcd4593b-1118-418a-af71-d12ff33fb36d
 msc.legacyurl: /signalr/overview/older-versions/signalr-1x-hubs-api-guide-javascript-client
 msc.type: authoredcontent
-ms.openlocfilehash: 993ad7924d8335f79aa2c3e41c00ddfa8bc26874
-ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
+ms.openlocfilehash: 2d50a92cff96be5c5c60105bba6682d38f9666b6
+ms.sourcegitcommit: 74e3be25ea37b5fc8b4b433b0b872547b4b99186
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "41828457"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53288096"
 ---
 <a name="signalr-1x-hubs-api-guide---javascript-client"></a>SignalR 1.x по API концентраторов — клиента JavaScript
 ====================
 по [Флетчера Патрик](https://github.com/pfletcher), [том Дайкстра](https://github.com/tdykstra)
+
+[!INCLUDE [Consider ASP.NET Core SignalR](~/includes/signalr/signalr-version-disambiguation.md)]
 
 > Этот документ содержит вводные сведения по API концентраторов SignalR версии 1.1 в клиентах JavaScript, таких как браузеры и приложения Windows Store (WinJS).
 > 
@@ -443,13 +445,13 @@ ms.locfileid: "41828457"
 
 SignalR обеспечивает следующее подключение события времени жизни, которые можно обработать:
 
-- `starting`: Возникает прежде, чем любые данные, отправляются через соединение.
-- `received`: Возникает при получении данных для соединения. Предоставляет полученных данных.
-- `connectionSlow`: Возникает, когда клиент обнаруживает подключение медленно или часто удаление.
-- `reconnecting`: Возникает, когда используемому транспорту начинает повторное подключение.
-- `reconnected`: Возникает, когда была повторно присоединена используемому транспорту.
+- `starting`: Возникает перед любые данные, отправляются через соединение.
+- `received`: Вызывается, когда все данные получаются через соединение. Предоставляет полученных данных.
+- `connectionSlow`: Вызывается, когда клиент обнаруживает подключение медленно или часто удаление.
+- `reconnecting`: Вызывается, когда используемому транспорту начинает повторное подключение.
+- `reconnected`: Вызывается, когда была повторно присоединена используемому транспорту.
 - `stateChanged`: Возникает при изменении состояния подключения. Предоставляет состояние старое и новое состояние (подключение, подключено, повторное подключение или Disconnected).
-- `disconnected`: Возникает, когда произойдет отключение соединения.
+- `disconnected`: Вызывается, когда произойдет отключение соединения.
 
 Например, если вы хотите отображать предупреждающие сообщения, при наличии проблем подключения, которые могут привести к значительным задержкам, обрабатывать `connectionSlow` событий.
 

@@ -1,6 +1,6 @@
 ---
 uid: signalr/overview/older-versions/tutorial-server-broadcast-with-aspnet-signalr
-title: 'Руководство: Передача сообщений с сервера с помощью SignalR 1.x | Документация Майкрософт'
+title: Учебник. Передача сообщений с сервера с помощью SignalR 1.x | Документация Майкрософт
 author: pfletcher
 description: Этом руководстве показано, как создать веб-приложения, использующего ASP.NET SignalR для предоставления функции рассылки сервера. Означает, что то communic передача сообщений с сервера...
 ms.author: riande
@@ -8,16 +8,18 @@ ms.date: 04/10/2013
 ms.assetid: ab7b2554-956a-4f6d-b2a0-4ae0c62e8580
 msc.legacyurl: /signalr/overview/older-versions/tutorial-server-broadcast-with-aspnet-signalr
 msc.type: authoredcontent
-ms.openlocfilehash: 7d604af11ade848358e291d1df25f2f8df850132
-ms.sourcegitcommit: a4dcca4f1cb81227c5ed3c92dc0e28be6e99447b
+ms.openlocfilehash: d5c09f6493c4dedb4fc2ecbf9055dd014ede71f2
+ms.sourcegitcommit: 74e3be25ea37b5fc8b4b433b0b872547b4b99186
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "48911985"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53288057"
 ---
-<a name="tutorial-server-broadcast-with-aspnet-signalr-1x"></a>Руководство: Передача сообщений с сервера с помощью SignalR 1.x
+<a name="tutorial-server-broadcast-with-aspnet-signalr-1x"></a>Учебник. Передача сообщений с сервера с помощью SignalR 1.x
 ====================
 по [Флетчера Патрик](https://github.com/pfletcher), [том Дайкстра](https://github.com/tdykstra)
+
+[!INCLUDE [Consider ASP.NET Core SignalR](~/includes/signalr/signalr-version-disambiguation.md)]
 
 > Этом руководстве показано, как создать веб-приложения, использующего ASP.NET SignalR для предоставления функции рассылки сервера. Рассылка сервера означает, что связям клиентам инициируются сервером. Данный сценарий требует другого подхода программирования, чем peer-to-peer сценариев, таких как приложения чата, в которых инициируется связям клиентам по одному или нескольким из клиентов.
 > 

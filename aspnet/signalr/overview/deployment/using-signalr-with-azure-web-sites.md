@@ -8,16 +8,18 @@ ms.date: 07/01/2015
 ms.assetid: 2a7517a0-b88c-4162-ade3-9bf6ca7062fd
 msc.legacyurl: /signalr/overview/deployment/using-signalr-with-azure-web-sites
 msc.type: authoredcontent
-ms.openlocfilehash: c5ede2891ef18b622ed269723603dea3b67a135d
-ms.sourcegitcommit: a4dcca4f1cb81227c5ed3c92dc0e28be6e99447b
+ms.openlocfilehash: da69e1aba1b56d69ad8e710cddd2b492168f1255
+ms.sourcegitcommit: 74e3be25ea37b5fc8b4b433b0b872547b4b99186
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "48912609"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53287772"
 ---
 <a name="using-signalr-with-web-apps-in-azure-app-service"></a>С помощью SignalR с веб-приложениями в службе приложений Azure
 ====================
 по [Патрик Флетчера](https://github.com/pfletcher)
+
+[!INCLUDE [Consider ASP.NET Core SignalR](~/includes/signalr/signalr-version-disambiguation.md)]
 
 > В этом документе описываются способы настройки приложения SignalR, которое работает на базе Microsoft Azure.
 >
@@ -98,7 +100,7 @@ WebSockets необходимо явно включить в веб-прилож
 
 На странице «Конфигурация» в **WebSockets** выберите **на**.
 
-![Параметр WebSockets: на](using-signalr-with-azure-web-sites/_static/image10.png)
+![Параметр WebSockets: включить](using-signalr-with-azure-web-sites/_static/image10.png)
 
 В нижней части страницы конфигурации, выберите **Сохранить** для сохранения изменений.
 

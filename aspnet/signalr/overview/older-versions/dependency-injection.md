@@ -8,16 +8,18 @@ ms.date: 05/15/2013
 ms.assetid: eaa206c4-edb3-487e-8fcb-54a3261fed36
 msc.legacyurl: /signalr/overview/older-versions/dependency-injection
 msc.type: authoredcontent
-ms.openlocfilehash: 905dea4918be731673c39e788069ce2dc78e1649
-ms.sourcegitcommit: a4dcca4f1cb81227c5ed3c92dc0e28be6e99447b
+ms.openlocfilehash: 2035b3feebfa32dd7ec4d6adf715a7fee5e7b74f
+ms.sourcegitcommit: 74e3be25ea37b5fc8b4b433b0b872547b4b99186
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "48910698"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53287386"
 ---
 <a name="dependency-injection-in-signalr-1x"></a>Внедрение зависимостей в SignalR 1.x
 ====================
 по [Майк Уоссон](https://github.com/MikeWasson), [Патрик Флетчера](https://github.com/pfletcher)
+
+[!INCLUDE [Consider ASP.NET Core SignalR](~/includes/signalr/signalr-version-disambiguation.md)]
 
 Внедрение зависимостей является способ удаления жестких зависимостей между объектами, упрощая для замены зависимости объекта, либо для тестирования (с использованием макетов объектов) или для изменения поведения во время выполнения. Этом руководстве показано, как выполнить внедрения зависимостей для концентраторов SignalR. Также показано, как использовать контейнеры IoC с SignalR. IoC-контейнер — это стандартная структура для внедрения зависимостей.
 
@@ -82,7 +84,7 @@ ms.locfileid: "48910698"
 Образец StockTicker определяет два основных класса:
 
 - `StockTickerHub`: Класс концентратора, который управляет клиентских подключений.
-- `StockTicker`: Одноэлементным. он содержит цены акций и периодически обновлять их.
+- `StockTicker`: Единственный экземпляр, который содержит цены акций и периодически обновлять их.
 
 `StockTickerHub` хранит ссылку на `StockTicker` одноэлементным множеством, хотя `StockTicker` хранит ссылку на **IHubConnectionContext** для `StockTickerHub`. Использует этот интерфейс для взаимодействия с `StockTickerHub` экземпляров. (Дополнительные сведения см. в разделе [передача сообщений с сервера с помощью SignalR](index.md).)
 

@@ -8,16 +8,18 @@ ms.date: 06/10/2014
 ms.assetid: d1983524-e0d5-4ee6-9d87-1f552f7cb964
 msc.legacyurl: /signalr/overview/testing-and-debugging/unit-testing-signalr-applications
 msc.type: authoredcontent
-ms.openlocfilehash: ba8f5d4577403fe9765641d7ee5d88bde045680a
-ms.sourcegitcommit: a4dcca4f1cb81227c5ed3c92dc0e28be6e99447b
+ms.openlocfilehash: d8f3afdc2749173d1e260096ee6bd4bf1ae4c7cb
+ms.sourcegitcommit: 74e3be25ea37b5fc8b4b433b0b872547b4b99186
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "48910828"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53287524"
 ---
 <a name="unit-testing-signalr-applications"></a>Модульное тестирование приложений SignalR
 ====================
 по [Патрик Флетчера](https://github.com/pfletcher)
+
+[!INCLUDE [Consider ASP.NET Core SignalR](~/includes/signalr/signalr-version-disambiguation.md)]
 
 > В этой статье описывается использование функции Unit Testing SignalR 2.
 >
@@ -42,7 +44,7 @@ ms.locfileid: "48910828"
 
 В этом разделе вы добавите модульных тестов для приложения, созданного в [учебнике Приступая к работе](../getting-started/tutorial-getting-started-with-signalr.md) с помощью [XUnit.net](https://github.com/xunit/xunit) и [Moq](https://github.com/Moq/moq4).
 
-XUnit.net будет использоваться для контроля теста; MOQ будет использоваться для создания [макетирование](http://en.wikipedia.org/wiki/Mock_object) объект для тестирования. Можно использовать другие платформы макетирования, при необходимости; [NSubstitute](http://nsubstitute.github.io/) также хорошо подходит. Этом руководстве показано, как настроить макета объекта двумя способами: во-первых, с помощью `dynamic` объекта (появился в .NET Framework 4), во-вторых, с помощью интерфейса.
+XUnit.net будет использоваться для контроля теста; MOQ будет использоваться для создания [макетирование](http://en.wikipedia.org/wiki/Mock_object) объект для тестирования. Можно использовать другие платформы макетирования, при необходимости; [NSubstitute](http://nsubstitute.github.io/) также хорошо подходит. Этом руководстве показано, как настроить макета объекта двумя способами: Во-первых, с помощью `dynamic` объекта (появился в .NET Framework 4), во-вторых, с помощью интерфейса.
 
 ### <a name="contents"></a>Описание
 

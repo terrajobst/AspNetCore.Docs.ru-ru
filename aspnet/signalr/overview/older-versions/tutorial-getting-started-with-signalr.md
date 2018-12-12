@@ -1,6 +1,6 @@
 ---
 uid: signalr/overview/older-versions/tutorial-getting-started-with-signalr
-title: 'Учебник: Начало работы с SignalR 1.x | Документация Майкрософт'
+title: Учебник. Начало работы с SignalR 1.x | Документация Майкрософт
 author: pfletcher
 description: Использование ASP.NET SignalR для создания приложения разговора в режиме реального времени на странице HTML.
 ms.author: riande
@@ -8,16 +8,18 @@ ms.date: 02/18/2013
 ms.assetid: fdc3599a-5217-44c1-951f-0eec9812dce7
 msc.legacyurl: /signalr/overview/older-versions/tutorial-getting-started-with-signalr
 msc.type: authoredcontent
-ms.openlocfilehash: d541dad19d8fd547d61e8850d64e514ea5db7fcf
-ms.sourcegitcommit: a4dcca4f1cb81227c5ed3c92dc0e28be6e99447b
+ms.openlocfilehash: 720a4879f5fbe3c0c2b4c7809cb94c22547329c3
+ms.sourcegitcommit: 74e3be25ea37b5fc8b4b433b0b872547b4b99186
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "48912427"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53287378"
 ---
-<a name="tutorial-getting-started-with-signalr-1x"></a>Учебник: Начало работы с SignalR 1.x
+<a name="tutorial-getting-started-with-signalr-1x"></a>Учебник. Начало работы с SignalR 1.x
 ====================
 по [Флетчера Патрик](https://github.com/pfletcher), [Teebken Тим](https://github.com/timlt)
+
+[!INCLUDE [Consider ASP.NET Core SignalR](~/includes/signalr/signalr-version-disambiguation.md)]
 
 > В этом учебнике содержатся сведения об использовании SignalR для создания приложения разговора в режиме реального времени. Следует добавить пустой веб-приложения ASP.NET SignalR и создать HTML-страницы для отправки и отображения сообщений.
 
@@ -165,7 +167,7 @@ HTML-страницы в примере кода показано, как исп
 
 Вы узнали, что SignalR — это платформа для построения в режиме реального времени веб-приложений. Вы также узнали несколько задач разработки SignalR: Добавление в приложение ASP.NET SignalR, как создать класс концентратора и как отправлять и получать сообщения из концентратора.
 
-Вы можете предоставить пример приложения в этом руководстве или других приложений SignalR через Интернет, развернув их у поставщика услуг размещения. Корпорация Майкрософт предлагает бесплатные услуг хостинга до 10 веб-сайтов в бесплатной [пробную учетную запись Windows Azure](https://www.windowsazure.com/pricing/free-trial/?WT.mc_id=A443DD604). Пошаговое руководство о том, как развернуть пример приложения SignalR, см. в разделе [публикации SignalR примера для начала работы как веб-сайта Windows Azure](https://blogs.msdn.com/b/timlee/archive/2013/02/27/deploy-the-signalr-getting-started-sample-as-a-windows-azure-web-site.aspx). Подробные сведения о развертывании веб-проекта Visual Studio для веб-сайта Windows Azure см. в разделе [развертывание приложения ASP.NET для веб-сайта Windows Azure](https://docs.microsoft.com/azure/app-service-web/app-service-web-get-started-dotnet). (Примечание: транспорт WebSocket в настоящее время не поддерживается для Windows Azure веб-сайтов. Транспорт WebSocket, когда недоступен, SignalR использует другие доступные типы транспорта, как описано в разделе транспортов [введение к разделу SignalR](index.md).)
+Вы можете предоставить пример приложения в этом руководстве или других приложений SignalR через Интернет, развернув их у поставщика услуг размещения. Корпорация Майкрософт предлагает бесплатные услуг хостинга до 10 веб-сайтов в бесплатной [пробную учетную запись Windows Azure](https://www.windowsazure.com/pricing/free-trial/?WT.mc_id=A443DD604). Пошаговое руководство о том, как развернуть пример приложения SignalR, см. в разделе [публикации SignalR примера для начала работы как веб-сайта Windows Azure](https://blogs.msdn.com/b/timlee/archive/2013/02/27/deploy-the-signalr-getting-started-sample-as-a-windows-azure-web-site.aspx). Подробные сведения о развертывании веб-проекта Visual Studio для веб-сайта Windows Azure см. в разделе [развертывание приложения ASP.NET для веб-сайта Windows Azure](https://docs.microsoft.com/azure/app-service-web/app-service-web-get-started-dotnet). (Примечание: Транспорт WebSocket в настоящее время не поддерживается для Windows Azure веб-сайтов. Транспорт WebSocket, когда недоступен, SignalR использует другие доступные типы транспорта, как описано в разделе транспортов [введение к разделу SignalR](index.md).)
 
 Для более сложных концепций разработки SignalR см. на следующих узлах SignalR исходный код и ресурсы:
 

@@ -8,16 +8,18 @@ ms.date: 06/10/2014
 ms.assetid: ce1305f9-30fd-49e3-bf38-d0a78dfb06c3
 msc.legacyurl: /signalr/overview/performance/scaleout-with-windows-azure-service-bus
 msc.type: authoredcontent
-ms.openlocfilehash: 3adc8768eb7271de32180ba98f67864b22283510
-ms.sourcegitcommit: a4dcca4f1cb81227c5ed3c92dc0e28be6e99447b
+ms.openlocfilehash: 5cdb9b5eb6d3f5ebd5c96e4b0d89926c18bddadd
+ms.sourcegitcommit: 74e3be25ea37b5fc8b4b433b0b872547b4b99186
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "48910802"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53287615"
 ---
 <a name="signalr-scaleout-with-azure-service-bus"></a>Масштабирование SignalR с помощью Azure Service Bus
 ====================
 по [Майк Уоссон](https://github.com/MikeWasson), [Патрик Флетчера](https://github.com/pfletcher)
+
+[!INCLUDE [Consider ASP.NET Core SignalR](~/includes/signalr/signalr-version-disambiguation.md)]
 
 В этом руководстве вы развернете приложении SignalR для веб-роли Windows Azure, использование объединительной платы служебной шины для распределения сообщений для каждого экземпляра роли. (Можно также использовать задняя служебной шины с [веб-приложения в службе приложений Azure](https://docs.microsoft.com/azure/app-service-web/).)
 
@@ -49,13 +51,13 @@ ms.locfileid: "48910802"
 
     [!code-csharp[Main](scaleout-with-windows-azure-service-bus/samples/sample1.cs)]
 
-Этот код настраивает задней панели со значениями по умолчанию для [TopicCount](https://msdn.microsoft.com/library/microsoft.aspnet.signalr.servicebusscaleoutconfiguration.topiccount(v=vs.118).aspx) и [MaxQueueLength](https://msdn.microsoft.com/library/microsoft.aspnet.signalr.messaging.scaleoutconfiguration.maxqueuelength(v=vs.118).aspx). Дополнительные сведения об изменении этих значений см. в разделе [производительность SignalR: метрики горизонтального масштабирования](signalr-performance.md#scaleout_metrics).
+Этот код настраивает задней панели со значениями по умолчанию для [TopicCount](https://msdn.microsoft.com/library/microsoft.aspnet.signalr.servicebusscaleoutconfiguration.topiccount(v=vs.118).aspx) и [MaxQueueLength](https://msdn.microsoft.com/library/microsoft.aspnet.signalr.messaging.scaleoutconfiguration.maxqueuelength(v=vs.118).aspx). Дополнительные сведения об изменении этих значений см. в разделе [SignalR производительности: Метрики горизонтального масштабирования](signalr-performance.md#scaleout_metrics).
 
 Для каждого приложения выберите другое значение для «YourAppName». Не используйте то же значение в нескольких приложениях.
 
 ## <a name="create-the-azure-services"></a>Создание служб Azure
 
-Создание облачной службы, как описано в разделе [как создать и развернуть облачную службу](https://docs.microsoft.com/azure/cloud-services/cloud-services-how-to-create-deploy). Выполните действия, описанные в разделе «Практическое: создать облачную службу, используя функцию быстрого создания». В этом руководстве вы не обязательно должны передать сертификат.
+Создание облачной службы, как описано в разделе [как создать и развернуть облачную службу](https://docs.microsoft.com/azure/cloud-services/cloud-services-how-to-create-deploy). Выполните действия, описанные в разделе «как: Создание облачной службы с помощью функции быстрого создания». В этом руководстве вы не обязательно должны передать сертификат.
 
 ![](scaleout-with-windows-azure-service-bus/_static/image2.png)
 

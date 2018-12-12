@@ -8,16 +8,18 @@ ms.date: 06/10/2014
 ms.assetid: adcfef99-9bc5-489d-a91b-9b7c2bc35e04
 msc.legacyurl: /signalr/overview/releases/upgrading-signalr-1x-projects-to-20
 msc.type: authoredcontent
-ms.openlocfilehash: 450ddedb520035cc05a0dbcca1a2666dd1ba24c7
-ms.sourcegitcommit: a4dcca4f1cb81227c5ed3c92dc0e28be6e99447b
+ms.openlocfilehash: 23ea23585b15395cf86bdad13885af32d1b64e79
+ms.sourcegitcommit: 74e3be25ea37b5fc8b4b433b0b872547b4b99186
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "48910555"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53286848"
 ---
 <a name="upgrading-signalr-1x-projects-to-version-2"></a>Обновление проектов SignalR 1.x до версии 2
 ====================
 по [Патрик Флетчера](https://github.com/pfletcher)
+
+[!INCLUDE [Consider ASP.NET Core SignalR](~/includes/signalr/signalr-version-disambiguation.md)]
 
 > В этом разделе описывается процесс обновления существующего проекта SignalR 1.x для SignalR 2.x и способы устранения неполадок, возникающих в процессе обновления.
 >
@@ -50,7 +52,7 @@ SignalR 2 предлагает согласованным интерфейсом
 
 Хотя мы рекомендуем обновление приложений до SignalR 2, SignalR 1.x будет по-прежнему будет поддерживаться.
 
-Это руководство содержит инструкции для обновления приложения, размещенные в Интернете, SignalR 2. В разделе SignalR 2 теперь поддерживаются резидентных приложений (которые, на которых размещены сервер в консольном приложении, службы Windows или другой процесс). Сведения о том, как приступить к созданию резидентного приложения с помощью SignalR 2, см. в разделе [учебник: Резидентное размещение SignalR](../deployment/tutorial-signalr-self-host.md).
+Это руководство содержит инструкции для обновления приложения, размещенные в Интернете, SignalR 2. В разделе SignalR 2 теперь поддерживаются резидентных приложений (которые, на которых размещены сервер в консольном приложении, службы Windows или другой процесс). Сведения о том, как приступить к созданию резидентного приложения с помощью SignalR 2, см. в разделе [руководства: Резидентное размещение SignalR](../deployment/tutorial-signalr-self-host.md).
 
 ## <a name="contents"></a>Описание
 
@@ -61,7 +63,7 @@ SignalR 2 предлагает согласованным интерфейсом
 
 <a id="example"></a>
 
-## <a name="example-upgrading-the-getting-started-tutorial-application-to-signalr-2"></a>Пример: Обновление Приступая к работе учебного приложения SignalR 2
+## <a name="example-upgrading-the-getting-started-tutorial-application-to-signalr-2"></a>Пример Обновление Приступая к работе учебного приложения SignalR 2
 
 В этом разделе вы обновите приложение, созданное в [SignalR 1.x версию руководства](../older-versions/index.md) с помощью SignalR 2.
 

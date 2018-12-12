@@ -8,16 +8,18 @@ ms.date: 05/01/2013
 ms.assetid: 501db899-e68c-49ff-81b2-1dc561bfe908
 msc.legacyurl: /signalr/overview/older-versions/scaleout-with-windows-azure-service-bus
 msc.type: authoredcontent
-ms.openlocfilehash: d597eebc958815b1b1b9fdffc256c4453efce6b3
-ms.sourcegitcommit: a4dcca4f1cb81227c5ed3c92dc0e28be6e99447b
+ms.openlocfilehash: 687d3d7787baa69410ee35d651a029c69d28c70b
+ms.sourcegitcommit: 74e3be25ea37b5fc8b4b433b0b872547b4b99186
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "48910958"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53287004"
 ---
 <a name="signalr-scaleout-with-azure-service-bus-signalr-1x"></a>Масштабирование SignalR с помощью Azure Service Bus (SignalR 1.x)
 ====================
 по [Майк Уоссон](https://github.com/MikeWasson), [Патрик Флетчера](https://github.com/pfletcher)
+
+[!INCLUDE [Consider ASP.NET Core SignalR](~/includes/signalr/signalr-version-disambiguation.md)]
 
 В этом руководстве вы развернете приложении SignalR для веб-роли Windows Azure, использование объединительной платы служебной шины для распределения сообщений для каждого экземпляра роли.
 
@@ -53,7 +55,7 @@ ms.locfileid: "48910958"
 
 ## <a name="create-the-azure-services"></a>Создание служб Azure
 
-Создание облачной службы, как описано в разделе [как создать и развернуть облачную службу](https://docs.microsoft.com/azure/cloud-services/cloud-services-how-to-create-deploy). Выполните действия, описанные в разделе «Практическое: создать облачную службу, используя функцию быстрого создания». В этом руководстве вы не обязательно должны передать сертификат.
+Создание облачной службы, как описано в разделе [как создать и развернуть облачную службу](https://docs.microsoft.com/azure/cloud-services/cloud-services-how-to-create-deploy). Выполните действия, описанные в разделе «как: Создание облачной службы с помощью функции быстрого создания». В этом руководстве вы не обязательно должны передать сертификат.
 
 ![](scaleout-with-windows-azure-service-bus/_static/image2.png)
 

@@ -8,23 +8,24 @@ ms.date: 04/18/2018
 ms.assetid: eac31beb-0f46-4afa-9def-e80904dea4f0
 msc.legacyurl: /signalr/overview/getting-started/supported-platforms
 msc.type: authoredcontent
-ms.openlocfilehash: d522602c3523d97a12c74b2d901391bd00d4f2b9
-ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
+ms.openlocfilehash: e270f9a328f36854fdfb3e23b78e0b40cdda6411
+ms.sourcegitcommit: 74e3be25ea37b5fc8b4b433b0b872547b4b99186
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "41828859"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53287384"
 ---
 <a name="supported-platforms"></a>Поддерживаемые платформы
 ====================
 по [Патрик Флетчера](https://github.com/pfletcher)
+
+[!INCLUDE [Consider ASP.NET Core SignalR](~/includes/signalr/signalr-version-disambiguation.md)]
 
 > В этой статье описывается, какие клиенты и серверы поддерживаются SignalR. 
 > 
 > ## <a name="questions-and-comments"></a>Вопросы и комментарии
 > 
 > Оставьте свои отзывы на том, как вам понравилось, и этот учебник и что можно улучшить в комментариях в нижней части страницы. Если у вас есть вопросы, которые не имеют отношения к руководству, их можно разместить [форум по ASP.NET SignalR](https://forums.asp.net/1254.aspx/1?ASP+NET+SignalR) или [StackOverflow.com](http://stackoverflow.com/).
-
 
 SignalR поддерживает широкий набор конфигурации серверов и клиентов. Кроме того каждый вариант транспорта имеет ряд требований, свои собственные; Если требования к системе для транспорта не доступны, SignalR корректно выполнит отработку отказа других транспортов. Дополнительные сведения о транспорты, которые поддерживают SignalR, см. в разделе [транспорта и в случае ошибки](introduction-to-signalr.md#transports).
 
@@ -91,7 +92,7 @@ SignalR может использоваться в следующих брауз
 | ForeverFrame | 8+ | Н/Д | Н/Д | Н/Д | 4.1 |
 | Долгие опросы | 8+ | Текущая - 1 | Текущая - 1 | Текущая - 1 | 4.1 |
 
-\*: требуется для обеспечения полной функциональности на 6 +.
+\*: 6 + необходимые для обеспечения полной функциональности.
 
 #### <a name="unsupported-browsers"></a>Неподдерживаемые браузеры
 

@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc, seodec18
 ms.date: 10/24/2018
 uid: security/data-protection/extensibility/key-management
-ms.openlocfilehash: e5ed2a65355a1dba34af09379f2583b3e73c24d7
-ms.sourcegitcommit: 49faca2644590fc081d86db46ea5e29edfc28b7b
+ms.openlocfilehash: 28932cbef1cc797338980f3e0de8b09caee324c0
+ms.sourcegitcommit: b34b25da2ab68e6495b2460ff570468f16a9bf0d
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 12/09/2018
-ms.locfileid: "53121431"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53284608"
 ---
 # <a name="key-management-extensibility-in-aspnet-core"></a>Расширяемость управления ключами в ASP.NET Core
 
@@ -175,7 +175,7 @@ services.AddSingleton<IXmlRepository>(new MyCustomXmlRepository());
 
 `IXmlEncryptor` Интерфейс представляет тип, который можно зашифровать XML-элемент открытого текста. Он предоставляет единый интерфейс API:
 
-* Шифрование (XElement plaintextElement): EncryptedXmlInfo
+* Encrypt(XElement plaintextElement): EncryptedXmlInfo
 
 Если сериализованный `IAuthenticatedEncryptorDescriptor` содержит все элементы с пометкой «требует шифрования», затем `XmlKeyManager` запустит эти элементы настроенного `IXmlEncryptor`в `Encrypt` метод и он будет сохранять зашифрованные элемент, а не открытый текст элемента `IXmlRepository`. Выходные данные `Encrypt` метод `EncryptedXmlInfo` объекта. Этот объект является оболочкой, содержащий оба результирующих зашифрованные `XElement` и тип, представляющий `IXmlDecryptor` которого может использоваться для расшифровки соответствующий элемент.
 
@@ -210,7 +210,7 @@ services.AddSingleton<IXmlEncryptor>(new MyCustomXmlEncryptor());
 
 `IXmlDecryptor` Интерфейс представляет тип, который знает, как для расшифровки `XElement` , был зашифрованные с помощью `IXmlEncryptor`. Он предоставляет единый интерфейс API:
 
-* Расшифровать (XElement encryptedElement): XElement
+* Расшифровка (XElement encryptedElement): XElement
 
 `Decrypt` Метод отменяет шифрования, выполняемые `IXmlEncryptor.Encrypt`. Как правило, каждый конкретный `IXmlEncryptor` реализация будет иметь соответствующий устойчивый `IXmlDecryptor` реализации.
 

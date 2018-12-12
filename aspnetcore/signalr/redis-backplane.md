@@ -7,12 +7,12 @@ ms.author: tdykstra
 ms.custom: mvc
 ms.date: 11/28/2018
 uid: signalr/redis-backplane
-ms.openlocfilehash: c8b09c0d482da344b54d167c0c9757167eaa6186
-ms.sourcegitcommit: e9b99854b0a8021dafabee0db5e1338067f250a9
+ms.openlocfilehash: 343cb5b2c7ed7162bae7865553a783fea45f0cfb
+ms.sourcegitcommit: b34b25da2ab68e6495b2460ff570468f16a9bf0d
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52452984"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53284478"
 ---
 # <a name="set-up-a-redis-backplane-for-aspnet-core-signalr-scale-out"></a>Настройка Redis объединительной платы для горизонтального масштабирования ASP.NET Core SignalR
 
@@ -32,7 +32,7 @@ ms.locfileid: "52452984"
 
 ::: moniker range="= aspnetcore-2.1"
 
-* В приложении SignalR, установить `Microsoft.AspNetCore.SignalR.Redis` пакет NuGet.
+* В приложении SignalR, установить `Microsoft.AspNetCore.SignalR.Redis` пакет NuGet. (Также `Microsoft.AspNetCore.SignalR.StackExchangeRedis` пакета, но, чтобы одно находилось в ASP.NET Core 2.2 и более поздних версий.)
 
 * В `Startup.ConfigureServices` мы вызываем метод `AddRedis` после `AddSignalR`:
 
@@ -59,7 +59,10 @@ ms.locfileid: "52452984"
 
 ::: moniker range="> aspnetcore-2.1"
 
-* В приложении SignalR, установить `Microsoft.AspNetCore.SignalR.StackExchangeRedis` пакет NuGet.
+* В приложении SignalR установите одно из следующих пакетов NuGet.
+
+  * `Microsoft.AspNetCore.SignalR.StackExchangeRedis` -Зависит от StackExchange.Redis 2.X.X. Это рекомендуемый пакет для ASP.NET Core 2.2 и более поздних версий.
+  * `Microsoft.AspNetCore.SignalR.Redis` -Зависит от StackExchange.Redis 1.X.X. Этот пакет не будет публиковаться в ASP.NET Core 3.0.
 
 * В `Startup.ConfigureServices` мы вызываем метод `AddStackExchangeRedis` после `AddSignalR`:
 

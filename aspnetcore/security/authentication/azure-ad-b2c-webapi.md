@@ -6,12 +6,12 @@ ms.author: casoper
 ms.date: 09/21/2018
 ms.custom: mvc, seodec18
 uid: security/authentication/azure-ad-b2c-webapi
-ms.openlocfilehash: e8ac1e33819dd369460139df25597e1aa0979c91
-ms.sourcegitcommit: 49faca2644590fc081d86db46ea5e29edfc28b7b
+ms.openlocfilehash: 9c541644d276bbdc990bb01f8bd80c92862cd6f0
+ms.sourcegitcommit: b34b25da2ab68e6495b2460ff570468f16a9bf0d
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 12/09/2018
-ms.locfileid: "53121717"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53284621"
 ---
 # <a name="authentication-in-web-apis-with-azure-active-directory-b2c-in-aspnet-core"></a>Проверка подлинности в веб-API с помощью Azure Active Directory B2C в ASP.NET Core
 
@@ -19,7 +19,7 @@ ms.locfileid: "53121717"
 
 [Azure Active Directory B2C](/azure/active-directory-b2c/active-directory-b2c-overview) (Azure AD B2C) является это облаке решение управления удостоверениями для Интернета и мобильных приложений. Эта служба предоставляет проверку подлинности для приложений, размещенных в облаке и локальной. Типы проверки подлинности включают отдельные учетные записи, учетные записи социальных сетей и федеративные пользователи корпоративных учетных записей. Azure AD B2C также предоставляет многофакторной проверки подлинности с минимальной конфигурацией.
 
-Azure Active Directory (Azure AD) и Azure AD B2C являются отдельными предложениями продуктов. Клиент Azure AD представляет организацию, хотя клиент Azure AD B2C представляет коллекцию удостоверений для использования с приложениями проверяющей стороны. Дополнительные сведения см. в разделе [Azure AD B2C: часто задаваемые вопросы (FAQ)](/azure/active-directory-b2c/active-directory-b2c-faqs).
+Azure Active Directory (Azure AD) и Azure AD B2C являются отдельными предложениями продуктов. Клиент Azure AD представляет организацию, хотя клиент Azure AD B2C представляет коллекцию удостоверений для использования с приложениями проверяющей стороны. Дополнительные сведения см. в разделе [Azure AD B2C: Часто задаваемые вопросы (FAQ)](/azure/active-directory-b2c/active-directory-b2c-faqs).
 
 Так как веб-API не имеют пользовательского интерфейса, они не удалось перенаправить пользователя для службы маркеров безопасности как Azure AD B2C. Вместо этого API передается токен носителя из вызывающего приложения, который уже прошел проверку пользователь с Azure AD B2C. API, затем проверяет маркер без прямого взаимодействия с пользователем.
 
@@ -175,14 +175,14 @@ Visual Studio создает веб-API с помощью контроллера
    |      <strong>Имя токена</strong>       |                                          *{Имя токена}*                                       |                                                                                                                   Введите описательное имя для токена.                                                                                                                    |
    |      <strong>Тип предоставления разрешения</strong>       |                                           Неявные                                            |                                                                                                                                                                                                                                                                              |
    |     <strong>URL-адрес обратного вызова</strong>      |                                 `https://getpostman.com/postman`                              |                                                                                                                                                                                                                                                                              |
-   |       <strong>URL-адрес проверки подлинности</strong>        | `https://login.microsoftonline.com/{tenant domain name}/oauth2/v2.0/authorize?p=B2C_1_SiUpIn` |  Замените *{имя домена клиента}* доменным именем клиента. **ВАЖНЫЕ**: этот URL-адрес должен иметь имя домена, в том, что содержится в `AzureAdB2C.Instance` в веб-интерфейса API *appsettings.json* файла. См. Примечание&dagger;.                                                  |
+   |       <strong>URL-адрес проверки подлинности</strong>        | `https://login.microsoftonline.com/{tenant domain name}/oauth2/v2.0/authorize?p=B2C_1_SiUpIn` |  Замените *{имя домена клиента}* доменным именем клиента. **ВАЖНЫЕ**: Этот URL-адрес должен иметь имя домена, в том, что содержится в `AzureAdB2C.Instance` в веб-интерфейса API *appsettings.json* файла. См. Примечание&dagger;.                                                  |
    |       <strong>Идентификатор клиента</strong>       |                *{Введите приложение Postman <b>идентификатор приложения</b>}*                              |                                                                                                                                                                                                                                                                              |
    |         <strong>Область</strong>         |         `https://{tenant domain name}/{api}/user_impersonation openid offline_access`       | Замените *{имя домена клиента}* доменным именем клиента. Замените *{api}* с URI идентификатора приложения вы присвоили веб-API при первой регистрации (в этом случае `api`). Шаблон для URL-адрес: `https://{tenant}.onmicrosoft.com/{api-id-uri}/{scope name}`.         |
    |         <strong>Состояние</strong>         |                                      *{не указывайте}*                                          |                                                                                                                                                                                                                                                                              |
    | <strong>Проверка подлинности клиента</strong> |                                Отправки учетных данных клиента в тексте                                |                                                                                                                                                                                                                                                                              |
 
     > [!NOTE]
-    > &dagger; Диалоговое окно параметров политики на портале Azure Active Directory B2C отображает два возможных URL-адреса: один в формате `https://login.microsoftonline.com/`{имя домена клиента} / {Дополнительные сведения о пути}, а другой — в формате `https://{tenant name}.b2clogin.com/`{имя домена клиента} / {дополнительных сведения о пути}. Он имеет **критических** , найти домен в в `AzureAdB2C.Instance` в веб-интерфейса API *appsettings.json* файл соответствует используемому в веб приложения *appsettings.json* файла. Это же домен, используемый для проверки подлинности URL-адрес поля в Postman. Обратите внимание на то, что Visual Studio использует немного иной формат URL-адрес, чем отображаемые на портале. До тех пор, пока домены совпадают, работает URL-адрес.
+    > &dagger; Диалоговое окно параметров политики на портале Azure Active Directory B2C отображает два возможных URL-адреса: В формате `https://login.microsoftonline.com/`{имя домена клиента} / {Дополнительные сведения о пути}, а другой — в формате `https://{tenant name}.b2clogin.com/`{имя домена клиента} / {Дополнительные сведения о пути}. Он имеет **критических** , найти домен в в `AzureAdB2C.Instance` в веб-интерфейса API *appsettings.json* файл соответствует используемому в веб приложения *appsettings.json* файла. Это же домен, используемый для проверки подлинности URL-адрес поля в Postman. Обратите внимание на то, что Visual Studio использует немного иной формат URL-адрес, чем отображаемые на портале. До тех пор, пока домены совпадают, работает URL-адрес.
 
 3. Выберите **запроса маркера** кнопки.
 

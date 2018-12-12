@@ -8,16 +8,18 @@ ms.date: 06/10/2014
 ms.assetid: 6d02d9f7-94e5-4140-9f51-5a6040f274f6
 msc.legacyurl: /signalr/overview/guide-to-the-api/hubs-api-guide-net-client
 msc.type: authoredcontent
-ms.openlocfilehash: 2d7dd1480694eacffc0cfa60ac0179b16348488d
-ms.sourcegitcommit: a4dcca4f1cb81227c5ed3c92dc0e28be6e99447b
+ms.openlocfilehash: 0a2b24039259ef90579a7f215bb9e35ebef7b9b9
+ms.sourcegitcommit: 74e3be25ea37b5fc8b4b433b0b872547b4b99186
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "48912999"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53288051"
 ---
 <a name="aspnet-signalr-hubs-api-guide---net-client-c"></a>Руководство по API концентраторов ASP.NET SignalR — клиент .NET (C#)
 ====================
 по [Флетчера Патрик](https://github.com/pfletcher), [том Дайкстра](https://github.com/tdykstra)
+
+[!INCLUDE [Consider ASP.NET Core SignalR](~/includes/signalr/signalr-version-disambiguation.md)]
 
 > Этот документ содержит вводные сведения по API концентраторов SignalR версии 2 в таких клиентов .NET, Windows Store (WinRT), WPF, Silverlight и консольных приложений.
 >
@@ -41,7 +43,6 @@ ms.locfileid: "48912999"
 > ## <a name="questions-and-comments"></a>Вопросы и комментарии
 >
 > Оставьте свои отзывы на том, как вам понравилось, и этот учебник и что можно улучшить в комментариях в нижней части страницы. Если у вас есть вопросы, которые не имеют отношения к руководству, их можно разместить [форум по ASP.NET SignalR](https://forums.asp.net/1254.aspx/1?ASP+NET+SignalR) или [StackOverflow.com](http://stackoverflow.com/).
-
 
 ## <a name="overview"></a>Обзор
 
@@ -329,12 +330,12 @@ ForeverFrame транспорта не включен в этот список, 
 
 SignalR обеспечивает следующее подключение события времени жизни, которые можно обработать:
 
-- `Received`: Возникает при получении данных для соединения. Предоставляет полученных данных.
-- `ConnectionSlow`: Возникает, когда клиент обнаруживает подключение медленно или часто удаление.
-- `Reconnecting`: Возникает, когда используемому транспорту начинает повторное подключение.
-- `Reconnected`: Возникает, когда была повторно присоединена используемому транспорту.
+- `Received`: Вызывается, когда все данные получаются через соединение. Предоставляет полученных данных.
+- `ConnectionSlow`: Вызывается, когда клиент обнаруживает подключение медленно или часто удаление.
+- `Reconnecting`: Вызывается, когда используемому транспорту начинает повторное подключение.
+- `Reconnected`: Вызывается, когда была повторно присоединена используемому транспорту.
 - `StateChanged`: Возникает при изменении состояния подключения. Предоставляет состояние старое и новое состояние. Сведения о подключении, значения состояния см. в разделе [перечисление ConnectionState](https://msdn.microsoft.com/library/microsoft.aspnet.signalr.client.connectionstate(v=vs.111).aspx).
-- `Closed`: Возникает, когда произойдет отключение соединения.
+- `Closed`: Вызывается, когда произойдет отключение соединения.
 
 Например, если вы хотите отображать предупреждающие сообщения для ошибок, которые не являются очень существенными, но вызывают проблемы с промежуточными соединениями, такие как медленная работа или часто удаление соединения, обрабатывать `ConnectionSlow` событий.
 

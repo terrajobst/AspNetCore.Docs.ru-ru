@@ -8,16 +8,18 @@ ms.date: 06/10/2014
 ms.assetid: 98358b6e-9139-4239-ba3a-2d7dd74dd664
 msc.legacyurl: /signalr/overview/performance/scaleout-with-sql-server
 msc.type: authoredcontent
-ms.openlocfilehash: 7d9acfc8ed2dd692f36528a8a9700d92d86a4203
-ms.sourcegitcommit: a4dcca4f1cb81227c5ed3c92dc0e28be6e99447b
+ms.openlocfilehash: 73b16ecf141732f0adc362dc5167073491cc2dea
+ms.sourcegitcommit: 74e3be25ea37b5fc8b4b433b0b872547b4b99186
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "48910451"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53287017"
 ---
 <a name="signalr-scaleout-with-sql-server"></a>Масштабирование SignalR с помощью SQL Server
 ====================
 по [Майк Уоссон](https://github.com/MikeWasson), [Патрик Флетчера](https://github.com/pfletcher)
+
+[!INCLUDE [Consider ASP.NET Core SignalR](~/includes/signalr/signalr-version-disambiguation.md)]
 
 > ## <a name="software-versions-used-in-this-topic"></a>Версии программного обеспечения, используемого в этом разделе
 >
@@ -59,7 +61,7 @@ Microsoft SQL Server 2005 или более поздней версии. Зад�
 
     [!code-csharp[Main](scaleout-with-sql-server/samples/sample1.cs)]
 
-   Этот код настраивает задней панели со значениями по умолчанию для [TableCount](https://msdn.microsoft.com/library/microsoft.aspnet.signalr.sqlscaleoutconfiguration.tablecount(v=vs.118).aspx) и [MaxQueueLength](https://msdn.microsoft.com/library/microsoft.aspnet.signalr.messaging.scaleoutconfiguration.maxqueuelength(v=vs.118).aspx). Дополнительные сведения об изменении этих значений см. в разделе [производительность SignalR: метрики горизонтального масштабирования](signalr-performance.md#scaleout_metrics).
+   Этот код настраивает задней панели со значениями по умолчанию для [TableCount](https://msdn.microsoft.com/library/microsoft.aspnet.signalr.sqlscaleoutconfiguration.tablecount(v=vs.118).aspx) и [MaxQueueLength](https://msdn.microsoft.com/library/microsoft.aspnet.signalr.messaging.scaleoutconfiguration.maxqueuelength(v=vs.118).aspx). Дополнительные сведения об изменении этих значений см. в разделе [SignalR производительности: Метрики горизонтального масштабирования](signalr-performance.md#scaleout_metrics).
 
 ## <a name="configure-the-database"></a>Настройка базы данных
 

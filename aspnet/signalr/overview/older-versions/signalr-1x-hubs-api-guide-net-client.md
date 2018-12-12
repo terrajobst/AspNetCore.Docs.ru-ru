@@ -8,16 +8,18 @@ ms.date: 04/17/2013
 ms.assetid: c334adc3-d6dc-44f3-9f06-f7634475aad3
 msc.legacyurl: /signalr/overview/older-versions/signalr-1x-hubs-api-guide-net-client
 msc.type: authoredcontent
-ms.openlocfilehash: 5889429645ea1c682ea43c4b17afb3745318e32d
-ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
+ms.openlocfilehash: 34356338f24788226351e8e22b47eaaf7ea03e61
+ms.sourcegitcommit: 74e3be25ea37b5fc8b4b433b0b872547b4b99186
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "41838866"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53287988"
 ---
 <a name="aspnet-signalr-hubs-api-guide---net-client-signalr-1x"></a>Руководство по API концентраторов ASP.NET SignalR — клиент .NET (SignalR 1.x)
 ====================
 по [Флетчера Патрик](https://github.com/pfletcher), [том Дайкстра](https://github.com/tdykstra)
+
+[!INCLUDE [Consider ASP.NET Core SignalR](~/includes/signalr/signalr-version-disambiguation.md)]
 
 > Этот документ содержит вводные сведения по API концентраторов SignalR версии 2 в таких клиентов .NET, Windows Store (WinRT), WPF, Silverlight и консольных приложений.
 > 
@@ -314,12 +316,12 @@ ForeverFrame транспорта не включен в этот список, 
 
 SignalR обеспечивает следующее подключение события времени жизни, которые можно обработать:
 
-- `Received`: Возникает при получении данных для соединения. Предоставляет полученных данных.
-- `ConnectionSlow`: Возникает, когда клиент обнаруживает подключение медленно или часто удаление.
-- `Reconnecting`: Возникает, когда используемому транспорту начинает повторное подключение.
-- `Reconnected`: Возникает, когда была повторно присоединена используемому транспорту.
+- `Received`: Вызывается, когда все данные получаются через соединение. Предоставляет полученных данных.
+- `ConnectionSlow`: Вызывается, когда клиент обнаруживает подключение медленно или часто удаление.
+- `Reconnecting`: Вызывается, когда используемому транспорту начинает повторное подключение.
+- `Reconnected`: Вызывается, когда была повторно присоединена используемому транспорту.
 - `StateChanged`: Возникает при изменении состояния подключения. Предоставляет состояние старое и новое состояние. Сведения о подключении, значения состояния см. в разделе [перечисление ConnectionState](https://msdn.microsoft.com/library/microsoft.aspnet.signalr.client.connectionstate(v=vs.111).aspx).
-- `Closed`: Возникает, когда произойдет отключение соединения.
+- `Closed`: Вызывается, когда произойдет отключение соединения.
 
 Например, если вы хотите отображать предупреждающие сообщения для ошибок, которые не являются очень существенными, но вызывают проблемы с промежуточными соединениями, такие как медленная работа или часто удаление соединения, обрабатывать `ConnectionSlow` событий.
 
