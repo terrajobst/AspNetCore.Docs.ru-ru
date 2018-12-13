@@ -5,14 +5,14 @@ description: Эта статья содержит ссылки на ресурс
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 12/04/2018
+ms.date: 12/10/2018
 uid: host-and-deploy/azure-apps/index
-ms.openlocfilehash: b32dd3cb84a86d12c61e391b88355ab0411c2815
-ms.sourcegitcommit: a3a15d3ad4d6e160a69614a29c03bbd50db110a2
+ms.openlocfilehash: b6ff2124aac7e866f630cf359cbd188e88906844
+ms.sourcegitcommit: b34b25da2ab68e6495b2460ff570468f16a9bf0d
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 12/05/2018
-ms.locfileid: "52951970"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53284699"
 ---
 # <a name="deploy-aspnet-core-apps-to-azure-app-service"></a>Развертывание приложений ASP.NET Core в Службе приложений Azure
 
@@ -22,10 +22,10 @@ ms.locfileid: "52951970"
 
 [Документация по веб-приложениям](/azure/app-service/) Azure — это место, где хранятся документация, учебники, примеры, руководства и другие ресурсы, связанные с приложениями Azure. Размещению приложений ASP.NET Core посвящены следующие два руководства.
 
-[Краткое руководство. Создание веб-приложения ASP.NET Core в Azure](/azure/app-service/app-service-web-get-started-dotnet)  
+[Краткое руководство по созданию веб-приложения ASP.NET Core в Azure](/azure/app-service/app-service-web-get-started-dotnet)  
 Создайте веб-приложение ASP.NET Core и разверните его в службе приложений Azure на базе Windows с помощью Visual Studio.
 
-[Краткое руководство. Создание веб-приложения .NET Core в службе приложений на базе Linux](/azure/app-service/containers/quickstart-dotnetcore)  
+[Краткое руководство по созданию веб-приложения .NET Core в службе приложений на платформе Linux](/azure/app-service/containers/quickstart-dotnetcore)  
 Создайте веб-приложение ASP.NET Core и разверните его в службе приложений Azure на базе Linux с помощью командной строки.
 
 Следующие статьи входят в документацию по ASP.NET Core.
@@ -84,9 +84,11 @@ ms.locfileid: "52951970"
 
 ## <a name="monitoring-and-logging"></a>Мониторинг и ведение журналов
 
+Приложения ASP.NET Core, развернутые в Службе приложений автоматически, получают расширение службы приложений и расширения для **ведения журналов ASP.NET Core**. Расширение обеспечивает ведение журнала Azure.
+
 Сведения о мониторинге, ведении журналов, а также поиске и устранении неполадок см. в следующих статьях.
 
-[Мониторинг приложений в службе приложений Azure](/azure/app-service/web-sites-monitor)  
+[Практическое руководство. Мониторинг приложений в Службе приложений Azure](/azure/app-service/web-sites-monitor)  
 Сведения о том, как толковать квоты и параметры для приложений и планы службы приложений.
 
 [Включение функции ведения журналов диагностики для веб-приложений в службе приложений Azure](/azure/app-service/web-sites-enable-diagnostic-log)  
@@ -211,13 +213,13 @@ ms.locfileid: "52951970"
 
 ## <a name="protocol-settings-https"></a>Параметры протокола (HTTPS)
 
-Привязки безопасных протоколов позволяют указать сертификат, который следует использовать при ответе на запросы по HTTPS. Для привязки требуется допустимый закрытый сертификат (*PFX*), выданный для определенного имени узла. Дополнительные сведения см. в разделе [Руководство. Привязка существующего пользовательского SSL-сертификата к веб-приложениям Azure](/azure/app-service/app-service-web-tutorial-custom-ssl).
+Привязки безопасных протоколов позволяют указать сертификат, который следует использовать при ответе на запросы по HTTPS. Для привязки требуется допустимый закрытый сертификат (*PFX*), выданный для определенного имени узла. Дополнительные сведения см. в статье [Руководство. Привязывание существующего настраиваемого SSL-сертификата к веб-приложениям Azure](/azure/app-service/app-service-web-tutorial-custom-ssl).
 
 ## <a name="additional-resources"></a>Дополнительные ресурсы
 
 * [Общие сведения о веб-приложениях (5-минутное видео)](/azure/app-service/app-service-web-overview)
 * [Служба приложений Azure: оптимальное место для размещения приложений .NET (55-минутное видео)](https://channel9.msdn.com/events/dotnetConf/2017/T222)
-* [Azure, пятница: практики диагностики и устранения неполадок в службе приложений Azure (12-минутное видео)](https://channel9.msdn.com/Shows/Azure-Friday/Azure-App-Service-Diagnostic-and-Troubleshooting-Experience)
+* [Пятница с Azure. Практика диагностики и устранения неполадок в Службе приложений Azure (12-минутное видео)](https://channel9.msdn.com/Shows/Azure-Friday/Azure-App-Service-Diagnostic-and-Troubleshooting-Experience)
 * [Общие сведения о диагностике в службе приложений Azure](/azure/app-service/app-service-diagnostics)
 * <xref:host-and-deploy/web-farm>
 

@@ -3,14 +3,14 @@ title: Миграция с ASP.NET на ASP.NET Core
 author: isaac2004
 description: Здесь вы найдете указания по миграции существующих приложений MVC ASP.NET или веб-API на ASP.NET Core.web
 ms.author: scaddie
-ms.date: 12/10/2018
+ms.date: 12/11/2018
 uid: migration/proper-to-2x/index
-ms.openlocfilehash: 6808fefb890dcdec6abdd0604ab61dfd2573d910
-ms.sourcegitcommit: 1872d2e6f299093c78a6795a486929ffb0bbffff
+ms.openlocfilehash: a9eef832a68afa1a73e3c7c545378da190602ce2
+ms.sourcegitcommit: b34b25da2ab68e6495b2460ff570468f16a9bf0d
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53216798"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53284400"
 ---
 # <a name="migrate-from-aspnet-to-aspnet-core"></a>Миграция с ASP.NET на ASP.NET Core
 
@@ -20,7 +20,7 @@ ms.locfileid: "53216798"
 
 ## <a name="prerequisites"></a>Предварительные требования
 
-[!INCLUDE [](~/includes/net-core-sdk-download-link.md)]
+[Пакет SDK для .NET Core 2.2 или более поздней версии](https://www.microsoft.com/net/download)
 
 ## <a name="target-frameworks"></a>Требуемые версии .NET Framework
 
@@ -28,15 +28,15 @@ ms.locfileid: "53216798"
 
 При разработке для .NET Framework проекты должны ссылаться на отдельные пакеты NuGet.
 
-Работа с .NET Core позволяет избавиться от многочисленных явных ссылок на пакеты благодаря [метапакету](xref:fundamentals/metapackage) ASP.NET Core. Установите метапакет `Microsoft.AspNetCore.All` в свой проект.
+Работа с .NET Core позволяет избавиться от многочисленных явных ссылок на пакеты благодаря [метапакету](xref:fundamentals/metapackage-app) ASP.NET Core. Установите метапакет `Microsoft.AspNetCore.App` в свой проект.
 
 ```xml
 <ItemGroup>
-  <PackageReference Include="Microsoft.AspNetCore.All" Version="2.0.9" />
+   <PackageReference Include="Microsoft.AspNetCore.App" />
 </ItemGroup>
 ```
 
-При использовании метапакета никакие указанные по ссылкам пакеты с приложением не развертываются. Все эти ресурсы входят в хранилище среды выполнения .NET Core и предварительно компилируются для повышения производительности. Дополнительные сведения см. в статье [Метапакет Microsoft.AspNetCore.All для ASP.NET Core 2](xref:fundamentals/metapackage).
+При использовании метапакета никакие указанные по ссылкам пакеты с приложением не развертываются. Все эти ресурсы входят в хранилище среды выполнения .NET Core и предварительно компилируются для повышения производительности. Дополнительные сведения см. в статье [Метапакет Microsoft.AspNetCore.App для ASP.NET Core 2.1](xref:fundamentals/metapackage-app).
 
 ## <a name="project-structure-differences"></a>Различия в структуре пакетов
 
@@ -64,15 +64,14 @@ ASP.NET Core использует аналогичный подход, но не
 
 [!code-csharp[](samples/program.cs)]
 
-`Startup` должен включать метод `Configure`. В `Configure` добавьте в конвейер необходимое ПО промежуточного слоя. В следующем примере (на основе шаблона веб-сайта по умолчанию) используются несколько методов расширения для настройки конвейера с поддержкой следующих компонентов.
+`Startup` должен включать метод `Configure`. В `Configure` добавьте в конвейер необходимое ПО промежуточного слоя. В примере ниже (на основе шаблона веб-сайта по умолчанию) используются методы расширения для настройки конвейера с поддержкой следующих компонентов:
 
-* [Привязывание к браузеру](xref:client-side/using-browserlink)
 * Страницы ошибок
-* Статические файлы
+* HTTP Strict Transport Security;
+* перенаправление с HTTP на HTTPS;
 * ASP.NET Core MVC
-* идентификации
 
-[!code-csharp[](../../common/samples/WebApplication1/Startup.cs?highlight=8,9,10,14,17,19,21&start=58&end=84)]
+[!code-csharp[](samples/startup.cs)]
 
 Сервер и приложение разделены, что позволит вам в будущем легко перейти на другую платформу.
 

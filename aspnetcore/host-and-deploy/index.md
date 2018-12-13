@@ -4,14 +4,14 @@ author: guardrex
 description: Сведения о настройке сред размещения и развертывании приложений ASP.NET Core.
 ms.author: riande
 ms.custom: mvc
-ms.date: 12/01/2018
+ms.date: 12/06/2018
 uid: host-and-deploy/index
-ms.openlocfilehash: 86022c33a3c5a8b82b14ae51b98c44497f39bd16
-ms.sourcegitcommit: 9bb58d7c8dad4bbd03419bcc183d027667fefa20
+ms.openlocfilehash: f443a8ee28a859b5075a8bb03016407af9a3ddb1
+ms.sourcegitcommit: b34b25da2ab68e6495b2460ff570468f16a9bf0d
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52862451"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53284530"
 ---
 # <a name="host-and-deploy-aspnet-core"></a>Размещение и развертывание ASP.NET Core
 
@@ -31,7 +31,7 @@ ms.locfileid: "52862451"
 
 Приложения .NET Core могут публиковаться как *автономные развертывания* или *развертывания, зависящие от платформы*. Если приложение автономное, в папку *publish* добавляются файлы сборки, содержащие среду выполнения .NET. Если приложение зависит от платформы, файлы среды выполнения .NET не добавляются, так как приложение ссылается на версию .NET, установленную на сервере. По умолчанию используется модель развертывания с зависимостью от платформы. Дополнительные сведения см. в статье [Развертывание приложений .NET Core](/dotnet/core/deploying/).
 
-В дополнение к *EXE*- и *DLL*-файлам папка *публикации* для приложения ASP.NET Core обычно содержит файлы конфигурации, статические ресурсы и представления MVC. Дополнительные сведения см. в разделе <xref:host-and-deploy/directory-structure>.
+В дополнение к *EXE*- и *DLL*-файлам папка *публикации* для приложения ASP.NET Core обычно содержит файлы конфигурации, статические ресурсы и представления MVC. Для получения дополнительной информации см. <xref:host-and-deploy/directory-structure>.
 
 ## <a name="set-up-a-process-manager"></a>Настройка диспетчер процессов
 
@@ -72,7 +72,11 @@ ms.locfileid: "52862451"
 
 ## <a name="publish-to-azure"></a>Публикация в Azure
 
-См. сведения о публикации приложения в Azure с помощью Visual Studio (<xref:tutorials/publish-to-azure-webapp-using-vs>). Приложение можно также опубликовать в Azure из [командной строки](/azure/app-service/app-service-web-get-started-dotnet).
+См. сведения о публикации приложения в Azure с помощью Visual Studio (<xref:tutorials/publish-to-azure-webapp-using-vs>). Дополнительный пример приведен в статье [Создание веб-приложения ASP.NET Core в Azure](/azure/app-service/app-service-web-get-started-dotnet).
+
+## <a name="publish-with-msdeploy-on-windows"></a>Публикация с помощью MSDeploy в Windows
+
+Инструкции о том, как опубликовать приложение с помощью профиля публикации Visual Studio или из командной строки Windows с помощью команды [dotnet msbuild](/dotnet/core/tools/dotnet-msbuild), см. в статье <xref:host-and-deploy/visual-studio-publish-profiles>.
 
 ## <a name="host-in-a-web-farm"></a>Размещение в веб-ферме
 
