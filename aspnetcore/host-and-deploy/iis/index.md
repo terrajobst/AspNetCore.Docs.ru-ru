@@ -6,21 +6,18 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 12/11/2018
 uid: host-and-deploy/iis/index
-ms.openlocfilehash: b71adcaad710ecfb7f81de0cc302f293d1728bec
-ms.sourcegitcommit: 74e3be25ea37b5fc8b4b433b0b872547b4b99186
+ms.openlocfilehash: 175df4ab633c1d84de645208cd97e8a675fb169c
+ms.sourcegitcommit: a16352c1c88a71770ab3922200a8cd148fb278a6
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53288122"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53335394"
 ---
 # <a name="host-aspnet-core-on-windows-with-iis"></a>Размещение ASP.NET Core в Windows со службами IIS
 
 Автор [Люк Латэм](https://github.com/guardrex) (Luke Latham)
 
 [Установка пакета размещения .NET Core](#install-the-net-core-hosting-bundle)
-
-> [!NOTE]
-> Мы тестируем удобство использования новой предлагаемой структуры оглавления для ASP.NET Core.  Если у вас есть несколько минут, и вы хотите попробовать найти семь разных тем в существующей или планируемой структуре оглавления, [щелкните здесь, чтобы принять участие в исследовании](https://dpk4xbh5.optimalworkshop.com/treejack/aa11wn82).
 
 ## <a name="supported-operating-systems"></a>Поддерживаемые операционные системы
 
@@ -429,7 +426,7 @@ services.Configure<IISOptions>(options =>
 
 * **Настройка политики защиты данных на уровне компьютера**.
 
-  Система защиты данных обеспечивает ограниченную поддержку задания [политики по умолчанию на уровне компьютера](xref:security/data-protection/configuration/machine-wide-policy) для всех приложений, использующих интерфейсы API защиты данных. Для получения дополнительной информации см. <xref:security/data-protection/introduction>.
+  Система защиты данных обеспечивает ограниченную поддержку задания [политики по умолчанию на уровне компьютера](xref:security/data-protection/configuration/machine-wide-policy) для всех приложений, использующих интерфейсы API защиты данных. Дополнительные сведения см. в разделе <xref:security/data-protection/introduction>.
 
 ## <a name="virtual-directories"></a>Виртуальные каталоги
 
