@@ -177,6 +177,7 @@
 ## Учебники
 ### [SignalR с JavaScript](xref:tutorials/signalr)
 ### [SignalR с TypeScript](xref:tutorials/signalr-typescript-webpack)
+## [Примеры](https://github.com/aspnet/SignalR-samples)
 ## Основные понятия о серверах
 ### [Центры](xref:signalr/hubs)
 ### [HubContext](xref:signalr/hubcontext)
@@ -402,6 +403,7 @@
 ### [Распределенное кэширование](xref:performance/caching/distributed)
 ### [ПО промежуточного слоя для кэширования ответов](xref:performance/caching/middleware)
 ## [Сжатие откликов](xref:performance/response-compression)
+## [Средства диагностики](xref:performance/diagnostic-tools)
 
 # Другие темы
 ## [Глобализация и локализация](xref:fundamentals/localization)
