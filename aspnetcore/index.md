@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 11/16/2018
 uid: index
-ms.openlocfilehash: 708fa3438c9d22a25eae9f37e4d17f69e27d3be9
-ms.sourcegitcommit: 49faca2644590fc081d86db46ea5e29edfc28b7b
+ms.openlocfilehash: fed81090f123084f3f33e75f86d09f55ac7fb481
+ms.sourcegitcommit: a16352c1c88a71770ab3922200a8cd148fb278a6
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 12/09/2018
-ms.locfileid: "53121743"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53335303"
 ---
 # <a name="introduction-to-aspnet-core"></a>Введение в ASP.NET Core
 
@@ -120,7 +120,7 @@ WebHost.CreateDefaultBuilder(args)
 
 Вы можете спокойно проигнорировать или удалить инструкции `#region` и `#end-region` вокруг кода. Не изменяйте код внутри этих инструкций, если планируете запустить примеры сценариев, описанные в разделе. Вы можете изменить код, экспериментируя с другими сценариями.
 
-Дополнительные сведения см. в разделе [Вклад в документацию ASP.NET: фрагменты кода](https://github.com/aspnet/Docs/blob/master/CONTRIBUTING.md#code-snippets).
+Дополнительные сведения см. в разделе[Участие в написании документации ASP.NET: Фрагменты кода](https://github.com/aspnet/Docs/blob/master/CONTRIBUTING.md#code-snippets).
 
 ## <a name="next-steps"></a>Следующие шаги
 
@@ -130,6 +130,3 @@ WebHost.CreateDefaultBuilder(args)
 * <xref:tutorials/publish-to-azure-webapp-using-vs>
 * [Основы ASP.NET Core](xref:fundamentals/index)
 * [В еженедельном выпуске ASP.NET Community Standup](https://live.asp.net/) рассматривается ход работы и планы команды. Помимо этого, публикуются новые блоги и стороннее программное обеспечение.
-
-> [!NOTE]
-> Мы тестируем удобство использования новой предлагаемой структуры оглавления для ASP.NET Core.  Если у вас есть несколько минут, и вы хотите попробовать найти семь разных тем в существующей или планируемой структуре оглавления, [щелкните здесь, чтобы принять участие в исследовании](https://dpk4xbh5.optimalworkshop.com/treejack/aa11wn82).
