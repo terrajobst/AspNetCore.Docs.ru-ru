@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 10/24/2018
 uid: mvc/views/tag-helpers/authoring
-ms.openlocfilehash: 78e5281d109977e8f41fe1f207254d3016f9c569
-ms.sourcegitcommit: c43a6f1fe72d7c2db4b5815fd532f2b45d964e07
+ms.openlocfilehash: 16f3a435af267a5a17a24ee9fbda2b1c7c8818fd
+ms.sourcegitcommit: 49faca2644590fc081d86db46ea5e29edfc28b7b
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50244870"
+ms.lasthandoff: 12/09/2018
+ms.locfileid: "53121626"
 ---
 # <a name="author-tag-helpers-in-aspnet-core"></a>Создание вспомогательных функций тегов в ASP.NET Core
 
@@ -49,7 +49,7 @@ ms.locfileid: "50244870"
 
    [!code-csharp[](authoring/sample/AuthoringTagHelpers/src/AuthoringTagHelpers/TagHelpers/z1EmailTagHelperCopy.cs)]
 
-   * Для вспомогательных функций тегов используется соглашение об именовании в отношении элементов имени корневого класса (за исключением части *TagHelper* этого имени). В этом примере корневым именем класса **Email**TagHelper является *email*, поэтому целевым является тег `<email>`. Это соглашение об именовании подходит для большинства вспомогательных функций тегов, позднее мы покажем, как переопределить его.
+   * Для вспомогательных функций тегов используется соглашение об именовании в отношении элементов имени корневого класса (за исключением части *TagHelper* этого имени). В этом примере корневым именем класса **EmailTagHelper** является *email*, поэтому целевым является тег `<email>`. Это соглашение об именовании подходит для большинства вспомогательных функций тегов, позднее мы покажем, как переопределить его.
 
    * Класс `EmailTagHelper` является производным от класса `TagHelper`. Класс `TagHelper` предоставляет методы и свойства для написания вспомогательных функций тегов.
 

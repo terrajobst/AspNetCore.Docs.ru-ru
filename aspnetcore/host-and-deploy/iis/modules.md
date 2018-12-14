@@ -4,14 +4,14 @@ author: guardrex
 description: Сведения об обнаружении активных и неактивных модулей IIS для приложения ASP.NET Core и управлении модулями IIS.
 ms.author: riande
 ms.custom: mvc
-ms.date: 10/12/2018
+ms.date: 11/30/2018
 uid: host-and-deploy/iis/modules
-ms.openlocfilehash: b417d479d0c3f8b3e739d4c72b52247de0e88e56
-ms.sourcegitcommit: 4bdf7703aed86ebd56b9b4bae9ad5700002af32d
+ms.openlocfilehash: c6a6cc9b6b3410267c6f5034f824648a1ebbe10f
+ms.sourcegitcommit: 9bb58d7c8dad4bbd03419bcc183d027667fefa20
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/15/2018
-ms.locfileid: "49325956"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52862243"
 ---
 # <a name="iis-modules-with-aspnet-core"></a>Модули IIS с ASP.NET Core
 
@@ -21,7 +21,7 @@ ms.locfileid: "49325956"
 
 ## <a name="native-modules"></a>Собственные модули
 
-В этой таблице перечислены собственные модули IIS, которые доступны в приложениях ASP.NET Core при обработке запросов обратного прокси-сервера.
+В этой таблице перечислены собственные модули IIS, которые работают с приложениями ASP.NET Core и модулем ASP.NET Core.
 
 | Module | Доступность для приложений ASP.NET Core | Вариант ASP.NET Core |
 | --- | :---: | --- |

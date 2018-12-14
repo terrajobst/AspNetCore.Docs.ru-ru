@@ -4,14 +4,14 @@ author: guardrex
 description: Сведения о настройке модуля ASP.NET Core для размещения приложений ASP.NET Core.
 ms.author: riande
 ms.custom: mvc
-ms.date: 11/12/2018
+ms.date: 12/06/2018
 uid: host-and-deploy/aspnet-core-module
-ms.openlocfilehash: 5a3fd9c3453c07ee550c7de0333c9a49d5d5d1af
-ms.sourcegitcommit: e9b99854b0a8021dafabee0db5e1338067f250a9
+ms.openlocfilehash: 0ad73d89ffa3a8a3625c6e248efaad821e1b4d0a
+ms.sourcegitcommit: 49faca2644590fc081d86db46ea5e29edfc28b7b
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52450662"
+ms.lasthandoff: 12/09/2018
+ms.locfileid: "53121561"
 ---
 # <a name="aspnet-core-module-configuration-reference"></a>Справочник по конфигурации модуля ASP.NET Core
 
@@ -27,17 +27,17 @@ ms.locfileid: "52450662"
 
 Внутрипроцессное размещение необходимо явно выбирать в существующих приложениях, но в шаблонах [dotnet new](/dotnet/core/tools/dotnet-new) оно включено по умолчанию для всех сценариев IIS и IIS Express.
 
-Чтобы настроить приложение для внутрипроцессного размещения, добавьте свойство `<AspNetCoreHostingModel>` в файл проекта приложения (например, *MyApp.csproj*) со значением `inprocess` (размещение вне процесса имеет значение `outofprocess`):
+Чтобы настроить приложение для внутрипроцессного размещения, добавьте свойство `<AspNetCoreHostingModel>` в файл проекта приложения (например, *MyApp.csproj*) со значением `InProcess` (размещение вне процесса имеет значение `outofprocess`):
 
 ```xml
 <PropertyGroup>
-  <AspNetCoreHostingModel>inprocess</AspNetCoreHostingModel>
+  <AspNetCoreHostingModel>InProcess</AspNetCoreHostingModel>
 </PropertyGroup>
 ```
 
 При внутрипроцессном размещении применимы следующие характеристики:
 
-* [Сервер Kestrel](xref:fundamentals/servers/kestrel) не используется. Пользовательская реализация <xref:Microsoft.AspNetCore.Hosting.Server.IServer> `IISHttpServer` выступает в качестве сервера приложения.
+* Вместо сервера [Kestrel](xref:fundamentals/servers/kestrel) используется HTTP-сервер IIS (`IISHttpServer`). HTTP-сервер IIS (`IISHttpServer`) — это альтернативная реализация <xref:Microsoft.AspNetCore.Hosting.Server.IServer>, которая преобразует собственные запросы IIS в управляемые запросы ASP.NET Core для обработки приложением.
 
 * [Атрибут requestTimeout](#attributes-of-the-aspnetcore-element) не применяется к внутрипроцессному размещению.
 
@@ -51,7 +51,9 @@ ms.locfileid: "52450662"
 
 * Обнаружены отключения клиентов. При отключении клиента происходит отмена токена отмены [HttpContext.RequestAborted](xref:Microsoft.AspNetCore.Http.HttpContext.RequestAborted*).
 
-* `Directory.GetCurrentDirectory()` возвращает рабочий каталог процесса, запущенного службами IIS, а не каталог приложения (например, *C:\Windows\System32\inetsrv* для *w3wp.exe*).
+* <xref:System.IO.Directory.GetCurrentDirectory*> возвращает рабочий каталог процесса, запущенного службами IIS, а не каталог приложения (например, *C:\Windows\System32\inetsrv* для *w3wp.exe*).
+
+  Пример кода, который задает текущий каталог приложения, см. в разделе [Класс CurrentDirectoryHelpers](https://github.com/aspnet/Docs/tree/master/aspnetcore/host-and-deploy/aspnet-core-module/samples_snapshot/2.x/CurrentDirectoryHelpers.cs). Вызовите метод `SetCurrentDirectory`. Последующие вызовы <xref:System.IO.Directory.GetCurrentDirectory*> возвращают каталог приложения.
 
 ### <a name="hosting-model-changes"></a>Изменения модели размещения
 
@@ -85,7 +87,7 @@ ms.locfileid: "52450662"
                   arguments=".\MyApp.dll" 
                   stdoutLogEnabled="false" 
                   stdoutLogFile=".\logs\stdout" 
-                  hostingModel="inprocess" />
+                  hostingModel="InProcess" />
     </system.webServer>
   </location>
 </configuration>
@@ -127,7 +129,7 @@ ms.locfileid: "52450662"
       <aspNetCore processPath=".\MyApp.exe" 
                   stdoutLogEnabled="false" 
                   stdoutLogFile=".\logs\stdout" 
-                  hostingModel="inprocess" />
+                  hostingModel="InProcess" />
     </system.webServer>
   </location>
 </configuration>
@@ -163,12 +165,12 @@ ms.locfileid: "52450662"
 
 ::: moniker range=">= aspnetcore-2.2"
 
-| Атрибут | Описание: | Значение по умолчанию |
+| Атрибут | Описание | Значение по умолчанию |
 | --------- | ----------- | :-----: |
 | `arguments` | <p>Необязательный строковый атрибут.</p><p>Аргументы для исполняемого файла, указанного в атрибуте **processPath**.</p> | |
 | `disableStartUpErrorPage` | <p>Дополнительный логический атрибут.</p><p>Если значение равно true, страница **502.5 — ошибка процесса** подавляется и страница в файле *web.config* с кодом состояния 502 имеет более высокий приоритет.</p> | `false` |
 | `forwardWindowsAuthToken` | <p>Дополнительный логический атрибут.</p><p>Если значение равно true, маркер безопасности отправляется дочернему процессу, прослушивающему порт %ASPNETCORE_PORT% как заголовок "MS-ASPNETCORE-WINAUTHTOKEN" каждого запроса. Этот процесс вызывает CloseHandle по этому маркеру безопасности каждого запроса.</p> | `true` |
-| `hostingModel` | <p>Необязательный строковый атрибут.</p><p>Указывает модель размещения — внутри процесса (`inprocess`) или вне процесса (`outofprocess`).</p> | `outofprocess` |
+| `hostingModel` | <p>Необязательный строковый атрибут.</p><p>Указывает модель размещения — внутри процесса (`InProcess`) или вне процесса (`OutOfProcess`).</p> | `OutOfProcess` |
 | `processesPerApplication` | <p>Необязательный целочисленный атрибут.</p><p>Указывает число экземпляров процесса, заданное в параметре **processPath**, которое может появиться для каждого приложения.</p><p>&dagger;Для внутрипроцессного размещения существует ограничение: `1`.</p> | По умолчанию: `1`<br>Минимум: `1`<br>Максимум: `100`&dagger; |
 | `processPath` | <p>Обязательный строковый атрибут.</p><p>Путь к исполняемому файлу, который запускает процесс прослушивания HTTP-запросов. Поддерживаются относительные пути. Если путь начинается с `.`, то начало пути считается относительно корневого каталога веб-сайта.</p> | |
 | `rapidFailsPerMinute` | <p>Необязательный целочисленный атрибут.</p><p>Указывает количество сбоев за минуту, которыми может завершиться процесс, указанный в **processPath**. Если этот предел превышен, модуль останавливает запуск процесса на оставшуюся часть минуты.</p><p>Не поддерживается для внутрипроцессного размещения.</p> | По умолчанию: `10`<br>Минимум: `0`<br>Максимум: `100` |
@@ -229,7 +231,7 @@ ms.locfileid: "52450662"
       arguments=".\MyApp.dll"
       stdoutLogEnabled="false"
       stdoutLogFile="\\?\%home%\LogFiles\stdout"
-      hostingModel="inprocess">
+      hostingModel="InProcess">
   <environmentVariables>
     <environmentVariable name="ASPNETCORE_ENVIRONMENT" value="Development" />
     <environmentVariable name="CONFIG_DIR" value="f:\application_config" />
@@ -319,7 +321,7 @@ ms.locfileid: "52450662"
     arguments=".\MyApp.dll"
     stdoutLogEnabled="true"
     stdoutLogFile="\\?\%home%\LogFiles\stdout"
-    hostingModel="inprocess">
+    hostingModel="InProcess">
 </aspNetCore>
 ```
 
@@ -348,7 +350,7 @@ ms.locfileid: "52450662"
     arguments=".\MyApp.dll"
     stdoutLogEnabled="false"
     stdoutLogFile="\\?\%home%\LogFiles\stdout"
-    hostingModel="inprocess">
+    hostingModel="InProcess">
   <handlerSettings>
     <handlerSetting name="debugFile" value="aspnetcore-debug.log" />
     <handlerSetting name="debugLevel" value="FILE,TRACE" />

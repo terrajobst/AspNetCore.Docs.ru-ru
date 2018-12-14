@@ -2,17 +2,17 @@
 title: Добавление проверки на страницу Razor в ASP.NET Core
 author: rick-anderson
 description: Практическое руководство по добавлению проверки на страницу Razor в ASP.NET Core.
-monikerRange: '>= aspnetcore-2.0'
+monikerRange: '>= aspnetcore-2.2'
 ms.author: riande
 ms.custom: mvc
-ms.date: 10/24/2018
+ms.date: 12/5/2018
 uid: tutorials/razor-pages/validation
-ms.openlocfilehash: d4cc0ab9de314c0c5a1a9016efd1e566ff1c47d2
-ms.sourcegitcommit: edb9d2d78c9a4d68b397e74ae2aff088b325a143
+ms.openlocfilehash: 87171beb7c214b1370d4d4144a79cb6d2c56098f
+ms.sourcegitcommit: 9bb58d7c8dad4bbd03419bcc183d027667fefa20
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51505782"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52862373"
 ---
 # <a name="add-validation-to-an-aspnet-core-razor-page"></a>Добавление проверки на страницу Razor в ASP.NET Core
 
@@ -22,7 +22,10 @@ ms.locfileid: "51505782"
 
 ## <a name="validation"></a>Проверка
 
-Ключевой принцип разработки программного обеспечения называется [DRY](https://wikipedia.org/wiki/Don%27t_repeat_yourself) (от английского "**D**on't **R**epeat **Y**ourself" — не повторяйся). При разработке страниц Razor Pages рекомендуется задавать любые функциональные возможности лишь один раз и затем при необходимости отражать их в рамках всего приложения. Этот принцип направлен на сокращение объема кода в приложении. Следуя ему, вы снижаете вероятность возникновения ошибки в коде и упрощаете его тестирование и поддержку.
+Ключевой принцип разработки программного обеспечения называется [DRY](https://wikipedia.org/wiki/Don%27t_repeat_yourself) (от английского "**D**on't **R**epeat **Y**ourself" — не повторяйся). При разработке страниц Razor Pages рекомендуется задавать любые функциональные возможности лишь один раз и затем при необходимости отражать их в рамках всего приложения. Принцип "Не повторяйся" может помочь:
+
+* сократить объем кода в приложении;
+* снизить вероятность возникновения ошибки в коде и упростить его тестирование и поддержку.
 
 Ярким примером применения принципа "Не повторяйся" является поддержка проверки, реализуемая на страницах Razor и на платформе Entity Framework. Правила проверки декларативно определяются в одном месте (в классе модели) и затем применяются в рамках всего приложения.
 
@@ -32,17 +35,7 @@ ms.locfileid: "51505782"
 
 Обновите класс `Movie`, чтобы использовать преимущества атрибутов проверки `Required`, `StringLength`, `RegularExpression` и `Range`.
 
-::: moniker range="= aspnetcore-2.0"
-
-[!code-csharp[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie/Models/MovieDateRatingDA.cs?name=snippet1)]
-
-::: moniker-end
-
-::: moniker range=">= aspnetcore-2.1"
-
-[!code-csharp[](~/tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie21/Models/MovieDateRatingDA.cs?name=snippet1)]
-
-::: moniker-end
+[!code-csharp[](~/tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie22/Models/MovieDateRatingDA.cs?name=snippet1)]
 
 Атрибуты проверки определяют поведение, которое применяется к свойствам модели.
 
@@ -113,11 +106,8 @@ ms.locfileid: "51505782"
 
 `DataType.Date` не задает формат отображаемой даты. По умолчанию поле данных отображается с использованием форматов, установленных в параметрах `CultureInfo` сервера.
 
-::: moniker range=">= aspnetcore-2.1"
 
 Требуются заметки к данным `[Column(TypeName = "decimal(18, 2)")]`, чтобы Entity Framework Core корректно сопоставила `Price` с валютой в базе данных. Дополнительные сведения см. в разделе [Типы данных](/ef/core/modeling/relational/data-types).
-
-::: moniker-end
 
 С помощью атрибута `DisplayFormat` можно явно указать формат даты:
 
@@ -144,17 +134,7 @@ public DateTime ReleaseDate { get; set; }
 
 В следующем коде демонстрируется объединение атрибутов в одной строке:
 
-::: moniker range="= aspnetcore-2.0"
-
-[!code-csharp[](razor-pages-start/sample/RazorPagesMovie/Models/MovieDateRatingDAmult.cs?name=snippet1)]
-
-::: moniker-end
-
-::: moniker range=">= aspnetcore-2.1"
-
-[!code-csharp[](razor-pages-start/sample/RazorPagesMovie21/Models/MovieDateRatingDAmult.cs?name=snippet1)]
-
-::: moniker-end
+[!code-csharp[](razor-pages-start/sample/RazorPagesMovie22/Models/MovieDateRatingDAmult.cs?name=snippet1)]
 
 Дополнительные операции EF Core с Razor Pages см. в статье [Начало работы с Razor Pages и EF Core](xref:data/ef-rp/intro).
 

@@ -4,14 +4,14 @@ author: shirhatti
 description: Узнайте о поддерживаемых возможностях для отладки приложений ASP.NET Core, выполняемых в службах IIS на Windows Server.
 ms.author: riande
 ms.custom: mvc
-ms.date: 11/26/2018
+ms.date: 11/30/2018
 uid: host-and-deploy/iis/development-time-iis-support
-ms.openlocfilehash: 65dbe690a33d82a4edddf315803dc4c656db27a0
-ms.sourcegitcommit: e8d80ff566bfe505b43389d7bc4551edb1c0c872
+ms.openlocfilehash: 51375e6a6bb25a469d467ca97a151abd305c1ece
+ms.sourcegitcommit: 9bb58d7c8dad4bbd03419bcc183d027667fefa20
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52549108"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52862386"
 ---
 # <a name="development-time-iis-support-in-visual-studio-for-aspnet-core"></a>Поддержка служб IIS во время разработки в Visual Studio для ASP.NET Core
 
@@ -54,7 +54,7 @@ ms.locfileid: "52549108"
 ## <a name="enable-development-time-iis-support-in-visual-studio"></a>Включение поддержки служб IIS в Visual Studio во время разработки
 
 1. Запустите установщик Visual Studio.
-1. Выберите компонент **поддержки IIS во время разработки**. Этот компонент указан как дополнительный на панели **Сводка** для рабочей нагрузки **ASP.NET и веб-разработки**. С помощью выбранного компонента будет установлен [модуль ASP.NET Core](xref:fundamentals/servers/aspnet-core-module). Это собственный модуль IIS, который необходим для запуска приложений ASP.NET Core за IIS в конфигурации обратного прокси-сервера.
+1. Выберите компонент **поддержки IIS во время разработки**. Этот компонент указан как дополнительный на панели **Сводка** для рабочей нагрузки **ASP.NET и веб-разработки**. Этот компонент выполнит установку [модуля ASP.NET Core](xref:fundamentals/servers/aspnet-core-module), который является собственным модулем IIS, необходимым для запуска приложений ASP.NET Core со службами IIS.
 
 ![Изменение функций Visual Studio: выбрана вкладка "Рабочие нагрузки". В разделе "Интернет и облако" выбрана панель "ASP.NET и веб-разработка". Флажок поддержки IIS во время разработки, отображающийся в правой части области "Дополнительно" на панели "Сводка".](development-time-iis-support/_static/development_time_support.png)
 

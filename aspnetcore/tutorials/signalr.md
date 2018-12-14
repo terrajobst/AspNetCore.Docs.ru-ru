@@ -5,14 +5,14 @@ description: В этом руководстве создается прилож�
 monikerRange: '>= aspnetcore-2.1'
 ms.author: tdykstra
 ms.custom: mvc
-ms.date: 11/13/2018
+ms.date: 11/30/2018
 uid: tutorials/signalr
-ms.openlocfilehash: 190717dc6e6f9f2766ba92aa7472f4cdea9b6827
-ms.sourcegitcommit: e7fafb153b9de7595c2558a0133f8d1c33a3bddb
+ms.openlocfilehash: c52041b34d6c9d1d8f06f980c900b805a0933293
+ms.sourcegitcommit: 9bb58d7c8dad4bbd03419bcc183d027667fefa20
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52458534"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52861991"
 ---
 # <a name="tutorial-get-started-with-aspnet-core-signalr"></a>Руководство. Начало работы с SignalR ASP.NET Core
 
@@ -32,27 +32,10 @@ ms.locfileid: "52458534"
 [Просмотреть или скачать пример кода](https://github.com/aspnet/Docs/tree/master/aspnetcore/tutorials/signalr/sample) ([описание скачивания](xref:index#how-to-download-a-sample)).
 
 > [!NOTE]
-> Мы тестируем удобство использования новой предлагаемой структуры оглавления для ASP.NET Core.  Если у вас есть несколько минут, и вы хотите попробовать найти семь разных тем в существующей или планируемой структуре оглавления, [щелкните здесь, чтобы принять участие в исследовании](https://dpk4xbh5.optimalworkshop.com/treejack/rps16hd5).
+> Мы тестируем удобство использования новой предлагаемой структуры оглавления для ASP.NET Core.  Если у вас есть несколько минут, и вы хотите попробовать найти семь разных тем в существующей или планируемой структуре оглавления, [щелкните здесь, чтобы принять участие в исследовании](https://dpk4xbh5.optimalworkshop.com/treejack/aa11wn82).
 
-## <a name="prerequisites"></a>Предварительные требования
 
-# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
-
-* [Visual Studio 2017 15.8 или более поздней версии](https://www.visualstudio.com/downloads/) с рабочей нагрузкой **ASP.NET и веб-разработка**
-* [Пакет SDK для .NET Core 2.1.или более поздней версии](https://www.microsoft.com/net/download/all)
-
-# <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code.](#tab/visual-studio-code)
-
-* [Visual Studio Code.](https://code.visualstudio.com/download)
-* [Пакет SDK для .NET Core 2.1.или более поздней версии](https://www.microsoft.com/net/download/all)
-* [C# для Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp)
-
-# <a name="visual-studio-for-mactabvisual-studio-mac"></a>[Visual Studio для Mac](#tab/visual-studio-mac)
-
-* [Visual Studio для Mac 7.5.4 или более поздней версии](https://www.visualstudio.com/downloads/)
-* [Пакет SDK для .NET Core 2.1 или более поздней версии](https://www.microsoft.com/net/download/all) (входит в установку Visual Studio)
-
----
+[!INCLUDE [|Prerequisites](~/includes/net-core-prereqs-all-2.2.md)]
 
 ## <a name="create-a-web-project"></a>Создайте веб-проект.
 
@@ -66,7 +49,7 @@ ms.locfileid: "52458534"
 
 * Выберите **Веб-приложение**, чтобы создать проект, который использует Razor Pages.
 
-* Выберите целевую платформу **.NET Core**, **ASP.NET Core 2.1** и нажмите кнопку **ОК**.
+* Выберите целевую платформу **.NET Core**, **ASP.NET Core 2.2** и нажмите кнопку **ОК**.
 
   ![Диалоговое окно создания проекта в Visual Studio](signalr/_static/signalr-new-project-choose-type.png)
 

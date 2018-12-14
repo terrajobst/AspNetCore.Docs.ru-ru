@@ -4,29 +4,29 @@ description: Процедура настройки Apache в качестве о
 author: spboyer
 ms.author: spboyer
 ms.custom: mvc
-ms.date: 11/26/2018
+ms.date: 12/01/2018
 uid: host-and-deploy/linux-apache
-ms.openlocfilehash: d0e36d0a73df43a26c03dc4154962240683817b5
-ms.sourcegitcommit: e9b99854b0a8021dafabee0db5e1338067f250a9
+ms.openlocfilehash: 46cdb764b872e86f0fd7d19133aae14891bdd452
+ms.sourcegitcommit: 9bb58d7c8dad4bbd03419bcc183d027667fefa20
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52450818"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52862464"
 ---
 # <a name="host-aspnet-core-on-linux-with-apache"></a>Размещение ASP.NET Core в операционной системе Linux с Apache
 
 Автор: [Шейн Бойер (Shayne Boyer)](https://github.com/spboyer)
 
-Из этого руководства вы узнаете, как настроить [Apache](https://httpd.apache.org/) в качестве обратного прокси-сервера в [CentOS 7](https://www.centos.org/) для перенаправления трафика HTTP в веб-приложение ASP.NET Core, выполняемое в [Kestrel](xref:fundamentals/servers/kestrel). [Расширение mod_proxy](http://httpd.apache.org/docs/2.4/mod/mod_proxy.html) и связанные с ним модули создают обратный прокси-сервер.
+Из этого руководства вы узнаете, как настроить [Apache](https://httpd.apache.org/) в качестве обратного прокси-сервера в [CentOS 7](https://www.centos.org/) для перенаправления трафика HTTP в веб-приложение ASP.NET Core, выполняемое на сервере [Kestrel](xref:fundamentals/servers/kestrel). [Расширение mod_proxy](http://httpd.apache.org/docs/2.4/mod/mod_proxy.html) и связанные с ним модули создают обратный прокси-сервер.
 
 ## <a name="prerequisites"></a>Предварительные требования
 
-1. Сервер под управлением CentOS 7 и учетная запись обычного пользователя с правами sudo.
-1. Установите среду выполнения .NET Core на сервере.
+* Сервер под управлением CentOS 7 и учетная запись обычного пользователя с правами sudo.
+* Установите среду выполнения .NET Core на сервере.
    1. Перейдите на [страницу всех загрузок .NET Core](https://www.microsoft.com/net/download/all).
    1. Выберите последнюю не предварительную версию среды выполнения из списка под заголовком **Среда выполнения**.
    1. Сделайте выбор и следуйте инструкциям для CentOS/Oracle.
-1. Существующее приложение ASP.NET Core.
+* Существующее приложение ASP.NET Core.
 
 ## <a name="publish-and-copy-over-the-app"></a>Публикация и копирование приложения
 

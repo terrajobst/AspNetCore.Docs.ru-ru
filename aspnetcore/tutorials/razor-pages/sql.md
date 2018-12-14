@@ -1,50 +1,79 @@
 ---
-title: Работа с SQL Server LocalDB и ASP.NET Core
+title: Работа с базой данных и ASP.NET Core
 author: rick-anderson
-description: Описывается работа с SQL Server LocalDB и ASP.NET Core.
-monikerRange: '>= aspnetcore-2.0'
+description: В этой статье описывается работа с базой данных и ASP.NET Core.
+monikerRange: '>= aspnetcore-2.2'
 ms.author: riande
-ms.date: 08/07/2017
+ms.date: 12/07/2017
 uid: tutorials/razor-pages/sql
-ms.openlocfilehash: 20e2353eb2e453235c2fb04c696a7e3d27bed5bf
-ms.sourcegitcommit: b2723654af4969a24545f09ebe32004cb5e84a96
+ms.openlocfilehash: 817102a7b89ef4f078d7d0a0bf03ba7cb2745a5d
+ms.sourcegitcommit: 9bb58d7c8dad4bbd03419bcc183d027667fefa20
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46011278"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52861281"
 ---
-# <a name="work-with-sql-server-localdb-and-aspnet-core"></a>Работа с SQL Server LocalDB и ASP.NET Core
+# <a name="work-with-a-database-and-aspnet-core"></a>Работа с базой данных и ASP.NET Core
 
-Авторы: [Рик Андерсон](https://twitter.com/RickAndMSFT) (Rick Anderson) и [Джо Одетт](https://twitter.com/joeaudette) (Joe Audette) 
+Авторы: [Рик Андерсон](https://twitter.com/RickAndMSFT) (Rick Anderson) и [Джо Одетт](https://twitter.com/joeaudette) (Joe Audette)
 
-Объект `MovieContext` обрабатывает задачу подключения к базе данных и сопоставления объектов `Movie` с записями базы данных. Контекст базы данных регистрируется с помощью контейнера [внедрения зависимостей](xref:fundamentals/dependency-injection) в методе `ConfigureServices` в файле *Startup.cs*:
+[!INCLUDE[](~/includes/rp/download.md)]
 
-::: moniker range="= aspnetcore-2.0"
+Объект `RazorPagesMovieContext` обрабатывает задачу подключения к базе данных и сопоставления объектов `Movie` с записями базы данных. Контекст базы данных регистрируется с помощью контейнера [внедрения зависимостей](xref:fundamentals/dependency-injection) в методе `ConfigureServices` в файле *Startup.cs*:
 
-[!code-csharp[](razor-pages-start/sample/RazorPagesMovie/Startup.cs?name=snippet_ConfigureServices&highlight=7-8)]
+<!-- VS -------------------------->
+# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-::: moniker-end
+[!code-csharp[](razor-pages-start/sample/RazorPagesMovie22/Startup.cs?name=snippet_ConfigureServices&highlight=15-18)]
 
-::: moniker range=">= aspnetcore-2.1"
+<!-- Code -------------------------->
+# <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code.](#tab/visual-studio-code)
 
-[!code-csharp[](razor-pages-start/sample/RazorPagesMovie21/Startup.cs?name=snippet_ConfigureServices&highlight=12-13)]
+[!code-csharp[](razor-pages-start/sample/RazorPagesMovie22/Startup.cs?name=snippet_UseSqlite&highlight=11-12)]
+
+<!-- Mac -------------------------->
+# <a name="visual-studio-for-mactabvisual-studio-mac"></a>[Visual Studio для Mac](#tab/visual-studio-mac)
+
+[!code-csharp[](razor-pages-start/sample/RazorPagesMovie22/Startup.cs?name=snippet_UseSqlite&highlight=11-12)]
+
+---  
+<!-- End of VS tabs -->
 
 Дополнительные сведения о методах, которые используются в `ConfigureServices`, см.:
 
 * [Общий регламент по защите данных (GDPR), принятый в ЕС, в ASP.NET Core](xref:security/gdpr) для `CookiePolicyOptions`.
 * [SetCompatibilityVersion](xref:mvc/compatibility-version)
 
-::: moniker-end
+Система [конфигурации](xref:fundamentals/configuration/index) ASP.NET Core считывает `ConnectionString`. Для разработки на локальном уровне она получает строку подключения из файла *appsettings.json*.
 
-Система [конфигурации](xref:fundamentals/configuration/index) ASP.NET Core считывает `ConnectionString`. Для разработки на локальном уровне она получает строку подключения из файла *appsettings.json*. Значение имени для базы данных (`Database={Database name}`) будет отличаться для созданного кода. Значение имени является произвольным.
+<!-- VS -------------------------->
+# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-[!code-json[](razor-pages-start/sample/RazorPagesMovie/appsettings.json?highlight=2&range=8-10)]
+Значение имени для базы данных (`Database={Database name}`) будет отличаться для созданного кода. Значение имени является произвольным.
 
-При развертывании приложения на тестовом или рабочем сервере вы можете использовать переменную среды или другой способ настройки строки подключения к реальному серверу SQL Server. Дополнительные сведения см. в статье [Конфигурация](xref:fundamentals/configuration/index).
+[!code-json[](razor-pages-start/sample/RazorPagesMovie22/appsettings.json)]
+
+<!-- Code -------------------------->
+# <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code.](#tab/visual-studio-code)
+
+[!code-json[](~/tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie/appsettings_SQLite.json?highlight=8-10)]
+
+<!-- Mac -------------------------->
+# <a name="visual-studio-for-mactabvisual-studio-mac"></a>[Visual Studio для Mac](#tab/visual-studio-mac)
+
+[!code-json[](~/tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie/appsettings_SQLite.json?highlight=8-10)]
+
+---  
+<!-- End of VS tabs -->
+
+Если приложение развертывается на тестовом или рабочем сервере, можно задать строку подключения к реальному серверу базы данных с помощью переменной среды. Дополнительные сведения см. в статье [Конфигурация](xref:fundamentals/configuration/index).
+
+<!-- VS -------------------------->
+# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 ## <a name="sql-server-express-localdb"></a>SQL Server Express LocalDB
 
-LocalDB — это упрощенная версия ядра СУБД SQL Server Express, предназначенная для разработки программ. LocalDB запускается по запросу в пользовательском режиме, поэтому настройки не слишком сложны. По умолчанию база данных LocalDB создает файлы \*.mdf в каталоге *C:/Users/\<пользователь\>*.
+LocalDB — это упрощенная версия ядра СУБД SQL Server Express, предназначенная для разработки программ. LocalDB запускается по запросу в пользовательском режиме, поэтому настройки не слишком сложны. По умолчанию база данных LocalDB создает файлы `*.mdf` в каталоге `C:/Users/<user/>`.
 
 <a name="ssox"></a>
 * В меню **Вид** откройте **обозреватель объектов SQL Server** (SSOX).
@@ -62,22 +91,24 @@ LocalDB — это упрощенная версия ядра СУБД SQL Serv
 * Щелкните правой кнопкой мыши таблицу `Movie` и выберите пункт **Просмотреть данные**.
 
   ![Открытая таблица Movie с отображением данных](sql/_static/vd22.png)
+<!-- Code -------------------------->
+# <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code.](#tab/visual-studio-code)
+
+[!INCLUDE[](~/includes/rp/sqlite.md)]
+
+<!-- Mac -------------------------->
+# <a name="visual-studio-for-mactabvisual-studio-mac"></a>[Visual Studio для Mac](#tab/visual-studio-mac)
+
+[!INCLUDE[](~/includes/rp/sqlite.md)]
+
+---  
+<!-- End of VS tabs -->
 
 ## <a name="seed-the-database"></a>Заполнение базы данных
 
-Создайте класс `SeedData` в папке *Models*. Замените сгенерированный код следующим кодом:
+Создайте класс `SeedData` в папке *Models* со следующим кодом:
 
-::: moniker range="= aspnetcore-2.0"
-
-[!code-csharp[](razor-pages-start/sample/RazorPagesMovie/Models/SeedData.cs?name=snippet_1)]
-
-::: moniker-end
-
-::: moniker range=">= aspnetcore-2.1"
-
-[!code-csharp[](razor-pages-start/sample/RazorPagesMovie21/Models/SeedData.cs?name=snippet_1)]
-
-::: moniker-end
+[!code-csharp[](razor-pages-start/sample/RazorPagesMovie22/Models/SeedData.cs?name=snippet_1)]
 
 Если в базе данных есть фильмы, возвращается инициализатор заполнения и фильмы не добавляются.
 
@@ -98,17 +129,7 @@ if (context.Movie.Any())
 
 В следующем примере кода показан обновленный файл *Program.cs*.
 
-::: moniker range="= aspnetcore-2.0"
-
-[!code-csharp[](razor-pages-start/sample/RazorPagesMovie/Program.cs)]
-
-::: moniker-end
-
-::: moniker range=">= aspnetcore-2.1"
-
-[!code-csharp[](razor-pages-start/sample/RazorPagesMovie21/Program.cs)]
-
-::: moniker-end
+[!code-csharp[](razor-pages-start/sample/RazorPagesMovie22/Program.cs)]
 
 Рабочее приложение не вызывает `Database.Migrate`. Он добавляется в предыдущем коде, чтобы предотвратить следующее исключение, если `Update-Database` не был запущен.
 
@@ -116,6 +137,9 @@ SqlException: не удается открыть базу данных RazorPage
 Сбой при входе в систему пользователя user name.
 
 ### <a name="test-the-app"></a>Тестирование приложения
+
+<!-- VS -------------------------->
+# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 * Удалите все записи из базы данных. Это можно сделать с помощью ссылок удаления в браузере или из [SSOX](xref:tutorials/razor-pages/new-field#ssox).
 * Необходимо выполнить инициализацию (вызывать методы в классе `Startup`), чтобы запустить метод заполнения. Для этого следует остановить и перезапустить IIS Express. Воспользуйтесь одним из перечисленных ниже подходов.
@@ -128,6 +152,25 @@ SqlException: не удается открыть базу данных RazorPage
 
     * Если среда Visual Studio была запущена в режиме без отладки, нажмите клавишу F5 для запуска в режиме отладки.
     * Если среда Visual Studio была запущена в режиме отладки, остановите отладчик и нажмите клавишу F5.
+
+<!-- Code -------------------------->
+# <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code.](#tab/visual-studio-code)
+
+Удалите все записи в базе данных для запуска метода заполнения. Остановите и запустите приложение, чтобы начать заполнение базы данных.
+
+В приложении будут отображены данные.
+
+<!-- Mac -------------------------->
+# <a name="visual-studio-for-mactabvisual-studio-mac"></a>[Visual Studio для Mac](#tab/visual-studio-mac)
+
+Удалите все записи в базе данных для запуска метода заполнения. Остановите и запустите приложение, чтобы начать заполнение базы данных.
+
+В приложении будут отображены данные.
+
+---  
+<!-- End of VS tabs -->
+
+
    
 В приложении отображаются заполненные данные.
 

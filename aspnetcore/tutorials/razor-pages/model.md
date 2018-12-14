@@ -3,43 +3,90 @@ title: Добавление модели в приложение Razor Pages в 
 author: rick-anderson
 description: Узнайте, как добавлять классы для управления фильмами в базе данных с использованием Entity Framework Core (EF Core).
 ms.author: riande
-ms.date: 05/30/2018
+monikerRange: '>= aspnetcore-2.2'
+ms.date: 12/3/2018
 uid: tutorials/razor-pages/model
-ms.openlocfilehash: 0d33901805d6728fb8006f14d41090b874ab28b1
-ms.sourcegitcommit: e8d80ff566bfe505b43389d7bc4551edb1c0c872
+ms.openlocfilehash: 91fee1db820493be671fecaee3cfb4c1b7df8bd3
+ms.sourcegitcommit: 49faca2644590fc081d86db46ea5e29edfc28b7b
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52549124"
+ms.lasthandoff: 12/09/2018
+ms.locfileid: "53121367"
 ---
 # <a name="add-a-model-to-a-razor-pages-app-in-aspnet-core"></a>Добавление модели в приложение Razor Pages в ASP.NET Core
 
-::: moniker range=">= aspnetcore-2.1"
+Автор: [Рик Андерсон](https://twitter.com/RickAndMSFT) (Rick Anderson)
 
-[!INCLUDE [model1](~/includes/RP/model1.md)]
+[!INCLUDE[](~/includes/rp/download.md)]
+
+В этом разделе добавляются классы для управления фильмами в базе данных. Эти классы используются в [Entity Framework Core](/ef/core) (EF Core) для работы с базой данных. EF Core —это платформа объектно-реляционного сопоставления (ORM), которая позволяет упростить необходимый код доступа к данным.
+
+Эти классы моделей называются классами POCO (от plain old CLR objects — "старые добрые объекты CLR"), так как они не зависят от EF Core. Эти классы определяют свойства данных, которые хранятся в базе данных.
+
+[Просмотрите или скачайте](https://github.com/aspnet/Docs/tree/master/aspnetcore/tutorials/razor-pages-start/sample/) пример.
 
 ## <a name="add-a-data-model"></a>Добавление модели данных
 
-В обозревателе решений щелкните проект **RazorPagesMovie** правой кнопкой мыши и выберите пункт **Добавить** > **Новая папка**. Присвойте папке имя *Models*.
+<!-- VS -------------------------->
 
-Щелкните правой кнопкой мыши папку *Models*. Выберите **Добавить** > **Класс**. Назначьте классу имя **Movie** и замените содержимое класса `Movie` следующим кодом:
+# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-[!code-csharp[Main](razor-pages-start/sample/RazorPagesMovie21/Models/Movie1.cs?name=snippet)]
+Щелкните проект **RazorPagesMovie** правой кнопкой мыши и выберите пункт **Добавить** > **Новая папка**. Присвойте папке имя *Models*.
+
+Щелкните правой кнопкой мыши папку *Models*. Выберите **Добавить** > **Класс**. Присвойте классу имя **Movie**.
+
+[!INCLUDE [model 1b](~/includes/RP/model1b.md)]
+
+<!-- Code -------------------------->
+
+# <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code.](#tab/visual-studio-code)
+
+* Добавьте папку с именем *Models*.
+* Добавьте класс в папку *Models* с именем *Movie.cs*.
+
+[!INCLUDE [model 1b](~/includes/RP/model1b.md)]
+
+[!INCLUDE [model 2](~/includes/RP/model2.md)]
+
+<!-- Mac -------------------------->
+# <a name="visual-studio-for-mactabvisual-studio-mac"></a>[Visual Studio для Mac](#tab/visual-studio-mac)
+
+* В обозревателе решений щелкните проект **RazorPagesMovie** правой кнопкой мыши, выберите пункт **Добавить** > **Новая папка**. Присвойте папке имя *Models*.
+* Щелкните папку *Models* правой кнопкой мыши и выберите пункт **Добавить** > **Новый файл**.
+* В диалоговом окне **Новый файл** выполните следующие действия.
+
+  * Выберите на левой панели пункт **Общие**.
+  * Выберите в центральной области **Пустой класс**.
+  * Назовите класс **Movie** и выберите **Создать**.
+
+[!INCLUDE [model 1b](~/includes/RP/model1b.md)]
+
+[!INCLUDE [model 2](~/includes/RP/model2.md)]
+
+<!-- End of VS tabs -->
+
+---
+
+Выполните сборку проекта, чтобы убедиться в отсутствии ошибок компиляции.
 
 ## <a name="scaffold-the-movie-model"></a>Создание модели фильма
 
 В этом разделе создается модель фильма. То есть средство формирования шаблонов создает страницы для операций создания, чтения, обновления и удаления для модели фильма.
 
+<!-- VS -------------------------->
+
+# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
+
 Создайте папку *Pages/Movies*:
 
-* В **Обозревателе решений** щелкните правой кнопкой мыши на папку *Pages* > **Добавить** > **Новая папка**.
+* Щелкните правой кнопкой мыши папку *Pages* и выберите **Добавить** > **Новая папка**.
 * Назовите папку *Movies*
 
-В **Обозревателе решений** щелкните правой кнопкой мыши на папку *Pages/Movies* > **Добавить** > **Создать шаблонный элемент**.
+Щелкните правой кнопкой мыши папку *Pages/Movies* и выберите **Добавить** > **Создать шаблонный элемент**.
 
 ![Изображение из предыдущих инструкций.](model/_static/sca.png)
 
-В диалоговом окне **Добавить шаблон** выберите **Razor Pages с помощью Entity Framework (CRUD)** > **Добавить**.
+В диалоговом окне **Добавить шаблон** выберите **Razor Pages с помощью Entity Framework (CRUD)**  >  **Добавить**.
 
 ![Изображение из предыдущих инструкций.](model/_static/add_scaffold.png)
 
@@ -51,40 +98,75 @@ ms.locfileid: "52549124"
 
 ![Изображение из предыдущих инструкций.](model/_static/arp.png)
 
+Файл *appsettings.json* обновляется с указанием строки подключения, используемой для подключения к локальной базе данных.
+
+<!-- Code -------------------------->
+
+# <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code.](#tab/visual-studio-code)
+
+<!--  Until https://github.com/aspnet/Scaffolding/issues/582 is fixed windows needs backslash or the namespace is namespace RazorPagesMovie.Pages_Movies rather than namespace RazorPagesMovie.Pages.Movies
+-->
+
+* Откройте окно командной строки в папке проекта (папке, где находятся файлы *Program.cs*, *Startup.cs* и *.csproj* файлов).
+* Установка средства формирования шаблонов:
+
+  ```console
+   dotnet tool install --global dotnet-aspnet-codegenerator
+   ```
+
+* **Для Windows**: выполните следующую команду.
+
+  ```console
+  dotnet aspnet-codegenerator razorpage -m Movie -dc MovieContext -udl -outDir Pages\Movies --referenceScriptLibraries
+  ```
+
+* **Для MacOS и Linux**: выполните следующую команду.
+
+  ```console
+  dotnet aspnet-codegenerator razorpage -m Movie -dc MovieContext -udl -outDir Pages/Movies --referenceScriptLibraries
+  ```
+
+[!INCLUDE [explains scaffold gen params](~/includes/RP/model4.md)]
+
+<!-- Mac -------------------------->
+
+# <a name="visual-studio-for-mactabvisual-studio-mac"></a>[Visual Studio для Mac](#tab/visual-studio-mac)
+
+* Откройте окно командной строки в папке проекта (папке, где находятся файлы *Program.cs*, *Startup.cs* и *.csproj* файлов).
+* Выполните следующую команду:
+
+  ```console
+  dotnet aspnet-codegenerator razorpage -m Movie -dc RazorPagesMovieContext -udl -outDir Pages/Movies --referenceScriptLibraries
+  ```
+
+[!INCLUDE [explains scaffold gen params](~/includes/RP/model4.md)]
+
+---
+
 В процессе формирования шаблонов создаются и обновляются указанные ниже файлы.
 
 ### <a name="files-created"></a>Создаваемые файлы
 
-* *Pages/Movies*: Create, Delete, Details, Edit, Index. Эти страницы подробно описываются в следующем учебнике.
+* *Pages/Movies*: Create, Delete, Details, Edit и Index.
 * *Data/RazorPagesMovieContext.cs*
 
 ### <a name="file-updated"></a>Обновляемые файлы
 
-* *Startup.cs*. Изменения в этом файле подробно описываются в следующем разделе.
-* *appsettings.json*. Добавляется строка подключения, используемая для подключения к локальной базе данных.
+* *Startup.cs*
 
-## <a name="examine-the-context-registered-with-dependency-injection"></a>Проверка контекста, зарегистрированного с помощью внедрения зависимостей
-
-ASP.NET Core поддерживает [внедрение зависимостей](xref:fundamentals/dependency-injection). С помощью внедрения зависимостей службы (например, контекст базы данных EF Core) регистрируются во время запуска приложения. Затем компоненты, которые используют эти службы (например, Razor Pages), обращаются к ним через параметры конструктора. Код конструктора, который получает экземпляр контекста базы данных, приведен далее в этом руководстве.
-
-Средство формирования шаблонов автоматически создает контекст базы данных и регистрирует его с использованием контейнера внедрения зависимостей.
-
-Проверьте метод `Startup.ConfigureServices`. Средством формирования шаблонов была добавлена выделенная строка:
-
-[!code-csharp[](razor-pages-start/sample/RazorPagesMovie21/Startup.cs?name=snippet_ConfigureServices&highlight=12-13)]
-
-Контекст базы данных — это класс main, который координирует функциональные возможности EF Core для заданной модели данных. Контекст данных получен из [Microsoft.EntityFrameworkCore.DbContext](/dotnet/api/microsoft.entityframeworkcore.dbcontext). Контекст данных указывает сущности, которые включаются в модель данных. В этом проекте соответствующий класс называется `RazorPagesMovieContext`.
-
-[!code-csharp[](razor-pages-start/sample/RazorPagesMovie21/Data/RazorPagesMovieContext.cs)]
-
-Представленный выше код создает свойство [DbSet\<Movie>](/dotnet/api/microsoft.entityframeworkcore.dbset-1) для набора сущностей. В терминологии Entity Framework набор сущностей обычно соответствует таблице базы данных. Сущность соответствует строке в таблице.
-
-Имя строки подключения передается в контекст путем вызова метода для объекта [DbContextOptions](/dotnet/api/microsoft.entityframeworkcore.dbcontextoptions). При локальной разработке [система конфигурации ASP.NET Core](xref:fundamentals/configuration/index) считывает строку подключения из файла *appsettings.json*.
+В следующем разделе приводится описание созданных и обновленных файлов.
 
 <a name="pmc"></a>
-## <a name="perform-initial-migration"></a>Выполнение первоначальной миграции
 
-В этом разделе консоль диспетчера пакетов (PMC) используется для выполнения следующих действий.
+## <a name="initial-migration"></a>Первоначальная миграция
+
+<!-- VS -------------------------->
+
+# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
+
+<!-- VS -------------------------->
+
+В этом разделе консоль диспетчера пакетов (PMC) используется для выполнения следующих действий:
 
 * Добавления первоначальной миграции.
 * Обновления базы данных с помощью первоначальной миграции.
@@ -100,23 +182,67 @@ Add-Migration Initial
 Update-Database
 ```
 
-Кроме того, можно использовать следующие команды .NET Core CLI из папки проекта:
+<!-- Code -------------------------->
 
-```console
-dotnet ef migrations add Initial
-dotnet ef database update
-```
+# <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code.](#tab/visual-studio-code)
 
-Не обращайте внимание на это предупреждающее сообщение, причина которого будет устранена в одном из следующих руководств:
+<!-- Mac -------------------------->
 
-```console
-Microsoft.EntityFrameworkCore.Model.Validation[30000]
-      No type was specified for the decimal column 'Price' on entity type 'Movie'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values using 'ForHasColumnType()'.
-```
+[!INCLUDE [initial migration](~/includes/RP/model3.md)]
 
-Команда `Add-Migration` формирует код для создания схемы исходной базы данных. Схема создается на основе модели, указанной в `RazorPagesMovieContext` (в файле *Data/RazorPagesMovieContext.cs*). Аргумент `Initial` используется для присвоения имен миграциям. Можно использовать любое имя, но обычно выбирается имя, описывающее миграцию. Дополнительные сведения см. в статье [Введение в миграции](xref:data/ef-mvc/migrations#introduction-to-migrations).
+# <a name="visual-studio-for-mactabvisual-studio-mac"></a>[Visual Studio для Mac](#tab/visual-studio-mac)
+
+[!INCLUDE [initial migration](~/includes/RP/model3.md)]
+
+---  
+<!-- End of VS tabs -->
+
+Команда `ef migrations add InitialCreate` формирует код для создания схемы исходной базы данных. Схема создается на основе модели, указанной в `DbContext` (в файле *Models/RazorPagesMovieContext.cs*). Аргумент `InitialCreate` используется для присвоения имен миграциям. Можно использовать любое имя, однако по соглашению выбирается имя, которое описывает миграцию.
+
+Команда `ef database update` выполняет метод `Up` в файле *Migrations/\<time-stamp>_InitialCreate.cs*. Метод `Up` создает базу данных.
+
+<!-- VS -------------------------->
+
+# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
+
+## <a name="examine-the-context-registered-with-dependency-injection"></a>Проверка контекста, зарегистрированного с помощью внедрения зависимостей
+
+ASP.NET Core поддерживает [внедрение зависимостей](xref:fundamentals/dependency-injection). С помощью внедрения зависимостей службы (например, контекст базы данных EF Core) регистрируются во время запуска приложения. Затем компоненты, которые используют эти службы (например, Razor Pages), обращаются к ним через параметры конструктора. Код конструктора, который получает экземпляр контекста базы данных, приведен далее в этом руководстве.
+
+Средство формирования шаблонов автоматически создает контекст базы данных и регистрирует его с использованием контейнера внедрения зависимостей.
+
+Проверьте метод `Startup.ConfigureServices`. Средством формирования шаблонов была добавлена выделенная строка:
+
+[!code-csharp[](razor-pages-start/sample/RazorPagesMovie22/Startup.cs?name=snippet_ConfigureServices&highlight=15-18)]
+
+`RazorPagesMovieContext` координирует функции EF Core (Create, Read, Update, Delete и т. д.) для модели `Movie`. Контекст данных (`RazorPagesMovieContext`) получен из [Microsoft.EntityFrameworkCore.DbContext](/dotnet/api/microsoft.entityframeworkcore.dbcontext). Контекст данных указывает сущности, которые включаются в модель данных.
+
+[!code-csharp[](~/tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie22/Data/RazorPagesMovieContext.cs)]
+
+Представленный выше код создает свойство [DbSet/\<Movie>](/dotnet/api/microsoft.entityframeworkcore.dbset-1) для набора сущностей. В терминологии Entity Framework набор сущностей обычно соответствует таблице базы данных. Сущность соответствует строке в таблице.
+
+Имя строки подключения передается в контекст путем вызова метода для объекта [DbContextOptions](/dotnet/api/microsoft.entityframeworkcore.dbcontextoptions). При локальной разработке [система конфигурации ASP.NET Core](xref:fundamentals/configuration/index) считывает строку подключения из файла *appsettings.json*.
+<!-- Code -------------------------->
+
+# <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code.](#tab/visual-studio-code)
+
+<!-- Mac -------------------------->
+
+# <a name="visual-studio-for-mactabvisual-studio-mac"></a>[Visual Studio для Mac](#tab/visual-studio-mac)
+
+<!-- End of VS tabs -->
+
+---
+
+Команда `Add-Migration` формирует код для создания схемы исходной базы данных. Схема создается на основе модели, указанной в `RazorPagesMovieContext` (в файле *Data/RazorPagesMovieContext.cs*). Аргумент `Initial` используется для присвоения имен миграциям. Можно использовать любое имя, однако по соглашению используется имя, которое описывает миграцию. Дополнительные сведения см. в статье [Введение в миграции](xref:data/ef-mvc/migrations#introduction-to-migrations).
 
 Команда `Update-Database` выполняет метод `Up` в файле *Migrations/{time-stamp}_InitialCreate.cs*, который создает базу данных.
+
+<a name="test"></a>
+
+### <a name="test-the-app"></a>Тестирование приложения
+
+* Запустите приложение и добавьте `/Movies` к URL-адресу в браузере (`http://localhost:port/movies`).
 
 Если возникает ошибка.
 
@@ -127,103 +253,14 @@ Login failed for user 'User-name'.
 
 Вы пропустили [шаг миграции](#pmc).
 
-::: moniker-end
-
-::: moniker range="= aspnetcore-2.0"
-
-[!INCLUDE [model1](~/includes/RP/model1.md)]
-
-## <a name="add-a-data-model"></a>Добавление модели данных
-
-В обозревателе решений щелкните проект **RazorPagesMovie** правой кнопкой мыши и выберите пункт **Добавить** > **Новая папка**. Присвойте папке имя *Models*.
-
-Щелкните правой кнопкой мыши папку *Models*. Выберите **Добавить** > **Класс**. Добавьте класс **Movie** и следующие свойства:
-
-[!INCLUDE [model 2](~/includes/RP/model2.md)]
-
-<a name="cs"></a>
-### <a name="add-a-database-connection-string"></a>Добавление строки подключения базы данных
-
-Добавьте строку подключения в файл *appsettings.json*.
-
-[!code-json[](../../tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie/appsettings.json?highlight=8-10)]
-
-<a name="reg"></a>
-###  <a name="register-the-database-context"></a>Регистрация контекста базы данных
-
-Зарегистрируйте контекст базы данных в контейнере [внедрения зависимостей](xref:fundamentals/dependency-injection) в [методе ConfigureServices класса Startup](xref:fundamentals/startup#the-startup-class) (*Startup.cs*):
-
-[!code-csharp[](../../tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie/Startup.cs?name=snippet_ConfigureServices&highlight=3-5,7-9)]
-
-Выполните сборку проекта, чтобы убедиться в отсутствии ошибок.
-
-<a name="pmc"></a>
-## <a name="add-scaffold-tooling-and-perform-initial-migration"></a>Добавление средств формирования шаблонов и выполнение первоначальной миграции
-
-В этом разделе консоль диспетчера пакетов (PMC) используется для выполнения следующих действий.
-
-* Добавление веб-пакета создания кода для Visual Studio. Этот пакет необходим для работы ядра формирования шаблонов.
-* Добавление первоначальной миграции.
-* Обновления базы данных с помощью первоначальной миграции.
-
-В меню **Сервис** последовательно выберите пункты **Диспетчер пакетов NuGet** > **Консоль диспетчера пакетов**.
-
-  ![Меню PMC](../first-mvc-app/adding-model/_static/pmc.png)
-
-В PMC введите следующие команды:
-
-```powershell
-Install-Package Microsoft.VisualStudio.Web.CodeGeneration.Design -Version 2.0.3
-Add-Migration Initial
-Update-Database
-```
-
-Кроме того, можно использовать следующие команды .NET Core CLI:
-
-```console
-dotnet add package Microsoft.VisualStudio.Web.CodeGeneration.Design
-dotnet ef migrations add Initial
-dotnet ef database update
-```
-
-Не обращайте внимание на следующее сообщение:
-
-```console
-Microsoft.EntityFrameworkCore.Model.Validation[30000]
-      No type was specified for the decimal column 'Price' on entity type 'Movie'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values using 'ForHasColumnType()'
-```
-
-Мы исправим это в следующем руководстве.
-
-Команда `Install-Package` устанавливает средства, необходимые для запуска ядра формирования шаблонов.
-
-Команда `Add-Migration` формирует код для создания схемы исходной базы данных. Схема создается на основе модели, указанной в `DbContext` (в файле *Models/MovieContext.cs*). Аргумент `Initial` используется для присвоения имен миграциям. Можно использовать любое имя, но обычно выбирается имя, описывающее миграцию. Дополнительные сведения см. в статье [Введение в миграции](xref:data/ef-mvc/migrations#introduction-to-migrations).
-
-Команда `Update-Database` выполняет метод `Up` в файле *Migrations/{time-stamp}_InitialCreate.cs*, который создает базу данных.
-
-[!INCLUDE [model 4windows](~/includes/RP/model4Win.md)]
-
-[!INCLUDE [model 4](~/includes/RP/model4tbl.md)]
-
-::: moniker-end
-
-<a name="test"></a>
-
-### <a name="test-the-app"></a>Тестирование приложения
-
-* Запустите приложение и добавьте `/Movies` к URL-адресу в браузере (`http://localhost:port/movies`).
 * Протестируйте ссылку **Создать**.
 
+  ![Страница "Создать"](model/_static/conan.png)
+  
   > [!NOTE]
   > В поле `Price` нельзя вводить десятичные запятые. Чтобы обеспечить поддержку [проверки jQuery](https://jqueryvalidation.org/) для других языков, кроме английского, используйте вместо десятичной точки запятую (,), а для отображения данных в форматах для других языков, кроме английского, выполните глобализацию приложения. Инструкции по глобализации см. на [сайте GitHub](https://github.com/aspnet/Docs/issues/4076#issuecomment-326590420).
 
-  ![Страница "Создать"](../../tutorials/razor-pages/model/_static/conan.png)
-
-<a name="scaffold"></a>
-
 * Протестируйте ссылки **Изменить**, **Сведения** и **Удалить**.
-
-Если появляется исключение SQL, выполните миграции и обновите базу данных.
 
 В следующем учебнике рассматриваются файлы, созданные с помощью формирования шаблонов.
 

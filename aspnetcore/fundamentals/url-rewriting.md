@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 11/19/2018
 uid: fundamentals/url-rewriting
-ms.openlocfilehash: 98787891a97e49081d72107484f030d216d82f45
-ms.sourcegitcommit: ad28d1bc6657a743d5c2fa8902f82740689733bb
+ms.openlocfilehash: 84052789717738a48c346d35d1a2642017a9ab93
+ms.sourcegitcommit: 9bb58d7c8dad4bbd03419bcc183d027667fefa20
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52256571"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52861918"
 ---
 # <a name="url-rewriting-middleware-in-aspnet-core"></a>ПО промежуточного слоя для переопределения URL-адресов в ASP.NET Core
 

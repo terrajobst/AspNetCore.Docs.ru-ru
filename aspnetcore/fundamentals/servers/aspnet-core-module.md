@@ -1,17 +1,17 @@
 ---
 title: Модуль ASP.NET Core
 author: guardrex
-description: Сведения о том, как модуль ASP.NET Core позволяет веб-серверу Kestrel использовать IIS или IIS Express в качестве обратного прокси-сервера.
+description: Сведения о том, как модуль ASP.NET Core позволяет веб-серверу Kestrel использовать IIS или IIS Express.
 ms.author: tdykstra
 ms.custom: mvc
-ms.date: 09/21/2018
+ms.date: 11/30/2018
 uid: fundamentals/servers/aspnet-core-module
-ms.openlocfilehash: 39c1b364f9dab635c79e00561d212c858c0c4395
-ms.sourcegitcommit: 09affee3d234cb27ea6fe33bc113b79e68900d22
+ms.openlocfilehash: d3f3a42dd7aebc425905b865376a584bcf0e5153
+ms.sourcegitcommit: 9bb58d7c8dad4bbd03419bcc183d027667fefa20
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51191260"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52861463"
 ---
 # <a name="aspnet-core-module"></a>Модуль ASP.NET Core
 
@@ -36,7 +36,7 @@ ms.locfileid: "51191260"
 
 ::: moniker range=">= aspnetcore-2.2"
 
-При размещении внутри процесса у модуля есть своя реализация сервера — `IISHttpServer`.
+При размещении в процессе модуль использует реализацию внутрипроцессного сервера IIS — HTTP-сервер IIS (`IISHttpServer`).
 
 При размещении вне процесса модуль работает только с Kestrel. Модуль несовместим с [HTTP.sys](xref:fundamentals/servers/httpsys) (ранее — [WebListener](xref:fundamentals/servers/weblistener)).
 
@@ -73,9 +73,9 @@ ms.locfileid: "51191260"
 
 ![Модуль ASP.NET Core](aspnet-core-module/_static/ancm-inprocess.png)
 
-Запрос поступает из Интернета в драйвер HTTP.sys в режиме ядра. Драйвер направляет собственный запрос к IIS на настроенный порт веб-сайта — обычно 80 (HTTP) или 443 (HTTPS). Модуль получает собственный запрос и передает управление `IISHttpServer`, который преобразует запрос из собственного в управляемый.
+Запрос поступает из Интернета в драйвер HTTP.sys в режиме ядра. Драйвер направляет собственный запрос к IIS на настроенный порт веб-сайта — обычно 80 (HTTP) или 443 (HTTPS). Модуль получает собственный запрос и передает его на HTTP-сервер IIS (`IISHttpServer`). HTTP-сервер IIS представляет собой реализацию внутрипроцессного сервера IIS, которая преобразует запрос из собственной формы в управляемую.
 
-После того как `IISHttpServer` забирает запрос, он передается в конвейер ПО промежуточного слоя ASP.NET Core. Конвейер ПО промежуточного слоя обрабатывает запрос и передает его в качестве экземпляра `HttpContext` в логику приложения. Отклик приложения передается обратно в службу IIS, которая отправляет его обратно в HTTP-клиент, инициировавший запрос.
+После того как HTTP-сервер IIS обрабатывает запрос, он передается в конвейер ПО промежуточного слоя ASP.NET Core. Конвейер ПО промежуточного слоя обрабатывает запрос и передает его в качестве экземпляра `HttpContext` в логику приложения. Отклик приложения передается обратно в службу IIS, которая отправляет его обратно в клиент, инициировавший запрос.
 
 ### <a name="out-of-process-hosting-model"></a>Модель размещения вне процесса
 

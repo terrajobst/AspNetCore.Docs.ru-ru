@@ -5,14 +5,14 @@ description: Общие сведения о веб-сервере HTTP.sys дл�
 monikerRange: '>= aspnetcore-2.0'
 ms.author: tdykstra
 ms.custom: mvc
-ms.date: 11/26/2018
+ms.date: 12/01/2018
 uid: fundamentals/servers/httpsys
-ms.openlocfilehash: f5ab1a3cbd1020a5ab2bd64a81b5782fd116f069
-ms.sourcegitcommit: e9b99854b0a8021dafabee0db5e1338067f250a9
+ms.openlocfilehash: 8810fd295e8c4269812e712ce2fdc9b9fa2bbb4f
+ms.sourcegitcommit: 9bb58d7c8dad4bbd03419bcc183d027667fefa20
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52450649"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52861697"
 ---
 # <a name="httpsys-web-server-implementation-in-aspnet-core"></a>Реализация веб-сервера HTTP.sys в ASP.NET Core
 
@@ -21,7 +21,7 @@ ms.locfileid: "52450649"
 > [!NOTE]
 > Сведения из этого раздела распространяются на ASP.NET Core 2.0 и более поздних версий. В более ранних версиях ASP.NET Core HTTP.sys называется [WebListener](xref:fundamentals/servers/weblistener).
 
-[HTTP.sys](/iis/get-started/introduction-to-iis/introduction-to-iis-architecture#hypertext-transfer-protocol-stack-httpsys) — это [веб-сервер для ASP.NET Core](xref:fundamentals/servers/index), который запускается только в Windows. HTTP.sys является альтернативой [Kestrel](xref:fundamentals/servers/kestrel), предлагая некоторые функции, отсутствующие в Kestrel.
+[HTTP.sys](/iis/get-started/introduction-to-iis/introduction-to-iis-architecture#hypertext-transfer-protocol-stack-httpsys) — это [веб-сервер для ASP.NET Core](xref:fundamentals/servers/index), который запускается только в Windows. HTTP.sys является альтернативой серверу [Kestrel](xref:fundamentals/servers/kestrel), предлагая некоторые функции, отсутствующие в Kestrel.
 
 > [!IMPORTANT]
 > HTTP.sys не подходит для использования с IIS или IIS Express из-за несовместимости с [модулем ASP.NET Core](xref:fundamentals/servers/aspnet-core-module).
