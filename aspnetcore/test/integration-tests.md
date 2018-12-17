@@ -97,14 +97,14 @@ ms.locfileid: "52450753"
 
 ## <a name="test-app-prerequisites"></a>Проверка необходимых требований к приложению
 
-Тестовый проект должен:
+Тестовый проект должен выполнять следующие требования.
 
 * Ссылаться на следующие пакеты:
   * [Microsoft.AspNetCore.App](https://www.nuget.org/packages/Microsoft.AspNetCore.App/)
   * [Microsoft.AspNetCore.Mvc.Testing](https://www.nuget.org/packages/Microsoft.AspNetCore.Mvc.Testing/)
 * Указывать Web SDK в файле проекта (`<Project Sdk="Microsoft.NET.Sdk.Web">`). Web SDK необходим при ссылке на [метапакет Microsoft.AspNetCore.App](xref:fundamentals/metapackage-app).
 
-Выполнение необходимых требований можно посмотреть в [примере приложения](https://github.com/aspnet/Docs/tree/master/aspnetcore/test/integration-tests/samples/). Изучите файл *tests/RazorPagesProject.Tests/RazorPagesProject.Tests.csproj*. Образец приложения использует тестовый фреймворк [xUnit](https://xunit.github.io/) и библиотеку для парсинга [AngleSharp](https://anglesharp.github.io/), поэтому он также ссылается на:
+Выполнение необходимых требований можно посмотреть в [примере приложения](https://github.com/aspnet/Docs/tree/master/aspnetcore/test/integration-tests/samples/). Изучите файл *tests/RazorPagesProject.Tests/RazorPagesProject.Tests.csproj*. Образец приложения использует платформу тестирования [xUnit](https://xunit.github.io/) и библиотеку анализа [AngleSharp](https://anglesharp.github.io/), поэтому он также ссылается на:
 
 * [xUnit](https://www.nuget.org/packages/xunit/)
 * [xUnit.Runner.VisualStudio](https://www.nuget.org/packages/xunit.runner.visualstudio/)
