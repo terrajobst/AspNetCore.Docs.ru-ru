@@ -114,11 +114,11 @@ ms.locfileid: "52450753"
 
 [WebApplicationFactory&lt;TEntryPoint&gt; ](/dotnet/api/microsoft.aspnetcore.mvc.testing.webapplicationfactory-1) используется для создания [TestServer](/dotnet/api/microsoft.aspnetcore.testhost.testserver) для интеграционных тестов. `TEntryPoint` это класс точки входа SUT, обычно класс `Startup`.
 
-Тестовые классы реализуют интерфейс *классa оснастки* (`IClassFixture`) чтобы указать класс, содержащий тесты, и предоставить общие экземпляры объекта тестам в классе.
+Тестовые классы реализуют интерфейс *классa средства* (`IClassFixture`), чтобы указать, что класс содержит тесты, и предоставить общие экземпляры объекта тестам в классе.
 
 ### <a name="basic-test-of-app-endpoints"></a>Базовое тестирование конечных точек приложения
 
-Следующий тестовый класс, `BasicTests`, использует `WebApplicationFactory` для начальной загрузки SUT и предоставляет [HttpClient](/dotnet/api/system.net.http.httpclient) тестовому методу `Get_EndpointsReturnSuccessAndCorrectContentType`. Метод проверяет успешность кода состояния ответа (коды состояния в диапазоне от 200 до 299), и что заголовок `Content-Type` имеет значение `text/html; charset=utf-8` для нескольких страниц приложения.
+Следующий тестовый класс, `BasicTests`, использует `WebApplicationFactory` для начальной загрузки SUT и предоставляет [HttpClient](/dotnet/api/system.net.http.httpclient) тестовому методу `Get_EndpointsReturnSuccessAndCorrectContentType`. Метод проверяет, что код состояния ответа свидетельствует о выполнении (коды состояния в диапазоне от 200 до 299) и что заголовок `Content-Type` имеет значение `text/html; charset=utf-8` для нескольких страниц приложения.
 
 Метод [CreateClient](/dotnet/api/microsoft.aspnetcore.mvc.testing.webapplicationfactory-1.createclient) создает экземпляр класса `HttpClient`, который автоматически следует за перенаправлениями и обрабатывает файлы cookie.
 
