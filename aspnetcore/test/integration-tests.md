@@ -110,17 +110,17 @@ ms.locfileid: "52450753"
 * [xUnit.Runner.VisualStudio](https://www.nuget.org/packages/xunit.runner.visualstudio/)
 * [AngleSharp](https://www.nuget.org/packages/AngleSharp/)
 
-## <a name="basic-tests-with-the-default-webapplicationfactory"></a>Основные тесты со значением по умолчанию WebApplicationFactory
+## <a name="basic-tests-with-the-default-webapplicationfactory"></a>Базовые тесты со стандартной WebApplicationFactory
 
-[WebApplicationFactory&lt;TEntryPoint&gt; ](/dotnet/api/microsoft.aspnetcore.mvc.testing.webapplicationfactory-1) используется для создания [TestServer](/dotnet/api/microsoft.aspnetcore.testhost.testserver) интеграционные тесты. `TEntryPoint` обычно является класс точки входа SUT `Startup` класса.
+[WebApplicationFactory&lt;TEntryPoint&gt; ](/dotnet/api/microsoft.aspnetcore.mvc.testing.webapplicationfactory-1) используется для создания [TestServer](/dotnet/api/microsoft.aspnetcore.testhost.testserver) для интеграционных тестов. `TEntryPoint` это класс точки входа SUT, обычно класс `Startup`.
 
-Классы реализуют теста *тестового стенда класс* интерфейс (`IClassFixture`) для указания класса содержит тесты и укажите общий объект экземпляры всех тестах в классе.
+Тестовые классы реализуют интерфейс *классa средства* (`IClassFixture`), чтобы указать, что класс содержит тесты, и предоставить общие экземпляры объекта тестам в классе.
 
-### <a name="basic-test-of-app-endpoints"></a>Базовое тестирование конечные точки приложения
+### <a name="basic-test-of-app-endpoints"></a>Базовое тестирование конечных точек приложения
 
-Следующие проверки класса, `BasicTests`, использует `WebApplicationFactory` для начальной загрузки SUT и предоставить [HttpClient](/dotnet/api/system.net.http.httpclient) с тестовым методом `Get_EndpointsReturnSuccessAndCorrectContentType`. Метод проверяет, при успешном выполнении код состояния ответа (коды состояния в диапазоне от 200 до 299) и `Content-Type` заголовок `text/html; charset=utf-8` для нескольких страниц приложения.
+Следующий тестовый класс, `BasicTests`, использует `WebApplicationFactory` для начальной загрузки SUT и предоставляет [HttpClient](/dotnet/api/system.net.http.httpclient) тестовому методу `Get_EndpointsReturnSuccessAndCorrectContentType`. Метод проверяет, что код состояния ответа свидетельствует о выполнении (коды состояния в диапазоне от 200 до 299) и что заголовок `Content-Type` имеет значение `text/html; charset=utf-8` для нескольких страниц приложения.
 
-[CreateClient](/dotnet/api/microsoft.aspnetcore.mvc.testing.webapplicationfactory-1.createclient) создает экземпляр класса `HttpClient` , автоматически следует за перенаправление и обрабатывает файлы cookie.
+Метод [CreateClient](/dotnet/api/microsoft.aspnetcore.mvc.testing.webapplicationfactory-1.createclient) создает экземпляр класса `HttpClient`, который автоматически следует за перенаправлениями и обрабатывает файлы cookie.
 
 [!code-csharp[](integration-tests/samples/2.x/IntegrationTestsSample/tests/RazorPagesProject.Tests/IntegrationTests/BasicTests.cs?name=snippet1)]
 
