@@ -97,14 +97,14 @@ ms.locfileid: "52450753"
 
 ## <a name="test-app-prerequisites"></a>Проверка необходимых требований к приложению
 
-Тестовый проект должен выполнять следующие требования.
+Необходимо тестового проекта:
 
 * Ссылаться на следующие пакеты:
   * [Microsoft.AspNetCore.App](https://www.nuget.org/packages/Microsoft.AspNetCore.App/)
   * [Microsoft.AspNetCore.Mvc.Testing](https://www.nuget.org/packages/Microsoft.AspNetCore.Mvc.Testing/)
 * Указывать Web SDK в файле проекта (`<Project Sdk="Microsoft.NET.Sdk.Web">`). Web SDK необходим при ссылке на [метапакет Microsoft.AspNetCore.App](xref:fundamentals/metapackage-app).
 
-Выполнение необходимых требований можно посмотреть в [примере приложения](https://github.com/aspnet/Docs/tree/master/aspnetcore/test/integration-tests/samples/). Изучите файл *tests/RazorPagesProject.Tests/RazorPagesProject.Tests.csproj*. Образец приложения использует платформу тестирования [xUnit](https://xunit.github.io/) и библиотеку анализа [AngleSharp](https://anglesharp.github.io/), поэтому он также ссылается на:
+Эти компоненты можно увидеть в [пример приложения](https://github.com/aspnet/Docs/tree/master/aspnetcore/test/integration-tests/samples/). Проверьте *tests/RazorPagesProject.Tests/RazorPagesProject.Tests.csproj* файла. Пример приложения использует [xUnit](https://xunit.github.io/) платформы тестирования и [AngleSharp](https://anglesharp.github.io/) библиотеки средство синтаксического анализа, поэтому в примере приложения также ссылается на:
 
 * [xUnit](https://www.nuget.org/packages/xunit/)
 * [xUnit.Runner.VisualStudio](https://www.nuget.org/packages/xunit.runner.visualstudio/)
@@ -114,11 +114,11 @@ ms.locfileid: "52450753"
 
 [WebApplicationFactory&lt;TEntryPoint&gt; ](/dotnet/api/microsoft.aspnetcore.mvc.testing.webapplicationfactory-1) используется для создания [TestServer](/dotnet/api/microsoft.aspnetcore.testhost.testserver) для интеграционных тестов. `TEntryPoint` это класс точки входа SUT, обычно класс `Startup`.
 
-Тестовые классы реализуют интерфейс *классa средства* (`IClassFixture`), чтобы указать, что класс содержит тесты, и предоставить общие экземпляры объекта тестам в классе.
+Классы реализуют теста *тестового стенда класс* интерфейс (`IClassFixture`) для указания класса содержит тесты и укажите общий объект экземпляры всех тестах в классе.
 
 ### <a name="basic-test-of-app-endpoints"></a>Базовое тестирование конечных точек приложения
 
-Следующий тестовый класс, `BasicTests`, использует `WebApplicationFactory` для начальной загрузки SUT и предоставляет [HttpClient](/dotnet/api/system.net.http.httpclient) тестовому методу `Get_EndpointsReturnSuccessAndCorrectContentType`. Метод проверяет, что код состояния ответа свидетельствует о выполнении (коды состояния в диапазоне от 200 до 299) и что заголовок `Content-Type` имеет значение `text/html; charset=utf-8` для нескольких страниц приложения.
+Следующие проверки класса, `BasicTests`, использует `WebApplicationFactory` для начальной загрузки SUT и предоставить [HttpClient](/dotnet/api/system.net.http.httpclient) с тестовым методом `Get_EndpointsReturnSuccessAndCorrectContentType`. Метод проверяет, при успешном выполнении код состояния ответа (коды состояния в диапазоне от 200 до 299) и `Content-Type` заголовок `text/html; charset=utf-8` для нескольких страниц приложения.
 
 Метод [CreateClient](/dotnet/api/microsoft.aspnetcore.mvc.testing.webapplicationfactory-1.createclient) создает экземпляр класса `HttpClient`, который автоматически следует за перенаправлениями и обрабатывает файлы cookie.
 
