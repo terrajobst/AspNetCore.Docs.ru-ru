@@ -124,7 +124,7 @@ dotnet run
 | Файл или папка              | Цель |
 | ----------------- | ------------ |
 | *wwwroot* | Содержит статические файлы. См. [Статические файлы](xref:fundamentals/static-files). |
-| *Страницы* | Папка для [Razor Pages](xref:razor-pages/index). |
+| *Pages* | Папка для [Razor Pages](xref:razor-pages/index). |
 | *appsettings.json* | [Конфигурация](xref:fundamentals/configuration/index) |
 | *Program.cs* | [Содержит](xref:fundamentals/host/index) приложение ASP.NET Core.|
 | *Startup.cs* | Настраивает службы и конвейер обработки запросов. См. раздел [Запуск](xref:fundamentals/startup).|
