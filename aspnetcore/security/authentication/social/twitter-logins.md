@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 11/11/2018
 uid: security/authentication/twitter-logins
-ms.openlocfilehash: 43a5ea59d8853d297ae2c1ec3f4b1c0c14ec80c3
-ms.sourcegitcommit: 09bcda59a58019fdf47b2db5259fe87acf19dd38
+ms.openlocfilehash: 49db8b921fde169380ca284f46e535786b2b8a30
+ms.sourcegitcommit: 3e94d192b2ed9409fe72e3735e158b333354964c
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51708430"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53735808"
 ---
 # <a name="twitter-external-login-setup-with-aspnet-core"></a>Настройка внешней учетной записи Twitter с помощью ASP.NET Core
 
@@ -62,9 +62,9 @@ ms.locfileid: "51708430"
 Добавление службы Twitter в `ConfigureServices` метод в *Startup.cs* файла:
 
 ```csharp
-services.AddIdentity<ApplicationUser, IdentityRole>()
-        .AddEntityFrameworkStores<ApplicationDbContext>()
-        .AddDefaultTokenProviders();
+services.AddDefaultIdentity<IdentityUser>()
+        .AddDefaultUI(UIFramework.Bootstrap4)
+        .AddEntityFrameworkStores<ApplicationDbContext>();
 
 services.AddAuthentication().AddTwitter(twitterOptions =>
 {
@@ -99,7 +99,7 @@ app.UseTwitterAuthentication(new TwitterOptions()
 
 Запустите приложение и нажмите кнопку **вход**. Появится возможность войти с помощью Twitter:
 
-![Веб-приложения: пользователь не прошел проверку подлинности](index/_static/DoneTwitter.png)
+![Веб-приложение: Пользователь не прошел проверку подлинности](index/_static/DoneTwitter.png)
 
 Щелкнув **Twitter** перенаправляет Twitter для проверки подлинности:
 
@@ -109,13 +109,13 @@ app.UseTwitterAuthentication(new TwitterOptions()
 
 Теперь вы вошли с использованием учетных данных Twitter:
 
-![Веб-приложения: пользователь прошел проверку подлинности](index/_static/Done.png)
+![Веб-приложение: Пользователь прошел проверку подлинности](index/_static/Done.png)
 
 [!INCLUDE[Forward request information when behind a proxy or load balancer section](includes/forwarded-headers-middleware.md)]
 
 ## <a name="troubleshooting"></a>Устранение неполадок
 
-* **ASP.NET Core 2.x только:** Если удостоверение не настроена, вызвав `services.AddIdentity` в `ConfigureServices`, пытающиеся выполнить проверку подлинности приведет к *ArgumentException: необходимо указать параметр «SignInScheme»*. Шаблон проекта, используемый в этом руководстве гарантирует, что это будет сделано.
+* **ASP.NET Core 2.x только:** Если удостоверение не настроена, вызвав `services.AddIdentity` в `ConfigureServices`, пытающиеся выполнить проверку подлинности приведет к *ArgumentException: Необходимо указать параметр «SignInScheme»*. Шаблон проекта, используемый в этом руководстве гарантирует, что это будет сделано.
 * Если база данных сайта не был создан путем применения первоначальной миграции, вы получите *сбой операции из базы данных при обработке запроса* ошибки. Коснитесь **применить миграции** для создания базы данных и обновить, чтобы продолжить выполнение после ошибки.
 
 ## <a name="next-steps"></a>Следующие шаги

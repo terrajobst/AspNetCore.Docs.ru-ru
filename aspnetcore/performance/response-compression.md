@@ -5,14 +5,14 @@ description: Сведения о сжатии откликов и способа
 monikerRange: '>= aspnetcore-1.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 12/01/2018
+ms.date: 12/18/2018
 uid: performance/response-compression
-ms.openlocfilehash: 2516fbb30e55990dc4ad0d92069853bc26874bc9
-ms.sourcegitcommit: 9bb58d7c8dad4bbd03419bcc183d027667fefa20
+ms.openlocfilehash: 51ab51652a7b3f9b4ef97b3abbffe2e398c0bfb5
+ms.sourcegitcommit: 816f39e852a8f453e8682081871a31bc66db153a
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52861892"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53637759"
 ---
 # <a name="response-compression-in-aspnet-core"></a>Сжатие откликов в ASP.NET Core
 
@@ -33,10 +33,10 @@ ms.locfileid: "52861892"
   * [Модуль mod_deflate Apache](http://httpd.apache.org/docs/current/mod/mod_deflate.html)
   * [Nginx сжатия и распаковки](https://www.nginx.com/resources/admin-guide/compression-and-decompression/)
 * Размещение непосредственно на:
-  * [HTTP.sys](xref:fundamentals/servers/httpsys) сервера (которые ранее назывались [WebListener](xref:fundamentals/servers/weblistener))
-  * [Kestrel](xref:fundamentals/servers/kestrel) сервера
+  * [Сервер HTTP.sys](xref:fundamentals/servers/httpsys) (ранее называвшихся WebListener)
+  * [Сервер kestrel](xref:fundamentals/servers/kestrel)
 
-## <a name="response-compression"></a>Сжатие откликов
+## <a name="response-compression"></a>Сжатие ответов
 
 Как правило любой ответ, изначально не сжаты могут использовать преимущества сжатия отклика. Ответы, изначально не сжаты обычно включают: CSS, JavaScript, HTML, XML и JSON. Не следует сжимать изначально сжатых ресурсов, таких как PNG-файлы. При попытке дальнейшее сжатие изначально сжатый ответ, небольшого дополнительного сокращения размера и передачи времени скорее всего будет злоумышленниками время, которое потребовалось для обработки сжатия. Не сжимать файлы размером меньше примерно 150 – 1000 байт (в зависимости от его содержимого и повысить эффективность сжатия). Затраты на сжатие небольших файлов могут давать сжатый файл, размер которых превышает несжатый файл.
 
@@ -44,13 +44,13 @@ ms.locfileid: "52861892"
 
 ::: moniker range=">= aspnetcore-2.2"
 
-| `Accept-Encoding` значения заголовка | Поддерживается по промежуточного слоя | Описание |
+| `Accept-Encoding` значения заголовка | Поддерживается по промежуточного слоя | Описание: |
 | ------------------------------- | :------------------: | ----------- |
 | `br`                            | Да (по умолчанию)        | [Формат сжатых данных Brotli](https://tools.ietf.org/html/rfc7932) |
 | `deflate`                       | Нет                   | [Формат DEFLATE сжатых данных](https://tools.ietf.org/html/rfc1951) |
 | `exi`                           | Нет                   | [W3C XML для эффективного обмена](https://tools.ietf.org/id/draft-varga-netconf-exi-capability-00.html) |
 | `gzip`                          | Да                  | [Формат файла gzip](https://tools.ietf.org/html/rfc1952) |
-| `identity`                      | Да                  | Идентификатор «Без кодировки»: ответ не должен быть закодирован. |
+| `identity`                      | Да                  | Идентификатор «Без кодировки»: Ответ не должен быть закодирован. |
 | `pack200-gzip`                  | Нет                   | [Сетевой формат передачи архивы Java](https://jcp.org/aboutJava/communityprocess/review/jsr200/index.html) |
 | `*`                             | Да                  | Любое доступное содержимое, кодировка не явно запрошенного |
 
@@ -58,13 +58,13 @@ ms.locfileid: "52861892"
 
 ::: moniker range="< aspnetcore-2.2"
 
-| `Accept-Encoding` значения заголовка | Поддерживается по промежуточного слоя | Описание |
+| `Accept-Encoding` значения заголовка | Поддерживается по промежуточного слоя | Описание: |
 | ------------------------------- | :------------------: | ----------- |
 | `br`                            | Нет                   | [Формат сжатых данных Brotli](https://tools.ietf.org/html/rfc7932) |
 | `deflate`                       | Нет                   | [Формат DEFLATE сжатых данных](https://tools.ietf.org/html/rfc1951) |
 | `exi`                           | Нет                   | [W3C XML для эффективного обмена](https://tools.ietf.org/id/draft-varga-netconf-exi-capability-00.html) |
 | `gzip`                          | Да (по умолчанию)        | [Формат файла gzip](https://tools.ietf.org/html/rfc1952) |
-| `identity`                      | Да                  | Идентификатор «Без кодировки»: ответ не должен быть закодирован. |
+| `identity`                      | Да                  | Идентификатор «Без кодировки»: Ответ не должен быть закодирован. |
 | `pack200-gzip`                  | Нет                   | [Сетевой формат передачи архивы Java](https://jcp.org/aboutJava/communityprocess/review/jsr200/index.html) |
 | `*`                             | Да                  | Любое доступное содержимое, кодировка не явно запрошенного |
 
@@ -74,7 +74,7 @@ ms.locfileid: "52861892"
 
 По промежуточного слоя можно добавить дополнительное сжатие поставщиков для пользовательских `Accept-Encoding` значения заголовка. Дополнительные сведения см. в разделе [настраиваемые поставщики](#custom-providers) ниже.
 
-По промежуточного слоя способен реагирование на значение качества (qvalue, `q`) вес при отправке клиентом для определения приоритетов схемы сжатия. Дополнительные сведения см. в разделе [RFC 7231: приемлемой кодировкой](https://tools.ietf.org/html/rfc7231#section-5.3.4).
+По промежуточного слоя способен реагирование на значение качества (qvalue, `q`) вес при отправке клиентом для определения приоритетов схемы сжатия. Дополнительные сведения см. в разделе [RFC 7231: Приемлемой кодировкой](https://tools.ietf.org/html/rfc7231#section-5.3.4).
 
 Алгоритмы сжатия, распространяются компромисс между скоростью сжатие и эффективность сжатия. *Эффективность* в данном контексте означает размер выходных данных после сжатия. Наименьший размер достигается за счет наиболее *оптимальной* сжатия.
 
@@ -205,7 +205,7 @@ public void ConfigureServices(IServiceCollection services)
 
 Установка уровня с помощью сжатия `BrotliCompressionProviderOptions`. По умолчанию используется поставщик сжатие Brotli наиболее быстрый уровень сжатия ([CompressionLevel.Fastest](xref:System.IO.Compression.CompressionLevel)), который может не обеспечить наиболее эффективное сжатие. При необходимости наиболее эффективного сжатия настройте по промежуточного слоя для оптимального сжатия.
 
-| Уровень сжатия | Описание |
+| Уровень сжатия | Описание: |
 | ----------------- | ----------- |
 | [CompressionLevel.Fastest](xref:System.IO.Compression.CompressionLevel) | Сжатие следует выполнить как можно быстрее, даже если полученный результат не сжат оптимально. |
 | [CompressionLevel.NoCompression](xref:System.IO.Compression.CompressionLevel) | Не требуется сжимать. |
@@ -287,7 +287,7 @@ public void ConfigureServices(IServiceCollection services)
 
 Установка уровня с помощью сжатия <xref:Microsoft.AspNetCore.ResponseCompression.GzipCompressionProviderOptions>. По умолчанию используется поставщик сжатие Gzip наиболее быстрый уровень сжатия ([CompressionLevel.Fastest](xref:System.IO.Compression.CompressionLevel)), который может не обеспечить наиболее эффективное сжатие. При необходимости наиболее эффективного сжатия настройте по промежуточного слоя для оптимального сжатия.
 
-| Уровень сжатия | Описание |
+| Уровень сжатия | Описание: |
 | ----------------- | ----------- |
 | [CompressionLevel.Fastest](xref:System.IO.Compression.CompressionLevel) | Сжатие следует выполнить как можно быстрее, даже если полученный результат не сжат оптимально. |
 | [CompressionLevel.NoCompression](xref:System.IO.Compression.CompressionLevel) | Не требуется сжимать. |
@@ -432,7 +432,7 @@ public void ConfigureServices(IServiceCollection services)
 
 ## <a name="middleware-issue-when-behind-an-nginx-reverse-proxy"></a>По промежуточного слоя проблемы при работе за Nginx обратный прокси-сервер
 
-При наличии запроса, передаются Nginx, `Accept-Encoding` заголовок удаляется. Удаление `Accept-Encoding` заголовок запрещает сжатие ответ по промежуточного слоя. Дополнительные сведения см. в разделе [NGINX: сжатия и распаковки](https://www.nginx.com/resources/admin-guide/compression-and-decompression/). Эта проблема отслеживается [выяснить сквозной сжатие для Nginx (aspnet/BasicMiddleware \#123)](https://github.com/aspnet/BasicMiddleware/issues/123).
+При наличии запроса, передаются Nginx, `Accept-Encoding` заголовок удаляется. Удаление `Accept-Encoding` заголовок запрещает сжатие ответ по промежуточного слоя. Дополнительные сведения см. в разделе [NGINX: Сжатие и распаковку](https://www.nginx.com/resources/admin-guide/compression-and-decompression/). Эта проблема отслеживается [выяснить сквозной сжатие для Nginx (aspnet/BasicMiddleware \#123)](https://github.com/aspnet/BasicMiddleware/issues/123).
 
 ## <a name="working-with-iis-dynamic-compression"></a>Работа с динамического сжатия служб IIS
 
@@ -465,6 +465,6 @@ public void ConfigureServices(IServiceCollection services)
 * <xref:fundamentals/startup>
 * <xref:fundamentals/middleware/index>
 * [Сеть разработчиков Mozilla: Приемлемой кодировкой](https://developer.mozilla.org/docs/Web/HTTP/Headers/Accept-Encoding)
-* [RFC 7231 раздел 3.1.2.1: Содержимого Codings](https://tools.ietf.org/html/rfc7231#section-3.1.2.1)
-* [RFC 7230 разделе 4.2.3: Кодирования Gzip](https://tools.ietf.org/html/rfc7230#section-4.2.3)
+* [Раздел RFC 7231 3.1.2.1: Codings содержимого](https://tools.ietf.org/html/rfc7231#section-3.1.2.1)
+* [RFC 7230 разделе 4.2.3: Кодирование в gzip](https://tools.ietf.org/html/rfc7230#section-4.2.3)
 * [Версия спецификации формата файла GZIP 4.3](http://www.ietf.org/rfc/rfc1952.txt)

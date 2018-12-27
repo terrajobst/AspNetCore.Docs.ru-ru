@@ -5,14 +5,14 @@ description: Узнайте, как запустить существующее 
 keywords: Windows Containers,Docker,ASP.NET MVC
 author: BillWagner
 ms.author: wiwagn
-ms.date: 02/01/2017
+ms.date: 12/14/2018
 ms.assetid: c9f1d52c-b4bd-4b5d-b7f9-8f9ceaf778c4
-ms.openlocfilehash: 7b34187747d3081998b8b60a72adae78cafe2c3e
-ms.sourcegitcommit: 375e9a67f5e1f7b0faaa056b4b46294cc70f55b7
+ms.openlocfilehash: ef184f4256c20e2a66de8fd2d4f8e67f07d9a086
+ms.sourcegitcommit: 6548c19f345850ee22b50f7ef9fca732895d9e08
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50207970"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53425163"
 ---
 # <a name="migrating-aspnet-mvc-applications-to-windows-containers"></a>Перенос приложений ASP.NET MVC в контейнеры Windows
 
@@ -68,9 +68,9 @@ ms.locfileid: "50207970"
 
 ## <a name="build-the-image"></a>Сборка образа
 
-Определение образа Docker в Dockerfile. Dockerfile содержит инструкции для базового образа, дополнительные компоненты, приложение, которое нужно запустить, и другие образы конфигурации.  Dockerfile содержит входные параметры для команды `docker build`, которая создает образ.
+Создайте файл с именем *Dockerfile* для определения образа Docker. *Dockerfile* содержит инструкции для создания окончательного образа, включая любые имена базового образа, необходимые компоненты, вы хотите запустить приложение и другие образы конфигурации. *Dockerfile* входным `docker build` команду, которая создает изображения.
 
-Вы создадите образ на основе образа `microsoft/aspnet`, расположенного на [Docker Hub](https://hub.docker.com/r/microsoft/aspnet/).
+В этом упражнении вы создадите образ на основе `microsoft/aspnet` образа, расположенного на [Docker Hub](https://hub.docker.com/r/microsoft/aspnet/).
 Базовый образ `microsoft/aspnet` — это образ Windows Server. Он содержит Windows Server Core, IIS и ASP.NET 4.7.2. При запуске этого образа в контейнере он автоматически использует IIS и установленные веб-сайты.
 
 Dockerfile, который создает образ, выглядит следующим образом:

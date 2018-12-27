@@ -3,15 +3,15 @@ title: Создание приложения ASP.NET Core с помощью да
 author: rick-anderson
 description: Узнайте, как создать приложение Razor Pages с помощью данных пользователя с помощью авторизации. Включает протокол HTTPS, проверка подлинности и безопасность, удостоверения ASP.NET Core.
 ms.author: riande
-ms.date: 12/07/2018
+ms.date: 12/18/2018
 ms.custom: seodec18
 uid: security/authorization/secure-data
-ms.openlocfilehash: d49ee7779b425d625b81c8a65694121c616bfba6
-ms.sourcegitcommit: 49faca2644590fc081d86db46ea5e29edfc28b7b
+ms.openlocfilehash: fa82d3d99f4e4b7ad17ed385fb7c029745797e8d
+ms.sourcegitcommit: 816f39e852a8f453e8682081871a31bc66db153a
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 12/09/2018
-ms.locfileid: "53121639"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53637837"
 ---
 # <a name="create-an-aspnet-core-app-with-user-data-protected-by-authorization"></a>Создание приложения ASP.NET Core с помощью данных пользователя с помощью авторизации
 
@@ -57,7 +57,7 @@ ms.locfileid: "53121639"
 
 Администратор имеет все привилегии. Она может чтения, изменить или удалить любой контакт и изменить состояние контактов.
 
-Приложение было создано [формирования шаблонов](xref:tutorials/first-mvc-app-xplat/adding-model#scaffold-the-moviecontroller) следующие `Contact` модели:
+Приложение было создано [формирования шаблонов](xref:tutorials/first-mvc-app/adding-model#scaffold-the-movie-model) следующие `Contact` модели:
 
 [!code-csharp[](secure-data/samples/starter2.1/Models/Contact.cs?name=snippet)]
 
@@ -65,7 +65,7 @@ ms.locfileid: "53121639"
 
 * `ContactIsOwnerAuthorizationHandler`: Гарантирует, что пользователь может изменить только свои данные.
 * `ContactManagerAuthorizationHandler`: Менеджеры для утверждения или отклонения контактов.
-* `ContactAdministratorsAuthorizationHandler`: Позволяет администраторам для утверждения или отклонения контакты и изменить или удалить контакты.
+* `ContactAdministratorsAuthorizationHandler`: Администраторы могут утверждать или отклонять контакты и изменить или удалить контакты.
 
 ## <a name="prerequisites"></a>Предварительные требования
 
@@ -284,7 +284,7 @@ dotnet user-secrets set SeedUserPW <PW>
 
 Если вы еще не настроили пароль для учетных записей пользователей на основании добавляемых, использовать [средство Secret Manager](xref:security/app-secrets#secret-manager) Установка пароля:
 
-* Выберите надежный пароль: используйте восемь или дополнительные символы хотя бы один символ верхнего регистра, число и символ. Например `Passw0rd!` требованиям надежный пароль.
+* Выберите надежный пароль. Использовать восемь или больше символов и хотя бы один символ верхнего регистра, чисел и символов. Например `Passw0rd!` требованиям надежный пароль.
 * Выполните следующую команду из папки проекта, где `<PW>` пароль:
 
   ```console

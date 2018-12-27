@@ -3,14 +3,14 @@ title: Поставщики хранилища ключей в ASP.NET Core
 author: rick-anderson
 description: Дополнительные сведения о поставщиках хранилища ключей в ASP.NET Core и как настроить расположения хранилища ключей.
 ms.author: riande
-ms.date: 12/06/2018
+ms.date: 12/19/2018
 uid: security/data-protection/implementation/key-storage-providers
-ms.openlocfilehash: e10271d5979b503a8a842f8866a0e2a3fa040656
-ms.sourcegitcommit: 49faca2644590fc081d86db46ea5e29edfc28b7b
+ms.openlocfilehash: d6dabc9e4581e0891d1dd14f73e086d50b45bba4
+ms.sourcegitcommit: 3e94d192b2ed9409fe72e3735e158b333354964c
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 12/09/2018
-ms.locfileid: "53121457"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53735743"
 ---
 # <a name="key-storage-providers-in-aspnet-core"></a>Поставщики хранилища ключей в ASP.NET Core
 
@@ -125,6 +125,38 @@ public void ConfigureServices(IServiceCollection services)
 Универсальный параметр `TContext`, должен наследовать от [DbContext](/dotnet/api/microsoft.entityframeworkcore.dbcontext) и [IDataProtectionKeyContext](/dotnet/api/microsoft.aspnetcore.dataprotection.entityframeworkcore.idataprotectionkeycontext):
 
 [!code-csharp[Main](key-storage-providers/sample/MyKeysContext.cs)]
+
+Создание `DataProtectionKeys` таблицы. 
+
+# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
+
+Выполните следующие команды в **консоль диспетчера пакетов** окна (PMC):
+
+```PowerShell
+Add-Migration AddDataProtectionKeys -Context MyKeysContext
+Update-Database -Context MyKeysContext
+```
+
+# <a name="net-core-clitabnetcore-cli"></a>[Интерфейс командной строки .NET Core](#tab/netcore-cli)
+
+Выполните следующие команды в командной строке:
+
+```console
+dotnet ef migrations add AddDataProtectionKeys --context MyKeysContext
+dotnet ef database update --context MyKeysContext
+```
+
+---
+
+`MyKeysContext` является `DbContext` определенный в предыдущем примере кода. Если вы используете `DbContext` с другим именем, замените вашей `DbContext` имя `MyKeysContext`.
+
+`DataProtectionKeys` На сущность класса принимает структуру, представленную в следующей таблице.
+
+| Свойство или поле | Тип CLR | Тип SQL              |
+| -------------- | -------- | --------------------- |
+| `Id`           | `int`    | `int`, Первичный ключ, не равно null   |
+| `FriendlyName` | `string` | `nvarchar(MAX)`, значение null |
+| `Xml`          | `string` | `nvarchar(MAX)`, значение null |
 
 ::: moniker-end
 

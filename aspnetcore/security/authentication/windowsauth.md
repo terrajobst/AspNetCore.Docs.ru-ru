@@ -1,23 +1,23 @@
 ---
 title: Настройка проверки подлинности Windows в ASP.NET Core
 author: scottaddie
-description: Узнайте, как настроить проверку подлинности Windows в ASP.NET Core, используя IIS Express, службы IIS, HTTP.sys и WebListener.
+description: Узнайте, как настроить проверку подлинности Windows в ASP.NET Core, используя IIS Express, службы IIS и HTTP.sys.
 ms.author: riande
 ms.custom: mvc, seodec18
-ms.date: 11/01/2018
+ms.date: 12/18/2018
 uid: security/authentication/windowsauth
-ms.openlocfilehash: 15e388433cc9b01e9db3e2fb56aca1ebb5ba5ba4
-ms.sourcegitcommit: b34b25da2ab68e6495b2460ff570468f16a9bf0d
+ms.openlocfilehash: 94dff2f47b2b076cb15f8d385239179b52786678
+ms.sourcegitcommit: 816f39e852a8f453e8682081871a31bc66db153a
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53284432"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53637824"
 ---
 # <a name="configure-windows-authentication-in-aspnet-core"></a>Настройка проверки подлинности Windows в ASP.NET Core
 
 Авторы: [Стив Смит](https://ardalis.com) (Steve Smith) и [Скотт Эдди](https://twitter.com/Scott_Addie) (Scott Addie)
 
-Проверка подлинности Windows можно настроить для приложений ASP.NET Core, размещенных в IIS, [HTTP.sys](xref:fundamentals/servers/httpsys), или [WebListener](xref:fundamentals/servers/weblistener).
+Проверка подлинности Windows можно настроить для приложений ASP.NET Core, размещенных в службах IIS или [HTTP.sys](xref:fundamentals/servers/httpsys).
 
 ## <a name="windows-authentication"></a>Проверка подлинности Windows
 
@@ -55,7 +55,7 @@ ms.locfileid: "53284432"
 
 ## <a name="enable-windows-authentication-with-iis"></a>Включить проверку подлинности Windows со службами IIS
 
-Службы IIS используют [модуля ASP.NET Core](xref:fundamentals/servers/aspnet-core-module) для размещения приложений ASP.NET Core. В службах IIS, приложение не настроена проверка подлинности Windows. Ниже показано, как использовать диспетчер служб IIS для настройки приложения ASP.NET Core для использования проверки подлинности Windows.
+Службы IIS используют [модуля ASP.NET Core](xref:host-and-deploy/aspnet-core-module) для размещения приложений ASP.NET Core. В службах IIS, приложение не настроена проверка подлинности Windows. Ниже показано, как использовать диспетчер служб IIS для настройки приложения ASP.NET Core для использования проверки подлинности Windows.
 
 ### <a name="iis-configuration"></a>Конфигурация IIS
 
@@ -89,8 +89,6 @@ ms.locfileid: "53284432"
 
 Запустите приложение, чтобы убедиться, что проверка подлинности Windows работает.
 
-::: moniker range=">= aspnetcore-2.0"
-
 ## <a name="enable-windows-authentication-with-httpsys"></a>Включить проверку подлинности Windows с использованием HTTP.sys
 
 Несмотря на то, что Kestrel не поддерживает проверку подлинности Windows, можно использовать [HTTP.sys](xref:fundamentals/servers/httpsys) для поддержки сценариев резидентных в Windows. В следующем примере настраивается узел веб-приложения для использования HTTP.sys с проверкой подлинности Windows:
@@ -103,28 +101,13 @@ ms.locfileid: "53284432"
 > [!NOTE]
 > HTTP.sys не поддерживается на сервере Nano Server версии 1709 или более поздней версии. Чтобы использовать проверку подлинности Windows и HTTP.sys с сервером Nano Server, используйте [контейнера Server Core (microsoft/windowsservercore)](https://hub.docker.com/r/microsoft/windowsservercore/). Дополнительные сведения о Server Core см. в разделе [Какова вариант установки Server Core в Windows Server?](/windows-server/administration/server-core/what-is-server-core).
 
-::: moniker-end
-
-::: moniker range="< aspnetcore-2.0"
-
-## <a name="enable-windows-authentication-with-weblistener"></a>Включить проверку подлинности Windows с помощью WebListener
-
-Несмотря на то, что Kestrel не поддерживает проверку подлинности Windows, можно использовать [WebListener](xref:fundamentals/servers/weblistener) для поддержки сценариев резидентных в Windows. В следующем примере настраивается узел веб-приложения для использования WebListener с проверкой подлинности Windows:
-
-[!code-csharp[](windowsauth/sample/Program1x.cs?highlight=6-11)]
-
-> [!NOTE]
-> WebListener делегирует задачи в проверку подлинности в режиме ядра с помощью протокола проверки подлинности Kerberos. Проверка подлинности в режиме пользователя не поддерживается с Kerberos и WebListener. Необходимо использовать учетную запись компьютера для расшифровки маркера/билета Kerberos, полученного из Active Directory и переадресованного клиентом на сервер для проверки подлинности пользователя. Зарегистрируйте имя субъекта-службы (SPN) для узла, а не пользователя приложения.
-
-::: moniker-end
-
 ## <a name="work-with-windows-authentication"></a>Работа с проверкой подлинности Windows
 
 Состояние конфигурации анонимный доступ определяет способ, которым `[Authorize]` и `[AllowAnonymous]` атрибуты используются в приложении. Следующих двух разделах объясняется, как обрабатывать запрещенные и разрешенные конфигурации состояния анонимный доступ.
 
 ### <a name="disallow-anonymous-access"></a>Запретить анонимный доступ
 
-Если включена проверка подлинности Windows и анонимный доступ отключен, `[Authorize]` и `[AllowAnonymous]` атрибуты никак не влияют. Если IIS сайта (или сервера HTTP.sys или WebListener) настроен на запрет анонимного доступа, никогда не достигнут приложения. По этой причине `[AllowAnonymous]` атрибут не применяется.
+Если включена проверка подлинности Windows и анонимный доступ отключен, `[Authorize]` и `[AllowAnonymous]` атрибуты никак не влияют. Если IIS сайта (или HTTP.sys) настроен на запрет анонимного доступа, никогда не достигнут приложения. По этой причине `[AllowAnonymous]` атрибут не применяется.
 
 ### <a name="allow-anonymous-access"></a>Разрешить анонимный доступ
 

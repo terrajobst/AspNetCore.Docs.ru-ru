@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 11/11/2018
 uid: security/authentication/microsoft-logins
-ms.openlocfilehash: 89969370cea66b7b6632f1b0be59e135767c831e
-ms.sourcegitcommit: 09bcda59a58019fdf47b2db5259fe87acf19dd38
+ms.openlocfilehash: 4909a0084994654777ad7a6ebda866ac727f0528
+ms.sourcegitcommit: 3e94d192b2ed9409fe72e3735e158b333354964c
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51708404"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53735756"
 ---
 # <a name="microsoft-account-external-login-setup-with-aspnet-core"></a>Настройка внешней учетной записи учетной записи Майкрософт с помощью ASP.NET Core
 
@@ -80,9 +80,9 @@ ms.locfileid: "51708404"
 Добавление службы учетной записи Майкрософт в `ConfigureServices` метод в *Startup.cs* файла:
 
 ```csharp
-services.AddIdentity<ApplicationUser, IdentityRole>()
-        .AddEntityFrameworkStores<ApplicationDbContext>()
-        .AddDefaultTokenProviders();
+services.AddDefaultIdentity<IdentityUser>()
+        .AddDefaultUI(UIFramework.Bootstrap4)
+        .AddEntityFrameworkStores<ApplicationDbContext>();
 
 services.AddAuthentication().AddMicrosoftAccount(microsoftOptions =>
 {
@@ -119,7 +119,7 @@ app.UseMicrosoftAccountAuthentication(new MicrosoftAccountOptions()
 
 Запустите приложение и нажмите кнопку **вход**. Появится возможность входа с учетной записью Майкрософт:
 
-![Веб-приложение журнала на странице: пользователь не прошел проверку подлинности](index/_static/DoneMicrosoft.png)
+![Веб-приложение журнала на странице: Пользователь не прошел проверку подлинности](index/_static/DoneMicrosoft.png)
 
 Если щелкнуть on Microsoft, вы будете перенаправлены в корпорацию Майкрософт для проверки подлинности. После входа под учетной записью Майкрософт (если это не сделано) вам будет предложено разрешить приложению доступ к вашим сведениям:
 
@@ -129,7 +129,7 @@ app.UseMicrosoftAccountAuthentication(new MicrosoftAccountOptions()
 
 Теперь вы вошли с использованием учетных данных Майкрософт:
 
-![Веб-приложения: пользователь прошел проверку подлинности](index/_static/Done.png)
+![Веб-приложение: Пользователь прошел проверку подлинности](index/_static/Done.png)
 
 [!INCLUDE[Forward request information when behind a proxy or load balancer section](includes/forwarded-headers-middleware.md)]
 
@@ -138,7 +138,7 @@ app.UseMicrosoftAccountAuthentication(new MicrosoftAccountOptions()
 * Если поставщик учетной записи Майкрософт вы будете перенаправлены к странице ошибки входа, обратите внимание, ошибка заголовок и описание параметров строки запроса сразу после `#` (хэштег) в Uri.
 
   Несмотря на то, что сообщение об ошибке кажется указывают на проблему с использованием проверки подлинности, наиболее распространенной причиной является Uri, не соответствующих ни одному из приложения **URI перенаправления** для **Web** платформы .
-* **ASP.NET Core 2.x только:** Если удостоверение не настроена, вызвав `services.AddIdentity` в `ConfigureServices`, пытающиеся выполнить проверку подлинности приведет к *ArgumentException: необходимо указать параметр «SignInScheme»*. Шаблон проекта, используемый в этом руководстве гарантирует, что это будет сделано.
+* **ASP.NET Core 2.x только:** Если удостоверение не настроена, вызвав `services.AddIdentity` в `ConfigureServices`, пытающиеся выполнить проверку подлинности приведет к *ArgumentException: Необходимо указать параметр «SignInScheme»*. Шаблон проекта, используемый в этом руководстве гарантирует, что это будет сделано.
 * Если база данных сайта не был создан путем применения первоначальной миграции, вы получите *сбой операции из базы данных при обработке запроса* ошибки. Коснитесь **применить миграции** для создания базы данных и обновить, чтобы продолжить выполнение после ошибки.
 
 ## <a name="next-steps"></a>Следующие шаги
