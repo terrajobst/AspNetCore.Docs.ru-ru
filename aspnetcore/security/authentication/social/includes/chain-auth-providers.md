@@ -1,6 +1,6 @@
-## <a name="multiple-authentication-providers"></a><span data-ttu-id="aa501-101">Несколько поставщиков проверки подлинности</span><span class="sxs-lookup"><span data-stu-id="aa501-101">Multiple authentication providers</span></span>
+## <a name="multiple-authentication-providers"></a><span data-ttu-id="c1db4-101">Несколько поставщиков проверки подлинности</span><span class="sxs-lookup"><span data-stu-id="c1db4-101">Multiple authentication providers</span></span>
 
-<span data-ttu-id="aa501-102">Если приложению требуется несколько поставщиков, объедините в цепочку методы расширения поставщика, реализующие [AddAuthentication](/dotnet/api/microsoft.extensions.dependencyinjection.authenticationservicecollectionextensions.addauthentication):</span><span class="sxs-lookup"><span data-stu-id="aa501-102">When the app requires multiple providers, chain the provider extension methods behind [AddAuthentication](/dotnet/api/microsoft.extensions.dependencyinjection.authenticationservicecollectionextensions.addauthentication):</span></span>
+<span data-ttu-id="c1db4-102">Если приложению требуется несколько поставщиков, объедините в цепочку методы расширения поставщика, реализующие [AddAuthentication](/dotnet/api/microsoft.extensions.dependencyinjection.authenticationservicecollectionextensions.addauthentication):</span><span class="sxs-lookup"><span data-stu-id="c1db4-102">When the app requires multiple providers, chain the provider extension methods behind [AddAuthentication](/dotnet/api/microsoft.extensions.dependencyinjection.authenticationservicecollectionextensions.addauthentication):</span></span>
 
 ```csharp
 services.AddAuthentication()
