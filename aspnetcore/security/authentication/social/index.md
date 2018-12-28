@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 11/11/2018
 uid: security/authentication/social/index
-ms.openlocfilehash: 19074d5014a09446ceec1b89449e78760fc8e7cf
-ms.sourcegitcommit: 09bcda59a58019fdf47b2db5259fe87acf19dd38
+ms.openlocfilehash: 47ac1f966ff727957e6ed700c3c68efa16b1b38b
+ms.sourcegitcommit: 3e94d192b2ed9409fe72e3735e158b333354964c
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51708378"
+ms.lasthandoff: 12/24/2018
+ms.locfileid: "53735730"
 ---
 # <a name="facebook-google-and-external-provider-authentication-in-aspnet-core"></a>Проверка подлинности Facebook, Google и внешних поставщиков в ASP.NET Core
 
@@ -25,8 +25,6 @@ ms.locfileid: "51708378"
 
 Возможность выполнять вход с использованием существующих учетных данных очень удобна и позволяет передать все задачи, связанные с управлением процессом входа, сторонней организации. Демонстрацию того, как вход с использованием учетных данных социальных сетей помогает повысить трафик и количество конверсий, см. в примерах для [Facebook](https://www.facebook.com/unsupportedbrowser) и [Twitter](https://dev.twitter.com/resources/case-studies).
 
-Примечание. Представленные здесь пакеты абстрагируют значительную часть задач, связанных с процессом проверки подлинности OAuth, однако для эффективного устранения неполадок необходимо понимать общие сведения об их реализации. Также вы можете воспользоваться множеством доступных ресурсов, например содержащих [общие сведения о протоколе OAuth 2](https://www.digitalocean.com/community/tutorials/an-introduction-to-oauth-2) или [описание основных принципов работы OAuth 2](http://www.bubblecode.net/2016/01/22/understanding-oauth2/). Некоторые проблемы можно устранить, ознакомившись с [исходным кодом ASP.NET Core для пакетов поставщиков](https://github.com/aspnet/Security/tree/master/src).
-
 ## <a name="create-a-new-aspnet-core-project"></a>Создание проекта ASP.NET Core
 
 * В Visual Studio 2017 создайте проект на начальной странице или выбрав **Файл** > **Создать** > **Проект**.
@@ -39,7 +37,7 @@ ms.locfileid: "51708378"
 
 ![Диалоговое окно "Создание веб-приложения"](index/_static/select-project.png)
 
-Примечание. Это руководство относится к пакету SDK версии ASP.NET Core 2.0, который можно выбрать в верхней части мастера.
+Примечание. Этот учебник относится к версии пакета SDK для ASP.NET Core 2.0, которую можно выбрать в верхней части мастера.
 
 ## <a name="apply-migrations"></a>Применение миграции
 
@@ -54,7 +52,7 @@ ms.locfileid: "51708378"
 
 Проекты, создаваемые по шаблонам **Веб-приложение** или **Веб-API** в ASP.NET Core 2.1 и более поздних версиях, автоматически активируют протокол SSL. При выборе параметра **Индивидуальные учетные записи пользователей** в диалоговом окне **Изменение способа проверки подлинности** мастера проектов приложение запускается с безопасной конечной точкой по умолчанию.
 
-Дополнительные сведения см. в разделе <xref:security/enforcing-ssl>.
+Для получения дополнительной информации см. <xref:security/enforcing-ssl>.
 
 [!INCLUDE[Forward request information when behind a proxy or load balancer section](includes/forwarded-headers-middleware.md)]
 
@@ -101,4 +99,4 @@ ms.locfileid: "51708378"
 
 * Инструкции по настройке учетных данных для входа, используемых вашим приложением, см. на соответствующих страницах поставщиков.
 
-* Вы можете сохранить дополнительные данные о пользователях и их маркерах доступа и обновления. Дополнительные сведения см. в разделе <xref:security/authentication/social/additional-claims>.
+* Вы можете сохранить дополнительные данные о пользователях и их маркерах доступа и обновления. Для получения дополнительной информации см. <xref:security/authentication/social/additional-claims>.
