@@ -5,14 +5,14 @@ description: Эта статья содержит ссылки на ресурс
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 12/10/2018
+ms.date: 12/18/2018
 uid: host-and-deploy/azure-apps/index
-ms.openlocfilehash: b6ff2124aac7e866f630cf359cbd188e88906844
-ms.sourcegitcommit: b34b25da2ab68e6495b2460ff570468f16a9bf0d
+ms.openlocfilehash: c70363c9cff94a682553745aba7fd4e396721f4e
+ms.sourcegitcommit: 816f39e852a8f453e8682081871a31bc66db153a
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53284699"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53637681"
 ---
 # <a name="deploy-aspnet-core-apps-to-azure-app-service"></a>Развертывание приложений ASP.NET Core в Службе приложений Azure
 
@@ -114,7 +114,7 @@ ms.locfileid: "53284699"
 * Хранилище SQL;
 * Кэш Redis.
 
-Дополнительные сведения см. в разделе <xref:security/data-protection/implementation/key-storage-providers>.
+Для получения дополнительной информации см. <xref:security/data-protection/implementation/key-storage-providers>.
 
 ## <a name="deploy-aspnet-core-preview-release-to-azure-app-service"></a>Развертывание предварительной версии ASP.NET Core в службе приложений Azure
 
@@ -164,7 +164,7 @@ ms.locfileid: "53284699"
 
 **Использование расширения сайта предварительной версии с шаблоном ARM**
 
-Если вы используете шаблон ARM для создания и развертывания приложений, можно использовать тип ресурса `siteextensions`, чтобы добавить расширение сайта в веб-приложение. Пример:
+Если вы используете шаблон ARM для создания и развертывания приложений, можно использовать тип ресурса `siteextensions`, чтобы добавить расширение сайта в веб-приложение. Например:
 
 [!code-json[](index/sample/arm.json?highlight=2)]
 
@@ -185,7 +185,7 @@ ms.locfileid: "53284699"
 1. В диалоговом окне **Публикация**:
    * Убедитесь, что выбрана конфигурация **Выпуск**.
    * Откройте раскрывающийся список **Режим развертывания** и выберите вариант **Автономное**.
-   * Выберите целевую среду выполнения из раскрывающегося списка **Целевая среда выполнения**. Значение по умолчанию — `win-x86`.
+   * Выберите целевую среду выполнения из раскрывающегося списка **Целевая среда выполнения**. Значение по умолчанию — `win-x86`.
    * Если потребуется удалить дополнительные файлы после развертывания, откройте **Параметры публикации файлов** и установите флажок для удаления дополнительных файлов в месте назначения.
    * Нажмите кнопку **Сохранить**.
 1. Создайте новый сайт или обновите существующий, следуя остальным подсказкам мастера публикации.
@@ -226,7 +226,7 @@ ms.locfileid: "53284699"
 Служба приложений Azure на Windows Server использует [службы IIS](https://www.iis.net/). Технологии IIS посвящены следующие статьи.
 
 * <xref:host-and-deploy/iis/index>
-* <xref:fundamentals/servers/aspnet-core-module>
+* <xref:host-and-deploy/aspnet-core-module>
 * <xref:host-and-deploy/aspnet-core-module>
 * <xref:host-and-deploy/iis/modules>
 * [Библиотека Microsoft TechNet: Windows Server](/windows-server/windows-server-versions)
