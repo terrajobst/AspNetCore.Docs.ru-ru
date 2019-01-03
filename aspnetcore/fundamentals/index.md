@@ -4,14 +4,14 @@ author: rick-anderson
 description: Познакомьтесь с основными понятиями для создания приложений ASP.NET Core.
 ms.author: riande
 ms.custom: mvc
-ms.date: 12/01/2018
+ms.date: 12/18/2018
 uid: fundamentals/index
-ms.openlocfilehash: 8bd447632f915cadcc5199ec50b292ad27f6c3ba
-ms.sourcegitcommit: 9bb58d7c8dad4bbd03419bcc183d027667fefa20
+ms.openlocfilehash: 11dc6336ae7667038983c967f28232bef325f5bb
+ms.sourcegitcommit: 816f39e852a8f453e8682081871a31bc66db153a
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52861593"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53637774"
 ---
 # <a name="aspnet-core-fundamentals"></a>Основы ASP.NET Core
 
@@ -41,7 +41,7 @@ ms.locfileid: "52861593"
 * загружает среду выполнения [.NET Core](https://github.com/dotnet/coreclr);
 * использует первый аргумент командной строки в качестве пути к управляемому двоичному файлу, который содержит точку входа (`Main`) и начинает выполнение кода.
 
-Метод `Main` применяет <xref:Microsoft.AspNetCore.Hosting.WebHostBuilder>, создающий узел веб-приложения по [шаблону конструктора](https://wikipedia.org/wiki/Builder_pattern). Конструктор содержит методы, определяющие веб-сервер (например, <xref:Microsoft.AspNetCore.Hosting.WebHostBuilderKestrelExtensions.UseKestrel*>), а также класс запуска (<xref:Microsoft.AspNetCore.Hosting.WebHostBuilderExtensions.UseStartup*>). В приведенном выше примере используется веб-сервер [Kestrel](xref:fundamentals/servers/kestrel). Другие веб-серверы, такие как [WebListener](xref:fundamentals/servers/weblistener), можно использовать, вызывая соответствующий метод расширения. `UseStartup` подробно описывается в следующем разделе.
+Метод `Main` применяет <xref:Microsoft.AspNetCore.Hosting.WebHostBuilder>, создающий узел веб-приложения по [шаблону конструктора](https://wikipedia.org/wiki/Builder_pattern). Конструктор содержит методы, определяющие веб-сервер (например, <xref:Microsoft.AspNetCore.Hosting.WebHostBuilderKestrelExtensions.UseKestrel*>), а также класс запуска (<xref:Microsoft.AspNetCore.Hosting.WebHostBuilderExtensions.UseStartup*>). В приведенном выше примере используется веб-сервер [Kestrel](xref:fundamentals/servers/kestrel). Другие веб-серверы, такие как [HTTP.sys](xref:fundamentals/servers/httpsys), можно использовать, вызывая соответствующий метод расширения. `UseStartup` подробно описывается в разделе [Для стартапов](#startup).
 
 В `WebHostBuilder` есть множество вспомогательных методов, включая <xref:Microsoft.AspNetCore.Hosting.WebHostBuilderIISExtensions.UseIISIntegration*> для размещения в службах IIS и IIS Express и <xref:Microsoft.Extensions.Hosting.HostingHostBuilderExtensions.UseContentRoot*> для указания корневого каталога содержимого. Методы <xref:Microsoft.AspNetCore.Hosting.IWebHostBuilder.Build*> и <xref:Microsoft.AspNetCore.Hosting.WebHostExtensions.Run*> собирают объект <xref:Microsoft.AspNetCore.Hosting.IWebHost>, в котором будет размещаться приложение, и переходят к ожиданию HTTP-запросов.
 
@@ -79,7 +79,7 @@ ms.locfileid: "52861593"
 
 <xref:Microsoft.AspNetCore.Hosting.IStartup.ConfigureServices*> определяет [службы](#dependency-injection-services), используемые вашим приложением (такие как ASP.NET Core MVC, Entity Framework Core и Identity). <xref:Microsoft.AspNetCore.Hosting.IStartup.Configure*> определяет [ПО промежуточного слоя](xref:fundamentals/middleware/index), вызываемое в конвейере обработки запросов.
 
-Дополнительные сведения см. в разделе <xref:fundamentals/startup>.
+Для получения дополнительной информации см. <xref:fundamentals/startup>.
 
 ## <a name="content-root"></a>Корневой каталог содержимого
 
@@ -95,7 +95,7 @@ ms.locfileid: "52861593"
 
 *Служба* — это компонент, предназначенный для общего использования в приложении. Доступ к службе предоставляется путем [внедрения зависимостей](xref:fundamentals/dependency-injection). ASP.NET Core включает встроенный контейнер для инверсии управления (IoC), который поддерживает [внедрение конструктора](xref:mvc/controllers/dependency-injection#constructor-injection) по умолчанию. При необходимости вы можете заменить контейнер по умолчанию. Помимо формирования [слабых взаимосвязей](/dotnet/standard/modern-web-apps-azure-architecture/architectural-principles#encapsulation), внедрение зависимостей обеспечивает доступ к службам (например, [ведение журнала](xref:fundamentals/logging/index)) в рамках всего приложения.
 
-Дополнительные сведения см. в разделе <xref:fundamentals/dependency-injection>.
+Для получения дополнительной информации см. <xref:fundamentals/dependency-injection>.
 
 ## <a name="middleware"></a>ПО промежуточного слоя
 
@@ -113,7 +113,7 @@ ASP.NET Core включает целый ряд встроенного ПО пр
 
 Можно использовать <xref:System.Net.Http.IHttpClientFactory> для доступа к экземплярам <xref:System.Net.Http.HttpClient> для HTTP-запросов.
 
-Дополнительные сведения см. в разделе <xref:fundamentals/http-requests>.
+Для получения дополнительной информации см. <xref:fundamentals/http-requests>.
 
 ::: moniker-end
 
@@ -121,13 +121,13 @@ ASP.NET Core включает целый ряд встроенного ПО пр
 
 Среды, например *среда разработки* и *рабочая среда*, представляют собой ключевые компоненты ASP.NET Core и могут задаваться с использованием соответствующих переменных среды, файлов параметров и аргумента командной строки.
 
-Дополнительные сведения см. в разделе <xref:fundamentals/environments>.
+Для получения дополнительной информации см. <xref:fundamentals/environments>.
 
 ## <a name="hosting"></a>Размещение
 
 Приложения ASP.NET Core настраивают и запускают *хост*, который отвечает за запуск приложений и управление жизненным циклом.
 
-Дополнительные сведения см. в разделе <xref:fundamentals/host/index>.
+Для получения дополнительной информации см. <xref:fundamentals/host/index>.
 
 ## <a name="servers"></a>Серверы
 
@@ -140,7 +140,7 @@ ASP.NET Core включает целый ряд встроенного ПО пр
 ASP.NET Core предоставляет следующие реализации серверов:
 
 * Сервер [Kestrel](xref:fundamentals/servers/kestrel) — это управляемый кроссплатформенный веб-сервер. Он часто запускается в реконфигурации прокси-сервера с помощью [IIS](https://www.iis.net/). Kestrel также можно использовать в роли общедоступного пограничного сервера с прямым доступом к Интернету в ASP.NET Core 2.0 или более поздней версии.
-* HTTP-сервер службы IIS (`IISHttpServer`) является [внутрипроцессным сервером службы IIS](xref:fundamentals/servers/aspnet-core-module#in-process-hosting-model).
+* HTTP-сервер IIS (`IISHttpServer`) является [внутрипроцессным](xref:fundamentals/servers/index#in-process-hosting-model) сервером для службы IIS.
 * Сервер [HTTP.sys](xref:fundamentals/servers/httpsys) является сервером для ASP.NET Core в Windows.
 
 # <a name="macostabmacos"></a>[macOS](#tab/macos)
@@ -176,40 +176,40 @@ ASP.NET Core использует реализацию сервера [Kestrel](
 
 ::: moniker-end
 
-Дополнительные сведения см. в разделе <xref:fundamentals/servers/index>.
+Для получения дополнительной информации см. <xref:fundamentals/servers/index>.
 
 ## <a name="configuration"></a>Конфигурация
 
 ASP.NET Core использует модель конфигурации на основе пар "имя-значение". Модель конфигурации не основана на <xref:System.Configuration> или *web.config*. Конфигурация получает параметры от упорядоченного набора поставщиков конфигурации. Встроенные поставщики конфигурации поддерживают различные форматы файлов (XML, JSON, INI), переменных среды и аргументов командной строки. Кроме того, можно писать и собственные, пользовательские поставщики конфигурации.
 
-Дополнительные сведения см. в разделе <xref:fundamentals/configuration/index>.
+Для получения дополнительной информации см. <xref:fundamentals/configuration/index>.
 
 ## <a name="logging"></a>Ведение журнала
 
 ASP.NET Core поддерживает API ведения журнала, который работает с разными поставщиками. Встроенные поставщики поддерживают отправку журналов в одно расположение или несколько. Можно также использовать сторонние платформы ведения журнала.
 
-Дополнительные сведения см. в разделе <xref:fundamentals/logging/index>.
+Для получения дополнительной информации см. <xref:fundamentals/logging/index>.
 
 ## <a name="error-handling"></a>Обработка ошибок
 
 ASP.NET Core включает встроенные сценарии для обработки ошибок в приложениях, включая страницу исключений разработчика, настраиваемые страницы ошибок, страницы статических кодов состояний и обработку исключений при запуске.
 
-Дополнительные сведения см. в разделе <xref:fundamentals/error-handling>.
+Для получения дополнительной информации см. <xref:fundamentals/error-handling>.
 
 ## <a name="routing"></a>Маршрутизация
 
 В ASP.NET Core присутствуют сценарии для маршрутизации запросов приложений обработчикам маршрутов.
 
-Дополнительные сведения см. в разделе <xref:fundamentals/routing>.
+Для получения дополнительной информации см. <xref:fundamentals/routing>.
 
 ## <a name="background-tasks"></a>Фоновые задачи
 
 Фоновые задачи реализуются как *размещенные службы*. Размещенная служба — это класс с логикой фоновой задачи, реализующий интерфейс <xref:Microsoft.Extensions.Hosting.IHostedService>.
 
-Дополнительные сведения см. в разделе <xref:fundamentals/host/hosted-services>.
+Для получения дополнительной информации см. <xref:fundamentals/host/hosted-services>.
 
 ## <a name="access-httpcontext"></a>Доступ к HttpContext
 
 Доступ к `HttpContext` предоставляется автоматически при обработке запросов с Razor Pages и MVC. Если к `HttpContext` нет доступа, вы можете получить доступ к `HttpContext` через интерфейс <xref:Microsoft.AspNetCore.Http.IHttpContextAccessor> и реализацию по умолчанию <xref:Microsoft.AspNetCore.Http.HttpContextAccessor>.
 
-Дополнительные сведения см. в разделе <xref:fundamentals/httpcontext>.
+Для получения дополнительной информации см. <xref:fundamentals/httpcontext>.

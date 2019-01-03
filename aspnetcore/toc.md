@@ -11,11 +11,7 @@
 ### [Использование веб-API с MongoDB](xref:tutorials/first-mongo-app)
 ## Веб-приложения
 ### [Razor Pages](xref:tutorials/razor-pages/index)
-
-### MVC
-#### [С Visual Studio](xref:tutorials/first-mvc-app/index)
-#### [С Visual Studio Code](xref:tutorials/first-mvc-app-xplat/index)
-#### [С Visual Studio для Mac](xref:tutorials/first-mvc-app-mac/index)
+### [MVC](xref:tutorials/first-mvc-app/index)
 
 ## Веб-приложения в режиме реального времени
 ### [SignalR с JavaScript](xref:tutorials/signalr)
@@ -46,11 +42,7 @@
 ### [Обзор](xref:fundamentals/host/index)
 ### [Веб-узел](xref:fundamentals/host/web-host)
 ### [Универсальный узел](xref:fundamentals/host/generic-host)
-## Серверы
-### [Обзор](xref:fundamentals/servers/index)
-### [Kestrel](xref:fundamentals/servers/kestrel)
-### [Модуль ASP.NET Core](xref:fundamentals/servers/aspnet-core-module)
-### [HTTP.sys](xref:fundamentals/servers/httpsys)
+## [Серверы](xref:fundamentals/servers/index)
 ## [Инициирование HTTP-запросов](xref:fundamentals/http-requests)
 
 # Веб-приложения
@@ -66,50 +58,26 @@
 #### [Добавление нового поля](xref:tutorials/razor-pages/new-field)
 #### [Добавление проверки](xref:tutorials/razor-pages/validation)
 
+## MVC
+### [Обзор MVC](xref:mvc/overview)
+### [Руководство по MVC](xref:tutorials/first-mvc-app/index)
+#### [Начало работы](xref:tutorials/first-mvc-app/start-mvc)
+#### [Добавление контроллера](xref:tutorials/first-mvc-app/adding-controller)
+#### [Добавление представления](xref:tutorials/first-mvc-app/adding-view)
+#### [Добавление модели](xref:tutorials/first-mvc-app/adding-model)
+#### [Работа с базой данных](xref:tutorials/first-mvc-app/working-with-sql)
+#### [Действия и представления контроллера](xref:tutorials/first-mvc-app/controller-methods-views)
+#### [Добавление поиска](xref:tutorials/first-mvc-app/search)
+#### [Добавление нового поля](xref:tutorials/first-mvc-app/new-field)
+#### [Добавление проверки](xref:tutorials/first-mvc-app/validation)
+#### [Изучение методов Details и Delete](xref:tutorials/first-mvc-app/details)
+
 ### [Фильтры](xref:razor-pages/filter)
 ### [Библиотеки классов Razor](xref:razor-pages/ui-class)
 ### [Соглашения для маршрутов и приложений](xref:razor-pages/razor-pages-conventions)
 ### [Отправка файлов](xref:razor-pages/upload-files)
 ### [Пакет SDK для Razor](xref:razor-pages/sdk)
-## MVC
-### [Обзор](xref:mvc/overview)
-### Учебники
-#### MVC с Visual Studio
-##### [Обзор](xref:tutorials/first-mvc-app/index)
-##### [Начало работы](xref:tutorials/first-mvc-app/start-mvc)
-##### [Добавление контроллера](xref:tutorials/first-mvc-app/adding-controller)
-##### [Добавление представления](xref:tutorials/first-mvc-app/adding-view)
-##### [Добавление модели](xref:tutorials/first-mvc-app/adding-model)
-##### [Работа с базой данных](xref:tutorials/first-mvc-app/working-with-sql)
-##### [Действия и представления контроллера](xref:tutorials/first-mvc-app/controller-methods-views)
-##### [Добавление поиска](xref:tutorials/first-mvc-app/search)
-##### [Добавление нового поля](xref:tutorials/first-mvc-app/new-field)
-##### [Добавление проверки](xref:tutorials/first-mvc-app/validation)
-##### [Изучение методов Details и Delete](xref:tutorials/first-mvc-app/details)
-#### MVC с Visual Studio Code
-##### [Обзор](xref:tutorials/first-mvc-app-xplat/index)
-##### [Начало работы](xref:tutorials/first-mvc-app-xplat/start-mvc)
-##### [Добавление контроллера](xref:tutorials/first-mvc-app-xplat/adding-controller)
-##### [Добавление представления](xref:tutorials/first-mvc-app-xplat/adding-view)
-##### [Добавление модели](xref:tutorials/first-mvc-app-xplat/adding-model)
-##### [Работа с SQLite](xref:tutorials/first-mvc-app-xplat/working-with-sql)
-##### [Методы и представления контроллера](xref:tutorials/first-mvc-app-xplat/controller-methods-views)
-##### [Добавление поиска](xref:tutorials/first-mvc-app-xplat/search)
-##### [Добавление нового поля](xref:tutorials/first-mvc-app-xplat/new-field)
-##### [Добавление проверки](xref:tutorials/first-mvc-app-xplat/validation)
-##### [Изучение методов Details и Delete](xref:tutorials/first-mvc-app/details)
-#### MVC с Visual Studio для Mac
-##### [Обзор](xref:tutorials/first-mvc-app-mac/index)
-##### [Начало работы](xref:tutorials/first-mvc-app-mac/start-mvc)
-##### [Добавление контроллера](xref:tutorials/first-mvc-app-mac/adding-controller)
-##### [Добавление представления](xref:tutorials/first-mvc-app-mac/adding-view)
-##### [Добавление модели](xref:tutorials/first-mvc-app-mac/adding-model)
-##### [Работа с SQLite](xref:tutorials/first-mvc-app-mac/working-with-sql)
-##### [Методы и представления контроллера](xref:tutorials/first-mvc-app-mac/controller-methods-views)
-##### [Добавление поиска](xref:tutorials/first-mvc-app-mac/search)
-##### [Добавление нового поля](xref:tutorials/first-mvc-app-mac/new-field)
-##### [Добавление проверки](xref:tutorials/first-mvc-app-mac/validation)
-##### [Изучение методов Details и Delete](xref:tutorials/first-mvc-app/details)
+
 ### [Представления](xref:mvc/views/overview)
 ### [Частичные представления](xref:mvc/views/partial)
 ### [Контроллеры](xref:mvc/controllers/actions)
@@ -284,9 +252,11 @@
 ## Размещение в Windows с помощью IIS
 ### [Обзор](xref:host-and-deploy/iis/index)
 ### [Устранение неполадок в IIS](xref:host-and-deploy/iis/troubleshoot)
-### [Справочник по модулю ASP.NET Core](xref:host-and-deploy/aspnet-core-module)
+### [Модуль ASP.NET Core](xref:host-and-deploy/aspnet-core-module)
 ### [Поддержка IIS в Visual Studio](xref:host-and-deploy/iis/development-time-iis-support)
 ### [Модули IIS](xref:host-and-deploy/iis/modules)
+## [Kestrel](xref:fundamentals/servers/kestrel)
+## [HTTP.sys](xref:fundamentals/servers/httpsys)
 ## [Размещение в службе Windows](xref:host-and-deploy/windows-service)
 ## [Размещение в Linux с использованием Nginx](xref:host-and-deploy/linux-nginx)
 ## [Размещение в Linux с использованием Apache](xref:host-and-deploy/linux-apache)
