@@ -4,14 +4,14 @@ author: rick-anderson
 description: Узнайте, как в веб-приложениях ASP.NET Core обслуживать и защищать статические файлы, а также как настраивать ПО промежуточного слоя по размещению статических файлов.
 ms.author: riande
 ms.custom: mvc
-ms.date: 10/18/2018
+ms.date: 12/18/2018
 uid: fundamentals/static-files
-ms.openlocfilehash: fb92141b1864574242b29ecc386024ce72a6be87
-ms.sourcegitcommit: 408921a932448f66cb46fd53c307a864f5323fe5
+ms.openlocfilehash: 4c08d65cc1f658ef08a9b4b362ac7f8a3a243557
+ms.sourcegitcommit: 816f39e852a8f453e8682081871a31bc66db153a
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51570130"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53637785"
 ---
 # <a name="static-files-in-aspnet-core"></a>Статические файлы в ASP.NET Core
 
@@ -246,7 +246,7 @@ app.UseFileServer(enableDirectoryBrowsing: true);
 
 * К URL-адресам содержимого, к которому предоставлен доступ методами `UseDirectoryBrowser` и `UseStaticFiles`, применяются те же требования по регистрозависимости и запрещенным символам, что и к базовой файловой системе. Например, в Windows не учитывается регистр, а в macOS и Linux &mdash; учитывается.
 
-* Приложения ASP.NET Core, размещенные в IIS, используют [Модуль Core ASP.NET](xref:fundamentals/servers/aspnet-core-module) для перенаправления всех запросов к приложению, включая запросы статических файлов. Обработчик статических файлов IIS не используется. Не существует возможности обработать запросы до того, как их обработает модуль.
+* Приложения ASP.NET Core, размещенные в IIS, используют [Модуль Core ASP.NET](xref:host-and-deploy/aspnet-core-module) для перенаправления всех запросов к приложению, включая запросы статических файлов. Обработчик статических файлов IIS не используется. Не существует возможности обработать запросы до того, как их обработает модуль.
 
 * Выполните следующие шаги в диспетчере служб IIS для удаления обработчика статических файлов IIS на уровне сервера или веб-сайта:
     1. Перейдите к компоненту **Модули**.
