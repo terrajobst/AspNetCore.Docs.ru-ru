@@ -1,208 +1,200 @@
 ---
 uid: signalr/overview/getting-started/tutorial-getting-started-with-signalr-and-mvc
-title: Учебник. Начало работы с SignalR 2 и MVC 5 | Документация Майкрософт
+title: Учебник. Чат в реальном времени с SignalR 2 и MVC 5 | Документация Майкрософт
 author: pfletcher
-description: Этом руководстве показано, как использовать ASP.NET SignalR 2 для создания приложения разговора в режиме реального времени. Будет добавить в приложение MVC 5 SignalR и создание представления "Разговор"...
+description: Этом руководстве показано, как использовать ASP.NET SignalR 2 для создания приложения разговора в режиме реального времени. SignalR добавьте в приложение MVC 5.
 ms.author: riande
-ms.date: 06/10/2014
+ms.date: 01/02/2019
 ms.assetid: 80bfe5fb-bdfc-41fe-ac43-2132e5d69fac
 msc.legacyurl: /signalr/overview/getting-started/tutorial-getting-started-with-signalr-and-mvc
 msc.type: authoredcontent
-ms.openlocfilehash: 568f82daa67f33736c2bf7a45a3e1339f265c487
-ms.sourcegitcommit: 74e3be25ea37b5fc8b4b433b0b872547b4b99186
+ms.topic: tutorial
+ms.openlocfilehash: eb4b7e1403f4070d65702b756bf98c5294c7fb17
+ms.sourcegitcommit: 97d7a00bd39c83a8f6bccb9daa44130a509f75ce
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53287526"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54098608"
 ---
-<a name="tutorial-getting-started-with-signalr-2-and-mvc-5"></a><span data-ttu-id="69df5-104">Учебник. Начало работы с SignalR 2 и MVC 5</span><span class="sxs-lookup"><span data-stu-id="69df5-104">Tutorial: Getting Started with SignalR 2 and MVC 5</span></span>
-====================
-<span data-ttu-id="69df5-105">по [Флетчера Патрик](https://github.com/pfletcher), [Teebken Тим](https://github.com/timlt)</span><span class="sxs-lookup"><span data-stu-id="69df5-105">by [Patrick Fletcher](https://github.com/pfletcher), [Tim Teebken](https://github.com/timlt)</span></span>
+# <a name="tutorial-real-time-chat-with-signalr-2-and-mvc-5"></a><span data-ttu-id="6ef81-104">Учебник. Чат в реальном времени с SignalR 2 и MVC 5</span><span class="sxs-lookup"><span data-stu-id="6ef81-104">Tutorial: Real-time chat with SignalR 2 and MVC 5</span></span>
+
+<span data-ttu-id="6ef81-105">Этом руководстве показано, как использовать ASP.NET SignalR 2 для создания приложения разговора в режиме реального времени.</span><span class="sxs-lookup"><span data-stu-id="6ef81-105">This tutorial shows how to use ASP.NET SignalR 2 to create a real-time chat application.</span></span> <span data-ttu-id="6ef81-106">Добавление SignalR в приложение MVC 5 и создание представления чата для отправки и отображения сообщений.</span><span class="sxs-lookup"><span data-stu-id="6ef81-106">You add SignalR to an MVC 5 application and create a chat view to send and display messages.</span></span>
+
+<span data-ttu-id="6ef81-107">В этом руководстве вы:</span><span class="sxs-lookup"><span data-stu-id="6ef81-107">In this tutorial, you:</span></span>
+
+> [!div class="checklist"]
+> * <span data-ttu-id="6ef81-108">Настройка проекта</span><span class="sxs-lookup"><span data-stu-id="6ef81-108">Set up the project</span></span>
+> * <span data-ttu-id="6ef81-109">Запуск образца</span><span class="sxs-lookup"><span data-stu-id="6ef81-109">Run the sample</span></span>
+> * <span data-ttu-id="6ef81-110">Изучите код</span><span class="sxs-lookup"><span data-stu-id="6ef81-110">Examine the code</span></span>
 
 [!INCLUDE [Consider ASP.NET Core SignalR](~/includes/signalr/signalr-version-disambiguation.md)]
 
-[<span data-ttu-id="69df5-106">Скачать завершенный проект</span><span class="sxs-lookup"><span data-stu-id="69df5-106">Download Completed Project</span></span>](http://code.msdn.microsoft.com/Getting-Started-with-c366b2f3)
+## <a name="prerequisites"></a><span data-ttu-id="6ef81-111">Предварительные требования</span><span class="sxs-lookup"><span data-stu-id="6ef81-111">Prerequisites</span></span>
 
-> <span data-ttu-id="69df5-107">Этом руководстве показано, как использовать ASP.NET SignalR 2 для создания приложения разговора в режиме реального времени.</span><span class="sxs-lookup"><span data-stu-id="69df5-107">This tutorial shows how to use ASP.NET SignalR 2 to create a real-time chat application.</span></span> <span data-ttu-id="69df5-108">Следует добавить SignalR в приложение MVC 5 и создать представления чата для отправки и отображения сообщений.</span><span class="sxs-lookup"><span data-stu-id="69df5-108">You will add SignalR to an MVC 5 application and create a chat view to send and display messages.</span></span>
->
-> ## <a name="software-versions-used-in-the-tutorial"></a><span data-ttu-id="69df5-109">Версии программного обеспечения, используемые в этом руководстве</span><span class="sxs-lookup"><span data-stu-id="69df5-109">Software versions used in the tutorial</span></span>
->
->
-> - [<span data-ttu-id="69df5-110">Visual Studio 2013</span><span class="sxs-lookup"><span data-stu-id="69df5-110">Visual Studio 2013</span></span>](https://my.visualstudio.com/Downloads?q=visual%20studio%202013)
-> - <span data-ttu-id="69df5-111">.NET 4.5</span><span class="sxs-lookup"><span data-stu-id="69df5-111">.NET 4.5</span></span>
-> - <span data-ttu-id="69df5-112">MVC 5</span><span class="sxs-lookup"><span data-stu-id="69df5-112">MVC 5</span></span>
-> - <span data-ttu-id="69df5-113">SignalR версии 2</span><span class="sxs-lookup"><span data-stu-id="69df5-113">SignalR version 2</span></span>
->
->
->
-> ## <a name="using-visual-studio-2012-with-this-tutorial"></a><span data-ttu-id="69df5-114">С помощью Visual Studio 2012 с помощью этого руководства</span><span class="sxs-lookup"><span data-stu-id="69df5-114">Using Visual Studio 2012 with this tutorial</span></span>
->
->
-> <span data-ttu-id="69df5-115">Чтобы использовать Visual Studio 2012 с этим руководством, сделайте следующее:</span><span class="sxs-lookup"><span data-stu-id="69df5-115">To use Visual Studio 2012 with this tutorial, do the following:</span></span>
->
-> - <span data-ttu-id="69df5-116">Обновление вашей [диспетчера пакетов](http://docs.nuget.org/docs/start-here/installing-nuget) до последней версии.</span><span class="sxs-lookup"><span data-stu-id="69df5-116">Update your [Package Manager](http://docs.nuget.org/docs/start-here/installing-nuget) to the latest version.</span></span>
-> - <span data-ttu-id="69df5-117">Установка [установщик веб-платформы](https://www.microsoft.com/web/downloads/platform.aspx).</span><span class="sxs-lookup"><span data-stu-id="69df5-117">Install the [Web Platform Installer](https://www.microsoft.com/web/downloads/platform.aspx).</span></span>
-> - <span data-ttu-id="69df5-118">В установщик веб-платформы, найдите и установите **ASP.NET и Web Tools 2013.1 для Visual Studio 2012**.</span><span class="sxs-lookup"><span data-stu-id="69df5-118">In the Web Platform Installer, search for and install **ASP.NET and Web Tools 2013.1 for Visual Studio 2012**.</span></span> <span data-ttu-id="69df5-119">Это будет установки Visual Studio шаблоны для SignalR классов, таких как **центр**.</span><span class="sxs-lookup"><span data-stu-id="69df5-119">This will install Visual Studio templates for SignalR classes such as **Hub**.</span></span>
-> - <span data-ttu-id="69df5-120">Некоторые шаблоны (такие как **класс запуска OWIN**) будут недоступны; для этого используйте файл класса.</span><span class="sxs-lookup"><span data-stu-id="69df5-120">Some templates (such as **OWIN Startup Class**) will not be available; for these, use a Class file instead.</span></span>
->
->
-> ## <a name="tutorial-versions"></a><span data-ttu-id="69df5-121">Учебника по версии</span><span class="sxs-lookup"><span data-stu-id="69df5-121">Tutorial Versions</span></span>
->
-> <span data-ttu-id="69df5-122">Сведения о более ранних версий SignalR, см. в разделе [более старых версий SignalR](../older-versions/index.md).</span><span class="sxs-lookup"><span data-stu-id="69df5-122">For information about earlier versions of SignalR, see [SignalR Older Versions](../older-versions/index.md).</span></span>
->
-> ## <a name="questions-and-comments"></a><span data-ttu-id="69df5-123">Вопросы и комментарии</span><span class="sxs-lookup"><span data-stu-id="69df5-123">Questions and comments</span></span>
->
-> <span data-ttu-id="69df5-124">Оставьте свои отзывы на том, как вам понравилось, и этот учебник и что можно улучшить в комментариях в нижней части страницы.</span><span class="sxs-lookup"><span data-stu-id="69df5-124">Please leave feedback on how you liked this tutorial and what we could improve in the comments at the bottom of the page.</span></span> <span data-ttu-id="69df5-125">Если у вас есть вопросы, которые не имеют отношения к руководству, их можно разместить [форум по ASP.NET SignalR](https://forums.asp.net/1254.aspx/1?ASP+NET+SignalR) или [StackOverflow.com](http://stackoverflow.com/).</span><span class="sxs-lookup"><span data-stu-id="69df5-125">If you have questions that are not directly related to the tutorial, you can post them to the [ASP.NET SignalR forum](https://forums.asp.net/1254.aspx/1?ASP+NET+SignalR) or [StackOverflow.com](http://stackoverflow.com/).</span></span>
+* <span data-ttu-id="6ef81-112">[Visual Studio 2017](https://visualstudio.microsoft.com/downloads/) с **ASP.NET и веб-разработка** рабочей нагрузки.</span><span class="sxs-lookup"><span data-stu-id="6ef81-112">[Visual Studio 2017](https://visualstudio.microsoft.com/downloads/) with the **ASP.NET and web development** workload.</span></span>
 
+## <a name="set-up-the-project"></a><span data-ttu-id="6ef81-113">Настройка проекта</span><span class="sxs-lookup"><span data-stu-id="6ef81-113">Set up the Project</span></span>
 
-## <a name="overview"></a><span data-ttu-id="69df5-126">Обзор</span><span class="sxs-lookup"><span data-stu-id="69df5-126">Overview</span></span>
+<span data-ttu-id="6ef81-114">В этом разделе показано, как использовать Visual Studio 2017 и SignalR 2 для создания пустого приложения ASP.NET MVC 5, добавить библиотеку SignalR и создание приложения чата.</span><span class="sxs-lookup"><span data-stu-id="6ef81-114">This section shows how to use Visual Studio 2017 and SignalR 2 to create an empty ASP.NET MVC 5 application, add the SignalR library, and create the chat application.</span></span>
 
-<span data-ttu-id="69df5-127">В этом руководстве описываются разработку в режиме реального времени веб-приложений ASP.NET SignalR 2 и ASP.NET MVC 5.</span><span class="sxs-lookup"><span data-stu-id="69df5-127">This tutorial introduces you to real-time web application development with ASP.NET SignalR 2 and ASP.NET MVC 5.</span></span> <span data-ttu-id="69df5-128">В этом руководстве используется тот же код приложения чата, как [учебнике SignalR Приступая к работе](tutorial-getting-started-with-signalr.md), но показано, как добавить его в приложение MVC 5.</span><span class="sxs-lookup"><span data-stu-id="69df5-128">The tutorial uses the same chat application code as the [SignalR Getting Started tutorial](tutorial-getting-started-with-signalr.md), but shows how to add it to an MVC 5 application.</span></span>
+1. <span data-ttu-id="6ef81-115">В Visual Studio создайте приложение ASP.NET на C#, ориентированном на .NET Framework 4.5, назовите его SignalRChat и нажмите кнопку ОК.</span><span class="sxs-lookup"><span data-stu-id="6ef81-115">In Visual Studio, create a C# ASP.NET application that targets .NET Framework 4.5, name it SignalRChat, and click OK.</span></span>
 
-<span data-ttu-id="69df5-129">В этом разделе вы узнаете, как следующие задачи разработки SignalR:</span><span class="sxs-lookup"><span data-stu-id="69df5-129">In this topic you will learn the following SignalR development tasks:</span></span>
+    ![Создание веб-](tutorial-getting-started-with-signalr-and-mvc/_static/image1.png)
 
-- <span data-ttu-id="69df5-130">Библиотека SignalR вы добавляете в приложение MVC 5.</span><span class="sxs-lookup"><span data-stu-id="69df5-130">Adding the SignalR library to an MVC 5 application.</span></span>
-- <span data-ttu-id="69df5-131">Создание концентратора и классы startup OWIN для отправки содержимого клиентам.</span><span class="sxs-lookup"><span data-stu-id="69df5-131">Creating hub and OWIN startup classes to push content to clients.</span></span>
-- <span data-ttu-id="69df5-132">С помощью библиотеки jQuery SignalR на веб-странице для отправки сообщений и отобразить обновления от концентратора.</span><span class="sxs-lookup"><span data-stu-id="69df5-132">Using the SignalR jQuery library in a web page to send messages and display updates from the hub.</span></span>
+1. <span data-ttu-id="6ef81-117">В **новый веб-приложение ASP.NET - SignalRMvcChat**выберите **MVC** , а затем выберите **изменить способ проверки подлинности**.</span><span class="sxs-lookup"><span data-stu-id="6ef81-117">In **New ASP.NET Web Application - SignalRMvcChat**, select **MVC** and then select **Change Authentication**.</span></span>
 
-<span data-ttu-id="69df5-133">На следующем снимке экрана показано приложение завершенного чата, работающих в браузере.</span><span class="sxs-lookup"><span data-stu-id="69df5-133">The following screen shot shows the completed chat application running in a browser.</span></span>
+1. <span data-ttu-id="6ef81-118">В **изменить способ проверки подлинности**выберите **без проверки подлинности** и нажмите кнопку **ОК**.</span><span class="sxs-lookup"><span data-stu-id="6ef81-118">In **Change Authentication**, select **No Authentication** and click **OK**.</span></span>
 
-![Экземпляры чата](tutorial-getting-started-with-signalr-and-mvc/_static/image1.png)
+    ![Выберите без проверки подлинности](tutorial-getting-started-with-signalr-and-mvc/_static/image2.png)
 
-<span data-ttu-id="69df5-135">Разделы:</span><span class="sxs-lookup"><span data-stu-id="69df5-135">Sections:</span></span>
+1. <span data-ttu-id="6ef81-120">В **новый веб-приложение ASP.NET - SignalRMvcChat**выберите **ОК**.</span><span class="sxs-lookup"><span data-stu-id="6ef81-120">In **New ASP.NET Web Application - SignalRMvcChat**, select **OK**.</span></span>
 
-- [<span data-ttu-id="69df5-136">Настройка проекта</span><span class="sxs-lookup"><span data-stu-id="69df5-136">Set up the Project</span></span>](#setup)
-- [<span data-ttu-id="69df5-137">Запуск образца</span><span class="sxs-lookup"><span data-stu-id="69df5-137">Run the Sample</span></span>](#run)
-- [<span data-ttu-id="69df5-138">Изучите код</span><span class="sxs-lookup"><span data-stu-id="69df5-138">Examine the Code</span></span>](#code)
-- [<span data-ttu-id="69df5-139">Следующие шаги</span><span class="sxs-lookup"><span data-stu-id="69df5-139">Next Steps</span></span>](#next)
+1. <span data-ttu-id="6ef81-121">В **обозревателе решений**, щелкните правой кнопкой мыши проект и выберите **добавить** > **новый элемент**.</span><span class="sxs-lookup"><span data-stu-id="6ef81-121">In **Solution Explorer**, right-click the project and select **Add** > **New Item**.</span></span>
 
-<a id="setup"></a>
+1. <span data-ttu-id="6ef81-122">В **Добавление нового элемента — SignalRChat**выберите **установленные** > **Visual C#**   >  **Web**  >  **SignalR** , а затем выберите **класс концентратора SignalR (v2)**.</span><span class="sxs-lookup"><span data-stu-id="6ef81-122">In **Add New Item - SignalRChat**, select **Installed** > **Visual C#** > **Web** > **SignalR**  and then select **SignalR Hub Class (v2)**.</span></span>
 
-## <a name="set-up-the-project"></a><span data-ttu-id="69df5-140">Настройка проекта</span><span class="sxs-lookup"><span data-stu-id="69df5-140">Set up the Project</span></span>
+1. <span data-ttu-id="6ef81-123">Назовите класс *ChatHub* и добавьте его в проект.</span><span class="sxs-lookup"><span data-stu-id="6ef81-123">Name the class *ChatHub* and add it to the project.</span></span>
 
-<span data-ttu-id="69df5-141">Предварительные требования</span><span class="sxs-lookup"><span data-stu-id="69df5-141">Prerequisites:</span></span>
+    <span data-ttu-id="6ef81-124">На этом шаге создается *ChatHub.cs* файла и добавляет набор файлов сценариев и ссылки на сборки, которые поддерживают SignalR в проект.</span><span class="sxs-lookup"><span data-stu-id="6ef81-124">This step creates the *ChatHub.cs* class file and adds a set of script files and assembly references that support SignalR to the project.</span></span>
 
-- <span data-ttu-id="69df5-142">Visual Studio 2013.</span><span class="sxs-lookup"><span data-stu-id="69df5-142">Visual Studio 2013.</span></span> <span data-ttu-id="69df5-143">Если у вас нет Visual Studio, см. в разделе [загрузок ASP.NET](https://www.asp.net/downloads) для получения бесплатной Visual Studio 2013 Express средство разработки.</span><span class="sxs-lookup"><span data-stu-id="69df5-143">If you do not have Visual Studio, see [ASP.NET Downloads](https://www.asp.net/downloads) to get the free Visual Studio 2013 Express Development Tool.</span></span>
-
-<span data-ttu-id="69df5-144">В этом разделе показано, как создать приложение ASP.NET MVC 5, добавить библиотеку SignalR и создание приложения чата.</span><span class="sxs-lookup"><span data-stu-id="69df5-144">This section shows how to create an ASP.NET MVC 5 application, add the SignalR library, and create the chat application.</span></span>
-
-1. <span data-ttu-id="69df5-145">В Visual Studio создайте приложение ASP.NET на C#, ориентированном на .NET Framework 4.5, назовите его SignalRChat и нажмите кнопку ОК.</span><span class="sxs-lookup"><span data-stu-id="69df5-145">In Visual Studio, create a C# ASP.NET application that targets .NET Framework 4.5, name it SignalRChat, and click OK.</span></span>
-
-    ![Создание веб-](tutorial-getting-started-with-signalr-and-mvc/_static/image2.png)
-2. <span data-ttu-id="69df5-147">В `New ASP.NET Project` диалоговое окно, а затем выберите **MVC**и нажмите кнопку **изменить способ проверки подлинности**.</span><span class="sxs-lookup"><span data-stu-id="69df5-147">In the `New ASP.NET Project` dialog, and select **MVC**, and click **Change Authentication**.</span></span>
-
-    ![Создание веб-](tutorial-getting-started-with-signalr-and-mvc/_static/image3.png)
-3. <span data-ttu-id="69df5-149">Выберите **без проверки подлинности** в **изменить способ проверки подлинности** окна и нажмите кнопку **ОК**.</span><span class="sxs-lookup"><span data-stu-id="69df5-149">Select **No Authentication** in the **Change Authentication** dialog, and click **OK**.</span></span>
-
-    ![Выберите без проверки подлинности](tutorial-getting-started-with-signalr-and-mvc/_static/image4.png)
-
-    > [!NOTE]
-    > <span data-ttu-id="69df5-151">Если выбрать поставщик проверки подлинности для приложения, `Startup.cs` класса будут создаваться автоматически; не нужно будет создать свой собственный `Startup.cs` класс на шаге 10 ниже.</span><span class="sxs-lookup"><span data-stu-id="69df5-151">If you select a different authentication provider for your application, a `Startup.cs` class will be created for you; you will not need to create your own `Startup.cs` class in step 10 below.</span></span>
-4. <span data-ttu-id="69df5-152">Нажмите кнопку **ОК** в **новый проект ASP.NET** диалоговое окно.</span><span class="sxs-lookup"><span data-stu-id="69df5-152">Click **OK** in the **New ASP.NET Project** dialog.</span></span>
-5. <span data-ttu-id="69df5-153">Откройте **Сервис > Диспетчер пакетов NuGet > консоль диспетчера пакетов** и выполните следующую команду.</span><span class="sxs-lookup"><span data-stu-id="69df5-153">Open the **Tools > NuGet Package Manager > Package Manager Console** and run the following command.</span></span> <span data-ttu-id="69df5-154">Этот шаг добавляет в проект набор файлов сценариев и ссылки на сборки, обеспечивающие функциональные возможности SignalR.</span><span class="sxs-lookup"><span data-stu-id="69df5-154">This step adds to the project a set of script files and assembly references that enable SignalR functionality.</span></span>
-
-    `install-package Microsoft.AspNet.SignalR`
-6. <span data-ttu-id="69df5-155">В **обозревателе решений**, разверните папку «скрипты».</span><span class="sxs-lookup"><span data-stu-id="69df5-155">In **Solution Explorer**, expand the Scripts folder.</span></span> <span data-ttu-id="69df5-156">Обратите внимание на то, что библиотеки скрипта для SignalR были добавлены в проект.</span><span class="sxs-lookup"><span data-stu-id="69df5-156">Note that script libraries for SignalR have been added to the project.</span></span>
-
-    ![Папка скриптов](tutorial-getting-started-with-signalr-and-mvc/_static/image5.png)
-7. <span data-ttu-id="69df5-158">В **обозревателе решений**, щелкните правой кнопкой мыши проект, выберите **Add | Новая папка**, и добавьте новую папку с именем **концентраторов**.</span><span class="sxs-lookup"><span data-stu-id="69df5-158">In **Solution Explorer**, right-click the project, select **Add | New Folder**, and add a new folder named **Hubs**.</span></span>
-8. <span data-ttu-id="69df5-159">Щелкните правой кнопкой мыши **концентраторов** папку, нажмите кнопку **Add | Новый элемент**выберите **Visual C# | Web | SignalR** узел в **установленные** области выберите **класс концентратора SignalR (v2)** в центральной области и создать новый концентратор с именем **ChatHub.cs**.</span><span class="sxs-lookup"><span data-stu-id="69df5-159">Right-click the **Hubs** folder, click **Add | New Item**, select the **Visual C# | Web | SignalR** node in the **Installed** pane, select **SignalR Hub Class (v2)** from the center pane, and create a new hub named **ChatHub.cs**.</span></span> <span data-ttu-id="69df5-160">Этот класс будет использоваться в качестве концентратора сервера SignalR, которое отправляет сообщения на всех клиентах.</span><span class="sxs-lookup"><span data-stu-id="69df5-160">You will use this class as a SignalR server hub that sends messages to all clients.</span></span>
-
-    ![Создание нового концентратора](tutorial-getting-started-with-signalr-and-mvc/_static/image6.png)
-9. <span data-ttu-id="69df5-162">Замените код в **ChatHub** класса следующим кодом.</span><span class="sxs-lookup"><span data-stu-id="69df5-162">Replace the code in the **ChatHub** class with the following code.</span></span>
+1. <span data-ttu-id="6ef81-125">Замените код в новом *ChatHub.cs* файл класса следующим кодом:</span><span class="sxs-lookup"><span data-stu-id="6ef81-125">Replace the code in the new *ChatHub.cs* class file with this code:</span></span>
 
     [!code-csharp[Main](tutorial-getting-started-with-signalr-and-mvc/samples/sample1.cs)]
-10. <span data-ttu-id="69df5-163">Создайте новый класс с именем Startup.cs.</span><span class="sxs-lookup"><span data-stu-id="69df5-163">Create a new class called Startup.cs.</span></span> <span data-ttu-id="69df5-164">Измените содержимое файла следующим образом.</span><span class="sxs-lookup"><span data-stu-id="69df5-164">Change the contents of the file to the following.</span></span>
+
+1. <span data-ttu-id="6ef81-126">В **обозревателе решений**, щелкните правой кнопкой мыши проект и выберите **добавить** > **класс**.</span><span class="sxs-lookup"><span data-stu-id="6ef81-126">In **Solution Explorer**, right-click the project and select **Add** > **Class**.</span></span>
+
+1. <span data-ttu-id="6ef81-127">Назовите новый класс *запуска* и добавьте его в проект.</span><span class="sxs-lookup"><span data-stu-id="6ef81-127">Name the new class *Startup* and add it to the project.</span></span>
+
+1. <span data-ttu-id="6ef81-128">Замените код в *Startup.cs* файл класса следующим кодом:</span><span class="sxs-lookup"><span data-stu-id="6ef81-128">Replace the code in the *Startup.cs* class file with this code:</span></span>
 
     [!code-csharp[Main](tutorial-getting-started-with-signalr-and-mvc/samples/sample2.cs)]
-11. <span data-ttu-id="69df5-165">Изменить `HomeController` класс найден в **Controllers/HomeController.cs** и добавьте следующий метод к классу.</span><span class="sxs-lookup"><span data-stu-id="69df5-165">Edit the `HomeController` class found in **Controllers/HomeController.cs** and add the following method to the class.</span></span> <span data-ttu-id="69df5-166">Этот метод возвращает **Chat** представление, которое вы создадите на более позднем этапе.</span><span class="sxs-lookup"><span data-stu-id="69df5-166">This method returns the **Chat** view that you will create in a later step.</span></span>
+
+1. <span data-ttu-id="6ef81-129">В **обозревателе решений**выберите **контроллеров** > **HomeController.cs**.</span><span class="sxs-lookup"><span data-stu-id="6ef81-129">In **Solution Explorer**, select **Controllers** > **HomeController.cs**.</span></span>
+
+1. <span data-ttu-id="6ef81-130">Добавьте следующий метод для *HomeController.cs*.</span><span class="sxs-lookup"><span data-stu-id="6ef81-130">Add this method to the *HomeController.cs*.</span></span>
 
     [!code-csharp[Main](tutorial-getting-started-with-signalr-and-mvc/samples/sample3.cs)]
-12. <span data-ttu-id="69df5-167">Щелкните правой кнопкой мыши **Views/Home** и выберите **добавить... | Представление**.</span><span class="sxs-lookup"><span data-stu-id="69df5-167">Right-click the **Views/Home** folder, and select **Add... | View**.</span></span>
-13. <span data-ttu-id="69df5-168">В **Добавление представления** диалоговом окне имя нового представления **Chat**.</span><span class="sxs-lookup"><span data-stu-id="69df5-168">In the **Add View** dialog, name the new view **Chat**.</span></span>
 
-    ![Добавление представления](tutorial-getting-started-with-signalr-and-mvc/_static/image7.png)
-14. <span data-ttu-id="69df5-170">Замените содержимое файла **Chat.cshtml** следующим кодом.</span><span class="sxs-lookup"><span data-stu-id="69df5-170">Replace the contents of **Chat.cshtml** with the following code.</span></span>
+    <span data-ttu-id="6ef81-131">Этот метод возвращает **Chat** представление, которое создается на более позднем этапе.</span><span class="sxs-lookup"><span data-stu-id="6ef81-131">This method returns the **Chat** view that you create in a later step.</span></span>
 
-    > [!IMPORTANT]
-    > <span data-ttu-id="69df5-171">При добавлении SignalR и других библиотек сценариев в проект Visual Studio, диспетчер пакетов может установить версию файла скрипта SignalR, более свежие, чем версия, приведенные в этом разделе.</span><span class="sxs-lookup"><span data-stu-id="69df5-171">When you add SignalR and other script libraries to your Visual Studio project, the Package Manager might install a version of the SignalR script file that is more recent than the version shown in this topic.</span></span> <span data-ttu-id="69df5-172">Убедитесь, что ссылку на сценарий в коде совпадает с версией библиотеки сценариев, которые установлены в вашем проекте.</span><span class="sxs-lookup"><span data-stu-id="69df5-172">Make sure that the script reference in your code matches the version of the script library installed in your project.</span></span>
+1. <span data-ttu-id="6ef81-132">В **обозревателе решений**, щелкните правой кнопкой мыши **представления** > **Главная**и выберите **добавить**  >    **Представление**.</span><span class="sxs-lookup"><span data-stu-id="6ef81-132">In **Solution Explorer**, right-click **Views** > **Home**, and select **Add** >  **View**.</span></span>
+
+1. <span data-ttu-id="6ef81-133">В **Добавление представления**, новому представлению имя **Chat** и выберите **добавить**.</span><span class="sxs-lookup"><span data-stu-id="6ef81-133">In **Add View**, name the new view **Chat** and select **Add**.</span></span>
+
+1. <span data-ttu-id="6ef81-134">Замените содержимое файла **Chat.cshtml** следующим кодом:</span><span class="sxs-lookup"><span data-stu-id="6ef81-134">Replace the contents of **Chat.cshtml** with this code:</span></span>
 
     [!code-cshtml[Main](tutorial-getting-started-with-signalr-and-mvc/samples/sample4.cshtml)]
-15. <span data-ttu-id="69df5-173">**Сохранить все** для проекта.</span><span class="sxs-lookup"><span data-stu-id="69df5-173">**Save All** for the project.</span></span>
 
-<a id="run"></a>
+1. <span data-ttu-id="6ef81-135">В **обозревателе решений**, разверните **сценариев**.</span><span class="sxs-lookup"><span data-stu-id="6ef81-135">In **Solution Explorer**, expand **Scripts**.</span></span>
 
-## <a name="run-the-sample"></a><span data-ttu-id="69df5-174">Запуск образца</span><span class="sxs-lookup"><span data-stu-id="69df5-174">Run the Sample</span></span>
+    <span data-ttu-id="6ef81-136">Библиотеки скрипта для jQuery и SignalR, отображаются в проект.</span><span class="sxs-lookup"><span data-stu-id="6ef81-136">Script libraries for jQuery and SignalR are visible in the project.</span></span>
 
-1. <span data-ttu-id="69df5-175">Нажмите клавишу F5, чтобы запустить проект в режиме отладки.</span><span class="sxs-lookup"><span data-stu-id="69df5-175">Press F5 to run the project in debug mode.</span></span>
-2. <span data-ttu-id="69df5-176">В адресной строке браузера добавьте **/home/чата** на URL-адрес страницы по умолчанию для проекта.</span><span class="sxs-lookup"><span data-stu-id="69df5-176">In the browser address line, append **/home/chat** to the URL of the default page for the project.</span></span> <span data-ttu-id="69df5-177">Чат страница загружается в экземпляре обозревателя и предлагает ввести имя пользователя.</span><span class="sxs-lookup"><span data-stu-id="69df5-177">The Chat page loads in a browser instance and prompts for a user name.</span></span>
+    > [!IMPORTANT]
+    > <span data-ttu-id="6ef81-137">Диспетчер пакетов может установить более позднюю версию сценариев SignalR.</span><span class="sxs-lookup"><span data-stu-id="6ef81-137">The package manager may have installed a later version of the SignalR scripts.</span></span>
 
-    ![Введите имя пользователя](tutorial-getting-started-with-signalr-and-mvc/_static/image8.png)
-3. <span data-ttu-id="69df5-179">Введите имя пользователя.</span><span class="sxs-lookup"><span data-stu-id="69df5-179">Enter a user name.</span></span>
-4. <span data-ttu-id="69df5-180">Скопируйте URL-адрес в адресной строке браузера и использовать его для открытия двух экземпляров дополнительные браузера.</span><span class="sxs-lookup"><span data-stu-id="69df5-180">Copy the URL from the address line of the browser and use it to open two more browser instances.</span></span> <span data-ttu-id="69df5-181">В каждом экземпляре обозревателя введите уникальное имя пользователя.</span><span class="sxs-lookup"><span data-stu-id="69df5-181">In each browser instance, enter a unique user name.</span></span>
-5. <span data-ttu-id="69df5-182">В каждом экземпляре браузера добавьте комментарий и нажмите кнопку **отправки**.</span><span class="sxs-lookup"><span data-stu-id="69df5-182">In each browser instance, add a comment and click **Send**.</span></span> <span data-ttu-id="69df5-183">Комментарии должны отображаться в все экземпляры браузера.</span><span class="sxs-lookup"><span data-stu-id="69df5-183">The comments should display in all browser instances.</span></span>
+1. <span data-ttu-id="6ef81-138">Убедитесь, что ссылки на скрипты в блоке кода соответствуют версиям файлов сценариев в проекте.</span><span class="sxs-lookup"><span data-stu-id="6ef81-138">Check that the script references in the code block correspond to the versions of the script files in the project.</span></span>
+
+    <span data-ttu-id="6ef81-139">Ссылки на скрипты из исходного блока кода:</span><span class="sxs-lookup"><span data-stu-id="6ef81-139">Script references from the original code block:</span></span>
+
+    ```cshtml
+    <!--Script references. -->
+    <!--The jQuery library is required and is referenced by default in _Layout.cshtml. -->
+    <!--Reference the SignalR library. -->
+    <script src="~/Scripts/jquery.signalR-2.1.0.min.js"></script>
+    ```
+
+1. <span data-ttu-id="6ef81-140">Если они не совпадают, обновите *.cshtml* файла.</span><span class="sxs-lookup"><span data-stu-id="6ef81-140">If they don't match, update the *.cshtml* file.</span></span>
+
+1. <span data-ttu-id="6ef81-141">В строке меню выберите **файл** > **сохранить все**.</span><span class="sxs-lookup"><span data-stu-id="6ef81-141">From the menu bar, select **File** > **Save All**.</span></span>
+
+## <a name="run-the-sample"></a><span data-ttu-id="6ef81-142">Запуск образца</span><span class="sxs-lookup"><span data-stu-id="6ef81-142">Run the Sample</span></span>
+
+1. <span data-ttu-id="6ef81-143">На панели инструментов, включите **отладки скриптов** и затем нажмите кнопку воспроизведения, чтобы запустить пример в режиме отладки.</span><span class="sxs-lookup"><span data-stu-id="6ef81-143">In the toolbar, turn on **Script Debugging** and then select the play button to run the sample in Debug mode.</span></span>
+
+    ![Введите имя пользователя](tutorial-getting-started-with-signalr-and-mvc/_static/image3.png)
+
+1. <span data-ttu-id="6ef81-145">Когда откроется браузер, введите имя для вашего удостоверения чата.</span><span class="sxs-lookup"><span data-stu-id="6ef81-145">When the browser opens, enter a name for your chat identity.</span></span>
+
+1. <span data-ttu-id="6ef81-146">Скопируйте URL-адрес из браузера, откройте два других браузеров и вставьте URL-адреса в панели адрес.</span><span class="sxs-lookup"><span data-stu-id="6ef81-146">Copy the URL from the browser, open two other browsers, and paste the URLs into the address bars.</span></span>
+
+1. <span data-ttu-id="6ef81-147">В каждом браузере введите уникальное имя.</span><span class="sxs-lookup"><span data-stu-id="6ef81-147">In each browser, enter a unique name.</span></span>
+
+1. <span data-ttu-id="6ef81-148">Теперь добавьте комментарий и выберите **отправки**.</span><span class="sxs-lookup"><span data-stu-id="6ef81-148">Now, add a comment and select **Send**.</span></span> <span data-ttu-id="6ef81-149">Повторите, в других браузерах.</span><span class="sxs-lookup"><span data-stu-id="6ef81-149">Repeat that in the other browsers.</span></span> <span data-ttu-id="6ef81-150">Комментарии отображаются в режиме реального времени.</span><span class="sxs-lookup"><span data-stu-id="6ef81-150">The comments appear in real time.</span></span>
 
     > [!NOTE]
-    > <span data-ttu-id="69df5-184">Это приложение на простом чате не ведет контекста обсуждения на сервере.</span><span class="sxs-lookup"><span data-stu-id="69df5-184">This simple chat application does not maintain the discussion context on the server.</span></span> <span data-ttu-id="69df5-185">Концентратор осуществляет широковещательную передачу комментарии для всех текущих пользователей.</span><span class="sxs-lookup"><span data-stu-id="69df5-185">The hub broadcasts comments to all current users.</span></span> <span data-ttu-id="69df5-186">Пользователи, беседа позже будет видеть сообщения добавлены с момента их присоединения к.</span><span class="sxs-lookup"><span data-stu-id="69df5-186">Users who join the chat later will see messages added from the time they join.</span></span>
-6. <span data-ttu-id="69df5-187">На следующем снимке экрана показано приложение чата, работающих в браузере.</span><span class="sxs-lookup"><span data-stu-id="69df5-187">The following screen shot shows the chat application running in a browser.</span></span>
+    > <span data-ttu-id="6ef81-151">Это приложение на простом чате не ведет контекста обсуждения на сервере.</span><span class="sxs-lookup"><span data-stu-id="6ef81-151">This simple chat application does not maintain the discussion context on the server.</span></span> <span data-ttu-id="6ef81-152">Концентратор осуществляет широковещательную передачу комментарии для всех текущих пользователей.</span><span class="sxs-lookup"><span data-stu-id="6ef81-152">The hub broadcasts comments to all current users.</span></span> <span data-ttu-id="6ef81-153">Пользователи, беседа позже будет видеть сообщения добавлены с момента их присоединения к.</span><span class="sxs-lookup"><span data-stu-id="6ef81-153">Users who join the chat later will see messages added from the time they join.</span></span>
 
-    ![Браузеры чата](tutorial-getting-started-with-signalr-and-mvc/_static/image9.png)
-7. <span data-ttu-id="69df5-189">В **обозревателе решений**, проверять **документы скриптов** узел для запущенного приложения.</span><span class="sxs-lookup"><span data-stu-id="69df5-189">In **Solution Explorer**, inspect the **Script Documents** node for the running application.</span></span> <span data-ttu-id="69df5-190">Этот узел является видимым в режиме отладки, если вы используете Internet Explorer как браузер.</span><span class="sxs-lookup"><span data-stu-id="69df5-190">This node is visible in debug mode if you are using Internet Explorer as your browser.</span></span> <span data-ttu-id="69df5-191">Файл скрипта с именем **концентраторов** , библиотека SignalR динамически создает во время выполнения.</span><span class="sxs-lookup"><span data-stu-id="69df5-191">There is a script file named **hubs** that the SignalR library dynamically generates at runtime.</span></span> <span data-ttu-id="69df5-192">Этот файл управляет обменом данных между jQuery-сценарий и код на стороне сервера.</span><span class="sxs-lookup"><span data-stu-id="69df5-192">This file manages the communication between jQuery script and server-side code.</span></span> <span data-ttu-id="69df5-193">Если вы используете другой браузер Internet Explorer, также можно использовать динамическую **концентраторов** файл, перейдя к нему напрямую, например http://mywebsite/signalr/hubs.</span><span class="sxs-lookup"><span data-stu-id="69df5-193">If you use a browser other than Internet Explorer, you can also access the dynamic **hubs** file by browsing to it directly, for example http://mywebsite/signalr/hubs.</span></span>
+    <span data-ttu-id="6ef81-154">См. в разделе, запуск приложения чата в трех различных браузерах.</span><span class="sxs-lookup"><span data-stu-id="6ef81-154">See how the chat application runs in three different browsers.</span></span> <span data-ttu-id="6ef81-155">Когда Tom Ананд и Сьюзан отправляют сообщения, все браузеры обновление в режиме реального времени:</span><span class="sxs-lookup"><span data-stu-id="6ef81-155">When Tom, Anand, and Susan send messages, all browsers update in real time:</span></span>
 
-<a id="code"></a>
+    ![Все три браузеры отображают же журнала разговора](tutorial-getting-started-with-signalr-and-mvc/_static/image4.png)
 
-## <a name="examine-the-code"></a><span data-ttu-id="69df5-194">Изучите код</span><span class="sxs-lookup"><span data-stu-id="69df5-194">Examine the Code</span></span>
+1. <span data-ttu-id="6ef81-157">В **обозревателе решений**, проверять **документы скриптов** узел для запущенного приложения.</span><span class="sxs-lookup"><span data-stu-id="6ef81-157">In **Solution Explorer**, inspect the **Script Documents** node for the running application.</span></span> <span data-ttu-id="6ef81-158">Файл скрипта с именем *концентраторов* , библиотека SignalR создает во время выполнения.</span><span class="sxs-lookup"><span data-stu-id="6ef81-158">There's a script file named *hubs* that the SignalR library generates at runtime.</span></span> <span data-ttu-id="6ef81-159">Этот файл управляет обменом данных между jQuery-сценарий и код на стороне сервера.</span><span class="sxs-lookup"><span data-stu-id="6ef81-159">This file manages the communication between jQuery script and server-side code.</span></span>
 
-<span data-ttu-id="69df5-195">Приложение чата SignalR демонстрирует две основные задачи разработки SignalR: создание концентратора в качестве основной координации объекта на сервере и с помощью библиотеки jQuery SignalR для отправки и получения сообщений.</span><span class="sxs-lookup"><span data-stu-id="69df5-195">The SignalR chat application demonstrates two basic SignalR development tasks: creating a hub as the main coordination object on the server, and using the SignalR jQuery library to send and receive messages.</span></span>
+    ![автоматически созданное концентраторов сценария в узел документов скриптов](tutorial-getting-started-with-signalr-and-mvc/_static/image5.png)
 
-### <a name="signalr-hubs"></a><span data-ttu-id="69df5-196">Концентраторы SignalR</span><span class="sxs-lookup"><span data-stu-id="69df5-196">SignalR Hubs</span></span>
+## <a name="examine-the-code"></a><span data-ttu-id="6ef81-161">Изучите код</span><span class="sxs-lookup"><span data-stu-id="6ef81-161">Examine the Code</span></span>
 
-<span data-ttu-id="69df5-197">В следующем образце кода **ChatHub** класс является производным от **Microsoft.AspNet.SignalR.Hub** класса.</span><span class="sxs-lookup"><span data-stu-id="69df5-197">In the code sample the **ChatHub** class derives from the **Microsoft.AspNet.SignalR.Hub** class.</span></span> <span data-ttu-id="69df5-198">Наследование от **концентратора** класс является эффективным методом для построения приложения SignalR.</span><span class="sxs-lookup"><span data-stu-id="69df5-198">Deriving from the **Hub** class is a useful way to build a SignalR application.</span></span> <span data-ttu-id="69df5-199">Можно создавать открытые методы в классе концентратора и затем получить доступ к этих методов, вызывая их с помощью сценариев на веб-странице.</span><span class="sxs-lookup"><span data-stu-id="69df5-199">You can create public methods on your hub class and then access those methods by calling them from scripts in a web page.</span></span>
+<span data-ttu-id="6ef81-162">Приложение чата SignalR демонстрирует две основные задачи разработки SignalR.</span><span class="sxs-lookup"><span data-stu-id="6ef81-162">The SignalR chat application demonstrates two basic SignalR development tasks.</span></span> <span data-ttu-id="6ef81-163">Оно показано, как создать концентратор.</span><span class="sxs-lookup"><span data-stu-id="6ef81-163">It shows you how to create a hub.</span></span> <span data-ttu-id="6ef81-164">Сервер использует этот концентратор как объект основного координации.</span><span class="sxs-lookup"><span data-stu-id="6ef81-164">The server uses that hub as the main coordination object.</span></span> <span data-ttu-id="6ef81-165">Концентратор использует библиотеку jQuery SignalR для отправки и получения сообщений.</span><span class="sxs-lookup"><span data-stu-id="6ef81-165">The hub uses the SignalR jQuery library to send and receive messages.</span></span>
 
-<span data-ttu-id="69df5-200">В коде чата, клиенты вызывают **ChatHub.Send** метод для отправки нового сообщения.</span><span class="sxs-lookup"><span data-stu-id="69df5-200">In the chat code, clients call the **ChatHub.Send** method to send a new message.</span></span> <span data-ttu-id="69df5-201">Концентратор в свою очередь отправляет сообщение всем клиентам, вызвав **Clients.All.addNewMessageToPage**.</span><span class="sxs-lookup"><span data-stu-id="69df5-201">The hub in turn sends the message to all clients by calling **Clients.All.addNewMessageToPage**.</span></span>
+### <a name="signalr-hubs-in-the-chathubcs"></a><span data-ttu-id="6ef81-166">Концентраторы SignalR в ChatHub.cs</span><span class="sxs-lookup"><span data-stu-id="6ef81-166">SignalR Hubs in the ChatHub.cs</span></span>
 
-<span data-ttu-id="69df5-202">**Отправки** метод демонстрирует несколько вещей понятия:</span><span class="sxs-lookup"><span data-stu-id="69df5-202">The **Send** method demonstrates several hub concepts :</span></span>
+<span data-ttu-id="6ef81-167">В образце кода `ChatHub` класс является производным от `Microsoft.AspNet.SignalR.Hub` класса.</span><span class="sxs-lookup"><span data-stu-id="6ef81-167">In the code sample, the `ChatHub` class derives from the `Microsoft.AspNet.SignalR.Hub` class.</span></span> <span data-ttu-id="6ef81-168">Наследование от `Hub` класс является эффективным методом для построения приложения SignalR.</span><span class="sxs-lookup"><span data-stu-id="6ef81-168">Deriving from the `Hub` class is a useful way to build a SignalR application.</span></span> <span data-ttu-id="6ef81-169">Можно создавать открытые методы в классе концентратора и затем получить доступ к этих методов, вызывая их с помощью сценариев на веб-странице.</span><span class="sxs-lookup"><span data-stu-id="6ef81-169">You can create public methods on your hub class and then access those methods by calling them from scripts in a web page.</span></span>
 
-- <span data-ttu-id="69df5-203">Объявления открытых методов концентратора, таким образом, клиенты могут вызывать их.</span><span class="sxs-lookup"><span data-stu-id="69df5-203">Declare public methods on a hub so that clients can call them.</span></span>
-- <span data-ttu-id="69df5-204">Используйте **Microsoft.AspNet.SignalR.Hub.Clients** свойство для доступа к всех клиентов, подключенных к этому концентратору.</span><span class="sxs-lookup"><span data-stu-id="69df5-204">Use the **Microsoft.AspNet.SignalR.Hub.Clients** property to access all clients connected to this hub.</span></span>
-- <span data-ttu-id="69df5-205">Вызов функции на стороне клиента (например, `addNewMessageToPage` функции) для обновления клиентов.</span><span class="sxs-lookup"><span data-stu-id="69df5-205">Call a function on the client (such as the `addNewMessageToPage` function) to update clients.</span></span>
+<span data-ttu-id="6ef81-170">В коде чата, клиенты вызывают `ChatHub.Send` метод для отправки нового сообщения.</span><span class="sxs-lookup"><span data-stu-id="6ef81-170">In the chat code, clients call the `ChatHub.Send` method to send a new message.</span></span> <span data-ttu-id="6ef81-171">Концентратор в свою очередь отправляет сообщение всем клиентам, вызвав `Clients.All.addNewMessageToPage`.</span><span class="sxs-lookup"><span data-stu-id="6ef81-171">The hub in turn sends the message to all clients by calling `Clients.All.addNewMessageToPage`.</span></span>
+
+<span data-ttu-id="6ef81-172">`Send` Метод демонстрирует несколько вещей понятия:</span><span class="sxs-lookup"><span data-stu-id="6ef81-172">The `Send` method demonstrates several hub concepts:</span></span>
+
+* <span data-ttu-id="6ef81-173">Объявления открытых методов концентратора, таким образом, клиенты могут вызывать их.</span><span class="sxs-lookup"><span data-stu-id="6ef81-173">Declare public methods on a hub so that clients can call them.</span></span>
+
+* <span data-ttu-id="6ef81-174">Используйте `Microsoft.AspNet.SignalR.Hub.Clients` динамических свойств для взаимодействия со всеми клиентами, подключенных к этому концентратору.</span><span class="sxs-lookup"><span data-stu-id="6ef81-174">Use the `Microsoft.AspNet.SignalR.Hub.Clients` dynamic property to communicate with all clients connected to this hub.</span></span>
+
+* <span data-ttu-id="6ef81-175">Вызов функции на стороне клиента (например `addNewMessageToPage` функции) для обновления клиентов.</span><span class="sxs-lookup"><span data-stu-id="6ef81-175">Call a function on the client (like the `addNewMessageToPage` function) to update clients.</span></span>
 
     [!code-csharp[Main](tutorial-getting-started-with-signalr-and-mvc/samples/sample5.cs)]
 
-### <a name="signalr-and-jquery"></a><span data-ttu-id="69df5-206">SignalR и jQuery</span><span class="sxs-lookup"><span data-stu-id="69df5-206">SignalR and jQuery</span></span>
+### <a name="signalr-and-jquery-chatcshtml"></a><span data-ttu-id="6ef81-176">SignalR и jQuery Chat.cshtml</span><span class="sxs-lookup"><span data-stu-id="6ef81-176">SignalR and jQuery Chat.cshtml</span></span>
 
-<span data-ttu-id="69df5-207">**Chat.cshtml** файл представления в примере кода показано, как использовать библиотеку jQuery SignalR для взаимодействия с центром SignalR.</span><span class="sxs-lookup"><span data-stu-id="69df5-207">The **Chat.cshtml** view file in the code sample shows how to use the SignalR jQuery library to communicate with a SignalR hub.</span></span> <span data-ttu-id="69df5-208">Основные задачи в коде создается ссылка на автоматически созданный прокси-сервер для центра, объявление функции, который сервер может обратиться к содержимому Push-уведомлений для клиентов и подключения для отправки сообщений в концентратор.</span><span class="sxs-lookup"><span data-stu-id="69df5-208">The essential tasks in the code are creating a reference to the auto-generated proxy for the hub, declaring a function that the server can call to push content to clients, and starting a connection to send messages to the hub.</span></span>
-
-<span data-ttu-id="69df5-209">Следующий код объявляет ссылку на прокси-сервера концентратора.</span><span class="sxs-lookup"><span data-stu-id="69df5-209">The following code declares a reference to a hub proxy.</span></span>
+<span data-ttu-id="6ef81-177">*Chat.cshtml* файл представления в примере кода показано, как использовать библиотеку jQuery SignalR для взаимодействия с центром SignalR.</span><span class="sxs-lookup"><span data-stu-id="6ef81-177">The *Chat.cshtml* view file in the code sample shows how to use the SignalR jQuery library to communicate with a SignalR hub.</span></span>  <span data-ttu-id="6ef81-178">Код выполняет ряд важных задач.</span><span class="sxs-lookup"><span data-stu-id="6ef81-178">The code carries out many important tasks.</span></span> <span data-ttu-id="6ef81-179">Она создает ссылку на автоматически созданные прокси-сервер для центра, объявляет функцию, сервер может обратиться для отправки содержимого клиентам, что он запускает подключение для отправки сообщений в концентратор.</span><span class="sxs-lookup"><span data-stu-id="6ef81-179">It creates a reference to the autogenerated proxy for the hub, declares a function that the server can call to push content to clients, and it starts a connection to send messages to the hub.</span></span>
 
 [!code-javascript[Main](tutorial-getting-started-with-signalr-and-mvc/samples/sample6.js)]
 
 > [!NOTE]
-> <span data-ttu-id="69df5-210">В JavaScript ссылку на класс сервера и его членах находится в верхний регистр.</span><span class="sxs-lookup"><span data-stu-id="69df5-210">In JavaScript the reference to the server class and its members is in camel case.</span></span> <span data-ttu-id="69df5-211">Ссылается на пример кода C# **ChatHub** класс в JavaScript в виде **chatHub**.</span><span class="sxs-lookup"><span data-stu-id="69df5-211">The code sample references the C# **ChatHub** class in JavaScript as **chatHub**.</span></span> <span data-ttu-id="69df5-212">Если требуется сослаться `ChatHub` класс в jQuery с обычной Pascal регистр, как это делается в C#, измените файл ChatHub.cs классов.</span><span class="sxs-lookup"><span data-stu-id="69df5-212">If you want to reference the `ChatHub` class in jQuery with conventional Pascal casing as you would in C#, edit the ChatHub.cs class file.</span></span> <span data-ttu-id="69df5-213">Добавить `using` инструкцию, чтобы ссылаться на `Microsoft.AspNet.SignalR.Hubs` пространства имен.</span><span class="sxs-lookup"><span data-stu-id="69df5-213">Add a `using` statement to reference the `Microsoft.AspNet.SignalR.Hubs` namespace.</span></span> <span data-ttu-id="69df5-214">Затем добавьте `HubName` атрибут `ChatHub` классов, например `[HubName("ChatHub")]`.</span><span class="sxs-lookup"><span data-stu-id="69df5-214">Then add the `HubName` attribute to the `ChatHub` class, for example `[HubName("ChatHub")]`.</span></span> <span data-ttu-id="69df5-215">Наконец, обновите jQuery справочной информации для `ChatHub` класса.</span><span class="sxs-lookup"><span data-stu-id="69df5-215">Finally, update your jQuery reference to the `ChatHub` class.</span></span>
+> <span data-ttu-id="6ef81-180">В JavaScript ссылку на класс сервера и его членах находится в camelCase.</span><span class="sxs-lookup"><span data-stu-id="6ef81-180">In JavaScript, the reference to the server class and its members is in camelCase.</span></span> <span data-ttu-id="6ef81-181">Ссылки на код примера C# `ChatHub` класс в JavaScript в виде `chatHub`.</span><span class="sxs-lookup"><span data-stu-id="6ef81-181">The code sample references the C# `ChatHub` class in JavaScript as `chatHub`.</span></span>
 
-
-<span data-ttu-id="69df5-216">Ниже показано, как создать функцию обратного вызова в скрипте.</span><span class="sxs-lookup"><span data-stu-id="69df5-216">The following code shows how to create a callback function in the script.</span></span> <span data-ttu-id="69df5-217">Класс концентратора на сервере вызывает эту функцию для отправки обновлений содержимого для каждого клиента.</span><span class="sxs-lookup"><span data-stu-id="69df5-217">The hub class on the server calls this function to push content updates to each client.</span></span> <span data-ttu-id="69df5-218">Дополнительного обращения к `htmlEncode` функция отображает способ HTML кодирования содержимое сообщения перед его отображением на странице, чтобы предотвратить внедрение скрипта.</span><span class="sxs-lookup"><span data-stu-id="69df5-218">The optional call to the `htmlEncode` function shows a way to HTML encode the message content before displaying it in the page, as a way to prevent script injection.</span></span>
+<span data-ttu-id="6ef81-182">В этот блок кода как создать функцию обратного вызова в скрипте.</span><span class="sxs-lookup"><span data-stu-id="6ef81-182">In this code block, you create a callback function in the script.</span></span>
 
 [!code-html[Main](tutorial-getting-started-with-signalr-and-mvc/samples/sample7.html)]
 
-<span data-ttu-id="69df5-219">Ниже показано, как открыть соединение с концентратором.</span><span class="sxs-lookup"><span data-stu-id="69df5-219">The following code shows how to open a connection with the hub.</span></span> <span data-ttu-id="69df5-220">Код запускает подключение, а затем передает его функции, чтобы обрабатывать событие щелчка на **отправки** кнопку на данной странице чата.</span><span class="sxs-lookup"><span data-stu-id="69df5-220">The code starts the connection and then passes it a function to handle the click event on the **Send** button in the Chat page.</span></span>
+<span data-ttu-id="6ef81-183">Класс концентратора на сервере вызывает эту функцию для отправки обновлений содержимого для каждого клиента.</span><span class="sxs-lookup"><span data-stu-id="6ef81-183">The hub class on the server calls this function to push content updates to each client.</span></span> <span data-ttu-id="6ef81-184">Дополнительного обращения к `htmlEncode` функция отображает способ HTML кодирования содержимое сообщения перед его отображением на странице.</span><span class="sxs-lookup"><span data-stu-id="6ef81-184">The optional call to the `htmlEncode` function shows a way to HTML encode the message content before displaying it in the page.</span></span> <span data-ttu-id="6ef81-185">Это позволяет предотвратить внедрение скрипта.</span><span class="sxs-lookup"><span data-stu-id="6ef81-185">It's a way to prevent script injection.</span></span>
 
-> [!NOTE]
-> <span data-ttu-id="69df5-221">Такой подход гарантирует, что соединение установлено, перед выполнением обработчика событий.</span><span class="sxs-lookup"><span data-stu-id="69df5-221">This approach ensures that the connection is established before the event handler executes.</span></span>
-
+<span data-ttu-id="6ef81-186">Этот код открывает соединение с концентратором.</span><span class="sxs-lookup"><span data-stu-id="6ef81-186">This code opens a connection with the hub.</span></span>
 
 [!code-javascript[Main](tutorial-getting-started-with-signalr-and-mvc/samples/sample8.js)]
 
-<a id="next"></a>
+> [!NOTE]
+> <span data-ttu-id="6ef81-187">Такой подход гарантирует, что перед выполнением обработчика событий установить соединение.</span><span class="sxs-lookup"><span data-stu-id="6ef81-187">This approach ensures that you establish a connection before the event handler executes.</span></span>
 
-## <a name="next-steps"></a><span data-ttu-id="69df5-222">Следующие шаги</span><span class="sxs-lookup"><span data-stu-id="69df5-222">Next Steps</span></span>
+<span data-ttu-id="6ef81-188">Код запускает подключение, а затем передает его функции, чтобы обрабатывать событие щелчка на **отправки** кнопку на данной странице чата.</span><span class="sxs-lookup"><span data-stu-id="6ef81-188">The code starts the connection and then passes it a function to handle the click event on the **Send** button in the Chat page.</span></span>
 
-<span data-ttu-id="69df5-223">Вы узнали, что SignalR — это платформа для построения в режиме реального времени веб-приложений.</span><span class="sxs-lookup"><span data-stu-id="69df5-223">You learned that SignalR is a framework for building real-time web applications.</span></span> <span data-ttu-id="69df5-224">Вы также узнали несколько задач разработки SignalR: Добавление в приложение ASP.NET SignalR, как создать класс концентратора и как отправлять и получать сообщения из концентратора.</span><span class="sxs-lookup"><span data-stu-id="69df5-224">You also learned several SignalR development tasks: how to add SignalR to an ASP.NET application, how to create a hub class, and how to send and receive messages from the hub.</span></span>
+## <a name="additional-resources"></a><span data-ttu-id="6ef81-189">Дополнительные ресурсы</span><span class="sxs-lookup"><span data-stu-id="6ef81-189">Additional resources</span></span>
 
-<span data-ttu-id="69df5-225">Пошаговое руководство о том, как развернуть пример приложения SignalR в Azure, см. в разделе [с помощью SignalR с веб-приложениями в службе приложений Azure](../deployment/using-signalr-with-azure-web-sites.md).</span><span class="sxs-lookup"><span data-stu-id="69df5-225">For a walkthrough on how to deploy the sample SignalR application to Azure, see [Using SignalR with Web Apps in Azure App Service](../deployment/using-signalr-with-azure-web-sites.md).</span></span> <span data-ttu-id="69df5-226">Подробные сведения о развертывании веб-проекта Visual Studio для веб-сайта Windows Azure см. в разделе [создать веб-приложение ASP.NET в службе приложений Azure](https://azure.microsoft.com/documentation/articles/web-sites-dotnet-get-started/).</span><span class="sxs-lookup"><span data-stu-id="69df5-226">For detailed information about how to deploy a Visual Studio web project to a Windows Azure Web Site, see [Create an ASP.NET web app in Azure App Service](https://azure.microsoft.com/documentation/articles/web-sites-dotnet-get-started/).</span></span>
+<span data-ttu-id="6ef81-190">Дополнительные сведения о SignalR см. следующие ресурсы:</span><span class="sxs-lookup"><span data-stu-id="6ef81-190">For more about SignalR, see the following resources:</span></span>
 
-<span data-ttu-id="69df5-227">Для более сложных концепций разработки SignalR см. на следующих узлах SignalR исходный код и ресурсы:</span><span class="sxs-lookup"><span data-stu-id="69df5-227">To learn more advanced SignalR developments concepts, visit the following sites for SignalR source code and resources :</span></span>
+* [<span data-ttu-id="6ef81-191">Проект SignalR</span><span class="sxs-lookup"><span data-stu-id="6ef81-191">SignalR Project</span></span>](http://signalr.net)
 
-- [<span data-ttu-id="69df5-228">Проект SignalR</span><span class="sxs-lookup"><span data-stu-id="69df5-228">SignalR Project</span></span>](http://signalr.net)
-- [<span data-ttu-id="69df5-229">SignalR Github и примерами</span><span class="sxs-lookup"><span data-stu-id="69df5-229">SignalR Github and Samples</span></span>](https://github.com/SignalR/SignalR)
-- [<span data-ttu-id="69df5-230">Вики-сайте SignalR</span><span class="sxs-lookup"><span data-stu-id="69df5-230">SignalR Wiki</span></span>](https://github.com/SignalR/SignalR/wiki)
+* [<span data-ttu-id="6ef81-192">SignalR GitHub и примерами</span><span class="sxs-lookup"><span data-stu-id="6ef81-192">SignalR GitHub and Samples</span></span>](https://github.com/SignalR/SignalR)
+
+* [<span data-ttu-id="6ef81-193">Вики-сайте SignalR</span><span class="sxs-lookup"><span data-stu-id="6ef81-193">SignalR Wiki</span></span>](https://github.com/SignalR/SignalR/wiki)
+
+## <a name="next-steps"></a><span data-ttu-id="6ef81-194">Следующие шаги</span><span class="sxs-lookup"><span data-stu-id="6ef81-194">Next steps</span></span>
+
+<span data-ttu-id="6ef81-195">В этом руководстве вы:</span><span class="sxs-lookup"><span data-stu-id="6ef81-195">In this tutorial, you:</span></span>
+
+> [!div class="checklist"]
+> * <span data-ttu-id="6ef81-196">Настройка проекта</span><span class="sxs-lookup"><span data-stu-id="6ef81-196">Set up the project</span></span>
+> * <span data-ttu-id="6ef81-197">Запустили пример</span><span class="sxs-lookup"><span data-stu-id="6ef81-197">Ran the sample</span></span>
+> * <span data-ttu-id="6ef81-198">Проверить код</span><span class="sxs-lookup"><span data-stu-id="6ef81-198">Examined the code</span></span>
+
+<span data-ttu-id="6ef81-199">Перейдите к следующей статье, чтобы научиться создавать веб-приложения, использующего ASP.NET SignalR 2 для предоставления функции обмена сообщениями с высокой частотой.</span><span class="sxs-lookup"><span data-stu-id="6ef81-199">Advance to the next article to learn how to create a web application that uses ASP.NET SignalR 2 to provide high-frequency messaging functionality.</span></span>
+> [!div class="nextstepaction"]
+> [<span data-ttu-id="6ef81-200">Веб-приложения с высокой частотой обмена сообщениями</span><span class="sxs-lookup"><span data-stu-id="6ef81-200">Web app with high-frequency messaging</span></span>](tutorial-high-frequency-realtime-with-signalr.md)
