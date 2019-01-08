@@ -7,12 +7,12 @@ ms.author: tdykstra
 ms.custom: mvc
 ms.date: 11/28/2018
 uid: signalr/redis-backplane
-ms.openlocfilehash: 343cb5b2c7ed7162bae7865553a783fea45f0cfb
-ms.sourcegitcommit: b34b25da2ab68e6495b2460ff570468f16a9bf0d
+ms.openlocfilehash: fde7f08ae2310b0b9bf9b7fe25a1dfc4a568adb6
+ms.sourcegitcommit: 97d7a00bd39c83a8f6bccb9daa44130a509f75ce
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53284478"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54099359"
 ---
 # <a name="set-up-a-redis-backplane-for-aspnet-core-signalr-scale-out"></a>Настройка Redis объединительной платы для горизонтального масштабирования ASP.NET Core SignalR
 
@@ -24,7 +24,10 @@ ms.locfileid: "53284478"
 
 * Развертывание сервера Redis.
 
-  Для использования в рабочей среде объединительной Redis рекомендуется только в локальной инфраструктуре. Чтобы свести к минимуму задержки, сервер Redis должно находиться в одном центре обработки данных, что и приложение SignalR. Если ваше приложение SignalR работает в облаке Azure, мы рекомендуем служба Azure SignalR вместо объединительной Redis. Можно использовать службу кэша Redis Azure для разработки и тестовые среды. Дополнительные сведения см. в следующих ресурсах:
+  > [!IMPORTANT] 
+  > Для использования в рабочей среде объединительной Redis рекомендуется только в том случае, когда оно работает в одном центре обработки данных, что и приложение SignalR. В противном случае задержки в сети снижает производительность. Если ваше приложение SignalR работает в облаке Azure, мы рекомендуем служба Azure SignalR вместо объединительной Redis. Можно использовать службу кэша Redis Azure для разработки и тестовые среды.
+
+  Дополнительные сведения см. в следующих ресурсах:
 
   * <xref:signalr/scale>
   * [Документация по redis](https://redis.io/)

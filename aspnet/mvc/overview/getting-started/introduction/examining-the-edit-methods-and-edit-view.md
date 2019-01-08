@@ -4,16 +4,16 @@ title: Изучение методов Edit и представления Edit |
 author: Rick-Anderson
 description: ''
 ms.author: riande
-ms.date: 05/22/2015
+ms.date: 01/06/2019
 ms.assetid: 52a4d5fe-aa31-4471-b3cb-a064f82cb791
 msc.legacyurl: /mvc/overview/getting-started/introduction/examining-the-edit-methods-and-edit-view
 msc.type: authoredcontent
-ms.openlocfilehash: 29ece7754bc6e25ea968c25a99a2f48ab837e12c
-ms.sourcegitcommit: a4dcca4f1cb81227c5ed3c92dc0e28be6e99447b
+ms.openlocfilehash: 75fd3a7dd55107cbdb9095d5b54b616133b4f65e
+ms.sourcegitcommit: 97d7a00bd39c83a8f6bccb9daa44130a509f75ce
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "48911552"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54099400"
 ---
 <a name="examining-the-edit-methods-and-edit-view"></a>Изучение методов Edit и представления Edit
 ====================
@@ -83,15 +83,19 @@ ms.locfileid: "48911552"
 
 [ValidateAntiForgeryToken](https://msdn.microsoft.com/library/system.web.mvc.validateantiforgerytokenattribute(v=vs.108).aspx) проверяет атрибут [XSRF](../../security/xsrfcsrf-prevention-in-aspnet-mvc-and-web-pages.md) маркером создаваемым `@Html.AntiForgeryToken()` вызвать в представлении.
 
-[Связывателя модели ASP.NET MVC](https://msdn.microsoft.com/library/dd410405.aspx) принимает отправленные значения формы и создает `Movie` объект, который передается в качестве `movie` параметра. Метод `ModelState.IsValid` проверяет, можно ли использовать переданные в форме данные для изменения (редактирования или обновления) объекта `Movie`. Если данные являются допустимыми, данные фильма сохраняются `Movies` коллекцию `db(MovieDBContext` экземпляра). Новые данные фильма сохраняются в базу данных путем вызова `SaveChanges` метод `MovieDBContext`. После сохранения данных код перенаправляет пользователя в метод действия `Index` класса `MoviesController`, который отображает коллекцию фильмов с учетом только что внесенных изменений.
+[Связывателя модели ASP.NET MVC](https://msdn.microsoft.com/library/dd410405.aspx) принимает отправленные значения формы и создает `Movie` объект, который передается в качестве `movie` параметра. `ModelState.IsValid` Проверяет, что данные, переданные в форме, могут использоваться для изменения (редактирования или обновления) `Movie` объекта. Если данные являются допустимыми, данные фильма сохраняются `Movies` коллекцию `db`(`MovieDBContext` экземпляра). Новые данные фильма сохраняются в базу данных путем вызова `SaveChanges` метод `MovieDBContext`. После сохранения данных код перенаправляет пользователя в метод действия `Index` класса `MoviesController`, который отображает коллекцию фильмов с учетом только что внесенных изменений.
 
-Как только проверка на стороне клиента определяет, что значения поля не являются допустимыми, отображается сообщение об ошибке. Если отключить JavaScript, у вас не будет проверка на стороне клиента, но сервер обнаружит переданные значения не являются допустимыми, а значения формы будут отображены повторно с сообщениями об ошибках. Далее в этом руководстве мы рассмотрим проверки более подробно.
+Как только проверка на стороне клиента определяет, что значение поля является недопустимой, отображается сообщение об ошибке. Если JavaScript отключен, проверка на стороне клиента отключена. Тем не менее сервер обнаруживает переданные значения являются недопустимыми, и с сообщениями об ошибках выводятся на экран значения формы.
+
+Проверки исследуется более подробно далее в этом руководстве.
 
 `Html.ValidationMessageFor` Вспомогательные функции в *Edit.cshtml* представление шаблона позаботится об отображении соответствующие сообщения об ошибках.
 
 ![abcNotValid](examining-the-edit-methods-and-edit-view/_static/image4.png)
 
 Все `HttpGet` методы следуют одной схеме. Они получают объект фильма (или список объектов, в случае `Index`) и передачи в представление. `Create` Метод передает пустой объект фильма представления создания. Все методы, которые создают, редактируют, удаляют или иным образом изменяют данные, делают это в перегрузке метода `HttpPost`. Изменение данных в методе HTTP GET представляет угрозу безопасности, как описано в записи блога post [ASP.NET MVC совет #46 — не использовать ссылки, удалить, так как они создают бреши в системе безопасности](http://stephenwalther.com/blog/archive/2009/01/21/asp.net-mvc-tip-46-ndash-donrsquot-use-delete-links-because.aspx). Изменение данных в метод GET также не соответствует рекомендациям по HTTP и архитектуры [REST](http://en.wikipedia.org/wiki/Representational_State_Transfer) шаблона, которое указывает, что запросы GET не должны изменять состояние приложения. Другими словами, операция GET должна выполняться безопасным способом, то есть не иметь побочных эффектов и не изменять существующие данные.
+
+## <a name="jquery-validation-for-non-english-locales"></a>Проверка jQuery для языков, отличных от английского
 
 Если вы используете компьютер английского (США), можно пропустить этот раздел и перейдите к следующему руководству. Можно загрузить версию этого учебника, Globalize [здесь](https://archive.msdn.microsoft.com/Project/Download/FileDownload.aspx?ProjectName=aspnetmvcsamples&amp;DownloadId=16475). Отличная два часть руководства по интернационализации, см. в разделе [Надим в ASP.NET MVC 5 интернационализации](http://afana.me/post/aspnet-mvc-internationalization.aspx).
 
