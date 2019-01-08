@@ -6,12 +6,12 @@ ms.author: riande
 ms.date: 12/18/2018
 ms.custom: seodec18
 uid: security/authorization/secure-data
-ms.openlocfilehash: fa82d3d99f4e4b7ad17ed385fb7c029745797e8d
-ms.sourcegitcommit: 816f39e852a8f453e8682081871a31bc66db153a
+ms.openlocfilehash: bdba706c1ef24ebe35129cb8bb2d9949196245a1
+ms.sourcegitcommit: 97d7a00bd39c83a8f6bccb9daa44130a509f75ce
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53637837"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54098926"
 ---
 # <a name="create-an-aspnet-core-app-with-user-data-protected-by-authorization"></a>Создание приложения ASP.NET Core с помощью данных пользователя с помощью авторизации
 
@@ -59,7 +59,7 @@ ms.locfileid: "53637837"
 
 Приложение было создано [формирования шаблонов](xref:tutorials/first-mvc-app/adding-model#scaffold-the-movie-model) следующие `Contact` модели:
 
-[!code-csharp[](secure-data/samples/starter2.1/Models/Contact.cs?name=snippet)]
+[!code-csharp[](secure-data/samples/starter2.1/Models/Contact.cs?name=snippet1)]
 
 Пример содержит следующие обработчики авторизации:
 
@@ -314,33 +314,33 @@ dotnet user-secrets set SeedUserPW <PW>
 ## <a name="create-the-starter-app"></a>Создать приложение начального уровня
 
 * Создание приложения Razor Pages с именем «ContactManager»
-   * Создание приложения с **отдельным учетным записям пользователей**.
-   * Назовите его «ContactManager», пространство имен соответствует пространству имен, используемые в образце.
-   * `-uld` Указывает LocalDB вместо SQLite
+  * Создание приложения с **отдельным учетным записям пользователей**.
+  * Назовите его «ContactManager», пространство имен соответствует пространству имен, используемые в образце.
+  * `-uld` Указывает LocalDB вместо SQLite
 
   ```console
   dotnet new webapp -o ContactManager -au Individual -uld
   ```
 
-* Добавить *Models\Contact.cs*:
+* Добавить *Models/Contact.cs*:
 
   [!code-csharp[](secure-data/samples/starter2.1/Models/Contact.cs?name=snippet1)]
 
 * Каркас `Contact` модели.
 * Создание первоначальной миграции и обновления базы данных:
 
-```console
-dotnet aspnet-codegenerator razorpage -m Contact -udl -dc ApplicationDbContext -outDir Pages\Contacts --referenceScriptLibraries
-dotnet ef database drop -f
-dotnet ef migrations add initial
-dotnet ef database update
-```
+  ```console
+  dotnet aspnet-codegenerator razorpage -m Contact -udl -dc ApplicationDbContext -outDir Pages\Contacts --referenceScriptLibraries
+  dotnet ef database drop -f
+  dotnet ef migrations add initial
+  dotnet ef database update
+  ```
 
 * Обновление **ContactManager** привязки в *Pages/_Layout.cshtml* файла:
 
-```cshtml
-<a asp-page="/Contacts/Index" class="navbar-brand">ContactManager</a>
-```
+  ```cshtml
+  <a asp-page="/Contacts/Index" class="navbar-brand">ContactManager</a>
+  ```
 
 * Протестируйте приложение, создание, изменение и удаление контакта
 

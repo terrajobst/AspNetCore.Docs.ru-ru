@@ -7,12 +7,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 12/18/2018
 uid: performance/response-compression
-ms.openlocfilehash: 51ab51652a7b3f9b4ef97b3abbffe2e398c0bfb5
-ms.sourcegitcommit: 816f39e852a8f453e8682081871a31bc66db153a
+ms.openlocfilehash: a9f72a6816298b11e7b7d30b2b4bd44083baab3a
+ms.sourcegitcommit: 97d7a00bd39c83a8f6bccb9daa44130a509f75ce
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53637759"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54099043"
 ---
 # <a name="response-compression-in-aspnet-core"></a>Сжатие откликов в ASP.NET Core
 
@@ -44,7 +44,7 @@ ms.locfileid: "53637759"
 
 ::: moniker range=">= aspnetcore-2.2"
 
-| `Accept-Encoding` значения заголовка | Поддерживается по промежуточного слоя | Описание: |
+| `Accept-Encoding` значения заголовка | Поддерживается по промежуточного слоя | Описание |
 | ------------------------------- | :------------------: | ----------- |
 | `br`                            | Да (по умолчанию)        | [Формат сжатых данных Brotli](https://tools.ietf.org/html/rfc7932) |
 | `deflate`                       | Нет                   | [Формат DEFLATE сжатых данных](https://tools.ietf.org/html/rfc1951) |
@@ -58,7 +58,7 @@ ms.locfileid: "53637759"
 
 ::: moniker range="< aspnetcore-2.2"
 
-| `Accept-Encoding` значения заголовка | Поддерживается по промежуточного слоя | Описание: |
+| `Accept-Encoding` значения заголовка | Поддерживается по промежуточного слоя | Описание |
 | ------------------------------- | :------------------: | ----------- |
 | `br`                            | Нет                   | [Формат сжатых данных Brotli](https://tools.ietf.org/html/rfc7932) |
 | `deflate`                       | Нет                   | [Формат DEFLATE сжатых данных](https://tools.ietf.org/html/rfc1951) |
@@ -143,8 +143,10 @@ public class Startup
 }
 ```
 
-> [!NOTE]
-> Используйте инструменты, например [Fiddler](http://www.telerik.com/fiddler), [Firebug](http://getfirebug.com/), или [Postman](https://www.getpostman.com/) присвоить `Accept-Encoding` заголовок запроса и изучите заголовки ответа, размер и текст.
+Примечания. 
+
+* `app.UseResponseCompression` должен вызываться перед `app.UseMvc`.
+* Используйте это средство, например [Fiddler](http://www.telerik.com/fiddler), [Firebug](http://getfirebug.com/), или [Postman](https://www.getpostman.com/) присвоить `Accept-Encoding` заголовок запроса и изучите заголовки ответа, размер и текст.
 
 Отправить запрос в пример приложения без `Accept-Encoding` заголовка и обратите внимание, что ответ без сжатия. `Content-Encoding` И `Vary` заголовки не присутствуют в ответе.
 
@@ -205,7 +207,7 @@ public void ConfigureServices(IServiceCollection services)
 
 Установка уровня с помощью сжатия `BrotliCompressionProviderOptions`. По умолчанию используется поставщик сжатие Brotli наиболее быстрый уровень сжатия ([CompressionLevel.Fastest](xref:System.IO.Compression.CompressionLevel)), который может не обеспечить наиболее эффективное сжатие. При необходимости наиболее эффективного сжатия настройте по промежуточного слоя для оптимального сжатия.
 
-| Уровень сжатия | Описание: |
+| Уровень сжатия | Описание |
 | ----------------- | ----------- |
 | [CompressionLevel.Fastest](xref:System.IO.Compression.CompressionLevel) | Сжатие следует выполнить как можно быстрее, даже если полученный результат не сжат оптимально. |
 | [CompressionLevel.NoCompression](xref:System.IO.Compression.CompressionLevel) | Не требуется сжимать. |

@@ -5,12 +5,12 @@ description: Использование удостоверения с прило
 ms.author: riande
 ms.date: 08/08/2018
 uid: security/authentication/identity
-ms.openlocfilehash: 099ebd398238173079e5e659171f31ee5b1f7452
-ms.sourcegitcommit: 85f2939af7a167b9694e1d2093277ffc9a741b23
+ms.openlocfilehash: 03f89114b516a37ee1d06934f2e549b4d56ff099
+ms.sourcegitcommit: 97d7a00bd39c83a8f6bccb9daa44130a509f75ce
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50968336"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54098773"
 ---
 # <a name="introduction-to-identity-on-aspnet-core"></a>Общие сведения об Identity в ASP.NET Core
 
@@ -29,13 +29,13 @@ ms.locfileid: "50968336"
 <a name="adi"></a>
 ## <a name="adddefaultidentity-and-addidentity"></a>AddDefaultIdentity и AddIdentity
 
-[AddDefaultIdentity](/dotnet/api/microsoft.extensions.dependencyinjection.identityservicecollectionuiextensions.adddefaultidentity?view=aspnetcore-2.1#Microsoft_Extensions_DependencyInjection_IdentityServiceCollectionUIExtensions_AddDefaultIdentity__1_Microsoft_Extensions_DependencyInjection_IServiceCollection_System_Action_Microsoft_AspNetCore_Identity_IdentityOptions__) была введена в ASP. Core 2.1. Вызов `AddDefaultIdentity` аналогичен вызову следующее:
+[AddDefaultIdentity](/dotnet/api/microsoft.extensions.dependencyinjection.identityservicecollectionuiextensions.adddefaultidentity?view=aspnetcore-2.1#Microsoft_Extensions_DependencyInjection_IdentityServiceCollectionUIExtensions_AddDefaultIdentity__1_Microsoft_Extensions_DependencyInjection_IServiceCollection_System_Action_Microsoft_AspNetCore_Identity_IdentityOptions__) появилась в ASP.NET Core 2.1. Вызов `AddDefaultIdentity` аналогичен вызову следующее:
 
 * [AddIdentity](/dotnet/api/microsoft.extensions.dependencyinjection.identityservicecollectionextensions.addidentity?view=aspnetcore-2.1#Microsoft_Extensions_DependencyInjection_IdentityServiceCollectionExtensions_AddIdentity__2_Microsoft_Extensions_DependencyInjection_IServiceCollection_System_Action_Microsoft_AspNetCore_Identity_IdentityOptions__)
 * [AddDefaultUI](/dotnet/api/microsoft.aspnetcore.identity.identitybuilderuiextensions.adddefaultui?view=aspnetcore-2.1#Microsoft_AspNetCore_Identity_IdentityBuilderUIExtensions_AddDefaultUI_Microsoft_AspNetCore_Identity_IdentityBuilder_)
 * [AddDefaultTokenProviders](/dotnet/api/microsoft.aspnetcore.identity.identitybuilderextensions.adddefaulttokenproviders?view=aspnetcore-2.1#Microsoft_AspNetCore_Identity_IdentityBuilderExtensions_AddDefaultTokenProviders_Microsoft_AspNetCore_Identity_IdentityBuilder_)
 
-См. в разделе [AddDefaultIdentity источника](https://github.com/aspnet/Identity/blob/2634637fd535b229762b5e4a49cdd128f4d8f12e/src/UI/IdentityServiceCollectionUIExtensions.cs#L47-L64) Дополнительные сведения.
+См. в разделе [AddDefaultIdentity источника](https://github.com/aspnet/AspNetCore/blob/release/2.2/src/Identity/UI/src/IdentityServiceCollectionUIExtensions.cs#L47-L63) Дополнительные сведения.
 
 ::: moniker-end
 
@@ -151,7 +151,7 @@ PowerShell используется точка с запятой в качест
 
    Если пользователь создан, происходит вход пользователя путем вызова метода `_signInManager.SignInAsync`.
 
-   **Примечание.** Раздел [подтверждение учетной записи](xref:security/authentication/accconfirm#prevent-login-at-registration) описывает, как предотвратить автоматический вход пользователя при регистрации.
+   **Примечание.** См. в разделе [учетной записи подтверждения](xref:security/authentication/accconfirm#prevent-login-at-registration) для действия, чтобы предотвратить немедленное входа при регистрации.
 
 ### <a name="log-in"></a>Войти
 

@@ -2,62 +2,77 @@
 title: Настройка проверки подлинности Windows в ASP.NET Core
 author: scottaddie
 description: Узнайте, как настроить проверку подлинности Windows в ASP.NET Core, используя IIS Express, службы IIS и HTTP.sys.
+monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc, seodec18
-ms.date: 12/18/2018
+ms.date: 12/23/2018
 uid: security/authentication/windowsauth
-ms.openlocfilehash: 94dff2f47b2b076cb15f8d385239179b52786678
-ms.sourcegitcommit: 816f39e852a8f453e8682081871a31bc66db153a
+ms.openlocfilehash: 64178c8fce71445fc6a728a236d811484b21e3e0
+ms.sourcegitcommit: 97d7a00bd39c83a8f6bccb9daa44130a509f75ce
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53637824"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54099264"
 ---
 # <a name="configure-windows-authentication-in-aspnet-core"></a>Настройка проверки подлинности Windows в ASP.NET Core
 
-Авторы: [Стив Смит](https://ardalis.com) (Steve Smith) и [Скотт Эдди](https://twitter.com/Scott_Addie) (Scott Addie)
+По [Scott Addie](https://twitter.com/Scott_Addie) и [Люк Лэтем](https://github.com/guardrex)
 
-Проверка подлинности Windows можно настроить для приложений ASP.NET Core, размещенных в службах IIS или [HTTP.sys](xref:fundamentals/servers/httpsys).
+[Проверка подлинности Windows](/iis/configuration/system.webServer/security/authentication/windowsAuthentication/) можно настроить для приложений ASP.NET Core, размещенных с [IIS](xref:host-and-deploy/iis/index) или [HTTP.sys](xref:fundamentals/servers/httpsys).
 
-## <a name="windows-authentication"></a>Проверка подлинности Windows
-
-Проверка подлинности Windows зависит от операционной системы для проверки подлинности пользователей, приложений ASP.NET Core. Можно использовать проверку подлинности Windows, когда сервер работает в корпоративной сети с помощью удостоверения домена Active Directory или других учетных записей Windows для идентификации пользователей. Проверка подлинности Windows является наилучшим образом подходит для среды интрасети, в которых пользователи, клиентские приложения и веб-серверы принадлежат к тому же домену Windows.
-
-[Дополнительные сведения о проверке подлинности Windows и его установки для служб IIS](/iis/configuration/system.webServer/security/authentication/windowsAuthentication/).
+Проверка подлинности Windows зависит от операционной системы для проверки подлинности пользователей, приложений ASP.NET Core. Можно использовать проверку подлинности Windows, когда сервер работает в корпоративной сети с помощью удостоверения домена Active Directory или учетных записей Windows для идентификации пользователей. Проверка подлинности Windows является наилучшим образом подходит для среды интрасети, где пользователи, клиентские приложения и веб-серверы принадлежат к тому же домену Windows.
 
 ## <a name="enable-windows-authentication-in-an-aspnet-core-app"></a>Включить проверку подлинности Windows в приложении ASP.NET Core
 
-Шаблон веб-приложения Visual Studio можно настроить для поддержки проверки подлинности Windows.
+**Веб-приложение** шаблон, доступный через Visual Studio или .NET Core CLI можно настроить для поддержки проверки подлинности Windows.
 
-### <a name="use-the-windows-authentication-app-template"></a>Использовать шаблон приложения проверки подлинности Windows
+# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
+
+### <a name="use-the-windows-authentication-app-template-for-a-new-project"></a>Шаблон приложения проверки подлинности Windows можно использовать для нового проекта
 
 В Visual Studio сделайте следующее:
 
-1. Создайте новое веб-приложение ASP.NET Core.
-1. Выберите веб-приложение из списка шаблонов.
+1. Создайте новый **веб-приложение ASP.NET Core**.
+1. Выберите **веб-приложение** из списка шаблонов.
 1. Выберите **изменить способ проверки подлинности** и выберите **проверки подлинности Windows**.
 
-Запустите приложение. Имя пользователя отображается в правом верхнем углу приложения.
+Запустите приложение. Имя пользователя отображается в готовом для просмотра приложения пользовательского интерфейса.
 
-![Снимок экрана обозревателя проверки подлинности Windows](windowsauth/_static/browser-screenshot.png)
+### <a name="manual-configuration-for-an-existing-project"></a>Ручная настройка для существующего проекта
 
-Для разработки с использованием IIS Express шаблон содержит все настройки, необходимой для использования проверки подлинности Windows. Ниже показано, как вручную настроить приложение ASP.NET Core для проверки подлинности Windows.
+Свойства проекта позволяют включить проверку подлинности Windows и отключить анонимную проверку подлинности:
 
-### <a name="visual-studio-settings-for-windows-and-anonymous-authentication"></a>Параметры Visual Studio для Windows и анонимная проверка подлинности
+1. Щелкните правой кнопкой мыши проект в Visual Studio **обозревателе решений** и выберите **свойства**.
+1. Выберите вкладку **Отладка**.
+1. Снимите флажок для **Включение анонимной проверки подлинности**.
+1. Установите флажок для **включить проверку подлинности Windows**.
 
-В проект Visual Studio **свойства** страницы **Отладка** вкладка предоставляет флажки для проверки подлинности Windows и анонимную проверку подлинности.
+Кроме того, можно настроить свойства в `iisSettings` узел *launchSettings.json* файла:
 
-![Снимок экрана обозревателя проверки подлинности Windows с выделенным параметрами проверки подлинности](windowsauth/_static/vs-auth-property-menu.png)
+[!code-json[](windowsauth/sample_snapshot/launchSettings.json?highlight=2-3)]
 
-Кроме того, эти свойства можно задать в *launchSettings.json* файла:
+# <a name="net-core-clitabnetcore-cli"></a>[Интерфейс командной строки .NET Core](#tab/netcore-cli)
 
-[!code-json[](windowsauth/sample/launchSettings.json?highlight=3-4)]
+Используйте **проверки подлинности Windows** шаблон приложения.
+
+Выполнение [команды dotnet new](/dotnet/core/tools/dotnet-new) с `webapp` аргумент (веб-приложения ASP.NET Core) и `--auth Windows` переключения:
+
+```console
+dotnet new webapp --auth Windows
+```
+
+---
 
 ## <a name="enable-windows-authentication-with-iis"></a>Включить проверку подлинности Windows со службами IIS
 
-Службы IIS используют [модуля ASP.NET Core](xref:host-and-deploy/aspnet-core-module) для размещения приложений ASP.NET Core. В службах IIS, приложение не настроена проверка подлинности Windows. Ниже показано, как использовать диспетчер служб IIS для настройки приложения ASP.NET Core для использования проверки подлинности Windows.
+Службы IIS используют [модуля ASP.NET Core](xref:host-and-deploy/aspnet-core-module) для размещения приложений ASP.NET Core. Проверка подлинности Windows настроена для IIS с помощью *web.config* файл. В следующих разделах показано как:
+
+* Укажите локальный *web.config* файл, который активирует проверку подлинности Windows на сервере, при развертывании приложения.
+* Использование диспетчера служб IIS для настройки *web.config* файл приложения ASP.NET Core, которое уже развернуто на сервер.
 
 ### <a name="iis-configuration"></a>Конфигурация IIS
+
+Если вы еще не сделали, включении служб IIS для размещения приложений ASP.NET Core. Дополнительные сведения см. в разделе <xref:host-and-deploy/iis/index>.
 
 Включение службы роли IIS для проверки подлинности Windows. Дополнительные сведения см. в разделе [включить проверку подлинности Windows в службы роли IIS (см. шаг 2)](xref:host-and-deploy/iis/index#iis-configuration).
 
@@ -69,23 +84,53 @@ ms.locfileid: "53637824"
 
 Укажите имя и папку и разрешите ему создать новый пул приложений.
 
-### <a name="customize-authentication"></a>Настройки проверки подлинности
+### <a name="enable-windows-authentication-for-the-app-in-iis"></a>Включить проверку подлинности Windows для приложения в IIS
 
-Откройте средства проверки подлинности для сайта.
+Используйте **либо** из следующих подходов:
 
-![Меню проверки подлинности IIS](windowsauth/_static/iis-authentication-menu.png)
+* [Настройка на стороне разработки перед публикацией приложения](#development-side-configuration-with-a-local-webconfig-file) (*рекомендуется*)
+* [Настройка на стороне сервера после публикации приложения](#server-side-configuration-with-the-iis-manager)
 
-Отключить анонимную проверку подлинности и включить проверку подлинности Windows.
+#### <a name="development-side-configuration-with-a-local-webconfig-file"></a>Настройка на стороне разработки с помощью файла web.config локального
 
-![Параметры проверки подлинности IIS](windowsauth/_static/iis-auth-settings.png)
+Выполните следующие действия **перед** вы [публикация и развертывание проекта](#publish-and-deploy-your-project-to-the-iis-site-folder).
 
-### <a name="publish-your-project-to-the-iis-site-folder"></a>Опубликовать проект в папке сайта IIS
+Добавьте следующий *web.config* файл в корневую папку проекта:
 
-С помощью Visual Studio или .NET Core CLI, опубликуйте приложение в папку назначения.
+[!code-xml[](windowsauth/sample_snapshot/web_2.config)]
 
-![Диалоговое окно публикации Visual Studio](windowsauth/_static/vs-publish-app.png)
+При публикации проекта с помощью пакета SDK (без `<IsTransformWebConfigDisabled>` свойство значение `true` в файле проекта), опубликованной *web.config* файл включает `<location><system.webServer><security><authentication>` раздел. Дополнительные сведения о `<IsTransformWebConfigDisabled>` свойство, см. в разделе <xref:host-and-deploy/iis/index#webconfig-file>.
 
-Дополнительные сведения о [публикация в службах IIS](xref:host-and-deploy/iis/index).
+#### <a name="server-side-configuration-with-the-iis-manager"></a>Настройка на стороне сервера с помощью диспетчера IIS
+
+Выполните следующие действия **после** вы [публикация и развертывание проекта](#publish-and-deploy-your-project-to-the-iis-site-folder).
+
+1. В диспетчере IIS выберите сайт IIS, в разделе **сайты** узел **подключений** боковой панели.
+1. Дважды щелкните **проверки подлинности** в **IIS** области.
+1. Выберите **анонимную проверку подлинности**. Выберите **отключить** в **действия** боковой панели.
+1. Выберите **проверки подлинности Windows**. Выберите **включить** в **действия** боковой панели.
+
+При этих действий, IIS Manager вносит изменения в приложения *web.config* файл. Объект `<system.webServer><security><authentication>` добавляется узел с обновленными параметрами для `anonymousAuthentication` и `windowsAuthentication`:
+
+[!code-xml[](windowsauth/sample_snapshot/web_1.config?highlight=4-5)]
+
+`<system.webServer>` Добавлен в раздел *web.config* файл диспетчером IIS находится за пределами приложения `<location>` добавлен с помощью пакета SDK .NET Core, когда приложение публикуется раздел. Поскольку раздел добавляется вне `<location>` узел, параметры, наследуются [дочерние приложения](xref:host-and-deploy/iis/index#sub-applications) с текущим приложением. Чтобы запретить наследование, переместите добавленного `<security>` разделе внутри `<location><system.webServer>` раздел, в котором пакет SDK.
+
+Когда диспетчер IIS используется для добавления конфигурации IIS, оно влияет только на приложения *web.config* файл на сервере. Последующие развертывания приложения может перезаписать параметры на сервере, если копия сервера *web.config* заменяется проекта *web.config* файл. Используйте **либо** из следующих методов для управления параметрами:
+
+* Используйте диспетчер служб IIS, чтобы присвоить параметрам в *web.config* файл после файл перезаписывается при развертывании.
+* Добавить *файл web.config* приложение локально с параметрами. Дополнительные сведения см. в разделе [Настройка на стороне разработки](#development-side-configuration-with-a-local-webconfig-file) раздел.
+
+### <a name="publish-and-deploy-your-project-to-the-iis-site-folder"></a>Публикация и развертывание проекта в папку сайта IIS
+
+С помощью Visual Studio или .NET Core CLI, публикация и развертывание приложения в папке назначения.
+
+Дополнительные сведения о размещении в службах IIS публикации и развертывания, см. в разделах:
+
+* [dotnet publish](/dotnet/core/tools/dotnet-publish)
+* <xref:host-and-deploy/iis/index>
+* <xref:host-and-deploy/aspnet-core-module>
+* <xref:host-and-deploy/visual-studio-publish-profiles>
 
 Запустите приложение, чтобы убедиться, что проверка подлинности Windows работает.
 
@@ -93,7 +138,7 @@ ms.locfileid: "53637824"
 
 Несмотря на то, что Kestrel не поддерживает проверку подлинности Windows, можно использовать [HTTP.sys](xref:fundamentals/servers/httpsys) для поддержки сценариев резидентных в Windows. В следующем примере настраивается узел веб-приложения для использования HTTP.sys с проверкой подлинности Windows:
 
-[!code-csharp[](windowsauth/sample/Program2x.cs?highlight=9-14)]
+[!code-csharp[](windowsauth/sample_snapshot/Program.cs?highlight=9-14)]
 
 > [!NOTE]
 > HTTP.sys делегирует задачи в проверку подлинности в режиме ядра с помощью протокола проверки подлинности Kerberos. Проверка подлинности в режиме пользователя не поддерживается с Kerberos и HTTP.sys. Необходимо использовать учетную запись компьютера для расшифровки маркера/билета Kerberos, полученного из Active Directory и переадресованного клиентом на сервер для проверки подлинности пользователя. Зарегистрируйте имя субъекта-службы (SPN) для узла, а не пользователя приложения.
@@ -140,8 +185,8 @@ services.AddAuthentication(HttpSysDefaults.AuthenticationScheme);
 
 ### <a name="impersonation"></a>Олицетворение
 
-ASP.NET Core не реализует олицетворения. Приложения запускаются с удостоверением приложения для всех запросов, с помощью удостоверения пула или процесс приложения. Если вам нужно явно выполнять действия от имени пользователя, используйте `WindowsIdentity.RunImpersonated`. Запустить одно действие в этом контексте, а затем закройте контекста.
+ASP.NET Core не реализует олицетворения. Приложения запускаются с удостоверение приложения для всех запросов, с помощью удостоверения пула или процесс приложения. Если вам нужно явно выполнять действия от имени пользователя, используйте [WindowsIdentity.RunImpersonated](xref:System.Security.Principal.WindowsIdentity.RunImpersonated*) в [терминалов встроенного ПО промежуточного слоя](xref:fundamentals/middleware/index#create-a-middleware-pipeline-with-iapplicationbuilder) в `Startup.Configure`. Запустить одно действие в этом контексте, а затем закройте контекста.
 
-[!code-csharp[](windowsauth/sample/Startup.cs?name=snippet_Impersonate&highlight=10-18)]
+[!code-csharp[](windowsauth/sample_snapshot/Startup.cs?highlight=10-19)]
 
-Обратите внимание, что `RunImpersonated` не поддерживает асинхронные операции и не должны использоваться для сложных сценариев. Например упаковки всего запросов или по промежуточного слоя цепочек не поддерживается и не рекомендуется.
+`RunImpersonated` не поддерживает асинхронные операции и не должны использоваться для сложных сценариев. Например упаковки всего запросов или по промежуточного слоя цепочек не поддерживается и не рекомендуется.

@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 10/11/2018
 uid: security/anti-request-forgery
-ms.openlocfilehash: c4a512e5518380f5f0a43d08cd0bcba2f8c26141
-ms.sourcegitcommit: 375e9a67f5e1f7b0faaa056b4b46294cc70f55b7
+ms.openlocfilehash: 3c1ea8f41eb6ed847bf24141ef0ae0c7e03d8a79
+ms.sourcegitcommit: 97d7a00bd39c83a8f6bccb9daa44130a509f75ce
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50207671"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54099225"
 ---
 # <a name="prevent-cross-site-request-forgery-xsrfcsrf-attacks-in-aspnet-core"></a>Предотвращения межсайтовых (запросов XSRF/CSRF) атак с подделкой в ASP.NET Core
 
@@ -193,7 +193,7 @@ services.AddAntiforgery(options =>
 
 &dagger;Задайте защиты от подделки `Cookie` свойства с помощью свойства [CookieBuilder](/dotnet/api/microsoft.aspnetcore.http.cookiebuilder) класса.
 
-| Параметр | Описание |
+| Параметр | Описание: |
 | ------ | ----------- |
 | [Файл cookie](/dotnet/api/microsoft.aspnetcore.antiforgery.antiforgeryoptions.cookie) | Определяет параметры, используемые для создания против подделки файлы cookie. |
 | [FormFieldName](/dotnet/api/microsoft.aspnetcore.antiforgery.antiforgeryoptions.formfieldname) | Имя скрытого поля формы используемые против подделки системой для подготовки к просмотру против подделки токенов в представлениях. |
@@ -217,7 +217,7 @@ services.AddAntiforgery(options =>
 });
 ```
 
-| Параметр | Описание |
+| Параметр | Описание: |
 | ------ | ----------- |
 | [Файл cookie](/dotnet/api/microsoft.aspnetcore.antiforgery.antiforgeryoptions.cookie) | Определяет параметры, используемые для создания против подделки файлы cookie. |
 | [CookieDomain](/dotnet/api/microsoft.aspnetcore.antiforgery.antiforgeryoptions.cookiedomain) | Домен cookie. По умолчанию — `null`. Это свойство является устаревшим и будет удален в будущей версии. Рекомендуемой альтернативой является Cookie.Domain. |
@@ -225,7 +225,7 @@ services.AddAntiforgery(options =>
 | [CookiePath](/dotnet/api/microsoft.aspnetcore.antiforgery.antiforgeryoptions.cookiepath) | Путь в файле cookie. Это свойство является устаревшим и будет удален в будущей версии. Рекомендуемой альтернативой является Cookie.Path. |
 | [FormFieldName](/dotnet/api/microsoft.aspnetcore.antiforgery.antiforgeryoptions.formfieldname) | Имя скрытого поля формы используемые против подделки системой для подготовки к просмотру против подделки токенов в представлениях. |
 | [HeaderName](/dotnet/api/microsoft.aspnetcore.antiforgery.antiforgeryoptions.headername) | Имя заголовка, используемый системой против подделки. Если `null`, то система рассматривает только данные формы. |
-| [RequireSsl](/dotnet/api/microsoft.aspnetcore.antiforgery.antiforgeryoptions.requiressl) | Указывает, требуется ли SSL против подделки системой. Если `true`, происходит сбой запросов без SSL. По умолчанию — `false`. Это свойство является устаревшим и будет удален в будущей версии. Рекомендуемой альтернативой является установка Cookie.SecurePolicy. |
+| [RequireSsl](/dotnet/api/microsoft.aspnetcore.antiforgery.antiforgeryoptions.requiressl) | Указывает, требуется ли HTTPS против подделки системой. Если `true`, отличных от HTTPS-запросы завершаются сбоем. По умолчанию — `false`. Это свойство является устаревшим и будет удален в будущей версии. Рекомендуемой альтернативой является установка Cookie.SecurePolicy. |
 | [SuppressXFrameOptionsHeader](/dotnet/api/microsoft.aspnetcore.antiforgery.antiforgeryoptions.suppressxframeoptionsheader) | Указывает, следует ли подавлять поколение `X-Frame-Options` заголовка. По умолчанию заголовок создается со значением «SAMEORIGIN». По умолчанию — `false`. |
 
 ::: moniker-end

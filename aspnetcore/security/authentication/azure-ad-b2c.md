@@ -5,12 +5,12 @@ description: Узнайте, как настроить проверку подл
 ms.date: 01/25/2018
 ms.custom: mvc
 uid: security/authentication/azure-ad-b2c
-ms.openlocfilehash: 73a66cea1533cc835796f673021bfa45c35f5935
-ms.sourcegitcommit: 4cd8dce371d63a66d780e4af1baab2bcf9d61b24
+ms.openlocfilehash: 2c544475ccd3eb76f2737fec1cf269ac86add372
+ms.sourcegitcommit: 97d7a00bd39c83a8f6bccb9daa44130a509f75ce
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "43893198"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54098991"
 ---
 # <a name="cloud-authentication-with-azure-active-directory-b2c-in-aspnet-core"></a>Проверка подлинности Cloud с Azure Active Directory B2C в ASP.NET Core
 
@@ -19,7 +19,7 @@ ms.locfileid: "43893198"
 [Azure Active Directory B2C](/azure/active-directory-b2c/active-directory-b2c-overview) (Azure AD B2C) является это облаке решение управления удостоверениями для Интернета и мобильных приложений. Эта служба предоставляет проверку подлинности для приложений, размещенных в облаке и локальной. Типы проверки подлинности включают отдельные учетные записи, учетные записи социальных сетей и федеративные пользователи корпоративных учетных записей. Кроме того Azure AD B2C обеспечивает многофакторную проверку подлинности с минимальной конфигурацией.
 
 > [!TIP]
-> Azure Active Directory (Azure AD) и Azure AD B2C являются отдельными предложениями продуктов. Клиент Azure AD представляет организацию, хотя клиент Azure AD B2C представляет коллекцию удостоверений для использования с приложениями проверяющей стороны. Дополнительные сведения см. в разделе [Azure AD B2C: часто задаваемые вопросы (FAQ)](/azure/active-directory-b2c/active-directory-b2c-faqs).
+> Azure Active Directory (Azure AD) и Azure AD B2C являются отдельными предложениями продуктов. Клиент Azure AD представляет организацию, хотя клиент Azure AD B2C представляет коллекцию удостоверений для использования с приложениями проверяющей стороны. Дополнительные сведения см. в разделе [Azure AD B2C: Часто задаваемые вопросы (FAQ)](/azure/active-directory-b2c/active-directory-b2c-faqs).
 
 В этом руководстве описано, как:
 
@@ -66,7 +66,7 @@ ms.locfileid: "43893198"
 
 Шаблон веб-приложения Visual Studio можно настроить для использования клиента Azure AD B2C для проверки подлинности.
 
-В Visual Studio:
+В Visual Studio сделайте следующее:
 
 1. Создайте новое веб-приложение ASP.NET Core. 
 2. Выберите **веб-приложение** из списка шаблонов.
@@ -96,7 +96,7 @@ ms.locfileid: "43893198"
 Вернитесь в окно браузера со свойствами приложения B2C еще открыт. Измените временную **URL-адрес ответа** указано ранее, чтобы значение копируется из Visual Studio. Выберите **Сохранить** в верхней части окна.
 
 > [!TIP]
-> Если вы не скопировали URL-адрес ответа, используйте адрес SSL на вкладке "Отладка" в свойствах Интернета проекта и добавление **CallbackPath** значение из *appsettings.json*.
+> Если вы не скопировали URL-адрес ответа, используйте HTTPS-адрес на вкладке "Отладка" в свойствах Интернета проекта и добавление **CallbackPath** значение из *appsettings.json*.
 
 ## <a name="configure-policies"></a>Настройка политик
 

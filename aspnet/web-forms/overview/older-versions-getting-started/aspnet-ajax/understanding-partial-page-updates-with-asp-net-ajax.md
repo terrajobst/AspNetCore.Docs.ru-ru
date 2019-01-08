@@ -8,12 +8,12 @@ ms.date: 03/28/2008
 ms.assetid: 54d9df99-1161-4899-b4e8-2679c85915e7
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/aspnet-ajax/understanding-partial-page-updates-with-asp-net-ajax
 msc.type: authoredcontent
-ms.openlocfilehash: 2e0b1e1d4cbb282e7fd4b27e0a93ba1b9702edea
-ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
+ms.openlocfilehash: 4883046aa16d5e67b7f0c92e15c897ef1a933b67
+ms.sourcegitcommit: 97d7a00bd39c83a8f6bccb9daa44130a509f75ce
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "41828582"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54098939"
 ---
 <a name="understanding-partial-page-updates-with-aspnet-ajax"></a>Основные сведения о частичных обновлениях страниц с помощью ASP.NET AJAX
 ====================
@@ -46,18 +46,18 @@ ms.locfileid: "41828582"
 
 Возможность интеграции частичной отрисовки интегрирована в ASP.NET с минимальными изменениями в проект.
 
-## <a name="walkthrough-integrating-partial-rendering-into-an-existing-project"></a>Пошаговое руководство: Интеграция частичной визуализации в существующий проект
+## <a name="walkthrough-integrating-partial-rendering-into-an-existing-project"></a>Пошаговое руководство. Интеграция частичной визуализации в существующий проект
 
 
 1. В Microsoft Visual Studio 2008, создайте новый проект веб-сайт ASP.NET, выбрав <em>файл</em>  <em>- &gt; New</em>  <em>- &gt; веб-сайт</em> и выбрав веб-сайта ASP.NET в диалоговом окне. Вы можете назвать ее любым и программное обеспечение можно установить в файловую систему или в Internet Information Services (IIS).
 2. Откроется с пустым по умолчанию страницы с разметкой basic ASP.NET (формы на сервере и `@Page` директива). Удалить метку с именем `Label1` и кнопки с именем `Button1` на страницу в элемент form. Их свойства text можно установить на любое другое.
 3. В конструкторе, дважды щелкните `Button1` Чтобы создать обработчик события кода. В этом обработчике событий задать `Label1.Text` для нажатия кнопки! .
 
-**В листинге 1: Разметку для default.aspx, прежде чем частичная отрисовка разрешена**
+**В листинге 1: Разметка для default.aspx, прежде чем частичная отрисовка разрешена**
 
 [!code-aspx[Main](understanding-partial-page-updates-with-asp-net-ajax/samples/sample1.aspx)]
 
-**В листинге 2: Фонового кода (фрагмент) в файл default.aspx.cs**
+**В листинге 2: (Фрагмент) в файл default.aspx.cs фонового кода**
 
 [!code-csharp[Main](understanding-partial-page-updates-with-asp-net-ajax/samples/sample2.cs)]
 
@@ -85,13 +85,13 @@ ms.locfileid: "41828582"
 1. В любом месте в пределах `<form>` элемент, включают элемент управления ScriptManager, дважды щелкнув `ScriptManager` элемент на панели элементов.
 2. Изменить `<asp:ScriptManager>` тег таким образом, чтобы он включал атрибут `EnablePartialRendering= true`.
 
-**Листинг 3: Разметку для default.aspx с включенной частичной отрисовкой**
+**Листинг 3: Разметка для default.aspx с включенной частичной отрисовкой**
 
 [!code-aspx[Main](understanding-partial-page-updates-with-asp-net-ajax/samples/sample3.aspx)]
 
 1. Откройте файл web.config. Обратите внимание на то, что Visual Studio автоматически добавляет ссылку компиляции System.Web.Extensions.dll.
 
-1. Новые возможности в Visual Studio 2008: файле web.config, который поставляется с шаблонами проектов веб-сайт ASP.NET, автоматически включает все необходимые ссылки на расширения AJAX для ASP.NET и закомментированные разделы данных конфигурации, который может быть Отмена комментария дополнительных функциональных возможностей. Visual Studio 2005 было похожих шаблонов, когда были установлены расширения AJAX для ASP.NET 2.0. Однако в Visual Studio 2008, расширения AJAX являются отказаться по умолчанию (то есть они указываются по умолчанию, но можно удалить ссылки на).
+1. Новые возможности в Visual Studio 2008: Части сведений о конфигурации, который может быть без комментариями, чтобы включить дополнительные комментариями файла web.config, который поставляется с веб-сайт ASP.NET шаблоны проектов, автоматически включает все необходимые ссылки на расширения AJAX для ASP.NET и включает в себя функциональные возможности. Visual Studio 2005 было похожих шаблонов, когда были установлены расширения AJAX для ASP.NET 2.0. Однако в Visual Studio 2008, расширения AJAX являются отказаться по умолчанию (то есть они указываются по умолчанию, но можно удалить ссылки на).
 
 
 [![](understanding-partial-page-updates-with-asp-net-ajax/_static/image8.png)](understanding-partial-page-updates-with-asp-net-ajax/_static/image7.png)
@@ -153,7 +153,7 @@ Visual Studio 2008 не поставляются с предварительно
 
 Элемент управления ScriptManager представляет essential core для расширения AJAX для ASP.NET. Он предоставляет доступ к библиотеке сценариев (включая систему типов обширной скрипт на стороне клиента), поддерживает частичную визуализацию и предоставляет расширенную поддержку дополнительных служб ASP.NET (например, проверка подлинности и профилирования, а также другие веб-службы). Элемент управления ScriptManager также обеспечивает поддержку глобализации и локализации для клиентских скриптов.
 
-## <a name="providing-alterative-and-supplemental-scripts"></a>Предоставляет альтернативный и дополнительные скрипты
+## <a name="providing-alternative-and-supplemental-scripts"></a>Предоставляя альтернативные и дополнительные скрипты
 
 Хотя Microsoft ASP.NET 2.0 AJAX Extensions содержат код весь скрипт в обоих отладки и выпуск выпуски в качестве ресурсов, внедренных в ссылочных сборках, разработчики могут перенаправлять ScriptManager файлы пользовательского сценария, а также для регистрации Дополнительные необходимые сценарии.
 

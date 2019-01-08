@@ -4,14 +4,14 @@ author: mjrousos
 description: Советы для повышения производительности в приложениях ASP.NET Core и как избежать распространенных проблем производительности.
 monikerRange: '>= aspnetcore-1.1'
 ms.author: riande
-ms.date: 11/29/2018
+ms.date: 1/9/2019
 uid: performance/performance-best-practices
-ms.openlocfilehash: 9f3ed97bf4d4eb371ff5ae3874234b44745cc4ca
-ms.sourcegitcommit: 0fc89b80bb1952852ecbcf3c5c156459b02a6ceb
+ms.openlocfilehash: 25aa4c1e22ead7db4775c6e5e81b6fd627c6d7a6
+ms.sourcegitcommit: 97d7a00bd39c83a8f6bccb9daa44130a509f75ce
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52618120"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54099069"
 ---
 # <a name="aspnet-core-performance-best-practices"></a>Рекомендации по производительности ASP.NET Core
 
@@ -19,8 +19,7 @@ ms.locfileid: "52618120"
 
 В этом разделе приводятся инструкции по производительности рекомендации с помощью ASP.NET Core.
 
-<a name="hot"></a>
-<!-- TODO review hot code paths is jargon that won't MT (machine translate) and is not well defined for native speakers. --> В этом документе ветви кода определяется как путь кода, который часто называют и где большую часть времени выполнения происходит. "Горячий" путей обычно ограничивают приложения масштабирования и производительности.
+<a name="hot"></a> В этом документе ветви кода определяется как путь кода, который часто называют и где большую часть времени выполнения происходит. "Горячий" путей обычно ограничивают приложения масштабирования и производительности.
 
 ## <a name="cache-aggressively"></a>Кэшировать агрессивно
 
@@ -129,6 +128,10 @@ ms.locfileid: "52618120"
 
 * **Сделать** использовать ASP.NET Core [встроенную поддержку](xref:client-side/bundling-and-minification) для объединение и Минификация активов клиента.
 * **Сделать** рассмотрим другие сторонние средства, такие как [Gulp](uid:client-side/bundling-and-minification#consume-bundleconfigjson-from-gulp) или [Webpack](https://webpack.js.org/) для более сложных управление ресурсами клиента.
+
+## <a name="compress-responses"></a>Сжатия ответов
+
+ Уменьшение размера ответа обычно часто значительно увеличивается скорость реагирования приложения. Для сжатия ответов приложения является одним из способов уменьшить размеры полезной нагрузки. Дополнительные сведения см. в разделе [сжатия отклика](xref:performance/response-compression).
 
 ## <a name="use-the-latest-aspnet-core-release"></a>Используйте последний выпуск ASP.NET Core
 

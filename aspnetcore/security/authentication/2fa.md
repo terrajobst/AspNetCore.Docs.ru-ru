@@ -7,12 +7,12 @@ ms.author: riande
 ms.date: 09/22/2018
 ms.custom: seodec18
 uid: security/authentication/2fa
-ms.openlocfilehash: 6f20928b0dec9b235fa17c1b44c81a48d031e9e0
-ms.sourcegitcommit: 49faca2644590fc081d86db46ea5e29edfc28b7b
+ms.openlocfilehash: 48bfc50378fc0ec212f5b9d4e7ce05bb4fc97b9d
+ms.sourcegitcommit: 97d7a00bd39c83a8f6bccb9daa44130a509f75ce
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 12/09/2018
-ms.locfileid: "53121665"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54098900"
 ---
 # <a name="two-factor-authentication-with-sms-in-aspnet-core"></a>Двухфакторная проверка подлинности с помощью SMS в ASP.NET Core
 
@@ -27,7 +27,7 @@ ms.locfileid: "53121665"
 
 ## <a name="create-a-new-aspnet-core-project"></a>Создание проекта ASP.NET Core
 
-Создание нового веб-приложения ASP.NET Core с именем `Web2FA` с учетными записями отдельных пользователей. Следуйте инструкциям в [принудительно использовать SSL-в приложении ASP.NET Core](xref:security/enforcing-ssl) для настройки и обязательное использование SSL.
+Создание нового веб-приложения ASP.NET Core с именем `Web2FA` с учетными записями отдельных пользователей. Следуйте инструкциям в <xref:security/enforcing-ssl> для настройки и обязательного использования протокола HTTPS.
 
 ### <a name="create-an-sms-account"></a>Создание учетной записи SMS
 
@@ -35,17 +35,17 @@ ms.locfileid: "53121665"
 
 #### <a name="figuring-out-sms-provider-credentials"></a>Выяснение учетные данные поставщика SMS
 
-**Twilio:** вкладки панели мониторинга учетной записи Twilio, скопируйте **ИД безопасности учетной записи** и **маркер проверки подлинности**.
+**Twilio:** На вкладке панели мониторинга учетной записи Twilio, скопируйте **ИД безопасности учетной записи** и **маркер проверки подлинности**.
 
-**ASPSMS:** из параметров учетной записи, перейдите к **Userkey** и скопируйте его вместе с вашей **пароль**.
+**ASPSMS:** Параметры учетной записи, перейдите к **Userkey** и скопируйте его вместе с вашей **пароль**.
 
 Позже мы сохраним эти значения с помощью диспетчера секретов, в ключи `SMSAccountIdentification` и `SMSAccountPassword`.
 
 #### <a name="specifying-senderid--originator"></a>Указав идентификатор SenderID / инициатора
 
-**Twilio:** на вкладке «числа» скопируйте twilio и значениями **номер телефона**.
+**Twilio:** На вкладке «числа» скопируйте twilio и значениями **номер телефона**.
 
-**ASPSMS:** инициаторы меню разблокирования разблокировать один или несколько авторства или выберите инициатор буквенно-цифровых (не поддерживаются все сети).
+**ASPSMS:** Меню разблокирования инициаторы разблокировать один или несколько авторства или выберите инициатор буквенно-цифровых (не поддерживается всех сетей).
 
 Позже мы Сохраним это значение с помощью диспетчера секретов, раздел `SMSAccountFrom`.
 
@@ -136,7 +136,7 @@ info: Successfully saved SMSAccountIdentification = 12345 to the secret store.
 
 ## <a name="account-lockout-for-protecting-against-brute-force-attacks"></a>Блокировка учетной записи, обеспечивающие защиту от атак методом подбора
 
-Блокировка учетной записи рекомендуется с 2FA. Когда пользователь войдет в приложение через локальную учетную запись или учетную запись социальной сети, каждая неудачная попытка 2FA хранится. После достижения максимального неудачных попыток доступа пользователя блокируется (по умолчанию: 5-минутного блокировки после 5 неудачных попыток доступа). Сбрасывает счетчик попыток неудачные попытки доступа успешной проверки подлинности и сбрасывает часы. Максимально неудачных попыток доступа и время блокировки может быть задано с помощью [MaxFailedAccessAttempts](/dotnet/api/microsoft.aspnetcore.identity.lockoutoptions.maxfailedaccessattempts) и [DefaultLockoutTimeSpan](/dotnet/api/microsoft.aspnetcore.identity.lockoutoptions.defaultlockouttimespan). Следующие настраивает блокировки учетных записей для 10 минут после десяти неудачных попыток доступа:
+Блокировка учетной записи рекомендуется с 2FA. Когда пользователь войдет в приложение через локальную учетную запись или учетную запись социальной сети, каждая неудачная попытка 2FA хранится. После достижения максимального неудачных попыток доступа пользователя блокируется (по умолчанию: 5-минутный блокировки после 5 неудачных попыток доступа). Сбрасывает счетчик попыток неудачные попытки доступа успешной проверки подлинности и сбрасывает часы. Максимально неудачных попыток доступа и время блокировки может быть задано с помощью [MaxFailedAccessAttempts](/dotnet/api/microsoft.aspnetcore.identity.lockoutoptions.maxfailedaccessattempts) и [DefaultLockoutTimeSpan](/dotnet/api/microsoft.aspnetcore.identity.lockoutoptions.defaultlockouttimespan). Следующие настраивает блокировки учетных записей для 10 минут после десяти неудачных попыток доступа:
 
 [!code-csharp[](2fa/sample/Web2FA/Startup.cs?name=snippet2&highlight=13-17)]
 
