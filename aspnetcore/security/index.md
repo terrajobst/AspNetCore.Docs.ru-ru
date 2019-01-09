@@ -6,16 +6,16 @@ ms.author: tdykstra
 ms.custom: mvc
 ms.date: 10/24/2018
 uid: security/index
-ms.openlocfilehash: 579e472e01efd08bbafe949e37a3b655a42a5b46
-ms.sourcegitcommit: 04b55a5ce9d649ff2df926157ec28ae47afe79e2
+ms.openlocfilehash: 933501411169d89c4b24edda743c47591aa7a87a
+ms.sourcegitcommit: 97d7a00bd39c83a8f6bccb9daa44130a509f75ce
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52156923"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54098965"
 ---
 # <a name="overview-of-aspnet-core-security"></a>Общие сведения о безопасности ASP.NET Core
 
-ASP.NET Core позволяет разработчикам легко настраивать параметры безопасности для приложений и управлять ими. ASP.NET Core содержит функции для управления проверкой подлинности, авторизацией, защитой данных, применением SSL, секретами приложений, защитой от подделки запросов, а также для управления CORS. Эти функции обеспечения безопасности позволяют создавать надежные и защищенные приложения ASP.NET Core.
+ASP.NET Core позволяет разработчикам легко настраивать параметры безопасности для приложений и управлять ими. ASP.NET Core содержит функции для управления проверкой подлинности, авторизацией, защитой данных, применением HTTPS, секретами приложений, защитой от подделки запросов, а также для управления CORS. Эти функции обеспечения безопасности позволяют создавать надежные и защищенные приложения ASP.NET Core.
 
 ## <a name="aspnet-core-security-features"></a>Функции безопасности в ASP.NET Core
 
