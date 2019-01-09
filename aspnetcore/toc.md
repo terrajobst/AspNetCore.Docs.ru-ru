@@ -179,7 +179,9 @@
 ## [Отладка моментальных снимков](/azure/application-insights/app-insights-snapshot-debugger)
 ## [Отладка моментальных снимков в Visual Studio](/visualstudio/debugger/debug-live-azure-applications)
 ## [Интеграционные тесты](xref:test/integration-tests)
+## [Нагрузочное тестирование](xref:test/loadtests)
 ## [Устранение неполадок](xref:test/troubleshoot)
+## [Ведение журнала](xref:fundamentals/logging/index)
 
 # Доступ к данным
 ## Учебники
@@ -392,6 +394,7 @@
 ## [Использование наблюдателя за файлами](xref:tutorials/dotnet-watch)
 
 # Миграция
+## [С версии 2.2 на 3.0](xref:migration/22-to-30)
 ## [С 2.1 до 2.2](xref:migration/21-to-22)
 ## [С 2.0 до 2.1](xref:migration/20_21)
 ## С 1.x до 2.0
@@ -406,6 +409,7 @@
 ### [ClaimsPrincipal.Current](xref:migration/claimsprincipal-current)
 ### [Членство и идентификатор](xref:migration/proper-to-2x/membership-to-core-identity)
 ### [Миграция с модулей HTTP на ПО промежуточного слоя](xref:migration/http-modules)
+## [Ведение журналов (не в ASP.NET Core)](xref:migration/logging-nonaspnetcore)
 
 # Новые возможности
 ## [Новые возможности версии 2.2](xref:aspnetcore-2.2)
