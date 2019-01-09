@@ -1,0 +1,3 @@
+* [<span data-ttu-id="59ef1-101">Visual Studio Code.</span><span class="sxs-lookup"><span data-stu-id="59ef1-101">Visual Studio Code</span></span>](https://code.visualstudio.com/)
+* [<span data-ttu-id="59ef1-102">.NET core SDK 3.0</span><span class="sxs-lookup"><span data-stu-id="59ef1-102">.NET Core SDK 3.0</span></span>](https://dotnet.microsoft.com/download/dotnet-core/3.0)
+* <span data-ttu-id="59ef1-103">[C# для Visual Studio Code версии 1.17.1 или более поздней](https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp).</span><span class="sxs-lookup"><span data-stu-id="59ef1-103">[C# for Visual Studio Code version 1.17.1 or later](https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp)</span></span>
