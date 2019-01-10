@@ -2,28 +2,34 @@
 title: Структура каталогов ASP.NET Core
 author: guardrex
 description: Сведения о структуре каталогов опубликованных приложений ASP.NET Core.
+monikerRange: '>= aspnetcore-2.2'
 ms.author: riande
 ms.custom: mvc
-ms.date: 04/09/2018
+ms.date: 12/11/2018
 uid: host-and-deploy/directory-structure
-ms.openlocfilehash: 8e2693397f826d0e9a36ff52aa1d1d623b31043d
-ms.sourcegitcommit: 356c8d394aaf384c834e9c90cabab43bfe36e063
+ms.openlocfilehash: ee0bebb8b5c688f8471d6420d1641b87ac271f6c
+ms.sourcegitcommit: b34b25da2ab68e6495b2460ff570468f16a9bf0d
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 06/26/2018
-ms.locfileid: "36960831"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53284569"
 ---
 # <a name="aspnet-core-directory-structure"></a>Структура каталогов ASP.NET Core
 
 Автор [Люк Латэм](https://github.com/guardrex) (Luke Latham)
 
-В ASP.NET Core каталог опубликованных приложений *publish* содержит файлы приложений, файлы конфигурации, статические ресурсы, пакеты и среды выполнения (для [автономных развертываний](/dotnet/core/deploying/#self-contained-deployments-scd)).
+Каталог *публикации* содержит развертываемые ресурсы приложения, созданные командной [dotnet publish](/dotnet/core/tools/dotnet-publish). Каталог содержит следующее.
 
+* Файлы приложения.
+* Файлы конфигурации.
+* Статические ресурсы.
+* Пакеты
+* Среда выполнения ([только автономное развертывание](/dotnet/core/deploying/#self-contained-deployments-scd))
 
 | Тип приложения | Структура каталогов |
 | -------- | ------------------- |
-| [Развертывание, зависящее от платформы](/dotnet/core/deploying/#framework-dependent-deployments-fdd) | <ul><li>publish&dagger;<ul><li>Logs&dagger; (необязательно, если не требуется для получения журналов stdout)</li><li>Views&dagger; (в приложениях MVC, если представления не компилируются заранее)</li><li>Pages&dagger; (в приложениях MVC или Razor Pages, если страницы не компилируются заранее)</li><li>wwwroot&dagger;</li><li>*\.DLL-файлы</li><li>\<имя_сборки>.deps.json</li><li>\<имя_сборки>.dll</li><li>\<имя_сборки>.pdb</li><li>\<имя_сборки>.PrecompiledViews.dll</li><li>\<имя_сборки>.PrecompiledViews.pdb</li><li>\<имя_сборки>.runtimeconfig.json</li><li>web.config (в развертываниях IIS)</li></ul></li></ul> |
-| [Автономное развертывание](/dotnet/core/deploying/#self-contained-deployments-scd) | <ul><li>publish&dagger;<ul><li>Logs&dagger; (необязательно, если не требуется для получения журналов stdout)</li><li>refs&dagger;</li><li>Views&dagger; (в приложениях MVC, если представления не компилируются заранее)</li><li>Pages&dagger; (в приложениях MVC или Razor Pages, если страницы не компилируются заранее)</li><li>wwwroot&dagger;</li><li>\*DLL-файлы</li><li>\<имя_сборки>.deps.json</li><li>\<имя_сборки>.exe</li><li>\<имя_сборки>.pdb</li><li>\<имя_сборки>.PrecompiledViews.dll</li><li>\<имя_сборки>.PrecompiledViews.pdb</li><li>\<имя_сборки>.runtimeconfig.json</li><li>web.config (в развертываниях IIS)</li></ul></li></ul> |
+| [Развертывание, зависящее от платформы](/dotnet/core/deploying/#framework-dependent-deployments-fdd) | <ul><li>publish&dagger;<ul><li>Logs&dagger; (необязательно, если не требуется для получения журналов stdout)</li><li>Views&dagger; (в приложениях MVC, если представления не компилируются заранее)</li><li>Pages&dagger; (в приложениях MVC или Razor Pages, если страницы не компилируются заранее)</li><li>wwwroot&dagger;</li><li>*\.DLL-файлы</li><li>{имя_сборки}.deps.json</li><li>{имя_сборки}.dll</li><li>{имя_сборки}.pdb</li><li>{имя_сборки}.Views.dll</li><li>{имя_сборки}.Views.pdb</li><li>{имя_сборки}.runtimeconfig.json</li><li>web.config (в развертываниях IIS)</li></ul></li></ul> |
+| [Автономное развертывание](/dotnet/core/deploying/#self-contained-deployments-scd) | <ul><li>publish&dagger;<ul><li>Logs&dagger; (необязательно, если не требуется для получения журналов stdout)</li><li>Views&dagger; (в приложениях MVC, если представления не компилируются заранее)</li><li>Pages&dagger; (в приложениях MVC или Razor Pages, если страницы не компилируются заранее)</li><li>wwwroot&dagger;</li><li>\*DLL-файлы</li><li>{имя_сборки}.deps.json</li><li>{имя_сборки}.dll</li><li>{имя_сборки}.exe</li><li>{имя_сборки}.pdb</li><li>{имя_сборки}.Views.dll</li><li>{имя_сборки}.Views.pdb</li><li>{имя_сборки}.runtimeconfig.json</li><li>web.config (в развертываниях IIS)</li></ul></li></ul> |
 
 &dagger;Обозначает каталог
 
@@ -46,8 +52,15 @@ ms.locfileid: "36960831"
    </Target>
    ```
 
-   Элемент `<MakeDir>` создает пустую папку *Logs* в публикуемых выходных данных. Этот элемент использует свойство `PublishDir`, чтобы определить целевое расположение для создания папки. Несколько методов развертывания, например веб-развертывание, пропускают пустые папки во время развертывания. Элемент `<WriteLinesToFile>` создает файл в папке *Logs*, чтобы гарантировать ее развертывание на целевом сервере. Обратите внимание, что создание папки может завершиться ошибкой, если рабочий процесс не имеет прав на запись в целевую папку.
+   Элемент `<MakeDir>` создает пустую папку *Logs* в публикуемых выходных данных. Этот элемент использует свойство `PublishDir`, чтобы определить целевое расположение для создания папки. Несколько методов развертывания, например веб-развертывание, пропускают пустые папки во время развертывания. Элемент `<WriteLinesToFile>` создает файл в папке *Logs*, чтобы гарантировать ее развертывание на целевом сервере. Создание папки с помощью этого подхода завершается ошибкой, если рабочий процесс не имеет прав на запись в целевую папку.
 
 * Самостоятельно создайте физическую папку *Logs* на сервере в каталоге развертывания.
 
 Для каталога развертывания нужны права на чтение и выполнение. Для каталога *Logs* нужны права на чтение и запись. Для дополнительных каталогов, в которые записываются файлы, нужны права на чтение и запись.
+
+## <a name="additional-resources"></a>Дополнительные ресурсы
+
+* [dotnet publish](/dotnet/core/tools/dotnet-publish)
+* [Развертывание приложений .NET Core](/dotnet/core/deploying/)
+* [Целевые платформы](/dotnet/standard/frameworks)
+* [Каталог относительных идентификаторов в .NET Core](/dotnet/core/rid-catalog)

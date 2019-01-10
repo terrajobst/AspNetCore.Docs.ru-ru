@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 10/24/2018
 uid: data/ef-rp/complex-data-model
-ms.openlocfilehash: 9a0d5a8e722487ccf7e08aadb39f838a0963451d
-ms.sourcegitcommit: 4d74644f11e0dac52b4510048490ae731c691496
+ms.openlocfilehash: 930a6f2b860c71b6f499cff53e0d909a130f7948
+ms.sourcegitcommit: 816f39e852a8f453e8682081871a31bc66db153a
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50090981"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53637902"
 ---
 # <a name="razor-pages-with-ef-core-in-aspnet-core---data-model---5-of-8"></a>Razor Pages с EF Core в ASP.NET Core — модель данных— 5 из 8
 
@@ -47,7 +47,7 @@ https://github.com/aspnet/Docs/tree/master/aspnetcore/data/ef-rp/intro/samples).
 
 [!code-csharp[](intro/samples/cu21/Models/Student.cs?name=snippet_DataType&highlight=3,12-13)]
 
-Атрибут [DataType](/dotnet/api/system.componentmodel.dataannotations.datatypeattribute?view=netframework-4.7.1) указывает тип данных более точно по сравнению со встроенным типом базы данных. В этом случае следует отображать отобразить только дату, а не дату и время. В [перечислении DataType](/dotnet/api/system.componentmodel.dataannotations.datatype?view=netframework-4.7.1) представлено множество типов данных, таких как Date, Time, PhoneNumber, Currency, EmailAddress и других. Атрибут `DataType` также обеспечивает автоматическое предоставление функций для определенных типов в приложении. Пример:
+Атрибут [DataType](/dotnet/api/system.componentmodel.dataannotations.datatypeattribute?view=netframework-4.7.1) указывает тип данных более точно по сравнению со встроенным типом базы данных. В этом случае следует отображать отобразить только дату, а не дату и время. В [перечислении DataType](/dotnet/api/system.componentmodel.dataannotations.datatype?view=netframework-4.7.1) представлено множество типов данных, таких как Date, Time, PhoneNumber, Currency, EmailAddress и других. Атрибут `DataType` также обеспечивает автоматическое предоставление функций для определенных типов в приложении. Например:
 
 * Ссылка `mailto:` для `DataType.EmailAddress` создается автоматически.
 * Средство выбора даты предоставляется для `DataType.Date` в большинстве браузеров.
@@ -384,7 +384,7 @@ public Instructor Administrator { get; set; }
 public ICollection<Course> Courses { get; set; }
 ```
 
-Примечание. По соглашению EF Core разрешает каскадное удаление для внешних ключей, не допускающих значение null, и связей многие ко многим. Каскадное удаление может привести к циклическим правилам каскадного удаления. Такие правила вызывают исключение при добавлении миграции.
+Примечание. По соглашению EF Core разрешает каскадное удаление для внешних ключей, не допускающих значение null, и связей "многие ко многим". Каскадное удаление может привести к циклическим правилам каскадного удаления. Такие правила вызывают исключение при добавлении миграции.
 
 Например, если свойство `Department.InstructorID` не было определено как допускающее значение null:
 
@@ -538,10 +538,7 @@ protected override void OnModelCreating(ModelBuilder modelBuilder)
 
 [!code-csharp[](intro/samples/cu21/Data/DbInitializer.cs?name=snippet_Final)]
 
-Предыдущий код предоставляет начальные данные для новых сущностей. Основная часть кода создает объекты сущностей и загружает демонстрационные данные. Демонстрационные данные используются для проверки. Приведенный выше код создает следующие связи многие ко многим:
-
-* `Enrollments`
-* `CourseAssignment`
+Предыдущий код предоставляет начальные данные для новых сущностей. Основная часть кода создает объекты сущностей и загружает демонстрационные данные. Демонстрационные данные используются для проверки. См. `Enrollments` и `CourseAssignments`, чтобы ознакомиться с примерами заполнения данными таблиц соединения "многие ко многим".
 
 ## <a name="add-a-migration"></a>Добавление миграции
 

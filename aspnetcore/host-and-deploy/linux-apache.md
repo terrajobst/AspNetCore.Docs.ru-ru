@@ -4,14 +4,14 @@ description: Процедура настройки Apache в качестве о
 author: spboyer
 ms.author: spboyer
 ms.custom: mvc
-ms.date: 12/01/2018
+ms.date: 12/20/2018
 uid: host-and-deploy/linux-apache
-ms.openlocfilehash: 46cdb764b872e86f0fd7d19133aae14891bdd452
-ms.sourcegitcommit: 9bb58d7c8dad4bbd03419bcc183d027667fefa20
+ms.openlocfilehash: 8c590743328885336498ca2446c618b13a7d2ce2
+ms.sourcegitcommit: e1cc4c1ef6c9e07918a609d5ad7fadcb6abe3e12
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52862464"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "53997231"
 ---
 # <a name="host-aspnet-core-on-linux-with-apache"></a>Размещение ASP.NET Core в операционной системе Linux с Apache
 
@@ -101,7 +101,7 @@ services.Configure<ForwardedHeadersOptions>(options =>
 });
 ```
 
-Дополнительные сведения см. в разделе <xref:host-and-deploy/proxy-load-balancer>.
+Для получения дополнительной информации см. <xref:host-and-deploy/proxy-load-balancer>.
 
 ### <a name="install-apache"></a>Установка Apache
 
@@ -471,6 +471,7 @@ sudo yum install mod_proxy_balancer
 ```bash
 sudo nano /etc/httpd/conf.d/ratelimit.conf
 ```
+
 В примере файла пропускная способность составляет 600 Кбит/с в корневой папке.
 
 ```
@@ -481,6 +482,13 @@ sudo nano /etc/httpd/conf.d/ratelimit.conf
     </Location>
 </IfModule>
 ```
+
+### <a name="long-request-header-fields"></a>Длинные поля заголовка запроса
+
+Если приложение требует поля заголовка запроса длиннее, чем разрешено параметром по умолчанию прокси-сервера (обычно 8190 байт). измените значение директивы [LimitRequestFieldSize](https://httpd.apache.org/docs/2.4/mod/core.html#LimitRequestFieldSize). Применяемое значение зависит от условий. Дополнительные сведения см. в документации сервера.
+
+> [!WARNING]
+> Не увеличивайте значение `LimitRequestFieldSize` по умолчанию, если это не требуется. Увеличение значения повышает риск переполнения буфера и атак типа "отказ в обслуживании" (DoS) со стороны злоумышленников.
 
 ## <a name="additional-resources"></a>Дополнительные ресурсы
 

@@ -6,12 +6,12 @@ ms.author: riande
 monikerRange: '>= aspnetcore-2.2'
 ms.date: 12/3/2018
 uid: tutorials/razor-pages/model
-ms.openlocfilehash: 91fee1db820493be671fecaee3cfb4c1b7df8bd3
-ms.sourcegitcommit: 49faca2644590fc081d86db46ea5e29edfc28b7b
+ms.openlocfilehash: 0915c525d5fb96a3d32f91fbd65a4e1f62ee28b8
+ms.sourcegitcommit: 68a3081dd175d6518d1bfa31b4712bd8a2dd3864
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 12/09/2018
-ms.locfileid: "53121367"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53577868"
 ---
 # <a name="add-a-model-to-a-razor-pages-app-in-aspnet-core"></a>Добавление модели в приложение Razor Pages в ASP.NET Core
 
@@ -114,16 +114,16 @@ ms.locfileid: "53121367"
    dotnet tool install --global dotnet-aspnet-codegenerator
    ```
 
-* **Для Windows**: выполните следующую команду.
+* **Для Windows**: Выполните следующую команду:
 
   ```console
-  dotnet aspnet-codegenerator razorpage -m Movie -dc MovieContext -udl -outDir Pages\Movies --referenceScriptLibraries
+  dotnet aspnet-codegenerator razorpage -m Movie -dc RazorPagesMovieContext -udl -outDir Pages\Movies --referenceScriptLibraries
   ```
 
-* **Для MacOS и Linux**: выполните следующую команду.
+* **Для macOS и Linux**: Выполните следующую команду:
 
   ```console
-  dotnet aspnet-codegenerator razorpage -m Movie -dc MovieContext -udl -outDir Pages/Movies --referenceScriptLibraries
+  dotnet aspnet-codegenerator razorpage -m Movie -dc RazorPagesMovieContext -udl -outDir Pages/Movies --referenceScriptLibraries
   ```
 
 [!INCLUDE [explains scaffold gen params](~/includes/RP/model4.md)]
@@ -133,6 +133,11 @@ ms.locfileid: "53121367"
 # <a name="visual-studio-for-mactabvisual-studio-mac"></a>[Visual Studio для Mac](#tab/visual-studio-mac)
 
 * Откройте окно командной строки в папке проекта (папке, где находятся файлы *Program.cs*, *Startup.cs* и *.csproj* файлов).
+* Установка средства формирования шаблонов:
+
+  ```console
+   dotnet tool install --global dotnet-aspnet-codegenerator
+   ```
 * Выполните следующую команду:
 
   ```console
@@ -197,7 +202,7 @@ Update-Database
 ---  
 <!-- End of VS tabs -->
 
-Команда `ef migrations add InitialCreate` формирует код для создания схемы исходной базы данных. Схема создается на основе модели, указанной в `DbContext` (в файле *Models/RazorPagesMovieContext.cs*). Аргумент `InitialCreate` используется для присвоения имен миграциям. Можно использовать любое имя, однако по соглашению выбирается имя, которое описывает миграцию.
+Команда `ef migrations add InitialCreate` формирует код для создания схемы исходной базы данных. Схема создается на основе модели, указанной в `DbContext` (в файле *RazorPagesMovieContext.cs*). Аргумент `InitialCreate` используется для присвоения имен миграциям. Можно использовать любое имя, однако по соглашению выбирается имя, которое описывает миграцию.
 
 Команда `ef database update` выполняет метод `Up` в файле *Migrations/\<time-stamp>_InitialCreate.cs*. Метод `Up` создает базу данных.
 
@@ -265,5 +270,5 @@ Login failed for user 'User-name'.
 В следующем учебнике рассматриваются файлы, созданные с помощью формирования шаблонов.
 
 > [!div class="step-by-step"]
-> [Предыдущая статья — "Начало работы"](xref:tutorials/razor-pages/razor-pages-start)
-> [Следующая статья — "Сформированные страницы Razor Pages"](xref:tutorials/razor-pages/page)
+> [Предыдущая статья. Начало работы](xref:tutorials/razor-pages/razor-pages-start)
+> [Следующая статья. Сформированные страницы Razor Pages](xref:tutorials/razor-pages/page)

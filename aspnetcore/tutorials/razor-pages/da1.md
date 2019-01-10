@@ -4,14 +4,14 @@ author: rick-anderson
 description: Сведения об изменении созданных страниц в приложении ASP.NET Core.
 monikerRange: '>= aspnetcore-2.2'
 ms.author: riande
-ms.date: 12/3/2018
+ms.date: 12/20/2018
 uid: tutorials/razor-pages/da1
-ms.openlocfilehash: b88dcd12ee670eb2e0919bdb07b9b7556a5b80e7
-ms.sourcegitcommit: 9bb58d7c8dad4bbd03419bcc183d027667fefa20
+ms.openlocfilehash: 396cb9b9eeaab2d3db6108feeba71dbc2bc8981d
+ms.sourcegitcommit: e1cc4c1ef6c9e07918a609d5ad7fadcb6abe3e12
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52862412"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "53997205"
 ---
 # <a name="update-the-generated-pages-in-an-aspnet-core-app"></a>Изменение созданных страниц в приложении ASP.NET Core
 
@@ -69,21 +69,21 @@ ms.locfileid: "52862412"
 @page "{id:int?}"
 ```
 
-Чтобы проверить поведение или `@page "{id:int?}"`:
+Чтобы проверить поведение `@page "{id:int?}"`:
 
-* Задайте директиву страницы *Pages/Movies/Details.cshtml* как `@page "{id:int?}"`
+* Задайте директиву страницы *Pages/Movies/Details.cshtml* как `@page "{id:int?}"`.
 * Установите точку останова `public async Task<IActionResult> OnGetAsync(int? id)` (в *Pages/Movies/Details.cshtml.cs*).
-* Перейдите к `https://localhost:5001/Movies/Details/`
+* Перейдите к `https://localhost:5001/Movies/Details/`.
 
 Из-за директивы `@page "{id:int}"` точка останова не достигается. Механизм маршрутизации возвращает ошибку HTTP 404. При использовании `@page "{id:int?}"` метод `OnGetAsync` возвращает `NotFound` (HTTP 404).
 
-Хотя делать так не рекомендуется, можно написать метод delete следующим образом:
+Хотя это не рекомендуется, можно написать метод `OnGetAsync` (в *Pages/Movies/Delete.cshtml.cs*) как:
 
 [!code-csharp[](~/tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie22/Pages/Movies/Delete.cshtml.cs?name=snippet)]
 
 Протестируйте приведенный выше код:
 
-* Выберите ссылку для удаления.
+* Выберите ссылку **Удалить**.
 * Удалите код из URL-адреса. Например, измените `https://localhost:5001/Movies/Delete/8` на `https://localhost:5001/Movies/Delete`.
 * Проведите пошаговое выполнение в отладчике.
 
@@ -125,7 +125,7 @@ ms.locfileid: "52862412"
   public Movie Movie { get; set; }
   ```
 
-* При наличии ошибок в состоянии модели (например, `ReleaseDate` невозможно преобразовать в дату) форма публикуется снова с предоставленными значениями.
+* При наличии ошибок в состоянии модели (например, `ReleaseDate` невозможно преобразовать в дату) форма отображается с предоставленными значениями.
 * Если ошибки модели отсутствуют, данные фильма сохраняются.
 
 Методы HTTP GET на страницах Razor Index, Create и Delete работают аналогично. Метод HTTP POST `OnPostAsync` на странице Razor Create работает аналогично методу `OnPostAsync` на странице Razor Edit.
@@ -133,5 +133,5 @@ ms.locfileid: "52862412"
 В следующем учебнике будет добавлена функция поиска.
 
 > [!div class="step-by-step"]
-> [Предыдущая статья — "Работа с базой данных"](xref:tutorials/razor-pages/sql)
-> [Следующая статья — "Добавление поиска"](xref:tutorials/razor-pages/search)
+> [Предыдущая статья. Работа с базой данных](xref:tutorials/razor-pages/sql)
+> [Следующая статья. Добавление поиска](xref:tutorials/razor-pages/search)

@@ -4,14 +4,14 @@ author: rick-anderson
 description: Узнайте, как маршрутизация ASP.NET Core отвечает за сопоставление URI запросов с селекторами конечных точек и отправку входящих запросов к конечным точкам.
 ms.author: riande
 ms.custom: mvc
-ms.date: 11/15/2018
+ms.date: 12/29/2018
 uid: fundamentals/routing
-ms.openlocfilehash: f18ec1da2affbf67b7ada570b68f98a42c7256a5
-ms.sourcegitcommit: ad28d1bc6657a743d5c2fa8902f82740689733bb
+ms.openlocfilehash: c57b309e4474f9aff5c0594a3d9d1c796990d31e
+ms.sourcegitcommit: e1cc4c1ef6c9e07918a609d5ad7fadcb6abe3e12
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52256597"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "53997361"
 ---
 # <a name="routing-in-aspnet-core"></a>Маршрутизация в ASP.NET Core
 
@@ -193,7 +193,7 @@ services.AddMvc()
 
 Методы, предоставляемые `LinkGenerator`, поддерживают стандартные возможности создания ссылки для любого типа адреса. Самый удобный способ использовать генератор ссылки — через методы расширения, которые выполняют операции для определенного типа адреса.
 
-| Метод расширения   | Описание:                                                         |
+| Метод расширения   | Описание                                                         |
 | ------------------ | ------------------------------------------------------------------- |
 | `GetPathByAddress` | Создает URI с абсолютным путем на основе предоставленных значений. |
 | `GetUriByAddress`  | Создает абсолютный URI на основе предоставленных значений.             |
@@ -292,6 +292,8 @@ services.AddMvc()
 В следующем примере ПО промежуточного слоя использует API `LinkGenerator`, чтобы создать ссылку на метод действия, который перечисляет хранимые продукты. Использование генератора ссылок путем его внедрения в класс и вызова `GenerateLink` доступно для любого класса в приложении.
 
 ```csharp
+using Microsoft.AspNetCore.Routing;
+
 public class ProductsLinkMiddleware
 {
     private readonly LinkGenerator _linkGenerator;
@@ -303,8 +305,7 @@ public class ProductsLinkMiddleware
 
     public async Task InvokeAsync(HttpContext httpContext)
     {
-        var url = _linkGenerator.GenerateLink(new { controller = "Store",
-                                                    action = "ListProducts" });
+        var url = _linkGenerator.GetPathByAction("ListProducts", "Store");
 
         httpContext.Response.ContentType = "text/plain";
 
@@ -679,12 +680,23 @@ public User GetUserById(int id) { }
 
 Например, пользовательский преобразователь параметра `slugify` в шаблоне маршрута `blog\{article:slugify}` с `Url.Action(new { article = "MyTestArticle" })` формирует значение `blog\my-test-article`.
 
+Чтобы использовать преобразователь параметров в шаблоне маршрута, сначала настройте его с помощью <xref:Microsoft.AspNetCore.Routing.RouteOptions.ConstraintMap> в `Startup.ConfigureServices`:
+
+```csharp
+services.AddRouting(options =>
+{
+    // Replace the type and the name used to refer to it with your own
+    // IOutboundParameterTransformer implementation
+    options.ConstraintMap["slugify"] = typeof(SlugifyParameterTransformer);
+});
+```
+
 Преобразователи параметров также используются платформами для преобразования URI, где разрешается конечная точка. Например, ASP.NET Core MVC с помощью преобразователей параметров преобразует значение маршрута, используемое для сопоставления `area`, `controller`, `action` и `page`.
 
 ```csharp
 routes.MapRoute(
     name: "default",
-    template: "{controller=Home:slugify}/{action=Index:slugify}/{id?}");
+    template: "{controller:slugify=Home}/{action:slugify=Index}/{id?}");
 ```
 
 С помощью предыдущего маршрута действие `SubscriptionManagementController.GetAll()` сопоставляется с URI `/subscription-management/get-all`. Преобразователь параметра не изменяет значения маршрута, используемые для формирования ссылки. Например, `Url.Action("GetAll", "SubscriptionManagement")` выводит `/subscription-management/get-all`.

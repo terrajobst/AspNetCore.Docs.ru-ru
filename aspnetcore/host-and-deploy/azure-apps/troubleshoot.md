@@ -4,14 +4,14 @@ author: guardrex
 description: Сведения о диагностике проблем с развертываниями ASP.NET Core в службе приложений Azure.
 ms.author: riande
 ms.custom: mvc
-ms.date: 10/24/2018
+ms.date: 12/18/2018
 uid: host-and-deploy/azure-apps/troubleshoot
-ms.openlocfilehash: 05bb024f5b0d2b554cc861c250a92fd7ae23437f
-ms.sourcegitcommit: 4d74644f11e0dac52b4510048490ae731c691496
+ms.openlocfilehash: b36c321c6ba6801a32b5187651063337b4533fd1
+ms.sourcegitcommit: 816f39e852a8f453e8682081871a31bc66db153a
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50090749"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53637656"
 ---
 # <a name="troubleshoot-aspnet-core-on-azure-app-service"></a>Устранение неполадок ASP.NET Core в службе приложений Azure
 
@@ -19,14 +19,14 @@ ms.locfileid: "50090749"
 
 [!INCLUDE [Azure App Service Preview Notice](../../includes/azure-apps-preview-notice.md)]
 
-Эта статья содержит инструкции по диагностике проблемы запуска приложения ASP.NET Core с помощью средств диагностики службы приложений Azure. Дополнительные советы по устранению неполадок см. в разделах документации Azure [Общие сведения о диагностике службы приложений Azure](/azure/app-service/app-service-diagnostics) и [Мониторинг приложений в службе приложений Azure](/azure/app-service/web-sites-monitor).
+Эта статья содержит инструкции по диагностике проблемы запуска приложения ASP.NET Core с помощью средств диагностики службы приложений Azure. Дополнительные советы по устранению неполадок см. в разделе [Общие сведения о диагностике службы приложений Azure](/azure/app-service/app-service-diagnostics) и [Практическое руководство. Мониторинг приложений в службе приложений Azure](/azure/app-service/web-sites-monitor) в документации по Azure.
 
 ## <a name="app-startup-errors"></a>Ошибки при запуске приложения
 
 **502.5 — ошибка процесса**  
 Рабочий процесс завершается ошибкой. Приложение не запускается.
 
-[Модуль ASP.NET Core](xref:fundamentals/servers/aspnet-core-module) пытается запустить рабочий процесс, но он не запускается. Изучение журнала событий приложения часто помогает устранить проблемы такого типа. Доступ к журналу описан в разделе [Журнал событий приложения](#application-event-log).
+[Модуль ASP.NET Core](xref:host-and-deploy/aspnet-core-module) пытается запустить рабочий процесс, но он не запускается. Изучение журнала событий приложения часто помогает устранить проблемы такого типа. Доступ к журналу описан в разделе [Журнал событий приложения](#application-event-log).
 
 Когда неправильно сконфигурированное приложение приводит к сбою рабочего процесса, возвращается страница ошибки *502.5 — ошибка процесса*.
 
@@ -164,7 +164,7 @@ ms.locfileid: "50090749"
 1. Перейдите к колонке **Диагностика и решение проблем** на портале Azure.
 1. Выберите **Журналы трассировки неудачно завершенных запросов** из области боковой панели **Средства поддержки**.
 
-Для получения дополнительной информации см. [Раздел "Трассировка неудачно завершенных запросов" раздела "Включение ведения журналов диагностики для веб-приложений в службе приложений Azure"](/azure/app-service/web-sites-enable-diagnostic-log#failed-request-traces) и [Вопросы и ответы о производительности приложений для веб-приложений в Azure: как включить трассировку неудачно завершенных запросов?](/azure/app-service/app-service-web-availability-performance-application-issues-faq#how-do-i-turn-on-failed-request-tracing).
+Для получения дополнительной информации см. [Раздел "Трассировка неудачно завершенных запросов" раздела "Включение ведения журналов диагностики для веб-приложений в службе приложений Azure"](/azure/app-service/web-sites-enable-diagnostic-log#failed-request-traces) и ["Вопросы и ответы о производительности приложений для веб-приложений в Azure: как включить трассировку неудачно завершенных запросов?"](/azure/app-service/app-service-web-availability-performance-application-issues-faq#how-do-i-turn-on-failed-request-tracing)
 
 Дополнительные сведения см. в разделе [Включение функции ведения журналов диагностики для веб-приложений в службе приложений Azure](/azure/app-service/web-sites-enable-diagnostic-log).
 
@@ -182,4 +182,4 @@ ms.locfileid: "50090749"
 * [Устранение проблем с производительностью медленных веб приложений в службе приложений Azure](/azure/app-service/app-service-web-troubleshoot-performance-degradation)
 * [Вопросы и ответы о производительности приложений для веб-приложений в Azure](/azure/app-service/app-service-web-availability-performance-application-issues-faq)
 * ["Песочница" веб-приложений Azure (ограничения работы среды выполнения службы приложений)](https://github.com/projectkudu/kudu/wiki/Azure-Web-App-sandbox)
-* [Azure, пятница: практики диагностики и устранения неполадок в службе приложений Azure (12-минутное видео)](https://channel9.msdn.com/Shows/Azure-Friday/Azure-App-Service-Diagnostic-and-Troubleshooting-Experience)
+* [Пятница с Azure. Практика диагностики и устранения неполадок в Службе приложений Azure (12-минутное видео)](https://channel9.msdn.com/Shows/Azure-Friday/Azure-App-Service-Diagnostic-and-Troubleshooting-Experience)

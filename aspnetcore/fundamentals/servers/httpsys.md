@@ -5,26 +5,23 @@ description: Общие сведения о веб-сервере HTTP.sys дл�
 monikerRange: '>= aspnetcore-2.0'
 ms.author: tdykstra
 ms.custom: mvc
-ms.date: 12/01/2018
+ms.date: 12/18/2018
 uid: fundamentals/servers/httpsys
-ms.openlocfilehash: 8810fd295e8c4269812e712ce2fdc9b9fa2bbb4f
-ms.sourcegitcommit: 9bb58d7c8dad4bbd03419bcc183d027667fefa20
+ms.openlocfilehash: a779fee53109d4c1cabb2005896e757f23467540
+ms.sourcegitcommit: 816f39e852a8f453e8682081871a31bc66db153a
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52861697"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53637629"
 ---
 # <a name="httpsys-web-server-implementation-in-aspnet-core"></a>Реализация веб-сервера HTTP.sys в ASP.NET Core
 
 Авторы: [Том Дикстра](https://github.com/tdykstra) (Tom Dykstra), [Крис Росс](https://github.com/Tratcher) (Chris Ross) и [Люк Латам](https://github.com/guardrex) (Luke Latham)
 
-> [!NOTE]
-> Сведения из этого раздела распространяются на ASP.NET Core 2.0 и более поздних версий. В более ранних версиях ASP.NET Core HTTP.sys называется [WebListener](xref:fundamentals/servers/weblistener).
-
 [HTTP.sys](/iis/get-started/introduction-to-iis/introduction-to-iis-architecture#hypertext-transfer-protocol-stack-httpsys) — это [веб-сервер для ASP.NET Core](xref:fundamentals/servers/index), который запускается только в Windows. HTTP.sys является альтернативой серверу [Kestrel](xref:fundamentals/servers/kestrel), предлагая некоторые функции, отсутствующие в Kestrel.
 
 > [!IMPORTANT]
-> HTTP.sys не подходит для использования с IIS или IIS Express из-за несовместимости с [модулем ASP.NET Core](xref:fundamentals/servers/aspnet-core-module).
+> HTTP.sys не подходит для использования с IIS или IIS Express из-за несовместимости с [модулем ASP.NET Core](xref:host-and-deploy/aspnet-core-module).
 
 HTTP.sys поддерживает следующие функции:
 
@@ -140,7 +137,7 @@ HTTP.sys делегирует задачи в проверку подлинно�
 1. Если приложение является [развертыванием, не зависящим от платформы](/dotnet/core/deploying/#framework-dependent-deployments-fdd), установите NET Core или .NET Framework (или обе платформы, если это приложение .NET Core, предназначенное для .NET Framework).
 
    * **.NET Core** &ndash; если приложению требуется .NET Core, скачайте и запустите установщик .NET Core из раздела [Все загрузки .NET Core](https://www.microsoft.com/net/download/all).
-   * **.NET Framework** — если приложению требуется .NET Framework, инструкции по установке см. в руководстве по [установке .NET Framework](/dotnet/framework/install/). Установите требуемую платформу .NET Framework. Установщик последней версии .NET Framework можно скачать [отсюда](https://www.microsoft.com/net/download/all).
+   * **.NET Framework** &ndash; если приложение требует .NET Framework, см. раздел [.NET Framework: руководство по установке](/dotnet/framework/install/), чтобы ознакомиться с инструкциями по установке. Установите требуемую платформу .NET Framework. Установщик последней версии .NET Framework можно скачать [отсюда](https://www.microsoft.com/net/download/all).
 
 2. Настройте URL-адреса и порты для приложения.
 
@@ -190,7 +187,7 @@ HTTP.sys делегирует задачи в проверку подлинно�
 
    2. При необходимости создайте самозаверяющие сертификаты X.509.
 
-      [!INCLUDE [How to make an X.509 cert](../../includes/make-x509-cert.md)]
+      [!INCLUDE [How to make an X.509 cert](~/includes/make-x509-cert.md)]
 
 4. Откройте порты брандмауэра, чтобы разрешить трафик в HTTP.sys. Можно использовать средство *netsh.exe* или [командлеты PowerShell](https://technet.microsoft.com/library/jj554906).
 

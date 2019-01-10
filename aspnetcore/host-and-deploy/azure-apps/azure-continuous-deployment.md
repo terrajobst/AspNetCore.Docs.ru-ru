@@ -4,14 +4,14 @@ author: rick-anderson
 description: Сведения о создании веб-приложения ASP.NET Core с помощью Visual Studio и его развертывании в службе приложений Azure с использованием Git для непрерывного развертывания.
 ms.author: riande
 ms.custom: mvc
-ms.date: 10/14/2016
+ms.date: 12/06/2018
 uid: host-and-deploy/azure-apps/azure-continuous-deployment
-ms.openlocfilehash: 5ae8ce01610828417fc76ed6626e518c8493bd0f
-ms.sourcegitcommit: 57eccdea7d89a62989272f71aad655465f1c600a
+ms.openlocfilehash: e12c2ee0b78db105b431770e8644e7d19d915765
+ms.sourcegitcommit: b34b25da2ab68e6495b2460ff570468f16a9bf0d
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44340203"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53284447"
 ---
 # <a name="continuous-deployment-to-azure-with-visual-studio-and-git-with-aspnet-core"></a>Непрерывное развертывание ASP.NET Core в Azure с помощью Visual Studio и Git
 
@@ -71,7 +71,7 @@ ms.locfileid: "44340203"
 
 1. Выберите **Интернет и мобильные устройства** > **Веб-приложение**.
 
-   ![Портал Microsoft Azure > кнопка "Создать" > пункт "Интернет и мобильные устройства" в списке "Marketplace" > кнопка "Веб-приложение" в списке "Рекомендуемые приложения"](azure-continuous-deployment/_static/05-azure-newwebapp.png)
+   ![Портал Microsoft Azure: Новая кнопка: Интернет и мобильные устройства в Marketplace: Кнопка "Веб-приложение" в разделе "Рекомендуемые приложения"](azure-continuous-deployment/_static/05-azure-newwebapp.png)
 
 1. В колонке **Веб-приложение** в поле **Имя службы приложений** введите уникальное значение.
 
@@ -98,7 +98,7 @@ Git — это распределенная система управления 
 
 1. В колонке **Deployment** (Развертывание) выберите **Deployment options** (Параметры развертывания) > **Выбор источника** > **Локальный репозиторий Git**.
 
-   ![Колонка "Параметры" > колонка "Источник развертывания" > колонка "Выбор источника"](azure-continuous-deployment/_static/deployment-options.png)
+   ![Колонка "Параметры": Колонка "Источник развертывания": Колонка "Выбрать источник"](azure-continuous-deployment/_static/deployment-options.png)
 
 1. Нажмите кнопку **ОК**.
 
@@ -184,7 +184,7 @@ Git — это распределенная система управления 
 
 На [портале Azure](https://portal.azure.com) выберите веб-приложение. Выберите **Развертывание** > **Параметры развертывания**.
 
-![Портал Azure > колонка "Параметры" > колонка "Развертывания", содержащая успешное развертывание](azure-continuous-deployment/_static/13-verify-deployment.png)
+![Портал Azure: Колонка "Параметры": Колонка "Развертывания", содержащая успешное развертывание](azure-continuous-deployment/_static/13-verify-deployment.png)
 
 ## <a name="run-the-app-in-azure"></a>Запуск приложения в Azure
 
@@ -230,3 +230,4 @@ Git — это распределенная система управления 
 
 * [Создание первого конвейера с помощью Azure Pipelines](/azure/devops/pipelines/get-started-yaml)
 * [Проект Kudu](https://github.com/projectkudu/kudu/wiki)
+* <xref:host-and-deploy/visual-studio-publish-profiles>

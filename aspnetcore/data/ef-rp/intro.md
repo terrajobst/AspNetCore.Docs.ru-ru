@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: seodec18
 ms.date: 11/22/2018
 uid: data/ef-rp/intro
-ms.openlocfilehash: 34c7238b689993245e033625dcd0e728b7c45163
-ms.sourcegitcommit: 49faca2644590fc081d86db46ea5e29edfc28b7b
+ms.openlocfilehash: b66d20a46b29b6975512026fa940f7f9e50deeb5
+ms.sourcegitcommit: 6548c19f345850ee22b50f7ef9fca732895d9e08
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 12/09/2018
-ms.locfileid: "53121704"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53425137"
 ---
 # <a name="razor-pages-with-entity-framework-core-in-aspnet-core---tutorial-1-of-8"></a>Razor Pages с Entity Framework Core в ASP.NET Core: учебник 1 из 8
 
@@ -65,7 +65,7 @@ ms.locfileid: "53121704"
 * Создайте новое веб-приложение ASP.NET Core. Назовите проект **ContosoUniversity**. Очень важно, чтобы проект имел имя *ContosoUniversity*, чтобы совпадали пространства имен при копировании и вставке кода.
 * Выберите в раскрывающемся списке **ASP.NET Core 2.1**, а затем **Веб-приложение**.
 
-Изображения для приведенных выше шагов см. в разделе [Создание веб-приложения Razor](xref:tutorials/razor-pages/razor-pages-start#create-a-razor-web-app).
+Изображения для приведенных выше шагов см. в разделе [Создание веб-приложения Razor](xref:tutorials/razor-pages/razor-pages-start#create-a-razor-pages-web-app).
 Запустите приложение.
 
 # <a name="net-core-clitabnetcore-cli"></a>[Интерфейс командной строки .NET Core](#tab/netcore-cli)
@@ -190,8 +190,8 @@ dotnet aspnet-codegenerator razorpage -m Student -dc ContosoUniversity.Models.Sc
 
 ### <a name="file-updates"></a>Обновления файла
 
-* *Startup.cs*. Изменения в этом файле подробно описываются в следующем разделе.
-* *appsettings.json*. Добавляется строка подключения, используемая для подключения к локальной базе данных.
+* *Startup.cs*: изменения в этом файле подробно описываются в следующем разделе.
+* *appsettings.json*: добавляется строка подключения, используемая для подключения к локальной базе данных.
 
 ## <a name="examine-the-context-registered-with-dependency-injection"></a>Проверка контекста, зарегистрированного с помощью внедрения зависимостей
 

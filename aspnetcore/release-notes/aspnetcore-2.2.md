@@ -4,14 +4,14 @@ author: tdykstra
 description: Сведения о новых возможностях ASP.NET Core 2.2.
 ms.author: tdykstra
 ms.custom: mvc
-ms.date: 12/03/2018
+ms.date: 12/18/2018
 uid: aspnetcore-2.2
-ms.openlocfilehash: d0bb0698526e2f7af8f0e99b0393f3ce48657b34
-ms.sourcegitcommit: a3a15d3ad4d6e160a69614a29c03bbd50db110a2
+ms.openlocfilehash: 13d7dec834a5661b445b4fc0c0be8be9b7b41b9e
+ms.sourcegitcommit: 816f39e852a8f453e8682081871a31bc66db153a
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 12/05/2018
-ms.locfileid: "52952061"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53637733"
 ---
 # <a name="whats-new-in-aspnet-core-22"></a>Новые возможности ASP.NET Core 2.2
 
@@ -25,7 +25,7 @@ Open API (или Swagger) — это не зависящая от языка с
 
 * <xref:web-api/advanced/analyzers>
 * <xref:web-api/advanced/conventions>
-* [ASP.NET Core 2.2.0, предварительная версия 1. Соглашения и анализаторы Open API](https://blogs.msdn.microsoft.com/webdev/2018/08/23/asp-net-core-2-20-preview1-open-api-analyzers-conventions/)
+* [ASP.NET Core 2.2.0, предварительная версия 1: соглашения и анализаторы Open API](https://blogs.msdn.microsoft.com/webdev/2018/08/23/asp-net-core-2-20-preview1-open-api-analyzers-conventions/)
 
 ## <a name="problem-details-support"></a>Поддержка сведений о проблеме
 
@@ -72,7 +72,7 @@ HTTP/2 является основной редакцией HTTP-протоко�
 
 В более ранних версиях ASP.NET Core службы IIS выступают в качестве обратного прокси-сервера. В версии 2.2 модуль ASP.NET Core может загружать CoreCLR и размещать приложение в рабочем процессе IIS (*w3wp.exe*). Внутрипроцессное размещение позволяет оптимизировать производительность и диагностику при работе со службами IIS.
 
-Дополнительные сведения см. в статье [Внутрипроцессное размещение в службах IIS](xref:fundamentals/servers/aspnet-core-module?view=aspnetcore-2.2#in-process-hosting-model).
+Дополнительные сведения см. в статье [Внутрипроцессное размещение для служб IIS](xref:host-and-deploy/aspnet-core-module?view=aspnetcore-2.2#in-process-hosting-model).
 
 ## <a name="signalr-java-client"></a>Клиент Java для SignalR
 

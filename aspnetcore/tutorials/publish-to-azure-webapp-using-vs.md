@@ -4,14 +4,14 @@ author: rick-anderson
 description: Сведения о публикации приложения ASP.NET Core в службе приложений Azure с помощью Visual Studio.
 ms.author: riande
 ms.custom: mvc
-ms.date: 10/24/2018
+ms.date: 12/06/2018
 uid: tutorials/publish-to-azure-webapp-using-vs
-ms.openlocfilehash: 7eab773746f76b00e8e796387c4ee1dc042a4c23
-ms.sourcegitcommit: 49faca2644590fc081d86db46ea5e29edfc28b7b
+ms.openlocfilehash: e71cb8badbbc852685c845e6bbb0bbb12ab5499f
+ms.sourcegitcommit: 68a3081dd175d6518d1bfa31b4712bd8a2dd3864
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 12/09/2018
-ms.locfileid: "53121275"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53577816"
 ---
 # <a name="publish-an-aspnet-core-app-to-azure-with-visual-studio"></a>Публикация приложения ASP.NET Core в Azure с помощью Visual Studio
 
@@ -68,10 +68,10 @@ Visual Studio создает решение.
 
 * Выберите **Зарегистрироваться** и зарегистрируйте нового пользователя. Можно использовать вымышленный адрес электронной почты. После отправки на странице отображается следующая ошибка.
 
-    *"Внутренняя ошибка сервера: не удалось выполнить операцию базы данных при обработке запроса. Исключения SQL: не удается открыть базу данных. Применение имеющихся миграций для контекста базы данных приложения, возможно, позволит решить проблему."*
+    *"Внутренняя ошибка сервера: не удалось выполнить операцию базы данных при обработке запроса. Исключение SQL: невозможно открыть базу данных. Применение имеющихся миграций для контекста базы данных приложения, возможно, позволит решить проблему."*
 * Выберите **Применить миграции** и после обновления страницы перезагрузите ее.
 
-![Внутренняя ошибка сервера: сбой операции из базы данных при обработке запроса. Исключения SQL: не удается открыть базу данных. Чтобы решить эту проблему, можно применить существующие миграции для контекста базы данных приложения.](publish-to-azure-webapp-using-vs/_static/mig.png)
+![Внутренняя ошибка сервера: не удалось выполнить операцию базы данных при обработке запроса. Исключение SQL: невозможно открыть базу данных. Чтобы решить эту проблему, можно применить существующие миграции для контекста базы данных приложения.](publish-to-azure-webapp-using-vs/_static/mig.png)
 
 Приложение отобразит адрес электронной почты, который использовался для регистрации нового пользователя, и ссылку **Выйти**.
 
@@ -140,7 +140,7 @@ Visual Studio создает веб-приложение и SQL Server в Azure.
 
 * Нажмите кнопку **Сохранить**. Visual Studio вернется в диалоговое окно **Публикация**. 
 
-![Диалоговое окно "Публикация": панель "Параметры"](publish-to-azure-webapp-using-vs/_static/pubs.png)
+![Диалоговое окно публикации: панель параметров](publish-to-azure-webapp-using-vs/_static/pubs.png)
 
 Нажмите кнопку **Опубликовать**. Visual Studio публикует приложение в Azure. По завершении развертывания приложение открывается в браузере.
 
@@ -154,7 +154,9 @@ Visual Studio создает веб-приложение и SQL Server в Azure.
 
 ### <a name="update-the-app"></a>Обновление приложения
 
-* Измените страницу Razor *Pages/About.cshtml* и ее содержимое. Например, вы можете изменить абзац на "Hello ASP.NET Core!": [!code-html[About](publish-to-azure-webapp-using-vs/sample/about.cshtml?highlight=9&range=1-9)]
+* Измените страницу Razor *Pages/About.cshtml* и ее содержимое. Например, вы можете изменить абзац на "Hello ASP.NET Core!":
+
+    [!code-html[About](publish-to-azure-webapp-using-vs/sample/about.cshtml?highlight=9&range=1-9)]
 
 * Щелкните правой кнопкой мыши проект и снова выберите пункт **Опубликовать...**.
 
@@ -170,7 +172,7 @@ Visual Studio создает веб-приложение и SQL Server в Azure.
 
 * Выберите пункт **Группы ресурсов**, а затем созданную группу ресурсов.
 
-![Портал Azure: пункт "Группы ресурсов" в меню боковой панели](publish-to-azure-webapp-using-vs/_static/portalrg.png)
+![Портал Azure: "Группы ресурсов" в меню боковой панели](publish-to-azure-webapp-using-vs/_static/portalrg.png)
 
 * На странице **Группы ресурсов** выберите **Удалить**.
 
@@ -187,4 +189,5 @@ Visual Studio создает веб-приложение и SQL Server в Azure.
 * [служба приложений Azure](/azure/app-service/app-service-web-overview);
 * [Группа ресурсов Azure](/azure/azure-resource-manager/resource-group-overview#resource-groups)
 * [База данных SQL Azure](/azure/sql-database/)
+* <xref:host-and-deploy/visual-studio-publish-profiles>
 * <xref:host-and-deploy/azure-apps/troubleshoot>

@@ -1,33 +1,43 @@
 ---
-title: Справочник по конфигурации модуля ASP.NET Core
+title: Модуль ASP.NET Core
 author: guardrex
 description: Сведения о настройке модуля ASP.NET Core для размещения приложений ASP.NET Core.
 ms.author: riande
 ms.custom: mvc
-ms.date: 12/06/2018
+ms.date: 12/18/2018
 uid: host-and-deploy/aspnet-core-module
-ms.openlocfilehash: 0ad73d89ffa3a8a3625c6e248efaad821e1b4d0a
-ms.sourcegitcommit: 49faca2644590fc081d86db46ea5e29edfc28b7b
+ms.openlocfilehash: dee4fe7a498d211cb8ef6a3c49017c3cc8a56847
+ms.sourcegitcommit: 816f39e852a8f453e8682081871a31bc66db153a
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 12/09/2018
-ms.locfileid: "53121561"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53637863"
 ---
-# <a name="aspnet-core-module-configuration-reference"></a>Справочник по конфигурации модуля ASP.NET Core
+# <a name="aspnet-core-module"></a>Модуль ASP.NET Core
 
-Авторы [Люк Латэм](https://github.com/guardrex) (Luke Latham), [Рик Андерсон](https://twitter.com/RickAndMSFT) (Rick Anderson), [Сураб Ширхатти](https://twitter.com/sshirhatti) (Sourabh Shirhatti) и [Джастин Коталик](https://github.com/jkotalik) (Justin Kotalik)
-
-Этот документ содержит инструкции о том, как настроить модуль ASP.NET Core для размещения приложений ASP.NET Core. Для ознакомления с модулем ASP.NET Core и инструкциями по установке см. [Обзор модуля ASP.NET Core](xref:fundamentals/servers/aspnet-core-module).
+Авторы: [Том Дайкстра (Tom Dykstra)](https://github.com/tdykstra), [Рик Штраль (Rick Strahl)](https://github.com/RickStrahl), [Крис Росс (Chris Ross)](https://github.com/Tratcher), [Рик Андерсон (Rick Anderson)](https://twitter.com/RickAndMSFT), [Сураб Ширхатти (Sourabh Shirhatti)](https://twitter.com/sshirhatti), [ Джастин Коталик (Justin Kotalik)](https://github.com/jkotalik) и [Люк Лэтем (Luke Latham)](https://github.com/guardrex)
 
 ::: moniker range=">= aspnetcore-2.2"
 
-## <a name="hosting-model"></a>Модель размещения
+Модуль ASP.NET Core имеет собственный модуль IIS, который подключается к конвейеру IIS для выполнения следующих задач:
 
-Для приложений, выполняющихся на .NET Core 2.2 или более поздней версии, модуль поддерживает модель внутрипроцессного размещения для повышения производительности по сравнению с размещением на обратном прокси-сервере (вне процесса). Дополнительные сведения см. в разделе <xref:fundamentals/servers/aspnet-core-module#aspnet-core-module-description>.
+* Размещение приложения ASP.NET Core внутри рабочего процесса IIS (`w3wp.exe`). Это так называемая [модель внутрипроцессного размещения](#in-process-hosting-model).
+* Переадресация веб-запросов к серверной части приложения ASP.NET Core на [сервере Kestrel](xref:fundamentals/servers/kestrel). Это [модель размещения вне процесса](#out-of-process-hosting-model).
 
-Внутрипроцессное размещение необходимо явно выбирать в существующих приложениях, но в шаблонах [dotnet new](/dotnet/core/tools/dotnet-new) оно включено по умолчанию для всех сценариев IIS и IIS Express.
+Поддерживаемые версии Windows:
 
-Чтобы настроить приложение для внутрипроцессного размещения, добавьте свойство `<AspNetCoreHostingModel>` в файл проекта приложения (например, *MyApp.csproj*) со значением `InProcess` (размещение вне процесса имеет значение `outofprocess`):
+* Windows 7 и более поздние версии
+* Windows Server 2008 R2 и более поздние версии
+
+При размещении в процессе модуль использует реализацию внутрипроцессного сервера для IIS — HTTP-сервер IIS (`IISHttpServer`).
+
+При размещении вне процесса модуль работает только с Kestrel. Модуль несовместим с [HTTP.sys](xref:fundamentals/servers/httpsys).
+
+## <a name="hosting-models"></a>Модели размещения
+
+### <a name="in-process-hosting-model"></a>Модель внутрипроцессного размещения
+
+Чтобы настроить приложение для внутрипроцессного размещения, добавьте свойство `<AspNetCoreHostingModel>` к файлу проекта приложения со значением `InProcess` (размещение вне процесса имеет значение `OutOfProcess`):
 
 ```xml
 <PropertyGroup>
@@ -35,9 +45,11 @@ ms.locfileid: "53121561"
 </PropertyGroup>
 ```
 
+Если свойство `<AspNetCoreHostingModel>` отсутствует в файле, значение по умолчанию — `OutOfProcess`.
+
 При внутрипроцессном размещении применимы следующие характеристики:
 
-* Вместо сервера [Kestrel](xref:fundamentals/servers/kestrel) используется HTTP-сервер IIS (`IISHttpServer`). HTTP-сервер IIS (`IISHttpServer`) — это альтернативная реализация <xref:Microsoft.AspNetCore.Hosting.Server.IServer>, которая преобразует собственные запросы IIS в управляемые запросы ASP.NET Core для обработки приложением.
+* Вместо сервера [Kestrel](xref:fundamentals/servers/kestrel) используется HTTP-сервер IIS (`IISHttpServer`).
 
 * [Атрибут requestTimeout](#attributes-of-the-aspnetcore-element) не применяется к внутрипроцессному размещению.
 
@@ -55,6 +67,21 @@ ms.locfileid: "53121561"
 
   Пример кода, который задает текущий каталог приложения, см. в разделе [Класс CurrentDirectoryHelpers](https://github.com/aspnet/Docs/tree/master/aspnetcore/host-and-deploy/aspnet-core-module/samples_snapshot/2.x/CurrentDirectoryHelpers.cs). Вызовите метод `SetCurrentDirectory`. Последующие вызовы <xref:System.IO.Directory.GetCurrentDirectory*> возвращают каталог приложения.
 
+### <a name="out-of-process-hosting-model"></a>Модель размещения вне процесса
+
+Чтобы настроить приложение для размещения вне процесса, используйте один из следующих подходов в файле проекта.
+
+* Не указывайте свойство `<AspNetCoreHostingModel>`. Если свойство `<AspNetCoreHostingModel>` отсутствует в файле, значение по умолчанию — `OutOfProcess`.
+* Установите для свойства `<AspNetCoreHostingModel>` значение `OutOfProcess` (внутрипроцессное размещение имеет значение `InProcess`):
+
+```xml
+<PropertyGroup>
+  <AspNetCoreHostingModel>OutOfProcess</AspNetCoreHostingModel>
+</PropertyGroup>
+```
+
+Сервер [Kestrel](xref:fundamentals/servers/kestrel) используется вместо HTTP-сервера IIS (`IISHttpServer`).
+
 ### <a name="hosting-model-changes"></a>Изменения модели размещения
 
 Если параметр `hostingModel` изменяется в файле *web.config* (как описано в разделе [Конфигурация с помощью web.config](#configuration-with-webconfig)), модуль перезапускает рабочий процесс для служб IIS.
@@ -66,6 +93,43 @@ ms.locfileid: "53121561"
 `Process.GetCurrentProcess().ProcessName` сообщает `w3wp`/`iisexpress` (внутри процесса) или `dotnet` (вне процесса).
 
 ::: moniker-end
+
+::: moniker range="< aspnetcore-2.2"
+
+Модуль ASP.NET Core имеет собственный модуль IIS, который подключается к конвейеру IIS для переадресации веб-запросов в серверные приложения ASP.NET Core.
+
+Поддерживаемые версии Windows:
+
+* Windows 7 и более поздние версии
+* Windows Server 2008 R2 и более поздние версии
+
+Модуль работает только с Kestrel. Модуль несовместим с [HTTP.sys](xref:fundamentals/servers/httpsys).
+
+Так как приложения ASP.NET Core выполняются в процессе, отделенном от рабочего процесса IIS, этот модуль также обрабатывает управление процессами. Модуль запускает процесс для приложения ASP.NET Core при поступлении первого запроса и перезапускает приложение при сбое. Это, по сути, совпадает с поведением приложений ASP.NET 4.x, выполняемых внутрипроцессно в IIS и управляемых [службой активации процессов Windows (WAS)](/iis/manage/provisioning-and-managing-iis/features-of-the-windows-process-activation-service-was).
+
+На следующей схеме показана связь между IIS, модулем ASP.NET Core и приложением:
+
+![Модуль ASP.NET Core](aspnet-core-module/_static/ancm-outofprocess.png)
+
+Запросы поступают из Интернета в драйвер HTTP.sys в режиме ядра. Драйвер направляет запросы к службам IIS на настроенный порт веб-сайта — обычно 80 (HTTP) или 443 (HTTPS). Модуль перенаправляет запросы Kestrel на случайный порт для приложения, отличающийся от порта 80 или 443.
+
+Модуль задает порт с помощью переменной среды во время запуска, а ПО промежуточного слоя для интеграции IIS настраивает сервер для прослушивания `http://localhost:{port}`. Выполняются дополнительные проверки, и запросы не из модуля отклоняются. Модуль не поддерживает переадресацию по HTTPS, поэтому запросы переадресовываются по протоколу HTTP, даже если были получены IIS по протоколу HTTPS.
+
+После того как Kestrel забирает запрос из модуля, запрос передается в конвейер ПО промежуточного слоя ASP.NET Core. Конвейер ПО промежуточного слоя обрабатывает запрос и передает его в качестве экземпляра `HttpContext` в логику приложения. ПО промежуточного слоя, добавленное интеграцией IIS, обновляет схему, удаленный IP-адрес и базовый путь для переадресации запроса в Kestrel. Отклик приложения передается обратно в службу IIS, которая отправляет его обратно в HTTP-клиент, инициировавший запрос.
+
+::: moniker-end
+
+Многие собственные модули, такие как проверка подлинности Windows, остаются активными. Дополнительные сведения о модулях IIS, активных с модулем ASP.NET Core, см. в разделе <xref:host-and-deploy/iis/modules>.
+
+Дополнительные возможности модуля ASP.NET Core:
+
+* Задание переменных среды для рабочего процесса.
+* Внесение в журнал выходных данных stdout для хранилища файлов с целью устранения неполадок при запуске.
+* Переадресация токенов проверки подлинности Windows.
+
+## <a name="how-to-install-and-use-the-aspnet-core-module"></a>Как установить и использовать модуль ASP.NET Core
+
+Инструкции о том, как установить и использовать модуль ASP.NET Core, см. в разделе <xref:host-and-deploy/iis/index>.
 
 ## <a name="configuration-with-webconfig"></a>Конфигурация с помощью файла web.config
 
@@ -184,7 +248,7 @@ ms.locfileid: "53121561"
 
 ::: moniker range="= aspnetcore-2.1"
 
-| Атрибут | Описание: | Значение по умолчанию |
+| Атрибут | Описание | Значение по умолчанию |
 | --------- | ----------- | :-----: |
 | `arguments` | <p>Необязательный строковый атрибут.</p><p>Аргументы для исполняемого файла, указанного в атрибуте **processPath**.</p>| |
 | `disableStartUpErrorPage` | <p>Дополнительный логический атрибут.</p><p>Если значение равно true, страница **502.5 — ошибка процесса** подавляется и страница в файле *web.config* с кодом состояния 502 имеет более высокий приоритет.</p> | `false` |
@@ -202,7 +266,7 @@ ms.locfileid: "53121561"
 
 ::: moniker range="<= aspnetcore-2.0"
 
-| Атрибут | Описание: | Значение по умолчанию |
+| Атрибут | Описание | Значение по умолчанию |
 | --------- | ----------- | :-----: |
 | `arguments` | <p>Необязательный строковый атрибут.</p><p>Аргументы для исполняемого файла, указанного в атрибуте **processPath**.</p>| |
 | `disableStartUpErrorPage` | <p>Дополнительный логический атрибут.</p><p>Если значение равно true, страница **502.5 — ошибка процесса** подавляется и страница в файле *web.config* с кодом состояния 502 имеет более высокий приоритет.</p> | `false` |
@@ -395,7 +459,7 @@ ms.locfileid: "53121561"
 
 Прокси-сервер, созданный между модулем ASP.NET Core и Kestrel, использует протокол HTTP. Использование HTTP позволяет оптимизировать производительность, так как трафик между модулем и Kestrel передается на петлевой адрес в сетевом интерфейсе. Отсутствует риск перехвата трафика между модулем и Kestrel из расположения на сервере.
 
-Токен связывания гарантирует, что полученные Kestrel запросы были переданы службами IIS, а не из какого-либо другого источника. Этот токен создается и задается модулем в переменную среды (`ASPNETCORE_TOKEN`). Он также задается в заголовке (`MSAspNetCoreToken`) каждого запроса, переданного через прокси-сервер. ПО промежуточного слоя IIS проверяет каждый получаемый запрос, чтобы убедиться, что заголовок с токеном связывания соответствует значению переменной среды. Если значения токена не совпадают, запрос заносится в журнал и отклоняется. Переменная среды с токеном связывания и трафик между модулем и Kestrel недоступны из расположения на сервере. Не зная значение токена связывания, злоумышленник не может отправлять запросы, обходящие проверку в ПО промежуточного слоя IIS.
+Токен связывания гарантирует, что полученные Kestrel запросы были переданы службами IIS, а не из какого-либо другого источника. Этот токен создается и задается модулем в переменную среды (`ASPNETCORE_TOKEN`). Он также задается в заголовке (`MS-ASPNETCORE-TOKEN`) каждого запроса, переданного через прокси-сервер. ПО промежуточного слоя IIS проверяет каждый получаемый запрос, чтобы убедиться, что заголовок с токеном связывания соответствует значению переменной среды. Если значения токена не совпадают, запрос заносится в журнал и отклоняется. Переменная среды с токеном связывания и трафик между модулем и Kestrel недоступны из расположения на сервере. Не зная значение токена связывания, злоумышленник не может отправлять запросы, обходящие проверку в ПО промежуточного слоя IIS.
 
 ## <a name="aspnet-core-module-with-an-iis-shared-configuration"></a>Модуль ASP.NET Core с общей конфигурацией IIS
 
@@ -481,3 +545,9 @@ ms.locfileid: "53121561"
    * %ProgramFiles%\IIS Express\config\templates\PersonalWebServer\applicationHost.config
 
 Файлы можно найти путем поиска *aspnetcore* в файле *applicationHost.config*.
+
+## <a name="additional-resources"></a>Дополнительные ресурсы
+
+* <xref:host-and-deploy/iis/index>
+* [Репозиторий GitHub для модуля ASP.NET Core (справочные материалы)](https://github.com/aspnet/AspNetCoreModule)
+* <xref:host-and-deploy/iis/modules>

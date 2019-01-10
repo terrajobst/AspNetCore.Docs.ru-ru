@@ -2,19 +2,18 @@
 title: Начало работы с SignalR ASP.NET Core
 author: tdykstra
 description: В этом руководстве создается приложение чата, которое использует SignalR для ASP.NET Core.
-monikerRange: '>= aspnetcore-2.1'
 ms.author: tdykstra
 ms.custom: mvc
 ms.date: 11/30/2018
 uid: tutorials/signalr
-ms.openlocfilehash: c52041b34d6c9d1d8f06f980c900b805a0933293
-ms.sourcegitcommit: 9bb58d7c8dad4bbd03419bcc183d027667fefa20
+ms.openlocfilehash: 36296513726f7e098a536afc22fcbfb2cafe946d
+ms.sourcegitcommit: e1cc4c1ef6c9e07918a609d5ad7fadcb6abe3e12
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52861991"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "53997283"
 ---
-# <a name="tutorial-get-started-with-aspnet-core-signalr"></a>Руководство. Начало работы с SignalR ASP.NET Core
+# <a name="tutorial-get-started-with-aspnet-core-signalr"></a>Учебник. Начало работы с SignalR ASP.NET Core
 
 В этом руководстве описаны основы создания приложения в режиме реального времени с помощью SignalR. Вы научитесь:
 
@@ -30,10 +29,6 @@ ms.locfileid: "52861991"
 ![Пример приложения SignalR](signalr/_static/signalr-get-started-finished.png)
 
 [Просмотреть или скачать пример кода](https://github.com/aspnet/Docs/tree/master/aspnetcore/tutorials/signalr/sample) ([описание скачивания](xref:index#how-to-download-a-sample)).
-
-> [!NOTE]
-> Мы тестируем удобство использования новой предлагаемой структуры оглавления для ASP.NET Core.  Если у вас есть несколько минут, и вы хотите попробовать найти семь разных тем в существующей или планируемой структуре оглавления, [щелкните здесь, чтобы принять участие в исследовании](https://dpk4xbh5.optimalworkshop.com/treejack/aa11wn82).
-
 
 [!INCLUDE [|Prerequisites](~/includes/net-core-prereqs-all-2.2.md)]
 
@@ -168,7 +163,7 @@ ms.locfileid: "52861991"
 
   Класс `ChatHub` наследует от класса `Hub` SignalR. Класс `Hub` управляет подключениями, группами и обменом сообщениями.
 
-  Метод `SendMessage` может вызываться любым подключенным клиентом. Он отправляет полученное сообщение всем клиентам. Код SignalR является асинхронным, поэтому обеспечивает максимальную масштабируемость.
+  Метод `SendMessage` может вызываться подключенным клиентом, чтобы отправить сообщение всем клиентам. Далее в этом учебника показан клиентский код JavaScript, который вызывает метод. Код SignalR является асинхронным, поэтому обеспечивает максимальную масштабируемость.
 
 ## <a name="configure-signalr"></a>Настройка SignalR
 

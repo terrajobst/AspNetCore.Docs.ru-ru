@@ -4,14 +4,14 @@ author: shirhatti
 description: Узнайте о поддерживаемых возможностях для отладки приложений ASP.NET Core, выполняемых в службах IIS на Windows Server.
 ms.author: riande
 ms.custom: mvc
-ms.date: 11/30/2018
+ms.date: 12/18/2018
 uid: host-and-deploy/iis/development-time-iis-support
-ms.openlocfilehash: 51375e6a6bb25a469d467ca97a151abd305c1ece
-ms.sourcegitcommit: 9bb58d7c8dad4bbd03419bcc183d027667fefa20
+ms.openlocfilehash: 44570bb28451ce4c5fde12ec77e3856fb5bd3062
+ms.sourcegitcommit: 816f39e852a8f453e8682081871a31bc66db153a
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52862386"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53637668"
 ---
 # <a name="development-time-iis-support-in-visual-studio-for-aspnet-core"></a>Поддержка служб IIS во время разработки в Visual Studio для ASP.NET Core
 
@@ -54,9 +54,9 @@ ms.locfileid: "52862386"
 ## <a name="enable-development-time-iis-support-in-visual-studio"></a>Включение поддержки служб IIS в Visual Studio во время разработки
 
 1. Запустите установщик Visual Studio.
-1. Выберите компонент **поддержки IIS во время разработки**. Этот компонент указан как дополнительный на панели **Сводка** для рабочей нагрузки **ASP.NET и веб-разработки**. Этот компонент выполнит установку [модуля ASP.NET Core](xref:fundamentals/servers/aspnet-core-module), который является собственным модулем IIS, необходимым для запуска приложений ASP.NET Core со службами IIS.
+1. Выберите компонент **поддержки IIS во время разработки**. Этот компонент указан как дополнительный на панели **Сводка** для рабочей нагрузки **ASP.NET и веб-разработки**. Этот компонент выполнит установку [модуля ASP.NET Core](xref:host-and-deploy/aspnet-core-module), который является собственным модулем IIS, необходимым для запуска приложений ASP.NET Core со службами IIS.
 
-![Изменение функций Visual Studio: выбрана вкладка "Рабочие нагрузки". В разделе "Интернет и облако" выбрана панель "ASP.NET и веб-разработка". Флажок поддержки IIS во время разработки, отображающийся в правой части области "Дополнительно" на панели "Сводка".](development-time-iis-support/_static/development_time_support.png)
+![Изменение возможностей Visual Studio: выбрана вкладка рабочих нагрузок. В разделе "Интернет и облако" выбрана панель "ASP.NET и веб-разработка". Флажок поддержки IIS во время разработки, отображающийся в правой части области "Дополнительно" на панели "Сводка".](development-time-iis-support/_static/development_time_support.png)
 
 ## <a name="configure-the-project"></a>Настройка проекта
 
@@ -146,6 +146,6 @@ public void Configure(IApplicationBuilder app, IHostingEnvironment env)
 ## <a name="additional-resources"></a>Дополнительные ресурсы
 
 * [Размещение ASP.NET Core в Windows со службами IIS](xref:host-and-deploy/iis/index)
-* [Введение в модуль ASP.NET Core](xref:fundamentals/servers/aspnet-core-module)
+* [Введение в модуль ASP.NET Core](xref:host-and-deploy/aspnet-core-module)
 * [Справочник по конфигурации модуля ASP.NET Core](xref:host-and-deploy/aspnet-core-module)
 * [Принудительное использование HTTPS](xref:security/enforcing-ssl)

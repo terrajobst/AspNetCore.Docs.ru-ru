@@ -4,20 +4,20 @@ author: pkellner
 description: Обнаруживайте атрибуты вспомогательной функции тега привязки ASP.NET Core и роль, которую играет каждый атрибут в расширении поведения тега привязки HTML.
 ms.author: scaddie
 ms.custom: mvc
-ms.date: 10/10/2018
+ms.date: 12/18/2018
 uid: mvc/views/tag-helpers/builtin-th/anchor-tag-helper
-ms.openlocfilehash: 01c5833210b73dafb763602d363afcf9e7bc0122
-ms.sourcegitcommit: 375e9a67f5e1f7b0faaa056b4b46294cc70f55b7
+ms.openlocfilehash: 60fa0c00e40878a8227ca2bc8bdb0bc2bf9f8336
+ms.sourcegitcommit: ea215df889e89db44037a6ac2f01baede0450da9
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50206280"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53595345"
 ---
 # <a name="anchor-tag-helper-in-aspnet-core"></a>Вспомогательная функция тега привязки в ASP.NET Core MVC
 
 Авторы: [Питер Кельнер (Peter Kellner)](http://peterkellner.net) и [Скотт Эдди](https://github.com/scottaddie) (Scott Addie).
 
-[Вспомогательная функция тега привязки](/dotnet/api/microsoft.aspnetcore.mvc.taghelpers.anchortaghelper) повышает эффективность стандартного тега привязки HTML (`<a ... ></a>`) путем добавления новых атрибутов. Как правило, все имена атрибутов начинаются с `asp-`. Отображаемое значение атрибута `href` элемента привязки определяется значениями атрибутов `asp-`.
+[Вспомогательная функция тега привязки](xref:Microsoft.AspNetCore.Mvc.TagHelpers.AnchorTagHelper) повышает эффективность стандартного тега привязки HTML (`<a ... ></a>`) путем добавления новых атрибутов. Как правило, все имена атрибутов начинаются с `asp-`. Отображаемое значение атрибута `href` элемента привязки определяется значениями атрибутов `asp-`.
 
 Общие сведения о вспомогательных функциях тегов см. здесь: <xref:mvc/views/tag-helpers/intro>.
 
@@ -31,7 +31,7 @@ ms.locfileid: "50206280"
 
 ## <a name="asp-controller"></a>asp-controller
 
-Атрибут [asp-controller](/dotnet/api/microsoft.aspnetcore.mvc.taghelpers.anchortaghelper.controller) назначает контроллер, используемый для создания URL-адреса. Следующий элемент перечисляет всех говорящих:
+Атрибут [asp-controller](xref:Microsoft.AspNetCore.Mvc.TagHelpers.AnchorTagHelper.Controller*) назначает контроллер, используемый для создания URL-адреса. Следующий элемент перечисляет всех говорящих:
 
 [!code-cshtml[](samples/TagHelpersBuiltIn/Views/Home/Index.cshtml?name=snippet_AspController)]
 
@@ -49,7 +49,7 @@ ms.locfileid: "50206280"
 
 ## <a name="asp-action"></a>asp-action
 
-Значение атрибута [asp-action](/dotnet/api/microsoft.aspnetcore.mvc.taghelpers.anchortaghelper.action) представляет имя действия контроллера, включенное в созданный атрибут `href`. Следующий элемент задает созданное значение атрибута `href` на странице динамика оценок:
+Значение атрибута [asp-action](xref:Microsoft.AspNetCore.Mvc.TagHelpers.AnchorTagHelper.Action*) представляет имя действия контроллера, включенное в созданный атрибут `href`. Следующий элемент задает созданное значение атрибута `href` на странице динамика оценок:
 
 [!code-cshtml[](samples/TagHelpersBuiltIn/Views/Home/Index.cshtml?name=snippet_AspAction)]
 
@@ -65,7 +65,7 @@ ms.locfileid: "50206280"
 
 ## <a name="asp-route-value"></a>asp-route-{value}
 
-Атрибут [asp-route-{value}](/dotnet/api/microsoft.aspnetcore.mvc.taghelpers.anchortaghelper.routevalues) включает подстановочный префикс маршрута. Любое значение, подставляемое вместо `{value}`, рассматривается как потенциальный параметр маршрута. Если маршрут по умолчанию не найден, этот префикс маршрута будет добавлен к созданному атрибуту `href` в виде параметра запроса и значения. В противном случае он будет заменен в шаблоне маршрута.
+Атрибут [asp-route-{value}](xref:Microsoft.AspNetCore.Mvc.TagHelpers.AnchorTagHelper.RouteValues*) включает подстановочный префикс маршрута. Любое значение, подставляемое вместо `{value}`, рассматривается как потенциальный параметр маршрута. Если маршрут по умолчанию не найден, этот префикс маршрута будет добавлен к созданному атрибуту `href` в виде параметра запроса и значения. В противном случае он будет заменен в шаблоне маршрута.
 
 Рассмотрим следующее действие контроллера:
 
@@ -102,8 +102,8 @@ ms.locfileid: "50206280"
 <!DOCTYPE html>
 <html>
 <body>
-    <a asp-controller="Speaker" 
-       asp-action="Detail" 
+    <a asp-controller="Speaker"
+       asp-action="Detail"
        asp-route-speakerid="@Model.SpeakerId">SpeakerId: @Model.SpeakerId</a>
 <body>
 </html>
@@ -119,7 +119,7 @@ ms.locfileid: "50206280"
 
 ## <a name="asp-route"></a>asp-route
 
-Атрибут [asp-route](/dotnet/api/microsoft.aspnetcore.mvc.taghelpers.anchortaghelper.route) используется для связывания URL-адреса непосредственно с именованным маршрутом. С помощью [атрибутов маршрутизации](xref:mvc/controllers/routing#attribute-routing) маршруту можно присвоить имя, как показано в классе `SpeakerController` и используется в его действии `Evaluations`:
+Атрибут [asp-route](xref:Microsoft.AspNetCore.Mvc.TagHelpers.AnchorTagHelper.Route*) используется для связывания URL-адреса непосредственно с именованным маршрутом. С помощью [атрибутов маршрутизации](xref:mvc/controllers/routing#attribute-routing) маршруту можно присвоить имя, как показано в классе `SpeakerController` и используется в его действии `Evaluations`:
 
 [!code-csharp[](samples/TagHelpersBuiltIn/Controllers/SpeakerController.cs?range=22-24)]
 
@@ -137,7 +137,7 @@ ms.locfileid: "50206280"
 
 ## <a name="asp-all-route-data"></a>asp-all-route-data
 
-Атрибут [asp-all-route-data](/dotnet/api/microsoft.aspnetcore.mvc.taghelpers.anchortaghelper.routevalues) поддерживает создание словаря пар "ключ-значение". Ключ является именем параметра, а значение — значением параметра.
+Атрибут [asp-all-route-data](xref:Microsoft.AspNetCore.Mvc.TagHelpers.AnchorTagHelper.RouteValues*) поддерживает создание словаря пар "ключ-значение". Ключ является именем параметра, а значение — значением параметра.
 
 В следующем примере словарь инициализируется и передается в представление Razor. Кроме того, данные могут быть переданы с помощью модели.
 
@@ -157,7 +157,7 @@ ms.locfileid: "50206280"
 
 ## <a name="asp-fragment"></a>asp-fragment
 
-Атрибут [asp-fragment](/dotnet/api/microsoft.aspnetcore.mvc.taghelpers.anchortaghelper.fragment) определяет фрагмент URL-адреса, добавляемый к URL-адресу. Вспомогательная функция тега привязки добавляет символ решетки (#). Рассмотрим следующий элемент:
+Атрибут [asp-fragment](xref:Microsoft.AspNetCore.Mvc.TagHelpers.AnchorTagHelper.Fragment*) определяет фрагмент URL-адреса, добавляемый к URL-адресу. Вспомогательная функция тега привязки добавляет символ решетки (#). Рассмотрим следующий элемент:
 
 [!code-cshtml[](samples/TagHelpersBuiltIn/Views/Home/Index.cshtml?name=snippet_AspFragment)]
 
@@ -171,7 +171,45 @@ ms.locfileid: "50206280"
 
 ## <a name="asp-area"></a>asp-area
 
-Атрибут [asp-area](/dotnet/api/microsoft.aspnetcore.mvc.taghelpers.anchortaghelper.area) указывает имя области, используемое платформой для определения соответствующего маршрута. Ниже приведен пример того, как атрибут области приводит к повторному сопоставлению маршрутов. При установке для атрибута `asp-area` значения Blogs перед маршрутами связанных контроллеров и представлений для этого тега привязки добавляется каталог *Areas/Blogs*.
+Атрибут [asp-area](xref:Microsoft.AspNetCore.Mvc.TagHelpers.AnchorTagHelper.Area*) указывает имя области, используемое платформой для определения соответствующего маршрута. Ниже приведен пример того, как атрибут `asp-area` приводит к повторному сопоставлению маршрутов.
+
+### <a name="usage-in-razor-pages"></a>Использование в Razor Pages
+
+Области Razor Pages поддерживаются в ASP.NET Core 2.1 или более поздней версии.
+
+Пусть имеется следующая иерархия каталогов:
+
+* **{Имя проекта}**
+  * **wwwroot**
+  * **Области**
+    * **Сеансы**
+      * **Pages**
+        * *\_ViewStart.cshtml*
+        * *Index.cshtml*
+        * *Index.cshtml.cs*
+  * **Pages**
+
+Исправление для ссылки на *индекс* области *Сеансы* в Razor Page:
+
+[!code-cshtml[](samples/TagHelpersBuiltIn/Views/Home/Index.cshtml?name=snippet_AspAreaRazorPages)]
+
+Созданный HTML:
+
+```html
+<a href="/Sessions">View Sessions</a>
+```
+
+> [!TIP]
+> Для поддержки областей в приложении Razor Pages выполните одно из следующих действий в `Startup.ConfigureServices`.
+>
+> * Задайте [версию совместимости](xref:mvc/compatibility-version) 2.1 или более позднюю.
+> * Задайте для свойства [RazorPagesOptions.AllowAreas](xref:Microsoft.AspNetCore.Mvc.RazorPages.RazorPagesOptions.AllowAreas*) значение `true`:
+>
+>   [!code-csharp[](samples/TagHelpersBuiltIn/Startup.cs?name=snippet_AllowAreas)]
+
+### <a name="usage-in-mvc"></a>Использование в MVC
+
+Пусть имеется следующая иерархия каталогов:
 
 * **{Имя проекта}**
   * **wwwroot**
@@ -186,7 +224,7 @@ ms.locfileid: "50206280"
         * *\_ViewStart.cshtml*
   * **Контроллеры**
 
-С учетом предыдущей иерархии каталогов элемент для ссылки на файл *AboutBlog.cshtml* будет таким:
+При установке для атрибута `asp-area` значения Blogs перед маршрутами связанных контроллеров и представлений для этого тега привязки добавляется каталог *Areas/Blogs*. Исправления для ссылки на представление *AboutBlog*:
 
 [!code-cshtml[](samples/TagHelpersBuiltIn/Views/Home/Index.cshtml?name=snippet_AspArea)]
 
@@ -197,13 +235,13 @@ ms.locfileid: "50206280"
 ```
 
 > [!TIP]
-> Чтобы в приложении MVC использовались области, в шаблон маршрута необходимо включить ссылку на область, если она существует. Этот шаблон представлен вторым параметром вызова метода `routes.MapRoute` в *Startup.Configure*:
+> Для поддержки областей в приложении MVC в шаблон маршрута необходимо включить ссылку на область, если она существует. Этот шаблон представлен вторым параметром вызова метода `routes.MapRoute` в *Startup.Configure*:
 >
 > [!code-csharp[](samples/TagHelpersBuiltIn/Startup.cs?name=snippet_UseMvc&highlight=5)]
 
 ## <a name="asp-protocol"></a>asp-protocol
 
-Атрибут [asp-protocol](/dotnet/api/microsoft.aspnetcore.mvc.taghelpers.anchortaghelper.protocol) предназначен для указания протокола (например, `https`) в URL-адресе. Пример:
+Атрибут [asp-protocol](xref:Microsoft.AspNetCore.Mvc.TagHelpers.AnchorTagHelper.Protocol*) предназначен для указания протокола (например, `https`) в URL-адресе. Например:
 
 [!code-cshtml[](samples/TagHelpersBuiltIn/Views/Home/Index.cshtml?name=snippet_AspProtocol)]
 
@@ -213,11 +251,11 @@ ms.locfileid: "50206280"
 <a href="https://localhost/Home/About">About</a>
 ```
 
-Именем узла в примере является localhost, но при создании URL-адреса вспомогательная функция тега привязки использует общедоступный домен веб-сайта.
+Имя узла в примере — localhost. При формировании URL-адреса вспомогательная функция тега привязки использует общедоступный домен веб-сайта.
 
 ## <a name="asp-host"></a>asp-host
 
-Атрибут [asp-host](/dotnet/api/microsoft.aspnetcore.mvc.taghelpers.anchortaghelper.host) предназначен для определения имени узла в URL-адресе. Пример:
+Атрибут [asp-host](xref:Microsoft.AspNetCore.Mvc.TagHelpers.AnchorTagHelper.Host*) предназначен для определения имени узла в URL-адресе. Например:
 
 [!code-cshtml[](samples/TagHelpersBuiltIn/Views/Home/Index.cshtml?name=snippet_AspHost)]
 
@@ -229,7 +267,7 @@ ms.locfileid: "50206280"
 
 ## <a name="asp-page"></a>asp-page
 
-Атрибут [asp-page](/dotnet/api/microsoft.aspnetcore.mvc.taghelpers.anchortaghelper.page) используется со страницами Razor Pages. Используйте его для определения значения атрибута `href` тега привязки для определенной страницы. Чтобы создать URL-адрес, перед именем страницы следует ввести символ косой черты (/).
+Атрибут [asp-page](xref:Microsoft.AspNetCore.Mvc.TagHelpers.AnchorTagHelper.Page*) используется со страницами Razor Pages. Используйте его для определения значения атрибута `href` тега привязки для определенной страницы. Чтобы создать URL-адрес, перед именем страницы следует ввести символ косой черты (/).
 
 Следующий пример указывает на страницу Razor Pages участника:
 
@@ -253,13 +291,13 @@ ms.locfileid: "50206280"
 
 ## <a name="asp-page-handler"></a>asp-page-handler
 
-Атрибут [asp-page-handler](/dotnet/api/microsoft.aspnetcore.mvc.taghelpers.anchortaghelper.pagehandler) используется со страницами Razor Pages. Он предназначен для связывания с обработчиками определенных страниц.
+Атрибут [asp-page-handler](xref:Microsoft.AspNetCore.Mvc.TagHelpers.AnchorTagHelper.PageHandler*) используется со страницами Razor Pages. Он предназначен для связывания с обработчиками определенных страниц.
 
 Рассмотрим следующий обработчик страниц:
 
 [!code-csharp[](samples/TagHelpersBuiltIn/Pages/Attendee.cshtml.cs?name=snippet_OnGetProfileHandler)]
 
-Связанный элемент модели страницы ссылается на обработчик страниц `OnGetProfile`. Обратите внимание, что префикс `On<Verb>` имени метода обработчика страниц опущен в значении атрибута `asp-page-handler`. В случае с асинхронным методом суффикс `Async` был бы также опущен.
+Связанный элемент модели страницы ссылается на обработчик страниц `OnGetProfile`. Обратите внимание, что префикс `On<Verb>` имени метода обработчика страниц опущен в значении атрибута `asp-page-handler`. Когда метод является асинхронным, суффикс `Async` также опускается.
 
 [!code-cshtml[](samples/TagHelpersBuiltIn/Views/Home/Index.cshtml?name=snippet_AspPageHandler)]
 
@@ -273,3 +311,4 @@ ms.locfileid: "50206280"
 
 * <xref:mvc/controllers/areas>
 * <xref:razor-pages/index>
+* <xref:mvc/compatibility-version>

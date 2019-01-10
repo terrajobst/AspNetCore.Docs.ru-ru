@@ -4,15 +4,15 @@ author: guardrex
 description: Узнайте, как улучшить приложение ASP.NET Core из внешней сборки, используя реализацию IHostingStartup.
 monikerRange: '>= aspnetcore-2.0'
 ms.author: riande
-ms.custom: mvc,seodec18
+ms.custom: mvc, seodec18
 ms.date: 11/22/2018
 uid: fundamentals/configuration/platform-specific-configuration
-ms.openlocfilehash: 6c38242afee46b80bafcba47a8f77e2c05f6537e
-ms.sourcegitcommit: 49faca2644590fc081d86db46ea5e29edfc28b7b
+ms.openlocfilehash: cf7114698635ab2d61fa19eb15b6a8c61a751e5b
+ms.sourcegitcommit: b34b25da2ab68e6495b2460ff570468f16a9bf0d
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 12/09/2018
-ms.locfileid: "53121730"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53284725"
 ---
 # <a name="use-hosting-startup-assemblies-in-aspnet-core"></a>Использование начальных сборок размещения в ASP.NET Core
 
@@ -26,7 +26,7 @@ ms.locfileid: "53121730"
 
 Атрибут [HostingStartup](/dotnet/api/microsoft.aspnetcore.hosting.hostingstartupattribute) указывает на наличие начальной сборки размещения, которая будет активирована во время выполнения.
 
-Входная сборка или сборка, содержащая класс `Startup`, автоматически сканируется на наличие атрибута `HostingStartup`. Список сборок, в котором будет выполняться поиск атрибута `HostingStartup`, загружается во время выполнения из конфигурации в [WebHostDefaults.HostingStartupAssembliesKey](/dotnet/api/microsoft.aspnetcore.hosting.webhostdefaults.hostingstartupassemblieskey). Список сборок, которые необходимо исключить из обнаружения, загружается из [WebHostDefaults.HostingStartupExcludeAssembliesKey](/dotnet/api/microsoft.aspnetcore.hosting.webhostdefaults.hostingstartupexcludeassemblieskey). Дополнительные сведения см. в разделах [Веб-узел: начальные сборки размещения](xref:fundamentals/host/web-host#hosting-startup-assemblies) и [Веб-узел: исключаемые сборки размещения при запуске](xref:fundamentals/host/web-host#hosting-startup-exclude-assemblies).
+Входная сборка или сборка, содержащая класс `Startup`, автоматически сканируется на наличие атрибута `HostingStartup`. Список сборок, в котором будет выполняться поиск атрибута `HostingStartup`, загружается во время выполнения из конфигурации в [WebHostDefaults.HostingStartupAssembliesKey](/dotnet/api/microsoft.aspnetcore.hosting.webhostdefaults.hostingstartupassemblieskey). Список сборок, которые необходимо исключить из обнаружения, загружается из [WebHostDefaults.HostingStartupExcludeAssembliesKey](/dotnet/api/microsoft.aspnetcore.hosting.webhostdefaults.hostingstartupexcludeassemblieskey). Дополнительные сведения см. в руководстве по [настройке Размещение начальных сборок](xref:fundamentals/host/web-host#hosting-startup-assemblies) и [Веб-узел: исключаемые начальные сборки размещения](xref:fundamentals/host/web-host#hosting-startup-exclude-assemblies).
 
 В следующем примере пространство имен для начальной сборки размещения — `StartupEnhancement`. Класс, содержащий код запуска размещения, — `StartupEnhancementHostingStartup`:
 

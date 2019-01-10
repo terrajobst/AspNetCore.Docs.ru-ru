@@ -4,14 +4,14 @@ author: zuckerthoben
 description: Узнайте, как использовать NSwag для создания документации и страниц справки для веб-API в ASP.NET Core.
 ms.author: scaddie
 ms.custom: mvc
-ms.date: 09/20/2018
+ms.date: 12/18/2018
 uid: tutorials/get-started-with-nswag
-ms.openlocfilehash: 6c7d76e2202bf47c8d3e5d296e64e9e8c820e2a1
-ms.sourcegitcommit: 375e9a67f5e1f7b0faaa056b4b46294cc70f55b7
+ms.openlocfilehash: 8af5bed1e042c4f6d83043b05084c51b3064a548
+ms.sourcegitcommit: ea215df889e89db44037a6ac2f01baede0450da9
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50207853"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53595364"
 ---
 # <a name="get-started-with-nswag-and-aspnet-core"></a>Начало работы с NSwag и ASP.NET Core
 
@@ -280,9 +280,11 @@ NSwag использует [Отражение](/dotnet/csharp/programming-guide
 
 [!code-csharp[](../tutorials/web-api-help-pages-using-swagger/samples/2.1/TodoApi.NSwag/Controllers/TodoController.cs?name=snippet_CreateAction)]
 
-Предыдущее действие возвращает `ActionResult<T>`, но внутри действия возвращается [CreatedAtRoute](/dotnet/api/system.web.http.apicontroller.createdatroute). Поскольку контроллер дополнен атрибутом [[ApiController]](/dotnet/api/microsoft.aspnetcore.mvc.apicontrollerattribute), ответ [BadRequest](/dotnet/api/system.web.http.apicontroller.badrequest) также возможен. Дополнительные сведения см. в разделе [Автоматические отклики HTTP 400](xref:web-api/index#automatic-http-400-responses). Заметки к данным используются, чтобы сообщить клиентам, какие коды состояния HTTP возвращает это действие. Добавьте к действию следующие атрибуты:
+Предыдущее действие возвращает `ActionResult<T>`. Внутри действия оно возвращает [CreatedAtRoute](xref:System.Web.Http.ApiController.CreatedAtRoute*). Поскольку контроллер дополнен атрибутом [[ApiController]](xref:Microsoft.AspNetCore.Mvc.ApiControllerAttribute), ответ [BadRequest](xref:System.Web.Http.ApiController.BadRequest*) также возможен. Дополнительные сведения см. в разделе [Автоматические отклики HTTP 400](xref:web-api/index#automatic-http-400-responses). Заметки к данным используются, чтобы сообщить клиентам, какие коды состояния HTTP возвращает это действие. Добавьте к действию следующие атрибуты:
 
 [!code-csharp[](../tutorials/web-api-help-pages-using-swagger/samples/2.1/TodoApi.NSwag/Controllers/TodoController.cs?name=snippet_CreateActionAttributes)]
+
+В ASP.NET Core 2.2 или более поздней версии соглашения можно использовать в качестве альтернативы явному добавлению к отдельным действиям элемента `[ProducesResponseType]`. Для получения дополнительной информации см. <xref:web-api/advanced/conventions>.
 
 ::: moniker-end
 

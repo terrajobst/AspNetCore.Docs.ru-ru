@@ -5,18 +5,18 @@ description: Сведения об анализаторах веб-API в Micros
 monikerRange: '>= aspnetcore-2.2'
 ms.author: pranavkm
 ms.custom: mvc
-ms.date: 11/13/2018
+ms.date: 12/14/2018
 uid: web-api/advanced/analyzers
-ms.openlocfilehash: 89424d89ec2b3125fd3c6b7c86fed2d292b153e6
-ms.sourcegitcommit: f202864efca81a72ea7120c0692940c40d9d0630
+ms.openlocfilehash: 7558552586d3056c43d8bfd9ef74cbcb3396726f
+ms.sourcegitcommit: 6548c19f345850ee22b50f7ef9fca732895d9e08
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51635404"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53425098"
 ---
 # <a name="use-web-api-analyzers"></a>Использование анализаторов веб-API
 
-В ASP.NET Core 2.2 представлен пакет NuGet [Microsoft.AspNetCore.Mvc.Api.Analyzers](https://www.nuget.org/packages/Microsoft.AspNetCore.Mvc.Api.Analyzers), содержащий анализаторы для веб-API. Анализаторы работают с контроллерами, которые аннотированы <xref:Microsoft.AspNetCore.Mvc.ApiControllerAttribute>. Кроме того, к ним применяются [соглашения об использовании API](xref:web-api/advanced/conventions).
+В ASP.NET Core 2.2 и более поздних версий представлен пакет NuGet [Microsoft.AspNetCore.Mvc.Api.Analyzers](https://www.nuget.org/packages/Microsoft.AspNetCore.Mvc.Api.Analyzers), содержащий анализаторы для веб-API. Анализаторы работают с контроллерами, которые аннотированы <xref:Microsoft.AspNetCore.Mvc.ApiControllerAttribute>. Кроме того, к ним применяются [соглашения об использовании API](xref:web-api/advanced/conventions).
 
 ## <a name="package-installation"></a>Установка пакета
 
@@ -73,3 +73,9 @@ dotnet add ApiConventions.csproj package Microsoft.AspNetCore.Mvc.Api.Analyzers
 [!code-csharp[](conventions/sample/Controllers/ContactsController.cs?name=missing404docs&highlight=9)]
 
 Предыдущее действие документирует тип возврата "Успех HTTP 200", но не документирует код состояния "Ошибка HTTP 404". Анализатор сообщает об отсутствующем документировании для кода состояния HTTP 404 в виде предупреждения. Эту проблему можно устранить.
+
+## <a name="additional-resources"></a>Дополнительные ресурсы
+
+* <xref:web-api/advanced/conventions>
+* <xref:tutorials/web-api-help-pages-using-swagger>
+* [Заметка с атрибутом ApiController](xref:web-api/index#annotation-with-apicontroller-attribute)

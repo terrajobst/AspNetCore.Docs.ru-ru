@@ -4,14 +4,14 @@ author: guardrex
 description: Сведения о диагностике проблем с развертываниями приложений ASP.NET Core на платформе IIS.
 ms.author: riande
 ms.custom: mvc
-ms.date: 12/06/2018
+ms.date: 12/18/2018
 uid: host-and-deploy/iis/troubleshoot
-ms.openlocfilehash: 6d43057639ea88bb21ac66f2799062e06fffc530
-ms.sourcegitcommit: 49faca2644590fc081d86db46ea5e29edfc28b7b
+ms.openlocfilehash: 68fcd578c051ae9ba6234cad0465a7ef42f1ed14
+ms.sourcegitcommit: 816f39e852a8f453e8682081871a31bc66db153a
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 12/09/2018
-ms.locfileid: "53121691"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53637694"
 ---
 # <a name="troubleshoot-aspnet-core-on-iis"></a>Устранение неполадок ASP.NET Core в службах IIS
 
@@ -34,7 +34,7 @@ ms.locfileid: "53121691"
 Дополнительные статьи по устранению неполадок:
 
 <xref:host-and-deploy/azure-apps/troubleshoot>  
-Служба приложений использует для размещения приложений [модуль ASP.NET Core](xref:fundamentals/servers/aspnet-core-module) и IIS, но самые полезные рекомендации вы найдете в статье с инструкциями для самой службы приложений.
+Служба приложений использует для размещения приложений [модуль ASP.NET Core](xref:host-and-deploy/aspnet-core-module) и IIS, но самые полезные рекомендации вы найдете в статье с инструкциями для самой службы приложений.
 
 <xref:fundamentals/error-handling>  
 Узнайте, как обрабатывать ошибки в приложениях ASP.NET Core при разработке в локальной системе.
@@ -242,7 +242,7 @@ Failed to start application '/LM/W3SVC/6/ROOT/', ErrorCode '0x800700c1'.
 
 * [ProcDump](/sysinternals/downloads/procdump);
 * [DebugDiag](https://www.microsoft.com/download/details.aspx?id=49924);
-* WinDbg: [скачивание инструментов отладки для Windows](https://developer.microsoft.com/windows/hardware/download-windbg), [отладка с помощью WinDbg](/windows-hardware/drivers/debugger/debugging-using-windbg).
+* WinDbg: [скачивание инструментов отладки для Windows](https://developer.microsoft.com/windows/hardware/download-windbg), [отладка с помощью WinDbg](/windows-hardware/drivers/debugger/debugging-using-windbg)
 
 ## <a name="remote-debugging"></a>Удаленная отладка
 

@@ -4,14 +4,14 @@ author: rick-anderson
 description: В статье описывается процедура настройки Nginx как обратного прокси-сервера на Ubuntu 16.04 для перенаправления трафика HTTP в веб-приложение ASP.NET Core, выполняемое в Kestrel.
 ms.author: riande
 ms.custom: mvc
-ms.date: 11/26/2018
+ms.date: 12/20/2018
 uid: host-and-deploy/linux-nginx
-ms.openlocfilehash: d4bffab80ba20d4cf77a358249c7b349033de5bd
-ms.sourcegitcommit: e9b99854b0a8021dafabee0db5e1338067f250a9
+ms.openlocfilehash: 534c62c127e685af9c6076932943def25bd3ac06
+ms.sourcegitcommit: e1cc4c1ef6c9e07918a609d5ad7fadcb6abe3e12
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52450792"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "53997335"
 ---
 # <a name="host-aspnet-core-on-linux-with-nginx"></a>Среда размещения ASP.NET Core в операционной системе Linux с Nginx
 
@@ -122,11 +122,11 @@ services.Configure<ForwardedHeadersOptions>(options =>
 });
 ```
 
-Дополнительные сведения см. в разделе <xref:host-and-deploy/proxy-load-balancer>.
+Для получения дополнительной информации см. <xref:host-and-deploy/proxy-load-balancer>.
 
 ### <a name="install-nginx"></a>Установка Nginx
 
-Установите Nginx с помощью команды `apt-get`. Программа установки создает сценарий инициализации *systemd*, который запускает Nginx как управляющую программу при запуске системы. Следуйте инструкциям по установке для Ubuntu, которые представлены в [описании официальных пакетов Nginx для Debian и Ubuntu](https://www.nginx.com/resources/wiki/start/topics/tutorials/install/#official-debian-ubuntu-packages).
+Установите Nginx с помощью команды `apt-get`. Программа установки создает сценарий инициализации *systemd*, который запускает Nginx как управляющую программу при запуске системы. Следуйте инструкциям по установке для Ubuntu в разделе [Nginx: официальные пакеты Debian и Ubuntu](https://www.nginx.com/resources/wiki/start/topics/tutorials/install/#official-debian-ubuntu-packages).
 
 > [!NOTE]
 > Если необходимы дополнительные модули Nginx, может потребоваться создание Nginx из источника.
@@ -297,6 +297,18 @@ sudo journalctl -fu kestrel-helloapp.service --since "2016-10-18" --until "2016-
 * <xref:security/data-protection/implementation/key-storage-providers>
 * <xref:security/data-protection/implementation/key-encryption-at-rest>
 
+## <a name="long-request-header-fields"></a>Длинные поля заголовка запроса
+
+Если приложение требует поля заголовка запроса длиннее, чем разрешено параметрами прокси-сервера по умолчанию (обычно 4 или 8 КБ в зависимости от платформы), следующие директивы требуют корректировки. Применяемые значения зависят от условий. Дополнительные сведения см. в документации сервера.
+
+* [proxy_buffer_size](https://nginx.org/docs/http/ngx_http_proxy_module.html#proxy_buffer_size)
+* [proxy_buffers](https://nginx.org/docs/http/ngx_http_proxy_module.html#proxy_buffers)
+* [proxy_busy_buffers_size](https://nginx.org/docs/http/ngx_http_proxy_module.html#proxy_busy_buffers_size)
+* [large_client_header_buffers](https://nginx.org/docs/http/ngx_http_core_module.html#large_client_header_buffers)
+
+> [!WARNING]
+> Не увеличивайте значение буферов прокси-сервера по умолчанию, если это не требуется. Увеличение этих значений повышает риск переполнения буфера и атак типа "отказ в обслуживании" (DoS) со стороны злоумышленников.
+
 ## <a name="secure-the-app"></a>Защита приложения
 
 ### <a name="enable-apparmor"></a>Включение AppArmor
@@ -386,7 +398,7 @@ sudo nano /etc/nginx/nginx.conf
 ## <a name="additional-resources"></a>Дополнительные ресурсы
 
 * [Необходимые компоненты для .NET Core в Linux](/dotnet/core/linux-prerequisites)
-* [Nginx: двоичные выпуски. Официальные пакеты Debian и Ubuntu](https://www.nginx.com/resources/wiki/start/topics/tutorials/install/#official-debian-ubuntu-packages)
+* [Nginx: двоичные выпуски: официальные пакеты Debian и Ubuntu](https://www.nginx.com/resources/wiki/start/topics/tutorials/install/#official-debian-ubuntu-packages)
 * <xref:test/troubleshoot>
 * <xref:host-and-deploy/proxy-load-balancer>
-* [NGINX. Использование перенаправленного заголовка](https://www.nginx.com/resources/wiki/start/topics/examples/forwarded/)
+* [NGINX: использование перенаправленного заголовка](https://www.nginx.com/resources/wiki/start/topics/examples/forwarded/)

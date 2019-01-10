@@ -5,24 +5,24 @@ description: Узнайте, как создавать и использоват
 ms.author: tdykstra
 ms.date: 02/08/2017
 uid: web-api/advanced/custom-formatters
-ms.openlocfilehash: ee6f166ced41c41506f2a17a7d362399c165b718
-ms.sourcegitcommit: 2d3e5422d530203efdaf2014d1d7df31f88d08d0
+ms.openlocfilehash: 2861a15a80725dcc237d33313a24822cf8aa9c7e
+ms.sourcegitcommit: e1cc4c1ef6c9e07918a609d5ad7fadcb6abe3e12
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51020654"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "53997296"
 ---
 # <a name="custom-formatters-in-aspnet-core-web-api"></a>Пользовательские модули форматирования для веб-API в ASP.NET Core
 
 Автор: [Том Дикстра](https://github.com/tdykstra) (Tom Dykstra)
 
-В ASP.NET Core MVC имеется встроенная поддержка обмена данными в веб-интерфейсах API с помощью форматов JSON, XML или обычного текста. В этой статье показано, как добавить поддержку дополнительных форматов, создав пользовательские модули форматирования.
+В ASP.NET Core MVC имеется встроенная поддержка обмена данными в веб-интерфейсах API с помощью форматов JSON или XML. В этой статье показано, как добавить поддержку дополнительных форматов, создав пользовательские модули форматирования.
 
 [Просмотреть или скачать образец кода](https://github.com/aspnet/Docs/tree/master/aspnetcore/web-api/advanced/custom-formatters/sample) ([как скачивать](xref:index#how-to-download-a-sample))
 
 ## <a name="when-to-use-custom-formatters"></a>Когда следует использовать пользовательские модули форматирования
 
-Используйте пользовательский модуль форматирования, если необходимо, чтобы процесс [согласования содержимого](xref:web-api/advanced/formatting#content-negotiation) поддерживал тип содержимого, который не поддерживается встроенными модулями форматирования (JSON, XML и обычный текст).
+Используйте пользовательский модуль форматирования, если необходимо, чтобы процесс [согласования содержимого](xref:web-api/advanced/formatting#content-negotiation) поддерживал тип содержимого, который не поддерживается встроенными форматировщиками (JSON и XML).
 
 Например, если некоторые из клиентов вашего веб-интерфейса API могут работать с форматом [Protobuf](https://github.com/google/protobuf), для обмена данными с ними может быть желательно использовать этот формат, так как он более эффективен. Вам может также потребоваться реализовать отправку имен и адресов веб-интерфейсом API в формате [vCard](https://wikipedia.org/wiki/VCard), распространенном формате для передачи контактных данных. В образце приложения, представленном в этой статье, реализуется простой модуль форматирования vCard.
 
@@ -103,7 +103,8 @@ ms.locfileid: "51020654"
 
 ## <a name="next-steps"></a>Следующие шаги
 
-Ознакомьтесь с [примером приложения](https://github.com/aspnet/Docs/tree/master/aspnetcore/web-api/advanced/custom-formatters/sample), в котором реализуются простые модули форматирования входных и выходных данных в формате vCard. Это приложение считывает и записывает карточки vCard, которые выглядят следующим образом:
+* [Пример кода форматировщика обычного текста на GitHub.](https://github.com/aspnet/Entropy/tree/master/samples/Mvc.Formatters)
+* [Пример приложения для этого документа](https://github.com/aspnet/Docs/tree/master/aspnetcore/web-api/advanced/custom-formatters/sample), в котором реализуются простые форматировщики входных и выходных данных в формате vCard. Это приложение считывает и записывает карточки vCard, которые выглядят следующим образом:
 
 ```
 BEGIN:VCARD

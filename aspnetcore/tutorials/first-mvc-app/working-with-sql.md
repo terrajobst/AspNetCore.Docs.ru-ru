@@ -1,44 +1,52 @@
 ---
-title: Работа с SQL Server LocalDB в приложении MVC ASP.NET Core
+title: Работа с SQL в приложении MVC ASP.NET Core
 author: rick-anderson
-description: Сведения об использовании SQL Server LocalDB в простом приложении MVC ASP.NET Core.
+description: Сведения об использовании SQL Server LocalDB или SQLite в приложении MVC ASP.NET Core.
 ms.author: riande
 ms.date: 03/07/2017
 uid: tutorials/first-mvc-app/working-with-sql
-ms.openlocfilehash: 49615c25d51cfa671157c2e56b8e0753719c678a
-ms.sourcegitcommit: c4572be5ebb301013a5698caf9b5572b76cb2e34
+ms.openlocfilehash: 3757b972694a41cb87beb8ebee818cd498be6764
+ms.sourcegitcommit: 4e87712029de2aceb1cf2c52e9e3dda8195a5b8e
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52710105"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53382034"
 ---
-# <a name="work-with-sql-server-localdb-in-aspnet-core"></a>Работа с SQL Server LocalDB в ASP.NET Core
+# <a name="work-with-sql-in-aspnet-core"></a>Работа с SQL в ASP.NET Core
 
 Автор: [Рик Андерсон](https://twitter.com/RickAndMSFT) (Rick Anderson)
 
 Объект `MvcMovieContext` обрабатывает задачу подключения к базе данных и сопоставления объектов `Movie` с записями базы данных. Контекст базы данных регистрируется с помощью контейнера [внедрения зависимостей](xref:fundamentals/dependency-injection) в методе `ConfigureServices` в файле *Startup.cs*:
 
-::: moniker range=">= aspnetcore-2.1"
+<!-- VS -------------------------->
+# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-[!code-csharp[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie21/Startup.cs?name=ConfigureServices&highlight=13-99)]
-
-::: moniker-end
-
-::: moniker range="<= aspnetcore-2.0"
-
-[!code-csharp[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie/Startup.cs?name=ConfigureServices&highlight=6-7)]
-
-::: moniker-end
+[!code-csharp[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie22/Startup.cs?name=snippet_ConfigureServices&highlight=13-99)]
 
 Система [конфигурации](xref:fundamentals/configuration/index) ASP.NET Core считывает `ConnectionString`. Для разработки на локальном уровне она получает строку подключения из файла *appsettings.json*:
 
 [!code-json[](start-mvc/sample/MvcMovie/appsettings.json?highlight=2&range=8-10)]
 
+<!-- Code -------------------------->
+# <a name="visual-studio-code--visual-studio-for-mactabvisual-studio-codevisual-studio-mac"></a>[Visual Studio Code/Visual Studio для Mac](#tab/visual-studio-code+visual-studio-mac)
+
+[!code-csharp[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie22/Startup.cs?name=snippet_UseSqlite&highlight=11-12)]
+
+Система [конфигурации](xref:fundamentals/configuration/index) ASP.NET Core считывает `ConnectionString`. Для разработки на локальном уровне она получает строку подключения из файла *appsettings.json*:
+
+[!code-json[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie22/appsettingsSQLite.json?highlight=2&range=8-10)]
+
+---  
+<!-- End of VS tabs -->
+
 При развертывании приложения на тестовом или рабочем сервере вы можете использовать переменную среды или другой способ настройки строки подключения к реальному серверу SQL Server. Дополнительные сведения см. в статье [Конфигурация](xref:fundamentals/configuration/index).
+
+<!-- VS -------------------------->
+# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 ## <a name="sql-server-express-localdb"></a>SQL Server Express LocalDB
 
-LocalDB — это упрощенная версия ядра СУБД SQL Server Express, предназначенная для разработки программ. LocalDB запускается по запросу в пользовательском режиме, поэтому настройки не слишком сложны. По умолчанию база данных LocalDB создает файлы \*.mdf в каталоге *C:/Users/\<пользователь\>*.
+LocalDB — это упрощенная версия ядра СУБД SQL Server Express, предназначенная для разработки программ. LocalDB запускается по запросу в пользовательском режиме, поэтому настройки не слишком сложны. По умолчанию база данных LocalDB создает файлы *.mdf* в каталоге *C:/Users/{пользователь}*.
 
 * В меню **Вид** откройте **обозреватель объектов SQL Server** (SSOX).
 
@@ -58,11 +66,18 @@ LocalDB — это упрощенная версия ядра СУБД SQL Serv
 
   ![Открытая таблица Movie с отображением данных](working-with-sql/_static/vd22.png)
 
+# <a name="visual-studio-code--visual-studio-for-mactabvisual-studio-codevisual-studio-mac"></a>[Visual Studio Code/Visual Studio для Mac](#tab/visual-studio-code+visual-studio-mac)
+
+[!INCLUDE[](~/includes/rp/sqlite.md)]
+
+---  
+<!-- End of VS tabs -->
+
 ## <a name="seed-the-database"></a>Заполнение базы данных
 
 Создайте класс `SeedData` в папке *Models*. Замените сгенерированный код следующим кодом:
 
-[!code-csharp[](start-mvc/sample/MvcMovie/Models/SeedData.cs?name=snippet_1)]
+[!code-csharp[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie22/Models/SeedData.cs?name=snippet_1)]
 
 Если в базе данных есть фильмы, возвращается инициализатор заполнения и фильмы не добавляются.
 
@@ -78,21 +93,12 @@ if (context.Movie.Any())
 
 Замените содержимое *Program.cs* кодом из этого примера.
 
-::: moniker range=">= aspnetcore-2.1"
-
-[!code-csharp[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie21/Program.cs)]
-
-::: moniker-end
-
-::: moniker range="<= aspnetcore-2.0"
-
-Добавьте инициализатор заполнения в метод `Main` в файле *Program.cs*:
-
-[!code-csharp[](start-mvc/sample/MvcMovie/Program.cs?highlight=6,14-32)]
-
-::: moniker-end
+[!code-csharp[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie22/Program.cs)]
 
 Тестирование приложения
+
+<!-- VS -------------------------->
+# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 * Удалите все записи из базы данных. Это можно сделать с помощью ссылок удаления в браузере или из SSOX.
 * Необходимо выполнить инициализацию (вызывать методы в классе `Startup`), чтобы запустить метод заполнения. Для этого следует остановить и перезапустить IIS Express. Воспользуйтесь одним из перечисленных ниже подходов.
@@ -105,6 +111,14 @@ if (context.Movie.Any())
 
     * Если среда VS была запущена в режиме без отладки, нажмите клавишу F5 для запуска в режиме отладки.
     * Если среда VS была запущена в режиме отладки, остановите отладчик и нажмите клавишу F5.
+
+<!-- Code -------------------------->
+# <a name="visual-studio-code--visual-studio-for-mactabvisual-studio-codevisual-studio-mac"></a>[Visual Studio Code/Visual Studio для Mac](#tab/visual-studio-code+visual-studio-mac)
+
+Удалите все записи в базе данных для запуска метода заполнения. Остановите и запустите приложение, чтобы начать заполнение базы данных.
+
+---  
+<!-- End of VS tabs -->
 
 В приложении будут отображены данные.
 

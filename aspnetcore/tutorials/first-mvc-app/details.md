@@ -3,14 +3,14 @@ title: Изучение методов Details и Delete в приложении
 author: rick-anderson
 description: Узнайте о методе и представлении контроллера Details в базовом приложении ASP.NET Core MVC.
 ms.author: riande
-ms.date: 03/07/2017
+ms.date: 12/13/2018
 uid: tutorials/first-mvc-app/details
-ms.openlocfilehash: c5d21bc70aae4c1a1d10bb333871eeef25a1879c
-ms.sourcegitcommit: 375e9a67f5e1f7b0faaa056b4b46294cc70f55b7
+ms.openlocfilehash: c02a85b7c92a0cfa6125c5033b6cadd965f1662e
+ms.sourcegitcommit: e1cc4c1ef6c9e07918a609d5ad7fadcb6abe3e12
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50208009"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "53997192"
 ---
 # <a name="examine-the-details-and-delete-methods-of-an-aspnet-core-app"></a>Изучение методов Details и Delete в приложении ASP.NET Core
 
@@ -18,17 +18,7 @@ ms.locfileid: "50208009"
 
 Откройте контроллер Movie и изучите метод `Details`:
 
-::: moniker range=">= aspnetcore-2.1"
-
-[!code-csharp[](start-mvc/sample/MvcMovie21/Controllers/MoviesController.cs?name=snippet_details)]
-
-::: moniker-end
-
-::: moniker range="<= aspnetcore-2.0"
-
-[!code-csharp[](start-mvc/sample/MvcMovie/Controllers/MoviesController.cs?name=snippet_details)]
-
-::: moniker-end
+[!code-csharp[](start-mvc/sample/MvcMovie22/Controllers/MoviesController.cs?name=snippet_details)]
 
 Подсистема формирования шаблонов MVC, созданная этим методом действия, добавляет комментарий, показывающий HTTP-запрос, который вызывает метод. Здесь это запрос GET, состоящий из трех сегментов URL-адреса, контроллера `Movies`, метода `Details` и значения `id`. Эти сегменты определены в *Startup.cs*.
 
@@ -38,17 +28,7 @@ EF упрощает поиск данных с помощью метода `Sing
 
 Просмотрите методы `Delete` и `DeleteConfirmed`.
 
-::: moniker range=">= aspnetcore-2.1"
-
-[!code-csharp[](start-mvc/sample/MvcMovie21/Controllers/MoviesController.cs?name=snippet_delete)]
-
-::: moniker-end
-
-::: moniker range="<= aspnetcore-2.0"
-
-[!code-csharp[](start-mvc/sample/MvcMovie/Controllers/MoviesController.cs?name=snippet_delete)]
-
-::: moniker-end
+[!code-csharp[](start-mvc/sample/MvcMovie22/Controllers/MoviesController.cs?name=snippet_delete)]
 
 Обратите внимание, что метод `HTTP GET Delete` не удаляет указанный фильм, он возвращает представление фильма, где можно выполнить (HttpPost) удаление. Выполнение операции удаления в ответ на запрос GET (или выполнение операции редактирования, создания или любой другой операции, изменяющей данные) открывает брешь в системе безопасности.
 
@@ -58,10 +38,9 @@ EF упрощает поиск данных с помощью метода `Sing
 
 [!code-csharp[](start-mvc/sample/MvcMovie/Controllers/MoviesController.cs?name=snippet_delete3)]
 
-
 Требуется, чтобы в среде CLR перегруженные методы имели уникальную сигнатуру параметров (то же имя метода, но другой список параметров). Однако здесь необходимы два метода `Delete` — один для GET и один для POST — с одинаковой сигнатурой параметров. (Они оба должны принимать целочисленное значение в качестве параметра.)
 
-Существует два подхода к решению этой проблемы, один из которых заключается в указании разных имен для методов. Именно это было представлено в предыдущем примере механизма формирования шаблонов. Однако в этом случае возникает небольшая проблема: ASP.NET сопоставляет сегменты URL-адреса с методами действий по имени, а при переименовании метода, как правило, маршрутизация не сможет найти этот метод. Решение показано в примере, а именно: в метод `DeleteConfirmed` следует добавить атрибут `ActionName("Delete")`. Этот атрибут выполняет сопоставление для системы маршрутизации, чтобы URL-адрес, включающий /Delete/ для запроса POST, смог найти метод `DeleteConfirmed`.
+Существует два подхода к решению этой проблемы, один из которых заключается в указании разных имен для методов. Именно это было представлено в предыдущем примере механизма формирования шаблонов. Но в этом случае возникает небольшая проблема: ASP.NET сопоставляет сегменты URL-адреса с методами действий по имени, а при переименовании метода, как правило, маршрутизация не сможет найти этот метод. Решение показано в примере, а именно: в метод `DeleteConfirmed` следует добавить атрибут `ActionName("Delete")`. Этот атрибут выполняет сопоставление для системы маршрутизации, чтобы URL-адрес, включающий /Delete/ для запроса POST, смог найти метод `DeleteConfirmed`.
 
 Другим распространенным решением проблемы для методов с одинаковыми именами и сигнатурами является искусственное изменение сигнатуры метода POST для включения дополнительного (неиспользуемого) параметра. Именно это было сделано ранее, когда был добавлен параметр `notUsed`. То же самое можно сделать для метода `[HttpPost] Delete`:
 
@@ -73,7 +52,7 @@ public async Task<IActionResult> Delete(int id, bool notUsed)
 
 ### <a name="publish-to-azure"></a>Публикация в Azure
 
-Сведения о развертывании в Azure см. в статье [Руководство. Создание веб-приложения .NET Core с базой данных SQL в службе приложений Azure](/azure/app-service/app-service-web-tutorial-dotnetcore-sqldb).
+Сведения о развертывании в Azure, см. в разделе [Учебник: сборка веб-приложения .NET Core и базы данных SQL в службе приложений Azure](/azure/app-service/app-service-web-tutorial-dotnetcore-sqldb).
 
 > [!div class="step-by-step"]
 > [Назад](validation.md)

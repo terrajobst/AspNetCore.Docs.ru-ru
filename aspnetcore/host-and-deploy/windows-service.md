@@ -7,12 +7,12 @@ ms.author: tdykstra
 ms.custom: mvc
 ms.date: 12/01/2018
 uid: host-and-deploy/windows-service
-ms.openlocfilehash: f53c303dc63e092f08e933fea79eb805523cde9b
-ms.sourcegitcommit: 9bb58d7c8dad4bbd03419bcc183d027667fefa20
+ms.openlocfilehash: bdb29c318c66ac884b9225ba8c2a0dfc1f364255
+ms.sourcegitcommit: 816f39e852a8f453e8682081871a31bc66db153a
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52861398"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53637707"
 ---
 # <a name="host-aspnet-core-in-a-windows-service"></a>Размещение ASP.NET Core в службе Windows
 
@@ -108,12 +108,12 @@ ms.locfileid: "52861398"
 
   Если условия имеют значение false (приложение выполняется в качестве службы), сделайте следующее:
 
-  * Вызовите <xref:Microsoft.Extensions.Hosting.HostingHostBuilderExtensions.UseContentRoot*> и используйте путь к расположению для публикации приложения. Не вызывайте <xref:System.IO.Directory.GetCurrentDirectory*> для получения пути, так как при вызове `GetCurrentDirectory` приложение службы Windows возвращает папку *C:\\WINDOWS\\system32*. Дополнительные сведения см. в разделе [Текущий каталог и корневой каталог содержимого](#current-directory-and-content-root).
+  * Вызовите <xref:System.IO.Directory.SetCurrentDirectory*> и используйте путь к расположению для публикации приложения. Не вызывайте <xref:System.IO.Directory.GetCurrentDirectory*> для получения пути, так как при вызове `GetCurrentDirectory` приложение службы Windows возвращает папку *C:\\WINDOWS\\system32*. Дополнительные сведения см. в разделе [Текущий каталог и корневой каталог содержимого](#current-directory-and-content-root).
   * Вызовите <xref:Microsoft.AspNetCore.Hosting.WindowsServices.WebHostWindowsServiceExtensions.RunAsService*>, чтобы запустить приложение в качестве службы.
 
   Так как для [поставщика конфигурации командной строки](xref:fundamentals/configuration/index#command-line-configuration-provider) требуется пара имя-значение для аргументов командной строки, параметр `--console` удаляется из аргументов, прежде чем <xref:Microsoft.AspNetCore.WebHost.CreateDefaultBuilder*> получит его.
 
-* Для записи данных в журнал событий Windows добавьте поставщик EventLog в <xref:Microsoft.AspNetCore.Hosting.WebHostBuilder.ConfigureLogging*>. Задайте уровень ведения журнала с помощью ключа `Logging:LogLevel:Default` в файле *appsettings.Production.json*. Для демонстрации и тестирования в файле параметров примера приложения для рабочей среды мы укажем такой уровень ведения журнала: `Information`. В рабочей среде обычно присваивается значение `Error`. Дополнительные сведения см. в разделе <xref:fundamentals/logging/index#windows-eventlog-provider>.
+* Для записи данных в журнал событий Windows добавьте поставщик EventLog в <xref:Microsoft.AspNetCore.Hosting.WebHostBuilder.ConfigureLogging*>. Задайте уровень ведения журнала с помощью ключа `Logging:LogLevel:Default` в файле *appsettings.Production.json*. Для демонстрации и тестирования в файле параметров примера приложения для рабочей среды мы укажем такой уровень ведения журнала: `Information`. В рабочей среде обычно присваивается значение `Error`. Для получения дополнительной информации см. <xref:fundamentals/logging/index#windows-eventlog-provider>.
 
 [!code-csharp[](windows-service/samples/2.x/AspNetCoreService/Program.cs?name=snippet_Program)]
 
@@ -214,7 +214,7 @@ sc create {SERVICE NAME} binPath= "{PATH}" obj= "{DOMAIN}\{USER ACCOUNT}" passwo
 
 * Служба называется **MyService**.
 * Опубликованная служба размещается в папке *c:\\svc*. Исполняемый файл приложения с именем *SampleApp.exe*. Значение `binPath` заключается в двойные кавычки (").
-* Служба работает под учетной записью `ServiceUser`. Замените `{DOMAIN}` на домен учетной записи пользователя или имя локального компьютера. Значение `obj` заключается в двойные кавычки ("). Пример: если система размещения — это локальный компьютер с именем `MairaPC`, задайте для параметра `obj` значение `"MairaPC\ServiceUser"`.
+* Служба работает под учетной записью `ServiceUser`. Замените `{DOMAIN}` на домен учетной записи пользователя или имя локального компьютера. Значение `obj` заключается в двойные кавычки ("). Пример Если система размещения — это локальный компьютер с именем `MairaPC`, задайте для параметра `obj` значение `"MairaPC\ServiceUser"`.
 * Замените `{PASSWORD}` на пароль учетной записи пользователя. Значение `password` заключается в двойные кавычки (").
 
 ```console
@@ -323,16 +323,16 @@ sc delete MyService
 
 ### <a name="set-the-content-root-path-to-the-apps-folder"></a>Указание папки приложения в качестве пути корневого каталога содержимого
 
-<xref:Microsoft.Extensions.Hosting.IHostingEnvironment.ContentRootPath*> — это тот же путь, предоставленный аргументом `binPath` при создании службы. Чтобы не вызывать метод `GetCurrentDirectory` для создания путей к файлам параметров, вызовите <xref:Microsoft.Extensions.Hosting.HostingHostBuilderExtensions.UseContentRoot*> с указанным путем к корневому каталогу содержимого приложения.
+<xref:Microsoft.Extensions.Hosting.IHostingEnvironment.ContentRootPath*> — это тот же путь, предоставленный аргументом `binPath` при создании службы. Чтобы не вызывать метод `GetCurrentDirectory` для создания путей к файлам параметров, вызовите <xref:System.IO.Directory.SetCurrentDirectory*> с указанным путем к корневому каталогу содержимого приложения.
 
 В `Program.Main` определите путь к папке с исполняемым файлом службы и используйте этот путь, чтобы создать корневой каталог содержимого приложения.
 
 ```csharp
 var pathToExe = Process.GetCurrentProcess().MainModule.FileName;
 var pathToContentRoot = Path.GetDirectoryName(pathToExe);
+Directory.SetCurrentDirectory(pathToContentRoot);
 
 CreateWebHostBuilder(args)
-    .UseContentRoot(pathToContentRoot)
     .Build()
     .RunAsService();
 ```

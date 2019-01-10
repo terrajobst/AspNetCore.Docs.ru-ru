@@ -4,14 +4,14 @@ author: guardrex
 description: Сведения о переопределении и перенаправлении URL-адресов с помощью ПО промежуточного слоя для переопределения URL-адресов в приложениях ASP.NET Core.
 ms.author: riande
 ms.custom: mvc
-ms.date: 11/19/2018
+ms.date: 12/18/2018
 uid: fundamentals/url-rewriting
-ms.openlocfilehash: 84052789717738a48c346d35d1a2642017a9ab93
-ms.sourcegitcommit: 9bb58d7c8dad4bbd03419bcc183d027667fefa20
+ms.openlocfilehash: d2dd5e9b7f196bcbd1940f7ef58331dabd2367a1
+ms.sourcegitcommit: 816f39e852a8f453e8682081871a31bc66db153a
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52861918"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53637811"
 ---
 # <a name="url-rewriting-middleware-in-aspnet-core"></a>ПО промежуточного слоя для переопределения URL-адресов в ASP.NET Core
 
@@ -78,7 +78,7 @@ ms.locfileid: "52861918"
 * [Модуль Apache mod_rewrite на сервере Apache Server](https://httpd.apache.org/docs/2.4/rewrite/)
 * [Переопределение URL-адресов в Nginx](https://www.nginx.com/blog/creating-nginx-rewrite-rules/)
 
-Кроме того, используйте ПО промежуточного слоя, когда приложение размещается на [сервере HTTP.sys](xref:fundamentals/servers/httpsys) (который раньше назывался [WebListener](xref:fundamentals/servers/weblistener)).
+Кроме того, используйте ПО промежуточного слоя, когда приложение размещается на [сервере HTTP.sys](xref:fundamentals/servers/httpsys) (который раньше назывался WebListener).
 
 Основные причины для использования переопределения URL-адресов на основе сервера в IIS, Apache и Nginx:
 

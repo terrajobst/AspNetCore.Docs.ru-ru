@@ -5,14 +5,14 @@ description: Узнайте, как настроить проверки рабо
 monikerRange: '>= aspnetcore-2.2'
 ms.author: riande
 ms.custom: mvc
-ms.date: 12/03/2018
+ms.date: 12/12/2018
 uid: host-and-deploy/health-checks
-ms.openlocfilehash: d8fd43d9d689396cf30ca371763cdf7ac9423c77
-ms.sourcegitcommit: 9bb58d7c8dad4bbd03419bcc183d027667fefa20
+ms.openlocfilehash: cf2aea91221887dad5646604214f810493d4b175
+ms.sourcegitcommit: 1ea1b4fc58055c62728143388562689f1ef96cb2
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52862691"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53329150"
 ---
 # <a name="health-checks-in-aspnet-core"></a>Проверки работоспособности в ASP.NET Core
 
@@ -36,10 +36,12 @@ ASP.NET Core предоставляет ПО промежуточного сло
 
 Добавьте ссылку на [метапакет Microsoft.AspNetCore.App](xref:fundamentals/metapackage-app) или ссылку на пакет [Microsoft.AspNetCore.Diagnostics.HealthCheck](https://www.nuget.org/packages/Microsoft.AspNetCore.Diagnostics.HealthChecks).
 
-В примере приложения приведен код запуска для демонстрации проверки работоспособности для нескольких сценариев. Сценарий [проверки базы данных](#database-probe) проверяет работоспособность подключения базы данных с помощью [BeatPulse](https://github.com/Xabaril/BeatPulse). Сценарий [проверки DbContext](#entity-framework-core-dbcontext-probe) проверяет базу данных с помощью EF Core `DbContext`. Чтобы изучить сценарии для баз данных с помощью примера приложения, выполните следующие действия.
+В примере приложения приведен код запуска для демонстрации проверки работоспособности для нескольких сценариев. Сценарий [проверки базы данных](#database-probe) проверяет работоспособность подключения базы данных с помощью [BeatPulse](https://github.com/Xabaril/BeatPulse). Сценарий [проверки DbContext](#entity-framework-core-dbcontext-probe) проверяет базу данных с помощью EF Core `DbContext`. Чтобы изучить сценарии для баз данных, пример приложения выполняет следующие действия.
 
-* Создайте базу данных и укажите ее строку подключения в файле приложения *appsettings.json*.
-* Добавьте ссылку на пакет [AspNetCore.HealthChecks.SqlServer](https://www.nuget.org/packages/AspNetCore.HealthChecks.SqlServer/).
+* Создает базу данных и указывает ее строку подключения в файле приложения *appsettings.json*.
+* Содержит следующие ссылки на пакеты в своем файле проекта.
+  * [AspNetCore.HealthChecks.SqlServer](https://www.nuget.org/packages/AspNetCore.HealthChecks.SqlServer/)
+  * [Microsoft.Extensions.Diagnostics.HealthChecks.EntityFrameworkCore](https://www.nuget.org/packages/Microsoft.Extensions.Diagnostics.HealthChecks.EntityFrameworkCore/)
 
 > [!NOTE]
 > [BeatPulse](https://github.com/Xabaril/BeatPulse) не поддерживается и не обслуживается корпорацией Майкрософт.
@@ -50,7 +52,7 @@ ASP.NET Core предоставляет ПО промежуточного сло
 
 Для многих приложений достаточно конфигурации базовой проверки работоспособности, которая сообщает о доступности приложения для обработки запросов (*жизнеспособности*).
 
-Базовая конфигурация регистрирует службы проверки работоспособности и вызывает ПО промежуточного слоя для ответа о работоспособности на конечной точке по URL-адресу. По умолчанию отдельные проверки работоспособности не регистрируются для тестирования какой-либо конкретной зависимости или подсистемы. Приложение считается исправным, если оно способно отвечать на запросы по URL-адресу конечной точки работоспособности. Модуль записи ответа по умолчанию записывает состояние (`HealthCheckStatus`) в виде обычного текста ответа обратно клиенту; оно указывает на состояние `HealthCheckResult.Healthy` или `HealthCheckResult.Unhealthy`.
+Базовая конфигурация регистрирует службы проверки работоспособности и вызывает ПО промежуточного слоя для ответа о работоспособности на конечной точке по URL-адресу. По умолчанию отдельные проверки работоспособности не регистрируются для тестирования какой-либо конкретной зависимости или подсистемы. Приложение считается исправным, если оно способно отвечать на запросы по URL-адресу конечной точки работоспособности. Модуль записи ответа по умолчанию записывает состояние (`HealthStatus`) в виде обычного текста ответа обратно клиенту; оно указывает на состояние `HealthStatus.Healthy`, `HealthStatus.Degraded` или `HealthStatus.Unhealthy`.
 
 Зарегистрируйте службы проверки работоспособности при помощи `AddHealthChecks` в `Startup.ConfigureServices`. Добавьте ПО промежуточного слоя в `UseHealthChecks` в конвейере обработки запросов `Startup.Configure`:
 
@@ -216,12 +218,12 @@ public void Configure(IApplicationBuilder app, IHostingEnvironment env)
     app.UseHealthChecks("/health", new HealthCheckOptions()
     {
         // The following StatusCodes are the default assignments for
-        // the HealthCheckStatus properties.
+        // the HealthStatus properties.
         ResultStatusCodes =
         {
-            [HealthCheckStatus.Healthy] = StatusCodes.Status200OK,
-            [HealthCheckStatus.Degraded] = StatusCodes.Status200OK,
-            [HealthCheckStatus.Unhealthy] = StatusCodes.Status503ServiceUnavailable
+            [HealthStatus.Healthy] = StatusCodes.Status200OK,
+            [HealthStatus.Degraded] = StatusCodes.Status200OK,
+            [HealthStatus.Unhealthy] = StatusCodes.Status503ServiceUnavailable
         }
     });
 }
@@ -314,9 +316,17 @@ dotnet run --scenario db
 
 ## <a name="entity-framework-core-dbcontext-probe"></a>Проверка DbContext в Entity Framework Core
 
-Проверка `DbContext` поддерживается в приложениях, использующих [Entity Framework (EF) Core](/ef/core/). Эта проверка подтверждает, что приложение может взаимодействовать с базой данных, настроенной для EF Core `DbContext`. По умолчанию `DbContextHealthCheck` вызывает метод EF Core `CanConnectAsync`. Вы можете указать, какая операция выполняется в том случае, когда проверка работоспособности производится с помощью перегрузок метода `AddDbContextCheck`.
+Эта проверка `DbContext` подтверждает, что приложение может взаимодействовать с базой данных, настроенной для EF Core `DbContext`. Проверка `DbContext` поддерживается в приложениях, которые:
 
-`AddDbContextCheck<TContext>` регистрирует проверку работоспособности для `DbContext` (`TContext`). По умолчанию имя проверки работоспособности — это имя типа `TContext`. Доступна перегрузка, позволяющая настроить состояние ошибки, теги и запрос тестирования.
+* используют [Entity Framework (EF) Core](/ef/core/);
+* содержат ссылку на пакет [Microsoft.Extensions.Diagnostics.HealthChecks.EntityFrameworkCore](https://www.nuget.org/packages/Microsoft.Extensions.Diagnostics.HealthChecks.EntityFrameworkCore/).
+
+`AddDbContextCheck<TContext>` регистрирует проверку работоспособности для `DbContext`. `DbContext` передается методу в качестве `TContext`. Доступна перегрузка, позволяющая настроить состояние ошибки, теги и запрос тестирования.
+
+По умолчанию:
+
+* `DbContextHealthCheck` вызывает метод EF Core `CanConnectAsync`. Вы можете указать, какая операция выполняется в том случае, когда проверка работоспособности производится с помощью перегрузок метода `AddDbContextCheck`.
+* Имя проверки работоспособности — это имя типа `TContext`.
 
 В примере приложения `AppDbContext` предоставляется для `AddDbContextCheck` и регистрируется в качестве службы в `Startup.ConfigureServices`.
 

@@ -1,20 +1,19 @@
 ---
-title: Учебник. Создание веб-API с помощью ASP.NET Core MVC
+title: Учебник. Создание веб-API с помощью MVC ASP.NET Core
 author: rick-anderson
 description: Построение веб-API с помощью ASP.NET Core MVC
 ms.author: riande
-monikerRange: '> aspnetcore-2.1'
 ms.custom: mvc
-ms.date: 11/19/2018
+ms.date: 12/10/2018
 uid: tutorials/first-web-api
-ms.openlocfilehash: 1af14b85cbaefc00fd97db7c721c4f9436a65fb2
-ms.sourcegitcommit: 49faca2644590fc081d86db46ea5e29edfc28b7b
+ms.openlocfilehash: c2b4dcddd5332330cd6e6abe7d3a12697cde845e
+ms.sourcegitcommit: 4e87712029de2aceb1cf2c52e9e3dda8195a5b8e
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 12/09/2018
-ms.locfileid: "53121470"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53382008"
 ---
-# <a name="tutorial-create-a-web-api-with-aspnet-core-mvc"></a>Учебник. Создание веб-API с помощью ASP.NET Core MVC
+# <a name="tutorial-create-a-web-api-with-aspnet-core-mvc"></a>Учебник. Создание веб-API с помощью MVC ASP.NET Core
 
 Авторы: [Рик Андерсон](https://twitter.com/RickAndMSFT) и [Майк Уоссон](https://github.com/mikewasson)
 
@@ -77,7 +76,7 @@ ms.locfileid: "53121470"
 
   С помощью этих команд создается новый проект веб-API и открывается новый экземпляр Visual Studio Code в новой папке проекта.
 
-* При появлении диалогового окна с запросом на добавление в проект необходимых активов выберите **Да**
+* При появлении диалогового окна с запросом на добавление в проект необходимых ресурсов выберите **Да**.
 
 # <a name="visual-studio-for-mactabvisual-studio-mac"></a>[Visual Studio для Mac](#tab/visual-studio-mac)
 
@@ -240,7 +239,7 @@ ms.locfileid: "53121470"
 * `GET /api/todo`
 * `GET /api/todo/{id}`
 
-Протестируйте приложение, вызвав эти две конечные точки в браузере. Пример:
+Протестируйте приложение, вызвав эти две конечные точки в браузере. Например:
 
 * `https://localhost:<port>/api/todo`
 * `https://localhost:<port>/api/todo/1`
@@ -359,7 +358,7 @@ ms.locfileid: "53121470"
 
 [!code-csharp[](first-web-api/samples/2.2/TodoApi/Controllers/TodoController.cs?name=snippet_Update)]
 
-Страница `PutTodoItem` аналогична странице `PostTodoItem`, но использует запрос HTTP PUT. Ответ — [204 (Нет содержимого)](https://www.w3.org/Protocols/rfc2616/rfc2616-sec9.html). Согласно спецификации HTTP, запрос PUT требует, чтобы клиент отправлял всю обновленную сущность, а не только изменения. Чтобы обеспечить поддержку частичных обновлений, используйте [HTTP PATCH](/dotnet/api/microsoft.aspnetcore.mvc.httppostattribute).
+Страница `PutTodoItem` аналогична странице `PostTodoItem`, но использует запрос HTTP PUT. Ответ — [204 (Нет содержимого)](https://www.w3.org/Protocols/rfc2616/rfc2616-sec9.html). Согласно спецификации HTTP, запрос PUT требует, чтобы клиент отправлял всю обновленную сущность, а не только изменения. Чтобы обеспечить поддержку частичных обновлений, используйте [HTTP PATCH](xref:Microsoft.AspNetCore.Mvc.HttpPatchAttribute).
 
 ### <a name="test-the-puttodoitem-method"></a>Тестирование метода PutTodoItem
 

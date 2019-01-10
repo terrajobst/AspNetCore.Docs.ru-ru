@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 11/28/2018
 uid: fundamentals/configuration/options
-ms.openlocfilehash: 67f74657fb9aa5ba8235be159e2f10cf80ebce3d
-ms.sourcegitcommit: 0fc89b80bb1952852ecbcf3c5c156459b02a6ceb
+ms.openlocfilehash: 0e3784de18be16e3217a015dd94f1b43b6621c1c
+ms.sourcegitcommit: 68a3081dd175d6518d1bfa31b4712bd8a2dd3864
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52618107"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53577894"
 ---
 # <a name="options-pattern-in-aspnet-core"></a>Шаблон параметров в ASP.NET Core
 
@@ -119,7 +119,7 @@ option1 = value1_from_json, option2 = -1
 
 [!code-csharp[](options/samples/2.x/OptionsSample/Pages/Index.cshtml.cs?name=snippet_Example2)]
 
-Можно добавить несколько поставщиков конфигурации. Поставщики конфигурации доступны в пакетах NuGet и применяются в порядке регистрации. Дополнительные сведения см. в разделе <xref:fundamentals/configuration/index>.
+Можно добавить несколько поставщиков конфигурации. Поставщики конфигурации доступны в пакетах NuGet и применяются в порядке регистрации. Для получения дополнительной информации см. <xref:fundamentals/configuration/index>.
 
 При каждом вызове <xref:Microsoft.Extensions.Options.IConfigureOptions`1.Configure*> служба <xref:Microsoft.Extensions.Options.IConfigureOptions`1> добавляется в контейнер службы. В предыдущем примере значения `Option1` и `Option2` задаются в файле *appsettings.json*, однако значения `Option1` и `Option2` переопределяются настроенным делегатом.
 
@@ -343,7 +343,7 @@ public interface IValidateOptions<TOptions> where TOptions : class
 }
 ```
 
-Проверка на основе заметок к данным доступна в пакете [Microsoft.Extensions.Options.DataAnnotations](https://www.nuget.org/packages/Microsoft.Extensions.Options.DataAnnotations) с помощью вызова метода `ValidateDataAnnotations` в `OptionsBuilder<TOptions>`. `Microsoft.Extensions.Options.DataAnnotations` входит в состав [метапакета Microsoft.AspNetCore.App](xref:fundamentals/metapackage-app) (ASP.NET Core 2.1 или более поздней версии).
+Проверка на основе заметок к данным доступна в пакете [Microsoft.Extensions.Options.DataAnnotations](https://www.nuget.org/packages/Microsoft.Extensions.Options.DataAnnotations) с помощью вызова метода `ValidateDataAnnotations` в `OptionsBuilder<TOptions>`. `Microsoft.Extensions.Options.DataAnnotations` входит в состав [метапакета Microsoft.AspNetCore.App](xref:fundamentals/metapackage-app) (ASP.NET Core 2.2 или более поздней версии).
 
 ```csharp
 private class AnnotatedOptions

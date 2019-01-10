@@ -7,11 +7,11 @@ ms.author: riande
 ms.date: 12/3/2018
 uid: tutorials/razor-pages/search
 ms.openlocfilehash: 8e047024180b20e3b649085647a9136140911fee
-ms.sourcegitcommit: 8a65f6c2cbe290fb2418eed58f60fb74c95392c8
+ms.sourcegitcommit: 3e94d192b2ed9409fe72e3735e158b333354964c
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 12/05/2018
-ms.locfileid: "52892072"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53735821"
 ---
 # <a name="add-search-to-aspnet-core-razor-pages"></a>Добавление поиска на страницы Razor ASP.NET Core
 
@@ -108,5 +108,5 @@ var movies = from m in _context.Movie
 Проверьте работу приложения, выполнив поиск по жанру, по названию фильма и по обоим этим параметрам.
 
 > [!div class="step-by-step"]
-> [Предыдущая статья — "Обновление страниц"](xref:tutorials/razor-pages/da1)
-> [Следующая статья — "Добавление нового поля"](xref:tutorials/razor-pages/new-field)
+> [Предыдущая статья. Обновление страниц](xref:tutorials/razor-pages/da1)
+> [Следующая статья. Добавление нового поля](xref:tutorials/razor-pages/new-field)

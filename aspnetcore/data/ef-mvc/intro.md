@@ -6,12 +6,12 @@ ms.author: tdykstra
 ms.custom: mvc
 ms.date: 10/24/2018
 uid: data/ef-mvc/intro
-ms.openlocfilehash: f1682203850f2c5440fe8d0b98830ca8772ff70f
-ms.sourcegitcommit: c4572be5ebb301013a5698caf9b5572b76cb2e34
+ms.openlocfilehash: 1191632555dc9331f815c1bfb1f313459824754a
+ms.sourcegitcommit: 68a3081dd175d6518d1bfa31b4712bd8a2dd3864
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "50244896"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53577907"
 ---
 # <a name="aspnet-core-mvc-with-entity-framework-core---tutorial-1-of-10"></a>ASP.NET Core MVC с Entity Framework Core: учебник 1 из 10
 
@@ -245,7 +245,7 @@ ASP.NET Core по умолчанию реализует технологию [в
 
 Если открывается диалоговое окно **Добавление зависимостей MVC**:
 
-* [Обновите Visual Studio до последней версии](https://www.visualstudio.com/downloads/). Это диалоговое окно отображает версии Visual Studio, предшествующие 15.5.
+* [Обновите Visual Studio до последней версии](https://www.visualstudio.com/downloads/?utm_medium=microsoft&utm_source=docs.microsoft.com&utm_campaign=button+cta&utm_content=download+vs2017). Это диалоговое окно отображает версии Visual Studio, предшествующие 15.5.
 * Если обновить не удается, выберите **ДОБАВИТЬ** и снова выполните шаги по добавлению контроллера.
 
 * В диалоговом окне **Добавление шаблона**:

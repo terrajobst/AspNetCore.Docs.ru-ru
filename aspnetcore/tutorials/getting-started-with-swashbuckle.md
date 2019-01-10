@@ -4,14 +4,14 @@ author: zuckerthoben
 description: Дополнительные сведения о добавлении Swashbuckle в проект веб-API ASP.NET Core для интеграции пользовательского интерфейса Swagger.
 ms.author: scaddie
 ms.custom: mvc
-ms.date: 11/30/2018
+ms.date: 12/18/2018
 uid: tutorials/get-started-with-swashbuckle
-ms.openlocfilehash: 9229b4536c3d5090e640de71357c728ddbd5dcc3
-ms.sourcegitcommit: 9bb58d7c8dad4bbd03419bcc183d027667fefa20
+ms.openlocfilehash: a8c3d999cfddb4d3d888455d7cc0b899a71e427e
+ms.sourcegitcommit: ea215df889e89db44037a6ac2f01baede0450da9
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52862347"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53595351"
 ---
 # <a name="get-started-with-swashbuckle-and-aspnet-core"></a>Начало работы с Swashbuckle и ASP.NET Core
 
@@ -258,7 +258,7 @@ namespace TodoApi
 
 ::: moniker-end
 
-В приведенном выше коде для создания имени XML-файла, соответствующего имени проекта веб-API, используется [отражение](/dotnet/csharp/programming-guide/concepts/reflection). Свойство [AppContext.BaseDirectory](/dotnet/api/system.appcontext.basedirectory#System_AppContext_BaseDirectory) используется для построения пути к XML-файлу.
+В приведенном выше коде для создания имени XML-файла, соответствующего имени проекта веб-API, используется [отражение](/dotnet/csharp/programming-guide/concepts/reflection). Свойство [AppContext.BaseDirectory](xref:System.AppContext.BaseDirectory*) используется для построения пути к XML-файлу.
 
 Включение в действие комментариев с тройной косой чертой улучшает пользовательский интерфейс Swagger, так как позволяет добавить описание к заголовку раздела. Добавьте элемент [\<summary>](/dotnet/csharp/programming-guide/xmldoc/summary) над действием `Delete`:
 
@@ -371,7 +371,7 @@ namespace TodoApi
 
 ### <a name="describe-response-types"></a>Описание типов ответов
 
-Разработчиков пользовательских приложений в первую очередь волнуют возвращаемые данные &mdash; а именно: типы ответов и коды ошибок (если они не стандартны). Типы ответов и коды ошибок обозначаются в комментариях к XML и заметках к данным.
+Разработчиков, использующих веб-API, в первую очередь, волнуют возвращаемые данные &mdash; а именно: типы ответов и коды ошибок (если они не стандартны). Типы ответов и коды ошибок обозначаются в комментариях к XML и заметках к данным.
 
 Действие `Create` в случае успеха возвращает код состояния HTTP 201. Код состояния HTTP 400 возвращается в том случае, когда текст отправленного запроса имеет значение NULL. Без надлежащей документации в пользовательском интерфейсе Swagger пользователь не будет знать, чего ожидать. Эту проблему решает добавление строк, выделенных в следующем примере:
 
@@ -390,6 +390,12 @@ namespace TodoApi
 Теперь пользовательский интерфейс Swagger четко документирует ожидаемые коды HTTP-ответов.
 
 ![Пользовательский интерфейс Swagger, показывающий описание класса ответа POST "Возвращает вновь созданный элемент Todo" и "400 — Если элемент имеет значение NULL" для кода состояния и причины в разделе "Сообщения ответов"](web-api-help-pages-using-swagger/_static/data-annotations-response-types.png)
+
+::: moniker range=">= aspnetcore-2.2"
+
+В ASP.NET Core 2.2 или более поздней версии соглашения можно использовать в качестве альтернативы явному добавлению к отдельным действиям элемента `[ProducesResponseType]`. Для получения дополнительной информации см. <xref:web-api/advanced/conventions>.
+
+::: moniker-end
 
 ### <a name="customize-the-ui"></a>Настройка пользовательского интерфейса
 
