@@ -4,14 +4,14 @@ author: guardrex
 description: Общие сведения о Kestrel — кроссплатформенном веб-сервере для ASP.NET Core.
 ms.author: tdykstra
 ms.custom: mvc
-ms.date: 12/01/2018
+ms.date: 12/18/2018
 uid: fundamentals/servers/kestrel
-ms.openlocfilehash: 2a6a3786aa3a78bb83f497db22acac873512f939
-ms.sourcegitcommit: 9bb58d7c8dad4bbd03419bcc183d027667fefa20
+ms.openlocfilehash: af1f330f2afa340ef98a6b4bd5008859f4b0f914
+ms.sourcegitcommit: 816f39e852a8f453e8682081871a31bc66db153a
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52861931"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53637915"
 ---
 # <a name="kestrel-web-server-implementation-in-aspnet-core"></a>Реализации веб-сервера Kestrel в ASP.NET Core
 
@@ -25,7 +25,7 @@ ms.locfileid: "52861931"
 
 Kestrel — это кроссплатформенный [веб-сервер для ASP.NET Core](xref:fundamentals/servers/index). Веб-сервер Kestrel по умолчанию включается в шаблоны проектов ASP.NET Core.
 
-Kestrel поддерживает следующие функции:
+Kestrel поддерживается в следующих сценариях.
 
 ::: moniker range=">= aspnetcore-2.2"
 
@@ -76,7 +76,11 @@ Kestrel поддерживается на всех платформах и во 
 
 Kestrel можно использовать отдельно или с *обратным прокси-сервером*, таким как [Internet Information Services (IIS)](https://www.iis.net/), [Nginx](http://nginx.org) или [Apache](https://httpd.apache.org/). Обратный прокси-сервер получает HTTP-запросы из сети и пересылает их в Kestrel.
 
+Kestrel используется в качестве веб-сервера перехода (с выходом в Интернет).
+
 ![Kestrel взаимодействует с Интернетом напрямую, без обратного прокси-сервера](kestrel/_static/kestrel-to-internet2.png)
+
+Kestrel используется в конфигурации обратного прокси-сервера.
 
 ![Kestrel взаимодействует с Интернетом косвенно, через обратный прокси-сервер, такой как IIS, Nginx или Apache.](kestrel/_static/kestrel-to-internet.png)
 
@@ -790,7 +794,7 @@ Listening on the following addresses: http://127.0.0.1:48508
 
 ### <a name="iis-endpoint-configuration"></a>Конфигурация конечной точки IIS
 
-При использовании служб IIS привязки URL-адресов для IIS переопределяют привязки, заданные `Listen` или `UseUrls`. Дополнительные сведения см. в статье [Модуль ASP.NET Core](xref:fundamentals/servers/aspnet-core-module).
+При использовании служб IIS привязки URL-адресов для IIS переопределяют привязки, заданные `Listen` или `UseUrls`. Дополнительные сведения см. в статье [Модуль ASP.NET Core](xref:host-and-deploy/aspnet-core-module).
 
 ::: moniker range=">= aspnetcore-2.2"
 
@@ -1033,4 +1037,4 @@ private class TlsFilterAdapter : IConnectionAdapter
 * <xref:security/enforcing-ssl>
 * <xref:host-and-deploy/proxy-load-balancer>
 * [Исходный код Kestrel](https://github.com/aspnet/KestrelHttpServer)
-* [RFC 7230. Синтаксис и маршрутизация сообщений (раздел 5.4. Узел)](https://tools.ietf.org/html/rfc7230#section-5.4)
+* [RFC 7230: синтаксис и маршрутизация сообщений (раздел 5.4: узел)](https://tools.ietf.org/html/rfc7230#section-5.4)
