@@ -1,3 +1,5 @@
+# [Документация по ASP.NET Core](/aspnet/#pivot=core)
+
 # Обзор
 ## [Сведения об ASP.NET Core](xref:index)
 ## [Сравнение ASP.NET Core и ASP.NET](xref:fundamentals/choose-between-aspnet-and-aspnetcore)
@@ -5,8 +7,14 @@
 
 # [Начало работы](xref:getting-started)
 
+# Новые возможности
+## [Новые возможности версии 2.2](xref:aspnetcore-2.2)
+## [Новые возможности версии 2.1](xref:aspnetcore-2.1)
+## [Новые возможности версии 2.0](xref:aspnetcore-2.0)
+## [Новые возможности версии 1.1](xref:aspnetcore-1.1)
+
 # Учебники
-## Веб-API
+## API веб-приложений
 ### [Создание веб-API](xref:tutorials/first-web-api)
 ### [Использование веб-API с MongoDB](xref:tutorials/first-mongo-app)
 ## Веб-приложения
@@ -121,7 +129,7 @@
 ### [Пользовательская привязка модели](xref:mvc/advanced/custom-model-binding)
 ### [Совместимая версия](xref:mvc/compatibility-version)
 
-# Веб-API
+# API веб-приложений
 ## [Обзор](xref:web-api/index)
 
 ## Учебники
@@ -376,6 +384,7 @@
 ### [ПО промежуточного слоя для кэширования ответов](xref:performance/caching/middleware)
 ## [Сжатие откликов](xref:performance/response-compression)
 ## [Средства диагностики](xref:performance/diagnostic-tools)
+## [Нагрузочное тестирование](xref:test/loadtests)
 
 # Другие темы
 ## [Глобализация и локализация](xref:fundamentals/localization)
@@ -410,12 +419,6 @@
 ### [Членство и идентификатор](xref:migration/proper-to-2x/membership-to-core-identity)
 ### [Миграция с модулей HTTP на ПО промежуточного слоя](xref:migration/http-modules)
 ## [Ведение журналов (не в ASP.NET Core)](xref:migration/logging-nonaspnetcore)
-
-# Новые возможности
-## [Новые возможности версии 2.2](xref:aspnetcore-2.2)
-## [Новые возможности версии 2.1](xref:aspnetcore-2.1)
-## [Новые возможности версии 2.0](xref:aspnetcore-2.0)
-## [Новые возможности версии 1.1](xref:aspnetcore-1.1)
 
 # [Справочник по API](/dotnet/api/?view=aspnetcore-2.2)
 
