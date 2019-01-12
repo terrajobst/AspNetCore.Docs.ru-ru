@@ -5,14 +5,14 @@ description: Узнайте, как с помощью интеграционны
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 11/26/2018
+ms.date: 01/11/2019
 uid: test/integration-tests
-ms.openlocfilehash: 9729925c89c212bb6e6fac1a484b6288697afe57
-ms.sourcegitcommit: e9b99854b0a8021dafabee0db5e1338067f250a9
+ms.openlocfilehash: 0f919d7715a26f1efdb37d35b047a7050e46a272
+ms.sourcegitcommit: ec71fd5a988f927ae301813aae5ff764feb3bb6a
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52450753"
+ms.lasthandoff: 01/12/2019
+ms.locfileid: "54249520"
 ---
 # <a name="integration-tests-in-aspnet-core"></a>Интеграционные тесты в ASP.NET Core
 
@@ -72,9 +72,9 @@ ms.locfileid: "52450753"
 
 1. Настраивается веб сервер SUT.
 1. Создается клиент тестового сервера для отправки запросов к приложению.
-1. Выполняется шаг теста *Подготовка*: тестовое приложение готовит запрос.
-1. Выполняется шаг теста *Действие*: клиент отправляет запрос и получает ответ.
-1. Выполняется шаг теста *Проверка*:  *фактическое* ответ проверяется как *правильный* или *ошибочный* на основе *ожидаемого*  ответа.
+1. *Расположение* выполняется шаг теста: Приложение тестирования готовит запрос.
+1. *Act* выполняется шаг теста: Клиент отправляет запрос и получает ответ.
+1. *Assert* выполняется шаг теста: *Фактическое* ответа проверяется как *передать* или *ошибкой* на основе *ожидается* ответа.
 1. Процесс продолжается, пока выполняются все тесты.
 1. Выводятся результаты теста.
 
@@ -114,7 +114,7 @@ ms.locfileid: "52450753"
 
 [WebApplicationFactory&lt;TEntryPoint&gt; ](/dotnet/api/microsoft.aspnetcore.mvc.testing.webapplicationfactory-1) используется для создания [TestServer](/dotnet/api/microsoft.aspnetcore.testhost.testserver) для интеграционных тестов. `TEntryPoint` это класс точки входа SUT, обычно класс `Startup`.
 
-Тестовые классы реализуют интерфейс *классa средства* (`IClassFixture`), чтобы указать, что класс содержит тесты, и предоставить общие экземпляры объекта тестам в классе.
+Классы реализуют теста *тестового стенда класс* интерфейс ([IClassFixture](https://xunit.github.io/docs/shared-context#class-fixture)) для указания класса содержит тесты и укажите общий объект экземпляры всех тестах в классе.
 
 ### <a name="basic-test-of-app-endpoints"></a>Базовое тестирование конечных точек приложения
 
@@ -151,7 +151,7 @@ ms.locfileid: "52450753"
 
    [!code-csharp[](integration-tests/samples/2.x/IntegrationTestsSample/tests/RazorPagesProject.Tests/CustomWebApplicationFactory.cs?name=snippet1)]
 
-   Заполнение в базе данных [пример приложения](https://github.com/aspnet/Docs/tree/master/aspnetcore/test/integration-tests/samples) осуществляется `InitializeDbForTests` метод. Метод описан в [интеграционные тесты пример: тестирование приложения организации](#test-app-organization) раздел.
+   Заполнение в базе данных [пример приложения](https://github.com/aspnet/Docs/tree/master/aspnetcore/test/integration-tests/samples) осуществляется `InitializeDbForTests` метод. Метод описан в [пример тестов интеграции: Тестирование приложения организации](#test-app-organization) раздел.
 
 2. Использование настраиваемого `CustomWebApplicationFactory` в тестовых классов. В следующем примере используется фабрики в `IndexPageTests` класса:
 
@@ -173,9 +173,9 @@ ms.locfileid: "52450753"
 
 * `GetDocumentAsync` &ndash; Получает [HttpResponseMessage](/dotnet/api/system.net.http.httpresponsemessage) и возвращает `IHtmlDocument`. `GetDocumentAsync` использует фабрику, которая подготавливает *виртуального ответа* на основе исходного `HttpResponseMessage`. Дополнительные сведения см. в разделе [AngleSharp документации](https://github.com/AngleSharp/AngleSharp#documentation).
 * `SendAsync` методы расширения для `HttpClient` compose [HttpRequestMessage](/dotnet/api/system.net.http.httprequestmessage) и вызвать [SendAsync(HttpRequestMessage)](/dotnet/api/system.net.http.httpclient.sendasync#System_Net_Http_HttpClient_SendAsync_System_Net_Http_HttpRequestMessage_) для отправки запросов на SUT. Перегрузок для `SendAsync` принять HTML-форма (`IHtmlFormElement`) и следующие:
-  - Кнопка в форме "Отправить" (`IHtmlElement`)
-  - Наборе значений формы (`IEnumerable<KeyValuePair<string, string>>`)
-  - Кнопка "Отправить" (`IHtmlElement`) и формируют значения (`IEnumerable<KeyValuePair<string, string>>`)
+  * Кнопка в форме "Отправить" (`IHtmlElement`)
+  * Наборе значений формы (`IEnumerable<KeyValuePair<string, string>>`)
+  * Кнопка "Отправить" (`IHtmlElement`) и формируют значения (`IEnumerable<KeyValuePair<string, string>>`)
 
 > [!NOTE]
 > [AngleSharp](https://anglesharp.github.io/) стороннего синтаксического анализа библиотека, используемая для демонстрационных целей в этой статье и в примере приложения. AngleSharp не поддерживается или для интеграционного тестирования приложений ASP.NET Core. Можно использовать другие средства синтаксического анализа, таких как [пакет гибкость получена строка Html (HAP)](http://html-agility-pack.net/). Другой подход заключается в написании кода непосредственно обрабатывать сложные системы токен проверки запроса и против подделки файла cookie.
