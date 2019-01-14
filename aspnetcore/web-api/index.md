@@ -4,14 +4,14 @@ author: scottaddie
 description: Сведения о функциях, доступных для сборки веб-API в ASP.NET Core, и о ситуациях, в которых уместно использовать каждую из них.
 ms.author: scaddie
 ms.custom: mvc
-ms.date: 11/06/2018
+ms.date: 01/11/2019
 uid: web-api/index
-ms.openlocfilehash: 7541c4c308deaecda0bda9a9c77d9372b65a5100
-ms.sourcegitcommit: f202864efca81a72ea7120c0692940c40d9d0630
+ms.openlocfilehash: a826bdecdd3a25eb23597123166695c169ba4229
+ms.sourcegitcommit: ec71fd5a988f927ae301813aae5ff764feb3bb6a
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51635307"
+ms.lasthandoff: 01/12/2019
+ms.locfileid: "54249442"
 ---
 # <a name="build-web-apis-with-aspnet-core"></a>Сборка веб-API с использованием ASP.NET Core
 
@@ -23,7 +23,7 @@ ms.locfileid: "51635307"
 
 ## <a name="derive-class-from-controllerbase"></a>Создание класса, производного от ControllerBase
 
-Вы можете наследовать от класса <xref:Microsoft.AspNetCore.Mvc.ControllerBase> в контроллере, который предназначен для работы в качестве веб-API. Пример:
+Вы можете наследовать от класса <xref:Microsoft.AspNetCore.Mvc.ControllerBase> в контроллере, который предназначен для работы в качестве веб-API. Например:
 
 ::: moniker range=">= aspnetcore-2.1"
 
@@ -43,7 +43,7 @@ ms.locfileid: "51635307"
 
 ## <a name="annotation-with-apicontroller-attribute"></a>Заметка с атрибутом ApiController
 
-В ASP.NET Core 2.1 появился атрибут [[ApiController]](xref:Microsoft.AspNetCore.Mvc.ApiControllerAttribute), обозначающий класс контроллера веб-API. Пример:
+В ASP.NET Core 2.1 появился атрибут [[ApiController]](xref:Microsoft.AspNetCore.Mvc.ApiControllerAttribute), обозначающий класс контроллера веб-API. Например:
 
 [!code-csharp[](define-controller/samples/WebApiSample.Api.21/Controllers/ProductsController.cs?name=snippet_ControllerSignature&highlight=2)]
 
@@ -51,7 +51,7 @@ ms.locfileid: "51635307"
 
 [!code-csharp[](define-controller/samples/WebApiSample.Api.21/Startup.cs?name=snippet_SetCompatibilityVersion&highlight=2)]
 
-Дополнительные сведения см. в разделе <xref:mvc/compatibility-version>.
+Для получения дополнительной информации см. <xref:mvc/compatibility-version>.
 
 ::: moniker-end
 
@@ -141,7 +141,10 @@ services.AddMvc()
 
 * **[FromBody]**  выводится для параметров сложного типа. Исключением из этого правила является любой сложный встроенный тип со специальным значением, такой как <xref:Microsoft.AspNetCore.Http.IFormCollection> и <xref:System.Threading.CancellationToken>. Код определения источника привязки игнорирует эти особые типы. `[FromBody]` не определен для простых типов, таких как `string` или `int`. Таким образом, атрибут `[FromBody]` должен использоваться для простых типов, когда требуются эти функции. Когда для действия явно задано более одного параметра (через `[FromBody]`) или оно выводится как привязанное из текста запроса, возникает исключение. Например, следующие сигнатуры действия вызывают исключение:
 
-[!code-csharp[](define-controller/samples/WebApiSample.Api.21/Controllers/TestController.cs?name=snippet_ActionsCausingExceptions)]
+    [!code-csharp[](define-controller/samples/WebApiSample.Api.21/Controllers/TestController.cs?name=snippet_ActionsCausingExceptions)]
+
+    > [!NOTE]
+    > В ASP.NET Core 2.1 параметры типа коллекции, такие как списки и массивы, ошибочно выводятся как [[FromQuery]](xref:Microsoft.AspNetCore.Mvc.FromQueryAttribute). Для этих параметров следует использовать [[FromBody]](xref:Microsoft.AspNetCore.Mvc.FromBodyAttribute), если они должны быть привязаны из текста запроса. Это поведение, при котором параметры типа коллекции выводятся для привязки из текста по умолчанию, исправлено в ASP.NET Core версии 2.2 и выше.
 
 * **[FromForm]** выводится для параметров действия с типом <xref:Microsoft.AspNetCore.Http.IFormFile> и <xref:Microsoft.AspNetCore.Http.IFormFileCollection>. Он не выводится ни для каких простых или определяемых пользователем типов.
 * **[FromRoute]**  выводится для любого имени параметра действия, соответствующего параметру в шаблоне маршрута. Если параметру действия соответствуют несколько маршрутов, любое значение маршрута рассматривается как `[FromRoute]`.
@@ -193,7 +196,7 @@ services.AddMvc()
 
 ### <a name="attribute-routing-requirement"></a>Обязательная маршрутизация атрибутов
 
-Маршрутизация атрибутов стала обязательным требованием. Пример:
+Маршрутизация атрибутов стала обязательным требованием. Например:
 
 [!code-csharp[](define-controller/samples/WebApiSample.Api.21/Controllers/ProductsController.cs?name=snippet_ControllerSignature&highlight=1)]
 
@@ -214,7 +217,7 @@ services.AddMvc()
 
 [!code-csharp[](define-controller/samples/WebApiSample.Api.22/Controllers/ProductsController.cs?name=snippet_ProblemDetailsStatusCode)]
 
-Ответ HTTP для `NotFound` содержит код состояния 404 с текстом `ProblemDetails`. Пример:
+Ответ HTTP для `NotFound` содержит код состояния 404 с текстом `ProblemDetails`. Например:
 
 ```json
 {

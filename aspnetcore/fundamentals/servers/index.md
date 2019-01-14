@@ -4,14 +4,14 @@ author: guardrex
 description: Откройте возможности веб-серверов Kestrel и HTTP.sys для ASP.NET Core. Рекомендации по выбору сервера и сведения о сценариях использования обратного прокси-сервера.
 ms.author: tdykstra
 ms.custom: mvc
-ms.date: 12/18/2018
+ms.date: 01/11/2019
 uid: fundamentals/servers/index
-ms.openlocfilehash: 2c209942ed219b6d6ca309d8aba94b264d421158
-ms.sourcegitcommit: 816f39e852a8f453e8682081871a31bc66db153a
+ms.openlocfilehash: 4210d67397c85a1608f79fc4ed9d283521356226
+ms.sourcegitcommit: ec71fd5a988f927ae301813aae5ff764feb3bb6a
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53637746"
+ms.lasthandoff: 01/12/2019
+ms.locfileid: "54249494"
 ---
 # <a name="web-server-implementations-in-aspnet-core"></a>Реализации веб-сервера в ASP.NET Core
 
@@ -48,6 +48,8 @@ ms.locfileid: "53637746"
   * Загружает [CoreCLR](/dotnet/standard/glossary#coreclr).
   * Вызывает `Program.Main`.
 * Управляет жизненным циклом собственного запроса IIS.
+
+Модель внутрипроцессного размещения не поддерживается для приложений ASP.NET Core, предназначенных для .NET Framework.
 
 На следующей схеме показана связь между IIS, модулем ASP.NET Core и приложением, размещенным внутри процесса.
 

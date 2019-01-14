@@ -4,14 +4,14 @@ author: guardrex
 description: Сведения о размещении приложений ASP.NET Core в службах Windows Server Internet Information Services (IIS).
 ms.author: riande
 ms.custom: mvc
-ms.date: 12/18/2018
+ms.date: 01/11/2019
 uid: host-and-deploy/iis/index
-ms.openlocfilehash: 4356d986731f915c2e76a4c4863f951572820de0
-ms.sourcegitcommit: 816f39e852a8f453e8682081871a31bc66db153a
+ms.openlocfilehash: 3239b4652d739ed2ac205c9daae7754dbd8e918c
+ms.sourcegitcommit: ec71fd5a988f927ae301813aae5ff764feb3bb6a
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53637883"
+ms.lasthandoff: 01/12/2019
+ms.locfileid: "54249563"
 ---
 # <a name="host-aspnet-core-on-windows-with-iis"></a>Размещение ASP.NET Core в Windows со службами IIS
 
@@ -71,6 +71,8 @@ public static IWebHost BuildWebHost(string[] args) =>
 **Модель внутрипроцессного размещения**
 
 `CreateDefaultBuilder` вызывает метод `UseIIS` для загрузки [CoreCLR](/dotnet/standard/glossary#coreclr) и размещения приложения внутри рабочего процесса IIS (*w3wp.exe* или *iisexpress.exe*). Тесты производительности показывают, что размещение приложения .NET Core внутри процесса позволяет обрабатывать значительно больше запросов, чем при размещении приложения вне процесса с перенаправлением запросов к серверу [Kestrel](xref:fundamentals/servers/kestrel).
+
+Модель внутрипроцессного размещения не поддерживается для приложений ASP.NET Core, предназначенных для .NET Framework.
 
 **Модель размещения вне процесса**
 
