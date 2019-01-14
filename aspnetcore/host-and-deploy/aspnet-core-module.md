@@ -4,14 +4,14 @@ author: guardrex
 description: Сведения о настройке модуля ASP.NET Core для размещения приложений ASP.NET Core.
 ms.author: riande
 ms.custom: mvc
-ms.date: 12/18/2018
+ms.date: 01/11/2019
 uid: host-and-deploy/aspnet-core-module
-ms.openlocfilehash: dee4fe7a498d211cb8ef6a3c49017c3cc8a56847
-ms.sourcegitcommit: 816f39e852a8f453e8682081871a31bc66db153a
+ms.openlocfilehash: f97d6f188bfcba6285cbd1fa91ce530e96395929
+ms.sourcegitcommit: ec71fd5a988f927ae301813aae5ff764feb3bb6a
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53637863"
+ms.lasthandoff: 01/12/2019
+ms.locfileid: "54249572"
 ---
 # <a name="aspnet-core-module"></a>Модуль ASP.NET Core
 
@@ -44,6 +44,8 @@ ms.locfileid: "53637863"
   <AspNetCoreHostingModel>InProcess</AspNetCoreHostingModel>
 </PropertyGroup>
 ```
+
+Модель внутрипроцессного размещения не поддерживается для приложений ASP.NET Core, предназначенных для .NET Framework.
 
 Если свойство `<AspNetCoreHostingModel>` отсутствует в файле, значение по умолчанию — `OutOfProcess`.
 
