@@ -4,14 +4,14 @@ author: scottaddie
 description: Сведения об использовании различных типов возвращаемых значений методов действий контроллера в веб-API ASP.NET Core.
 ms.author: scaddie
 ms.custom: mvc
-ms.date: 07/23/2018
+ms.date: 01/04/2019
 uid: web-api/action-return-types
-ms.openlocfilehash: 84300eae4271c3ee4387be022c3576dc83e144eb
-ms.sourcegitcommit: 375e9a67f5e1f7b0faaa056b4b46294cc70f55b7
+ms.openlocfilehash: 98d70e0379d353cff98a6d7a13f2dd00eb4da206
+ms.sourcegitcommit: 97d7a00bd39c83a8f6bccb9daa44130a509f75ce
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50207528"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54098744"
 ---
 # <a name="controller-action-return-types-in-aspnet-core-web-api"></a>Типы возвращаемых значений действий контроллера в веб-API ASP.NET Core
 
@@ -68,13 +68,18 @@ ASP.NET Core предоставляет следующие параметры д
 
 [!code-csharp[](../web-api/action-return-types/samples/WebApiSample.Api.Pre21/Controllers/ProductsController.cs?name=snippet_CreateAsync&highlight=8,13)]
 
-В предыдущем действии возвращается код состояния 400, если происходит сбой проверки модели и вызывается вспомогательный метод [BadRequest](/dotnet/api/microsoft.aspnetcore.mvc.controllerbase.badrequest). Например, следующая модель указывает, что запросы должны предоставлять свойство `Name` и значение. Таким образом, если невозможно предоставить надлежащее значение `Name` в запросе, происходит сбой проверки модели.
+В приведенном выше коде:
 
-[!code-csharp[](../web-api/action-return-types/samples/WebApiSample.DataAccess/Models/Product.cs?name=snippet_ProductClass&highlight=5-6)]
+* Код состояния 400 ([BadRequest](xref:Microsoft.AspNetCore.Mvc.ControllerBase.BadRequest*)) возвращается средой выполнения ASP.NET Core, когда описание продукта содержит XYZ Widget.
+* Код состояния 201 генерируется методом [CreatedAtAction](xref:Microsoft.AspNetCore.Mvc.ControllerBase.CreatedAtAction*) при создании продукта. В этой ветви кода возвращается объект `Product`.
 
-Также для предыдущего действия возвращается второй известный код — 201, который создается вспомогательным методом [CreatedAtAction](/dotnet/api/microsoft.aspnetcore.mvc.controllerbase.createdataction). В этом пути возвращается объект `Product`.
+Например, следующая модель указывает на то, что запросы должны включать свойства `Name` и `Description`. Таким образом, если невозможно указать `Name` и `Description` в запросе, происходит сбой проверки модели.
+
+[!code-csharp[](../web-api/action-return-types/samples/WebApiSample.DataAccess/Models/Product.cs?name=snippet_ProductClass&highlight=5-6,8-9)]
 
 ::: moniker range=">= aspnetcore-2.1"
+
+Если атрибут [[ApiController]](xref:Microsoft.AspNetCore.Mvc.ApiControllerAttribute) применяется в ASP.NET Core версии 2.1 и выше, ошибки при проверке модели приводят к генерации кода состояния 400. Дополнительные сведения см. в разделе [Автоматические отклики HTTP 400](xref:web-api/index#automatic-http-400-responses).
 
 ## <a name="actionresultt-type"></a>Тип ActionResult\<T>
 
@@ -114,7 +119,12 @@ public ActionResult<IEnumerable<Product>> Get()
 
 [!code-csharp[](../web-api/action-return-types/samples/WebApiSample.Api.21/Controllers/ProductsController.cs?name=snippet_CreateAsync&highlight=8,13)]
 
-Если проверка модели не пройдена, вызывается метод [BadRequest](/dotnet/api/microsoft.aspnetcore.mvc.controllerbase.badrequest#Microsoft_AspNetCore_Mvc_ControllerBase_BadRequest_Microsoft_AspNetCore_Mvc_ModelBinding_ModelStateDictionary_), чтобы вернуть код состояния 400. Ему передается свойство [ModelState](/dotnet/api/microsoft.aspnetcore.mvc.controllerbase.modelstate), содержащее определенные ошибки проверки. Если проверка модели прошла успешно, продукт создается в базе данных. Возвращается код состояния 201.
+В приведенном выше коде:
+
+* Код состояния 400 ([BadRequest](xref:Microsoft.AspNetCore.Mvc.ControllerBase.BadRequest*)) возвращается средой выполнения ASP.NET Core, когда:
+  * Атрибут [[ApiController]](xref:Microsoft.AspNetCore.Mvc.ApiControllerAttribute) был применен и проверка модели не пройдена.
+  * Описание продукта содержит XYZ Widget.
+* Код состояния 201 генерируется методом [CreatedAtAction](xref:Microsoft.AspNetCore.Mvc.ControllerBase.CreatedAtAction*) при создании продукта. В этой ветви кода возвращается объект `Product`.
 
 > [!TIP]
 > В версии ASP.NET Core 2.1 включен вывод источника привязки параметра действия, когда класс контроллера дополнен атрибутом `[ApiController]`. Параметры сложного типа связываются автоматически с помощью текста запроса. В результате параметр предыдущего действия `product` явным образом не помечен атрибутом [[FromBody]](/dotnet/api/microsoft.aspnetcore.mvc.frombodyattribute).

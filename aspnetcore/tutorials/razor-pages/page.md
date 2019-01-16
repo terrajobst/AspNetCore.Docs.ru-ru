@@ -6,12 +6,12 @@ monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.date: 12/4/2018
 uid: tutorials/razor-pages/page
-ms.openlocfilehash: acfc446732803c67714943fe3e5b7a31055ebcd7
-ms.sourcegitcommit: 9bb58d7c8dad4bbd03419bcc183d027667fefa20
+ms.openlocfilehash: 2b68523ac84596bda2914d9c348ddea8c7ea9465
+ms.sourcegitcommit: cec77d5ad8a0cedb1ecbec32834111492afd0cd2
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52862009"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54207386"
 ---
 # <a name="scaffolded-razor-pages-in-aspnet-core"></a>Сформированные страницы Razor Pages в ASP.NET Core
 
@@ -57,6 +57,12 @@ Razor может выполнять переход с HTML на C# или на �
 [!code-cshtml[](razor-pages-start/snapshot_sample/RazorPagesMovie/Pages/Movies/Index.cshtml?range=1-2&highlight=2)]
 
 Директива `@model` определяет тип модели, передаваемой на страницу Razor. В приведенном выше примере строка `@model` делает класс, производный от `PageModel`, доступным для страниц Razor. Модель используется на странице во [вспомогательных методах HTML](/aspnet/mvc/overview/older-versions-1/views/creating-custom-html-helpers-cs#understanding-html-helpers) `@Html.DisplayNameFor` и `@Html.DisplayFor`.
+
+### <a name="the-layout-page"></a>Страница макета
+
+Выберите ссылки в меню (**RazorPagesMovie**, **Домашняя страница** и **Конфиденциальность**). Меню на каждой странице имеют одинаковый макет. Макет меню реализован в файле *Pages/Shared/_Layout.cshtml*. Откройте файл *Pages/Shared/_Layout.cshtml*.
+
+С помощью шаблонов [макета](xref:mvc/views/layout) можно в одном месте задать макет контейнера HTML для всего сайта и затем использовать его на разных страницах сайта. Найдите строку `@RenderBody()`. `RenderBody` — это заполнитель, в котором отображаются все создаваемые представления для определенных страниц, *упакованные* в страницу макета. Например, если щелкнуть ссылку **Конфиденциальность**, представление **Pages/Privacy.cshtml** отображается в методе `RenderBody`.
 
 <a name="vd"></a>
 ### <a name="viewdata-and-layout"></a>ViewData и макет
@@ -168,5 +174,5 @@ Visual Studio для Mac выделяет тег `<form method="post">` полу
 [Вспомогательная функция тега Input](xref:mvc/views/working-with-forms) (`<input asp-for="Movie.Title" class="form-control" />`) использует атрибуты [DataAnnotations](/aspnet/mvc/overview/older-versions/mvc-music-store/mvc-music-store-part-6) и создает HTML-атрибуты, необходимые для проверки jQuery на стороне клиента.
 
 > [!div class="step-by-step"]
-> [Предыдущая тема: добавление модели](xref:tutorials/razor-pages/model)
-> [Следующая тема: база данных](xref:tutorials/razor-pages/sql)
+> [Предыдущая статья. Добавление метода](xref:tutorials/razor-pages/model)
+> [Далее: База данных](xref:tutorials/razor-pages/sql)

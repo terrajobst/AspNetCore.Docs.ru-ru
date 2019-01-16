@@ -7,12 +7,12 @@ ms.author: scaddie
 ms.custom: mvc
 ms.date: 12/13/2018
 uid: web-api/advanced/conventions
-ms.openlocfilehash: 481e3810f1e1aca40e0ee1ce3da6c67dc9d841f4
-ms.sourcegitcommit: 6548c19f345850ee22b50f7ef9fca732895d9e08
+ms.openlocfilehash: 892fb8898c78a1645c766544715a8256462207c6
+ms.sourcegitcommit: ec71fd5a988f927ae301813aae5ff764feb3bb6a
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53425111"
+ms.lasthandoff: 01/12/2019
+ms.locfileid: "54249390"
 ---
 # <a name="use-web-api-conventions"></a>Использование соглашений веб-API
 
@@ -49,6 +49,8 @@ ASP.NET Core MVC 2.2 и более поздних версий включает 
     [ProducesResponseType(404)]
     [ProducesResponseType(400)]
     ```
+
+Дополнительные сведения о `[ProducesDefaultResponseType]` см. в описании [ответа по умолчанию](https://swagger.io/docs/specification/describing-responses/#default).
 
 1. `Microsoft.AspNetCore.Mvc.ApiConventionTypeAttribute`, примененный к контроллеру &mdash;, применяет определенный тип соглашения ко всем действиям в контроллере. Метод соглашения снабжен указаниями, определяющими действия, к которым применяется метод соглашения. Дополнительные сведения об указаниях см. в разделе [Создание соглашений веб-API](#create-web-api-conventions).
 
