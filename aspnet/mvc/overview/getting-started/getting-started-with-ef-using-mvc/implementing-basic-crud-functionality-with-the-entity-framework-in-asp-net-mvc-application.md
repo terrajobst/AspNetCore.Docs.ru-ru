@@ -1,40 +1,49 @@
 ---
 uid: mvc/overview/getting-started/getting-started-with-ef-using-mvc/implementing-basic-crud-functionality-with-the-entity-framework-in-asp-net-mvc-application
-title: Реализация базовой функциональности CRUD с Entity Framework в приложении ASP.NET MVC | Документация Майкрософт
+title: Учебник. Реализации функциональности CRUD с Entity Framework в ASP.NET MVC | Документация Майкрософт
+description: Просмотрите и настройки создания, чтение, обновление и удаление (CRUD) код, который автоматически создает формирование шаблонов MVC в контроллерах и представлениях.
 author: tdykstra
-description: Пример веб-приложение университета Contoso демонстрирует создание приложения ASP.NET MVC 5, используя Entity Framework 6 Code First и Visual Studio...
 ms.author: riande
-ms.date: 10/05/2015
+ms.date: 01/11/2019
+ms.topic: tutorial
 ms.assetid: a2f70ba4-83d1-4002-9255-24732726c4f2
 msc.legacyurl: /mvc/overview/getting-started/getting-started-with-ef-using-mvc/implementing-basic-crud-functionality-with-the-entity-framework-in-asp-net-mvc-application
 msc.type: authoredcontent
-ms.openlocfilehash: 08b5d38b38d3323e347f0f849ccc0c25fe49efb9
-ms.sourcegitcommit: a4dcca4f1cb81227c5ed3c92dc0e28be6e99447b
+ms.openlocfilehash: 9c6f8f3a2ffc0a9c5e15111ae47c331dab24ff43
+ms.sourcegitcommit: 42a8164b8aba21f322ffefacb92301bdfb4d3c2d
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "48912674"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54341728"
 ---
-<a name="implementing-basic-crud-functionality-with-the-entity-framework-in-aspnet-mvc-application"></a>Реализация базовой функциональности CRUD с Entity Framework в приложении ASP.NET MVC
-====================
-по [том Дайкстра](https://github.com/tdykstra)
+# <a name="tutorial-implement-crud-functionality-with-the-entity-framework-in-aspnet-mvc"></a>Учебник. Реализации функциональности CRUD с Entity Framework в ASP.NET MVC
 
-[Скачать завершенный проект](http://code.msdn.microsoft.com/ASPNET-MVC-Application-b01a9fe8)
-
-> Пример веб-приложение университета Contoso демонстрирует создание приложения ASP.NET MVC 5, используя Entity Framework 6 Code First и Visual Studio. Сведения о серии руководств см. в [первом руководстве серии](creating-an-entity-framework-data-model-for-an-asp-net-mvc-application.md).
-
-В предыдущем учебнике было создано приложение MVC, которое сохраняет и отображает данные, используя платформу Entity Framework и SQL Server LocalDB. В этом руководстве вы будете просмотрите и настройки создания, читать, обновлять, удаление (CRUD) кода, формирование шаблонов MVC автоматически создает для вас в контроллерах и представлениях.
+В [предыдущем учебном курсе](creating-an-entity-framework-data-model-for-an-asp-net-mvc-application.md), вы создали приложение MVC, которое хранит и отображает данные с помощью Entity Framework (EF) 6 и SQL Server LocalDB. В этом учебнике вы просмотрите и настройки создания, читать, обновлять, удаление (CRUD) кода, формирование шаблонов MVC автоматически создает для вас в контроллерах и представлениях.
 
 > [!NOTE]
-> Широко распространена практика реализации шаблона репозитория, позволяющего создать уровень абстракции между контроллером и уровнем доступа к данным. Чтобы максимально упростить эти учебники и сконцентрироваться на работе с самой платформой Entity Framework, мы не используем в них репозитории. Сведения о том, как реализовать репозиториев см. в разделе [схема содержимого для доступа к данным ASP.NET](../../../../whitepapers/aspnet-data-access-content-map.md).
+> Широко распространена практика реализации шаблона репозитория, позволяющего создать уровень абстракции между контроллером и уровнем доступа к данным. Чтобы максимально упростить эти учебники и сконцентрироваться на работе с EF 6 сам, они не используют репозиториев. Сведения о том, как реализовать репозиториев см. в разделе [схема содержимого для доступа к данным ASP.NET](../../../../whitepapers/aspnet-data-access-content-map.md).
 
-В этом руководстве вы создадите на следующих сайтах:
+Ниже приведены примеры веб-страниц, которые можно создать.
 
-![Student_Details_page](implementing-basic-crud-functionality-with-the-entity-framework-in-asp-net-mvc-application/_static/image1.png)
+![Снимок экрана: страница сведений об учащемся.](implementing-basic-crud-functionality-with-the-entity-framework-in-asp-net-mvc-application/_static/image1.png)
 
-![Student_Edit_page](implementing-basic-crud-functionality-with-the-entity-framework-in-asp-net-mvc-application/_static/image2.png)
+![Снимок экрана учащегося создайте страницу.](implementing-basic-crud-functionality-with-the-entity-framework-in-asp-net-mvc-application/_static/image2.png)
 
-![Student_delete_page](implementing-basic-crud-functionality-with-the-entity-framework-in-asp-net-mvc-application/_static/image3.png)
+![Снимок экрана ot учащийся удалить страницу.](implementing-basic-crud-functionality-with-the-entity-framework-in-asp-net-mvc-application/_static/image3.png)
+
+В этом учебнике рассмотрены следующие задачи.
+
+> [!div class="checklist"]
+> * Создание веб-страницу
+> * Обновление страницы Create
+> * Обновление метода HttpPost Edit
+> * Обновление страницы удаления
+> * Подключения к базе данных закрыть
+> * Обработка транзакций
+
+## <a name="prerequisites"></a>Предварительные требования
+
+* [Создание модели данных Entity Framework](creating-an-entity-framework-data-model-for-an-asp-net-mvc-application.md)
 
 ## <a name="create-a-details-page"></a>Создание веб-страницу
 
@@ -46,7 +55,7 @@ ms.locfileid: "48912674"
 
 Значение ключа передается методу в качестве `id` параметр и поступают из *Маршрутизация данных* в **сведения** гиперссылки на странице индекса.
 
-### <a name="tip-route-data"></a>Совет: **Маршрутизация данных**
+### <a name="tip-route-data"></a>Совет. **Данные маршрута**
 
 Данные маршрута — это данные, которые обнаруживаются связывателем модели в сегмент URL-адреса, указанные в таблице маршрутизации. Например, задает маршрут по умолчанию `controller`, `action`, и `id` сегментов:
 
@@ -86,9 +95,7 @@ URL-адреса создаются с `ActionLink` инструкций в пр
 
 3. Откройте страницу сведений, запустив программу (**Ctrl**+**F5**), то выбор **учащихся** вкладку, а затем щелкнув **сведения** ссылку для Александр Carson. (Если нажать клавишу **Ctrl**+**F5** хотя *Details.cshtml* файл открыт, появится сообщение об ошибке HTTP 400. Это обусловлено тем, пытается выполнить на странице сведений о Visual Studio, но она не была достигнута по ссылке, указывающим учащегося для отображения. Если это происходит, удалить «Student/подробности» из URL-адрес и повторите попытку, или, закройте браузер, щелкните правой кнопкой мыши проект и нажмите кнопку **представление** > **просмотреть в браузере**.)
 
-    Откроется список курсов и оценок для выбранного учащегося:
-
-    ![Student_Details_page](implementing-basic-crud-functionality-with-the-entity-framework-in-asp-net-mvc-application/_static/image4.png)
+    Появится список курсов и оценок для выбранного учащегося.
 
 4. Закройте браузер.
 
@@ -136,19 +143,15 @@ URL-адреса создаются с `ActionLink` инструкций в пр
 
 3. Введите имена и недопустимую дату и нажмите кнопку **создать** Чтобы просмотреть сообщение об ошибке.
 
-    ![Students_Create_page_error_message](implementing-basic-crud-functionality-with-the-entity-framework-in-asp-net-mvc-application/_static/image6.png)
-
     Это проверка на стороне сервера, вы получаете по умолчанию. В этом руководстве вы увидите, как добавлять атрибуты, которые создают код для проверки на стороне клиента. Следующий выделенный код показывает проверку модели в **создать** метод.
 
     [!code-csharp[Main](implementing-basic-crud-functionality-with-the-entity-framework-in-asp-net-mvc-application/samples/sample10.cs?highlight=1)]
 
 4. Измените дату на допустимую и щелкните **Create** (Создать), чтобы добавить нового учащегося на страницу **Index** (Указатель).
 
-    ![Students_Index_page_with_new_student](implementing-basic-crud-functionality-with-the-entity-framework-in-asp-net-mvc-application/_static/image7.png)
-
 5. Закройте браузер.
 
-## <a name="update-the-edit-httppost-method"></a>Обновите метод HttpPost, изменение
+## <a name="update-httppost-edit-method"></a>Обновите метод HttpPost Edit
 
 1. Замените <xref:System.Web.Mvc.HttpPostAttribute> `Edit` метод действия, используя следующий код:
 
@@ -189,11 +192,7 @@ URL-адреса создаются с `ActionLink` инструкций в пр
 
 2. Запустить эту страницу, запустив программу, выбрав **учащихся** вкладку, а затем щелкнув **изменить** гиперссылки.
 
-   ![Student_Edit_page](implementing-basic-crud-functionality-with-the-entity-framework-in-asp-net-mvc-application/_static/image8.png)
-
 3. Измените определенные данные и нажмите кнопку **Save** (Сохранить). Вы видите измененные данные страницы индекса.
-
-   ![Students_Index_page_after_edit](implementing-basic-crud-functionality-with-the-entity-framework-in-asp-net-mvc-application/_static/image9.png)
 
 4. Закройте браузер.
 
@@ -229,9 +228,7 @@ URL-адреса создаются с `ActionLink` инструкций в пр
 
     [!code-cshtml[Main](implementing-basic-crud-functionality-with-the-entity-framework-in-asp-net-mvc-application/samples/sample15.cshtml?highlight=2)]
 
-4. Запустить эту страницу, запустив программу, выбрав **учащихся** вкладку, а затем щелкнув **удалить** гиперссылки:
-
-    ![Student_Delete_page](implementing-basic-crud-functionality-with-the-entity-framework-in-asp-net-mvc-application/_static/image10.png)
+4. Запустить эту страницу, запустив программу, выбрав **учащихся** вкладку, а затем щелкнув **удалить** гиперссылки.
 
 5. Выберите **удалить** на странице, — говорит **Вы действительно хотите удалить это?**.
 
@@ -249,16 +246,24 @@ URL-адреса создаются с `ActionLink` инструкций в пр
 
 По умолчанию платформа Entity Framework реализует транзакции неявно. В сценариях, где вы вносите изменения в несколько строк или таблиц и затем вызвать `SaveChanges`, Entity Framework автоматически гарантирует, что все изменения завершится успехом или отказать. Если ошибка происходит после того, как были выполнены некоторые изменения, эти изменения автоматически откатываются. Для сценариев, где требуется дополнительный контроль&mdash;к примеру, если требуется включить операции, выполняемые вне платформы Entity Framework в транзакции&mdash;см. в разделе [работа с транзакциями](/ef/ef6/saving/transactions).
 
-## <a name="summary"></a>Сводка
+## <a name="additional-resources"></a>Дополнительные ресурсы
 
 Теперь у вас есть полный набор страниц, которые выполняют простые операции CRUD для `Student` сущностей. Вспомогательные функции MVC используется для создания элементов пользовательского интерфейса для полей данных. Дополнительные сведения о вспомогательных методов MVC, см. в разделе [отрисовка формы с помощью вспомогательных методов HTML](/previous-versions/aspnet/dd410596(v=vs.98)) (статья предназначена для MVC 3 но он все еще актуальны для MVC 5).
 
-В следующем учебном курсе будет расширяют функциональные возможности страницы индекса, добавив сортировку и разбиение по страницам.
+Ссылки на другие ресурсы EF 6 можно найти в [доступ к данным ASP.NET — рекомендуемые ресурсы](../../../../whitepapers/aspnet-data-access-content-map.md).
 
-Оставьте свои отзывы на том, как вам понравилось, и этот учебник, и что можно улучшить.
+## <a name="next-steps"></a>Следующие шаги
 
-Ссылки на другие ресурсы Entity Framework можно найти в [доступ к данным ASP.NET — рекомендуемые ресурсы](../../../../whitepapers/aspnet-data-access-content-map.md).
+В этом учебнике рассмотрены следующие задачи.
 
-> [!div class="step-by-step"]
-> [Назад](creating-an-entity-framework-data-model-for-an-asp-net-mvc-application.md)
-> [Вперед](sorting-filtering-and-paging-with-the-entity-framework-in-an-asp-net-mvc-application.md)
+> [!div class="checklist"]
+> * Создан веб-страницу
+> * Обновление страницы создания
+> * Обновлен метод HttpPost Edit
+> * Обновление страницы "Delete"
+> * Закрытых подключений
+> * Обработано транзакций
+
+Перейдите к следующей статье, чтобы научиться добавлять сортировку, фильтрацию и разбиение по страницам в проект.
+> [!div class="nextstepaction"]
+> [Сортировка, фильтрация и разбиение на страницы](sorting-filtering-and-paging-with-the-entity-framework-in-an-asp-net-mvc-application.md)

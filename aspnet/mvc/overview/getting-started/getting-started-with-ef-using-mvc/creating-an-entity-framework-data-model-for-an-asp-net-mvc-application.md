@@ -1,28 +1,25 @@
 ---
 uid: mvc/overview/getting-started/getting-started-with-ef-using-mvc/creating-an-entity-framework-data-model-for-an-asp-net-mvc-application
-title: Начало работы с Entity Framework 6 Code First с помощью MVC 5 | Документация Майкрософт
+title: Учебник. Начало работы с Entity Framework 6 Code First с помощью MVC 5 | Документация Майкрософт
+description: В этой серии руководств вы узнаете, как создать приложение ASP.NET MVC 5, использующий Entity Framework 6 для доступа к данным.
 author: tdykstra
 ms.author: riande
-ms.date: 12/04/2018
+ms.date: 01/10/2019
+ms.topic: tutorial
 ms.assetid: 00bc8b51-32ed-4fd3-9745-be4c2a9c1eaf
 msc.legacyurl: /mvc/overview/getting-started/getting-started-with-ef-using-mvc/creating-an-entity-framework-data-model-for-an-asp-net-mvc-application
 msc.type: authoredcontent
-ms.openlocfilehash: c7ab9458f83e05af84f72d9a2519a8c1c39b84b5
-ms.sourcegitcommit: 9bb58d7c8dad4bbd03419bcc183d027667fefa20
+ms.openlocfilehash: 5d524c981af2d9d8f44254c61631937e6f049cdb
+ms.sourcegitcommit: 42a8164b8aba21f322ffefacb92301bdfb4d3c2d
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52861437"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54341710"
 ---
-# <a name="get-started-with-entity-framework-6-code-first-using-mvc-5"></a>Начало работы с Entity Framework 6 Code First с помощью MVC 5
-
-по [том Дайкстра](https://github.com/tdykstra)
-
-[Скачать завершенный проект](http://code.msdn.microsoft.com/ASPNET-MVC-Application-b01a9fe8)
+# <a name="tutorial-get-started-with-entity-framework-6-code-first-using-mvc-5"></a>Учебник. Начало работы с Entity Framework 6 Code First с помощью MVC 5
 
 > [!NOTE]
-> Для разработки новых приложений мы рекомендуем [ASP.NET Core Razor Pages](/aspnet/core/razor-pages) по ASP.NET MVC контроллеры и представления. Серии руководств примерно такой доступен для Razor Pages, [руководство по Razor Pages](/aspnet/core/tutorials/razor-pages/razor-pages-start):
->
+> Для разработки новых приложений мы рекомендуем [ASP.NET Core Razor Pages](/aspnet/core/razor-pages) по ASP.NET MVC контроллеры и представления. Для следующего вида серии руководств см. в разделе с помощью Razor Pages, [руководства: Начало работы с Razor Pages в ASP.NET Core](/aspnet/core/tutorials/razor-pages/razor-pages-start). Новый учебник.
 > * проще для выполнения;
 > * содержит больше рекомендаций по EF Core;
 > * использует более эффективные запросы;
@@ -30,59 +27,45 @@ ms.locfileid: "52861437"
 > * охватывает дополнительные возможности;
 > * является предпочтительным подходом для разработки новых приложений.
 
-> В этой статье показано, как создавать приложения ASP.NET MVC 5 с помощью Entity Framework 6 и Visual Studio. В этом учебнике используется Code First рабочего процесса. Сведения о том, как выбрать Code First, Database First или Model First, см. в разделе [создать модель](/ef/ef6/modeling/).
->
-> Пример приложения — это веб-сайт вымышленного университета с именем университета Contoso. На нем предусмотрены различные функции, в том числе прием учащихся, создание курсов и назначение преподавателей. В этой серии руководств описывается построение примера приложения университета Contoso. Вы можете [загрузить готовое приложение](https://code.msdn.microsoft.com/ASPNET-MVC-Application-b01a9fe8).
->
-> Доступна версия Visual Basic, преобразовываются Майк Бринд: [MVC 5 с EF 6 в Visual Basic](http://www.mikesdotnetting.com/Article/241/MVC-5-with-EF-6-in-Visual-Basic-Creating-an-Entity-Framework-Data-Model) на сайте Mikesdotnetting.
->
-> ## <a name="software-versions-used-in-the-tutorial"></a>Версии программного обеспечения, используемые в этом руководстве
->
-> - [Visual Studio 2017](https://visualstudio.microsoft.com/downloads/?utm_medium=microsoft&utm_source=docs.microsoft.com&utm_campaign=button+cta&utm_content=download+vs2017)
-> - [Entity Framework 6](https://www.nuget.org/packages/EntityFramework)
-> - [Windows Azure SDK 2.2](https://go.microsoft.com/fwlink/p/?linkid=323510) (необязательно)
->
-> ## <a name="tutorial-versions"></a>Учебника по версии
->
-> Предыдущие версии этого учебника, см. в разделе [EF 4.1 и MVC 3 электронная книга](https://social.technet.microsoft.com/wiki/contents/articles/11608.e-book-gallery-for-microsoft-technologies.aspx#GettingStartedwiththeEntityFramework4.1usingASP.NETMVC) и [Приступая к работе с EF 5 с помощью MVC 4](../../older-versions/getting-started-with-ef-5-using-mvc-4/creating-an-entity-framework-data-model-for-an-asp-net-mvc-application.md).
->
-> ## <a name="questions-and-comments"></a>Вопросы и комментарии
->
-> Оставьте свои отзывы о том, как вам понравилось в этом руководстве и что можно улучшить с помощью комментариев в нижней части страницы. Если у вас есть вопросы, которые не имеют отношения к руководству, их можно разместить [форум ASP.NET Entity Framework](https://forums.asp.net/1227.aspx) или [StackOverflow.com](http://stackoverflow.com/).
->
-> Если вы столкнулись с проблемами, который не удается разрешить, обычно можно найти решение проблемы путем сравнения кода готового проекта, который можно загрузить. Некоторые распространенные ошибки и способы их устранения, см. в разделе [распространенные ошибки и способы их устранения](advanced-entity-framework-scenarios-for-an-mvc-web-application.md#errors).
+В этой серии руководств вы узнаете, как создать приложение ASP.NET MVC 5, использующий Entity Framework 6 для доступа к данным. В этом учебнике используется Code First рабочего процесса. Сведения о том, как выбрать Code First, Database First или Model First, см. в разделе [создать модель](/ef/ef6/modeling/).
 
-## <a name="the-contoso-university-web-app"></a>Веб-приложение университета Contoso
-
-Приложение, которое вы создадите в этих учебниках является простой университета веб-сайта. Пользователи приложения могут просматривать и обновлять сведения об учащихся, курсах и преподавателях. Ниже приведены некоторые из экранов, которые будут созданы.
+В этой серии руководств описывается построение примера приложения университета Contoso. Пример приложения веб-сайт простой университета. С ним вы можете просматривать и обновлять учащихся, курсах и сведения о преподавателе. Ниже приведены два созданных экранов.
 
 ![Students_Index_page](creating-an-entity-framework-data-model-for-an-asp-net-mvc-application/_static/image1.png)
 
 ![Изменение параметров учащегося](creating-an-entity-framework-data-model-for-an-asp-net-mvc-application/_static/image2.png)
 
-Таким образом, это позволяет сосредоточиться главным образом по использованию Entity Framework, пользовательский интерфейс веб-сайта не будет изменяться в обеспечиваемому встроенными шаблонами.
+В этом учебнике рассмотрены следующие задачи.
+
+> [!div class="checklist"]
+> * Создать веб-приложение MVC
+> * Настройка стиля сайта
+> * Установка Entity Framework 6
+> * Создание модели данных
+> * Создание контекста базы данных
+> * Инициализация базы данных тестовыми данными
+> * Настройка EF 6 для использования LocalDB
+> * Создание контроллера и представлений
+> * Просмотр базы данных
 
 ## <a name="prerequisites"></a>Предварительные требования
 
-См. в разделе **версий программного обеспечения** в верхней части страницы. Entity Framework 6 не является требованием, так как вы установите пакет EF NuGet в рамках этого руководства.
+* [Visual Studio 2017](https://visualstudio.microsoft.com/downloads/?utm_medium=microsoft&utm_source=docs.microsoft.com&utm_campaign=button+cta&utm_content=download+vs2017)
 
 ## <a name="create-an-mvc-web-app"></a>Создать веб-приложение MVC
 
-1. Откройте Visual Studio и создайте новый C# веб-проект, используя **веб-приложение ASP.NET (.NET Framework)** шаблона. Назовите проект «ContosoUniversity».
+1. Откройте Visual Studio и создайте C# веб-проекта с помощью **веб-приложение ASP.NET (.NET Framework)** шаблона. Назовите проект *ContosoUniversity* и выберите **ОК**.
 
    !["Новый проект диалоговое окно" в Visual Studio](creating-an-entity-framework-data-model-for-an-asp-net-mvc-application/_static/new-project-dialog.png)
 
-2. В диалоговом окне нового проекта ASP.NET выберите **MVC** шаблона.
+1. В **новый веб-приложение ASP.NET - ContosoUniversity**выберите **MVC**.
 
    ![Web app диалоговое окно нового в Visual Studio](creating-an-entity-framework-data-model-for-an-asp-net-mvc-application/_static/new-web-app-dialog.png)
 
-3. Если **проверки подлинности** равно **без проверки подлинности**, изменить, щелкнув **изменить проверку подлинности**.
+    > [!NOTE]
+    > По умолчанию **проверки подлинности** параметру присваивается **без проверки подлинности**. В этом учебнике веб-приложение не требует пользователи выполняли вход. Кроме того он не ограничивает доступ, в зависимости от того, кто выполнил вход.
 
-   В **изменить способ проверки подлинности** выберите **без проверки подлинности**, а затем выберите **ОК**. В этом учебнике веб-приложение не требует пользователи должны входить, а также ограничить доступ, в зависимости от того, кто выполнил вход.
-
-   ![Изменить диалоговое окно проверки подлинности в Visual Studio](creating-an-entity-framework-data-model-for-an-asp-net-mvc-application/_static/change-authentication.png)
-
-4. Вернитесь в диалоговое окно "новый проект ASP.NET", щелкните **ОК** для создания проекта.
+1. Нажмите кнопку **ОК**, чтобы создать проект.
 
 ## <a name="set-up-the-site-style"></a>Настройка стиля сайта
 
@@ -101,9 +84,7 @@ ms.locfileid: "52861437"
 
    [!code-cshtml[Main](creating-an-entity-framework-data-model-for-an-asp-net-mvc-application/samples/sample2.cshtml)]
 
-3. Нажмите клавишу **Ctrl**+**F5** для запуска веб-сайта. Появится домашняя страница с меню.
-
-   ![Домашняя страница университета Contoso](creating-an-entity-framework-data-model-for-an-asp-net-mvc-application/_static/image6.png)
+3. Нажмите клавиши Ctrl + F5 для запуска веб-сайта. Появится домашняя страница с меню.
 
 ## <a name="install-entity-framework-6"></a>Установка Entity Framework 6
 
@@ -115,17 +96,18 @@ ms.locfileid: "52861437"
    Install-Package EntityFramework
    ```
 
-   ![EF установлен](creating-an-entity-framework-data-model-for-an-asp-net-mvc-application/_static/image7.png)
-
-   На рисунке показано 6.0.0 устанавливается, но NuGet установит последнюю версию Entity Framework (за исключением предварительных версий), который на момент последнего изменения руководства является 6.2.0.
-
 Этот шаг является одним из нескольких шагов с учебником можно сделать вручную, но, могло быть сделано автоматически с помощью функции формирования шаблонов ASP.NET MVC. Вы выполняете их вручную, чтобы вы могли видеть шаги, необходимые для использования Entity Framework (EF). Вы воспользуетесь формирования шаблонов позже для создания контроллера и представлений MVC. Альтернативным вариантом является для формирования шаблонов автоматически установить пакет EF NuGet создать класс контекста базы данных и создания строки подключения. Когда вы будете готовы сделать это таким образом, что необходимо сделать всего лишь пропустить эти шаги и сформировать шаблон контроллера MVC после создания классов сущностей.
 
 ## <a name="create-the-data-model"></a>Создание модели данных
 
 Теперь необходимо создать классы сущностей для приложения университета Contoso. Сначала вы возьмете следующих трех сущностей:
 
-![Class_diagram](creating-an-entity-framework-data-model-for-an-asp-net-mvc-application/_static/image8.png)
+**Курс** <-> **регистрации** <-> **учащегося**
+
+| Сущности | Relationship |
+| -------- | ------------ |
+| Курс для регистрации | один ко многим |
+| Учащегося для регистрации | один ко многим |
 
 Между сущностями `Student` и `Enrollment`, а также между сущностями `Course` и `Enrollment` существует отношение "один ко многим". Другими словами, учащийся может быть зарегистрирован в любом количестве курсов, а в отдельном курсе может быть зарегистрировано любое количество учащихся.
 
@@ -135,8 +117,6 @@ ms.locfileid: "52861437"
 > При попытке компиляции проекта до завершения создания всех этих классов сущностей, вы получите ошибки компилятора.
 
 ### <a name="the-student-entity"></a>Сущность Student
-
-![Student_entity](creating-an-entity-framework-data-model-for-an-asp-net-mvc-application/_static/image9.png)
 
 - В *моделей* папке создайте файл класса с именем *Student.cs* щелкнув правой кнопкой папку, в **обозревателе решений** и выбрав **добавить**  >  **Класс**. Замените код шаблона следующим кодом:
 
@@ -151,8 +131,6 @@ ms.locfileid: "52861437"
 Если свойство навигации может содержать несколько сущностей (как в отношениях "многие ко многим" или "один ко многим"), оно должно иметь тип списка, допускающий добавление, удаление и обновление записей, такой как `ICollection`.
 
 ### <a name="the-enrollment-entity"></a>Сущность Enrollment
-
-![Enrollment_entity](creating-an-entity-framework-data-model-for-an-asp-net-mvc-application/_static/image10.png)
 
 - В папке *Models* создайте файл *Enrollment.cs* и замените существующий код следующим кодом:
 
@@ -169,8 +147,6 @@ ms.locfileid: "52861437"
 Платформа Entity Framework интерпретирует свойство как свойство внешнего ключа, если оно имеет имя *&lt;имя свойства навигации&gt;&lt;имя свойство первичного ключа&gt;* (например, `StudentID`для `Student` свойство навигации с момента `Student` — первичный ключ сущности `ID`). Свойства внешнего ключа также могут называться так же просто *&lt;имя свойство первичного ключа&gt;* (например, `CourseID` поскольку `Course` — первичный ключ сущности `CourseID`).
 
 ### <a name="the-course-entity"></a>Сущность Course
-
-![Course_entity](creating-an-entity-framework-data-model-for-an-asp-net-mvc-application/_static/image11.png)
 
 - В *моделей* папке создайте *Course.cs*, заменив код шаблона следующим кодом:
 
@@ -210,7 +186,7 @@ ms.locfileid: "52861437"
 
 `modelBuilder.Conventions.Remove` Инструкции в [OnModelCreating](https://msdn.microsoft.com/library/system.data.entity.dbcontext.onmodelcreating(v=vs.103).aspx) метод предотвращает имена таблиц имена во множественном числе. Если вы не сделаете этого, созданные таблицы в базе данных будет назван `Students`, `Courses`, и `Enrollments`. Вместо этого будет имена таблиц `Student`, `Course`, и `Enrollment`. В среде разработчиков нет единого мнения о том, следует ли использовать имена таблиц во множественном числе. В этом руководстве используется существительные в единственном числе, но важно то, что вы можете выбрать любую форму, вы предпочитаете, включая или исключая эту строку кода.
 
-## <a name="set-up-ef-to-initialize-the-database-with-test-data"></a>Настройка EF для инициализации базы данных тестовыми данными
+## <a name="initialize-db-with-test-data"></a>Инициализация базы данных тестовыми данными
 
 Entity Framework можно автоматически создать (или удалить и повторно создать) базы данных автоматически при запуске приложения. Можно указать, что это следует делать каждый раз при запуске приложения или только в том случае, если модель не синхронизирован с существующей базой данных. Можно также написать `Seed` метод, Entity Framework вызывает автоматически после создания базы данных заполняет ее тестовыми данными.
 
@@ -235,7 +211,7 @@ Entity Framework можно автоматически создать (или у
 > [!NOTE]
 > При развертывании приложения на веб-сервере в рабочей среде, необходимо удалить или отключить код, который удаляет и повторно создает базу данных. Можно сделать в следующем руководстве этой серии.
 
-## <a name="set-up-ef-to-use-a-sql-server-express-localdb-database"></a>Настройка EF для использования базы данных SQL Server Express LocalDB
+## <a name="set-up-ef-6-to-use-localdb"></a>Настройка EF 6 для использования LocalDB
 
 [LocalDB](/sql/database-engine/configure-windows/sql-server-2016-express-localdb?view=sql-server-2017) — это облегченная версия СУБД SQL Server Express. Ее легко установить и настроить запускается по запросу и работает в пользовательском режиме. LocalDB выполняется в специального режима выполнения SQL Server Express, которая позволяет работать с базами данных как *.mdf* файлов. Файлы базы данных LocalDB можно поместить в *приложения\_данных* папку веб-проекта, если вы хотите иметь возможность копирования базы данных с проектом. Функции пользовательского экземпляра в SQL Server Express также позволяет работать с *.mdf* файлы, но функции пользовательского экземпляра устарело; таким образом, рекомендуется использовать LocalDB для работы с *.mdf* файлов. LocalDB устанавливается по умолчанию с помощью Visual Studio.
 
@@ -249,7 +225,7 @@ Entity Framework можно автоматически создать (или у
 
 Вам не нужен строку подключения в *Web.config* файл. Если вы не указали строку подключения, Entity Framework использует строку подключения по умолчанию, на основании класса контекста. Дополнительные сведения см. в разделе [Code First для новой базы данных](/ef/ef6/modeling/code-first/workflows/new-database).
 
-## <a name="create-a-student-controller-and-views"></a>Создание контроллера учащихся и представлений
+## <a name="create-controller-and-views"></a>Создание контроллера и представлений
 
 Теперь вы создадите веб-страницы для отображения данных. Процесс запроса данных автоматически инициирует создание базы данных. Вы начнете с создания нового контроллера. Но перед этим, построение проекта, чтобы сделать доступными для формирования шаблонов контроллера MVC классы модели и контексту.
 
@@ -260,12 +236,10 @@ Entity Framework можно автоматически создать (или у
 
 3. В **Добавление контроллера** диалоговом окне задайте следующие параметры и нажмите **добавить**:
 
-   - Класс модели: **учащегося (ContosoUniversity.Models)**. (Если вы не видите этот параметр в раскрывающемся списке, постройте проект и повторите попытку.)
+   - Класс модели: **Учащегося (ContosoUniversity.Models)**. (Если вы не видите этот параметр в раскрывающемся списке, постройте проект и повторите попытку.)
    - Класс контекста данных: **SchoolContext (ContosoUniversity.DAL)**.
    - Имя контроллера: **StudentController** (не StudentsController).
    - Оставьте значения по умолчанию для других полей.
-
-     ![Диалоговое окно добавления контроллера в Visual Studio](creating-an-entity-framework-data-model-for-an-asp-net-mvc-application/_static/add-controller.png)
 
      При нажатии кнопки **добавить**, создает шаблон *StudentController.cs* файл и набор представлений (*.cshtml* файлы), будут работать с контроллером. В будущем при создании проектов, использующих Entity Framework, вы можете также воспользоваться преимуществами некоторые дополнительные функции шаблон: создать свой первый класс модели, не создать строку подключения, а затем в **Добавление контроллера** укажите **новый контекст данных** , выбрав **+** рядом с пунктом **класс контекста данных**. Шаблон создаст вашей `DbContext` класс и подключение к строка, а также контроллеры и представления.
 4. Visual Studio открывает *Controllers\StudentController.cs* файла. Вы увидите, что переменной класса был создан, создающий экземпляр объекта контекста базы данных:
@@ -279,13 +253,11 @@ Entity Framework можно автоматически создать (или у
      *Student\Index.cshtml* представление отображает этот список в таблице:
 
      [!code-cshtml[Main](creating-an-entity-framework-data-model-for-an-asp-net-mvc-application/samples/sample13.cshtml)]
-5. Нажмите клавишу **Ctrl**+**F5** для запуска проекта. (Если появится сообщение об ошибке «Не удается создать теневую копию», закройте браузер и повторите попытку.)
+5. Нажмите клавиши Ctrl + F5, чтобы запустить проект. (Если появится сообщение об ошибке «Не удается создать теневую копию», закройте браузер и повторите попытку.)
 
      Нажмите кнопку **учащихся** tab, чтобы просмотреть тестовые данные, `Seed` добавленные методом. В зависимости от размеров от — окно браузера, вы увидите ссылку на вкладку учащегося в верхнем адреса или вам придется щелкните в правом верхнем углу, чтобы увидеть эту ссылку.
 
      ![Кнопки меню](creating-an-entity-framework-data-model-for-an-asp-net-mvc-application/_static/image14.png)
-
-     ![Страница индекса учащихся](creating-an-entity-framework-data-model-for-an-asp-net-mvc-application/_static/image15.png)
 
 ## <a name="view-the-database"></a>Просмотр базы данных
 
@@ -296,11 +268,8 @@ Entity Framework можно автоматически создать (или у
 1. Закройте браузер.
 2. В **обозревателя серверов**, разверните **подключения к данным** (может потребоваться сначала выберите «Обновить»), разверните **School контекста (ContosoUniversity)** и затем разверните  **Таблицы** отображения таблиц в новой базе данных.
 
-    ![Таблицы базы данных в обозревателе серверов](creating-an-entity-framework-data-model-for-an-asp-net-mvc-application/_static/image16.png)
-
 3. Щелкните правой кнопкой мыши **учащихся** таблицы и нажмите кнопку **Показать таблицу данных** Чтобы просмотреть созданные столбцы и строки, которые были вставлены в таблицу.
 
-    ![Таблица Student](creating-an-entity-framework-data-model-for-an-asp-net-mvc-application/_static/table-data.png)
 4. Закрыть **обозревателя серверов** подключения.
 
 *ContosoUniversity1.mdf* и *.ldf* файлы базы данных находятся в *% USERPROFILE %* папки.
@@ -316,15 +285,32 @@ Entity Framework можно автоматически создать (или у
 - Свойства сущности, которые называются `ID` или *classname* `ID` распознаются как свойства первичного ключа.
 - Свойство интерпретируется как свойство внешнего ключа, если оно имеет имя *&lt;имя свойства навигации&gt;&lt;имя свойство первичного ключа&gt;* (например, `StudentID` для `Student` свойство навигации с момента `Student` — первичный ключ сущности `ID`). Свойства внешнего ключа также могут называться так же просто &lt;имя свойство первичного ключа&gt; (например, `EnrollmentID` поскольку `Enrollment` — первичный ключ сущности `EnrollmentID`).
 
-Вы видели, что соглашения могут быть переопределены. Например, вы указали, что имена таблиц не должны быть имена во множественном числе, и вы увидите Далее как явным образом пометить свойство как свойство внешнего ключа. Вы узнаете о условные обозначения и их в Переопределите [Создание более сложной модели данных](creating-a-more-complex-data-model-for-an-asp-net-mvc-application.md) далее в этой серии руководств. Дополнительные сведения о правилах см. в разделе [первый соглашения о коде](/ef/ef6/modeling/code-first/conventions/built-in).
+Вы видели, что соглашения могут быть переопределены. Например, вы указали, что имена таблиц не должны быть имена во множественном числе, и вы увидите Далее как явным образом пометить свойство как свойство внешнего ключа.
+## <a name="additional-resources"></a>Дополнительные ресурсы
 
-## <a name="summary"></a>Сводка
+Дополнительные сведения о EF 6 см. в статьях:
 
-Вы создали простое приложение, которое использует Entity Framework и SQL Server Express LocalDB для хранения и отображения данных. В следующем учебнике вы научитесь выполнять основные создания, чтения, обновления и удаления (CRUD).
+* [Доступ к данным ASP.NET. Рекомендуемые ресурсы](../../../../whitepapers/aspnet-data-access-content-map.md)
 
-Оставьте свои отзывы на том, как вам понравилось, и этот учебник, и что можно улучшить.
+* [Первый соглашения о коде](/ef/ef6/modeling/code-first/conventions/built-in)
 
-Ссылки на другие ресурсы Entity Framework можно найти в [доступ к данным ASP.NET — рекомендуемые ресурсы](../../../../whitepapers/aspnet-data-access-content-map.md).
+* [Создание более сложной модели данных](creating-a-more-complex-data-model-for-an-asp-net-mvc-application.md)
 
-> [!div class="step-by-step"]
-> [Вперед](implementing-basic-crud-functionality-with-the-entity-framework-in-asp-net-mvc-application.md)
+## <a name="next-steps"></a>Следующие шаги
+
+В этом учебнике рассмотрены следующие задачи.
+
+> [!div class="checklist"]
+> * Создали веб-приложение MVC
+> * Настройка стиля сайта
+> * Установленные Entity Framework 6
+> * Создания модели данных
+> * Создать контекст базы данных
+> * Инициализированный БАЗЫ данных тестовыми данными
+> * Настройка EF 6 для использования LocalDB
+> * Созданный контроллера и представлений
+> * Просмотреть базы данных
+
+Перейдите к следующей статье, чтобы научиться просмотрите и настроить создание, чтение, обновление и удаление кода (CRUD) в контроллерах и представлениях.
+> [!div class="nextstepaction"]
+> [Реализуйте базовую функциональность CRUD](implementing-basic-crud-functionality-with-the-entity-framework-in-asp-net-mvc-application.md)

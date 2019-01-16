@@ -1,33 +1,39 @@
 ---
 uid: mvc/overview/getting-started/getting-started-with-ef-using-mvc/connection-resiliency-and-command-interception-with-the-entity-framework-in-an-asp-net-mvc-application
-title: Устойчивость подключений и перехват команд с помощью Entity Framework в приложении ASP.NET MVC | Документация Майкрософт
+title: Учебник. Использование подключения устойчивость и команда перехвата с EF в приложении ASP.NET MVC
 author: tdykstra
-description: Пример веб-приложение университета Contoso демонстрирует создание приложения ASP.NET MVC 5, используя Entity Framework 6 Code First и Visual Studio...
+description: В этом руководстве вы узнаете, как использовать перехвата устойчивость и команду подключения. Они являются две важные функции Entity Framework 6.
 ms.author: riande
-ms.date: 01/13/2015
+ms.date: 01/14/2018
+ms.topic: tutorial
 ms.assetid: c89d809f-6c65-4425-a3fa-c9f6e8ac89f2
 msc.legacyurl: /mvc/overview/getting-started/getting-started-with-ef-using-mvc/connection-resiliency-and-command-interception-with-the-entity-framework-in-an-asp-net-mvc-application
 msc.type: authoredcontent
-ms.openlocfilehash: ab6a553100d704746840eaad512ec140d4576c44
-ms.sourcegitcommit: a4dcca4f1cb81227c5ed3c92dc0e28be6e99447b
+ms.openlocfilehash: fae5c7e1ad1000ed90630c3620b853de3a735d60
+ms.sourcegitcommit: 42a8164b8aba21f322ffefacb92301bdfb4d3c2d
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "48911790"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54341736"
 ---
-<a name="connection-resiliency-and-command-interception-with-the-entity-framework-in-an-aspnet-mvc-application"></a>Устойчивость подключений и перехват команд с помощью Entity Framework в приложении ASP.NET MVC
-====================
-по [том Дайкстра](https://github.com/tdykstra)
-
-[Скачать завершенный проект](http://code.msdn.microsoft.com/ASPNET-MVC-Application-b01a9fe8)
-
-> Пример веб-приложение университета Contoso демонстрирует создание приложения ASP.NET MVC 5, используя Entity Framework 6 Code First и Visual Studio. Сведения о серии руководств см. в [первом руководстве серии](creating-an-entity-framework-data-model-for-an-asp-net-mvc-application.md).
+# <a name="tutorial-use-connection-resiliency-and-command-interception-with-entity-framework-in-an-aspnet-mvc-app"></a>Учебник. Использование перехвата устойчивость и команду подключения с Entity Framework в приложении ASP.NET MVC
 
 Пока приложение будет выполняться локально в IIS Express на компьютере разработчика. Чтобы реальных приложение стало доступным для других пользователей в Интернете, необходимо развернуть его на веб-поставщик услуг размещения и у вас есть развертывание базы данных на сервер базы данных.
 
-В этом руководстве вы узнаете, как использовать две функции Entity Framework 6, особенно важны при развертывании в облачной среде: устойчивость подключений (автоматические повторы для временных ошибок) и перехват команд (перехватить все запросы SQL отправки в базу данных для входа или изменения их).
+В этом руководстве вы узнаете, как использовать перехвата устойчивость и команду подключения. Они являются две важные функции Entity Framework 6, которые особенно важны при развертывании в облачной среде: устойчивость подключений (автоматические повторы для временных ошибок) и перехват команд (catch все SQL-запросы, отправляемые базе данных для входа или изменять их).
 
 Учебником подключения устойчивость и команда перехвата является необязательным. Если вы пропустите это руководство, будет лишь небольшие изменения, внесенные в последующих руководствах.
+
+В этом учебнике рассмотрены следующие задачи.
+
+> [!div class="checklist"]
+> * Включить устойчивость подключений
+> * Включить перехват команд
+> * Протестируйте новую конфигурацию
+
+## <a name="prerequisites"></a>Предварительные требования
+
+* [Сортировка, фильтрация и разбиение на страницы](sorting-filtering-and-paging-with-the-entity-framework-in-an-asp-net-mvc-application.md)
 
 ## <a name="enable-connection-resiliency"></a>Включить устойчивость подключений
 
@@ -135,7 +141,7 @@ ms.locfileid: "48911790"
 
     Вы написали код имитации временной ошибки способом, который позволяет вызывать временные ошибки, введя другое значение в пользовательском Интерфейсе. Кроме того можно написать код перехватчик всегда создать последовательность временных исключений без проверки на наличие значения определенного параметра. Затем вы сможете добавить перехватчик только в том случае, если вы хотите создавать временные ошибки. Если в этом случае не добавляйте перехватчик до после завершения инициализации базы данных. Другими словами выполните операции по крайней мере одна база данных, например запрос на одном из своего набора сущностей, перед началом создания временных ошибок. Платформа Entity Framework выполняет несколько запросов во время инициализации базы данных, и они не выполняются в транзакции, в случае ошибки во время инициализации может возникнуть контекст которого необходимо получить в несогласованное состояние.
 
-## <a name="test-logging-and-connection-resiliency"></a>Тест ведения журнала и устойчивость подключений
+## <a name="test-the-new-configuration"></a>Протестируйте новую конфигурацию
 
 1. Нажмите клавишу **F5** запустите приложение в режиме отладки, и нажмите кнопку **учащихся** вкладки.
 2. Посмотрите на Visual Studio **вывода** окно, чтобы просмотреть выходные данные трассировки. Может потребоваться прокрутить вверх после некоторых ошибок JavaScript, чтобы получить журналы, сохраняемые в средство ведения журналов.
@@ -167,14 +173,19 @@ ms.locfileid: "48911790"
     ![Фиктивный исключение](connection-resiliency-and-command-interception-with-the-entity-framework-in-an-asp-net-mvc-application/_static/image4.png)
 5. Раскомментируйте *SetExecutionStrategy* строку в *SchoolConfiguration.cs*.
 
-## <a name="summary"></a>Сводка
-
-В этом руководстве вы узнали, как включить устойчивость подключений и журнала команд SQL, Entity Framework составляет и отправляет в базу данных. В следующем руководстве вы развернете приложение к Интернету, с помощью Code First Migrations для развертывания базы данных.
-
-Оставьте свои отзывы на том, как вам понравилось, и этот учебник, и что можно улучшить.
+## <a name="additional-resources"></a>Дополнительные ресурсы
 
 Ссылки на другие ресурсы Entity Framework можно найти в [доступ к данным ASP.NET — рекомендуемые ресурсы](../../../../whitepapers/aspnet-data-access-content-map.md).
 
-> [!div class="step-by-step"]
-> [Назад](sorting-filtering-and-paging-with-the-entity-framework-in-an-asp-net-mvc-application.md)
-> [Вперед](migrations-and-deployment-with-the-entity-framework-in-an-asp-net-mvc-application.md)
+## <a name="next-steps"></a>Следующие шаги
+
+В этом учебнике рассмотрены следующие задачи.
+
+> [!div class="checklist"]
+> * Устойчивость подключения включено
+> * Перехват поддержкой команд
+> * Тестирование новой конфигурации
+
+Перейдите к следующей статьи вы узнаете о Code First migrations и развертывание Azure.
+> [!div class="nextstepaction"]
+> [Code First migrations и развертывание Azure](migrations-and-deployment-with-the-entity-framework-in-an-asp-net-mvc-application.md)

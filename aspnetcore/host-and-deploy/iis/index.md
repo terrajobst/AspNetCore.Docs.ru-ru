@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 01/11/2019
 uid: host-and-deploy/iis/index
-ms.openlocfilehash: 3239b4652d739ed2ac205c9daae7754dbd8e918c
-ms.sourcegitcommit: ec71fd5a988f927ae301813aae5ff764feb3bb6a
+ms.openlocfilehash: 83c084beb059d803811e9739d34bdbdd6bcff463
+ms.sourcegitcommit: 42a8164b8aba21f322ffefacb92301bdfb4d3c2d
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/12/2019
-ms.locfileid: "54249563"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54341801"
 ---
 # <a name="host-aspnet-core-on-windows-with-iis"></a>Размещение ASP.NET Core в Windows со службами IIS
 
@@ -312,11 +312,6 @@ services.Configure<IISOptions>(options =>
 ## <a name="create-the-iis-site"></a>Создание сайта IIS
 
 1. В размещающей системе создайте папку, в которой будут храниться файлы и папки опубликованного приложения. Макет развертывания приложения описан в статье [Directory structure of published ASP.NET Core apps](xref:host-and-deploy/directory-structure) (Структура каталогов опубликованных приложений ASP.NET Core).
-
-1. В созданной только что папке создайте папку *logs*, в которой будут храниться журналы StdOut модуля ASP.NET Core (если включено ведение таких журналов). Если приложение развертывается с папкой *logs* в полезных данных, пропустите этот шаг. Сведения о том, как в MSBuild настроить автоматическое создание папки *logs* при создании проекта локально, см. в статье [Directory structure of published ASP.NET Core apps](xref:host-and-deploy/directory-structure) (Структура каталогов опубликованных приложений ASP.NET Core).
-
-   > [!IMPORTANT]
-   > Журнал StdOut следует использовать только для устранения ошибок, возникающих при запуске приложения. Никогда не используйте журнал StdOut как журнал повседневных операций приложения. Ни размер файла журнала, ни количество создаваемых файлов журналов ничем не ограничены. Пул приложений должен иметь доступ на запись к папке, куда записываются журналы. Все папки в пути к папке журнала должны существовать. Дополнительные сведения о журнале StdOut см. в разделе о [создании и перенаправлении журналов](xref:host-and-deploy/aspnet-core-module#log-creation-and-redirection). Сведения о ведении журнала приложения ASP.NET Core см. в статье [Общие сведения о ведении журналов в ASP.NET Core](xref:fundamentals/logging/index).
 
 1. В окне **Диспетчер служб IIS** в области **Подключения** разверните узел сервера. Щелкните правой кнопкой мыши папку **Сайты**. В контекстном меню выберите пункт **Добавить веб-сайт**.
 
