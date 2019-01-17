@@ -1,3 +1,11 @@
+---
+ms.openlocfilehash: a3ac1ac389892681e8c122d569e6325353ed6e88
+ms.sourcegitcommit: 42a8164b8aba21f322ffefacb92301bdfb4d3c2d
+ms.translationtype: HT
+ms.contentlocale: ru-RU
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54341684"
+---
 # [Документация по ASP.NET Core](/aspnet/#pivot=core)
 
 # Обзор
@@ -251,7 +259,9 @@
 ### [Публикация с помощью инструментов CLI](/azure/app-service/app-service-web-tutorial-dotnetcore-sqldb)
 ### [Публикация с помощью Visual Studio и Git](xref:host-and-deploy/azure-apps/azure-continuous-deployment)
 ### [Непрерывное развертывание с Azure Pipelines](/azure/devops/pipelines/get-started-yaml)
-### [Устранение ошибок запуска](xref:host-and-deploy/azure-apps/troubleshoot)
+### [Модуль ASP.NET Core](xref:host-and-deploy/aspnet-core-module)
+### [Устранение неполадок](xref:host-and-deploy/azure-apps/troubleshoot)
+### [Справочник по ошибкам](xref:host-and-deploy/azure-iis-errors-reference)
 ## DevOps 
 ### [Обзор](xref:azure/devops/index)
 ### [Инструменты и файлы для скачивания](xref:azure/devops/tools-and-downloads)
@@ -261,10 +271,11 @@
 ### [Следующие шаги](xref:azure/devops/next-steps)
 ## Размещение в Windows с помощью IIS
 ### [Обзор](xref:host-and-deploy/iis/index)
-### [Устранение неполадок в IIS](xref:host-and-deploy/iis/troubleshoot)
 ### [Модуль ASP.NET Core](xref:host-and-deploy/aspnet-core-module)
 ### [Поддержка IIS в Visual Studio](xref:host-and-deploy/iis/development-time-iis-support)
 ### [Модули IIS](xref:host-and-deploy/iis/modules)
+### [Устранение неполадок](xref:host-and-deploy/iis/troubleshoot)
+### [Справочник по ошибкам](xref:host-and-deploy/azure-iis-errors-reference)
 ## [Kestrel](xref:fundamentals/servers/kestrel)
 ## [HTTP.sys](xref:fundamentals/servers/httpsys)
 ## [Размещение в службе Windows](xref:host-and-deploy/windows-service)
@@ -279,7 +290,6 @@
 ## [Размещение в веб-ферме](xref:host-and-deploy/web-farm)
 ## [Профили публикации Visual Studio](xref:host-and-deploy/visual-studio-publish-profiles)
 ## [Структура каталогов](xref:host-and-deploy/directory-structure)
-## [Справочник по ошибкам для службы приложений Azure и служб IIS](xref:host-and-deploy/azure-iis-errors-reference)
 ## [Проверки работоспособности](xref:host-and-deploy/health-checks)
 
 # Безопасность и удостоверения
@@ -420,6 +430,6 @@
 ### [Миграция с модулей HTTP на ПО промежуточного слоя](xref:migration/http-modules)
 ## [Ведение журналов (не в ASP.NET Core)](xref:migration/logging-nonaspnetcore)
 
-# [Справочник по API](/dotnet/api/?view=aspnetcore-2.2)
+# [Справочник по API](/dotnet/api/?view=aspnetcore-2.1)
 
 # [Участие](https://github.com/aspnet/Docs/blob/master/CONTRIBUTING.md)
