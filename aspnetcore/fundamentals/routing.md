@@ -4,14 +4,14 @@ author: rick-anderson
 description: Узнайте, как маршрутизация ASP.NET Core отвечает за сопоставление URI запросов с селекторами конечных точек и отправку входящих запросов к конечным точкам.
 ms.author: riande
 ms.custom: mvc
-ms.date: 12/29/2018
+ms.date: 01/14/2019
 uid: fundamentals/routing
-ms.openlocfilehash: c57b309e4474f9aff5c0594a3d9d1c796990d31e
-ms.sourcegitcommit: e1cc4c1ef6c9e07918a609d5ad7fadcb6abe3e12
+ms.openlocfilehash: 96d098115f2f9b150f796e08cf14e60611f59e17
+ms.sourcegitcommit: 42a8164b8aba21f322ffefacb92301bdfb4d3c2d
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "53997361"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54341762"
 ---
 # <a name="routing-in-aspnet-core"></a>Маршрутизация в ASP.NET Core
 
@@ -46,7 +46,7 @@ services.AddMvc(options => options.EnableEndpointRouting = false)
     .SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
 ```
 
-Дополнительные сведения о маршрутизации на основе <xref:Microsoft.AspNetCore.Routing.IRouter> см. в разделе [о версии ASP.NET Core 2.1 в этой статье](xref:fundamentals/routing?view=aspnetcore-2.1).
+Дополнительные сведения о маршрутизации на основе <xref:Microsoft.AspNetCore.Routing.IRouter> см. в разделе [о версии ASP.NET Core 2.1 в этой статье](/aspnet/core/fundamentals/routing?view=aspnetcore-2.1).
 
 ::: moniker-end
 
