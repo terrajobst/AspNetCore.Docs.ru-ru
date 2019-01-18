@@ -4,20 +4,19 @@ title: Понимание и обработка событий времени с
 author: pfletcher
 description: В этой статье описывается, как использовать API для концентраторов событий.
 ms.author: riande
-ms.date: 06/10/2014
+ms.date: 01/15/2019
 ms.assetid: 03960de2-8d95-4444-9169-4426dcc64913
 msc.legacyurl: /signalr/overview/guide-to-the-api/handling-connection-lifetime-events
 msc.type: authoredcontent
-ms.openlocfilehash: 6a354179a82eba1d4a64184bfdeb302472fabf5f
-ms.sourcegitcommit: 74e3be25ea37b5fc8b4b433b0b872547b4b99186
+ms.openlocfilehash: 5aaec6795f714ba0877ec3b22eff45eb281b44aa
+ms.sourcegitcommit: 184ba5b44d1c393076015510ac842b77bc9d4d93
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53287991"
+ms.lasthandoff: 01/18/2019
+ms.locfileid: "54396172"
 ---
 <a name="understanding-and-handling-connection-lifetime-events-in-signalr"></a>Понимание и обработка событий времени существования подключений в SignalR
 ====================
-по [Флетчера Патрик](https://github.com/pfletcher), [том Дайкстра](https://github.com/tdykstra)
 
 [!INCLUDE [Consider ASP.NET Core SignalR](~/includes/signalr/signalr-version-disambiguation.md)]
 
@@ -32,7 +31,7 @@ ms.locfileid: "53287991"
 > ## <a name="software-versions-used-in-this-topic"></a>Версии программного обеспечения, используемого в этом разделе
 >
 >
-> - [Visual Studio 2013](https://my.visualstudio.com/Downloads?q=visual%20studio%202013)
+> - [Visual Studio 2017](https://visualstudio.microsoft.com/downloads/)
 > - .NET 4.5
 > - SignalR версии 2
 >
@@ -147,7 +146,7 @@ ms.locfileid: "53287991"
 
 > [!NOTE]
 >
-> **Важные**: Последовательность событий, описанные здесь не гарантируется. SignalR делает все возможное для вызова события времени жизни подключения предсказуемым образом в соответствии с этой схемой, но существует много разновидностей событий сети и множество способов, в которых их обработки базовой связи платформ, таких как транспорт API-интерфейсы. Например `Reconnected` событие не может быть вызвано при повторном подключении клиента или `OnConnected` обработчик на сервере может выполняться, когда для установления соединения не удалось. В этом разделе описывается только эффекты, которые обычно будут получены, определенных в обычных условиях.
+> **Важно**. Последовательность событий, описанные здесь не гарантируется. SignalR делает все возможное для вызова события времени жизни подключения предсказуемым образом в соответствии с этой схемой, но существует много разновидностей событий сети и множество способов, в которых их обработки базовой связи платформ, таких как транспорт API-интерфейсы. Например `Reconnected` событие не может быть вызвано при повторном подключении клиента или `OnConnected` обработчик на сервере может выполняться, когда для установления соединения не удалось. В этом разделе описывается только эффекты, которые обычно будут получены, определенных в обычных условиях.
 
 
 <a id="clientdisconnect"></a>

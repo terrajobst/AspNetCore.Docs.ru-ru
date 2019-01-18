@@ -1,36 +1,49 @@
 ---
 uid: mvc/overview/getting-started/getting-started-with-ef-using-mvc/creating-a-more-complex-data-model-for-an-asp-net-mvc-application
-title: Создание более сложной модели данных для приложения ASP.NET MVC | Документация Майкрософт
+title: Учебник. Создание более сложной модели данных для приложения ASP.NET MVC
 author: tdykstra
-description: Пример веб-приложение университета Contoso демонстрирует создание приложения ASP.NET MVC 5, используя Entity Framework 6 Code First и Visual Studio...
+description: В этом руководстве вы добавите дополнительные сущности и связи, а также настроите модель данных путем указания форматирования, проверки и правила сопоставления базы данных.
 ms.author: riande
-ms.date: 11/07/2014
+ms.date: 01/16/2019
+ms.topic: tutorial
 ms.assetid: 46f7f3c9-274f-4649-811d-92222a9b27e2
 msc.legacyurl: /mvc/overview/getting-started/getting-started-with-ef-using-mvc/creating-a-more-complex-data-model-for-an-asp-net-mvc-application
 msc.type: authoredcontent
-ms.openlocfilehash: 25cec8bb9384dbd053f8af12855171a54675a40e
-ms.sourcegitcommit: a4dcca4f1cb81227c5ed3c92dc0e28be6e99447b
+ms.openlocfilehash: 50cbc184983b3e37c34332dad52bc0d70ade18c2
+ms.sourcegitcommit: 184ba5b44d1c393076015510ac842b77bc9d4d93
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "48912492"
+ms.lasthandoff: 01/18/2019
+ms.locfileid: "54396302"
 ---
-<a name="creating-a-more-complex-data-model-for-an-aspnet-mvc-application"></a>Создание более сложной модели данных для приложения ASP.NET MVC
-====================
-по [том Дайкстра](https://github.com/tdykstra)
+# <a name="tutorial-create-a-more-complex-data-model-for-an-aspnet-mvc-app"></a>Учебник. Создание более сложной модели данных для приложения ASP.NET MVC
 
-[Скачать завершенный проект](http://code.msdn.microsoft.com/ASPNET-MVC-Application-b01a9fe8)
-
-> Пример веб-приложение университета Contoso демонстрирует создание приложения ASP.NET MVC 5, используя Entity Framework 6 Code First и Visual Studio. Сведения о серии руководств см. в [первом руководстве серии](creating-an-entity-framework-data-model-for-an-asp-net-mvc-application.md).
-
-
-В предыдущих руководствах вы работали с простой модели данных, состоящей из трех сущностей. В этом руководстве вы добавите дополнительные сущности и связи, а также настроите модель данных путем указания форматирования, проверки и правила сопоставления базы данных. Вы увидите два способа настройки модели данных: путем добавления атрибутов к классам сущностей и добавив код в класс контекста базы данных.
+В предыдущих руководствах вы работали с простой модели данных, состоящей из трех сущностей. В этом учебнике вы добавите дополнительные сущности и связи, и настроить модель данных путем указания форматирования, проверки и правила сопоставления базы данных. В этой статье показано два способа настройки модели данных: путем добавления атрибутов к классам сущностей и добавив код в класс контекста базы данных.
 
 По завершении работы классы сущностей сформируют готовую модель данных, приведенную на следующем рисунке:
 
 ![School_class_diagram](creating-a-more-complex-data-model-for-an-asp-net-mvc-application/_static/image1.png)
 
-## <a name="customize-the-data-model-by-using-attributes"></a>Настройка модели данных с использованием атрибутов
+В этом учебнике рассмотрены следующие задачи.
+
+> [!div class="checklist"]
+> * Настройка модели данных
+> * Обновление сущности Student
+> * Создание сущности Instructor
+> * Создание сущности OfficeAssignment
+> * Изменение сущности Course
+> * Создание сущности Department
+> * Изменение сущности Enrollment
+> * Добавьте код в контексте базы данных
+> * Начальное значение базы данных тестовыми данными
+> * Добавление миграции
+> * Обновление базы данных
+
+## <a name="prerequisites"></a>Предварительные требования
+
+* [Первой миграции и развертывания кода](migrations-and-deployment-with-the-entity-framework-in-an-asp-net-mvc-application.md)
+
+## <a name="customize-the-data-model"></a>Настройка модели данных
 
 В этом разделе вы узнаете, как настроить модель данных с помощью атрибутов, которые указывают правила форматирования, проверки и сопоставления базы данных. Затем в нескольких следующих разделах вы создадите полную `School` модели данных, добавив атрибуты к классам уже создана и создание новых классов для остальных типов сущностей в модели.
 
@@ -62,7 +75,7 @@ ms.locfileid: "48912492"
 
 Если вы используете `DataType` атрибут с полем даты, вам нужно будет указать `DisplayFormat` атрибут также, чтобы гарантировать, что и поле правильно отображаются в браузерах Chrome. Дополнительные сведения см. в разделе [цепочке обсуждений StackOverflow](http://stackoverflow.com/questions/12633471/mvc4-datatype-date-editorfor-wont-display-date-value-in-chrome-fine-in-ie).
 
-Дополнительные сведения о том, как обрабатывать другие форматы даты в MVC см. в статье [Общие сведения о MVC 5: изучение методов, редактировать и изменить представление](../introduction/examining-the-edit-methods-and-edit-view.md) и поиска на странице для &quot;интернационализации&quot;.
+Дополнительные сведения о том, как обрабатывать другие форматы даты в MVC см. в статье [Общие сведения о MVC 5: Изучение методов, редактировать и изменить представление](../introduction/examining-the-edit-methods-and-edit-view.md) и поиска на странице для &quot;интернационализации&quot;.
 
 Снова запустите на страницу указателя учащихся и обратите внимание на то, что время для дат зачисления больше не отображается. Аналогичная ситуация будет наблюдаться в любом представлении, которое использует `Student` модели.
 
@@ -96,9 +109,7 @@ ms.locfileid: "48912492"
 
 Метка времени, добавляемый к имени файла миграций Entity Framework используется для упорядочения миграций. Вы можете создать несколько миграций перед запуском `update-database` команды, после чего все миграции применяются в порядке, в котором они были созданы.
 
-Запустите **создать** и введите любое имя длиннее 50 символов. При нажатии кнопки **Create** (Создать) проверка на стороне клиента отображает сообщение об ошибке.
-
-![Ошибка val, на стороне клиента](creating-a-more-complex-data-model-for-an-asp-net-mvc-application/_static/image3.png)
+Запустите **создать** и введите любое имя длиннее 50 символов. При нажатии кнопки **создать**, проверка на стороне клиента отображает сообщение об ошибке: *Поле LastName должен быть строкой длиной не более 50.*
 
 ### <a name="the-column-attribute"></a>Атрибут столбца
 
@@ -116,8 +127,6 @@ ms.locfileid: "48912492"
 
 В **обозревателя серверов**откройте *учащихся* конструктор таблиц, дважды щелкнув *учащихся* таблицы.
 
-![](creating-a-more-complex-data-model-for-an-asp-net-mvc-application/_static/image4.png)
-
 Ниже показано имя исходного столбца, как это было до применения двух первых миграций. В дополнение к имени столбца, изменение с `FirstMidName` для `FirstName`, два столбца были изменены относительно `MAX` длиной до 50 символов.
 
 ![](creating-a-more-complex-data-model-for-an-asp-net-mvc-application/_static/image5.png)
@@ -127,10 +136,7 @@ ms.locfileid: "48912492"
 > [!NOTE]
 > Если попытаться выполнить компиляцию до создания всех классов сущностей в следующих разделах, могут возникнуть ошибки компилятора.
 
-
-## <a name="complete-changes-to-the-student-entity"></a>Внесите изменения в сущности Student
-
-![Student_entity](creating-a-more-complex-data-model-for-an-asp-net-mvc-application/_static/image6.png)
+## <a name="update-student-entity"></a>Обновление сущности Student
 
 В *Models\Student.cs*, замените код, добавленный ранее, следующим кодом. Изменения выделены.
 
@@ -150,9 +156,7 @@ ms.locfileid: "48912492"
 
 `FullName` — это вычисляемое свойство, которое возвращает значение, созданное путем объединения двух других свойств. Поэтому он имеет только `get` метод доступа и нет `FullName` столбец создается в базе данных.
 
-## <a name="create-the-instructor-entity"></a>Создание сущности Instructor
-
-![Instructor_entity](creating-a-more-complex-data-model-for-an-asp-net-mvc-application/_static/image7.png)
+## <a name="create-instructor-entity"></a>Создание сущности Instructor
 
 Создание *Models\Instructor.cs*, заменив код шаблона следующим кодом:
 
@@ -176,9 +180,7 @@ ms.locfileid: "48912492"
 
 [!code-csharp[Main](creating-a-more-complex-data-model-for-an-asp-net-mvc-application/samples/sample12.cs)]
 
-## <a name="create-the-officeassignment-entity"></a>Создание сущности OfficeAssignment
-
-![OfficeAssignment_entity](creating-a-more-complex-data-model-for-an-asp-net-mvc-application/_static/image8.png)
+## <a name="create-officeassignment-entity"></a>Создание сущности OfficeAssignment
 
 Создание *Models\OfficeAssignment.cs* следующим кодом:
 
@@ -210,8 +212,6 @@ ms.locfileid: "48912492"
 
 ## <a name="modify-the-course-entity"></a>Изменение сущности Course
 
-![Course_entity](creating-a-more-complex-data-model-for-an-asp-net-mvc-application/_static/image9.png)
-
 В *Models\Course.cs*, замените код, добавленный ранее, следующим кодом:
 
 [!code-csharp[Main](creating-a-more-complex-data-model-for-an-asp-net-mvc-application/samples/sample15.cs)]
@@ -242,8 +242,6 @@ ms.locfileid: "48912492"
 
 ## <a name="create-the-department-entity"></a>Создание сущности Department
 
-![Department_entity](creating-a-more-complex-data-model-for-an-asp-net-mvc-application/_static/image10.png)
-
 Создание *Models\Department.cs* следующим кодом:
 
 [!code-csharp[Main](creating-a-more-complex-data-model-for-an-asp-net-mvc-application/samples/sample20.cs)]
@@ -268,14 +266,11 @@ ms.locfileid: "48912492"
     [!code-csharp[Main](creating-a-more-complex-data-model-for-an-asp-net-mvc-application/samples/sample23.cs)]
 
   > [!NOTE]
-  > По соглашению Entity Framework разрешает каскадное удаление для внешних ключей, не допускающих значение null, и связей многие ко многим. Это может привести к циклическим правилам каскадного удаления, которые вызывают исключение при попытке добавить миграцию. Например, если вы не `Department.InstructorID` свойство допускает значение NULL, возникнет следующее сообщение об исключении: «ссылочную связь приведет к циклическая ссылка, не допускается.» Если вашей бизнес-правила требуют `InstructorID` значение отличное от NULL, необходимо использовать следующий оператор текучего API, чтобы отключить каскадное удаление для связи:
+  > По соглашению Entity Framework разрешает каскадное удаление для внешних ключей, не допускающих значение null, и связей многие ко многим. Это может привести к циклическим правилам каскадного удаления, которые вызывают исключение при попытке добавить миграцию. Например, если вы не `Department.InstructorID` свойство допускает значение NULL, возникнет следующее сообщение об исключении: «Ссылочную связь приведет к циклическая ссылка, не допускается.» Если вашей бизнес-правила требуют `InstructorID` значение отличное от NULL, необходимо использовать следующий оператор текучего API, чтобы отключить каскадное удаление для связи:
 
 [!code-csharp[Main](creating-a-more-complex-data-model-for-an-asp-net-mvc-application/samples/sample24.cs)]
 
-
 ## <a name="modify-the-enrollment-entity"></a>Изменение сущности Enrollment
-
-![Enrollment_entity](creating-a-more-complex-data-model-for-an-asp-net-mvc-application/_static/image11.png)
 
  В *Models\Enrollment.cs*, замените код, добавленный ранее, следующим кодом
 
@@ -312,15 +307,15 @@ ms.locfileid: "48912492"
 
 Платформа Entity Framework автоматически создает `CourseInstructor` таблицы и для чтения, так и для обновления его косвенно путем чтения и обновления `Instructor.Courses` и `Course.Instructors` свойства навигации.
 
-## <a name="entity-diagram-showing-relationships"></a>Схема сущностей, показывающая связи
+## <a name="entity-relationship-diagram"></a>Диаграмма отношений сущностей
 
 Ниже показана схема, создаваемая средствами Entity Framework Power Tools для завершенной модели School.
 
-![School_data_model_diagram](creating-a-more-complex-data-model-for-an-asp-net-mvc-application/_static/image15.png)
+![School_data_model_diagram](creating-a-more-complex-data-model-for-an-asp-net-mvc-application/_static/image1.png)
 
 Помимо линиях связи многие ко многим (\* для \*) и связей один ко многим (1, чтобы \*), здесь можно увидеть на линию связи один к нулю или одному (1 к 0.. 1) между `Instructor` и `OfficeAssignment` сущности и на линию связи нуль или один ко многим (0.. 1 to \*) между сущностями Instructor и Department.
 
-## <a name="customize-the-data-model-by-adding-code-to-the-database-context"></a>Настроить модель данных, добавив код в контексте базы данных
+## <a name="add-code-to-database-context"></a>Добавьте код в контексте базы данных
 
 Далее вы добавите новые сущности для `SchoolContext` и настройте некоторые сопоставления с помощью [fluent API](https://msdn.microsoft.com/data/jj591617) вызовов. API-Интерфейс является «текучим», так как она часто используется серии вызовов методов вместе в одном операторе, как показано в следующем примере:
 
@@ -346,7 +341,7 @@ ms.locfileid: "48912492"
 
 Сведения о действия инструкций «fluent API» за кулисами, см. в разделе [Fluent API](https://blogs.msdn.com/b/aspnetue/archive/2011/05/04/entity-framework-code-first-tutorial-supplement-what-is-going-on-in-a-fluent-api-call.aspx) записи блога.
 
-## <a name="seed-the-database-with-test-data"></a>Заполнение базы данных тестовыми данными
+## <a name="seed-database-with-test-data"></a>Начальное значение базы данных тестовыми данными
 
 Замените код в *Migrations\Configuration.cs* файла следующий код, чтобы предоставить начальные данные для создания новых сущностей.
 
@@ -358,7 +353,7 @@ ms.locfileid: "48912492"
 
 При создании `Course` объекта, необходимо инициализировать `Instructors` свойство навигации как пустую коллекцию с помощью кода `Instructors = new List<Instructor>()`. Это делает возможным добавление `Instructor` сущностей, которые относятся к этому `Course` с помощью `Instructors.Add` метод. Если вы не создавали пустой список, невозможно добавить эти связи, так как `Instructors` свойство будет иметь значение null и не пришлось бы `Add` метод. Инициализация списка можно также добавить в конструктор.
 
-## <a name="add-a-migration-and-update-the-database"></a>Добавьте миграцию и обновления базы данных
+## <a name="add-a-migration"></a>Добавление миграции
 
 В PMC введите `add-migration` команды (не делайте `update-database` команды еще):
 
@@ -376,6 +371,8 @@ ms.locfileid: "48912492"
 
 При `Seed` выполнения метода, он будет вставлять строки в `Department` таблицы и он будет связать существующие `Course` строк для этих новых `Department` строк. Если вы еще не добавили все курсы в пользовательском Интерфейсе, затем больше не потребуется кафедру «Temp» или значение по умолчанию на `Course.DepartmentID` столбца. Чтобы разрешить к тому, что кто-то возможно, добавили курсы с помощью приложения, также следует обновить `Seed` код метода, чтобы убедиться, что все `Course` строк (не только те, которые вставлены в ходе предыдущих запусков из `Seed` метод) имеют Допустимые `DepartmentID` значения, прежде чем удалить значение по умолчанию значение из столбца и удалить кафедру «Temp».
 
+## <a name="update-the-database"></a>Обновление базы данных
+
 После завершения редактирования &lt; *timestamp&gt;\_ComplexDataModel.cs* файл, введите `update-database` команду в PMC для выполнения миграции.
 
 [!code-powershell[Main](creating-a-more-complex-data-model-for-an-asp-net-mvc-application/samples/sample35.ps1)]
@@ -391,7 +388,6 @@ ms.locfileid: "48912492"
 >
 > `update-database -TargetMigration:0`
 
-
 Открыть базу данных в **обозревателя серверов** как вы делали это раньше и разверните **таблиц** узел, чтобы увидеть, что все таблицы были созданы. (Если у вас есть **обозревателя серверов** откройте из более ранних времени, щелкните **обновить** кнопки.)
 
 ![](creating-a-more-complex-data-model-for-an-asp-net-mvc-application/_static/image16.png)
@@ -402,14 +398,28 @@ ms.locfileid: "48912492"
 
 ![Table_data_in_CourseInstructor_table](creating-a-more-complex-data-model-for-an-asp-net-mvc-application/_static/image17.png)
 
-## <a name="summary"></a>Сводка
-
-Теперь у вас есть более сложная модель данных и соответствующая база данных. В следующем руководстве вы узнаете о различных способах доступа к соответствующим данным.
-
-Оставьте свои отзывы на том, как вам понравилось, и этот учебник, и что можно улучшить.
+## <a name="additional-resources"></a>Дополнительные ресурсы
 
 Ссылки на другие ресурсы Entity Framework можно найти в [доступ к данным ASP.NET — рекомендуемые ресурсы](../../../../whitepapers/aspnet-data-access-content-map.md).
 
-> [!div class="step-by-step"]
-> [Назад](migrations-and-deployment-with-the-entity-framework-in-an-asp-net-mvc-application.md)
-> [Вперед](reading-related-data-with-the-entity-framework-in-an-asp-net-mvc-application.md)
+## <a name="next-steps"></a>Следующие шаги
+
+В этом учебнике рассмотрены следующие задачи.
+
+> [!div class="checklist"]
+> * Настроить модель данных
+> * Обновленную сущность Student
+> * Созданной сущности Instructor
+> * Созданной сущности OfficeAssignment
+> * Изменить сущности Course
+> * Создана сущность Department
+> * Изменить сущность Enrollment
+> * Код, добавленный в контексте базы данных
+> * Задания начальных значений базы данных тестовыми данными
+> * Добавлены миграции
+> * Обновите базу данных
+
+Перейдите к следующей статье, чтобы узнать, как читать и отображать связанные данные, которые Entity Framework загружает в свойства навигации.
+
+> [!div class="nextstepaction"]
+> [Чтение связанных данных](reading-related-data-with-the-entity-framework-in-an-asp-net-mvc-application.md)

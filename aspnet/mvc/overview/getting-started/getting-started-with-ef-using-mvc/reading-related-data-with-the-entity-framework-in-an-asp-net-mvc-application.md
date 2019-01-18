@@ -1,28 +1,22 @@
 ---
 uid: mvc/overview/getting-started/getting-started-with-ef-using-mvc/reading-related-data-with-the-entity-framework-in-an-asp-net-mvc-application
-title: Чтение связанных данных с Entity Framework в приложении ASP.NET MVC | Документация Майкрософт
+title: Учебник. Чтение связанных данных с помощью EF в приложении ASP.NET MVC
+description: В этом руководстве можно прочитать и отображения связанных данных — то есть данные, которые Entity Framework загружает в свойства навигации.
 author: tdykstra
-description: /AJAX/tutorials/using-AJAX-Control-Toolkit-Controls-and-Control-Extenders-VB
 ms.author: riande
-ms.date: 11/07/2014
+ms.date: 01/17/2019
+ms.topic: tutorial
 ms.assetid: 18cdd896-8ed9-4547-b143-114711e3eafb
 msc.legacyurl: /mvc/overview/getting-started/getting-started-with-ef-using-mvc/reading-related-data-with-the-entity-framework-in-an-asp-net-mvc-application
 msc.type: authoredcontent
-ms.openlocfilehash: 18d3720f891e2356af42b58389776f2d04eee39d
-ms.sourcegitcommit: a4dcca4f1cb81227c5ed3c92dc0e28be6e99447b
+ms.openlocfilehash: 8660a75655b801364cce7c4b59847c5c00562a27
+ms.sourcegitcommit: 184ba5b44d1c393076015510ac842b77bc9d4d93
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "48913207"
+ms.lasthandoff: 01/18/2019
+ms.locfileid: "54396211"
 ---
-<a name="reading-related-data-with-the-entity-framework-in-an-aspnet-mvc-application"></a>Чтение связанных данных с Entity Framework в приложении ASP.NET MVC
-====================
-по [том Дайкстра](https://github.com/tdykstra)
-
-[Скачать завершенный проект](http://code.msdn.microsoft.com/ASPNET-MVC-Application-b01a9fe8)
-
-> Пример веб-приложение университета Contoso демонстрирует создание приложения ASP.NET MVC 5, используя Entity Framework 6 Code First и Visual Studio. Сведения о серии руководств см. в [первом руководстве серии](creating-an-entity-framework-data-model-for-an-asp-net-mvc-application.md).
-
+# <a name="tutorial-read-related-data-with-ef-in-an-aspnet-mvc-app"></a>Учебник. Чтение связанных данных с помощью EF в приложении ASP.NET MVC
 
 В предыдущем учебном курсе мы завершили модели School. В этом руководстве можно прочитать и отображения связанных данных — то есть данные, которые Entity Framework загружает в свойства навигации.
 
@@ -32,7 +26,18 @@ ms.locfileid: "48913207"
 
 ![Instructors_index_page_with_instructor_and_course_selected](reading-related-data-with-the-entity-framework-in-an-asp-net-mvc-application/_static/image2.png)
 
-## <a name="lazy-eager-and-explicit-loading-of-related-data"></a>Отложенная, упреждающая и явная загрузка связанных данных
+В этом учебнике рассмотрены следующие задачи.
+
+> [!div class="checklist"]
+> * Узнайте, как загружать связанные данные
+> * Создание страницы курсов
+> * Создание страницы "Instructors"
+
+## <a name="prerequisites"></a>Предварительные требования
+
+* [Создание более сложной модели данных](creating-a-more-complex-data-model-for-an-asp-net-mvc-application.md)
+
+## <a name="learn-how-to-load-related-data"></a>Узнайте, как загружать связанные данные
 
 Существует несколько способов, что платформа Entity Framework может загружать связанные данные в свойства навигации сущности:
 
@@ -54,7 +59,7 @@ ms.locfileid: "48913207"
 
 С другой стороны в некоторых сценариях отложенная загрузка является более эффективным. Безотложная загрузка может привести к очень сложного соединения для создаваемого, который SQL Server не сможет эффективно обработать. Или, если вам нужно получить доступ к свойствам навигации сущности только для подмножества набора сущностей обработка, отложенная загрузка может работать лучше, так как Безотложная загрузка будет получено больше данных, чем необходимо. Если важна производительность, то для выбора наилучшего решения рекомендуется протестировать производительность для обоих случаев.
 
-Отложенная загрузка может маскировать код, вызывающий проблемы с производительностью. Например код, который не указывает eager или явной загрузки, но обрабатывает большое количество сущностей и использует несколько свойств навигации в каждой итерации может быть неэффективны (из-за множество обращений к базе данных). Приложение, которое хорошо работать в разработку с помощью на локальный сервер SQL могут возникать проблемы с производительностью при перемещении базы данных SQL Azure из-за отложенной загрузки и увеличению времени задержки. Профилирование с реалистичные тестовые нагрузки запросов к базе данных, поможет определить, подходит ли отложенная загрузка. Дополнительные сведения см. в разделе [раскрытие стратегий Entity Framework: загрузка связанных данных](https://msdn.microsoft.com/magazine/hh205756.aspx) и [с помощью Entity Framework для сокращения задержек в сети для SQL Azure](https://msdn.microsoft.com/magazine/gg309181.aspx).
+Отложенная загрузка может маскировать код, вызывающий проблемы с производительностью. Например код, который не указывает eager или явной загрузки, но обрабатывает большое количество сущностей и использует несколько свойств навигации в каждой итерации может быть неэффективны (из-за множество обращений к базе данных). Приложение, которое хорошо работать в разработку с помощью на локальный сервер SQL могут возникать проблемы с производительностью при перемещении базы данных SQL Azure из-за отложенной загрузки и увеличению времени задержки. Профилирование с реалистичные тестовые нагрузки запросов к базе данных, поможет определить, подходит ли отложенная загрузка. Дополнительные сведения см. в разделе [раскрытие стратегий Entity Framework: Загрузка связанных данных](https://msdn.microsoft.com/magazine/hh205756.aspx) и [с помощью Entity Framework для уменьшения задержек в сети для SQL Azure](https://msdn.microsoft.com/magazine/gg309181.aspx).
 
 ### <a name="disable-lazy-loading-before-serialization"></a>Отключить отложенную загрузку до сериализации
 
@@ -73,13 +78,19 @@ ms.locfileid: "48913207"
 
     [!code-csharp[Main](reading-related-data-with-the-entity-framework-in-an-asp-net-mvc-application/samples/sample1.cs)]
 
-## <a name="create-a-courses-page-that-displays-department-name"></a>Создание страницы курсы, название отдела отображает
+## <a name="create-a-courses-page"></a>Создание страницы курсов
 
 `Course` Сущность включает свойство навигации, которое содержит `Department` сущность Department факультета, присвоенный курса. Для отображения имени назначенной кафедры в списке курсов, необходимо получить `Name` свойства из `Department` сущность, которая находится в `Course.Department` свойство навигации.
 
-Создайте контроллер с именем `CourseController` (не CoursesController) для `Course` тип сущности, используя те же параметры для **контроллер MVC 5 с представлениями, использующий Entity Framework** шаблон, который было показано ранее в `Student` контроллера, как показано на следующем рисунке:
+Создайте контроллер с именем `CourseController` (не CoursesController) для `Course` тип сущности, используя те же параметры для **контроллер MVC 5 с представлениями, использующий Entity Framework** шаблон, который было показано ранее в `Student` контроллера:
 
-![Add_Controller_dialog_box_for_Course_controller](reading-related-data-with-the-entity-framework-in-an-asp-net-mvc-application/_static/image3.png)
+| Параметр | Значение |
+| ------- | ----- |
+| Класс модели | Выберите **курс (ContosoUniversity.Models)**. |
+| Класс контекста данных | Выберите **SchoolContext (ContosoUniversity.DAL)**. |
+| Имя контроллера | Введите *CourseController*. Опять же не *CoursesController* с *s*. При выборе **курс (ContosoUniversity.Models)**, **имя контроллера** значение была автоматически заполнена. Вам нужно изменить значение. |
+
+Оставьте остальные значения по умолчанию и добавить контроллер.
 
 Откройте *Controllers\CourseController.cs* и просмотрите `Index` метод:
 
@@ -103,15 +114,9 @@ ms.locfileid: "48913207"
 
 Откройте страницу (выберите **курсы** вкладку на домашней странице университета Contoso) для просмотра списка с названиями кафедр.
 
-![Courses_index_page_with_department_names](reading-related-data-with-the-entity-framework-in-an-asp-net-mvc-application/_static/image4.png)
+## <a name="create-an-instructors-page"></a>Создание страницы "Instructors"
 
-## <a name="create-an-instructors-page-that-shows-courses-and-enrollments"></a>Создание страницы "Instructors" с отображением курсов и регистрации
-
-В этом разделе вы создадите контроллера и просмотра для `Instructor` сущности, чтобы отобразить страницу Instructors:
-
-![Instructors_index_page_with_instructor_and_course_selected](reading-related-data-with-the-entity-framework-in-an-asp-net-mvc-application/_static/image5.png)
-
-Эта страница считывает и отображает связанные данные следующим образом:
+В этом разделе вы создадите контроллера и просмотра для `Instructor` сущности, чтобы отобразить страницу Instructors. Эта страница считывает и отображает связанные данные следующим образом:
 
 - Список преподавателей отображает связанные данные из `OfficeAssignment` сущности. Между сущностями `Instructor` и `OfficeAssignment` действует связь один к нулю или к одному. Вы будете использовать безотложную загрузку для `OfficeAssignment` сущностей. Как упоминалось ранее, безотложная загрузка обычно эффективнее при получении связанных данных для всех строк главной таблицы. В нашем случае мы хотим отобразить принадлежность к кабинету для каждого преподавателя.
 - Когда пользователь выбирает преподавателя, связанные с `Course` сущности отображаются. Между сущностями `Instructor` и `Course` действует связь многие ко многим. Вы будете использовать безотложную загрузку для `Course` сущности и связанных с ними `Department` сущностей. Таким образом отложенная загрузка может быть более эффективным, поскольку нам требуются курсы только для выбранного преподавателя. Этот пример, однако, показывает, как использовать безотложную загрузку для свойств навигации сущностей, которые сами находятся в свойствах навигации.
@@ -127,9 +132,15 @@ ms.locfileid: "48913207"
 
 ### <a name="create-the-instructor-controller-and-views"></a>Создание контроллера и представлений Instructor
 
-Создание `InstructorController` (не InstructorsController) контроллер с действиями чтения и записи EF, как показано на следующем рисунке:
+Создание `InstructorController` (не InstructorsController) контроллер с EF чтения и записи действий:
 
-![Add_Controller_dialog_box_for_Instructor_controller](reading-related-data-with-the-entity-framework-in-an-asp-net-mvc-application/_static/image6.png)
+| Параметр | Значение |
+| ------- | ----- |
+| Класс модели | Выберите **преподавателя (ContosoUniversity.Models)**. |
+| Класс контекста данных | Выберите **SchoolContext (ContosoUniversity.DAL)**. |
+| Имя контроллера | Введите *InstructorController*. Опять же не *InstructorsController* с *s*. При выборе **курс (ContosoUniversity.Models)**, **имя контроллера** значение была автоматически заполнена. Вам нужно изменить значение. |
+
+Оставьте остальные значения по умолчанию и добавить контроллер.
 
 Откройте *Controllers\InstructorController.cs* и добавьте `using` инструкции для `ViewModels` пространство имен:
 
@@ -193,8 +204,6 @@ ms.locfileid: "48913207"
 
 Запустите приложение и выберите **преподавателей** вкладки. На странице отображается `Location` свойства связанных `OfficeAssignment` сущности и пустую таблицу ячейки при отсутствии без связанных `OfficeAssignment` сущности.
 
-![Instructors_index_page_with_nothing_selected](reading-related-data-with-the-entity-framework-in-an-asp-net-mvc-application/_static/image7.png)
-
 В *Views\Instructor\Index.cshtml* файл, после закрывающего `table` элемента (в конце файла), добавьте следующий код. Этот код отображает список связанных с преподавателем курсов, когда преподаватель выбран.
 
 [!code-cshtml[Main](reading-related-data-with-the-entity-framework-in-an-asp-net-mvc-application/samples/sample18.cshtml)]
@@ -203,8 +212,6 @@ ms.locfileid: "48913207"
 
 Откройте страницу и выберите преподавателя. Вы увидите сетку, которая отображает курсы, назначенные выбранному преподавателю, и для каждого курса отобразится имя связанного факультета.
 
-![Instructors_index_page_with_instructor_selected](reading-related-data-with-the-entity-framework-in-an-asp-net-mvc-application/_static/image8.png)
-
 После только что добавленного блока кода добавьте следующий код. Он отображает список студентов, которые зачислены на курс при выборе этого курса.
 
 [!code-cshtml[Main](reading-related-data-with-the-entity-framework-in-an-asp-net-mvc-application/samples/sample19.cshtml)]
@@ -212,8 +219,6 @@ ms.locfileid: "48913207"
 Этот код считывает `Enrollments` свойство модели представления для отображения списка студентов, зарегистрированных в этом курсе.
 
 Откройте страницу и выберите преподавателя. Затем выберите курс, чтобы увидеть список зачисленных студентов и их оценки.
-
-![Instructors_index_page_with_instructor_and_course_selected](reading-related-data-with-the-entity-framework-in-an-asp-net-mvc-application/_static/image9.png)
 
 ### <a name="adding-explicit-loading"></a>Добавление явная загрузка
 
@@ -239,14 +244,20 @@ ms.locfileid: "48913207"
 
 Теперь запустите страница индекса преподавателей, и вы увидите никакой разницы в том, что отображено на странице, несмотря на то, что вы изменили способ извлечения данных.
 
-## <a name="summary"></a>Сводка
-
-Теперь вы использовали все три способа (отложенная, упреждающая и явная) загружать связанные данные в свойства навигации. В следующем руководстве вы узнаете, как обновлять связанные данные.
-
-Оставьте свои отзывы на том, как вам понравилось, и этот учебник, и что можно улучшить.
+## <a name="additional-resources"></a>Дополнительные ресурсы
 
 Ссылки на другие ресурсы Entity Framework можно найти в [доступ к данным ASP.NET — рекомендуемые ресурсы](../../../../whitepapers/aspnet-data-access-content-map.md).
 
-> [!div class="step-by-step"]
-> [Назад](creating-a-more-complex-data-model-for-an-asp-net-mvc-application.md)
-> [Вперед](updating-related-data-with-the-entity-framework-in-an-asp-net-mvc-application.md)
+## <a name="next-steps"></a>Следующие шаги
+
+В этом учебнике рассмотрены следующие задачи.
+
+> [!div class="checklist"]
+> * Узнали, как загружать связанные данные
+> * Создать страницу курсы
+> * Созданные страницы "Instructors"
+
+Перейдите к следующей статье, чтобы узнать, как обновлять связанные данные.
+
+> [!div class="nextstepaction"]
+> [Обновление связанных данных](updating-related-data-with-the-entity-framework-in-an-asp-net-mvc-application.md)
