@@ -4,20 +4,20 @@ author: rick-anderson
 description: В этом руководстве демонстрируется построение приложения ASP.NET Core 2.x с использованием OAuth 2.0 с внешними поставщиками проверки подлинности.
 ms.author: riande
 ms.custom: mvc
-ms.date: 11/11/2018
+ms.date: 1/19/2019
 uid: security/authentication/social/index
-ms.openlocfilehash: 063d452fb6ab91b712ade7f7b7ed99823dbdc657
-ms.sourcegitcommit: 97d7a00bd39c83a8f6bccb9daa44130a509f75ce
+ms.openlocfilehash: 48dd8b772234ff18158423a36ed1716102bc2f31
+ms.sourcegitcommit: 184ba5b44d1c393076015510ac842b77bc9d4d93
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54098822"
+ms.lasthandoff: 01/18/2019
+ms.locfileid: "54396146"
 ---
 # <a name="facebook-google-and-external-provider-authentication-in-aspnet-core"></a>Проверка подлинности Facebook, Google и внешних поставщиков в ASP.NET Core
 
 Авторы: [Валерий Новицкий](https://github.com/01binary) (Valeriy Novytskyy) и [Рик Андерсон](https://twitter.com/RickAndMSFT) (Rick Anderson)
 
-В этом руководстве демонстрируется построение приложения ASP.NET Core 2.x, с помощью которого пользователи могут выполнять вход, используя OAuth 2.0 с учетными данными внешних поставщиков проверки подлинности.
+В этом руководстве показано создание приложения ASP.NET Core 2.2, позволяющего пользователям выполнять вход с помощью OAuth 2.0 и учетных данных от внешних поставщиков проверки подлинности.
 
 В следующих разделах рассматриваются такие поставщики, как [Facebook](xref:security/authentication/facebook-logins), [Twitter](xref:security/authentication/twitter-logins), [Google](xref:security/authentication/google-logins), и [Microsoft](xref:security/authentication/microsoft-logins). В сторонних пакетах также доступны другие поставщики, такие как [AspNet.Security.OAuth.Providers](https://github.com/aspnet-contrib/AspNet.Security.OAuth.Providers) и [AspNet.Security.OpenId.Providers](https://github.com/aspnet-contrib/AspNet.Security.OpenId.Providers).
 
@@ -30,29 +30,13 @@ ms.locfileid: "54098822"
 * В Visual Studio 2017 создайте проект на начальной странице или выбрав **Файл** > **Создать** > **Проект**.
 
 * Выберите шаблон **Веб-приложение ASP.NET Core** из категории **Visual C#** > **.NET Core**:
-
-![Диалоговое окно создания нового проекта](index/_static/new-project.png)
-
-* Коснитесь пункта **Веб-приложение** и убедитесь, что параметру **Проверка подлинности** присвоено значение **Учетные записи отдельных пользователей**:
-
-![Диалоговое окно "Создание веб-приложения"](index/_static/select-project.png)
-
-Примечание. Этот учебник относится к версии пакета SDK для ASP.NET Core 2.0, которую можно выбрать в верхней части мастера.
+* Выберите **Изменить проверку подлинности** и задайте способ **Учетные записи отдельных пользователей**.
 
 ## <a name="apply-migrations"></a>Применение миграции
 
-* Запустите приложение и щелкните ссылку для **входа**.
-* Выберите ссылку **Регистрация нового пользователя**.
+* Запустите приложение и щелкните ссылку **Регистрация**.
 * Введите адрес электронной почты и пароль для новой учетной записи, а затем щелкните **Зарегистрироваться**.
 * Следуйте инструкциям по применению миграции.
-
-## <a name="require-https"></a>Требование к использованию протокола HTTPS
-
-Для проверки подлинности по протоколу HTTPS в OAuth 2.0 нужно обязательно использовать протокол SSL/TLS.
-
-Проекты, создаваемые по шаблонам проектов **Веб-приложение** или **Веб-API** в ASP.NET Core 2.1 и более поздних версиях, автоматически активируют протокол HTTPS. При выборе параметра **Индивидуальные учетные записи пользователей** в диалоговом окне **Изменение способа проверки подлинности** мастера проектов приложение запускается с безопасной конечной точкой по умолчанию.
-
-Для получения дополнительной информации см. <xref:security/enforcing-ssl>.
 
 [!INCLUDE[Forward request information when behind a proxy or load balancer section](includes/forwarded-headers-middleware.md)]
 
@@ -83,11 +67,11 @@ ms.locfileid: "54098822"
 
 Чтобы создать пароль и войти с использованием адреса электронной почты, который был настроен при входе с использованием внешнего поставщика, выполните следующие действия:
 
-* Коснитесь ссылки **Hello &lt;псевдоним электронной почты&gt;** в правом верхнем углу, чтобы перейти к представлению **Управление**.
+* Выберите ссылку **Здравствуйте, &lt;псевдоним электронной почты&gt;** в правом верхнем углу, чтобы перейти к представлению **Управление**.
 
 ![Представление управления веб-приложения](index/_static/pass1a.png)
 
-* Коснитесь элемента **Создать**
+* Выберите **Создать**.
 
 ![Настройте страницу пароля](index/_static/pass2a.png)
 
