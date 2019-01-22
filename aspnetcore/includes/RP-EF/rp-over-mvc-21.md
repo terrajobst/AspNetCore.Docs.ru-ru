@@ -1,18 +1,24 @@
+---
+ms.openlocfilehash: b7c97f3b329bea452e1f49c351231f92310c97b5
+ms.sourcegitcommit: 184ba5b44d1c393076015510ac842b77bc9d4d93
+ms.translationtype: HT
+ms.contentlocale: ru-RU
+ms.lasthandoff: 01/18/2019
+ms.locfileid: "53335076"
+---
 ::: moniker range=">= aspnetcore-2.1"
 
-<span data-ttu-id="9a429-101">Этот учебник не был обновлен для версии ASP.NET Core 2.1.</span><span class="sxs-lookup"><span data-stu-id="9a429-101">This tutorial has not been upgraded to ASP.NET Core 2.1.</span></span> <span data-ttu-id="9a429-102">Чтобы просмотреть версию этого учебника для ASP.NET Core 2.0, выберите пункт **ASP.NET Core 2.0** над содержанием или в верхней части страницы:</span><span class="sxs-lookup"><span data-stu-id="9a429-102">The ASP.NET Core 2.0 version of this tutorial is available by selecting **ASP.NET Core 2.0** above the table of contents or at the top of the page:</span></span>
+<span data-ttu-id="f3c61-101">Этот учебник не был обновлен для версии ASP.NET Core 2.1.</span><span class="sxs-lookup"><span data-stu-id="f3c61-101">This tutorial has not been upgraded to ASP.NET Core 2.1.</span></span> <span data-ttu-id="f3c61-102">Чтобы просмотреть версию этого учебника для ASP.NET Core 2.0, выберите пункт **ASP.NET Core 2.0** над содержанием или в верхней части страницы:</span><span class="sxs-lookup"><span data-stu-id="f3c61-102">The ASP.NET Core 2.0 version of this tutorial is available by selecting **ASP.NET Core 2.0** above the table of contents or at the top of the page:</span></span>
 
-<span data-ttu-id="9a429-103">В версии этого учебника для ASP.NET Core 2.1 Razor Pages представлено множество улучшений по сравнению с документацией для версии 2.0.</span><span class="sxs-lookup"><span data-stu-id="9a429-103">The ASP.NET Core 2.1 Razor Pages version of this tutorial has many improvements over the 2.0 version.</span></span>
+![<span data-ttu-id="f3c61-103">учебники</span><span class="sxs-lookup"><span data-stu-id="f3c61-103">tutorials</span></span> ](~//data/ef-rp/read-related-data/_static/2.1.png)
 
-<span data-ttu-id="9a429-104">Этот учебник для версии 2.0 описывает MVC-модель ASP.NET Core и Entity Framework Core с контроллерами и представлениями.</span><span class="sxs-lookup"><span data-stu-id="9a429-104">The 2.0 tutorial teaches ASP.NET Core MVC and Entity Framework Core with controllers and views.</span></span> <span data-ttu-id="9a429-105">Razor Pages — это основанная на страницах модель программирования, которая упрощает и повышает эффективность создания пользовательского веб-интерфейса.</span><span class="sxs-lookup"><span data-stu-id="9a429-105">Razor Pages is a page-based programming model that makes building web UI easier and more productive.</span></span> <span data-ttu-id="9a429-106">Мы рекомендуем изучить руководство по [Razor Pages](xref:data/ef-rp/intro) вместо версии по MVC.</span><span class="sxs-lookup"><span data-stu-id="9a429-106">We recommend the [Razor Pages](xref:data/ef-rp/intro) tutorial over the MVC version.</span></span> <span data-ttu-id="9a429-107">Руководство по Razor Pages:</span><span class="sxs-lookup"><span data-stu-id="9a429-107">The Razor Pages tutorial:</span></span>
+<span data-ttu-id="f3c61-104">В версии этого учебника для ASP.NET Core 2.1 [Razor Pages](xref:data/ef-rp/intro) представлено множество улучшений по сравнению с документацией для версии 2.0.</span><span class="sxs-lookup"><span data-stu-id="f3c61-104">The ASP.NET Core 2.1 [Razor Pages](xref:data/ef-rp/intro) version of this tutorial has many improvements over the 2.0 version.</span></span>
 
-* <span data-ttu-id="9a429-108">проще для выполнения;</span><span class="sxs-lookup"><span data-stu-id="9a429-108">Is easier to follow.</span></span> <span data-ttu-id="9a429-109">Например, был значительно упрощен код формирования шаблонов.</span><span class="sxs-lookup"><span data-stu-id="9a429-109">For example, the scaffolding code has been significantly simplified.</span></span>
-* <span data-ttu-id="9a429-110">содержит больше рекомендаций по EF Core;</span><span class="sxs-lookup"><span data-stu-id="9a429-110">Provides more EF Core best practices.</span></span>
-* <span data-ttu-id="9a429-111">использует более эффективные запросы;</span><span class="sxs-lookup"><span data-stu-id="9a429-111">Uses more efficient queries.</span></span>
-* <span data-ttu-id="9a429-112">более актуально, так как используются новейшие API;</span><span class="sxs-lookup"><span data-stu-id="9a429-112">Is more current with the latest API.</span></span>
-* <span data-ttu-id="9a429-113">охватывает дополнительные возможности;</span><span class="sxs-lookup"><span data-stu-id="9a429-113">Covers more features.</span></span>
-* <span data-ttu-id="9a429-114">является предпочтительным подходом для разработки новых приложений.</span><span class="sxs-lookup"><span data-stu-id="9a429-114">Is the preferred approach for new application development.</span></span>
+<span data-ttu-id="f3c61-105">Этот учебник для версии 2.0 описывает MVC-модель ASP.NET Core и Entity Framework Core с контроллерами и представлениями.</span><span class="sxs-lookup"><span data-stu-id="f3c61-105">The 2.0 tutorial teaches ASP.NET Core MVC and Entity Framework Core with controllers and views.</span></span> <span data-ttu-id="f3c61-106">Учебник по Razor Pages:</span><span class="sxs-lookup"><span data-stu-id="f3c61-106">The Razor Pages tutorial has been updated with the following improvements:</span></span>
 
-<span data-ttu-id="9a429-115">При выборе этого руководства вместо руководства по [Razor Pages](xref:data/ef-rp/intro) поясните причину в [этом обсуждении GitHub](https://github.com/aspnet/Docs/issues/6146).</span><span class="sxs-lookup"><span data-stu-id="9a429-115">If you choose this tutorial over the [Razor Pages](xref:data/ef-rp/intro) version, let us know why in [this GitHub discussion](https://github.com/aspnet/Docs/issues/6146).</span></span>
+* <span data-ttu-id="f3c61-107">проще для выполнения;</span><span class="sxs-lookup"><span data-stu-id="f3c61-107">Is easier to follow.</span></span> <span data-ttu-id="f3c61-108">Например, был значительно упрощен код формирования шаблонов.</span><span class="sxs-lookup"><span data-stu-id="f3c61-108">For example, the scaffolding code has been significantly simplified.</span></span>
+* <span data-ttu-id="f3c61-109">содержит больше рекомендаций по EF Core;</span><span class="sxs-lookup"><span data-stu-id="f3c61-109">Provides more EF Core best practices.</span></span>
+* <span data-ttu-id="f3c61-110">использует более эффективные запросы;</span><span class="sxs-lookup"><span data-stu-id="f3c61-110">Uses more efficient queries.</span></span>
+* <span data-ttu-id="f3c61-111">использует последнюю версию API EF Core.</span><span class="sxs-lookup"><span data-stu-id="f3c61-111">Uses the latest EF Core API.</span></span>
 
 ::: moniker-end
