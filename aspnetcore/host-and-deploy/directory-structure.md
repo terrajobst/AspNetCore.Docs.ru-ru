@@ -7,12 +7,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 12/11/2018
 uid: host-and-deploy/directory-structure
-ms.openlocfilehash: ee0bebb8b5c688f8471d6420d1641b87ac271f6c
-ms.sourcegitcommit: b34b25da2ab68e6495b2460ff570468f16a9bf0d
+ms.openlocfilehash: 4bc5ead8e24c4bb7fe6cd2f52fd2aa622187180c
+ms.sourcegitcommit: 42a8164b8aba21f322ffefacb92301bdfb4d3c2d
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53284569"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54341398"
 ---
 # <a name="aspnet-core-directory-structure"></a>Структура каталогов ASP.NET Core
 
@@ -37,7 +37,7 @@ ms.locfileid: "53284569"
 
 Каталог *wwwroot*, если таковой имеется, содержит только статические активы.
 
-Каталог *Logs* для журналов stdout можно создать для развертывания одним из следующих двух методов:
+Каталог *Logs* для развертывания можно создать одним из двух указанных далее методов.
 
 * Добавьте в файл проекта элемент `<Target>` следующего содержания:
 
@@ -57,6 +57,8 @@ ms.locfileid: "53284569"
 * Самостоятельно создайте физическую папку *Logs* на сервере в каталоге развертывания.
 
 Для каталога развертывания нужны права на чтение и выполнение. Для каталога *Logs* нужны права на чтение и запись. Для дополнительных каталогов, в которые записываются файлы, нужны права на чтение и запись.
+
+Для [ведения журналов stdout модуля ASP.NET Core](xref:host-and-deploy/aspnet-core-module#log-creation-and-redirection) папка *Logs* в развертывании не требуется. Модуль может создавать любые папки на пути `stdoutLogFile` при создании файла журнала. Создание папки *Logs* полезно для [ведения расширенного журнала отладки модуля ASP.NET Core](xref:host-and-deploy/aspnet-core-module#enhanced-diagnostic-logs). Папки, указанные в пути к значению `<handlerSetting>`, не создаются автоматически и должны заранее существовать в развертывании, чтобы модуль мог осуществлять запись в журнал отладки.
 
 ## <a name="additional-resources"></a>Дополнительные ресурсы
 

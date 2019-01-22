@@ -7,12 +7,12 @@ ms.author: tdykstra
 ms.custom: mvc
 ms.date: 11/06/2018
 uid: fundamentals/websockets
-ms.openlocfilehash: 3a649f88699d61636d9aa7fbfe4468ca67b3b018
-ms.sourcegitcommit: fc7eb4243188950ae1f1b52669edc007e9d0798d
+ms.openlocfilehash: 6c32269181ea3311c4aea99c08a1c043e7833b05
+ms.sourcegitcommit: 42a8164b8aba21f322ffefacb92301bdfb4d3c2d
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51225412"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54341457"
 ---
 # <a name="websockets-support-in-aspnet-core"></a>Поддержка WebSockets в ASP.NET Core
 
@@ -156,13 +156,7 @@ ms.locfileid: "51225412"
 
 Если вы размещаете сервер по адресу "https://server.com", а клиент — по адресу "https://client.com", добавьте "https://client.com" в список `AllowedOrigins` подлежащих проверке WebSocket.
 
-```csharp
-app.UseWebSockets(new WebSocketOptions()
-{
-    AllowedOrigins.Add("https://client.com");
-    AllowedOrigins.Add("https://www.client.com");
-});
-```
+[!code-csharp[](websockets/samples/2.x/WebSocketsSample/Startup.cs?name=UseWebSocketsOptionsAO&highlight=6-7)]
 
 > [!NOTE]
 > Заголовок `Origin` контролируется клиентом и, как и заголовок `Referer`, может быть подделан. **Не** используйте эти заголовки в качестве механизма проверки подлинности.
@@ -198,7 +192,7 @@ Windows Server 2012 или более поздней версии и Windows 8 �
 > Эти действия не требуется выполнять при использовании IIS Express
 
 1. Последовательно выберите **Панель управления** > **Программы** > **Программы и компоненты** > **Включение или отключение компонентов Windows** (в левой части экрана).
-1. Откройте следующе узлы: **IIS** > **Службы Интернета** > **Компоненты разработки приложений**.
+1. Откройте следующие узлы: **IIS** > **Службы Интернета** > **Компоненты разработки приложений**.
 1. Выберите компонент **Протокол WebSocket**. Нажмите кнопку **ОК**.
 
 ### <a name="disable-websocket-when-using-socketio-on-nodejs"></a>Отключите WebSocket при использовании socket.io на Node.js

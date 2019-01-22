@@ -4,14 +4,14 @@ author: guardrex
 description: Сведения об обнаружении активных и неактивных модулей IIS для приложения ASP.NET Core и управлении модулями IIS.
 ms.author: riande
 ms.custom: mvc
-ms.date: 11/30/2018
+ms.date: 01/17/2019
 uid: host-and-deploy/iis/modules
-ms.openlocfilehash: c6a6cc9b6b3410267c6f5034f824648a1ebbe10f
-ms.sourcegitcommit: 9bb58d7c8dad4bbd03419bcc183d027667fefa20
+ms.openlocfilehash: 8c32a668b3945f0da0194162e19e965b4aed3934
+ms.sourcegitcommit: 184ba5b44d1c393076015510ac842b77bc9d4d93
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52862243"
+ms.lasthandoff: 01/18/2019
+ms.locfileid: "54396276"
 ---
 # <a name="iis-modules-with-aspnet-core"></a>Модули IIS с ASP.NET Core
 
@@ -55,7 +55,7 @@ ms.locfileid: "52862243"
 | **Кэшировании маркеров**<br>`TokenCacheModule`                                                          | Да | |
 | **Кэширование URI**<br>`UriCacheModule`                                                              | Да | |
 | **Авторизация URL-адреса**<br>`UrlAuthorizationModule`                                                | Да | [Идентификация ASP.NET Core](xref:security/authentication/identity) |
-| **Аутентификация Windows**<br>`WindowsAuthenticationModule`                                      | Да | |
+| **Проверка подлинности Windows**<br>`WindowsAuthenticationModule`                                      | Да | |
 
 &#8224;В модуле переопределения URL-адресов типы сопоставления `isFile` и `isDirectory` не работают с приложениями ASP.NET Core из-за изменений в [структуре каталогов](xref:host-and-deploy/directory-structure).
 
@@ -105,13 +105,13 @@ ms.locfileid: "52862243"
 
 Если вы решите удалить модуль с помощью параметра в файле *web.config*, первым делом разблокируйте этот модуль и раздел `<modules>` в файле *web.config*:
 
-1. Снятие блокировки модуля на уровне сервера. Выберите сервер IIS на боковой панели **Подключения** диспетчера IIS. Откройте элемент **Модули** в области **IIS**. Выберите нужный модуль из списка. На боковой панели **Действия** справа выберите **Разблокировать**. Разблокируйте все модули, которые вы намерены удалить из файла *web.config*.
+1. Снятие блокировки модуля на уровне сервера. Выберите сервер IIS на боковой панели **Подключения** диспетчера IIS. Откройте элемент **Модули** в области **IIS**. Выберите нужный модуль из списка. На боковой панели **Действия** справа выберите **Разблокировать**. Если для модуля указано действие записи **Блокировать**, модуль уже разблокирован и ничего делать не нужно. Разблокируйте все модули, которые вы намерены удалить из файла *web.config*.
 
 2. Разверните приложение без раздела `<modules>` в файле *web.config*. Если вы развертываете приложение, для которого в файле*web.config* есть раздел `<modules>`, но этот раздел не был ранее разблокирован в диспетчере IIS, Configuration Manager создаст исключение при попытке разблокировать этот раздел. Поэтому приложение нужно развертывать без раздела `<modules>`.
 
-3. Разблокируйте раздел `<modules>` файла *web.config*. На боковой панели **Подключения** выберите веб-сайт в разделе **Сайты**. В области **Управление** откройте **Редактор конфигураций**. С помощью элементов навигации выберите раздел `system.webServer/modules`. На боковой панели **Действия** справа выберите действие **Разблокировать** для этого раздела.
+3. Разблокируйте раздел `<modules>` файла *web.config*. На боковой панели **Подключения** выберите веб-сайт в разделе **Сайты**. В области **Управление** откройте **Редактор конфигураций**. С помощью элементов навигации выберите раздел `system.webServer/modules`. На боковой панели **Действия** справа выберите действие **Разблокировать** для этого раздела. Если для раздела модуля указано действие записи **Блокировать раздел**, раздел модуля уже разблокирован и ничего делать не нужно.
 
-4. Вот теперь можно вернуть раздел `<modules>` в файл *web.config*, указав в нем элемент `<remove>` для удаления ненужного модуля из приложения. Можно добавить несколько элементов `<remove>`, чтобы удалить несколько модулей. При любых изменениях в файле *web.config* на сервере сразу же вносите такие же изменения в файл *web.config* для проекта на локальном компьютере. Такой метод удаления модуля никак не влияет на использование модуля в других приложениях на этом сервере.
+4. Верните раздел `<modules>` в файл *web.config*, указав в нем элемент `<remove>` для удаления модуля из приложения. Добавьте несколько элементов `<remove>`, чтобы удалить несколько модулей. При любых изменениях в файле *web.config* на сервере сразу же вносите такие же изменения в файл *web.config* для проекта на локальном компьютере. Такой способ удаления модуля никак не влияет на использование модуля в других приложениях на этом сервере.
 
    ```xml
    <configuration>
@@ -122,6 +122,26 @@ ms.locfileid: "52862243"
     </system.webServer>
    </configuration>
    ```
+   
+Чтобы добавить или удалить модули для IIS Express с помощью файла *web.config*, измените файл *applicationHost.config* для разблокировки раздела `<modules>`.
+
+1. Откройте файл *{КОРЕНЬ ПРИЛОЖЕНИЯ}\\.vs\config\applicationhost.config*.
+
+1. Найдите элемент `<section>` для модулей IIS и измените значение атрибута `overrideModeDefault` с `Deny` на `Allow`.
+
+   ```xml
+   <section name="modules" 
+            allowDefinition="MachineToApplication" 
+            overrideModeDefault="Allow" />
+   ```
+   
+1. Найдите раздел `<location path="" overrideMode="Allow"><system.webServer><modules>`. Для модулей, которые требуется удалить, измените значение `lockItem` с `true` на `false`. В следующем примере показана разблокировка модуля CGI.
+
+   ```xml
+   <add name="CgiModule" lockItem="false" />
+   ```
+   
+1. После разблокировки раздела `<modules>` и отдельных модулей вы можете добавлять или удалять модули IIS с помощью файла *web.config* приложения для запуска приложения в IIS Express.
 
 Также модуль IIS можно удалить с помощью *Appcmd.exe*. Для этого включите в команду `MODULE_NAME` и `APPLICATION_NAME`:
 
@@ -146,7 +166,7 @@ Appcmd.exe delete module MODULE_NAME /app.name:APPLICATION_NAME
 ## <a name="additional-resources"></a>Дополнительные ресурсы
 
 * <xref:host-and-deploy/iis/index>
-* [Введение в архитектуры IIS: модули IIS](/iis/get-started/introduction-to-iis/introduction-to-iis-architecture#modules-in-iis)
+* [Введение в архитектуры служб IIS. Модули в службах IIS](/iis/get-started/introduction-to-iis/introduction-to-iis-architecture#modules-in-iis)
 * [Общие сведения о модулях IIS](/iis/get-started/introduction-to-iis/iis-modules-overview)
 * [Настройка ролей и модулей в IIS 7.0](https://technet.microsoft.com/library/cc627313.aspx)
 * [Службы IIS`<system.webServer>`](/iis/configuration/system.webServer/)
