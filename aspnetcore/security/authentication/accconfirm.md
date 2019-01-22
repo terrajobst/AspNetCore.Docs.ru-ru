@@ -5,12 +5,12 @@ description: Сведения о создании приложения ASP.NET C
 ms.author: riande
 ms.date: 7/11/2018
 uid: security/authentication/accconfirm
-ms.openlocfilehash: 4c2e62335bc7dd004829dbc2a8c1f62ea91f334f
-ms.sourcegitcommit: 4a6bbe84db24c2f3dd2de065de418fde952c8d40
+ms.openlocfilehash: 0dc9907f9f54c8a0daf2e05a3769897e5145935f
+ms.sourcegitcommit: 728f4e47be91e1c87bb7c0041734191b5f5c6da3
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50253043"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54444146"
 ---
 # <a name="account-confirmation-and-password-recovery-in-aspnet-core"></a>Подтверждение учетной записи и восстановление пароля в ASP.NET Core
 

@@ -1,34 +1,28 @@
 ---
 uid: mvc/overview/getting-started/getting-started-with-ef-using-mvc/async-and-stored-procedures-with-the-entity-framework-in-an-asp-net-mvc-application
-title: Асинхронные и хранимые процедуры с помощью Entity Framework в приложении ASP.NET MVC | Документация Майкрософт
+title: Учебник. Использование ключевых слов async и хранимые процедуры с EF в приложении MVC ASP.NET
+description: В этом учебнике вы научитесь реализовать асинхронную модель программирования и узнайте, как использовать хранимые процедуры.
 author: tdykstra
-description: Пример веб-приложение университета Contoso демонстрирует создание приложения ASP.NET MVC 5, используя Entity Framework 6 Code First и Visual Studio...
 ms.author: riande
-ms.date: 11/07/2014
+ms.date: 01/18/2019
+ms.topic: tutorial
 ms.assetid: 27d110fc-d1b7-4628-a763-26f1e6087549
 msc.legacyurl: /mvc/overview/getting-started/getting-started-with-ef-using-mvc/async-and-stored-procedures-with-the-entity-framework-in-an-asp-net-mvc-application
 msc.type: authoredcontent
-ms.openlocfilehash: 84be966c1e1a4357125c1a53b8065676c8f073f6
-ms.sourcegitcommit: a4dcca4f1cb81227c5ed3c92dc0e28be6e99447b
+ms.openlocfilehash: 0896664174bc2fee65b73ecf256d994f2abacc0a
+ms.sourcegitcommit: 728f4e47be91e1c87bb7c0041734191b5f5c6da3
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "48910737"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54444367"
 ---
-<a name="async-and-stored-procedures-with-the-entity-framework-in-an-aspnet-mvc-application"></a>Асинхронные и хранимые процедуры с помощью Entity Framework в приложении ASP.NET MVC
-====================
-по [том Дайкстра](https://github.com/tdykstra)
-
-[Скачать завершенный проект](http://code.msdn.microsoft.com/ASPNET-MVC-Application-b01a9fe8)
-
-> Пример веб-приложение университета Contoso демонстрирует создание приложения ASP.NET MVC 5, используя Entity Framework 6 Code First и Visual Studio. Сведения о серии руководств см. в [первом руководстве серии](creating-an-entity-framework-data-model-for-an-asp-net-mvc-application.md).
-
+# <a name="tutorial-use-async-and-stored-procedures-with-ef-in-an-aspnet-mvc-app"></a>Учебник. Использование ключевых слов async и хранимые процедуры с EF в приложении MVC ASP.NET
 
 В предыдущих учебниках вы узнали, как для чтения и обновления данных с помощью синхронной модели программирования. В данном учебном курсе реализации асинхронной модели программирования. Асинхронный код может помочь приложения работают лучше, так как он повышает эффективность использования ресурсов сервера.
 
-В этом руководстве вы также узнаете, как использовать хранимые процедуры для вставки, обновления и удаления сущности.
+В этом руководстве вы также см. в разделе способы использования хранимых процедур для вставки, обновления и удаления сущности.
 
-Наконец будет повторно развернуть приложение в Azure, а также все изменения базы данных, реализованные с момента при первом развертывании.
+Наконец повторное развертывание приложения в Azure, а также все изменения базы данных, реализованные с момента при первом развертывании.
 
 На следующих рисунках изображены некоторые из страниц, с которыми вы будете работать.
 
@@ -36,7 +30,19 @@ ms.locfileid: "48910737"
 
 ![Создание подразделения](async-and-stored-procedures-with-the-entity-framework-in-an-asp-net-mvc-application/_static/image2.png)
 
-## <a name="why-bother-with-asynchronous-code"></a>А зачем возиться с асинхронного кода
+В этом учебнике рассмотрены следующие задачи.
+
+> [!div class="checklist"]
+> * Дополнительные сведения о асинхронного кода
+> * Создание контроллера Department
+> * Использование хранимых процедур
+> * Развертывание в Azure
+
+## <a name="prerequisites"></a>Предварительные требования
+
+* [Обновление связанных данных](updating-related-data-with-the-entity-framework-in-an-asp-net-mvc-application.md)
+
+## <a name="why-use-asynchronous-code"></a>Зачем использовать асинхронный код
 
 Веб-сервер имеет ограниченное число потоков, поэтому при высокой загрузке могут использоваться все доступные потоки. В таких случаях сервер не может обрабатывать новые запросы до тех пор, пока не будут высвобождены потоки. В синхронном коде многие потоки могут быть заняты, не выполняя при этом какие-либо операции и ожидая завершения ввода-вывода. В асинхронном коде в то время, когда процесс ожидает завершения ввода-вывода, его поток высвобождается и может использоваться сервером для обработки других запросов. Таким образом асинхронный код позволяет ресурсы сервера для более эффективного использования, а на сервере включено обрабатывать больше трафика без задержек.
 
@@ -44,11 +50,9 @@ ms.locfileid: "48910737"
 
 Дополнительные сведения об асинхронном программировании см. в разделе [Поддержка асинхронного использования .NET 4.5 во избежание блокирующих вызовов](../../../../aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/web-development-best-practices.md#async).
 
-## <a name="create-the-department-controller"></a>Создание контроллера Department
+## <a name="create-department-controller"></a>Создание контроллера Department
 
-Создание контроллера Department, так же, как более ранних контроллеров, но в этом случае выберите **Использование асинхронного контроллера** действия флажок.
-
-![Каркас контроллера Department](async-and-stored-procedures-with-the-entity-framework-in-an-asp-net-mvc-application/_static/image3.png)
+Создание контроллера Department, так же, как более ранних контроллеров, но в этом случае выберите **использовать асинхронные действия контроллера** "флажок".
 
 Ниже кратко описан Показать, что был добавлен на синхронный код `Index` для того, асинхронные:
 
@@ -89,8 +93,6 @@ ms.locfileid: "48910737"
 
 Запустите приложение и нажмите кнопку **отделов** вкладки.
 
-![Страница отделов](async-and-stored-procedures-with-the-entity-framework-in-an-asp-net-mvc-application/_static/image4.png)
-
 Все работает так же, как и в других контроллеров, но в этом контроллере все SQL-запросы выполняются асинхронно.
 
 Некоторые моменты, которые следует учитывать при использовании асинхронного программирования с Entity Framework:
@@ -98,7 +100,7 @@ ms.locfileid: "48910737"
 - Асинхронный код не является потокобезопасным. Другими словами другими словами, не следует пытаться выполнять несколько операций параллельно, используя один и тот же экземпляр контекста.
 - Если вы хотите использовать преимущества в производительности, которые обеспечивает асинхронный код, убедитесь, что все используемые пакеты библиотек (например, для разбиения на страницы) также используют асинхронный код при вызове любых методов Entity Framework, выполняющих запросы к базе данных.
 
-## <a name="use-stored-procedures-for-inserting-updating-and-deleting"></a>Использование хранимых процедур для вставки, обновления и удаления
+## <a name="use-stored-procedures"></a>Использование хранимых процедур
 
 Некоторые разработчики и Администраторы баз данных предпочитает использовать хранимые процедуры для доступа к базе данных. В более ранних версиях Entity Framework можно извлекать данные с помощью хранимой процедуры с [выполнение необработанный SQL-запрос](advanced-entity-framework-scenarios-for-an-mvc-web-application.md), но нельзя указать EF использование хранимых процедур для операций обновления. В EF 6 можно легко настроить Code First с помощью хранимых процедур.
 
@@ -120,7 +122,6 @@ ms.locfileid: "48910737"
 4. Запустите приложение в режиме отладки, нажмите кнопку **отделов** , а затем щелкните **Create New**.
 5. Введите данные для нового отдела, а затем нажмите кнопку **создать**.
 
-     ![Создание подразделения](async-and-stored-procedures-with-the-entity-framework-in-an-asp-net-mvc-application/_static/image5.png)
 6. В Visual Studio, просмотрите журналы в **вывода** окно, чтобы увидеть, что хранимая процедура использовалась для вставки новой строки отдела.
 
      ![Отдел Insert SP](async-and-stored-procedures-with-the-entity-framework-in-an-asp-net-mvc-application/_static/image6.png)
@@ -143,12 +144,24 @@ ms.locfileid: "48910737"
 
     При первом запуске страницы, который обращается к базе данных, платформа Entity Framework выполняет все миграции `Up` методы, необходимые для приведения базы данных в актуальном состоянии с текущей моделью данных. Теперь можно использовать все веб-страниц, добавленных с момента последнего развертывания, включая страницы подразделения, добавленные в этом руководстве.
 
-## <a name="summary"></a>Сводка
+## <a name="get-the-code"></a>Получение кода
 
-В этом учебнике вы видели, как повысить эффективность работы сервера путем написания кода, которое выполняется асинхронно и как использовать хранимые процедуры для вставки, обновления и удаления. В следующем учебном курсе будет показано, как для предотвращения потери данных, когда несколько пользователей попытаются изменять одну запись одновременно.
+[Скачивание готового проекта](http://code.msdn.microsoft.com/ASPNET-MVC-Application-b01a9fe8)
+
+## <a name="additional-resources"></a>Дополнительные ресурсы
 
 Ссылки на другие ресурсы Entity Framework можно найти в [доступ к данным ASP.NET — рекомендуемые ресурсы](../../../../whitepapers/aspnet-data-access-content-map.md).
 
-> [!div class="step-by-step"]
-> [Назад](updating-related-data-with-the-entity-framework-in-an-asp-net-mvc-application.md)
-> [Вперед](handling-concurrency-with-the-entity-framework-in-an-asp-net-mvc-application.md)
+## <a name="next-steps"></a>Следующие шаги
+
+В этом учебнике рассмотрены следующие задачи.
+
+> [!div class="checklist"]
+> * Узнали о асинхронного кода
+> * Создании контроллера Department
+> * Использовать хранимые процедуры
+> * Развертывания в Azure
+
+Перейдите к следующей статье, чтобы узнать, как обрабатывать конфликты, когда несколько пользователей изменяют одну сущность, в то же время.
+> [!div class="nextstepaction"]
+> [Обработка параллелизма](handling-concurrency-with-the-entity-framework-in-an-asp-net-mvc-application.md)

@@ -1,34 +1,43 @@
 ---
 uid: mvc/overview/getting-started/getting-started-with-ef-using-mvc/implementing-inheritance-with-the-entity-framework-in-an-asp-net-mvc-application
-title: Реализация наследования с использованием Entity Framework 6 в приложении ASP.NET MVC 5 (11 из 12) | Документация Майкрософт
+title: 'Шаблон: Реализация наследования с использованием EF в приложениях ASP.NET MVC 5'
+description: В этом учебнике демонстрируется, как реализовать наследование в модели данных.
 author: tdykstra
-description: Пример веб-приложение университета Contoso демонстрирует создание приложения ASP.NET MVC 5, используя Entity Framework 6 Code First и Visual Studio...
 ms.author: riande
-ms.date: 11/07/2014
+ms.date: 01/21/2019
+ms.topic: tutorial
 ms.assetid: 08834147-77ec-454a-bb7a-d931d2a40dab
 msc.legacyurl: /mvc/overview/getting-started/getting-started-with-ef-using-mvc/implementing-inheritance-with-the-entity-framework-in-an-asp-net-mvc-application
 msc.type: authoredcontent
-ms.openlocfilehash: 613494d58d7652f69a52241bcd3a7e896bc5407c
-ms.sourcegitcommit: a4dcca4f1cb81227c5ed3c92dc0e28be6e99447b
+ms.openlocfilehash: df8715e4416ce3ccdf1d9e380addcded553d85f8
+ms.sourcegitcommit: 728f4e47be91e1c87bb7c0041734191b5f5c6da3
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "48912713"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54444289"
 ---
-<a name="implementing-inheritance-with-the-entity-framework-6-in-an-aspnet-mvc-5-application-11-of-12"></a>Реализация наследования с использованием Entity Framework 6 в приложении ASP.NET MVC 5 (11 из 12)
-====================
-по [том Дайкстра](https://github.com/tdykstra)
-
-[Скачать завершенный проект](http://code.msdn.microsoft.com/ASPNET-MVC-Application-b01a9fe8)
-
-> Пример веб-приложение университета Contoso демонстрирует создание приложения ASP.NET MVC 5, используя Entity Framework 6 Code First и Visual Studio. Сведения о серии руководств см. в [первом руководстве серии](creating-an-entity-framework-data-model-for-an-asp-net-mvc-application.md).
-
+# <a name="template-implement-inheritance-with-ef-in-an-aspnet-mvc-5-app"></a>Шаблон: Реализация наследования с использованием EF в приложении ASP.NET MVC 5
 
 В предыдущем учебнике показана обработка исключений параллелизма. В этом учебнике демонстрируется, как реализовать наследование в модели данных.
 
 В объектно ориентированного программирования, можно использовать [наследования](http://en.wikipedia.org/wiki/Inheritance_(object-oriented_programming)) для упрощения [повторное использование кода](http://en.wikipedia.org/wiki/Code_reuse). В рамках этого учебника вы измените классы `Instructor` и `Student` таким образом, чтобы они были производными от базового класса `Person`, который содержит общие свойства для преподавателей и учащихся, такие как `LastName`. Изменения вносятся в коде, а не на веб-страницах, и автоматически отражаются в базе данных.
 
-## <a name="options-for-mapping-inheritance-to-database-tables"></a>Варианты сопоставления наследования для таблиц базы данных
+В этом учебнике рассмотрены следующие задачи.
+
+> [!div class="checklist"]
+> * Узнайте, как сопоставить наследования для базы данных
+> * Создание класса Person
+> * Обновление Instructor и Student
+> * Добавить пользователя в модели
+> * Создание и обновление миграции
+> * Протестировать реализацию
+> * Развертывание в Azure
+
+## <a name="prerequisites"></a>Предварительные требования
+
+* [Реализация наследования](handling-concurrency-with-the-entity-framework-in-an-asp-net-mvc-application.md)
+
+## <a name="map-inheritance-to-database"></a>Сопоставление наследования для базы данных
 
 `Instructor` И `Student` классы в `School` модели данных имеют несколько свойств, которые идентичны:
 
@@ -62,7 +71,9 @@ TPC и шаблоны наследование TPH как правило, обе
 
 [!code-csharp[Main](implementing-inheritance-with-the-entity-framework-in-an-asp-net-mvc-application/samples/sample1.cs)]
 
-## <a name="make-student-and-instructor-classes-inherit-from-person"></a>Создание классов Student и Instructor, унаследованных от класса Person
+## <a name="update-instructor-and-student"></a>Обновление Instructor и Student
+
+Теперь обновите *Instructor.cs* и *Sudent.cs* наследование значений из *Person.sc*.
 
 В *Instructor.cs*, являются производными `Instructor` класса из `Person` класса и удалите поля ключа и имени. Код будет выглядеть следующим образом:
 
@@ -72,7 +83,7 @@ TPC и шаблоны наследование TPH как правило, обе
 
 [!code-csharp[Main](implementing-inheritance-with-the-entity-framework-in-an-asp-net-mvc-application/samples/sample3.cs)]
 
-## <a name="add-the-person-entity-type-to-the-model"></a>Добавить тип сущности Person в модель
+## <a name="add-person-to-the-model"></a>Добавить пользователя в модели
 
 В *SchoolContext.cs*, добавьте `DbSet` свойство для `Person` типа сущности:
 
@@ -80,7 +91,7 @@ TPC и шаблоны наследование TPH как правило, обе
 
 Это все, что требуется платформе Entity Framework для настройки наследования типа "одна таблица на иерархию". Как вы увидите, при обновлении базы данных, он будет иметь `Person` таблицы вместо `Student` и `Instructor` таблицы.
 
-## <a name="create-and-update-a-migrations-file"></a>Создание и изменение файла миграции
+## <a name="create-and-update-migrations"></a>Создание и обновление миграции
 
 В консоли диспетчера пакетов (PMC), введите следующую команду:
 
@@ -121,18 +132,13 @@ TPC и шаблоны наследование TPH как правило, обе
 >
 > В новой базе данных нет данных для переноса и `update-database` команда является гораздо большей долей вероятности завершится без ошибок. Инструкции о том, как удалить базу данных, см. в разделе [как удалить базу данных из Visual Studio 2012](http://romiller.com/2013/05/17/how-to-drop-a-database-from-visual-studio-2012/). При использовании этого подхода для продолжения работы с учебником пропустить шаг развертывания в конце этого руководства, или развернуть для нового сайта и базы данных. Если вы развернете обновление на тот же сайт, на которой развертывание уже, EF получите та же ошибка, при выполнении миграции автоматически. Если вы хотите устранении ошибки миграции, самый лучший ресурс является одним из форумы Entity Framework или StackOverflow.com.
 
-
-## <a name="testing"></a>Тестирование
+## <a name="test-the-implementation"></a>Протестировать реализацию
 
 Запустите сайт и попробуйте открыть различные страницы. Все работает так же, как и раньше.
 
 В **обозреватель серверов,** разверните **Connections\SchoolContext данных** и затем **таблиц**, и вы увидите, что **учащихся** и **Преподавателя** таблиц были заменены **Person** таблицы. Разверните **Person** таблицы чтобы увидеть, все столбцы, которые ранее были в наличии **учащихся** и **преподавателя** таблиц.
 
-![Server_Explorer_showing_Person_table](implementing-inheritance-with-the-entity-framework-in-an-asp-net-mvc-application/_static/image5.png)
-
 Щелкните таблицу Person правой кнопкой мыши и выберите команду **Показать данные таблицы**, чтобы просмотреть столбец дискриминатора.
-
-![](implementing-inheritance-with-the-entity-framework-in-an-asp-net-mvc-application/_static/image6.png)
 
 На следующей схеме показана структура новой базы данных School:
 
@@ -144,22 +150,37 @@ TPC и шаблоны наследование TPH как правило, обе
 
 1. В Visual Studio щелкните правой кнопкой мыши проект в **обозревателе решений** и выберите **публикации** в контекстном меню.
 
-    ![Публикация в контекстном меню проекта](implementing-inheritance-with-the-entity-framework-in-an-asp-net-mvc-application/_static/image8.png)
 2. Нажмите кнопку **Опубликовать**.
 
-    ![publish](implementing-inheritance-with-the-entity-framework-in-an-asp-net-mvc-application/_static/image9.png)
+    Веб-приложение откроется в браузере по умолчанию.
 
-   Веб-приложение откроется в браузере по умолчанию.
 3. Протестируйте приложение, чтобы проверить его работы.
 
     При первом запуске страницы, который обращается к базе данных, платформа Entity Framework выполняет все миграции `Up` методы, необходимые для приведения базы данных в актуальном состоянии с текущей моделью данных.
 
-## <a name="summary"></a>Сводка
+## <a name="get-the-code"></a>Получение кода
 
-Вы реализовали наследование типа "одна таблица на иерархию" для классов `Person`, `Student` и `Instructor`. Дополнительные сведения об этом и других структур наследования см. в разделе [модель наследования TPT](https://msdn.microsoft.com/data/jj618293) и [шаблон наследование TPH](https://msdn.microsoft.com/data/jj618292) на сайте MSDN. В рамках следующего учебника вы узнаете, как работать в нескольких сценариях Entity Framework с расширенными возможностями.
+[Скачать завершенный проект](http://code.msdn.microsoft.com/ASPNET-MVC-Application-b01a9fe8)
+
+## <a name="additional-resources"></a>Дополнительные ресурсы
 
 Ссылки на другие ресурсы Entity Framework можно найти в [доступ к данным ASP.NET — рекомендуемые ресурсы](../../../../whitepapers/aspnet-data-access-content-map.md).
 
-> [!div class="step-by-step"]
-> [Назад](handling-concurrency-with-the-entity-framework-in-an-asp-net-mvc-application.md)
-> [Вперед](advanced-entity-framework-scenarios-for-an-mvc-web-application.md)
+Дополнительные сведения об этом и других структур наследования см. в разделе [модель наследования TPT](https://msdn.microsoft.com/data/jj618293) и [шаблон наследование TPH](https://msdn.microsoft.com/data/jj618292) на сайте MSDN. В рамках следующего учебника вы узнаете, как работать в нескольких сценариях Entity Framework с расширенными возможностями.
+
+## <a name="next-steps"></a>Следующие шаги
+
+В этом учебнике рассмотрены следующие задачи.
+
+> [!div class="checklist"]
+> * Узнали для сопоставления наследования для базы данных
+> * Создан класс Person
+> * Обновленные Instructor и Student
+> * Добавлена Person в модель
+> * Создать и обновить миграции
+> * Тестирование реализации
+> * Развертывания в Azure
+
+Перейдите к следующей статьи вы узнаете о разделах, которые необходимо учитывать при переходе от основ разработки веб-приложений ASP.NET, использующих Entity Framework Code First.
+> [!div class="nextstepaction"]
+> [Дополнительные сценарии платформы Entity Framework](advanced-entity-framework-scenarios-for-an-mvc-web-application.md)

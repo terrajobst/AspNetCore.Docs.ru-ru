@@ -1,30 +1,24 @@
 ---
 uid: mvc/overview/getting-started/getting-started-with-ef-using-mvc/updating-related-data-with-the-entity-framework-in-an-asp-net-mvc-application
-title: Обновление связанных данных с Entity Framework в приложении ASP.NET MVC | Документация Майкрософт
+title: Учебник. Обновление связанных данных с помощью EF в приложении ASP.NET MVC
+description: В этом руководстве описано обновление связанных данных. Для большинства связей это можно сделать путем обновления полей внешнего ключа или свойства навигации.
 author: tdykstra
-description: Пример веб-приложение университета Contoso демонстрирует создание приложения ASP.NET MVC 5, используя Entity Framework 6 Code First и Visual Studio...
 ms.author: riande
-ms.date: 05/01/2015
+ms.date: 01/17/2019
+ms.topic: tutorial
 ms.assetid: 7ba88418-5d0a-437d-b6dc-7c3816d4ec07
 msc.legacyurl: /mvc/overview/getting-started/getting-started-with-ef-using-mvc/updating-related-data-with-the-entity-framework-in-an-asp-net-mvc-application
 msc.type: authoredcontent
-ms.openlocfilehash: 647793a65dec8feaf37de561ad77b4585bb869a8
-ms.sourcegitcommit: a4dcca4f1cb81227c5ed3c92dc0e28be6e99447b
+ms.openlocfilehash: 3f95470fd1832d7d25a331a1b6a9dfede7356f38
+ms.sourcegitcommit: 728f4e47be91e1c87bb7c0041734191b5f5c6da3
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "48912219"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54444315"
 ---
-<a name="updating-related-data-with-the-entity-framework-in-an-aspnet-mvc-application"></a>Обновление связанных данных с Entity Framework в приложении ASP.NET MVC
-====================
-по [том Дайкстра](https://github.com/tdykstra)
+# <a name="tutorial-update-related-data-with-ef-in-an-aspnet-mvc-app"></a>Учебник. Обновление связанных данных с помощью EF в приложении ASP.NET MVC
 
-[Скачать завершенный проект](http://code.msdn.microsoft.com/ASPNET-MVC-Application-b01a9fe8)
-
-> Пример веб-приложение университета Contoso демонстрирует создание приложения ASP.NET MVC 5, используя Entity Framework 6 Code First и Visual Studio. Сведения о серии руководств см. в [первом руководстве серии](creating-an-entity-framework-data-model-for-an-asp-net-mvc-application.md).
-
-
-В предыдущем руководстве вы отобразили связанные данные; в этом руководстве описано обновление связанных данных. Для большинства связей это можно сделать путем обновления полей внешнего ключа или свойства навигации. Для связей многие ко многим Entity Framework не предоставляет таблицы соединения напрямую, поэтому можно добавлять и удалять сущности и из соответствующих свойств навигации.
+В предыдущем руководстве вы отобразили связанные данные. В этом руководстве описано обновление связанных данных. Для большинства связей это можно сделать путем обновления полей внешнего ключа или свойства навигации. Для связей многие ко многим Entity Framework не предоставляет таблицы соединения напрямую, поэтому можно добавлять и удалять сущности и из соответствующих свойств навигации.
 
 На следующих рисунках изображены некоторые из страниц, с которыми вы будете работать.
 
@@ -34,7 +28,20 @@ ms.locfileid: "48912219"
 
 ![Редактирования преподавателя с курсами](updating-related-data-with-the-entity-framework-in-an-asp-net-mvc-application/_static/image3.png)
 
-## <a name="customize-the-create-and-edit-pages-for-courses"></a>Настройка страниц создания и редактирования для курсов
+В этом учебнике рассмотрены следующие задачи.
+
+> [!div class="checklist"]
+> * Настройка страниц курсов
+> * Добавить страницу instructors office
+> * Добавить курсы на странице "instructors"
+> * Обновить DeleteConfirmed
+> * Добавление расположения кабинета и курсов на страницу создания
+
+## <a name="prerequisites"></a>Предварительные требования
+
+* [Чтение связанных данных](updating-related-data-with-the-entity-framework-in-an-asp-net-mvc-application.md)
+
+## <a name="customize-courses-pages"></a>Настройка страниц курсов
 
 Создаваемая сущность курса должна иметь связь с существующей кафедрой. Чтобы упростить эту задачу, шаблонный код включает методы контроллеров, а также представления "Create" (Создание) и "Edit" (Редактирование) с раскрывающимся списком для выбора кафедры. Наборы с раскрывающимся списком `Course.DepartmentID` свойство внешнего ключа, и это все, что нужно Entity Framework для загрузки `Department` свойство навигации с соответствующим `Department` сущности. Вы будете использовать этот шаблонный код, немного его изменив, чтобы добавить обработку ошибок и сортировку раскрывающегося списка.
 
@@ -82,19 +89,20 @@ ms.locfileid: "48912219"
 
 Запустите **создать** страницы (на страницу индекса курсов и нажмите кнопку **Create New**) и введите данные для нового курса:
 
-![Course_create_page](updating-related-data-with-the-entity-framework-in-an-asp-net-mvc-application/_static/image4.png)
+| Значение | Параметр |
+| ----- | ------- |
+| Число | Введите *1000*. |
+| Заголовок | Введите *алгебры*. |
+| Благодарности | Введите *4*. |
+|Отдел | Выберите **математика**. |
 
 Нажмите кнопку **Создать**. Новый курс, добавляемый в список отображается страница индекса курсов. Название кафедры в списке страницы индекса поступает из свойства навигации, показывая, что связь установлена правильно.
 
-![Course_Index_page_showing_new_course](updating-related-data-with-the-entity-framework-in-an-asp-net-mvc-application/_static/image5.png)
-
 Запустите **изменить** страницы (на страницу индекса курсов и нажмите кнопку **изменить** на курс).
-
-![Course_edit_page](updating-related-data-with-the-entity-framework-in-an-asp-net-mvc-application/_static/image6.png)
 
 Измените данные на странице и нажмите кнопку **Save** (Сохранить). Отображение страницы индекса курсов с обновленными данными.
 
-## <a name="adding-an-edit-page-for-instructors"></a>Добавление страницы редактирования для преподавателей
+## <a name="add-office-to-instructors-page"></a>Добавить страницу instructors office
 
 При редактировании записи преподавателя может потребоваться обновить назначенный преподавателю кабинет. `Instructor` Сущность имеет связь один к нулю или одному с `OfficeAssignment` сущность, которая означает, что необходимо обрабатывать следующие ситуации:
 
@@ -116,7 +124,7 @@ ms.locfileid: "48912219"
 
 [!code-csharp[Main](updating-related-data-with-the-entity-framework-in-an-asp-net-mvc-application/samples/sample11.cs)]
 
-Ссылка на `RetryLimitExceededException` требует `using` оператор; добавить, щелкните правой кнопкой мыши `RetryLimitExceededException`и нажмите кнопку **устранить** - **с помощью System.Data.Entity.Infrastructure**.
+Ссылка на `RetryLimitExceededException` требует `using` инструкции. Чтобы добавить его, наведите указатель мыши `RetryLimitExceededException`. Отображается описание проблемы. Выберите **Показать возможные решения** и нажмите кнопку **с помощью System.Data.Entity.Infrastructure;**.
 
 ![Разрешить исключений при повторе](updating-related-data-with-the-entity-framework-in-an-asp-net-mvc-application/_static/image7.png)
 
@@ -138,13 +146,9 @@ ms.locfileid: "48912219"
 
 Откройте страницу (выберите **преподавателей** вкладке и нажмите кнопку **изменить** для преподавателя). Измените значение **Office Location** (Расположение кабинета) и нажмите кнопку **Save** (Сохранить).
 
-![Changing_the_office_location](updating-related-data-with-the-entity-framework-in-an-asp-net-mvc-application/_static/image8.png)
+## <a name="add-courses-to-instructors-page"></a>Добавить курсы на странице "instructors"
 
-## <a name="adding-course-assignments-to-the-instructor-edit-page"></a>Добавление назначений курсов для преподавателя «изменение»
-
-Преподаватели могут вести любое число курсов. Теперь вы улучшите страницу редактирования преподавателя, добавив возможность изменять назначения курсов с помощью группы флажков, как показано на следующем снимке экрана:
-
-![Instructor_edit_page_with_courses](updating-related-data-with-the-entity-framework-in-an-asp-net-mvc-application/_static/image9.png)
+Преподаватели могут вести любое число курсов. Теперь вы улучшите страницу редактирования преподавателя, добавив возможность изменять назначения курсов с помощью группы флажков.
 
 Связь между `Course` и `Instructor` сущности — многие ко многим, это означает, что у вас нет прямого доступа к свойств внешнего ключа, которые являются в соединяемой таблице. Вместо этого добавления и удаления сущностей из `Instructor.Courses` свойство навигации.
 
@@ -204,20 +208,15 @@ ms.locfileid: "48912219"
 
 [!code-cshtml[Main](updating-related-data-with-the-entity-framework-in-an-asp-net-mvc-application/samples/sample23.cshtml?highlight=7-14)]
 
-Запустите **Instructor Index** страницу, чтобы увидеть курсов, назначенных каждой преподавателя:
-
-![Instructor_index_page](updating-related-data-with-the-entity-framework-in-an-asp-net-mvc-application/_static/image10.png)
+Запустите **Instructor Index** страницу, чтобы увидеть курсов, назначенных каждой преподавателя.
 
 Нажмите кнопку **изменить** на преподавателя, чтобы открыть страницы "Edit".
 
-![Instructor_edit_page_with_courses](updating-related-data-with-the-entity-framework-in-an-asp-net-mvc-application/_static/image11.png)
-
 Измените некоторые назначения курсов и нажмите кнопку **Сохранить**. Вносимые вами изменения отражаются на странице индекса.
 
- Примечание: К редактированию данных курсов для преподавателя, описываемый здесь подход работает также в том случае, когда ограниченном числе курсов. Для коллекций большего размера следовало бы применять другой пользовательский интерфейс и другой метод обновления.
+ Примечание. К редактированию данных курсов для преподавателя, описываемый здесь подход удобно использовать, когда имеется ограниченный набор курсов. Для коллекций большего размера следовало бы применять другой пользовательский интерфейс и другой метод обновления.
 
-
-## <a name="update-the-deleteconfirmed-method"></a>Обновите метод DeleteConfirmed
+## <a name="update-deleteconfirmed"></a>Обновить DeleteConfirmed
 
 В *InstructorController.cs*, удалить `DeleteConfirmed` метод и вставьте следующий код на его месте.
 
@@ -258,21 +257,31 @@ ms.locfileid: "48912219"
 
 Откройте страницу создать и добавить преподавателя.
 
-![Создание преподавателя с курсами](updating-related-data-with-the-entity-framework-in-an-asp-net-mvc-application/_static/image12.png)
-
 <a id="transactions"></a>
+
 ## <a name="handling-transactions"></a>Обработка транзакций
 
 Как описано в [руководстве основные функциональные возможности CRUD](implementing-basic-crud-functionality-with-the-entity-framework-in-asp-net-mvc-application.md), по умолчанию Entity Framework реализует транзакции неявно. См. в сценариях, где требуется дополнительный контроль — например, если требуется включить операции, выполняемые вне платформы Entity Framework в транзакции-- [работа с транзакциями](https://msdn.microsoft.com/data/dn456843) на сайте MSDN.
 
-## <a name="summary"></a>Сводка
+## <a name="get-the-code"></a>Получение кода
 
-Теперь вы завершили этот введение в работу со связанными данными. До сих в этих руководствах вы работали с кодом, который выполняет синхронный ввод-вывод. Можно сделать приложение более эффективного использования ресурсов веб-сервера путем реализации асинхронного кода, и вам необходимо в следующем учебном курсе.
+[Скачивание готового проекта](http://code.msdn.microsoft.com/ASPNET-MVC-Application-b01a9fe8)
 
-Оставьте свои отзывы на том, как вам понравилось, и этот учебник, и что можно улучшить.
+## <a name="additional-resources"></a>Дополнительные ресурсы
 
 Ссылки на другие ресурсы Entity Framework можно найти в [доступ к данным ASP.NET — рекомендуемые ресурсы](../../../../whitepapers/aspnet-data-access-content-map.md).
 
-> [!div class="step-by-step"]
-> [Назад](reading-related-data-with-the-entity-framework-in-an-asp-net-mvc-application.md)
-> [Вперед](async-and-stored-procedures-with-the-entity-framework-in-an-asp-net-mvc-application.md)
+## <a name="next-step"></a>Дальнейшие действия
+
+В этом учебнике рассмотрены следующие задачи.
+
+> [!div class="checklist"]
+> * Настраиваемые курсы страниц
+> * Добавлена office на странице "instructors"
+> * Добавлена курсы на странице "instructors"
+> * Обновленные DeleteConfirmed
+> * Расположения добавлена кабинета и курсов на страницу создания
+
+Перейдите к следующей статье, чтобы узнать, как реализовать асинхронную модель программирования.
+> [!div class="nextstepaction"]
+> [Модель асинхронного программирования](async-and-stored-procedures-with-the-entity-framework-in-an-asp-net-mvc-application.md)

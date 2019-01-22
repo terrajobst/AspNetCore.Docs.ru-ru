@@ -1,35 +1,42 @@
 ---
 uid: mvc/overview/getting-started/getting-started-with-ef-using-mvc/sorting-filtering-and-paging-with-the-entity-framework-in-an-asp-net-mvc-application
-title: Сортировка, фильтрация и разбиение по страницам с Entity Framework в приложении ASP.NET MVC | Документация Майкрософт
+title: Учебник. Добавить сортировку, фильтрацию и разбиение по страницам с Entity Framework в приложении ASP.NET MVC | Документация Майкрософт
 author: tdykstra
-description: Пример веб-приложение университета Contoso демонстрирует создание приложения ASP.NET MVC 5, используя Entity Framework 6 Code First и Visual Studio...
+description: В этом руководстве описано добавление сортировки, фильтрации и разбиения по страницам для **учащихся** страницы индекса. Можно также создать страницу простой группировкой.
 ms.author: riande
-ms.date: 10/08/2018
+ms.date: 01/14/2019
 ms.assetid: d5723e46-41fe-4d09-850a-e03b9e285bfa
 msc.legacyurl: /mvc/overview/getting-started/getting-started-with-ef-using-mvc/sorting-filtering-and-paging-with-the-entity-framework-in-an-asp-net-mvc-application
 msc.type: authoredcontent
-ms.openlocfilehash: 9fabb5a90af715d4e96ff79b43bfff5a4600ac08
-ms.sourcegitcommit: a4dcca4f1cb81227c5ed3c92dc0e28be6e99447b
+ms.topic: tutorial
+ms.openlocfilehash: 1f18a15d39d58ffb4ac48cfccee6519d33294e85
+ms.sourcegitcommit: 728f4e47be91e1c87bb7c0041734191b5f5c6da3
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "48912778"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54444199"
 ---
-# <a name="sorting-filtering-and-paging-with-the-entity-framework-in-an-aspnet-mvc-application"></a>Сортировка, фильтрация и разбиение по страницам с Entity Framework в приложении ASP.NET MVC
+# <a name="tutorial-add-sorting-filtering-and-paging-with-the-entity-framework-in-an-aspnet-mvc-application"></a>Учебник. Добавить сортировку, фильтрацию и разбиение по страницам с Entity Framework в приложении ASP.NET MVC
 
-по [том Дайкстра](https://github.com/tdykstra)
+В [предыдущем учебном курсе](creating-an-entity-framework-data-model-for-an-asp-net-mvc-application.md), реализован набор веб-страниц для основных операций CRUD для `Student` сущностей. В этом руководстве описано добавление сортировки, фильтрации и разбиения по страницам для **учащихся** страницы индекса. Можно также создать страницу простой группировкой.
 
-[Скачать завершенный проект](http://code.msdn.microsoft.com/ASPNET-MVC-Application-b01a9fe8)
-
-> Пример веб-приложение университета Contoso демонстрирует создание приложения ASP.NET MVC 5, используя Entity Framework 6 Code First и Visual Studio. Сведения о серии руководств см. в [первом руководстве серии](creating-an-entity-framework-data-model-for-an-asp-net-mvc-application.md).
-
-В предыдущем учебном курсе, реализован набор веб-страниц для основных операций CRUD для `Student` сущностей. В этом руководстве вы добавите сортировки, фильтрации и разбиения по страницам для **учащихся** страницы индекса. Здесь также описывается создание страницы с простой группировкой.
-
-На следующем рисунке изображен вид страницы после выполнения задания. Заголовки столбцов являются ссылками, при нажатии на которые происходит сортировка по этому столбцу. При повторном нажатии на заголовок происходит переключение между сортировкой по возрастанию и убыванию.
+Ниже показано, что страница будет выглядеть так, когда все будет готово. Заголовки столбцов являются ссылками, при нажатии на которые происходит сортировка по этому столбцу. При повторном нажатии на заголовок происходит переключение между сортировкой по возрастанию и убыванию.
 
 ![Students_Index_page_with_paging](sorting-filtering-and-paging-with-the-entity-framework-in-an-asp-net-mvc-application/_static/image1.png)
 
-## <a name="add-column-sort-links-to-the-students-index-page"></a>Добавление ссылки сортировки столбцов на страницу индекса учащихся
+В этом учебнике рассмотрены следующие задачи.
+
+> [!div class="checklist"]
+> * Добавление ссылки сортировки столбцов
+> * Добавление поля поиска
+> * Добавление разбиения по страницам
+> * Создание страницы About
+
+## <a name="prerequisites"></a>Предварительные требования
+
+* [Реализация базовой функциональности CRUD](implementing-basic-crud-functionality-with-the-entity-framework-in-asp-net-mvc-application.md)
+
+## <a name="add-column-sort-links"></a>Добавление ссылки сортировки столбцов
 
 Добавление сортировки на страницу указателя учащихся изменим `Index` метод `Student` контроллера и добавьте код в `Student` Индексируйте представление.
 
@@ -70,13 +77,9 @@ ms.locfileid: "48912778"
 
 2. Откройте страницу и щелкните **Фамилия** и **Дата регистрации** заголовки столбцов, чтобы убедитесь, что Сортировка работает.
 
-   ![Students_Index_page_with_sort_hyperlinks](sorting-filtering-and-paging-with-the-entity-framework-in-an-asp-net-mvc-application/_static/image2.png)
-
    После того как вы щелкнете **Фамилия** заголовок, учащиеся отображаются по убыванию последнее имя.
 
-   ![Страницу индекса учащихся в веб-браузере](sorting-filtering-and-paging-with-the-entity-framework-in-an-asp-net-mvc-application/_static/image3.png)
-
-## <a name="add-a-search-box-to-the-students-index-page"></a>Добавление поля поиска на страницу индекса учащихся
+## <a name="add-a-search-box"></a>Добавление поля поиска
 
 Для добавления фильтра на страницу индекса учащихся, вы добавите в представление текстовое поле и кнопка отправки и внести соответствующие изменения в `Index` метод. Текстовое поле позволяет ввести строку для поиска в имя полях имени и фамилии.
 
@@ -103,15 +106,11 @@ ms.locfileid: "48912778"
 
 2. Запустить эту страницу, введите строку поиска и нажмите кнопку **поиска** для проверки работы фильтра.
 
-   ![Students_Index_page_with_search_box](sorting-filtering-and-paging-with-the-entity-framework-in-an-asp-net-mvc-application/_static/image4.png)
-
    Обратите внимание на то, что URL-адрес не содержит «» строка поиска, это означает, что если закладку на данной странице, вы не получите отфильтрованного списка при использовании закладки. Это также касается ссылки сортировки столбцов, так как они будут отсортированы всего списка. Вам предстоит изменить **поиска** кнопку, чтобы использовать строки запроса для отбора позже в этом руководстве.
 
-## <a name="add-paging-to-the-students-index-page"></a>Добавление разбиения на страницы на страницу индекса учащихся
+## <a name="add-paging"></a>Добавление разбиения по страницам
 
-Чтобы добавить на страницу индекса учащихся разбиения на страницы, необходимо начать с установки **PagedList.Mvc** пакет NuGet. Затем мы внесем дополнительные изменения в `Index` метод и добавьте ссылки перелистывания, чтобы `Index` представления. **PagedList.Mvc** является одним из многих хороший по страницам и упорядочения пакеты для ASP.NET MVC и его использование здесь предназначен только в качестве примера, не в виде рекомендаций для него другими вариантами. Ниже показан перелистывания.
-
-![Students_index_page_with_paging](sorting-filtering-and-paging-with-the-entity-framework-in-an-asp-net-mvc-application/_static/image5.png)
+Чтобы добавить на страницу индекса учащихся разбиения на страницы, необходимо начать с установки **PagedList.Mvc** пакет NuGet. Затем мы внесем дополнительные изменения в `Index` метод и добавьте ссылки перелистывания, чтобы `Index` представления. **PagedList.Mvc** является одним из многих хороший по страницам и упорядочения пакеты для ASP.NET MVC и его использование здесь предназначен только в качестве примера, не в виде рекомендаций для него другими вариантами.
 
 ### <a name="install-the-pagedlistmvc-nuget-package"></a>Установите пакет PagedList.MVC NuGet
 
@@ -124,8 +123,6 @@ NuGet **PagedList.Mvc** пакет автоматически устанавли
    ```text
    Install-Package PagedList.Mvc
    ```
-
-   ![Установка PagedList.Mvc](sorting-filtering-and-paging-with-the-entity-framework-in-an-asp-net-mvc-application/_static/image6.png)
 
 3. Выполните построение проекта.
 
@@ -197,13 +194,9 @@ NuGet **PagedList.Mvc** пакет автоматически устанавли
 
 2. Откройте страницу.
 
-   ![Страница указателя учащихся с разбиением на страницы](sorting-filtering-and-paging-with-the-entity-framework-in-an-asp-net-mvc-application/_static/image7.png)
-
    Чтобы убедиться, что постраничный просмотр работает, нажимайте кнопки перелистывания при различном порядке сортировки. Затем введите строку поиска и повторите перелистывание, чтобы убедиться, что разбиение на страницы работает корректно вместе с сортировкой и фильтрацией.
 
-   ![Страница указателя учащихся со текст фильтра поиска](sorting-filtering-and-paging-with-the-entity-framework-in-an-asp-net-mvc-application/_static/image8.png)
-
-## <a name="create-an-about-page-that-shows-student-statistics"></a>Создание страницы About со статистикой студентов
+## <a name="create-an-about-page"></a>Создание страницы About
 
 Для университета Contoso веб сайта о странице как отображать количество учащихся поданы заявки на каждую дату регистрации. Для этого понадобится группировка и выполнение простых расчетов в группах. Для выполнения этой задачи нам потребуется следующее:
 
@@ -249,14 +242,24 @@ NuGet **PagedList.Mvc** пакет автоматически устанавли
 
    ![About_page](sorting-filtering-and-paging-with-the-entity-framework-in-an-asp-net-mvc-application/_static/image9.png)
 
-## <a name="summary"></a>Сводка
+## <a name="get-the-code"></a>Получение кода
 
-В этом руководстве вы узнали, как создать модель данных и реализации основных CRUD, сортировка, фильтрация, разбиение по страницам и группировка. В следующем руководстве вы начнете рассматривать более сложные вопросы, развернув модель данных.
+[Скачивание готового проекта](http://code.msdn.microsoft.com/ASPNET-MVC-Application-b01a9fe8)
 
-Оставьте свои отзывы на том, как вам понравилось, и этот учебник, и что можно улучшить.
+## <a name="additional-resources"></a>Дополнительные ресурсы
 
 Ссылки на другие ресурсы Entity Framework можно найти в [доступ к данным ASP.NET — рекомендуемые ресурсы](../../../../whitepapers/aspnet-data-access-content-map.md).
 
-> [!div class="step-by-step"]
-> [Назад](implementing-basic-crud-functionality-with-the-entity-framework-in-asp-net-mvc-application.md)
-> [Вперед](connection-resiliency-and-command-interception-with-the-entity-framework-in-an-asp-net-mvc-application.md)
+## <a name="next-steps"></a>Следующие шаги
+
+В этом учебнике рассмотрены следующие задачи.
+
+> [!div class="checklist"]
+> * Добавление ссылки сортировки столбцов
+> * Добавление поля поиска
+> * Добавление разбиения по страницам
+> * Создание страницы About
+
+Перейдите к следующей статье, чтобы сведения об использовании перехвата устойчивость и команду подключения.
+> [!div class="nextstepaction"]
+> [Перехват подключения устойчивость и команды](connection-resiliency-and-command-interception-with-the-entity-framework-in-an-asp-net-mvc-application.md)

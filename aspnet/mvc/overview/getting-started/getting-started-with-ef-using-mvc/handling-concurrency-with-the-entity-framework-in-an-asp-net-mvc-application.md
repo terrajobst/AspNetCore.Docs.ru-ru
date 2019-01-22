@@ -1,36 +1,41 @@
 ---
 uid: mvc/overview/getting-started/getting-started-with-ef-using-mvc/handling-concurrency-with-the-entity-framework-in-an-asp-net-mvc-application
-title: Обработка параллелизма с помощью Entity Framework 6 в приложении ASP.NET MVC 5 (10 из 12) | Документация Майкрософт
+title: Учебник. Маркер параллелизма в EF в приложении ASP.NET MVC 5
+description: Этом руководстве показано, как использовать оптимистичный параллелизм для обработки конфликтов, когда несколько пользователей изменяют одну сущность, в то же время.
 author: tdykstra
-description: Пример веб-приложение университета Contoso демонстрирует создание приложения ASP.NET MVC 5, используя Entity Framework 6 Code First и Visual Studio...
 ms.author: riande
-ms.date: 12/08/2014
+ms.date: 01/21/2019
+ms.topic: tutorial
 ms.assetid: be0c098a-1fb2-457e-b815-ddca601afc65
 msc.legacyurl: /mvc/overview/getting-started/getting-started-with-ef-using-mvc/handling-concurrency-with-the-entity-framework-in-an-asp-net-mvc-application
 msc.type: authoredcontent
-ms.openlocfilehash: 22fd6bc92aa0d516e1bfeb5aa6a67d7246d977ac
-ms.sourcegitcommit: a4dcca4f1cb81227c5ed3c92dc0e28be6e99447b
+ms.openlocfilehash: b77b8d6f952472f4d3030f54665f970b8ace2caf
+ms.sourcegitcommit: 728f4e47be91e1c87bb7c0041734191b5f5c6da3
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "48913259"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54444185"
 ---
-<a name="handling-concurrency-with-the-entity-framework-6-in-an-aspnet-mvc-5-application-10-of-12"></a>Обработка параллелизма с помощью Entity Framework 6 в приложении ASP.NET MVC 5 (10 из 12)
-====================
-по [том Дайкстра](https://github.com/tdykstra)
+# <a name="tutorial-handle-concurrency-with-ef-in-an-aspnet-mvc-5-app"></a>Учебник. Маркер параллелизма в EF в приложении ASP.NET MVC 5
 
-[Скачать завершенный проект](http://code.msdn.microsoft.com/ASPNET-MVC-Application-b01a9fe8)
+В предыдущих учебниках вы узнали, как обновлять данные. Этом руководстве показано, как использовать оптимистичный параллелизм для обработки конфликтов, когда несколько пользователей изменяют одну сущность, в то же время. Изменить веб-страниц, которые работают с `Department` сущности, чтобы они обрабатывают ошибки параллелизма. На следующих рисунках показаны страницы "Edit" (Редактирование) и "Delete" (Удаление), включая некоторые сообщения, которые отображаются при возникновении конфликта параллелизма.
 
-> Пример веб-приложение университета Contoso демонстрирует создание приложения ASP.NET MVC 5, используя Entity Framework 6 Code First и Visual Studio. Сведения о серии руководств см. в [первом руководстве серии](creating-an-entity-framework-data-model-for-an-asp-net-mvc-application.md).
+![Department_Edit_page_2_after_clicking_Save](handling-concurrency-with-the-entity-framework-in-an-asp-net-mvc-application/_static/image10.png)
 
+![Department_Edit_page_2_after_clicking_Save](handling-concurrency-with-the-entity-framework-in-an-asp-net-mvc-application/_static/image15.png)
 
-В предыдущих учебниках вы узнали, как обновлять данные. Это руководство описывает, как обрабатывать конфликты, когда несколько пользователей одновременно изменяют одну сущность.
+В этом учебнике рассмотрены следующие задачи.
 
-Вы измените веб-страниц, которые работают с `Department` сущности, чтобы они обрабатывают ошибки параллелизма. На следующих рисунках показаны страницы индекса и Delete, включая некоторые сообщения, которые отображаются при возникновении конфликта параллелизма.
+> [!div class="checklist"]
+> * Дополнительные сведения о конфликтах параллелизма
+> * Добавление оптимистичного параллелизма
+> * Изменение контроллера Department
+> * Обработка параллелизма теста
+> * Обновление страницы удаления
 
-![Department_Index_page_before_edits](handling-concurrency-with-the-entity-framework-in-an-asp-net-mvc-application/_static/image1.png)
+## <a name="prerequisites"></a>Предварительные требования
 
-![Department_Edit_page_2_after_clicking_Save](handling-concurrency-with-the-entity-framework-in-an-asp-net-mvc-application/_static/image2.png)
+* [Асинхронные и хранимые процедуры](async-and-stored-procedures-with-the-entity-framework-in-an-asp-net-mvc-application.md)
 
 ## <a name="concurrency-conflicts"></a>Конфликты параллелизма
 
@@ -46,11 +51,7 @@ ms.locfileid: "48913259"
 
 Альтернативой пессимистичному параллелизму является *оптимистичного параллелизма*. Оптимистическая блокировка допускает появление конфликтов параллелизма, а затем обрабатывает их соответствующим образом. Например, Джон запускает отделов изменения страницы, изменения **бюджета** сумма для кафедры английского языка с 350 000,00 USD на 0,00 USD.
 
-![Changing_English_dept_budget_to_100000](handling-concurrency-with-the-entity-framework-in-an-asp-net-mvc-application/_static/image3.png)
-
 Прежде чем Джон выбирает **Сохранить**, Мария запускает один и тот же странице и изменения **Дата начала** поле из 9/1/2007 до 8/8/2013.
-
-![Changing_English_dept_start_date_to_1999](handling-concurrency-with-the-entity-framework-in-an-asp-net-mvc-application/_static/image4.png)
 
 Джон выбирает **Сохранить** первый и видит, его изменение, когда браузер возвращается на страницу индекса, а затем Мария нажимает кнопку **Сохранить**. Дальнейший ход событий определяется порядком обработки конфликтов параллелизма. Некоторые параметры перечислены ниже:
 
@@ -75,7 +76,7 @@ ms.locfileid: "48913259"
 
 В оставшейся части этого руководства вам предстоит добавить [rowversion](https://msdn.microsoft.com/library/ms182776(v=sql.110).aspx) свойство для отслеживания `Department` сущности, создание контроллера и представлений и проверить, что все работает правильно.
 
-## <a name="add-an-optimistic-concurrency-property-to-the-department-entity"></a>Добавить свойство оптимистичного параллелизма в сущность Department
+## <a name="add-optimistic-concurrency"></a>Добавление оптимистичного параллелизма
 
 В *Models\Department.cs*, добавьте свойство отслеживания `RowVersion`:
 
@@ -91,7 +92,7 @@ ms.locfileid: "48913259"
 
 [!code-console[Main](handling-concurrency-with-the-entity-framework-in-an-asp-net-mvc-application/samples/sample3.cmd)]
 
-## <a name="modify-the-department-controller"></a>Изменение контроллера Department
+## <a name="modify-department-controller"></a>Изменение контроллера Department
 
 В *Controllers\DepartmentController.cs*, добавьте `using` инструкции:
 
@@ -135,37 +136,23 @@ ms.locfileid: "48913259"
 
 [!code-cshtml[Main](handling-concurrency-with-the-entity-framework-in-an-asp-net-mvc-application/samples/sample12.cshtml?highlight=18)]
 
-## <a name="testing-optimistic-concurrency-handling"></a>Тестирование обработки оптимистичного параллелизма
+## <a name="test-concurrency-handling"></a>Обработка параллелизма теста
 
-Запустите сайт и нажмите кнопку **отделов**:
-
-![Department_Index_page_before_edits](handling-concurrency-with-the-entity-framework-in-an-asp-net-mvc-application/_static/image5.png)
+Запустите сайт и нажмите кнопку **отделов**.
 
 Щелкните правой кнопкой мыши **изменить** гиперссылки для кафедры английского языка и выберите **открыть на новой вкладке** щелкните **изменить** гиперссылку для кафедры английского языка. На двух вкладках отображаются те же сведения.
 
-![Department_Edit_page_before_changes](handling-concurrency-with-the-entity-framework-in-an-asp-net-mvc-application/_static/image6.png)
-
 Измените поле на первой вкладке браузера и нажмите кнопку **Save** (Сохранить).
-
-![Department_Edit_page_1_after_change](handling-concurrency-with-the-entity-framework-in-an-asp-net-mvc-application/_static/image7.png)
 
 В браузере отображается страница индекса с измененным значением.
 
-![Departments_Index_page_after_first_budget_edit](handling-concurrency-with-the-entity-framework-in-an-asp-net-mvc-application/_static/image8.png)
-
-Измените поле на второй вкладке браузера и нажмите кнопку **Сохранить**.
-
-![Department_Edit_page_2_after_change](handling-concurrency-with-the-entity-framework-in-an-asp-net-mvc-application/_static/image9.png)
-
-Нажмите кнопку **Сохранить** на второй вкладке браузера. Отображается сообщение об ошибке:
+Измените поле на второй вкладке браузера и нажмите кнопку **Сохранить**. Отображается сообщение об ошибке:
 
 ![Department_Edit_page_2_after_clicking_Save](handling-concurrency-with-the-entity-framework-in-an-asp-net-mvc-application/_static/image10.png)
 
 Снова нажмите кнопку **Save** (Сохранить). Значение, введенное на второй вкладке браузера сохраняется вместе с исходное значение данных, которые были изменены в первом браузера. Сохраненные значения отображаются при открытии страницы индекса.
 
-![Department_Index_page_with_change_from_second_browser](handling-concurrency-with-the-entity-framework-in-an-asp-net-mvc-application/_static/image11.png)
-
-## <a name="updating-the-delete-page"></a>Обновление страницы "Delete"
+## <a name="update-the-delete-page"></a>Обновление страницы удаления
 
 Для страницы "Delete" (Удаление) платформа Entity Framework обнаруживает конфликты параллелизма, вызванные схожим изменением кафедры. Когда `HttpGet` `Delete` метод отображает представление подтверждения, оно содержит исходное `RowVersion` значение в скрытое поле. Затем это значение становится доступными для `HttpPost` `Delete` метод, вызываемый при подтверждении удаления пользователем. Когда платформа Entity Framework создает SQL `DELETE` команды, он включает `WHERE` предложение с исходным `RowVersion` значение. Если команда ни одной строки не затрагивает (то есть строка была изменена после отображения страницы подтверждения удаления), возникает исключение параллелизма и `HttpGet Delete` метод вызывается с флаг ошибки `true` чтобы повторно отобразить страница подтверждения с сообщением об ошибке. Это также возможно, что отсутствие затронутых строк, так как строка была удалена другим пользователем, поэтому в этом случае отображается другое сообщение об ошибке.
 
@@ -209,17 +196,11 @@ ms.locfileid: "48913259"
 
 Откройте страницу индекса кафедр. Щелкните правой кнопкой мыши **удалить** гиперссылки для кафедры английского языка и выберите **открыть на новой вкладке** на первой вкладке щелкните **изменить** гиперссылку для кафедры английского языка.
 
-В первом окне измените одно из значений и нажмите кнопку **Сохранить** :
-
-![Department_Edit_page_after_change_before_delete](handling-concurrency-with-the-entity-framework-in-an-asp-net-mvc-application/_static/image12.png)
+В первом окне измените одно из значений и нажмите кнопку **Сохранить**.
 
 Страница индекса подтверждает изменения.
 
-![Departments_Index_page_after_budget_edit_before_delete](handling-concurrency-with-the-entity-framework-in-an-asp-net-mvc-application/_static/image13.png)
-
 На второй вкладке нажмите кнопку **Delete** (Удалить).
-
-![Department_Delete_confirmation_page_before_concurrency_error](handling-concurrency-with-the-entity-framework-in-an-asp-net-mvc-application/_static/image14.png)
 
 Вы видите сообщение об ошибке параллелизма, а значения кафедры обновляются с использованием актуальных сведений из базы данных.
 
@@ -227,12 +208,27 @@ ms.locfileid: "48913259"
 
 Если нажать кнопку **Delete** (Удалить) еще раз, вы будете перенаправлены на страницу индекса, которая показывает, что кафедра была удалена.
 
-## <a name="summary"></a>Сводка
+## <a name="get-the-code"></a>Получение кода
 
-На этом заканчивается введение в обработку конфликтов параллелизма. Сведения о других способах обрабатывать различные сценарии параллелизма, см. в разделе [оптимистичного параллелизма шаблоны](https://msdn.microsoft.com/data/jj592904) и [работа со значениями свойств](https://msdn.microsoft.com/data/jj592677) на сайте MSDN. Следующее руководство посвящено реализации таблица на иерархию наследования для `Instructor` и `Student` сущностей.
+[Скачать завершенный проект](http://code.msdn.microsoft.com/ASPNET-MVC-Application-b01a9fe8)
+
+## <a name="additional-resources"></a>Дополнительные ресурсы
 
 Ссылки на другие ресурсы Entity Framework можно найти в [доступ к данным ASP.NET — рекомендуемые ресурсы](../../../../whitepapers/aspnet-data-access-content-map.md).
 
-> [!div class="step-by-step"]
-> [Назад](async-and-stored-procedures-with-the-entity-framework-in-an-asp-net-mvc-application.md)
-> [Вперед](implementing-inheritance-with-the-entity-framework-in-an-asp-net-mvc-application.md)
+Сведения о других способах обрабатывать различные сценарии параллелизма, см. в разделе [оптимистичного параллелизма шаблоны](https://msdn.microsoft.com/data/jj592904) и [работа со значениями свойств](https://msdn.microsoft.com/data/jj592677) на сайте MSDN. Следующее руководство посвящено реализации таблица на иерархию наследования для `Instructor` и `Student` сущностей.
+
+## <a name="next-steps"></a>Следующие шаги
+
+В этом учебнике рассмотрены следующие задачи.
+
+> [!div class="checklist"]
+> * Узнали о конфликтах параллелизма
+> * Добавлена оптимистичного параллелизма
+> * Измененный контроллера Department
+> * Обработки протестированных параллелизма
+> * Обновление страницы "Delete"
+
+Перейдите к следующей статье, чтобы узнать, как реализовать наследование в модели данных.
+> [!div class="nextstepaction"]
+> [Реализации наследования в модели данных](implementing-inheritance-with-the-entity-framework-in-an-asp-net-mvc-application.md)

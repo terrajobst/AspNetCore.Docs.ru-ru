@@ -4,14 +4,14 @@ author: mjrousos
 description: Сведения об использовании пользовательских IAuthorizationPolicyProvider в приложении ASP.NET Core для динамического создания политик авторизации.
 ms.author: riande
 ms.custom: mvc
-ms.date: 05/02/2018
+ms.date: 01/21/2019
 uid: security/authorization/iauthorizationpolicyprovider
-ms.openlocfilehash: ef3e81da6fb9e2e332b553607be35fcd79e9362d
-ms.sourcegitcommit: ec71fd5a988f927ae301813aae5ff764feb3bb6a
+ms.openlocfilehash: ca57a9fd8e3c11f15fe14bbe4538bc748c4c84b6
+ms.sourcegitcommit: 728f4e47be91e1c87bb7c0041734191b5f5c6da3
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/12/2019
-ms.locfileid: "54249377"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54444159"
 ---
 # <a name="custom-authorization-policy-providers-using-iauthorizationpolicyprovider-in-aspnet-core"></a>Настраиваемые поставщики политики авторизации, используя IAuthorizationPolicyProvider в ASP.NET Core 
 
@@ -25,8 +25,7 @@ ms.locfileid: "54249377"
 * С помощью большой диапазон политики (для номера разных мест или возрасте, например), поэтому нет смысла для добавления каждой политики авторизации для отдельных с `AuthorizationOptions.AddPolicy` вызова.
 * Создание политики в среде выполнения, на основе сведений из внешнего источника данных (например, базу данных) или динамически определить требования к проверке подлинности посредством другого механизма.
 
-[Просмотреть или скачать образец кода](https://github.com/aspnet/AspNetCore/tree/release/2.2/src/AuthSamples/) из [репозиторий AspNetCore GitHub](https://github.com/aspnet/AspNetCore). Скачайте репозиторий aspnet/AuthSamples ZIP-файл.
-Распакуйте *AuthSamples-master.zip* файл. Перейдите к *примеры/CustomPolicyProvider* папки проекта.
+[Просмотреть или скачать образец кода](https://github.com/aspnet/AspNetCore/tree/release/2.2/src/Security/samples/CustomPolicyProvider) из [репозиторий AspNetCore GitHub](https://github.com/aspnet/AspNetCore). Скачайте репозиторий aspnet/AspNetCore ZIP-файл. Распакуйте файл. Перейдите к *src/Security/примеры/CustomPolicyProvider* папки проекта.
 
 ## <a name="customize-policy-retrieval"></a>Настройки политики извлечения
 
@@ -154,4 +153,4 @@ public Task<AuthorizationPolicy> GetDefaultPolicyAsync() =>
 services.AddSingleton<IAuthorizationPolicyProvider, MinimumAgePolicyProvider>();
 ```
 
-Полный пользовательский `IAuthorizationPolicyProvider` пример можно найти в [репозиторий GitHub aspnet/AuthSamples](https://github.com/aspnet/AuthSamples/tree/master/samples/CustomPolicyProvider).
+Полный пользовательский `IAuthorizationPolicyProvider` пример можно найти в [репозиторий GitHub aspnet/AuthSamples](https://github.com/aspnet/AspNetCore/tree/release/2.2/src/Security/samples/CustomPolicyProvider).

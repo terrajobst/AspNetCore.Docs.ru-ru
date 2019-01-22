@@ -7,12 +7,12 @@ ms.author: riande
 ms.date: 11/28/2017
 msc.legacyurl: /web-api/overview/getting-started-with-aspnet-web-api/tutorial-your-first-web-api
 msc.type: authoredcontent
-ms.openlocfilehash: 62e99a41ba935470c39476c9aea8ee4193543425
-ms.sourcegitcommit: 7890dfb5a8f8c07d813f166d3ab0c263f893d0c6
+ms.openlocfilehash: 7bec95af4532535f0d620bfe6862958907466874
+ms.sourcegitcommit: 728f4e47be91e1c87bb7c0041734191b5f5c6da3
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/04/2018
-ms.locfileid: "48795297"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54444263"
 ---
 <a name="get-started-with-aspnet-web-api-2-c"></a>Начало работы с ASP.NET Web API 2 (C#)
 ====================
@@ -178,7 +178,7 @@ JQuery [getJSON](http://api.jquery.com/jQuery.getJSON/) функция отпр�
 
 Вы действительно хотите см. по завершении сайт, запущенный в качестве активного веб-приложения? Полную версию приложения можно развернуть учетную запись Azure, просто нажав кнопку ниже.
 
-[![](http://azuredeploy.net/deploybutton.png)](https://deploy.azure.com/?WT.mc_id=deploy_azure_aspnet&repository=https://github.com/tfitzmac/WebAPI-ProductsApp#/form/setup)
+[![](https://azuredeploy.net/deploybutton.png)](https://deploy.azure.com/?WT.mc_id=deploy_azure_aspnet&repository=https://github.com/tfitzmac/WebAPI-ProductsApp#/form/setup)
 
 Требуется учетная запись Azure для развертывания этого решения в Azure. Если у вас еще нет учетной записи, у вас есть следующие параметры:
 
