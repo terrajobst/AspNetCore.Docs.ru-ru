@@ -1,18 +1,12 @@
 ---
-title: Создание веб-приложения с ASP.NET Core MVC на Windows с помощью Visual Studio
+title: Создание веб-приложения с помощью MVC ASP.NET Core
 author: rick-anderson
-description: В содержании приведено введение в модель MVC на ASP.NET Core с использованием Visual Studio на Windows.
+description: В содержании приведено введение в модель MVC в ASP.NET Core.
 ms.author: riande
 ms.date: 10/26/2017
 uid: tutorials/first-mvc-app/index
-ms.openlocfilehash: 3a679e31c6eda4c86edbd0ada27b4973204c467b
-ms.sourcegitcommit: 4e87712029de2aceb1cf2c52e9e3dda8195a5b8e
-ms.translationtype: HT
-ms.contentlocale: ru-RU
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53382089"
 ---
-# <a name="create-a-web-app-with-aspnet-core-mvc-on-windows-with-visual-studio"></a>Создание веб-приложения с ASP.NET Core MVC на Windows с помощью Visual Studio
+# <a name="create-a-web-app-with-aspnet-core-mvc"></a>Создание веб-приложения с помощью MVC ASP.NET Core
 
 [!INCLUDE [consider RP](~/includes/razor.md)]
 
