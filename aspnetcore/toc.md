@@ -1,11 +1,3 @@
----
-ms.openlocfilehash: a3ac1ac389892681e8c122d569e6325353ed6e88
-ms.sourcegitcommit: 42a8164b8aba21f322ffefacb92301bdfb4d3c2d
-ms.translationtype: HT
-ms.contentlocale: ru-RU
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54341684"
----
 # [Документация по ASP.NET Core](/aspnet/#pivot=core)
 
 # Обзор
@@ -25,6 +17,8 @@ ms.locfileid: "54341684"
 ## API веб-приложений
 ### [Создание веб-API](xref:tutorials/first-web-api)
 ### [Использование веб-API с MongoDB](xref:tutorials/first-mongo-app)
+### [Внутренний сервер для мобильных приложений](xref:mobile/native-mobile-backend)
+
 ## Веб-приложения
 ### [Razor Pages](xref:tutorials/razor-pages/index)
 ### [MVC](xref:tutorials/first-mvc-app/index)
@@ -32,7 +26,6 @@ ms.locfileid: "54341684"
 ## Веб-приложения в режиме реального времени
 ### [SignalR с JavaScript](xref:tutorials/signalr)
 ### [SignalR с TypeScript](xref:tutorials/signalr-typescript-webpack)
-## [Создание серверных служб для собственных мобильных приложений](xref:mobile/native-mobile-backend)
 
 ## Доступ к данным
 ### [EF Core с Razor Pages](xref:data/ef-rp/index)
@@ -50,16 +43,13 @@ ms.locfileid: "54341684"
 ## [Параметры](xref:fundamentals/configuration/options)
 ## [Ведение журнала](xref:fundamentals/logging/index)
 ## [Обработка ошибок](xref:fundamentals/error-handling)
-## ПО промежуточного слоя
-### [Обзор](xref:fundamentals/middleware/index)
-### [Фабричное ПО промежуточного слоя](xref:fundamentals/middleware/extensibility)
-### [Фабричное ПО промежуточного слоя со сторонним контейнером](xref:fundamentals/middleware/extensibility-third-party-container)
+## [ПО промежуточного слоя](xref:fundamentals/middleware/index)
 ## Ведущее приложение
 ### [Обзор](xref:fundamentals/host/index)
 ### [Веб-узел](xref:fundamentals/host/web-host)
 ### [Универсальный узел](xref:fundamentals/host/generic-host)
 ## [Серверы](xref:fundamentals/servers/index)
-## [Инициирование HTTP-запросов](xref:fundamentals/http-requests)
+## [Создание HTTP-запросов](xref:fundamentals/http-requests)
 
 # Веб-приложения
 ## Razor Pages
@@ -286,6 +276,7 @@ ms.locfileid: "54341684"
 ### [Создание образов Docker](/dotnet/articles/core/docker/building-net-docker-images)
 ### [Инструменты Visual Studio](xref:host-and-deploy/docker/visual-studio-tools-for-docker)
 ### [Публикация в образ Docker](/azure/vs-azure-tools-docker-hosting-web-apps-in-docker)
+### [Примеры образов Docker](https://github.com/dotnet/dotnet-docker/blob/master/samples/aspnetapp/README.md)
 ## [Конфигурация подсистемы балансировки нагрузки и прокси-сервера](xref:host-and-deploy/proxy-load-balancer)
 ## [Размещение в веб-ферме](xref:host-and-deploy/web-farm)
 ## [Профили публикации Visual Studio](xref:host-and-deploy/visual-studio-publish-profiles)
@@ -373,7 +364,7 @@ ms.locfileid: "54341684"
 #### [Временные поставщики защиты данных](xref:security/data-protection/implementation/key-storage-ephemeral)
 ### Совместимость
 #### [Обзор](xref:security/data-protection/compatibility/index)
-#### [Замена <machineKey> в ASP.NET](xref:security/data-protection/compatibility/replacing-machinekey)
+#### [Замена machineKey в ASP.NET](xref:security/data-protection/compatibility/replacing-machinekey)
 ## [Защита секретов в развертывании](xref:security/app-secrets)
 ## [Принудительное использование HTTPS](xref:security/enforcing-ssl)
 ## [Общий регламент по защите данных (GDPR), принятый в ЕС](xref:security/gdpr)
@@ -396,12 +387,14 @@ ms.locfileid: "54341684"
 ## [Средства диагностики](xref:performance/diagnostic-tools)
 ## [Нагрузочное тестирование](xref:test/loadtests)
 
-# Другие темы
-## [Глобализация и локализация](xref:fundamentals/localization)
-## [Локализация переносимых объектов с помощью Orchard Core](xref:fundamentals/portable-object-localization)
+# Глобализация и локализация
+## [Обзор](xref:fundamentals/localization)
+## [Локализация переносимых объектов](xref:fundamentals/portable-object-localization)
+
+# Дополнительно
 ## [Переопределение URL-адресов](xref:fundamentals/url-rewriting)
 ## [Поставщики файлов](xref:fundamentals/file-providers)
-## [Параметры запроса](xref:fundamentals/request-features)
+## [Интерфейсы с функциями запросов](xref:fundamentals/request-features)
 ## [Доступ к HttpContext](xref:fundamentals/httpcontext)
 ## [Маркеры изменений](xref:fundamentals/change-tokens)
 ## [Открытый веб-интерфейс для .NET (OWIN)](xref:fundamentals/owin)
@@ -411,6 +404,8 @@ ms.locfileid: "54341684"
 ## [Метапакет Microsoft.AspNetCore.All](xref:fundamentals/metapackage)
 ## [Ведение журнала с LoggerMessage](xref:fundamentals/logging/loggermessage)
 ## [Использование наблюдателя за файлами](xref:tutorials/dotnet-watch)
+### [Фабричное ПО промежуточного слоя](xref:fundamentals/middleware/extensibility)
+### [Фабричное ПО промежуточного слоя со сторонним контейнером](xref:fundamentals/middleware/extensibility-third-party-container)
 
 # Миграция
 ## [С версии 2.2 на 3.0](xref:migration/22-to-30)
