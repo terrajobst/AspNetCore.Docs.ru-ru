@@ -1,18 +1,18 @@
 ---
 title: Вопросы безопасности в ASP.NET Core SignalR
-author: tdykstra
+author: bradygaster
 description: Узнайте, как использовать проверку подлинности и авторизации в ASP.NET Core SignalR.
 monikerRange: '>= aspnetcore-2.1'
 ms.author: anurse
 ms.custom: mvc
 ms.date: 11/06/2018
 uid: signalr/security
-ms.openlocfilehash: f646d319cf3030fd4d769e882514da14b230bbdd
-ms.sourcegitcommit: c3fa5aded0bf76a7414047d50b8a2311d27ee1ef
+ms.openlocfilehash: 52cfac6be8e61572acdf0b19dab574b607314d97
+ms.sourcegitcommit: ebf4e5a7ca301af8494edf64f85d4a8deb61d641
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51276149"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54836068"
 ---
 # <a name="security-considerations-in-aspnet-core-signalr"></a>Вопросы безопасности в ASP.NET Core SignalR
 
@@ -46,25 +46,25 @@ CORS необходимо настроить в приложении SignalR, р
 
 ::: moniker range=">= aspnetcore-2.2"
 
-Защиты, предоставляемые CORS не применяются к WebSockets. Origin ограничение на WebSockets, чтение [WebSockets origin ограничение](xref:fundamentals/websockets#websocket-origin-restriction).
+Варианты защиты, предоставляемые CORS, не применяются к WebSocket. Origin ограничение на WebSockets, чтение [WebSockets origin ограничение](xref:fundamentals/websockets#websocket-origin-restriction).
 
 ::: moniker-end
 
 ::: moniker range="< aspnetcore-2.2"
 
-Защиты, предоставляемые CORS не применяются к WebSockets. Браузеры иметь **не**:
+Варианты защиты, предоставляемые CORS, не применяются к WebSocket. Браузеры **не** поддерживают следующие задачи:
 
-* Выполнение предварительных запросов CORS.
-* Использовать ограничения, указанные в `Access-Control` заголовки при составлении запросов WebSocket.
+* выполнение предварительных запросов CORS;
+* использование ограничений, указанных в заголовках `Access-Control`, при выполнении запросов WebSocket.
 
-Однако браузеры отправляют `Origin` заголовка при выдаче запросов WebSocket. Приложения должны проверять эти заголовки, чтобы гарантировать, что разрешены только WebSockets, поступающие от ожидаемого источников.
+Однако браузеры отправляют заголовок `Origin` при выпуске запросов WebSocket. Приложения должны быть настроены для проверки этих заголовков, чтобы использовались только WebSocket из ожидаемых источников.
 
 В ASP.NET Core 2.1 и более поздних версиях проверка заголовков можно добиться, используя пользовательские по промежуточного слоя поместить **перед `UseSignalR`и по промежуточного слоя проверки подлинности** в `Configure`:
 
 [!code-csharp[Main](security/sample/Startup.cs?name=snippet2)]
 
 > [!NOTE]
-> `Origin` Заголовок контролируется с помощью клиента и, подобно `Referer` заголовка, можно подделать. Эти заголовки должен **не** использоваться в качестве механизма проверки подлинности.
+> Заголовок `Origin` контролируется клиентом и, как и заголовок `Referer`, может быть подделан. Эти заголовки должен **не** использоваться в качестве механизма проверки подлинности.
 
 ::: moniker-end
 

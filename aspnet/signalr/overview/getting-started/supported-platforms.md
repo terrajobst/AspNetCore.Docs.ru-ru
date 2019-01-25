@@ -1,19 +1,19 @@
 ---
 uid: signalr/overview/getting-started/supported-platforms
 title: Поддерживаемые платформы | Документация Майкрософт
-author: pfletcher
+author: bradygaster
 description: В этой статье описывается, какие клиенты и серверы поддерживаются SignalR.
-ms.author: riande
+ms.author: bradyg
 ms.date: 04/18/2018
 ms.assetid: eac31beb-0f46-4afa-9def-e80904dea4f0
 msc.legacyurl: /signalr/overview/getting-started/supported-platforms
 msc.type: authoredcontent
-ms.openlocfilehash: e270f9a328f36854fdfb3e23b78e0b40cdda6411
-ms.sourcegitcommit: 74e3be25ea37b5fc8b4b433b0b872547b4b99186
+ms.openlocfilehash: 60fa74b54797efbe14ba525160b2f750a4f5a451
+ms.sourcegitcommit: ebf4e5a7ca301af8494edf64f85d4a8deb61d641
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53287384"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54836055"
 ---
 <a name="supported-platforms"></a>Поддерживаемые платформы
 ====================
@@ -113,8 +113,8 @@ SignalR может использоваться в следующих брауз
 | --- | --- | --- |
 | Веб-сокеты | Windows 8 + и .NET 4.5 + | Н/Д |
 | Навсегда кадра | Н/Д | Н/Д |
-| Сервер отправил события | .NET 4 + | 5+ |
-| Долгие опросы | .NET 4 + | 5+ |
+| Сервер отправил события | .NET 4+ | 5+ |
+| Долгие опросы | .NET 4+ | 5+ |
 
 <a id="android"></a>
 

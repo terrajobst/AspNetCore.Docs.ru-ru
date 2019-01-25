@@ -1,18 +1,18 @@
 ---
 title: Конфигурация ASP.NET Core SignalR
-author: tdykstra
+author: bradygaster
 description: Сведения о настройке приложения ASP.NET Core SignalR.
 monikerRange: '>= aspnetcore-2.1'
-ms.author: tdykstra
+ms.author: bradyg
 ms.custom: mvc
 ms.date: 09/06/2018
 uid: signalr/configuration
-ms.openlocfilehash: 855446003ae9d994854d4d8bb7d0f542a22734e4
-ms.sourcegitcommit: f43f430a166a7ec137fcad12ded0372747227498
+ms.openlocfilehash: bb18ba242584afa7181dcc19a5295f86996aeaa3
+ms.sourcegitcommit: ebf4e5a7ca301af8494edf64f85d4a8deb61d641
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49391106"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54837524"
 ---
 # <a name="aspnet-core-signalr-configuration"></a>Конфигурация ASP.NET Core SignalR
 
@@ -103,7 +103,7 @@ services.AddSignalR().AddHubOptions<MyHub>(options =>
 
 Транспорт длинный опрос имеет дополнительные параметры, которые могут быть настроены с помощью `LongPolling` свойство:
 
-| Параметр | Значение по умолчанию | Описание |
+| Параметр | Значение по умолчанию | Описание: |
 | ------ | ------------- | ----------- |
 | `PollTimeout` | 90 секунд | Максимальное время ожидания сервером ответа сообщение, отправляемое клиенту перед завершением работы запрос на единый опроса. Уменьшение этого значения приводит к клиентам выполнять чаще, новые запросы опроса. |
 
@@ -151,7 +151,7 @@ let connection = new signalR.HubConnectionBuilder()
 
 Ниже перечислены уровни ведения журнала, доступные для клиента JavaScript. Установка уровня журнала в одно из следующих значений включает ведение журнала сообщений в **или более поздней версии** этого уровня.
 
-| Уровень | Описание |
+| Уровень | Описание: |
 | ----- | ----------- |
 | `None` | Сообщения не регистрируются. |
 | `Critical` | Сообщения, которые означают сбой всего приложения. |
@@ -226,7 +226,7 @@ let connection = new signalR.HubConnectionBuilder()
 
 Дополнительные параметры можно настроить в `WithUrl` (`withUrl` в JavaScript) метод `HubConnectionBuilder`:
 
-| Параметр .NET | Параметр JavaScript | Значение по умолчанию | Описание |
+| Параметр .NET | Параметр JavaScript | Значение по умолчанию | Описание: |
 | ----------- | ----------------- | ------------- | ----------- |
 | `AccessTokenProvider` | `accessTokenFactory` | `null` | Функция, возвращающая строку, которая предоставляется как токен проверки подлинности носителя в HTTP-запросов. |
 | `SkipNegotiation` | `skipNegotiation` | `false` | Задайте значение `true` пропустить шаг согласования. **Поддерживается только при передаче WebSockets только транспорта включена**. Этот параметр не может быть включен, при использовании служба Azure SignalR. |

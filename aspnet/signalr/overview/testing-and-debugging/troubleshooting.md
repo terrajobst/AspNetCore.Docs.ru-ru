@@ -1,19 +1,19 @@
 ---
 uid: signalr/overview/testing-and-debugging/troubleshooting
 title: Устранение неполадок SignalR | Документация Майкрософт
-author: pfletcher
+author: bradygaster
 description: В этой статье описаны распространенные проблемы с разработкой приложений SignalR.
-ms.author: riande
+ms.author: bradyg
 ms.date: 06/10/2014
 ms.assetid: 4b559e6c-4fb0-4a04-9812-45cf08ae5779
 msc.legacyurl: /signalr/overview/testing-and-debugging/troubleshooting
 msc.type: authoredcontent
-ms.openlocfilehash: e41061f0310c021b10dc6667a5c3297788213b0a
-ms.sourcegitcommit: 74e3be25ea37b5fc8b4b433b0b872547b4b99186
+ms.openlocfilehash: 38802814fbb748513274f1fd8a33521fafd48ed3
+ms.sourcegitcommit: ebf4e5a7ca301af8494edf64f85d4a8deb61d641
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53287959"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54837212"
 ---
 <a name="signalr-troubleshooting"></a>Устранение неполадок SignalR
 ====================
@@ -284,7 +284,7 @@ jQuery Mobile `initializePage` функция принудительно вып�
 
 Это известная проблема, описано [здесь](https://github.com/SignalR/SignalR/issues/1963). Эта проблема может возникать, используя последнюю версию библиотеки JQuery; обойти это можно понизить приложению JQuery 1.8.2.
 
-### <a name="invalidoperationexception-not-a-valid-web-socket-request"></a>«InvalidOperationException: Не допустимый запрос веб-сокета.
+### <a name="invalidoperationexception-not-a-valid-web-socket-request"></a>"InvalidOperationException: Не допустимый запрос веб-сокета.
 
 Эта ошибка может возникать, если используется протокол WebSocket, но сетевой прокси-сервер изменяет заголовки запроса. Решение заключается в том, чтобы настроить прокси-сервера для веб-сокет на порт 80.
 

@@ -8,18 +8,18 @@ ms.date: 03/14/2014
 ms.assetid: 58b583cd-c4ab-47a3-8527-8c92c298c91f
 msc.legacyurl: /whitepapers/aspnet-web-deployment-content-map
 msc.type: content
-ms.openlocfilehash: c970d929c4e6b581bedd2947982926ac448facfa
-ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
+ms.openlocfilehash: 6df0c9d2f38ad1d39abd62787c600ef80da8e8e0
+ms.sourcegitcommit: ebf4e5a7ca301af8494edf64f85d4a8deb61d641
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "41835542"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54836225"
 ---
 <a name="aspnet-web-deployment---recommended-resources"></a>Развертывание веб-ASP.NET — рекомендуемые ресурсы
 ====================
 > В этом разделе содержит ссылки на документацию, ресурсы о развертывании (публикации) ASP.NET веб-приложений в IIS с помощью Visual Studio 2010, Visual Web Developer 2010 и более поздних версий.
 > 
-> Если известно, учета, замечательный блог [stackoverflow](http://stackoverflow.com) потока или любую ссылку, которая будет полезна, [отправьте нам сообщение электронной почты](mailto:aspnetue@microsoft.com?subject=Deployment Content Map) со ссылкой.
+> Если известно, учета, замечательный блог [stackoverflow](http://stackoverflow.com) потока или любую ссылку, которая будет полезна, [отправьте нам сообщение электронной почты](mailto:aspnetue@microsoft.com?subject=Deployment%20Content%20Map) со ссылкой.
 > 
 > > [!NOTE] 
 > > 
@@ -75,7 +75,7 @@ ms.locfileid: "41835542"
 
 - [Развертывание Windows Azure веб-сайта](https://docs.microsoft.com/azure/app-service-web/web-sites-deploy). Описываются параметры и предоставляет ссылки на ресурсы для развертывания веб-проектов для Windows Azure Web Sites. Содержит раздел о развертывании из Visual Studio.
 - [Веб-развертывание ASP.NET с помощью Visual Studio](../web-forms/overview/deployment/visual-studio-web-deployment/introduction.md). 12, часть цикла руководств показано, как развертывать веб-приложения с базами данных SQL Server. Для базы данных в развертывании используется как поставщик dbDacFx, так и Entity Framework Code First Migrations. Также включает информацию о [преобразования файла Web.config](../web-forms/overview/deployment/visual-studio-web-deployment/web-config-transformations.md), [развертывание отдельных файлов](../web-forms/overview/deployment/visual-studio-web-deployment/deploying-a-code-update.md#specificfiles), [развертывания из командной строки](../web-forms/overview/deployment/visual-studio-web-deployment/command-line-deployment.md), и [как Настройка Visual Studio web конвейера публикации путем изменения файлов .pubxml](../web-forms/overview/deployment/visual-studio-web-deployment/deploying-extra-files.md). Применяется для всех веб-проектов ASP.NET, включая веб-форм, MVC и веб-API.)
-- [Практическое: развертывание, публикация веб-проекта с помощью одним щелчком в Visual Studio](https://msdn.microsoft.com/library/dd465337.aspx) (ссылаться информации для мастера веб-публикации Visual Studio).
+- [Практическое руководство. Развертывание, публикация веб-проекта с помощью одним щелчком в Visual Studio](https://msdn.microsoft.com/library/dd465337.aspx) (ссылаться информации для мастера веб-публикации Visual Studio).
 - [Развертывание веб-приложения ASP.NET с SQL Server Compact с помощью Visual Studio](../web-forms/overview/older-versions-getting-started/deployment-to-a-hosting-provider/deployment-to-a-hosting-provider-introduction-1-of-12.md). Это более ранняя версия **веб-развертывание ASP.NET с помощью Visual Studio** перечисляются в верхней части этого раздела. Теперь главным образом используются сведения о развертывании базы данных SQL Server Compact и способы перехода с SQL Server Compact до полного выпуска SQL Server.
 - [.NET многоуровневого приложения с помощью хранилища таблиц, очередей и больших двоичных объектов](https://code.msdn.microsoft.com/Windows-Azure-Multi-Tier-eadceb36) (сайт Microsoft Azure). 5 серии руководств, показано, как создать проект MVC и развернуть его в Windows Azure облачную службу.
 
@@ -83,8 +83,8 @@ ms.locfileid: "41835542"
 <a id="package"></a>
 ## <a name="deploying-a-web-application-by-creating-and-installing-a-web-deployment-package"></a>Развертывание веб-приложения необходимо создать и установить пакет веб-развертывания
 
-- [Практическое: Создание веб-пакета развертывания в Visual Studio](https://msdn.microsoft.com/library/dd465323.aspx) (MSDN).
-- [Практическое: Install, создать пакет развертывания с помощью файла deploy.cmd средой Visual Studio](https://msdn.microsoft.com/library/ff356104.aspx) (MSDN).
+- [Практическое руководство. Создать пакет веб-развертывания в Visual Studio](https://msdn.microsoft.com/library/dd465323.aspx) (MSDN).
+- [Практическое руководство. Установите пакет развертывания, с помощью файла deploy.cmd создан, Visual Studio](https://msdn.microsoft.com/library/ff356104.aspx) (MSDN).
 - [С помощью пакета веб-развертывания для развертывания в IIS на в среде разработки и на узле сторонних](http://sedodream.com/2011/11/08/UsingAWebDeployPackageToDeployToIISOnTheDevBoxAndToAThirdPartyHost.aspx) (блог Саид Хашими). Как использовать IIS Manager для установки пакета развертывания в IIS на локальном компьютере и на размещение компании, поддерживает диспетчер служб IIS для удаленного администрирования.
 - [Создание Web развертывание пакета из Visual Studio 2010](https://www.iis.net/learn/publish/using-web-deploy/building-a-web-deploy-package-from-visual-studio-2010) (IIS.NET веб-сайт). Содержит инструкции для создания командной строки пакета и установки.
 - [Упаковать один раз опубликовать в любом месте](http://sedodream.com/2012/03/14/PackageWebUpdatedAndVideoBelow.aspx) (блог Саид Хашими). Предоставляет пакет NuGet, который автоматизирует процесс преобразования файла Web.config для нескольких сред назначения, таким образом, чтобы можно было развернуть один пакет на несколько серверов. См. также [видео PackageWeb](https://www.youtube.com/watch?v=-LvUJFI8CzM) , Саид Хашими.
@@ -100,7 +100,7 @@ ms.locfileid: "41835542"
 - [Непрерывная интеграция и непрерывная поставка (Создание реальных облачных приложений с помощью Windows Azure).](../aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/continuous-integration-and-continuous-delivery.md) Глава электронной книги, которая познакомит непрерывной интеграции и непрерывной доставки.
 - [Развертывание Windows Azure веб-сайта](https://docs.microsoft.com/azure/app-service-web/web-sites-deploy). Описываются параметры и ссылки на ресурсы для развертывания веб-проектов для Windows Azure Web Sites. Включает раздел об автоматизации развертывания из системы управления версиями.
 - [Развертывание веб-приложений в корпоративных сценариях](../web-forms/overview/deployment/deploying-web-applications-in-enterprise-scenarios/deploying-web-applications-in-enterprise-scenarios.md). 40 серии руководств, показано, как для автоматизации развертывания в процесс непрерывной Интеграции, с помощью Visual Studio 2010 и Team Foundation Server 2010.
-- [Внутри Microsoft Build Engine: использование MSBuild и Team Foundation Build, Саид Хашими и William Bartholomew](http://msbuildbook.com). Это книги, а не веб-ресурсу, но это начальное руководство о том, как настроить MSBuild для сценариев непрерывной интеграции.
+- [Внутри Microsoft Build Engine: Использование MSBuild и Team Foundation Build, Саид Хашими и William Bartholomew](http://msbuildbook.com). Это книги, а не веб-ресурсу, но это начальное руководство о том, как настроить MSBuild для сценариев непрерывной интеграции.
 - [MSBuild Extension Pack](https://github.com/mikefourie/MSBuildExtensionPack). Включает в себя задачи развертывания.
 - [Team Foundation руководство по настройке сборки](https://aka.ms/vsarsolutions). Документация по ALM Rangers по настройке Team Foundation Server охватывает веб-развертывания и включает в себя учебники и видеоматериалы.
 - [Преобразует SlowCheetah XML на сервере непрерывной Интеграции](http://sedodream.com/2011/12/12/SlowCheetahXMLTransformsFromACIServer.aspx) (блог Саид Хашими). В этой статье описывается использование SlowCheetah надстройки Visual Studio для преобразования app.config и другие файлы формата XML.
@@ -119,7 +119,7 @@ ms.locfileid: "41835542"
 - [Как отключить преобразования Web.config?](https://msdn.microsoft.com/library/ee942158.aspx#disable_web_config_transformation) (MSDN).
 - [Когда следует использовать параметры веб-развертывания вместо преобразования Web.config](https://msdn.microsoft.com/library/ee942158.aspx#web_deploy_parameters) (MSDN).
 - [XDT (преобразование документа XML), выпуск состоится codeplex.com](https://blogs.msdn.com/b/webdev/archive/2013/04/23/xdt-xml-document-transform-released-on-codeplex-com.aspx) (блог .NET веб-разработки и средства). Объявляет о доступности исходного кода для модуля преобразования файла Web.config и перечисляет некоторые средства, которые ее используют.
-- [Windows Azure веб-сайты: Как приложение строки and Connection Strings Work](https://blogs.msdn.com/b/windowsazure/archive/2013/07/17/windows-azure-web-sites-how-application-strings-and-connection-strings-work.aspx) (блог Microsoft Azure). Преобразует альтернативой Web.config, если целевой среды является веб-сайтов Windows Azure и вы хотите преобразовать `appSettings` или `connectionStrings`.
+- [Windows Azure веб-сайты: Приложения строки and Connection Strings Work](https://blogs.msdn.com/b/windowsazure/archive/2013/07/17/windows-azure-web-sites-how-application-strings-and-connection-strings-work.aspx) (блог Microsoft Azure). Преобразует альтернативой Web.config, если целевой среды является веб-сайтов Windows Azure и вы хотите преобразовать `appSettings` или `connectionStrings`.
 
 
 <a id="webdeployparms"></a>
@@ -127,12 +127,12 @@ ms.locfileid: "41835542"
 
 ## <a name="using-web-deploy-parameters-to-change-settings-in-the-destination-web-application-during-deployment"></a>С помощью веб-развертывания параметров для изменения параметров в конечное веб-приложение во время развертывания
 
-- [Практическое: использование веб-развертывания параметров в пакет веб-развертывания](https://msdn.microsoft.com/library/ff398068.aspx) (MSDN).
+- [Практическое руководство. Использование веб-развертывания параметров в пакет веб-развертывания](https://msdn.microsoft.com/library/ff398068.aspx) (MSDN).
 - [MSDeploy: Как обновить параметры приложения на публикации, основанная на профиле публикации](http://sedodream.com/2013/03/02/MSDeployHowToUpdateAppSettingsOnPublishBasedOnThePublishProfile.aspx) (блог Саид Хашими). Показано, как интегрировать параметров веб-развертывания в Visual Studio профилей публикации.
 - [Веб-развертывание параметризации](https://www.iis.net/learn/publish/using-web-deploy/web-deploy-parameterization) (IIS.NET веб-сайт).
 - [Веб-развертывание параметризации в действии](http://vishaljoshi.blogspot.com/2010/07/web-deploy-parameterization-in-action.html) (блог работы).
 - [Vs развертывание параметризации Web. Преобразования Web.config](http://vishaljoshi.blogspot.com/2010/06/parameterization-vs-webconfig.html) (блог работы).
-- [Windows Azure веб-сайты: Как приложение строки and Connection Strings Work](https://blogs.msdn.com/b/windowsazure/archive/2013/07/17/windows-azure-web-sites-how-application-strings-and-connection-strings-work.aspx) (блог Microsoft Azure). Альтернативы веб-развертывание параметров, если целевой среды веб-сайтов Windows Azure и требуется параметризовать соответствующие `appSettings` или `connectionStrings`.
+- [Windows Azure веб-сайты: Приложения строки and Connection Strings Work](https://blogs.msdn.com/b/windowsazure/archive/2013/07/17/windows-azure-web-sites-how-application-strings-and-connection-strings-work.aspx) (блог Microsoft Azure). Альтернативы веб-развертывание параметров, если целевой среды веб-сайтов Windows Azure и требуется параметризовать соответствующие `appSettings` или `connectionStrings`.
 
 
 <a id="appoffline"></a>
@@ -140,7 +140,7 @@ ms.locfileid: "41835542"
 
 ## <a name="making-sure-an-application-is-off-line-during-deployment"></a>Убедившись, что приложение находится в автономном режиме во время развертывания
 
-- [Веб-развертывание ASP.NET с помощью Visual Studio: развертывание обновления кода](../web-forms/overview/deployment/visual-studio-web-deployment/deploying-a-code-update.md). См. в разделе **взять приложение в автономный режим во время развертывания.**
+- [Веб-развертывание ASP.NET с помощью Visual Studio. Развертывание обновления кода](../web-forms/overview/deployment/visual-studio-web-deployment/deploying-a-code-update.md). См. в разделе **взять приложение в автономный режим во время развертывания.**
 - [Отключая приложения перед публикацией](https://www.iis.net/learn/publish/deploying-application-packages/taking-an-application-offline-before-publishing) (IIS.net сайт). Описание функции, встроенные в Web Deploy 3.0, автоматизирующий обработки приложения\_offline.htm файл. Эта функция не работает с помощью настраиваемого приложения\_offline.htm файлов.
 - [Как использовать веб-приложение в автономный режим во время публикации](http://sedodream.com/2012/01/08/HowToTakeYourWebAppOfflineDuringPublishing.aspx) (блог Саид Хашими). Как автоматизировать процесс использования пользовательского приложения\_offline.htm файл.
 - [Веб-публикации обновлений для приложения в автономный режим и usechecksum](https://blogs.msdn.com/b/webdev/archive/2013/10/30/web-publishing-updates-for-app-offline-and-usechecksum.aspx) (блог веб-разработки Майкрософт). Другой вариант для автоматического использования приложения\_offline.htm файл.
@@ -154,7 +154,7 @@ ms.locfileid: "41835542"
 
 - [Настройка развертывания базы данных в Visual Studio](https://msdn.microsoft.com/library/dd394698.aspx#dbdeployment) (MSDN). Общие сведения о вариантах развертывания базы данных с веб-проекта.
 - [Веб-развертывание ASP.NET с помощью Visual Studio](../web-forms/overview/deployment/visual-studio-web-deployment/introduction.md). 12 серии руководств, показано развертывание базы данных, используя поставщик dbDacFx и Entity Framework Code First Migrations.
-- [Практическое: развертывание веб-публикации проекта с помощью одним щелчком в Visual Studio](https://msdn.microsoft.com/library/dd465337.aspx) (MSDN).
+- [Практическое руководство. Развертывание веб-публикации проекта с помощью одним щелчком в Visual Studio](https://msdn.microsoft.com/library/dd465337.aspx) (MSDN).
 - [Развертывание безопасного приложения ASP.NET MVC 5 с членством, OAuth и базой данных SQL на Windows Azure веб-сайт](https://docs.microsoft.com/aspnet/core/security/authorization/secure-data). Обширное руководство, который создает и развертывает приложение, которое используется один сервер SQL для базы данных для членства и данных приложения.
 - [Развертывание веб-приложения ASP.NET с SQL Server Compact с помощью Visual Studio](../web-forms/overview/older-versions-getting-started/deployment-to-a-hosting-provider/deployment-to-a-hosting-provider-introduction-1-of-12.md). 12, часть цикла руководств показано, как для развертывания базы данных SQL Server Compact и способы перехода с SQL Server Compact до полного выпуска SQL Server.
 
@@ -211,7 +211,7 @@ ms.locfileid: "41835542"
 
 ## <a name="automating-common-deployment-tasks-that-are-not-automated-out-of-the-box"></a>Автоматизация основных задач развертывания, которые не обрабатываются автоматически без дополнительной настройки
 
-- [Веб-развертывание ASP.NET с помощью Visual Studio: развертывание дополнительных файлов](../web-forms/overview/deployment/visual-studio-web-deployment/deploying-extra-files.md).
+- [Веб-развертывание ASP.NET с помощью Visual Studio. Развертывание дополнительных файлов](../web-forms/overview/deployment/visual-studio-web-deployment/deploying-extra-files.md).
 - [Установка разрешений для папки на веб-публикация](http://sedodream.com/2011/11/08/SettingFolderPermissionsOnWebPublish.aspx) (блог Саид Хашими).
 - [Как увеличить размер файла целевых объектов, чтобы включить параметры реестра для проекта веб-пакет](https://blogs.msdn.com/webdevtools/archive/2010/02/09/how-to-extend-target-file-to-include-registry-settings-for-web-project-package.aspx) (блог средства веб-разработки).
 - [Расширение преобразования XML (Web.config)](http://sedodream.com/2010/09/09/ExtendingXMLWebconfigConfigTransformation.aspx) (блог Саид Хашими). Показано, как для создания пользовательских преобразований XDT.
@@ -244,7 +244,7 @@ ms.locfileid: "41835542"
 ## <a name="troubleshooting-deployment-problems"></a>Устранение проблем с развертыванием
 
 - [Устранение неполадок веб-сайтов Windows Azure в Visual Studio](https://docs.microsoft.com/azure/app-service-web/web-sites-dotnet-troubleshoot-visual-studio) (сайт Microsoft Azure).
-- [Веб-развертывание ASP.NET с помощью Visual Studio: Устранение неполадок](../web-forms/overview/deployment/visual-studio-web-deployment/troubleshooting.md).
+- [Веб-развертывание ASP.NET с помощью Visual Studio. Устранение неполадок](../web-forms/overview/deployment/visual-studio-web-deployment/troubleshooting.md).
 - [Разрешение распространенных проблем с веб-развертывание](https://www.iis.net/learn/publish/troubleshooting-web-deploy/troubleshooting-common-problems-with-web-deploy).
 - [Веб-развертывание коды ошибок](https://www.iis.net/learn/publish/troubleshooting-web-deploy/web-deploy-error-codes) (IIS.net сайт).
 - [Веб-развертывания часто задаваемые вопросы о Visual Studio и ASP.NET](https://msdn.microsoft.com/library/ee942158.aspx) (MSDN).

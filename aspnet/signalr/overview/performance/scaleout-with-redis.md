@@ -1,19 +1,19 @@
 ---
 uid: signalr/overview/performance/scaleout-with-redis
 title: Масштабирование SignalR с помощью Redis | Документация Майкрософт
-author: MikeWasson
+author: bradygaster
 description: Версии программного обеспечения используется в этом разделе 4.5 .NET SignalR для Visual Studio 2013 версии 2, предыдущие версии в этом разделе сведения о более ранних версиях...
-ms.author: riande
+ms.author: bradyg
 ms.date: 06/10/2014
 ms.assetid: 6ecd08c1-e364-4cd7-ad4c-806521911585
 msc.legacyurl: /signalr/overview/performance/scaleout-with-redis
 msc.type: authoredcontent
-ms.openlocfilehash: 5151c718c82408fdcb75de16211b55488ca513d2
-ms.sourcegitcommit: 74e3be25ea37b5fc8b4b433b0b872547b4b99186
+ms.openlocfilehash: 22b8379fd2d97aeb85137e1cc128fe5d053f44ed
+ms.sourcegitcommit: ebf4e5a7ca301af8494edf64f85d4a8deb61d641
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53287745"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54837030"
 ---
 <a name="signalr-scaleout-with-redis"></a>Масштабирование SignalR с помощью Redis
 ====================

@@ -1,19 +1,19 @@
 ---
 uid: signalr/overview/performance/signalr-connection-density-testing-with-crank
 title: Тестирование с помощью Crank плотности подключений SignalR | Документация Майкрософт
-author: Rick-Anderson
+author: bradygaster
 description: Тестирование с помощью Crank плотности подключений SignalR
-ms.author: riande
+ms.author: bradyg
 ms.date: 02/22/2015
 ms.assetid: 148d9ca7-1af1-44b6-a9fb-91e261b9b463
 msc.legacyurl: /signalr/overview/performance/signalr-connection-density-testing-with-crank
 msc.type: authoredcontent
-ms.openlocfilehash: 308fed51953b085506488c5e0dda1ced9f4d09fb
-ms.sourcegitcommit: 74e3be25ea37b5fc8b4b433b0b872547b4b99186
+ms.openlocfilehash: 40c9764f0c47b83df8300553b4b290429937345c
+ms.sourcegitcommit: ebf4e5a7ca301af8494edf64f85d4a8deb61d641
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53287591"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54836549"
 ---
 <a name="signalr-connection-density-testing-with-crank"></a>Тестирование с помощью Crank плотности подключений SignalR
 ====================
@@ -46,7 +46,7 @@ Crank может использоваться для полностью насы
 
 Доступные параметры для средства Crank:
 
-- **/?** : Появится экран справки. Доступные параметры отображаются также в том случае, если **URL-адрес** параметр пропущен.
+- **/?**: Появится экран справки. Доступные параметры отображаются также в том случае, если **URL-адрес** параметр пропущен.
 - **/ URL-адрес**: URL-адрес для подключений SignalR. Этот параметр обязателен. Для приложения SignalR, использование сопоставления по умолчанию, путь будет завершен через «/ signalr».
 - **/ Транспорта**: Имя транспорта, используемого. По умолчанию используется `auto`, который выберет наиболее протокола. Параметры включают `WebSockets`, `ServerSentEvents`, и `LongPolling` (`ForeverFrame` не подходит для ручки, так как клиент .NET, а не должен использоваться Internet Explorer). Дополнительные сведения о том, как SignalR выбирает транспортов, см. в разделе [транспорта и в случае ошибки](../getting-started/introduction-to-signalr.md#transports).
 - **/ BatchSize**: Число клиентов, которые добавлены в каждом пакете. Значение по умолчанию — 50.

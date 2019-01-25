@@ -1,19 +1,19 @@
 ---
 uid: signalr/overview/getting-started/real-time-web-applications-with-signalr
 title: Практическое лабораторное занятие. В режиме реального времени веб-приложений с помощью SignalR | Документация Майкрософт
-author: rick-anderson
+author: bradygaster
 description: В режиме реального времени веб-приложений имеют возможность отправлять содержимое подключенным клиентам оказывается, в режиме реального времени на стороне сервера. Для разработчиков ASP.NET, ASP...
-ms.author: riande
+ms.author: bradyg
 ms.date: 07/16/2014
 ms.assetid: ba07958c-42e1-4da0-81db-ba6925ed6db0
 msc.legacyurl: /signalr/overview/getting-started/real-time-web-applications-with-signalr
 msc.type: authoredcontent
-ms.openlocfilehash: de2f2349fc284e167bd8227ae55da79b9f1f4549
-ms.sourcegitcommit: 74e3be25ea37b5fc8b4b433b0b872547b4b99186
+ms.openlocfilehash: d4998c8b739b4b1a06699a17464a7399a87a8595
+ms.sourcegitcommit: ebf4e5a7ca301af8494edf64f85d4a8deb61d641
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53288013"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54837511"
 ---
 <a name="hands-on-lab-real-time-web-applications-with-signalr"></a>Практическое лабораторное занятие. В режиме реального времени веб-приложений с помощью SignalR
 ====================

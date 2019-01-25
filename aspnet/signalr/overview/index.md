@@ -1,19 +1,19 @@
 ---
 uid: signalr/overview/index
 title: Руководство по SignalR | Документация Майкрософт
-author: rick-anderson
+author: bradygaster
 description: ''
-ms.author: riande
+ms.author: bradyg
 ms.date: 10/24/2012
 ms.assetid: e57da75a-1d98-4e3c-8787-f1d7e1eb2d86
 msc.legacyurl: /signalr/overview
 msc.type: book
-ms.openlocfilehash: d22f9e561d8d22c2562bc2f723beb2189592fdda
-ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
+ms.openlocfilehash: 2ab5094e863c5762c0c4c70a15f4da1088bc52e7
+ms.sourcegitcommit: ebf4e5a7ca301af8494edf64f85d4a8deb61d641
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "48256831"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54837576"
 ---
 <a name="signalr-guidance"></a>Руководство по SignalR
 ====================
@@ -23,9 +23,9 @@ ms.locfileid: "48256831"
     - [Поддерживаемые платформы](getting-started/supported-platforms.md)
     - [Учебник. Начало работы с SignalR 2](getting-started/tutorial-getting-started-with-signalr.md)
     - [Учебник. Начало работы с SignalR 2 и MVC 5](getting-started/tutorial-getting-started-with-signalr-and-mvc.md)
-    - [Учебник.Обмен сообщениями с высоким уровнем периодичности в режиме реального времени с помощью SignalR 2](getting-started/tutorial-high-frequency-realtime-with-signalr.md)
+    - [Учебник. Высокочастотный в реальном времени с SignalR 2](getting-started/tutorial-high-frequency-realtime-with-signalr.md)
     - [Учебник. Передача сообщений с сервера с помощью SignalR 2](getting-started/tutorial-server-broadcast-with-signalr.md)
-    - [Практическое лабораторное занятие. Веб-приложения в режиме реального времени с SignalR](getting-started/real-time-web-applications-with-signalr.md)
+    - [Практическое лабораторное занятие. В режиме реального времени веб-приложений с помощью SignalR](getting-started/real-time-web-applications-with-signalr.md)
 - [Руководство по API](guide-to-the-api/index.md)
 
     - [Руководство по API концентраторов — сервер (C#)](guide-to-the-api/hubs-api-guide-server.md)
@@ -68,7 +68,7 @@ ms.locfileid: "48256831"
     - [Учебник. Начало работы с SignalR 1.x](older-versions/tutorial-getting-started-with-signalr.md)
     - [Учебник. Начало работы с SignalR 1.x и MVC 4](older-versions/tutorial-getting-started-with-signalr-and-mvc-4.md)
     - [Обмен сообщениями с высоким уровнем периодичности в режиме реального времени с помощью SignalR 1.x](older-versions/tutorial-high-frequency-realtime-with-signalr.md)
-    - [Передача сообщений с сервера с помощью SignalR 1.x](older-versions/tutorial-server-broadcast-with-aspnet-signalr.md)
+    - [Учебник. Передача сообщений с сервера с помощью SignalR 1.x](older-versions/tutorial-server-broadcast-with-aspnet-signalr.md)
     - [Руководство по API концентраторов — сервер](older-versions/signalr-1x-hubs-api-guide-server.md)
     - [Руководство по API концентраторов SignalR 1.x — клиент JavaScript](older-versions/signalr-1x-hubs-api-guide-javascript-client.md)
     - [Руководство по API концентраторов — клиент .NET](older-versions/signalr-1x-hubs-api-guide-net-client.md)

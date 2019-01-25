@@ -1,19 +1,19 @@
 ---
 uid: signalr/overview/older-versions/signalr-1x-hubs-api-guide-server
 title: Руководство по API концентраторов ASP.NET SignalR - сервера (SignalR 1.x) | Документация Майкрософт
-author: pfletcher
+author: bradygaster
 description: Этот документ содержит общие сведения о программировании серверной части API концентраторов SignalR ASP.NET для SignalR версии 1.1, с помощью demonstratin образцы кода...
-ms.author: riande
+ms.author: bradyg
 ms.date: 04/17/2013
 ms.assetid: 03e4b9f5-0fea-4d94-959f-014b2762a301
 msc.legacyurl: /signalr/overview/older-versions/signalr-1x-hubs-api-guide-server
 msc.type: authoredcontent
-ms.openlocfilehash: a51a2077e0b6cde80bc679e3a310c0c804d19d68
-ms.sourcegitcommit: 74e3be25ea37b5fc8b4b433b0b872547b4b99186
+ms.openlocfilehash: 8d544e81f87998581afb2a1228233b4d374ad70a
+ms.sourcegitcommit: ebf4e5a7ca301af8494edf64f85d4a8deb61d641
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53288031"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54837394"
 ---
 <a name="aspnet-signalr-hubs-api-guide---server-signalr-1x"></a>Руководство по API концентраторов ASP.NET SignalR - сервера (SignalR 1.x)
 ====================
@@ -40,7 +40,7 @@ ms.locfileid: "53288031"
 
     - [Время жизни объекта концентратора](#transience)
     - [Венгерской имена центров в клиентах JavaScript](#hubnames)
-    - [Несколько концентраторов](#multiplehubs)
+    - [Multiple Hubs](#multiplehubs)
 - [Как определить методы в классе концентратора, который клиенты могут вызывать](#hubmethods)
 
     - [Венгерской имена методов в клиентах JavaScript](#methodnames)
@@ -88,7 +88,7 @@ ms.locfileid: "53288031"
 
 [!code-csharp[Main](signalr-1x-hubs-api-guide-server/samples/sample2.cs?highlight=5)]
 
-Функциональные возможности SignalR при добавлении в приложение ASP.NET MVC, убедитесь, что раньше, чем другие маршруты добавляется маршрут SignalR. Дополнительные сведения см. в разделе [руководства: Начало работы с SignalR и MVC 4](index.md).
+Функциональные возможности SignalR при добавлении в приложение ASP.NET MVC, убедитесь, что раньше, чем другие маршруты добавляется маршрут SignalR. Дополнительные сведения см. в статье [Руководство. Начало работы с SignalR и MVC 4](index.md).
 
 <a id="signalrurl"></a>
 
@@ -160,7 +160,7 @@ ms.locfileid: "53288031"
 
 По умолчанию клиенты JavaScript ссылаются концентраторов с использованием версии стиле Camel имени класса. SignalR автоматически делает это изменение, чтобы код JavaScript может соответствовать соглашениям JavaScript. Предыдущий пример будет называться `contosoChatHub` в коде JavaScript.
 
-**Server**
+**Сервер**
 
 [!code-csharp[Main](signalr-1x-hubs-api-guide-server/samples/sample9.cs?highlight=1)]
 
@@ -170,7 +170,7 @@ ms.locfileid: "53288031"
 
 Если вы хотите указать другое имя для клиентов для использования, добавьте `HubName` атрибута. При использовании `HubName` атрибут, никак не изменяется имя в стиль Camel в клиентах JavaScript.
 
-**Server**
+**Сервер**
 
 [!code-csharp[Main](signalr-1x-hubs-api-guide-server/samples/sample11.cs?highlight=1)]
 
@@ -215,7 +215,7 @@ ms.locfileid: "53288031"
 
 По умолчанию клиенты JavaScript ссылаются методов концентратора с помощью версии стиле Camel имени метода. SignalR автоматически делает это изменение, чтобы код JavaScript может соответствовать соглашениям JavaScript.
 
-**Server**
+**Сервер**
 
 [!code-csharp[Main](signalr-1x-hubs-api-guide-server/samples/sample15.cs?highlight=1)]
 
@@ -225,7 +225,7 @@ ms.locfileid: "53288031"
 
 Если вы хотите указать другое имя для клиентов для использования, добавьте `HubMethodName` атрибута.
 
-**Server**
+**Сервер**
 
 [!code-csharp[Main](signalr-1x-hubs-api-guide-server/samples/sample17.cs?highlight=1)]
 
@@ -269,7 +269,7 @@ ms.locfileid: "53288031"
 
 Чтобы вызвать методы клиента с сервера, используйте `Clients` свойство в метод в классе концентратора. В следующем примере показано код сервера, который вызывает `addNewMessageToPage` на всех подключенных клиентах и код клиента, который определяет метод, в клиенте JavaScript.
 
-**Server**
+**Сервер**
 
 [!code-csharp[Main](signalr-1x-hubs-api-guide-server/samples/sample22.cs?highlight=5)]
 
@@ -368,7 +368,7 @@ ms.locfileid: "53288031"
 
 Чтобы управлять членством в группах, используйте [добавить](https://msdn.microsoft.com/library/microsoft.aspnet.signalr.igroupmanager.add(v=vs.111).aspx) и [удалить](https://msdn.microsoft.com/library/microsoft.aspnet.signalr.igroupmanager.remove(v=vs.111).aspx) методы, предоставляемые `Groups` свойство класса концентратора. В следующем примере показан `Groups.Add` и `Groups.Remove` методы, используемые в методах Hub, которые вызываются в клиентском коде, следуют клиентского кода JavaScript, который вызывает их.
 
-**Server**
+**Сервер**
 
 [!code-csharp[Main](signalr-1x-hubs-api-guide-server/samples/sample38.cs?highlight=5,10)]
 

@@ -1,20 +1,20 @@
 ---
 uid: signalr/overview/getting-started/tutorial-high-frequency-realtime-with-signalr
 title: Учебник. Создание приложения в режиме реального времени с высокой частотой с SignalR 2 | Документация Майкрософт
-author: pfletcher
+author: bradygaster
 description: Этом руководстве показано, как создать веб-приложения, использующего ASP.NET SignalR для предоставления функции обмена сообщениями с высокой частотой.
-ms.author: riande
-ms.date: 01/02/2019
+ms.author: bradyg
+ms.date: 01/22/2019
 ms.assetid: 9f969dda-78ea-4329-b1e3-e51c02210a2b
 msc.legacyurl: /signalr/overview/getting-started/tutorial-high-frequency-realtime-with-signalr
 msc.type: authoredcontent
 ms.topic: tutorial
-ms.openlocfilehash: 85503db0b41be6f87136627667d6dd71f0d4f609
-ms.sourcegitcommit: 97d7a00bd39c83a8f6bccb9daa44130a509f75ce
+ms.openlocfilehash: 44aaa2b0c059de310e963f642fa56c2f00a7e443
+ms.sourcegitcommit: ebf4e5a7ca301af8494edf64f85d4a8deb61d641
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54098594"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54836731"
 ---
 # <a name="tutorial-create-high-frequency-real-time-app-with-signalr-2"></a>Учебник. Создание приложения в режиме реального времени с высокой частотой с SignalR 2
 
@@ -24,7 +24,7 @@ ms.locfileid: "54098594"
 
 Основные понятия, представленных в этом руководстве имеют приложений в режиме реального времени играх и других приложений моделирования.
 
-В этом руководстве вы:
+В этом учебнике рассмотрены следующие задачи.
 
 > [!div class="checklist"]
 > * Настройка проекта
@@ -224,6 +224,10 @@ ms.locfileid: "54098594"
 
 Этот код перемещает фигуру из старой позиции в новую. Сервер предоставляет позицию фигуры в ходе анимации интервала. В этом случае это 100 миллисекунд. Приложение очищает любые предыдущие анимацию на фигуре перед началом новой анимации.
 
+## <a name="get-the-code"></a>Получение кода
+
+[Скачать завершенный проект](http://code.msdn.microsoft.com/SignalR-20-MoveShape-Demo-6285b83a)
+
 ## <a name="additional-resources"></a>Дополнительные ресурсы
 
 Парадигма связи, вы узнали о полезен для разработки игр и других режимов моделирования, как [ShootR игры, созданные с помощью SignalR](https://shootr.azurewebsites.net/).
@@ -238,7 +242,7 @@ ms.locfileid: "54098594"
 
 ## <a name="next-steps"></a>Следующие шаги
 
-В этом руководстве вы:
+В этом учебнике рассмотрены следующие задачи.
 
 > [!div class="checklist"]
 > * Настройка проекта

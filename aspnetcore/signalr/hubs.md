@@ -1,18 +1,18 @@
 ---
 title: Использование центров в ASP.NET Core SignalR
-author: tdykstra
+author: bradygaster
 description: Узнайте, как использовать центры в ASP.NET Core SignalR.
 monikerRange: '>= aspnetcore-2.1'
-ms.author: tdykstra
+ms.author: bradyg
 ms.custom: mvc
 ms.date: 11/20/2018
 uid: signalr/hubs
-ms.openlocfilehash: 91f92e9d6b776457cd319965d548ee401ddc5e0e
-ms.sourcegitcommit: 4225e2c49a0081e6ac15acff673587201f54b4aa
+ms.openlocfilehash: 9bc74079235338c75c47e06bde2b78dc1c466bd6
+ms.sourcegitcommit: ebf4e5a7ca301af8494edf64f85d4a8deb61d641
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52282148"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54836692"
 ---
 # <a name="use-hubs-in-signalr-for-aspnet-core"></a>Использование центров в SignalR для ASP.NET Core
 
@@ -59,7 +59,7 @@ public class ChatHub : Hub
 
 `Hub` Класс имеет `Context` свойство, которое содержит следующие свойства, используя сведения о подключении:
 
-| Свойство. | Описание: |
+| Свойство. | Описание |
 | ------ | ----------- |
 | `ConnectionId` | Получает уникальный идентификатор для подключения, назначенный SignalR. Есть один идентификатор подключения для каждого подключения.|
 | `UserIdentifier` | Получает [идентификатор пользователя](xref:signalr/groups). По умолчанию использует SignalR `ClaimTypes.NameIdentifier` из `ClaimsPrincipal` связан с соединением в качестве идентификатора пользователя. |
@@ -79,7 +79,7 @@ public class ChatHub : Hub
 
 `Hub` Класс имеет `Clients` свойство, которое содержит следующие свойства для обмена данными между сервером и клиентом:
 
-| Свойство. | Описание: |
+| Свойство. | Описание |
 | ------ | ----------- |
 | `All` | Вызывает метод на все подключенные клиенты |
 | `Caller` | Вызывает метод на стороне клиента, вызвавшему метод концентратора |

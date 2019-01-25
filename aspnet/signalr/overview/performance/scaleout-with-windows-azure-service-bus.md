@@ -1,19 +1,19 @@
 ---
 uid: signalr/overview/performance/scaleout-with-windows-azure-service-bus
 title: Масштабирование SignalR с помощью Azure Service Bus | Документация Майкрософт
-author: MikeWasson
+author: bradygaster
 description: Версии программного обеспечения используется в этой версии Visual Studio 2013 .NET 4.5 SignalR раздел 2 предыдущие версии этого раздела для SignalR 1.x версии этого раздела...
-ms.author: riande
+ms.author: bradyg
 ms.date: 06/10/2014
 ms.assetid: ce1305f9-30fd-49e3-bf38-d0a78dfb06c3
 msc.legacyurl: /signalr/overview/performance/scaleout-with-windows-azure-service-bus
 msc.type: authoredcontent
-ms.openlocfilehash: 5cdb9b5eb6d3f5ebd5c96e4b0d89926c18bddadd
-ms.sourcegitcommit: 74e3be25ea37b5fc8b4b433b0b872547b4b99186
+ms.openlocfilehash: 9f6188ff5f716c20d759f73975d6a8ad522834d8
+ms.sourcegitcommit: ebf4e5a7ca301af8494edf64f85d4a8deb61d641
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53287615"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54836822"
 ---
 <a name="signalr-scaleout-with-azure-service-bus"></a>Масштабирование SignalR с помощью Azure Service Bus
 ====================

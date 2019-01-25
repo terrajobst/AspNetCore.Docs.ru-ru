@@ -1,19 +1,19 @@
 ---
 uid: signalr/overview/testing-and-debugging/enabling-signalr-tracing
 title: Включение трассировки SignalR | Документация Майкрософт
-author: Rick-Anderson
+author: bradygaster
 description: В этом документе описывается, как включить и настроить трассировку для SignalR серверов и клиентов. Трассировка позволяет просмотреть диагностические сведения о событиях...
-ms.author: riande
+ms.author: bradyg
 ms.date: 08/08/2014
 ms.assetid: 30060acb-be3e-4347-996f-3870f0c37829
 msc.legacyurl: /signalr/overview/testing-and-debugging/enabling-signalr-tracing
 msc.type: authoredcontent
-ms.openlocfilehash: 733163699f83cbf68d6d5a27e86d208c3922272c
-ms.sourcegitcommit: 74e3be25ea37b5fc8b4b433b0b872547b4b99186
+ms.openlocfilehash: c6515e3653798ef50e2d2dcb7354ffed407a190e
+ms.sourcegitcommit: ebf4e5a7ca301af8494edf64f85d4a8deb61d641
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53287667"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54836471"
 ---
 <a name="enabling-signalr-tracing"></a>Включение трассировки SignalR
 ====================

@@ -4,17 +4,17 @@ title: Учебник. Реализации функциональности CRU
 description: Просмотрите и настройки создания, чтение, обновление и удаление (CRUD) код, который автоматически создает формирование шаблонов MVC в контроллерах и представлениях.
 author: tdykstra
 ms.author: riande
-ms.date: 01/11/2019
+ms.date: 01/22/2019
 ms.topic: tutorial
 ms.assetid: a2f70ba4-83d1-4002-9255-24732726c4f2
 msc.legacyurl: /mvc/overview/getting-started/getting-started-with-ef-using-mvc/implementing-basic-crud-functionality-with-the-entity-framework-in-asp-net-mvc-application
 msc.type: authoredcontent
-ms.openlocfilehash: 9c6f8f3a2ffc0a9c5e15111ae47c331dab24ff43
-ms.sourcegitcommit: 42a8164b8aba21f322ffefacb92301bdfb4d3c2d
-ms.translationtype: MT
+ms.openlocfilehash: 42971b4e15c4aaf85d0ea50bf63934ba4a78ed91
+ms.sourcegitcommit: ebf4e5a7ca301af8494edf64f85d4a8deb61d641
+ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54341728"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54836238"
 ---
 # <a name="tutorial-implement-crud-functionality-with-the-entity-framework-in-aspnet-mvc"></a>Учебник. Реализации функциональности CRUD с Entity Framework в ASP.NET MVC
 
@@ -245,6 +245,10 @@ URL-адреса создаются с `ActionLink` инструкций в пр
 ## <a name="handle-transactions"></a>Обработка транзакций
 
 По умолчанию платформа Entity Framework реализует транзакции неявно. В сценариях, где вы вносите изменения в несколько строк или таблиц и затем вызвать `SaveChanges`, Entity Framework автоматически гарантирует, что все изменения завершится успехом или отказать. Если ошибка происходит после того, как были выполнены некоторые изменения, эти изменения автоматически откатываются. Для сценариев, где требуется дополнительный контроль&mdash;к примеру, если требуется включить операции, выполняемые вне платформы Entity Framework в транзакции&mdash;см. в разделе [работа с транзакциями](/ef/ef6/saving/transactions).
+
+## <a name="get-the-code"></a>Получение кода
+
+[Скачать завершенный проект](http://code.msdn.microsoft.com/ASPNET-MVC-Application-b01a9fe8)
 
 ## <a name="additional-resources"></a>Дополнительные ресурсы
 

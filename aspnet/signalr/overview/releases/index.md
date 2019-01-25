@@ -1,19 +1,19 @@
 ---
 uid: signalr/overview/releases/index
 title: SignalR выпусков | Документация Майкрософт
-author: rick-anderson
+author: bradygaster
 description: Сведения о выпусках SignalR и способы обновления от версий ранее, чтобы позже.
-ms.author: riande
+ms.author: bradyg
 ms.date: 09/19/2014
 ms.assetid: 0d951e85-b83b-4e53-9f1e-eb1ca1fc72c5
 msc.legacyurl: /signalr/overview/releases
 msc.type: chapter
-ms.openlocfilehash: 7e7e61ddfec95f3d5e0a48b730129f7c236f923a
-ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
+ms.openlocfilehash: 1bbb47fc91cdec3dae1997f53afed8ba645acbf5
+ms.sourcegitcommit: ebf4e5a7ca301af8494edf64f85d4a8deb61d641
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "48256703"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54837654"
 ---
 <a name="signalr-releases"></a>Выпуски SignalR
 ====================

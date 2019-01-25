@@ -1,19 +1,19 @@
 ---
 uid: signalr/overview/older-versions/tutorial-server-broadcast-with-aspnet-signalr
 title: Учебник. Передача сообщений с сервера с помощью SignalR 1.x | Документация Майкрософт
-author: pfletcher
+author: bradygaster
 description: Этом руководстве показано, как создать веб-приложения, использующего ASP.NET SignalR для предоставления функции рассылки сервера. Означает, что то communic передача сообщений с сервера...
-ms.author: riande
+ms.author: bradyg
 ms.date: 04/10/2013
 ms.assetid: ab7b2554-956a-4f6d-b2a0-4ae0c62e8580
 msc.legacyurl: /signalr/overview/older-versions/tutorial-server-broadcast-with-aspnet-signalr
 msc.type: authoredcontent
-ms.openlocfilehash: d5c09f6493c4dedb4fc2ecbf9055dd014ede71f2
-ms.sourcegitcommit: 74e3be25ea37b5fc8b4b433b0b872547b4b99186
+ms.openlocfilehash: 258a55bf72c4b3425d001f478620fa9651952b3f
+ms.sourcegitcommit: ebf4e5a7ca301af8494edf64f85d4a8deb61d641
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53288057"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54837472"
 ---
 <a name="tutorial-server-broadcast-with-aspnet-signalr-1x"></a>Учебник. Передача сообщений с сервера с помощью SignalR 1.x
 ====================
@@ -117,7 +117,7 @@ ms.locfileid: "53288057"
 2. Если у вас есть Visual Studio 2012 с [ASP.NET и веб-инструменты 2012.2 обновление](https://go.microsoft.com/fwlink/?LinkId=279941), нажмите кнопку **Web** под **Visual C#** и выберите **класс концентратора SignalR** шаблона элемента. В противном случае выберите **класс** шаблона.
 3. Назовите новый класс *StockTickerHub.cs*, а затем нажмите кнопку **добавить**.
 
-    ![Добавить StockTickerHub.cs](tutorial-server-broadcast-with-aspnet-signalr/_static/image5.png)
+    ![Add StockTickerHub.cs](tutorial-server-broadcast-with-aspnet-signalr/_static/image5.png)
 4. Замените код шаблона следующим кодом:
 
     [!code-csharp[Main](tutorial-server-broadcast-with-aspnet-signalr/samples/sample3.cs)]

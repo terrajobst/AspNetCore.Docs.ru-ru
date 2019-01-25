@@ -1,19 +1,19 @@
 ---
 uid: signalr/overview/advanced/dependency-injection
 title: Внедрение зависимостей в SignalR | Документация Майкрософт
-author: MikeWasson
+author: bradygaster
 description: Версии программного обеспечения используется в этом разделе 4.5 .NET SignalR для Visual Studio 2013 версии 2, предыдущие версии в этом разделе сведения о более ранних версиях...
-ms.author: riande
+ms.author: bradyg
 ms.date: 06/10/2014
 ms.assetid: a14121ae-02cf-4024-8af0-9dd0dc810690
 msc.legacyurl: /signalr/overview/advanced/dependency-injection
 msc.type: authoredcontent
-ms.openlocfilehash: f5959902b030621a19d912d7db2ea0faf95b7a7c
-ms.sourcegitcommit: 74e3be25ea37b5fc8b4b433b0b872547b4b99186
+ms.openlocfilehash: 54e263e277852d2d478ce5bccd4164254498831a
+ms.sourcegitcommit: ebf4e5a7ca301af8494edf64f85d4a8deb61d641
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53287798"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54836614"
 ---
 <a name="dependency-injection-in-signalr"></a>Внедрение зависимостей в SignalR
 ====================

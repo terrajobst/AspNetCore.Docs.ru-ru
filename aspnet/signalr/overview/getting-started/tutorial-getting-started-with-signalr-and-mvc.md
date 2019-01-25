@@ -1,26 +1,26 @@
 ---
 uid: signalr/overview/getting-started/tutorial-getting-started-with-signalr-and-mvc
 title: Учебник. Чат в реальном времени с SignalR 2 и MVC 5 | Документация Майкрософт
-author: pfletcher
+author: bradygaster
 description: Этом руководстве показано, как использовать ASP.NET SignalR 2 для создания приложения разговора в режиме реального времени. SignalR добавьте в приложение MVC 5.
-ms.author: riande
-ms.date: 01/02/2019
+ms.author: bradyg
+ms.date: 01/22/2019
 ms.assetid: 80bfe5fb-bdfc-41fe-ac43-2132e5d69fac
 msc.legacyurl: /signalr/overview/getting-started/tutorial-getting-started-with-signalr-and-mvc
 msc.type: authoredcontent
 ms.topic: tutorial
-ms.openlocfilehash: eb4b7e1403f4070d65702b756bf98c5294c7fb17
-ms.sourcegitcommit: 97d7a00bd39c83a8f6bccb9daa44130a509f75ce
+ms.openlocfilehash: 1b02aecc68a93dbd6373ca5304530e76c9d0b6b5
+ms.sourcegitcommit: ebf4e5a7ca301af8494edf64f85d4a8deb61d641
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54098608"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54837005"
 ---
 # <a name="tutorial-real-time-chat-with-signalr-2-and-mvc-5"></a>Учебник. Чат в реальном времени с SignalR 2 и MVC 5
 
 Этом руководстве показано, как использовать ASP.NET SignalR 2 для создания приложения разговора в режиме реального времени. Добавление SignalR в приложение MVC 5 и создание представления чата для отправки и отображения сообщений.
 
-В этом руководстве вы:
+В этом учебнике рассмотрены следующие задачи.
 
 > [!div class="checklist"]
 > * Настройка проекта
@@ -176,6 +176,10 @@ ms.locfileid: "54098608"
 
 Код запускает подключение, а затем передает его функции, чтобы обрабатывать событие щелчка на **отправки** кнопку на данной странице чата.
 
+## <a name="get-the-code"></a>Получение кода
+
+[Скачать завершенный проект](http://code.msdn.microsoft.com/Getting-Started-with-c366b2f3)
+
 ## <a name="additional-resources"></a>Дополнительные ресурсы
 
 Дополнительные сведения о SignalR см. следующие ресурсы:
@@ -188,7 +192,7 @@ ms.locfileid: "54098608"
 
 ## <a name="next-steps"></a>Следующие шаги
 
-В этом руководстве вы:
+В этом учебнике рассмотрены следующие задачи.
 
 > [!div class="checklist"]
 > * Настройка проекта

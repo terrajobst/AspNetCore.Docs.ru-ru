@@ -1,26 +1,26 @@
 ---
 uid: signalr/overview/getting-started/tutorial-getting-started-with-signalr
 title: Учебник. Чат в реальном времени с SignalR 2 | Документация Майкрософт
-author: pfletcher
+author: bradygaster
 description: В этом учебнике содержатся сведения об использовании SignalR для создания приложения разговора в режиме реального времени. Добавление пустой веб-приложения ASP.NET SignalR.
-ms.author: riande
-ms.date: 01/02/2019
+ms.author: bradyg
+ms.date: 01/22/2019
 ms.assetid: a8b3b778-f009-4369-85c7-e90f9878d8b4
 msc.legacyurl: /signalr/overview/getting-started/tutorial-getting-started-with-signalr
 msc.type: authoredcontent
 ms.topic: tutorial
-ms.openlocfilehash: aa015abc47bb2450e04e167c0404aaa1d119ba2c
-ms.sourcegitcommit: 97d7a00bd39c83a8f6bccb9daa44130a509f75ce
+ms.openlocfilehash: 90f2c03fbda522e3a46200bc0132cc74100ce70f
+ms.sourcegitcommit: ebf4e5a7ca301af8494edf64f85d4a8deb61d641
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54098628"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54836796"
 ---
 # <a name="tutorial-real-time-chat-with-signalr-2"></a>Учебник. Чат в реальном времени с SignalR 2
 
 Этом руководстве показано, как использовать SignalR для создания приложения разговора в режиме реального времени. Добавьте пустой веб-приложения ASP.NET SignalR и создайте страницу HTML для отправки и отображения сообщений.
 
-В этом руководстве вы:
+В этом учебнике рассмотрены следующие задачи.
 
 > [!div class="checklist"]
 > * Настройка проекта
@@ -161,6 +161,10 @@ ms.locfileid: "54098628"
 > Такой подход гарантирует, что код устанавливает соединение перед выполнением обработчика событий.
 
 Код запускает подключение, а затем передает его функции, чтобы обрабатывать событие щелчка на **отправки** кнопку в HTML-страницы.
+
+## <a name="get-the-code"></a>Получение кода
+
+[Скачать завершенный проект](http://code.msdn.microsoft.com/SignalR-Getting-Started-b9d18aa9)
 
 ## <a name="additional-resources"></a>Дополнительные ресурсы
 
