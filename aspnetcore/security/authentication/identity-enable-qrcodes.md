@@ -5,12 +5,12 @@ description: Узнайте, как включение создания кода
 ms.author: riande
 ms.date: 08/14/2018
 uid: security/authentication/identity-enable-qrcodes
-ms.openlocfilehash: 437f354f71128a98bae9abdced291e04efc9f48e
-ms.sourcegitcommit: fc7eb4243188950ae1f1b52669edc007e9d0798d
+ms.openlocfilehash: cf99cc21a7a1bb4d01c7cc092106d23375a1a76f
+ms.sourcegitcommit: ca5f03210bedc61c6639a734ae5674bfe095dee8
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51225386"
+ms.lasthandoff: 01/26/2019
+ms.locfileid: "55073131"
 ---
 # <a name="enable-qr-code-generation-for-totp-authenticator-apps-in-aspnet-core"></a>Включение создания QR-код для приложения TOTP для проверки подлинности в ASP.NET Core
 
@@ -25,6 +25,8 @@ QR-коды требуется ASP.NET Core 2.0 или более поздней
 ASP.NET Core поставляется с поддержкой проверки подлинности приложений для отдельной проверки подлинности. Два фактора проверки подлинности (2FA) проверки подлинности приложения с помощью по времени одноразовый пароль алгоритм (TOTP), являются отрасли, рекомендуемый подход для 2FA. 2FA с помощью TOTP предпочтительнее SMS 2FA. Приложение для проверки подлинности предоставляет 6 to 8 цифр, какие пользователи должны ввести после подтверждения имени пользователя и пароля. Обычно приложение для проверки подлинности устанавливается на смартфоне.
 
 Шаблоны веб-приложений ASP.NET Core поддерживает структур проверки подлинности, но не обеспечивают поддержку создания QRCode. Генераторы QRCode упростить настройку 2FA. Этот документ поможет выполнить добавление [QR-код](https://wikipedia.org/wiki/QR_code) поколения на страницу настройки 2FA.
+
+Двухфакторная проверка подлинности не происходит с помощью поставщика внешней проверки подлинности, такие как [Google](xref:security/authentication/google-logins) или [Facebook](xref:security/authentication/facebook-logins). Внешних имен входа, защищены по какой бы механизм обеспечивает внешнего поставщика входа. Рассмотрим, например, [Microsoft](xref:security/authentication/microsoft-logins) поставщика проверки подлинности требуется ключ оборудования или другой подход 2FA. Если шаблонов по умолчанию применяется «local» 2FA затем пользователей потребовался бы для удовлетворения 2FA подходов, которые не является наиболее распространенной ситуацией.
 
 ## <a name="adding-qr-codes-to-the-2fa-configuration-page"></a>Добавление на страницу настройки 2FA QR-коды
 

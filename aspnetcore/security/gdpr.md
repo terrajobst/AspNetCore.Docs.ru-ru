@@ -7,12 +7,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 05/29/2018
 uid: security/gdpr
-ms.openlocfilehash: 7688ac6264b089ebd3544494c967684cb291a547
-ms.sourcegitcommit: cec77d5ad8a0cedb1ecbec32834111492afd0cd2
+ms.openlocfilehash: 5f5ed96354b0b71961c122506602e60b95b809fa
+ms.sourcegitcommit: d5223cf6a2cf80b4f5dc54169b0e376d493d2d3a
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54207519"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54889747"
 ---
 # <a name="eu-general-data-protection-regulation-gdpr-support-in-aspnet-core"></a>Поддержка общих данных защиты стабилизации (GDPR) ЕС в ASP.NET Core
 
@@ -49,7 +49,7 @@ Razor Pages и MVC следующую поддержку GDPR включают �
 
 [!code-csharp[](gdpr/sample/Startup.cs?name=snippet1&highlight=51)]
 
-### <a name="cookieconsentpartialcshtml-partial-view"></a>_CookieConsentPartial.cshtml частичного представления
+### <a name="cookieconsentpartialcshtml-partial-view"></a>_CookieConsentPartial.cshtml partial view
 
 *_CookieConsentPartial.cshtml* частичного представления:
 
@@ -92,6 +92,7 @@ Razor Pages и MVC следующую поддержку GDPR включают �
 * Для создания `Account/Manage` кода, см. в разделе [удостоверений каркаса](xref:security/authentication/scaffold-identity).
 * **Удалить** и **загрузить** ссылки воздействуют только на данные удостоверений по умолчанию. Приложения, которые создают пользовательские данные необходимо расширить до удаления или скачивания пользовательские данные. Дополнительные сведения см. в разделе [Add, скачивание и удаление пользовательских данных для идентификации](xref:security/authentication/add-user-data).
 * Сохранить маркеры для пользователя, которые хранятся в таблице базы данных удостоверений `AspNetUserTokens` удаляются при удалении пользователя с помощью каскадных поведение удаления из-за [внешний ключ](https://github.com/aspnet/Identity/blob/release/2.1/src/EF/IdentityUserContext.cs#L152).
+* [Внешнего поставщика проверки подлинности](xref:security/authentication/social/index), такие как Facebook и Google, не доступна, прежде чем принят политике файлов cookie.
 
 ## <a name="encryption-at-rest"></a>Шифрование при хранении
 
