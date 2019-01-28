@@ -4,14 +4,14 @@ author: guardrex
 description: Узнайте, как использовать API конфигурации для настройки приложения ASP.NET Core.
 ms.author: riande
 ms.custom: mvc
-ms.date: 12/07/2018
+ms.date: 01/25/2019
 uid: fundamentals/configuration/index
-ms.openlocfilehash: 6f0378ffc4f9a1efa95c8f70d70e7799abef130b
-ms.sourcegitcommit: 1872d2e6f299093c78a6795a486929ffb0bbffff
+ms.openlocfilehash: 2465570e469020ae2855508bd1bfc8528e188ebb
+ms.sourcegitcommit: ca5f03210bedc61c6639a734ae5674bfe095dee8
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53216902"
+ms.lasthandoff: 01/26/2019
+ms.locfileid: "55073170"
 ---
 # <a name="configuration-in-aspnet-core"></a>Конфигурация в .NET Core
 
@@ -56,12 +56,6 @@ ms.locfileid: "53216902"
 
 [Просмотреть или скачать образец кода](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/configuration/index/samples) ([как скачивать](xref:index#how-to-download-a-sample))
 
-Примеры, приведенные в этом разделе, основаны на следующем.
-
-* Указание базового пути приложения с помощью <xref:Microsoft.Extensions.Configuration.FileConfigurationExtensions.SetBasePath*>. `SetBasePath` доступно приложению при использовании ссылки на пакет [Microsoft.Extensions.Configuration.FileExtensions](https://www.nuget.org/packages/Microsoft.Extensions.Configuration.FileExtensions/).
-* Разрешение разделов файлов конфигурации с помощью <xref:Microsoft.Extensions.Configuration.ConfigurationSection.GetSection*>. `GetSection` доступно приложению при использовании ссылки на пакет [Microsoft.Extensions.Configuration](https://www.nuget.org/packages/Microsoft.Extensions.Configuration/).
-* Связывание конфигурации с .NET-классами с <xref:Microsoft.Extensions.Configuration.ConfigurationBinder.Bind*> и [Get&lt;T&gt;](xref:Microsoft.Extensions.Configuration.ConfigurationBinder.Get*). `Bind` и `Get<T>` доступны для приложения при использовании ссылки на пакет [Microsoft.Extensions.Configuration.Binder](https://www.nuget.org/packages/Microsoft.Extensions.Configuration.Binder/). `Get<T>` доступно в ASP.NET Core 1.1 и более поздних версий.
-
 ::: moniker range=">= aspnetcore-2.1"
 
 Эти три пакета включены в [метапакет Microsoft.AspNetCore.App](xref:fundamentals/metapackage-app).
@@ -77,6 +71,22 @@ ms.locfileid: "53216902"
 ## <a name="host-vs-app-configuration"></a>Конфигурация узла и приложения
 
 Перед настройкой и запуском приложения настройте и запустите *узел*. Узел отвечает за запуск приложения и управление временем существования. Как приложение, так и узел настраиваются с использованием поставщиков конфигурации, описанных в этом разделе. Пары "ключ — значение" конфигурации узлов становятся частью глобальной конфигурации приложения. Дополнительные сведения о том, как используются поставщики конфигурации при создании узла и как влияют источники конфигурации на узел, см. в разделе <xref:fundamentals/host/index>.
+
+## <a name="default-configuration"></a>Конфигурация по умолчанию
+
+Веб-приложения на основе шаблонов [dotnet new](/dotnet/core/tools/dotnet-new) ASP.NET Core вызывают <xref:Microsoft.AspNetCore.WebHost.CreateDefaultBuilder*> при создании узла. `CreateDefaultBuilder` предоставляет конфигурацию по умолчанию для приложения.
+
+* Существуют следующие способы предоставления конфигурации узла.
+  * Переменные среды с префиксом `ASPNETCORE_` (например, `ASPNETCORE_ENVIRONMENT`), использующие [поставщик конфигурации переменных среды](#environment-variables-configuration-provider).
+  * Аргументы командной строки, использующие [поставщик конфигурации командной строки](#command-line-configuration-provider).
+* Существуют следующие способы предоставления конфигурации приложений (в указанном порядке).
+  * Файл *appsettings.json*, использующий [поставщик конфигурации файлов](#file-configuration-provider).
+  * Файл *appsettings.{Environment}.json*, использующий [поставщик конфигурации файлов](#file-configuration-provider).
+  * [Менеджера секретов](xref:security/app-secrets), когда приложение выполняется в среде `Development` с использованием начальных сборок.
+  * Переменные среды, использующие [поставщик конфигурации переменных среды](#environment-variables-configuration-provider).
+  * Аргументы командной строки, использующие [поставщик конфигурации командной строки](#command-line-configuration-provider).
+
+Поставщики конфигурации описаны ниже в этом разделе. Дополнительные сведения об узле и `CreateDefaultBuilder`: <xref:fundamentals/host/web-host#set-up-a-host>.
 
 ## <a name="security"></a>Безопасность
 
@@ -116,7 +126,7 @@ API конфигурации способен поддерживать иера�
 * section1:key0
 * section1:key1
 
-Методы <xref:Microsoft.Extensions.Configuration.ConfigurationSection.GetSection*> и <xref:Microsoft.Extensions.Configuration.IConfiguration.GetChildren*> доступны для изолирования разделов и дочерних элементов раздела в данных конфигурации. Эти методы описаны далее в разделе [GetSection, GetChildren и Exists](#getsection-getchildren-and-exists).
+Методы <xref:Microsoft.Extensions.Configuration.ConfigurationSection.GetSection*> и <xref:Microsoft.Extensions.Configuration.IConfiguration.GetChildren*> доступны для изолирования разделов и дочерних элементов раздела в данных конфигурации. Эти методы описаны далее в разделе [GetSection, GetChildren и Exists](#getsection-getchildren-and-exists). `GetSection` находится в пакете [Microsoft.Extensions.Configuration](https://www.nuget.org/packages/Microsoft.Extensions.Configuration/), который включен в [метапакет Microsoft.AspNetCore.App](xref:fundamentals/metapackage-app).
 
 ## <a name="conventions"></a>Соглашения
 
@@ -238,7 +248,8 @@ public void ConfigureServices(IServiceCollection services)
 }
 ```
 
-В приведенном выше примере имя среды (`env.EnvironmentName`) и имя сборки приложения (`env.ApplicationName`) предоставляются <xref:Microsoft.Extensions.Hosting.IHostingEnvironment>. Дополнительные сведения см. в разделе <xref:fundamentals/environments>.
+В приведенном выше примере имя среды (`env.EnvironmentName`) и имя сборки приложения (`env.ApplicationName`) предоставляются <xref:Microsoft.Extensions.Hosting.IHostingEnvironment>. Для получения дополнительной информации см. <xref:fundamentals/environments>. Базовый путь задается с помощью <xref:Microsoft.Extensions.Configuration.FileConfigurationExtensions.SetBasePath*>. `SetBasePath` находится в пакете [Microsoft.Extensions.Configuration.FileExtensions](https://www.nuget.org/packages/Microsoft.Extensions.Configuration.FileExtensions/), который включен в [метапакет Microsoft.AspNetCore.App](xref:fundamentals/metapackage-app).
+.
 
 ::: moniker-end
 
@@ -246,7 +257,7 @@ public void ConfigureServices(IServiceCollection services)
 
 ## <a name="configureappconfiguration"></a>ConfigureAppConfiguration
 
-Вызовите <xref:Microsoft.Extensions.Hosting.HostBuilder.ConfigureAppConfiguration*> при сборке веб-узла, чтобы указать поставщиков конфигурации приложения в дополнение к тем, которые автоматически добавлены <xref:Microsoft.AspNetCore.WebHost.CreateDefaultBuilder*>.
+Вызовите <xref:Microsoft.Extensions.Hosting.HostBuilder.ConfigureAppConfiguration*> при сборке узла, чтобы указать поставщики конфигурации приложения в дополнение к тем, которые автоматически добавлены <xref:Microsoft.AspNetCore.WebHost.CreateDefaultBuilder*>.
 
 [!code-csharp[](index/samples/2.x/ConfigurationSample/Program.cs?name=snippet_Program&highlight=19)]
 
@@ -763,6 +774,8 @@ public class Program
 }
 ```
 
+Базовый путь задается с помощью <xref:Microsoft.Extensions.Configuration.FileConfigurationExtensions.SetBasePath*>. `SetBasePath` находится в пакете [Microsoft.Extensions.Configuration.FileExtensions](https://www.nuget.org/packages/Microsoft.Extensions.Configuration.FileExtensions/), который включен в [метапакет Microsoft.AspNetCore.App](xref:fundamentals/metapackage-app).
+
 При создании <xref:Microsoft.AspNetCore.Hosting.WebHostBuilder> вызовите <xref:Microsoft.AspNetCore.Hosting.HostingAbstractionsWebHostBuilderExtensions.UseConfiguration*> со следующей конфигурацией.
 
 ::: moniker-end
@@ -793,6 +806,8 @@ public class Program
 }
 ```
 
+Базовый путь задается с помощью <xref:Microsoft.Extensions.Configuration.FileConfigurationExtensions.SetBasePath*>. `SetBasePath` находится в пакете [Microsoft.Extensions.Configuration.FileExtensions](https://www.nuget.org/packages/Microsoft.Extensions.Configuration.FileExtensions/), который включен в [метапакет Microsoft.AspNetCore.App](xref:fundamentals/metapackage-app).
+
 При создании <xref:Microsoft.AspNetCore.Hosting.WebHostBuilder> вызовите <xref:Microsoft.AspNetCore.Hosting.HostingAbstractionsWebHostBuilderExtensions.UseConfiguration*> со следующей конфигурацией.
 
 ::: moniker-end
@@ -814,6 +829,8 @@ var host = new WebHostBuilder()
     .UseKestrel()
     .UseStartup<Startup>();
 ```
+
+Базовый путь задается с помощью <xref:Microsoft.Extensions.Configuration.FileConfigurationExtensions.SetBasePath*>. `SetBasePath` находится в пакете [Microsoft.Extensions.Configuration.FileExtensions](https://www.nuget.org/packages/Microsoft.Extensions.Configuration.FileExtensions/), который включен в [метапакет Microsoft.AspNetCore.App](xref:fundamentals/metapackage-app).
 
 Общий пример конфигурации INI-файла.
 
@@ -894,6 +911,8 @@ public class Program
 }
 ```
 
+Базовый путь задается с помощью <xref:Microsoft.Extensions.Configuration.FileConfigurationExtensions.SetBasePath*>. `SetBasePath` находится в пакете [Microsoft.Extensions.Configuration.FileExtensions](https://www.nuget.org/packages/Microsoft.Extensions.Configuration.FileExtensions/), который включен в [метапакет Microsoft.AspNetCore.App](xref:fundamentals/metapackage-app).
+
 При создании <xref:Microsoft.AspNetCore.Hosting.WebHostBuilder> вызовите <xref:Microsoft.AspNetCore.Hosting.HostingAbstractionsWebHostBuilderExtensions.UseConfiguration*> со следующей конфигурацией.
 
 ::: moniker-end
@@ -926,6 +945,8 @@ public class Program
 }
 ```
 
+Базовый путь задается с помощью <xref:Microsoft.Extensions.Configuration.FileConfigurationExtensions.SetBasePath*>. `SetBasePath` находится в пакете [Microsoft.Extensions.Configuration.FileExtensions](https://www.nuget.org/packages/Microsoft.Extensions.Configuration.FileExtensions/), который включен в [метапакет Microsoft.AspNetCore.App](xref:fundamentals/metapackage-app).
+
 При создании <xref:Microsoft.AspNetCore.Hosting.WebHostBuilder> вызовите <xref:Microsoft.AspNetCore.Hosting.HostingAbstractionsWebHostBuilderExtensions.UseConfiguration*> со следующей конфигурацией.
 
 ::: moniker-end
@@ -947,6 +968,8 @@ var host = new WebHostBuilder()
     .UseKestrel()
     .UseStartup<Startup>();
 ```
+
+Базовый путь задается с помощью <xref:Microsoft.Extensions.Configuration.FileConfigurationExtensions.SetBasePath*>. `SetBasePath` находится в пакете [Microsoft.Extensions.Configuration.FileExtensions](https://www.nuget.org/packages/Microsoft.Extensions.Configuration.FileExtensions/), который включен в [метапакет Microsoft.AspNetCore.App](xref:fundamentals/metapackage-app).
 
 **Пример**
 
@@ -1009,6 +1032,8 @@ public class Program
 }
 ```
 
+Базовый путь задается с помощью <xref:Microsoft.Extensions.Configuration.FileConfigurationExtensions.SetBasePath*>. `SetBasePath` находится в пакете [Microsoft.Extensions.Configuration.FileExtensions](https://www.nuget.org/packages/Microsoft.Extensions.Configuration.FileExtensions/), который включен в [метапакет Microsoft.AspNetCore.App](xref:fundamentals/metapackage-app).
+
 При создании <xref:Microsoft.AspNetCore.Hosting.WebHostBuilder> вызовите <xref:Microsoft.AspNetCore.Hosting.HostingAbstractionsWebHostBuilderExtensions.UseConfiguration*> со следующей конфигурацией.
 
 ::: moniker-end
@@ -1039,6 +1064,8 @@ public class Program
 }
 ```
 
+Базовый путь задается с помощью <xref:Microsoft.Extensions.Configuration.FileConfigurationExtensions.SetBasePath*>. `SetBasePath` находится в пакете [Microsoft.Extensions.Configuration.FileExtensions](https://www.nuget.org/packages/Microsoft.Extensions.Configuration.FileExtensions/), который включен в [метапакет Microsoft.AspNetCore.App](xref:fundamentals/metapackage-app).
+
 При создании <xref:Microsoft.AspNetCore.Hosting.WebHostBuilder> вызовите <xref:Microsoft.AspNetCore.Hosting.HostingAbstractionsWebHostBuilderExtensions.UseConfiguration*> со следующей конфигурацией.
 
 ::: moniker-end
@@ -1060,6 +1087,8 @@ var host = new WebHostBuilder()
     .UseKestrel()
     .UseStartup<Startup>();
 ```
+
+Базовый путь задается с помощью <xref:Microsoft.Extensions.Configuration.FileConfigurationExtensions.SetBasePath*>. `SetBasePath` находится в пакете [Microsoft.Extensions.Configuration.FileExtensions](https://www.nuget.org/packages/Microsoft.Extensions.Configuration.FileExtensions/), который включен в [метапакет Microsoft.AspNetCore.App](xref:fundamentals/metapackage-app).
 
 XML-файлы конфигурации могут использовать имена отдельных элементов для повторяющихся разделов.
 
@@ -1160,6 +1189,8 @@ public class Program
             .UseStartup<Startup>();
 }
 ```
+
+Базовый путь задается с помощью <xref:Microsoft.Extensions.Configuration.FileConfigurationExtensions.SetBasePath*>. `SetBasePath` находится в пакете [Microsoft.Extensions.Configuration.FileExtensions](https://www.nuget.org/packages/Microsoft.Extensions.Configuration.FileExtensions/), который включен в [метапакет Microsoft.AspNetCore.App](xref:fundamentals/metapackage-app).
 
 При создании <xref:Microsoft.AspNetCore.Hosting.WebHostBuilder> вызовите <xref:Microsoft.AspNetCore.Hosting.HostingAbstractionsWebHostBuilderExtensions.UseConfiguration*> со следующей конфигурацией.
 
@@ -1326,13 +1357,15 @@ var intValue = config.GetValue<int>("NumberKey", 99);
 
 ### <a name="getsection"></a>GetSection
 
-[IConfiguration.GetSection](xref:Microsoft.Extensions.Configuration.IConfiguration.GetSection*) извлекает подраздел конфигурации с указанным ключом подраздела.
+[IConfiguration.GetSection](xref:Microsoft.Extensions.Configuration.IConfiguration.GetSection*) извлекает подраздел конфигурации с указанным ключом подраздела. `GetSection` находится в пакете [Microsoft.Extensions.Configuration](https://www.nuget.org/packages/Microsoft.Extensions.Configuration/), который включен в [метапакет Microsoft.AspNetCore.App](xref:fundamentals/metapackage-app).
 
 Чтобы вернуть <xref:Microsoft.Extensions.Configuration.IConfigurationSection>, содержащий только пары "ключ — значение" в `section1`, вызовите `GetSection` и укажите имя раздела.
 
 ```csharp
 var configSection = _config.GetSection("section1");
 ```
+
+`configSection` не содержит значение, только ключ и путь.
 
 Аналогично, чтобы получить значения для ключей в `section2:subsection0`, вызовите `GetSection` и укажите путь к разделу.
 
@@ -1341,6 +1374,8 @@ var configSection = _config.GetSection("section2:subsection0");
 ```
 
 Значение `GetSection` никогда не возвращает значение `null`. Если соответствующий раздел не найден, возвращается пустой параметр `IConfigurationSection`.
+
+Когда `GetSection` возвращает соответствующий раздел, <xref:Microsoft.Extensions.Configuration.IConfigurationSection.Value> не заполняется. <xref:Microsoft.Extensions.Configuration.IConfigurationSection.Key> и <xref:Microsoft.Extensions.Configuration.IConfigurationSection.Path> возвращаются, если раздел существует.
 
 ### <a name="getchildren"></a>GetChildren
 
@@ -1373,7 +1408,7 @@ var sectionExists = _config.GetSection("section2:subsection2").Exists();
 
 Конфигурация может быть привязана к классам, которые представляют группы связанных параметров, используя шаблон *вариантов*. Для получения дополнительной информации см. <xref:fundamentals/configuration/options>.
 
-Значения конфигурации возвращаются как строки, но вызов <xref:Microsoft.Extensions.Configuration.ConfigurationBinder.Bind*> позволяет построить объекты [POCO](https://wikipedia.org/wiki/Plain_Old_CLR_Object).
+Значения конфигурации возвращаются как строки, но вызов <xref:Microsoft.Extensions.Configuration.ConfigurationBinder.Bind*> позволяет построить объекты [POCO](https://wikipedia.org/wiki/Plain_Old_CLR_Object). `Bind` находится в пакете [Microsoft.Extensions.Configuration.Binder](https://www.nuget.org/packages/Microsoft.Extensions.Configuration.Binder/), который включен в [метапакет Microsoft.AspNetCore.App](xref:fundamentals/metapackage-app).
 
 Пример приложения содержит модель `Starship` (*Models/Starship.cs*):
 
@@ -1428,9 +1463,11 @@ var sectionExists = _config.GetSection("section2:subsection2").Exists();
 
 ::: moniker-end
 
+`GetSection` находится в пакете [Microsoft.Extensions.Configuration](https://www.nuget.org/packages/Microsoft.Extensions.Configuration/), который включен в [метапакет Microsoft.AspNetCore.App](xref:fundamentals/metapackage-app).
+
 ## <a name="bind-to-an-object-graph"></a>Привязка к графу объектов
 
-<xref:Microsoft.Extensions.Configuration.ConfigurationBinder.Bind*> способна связывать весь граф объекта POCO.
+<xref:Microsoft.Extensions.Configuration.ConfigurationBinder.Bind*> способна связывать весь граф объекта POCO. `Bind` находится в пакете [Microsoft.Extensions.Configuration.Binder](https://www.nuget.org/packages/Microsoft.Extensions.Configuration.Binder/), который включен в [метапакет Microsoft.AspNetCore.App](xref:fundamentals/metapackage-app).
 
 Образец содержит модель `TvShow`, в графе объектов которого находятся классы `Metadata` и `Actors` (*Модели/TvShow.cs*).
 
@@ -1500,11 +1537,13 @@ viewModel.TvShow = tvShow;
 
 ::: moniker-end
 
+<xref:Microsoft.Extensions.Configuration.ConfigurationBinder.Get*> находится в пакете [Microsoft.Extensions.Configuration.Binder](https://www.nuget.org/packages/Microsoft.Extensions.Configuration.Binder/), который включен в [метапакет Microsoft.AspNetCore.App](xref:fundamentals/metapackage-app). `Get<T>` доступно в ASP.NET Core 1.1 и более поздних версий. `GetSection` находится в пакете [Microsoft.Extensions.Configuration](https://www.nuget.org/packages/Microsoft.Extensions.Configuration/), который включен в [метапакет Microsoft.AspNetCore.App](xref:fundamentals/metapackage-app).
+
 ## <a name="bind-an-array-to-a-class"></a>Привязка массива к классу
 
 *Пример приложения демонстрирует концепции, описанные в этом разделе.*
 
-<xref:Microsoft.Extensions.Configuration.ConfigurationBinder.Bind*> поддерживает массивы привязки к объектам с помощью массива индексов в ключах конфигурации. Любой формат массива, который предоставляет сегмент числового ключа (`:0:`, `:1:`, &hellip; `:{n}:`), способен привязать массив к массиву класса POCO.
+<xref:Microsoft.Extensions.Configuration.ConfigurationBinder.Bind*> поддерживает массивы привязки к объектам с помощью массива индексов в ключах конфигурации. Любой формат массива, который предоставляет сегмент числового ключа (`:0:`, `:1:`, &hellip; `:{n}:`), способен привязать массив к массиву класса POCO. "Bind" находится в пакете [Microsoft.Extensions.Configuration.Binder](https://www.nuget.org/packages/Microsoft.Extensions.Configuration.Binder/), который включен в [метапакет Microsoft.AspNetCore.App](xref:fundamentals/metapackage-app).
 
 > [!NOTE]
 > Привязка предоставляется соглашением. Пользовательские поставщики конфигурации не обязаны реализовывать привязку массива.
@@ -1557,6 +1596,8 @@ viewModel.TvShow = tvShow;
 var arrayExample = new ArrayExample();
 _config.GetSection("array").Bind(arrayExample);
 ```
+
+`GetSection` находится в пакете [Microsoft.Extensions.Configuration](https://www.nuget.org/packages/Microsoft.Extensions.Configuration/), который включен в [метапакет Microsoft.AspNetCore.App](xref:fundamentals/metapackage-app).
 
 ::: moniker range=">= aspnetcore-1.1"
 
@@ -1858,7 +1899,7 @@ public class Startup
 
 ## <a name="add-configuration-from-an-external-assembly"></a>Добавление конфигурации из внешней сборки
 
-Реализация <xref:Microsoft.AspNetCore.Hosting.IHostingStartup> позволяет при запуске добавлять в приложение улучшения из внешней сборки вне приложения класса `Startup`. Дополнительные сведения см. в разделе <xref:fundamentals/configuration/platform-specific-configuration>.
+Реализация <xref:Microsoft.AspNetCore.Hosting.IHostingStartup> позволяет при запуске добавлять в приложение улучшения из внешней сборки вне приложения класса `Startup`. Для получения дополнительной информации см. <xref:fundamentals/configuration/platform-specific-configuration>.
 
 ## <a name="additional-resources"></a>Дополнительные ресурсы
 
