@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 01/14/2019
 uid: fundamentals/routing
-ms.openlocfilehash: 96d098115f2f9b150f796e08cf14e60611f59e17
-ms.sourcegitcommit: 42a8164b8aba21f322ffefacb92301bdfb4d3c2d
+ms.openlocfilehash: c5303ad418660fa31fe9094f0e61ee31f5d988f7
+ms.sourcegitcommit: d5223cf6a2cf80b4f5dc54169b0e376d493d2d3a
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54341762"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54890020"
 ---
 # <a name="routing-in-aspnet-core"></a>Маршрутизация в ASP.NET Core
 
@@ -666,6 +666,26 @@ public User GetUserById(int id) { }
 
 Чтобы ограничить возможные значения параметра набором известных значений, используйте регулярное выражение. Например, при использовании выражения `{action:regex(^(list|get|create)$)}` значение маршрута `action` будет соответствовать только `list`, `get` или `create`. При передаче в словарь ограничений строка `^(list|get|create)$` будет эквивалентной. Ограничения, которые передаются в словарь ограничений (то есть не являются встроенными ограничениями шаблона) и не соответствуют одному из известных ограничений, также рассматриваются как регулярные выражения.
 
+## <a name="custom-route-constraints"></a>Пользовательские ограничения маршрутов
+
+Помимо встроенных ограничений маршрутов пользовательские ограничения маршрутов можно создать путем внедрения интерфейса <xref:Microsoft.AspNetCore.Routing.IRouteConstraint>. Интерфейс `IRouteConstraint` содержит один метод, `Match`, который возвращает `true`, если ограничение удовлетворяется, и `false` — если нет.
+
+Чтобы применить пользовательский метод `IRouteConstraint`, тип ограничения маршрута необходимо зарегистрировать с помощью `RouteOptions.ConstraintMap` приложения в контейнере службы приложения. Объект <xref:Microsoft.AspNetCore.Routing.RouteOptions.ConstraintMap> — это словарь, который сопоставляет ключи ограничений пути с реализациями `IRouteConstraint`, которые проверяют эти ограничения. `RouteOptions.ConstraintMap` приложения можно обновить в `Startup.ConfigureServices` либо как часть вызова `services.AddRouting`, либо путем настройки `RouteOptions` непосредственно с помощью `services.Configure<RouteOptions>`. Например:
+
+```csharp
+services.AddRouting(options =>
+{
+    options.ConstraintMap.Add("customName", typeof(MyCustomConstraint));
+});
+```
+
+Ограничения могут применяться к маршрутам обычным способом с использованием имени, указанного при регистрации типа ограничения. Например:
+
+```csharp
+[HttpGet("{id:customName}")]
+public ActionResult<string> Get(string id)
+```
+
 ::: moniker range=">= aspnetcore-2.2"
 
 ## <a name="parameter-transformer-reference"></a>Справочник по преобразователям параметров
@@ -737,3 +757,9 @@ routes.MapRoute("blog_route", "blog/{*slug}",
 ```
 
 Для этого маршрута ссылка будет создана только в том случае, если предоставлены соответствующие значения для `controller` и `action`.
+
+## <a name="complex-segments"></a>Сложные сегменты
+
+Сложные сегменты (например, `[Route("/x{token}y")]`) обрабатываются путем "нежадного" сопоставления литералов справа налево. Подробные сведения о сопоставлении сложных сегментов см. в [этом коде](https://github.com/aspnet/AspNetCore/blob/release/2.2/src/Http/Routing/src/Patterns/RoutePatternMatcher.cs#L293). [Пример кода](https://github.com/aspnet/AspNetCore/blob/release/2.2/src/Http/Routing/src/Patterns/RoutePatternMatcher.cs#L293) не используется в ASP.NET Core, но он предоставляет подробное объяснение сложных сегментов.
+<!-- While that code is no longer used by ASP.NET Core for complex segment matching, it provides a good match to the current algorithm. The [current code](https://github.com/aspnet/AspNetCore/blob/91514c9af7e0f4c44029b51f05a01c6fe4c96e4c/src/Http/Routing/src/Matching/DfaMatcherBuilder.cs#L227-L244) is too abstracted from matching to be useful for understanding complex segment matching.
+-->

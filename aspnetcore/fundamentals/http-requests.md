@@ -5,20 +5,20 @@ description: Сведения об использовании интерфейс
 monikerRange: '>= aspnetcore-2.1'
 ms.author: scaddie
 ms.custom: mvc
-ms.date: 08/07/2018
+ms.date: 01/25/2019
 uid: fundamentals/http-requests
-ms.openlocfilehash: 693e9d64f47704400cbfa9e46b866f39278d82f6
-ms.sourcegitcommit: 375e9a67f5e1f7b0faaa056b4b46294cc70f55b7
+ms.openlocfilehash: 4fc4e602b809563ea78b6a3af5e5eb5c0ebeddea
+ms.sourcegitcommit: c6db8b14521814f1f7e528d7aa06e474e4c04a1f
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50207645"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "55065039"
 ---
 # <a name="initiate-http-requests"></a>Инициирование HTTP-запросов
 
 Авторы: [Гленн Кондрон (Glenn Condron)](https://github.com/glennc), [Райан Новак (Ryan Nowak)](https://github.com/rynowak) и [Стив Гордон (Steve Gordon)](https://github.com/stevejgordon)
 
-[IHttpClientFactory](/dotnet/api/system.net.http.ihttpclientfactory) можно зарегистрировать и использовать для настройки и создания экземпляров [HttpClient](/dotnet/api/system.net.http.httpclient) в приложении. Так вы получите следующие преимущества:
+<xref:System.Net.Http.IHttpClientFactory> можно зарегистрировать и использовать для настройки и создания экземпляров <xref:System.Net.Http.HttpClient> в приложении. Так вы получите следующие преимущества:
 
 * Центральное расположение для именования и настройки логических экземпляров `HttpClient`. Например, можно зарегистрировать и использовать клиент *github* для доступа к GitHub. Можно зарегистрировать клиент по умолчанию для других целей.
 * Кодификация концепции исходящего ПО промежуточного слоя путем делегирования обработчиков в `HttpClient` и предоставление расширений для ПО промежуточного слоя на основе Polly для использования этой возможности.
@@ -52,7 +52,7 @@ ms.locfileid: "50207645"
 
 [!code-csharp[](http-requests/samples/2.x/HttpClientFactorySample/Pages/BasicUsage.cshtml.cs?name=snippet1&highlight=9-12,21)]
 
-Подобное использование `IHttpClientFactory` — это отличный способ рефакторинга существующего приложения. Он не оказывает влияния на использование `HttpClient`. Там, где сейчас создаются экземпляры `HttpClient`, используйте вызов к [CreateClient](/dotnet/api/system.net.http.ihttpclientfactory.createclient).
+Подобное использование `IHttpClientFactory` — это отличный способ рефакторинга имеющегося приложения. Он не оказывает влияния на использование `HttpClient`. Там, где в данный момент создаются экземпляры `HttpClient`, используйте вызов к <xref:System.Net.Http.IHttpClientFactory.CreateClient*>.
 
 ### <a name="named-clients"></a>Именованные клиенты
 
@@ -80,7 +80,7 @@ ms.locfileid: "50207645"
 
 В приведенном выше коде конфигурация перемещается в типизированный клиент. Объект `HttpClient` предоставляется в виде открытого свойства. Можно определить связанные с API методы, которые предоставляют функциональные возможности `HttpClient`. Метод `GetAspNetDocsIssues` инкапсулирует код, необходимый для запроса и анализа последнего открытого выпуска из репозитория GitHub.
 
-Для регистрации типизированного клиента можно использовать универсальный метод расширения `AddHttpClient` в `Startup.ConfigureServices`, указав класс типизированного клиента:
+Для регистрации типизированного клиента можно использовать универсальный метод расширения <xref:Microsoft.Extensions.DependencyInjection.HttpClientFactoryServiceCollectionExtensions.AddHttpClient*> в `Startup.ConfigureServices`, указав класс типизированного клиента:
 
 [!code-csharp[](http-requests/samples/2.x/HttpClientFactorySample/Startup.cs?name=snippet3)]
 
@@ -157,21 +157,41 @@ public class ValuesController : ControllerBase
 
 В `HttpClient` уже существует концепция делегирования обработчиков, которые можно связать друг с другом для исходящих HTTP-запросов. Класс `IHttpClientFactory` упрощает определение обработчиков для применения к каждому именованному клиенту. Он поддерживает регистрацию и объединение в цепочки нескольких обработчиков для создания конвейера ПО промежуточного слоя для исходящих запросов. Каждый из этих обработчиков может выполнять работу до и после исходящего запроса. Этот шаблон похож на входящий конвейер ПО промежуточного слоя в ASP.NET Core. Шаблон предоставляет механизм управления сквозной функциональностью HTTP-запросов, включая кэширование, обработку ошибок, сериализацию и ведение журнала.
 
-Чтобы создать обработчик, необходимо определить класс, производный от `DelegatingHandler`. Переопределите метод `SendAsync` для выполнения кода до передачи запросов следующему обработчику в конвейере:
+Чтобы создать обработчик, необходимо определить класс, производный от <xref:System.Net.Http.DelegatingHandler>. Переопределите метод `SendAsync` для выполнения кода до передачи запросов следующему обработчику в конвейере:
 
 [!code-csharp[Main](http-requests/samples/2.x/HttpClientFactorySample/Handlers/ValidateHeaderHandler.cs?name=snippet1)]
 
 В предыдущем коде определяется базовый обработчик. Он проверяет, включен ли в запрос заголовок `X-API-KEY`. Если заголовок отсутствует, он может избежать вызовов HTTP и вернуть подходящий ответ.
 
-Во время регистрации можно добавить один или несколько обработчиков в конфигурацию для `HttpClient`. Эта задача выполняется с помощью методов расширения в [IHttpClientBuilder](/dotnet/api/microsoft.extensions.dependencyinjection.ihttpclientbuilder).
+Во время регистрации можно добавить один или несколько обработчиков в конфигурацию для `HttpClient`. Эта задача выполняется через методы расширения в <xref:Microsoft.Extensions.DependencyInjection.IHttpClientBuilder>.
 
 [!code-csharp[](http-requests/samples/2.x/HttpClientFactorySample/Startup.cs?name=snippet5)]
 
-В приведенном выше коде `ValidateHeaderHandler` регистрируется с помощью внедрения зависимостей. Обработчик **должен** регистрироваться во внедрении зависимостей как временный. После регистрации можно вызвать [AddHttpMessageHandler](/dotnet/api/microsoft.extensions.dependencyinjection.httpclientbuilderextensions.addhttpmessagehandler), передав тип обработчика.
+::: moniker range=">= aspnetcore-2.2"
+
+В приведенном выше коде `ValidateHeaderHandler` регистрируется с помощью внедрения зависимостей. `IHttpClientFactory` создает отдельную область внедрения зависимостей для каждого обработчика. Обработчики могут зависеть от служб из любой области. Службы, которые зависят от обработчиков, удаляются при удалении обработчика.
+
+После регистрации можно вызвать <xref:Microsoft.Extensions.DependencyInjection.HttpClientBuilderExtensions.AddHttpMessageHandler*>, передав тип обработчика.
+
+::: moniker-end
+
+::: moniker range="< aspnetcore-2.2"
+
+В приведенном выше коде `ValidateHeaderHandler` регистрируется с помощью внедрения зависимостей. Обработчик **должен** регистрироваться во внедрении зависимостей как временная служба, а не ограниченная. Если обработчик регистрируется как ограниченная служба и все службы, от которых зависит обработчик, можно удалить, службы обработчика можно удалить до того, как обработчик выйдет за пределы области, что приведет к его сбою.
+
+После регистрации можно вызвать <xref:Microsoft.Extensions.DependencyInjection.HttpClientBuilderExtensions.AddHttpMessageHandler*>, передав тип обработчика.
+
+::: moniker-end
 
 Можно зарегистрировать несколько обработчиков в порядке, в котором они должны выполняться. Каждый обработчик содержит следующий обработчик, пока последний `HttpClientHandler` не выполнит запрос:
 
 [!code-csharp[](http-requests/samples/2.x/HttpClientFactorySample/Startup.cs?name=snippet6)]
+
+Используйте один из следующих методов для предоставления общего доступа к состоянию отдельных запросов с помощью обработчиков сообщений:
+
+* Передайте данные в обработчик с помощью `HttpRequestMessage.Properties`.
+* Используйте `IHttpContextAccessor` для доступа к текущему запросу.
+* Создайте пользовательский объект хранилища `AsyncLocal` для передачи данных.
 
 ## <a name="use-polly-based-handlers"></a>Использование обработчиков на основе Polly
 
@@ -221,15 +241,17 @@ public class ValuesController : ControllerBase
 
 ## <a name="httpclient-and-lifetime-management"></a>Управление HttpClient и временем существования
 
-При каждом вызове `CreateClient` в `IHttpClientFactory` возвращается новый экземпляр `HttpClient`. Для каждого именованного клиента применяется [HttpMessageHandler](/dotnet/api/system.net.http.httpmessagehandler). `IHttpClientFactory` объединяет в пул все экземпляры `HttpMessageHandler`, созданные фабрикой, чтобы уменьшить потребление ресурсов. Экземпляр `HttpMessageHandler` можно использовать повторно из пула при создании экземпляра `HttpClient`, если его время существования еще не истекло.
+При каждом вызове `CreateClient` в `IHttpClientFactory` возвращается новый экземпляр `HttpClient`. Для каждого названного клиента существует <xref:System.Net.Http.HttpMessageHandler>. Фабрика обеспечивает управление временем существования экземпляров `HttpMessageHandler`.
+
+`IHttpClientFactory` объединяет в пул все экземпляры `HttpMessageHandler`, созданные фабрикой, чтобы уменьшить потребление ресурсов. Экземпляр `HttpMessageHandler` можно использовать повторно из пула при создании экземпляра `HttpClient`, если его время существования еще не истекло.
 
 Создавать пулы обработчиков желательно, так как каждый обработчик обычно управляет собственными базовыми HTTP-подключениями. Создание лишних обработчиков может привести к задержке подключения. Некоторые обработчики поддерживают подключения открытыми в течение неопределенного периода, что может помешать обработчику отреагировать на изменения DNS.
 
-Время существования обработчика по умолчанию — две минуты. Значение по умолчанию можно переопределить для каждого именованного клиента. Чтобы переопределить это значение, вызовите [SetHandlerLifetime](/dotnet/api/microsoft.extensions.dependencyinjection.httpclientbuilderextensions.sethandlerlifetime) в `IHttpClientBuilder` (возвращается при создании клиента):
+Время существования обработчика по умолчанию — две минуты. Значение по умолчанию можно переопределить для каждого именованного клиента. Чтобы переопределить это значение, вызовите <xref:Microsoft.Extensions.DependencyInjection.HttpClientBuilderExtensions.SetHandlerLifetime*> в `IHttpClientBuilder`, который возвращается при создании клиента:
 
 [!code-csharp[Main](http-requests/samples/2.x/HttpClientFactorySample/Startup.cs?name=snippet11)]
 
-Высвобождать клиент не требуется. Высвобождение отменяет исходящие запросы и гарантирует, что указанный экземпляр `HttpClient` не может использоваться после вызова [Dispose](/dotnet/api/system.idisposable.dispose#System_IDisposable_Dispose). `IHttpClientFactory` отслеживает и высвобождает ресурсы, используемые экземплярами `HttpClient`. Экземпляры `HttpClient` обычно можно рассматривать как объекты .NET, не требующие высвобождения.
+Высвобождать клиент не требуется. Высвобождение отменяет исходящие запросы и гарантирует, что указанный экземпляр `HttpClient` не может использоваться после вызова <xref:System.IDisposable.Dispose*>. `IHttpClientFactory` отслеживает и высвобождает ресурсы, используемые экземплярами `HttpClient`. Экземпляры `HttpClient` обычно можно рассматривать как объекты .NET, не требующие высвобождения.
 
 До появления `IHttpClientFactory` один экземпляр `HttpClient` часто сохраняли в активном состоянии в течение длительного времени. После перехода на `IHttpClientFactory` это уже не нужно.
 
@@ -249,6 +271,6 @@ public class ValuesController : ControllerBase
 
 Иногда необходимо контролировать конфигурацию внутреннего обработчика `HttpMessageHandler`, используемого клиентом.
 
-При добавлении именованного или типизированного клиента возвращается `IHttpClientBuilder`. С помощью метода расширения [ConfigurePrimaryHttpMessageHandler](/dotnet/api/microsoft.extensions.dependencyinjection.httpclientbuilderextensions.configureprimaryhttpmessagehandler) можно определить делегат. Делегат используется для создания и настройки основного обработчика `HttpMessageHandler`, используемого этим клиентом:
+При добавлении именованного или типизированного клиента возвращается `IHttpClientBuilder`. Для определения делегата можно использовать метод расширения <xref:Microsoft.Extensions.DependencyInjection.HttpClientBuilderExtensions.ConfigurePrimaryHttpMessageHandler*>. Делегат используется для создания и настройки основного обработчика `HttpMessageHandler`, используемого этим клиентом:
 
 [!code-csharp[Main](http-requests/samples/2.x/HttpClientFactorySample/Startup.cs?name=snippet12)]

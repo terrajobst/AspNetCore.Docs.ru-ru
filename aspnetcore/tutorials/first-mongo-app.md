@@ -4,14 +4,14 @@ author: prkhandelwal
 description: В руководстве показано, как выполнять сборку веб-API ASP.NET Core с помощью базы данных NoSQL MongoDB.
 ms.author: scaddie
 ms.custom: mvc, seodec18
-ms.date: 11/29/2018
+ms.date: 01/23/2019
 uid: tutorials/first-mongo-app
-ms.openlocfilehash: bd9a36c5eb06542c820e71e937b8da10f735a0f8
-ms.sourcegitcommit: 68a3081dd175d6518d1bfa31b4712bd8a2dd3864
+ms.openlocfilehash: 6375ae618816671bd9c64f038603747c64cdce56
+ms.sourcegitcommit: ebf4e5a7ca301af8494edf64f85d4a8deb61d641
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53577842"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54835600"
 ---
 # <a name="create-a-web-api-with-aspnet-core-and-mongodb"></a>Создание веб-API с помощью ASP.NET Core и MongoDB
 
@@ -54,11 +54,11 @@ ms.locfileid: "53577842"
 
 ## <a name="configure-mongodb"></a>Настройка MongoDB
 
-Если используется Windows, MongoDB по умолчанию устанавливается в папку *C:\Program Files\MongoDB*. В переменную среды `Path` добавьте *C:\Program Files\MongoDB\Server\<version_number>\bin*. Это изменение обеспечит доступ к MongoDB из любого места на компьютере разработки.
+Если используется Windows, MongoDB по умолчанию устанавливается в папку *C:\\Program Files\\MongoDB*. Добавьте *C:\\Program Files\\MongoDB\\Server\\\<version_number>\\bin* в переменную среды `Path`. Это изменение обеспечит доступ к MongoDB из любого места на компьютере разработки.
 
 В следующих шагах используйте интерфейс mongo Shell, чтобы создать базу данных и коллекции и сохранить документы. Дополнительные сведения о командах mongo Shell см. в руководстве по [работе с mongo Shell](https://docs.mongodb.com/manual/mongo/#working-with-the-mongo-shell).
 
-1. Выберите папку на компьютере разработки для хранения данных. Например *C:\BooksData* при работе в Windows. Если такого каталога нет, создайте его. В mongo Shell нельзя создавать каталоги.
+1. Выберите папку на компьютере разработки для хранения данных. Например, *C:\\BooksData* при работе в Windows. Если такого каталога нет, создайте его. В mongo Shell нельзя создавать каталоги.
 1. Откройте командную оболочку. Выполните следующую команду для подключения к MongoDB через порт 27017, заданный по умолчанию. Не забудьте заменить `<data_directory_path>` каталогом, созданным на предыдущем этапе.
 
     ```console
@@ -188,7 +188,13 @@ ms.locfileid: "53577842"
 
     [!code-csharp[](first-mongo-app/sample/BooksApi/Models/Book.cs)]
 
-В предыдущем классе требуется свойство `Id` для сопоставления объекта среды CLR с коллекцией MongoDB. Другие свойства в классе оформляются с использованием атрибута `[BsonElement]`. Значение атрибута представляет имя свойства в коллекции MongoDB.
+В классе выше свойство `Id`:
+
+* требуется для сопоставления объекта среды CLR с коллекцией MongoDB.
+* Помечается с помощью `[BsonId]` для назначения этого свойства в качестве первичного ключа документа.
+* Помечается с помощью `[BsonRepresentation(BsonType.ObjectId)]`, чтобы разрешить передачу параметра в качестве типа `string` вместо `ObjectId`. Mongo обрабатывает преобразование из `string` в `ObjectId`.
+
+Другие свойства в классе помечаются с использованием атрибута `[BsonElement]`. Значение атрибута представляет имя свойства в коллекции MongoDB.
 
 ## <a name="add-a-crud-operations-class"></a>Добавление класса операций CRUD
 

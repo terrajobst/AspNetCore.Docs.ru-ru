@@ -5,14 +5,14 @@ description: Узнайте, как разместить приложение AS
 monikerRange: '>= aspnetcore-2.1'
 ms.author: tdykstra
 ms.custom: mvc
-ms.date: 12/01/2018
+ms.date: 01/22/2019
 uid: host-and-deploy/windows-service
-ms.openlocfilehash: bdb29c318c66ac884b9225ba8c2a0dfc1f364255
-ms.sourcegitcommit: 816f39e852a8f453e8682081871a31bc66db153a
+ms.openlocfilehash: eedaf64710506f2a2aac65c178a9888d2ab33d38
+ms.sourcegitcommit: ebf4e5a7ca301af8494edf64f85d4a8deb61d641
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53637707"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54837485"
 ---
 # <a name="host-aspnet-core-in-a-windows-service"></a>Размещение ASP.NET Core в службе Windows
 
@@ -44,7 +44,9 @@ ms.locfileid: "53637707"
 
 #### <a name="framework-dependent-deployment-fdd"></a>Зависящее от платформы развертывание
 
-Добавьте [идентификатор среды выполнения](/dotnet/core/rid-catalog) Windows в `<PropertyGroup>`, где содержится требуемая версия платформы. Добавьте свойство `<SelfContained>` со значением `false`. Отмените создание файла *web.config*, добавив свойство `<IsTransformWebConfigDisabled>` со значением `true`.
+Добавьте [идентификатор среды выполнения](/dotnet/core/rid-catalog) Windows в `<PropertyGroup>`, где содержится требуемая версия платформы. В следующем примере для RID задано значение `win7-x64`. Добавьте свойство `<SelfContained>` со значением `false`. Эти свойства дают пакету SDK инструкцию создать исполняемый файл (*EXE*) для Windows.
+
+Файл *web.config*, который обычно создается при публикации приложения ASP.NET Core, не требуется для приложения служб Windows. Отмените создание файла *web.config*, добавив свойство `<IsTransformWebConfigDisabled>` со значением `true`.
 
 ::: moniker range=">= aspnetcore-2.2"
 
@@ -60,6 +62,8 @@ ms.locfileid: "53637707"
 ::: moniker-end
 
 ::: moniker range="= aspnetcore-2.1"
+
+Добавьте свойство `<UseAppHost>` со значением `true`. Это свойство предоставляет службу с путем активации (исполняемый файл, *EXE*) для FDD.
 
 ```xml
 <PropertyGroup>

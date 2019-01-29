@@ -4,14 +4,14 @@ author: guardrex
 description: Сведения о настройке модуля ASP.NET Core для размещения приложений ASP.NET Core.
 ms.author: riande
 ms.custom: mvc
-ms.date: 01/11/2019
+ms.date: 01/22/2019
 uid: host-and-deploy/aspnet-core-module
-ms.openlocfilehash: 192e4bf8e970083cc05babcd7fb3cf52985e35bf
-ms.sourcegitcommit: 184ba5b44d1c393076015510ac842b77bc9d4d93
+ms.openlocfilehash: 4eea360d08c79b889db00132109cf49492f84de6
+ms.sourcegitcommit: ebf4e5a7ca301af8494edf64f85d4a8deb61d641
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/18/2019
-ms.locfileid: "54396328"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54837784"
 ---
 # <a name="aspnet-core-module"></a>Модуль ASP.NET Core
 
@@ -286,7 +286,20 @@ ms.locfileid: "54396328"
 
 ### <a name="setting-environment-variables"></a>Настройка переменных среды
 
-Переменные среды для процесса можно указать в атрибуте `processPath`. Укажите переменную среды с дочерним элементом `environmentVariable` элемента коллекции `environmentVariables`. Переменные среды, установленные в этом разделе, имеют приоритет над переменными системной среды.
+::: moniker range=">= aspnetcore-3.0"
+
+Переменные среды для процесса можно указать в атрибуте `processPath`. Укажите переменную среды с дочерним элементом `<environmentVariable>` элемента коллекции `<environmentVariables>`. Переменные среды, установленные в этом разделе, имеют приоритет над переменными системной среды.
+
+::: moniker-end
+
+::: moniker range="< aspnetcore-3.0"
+
+Переменные среды для процесса можно указать в атрибуте `processPath`. Укажите переменную среды с дочерним элементом `<environmentVariable>` элемента коллекции `<environmentVariables>`.
+
+> [!WARNING]
+> Переменные среды, заданные в этом разделе, конфликтуют с переменными системной среды с такими же именами. Если переменная среды задана и в файле *web.config*, и на уровне системы в Windows, значение из файла *web.config* добавляется к значению переменной системной среды (например, `ASPNETCORE_ENVIRONMENT: Development;Development`), которая препятствует запуску приложения.
+
+::: moniker-end
 
 В следующем примере устанавливаются две переменные среды. `ASPNETCORE_ENVIRONMENT` настраивает среду приложения для `Development`. Разработчик может временно задать это значение в файле *web.config*, чтобы принудительно загрузить [Страницу исключений для разработчиков](xref:fundamentals/error-handling) при отладке исключения приложения. `CONFIG_DIR` — пример пользовательской переменной среды, где разработчик написал код, который считывает значение при запуске, чтобы сформировать путь для загрузки файла конфигурации приложения.
 
@@ -320,6 +333,19 @@ ms.locfileid: "54396328"
   </environmentVariables>
 </aspNetCore>
 ```
+
+::: moniker-end
+
+::: moniker range=">= aspnetcore-2.2"
+
+> [!NOTE]
+> Вместо задания среды напрямую в *web.config* включите свойство `<EnvironmentName>` в профиль публикации (*.pubxml*) или файл проекта. При этом подходе во время публикации проекта среда задается в файле *web.config*:
+>
+> ```xml
+> <PropertyGroup>
+>   <EnvironmentName>Development</EnvironmentName>
+> </PropertyGroup>
+> ```
 
 ::: moniker-end
 
@@ -409,7 +435,7 @@ ms.locfileid: "54396328"
 
 ## <a name="enhanced-diagnostic-logs"></a>Расширенные журналы диагностики
 
-Модуль ASP.NET Core предоставляет возможности настройки, позволяющие работать с расширенными журналами диагностики. Добавьте элемент `<handlerSettings>` в элемент `<aspNetCore>` в файле *web.config*. Задайте параметру `debugLevel` значение `TRACE`, чтобы обеспечить высокую точность диагностических сведений:
+Модуль ASP.NET Core можно настроить. Он позволяет работать с расширенными журналами диагностики. Добавьте элемент `<handlerSettings>` в элемент `<aspNetCore>` в файле *web.config*. Задайте параметру `debugLevel` значение `TRACE`, чтобы обеспечить высокую точность диагностических сведений:
 
 ```xml
 <aspNetCore processPath="dotnet"

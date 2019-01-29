@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 10/24/2018
 uid: data/ef-rp/sort-filter-page
-ms.openlocfilehash: 19fe24e0f901c50e8425db7665b5b2257b608146
-ms.sourcegitcommit: 4d74644f11e0dac52b4510048490ae731c691496
+ms.openlocfilehash: 350243fb94b4798293a5a61b580c3b3b4d8c6d4a
+ms.sourcegitcommit: 728f4e47be91e1c87bb7c0041734191b5f5c6da3
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50090890"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54444302"
 ---
 # <a name="razor-pages-with-ef-core-in-aspnet-core---sort-filter-paging---3-of-8"></a>Razor Pages с EF Core в ASP.NET Core — сортировка, фильтрация, разбиение на страницы — 3 из 8
 
@@ -258,6 +258,8 @@ http://localhost:5000/Students?SearchString=an
 [!code-csharp[](intro/samples/cu21/Models/SchoolViewModels/EnrollmentDateGroup.cs)]
 
 ### <a name="update-the-about-page-model"></a>Обновление модели страницы "About" (О программе)
+
+Веб-шаблоны в ASP.NET Core 2.2 не включают страницу About. Если вы используете ASP.NET Core 2.2, создайте страницу About Razor Page.
 
 Измените файл *Pages/About.cshtml.cs*, используя следующий код:
 

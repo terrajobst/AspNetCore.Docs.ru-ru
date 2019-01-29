@@ -5,14 +5,14 @@ description: Узнайте о преимуществах предварител
 monikerRange: '>= aspnetcore-1.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 05/17/2018
+ms.date: 01/23/2019
 uid: mvc/views/view-compilation
-ms.openlocfilehash: f5888cf43d8d8192acedaa33b3fa0f313737fc9b
-ms.sourcegitcommit: b2723654af4969a24545f09ebe32004cb5e84a96
+ms.openlocfilehash: 2720708f8e58fdc55b82bfb56665005170e79934
+ms.sourcegitcommit: d5223cf6a2cf80b4f5dc54169b0e376d493d2d3a
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46011291"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54889760"
 ---
 # <a name="razor-file-compilation-in-aspnet-core"></a>Компиляция файлов Razor в ASP.NET Core
 
@@ -95,6 +95,25 @@ dotnet publish -c Release
 ![Представления Razor внутри библиотеки DLL](view-compilation/_static/razor-views-in-dll.png)
 
 ::: moniker-end
+
+## <a name="recompile-razor-files-on-change"></a>Перекомпилирование файлов Razor при изменении
+
+<xref:Microsoft.AspNetCore.Mvc.Razor.RazorViewEngineOptions> `AllowRecompilingViewsOnFileChange` возвращает или задает значение, определяющее, выполняется ли повторная компиляция и обновление файлов Razor (представления Razor и Razor Pages) при изменении файлов на диске.
+
+Если задано значение `true`, [IFileProvider.Watch](xref:Microsoft.Extensions.FileProviders.IFileProvider.Watch*) отслеживает изменения в файлах Razor в настроенных экземплярах <xref:Microsoft.Extensions.FileProviders.IFileProvider>.
+
+Значение по умолчанию — `true` для:
+
+* приложений ASP.NET Core 2.1 или более ранней версии;
+* приложений ASP.NET Core 2.2 или более поздней версии в среде разработки.
+
+`AllowRecompilingViewsOnFileChange` связан с параметром совместимости и может вести себя по-разному в зависимости от настроенной версии совместимости для приложения. Настройте приложения, задав для `AllowRecompilingViewsOnFileChange` приоритет над значением, которое содержится в версии совместимости приложения.
+
+Если версия совместимости приложения имеет значение <xref:Microsoft.AspNetCore.Mvc.CompatibilityVersion.Version_2_1> или более ранее, то для `AllowRecompilingViewsOnFileChange` задается значение `true` (если не задано явно).
+
+Если версия совместимости приложения имеет значение `CompatibilityVersion.Version_2_2` или более позднее, то для `AllowRecompilingViewsOnFileChange` задается значение `false` (если не используется среда разработки или значение не задано явным образом).
+
+Рекомендации и примеры настройки версии совместимости приложения см. в статье <xref:mvc/compatibility-version>.
 
 ## <a name="additional-resources"></a>Дополнительные ресурсы
 

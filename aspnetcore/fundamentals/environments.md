@@ -3,14 +3,14 @@ title: Использование нескольких сред в ASP.NET Core
 author: rick-anderson
 description: Сведения об управлении поведением приложений в разных средах в приложениях ASP.NET Core.
 ms.author: riande
-ms.date: 07/03/2018
+ms.date: 01/22/2019
 uid: fundamentals/environments
-ms.openlocfilehash: 642af9e8f9e322e3624dad46bb1463f6525f5c9e
-ms.sourcegitcommit: 42a8164b8aba21f322ffefacb92301bdfb4d3c2d
+ms.openlocfilehash: 39e1b48481832a6d76de605b37410fe2e16dcd88
+ms.sourcegitcommit: ebf4e5a7ca301af8494edf64f85d4a8deb61d641
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54341671"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54836744"
 ---
 # <a name="use-multiple-environments-in-aspnet-core"></a>Использование нескольких сред в ASP.NET Core
 
@@ -237,6 +237,20 @@ $Env:ASPNETCORE_ENVIRONMENT = "Development"
 **web.config**
 
 Сведения об установке переменной среды `ASPNETCORE_ENVIRONMENT` в файле *web.config* см. в разделе *Настройка переменной среды* в <xref:host-and-deploy/aspnet-core-module#setting-environment-variables>. Если переменная среды `ASPNETCORE_ENVIRONMENT` задана в файле *web.config*, ее значение переопределяет значение на уровне системы.
+
+::: moniker range=">= aspnetcore-2.2"
+
+**Файл проекта или профиль публикации**
+
+**Для развертываний Windows IIS:** Включите свойство `<EnvironmentName>` в профиле публикации (*PUBXML*) или файле проекта. При этом подходе во время публикации проекта среда задается в файле *web.config*:
+
+```xml
+<PropertyGroup>
+  <EnvironmentName>Development</EnvironmentName>
+</PropertyGroup>
+```
+
+::: moniker-end
 
 **Пул приложений IIS**
 

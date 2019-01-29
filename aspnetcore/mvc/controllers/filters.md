@@ -4,23 +4,20 @@ author: ardalis
 description: Узнайте, как работают фильтры и как использовать их в ASP.NET Core MVC.
 ms.author: riande
 ms.custom: mvc
-ms.date: 10/15/2018
+ms.date: 1/15/2019
 uid: mvc/controllers/filters
-ms.openlocfilehash: d4fe49a9225b9980a956ef9c773ad631beb557ae
-ms.sourcegitcommit: cec77d5ad8a0cedb1ecbec32834111492afd0cd2
+ms.openlocfilehash: fe3082481b51c968fd361dbcc9553c4e35a36f2a
+ms.sourcegitcommit: 728f4e47be91e1c87bb7c0041734191b5f5c6da3
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54207464"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54444354"
 ---
 # <a name="filters-in-aspnet-core"></a>Фильтры в ASP.NET Core
 
 Авторы: [Рик Андерсон](https://twitter.com/RickAndMSFT) (Rick Anderson), [Том Дайкстра](https://github.com/tdykstra/) (Tom Dykstra) и [Стив Смит](https://ardalis.com/) (Steve Smith)
 
 *Фильтры* в ASP.NET Core MVC позволяют выполнять код до или после определенных стадий в конвейере обработки запросов.
-
-> [!IMPORTANT]
-> Этот раздел **не** распространяется на приложение Razor Pages. ASP.NET Core 2.1 и более поздних версий поддерживает [IPageFilter](/dotnet/api/microsoft.aspnetcore.mvc.filters.ipagefilter?view=aspnetcore-2.0) и [IAsyncPageFilter](/dotnet/api/microsoft.aspnetcore.mvc.filters.iasyncpagefilter?view=aspnetcore-2.0) для Razor Pages. Дополнительные сведения см. в разделе [Методы фильтрации для Razor Pages](xref:razor-pages/filter).
 
  Встроенные фильтры обрабатывают следующие задачи:
 
@@ -32,7 +29,7 @@ ms.locfileid: "54207464"
 
 [Просмотреть или скачать образец с GitHub](https://github.com/aspnet/Docs/tree/master/aspnetcore/mvc/controllers/filters/sample).
 
-## <a name="how-do-filters-work"></a>Как работают фильтры?
+## <a name="how-filters-work"></a>Как работают фильтры
 
 Фильтры выполняются в рамках *конвейера вызова действий MVC*, который иногда называют *конвейером фильтров*.  Конвейер фильтров запускается после того, как платформа MVC выбирает выполняемое действие.
 
@@ -46,7 +43,7 @@ ms.locfileid: "54207464"
 
 * [Фильтры ресурсов](#resource-filters) первыми обрабатывают запрос после авторизации.  Они могут выполнять код до и после выполнения остальной части конвейера фильтров. С их помощью можно реализовывать кэширование или замыкать конвейер фильтров иным образом с целью повышения производительности. Они выполняются до привязки модели, поэтому могут повлиять на привязку.
 
-* [Фильтры действий](#action-filters) могут выполнять код непосредственно до и после вызова отдельного метода действия. С их помощью можно управлять аргументами, передаваемыми в действие, и возвращаемым из него результатом.
+* [Фильтры действий](#action-filters) могут выполнять код непосредственно до и после вызова отдельного метода действия. С их помощью можно управлять аргументами, передаваемыми в действие, и возвращаемым из него результатом. Фильтры действий не поддерживаются в Razor Pages.
 
 * [Фильтры исключений](#exception-filters) служат для применения глобальных политик к необработанным исключениям, которые происходят до записи данных в тело ответа.
 
@@ -68,14 +65,13 @@ ms.locfileid: "54207464"
 
 [!code-csharp[](./filters/sample/src/FiltersSample/Filters/SampleAsyncActionFilter.cs?highlight=6,8-10,13)]
 
-Реализовать интерфейсы для нескольких этапов фильтра можно в одном классе. Например, класс [ActionFilterAttribute](/dotnet/api/microsoft.aspnetcore.mvc.filters.actionfilterattribute?view=aspnetcore-2.0) реализует интерфейсы `IActionFilter` и `IResultFilter`, а также их асинхронные эквиваленты.
+Реализовать интерфейсы для нескольких этапов фильтра можно в одном классе. Например, класс <xref:Microsoft.AspNetCore.Mvc.Filters.ActionFilterAttribute> реализует интерфейсы `IActionFilter` и `IResultFilter`, а также их асинхронные эквиваленты.
 
 > [!NOTE]
-> Реализуйте **либо** синхронный, либо асинхронный вариант интерфейса фильтра, но не оба варианта. Платформа сначала проверяет, реализует ли фильтр асинхронный интерфейс. Если да, вызывается он. В противном случае вызываются методы синхронного интерфейса. Если бы в одном классе были реализованы оба интерфейса, вызывался бы только асинхронный метод. При использовании абстрактных классов, таких как [ActionFilterAttribute](/dotnet/api/microsoft.aspnetcore.mvc.filters.actionfilterattribute?view=aspnetcore-2.0), следует переопределять только синхронные методы или асинхронный метод каждого типа фильтра.
+> Реализуйте **либо** синхронный, либо асинхронный вариант интерфейса фильтра, но не оба варианта. Платформа сначала проверяет, реализует ли фильтр асинхронный интерфейс. Если да, вызывается он. В противном случае вызываются методы синхронного интерфейса. Если бы в одном классе были реализованы оба интерфейса, вызывался бы только асинхронный метод. При использовании абстрактных классов, таких как <xref:Microsoft.AspNetCore.Mvc.Filters.ActionFilterAttribute>, следует переопределять только синхронные методы или асинхронный метод каждого типа фильтра.
 
 ### <a name="ifilterfactory"></a>IFilterFactory
-
-[IFilterFactory](/dotnet/api/microsoft.aspnetcore.mvc.filters.ifilterfactory) реализует [IFilterMetadata](/dotnet/api/microsoft.aspnetcore.mvc.filters.ifiltermetadata). Поэтому экземпляр `IFilterFactory` можно использовать в качестве экземпляра `IFilterMetadata` в любом месте конвейера фильтров. Когда платформа готовится вызвать фильтр, она пытается привести его к `IFilterFactory`. Если приведение проходит успешно, вызывается метод [CreateInstance](/dotnet/api/microsoft.aspnetcore.mvc.filters.ifilterfactory.createinstance) для создания вызываемого экземпляра `IFilterMetadata`. Это обеспечивает высокую степень гибкости, так как при запуске приложения нет необходимости в явном и точном определении конвейера фильтров.
+[IFilterFactory](/dotnet/api/microsoft.aspnetcore.mvc.filters.ifilterfactory) реализует <xref:Microsoft.AspNetCore.Mvc.Filters.IFilterMetadata>. Поэтому экземпляр `IFilterFactory` можно использовать в качестве экземпляра `IFilterMetadata` в любом месте конвейера фильтров. Когда платформа готовится вызвать фильтр, она пытается привести его к `IFilterFactory`. Если приведение проходит успешно, вызывается метод [CreateInstance](/dotnet/api/microsoft.aspnetcore.mvc.filters.ifilterfactory.createinstance) для создания вызываемого экземпляра `IFilterMetadata`. Это обеспечивает высокую степень гибкости, так как при запуске приложения нет необходимости в явном и точном определении конвейера фильтров.
 
 Еще один подход к созданию фильтров заключается в реализации интерфейса `IFilterFactory` для собственных атрибутов.
 
@@ -280,6 +276,9 @@ System.InvalidOperationException: No service for type
 
 ## <a name="action-filters"></a>Фильтры действий
 
+> [!IMPORTANT]
+> Фильтры действий **неприменимы** к Razor Pages. Razor Pages поддерживает <xref:Microsoft.AspNetCore.Mvc.Filters.IPageFilter> и <xref:Microsoft.AspNetCore.Mvc.Filters.IAsyncPageFilter>. Дополнительные сведения см. в разделе [Методы фильтрации для Razor Pages](xref:razor-pages/filter).
+
 *Фильтры действий*:
 
 * Реализуют либо интерфейс `IActionFilter`, либо интерфейс `IAsyncActionFilter`.
@@ -289,13 +288,13 @@ System.InvalidOperationException: No service for type
 
 [!code-csharp[](./filters/sample/src/FiltersSample/Filters/SampleActionFilter.cs?name=snippet_ActionFilter)]
 
-[ActionExecutingContext](/dotnet/api/microsoft.aspnetcore.mvc.filters.actionexecutingcontext) предоставляет следующие свойства:
+<xref:Microsoft.AspNetCore.Mvc.Filters.ActionExecutingContext> предоставляет следующие свойства:
 
 * `ActionArguments` позволяет управлять входными данными действия;
 * `Controller` позволяет управлять экземпляром контроллера; 
 * `Result` — задание этого свойства позволяет избежать выполнения метода действия и последующих фильтров действий. Вызов исключения также предотвращает выполнение метода действия и последующих фильтров, однако рассматривается как сбой, а не успешный результат.
 
-[ActionExecutedContext](/dotnet/api/microsoft.aspnetcore.mvc.filters.actionexecutedcontext) предоставляет `Controller` и `Result`, а также следующие свойства:
+<xref:Microsoft.AspNetCore.Mvc.Filters.ActionExecutedContext> предоставляет `Controller` и `Result`, а также следующие свойства:
 
 * `Canceled` — будет иметь значение true, если выполнение действия было сокращено другим фильтром;
 * `Exception` — будет иметь отличное от NULL значение, если действие или последующий фильтр действий вызвали исключение. Если этому свойству присвоено значение NULL, исключение обрабатывается и объект `Result` выполняется так, как если бы он был возвращен методом действия обычным образом.
@@ -391,4 +390,5 @@ System.InvalidOperationException: No service for type
 
 ## <a name="next-actions"></a>Дальнейшие действия
 
-Чтобы поэкспериментировать с фильтрами, [скачайте, протестируйте и измените образец](https://github.com/aspnet/Docs/tree/master/aspnetcore/mvc/controllers/filters/sample).
+* Дополнительные сведения см. в статье [Filter methods for Razor Pages in ASP.NET Core](xref:razor-pages/filter) (Методы фильтрации для Razor Pages в ASP.NET Core).
+* Чтобы поэкспериментировать с фильтрами, [скачайте, протестируйте и измените образец GitHub](https://github.com/aspnet/Docs/tree/master/aspnetcore/mvc/controllers/filters/sample).

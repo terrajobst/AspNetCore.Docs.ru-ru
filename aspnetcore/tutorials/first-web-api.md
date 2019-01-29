@@ -4,14 +4,14 @@ author: rick-anderson
 description: Построение веб-API с помощью ASP.NET Core MVC
 ms.author: riande
 ms.custom: mvc
-ms.date: 12/10/2018
+ms.date: 01/24/2019
 uid: tutorials/first-web-api
-ms.openlocfilehash: 03936ee74836c7b214cb3dc4023a6e3c252f2a26
-ms.sourcegitcommit: cec77d5ad8a0cedb1ecbec32834111492afd0cd2
+ms.openlocfilehash: 65af70be2cec68d30dd712b80312ebcd40ea0624
+ms.sourcegitcommit: c6db8b14521814f1f7e528d7aa06e474e4c04a1f
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54207451"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "55065052"
 ---
 # <a name="tutorial-create-a-web-api-with-aspnet-core-mvc"></a>Учебник. Создание веб-API с помощью MVC ASP.NET Core
 
@@ -168,13 +168,9 @@ ms.locfileid: "54207451"
 
 * Щелкните папку *Models* правой кнопкой мыши и выберите **Добавить** > **Класс**. Назовите класс *TodoContext* и нажмите **Добавить**.
 
-# <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code.](#tab/visual-studio-code)
+# <a name="visual-studio-code--visual-studio-for-mactabvisual-studio-codevisual-studio-mac"></a>[Visual Studio Code/Visual Studio для Mac](#tab/visual-studio-code+visual-studio-mac)
 
 * Добавьте класс `TodoContext` в папку *Models*.
-
-# <a name="visual-studio-for-mactabvisual-studio-mac"></a>[Visual Studio для Mac](#tab/visual-studio-mac)
-
-* Добавьте класс `TodoContext` в папку *Models*:
 
 ---
 
@@ -207,13 +203,9 @@ ms.locfileid: "54207451"
 
   ![Диалоговое окно добавления элемента с контроллером в поле поиска и выбранным контроллером веб-API](first-web-api/_static/new_controller.png)
 
-# <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code.](#tab/visual-studio-code)
+# <a name="visual-studio-code--visual-studio-for-mactabvisual-studio-codevisual-studio-mac"></a>[Visual Studio Code/Visual Studio для Mac](#tab/visual-studio-code+visual-studio-mac)
 
 * В папке *Controllers* создайте класс с именем `TodoController`.
-
-# <a name="visual-studio-for-mactabvisual-studio-mac"></a>[Visual Studio для Mac](#tab/visual-studio-mac)
-
-* Добавьте в папку *Controllers* класс `TodoController`.
 
 ---
 
@@ -265,13 +257,11 @@ ms.locfileid: "54207451"
   [!code-csharp[](first-web-api/samples/2.2/TodoApi/Controllers/TodoController.cs?name=TodoController&highlight=3)]
 
 * Замените `[controller]` именем контроллера (по соглашению это имя класса контроллера без суффикса "Controller"). В этом примере класс контроллера носит имя **Todo**, а сам контроллер, соответственно, — "todo". В ASP.NET Core [маршрутизация](xref:mvc/controllers/routing) реализуется без учета регистра символов.
-* Если атрибут `[HttpGet]` имеет шаблон маршрута (например, `[HttpGet("/products")]`), добавьте его к пути. В этом примере шаблон не используется. Дополнительные сведения см. в разделе [Маршрутизация атрибутов с помощью атрибутов Http[Verb]](xref:mvc/controllers/routing#attribute-routing-with-httpverb-attributes).
+* Если атрибут `[HttpGet]` имеет шаблон маршрута (например, `[HttpGet("products")]`), добавьте его к пути. В этом примере шаблон не используется. Дополнительные сведения см. в разделе [Маршрутизация атрибутов с помощью атрибутов Http[Verb]](xref:mvc/controllers/routing#attribute-routing-with-httpverb-attributes).
 
 В следующем методе `GetTodoItem` `"{id}"` — это переменная-заполнитель для уникального идентификатора элемента задачи. При вызове `GetTodoItem` параметру метода `id` присваивается значение `"{id}"` в URL-адресе.
 
 [!code-csharp[](first-web-api/samples/2.2/TodoApi/Controllers/TodoController.cs?name=snippet_GetByID&highlight=1-2)]
-
-Параметр `Name = "GetTodo"` создает именованный маршрут. Позднее вы узнаете, как приложение может использовать имя для создания HTTP-ссылки на основе имени маршрута.
 
 ## <a name="return-values"></a>Возвращаемые значения
 
@@ -313,9 +303,9 @@ ms.locfileid: "54207451"
 
 Метод `CreatedAtAction`:
 
-* возвращает ответ 201. HTTP 201 представляет собой стандартный ответ для метода HTTP POST, создающий ресурс на сервере.
-* Добавляет в ответ заголовок расположения. Заголовок расположения указывает URI вновь созданной задачи. Дополнительные сведения см. в статье [10.2.2 201 "Создан ресурс"](https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html).
-* Использует для создания URL-адреса маршрут с именем GetTodo. Маршрут с именем GetTodo определяется в `GetTodoItem`:
+* В случае успеха возвращает код состояния HTTP 201. HTTP 201 представляет собой стандартный ответ для метода HTTP POST, создающий ресурс на сервере.
+* Добавляет заголовок `Location` в ответ. Заголовок `Location` расположения указывает URI вновь созданной задачи. Дополнительные сведения см. в статье [10.2.2 201 "Создан ресурс"](https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html).
+* Указывает действие `GetTodoItem` для создания URI заголовка `Location`. Ключевое слово `nameof` C# используется для предотвращения жесткого программирования имени действия в вызове `CreatedAtAction`.
 
   [!code-csharp[](first-web-api/samples/2.2/TodoApi/Controllers/TodoController.cs?name=snippet_GetByID&highlight=1-2)]
 

@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 10/24/2018
 uid: mvc/views/tag-helpers/authoring
-ms.openlocfilehash: 16f3a435af267a5a17a24ee9fbda2b1c7c8818fd
-ms.sourcegitcommit: 49faca2644590fc081d86db46ea5e29edfc28b7b
+ms.openlocfilehash: c21decd39b7855cf2eefb2bb482e5e91b9487863
+ms.sourcegitcommit: d5223cf6a2cf80b4f5dc54169b0e376d493d2d3a
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 12/09/2018
-ms.locfileid: "53121626"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54889942"
 ---
 # <a name="author-tag-helpers-in-aspnet-core"></a>Создание вспомогательных функций тегов в ASP.NET Core
 
@@ -31,7 +31,7 @@ ms.locfileid: "53121626"
 
 ## <a name="a-minimal-tag-helper"></a>Простейшая вспомогательная функция тега
 
-В этом разделе вы напишете вспомогательную функцию тега, которая обновляет тег электронной почты. Пример:
+В этом разделе вы напишете вспомогательную функцию тега, которая обновляет тег электронной почты. Например:
 
 ```html
 <email>Support</email>
@@ -96,7 +96,7 @@ the following snippet uses TagHelpers3 and should use TagHelpers (not the 3)
 
 [!code-csharp[](authoring/sample/AuthoringTagHelpers/src/AuthoringTagHelpers/TagHelpers/EmailTagHelperMailTo.cs?range=6-22)]
 
-* Имена классов и свойств, указанные в стиле Pascal, для вспомогательных функций тегов преобразуются в [кебаб-стиль нижнего регистра](https://stackoverflow.com/questions/11273282/whats-the-name-for-dash-separated-case/12273101). Поэтому для использования атрибута `MailTo` следует использовать эквивалент `<email mail-to="value"/>`.
+* Имена классов и свойств, указанные в стиле Pascal, для вспомогательных функций тегов преобразуются в [кебаб-стиль](https://stackoverflow.com/questions/11273282/whats-the-name-for-dash-separated-case/12273101). Поэтому для использования атрибута `MailTo` следует использовать эквивалент `<email mail-to="value"/>`.
 
 * В последней строке задается готовое содержимое для нашей простейшей функциональной вспомогательной функции тега.
 
@@ -189,7 +189,7 @@ the following snippet uses TagHelpers3 and should use TagHelpers (not the 3)
 
    [!code-csharp[](authoring/sample/AuthoringTagHelpers/src/AuthoringTagHelpers/TagHelpers/WebsiteInformationTagHelper.cs)]
 
-   * Как было сказано ранее, имена классов и свойств C# в стиле Pascal для вспомогательных функций тегов преобразуются в [кебаб-стиль нижнего регистра](http://wiki.c2.com/?KebabCase). Поэтому для использования функции `WebsiteInformationTagHelper` в Razor необходимо написать `<website-information />`.
+   * Как было сказано ранее, имена классов и свойств C# в стиле Pascal для вспомогательных функций тегов преобразуются в [кебаб-стиль](http://wiki.c2.com/?KebabCase). Поэтому для использования функции `WebsiteInformationTagHelper` в Razor необходимо написать `<website-information />`.
 
    * Целевой элемент не определяется напрямую с помощью атрибута `[HtmlTargetElement]`, поэтому по умолчанию целевым будет элемент `website-information`. Например, вы применяете следующий атрибут (обратите внимание, что он не в стиле кебаб, но соответствует имени класса):
 
@@ -197,7 +197,7 @@ the following snippet uses TagHelpers3 and should use TagHelpers (not the 3)
    [HtmlTargetElement("WebsiteInformation")]
    ```
 
-   Ему не будет соответствовать тег в стиле кебаб нижнего регистра `<website-information />`. Чтобы использовать атрибут `[HtmlTargetElement]`, следует применить стиль кебаб, как показано ниже.
+   Ему не будет соответствовать тег в стиле кебаб `<website-information />`. Чтобы использовать атрибут `[HtmlTargetElement]`, следует применить стиль кебаб, как показано ниже.
 
    ```csharp
    [HtmlTargetElement("Website-Information")]
