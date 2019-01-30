@@ -1,26 +1,26 @@
 ---
 uid: mvc/overview/getting-started/database-first-development/generating-views
 title: Учебник. Создать представления для EF Database First с помощью приложения ASP.NET MVC
-description: Эта статья посвящена Создание контроллеров и представлений с помощью формирования шаблонов ASP.NET.
+description: Это руководство посвящено Создание контроллеров и представлений с помощью формирования шаблонов ASP.NET.
 author: Rick-Anderson
 ms.author: riande
-ms.date: 01/23/2019
+ms.date: 01/28/2019
 ms.topic: tutorial
 ms.assetid: 669367cf-8e30-4eb6-821d-10a7d9bb906c
 msc.legacyurl: /mvc/overview/getting-started/database-first-development/generating-views
 msc.type: authoredcontent
-ms.openlocfilehash: e1f6646cdf10d293268b92f44b018709e70c0f86
-ms.sourcegitcommit: d5223cf6a2cf80b4f5dc54169b0e376d493d2d3a
+ms.openlocfilehash: 7a56c0f9197a99427bcde6103ebc69d245e8ce63
+ms.sourcegitcommit: c47d7c131eebbcd8811e31edda210d64cf4b9d6b
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54889786"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55236423"
 ---
 # <a name="tutorial-generate-views-for-ef-database-first-with-aspnet-mvc-app"></a>Учебник. Создать представления для EF Database First с помощью приложения ASP.NET MVC
 
 С помощью MVC, Entity Framework и формирование шаблонов ASP.NET, можно создать веб-приложение, которое предоставляет интерфейс для существующей базы данных. В этой серии руководств показано, как автоматически создавать код, позволяющий пользователям для отображения, изменения и создавать и удалять данные, находящиеся в таблице базы данных. Созданный код соответствует столбцам в таблице базы данных.
 
-Эта статья посвящена Создание контроллеров и представлений с помощью формирования шаблонов ASP.NET.
+Это руководство посвящено Создание контроллеров и представлений с помощью формирования шаблонов ASP.NET.
 
 В этом учебнике рассмотрены следующие задачи.
 
@@ -101,6 +101,6 @@ ms.locfileid: "54889786"
 > * Представления отображается учащегося
 > * Представления отображается регистрации
 
-Перейдите к следующей статье, чтобы узнать, как изменение базы данных.
+Перейдите к следующему руководству, чтобы узнать, как изменение базы данных.
 > [!div class="nextstepaction"]
 > [Изменение базы данных](changing-the-database.md)

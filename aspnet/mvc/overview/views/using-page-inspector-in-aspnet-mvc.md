@@ -8,12 +8,12 @@ ms.date: 08/15/2012
 ms.assetid: c7e4e1ab-4932-4614-9f53-aaf7c706d498
 msc.legacyurl: /mvc/overview/views/using-page-inspector-in-aspnet-mvc
 msc.type: authoredcontent
-ms.openlocfilehash: c465b0bac9af90a892d6e62a327ba36977d08d4a
-ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
+ms.openlocfilehash: 0dea8b077878139a3f513cb51447b86a93fe55b8
+ms.sourcegitcommit: c47d7c131eebbcd8811e31edda210d64cf4b9d6b
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "41838252"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55236540"
 ---
 <a name="using-page-inspector-in-aspnet-mvc"></a>Использование инспектора страниц в ASP.NET MVC
 ====================
@@ -81,7 +81,7 @@ ms.locfileid: "41838252"
 
 ![Просмотр в инспекторе страниц Index.cshtml](using-page-inspector-in-aspnet-mvc/_static/image8.png)
 
-По умолчанию инспектор страниц расположенной в левой части среды Visual Studio как окно. При желании можно закрепить его в другом месте или открепить окно. См. в разделе [как: размещение и закрепление Windows](https://msdn.microsoft.com/library/z4y0hsax.aspx).
+По умолчанию инспектор страниц расположенной в левой части среды Visual Studio как окно. При желании можно закрепить его в другом месте или открепить окно. См. практическое руководство по [ размещать и закреплять окна](https://msdn.microsoft.com/library/z4y0hsax.aspx).
 
 В верхней области окна инспектора страниц показываются текущей страницы в окне браузера. На нижней панели отображаются страницы в разметке HTML, а также некоторые вкладки, которые позволяют проверять различные аспекты страницы. На нижней панели аналогичен [средства разработчика F12](https://msdn.microsoft.com/ie/aa740478) в Internet Explorer.
 

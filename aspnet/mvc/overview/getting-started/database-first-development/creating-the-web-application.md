@@ -1,26 +1,26 @@
 ---
 uid: mvc/overview/getting-started/database-first-development/creating-the-web-application
 title: Учебник. Создание веб-приложения и моделей данных для EF Database First с ASP.NET MVC
-description: Эта статья посвящена созданию веб-приложения и создание моделей данных, основанных на таблицах базы данных.
+description: Это руководство посвящено созданию веб-приложения и создание моделей данных, основанных на таблицах базы данных.
 author: Rick-Anderson
 ms.author: riande
-ms.date: 01/23/2019
+ms.date: 01/28/2019
 ms.topic: tutorial
 ms.assetid: bc8f2bd5-ff57-4dcd-8418-a5bd517d8953
 msc.legacyurl: /mvc/overview/getting-started/database-first-development/creating-the-web-application
 msc.type: authoredcontent
-ms.openlocfilehash: 095d355866c9ab8fba3759f3e05e2a521992f3d6
-ms.sourcegitcommit: d5223cf6a2cf80b4f5dc54169b0e376d493d2d3a
+ms.openlocfilehash: dced55386c3f810e406c5c2b3f0071b45e3b2dbd
+ms.sourcegitcommit: c47d7c131eebbcd8811e31edda210d64cf4b9d6b
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54889773"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55236371"
 ---
 # <a name="tutorial-create-the-the-web-application-and-data-models-for-ef-database-first-with-aspnet-mvc"></a>Учебник. Создание веб-приложения и моделей данных для EF Database First с ASP.NET MVC
 
  С помощью MVC, Entity Framework и формирование шаблонов ASP.NET, можно создать веб-приложение, которое предоставляет интерфейс для существующей базы данных. В этой серии руководств показано, как автоматически создавать код, позволяющий пользователям для отображения, изменения и создавать и удалять данные, находящиеся в таблице базы данных. Созданный код соответствует столбцам в таблице базы данных.
 
-Эта статья посвящена созданию веб-приложения и создание моделей данных, основанных на таблицах базы данных.
+Это руководство посвящено созданию веб-приложения и создание моделей данных, основанных на таблицах базы данных.
 
 В этом учебнике рассмотрены следующие задачи.
 
@@ -102,6 +102,6 @@ ms.locfileid: "54889773"
 > * Создали веб-приложение ASP.NET
 > * Созданные модели
 
-Перейдите к следующей статье, чтобы научиться создавать создания кода, на основе моделей данных.
+Перейдите к следующему руководству, чтобы научиться создавать создания кода, на основе моделей данных.
 > [!div class="nextstepaction"]
 > [Создание представлений](generating-views.md)
