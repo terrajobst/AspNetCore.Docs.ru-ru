@@ -4,16 +4,16 @@ title: Включение запросов о происхождении в ASP.
 author: MikeWasson
 description: Показано, как для поддержки общего доступа к независимо от источника (CORS) в веб-API ASP.NET.
 ms.author: riande
-ms.date: 10/10/2018
+ms.date: 01/29/2019
 ms.assetid: 9b265a5a-6a70-4a82-adce-2d7c56ae8bdd
 msc.legacyurl: /web-api/overview/security/enabling-cross-origin-requests-in-web-api
 msc.type: authoredcontent
-ms.openlocfilehash: 118b779c89edb874f7f928315d1094738be5f097
-ms.sourcegitcommit: 6e6002de467cd135a69e5518d4ba9422d693132a
+ms.openlocfilehash: 97a0027194b019b09e220493dcb593e682027fe3
+ms.sourcegitcommit: d22b3c23c45a076c4f394a70b1c8df2fbcdf656d
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49348524"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55428451"
 ---
 <a name="enable-cross-origin-requests-in-aspnet-web-api-2"></a>Включение запросов о происхождении в ASP.NET Web API 2
 ====================
@@ -67,7 +67,7 @@ ms.locfileid: "49348524"
 
    [!code-csharp[Main](enabling-cross-origin-requests-in-web-api/samples/sample1.cs)]
 
-4. Можно запустить приложение локально или развертывать в Azure. (Снимки экрана, в этом руководстве, приложение развертывается в веб-приложениях службы приложений Azure.) Чтобы убедиться, что веб-API работает, перейдите к `http://hostname/api/test/`, где *hostname* — это домен, в котором развертывается приложение. Вы должны увидеть текст ответа, &quot;получить: тестовое сообщение&quot;.
+4. Можно запустить приложение локально или развертывать в Azure. (Снимки экрана, в этом руководстве, приложение развертывается в веб-приложениях службы приложений Azure.) Чтобы убедиться, что веб-API работает, перейдите к `http://hostname/api/test/`, где *hostname* — это домен, в котором развертывается приложение. Вы должны увидеть текст ответа, &quot;получить: Тестовое сообщение&quot;.
 
    ![Web браузера отображение тестовое сообщение](enabling-cross-origin-requests-in-web-api/_static/image4.png)
 
@@ -90,7 +90,7 @@ ms.locfileid: "49348524"
 ![Ошибка «Попробуйте» в браузере](enabling-cross-origin-requests-in-web-api/_static/image7.png)
 
 > [!NOTE]
-> Если смотреть HTTP-трафика в средстве, например [Fiddler](http://www.telerik.com/fiddler), вы увидите, что браузер отправляет запрос GET и запрос выполнен успешно, но вызов AJAX возвращает ошибку. Важно понимать, что политика одного источника не запрещает браузере из *отправки* запроса. Вместо этого он дает приложению просматривать *ответа*.
+> Если смотреть HTTP-трафика в средстве, например [Fiddler](https://www.telerik.com/fiddler), вы увидите, что браузер отправляет запрос GET и запрос выполнен успешно, но вызов AJAX возвращает ошибку. Важно понимать, что политика одного источника не запрещает браузере из *отправки* запроса. Вместо этого он дает приложению просматривать *ответа*.
 
 ![Веб-отладчик Fiddler, показывающая веб-запросов](enabling-cross-origin-requests-in-web-api/_static/image8.png)
 
@@ -156,7 +156,7 @@ ms.locfileid: "49348524"
 
 Возможность предварительного запроса используется метод HTTP OPTIONS. Он включает два специальных заголовков:
 
-- Access-Control-Request-Method: Метод HTTP, будет использоваться для самого запроса.
+- Access-Control-Request-Method: Метод HTTP, который будет использоваться для самого запроса.
 - Access-Control-Request-Headers: Список заголовков запросов, *приложения* задать для самого запроса. (Опять же, это не включает заголовки, которые задает браузера.)
 
 Ниже приведен пример ответа, при условии, что сервер разрешает запрос.
@@ -164,6 +164,22 @@ ms.locfileid: "49348524"
 [!code-console[Main](enabling-cross-origin-requests-in-web-api/samples/sample9.cmd?highlight=6-7)]
 
 Ответ содержит заголовок Access-Control-Allow-Methods, в которой перечислены разрешенные методы и при необходимости заголовок Access-Control-разрешить-Headers, в которой перечислены разрешенные заголовки. Если Предварительный запрос завершается успешно, браузер отправляет фактический запрос, как описано выше.
+
+Средства, обычно используется для проверки конечных точек с помощью предварительные запросы OPTIONS (например, [Fiddler](https://www.telerik.com/fiddler) и [Postman](https://www.getpostman.com/)) по умолчанию не отправляет необходимые заголовки параметров. Убедитесь, что `Access-Control-Request-Method` и `Access-Control-Request-Headers` заголовки отправляются с запросом, и параметры заголовки достигнут приложения с помощью IIS.
+
+Чтобы настроить IIS на разрешение приложения ASP.NET для получения и обработки запросов, параметр, добавьте следующую конфигурацию в приложение *web.config* файл `<system.webServer><handlers>` раздел:
+
+```xml
+<system.webServer>
+  <handlers>
+    <remove name="ExtensionlessUrlHandler-Integrated-4.0" />
+    <remove name="OPTIONSVerbHandler" />
+    <add name="ExtensionlessUrlHandler-Integrated-4.0" path="*." verb="*" type="System.Web.Handlers.TransferRequestHandler" preCondition="integratedMode,runtimeVersionv4.0" />
+  </handlers>
+</system.webServer>
+```
+
+Удаление `OPTIONSVerbHandler` предотвращает обработку запросов параметры IIS. Замена `ExtensionlessUrlHandler-Integrated-4.0` позволяет запросам параметры достигнут приложения, так как регистрации модуля по умолчанию разрешает только запросы GET, HEAD, POST и отладки с помощью URL-адреса приложения без расширений.
 
 ## <a name="scope-rules-for-enablecors"></a>Правила области видимости для [EnableCors]
 
