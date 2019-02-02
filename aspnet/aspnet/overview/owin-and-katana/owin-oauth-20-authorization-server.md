@@ -4,20 +4,18 @@ title: Сервер авторизации OAuth 2.0 OWIN | Документац
 author: hongyes
 description: Этот учебник поможет вам о том, как реализовать сервер авторизации OAuth 2.0 с помощью по промежуточного слоя OWIN OAuth. Это является расширенный учебник, только Настройка...
 ms.author: riande
-ms.date: 03/20/2014
+ms.date: 01/28/2019
 ms.assetid: 20acee16-c70c-41e9-b38f-92bfcf9a4c1c
 msc.legacyurl: /aspnet/overview/owin-and-katana/owin-oauth-20-authorization-server
 msc.type: authoredcontent
-ms.openlocfilehash: 095dad49a8e9f963d941a84398afe9da0f46ce0b
-ms.sourcegitcommit: a4dcca4f1cb81227c5ed3c92dc0e28be6e99447b
+ms.openlocfilehash: b8451d2d9e346bd5e2f51ba45e48030a5221b549
+ms.sourcegitcommit: ed76cc752966c604a795fbc56d5a71d16ded0b58
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "48912271"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55667652"
 ---
-<a name="owin-oauth-20-authorization-server"></a>Сервер авторизации OAuth 2.0 OWIN
-====================
-по [Hongye Sun](https://github.com/hongyes), [Praburaj Thiagarajan](https://github.com/Praburaj), [Рик Андерсон]((https://twitter.com/RickAndMSFT))
+# <a name="owin-oauth-20-authorization-server"></a>Сервер авторизации OAuth 2.0 OWIN
 
 > Этот учебник поможет вам о том, как реализовать сервер авторизации OAuth 2.0 с помощью по промежуточного слоя OWIN OAuth. Это дополнительно учебник, в котором только описаны шаги, чтобы создать сервер авторизации OAuth 2.0 OWIN. Это пошаговое руководство. [Загрузить образец кода](https://code.msdn.microsoft.com/OWIN-OAuth-20-Authorization-ba2b8783/file/114932/1/AuthorizationServer.zip).
 >
@@ -29,9 +27,9 @@ ms.locfileid: "48912271"
 >
 > | **В этом руководстве показано** | **Также работает с** |
 > | --- | --- |
-> | Windows 8.1 | Windows 8, Windows 7 |
-> | [Visual Studio 2013](https://my.visualstudio.com/Downloads?q=visual%20studio%202013) | [Visual Studio 2013 Express для Desktop](https://my.visualstudio.com/Downloads?q=visual%20studio%202013#d-2013-express). Visual Studio 2012 с последним обновлением должна работать, но руководства не был протестирован с ним и некоторые элементы меню и диалоговые окна отличаются. |
-> | .NET 4.5 |  |
+> | Windows 8.1 | Windows 10, Windows 8, Windows 7 |
+> | [Visual Studio 2017](https://visualstudio.microsoft.com/downloads/)
+> | .NET 4.7.2 |  |
 >
 > ## <a name="questions-and-comments"></a>Вопросы и комментарии
 >
@@ -53,7 +51,7 @@ ms.locfileid: "48912271"
 <a id="prerequisites"></a>
 ## <a name="prerequisites"></a>Предварительные требования
 
-- [Visual Studio 2013](https://www.microsoft.com/visualstudio/eng/downloads#d-2013-editions) или бесплатная версия [Visual Studio Express 2013](https://www.microsoft.com/visualstudio/eng/downloads#d-2013-express), как указано в **версий программного обеспечения** в верхней части страницы.
+- [Visual Studio 2017](https://visualstudio.microsoft.com/downloads/) как указано в **версий программного обеспечения** в верхней части страницы.
 - Знакомство с OWIN. См. в разделе [Приступая к работе с проектом Katana](https://msdn.microsoft.com/magazine/dn451439.aspx) и [новые возможности в OWIN и Katana](index.md).
 - Знакомство с [OAuth](http://tools.ietf.org/html/rfc6749) терминология, включая [ролей](http://tools.ietf.org/html/rfc6749#section-1.1), [потока протокола](http://tools.ietf.org/html/rfc6749#section-1.2), и [предоставления авторизации](http://tools.ietf.org/html/rfc6749#section-1.3). [Общие сведения об OAuth 2.0](http://tools.ietf.org/html/rfc6749#section-1) хорошо представлена вступительная информация.
 
@@ -80,12 +78,12 @@ ms.locfileid: "48912271"
 `UseOAuthAuthorizationServer` — Это метод расширения для настройки сервера авторизации. Доступны следующие параметры программы установки.
 
 - `AuthorizeEndpointPath`: Путь запроса, где клиентские приложения будут перенаправлять агент пользователя для получения пользователей согласие для выдачи маркера или кода. Должно начинаться с косой черты, например, "`/Authorize`«.
-- `TokenEndpointPath`: Чтобы получить маркер доступа непосредственно взаимодействовать запрос путь клиентские приложения. Он должен начинаться с косой черты, например «/ Token». Если клиент выдает [клиента\_секрет](http://tools.ietf.org/html/rfc6749#appendix-A.2), но может быть передана в эту конечную точку.
+- `TokenEndpointPath`: Чтобы получить маркер доступа непосредственно взаимодействовать клиентские приложения путь запроса. Он должен начинаться с косой черты, например «/ Token». Если клиент выдает [клиента\_секрет](http://tools.ietf.org/html/rfc6749#appendix-A.2), но может быть передана в эту конечную точку.
 - `ApplicationCanDisplayErrors`: Значение `true` Если веб-приложение хочет создать на пользовательскую страницу ошибки для ошибки проверки клиента о `/Authorize` конечной точки. Это требуется, только для случаев, когда браузер не направляется обратно в клиентское приложение, например, если `client_id` или `redirect_uri` неверны. `/Authorize` Следует ожидать конечной точки см. в разделе «oauth. Ошибка», «oauth. ErrorDescription» и «oauth. Свойства ErrorUri» добавляются в среду OWIN.
 
     > [!NOTE]
     > В противном случае значение равно true, сервер авторизации возвращает страницу по умолчанию ошибка с сообщением об ошибке.
-- `AllowInsecureHttp`: Значение True для разрешить запросам авторизации и маркеров поступления адресов HTTP URI и разрешите входящий трафик `redirect_uri` авторизовать параметров запросов в HTTP URI-адреса.
+- `AllowInsecureHttp`: Значение true, чтобы разрешить запросам авторизации и маркеров поступления адресов HTTP URI и разрешите входящий трафик `redirect_uri` авторизовать параметров запросов в HTTP URI-адреса.
 
     > [!WARNING]
     > Безопасность — это только в целях разработки.

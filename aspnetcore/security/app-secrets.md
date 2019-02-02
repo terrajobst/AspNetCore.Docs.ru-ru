@@ -4,14 +4,14 @@ author: rick-anderson
 description: Узнайте, как сохранять и извлекать конфиденциальную информацию в виде секретов приложения во время разработки приложения ASP.NET Core.
 ms.author: scaddie
 ms.custom: mvc
-ms.date: 09/24/2018
+ms.date: 01/31/2019
 uid: security/app-secrets
-ms.openlocfilehash: 385d0ecc6ea19d5f84a9fe3c2754f5256a2a5576
-ms.sourcegitcommit: 375e9a67f5e1f7b0faaa056b4b46294cc70f55b7
+ms.openlocfilehash: eaa2e9d1ba98d391a29a9ff55872d062df016b87
+ms.sourcegitcommit: ed76cc752966c604a795fbc56d5a71d16ded0b58
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50207437"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55667782"
 ---
 # <a name="safe-storage-of-app-secrets-in-development-in-aspnet-core"></a>Безопасное хранение секретов приложения во время разработки в ASP.NET Core
 
@@ -208,11 +208,11 @@ dotnet user-secrets set "Movies:ServiceApiKey" "12345" --project "C:\apps\WebApp
 
 [API конфигурации ASP.NET Core](xref:fundamentals/configuration/index) предоставляет доступ к Secret Manager секреты. Если проект предназначен для платформы .NET Framework, установить [Microsoft.Extensions.Configuration.UserSecrets](https://www.nuget.org/packages/Microsoft.Extensions.Configuration.UserSecrets) пакет NuGet.
 
-В ASP.NET Core 2.0 или более поздней версии, источник конфигурации секреты пользователя автоматически добавляется в режиме разработки, пока проект не вызывает [CreateDefaultBuilder](/dotnet/api/microsoft.aspnetcore.webhost.createdefaultbuilder) для инициализации нового экземпляра узла с помощью предварительно настроенных значений по умолчанию. `CreateDefaultBuilder` вызовы [AddUserSecrets](/dotnet/api/microsoft.extensions.configuration.usersecretsconfigurationextensions.addusersecrets) при [EnvironmentName](/dotnet/api/microsoft.aspnetcore.hosting.ihostingenvironment.environmentname) — [разработки](/dotnet/api/microsoft.aspnetcore.hosting.environmentname.development):
+В ASP.NET Core 2.0 или более поздней версии, источник конфигурации секреты пользователя автоматически добавляется в режиме разработки, пока проект не вызывает <xref:Microsoft.AspNetCore.WebHost.CreateDefaultBuilder*> для инициализации нового экземпляра узла с помощью предварительно настроенных значений по умолчанию. `CreateDefaultBuilder` вызовы <xref:Microsoft.Extensions.Configuration.UserSecretsConfigurationExtensions.AddUserSecrets*> при <xref:Microsoft.AspNetCore.Hosting.IHostingEnvironment.EnvironmentName> — <xref:Microsoft.AspNetCore.Hosting.EnvironmentName.Development>:
 
 [!code-csharp[](app-secrets/samples/2.x/UserSecrets/Program.cs?name=snippet_CreateWebHostBuilder&highlight=2)]
 
-Когда `CreateDefaultBuilder` не вызывается во время создания узла, добавьте источник конфигурации секреты пользователя с помощью вызова [AddUserSecrets](/dotnet/api/microsoft.extensions.configuration.usersecretsconfigurationextensions.addusersecrets) в `Startup` конструктор:
+Когда `CreateDefaultBuilder` не вызывается, добавить источник конфигурации секреты пользователя явно, вызвав <xref:Microsoft.Extensions.Configuration.UserSecretsConfigurationExtensions.AddUserSecrets*> в `Startup` конструктор. Вызовите `AddUserSecrets` только когда приложение выполняется в среде разработки, как показано в следующем примере:
 
 [!code-csharp[](app-secrets/samples/1.x/UserSecrets/Startup.cs?name=snippet_StartupConstructor&highlight=12)]
 

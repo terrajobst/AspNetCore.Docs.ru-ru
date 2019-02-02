@@ -3,16 +3,16 @@ title: Проверка подлинности и авторизация в ASP.
 author: bradygaster
 description: Узнайте, как использовать проверку подлинности и авторизации в ASP.NET Core SignalR.
 monikerRange: '>= aspnetcore-2.1'
-ms.author: anurse
+ms.author: bradyg
 ms.custom: mvc
-ms.date: 06/29/2018
+ms.date: 01/31/2019
 uid: signalr/authn-and-authz
-ms.openlocfilehash: c807b65e0047fe6cedff08aef9f758653fab6a0d
-ms.sourcegitcommit: ebf4e5a7ca301af8494edf64f85d4a8deb61d641
+ms.openlocfilehash: 5d4574775606b4354ec099b6b32e05294d9f0e45
+ms.sourcegitcommit: ed76cc752966c604a795fbc56d5a71d16ded0b58
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54835821"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55667314"
 ---
 # <a name="authentication-and-authorization-in-aspnet-core-signalr"></a>Проверка подлинности и авторизация в ASP.NET Core SignalR
 
@@ -68,22 +68,14 @@ var connection = new HubConnectionBuilder()
 
 Добавьте новый класс, реализующий `IUserIdProvider` и получить одно из утверждений от пользователя для использования в качестве идентификатора. Например, чтобы использовать утверждение «Name» (это имя пользователя Windows в виде `[Domain]\[Username]`), создайте следующий класс:
 
-```csharp
-public class NameUserIdProvider : IUserIdProvider
-{
-    public string GetUserId(HubConnectionContext connection)
-    {
-        return connection.User?.FindFirst(ClaimTypes.Name)?.Value;
-    }
-}
-```
+[!code-csharp[Name based provider](authn-and-authz/sample/nameuseridprovider.cs?name=NameUserIdProvider)]
 
 Вместо `ClaimTypes.Name`, можно использовать любое значение от `User` (такие как идентификатор Windows SID и т.д.).
 
 > [!NOTE]
 > Значение, выбираемый должно быть уникальным среди всех пользователей в вашей системе. В противном случае сообщение, предназначенное для одного пользователя могут оказаться собираетесь другого пользователя.
 
-Зарегистрировать этот компонент в вашей `Startup.ConfigureServices` метод **после** вызов `.AddSignalR`
+Зарегистрировать этот компонент в вашей `Startup.ConfigureServices` метод.
 
 ```csharp
 public void ConfigureServices(IServiceCollection services)
@@ -107,6 +99,27 @@ var connection = new HubConnectionBuilder()
 ```
 
 Проверка подлинности Windows поддерживается только с помощью браузера клиента, при использовании Microsoft Internet Explorer или Microsoft Edge.
+
+### <a name="use-claims-to-customize-identity-handling"></a>Использование утверждений для настройки обработки удостоверений
+
+Приложение, которое выполняет проверку подлинности пользователей можно получить идентификаторы пользователей SignalR из утверждения пользователей. Чтобы указать, каким образом SignalR создает идентификаторы пользователей, реализовать `IUserIdProvider` и зарегистрируйте реализацию.
+
+В примере кода показано, как использовать утверждения для выбора адреса электронной почты пользователя в качестве идентифицирующего свойство. 
+
+> [!NOTE]
+> Значение, выбираемый должно быть уникальным среди всех пользователей в вашей системе. В противном случае сообщение, предназначенное для одного пользователя могут оказаться собираетесь другого пользователя.
+
+[!code-csharp[Email provider](authn-and-authz/sample/EmailBasedUserIdProvider.cs?name=EmailBasedUserIdProvider)]
+
+Регистрация учетной записи добавляет утверждение с типом `ClaimsTypes.Email` для базы данных удостоверений ASP.NET.
+
+[!code-csharp[Adding the email to the ASP.NET identity claims](authn-and-authz/sample/pages/account/Register.cshtml.cs?name=AddEmailClaim)]
+
+Зарегистрировать этот компонент в вашей `Startup.ConfigureServices`.
+
+```csharp
+services.AddSingleton<IUserIdProvider, EmailBasedUserIdProvider>();
+```
 
 ## <a name="authorize-users-to-access-hubs-and-hub-methods"></a>Авторизация пользователей для доступа к концентраторам и методам концентраторов
 

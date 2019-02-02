@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.assetid: 0ed5e67a-34c0-4b57-84a6-802b0fb3cd00
 msc.legacyurl: /mvc/overview/getting-started/database-first-development/enhancing-data-validation
 msc.type: authoredcontent
-ms.openlocfilehash: 85299d70c6cba52c1d40a42edfd429c96318134a
-ms.sourcegitcommit: c47d7c131eebbcd8811e31edda210d64cf4b9d6b
+ms.openlocfilehash: 897cd7c6a40445e2a4abede50d81e101372d3233
+ms.sourcegitcommit: ed76cc752966c604a795fbc56d5a71d16ded0b58
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55236488"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55667626"
 ---
 # <a name="tutorial-enhance-data-validation-for-ef-database-first-with-aspnet-mvc-app"></a>Учебник. Улучшения проверки данных для EF Database First с помощью приложения ASP.NET MVC
 
@@ -84,6 +84,14 @@ ms.locfileid: "55236488"
 
 Откройте *Student.cs* файл или *Enrollment.cs* файл и обратите внимание, что ранее примененные атрибуты проверки данных больше не находятся в файле. Тем не менее запустите приложение и обратите внимание на то, что по-прежнему применяются правила проверки при вводе данных.
 
+## <a name="conclusion"></a>Заключение
+
+В этой серии предоставлен простой пример того, как создать код из существующей базы данных, который позволяет пользователям изменять, обновлять, создавать и удалять данные. Он используется ASP.NET MVC 5, Entity Framework и формирование шаблонов ASP.NET для создания проекта. 
+
+Вводный пример шаблона разработки Code First, см. в разделе [Приступая к работе с ASP.NET MVC 5](../introduction/getting-started.md). 
+
+Более сложный пример, см. в разделе [Создание модели данных Entity Framework для приложения ASP.NET MVC 4](../getting-started-with-ef-using-mvc/creating-an-entity-framework-data-model-for-an-asp-net-mvc-application.md). Обратите внимание, что API DbContext, который используется для работы с данными в базе данных первого так же, как API, который используется для работы с данными в Code First. Даже если вы планируете использовать Database First, рассказывается, как обрабатывать более сложные сценарии, такие как чтение и обновление связанных данных, обработка конфликтов параллелизма, и так далее из учебника Code First. Единственное различие — в том, как создать базу данных, класс контекста и классов сущностей.
+
 ## <a name="additional-resources"></a>Дополнительные ресурсы
 
 Полный список проверки заметок к данным можно применить к свойства и классы, см. в разделе [System.ComponentModel.DataAnnotations](https://msdn.microsoft.com/library/system.componentmodel.dataannotations.aspx).
@@ -96,6 +104,6 @@ ms.locfileid: "55236488"
 > * Заметки в добавленных данных
 > * Добавляемые метаданные классов
 
-Перейдите к следующему руководству, чтобы узнать, как опубликовать веб-приложения и базы данных в Azure.
+Дополнительные сведения о развертывании веб-приложения и базы данных SQL в службе приложений Azure, см. в разделе этого руководства:
 > [!div class="nextstepaction"]
-> [Публикация в Azure](publish-to-azure.md)
+> [Развертывание приложения .NET в службе приложений Azure](/azure/app-service/app-service-web-tutorial-dotnet-sqldatabase/)

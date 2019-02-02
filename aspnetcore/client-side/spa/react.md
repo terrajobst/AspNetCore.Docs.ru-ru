@@ -7,12 +7,12 @@ ms.author: scaddie
 ms.custom: mvc
 ms.date: 02/21/2018
 uid: spa/react
-ms.openlocfilehash: c83b119e81d7d0abfd727cb8c72abb09763d9448
-ms.sourcegitcommit: b2723654af4969a24545f09ebe32004cb5e84a96
+ms.openlocfilehash: d83bff8abcd5b59d8bc4a51a101510755394f0c4
+ms.sourcegitcommit: ed76cc752966c604a795fbc56d5a71d16ded0b58
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46011434"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55667691"
 ---
 # <a name="use-the-react-project-template-with-aspnet-core"></a>Использование шаблона проекта React с ASP.NET Core
 
@@ -97,14 +97,22 @@ npm install --save <package_name>
 
 Но у этого стандартного режима есть важный недостаток. Сервер CRA перезапускается каждый раз, когда изменяется код на C# и возникает необходимость перезапустить приложение ASP.NET Core. Для создания резервной копии требуется несколько секунд. Если вы часто изменяете код C# и не хотите ждать, пока перезапустится сервер CRA, то используйте внешний сервер CRA, который не зависит от процесса ASP.NET Core. Для этого сделайте следующее:
 
-1. В командной строке перейдите к подкаталогу *ClientApp* и запустите сервер разработки CRA.
+1. Добавить *.env* файл *ClientApp* подкаталог со следующими параметрами:
+
+    ```
+    BROWSER=none
+    ```
+    
+    Это помешает веб-браузере открыть при запуске сервера CRA извне.
+
+2. В командной строке перейдите к подкаталогу *ClientApp* и запустите сервер разработки CRA.
 
     ```console
     cd ClientApp
     npm start
     ```
 
-2. Измените настройки приложения ASP.NET Core, чтобы оно использовало внешний экземпляр сервера CRA вместо своего встроенного экземпляра. В классе *Startup* замените вызов `spa.UseReactDevelopmentServer` следующим кодом:
+3. Измените настройки приложения ASP.NET Core, чтобы оно использовало внешний экземпляр сервера CRA вместо своего встроенного экземпляра. В классе *Startup* замените вызов `spa.UseReactDevelopmentServer` следующим кодом:
 
     ```csharp
     spa.UseProxyToSpaDevelopmentServer("http://localhost:3000");

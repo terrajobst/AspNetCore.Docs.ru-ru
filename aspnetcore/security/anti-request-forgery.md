@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 10/11/2018
 uid: security/anti-request-forgery
-ms.openlocfilehash: 3c1ea8f41eb6ed847bf24141ef0ae0c7e03d8a79
-ms.sourcegitcommit: 97d7a00bd39c83a8f6bccb9daa44130a509f75ce
+ms.openlocfilehash: 6e140717834b901e12ef7863fd07b983b0c55107
+ms.sourcegitcommit: ed76cc752966c604a795fbc56d5a71d16ded0b58
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54099225"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55667665"
 ---
 # <a name="prevent-cross-site-request-forgery-xsrfcsrf-attacks-in-aspnet-core"></a>Предотвращения межсайтовых (запросов XSRF/CSRF) атак с подделкой в ASP.NET Core
 
@@ -193,7 +193,7 @@ services.AddAntiforgery(options =>
 
 &dagger;Задайте защиты от подделки `Cookie` свойства с помощью свойства [CookieBuilder](/dotnet/api/microsoft.aspnetcore.http.cookiebuilder) класса.
 
-| Параметр | Описание: |
+| Параметр | Описание |
 | ------ | ----------- |
 | [Файл cookie](/dotnet/api/microsoft.aspnetcore.antiforgery.antiforgeryoptions.cookie) | Определяет параметры, используемые для создания против подделки файлы cookie. |
 | [FormFieldName](/dotnet/api/microsoft.aspnetcore.antiforgery.antiforgeryoptions.formfieldname) | Имя скрытого поля формы используемые против подделки системой для подготовки к просмотру против подделки токенов в представлениях. |
@@ -412,15 +412,40 @@ xhttp.send(JSON.stringify({ "newPassword": "ReallySecurePassword999$$$" }));
 
 ### <a name="angularjs"></a>AngularJS
 
-AngularJS используется соглашение по адресу CSRF. Если сервер отправляет файл cookie с именем `XSRF-TOKEN`, AngularJS `$http` служба добавляет значение файла cookie в заголовке, когда он отправляет запрос к серверу. Этот процесс выполняется автоматически. Заголовок не требуется явным образом задать. Имя заголовка — `X-XSRF-TOKEN`. Сервер должен обнаружить этот заголовок и проверить его содержимое.
+AngularJS используется соглашение по адресу CSRF. Если сервер отправляет файл cookie с именем `XSRF-TOKEN`, AngularJS `$http` служба добавляет значение файла cookie в заголовке, когда он отправляет запрос к серверу. Этот процесс выполняется автоматически. Заголовок не должен быть явно заданные на клиенте. Имя заголовка — `X-XSRF-TOKEN`. Сервер должен обнаружить этот заголовок и проверить его содержимое.
 
-Для ASP.NET Core API работы с этим соглашением:
+Для API ASP.NET Core для работы с этим соглашением, в классе startup вашего приложения:
 
 * Настройте приложение, чтобы предоставить маркер в файл cookie с именем `XSRF-TOKEN`.
 * Настроить службу против подделки искать заголовок с именем `X-XSRF-TOKEN`.
 
 ```csharp
-services.AddAntiforgery(options => options.HeaderName = "X-XSRF-TOKEN");
+public void Configure(IApplicationBuilder app, IAntiforgery antiforgery)
+{
+    app.Use(next => context =>
+    {
+        string path = context.Request.Path.Value;
+
+        if (
+            string.Equals(path, "/", StringComparison.OrdinalIgnoreCase) ||
+            string.Equals(path, "/index.html", StringComparison.OrdinalIgnoreCase))
+        {
+            // The request token can be sent as a JavaScript-readable cookie, 
+            // and Angular uses it by default.
+            var tokens = antiforgery.GetAndStoreTokens(context);
+            context.Response.Cookies.Append("XSRF-TOKEN", tokens.RequestToken, 
+                new CookieOptions() { HttpOnly = false });
+        }
+
+        return next(context);
+    });
+}
+
+public void ConfigureServices(IServiceCollection services)
+{
+    // Angular's default header name for sending the XSRF token.
+    services.AddAntiforgery(options => options.HeaderName = "X-XSRF-TOKEN");
+}
 ```
 
 [Просмотреть или скачать образец кода](https://github.com/aspnet/Docs/tree/master/aspnetcore/security/anti-request-forgery/sample/AngularSample) ([как скачивать](xref:index#how-to-download-a-sample))
