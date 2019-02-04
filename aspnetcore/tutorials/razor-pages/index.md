@@ -6,16 +6,20 @@ monikerRange: '>= aspnetcore-2.0'
 ms.author: riande
 ms.date: 09/08/2017
 uid: tutorials/razor-pages/index
-ms.openlocfilehash: 981460e63be611f8b9b5ceda73c2d6b8f2e4962e
-ms.sourcegitcommit: 6548c19f345850ee22b50f7ef9fca732895d9e08
+ms.openlocfilehash: db0dab630f986b6f60e24b7a39e20c7a4607f931
+ms.sourcegitcommit: ed76cc752966c604a795fbc56d5a71d16ded0b58
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53425072"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55667379"
 ---
 # <a name="tutorial-create-a-razor-pages-web-app-with-aspnet-core"></a>Учебник. Создание веб-приложения Razor Pages с помощью ASP.NET Core
 
-В этой серии руководств приводятся основные сведения о создании веб-приложения Razor Pages. В серию входят следующие руководства:
+В этой серии руководств приводятся основные сведения о создании веб-приложения Razor Pages. 
+
+[!INCLUDE[](~/includes/advancedRP.md)]
+
+В серию входят следующие руководства:
 
 1. [Создание веб-приложения Razor Pages](xref:tutorials/razor-pages/razor-pages-start)
 1. [Добавление модели в приложение Razor Pages](xref:tutorials/razor-pages/model)
