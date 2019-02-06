@@ -7,12 +7,12 @@ ms.author: scaddie
 ms.custom: mvc
 ms.date: 12/13/2018
 uid: web-api/advanced/conventions
-ms.openlocfilehash: 892fb8898c78a1645c766544715a8256462207c6
-ms.sourcegitcommit: ec71fd5a988f927ae301813aae5ff764feb3bb6a
+ms.openlocfilehash: 5ae96b213a19464045e1d0b1a76f8eb81089dc5b
+ms.sourcegitcommit: c47d7c131eebbcd8811e31edda210d64cf4b9d6b
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/12/2019
-ms.locfileid: "54249390"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55236345"
 ---
 # <a name="use-web-api-conventions"></a>Использование соглашений веб-API
 
@@ -58,7 +58,7 @@ ASP.NET Core MVC 2.2 и более поздних версий включает 
 
     [!code-csharp[](conventions/sample/Controllers/ContactsConventionController.cs?name=snippet_ApiConventionTypeAttribute&highlight=2)]
 
-1. `Microsoft.AspNetCore.Mvc.ApiConventionTypeAttribute`, примененный к сборке &mdash;, применяет определенный тип соглашения ко всем контроллерам в текущей сборке. Атрибуты уровня сборки рекомендуется применять к классу `Startup`.
+1. `Microsoft.AspNetCore.Mvc.ApiConventionTypeAttribute`, примененный к сборке &mdash;, применяет определенный тип соглашения ко всем контроллерам в текущей сборке. Атрибуты уровня сборки рекомендуется применять в файле *Startup.cs*.
 
     В следующем примере набор соглашений по умолчанию применяется ко всем контроллерам в сборке:
 

@@ -7,12 +7,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 12/5/2018
 uid: tutorials/razor-pages/validation
-ms.openlocfilehash: 87171beb7c214b1370d4d4144a79cb6d2c56098f
-ms.sourcegitcommit: 9bb58d7c8dad4bbd03419bcc183d027667fefa20
+ms.openlocfilehash: 99b1073fe025ee8693d9fe833402d245f78a603d
+ms.sourcegitcommit: e7276930515216338a33c4a03c0d7a87fc718ffe
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52862373"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55293511"
 ---
 # <a name="add-validation-to-an-aspnet-core-razor-page"></a>Добавление проверки на страницу Razor в ASP.NET Core
 
@@ -142,7 +142,7 @@ public DateTime ReleaseDate { get; set; }
 
 Сведения о развертывании в Azure см. в статье [Руководство. Создание приложения ASP.NET в Azure с подключением к базе данных SQL](/azure/app-service/app-service-web-tutorial-dotnet-sqldatabase). Эти инструкции приведены для приложения ASP.NET, а не ASP.NET Core, но шаги совпадают.
 
-Благодарим вас за изучение общих сведений о страницах Razor. Мы благодарны за ваш отзыв! Отличным дополнением к этому руководству является руководство по [началу работы с Razor Pages и EF Core](xref:data/ef-rp/intro).
+Благодарим вас за изучение общих сведений о страницах Razor. Отличным дополнением к этому руководству является руководство по [началу работы с Razor Pages и EF Core](xref:data/ef-rp/intro).
 
 ## <a name="additional-resources"></a>Дополнительные ресурсы
 
@@ -152,4 +152,4 @@ public DateTime ReleaseDate { get; set; }
 * <xref:mvc/views/tag-helpers/authoring>
 
 > [!div class="step-by-step"]
-> [Предыдущая тема. Добавление нового поля](xref:tutorials/razor-pages/new-field)
+> [Предыдущая статья. Добавление нового поля](xref:tutorials/razor-pages/new-field)
