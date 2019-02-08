@@ -5,14 +5,14 @@ description: Сведения о настройке приложения ASP.NET
 monikerRange: '>= aspnetcore-2.1'
 ms.author: bradyg
 ms.custom: mvc
-ms.date: 01/29/2019
+ms.date: 02/07/2019
 uid: signalr/configuration
-ms.openlocfilehash: ce970199984cdb8333ed1fd51f744dcda2df9c61
-ms.sourcegitcommit: ed76cc752966c604a795fbc56d5a71d16ded0b58
+ms.openlocfilehash: f5449a15743c1f38c550fe30945bdc19f069e3f5
+ms.sourcegitcommit: b72bbc9ae91e4bd37c9ea9b2d09ebf47afb25dd7
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55667613"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55958119"
 ---
 # <a name="aspnet-core-signalr-configuration"></a>Конфигурация ASP.NET Core SignalR
 
@@ -91,7 +91,28 @@ services.AddSignalR().AddHubOptions<MyHub>(options =>
 });
 ```
 
-Используйте `HttpConnectionDispatcherOptions` для расширенной настройки, относящиеся к транспортов и управление буфером памяти. Эти параметры настраиваются путем передачи делегата для [MapHub\<T >](/dotnet/api/microsoft.aspnetcore.signalr.hubroutebuilder.maphub).
+### <a name="advanced-http-configuration-options"></a>Дополнительные параметры конфигурации HTTP
+
+Используйте `HttpConnectionDispatcherOptions` для расширенной настройки, относящиеся к транспортов и управление буфером памяти. Эти параметры настраиваются путем передачи делегата для [MapHub\<T >](/dotnet/api/microsoft.aspnetcore.signalr.hubroutebuilder.maphub) в `Startup.Configure`.
+
+```csharp
+public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+{
+    app.UseSignalR((configure) => 
+    {
+        var desiredTransports = 
+            HttpTransportType.WebSockets |
+            HttpTransportType.LongPolling;
+
+        configure.MapHub<MyHub>("/myhub", (options) => 
+        {
+            options.Transports = desiredTransports;
+        });
+    });
+}
+```
+
+В следующей таблице описаны параметры для настройки дополнительных параметров HTTP ASP.NET Core SignalR:
 
 | Параметр | Значение по умолчанию | Описание: |
 | ------ | ------------- | ----------- |
@@ -104,13 +125,13 @@ services.AddSignalR().AddHubOptions<MyHub>(options =>
 
 Транспорт длинный опрос имеет дополнительные параметры, которые могут быть настроены с помощью `LongPolling` свойство:
 
-| Параметр | Значение по умолчанию | Описание: |
+| Параметр | Значение по умолчанию | Описание |
 | ------ | ------------- | ----------- |
 | `PollTimeout` | 90 секунд | Максимальное время ожидания сервером ответа сообщение, отправляемое клиенту перед завершением работы запрос на единый опроса. Уменьшение этого значения приводит к клиентам выполнять чаще, новые запросы опроса. |
 
 Транспорт WebSocket имеет дополнительные параметры, которые могут быть настроены с помощью `WebSockets` свойство:
 
-| Параметр | Значение по умолчанию | Описание: |
+| Параметр | Значение по умолчанию | Описание |
 | ------ | ------------- | ----------- |
 | `CloseTimeout` | 5 секунд | После завершения работы сервера, если клиенту не удается закрыть в течение этого времени интервала, соединение будет разорвано. |
 | `SubProtocolSelector` | `null` | Делегат, который может использоваться для задания `Sec-WebSocket-Protocol` заголовок пользовательское значение. Делегат получает значения, запрошенной клиентом в качестве входных данных и должен возвращать необходимое значение. |
@@ -152,7 +173,7 @@ let connection = new signalR.HubConnectionBuilder()
 
 Ниже перечислены уровни ведения журнала, доступные для клиента JavaScript. Установка уровня журнала в одно из следующих значений включает ведение журнала сообщений в **или более поздней версии** этого уровня.
 
-| Уровень | Описание |
+| Уровень | Описание: |
 | ----- | ----------- |
 | `None` | Сообщения не регистрируются. |
 | `Critical` | Сообщения, которые означают сбой всего приложения. |
