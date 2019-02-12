@@ -5,14 +5,14 @@ description: Узнайте, как использовать поставщик 
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 01/28/2019
+ms.date: 02/08/2019
 uid: security/key-vault-configuration
-ms.openlocfilehash: d255321f6083747ce9b452e1efd4da5bc015bf64
-ms.sourcegitcommit: 3c2ba9a0d833d2a096d9d800ba67a1a7f9491af0
+ms.openlocfilehash: f70389c86420d81e284ecc863ac8386f726ed2cf
+ms.sourcegitcommit: 5e3797a02ff3c48bb8cb9ad4320bfd169ebe8aba
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55854436"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56103115"
 ---
 # <a name="azure-key-vault-configuration-provider-in-aspnet-core"></a>Поставщик конфигурации хранилища ключей Azure в ASP.NET Core
 
@@ -271,8 +271,8 @@ var cert = store.Certificates
         config["CertificateThumbprint"], false);
 
 config.AddAzureKeyVault(
-    builtConfig["Vault"],
-    builtConfig["ClientId"],
+    builtConfig["KeyVaultName"],
+    builtConfig["AzureADApplicationId"],
     cert.OfType<X509Certificate2>().Single(),
     new EnvironmentSecretManager(context.HostingEnvironment.ApplicationName));
 
@@ -342,8 +342,8 @@ Configuration.Reload();
 * Приложение не имеет разрешения на доступ к хранилищу ключей.
 * Политика доступа не включает `Get` и `List` разрешения.
 * В хранилище ключей данные конфигурации (пара «имя значение») ошибочно названы, отсутствуют, отключена или истек срок действия.
-* Приложение имеет имя неправильный хранилища ключей (`Vault`), идентификатор приложения Azure AD (`ClientId`), или ключ Azure AD (`ClientSecret`).
-* Ключ Azure AD (`ClientSecret`) срок действия истек.
+* Приложение имеет имя неправильный хранилища ключей (`KeyVaultName`), идентификатор приложения Azure AD (`AzureADApplicationId`), или паролей Azure AD (секрет клиента) (`AzureADPassword`).
+* Паролей Azure AD (секрет клиента) (`AzureADPassword`) срок действия истек.
 * В приложении для значения, которое вы пытаетесь загрузить неправильный ключ конфигурации (имя).
 
 ## <a name="additional-resources"></a>Дополнительные ресурсы
