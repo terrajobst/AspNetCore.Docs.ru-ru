@@ -5,12 +5,12 @@ description: Дополнительные сведения об управлен
 ms.author: riande
 ms.date: 10/14/2016
 uid: security/data-protection/configuration/default-settings
-ms.openlocfilehash: beff17dd81143db02a0cbc79fa7cb3a6a4deeda6
-ms.sourcegitcommit: 3ca527f27c88cfc9d04688db5499e372fbc2c775
+ms.openlocfilehash: 2f022a4c7519485fe629ce47c27d214c8c27d5bc
+ms.sourcegitcommit: af8a6eb5375ef547a52ffae22465e265837aa82b
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39095103"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56159215"
 ---
 # <a name="data-protection-key-management-and-lifetime-in-aspnet-core"></a>Управление ключами для защиты данных и время существования в ASP.NET Core
 
@@ -26,6 +26,13 @@ ms.locfileid: "39095103"
    * Отдельные слоты развертывания, такие как промежуточное хранение и производство, не используют общую связку ключей. При переключении между слотами развертывания, пример переключения промежуточной в рабочую среду или с помощью A / B-тестирования, любое приложение, с помощью защиты данных не сможет расшифровать хранимые данные, используя связку ключей из предыдущего слота. Это приводит к пользователям вышли из приложения, которое использует стандартную проверку подлинности файла cookie ASP.NET Core, так как он использует защиту данных для защиты файлов cookie. При желании колец ключ независимый от слота, используйте внешнего поставщика связки ключей, такие как хранилище BLOB-объектов Azure, хранилище ключей Azure, в хранилище SQL или кэша Redis.
 
 1. Если профиль пользователя, ключи сохраняются в *%LOCALAPPDATA%\ASP.NET\DataProtection-Keys* папки. Если операционная система Windows, они шифруются при хранении с помощью DPAPI.
+
+   Пул приложений [setProfileEnvironment атрибут](/iis/configuration/system.applicationhost/applicationpools/add/processmodel#configuration) также должна быть включена. Значением свойства `setProfileEnvironment` по умолчанию является `true`. В некоторых сценариях (например, ОС Windows) `setProfileEnvironment` присваивается `false`. Если ключи не хранятся в каталоге профиля пользователя, как ожидается, что:
+
+   1. Перейдите к *%windir%/system32/inetsrv/config* папки.
+   1. Откройте *applicationHost.config* файл.
+   1. Найдите элемент `<system.applicationHost><applicationPools><applicationPoolDefaults><processModel>` .
+   1. Убедитесь, что `setProfileEnvironment` атрибут отсутствует, которое по умолчанию значение для `true`, или ему явно присвоено значение атрибута `true`.
 
 1. Если приложение размещается в службах IIS, ключи сохраняются в реестре HKLM, в специальный раздел, который будет доступен только для учетной записи рабочего процесса. Неактивные ключи шифруются с помощью API защиты данных.
 
