@@ -5,14 +5,14 @@ description: Сведения о сжатии откликов и способа
 monikerRange: '>= aspnetcore-1.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 12/18/2018
+ms.date: 02/13/2019
 uid: performance/response-compression
-ms.openlocfilehash: a9f72a6816298b11e7b7d30b2b4bd44083baab3a
-ms.sourcegitcommit: 97d7a00bd39c83a8f6bccb9daa44130a509f75ce
+ms.openlocfilehash: e87480ebb81791ed233f3e2308e35e21e081824f
+ms.sourcegitcommit: 6ba5fb1fd0b7f9a6a79085b0ef56206e462094b7
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54099043"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56248372"
 ---
 # <a name="response-compression-in-aspnet-core"></a>Сжатие откликов в ASP.NET Core
 
@@ -44,7 +44,7 @@ ms.locfileid: "54099043"
 
 ::: moniker range=">= aspnetcore-2.2"
 
-| `Accept-Encoding` значения заголовка | Поддерживается по промежуточного слоя | Описание |
+| `Accept-Encoding` значения заголовка | Поддерживается по промежуточного слоя | Описание: |
 | ------------------------------- | :------------------: | ----------- |
 | `br`                            | Да (по умолчанию)        | [Формат сжатых данных Brotli](https://tools.ietf.org/html/rfc7932) |
 | `deflate`                       | Нет                   | [Формат DEFLATE сжатых данных](https://tools.ietf.org/html/rfc1951) |
@@ -58,7 +58,7 @@ ms.locfileid: "54099043"
 
 ::: moniker range="< aspnetcore-2.2"
 
-| `Accept-Encoding` значения заголовка | Поддерживается по промежуточного слоя | Описание |
+| `Accept-Encoding` значения заголовка | Поддерживается по промежуточного слоя | Описание: |
 | ------------------------------- | :------------------: | ----------- |
 | `br`                            | Нет                   | [Формат сжатых данных Brotli](https://tools.ietf.org/html/rfc7932) |
 | `deflate`                       | Нет                   | [Формат DEFLATE сжатых данных](https://tools.ietf.org/html/rfc1951) |
@@ -114,7 +114,7 @@ ms.locfileid: "54099043"
 
 ::: moniker-end
 
-## <a name="configuration"></a>Конфигурация
+## <a name="configuration"></a>Параметр Configuration
 
 ::: moniker range=">= aspnetcore-2.2"
 
@@ -143,7 +143,7 @@ public class Startup
 }
 ```
 
-Примечания. 
+Примечания.
 
 * `app.UseResponseCompression` должен вызываться перед `app.UseMvc`.
 * Используйте это средство, например [Fiddler](http://www.telerik.com/fiddler), [Firebug](http://getfirebug.com/), или [Postman](https://www.getpostman.com/) присвоить `Accept-Encoding` заголовок запроса и изучите заголовки ответа, размер и текст.
@@ -174,7 +174,7 @@ public class Startup
 
 ### <a name="brotli-compression-provider"></a>Поставщик сжатие Brotli
 
-Используйте `BrotliCompressionProvider` для сжатия ответов с [формат сжатых данных Brotli](https://tools.ietf.org/html/rfc7932).
+Используйте <xref:Microsoft.AspNetCore.ResponseCompression.BrotliCompressionProvider> для сжатия ответов с [формат сжатых данных Brotli](https://tools.ietf.org/html/rfc7932).
 
 Если поставщики отсутствуют сжатия явно добавляются <xref:Microsoft.AspNetCore.ResponseCompression.CompressionProviderCollection>:
 
@@ -190,24 +190,11 @@ public void ConfigureServices(IServiceCollection services)
 
 Поставщик сжатия Brotoli должен быть добавлен, при любых поставщиков сжатия добавляются явным образом:
 
-```csharp
-public void ConfigureServices(IServiceCollection services)
-{
-    services.AddResponseCompression(options =>
-    {
-        options.Providers.Add<BrotliCompressionProvider>();
-        options.Providers.Add<GzipCompressionProvider>();
-        options.Providers.Add<CustomCompressionProvider>();
-        options.MimeTypes = 
-            ResponseCompressionDefaults.MimeTypes.Concat(
-                new[] { "image/svg+xml" });
-    });
-}
-```
+[!code-csharp[](response-compression/samples/2.x/Startup.cs?name=snippet1&highlight=5)]
 
-Установка уровня с помощью сжатия `BrotliCompressionProviderOptions`. По умолчанию используется поставщик сжатие Brotli наиболее быстрый уровень сжатия ([CompressionLevel.Fastest](xref:System.IO.Compression.CompressionLevel)), который может не обеспечить наиболее эффективное сжатие. При необходимости наиболее эффективного сжатия настройте по промежуточного слоя для оптимального сжатия.
+Установка уровня с помощью сжатия <xref:Microsoft.AspNetCore.ResponseCompression.BrotliCompressionProviderOptions>. По умолчанию используется поставщик сжатие Brotli наиболее быстрый уровень сжатия ([CompressionLevel.Fastest](xref:System.IO.Compression.CompressionLevel)), который может не обеспечить наиболее эффективное сжатие. При необходимости наиболее эффективного сжатия настройте по промежуточного слоя для оптимального сжатия.
 
-| Уровень сжатия | Описание |
+| Уровень сжатия | Описание: |
 | ----------------- | ----------- |
 | [CompressionLevel.Fastest](xref:System.IO.Compression.CompressionLevel) | Сжатие следует выполнить как можно быстрее, даже если полученный результат не сжат оптимально. |
 | [CompressionLevel.NoCompression](xref:System.IO.Compression.CompressionLevel) | Не требуется сжимать. |
@@ -258,30 +245,11 @@ public void ConfigureServices(IServiceCollection services)
 
 ::: moniker range=">= aspnetcore-2.2"
 
-```csharp
-public void ConfigureServices(IServiceCollection services)
-{
-    services.AddResponseCompression(options =>
-    {
-        options.Providers.Add<BrotliCompressionProvider>();
-        options.Providers.Add<GzipCompressionProvider>();
-        options.Providers.Add<CustomCompressionProvider>();
-        options.MimeTypes = 
-            ResponseCompressionDefaults.MimeTypes.Concat(
-                new[] { "image/svg+xml" });
-    });
-}
-```
+[!code-csharp[](response-compression/samples/2.x/Startup.cs?name=snippet1&highlight=6)]
 
 ::: moniker-end
 
-::: moniker range="= aspnetcore-2.0 || aspnetcore-2.1"
-
-[!code-csharp[](response-compression/samples/2.x/Startup.cs?name=snippet1&highlight=5)]
-
-::: moniker-end
-
-::: moniker range="< aspnetcore-2.0"
+::: moniker range="< aspnetcore-2.2"
 
 [!code-csharp[](response-compression/samples/1.x/Startup.cs?name=snippet2&highlight=5)]
 
@@ -315,48 +283,15 @@ public void ConfigureServices(IServiceCollection services)
 
 ::: moniker range=">= aspnetcore-2.2"
 
-```csharp
-public void ConfigureServices(IServiceCollection services)
-{
-    services.AddResponseCompression(options =>
-    {
-        options.Providers.Add<BrotliCompressionProvider>();
-        options.Providers.Add<GzipCompressionProvider>();
-        options.Providers.Add<CustomCompressionProvider>();
-        options.MimeTypes = 
-            ResponseCompressionDefaults.MimeTypes.Concat(
-                new[] { "image/svg+xml" });
-    });
-}
-```
-
-```csharp
-public class CustomCompressionProvider : ICompressionProvider
-{
-    public string EncodingName => "mycustomcompression";
-    public bool SupportsFlush => true;
-
-    public Stream CreateStream(Stream outputStream)
-    {
-        // Create a custom compression stream wrapper here
-        return outputStream;
-    }
-}
-```
-
-::: moniker-end
-
-::: moniker range="= aspnetcore-2.0 || aspnetcore-2.1"
-
-[!code-csharp[](response-compression/samples/2.x/Startup.cs?name=snippet1&highlight=6,12-15)]
+[!code-csharp[](response-compression/samples/2.x/Startup.cs?name=snippet1&highlight=7)]
 
 [!code-csharp[](response-compression/samples/2.x/CustomCompressionProvider.cs?name=snippet1)]
 
 ::: moniker-end
 
-::: moniker range="< aspnetcore-2.0"
+::: moniker range="< aspnetcore-2.2"
 
-[!code-csharp[](response-compression/samples/1.x/Startup.cs?name=snippet2&highlight=6,12-15)]
+[!code-csharp[](response-compression/samples/1.x/Startup.cs?name=snippet2&highlight=6)]
 
 [!code-csharp[](response-compression/samples/1.x/CustomCompressionProvider.cs?name=snippet1)]
 
@@ -383,30 +318,11 @@ public class CustomCompressionProvider : ICompressionProvider
 
 ::: moniker range=">= aspnetcore-2.2"
 
-```csharp
-public void ConfigureServices(IServiceCollection services)
-{
-    services.AddResponseCompression(options =>
-    {
-        options.Providers.Add<BrotliCompressionProvider>();
-        options.Providers.Add<GzipCompressionProvider>();
-        options.Providers.Add<CustomCompressionProvider>();
-        options.MimeTypes = 
-            ResponseCompressionDefaults.MimeTypes.Concat(
-                new[] { "image/svg+xml" });
-    });
-}
-```
+[!code-csharp[](response-compression/samples/2.x/Startup.cs?name=snippet1&highlight=8-10)]
 
 ::: moniker-end
 
-::: moniker range="= aspnetcore-2.0 || aspnetcore-2.1"
-
-[!code-csharp[](response-compression/samples/2.x/Startup.cs?name=snippet1&highlight=7-9)]
-
-::: moniker-end
-
-::: moniker range="< aspnetcore-2.0"
+::: moniker range="< aspnetcore-2.2"
 
 [!code-csharp[](response-compression/samples/1.x/Startup.cs?name=snippet2&highlight=7-9)]
 

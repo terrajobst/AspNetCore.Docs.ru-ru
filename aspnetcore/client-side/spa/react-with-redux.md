@@ -2,26 +2,19 @@
 title: Использование шаблона проекта React и Redux с ASP.NET Core
 author: SteveSandersonMS
 description: Сведения о начале работы с шаблоном проекта одностраничного приложения (SPA) ASP.NET Core для React с Redux и create-react-app.
-monikerRange: '>= aspnetcore-2.0'
+monikerRange: '>= aspnetcore-2.1'
 ms.author: scaddie
 ms.custom: mvc
-ms.date: 02/21/2018
+ms.date: 02/13/2019
 uid: spa/react-with-redux
-ms.openlocfilehash: c1aedcf1e14a9e7b339b60dd02c4267cd5945a49
-ms.sourcegitcommit: 42a8164b8aba21f322ffefacb92301bdfb4d3c2d
+ms.openlocfilehash: ed2e9aea449ddb09fef049a391f40f57452786a8
+ms.sourcegitcommit: 6ba5fb1fd0b7f9a6a79085b0ef56206e462094b7
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54341624"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56248086"
 ---
 # <a name="use-the-react-with-redux-project-template-with-aspnet-core"></a>Использование шаблона проекта React и Redux с ASP.NET Core
-
-::: moniker range="= aspnetcore-2.0"
-
-> [!NOTE]
-> Эта документация не относятся к шаблоне проекта React с Redux, включенные в ASP.NET Core 2.0. Это имеет отношение к новой React с Redux шаблон, который можно обновить вручную. Шаблон ASP.NET Core 2.1 или более поздних версий.
-
-::: moniker-end
 
 Обновленный шаблон проекта React и Redux служит удобной отправной точкой для создания приложений ASP.NET Core на основе конвенций React, Redux и [create-react-app](https://github.com/facebookincubator/create-react-app) (CRA), позволяющих реализовать полноценный пользовательский интерфейс на стороне клиента.
 

@@ -2,26 +2,19 @@
 title: Использование шаблона проекта Angular с ASP.NET Core
 author: SteveSandersonMS
 description: Дополнительные сведения о начале работы с шаблоном проекта одностраничного приложения (SPA) ASP.NET Core для Angular и Angular CLI.
-monikerRange: '>= aspnetcore-2.0'
-ms.author: scaddie
+monikerRange: '>= aspnetcore-2.1'
+ms.author: stevesa
 ms.custom: mvc
-ms.date: 02/21/2018
+ms.date: 02/13/2019
 uid: spa/angular
-ms.openlocfilehash: 8283fe9e96acb57942040dd4c90fabd204a19663
-ms.sourcegitcommit: 4bdf7703aed86ebd56b9b4bae9ad5700002af32d
+ms.openlocfilehash: 35a839e31369e8dbf00f5dbfb3751a2985335755
+ms.sourcegitcommit: 6ba5fb1fd0b7f9a6a79085b0ef56206e462094b7
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/15/2018
-ms.locfileid: "49326047"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56248125"
 ---
 # <a name="use-the-angular-project-template-with-aspnet-core"></a>Использование шаблона проекта Angular с ASP.NET Core
-
-::: moniker range="= aspnetcore-2.0"
-
-> [!NOTE]
-> Информация о шаблоне проекта Angular, который включен в ASP.NET Core 2.0, в этой документации отсутствует. Речь идет о более новом шаблоне Angular, который можно обновить вручную. По умолчанию этот шаблон включен в ASP.NET Core 2.1.
-
-::: moniker-end
 
 Обновленный шаблон проекта Angular обеспечивает удобную отправную точку для приложений ASP.NET Core с использованием Angular и Angular CLI для реализации богатого пользовательского интерфейса (UI) на стороне клиента.
 
@@ -29,17 +22,7 @@ ms.locfileid: "49326047"
 
 ## <a name="create-a-new-app"></a>Создание нового приложения
 
-::: moniker range="= aspnetcore-2.0"
-
-При использовании ASP.NET Core 2.0 необходимо убедиться, что [для шаблона проекта Angular установлены обновления](xref:spa/index#installation).
-
-::: moniker-end
-
-::: moniker range=">= aspnetcore-2.1"
-
 Если установлена ASP.NET Core 2.1, не нужно устанавливать проект шаблона Angular.
-
-::: moniker-end
 
 Создайте из командной строки новый проект в пустом каталоге с помощью команды `dotnet new angular`. Например, следующие команды позволяют создать приложение в каталоге *my-new-app* и перейти к этому каталогу:
 
@@ -70,7 +53,7 @@ Now listening on: http://localhost:<port>
 
 Перейдите по этому URL-адресу в браузере.
 
-Приложение запускает экземпляр сервера Angular CLI в фоновом режиме. Будет записано следующее сообщение: *сервер разработки NG Live ожидает вызова localhost:&lt;otherport&gt;, откройте браузер на странице http://localhost:&lt:otherport&gt;/*. Это сообщение необходимо проигнорировать&mdash;оно **не** является URL-адресом объединенного приложения ASP.NET Core и Angular CLI.
+Приложение запускает экземпляр сервера Angular CLI в фоновом режиме. Следующее сообщение будет записано в журнал. *NG Live Development Server прослушивает localhost:&lt;otherport&gt;, откройте браузер на http://localhost:&lt; otherport&gt;/*. Игнорируйте это сообщение — этот URL-адрес **не соответствует** объединенному приложению ASP.NET Core и Angular CLI.
 
 ---
 

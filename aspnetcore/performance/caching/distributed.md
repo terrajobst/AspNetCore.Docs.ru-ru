@@ -4,14 +4,14 @@ author: guardrex
 description: Сведения об использовании ASP.NET Core распределенного кэша для повышения производительности приложения и масштабируемости, особенно в среде фермы облаком и сервером.
 ms.author: riande
 ms.custom: mvc
-ms.date: 10/19/2018
+ms.date: 02/13/2019
 uid: performance/caching/distributed
-ms.openlocfilehash: d80cde372535aa04604ce0cd5a731a1448515093
-ms.sourcegitcommit: 4a6bbe84db24c2f3dd2de065de418fde952c8d40
+ms.openlocfilehash: a157eb075874d2118e3e34b51410b539a1ec37df
+ms.sourcegitcommit: 6ba5fb1fd0b7f9a6a79085b0ef56206e462094b7
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50253012"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56248592"
 ---
 # <a name="distributed-caching-in-aspnet-core"></a>Распределенное кэширование в ASP.NET Core
 
@@ -76,7 +76,7 @@ ms.locfileid: "50253012"
 
 ### <a name="distributed-memory-cache"></a>Распределенные памяти кэша
 
-Распределенного кэша в памяти (<xref:Microsoft.Extensions.DependencyInjection.MemoryCacheServiceCollectionExtensions.AddDistributedMemoryCache*>) — это реализация предоставляемые платформой `IDistributedCache` , сохраняет элементы в памяти. Распределенный кеш памяти не фактический распределенного кэша. Кэшированные элементы хранятся в экземпляре приложения на сервере, где выполняется приложение.
+Распределенного кэша в памяти (<xref:Microsoft.Extensions.DependencyInjection.MemoryCacheServiceCollectionExtensions.AddDistributedMemoryCache*>) — это реализация предоставляемые платформой <xref:Microsoft.Extensions.Caching.Distributed.IDistributedCache> , сохраняет элементы в памяти. Распределенный кеш памяти не фактический распределенного кэша. Кэшированные элементы хранятся в экземпляре приложения на сервере, где выполняется приложение.
 
 Распределенным кэшем памяти — это полезные реализация:
 
@@ -149,13 +149,13 @@ services.AddDistributedRedisCache(options =>
 
 ## <a name="use-the-distributed-cache"></a>Использование распределенного кэша
 
-Чтобы использовать <xref:Microsoft.Extensions.Caching.Distributed.IDistributedCache> интерфейсом, запросить экземпляр `IDistributedCache` из любого конструктора в приложении. Экземпляр предоставляется [внедрения зависимостей (DI)](xref:fundamentals/dependency-injection).
+Чтобы использовать <xref:Microsoft.Extensions.Caching.Distributed.IDistributedCache> интерфейсом, запросить экземпляр <xref:Microsoft.Extensions.Caching.Distributed.IDistributedCache> из любого конструктора в приложении. Экземпляр предоставляется [внедрения зависимостей (DI)](xref:fundamentals/dependency-injection).
 
-При запуске приложения, `IDistributedCache` внедряется в `Startup.Configure`. Текущее время кэшируется с помощью <xref:Microsoft.AspNetCore.Hosting.IApplicationLifetime> (Дополнительные сведения см. в разделе [веб-узел: интерфейс IApplicationLifetime](xref:fundamentals/host/web-host#iapplicationlifetime-interface)):
+При запуске приложения, <xref:Microsoft.Extensions.Caching.Distributed.IDistributedCache> внедряется в `Startup.Configure`. Текущее время кэшируется с помощью <xref:Microsoft.AspNetCore.Hosting.IApplicationLifetime> (Дополнительные сведения см. в разделе [веб-узел: Интерфейс IApplicationLifetime](xref:fundamentals/host/web-host#iapplicationlifetime-interface)):
 
 [!code-csharp[](distributed/samples/2.x/DistCacheSample/Startup.cs?name=snippet_Configure&highlight=10)]
 
-Пример приложения внедряет `IDistributedCache` в `IndexModel` для использования на странице индекса.
+Пример приложения внедряет <xref:Microsoft.Extensions.Caching.Distributed.IDistributedCache> в `IndexModel` для использования на странице индекса.
 
 Каждый раз при загрузке страницы индекса кэша проверяется на время кэширования в `OnGetAsync`. Если время кэширования еще не истек, отображается время. Если 20 секунд, истекших с момента последнего обращения к время кэширования (последний раз страница была загружена), на странице отображается *кэшированных Time Expired*.
 
@@ -164,13 +164,13 @@ services.AddDistributedRedisCache(options =>
 [!code-csharp[](distributed/samples/2.x/DistCacheSample/Pages/Index.cshtml.cs?name=snippet_IndexModel&highlight=7,14-20,25-29)]
 
 > [!NOTE]
-> Время жизни экземпляров `IDistributedCache` (по крайней мере, для встроенных реализаций) не обязательно должно быть ограничено одним объектом или блоком.
+> Время жизни экземпляров <xref:Microsoft.Extensions.Caching.Distributed.IDistributedCache> (по крайней мере, для встроенных реализаций) не обязательно должно быть ограничено одним объектом или блоком.
 >
-> Вы также можете создать `IDistributedCache` экземпляра везде, где это может потребоваться, а не с помощью внедрения Зависимостей, но создание экземпляра в коде может сделать код труднее тестировать и нарушает [принципу явных зависимостей](/dotnet/standard/modern-web-apps-azure-architecture/architectural-principles#explicit-dependencies).
+> Вы также можете создать <xref:Microsoft.Extensions.Caching.Distributed.IDistributedCache> экземпляра везде, где это может потребоваться, а не с помощью внедрения Зависимостей, но создание экземпляра в коде может сделать код труднее тестировать и нарушает [принципу явных зависимостей](/dotnet/standard/modern-web-apps-azure-architecture/architectural-principles#explicit-dependencies).
 
 ## <a name="recommendations"></a>Рекомендации
 
-При принятии решения о реализации `IDistributedCache` лучше всего подходит для вашего приложения, необходимо учитывать следующее:
+При принятии решения о реализации <xref:Microsoft.Extensions.Caching.Distributed.IDistributedCache> лучше всего подходит для вашего приложения, необходимо учитывать следующее:
 
 * Существующую инфраструктуру
 * Требования к производительности

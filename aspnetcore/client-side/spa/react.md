@@ -2,26 +2,19 @@
 title: Использование шаблона проекта React с ASP.NET Core
 author: SteveSandersonMS
 description: Сведения о начале работы с шаблоном проекта одностраничного приложения (SPA) ASP.NET Core для React и create-react-app.
-monikerRange: '>= aspnetcore-2.0'
+monikerRange: '>= aspnetcore-2.1'
 ms.author: scaddie
 ms.custom: mvc
-ms.date: 02/21/2018
+ms.date: 02/13/2019
 uid: spa/react
-ms.openlocfilehash: d83bff8abcd5b59d8bc4a51a101510755394f0c4
-ms.sourcegitcommit: ed76cc752966c604a795fbc56d5a71d16ded0b58
+ms.openlocfilehash: aa08a9d8d06d8b52be564fabf904d4923684d4e4
+ms.sourcegitcommit: 6ba5fb1fd0b7f9a6a79085b0ef56206e462094b7
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55667691"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56248034"
 ---
 # <a name="use-the-react-project-template-with-aspnet-core"></a>Использование шаблона проекта React с ASP.NET Core
-
-::: moniker range="= aspnetcore-2.0"
-
-> [!NOTE]
-> Эта документация не относится к шаблону проекта React, включенному в ASP.NET Core 2.0. Она предназначена для нового шаблона React, который вы можете установить вручную. Этот шаблон по умолчанию включен в ASP.NET Core 2.1.
-
-::: moniker-end
 
 Обновленный шаблон проекта React служит удобной отправной точкой для создания приложений ASP.NET Core на основе конвенций React и [create-react-app](https://github.com/facebookincubator/create-react-app) (CRA), позволяющих реализовать многофункциональный пользовательский интерфейс (UI) на стороне клиента.
 
@@ -29,17 +22,7 @@ ms.locfileid: "55667691"
 
 ## <a name="create-a-new-app"></a>Создание нового приложения
 
-::: moniker range="= aspnetcore-2.0"
-
-Если вы используете ASP.NET Core 2.0, обязательно [установите обновленный шаблон проекта React](xref:spa/index#installation).
-
-::: moniker-end
-
-::: moniker range=">= aspnetcore-2.1"
-
 Если установлена ASP.NET Core 2.1, не нужно устанавливать проект шаблона React.
-
-::: moniker-end
 
 Создайте из командной строки новый проект в пустом каталоге с помощью команды `dotnet new react`. Например, следующие команды позволяют создать приложение в каталоге *my-new-app* и перейти к этому каталогу:
 

@@ -4,18 +4,21 @@ title: Учебник. Маркер параллелизма в EF в прило
 description: Этом руководстве показано, как использовать оптимистичный параллелизм для обработки конфликтов, когда несколько пользователей изменяют одну сущность, в то же время.
 author: tdykstra
 ms.author: riande
-ms.date: 01/21/2019
 ms.topic: tutorial
+ms.date: 01/15/2019
 ms.assetid: be0c098a-1fb2-457e-b815-ddca601afc65
 msc.legacyurl: /mvc/overview/getting-started/getting-started-with-ef-using-mvc/handling-concurrency-with-the-entity-framework-in-an-asp-net-mvc-application
 msc.type: authoredcontent
-ms.openlocfilehash: 2b41b51de5fd6d87b9905ba2bb3ddf7cedb47e69
-ms.sourcegitcommit: d5223cf6a2cf80b4f5dc54169b0e376d493d2d3a
+ms.openlocfilehash: b513d7d86d382068bc1a8f1bcc61289ee946d38b
+ms.sourcegitcommit: 6ba5fb1fd0b7f9a6a79085b0ef56206e462094b7
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54889838"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56248307"
 ---
+<a name="handling-concurrency-with-the-entity-framework-6-in-an-aspnet-mvc-5-application-10-of-12"></a>Обработка параллелизма с помощью Entity Framework 6 в приложении ASP.NET MVC 5 (10 из 12)
+====================
+
 # <a name="tutorial-handle-concurrency-with-ef-in-an-aspnet-mvc-5-app"></a>Учебник. Маркер параллелизма в EF в приложении ASP.NET MVC 5
 
 В предыдущих учебниках вы узнали, как обновлять данные. Этом руководстве показано, как использовать оптимистичный параллелизм для обработки конфликтов, когда несколько пользователей изменяют одну сущность, в то же время. Изменить веб-страниц, которые работают с `Department` сущности, чтобы они обрабатывают ошибки параллелизма. На следующих рисунках показаны страницы "Edit" (Редактирование) и "Delete" (Удаление), включая некоторые сообщения, которые отображаются при возникновении конфликта параллелизма.
@@ -26,12 +29,14 @@ ms.locfileid: "54889838"
 
 В этом учебнике рассмотрены следующие задачи.
 
+
 > [!div class="checklist"]
 > * Дополнительные сведения о конфликтах параллелизма
 > * Добавление оптимистичного параллелизма
 > * Изменение контроллера Department
 > * Обработка параллелизма теста
 > * Обновление страницы удаления
+
 
 ## <a name="prerequisites"></a>Предварительные требования
 
