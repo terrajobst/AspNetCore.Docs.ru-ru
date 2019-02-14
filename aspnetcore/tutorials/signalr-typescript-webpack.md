@@ -4,14 +4,14 @@ author: ssougnez
 description: В рамках этого учебника вы настроите средство Webpack для создания пакета и сборки веб-приложения ASP.NET Core SignalR, клиент которого написан на языке TypeScript.
 ms.author: bradyg
 ms.custom: mvc
-ms.date: 11/30/2018
+ms.date: 02/11/2019
 uid: tutorials/signalr-typescript-webpack
-ms.openlocfilehash: 8292ab2e0ad1f5c67ac7f15c280b49700f6717ad
-ms.sourcegitcommit: ebf4e5a7ca301af8494edf64f85d4a8deb61d641
+ms.openlocfilehash: aaf9aa59928ed6b17bc0586d97dbdefc9e30362c
+ms.sourcegitcommit: 5e3797a02ff3c48bb8cb9ad4320bfd169ebe8aba
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54836328"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56102956"
 ---
 # <a name="use-aspnet-core-signalr-with-typescript-and-webpack"></a>Использование ASP.NET Core SignalR с TypeScript и Webpack
 
@@ -80,13 +80,13 @@ dotnet new web -o SignalRWebPack
 1. Установите необходимые пакеты npm. Выполните следующую команду в корневом элементе проекта:
 
     ```console
-    npm install -D -E clean-webpack-plugin@0.1.19 css-loader@0.28.11 html-webpack-plugin@3.2.0 mini-css-extract-plugin@0.4.0 ts-loader@4.4.1 typescript@2.9.2 webpack@4.12.0 webpack-cli@3.0.6
+    npm install -D -E clean-webpack-plugin@1.0.1 css-loader@2.1.0 html-webpack-plugin@4.0.0-beta.5 mini-css-extract-plugin@0.5.0 ts-loader@5.3.3 typescript@3.3.3 webpack@4.29.3 webpack-cli@3.2.3
     ```
 
     Сведения о команде, на которые следует обратить внимание:
 
     * Для каждого имени пакета номер версии указывается после знака `@`. npm устанавливает указанные версии пакета.
-    * Использование параметра `-E` позволяет отключить установленное по умолчанию поведение npm, предусматривающее запись операторов диапазона [семантического управления версиями](https://semver.org/) в файл *package.json*. Например, `"webpack": "4.12.0"` используется вместо `"webpack": "^4.12.0"`. Этот параметр позволяет исключить непреднамеренное обновление до более новых версий пакета.
+    * Использование параметра `-E` позволяет отключить установленное по умолчанию поведение npm, предусматривающее запись операторов диапазона [семантического управления версиями](https://semver.org/) в файл *package.json*. Например, `"webpack": "4.29.3"` используется вместо `"webpack": "^4.29.3"`. Этот параметр позволяет исключить непреднамеренное обновление до более новых версий пакета.
 
     Дополнительные сведения см. в официальной документации по [npm-install](https://docs.npmjs.com/cli/install).
 
