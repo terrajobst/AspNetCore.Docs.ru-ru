@@ -66,7 +66,7 @@ items:
   - uid: fundamentals/environments
     name: Среды (разработки, промежуточные, рабочие)
   - uid: fundamentals/configuration/index
-    name: Конфигурация
+    name: Параметр Configuration
   - uid: fundamentals/configuration/options
     name: Параметры
   - uid: fundamentals/logging/index
@@ -315,7 +315,7 @@ items:
     - uid: signalr/background-services
       name: SignalR со службами, работающими в фоновом режиме
   - uid: signalr/configuration
-    name: Конфигурация
+    name: Параметр Configuration
   - uid: signalr/authn-and-authz
     name: Аутентификация и авторизация
   - uid: signalr/security
@@ -558,6 +558,8 @@ items:
       name: Устранение неполадок
     - uid: host-and-deploy/azure-iis-errors-reference
       name: Справочник по ошибкам
+    - uid: host-and-deploy/iis/transform-webconfig
+      name: Преобразование web.config
   - uid: fundamentals/servers/kestrel
     name: Kestrel
   - uid: fundamentals/servers/httpsys
@@ -714,7 +716,7 @@ items:
         name: Ограничение времени существования защищенных полезных данных
       - uid: security/data-protection/consumer-apis/dangerous-unprotect
         name: Снятие защиты полезных данных, ключи которых были отозваны
-    - name: Конфигурация
+    - name: Параметр Configuration
       items:
       - uid: security/data-protection/configuration/index
         name: Обзор
@@ -863,7 +865,7 @@ items:
     - uid: migration/webapi
       name: Веб-интерфейс API
     - uid: migration/configuration
-      name: Конфигурация
+      name: Параметр Configuration
     - uid: migration/identity
       name: Проверка подлинности и Identity
     - uid: migration/claimsprincipal-current
@@ -878,9 +880,9 @@ items:
   href: /dotnet/api/?view=aspnetcore-2.2
 - name: Участие
   href: https://github.com/aspnet/Docs/blob/master/CONTRIBUTING.md
-ms.openlocfilehash: 7c9baf2a9e3a800ff9abfcb757ffde039d49a9a4
-ms.sourcegitcommit: af8a6eb5375ef547a52ffae22465e265837aa82b
+ms.openlocfilehash: d2015955147460621d64ea6035f5f8118a02469b
+ms.sourcegitcommit: 6ba5fb1fd0b7f9a6a79085b0ef56206e462094b7
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56159546"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56248398"

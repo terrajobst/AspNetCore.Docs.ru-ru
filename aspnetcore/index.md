@@ -4,14 +4,14 @@ author: rick-anderson
 description: Введение в ASP.NET Core — кроссплатформенную высокопроизводительную платформу с открытым исходным кодом для создания современных облачных интернет-приложений.
 ms.author: riande
 ms.custom: mvc
-ms.date: 01/15/2019
+ms.date: 02/13/2019
 uid: index
-ms.openlocfilehash: e7c81ff82e5206a5aca217417f6cb1c339d72e89
-ms.sourcegitcommit: 42a8164b8aba21f322ffefacb92301bdfb4d3c2d
+ms.openlocfilehash: c3f07814bfab19a0f070e0b48b0d2ef6cfc1594e
+ms.sourcegitcommit: 6ba5fb1fd0b7f9a6a79085b0ef56206e462094b7
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54341411"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56248164"
 ---
 # <a name="introduction-to-aspnet-core"></a>Введение в ASP.NET Core
 
@@ -44,7 +44,7 @@ ASP.NET Core MVC предоставляет функции, которые по�
 
 ## <a name="client-side-development"></a>Клиентская разработка
 
-ASP.NET Core легко интегрируется с распространенными клиентскими платформами и библиотеками, в том числе [Angular](xref:spa/angular), [React](xref:spa/react) и [Bootstrap](https://getbootstrap.com/). Дополнительные сведения см. в разделе о [клиентской разработке](xref:client-side/index).
+ASP.NET Core легко интегрируется с распространенными клиентскими платформами и библиотеками, в том числе [компонентами Razor](xref:razor-components/index), [Angular](xref:spa/angular), [React](xref:spa/react) и [Bootstrap](https://getbootstrap.com/). Дополнительные сведения см. в разделе [Компоненты Razor](xref:razor-components/index), а также в похожих темах в разделе *Разработка на стороне клиента*.
 
 <a name="target-framework"></a>
 
