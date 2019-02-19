@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 11/21/2017
 uid: security/authorization/policies
-ms.openlocfilehash: 937c73c26cd3935c5069d4735e754d1a567f41f4
-ms.sourcegitcommit: 6ba5fb1fd0b7f9a6a79085b0ef56206e462094b7
+ms.openlocfilehash: be4812487c92a16c44e3983b234bc9e31be65190
+ms.sourcegitcommit: d75d8eb26c2cce19876c8d5b65ac8a4b21f625ef
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56248112"
+ms.lasthandoff: 02/19/2019
+ms.locfileid: "56410393"
 ---
 # <a name="policy-based-authorization-in-aspnet-core"></a>Авторизация на основе политик в ASP.NET Core
 
@@ -120,7 +120,7 @@ ms.locfileid: "56248112"
 
 Например, MVC передает экземпляр [AuthorizationFilterContext](/dotnet/api/?term=AuthorizationFilterContext) в `Resource` свойство. Это свойство предоставляет доступ к `HttpContext`, `RouteData`и все, что предоставленный другим, MVC и Razor Pages.
 
-Использование `Resource` свойство является определенной платформы. Используя информацию в `Resource` свойство ограничивает политик авторизации для конкретной платформы. Следует привести `Resource` свойства с помощью `as` ключевое слово, а затем подтвердите приведения имеет успешно обеспечить отсутствие сбоев кода с `InvalidCastException` при запуске на другие платформы:
+Использование `Resource` свойство является определенной платформы. Используя информацию в `Resource` свойство ограничивает политик авторизации для конкретной платформы. Следует привести `Resource` свойства с помощью `is` ключевое слово, а затем подтвердите приведение выполнено успешно, чтобы обеспечить отсутствие сбоев кода с `InvalidCastException` при запуске на другие платформы:
 
 ```csharp
 // Requires the following import:

@@ -7,16 +7,16 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 02/12/2019
 uid: spa/blazor/get-started
-ms.openlocfilehash: 8c984bab8a13b4fc2d87fd1a7e0b285dfa25ba09
-ms.sourcegitcommit: af8a6eb5375ef547a52ffae22465e265837aa82b
+ms.openlocfilehash: 26336f73f6c8976ed5de819cebc3c5c50274ab03
+ms.sourcegitcommit: d75d8eb26c2cce19876c8d5b65ac8a4b21f625ef
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56159605"
+ms.lasthandoff: 02/19/2019
+ms.locfileid: "56410012"
 ---
 # <a name="get-started-with-blazor"></a>Начало работы с Blazor
 
-По [Дэниэл рот](https://github.com/danroth27) и [Люк Лэтем](https://github.com/guardrex)
+Авторы: [Дэниэл Рот (Daniel Roth)](https://github.com/danroth27) и [Люк Лэтем (Luke Latham)](https://github.com/guardrex)
 
 [!INCLUDE[](~/includes/razor-components-preview-notice.md)]
 
@@ -32,7 +32,7 @@ ms.locfileid: "56159605"
 1. Шаблоны Blazor стали доступны для использования с .NET Core CLI, выполнив следующую команду в командной строке:
 
    ```console
-   dotnet new -i Microsoft.AspNetCore.Blazor.Templates
+   dotnet new -i Microsoft.AspNetCore.Blazor.Templates::0.8.0-preview-19104-04
    ```
 
 1. Выберите **файл** > **новый проект** > **Web** > **веб-приложение ASP.NET Core**.
@@ -97,7 +97,7 @@ Congratulations! You just ran your first Blazor app!
 1. Добавьте шаблоны Blazor, выполнив следующую команду в командной строке:
 
    ```console
-   dotnet new -i Microsoft.AspNetCore.Blazor.Templates
+   dotnet new -i Microsoft.AspNetCore.Blazor.Templates::0.8.0-preview-19104-04
    ```
 
 1. Создайте свой первый проект Blazor в командной строке:
@@ -122,7 +122,7 @@ Congratulations! You just ran your first Blazor app!
 * Счетчик
 * Выборки данных
 
-На странице "Счетчик", выберите **Click me** кнопку увеличивается счетчик без обновления страницы. Увеличение счетчика в веб-страницы обычно требует написания JavaScript, но Blazor предоставляет лучшую подход с использованием C#.
+На странице Counter нажмите кнопку **Click me** (Щелкните здесь), чтобы увеличить значение счетчика без обновления страницы. Увеличение счетчика в веб-страницы обычно требует написания JavaScript, но Blazor предоставляет лучшую подход с использованием C#.
 
 *Pages/Counter.cshtml*:
 
@@ -150,13 +150,13 @@ Congratulations! You just ran your first Blazor app!
 Чтобы добавить параметр к компоненту счетчика, обновите компонента `@functions` блок:
 
 * Добавьте свойство для `IncrementAmount` с `[Parameter]` атрибута.
-* Изменение `IncrementCount` метод, используемый `IncrementAmount` при увеличении значения `currentCount`.
+* Изменение метод `IncrementCount`, чтобы он использовал `IncrementAmount` при увеличении значения `currentCount`.
 
 *Pages/Counter.cshtml*:
 
 [!code-cshtml[](get-started/samples_snapshot/3.x/Counter2.cshtml?highlight=4,8)]
 
-Укажите `IncrementAmount` параметр в компоненте домашней `<Counter>` элемента при помощи атрибута.
+Укажите параметр `IncrementAmount` в элементе `<Counter>` для компонента домашней страницы, используя атрибут.
 
 *Pages/Index.cshtml*:
 
