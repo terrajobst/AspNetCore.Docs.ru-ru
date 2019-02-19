@@ -5,14 +5,14 @@ description: Узнайте, как разместить приложение AS
 monikerRange: '>= aspnetcore-2.1'
 ms.author: tdykstra
 ms.custom: mvc
-ms.date: 01/22/2019
+ms.date: 02/13/2019
 uid: host-and-deploy/windows-service
-ms.openlocfilehash: eedaf64710506f2a2aac65c178a9888d2ab33d38
-ms.sourcegitcommit: ebf4e5a7ca301af8494edf64f85d4a8deb61d641
+ms.openlocfilehash: 081a631c9c3e74c01e15f4b0b272d650c162bd20
+ms.sourcegitcommit: 6ba5fb1fd0b7f9a6a79085b0ef56206e462094b7
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54837485"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56248255"
 ---
 # <a name="host-aspnet-core-in-a-windows-service"></a>Размещение ASP.NET Core в службе Windows
 
@@ -112,7 +112,7 @@ ms.locfileid: "54837485"
 
   Если условия имеют значение false (приложение выполняется в качестве службы), сделайте следующее:
 
-  * Вызовите <xref:System.IO.Directory.SetCurrentDirectory*> и используйте путь к расположению для публикации приложения. Не вызывайте <xref:System.IO.Directory.GetCurrentDirectory*> для получения пути, так как при вызове `GetCurrentDirectory` приложение службы Windows возвращает папку *C:\\WINDOWS\\system32*. Дополнительные сведения см. в разделе [Текущий каталог и корневой каталог содержимого](#current-directory-and-content-root).
+  * Вызовите <xref:System.IO.Directory.SetCurrentDirectory*> и используйте путь к расположению для публикации приложения. Не вызывайте <xref:System.IO.Directory.GetCurrentDirectory*> для получения пути, так как при вызове <xref:System.IO.Directory.GetCurrentDirectory*> приложение службы Windows возвращает папку *C:\\WINDOWS\\system32*. Дополнительные сведения см. в разделе [Текущий каталог и корневой каталог содержимого](#current-directory-and-content-root).
   * Вызовите <xref:Microsoft.AspNetCore.Hosting.WindowsServices.WebHostWindowsServiceExtensions.RunAsService*>, чтобы запустить приложение в качестве службы.
 
   Так как для [поставщика конфигурации командной строки](xref:fundamentals/configuration/index#command-line-configuration-provider) требуется пара имя-значение для аргументов командной строки, параметр `--console` удаляется из аргументов, прежде чем <xref:Microsoft.AspNetCore.WebHost.CreateDefaultBuilder*> получит его.
@@ -147,11 +147,13 @@ dotnet publish --configuration Release --runtime win7-x64 --output c:\svc
 
 ### <a name="create-a-user-account"></a>Создание учетной записи пользователя
 
-Создайте учетную запись пользователя для службы с помощью команды `net user`:
+Создайте для службы учетную запись пользователя с помощью команды `net user` из административной командной оболочки:
 
 ```console
 net user {USER ACCOUNT} {PASSWORD} /add
 ```
+
+Срок действия пароля по умолчанию составляет шесть недель.
 
 Для примера приложения создайте учетную запись пользователя с именем `ServiceUser` и пароль. В следующей команде замените `{PASSWORD}` на [надежный пароль](/windows/security/threat-protection/security-policy-settings/password-must-meet-complexity-requirements).
 
@@ -167,9 +169,13 @@ net localgroup {GROUP} {USER ACCOUNT} /add
 
 Дополнительные сведения см. в статье [Service User Accounts](/windows/desktop/services/service-user-accounts) (Учетные записи пользователей службы).
 
+Альтернативный подход к управлению пользователями при работе с Active Directory заключается в применении управляемых учетных записей служб. Дополнительные сведения см. в [обзоре групповых управляемых учетных записей службы](/windows-server/security/group-managed-service-accounts/group-managed-service-accounts-overview).
+
 ### <a name="set-permissions"></a>Настройка разрешений
 
-Предоставьте доступ на запись, чтение и выполнение для папки приложения с помощью команды [icacls](/windows-server/administration/windows-commands/icacls):
+#### <a name="access-to-the-app-folder"></a>Доступ к папке приложения
+
+Предоставьте доступ на запись, чтение и выполнение к папке приложения с помощью команды [icacls](/windows-server/administration/windows-commands/icacls) из административной командной оболочки:
 
 ```console
 icacls "{PATH}" /grant {USER ACCOUNT}:(OI)(CI){PERMISSION FLAGS} /t
@@ -195,11 +201,23 @@ icacls "c:\svc" /grant ServiceUser:(OI)(CI)WRX /t
 
 Дополнительные сведения см. в статье об [icacls](/windows-server/administration/windows-commands/icacls).
 
+#### <a name="log-on-as-a-service"></a>вход в систему в качестве службы;
+
+Чтобы предоставить учетной записи пользователя разрешение на [вход в качестве службы](/windows/security/threat-protection/security-policy-settings/log-on-as-a-service), сделайте следующее:
+
+1. Найдите политики **назначения прав пользователя** в консоли локальной политики безопасности или в консоли редактора локальных групповых политик. Инструкции см. в разделе: [Настройка параметров политики безопасности](/windows/security/threat-protection/security-policy-settings/how-to-configure-security-policy-settings).
+1. Найдите политику `Log on as a service`. Дважды щелкните имя политики, чтобы открыть ее.
+1. Щелкните **Добавить пользователя или группу**.
+1. Выберите **Дополнительно**, а затем **Найти**.
+1. Выберите учетную запись пользователя, которую вы создали при работе с разделом [Создание учетной записи пользователя](#create-a-user-account). Щелкните **ОК**, чтобы подтвердить выбор.
+1. Убедитесь, что имя объекта указано правильно, и щелкните **ОК**.
+1. Нажмите кнопку **Применить**. Щелкните **ОК**, чтобы закрыть окно политики.
+
 ## <a name="manage-the-service"></a>Управление службой
 
 ### <a name="create-the-service"></a>Создание службы
 
-Используйте программу командной строки [sc.exe](https://technet.microsoft.com/library/bb490995), чтобы создать службу. Значение `binPath` обозначает путь к исполняемому файлу приложения, включая имя самого файла. **Требуется пробел между знаком равенства и кавычками для каждого обязательного параметра и значения.**
+Используйте программу командной строки [sc.exe](https://technet.microsoft.com/library/bb490995), чтобы создать службу из административной командной оболочки. Значение `binPath` обозначает путь к исполняемому файлу приложения, включая имя самого файла. **Требуется пробел между знаком равенства и кавычками для каждого обязательного параметра и значения.**
 
 ```console
 sc create {SERVICE NAME} binPath= "{PATH}" obj= "{DOMAIN}\{USER ACCOUNT}" password= "{PASSWORD}"
@@ -207,7 +225,7 @@ sc create {SERVICE NAME} binPath= "{PATH}" obj= "{DOMAIN}\{USER ACCOUNT}" passwo
 
 * `{SERVICE NAME}` &ndash; имя, присваиваемое службе в [диспетчере служб](/windows/desktop/services/service-control-manager).
 * `{PATH}` &ndash; путь к исполняемому файлу.
-* `{DOMAIN}` &ndash; домен, к которому присоединен компьютер. Если компьютер не присоединен к домену, указывается имя локального компьютера.
+* `{DOMAIN}` &ndash; домен, к которому присоединен компьютер. Если компьютер не присоединен к домену, используйте имя локального компьютера.
 * `{USER ACCOUNT}` &ndash; учетная запись пользователя, которая используется для запуска службы.
 * `{PASSWORD}` &ndash; пароль учетной записи пользователя.
 

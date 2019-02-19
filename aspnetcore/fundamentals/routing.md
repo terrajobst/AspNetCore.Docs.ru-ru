@@ -4,14 +4,14 @@ author: rick-anderson
 description: Узнайте, как маршрутизация ASP.NET Core отвечает за сопоставление URI запросов с селекторами конечных точек и отправку входящих запросов к конечным точкам.
 ms.author: riande
 ms.custom: mvc
-ms.date: 01/14/2019
+ms.date: 02/13/2019
 uid: fundamentals/routing
-ms.openlocfilehash: c5303ad418660fa31fe9094f0e61ee31f5d988f7
-ms.sourcegitcommit: d5223cf6a2cf80b4f5dc54169b0e376d493d2d3a
+ms.openlocfilehash: 3dbb2d358ec9e3dcdd96c3771576911d906d796f
+ms.sourcegitcommit: 6ba5fb1fd0b7f9a6a79085b0ef56206e462094b7
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54890020"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56248437"
 ---
 # <a name="routing-in-aspnet-core"></a>Маршрутизация в ASP.NET Core
 
@@ -38,7 +38,7 @@ services.AddMvc()
     .SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
 ```
 
-Параметр `EnableEndpointRouting` определяет, должна ли маршрутизация внутренне использовать логику, основанную на конечных точках, или логику, основанную на <xref:Microsoft.AspNetCore.Routing.IRouter>, в ASP.NET Core 2.1 или более ранней версии. Если установлена совместимая версия 2.2 или более поздняя, значение по умолчанию — `true`. Задайте значение `false`, чтобы использовать предыдущую логику маршрутизации:
+Параметр <xref:Microsoft.AspNetCore.Mvc.MvcOptions.EnableEndpointRouting> определяет, должна ли маршрутизация внутренне использовать логику, основанную на конечных точках, или логику, основанную на <xref:Microsoft.AspNetCore.Routing.IRouter>, в ASP.NET Core 2.1 или более ранней версии. Если установлена совместимая версия 2.2 или более поздняя, значение по умолчанию — `true`. Задайте значение `false`, чтобы использовать предыдущую логику маршрутизации:
 
 ```csharp
 // Use the routing logic of ASP.NET Core 2.1 or earlier:
@@ -97,7 +97,7 @@ services.AddMvc()
 
 * Синтаксис шаблона маршрута используется для определения маршрутов с помощью параметров размеченного маршрута.
 * Допускается конфигурация конечной точки в стандартном стиле и с атрибутами.
-* `IRouteConstraint` используется для определения того, содержит ли параметр URL-адреса допустимое значение для ограничения заданной конечной точки.
+* <xref:Microsoft.AspNetCore.Routing.IRouteConstraint> используется для определения того, содержит ли параметр URL-адреса допустимое значение для ограничения заданной конечной точки.
 * Модели приложения, такие как MVC и Razor Pages, регистрируют все свои конечные точки, имеющие предсказуемую реализацию сценариев маршрутизации.
 * Реализация маршрутизации принимает решения о маршрутизации в нужном месте конвейера ПО промежуточного слоя.
 * ПО промежуточного слоя, которое появляется после ПО промежуточного слоя маршрутизации, может проверить результат принятия решений о конечной точке, принятое ПО промежуточного слоя маршрутизации для заданного URI запроса.
@@ -105,8 +105,8 @@ services.AddMvc()
 * Приложение может использовать маршрутизацию для формирования URL-адресов (например, для перенаправления или ссылок) на основе сведений о конечной точке, что позволяет избежать жесткого задания URL-адресов и упрощает поддержку.
 * Формирование URL-адреса основано на адресах, которые поддерживают произвольную расширяемость:
 
-  * API генератора ссылок (`LinkGenerator`) может быть разрешено в любом месте с помощью [внедрения зависимостей (DI)](xref:fundamentals/dependency-injection) для формирования URL-адреса.
-  * Если API генератора ссылок недоступно через внедрение зависимостей, `IUrlHelper` предлагает методы для создания URL-адреса.
+  * API генератора ссылок (<xref:Microsoft.AspNetCore.Routing.LinkGenerator>) может быть разрешено в любом месте с помощью [внедрения зависимостей (DI)](xref:fundamentals/dependency-injection) для формирования URL-адреса.
+  * Если API генератора ссылок недоступно через внедрение зависимостей, <xref:Microsoft.AspNetCore.Mvc.IUrlHelper> предлагает методы для создания URL-адреса.
 
 > [!NOTE]
 > С появлением маршрутизации по конечным точкам в ASP.NET Core 2.2 связывание конечных точек стало ограничено действиями и страницами MVC и Razor Pages. Расширение функций связывания конечных точек планируется в будущих выпусках.
@@ -126,10 +126,10 @@ services.AddMvc()
 
 * Синтаксис шаблона маршрута используется для определения маршрутов с помощью параметров размеченного маршрута.
 * Допускается конфигурация конечной точки в стандартном стиле и с атрибутами.
-* `IRouteConstraint` используется для определения того, содержит ли параметр URL-адреса допустимое значение для ограничения заданной конечной точки.
+* <xref:Microsoft.AspNetCore.Routing.IRouteConstraint> используется для определения того, содержит ли параметр URL-адреса допустимое значение для ограничения заданной конечной точки.
 * Модели приложения, такие как MVC и Razor Pages, регистрируют все свои маршруты, имеющие предсказуемую реализацию сценариев маршрутизации.
 * Отклик может использовать маршрутизацию для формирования URL-адресов (например, для перенаправления или ссылок) на основе сведений о маршруте, что позволяет избежать жесткого задания URL-адресов и упрощает поддержку.
-* Формирование URL-адреса основано на маршрутах, которые поддерживают произвольную расширяемость. `IUrlHelper` предоставляет методы для создания URL-адресов.
+* Формирование URL-адреса основано на маршрутах, которые поддерживают произвольную расширяемость. <xref:Microsoft.AspNetCore.Mvc.IUrlHelper> предоставляет методы для создания URL-адресов.
 
 ::: moniker-end
 
@@ -143,7 +143,7 @@ services.AddMvc()
 
 Система маршрутизации в маршрутизации по конечным точкам принимает все решения об отправке. Так как ПО промежуточного слоя применяет политики в зависимости от выбранной конечной точки, очень важно, чтобы любое решение, которое может повлиять на отправку или применение политик безопасности, принималось внутри системы маршрутизации.
 
-Когда делегат конечной точки выполняется, свойствам `RouteContext.RouteData` присваиваются значения с учетом уже выполненной на данный момент обработки.
+Когда делегат конечной точки выполняется, свойствам [RouteContext.RouteData](xref:Microsoft.AspNetCore.Routing.RouteContext.RouteData) присваиваются значения с учетом уже выполненной на текущий момент обработки.
 
 ::: moniker-end
 
@@ -151,19 +151,19 @@ services.AddMvc()
 
 Соответствие URL-адресов — это процесс, с помощью которого функция маршрутизации отправляет входящий запрос в *обработчик*. Этот процесс основывается на данных в пути URL-адреса, но может быть расширен для учета любых данных в запросе. Возможность отправки запросов в отдельные обработчики имеет первостепенное значение для масштабирования размера и сложности приложения.
 
-Входящие запросы поступают в объект `RouterMiddleware`, который вызывает метод <xref:Microsoft.AspNetCore.Routing.IRouter.RouteAsync*> для каждого маршрута по порядку. Экземпляр <xref:Microsoft.AspNetCore.Routing.IRouter> решает, следует ли *обрабатывать* запрос, присваивая свойству [RouteContext.Handler](xref:Microsoft.AspNetCore.Routing.RouteContext.Handler*) значение <xref:Microsoft.AspNetCore.Http.RequestDelegate>, отличное от NULL. Если маршрут задает обработчик для запроса, обработка маршрутов останавливается и обработчик вызывается для обработки запроса. Если обработчик маршрута для обработки запроса не найден, ПО промежуточного слоя передает запрос следующему ПО промежуточного слоя в конвейере запросов.
+Входящие запросы поступают в объект <xref:Microsoft.AspNetCore.Builder.RouterMiddleware>, который вызывает метод <xref:Microsoft.AspNetCore.Routing.IRouter.RouteAsync*> для каждого маршрута по порядку. Экземпляр <xref:Microsoft.AspNetCore.Routing.IRouter> решает, следует ли *обрабатывать* запрос, присваивая свойству [RouteContext.Handler](xref:Microsoft.AspNetCore.Routing.RouteContext.Handler*) значение <xref:Microsoft.AspNetCore.Http.RequestDelegate>, отличное от NULL. Если маршрут задает обработчик для запроса, обработка маршрутов останавливается и обработчик вызывается для обработки запроса. Если обработчик маршрута для обработки запроса не найден, ПО промежуточного слоя передает запрос следующему ПО промежуточного слоя в конвейере запросов.
 
-Основные входные данные метода `RouteAsync` — это объект [RouteContext.HttpContext](xref:Microsoft.AspNetCore.Routing.RouteContext.HttpContext*), связанный с текущим запросом. `RouteContext.Handler` и [RouteContext.RouteData](xref:Microsoft.AspNetCore.Routing.RouteContext.RouteData*) являются выходными значениями, заданными после нахождения соответствующего маршрута.
+Основные входные данные метода <xref:Microsoft.AspNetCore.Routing.IRouter.RouteAsync*> — это объект [RouteContext.HttpContext](xref:Microsoft.AspNetCore.Routing.RouteContext.HttpContext*), связанный с текущим запросом. [RouteContext.Handler](xref:Microsoft.AspNetCore.Routing.RouteContext.Handler) и [RouteContext.RouteData](xref:Microsoft.AspNetCore.Routing.RouteContext.RouteData*) — это выходные значения, заданные после нахождения соответствующего маршрута.
 
-При нахождении соответствия, которое вызывает `RouteAsync`, свойствам объекта `RouteContext.RouteData` также присваиваются значения с учетом уже выполненной на данный момент обработки.
+При нахождении соответствия, которое вызывает <xref:Microsoft.AspNetCore.Routing.IRouter.RouteAsync*>, свойствам [RouteContext.RouteData](xref:Microsoft.AspNetCore.Routing.RouteContext.RouteData) также присваиваются значения с учетом уже выполненной на текущий момент обработки.
 
 ::: moniker-end
 
 [RouteData.Values](xref:Microsoft.AspNetCore.Routing.RouteData.Values*) — это словарь *значений маршрута*, полученных из маршрута. Как правило, эти значения определяются путем разбивки URL-адреса на сегменты и могут использоваться для принятия входных данных пользователя или принятия дальнейших решений об отправке в приложении.
 
-[RouteData.DataTokens](xref:Microsoft.AspNetCore.Routing.RouteData.DataTokens*) — это контейнер свойств с дополнительными данными, связанными с соответствующим маршрутом. Свойства `DataTokens` обеспечивают связывание данных состояния с каждым маршрутом, что позволяет приложению принимать решения в зависимости от соответствующего маршрута. Эти значения определяются разработчиком и никоим образом **не** влияют на поведение маршрутизации. Кроме того, значения, спрятанные в `RouteData.DataTokens`, могут быть любого типа в отличие от `RouteData.Values`, которые должны преобразовываться в строки и из строк.
+[RouteData.DataTokens](xref:Microsoft.AspNetCore.Routing.RouteData.DataTokens*) — это контейнер свойств с дополнительными данными, связанными с соответствующим маршрутом. Свойства <xref:Microsoft.AspNetCore.Routing.RouteData.DataTokens*> обеспечивают связывание данных состояния с каждым маршрутом, что позволяет приложению принимать решения в зависимости от соответствующего маршрута. Эти значения определяются разработчиком и никоим образом **не** влияют на поведение маршрутизации. Кроме того, значения, спрятанные в токенах [RouteData.DataToken](xref:Microsoft.AspNetCore.Routing.RouteData.DataTokens*), могут быть любого типа в отличие от значений [RouteData.Value](xref:Microsoft.AspNetCore.Routing.RouteData.Values), которые должны легко преобразовываться в строки и из строк.
 
-[RouteData.Routers](xref:Microsoft.AspNetCore.Routing.RouteData.Routers*) — это список маршрутов, которые участвовали в успешном сопоставлении с запросом. Маршруты могут быть вложены друг в друга. Свойство `Routers` отражает путь по логическому дереву маршрутов, который привел к совпадению. Как правило, первый элемент в свойстве `Routers` — это коллекция маршрутов, используемая для формирования URL-адресов. Последний элемент в свойстве `Routers` — это соответствующий обработчик маршрутов.
+[RouteData.Routers](xref:Microsoft.AspNetCore.Routing.RouteData.Routers) — это список маршрутов, которые участвовали в успешном сопоставлении с запросом. Маршруты могут быть вложены друг в друга. Свойство <xref:Microsoft.AspNetCore.Routing.RouteData.Routers> отражает путь по логическому дереву маршрутов, который привел к совпадению. Как правило, первый элемент в свойстве <xref:Microsoft.AspNetCore.Routing.RouteData.Routers> — это коллекция маршрутов, используемая для формирования URL-адресов. Последний элемент в свойстве <xref:Microsoft.AspNetCore.Routing.RouteData.Routers> — это соответствующий обработчик маршрутов.
 
 ### <a name="url-generation"></a>Формирование URL-адреса
 
@@ -171,45 +171,45 @@ services.AddMvc()
 
 Формирование URL-адреса — это процесс создания пути URL-адреса функцией маршрутизации на основе набора значений маршрута. Он обеспечивает логическое разделение конечных точек и URL-адресов, по которым к ним осуществляется доступ.
 
-Маршрутизация по конечным точкам включает в себя API генератора ссылок (`LinkGenerator`). `LinkGenerator` — это отдельная служба, которую можно получить посредством внедрения зависимостей. API можно использовать вне контекста выполнения запроса. `IUrlHelper` MVC и сценарии, которые зависят от `IUrlHelper`, такие как [вспомогательные функции тегов](xref:mvc/views/tag-helpers/intro), вспомогательные методы HTML и [результаты действий](xref:mvc/controllers/actions), используют генератор ссылок для предоставления возможностей создания ссылок.
+Маршрутизация по конечным точкам включает в себя API генератора ссылок (<xref:Microsoft.AspNetCore.Routing.LinkGenerator>). <xref:Microsoft.AspNetCore.Routing.LinkGenerator> — это отдельная служба, которую можно получить посредством внедрения зависимостей. API можно использовать вне контекста выполнения запроса. <xref:Microsoft.AspNetCore.Mvc.IUrlHelper> MVC и сценарии, которые зависят от <xref:Microsoft.AspNetCore.Mvc.IUrlHelper>, такие как [вспомогательные функции тегов](xref:mvc/views/tag-helpers/intro), вспомогательные методы HTML и [результаты действий](xref:mvc/controllers/actions), используют генератор ссылок для предоставления возможностей создания ссылок.
 
 Генератор ссылок использует концепции *адреса* и *схем адресов*. Схема адресов — это способ определения конечных точек, которые должны рассматриваться для создания ссылки. Например, сценарии с именем маршрута и значениями маршрута, с которыми многие пользователи знакомы по MVC и Razor Pages, реализуются как схема адресов.
 
 Генератор ссылок может установить связь с действиями и страницами MVC и Razor Pages с помощью следующих методов расширения:
 
-* `GetPathByAction`
-* `GetUriByAction`
-* `GetPathByPage`
-* `GetUriByPage`
+* <xref:Microsoft.AspNetCore.Routing.ControllerLinkGeneratorExtensions.GetPathByAction*>
+* <xref:Microsoft.AspNetCore.Routing.ControllerLinkGeneratorExtensions.GetUriByAction*>
+* <xref:Microsoft.AspNetCore.Routing.PageLinkGeneratorExtensions.GetPathByPage*>
+* <xref:Microsoft.AspNetCore.Routing.PageLinkGeneratorExtensions.GetUriByPage*>
 
 Перегрузка этих методов принимает аргументы, которые включают `HttpContext`. Эти методы являются функциональными эквивалентами `Url.Action` и `Url.Page`, но предлагают дополнительную гибкость и параметры.
 
 Методы `GetPath*` наиболее схожи с `Url.Action` и `Url.Page` в том, что создают URI, содержащий абсолютный путь. Методы `GetUri*` всегда создают абсолютный URI, содержащий схему и узел. Методы, которые принимают `HttpContext`, создают URI в контексте выполнения запроса. Используются значения окружения маршрута, базовый URL-адрес, схема и узел из выполняющегося запроса, если не указано иное.
 
-`LinkGenerator` вызывается с адресом. Создание URI происходит в два этапа:
+<xref:Microsoft.AspNetCore.Routing.LinkGenerator> вызывается с адресом. Создание URI происходит в два этапа:
 
 1. Адрес привязан к списку конечных точек, соответствующих адресу.
 1. `RoutePattern` конечной точки вычисляется, пока не будет найден шаблон маршрута, который соответствует предоставленным значениям. Полученный результат объединяется с другими частями URI, предоставленными генератору ссылок и возвращенными.
 
-Методы, предоставляемые `LinkGenerator`, поддерживают стандартные возможности создания ссылки для любого типа адреса. Самый удобный способ использовать генератор ссылки — через методы расширения, которые выполняют операции для определенного типа адреса.
+Методы, предоставляемые <xref:Microsoft.AspNetCore.Routing.LinkGenerator>, поддерживают стандартные возможности создания ссылки для любого типа адреса. Самый удобный способ использовать генератор ссылки — через методы расширения, которые выполняют операции для определенного типа адреса.
 
 | Метод расширения   | Описание                                                         |
 | ------------------ | ------------------------------------------------------------------- |
-| `GetPathByAddress` | Создает URI с абсолютным путем на основе предоставленных значений. |
-| `GetUriByAddress`  | Создает абсолютный URI на основе предоставленных значений.             |
+| <xref:Microsoft.AspNetCore.Routing.LinkGenerator.GetPathByAddress*> | Создает URI с абсолютным путем на основе предоставленных значений. |
+| <xref:Microsoft.AspNetCore.Routing.LinkGenerator.GetUriByAddress*> | Создает абсолютный URI на основе предоставленных значений.             |
 
 > [!WARNING]
-> Обратите внимание на следующие последствия вызова методов `LinkGenerator`:
+> Обратите внимание на следующие последствия вызова методов <xref:Microsoft.AspNetCore.Routing.LinkGenerator>:
 >
 > * Используйте методы расширения `GetUri*` с осторожностью в конфигурации приложения, которая не проверяет заголовок входящих запросов `Host`. Если не проверить заголовок входящих запросов `Host`, входные данные в запросе без доверия могут отправляться обратно клиенту в URI в представлении или странице. Рекомендуется, чтобы все рабочие приложения настраивали свой сервер на проверку заголовка `Host` относительно известных допустимых значений.
 >
-> * Используйте `LinkGenerator` с осторожностью в ПО промежуточного слоя в сочетании с `Map` или `MapWhen`. `Map*` изменяет базовый путь выполняющегося запроса, что влияет на выходные данные создания ссылки. Все API `LinkGenerator` разрешают указание базового пути. Всегда указывайте пустой базовый путь для отмены влияния `Map*` на создание ссылок.
+> * Используйте <xref:Microsoft.AspNetCore.Routing.LinkGenerator> с осторожностью в ПО промежуточного слоя в сочетании с `Map` или `MapWhen`. `Map*` изменяет базовый путь выполняющегося запроса, что влияет на выходные данные создания ссылки. Все API <xref:Microsoft.AspNetCore.Routing.LinkGenerator> разрешают указание базового пути. Всегда указывайте пустой базовый путь для отмены влияния `Map*` на создание ссылок.
 
 ## <a name="differences-from-earlier-versions-of-routing"></a>Отличия от более ранних версий маршрутизации
 
 Существует несколько различий между маршрутизацией по конечным точкам в ASP.NET Core 2.2 или более поздней версии и более ранними версиями маршрутизации в ASP.NET Core:
 
-* Система маршрутизации по конечным точкам не поддерживает расширяемость на основе `IRouter`, включая наследование от `Route`.
+* Система маршрутизации по конечным точкам не поддерживает расширяемость на основе <xref:Microsoft.AspNetCore.Routing.IRouter>, включая наследование от <xref:Microsoft.AspNetCore.Routing.Route>.
 
 * Маршрутизация по конечным точкам не поддерживает [WebApiCompatShim](https://www.nuget.org/packages/Microsoft.AspNetCore.Mvc.WebApiCompatShim). Используйте [совместимую версию](xref:mvc/compatibility-version) 2.1 (`.SetCompatibilityVersion(CompatibilityVersion.Version_2_1)`), чтобы продолжить использование оболочек совместимости.
 
@@ -230,7 +230,7 @@ services.AddMvc()
   var link = Url.Action("ReadPost", "blog", new { id = 17, });
   ```
 
-  С помощью маршрутизации на основе `IRouter` этот код создает URI из `/blog/ReadPost/17`, который учитывает регистр предоставленного значения маршрута. Маршрутизация по конечным точкам в ASP.NET Core 2.2 или более поздней версии создает `/Blog/ReadPost/17` ("Blog" — с прописной буквы). Маршрутизация по конечным точкам предоставляет интерфейс `IOutboundParameterTransformer`, который можно использовать для настройки этого поведения на глобальном уровне или применения других соглашения для сопоставления URL-адресов.
+  С помощью маршрутизации на основе <xref:Microsoft.AspNetCore.Routing.IRouter> этот код создает URI из `/blog/ReadPost/17`, который учитывает регистр предоставленного значения маршрута. Маршрутизация по конечным точкам в ASP.NET Core 2.2 или более поздней версии создает `/Blog/ReadPost/17` ("Blog" — с прописной буквы). Маршрутизация по конечным точкам предоставляет интерфейс `IOutboundParameterTransformer`, который можно использовать для настройки этого поведения на глобальном уровне или применения других соглашения для сопоставления URL-адресов.
 
   Дополнительные сведения см. в разделе [Справочник по преобразователям параметров](#parameter-transformer-reference).
 
@@ -289,7 +289,7 @@ services.AddMvc()
 
 ### <a name="middleware-example"></a>Пример ПО промежуточного слоя
 
-В следующем примере ПО промежуточного слоя использует API `LinkGenerator`, чтобы создать ссылку на метод действия, который перечисляет хранимые продукты. Использование генератора ссылок путем его внедрения в класс и вызова `GenerateLink` доступно для любого класса в приложении.
+В следующем примере ПО промежуточного слоя использует API <xref:Microsoft.AspNetCore.Routing.LinkGenerator>, чтобы создать ссылку на метод действия, который перечисляет хранимые продукты. Использование генератора ссылок путем его внедрения в класс и вызова `GenerateLink` доступно для любого класса в приложении.
 
 ```csharp
 using Microsoft.AspNetCore.Routing;
@@ -320,20 +320,20 @@ public class ProductsLinkMiddleware
 
 Формирование URL-адреса — это процесс создания пути URL-адреса функцией маршрутизации на основе набора значений маршрута. Он обеспечивает логическое разделение обработчиков маршрутов и URL-адресов, которые получают к ним доступ.
 
-Формирование URL-адреса — это итеративный процесс, который начинается с того, что пользовательский код или код платформы вызывает метод <xref:Microsoft.AspNetCore.Routing.IRouter.GetVirtualPath*> коллекции маршрутов. Метод `GetVirtualPath` каждого *маршрута* вызывается по очереди, пока не будет возвращен объект <xref:Microsoft.AspNetCore.Routing.VirtualPathData>, отличный от NULL.
+Формирование URL-адреса — это итеративный процесс, который начинается с того, что пользовательский код или код платформы вызывает метод <xref:Microsoft.AspNetCore.Routing.IRouter.GetVirtualPath*> коллекции маршрутов. Метод <xref:Microsoft.AspNetCore.Routing.IRouter.GetVirtualPath*> каждого *маршрута* вызывается по очереди, пока не будет возвращен объект <xref:Microsoft.AspNetCore.Routing.VirtualPathData>, отличный от NULL.
 
-Основные входные параметры метода `GetVirtualPath`:
+Основные входные параметры метода <xref:Microsoft.AspNetCore.Routing.IRouter.GetVirtualPath*>:
 
-* [VirtualPathContext.HttpContext](xref:Microsoft.AspNetCore.Routing.VirtualPathContext.HttpContext*)
-* [VirtualPathContext.Values](xref:Microsoft.AspNetCore.Routing.VirtualPathContext.Values*)
-* [VirtualPathContext.AmbientValues](xref:Microsoft.AspNetCore.Routing.VirtualPathContext.AmbientValues*)
+* [VirtualPathContext.HttpContext](xref:Microsoft.AspNetCore.Routing.VirtualPathContext.HttpContext)
+* [VirtualPathContext.Values](xref:Microsoft.AspNetCore.Routing.VirtualPathContext.Values)
+* [VirtualPathContext.AmbientValues](xref:Microsoft.AspNetCore.Routing.VirtualPathContext.AmbientValues)
 
-Для определения возможности создания URL-адреса и включаемых значений в первую очередь используются значения, передаваемые в свойствах `Values` и `AmbientValues`. `AmbientValues` — это набор значений маршрута, полученных в результате сопоставления текущего запроса. В свою очередь, `Values` — это значения, определяющие способ создания нужного URL-адреса для текущей операции. `HttpContext` предоставляется в том случае, если маршруту необходимо получить службы или дополнительные данные, связанные с текущим контекстом.
+Для определения возможности создания URL-адреса и включаемых значений в первую очередь используются значения, передаваемые в свойствах <xref:Microsoft.AspNetCore.Routing.VirtualPathContext.Values> и <xref:Microsoft.AspNetCore.Routing.VirtualPathContext.AmbientValues>. <xref:Microsoft.AspNetCore.Routing.VirtualPathContext.AmbientValues> — это набор значений маршрута, полученных в результате сопоставления текущего запроса. В свою очередь, <xref:Microsoft.AspNetCore.Routing.VirtualPathContext.Values> — это значения, определяющие способ создания нужного URL-адреса для текущей операции. <xref:Microsoft.AspNetCore.Routing.VirtualPathContext.HttpContext> предоставляется в том случае, если маршруту необходимо получить службы или дополнительные данные, связанные с текущим контекстом.
 
 > [!TIP]
 > Можно рассматривать [VirtualPathContext.Values](xref:Microsoft.AspNetCore.Routing.VirtualPathContext.Values*) как набор переопределений для [VirtualPathContext.AmbientValues](xref:Microsoft.AspNetCore.Routing.VirtualPathContext.AmbientValues*). При формировании URL-адреса производится попытка повторного использования значений маршрута из текущего запроса для создания URL-адресов для ссылок с помощью того же маршрута или значений маршрута.
 
-Выходные данные метода `GetVirtualPath` содержатся в объекте `VirtualPathData`. Объект `VirtualPathData` аналогичен `RouteData`. `VirtualPathData` содержит `VirtualPath` для выходного URL-адреса, а также ряд дополнительных свойств, которые должны быть заданы маршрутом.
+Выходные данные метода <xref:Microsoft.AspNetCore.Routing.IRouter.GetVirtualPath*> содержатся в объекте <xref:Microsoft.AspNetCore.Routing.VirtualPathData>. Объект <xref:Microsoft.AspNetCore.Routing.VirtualPathData> аналогичен <xref:Microsoft.AspNetCore.Routing.RouteData>. <xref:Microsoft.AspNetCore.Routing.VirtualPathData> содержит <xref:Microsoft.AspNetCore.Routing.VirtualPathData.VirtualPath> для выходного URL-адреса, а также ряд дополнительных свойств, которые должны быть заданы маршрутом.
 
 Свойство [VirtualPathData.VirtualPath](xref:Microsoft.AspNetCore.Routing.VirtualPathData.VirtualPath*) содержит *виртуальный путь*, создаваемый маршрутом. В зависимости от ситуации путь может требовать дальнейшей обработки. Чтобы представить созданный URL-адрес в формате HTML, добавьте в его начало базовый путь приложения.
 
@@ -347,25 +347,25 @@ public class ProductsLinkMiddleware
 
 ::: moniker range="< aspnetcore-2.2"
 
-Маршрутизация предоставляет класс <xref:Microsoft.AspNetCore.Routing.Route> в качестве стандартной реализации <xref:Microsoft.AspNetCore.Routing.IRouter>. Класс `Route` использует синтаксис *шаблона маршрута* для определения шаблонов, которые будут сопоставляться с путем URL-адреса при вызове метода <xref:Microsoft.AspNetCore.Routing.IRouter.RouteAsync*>. При вызове метода `GetVirtualPath` объект `Route` будет использовать тот же шаблон маршрута для создания URL-адреса.
+Маршрутизация предоставляет класс <xref:Microsoft.AspNetCore.Routing.Route> в качестве стандартной реализации <xref:Microsoft.AspNetCore.Routing.IRouter>. Класс <xref:Microsoft.AspNetCore.Routing.Route> использует синтаксис *шаблона маршрута* для определения шаблонов, которые будут сопоставляться с путем URL-адреса при вызове метода <xref:Microsoft.AspNetCore.Routing.IRouter.RouteAsync*>. При вызове метода <xref:Microsoft.AspNetCore.Routing.IRouter.GetVirtualPath*> объект <xref:Microsoft.AspNetCore.Routing.Route> будет использовать тот же шаблон маршрута для создания URL-адреса.
 
 ::: moniker-end
 
-Большинство приложений создают маршруты, вызывая метод <xref:Microsoft.AspNetCore.Builder.MapRouteRouteBuilderExtensions.MapRoute*> или один из аналогичных методов расширения, определенных в интерфейсе <xref:Microsoft.AspNetCore.Routing.IRouteBuilder>. Все методы расширения `IRouteBuilder` создают экземпляр <xref:Microsoft.AspNetCore.Routing.Route> и добавляют его в коллекцию маршрутов.
+Большинство приложений создают маршруты, вызывая метод <xref:Microsoft.AspNetCore.Builder.MapRouteRouteBuilderExtensions.MapRoute*> или один из аналогичных методов расширения, определенных в интерфейсе <xref:Microsoft.AspNetCore.Routing.IRouteBuilder>. Все методы расширения <xref:Microsoft.AspNetCore.Routing.IRouteBuilder> создают экземпляр <xref:Microsoft.AspNetCore.Routing.Route> и добавляют его в коллекцию маршрутов.
 
 ::: moniker range=">= aspnetcore-2.2"
 
-`MapRoute` не принимает параметр обработчика маршрутов. `MapRoute` только добавляет маршруты, которые обрабатываются <xref:Microsoft.AspNetCore.Routing.RouteBuilder.DefaultHandler*>. Дополнительные сведения о маршрутизации в MVC см. в разделе <xref:mvc/controllers/routing>.
+<xref:Microsoft.AspNetCore.Builder.MapRouteRouteBuilderExtensions.MapRoute*> не принимает параметр обработчика маршрутов. <xref:Microsoft.AspNetCore.Builder.MapRouteRouteBuilderExtensions.MapRoute*> только добавляет маршруты, которые обрабатываются <xref:Microsoft.AspNetCore.Routing.RouteBuilder.DefaultHandler*>. Дополнительные сведения о маршрутизации в MVC см. в разделе <xref:mvc/controllers/routing>.
 
 ::: moniker-end
 
 ::: moniker range="< aspnetcore-2.2"
 
-`MapRoute` не принимает параметр обработчика маршрутов. `MapRoute` только добавляет маршруты, которые обрабатываются <xref:Microsoft.AspNetCore.Routing.RouteBuilder.DefaultHandler*>. Обработчиком по умолчанию является `IRouter`, и обработчик может не обработать запрос. Например, ASP.NET Core MVC обычно настраивается в качестве обработчика по умолчанию, который обрабатывает только те запросы, которые соответствуют доступным контроллеру и действию. Дополнительные сведения о маршрутизации в MVC см. в разделе <xref:mvc/controllers/routing>.
+<xref:Microsoft.AspNetCore.Builder.MapRouteRouteBuilderExtensions.MapRoute*> не принимает параметр обработчика маршрутов. <xref:Microsoft.AspNetCore.Builder.MapRouteRouteBuilderExtensions.MapRoute*> только добавляет маршруты, которые обрабатываются <xref:Microsoft.AspNetCore.Routing.RouteBuilder.DefaultHandler*>. Обработчиком по умолчанию является `IRouter`, и обработчик может не обработать запрос. Например, ASP.NET Core MVC обычно настраивается в качестве обработчика по умолчанию, который обрабатывает только те запросы, которые соответствуют доступным контроллеру и действию. Дополнительные сведения о маршрутизации в MVC см. в разделе <xref:mvc/controllers/routing>.
 
 ::: moniker-end
 
-В следующем коде приводится пример вызова `MapRoute`, используемого в типичном определении маршрута ASP.NET Core MVC:
+В следующем коде приводится пример вызова <xref:Microsoft.AspNetCore.Builder.MapRouteRouteBuilderExtensions.MapRoute*>, используемого в типичном определении маршрута ASP.NET Core MVC:
 
 ```csharp
 routes.MapRoute(
@@ -391,9 +391,9 @@ routes.MapRoute(
 
 Этот шаблон соответствует такому пути URL-адреса, как `/Products/Details/17`, но не `/Products/Details/Apples`. Ограничения маршрута реализуют интерфейс <xref:Microsoft.AspNetCore.Routing.IRouteConstraint> и проверяют значения маршрута. В этом примере значение маршрута `id` должно иметь возможность преобразования в целое число. Более подробное описание ограничений маршрутов, предоставляемых платформой, см. в разделе [Справочник по ограничениям маршрутов](#route-constraint-reference).
 
-Дополнительные перегрузки `MapRoute` принимают значения для параметров `constraints`, `dataTokens` и `defaults`. Типичное применение этих параметров состоит в передаче анонимно типизированного объекта, причем имена свойств анонимного типа соответствуют именам параметров маршрута.
+Дополнительные перегрузки <xref:Microsoft.AspNetCore.Builder.MapRouteRouteBuilderExtensions.MapRoute*> принимают значения для параметров `constraints`, `dataTokens` и `defaults`. Типичное применение этих параметров состоит в передаче анонимно типизированного объекта, причем имена свойств анонимного типа соответствуют именам параметров маршрута.
 
-В следующих примерах `MapRoute` создаются эквивалентные маршруты:
+В следующих примерах <xref:Microsoft.AspNetCore.Builder.MapRouteRouteBuilderExtensions.MapRoute*> создаются эквивалентные маршруты:
 
 ```csharp
 routes.MapRoute(
@@ -454,10 +454,10 @@ routes.MapRoute(
 
 ### <a name="route-class-url-generation"></a>Формирование URL-адреса класса маршрута
 
-Класс `Route` может также формировать URL-адрес, объединяя набор значений маршрута с шаблоном маршрута. С логической точки зрения, этот процесс обратен сопоставлению пути URL-адреса.
+Класс <xref:Microsoft.AspNetCore.Routing.Route> может также формировать URL-адрес, объединяя набор значений маршрута с шаблоном маршрута. С логической точки зрения, этот процесс обратен сопоставлению пути URL-адреса.
 
 > [!TIP]
-> Чтобы лучше понять процесс формирования URL-адреса, представьте себе, какой URL-адрес нужно создать, а затем подумайте, как шаблон маршрута будет сопоставляться с этим URL-адресом. Какие значения будут получены? Примерно так производится формирование URL-адреса в классе `Route`.
+> Чтобы лучше понять процесс формирования URL-адреса, представьте себе, какой URL-адрес нужно создать, а затем подумайте, как шаблон маршрута будет сопоставляться с этим URL-адресом. Какие значения будут получены? Примерно так производится формирование URL-адреса в классе <xref:Microsoft.AspNetCore.Routing.Route>.
 
 В следующем примере используется общий маршрут по умолчанию ASP.NET Core MVC:
 
@@ -514,22 +514,22 @@ routes.MapRoute(
 
 Платформа предоставляет наборов методов расширения для создания маршрутов (<xref:Microsoft.AspNetCore.Routing.RequestDelegateRouteBuilderExtensions>):
 
-* `MapDelete`
-* `MapGet`
-* `MapMiddlewareDelete`
-* `MapMiddlewareGet`
-* `MapMiddlewarePost`
-* `MapMiddlewarePut`
-* `MapMiddlewareRoute`
-* `MapMiddlewareVerb`
-* `MapPost`
-* `MapPut`
-* `MapRoute`
-* `MapVerb`
+* <xref:Microsoft.AspNetCore.Routing.RequestDelegateRouteBuilderExtensions.MapDelete*>
+* <xref:Microsoft.AspNetCore.Routing.RequestDelegateRouteBuilderExtensions.MapGet*>
+* <xref:Microsoft.AspNetCore.Routing.RequestDelegateRouteBuilderExtensions.MapMiddlewareDelete*>
+* <xref:Microsoft.AspNetCore.Routing.RequestDelegateRouteBuilderExtensions.MapMiddlewareGet*>
+* <xref:Microsoft.AspNetCore.Routing.RequestDelegateRouteBuilderExtensions.MapMiddlewarePost*>
+* <xref:Microsoft.AspNetCore.Routing.RequestDelegateRouteBuilderExtensions.MapMiddlewarePut*>
+* <xref:Microsoft.AspNetCore.Routing.RequestDelegateRouteBuilderExtensions.MapMiddlewareRoute*>
+* <xref:Microsoft.AspNetCore.Routing.RequestDelegateRouteBuilderExtensions.MapMiddlewareVerb*>
+* <xref:Microsoft.AspNetCore.Routing.RequestDelegateRouteBuilderExtensions.MapPost*>
+* <xref:Microsoft.AspNetCore.Routing.RequestDelegateRouteBuilderExtensions.MapPut*>
+* <xref:Microsoft.AspNetCore.Routing.RequestDelegateRouteBuilderExtensions.MapRoute*>
+* <xref:Microsoft.AspNetCore.Routing.RequestDelegateRouteBuilderExtensions.MapVerb*>
 
 ::: moniker range="< aspnetcore-2.2"
 
-Некоторые из перечисленных методов, такие как `MapGet`, требуют `RequestDelegate`. `RequestDelegate` используется в качестве *обработчика маршрутов* при совпадении маршрута. Другие методы из этого семейства позволяют настраивать конвейер ПО промежуточного слоя, который будет использоваться в качестве обработчика маршрутов. Если метод `Map*` не принимает обработчик, например `MapRoute`, он будет использовать объект <xref:Microsoft.AspNetCore.Routing.RouteBuilder.DefaultHandler*>.
+Некоторые из перечисленных методов, такие как <xref:Microsoft.AspNetCore.Routing.RequestDelegateRouteBuilderExtensions.MapGet*>, требуют <xref:Microsoft.AspNetCore.Http.RequestDelegate>. <xref:Microsoft.AspNetCore.Http.RequestDelegate> используется в качестве *обработчика маршрутов* при совпадении маршрута. Другие методы из этого семейства позволяют настраивать конвейер ПО промежуточного слоя, который будет использоваться в качестве обработчика маршрутов. Если метод `Map*` не принимает обработчик, например <xref:Microsoft.AspNetCore.Routing.RequestDelegateRouteBuilderExtensions.MapRoute*>, он будет использовать объект <xref:Microsoft.AspNetCore.Routing.RouteBuilder.DefaultHandler*>.
 
 ::: moniker-end
 
@@ -588,7 +588,7 @@ routes.MapRoute(
 Использование шаблона — это, как правило, самый простой подход к маршрутизации. Ограничения и значения по умолчанию также могут указываться вне шаблона маршрута.
 
 > [!TIP]
-> Чтобы увидеть, как встроенные реализации маршрутизации, такие как `Route`, сопоставляются с запросами, включите [ведение журнала](xref:fundamentals/logging/index).
+> Чтобы увидеть, как встроенные реализации маршрутизации, такие как <xref:Microsoft.AspNetCore.Routing.Route>, сопоставляются с запросами, включите [ведение журнала](xref:fundamentals/logging/index).
 
 ## <a name="reserved-routing-names"></a>Зарезервированные имена маршрутизации
 
@@ -668,9 +668,9 @@ public User GetUserById(int id) { }
 
 ## <a name="custom-route-constraints"></a>Пользовательские ограничения маршрутов
 
-Помимо встроенных ограничений маршрутов пользовательские ограничения маршрутов можно создать путем внедрения интерфейса <xref:Microsoft.AspNetCore.Routing.IRouteConstraint>. Интерфейс `IRouteConstraint` содержит один метод, `Match`, который возвращает `true`, если ограничение удовлетворяется, и `false` — если нет.
+Помимо встроенных ограничений маршрутов пользовательские ограничения маршрутов можно создать путем внедрения интерфейса <xref:Microsoft.AspNetCore.Routing.IRouteConstraint>. Интерфейс <xref:Microsoft.AspNetCore.Routing.IRouteConstraint> содержит один метод, `Match`, который возвращает `true`, если ограничение удовлетворяется, и `false` — если нет.
 
-Чтобы применить пользовательский метод `IRouteConstraint`, тип ограничения маршрута необходимо зарегистрировать с помощью `RouteOptions.ConstraintMap` приложения в контейнере службы приложения. Объект <xref:Microsoft.AspNetCore.Routing.RouteOptions.ConstraintMap> — это словарь, который сопоставляет ключи ограничений пути с реализациями `IRouteConstraint`, которые проверяют эти ограничения. `RouteOptions.ConstraintMap` приложения можно обновить в `Startup.ConfigureServices` либо как часть вызова `services.AddRouting`, либо путем настройки `RouteOptions` непосредственно с помощью `services.Configure<RouteOptions>`. Например:
+Чтобы применить пользовательский метод <xref:Microsoft.AspNetCore.Routing.IRouteConstraint>, тип ограничения маршрута необходимо зарегистрировать с помощью <xref:Microsoft.AspNetCore.Routing.RouteOptions.ConstraintMap> приложения в контейнере службы приложения. Объект <xref:Microsoft.AspNetCore.Routing.RouteOptions.ConstraintMap> — это словарь, который сопоставляет ключи ограничений пути с реализациями <xref:Microsoft.AspNetCore.Routing.IRouteConstraint>, которые проверяют эти ограничения. <xref:Microsoft.AspNetCore.Routing.RouteOptions.ConstraintMap> приложения можно преобразовать в `Startup.ConfigureServices` как часть вызова [services.AddRouting](xref:Microsoft.Extensions.DependencyInjection.RoutingServiceCollectionExtensions.AddRouting*) или путем настройки <xref:Microsoft.AspNetCore.Routing.RouteOptions> непосредственно с помощью `services.Configure<RouteOptions>`. Например:
 
 ```csharp
 services.AddRouting(options =>
@@ -692,7 +692,7 @@ public ActionResult<string> Get(string id)
 
 Преобразователи параметров:
 
-* Выполняются при формировании ссылки для `Route`.
+* Выполняются при формировании ссылки для <xref:Microsoft.AspNetCore.Routing.Route>.
 * Реализуйте расширение `Microsoft.AspNetCore.Routing.IOutboundParameterTransformer`.
 * Настраиваются с помощью <xref:Microsoft.AspNetCore.Routing.RouteOptions.ConstraintMap>.
 * Принимают значение маршрута параметра и изменяют его на новое строковое значение.
@@ -734,9 +734,9 @@ ASP.NET Core предоставляет соглашения об API для и�
 
 [!code-csharp[](routing/samples/2.x/RoutingSample/Startup.cs?name=snippet_Dictionary)]
 
-В результате приведенного выше примера создается `VirtualPath` со значением `/package/create/123`. Словарь предоставляет значения маршрута `operation` и `id` шаблона "Отслеживание маршрута пакета", `package/{operation}/{id}`. Дополнительные сведения см. в примере кода в разделе [Использование ПО промежуточного слоя маршрутизации](#use-routing-middleware) или в [примере приложения](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/routing/samples).
+В результате приведенного выше примера создается <xref:Microsoft.AspNetCore.Routing.VirtualPathData.VirtualPath> со значением `/package/create/123`. Словарь предоставляет значения маршрута `operation` и `id` шаблона "Отслеживание маршрута пакета", `package/{operation}/{id}`. Дополнительные сведения см. в примере кода в разделе [Использование ПО промежуточного слоя маршрутизации](#use-routing-middleware) или в [примере приложения](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/routing/samples).
 
-Второй параметр конструктора `VirtualPathContext` — это коллекция *значений окружения*. Значения окружения упрощают разработку, ограничивая число значений, которые необходимо указывать в определенном контексте запроса. Текущие значения маршрута текущего запроса считаются значениями окружения для создания ссылки. В приложении ASP.NET MVC в действии `About` контроллера `HomeController` не нужно задавать значение маршрута контроллера, указывающее на действие `Index` &mdash; используется значение окружения `Home`.
+Второй параметр конструктора <xref:Microsoft.AspNetCore.Routing.VirtualPathContext> — это коллекция *значений окружения*. Значения окружения упрощают разработку, ограничивая число значений, которые необходимо указывать в определенном контексте запроса. Текущие значения маршрута текущего запроса считаются значениями окружения для создания ссылки. В приложении ASP.NET MVC в действии `About` контроллера `HomeController` не нужно задавать значение маршрута контроллера, указывающее на действие `Index` &mdash; используется значение окружения `Home`.
 
 Значения окружения, которые не соответствуют параметру, игнорируются. Значения окружения также не учитываются, когда явно указанное значение переопределяет значение окружения. Сопоставление выполняется слева направо в URL-адресе.
 

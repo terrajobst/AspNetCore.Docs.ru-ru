@@ -1,27 +1,20 @@
 ---
-title: ASP.NET Core MVC с EF Core — параллелизм — 8 из 10
-author: rick-anderson
+title: Учебник. Использование ASP.NET Core MVC с EF Core. Обработка параллелизма
 description: Это руководство описывает, как обрабатывать конфликты, когда несколько пользователей одновременно изменяют одну сущность.
+author: rick-anderson
 ms.author: tdykstra
 ms.custom: mvc
-ms.date: 10/24/2018
+ms.date: 02/05/2019
+ms.topic: tutorial
 uid: data/ef-mvc/concurrency
-ms.openlocfilehash: 0ae566a76a2ef656843452ed537b8fdfbddaed22
-ms.sourcegitcommit: 4d74644f11e0dac52b4510048490ae731c691496
+ms.openlocfilehash: 7b18927d5d528ec2951087502e26b2b30214f389
+ms.sourcegitcommit: 5e3797a02ff3c48bb8cb9ad4320bfd169ebe8aba
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50090905"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56103024"
 ---
-# <a name="aspnet-core-mvc-with-ef-core---concurrency---8-of-10"></a>ASP.NET Core MVC с EF Core — параллелизм — 8 из 10
-
-[!INCLUDE [RP better than MVC](~/includes/RP-EF/rp-over-mvc-21.md)]
-
-::: moniker range="= aspnetcore-2.0"
-
-Авторы: [Том Дайкстра](https://github.com/tdykstra) (Tom Dykstra) и [Рик Андерсон](https://twitter.com/RickAndMSFT) (Rick Anderson)
-
-На примере учебного веб-приложения "Университет Contoso" демонстрируется процесс создания веб-приложений ASP.NET Core MVC с помощью Entity Framework Core и Visual Studio. Сведения о серии руководств см. в [первом руководстве серии](intro.md).
+# <a name="tutorial-handle-concurrency---aspnet-mvc-with-ef-core"></a>Учебник. Использование ASP.NET Core MVC с EF Core. Обработка параллелизма
 
 В предыдущих учебниках вы узнали, как обновлять данные. Это руководство описывает, как обрабатывать конфликты, когда несколько пользователей одновременно изменяют одну сущность.
 
@@ -30,6 +23,23 @@ ms.locfileid: "50090905"
 ![Страница редактирования кафедры](concurrency/_static/edit-error.png)
 
 ![Страница удаления кафедры](concurrency/_static/delete-error.png)
+
+В этом учебнике рассмотрены следующие задачи.
+
+> [!div class="checklist"]
+> * Дополнительные сведения о конфликтах параллелизма
+> * Добавление свойства отслеживания
+> * Создание представлений и контроллера кафедр
+> * Обновление представления указателя
+> * Обновление методов редактирования
+> * Обновление представления редактирования
+> * Тестирование конфликтов параллелизма
+> * Обновление страницы удаления
+> * Обновление представлений Details и Create
+
+## <a name="prerequisites"></a>Предварительные требования
+
+* [Обновление связанных данных с использованием EF Core в веб-приложении MVC ASP.NET Core](update-related-data.md)
 
 ## <a name="concurrency-conflicts"></a>Конфликты параллелизма
 
@@ -87,7 +97,7 @@ ms.locfileid: "50090905"
 
 В оставшейся части этого руководства вам предстоит добавить свойство отслеживания `rowversion` в сущность Department, создать контроллер и представления, а также проверить правильность работы решения.
 
-## <a name="add-a-tracking-property-to-the-department-entity"></a>Добавление свойства отслеживания в сущность Department
+## <a name="add-a-tracking-property"></a>Добавление свойства отслеживания
 
 В *Models/Department.cs* добавьте свойство отслеживания RowVersion:
 
@@ -114,7 +124,7 @@ dotnet ef migrations add RowVersion
 dotnet ef database update
 ```
 
-## <a name="create-a-departments-controller-and-views"></a>Создание контроллера кафедр и представлений
+## <a name="create-departments-controller-and-views"></a>Создание представлений и контроллера кафедр
 
 Сформируйте шаблоны для контроллера кафедр и представлений, как делали это раньше для учащихся, курсов и преподавателей.
 
@@ -124,7 +134,7 @@ dotnet ef database update
 
 [!code-csharp[](intro/samples/cu/Controllers/DepartmentsController.cs?name=snippet_Dropdown)]
 
-## <a name="update-the-departments-index-view"></a>Изменение представления индекса кафедр
+## <a name="update-index-view"></a>Обновление представления указателя
 
 Подсистема формирования шаблонов создала столбец RowVersion для представления индекса, однако это поле не должно отображаться.
 
@@ -134,7 +144,7 @@ dotnet ef database update
 
 Он изменяет заголовок на "Departments" (Кафедры), удаляет столбец RowVersion и отображает администратору имя и фамилию, а не только имя.
 
-## <a name="update-the-edit-methods-in-the-departments-controller"></a>Обновление методов Edit в контроллере кафедр
+## <a name="update-edit-methods"></a>Обновление методов редактирования
 
 Добавьте `AsNoTracking` в оба метода — HttpGet `Edit` и `Details`. В методе HttpGet `Edit` добавьте безотложную загрузку для администратора.
 
@@ -172,7 +182,7 @@ _context.Entry(departmentToUpdate).Property("RowVersion").OriginalValue = rowVer
 
 Оператор `ModelState.Remove` является обязательным, так как `ModelState` имеет старое значение `RowVersion`. На представлении значение `ModelState` для поля имеет приоритет над значениями свойств модели, если они присутствуют вместе.
 
-## <a name="update-the-department-edit-view"></a>Обновление представления редактирования кафедры
+## <a name="update-edit-view"></a>Обновление представления редактирования
 
 Внесите следующие изменения в файл *Views/Departments/Edit.cshtml*:
 
@@ -182,7 +192,7 @@ _context.Entry(departmentToUpdate).Property("RowVersion").OriginalValue = rowVer
 
 [!code-html[](intro/samples/cu/Views/Departments/Edit.cshtml?highlight=16,34-36)]
 
-## <a name="test-concurrency-conflicts-in-the-edit-page"></a>Тестирование конфликтов параллелизма на странице "Edit" (Редактирование)
+## <a name="test-concurrency-conflicts"></a>Тестирование конфликтов параллелизма
 
 Запустите приложение и перейдите на страницу индекса кафедр. Щелкните правой кнопкой мыши гиперссылку **Edit** (Изменить) для кафедры английского языка и выберите пункт **Открыть на новой вкладке**, а затем щелкните гиперссылку **Edit** (Изменить) для этой кафедры. Теперь на обеих вкладках браузера отображаются одинаковые сведения.
 
@@ -276,12 +286,29 @@ public async Task<IActionResult> Delete(Department department)
 
 [!code-html[](intro/samples/cu/Views/Departments/Create.cshtml?highlight=32-34)]
 
-## <a name="summary"></a>Сводка
+## <a name="get-the-code"></a>Получение кода
 
-На этом заканчивается введение в обработку конфликтов параллелизма. Дополнительные сведения об обработке параллелизма в EF Core см. в разделе [Конфликты параллелизма](/ef/core/saving/concurrency). Следующее руководство описывает, как реализовать наследование "одна таблица на иерархию" для сущностей Instructor и Student.
+[Скачайте или ознакомьтесь с готовым приложением.](https://github.com/aspnet/Docs/tree/master/aspnetcore/data/ef-mvc/intro/samples/cu-final)
 
-::: moniker-end
+## <a name="additional-resources"></a>Дополнительные ресурсы
 
-> [!div class="step-by-step"]
-> [Назад](update-related-data.md)
-> [Вперед](inheritance.md)
+ Дополнительные сведения об обработке параллелизма в EF Core см. в разделе [Конфликты параллелизма](/ef/core/saving/concurrency).
+
+## <a name="next-steps"></a>Следующие шаги
+
+В этом учебнике рассмотрены следующие задачи.
+
+> [!div class="checklist"]
+> * Дополнительные сведения о конфликтах параллелизма
+> * Добавление свойства отслеживания
+> * Создание представлений и контроллера кафедр
+> * Обновление представления указателя
+> * Обновление методов редактирования
+> * Обновление представления редактирования
+> * Тестирование конфликтов параллелизма
+> * Обновление страницы удаления
+> * Обновление представлений сведений и создания
+
+В следующем руководстве описано, как реализовать наследование "одна таблица на иерархию" для сущностей Instructor и Student.
+> [!div class="nextstepaction"]
+> [Реализация наследования типа "одна таблица на иерархию"](inheritance.md)

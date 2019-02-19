@@ -5,14 +5,14 @@ description: Узнайте, как настроить проверки рабо
 monikerRange: '>= aspnetcore-2.2'
 ms.author: riande
 ms.custom: mvc
-ms.date: 12/12/2018
+ms.date: 02/13/2019
 uid: host-and-deploy/health-checks
-ms.openlocfilehash: cf2aea91221887dad5646604214f810493d4b175
-ms.sourcegitcommit: 1ea1b4fc58055c62728143388562689f1ef96cb2
+ms.openlocfilehash: e186a3cb484035199a8f355540c3e985db87ad98
+ms.sourcegitcommit: 6ba5fb1fd0b7f9a6a79085b0ef56206e462094b7
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53329150"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56248579"
 ---
 # <a name="health-checks-in-aspnet-core"></a>Проверки работоспособности в ASP.NET Core
 
@@ -52,9 +52,9 @@ ASP.NET Core предоставляет ПО промежуточного сло
 
 Для многих приложений достаточно конфигурации базовой проверки работоспособности, которая сообщает о доступности приложения для обработки запросов (*жизнеспособности*).
 
-Базовая конфигурация регистрирует службы проверки работоспособности и вызывает ПО промежуточного слоя для ответа о работоспособности на конечной точке по URL-адресу. По умолчанию отдельные проверки работоспособности не регистрируются для тестирования какой-либо конкретной зависимости или подсистемы. Приложение считается исправным, если оно способно отвечать на запросы по URL-адресу конечной точки работоспособности. Модуль записи ответа по умолчанию записывает состояние (`HealthStatus`) в виде обычного текста ответа обратно клиенту; оно указывает на состояние `HealthStatus.Healthy`, `HealthStatus.Degraded` или `HealthStatus.Unhealthy`.
+Базовая конфигурация регистрирует службы проверки работоспособности и вызывает ПО промежуточного слоя для ответа о работоспособности на конечной точке по URL-адресу. По умолчанию отдельные проверки работоспособности не регистрируются для тестирования какой-либо конкретной зависимости или подсистемы. Приложение считается исправным, если оно способно отвечать на запросы по URL-адресу конечной точки работоспособности. Модуль записи ответа по умолчанию передает состояние (<xref:Microsoft.Extensions.Diagnostics.HealthChecks.HealthStatus>) в виде обычного текста в ответе клиенту. Это может быть состояние [HealthStatus.Healthy](xref:Microsoft.Extensions.Diagnostics.HealthChecks.HealthStatus), [HealthStatus.Degraded](xref:Microsoft.Extensions.Diagnostics.HealthChecks.HealthStatus) или [HealthStatus.Unhealthy](xref:Microsoft.Extensions.Diagnostics.HealthChecks.HealthStatus).
 
-Зарегистрируйте службы проверки работоспособности при помощи `AddHealthChecks` в `Startup.ConfigureServices`. Добавьте ПО промежуточного слоя в `UseHealthChecks` в конвейере обработки запросов `Startup.Configure`:
+Зарегистрируйте службы проверки работоспособности при помощи <xref:Microsoft.Extensions.DependencyInjection.HealthCheckServiceCollectionExtensions.AddHealthChecks*> в `Startup.ConfigureServices`. Добавьте ПО промежуточного слоя в <xref:Microsoft.AspNetCore.Builder.HealthCheckApplicationBuilderExtensions.UseHealthChecks*> в конвейере обработки запросов `Startup.Configure`:
 
 В примере приложения конечная точка проверки работоспособности создается в `/health` (*BasicStartup.cs*):
 
@@ -76,7 +76,7 @@ HEALTHCHECK CMD curl --fail http://localhost:5000/health || exit
 
 ## <a name="create-health-checks"></a>Создание проверки работоспособности
 
-Проверки работоспособности создаются путем реализации интерфейса `IHealthCheck`. Метод `IHealthCheck.CheckHealthAsync` возвращает `Task<HealthCheckResult>`, указывая состояние работоспособности как `Healthy`, `Degraded` или `Unhealthy`. Результат записывается в ответ в виде обычного текста с кодом состояния, который можно настроить (конфигурация описана в разделе [Варианты проверки работоспособности](#health-check-options)). `HealthCheckResult` также может возвращать необязательные пары "ключ-значение".
+Проверки работоспособности создаются путем реализации интерфейса <xref:Microsoft.Extensions.Diagnostics.HealthChecks.IHealthCheck>. Метод <xref:Microsoft.Extensions.Diagnostics.HealthChecks.IHealthCheck.CheckHealthAsync*> возвращает `Task<` <xref:Microsoft.Extensions.Diagnostics.HealthChecks.HealthCheckResult> `>`, что означает состояние работоспособности `Healthy`, `Degraded` или `Unhealthy`. Результат записывается в ответ в виде обычного текста с кодом состояния, который можно настроить (конфигурация описана в разделе [Варианты проверки работоспособности](#health-check-options)). <xref:Microsoft.Extensions.Diagnostics.HealthChecks.HealthCheckResult> также может возвращать необязательные пары "ключ-значение".
 
 ### <a name="example-health-check"></a>Пример проверки работоспособности
 
@@ -113,7 +113,7 @@ public class ExampleHealthCheck : IHealthCheck
 
 ### <a name="register-health-check-services"></a>Зарегистрируйте службы проверки работоспособности
 
-Тип `ExampleHealthCheck` будет добавлен к службам проверки работоспособности через `AddCheck`:
+Тип `ExampleHealthCheck` будет добавлен к службам проверки работоспособности через <xref:Microsoft.Extensions.DependencyInjection.HealthChecksBuilderAddCheckExtensions.AddCheck*>:
 
 ```csharp
 public void ConfigureServices(IServiceCollection services)
@@ -123,7 +123,7 @@ public void ConfigureServices(IServiceCollection services)
 }
 ```
 
-Перегрузка `AddCheck`, показанная в следующем примере, устанавливает состояние сбоя (`HealthStatus`) для отчета в ситуации, когда проверка работоспособности сообщает о сбое. Если присвоено состояние сбоя `null` (по умолчанию), сообщается `HealthStatus.Unhealthy`. Эта перегрузка — полезный сценарий для авторов библиотек, где состояние сбоя от библиотеки особо учитывается приложением при сбое проверки работоспособности, если реализация проверки работоспособности учитывает этот параметр.
+Перегрузка <xref:Microsoft.Extensions.DependencyInjection.HealthChecksBuilderAddCheckExtensions.AddCheck*>, показанная в следующем примере, устанавливает состояние сбоя (<xref:Microsoft.Extensions.Diagnostics.HealthChecks.HealthStatus>) для отчета в ситуации, когда проверка работоспособности сообщает о сбое. Если состояние сбоя имеет значение `null` (по умолчанию), сообщается [HealthStatus.Unhealthy](xref:Microsoft.Extensions.Diagnostics.HealthChecks.HealthStatus). Эта перегрузка — полезный сценарий для авторов библиотек, где состояние сбоя от библиотеки особо учитывается приложением при сбое проверки работоспособности, если реализация проверки работоспособности учитывает этот параметр.
 
 *Теги* можно использовать для фильтрации проверок работоспособности (описаны далее в разделе [Фильтрация проверок работоспособности](#filter-health-checks)).
 
@@ -135,7 +135,7 @@ services.AddHealthChecks()
         tags: new[] { "example" });
 ```
 
-`AddCheck` также может выполнять лямбда-функции. В следующем примере имя проверки работоспособности указано как `Example`; проверка всегда возвращает работоспособное состояние:
+<xref:Microsoft.Extensions.DependencyInjection.HealthChecksBuilderAddCheckExtensions.AddCheck*> также может выполнять лямбда-функции. В следующем примере имя проверки работоспособности указано как `Example`; проверка всегда возвращает работоспособное состояние:
 
 ```csharp
 public void ConfigureServices(IServiceCollection services)
@@ -148,7 +148,7 @@ public void ConfigureServices(IServiceCollection services)
 
 ### <a name="use-health-checks-middleware"></a>Используйте ПО промежуточного слоя для проверки работоспособности
 
-В `Startup.Configure` вызовите `UseHealthChecks` в конвейере обработки с URL-адресом конечной точки или относительным путем:
+В `Startup.Configure` вызовите <xref:Microsoft.AspNetCore.Builder.HealthCheckApplicationBuilderExtensions.UseHealthChecks*> в конвейере обработки с URL-адресом конечной точки или относительным путем:
 
 ```csharp
 public void Configure(IApplicationBuilder app, IHostingEnvironment env)
@@ -157,7 +157,7 @@ public void Configure(IApplicationBuilder app, IHostingEnvironment env)
 }
 ```
 
-Если проверки работоспособности должны прослушивать определенный порт, используйте перегрузку `UseHealthChecks`, чтобы задать порт (описаны далее в разделе [Фильтр по портам](#filter-by-port)):
+Если проверки работоспособности должны прослушивать определенный порт, используйте перегрузку <xref:Microsoft.AspNetCore.Builder.HealthCheckApplicationBuilderExtensions.UseHealthChecks*>, чтобы задать порт (описаны далее в разделе [Фильтр по портам](#filter-by-port)):
 
 ```csharp
 app.UseHealthChecks("/health", port: 8000);
@@ -167,7 +167,7 @@ app.UseHealthChecks("/health", port: 8000);
 
 ## <a name="health-check-options"></a>Варианты проверки работоспособности
 
-`HealthCheckOptions` предоставляет возможность настройки поведения для проверки работоспособности:
+<xref:Microsoft.AspNetCore.Diagnostics.HealthChecks.HealthCheckOptions> предоставляет возможность настройки поведения для проверки работоспособности:
 
 * [Фильтрация проверок работоспособности](#filter-health-checks)
 * [Настройка кода состояния HTTP](#customize-the-http-status-code)
@@ -176,7 +176,7 @@ app.UseHealthChecks("/health", port: 8000);
 
 ### <a name="filter-health-checks"></a>Фильтрация проверок работоспособности
 
-По умолчанию ПО промежуточного слоя для проверки работоспособности выполняет все зарегистрированные проверки работоспособности. Чтобы выполнить подмножество проверок работоспособности, укажите функцию, которая возвращает логическое значение через параметр `Predicate`. В следующем примере проверка работоспособности `Bar` отфильтровывается по тегу (`bar_tag`) в условном операторе функции, где `true` возвращается только в том случае, если свойство проверки работоспособности `Tag` соответствует `foo_tag` или `baz_tag`:
+По умолчанию ПО промежуточного слоя для проверки работоспособности выполняет все зарегистрированные проверки работоспособности. Чтобы выполнить подмножество проверок работоспособности, укажите функцию, которая возвращает логическое значение через параметр <xref:Microsoft.AspNetCore.Diagnostics.HealthChecks.HealthCheckOptions.Predicate>. В следующем примере проверка работоспособности `Bar` отфильтровывается по тегу (`bar_tag`) в условном операторе функции, где `true` возвращается только в том случае, если свойство проверки работоспособности <xref:Microsoft.Extensions.Diagnostics.HealthChecks.HealthCheckRegistration.Tags> соответствует `foo_tag` или `baz_tag`:
 
 ```csharp
 using System.Threading.Tasks;
@@ -207,7 +207,7 @@ public void Configure(IApplicationBuilder app, IHostingEnvironment env)
 
 ### <a name="customize-the-http-status-code"></a>Настройка кода состояния HTTP
 
-Используйте `ResultStatusCodes` для настройки сопоставления состояний работоспособности и кодов состояния HTTP. Следующие назначения `StatusCode` являются значениями по умолчанию, используемыми ПО промежуточного слоя. Измените значения кодов состояния в соответствии с требованиями.
+Используйте <xref:Microsoft.AspNetCore.Diagnostics.HealthChecks.HealthCheckOptions.ResultStatusCodes> для настройки сопоставления состояний работоспособности и кодов состояния HTTP. Следующие назначения <xref:Microsoft.AspNetCore.Http.StatusCodes> являются значениями по умолчанию, используемыми ПО промежуточного слоя. Измените значения кодов состояния в соответствии с требованиями.
 
 ```csharp
 using Microsoft.AspNetCore.Diagnostics.HealthChecks;
@@ -231,7 +231,7 @@ public void Configure(IApplicationBuilder app, IHostingEnvironment env)
 
 ### <a name="suppress-cache-headers"></a>Подавление заголовков кэша
 
-`AllowCachingResponses` определяет, добавляет ли ПО промежуточного слоя HTTP-заголовки в ответ проверки, чтобы предотвратить кэширование ответов. Если значение равно `false` (по умолчанию), ПО промежуточного слоя задает или переопределяет заголовки `Cache-Control`, `Expires` и `Pragma`, чтобы предотвратить кэширование ответов. Если значение равно `true`, ПО промежуточного слоя не изменяет заголовки кэша в ответе.
+<xref:Microsoft.AspNetCore.Diagnostics.HealthChecks.HealthCheckOptions.AllowCachingResponses> определяет, добавляет ли ПО промежуточного слоя HTTP-заголовки в ответ проверки, чтобы предотвратить кэширование ответов. Если значение равно `false` (по умолчанию), ПО промежуточного слоя задает или переопределяет заголовки `Cache-Control`, `Expires` и `Pragma`, чтобы предотвратить кэширование ответов. Если значение равно `true`, ПО промежуточного слоя не изменяет заголовки кэша в ответе.
 
 ```csharp
 using Microsoft.AspNetCore.Diagnostics.HealthChecks;
@@ -249,7 +249,7 @@ public void Configure(IApplicationBuilder app, IHostingEnvironment env)
 
 ### <a name="customize-output"></a>Настройка выходных данных
 
-Параметр `ResponseWriter` возвращает или задает делегат, используемый для записи ответа. Делегат по умолчанию записывает ответ в минимальном открытом тексте со строковым значением `HealthReport.Status`.
+Параметр <xref:Microsoft.AspNetCore.Diagnostics.HealthChecks.HealthCheckOptions.ResponseWriter> возвращает или задает делегат, используемый для записи ответа. Делегат по умолчанию записывает минимальный ответ в формате открытого текста со строковым значением [HealthReport.Status](xref:Microsoft.Extensions.Diagnostics.HealthChecks.HealthReport.Status).
 
 ```csharp
 using Microsoft.AspNetCore.Diagnostics.HealthChecks;
@@ -297,7 +297,7 @@ private static Task WriteResponse(HttpContext httpContext,
 
 [!code-json[](health-checks/samples/2.x/HealthChecksSample/appsettings.json?highlight=3)]
 
-Зарегистрируйте службы проверки работоспособности при помощи `AddHealthChecks` в `Startup.ConfigureServices`. Пример приложения вызывает метод BeatPulse `AddSqlServer` со строкой подключения базы данных (*DbHealthStartup.cs*):
+Зарегистрируйте службы проверки работоспособности при помощи <xref:Microsoft.Extensions.DependencyInjection.HealthCheckServiceCollectionExtensions.AddHealthChecks*> в `Startup.ConfigureServices`. Пример приложения вызывает метод BeatPulse `AddSqlServer` со строкой подключения базы данных (*DbHealthStartup.cs*):
 
 [!code-csharp[](health-checks/samples/2.x/HealthChecksSample/DbHealthStartup.cs?name=snippet_ConfigureServices)]
 
@@ -399,11 +399,11 @@ Unhealthy
 
 [!code-csharp[](health-checks/samples/2.x/HealthChecksSample/Services/StartupHostedService.cs?name=snippet1&highlight=18-20)]
 
-Проверка работоспособности регистрируется через `AddCheck` в `Startup.ConfigureServices` вместе с размещенной службой. Поскольку размещенной службе необходимо задать свойство проверки работоспособности, проверка работоспособности также регистрируется в контейнере службы (*LivenessProbeStartup.cs*):
+Проверка работоспособности регистрируется через <xref:Microsoft.Extensions.DependencyInjection.HealthChecksBuilderAddCheckExtensions.AddCheck*> в `Startup.ConfigureServices` вместе с размещенной службой. Поскольку размещенной службе необходимо задать свойство проверки работоспособности, проверка работоспособности также регистрируется в контейнере службы (*LivenessProbeStartup.cs*):
 
 [!code-csharp[](health-checks/samples/2.x/HealthChecksSample/LivenessProbeStartup.cs?name=snippet_ConfigureServices)]
 
-Вызовите ПО промежуточного слоя для проверки работоспособности в конвейере обработки приложения в `Startup.Configure`. В примере приложения создаются конечные точки проверки работоспособности в `/health/ready` для проверки готовности и в `/health/live` для проверки жизнеспособности. Проверка готовности фильтрует проверки работоспособности по тегу `ready`. Проверка жизнеспособности отфильтровывает `StartupHostedServiceHealthCheck`, возвращая `false` в `HealthCheckOptions.Predicate` (дополнительные сведения см. в разделе [Фильтрация проверок работоспособности](#filter-health-checks)):
+Вызовите ПО промежуточного слоя для проверки работоспособности в конвейере обработки приложения в `Startup.Configure`. В примере приложения создаются конечные точки проверки работоспособности в `/health/ready` для проверки готовности и в `/health/live` для проверки жизнеспособности. Проверка готовности фильтрует проверки работоспособности по тегу `ready`. Проверка жизнеспособности отфильтровывает `StartupHostedServiceHealthCheck`, возвращая `false` в [HealthCheckOptions.Predicate](xref:Microsoft.AspNetCore.Diagnostics.HealthChecks.HealthCheckOptions.Predicate) (дополнительные сведения см. в разделе [Фильтрация проверок работоспособности](#filter-health-checks)):
 
 [!code-csharp[](health-checks/samples/2.x/HealthChecksSample/LivenessProbeStartup.cs?name=snippet_Configure)]
 
@@ -413,7 +413,9 @@ Unhealthy
 dotnet run --scenario liveness
 ```
 
-В браузере посетите `/health/ready` несколько раз, пока не пройдет 15 секунд. Проверка работоспособности будет передавать `Unhealthy` первые 15 секунд. По истечении 15 секунд конечная точка передает состояние `Healthy`, отражающее завершение длительной задачи размещенной службой.
+В браузере посетите `/health/ready` несколько раз, пока не пройдет 15 секунд. Проверка работоспособности будет передавать состояние *Unhealthy* первые 15 секунд. По истечении 15 секунд конечная точка передает состояние *Healthy*, что означает завершение длительной задачи размещенной службой.
+
+В этом примере также создается издатель проверки работоспособности (реализация <xref:Microsoft.Extensions.Diagnostics.HealthChecks.IHealthCheckPublisher>), который выполнит первую проверку готовности с задержкой в две секунды. Дополнительные сведения см. в разделе [об издателе проверки работоспособности](#health-check-publisher).
 
 ### <a name="kubernetes-example"></a>Пример для Kubernetes
 
@@ -442,11 +444,11 @@ spec:
 
 Этот пример демонстрирует проверку работоспособности памяти с настраиваемым модулем записи ответов.
 
-Если приложение использует больше заданного порогового значения памяти (1 ГБ в примере приложения), `MemoryHealthCheck` сообщает о состоянии пониженной функциональности. `HealthCheckResult` включает сведения от сборщика мусора для приложения (*MemoryHealthCheck.cs*):
+Если приложение использует больше заданного порогового значения памяти (1 ГБ в примере приложения), `MemoryHealthCheck` сообщает о состоянии пониженной функциональности. <xref:Microsoft.Extensions.Diagnostics.HealthChecks.HealthCheckResult> включает сведения от сборщика мусора для приложения (*MemoryHealthCheck.cs*):
 
 [!code-csharp[](health-checks/samples/2.x/HealthChecksSample/MemoryHealthCheck.cs?name=snippet1)]
 
-Зарегистрируйте службы проверки работоспособности при помощи `AddHealthChecks` в `Startup.ConfigureServices`. Вместо того чтобы включать проверку работоспособности, передав ее в `AddCheck`, `MemoryHealthCheck` регистрируется в качестве службы. Все зарегистрированные службы `IHealthCheck` доступны в службах проверки работоспособности и ПО промежуточного слоя. Мы рекомендуем регистрировать службы проверки работоспособности в качестве одноэлементных служб.
+Зарегистрируйте службы проверки работоспособности при помощи <xref:Microsoft.Extensions.DependencyInjection.HealthCheckServiceCollectionExtensions.AddHealthChecks*> в `Startup.ConfigureServices`. Вместо того чтобы включать проверку работоспособности, передав ее в <xref:Microsoft.Extensions.DependencyInjection.HealthChecksBuilderAddCheckExtensions.AddCheck*>, `MemoryHealthCheck` регистрируется в качестве службы. Все зарегистрированные службы <xref:Microsoft.Extensions.Diagnostics.HealthChecks.IHealthCheck> доступны в службах проверки работоспособности и ПО промежуточного слоя. Мы рекомендуем регистрировать службы проверки работоспособности в качестве одноэлементных служб.
 
 *CustomWriterStartup.cs*:
 
@@ -473,7 +475,7 @@ dotnet run --scenario writer
 
 ## <a name="filter-by-port"></a>Фильтр по портам
 
-Вызов `UseHealthChecks` с портом ограничивает запросы на проверку работоспособности указанным портом. Обычно это используется в контейнерной среде с целью предоставления порта для мониторинга служб.
+Вызов <xref:Microsoft.AspNetCore.Builder.HealthCheckApplicationBuilderExtensions.UseHealthChecks*> с портом ограничивает запросы на проверку работоспособности указанным портом. Обычно это используется в контейнерной среде с целью предоставления порта для мониторинга служб.
 
 Пример приложения настраивает порт с помощью [поставщика конфигурации переменных среды](xref:fundamentals/configuration/index#environment-variables-configuration-provider). Порт устанавливается в файле *launchSettings.json* и передается поставщику конфигурации с помощью переменной среды. Необходимо также настроить на сервере прослушивание запросов через порт управления.
 
@@ -501,12 +503,12 @@ dotnet run --scenario writer
 }
 ```
 
-Зарегистрируйте службы проверки работоспособности при помощи `AddHealthChecks` в `Startup.ConfigureServices`. Вызов `UseHealthChecks` задает порт управления (*ManagementPortStartup.cs*):
+Зарегистрируйте службы проверки работоспособности при помощи <xref:Microsoft.Extensions.DependencyInjection.HealthCheckServiceCollectionExtensions.AddHealthChecks*> в `Startup.ConfigureServices`. Вызов <xref:Microsoft.AspNetCore.Builder.HealthCheckApplicationBuilderExtensions.UseHealthChecks*> задает порт управления (*ManagementPortStartup.cs*):
 
 [!code-csharp[](health-checks/samples/2.x/HealthChecksSample/ManagementPortStartup.cs?name=snippet1&highlight=12,18)]
 
 > [!NOTE]
-> Можно избежать создания файла *launchSettings.json* в примере приложения, явно указав URL-адрес и порт управления в коде. В *Program.cs*, где создается `WebHostBuilder`, добавьте вызов `UseUrls` и укажите обычную конечную точку ответа приложения и порт конечной точки управления. В *ManagementPortStartup.cs*, где вызывается `UseHealthChecks`, явно укажите порт управления.
+> Можно избежать создания файла *launchSettings.json* в примере приложения, явно указав URL-адрес и порт управления в коде. В *Program.cs*, где создается <xref:Microsoft.AspNetCore.Hosting.WebHostBuilder>, добавьте вызов <xref:Microsoft.AspNetCore.Hosting.HostingAbstractionsWebHostBuilderExtensions.UseUrls*> и укажите обычную конечную точку ответа приложения и порт конечной точки управления. В *ManagementPortStartup.cs*, где вызывается <xref:Microsoft.AspNetCore.Builder.HealthCheckApplicationBuilderExtensions.UseHealthChecks*>, явно укажите порт управления.
 >
 > *Program.cs*:
 >
@@ -541,7 +543,7 @@ dotnet run --scenario port
 
 Чтобы распространять проверки работоспособности в качестве библиотеки, выполните следующие действия.
 
-1. Напишите проверку работоспособности, которая реализует интерфейс `IHealthCheck` как автономный класс. Класс может полагаться на [внедрение зависимостей (DI)](xref:fundamentals/dependency-injection), активацию типов и [именованные параметры](xref:fundamentals/configuration/options) для доступа к данным конфигурации.
+1. Напишите проверку работоспособности, которая реализует интерфейс <xref:Microsoft.Extensions.Diagnostics.HealthChecks.IHealthCheck> как автономный класс. Класс может полагаться на [внедрение зависимостей (DI)](xref:fundamentals/dependency-injection), активацию типов и [именованные параметры](xref:fundamentals/configuration/options) для доступа к данным конфигурации.
 
    ```csharp
    using System;
@@ -601,7 +603,7 @@ dotnet run --scenario port
    * Необязательное имя проверки работоспособности (`name`). Если `null`, используется `example_health_check`.
    * Строковая точка данных для проверки работоспособности (`data1`).
    * Целочисленная точка данных для проверки работоспособности (`data2`). Если `null`, используется `1`.
-   * состояние сбоя (`HealthStatus`). Значение по умолчанию — `null`. Если `null`, состояние неполадки передается как `HealthStatus.Unhealthy`.
+   * состояние сбоя (<xref:Microsoft.Extensions.Diagnostics.HealthChecks.HealthStatus>). Значение по умолчанию — `null`. В случае `null` возвращается [HealthStatus.Unhealthy](xref:Microsoft.Extensions.Diagnostics.HealthChecks.HealthStatus) как состояние сбоя.
    * Теги (`IEnumerable<string>`).
 
    ```csharp
@@ -631,13 +633,52 @@ dotnet run --scenario port
 
 ## <a name="health-check-publisher"></a>Издатель проверки работоспособности
 
-Когда `IHealthCheckPublisher` добавляется в контейнер службы, система проверки работоспособности периодически выполняет ваши проверки работоспособности и вызывает `PublishAsync` с полученным результатом. Это полезно в ситуации принудительной передачи данных мониторинга работоспособности, когда ожидается, что каждый процесс периодически вызывает систему мониторинга для определения работоспособности.
+Когда <xref:Microsoft.Extensions.Diagnostics.HealthChecks.IHealthCheckPublisher> добавляется в контейнер службы, система проверки работоспособности периодически выполняет ваши проверки работоспособности и вызывает `PublishAsync` с полученным результатом. Это полезно в ситуации принудительной передачи данных мониторинга работоспособности, когда ожидается, что каждый процесс периодически вызывает систему мониторинга для определения работоспособности.
 
-Интерфейс `IHealthCheckPublisher` содержит один метод:
+Интерфейс <xref:Microsoft.Extensions.Diagnostics.HealthChecks.IHealthCheckPublisher> содержит один метод:
 
 ```csharp
 Task PublishAsync(HealthReport report, CancellationToken cancellationToken);
 ```
+
+<xref:Microsoft.Extensions.Diagnostics.HealthChecks.HealthCheckPublisherOptions> позволяет задать следующие параметры:
+
+* <xref:Microsoft.Extensions.Diagnostics.HealthChecks.HealthCheckPublisherOptions.Delay> — начальная задержка, которая применяется после запуска приложения, но перед выполнением экземпляров <xref:Microsoft.Extensions.Diagnostics.HealthChecks.IHealthCheckPublisher>. Задержка применяется при запуске один раз и не распространяется на все последующие итерации. Значение по умолчанию — пять секунд.
+* <xref:Microsoft.Extensions.Diagnostics.HealthChecks.HealthCheckPublisherOptions.Period> — период выполнения <xref:Microsoft.Extensions.Diagnostics.HealthChecks.IHealthCheckPublisher>. Значение по умолчанию - 30 секунды.
+* <xref:Microsoft.Extensions.Diagnostics.HealthChecks.HealthCheckPublisherOptions.Predicate> — если <xref:Microsoft.Extensions.Diagnostics.HealthChecks.HealthCheckPublisherOptions.Predicate> имеет значение `null` (по умолчанию), служба издателя проверки работоспособности выполняет все зарегистрированные проверки работоспособности. Чтобы выполнить ряд проверок работоспособности, укажите функцию, которая отфильтровывает нужный набор. Предикат вычисляется в каждом периоде.
+* <xref:Microsoft.Extensions.Diagnostics.HealthChecks.HealthCheckPublisherOptions.Timeout> — время ожидания до выполнения проверок работоспособности для всех экземпляров <xref:Microsoft.Extensions.Diagnostics.HealthChecks.IHealthCheckPublisher>. Используйте <xref:System.Threading.Timeout.InfiniteTimeSpan>, чтобы выполнить проверки без задержки. Значение по умолчанию - 30 секунды.
+
+::: moniker range="= aspnetcore-2.2"
+
+> [!WARNING]
+> В выпуске ASP.NET Core 2.2 значение <xref:Microsoft.Extensions.Diagnostics.HealthChecks.HealthCheckPublisherOptions.Period> не поддерживается в реализации <xref:Microsoft.Extensions.Diagnostics.HealthChecks.IHealthCheckPublisher>. Здесь задается значение <xref:Microsoft.Extensions.Diagnostics.HealthChecks.HealthCheckPublisherOptions.Delay>. Эта проблема будет устранена в выпуске ASP.NET Core 3.0. Дополнительные сведения см. в описании проблемы [HealthCheckPublisherOptions.Period sets the value of .Delay](https://github.com/aspnet/Extensions/issues/1041) (HealthCheckPublisherOptions.Period задает значение свойству .Delay).
+
+::: moniker-end
+
+В примере приложения `ReadinessPublisher` является реализацией <xref:Microsoft.Extensions.Diagnostics.HealthChecks.IHealthCheckPublisher>. Состояния проверки работоспособности записывается в `Entries` и в журнал для каждой проверки:
+
+[!code-csharp[](health-checks/samples/2.x/HealthChecksSample/ReadinessPublisher.cs?name=snippet_ReadinessPublisher&highlight=20,22-23)]
+
+В примере приложения `LivenessProbeStartup` проверка готовности `StartupHostedService` использует задержку запуска в две секунды и выполняет проверку каждые 30 секунд. Чтобы активировать реализацию <xref:Microsoft.Extensions.Diagnostics.HealthChecks.IHealthCheckPublisher>, этот пример регистрирует `ReadinessPublisher` как отдельную службу в контейнере [внедрения зависимостей](xref:fundamentals/dependency-injection).
+
+[!code-csharp[](health-checks/samples/2.x/HealthChecksSample/LivenessProbeStartup.cs?name=snippet_ConfigureServices&highlight=12-17,28)]
+
+::: moniker range="= aspnetcore-2.2"
+
+> [!NOTE]
+> Следующий вариант позволяет добавлять экземпляр <xref:Microsoft.Extensions.Diagnostics.HealthChecks.IHealthCheckPublisher> в контейнер службы, когда один или несколько других размещенных служб уже добавлены в приложение. Этот способ не нужно использовать в выпуске ASP.NET Core 3.0. Дополнительные сведения см. в разделе https://github.com/aspnet/Extensions/issues/639.
+>
+> ```csharp
+> private const string HealthCheckServiceAssembly = 
+>     "Microsoft.Extensions.Diagnostics.HealthChecks.HealthCheckPublisherHostedService";
+>
+> services.TryAddEnumerable(
+>     ServiceDescriptor.Singleton(typeof(IHostedService), 
+>         typeof(HealthCheckPublisherOptions).Assembly
+>             .GetType(HealthCheckServiceAssembly)));
+> ```
+
+::: moniker-end
 
 > [!NOTE]
 > [BeatPulse](https://github.com/Xabaril/BeatPulse) включает издатели для нескольких систем, в том числе [Application Insights](/azure/application-insights/app-insights-overview).

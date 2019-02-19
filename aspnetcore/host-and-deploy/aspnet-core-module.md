@@ -4,14 +4,14 @@ author: guardrex
 description: Сведения о настройке модуля ASP.NET Core для размещения приложений ASP.NET Core.
 ms.author: riande
 ms.custom: mvc
-ms.date: 01/22/2019
+ms.date: 02/08/2019
 uid: host-and-deploy/aspnet-core-module
-ms.openlocfilehash: 4eea360d08c79b889db00132109cf49492f84de6
-ms.sourcegitcommit: ebf4e5a7ca301af8494edf64f85d4a8deb61d641
+ms.openlocfilehash: 9270d7b462bbac1ae0ad896c0937ea6dd909b2cd
+ms.sourcegitcommit: af8a6eb5375ef547a52ffae22465e265837aa82b
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54837784"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56159559"
 ---
 # <a name="aspnet-core-module"></a>Модуль ASP.NET Core
 
@@ -51,7 +51,11 @@ ms.locfileid: "54837784"
 
 При внутрипроцессном размещении применимы следующие характеристики:
 
-* Вместо сервера [Kestrel](xref:fundamentals/servers/kestrel) используется HTTP-сервер IIS (`IISHttpServer`).
+* Вместо сервера [Kestrel](xref:fundamentals/servers/kestrel) используется HTTP-сервер IIS (`IISHttpServer`). Для внутрипроцессной обработки [CreateDefaultBuilder](xref:fundamentals/host/web-host#set-up-a-host) вызывает <xref:Microsoft.AspNetCore.Hosting.WebHostBuilderIISExtensions.UseIIS*> для выполнения следующих действий:
+
+  * Регистрация `IISHttpServer`.
+  * Настройка порта и базового пути, которые будет прослушивать сервер при выполнении за модулем ASP.NET Core.
+  * Настройка перехвата ошибок запуска на узле.
 
 * [Атрибут requestTimeout](#attributes-of-the-aspnetcore-element) не применяется к внутрипроцессному размещению.
 
@@ -83,6 +87,11 @@ ms.locfileid: "54837784"
 ```
 
 Сервер [Kestrel](xref:fundamentals/servers/kestrel) используется вместо HTTP-сервера IIS (`IISHttpServer`).
+
+Для внепроцессной обработки [CreateDefaultBuilder](xref:fundamentals/host/web-host#set-up-a-host) вызывает <xref:Microsoft.AspNetCore.Hosting.WebHostBuilderIISExtensions.UseIISIntegration*> для выполнения следующих действий:
+
+* Настройка порта и базового пути, которые будет прослушивать сервер при выполнении за модулем ASP.NET Core.
+* Настройка перехвата ошибок запуска на узле.
 
 ### <a name="hosting-model-changes"></a>Изменения модели размещения
 
@@ -463,7 +472,7 @@ ms.locfileid: "54837784"
 
 * CONSOLE
 * EVENTLOG
-* ФАЙЛ
+* FILE
 
 Параметры обработчика могут быть указаны с помощью переменных среды:
 
@@ -497,6 +506,32 @@ ms.locfileid: "54837784"
 1. Запустите установщик.
 1. Экспортируйте обновленный файл *applicationHost.config* в общую папку.
 1. Повторно включите общую конфигурацию IIS.
+
+::: moniker range=">= aspnetcore-2.2"
+
+## <a name="application-initialization"></a>Инициализация приложений
+
+Функция [инициализации приложений](/iis/get-started/whats-new-in-iis-8/iis-80-application-initialization) в IIS отправляет в приложение HTTP-запрос при запуске или перезапуске пула приложений. Этот запрос инициирует запуск приложения. Инициализация приложений может использоваться в [модели внутрипроцессного размещения](xref:fundamentals/servers/index#in-process-hosting-model) и [модели внепроцессного размещения](xref:fundamentals/servers/index#out-of-process-hosting-model) с модулем ASP.NET Core версии 2.
+
+Чтобы включить инициализацию приложений, сделайте следующее:
+
+1. Убедитесь, что включена роль инициализации приложения IIS.
+   * На ОС Windows 7 и более поздних версий. Последовательно выберите **Панель управления** > **Программы** > **Программы и компоненты** > **Включение или отключение компонентов Windows** (в левой части экрана). Откройте **Службы IIS** > **Службы Интернета** > **Компоненты разработки приложений**. Установите флажок **Инициализация приложений**.
+   * В Windows Server 2008 R2 или более поздней версии откройте **мастер добавления ролей и компонентов**. Добравшись до панели **Выбор служб ролей**, откройте узел **Разработка приложений** и установите флажок **Инициализация приложений**.
+1. В диспетчере IIS выберите **Пулы приложений** на панели **Подключения**.
+1. В списке выберите пул приложений для приложения.
+1. Выберите **Дополнительные параметры** в разделе **Изменение пула приложений** панели **Действия**.
+1. Для параметра **Режим запуска** выберите вариант **AlwaysRunning**.
+1. Откройте узел **Сайты** на панели **Подключения**.
+1. Выберите нужное приложение.
+1. Выберите **Дополнительные параметры** в разделе **Управление веб-сайтом** на панели **Действия**.
+1. Для параметра **Предварительная загрузка включена** выберите значение **True**.
+
+Дополнительные сведения см. в статье [об инициализации приложений в IIS 8.0](/iis/get-started/whats-new-in-iis-8/iis-80-application-initialization).
+
+Приложения, которые используют [модель внепроцессного размещения](xref:fundamentals/servers/index#out-of-process-hosting-model), должны периодически проверять связь с приложением с помощью внешней службы, чтобы поддерживать его в рабочем состоянии.
+
+::: moniker-end
 
 ## <a name="module-version-and-hosting-bundle-installer-logs"></a>Версия модуля и журналы установщика хостинга Bundle
 
@@ -562,7 +597,7 @@ ms.locfileid: "54837784"
 
 ::: moniker-end
 
-### <a name="configuration"></a>Конфигурация
+### <a name="configuration"></a>Параметр Configuration
 
 **Службы IIS**
 

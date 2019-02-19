@@ -1,38 +1,44 @@
 ---
-title: 'ASP.NET Core MVC с Entity Framework Core: учебник 1 из 10'
+title: Учебник. Начало работы с EF Core в веб-приложении MVC ASP.NET
+description: Это первый учебник из серии, в котором с самого начала описывается построение примера приложения для университета Contoso.
 author: rick-anderson
-description: ''
 ms.author: tdykstra
 ms.custom: mvc
-ms.date: 10/24/2018
+ms.date: 02/06/2019
+ms.topic: tutorial
 uid: data/ef-mvc/intro
-ms.openlocfilehash: 1191632555dc9331f815c1bfb1f313459824754a
-ms.sourcegitcommit: 68a3081dd175d6518d1bfa31b4712bd8a2dd3864
+ms.openlocfilehash: f7b557c8e560393ae886c46fad95c48ccbcc65b4
+ms.sourcegitcommit: 5e3797a02ff3c48bb8cb9ad4320bfd169ebe8aba
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53577907"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56102972"
 ---
-# <a name="aspnet-core-mvc-with-entity-framework-core---tutorial-1-of-10"></a>ASP.NET Core MVC с Entity Framework Core: учебник 1 из 10
-
-[!INCLUDE [RP better than MVC](~/includes/RP-EF/rp-over-mvc-21.md)]
-
-::: moniker range="= aspnetcore-2.0"
-
-Авторы: [Том Дайкстра](https://github.com/tdykstra) (Tom Dykstra) и [Рик Андерсон](https://twitter.com/RickAndMSFT) (Rick Anderson)
+# <a name="tutorial-get-started-with-ef-core-in-an-aspnet-mvc-web-app"></a>Учебник. Начало работы с EF Core в веб-приложении MVC ASP.NET
 
 [!INCLUDE [RP better than MVC](~/includes/RP-EF/rp-over-mvc.md)]
 
-На примере учебного веб-приложения "Университет Contoso" демонстрируется процесс создания веб-приложений ASP.NET Core 2.0 MVC с помощью Entity Framework (EF) Core 2.0 и Visual Studio 2017.
+На примере веб-приложения Contoso University показано, как создавать веб-приложения MVC ASP.NET Core 2.2 с помощью Entity Framework (EF) Core 2.0 и Visual Studio 2017.
 
 В этом примере приложения реализуется веб-сайт вымышленного университета Contoso. На нем предусмотрены различные функции, в том числе прием учащихся, создание курсов и назначение преподавателей. Это первый учебник из серии, в котором с самого начала описывается построение примера приложения для университета Contoso.
-
-[Скачайте или ознакомьтесь с готовым приложением.](https://github.com/aspnet/Docs/tree/master/aspnetcore/data/ef-mvc/intro/samples/cu-final)
 
 EF Core 2.0 — это последняя версия платформы EF, однако в ней реализованы еще не все возможности EF 6.x. Дополнительные сведения о выборе между платформами EF 6.x и EF Core см. в [этой статье](/ef/efcore-and-ef6/). Если вы используете платформу EF 6.x, ознакомьтесь с [предыдущей версией этой серии учебников](/aspnet/mvc/overview/getting-started/getting-started-with-ef-using-mvc/creating-an-entity-framework-data-model-for-an-asp-net-mvc-application).
 
 > [!NOTE]
 > Версия этого учебника для ASP.NET Core 1.1 и VS 2017 с обновлением 2 в формате PDF доступна [здесь](https://webpifeed.blob.core.windows.net/webpifeed/Partners/efmvc1.1.pdf).
+
+В этом учебнике рассмотрены следующие задачи.
+
+> [!div class="checklist"]
+> * Создание веб-приложения MVC ASP.NET Core
+> * Настройка стиля сайта
+> * Дополнительные сведения о пакетах NuGet EF Core
+> * Создание модели данных
+> * Создание контекста базы данных
+> * Регистрация SchoolContext
+> * Инициализация базы данных с тестовыми данными
+> * Создание контроллера и представлений
+> * Просмотр базы данных
 
 ## <a name="prerequisites"></a>Предварительные требования
 
@@ -45,7 +51,7 @@ EF Core 2.0 — это последняя версия платформы EF, 
 > [!TIP]
 > Эта серия включает в себя 10 учебников, содержание каждого из которых базируется на предыдущих учебниках. После успешного завершения каждого руководства рекомендуется сохранять копию проекта. Таким образом, при возникновении проблем вы сможете вернуться к предыдущему учебнику, а не к началу серии.
 
-## <a name="the-contoso-university-web-application"></a>Веб-приложение университета Contoso
+## <a name="contoso-university-web-app"></a>Веб-приложение Contoso University
 
 В рамках этих учебников вы будете создавать приложение, которое представляет собой простой веб-сайт университета.
 
@@ -57,7 +63,7 @@ EF Core 2.0 — это последняя версия платформы EF, 
 
 Стиль пользовательского интерфейса этого сайта практически полностью основан на встроенных шаблонах, поскольку это позволяет сосредоточиться на изучении и использовании возможностей платформы Entity Framework.
 
-## <a name="create-an-aspnet-core-mvc-web-application"></a>Создание веб-приложения ASP.NET Core MVC
+## <a name="create-aspnet-core-mvc-web-app"></a>Создание веб-приложения MVC ASP.NET Core
 
 Откройте Visual Studio и создайте новый веб-проект ASP.NET Core C# с именем "ContosoUniversity".
 
@@ -69,19 +75,19 @@ EF Core 2.0 — это последняя версия платформы EF, 
 
 * Введите имя **ContosoUniversity** и нажмите кнопку **ОК**.
 
-  ![Диалоговое окно создания нового проекта](intro/_static/new-project.png)
+  ![Диалоговое окно создания нового проекта](intro/_static/new-project2.png)
 
 * Дождитесь появления диалогового окна **Создание веб-приложения ASP.NET Core (.NET Core)**.
 
-* Выберите **ASP.NET Core 2.0** и шаблон **Веб-приложение (модель-представление-контроллер)**.
+  ![Диалоговое окно "Создание проекта ASP.NET Core"](intro/_static/new-aspnet2.png)
 
-  **Примечание.** В этом учебнике используются ASP.NET Core 2.0 и EF Core 2.0 или более поздней версии. Убедитесь, что не выбран элемент **ASP.NET Core 1.1**.
+* Выберите **ASP.NET Core 2.2** и шаблон **Веб-приложение (Модель — представление — контроллер)**.
+
+  **Примечание.** В этом руководстве используются версии ASP.NET Core 2.2 и EF Core 2.0 или выше.
 
 * Убедитесь, что для параметра **Проверка подлинности** задано значение **Без проверки подлинности**.
 
 * Нажмите кнопку **ОК**.
-
-  ![Диалоговое окно "Создание проекта ASP.NET Core"](intro/_static/new-aspnet.png)
 
 ## <a name="set-up-the-site-style"></a>Настройка стиля сайта
 
@@ -91,11 +97,11 @@ EF Core 2.0 — это последняя версия платформы EF, 
 
 * Замените все вхождения "ContosoUniversity" на "Contoso University". Таких элементов будет три.
 
-* Добавьте пункты меню **Students** (Учащиеся), **Courses** (Курсы), **Instructors** (Преподаватели) и **Departments** (Кафедры). Удалите пункт меню **Contact** (Контакты).
+* Добавьте пункты меню **About** (Сведения), **Students** (Учащиеся), **Courses** (Курсы), **Instructors** (Преподаватели) и **Departments** (Кафедры). Удалите пункт меню **Privacy** (Конфиденциальность).
 
 Изменения выделены.
 
-[!code-cshtml[](intro/samples/cu/Views/Shared/_Layout.cshtml?highlight=6,30,36-39,48)]
+[!code-cshtml[](intro/samples/cu/Views/Shared/_Layout.cshtml?highlight=6,32-36,51)]
 
 Замените содержимое файла *Views/Home/Index.cshtml* следующим кодом, который заменяет текст о ASP.NET и MVC описанием этого приложения:
 
@@ -105,7 +111,7 @@ EF Core 2.0 — это последняя версия платформы EF, 
 
 ![Домашняя страница университета Contoso](intro/_static/home-page.png)
 
-## <a name="entity-framework-core-nuget-packages"></a>Пакеты Entity Framework Core NuGet
+## <a name="about-ef-core-nuget-packages"></a>Сведения о пакетах NuGet EF Core
 
 Чтобы реализовать поддержку EF Core в проекте, установите поставщик целевой базы данных. В этом учебнике используется SQL Server, для которого требуется пакет поставщика [Microsoft.EntityFrameworkCore.SqlServer](https://www.nuget.org/packages/Microsoft.EntityFrameworkCore.SqlServer/). Этот пакет входит в [метапакет Microsoft.AspNetCore.App](xref:fundamentals/metapackage-app), поэтому если приложение уже содержит ссылку на пакет `Microsoft.AspNetCore.App`, ссылаться на него не нужно.
 
@@ -185,7 +191,7 @@ EF Core 2.0 — это последняя версия платформы EF, 
 
 [!code-csharp[](intro/samples/cu/Data/SchoolContext.cs?name=snippet_TableNames&highlight=16-21)]
 
-## <a name="register-the-context-with-dependency-injection"></a>Регистрация контекста с помощью внедрения зависимостей
+## <a name="register-the-schoolcontext"></a>Регистрация SchoolContext
 
 ASP.NET Core по умолчанию реализует технологию [внедрения зависимостей](../../fundamentals/dependency-injection.md). С помощью внедрения зависимостей службы (например, контекст базы данных EF) регистрируются во время запуска приложения. Затем компоненты, которые используют эти службы (например, контроллеры MVC), обращаются к ним через параметры конструктора. Код конструктора контроллера, который получает экземпляр контекста, будет приведен позднее в этом учебнике.
 
@@ -207,7 +213,7 @@ ASP.NET Core по умолчанию реализует технологию [в
 
 Строка подключения указывает на базу данных SQL Server LocalDB. LocalDB — это упрощенная версия ядра СУБД SQL Server Express, предназначенная для разработки приложений и не ориентированная на использование в производственной среде. LocalDB запускается по запросу в пользовательском режиме, поэтому настройки не слишком сложны. По умолчанию база данных LocalDB создает файлы *.mdf* в каталоге `C:/Users/<user>`.
 
-## <a name="add-code-to-initialize-the-database-with-test-data"></a>Добавление кода для инициализации базы с использованием тестовых данных
+## <a name="initialize-db-with-test-data"></a>Инициализация базы данных с тестовыми данными
 
 Платформа Entity Framework создает пустую базу данных. В этом разделе вы напишете метод, который вызывается после создания базы данных и заполняет ее тестовыми данными.
 
@@ -235,7 +241,7 @@ ASP.NET Core по умолчанию реализует технологию [в
 
 Теперь при первом запуске приложения будет создана и заполнена тестовыми данными необходимая для работы база данных. При любом изменении модели данных вы можете удалить базу, обновить метод заполнения и начать работу с новой базой данных аналогичным способом. В следующих учебниках вы узнаете, как изменить базу данных при изменении модели данных, не прибегая к ее удалению и повторному созданию.
 
-## <a name="create-a-controller-and-views"></a>Создание контроллера и представлений
+## <a name="create-controller-and-views"></a>Создание контроллера и представлений
 
 Далее вы будете использовать механизм шаблонов Visual Studio для добавления контроллера и представлений MVC, которые будут использовать платформу EF для запроса данных и их сохранения.
 
@@ -252,9 +258,9 @@ ASP.NET Core по умолчанию реализует технологию [в
 
   * Выберите **Контроллер MVC с представлениями, использующий Entity Framework**.
 
-  * Нажмите кнопку **Добавить**.
+  * Нажмите кнопку **Добавить**. Откроется диалоговое окно **добавления контроллера MVC с представлениями с использованием Entity Framework**.
 
-* В диалоговом окне **Добавление контроллера**:
+    ![Шаблон Student](intro/_static/scaffold-student2.png)
 
   * В разделе **Класс модели** выберите **Student**.
 
@@ -263,8 +269,6 @@ ASP.NET Core по умолчанию реализует технологию [в
   * Оставьте предлагаемое по умолчанию имя **StudentsController**.
 
   * Нажмите кнопку **Добавить**.
-
-  ![Шаблон Student](intro/_static/scaffold-student.png)
 
   При нажатии кнопки **Добавить** подсистема формирования шаблонов Visual Studio создает файл *StudentsController.cs* и набор представлений (файлы с расширением *.cshtml*), которые будут работать с контроллером.
 
@@ -360,11 +364,27 @@ ASP.NET Core по умолчанию реализует технологию [в
 
 Дополнительные сведения об асинхронных методах программирования в .NET см. в разделе [Обзор асинхронной модели](/dotnet/articles/standard/async).
 
-## <a name="summary"></a>Сводка
+## <a name="get-the-code"></a>Получение кода
 
-Теперь вы создали простое приложение, которое использует Entity Framework Core и SQL Server Express LocalDB для хранения и отображения данных. В следующем учебнике вы узнаете, как выполнять основные операции CRUD (создание, чтение, обновление и удаление).
+[Скачайте или ознакомьтесь с готовым приложением.](https://github.com/aspnet/Docs/tree/master/aspnetcore/data/ef-mvc/intro/samples/cu-final)
 
-::: moniker-end
+## <a name="next-steps"></a>Следующие шаги
 
-> [!div class="step-by-step"]
-> [Вперед](crud.md)
+В этом учебнике рассмотрены следующие задачи.
+
+> [!div class="checklist"]
+> * Создание веб-приложения MVC ASP.NET Core
+> * Настройка стиля сайта
+> * Дополнительные сведения о пакетах NuGet EF Core
+> * Создание модели данных
+> * Создание контекста базы данных
+> * Регистрация SchoolContext
+> * Инициализация базы данных с тестовыми данными
+> * Создание контроллера и представлений
+> * Просмотр базы данных
+
+В следующем учебнике вы узнаете, как выполнять основные операции CRUD (создание, чтение, обновление и удаление).
+
+В следующем руководстве описано, как выполнять основные операции CRUD (создание, чтение, обновление и удаление).
+> [!div class="nextstepaction"]
+> [Реализация базовых функций CRUD](crud.md)

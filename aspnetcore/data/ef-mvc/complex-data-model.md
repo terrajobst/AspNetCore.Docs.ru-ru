@@ -1,27 +1,20 @@
 ---
-title: ASP.NET Core MVC с EF Core — модель данных — 5 из 10
-author: rick-anderson
+title: Учебник. Использование ASP.NET MVC с EF  Core. Создание сложной модели данных
 description: В этом руководстве вы добавите дополнительные сущности и связи, а также настроите модель данных, указав правила форматирования, проверки и сопоставления.
+author: rick-anderson
 ms.author: tdykstra
 ms.custom: mvc
-ms.date: 10/24/2018
+ms.date: 02/05/2019
+ms.topic: tutorial
 uid: data/ef-mvc/complex-data-model
-ms.openlocfilehash: 87212edbfe34af6de938cf95314501e56e64a8be
-ms.sourcegitcommit: 4d74644f11e0dac52b4510048490ae731c691496
+ms.openlocfilehash: c08fd6ff7c19c63161135b4c87609f6edd3edb80
+ms.sourcegitcommit: 5e3797a02ff3c48bb8cb9ad4320bfd169ebe8aba
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50091045"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56103128"
 ---
-# <a name="aspnet-core-mvc-with-ef-core---data-model---5-of-10"></a>ASP.NET Core MVC с EF Core — модель данных — 5 из 10
-
-[!INCLUDE [RP better than MVC](~/includes/RP-EF/rp-over-mvc-21.md)]
-
-::: moniker range="= aspnetcore-2.0"
-
-Авторы: [Том Дайкстра](https://github.com/tdykstra) (Tom Dykstra) и [Рик Андерсон](https://twitter.com/RickAndMSFT) (Rick Anderson)
-
-На примере учебного веб-приложения "Университет Contoso" демонстрируется процесс создания веб-приложений ASP.NET Core MVC с помощью Entity Framework Core и Visual Studio. Сведения о серии руководств см. в [первом руководстве серии](intro.md).
+# <a name="tutorial-create-a-complex-data-model---aspnet-mvc-with-ef-core"></a>Учебник. Использование ASP.NET MVC с EF  Core. Создание сложной модели данных
 
 В предыдущих руководствах вы работали с простой моделью данных, состоящей из трех сущностей. В этом руководстве вы добавите дополнительные сущности и связи, а также настроите модель данных, указав правила форматирования, проверки и сопоставления базы данных.
 
@@ -29,7 +22,27 @@ ms.locfileid: "50091045"
 
 ![Схема сущностей](complex-data-model/_static/diagram.png)
 
-## <a name="customize-the-data-model-by-using-attributes"></a>Настройка модели данных с использованием атрибутов
+В этом учебнике рассмотрены следующие задачи.
+
+> [!div class="checklist"]
+> * Настройка модели данных
+> * Изменения сущности Student
+> * Создание сущности Instructor
+> * Создание сущности OfficeAssignment
+> * Изменение сущности Course
+> * Создание сущности Department
+> * Изменение сущности Enrollment
+> * Обновление контекста базы данных
+> * Начальное заполнение базы данных тестовыми данными
+> * Добавление миграции
+> * Изменение строки подключения
+> * Обновление базы данных
+
+## <a name="prerequisites"></a>Предварительные требования
+
+* [Использование функции миграций EF Core для ASP.NET Core в веб-приложении MVC](migrations.md)
+
+## <a name="customize-the-data-model"></a>Настройка модели данных
 
 В этом разделе вы узнаете, как настроить модель данных с помощью атрибутов, которые указывают правила форматирования, проверки и сопоставления базы данных. Затем в нескольких последующих разделах вы создаете всю модель данных School целиком, добавив атрибуты к уже созданным классам и создав классы для остальных типов сущностей в модели.
 
@@ -97,9 +110,7 @@ dotnet ef database update
 
 Метка времени, добавленная в качестве префикса к имени файла миграций, используется платформой Entity Framework для упорядочения миграций. Вы можете создать несколько миграций перед выполнением команды update-database, после чего все миграции применяются в порядке их создания.
 
-Запустите приложение, выберите вкладку **Students** (Учащиеся), щелкните **Create New** (Создать) и введите любое имя длиннее 50 символов. При нажатии кнопки **Create** (Создать) проверка на стороне клиента отображает сообщение об ошибке.
-
-![Страница указателя учащихся с ошибками длины строки](complex-data-model/_static/string-length-errors.png)
+Запустите приложение, выберите вкладку **Students** (Учащиеся), щелкните **Create New** (Создать) и попробуйте ввести любое имя длиннее 50 символов. Приложение должно отобразить ошибку. 
 
 ### <a name="the-column-attribute"></a>Атрибут Column
 
@@ -132,7 +143,7 @@ dotnet ef database update
 > [!Note]
 > Если попытаться выполнить компиляцию до создания всех классов сущностей в следующих разделах, могут возникнуть ошибки компилятора.
 
-## <a name="final-changes-to-the-student-entity"></a>Окончательные изменения в сущности Student
+## <a name="changes-to-student-entity"></a>Изменения сущности Student
 
 ![Сущность Student](complex-data-model/_static/student-entity.png)
 
@@ -160,7 +171,7 @@ public string LastName { get; set; }
 
 `FullName` — это вычисляемое свойство, которое возвращает значение, созданное путем объединения двух других свойств. Поэтому оно имеет только метод доступа get, и в базе данных не будет создан столбец `FullName`.
 
-## <a name="create-the-instructor-entity"></a>Создание сущности Instructor
+## <a name="create-instructor-entity"></a>Создание сущности Instructor
 
 ![Сущность Instructor](complex-data-model/_static/instructor-entity.png)
 
@@ -196,7 +207,7 @@ public ICollection<CourseAssignment> CourseAssignments { get; set; }
 public OfficeAssignment OfficeAssignment { get; set; }
 ```
 
-## <a name="create-the-officeassignment-entity"></a>Создание сущности OfficeAssignment
+## <a name="create-officeassignment-entity"></a>Создание сущности OfficeAssignment
 
 ![Сущность OfficeAssignment](complex-data-model/_static/officeassignment-entity.png)
 
@@ -223,7 +234,7 @@ public int InstructorID { get; set; }
 
 Можно поместить атрибут `[Required]` в свойство навигации Instructor, чтобы указать, что должен присутствовать связанный преподаватель, однако это необязательно, так как внешний ключ `InstructorID` (который также является ключом для этой таблицы) не допускает значение null.
 
-## <a name="modify-the-course-entity"></a>Изменение сущности Course
+## <a name="modify-course-entity"></a>Изменение сущности Course
 
 ![Сущность Course](complex-data-model/_static/course-entity.png)
 
@@ -272,7 +283,7 @@ public ICollection<Enrollment> Enrollments { get; set; }
 public ICollection<CourseAssignment> CourseAssignments { get; set; }
 ```
 
-## <a name="create-the-department-entity"></a>Создание сущности Department
+## <a name="create-department-entity"></a>Создание сущности Department
 
 ![Сущность Department](complex-data-model/_static/department-entity.png)
 
@@ -318,7 +329,7 @@ public ICollection<Course> Courses { get; set; }
 >    .OnDelete(DeleteBehavior.Restrict)
 > ```
 
-## <a name="modify-the-enrollment-entity"></a>Изменение сущности Enrollment
+## <a name="modify-enrollment-entity"></a>Изменение сущности Enrollment
 
 ![Сущность Enrollment](complex-data-model/_static/enrollment-entity.png)
 
@@ -344,7 +355,7 @@ public int StudentID { get; set; }
 public Student Student { get; set; }
 ```
 
-## <a name="many-to-many-relationships"></a>Связи многие ко многим
+## <a name="many-to-many-relationships"></a>Связи "многие ко многим"
 
 Между сущностями Student и Course имеется связь многие ко многим, а сущность Enrollment выступает в качестве таблицы соединения многие ко многим *с полезными данными* в базе данных. Фраза "с полезными данными" означает, что таблица Enrollment содержит дополнительные данные, кроме внешних ключей для присоединяемых таблиц (в данном случае — первичный ключ и свойство Grade).
 
@@ -384,7 +395,7 @@ public Student Student { get; set; }
 
 Этот код добавляет новые сущности и настраивает составной первичный ключ сущности CourseAssignment.
 
-## <a name="fluent-api-alternative-to-attributes"></a>Текучий API вместо атрибутов
+## <a name="about-a-fluent-api-alternative"></a>Сведения об альтернативе текучему API
 
 Код в предыдущем методе `OnModelCreating` класса `DbContext` использует для настройки поведения EF *текучий API*. Этот API называется "текучим", так как часто используется для объединения серии вызовов методов в один оператор, как показано в этом примере из [документации по EF Core](/ef/core/modeling/#methods-of-configuration):
 
@@ -411,7 +422,7 @@ protected override void OnModelCreating(ModelBuilder modelBuilder)
 
 Кроме линий связей один ко многим (1 к \*), здесь можно видеть линию связи один к нулю или к одному (1 к 0..1) между сущностями Instructor и OfficeAssignment, а также линию связи нуль или один ко многим (0..1 to *) между сущностями Instructor и Department.
 
-## <a name="seed-the-database-with-test-data"></a>Заполнение базы данных тестовыми данными
+## <a name="seed-database-with-test-data"></a>Начальное заполнение базы данных тестовыми данными
 
 Замените код в файле *Data/DbInitializer.cs* на приведенный ниже, чтобы предоставить начальные данные для созданных вами сущностей.
 
@@ -456,7 +467,7 @@ Done. To undo this action, use 'ef migrations remove'
 
 Сохраните изменения и выполните сборку проекта.
 
-## <a name="change-the-connection-string-and-update-the-database"></a>Изменение строки подключения и обновление базы данных
+## <a name="change-the-connection-string"></a>Изменение строки подключения
 
 Теперь у вас есть новый код в классе `DbInitializer`, который добавляет начальные данные для новых сущностей в пустую базу данных. Чтобы велеть EF создать пустую базу данных, в файле *appsettings.json* измените имя базы данных в строке подключения на ContosoUniversity3 или другое имя, которое вы еще не использовали на компьютере, с которым работаете.
 
@@ -474,6 +485,8 @@ Done. To undo this action, use 'ef migrations remove'
 > ```console
 > dotnet ef database drop
 > ```
+
+## <a name="update-the-database"></a>Обновление базы данных
 
 После изменения имени базы данных или ее удаления запустите команду `database update` в командном окне, чтобы выполнить миграции.
 
@@ -493,12 +506,28 @@ dotnet ef database update
 
 ![Данные CourseAssignment в SSOX](complex-data-model/_static/ssox-ci-data.png)
 
-## <a name="summary"></a>Сводка
+## <a name="get-the-code"></a>Получение кода
 
-Теперь у вас есть более сложная модель данных и соответствующая база данных. В следующем руководстве вы подробнее узнаете о доступе к связанным данным.
+[Скачайте или ознакомьтесь с готовым приложением.](https://github.com/aspnet/Docs/tree/master/aspnetcore/data/ef-mvc/intro/samples/cu-final)
 
-::: moniker-end
+## <a name="next-steps"></a>Следующие шаги
 
-> [!div class="step-by-step"]
-> [Назад](migrations.md)
-> [Вперед](read-related-data.md)
+В этом учебнике рассмотрены следующие задачи.
+
+> [!div class="checklist"]
+> * Настройка модели данных
+> * Изменения сущности Student
+> * Создание сущности Instructor
+> * Создание сущности OfficeAssignment
+> * Изменение сущности Course
+> * Создание сущности Department
+> * Изменение сущности Enrollment
+> * Обновление контекста базы данных
+> * Начальное заполнение базы данных тестовыми данными
+> * Добавление миграции
+> * Изменение строки подключения
+> * Обновление базы данных
+
+В следующем руководстве описано, как получить доступ к связанным данным.
+> [!div class="nextstepaction"]
+> [Получение доступа к связанным данным](read-related-data.md)

@@ -4,14 +4,14 @@ author: ardalis
 description: Узнайте, как работают фильтры и как использовать их в ASP.NET Core MVC.
 ms.author: riande
 ms.custom: mvc
-ms.date: 1/15/2019
+ms.date: 02/08/2019
 uid: mvc/controllers/filters
-ms.openlocfilehash: fe3082481b51c968fd361dbcc9553c4e35a36f2a
-ms.sourcegitcommit: 728f4e47be91e1c87bb7c0041734191b5f5c6da3
+ms.openlocfilehash: 3cd576b389a2a4384c0ba90b5740ac42140533cc
+ms.sourcegitcommit: af8a6eb5375ef547a52ffae22465e265837aa82b
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54444354"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56159318"
 ---
 # <a name="filters-in-aspnet-core"></a>Фильтры в ASP.NET Core
 
@@ -71,6 +71,7 @@ ms.locfileid: "54444354"
 > Реализуйте **либо** синхронный, либо асинхронный вариант интерфейса фильтра, но не оба варианта. Платформа сначала проверяет, реализует ли фильтр асинхронный интерфейс. Если да, вызывается он. В противном случае вызываются методы синхронного интерфейса. Если бы в одном классе были реализованы оба интерфейса, вызывался бы только асинхронный метод. При использовании абстрактных классов, таких как <xref:Microsoft.AspNetCore.Mvc.Filters.ActionFilterAttribute>, следует переопределять только синхронные методы или асинхронный метод каждого типа фильтра.
 
 ### <a name="ifilterfactory"></a>IFilterFactory
+
 [IFilterFactory](/dotnet/api/microsoft.aspnetcore.mvc.filters.ifilterfactory) реализует <xref:Microsoft.AspNetCore.Mvc.Filters.IFilterMetadata>. Поэтому экземпляр `IFilterFactory` можно использовать в качестве экземпляра `IFilterMetadata` в любом месте конвейера фильтров. Когда платформа готовится вызвать фильтр, она пытается привести его к `IFilterFactory`. Если приведение проходит успешно, вызывается метод [CreateInstance](/dotnet/api/microsoft.aspnetcore.mvc.filters.ifilterfactory.createinstance) для создания вызываемого экземпляра `IFilterMetadata`. Это обеспечивает высокую степень гибкости, так как при запуске приложения нет необходимости в явном и точном определении конвейера фильтров.
 
 Еще один подход к созданию фильтров заключается в реализации интерфейса `IFilterFactory` для собственных атрибутов.
@@ -348,8 +349,12 @@ System.InvalidOperationException: No service for type
 
 ## <a name="result-filters"></a>Фильтры результатов
 
-* Реализуют либо интерфейс `IResultFilter`, либо интерфейс `IAsyncResultFilter`.
+* Реализация интерфейса:
+  * `IResultFilter` или `IAsyncResultFilter`.
+  * `IAlwaysRunResultFilter` или `IAsyncAlwaysRunResultFilter`
 * Их выполнение охватывает выполнение результатов действий. 
+
+### <a name="iresultfilter-and-iasyncresultfilter"></a>IResultFilter и IAsyncResultFilter
 
 Вот пример фильтра результатов, который добавляет заголовок HTTP.
 
@@ -371,6 +376,35 @@ System.InvalidOperationException: No service for type
 Для `IAsyncResultFilter` вызов `await next` для `ResultExecutionDelegate` приводит к выполнению последующих фильтров результатов и результата действия. Чтобы сократить выполнение, присвойте `ResultExecutingContext.Cancel` значение true и не вызывайте `ResultExectionDelegate`.
 
 Платформа предоставляет абстрактный класс `ResultFilterAttribute`, подклассы которого можно создавать. Представленный ранее класс [AddHeaderAttribute](#add-header-attribute) — это пример атрибута фильтра результатов.
+
+### <a name="ialwaysrunresultfilter-and-iasyncalwaysrunresultfilter"></a>IAlwaysRunResultFilter и IAsyncAlwaysRunResultFilter
+
+Интерфейсы <xref:Microsoft.AspNetCore.Mvc.Filters.IAlwaysRunResultFilter> и <xref:Microsoft.AspNetCore.Mvc.Filters.IAsyncAlwaysRunResultFilter> объявляют реализацию <xref:Microsoft.AspNetCore.Mvc.Filters.IResultFilter>, которая выполняется для результатов действий. К результату действия применяется фильтр, если <xref:Microsoft.AspNetCore.Mvc.Filters.IExceptionFilter> или <xref:Microsoft.AspNetCore.Mvc.Filters.IAuthorizationFilter> не применяются и не игнорируют ответ.
+
+Другими словами, эти фильтры выполняются всегда, кроме случаев, когда фильтр исключений или авторизации игнорирует их. Фильтры, отличающиеся от `IExceptionFilter` и `IAuthorizationFilter`, не игнорируют всегда выполняющиеся фильтры.
+
+Например, следующий фильтр всегда выполняется, задавая результат действия (<xref:Microsoft.AspNetCore.Mvc.ObjectResult>) с кодом состояния *422 Unprocessable Entity* при сбое согласования содержимого:
+
+```csharp
+public class UnprocessableResultFilter : Attribute, IAlwaysRunResultFilter
+{
+    public void OnResultExecuting(ResultExecutingContext context)
+    {
+        if (context.Result is StatusCodeResult statusCodeResult &&
+            statusCodeResult.StatusCode == 415)
+        {
+            context.Result = new ObjectResult("Can't process this!")
+            {
+                StatusCode = 422,
+            };
+        }
+    }
+
+    public void OnResultExecuted(ResultExecutedContext context)
+    {
+    }
+}
+```
 
 ## <a name="using-middleware-in-the-filter-pipeline"></a>Использование ПО промежуточного слоя в конвейере фильтров
 

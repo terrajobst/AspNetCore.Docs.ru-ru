@@ -1,33 +1,40 @@
 ---
-title: ASP.NET Core MVC с EF Core — наследование — 9 из 10
-author: rick-anderson
+title: Учебник. Использование ASP.NET MVC с EF Core. Реализация наследования
 description: В этом учебнике показано, как реализовать наследование в модели данных с использованием платформы Entity Framework Core в приложении ASP.NET Core.
+author: rick-anderson
 ms.author: tdykstra
 ms.custom: mvc
-ms.date: 10/24/2018
+ms.date: 02/05/2019
+ms.topic: tutorial
 uid: data/ef-mvc/inheritance
-ms.openlocfilehash: 60417040dd296311e1aecff8f224aadf8da82779
-ms.sourcegitcommit: 4d74644f11e0dac52b4510048490ae731c691496
+ms.openlocfilehash: 0a5eb1aba43bc2adf746202772c7f98eff49b4ff
+ms.sourcegitcommit: 5e3797a02ff3c48bb8cb9ad4320bfd169ebe8aba
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50090762"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56103011"
 ---
-# <a name="aspnet-core-mvc-with-ef-core---inheritance---9-of-10"></a>ASP.NET Core MVC с EF Core — наследование — 9 из 10
-
-[!INCLUDE [RP better than MVC](~/includes/RP-EF/rp-over-mvc-21.md)]
-
-::: moniker range="= aspnetcore-2.0"
-
-Авторы: [Том Дайкстра](https://github.com/tdykstra) (Tom Dykstra) и [Рик Андерсон](https://twitter.com/RickAndMSFT) (Rick Anderson)
-
-На примере учебного веб-приложения "Университет Contoso" демонстрируется процесс создания веб-приложений ASP.NET Core MVC с помощью Entity Framework Core и Visual Studio. Сведения о серии руководств см. в [первом руководстве серии](intro.md).
+# <a name="tutorial-implement-inheritance---aspnet-mvc-with-ef-core"></a>Учебник. Использование ASP.NET MVC с EF Core. Реализация наследования
 
 В предыдущем учебнике была показана обработка исключений параллелизма. В этом учебнике демонстрируется, как реализовать наследование в модели данных.
 
 В объектно-ориентированном программировании наследование применяется для оптимизации повторного использования кода. В рамках этого учебника вы измените классы `Instructor` и `Student` таким образом, чтобы они были производными от базового класса `Person`, который содержит общие свойства для преподавателей и учащихся, такие как `LastName`. Изменения вносятся в коде, а не на веб-страницах, и автоматически отражаются в базе данных.
 
-## <a name="options-for-mapping-inheritance-to-database-tables"></a>Варианты сопоставления наследования для таблиц базы данных
+В этом учебнике рассмотрены следующие задачи.
+
+> [!div class="checklist"]
+> * Сопоставление наследования с базой данных
+> * Создание класса Person
+> * Обновление Instructor и Student
+> * Добавление Person в модель
+> * Создание и обновление миграций
+> * Тестирование реализации
+
+## <a name="prerequisites"></a>Предварительные требования
+
+* [Обработка параллелизма с использованием EF Core в веб-приложении MVC ASP.NET Core](concurrency.md)
+
+## <a name="map-inheritance-to-database"></a>Сопоставление наследования с базой данных
 
 Классы `Instructor` и `Student` в модели данных School имеют несколько идентичных свойств:
 
@@ -64,7 +71,7 @@ ms.locfileid: "50090762"
 
 [!code-csharp[](intro/samples/cu/Models/Person.cs)]
 
-## <a name="make-student-and-instructor-classes-inherit-from-person"></a>Создание классов Student и Instructor, унаследованных от класса Person
+## <a name="update-instructor-and-student"></a>Обновление Instructor и Student
 
 В файле *Instructor.cs* измените класс Instructor так, чтобы он был производным от класса Person, и удалите поля ключа и имени. Код будет выглядеть следующим образом:
 
@@ -74,7 +81,7 @@ ms.locfileid: "50090762"
 
 [!code-csharp[](intro/samples/cu/Models/Student.cs?name=snippet_AfterInheritance&highlight=8)]
 
-## <a name="add-the-person-entity-type-to-the-data-model"></a>Добавление типа сущности Person в модель данных
+## <a name="add-person-to-the-model"></a>Добавление Person в модель
 
 Добавьте тип сущности Person в файл *SchoolContext.cs*. Новые строки выделены.
 
@@ -82,7 +89,7 @@ ms.locfileid: "50090762"
 
 Это все, что требуется платформе Entity Framework для настройки наследования типа "одна таблица на иерархию". Как видно, после обновления базы данных в ней будет присутствовать таблица Person вместо таблиц Student и Instructor.
 
-## <a name="create-and-customize-migration-code"></a>Создание и настройка кода миграции
+## <a name="create-and-update-migrations"></a>Создание и обновление миграций
 
 Сохраните изменения и выполните сборку проекта. Затем откройте командное окно в папке проекта и введите следующую команду:
 
@@ -129,7 +136,7 @@ dotnet ef database update
 > [!NOTE]
 > При изменении схемы в базе, содержащей существующие данные, возможны другие ошибки. Если вы получаете ошибки миграции, которые не удается устранить, измените имя базы данных в строке подключения или удалите базу данных. В новой базе не будет данных, которые требуется перенести, в результате чего команда обновления базы данных с большей долей вероятности завершится без ошибок. Чтобы удалить базу данных, используйте средство SSOX или выполните команду `database drop` в интерфейсе командной строки.
 
-## <a name="test-with-inheritance-implemented"></a>Тестирование после реализации наследования
+## <a name="test-the-implementation"></a>Тестирование реализации
 
 Запустите приложение и попробуйте открыть различные страницы. Все работает так же, как и раньше.
 
@@ -141,12 +148,26 @@ dotnet ef database update
 
 ![Таблица Person в окне SSOX — данные таблицы](inheritance/_static/ssox-person-data.png)
 
-## <a name="summary"></a>Сводка
+## <a name="get-the-code"></a>Получение кода
 
-Вы реализовали наследование типа "одна таблица на иерархию" для классов `Person`, `Student` и `Instructor`. Дополнительные сведения о наследовании на платформе Entity Framework Core см. в разделе [Наследование](/ef/core/modeling/inheritance). В рамках следующего учебника вы узнаете, как работать в нескольких сценариях Entity Framework с расширенными возможностями.
+[Скачайте или ознакомьтесь с готовым приложением.](https://github.com/aspnet/Docs/tree/master/aspnetcore/data/ef-mvc/intro/samples/cu-final)
 
-::: moniker-end
+## <a name="additional-resources"></a>Дополнительные ресурсы
 
-> [!div class="step-by-step"]
-> [Назад](concurrency.md)
-> [Вперед](advanced.md)
+Дополнительные сведения о наследовании на платформе Entity Framework Core см. в разделе [Наследование](/ef/core/modeling/inheritance).
+
+## <a name="next-steps"></a>Следующие шаги
+
+В этом учебнике рассмотрены следующие задачи.
+
+> [!div class="checklist"]
+> * Сопоставление наследования с базой данных
+> * Создание класса Person
+> * Обновление Instructor и Student
+> * Добавление Person в модель
+> * Создание и обновление миграций
+> * Тестирование реализации
+
+В следующем руководстве описано, как использовать несколько сценариев Entity Framework с расширенными возможностями.
+> [!div class="nextstepaction"]
+> [Дополнительные разделы](advanced.md)

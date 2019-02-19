@@ -6,12 +6,12 @@ monikerRange: '>= aspnetcore-2.2'
 ms.author: riande
 ms.date: 12/20/2018
 uid: tutorials/razor-pages/da1
-ms.openlocfilehash: 396cb9b9eeaab2d3db6108feeba71dbc2bc8981d
-ms.sourcegitcommit: e1cc4c1ef6c9e07918a609d5ad7fadcb6abe3e12
+ms.openlocfilehash: c950d1654591fe3c78daae0e2cb7a9b37472284f
+ms.sourcegitcommit: a91e8dd2f4b788114c8bc834507277f4b5e8d6c5
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "53997205"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55712254"
 ---
 # <a name="update-the-generated-pages-in-an-aspnet-core-app"></a>Изменение созданных страниц в приложении ASP.NET Core
 
@@ -75,7 +75,7 @@ ms.locfileid: "53997205"
 * Установите точку останова `public async Task<IActionResult> OnGetAsync(int? id)` (в *Pages/Movies/Details.cshtml.cs*).
 * Перейдите к `https://localhost:5001/Movies/Details/`.
 
-Из-за директивы `@page "{id:int}"` точка останова не достигается. Механизм маршрутизации возвращает ошибку HTTP 404. При использовании `@page "{id:int?}"` метод `OnGetAsync` возвращает `NotFound` (HTTP 404).
+Из-за директивы `@page "{id:int}"` точка останова не достигается. Механизм маршрутизации возвращает ошибку HTTP 404. При использовании `@page "{id:int?}"` метод `OnGetAsync` возвращает `NotFound` (HTTP 404).
 
 Хотя это не рекомендуется, можно написать метод `OnGetAsync` (в *Pages/Movies/Delete.cshtml.cs*) как:
 

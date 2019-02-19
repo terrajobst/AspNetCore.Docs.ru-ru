@@ -4,14 +4,14 @@ author: isaac2004
 description: Дополнительные сведения о новых возможностях ASP.NET Core 2.1.
 ms.author: riande
 ms.custom: mvc
-ms.date: 05/30/2018
+ms.date: 02/13/2019
 uid: aspnetcore-2.1
-ms.openlocfilehash: e16bb874f317b922f3900b540596f6ff38debb2f
-ms.sourcegitcommit: 375e9a67f5e1f7b0faaa056b4b46294cc70f55b7
+ms.openlocfilehash: 8299af819f86d3d2371650ce3d87deb817f0feb8
+ms.sourcegitcommit: 6ba5fb1fd0b7f9a6a79085b0ef56206e462094b7
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50206839"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56248177"
 ---
 # <a name="whats-new-in-aspnet-core-21"></a>Новые возможности ASP.NET Core 2.1
 
@@ -70,7 +70,7 @@ ASP.NET Core 2.1 предоставляет [идентификатор ASP.NET 
 
 В рабочей среде необходимо явно настроить HTTPS. В версии 2.1 добавлена схема конфигурации по умолчанию для настройки HTTPS для Kestrel. Можно настроить приложения, чтобы они использовали:
 
-* Несколько конечных точек, включая URL-адреса. Дополнительные сведения см. в статье [Реализация веб-сервера Kestrel: конфигурация конечных точек](xref:fundamentals/servers/kestrel#endpoint-configuration).
+* Несколько конечных точек, включая URL-адреса. Дополнительные сведения см. в руководстве по [реализации веб-сервера Kestrel. Конфигурация конечной точки](xref:fundamentals/servers/kestrel#endpoint-configuration).
 * Сертификат для использования HTTPS из файла на диске или из хранилища сертификатов.
 
 ## <a name="gdpr"></a>Общий регламент по защите данных
@@ -131,7 +131,7 @@ ASP.NET Core 2.1 содержит новую службу `IHttpClientFactory`, 
 
 ## <a name="kestrel-transport-configuration"></a>Конфигурация транспорта Kestrel
 
-После выпуска ASP.NET Core 2.1 транспорт Kestrel по умолчанию основан не на Libuv, а на управляемых сокетах. Дополнительные сведения см. в статье [Реализация веб-сервера Kestrel: конфигурация транспорта](xref:fundamentals/servers/kestrel#transport-configuration).
+После выпуска ASP.NET Core 2.1 транспорт Kestrel по умолчанию основан не на Libuv, а на управляемых сокетах. Дополнительные сведения см. в руководстве по [реализации веб-сервера Kestrel. Конфигурация транспортировки](xref:fundamentals/servers/kestrel#transport-configuration).
 
 ## <a name="generic-host-builder"></a>Построитель универсальных узлов
 
@@ -144,7 +144,12 @@ ASP.NET Core 2.1 содержит новую службу `IHttpClientFactory`, 
 Обновлены шаблоны одностраничных приложений для Angular, React и React с Redux. Теперь можно использовать стандартные структуры проектов и создавать системы для каждой платформы.
 
 Шаблон Angular основан на Angular CLI, а шаблоны React основаны на create-react-app.
-Дополнительные сведения см. в разделе [Использование шаблонов одностраничных приложений с ASP.NET Core](xref:spa/index).
+
+Дополнительные сведения:
+
+* <xref:spa/angular>
+* <xref:spa/react>
+* <xref:spa/react-with-redux>
 
 ## <a name="razor-pages-search-for-razor-assets"></a>Razor Pages ищет ресурсы Razor
 
@@ -162,7 +167,7 @@ Razor Pages теперь поддерживает [области](xref:mvc/cont
 
 Метод <xref:Microsoft.Extensions.DependencyInjection.MvcCoreMvcBuilderExtensions.SetCompatibilityVersion*> позволяет приложению принимать или отклонять потенциально критические изменения в поведении, появившиеся в ASP.NET Core MVC 2.1 или более поздних версий.
 
-Дополнительные сведения см. в разделе <xref:mvc/compatibility-version>.
+Для получения дополнительной информации см. <xref:mvc/compatibility-version>.
 
 ## <a name="migrate-from-20-to-21"></a>Миграция с 2.0 на 2.1
 
