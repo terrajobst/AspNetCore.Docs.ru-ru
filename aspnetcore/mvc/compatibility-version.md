@@ -5,14 +5,14 @@ description: Сведения о том, как класс Startup в ASP.NET Co
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 12/10/2018
+ms.date: 02/15/2019
 uid: mvc/compatibility-version
-ms.openlocfilehash: 63243d99c7cb74a7e594cd309a808455c6611fc0
-ms.sourcegitcommit: 68a3081dd175d6518d1bfa31b4712bd8a2dd3864
+ms.openlocfilehash: 7c4189db435088e0803b35add82fa0eb9372e664
+ms.sourcegitcommit: d75d8eb26c2cce19876c8d5b65ac8a4b21f625ef
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53577855"
+ms.lasthandoff: 02/19/2019
+ms.locfileid: "56410149"
 ---
 # <a name="compatibility-version-for-aspnet-core-mvc"></a>Совместимая версия для ASP.NET Core MVC
 
@@ -35,8 +35,8 @@ ms.locfileid: "53577855"
 
 Следующий код задает режим совместимости в ASP.NET Core 2.2, за исключением следующего поведения:
 
-* [AllowCombiningAuthorizeFilters](https://github.com/aspnet/AspNetCore/blob/master/src/Mvc/src/Microsoft.AspNetCore.Mvc.Core/MvcOptions.cs)
-* [InputFormatterExceptionPolicy](https://github.com/aspnet/AspNetCore/blob/master/src/Mvc/src/Microsoft.AspNetCore.Mvc.Core/MvcOptions.cs)
+* <xref:Microsoft.AspNetCore.Mvc.MvcOptions.AllowCombiningAuthorizeFilters>
+* <xref:Microsoft.AspNetCore.Mvc.MvcOptions.InputFormatterExceptionPolicy>
 
 [!code-csharp[Main](compatibility-version/samples/2.x/CompatibilityVersionSample/Startup2.cs?name=snippet1)]
 
@@ -45,6 +45,6 @@ ms.locfileid: "53577855"
 * Позволяет использовать последний выпуск и отказаться от конкретных критических изменений.
 * Дает вам время обновить приложение, чтобы оно работало с последними изменениями.
 
-В комментариях к классу [MvcOptions](https://github.com/aspnet/AspNetCore/blob/master/src/Mvc/src/Microsoft.AspNetCore.Mvc.Core/MvcOptions.cs) подробно объясняется, что изменилось и почему изменения выгодны для большинства пользователей.
+В комментариях к классу [MvcOptions](https://github.com/aspnet/AspNetCore/blob/release/2.2/src/Mvc/Mvc.Core/src/MvcOptions.cs) подробно объясняется, что изменилось и почему изменения выгодны для большинства пользователей.
 
 Позднее мы выпустим [версию ASP.NET Core 3.0](https://github.com/aspnet/Home/wiki/Roadmap). Старое поведение, поддерживаемое параметрами совместимости, не сохранится в версии 3.0. Мы думаем, что это полезные изменения почти для всех пользователей. Большинство приложений сможет воспользоваться этими изменениями уже сейчас, а другие успеют обновиться.

@@ -5,12 +5,12 @@ description: Инструкции по добавлению поиска в пр
 ms.author: riande
 ms.date: 12/13/2018
 uid: tutorials/first-mvc-app/search
-ms.openlocfilehash: 8686041c3629faf9ffc4ab766e8d78eda00740dc
-ms.sourcegitcommit: e1cc4c1ef6c9e07918a609d5ad7fadcb6abe3e12
+ms.openlocfilehash: e5dce35b60080ef752f8e6c6004158219015cbf5
+ms.sourcegitcommit: d75d8eb26c2cce19876c8d5b65ac8a4b21f625ef
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "53997270"
+ms.lasthandoff: 02/19/2019
+ms.locfileid: "56410642"
 ---
 # <a name="add-search-to-an-aspnet-core-mvc-app"></a>Добавление поиска в приложение MVC ASP.NET Core
 
@@ -51,11 +51,11 @@ var movies = from m in _context.Movie
 
 Предыдущий метод `Index`:
 
-[!code-csharp[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie/Controllers/MoviesController.cs?highlight=1,8&name=snippet_1stSearch)]
+[!code-csharp[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie/Controllers/MoviesController.cs?highlight=1,6,8&name=snippet_1stSearch)]
 
 Обновленный метод `Index` с параметром `id`:
 
-[!code-csharp[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie/Controllers/MoviesController.cs?highlight=1,8&name=snippet_SearchID)]
+[!code-csharp[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie/Controllers/MoviesController.cs?highlight=1,6,8&name=snippet_SearchID)]
 
 Теперь можно передать заголовок поиска в качестве данных маршрута (сегмент URL-адреса) вместо значения строки запроса.
 
@@ -63,7 +63,7 @@ var movies = from m in _context.Movie
 
 Тем не менее пользователи вряд ли будут каждый раз изменять URL-адрес для поиска фильмов. Итак, теперь вам необходимо добавить элементы пользовательского интерфейса для удобства фильтрации фильмов. Если вы изменили сигнатуру метода `Index` для тестирования передачи параметра `ID` с привязкой к маршруту, измените ее снова, чтобы она снова принимала параметр `searchString`:
 
-[!code-csharp[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie/Controllers/MoviesController.cs?highlight=1,8&name=snippet_1stSearch)]
+[!code-csharp[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie/Controllers/MoviesController.cs?highlight=1,6,8&name=snippet_1stSearch)]
 
 Откройте файл *Views/Movies/Index.cshtml* и добавьте разметку `<form>`, которая выделена ниже:
 

@@ -3,15 +3,14 @@ title: Добавление модели в приложение Razor Pages в 
 author: rick-anderson
 description: Узнайте, как добавлять классы для управления фильмами в базе данных с использованием Entity Framework Core (EF Core).
 ms.author: riande
-monikerRange: '>= aspnetcore-2.2'
 ms.date: 02/12/2019
 uid: tutorials/razor-pages/model
-ms.openlocfilehash: ab2bf372b305672a95d34879ad2c13a620d93c7a
-ms.sourcegitcommit: af8a6eb5375ef547a52ffae22465e265837aa82b
+ms.openlocfilehash: c7341430e8e2ace7eb04faa308020095139d5b94
+ms.sourcegitcommit: d75d8eb26c2cce19876c8d5b65ac8a4b21f625ef
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56159292"
+ms.lasthandoff: 02/19/2019
+ms.locfileid: "56410236"
 ---
 # <a name="add-a-model-to-a-razor-pages-app-in-aspnet-core"></a>Добавление модели в приложение Razor Pages в ASP.NET Core
 
@@ -214,7 +213,7 @@ Update-Database
 
 # <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-## <a name="examine-the-context-registered-with-dependency-injection"></a>Проверка контекста, зарегистрированного с помощью внедрения зависимостей
+### <a name="examine-the-context-registered-with-dependency-injection"></a>Проверка контекста, зарегистрированного с помощью внедрения зависимостей
 
 ASP.NET Core поддерживает [внедрение зависимостей](xref:fundamentals/dependency-injection). С помощью внедрения зависимостей службы (например, контекст базы данных EF Core) регистрируются во время запуска приложения. Затем компоненты, которые используют эти службы (например, Razor Pages), обращаются к ним через параметры конструктора. Код конструктора, который получает экземпляр контекста базы данных, приведен далее в этом руководстве.
 
