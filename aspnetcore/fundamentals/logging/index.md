@@ -6,12 +6,6 @@ ms.author: tdykstra
 ms.custom: mvc
 ms.date: 01/14/2019
 uid: fundamentals/logging/index
-ms.openlocfilehash: 81620f0c844f3dbb1a2da0e9f1c319f87d9790b6
-ms.sourcegitcommit: ed76cc752966c604a795fbc56d5a71d16ded0b58
-ms.translationtype: HT
-ms.contentlocale: ru-RU
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55667705"
 ---
 # <a name="logging-in-aspnet-core"></a>Ведение журналов в ASP.NET Core
 
@@ -286,11 +280,11 @@ Microsoft.AspNetCore.Hosting.Internal.WebHost:Information: Request finished in 3
 
 * Информация = 2
 
-  Для отслеживания общего хода выполнения приложения. Эти журналы обычно полезны в долгосрочной перспективе. Пример: `Request received for path /api/todo`
+  Для отслеживания общего потока работы приложения. Эти журналы обычно полезны в долгосрочной перспективе. Пример: `Request received for path /api/todo`
 
 * Предупреждение = 3
 
-  Для нестандартных или непредвиденных событий, возникающих при выполнении приложения. Это могут быть ошибки или другие условия, которые не приводят к остановке приложения, но которые нужно изучить. Обработанные исключения являются распространенным условием использования уровня ведения журнала `Warning`. Пример: `FileNotFoundException for file quotes.txt.`
+  Для нестандартных или непредвиденных событий, возникающих в потоке работы приложения. Это могут быть ошибки или другие условия, которые не приводят к остановке приложения, но которые нужно изучить. Обработанные исключения являются распространенным условием использования уровня ведения журнала `Warning`. Пример: `FileNotFoundException for file quotes.txt.`
 
 * Ошибка = 4
 

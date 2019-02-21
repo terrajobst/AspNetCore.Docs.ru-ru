@@ -1,17 +1,11 @@
 ---
 title: Введение в Razor Pages в ASP.NET Core
 author: Rick-Anderson
-description: Сведения о применении в ASP.NET Core функции Razor Pages, которая делает создание кодов сценариев для страниц проще и эффективнее по сравнению с MVC.
+description: 'Сведения о применении в ASP.NET Core функции Razor Pages, которая делает создание кодов сценариев для страниц проще и эффективнее по сравнению с MVC.'
 monikerRange: '>= aspnetcore-2.0'
 ms.author: riande
 ms.date: 05/12/2018
 uid: razor-pages/index
-ms.openlocfilehash: cc881ff42d57ab1654f492a70006a995939e4844
-ms.sourcegitcommit: 816f39e852a8f453e8682081871a31bc66db153a
-ms.translationtype: HT
-ms.contentlocale: ru-RU
-ms.lasthandoff: 12/20/2018
-ms.locfileid: "53709560"
 ---
 # <a name="introduction-to-razor-pages-in-aspnet-core"></a>Введение в Razor Pages в ASP.NET Core
 
@@ -142,7 +136,7 @@ Razor Pages — это новый аспект платформы MVC ASP.NET�
 
 [!code-cs[](index/sample/RazorPagesContacts/Pages/Create.cshtml.cs?name=snippet_OnPostAsync)]
 
-Простая схема `OnPostAsync`
+Простая схема `OnPostAsync`:
 
 Проверка на наличие ошибок проверки.
 
