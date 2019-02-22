@@ -5,12 +5,12 @@ description: Узнайте, как использовать общие маке
 ms.author: riande
 ms.date: 10/18/2018
 uid: mvc/views/layout
-ms.openlocfilehash: b23fd4e0b1d91a4dd5aae548aa2b2081aa37a561
-ms.sourcegitcommit: f43f430a166a7ec137fcad12ded0372747227498
+ms.openlocfilehash: 1bd225c804b333efea834a46b7d9ba46b1bb69d8
+ms.sourcegitcommit: d75d8eb26c2cce19876c8d5b65ac8a4b21f625ef
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49391301"
+ms.lasthandoff: 02/19/2019
+ms.locfileid: "56410577"
 ---
 # <a name="layout-in-aspnet-core"></a>Макет в ASP.NET Core
 
@@ -33,15 +33,15 @@ ms.locfileid: "49391301"
 
 ![Пример макета страницы](layout/_static/page-layout.png)
 
-Общие структуры HTML, такие как скрипты и таблицы стилей, также часто используются разными страницами приложения. Все эти общие элементы могут определяться в файле *макета*, на который затем может ссылаться на любое представление в приложении. Макеты сокращают повторы кода в представлениях, помогая им следовать [принципу "не повторяйся" (DRY)](http://deviq.com/don-t-repeat-yourself/).
+Общие структуры HTML, такие как скрипты и таблицы стилей, также часто используются разными страницами приложения. Все эти общие элементы могут определяться в файле *макета*, на который затем может ссылаться на любое представление в приложении. Макеты сокращают повторы кода в представлениях.
 
 В соответствии с соглашением макет по умолчанию для приложения ASP.NET Core имеет имя *_Layout.cshtml*. Файл макета для новых проектов ASP.NET Core, созданных с помощью шаблонов:
 
-* Razor Pages: папка страница *Pages/Shared/_Layout.cshtml*
+* Razor Pages: *Pages/Shared/_Layout.cshtml*
 
   ![в обозревателе решений](layout/_static/rp-web-project-views.png)
 
-* Контроллер с представлениями: папка *Views/Shared/_Layout.cshtml*
+* Контроллер с представлениями: *Views/Shared/_Layout.cshtml*
 
  ![Папка Views в обозревателе решений](layout/_static/mvc-web-project-views.png)
 

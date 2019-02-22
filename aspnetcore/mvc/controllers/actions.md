@@ -5,12 +5,12 @@ description: ''
 ms.author: riande
 ms.date: 07/03/2017
 uid: mvc/controllers/actions
-ms.openlocfilehash: 3f3f565021d484b69401a3e03a2a966c92764a49
-ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
+ms.openlocfilehash: 8289424b3cd3678bea18a25c7850e409795d1577
+ms.sourcegitcommit: d75d8eb26c2cce19876c8d5b65ac8a4b21f625ef
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36275664"
+ms.lasthandoff: 02/19/2019
+ms.locfileid: "56410444"
 ---
 # <a name="handle-requests-with-controllers-in-aspnet-core-mvc"></a>Обработка запросов с помощью контроллеров в ASP.NET Core MVC
 
@@ -33,7 +33,7 @@ ms.locfileid: "36275664"
 
 С классом контроллера не должен быть связан атрибут `[NonController]`.
 
-Контроллеры должны соответствовать [принципу явных зависимостей](http://deviq.com/explicit-dependencies-principle/). Существует несколько подходов к реализации этого принципа. Если нескольким действиям контроллера требуется одна служба, рекомендуется использовать [внедрение через конструктор](xref:mvc/controllers/dependency-injection#constructor-injection) для запроса этих зависимостей. Если служба требуется только одному методу действия, рекомендуется использовать [внедрение действий](xref:mvc/controllers/dependency-injection#action-injection-with-fromservices) для запроса зависимости.
+Контроллеры должны соответствовать [принципу явных зависимостей](/dotnet/standard/modern-web-apps-azure-architecture/architectural-principles#explicit-dependencies). Существует несколько подходов к реализации этого принципа. Если нескольким действиям контроллера требуется одна служба, рекомендуется использовать [внедрение через конструктор](xref:mvc/controllers/dependency-injection#constructor-injection) для запроса этих зависимостей. Если служба требуется только одному методу действия, рекомендуется использовать [внедрение действий](xref:mvc/controllers/dependency-injection#action-injection-with-fromservices) для запроса зависимости.
 
 В рамках шаблона **M****V****C** контроллер отвечает за начальную обработку запроса и создание экземпляра модели. Как правило, бизнес-решения следует выполнять внутри модели.
 
@@ -73,7 +73,7 @@ ms.locfileid: "36275664"
 
 Большинство вспомогательных методов в этой категории имеют свойство `ContentType`, что позволяет задать заголовок отклика `Content-Type` для описания основного текста отклика.
 
-В этой категории есть два типа результатов: [представление](xref:mvc/views/overview) и [форматированный отклик](xref:web-api/advanced/formatting).
+В этой категории есть два типа результатов: [представление](xref:mvc/views/overview) и [форматированный ответ](xref:web-api/advanced/formatting).
 
 * **Вид**
 
@@ -83,7 +83,7 @@ ms.locfileid: "36275664"
 
     Этот тип возвращает JSON или аналогичный формат обмена данными для представления объекта определенным образом. Например, `return Json(customer);` сериализует указанный объект в формат JSON.
     
-    Другими распространенными методами этого типа являются `File`, `PhysicalFile` и `VirtualFile`. Например, `return PhysicalFile(customerFilePath, "text/xml");` возвращает XML-файл, описываемый значением "text/xml" для заголовка отклика `Content-Type`.
+    Другими распространенными методами этого типа являются `File` и `PhysicalFile`. Например, `return PhysicalFile(customerFilePath, "text/xml");` возвращает [PhysicalFileResult](/dotnet/api/microsoft.aspnetcore.mvc.physicalfileresult).
 
 #### <a name="3-methods-resulting-in-a-non-empty-response-body-formatted-in-a-content-type-negotiated-with-the-client"></a>3. Методы, дающие непустой основной текст отклика и отформатированные с типом содержимого, согласованным с клиентом
 
@@ -93,7 +93,7 @@ ms.locfileid: "36275664"
 
 ### <a name="cross-cutting-concerns"></a>Сквозная функциональность
 
-Приложения обычно имеют общие части рабочего процесса. В качестве примера можно привести приложение, которое требует пройти проверку подлинности для доступа к корзине для покупок, или приложение, кэширующее данные на некоторых страницах. Чтобы выполнить логику до или после метода действия, используйте *фильтр*. Используя [фильтры](xref:mvc/controllers/filters) для сквозной функциональности, можно сократить дублирование, обеспечив соблюдение [принципа "Не повторяйся" (DRY)](http://deviq.com/don-t-repeat-yourself/).
+Приложения обычно имеют общие части рабочего процесса. В качестве примера можно привести приложение, которое требует пройти проверку подлинности для доступа к корзине для покупок, или приложение, кэширующее данные на некоторых страницах. Чтобы выполнить логику до или после метода действия, используйте *фильтр*. Использование [фильтров](xref:mvc/controllers/filters) наряду со сквозной функциональностью позволяет уменьшить дублирование.
 
 Большинство атрибутов фильтров, например `[Authorize]`, можно применить на уровне контроллера или действия в зависимости от нужного уровня детализации.
 

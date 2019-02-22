@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 10/24/2018
 uid: fundamentals/dependency-injection
-ms.openlocfilehash: 3626ce834b904db64c1976aefc77dc60a7bfdf1c
-ms.sourcegitcommit: 4a6bbe84db24c2f3dd2de065de418fde952c8d40
+ms.openlocfilehash: 5e5b9746da9bbc13a147b807aabfd3d9ab90a0ca
+ms.sourcegitcommit: d75d8eb26c2cce19876c8d5b65ac8a4b21f625ef
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50253173"
+ms.lasthandoff: 02/19/2019
+ms.locfileid: "56410512"
 ---
 # <a name="dependency-injection-in-aspnet-core"></a>Внедрение зависимостей в ASP.NET Core
 
@@ -229,7 +229,7 @@ public void ConfigureServices(IServiceCollection services)
 Службы времени существования с заданной областью создаются один раз для каждого запроса.
 
 > [!WARNING]
-> При использовании такой службы в ПО промежуточного слоя внедрите ее в метод `Invoke` или `InvokeAsync`. Не внедряйте службу через внедрение конструктора, поскольку в таком случае служба будет вести себя как одноэлементный объект. Дополнительные сведения см. в разделе <xref:fundamentals/middleware/index>.
+> При использовании такой службы в ПО промежуточного слоя внедрите ее в метод `Invoke` или `InvokeAsync`. Не внедряйте службу через внедрение конструктора, поскольку в таком случае служба будет вести себя как одноэлементный объект. Для получения дополнительной информации см. <xref:fundamentals/middleware/index>.
 
 **Одноэлементные**
 
@@ -419,7 +419,7 @@ public static void Main(string[] args)
 
 Службы с заданной областью удаляются создавшим их контейнером. Если служба с заданной областью создается в корневом контейнере, время существования службы повышается до уровня одноэлементного объекта, поскольку она удаляется только корневым контейнером при завершении работы приложения или сервера. Проверка областей службы перехватывает эти ситуации при вызове `BuildServiceProvider`.
 
-Дополнительные сведения см. в разделе <xref:fundamentals/host/web-host#scope-validation>.
+Для получения дополнительной информации см. <xref:fundamentals/host/web-host#scope-validation>.
 
 ## <a name="request-services"></a>Службы запросов
 
@@ -437,10 +437,9 @@ public static void Main(string[] args)
 Придерживайтесь следующих рекомендаций:
 
 * Проектируйте службы так, чтобы для получения зависимостей они использовали внедрение зависимостей.
-* Избегайте вызовов статических методов или методов с отслеживанием состояния ([статическое сцепление](https://deviq.com/static-cling/)).
+* Избегайте вызовов статических методов с отслеживанием состояния.
 * Избегайте прямого создания экземпляров зависимых классов внутри служб. Прямое создание экземпляров обязывает использовать в коде определенную реализацию.
-
-Соблюдение [принципов SOLID для объектно-ориентированного проектирования](https://deviq.com/solid/) поможет сделать программные классы небольшими, хорошо организованными и удобными в тестировании.
+* Сделайте классы приложения небольшими, хорошо организованными и удобными в тестировании.
 
 Если класс имеет слишком много внедренных зависимостей, обычно это указывает на то, что у класса слишком много задач и он не соответствует [принципу единственной обязанности](/dotnet/standard/modern-web-apps-azure-architecture/architectural-principles#single-responsibility). Попробуйте выполнить рефакторинг класса и перенести часть его обязанностей в новый класс. Помните, что в классах модели страниц Razor Pages и классах контроллера MVC должны преимущественно выполняться задачи, связанные с пользовательским интерфейсом. Бизнес-правила и реализация доступа к данным должны обрабатываться в классах, которые предназначены для [этих целей](/dotnet/standard/modern-web-apps-azure-architecture/architectural-principles#separation-of-concerns).
 
@@ -488,7 +487,7 @@ public void ConfigureServices(IServiceCollection services)
 * Настраиваемое управление временем существования
 * `Func<T>` поддерживает отложенную инициализацию
 
-Список некоторых контейнеров, которые поддерживают адаптеры, см. в разделе [Файл readme.md внедрения зависимостей](https://github.com/aspnet/DependencyInjection#using-other-containers-with-microsoftextensionsdependencyinjection).
+Список некоторых контейнеров, которые поддерживают адаптеры, см. в разделе [Файл readme.md внедрения зависимостей](https://github.com/aspnet/Extensions/tree/master/src/DependencyInjection).
 
 В следующем примере встроенный контейнер заменяется на [Autofac](https://autofac.org/):
 
@@ -560,8 +559,7 @@ public void ConfigureServices(IServiceCollection services)
 * <xref:fundamentals/startup>
 * <xref:fundamentals/middleware/extensibility>
 * [Написание чистого кода в ASP.NET Core с внедрением зависимостей (MSDN)](https://msdn.microsoft.com/magazine/mt703433.aspx)
-* [Проектирование приложения на основе контейнеров. Вступление. К чему относится контейнер?](https://blogs.msdn.microsoft.com/nblumhardt/2008/12/26/container-managed-application-design-prelude-where-does-the-container-belong/)
+* [Container-Managed Application Design, Prelude: Where does the Container Belong?](https://blogs.msdn.microsoft.com/nblumhardt/2008/12/26/container-managed-application-design-prelude-where-does-the-container-belong/) (Проектирование приложения на основе контейнеров. Вступление. К чему относится контейнер?)
 * [Принцип явных зависимостей](/dotnet/standard/modern-web-apps-azure-architecture/architectural-principles#explicit-dependencies)
 * [Контейнеры с инверсией управления и шаблон внедрения зависимостей (Мартин Фаулер)](https://www.martinfowler.com/articles/injection.html)
-* [Ключевое слово New — связующий элемент (связывание кода с определенной реализацией)](https://ardalis.com/new-is-glue)
 * [How to register a service with multiple interfaces in ASP.NET Core DI](https://andrewlock.net/how-to-register-a-service-with-multiple-interfaces-for-in-asp-net-core-di/) (Регистрация службы с несколькими интерфейсами с помощью внедрения зависимостей ASP.NET Core)

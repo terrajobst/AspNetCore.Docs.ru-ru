@@ -6,12 +6,12 @@ ms.author: tdykstra
 ms.custom: mvc
 ms.date: 12/18/2018
 uid: aspnetcore-2.2
-ms.openlocfilehash: b8279588e674e3ada486f61bac2c216f1359e86d
-ms.sourcegitcommit: 728f4e47be91e1c87bb7c0041734191b5f5c6da3
+ms.openlocfilehash: 6dcdf71ec5271690718dd1fe750a9a74d498a0f8
+ms.sourcegitcommit: d75d8eb26c2cce19876c8d5b65ac8a4b21f625ef
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54444393"
+ms.lasthandoff: 02/19/2019
+ms.locfileid: "56410340"
 ---
 # <a name="whats-new-in-aspnet-core-22"></a>Новые возможности ASP.NET Core 2.2
 
@@ -29,7 +29,7 @@ Open API (или Swagger) — это не зависящая от языка с
 
 ## <a name="problem-details-support"></a>Поддержка сведений о проблеме
 
-В ASP.NET Core 2.1 был представлен объект `ProblemDetails`, основанный на спецификации RFC 7807 для передачи сведений об ошибке в составе HTTP-ответа. В версии 2.2 `ProblemDetails` является стандартным ответом для кодов ошибок клиента в контроллерах с атрибутами `ApiControllerAttribute`. `IActionResult`, возвращающий код состояния ошибки клиента (4xx), теперь возвращает текст `ProblemDetails`. В результат также включается идентификатор корреляции, который может использоваться для сопоставления ошибки с помощью журналов запросов. В отношении ошибок клиентов `ProducesResponseType` по умолчанию использует тип ответа `ProblemDetails`. Это описывается в выходных данных Open API / Swagger, создаваемых с помощью NSwag или Swashbuckle.AspNetCore.
+В ASP.NET Core 2.1 появился объект `ProblemDetails`, основанный на спецификации [RFC 7807](https://tools.ietf.org/html/rfc7807) и предназначенный для передачи сведений об ошибке в составе HTTP-ответа. В версии 2.2 `ProblemDetails` является стандартным ответом для кодов ошибок клиента в контроллерах с атрибутами `ApiControllerAttribute`. `IActionResult`, возвращающий код состояния ошибки клиента (4xx), теперь возвращает текст `ProblemDetails`. В результат также включается идентификатор корреляции, который может использоваться для сопоставления ошибки с помощью журналов запросов. В отношении ошибок клиентов `ProducesResponseType` по умолчанию использует тип ответа `ProblemDetails`. Это описывается в выходных данных Open API / Swagger, создаваемых с помощью NSwag или Swashbuckle.AspNetCore.
 
 ## <a name="endpoint-routing"></a>Маршрутизация конечных точек
 

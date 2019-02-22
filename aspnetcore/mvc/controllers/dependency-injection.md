@@ -5,12 +5,12 @@ description: Узнайте, как контроллеры MVC ASP.NET Core яв
 ms.author: riande
 ms.date: 10/14/2016
 uid: mvc/controllers/dependency-injection
-ms.openlocfilehash: 12247dbbbb6de3f8feb7bc37caec4ecf4bd21719
-ms.sourcegitcommit: 375e9a67f5e1f7b0faaa056b4b46294cc70f55b7
+ms.openlocfilehash: 9d9d0a68927da62fad8df72c868eaf4b8ada440d
+ms.sourcegitcommit: d75d8eb26c2cce19876c8d5b65ac8a4b21f625ef
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50206346"
+ms.lasthandoff: 02/19/2019
+ms.locfileid: "56410275"
 ---
 # <a name="dependency-injection-into-controllers-in-aspnet-core"></a>Внедрение зависимостей в контроллеры в ASP.NET Core
 
@@ -24,7 +24,7 @@ ms.locfileid: "50206346"
 
 ## <a name="dependency-injection"></a>Внедрение зависимостей
 
-Методика внедрения зависимости следует [принципу инверсии зависимостей](http://deviq.com/dependency-inversion-principle/), позволяя приложениям состоять из слабо связанных модулей. ASP.NET Core имеет встроенную поддержку [внедрения зависимостей](../../fundamentals/dependency-injection.md), что упрощает тестирование и обслуживание приложений.
+ASP.NET Core имеет встроенную поддержку [внедрения зависимостей](../../fundamentals/dependency-injection.md), что упрощает тестирование и обслуживание приложений.
 
 ## <a name="constructor-injection"></a>Внедрение через конструктор
 
@@ -63,7 +63,7 @@ Microsoft.Extensions.DependencyInjection.ActivatorUtilities.GetService(IServiceP
 ![Приветствие сервера](dependency-injection/_static/server-greeting.png)
 
 >[!TIP]
-> См. раздел [Тестирование логики контроллера](testing.md), чтобы узнать, как явный запрос зависимостей [http://deviq.com/explicit-dependencies-principle/](http://deviq.com/explicit-dependencies-principle/) в контроллерах упрощает тестирование кода.
+> См. раздел [Тестирование логики контроллера](testing.md), чтобы узнать, как упростить тестирование кода, явно запросив зависимости у контроллеров.
 
 Встроенная функция внедрения зависимостей ASP.NET Core поддерживает наличие лишь одного конструктора для классов, запрашивающих службы. При наличии более одного конструктора может возникнуть следующее исключение:
 
@@ -101,4 +101,4 @@ Microsoft.Extensions.DependencyInjection.ActivatorUtilities.FindApplicableConstr
 
 [!code-csharp[](./dependency-injection/sample/src/ControllerDI/Controllers/SettingsController.cs?highlight=3,5,7&range=7-22)]
 
-Соблюдение шаблона параметров позволяет отделить параметры и конфигурацию друг от друга и обеспечивает [разделение функций](http://deviq.com/separation-of-concerns/) для контроллера, так как ему не нужно знать, где и как искать сведения о параметрах. Кроме того, это упрощает модульное тестирование контроллера ([Тестирование логики контроллера](testing.md)), так как отсутствует [статическое слипание](http://deviq.com/static-cling/) или прямое создание экземпляров для классов параметров в классе контроллера.
+Соблюдение шаблона параметров позволяет отделить параметры и конфигурацию друг от друга и обеспечивает [разделение функций](/dotnet/standard/modern-web-apps-azure-architecture/architectural-principles#separation-of-concerns) для контроллера, так как ему не нужно знать, где и как искать сведения о параметрах. Кроме того, это упрощает [модульное тестирование контроллера](testing.md), так как отсутствует прямое создание экземпляров для классов параметров в классе контроллера.

@@ -2,16 +2,15 @@
 title: Работа с базой данных и ASP.NET Core
 author: rick-anderson
 description: В этой статье описывается работа с базой данных и ASP.NET Core.
-monikerRange: '>= aspnetcore-2.2'
 ms.author: riande
 ms.date: 12/07/2017
 uid: tutorials/razor-pages/sql
-ms.openlocfilehash: 817102a7b89ef4f078d7d0a0bf03ba7cb2745a5d
-ms.sourcegitcommit: 9bb58d7c8dad4bbd03419bcc183d027667fefa20
+ms.openlocfilehash: 3e05f5dbc73c35f1f938346b2eaab8c0fa7d8ab9
+ms.sourcegitcommit: d75d8eb26c2cce19876c8d5b65ac8a4b21f625ef
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52861281"
+ms.lasthandoff: 02/19/2019
+ms.locfileid: "56410301"
 ---
 # <a name="work-with-a-database-and-aspnet-core"></a>Работа с базой данных и ASP.NET Core
 
@@ -133,8 +132,8 @@ if (context.Movie.Any())
 
 Рабочее приложение не вызывает `Database.Migrate`. Он добавляется в предыдущем коде, чтобы предотвратить следующее исключение, если `Update-Database` не был запущен.
 
-SqlException: не удается открыть базу данных RazorPagesMovieContext-21, запрошенную при входе. Сбой при входе.
-Сбой при входе в систему пользователя user name.
+SqlException: Не удается открыть базу данных "RazorPagesMovieContext-21", запрашиваемую именем входа. Не удалось выполнить вход.
+Не удалось выполнить вход для пользователя 'имя пользователя'.
 
 ### <a name="test-the-app"></a>Тестирование приложения
 
@@ -179,5 +178,5 @@ SqlException: не удается открыть базу данных RazorPage
 В следующем учебнике будет улучшено представление данных.
 
 > [!div class="step-by-step"]
-> [Предыдущая тема. Шаблонные страницы Razor](xref:tutorials/razor-pages/page)
-> [Следующая тема. Обновление страниц](xref:tutorials/razor-pages/da1)
+> [Предыдущая статья. Сформированные страницы Razor Pages](xref:tutorials/razor-pages/page)
+> [Следующая статья. Изменение созданных страниц](xref:tutorials/razor-pages/da1)
