@@ -5,14 +5,14 @@ description: Узнайте, как настроить и использоват
 monikerRange: '>= aspnetcore-1.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 02/16/2019
+ms.date: 02/20/2019
 uid: performance/caching/middleware
-ms.openlocfilehash: bb265d04022ec2f8fdb3f2f3bc42f6b3f0b2b338
-ms.sourcegitcommit: d75d8eb26c2cce19876c8d5b65ac8a4b21f625ef
+ms.openlocfilehash: c7c3dbd0c9cf029fa6921d77450e780768c8aa6e
+ms.sourcegitcommit: 0945078a09c372f17e9b003758ed87e99c2449f4
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 02/19/2019
-ms.locfileid: "56410327"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56647919"
 ---
 # <a name="response-caching-middleware-in-aspnet-core"></a>По промежуточного слоя в ASP.NET Core кэширования ответов
 
@@ -61,7 +61,7 @@ ms.locfileid: "56410327"
 
 По промежуточного слоя предлагает три варианта управления кэширование ответов.
 
-| Параметр                | Описание: |
+| Параметр                | Описание |
 | --------------------- | ----------- |
 | UseCaseSensitivePaths | Определяет, если ответы кэшируются на пути с учетом регистра. Значение по умолчанию — `false`. |
 | MaximumBodySize       | Максимальный размер кэшируемого текст ответа в байтах. Значение по умолчанию — `64 * 1024 * 1024` (64 МБ). |
@@ -138,7 +138,7 @@ if (responseCachingFeature != null)
 
 * Запрос должен иметь результаты в ответе сервера с кодом состояния 200 (ОК).
 * Метод запроса должен быть GET или HEAD.
-* Терминалов по промежуточного слоя не должен обработать ответ до по промежуточного слоя кэширования ответов.
+* В `Startup.Configure`, по промежуточного слоя, кэширование ответов должны предшествовать по промежуточного слоя, требующими сжатие. Дополнительные сведения см. в разделе <xref:fundamentals/middleware/index>.
 * `Authorization` Заголовка не должен присутствовать.
 * `Cache-Control` Параметры заголовка должен быть допустимым и должен быть помечен ответ `public` и не помечен как `private`.
 * `Pragma: no-cache` Заголовка не должно быть Если `Cache-Control` заголовок файла нет, как `Cache-Control` переопределяет заголовок `Pragma` заголовка, если он присутствует.
