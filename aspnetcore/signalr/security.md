@@ -7,12 +7,12 @@ ms.author: anurse
 ms.custom: mvc
 ms.date: 11/06/2018
 uid: signalr/security
-ms.openlocfilehash: 52cfac6be8e61572acdf0b19dab574b607314d97
-ms.sourcegitcommit: ebf4e5a7ca301af8494edf64f85d4a8deb61d641
+ms.openlocfilehash: 6e9f849ed856cf1cbf989b8b16cab5209c465471
+ms.sourcegitcommit: b3894b65e313570e97a2ab78b8addd22f427cac8
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54836068"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56743791"
 ---
 # <a name="security-considerations-in-aspnet-core-signalr"></a>Вопросы безопасности в ASP.NET Core SignalR
 
@@ -77,7 +77,7 @@ info: Microsoft.AspNetCore.Hosting.Internal.WebHost[1]
       Request starting HTTP/1.1 GET http://localhost:5000/myhub?access_token=1234
 ```
 
-Если у вас есть вопросы о ведении журнала эти данные с сервера журналов, можно отключить ведение журнала полностью, настроив `Microsoft.AspNetCore.Hosting` средство ведения журнала `Warning` уровне или выше (эти сообщения записываются в `Info` уровень). См. в документации на [фильтрации журнала](xref:fundamentals/logging/index#log-filtering) Дополнительные сведения. Если вы хотите по-прежнему журнал определенные сведения запроса, вы можете [записи по промежуточного слоя](xref:fundamentals/middleware/index#write-middleware) данные требовать и отфильтровать `access_token` значения строки запроса (при его наличии).
+Если у вас есть вопросы о ведении журнала эти данные с сервера журналов, можно отключить ведение журнала полностью, настроив `Microsoft.AspNetCore.Hosting` средство ведения журнала `Warning` уровне или выше (эти сообщения записываются в `Info` уровень). См. в документации на [фильтрации журнала](xref:fundamentals/logging/index#log-filtering) Дополнительные сведения. Если вы хотите по-прежнему журнал определенные сведения запроса, вы можете [записи по промежуточного слоя](xref:fundamentals/middleware/write) данные требовать и отфильтровать `access_token` значения строки запроса (при его наличии).
 
 ## <a name="exceptions"></a>Исключения
 

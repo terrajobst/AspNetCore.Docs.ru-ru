@@ -5,14 +5,14 @@ description: Узнайте, как использовать поставщик 
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 02/08/2019
+ms.date: 02/22/2019
 uid: security/key-vault-configuration
-ms.openlocfilehash: f70389c86420d81e284ecc863ac8386f726ed2cf
-ms.sourcegitcommit: 5e3797a02ff3c48bb8cb9ad4320bfd169ebe8aba
+ms.openlocfilehash: 2188929d6f380327465e8ce0fd8ad659188416d3
+ms.sourcegitcommit: b3894b65e313570e97a2ab78b8addd22f427cac8
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56103115"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56743989"
 ---
 # <a name="azure-key-vault-configuration-provider-in-aspnet-core"></a>Поставщик конфигурации хранилища ключей Azure в ASP.NET Core
 
@@ -116,7 +116,7 @@ dotnet user-secrets set "Section:SecretName" "secret_value_2_dev"
 Настройка Azure AD, Azure Key Vault и приложение для использования идентификатор приложения и пароль (секрет клиента) для проверки подлинности в хранилище ключей **когда приложение размещается за пределами Azure**.
 
 > [!NOTE]
-> Несмотря на то, что использование идентификатор приложения и пароль (секрет клиента) поддерживается для приложений, размещенных в Azure, мы рекомендуем использовать [управляемые удостоверения для ресурсов Azure](#use-managed-identities-for-azure-resources) при размещении приложения в Azure. Управляемые удостоверения требуется хранить учетные данные в приложение или его конфигурацию, поэтому считается более безопасный подход.
+> Несмотря на то, что использование идентификатор приложения и пароль (секрет клиента) поддерживается для приложений, размещенных в Azure, мы рекомендуем использовать [управляемые удостоверения для ресурсов Azure](#use-managed-identities-for-azure-resources) при размещении приложения в Azure. Управляемые удостоверения не требует хранения учетных данных в приложение или его конфигурацию, поэтому считается более безопасный подход.
 
 Пример приложения использует идентификатор приложения и пароль (секрет клиента) при `#define` инструкция в верхней части *Program.cs* для файла `Basic`.
 
