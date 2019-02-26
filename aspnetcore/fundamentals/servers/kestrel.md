@@ -838,7 +838,7 @@ Listening on the following addresses: http://127.0.0.1:48508
 * Минимальные размеры обмена временными ключами:
   * эллиптическая кривая Диффи-Хелмана (ECDHE) &lbrack;[RFC4492](https://www.ietf.org/rfc/rfc4492.txt)&rbrack; &ndash; не менее 224 бит;
   * конечное поле Диффи-Хелмана (DHE) &lbrack;`TLS12`&rbrack; &ndash; не менее 2048 бит;
-* Набор шифров не внесен в черный список.
+* Набор шифров не внесен в список блокировок.
 
 По умолчанию поддерживается `TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256` &lbrack;`TLS-ECDHE`&rbrack; с эллиптической кривой P-256 &lbrack;`FIPS186`&rbrack;.
 
