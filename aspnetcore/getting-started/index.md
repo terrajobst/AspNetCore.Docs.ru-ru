@@ -1,17 +1,11 @@
 ---
 title: Начало работы с ASP.NET Core
 author: rick-anderson
-description: Краткий учебник, в котором с помощью ASP.NET Core создается и запускается простое приложение Hello World.
+description: 'Краткий учебник, в котором с помощью ASP.NET Core создается и запускается простое приложение Hello World.'
 ms.author: riande
 ms.custom: mvc
 ms.date: 01/15/2019
 uid: getting-started
-ms.openlocfilehash: eee927f4306fa7757f3f361e6c6f367658512897
-ms.sourcegitcommit: 42a8164b8aba21f322ffefacb92301bdfb4d3c2d
-ms.translationtype: HT
-ms.contentlocale: ru-RU
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54341814"
 ---
 # <a name="tutorial-get-started-with-aspnet-core"></a>Учебник. Начало работы с ASP.NET Core
 
@@ -107,7 +101,7 @@ dotnet run
 > * Запустите проект.
 > * вносить изменения.
 
-Дополнительные сведения об ASP.NET Core см. во введении:
+Дополнительные сведения об ASP.NET Core см. в разделе рекомендуемой схемы обучения в вводной статье:
 
 > [!div class="nextstepaction"]
-> <xref:index>
+> <xref:index#recommended-learning-path>

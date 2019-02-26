@@ -1,17 +1,11 @@
 ---
 title: Введение в ASP.NET Core
 author: rick-anderson
-description: Введение в ASP.NET Core — кроссплатформенную высокопроизводительную платформу с открытым исходным кодом для создания современных облачных интернет-приложений.
+description: "Введение в ASP.NET Core\_— кроссплатформенную высокопроизводительную платформу с открытым исходным кодом для создания современных облачных интернет-приложений."
 ms.author: riande
 ms.custom: mvc
-ms.date: 02/13/2019
+ms.date: 02/14/2019
 uid: index
-ms.openlocfilehash: c3f07814bfab19a0f070e0b48b0d2ef6cfc1594e
-ms.sourcegitcommit: 6ba5fb1fd0b7f9a6a79085b0ef56206e462094b7
-ms.translationtype: HT
-ms.contentlocale: ru-RU
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56248164"
 ---
 # <a name="introduction-to-aspnet-core"></a>Введение в ASP.NET Core
 
@@ -68,6 +62,34 @@ ASP.NET Core версии 3.0 и более поздних будут выпол
 * Открытый исходный код
 
 Мы прилагаем максимум усилий, чтобы устранить различия API между .NET Framework и .NET Core. Благодаря [пакету обеспечения совместимости Windows](/dotnet/core/porting/windows-compat-pack) в .NET Core доступны тысячи API-интерфейсов, созданных только для Windows. Эти API-интерфейсы не были доступны в .NET Core 1.x.
+
+## <a name="recommended-learning-path"></a>Рекомендуемая схема обучения
+
+Для знакомства с разработкой приложений ASP.NET Core рекомендуется изучить следующую последовательность учебников и статей.
+
+1. Пройдите учебник по тому типу приложения, которое вы собираетесь разрабатывать или обслуживать:
+
+   |Тип приложения  |Сценарий  |Учебник  |
+   |----------|----------|----------|
+   |Веб-приложение       | Разработка нового приложения        |[Начало работы с Razor Pages](xref:tutorials/razor-pages/razor-pages-start) |
+   |Веб-приложение       | Обслуживание приложения MVC |[Начало работы с MVC](xref:tutorials/first-mvc-app/start-mvc)|
+   |Веб-интерфейс API       |                            |[Создание веб-API](xref:tutorials/first-web-api)\*  |
+   |Приложение режима реального времени |                            |[Начало работы с SignalR](xref:tutorials/signalr) |
+
+1. Пройдите учебник, посвященный основам доступа к данным:
+
+   |Сценарий  |Учебник  |
+   |----------|----------|
+   | Разработка нового приложения        |[Razor Pages с Entity Framework Core](xref:data/ef-rp/intro) |
+   | Обслуживание приложения MVC |[MVC с Entity Framework Core](xref:data/ef-mvc/intro)
+
+1. Прочтите обзор функций ASP.NET Core, относящихся ко всем типам приложений:
+
+   * [Основы](xref:fundamentals/index)
+
+1. Просмотрите содержание, чтобы найти другие интересующие вас темы.
+
+\* Доступен новый [учебник по веб-API с прохождением в браузере](https://docs.microsoft.com/learn/modules/build-web-api-net-core), не требующий установки локальной интегрированной среды разработки.  Код выполняется в [Azure Cloud Shell](https://azure.microsoft.com/features/cloud-shell/), а для тестирования используется [curl](https://curl.haxx.se/).
 
 ## <a name="how-to-download-a-sample"></a>Загрузка примера
 
@@ -126,7 +148,7 @@ WebHost.CreateDefaultBuilder(args)
 
 Дополнительные сведения см. в следующих ресурсах:
 
-* [Начало работы с Razor Pages](xref:tutorials/razor-pages/razor-pages-start)
+* <xref:getting-started>
 * <xref:tutorials/publish-to-azure-webapp-using-vs>
 * [Основы ASP.NET Core](xref:fundamentals/index)
 * [В еженедельном выпуске ASP.NET Community Standup](https://live.asp.net/) рассматривается ход работы и планы команды. Помимо этого, публикуются новые блоги и стороннее программное обеспечение.

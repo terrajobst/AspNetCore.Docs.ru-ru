@@ -58,35 +58,35 @@ items:
   - uid: fundamentals/index
     name: Обзор
   - uid: fundamentals/startup
-    name: Запуск приложений
+    name: Класс Startup
   - uid: fundamentals/dependency-injection
     name: Введение зависимостей (службы)
-  - uid: fundamentals/routing
-    name: Маршрутизация
-  - uid: fundamentals/environments
-    name: Среды (разработки, промежуточные, рабочие)
-  - uid: fundamentals/configuration/index
-    name: Параметр Configuration
-  - uid: fundamentals/configuration/options
-    name: Параметры
-  - uid: fundamentals/logging/index
-    name: Ведение журнала
-  - uid: fundamentals/error-handling
-    name: Обработка ошибок
   - uid: fundamentals/middleware/index
     name: ПО промежуточного слоя
   - name: Узел
     items:
-    - uid: fundamentals/host/index
-      name: Обзор
     - uid: fundamentals/host/web-host
       name: Веб-узел
     - uid: fundamentals/host/generic-host
       name: Универсальный узел
   - uid: fundamentals/servers/index
     name: Серверы
+  - uid: fundamentals/configuration/index
+    name: Параметр Configuration
+  - uid: fundamentals/configuration/options
+    name: Параметры
+  - uid: fundamentals/environments
+    name: Среды (разработки, промежуточные, рабочие)
+  - uid: fundamentals/logging/index
+    name: Ведение журнала
+  - uid: fundamentals/routing
+    name: Маршрутизация
+  - uid: fundamentals/error-handling
+    name: Обработка ошибок
   - uid: fundamentals/http-requests
     name: Создание HTTP-запросов
+  - uid: fundamentals/static-files
+    name: Статические файлы
 - name: Веб-приложения
   items:
   - name: Razor Pages
@@ -210,8 +210,6 @@ items:
         href: mvc/views/working-with-forms.md#the-validation-summary-tag-helper
   - uid: mvc/views/layout
     name: Макет
-  - uid: fundamentals/static-files
-    name: Статические файлы
   - uid: mvc/models/model-binding
     name: Привязка модели
   - uid: mvc/models/validation
@@ -814,6 +812,8 @@ items:
     name: Локализация переносимых объектов
 - name: Дополнительно
   items:
+  - uid: fundamentals/middleware/write
+    name: Написание ПО промежуточного слоя
   - uid: fundamentals/url-rewriting
     name: Переопределение URL-адресов
   - uid: fundamentals/file-providers
@@ -880,9 +880,9 @@ items:
   href: /dotnet/api/?view=aspnetcore-2.2
 - name: Участие
   href: https://github.com/aspnet/Docs/blob/master/CONTRIBUTING.md
-ms.openlocfilehash: d2015955147460621d64ea6035f5f8118a02469b
-ms.sourcegitcommit: 6ba5fb1fd0b7f9a6a79085b0ef56206e462094b7
+ms.openlocfilehash: e55cfa30103c2a89007f2bc5e9d133dea7f8c6d5
+ms.sourcegitcommit: b3894b65e313570e97a2ab78b8addd22f427cac8
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56248398"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56744002"
