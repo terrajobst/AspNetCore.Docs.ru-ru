@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 10/24/2018
 uid: security/authentication/identity-custom-storage-providers
-ms.openlocfilehash: b10731261ca0c748548fcba94a229ba055d46eb5
-ms.sourcegitcommit: 4d74644f11e0dac52b4510048490ae731c691496
+ms.openlocfilehash: ccd56d0c15639e1ad29094e947f8055702ee2264
+ms.sourcegitcommit: 2c7ffe349eabdccf2ed748dd303ffd0ba6e1cfe3
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50090840"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56833674"
 ---
 # <a name="custom-storage-providers-for-aspnet-core-identity"></a>Пользовательские поставщики хранилищ для ASP.NET Core Identity
 
@@ -58,7 +58,7 @@ dotnet new webapi -au Individual
 
 [ASP.NET Core Identity](https://github.com/aspnet/identity) типы данных описаны в следующих разделах:
 
-### <a name="users"></a>Пользователи
+### <a name="users"></a>Users
 
 Зарегистрированным пользователям вашего веб-сайта. [IdentityUser](/dotnet/api/microsoft.aspnet.identity.corecompat.identityuser) типа может расширять или использовать в качестве примера для пользовательского типа. Не нужно наследовать от определенного типа для реализации собственного решения хранилища пользовательских удостоверений.
 
@@ -106,7 +106,7 @@ dotnet new webapi -au Individual
 
 Хранит и извлекает, какие роли назначаются для пользователей. [Пример](/dotnet/api/microsoft.aspnet.identity.corecompat.userstore-1)
 
-**Совет:** реализуют только классы, которые планируется использовать в приложении.
+**СОВЕТ.** Реализуйте только классы, которые планируется использовать в приложении.
 
 В классы доступа к данным предоставить код для выполнения операций с данными для вашего механизма сохраняемости. Например, в пределах пользовательского поставщика, возможно, следующий код, чтобы создать нового пользователя в *хранения* класса:
 
@@ -133,7 +133,7 @@ dotnet new webapi -au Individual
 * [IUserPasswordStore](/dotnet/api/microsoft.aspnetcore.identity.iuserpasswordstore-1)
 * [IUserSecurityStampStore](/dotnet/api/microsoft.aspnetcore.identity.iusersecuritystampstore-1)
 * [IUserEmailStore](/dotnet/api/microsoft.aspnetcore.identity.iuseremailstore-1)
-* [IPhoneNumberStore](/dotnet/api/microsoft.aspnetcore.identity.iphonenumberstore-1)
+* [IUserPhoneNumberStore](/dotnet/api/microsoft.aspnetcore.identity.iuserphonenumberstore-1)
 * [IQueryableUserStore](/dotnet/api/microsoft.aspnetcore.identity.iqueryableuserstore-1)
 * [IUserLoginStore](/dotnet/api/microsoft.aspnetcore.identity.iuserloginstore-1)
 * [IUserTwoFactorStore](/dotnet/api/microsoft.aspnetcore.identity.iusertwofactorstore-1)

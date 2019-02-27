@@ -3,14 +3,14 @@ title: Использовать проверку подлинности файл
 author: rick-anderson
 description: Объяснение того, с использованием проверки подлинности файла cookie без ASP.NET Core Identity
 ms.author: riande
-ms.date: 10/11/2017
+ms.date: 02/25/2019
 uid: security/authentication/cookie
-ms.openlocfilehash: f05e5b83359ec1739115293e092eaed0c811c046
-ms.sourcegitcommit: 3c2ba9a0d833d2a096d9d800ba67a1a7f9491af0
-ms.translationtype: MT
+ms.openlocfilehash: 7e975da3a276ffb6a3de7ee02f7cc5be67cbbebe
+ms.sourcegitcommit: 2c7ffe349eabdccf2ed748dd303ffd0ba6e1cfe3
+ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55854384"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56833622"
 ---
 # <a name="use-cookie-authentication-without-aspnet-core-identity"></a>Использовать проверку подлинности файлов cookie без ASP.NET Core Identity
 
@@ -26,7 +26,7 @@ ms.locfileid: "55854384"
 
 Чтобы использовать удостоверение ASP.NET Core, см. в разделе [Общие сведения об Identity](xref:security/authentication/identity) раздела.
 
-## <a name="configuration"></a>Конфигурация
+## <a name="configuration"></a>Параметр Configuration
 
 ::: moniker range=">= aspnetcore-2.0"
 
@@ -40,6 +40,8 @@ ms.locfileid: "55854384"
 
 Схема проверки подлинности приложения отличается от схемы проверки подлинности файла cookie для приложения. Когда схему проверки подлинности файла cookie не предоставляется для <xref:Microsoft.Extensions.DependencyInjection.CookieExtensions.AddCookie*>, он использует [CookieAuthenticationDefaults.AuthenticationScheme](xref:Microsoft.AspNetCore.Authentication.Cookies.CookieAuthenticationDefaults.AuthenticationScheme) («файлы cookie»).
 
+Файл cookie проверки подлинности <xref:Microsoft.AspNetCore.Http.CookieBuilder.IsEssential> свойству `true` по умолчанию. Файлы cookie проверки подлинности разрешены, если посетитель не означает согласие на сбор данных. Дополнительные сведения см. в разделе <xref:security/gdpr#essential-cookies>.
+
 В `Configure` используйте `UseAuthentication` метод, вызываемый по промежуточного слоя проверки подлинности, который задает `HttpContext.User` свойства. Вызовите `UseAuthentication` метод перед вызовом `UseMvcWithDefaultRoute` или `UseMvc`:
 
 [!code-csharp[](cookie/samples/2.x/CookieSample/Startup.cs?name=snippet2)]
@@ -48,7 +50,7 @@ ms.locfileid: "55854384"
 
 [CookieAuthenticationOptions](/dotnet/api/microsoft.aspnetcore.authentication.cookies.cookieauthenticationoptions?view=aspnetcore-2.0) класс используется для настройки параметров поставщика проверки подлинности.
 
-| Параметр | Описание: |
+| Параметр | Описание |
 | ------ | ----------- |
 | [AccessDeniedPath](/dotnet/api/microsoft.aspnetcore.authentication.cookies.cookieauthenticationoptions.accessdeniedpath?view=aspnetcore-2.0) | Предоставляет путь к предоставить "302 Found" (URL-адрес перенаправления) при активации `HttpContext.ForbidAsync`. Значение по умолчанию — `/Account/AccessDenied`. |
 | [ClaimsIssuer](/dotnet/api/microsoft.aspnetcore.authentication.authenticationschemeoptions.claimsissuer?view=aspnetcore-2.0) | Издатель, используемый для [издателя](/dotnet/api/system.security.claims.claim.issuer) свойство на все утверждения, созданный с помощью службы проверки подлинности файла cookie. |

@@ -5,14 +5,14 @@ description: Узнайте, как настроить проверку подл
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc, seodec18
-ms.date: 01/15/2019
+ms.date: 02/25/2019
 uid: security/authentication/windowsauth
-ms.openlocfilehash: c98bdedcf943a9057c96a8e5d62615e400074899
-ms.sourcegitcommit: 42a8164b8aba21f322ffefacb92301bdfb4d3c2d
+ms.openlocfilehash: 15fc41efba77f88fc8129f875b85836ac1b5f886
+ms.sourcegitcommit: 2c7ffe349eabdccf2ed748dd303ffd0ba6e1cfe3
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54341658"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56833700"
 ---
 # <a name="configure-windows-authentication-in-aspnet-core"></a>Настройка проверки подлинности Windows в ASP.NET Core
 
@@ -192,3 +192,7 @@ ASP.NET Core не реализует олицетворения. Приложе�
 [!code-csharp[](windowsauth/sample_snapshot/Startup.cs?highlight=10-19)]
 
 `RunImpersonated` не поддерживает асинхронные операции и не должны использоваться для сложных сценариев. Например упаковки всего запросов или по промежуточного слоя цепочек не поддерживается и не рекомендуется.
+
+### <a name="claims-transformations"></a>Преобразования утверждений
+
+При размещении в режиме в процессе IIS <xref:Microsoft.AspNetCore.Authentication.AuthenticationService.AuthenticateAsync*> не вызывается внутри для инициализации пользователя. Таким образом <xref:Microsoft.AspNetCore.Authentication.IClaimsTransformation> реализацию, используемую для преобразования утверждений после каждой аутентификации не активируется по умолчанию. Дополнительные сведения и пример кода, который активирует преобразования утверждений, при размещении в процессе, см. в разделе <xref:host-and-deploy/aspnet-core-module#in-process-hosting-model>.

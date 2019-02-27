@@ -8,14 +8,14 @@ ms.date: 10/02/2014
 ms.assetid: 0a8d6044-5fab-4213-82d6-5618d5601358
 msc.legacyurl: /web-forms/overview/security/create-a-secure-aspnet-web-forms-app-with-user-registration-email-confirmation-and-password-reset
 msc.type: authoredcontent
-ms.openlocfilehash: b964257165f8a50bef5cb5d8cee4fb30a5e91cf0
-ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
+ms.openlocfilehash: acc13776840408756901e20589b9efacc83ff2a9
+ms.sourcegitcommit: 2c7ffe349eabdccf2ed748dd303ffd0ba6e1cfe3
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "41837689"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56833687"
 ---
-<a name="create-a-secure-aspnet-web-forms-app-with-user-registration-email-confirmation-and-password-reset-c"></a>Создание безопасного приложения веб-форм ASP.NET с регистрацией пользователей, отправить по электронной почте подтверждение и сброс пароля (C#)
+<a name="create-a-secure-aspnet-web-forms-app-with-user-registration-email-confirmation-and-password-reset-c"></a>Создание безопасного приложения веб-форм ASP.NET с регистрацией пользователей, подтверждением электронной почты и сбросом пароля (C#)
 ====================
 по [Erik Reitan](https://github.com/Erikre)
 
@@ -70,6 +70,8 @@ ms.locfileid: "41837689"
 
 <a id="SG"></a>
 ## <a name="hook-up-sendgrid"></a>Подключить SendGrid
+
+SendGrid изменилось его API, так как этот учебник написан. Актуальные инструкции SendGrid, см. в разделе [SendGrid](http://sendgrid.com/) или [включить учетную запись, пароль и Подтверждение восстановления](xref:security/authentication/accconfirm#enable-account-confirmation-and-password-recovery).
 
 Несмотря на то, что этот учебник только показано, как добавить уведомление по электронной почте через [SendGrid](http://sendgrid.com/), вы можете отправить электронную почту с помощью SMTP и другие механизмы (см. в разделе [дополнительные ресурсы](#addRes)).
 
