@@ -5,12 +5,12 @@ description: Объяснение того, с использованием пр
 ms.author: riande
 ms.date: 02/25/2019
 uid: security/authentication/cookie
-ms.openlocfilehash: 7e975da3a276ffb6a3de7ee02f7cc5be67cbbebe
-ms.sourcegitcommit: 2c7ffe349eabdccf2ed748dd303ffd0ba6e1cfe3
-ms.translationtype: HT
+ms.openlocfilehash: 29370a3ff25469b34edc2a71e00601cf6ecc00ca
+ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
+ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56833622"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56899294"
 ---
 # <a name="use-cookie-authentication-without-aspnet-core-identity"></a>Использовать проверку подлинности файлов cookie без ASP.NET Core Identity
 
@@ -50,7 +50,7 @@ ms.locfileid: "56833622"
 
 [CookieAuthenticationOptions](/dotnet/api/microsoft.aspnetcore.authentication.cookies.cookieauthenticationoptions?view=aspnetcore-2.0) класс используется для настройки параметров поставщика проверки подлинности.
 
-| Параметр | Описание |
+| Параметр | Описание: |
 | ------ | ----------- |
 | [AccessDeniedPath](/dotnet/api/microsoft.aspnetcore.authentication.cookies.cookieauthenticationoptions.accessdeniedpath?view=aspnetcore-2.0) | Предоставляет путь к предоставить "302 Found" (URL-адрес перенаправления) при активации `HttpContext.ForbidAsync`. Значение по умолчанию — `/Account/AccessDenied`. |
 | [ClaimsIssuer](/dotnet/api/microsoft.aspnetcore.authentication.authenticationschemeoptions.claimsissuer?view=aspnetcore-2.0) | Издатель, используемый для [издателя](/dotnet/api/system.security.claims.claim.issuer) свойство на все утверждения, созданный с помощью службы проверки подлинности файла cookie. |
@@ -142,7 +142,7 @@ app.UseCookiePolicy(cookiePolicyOptions);
 
  [CookiePolicyOptions](/dotnet/api/microsoft.aspnetcore.builder.cookiepolicyoptions) для по промежуточного слоя политики позволяют управлять общих характеристик обработки файлов cookie и обработчик в обработчики обработки файлов cookie, если файлы cookie добавляется или удаляется.
 
-| Свойство. | Описание: |
+| Свойство. | Описание |
 | -------- | ----------- |
 | [HttpOnly](/dotnet/api/microsoft.aspnetcore.builder.cookiepolicyoptions.httponly) | Влияет ли файлы cookie должен быть HttpOnly, который является флагом, показывающим куки-файл должен быть доступен только на серверы. Значение по умолчанию — `HttpOnlyPolicy.None`. |
 | [MinimumSameSitePolicy](/dotnet/api/microsoft.aspnetcore.builder.cookiepolicyoptions.minimumsamesitepolicy) | Влияет на атрибут файла cookie веб-сайте (см. ниже). Значение по умолчанию — `SameSiteMode.Lax`. Этот параметр доступен для ASP.NET Core 2.0 +. |
@@ -404,7 +404,7 @@ await HttpContext.Authentication.SignInAsync(
 
 ## <a name="absolute-cookie-expiration"></a>Срок действия файла cookie абсолютный
 
-Можно задать абсолютный срок действия с `ExpiresUtc`. Необходимо также задать `IsPersistent`; в противном случае `ExpiresUtc` учитывается и создается файл cookie одного сеанса. Когда `ExpiresUtc` устанавливается на `SignInAsync`, этот параметр переопределяет значение `ExpireTimeSpan` параметр `CookieAuthenticationOptions`, если задать.
+Можно задать абсолютный срок действия с `ExpiresUtc`. Чтобы создать постоянный файл cookie, необходимо также задать `IsPersistent`; в противном случае файл cookie создается с временем жизни на основе сеансов и срок действия может истечь до или после проверки подлинности билета, она хранит. Когда `ExpiresUtc` устанавливается на `SignInAsync`, этот параметр переопределяет значение `ExpireTimeSpan` параметр `CookieAuthenticationOptions`, если задать.
 
 Следующий фрагмент кода создает удостоверение и соответствующий файл cookie, который выполняется в течение 20 минут. Это не учитывает параметры скользящего срока действия ранее была настроена.
 

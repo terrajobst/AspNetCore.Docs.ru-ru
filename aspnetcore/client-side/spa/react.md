@@ -7,12 +7,12 @@ ms.author: scaddie
 ms.custom: mvc
 ms.date: 02/13/2019
 uid: spa/react
-ms.openlocfilehash: aa08a9d8d06d8b52be564fabf904d4923684d4e4
-ms.sourcegitcommit: 6ba5fb1fd0b7f9a6a79085b0ef56206e462094b7
+ms.openlocfilehash: 3b2b2e67b5d577872bafefef5624a13ca1a22449
+ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56248034"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56899181"
 ---
 # <a name="use-the-react-project-template-with-aspnet-core"></a>Использование шаблона проекта React с ASP.NET Core
 
@@ -102,3 +102,6 @@ npm install --save <package_name>
     ```
 
 Теперь приложение ASP.NET Core не будет создавать при запуске сервер CRA. Вместо него оно будет использовать запущенный вручную экземпляр. Это позволит быстрее запускать и перезапускать приложение. Вам не придется каждый раз ожидать перестроения приложения React.
+
+> [!IMPORTANT]
+> «Отрисовки на стороне сервера» не является поддерживаемой функцией этого шаблона. Наша цель, с помощью этого шаблона — в соответствии с контролем четности с «создать, react-app». Таким образом сценарии и возможности, отсутствующие в проекте «Создание react-app» (например, SSR) не поддерживаются и оставить в качестве упражнения для пользователя.

@@ -5,25 +5,18 @@ description: Узнайте, как ограничить доступ контр
 ms.author: riande
 ms.date: 10/14/2016
 uid: security/authorization/roles
-ms.openlocfilehash: 0467ea82831bffe6882e584930c2fa1212a244c7
-ms.sourcegitcommit: 6ba5fb1fd0b7f9a6a79085b0ef56206e462094b7
+ms.openlocfilehash: c38e7144166ce7741eee6e3acb4d1c952ad4f024
+ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56248099"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56899168"
 ---
 # <a name="role-based-authorization-in-aspnet-core"></a>Ролевая авторизация в ASP.NET Core
 
 <a name="security-authorization-role-based"></a>
 
 При создании удостоверения может принадлежать одной или нескольких ролей. Например Трейси может принадлежать к роли администратора и пользователя, пока Скотт может принадлежать только к роли пользователя. Как эти роли создаются и управляются зависит от хранилище процесса авторизации. Роли имеют доступ к деятельность разработчика [IsInRole](/dotnet/api/system.security.principal.genericprincipal.isinrole) метод [ClaimsPrincipal](/dotnet/api/system.security.claims.claimsprincipal) класса.
-
-::: moniker range=">= aspnetcore-2.0"
-
-> [!IMPORTANT]
-> Этот раздел **не** распространяется на приложение Razor Pages. Razor Pages поддерживает [IPageFilter](/dotnet/api/microsoft.aspnetcore.mvc.filters.ipagefilter) и [IAsyncPageFilter](/dotnet/api/microsoft.aspnetcore.mvc.filters.iasyncpagefilter). Дополнительные сведения см. в разделе [Методы фильтрации для Razor Pages](xref:razor-pages/filter).
-
-::: moniker-end
 
 ## <a name="adding-role-checks"></a>Добавление проверки роли
 
@@ -94,6 +87,28 @@ public class ControlPanelController : Controller
     }
 }
 ```
+
+::: moniker range=">= aspnetcore-2.0"
+
+Для страниц Razor `AuthorizeAttribute` можно применить, либо:
+
+* С помощью [соглашение](xref:razor-pages/razor-pages-conventions#page-model-action-conventions), или
+* Применение `AuthorizeAttribute` для `PageModel` экземпляр:
+
+```csharp
+[Authorize(Policy = "RequireAdministratorRole")]
+public class UpdateModel : PageModel
+{
+    public ActionResult OnPost()
+    {
+    }
+}
+```
+
+> [!IMPORTANT]
+> Фильтрация атрибутов, включая `AuthorizeAttribute`, может применяться только к модели страницы и не может применяться к определенной странице методы обработчика.
+::: moniker-end
+
 
 <a name="security-authorization-role-policy"></a>
 

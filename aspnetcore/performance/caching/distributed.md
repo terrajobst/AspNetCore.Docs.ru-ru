@@ -4,14 +4,14 @@ author: guardrex
 description: Сведения об использовании ASP.NET Core распределенного кэша для повышения производительности приложения и масштабируемости, особенно в среде фермы облаком и сервером.
 ms.author: riande
 ms.custom: mvc
-ms.date: 02/13/2019
+ms.date: 02/26/2019
 uid: performance/caching/distributed
-ms.openlocfilehash: a157eb075874d2118e3e34b51410b539a1ec37df
-ms.sourcegitcommit: 6ba5fb1fd0b7f9a6a79085b0ef56206e462094b7
+ms.openlocfilehash: 7337ee3b823064c942832d8a44e4d4289bc4fd0e
+ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56248592"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56899428"
 ---
 # <a name="distributed-caching-in-aspnet-core"></a>Распределенное кэширование в ASP.NET Core
 
@@ -33,7 +33,15 @@ ms.locfileid: "56248592"
 
 ## <a name="prerequisites"></a>Предварительные требования
 
-::: moniker range=">= aspnetcore-2.1"
+::: moniker range=">= aspnetcore-2.2"
+
+Использование SQL Server распределенный кеш, справочник по [метапакет Microsoft.AspNetCore.App](xref:fundamentals/metapackage-app) или добавьте ссылку на пакет [Microsoft.Extensions.Caching.SqlServer](https://www.nuget.org/packages/Microsoft.Extensions.Caching.SqlServer) пакета.
+
+Для использования Redis распределенный кеш, справочник по [метапакет Microsoft.AspNetCore.App](xref:fundamentals/metapackage-app) и добавьте ссылку на пакет [Microsoft.Extensions.Caching.StackExchangeRedis](https://www.nuget.org/packages/Microsoft.Extensions.Caching.StackExchangeRedis) пакета. Пакет Redis не включен в `Microsoft.AspNetCore.App` пакета, поэтому необходимо сослаться на пакет, Redis отдельно в файле проекта.
+
+::: moniker-end
+
+::: moniker range="= aspnetcore-2.1"
 
 Использование SQL Server распределенный кеш, справочник по [метапакет Microsoft.AspNetCore.App](xref:fundamentals/metapackage-app) или добавьте ссылку на пакет [Microsoft.Extensions.Caching.SqlServer](https://www.nuget.org/packages/Microsoft.Extensions.Caching.SqlServer) пакета.
 

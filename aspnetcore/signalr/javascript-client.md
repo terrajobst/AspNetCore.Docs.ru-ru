@@ -7,12 +7,12 @@ ms.author: bradyg
 ms.custom: mvc
 ms.date: 11/14/2018
 uid: signalr/javascript-client
-ms.openlocfilehash: dd40a64d3c8405e92337ac640ad5cbe913cd849f
-ms.sourcegitcommit: ebf4e5a7ca301af8494edf64f85d4a8deb61d641
+ms.openlocfilehash: db9a8bbc8f111728f0827e3639e40785149bf79e
+ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54835574"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56899220"
 ---
 # <a name="aspnet-core-signalr-javascript-client"></a>Клиент ASP.NET Core SignalR JavaScript
 
@@ -45,7 +45,7 @@ npm устанавливает содержимое пакета в *node_module
 
 Следующий код создает и запускает подключение. Имя концентратора регистр не учитывается.
 
-[!code-javascript[Call hub methods](javascript-client/sample/wwwroot/js/chat.js?range=9-12)]
+[!code-javascript[Call hub methods](javascript-client/sample/wwwroot/js/chat.js?range=9-13,43-45)]
 
 ### <a name="cross-origin-connections"></a>Независимо от источника соединения
 
@@ -86,7 +86,7 @@ SignalR определяют, какой метод клиента для выз
 
 Цепочка `catch` метод в конец `start` метод для обработки ошибок на стороне клиента. Используйте `console.error` для ошибок вывода для консоли браузера.
 
-[!code-javascript[Error handling](javascript-client/sample/wwwroot/js/chat.js?range=43-45)]
+[!code-javascript[Error handling](javascript-client/sample/wwwroot/js/chat.js?range=49-51)]
 
 Настройка трассировки журнала на стороне клиента, передав средства ведения журнала и тип события в журнале, когда устанавливается соединение. Выводятся сообщения с уровнем журнала и более поздних версий. Ниже перечислены уровни доступных журналов:
 

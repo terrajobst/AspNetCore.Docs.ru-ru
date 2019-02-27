@@ -7,12 +7,12 @@ ms.author: stevesa
 ms.custom: mvc
 ms.date: 02/13/2019
 uid: spa/angular
-ms.openlocfilehash: 35a839e31369e8dbf00f5dbfb3751a2985335755
-ms.sourcegitcommit: 6ba5fb1fd0b7f9a6a79085b0ef56206e462094b7
+ms.openlocfilehash: f33f4b96faf71440c3e8878c0480f2908ace70d1
+ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56248125"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56899259"
 ---
 # <a name="use-the-angular-project-template-with-aspnet-core"></a>Использование шаблона проекта Angular с ASP.NET Core
 
@@ -117,51 +117,6 @@ npm install --save <package_name>
     ```
 
 При запуске приложения ASP.NET Core экземпляр сервера Angular CLI запускаться не будет. Вместо него будет использоваться экземпляр, запускаемый вручную. Это ускорит запуск и перезагрузку. Теперь не придется каждый раз дожидаться повторной сборки клиентского приложения в Angular CLI.
-
-## <a name="server-side-rendering"></a>Отрисовка на стороне сервера
-
-В качестве повышения производительности можно выбрать выполнение предварительной визуализации программы Angular на нескольких серверах, так же как и запустить ее в клиенте. Это значит, браузеры получат разметку HTML, которая отображает первоначальный пользовательский интерфейс приложения, поэтому он отображается перед загрузкой и выполнением пакетов JavaScript. Большая часть реализации основывается на функции Angular, под названием [Angular Universal](https://universal.angular.io/).
-
-> [!TIP]
-> Включение параметра отрисовки на стороне сервера (SSR) вводит ряд дополнительных осложнений как во время разработки, так и при развертывании. Чтобы узнать, соответствует ли SSR необходимым требованиям, ознакомьтесь с разделом [Недостатки SSR](#drawbacks-of-ssr).
-
-Чтобы включить SSR, в проект необходимо внести ряд дополнений.
-
-В классе *Startup*, *после* строки, в которой настраивается `spa.Options.SourcePath`, и *перед* вызовом `UseAngularCliServer` или `UseProxyToSpaDevelopmentServer`, необходимо добавить следующий код:
-
-[!code-csharp[](sample/AngularServerSideRendering/Startup.cs?name=snippet_Call_UseSpa&highlight=5-12)]
-
-С помощью этого кода в режиме разработки будет создан пакет SSR путем запуска сценария `build:ssr`, который находится по адресу *ClientApp\package.json*. Это позволит создать приложения Angular `ssr`, которое на данный момент не определено.
-
-В конце массива `apps`, который находится в *ClientApp/.angular-cli.json*, определите дополнительное приложение `ssr`. Используйте следующие параметры.
-
-[!code-json[](sample/AngularServerSideRendering/ClientApp/.angular-cli.json?range=24-41)]
-
-Для этой новой конфигурации приложения с поддержкой SSR требуются два дополнительных файла: *tsconfig.server.json* и *main.server.ts*. Файл *tsconfig.server.json* указывает параметры компиляции для TypeScript. Файл *main.server.ts* служит точкой входа кода во время обработки SSR.
-
-Добавьте новый файл *tsconfig.server.json* в каталог *ClientApp/src* (рядом с существующим файлом *tsconfig.app.json*), который будет содержать следующий код:
-
-[!code-json[](sample/AngularServerSideRendering/ClientApp/src/tsconfig.server.json)]
-
-Это файл настроек компилятора Angular Ahead of Time (AoT) для поиска модуля `app.server.module`. Добавить настройки можно путем создания файла по адресу *ClientApp/src/app/app.server.module.ts* (наряду с существующим файлом *app.module.ts*), в котором будет содержаться следующий код:
-
-[!code-typescript[](sample/AngularServerSideRendering/ClientApp/src/app/app.server.module.ts)]
-
-Этот модуль наследуется `app.module` от клиентской стороны и определяет, какие дополнительные модули Angular доступны во время процесса SSR.
-
-Обратите внимание, что новая запись `ssr` в файле *.angular-cli.json* ссылается на файл точки входа *main.server.ts*. Которого пока нет, но далее он буде создан. В каталоге *ClientApp/src/main.server.ts* создайте файл (наряду с существующим файлом *main.ts*), который будет содержать следующий код:
-
-[!code-typescript[](sample/AngularServerSideRendering/ClientApp/src/main.server.ts)]
-
-ASP.NET Core выполняет код этого файла для каждого запроса при запуске промежуточного программного обеспечения `UseSpaPrerendering`, добавленного в класс *Startup*. Он занимается получением `params` из кода .NET (например, запрашиваемого URL-адреса) и вызовом API Angular SSR для получения HTML-файла.
-
-Строго говоря, это достаточно, чтобы запустить SSR в режиме разработки. Крайне важно сделать последнее изменение, чтобы при публикации приложение работало правильно. В главном файле *.csproj* своего приложения установите для свойства `BuildServerSideRenderer` значение `true`:
-
-[!code-xml[](sample/AngularServerSideRendering/AngularServerSideRendering.csproj?name=snippet_EnableBuildServerSideRenderer)]
-
-Это позволит настроить процесс сборки для запуска `build:ssr` во время публикации и развертывания файлов SSR на сервере. Выполнение SSR завершится ошибкой, если этот параметр не включить.
-
-Вне зависимости от режима запуска (производственный или режим разработки) с помощью кода Angular на сервере будет выполнена предварительная визуализация HTML. Клиентский код выполняется в обычном режиме.
 
 ### <a name="pass-data-from-net-code-into-typescript-code"></a>Передача данных от .NET к TypeScript
 
