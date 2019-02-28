@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 02/08/2019
 uid: mvc/controllers/filters
-ms.openlocfilehash: 3cd576b389a2a4384c0ba90b5740ac42140533cc
-ms.sourcegitcommit: af8a6eb5375ef547a52ffae22465e265837aa82b
+ms.openlocfilehash: a9081a9938d56b7612bba13937eba384ff02455b
+ms.sourcegitcommit: 2c7ffe349eabdccf2ed748dd303ffd0ba6e1cfe3
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56159318"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56833739"
 ---
 # <a name="filters-in-aspnet-core"></a>Фильтры в ASP.NET Core
 
@@ -316,7 +316,7 @@ System.InvalidOperationException: No service for type
 Метод `OnActionExecuted` выполняется после метода действия. Он имеет доступ к результатам действия и может управлять ими посредством свойства `ActionExecutedContext.Result`. `ActionExecutedContext.Canceled` будет иметь значение true, если выполнение действия было сокращено другим фильтром. `ActionExecutedContext.Exception` будет иметь отличное от NULL значение, если действие или последующий фильтр действий вызвали исключение. Если установить для `ActionExecutedContext.Exception` значение NULL:
 
 * Будет эффективно обрабатываться исключение.
-* `ActionExectedContext.Result` будет выполняться так, как если бы метод действия вернул его обычным образом.
+* `ActionExecutedContext.Result` будет выполняться так, как если бы метод действия вернул его обычным образом.
 
 ## <a name="exception-filters"></a>Фильтры исключений
 

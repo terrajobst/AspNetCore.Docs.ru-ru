@@ -5,14 +5,14 @@ description: Сведения о том, как управлять компон�
 monikerRange: '>= aspnetcore-3.0'
 ms.author: riande
 ms.custom: mvc
-ms.date: 01/29/2019
+ms.date: 02/20/2019
 uid: host-and-deploy/razor-components/configure-linker
-ms.openlocfilehash: c3c38ec2509344cc02f3895d5d0c2d35059d1d8e
-ms.sourcegitcommit: ed76cc752966c604a795fbc56d5a71d16ded0b58
+ms.openlocfilehash: 7c53e7912ec3b0ae471ea38777f874f55a32487d
+ms.sourcegitcommit: 0945078a09c372f17e9b003758ed87e99c2449f4
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55668067"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56647945"
 ---
 # <a name="configure-the-linker-for-blazor"></a>Настройка компоновщика для Blazor
 
@@ -73,7 +73,7 @@ Blazor выполняет компоновку для [промежуточно�
 </linker>
 ```
 
-Дополнительные сведения о формате файла конфигурации см. в разделе [IL Linker: Syntax of xml descriptor](https://github.com/mono/linker/blob/master/linker/README.md#syntax-of-xml-descriptor) (Компоновщик IL. Синтаксис дескриптора XML).
+Дополнительные сведения о формате файла конфигурации см. в разделе [IL Linker: Syntax of xml descriptor](https://github.com/mono/linker/blob/master/src/linker/README.md#syntax-of-xml-descriptor) (Компоновщик IL. Синтаксис дескриптора XML).
 
 Укажите файл конфигурации в файле проекта с помощью элемента `BlazorLinkerDescriptor`:
 

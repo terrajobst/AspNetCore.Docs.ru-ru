@@ -3,14 +3,14 @@ title: Добавление модели в приложение MVC ASP.NET Co
 author: rick-anderson
 description: Добавление модели в простое приложение ASP.NET Core.
 ms.author: riande
-ms.date: 02/12/2019
+ms.date: 02/25/2019
 uid: tutorials/first-mvc-app/adding-model
-ms.openlocfilehash: da30c1c97cbf40a89d163b2116c8d5f9ad422b25
-ms.sourcegitcommit: af8a6eb5375ef547a52ffae22465e265837aa82b
+ms.openlocfilehash: ccdb7b920517c94b9154fe73b4ef1633f4ad0157
+ms.sourcegitcommit: 2c7ffe349eabdccf2ed748dd303ffd0ba6e1cfe3
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56159244"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56833557"
 ---
 # <a name="add-a-model-to-an-aspnet-core-mvc-app"></a>Добавление модели в приложение MVC ASP.NET Core
 
@@ -173,15 +173,7 @@ System.Data.SqlClient.SqlInternalConnectionTds..ctor(DbConnectionPoolIdentity id
 
 Схема базы данных создается на основе модели, указанной в классе `MvcMovieContext` (в файле *Data/MvcMovieContext.cs*). Аргумент `InitialCreate` — это имя миграции. Можно использовать любое имя, но по соглашению выбирается имя, которое описывает миграцию.
 
----  
-
-В результате выполнения предыдущих команд выводится следующее предупреждение:
-
-```text
-No type was specified for the decimal column 'Price' on entity type 'Movie'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values using 'HasColumnType()'.
-```
-
-Это предупреждение можно игнорировать. Оно будет устранено в следующем руководстве.
+---
 
 ## <a name="examine-the-context-registered-with-dependency-injection"></a>Проверка контекста, зарегистрированного с помощью внедрения зависимостей
 

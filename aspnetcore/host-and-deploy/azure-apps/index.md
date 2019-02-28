@@ -5,14 +5,8 @@ description: Эта статья содержит ссылки на ресурс
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 12/18/2018
+ms.date: 02/26/2019
 uid: host-and-deploy/azure-apps/index
-ms.openlocfilehash: 4c7f2348b13207fb6f2ff830bbf67ffa30e5489c
-ms.sourcegitcommit: 6ba5fb1fd0b7f9a6a79085b0ef56206e462094b7
-ms.translationtype: HT
-ms.contentlocale: ru-RU
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56248242"
 ---
 # <a name="deploy-aspnet-core-apps-to-azure-app-service"></a>Развертывание приложений ASP.NET Core в Службе приложений Azure
 
@@ -22,10 +16,10 @@ ms.locfileid: "56248242"
 
 [Документация по веб-приложениям](/azure/app-service/) Azure — это место, где хранятся документация, учебники, примеры, руководства и другие ресурсы, связанные с приложениями Azure. Размещению приложений ASP.NET Core посвящены следующие два руководства.
 
-[Краткое руководство по созданию веб-приложения ASP.NET Core в Azure](/azure/app-service/app-service-web-get-started-dotnet)  
+[Создание веб-приложения ASP.NET Core в Azure](/azure/app-service/app-service-web-get-started-dotnet)  
 Создайте веб-приложение ASP.NET Core и разверните его в службе приложений Azure на базе Windows с помощью Visual Studio.
 
-[Краткое руководство по созданию веб-приложения .NET Core в службе приложений на платформе Linux](/azure/app-service/containers/quickstart-dotnetcore)  
+[Создание приложения ASP.NET Core в Службе приложений в Linux](/azure/app-service/containers/quickstart-dotnetcore)  
 Создайте веб-приложение ASP.NET Core и разверните его в службе приложений Azure на базе Linux с помощью командной строки.
 
 Следующие статьи входят в документацию по ASP.NET Core.
