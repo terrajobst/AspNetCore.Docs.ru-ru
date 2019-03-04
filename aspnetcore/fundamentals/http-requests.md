@@ -1,5 +1,5 @@
 ---
-title: Инициирование HTTP-запросов
+title: Выполнения HTTP-запросов с помощью IHttpClientFactory в ASP.NET Core
 author: stevejgordon
 description: Сведения об использовании интерфейса IHttpClientFactory для управления логическими экземплярами HttpClient в ASP.NET Core.
 monikerRange: '>= aspnetcore-2.1'
@@ -7,14 +7,14 @@ ms.author: scaddie
 ms.custom: mvc
 ms.date: 01/25/2019
 uid: fundamentals/http-requests
-ms.openlocfilehash: 4fc4e602b809563ea78b6a3af5e5eb5c0ebeddea
-ms.sourcegitcommit: c6db8b14521814f1f7e528d7aa06e474e4c04a1f
+ms.openlocfilehash: a4026addaa55d463c41aadd0a7a39606c88fcb84
+ms.sourcegitcommit: b3894b65e313570e97a2ab78b8addd22f427cac8
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "55065039"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56744213"
 ---
-# <a name="initiate-http-requests"></a>Инициирование HTTP-запросов
+# <a name="make-http-requests-using-ihttpclientfactory-in-aspnet-core"></a>Выполнения HTTP-запросов с помощью IHttpClientFactory в ASP.NET Core
 
 Авторы: [Гленн Кондрон (Glenn Condron)](https://github.com/glennc), [Райан Новак (Ryan Nowak)](https://github.com/rynowak) и [Стив Гордон (Steve Gordon)](https://github.com/stevejgordon)
 
@@ -274,3 +274,9 @@ public class ValuesController : ControllerBase
 При добавлении именованного или типизированного клиента возвращается `IHttpClientBuilder`. Для определения делегата можно использовать метод расширения <xref:Microsoft.Extensions.DependencyInjection.HttpClientBuilderExtensions.ConfigurePrimaryHttpMessageHandler*>. Делегат используется для создания и настройки основного обработчика `HttpMessageHandler`, используемого этим клиентом:
 
 [!code-csharp[Main](http-requests/samples/2.x/HttpClientFactorySample/Startup.cs?name=snippet12)]
+
+## <a name="additional-resources"></a>Дополнительные ресурсы
+
+* [Использование HttpClientFactory для реализации устойчивых HTTP-запросов](/dotnet/standard/microservices-architecture/implement-resilient-applications/use-httpclientfactory-to-implement-resilient-http-requests)
+* [Реализация повторных попыток вызова HTTP с экспоненциальной задержкой с помощью HttpClientFactory и политик Polly](/dotnet/standard/microservices-architecture/implement-resilient-applications/implement-http-call-retries-exponential-backoff-polly)
+* [Реализация шаблона размыкателя цепи](/dotnet/standard/microservices-architecture/implement-resilient-applications/implement-circuit-breaker-pattern)

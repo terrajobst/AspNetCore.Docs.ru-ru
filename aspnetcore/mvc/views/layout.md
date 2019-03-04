@@ -3,14 +3,14 @@ title: Макет в ASP.NET Core
 author: ardalis
 description: Узнайте, как использовать общие макеты, директивы и как выполнять общий код перед преобразованием представлений для просмотра в приложении ASP.NET Core.
 ms.author: riande
-ms.date: 10/18/2018
+ms.date: 02/26/2019
 uid: mvc/views/layout
-ms.openlocfilehash: 1bd225c804b333efea834a46b7d9ba46b1bb69d8
-ms.sourcegitcommit: d75d8eb26c2cce19876c8d5b65ac8a4b21f625ef
+ms.openlocfilehash: 7a60ee15e688d6f0e531302457604fa759213758
+ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 02/19/2019
-ms.locfileid: "56410577"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56899246"
 ---
 # <a name="layout-in-aspnet-core"></a>Макет в ASP.NET Core
 
@@ -49,15 +49,15 @@ ms.locfileid: "56410577"
 
 В следующем коде показан файл макета для проекта, созданного по шаблону, с контроллером и представлениями:
 
-[!code-html[](~/common/samples/WebApplication1/Views/Shared/_Layout.cshtml?highlight=44,72)]
+[!code-cshtml[](~/common/samples/WebApplication1/Views/Shared/_Layout.cshtml?highlight=44,72)]
 
 ## <a name="specifying-a-layout"></a>Указание макета
 
 Представления Razor имеют свойство `Layout`. С его помощью указывается макет в отдельных представлениях:
 
-[!code-html[](../../common/samples/WebApplication1/Views/_ViewStart.cshtml?highlight=2)]
+[!code-cshtml[](../../common/samples/WebApplication1/Views/_ViewStart.cshtml?highlight=2)]
 
-Указанный макет может использовать полный путь (например, */Pages/Shared/_Layout.cshtml* или */Views/Shared/_Layout.cshtml*) или частичное имя (например, `_Layout`). Если указано частичное имя, подсистема представлений Razor ищет файл макета, используя стандартный процесс обнаружения. Сначала поиск выполняется в папке, где существует метод обработчика (или контроллер), а затем в папке *Shared*. Процесс обнаружения аналогичен тому, который применяется для поиска [частичных представлений](partial.md).
+Указанный макет может использовать полный путь (например, */Pages/Shared/_Layout.cshtml* или */Views/Shared/_Layout.cshtml*) или частичное имя (например, `_Layout`). Если указано частичное имя, подсистема представлений Razor ищет файл макета, используя стандартный процесс обнаружения. Сначала поиск выполняется в папке, где существует метод обработчика (или контроллер), а затем в папке *Shared*. Процесс обнаружения аналогичен тому, который применяется для поиска [частичных представлений](xref:mvc/views/partial#partial-view-discovery).
 
 По умолчанию каждый макет должен вызывать метод `RenderBody`. При каждом вызове `RenderBody` содержимое представления будет преобразовываться для просмотра.
 
@@ -123,7 +123,7 @@ ms.locfileid: "56410577"
 
 Пример файла `_ViewImports.cshtml`:
 
-[!code-html[](../../common/samples/WebApplication1/Views/_ViewImports.cshtml)]
+[!code-cshtml[](../../common/samples/WebApplication1/Views/_ViewImports.cshtml)]
 
 Файл *_ViewImports.cshtml* для приложения ASP.NET Core MVC обычно находится в папке *Pages* (или *Views*). Файл *_ViewImports.cshtml* можно поместить в любую папку, но в этом случае он будет применяться только к страницам или представлениям в этой папке и вложенных в нее папках. Файлы `_ViewImports` обрабатываются начиная с корневого уровня, а затем для каждой папки вплоть до расположения самой страницы или представления. Параметры `_ViewImports`, заданные на корневом уровне, можно переопределить на уровне папки.
 
@@ -151,7 +151,7 @@ ms.locfileid: "56410577"
 
 Пример файла *_ViewStart.cshtml*:
 
-[!code-html[](../../common/samples/WebApplication1/Views/_ViewStart.cshtml)]
+[!code-cshtml[](../../common/samples/WebApplication1/Views/_ViewStart.cshtml)]
 
 Приведенный файл предписывает всем представлениям использовать макет *_Layout.cshtml*.
 

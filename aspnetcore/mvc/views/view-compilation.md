@@ -1,18 +1,18 @@
 ---
-title: Компиляция и предварительная компиляция файлов Razor в ASP.NET Core
+title: Компиляция файлов Razor в ASP.NET Core
 author: rick-anderson
-description: Узнайте о преимуществах предварительной компиляции файлов Razor и о том, как это сделать в приложении ASP.NET Core.
+description: Узнайте, как происходит компиляция файлов Razor в приложении ASP.NET Core.
 monikerRange: '>= aspnetcore-1.1'
 ms.author: riande
 ms.custom: mvc
 ms.date: 02/13/2019
 uid: mvc/views/view-compilation
-ms.openlocfilehash: c4e8f722fdf3d3f64807cc35ff9f349af7f32abd
-ms.sourcegitcommit: 6ba5fb1fd0b7f9a6a79085b0ef56206e462094b7
+ms.openlocfilehash: 0b6173a7860f5f1d9d11219fbf3f57f76d703031
+ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56248190"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56899272"
 ---
 # <a name="razor-file-compilation-in-aspnet-core"></a>Компиляция файлов Razor в ASP.NET Core
 
@@ -30,28 +30,31 @@ ms.locfileid: "56248190"
 
 ::: moniker-end
 
-::: moniker range=">= aspnetcore-2.1"
+::: moniker range=">= aspnetcore-2.1 <= aspnetcore-2.2"
 
 Файл Razor компилируется в среде выполнения при вызове связанной страницы Razor или представления MVC. Файлы Razor компилируются и во время сборки, и во время публикации с помощью [пакета SDK для Razor](xref:razor-pages/sdk).
 
 ::: moniker-end
 
-## <a name="precompilation-considerations"></a>Особенности предварительной компиляции
+::: moniker range=">= aspnetcore-3.0"
 
-Ниже перечислены побочные эффекты предварительной компиляции файлов Razor:
+Файлы Razor компилируются и во время сборки, и во время публикации с помощью [пакета SDK для Razor](xref:razor-pages/sdk). Компиляцию в среде выполнения при необходимости можно включить путем настройки приложения
 
-* уменьшение размера публикуемого пакета;
-* уменьшение времени запуска сервера;
-* отсутствие возможности редактирования файлов Razor по причине отсутствия связанного содержимого в публикуемом пакете.
+::: moniker-end
 
-## <a name="deploy-precompiled-files"></a>Развертывание предварительно скомпилированных файлов
+## <a name="razor-compilation"></a>Компиляция Razor
 
-::: moniker range=">= aspnetcore-2.1"
+::: moniker range=">= aspnetcore-3.0"
+Компиляция файлов Razor во время сборки и публикации включена по умолчанию с помощью пакета SDK для Razor. Если этот параметр включен, компиляция в среде выполнения будет дополнять компиляцию во время сборки, что позволит обновлять файлы Razor при редактировании.
 
-Компиляция файлов Razor во время сборки и публикации включена по умолчанию с помощью пакета SDK для Razor. Редактирование файлов Razor после их обновления поддерживается во время сборки. По умолчанию только скомпилированный файл *Views.dll*, а не *CSHTML*-файлы, развертываются вместе с приложением.
+::: moniker-end
+
+::: moniker range=">= aspnetcore-2.1 <= aspnetcore-2.2"
+
+Компиляция файлов Razor во время сборки и публикации включена по умолчанию с помощью пакета SDK для Razor. Редактирование файлов Razor после их обновления поддерживается во время сборки. По умолчанию только скомпилированные файлы *Views.dll*, а не *.cshtml*, и сборки, необходимые для компиляции файлов Razor, развертываются с приложением.
 
 > [!IMPORTANT]
-> Средство предварительной компиляции будет удалено в ASP.NET Core 3.0. Мы советуем перейти на [пакет SDK для Razor](xref:razor-pages/sdk).
+> Средство предварительной компиляции является нерекомендуемым и будет удалено в ASP.NET Core 3.0. Мы советуем перейти на [пакет SDK для Razor](xref:razor-pages/sdk).
 >
 > Пакет SDK для Razor применяется только в том случае, если в файле проекта не заданы свойства предварительной компиляции. Например, если в *CSPROJ*-файле для свойства `MvcRazorCompileOnPublish` установлено значение `true`, пакет SDK для Razor будет отключен.
 
@@ -68,7 +71,7 @@ ms.locfileid: "56248190"
 В шаблонах проектов ASP.NET Core 2.x для свойства `MvcRazorCompileOnPublish` по умолчанию неявно задано значение `true`. Следовательно, этот элемент можно безопасно удалить из *CSPROJ*-файла.
 
 > [!IMPORTANT]
-> Средство предварительной компиляции будет удалено в ASP.NET Core 3.0. Мы советуем перейти на [пакет SDK для Razor](xref:razor-pages/sdk).
+> Средство предварительной компиляции является нерекомендуемым и будет удалено в ASP.NET Core 3.0. Мы советуем перейти на [пакет SDK для Razor](xref:razor-pages/sdk).
 >
 > Предварительная компиляция файлов Razor недоступна при выполнении [автономного развертывания](/dotnet/core/deploying/#self-contained-deployments-scd) в ASP.NET Core 2.0.
 
@@ -96,24 +99,44 @@ dotnet publish -c Release
 
 ::: moniker-end
 
-## <a name="recompile-razor-files-on-change"></a>Перекомпилирование файлов Razor при изменении
+## <a name="runtime-compilation"></a>компиляция среды выполнения.
 
-<xref:Microsoft.AspNetCore.Mvc.Razor.RazorViewEngineOptions> <xref:Microsoft.AspNetCore.Mvc.Razor.RazorViewEngineOptions.AllowRecompilingViewsOnFileChange> возвращает или задает значение, определяющее, выполняется ли повторная компиляция и обновление файлов Razor (представления Razor и Razor Pages) при изменении файлов на диске.
+::: moniker range="= aspnetcore-2.1"
 
-Если задано значение `true`, [IFileProvider.Watch](xref:Microsoft.Extensions.FileProviders.IFileProvider.Watch*) отслеживает изменения в файлах Razor в настроенных экземплярах <xref:Microsoft.Extensions.FileProviders.IFileProvider>.
+Компиляция во время сборки дополняется компиляцией файлов Razor в среде выполнения. ASP.NET Core MVC будет перекомпилировать файлы Razor, когда содержимое файла *.cshtml* меняется.
+
+::: moniker-end
+
+::: moniker range="= aspnetcore-2.2"
+
+Компиляция во время сборки дополняется компиляцией файлов Razor в среде выполнения. <xref:Microsoft.AspNetCore.Mvc.Razor.RazorViewEngineOptions> <xref:Microsoft.AspNetCore.Mvc.Razor.RazorViewEngineOptions.AllowRecompilingViewsOnFileChange> возвращает или задает значение, определяющее, выполняется ли повторная компиляция и обновление файлов Razor (представления Razor и Razor Pages) при изменении файлов на диске.
 
 Значение по умолчанию — `true` для:
 
-* приложений ASP.NET Core 2.1 или более ранней версии;
-* приложений ASP.NET Core 2.2 или более поздней версии в среде разработки.
-
-<xref:Microsoft.AspNetCore.Mvc.Razor.RazorViewEngineOptions.AllowRecompilingViewsOnFileChange> связан с параметром совместимости и может вести себя по-разному в зависимости от настроенной версии совместимости для приложения. Настройте приложения, задав для <xref:Microsoft.AspNetCore.Mvc.Razor.RazorViewEngineOptions.AllowRecompilingViewsOnFileChange> приоритет над значением, которое содержится в версии совместимости приложения.
-
-Если версия совместимости приложения имеет значение <xref:Microsoft.AspNetCore.Mvc.CompatibilityVersion.Version_2_1> или более ранее, то для <xref:Microsoft.AspNetCore.Mvc.Razor.RazorViewEngineOptions.AllowRecompilingViewsOnFileChange> задается значение `true` (если не задано явно).
-
-Если версия совместимости приложения имеет значение <xref:Microsoft.AspNetCore.Mvc.CompatibilityVersion.Version_2_2> или более позднее, то для <xref:Microsoft.AspNetCore.Mvc.Razor.RazorViewEngineOptions.AllowRecompilingViewsOnFileChange> задается значение `false` (если не используется среда разработки или значение не задано явным образом).
+* Если задана версия совместимости приложения <xref:Microsoft.AspNetCore.Mvc.CompatibilityVersion.Version_2_1> или более ранней версии
+* Если задана версия совместимости приложения <xref:Microsoft.AspNetCore.Mvc.CompatibilityVersion.Version_2_2> или более поздней версии и приложение находится в среде разработки <xref:Microsoft.AspNetCore.Hosting.HostingEnvironmentExtensions.IsDevelopment*>. Другими словами, файлы Razor не перекомпилируются вне среды разработки, если явным образом не задано <xref:Microsoft.AspNetCore.Mvc.Razor.RazorViewEngineOptions.AllowRecompilingViewsOnFileChange>.
 
 Рекомендации и примеры настройки версии совместимости приложения см. в статье <xref:mvc/compatibility-version>.
+
+::: moniker-end
+
+::: moniker range=">= aspnetcore-3.0"
+
+Компиляция в среде выполнения включается с помощью пакета `Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation`. Чтобы включить компиляцию в среде выполнения, приложение должно
+
+* установить пакет NuGet [Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation](https://www.nuget.org/packages/Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation/).
+* Обновите `ConfigureServices` приложения, чтобы включить вызов `AddMvcRazorRuntimeCompilation`:
+
+```csharp
+services
+    .AddMvc()
+    .AddMvcRazorRuntimeCompilation()
+```
+
+Чтобы компиляция в среде выполнения работала после развертывания, приложения должны дополнительно изменить свои файлы проекта и задать значение `PreserveCompilationReferences` для `true`.
+[!code-xml[](view-compilation/sample/RuntimeCompilation.csproj?highlight=3)]
+
+::: moniker-end
 
 ## <a name="additional-resources"></a>Дополнительные ресурсы
 

@@ -3,102 +3,75 @@ title: Внедрение зависимостей в контроллеры в 
 author: ardalis
 description: Узнайте, как контроллеры MVC ASP.NET Core явным образом запрашивают зависимости с помощью конструкторов с внедрением зависимостей в ASP.NET Core.
 ms.author: riande
-ms.date: 10/14/2016
+ms.date: 02/24/2019
 uid: mvc/controllers/dependency-injection
-ms.openlocfilehash: 9d9d0a68927da62fad8df72c868eaf4b8ada440d
-ms.sourcegitcommit: d75d8eb26c2cce19876c8d5b65ac8a4b21f625ef
+ms.openlocfilehash: 898e98f4c5d472ca96c6a8ad07dddd1a4ef54fe9
+ms.sourcegitcommit: b3894b65e313570e97a2ab78b8addd22f427cac8
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 02/19/2019
-ms.locfileid: "56410275"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56743833"
 ---
 # <a name="dependency-injection-into-controllers-in-aspnet-core"></a>Внедрение зависимостей в контроллеры в ASP.NET Core
 
 <a name="dependency-injection-controllers"></a>
 
-Автор: [Стив Смит](https://ardalis.com/) (Steve Smith)
+Авторы: [Shadi Namrouti](https://github.com/shadinamrouti) (Шади Намрути), [Рик Андерсон](https://twitter.com/RickAndMSFT) (Rick Anderson) и [Стив Смит](https://github.com/ardalis) (Steve Smith)
 
-Контроллеры ASP.NET Core MVC должны запрашивать свои зависимости явно с помощью конструкторов. В некоторых случаях отдельные действия контроллера могут потребовать службу, которую не имеет смысла запрашивать на уровне контроллера. В этой ситуации также можно внедрить службу в качестве параметра метода действия.
+Контроллеры ASP.NET Core MVC запрашивают зависимости явно с помощью конструкторов. ASP.NET Core имеет встроенную поддержку [внедрения зависимостей (DI)](xref:fundamentals/dependency-injection). Внедрение зависимостей упрощает тестирование и поддержку приложений.
 
 [Просмотреть или скачать образец кода](https://github.com/aspnet/Docs/tree/master/aspnetcore/mvc/controllers/dependency-injection/sample) ([как скачивать](xref:index#how-to-download-a-sample))
 
-## <a name="dependency-injection"></a>Внедрение зависимостей
-
-ASP.NET Core имеет встроенную поддержку [внедрения зависимостей](../../fundamentals/dependency-injection.md), что упрощает тестирование и обслуживание приложений.
-
 ## <a name="constructor-injection"></a>Внедрение через конструктор
 
-Встроенная поддержка внедрения зависимостей на основе конструктора в ASP.NET Core распространяется на контроллеры MVC. Просто добавляя тип службы в контроллер в качестве параметра конструктора, ASP.NET Core будет пытаться разрешить этот тип с помощью встроенного контейнера службы. Службы обычно, хотя и не всегда, задаются с помощью интерфейсов. Например, если приложение имеет бизнес-логику, зависящую от текущего времени, можно внедрить службу, которая возвращает время (вместо жесткого его задания), что позволяет тестам доходить до реализаций, использующих заданное время.
+Службы добавляются в качестве параметра конструктора, и среда выполнения разрешает службу из контейнера служб. Службы обычно задаются с помощью интерфейсов. Например, рассмотрим приложение, которому требуется текущее время. Следующие интерфейсы предоставляют службу `IDateTime`:
 
-[!code-csharp[](dependency-injection/sample/src/ControllerDI/Interfaces/IDateTime.cs)]
+[!code-csharp[](dependency-injection/sample/ControllerDI/Interfaces/IDateTime.cs?name=snippet)]
 
+В следующем коде реализуется интерфейс `IDateTime`:
 
-Реализация такого интерфейса, использующего системные часы во время выполнения, не представляет сложностей:
+[!code-csharp[](dependency-injection/sample/ControllerDI/Services/SystemDateTime.cs?name=snippet)]
 
-[!code-csharp[](dependency-injection/sample/src/ControllerDI/Services/SystemDateTime.cs)]
+Добавьте службу в контейнер службы:
 
+[!code-csharp[](dependency-injection/sample/ControllerDI/Startup1.cs?name=snippet&highlight=3)]
 
-После этого мы можем использовать службу в своем контроллере. В этом случае мы добавили некоторую логику в метод `HomeController` `Index` для отображения приветствия пользователю с учетом времени суток.
+Дополнительные сведения о <xref:Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton*>, см. в разделе [Время существования службы внедрения зависимости](xref:fundamentals/dependency-injection#service-lifetimes).
 
-[!code-csharp[](./dependency-injection/sample/src/ControllerDI/Controllers/HomeController.cs?highlight=8,10,12,17,18,19,20,21,22,23,24,25,26,27,28,29,30&range=1-31,51-52)]
+Следующий код отображает приветствие пользователю в зависимости от времени дня:
 
-Если запустить приложение сейчас, скорее всего, возникнет ошибка:
+[!code-csharp[](dependency-injection/sample/ControllerDI/Controllers/HomeController.cs?name=snippet)]
 
-```
-An unhandled exception occurred while processing the request.
-
-InvalidOperationException: Unable to resolve service for type 'ControllerDI.Interfaces.IDateTime' while attempting to activate 'ControllerDI.Controllers.HomeController'.
-Microsoft.Extensions.DependencyInjection.ActivatorUtilities.GetService(IServiceProvider sp, Type type, Type requiredBy, Boolean isDefaultParameterRequired)
-```
-
-Эта ошибка возникает, если мы не настроили службу в методе `ConfigureServices` своего класса `Startup`. Чтобы указать, что запросы для `IDateTime` должны разрешаться с использованием экземпляра `SystemDateTime`, добавьте выделенную ниже строку в свой метод `ConfigureServices`:
-
-[!code-csharp[](./dependency-injection/sample/src/ControllerDI/Startup.cs?highlight=4&range=26-27,42-44)]
-
-> [!NOTE]
-> Эту конкретную службу можно реализовать с помощью любого из нескольких разных параметров времени существования (`Transient`, `Scoped` или `Singleton`). Раздел [Внедрение зависимостей](../../fundamentals/dependency-injection.md) описывает, как каждый из этих параметров области влияет на поведение службы.
-
-После настройки службы при запуске приложения и переходе на домашнюю страницу должно отображаться ожидаемое сообщение с учетом времени суток:
-
-![Приветствие сервера](dependency-injection/_static/server-greeting.png)
-
->[!TIP]
-> См. раздел [Тестирование логики контроллера](testing.md), чтобы узнать, как упростить тестирование кода, явно запросив зависимости у контроллеров.
-
-Встроенная функция внедрения зависимостей ASP.NET Core поддерживает наличие лишь одного конструктора для классов, запрашивающих службы. При наличии более одного конструктора может возникнуть следующее исключение:
-
-```
-An unhandled exception occurred while processing the request.
-
-InvalidOperationException: Multiple constructors accepting all given argument types have been found in type 'ControllerDI.Controllers.HomeController'. There should only be one applicable constructor.
-Microsoft.Extensions.DependencyInjection.ActivatorUtilities.FindApplicableConstructor(Type instanceType, Type[] argumentTypes, ConstructorInfo& matchingConstructor, Nullable`1[]& parameterMap)
-```
-
-Как указано в сообщении об ошибке, вы можете устранить эту проблему, используя один конструктор. Вы также можете [заменить контейнер внедрения зависимостей по умолчанию на стороннюю реализацию](xref:fundamentals/dependency-injection#default-service-container-replacement), многие из которых поддерживают несколько конструкторов.
+Запустите приложение, и в зависимости от времени отобразится сообщение.
 
 ## <a name="action-injection-with-fromservices"></a>Внедрение действий с помощью FromServices
 
-Иногда служба требуется всего для одного действия в контроллере. В этом случае имеет смысл внедрить службу в качестве параметра метода действия. Это можно сделать, пометив параметр с помощью атрибута `[FromServices]`, как показано ниже:
+<xref:Microsoft.AspNetCore.Mvc.FromServicesAttribute> позволяет внедрять службу непосредственно в метод действия без использования внедрения через конструктор:
 
-[!code-csharp[](./dependency-injection/sample/src/ControllerDI/Controllers/HomeController.cs?highlight=1&range=33-38)]
+[!code-csharp[](dependency-injection/sample/ControllerDI/Controllers/HomeController.cs?name=snippet2)]
 
-## <a name="accessing-settings-from-a-controller"></a>Доступ к параметрам из контроллера
+## <a name="access-settings-from-a-controller"></a>Доступ к параметрам из контроллера
 
-Доступ к параметрам приложения или конфигурации из контроллера относится к типичным шаблонам. Для такого доступа следует использовать шаблон параметров, описанный в разделе [Конфигурация](xref:fundamentals/configuration/index). В общем случае не следует запрашивать параметры непосредственно из своего контроллера с помощью внедрения зависимостей. Оптимальнее запросить экземпляр `IOptions<T>`, где `T` является нужным вам классом конфигурации.
+Доступ к параметрам приложения или конфигурации из контроллера относится к типичным шаблонам. *Шаблон параметров*, описанный в разделе <xref:fundamentals/configuration/options>, является предпочтительным подходом для управления параметрами. Как правило, не следует напрямую внедрять <xref:Microsoft.Extensions.Configuration.IConfiguration> в контроллер.
 
-Для работы с шаблоном параметров нужно создать класс, представляющий эти параметры, например следующий:
+Создайте класс, представляющий параметры. Например:
 
-[!code-csharp[](dependency-injection/sample/src/ControllerDI/Model/SampleWebSettings.cs)]
+[!code-csharp[](dependency-injection/sample/ControllerDI/Models/SampleWebSettings.cs?name=snippet)]
 
-Затем вам нужно настроить приложение для использования этой модели параметров и добавить класс конфигурации в коллекцию служб в `ConfigureServices`:
+Добавьте класс конфигурации в коллекцию служб:
 
-[!code-csharp[](./dependency-injection/sample/src/ControllerDI/Startup.cs?highlight=3,4,5,6,9,16,19&range=14-44)]
+[!code-csharp[](dependency-injection/sample/ControllerDI/Startup.cs?highlight=4&name=snippet1)]
 
-> [!NOTE]
-> В приведенном выше коде мы настраиваем приложение для считывания параметров из файла формата JSON. Вы также можете полностью настроить параметры в коде, как показано выше. Сведения о других параметрах конфигурации см. в разделе [Конфигурация](xref:fundamentals/configuration/index).
+Настройте приложение для чтения параметров из файла формата JSON:
 
-После указания строго типизированного объекта конфигурации (в данном случае `SampleWebSettings`) и добавления его в коллекцию служб вы можете запросить его из любого контроллера или метода действия, запросив экземпляр `IOptions<T>` (в данном случае `IOptions<SampleWebSettings>`). Следующий код показывает, как запросить параметры из контроллера:
+[!code-csharp[](dependency-injection/sample/ControllerDI/Program.cs?name=snippet&range=10-15)]
 
-[!code-csharp[](./dependency-injection/sample/src/ControllerDI/Controllers/SettingsController.cs?highlight=3,5,7&range=7-22)]
+Следующий код запрашивает параметры `IOptions<SampleWebSettings>` из контейнера служб и использует их в методе `Index`:
 
-Соблюдение шаблона параметров позволяет отделить параметры и конфигурацию друг от друга и обеспечивает [разделение функций](/dotnet/standard/modern-web-apps-azure-architecture/architectural-principles#separation-of-concerns) для контроллера, так как ему не нужно знать, где и как искать сведения о параметрах. Кроме того, это упрощает [модульное тестирование контроллера](testing.md), так как отсутствует прямое создание экземпляров для классов параметров в классе контроллера.
+[!code-csharp[](dependency-injection/sample/ControllerDI/Controllers/SettingsController.cs?name=snippet)]
+
+## <a name="additional-resources"></a>Дополнительные ресурсы
+
+* См. раздел <xref:mvc/controllers/testing>, чтобы узнать, как упростить тестирование кода, явно запросив зависимости у контроллеров.
+
+* [Замените контейнер внедрения зависимостей по умолчанию на стороннюю реализацию](xref:fundamentals/dependency-injection#default-service-container-replacement).

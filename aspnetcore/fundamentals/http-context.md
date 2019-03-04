@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 07/27/2018
 uid: fundamentals/httpcontext
-ms.openlocfilehash: babc637cdec8590ac14f7924c17e862e5b2f6a81
-ms.sourcegitcommit: d22b3c23c45a076c4f394a70b1c8df2fbcdf656d
+ms.openlocfilehash: 446882297524af3cbaed3ba7f941935debf5e7f4
+ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55428490"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56899207"
 ---
 # <a name="access-httpcontext-in-aspnet-core"></a>Доступ к HttpContext в ASP.NET Core
 
@@ -131,3 +131,36 @@ public class UserRepository : IUserRepository
     }
 }
 ```
+
+## <a name="httpcontext-access-from-a-background-thread"></a>Доступ к HttpContext из фонового потока
+
+`HttpContext` не является потокобезопасным. Чтение или запись свойств `HttpContext` за пределами обработки запроса может привести к `NullReferenceException`.
+
+> [!NOTE]
+> Использование `HttpContext` за пределами обработки запроса часто приводит к `NullReferenceException`. Если приложение генерирует случайные `NullReferenceException`, просмотрите части кода, которые запускают фоновую обработку или продолжают обработку после выполнения запроса. Ищите ошибки, например определение метода контроллера в качестве `async void`.
+
+Для безопасного выполнения фоновой работы с данными `HttpContext` сделайте следующее.
+
+* Скопируйте необходимые данные во время обработки запроса.
+* Передайте скопированные данные в фоновую задачу.
+
+Чтобы избежать небезопасного кода, никогда не передавайте `HttpContext` в метод, который выполняет фоновую работу. Вместо этого передайте нужные данные.
+
+```csharp
+public class EmailController
+{
+    public ActionResult SendEmail(string email)
+    {
+        var correlationId = HttpContext.Request.Headers["x-correlation-id"].ToString();
+
+        // Starts sending an email, but doesn't wait for it to complete
+        _ = SendEmailCore(correlationId);
+        return View();
+    }
+
+    private async Task SendEmailCore(string correlationId)
+    {
+        // send the email
+    }
+}
+

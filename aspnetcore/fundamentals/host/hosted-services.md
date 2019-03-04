@@ -5,14 +5,14 @@ description: Узнайте, как реализовать фоновые зад
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 11/28/2018
+ms.date: 02/25/2019
 uid: fundamentals/host/hosted-services
-ms.openlocfilehash: de419357d4d96a6e348a77055e67c0fcd190ae42
-ms.sourcegitcommit: 0fc89b80bb1952852ecbcf3c5c156459b02a6ceb
+ms.openlocfilehash: d10a335429752c1a52c1b3619adecc41725a819a
+ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52618146"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56899311"
 ---
 # <a name="background-tasks-with-hosted-services-in-aspnet-core"></a>Фоновые задачи с размещенными службами в ASP.NET Core
 
@@ -21,7 +21,7 @@ ms.locfileid: "52618146"
 В ASP.NET Core фоновые задачи реализуются как *размещенные службы*. Размещенная служба — это класс с логикой фоновой задачи, реализующий интерфейс <xref:Microsoft.Extensions.Hosting.IHostedService>. Этот раздел содержит три примера размещенных служб:
 
 * Фоновая задача, которая выполняется по таймеру.
-* Размещенная служба, которая активирует службу с заданной областью. Служба с заданной областью может использовать внедрение зависимостей.
+* Размещенная служба, которая активирует [службу с заданной областью](xref:fundamentals/dependency-injection#service-lifetimes). Служба с заданной областью может использовать внедрение зависимостей.
 * Очередь фоновых задач, которые выполняются последовательно.
 
 [Просмотреть или скачать образец кода](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/host/hosted-services/samples/) ([как скачивать](xref:index#how-to-download-a-sample))
@@ -29,7 +29,7 @@ ms.locfileid: "52618146"
 Пример приложения предоставляется в двух версиях:
 
 * Веб-узел &ndash; удобно использовать для размещения веб-приложений. Пример кода, приведенный в этой статье, относится к этой версии примера приложения. Дополнительные сведения см. в статье о [веб-узле](xref:fundamentals/host/web-host).
-* Универсальный узел &ndash; — новая возможность в ASP.NET Core 2.1. Дополнительные сведения см. в статье об [универсальном узле](xref:fundamentals/host/generic-host).
+* Универсальный узел &ndash; — новая возможность в ASP.NET Core 2.1. Дополнительные сведения см. в статье об [универсальном узле](xref:fundamentals/host/generic-host).
 
 ## <a name="package"></a>Пакет
 
@@ -54,8 +54,8 @@ ms.locfileid: "52618146"
 
   Чтобы увеличить время ожидания завершения работы по умолчанию (пять секунд), установите следующие значения:
 
-  * <xref:Microsoft.Extensions.Hosting.HostOptions.ShutdownTimeout*> при использовании универсального узла. Дополнительные сведения см. в разделе <xref:fundamentals/host/generic-host#shutdown-timeout>.
-  * Параметр конфигурации узла для времени ожидания завершения работы при использовании веб-узла. Дополнительные сведения см. в разделе <xref:fundamentals/host/web-host#shutdown-timeout>.
+  * <xref:Microsoft.Extensions.Hosting.HostOptions.ShutdownTimeout*> при использовании универсального узла. Для получения дополнительной информации см. <xref:fundamentals/host/generic-host#shutdown-timeout>.
+  * Параметр конфигурации узла для времени ожидания завершения работы при использовании веб-узла. Для получения дополнительной информации см. <xref:fundamentals/host/web-host#shutdown-timeout>.
 
 Размещенная служба активируется при запуске приложения и нормально завершает работу при завершении работы приложения. Если во время выполнения задачи в фоновом режиме возникает ошибка, необходимо вызвать `Dispose`, даже если `StopAsync` не вызывается.
 
@@ -71,7 +71,7 @@ ms.locfileid: "52618146"
 
 ## <a name="consuming-a-scoped-service-in-a-background-task"></a>Использование службы с заданной областью в фоновой задаче
 
-Чтобы использовать службы с заданной областью в `IHostedService`, создайте область. Для размещенной службы по умолчанию не создается область.
+Чтобы использовать [службы с заданной областью](xref:fundamentals/dependency-injection#service-lifetimes) в `IHostedService`, создайте область. Для размещенной службы по умолчанию не создается область.
 
 Служба фоновой задачи с заданной областью содержит логику фоновой задачи. В следующем примере в службу вставляется <xref:Microsoft.Extensions.Logging.ILogger>:
 
@@ -99,7 +99,10 @@ ms.locfileid: "52618146"
 
 [!code-csharp[](hosted-services/samples/2.x/BackgroundTasksSample-WebHost/Startup.cs?name=snippet3)]
 
-В классе модели страницы индексов `IBackgroundTaskQueue` вставляется в конструктор и присваивается `Queue`:
+В классе модели страницы индексов:
+
+* `IBackgroundTaskQueue` вставляется в конструктор и присваивается `Queue`.
+* <xref:Microsoft.Extensions.DependencyInjection.IServiceScopeFactory> вставляется и присваивается `_serviceScopeFactory`. Фабрика используется для создания экземпляров <xref:Microsoft.Extensions.DependencyInjection.IServiceScope>, который используется для создания служб с заданной областью. Для использования `AppDbContext` приложения создается область ([служба с заданной областью](xref:fundamentals/dependency-injection#service-lifetimes)) для записи данных из базы данных в `IBackgroundTaskQueue` (отдельная служба).
 
 [!code-csharp[](hosted-services/samples/2.x/BackgroundTasksSample-WebHost/Pages/Index.cshtml.cs?name=snippet1)]
 
@@ -110,4 +113,4 @@ ms.locfileid: "52618146"
 ## <a name="additional-resources"></a>Дополнительные ресурсы
 
 * [Реализация фоновых задач в микрослужбах с помощью IHostedService и класса BackgroundService](/dotnet/standard/microservices-architecture/multi-container-microservice-net-applications/background-tasks-with-ihostedservice)
-* [System.Threading.Timer](xref:System.Threading.Timer)
+* <xref:System.Threading.Timer>

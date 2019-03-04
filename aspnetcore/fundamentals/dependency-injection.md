@@ -4,14 +4,14 @@ author: guardrex
 description: Сведения о том, как ASP.NET Core реализует внедрение зависимостей и как его использовать.
 ms.author: riande
 ms.custom: mvc
-ms.date: 10/24/2018
+ms.date: 02/25/2019
 uid: fundamentals/dependency-injection
-ms.openlocfilehash: 5e5b9746da9bbc13a147b807aabfd3d9ab90a0ca
-ms.sourcegitcommit: d75d8eb26c2cce19876c8d5b65ac8a4b21f625ef
+ms.openlocfilehash: 5e1522e0819d989a7029c2928c1c33624c1774c7
+ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 02/19/2019
-ms.locfileid: "56410512"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56899363"
 ---
 # <a name="dependency-injection-in-aspnet-core"></a>Внедрение зависимостей в ASP.NET Core
 
@@ -179,7 +179,7 @@ public class MyDependency : IMyDependency
 
 ## <a name="framework-provided-services"></a>Платформенные службы
 
-Метод `Startup.ConfigureServices` отвечает за определение служб, которые использует приложение, включая такие компоненты, как Entity Framework Core и ASP.NET Core MVC. Изначально `IServiceCollection`, предоставленный `ConfigureServices`, имеет следующие определенные службы (в зависимости от [настройки узла](xref:fundamentals/host/index)):
+Метод `Startup.ConfigureServices` отвечает за определение служб, которые использует приложение, включая такие компоненты, как Entity Framework Core и ASP.NET Core MVC. Изначально `IServiceCollection`, предоставленный `ConfigureServices`, имеет следующие определенные службы (в зависимости от [настройки узла](xref:fundamentals/index#host)):
 
 | Тип службы | Время существования |
 | ------------ | -------- |
@@ -253,7 +253,7 @@ public void ConfigureServices(IServiceCollection services)
 
 ## <a name="entity-framework-contexts"></a>Контексты Entity Framework
 
-Контексты Entity Framework нужно добавлять в контейнер служб с использованием регулируемого времени существования. Это делается автоматически с помощью вызова метода [AddDbContext](/dotnet/api/microsoft.extensions.dependencyinjection.entityframeworkservicecollectionextensions.adddbcontext) при регистрации контекста базы данных. Службы, использующие контекст базы данных, также должны иметь регулируемое время существования.
+Контексты Entity Framework обычно добавляются в контейнер службы с помощью [времени существования с заданной областью](#service-lifetimes), поскольку операции базы данных в веб-приложении обычно относятся к области запроса. Время существования по умолчанию имеет заданную область, если время существования не указано в перегрузке <xref:Microsoft.Extensions.DependencyInjection.EntityFrameworkServiceCollectionExtensions.AddDbContext*> при регистрации контекста базы данных. Службы данного времени существования не должны использовать контекст базы данных с временем существования короче, чем у службы.
 
 ## <a name="lifetime-and-registration-options"></a>Параметры времени существования и регистрации
 

@@ -5,14 +5,14 @@ description: Общие сведения о веб-сервере HTTP.sys дл�
 monikerRange: '>= aspnetcore-2.0'
 ms.author: tdykstra
 ms.custom: mvc
-ms.date: 02/13/2019
+ms.date: 02/21/2019
 uid: fundamentals/servers/httpsys
-ms.openlocfilehash: 859e3daeba125ab1a9392c1bdbf2733de2f79a34
-ms.sourcegitcommit: 6ba5fb1fd0b7f9a6a79085b0ef56206e462094b7
+ms.openlocfilehash: abb426b1a41226e52d9b9b5c00c41ff816890d36
+ms.sourcegitcommit: b3894b65e313570e97a2ab78b8addd22f427cac8
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56248346"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56744135"
 ---
 # <a name="httpsys-web-server-implementation-in-aspnet-core"></a>Реализация веб-сервера HTTP.sys в ASP.NET Core
 
@@ -135,7 +135,9 @@ HTTP.sys делегирует задачи в проверку подлинно�
 
 ### <a name="configure-windows-server"></a>Настройка Windows Server
 
-1. Определите, какие порты нужно открыть для приложения, и используйте брандмауэр Windows или [командлеты PowerShell](https://technet.microsoft.com/library/jj554906), чтобы открыть порты брандмауэра для доступа трафика к HTTP.sys. При развертывании на виртуальных машинах Azure откройте эти порты в [группе безопасности сети](/azure/virtual-network/security-overview). В следующих командах и конфигурации приложения используется порт 443.
+1. Определите, какие порты нужно открыть для приложения, и используйте [брандмауэр Windows](/windows/security/threat-protection/windows-firewall/create-an-inbound-port-rule) или командлет PowerShell [New-NetFirewallRule](/powershell/module/netsecurity/new-netfirewallrule), чтобы открыть порты брандмауэра для доступа трафика к HTTP.sys. В следующих командах и конфигурации приложения используется порт 443.
+
+1. При развертывании на виртуальных машинах Azure откройте эти порты в [группе безопасности сети](/azure/virtual-machines/windows/nsg-quickstart-portal). В следующих командах и конфигурации приложения используется порт 443.
 
 1. При необходимости получите и установите сертификаты X.509.
 
@@ -272,5 +274,5 @@ HTTP.sys делегирует задачи в проверку подлинно�
 * [Включить проверку подлинности Windows с использованием HTTP.sys](xref:security/authentication/windowsauth#enable-windows-authentication-with-httpsys)
 * [API сервера HTTP](https://msdn.microsoft.com/library/windows/desktop/aa364510.aspx)
 * [Репозиторий GitHub ASPNET/HttpSysServer (исходный код)](https://github.com/aspnet/HttpSysServer/)
-* <xref:fundamentals/host/index>
+* [Узел](xref:fundamentals/index#host)
 * <xref:test/troubleshoot>

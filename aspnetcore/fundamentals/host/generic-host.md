@@ -1,28 +1,51 @@
 ---
 title: Универсальный узел .NET
 author: guardrex
-description: Сведения об универсальном узле в .NET, который отвечает за запуск приложений и управление временем существования.
+description: Сведения об универсальном узле в ASP.NET Core, который отвечает за запуск приложений и управление временем существования.
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
 ms.date: 11/28/2018
 uid: fundamentals/host/generic-host
-ms.openlocfilehash: 4d435984d8169b558ab026ef8541c90f7a2a96b9
-ms.sourcegitcommit: 0fc89b80bb1952852ecbcf3c5c156459b02a6ceb
+ms.openlocfilehash: a128b7c19d544d1dd28ab16f7a208ceef680ce81
+ms.sourcegitcommit: b3894b65e313570e97a2ab78b8addd22f427cac8
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52618159"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56743846"
 ---
 # <a name="net-generic-host"></a>Универсальный узел .NET
 
 Автор [Люк Латэм](https://github.com/guardrex) (Luke Latham)
 
-Приложения .NET Core настраивают и запускают *узел*. Узел отвечает за запуск приложения и управление временем существования. В этом разделе рассматривается универсальный узел ASP.NET Core (<xref:Microsoft.Extensions.Hosting.HostBuilder>), используемый для размещения приложений, которые не обрабатывают запросы HTTP. Сведения о веб-узле (<xref:Microsoft.AspNetCore.Hosting.WebHostBuilder>) см. в статье <xref:fundamentals/host/web-host>.
+::: moniker range="<= aspnetcore-2.2"
 
-Универсальный узел предназначен для отделения конвейера HTTP от API веб-узла, чтобы можно было иметь больше сценариев узла. Обмен сообщениями, фоновые задачи и другие рабочие нагрузки типа "не HTTP", использующие перекрестные возможности универсальных узлов, такие как конфигурация, внедрение зависимости (DI) и ведения журналов.
+Приложения ASP.NET Core настраивают и запускают узел. Узел отвечает за запуск приложения и управление временем существования.
 
-Универсальный узел является новой возможностью ASP.NET Core 2.1 и не подходит для сценариев с веб-размещением. Сведения о сценариях с веб-размещением см. в статье о [веб-узле](xref:fundamentals/host/web-host). Универсальный узел разрабатывается с целью заменить веб-узел в будущих версиях. Он будет выступать основным узлом API для сценариев HTTP и "не HTTP".
+В этой статье рассматривается универсальный узел ASP.NET Core (<xref:Microsoft.Extensions.Hosting.HostBuilder>), используемый для приложений, которые не обрабатывают запросы HTTP.
+
+Универсальный узел предназначен для отделения конвейера HTTP от API веб-узла, чтобы можно было иметь больше сценариев узла. Обмен сообщениями, фоновые задачи и другие рабочие нагрузки, не связанные с HTTP, используют перекрестные возможности универсальных узлов, такие как конфигурация, внедрение зависимости (DI) и ведение журналов.
+
+Универсальный узел является новой возможностью ASP.NET Core 2.1 и не подходит для сценариев с веб-размещением. Сведения о сценариях с веб-размещением см. в статье о [веб-узле](xref:fundamentals/host/web-host). Универсальный узел заменит веб-узел в будущих версиях. Он будет выступать основным узлом API для сценариев HTTP и "не HTTP".
+
+::: moniker-end
+
+::: moniker range="> aspnetcore-2.2"
+
+Приложения ASP.NET Core настраивают и запускают узел. Узел отвечает за запуск приложения и управление временем существования.
+
+В этой статье описывается универсальный узел .NET Core (<xref:Microsoft.Extensions.Hosting.HostBuilder>).
+
+Универсальный узел отличается от веб-узла, поскольку отделяет конвейер HTTP от API веб-узла, чтобы можно было использовать больше сценариев узла. Обмен сообщениями, фоновые задачи и другие рабочие нагрузки, не связанные с HTTP, могут использовать перекрестные возможности универсальных узлов, такие как конфигурация, внедрение зависимости (DI) и ведение журналов.
+
+Начиная с ASP.NET Core 3.0, универсальный узел рекомендуется для рабочих нагрузок HTTP и не связанных с HTTP. Реализация сервера HTTP, при наличии, выполняется как реализация <xref:Microsoft.Extensions.Hosting.IHostedService>. `IHostedService` представляет собой интерфейс, который может использоваться для других рабочих нагрузок.
+
+Веб-узел больше не рекомендуется для веб-приложений, но остается доступным для обратной совместимости.
+
+> [!NOTE]
+> Оставшаяся часть статьи еще не обновлена для версии 3.0.
+
+::: moniker-end
 
 [Просмотреть или скачать образец кода](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/host/generic-host/samples/) ([как скачивать](xref:index#how-to-download-a-sample))
 
@@ -95,7 +118,7 @@ var host = new HostBuilder()
 
 **Ключ**: applicationName  
 **Тип**: *string*  
-**По умолчанию**: имя сборки, содержащей точку входа приложения  
+**По умолчанию**: имя сборки, содержащей точку входа приложения.  
 **Задается с помощью**: `HostBuilderContext.HostingEnvironment.ApplicationName`  
 **Переменная среды**: `<PREFIX_>APPLICATIONNAME` (`<PREFIX_>` [необязательно и определяется пользователем](#configurehostconfiguration))
 
@@ -105,7 +128,7 @@ var host = new HostBuilder()
 
 **Ключ**: contentRoot  
 **Тип**: *string*  
-**Значение по умолчанию**: папка, в которой находится сборка приложения.  
+**По умолчанию**: папка, в которой находится сборка приложения.  
 **Задается с помощью**: `UseContentRoot`  
 **Переменная среды**: `<PREFIX_>CONTENTROOT` (`<PREFIX_>` [необязательно и определяется пользователем](#configurehostconfiguration))
 
@@ -119,7 +142,7 @@ var host = new HostBuilder()
 
 **Ключ**: environment  
 **Тип**: *string*  
-**Значение по умолчанию**: Production  
+**По умолчанию**: Рабочие  
 **Задается с помощью**: `UseEnvironment`  
 **Переменная среды**: `<PREFIX_>ENVIRONMENT` (`<PREFIX_>` [необязательно и определяется пользователем](#configurehostconfiguration))
 
@@ -146,7 +169,7 @@ var host = new HostBuilder()
 
 Чтобы добавить [конфигурацию переменной среды](xref:fundamentals/configuration/index#environment-variables-configuration-provider) узла, вызовите метод <xref:Microsoft.Extensions.Configuration.EnvironmentVariablesExtensions.AddEnvironmentVariables*> в построителе узла. `AddEnvironmentVariables` принимает необязательный определяемый пользователем префикс. В примере приложения используется префикс `PREFIX_`. Префикс удаляется при чтении переменных среды. После настройки узла в примере приложения значение переменной среды для `PREFIX_ENVIRONMENT` становится значением конфигурации узла для ключа `environment`.
 
-Во время разработки с использованием [Visual Studio](https://www.visualstudio.com/) или запуска приложения с помощью `dotnet run` переменные среды можно задать в файле *Properties/launchSettings.json*. В [Visual Studio Code](https://code.visualstudio.com/) переменные среды можно задавать в файле *.vscode/launch.json* во время разработки. Дополнительные сведения см. в разделе <xref:fundamentals/environments>.
+Во время разработки с использованием [Visual Studio](https://www.visualstudio.com/) или запуска приложения с помощью `dotnet run` переменные среды можно задать в файле *Properties/launchSettings.json*. В [Visual Studio Code](https://code.visualstudio.com/) переменные среды можно задавать в файле *.vscode/launch.json* во время разработки. Для получения дополнительной информации см. <xref:fundamentals/environments>.
 
 [Конфигурация командной строки](xref:fundamentals/configuration/index#command-line-configuration-provider) добавляется путем вызова метода <xref:Microsoft.Extensions.Configuration.CommandLineConfigurationExtensions.AddCommandLine*>. Конфигурация командной строки добавляется в последнюю очередь, чтобы разрешить аргументам командной строки переопределять конфигурацию, предоставленную предыдущими поставщиками конфигурации.
 
@@ -194,7 +217,7 @@ var host = new HostBuilder()
 
 Метод <xref:Microsoft.Extensions.Hosting.HostingHostBuilderExtensions.ConfigureServices*> добавляет службы в контейнер [внедрения зависимостей](xref:fundamentals/dependency-injection) приложения. Метод `ConfigureServices` может вызываться несколько раз с накоплением результатов.
 
-Размещенная служба — это класс с логикой фоновой задачи, реализующий интерфейс <xref:Microsoft.Extensions.Hosting.IHostedService>. Дополнительные сведения см. в разделе <xref:fundamentals/host/hosted-services>.
+Размещенная служба — это класс с логикой фоновой задачи, реализующий интерфейс <xref:Microsoft.Extensions.Hosting.IHostedService>. Для получения дополнительной информации см. <xref:fundamentals/host/hosted-services>.
 
 [Пример приложения](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/host/generic-host/samples/) использует метод расширения `AddHostedService` для добавления службы для событий времени жизни (`LifetimeEventsHostedService`) и синхронизированной фоновой задачи (`TimedHostedService`):
 
@@ -460,7 +483,7 @@ public class MyClass
 }
 ```
 
-Дополнительные сведения см. в разделе <xref:fundamentals/environments>.
+Для получения дополнительной информации см. <xref:fundamentals/environments>.
 
 ## <a name="iapplicationlifetime-interface"></a>Интерфейс IApplicationLifetime
 
