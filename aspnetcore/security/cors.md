@@ -4,14 +4,14 @@ author: rick-anderson
 description: Узнайте, как CORS в качестве стандарта для предоставления или отклонения запросов независимо от источника в приложении ASP.NET Core.
 ms.author: riande
 ms.custom: mvc
-ms.date: 02/08/2019
+ms.date: 02/27/2019
 uid: security/cors
-ms.openlocfilehash: bc3a0883043a4d6fa33c1ff76fcb7be457b6b840
-ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
+ms.openlocfilehash: eb8dd3b1c96d9060b0164dcd4d0fbe004ed4af84
+ms.sourcegitcommit: 036d4b03fd86ca5bb378198e29ecf2704257f7b2
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56899350"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57346376"
 ---
 # <a name="enable-cross-origin-requests-cors-in-aspnet-core"></a>Включение запросов о происхождении (CORS) в ASP.NET Core
 
@@ -56,7 +56,7 @@ Internet Explorer не считает порт, при сравнении ист
 
 Предыдущий код:
 
-* Задает имя политики, чтобы «_myAllowSpecificOrigins». Имя политики является произвольным.
+* Задает имя политики "\_myAllowSpecificOrigins». Имя политики является произвольным.
 * Вызовы <xref:Microsoft.AspNetCore.Builder.CorsMiddlewareExtensions.UseCors*> метод расширения, который позволяет ядер.
 * Вызовы <xref:Microsoft.Extensions.DependencyInjection.CorsServiceCollectionExtensions.AddCors*> с [лямбда-выражение](/dotnet/csharp/programming-guide/statements-expressions-operators/lambda-expressions). Лямбда-выражение принимает <xref:Microsoft.AspNetCore.Cors.Infrastructure.CorsPolicyBuilder> объекта. [Параметры конфигурации](#cors-policy-options), такие как `WithOrigins`, описаны далее в этой статье.
 
@@ -70,9 +70,26 @@ Internet Explorer не считает порт, при сравнении ист
 
 [!code-csharp[](cors/sample/Cors/WebAPI/Startup2.cs?name=snippet2)]
 
-Следующий выделенный код применяет политики CORS ко всем конечным точкам приложений с помощью [по промежуточного слоя CORS](#enable-cors-with-cors-middleware):
+Следующий выделенный код применяет политики CORS ко всем конечным точкам приложений с помощью по промежуточного слоя CORS:
 
-[!code-csharp[](cors/sample/Cors/WebAPI/Startup.cs?name=snippet3&highlight=12)]
+```csharp
+public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+{
+    if (env.IsDevelopment())
+    {
+        app.UseDeveloperExceptionPage();
+    }
+    else
+    {
+        app.UseHsts();
+    }
+
+    app.UseCors(); 
+
+    app.UseHttpsRedirection();
+    app.UseMvc();
+}
+```
 
 См. в разделе [включить CORS в Razor Pages, контроллеры и методы действий](#ecors) для применения политики CORS на уровне страницы или контроллеру или действию.
 

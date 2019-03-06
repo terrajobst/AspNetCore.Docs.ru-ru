@@ -2,16 +2,17 @@
 title: Соглашения об авторизации Razor Pages в ASP.NET Core
 author: guardrex
 description: Узнайте, как управлять доступом к страницам с соглашениями, авторизовать пользователей и Разрешить анонимные пользователи для доступа к страницам или папкам страниц.
+monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 10/27/2017
+ms.date: 03/03/2019
 uid: security/authorization/razor-pages-authorization
-ms.openlocfilehash: 675dc8aa4bf00bb21981cc892a09a4acd0d53c15
-ms.sourcegitcommit: 375e9a67f5e1f7b0faaa056b4b46294cc70f55b7
+ms.openlocfilehash: 040d33eba7eaf7a3aece2eedcdef7343e52972af
+ms.sourcegitcommit: 036d4b03fd86ca5bb378198e29ecf2704257f7b2
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50207268"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57345513"
 ---
 # <a name="razor-pages-authorization-conventions-in-aspnet-core"></a>Соглашения об авторизации Razor Pages в ASP.NET Core
 
@@ -21,40 +22,42 @@ ms.locfileid: "50207268"
 
 [Просмотреть или скачать образец кода](https://github.com/aspnet/Docs/tree/master/aspnetcore/security/authorization/razor-pages-authorization/samples) ([как скачивать](xref:index#how-to-download-a-sample))
 
-Пример приложения использует [проверки подлинности файла Cookie без ASP.NET Core Identity](xref:security/authentication/cookie). Учетная запись пользователя для гипотетической пользователя Родригез Мария встроен в приложение. Использовать имя пользователя по электронной почте "maria.rodriguez@contoso.com" и любой пароль для входа пользователя. Пользователь проходит проверку подлинности в `AuthenticateUser` метод в *Pages/Account/Login.cshtml.cs* файла. В реальный пример пользователь может пройти проверку подлинности в базе данных. Чтобы использовать удостоверение ASP.NET Core, следуйте указаниям в [Общие сведения об Identity в ASP.NET Core](xref:security/authentication/identity) раздела. Основные понятия и примеры, приведенные в этом разделе в равной мере применимы к приложениям, использующим удостоверения ASP.NET Core.
+Пример приложения использует [проверки подлинности файла cookie без ASP.NET Core Identity](xref:security/authentication/cookie). Основные понятия и примеры, приведенные в этом разделе в равной мере применимы к приложениям, использующим удостоверения ASP.NET Core. Чтобы использовать удостоверение ASP.NET Core, следуйте указаниям в <xref:security/authentication/identity>.
 
 ## <a name="require-authorization-to-access-a-page"></a>Требовать авторизации для доступа к странице
 
-Используйте [AuthorizePage](/dotnet/api/microsoft.extensions.dependencyinjection.pageconventioncollectionextensions.authorizepage) соглашение с помощью [AddRazorPagesOptions](/dotnet/api/microsoft.extensions.dependencyinjection.mvcrazorpagesmvcbuilderextensions.addrazorpagesoptions) добавление [AuthorizeFilter](/dotnet/api/microsoft.aspnetcore.mvc.authorization.authorizefilter) на страницу по указанному пути:
+Используйте <xref:Microsoft.Extensions.DependencyInjection.PageConventionCollectionExtensions.AuthorizePage*> соглашение с помощью <xref:Microsoft.Extensions.DependencyInjection.MvcRazorPagesMvcBuilderExtensions.AddRazorPagesOptions*> добавление <xref:Microsoft.AspNetCore.Mvc.Authorization.AuthorizeFilter> на страницу по указанному пути:
 
 [!code-csharp[](razor-pages-authorization/samples/2.x/AuthorizationSample/Startup.cs?name=snippet1&highlight=2,4)]
 
 Указанный путь является путь обработчик представлений, который представляет корневой Razor Pages относительный путь без расширения и содержащая только косые черты.
 
-[AuthorizePage перегрузка](/dotnet/api/microsoft.extensions.dependencyinjection.pageconventioncollectionextensions.authorizepage#Microsoft_Extensions_DependencyInjection_PageConventionCollectionExtensions_AuthorizePage_Microsoft_AspNetCore_Mvc_ApplicationModels_PageConventionCollection_System_String_System_String_) доступен, если необходимо указать политику авторизации.
+Чтобы указать [политики авторизации](xref:security/authorization/policies), использовать [AuthorizePage перегрузка](xref:Microsoft.Extensions.DependencyInjection.PageConventionCollectionExtensions.AuthorizePage*):
 
-::: moniker range=">= aspnetcore-2.1"
+```csharp
+options.Conventions.AuthorizePage("/Contact", "AtLeast21");
+```
 
 > [!NOTE]
-> `AuthorizeFilter` Могут применяться к классу модели страницы с `[Authorize]` атрибут фильтра. Дополнительные сведения см. в разделе [атрибут фильтра Authorize](xref:razor-pages/filter#authorize-filter-attribute).
-
-::: moniker-end
+> <xref:Microsoft.AspNetCore.Mvc.Authorization.AuthorizeFilter> Могут применяться к классу модели страницы с `[Authorize]` атрибут фильтра. Дополнительные сведения см. в разделе [атрибут фильтра Authorize](xref:razor-pages/filter#authorize-filter-attribute).
 
 ## <a name="require-authorization-to-access-a-folder-of-pages"></a>Требовать авторизации для доступа к папке страниц
 
-Используйте [AuthorizeFolder](/dotnet/api/microsoft.extensions.dependencyinjection.pageconventioncollectionextensions.authorizefolder) соглашение с помощью [AddRazorPagesOptions](/dotnet/api/microsoft.extensions.dependencyinjection.mvcrazorpagesmvcbuilderextensions.addrazorpagesoptions) добавление [AuthorizeFilter](/dotnet/api/microsoft.aspnetcore.mvc.authorization.authorizefilter) ко всем страницам в папке по указанному пути:
+Используйте <xref:Microsoft.Extensions.DependencyInjection.PageConventionCollectionExtensions.AuthorizeFolder*> соглашение с помощью <xref:Microsoft.Extensions.DependencyInjection.MvcRazorPagesMvcBuilderExtensions.AddRazorPagesOptions*> добавление <xref:Microsoft.AspNetCore.Mvc.Authorization.AuthorizeFilter> ко всем страницам в папке по указанному пути:
 
 [!code-csharp[](razor-pages-authorization/samples/2.x/AuthorizationSample/Startup.cs?name=snippet1&highlight=2,5)]
 
 Указанный путь является путь обработчик представлений, который представляет относительный путь к корневой Razor Pages.
 
-[AuthorizeFolder перегрузка](/dotnet/api/microsoft.extensions.dependencyinjection.pageconventioncollectionextensions.authorizefolder#Microsoft_Extensions_DependencyInjection_PageConventionCollectionExtensions_AuthorizeFolder_Microsoft_AspNetCore_Mvc_ApplicationModels_PageConventionCollection_System_String_System_String_) доступен, если необходимо указать политику авторизации.
+Чтобы указать [политики авторизации](xref:security/authorization/policies), использовать [AuthorizeFolder перегрузка](xref:Microsoft.Extensions.DependencyInjection.PageConventionCollectionExtensions.AuthorizeFolder*):
 
-::: moniker range=">= aspnetcore-2.1"
+```csharp
+options.Conventions.AuthorizeFolder("/Private", "AtLeast21");
+```
 
 ## <a name="require-authorization-to-access-an-area-page"></a>Требовать авторизации для доступа к странице области
 
-Используйте [AuthorizeAreaPage](/dotnet/api/microsoft.extensions.dependencyinjection.pageconventioncollectionextensions.authorizeareapage) соглашение с помощью [AddRazorPagesOptions](/dotnet/api/microsoft.extensions.dependencyinjection.mvcrazorpagesmvcbuilderextensions.addrazorpagesoptions) добавление [AuthorizeFilter](/dotnet/api/microsoft.aspnetcore.mvc.authorization.authorizefilter) к странице области по указанному пути:
+Используйте <xref:Microsoft.Extensions.DependencyInjection.PageConventionCollectionExtensions.AuthorizeAreaPage*> соглашение с помощью <xref:Microsoft.Extensions.DependencyInjection.MvcRazorPagesMvcBuilderExtensions.AddRazorPagesOptions*> добавление <xref:Microsoft.AspNetCore.Mvc.Authorization.AuthorizeFilter> к странице области по указанному пути:
 
 ```csharp
 options.Conventions.AuthorizeAreaPage("Identity", "/Manage/Accounts");
@@ -62,11 +65,15 @@ options.Conventions.AuthorizeAreaPage("Identity", "/Manage/Accounts");
 
 Имя страницы — это путь к файлу без расширения относительно корневого каталога страниц для заданной области. Например, имя страницы для файла *Areas/Identity/Pages/Manage/Accounts.cshtml* — *учетных записей иуправление/*.
 
-[AuthorizeAreaPage перегрузка](/dotnet/api/microsoft.extensions.dependencyinjection.pageconventioncollectionextensions.authorizeareapage#Microsoft_Extensions_DependencyInjection_PageConventionCollectionExtensions_AuthorizeAreaPage_Microsoft_AspNetCore_Mvc_ApplicationModels_PageConventionCollection_System_String_System_String_System_String_) доступен, если необходимо указать политику авторизации.
+Чтобы указать [политики авторизации](xref:security/authorization/policies), использовать [AuthorizeAreaPage перегрузка](xref:Microsoft.Extensions.DependencyInjection.PageConventionCollectionExtensions.AuthorizeAreaPage*):
+
+```csharp
+options.Conventions.AuthorizeAreaPage("Identity", "/Manage/Accounts", "AtLeast21");
+```
 
 ## <a name="require-authorization-to-access-a-folder-of-areas"></a>Требовать авторизации для доступа к папке областей
 
-Используйте [AuthorizeAreaFolder](/dotnet/api/microsoft.extensions.dependencyinjection.pageconventioncollectionextensions.authorizeareafolder) соглашение с помощью [AddRazorPagesOptions](/dotnet/api/microsoft.extensions.dependencyinjection.mvcrazorpagesmvcbuilderextensions.addrazorpagesoptions) добавление [AuthorizeFilter](/dotnet/api/microsoft.aspnetcore.mvc.authorization.authorizefilter) ко всем областям в папке по указанному пути:
+Используйте <xref:Microsoft.Extensions.DependencyInjection.PageConventionCollectionExtensions.AuthorizeAreaFolder*> соглашение с помощью <xref:Microsoft.Extensions.DependencyInjection.MvcRazorPagesMvcBuilderExtensions.AddRazorPagesOptions*> добавление <xref:Microsoft.AspNetCore.Mvc.Authorization.AuthorizeFilter> ко всем областям в папке по указанному пути:
 
 ```csharp
 options.Conventions.AuthorizeAreaFolder("Identity", "/Manage");
@@ -74,13 +81,15 @@ options.Conventions.AuthorizeAreaFolder("Identity", "/Manage");
 
 Путь к папке — путь к папке относительно корневого каталога страниц для заданной области. Например, путь к папке для файлов в разделе *области/Identity/страниц и управление/* — *и Администрирование*.
 
-[AuthorizeAreaFolder перегрузка](/dotnet/api/microsoft.extensions.dependencyinjection.pageconventioncollectionextensions.authorizeareafolder#Microsoft_Extensions_DependencyInjection_PageConventionCollectionExtensions_AuthorizeAreaFolder_Microsoft_AspNetCore_Mvc_ApplicationModels_PageConventionCollection_System_String_System_String_System_String_) доступен, если необходимо указать политику авторизации.
+Чтобы указать [политики авторизации](xref:security/authorization/policies), использовать [AuthorizeAreaFolder перегрузка](xref:Microsoft.Extensions.DependencyInjection.PageConventionCollectionExtensions.AuthorizeAreaFolder*):
 
-::: moniker-end
+```csharp
+options.Conventions.AuthorizeAreaFolder("Identity", "/Manage", "AtLeast21");
+```
 
 ## <a name="allow-anonymous-access-to-a-page"></a>Разрешить анонимный доступ к странице
 
-Используйте [AllowAnonymousToPage](/dotnet/api/microsoft.extensions.dependencyinjection.pageconventioncollectionextensions.allowanonymoustopage) соглашение с помощью [AddRazorPagesOptions](/dotnet/api/microsoft.extensions.dependencyinjection.mvcrazorpagesmvcbuilderextensions.addrazorpagesoptions) добавление [AllowAnonymousFilter](/dotnet/api/microsoft.aspnetcore.mvc.authorization.allowanonymousfilter) на страницу по указанному пути:
+Используйте <xref:Microsoft.Extensions.DependencyInjection.PageConventionCollectionExtensions.AllowAnonymousToPage*> соглашение с помощью <xref:Microsoft.Extensions.DependencyInjection.MvcRazorPagesMvcBuilderExtensions.AddRazorPagesOptions*> добавление <xref:Microsoft.AspNetCore.Mvc.Authorization.AllowAnonymousFilter> на страницу по указанному пути:
 
 [!code-csharp[](razor-pages-authorization/samples/2.x/AuthorizationSample/Startup.cs?name=snippet1&highlight=2,6)]
 
@@ -88,7 +97,7 @@ options.Conventions.AuthorizeAreaFolder("Identity", "/Manage");
 
 ## <a name="allow-anonymous-access-to-a-folder-of-pages"></a>Разрешить анонимный доступ к папке страниц
 
-Используйте [AllowAnonymousToFolder](/dotnet/api/microsoft.extensions.dependencyinjection.pageconventioncollectionextensions.allowanonymoustofolder) соглашение с помощью [AddRazorPagesOptions](/dotnet/api/microsoft.extensions.dependencyinjection.mvcrazorpagesmvcbuilderextensions.addrazorpagesoptions) добавление [AllowAnonymousFilter](/dotnet/api/microsoft.aspnetcore.mvc.authorization.allowanonymousfilter) ко всем страницам в папке по указанному пути:
+Используйте <xref:Microsoft.Extensions.DependencyInjection.PageConventionCollectionExtensions.AllowAnonymousToFolder*> соглашение с помощью <xref:Microsoft.Extensions.DependencyInjection.MvcRazorPagesMvcBuilderExtensions.AddRazorPagesOptions*> добавление <xref:Microsoft.AspNetCore.Mvc.Authorization.AllowAnonymousFilter> ко всем страницам в папке по указанному пути:
 
 [!code-csharp[](razor-pages-authorization/samples/2.x/AuthorizationSample/Startup.cs?name=snippet1&highlight=2,7)]
 
@@ -96,23 +105,23 @@ options.Conventions.AuthorizeAreaFolder("Identity", "/Manage");
 
 ## <a name="note-on-combining-authorized-and-anonymous-access"></a>Обратите внимание на объединение авторизованным и анонимный доступ
 
-Вполне указать, что папка страниц требуют авторизации и укажите, что страницы в этой папке разрешает анонимный доступ:
+Можно указать, что является папкой для страниц, требующих авторизации и не указать, что страницы в этой папке разрешает анонимный доступ:
 
 ```csharp
 // This works.
 .AuthorizeFolder("/Private").AllowAnonymousToPage("/Private/Public")
 ```
 
-Но не наоборот. Невозможно объявить папку страниц для анонимного доступа и задание страницы в пределах для авторизации:
+Тем не менее, аннулирование, является недопустимой. Нельзя объявить папку страниц для анонимного доступа и затем указать страницу в этой папке, требующему проверки подлинности:
 
 ```csharp
 // This doesn't work!
-.AllowAnonymousToFolder("/Public").AuthorizePage("/Public/Private") 
+.AllowAnonymousToFolder("/Public").AuthorizePage("/Public/Private")
 ```
 
-Требуется выполнять авторизацию на странице "закрытый" не будет работать, поскольку при как `AllowAnonymousFilter` и `AuthorizeFilter` применения фильтров к странице `AllowAnonymousFilter` wins, а также управляет доступом.
+Требовать авторизации на странице "закрытый" завершается сбоем. Когда как <xref:Microsoft.AspNetCore.Mvc.Authorization.AllowAnonymousFilter> и <xref:Microsoft.AspNetCore.Mvc.Authorization.AuthorizeFilter> применяются к странице <xref:Microsoft.AspNetCore.Mvc.Authorization.AllowAnonymousFilter> имеет более высокий приоритет, а также управляет доступом.
 
 ## <a name="additional-resources"></a>Дополнительные ресурсы
 
-* [Пользовательские поставщики моделей маршрутов и страниц Razor Pages](xref:razor-pages/razor-pages-conventions)
-* [PageConventionCollection](/dotnet/api/microsoft.aspnetcore.mvc.applicationmodels.pageconventioncollection) класса
+* <xref:razor-pages/razor-pages-conventions>
+* <xref:Microsoft.AspNetCore.Mvc.ApplicationModels.PageConventionCollection>

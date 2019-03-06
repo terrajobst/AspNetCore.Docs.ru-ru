@@ -2,15 +2,15 @@
 title: Проверка подлинности Cloud с Azure Active Directory B2C в ASP.NET Core
 author: camsoper
 description: Узнайте, как настроить проверку подлинности Azure Active Directory B2C с помощью ASP.NET Core.
-ms.date: 01/25/2018
+ms.date: 02/27/2019
 ms.custom: mvc
 uid: security/authentication/azure-ad-b2c
-ms.openlocfilehash: 2c544475ccd3eb76f2737fec1cf269ac86add372
-ms.sourcegitcommit: 97d7a00bd39c83a8f6bccb9daa44130a509f75ce
+ms.openlocfilehash: 86be999e02cfe34193bd594dcf89e8872590cca5
+ms.sourcegitcommit: 036d4b03fd86ca5bb378198e29ecf2704257f7b2
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54098991"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57346506"
 ---
 # <a name="cloud-authentication-with-azure-active-directory-b2c-in-aspnet-core"></a>Проверка подлинности Cloud с Azure Active Directory B2C в ASP.NET Core
 
@@ -104,6 +104,30 @@ ms.locfileid: "54098991"
 
 > [!WARNING]
 > Убедитесь, имена политик именно так, как описано в документации, как эти политики были использованы в **изменить способ проверки подлинности** диалоговое окно в Visual Studio. Имена политик можно проверить в *appsettings.json*.
+
+## <a name="configure-the-underlying-openidconnectoptionsjwtbearercookie-options"></a>Настройка базовых параметров OpenIdConnectOptions/JwtBearer/файл Cookie
+
+Чтобы напрямую настроить базовые параметры, используйте соответствующую схему константы в `Startup.ConfigureServices`:
+
+```csharp
+services.Configure<OpenIdConnectOptions>(
+    AzureAD[B2C]Defaults.OpenIdScheme, options => 
+    {
+        // Omitted for brevity
+    });
+
+services.Configure<CookieAuthenticationOptions>(
+    AzureAD[B2C]Defaults.CookieScheme, options => 
+    {
+        // Omitted for brevity
+    });
+
+services.Configure<JwtBearerOptions>(
+    AzureAD[B2C]Defaults.JwtBearerAuthenticationScheme, options => 
+    {
+        // Omitted for brevity
+    });
+```
 
 ## <a name="run-the-app"></a>Запуск приложения
 

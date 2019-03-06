@@ -2,32 +2,30 @@
 title: Кэширование ответов в ASP.NET Core
 author: rick-anderson
 description: Узнайте, как использовать кэширование ответов, чтобы снизить требования к пропускной способности и повысить производительность приложений ASP.NET Core.
+monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
-ms.date: 01/07/2018
+ms.date: 02/28/2019
 uid: performance/caching/response
-ms.openlocfilehash: 5fbcaddff6e53d01a19ba8a7455c719feb614326
-ms.sourcegitcommit: 97d7a00bd39c83a8f6bccb9daa44130a509f75ce
+ms.openlocfilehash: efcf443b1487827fe6cf4d43b6dda69adf4d61fb
+ms.sourcegitcommit: 036d4b03fd86ca5bb378198e29ecf2704257f7b2
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54098952"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57345750"
 ---
 # <a name="response-caching-in-aspnet-core"></a>Кэширование ответов в ASP.NET Core
 
 По [Luo Джон](https://github.com/JunTaoLuo), [Рик Андерсон](https://twitter.com/RickAndMSFT), [Стив Смит](https://ardalis.com/), и [Люк Лэтем](https://github.com/guardrex)
 
-> [!NOTE]
-> Кэширование ответов в Razor Pages в ASP.NET Core 2.1 или более поздней версии.
-
 [Просмотреть или скачать образец кода](https://github.com/aspnet/Docs/tree/master/aspnetcore/performance/caching/response/samples) ([как скачивать](xref:index#how-to-download-a-sample))
 
 Кэширование ответов уменьшает количество запросов, выполненных клиентского приложения или прокси-сервера веб-сервера. Кэширование ответов также сокращает время работы веб-сервер выполняет для создания ответа. Кэширование ответов управляется заголовки, указывающие способ клиента, прокси-сервера и по промежуточного слоя для кэширования ответов.
 
-[Атрибута ResponseCache](#responsecache-attribute) участвует в параметр кэширования заголовков, в которых клиенты могут поддерживать при кэшировании ответов ответов. [По промежуточного слоя для кэширования ответа](xref:performance/caching/middleware) может использоваться для кэширования ответов на сервере. Можно использовать по промежуточного слоя `ResponseCache` атрибут свойства, которые влияют на поведение кэширования на стороне сервера.
+[Атрибута ResponseCache](#responsecache-attribute) участвует в параметр кэширования заголовков, в которых клиенты могут поддерживать при кэшировании ответов ответов. [По промежуточного слоя для кэширования ответа](xref:performance/caching/middleware) может использоваться для кэширования ответов на сервере. Можно использовать по промежуточного слоя <xref:Microsoft.AspNetCore.Mvc.ResponseCacheAttribute> свойства, которые влияют на поведение кэширования на стороне сервера.
 
 ## <a name="http-based-response-caching"></a>Кэширование ответов на основе HTTP
 
-[Спецификации кэширования HTTP 1.1](https://tools.ietf.org/html/rfc7234) описано поведение Internet кэшей. Основной заголовок HTTP, используемый для кэширования [Cache-Control](https://tools.ietf.org/html/rfc7234#section-5.2), который используется для указания кэша *директивы*. Директивы Управление поведением кэширования запросов все же встречаются несущественные от клиентов к серверам и принимая ответов свой путь с серверов клиентам. Запросы и ответы перемещения между прокси-серверами и прокси-серверы также должны соответствовать спецификации кэширования HTTP 1.1.
+[Спецификации кэширования HTTP 1.1](https://tools.ietf.org/html/rfc7234) описано поведение Internet кэшей. Основной заголовок HTTP, используемый для кэширования [Cache-Control](https://tools.ietf.org/html/rfc7234#section-5.2), который используется для указания кэша *директивы*. Директивы Управление поведением кэширования, как запросы все же встречаются несущественные от клиентов к серверам и ответы сделать свой путь с серверов обратно клиентам. Запросы и ответы перемещения между прокси-серверами и прокси-серверы также должны соответствовать спецификации кэширования HTTP 1.1.
 
 Распространенные `Cache-Control` директивы показаны в следующей таблице.
 
@@ -35,8 +33,8 @@ ms.locfileid: "54098952"
 | --------------------------------------------------------------- | ------ |
 | [public](https://tools.ietf.org/html/rfc7234#section-5.2.2.5)   | Кэш может хранить ответ. |
 | [private](https://tools.ietf.org/html/rfc7234#section-5.2.2.6)  | Ответ не должны храниться в общий кэш. Частный кэш может хранить и повторно использовать ответ. |
-| [max-age](https://tools.ietf.org/html/rfc7234#section-5.2.1.1)  | Клиент не будет принимать ответ, возраст которых больше, чем указанное число секунд. Примеры `max-age=60` (60 секунд), `max-age=2592000` (1 месяц) |
-| [без кэша](https://tools.ietf.org/html/rfc7234#section-5.2.1.4) | **При запросах**: Кэш не должны использовать хранимые ответ для удовлетворения запроса. Примечание. На сервере-источнике повторно формирует ответ для клиента, и по промежуточного слоя обновляет ответов в своем кэше.<br><br>**При ответах**: Ответ не должны использоваться для последующих запросов без проверки на исходном сервере. |
+| [max-age](https://tools.ietf.org/html/rfc7234#section-5.2.1.1)  | Клиент не принимает ответ, возраст которых больше, чем указанное число секунд. Примеры `max-age=60` (60 секунд), `max-age=2592000` (1 месяц) |
+| [без кэша](https://tools.ietf.org/html/rfc7234#section-5.2.1.4) | **При запросах**: Кэш не должны использовать хранимые ответ для удовлетворения запроса. Повторно создает на сервере-источнике ответа для клиента, и по промежуточного слоя обновляет ответов в своем кэше.<br><br>**При ответах**: Ответ не должны использоваться для последующих запросов без проверки на исходном сервере. |
 | [no-store](https://tools.ietf.org/html/rfc7234#section-5.2.1.5) | **При запросах**: Кэш не должен хранить запроса.<br><br>**При ответах**: Кэш не должен хранить любую часть ответа. |
 
 В следующей таблице показаны другие заголовки кэша, которые влияют на кэширование.
@@ -44,7 +42,7 @@ ms.locfileid: "54098952"
 | Header                                                     | Функция |
 | ---------------------------------------------------------- | -------- |
 | [Срок действия](https://tools.ietf.org/html/rfc7234#section-5.1)     | Приблизительное количество времени в секундах с момента ответа сформирован или создан успешно прошли проверку на исходном сервере. |
-| [Срок действия истекает](https://tools.ietf.org/html/rfc7234#section-5.3) | Дата и время, после чего ответ считается устаревшей. |
+| [Срок действия истекает](https://tools.ietf.org/html/rfc7234#section-5.3) | Время, после чего ответ считается устаревшей. |
 | [Директивы pragma](https://tools.ietf.org/html/rfc7234#section-5.4)  | Существует для обеспечения обратной совместимости с HTTP/1.0 кэширует параметра `no-cache` поведение. Если `Cache-Control` заголовок присутствует, `Pragma` заголовка учитывается. |
 | [Различаются](https://tools.ietf.org/html/rfc7231#section-7.1.4)  | Указывает, что кэшированный ответ должен быть отправляется, только если все из `Vary` заголовок поля согласуются в кэшированный ответ исходного запроса и новый запрос. |
 
@@ -62,9 +60,9 @@ ms.locfileid: "54098952"
 
 Кэширование в памяти использует память сервера для хранения кэшированных данных. Этот тип кэширования подходит для одного или нескольких серверов с использованием *прикрепленные сеансы*. Прикрепленные сеансы означает, что запросы от клиента всегда направляются на один и тот же сервер для обработки.
 
-Дополнительные сведения см. в разделе [кэшировать в памяти](xref:performance/caching/memory).
+Дополнительные сведения см. в разделе <xref:performance/caching/memory>.
 
-### <a name="distributed-cache"></a>Распределенного кэша
+### <a name="distributed-cache"></a>Распределенный кэш
 
 Используйте распределенный кэш для хранения данных в памяти, когда приложение будет размещено в облаке или сервер фермы. Кэш распределяется по всем серверам, которые обрабатывают запросы. Клиент может отправить запрос, обрабатываемый любой сервер в группе, при наличии кэшированных данных для клиента. ASP.NET Core предлагает SQL Server и кэши Redis распределенных.
 
@@ -72,85 +70,68 @@ ms.locfileid: "54098952"
 
 ### <a name="cache-tag-helper"></a>Вспомогательная функция тега кэша
 
-Вы можете кэшировать содержимое из представления MVC или страница Razor со вспомогательной функцией тега кэша. Вспомогательная функция тега кэша использует кэширование в памяти для хранения данных.
+Кэширование содержимого из представления MVC или страница Razor со вспомогательной функцией тега кэша. Вспомогательная функция тега кэша использует кэширование в памяти для хранения данных.
 
-Дополнительные сведения см. в разделе [вспомогательная функция тега кэша в ASP.NET Core MVC](xref:mvc/views/tag-helpers/builtin-th/cache-tag-helper).
+Дополнительные сведения см. в разделе <xref:mvc/views/tag-helpers/builtin-th/cache-tag-helper>.
 
 ### <a name="distributed-cache-tag-helper"></a>Вспомогательная функция тега распределенного кэша
 
-Вы можете кэшировать содержимое из представления MVC или страницы Razor в распределенных облачных или веб-ферм с вспомогательная функция тега распределенного кэша. Для хранения данных кэша вспомогательной функции тега распределенного использует SQL Server или Redis.
+Кэшировать содержимое из представления MVC или страницу Razor в распределенных сценариях облака или веб-фермы с вспомогательная функция тега распределенного кэша. Для хранения данных кэша вспомогательной функции тега распределенного использует SQL Server или Redis.
 
-Дополнительные сведения см. в разделе [вспомогательной функции тега распределенного кэша](xref:mvc/views/tag-helpers/builtin-th/distributed-cache-tag-helper).
+Дополнительные сведения см. в разделе <xref:mvc/views/tag-helpers/builtin-th/distributed-cache-tag-helper>.
 
 ## <a name="responsecache-attribute"></a>Атрибута ResponseCache
 
-[ResponseCacheAttribute](/dotnet/api/Microsoft.AspNetCore.Mvc.ResponseCacheAttribute) указывает параметры, необходимые для задания соответствующих заголовков в кэширование ответов.
+<xref:Microsoft.AspNetCore.Mvc.ResponseCacheAttribute> Указывает параметры, необходимые для задания соответствующих заголовков в кэширование ответов.
 
 > [!WARNING]
 > Отключите кэширование для содержимого, которое содержит сведения о прошедших проверку подлинности клиентов. Кэширование можно включать только для содержимого, которое не меняется на основе удостоверения пользователя или ли пользователь выполнил вход.
 
-[VaryByQueryKeys](/dotnet/api/microsoft.aspnetcore.mvc.responsecacheattribute.varybyquerykeys) изменяет хранимую ответ по значениям указанного списка ключей запроса. Если одно значение `*` не указан, по промежуточного слоя, зависит от ответов для всех запросов параметров строки запроса. `VaryByQueryKeys` требуется ASP.NET Core 1.1 или более поздней.
+<xref:Microsoft.AspNetCore.Mvc.CacheProfile.VaryByQueryKeys> хранимые ответ зависит от значения указанного списка ключей запроса. Если одно значение `*` не указан, по промежуточного слоя, зависит от ответов для всех запросов параметров строки запроса.
 
-[По промежуточного слоя для кэширования ответа](xref:performance/caching/middleware) необходимо включить для задания `VaryByQueryKeys` свойство; в противном случае создается исключение времени выполнения. Нет соответствующего заголовка HTTP для `VaryByQueryKeys` свойство. Свойство — это функция HTTP, обрабатываемых по промежуточного слоя кэширования ответов. Для по промежуточного слоя для обслуживания кэшированный ответ строку запроса и значения строки запроса, должны совпадать предыдущего запроса. Например рассмотрим последовательность запросов и результаты, показанные в следующей таблице.
+[По промежуточного слоя для кэширования ответа](xref:performance/caching/middleware) необходимо включить для задания <xref:Microsoft.AspNetCore.Mvc.CacheProfile.VaryByQueryKeys> свойство. В противном случае возникает исключение времени выполнения. Нет соответствующего заголовка HTTP для <xref:Microsoft.AspNetCore.Mvc.CacheProfile.VaryByQueryKeys> свойство. Свойство — это функция HTTP, обрабатываемых по промежуточного слоя для кэширования ответа. Для по промежуточного слоя для обслуживания кэшированный ответ строку запроса и значения строки запроса, должны совпадать предыдущего запроса. Например рассмотрим последовательность запросов и результаты, показанные в следующей таблице.
 
-| Запрос                          | Результат                   |
-| -------------------------------- | ------------------------ |
-| `http://example.com?key1=value1` | Сервер вернул     |
-| `http://example.com?key1=value1` | Возвращаемые по промежуточного слоя |
-| `http://example.com?key1=value2` | Сервер вернул     |
+| Запрос                          | Результат                    |
+| -------------------------------- | ------------------------- |
+| `http://example.com?key1=value1` | Возвращаемые с сервера. |
+| `http://example.com?key1=value1` | Возвращаемые по промежуточного слоя. |
+| `http://example.com?key1=value2` | Возвращаемые с сервера. |
 
-Первый запрос возвращается сервером и кэшируются в по промежуточного слоя. Второй запрос возвращается по промежуточного слоя, так как строка запроса совпадает с предыдущим запросом. Третий запрос не в кэше по промежуточного слоя, поскольку значение строки запроса не соответствует предыдущего запроса. 
+Первый запрос возвращается сервером и кэшируются в по промежуточного слоя. Второй запрос возвращается по промежуточного слоя, так как строка запроса совпадает с предыдущим запросом. Третий запрос не в кэше по промежуточного слоя, поскольку значение строки запроса не соответствует предыдущего запроса.
 
-`ResponseCacheAttribute` Используется для настройки и создания (с помощью `IFilterFactory`) [ResponseCacheFilter](/dotnet/api/microsoft.aspnetcore.mvc.internal.responsecachefilter). `ResponseCacheFilter` Выполняет обновление соответствующие заголовки HTTP и функции ответа. Фильтр:
+<xref:Microsoft.AspNetCore.Mvc.ResponseCacheAttribute> Используется для настройки и создания (с помощью <xref:Microsoft.AspNetCore.Mvc.Filters.IFilterFactory>) <xref:Microsoft.AspNetCore.Mvc.Internal.ResponseCacheFilter>. <xref:Microsoft.AspNetCore.Mvc.Internal.ResponseCacheFilter> Выполняет обновление соответствующие заголовки HTTP и функции ответа. Фильтр:
 
-* Удаляет любые существующие заголовки для `Vary`, `Cache-Control`, и `Pragma`. 
-* Записывает соответствующие заголовки, в зависимости от свойств, заданных `ResponseCacheAttribute`. 
-* Обновляет ответ HTTP функции кэширования, если `VaryByQueryKeys` имеет значение.
+* Удаляет любые существующие заголовки для `Vary`, `Cache-Control`, и `Pragma`.
+* Записывает соответствующие заголовки, в зависимости от свойств, заданных <xref:Microsoft.AspNetCore.Mvc.ResponseCacheAttribute>.
+* Обновляет ответ HTTP функции кэширования, если <xref:Microsoft.AspNetCore.Mvc.CacheProfile.VaryByQueryKeys> имеет значение.
 
 ### <a name="vary"></a>Различаются
 
-Этот заголовок записывается только когда `VaryByHeader` свойству. Ему будет присвоено `Vary` значение свойства. В следующем примере используется `VaryByHeader` свойство:
+Этот заголовок записывается только когда <xref:Microsoft.AspNetCore.Mvc.CacheProfile.VaryByHeader> свойству. Это свойство имеет значение `Vary` значение свойства. В следующем примере используется <xref:Microsoft.AspNetCore.Mvc.CacheProfile.VaryByHeader> свойство:
 
-::: moniker range=">= aspnetcore-2.0"
+[!code-csharp[](response/samples/2.x/ResponseCacheSample/Pages/Cache1.cshtml.cs?name=snippet)]
 
-[!code-csharp[](response/samples/2.x/ResponseCacheSample/Controllers/HomeController.cs?name=snippet_VaryByHeader&highlight=1)]
+Пример приложения, просмотрите заголовки ответа с помощью средства обозревателя сети. Следующие заголовки ответа отправляются вместе с ответом Cache1 страницы:
 
-::: moniker-end
-
-::: moniker range="< aspnetcore-2.0"
-
-[!code-csharp[](response/samples/1.x/ResponseCacheSample/Controllers/HomeController.cs?name=snippet_VaryByHeader&highlight=1)]
-
-::: moniker-end
-
-Вы можете просматривать заголовки ответа с помощью средства обозревателя сети. На следующем рисунке показана F12 Edge, выведенных в **сети** вкладке `About2` обновляется метод действия:
-
-![Граничный узел вывод F12 на вкладке «сети» при вызове метода действия About2](response/_static/vary.png)
+```
+Cache-Control: public,max-age=30
+Vary: User-Agent
+```
 
 ### <a name="nostore-and-locationnone"></a>NoStore и Location.None
 
-`NoStore` переопределяет большинство других свойств. Если присвоить этому свойству `true`, `Cache-Control` заголовок имеет значение `no-store`. Если `Location` присваивается `None`:
+<xref:Microsoft.AspNetCore.Mvc.CacheProfile.NoStore> переопределяет большинство других свойств. Если присвоить этому свойству `true`, `Cache-Control` заголовок имеет значение `no-store`. Если <xref:Microsoft.AspNetCore.Mvc.CacheProfile.Location> присваивается `None`:
 
 * Параметру `Cache-Control` задается значение `no-store,no-cache`.
 * Параметру `Pragma` задается значение `no-cache`.
 
-Если `NoStore` — `false` и `Location` — `None`, `Cache-Control` и `Pragma` присваивается `no-cache`.
+Если <xref:Microsoft.AspNetCore.Mvc.CacheProfile.NoStore> — `false` и <xref:Microsoft.AspNetCore.Mvc.CacheProfile.Location> — `None`, `Cache-Control`, и `Pragma` присваивается `no-cache`.
 
-Обычно устанавливается `NoStore` для `true` на страницы ошибок. Пример:
+<xref:Microsoft.AspNetCore.Mvc.CacheProfile.NoStore> обычно устанавливается равным `true` для страниц ошибок. На странице Cache2 в пример приложения создает заголовки ответа клиенту не хранить ответ.
 
-::: moniker range=">= aspnetcore-2.0"
+[!code-csharp[](response/samples/2.x/ResponseCacheSample/Pages/Cache2.cshtml.cs?name=snippet)]
 
-[!code-csharp[](response/samples/2.x/ResponseCacheSample/Controllers/HomeController.cs?name=snippet1&highlight=1)]
-
-::: moniker-end
-
-::: moniker range="< aspnetcore-2.0"
-
-[!code-csharp[](response/samples/1.x/ResponseCacheSample/Controllers/HomeController.cs?name=snippet1&highlight=1)]
-
-::: moniker-end
-
-Это приводит к следующие заголовки:
+Пример приложения возвращает страницу Cache2 со следующими заголовками:
 
 ```
 Cache-Control: no-store,no-cache
@@ -159,71 +140,43 @@ Pragma: no-cache
 
 ### <a name="location-and-duration"></a>Расположение и длительность
 
-Чтобы включить кэширование, `Duration` должно быть присвоено положительное значение и `Location` должен быть либо `Any` (по умолчанию) или `Client`. В этом случае `Cache-Control` заголовок присваивается значение расположения, за которым следует `max-age` ответа.
+Чтобы включить кэширование, <xref:Microsoft.AspNetCore.Mvc.CacheProfile.Duration> должно быть присвоено положительное значение и <xref:Microsoft.AspNetCore.Mvc.CacheProfile.Location> должен быть либо `Any` (по умолчанию) или `Client`. В этом случае `Cache-Control` заголовок присваивается значение расположения, за которым следует `max-age` ответа.
 
 > [!NOTE]
-> `Location`в параметры `Any` и `Client` переводиться `Cache-Control` значения заголовка `public` и `private`, соответственно. Как отмечалось ранее, параметр `Location` для `None` задает оба `Cache-Control` и `Pragma` заголовки `no-cache`.
+> <xref:Microsoft.AspNetCore.Mvc.CacheProfile.Location>в параметры `Any` и `Client` переводиться `Cache-Control` значения заголовка `public` и `private`, соответственно. Как отмечалось ранее, параметр <xref:Microsoft.AspNetCore.Mvc.CacheProfile.Location> для `None` задает оба `Cache-Control` и `Pragma` заголовки `no-cache`.
 
-Ниже пример, показывающий, заголовки, создаваемое путем установки `Duration` и оставить значение по умолчанию `Location` значение:
+В следующем примере показано Cache3 страничной модели из примера приложения и заголовки, создаваемое путем установки <xref:Microsoft.AspNetCore.Mvc.CacheProfile.Duration> и оставить значение по умолчанию <xref:Microsoft.AspNetCore.Mvc.CacheProfile.Location> значение:
 
-::: moniker range=">= aspnetcore-2.0"
+[!code-csharp[](response/samples/2.x/ResponseCacheSample/Pages/Cache3.cshtml.cs?name=snippet)]
 
-[!code-csharp[](response/samples/2.x/ResponseCacheSample/Controllers/HomeController.cs?name=snippet_duration&highlight=1)]
-
-::: moniker-end
-
-::: moniker range="< aspnetcore-2.0"
-
-[!code-csharp[](response/samples/1.x/ResponseCacheSample/Controllers/HomeController.cs?name=snippet_duration&highlight=1)]
-
-::: moniker-end
-
-В результате получается следующий заголовок:
+Пример приложения возвращает страницу Cache3 с следующий заголовок:
 
 ```
-Cache-Control: public,max-age=60
+Cache-Control: public,max-age=10
 ```
 
 ### <a name="cache-profiles"></a>Профили кэша
 
-Вместо повторения `ResponseCache` параметров на множество атрибутов действий контроллера, профили кэша можно настроить как параметры, при настройке MVC в `ConfigureServices` метод в `Startup`. Значения в конфигурации кэша, на которую указывает ссылка, используются значения по умолчанию, `ResponseCache` атрибут и переопределяются все свойства, заданные в атрибуте.
+Вместо повторения параметры кэша ответа на многие атрибуты действий контроллера, профили кэша можно настроить в качестве параметров при настройке MVC и Razor Pages в `Startup.ConfigureServices`. Значения в конфигурации кэша, на которую указывает ссылка, используются значения по умолчанию, <xref:Microsoft.AspNetCore.Mvc.ResponseCacheAttribute> и переопределяются все свойства, заданные в атрибуте.
 
-Настройка профиля кэша.
-
-::: moniker range=">= aspnetcore-2.0"
+Настройка профиля кэша. В следующем примере показано 30 второй профиль кэша в примере приложения `Startup.ConfigureServices`:
 
 [!code-csharp[](response/samples/2.x/ResponseCacheSample/Startup.cs?name=snippet1)]
 
-::: moniker-end
+Ссылки на модели страницы Cache4 примера приложения `Default30` кэша профиля:
 
-::: moniker range="< aspnetcore-2.0"
+[!code-csharp[](response/samples/2.x/ResponseCacheSample/Pages/Cache4.cshtml.cs?name=snippet)]
 
-[!code-csharp[](response/samples/1.x/ResponseCacheSample/Startup.cs?name=snippet1)]
+<xref:Microsoft.AspNetCore.Mvc.ResponseCacheAttribute> Применим к:
 
-::: moniker-end
+* Обработчики страницы Razor (классы) &ndash; атрибуты не могут применяться к методам обработчиков.
+* Контроллеры MVC (классы).
+* Действия MVC (методы) &ndash; атрибуты на уровне метода переопределяют параметры, указанные в атрибуты уровня класса.
 
-Ссылка на профиль кэша:
-
-::: moniker range=">= aspnetcore-2.0"
-
-[!code-csharp[](response/samples/2.x/ResponseCacheSample/Controllers/HomeController.cs?name=snippet_controller&highlight=1,4)]
-
-::: moniker-end
-
-::: moniker range="< aspnetcore-2.0"
-
-[!code-csharp[](response/samples/1.x/ResponseCacheSample/Controllers/HomeController.cs?name=snippet_controller&highlight=1,4)]
-
-::: moniker-end
-
-`ResponseCache` Атрибут может применяться как для действия (методы) и контроллеры (классы). Атрибуты на уровне метода переопределяют параметры, указанные в атрибуты уровня класса.
-
-В приведенном выше примере атрибут уровня класса указывает в течение 30 секунд, а атрибутом уровня методов ссылок на профиль кэша с длительностью 60 секунд.
-
-Итоговый заголовка:
+Полученный заголовок, примененные к ответу Cache4 страницы с `Default30` кэша профиля:
 
 ```
-Cache-Control: public,max-age=60
+Cache-Control: public,max-age=30
 ```
 
 ## <a name="additional-resources"></a>Дополнительные ресурсы

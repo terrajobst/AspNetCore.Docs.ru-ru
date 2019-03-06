@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 01/04/2019
 uid: test/loadtests
-ms.openlocfilehash: d989bc841a372bed7ebf2c84c6abe1a57762ad04
-ms.sourcegitcommit: cec77d5ad8a0cedb1ecbec32834111492afd0cd2
+ms.openlocfilehash: 587df6e216943d3eeec779df4d0554dd0fc2fda0
+ms.sourcegitcommit: 036d4b03fd86ca5bb378198e29ecf2704257f7b2
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54207360"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57345432"
 ---
 # <a name="load-and-stress-testing-aspnet-core"></a>Нагрузочное тестирование ASP.NET Core
 
@@ -25,6 +25,10 @@ ms.locfileid: "54207360"
 * Ограниченные вычислительные ресурсы.  
 
 Под нагрузкой можно его восстановление после сбоя и корректно вернуться к ожидаемое поведение? Под нагрузкой, приложение будет *не* выполнения в нормальных условиях.
+
+Visual Studio 2019 — это последняя версия Visual Studio, включающая средства нагрузочного тестирования. Клиентам, которым требуются средства нагрузочного тестирования, мы рекомендуем использовать альтернативные средства нагрузочного тестирования, такие как Apache JMeter, Akamai CloudTest или Blazemeter. Дополнительные сведения см. в разделе [Visual Studio 2019 заметки о выпуске Preview](/visualstudio/releases/2019/release-notes-preview#test-tools).
+
+Службы нагрузочного тестирования в Azure DevOps заканчивается через 2020 г. Дополнительные сведения см. в разделе [Облачное нагрузочное тестирование службы конца своего жизненного цикла](https://devblogs.microsoft.com/devops/cloud-based-load-testing-service-eol/).
 
 ## <a name="visual-studio-tools"></a>Инструменты Visual Studio
 
