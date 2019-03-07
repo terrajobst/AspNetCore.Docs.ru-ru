@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 02/13/2019
 uid: fundamentals/routing
-ms.openlocfilehash: 3dbb2d358ec9e3dcdd96c3771576911d906d796f
-ms.sourcegitcommit: 6ba5fb1fd0b7f9a6a79085b0ef56206e462094b7
+ms.openlocfilehash: 622f28f3b4348820c8781e0ba14ae5137136e797
+ms.sourcegitcommit: 036d4b03fd86ca5bb378198e29ecf2704257f7b2
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56248437"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57346571"
 ---
 # <a name="routing-in-aspnet-core"></a>Маршрутизация в ASP.NET Core
 
@@ -583,7 +583,7 @@ routes.MapRoute(
 | `{Page=Home}`                            | `/Contact`              | Соответствует и задает для параметра `Page` значение `Contact`.                                      |
 | `{controller}/{action}/{id?}`            | `/Products/List`        | Сопоставляется с контроллером `Products` и действием `List`.                       |
 | `{controller}/{action}/{id?}`            | `/Products/Details/123` | Сопоставляется с контроллером `Products` и действием `Details` (`id` имеет значение 123). |
-| `{controller=Home}/{action=Index}/{id?`} | `/`                     | Сопоставляется с контроллером `Home` и методом `Index` (`id` пропускается).        |
+| `{controller=Home}/{action=Index}/{id?}` | `/`                     | Сопоставляется с контроллером `Home` и методом `Index` (`id` пропускается).        |
 
 Использование шаблона — это, как правило, самый простой подход к маршрутизации. Ограничения и значения по умолчанию также могут указываться вне шаблона маршрута.
 
