@@ -1,16 +1,10 @@
 ---
 title: Учебник. Создание веб-приложения Razor Pages с помощью ASP.NET Core
 author: rick-anderson
-description: Создание веб-приложения Razor Pages в Windows с помощью Visual Studio, ASP.NET Core и EF Core.
+description: "Создание веб-приложения Razor\_Pages в Windows с помощью Visual\_Studio, ASP.NET\_Core и EF\_Core."
 ms.author: riande
 ms.date: 09/08/2017
 uid: tutorials/razor-pages/index
-ms.openlocfilehash: c543e86b58b37a120df22331043944757beeca3a
-ms.sourcegitcommit: d75d8eb26c2cce19876c8d5b65ac8a4b21f625ef
-ms.translationtype: HT
-ms.contentlocale: ru-RU
-ms.lasthandoff: 02/19/2019
-ms.locfileid: "56410064"
 ---
 # <a name="tutorial-create-a-razor-pages-web-app-with-aspnet-core"></a>Учебник. Создание веб-приложения Razor Pages с помощью ASP.NET Core
 
@@ -32,3 +26,7 @@ ms.locfileid: "56410064"
 В итоге вы получите приложение, которое позволяет отображать сведения о базе данных фильмов и управлять ею.
 
 ![Пример страницы примера приложения](index/_static/sample-page.png)
+
+## <a name="additional-resources"></a>Дополнительные ресурсы
+
+* [Версия учебника на YouTube](https://www.youtube.com/watch?v=F0SP7Ry4flQ&feature=youtu.be)

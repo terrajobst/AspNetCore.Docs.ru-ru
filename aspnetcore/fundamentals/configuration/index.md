@@ -4,7 +4,7 @@ author: guardrex
 description: "Узнайте, как использовать API конфигурации для настройки приложения ASP.NET\_Core."
 ms.author: riande
 ms.custom: mvc
-ms.date: 01/25/2019
+ms.date: 03/04/2019
 uid: fundamentals/configuration/index
 ---
 # <a name="configuration-in-aspnet-core"></a>Конфигурация в .NET Core
@@ -128,7 +128,26 @@ API конфигурации способен поддерживать иера�
 
 Поставщики файлов конфигурации имеют возможность перезагрузить конфигурацию при изменении базового файла параметров после запуска приложения. Поставщик конфигурации файлов описан ниже в этом разделе.
 
-<xref:Microsoft.Extensions.Configuration.IConfiguration> доступен в контейнере [Dependency Injection (DI)](xref:fundamentals/dependency-injection) приложения. Поставщики конфигурации не могут использовать контейнер DI, так как он недоступен при настройке узла.
+Объект <xref:Microsoft.Extensions.Configuration.IConfiguration> доступен в контейнере [внедрения зависимостей](xref:fundamentals/dependency-injection) приложения. <xref:Microsoft.Extensions.Configuration.IConfiguration> можно внедрить в <xref:Microsoft.AspNetCore.Mvc.RazorPages.PageModel> Razor Pages, чтобы получить конфигурацию для класса:
+
+```csharp
+// using Microsoft.Extensions.Configuration;
+
+public class IndexModel : PageModel
+{
+    private readonly IConfiguration _config;
+
+    public IndexModel(IConfiguration config)
+    {
+        _config = config;
+    }
+        
+    // The _config local variable is used to obtain configuration 
+    // throughout the class.
+}
+```
+
+Поставщики конфигурации не могут использовать контейнер DI, так как он недоступен при настройке узла.
 
 В ключах конфигурации приняты следующие соглашения.
 
@@ -256,6 +275,8 @@ public void ConfigureServices(IServiceCollection services)
 [!code-csharp[](index/samples/2.x/ConfigurationSample/Program.cs?name=snippet_Program&highlight=19)]
 
 ::: moniker-end
+
+Конфигурация, предоставленная приложению в <xref:Microsoft.Extensions.Hosting.HostBuilder.ConfigureAppConfiguration*>, доступна во время запуска приложения, включая `Startup.ConfigureServices`. Дополнительные сведения см. в разделе [Доступ к конфигурации во время запуска](#access-configuration-during-startup).
 
 ## <a name="command-line-configuration-provider"></a>Поставщик конфигурации командной строки
 
@@ -1305,10 +1326,29 @@ var host = new WebHostBuilder()
 
 [ConfigurationBinder.GetValue&lt;T&gt;](xref:Microsoft.Extensions.Configuration.ConfigurationBinder.GetValue*) извлекает значение из конфигурации с указанным ключом и преобразует его в указанный тип. Если ключ не найден, перегрузка позволяет предоставлять значение по умолчанию.
 
-В следующем примере извлекается строковое значение из конфигурации с ключом `NumberKey`, вводится значение `int` и сохраняется значение в переменной `intValue`. Если `NumberKey` не обнаруживается в ключах конфигурации, `intValue` получает значение `99` по умолчанию.
+В следующем примере происходит следующее:
+
+* Из конфигурации извлекается строковое значение с ключом `NumberKey`. Если `NumberKey` отсутствует в ключах конфигурации, используется значение по умолчанию `99`.
+* Значение получает тип `int`.
+* Значение сохраняется в свойстве `NumberConfig` для использования на странице.
 
 ```csharp
-var intValue = config.GetValue<int>("NumberKey", 99);
+// using Microsoft.Extensions.Configuration;
+
+public class IndexModel : PageModel
+{
+    public IndexModel(IConfiguration config)
+    {
+        _config = config;
+    }
+    
+    public int NumberConfig { get; private set; }
+        
+    public void OnGet()
+    {
+        NumberConfig = _config.GetValue<int>("NumberKey", 99);
+    }
+}
 ```
 
 ## <a name="getsection-getchildren-and-exists"></a>GetSection, GetChildren и Exists

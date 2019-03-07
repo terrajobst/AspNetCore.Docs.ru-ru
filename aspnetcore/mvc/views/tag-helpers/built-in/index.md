@@ -1,18 +1,13 @@
 ---
 title: Встроенные вспомогательные функции тегов ASP.NET Core
 author: pkellner
-description: Узнайте, как использовать встроенные вспомогательные функции тегов ASP.NET Core для более эффективной работы.
+description: 'Узнайте, как использовать встроенные вспомогательные функции тегов ASP.NET Core для более эффективной работы.'
 ms.author: riande
 ms.custom: mvc
 ms.date: 10/10/2018
 uid: mvc/views/tag-helpers/builtin-th/Index
-ms.openlocfilehash: 58840d6ecd09bd2ae7f96c046a0cb93c018f9645
-ms.sourcegitcommit: 4bdf7703aed86ebd56b9b4bae9ad5700002af32d
-ms.translationtype: HT
-ms.contentlocale: ru-RU
-ms.lasthandoff: 10/15/2018
-ms.locfileid: "49325488"
 ---
+
 # <a name="aspnet-core-built-in-tag-helpers"></a>Встроенные вспомогательные функции тегов ASP.NET Core
 
 Автор: [Питер Кельнер (Peter Kellner)](http://peterkellner.net)
@@ -35,6 +30,8 @@ ms.locfileid: "49325488"
 [comment]: **[FormActionTagHelper](xref:mvc/views/tag-helpers/builtin-th/form-action-tag-helper)**
 
 **[Вспомогательная функция тега форм](xref:mvc/views/working-with-forms#the-form-tag-helper)**
+
+**[Вспомогательный объект для тегов действий формы](xref:mvc/views/working-with-forms#the-form-action-tag-helper)**
 
 **[Вспомогательная функция тега образа](xref:mvc/views/tag-helpers/builtin-th/image-tag-helper)**
 
