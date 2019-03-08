@@ -7,12 +7,12 @@ ms.author: bradyg
 ms.custom: mvc
 ms.date: 02/07/2019
 uid: signalr/configuration
-ms.openlocfilehash: c5921db895a732c9663c9d962195a2c0635f5aa0
-ms.sourcegitcommit: 6ddd8a7675c1c1d997c8ab2d4498538e44954cac
+ms.openlocfilehash: 070d6fed26b6d14c4b8a35d0f7d94abafb08993b
+ms.sourcegitcommit: 191d21c1e37b56f0df0187e795d9a56388bbf4c7
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57400662"
+ms.lasthandoff: 03/08/2019
+ms.locfileid: "57665419"
 ---
 # <a name="aspnet-core-signalr-configuration"></a>Конфигурация ASP.NET Core SignalR
 
@@ -82,7 +82,7 @@ public void ConfigureServices(IServiceCollection services)
 }
 ```
 
-Параметры для одного центра переопределить глобальные параметры, указанные на `AddSignalR` и могут настраиваться с помощью [AddHubOptions\<T >](/dotnet/api/microsoft.extensions.dependencyinjection.huboptionsdependencyinjectionextensions.addhuboptions):
+Параметры для одного центра переопределить глобальные параметры, указанные на `AddSignalR` и могут настраиваться с помощью <xref:Microsoft.Extensions.DependencyInjection.SignalRDependencyInjectionExtensions.AddHubOptions*>:
 
 ```csharp
 services.AddSignalR().AddHubOptions<MyHub>(options =>
@@ -114,7 +114,7 @@ public void Configure(IApplicationBuilder app, IHostingEnvironment env)
 
 В следующей таблице описаны параметры для настройки дополнительных параметров HTTP ASP.NET Core SignalR:
 
-| Параметр | Значение по умолчанию | Описание |
+| Параметр | Значение по умолчанию | Описание: |
 | ------ | ------------- | ----------- |
 | `ApplicationMaxBufferSize` | 32 КБ | Максимальное число байтов, полученных от клиента, буферы сервера. Увеличение этого значения позволяет серверу для получения сообщения большего размера, но может отрицательно повлиять на потребление памяти. |
 | `AuthorizationData` | Данные, собранные из автоматически `Authorize` атрибутов, примененных к классу Hub. | Список [IAuthorizeData](/dotnet/api/microsoft.aspnetcore.authorization.iauthorizedata) объекты, используемые для определения того, если клиенту разрешено подключаться к концентратору. |
@@ -125,13 +125,13 @@ public void Configure(IApplicationBuilder app, IHostingEnvironment env)
 
 Транспорт длинный опрос имеет дополнительные параметры, которые могут быть настроены с помощью `LongPolling` свойство:
 
-| Параметр | Значение по умолчанию | Описание |
+| Параметр | Значение по умолчанию | Описание: |
 | ------ | ------------- | ----------- |
 | `PollTimeout` | 90 секунд | Максимальное время ожидания сервером ответа сообщение, отправляемое клиенту перед завершением работы запрос на единый опроса. Уменьшение этого значения приводит к клиентам выполнять чаще, новые запросы опроса. |
 
 Транспорт WebSocket имеет дополнительные параметры, которые могут быть настроены с помощью `WebSockets` свойство:
 
-| Параметр | Значение по умолчанию | Описание |
+| Параметр | Значение по умолчанию | Описание: |
 | ------ | ------------- | ----------- |
 | `CloseTimeout` | 5 секунд | После завершения работы сервера, если клиенту не удается закрыть в течение этого времени интервала, соединение будет разорвано. |
 | `SubProtocolSelector` | `null` | Делегат, который может использоваться для задания `Sec-WebSocket-Protocol` заголовок пользовательское значение. Делегат получает значения, запрошенной клиентом в качестве входных данных и должен возвращать необходимое значение. |
@@ -319,13 +319,13 @@ HubConnection hubConnection = HubConnectionBuilder.create("https://example.com/m
 | `WebSocketConfiguration` | `null` | Делегат, который может использоваться для настройки дополнительных параметров WebSocket. Получает экземпляр класса [ClientWebSocketOptions](/dotnet/api/system.net.websockets.clientwebsocketoptions) , можно использовать для настройки параметров. |
 
 # <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
-| Параметр JavaScript | Значение по умолчанию | Описание |
+| Параметр JavaScript | Значение по умолчанию | Описание: |
 | ----------------- | ------------- | ----------- |
 | `accessTokenFactory` | `null` | Функция, возвращающая строку, которая предоставляется как токен проверки подлинности носителя в HTTP-запросов. |
 | `skipNegotiation` | `false` | Задайте значение `true` пропустить шаг согласования. **Поддерживается только при передаче WebSockets только транспорта включена**. Этот параметр не может быть включен, при использовании служба Azure SignalR. |
 
 # <a name="javatabjava"></a>[Java](#tab/java)
-| Параметр Java | Значение по умолчанию | Описание: |
+| Параметр Java | Значение по умолчанию | Описание |
 | ----------- | ------------- | ----------- |
 | `withAccessTokenProvider` | `null` | Функция, возвращающая строку, которая предоставляется как токен проверки подлинности носителя в HTTP-запросов. |
 | `shouldSkipNegotiate` | `false` | Задайте значение `true` пропустить шаг согласования. **Поддерживается только при передаче WebSockets только транспорта включена**. Этот параметр не может быть включен, при использовании служба Azure SignalR. |

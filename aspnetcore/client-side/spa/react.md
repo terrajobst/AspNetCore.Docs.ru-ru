@@ -5,14 +5,14 @@ description: Сведения о начале работы с шаблоном �
 monikerRange: '>= aspnetcore-2.1'
 ms.author: scaddie
 ms.custom: mvc
-ms.date: 02/13/2019
+ms.date: 03/07/2019
 uid: spa/react
-ms.openlocfilehash: 3b2b2e67b5d577872bafefef5624a13ca1a22449
-ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
+ms.openlocfilehash: 7b07f696ae071531c88c9f8cf528fc6f0bf97b46
+ms.sourcegitcommit: 191d21c1e37b56f0df0187e795d9a56388bbf4c7
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56899181"
+ms.lasthandoff: 03/08/2019
+ms.locfileid: "57665565"
 ---
 # <a name="use-the-react-project-template-with-aspnet-core"></a>Использование шаблона проекта React с ASP.NET Core
 
@@ -105,3 +105,7 @@ npm install --save <package_name>
 
 > [!IMPORTANT]
 > «Отрисовки на стороне сервера» не является поддерживаемой функцией этого шаблона. Наша цель, с помощью этого шаблона — в соответствии с контролем четности с «создать, react-app». Таким образом сценарии и возможности, отсутствующие в проекте «Создание react-app» (например, SSR) не поддерживаются и оставить в качестве упражнения для пользователя.
+
+## <a name="additional-resources"></a>Дополнительные ресурсы
+
+* <xref:security/authentication/identity/spa>

@@ -4,14 +4,15 @@ author: guardrex
 description: Узнайте, как использовать соглашения поставщика модели маршрутов и приложений для управления маршрутизацией, обнаружением и обработкой страниц.
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
-ms.date: 02/27/2019
+ms.custom: mvc
+ms.date: 03/07/2019
 uid: razor-pages/razor-pages-conventions
-ms.openlocfilehash: 5cfcae5cffd5d9484ca64c3885b838ae0a2b4a0d
-ms.sourcegitcommit: 036d4b03fd86ca5bb378198e29ecf2704257f7b2
+ms.openlocfilehash: c160d93e22fc5b3511ba4e5539cce8576346898b
+ms.sourcegitcommit: 191d21c1e37b56f0df0187e795d9a56388bbf4c7
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57346519"
+ms.lasthandoff: 03/08/2019
+ms.locfileid: "57665553"
 ---
 # <a name="razor-pages-route-and-app-conventions-in-aspnet-core"></a>Соглашения для маршрутов и приложений Razor Pages в ASP.NET Core
 
@@ -299,4 +300,5 @@ public class SlugifyParameterTransformer : IOutboundParameterTransformer
 
 ## <a name="additional-resources"></a>Дополнительные ресурсы
 
-* [Соглашения об авторизации Razor Pages](xref:security/authorization/razor-pages-authorization)
+* <xref:security/authorization/razor-pages-authorization>
+* <xref:mvc/controllers/areas#areas-with-razor-pages>
