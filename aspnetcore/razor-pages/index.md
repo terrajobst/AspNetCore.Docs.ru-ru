@@ -167,7 +167,7 @@ Razor Pages — это новый аспект платформы MVC ASP.NET�
 
 [!code-cshtml[](index/sample/RazorPagesContacts/Pages/Index.cshtml?range=21)]
 
-[Вспомогательный тег привязки](xref:mvc/views/tag-helpers/builtin-th/anchor-tag-helper) использует атрибут `asp-route-{value}` для создания ссылки на страницу редактирования. Эта ссылка содержит данные о маршруте с идентификатором контактного лица. Например, `http://localhost:5000/Edit/1`.
+[Вспомогательный тег привязки](xref:mvc/views/tag-helpers/builtin-th/anchor-tag-helper) использует атрибут `asp-route-{value}` для создания ссылки на страницу редактирования. Эта ссылка содержит данные о маршруте с идентификатором контактного лица. Например, `http://localhost:5000/Edit/1`. Используйте атрибут `asp-area`, чтобы указать область. Для получения дополнительной информации см. <xref:mvc/controllers/areas>.
 
 Файл *Pages/Edit.cshtml*:
 
@@ -395,6 +395,14 @@ Pages работает со всеми функциями подсистемы �
 
 ::: moniker range=">= aspnetcore-2.1"
 
+Чтобы выполнить перенаправление на страницу в другой [области](xref:mvc/controllers/areas), укажите эту область:
+
+```csharp
+RedirectToPage("/Index", new { area = "Services" });
+```
+
+Для получения дополнительной информации см. <xref:mvc/controllers/areas>.
+
 ## <a name="viewdata-attribute"></a>Атрибут ViewData
 
 Данные могут передаваться на страницу с помощью атрибута [ViewDataAttribute](/dotnet/api/microsoft.aspnetcore.mvc.viewdataattribute). Свойства на контроллерах или моделях страниц Razor, отмеченные атрибутом `[ViewData]`, обладают своими собственными значениями, загружаемыми из [ViewDataDictionary](/dotnet/api/microsoft.aspnetcore.mvc.viewfeatures.viewdatadictionary).
@@ -541,6 +549,7 @@ services.AddMvc()
 
 * <xref:index>
 * <xref:mvc/views/razor>
+* <xref:mvc/controllers/areas>
 * <xref:tutorials/razor-pages/razor-pages-start>
 * <xref:security/authorization/razor-pages-authorization>
 * <xref:razor-pages/razor-pages-conventions>

@@ -120,7 +120,7 @@ uid: host-and-deploy/azure-apps/index
 
 ### <a name="install-the-preview-site-extension"></a>Установка расширения сайта предварительной версии
 
-Если у вас возникли проблемы при использовании расширения сайта предварительной версии, сообщите о них на [GitHub](https://github.com/aspnet/azureintegration/issues/new).
+Если у вас возникли проблемы при использовании расширения сайта предварительной версии, создайте запрос [aspnet/AspNetCore](https://github.com/aspnet/AspNetCore/issues).
 
 1. Перейдите в Службу приложений на портале Azure.
 1. Выберите веб-приложение.
