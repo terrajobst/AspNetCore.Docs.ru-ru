@@ -866,6 +866,7 @@ loggerFactory.AddAzureWebAppDiagnostics();
 * [Общие сведения об Application Insights](/azure/application-insights/app-insights-overview)
 * [Application Insights для ASP.NET Core](/azure/application-insights/app-insights-asp-net-core)
 * [Адаптеры ведения журналов в Application Insights](https://github.com/Microsoft/ApplicationInsights-dotnet-logging/blob/develop/README.md).
+* [Примеры реализации Application Insights ILogger](/azure/azure-monitor/app/ilogger)
 
 ::: moniker-end
 
