@@ -5,12 +5,12 @@ description: Описание страниц Razor Pages, созданных п�
 ms.author: riande
 ms.date: 12/4/2018
 uid: tutorials/razor-pages/page
-ms.openlocfilehash: ad87e3da72c3dd6adf8cf55d16da58fa47ed5542
-ms.sourcegitcommit: d75d8eb26c2cce19876c8d5b65ac8a4b21f625ef
+ms.openlocfilehash: 07ad142b369fab92589f63479533a769136a087b
+ms.sourcegitcommit: 036d4b03fd86ca5bb378198e29ecf2704257f7b2
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 02/19/2019
-ms.locfileid: "56410353"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57346454"
 ---
 # <a name="scaffolded-razor-pages-in-aspnet-core"></a>Сформированные страницы Razor Pages в ASP.NET Core
 
@@ -171,6 +171,11 @@ Visual Studio для Mac выделяет тег `<form method="post">` полу
 [Вспомогательная функция тега Label](xref:mvc/views/working-with-forms#the-label-tag-helper) (`<label asp-for="Movie.Title" class="control-label"></label>`) создает подпись к метке и атрибут `for` для свойства `Title`.
 
 [Вспомогательная функция тега Input](xref:mvc/views/working-with-forms) (`<input asp-for="Movie.Title" class="form-control" />`) использует атрибуты [DataAnnotations](/aspnet/mvc/overview/older-versions/mvc-music-store/mvc-music-store-part-6) и создает HTML-атрибуты, необходимые для проверки jQuery на стороне клиента.
+
+## <a name="additional-resources"></a>Дополнительные ресурсы
+
+* [Версия руководства на YouTube](https://youtu.be/zxgKjPYnOMM)
+
 
 > [!div class="step-by-step"]
 > [Предыдущая статья. Добавление метода](xref:tutorials/razor-pages/model)

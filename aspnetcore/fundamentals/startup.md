@@ -7,12 +7,12 @@ ms.author: tdykstra
 ms.custom: mvc
 ms.date: 01/17/2019
 uid: fundamentals/startup
-ms.openlocfilehash: cfd0a57d5d0b60862b017a170b6d5cbddf56f15a
-ms.sourcegitcommit: b3894b65e313570e97a2ab78b8addd22f427cac8
+ms.openlocfilehash: d629c2f02f9021454d8f8539018f3e2ca4703a00
+ms.sourcegitcommit: 036d4b03fd86ca5bb378198e29ecf2704257f7b2
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56744187"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57346402"
 ---
 # <a name="app-startup-in-aspnet-core"></a>Запуск приложения в ASP.NET Core
 
@@ -40,7 +40,7 @@ ms.locfileid: "56744187"
 Типичным применением [внедрения зависимостей](xref:fundamentals/dependency-injection) в класс `Startup` является внедрение:
 
 * <xref:Microsoft.AspNetCore.Hosting.IHostingEnvironment> для настройки служб средой;
-* <xref:Microsoft.Extensions.Configuration.IConfigurationBuilder> для чтения конфигурации;
+* <xref:Microsoft.Extensions.Configuration.IConfiguration> для чтения конфигурации;
 * <xref:Microsoft.Extensions.Logging.ILoggerFactory> для создания средства ведения журнала в `Startup.ConfigureServices`.
 
 [!code-csharp[](startup/sample_snapshot/Startup2.cs?highlight=7-8)]
@@ -73,7 +73,7 @@ ms.locfileid: "56744187"
 
 [Шаблоны ASP.NET Core](/dotnet/core/tools/dotnet-new) настраивают конвейер с поддержкой следующих компонентов и функций:
 
-* [страниц исключений для разработчика](xref:fundamentals/error-handling#the-developer-exception-page);
+* [Страница со сведениями об исключении для разработчика](xref:fundamentals/error-handling#developer-exception-page)
 * [обработчиков исключений](xref:fundamentals/error-handling#configure-a-custom-exception-handling-page);
 * [HTTP Strict Transport Security (HSTS)](xref:security/enforcing-ssl#http-strict-transport-security-protocol-hsts)
 * [перенаправления HTTPS](xref:security/enforcing-ssl);

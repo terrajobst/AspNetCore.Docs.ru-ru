@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 12/5/2018
 uid: tutorials/razor-pages/validation
-ms.openlocfilehash: 93303b76561a8a800432ee707997f240f15e29c7
-ms.sourcegitcommit: d75d8eb26c2cce19876c8d5b65ac8a4b21f625ef
+ms.openlocfilehash: 961b41a63a5dd066a51468239bd855b7f723a3ae
+ms.sourcegitcommit: 036d4b03fd86ca5bb378198e29ecf2704257f7b2
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 02/19/2019
-ms.locfileid: "56410460"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57346050"
 ---
 # <a name="add-validation-to-an-aspnet-core-razor-page"></a>Добавление проверки на страницу Razor в ASP.NET Core
 
@@ -149,6 +149,7 @@ public DateTime ReleaseDate { get; set; }
 * <xref:fundamentals/localization>
 * <xref:mvc/views/tag-helpers/intro>
 * <xref:mvc/views/tag-helpers/authoring>
+* [Версия руководства на YouTube](https://youtu.be/b63m66eu7us)
 
 > [!div class="step-by-step"]
 > [Предыдущая статья. Добавление нового поля](xref:tutorials/razor-pages/new-field)

@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 12/07/2018
 uid: data/ef-rp/concurrency
-ms.openlocfilehash: 71d68a7ee249c31efa78d98247017e85c009ed8b
-ms.sourcegitcommit: e1cc4c1ef6c9e07918a609d5ad7fadcb6abe3e12
+ms.openlocfilehash: a6c264e460855c9f1d6f5a363eb7ee2cf69619ee
+ms.sourcegitcommit: 036d4b03fd86ca5bb378198e29ecf2704257f7b2
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "53997322"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57346298"
 ---
 # <a name="razor-pages-with-ef-core-in-aspnet-core---concurrency---8-of-8"></a>Razor Pages с EF Core в ASP.NET Core — параллелизм — 8 из 8
 
@@ -306,6 +306,9 @@ dotnet ef database update
 
 * [Токены параллелизма в EF Core](/ef/core/modeling/concurrency)
 * [Обработка параллелизма в EF Core](/ef/core/saving/concurrency)
+* [Версия руководства на YouTube (обработка конфликтов параллелизма)](https://youtu.be/EosxHTFgYps)
+* [Версия руководства на YouTube (часть 2)](https://www.youtube.com/watch?v=kcxERLnaGO0)
+* [Версия руководства на YouTube (часть 3)](https://www.youtube.com/watch?v=d4RbpfvELRs)
 
 > [!div class="step-by-step"]
 > [Назад](xref:data/ef-rp/update-related-data)

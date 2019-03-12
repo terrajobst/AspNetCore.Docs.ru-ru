@@ -4,14 +4,14 @@ author: guardrex
 description: Сведения об обнаружении активных и неактивных модулей IIS для приложения ASP.NET Core и управлении модулями IIS.
 ms.author: riande
 ms.custom: mvc
-ms.date: 01/17/2019
+ms.date: 02/28/2019
 uid: host-and-deploy/iis/modules
-ms.openlocfilehash: 8c32a668b3945f0da0194162e19e965b4aed3934
-ms.sourcegitcommit: 184ba5b44d1c393076015510ac842b77bc9d4d93
+ms.openlocfilehash: e5bb1a86453bb945789cc1f4b56616551e316615
+ms.sourcegitcommit: 6ddd8a7675c1c1d997c8ab2d4498538e44954cac
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/18/2019
-ms.locfileid: "54396276"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57400688"
 ---
 # <a name="iis-modules-with-aspnet-core"></a>Модули IIS с ASP.NET Core
 
@@ -36,11 +36,12 @@ ms.locfileid: "54396276"
 | **Дайджест-проверка подлинности**<br>`DigestAuthenticationModule`                                        | Да | |
 | **Просмотр каталогов**<br>`DirectoryListingModule`                                               | Нет  | [ПО промежуточного слоя для просмотра каталогов](xref:fundamentals/static-files#enable-directory-browsing) |
 | **Динамическое сжатие**<br>`DynamicCompressionModule`                                            | Да | [ПО промежуточного слоя для сжатия ответов](xref:performance/response-compression) |
-| **Трассировка**<br>`FailedRequestsTracingModule`                                                     | Да | [Ведение журналов ASP.NET Core](xref:fundamentals/logging/index#tracesource-provider) |
+| **Трассировка неудачно завершенных запросов**<br>`FailedRequestsTracingModule`                                     | Да | [Ведение журналов ASP.NET Core](xref:fundamentals/logging/index#tracesource-provider) |
 | **Кэширование файлов**<br>`FileCacheModule`                                                            | Нет  | [ПО промежуточного слоя для кэширования ответов](xref:performance/caching/middleware) |
 | **Кэширование HTTP**<br>`HttpCacheModule`                                                            | Нет  | [ПО промежуточного слоя для кэширования ответов](xref:performance/caching/middleware) |
 | **Ведение журнала HTTP**<br>`HttpLoggingModule`                                                          | Да | [Ведение журналов ASP.NET Core](xref:fundamentals/logging/index) |
 | **Перенаправление HTTP**<br>`HttpRedirectionModule`                                                  | Да | [ПО промежуточного слоя для переопределения URL-адресов](xref:fundamentals/url-rewriting) |
+| **Трассировка HTTP**<br>`TracingModule`                                                              | Да | |
 | **Аутентификация IIS с сопоставлением сертификата клиента**<br>`IISCertificateMappingAuthenticationModule` | Да | |
 | **Ограничения IP-адресов и доменов**<br>`IpRestrictionModule`                                          | Да | |
 | **Фильтры ISAPI**<br>`IsapiFilterModule`                                                         | Да | [ПО промежуточного слоя](xref:fundamentals/middleware/index) |

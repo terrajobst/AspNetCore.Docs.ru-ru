@@ -4,18 +4,18 @@ author: rick-anderson
 description: Сведения о встроенных вспомогательных функциях тегов, используемых в формах.
 ms.author: riande
 ms.custom: mvc
-ms.date: 1/11/2019
+ms.date: 02/27/2019
 uid: mvc/views/working-with-forms
-ms.openlocfilehash: cd15c641fbf702071bd57510a1d51737f6ab8e19
-ms.sourcegitcommit: 97d7a00bd39c83a8f6bccb9daa44130a509f75ce
+ms.openlocfilehash: a0fbeac51bd1bfbc50c4d369a479ce5f3091358b
+ms.sourcegitcommit: 036d4b03fd86ca5bb378198e29ecf2704257f7b2
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54099017"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57346259"
 ---
 # <a name="tag-helpers-in-forms-in-aspnet-core"></a>Вспомогательные функции тегов в формах в ASP.NET Core
 
-Авторы: [Рик Андерсон](https://twitter.com/RickAndMSFT) (Rick Anderson), [Дейв Пакетт](https://twitter.com/Dave_Paquette) (Dave Paquette) и [Джерри Пельсер](https://github.com/jerriep) (Jerrie Pelser)
+Авторы: [Рик Андерсон (Rick Anderson)](https://twitter.com/RickAndMSFT), [Н. Тейлор Маллен (N. Taylor Mullen)](https://github.com/NTaylorMullen), [Дейв Пакетт (Dave Paquette)](https://twitter.com/Dave_Paquette) и [Джерри Пелсер (Jerrie Pelser)](https://github.com/jerriep)
 
 В этом документе приводятся сведения о работе с формами и элементами HTML, часто используемыми в формах. Элемент HTML [форма](https://www.w3.org/TR/html401/interact/forms.html) предоставляет основной механизм, используемый веб-приложениями для отправки данных на сервер. В большей части этого документа описываются [вспомогательные функции тегов](tag-helpers/intro.md) и их применение для создания надежных форм HTML. Перед прочтением этого документа рекомендуется изучить статью [Общие сведения о вспомогательных функциях тегов](tag-helpers/intro.md).
 
@@ -66,6 +66,98 @@ ms.locfileid: "54099017"
 
 >[!NOTE]
 >При использовании встроенных шаблонов `returnUrl` заполняется автоматически только в случае, если вы пытаетесь получить доступ к авторизованному ресурсу, но не прошли проверку подлинности или авторизацию. При попытке несанкционированного доступа ПО безопасности промежуточного слоя перенаправит вас на страницу входа с заданным `returnUrl`.
+
+## <a name="the-form-action-tag-helper"></a>Вспомогательная функция тега действий формы
+
+Вспомогательная функция тега действий формы создает атрибут `formaction` в созданном теге `<button ...>` или `<input type="image" ...>`. Атрибут `formaction` определяет, куда форма отправляет свои данные. Он выполняет привязку к элементам [\<input>](https://www.w3.org/wiki/HTML/Elements/input) типа `image` и элементам [\<button>](https://www.w3.org/wiki/HTML/Elements/button). Вспомогательная функция тега действий формы позволяет использовать несколько атрибутов `asp-` [AnchorTagHelper](xref:mvc/views/tag-helpers/builtin-th/anchor-tag-helper) для управления выходными данными ссылки `formaction` для соответствующего элемента.
+
+Ниже перечислены поддерживаемые атрибуты [AnchorTagHelper](xref:mvc/views/tag-helpers/builtin-th/anchor-tag-helper) для управления значением `formaction`.
+
+|Атрибут|Описание|
+|---|---|
+|[asp-controller](xref:mvc/views/tag-helpers/builtin-th/anchor-tag-helper#asp-controller)|Имя контроллера.|
+|[asp-action](xref:mvc/views/tag-helpers/builtin-th/anchor-tag-helper#asp-action)|Имя метода действия.|
+|[asp-area](xref:mvc/views/tag-helpers/builtin-th/anchor-tag-helper#asp-area)|Имя области.|
+|[asp-page](xref:mvc/views/tag-helpers/builtin-th/anchor-tag-helper#asp-page)|Имя страницы с кодом Razor.|
+|[asp-page-handler](xref:mvc/views/tag-helpers/builtin-th/anchor-tag-helper#asp-page-handler)|Имя обработчика страницы с кодом Razor.|
+|[asp-route](xref:mvc/views/tag-helpers/builtin-th/anchor-tag-helper#asp-route)|Имя маршрута.|
+|[asp-route-{value}](xref:mvc/views/tag-helpers/builtin-th/anchor-tag-helper#asp-route-value)|Одно значение URL-адреса маршрута. Например, `asp-route-id="1234"`.|
+|[asp-all-route-data](xref:mvc/views/tag-helpers/builtin-th/anchor-tag-helper#asp-all-route-data)|Все значения маршрута.|
+|[asp-fragment](xref:mvc/views/tag-helpers/builtin-th/anchor-tag-helper#asp-fragment)|Фрагмент URL-адреса.|
+
+### <a name="submit-to-controller-example"></a>Отправка формы в пример контроллера
+
+Следующая разметка отправляет форму в действие `Index`, выполняемое `HomeController`, если выбран ввод или кнопка.
+
+```cshtml
+<form method="post">
+    <button asp-controller="Home" asp-action="Index">Click Me</button>
+    <input type="image" src="..." alt="Or Click Me" asp-controller="Home" 
+                                asp-action="Index" />
+</form>
+```
+
+Предыдущая разметка создает следующий код HTML.
+
+```html
+<form method="post">
+    <button formaction="/Home">Click Me</button>
+    <input type="image" src="..." alt="Or Click Me" formaction="/Home" />
+</form>
+```
+
+### <a name="submit-to-page-example"></a>Отправка формы в пример страницы
+
+Следующая разметка отправляет форму в страницу Razor `About`.
+
+```cshtml
+<form method="post">
+    <button asp-page="About">Click Me</button>
+    <input type="image" src="..." alt="Or Click Me" asp-page="About" />
+</form>
+```
+
+Предыдущая разметка создает следующий код HTML.
+
+```html
+<form method="post">
+    <button formaction="/About">Click Me</button>
+    <input type="image" src="..." alt="Or Click Me" formaction="/About" />
+</form>
+```
+
+### <a name="submit-to-route-example"></a>Отправка формы в пример маршрута
+
+Рассмотрим конечную точку `/Home/Test`.
+
+```csharp
+public class HomeController : Controller
+{
+    [Route("/Home/Test", Name = "Custom")]
+    public string Test()
+    {
+        return "This is the test page";
+    }
+}
+```
+
+Следующая разметка отправляет форму в конечную точку `/Home/Test`.
+
+```cshtml
+<form method="post">
+    <button asp-route="Custom">Click Me</button>
+    <input type="image" src="..." alt="Or Click Me" asp-route="Custom" />
+</form>
+```
+
+Предыдущая разметка создает следующий код HTML.
+
+```html
+<form method="post">
+    <button formaction="/Home/Test">Click Me</button>
+    <input type="image" src="..." alt="Or Click Me" formaction="/Home/Test" />
+</form>
+```
 
 ## <a name="the-input-tag-helper"></a>Вспомогательная функция тега входных данных
 

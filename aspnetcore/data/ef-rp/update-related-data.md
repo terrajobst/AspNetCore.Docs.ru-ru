@@ -5,12 +5,12 @@ description: В этом руководстве описано обновлен�
 ms.author: riande
 ms.date: 11/15/2017
 uid: data/ef-rp/update-related-data
-ms.openlocfilehash: 4306118240c052585a5c2eeb2053ce03534b547c
-ms.sourcegitcommit: 375e9a67f5e1f7b0faaa056b4b46294cc70f55b7
+ms.openlocfilehash: c3dbfe57a832ba63c5da2f89c0d29e443a1277a7
+ms.sourcegitcommit: 036d4b03fd86ca5bb378198e29ecf2704257f7b2
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50207547"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57345766"
 ---
 # <a name="razor-pages-with-ef-core-in-aspnet-core---update-related-data---7-of-8"></a>Razor Pages с EF Core в ASP.NET Core — обновление связанных данных — 7 из 8
 
@@ -224,6 +224,11 @@ ms.locfileid: "50207547"
 * Использует упреждающую загрузку для свойства навигации `CourseAssignments`. Требуется включить `CourseAssignments`, иначе они не будут удалены при удалении преподавателя. Чтобы избежать необходимости считывать их, настройте каскадное удаление в базе данных.
 
 * Если преподаватель, которого требуется удалить, назначен в качестве администратора любой из кафедр, удаляется назначение преподавателя из таких кафедр.
+
+## <a name="additional-resources"></a>Дополнительные ресурсы
+
+* [Версия руководства на YouTube (часть 1)](https://www.youtube.com/watch?v=Csh6gkmwc9E)
+* [Версия руководства на YouTube (часть 2)](https://www.youtube.com/watch?v=mOAankB_Zgc)
 
 > [!div class="step-by-step"]
 > [Назад](xref:data/ef-rp/read-related-data)

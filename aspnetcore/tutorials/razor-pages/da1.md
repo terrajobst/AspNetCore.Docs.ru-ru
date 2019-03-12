@@ -5,12 +5,12 @@ description: Сведения об изменении созданных стр�
 ms.author: riande
 ms.date: 12/20/2018
 uid: tutorials/razor-pages/da1
-ms.openlocfilehash: 62385f33dc86609726305728fbc19dd9ff27dc87
-ms.sourcegitcommit: d75d8eb26c2cce19876c8d5b65ac8a4b21f625ef
+ms.openlocfilehash: 19f54e04e748f5cf0469c2b5428800694d2c9344
+ms.sourcegitcommit: 036d4b03fd86ca5bb378198e29ecf2704257f7b2
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 02/19/2019
-ms.locfileid: "56410198"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57346110"
 ---
 # <a name="update-the-generated-pages-in-an-aspnet-core-app"></a>Изменение созданных страниц в приложении ASP.NET Core
 
@@ -130,6 +130,10 @@ ms.locfileid: "56410198"
 Методы HTTP GET на страницах Razor Index, Create и Delete работают аналогично. Метод HTTP POST `OnPostAsync` на странице Razor Create работает аналогично методу `OnPostAsync` на странице Razor Edit.
 
 В следующем учебнике будет добавлена функция поиска.
+
+## <a name="additional-resources"></a>Дополнительные ресурсы
+
+* [Версия руководства на YouTube](https://youtu.be/yLnnleREMtQ)
 
 > [!div class="step-by-step"]
 > [Предыдущая статья. Работа с базой данных](xref:tutorials/razor-pages/sql)
