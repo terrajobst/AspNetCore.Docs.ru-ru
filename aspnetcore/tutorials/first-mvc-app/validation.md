@@ -5,12 +5,12 @@ description: Практическое руководство. Добавлени
 ms.author: riande
 ms.date: 04/13/2017
 uid: tutorials/first-mvc-app/validation
-ms.openlocfilehash: 431715e7c584d3ee381cbafb42171a7c01dddb3a
-ms.sourcegitcommit: 4e87712029de2aceb1cf2c52e9e3dda8195a5b8e
+ms.openlocfilehash: 49db8d7c1d3e54f416c66685c19b3a2e3b14251c
+ms.sourcegitcommit: 191d21c1e37b56f0df0187e795d9a56388bbf4c7
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53382060"
+ms.lasthandoff: 03/08/2019
+ms.locfileid: "57665448"
 ---
 # <a name="add-validation-to-an-aspnet-core-mvc-app"></a>Добавление проверки в приложение MVC ASP.NET Core
 
@@ -59,7 +59,7 @@ ms.locfileid: "53382060"
 
 Серьезное преимущество заключается в том, что для реализации этого пользовательского интерфейса проверки не требуется изменять код в классе `MoviesController` или представлении *Create.cshtml*. В контроллере и представлениях, создаваемых в рамках этого руководства, автоматически применяются правила проверки, для определения которых к свойствам класса модели `Movie` были применены атрибуты. При проверке с использованием метода действия `Edit` применяются те же правила.
 
-Данные формы передаются на сервер только после того, как будут устранены все ошибки проверки на стороне клиента. Чтобы проверить это, установите точку останова в методе `HTTP Post` с помощью [инструмента Fiddler](http://www.telerik.com/fiddler) или [средств разработчика F12](https://developer.microsoft.com/microsoft-edge/platform/documentation/f12-devtools-guide/).
+Данные формы передаются на сервер только после того, как будут устранены все ошибки проверки на стороне клиента. Чтобы проверить это, установите точку останова в методе `HTTP Post` с помощью [инструмента Fiddler](http://www.telerik.com/fiddler) или [средств разработчика F12](/microsoft-edge/devtools-guide).
 
 ## <a name="how-validation-works"></a>Принципы работы проверки
 
