@@ -2,23 +2,23 @@
 title: Использование начальных сборок размещения в ASP.NET Core
 author: guardrex
 description: Узнайте, как улучшить приложение ASP.NET Core из внешней сборки, используя реализацию IHostingStartup.
-monikerRange: '>= aspnetcore-2.0'
+monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc, seodec18
-ms.date: 02/14/2019
+ms.date: 03/10/2019
 uid: fundamentals/configuration/platform-specific-configuration
-ms.openlocfilehash: cffad201c84414ee4788877d80d3619a9013ae99
-ms.sourcegitcommit: d75d8eb26c2cce19876c8d5b65ac8a4b21f625ef
+ms.openlocfilehash: 6111ae77369608e828eebf6229b5702630bc63f8
+ms.sourcegitcommit: 34bf9fc6ea814c039401fca174642f0acb14be3c
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 02/19/2019
-ms.locfileid: "56410499"
+ms.lasthandoff: 03/14/2019
+ms.locfileid: "57841466"
 ---
 # <a name="use-hosting-startup-assemblies-in-aspnet-core"></a>Использование начальных сборок размещения в ASP.NET Core
 
 Авторы [Люк Латэм](https://github.com/guardrex) (Luke Latham) и [Павел Крымец](https://github.com/pakrym) (Pavel Krymets)
 
-Реализация [IHostingStartup](/dotnet/api/microsoft.aspnetcore.hosting.ihostingstartup) (размещение при запуске) позволяет добавлять в приложение улучшения из внешней сборки при запуске. Например, внешняя библиотека может использовать реализацию размещения при запуске, чтобы доставить дополнительные поставщики конфигурации или службы для приложения. `IHostingStartup` *доступен в ASP.NET Core 2.0 или в более поздних версиях.*
+Реализация [IHostingStartup](/dotnet/api/microsoft.aspnetcore.hosting.ihostingstartup) (размещение при запуске) позволяет добавлять в приложение улучшения из внешней сборки при запуске. Например, внешняя библиотека может использовать реализацию размещения при запуске, чтобы доставить дополнительные поставщики конфигурации или службы для приложения.
 
 [Просмотреть или скачать образец кода](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/host/platform-specific-configuration/samples/) ([как скачивать](xref:index#how-to-download-a-sample))
 
@@ -40,8 +40,6 @@ ms.locfileid: "56410499"
 
 ## <a name="disable-automatic-loading-of-hosting-startup-assemblies"></a>Отключение автоматической загрузки начальных сборок размещения
 
-::: moniker range=">= aspnetcore-2.1"
-
 Чтобы отключить автоматическую загрузку начальных сборок размещения, используйте один из следующих подходов:
 
 * Чтобы предотвратить загрузку всех начальных сборок размещения, установите значение `true` или `1` для одного из следующих параметров:
@@ -50,17 +48,6 @@ ms.locfileid: "56410499"
 * Чтобы предотвратить загрузку конкретных сборок размещения, установите строку, содержащую разделенный точками с запятой список сборок размещения, которые необходимо исключить при запуске, в качестве значения одного из следующих параметров:
   * Параметр конфигурации узла [Исключаемые сборки размещения при запуске](xref:fundamentals/host/web-host#hosting-startup-exclude-assemblies).
   * Переменная среды `ASPNETCORE_HOSTINGSTARTUPEXCLUDEASSEMBLIES`.
-
-::: moniker-end
-
-::: moniker range="= aspnetcore-2.0"
-
-Чтобы отключить автоматическую загрузку начальных сборок размещения, установите значение `true` или `1` для одной из следующих переменных:
-
-* Параметр конфигурации узла [Запретить размещение при запуске](xref:fundamentals/host/web-host#prevent-hosting-startup).
-* Переменная среды `ASPNETCORE_PREVENTHOSTINGSTARTUP`.
-
-::: moniker-end
 
 Если заданы параметры конфигурации узла и переменная среды, на поведение влияют параметры узла.
 

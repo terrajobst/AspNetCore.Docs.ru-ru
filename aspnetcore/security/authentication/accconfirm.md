@@ -3,14 +3,14 @@ title: Подтверждение учетной записи и восстан�
 author: rick-anderson
 description: Сведения о создании приложения ASP.NET Core с помощью по электронной почте подтверждение и сброс пароля.
 ms.author: riande
-ms.date: 2/11/2019
+ms.date: 3/11/2019
 uid: security/authentication/accconfirm
-ms.openlocfilehash: 77d7b209d57f9ee44f158798ff780ce85c87aaf2
-ms.sourcegitcommit: af8a6eb5375ef547a52ffae22465e265837aa82b
+ms.openlocfilehash: 05efb75d26558702c88e87d191a780371034282c
+ms.sourcegitcommit: 34bf9fc6ea814c039401fca174642f0acb14be3c
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56159412"
+ms.lasthandoff: 03/14/2019
+ms.locfileid: "57841479"
 ---
 # <a name="account-confirmation-and-password-recovery-in-aspnet-core"></a>Подтверждение учетной записи и восстановление пароля в ASP.NET Core
 
@@ -22,7 +22,7 @@ ms.locfileid: "56159412"
 
 ::: moniker range=">= aspnetcore-2.1"
 
-Авторы: [Рик Андерсон](https://twitter.com/RickAndMSFT) (Rick Anderson) и [Джо Одетт](https://twitter.com/joeaudette) (Joe Audette)
+По [Рик Андерсон](https://twitter.com/RickAndMSFT), [Ponant](https://github.com/Ponant), и [Joe Audette](https://twitter.com/joeaudette)
 
 Этом руководстве описывается создание приложения ASP.NET Core с помощью по электронной почте подтверждение и сброс пароля. Это руководство представляет собой **не** начало раздела. Вы должны быть знакомы с:
 
@@ -34,45 +34,23 @@ ms.locfileid: "56159412"
 
 ## <a name="prerequisites"></a>Предварительные требования
 
-[!INCLUDE [](~/includes/2.1-SDK.md)]
+[Пакет SDK для .NET core 2.2 или более поздней версии](https://www.microsoft.com/net/download/all)
 
 ## <a name="create-a-web--app-and-scaffold-identity"></a>Создание веб-приложения и сформировать шаблон удостоверений
 
-# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio) 
-
-* В Visual Studio создайте новое **веб-приложение** проект с именем **WebPWrecover**.
-* Выберите **ASP.NET Core 2.1**.
-* Сохраните значение по умолчанию **проверки подлинности** присвоено **без проверки подлинности**. На следующем шаге добавляется проверки подлинности.
-
-На следующем шаге:
-
-* Задайте страницу макета *~/Pages/Shared/_Layout.cshtml*
-* Выберите *учетной записи: регистрация*
-* Создайте новый **класс контекста данных**
-
-# <a name="net-core-clitabnetcore-cli"></a>[Интерфейс командной строки .NET Core](#tab/netcore-cli)
+Выполните следующие команды для создания веб-приложения с помощью проверки подлинности.
 
 ```console
-dotnet new webapp -o WebPWrecover
+dotnet new webapp -au Individual -uld -o WebPWrecover
 cd WebPWrecover
-dotnet tool install -g dotnet-aspnet-codegenerator
 dotnet add package Microsoft.VisualStudio.Web.CodeGeneration.Design
 dotnet restore
-dotnet aspnet-codegenerator identity -fi Account.Register -dc WebPWrecover.Models.WebPWrecoverContext
-dotnet ef migrations add CreateIdentitySchema
+dotnet aspnet-codegenerator identity -dc WebPWrecover.Data.ApplicationDbContext --files "Account.Register;Account.Login;Account.Logout;Account.ConfirmEmail
 dotnet ef database drop -f
 dotnet ef database update
-dotnet build
+dotnet run
+
 ```
-
-Запустите `dotnet aspnet-codegenerator identity --help` для получения справки о средстве формирования шаблонов.
-
-------
-
-Следуйте инструкциям в [включить проверку подлинности](xref:security/authentication/scaffold-identity#useauthentication):
-
-* Добавление `app.UseAuthentication();` для `Startup.Configure`
-* Добавление `<partial name="_LoginPartial" />` с файлами макетов.
 
 ## <a name="test-new-user-registration"></a>Регистрация нового пользователя для тестирования
 
@@ -91,9 +69,9 @@ dotnet build
 
 Обычно требуется запретить новым пользователям из учета данных для веб-сайт, прежде чем они получат подтвержден по электронной почте.
 
-Обновление *Areas/Identity/IdentityHostingStartup.cs* требуется подтвержден по электронной почте:
+Обновление `Startup.ConfigureServices` требуется подтвержден по электронной почте:
 
-[!code-csharp[](accconfirm/sample/WebPWrecover21/Areas/Identity/IdentityHostingStartup.cs?name=snippet1&highlight=10-13)]
+[!code-csharp[](accconfirm/sample/WebPWrecover22/Startup.cs?name=snippet1&highlight=8-11)]
 
 `config.SignIn.RequireConfirmedEmail = true;` запрещает вход до подтверждения их по электронной почте зарегистрированным пользователям.
 
@@ -103,13 +81,9 @@ dotnet build
 
 Создание класса для извлечения ключа защиты электронной почты. Для этого примера создайте *Services/AuthMessageSenderOptions.cs*:
 
-[!code-csharp[](accconfirm/sample/WebPWrecover21/Services/AuthMessageSenderOptions.cs?name=snippet1)]
+[!code-csharp[](accconfirm/sample/WebPWrecover22/Services/AuthMessageSenderOptions.cs?name=snippet1)]
 
 #### <a name="configure-sendgrid-user-secrets"></a>Настройка SendGrid секреты пользователя
-
-Добавьте уникальный `<UserSecretsId>` значение `<PropertyGroup>` элемент файла проекта:
-
-[!code-xml[](accconfirm/sample/WebPWrecover21/WebPWrecover.csproj?highlight=5)]
 
 Задайте `SendGridUser` и `SendGridKey` с [средство secret manager](xref:security/app-secrets). Пример:
 
@@ -120,7 +94,7 @@ info: Successfully saved SendGridUser = RickAndMSFT to the secret store.
 
 На Windows, Secret Manager хранит пары ключей и значений в *secrets.json* файл `%APPDATA%/Microsoft/UserSecrets/<WebAppName-userSecretsId>` каталог.
 
-Содержание *secrets.json* файл не зашифрован. *Secrets.json* ниже приведен файл ( `SendGridKey` значение удаляется.)
+Содержание *secrets.json* файл не зашифрован. Следующая разметка показывает *secrets.json* файла. `SendGridKey` Значение удаляется.
 
  ```json
   {
@@ -137,7 +111,7 @@ info: Successfully saved SendGridUser = RickAndMSFT to the secret store.
 
 Установить `SendGrid` пакет NuGet:
 
-# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio) 
+# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 В консоли диспетчера пакетов введите следующую команду:
 
@@ -160,7 +134,7 @@ dotnet add package SendGrid
 
 Для реализации `IEmailSender`, создание *Services/EmailSender.cs* с кодом, аналогичную следующей:
 
-[!code-csharp[](accconfirm/sample/WebPWrecover21/Services/EmailSender.cs)]
+[!code-csharp[](accconfirm/sample/WebPWrecover22/Services/EmailSender.cs)]
 
 ### <a name="configure-startup-to-support-email"></a>Настройка запуска для поддержки по электронной почте
 
@@ -169,13 +143,13 @@ dotnet add package SendGrid
 * Добавление `EmailSender` как временной ошибкой службы.
 * Зарегистрировать `AuthMessageSenderOptions` конфигурации экземпляра.
 
-[!code-csharp[](accconfirm/sample/WebPWrecover21/Startup.cs?name=snippet2&highlight=12-99)]
+[!code-csharp[](accconfirm/sample/WebPWrecover22/Startup.cs?name=snippet1&highlight=15-99)]
 
 ## <a name="enable-account-confirmation-and-password-recovery"></a>Включить учетную запись, пароль и Подтверждение восстановления
 
 Шаблон содержит код для восстановления и подтверждение пароля учетной записи. Найти `OnPostAsync` метод в *Areas/Identity/Pages/Account/Register.cshtml.cs*.
 
-Запретить пользователям только что зарегистрированное автоматически входит в систему, закомментируйте следующую строку:
+Запретить новым зарегистрированным пользователям, чтобы автоматически входить, закомментируйте следующую строку:
 
 ```csharp
 await _signInManager.SignInAsync(user, isPersistent: false);
@@ -183,16 +157,13 @@ await _signInManager.SignInAsync(user, isPersistent: false);
 
 С помощью измененные строки выделены показан полный метод:
 
-[!code-csharp[](accconfirm/sample/WebPWrecover21/Areas/Identity/Pages/Account/Register.cshtml.cs?highlight=22&name=snippet_Register)]
+[!code-csharp[](accconfirm/sample/WebPWrecover22/Areas/Identity/Pages/Account/Register.cshtml.cs?highlight=22&name=snippet_Register)]
 
 ## <a name="register-confirm-email-and-reset-password"></a>Регистрация, подтверждение электронной почты и сброс пароля
 
 Запустите веб-приложение и протестируйте подтверждение учетной записи и процесс восстановления пароля.
 
 * Запустите приложение и зарегистрируйте нового пользователя
-
-  ![Веб-приложения, зарегистрируйте учетную запись-представление](accconfirm/_static/loginaccconfirm1.png)
-
 * Проверьте свой адрес электронной почты для ссылку для подтверждения учетной записи. См. в разделе [отладки электронной почты](#debug) Если вы не получили сообщение электронной почты.
 * Щелкните ссылку, чтобы подтвердить свой адрес электронной почты.
 * Войдите, используя свой адрес электронной почты и пароль.
@@ -202,21 +173,46 @@ await _signInManager.SignInAsync(user, isPersistent: false);
 
 Выберите свое имя пользователя в браузере: ![окно браузера с именем пользователя](accconfirm/_static/un.png)
 
-Может потребоваться развернуть панель навигации, чтобы увидеть имя пользователя.
-
-![панель переходов](accconfirm/_static/x.png)
-
 Управление страница отображается с **профиль** выделенной вкладки. **Электронной почты** показано типа "флажок", указывающее, адрес электронной почты будет подтверждена.
 
 ### <a name="test-password-reset"></a>Сброс пароля теста
 
-* Если вы выполнили вход в, выберите **выхода**.
+* Если вы уже вошли в, выберите **выхода**.
 * Выберите **вход** ссылку и выберите **забыли пароль?** ссылку.
 * Введите адрес электронной почты, которая использовалась для регистрации учетной записи.
 * Отправляется сообщение электронной почты со ссылкой для сброса пароля. Проверьте свой адрес электронной почты и щелкните ссылку, чтобы сбросить пароль. После успешного сброса пароля вы можете войти с использованием электронной почты и новый пароль.
 
-<a name="debug"></a>
+## <a name="change-email-and-activity-timeout"></a>Изменить время ожидания сообщения электронной почты и действия
 
+Время ожидания бездействия по умолчанию — 14 дней. Следующий код задает время ожидания в бездействии до 5 дней:
+
+[!code-csharp[](accconfirm/sample/WebPWrecover22/StartupAppCookie.cs?name=snippet1)]
+
+### <a name="change-all-data-protection-token-lifespans"></a>Изменить все самозаверяющиеся маркеров защиты данных
+
+Следующий код изменяет все ожидания маркеры защиты данных на 3 часа:
+
+[!code-csharp[](accconfirm/sample/WebPWrecover22/StartupAllTokens.cs?name=snippet1&highlight=15-16)]
+
+Встроенные в маркерах удостоверения пользователя (см. в разделе [AspNetCore/src/Identity/Extensions.Core/src/TokenOptions.cs](https://github.com/aspnet/AspNetCore/blob/v2.2.2/src/Identity/Extensions.Core/src/TokenOptions.cs) ) имеют [одного дня время ожидания](https://github.com/aspnet/AspNetCore/blob/v2.2.2/src/Identity/Core/src/DataProtectionTokenProviderOptions.cs).
+
+### <a name="change-the-email-token-lifespan"></a>Изменить время существования токена электронной почты
+
+По умолчанию время существования токена доступа из [маркеров идентификации пользователя](https://github.com/aspnet/AspNetCore/blob/v2.2.2/src/Identity/Extensions.Core/src/TokenOptions.cs) — [один день](https://github.com/aspnet/AspNetCore/blob/v2.2.2/src/Identity/Core/src/DataProtectionTokenProviderOptions.cs). В этом разделе показано, как изменить время существования токена электронной почты.
+
+Добавить пользовательское [DataProtectorTokenProvider\<TUser >](/dotnet/api/microsoft.aspnetcore.identity.dataprotectortokenprovider-1) и <xref:Microsoft.AspNetCore.Identity.DataProtectionTokenProviderOptions>:
+
+[!code-csharp[](accconfirm/sample/WebPWrecover22/TokenProviders/CustomTokenProvider.cs?name=snippet1)]
+
+Добавьте пользовательский поставщик в контейнер службы:
+
+[!code-csharp[](accconfirm/sample/WebPWrecover22/StartupEmail.cs?name=snippet1&highlight=10-13)]
+
+### <a name="resend-email-confirmation"></a>Повторно отправить подтверждение по электронной почте
+
+См. в разделе [проблема GitHub](https://github.com/aspnet/AspNetCore/issues/5410).
+
+<a name="debug"></a>
 ### <a name="debug-email"></a>Отладка по электронной почте
 
 Если не удается получить рабочий адрес электронной почты:
