@@ -4,14 +4,14 @@ author: guardrex
 description: Сведения о диагностике проблем с развертываниями ASP.NET Core в службе приложений Azure.
 ms.author: riande
 ms.custom: mvc
-ms.date: 01/11/2019
+ms.date: 03/05/2019
 uid: host-and-deploy/azure-apps/troubleshoot
-ms.openlocfilehash: 65a5e355bc15db6de9060331395c441160c8b62d
-ms.sourcegitcommit: 42a8164b8aba21f322ffefacb92301bdfb4d3c2d
+ms.openlocfilehash: c3732bfab362ec034248eb3912d4b1337c94216e
+ms.sourcegitcommit: 191d21c1e37b56f0df0187e795d9a56388bbf4c7
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54341645"
+ms.lasthandoff: 03/08/2019
+ms.locfileid: "57665432"
 ---
 # <a name="troubleshoot-aspnet-core-on-azure-app-service"></a>Устранение неполадок ASP.NET Core в службе приложений Azure
 
@@ -71,11 +71,56 @@ ms.locfileid: "54341645"
 
 1. В области **Средства разработки** откройте колонку **Дополнительные инструменты**. Нажмите кнопку **Перейти&rarr;**. Консоль Kudu открывается в новой вкладке или в окне браузера.
 1. С помощью панели навигации в верхней части страницы откройте **Консоль отладки** и выберите **CMD**.
-1. Откройте папки на пути **веб-сайт** > **wwwroot**.
-1. Выполнив сборку приложения, запустите его в консоли.
-   * Если приложение является [зависящим от платформы развертывания](/dotnet/core/deploying/#framework-dependent-deployments-fdd), запустите сборку приложения с помощью *dotnet.exe*. В следующей команде замените имя сборки приложения с `<assembly_name>` на `dotnet .\<assembly_name>.dll`
-   * Если приложение является [автономным развертыванием](/dotnet/core/deploying/#self-contained-deployments-scd), запустите исполняемый файл приложения. В следующей команде замените имя сборки приложения с `<assembly_name>` на `<assembly_name>.exe`
-1. Выходные данные из приложения, отображающие любые ошибки, будут выведены на консоль Kudu.
+
+#### <a name="test-a-32-bit-x86-app"></a>Тестирование 32-разрядного (x86) приложения
+
+##### <a name="current-release"></a>Текущий выпуск
+
+1. `cd d:\home\site\wwwroot`
+1. Запустите приложение:
+   * Если развертываемое приложение [зависит от платформы](/dotnet/core/deploying/#framework-dependent-deployments-fdd), сделайте следующее:
+
+     ```console
+     dotnet .\{ASSEMBLY NAME}.dll
+     ```
+   * Если приложение [развертывается автономно](/dotnet/core/deploying/#self-contained-deployments-scd), сделайте следующее:
+
+     ```console
+     {ASSEMBLY NAME}.exe
+     ```
+   
+Выходные данные из приложения, отображающие любые ошибки, будут выведены на консоль Kudu.
+   
+##### <a name="framework-depdendent-deployment-running-on-a-preview-release"></a>Зависимое от платформы развертывание, выполняющееся в предварительном выпуске
+
+*Требует установки расширения сайта для среды выполнения ASP.NET Core {VERSION} (x86).*
+
+1. `cd D:\home\SiteExtensions\AspNetCoreRuntime.{X.Y}.x32` (`{X.Y}` — это версия среды выполнения).
+1. Запустите приложение: `dotnet \home\site\wwwroot\{ASSEMBLY NAME}.dll`.
+
+Выходные данные из приложения, отображающие любые ошибки, будут выведены на консоль Kudu.
+
+#### <a name="test-a-64-bit-x64-app"></a>Тестирование 64-разрядного (x64) приложения
+
+##### <a name="current-release"></a>Текущий выпуск
+
+* Если приложение является 64-разрядным (x64) [зависимым от платформы развертыванием](/dotnet/core/deploying/#framework-dependent-deployments-fdd):
+  1. `cd D:\Program Files\dotnet`
+  1. Запустите приложение: `dotnet \home\site\wwwroot\{ASSEMBLY NAME}.dll`.
+* Если приложение [развертывается автономно](/dotnet/core/deploying/#self-contained-deployments-scd), сделайте следующее:
+  1. `cd D:\home\site\wwwroot`
+  1. Запустите приложение: `{ASSEMBLY NAME}.exe`.
+
+Выходные данные из приложения, отображающие любые ошибки, будут выведены на консоль Kudu.
+
+##### <a name="framework-depdendent-deployment-running-on-a-preview-release"></a>Зависимое от платформы развертывание, выполняющееся в предварительном выпуске
+
+*Требует установки расширения сайта для среды выполнения ASP.NET Core {VERSION} (x64).*
+
+1. `cd D:\home\SiteExtensions\AspNetCoreRuntime.{X.Y}.x64` (`{X.Y}` — это версия среды выполнения).
+1. Запустите приложение: `dotnet \home\site\wwwroot\{ASSEMBLY NAME}.dll`.
+
+Выходные данные из приложения, отображающие любые ошибки, будут выведены на консоль Kudu.
 
 ### <a name="aspnet-core-module-stdout-log"></a>Журнал stdout модуля ASP.NET Core
 
