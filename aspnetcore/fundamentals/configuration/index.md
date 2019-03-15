@@ -2,9 +2,10 @@
 title: Конфигурация в .NET Core
 author: guardrex
 description: "Узнайте, как использовать API конфигурации для настройки приложения ASP.NET\_Core."
+monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 03/04/2019
+ms.date: 03/11/2019
 uid: fundamentals/configuration/index
 ---
 # <a name="configuration-in-aspnet-core"></a>Конфигурация в .NET Core
@@ -12,8 +13,6 @@ uid: fundamentals/configuration/index
 Автор [Люк Латэм](https://github.com/guardrex) (Luke Latham)
 
 Конфигурация приложения в ASP.NET Core основана на парах "ключ — значение", установленных *поставщиками конфигурации*. Поставщики конфигурации получают данные конфигурации в парах "ключ — значение" из различных источников:
-
-::: moniker range=">= aspnetcore-2.1"
 
 * Хранилище ключей Azure;
 * аргументов командной строки;
@@ -23,44 +22,11 @@ uid: fundamentals/configuration/index
 * объектов .NET в памяти;
 * файлов параметров;
 
-::: moniker-end
-
-::: moniker range="= aspnetcore-2.0 || aspnetcore-1.1"
-
-* Хранилище ключей Azure;
-* аргументов командной строки;
-* а также пользовательские поставщики (устанавливаемые или создаваемые).
-* Переменные среды
-* объектов .NET в памяти;
-* файлов параметров;
-
-::: moniker-end
-
-::: moniker range="= aspnetcore-1.0"
-
-* аргументов командной строки;
-* а также пользовательские поставщики (устанавливаемые или создаваемые).
-* Переменные среды
-* объектов .NET в памяти;
-* файлов параметров;
-
-::: moniker-end
-
 *Шаблон параметров* является расширением конфигурации основных понятий, описанных в этом разделе. Параметры используют классы для представления групп связанных настроек. Дополнительные сведения об использовании шаблона параметров см. в разделе <xref:fundamentals/configuration/options>.
 
 [Просмотреть или скачать образец кода](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/configuration/index/samples) ([как скачивать](xref:index#how-to-download-a-sample))
 
-::: moniker range=">= aspnetcore-2.1"
-
 Эти три пакета включены в [метапакет Microsoft.AspNetCore.App](xref:fundamentals/metapackage-app).
-
-::: moniker-end
-
-::: moniker range="= aspnetcore-2.0"
-
-Эти три пакета включены в [метапакет Microsoft.AspNetCore.All](xref:fundamentals/metapackage).
-
-::: moniker-end
 
 ## <a name="host-vs-app-configuration"></a>Конфигурация узла и приложения
 
@@ -68,19 +34,19 @@ uid: fundamentals/configuration/index
 
 ## <a name="default-configuration"></a>Конфигурация по умолчанию
 
-Веб-приложения на основе шаблонов [dotnet new](/dotnet/core/tools/dotnet-new) ASP.NET Core вызывают <xref:Microsoft.AspNetCore.WebHost.CreateDefaultBuilder*> при создании узла. `CreateDefaultBuilder` предоставляет конфигурацию по умолчанию для приложения.
+Веб-приложения на основе шаблонов [dotnet new](/dotnet/core/tools/dotnet-new) ASP.NET Core вызывают <xref:Microsoft.AspNetCore.WebHost.CreateDefaultBuilder*> при создании узла. <xref:Microsoft.AspNetCore.WebHost.CreateDefaultBuilder*> предоставляет конфигурацию по умолчанию для приложения в следующем порядке:
 
 * Существуют следующие способы предоставления конфигурации узла.
-  * Переменные среды с префиксом `ASPNETCORE_` (например, `ASPNETCORE_ENVIRONMENT`), использующие [поставщик конфигурации переменных среды](#environment-variables-configuration-provider).
+  * Переменные среды с префиксом `ASPNETCORE_` (например, `ASPNETCORE_ENVIRONMENT`), использующие [поставщик конфигурации переменных среды](#environment-variables-configuration-provider). Префикс (`ASPNETCORE_`) исключается при загрузке пар "ключ — значение" конфигурации.
   * Аргументы командной строки, использующие [поставщик конфигурации командной строки](#command-line-configuration-provider).
-* Существуют следующие способы предоставления конфигурации приложений (в указанном порядке).
+* Конфигурация приложения предоставляется из следующих ресурсов:
   * Файл *appsettings.json*, использующий [поставщик конфигурации файлов](#file-configuration-provider).
   * Файл *appsettings.{Environment}.json*, использующий [поставщик конфигурации файлов](#file-configuration-provider).
   * [Менеджера секретов](xref:security/app-secrets), когда приложение выполняется в среде `Development` с использованием начальных сборок.
-  * Переменные среды, использующие [поставщик конфигурации переменных среды](#environment-variables-configuration-provider).
+  * Переменные среды, использующие [поставщик конфигурации переменных среды](#environment-variables-configuration-provider). Если используется пользовательский префикс (например, `PREFIX_` с `.AddEnvironmentVariables(prefix: "PREFIX_")`), такой префикс исключается при загрузке пар "ключ — значение" конфигурации.
   * Аргументы командной строки, использующие [поставщик конфигурации командной строки](#command-line-configuration-provider).
 
-Поставщики конфигурации описаны ниже в этом разделе. Дополнительные сведения об узле и `CreateDefaultBuilder`: <xref:fundamentals/host/web-host#set-up-a-host>.
+Поставщики конфигурации описаны ниже в этом разделе. Дополнительные сведения об узле и <xref:Microsoft.AspNetCore.WebHost.CreateDefaultBuilder*>: <xref:fundamentals/host/web-host#set-up-a-host>.
 
 ## <a name="security"></a>Безопасность
 
@@ -141,7 +107,7 @@ public class IndexModel : PageModel
     {
         _config = config;
     }
-        
+
     // The _config local variable is used to obtain configuration 
     // throughout the class.
 }
@@ -168,8 +134,6 @@ public class IndexModel : PageModel
 
 В следующей таблице показаны поставщики конфигурации, доступные для приложений ASP.NET Core.
 
-::: moniker range=">= aspnetcore-2.1"
-
 | Поставщик | Предоставляет конфигурацию из &hellip; |
 | -------- | ----------------------------------- |
 | [Поставщик конфигурации хранилища ключей Azure](xref:security/key-vault-configuration) (раздел *Безопасность*) | Хранилище ключей Azure; |
@@ -180,35 +144,6 @@ public class IndexModel : PageModel
 | [Поставщик конфигурации ключа для каждого файла](#key-per-file-configuration-provider) | Справочные файлы |
 | [Поставщик конфигурации памяти](#memory-configuration-provider) | Коллекции оперативной памяти |
 | [Секреты пользователей (Менеджер секретов)](xref:security/app-secrets) (раздел *Безопасность*) | Файл в каталоге профиля пользователя |
-
-::: moniker-end
-
-::: moniker range="= aspnetcore-2.0 || aspnetcore-1.1"
-
-| Поставщик | Предоставляет конфигурацию из &hellip; |
-| -------- | ----------------------------------- |
-| [Поставщик конфигурации хранилища ключей Azure](xref:security/key-vault-configuration) (раздел *Безопасность*) | Хранилище ключей Azure; |
-| [Поставщик конфигурации командной строки](#command-line-configuration-provider) | Параметры командной строки |
-| [Поставщик пользовательской конфигурации](#custom-configuration-provider) | Источник пользователя |
-| [Поставщик конфигурации переменных среды](#environment-variables-configuration-provider) | Переменные среды |
-| [Поставщик пользовательской конфигурации](#file-configuration-provider) | Файлы (INI, JSON, XML) |
-| [Поставщик конфигурации памяти](#memory-configuration-provider) | Коллекции оперативной памяти |
-| [Секреты пользователей (Менеджер секретов)](xref:security/app-secrets) (раздел *Безопасность*) | Файл в каталоге профиля пользователя |
-
-::: moniker-end
-
-::: moniker range="= aspnetcore-1.0"
-
-| Поставщик | Предоставляет конфигурацию из &hellip; |
-| -------- | ----------------------------------- |
-| [Поставщик конфигурации командной строки](#command-line-configuration-provider) | Параметры командной строки |
-| [Поставщик пользовательской конфигурации](#custom-configuration-provider) | Источник пользователя |
-| [Поставщик конфигурации переменных среды](#environment-variables-configuration-provider) | Переменные среды |
-| [Поставщик пользовательской конфигурации](#file-configuration-provider) | Файлы (INI, JSON, XML) |
-| [Поставщик конфигурации памяти](#memory-configuration-provider) | Коллекции оперативной памяти |
-| [Секреты пользователей (Менеджер секретов)](xref:security/app-secrets) (раздел *Безопасность*) | Файл в каталоге профиля пользователя |
-
-::: moniker-end
 
 Источники конфигурации считываются в том порядке, в котором при запуске указываются их поставщики конфигурации. Поставщики конфигурации в этом разделе описаны в алфавитном порядке, а не в необходимом вам порядке в коде. Порядок поставщиков конфигурации в коде соответствует приоритетам ваших основных источников конфигурации.
 
@@ -222,59 +157,13 @@ public class IndexModel : PageModel
 
 Общепринятой практикой является размещение поставщика конфигурации командной строки последним в ряду поставщиков, чтобы аргументы командной строки могли переопределять конфигурацию, установленную другими поставщиками.
 
-::: moniker range=">= aspnetcore-2.0"
-
 Эта последовательность поставщиков помещается в месте, где происходит инициализация нового класса <xref:Microsoft.AspNetCore.Hosting.WebHostBuilder> с помощью метода <xref:Microsoft.AspNetCore.WebHost.CreateDefaultBuilder*>. Дополнительные сведения см. в руководстве по [настройке веб-узла](xref:fundamentals/host/web-host#set-up-a-host).
-
-::: moniker-end
-
-::: moniker range="< aspnetcore-2.0"
-
-Эта последовательность поставщиков может быть создана для приложения (а не узла) с помощью <xref:Microsoft.Extensions.Configuration.ConfigurationBuilder> и вызова метода <xref:Microsoft.Extensions.Configuration.ConfigurationBuilder.Build*> в `Startup`.
-
-```csharp
-public Startup(IHostingEnvironment env)
-{
-    var builder = new ConfigurationBuilder()
-        .SetBasePath(Directory.GetCurrentDirectory())
-        .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
-        .AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true, 
-            reloadOnChange: true);
-
-    var appAssembly = Assembly.Load(new AssemblyName(env.ApplicationName));
-
-    if (appAssembly != null)
-    {
-        builder.AddUserSecrets(appAssembly, optional: true);
-    }
-
-    builder.AddEnvironmentVariables();
-
-    Configuration = builder.Build();
-}
-
-public IConfiguration Configuration { get; }
-
-public void ConfigureServices(IServiceCollection services)
-{
-    services.AddSingleton<IConfiguration>(Configuration);
-}
-```
-
-В приведенном выше примере имя среды (`env.EnvironmentName`) и имя сборки приложения (`env.ApplicationName`) предоставляются <xref:Microsoft.Extensions.Hosting.IHostingEnvironment>. Для получения дополнительной информации см. <xref:fundamentals/environments>. Базовый путь задается с помощью <xref:Microsoft.Extensions.Configuration.FileConfigurationExtensions.SetBasePath*>. `SetBasePath` находится в пакете [Microsoft.Extensions.Configuration.FileExtensions](https://www.nuget.org/packages/Microsoft.Extensions.Configuration.FileExtensions/), который включен в [метапакет Microsoft.AspNetCore.App](xref:fundamentals/metapackage-app).
-.
-
-::: moniker-end
-
-::: moniker range=">= aspnetcore-2.1"
 
 ## <a name="configureappconfiguration"></a>ConfigureAppConfiguration
 
 Вызовите <xref:Microsoft.Extensions.Hosting.HostBuilder.ConfigureAppConfiguration*> при сборке узла, чтобы указать поставщики конфигурации приложения в дополнение к тем, которые автоматически добавлены <xref:Microsoft.AspNetCore.WebHost.CreateDefaultBuilder*>.
 
 [!code-csharp[](index/samples/2.x/ConfigurationSample/Program.cs?name=snippet_Program&highlight=19)]
-
-::: moniker-end
 
 Конфигурация, предоставленная приложению в <xref:Microsoft.Extensions.Hosting.HostBuilder.ConfigureAppConfiguration*>, доступна во время запуска приложения, включая `Startup.ConfigureServices`. Дополнительные сведения см. в разделе [Доступ к конфигурации во время запуска](#access-configuration-during-startup).
 
@@ -283,8 +172,6 @@ public void ConfigureServices(IServiceCollection services)
 <xref:Microsoft.Extensions.Configuration.CommandLine.CommandLineConfigurationProvider> загружает конфигурацию из пары "ключ — значение" аргумента командной строки в среде выполнения.
 
 Чтобы активировать конфигурацию командной строки, вызывается метод расширения <xref:Microsoft.Extensions.Configuration.CommandLineConfigurationExtensions.AddCommandLine*> для экземпляра <xref:Microsoft.Extensions.Configuration.ConfigurationBuilder>.
-
-::: moniker range=">= aspnetcore-2.0"
 
 `AddCommandLine` автоматически вызывается при инициализации нового <xref:Microsoft.AspNetCore.Hosting.WebHostBuilder> с <xref:Microsoft.AspNetCore.WebHost.CreateDefaultBuilder*>. Дополнительные сведения см. в руководстве по [настройке веб-узла](xref:fundamentals/host/web-host#set-up-a-host).
 
@@ -297,10 +184,6 @@ public void ConfigureServices(IServiceCollection services)
 `CreateDefaultBuilder` добавляет последним поставщика конфигурации командной строки. Аргументы командной строки передаются в набор конфигурации переопределения среды выполнения, установленной другими поставщиками.
 
 `CreateDefaultBuilder` действует, когда создается узел. Поэтому конфигурация командной строки, активированная с помощью `CreateDefaultBuilder`, может повлиять на настройку узла.
-
-::: moniker-end
-
-::: moniker range=">= aspnetcore-2.1"
 
 Чтобы указать конфигурацию приложения, при сборке узла вызовите <xref:Microsoft.Extensions.Hosting.HostBuilder.ConfigureAppConfiguration*>.
 
@@ -327,50 +210,6 @@ public class Program
 
 При создании <xref:Microsoft.AspNetCore.Hosting.WebHostBuilder> вызовите <xref:Microsoft.AspNetCore.Hosting.HostingAbstractionsWebHostBuilderExtensions.UseConfiguration*> со следующей конфигурацией.
 
-::: moniker-end
-
-::: moniker range="= aspnetcore-2.0"
-
-Примените конфигурацию к <xref:Microsoft.AspNetCore.Hosting.WebHostBuilder> с помощью метода <xref:Microsoft.AspNetCore.Hosting.HostingAbstractionsWebHostBuilderExtensions.UseConfiguration*>.
-
-Объект `AddCommandLine` уже был вызван методом `CreateDefaultBuilder` при вызове `UseConfiguration`. Если нужно предоставить конфигурацию приложения, сохранив возможность переопределить ее через аргументы командной строки, вызовите в `ConfigurationBuilder`дополнительные поставщики приложения, в завершение вызвав `AddCommandLine`.
-
-```csharp
-public class Program
-{
-    public static void Main(string[] args)
-    {
-        CreateWebHostBuilder(args).Build().Run();
-    }
-
-    public static IWebHostBuilder CreateWebHostBuilder(string[] args)
-    {
-        var config = new ConfigurationBuilder()
-            // Call other providers here and call AddCommandLine last.
-            .AddCommandLine(args)
-            .Build();
-
-        return WebHost.CreateDefaultBuilder(args)
-            .UseConfiguration(config)
-            .UseStartup<Startup>();
-    }
-}
-```
-
-При создании <xref:Microsoft.AspNetCore.Hosting.WebHostBuilder> вызовите <xref:Microsoft.AspNetCore.Hosting.HostingAbstractionsWebHostBuilderExtensions.UseConfiguration*> со следующей конфигурацией.
-
-::: moniker-end
-
-::: moniker range="< aspnetcore-2.0"
-
-Чтобы активировать конфигурацию командной строки, вызовите метод расширения <xref:Microsoft.Extensions.Configuration.CommandLineConfigurationExtensions.AddCommandLine*> в экземпляре <xref:Microsoft.Extensions.Configuration.ConfigurationBuilder>.
-
-В этом случае аргументы командной строки, передаваемые во время выполнения, переопределяют конфигурацию, заданную другими вызванными ранее поставщиками конфигурации.
-
-Примените конфигурацию к <xref:Microsoft.AspNetCore.Hosting.WebHostBuilder> с помощью метода <xref:Microsoft.AspNetCore.Hosting.HostingAbstractionsWebHostBuilderExtensions.UseConfiguration*>:
-
-::: moniker-end
-
 ```csharp
 var config = new ConfigurationBuilder()
     // Call additional providers here as needed.
@@ -386,17 +225,7 @@ var host = new WebHostBuilder()
 
 **Пример**
 
-::: moniker range=">= aspnetcore-2.0"
-
-Пример приложения 2.x использует преимущества статически удобного метода `CreateDefaultBuilder` для создания узла, который включает вызов <xref:Microsoft.Extensions.Configuration.CommandLineConfigurationExtensions.AddCommandLine*>.
-
-::: moniker-end
-
-::: moniker range="< aspnetcore-2.0"
-
-Пример приложения 1.x вызывает образец <xref:Microsoft.Extensions.Configuration.CommandLineConfigurationExtensions.AddCommandLine*> в <xref:Microsoft.Extensions.Configuration.ConfigurationBuilder>.
-
-::: moniker-end
+Пример приложения использует преимущества статически удобного метода `CreateDefaultBuilder` для создания узла, который включает вызов <xref:Microsoft.Extensions.Configuration.CommandLineConfigurationExtensions.AddCommandLine*>.
 
 1. Откройте командную строку в каталоге проекта.
 1. Поставьте аргумент командной строки в команду `dotnet run`: `dotnet run CommandLineKey=CommandLineValue`.
@@ -434,8 +263,6 @@ dotnet run CommandLineKey1= CommandLineKey2=value2
 * Переключения должны начинаться с дефиса (`-`) или двойного дефиса (`--`).
 * Словарь сопоставлений переключений не должен содержать повторяющиеся ключи.
 
-::: moniker range=">= aspnetcore-2.1"
-
 Чтобы указать конфигурацию приложения, при сборке веб-узла вызовите <xref:Microsoft.Extensions.Hosting.HostBuilder.ConfigureAppConfiguration*>.
 
 ```csharp
@@ -465,72 +292,6 @@ public class Program
 ```
 
 Как показано в предыдущем примере, вызов `CreateDefaultBuilder` не должен передавать аргументы при использовании сопоставления переключений. Вызов команды `AddCommandLine` метода `CreateDefaultBuilder` не включает сопоставленные коммутаторы, и нет возможности передать словарь сопоставления переключений в `CreateDefaultBuilder`. Если аргументы включают сопоставления переключений и передаются в `CreateDefaultBuilder`, его поставщик `AddCommandLine` не может инициализироваться с помощью <xref:System.FormatException>. Чтобы решить эту проблему, нужно не передавать аргументы команде `CreateDefaultBuilder`, а позволить методу `AddCommandLine` метода `ConfigurationBuilder` обрабатывать как аргументы, так и словарь сопоставления параметров.
-
-::: moniker-end
-
-::: moniker range="= aspnetcore-2.0"
-
-```csharp
-public class Program
-{
-    public static void Main(string[] args)
-    {
-        CreateWebHostBuilder(args).Build().Run();
-    }
-
-    public static IWebHostBuilder CreateWebHostBuilder(string[] args)
-    {
-        var switchMappings = new Dictionary<string, string>
-            {
-                { "-CLKey1", "CommandLineKey1" },
-                { "-CLKey2", "CommandLineKey2" }
-            };
-
-        var config = new ConfigurationBuilder()
-            .AddCommandLine(args, switchMappings)
-            .Build();
-
-        // Do not pass the args to CreateDefaultBuilder
-        return WebHost.CreateDefaultBuilder()
-            .UseConfiguration(config)
-            .UseStartup<Startup>();
-    }
-}
-```
-
-Как показано в предыдущем примере, вызов `CreateDefaultBuilder` не должен передавать аргументы при использовании сопоставления переключений. Вызов команды `AddCommandLine` метода `CreateDefaultBuilder` не включает сопоставленные коммутаторы, и нет возможности передать словарь сопоставления переключений в `CreateDefaultBuilder`. Если аргументы включают сопоставления переключений и передаются в `CreateDefaultBuilder`, его поставщик `AddCommandLine` не может инициализироваться с помощью <xref:System.FormatException>. Чтобы решить эту проблему, нужно не передавать аргументы команде `CreateDefaultBuilder`, а позволить методу `AddCommandLine` метода `ConfigurationBuilder` обрабатывать как аргументы, так и словарь сопоставления параметров.
-
-::: moniker-end
-
-::: moniker range="< aspnetcore-2.0"
-
-```csharp
-public static void Main(string[] args)
-{
-    var switchMappings = new Dictionary<string, string>
-        {
-            { "-CLKey1", "CommandLineKey1" },
-            { "-CLKey2", "CommandLineKey2" }
-        };
-
-    var config = new ConfigurationBuilder()
-        .AddCommandLine(args, switchMappings)
-        .Build();
-
-    var host = new WebHostBuilder()
-        .UseConfiguration(config)
-        .UseKestrel()
-        .UseStartup<Startup>()
-        .Start();
-
-    using (host)
-    {
-        Console.ReadLine();
-    }
-}
-```
-
-::: moniker-end
 
 Созданный словарь сопоставлений переключений содержит данные, показанные в следующей таблице.
 
@@ -562,8 +323,6 @@ dotnet run -CLKey1=value1 -CLKey2=value2
 
 [Служба приложений Azure](https://azure.microsoft.com/services/app-service/) позволяет задать переменные среды на портале Azure, который может переопределить конфигурацию приложения, используя поставщик конфигурации переменных среды. Дополнительные сведения см. в руководстве по [переопределению конфигурации приложения Azure с помощью портала Azure](xref:host-and-deploy/azure-apps/index#override-app-configuration-using-the-azure-portal).
 
-::: moniker range=">= aspnetcore-2.0"
-
 `AddEnvironmentVariables` автоматически вызывается для переменных среды, имеющих префикс `ASPNETCORE_`, при инициализации нового экземпляра <xref:Microsoft.AspNetCore.Hosting.WebHostBuilder>. Дополнительные сведения см. в руководстве по [настройке веб-узла](xref:fundamentals/host/web-host#set-up-a-host).
 
 `CreateDefaultBuilder` также загружает следующее:
@@ -574,10 +333,6 @@ dotnet run -CLKey1=value1 -CLKey2=value2
 * аргументы командной строки.
 
 Поставщик конфигурации переменных среды вызывается после выполнения настройки с помощью секретов пользователя и файлов *appsettings*. Вызов поставщика в этой позиции разрешает чтение переменных среды выполнения, чтобы переопределить конфигурацию, заданную секретом пользователя и файлом *appsettings*.
-
-::: moniker-end
-
-::: moniker range=">= aspnetcore-2.1"
 
 Чтобы указать конфигурацию приложения, при сборке узла вызовите <xref:Microsoft.Extensions.Hosting.HostBuilder.ConfigureAppConfiguration*>.
 
@@ -606,48 +361,6 @@ public class Program
 
 При создании <xref:Microsoft.AspNetCore.Hosting.WebHostBuilder> вызовите <xref:Microsoft.AspNetCore.Hosting.HostingAbstractionsWebHostBuilderExtensions.UseConfiguration*> со следующей конфигурацией.
 
-::: moniker-end
-
-::: moniker range="= aspnetcore-2.0"
-
-Вызовите метод расширения `AddEnvironmentVariables` для экземпляра <xref:Microsoft.Extensions.Configuration.ConfigurationBuilder>. Примените конфигурацию к <xref:Microsoft.AspNetCore.Hosting.WebHostBuilder> с помощью метода <xref:Microsoft.AspNetCore.Hosting.HostingAbstractionsWebHostBuilderExtensions.UseConfiguration*>.
-
-Если вам нужно добавить конфигурацию приложения из дополнительных переменных среды, вызовите дополнительные поставщики приложения в <xref:Microsoft.Extensions.Hosting.HostBuilder.ConfigureAppConfiguration*>, а затем вызовите `AddEnvironmentVariables` с префиксом.
-
-```csharp
-public class Program
-{
-    public static void Main(string[] args)
-    {
-        CreateWebHostBuilder(args).Build().Run();
-    }
-
-    public static IWebHostBuilder CreateWebHostBuilder(string[] args)
-    {
-        var config = new ConfigurationBuilder()
-            // Call additional providers here as needed.
-            // Call AddEnvironmentVariables last if you need to allow environment
-            // variables to override values from other providers.
-            .AddEnvironmentVariables(prefix: "PREFIX_")
-            .Build();
-
-        return WebHost.CreateDefaultBuilder(args)
-            .UseConfiguration(config)
-            .UseStartup<Startup>();
-    }
-}
-```
-
-При создании <xref:Microsoft.AspNetCore.Hosting.WebHostBuilder> вызовите <xref:Microsoft.AspNetCore.Hosting.HostingAbstractionsWebHostBuilderExtensions.UseConfiguration*> со следующей конфигурацией.
-
-::: moniker-end
-
-::: moniker range="< aspnetcore-2.0"
-
-Примените конфигурацию к <xref:Microsoft.AspNetCore.Hosting.WebHostBuilder> с помощью метода <xref:Microsoft.AspNetCore.Hosting.HostingAbstractionsWebHostBuilderExtensions.UseConfiguration*>:
-
-::: moniker-end
-
 ```csharp
 var config = new ConfigurationBuilder()
     .AddEnvironmentVariables()
@@ -661,17 +374,7 @@ var host = new WebHostBuilder()
 
 **Пример**
 
-::: moniker range=">= aspnetcore-2.0"
-
-Пример приложения 2.x использует преимущества статически удобного метода `CreateDefaultBuilder` для создания узла, который включает вызов `AddEnvironmentVariables`.
-
-::: moniker-end
-
-::: moniker range="< aspnetcore-2.0"
-
-Пример приложения 1.x вызывает образец `AddEnvironmentVariables` в `ConfigurationBuilder`.
-
-::: moniker-end
+Пример приложения использует преимущества статически удобного метода `CreateDefaultBuilder` для создания узла, который включает вызов `AddEnvironmentVariables`.
 
 1. Выполните пример приложения. Откройте в приложении браузер с адресом `http://localhost:5000`.
 1. Обратите внимание, что выходные данные содержат пару "ключ — значение" для переменной среды `ENVIRONMENT`. Значение отражает среду, в которой выполняется приложение, обычно при локальном запуске это `Development`.
@@ -687,17 +390,7 @@ var host = new WebHostBuilder()
 * applicationName
 * CommandLine
 
-::: moniker range=">= aspnetcore-2.0"
-
 Если хотите просмотреть все переменные среды, доступные для приложения, измените значение `FilteredConfiguration` в *Pages/Index.cshtml.cs* на следующее:
-
-::: moniker-end
-
-::: moniker range="< aspnetcore-2.0"
-
-Если хотите просмотреть все переменные среды, доступные для приложения, измените значение `FilteredConfiguration` в *Controllers/HomeController.cs* на следующее:
-
-::: moniker-end
 
 ```csharp
 FilteredConfiguration = _config.AsEnumerable();
@@ -715,11 +408,7 @@ var config = new ConfigurationBuilder()
 
 Префикс отделяется при создании пары конфигурации "ключ — значение".
 
-::: moniker range=">= aspnetcore-2.0"
-
 Статический удобный метод `CreateDefaultBuilder` создает <xref:Microsoft.AspNetCore.Hosting.WebHostBuilder> для установления размещения приложения. Когда значение `WebHostBuilder` будет создано, оно найдет конфигурацию узла в переменных среды, которые начинаются с префикса `ASPNETCORE_`.
-
-::: moniker-end
 
 **Префиксы строк подключения**
 
@@ -766,8 +455,6 @@ API конфигурации имеет специальные правила о
 * Будет ли перезагружена конфигурация, если файл изменится.
 * <xref:Microsoft.Extensions.FileProviders.IFileProvider> используется для доступа к файлу.
 
-::: moniker range=">= aspnetcore-2.1"
-
 Чтобы указать конфигурацию приложения, при сборке веб-узла вызовите <xref:Microsoft.Extensions.Hosting.HostBuilder.ConfigureAppConfiguration*>.
 
 ```csharp
@@ -792,46 +479,6 @@ public class Program
 Базовый путь задается с помощью <xref:Microsoft.Extensions.Configuration.FileConfigurationExtensions.SetBasePath*>. `SetBasePath` находится в пакете [Microsoft.Extensions.Configuration.FileExtensions](https://www.nuget.org/packages/Microsoft.Extensions.Configuration.FileExtensions/), который включен в [метапакет Microsoft.AspNetCore.App](xref:fundamentals/metapackage-app).
 
 При создании <xref:Microsoft.AspNetCore.Hosting.WebHostBuilder> вызовите <xref:Microsoft.AspNetCore.Hosting.HostingAbstractionsWebHostBuilderExtensions.UseConfiguration*> со следующей конфигурацией.
-
-::: moniker-end
-
-::: moniker range="= aspnetcore-2.0"
-
-Вызывая `CreateDefaultBuilder`, вызовите <xref:Microsoft.AspNetCore.Hosting.HostingAbstractionsWebHostBuilderExtensions.UseConfiguration*> со следующей конфигурацией.
-
-```csharp
-public class Program
-{
-    public static void Main(string[] args)
-    {
-        CreateWebHostBuilder(args).Build().Run();
-    }
-
-    public static IWebHostBuilder CreateWebHostBuilder(string[] args)
-    {
-        var config = new ConfigurationBuilder()
-            .SetBasePath(Directory.GetCurrentDirectory())
-            .AddIniFile("config.ini", optional: true, reloadOnChange: true)
-            .Build();
-
-        return WebHost.CreateDefaultBuilder(args)
-            .UseConfiguration(config)
-            .UseStartup<Startup>();
-    }
-}
-```
-
-Базовый путь задается с помощью <xref:Microsoft.Extensions.Configuration.FileConfigurationExtensions.SetBasePath*>. `SetBasePath` находится в пакете [Microsoft.Extensions.Configuration.FileExtensions](https://www.nuget.org/packages/Microsoft.Extensions.Configuration.FileExtensions/), который включен в [метапакет Microsoft.AspNetCore.App](xref:fundamentals/metapackage-app).
-
-При создании <xref:Microsoft.AspNetCore.Hosting.WebHostBuilder> вызовите <xref:Microsoft.AspNetCore.Hosting.HostingAbstractionsWebHostBuilderExtensions.UseConfiguration*> со следующей конфигурацией.
-
-::: moniker-end
-
-::: moniker range="< aspnetcore-2.0"
-
-Примените конфигурацию к <xref:Microsoft.AspNetCore.Hosting.WebHostBuilder> с помощью метода <xref:Microsoft.AspNetCore.Hosting.HostingAbstractionsWebHostBuilderExtensions.UseConfiguration*>:
-
-::: moniker-end
 
 ```csharp
 var config = new ConfigurationBuilder()
@@ -884,7 +531,7 @@ key=value
 * Будет ли перезагружена конфигурация, если файл изменится.
 * <xref:Microsoft.Extensions.FileProviders.IFileProvider> используется для доступа к файлу.
 
-::: moniker range=">= aspnetcore-2.0"
+
 
 `AddJsonFile` автоматически вызывается дважды при инициализации нового <xref:Microsoft.AspNetCore.Hosting.WebHostBuilder> с <xref:Microsoft.AspNetCore.WebHost.CreateDefaultBuilder*>. Метод вызывается для загрузки конфигурации из:
 
@@ -900,10 +547,6 @@ key=value
 * аргументы командной строки.
 
 Сначала устанавливается поставщик конфигурации JSON-файлов. Таким образом, секреты пользователя, переменные среды и аргументы командной строки переопределят конфигурацию, заданную файлами *appsettings*.
-
-::: moniker-end
-
-::: moniker range=">= aspnetcore-2.1"
 
 Вызовите <xref:Microsoft.Extensions.Hosting.HostBuilder.ConfigureAppConfiguration*> при сборке узла, чтобы указать конфигурацию приложения для файлов, отличных от *appsettings.json* и *appsettings.{Environment}.json*.
 
@@ -930,48 +573,6 @@ public class Program
 
 При создании <xref:Microsoft.AspNetCore.Hosting.WebHostBuilder> вызовите <xref:Microsoft.AspNetCore.Hosting.HostingAbstractionsWebHostBuilderExtensions.UseConfiguration*> со следующей конфигурацией.
 
-::: moniker-end
-
-::: moniker range="= aspnetcore-2.0"
-
-Вы можете также напрямую вызвать метод расширения `AddJsonFile` в экземпляре <xref:Microsoft.Extensions.Configuration.ConfigurationBuilder>.
-
-Вызывая `CreateDefaultBuilder`, вызовите <xref:Microsoft.AspNetCore.Hosting.HostingAbstractionsWebHostBuilderExtensions.UseConfiguration*> со следующей конфигурацией.
-
-```csharp
-public class Program
-{
-    public static void Main(string[] args)
-    {
-        CreateWebHostBuilder(args).Build().Run();
-    }
-
-    public static IWebHostBuilder CreateWebHostBuilder(string[] args)
-    {
-        var config = new ConfigurationBuilder()
-            .SetBasePath(Directory.GetCurrentDirectory())
-            .AddJsonFile("config.json", optional: true, reloadOnChange: true)
-            .Build();
-
-        return WebHost.CreateDefaultBuilder(args)
-            .UseConfiguration(config)
-            .UseStartup<Startup>();
-    }
-}
-```
-
-Базовый путь задается с помощью <xref:Microsoft.Extensions.Configuration.FileConfigurationExtensions.SetBasePath*>. `SetBasePath` находится в пакете [Microsoft.Extensions.Configuration.FileExtensions](https://www.nuget.org/packages/Microsoft.Extensions.Configuration.FileExtensions/), который включен в [метапакет Microsoft.AspNetCore.App](xref:fundamentals/metapackage-app).
-
-При создании <xref:Microsoft.AspNetCore.Hosting.WebHostBuilder> вызовите <xref:Microsoft.AspNetCore.Hosting.HostingAbstractionsWebHostBuilderExtensions.UseConfiguration*> со следующей конфигурацией.
-
-::: moniker-end
-
-::: moniker range="< aspnetcore-2.0"
-
-Примените конфигурацию к <xref:Microsoft.AspNetCore.Hosting.WebHostBuilder> с помощью метода <xref:Microsoft.AspNetCore.Hosting.HostingAbstractionsWebHostBuilderExtensions.UseConfiguration*>:
-
-::: moniker-end
-
 ```csharp
 var config = new ConfigurationBuilder()
     .SetBasePath(Directory.GetCurrentDirectory())
@@ -988,17 +589,7 @@ var host = new WebHostBuilder()
 
 **Пример**
 
-::: moniker range=">= aspnetcore-2.0"
-
-В примере приложения 2.x используется преимущество статически удобного метода `CreateDefaultBuilder` для создания узла, который включает два вызова в `AddJsonFile`. Конфигурация загружена из *appsettings.json* и *appsettings.{Environment}.json*.
-
-::: moniker-end
-
-::: moniker range="< aspnetcore-2.0"
-
-Пример приложения 1.x вызывает образец `AddJsonFile` дважды в `ConfigurationBuilder`. Конфигурация загружена из *appsettings.json* и *appsettings.{Environment}.json*.
-
-::: moniker-end
+Пример приложения использует преимущества статически удобного метода `CreateDefaultBuilder` для создания узла, который включает два вызова `AddJsonFile`. Конфигурация загружена из *appsettings.json* и *appsettings.{Environment}.json*.
 
 1. Выполните пример приложения. Откройте в приложении браузер с адресом `http://localhost:5000`.
 1. Обратите внимание, что выходные данные содержат пары "ключ — значение" для конфигурации, представленной в таблице в зависимости от среды. Ключи конфигурации ведения журнала используют двоеточие (`:`) как иерархический разделитель.
@@ -1024,8 +615,6 @@ var host = new WebHostBuilder()
 
 Корневой узел файла конфигурации не учитывается при создании пар "ключ — значение" конфигурации. Не указывайте в файле Document Type Definition (определение типа документа, DTD) или пространство имен.
 
-::: moniker range=">= aspnetcore-2.1"
-
 Чтобы указать конфигурацию приложения, при сборке веб-узла вызовите <xref:Microsoft.Extensions.Hosting.HostBuilder.ConfigureAppConfiguration*>.
 
 ```csharp
@@ -1050,46 +639,6 @@ public class Program
 Базовый путь задается с помощью <xref:Microsoft.Extensions.Configuration.FileConfigurationExtensions.SetBasePath*>. `SetBasePath` находится в пакете [Microsoft.Extensions.Configuration.FileExtensions](https://www.nuget.org/packages/Microsoft.Extensions.Configuration.FileExtensions/), который включен в [метапакет Microsoft.AspNetCore.App](xref:fundamentals/metapackage-app).
 
 При создании <xref:Microsoft.AspNetCore.Hosting.WebHostBuilder> вызовите <xref:Microsoft.AspNetCore.Hosting.HostingAbstractionsWebHostBuilderExtensions.UseConfiguration*> со следующей конфигурацией.
-
-::: moniker-end
-
-::: moniker range="= aspnetcore-2.0"
-
-Вызывая `CreateDefaultBuilder`, вызовите <xref:Microsoft.AspNetCore.Hosting.HostingAbstractionsWebHostBuilderExtensions.UseConfiguration*> со следующей конфигурацией.
-
-```csharp
-public class Program
-{
-    public static void Main(string[] args)
-    {
-        CreateWebHostBuilder(args).Build().Run();
-    }
-
-    public static IWebHostBuilder CreateWebHostBuilder(string[] args)
-    {
-        var config = new ConfigurationBuilder()
-            .SetBasePath(Directory.GetCurrentDirectory())
-            .AddXmlFile("config.xml", optional: true, reloadOnChange: true)
-            .Build();
-
-        return WebHost.CreateDefaultBuilder(args)
-            .UseConfiguration(config)
-            .UseStartup<Startup>();
-    }
-}
-```
-
-Базовый путь задается с помощью <xref:Microsoft.Extensions.Configuration.FileConfigurationExtensions.SetBasePath*>. `SetBasePath` находится в пакете [Microsoft.Extensions.Configuration.FileExtensions](https://www.nuget.org/packages/Microsoft.Extensions.Configuration.FileExtensions/), который включен в [метапакет Microsoft.AspNetCore.App](xref:fundamentals/metapackage-app).
-
-При создании <xref:Microsoft.AspNetCore.Hosting.WebHostBuilder> вызовите <xref:Microsoft.AspNetCore.Hosting.HostingAbstractionsWebHostBuilderExtensions.UseConfiguration*> со следующей конфигурацией.
-
-::: moniker-end
-
-::: moniker range="< aspnetcore-2.0"
-
-Примените конфигурацию к <xref:Microsoft.AspNetCore.Hosting.WebHostBuilder> с помощью метода <xref:Microsoft.AspNetCore.Hosting.HostingAbstractionsWebHostBuilderExtensions.UseConfiguration*>:
-
-::: moniker-end
 
 ```csharp
 var config = new ConfigurationBuilder()
@@ -1168,8 +717,6 @@ XML-файлы конфигурации могут использовать им
 * key:attribute
 * section:key:attribute
 
-::: moniker range=">= aspnetcore-2.1"
-
 ## <a name="key-per-file-configuration-provider"></a>Поставщик конфигурации ключа для каждого файла
 
 <xref:Microsoft.Extensions.Configuration.KeyPerFile.KeyPerFileConfigurationProvider> использует файлы каталога как пары "ключ — значение" конфигурации. Ключ является именем файла. Значение содержит содержимое файла. Поставщик конфигурации ключа для каждого файла используется в сценариях размещения Docker.
@@ -1221,8 +768,6 @@ var host = new WebHostBuilder()
     .UseStartup<Startup>();
 ```
 
-::: moniker-end
-
 ## <a name="memory-configuration-provider"></a>Поставщик конфигурации памяти
 
 <xref:Microsoft.Extensions.Configuration.Memory.MemoryConfigurationProvider> использует коллекцию памяти в качестве пар "ключ — значение" конфигурации.
@@ -1230,8 +775,6 @@ var host = new WebHostBuilder()
 Чтобы активировать конфигурацию коллекции в памяти, вызовите метод расширения <xref:Microsoft.Extensions.Configuration.MemoryConfigurationBuilderExtensions.AddInMemoryCollection*> в экземпляре <xref:Microsoft.Extensions.Configuration.ConfigurationBuilder>.
 
 Поставщик конфигурации может инициализироваться значением `IEnumerable<KeyValuePair<String,String>>`.
-
-::: moniker range=">= aspnetcore-2.1"
 
 Чтобы указать конфигурацию приложения, при сборке веб-узла вызовите <xref:Microsoft.Extensions.Hosting.HostBuilder.ConfigureAppConfiguration*>.
 
@@ -1261,49 +804,6 @@ public class Program
 ```
 
 При создании <xref:Microsoft.AspNetCore.Hosting.WebHostBuilder> вызовите <xref:Microsoft.AspNetCore.Hosting.HostingAbstractionsWebHostBuilderExtensions.UseConfiguration*> со следующей конфигурацией.
-
-::: moniker-end
-
-::: moniker range="= aspnetcore-2.0"
-
-Вызывая `CreateDefaultBuilder`, вызовите <xref:Microsoft.AspNetCore.Hosting.HostingAbstractionsWebHostBuilderExtensions.UseConfiguration*> со следующей конфигурацией.
-
-```csharp
-public class Program
-{
-    public static void Main(string[] args)
-    {
-        CreateWebHostBuilder(args).Build().Run();
-    }
-
-    public static IWebHostBuilder CreateWebHostBuilder(string[] args)
-    {
-        var dict = new Dictionary<string, string>
-            {
-                {"MemoryCollectionKey1", "value1"},
-                {"MemoryCollectionKey2", "value2"}
-            };
-
-        var config = new ConfigurationBuilder()
-            .AddInMemoryCollection(dict)
-            .Build();
-
-        return WebHost.CreateDefaultBuilder(args)
-            .UseConfiguration(config)
-            .UseStartup<Startup>();
-    }
-}
-```
-
-При создании <xref:Microsoft.AspNetCore.Hosting.WebHostBuilder> вызовите <xref:Microsoft.AspNetCore.Hosting.HostingAbstractionsWebHostBuilderExtensions.UseConfiguration*> со следующей конфигурацией.
-
-::: moniker-end
-
-::: moniker range="< aspnetcore-2.0"
-
-Примените конфигурацию к <xref:Microsoft.AspNetCore.Hosting.WebHostBuilder> с помощью метода <xref:Microsoft.AspNetCore.Hosting.HostingAbstractionsWebHostBuilderExtensions.UseConfiguration*>:
-
-::: moniker-end
 
 ```csharp
 var dict = new Dictionary<string, string>
@@ -1341,9 +841,9 @@ public class IndexModel : PageModel
     {
         _config = config;
     }
-    
+
     public int NumberConfig { get; private set; }
-        
+
     public void OnGet()
     {
         NumberConfig = _config.GetValue<int>("NumberKey", 99);
@@ -1424,8 +924,6 @@ var configSection = _config.GetSection("section2");
 var children = configSection.GetChildren();
 ```
 
-::: moniker range=">= aspnetcore-2.0"
-
 ### <a name="exists"></a>Exists
 
 Используйте [ConfigurationExtensions.Exists](xref:Microsoft.Extensions.Configuration.ConfigurationExtensions.Exists*), чтобы определить, существует ли раздел конфигурации.
@@ -1436,8 +934,6 @@ var sectionExists = _config.GetSection("section2:subsection2").Exists();
 
 Учитывая данные примера, `sectionExists` является `false`, потому что в данных конфигурации нет `section2:subsection2`.
 
-::: moniker-end
-
 ## <a name="bind-to-a-class"></a>Привязка к классу
 
 Конфигурация может быть привязана к классам, которые представляют группы связанных параметров, используя шаблон *вариантов*. Для получения дополнительной информации см. <xref:fundamentals/configuration/options>.
@@ -1446,31 +942,11 @@ var sectionExists = _config.GetSection("section2:subsection2").Exists();
 
 Пример приложения содержит модель `Starship` (*Models/Starship.cs*):
 
-::: moniker range=">= aspnetcore-2.0"
-
 [!code-csharp[](index/samples/2.x/ConfigurationSample/Models/Starship.cs?name=snippet1)]
-
-::: moniker-end
-
-::: moniker range="< aspnetcore-2.0"
-
-[!code-csharp[](index/samples/1.x/ConfigurationSample/Models/Starship.cs?name=snippet1)]
-
-::: moniker-end
 
 Раздел `starship` файла *starship.json* создает конфигурацию, когда образец приложения использует поставщик конфигурации JSON для загрузки конфигурации.
 
-::: moniker range=">= aspnetcore-2.0"
-
 [!code-json[](index/samples/2.x/ConfigurationSample/starship.json)]
-
-::: moniker-end
-
-::: moniker range="< aspnetcore-2.0"
-
-[!code-json[](index/samples/1.x/ConfigurationSample/starship.json)]
-
-::: moniker-end
 
 Создаются следующие пары "ключ — значение" конфигурации.
 
@@ -1485,17 +961,7 @@ var sectionExists = _config.GetSection("section2:subsection2").Exists();
 
 Пример приложения вызывает `GetSection` с помощью ключа `starship`. Пары "ключ — значение" `starship` изолированы. Метод `Bind` вызывается в подразделе при прохождении в экземпляр класса `Starship`. После привязки значения экземпляра экземпляру присваивается свойство для преобразования для просмотра.
 
-::: moniker range=">= aspnetcore-2.0"
-
 [!code-csharp[](index/samples/2.x/ConfigurationSample/Pages/Index.cshtml.cs?name=snippet_starship)]
-
-::: moniker-end
-
-::: moniker range="< aspnetcore-2.0"
-
-[!code-csharp[](index/samples/1.x/ConfigurationSample/Controllers/HomeController.cs?name=snippet_starship)]
-
-::: moniker-end
 
 `GetSection` находится в пакете [Microsoft.Extensions.Configuration](https://www.nuget.org/packages/Microsoft.Extensions.Configuration/), который включен в [метапакет Microsoft.AspNetCore.App](xref:fundamentals/metapackage-app).
 
@@ -1505,35 +971,13 @@ var sectionExists = _config.GetSection("section2:subsection2").Exists();
 
 Образец содержит модель `TvShow`, в графе объектов которого находятся классы `Metadata` и `Actors` (*Модели/TvShow.cs*).
 
-::: moniker range=">= aspnetcore-2.0"
-
 [!code-csharp[](index/samples/2.x/ConfigurationSample/Models/TvShow.cs?name=snippet1)]
-
-::: moniker-end
-
-::: moniker range="< aspnetcore-2.0"
-
-[!code-csharp[](index/samples/1.x/ConfigurationSample/Models/TvShow.cs?name=snippet1)]
-
-::: moniker-end
 
 В примере приложения есть файл *tvshow.xml*, содержащий данные конфигурации.
 
-::: moniker range=">= aspnetcore-2.0"
-
 [!code-xml[](index/samples/2.x/ConfigurationSample/tvshow.xml)]
 
-::: moniker-end
-
-::: moniker range="< aspnetcore-2.0"
-
-[!code-xml[](index/samples/1.x/ConfigurationSample/tvshow.xml)]
-
-::: moniker-end
-
 Конфигурация привязана ко всему ​​графу объектов `TvShow` с помощью метода `Bind`. Привязанный экземпляр присваивается свойству для подготовки к просмотру.
-
-::: moniker range=">= aspnetcore-2.0"
 
 ```csharp
 var tvShow = new TvShow();
@@ -1541,35 +985,9 @@ _config.GetSection("tvshow").Bind(tvShow);
 TvShow = tvShow;
 ```
 
-::: moniker-end
-
-::: moniker range="< aspnetcore-2.0"
-
-```csharp
-var tvShow = new TvShow();
-_config.GetSection("tvshow").Bind(tvShow);
-viewModel.TvShow = tvShow;
-```
-
-::: moniker-end
-
-::: moniker range=">= aspnetcore-1.1"
-
 [ConfigurationBinder.Get&lt;T&gt;](xref:Microsoft.Extensions.Configuration.ConfigurationBinder.Get*) привязывает и возвращает указанный тип. Метод `Get<T>` может быть более удобным, чем использование `Bind`. В следующем коде показано, как использовать `Get<T>` с предыдущим примером, который позволяет привязать связанный экземпляр непосредственно к свойству, используемому для подготовки к просмотру.
 
-::: moniker-end
-
-::: moniker range=">= aspnetcore-2.0"
-
 [!code-csharp[](index/samples/2.x/ConfigurationSample/Pages/Index.cshtml.cs?name=snippet_tvshow)]
-
-::: moniker-end
-
-::: moniker range="= aspnetcore-1.1"
-
-[!code-csharp[](index/samples/1.x/ConfigurationSample/Controllers/HomeController.cs?name=snippet_tvshow)]
-
-::: moniker-end
 
 <xref:Microsoft.Extensions.Configuration.ConfigurationBinder.Get*> находится в пакете [Microsoft.Extensions.Configuration.Binder](https://www.nuget.org/packages/Microsoft.Extensions.Configuration.Binder/), который включен в [метапакет Microsoft.AspNetCore.App](xref:fundamentals/metapackage-app). `Get<T>` доступно в ASP.NET Core 1.1 и более поздних версий. `GetSection` находится в пакете [Microsoft.Extensions.Configuration](https://www.nuget.org/packages/Microsoft.Extensions.Configuration/), который включен в [метапакет Microsoft.AspNetCore.App](xref:fundamentals/metapackage-app).
 
@@ -1596,33 +1014,13 @@ viewModel.TvShow = tvShow;
 
 Эти ключи и значения загружаются в пример приложения с помощью поставщика конфигурации памяти.
 
-::: moniker range=">= aspnetcore-2.0"
-
 [!code-csharp[](index/samples/2.x/ConfigurationSample/Program.cs?name=snippet_Program&highlight=3-10,22)]
-
-::: moniker-end
-
-::: moniker range="< aspnetcore-2.0"
-
-[!code-csharp[](index/samples/1.x/ConfigurationSample/Startup.cs?name=snippet_Startup&highlight=5-12,16)]
-
-::: moniker-end
 
 Массив пропускает значения для индекса &num;3. Связующее свойство конфигурации не способно связывать нулевые значения или создавать нулевые записи в связанных объектах, что становится ясным в тот момент, когда демонстрируется результат привязки этого массива к объекту.
 
 В примере приложения класс POCO доступен для хранения привязанных данных конфигурации.
 
-::: moniker range=">= aspnetcore-2.0"
-
 [!code-csharp[](index/samples/2.x/ConfigurationSample/Models/ArrayExample.cs?name=snippet1)]
-
-::: moniker-end
-
-::: moniker range="< aspnetcore-2.0"
-
-[!code-csharp[](index/samples/1.x/ConfigurationSample/Models/ArrayExample.cs?name=snippet1)]
-
-::: moniker-end
 
 Данные конфигурации, связанные с объектом.
 
@@ -1633,23 +1031,9 @@ _config.GetSection("array").Bind(arrayExample);
 
 `GetSection` находится в пакете [Microsoft.Extensions.Configuration](https://www.nuget.org/packages/Microsoft.Extensions.Configuration/), который включен в [метапакет Microsoft.AspNetCore.App](xref:fundamentals/metapackage-app).
 
-::: moniker range=">= aspnetcore-1.1"
-
 Синтаксис [ConfigurationBinder.Get&lt;T&gt;](xref:Microsoft.Extensions.Configuration.ConfigurationBinder.Get*) также может использоваться для получения более компактного кода.
 
-::: moniker-end
-
-::: moniker range=">= aspnetcore-2.0"
-
 [!code-csharp[](index/samples/2.x/ConfigurationSample/Pages/Index.cshtml.cs?name=snippet_array)]
-
-::: moniker-end
-
-::: moniker range="= aspnetcore-1.1"
-
-[!code-csharp[](index/samples/1.x/ConfigurationSample/Controllers/HomeController.cs?name=snippet_array)]
-
-::: moniker-end
 
 Связанный объект, экземпляр `ArrayExample`, получает данные массива из конфигурации.
 
@@ -1673,25 +1057,11 @@ _config.GetSection("array").Bind(arrayExample);
 }
 ```
 
-::: moniker range=">= aspnetcore-2.0"
-
 В <xref:Microsoft.Extensions.Hosting.HostBuilder.ConfigureAppConfiguration*>:
 
 ```csharp
 config.AddJsonFile("missing_value.json", optional: false, reloadOnChange: false);
 ```
-
-::: moniker-end
-
-::: moniker range="< aspnetcore-2.0"
-
-В конструкторе `Startup`:
-
-```csharp
-.AddJsonFile("missing_value.json", optional: false, reloadOnChange: false);
-```
-
-::: moniker-end
 
 Пары "ключ — значение", показанные в таблице, загружаются в конфигурации.
 
@@ -1714,17 +1084,7 @@ config.AddJsonFile("missing_value.json", optional: false, reloadOnChange: false)
 
 Если JSON-файл содержит массив, ключи конфигурации будут созданы для элементов массива с индексом раздела, начиная с нуля. В следующем файле конфигурации `subsection` — это массив.
 
-::: moniker range=">= aspnetcore-2.0"
-
 [!code-json[](index/samples/2.x/ConfigurationSample/json_array.json)]
-
-::: moniker-end
-
-::: moniker range="< aspnetcore-2.0"
-
-[!code-json[](index/samples/1.x/ConfigurationSample/json_array.json)]
-
-::: moniker-end
 
 Поставщик конфигурации JSON считывает данные конфигурации в следующие пары "ключ — значение".
 
@@ -1737,17 +1097,7 @@ config.AddJsonFile("missing_value.json", optional: false, reloadOnChange: false)
 
 В примере приложения для привязки пар "ключ — значение" конфигурации доступен следующий класс POCO.
 
-::: moniker range=">= aspnetcore-2.0"
-
 [!code-csharp[](index/samples/2.x/ConfigurationSample/Models/JsonArrayExample.cs?name=snippet1)]
-
-::: moniker-end
-
-::: moniker range="< aspnetcore-2.0"
-
-[!code-csharp[](index/samples/1.x/ConfigurationSample/Models/JsonArrayExample.cs?name=snippet1)]
-
-::: moniker-end
 
 После выполнения привязки `JsonArrayExample.Key` содержит значение `valueA`. Подраздел значения хранится в свойстве массива POCO `Subsection`.
 
@@ -1771,95 +1121,35 @@ config.AddJsonFile("missing_value.json", optional: false, reloadOnChange: false)
 
 *Models/EFConfigurationValue.cs*:
 
-::: moniker range=">= aspnetcore-2.0"
-
 [!code-csharp[](index/samples/2.x/ConfigurationSample/Models/EFConfigurationValue.cs?name=snippet1)]
-
-::: moniker-end
-
-::: moniker range="< aspnetcore-2.0"
-
-[!code-csharp[](index/samples/1.x/ConfigurationSample/Models/EFConfigurationValue.cs?name=snippet1)]
-
-::: moniker-end
 
 Добавьте `EFConfigurationContext` в хранилище и обратитесь к настроенным значениям.
 
 *EFConfigurationProvider/EFConfigurationContext.cs*:
 
-::: moniker range=">= aspnetcore-2.0"
-
 [!code-csharp[](index/samples/2.x/ConfigurationSample/EFConfigurationProvider/EFConfigurationContext.cs?name=snippet1)]
-
-::: moniker-end
-
-::: moniker range="< aspnetcore-2.0"
-
-[!code-csharp[](index/samples/1.x/ConfigurationSample/EFConfigurationProvider/EFConfigurationContext.cs?name=snippet1)]
-
-::: moniker-end
 
 Создайте класс, реализующий <xref:Microsoft.Extensions.Configuration.IConfigurationSource>.
 
 *EFConfigurationProvider/EFConfigurationSource.cs*:
 
-::: moniker range=">= aspnetcore-2.0"
-
 [!code-csharp[](index/samples/2.x/ConfigurationSample/EFConfigurationProvider/EFConfigurationSource.cs?name=snippet1)]
-
-::: moniker-end
-
-::: moniker range="< aspnetcore-2.0"
-
-[!code-csharp[](index/samples/1.x/ConfigurationSample/EFConfigurationProvider/EFConfigurationSource.cs?name=snippet1)]
-
-::: moniker-end
 
 Создайте пользовательский поставщик конфигурации путем наследования от <xref:Microsoft.Extensions.Configuration.ConfigurationProvider>. Поставщик конфигурации инициализирует пустую базу данных.
 
 *EFConfigurationProvider/EFConfigurationProvider.cs*:
 
-::: moniker range=">= aspnetcore-2.0"
-
 [!code-csharp[](index/samples/2.x/ConfigurationSample/EFConfigurationProvider/EFConfigurationProvider.cs?name=snippet1)]
-
-::: moniker-end
-
-::: moniker range="< aspnetcore-2.0"
-
-[!code-csharp[](index/samples/1.x/ConfigurationSample/EFConfigurationProvider/EFConfigurationProvider.cs?name=snippet1)]
-
-::: moniker-end
 
 Метод расширения `AddEFConfiguration` позволяет добавить источник конфигурации к `ConfigurationBuilder`.
 
 *Extensions/EntityFrameworkExtensions.cs*:
 
-::: moniker range=">= aspnetcore-2.0"
-
 [!code-csharp[](index/samples/2.x/ConfigurationSample/Extensions/EntityFrameworkExtensions.cs?name=snippet1)]
-
-::: moniker-end
-
-::: moniker range="< aspnetcore-2.0"
-
-[!code-csharp[](index/samples/1.x/ConfigurationSample/Extensions/EntityFrameworkExtensions.cs?name=snippet1)]
-
-::: moniker-end
 
 В следующем коде показано, как использовать пользовательский `EFConfigurationProvider` в *Program.cs*.
 
-::: moniker range=">= aspnetcore-2.0"
-
 [!code-csharp[](index/samples/2.x/ConfigurationSample/Program.cs?name=snippet_Program&highlight=26)]
-
-::: moniker-end
-
-::: moniker range="< aspnetcore-2.0"
-
-[!code-csharp[](index/samples/1.x/ConfigurationSample/Startup.cs?name=snippet_Startup&highlight=24)]
-
-::: moniker-end
 
 ## <a name="access-configuration-during-startup"></a>Доступ к конфигурации во время запуска
 
