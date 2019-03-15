@@ -4,14 +4,14 @@ author: guardrex
 description: Общие сведения о Kestrel — кроссплатформенном веб-сервере для ASP.NET Core.
 ms.author: tdykstra
 ms.custom: mvc
-ms.date: 02/13/2019
+ms.date: 03/04/2019
 uid: fundamentals/servers/kestrel
-ms.openlocfilehash: dcf027c2c495cbecd8464e43749b9154a4360e36
-ms.sourcegitcommit: 6ba5fb1fd0b7f9a6a79085b0ef56206e462094b7
+ms.openlocfilehash: 5fc6c78f3eb76fcf3dd663c8d878250f0051f153
+ms.sourcegitcommit: 191d21c1e37b56f0df0187e795d9a56388bbf4c7
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56248411"
+ms.lasthandoff: 03/08/2019
+ms.locfileid: "57665643"
 ---
 # <a name="kestrel-web-server-implementation-in-aspnet-core"></a>Реализации веб-сервера Kestrel в ASP.NET Core
 
@@ -417,6 +417,17 @@ public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
 * `http://localhost:5000`
 * `https://localhost:5001` (если присутствует локальный сертификат разработки)
 
+Укажите URL-адреса с помощью следующих параметров:
+
+* Переменная среды `ASPNETCORE_URLS`.
+* Аргументы командной строки `--urls`.
+* Ключ конфигурации узла `urls`.
+* Метод расширения `UseUrls`.
+
+Значение, указанное с помощью этих подходов, может быть одной или несколькими конечными точками HTTP и HTTPS (HTTPS при наличии сертификата по умолчанию). Настройте значение в виде списка с разделением точкой с запятой (например, `"Urls": "http://localhost:8000;http://localhost:8001"`).
+
+Дополнительные сведения о таких подходах см. в разделах [URL-адреса сервера](xref:fundamentals/host/web-host#server-urls) и [Переопределение конфигурации](xref:fundamentals/host/web-host#override-configuration).
+
 Сертификат разработки создается, когда:
 
 * установлен [пакет SDK для .NET Core](/dotnet/core/sdk);
@@ -430,7 +441,7 @@ public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
 
 `UseUrls`, аргумент командной строки `--urls`, ключ конфигурации узла `urls` и переменная среды `ASPNETCORE_URLS` тоже работают, однако на них распространяются ограничения, указанные далее в этой статье (для конфигурации конечной точки HTTPS требуется сертификат по умолчанию).
 
-Конфигурация `KestrelServerOptions` в ASP.NET Core 2.1:
+Конфигурация `KestrelServerOptions` в ASP.NET Core 2.1 или более поздней версии:
 
 ### <a name="configureendpointdefaultsactionltlistenoptionsgt"></a>ConfigureEndpointDefaults(Action&lt;ListenOptions&gt;)
 
@@ -484,17 +495,6 @@ public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
 *Отсутствие конфигурации*
 
 Kestrel ожидает передачи данных через `http://localhost:5000` и `https://localhost:5001` (если доступен сертификат по умолчанию).
-
-Укажите URL-адреса с помощью следующих параметров:
-
-* Переменная среды `ASPNETCORE_URLS`.
-* Аргументы командной строки `--urls`.
-* Ключ конфигурации узла `urls`.
-* Метод расширения `UseUrls`.
-
-Дополнительные сведения см. в разделах [URL-адреса серверов](xref:fundamentals/host/web-host#server-urls) и [Переопределение конфигурации](xref:fundamentals/host/web-host#override-configuration).
-
-Значение, указанное с помощью этих подходов, может быть одной или несколькими конечными точками HTTP и HTTPS (HTTPS при наличии сертификата по умолчанию). Настройте значение в виде списка с разделением точкой с запятой (например, `"Urls": "http://localhost:8000; http://localhost:8001"`).
 
 *Замена сертификата по умолчанию из конфигурации*
 
