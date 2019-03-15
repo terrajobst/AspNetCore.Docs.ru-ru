@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 02/27/2019
 uid: security/cors
-ms.openlocfilehash: eb8dd3b1c96d9060b0164dcd4d0fbe004ed4af84
-ms.sourcegitcommit: 036d4b03fd86ca5bb378198e29ecf2704257f7b2
+ms.openlocfilehash: 6be8b4da1642a9eff021371c229a17071d6e9bfb
+ms.sourcegitcommit: d913bca90373c07f89b1d1df01af5fc01fc908ef
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57346376"
+ms.lasthandoff: 03/14/2019
+ms.locfileid: "57978475"
 ---
 # <a name="enable-cross-origin-requests-cors-in-aspnet-core"></a>Включение запросов о происхождении (CORS) в ASP.NET Core
 
@@ -446,11 +446,11 @@ Test message
 
   * С помощью Microsoft Edge:
 
-    **SEC7120: [CORS] источник "https://localhost:44375«не удалось найти» https://localhost:44375«в заголовке ответа Access-Control-Allow-Origin для ресурса независимо от источника» https://webapi.azurewebsites.net/api/values/1".**
+    **SEC7120: [CORS] источник `https://localhost:44375` не обнаружил `https://localhost:44375` в заголовке ответа Access-Control-Allow-Origin для ресурса независимо от источника `https://webapi.azurewebsites.net/api/values/1`**
 
   * С помощью Chrome:
 
-    **Доступ к XMLHttpRequest в "https://webapi.azurewebsites.net/api/values/1«с началом координат» https://localhost:44375" заблокирован политикой CORS: Заголовок «Access-Control-Allow-Origin» отсутствует для запрашиваемого ресурса.**
+    **Доступ к XMLHttpRequest в `https://webapi.azurewebsites.net/api/values/1` от начала `https://localhost:44375` была заблокирована политикой CORS: Заголовок «Access-Control-Allow-Origin» отсутствует для запрашиваемого ресурса.**
 
 ## <a name="additional-resources"></a>Дополнительные ресурсы
 
