@@ -4,14 +4,14 @@ author: guardrex
 description: Сведения о диагностике проблем с развертываниями приложений ASP.NET Core на платформе IIS.
 ms.author: riande
 ms.custom: mvc
-ms.date: 12/18/2018
+ms.date: 03/06/2019
 uid: host-and-deploy/iis/troubleshoot
-ms.openlocfilehash: 68fcd578c051ae9ba6234cad0465a7ef42f1ed14
-ms.sourcegitcommit: 816f39e852a8f453e8682081871a31bc66db153a
+ms.openlocfilehash: 2f36ae2bda8537e91a3bc925505986bdd6a22a47
+ms.sourcegitcommit: 34bf9fc6ea814c039401fca174642f0acb14be3c
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53637694"
+ms.lasthandoff: 03/14/2019
+ms.locfileid: "57841557"
 ---
 # <a name="troubleshoot-aspnet-core-on-iis"></a>Устранение неполадок ASP.NET Core в службах IIS
 
@@ -236,13 +236,51 @@ Failed to start application '/LM/W3SVC/6/ROOT/', ErrorCode '0x800700c1'.
 
 Если приложение способно отвечать на запросы, получите данные о запросе, подключении и дополнительные данные из приложений с помощью встроенного терминала ПО промежуточного слоя. Дополнительные сведения и примеры с кодом см. здесь: <xref:test/troubleshoot#obtain-data-from-an-app>.
 
-## <a name="slow-or-hanging-app"></a>Медленное или зависающее приложение
+## <a name="create-a-dump"></a>Создание дампа
 
-Если приложение медленно реагирует на запрос или зависает при его обработке, найдите и проанализируйте [файл дампа](/visualstudio/debugger/using-dump-files). Чтобы получить файлы дампа, можно использовать любое из следующих средств:
+*Дамп* представляет собой моментальный снимок системной памяти и может помочь определить причину аварийного завершения, сбоя запуска или медленной работы приложения.
 
-* [ProcDump](/sysinternals/downloads/procdump);
-* [DebugDiag](https://www.microsoft.com/download/details.aspx?id=49924);
-* WinDbg: [скачивание инструментов отладки для Windows](https://developer.microsoft.com/windows/hardware/download-windbg), [отладка с помощью WinDbg](/windows-hardware/drivers/debugger/debugging-using-windbg)
+### <a name="app-crashes-or-encounters-an-exception"></a>Аварийное завершение работы приложения или исключение
+
+Получите и проанализируйте дамп из [отчетов об ошибках Windows (WER)](/windows/desktop/wer/windows-error-reporting):
+
+1. Создайте папку для хранения файлов аварийного дампа в `c:\dumps`. Пул приложений должен иметь доступ на запись к папке.
+1. Запустите [скрипт PowerShell EnableDumps](https://github.com/aspnet/Docs/tree/master/aspnetcore/host-and-deploy/troubleshoot/scripts/EnableDumps.ps1):
+   * Если приложение использует [модель размещения в процессе](xref:fundamentals/servers/index#in-process-hosting-model), выполните скрипт для *w3wp.exe*:
+
+     ```console
+     .\EnableDumps w3wp.exe c:\dumps
+     ```
+   * Если приложение использует [модель размещения вне процесса](xref:fundamentals/servers/index#out-of-process-hosting-model), выполните скрипт для *dotnet.exe*:
+
+     ```console
+     .\EnableDumps dotnet.exe c:\dumps
+     ```
+1. Запустите приложение в условиях, вызывающих аварийное завершение.
+1. После аварийного завершения запустите [скрипт PowerShell DisableDumps](https://github.com/aspnet/Docs/tree/master/aspnetcore/host-and-deploy/troubleshoot/scripts/DisableDumps.ps1):
+   * Если приложение использует [модель размещения в процессе](xref:fundamentals/servers/index#in-process-hosting-model), выполните скрипт для *w3wp.exe*:
+
+     ```console
+     .\DisableDumps w3wp.exe
+     ```
+   * Если приложение использует [модель размещения вне процесса](xref:fundamentals/servers/index#out-of-process-hosting-model), выполните скрипт для *dotnet.exe*:
+
+     ```console
+     .\DisableDumps dotnet.exe
+     ```
+
+Когда приложение аварийно завершит работу и сбор дампов будет выполнен, приложение сможет завершить работу обычным образом. Скрипт PowerShell настраивает отчеты об ошибках Windows для сбора до пяти дампов для приложения.
+
+> [!WARNING]
+> Аварийные дампы могут занимать много места на диске (до нескольких гигабайтов каждый).
+
+### <a name="app-hangs-fails-during-startup-or-runs-normally"></a>Приложение перестает отвечать на запросы, не запускается или работает в обычном режиме
+
+Когда приложение *перестает отвечать на запросы* (но аварийное завершение не происходит), не запускается или работает в обычном режиме, см. раздел [Файлы дампа пользовательского режима: выбор лучшего инструмента](/windows-hardware/drivers/debugger/user-mode-dump-files#choosing-the-best-tool), чтобы выбрать подходящий инструмент для создания дампа.
+
+### <a name="analyze-the-dump"></a>Анализ дампа
+
+Дамп можно проанализировать несколькими способами. Дополнительные сведения см. в разделе [Анализ файла дампа пользовательского режима](/windows-hardware/drivers/debugger/analyzing-a-user-mode-dump-file).
 
 ## <a name="remote-debugging"></a>Удаленная отладка
 

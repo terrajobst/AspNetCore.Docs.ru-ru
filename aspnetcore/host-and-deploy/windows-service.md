@@ -5,14 +5,14 @@ description: Узнайте, как разместить приложение AS
 monikerRange: '>= aspnetcore-2.1'
 ms.author: tdykstra
 ms.custom: mvc
-ms.date: 02/13/2019
+ms.date: 03/08/2019
 uid: host-and-deploy/windows-service
-ms.openlocfilehash: 081a631c9c3e74c01e15f4b0b272d650c162bd20
-ms.sourcegitcommit: 6ba5fb1fd0b7f9a6a79085b0ef56206e462094b7
+ms.openlocfilehash: ecc7f3a8cd813c2803d03294e38d726905eeb1b8
+ms.sourcegitcommit: 34bf9fc6ea814c039401fca174642f0acb14be3c
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56248255"
+ms.lasthandoff: 03/14/2019
+ms.locfileid: "57841427"
 ---
 # <a name="host-aspnet-core-in-a-windows-service"></a>Размещение ASP.NET Core в службе Windows
 
@@ -21,6 +21,10 @@ ms.locfileid: "56248255"
 Приложение ASP.NET Core можно разместить в Windows в качестве [службы Windows](/dotnet/framework/windows-services/introduction-to-windows-service-applications) без использования IIS. При размещении в качестве службы Windows приложение автоматически запускается после перезагрузки.
 
 [Просмотреть или скачать образец кода](https://github.com/aspnet/Docs/tree/master/aspnetcore/host-and-deploy/windows-service/samples) ([как скачивать](xref:index#how-to-download-a-sample))
+
+## <a name="prerequisites"></a>Предварительные требования
+
+* [PowerShell 6](https://github.com/PowerShell/PowerShell)
 
 ## <a name="deployment-type"></a>Тип развертывания
 
@@ -121,13 +125,13 @@ ms.locfileid: "56248255"
 
 [!code-csharp[](windows-service/samples/2.x/AspNetCoreService/Program.cs?name=snippet_Program)]
 
-### <a name="publish-the-app"></a>Публикация приложения
+## <a name="publish-the-app"></a>Публикация приложения
 
 Опубликуйте приложение с помощью команды [dotnet publish](/dotnet/articles/core/tools/dotnet-publish), [профиля публикации Visual Studio](xref:host-and-deploy/visual-studio-publish-profiles) или Visual Studio Code. Если вы используете Visual Studio, выберите **FolderProfile** и настройте **целевое расположение**, прежде чем нажимать кнопку **Опубликовать**.
 
 Чтобы опубликовать пример приложения с помощью интерфейса командной строки (CLI), выполните в командной строке команду [dotnet publish](/dotnet/core/tools/dotnet-publish) в папке проекта с конфигурацией выпуска, передаваемой параметру [-c|--configuration](/dotnet/core/tools/dotnet-publish#options). Чтобы опубликовать этот пример в папке за пределами приложения, задайте параметр [-o|--output](/dotnet/core/tools/dotnet-publish#options) и укажите путь.
 
-#### <a name="publish-a-framework-dependent-deployment-fdd"></a>Публикация зависящего от платформы развертывания
+### <a name="publish-a-framework-dependent-deployment-fdd"></a>Публикация зависящего от платформы развертывания
 
 В следующем примере приложение публикуется в папке *c:\\svc*.
 
@@ -135,7 +139,7 @@ ms.locfileid: "56248255"
 dotnet publish --configuration Release --output c:\svc
 ```
 
-#### <a name="publish-a-self-contained-deployment-scd"></a>Публикация автономного развертывания
+### <a name="publish-a-self-contained-deployment-scd"></a>Публикация автономного развертывания
 
 Идентификатор RID следует указать в свойстве `<RuntimeIdenfifier>` (или `<RuntimeIdentifiers>`) в файле проекта. Укажите среду выполнения в параметре [-r|--runtime](/dotnet/core/tools/dotnet-publish#options) команды `dotnet publish`.
 
@@ -145,11 +149,11 @@ dotnet publish --configuration Release --output c:\svc
 dotnet publish --configuration Release --runtime win7-x64 --output c:\svc
 ```
 
-### <a name="create-a-user-account"></a>Создание учетной записи пользователя
+## <a name="create-a-user-account"></a>Создание учетной записи пользователя
 
-Создайте для службы учетную запись пользователя с помощью команды `net user` из административной командной оболочки:
+Создайте для службы учетную запись пользователя с помощью команды `net user` из административной командной оболочки PowerShell 6:
 
-```console
+```powershell
 net user {USER ACCOUNT} {PASSWORD} /add
 ```
 
@@ -157,13 +161,13 @@ net user {USER ACCOUNT} {PASSWORD} /add
 
 Для примера приложения создайте учетную запись пользователя с именем `ServiceUser` и пароль. В следующей команде замените `{PASSWORD}` на [надежный пароль](/windows/security/threat-protection/security-policy-settings/password-must-meet-complexity-requirements).
 
-```console
+```powershell
 net user ServiceUser {PASSWORD} /add
 ```
 
 Если вам нужно добавить пользователя в группу, используйте команду `net localgroup`, где `{GROUP}` — это имя группы:
 
-```console
+```powershell
 net localgroup {GROUP} {USER ACCOUNT} /add
 ```
 
@@ -171,13 +175,11 @@ net localgroup {GROUP} {USER ACCOUNT} /add
 
 Альтернативный подход к управлению пользователями при работе с Active Directory заключается в применении управляемых учетных записей служб. Дополнительные сведения см. в [обзоре групповых управляемых учетных записей службы](/windows-server/security/group-managed-service-accounts/group-managed-service-accounts-overview).
 
-### <a name="set-permissions"></a>Настройка разрешений
+## <a name="set-permission-log-on-as-a-service"></a>Установка разрешений: Вход в систему в качестве службы
 
-#### <a name="access-to-the-app-folder"></a>Доступ к папке приложения
+Предоставьте доступ на запись, чтение и выполнение для папки приложения с помощью команды [icacls](/windows-server/administration/windows-commands/icacls):
 
-Предоставьте доступ на запись, чтение и выполнение к папке приложения с помощью команды [icacls](/windows-server/administration/windows-commands/icacls) из административной командной оболочки:
-
-```console
+```powershell
 icacls "{PATH}" /grant {USER ACCOUNT}:(OI)(CI){PERMISSION FLAGS} /t
 ```
 
@@ -195,82 +197,69 @@ icacls "{PATH}" /grant {USER ACCOUNT}:(OI)(CI){PERMISSION FLAGS} /t
 
 Для примера приложения, опубликованного в папке *c:\\svc*, и учетной записи `ServiceUser` с разрешениями на запись, чтение и выполнение используйте следующую команду:
 
-```console
+```powershell
 icacls "c:\svc" /grant ServiceUser:(OI)(CI)WRX /t
 ```
 
 Дополнительные сведения см. в статье об [icacls](/windows-server/administration/windows-commands/icacls).
 
-#### <a name="log-on-as-a-service"></a>вход в систему в качестве службы;
+## <a name="create-the-service"></a>Создание службы
 
-Чтобы предоставить учетной записи пользователя разрешение на [вход в качестве службы](/windows/security/threat-protection/security-policy-settings/log-on-as-a-service), сделайте следующее:
+Используйте скрипт PowerShell [RegisterService.ps1](https://github.com/aspnet/Docs/tree/master/aspnetcore/host-and-deploy/windows-service/scripts), чтобы зарегистрировать службу. Из административной командной строки PowerShell 6 выполните следующую команду:
 
-1. Найдите политики **назначения прав пользователя** в консоли локальной политики безопасности или в консоли редактора локальных групповых политик. Инструкции см. в разделе: [Настройка параметров политики безопасности](/windows/security/threat-protection/security-policy-settings/how-to-configure-security-policy-settings).
-1. Найдите политику `Log on as a service`. Дважды щелкните имя политики, чтобы открыть ее.
-1. Щелкните **Добавить пользователя или группу**.
-1. Выберите **Дополнительно**, а затем **Найти**.
-1. Выберите учетную запись пользователя, которую вы создали при работе с разделом [Создание учетной записи пользователя](#create-a-user-account). Щелкните **ОК**, чтобы подтвердить выбор.
-1. Убедитесь, что имя объекта указано правильно, и щелкните **ОК**.
-1. Нажмите кнопку **Применить**. Щелкните **ОК**, чтобы закрыть окно политики.
-
-## <a name="manage-the-service"></a>Управление службой
-
-### <a name="create-the-service"></a>Создание службы
-
-Используйте программу командной строки [sc.exe](https://technet.microsoft.com/library/bb490995), чтобы создать службу из административной командной оболочки. Значение `binPath` обозначает путь к исполняемому файлу приложения, включая имя самого файла. **Требуется пробел между знаком равенства и кавычками для каждого обязательного параметра и значения.**
-
-```console
-sc create {SERVICE NAME} binPath= "{PATH}" obj= "{DOMAIN}\{USER ACCOUNT}" password= "{PASSWORD}"
+```powershell
+.\RegisterService.ps1 
+    -Name {NAME} 
+    -DisplayName "{DISPLAY NAME}" 
+    -Description "{DESCRIPTION}" 
+    -Path "{PATH}" 
+    -Exe {ASSEMBLY}.exe 
+    -User {DOMAIN\USER}
 ```
-
-* `{SERVICE NAME}` &ndash; имя, присваиваемое службе в [диспетчере служб](/windows/desktop/services/service-control-manager).
-* `{PATH}` &ndash; путь к исполняемому файлу.
-* `{DOMAIN}` &ndash; домен, к которому присоединен компьютер. Если компьютер не присоединен к домену, используйте имя локального компьютера.
-* `{USER ACCOUNT}` &ndash; учетная запись пользователя, которая используется для запуска службы.
-* `{PASSWORD}` &ndash; пароль учетной записи пользователя.
-
-> [!WARNING]
-> **Не** пропускайте параметр `obj`. Значение по умолчанию параметра `obj` — это [учетная запись LocalSystem](/windows/desktop/services/localsystem-account). Выполнение службы под учетной записью `LocalSystem` представляет собой серьезную угрозу безопасности. Всегда запускайте службу, используя учетную запись пользователя с ограниченными разрешениями.
 
 В примере ниже для примера приложения указано следующее:
 
 * Служба называется **MyService**.
-* Опубликованная служба размещается в папке *c:\\svc*. Исполняемый файл приложения с именем *SampleApp.exe*. Значение `binPath` заключается в двойные кавычки (").
-* Служба работает под учетной записью `ServiceUser`. Замените `{DOMAIN}` на домен учетной записи пользователя или имя локального компьютера. Значение `obj` заключается в двойные кавычки ("). Пример Если система размещения — это локальный компьютер с именем `MairaPC`, задайте для параметра `obj` значение `"MairaPC\ServiceUser"`.
-* Замените `{PASSWORD}` на пароль учетной записи пользователя. Значение `password` заключается в двойные кавычки (").
+* Опубликованная служба размещается в папке *c:\\svc*. Исполняемый файл приложения с именем *SampleApp.exe*.
+* Служба работает под учетной записью `ServiceUser`. В следующем примере именем локального компьютера является `Desktop-PC`.
 
-```console
-sc create MyService binPath= "c:\svc\sampleapp.exe" obj= "{DOMAIN}\ServiceUser" password= "{PASSWORD}"
+```powershell
+.\RegisterService.ps1 
+    -Name MyService 
+    -DisplayName "My Cool Service" 
+    -Description "This is the Sample App service." 
+    -Path "c:\svc" 
+    -Exe SampleApp.exe 
+    -User Desktop-PC\ServiceUser
 ```
 
-> [!IMPORTANT]
-> Убедитесь, что между знаками равенства и значениями параметров есть пробелы.
+## <a name="manage-the-service"></a>Управление службой
 
 ### <a name="start-the-service"></a>Запуск службы
 
-Запустите службу с помощью команды `sc start {SERVICE NAME}`.
+Запустите службу с помощью команды PowerShell 6 `Start-Service -Name {NAME}`.
 
 Чтобы запустить пример службы приложения, используйте следующую команду:
 
-```console
-sc start MyService
+```powershell
+Start-Service -Name MyService
 ```
 
 Команде потребуется несколько секунд, чтобы запустить службу.
 
 ### <a name="determine-the-service-status"></a>Определение состояния службы
 
-Чтобы проверить состояние службы, используйте команду `sc query {SERVICE NAME}`. Состояние отображается одним из следующих значений:
+Чтобы проверить состояние службы, используйте команду PowerShell 6 `Get-Service -Name {NAME}`. Состояние отображается одним из следующих значений:
 
-* `START_PENDING`
-* `RUNNING`
-* `STOP_PENDING`
-* `STOPPED`
+* `Starting`
+* `Running`
+* `Stopping`
+* `Stopped`
 
 Чтобы проверить состояние примера службы приложения, используйте следующую команду:
 
-```console
-sc query MyService
+```powershell
+Get-Service -Name MyService
 ```
 
 ### <a name="browse-a-web-app-service"></a>Обзор службы веб-приложений
@@ -281,28 +270,22 @@ sc query MyService
 
 ### <a name="stop-the-service"></a>Остановите службу
 
-Остановите службу с помощью команды `sc stop {SERVICE NAME}`.
+Остановите службу с помощью команды PowerShell 6 `Stop-Service -Name {NAME}`.
 
 Чтобы остановить пример службы приложения, используйте следующую команду:
 
-```console
-sc stop MyService
+```powershell
+Stop-Service -Name MyService
 ```
 
-### <a name="delete-the-service"></a>Удаление службы
+### <a name="remove-the-service"></a>Удаление службы
 
-После небольшой задержки для остановки службы удалите службу с помощью команды `sc delete {SERVICE NAME}`.
+После небольшой задержки для остановки службы удалите службу с помощью команды Powershell 6 `Remove-Service -Name {NAME}`.
 
 Проверьте состояние примера службы приложений:
 
-```console
-sc query MyService
-```
-
-Когда пример службы приложений находится в состоянии `STOPPED`, используйте следующую команду для удаления примера службы приложений:
-
-```console
-sc delete MyService
+```powershell
+Remove-Service -Name MyService
 ```
 
 ## <a name="handle-starting-and-stopping-events"></a>Обработка событий запуска и остановки

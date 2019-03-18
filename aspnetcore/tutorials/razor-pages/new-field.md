@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 12/5/2018
 uid: tutorials/razor-pages/new-field
-ms.openlocfilehash: f8661a48ddd6fc616c141435edc603117b4925fb
-ms.sourcegitcommit: 036d4b03fd86ca5bb378198e29ecf2704257f7b2
+ms.openlocfilehash: 3799b072da04e32948b5fc78032f0575e760aa1d
+ms.sourcegitcommit: 34bf9fc6ea814c039401fca174642f0acb14be3c
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57345899"
+ms.lasthandoff: 03/14/2019
+ms.locfileid: "57841453"
 ---
 # <a name="add-a-new-field-to-a-razor-page-in-aspnet-core"></a>Добавление нового поля на страницу Razor в ASP.NET Core
 
@@ -116,37 +116,15 @@ Update-Database
 <!-- Code -------------------------->
 # <a name="visual-studio-code--visual-studio-for-mactabvisual-studio-codevisual-studio-mac"></a>[Visual Studio Code/Visual Studio для Mac](#tab/visual-studio-code+visual-studio-mac)
 
-<!-- copy/paste this tab to the next. Not worth an include  -->
+### <a name="drop-and-re-create-the-database"></a>Удаление и повторное создание базы данных
 
-Выполните следующие команды интерфейса командной строки .NET Core:
+[!INCLUDE[](~/includes/RP-mvc-shared/sqlite-warn.md)]
 
-```console
-dotnet ef migrations add Rating
-dotnet ef database update
-```
-
-Команда `ef migrations add` задает следующие инструкции для платформы:
-
-* Сравните модель `Movie` со схемой базы данных `Movie`.
-* Создайте код для переноса схемы базы данных в новую модель.
-
-В качестве имени файла переноса используется произвольное имя "Rating". Рекомендуется присваивать этому файлу понятное имя.
-
-Команда `ef database update` указывает платформе, что нужно применить изменения схемы к базе данных.
-
-Если удалить все записи из базы данных, при инициализации она будет заполнена начальными значениями и в нее будет включено поле `Rating`. Это можно сделать с помощью ссылок удаления в браузере или с помощью инструмента SQLite.
-
-Другой вариант — удалить базу данных и использовать миграции для повторного создания базы данных. Чтобы удалить базу данных, удалите файл базы данных (*MvcMovie.db*). Затем выполните команду `ef database update`: 
+Удалите базу данных и используйте миграции для повторного создания базы данных. Чтобы удалить базу данных, удалите файл базы данных (*MvcMovie.db*). Затем выполните команду `ef database update`: 
 
 ```console
 dotnet ef database update
 ```
-
-> [!NOTE]
-> Многие операции изменения схемы не поддерживаются поставщиком EF Core SQLite. Например, добавление столбца поддерживается, но удаление столбца не поддерживается. При добавлении миграции для удаления столбца команда `ef migrations add` выполняется успешно, а команда `ef database update` — нет. Можно обойти некоторые ограничения вручную, написав код миграции для перестроения таблицы. Перестройка таблицы включает в себя переименование существующей таблицы, создание новой таблицы, копирование данных в новую таблицу и удаление старой таблицы. Дополнительные сведения см. в следующих ресурсах:
-> * [Ограничения поставщика базы данных SQLite EF Core](/ef/core/providers/sqlite/limitations)
-> * [Настройка кода миграции](/ef/core/managing-schemas/migrations/#customize-migration-code)
-> * [Присвоение начальных значений данных](/ef/core/modeling/data-seeding)
 
 ---  
 <!-- End of VS tabs -->

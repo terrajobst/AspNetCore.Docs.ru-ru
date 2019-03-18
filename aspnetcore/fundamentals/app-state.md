@@ -2,16 +2,17 @@
 title: Состояние сеанса и приложения в ASP.NET Core
 author: rick-anderson
 description: Методы обнаружения для сохранения состояния сеанса и приложения между запросами.
+monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 03/04/2019
+ms.date: 03/12/2019
 uid: fundamentals/app-state
-ms.openlocfilehash: 2e3591ac1d6b1670b27b1ed9e42f59ba2b956b37
-ms.sourcegitcommit: 6ddd8a7675c1c1d997c8ab2d4498538e44954cac
+ms.openlocfilehash: 7de57d4923beaf32c0cb9aec49ea3e570fec6170
+ms.sourcegitcommit: 34bf9fc6ea814c039401fca174642f0acb14be3c
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57400714"
+ms.lasthandoff: 03/14/2019
+ms.locfileid: "57841583"
 ---
 # <a name="session-and-app-state-in-aspnet-core"></a>Состояние сеанса и приложения в ASP.NET Core
 
@@ -64,7 +65,7 @@ ASP.NET Core сохраняет состояние сеанса, предост�
 * Приложение хранит сеанс некоторое время после последнего запроса. Приложение устанавливает время ожидания сеанса или использует значение по умолчанию, равное 20 минутам. Состояние сеанса оптимально подходит для сохранения пользовательских данных, относящихся к определенному сеансу, которые не требуется хранить бессрочно для нескольких сеансов.
 * Данные сеанса удаляются при вызове реализации [ISession.Clear](/dotnet/api/microsoft.aspnetcore.http.isession.clear) или когда истекает срок действия сеанса.
 * Не существует механизма по умолчанию, который бы информировал код приложения о том, что браузер клиента закрыт или файл cookie сеанса удален или просрочен на клиенте.
-Шаблоны ASP.NET Core MVC и Razor Pages поддерживают общий регламент по защите данных (GDPR). Файлы cookie для состояния сеанса не помечаются как основные по умолчанию, поэтому состояние сеанса недоступно, если отслеживание разрешено посетителем сайта. Для получения дополнительной информации см. <xref:security/gdpr#tempdata-provider-and-session-state-cookies-are-not-essential>.
+* Шаблоны ASP.NET Core MVC и Razor Pages поддерживают общий регламент по защите данных (GDPR). Файлы cookie для состояния сеанса не помечаются как основные по умолчанию, поэтому состояние сеанса недоступно, если отслеживание разрешено посетителем сайта. Для получения дополнительной информации см. <xref:security/gdpr#tempdata-provider-and-session-state-cookies-are-not-essential>.
 
 > [!WARNING]
 > Не храните конфиденциальные данные в состоянии сеанса. Пользователь может не закрывать браузер и очистить файл cookie сеанса. Некоторые браузеры сохраняют файлы cookie сеанса в нескольких окнах браузера. Сеанс может быть не ограничен одним пользователем &mdash; следующий пользователь продолжит использовать приложение с тем же файлом cookie сеанса.
@@ -76,17 +77,7 @@ ASP.NET Core сохраняет состояние сеанса, предост�
 
 ### <a name="configure-session-state"></a>Настройка состояния сеанса
 
-::: moniker range=">= aspnetcore-2.0"
-
 Пакет [Microsoft.AspNetCore.Session](https://www.nuget.org/packages/Microsoft.AspNetCore.Session/), который входит в [метапакет Microsoft.AspNetCore.App](xref:fundamentals/metapackage-app), предоставляет ПО промежуточного слоя для управления состоянием сеанса. Чтобы включить сеанс ПО промежуточного слоя для сеансов, `Startup` должен содержать:
-
-::: moniker-end
-
-::: moniker range="< aspnetcore-2.0"
-
-Пакет [Microsoft.AspNetCore.Session](https://www.nuget.org/packages/Microsoft.AspNetCore.Session/) предоставляет ПО промежуточного слоя для управления состоянием сеанса. Чтобы включить сеанс ПО промежуточного слоя для сеансов, `Startup` должен содержать:
-
-::: moniker-end
 
 * Любой из кэшей памяти [IDistributedCache](/dotnet/api/microsoft.extensions.caching.distributed.idistributedcache), при этом реализация `IDistributedCache` используется в качестве резервного хранилища для сеанса. Для получения дополнительной информации см. <xref:performance/caching/distributed>.
 * Вызов [AddSession](/dotnet/api/microsoft.extensions.dependencyinjection.sessionservicecollectionextensions.addsession) в `ConfigureServices`.
@@ -94,17 +85,7 @@ ASP.NET Core сохраняет состояние сеанса, предост�
 
 Следующий код показывает, как настроить поставщик сеансов в памяти с реализацией в памяти `IDistributedCache` по умолчанию:
 
-::: moniker range=">= aspnetcore-2.0"
-
-[!code-csharp[](app-state/samples/2.x/SessionSample/Startup.cs?name=snippet1&highlight=11,13-18,39)]
-
-::: moniker-end
-
-::: moniker range="< aspnetcore-2.0"
-
-[!code-csharp[](app-state/samples/1.x/SessionSample/Startup.cs?name=snippet1&highlight=5,7-12,19)]
-
-::: moniker-end
+[!code-csharp[](app-state/samples/2.x/SessionSample/Startup.cs?name=snippet1&highlight=5-14,34)]
 
 Порядок ПО промежуточного слоя важен. В предыдущем примере исключение `InvalidOperationException` возникает при вызове `UseSession` после `UseMvc`. Дополнительные сведения см. в разделе [Порядок расположения ПО промежуточного слоя](xref:fundamentals/middleware/index#order).
 
@@ -124,8 +105,6 @@ ASP.NET Core сохраняет состояние сеанса, предост�
 
 Чтобы переопределить значения по умолчанию для сеанса, используйте [SessionOptions](/dotnet/api/microsoft.aspnetcore.builder.sessionoptions).
 
-::: moniker range=">= aspnetcore-2.0"
-
 | Параметр | Описание |
 | ------ | ----------- |
 | [Файл cookie](/dotnet/api/microsoft.aspnetcore.builder.sessionoptions.cookie) | Определяет параметры, используемые для создания файлов cookie. Параметр [Name](/dotnet/api/microsoft.aspnetcore.http.cookiebuilder.name) по умолчанию имеет значение [SessionDefaults.CookieName](/dotnet/api/microsoft.aspnetcore.session.sessiondefaults.cookiename) (`.AspNetCore.Session`). Параметр [Path](/dotnet/api/microsoft.aspnetcore.http.cookiebuilder.path) по умолчанию имеет значение [SessionDefaults.CookiePath](/dotnet/api/microsoft.aspnetcore.session.sessiondefaults.cookiepath) (`/`). Параметр [SameSite](/dotnet/api/microsoft.aspnetcore.http.cookiebuilder.samesite) по умолчанию имеет значение [SameSiteMode.Lax](/dotnet/api/microsoft.aspnetcore.http.samesitemode) (`1`). Параметр [HttpOnly](/dotnet/api/microsoft.aspnetcore.http.cookiebuilder.httponly) по умолчанию имеет значение `true`. Параметр [IsEssential](/dotnet/api/microsoft.aspnetcore.http.cookiebuilder.isessential) по умолчанию имеет значение `false`. |
@@ -134,36 +113,9 @@ ASP.NET Core сохраняет состояние сеанса, предост�
 
 Сеанс использует файл cookie для отслеживания и идентификации запросов в одном браузере. По умолчанию этот файл cookie называется `.AspNetCore.Session` и использует путь `/`. Так как по умолчанию файл cookie не указывает домен, он остается недоступным для клиентского сценария на странице (так как [HttpOnly](/dotnet/api/microsoft.aspnetcore.http.cookiebuilder.httponly) по умолчанию имеет значение `true`).
 
-::: moniker-end
-
-::: moniker range="< aspnetcore-2.0"
-
-| Параметр | Описание |
-| ------ | ----------- |
-| [CookieDomain](/dotnet/api/microsoft.aspnetcore.builder.sessionoptions.cookiedomain) | Определяет домен, используемый для создания файла cookie. `CookieDomain` не устанавливается по умолчанию. |
-| [CookieHttpOnly](/dotnet/api/microsoft.aspnetcore.builder.sessionoptions.cookiehttponly) | Определяет, будет ли браузер предоставлять доступ к файлу cookie для JavaScript на стороне клиента. Значение по умолчанию — `true`, то есть файл cookie передается только HTTP-запросам и не доступен для скрипта на странице. |
-| [CookieName](/dotnet/api/microsoft.aspnetcore.builder.sessionoptions.cookiename) | Определяет имя файла cookie, используемое для хранения идентификатора сеанса. Значение по умолчанию — [SessionDefaults.CookieName](/dotnet/api/microsoft.aspnetcore.session.sessiondefaults.cookiename) (`.AspNetCore.Session`). |
-| [CookiePath](/dotnet/api/microsoft.aspnetcore.builder.sessionoptions.cookiepath) | Определяет путь, используемый для создания файла cookie. Значение по умолчанию — [SessionDefaults.CookiePath](/dotnet/api/microsoft.aspnetcore.session.sessiondefaults.cookiepath) (`/`). |
-| [CookieSecure](/dotnet/api/microsoft.aspnetcore.builder.sessionoptions.cookiesecure) | Определяет, должен ли файл cookie передаваться только по HTTPS-запросу. Значение по умолчанию — [CookieSecurePolicy.None](/dotnet/api/microsoft.aspnetcore.http.cookiesecurepolicy) (`2`). |
-| [IdleTimeout](/dotnet/api/microsoft.aspnetcore.builder.sessionoptions.idletimeout) | `IdleTimeout` указывает, как долго сеанс может быть неактивным, прежде чем его содержимое отбрасывается. Каждый доступ к сеансу сбрасывает время ожидания. Это относится только к содержимому сеанса, а не к файлу cookie. Значение по умолчанию — 20 минут. |
-
-Сеанс использует файл cookie для отслеживания и идентификации запросов в одном браузере. По умолчанию этот файл cookie называется `.AspNet.Session` и использует путь `/`.
-
-::: moniker-end
-
 Чтобы переопределить файл cookie по умолчанию для сеанса, используйте `SessionOptions`:
 
-::: moniker range=">= aspnetcore-2.0"
-
-[!code-csharp[](app-state/samples_snapshot/2.x/SessionSample/Startup.cs?name=snippet1&highlight=13-18)]
-
-::: moniker-end
-
-::: moniker range="< aspnetcore-2.0"
-
-[!code-csharp[](app-state/samples_snapshot/1.x/SessionSample/Startup.cs?name=snippet1&highlight=5-9)]
-
-::: moniker-end
+[!code-csharp[](app-state/samples_snapshot/2.x/SessionSample/Startup.cs?name=snippet1&highlight=14-19)]
 
 Приложение использует свойство [IdleTimeout](/dotnet/api/microsoft.aspnetcore.builder.sessionoptions.idletimeout), чтобы определить, как долго сеанс может оставаться неактивным до сброса его содержимого в кэше сервера. Это свойство не зависит от срока действия файла cookie. Каждый запрос, проходящий через [ПО промежуточного слоя сеанса](/dotnet/api/microsoft.aspnetcore.session.sessionmiddleware), сбрасывает это время ожидания.
 
@@ -173,17 +125,7 @@ ASP.NET Core сохраняет состояние сеанса, предост�
 
 Получить доступ к состоянию сеанса можно через класс Razor Pages [PageModel](/dotnet/api/microsoft.aspnetcore.mvc.razorpages.pagemodel) или класс MVC [Controller](/dotnet/api/microsoft.aspnetcore.mvc.controller) со свойством [HttpContext.Session](/dotnet/api/microsoft.aspnetcore.http.httpcontext.session). Оно является реализацией [ISession](/dotnet/api/microsoft.aspnetcore.http.isession).
 
-::: moniker range=">= aspnetcore-2.0"
-
 Реализация `ISession` предоставляет несколько методов расширения для задания и извлечения значений типа integer и string. Методы расширения находятся в пространстве имен [Microsoft.AspNetCore.Http](/dotnet/api/microsoft.aspnetcore.http) (добавьте оператор `using Microsoft.AspNetCore.Http;`, чтобы получить доступ к методам расширения), когда проект ссылается на пакет [Microsoft.AspNetCore.Http.Extensions](https://www.nuget.org/packages/Microsoft.AspNetCore.Http.Extensions/). Оба пакета входят в [метапакет Microsoft.AspNetCore.App](xref:fundamentals/metapackage-app).
-
-::: moniker-end
-
-::: moniker range="< aspnetcore-2.0"
-
-Реализация `ISession` предоставляет несколько методов расширения для задания и извлечения значений integer и string. Методы расширения находятся в пространстве имен [Microsoft.AspNetCore.Http](/dotnet/api/microsoft.aspnetcore.http) (добавьте оператор `using Microsoft.AspNetCore.Http;`, чтобы получить доступ к методам расширения), когда проект ссылается на пакет [Microsoft.AspNetCore.Http.Extensions](https://www.nuget.org/packages/Microsoft.AspNetCore.Http.Extensions/).
-
-::: moniker-end
 
 Методы расширения `ISession`:
 
@@ -207,47 +149,17 @@ Name: @HttpContext.Session.GetString(IndexModel.SessionKeyName)
 
 В следующем примере показано, как задать, а затем получить значения integer и string:
 
-::: moniker range=">= aspnetcore-2.0"
-
 [!code-csharp[](app-state/samples/2.x/SessionSample/Pages/Index.cshtml.cs?name=snippet1&highlight=18-19,22-23)]
-
-::: moniker-end
-
-::: moniker range="< aspnetcore-2.0"
-
-[!code-csharp[](app-state/samples/1.x/SessionSample/Controllers/HomeController.cs?name=snippet1&highlight=10-11,18-19)]
-
-::: moniker-end
 
 Все данные сеанса должны быть сериализованы, чтобы использовать сценарий-распределенного кэша даже при использовании кэша в памяти. Предоставляются минимальные сериализаторы строки и числа (см. методы и методы расширения [ISession](/dotnet/api/microsoft.aspnetcore.http.isession)). Сложные типы должны быть сериализованы пользователем с помощью другого механизма, например JSON.
 
 Добавьте приведенные ниже методы расширения, чтобы задавать и получать сериализуемые объекты:
 
-::: moniker range=">= aspnetcore-2.0"
-
 [!code-csharp[](app-state/samples/2.x/SessionSample/Extensions/SessionExtensions.cs?name=snippet1)]
-
-::: moniker-end
-
-::: moniker range="< aspnetcore-2.0"
-
-[!code-csharp[](app-state/samples/1.x/SessionSample/Extensions/SessionExtensions.cs?name=snippet1)]
-
-::: moniker-end
 
 Следующий пример показывает, как задать и получить сериализуемый объект с помощью методов расширения:
 
-::: moniker range=">= aspnetcore-2.0"
-
 [!code-csharp[](app-state/samples/2.x/SessionSample/Pages/Index.cshtml.cs?name=snippet2)]
-
-::: moniker-end
-
-::: moniker range="< aspnetcore-2.0"
-
-[!code-csharp[](app-state/samples/1.x/SessionSample/Controllers/HomeController.cs?name=snippet2&highlight=4,12)]
-
-::: moniker-end
 
 ## <a name="tempdata"></a>TempData
 
@@ -255,19 +167,9 @@ ASP.NET Core предоставляет [свойство TempData модели 
 
 ### <a name="tempdata-providers"></a>Поставщики TempData
 
-::: moniker range=">= aspnetcore-2.0"
-
-В ASP.NET Core 2.0 и более поздних версий поставщик TempData, основанный на файлах cookie, используется по умолчанию для хранения TempData в файлах cookie.
+Поставщик TempData, основанный на файлах cookie, используется по умолчанию для хранения TempData в файлах cookie.
 
 Данные в файле cookie шифруются с помощью [IDataProtector](/dotnet/api/microsoft.aspnetcore.dataprotection.idataprotector), кодируются с помощью [Base64UrlTextEncoder](/dotnet/api/microsoft.aspnetcore.webutilities.base64urltextencoder), а затем фрагментируются. Так как файл cookie фрагментируется, ограничение на размер одного такого файла, заданное в ASP.NET Core 1.x, не применяется. Данные файла cookie не сжимаются, так как сжатие зашифрованных данных может привести к проблемам с безопасностью, например атакам [CRIME](https://wikipedia.org/wiki/CRIME_(security_exploit)) и [BREACH](https://wikipedia.org/wiki/BREACH_(security_exploit)). Дополнительные сведения на поставщике TempData, основанном на файлах cookie, см. в разделе [CookieTempDataProvider](/dotnet/api/microsoft.aspnetcore.mvc.viewfeatures.cookietempdataprovider).
-
-::: moniker-end
-
-::: moniker range="< aspnetcore-2.0"
-
-В ASP.NET Core 1.0 и 1.1 для состояния сеанса по умолчанию используется поставщик TempData.
-
-::: moniker-end
 
 ### <a name="choose-a-tempdata-provider"></a>Выбор поставщика TempData
 
@@ -282,23 +184,11 @@ ASP.NET Core предоставляет [свойство TempData модели 
 
 ### <a name="configure-the-tempdata-provider"></a>Настройка поставщика TempData
 
-::: moniker range=">= aspnetcore-2.0"
-
 Поставщик TempData на основе файлов cookie включен по умолчанию.
 
 Чтобы включить поставщик TempData на основе сеанса, используйте метод расширения [AddSessionStateTempDataProvider](/dotnet/api/microsoft.extensions.dependencyinjection.mvcviewfeaturesmvcbuilderextensions.addsessionstatetempdataprovider):
 
 [!code-csharp[](app-state/samples_snapshot_2/2.x/SessionSample/Startup.cs?name=snippet1&highlight=11,13,32)]
-
-::: moniker-end
-
-::: moniker range="< aspnetcore-2.0"
-
-Следующий код класса `Startup` настраивает поставщик TempData на основе сеансов:
-
-[!code-csharp[](app-state/samples_snapshot_2/1.x/SessionSample/Startup.cs?name=snippet1&highlight=4,9)]
-
-::: moniker-end
 
 Порядок ПО промежуточного слоя важен. В предыдущем примере исключение `InvalidOperationException` возникает при вызове `UseSession` после `UseMvc`. Дополнительные сведения см. в разделе [Порядок расположения ПО промежуточного слоя](xref:fundamentals/middleware/index#order).
 
@@ -341,31 +231,11 @@ app.Run(async (context) =>
 
 Для ПО промежуточного слоя, которое используется всего одним приложением, допустимы ключи `string`. ПО промежуточного слоя, используемое несколькими экземплярами приложения, должно использовать уникальные ключи объекта во избежание конфликтов. В следующем примере показано, как использовать уникальный ключ объекта, определенный в классе ПО промежуточного слоя:
 
-::: moniker range=">= aspnetcore-2.0"
-
 [!code-csharp[](app-state/samples/2.x/SessionSample/Middleware/HttpContextItemsMiddleware.cs?name=snippet1&highlight=4,13)]
-
-::: moniker-end
-
-::: moniker range="< aspnetcore-2.0"
-
-[!code-csharp[](app-state/samples/1.x/SessionSample/Middleware/HttpContextItemsMiddleware.cs?name=snippet1&highlight=5,14)]
-
-::: moniker-end
 
 Другой код может обратиться к значению, хранящемуся в `HttpContext.Items`, с помощью ключа, предоставляемого классом ПО промежуточного слоя:
 
-::: moniker range=">= aspnetcore-2.0"
-
 [!code-csharp[](app-state/samples/2.x/SessionSample/Pages/Index.cshtml.cs?name=snippet3)]
-
-::: moniker-end
-
-::: moniker range="< aspnetcore-2.0"
-
-[!code-csharp[](app-state/samples/1.x/SessionSample/Controllers/HomeController.cs?name=snippet3)]
-
-::: moniker-end
 
 Данный подход также позволяет не использовать строки ключей в коде.
 
@@ -401,8 +271,6 @@ app.Run(async (context) =>
 
 3. Используйте класс службы данных:
 
-    ::: moniker range=">= aspnetcore-2.0"
-
     ```csharp
     public class IndexModel : PageModel
     {
@@ -413,23 +281,6 @@ app.Run(async (context) =>
         }
     }
     ```
-
-    ::: moniker-end
-
-    ::: moniker range="< aspnetcore-2.0"
-
-    ```csharp
-    public class HomeController : Controller
-    {
-        public HomeController(MyAppData myService)
-        {
-            // Do something with the service
-            //    Examples: Read data, store in a field or property
-        }
-    }
-    ```
-
-    ::: moniker-end
 
 ## <a name="common-errors"></a>Распространенные ошибки
 
