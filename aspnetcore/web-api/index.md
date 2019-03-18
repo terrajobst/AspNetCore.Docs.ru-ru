@@ -1,17 +1,11 @@
 ---
 title: Сборка веб-API с использованием ASP.NET Core
 author: scottaddie
-description: Сведения о функциях, доступных для сборки веб-API в ASP.NET Core, и о ситуациях, в которых уместно использовать каждую из них.
+description: 'Сведения о функциях, доступных для сборки веб-API в ASP.NET Core, и о ситуациях, в которых уместно использовать каждую из них.'
 ms.author: scaddie
 ms.custom: mvc
 ms.date: 01/11/2019
 uid: web-api/index
-ms.openlocfilehash: 8ba20c51f38a43adca4133a402c6d741379a4c54
-ms.sourcegitcommit: 42a8164b8aba21f322ffefacb92301bdfb4d3c2d
-ms.translationtype: HT
-ms.contentlocale: ru-RU
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54341632"
 ---
 # <a name="build-web-apis-with-aspnet-core"></a>Сборка веб-API с использованием ASP.NET Core
 
@@ -247,4 +241,3 @@ services.AddMvc()
 * <xref:web-api/advanced/formatting>
 * <xref:tutorials/web-api-help-pages-using-swagger>
 * <xref:mvc/controllers/routing>
-****
