@@ -1,1 +1,0 @@
-Новый веб-разработки мы рекомендуем Razor Pages. Дополнительные сведения см. в разделе [начало работы с Razor Pages](/aspnet/core/tutorials/razor-pages/razor-pages-start).
