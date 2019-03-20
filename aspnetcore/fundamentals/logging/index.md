@@ -193,7 +193,6 @@ info: Microsoft.AspNetCore.Hosting.Internal.WebHost[2]
 
 Ниже приведен пример этих журналов в том виде, в каком они отображаются в окне отладки при запуске примера приложения в Visual Studio.
 
-
 ```console
 Microsoft.AspNetCore.Hosting.Internal.WebHost:Information: Request starting HTTP/1.1 GET http://localhost:53104/api/todo/0  
 Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker:Information: Executing action method TodoApi.Controllers.TodoController.GetById (TodoApi) with arguments (0) - ModelState is Valid
@@ -214,7 +213,7 @@ Microsoft.AspNetCore.Hosting.Internal.WebHost:Information: Request finished in 3
 
 ## <a name="log-category"></a>Категория журнала
 
-При создании объекта `ILogger` для него указывается *категория*. Эта категория входит в состав каждого сообщения журнала, создаваемого этим экземпляром `Ilogger`. Категория может быть любой строкой, обычно используется имя класса, например TodoApi.Controllers.TodoController.
+При создании объекта `ILogger` для него указывается *категория*. Эта категория входит в состав каждого сообщения журнала, создаваемого этим экземпляром `ILogger`. Категория может быть любой строкой, обычно используется имя класса, например TodoApi.Controllers.TodoController.
 
 Используйте `ILogger<T>` для получения экземпляра `ILogger`, который использует полное имя типа `T` в качестве категории:
 

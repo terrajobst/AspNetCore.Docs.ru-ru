@@ -1,16 +1,10 @@
 ---
-title: Миграция с ASP.NET на ASP.NET Core
+title: "Миграция с ASP.NET на ASP.NET\_Core"
 author: isaac2004
-description: Здесь вы найдете указания по миграции существующих приложений MVC ASP.NET или веб-API на ASP.NET Core.web
+description: "Здесь вы найдете указания по миграции существующих приложений MVC\_ASP.NET или веб-API на ASP.NET\_Core.web"
 ms.author: scaddie
 ms.date: 12/11/2018
 uid: migration/proper-to-2x/index
-ms.openlocfilehash: a9eef832a68afa1a73e3c7c545378da190602ce2
-ms.sourcegitcommit: b34b25da2ab68e6495b2460ff570468f16a9bf0d
-ms.translationtype: HT
-ms.contentlocale: ru-RU
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53284400"
 ---
 # <a name="migrate-from-aspnet-to-aspnet-core"></a>Миграция с ASP.NET на ASP.NET Core
 
@@ -66,10 +60,10 @@ ASP.NET Core использует аналогичный подход, но не
 
 `Startup` должен включать метод `Configure`. В `Configure` добавьте в конвейер необходимое ПО промежуточного слоя. В примере ниже (на основе шаблона веб-сайта по умолчанию) используются методы расширения для настройки конвейера с поддержкой следующих компонентов:
 
-* Страницы ошибок
-* HTTP Strict Transport Security;
-* перенаправление с HTTP на HTTPS;
-* ASP.NET Core MVC
+- Страницы ошибок
+- HTTP Strict Transport Security;
+- перенаправление с HTTP на HTTPS;
+- ASP.NET Core MVC
 
 [!code-csharp[](samples/startup.cs)]
 
@@ -118,15 +112,15 @@ services.Configure<AppConfiguration>(Configuration.GetSection("AppConfiguration"
 
 Пример внедрения зависимостей с использованием библиотеки Unity — это реализация `IDependencyResolver` как оболочки для `UnityContainer`:
 
-[!code-csharp[](../../../aspnet/web-api/overview/advanced/dependency-injection/samples/sample8.cs)]
+[!code-csharp[](samples/sample8.cs)]
 
 Создайте экземпляр `UnityContainer`, зарегистрируйте свою службу и установите средство разрешения зависимостей `HttpConfiguration` в новый экземпляр `UnityResolver` для вашего контейнера:
 
-[!code-csharp[](../../../aspnet/web-api/overview/advanced/dependency-injection/samples/sample9.cs)]
+[!code-csharp[](samples/sample9.cs)]
 
 Там, где необходимо, вставьте `IProductRepository`:
 
-[!code-csharp[](../../../aspnet/web-api/overview/advanced/dependency-injection/samples/sample5.cs)]
+[!code-csharp[](samples/sample5.cs)]
 
 Так как внедрение зависимостей является частью ASP.NET Core, вы можете добавить свою службу в метод `ConfigureServices` файла *Startup.cs*:
 

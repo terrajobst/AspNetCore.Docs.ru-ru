@@ -531,8 +531,6 @@ key=value
 * Будет ли перезагружена конфигурация, если файл изменится.
 * <xref:Microsoft.Extensions.FileProviders.IFileProvider> используется для доступа к файлу.
 
-
-
 `AddJsonFile` автоматически вызывается дважды при инициализации нового <xref:Microsoft.AspNetCore.Hosting.WebHostBuilder> с <xref:Microsoft.AspNetCore.WebHost.CreateDefaultBuilder*>. Метод вызывается для загрузки конфигурации из:
 
 * *appsettings.json* &ndash; первым читается этот файл. Версия файла среды может переопределить значения, предоставленные *appsettings.json*.

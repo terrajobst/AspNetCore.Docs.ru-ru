@@ -1,18 +1,12 @@
 ---
 title: Размещение и развертывание компонентов Razor
 author: guardrex
-description: Узнайте, как производится размещение и развертывание компонентов Razor и приложений Blazor с помощью ASP.NET Core, сетей доставки содержимого (CDN), файловых серверов и страниц GitHub.
+description: 'Узнайте, как производится размещение и развертывание компонентов Razor и приложений Blazor с помощью ASP.NET Core, сетей доставки содержимого (CDN), файловых серверов и страниц GitHub.'
 monikerRange: '>= aspnetcore-3.0'
 ms.author: riande
 ms.custom: mvc
 ms.date: 01/29/2019
 uid: host-and-deploy/razor-components/index
-ms.openlocfilehash: 9debd75128ceecb805fc673a8182a785fc9f7942
-ms.sourcegitcommit: ed76cc752966c604a795fbc56d5a71d16ded0b58
-ms.translationtype: HT
-ms.contentlocale: ru-RU
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55667955"
 ---
 # <a name="host-and-deploy-razor-components"></a>Размещение и развертывание компонентов Razor
 
@@ -273,7 +267,7 @@ http {
 
 Добавьте одну строку в Dockerfile, как показано в следующем примере:
 
-```
+```Dockerfile
 FROM nginx:alpine
 COPY ./bin/Release/netstandard2.0/publish /usr/share/nginx/html/
 COPY nginx.conf /etc/nginx/nginx.conf
