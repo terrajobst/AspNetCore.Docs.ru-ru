@@ -4,14 +4,14 @@ author: guardrex
 description: Сведения о диагностике проблем с развертываниями ASP.NET Core в службе приложений Azure.
 ms.author: riande
 ms.custom: mvc
-ms.date: 03/05/2019
+ms.date: 03/06/2019
 uid: host-and-deploy/azure-apps/troubleshoot
-ms.openlocfilehash: c3732bfab362ec034248eb3912d4b1337c94216e
-ms.sourcegitcommit: 191d21c1e37b56f0df0187e795d9a56388bbf4c7
+ms.openlocfilehash: 326f66070d51c04298abbf6292d2d350414311de
+ms.sourcegitcommit: 34bf9fc6ea814c039401fca174642f0acb14be3c
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 03/08/2019
-ms.locfileid: "57665432"
+ms.lasthandoff: 03/14/2019
+ms.locfileid: "57841411"
 ---
 # <a name="troubleshoot-aspnet-core-on-azure-app-service"></a>Устранение неполадок ASP.NET Core в службе приложений Azure
 
@@ -187,7 +187,10 @@ ms.locfileid: "57665432"
 
 ## <a name="slow-or-hanging-app"></a>Медленное или зависающее приложение
 
-Дополнительную информацию для случаев, когда приложение медленно реагирует или зависает при запросе, см. в разделе [Устранение проблем с медленными веб-приложениями в службе приложений Azure](/azure/app-service/app-service-web-troubleshoot-performance-degradation).
+Если приложение медленно реагирует на запрос или зависает при его обработке, см. следующие статьи:
+
+* [Устранение проблем с производительностью медленных веб приложений в службе приложений Azure](/azure/app-service/app-service-web-troubleshoot-performance-degradation)
+* [Use Crash Diagnoser Site Extension to Capture Dump for Intermittent Exception issues or performance issues on Azure Web App (Использование расширения сайта средства диагностики сбоев для записи дампа при периодических проблемах с исключением или проблемах с производительностью в веб-приложении Azure)](https://blogs.msdn.microsoft.com/asiatech/2015/12/28/use-crash-diagnoser-site-extension-to-capture-dump-for-intermittent-exception-issues-or-performance-issues-on-azure-web-app/).
 
 ## <a name="remote-debugging"></a>Удаленная отладка
 
