@@ -7,12 +7,12 @@ ms.author: riande
 ms.date: 09/07/2018
 ms.custom: seodec18
 uid: razor-pages/ui-class
-ms.openlocfilehash: e5f329dcc423a7b7d6c247d0d359d35d95283de4
-ms.sourcegitcommit: 49faca2644590fc081d86db46ea5e29edfc28b7b
+ms.openlocfilehash: dc7db9483f2d75fe79ed9a9806f944e4f2a05a9b
+ms.sourcegitcommit: 57792e5f594db1574742588017c708350958bdf0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 12/09/2018
-ms.locfileid: "53121496"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58265348"
 ---
 # <a name="create-reusable-ui-using-the-razor-class-library-project-in-aspnet-core"></a>Создание многократно используемых пользовательским Интерфейсом, с использованием проекта библиотеки классов Razor в ASP.NET Core
 
@@ -48,7 +48,8 @@ dotnet new razorclasslib -o RazorUIClassLib
 
 Дополнительные сведения см. в разделе [dotnet new](/dotnet/core/tools/dotnet-new). Чтобы избежать конфликта имени файла с созданной библиотекой представлений, проверьте, что имя библиотеки не заканчивается на `.Views`.
 
-------
+---
+
 Добавление файлов Razor в RCL.
 
 Шаблоны ASP.NET Core считает содержимое RCL *областей* папки. См. в разделе [макет страниц RCL](#afs) для создания содержимого в RCL, который предоставляет `~/Pages` вместо `~/Areas/Pages`.
@@ -60,7 +61,7 @@ dotnet new razorclasslib -o RazorUIClassLib
 * Пакет NuGet. См. [Создание пакетов NuGet](/nuget/create-packages/creating-a-package), [dotnet add package](/dotnet/core/tools/dotnet-add-package) и [Создание и публикация пакета NuGet](/nuget/quickstart/create-and-publish-a-package-using-visual-studio).
 * *{ProjectName}.csproj*. См. [dotnet-add reference](/dotnet/core/tools/dotnet-add-reference).
 
-## <a name="walkthrough-create-a-razor-class-library-project-and-use-from-a-razor-pages-project"></a>Пошаговое руководство. Создание проекта библиотеки классов Razor и использование в проекте Razor Pages
+## <a name="walkthrough-create-a-razor-class-library-project-and-use-from-a-razor-pages-project"></a>Пошаговое руководство. Создать проект библиотеки классов Razor и использовать из проекта Razor Pages
 
 Вы можете не создавать, а загрузить [целый проект](https://github.com/aspnet/Docs/tree/master/aspnetcore/razor-pages/ui-class/samples) и протестировать его. Образец загрузки содержит дополнительный код и ссылки, что упрощает тестирование проекта. Оставьте свой комментарий о сравнении образцов загрузки с пошаговыми инструкциями в [этой проблеме GitHub](https://github.com/aspnet/Docs/issues/6098).
 
@@ -86,7 +87,7 @@ dotnet build
 dotnet run
 ```
 
-------
+---
 
 Следуйте инструкциям в разделе [Тестирование WebApp1](#test)
 
@@ -123,7 +124,7 @@ dotnet new viewstart -o RazorUIClassLib/Areas/MyFeature/Pages
 
 *_ViewStart.cshtml* файл необходим для использования макет проекта Razor Pages (который добавляется в следующем разделе).
 
-------
+---
 
 ### <a name="add-razor-files-and-folders-to-the-project"></a>Добавьте в проект Razor файлов и папок
 
@@ -218,7 +219,7 @@ dotnet run
 * *RazorUIClassLib/страниц/Shared*
 
 Предположим, что *RazorUIClassLib/страниц/Shared* содержит два неполных файлов: *_Header.cshtml* и *_Footer.cshtml*. `<partial>` Удалось добавить теги *_Layout.cshtml* файла:
-  
+
 ```cshtml
 <body>
   <partial name="_Header">

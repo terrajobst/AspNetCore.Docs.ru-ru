@@ -6,12 +6,12 @@ ms.author: casoper
 ms.custom: mvc, seodec18
 ms.date: 10/24/2018
 uid: azure/devops/deploy-to-app-service
-ms.openlocfilehash: 9fe17c9e210d4dda9b74818104fc52a60d4f0077
-ms.sourcegitcommit: b34b25da2ab68e6495b2460ff570468f16a9bf0d
+ms.openlocfilehash: e09d03f1d30f128b1db1588aa92b28ec3e4ae626
+ms.sourcegitcommit: 57792e5f594db1574742588017c708350958bdf0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53284543"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58264386"
 ---
 # <a name="deploy-an-app-to-app-service"></a>Развертывание приложения в службе приложений
 
@@ -193,6 +193,7 @@ Visual Studio создает и развертывает приложение в
     ```console
     git commit -a -m "upgraded to V3"
     ```
+
 5. С помощью командной оболочки на локальном компьютере, добавьте URL-адрес промежуточного развертывания в качестве удаленного репозитория Git и отправьте зафиксированные изменения.
 
     1. Добавьте удаленный URL-адрес для промежуточного хранения в локальном репозитории Git.

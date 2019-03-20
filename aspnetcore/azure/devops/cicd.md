@@ -6,12 +6,12 @@ ms.author: scaddie
 ms.date: 10/24/2018
 ms.custom: seodec18
 uid: azure/devops/cicd
-ms.openlocfilehash: 906aae3fd4b4abd0becc8847b0f54c372bda300a
-ms.sourcegitcommit: 036d4b03fd86ca5bb378198e29ecf2704257f7b2
+ms.openlocfilehash: 676620b5dd151c9cd009d7cb278ed2c2b122c83f
+ms.sourcegitcommit: 57792e5f594db1574742588017c708350958bdf0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57346311"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58264890"
 ---
 # <a name="continuous-integration-and-deployment"></a>Непрерывная интеграция и развертывание
 
@@ -39,17 +39,23 @@ ms.locfileid: "57346311"
 1. Нажмите кнопку **Создать репозиторий** кнопки.
 1. Откройте командную оболочку локального компьютера. Перейдите в каталог, в котором *чтения simple потоков* хранится репозиторий Git.
 1. Переименуйте существующий *origin* удаленное подключение к *вышестоящего*. Выполните следующую команду:
+
     ```console
     git remote rename origin upstream
     ```
+
 1. Добавьте новый *origin* удаленного указывает на копию репозитория на сайте GitHub. Выполните следующую команду:
+
     ```console
     git remote add origin https://github.com/<GitHub_username>/simple-feed-reader/
     ```
+
 1. Публикация локального репозитория Git на только что созданный репозиторий GitHub. Выполните следующую команду:
+
     ```console
     git push -u origin master
     ```
+
 1. Откройте окно браузера и перейдите к `https://github.com/<GitHub_username>/simple-feed-reader/`. Проверьте, что ваш код отображается в репозитории GitHub.
 
 ## <a name="disconnect-local-git-deployment"></a>Отключить развертывание локального репозитория Git
@@ -192,6 +198,7 @@ ms.locfileid: "57346311"
     ```console
     git commit -a -m "upgraded to V4"
     ```
+
 1. Отправка изменений *master* ветви *origin* удаленный репозиторий GitHub:
 
     ```console

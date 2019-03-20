@@ -6,12 +6,12 @@ ms.author: scaddie
 ms.custom: mvc
 ms.date: 01/10/2019
 uid: migration/proper-to-2x/membership-to-core-identity
-ms.openlocfilehash: 0b7001a311eeaaa78e3d52e2ec66d33ad057c381
-ms.sourcegitcommit: cec77d5ad8a0cedb1ecbec32834111492afd0cd2
+ms.openlocfilehash: 3b708da13ff9f2887eee87ea17844312a4fe1b8d
+ms.sourcegitcommit: 57792e5f594db1574742588017c708350958bdf0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54207412"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58264723"
 ---
 # <a name="migrate-from-aspnet-membership-authentication-to-aspnet-core-20-identity"></a>Перенос из проверки подлинности членства ASP.NET, в удостоверение ASP.NET Core 2.0
 
@@ -54,6 +54,7 @@ ASP.NET Core 2.0 соответствует [удостоверений](/aspnet
       }
     }
     ```
+
 1. Выберите **представление** > **обозреватель объектов SQL Server**. Разверните узел, соответствующий имени базы данных, указанному в `ConnectionStrings:DefaultConnection` свойство *appsettings.json*.
 
     `Update-Database` Команда создала базы данных, указанной с помощью схемы и все данные, необходимые для инициализации приложения. На следующем рисунке изображены структуру таблицы, созданного в предыдущих шагах.
@@ -91,7 +92,7 @@ ASP.NET Core 2.0 соответствует [удостоверений](/aspnet
 
 ### <a name="user-roles"></a>Роли пользователей
 
-|*Удостоверение<br>(dbo. AspNetUserRoles)*||*Членство<br>(dbo.aspnet_UsersInRoles)*||
+|*Identity<br>(dbo.AspNetUserRoles)*||*Членство<br>(dbo.aspnet_UsersInRoles)*||
 |------------------------------------|------------------------------------------|
 |**Имя поля**           |**Type**  |**Имя поля**|**Type**                   |
 |`RoleId`                 |string    |`RoleId`      |string                     |
@@ -127,7 +128,7 @@ SELECT aspnet_Users.UserId,
        -- Creates an empty password since passwords don't map between the 2 schemas
        '',
        /*
-        The SecurityStamp token is used to verify the state of an account and 
+        The SecurityStamp token is used to verify the state of an account and
         is subject to change at any time. It should be initialized as a new ID.
        */
        NewID(),

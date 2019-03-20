@@ -5,12 +5,12 @@ description: Сведения о создании приложения ASP.NET C
 ms.author: riande
 ms.date: 3/11/2019
 uid: security/authentication/accconfirm
-ms.openlocfilehash: d102ed0a4a75f6273fcda0a8cc7e9d091ff94b50
-ms.sourcegitcommit: 5f299daa7c8102d56a63b214b9a34cc4bc87bc42
+ms.openlocfilehash: 3bfc2ce46cfbc2ee308940f9e04eb2ffeec09073
+ms.sourcegitcommit: 57792e5f594db1574742588017c708350958bdf0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58209938"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58265501"
 ---
 # <a name="account-confirmation-and-password-recovery-in-aspnet-core"></a>Подтверждение учетной записи и восстановление пароля в ASP.NET Core
 
@@ -45,6 +45,7 @@ dotnet new webapp -au Individual -uld -o WebPWrecover
 cd WebPWrecover
 dotnet add package Microsoft.VisualStudio.Web.CodeGeneration.Design
 dotnet restore
+dotnet tool install -g dotnet-aspnet-codegenerator
 dotnet aspnet-codegenerator identity -dc WebPWrecover.Data.ApplicationDbContext --files "Account.Register;Account.Login;Account.Logout;Account.ConfirmEmail"
 dotnet ef database drop -f
 dotnet ef database update
@@ -63,6 +64,7 @@ dotnet run
 Вы можете использовать этот адрес электронной почты снова на следующем шаге, когда приложение отправляет сообщение электронной почты с подтверждением. Щелкните правой кнопкой мыши в строке и выберите **удалить**. Удаление псевдонима электронной почты упрощает в следующих шагах.
 
 <a name="prevent-login-at-registration"></a>
+
 ## <a name="require-email-confirmation"></a>Требуется подтверждение по электронной почте
 
 Рекомендуется подтвердить адрес электронной почты новой регистрации пользователя. Отправить по электронной почте подтверждение помогает проверить, они не олицетворения кто-то другой (то есть они еще не зарегистрировано другого пользователя по электронной почте). Предположим, что имеется дискуссионный форум и избежать "yli@example.com«из регистрации в качестве»nolivetto@contoso.com«. Без подтверждение по электронной почте "nolivetto@contoso.com" могли получать нежелательные сообщения электронной почты из вашего приложения. Предположим, что пользователь случайно зарегистрирован как "ylo@example.com" и не заметили опечатку «yli». Они не смогут использовать пароль восстановления, так как у приложения нет их правильный адрес электронной почты. Подтверждение по электронной почте предоставляет ограниченную защиту от программ-роботов. Подтверждение по электронной почте не обеспечивают защиту от пользователей-злоумышленников с многих учетных записей электронной почты.
@@ -96,13 +98,13 @@ info: Successfully saved SendGridUser = RickAndMSFT to the secret store.
 
 Содержание *secrets.json* файл не зашифрован. Следующая разметка показывает *secrets.json* файла. `SendGridKey` Значение удаляется.
 
- ```json
-  {
-    "SendGridUser": "RickAndMSFT",
-    "SendGridKey": "<key removed>"
-  }
-  ```
- 
+```json
+{
+  "SendGridUser": "RickAndMSFT",
+  "SendGridKey": "<key removed>"
+}
+```
+
 Дополнительные сведения см. в разделе [шаблон параметров](xref:fundamentals/configuration/options) и [конфигурации](xref:fundamentals/configuration/index).
 
 ### <a name="install-sendgrid"></a>Установка SendGrid
@@ -130,6 +132,7 @@ dotnet add package SendGrid
 ------
 
 См. в разделе [приступить к работе с SendGrid бесплатно](https://sendgrid.com/free/) зарегистрироваться для получения бесплатной учетной записи SendGrid.
+
 ### <a name="implement-iemailsender"></a>Реализовать IEmailSender
 
 Для реализации `IEmailSender`, создание *Services/EmailSender.cs* с кодом, аналогичную следующей:
@@ -213,6 +216,7 @@ await _signInManager.SignInAsync(user, isPersistent: false);
 См. в разделе [проблема GitHub](https://github.com/aspnet/AspNetCore/issues/5410).
 
 <a name="debug"></a>
+
 ### <a name="debug-email"></a>Отладка по электронной почте
 
 Если не удается получить рабочий адрес электронной почты:

@@ -7,12 +7,12 @@ ms.author: riande
 ms.date: 09/22/2018
 ms.custom: seodec18
 uid: security/authentication/2fa
-ms.openlocfilehash: 48bfc50378fc0ec212f5b9d4e7ce05bb4fc97b9d
-ms.sourcegitcommit: 97d7a00bd39c83a8f6bccb9daa44130a509f75ce
+ms.openlocfilehash: 116249a7cd4faebd0c899e383d86f5c5c3c7146a
+ms.sourcegitcommit: 57792e5f594db1574742588017c708350958bdf0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54098900"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58265240"
 ---
 # <a name="two-factor-authentication-with-sms-in-aspnet-core"></a>Двухфакторная проверка подлинности с помощью SMS в ASP.NET Core
 
@@ -35,9 +35,13 @@ ms.locfileid: "54098900"
 
 #### <a name="figuring-out-sms-provider-credentials"></a>Выяснение учетные данные поставщика SMS
 
-**Twilio:** На вкладке панели мониторинга учетной записи Twilio, скопируйте **ИД безопасности учетной записи** и **маркер проверки подлинности**.
+**Twilio:**
 
-**ASPSMS:** Параметры учетной записи, перейдите к **Userkey** и скопируйте его вместе с вашей **пароль**.
+На вкладке панели мониторинга учетной записи Twilio, скопируйте **ИД безопасности учетной записи** и **маркер проверки подлинности**.
+
+**ASPSMS:**
+
+Параметры учетной записи, перейдите к **Userkey** и скопируйте его вместе с вашей **пароль**.
 
 Позже мы сохраним эти значения с помощью диспетчера секретов, в ключи `SMSAccountIdentification` и `SMSAccountPassword`.
 
@@ -49,12 +53,11 @@ ms.locfileid: "54098900"
 
 Позже мы Сохраним это значение с помощью диспетчера секретов, раздел `SMSAccountFrom`.
 
-
 ### <a name="provide-credentials-for-the-sms-service"></a>Укажите учетные данные для службы SMS
 
 Мы будем использовать [шаблон параметров](xref:fundamentals/configuration/options) для доступа к параметрам и ключ учетной записи пользователя.
 
-   * Создание класса для извлечения ключа безопасности SMS. В этом примере `SMSoptions` класс создается в *Services/SMSoptions.cs* файла.
+* Создание класса для извлечения ключа безопасности SMS. В этом примере `SMSoptions` класс создается в *Services/SMSoptions.cs* файла.
 
 [!code-csharp[](2fa/sample/Web2FA/Services/SMSoptions.cs)]
 
@@ -64,17 +67,18 @@ ms.locfileid: "54098900"
 C:/Web2FA/src/WebApp1>dotnet user-secrets set SMSAccountIdentification 12345
 info: Successfully saved SMSAccountIdentification = 12345 to the secret store.
 ```
+
 * Добавьте пакет NuGet для поставщика SMS. Из консоли диспетчера пакетов (PMC) выполните:
 
 **Twilio:**
+
 `Install-Package Twilio`
 
 **ASPSMS:**
+
 `Install-Package ASPSMS`
 
-
 * Добавьте код в *Services/MessageServices.cs* файл, чтобы включить SMS. Использование Twilio или разделе ASPSMS:
-
 
 **Twilio:** [!code-csharp[](2fa/sample/Web2FA/Services/MessageServices_twilio.cs)]
 
@@ -88,7 +92,7 @@ info: Successfully saved SMSAccountIdentification = 12345 to the secret store.
 
 ### <a name="enable-two-factor-authentication"></a>Включение двухфакторной проверки подлинности
 
-Откройте *Views/Manage/Index.cshtml* файл представления Razor и удалите символы комментария (поэтому разметка не закомментированного).
+Откройте *Views/Manage/Index.cshtml* файл представления Razor и удалите символы комментария (поэтому разметка не закомментирован).
 
 ## <a name="log-in-with-two-factor-authentication"></a>Войдите с помощью двухфакторной проверки подлинности
 

@@ -7,12 +7,12 @@ ms.author: bradyg
 ms.custom: mvc
 ms.date: 11/14/2018
 uid: signalr/streaming
-ms.openlocfilehash: fb7183f7189d62c181f69ffdb170e3da25612919
-ms.sourcegitcommit: 036d4b03fd86ca5bb378198e29ecf2704257f7b2
+ms.openlocfilehash: 7c176e3f21ffca7b97d9d3c2e8861032f22587b8
+ms.sourcegitcommit: 57792e5f594db1574742588017c708350958bdf0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57345591"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58264305"
 ---
 # <a name="use-streaming-in-aspnet-core-signalr"></a>Использовать потоковую передачу в ASP.NET Core SignalR
 
@@ -139,12 +139,14 @@ Console.WriteLine("Streaming completed");
 ::: moniker-end
 
 ::: moniker range=">= aspnetcore-3.0"
+
 ## <a name="java-client"></a>Клиент Java
+
 Клиент SignalR Java использует `stream` метод для вызова методов потоковой передачи. Он принимает три или более аргументов:
 
-* Ожидаемый тип элементов потока 
+* Ожидаемый тип элементов потока
 * Имя метода концентратора.
-* Аргументы, определенный в методе концентратора. 
+* Аргументы, определенный в методе концентратора.
 
 ```java
 hubConnection.stream(String.class, "ExampleStreamingHubMethod", "Arg1")
@@ -153,6 +155,7 @@ hubConnection.stream(String.class, "ExampleStreamingHubMethod", "Arg1")
         (error) -> {/* Define your onError handler here. */},
         () -> {/* Define your onCompleted handler here. */});
 ```
+
 `stream` Метод `HubConnection` Возвращает наблюдаемый объект типа элемента потока. Наблюдаемого типа `subscribe` метод является определение вашего `onNext`, `onError` и `onCompleted` обработчиков.
 
 ::: moniker-end

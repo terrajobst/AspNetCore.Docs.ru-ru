@@ -7,12 +7,12 @@ ms.author: bradyg
 ms.custom: mvc
 ms.date: 02/07/2019
 uid: signalr/configuration
-ms.openlocfilehash: 070d6fed26b6d14c4b8a35d0f7d94abafb08993b
-ms.sourcegitcommit: 191d21c1e37b56f0df0187e795d9a56388bbf4c7
+ms.openlocfilehash: 2c1bb8d5e317813d1fdb8d474b7d7d892e6f67ec
+ms.sourcegitcommit: 57792e5f594db1574742588017c708350958bdf0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 03/08/2019
-ms.locfileid: "57665419"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58264576"
 ---
 # <a name="aspnet-core-signalr-configuration"></a>Конфигурация ASP.NET Core SignalR
 
@@ -27,7 +27,7 @@ ASP.NET Core SignalR поддерживает два протокола для �
 ```csharp
 services.AddSignalR()
     .AddJsonProtocol(options => {
-        options.PayloadSerializerSettings.ContractResolver = 
+        options.PayloadSerializerSettings.ContractResolver =
         new DefaultContractResolver();
     });
 ```
@@ -41,7 +41,7 @@ using Microsoft.Extensions.DependencyInjection;
 // When constructing your connection:
 var connection = new HubConnectionBuilder()
     .AddJsonProtocol(options => {
-        options.PayloadSerializerSettings.ContractResolver = 
+        options.PayloadSerializerSettings.ContractResolver =
             new DefaultContractResolver();
     })
     .Build();
@@ -98,13 +98,13 @@ services.AddSignalR().AddHubOptions<MyHub>(options =>
 ```csharp
 public void Configure(IApplicationBuilder app, IHostingEnvironment env)
 {
-    app.UseSignalR((configure) => 
+    app.UseSignalR((configure) =>
     {
-        var desiredTransports = 
+        var desiredTransports =
             HttpTransportType.WebSockets |
             HttpTransportType.LongPolling;
 
-        configure.MapHub<MyHub>("/myhub", (options) => 
+        configure.MapHub<MyHub>("/myhub", (options) =>
         {
             options.Transports = desiredTransports;
         });
@@ -114,7 +114,7 @@ public void Configure(IApplicationBuilder app, IHostingEnvironment env)
 
 В следующей таблице описаны параметры для настройки дополнительных параметров HTTP ASP.NET Core SignalR:
 
-| Параметр | Значение по умолчанию | Описание: |
+| Параметр | Значение по умолчанию | Описание |
 | ------ | ------------- | ----------- |
 | `ApplicationMaxBufferSize` | 32 КБ | Максимальное число байтов, полученных от клиента, буферы сервера. Увеличение этого значения позволяет серверу для получения сообщения большего размера, но может отрицательно повлиять на потребление памяти. |
 | `AuthorizationData` | Данные, собранные из автоматически `Authorize` атрибутов, примененных к классу Hub. | Список [IAuthorizeData](/dotnet/api/microsoft.aspnetcore.authorization.iauthorizedata) объекты, используемые для определения того, если клиенту разрешено подключаться к концентратору. |
@@ -224,6 +224,7 @@ HubConnection hubConnection = HubConnectionBuilder.create("https://example.com/m
     .withTransport(TransportEnum.WEBSOCKETS)
     .build();
 ```
+
 > [!NOTE]
 > Клиент SignalR Java не поддерживает резервный транспорт.
 
@@ -259,8 +260,7 @@ let connection = new signalR.HubConnectionBuilder()
     .build();
 ```
 
-
-В клиенте SignalR Java, можно настроить токен носителя для проверки подлинности, предоставляя фабрику токена доступа для [HttpHubConnectionBuilder](/java/api/com.microsoft.signalr._http_hub_connection_builder?view=aspnet-signalr-java). Используйте [withAccessTokenFactory](/java/api/com.microsoft.signalr._http_hub_connection_builder.withaccesstokenprovider?view=aspnet-signalr-java#com_microsoft_signalr__http_hub_connection_builder_withAccessTokenProvider_Single_String__) для предоставления [RxJava](https://github.com/ReactiveX/RxJava) [единый<String>](http://reactivex.io/documentation/single.html). С помощью вызова [Single.defer](http://reactivex.io/RxJava/javadoc/io/reactivex/Single.html#defer-java.util.concurrent.Callable-), можно написать логику для получения маркеров доступа для вашего клиента.
+В клиенте SignalR Java, можно настроить токен носителя для проверки подлинности, предоставляя фабрику токена доступа для [HttpHubConnectionBuilder](/java/api/com.microsoft.signalr._http_hub_connection_builder?view=aspnet-signalr-java). Используйте [withAccessTokenFactory](/java/api/com.microsoft.signalr._http_hub_connection_builder.withaccesstokenprovider?view=aspnet-signalr-java#com_microsoft_signalr__http_hub_connection_builder_withAccessTokenProvider_Single_String__) для предоставления [RxJava](https://github.com/ReactiveX/RxJava) [единый\<строка >](http://reactivex.io/documentation/single.html). С помощью вызова [Single.defer](http://reactivex.io/RxJava/javadoc/io/reactivex/Single.html#defer-java.util.concurrent.Callable-), можно написать логику для получения маркеров доступа для вашего клиента.
 
 ```java
 HubConnection hubConnection = HubConnectionBuilder.create("https://example.com/myhub")
@@ -276,7 +276,7 @@ HubConnection hubConnection = HubConnectionBuilder.create("https://example.com/m
 
 # <a name="nettabdotnet"></a>[.NET](#tab/dotnet)
 
-| Параметр | Значение по умолчанию | Описание |
+| Параметр | Значение по умолчанию | Описание: |
 | ------ | ------------- | ----------- |
 | `ServerTimeout` | 30 секунд (30 000 миллисекунд) | Время ожидания активности сервера. Если сервер не отправил сообщение в этом интервале, клиент считает, что сервер отключен и триггеры `Closed` событий (`onclose` в JavaScript). Это значение должно быть достаточно большим для получения сообщения ping, отправляемых с сервера **и** полученные клиентом в течение времени ожидания. Рекомендуемое значение — номера по крайней мере двойное server `KeepAliveInterval` значение, чтобы выделить время для проверки связи для получения. |
 | `HandshakeTimeout` | 15 секунд | Время ожидания подтверждения исходным сервером. Если сервер не отправляет ответ подтверждения в этом интервале, клиент отменяет подтверждения и триггеры `Closed` событий (`onclose` в JavaScript). Это расширенный параметр, который может изменяться только если из-за серьезных сетевой задержки происходят ошибки времени ожидания подтверждения. Подробности, касающиеся процесса подтверждения, см. в разделе [спецификации протокола концентратора SignalR](https://github.com/aspnet/SignalR/blob/master/specs/HubProtocol.md). |
@@ -319,13 +319,15 @@ HubConnection hubConnection = HubConnectionBuilder.create("https://example.com/m
 | `WebSocketConfiguration` | `null` | Делегат, который может использоваться для настройки дополнительных параметров WebSocket. Получает экземпляр класса [ClientWebSocketOptions](/dotnet/api/system.net.websockets.clientwebsocketoptions) , можно использовать для настройки параметров. |
 
 # <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+
 | Параметр JavaScript | Значение по умолчанию | Описание: |
 | ----------------- | ------------- | ----------- |
 | `accessTokenFactory` | `null` | Функция, возвращающая строку, которая предоставляется как токен проверки подлинности носителя в HTTP-запросов. |
 | `skipNegotiation` | `false` | Задайте значение `true` пропустить шаг согласования. **Поддерживается только при передаче WebSockets только транспорта включена**. Этот параметр не может быть включен, при использовании служба Azure SignalR. |
 
 # <a name="javatabjava"></a>[Java](#tab/java)
-| Параметр Java | Значение по умолчанию | Описание |
+
+| Параметр Java | Значение по умолчанию | Описание: |
 | ----------- | ------------- | ----------- |
 | `withAccessTokenProvider` | `null` | Функция, возвращающая строку, которая предоставляется как токен проверки подлинности носителя в HTTP-запросов. |
 | `shouldSkipNegotiate` | `false` | Задайте значение `true` пропустить шаг согласования. **Поддерживается только при передаче WebSockets только транспорта включена**. Этот параметр не может быть включен, при использовании служба Azure SignalR. |
@@ -357,7 +359,6 @@ let connection = new signalR.HubConnectionBuilder()
 ```
 
 В клиенте Java, эти параметры можно настроить на с методами `HttpHubConnectionBuilder` возвращаемые `HubConnectionBuilder.create("HUB URL")`
-
 
 ```java
 HubConnection hubConnection = HubConnectionBuilder.create("https://example.com/myhub")
