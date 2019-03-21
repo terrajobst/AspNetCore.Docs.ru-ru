@@ -7,12 +7,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 02/25/2019
 uid: test/integration-tests
-ms.openlocfilehash: 50cb6b26be187c7f36f189e77fd29b4559221f2c
-ms.sourcegitcommit: 5f299daa7c8102d56a63b214b9a34cc4bc87bc42
+ms.openlocfilehash: 11a8f4296e1b0b229c736645f1aa598307b88ec4
+ms.sourcegitcommit: 088e6744cd67a62f214f25146313a53949b17d35
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58209243"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58320190"
 ---
 # <a name="integration-tests-in-aspnet-core"></a>Интеграционные тесты в ASP.NET Core
 
@@ -311,7 +311,7 @@ _client = _factory.CreateClient(clientOptions);
 
 ## <a name="disable-shadow-copying"></a>Отключить теневое копирование
 
-Теневое копирование вызывает ошибки в тестах для выполнения в той же папке в выходную папку. Для тестов для правильной работы теневое копирование, необходимо отключить. [Пример приложения](https://github.com/aspnet/Docs/tree/master/aspnetcore/test/integration-tests/samples) использует xUnit и отключает теневого копирования для xUnit, включив *xunit.runner.json* файл с параметром правильная конфигурация. Дополнительные сведения см. в разделе [Настройка xUnit.net с JSON](https://xunit.github.io/docs/configuring-with-json.html).
+Теневое копирование вызывает ошибки в тестах для выполнения в той же папке в выходную папку. Для тестов для правильной работы теневое копирование, необходимо отключить. [Пример приложения](https://github.com/aspnet/Docs/tree/master/aspnetcore/test/integration-tests/samples) использует xUnit и отключает теневого копирования для xUnit, включив *xunit.runner.json* файл с параметром правильная конфигурация. Дополнительные сведения см. в разделе [Настройка xUnit с помощью JSON](https://xunit.github.io/docs/configuring-with-json.html).
 
 Добавить *xunit.runner.json* файла корневой каталог тестового проекта со следующим содержимым:
 

@@ -5,12 +5,12 @@ description: Сведения о создании приложения ASP.NET C
 ms.author: riande
 ms.date: 3/11/2019
 uid: security/authentication/accconfirm
-ms.openlocfilehash: 3bfc2ce46cfbc2ee308940f9e04eb2ffeec09073
-ms.sourcegitcommit: 57792e5f594db1574742588017c708350958bdf0
+ms.openlocfilehash: 59041bcf11f7deb351a2f0bb075ed80c8af5e12b
+ms.sourcegitcommit: 088e6744cd67a62f214f25146313a53949b17d35
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58265501"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58320229"
 ---
 # <a name="account-confirmation-and-password-recovery-in-aspnet-core"></a>Подтверждение учетной записи и восстановление пароля в ASP.NET Core
 
@@ -129,7 +129,7 @@ Install-Package SendGrid
 dotnet add package SendGrid
 ```
 
-------
+---
 
 См. в разделе [приступить к работе с SendGrid бесплатно](https://sendgrid.com/free/) зарегистрироваться для получения бесплатной учетной записи SendGrid.
 

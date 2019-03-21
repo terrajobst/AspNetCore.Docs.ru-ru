@@ -7,12 +7,12 @@ ms.author: bradyg
 ms.custom: mvc
 ms.date: 11/20/2018
 uid: signalr/hubs
-ms.openlocfilehash: 9bc74079235338c75c47e06bde2b78dc1c466bd6
-ms.sourcegitcommit: ebf4e5a7ca301af8494edf64f85d4a8deb61d641
+ms.openlocfilehash: 244ddc40e647bfcc3ca8cda2797c51bc49174822
+ms.sourcegitcommit: 088e6744cd67a62f214f25146313a53949b17d35
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54836692"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58320151"
 ---
 # <a name="use-hubs-in-signalr-for-aspnet-core"></a>Использование центров в SignalR для ASP.NET Core
 
@@ -52,6 +52,7 @@ public class ChatHub : Hub
 
 > [!NOTE]
 > Концентраторы являются временными:
+>
 > * Не храните состояние в свойство класса концентратора. Каждый вызов метода концентратора выполняется с использованием нового экземпляра концентратора.  
 > * Используйте `await` при вызове асинхронных методов, которые зависят от концентратора, остаются в активном состоянии. Например, метода, такого как `Clients.All.SendAsync(...)` может завершиться ошибкой, если он вызывается без `await` и завершения метода концентратора, прежде чем `SendAsync` завершения.
 
@@ -79,7 +80,7 @@ public class ChatHub : Hub
 
 `Hub` Класс имеет `Clients` свойство, которое содержит следующие свойства для обмена данными между сервером и клиентом:
 
-| Свойство. | Описание |
+| Свойство | Описание: |
 | ------ | ----------- |
 | `All` | Вызывает метод на все подключенные клиенты |
 | `Caller` | Вызывает метод на стороне клиента, вызвавшему метод концентратора |
