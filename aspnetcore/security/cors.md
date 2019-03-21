@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 02/27/2019
 uid: security/cors
-ms.openlocfilehash: 6be8b4da1642a9eff021371c229a17071d6e9bfb
-ms.sourcegitcommit: d913bca90373c07f89b1d1df01af5fc01fc908ef
+ms.openlocfilehash: 2cad26d0f61519f63888a2bc399bb7e8a0f1ee04
+ms.sourcegitcommit: 5f299daa7c8102d56a63b214b9a34cc4bc87bc42
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 03/14/2019
-ms.locfileid: "57978475"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58210136"
 ---
 # <a name="enable-cross-origin-requests-cors-in-aspnet-core"></a>Включение запросов о происхождении (CORS) в ASP.NET Core
 
@@ -84,7 +84,7 @@ public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         app.UseHsts();
     }
 
-    app.UseCors(); 
+    app.UseCors();
 
     app.UseHttpsRedirection();
     app.UseMvc();
@@ -141,25 +141,25 @@ public void Configure(IApplicationBuilder app, IHostingEnvironment env)
 * [Учетные данные в запросов о происхождении](#credentials-in-cross-origin-requests)
 * [Задайте срок действия предварительного](#set-the-preflight-expiration-time)
 
- <xref:Microsoft.AspNetCore.Cors.Infrastructure.CorsOptions.AddPolicy*> вызывается в `Startup.ConfigureServices`. Для некоторых параметров, может оказаться удобным для чтения [работает как CORS](#how-cors) разделе сначала.
+<xref:Microsoft.AspNetCore.Cors.Infrastructure.CorsOptions.AddPolicy*> вызывается в `Startup.ConfigureServices`. Для некоторых параметров, может оказаться удобным для чтения [работает как CORS](#how-cors) разделе сначала.
 
 ## <a name="set-the-allowed-origins"></a>Задайте разрешенные источники
 
 <xref:Microsoft.AspNetCore.Cors.Infrastructure.CorsPolicyBuilder.AllowAnyOrigin*> &ndash; Разрешает запросы CORS из всех источников с любой схемой (`http` или `https`). `AllowAnyOrigin` не защищен, поскольку *любой веб-сайт* могут выполнять запросы независимо от источника к приложению.
 
-  ::: moniker range=">= aspnetcore-2.2"
+::: moniker range=">= aspnetcore-2.2"
 
-  > [!NOTE]
-  > Указание `AllowAnyOrigin` и `AllowCredentials` является небезопасной конфигурацией и может привести к подделки межсайтовых запросов. CORS, служба возвращает недопустимый ответ CORS приложения настраивается с помощью обоих методов.
+> [!NOTE]
+> Указание `AllowAnyOrigin` и `AllowCredentials` является небезопасной конфигурацией и может привести к подделки межсайтовых запросов. CORS, служба возвращает недопустимый ответ CORS приложения настраивается с помощью обоих методов.
 
-  ::: moniker-end
+::: moniker-end
 
-  ::: moniker range="< aspnetcore-2.2"
+::: moniker range="< aspnetcore-2.2"
 
-  > [!NOTE]
-  > Указание `AllowAnyOrigin` и `AllowCredentials` является небезопасной конфигурацией и может привести к подделки межсайтовых запросов. Для безопасного приложения укажите точный список источников, если клиент должен авторизоваться сам доступ к ресурсам сервера.
+> [!NOTE]
+> Указание `AllowAnyOrigin` и `AllowCredentials` является небезопасной конфигурацией и может привести к подделки межсайтовых запросов. Для безопасного приложения укажите точный список источников, если клиент должен авторизоваться сам доступ к ресурсам сервера.
 
-  ::: moniker-end
+::: moniker-end
 
 <!-- REVIEW required
 I changed from
@@ -167,16 +167,16 @@ Specifying `AllowAnyOrigin` and `AllowCredentials` is an insecure configuration.
 to
 **`AllowAnyOrigin`** affects preflight requests and the
 
-to remove the ambiguous **This**. 
+to remove the ambiguous **This**.
 -->
 
-  `AllowAnyOrigin` влияет на запросы перед запуском выявила и `Access-Control-Allow-Origin` заголовка. Дополнительные сведения см. в разделе [перед запуском выявила запросы](#preflight-requests) раздел.
+`AllowAnyOrigin` влияет на запросы перед запуском выявила и `Access-Control-Allow-Origin` заголовка. Дополнительные сведения см. в разделе [перед запуском выявила запросы](#preflight-requests) раздел.
 
 ::: moniker range=">= aspnetcore-2.0"
 
 <xref:Microsoft.AspNetCore.Cors.Infrastructure.CorsPolicyBuilder.SetIsOriginAllowedToAllowWildcardSubdomains*> &ndash; Наборы <xref:Microsoft.AspNetCore.Cors.Infrastructure.CorsPolicy.IsOriginAllowed*> свойство быть функцией, которая позволяет источников для сопоставления домена с подстановочным знаком настроенных при оценке, если разрешено источника политики.
 
-  [!code-csharp[](cors/sample/CorsExample4/Startup.cs?range=100-104&highlight=4)]
+[!code-csharp[](cors/sample/CorsExample4/Startup.cs?range=100-104&highlight=4)]
 
 ::: moniker-end
 
@@ -381,14 +381,14 @@ Date: Wed, 20 May 2015 06:33:22 GMT
   * Например, использовать вредоносного субъекта [сценариев предотвращения между сайтами (XSS)](xref:security/cross-site-scripting) на веб-узле и выполнения запросов между сайтами с сайтом включен механизм CORS для кражи информации.
 * API не является более безопасным, позволяя CORS.
   * Именно на клиент (браузер) принудительно CORS. Сервер выполняет запрос и возвращает ответ, клиент, который возвращает ошибку и блоки ответ. Например любой из следующих средств отображения ответ сервера:
-     * [Fiddler](https://www.telerik.com/fiddler)
-     * [Postman](https://www.getpostman.com/)
-     * [.NET HttpClient](/dotnet/csharp/tutorials/console-webapiclient)
-     * Веб-браузер, введя URL-адрес в адресной строке.
+    * [Fiddler](https://www.telerik.com/fiddler)
+    * [Postman](https://www.getpostman.com/)
+    * [.NET HttpClient](/dotnet/csharp/tutorials/console-webapiclient)
+    * Веб-браузер, введя URL-адрес в адресной строке.
 * Это способ для сервера разрешить браузеры выполнения независимо от источника [XHR](https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest) или [выборки API](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API) запроса, в противном случае может быть запрещено.
   * Запросов о происхождении обозревателей (CORS) не поддерживается. Прежде чем CORS [JSONP](https://www.w3schools.com/js/js_json_jsonp.asp) было использовано, чтобы обойти это ограничение. JSONP не использует XHR, он использует `<script>` тег для получения ответа. Сценарии могут быть загружена независимо от источника.
 
-[Спецификация CORS]() появился ряд новых заголовков HTTP, которые позволяют запросы независимо от источника. Если браузер поддерживает CORS, он устанавливает эти заголовки для запросов о происхождении автоматически. Пользовательский код JavaScript не обязательно для включения CORS.
+[Спецификация CORS](https://www.w3.org/TR/cors/) появился ряд новых заголовков HTTP, которые позволяют запросы независимо от источника. Если браузер поддерживает CORS, он устанавливает эти заголовки для запросов о происхождении автоматически. Пользовательский код JavaScript не обязательно для включения CORS.
 
 Ниже приведен пример запроса независимо от источника. `Origin` Заголовок предоставляет домена сайта, который выполняет запрос:
 
@@ -429,7 +429,7 @@ Test message
 1. Включите CORS, с помощью одного из методов в этом документе. Пример:
 
   [!code-csharp[](cors/sample/Cors/WebAPI/StartupTest.cs?name=snippet2&highlight=13-18)]
-  
+
   > [!WARNING]
   > `WithOrigins("https://localhost:<port>");` следует использовать только для тестирования примера приложения, аналогичную [скачать образец кода](https://github.com/aspnet/Docs/tree/live/aspnetcore/security/cors/sample/Cors).
 
@@ -444,13 +444,13 @@ Test message
 1. Удаление из начала координат localhost `WithOrigins` и развернуть приложение. Кроме того запустите клиентское приложение с другим портом. Например запуск из Visual Studio.
 1. Тестирование с помощью клиентского приложения. Сбои CORS сообщение об ошибке, но сообщение об ошибке недоступно в код JavaScript. Используйте вкладку консоли в инструментах F12, чтобы просмотреть ошибку. В зависимости от браузера отобразится сообщение об ошибке (в консоли инструменты F12) следующего вида:
 
-  * С помощью Microsoft Edge:
+   * С помощью Microsoft Edge:
 
-    **SEC7120: [CORS] источник `https://localhost:44375` не обнаружил `https://localhost:44375` в заголовке ответа Access-Control-Allow-Origin для ресурса независимо от источника `https://webapi.azurewebsites.net/api/values/1`**
+     **SEC7120: [CORS] источник `https://localhost:44375` не обнаружил `https://localhost:44375` в заголовке ответа Access-Control-Allow-Origin для ресурса независимо от источника `https://webapi.azurewebsites.net/api/values/1`**
 
-  * С помощью Chrome:
+   * С помощью Chrome:
 
-    **Доступ к XMLHttpRequest в `https://webapi.azurewebsites.net/api/values/1` от начала `https://localhost:44375` была заблокирована политикой CORS: Заголовок «Access-Control-Allow-Origin» отсутствует для запрашиваемого ресурса.**
+     **Доступ к XMLHttpRequest в `https://webapi.azurewebsites.net/api/values/1` от начала `https://localhost:44375` была заблокирована политикой CORS: Заголовок «Access-Control-Allow-Origin» отсутствует для запрашиваемого ресурса.**
 
 ## <a name="additional-resources"></a>Дополнительные ресурсы
 

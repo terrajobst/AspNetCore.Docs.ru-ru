@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 11/21/2017
 uid: security/authorization/policies
-ms.openlocfilehash: c2bc626b2dd341dda878a151def6b405884357d7
-ms.sourcegitcommit: 191d21c1e37b56f0df0187e795d9a56388bbf4c7
+ms.openlocfilehash: e72f15c28fb7b62c671dd6475cc323cacce42de6
+ms.sourcegitcommit: 5f299daa7c8102d56a63b214b9a34cc4bc87bc42
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 03/08/2019
-ms.locfileid: "57665406"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58208325"
 ---
 # <a name="policy-based-authorization-in-aspnet-core"></a>Авторизация на основе политик в ASP.NET Core
 
@@ -19,13 +19,25 @@ ms.locfileid: "57665406"
 
 Политика авторизации состоит из одной или нескольким требованиям. Он зарегистрирован как часть конфигурации службы авторизации, в `Startup.ConfigureServices` метод:
 
-[!code-csharp[](policies/samples/PoliciesAuthApp1/Startup.cs?range=40-41,50-55,63,72)]
+[!code-csharp[](policies/samples/PoliciesAuthApp1/Startup.cs?range=32-33,48-53,61,66)]
 
 В приведенном выше примере создается с помощью политики «AtLeast21». Он имеет одну потребность&mdash;с минимальным возрастом, который передается в качестве параметра с требованием.
 
-Политики применяются с помощью `[Authorize]` атрибут с именем политики. Пример:
+## <a name="applying-policies-to-mvc-controllers"></a>Применение политик для контроллеров MVC
+
+Если вы используете Razor Pages, см. в разделе [применения политик к Razor Pages](#applying-policies-to-razor-pages) в этом документе.
+
+Политики применяются к контроллерам с помощью `[Authorize]` атрибут с именем политики. Пример:
 
 [!code-csharp[](policies/samples/PoliciesAuthApp1/Controllers/AlcoholPurchaseController.cs?name=snippet_AlcoholPurchaseControllerClass&highlight=4)]
+
+## <a name="applying-policies-to-razor-pages"></a>Применение политик для Razor Pages
+
+Политики применяются к Razor Pages с помощью `[Authorize]` атрибут с именем политики. Пример:
+
+[!code-csharp[](policies/samples/PoliciesAuthApp2/Pages/AlcoholPurchase.cshtml.cs?name=snippet_AlcoholPurchaseModelClass&highlight=4)]
+
+Политики могут также применяться для Razor Pages с помощью [соглашение об авторизации](xref:security/authorization/razor-pages-authorization).
 
 ## <a name="requirements"></a>Требования
 
@@ -70,7 +82,7 @@ ms.locfileid: "57665406"
 
 Обработчики, регистрируются в коллекции служб во время настройки. Пример:
 
-[!code-csharp[](policies/samples/PoliciesAuthApp1/Startup.cs?range=40-41,50-55,63-65,72)]
+[!code-csharp[](policies/samples/PoliciesAuthApp1/Startup.cs?range=32-33,48-53,61,62-63,66)]
 
 Приведенный выше код регистрирует `MinimumAgeHandler` как Singleton-класс путем вызова `services.AddSingleton<IAuthorizationHandler, MinimumAgeHandler>();`. Обработчики могут быть зарегистрированы с помощью любого из встроенных [службы времени существования](xref:fundamentals/dependency-injection#service-lifetimes).
 
@@ -112,7 +124,7 @@ ms.locfileid: "57665406"
 
 Например, предыдущий `BadgeEntryHandler` можно переписать следующим образом:
 
-[!code-csharp[](policies/samples/PoliciesAuthApp1/Startup.cs?range=52-53,57-63)]
+[!code-csharp[](policies/samples/PoliciesAuthApp1/Startup.cs?range=50-51,55-61)]
 
 ## <a name="accessing-mvc-request-context-in-handlers"></a>Доступ к контексту запроса MVC в обработчиках
 

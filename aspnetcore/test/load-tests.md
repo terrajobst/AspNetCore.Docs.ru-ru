@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 01/04/2019
 uid: test/loadtests
-ms.openlocfilehash: 587df6e216943d3eeec779df4d0554dd0fc2fda0
-ms.sourcegitcommit: 036d4b03fd86ca5bb378198e29ecf2704257f7b2
+ms.openlocfilehash: 39632af2c92dac548c03e24d35a5e8a03e00890d
+ms.sourcegitcommit: 5f299daa7c8102d56a63b214b9a34cc4bc87bc42
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57345432"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58209837"
 ---
 # <a name="load-and-stress-testing-aspnet-core"></a>Нагрузочное тестирование ASP.NET Core
 
@@ -22,7 +22,7 @@ ms.locfileid: "57345432"
 **Нагрузочные тесты**: Тесты стабильности приложения, при выполнении в экстремальных условиях и часто длительного периода времени:
 
 * Высокая нагрузка — пики или постепенно увеличивается.
-* Ограниченные вычислительные ресурсы.  
+* Ограниченные вычислительные ресурсы.
 
 Под нагрузкой можно его восстановление после сбоя и корректно вернуться к ожидаемое поведение? Под нагрузкой, приложение будет *не* выполнения в нормальных условиях.
 
@@ -44,41 +44,42 @@ Visual Studio позволяет пользователям создавать, 
 
 Нагрузочных тестов можно запустить с помощью [Azure DevOps планов тестирования](/azure/devops/test/load-test/index?view=vsts) службы.
 
-![](./load-tests/_static/azure-devops-load-test.png)
+![Целевая страница тестирования нагрузки Azure DevOps](./load-tests/_static/azure-devops-load-test.png)
 
 Служба поддерживает следующие типы формата теста:
 
-- Тест Visual Studio — веб-теста, созданных в Visual Studio.
-- Тестов на основе архива HTTP — записанный HTTP-трафик в архив воспроизводится во время тестирования.
-- [Тестов на основе URL-адрес](/azure/devops/test/load-test/get-started-simple-cloud-load-test?view=vsts) — позволяет указать URL-адреса, чтобы загрузить тест, типы запросов, заголовки и строки запросов. Запустить задание параметров, таких как длительность, шаблон нагрузки, пользователей и т. д., можно настроить.
-- [Apache JMeter](https://jmeter.apache.org/) тестирования.
+* Тест Visual Studio — веб-теста, созданных в Visual Studio.
+* Тестов на основе архива HTTP — записанный HTTP-трафик в архив воспроизводится во время тестирования.
+* [Тестов на основе URL-адрес](/azure/devops/test/load-test/get-started-simple-cloud-load-test?view=vsts) — позволяет указать URL-адреса, чтобы загрузить тест, типы запросов, заголовки и строки запросов. Запустить задание параметров, таких как длительность, шаблон нагрузки, пользователей и т. д., можно настроить.
+* [Apache JMeter](https://jmeter.apache.org/) тестирования.
 
 ## <a name="azure-portal"></a>порталу Azure
 
 [Портал Azure предоставляет настройки и выполнения нагрузочного тестирования веб-приложений,](/azure/devops/test/load-test/app-service-web-app-performance-test?view=vsts) напрямую из вкладки производительности службы приложений на портале Azure.
 
-![](./load-tests/_static/azure-appservice-perf-test.png)
+![Служба приложений Azure на портале Azure](./load-tests/_static/azure-appservice-perf-test.png)
 
 Тест может быть ручного теста с указанным URL-адрес или файл веб-тест Visual Studio, который можно проверить несколько URL-адресов.
 
-![](./load-tests/_static/azure-appservice-perf-test-config.png)
+![Новая страница тестирования производительности на портале Azure.](./load-tests/_static/azure-appservice-perf-test-config.png)
 
 В конце теста отчеты создаются для отображения характеристик производительности приложения. Пример Статистика включает в себя:
 
-- Среднее время отклика
-- Макс. пропускная способность: запросов в секунду
-- Процент неудачных
+* Среднее время отклика
+* Макс. пропускная способность: запросов в секунду
+* Процент неудачных
 
 ## <a name="third-party-tools"></a>Сторонние средства
 
 Следующий список содержит средства обеспечения производительности сторонних разработчиков с различных наборов функций:
 
-- [Apache JMeter](https://jmeter.apache.org/) : Полный набор избранные средства тестирования нагрузки. Привязана к потоку: требуется один поток для каждого пользователя.
-- [AB - сервер Apache HTTP, средство тестирования](https://httpd.apache.org/docs/2.4/programs/ab.html)
-- [Gatling](https://gatling.io/) : Программы рабочего стола с помощью средства графического пользовательского интерфейса и тестирования для записи. Более высокую производительность, чем JMeter.
-- [Locust.IO](https://locust.io/) : Не ограничено потоков.
+* [Apache JMeter](https://jmeter.apache.org/) : Полный набор избранные средства тестирования нагрузки. Привязана к потоку: требуется один поток для каждого пользователя.
+* [AB - сервер Apache HTTP, средство тестирования](https://httpd.apache.org/docs/2.4/programs/ab.html)
+* [Gatling](https://gatling.io/) : Программы рабочего стола с помощью средства графического пользовательского интерфейса и тестирования для записи. Более высокую производительность, чем JMeter.
+* [Locust.IO](https://locust.io/) : Не ограничено потоков.
 
 <a name="add"></a>
+
 ## <a name="additional-resources"></a>Дополнительные ресурсы
 
 [Серия записей блога теста нагрузки](https://blogs.msdn.microsoft.com/charles_sterling/2015/06/01/load-test-series-part-i-creating-web-performance-tests-for-a-load-test/) по (Charles Sterling). Выпущенное, но большинство из разделов по-прежнему актуальны.

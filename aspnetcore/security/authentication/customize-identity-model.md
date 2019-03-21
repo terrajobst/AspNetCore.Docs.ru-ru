@@ -5,12 +5,12 @@ description: В этой статье описывается настройка 
 ms.author: avickers
 ms.date: 09/24/2018
 uid: security/authentication/customize_identity_model
-ms.openlocfilehash: 90c867eeac0e64bfe77cc7a829d61e831a2fb8e1
-ms.sourcegitcommit: 9bdba90b2c97a4016188434657194b2d7027d6e3
+ms.openlocfilehash: 55346c571f180fa17a1108a622d991d15f365bae
+ms.sourcegitcommit: 5f299daa7c8102d56a63b214b9a34cc4bc87bc42
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47402259"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58209466"
 ---
 # <a name="identity-model-customization-in-aspnet-core"></a>Настройка модели удостоверения в ASP.NET Core
 
@@ -302,7 +302,6 @@ public abstract class IdentityUserContext<
 
 [Пользовательские данные](xref:security/authentication/add-user-data) поддерживается путем наследования от `IdentityUser`. Имя этого типа обычно `ApplicationUser`:
 
-
 ```csharp
 public class ApplicationUser : IdentityUser
 {
@@ -334,7 +333,7 @@ services.AddDefaultIdentity<ApplicationUser>()
         .AddDefaultUI();
 ```
 
-В ASP.NET Core 2.1 или более поздней версии удостоверение предоставляется как библиотека классов Razor. Дополнительные сведения см. в разделе <xref:security/authentication/scaffold-identity>. Следовательно, предыдущий код требует вызова <xref:Microsoft.AspNetCore.Identity.IdentityBuilderUIExtensions.AddDefaultUI*>. Если удостоверение шаблон был использован для добавления в проект файлы, удалите вызов `AddDefaultUI`. Дополнительные сведения:
+В ASP.NET Core 2.1 или более поздней версии удостоверение предоставляется как библиотека классов Razor. Дополнительные сведения см. в разделе <xref:security/authentication/scaffold-identity>. Следовательно, предыдущий код требует вызова <xref:Microsoft.AspNetCore.Identity.IdentityBuilderUIExtensions.AddDefaultUI*>. Если удостоверение шаблон был использован для добавления в проект файлы, удалите вызов `AddDefaultUI`. Дополнительные сведения см. в следующих разделах.
 
 * [Удостоверение шаблона](xref:security/authentication/scaffold-identity)
 * [Добавление, скачивание и удаление пользовательские данные для удостоверения](xref:security/authentication/add-user-data)
@@ -956,7 +955,7 @@ protected override void OnModelCreating(ModelBuilder modelBuilder)
 
 ::: moniker range=">= aspnetcore-2.1"
 
-### <a name="lazy-loading"></a>Отложенная загрузка
+### <a name="lazy-loading"></a>«Неспешная» загрузка
 
 В этом разделе добавляется поддержка прокси отложенной загрузки в модель удостоверения. Lazy загрузка полезен в тех случаях, так как он позволяет использовать без убедитесь, что они при загрузке свойства навигации.
 

@@ -5,12 +5,12 @@ description: ''
 ms.author: tdykstra
 ms.date: 12/07/2016
 uid: migration/http-modules
-ms.openlocfilehash: 601b93fb12ab5b37b7d8ad8fd9825accc6e314cd
-ms.sourcegitcommit: b3894b65e313570e97a2ab78b8addd22f427cac8
+ms.openlocfilehash: 516230a66ee3edba986c91d79684256aa8e4c994
+ms.sourcegitcommit: 5f299daa7c8102d56a63b214b9a34cc4bc87bc42
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56743859"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58209850"
 ---
 # <a name="migrate-http-handlers-and-modules-to-aspnet-core-middleware"></a>Перенос обработчики и модули HTTP на по промежуточного слоя ASP.NET Core
 
@@ -26,29 +26,29 @@ ms.locfileid: "56743859"
 
 **Существуют следующие обработчики**
 
-   * Классы, реализующие [IHttpHandler](/dotnet/api/system.web.ihttphandler)
+* Классы, реализующие [IHttpHandler](/dotnet/api/system.web.ihttphandler)
 
-   * Позволяет обрабатывать запросы с помощью указанного имени файла или расширение, например *отчетов*
+* Позволяет обрабатывать запросы с помощью указанного имени файла или расширение, например *отчетов*
 
-   * [Настроить](/iis/configuration/system.webserver/handlers/) в *Web.config*
+* [Настроить](/iis/configuration/system.webserver/handlers/) в *Web.config*
 
 **Модули являются:**
 
-   * Классы, реализующие [IHttpModule](/dotnet/api/system.web.ihttpmodule)
+* Классы, реализующие [IHttpModule](/dotnet/api/system.web.ihttpmodule)
 
-   * Вызывается для каждого запроса
+* Вызывается для каждого запроса
 
-   * Возможность краткой записи (прекратить дальнейшую обработку запроса)
+* Возможность краткой записи (прекратить дальнейшую обработку запроса)
 
-   * Возможность добавить в HTTP-ответа, или создать свои собственные
+* Возможность добавить в HTTP-ответа, или создать свои собственные
 
-   * [Настроить](/iis/configuration/system.webserver/modules/) в *Web.config*
+* [Настроить](/iis/configuration/system.webserver/modules/) в *Web.config*
 
 **Порядок, в котором модули обрабатывают входящие запросы определяется:**
 
-   1. [Жизненного цикла приложения](https://msdn.microsoft.com/library/ms227673.aspx), который является серии события, инициируемые ASP.NET: [BeginRequest](/dotnet/api/system.web.httpapplication.beginrequest), [AuthenticateRequest](/dotnet/api/system.web.httpapplication.authenticaterequest)и т. д. Каждый модуль, можно создать обработчик для одного или нескольких событий.
+1. [Жизненного цикла приложения](https://msdn.microsoft.com/library/ms227673.aspx), который является серии события, инициируемые ASP.NET: [BeginRequest](/dotnet/api/system.web.httpapplication.beginrequest), [AuthenticateRequest](/dotnet/api/system.web.httpapplication.authenticaterequest)и т. д. Каждый модуль, можно создать обработчик для одного или нескольких событий.
 
-   2. Для того же события, порядок, в котором они настроены в *Web.config*.
+2. Для того же события, порядок, в котором они настроены в *Web.config*.
 
 В дополнение к модулям, можно добавить обработчики событий жизненного цикла вашего *Global.asax.cs* файл. Эти обработчики запустите после обработчиков в настроенные модули.
 
@@ -56,29 +56,29 @@ ms.locfileid: "56743859"
 
 **По промежуточного слоя, проще, чем модулей и обработчиков HTTP:**
 
-   * Модули, обработчиков *Global.asax.cs*, *Web.config* (за исключением конфигурации IIS) и жизненного цикла приложения будут удалены
+* Модули, обработчиков *Global.asax.cs*, *Web.config* (за исключением конфигурации IIS) и жизненного цикла приложения будут удалены
 
-   * Роли модули и обработчики были выполнены на по промежуточного слоя
+* Роли модули и обработчики были выполнены на по промежуточного слоя
 
-   * По промежуточного слоя настраиваются с помощью кода, а не в *Web.config*
+* По промежуточного слоя настраиваются с помощью кода, а не в *Web.config*
 
-   * [Ветвление конвейера](xref:fundamentals/middleware/index#use-run-and-map) позволяет отправлять запросы к по промежуточного слоя, основываясь на не только URL, но и от заголовков запроса, строки запроса, и т.д.
+* [Ветвление конвейера](xref:fundamentals/middleware/index#use-run-and-map) позволяет отправлять запросы к по промежуточного слоя, основываясь на не только URL, но и от заголовков запроса, строки запроса, и т.д.
 
 **По промежуточного слоя очень похожи на модули:**
 
-   * Вызывается в принципе, для каждого запроса
+* Вызывается в принципе, для каждого запроса
 
-   * Возможность краткой записи запроса, по [неправильно передает запрос следующему компоненту промежуточного слоя](#http-modules-shortcircuiting-middleware)
+* Возможность краткой записи запроса, по [неправильно передает запрос следующему компоненту промежуточного слоя](#http-modules-shortcircuiting-middleware)
 
-   * Возможность создавать свои собственные HTTP-ответа
+* Возможность создавать свои собственные HTTP-ответа
 
 **По промежуточного слоя и модули обрабатываются в другом порядке.**
 
-   * Порядок по промежуточного слоя основан на порядке, в котором их вставки в конвейер запросов, хотя порядок модулей главным образом основан на [жизненного цикла приложения](https://msdn.microsoft.com/library/ms227673.aspx) события
+* Порядок по промежуточного слоя основан на порядке, в котором их вставки в конвейер запросов, хотя порядок модулей главным образом основан на [жизненного цикла приложения](https://msdn.microsoft.com/library/ms227673.aspx) события
 
-   * Порядок по промежуточного слоя для ответов обратна из того, что для запросов, хотя порядок модулей одинаков для запросов и ответов
+* Порядок по промежуточного слоя для ответов обратна из того, что для запросов, хотя порядок модулей одинаков для запросов и ответов
 
-   * См. в разделе [Создание конвейера по промежуточного слоя с помощью IApplicationBuilder](xref:fundamentals/middleware/index#create-a-middleware-pipeline-with-iapplicationbuilder)
+* См. в разделе [Создание конвейера по промежуточного слоя с помощью IApplicationBuilder](xref:fundamentals/middleware/index#create-a-middleware-pipeline-with-iapplicationbuilder)
 
 ![ПО промежуточного слоя](http-modules/_static/middleware.png)
 

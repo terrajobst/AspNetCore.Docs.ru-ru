@@ -5,12 +5,12 @@ description: Дополнительные сведения о реализаци
 ms.author: riande
 ms.date: 10/14/2016
 uid: security/data-protection/implementation/key-storage-format
-ms.openlocfilehash: bca19ad001dd20b5d02ae5470f7d928082496037
-ms.sourcegitcommit: 8f8924ce4eb9effeaf489f177fb01b66867da16f
+ms.openlocfilehash: 81df124f3dd0cadf8fd895ab55f66eec6415705f
+ms.sourcegitcommit: 5f299daa7c8102d56a63b214b9a34cc4bc87bc42
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/24/2018
-ms.locfileid: "39219281"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58208022"
 ---
 # <a name="key-storage-format-in-aspnet-core"></a>Формат хранилища ключей в ASP.NET Core
 
@@ -65,7 +65,7 @@ ms.locfileid: "39219281"
 
 **&lt;EncryptedSecret&gt;** элемент, который содержит зашифрованный материал секретного ключа могут присутствовать Если [включено шифрование секретов при хранении](xref:security/data-protection/implementation/key-encryption-at-rest). Атрибут `decryptorType` квалифицированное имя типа, который реализует [IXmlDecryptor](/dotnet/api/microsoft.aspnetcore.dataprotection.xmlencryption.ixmldecryptor). Этот тип отвечает за чтение внутреннего **&lt;encryptedKey&gt;** элемент и расшифровывает его, чтобы восстановить исходным открытым текстом.
 
-Как и в \<дескриптора >, определенный формат <encryptedSecret> элемент зависит от механизма шифрования неактивных данных используется. В приведенном выше примере главный ключ зашифрован с помощью Windows DPAPI в комментарий.
+Как и в `<descriptor>`, определенный формат `<encryptedSecret>` элемент зависит от механизма шифрования неактивных данных используется. В приведенном выше примере главный ключ зашифрован с помощью Windows DPAPI в комментарий.
 
 ## <a name="the-revocation-element"></a>\<Отзыва > элемент
 

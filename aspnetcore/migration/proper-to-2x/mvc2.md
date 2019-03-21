@@ -6,12 +6,12 @@ ms.author: scaddie
 ms.custom: mvc
 ms.date: 10/24/2018
 uid: migration/mvc2
-ms.openlocfilehash: 9960932bd288ea12e346272f1838026778f1d355
-ms.sourcegitcommit: 54655f1e1abf0b64d19506334d94cfdb0caf55f6
+ms.openlocfilehash: 7f048f2f95f1a51a0b6ce3d36665420ff28ec26f
+ms.sourcegitcommit: 5f299daa7c8102d56a63b214b9a34cc4bc87bc42
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50148867"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58208477"
 ---
 # <a name="migrate-from-aspnet-to-aspnet-core-20"></a>Миграция с ASP.NET на ASP.NET Core 2.0
 
@@ -76,7 +76,7 @@ ASP.NET Core использует аналогичный подход, но не
 * Страницы ошибок
 * Статические файлы
 * ASP.NET Core MVC
-* идентификации
+* Удостоверение
 
 [!code-csharp[](../../common/samples/WebApplication1/Startup.cs?highlight=8,9,10,14,17,19,21&start=58&end=84)]
 
@@ -113,7 +113,7 @@ ASP.NET Core может сохранять данные конфигурации
 services.Configure<AppConfiguration>(Configuration.GetSection("AppConfiguration"));
 ````
 
-**Примечание:** более подробное руководство по конфигурации ASP.NET Core, см. в разделе <xref:fundamentals/configuration/index>.
+**Примечание.** Более подробное руководство по конфигурации ASP.NET Core, см. в разделе <xref:fundamentals/configuration/index>.
 
 ## <a name="native-dependency-injection"></a>Собственные функции внедрения зависимостей
 
@@ -123,15 +123,15 @@ services.Configure<AppConfiguration>(Configuration.GetSection("AppConfiguration"
 
 Реализация примером внедрения зависимостей с помощью Unity `IDependencyResolver` , который служит оболочкой `UnityContainer`:
 
-[!code-csharp[](../../../aspnet/web-api/overview/advanced/dependency-injection/samples/sample8.cs)]
+[!code-csharp[](samples/sample8.cs)]
 
 Создайте экземпляр `UnityContainer`, зарегистрируйте свою службу и установите средство разрешения зависимостей `HttpConfiguration` в новый экземпляр `UnityResolver` для вашего контейнера:
 
-[!code-csharp[](../../../aspnet/web-api/overview/advanced/dependency-injection/samples/sample9.cs)]
+[!code-csharp[](samples/sample9.cs)]
 
 Там, где необходимо, вставьте `IProductRepository`:
 
-[!code-csharp[](../../../aspnet/web-api/overview/advanced/dependency-injection/samples/sample5.cs)]
+[!code-csharp[](samples/sample5.cs)]
 
 Так как внедрение зависимостей является частью ASP.NET Core, можно добавить службу в `Startup.ConfigureServices`:
 
@@ -151,11 +151,11 @@ services.Configure<AppConfiguration>(Configuration.GetSection("AppConfiguration"
 
 [!code-csharp[](../../fundamentals/static-files/samples/1x/StartupStaticFiles.cs?highlight=3&name=snippet_ConfigureMethod)]
 
-**Примечание**. Для работы с .NET Framework установите пакет NuGet `Microsoft.AspNetCore.StaticFiles`.
+**Примечание.** Для работы с .NET Framework установите пакет NuGet `Microsoft.AspNetCore.StaticFiles`.
 
 Например, ресурс изображения в папке *wwwroot/images* доступен для браузера в расположении `http://<app>/images/<imageFileName>`.
 
-**Примечание:** более подробное руководство по обработке статических файлов в ASP.NET Core, см. в разделе <xref:fundamentals/static-files>.
+**Примечание.** Более подробное руководство по обработке статических файлов в ASP.NET Core, см. в разделе <xref:fundamentals/static-files>.
 
 ## <a name="additional-resources"></a>Дополнительные ресурсы
 

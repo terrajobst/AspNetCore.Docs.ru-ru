@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 10/11/2018
 uid: security/anti-request-forgery
-ms.openlocfilehash: 6e140717834b901e12ef7863fd07b983b0c55107
-ms.sourcegitcommit: ed76cc752966c604a795fbc56d5a71d16ded0b58
+ms.openlocfilehash: 88a2d127407378b9e83df7f48b1938ed081f9bb2
+ms.sourcegitcommit: 5f299daa7c8102d56a63b214b9a34cc4bc87bc42
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55667665"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58208532"
 ---
 # <a name="prevent-cross-site-request-forgery-xsrfcsrf-attacks-in-aspnet-core"></a>Предотвращения межсайтовых (запросов XSRF/CSRF) атак с подделкой в ASP.NET Core
 
@@ -102,12 +102,12 @@ ms.locfileid: "55667665"
 </form>
 ```
 
-Аналогично, [IHtmlHelper.BeginForm](/dotnet/api/microsoft.aspnetcore.mvc.rendering.ihtmlhelper.beginform) создает против подделки токенов по умолчанию, если метод формы не GET.
+Аналогичным образом [IHtmlHelper.BeginForm](/dotnet/api/microsoft.aspnetcore.mvc.rendering.ihtmlhelper.beginform) создает против подделки токенов по умолчанию, если метод формы не GET.
 
 Происходит автоматическое создание против подделки токенов для элементы HTML-формы при `<form>` тег содержит `method="post"` атрибут и одно из следующих условий:
 
-  * Атрибут действия пуст (`action=""`).
-  * Не указан атрибут действия (`<form method="post">`).
+* Атрибут действия пуст (`action=""`).
+* Не указан атрибут действия (`<form method="post">`).
 
 Можно отключить автоматическое создание против подделки маркеры для элементы HTML-формы:
 
