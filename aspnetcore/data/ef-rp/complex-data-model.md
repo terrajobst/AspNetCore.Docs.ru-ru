@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 10/24/2018
 uid: data/ef-rp/complex-data-model
-ms.openlocfilehash: fbe43e019ddab6f9acc2ea46799f0a39aa7c2e7c
-ms.sourcegitcommit: 5f299daa7c8102d56a63b214b9a34cc4bc87bc42
+ms.openlocfilehash: 311f72699b6291996a43d56247bd3d2bfab596e6
+ms.sourcegitcommit: 088e6744cd67a62f214f25146313a53949b17d35
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58208994"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58320252"
 ---
 # <a name="razor-pages-with-ef-core-in-aspnet-core---data-model---5-of-8"></a>Razor Pages с EF Core в ASP.NET Core — модель данных— 5 из 8
 
@@ -142,7 +142,7 @@ dotnet ef migrations add ColumnFirstName
 dotnet ef database update
 ```
 
-------
+---
 
 Команда `migrations add ColumnFirstName` выдает следующее предупреждающее сообщение:
 
@@ -555,7 +555,7 @@ Add-Migration ComplexDataModel
 dotnet ef migrations add ComplexDataModel
 ```
 
-------
+---
 
 Предыдущая команда отображает предупреждение о возможной потере данных.
 
@@ -607,7 +607,7 @@ Update-Database
 dotnet ef database update
  ```
 
-------
+---
 
 Запустите приложение. При запуске приложения выполняется метод `DbInitializer.Initialize`. `DbInitializer.Initialize` заполняет новую базу данных.
 

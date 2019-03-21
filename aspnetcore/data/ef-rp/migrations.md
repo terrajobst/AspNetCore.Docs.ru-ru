@@ -5,12 +5,12 @@ description: В этом учебнике вы начинаете использ
 ms.author: riande
 ms.date: 6/31/2017
 uid: data/ef-rp/migrations
-ms.openlocfilehash: ef79aca700068aadf9b5b2b689213b6e78a5d729
-ms.sourcegitcommit: 036d4b03fd86ca5bb378198e29ecf2704257f7b2
+ms.openlocfilehash: 5848e5e1e45708c3ab5c2a79614111662701aa77
+ms.sourcegitcommit: 088e6744cd67a62f214f25146313a53949b17d35
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57346441"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58320164"
 ---
 # <a name="razor-pages-with-ef-core-in-aspnet-core---migrations---4-of-8"></a>Razor Pages с EF Core в ASP.NET Core — миграции — 4 из 8
 
@@ -61,7 +61,7 @@ Drop-Database
  dotnet ef database drop
  ```
 
-------
+---
 
 ## <a name="create-an-initial-migration-and-update-the-db"></a>Создание первоначальной миграции и обновление базы данных
 
@@ -81,7 +81,7 @@ dotnet ef migrations add InitialCreate
 dotnet ef database update
 ```
 
-------
+---
 
 ### <a name="examine-the-up-and-down-methods"></a>Обзор методов Up и Down
 
@@ -120,7 +120,7 @@ dotnet ef migrations remove
 
 Дополнительные сведения см. в разделе [dotnet ef migrations remove](/ef/core/miscellaneous/cli/dotnet#dotnet-ef-migrations-remove).
 
-------
+---
 
 Команда remove migrations удаляет миграцию и гарантирует корректный сброс моментального снимка.
 
