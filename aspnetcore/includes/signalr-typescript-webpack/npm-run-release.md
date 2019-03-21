@@ -1,15 +1,23 @@
+---
+ms.openlocfilehash: c82571d3cfa57ccd6e7c83f654f119bdd8991486
+ms.sourcegitcommit: 5f299daa7c8102d56a63b214b9a34cc4bc87bc42
+ms.translationtype: HT
+ms.contentlocale: ru-RU
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58210461"
+---
 ```console
 npm run release
 ```
 
-<span data-ttu-id="29760-101">Эта команда создает ресурсы на стороне клиента, которые будут обслуживаться при выполнении приложения.</span><span class="sxs-lookup"><span data-stu-id="29760-101">This command yields the client-side assets to be served when running the app.</span></span> <span data-ttu-id="29760-102">Эти ресурсы помещаются в папку *wwwroot*.</span><span class="sxs-lookup"><span data-stu-id="29760-102">The assets are placed in the *wwwroot* folder.</span></span>
+<span data-ttu-id="8c677-101">Эта команда создает ресурсы на стороне клиента, которые будут обслуживаться при выполнении приложения.</span><span class="sxs-lookup"><span data-stu-id="8c677-101">This command yields the client-side assets to be served when running the app.</span></span> <span data-ttu-id="8c677-102">Эти ресурсы помещаются в папку *wwwroot*.</span><span class="sxs-lookup"><span data-stu-id="8c677-102">The assets are placed in the *wwwroot* folder.</span></span>
 
-<span data-ttu-id="29760-103">Веб-пакет выполнил следующие задачи:</span><span class="sxs-lookup"><span data-stu-id="29760-103">Webpack completed the following tasks:</span></span>
+<span data-ttu-id="8c677-103">Веб-пакет выполнил следующие задачи:</span><span class="sxs-lookup"><span data-stu-id="8c677-103">Webpack completed the following tasks:</span></span>
 
-* <span data-ttu-id="29760-104">Очистка содержимого каталога *wwwroot*.</span><span class="sxs-lookup"><span data-stu-id="29760-104">Purged the contents of the *wwwroot* directory.</span></span>
-* <span data-ttu-id="29760-105">Преобразование TypeScript в JavaScript (&mdash;этот процесс называется *транспилированием*).</span><span class="sxs-lookup"><span data-stu-id="29760-105">Converted the TypeScript to JavaScript&mdash;a process known as *transpilation*.</span></span>
-* <span data-ttu-id="29760-106">Корректировка созданного кода JavaScript в целях уменьшения размера файла (&mdash;этот процесс называется *минификацией*).</span><span class="sxs-lookup"><span data-stu-id="29760-106">Mangled the generated JavaScript to reduce file size&mdash;a process known as *minification*.</span></span>
-* <span data-ttu-id="29760-107">Копирование обработанных файлов JavaScript, CSS и HTML из каталога *src* в *wwwroot*.</span><span class="sxs-lookup"><span data-stu-id="29760-107">Copied the processed JavaScript, CSS, and HTML files from *src* to the *wwwroot* directory.</span></span>
-* <span data-ttu-id="29760-108">Внедрение следующих элементов в файл *wwwroot/index.html*:</span><span class="sxs-lookup"><span data-stu-id="29760-108">Injected the following elements into the *wwwroot/index.html* file:</span></span>
-    * <span data-ttu-id="29760-109">Тег `<link>`, ссылающийся на файл *wwwroot/main.\<hash\>.css*.</span><span class="sxs-lookup"><span data-stu-id="29760-109">A `<link>` tag, referencing the *wwwroot/main.\<hash\>.css* file.</span></span> <span data-ttu-id="29760-110">Этот тег размещается непосредственно после закрывающего тега `</head>`.</span><span class="sxs-lookup"><span data-stu-id="29760-110">This tag is placed immediately before the closing `</head>` tag.</span></span>
-    * <span data-ttu-id="29760-111">Тег `<script>`, ссылающийся на минифицированный файл *wwwroot/main.\<hash\>.js*.</span><span class="sxs-lookup"><span data-stu-id="29760-111">A `<script>` tag, referencing the minified *wwwroot/main.\<hash\>.js* file.</span></span> <span data-ttu-id="29760-112">Этот тег размещается непосредственно после закрывающего тега `</body>`.</span><span class="sxs-lookup"><span data-stu-id="29760-112">This tag is placed immediately before the closing `</body>` tag.</span></span>
+* <span data-ttu-id="8c677-104">Очистка содержимого каталога *wwwroot*.</span><span class="sxs-lookup"><span data-stu-id="8c677-104">Purged the contents of the *wwwroot* directory.</span></span>
+* <span data-ttu-id="8c677-105">Преобразование TypeScript в JavaScript (&mdash;этот процесс называется *транспилированием*).</span><span class="sxs-lookup"><span data-stu-id="8c677-105">Converted the TypeScript to JavaScript&mdash;a process known as *transpilation*.</span></span>
+* <span data-ttu-id="8c677-106">Корректировка созданного кода JavaScript в целях уменьшения размера файла (&mdash;этот процесс называется *минификацией*).</span><span class="sxs-lookup"><span data-stu-id="8c677-106">Mangled the generated JavaScript to reduce file size&mdash;a process known as *minification*.</span></span>
+* <span data-ttu-id="8c677-107">Копирование обработанных файлов JavaScript, CSS и HTML из каталога *src* в *wwwroot*.</span><span class="sxs-lookup"><span data-stu-id="8c677-107">Copied the processed JavaScript, CSS, and HTML files from *src* to the *wwwroot* directory.</span></span>
+* <span data-ttu-id="8c677-108">Внедрение следующих элементов в файл *wwwroot/index.html*:</span><span class="sxs-lookup"><span data-stu-id="8c677-108">Injected the following elements into the *wwwroot/index.html* file:</span></span>
+  * <span data-ttu-id="8c677-109">Тег `<link>`, ссылающийся на файл *wwwroot/main.\<hash\>.css*.</span><span class="sxs-lookup"><span data-stu-id="8c677-109">A `<link>` tag, referencing the *wwwroot/main.\<hash\>.css* file.</span></span> <span data-ttu-id="8c677-110">Этот тег размещается непосредственно после закрывающего тега `</head>`.</span><span class="sxs-lookup"><span data-stu-id="8c677-110">This tag is placed immediately before the closing `</head>` tag.</span></span>
+  * <span data-ttu-id="8c677-111">Тег `<script>`, ссылающийся на минифицированный файл *wwwroot/main.\<hash\>.js*.</span><span class="sxs-lookup"><span data-stu-id="8c677-111">A `<script>` tag, referencing the minified *wwwroot/main.\<hash\>.js* file.</span></span> <span data-ttu-id="8c677-112">Этот тег размещается непосредственно после закрывающего тега `</body>`.</span><span class="sxs-lookup"><span data-stu-id="8c677-112">This tag is placed immediately before the closing `</body>` tag.</span></span>
