@@ -5,12 +5,12 @@ description: Сведения о том, что области — это во�
 ms.author: riande
 ms.date: 02/14/2019
 uid: mvc/controllers/areas
-ms.openlocfilehash: 8904d217a18fff65113ae3469efe60258d20d5f0
-ms.sourcegitcommit: 6ddd8a7675c1c1d997c8ab2d4498538e44954cac
+ms.openlocfilehash: 79bc023a7bd00a9d4de375e3cddaafd148251469
+ms.sourcegitcommit: 57792e5f594db1574742588017c708350958bdf0
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57400649"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58264768"
 ---
 # <a name="areas-in-aspnet-core"></a>Области в ASP.NET Core
 
@@ -38,6 +38,7 @@ ms.locfileid: "57400649"
 * [Маршрут к области, добавленный к запуску](#add-area-route): [!code-csharp[](areas/samples/MVCareas/Startup.cs?name=snippet2&highlight=3-6)]
 
 ### <a name="area-folder-structure"></a>Структура папки области
+
 Рассмотрим приложение с двумя логическими группами: *товары* и *услуги*. При использовании областей структура папок будет выглядеть следующим образом.
 
 * Имя проекта
@@ -172,7 +173,7 @@ ms.locfileid: "57400649"
 В этой разметке:
 
 * Для указания модели (`@model RPareas.Areas.Services.Pages.Manage.AboutModel`) необходимо использовать полное доменное имя.
-* [Вспомогательные функции тегов]() включены с помощью `@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers`.
+* [Вспомогательные функции тегов](xref:mvc/views/tag-helpers/intro) включены с помощью `@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers`.
 
 В этом примере область Products содержит такой файл *_ViewImports*:
 

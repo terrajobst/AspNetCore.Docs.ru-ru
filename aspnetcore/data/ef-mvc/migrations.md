@@ -7,12 +7,12 @@ ms.custom: mvc
 ms.date: 02/04/2019
 ms.topic: tutorial
 uid: data/ef-mvc/migrations
-ms.openlocfilehash: ac924e7d6bee2f02ab11281a5c27f2c94a7183b3
-ms.sourcegitcommit: 5e3797a02ff3c48bb8cb9ad4320bfd169ebe8aba
+ms.openlocfilehash: 6d4ed0e95499c30417e1cfd07f57de824a8a62ed
+ms.sourcegitcommit: 57792e5f594db1574742588017c708350958bdf0
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56102998"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58265523"
 ---
 # <a name="tutorial-using-the-migrations-feature---aspnet-mvc-with-ef-core"></a>Учебник. Использование ASP.NET MVC с EF Core. Функции миграций
 
@@ -28,7 +28,6 @@ ms.locfileid: "56102998"
 > * Обзор методов Up и Down
 > * Дополнительные сведения о моментальном снимке модели данных
 > * Применение миграции
-
 
 ## <a name="prerequisites"></a>Предварительные требования
 
@@ -60,6 +59,7 @@ ms.locfileid: "56102998"
 
 > [!NOTE]
 > Вместо изменения имени базы данных можно удалить ее. Воспользуйтесь **обозревателем объектов SQL Server** (SSOX) или командой интерфейса командной строки `database drop`:
+>
 > ```console
 > dotnet ef database drop
 > ```

@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: H1Hack27Feb2017
 ms.date: 12/18/2018
 uid: fundamentals/owin
-ms.openlocfilehash: 51982c7ebc4f66c2b0b73bf425d9ecbd0bf37826
-ms.sourcegitcommit: 816f39e852a8f453e8682081871a31bc66db153a
+ms.openlocfilehash: de8548fe2396102fe44a8e6a000b44d4eea63285
+ms.sourcegitcommit: 5f299daa7c8102d56a63b214b9a34cc4bc87bc42
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53637798"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58209939"
 ---
 # <a name="open-web-interface-for-net-owin-with-aspnet-core"></a>Открытый веб-интерфейс для .NET (OWIN) в ASP.NET Core
 
@@ -260,14 +260,12 @@ OWIN использует объект `IDictionary<string,object>` для пе�
 | owin.ResponseHeaders | `IDictionary<string,string[]>`  | |
 | owin.ResponseBody | `Stream`  | |
 
-
 ### <a name="other-data-owin-v100"></a>Другие данные (OWIN версии 1.0.0)
 
 | Ключ               | Значение (тип) | Описание |
 | ----------------- | ------------ | ----------- |
 | owin.CallCancelled | `CancellationToken` |  |
 | owin.Version  | `String` | |   
-
 
 ### <a name="common-keys"></a>Общие ключи
 
@@ -282,13 +280,11 @@ OWIN использует объект `IDictionary<string,object>` для пе�
 | server.IsLocal  | `bool` | |    
 | server.OnSendingHeaders  | `Action<Action<object>,object>` | |
 
-
 ### <a name="sendfiles-v030"></a>SendFiles версии 0.3.0
 
 | Ключ               | Значение (тип) | Описание |
 | ----------------- | ------------ | ----------- |
 | sendfile.SendAsync | См. описание [сигнатуры делегата](http://owin.org/spec/extensions/owin-SendFile-Extension-v0.3.0.htm) | Для каждого запроса |
-
 
 ### <a name="opaque-v030"></a>Opaque версии 0.3.0
 
@@ -298,7 +294,6 @@ OWIN использует объект `IDictionary<string,object>` для пе�
 | opaque.Upgrade | `OpaqueUpgrade` | См. описание [сигнатуры делегата](http://owin.org/spec/extensions/owin-SendFile-Extension-v0.3.0.htm) |
 | opaque.Stream | `Stream` |  |
 | opaque.CallCancelled | `CancellationToken` |  |
-
 
 ### <a name="websocket-v030"></a>WebSocket версии 0.3.0
 

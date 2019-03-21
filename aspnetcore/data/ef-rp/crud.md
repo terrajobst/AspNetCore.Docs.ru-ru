@@ -5,12 +5,12 @@ description: Описание операций создания, чтения, �
 ms.author: riande
 ms.date: 6/31/2017
 uid: data/ef-rp/crud
-ms.openlocfilehash: adb281277599456356251c6ee30772a25f14ac58
-ms.sourcegitcommit: 036d4b03fd86ca5bb378198e29ecf2704257f7b2
+ms.openlocfilehash: c104498a4411ac36672ffbb9660948d4e96bf1ee
+ms.sourcegitcommit: 10e14b85490f064395e9b2f423d21e3c2d39ed8b
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57346058"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58142392"
 ---
 # <a name="razor-pages-with-ef-core-in-aspnet-core---crud---2-of-8"></a>Razor Pages с EF Core в ASP.NET Core — CRUD — 2 из 8
 
@@ -250,7 +250,7 @@ ms.locfileid: "57346058"
 
 ## <a name="additional-resources"></a>Дополнительные ресурсы
 
-* [Версия руководства на YouTube](https://www.youtube.com/watch?v=F0SP7Ry4flQ&list=PLnVvOWNfuhGV45HnNgd0vuIIkoQ1UaVBf)
+* [Версия руководства на YouTube](https://www.youtube.com/watch?v=K4X1MT2jt6o)
 
 > [!div class="step-by-step"]
 > [Назад](xref:data/ef-rp/intro)

@@ -5,12 +5,12 @@ description: Инструкции по добавлению поиска в пр
 ms.author: riande
 ms.date: 12/13/2018
 uid: tutorials/first-mvc-app/search
-ms.openlocfilehash: e5dce35b60080ef752f8e6c6004158219015cbf5
-ms.sourcegitcommit: d75d8eb26c2cce19876c8d5b65ac8a4b21f625ef
+ms.openlocfilehash: 41d7494b77edaddbf719cab087142f0132dd3ed6
+ms.sourcegitcommit: 5f299daa7c8102d56a63b214b9a34cc4bc87bc42
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 02/19/2019
-ms.locfileid: "56410642"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58208386"
 ---
 # <a name="add-search-to-an-aspnet-core-mvc-app"></a>Добавление поиска в приложение MVC ASP.NET Core
 
@@ -113,10 +113,10 @@ var movies = from m in _context.Movie
 
 Модель представления фильмов по жанру будет содержать:
 
-   * Список фильмов.
-   * Объект `SelectList` со списком жанров. В этом списке пользователь может выбрать жанр фильма.
-   * Объект `MovieGenre`, содержащий выбранный жанр.
-   * `SearchString`, содержащий текст, который пользователи вводят в поле поиска.
+* Список фильмов.
+* Объект `SelectList` со списком жанров. В этом списке пользователь может выбрать жанр фильма.
+* Объект `MovieGenre`, содержащий выбранный жанр.
+* `SearchString`, содержащий текст, который пользователи вводят в поле поиска.
 
 Замените метод `Index` в файле `MoviesController.cs` следующим кодом:
 
@@ -148,4 +148,4 @@ var movies = from m in _context.Movie
 
 > [!div class="step-by-step"]
 > [Назад](controller-methods-views.md)
-> [Вперед](new-field.md)  
+> [Вперед](new-field.md)

@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 12/06/2018
 uid: tutorials/publish-to-azure-webapp-using-vs
-ms.openlocfilehash: e71cb8badbbc852685c845e6bbb0bbb12ab5499f
-ms.sourcegitcommit: 68a3081dd175d6518d1bfa31b4712bd8a2dd3864
+ms.openlocfilehash: b2b5a155d0dff28e471af449731da787f19d1faf
+ms.sourcegitcommit: 5f299daa7c8102d56a63b214b9a34cc4bc87bc42
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53577816"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58208370"
 ---
 # <a name="publish-an-aspnet-core-app-to-azure-with-visual-studio"></a>Публикация приложения ASP.NET Core в Azure с помощью Visual Studio
 
@@ -127,7 +127,7 @@ Visual Studio вернет диалоговое окно **Создание сл
 
 ![Диалоговое окно "Настройка базы данных SQL"](publish-to-azure-webapp-using-vs/_static/conf_final.png)
 
-Visual Studio создает веб-приложение и SQL Server в Azure. Это может занять несколько минут. Сведения о созданных ресурсах см. в разделе [Дополнительные ресурсы](#additonal-resources).
+Visual Studio создает веб-приложение и SQL Server в Azure. Это может занять несколько минут. Сведения о созданных ресурсах см. в разделе [Дополнительные ресурсы](#additional-resources).
 
 После завершения развертывания выберите **Параметры**:
 
@@ -135,8 +135,8 @@ Visual Studio создает веб-приложение и SQL Server в Azure.
 
 На странице **Параметры** диалогового окна **Публикация**
 
-  * Разверните раздел **Базы данных** и установите флажок **Использовать эту строку подключения во время выполнения**.
-  * Разверните раздел **Миграции Entity Framework** и установите флажок **Использовать эту миграцию при публикации**.
+* Разверните раздел **Базы данных** и установите флажок **Использовать эту строку подключения во время выполнения**.
+* Разверните раздел **Миграции Entity Framework** и установите флажок **Использовать эту миграцию при публикации**.
 
 * Нажмите кнопку **Сохранить**. Visual Studio вернется в диалоговое окно **Публикация**. 
 
@@ -184,7 +184,7 @@ Visual Studio создает веб-приложение и SQL Server в Azure.
 
 * <xref:host-and-deploy/azure-apps/azure-continuous-deployment>
 
-## <a name="additonal-resources"></a>Дополнительные ресурсы
+## <a name="additional-resources"></a>Дополнительные ресурсы
 
 * [служба приложений Azure](/azure/app-service/app-service-web-overview);
 * [Группа ресурсов Azure](/azure/azure-resource-manager/resource-group-overview#resource-groups)

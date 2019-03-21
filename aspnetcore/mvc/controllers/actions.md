@@ -5,12 +5,12 @@ description: ''
 ms.author: riande
 ms.date: 07/03/2017
 uid: mvc/controllers/actions
-ms.openlocfilehash: 8289424b3cd3678bea18a25c7850e409795d1577
-ms.sourcegitcommit: d75d8eb26c2cce19876c8d5b65ac8a4b21f625ef
+ms.openlocfilehash: 952e4dbb2c4343ca87ace1535e4a5968faf088cf
+ms.sourcegitcommit: 5f299daa7c8102d56a63b214b9a34cc4bc87bc42
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 02/19/2019
-ms.locfileid: "56410444"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58209019"
 ---
 # <a name="handle-requests-with-controllers-in-aspnet-core-mvc"></a>Обработка запросов с помощью контроллеров в ASP.NET Core MVC
 
@@ -98,7 +98,7 @@ ms.locfileid: "56410444"
 Большинство атрибутов фильтров, например `[Authorize]`, можно применить на уровне контроллера или действия в зависимости от нужного уровня детализации.
 
 Обработка ошибок и кэширование откликов часто относятся к сквозной функциональности:
-   * [Обработка ошибок](xref:mvc/controllers/filters#exception-filters)
-   * [Кэширование ответов](xref:performance/caching/response)
+* [Обработка ошибок](xref:mvc/controllers/filters#exception-filters)
+* [Кэширование ответов](xref:performance/caching/response)
 
 Многие сквозные задачи можно обрабатывать с помощью фильтров или настраиваемого [ПО промежуточного слоя](xref:fundamentals/middleware/index).

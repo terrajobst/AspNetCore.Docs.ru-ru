@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 12/07/2018
 uid: data/ef-rp/concurrency
-ms.openlocfilehash: a6c264e460855c9f1d6f5a363eb7ee2cf69619ee
-ms.sourcegitcommit: 036d4b03fd86ca5bb378198e29ecf2704257f7b2
+ms.openlocfilehash: 3fb8ebe415d0619d33302a08e97da78db0ad1d1e
+ms.sourcegitcommit: 57792e5f594db1574742588017c708350958bdf0
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57346298"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58265511"
 ---
 # <a name="razor-pages-with-ef-core-in-aspnet-core---concurrency---8-of-8"></a>Razor Pages с EF Core в ASP.NET Core — параллелизм — 8 из 8
 
@@ -95,9 +95,9 @@ ms.locfileid: "57346298"
 
 База данных формирует последовательный номер `rowversion`, увеличивающийся при каждом обновлении строки. В команде `Update` или `Delete` предложение `Where` включает извлеченное значение из `rowversion`. Если обновляемая строка изменились:
 
- * `rowversion` не соответствует полученному значению.
- * Команда `Update` или `Delete` не находит строку, так как предложение `Where` включает полученное значение `rowversion`.
- * Возникает исключение `DbUpdateConcurrencyException`.
+* `rowversion` не соответствует полученному значению.
+* Команда `Update` или `Delete` не находит строку, так как предложение `Where` включает полученное значение `rowversion`.
+* Возникает исключение `DbUpdateConcurrencyException`.
 
 Когда в EF Core нет строк, обновленных командой `Update` или `Delete`, возникает исключение параллелизма.
 
@@ -152,6 +152,7 @@ dotnet ef database update
 * Запускает миграции для обновления базы данных.
 
 <a name="scaffold"></a>
+
 ## <a name="scaffold-the-departments-model"></a>Формирование шаблона для модели кафедр
 
 # <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio) 
@@ -272,7 +273,6 @@ dotnet ef database update
 Измените *Pages/Departments/Delete.cshtml*, используя следующий код:
 
 [!code-html[](intro/samples/cu/Pages/Departments/Delete.cshtml?highlight=1,10,39,51)]
-
 
 Приведенная выше разметка вносит следующие изменения:
 

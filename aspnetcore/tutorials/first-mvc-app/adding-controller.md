@@ -5,12 +5,12 @@ description: Узнайте, как добавить контроллер в п�
 ms.author: riande
 ms.date: 02/28/2017
 uid: tutorials/first-mvc-app/adding-controller
-ms.openlocfilehash: bbb7b06e2c9c63f44cb7f7a8ee63bffa1e316b3e
-ms.sourcegitcommit: 4e87712029de2aceb1cf2c52e9e3dda8195a5b8e
+ms.openlocfilehash: dad9262e544fc216ddc694b11b0dfb88b58db9cd
+ms.sourcegitcommit: 57792e5f594db1574742588017c708350958bdf0
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53381872"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58265010"
 ---
 # <a name="add-a-controller-to-an-aspnet-core-mvc-app"></a>Добавление контроллера в приложение MVC ASP.NET Core
 
@@ -30,7 +30,6 @@ ms.locfileid: "53381872"
 
 ## <a name="add-a-controller"></a>Добавление контроллера
 
-<!-- VS -------------------------->
 # <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 * В **обозревателе решений** щелкните правой кнопкой мыши **Контроллеры > Добавить > Контроллер**
@@ -42,14 +41,12 @@ ms.locfileid: "53381872"
 
 * В **диалоговом окне "Добавить пустой контроллер MVC"** введите **HelloWorldController** и выберите **Добавить**.
 
-<!-- Code -------------------------->
 # <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code.](#tab/visual-studio-code)
 
 Щелкните значок **обозревателя**, а затем правой кнопкой мыши щелкните **Контроллеры > Новый файл** и назовите новый файл *HelloWorldController.cs*.
 
   ![Контекстное меню](~/tutorials/first-mvc-app-xplat/adding-controller/_static/new_file.png)
 
-<!-- Mac -------------------------->
 # <a name="visual-studio-for-mactabvisual-studio-mac"></a>[Visual Studio для Mac](#tab/visual-studio-mac)
 
 В **обозревателе решений** щелкните правой кнопкой мыши **Контроллеры > Добавить > Новый файл**.
@@ -62,7 +59,6 @@ ms.locfileid: "53381872"
 ![Добавьте контроллер MVC и присвойте ему имя.](~/tutorials/first-mvc-app-mac/adding-controller/_static/ac.png)
 
 ---
-<!-- End of VS tabs -->
 
 Замените содержимое файла *Controllers/HelloWorldController.cs* следующим:
 
@@ -130,7 +126,6 @@ Remove link for simplified tutorial.
 [!code-csharp[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie/Startup.cs?name=snippet_1&highlight=5)]
 
 В этих примерах контроллер реализует работу представления и контроллера в модели MVC. Контроллер возвращает HTML напрямую. Как правило, это не требуется, поскольку в этом случае заметно усложняется написание и поддержка кода. Вместо этого обычно используется отдельный файл шаблона представления Razor для создания HTML-ответа. Это будет показано в следующем руководстве.
-
 
 > [!div class="step-by-step"]
 > [Назад](start-mvc.md)

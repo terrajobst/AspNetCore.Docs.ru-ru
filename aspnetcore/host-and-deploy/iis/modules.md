@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 02/28/2019
 uid: host-and-deploy/iis/modules
-ms.openlocfilehash: e5bb1a86453bb945789cc1f4b56616551e316615
-ms.sourcegitcommit: 6ddd8a7675c1c1d997c8ab2d4498538e44954cac
+ms.openlocfilehash: de740775e124298f7c3d3be0c6f5a7311174116d
+ms.sourcegitcommit: 57792e5f594db1574742588017c708350958bdf0
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57400688"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58265482"
 ---
 # <a name="iis-modules-with-aspnet-core"></a>Модули IIS с ASP.NET Core
 
@@ -123,7 +123,7 @@ ms.locfileid: "57400688"
     </system.webServer>
    </configuration>
    ```
-   
+
 Чтобы добавить или удалить модули для IIS Express с помощью файла *web.config*, измените файл *applicationHost.config* для разблокировки раздела `<modules>`.
 
 1. Откройте файл *{КОРЕНЬ ПРИЛОЖЕНИЯ}\\.vs\config\applicationhost.config*.
@@ -131,17 +131,17 @@ ms.locfileid: "57400688"
 1. Найдите элемент `<section>` для модулей IIS и измените значение атрибута `overrideModeDefault` с `Deny` на `Allow`.
 
    ```xml
-   <section name="modules" 
-            allowDefinition="MachineToApplication" 
+   <section name="modules"
+            allowDefinition="MachineToApplication"
             overrideModeDefault="Allow" />
    ```
-   
+
 1. Найдите раздел `<location path="" overrideMode="Allow"><system.webServer><modules>`. Для модулей, которые требуется удалить, измените значение `lockItem` с `true` на `false`. В следующем примере показана разблокировка модуля CGI.
 
    ```xml
    <add name="CgiModule" lockItem="false" />
    ```
-   
+
 1. После разблокировки раздела `<modules>` и отдельных модулей вы можете добавлять или удалять модули IIS с помощью файла *web.config* приложения для запуска приложения в IIS Express.
 
 Также модуль IIS можно удалить с помощью *Appcmd.exe*. Для этого включите в команду `MODULE_NAME` и `APPLICATION_NAME`:
