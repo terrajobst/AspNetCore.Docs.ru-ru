@@ -141,6 +141,7 @@ uid: host-and-deploy/azure-apps/index
    ```powershell
    Test-Path D:\home\SiteExtensions\AspNetCoreRuntime.{X.Y}.{PLATFORM}\
    ```
+
    Эта команда возвращает `True`, если установлена предварительная версия среды выполнения x64.
 
 > [!NOTE]
@@ -194,11 +195,13 @@ uid: host-and-deploy/azure-apps/index
      <RuntimeIdentifier>win-x86</RuntimeIdentifier>
    </PropertyGroup>
    ```
+
 1. Из командной оболочки опубликуйте приложение в конфигурации выпуска для среды выполнения узла, выполнив команду [dotnet publish](/dotnet/core/tools/dotnet-publish). В следующем примере публикуется приложение с RID `win-x86`. Предоставленный в параметре `--runtime` RID должены быть указан в свойстве `<RuntimeIdentifier>` (или `<RuntimeIdentifiers>`) в файле проекта.
 
    ```console
    dotnet publish --configuration Release --runtime win-x86
    ```
+
 1. Переместите содержимое каталога *bin/Release/{целевая_платформа}/{идентификатор_среды_выполнения}/publish* на сайт в Службе приложений.
 
 ### <a name="use-docker-with-web-apps-for-containers"></a>Использование Docker с веб-приложениями для контейнеров

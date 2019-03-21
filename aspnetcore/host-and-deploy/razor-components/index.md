@@ -109,7 +109,7 @@ dotnet publish -c Release
 * Приложение выполняется непосредственно в потоке пользовательского интерфейса браузера. Используется одна из следующих стратегий:
   * Приложение Blazor обслуживается приложением ASP.NET Core. См. раздел [Размещенное на стороне клиента развертывание Blazor с использованием ASP.NET Core](#client-side-blazor-hosted-deployment-with-aspnet-core).
   * Приложение Blazor помещается на статическом веб-сервере или службе, где .NET не используется, чтобы обслуживать приложение Blazor. См. раздел [Развертывание изолированного приложения Blazor на стороне клиента](#client-side-blazor-standalone-deployment).
-  
+
 ### <a name="configure-the-linker"></a>Настройка компоновщика
 
 Blazor выполняет компоновку для промежуточного языка (IL) в каждой сборке, чтобы удалить ненужный код из выходных сборок. Вы можете управлять компоновкой в ходе сборки. Для получения дополнительной информации см. <xref:host-and-deploy/razor-components/configure-linker>.
@@ -191,7 +191,8 @@ dotnet run --pathbase=/CoolApp
 
 Сведения о развертывании в службе приложений Azure см. в разделах:
 
-<xref:tutorials/publish-to-azure-webapp-using-vs>  
+<xref:tutorials/publish-to-azure-webapp-using-vs>
+
 Сведения о публикации приложения ASP.NET Core в службе приложений Azure с помощью Visual Studio.
 
 ### <a name="client-side-blazor-standalone-deployment"></a>Развертывание изолированного приложения Blazor на стороне клиента
@@ -299,5 +300,6 @@ COPY nginx.conf /etc/nginx/nginx.conf
 
 Сведения о развертывании в службе приложений Azure см. в разделах:
 
-<xref:tutorials/publish-to-azure-webapp-using-vs>  
+<xref:tutorials/publish-to-azure-webapp-using-vs>
+
 Сведения о публикации приложения ASP.NET Core в службе приложений Azure с помощью Visual Studio.
