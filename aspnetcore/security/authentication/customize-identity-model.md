@@ -5,12 +5,12 @@ description: В этой статье описывается настройка 
 ms.author: avickers
 ms.date: 09/24/2018
 uid: security/authentication/customize_identity_model
-ms.openlocfilehash: 55346c571f180fa17a1108a622d991d15f365bae
-ms.sourcegitcommit: 5f299daa7c8102d56a63b214b9a34cc4bc87bc42
+ms.openlocfilehash: 0aa7448ac37a97a4d09a04caf365f641f22f5997
+ms.sourcegitcommit: a1c43150ed46aa01572399e8aede50d4668745ca
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58209466"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58327305"
 ---
 # <a name="identity-model-customization-in-aspnet-core"></a>Настройка модели удостоверения в ASP.NET Core
 
@@ -50,7 +50,7 @@ ASP.NET Core есть обработчик страницы ошибок во в
 
 Модель удостоверения состоит из следующих типов сущностей.
 
-|Тип сущности|Описание                                                  |
+|Тип сущности|Описание:                                                  |
 |-----------|-------------------------------------------------------------|
 |`User`     |Представляет пользователя.                                         |
 |`Role`     |Представляет роль.                                           |
@@ -253,7 +253,7 @@ public abstract class IdentityDbContext<
          where TUserToken : IdentityUserToken<TKey>
 ```
 
-Можно также использовать удостоверение без ролей (только утверждения), в этом случае <xref:Microsoft.AspNetCore.Identity.EntityFrameworkCore.IdentityUserContext`1> должен использоваться класс:
+Можно также использовать удостоверение без ролей (только утверждения), в этом случае <xref:Microsoft.AspNetCore.Identity.EntityFrameworkCore.IdentityUserContext%601> должен использоваться класс:
 
 ```csharp
 // Uses the built-in non-role Identity types except with a custom User type
@@ -333,7 +333,7 @@ services.AddDefaultIdentity<ApplicationUser>()
         .AddDefaultUI();
 ```
 
-В ASP.NET Core 2.1 или более поздней версии удостоверение предоставляется как библиотека классов Razor. Дополнительные сведения см. в разделе <xref:security/authentication/scaffold-identity>. Следовательно, предыдущий код требует вызова <xref:Microsoft.AspNetCore.Identity.IdentityBuilderUIExtensions.AddDefaultUI*>. Если удостоверение шаблон был использован для добавления в проект файлы, удалите вызов `AddDefaultUI`. Дополнительные сведения см. в следующих разделах.
+В ASP.NET Core 2.1 или более поздней версии удостоверение предоставляется как библиотека классов Razor. Дополнительные сведения см. в разделе <xref:security/authentication/scaffold-identity>. Следовательно, предыдущий код требует вызова <xref:Microsoft.AspNetCore.Identity.IdentityBuilderUIExtensions.AddDefaultUI*>. Если удостоверение шаблон был использован для добавления в проект файлы, удалите вызов `AddDefaultUI`. Дополнительные сведения:
 
 * [Удостоверение шаблона](xref:security/authentication/scaffold-identity)
 * [Добавление, скачивание и удаление пользовательские данные для удостоверения](xref:security/authentication/add-user-data)
@@ -368,7 +368,7 @@ services.AddIdentity<ApplicationUser, IdentityRole>()
 
 1. Если база данных была создана перед изменением первичного ключа, запустите `Drop-Database` (PMC) или `dotnet ef database drop` (CLI) .NET Core для его удаления.
 2. После подтверждения удаления базы данных, удалите первоначальной миграции с `Remove-Migration` (PMC) или `dotnet ef migrations remove` (.NET Core CLI).
-3. Обновление `ApplicationDbContext` класса для наследования от <xref:Microsoft.AspNetCore.Identity.EntityFrameworkCore.IdentityDbContext`3>. Укажите новый тип ключа для `TKey`. Например, чтобы использовать `Guid` тип ключа:
+3. Обновление `ApplicationDbContext` класса для наследования от <xref:Microsoft.AspNetCore.Identity.EntityFrameworkCore.IdentityDbContext%603>. Укажите новый тип ключа для `TKey`. Например, чтобы использовать `Guid` тип ключа:
 
     ```csharp
     public class ApplicationDbContext
@@ -383,13 +383,13 @@ services.AddIdentity<ApplicationUser, IdentityRole>()
 
     ::: moniker range=">= aspnetcore-2.0"
 
-    В приведенном выше коде универсальные классы <xref:Microsoft.AspNetCore.Identity.IdentityUser`1> и <xref:Microsoft.AspNetCore.Identity.IdentityRole`1> должен быть указан для использования нового типа ключа.
+    В приведенном выше коде универсальные классы <xref:Microsoft.AspNetCore.Identity.IdentityUser%601> и <xref:Microsoft.AspNetCore.Identity.IdentityRole%601> должен быть указан для использования нового типа ключа.
 
     ::: moniker-end
 
     ::: moniker range="<= aspnetcore-1.1"
 
-    В приведенном выше коде универсальные классы <xref:Microsoft.AspNetCore.Identity.EntityFrameworkCore.IdentityUser`1> и <xref:Microsoft.AspNetCore.Identity.EntityFrameworkCore.IdentityRole`1> должен быть указан для использования нового типа ключа.
+    В приведенном выше коде универсальные классы <xref:Microsoft.AspNetCore.Identity.EntityFrameworkCore.IdentityUser%601> и <xref:Microsoft.AspNetCore.Identity.EntityFrameworkCore.IdentityRole%601> должен быть указан для использования нового типа ключа.
 
     ::: moniker-end
 
@@ -955,7 +955,7 @@ protected override void OnModelCreating(ModelBuilder modelBuilder)
 
 ::: moniker range=">= aspnetcore-2.1"
 
-### <a name="lazy-loading"></a>«Неспешная» загрузка
+### <a name="lazy-loading"></a>Отложенная загрузка
 
 В этом разделе добавляется поддержка прокси отложенной загрузки в модель удостоверения. Lazy загрузка полезен в тех случаях, так как он позволяет использовать без убедитесь, что они при загрузке свойства навигации.
 

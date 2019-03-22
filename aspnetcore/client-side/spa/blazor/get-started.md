@@ -7,12 +7,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 02/12/2019
 uid: spa/blazor/get-started
-ms.openlocfilehash: 667c57d536450fa2f8ae1cabc7c5a76a16d38a55
-ms.sourcegitcommit: 191d21c1e37b56f0df0187e795d9a56388bbf4c7
+ms.openlocfilehash: f46bd9af0f0762e794349d4e98de5c086a690d72
+ms.sourcegitcommit: a1c43150ed46aa01572399e8aede50d4668745ca
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 03/08/2019
-ms.locfileid: "57665591"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58327233"
 ---
 # <a name="get-started-with-blazor"></a>Начало работы с Blazor
 
@@ -28,7 +28,7 @@ ms.locfileid: "57665591"
 
 Создание первого проекта Blazor в Visual Studio:
 
-1. Установите последнюю версию [расширение языковых служб Blazor](https://go.microsoft.com/fwlink/?linkid=870389) в Visual Studio Marketplace. Этот шаг делает доступным Blazor шаблоны для Visual Studio.
+1. Установите последнюю версию [Blazor расширение](https://go.microsoft.com/fwlink/?linkid=870389) в Visual Studio Marketplace. Этот шаг делает доступным Blazor шаблоны для Visual Studio.
 1. Шаблоны Blazor стали доступны для использования с .NET Core CLI, выполнив следующую команду в командной строке:
 
    ```console

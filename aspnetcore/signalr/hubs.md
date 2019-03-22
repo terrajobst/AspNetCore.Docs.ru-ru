@@ -7,12 +7,12 @@ ms.author: bradyg
 ms.custom: mvc
 ms.date: 11/20/2018
 uid: signalr/hubs
-ms.openlocfilehash: 244ddc40e647bfcc3ca8cda2797c51bc49174822
-ms.sourcegitcommit: 088e6744cd67a62f214f25146313a53949b17d35
+ms.openlocfilehash: f037c1f6fd7ef773b8e7b2fd4fdf6e28222c441a
+ms.sourcegitcommit: a1c43150ed46aa01572399e8aede50d4668745ca
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 03/21/2019
-ms.locfileid: "58320151"
+ms.locfileid: "58327265"
 ---
 # <a name="use-hubs-in-signalr-for-aspnet-core"></a>Использование центров в SignalR для ASP.NET Core
 
@@ -60,7 +60,7 @@ public class ChatHub : Hub
 
 `Hub` Класс имеет `Context` свойство, которое содержит следующие свойства, используя сведения о подключении:
 
-| Свойство. | Описание |
+| Свойство. | Описание: |
 | ------ | ----------- |
 | `ConnectionId` | Получает уникальный идентификатор для подключения, назначенный SignalR. Есть один идентификатор подключения для каждого подключения.|
 | `UserIdentifier` | Получает [идентификатор пользователя](xref:signalr/groups). По умолчанию использует SignalR `ClaimTypes.NameIdentifier` из `ClaimsPrincipal` связан с соединением в качестве идентификатора пользователя. |
@@ -80,7 +80,7 @@ public class ChatHub : Hub
 
 `Hub` Класс имеет `Clients` свойство, которое содержит следующие свойства для обмена данными между сервером и клиентом:
 
-| Свойство | Описание: |
+| Свойство. | Описание |
 | ------ | ----------- |
 | `All` | Вызывает метод на все подключенные клиенты |
 | `Caller` | Вызывает метод на стороне клиента, вызвавшему метод концентратора |
@@ -88,7 +88,7 @@ public class ChatHub : Hub
 
 `Hub.Clients` также содержит следующие методы:
 
-| Метод | Описание: |
+| Метод | Описание |
 | ------ | ----------- |
 | `AllExcept` | Вызывает метод на все подключенные клиенты, за исключением указанного соединений |
 | `Client` | Вызывает метод для определенного подключенного клиента |
@@ -116,7 +116,7 @@ public class ChatHub : Hub
 
 Недостаток использования `SendAsync` — что оно полагается на магической строки для указания метода клиента для вызова. При этом остается открытым кодом для ошибки времени выполнения, если неправильно указано имя метода или отсутствует от клиента.
 
-Альтернативой использованию `SendAsync` — для задания строго типизированных `Hub` с <xref:Microsoft.AspNetCore.SignalR.Hub`1>. В следующем примере `ChatHub` методы клиента были извлечены out в интерфейсе `IChatClient`.  
+Альтернативой использованию `SendAsync` — для задания строго типизированных `Hub` с <xref:Microsoft.AspNetCore.SignalR.Hub%601>. В следующем примере `ChatHub` методы клиента были извлечены out в интерфейсе `IChatClient`.  
 
 [!code-csharp[Interface for IChatClient](hubs/sample/hubs/ichatclient.cs?name=snippet_IChatClient)]
 
