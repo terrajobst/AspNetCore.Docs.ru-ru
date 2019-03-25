@@ -5,12 +5,12 @@ description: Сведения о службах и ПО промежуточно
 ms.author: riande
 ms.date: 01/14/2017
 uid: fundamentals/localization
-ms.openlocfilehash: 70de86f2e8c4a5577b8a4b50c53d66eb3b205c09
-ms.sourcegitcommit: 191d21c1e37b56f0df0187e795d9a56388bbf4c7
+ms.openlocfilehash: 0eda297b7df97a5d20fea035983f426eafa03775
+ms.sourcegitcommit: 57792e5f594db1574742588017c708350958bdf0
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 03/08/2019
-ms.locfileid: "57665549"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58264644"
 ---
 # <a name="globalization-and-localization-in-aspnet-core"></a>Глобализация и локализация в ASP.NET Core
 
@@ -98,6 +98,7 @@ ms.locfileid: "57665549"
 В ASP.NET Core MVC 1.1.0 и более поздних версиях атрибуты, не относящиеся в проверке, локализуются. В ASP.NET Core MVC 1.0 **не** производится поиск локализованных строк для атрибутов, не относящихся к проверке.
 
 <a name="one-resource-string-multiple-classes"></a>
+
 ### <a name="using-one-resource-string-for-multiple-classes"></a>Использование одной строки ресурса для нескольких классов
 
 В следующем коде показано, как использовать одну строку ресурса для атрибутов проверки с несколькими классами:
@@ -304,7 +305,6 @@ services.Configure<RequestLocalizationOptions>(options =>
 ### <a name="set-the-culture-programmatically"></a>Задание языка и региональных параметров программным образом
 
 В образце проекта **Localization.StarterWeb** в [GitHub](https://github.com/aspnet/entropy) есть пользовательский интерфейс для задания значения `Culture`. Файл *Views/Shared/_SelectLanguagePartial.cshtml* позволяет выбрать язык и региональные параметры из списка поддерживаемых:
-
 
 [!code-cshtml[](localization/sample/Localization/Views/Shared/_SelectLanguagePartial.cshtml)]
 

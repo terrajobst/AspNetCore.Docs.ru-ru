@@ -4,14 +4,14 @@ author: guardrex
 description: Сведения о диагностике проблем с развертываниями приложений ASP.NET Core на платформе IIS.
 ms.author: riande
 ms.custom: mvc
-ms.date: 03/06/2019
+ms.date: 03/14/2019
 uid: host-and-deploy/iis/troubleshoot
-ms.openlocfilehash: 2f36ae2bda8537e91a3bc925505986bdd6a22a47
-ms.sourcegitcommit: 34bf9fc6ea814c039401fca174642f0acb14be3c
+ms.openlocfilehash: 1fa90737aadebe3f714c702fbce649629d79dcd4
+ms.sourcegitcommit: 57792e5f594db1574742588017c708350958bdf0
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 03/14/2019
-ms.locfileid: "57841557"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58264555"
 ---
 # <a name="troubleshoot-aspnet-core-on-iis"></a>Устранение неполадок ASP.NET Core в службах IIS
 
@@ -33,17 +33,13 @@ ms.locfileid: "57841557"
 
 Дополнительные статьи по устранению неполадок:
 
-<xref:host-and-deploy/azure-apps/troubleshoot>  
-Служба приложений использует для размещения приложений [модуль ASP.NET Core](xref:host-and-deploy/aspnet-core-module) и IIS, но самые полезные рекомендации вы найдете в статье с инструкциями для самой службы приложений.
+<xref:host-and-deploy/azure-apps/troubleshoot> Служба приложений использует для размещения приложений [модуль ASP.NET Core](xref:host-and-deploy/aspnet-core-module) и IIS. Инструкции по использованию Службы приложений см. в посвященных ей статьях.
 
-<xref:fundamentals/error-handling>  
-Узнайте, как обрабатывать ошибки в приложениях ASP.NET Core при разработке в локальной системе.
+<xref:fundamentals/error-handling> — узнайте, как обрабатывать ошибки в приложениях ASP.NET Core при разработке в локальной системе.
 
-[Сведения об отладке с помощью Visual Studio](/visualstudio/debugger/getting-started-with-the-debugger)  
-В этой статье представлены возможности отладчика Visual Studio.
+[Знакомство с отладчиком Visual Studio](/visualstudio/debugger/getting-started-with-the-debugger). В этой статье описаны возможности отладчика Visual Studio.
 
-[Отладка с помощью Visual Studio Code](https://code.visualstudio.com/docs/editor/debugging)  
-Узнайте о поддержке отладки, встроенной в Visual Studio Code.
+[Статья об отладке с помощью Visual Studio Code](https://code.visualstudio.com/docs/editor/debugging). Узнайте о поддержке отладки, встроенной в Visual Studio Code.
 
 ## <a name="app-startup-errors"></a>Ошибки при запуске приложения
 
@@ -51,7 +47,7 @@ ms.locfileid: "57841557"
 
 Рабочий процесс завершается ошибкой. Приложение не запускается.
 
-Модуль ASP.NET Core пытается запустить процесс dotnet серверной части, но он не запускается. Обычно причину сбоя при запуске процесса можно определить по записям в [журнале событий приложения](#application-event-log) и [журнале вывода stdout модуля ASP.NET Core](#aspnet-core-module-stdout-log). 
+Модуль ASP.NET Core пытается запустить процесс dotnet серверной части, но он не запускается. Обычно причину сбоя при запуске процесса можно определить по записям в [журнале событий приложения](#application-event-log) и [журнале вывода stdout модуля ASP.NET Core](#aspnet-core-module-stdout-log).
 
 Распространенной причиной сбоя является неправильная настройка приложения с выбором отсутствующей версии общей платформы ASP.NET Core. Проверьте, какие версии общей платформы ASP.NET Core установлены на целевом компьютере.
 
@@ -65,7 +61,7 @@ ms.locfileid: "57841557"
 
 Рабочий процесс завершается ошибкой. Приложение не запускается.
 
-Модуль ASP.NET Core пытается запустить среду CLR .NET Core внутри процесса, но она не запускается. Обычно причину сбоя при запуске процесса можно определить по записям в [журнале событий приложения](#application-event-log) и [журнале вывода stdout модуля ASP.NET Core](#aspnet-core-module-stdout-log). 
+Модуль ASP.NET Core пытается запустить среду CLR .NET Core внутри процесса, но она не запускается. Обычно причину сбоя при запуске процесса можно определить по записям в [журнале событий приложения](#application-event-log) и [журнале вывода stdout модуля ASP.NET Core](#aspnet-core-module-stdout-log).
 
 Распространенной причиной сбоя является неправильная настройка приложения с выбором отсутствующей версии общей платформы ASP.NET Core. Проверьте, какие версии общей платформы ASP.NET Core установлены на целевом компьютере.
 
@@ -82,7 +78,7 @@ ms.locfileid: "57841557"
 
 Рабочий процесс завершается ошибкой. Приложение не запускается.
 
-Модулю ASP.NET Core не удается найти внепроцессный обработчик запросов. Убедитесь, что *aspnetcorev2_outofprocess.dll* находится во вложенной папке рядом с *aspnetcorev2.dll*. 
+Модулю ASP.NET Core не удается найти внепроцессный обработчик запросов. Убедитесь, что *aspnetcorev2_outofprocess.dll* находится во вложенной папке рядом с *aspnetcorev2.dll*.
 
 ::: moniker-end
 
@@ -172,7 +168,7 @@ Failed to start application '/LM/W3SVC/6/ROOT/', ErrorCode '0x800700c1'.
 
 1. Перейдите в папку развертывания сайта на компьютере размещения.
 1. Если здесь нет папки *logs*, создайте ее. Сведения о том, как настроить в MSBuild автоматическое создание папки *logs* в развертывании, см. в статье [о структуре каталогов](xref:host-and-deploy/directory-structure).
-1. Измените файл *web.config*. Задайте для параметра **stdoutLogEnabled** значение `true` и измените путь **stdoutLogFile** так, чтобы он указывал на папку *logs* (например, `.\logs\stdout`). В этом пути `stdout` обозначает префикс имени для файла журнала. При создании файла журнала автоматически добавляются метка времени, идентификатор процесса и расширение файла. Если указан префикс файла `stdout`, стандартный файл журнала будет иметь примерно такое имя: *stdout_20180205184032_5412.log*. 
+1. Измените файл *web.config*. Задайте для параметра **stdoutLogEnabled** значение `true` и измените путь **stdoutLogFile** так, чтобы он указывал на папку *logs* (например, `.\logs\stdout`). В этом пути `stdout` обозначает префикс имени для файла журнала. При создании файла журнала автоматически добавляются метка времени, идентификатор процесса и расширение файла. Если указан префикс файла `stdout`, стандартный файл журнала будет иметь примерно такое имя: *stdout_20180205184032_5412.log*.
 1. Убедитесь, что удостоверение пула приложений имеет разрешения на запись в папку *logs*.
 1. Сохраните обновленный файл *web.config*.
 1. Сделайте запрос к приложению.
@@ -245,24 +241,27 @@ Failed to start application '/LM/W3SVC/6/ROOT/', ErrorCode '0x800700c1'.
 Получите и проанализируйте дамп из [отчетов об ошибках Windows (WER)](/windows/desktop/wer/windows-error-reporting):
 
 1. Создайте папку для хранения файлов аварийного дампа в `c:\dumps`. Пул приложений должен иметь доступ на запись к папке.
-1. Запустите [скрипт PowerShell EnableDumps](https://github.com/aspnet/Docs/tree/master/aspnetcore/host-and-deploy/troubleshoot/scripts/EnableDumps.ps1):
+1. Запустите [скрипт PowerShell EnableDumps](https://github.com/aspnet/Docs/blob/master/aspnetcore/host-and-deploy/iis/troubleshoot/scripts/EnableDumps.ps1):
    * Если приложение использует [модель размещения в процессе](xref:fundamentals/servers/index#in-process-hosting-model), выполните скрипт для *w3wp.exe*:
 
      ```console
      .\EnableDumps w3wp.exe c:\dumps
      ```
+
    * Если приложение использует [модель размещения вне процесса](xref:fundamentals/servers/index#out-of-process-hosting-model), выполните скрипт для *dotnet.exe*:
 
      ```console
      .\EnableDumps dotnet.exe c:\dumps
      ```
+
 1. Запустите приложение в условиях, вызывающих аварийное завершение.
-1. После аварийного завершения запустите [скрипт PowerShell DisableDumps](https://github.com/aspnet/Docs/tree/master/aspnetcore/host-and-deploy/troubleshoot/scripts/DisableDumps.ps1):
+1. После аварийного завершения запустите [скрипт PowerShell DisableDumps](https://github.com/aspnet/Docs/blob/master/aspnetcore/host-and-deploy/iis/troubleshoot/scripts/DisableDumps.ps1):
    * Если приложение использует [модель размещения в процессе](xref:fundamentals/servers/index#in-process-hosting-model), выполните скрипт для *w3wp.exe*:
 
      ```console
      .\DisableDumps w3wp.exe
      ```
+
    * Если приложение использует [модель размещения вне процесса](xref:fundamentals/servers/index#out-of-process-hosting-model), выполните скрипт для *dotnet.exe*:
 
      ```console

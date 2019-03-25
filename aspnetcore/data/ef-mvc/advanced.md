@@ -7,12 +7,12 @@ ms.custom: mvc
 ms.date: 02/05/2019
 ms.topic: tutorial
 uid: data/ef-mvc/advanced
-ms.openlocfilehash: f02aa1d6d8e431e7e2613835b3216786aed4ecd4
-ms.sourcegitcommit: 5e3797a02ff3c48bb8cb9ad4320bfd169ebe8aba
+ms.openlocfilehash: c4804bd6614c7d5a2a30c8f59a645f603929ad52
+ms.sourcegitcommit: 57792e5f594db1574742588017c708350958bdf0
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56103102"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58264588"
 ---
 # <a name="tutorial-learn-about-advanced-scenarios---aspnet-mvc-with-ef-core"></a>Учебник. Сведения о сложных сценариях для ASP.NET MVC с EF Core
 
@@ -81,7 +81,7 @@ ms.locfileid: "56103102"
 
 ![Страница обновления числа зачетных баллов для курсов](advanced/_static/update-credits.png)
 
-В файле *CoursesContoller.cs* добавьте методы UpdateCourseCredits для HttpGet и HttpPost:
+В файле *CoursesController.cs* добавьте методы UpdateCourseCredits для HttpGet и HttpPost:
 
 [!code-csharp[](intro/samples/cu/Controllers/CoursesController.cs?name=snippet_UpdateGet)]
 
@@ -202,6 +202,7 @@ _context.ChangeTracker.AutoDetectChangesEnabled = false;
 Этот учебник написан Томом Дайкстра (Tom Dykstra) и Риком Андерсоном (Rick Anderson) (twitter @RickAndMSFT). Помощь в проверке кода для учебника и отладке проблем, возникавших при его написании, оказывали Роуэн Миллер (Rowan Miller), Диего Вега (Diego Vega) и другие участники команды Entity Framework. Джон Парент (John Parente) и Пол Голдмен (Paul Goldman) обновили это руководство для версии ASP.NET Core 2.2.
 
 <a id="common-errors"></a>
+
 ## <a name="troubleshoot-common-errors"></a>Устранение неполадок при распространенных ошибках
 
 ### <a name="contosouniversitydll-used-by-another-process"></a>Библиотека ContosoUniversity.dll используется другим процессом

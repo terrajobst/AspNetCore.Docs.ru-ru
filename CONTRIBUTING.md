@@ -1,4 +1,12 @@
-# <a name="contribute-to-the-aspnet-documentation"></a>Внесите свой вклад в документацию по ASP.NET
+---
+ms.openlocfilehash: 98a03118954baa85b093a0514e1ac6f0fb6353e8
+ms.sourcegitcommit: 088e6744cd67a62f214f25146313a53949b17d35
+ms.translationtype: HT
+ms.contentlocale: ru-RU
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58320112"
+---
+# <a name="contribute-to-the-aspnet-core-documentation"></a>Внесите свой вклад в документацию по ASP.NET Core
 
 В этом документе рассматривается процесс участия в написании статей и примеров кода, размещенных на [сайте документации по ASP.NET](https://docs.microsoft.com/aspnet/). Вы можете исправлять опечатки и размещать новые статьи.
 
@@ -18,7 +26,7 @@
 
 Пример публикации новой статьи в соответствии с этим процессом см. в [проблеме &num;67](https://github.com/dotnet/docs/issues/67) и [запросе на вытягивание &num;798](https://github.com/dotnet/docs/pull/798) в репозитории документов по .NET. Новая статья — [Документирование кода](https://docs.microsoft.com/dotnet/articles/csharp/codedoc).
 
-## <a name="docs-authoring-pack-extension-in-visual-studio-code"></a>Расширение "Пакет создания документов" в Visual Studio Code 
+## <a name="docs-authoring-pack-extension-in-visual-studio-code"></a>Расширение "Пакет создания документов" в Visual Studio Code
 
 Если вы используете Visual Studio Code для участия в разработке документации ASP.NET, вы можете повысить производительность, установив расширение [Пакет создания документов](https://marketplace.visualstudio.com/items?itemName=docsmsft.docs-authoring-pack). Данное расширение предоставляет широкий набор средств, упрощающий проверку формата Markdown, проверку орфографии кода и создание статей по шаблонам.
 
@@ -30,7 +38,7 @@
 
 Для каждого файла Markdown могут существовать папка для изображений и папка для примера кода. Если это статья в виде файла [fundamentals/configuration/index.md](https://github.com/aspnet/Docs/blob/master/aspnetcore/fundamentals/configuration/index.md), изображения находятся в папке [fundamentals/configuration/index/\_static](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/configuration/index/_static), а пример файлов проекта приложения — в папке [fundamentals/configuration/index/sample](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/configuration/index/sample). Изображение в файле *fundamentals/configuration/index.md* обрабатывается по следующим правилам Markdown:
 
-```
+```md
 ![description of image for alt attribute](configuration/index/_static/imagename.png)
 ```
 
@@ -42,13 +50,13 @@
 
 Внутренние ссылки должны использовать `uid` целевой статьи со ссылкой xref (текст ссылки задается по заголовку связанного содержимого):
 
-```
+```md
 <xref:uid_of_the_topic>
 ```
 
 Если заголовок статьи не подходит для текста ссылки (например, слово или фраза в предложении является текстом ссылки), укажите ссылку xref и текст ссылки следующим образом:
 
-```
+```md
 [link text](xref:uid_of_the_topic)
 ```
 
@@ -73,13 +81,13 @@
 
 Для отображения всего файла кода в виде фрагмента:
 
-```
+```md
 [!code-csharp[](configuration/index/sample/Program.cs)]
 ```
 
 Для подготовки к просмотру части файла как фрагмента с помощью номеров строк:
 
-```
+```md
 [!code-csharp[](configuration/index/sample/Program.cs?range=1-10,20,30,40-50]
 [!code-html[](configuration/index/sample/Views/Home/Index.cshtml?range=1-10,20,30,40-50]
 ```
@@ -88,13 +96,13 @@
 
 Для подготовки области C# с именем "snippet_Example":
 
-```
+```md
 [!code-csharp[](configuration/index/sample/Program.cs?name=snippet_Example)]
 ```
 
 Чтобы выделить выбранные строки в готовом для просмотра фрагменте кода (обычно выделяются желтым цветом):
 
-```
+```md
 [!code-csharp[](configuration/index/sample/Program.cs?name=snippet_Example&highlight=1-3,10,20-25)]
 [!code-csharp[](configuration/index/sample/Program.cs?range=10-20&highlight=1-3]
 [!code-html[](configuration/index/sample/Views/Home/Index.cshtml?range=10-20&highlight=1-3]
@@ -119,6 +127,7 @@ DocFX требует:
   ```console
   docfx --serve
   ```
+
 * В браузере перейдите на адрес `http://localhost:8080/group1-dest/`.
 
 ### <a name="mono-instructions"></a>Инструкции для Mono
@@ -128,6 +137,7 @@ DocFX требует:
   ```console
   brew install mono
   ```
+
 * Загрузите [последнюю версию DocFX](https://github.com/dotnet/docfx/releases).
 * Извлеките архив *$HOME/bin/docfx*.
 * Создайте пару псевдонимов для **docfx** в оболочке bash. Первый псевдоним используется для создания документации. Второй псевдоним используется для создания и обслуживания документации.
@@ -136,11 +146,13 @@ DocFX требует:
   alias docfx='mono $HOME/bin/docfx/docfx.exe'
   alias docfx-serve='mono $HOME/bin/docfx/docfx.exe --serve'
   ```
+
 * В командной оболочке перейдите в папку, содержащую файл *docfx.json* (*aspnet* для содержимого ASP.NET или *aspnetcore* для содержимого ASP.NET Core) и выполните следующую команду, чтобы создавать и обслуживать документы с использованием их псевдонимов.
 
   ```console
   docfx-serve
   ```
+
 * В браузере перейдите на адрес `http://localhost:8080/group1-dest/`.
 
 ## <a name="voice-and-tone"></a>Стиль

@@ -7,12 +7,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 03/12/2019
 uid: fundamentals/app-state
-ms.openlocfilehash: 7de57d4923beaf32c0cb9aec49ea3e570fec6170
-ms.sourcegitcommit: 34bf9fc6ea814c039401fca174642f0acb14be3c
+ms.openlocfilehash: 8eabb8262deda4dc56b8da4f148ec8168a85ca52
+ms.sourcegitcommit: 5f299daa7c8102d56a63b214b9a34cc4bc87bc42
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 03/14/2019
-ms.locfileid: "57841583"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58208954"
 ---
 # <a name="session-and-app-state-in-aspnet-core"></a>Состояние сеанса и приложения в ASP.NET Core
 
@@ -109,7 +109,7 @@ ASP.NET Core сохраняет состояние сеанса, предост�
 | ------ | ----------- |
 | [Файл cookie](/dotnet/api/microsoft.aspnetcore.builder.sessionoptions.cookie) | Определяет параметры, используемые для создания файлов cookie. Параметр [Name](/dotnet/api/microsoft.aspnetcore.http.cookiebuilder.name) по умолчанию имеет значение [SessionDefaults.CookieName](/dotnet/api/microsoft.aspnetcore.session.sessiondefaults.cookiename) (`.AspNetCore.Session`). Параметр [Path](/dotnet/api/microsoft.aspnetcore.http.cookiebuilder.path) по умолчанию имеет значение [SessionDefaults.CookiePath](/dotnet/api/microsoft.aspnetcore.session.sessiondefaults.cookiepath) (`/`). Параметр [SameSite](/dotnet/api/microsoft.aspnetcore.http.cookiebuilder.samesite) по умолчанию имеет значение [SameSiteMode.Lax](/dotnet/api/microsoft.aspnetcore.http.samesitemode) (`1`). Параметр [HttpOnly](/dotnet/api/microsoft.aspnetcore.http.cookiebuilder.httponly) по умолчанию имеет значение `true`. Параметр [IsEssential](/dotnet/api/microsoft.aspnetcore.http.cookiebuilder.isessential) по умолчанию имеет значение `false`. |
 | [IdleTimeout](/dotnet/api/microsoft.aspnetcore.builder.sessionoptions.idletimeout) | `IdleTimeout` указывает, как долго сеанс может быть неактивным, прежде чем его содержимое отбрасывается. Каждый доступ к сеансу сбрасывает время ожидания. Этот параметр применяется только к содержимому сеанса, а не к файлу cookie. Значение по умолчанию — 20 минут. |
-| [IOTimeout](/dotnet/api/microsoft.aspnetcore.builder.sessionoptions.iotimeout) | Максимальное количество времени для загрузки сеанса из хранилища или его сохранения обратно в хранилище. Этот параметр может применяться только к асинхронным операциям. Время ожидания можно отключить с помощью [InfiniteTimeSpan](/dotnet/api/system.threading.timeout.infinitetimespan). Значение по умолчанию — 1 минута. |
+| [IOTimeout](/dotnet/api/microsoft.aspnetcore.builder.sessionoptions.iotimeout) | Максимальный период загрузки сеанса из хранилища или его сохранения обратно в хранилище. Этот параметр может применяться только к асинхронным операциям. Время ожидания можно отключить с помощью [InfiniteTimeSpan](/dotnet/api/system.threading.timeout.infinitetimespan). Значение по умолчанию — 1 минута. |
 
 Сеанс использует файл cookie для отслеживания и идентификации запросов в одном браузере. По умолчанию этот файл cookie называется `.AspNetCore.Session` и использует путь `/`. Так как по умолчанию файл cookie не указывает домен, он остается недоступным для клиентского сценария на странице (так как [HttpOnly](/dotnet/api/microsoft.aspnetcore.http.cookiebuilder.httponly) по умолчанию имеет значение `true`).
 

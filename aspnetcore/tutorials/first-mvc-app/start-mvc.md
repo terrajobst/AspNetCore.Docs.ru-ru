@@ -5,12 +5,12 @@ description: Сведения о начале работы с MVC ASP.NET Core.
 ms.author: riande
 ms.date: 12/12/2018
 uid: tutorials/first-mvc-app/start-mvc
-ms.openlocfilehash: c09c06f55c4179e9e2174f0063ab7387b7e4c31b
-ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
+ms.openlocfilehash: dbc07558d7d7672e60e8834dc3e4e9d8aab437e3
+ms.sourcegitcommit: 57792e5f594db1574742588017c708350958bdf0
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56899233"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58265290"
 ---
 # <a name="get-started-with-aspnet-core-mvc"></a>Начало работы с MVC ASP.NET Core
 
@@ -36,7 +36,6 @@ ms.locfileid: "56899233"
 
 ## <a name="create-a-web-app"></a>Создание веб-приложения
 
-<!-- VS -------------------------->
 # <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 В Visual Studio выберите меню **Файл > Создать > Проект**.
@@ -62,7 +61,6 @@ ms.locfileid: "56899233"
 
 В Visual Studio используется только что созданный вами шаблон по умолчанию для проекта MVC. Чтобы приложение стало рабочим, осталось только указать имя проекта и выбрать несколько параметров. Это простой начальный проект и хорошая стартовая точка.
 
-<!-- Code -------------------------->
 # <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code.](#tab/visual-studio-code)
 
 Для работы с этим руководством требуется знание VS Code. Дополнительные сведения см. в разделах [Начало работы с VS Code](https://code.visualstudio.com/docs) и [Справка по Visual Studio Code](#visual-studio-code-help).
@@ -81,7 +79,6 @@ ms.locfileid: "56899233"
   * `dotnet new mvc -o MvcMovie`: создает новый проект MVC ASP.NET Core в папке *MvcMovie*.
   * `code -r MvcMovie`: загружает файл проекта *MvcMovie.csproj* в Visual Studio Code.
 
-<!-- Mac -------------------------->
 # <a name="visual-studio-for-mactabvisual-studio-mac"></a>[Visual Studio для Mac](#tab/visual-studio-mac)
 
 * Выберите **Файл** > **Новое решение**.
@@ -96,12 +93,11 @@ ms.locfileid: "56899233"
 
 * Присвойте проекту имя **MvcMovie** и нажмите кнопку **Создать**.
 
----  
-<!-- End of VS tabs -->
+---
 
 ### <a name="run-the-app"></a>Запуск приложения
 
-# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio) 
+# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 Нажмите **CTRl+F5**, чтобы запустить приложение без отладки.
 
@@ -117,7 +113,7 @@ ms.locfileid: "56899233"
 
   ![IIS Express](start-mvc/_static/iis_express.png)
 
-# <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code.](#tab/visual-studio-code) 
+# <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code.](#tab/visual-studio-code)
 
 Нажмите клавиши CTRL+F5, чтобы выполнить запуск без отладчика.
 
@@ -136,7 +132,7 @@ ms.locfileid: "56899233"
 * В адресной строке указывается `localhost:port#`, а не что-либо типа `example.com`. Это связано с тем, что `localhost` — стандартное имя узла для локального компьютера. Когда Visual Studio создает веб-проект, для веб-сервера используется случайный порт. При запуске приложения вы увидите другой номер порта.
 * В меню **Запуск** можно запустить приложение в режиме с отладкой или без нее.
 
-------
+---
 
 * Нажмите **Принять**, чтобы согласиться на отслеживание. Это приложение не отслеживает персональные данные. Созданный шаблоном код включает ресурсы для соблюдения [Общего регламента по защите данных (GDPR)](xref:security/gdpr).
 
@@ -151,4 +147,4 @@ ms.locfileid: "56899233"
 В следующей части этого учебника мы поговорим об MVC и приступим к написанию кода.
 
 > [!div class="step-by-step"]
-> [Вперед](adding-controller.md)  
+> [Вперед](adding-controller.md)

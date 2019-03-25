@@ -5,12 +5,12 @@ description: Сведения об управлении поведением п�
 ms.author: riande
 ms.date: 01/22/2019
 uid: fundamentals/environments
-ms.openlocfilehash: 4120453c36d1fc2a2303c2175df30ef9777bc54f
-ms.sourcegitcommit: 036d4b03fd86ca5bb378198e29ecf2704257f7b2
+ms.openlocfilehash: 5982f3e51a68dfa29af482067156c42006f50c0c
+ms.sourcegitcommit: 5f299daa7c8102d56a63b214b9a34cc4bc87bc42
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57345962"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58208461"
 ---
 # <a name="use-multiple-environments-in-aspnet-core"></a>Использование нескольких сред в ASP.NET Core
 
@@ -31,9 +31,9 @@ ASP.NET Core считывает переменную среды `ASPNETCORE_ENVI
 * Вызывает [UseDeveloperExceptionPage](/dotnet/api/microsoft.aspnetcore.builder.developerexceptionpageextensions.usedeveloperexceptionpage), если `ASPNETCORE_ENVIRONMENT` имеет значение `Development`.
 * Вызывает [UseExceptionHandler](/dotnet/api/microsoft.aspnetcore.builder.exceptionhandlerextensions.useexceptionhandler), если переменная `ASPNETCORE_ENVIRONMENT` имеет одно из следующих значений:
 
-    * `Staging`
-    * `Production`
-    * `Staging_2`
+  * `Staging`
+  * `Production`
+  * `Staging_2`
 
 [Вспомогательная функция тега среды](xref:mvc/views/tag-helpers/builtin-th/environment-tag-helper) использует значение `IHostingEnvironment.EnvironmentName` для включения или исключения разметки в элементе:
 
@@ -290,7 +290,7 @@ export ASPNETCORE_ENVIRONMENT=Development
 
 Для загрузки конфигурации среды мы рекомендуем:
 
-* Файлы *appsettings* (*appsettings.&lt;<Environment>&gt;.json). См. раздел [Поставщик пользовательской конфигурации](xref:fundamentals/configuration/index#file-configuration-provider).
+* Файлы *appsettings* (*appsettings.\<Environment>.json*). См. разделы [Поставщик пользовательской конфигурации](xref:fundamentals/configuration/index#file-configuration-provider).
 * Переменные среды (заданные в каждой системе, где размещено приложение). См. разделы [Поставщик пользовательской конфигурации](xref:fundamentals/configuration/index#file-configuration-provider) и [Переменные среды](xref:security/app-secrets#environment-variables).
 * Менеджер секретов (только в среде разработки). См. раздел <xref:security/app-secrets>.
 

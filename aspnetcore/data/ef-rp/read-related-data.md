@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 10/24/2018
 uid: data/ef-rp/read-related-data
-ms.openlocfilehash: 140f482e136acf4daba1248fecc87e06db6866f3
-ms.sourcegitcommit: 036d4b03fd86ca5bb378198e29ecf2704257f7b2
+ms.openlocfilehash: a264cdaf0f577be6ea2043935b485f4fd16e0229
+ms.sourcegitcommit: 57792e5f594db1574742588017c708350958bdf0
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57345900"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58264947"
 ---
 # <a name="razor-pages-with-ef-core-in-aspnet-core---read-related-data---6-of-8"></a>Razor Pages с EF Core в ASP.NET Core — чтение связанных данных — 6 из 8
 
@@ -65,9 +65,10 @@ ms.locfileid: "57345900"
 * Получите свойство `Name` из сущности `Department`.
 * Сущность `Department` получается из свойства навигации `Course.Department`.
 
-![ourse.Department](read-related-data/_static/dep-crs.png)
+![Course.Department](read-related-data/_static/dep-crs.png)
 
 <a name="scaffold"></a>
+
 ### <a name="scaffold-the-course-model"></a>Формирование шаблона для модели Course
 
 # <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio) 
@@ -115,6 +116,7 @@ ms.locfileid: "57345900"
 ![Страница индекса курсов](read-related-data/_static/courses-index.png)
 
 <a name="select"></a>
+
 ### <a name="loading-related-data-with-select"></a>Загрузка связанных данных с помощью "Select"
 
 Метод `OnGetAsync` загружает связанные данные с помощью метода `Include`:
@@ -187,7 +189,6 @@ ms.locfileid: "57345900"
 * `OfficeAssignment`: отображается в [представлении преподавателей](#IP).
 * `CourseAssignments`: вызывает проводимые курсы.
 
-
 ### <a name="update-the-instructors-index-page"></a>Изменение страницы индекса преподавателей
 
 Измените *Pages/Instructors/Index.cshtml*, используя следующую разметку:
@@ -198,11 +199,11 @@ ms.locfileid: "57345900"
 
 * Изменяет директиву `page` с `@page` на `@page "{id:int?}"`. `"{id:int?}"` является шаблоном маршрута. Шаблон маршрута изменяет целочисленные строки запроса в URL-адресе для маршрутизации данных. Например, при выборе ссылки **Select** для преподавателя только с директивой `@page` формируется URL-адрес следующего вида:
 
-    `http://localhost:1234/Instructors?id=2`
+  `http://localhost:1234/Instructors?id=2`
 
-    Когда используется директива страницы `@page "{id:int?}"`, предыдущий URL-адрес имеет следующее значение:
+  Когда используется директива страницы `@page "{id:int?}"`, предыдущий URL-адрес имеет следующее значение:
 
-    `http://localhost:1234/Instructors/2`
+  `http://localhost:1234/Instructors/2`
 
 * Заголовком страницы является **Instructors**.
 * Добавили столбец **Office**, отображающий `item.OfficeAssignment.Location` только тогда, когда `item.OfficeAssignment` не равно null. Так как это связь один к нулю или одному, то связанная сущность OfficeAssignment может отсутствовать.

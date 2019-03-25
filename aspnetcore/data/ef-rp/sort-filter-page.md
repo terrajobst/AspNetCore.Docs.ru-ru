@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 10/24/2018
 uid: data/ef-rp/sort-filter-page
-ms.openlocfilehash: 4616e93e0cfc25f3ad66721856a4e48910f2fcf5
-ms.sourcegitcommit: 036d4b03fd86ca5bb378198e29ecf2704257f7b2
+ms.openlocfilehash: 162586059e3115bc15efaa63a9a0652e09872f1b
+ms.sourcegitcommit: 5f299daa7c8102d56a63b214b9a34cc4bc87bc42
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57345967"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58209969"
 ---
 # <a name="razor-pages-with-ef-core-in-aspnet-core---sort-filter-paging---3-of-8"></a>Razor Pages с EF Core в ASP.NET Core — сортировка, фильтрация, разбиение на страницы — 3 из 8
 
@@ -128,7 +128,7 @@ ms.locfileid: "57345967"
 
 `Where(s => s.LastName.ToUpper().Contains(searchString.ToUpper())`
 
-Предыдущий код обеспечивает, что результаты не учитывают регистр, если код изменяется для использования `IEnumerable`. Когда `Contains` вызывается для коллекции `IEnumerable`, используется реализация .NET Core. Когда `Contains` вызывается для объекта `IQueryable`, используется реализация базы данных. Возвращение `IEnumerable` из репозитория может значительно снижать производительность:
+Предыдущий код обеспечивает, что результаты не учитывают регистр, если код изменяется для использования `IEnumerable`. Когда `Contains` вызывается для коллекции `IEnumerable`, используется реализация .NET Core. Когда `Contains` вызывается для объекта `IQueryable`, используется реализация базы данных. При возвращение `IEnumerable` из репозитория производительность может значительно снижаться:
 
 1. Все строки возвращаются с сервера базы данных.
 1. Фильтр применяется ко всем возвращенным строкам в приложении.

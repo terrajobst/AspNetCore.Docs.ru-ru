@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: H1Hack27Feb2017
 ms.date: 10/14/2016
 uid: web-api/advanced/formatting
-ms.openlocfilehash: 819bf1b49b56e953a9a4398e82866ba0b01ab4db
-ms.sourcegitcommit: 375e9a67f5e1f7b0faaa056b4b46294cc70f55b7
+ms.openlocfilehash: b0fce0632fd2d885cb8e9a056923ec365d2f327d
+ms.sourcegitcommit: 5f299daa7c8102d56a63b214b9a34cc4bc87bc42
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50207112"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58209991"
 ---
 # <a name="format-response-data-in-aspnet-core-web-api"></a>Форматирование данных отклика в веб-API ASP.NET Core
 
@@ -168,7 +168,7 @@ services.AddMvc(options =>
 
 ## <a name="response-format-url-mappings"></a>Сопоставления URL-адреса для формата отклика
 
-Клиенты могут запрашивать определенный формат в URL-адресе, например в строке запроса или части пути, либо используя расширение файла определенного формата, такое как XML или JSON. Сопоставление из пути запроса должно быть указано в маршруте, используемом API. Пример:
+Клиенты могут запрашивать определенный формат в URL-адресе, например в строке запроса или части пути, либо используя расширение файла определенного формата, такое как XML или JSON. Сопоставление из пути запроса должно быть указано в маршруте, используемом API. Например:
 
 ```csharp
 [FormatFilter]
@@ -180,10 +180,8 @@ public class ProductsController
 
 Этот маршрут позволяет задать запрошенный формат в качестве дополнительного расширения файла. Атрибут `[FormatFilter]` проверяет наличие значения формата в `RouteData` и сопоставляет этот формат отклика с соответствующим модулем форматирования при создании отклика.
 
-
 |           Маршрут            |             Formatter              |
 |----------------------------|------------------------------------|
 |   `/products/GetById/5`    |    Модуль форматирования вывода по умолчанию    |
 | `/products/GetById/5.json` | Модуль форматирования JSON (если настроен) |
 | `/products/GetById/5.xml`  | Модуль форматирования XML (если настроен)  |
-

@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 02/28/2019
 uid: host-and-deploy/azure-iis-errors-reference
-ms.openlocfilehash: 1c8cb31b306b38ec17596af0a84f22ca0e3d911c
-ms.sourcegitcommit: 036d4b03fd86ca5bb378198e29ecf2704257f7b2
+ms.openlocfilehash: 053dcce7f8c59b7afe7e52d2f704c992afce0b67
+ms.sourcegitcommit: 57792e5f594db1574742588017c708350958bdf0
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57346230"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58265177"
 ---
 # <a name="common-errors-reference-for-azure-app-service-and-iis-with-aspnet-core"></a>Справочник по общим ошибкам в Службе приложений Azure и службах IIS с ASP.NET Core
 
@@ -61,7 +61,7 @@ ms.locfileid: "57346230"
 
 *Относится к приложениям, размещенным в Службе приложений Azure*.
 
-* **Браузер:** ошибка HTTP 500.0 — ошибка загрузки внутрипроцессного обработчика ANCM 
+* **Браузер:** ошибка HTTP 500.0 — ошибка загрузки внутрипроцессного обработчика ANCM
 
 * **Журнал приложений:** вызов hostfxr для поиска внутрипроцессного обработчика запросов завершился ошибкой без обнаружения каких-либо собственных зависимостей. Не удалось найти внутрипроцессный обработчик запросов. Выходные данные, записанные в результате вызова hostfxr: не удалось найти совместимую версию платформы. Указанная версия {версия} — предварительная версия — \* платформы Microsoft.AspNetCore.App не найдена. Не удалось запустить приложение /LM/W3SVC/1416782824/ROOT, код ошибки — 0x8000ffff.
 
@@ -80,7 +80,7 @@ ms.locfileid: "57346230"
   * Среда выполнения ASP.NET Core {версия среды выполнения} (x86)
   * Среда выполнения ASP.NET Core {версия среды выполнения} (x64)
 
-  Перезапустите приложение. Подождите несколько секунд, пока приложение перезагрузится. 
+  Перезапустите приложение. Подождите несколько секунд, пока приложение перезагрузится.
 
 * Если приложение запускается в среде выполнения предварительной версии и установлены оба [расширения сайта](xref:host-and-deploy/azure-apps/index#install-the-preview-site-extension) — 32-разрядное (x86) и 64-разрядное (x64), удалите расширение сайта, не соответствующее разрядности приложения. После удаления расширения сайта перезапустите приложение. Подождите несколько секунд, пока приложение перезагрузится.
 
@@ -201,7 +201,7 @@ ms.locfileid: "57346230"
   ```xml
   <section name="aspNetCore" overrideModeDefault="Allow" />
   ```
-  
+
   Кроме того, вы можете установить последнюю версию пакета размещения ASP.NET Core. Последняя версия имеет обратную совместимость с поддерживаемыми приложениями ASP.NET Core.
 
 ## <a name="incorrect-processpath-missing-path-variable-hosting-bundle-not-installed-systemiis-not-restarted-vc-redistributable-not-installed-or-dotnetexe-access-violation"></a>Неправильное значение processPath, отсутствует переменная PATH, пакет размещения не установлен, система или службы IIS не перезапущены, не установлен распространяемый компонент VC++ либо нарушены права доступа к dotnet.exe

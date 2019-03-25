@@ -7,12 +7,12 @@ ms.custom: mvc
 ms.date: 02/04/2019
 ms.topic: tutorial
 uid: data/ef-mvc/crud
-ms.openlocfilehash: 368b1774ba977ec8020a02d48705200fd54c3bbd
-ms.sourcegitcommit: 5e3797a02ff3c48bb8cb9ad4320bfd169ebe8aba
+ms.openlocfilehash: 83f5d4bdc3d5872109649818b61a6dbb656fd8be
+ms.sourcegitcommit: 57792e5f594db1574742588017c708350958bdf0
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56102985"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58264833"
 ---
 # <a name="tutorial-implement-crud-functionality---aspnet-mvc-with-ef-core"></a>Учебник. Использование ASP.NET MVC с EF Core. Реализация функциональности CRUD
 
@@ -123,6 +123,7 @@ http://localhost:1230/Instructor/Index?id=1&CourseID=2021
 Атрибут `ValidateAntiForgeryToken` позволяет предотвратить атаки с подделкой межсайтовых запросов. Токен автоматически вставляется в представление с помощью [FormTagHelper](xref:mvc/views/working-with-forms#the-form-tag-helper) и включается при отправке формы пользователем. Токен проверяется по атрибуту `ValidateAntiForgeryToken`. Дополнительные сведения об атаках с подделкой межсайтовых запросов см. в разделе [Защита от подделки запросов](../../security/anti-request-forgery.md).
 
 <a id="overpost"></a>
+
 ### <a name="security-note-about-overposting"></a>Примечание о безопасности в связи с атаками чрезмерной передачи данных
 
 Атрибут `Bind`, который включается шаблонным кодом в метод `Create`, является одним из способов защиты от чрезмерной передачи данных в сценариях создания. Допустим, сущность Student включает свойство `Secret`, которое не требуется устанавливать на этой веб-странице.

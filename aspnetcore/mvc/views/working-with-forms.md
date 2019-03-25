@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 02/27/2019
 uid: mvc/views/working-with-forms
-ms.openlocfilehash: a0fbeac51bd1bfbc50c4d369a479ce5f3091358b
-ms.sourcegitcommit: 036d4b03fd86ca5bb378198e29ecf2704257f7b2
+ms.openlocfilehash: 2d5168ed4b1e14e507262361de9fa959924b82f6
+ms.sourcegitcommit: 5f299daa7c8102d56a63b214b9a34cc4bc87bc42
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57346259"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58209561"
 ---
 # <a name="tag-helpers-in-forms-in-aspnet-core"></a>Вспомогательные функции тегов в формах в ASP.NET Core
 
@@ -205,9 +205,7 @@ Type expected
 |Int|type="number"|
 |Single, Double|type="number"|
 
-
 В следующей таблице приведены некоторые наиболее распространенные атрибуты [заметок к данным](/dotnet/api/microsoft.aspnetcore.mvc.dataannotations.iattributeadapter), которые вспомогательная функция тега входных данных будет сопоставлять с определенными типами входных данных (указаны не все атрибуты проверки):
-
 
 |Атрибут|Тип входных данных|
 |---|---|
@@ -215,10 +213,9 @@ Type expected
 |[Url]|type="url"|
 |[HiddenInput]|type="hidden"|
 |[Phone]|type="tel"|
-|[DataType(DataType.Password)]| type="password"|
-|[DataType(DataType.Date)]| type="date"|
-|[DataType(DataType.Time)]| type="time"|
-
+|[DataType(DataType.Password)]|type="password"|
+|[DataType(DataType.Date)]|type="date"|
+|[DataType(DataType.Time)]|type="time"|
 
 Пример:
 
@@ -378,7 +375,7 @@ public IActionResult Edit(int id, int colorIndex)
 
 ## <a name="the-label-tag-helper"></a>Вспомогательная функция тега метки
 
-* Создает заголовок метки и атрибут `for` в элементе [<label>](https://www.w3.org/wiki/HTML/Elements/label) для имени выражения.
+* Позволяет создать заголовок метки и атрибут `for` в элементе [\<label>](https://www.w3.org/wiki/HTML/Elements/label) для имени выражения.
 
 * Располагает альтернативой вспомогательному методу HTML — `Html.LabelFor`.
 
