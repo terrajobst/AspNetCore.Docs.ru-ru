@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 10/24/2018
 uid: data/ef-rp/read-related-data
-ms.openlocfilehash: a264cdaf0f577be6ea2043935b485f4fd16e0229
-ms.sourcegitcommit: 57792e5f594db1574742588017c708350958bdf0
+ms.openlocfilehash: 4b564e9e407dcb6b7fd71d0a6c41596269ed5e09
+ms.sourcegitcommit: 088e6744cd67a62f214f25146313a53949b17d35
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58264947"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58320125"
 ---
 # <a name="razor-pages-with-ef-core-in-aspnet-core---read-related-data---6-of-8"></a>Razor Pages с EF Core в ASP.NET Core — чтение связанных данных — 6 из 8
 
@@ -83,7 +83,7 @@ ms.locfileid: "58264947"
   dotnet aspnet-codegenerator razorpage -m Course -dc SchoolContext -udl -outDir Pages\Courses --referenceScriptLibraries
   ```
 
-------
+---
 
 Предыдущая команда формирует шаблон для модели `Course`. Откройте проект в Visual Studio.
 
@@ -170,7 +170,7 @@ ms.locfileid: "58264947"
   dotnet aspnet-codegenerator razorpage -m Instructor -dc SchoolContext -udl -outDir Pages\Instructors --referenceScriptLibraries
   ```
 
-------
+---
 
 Предыдущая команда формирует шаблон для модели `Instructor`. Запустите приложение и перейдите на страницу преподавателей.
 
