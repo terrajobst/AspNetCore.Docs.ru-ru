@@ -18,7 +18,7 @@ ASP.NET Core является кроссплатформенной, высоко
 * Выполнять развертывания в облаке или локальной среде.
 * Работать в [.NET Core или .NET Framework](/dotnet/articles/standard/choosing-core-framework-server).
 
-## <a name="why-use-aspnet-core"></a>Зачем использовать ASP.NET Core?
+## <a name="why-to-use-aspnet-core"></a>Зачем использовать ASP.NET Core?
 
 Миллионы разработчиков использовали и продолжают использовать [ASP.NET 4.x](/aspnet/overview) для создания веб-приложений. ASP.NET Core — это модификация ASP.NET 4.x с архитектурными изменениями, формирующими более рациональную и более модульную платформу.
 
@@ -136,7 +136,7 @@ WebHost.CreateDefaultBuilder(args)
 
 На предыдущий фрагмент кода C# указывает ссылка в следующей строке в файле Markdown раздела:
 
-```
+```md
 [!code-csharp[](sample/SampleApp/Program.cs?name=snippet_FilterInCode)]
 ```
 
