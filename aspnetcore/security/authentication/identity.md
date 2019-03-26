@@ -3,14 +3,14 @@ title: Общие сведения об Identity в ASP.NET Core
 author: rick-anderson
 description: Использование удостоверения с приложения ASP.NET Core. Узнайте, как задать требования к паролю (RequireDigit, RequiredLength, RequiredUniqueChars и многое другое).
 ms.author: riande
-ms.date: 08/08/2018
+ms.date: 03/26/2019
 uid: security/authentication/identity
-ms.openlocfilehash: 355c53e0c957944cb35c37c6b01e724af5f93f44
-ms.sourcegitcommit: 57792e5f594db1574742588017c708350958bdf0
+ms.openlocfilehash: efe8119c2d18db50dce3df57fa0e300d0d0df2cd
+ms.sourcegitcommit: 687ffb15ebe65379f75c84739ea851d5a0d788b7
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58265470"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58488677"
 ---
 # <a name="introduction-to-identity-on-aspnet-core"></a>Общие сведения об Identity в ASP.NET Core
 
@@ -64,6 +64,24 @@ dotnet new webapp --auth Individual -o WebApp1
 * / Identity / / входа по учетной записи
 * / Identity/учетной записи и выхода
 * / Identity/учетной записи и управление
+
+### <a name="apply-migrations"></a>Применение миграции
+
+Примените миграции, чтобы инициализировать базу данных.
+
+# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
+
+Выполните следующую команду в консоли диспетчера пакетов (PMC):
+
+```PM> Update-Database```
+
+# <a name="net-core-clitabnetcore-cli"></a>[Интерфейс командной строки .NET Core](#tab/netcore-cli)
+
+```cli
+dotnet ef database update
+```
+
+---
 
 ### <a name="test-register-and-login"></a>Тест регистра и имени входа
 
