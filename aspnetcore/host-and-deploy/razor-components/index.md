@@ -5,7 +5,7 @@ description: 'Узнайте, как производится размещени
 monikerRange: '>= aspnetcore-3.0'
 ms.author: riande
 ms.custom: mvc
-ms.date: 01/29/2019
+ms.date: 03/22/2019
 uid: host-and-deploy/razor-components/index
 ---
 # <a name="host-and-deploy-razor-components"></a>Размещение и развертывание компонентов Razor
@@ -284,7 +284,7 @@ COPY nginx.conf /etc/nginx/nginx.conf
 
 При использовании [модели размещения на сервере](xref:razor-components/hosting-models#server-side-hosting-model), компоненты Razor работают на сервере в приложении ASP.NET Core. Обновление элементов пользовательского интерфейса, обработка событий и вызовы JavaScript обрабатываются через подключение SignalR.
 
-Приложение входит в состав приложения ASP.NET Core в публикуемых выходных данных; таким образом, два приложения развертываются вместе. Веб-сервер, позволяющий размещать приложения ASP.NET Core, является обязательным. Для развертывания на стороне сервера Visual Studio включает шаблон проекта **Blazor (с размещением на стороне сервера в ASP.NET Core)** (шаблон `blazorserver` при использовании команды [dotnet new](/dotnet/core/tools/dotnet-new)).
+Приложение входит в состав приложения ASP.NET Core в публикуемых выходных данных; таким образом, два приложения развертываются вместе. Веб-сервер, позволяющий размещать приложения ASP.NET Core, является обязательным. Для развертывания на стороне сервера Visual Studio включает шаблон проекта **Razor Components** (шаблон `razorcomponents` при использовании команды [dotnet new](/dotnet/core/tools/dotnet-new)).
 
 <!--
 
