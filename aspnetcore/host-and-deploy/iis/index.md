@@ -4,7 +4,7 @@ author: guardrex
 description: Сведения о размещении приложений ASP.NET Core в службах Windows Server Internet Information Services (IIS).
 ms.author: riande
 ms.custom: mvc
-ms.date: 03/21/2019
+ms.date: 03/23/2019
 uid: host-and-deploy/iis/index
 ---
 # <a name="host-aspnet-core-on-windows-with-iis"></a>Размещение ASP.NET Core в Windows со службами IIS
@@ -269,6 +269,8 @@ services.Configure<IISOptions>(options =>
 
 > [!IMPORTANT]
 > Если пакет размещения устанавливается до установки служб IIS, его нужно восстановить. После установки служб IIS запустите установщик пакета размещения еще раз.
+>
+> Если пакет размещения устанавливается после установки 64-разрядной (x 64) версии .NET Core, пакеты SDK могут не отображаться (см. раздел [Пакеты SDK .NET Core не обнаружены](xref:test/troubleshoot#no-net-core-sdks-were-detected)). Сведения об устранении проблемы см. в статье <xref:test/troubleshoot#missing-sdk-after-installing-the-net-core-hosting-bundle>.
 
 ### <a name="direct-download-current-version"></a>Прямая загрузка (текущая версия)
 
