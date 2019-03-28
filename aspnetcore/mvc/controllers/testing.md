@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 08/23/2018
 uid: mvc/controllers/testing
-ms.openlocfilehash: c8a374f3e3ecfdef1a02e685aecc4e2fcbfcbf48
-ms.sourcegitcommit: d75d8eb26c2cce19876c8d5b65ac8a4b21f625ef
+ms.openlocfilehash: 429af1fb6d0388a5c57894851832969e1ef629e2
+ms.sourcegitcommit: a1c43150ed46aa01572399e8aede50d4668745ca
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 02/19/2019
-ms.locfileid: "56410366"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58327437"
 ---
 # <a name="test-controller-logic-in-aspnet-core"></a>Тестирование логики контроллера в ASP.NET Core
 
@@ -126,7 +126,7 @@ ms.locfileid: "56410366"
 
 ## <a name="test-actionresultlttgt"></a>Тестирование ActionResult&lt;T&gt;
 
-В ASP.NET Core 2.1 и более поздних версий [ActionResult&lt;T&gt;](xref:web-api/action-return-types#actionresultt-type) (<xref:Microsoft.AspNetCore.Mvc.ActionResult`1>) позволяет возвращать тип, производный от `ActionResult`, или произвольный тип.
+В ASP.NET Core 2.1 и более поздних версий [ActionResult&lt;T&gt;](xref:web-api/action-return-types#actionresultt-type) (<xref:Microsoft.AspNetCore.Mvc.ActionResult%601>) позволяет возвращать тип, производный от `ActionResult`, или произвольный тип.
 
 Пример приложения содержит метод, который возвращает `List<IdeaDTO>` для указанного сеанса `id`. Если сеанс `id` не существует, контроллер возвращает <xref:Microsoft.AspNetCore.Mvc.ControllerBase.NotFound*>:
 
@@ -144,7 +144,7 @@ ms.locfileid: "56410366"
 Второй тест проверяет, что для допустимого сеанса `id` этот метод возвращает следующее:
 
 * `ActionResult` с типом `List<IdeaDTO>`;
-* значение [ActionResult&lt;T&gt;.Value](xref:Microsoft.AspNetCore.Mvc.ActionResult`1.Value*) имеет тип `List<IdeaDTO>`;
+* значение [ActionResult&lt;T&gt;.Value](xref:Microsoft.AspNetCore.Mvc.ActionResult%601.Value*) имеет тип `List<IdeaDTO>`;
 * первый элемент в списке является допустимой идеей, которая совпадает с первой идеей в макете сеанса (полученной с помощью вызова `GetTestSession`).
 
 [!code-csharp[](testing/sample/TestingControllersSample/tests/TestingControllersSample.Tests/UnitTests/ApiIdeasControllerTests.cs?name=snippet_ForSessionActionResult_ReturnsIdeasForSession&highlight=7-8,15-18)]
@@ -170,8 +170,8 @@ ms.locfileid: "56410366"
 Последний тест позволяет проверить, выполняются ли для действительного сеанса `id` следующие условия:
 
 * Метод возвращает `ActionResult` с типом `BrainstormSession`.
-* Значение [ActionResult&lt;T&gt;.Result](xref:Microsoft.AspNetCore.Mvc.ActionResult`1.Result*) имеет тип <xref:Microsoft.AspNetCore.Mvc.CreatedAtActionResult>. `CreatedAtActionResult` аналогично ответу *201 — создан ресурс* с заголовком `Location`.
-* Значение [ActionResult&lt;T&gt;.Value](xref:Microsoft.AspNetCore.Mvc.ActionResult`1.Value*) имеет тип `BrainstormSession`.
+* Значение [ActionResult&lt;T&gt;.Result](xref:Microsoft.AspNetCore.Mvc.ActionResult%601.Result*) имеет тип <xref:Microsoft.AspNetCore.Mvc.CreatedAtActionResult>. `CreatedAtActionResult` аналогично ответу *201 — создан ресурс* с заголовком `Location`.
+* Значение [ActionResult&lt;T&gt;.Value](xref:Microsoft.AspNetCore.Mvc.ActionResult%601.Value*) имеет тип `BrainstormSession`.
 * Выполняется вызов макета `UpdateAsync(testSession)` для обновления сеанса. Вызов метода `Verifiable` проверяется выполнением `mockRepo.Verify()` в утверждениях.
 * Возвращаются два объекта `Idea` для сеанса.
 * Последний элемент (идея `Idea`, добавленная в макет с помощью вызова `UpdateAsync`) совпадает со значением `newIdea`, добавленным в сеанс в этом тесте.
