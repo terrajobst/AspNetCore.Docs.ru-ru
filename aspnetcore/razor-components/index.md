@@ -5,7 +5,7 @@ description: 'Узнайте больше о компонентах Razor в ASP
 monikerRange: '>= aspnetcore-3.0'
 ms.author: riande
 ms.custom: mvc
-ms.date: 03/13/2019
+ms.date: 03/27/2019
 uid: razor-components/index
 ---
 # <a name="introduction-to-razor-components"></a>Введение в компоненты Razor
@@ -42,7 +42,7 @@ uid: razor-components/index
 
 Для получения дополнительной информации см. <xref:razor-components/hosting-models#server-side-hosting-model>.
 
-*Blazor* — это экспериментальная модель размещения на стороне клиента для компонентов Razor. Blazor работает в среде .NET в браузере, используя открытые веб-стандарты без подключаемых модулей или транспиляции кода. Для получения дополнительной информации см. <xref:razor-components/hosting-models#client-side-hosting-model>.
+*Blazor* — это экспериментальная модель размещения на стороне клиента для компонентов Razor. Blazor работает в среде .NET в браузере, используя открытые веб-стандарты без подключаемых модулей или транспиляции кода. Дополнительные сведения см. в разделах <xref:spa/blazor/index> и <xref:razor-components/hosting-models#client-side-hosting-model>.
 
 ## <a name="components"></a>Компоненты
 

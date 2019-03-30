@@ -6,12 +6,12 @@ ms.author: scaddie
 ms.custom: mvc
 ms.date: 03/13/2019
 uid: security/app-secrets
-ms.openlocfilehash: 1a10c4d035510c689e3eccadc5986df0cc06b71e
-ms.sourcegitcommit: 34bf9fc6ea814c039401fca174642f0acb14be3c
+ms.openlocfilehash: 18313f8284e81d196cbe786f494a607ee97a299f
+ms.sourcegitcommit: 3e9e1f6d572947e15347e818f769e27dea56b648
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 03/14/2019
-ms.locfileid: "57841518"
+ms.lasthandoff: 03/30/2019
+ms.locfileid: "58750974"
 ---
 # <a name="safe-storage-of-app-secrets-in-development-in-aspnet-core"></a>Безопасное хранение секретов приложения во время разработки в ASP.NET Core
 
@@ -37,6 +37,8 @@ ms.locfileid: "57841518"
 
 > [!WARNING]
 > Переменные среды обычно хранятся в обычный и незашифрованное текста. Если компьютер или процесс нарушена, переменные среды может осуществляться с недоверенным сторонам. Могут потребоваться дополнительные меры, чтобы предотвратить раскрытие секретных данных пользователя.
+
+[!INCLUDE[](~/includes/environmentVarableColon.md)]
 
 ## <a name="secret-manager"></a>Менеджер секретов
 

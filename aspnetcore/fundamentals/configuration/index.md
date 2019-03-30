@@ -319,7 +319,7 @@ dotnet run -CLKey1=value1 -CLKey2=value2
 
 Чтобы активировать конфигурацию переменных среды, вызовите метод расширения <xref:Microsoft.Extensions.Configuration.EnvironmentVariablesExtensions.AddEnvironmentVariables*> в экземпляре <xref:Microsoft.Extensions.Configuration.ConfigurationBuilder>.
 
-В переменных средах разделитель-двоеточие (`:`) может не работать на всех платформах. Двойной знак подчеркивания (`__`) поддерживается на всех платформах и его можно заменить двоеточием.
+[!INCLUDE[](~/includes/environmentVarableColon.md)]
 
 [Служба приложений Azure](https://azure.microsoft.com/services/app-service/) позволяет задать переменные среды на портале Azure, который может переопределить конфигурацию приложения, используя поставщик конфигурации переменных среды. Дополнительные сведения см. в руководстве по [переопределению конфигурации приложения Azure с помощью портала Azure](xref:host-and-deploy/azure-apps/index#override-app-configuration-using-the-azure-portal).
 
