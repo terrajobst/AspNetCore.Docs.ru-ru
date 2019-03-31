@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 11/11/2018
 uid: security/authentication/microsoft-logins
-ms.openlocfilehash: 4909a0084994654777ad7a6ebda866ac727f0528
-ms.sourcegitcommit: 3e94d192b2ed9409fe72e3735e158b333354964c
+ms.openlocfilehash: 1733d049d6752c24d7749b5b5ae2a4b866492358
+ms.sourcegitcommit: 3e9e1f6d572947e15347e818f769e27dea56b648
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53735756"
+ms.lasthandoff: 03/30/2019
+ms.locfileid: "58750996"
 ---
 # <a name="microsoft-account-external-login-setup-with-aspnet-core"></a>Настройка внешней учетной записи учетной записи Майкрософт с помощью ASP.NET Core
 
@@ -65,6 +65,8 @@ ms.locfileid: "53735756"
 ![Диалоговое окно создания пароля, созданных](index/_static/MicrosoftDevPassword.png)
 
 Связать конфиденциальные параметры, такие как Microsoft `Application ID` и `Password` для конфигурации приложения с помощью [Secret Manager](xref:security/app-secrets). В целях этого учебника назовите токены `Authentication:Microsoft:ApplicationId` и `Authentication:Microsoft:Password`.
+
+[!INCLUDE[](~/includes/environmentVarableColon.md)]
 
 ## <a name="configure-microsoft-account-authentication"></a>Настройка проверки подлинности учетной записи Майкрософт
 
