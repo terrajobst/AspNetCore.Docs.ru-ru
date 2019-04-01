@@ -5,14 +5,14 @@ description: Узнайте, как улучшить приложение ASP.NE
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc, seodec18
-ms.date: 03/10/2019
+ms.date: 03/23/2019
 uid: fundamentals/configuration/platform-specific-configuration
-ms.openlocfilehash: 25564ecebf48f65a209ac48e77856ef36d897959
-ms.sourcegitcommit: 57792e5f594db1574742588017c708350958bdf0
+ms.openlocfilehash: c174d658c84ada88eef17528c663735a91347ba7
+ms.sourcegitcommit: 7d6019f762fc5b8cbedcd69801e8310f51a17c18
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58264984"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58419450"
 ---
 # <a name="use-hosting-startup-assemblies-in-aspnet-core"></a>Использование начальных сборок размещения в ASP.NET Core
 
@@ -381,18 +381,7 @@ dotnet nuget locals all --clear
 **Активация из сборки среды выполнения, развернутой в хранилище**
 
 1. В проекте *StartupDiagnostics* используется [PowerShell](/powershell/scripting/powershell-scripting) для изменения файла *StartupDiagnostics.deps.json*. PowerShell устанавливается по умолчанию в Windows начиная с Windows 7 с пакетом обновления 1 (SP1) и Windows Server 2008 R2 с пакетом обновления 1 (SP1). Для установки PowerShell на других платформах см. раздел [Установка Windows PowerShell](/powershell/scripting/setup/installing-powershell#powershell-core).
-1. Соберите проект *StartupDiagnostics*. После сборки проекта цель сборки в файле проекта автоматически выполняет следующие действия:
-   * Запускает скрипт PowerShell, чтобы изменить файл *StartupDiagnostics.deps.json*.
-   * Перемещает файл *StartupDiagnostics.deps.json* в папку *additionalDeps* в профиле пользователя.
-1. Выполните команду `dotnet store` в командной строке каталога начального размещения, чтобы сохранить сборку и ее зависимости в хранилище среды выполнения профиля пользователя:
-
-   ```console
-   dotnet store --manifest StartupDiagnostics.csproj --runtime <RID>
-   ```
-
-   В Windows команда использует [идентификатор среды выполнения (RID)](/dotnet/core/rid-catalog) `win7-x64`. При выполнении размещения при запуске для другой среды выполнения укажите соответствующий RID.
-1. Задайте переменные среды:
-   * Добавьте имя сборки *StartupDiagnostics* в переменную среды `ASPNETCORE_HOSTINGSTARTUPASSEMBLIES`.
-   * В Windows установите значение `%UserProfile%\.dotnet\x64\additionalDeps\StartupDiagnostics\` для переменной среды `DOTNET_ADDITIONAL_DEPS`. В macOS и Linux, установите значение `/Users/<USER>/.dotnet/x64/additionalDeps/StartupDiagnostics/` для переменной среды `DOTNET_ADDITIONAL_DEPS`, где `<USER>` — профиль пользователя, который содержит размещение при запуске.
+1. Выполните сценарий *build.ps1*, находящийся в папке *RuntimeStore*. Для размещения при запуске, развернутом в Windows, команда `dotnet store` в сценарии использует [идентификатор среды выполнения (RID)](/dotnet/core/rid-catalog) `win7-x64`. При выполнении размещения при запуске для другой среды выполнения укажите соответствующий RID.
+1. Выполните сценарий *deploy.ps1*, находящийся в папке *deployment*.
 1. Выполните пример приложения.
 1. Запросите конечную точку `/services` для просмотра зарегистрированных служб приложения. Запросите конечную точку `/diag` для просмотра диагностических сведений.

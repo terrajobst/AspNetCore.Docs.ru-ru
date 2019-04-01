@@ -6,12 +6,12 @@ ms.author: scaddie
 ms.custom: mvc
 ms.date: 12/30/2018
 uid: tutorials/get-started-with-nswag
-ms.openlocfilehash: 43f0f04ae63f4e74d8de6001a4a7518e4eb23d77
-ms.sourcegitcommit: 5f299daa7c8102d56a63b214b9a34cc4bc87bc42
+ms.openlocfilehash: af07ad771c582cfad80f297748c3c1049ff4a7d6
+ms.sourcegitcommit: 7d6019f762fc5b8cbedcd69801e8310f51a17c18
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58209152"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58419411"
 ---
 # <a name="get-started-with-nswag-and-aspnet-core"></a>Начало работы с NSwag и ASP.NET Core
 
@@ -47,7 +47,7 @@ NSwag обеспечивает следующие возможности:
 
 Чтобы установить пакет NuGet NSwag, воспользуйтесь одним из следующих способов.
 
-### <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
+# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 * В окне **Консоль диспетчера пакетов**
   * Перейдите в раздел **Представление** > **Другие окна** > **Консоль диспетчера пакетов**
@@ -64,14 +64,14 @@ NSwag обеспечивает следующие возможности:
   * В поле поиска введите "NSwag.AspNetCore"
   * Выберите пакет "NSwag.AspNetCore" на вкладке **Обзор** и нажмите **Установить**
 
-### <a name="visual-studio-for-mactabvisual-studio-mac"></a>[Visual Studio для Mac](#tab/visual-studio-mac)
+# <a name="visual-studio-for-mactabvisual-studio-mac"></a>[Visual Studio для Mac](#tab/visual-studio-mac)
 
 * Щелкните правой кнопкой мыши папку *Пакеты* на **панели решения** > **Добавление пакетов...**.
 * В раскрывающемся списке **Источник** в окне **Добавление пакетов** выберите вариант "nuget.org".
 * В поле поиска введите "NSwag.AspNetCore"
 * В области результатов выберите пакет "NSwag.AspNetCore" и нажмите **Добавить пакет**
 
-### <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code.](#tab/visual-studio-code)
+# <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code.](#tab/visual-studio-code)
 
 Во **встроенном терминале** выполните следующую команду.
 
@@ -79,7 +79,7 @@ NSwag обеспечивает следующие возможности:
 dotnet add TodoApi.csproj package NSwag.AspNetCore
 ```
 
-### <a name="net-core-clitabnetcore-cli"></a>[Интерфейс командной строки .NET Core](#tab/netcore-cli)
+# <a name="net-core-clitabnetcore-cli"></a>[Интерфейс командной строки .NET Core](#tab/netcore-cli)
 
 Выполните следующую команду:
 
@@ -202,9 +202,9 @@ Swagger предоставляет параметры для документи�
 
 ### <a name="xml-comments"></a>XML-комментарии
 
- Чтобы включить комментарии XML, выполните следующие действия:
+Чтобы включить комментарии XML, выполните следующие действия:
 
-# <a name="visual-studiotabvisual-studio-xml"></a>[Visual Studio](#tab/visual-studio-xml/)
+# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 ::: moniker range=">= aspnetcore-2.0"
 
@@ -222,7 +222,7 @@ Swagger предоставляет параметры для документи�
 
 ::: moniker-end
 
-# <a name="visual-studio-for-mactabvisual-studio-mac-xml"></a>[Visual Studio для Mac](#tab/visual-studio-mac-xml/)
+# <a name="visual-studio-for-mactabvisual-studio-mac"></a>[Visual Studio для Mac](#tab/visual-studio-mac)
 
 ::: moniker range=">= aspnetcore-2.0"
 
@@ -240,7 +240,7 @@ Swagger предоставляет параметры для документи�
 
 ::: moniker-end
 
-# <a name="visual-studio-codetabvisual-studio-code-xml"></a>[Visual Studio Code.](#tab/visual-studio-code-xml/)
+# <a name="visual-studio-code--net-core-clitabvisual-studio-codenetcore-cli"></a>[Visual Studio Code или .NET Core CLI](#tab/visual-studio-code+netcore-cli)
 
 Вручную добавьте выделенные строки в файл *.csproj*:
 
@@ -276,7 +276,7 @@ Swagger предоставляет параметры для документи�
 
 ::: moniker range=">= aspnetcore-2.1"
 
-Так как NSwag использует [отражение](/dotnet/csharp/programming-guide/concepts/reflection), а рекомендуемый тип возвращаемого значения для действий веб-API — это [IActionResult\<T >](xref:Microsoft.AspNetCore.Mvc.ActionResult`1), NSwag может определить только тип возвращаемого значения, задаваемый `T`. Невозможно автоматически определить другие возможные типы возвращаемого значения.
+ Так как NSwag использует [отражение](/dotnet/csharp/programming-guide/concepts/reflection), а рекомендуемый тип возвращаемого значения для действий веб-API — это [IActionResult\<T >](xref:Microsoft.AspNetCore.Mvc.ActionResult%601), NSwag может определить только тип возвращаемого значения, задаваемый `T`. Невозможно автоматически определить другие возможные типы возвращаемого значения. 
 
 Рассмотрим следующий пример.
 

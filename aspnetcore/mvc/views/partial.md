@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 09/11/2018
 uid: mvc/views/partial
-ms.openlocfilehash: ff4b99580990edbd768128d77214e664a1e29e56
-ms.sourcegitcommit: 375e9a67f5e1f7b0faaa056b4b46294cc70f55b7
+ms.openlocfilehash: b7c1545007086053e879bce6781802959da77901
+ms.sourcegitcommit: a1c43150ed46aa01572399e8aede50d4668745ca
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50207229"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58327382"
 ---
 # <a name="partial-views-in-aspnet-core"></a>Частичные представления в ASP.NET Core
 
@@ -130,13 +130,13 @@ ms.locfileid: "50207229"
 <partial name="../Account/_PartialName.cshtml" />
 ```
 
-Дополнительные сведения см. в разделе <xref:mvc/views/tag-helpers/builtin-th/partial-tag-helper>.
+Для получения дополнительной информации см. <xref:mvc/views/tag-helpers/builtin-th/partial-tag-helper>.
 
 ::: moniker-end
 
 ### <a name="asynchronous-html-helper"></a>Асинхронный вспомогательный метод HTML
 
-Если вы используете вспомогательное приложение HTML, мы рекомендуем использовать <xref:Microsoft.AspNetCore.Mvc.Rendering.HtmlHelperPartialExtensions.PartialAsync*>. `PartialAsync` возвращает тип <xref:Microsoft.AspNetCore.Html.IHtmlContent> в оболочке <xref:System.Threading.Tasks.Task`1>. Для указания метода имя ожидающего вызова дополняется префиксом `@`.
+Если вы используете вспомогательное приложение HTML, мы рекомендуем использовать <xref:Microsoft.AspNetCore.Mvc.Rendering.HtmlHelperPartialExtensions.PartialAsync*>. `PartialAsync` возвращает тип <xref:Microsoft.AspNetCore.Html.IHtmlContent> в оболочке <xref:System.Threading.Tasks.Task%601>. Для указания метода имя ожидающего вызова дополняется префиксом `@`.
 
 ```cshtml
 @await Html.PartialAsync("_PartialName")
@@ -298,15 +298,15 @@ ms.locfileid: "50207229"
 
 Второе частичное представление отображает разделы статьи:
 
-> Section One Index: 0
+> Указатель 1-го раздела: 0
 >
 > Four score and seven years ago...
 >
-> Section Two Index: 1
+> Указатель 2-го раздела: 1
 >
 > Now we are engaged in a great civil war, testing...
 >
-> Section Three Index: 2
+> Указатель 3-го раздела: 2
 >
 > But, in a larger sense, we can not dedicate...
 
