@@ -5,7 +5,7 @@ description: Эта статья содержит ссылки на ресурс
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 03/23/2019
+ms.date: 03/30/2019
 uid: host-and-deploy/azure-apps/index
 ---
 # <a name="deploy-aspnet-core-apps-to-azure-app-service"></a>Развертывание приложений ASP.NET Core в Службе приложений Azure
@@ -14,7 +14,7 @@ uid: host-and-deploy/azure-apps/index
 
 ## <a name="useful-resources"></a>Полезные ресурсы
 
-[Документация по веб-приложениям](/azure/app-service/) Azure — это место, где хранятся документация, учебники, примеры, руководства и другие ресурсы, связанные с приложениями Azure. Размещению приложений ASP.NET Core посвящены следующие два руководства.
+[Документация по службе приложений](/azure/app-service/) — это место, где хранятся документация, учебники, примеры, руководства и другие ресурсы, связанные с приложениями Azure. Размещению приложений ASP.NET Core посвящены следующие два руководства.
 
 [Создание веб-приложения ASP.NET Core в Azure](/azure/app-service/app-service-web-get-started-dotnet)  
 Создайте веб-приложение ASP.NET Core и разверните его в службе приложений Azure на базе Windows с помощью Visual Studio.
@@ -30,7 +30,7 @@ uid: host-and-deploy/azure-apps/index
 <xref:host-and-deploy/azure-apps/azure-continuous-deployment>  
 Сведения о создании веб-приложения ASP.NET Core с помощью Visual Studio и его развертывании в службе приложений Azure с использованием Git для непрерывного развертывания.
 
-[Создание первого конвейера с помощью Azure Pipelines](/azure/devops/pipelines/get-started-yaml)  
+[Создание первого конвейера](/azure/devops/pipelines/get-started-yaml)  
 Сведения о настройке сборки CI для приложения ASP.NET Core и последующем создании выпуска непрерывного развертывания в службе приложений Azure.
 
 [Песочница веб-приложений Azure](https://github.com/projectkudu/kudu/wiki/Azure-Web-App-sandbox)  
@@ -92,10 +92,10 @@ uid: host-and-deploy/azure-apps/index
 
 Сведения о мониторинге, ведении журналов, а также поиске и устранении неполадок см. в следующих статьях.
 
-[Практическое руководство. Мониторинг приложений в Службе приложений Azure](/azure/app-service/web-sites-monitor)  
+[Мониторинг приложений в Службе приложений Azure](/azure/app-service/web-sites-monitor)  
 Сведения о том, как толковать квоты и параметры для приложений и планы службы приложений.
 
-[Включение функции ведения журналов диагностики для веб-приложений в службе приложений Azure](/azure/app-service/web-sites-enable-diagnostic-log)  
+[Включение функции ведения журналов диагностики для приложений в Службе приложений Azure](/azure/app-service/web-sites-enable-diagnostic-log)  
 Сведения о том, как включать и где искать функцию ведения журнала диагностики для кодов статуса HTTP, невыполненных запросов и активности веб-сервера.
 
 <xref:fundamentals/error-handling>  
@@ -220,7 +220,7 @@ uid: host-and-deploy/azure-apps/index
 
 ## <a name="protocol-settings-https"></a>Параметры протокола (HTTPS)
 
-Привязки безопасных протоколов позволяют указать сертификат, который следует использовать при ответе на запросы по HTTPS. Для привязки требуется допустимый закрытый сертификат (*PFX*), выданный для определенного имени узла. Дополнительные сведения см. в статье [Руководство. Привязывание существующего настраиваемого SSL-сертификата к веб-приложениям Azure](/azure/app-service/app-service-web-tutorial-custom-ssl).
+Привязки безопасных протоколов позволяют указать сертификат, который следует использовать при ответе на запросы по HTTPS. Для привязки требуется допустимый закрытый сертификат (*PFX*), выданный для определенного имени узла. Дополнительные сведения см. в статье [Руководство. Привязывание существующего настраиваемого SSL-сертификата к Службе приложений Azure](/azure/app-service/app-service-web-tutorial-custom-ssl).
 
 ## <a name="transform-webconfig"></a>Преобразование web.config
 
@@ -228,7 +228,7 @@ uid: host-and-deploy/azure-apps/index
 
 ## <a name="additional-resources"></a>Дополнительные ресурсы
 
-* [Общие сведения о веб-приложениях (5-минутное видео)](/azure/app-service/app-service-web-overview)
+* [Обзор Службы приложений](/azure/app-service/app-service-web-overview)
 * [Служба приложений Azure: оптимальное место для размещения приложений .NET (55-минутное видео)](https://channel9.msdn.com/events/dotnetConf/2017/T222)
 * [Пятница с Azure. Практика диагностики и устранения неполадок в Службе приложений Azure (12-минутное видео)](https://channel9.msdn.com/Shows/Azure-Friday/Azure-App-Service-Diagnostic-and-Troubleshooting-Experience)
 * [Общие сведения о диагностике в службе приложений Azure](/azure/app-service/app-service-diagnostics)
@@ -239,4 +239,4 @@ uid: host-and-deploy/azure-apps/index
 * <xref:host-and-deploy/iis/index>
 * <xref:host-and-deploy/aspnet-core-module>
 * <xref:host-and-deploy/iis/modules>
-* [Библиотека Microsoft TechNet: Windows Server](/windows-server/windows-server-versions)
+* [Windows Server — содержимое для ИТ-администраторов по текущим и предыдущим выпускам](/windows-server/windows-server-versions)
