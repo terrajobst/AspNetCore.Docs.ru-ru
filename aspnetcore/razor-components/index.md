@@ -1,12 +1,18 @@
 ---
 title: Введение в компоненты Razor
 author: guardrex
-description: 'Узнайте больше о компонентах Razor в ASP.NET Core, которые позволяют создать интерактивный клиентский веб-интерфейс с использованием .NET в приложении ASP.NET Core.'
+description: Узнайте больше о компонентах Razor в ASP.NET Core, которые позволяют создать интерактивный клиентский веб-интерфейс с использованием .NET в приложении ASP.NET Core.
 monikerRange: '>= aspnetcore-3.0'
 ms.author: riande
 ms.custom: mvc
 ms.date: 03/27/2019
 uid: razor-components/index
+ms.openlocfilehash: 8b2e87fe856598a5ac231e3bc1d413957829b448
+ms.sourcegitcommit: 3e9e1f6d572947e15347e818f769e27dea56b648
+ms.translationtype: HT
+ms.contentlocale: ru-RU
+ms.lasthandoff: 03/30/2019
+ms.locfileid: "58751017"
 ---
 # <a name="introduction-to-razor-components"></a><span data-ttu-id="146f3-103">Введение в компоненты Razor</span><span class="sxs-lookup"><span data-stu-id="146f3-103">Introduction to Razor Components</span></span>
 

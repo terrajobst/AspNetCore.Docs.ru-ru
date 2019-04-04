@@ -1,10 +1,16 @@
 ---
 title: Серия учебников по работе с ASP.NET Core MVC и EF Core
 author: rick-anderson
-description: null
+description: ''
 ms.author: tdykstra
 ms.date: 03/27/2017
 uid: data/ef-mvc/index
+ms.openlocfilehash: 4a7b79faccdc76f090192e80d0450ca01ed8b58a
+ms.sourcegitcommit: 3e9e1f6d572947e15347e818f769e27dea56b648
+ms.translationtype: HT
+ms.contentlocale: ru-RU
+ms.lasthandoff: 03/30/2019
+ms.locfileid: "58750679"
 ---
 # <a name="aspnet-core-mvc-with-ef-core---tutorial-series"></a><span data-ttu-id="f7308-102">Серия учебников по работе с ASP.NET Core MVC и EF Core</span><span class="sxs-lookup"><span data-stu-id="f7308-102">ASP.NET Core MVC with EF Core - tutorial series</span></span>
 

@@ -6,6 +6,12 @@ monikerRange: '>= aspnetcore-3.0'
 ms.author: johluo
 ms.date: 02/26/2019
 uid: grpc/index
+ms.openlocfilehash: dd1c42744bfda965df91ea1fcc0b71814317b969
+ms.sourcegitcommit: a467828b5e4eaae291d961ffe2279a571900de23
+ms.translationtype: HT
+ms.contentlocale: ru-RU
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58142423"
 ---
 # <a name="introduction-to-grpc-on-aspnet-core"></a><span data-ttu-id="879b2-103">Введение в gRPC на платформе ASP.NET Core</span><span class="sxs-lookup"><span data-stu-id="879b2-103">Introduction to gRPC on ASP.NET Core</span></span>
 

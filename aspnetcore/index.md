@@ -1,11 +1,17 @@
 ---
 title: Введение в ASP.NET Core
 author: rick-anderson
-description: "Введение в ASP.NET Core\_— кроссплатформенную высокопроизводительную платформу с открытым исходным кодом для создания современных облачных интернет-приложений."
+description: Введение в ASP.NET Core — кроссплатформенную высокопроизводительную платформу с открытым исходным кодом для создания современных облачных интернет-приложений.
 ms.author: riande
 ms.custom: mvc
 ms.date: 02/14/2019
 uid: index
+ms.openlocfilehash: baf8557b29c30f6dbeb6a4ff5d50c83d07160a51
+ms.sourcegitcommit: 088e6744cd67a62f214f25146313a53949b17d35
+ms.translationtype: HT
+ms.contentlocale: ru-RU
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58320240"
 ---
 # <a name="introduction-to-aspnet-core"></a><span data-ttu-id="937fd-103">Введение в ASP.NET Core</span><span class="sxs-lookup"><span data-stu-id="937fd-103">Introduction to ASP.NET Core</span></span>
 

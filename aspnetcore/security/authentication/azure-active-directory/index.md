@@ -1,11 +1,17 @@
 ---
 title: Azure Active Directory с ASP.NET Core
 author: rick-anderson
-description: 'Разделы, связанные с проверкой подлинности с помощью Azure Active Directory в ASP.NET Core.'
+description: Разделы, связанные с проверкой подлинности с помощью Azure Active Directory в ASP.NET Core.
 ms.author: riande
 ms.date: 10/4/2017
 ms.custom: seodec18
 uid: security/authentication/azure-active-directory/index
+ms.openlocfilehash: 9a5b77201f228567bea0850ae236eb6c977e915a
+ms.sourcegitcommit: 5f299daa7c8102d56a63b214b9a34cc4bc87bc42
+ms.translationtype: HT
+ms.contentlocale: ru-RU
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58208048"
 ---
 # <a name="azure-active-directory-with-aspnet-core"></a><span data-ttu-id="9cb73-103">Azure Active Directory с ASP.NET Core</span><span class="sxs-lookup"><span data-stu-id="9cb73-103">Azure Active Directory with ASP.NET Core</span></span>
 
