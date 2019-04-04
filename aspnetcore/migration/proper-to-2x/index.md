@@ -1,10 +1,16 @@
 ---
-title: "Миграция с ASP.NET на ASP.NET\_Core"
+title: Миграция с ASP.NET на ASP.NET Core
 author: isaac2004
-description: "Здесь вы найдете указания по миграции существующих приложений MVC\_ASP.NET или веб-API на ASP.NET\_Core.web"
+description: Здесь вы найдете указания по миграции существующих приложений MVC ASP.NET или веб-API на ASP.NET Core.web
 ms.author: scaddie
 ms.date: 12/11/2018
 uid: migration/proper-to-2x/index
+ms.openlocfilehash: 7b6aec621efa5e1400fcfd4396a2322733113ec1
+ms.sourcegitcommit: 5f299daa7c8102d56a63b214b9a34cc4bc87bc42
+ms.translationtype: HT
+ms.contentlocale: ru-RU
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58209149"
 ---
 # <a name="migrate-from-aspnet-to-aspnet-core"></a>Миграция с ASP.NET на ASP.NET Core
 

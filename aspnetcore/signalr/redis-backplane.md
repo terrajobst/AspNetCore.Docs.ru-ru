@@ -7,12 +7,12 @@ ms.author: bradyg
 ms.custom: mvc
 ms.date: 11/28/2018
 uid: signalr/redis-backplane
-ms.openlocfilehash: c02d8cd5fb3b6edbb21be4889da2e880099b731b
-ms.sourcegitcommit: ebf4e5a7ca301af8494edf64f85d4a8deb61d641
+ms.openlocfilehash: 9d2a942dba6abe669126efee7f2b3cdd6560658e
+ms.sourcegitcommit: 1a7000630e55da90da19b284e1b2f2f13a393d74
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54837446"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "59012647"
 ---
 # <a name="set-up-a-redis-backplane-for-aspnet-core-signalr-scale-out"></a>Настройка Redis объединительной платы для горизонтального масштабирования ASP.NET Core SignalR
 
@@ -31,7 +31,7 @@ ms.locfileid: "54837446"
 
   * <xref:signalr/scale>
   * [Документация по redis](https://redis.io/)
-  * [Документация по кэш Redis для Azure](https://docs.microsoft.com/en-us/azure/redis-cache/)
+  * [Документация по кэш Redis для Azure](https://docs.microsoft.com/azure/redis-cache/)
 
 ::: moniker range="= aspnetcore-2.1"
 
@@ -98,7 +98,7 @@ ms.locfileid: "54837446"
 
 * Настройка вашего сервера фермы балансировки нагрузки программного обеспечения для прикрепленных сеансов. Ниже приведены некоторые примеры документации о том, как это сделать.
 
-  * [Службы IIS](/iis/extensions/configuring-application-request-routing-arr/http-load-balancing-using-application-request-routing)
+  * [IIS](/iis/extensions/configuring-application-request-routing-arr/http-load-balancing-using-application-request-routing)
   * [HAProxy](https://www.haproxy.com/blog/load-balancing-affinity-persistence-sticky-sessions-what-you-need-to-know/)
   * [Nginx](https://docs.nginx.com/nginx/admin-guide/load-balancer/http-load-balancer/#sticky)
   * [pfSense](https://www.netgate.com/docs/pfsense/loadbalancing/inbound-load-balancing.html#sticky-connections)
@@ -195,4 +195,4 @@ services.AddSignalR()
 * <xref:signalr/scale>
 * [Документация по redis](https://redis.io/documentation)
 * [Документация по StackExchange Redis](https://stackexchange.github.io/StackExchange.Redis/)
-* [Документация по кэш Redis для Azure](https://docs.microsoft.com/en-us/azure/redis-cache/)
+* [Документация по кэш Redis для Azure](https://docs.microsoft.com/azure/redis-cache/)

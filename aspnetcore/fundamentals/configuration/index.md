@@ -1,12 +1,18 @@
 ---
 title: Конфигурация в .NET Core
 author: guardrex
-description: "Узнайте, как использовать API конфигурации для настройки приложения ASP.NET\_Core."
+description: Узнайте, как использовать API конфигурации для настройки приложения ASP.NET Core.
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
 ms.date: 03/11/2019
 uid: fundamentals/configuration/index
+ms.openlocfilehash: 52450460af59a8da4fc6b24e3aa83d55385e8c77
+ms.sourcegitcommit: 3e9e1f6d572947e15347e818f769e27dea56b648
+ms.translationtype: HT
+ms.contentlocale: ru-RU
+ms.lasthandoff: 03/30/2019
+ms.locfileid: "58750960"
 ---
 # <a name="configuration-in-aspnet-core"></a>Конфигурация в .NET Core
 

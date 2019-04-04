@@ -1,10 +1,16 @@
 ---
 title: Учебник. Создание веб-приложения Razor Pages с помощью ASP.NET Core
 author: rick-anderson
-description: "Создание веб-приложения Razor\_Pages в Windows с помощью Visual\_Studio, ASP.NET\_Core и EF\_Core."
+description: Создание веб-приложения Razor Pages в Windows с помощью Visual Studio, ASP.NET Core и EF Core.
 ms.author: riande
 ms.date: 09/08/2017
 uid: tutorials/razor-pages/index
+ms.openlocfilehash: c3dcc18844f2a12a2a116b11cb007cb833203dc3
+ms.sourcegitcommit: 036d4b03fd86ca5bb378198e29ecf2704257f7b2
+ms.translationtype: HT
+ms.contentlocale: ru-RU
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57345604"
 ---
 # <a name="tutorial-create-a-razor-pages-web-app-with-aspnet-core"></a>Учебник. Создание веб-приложения Razor Pages с помощью ASP.NET Core
 
