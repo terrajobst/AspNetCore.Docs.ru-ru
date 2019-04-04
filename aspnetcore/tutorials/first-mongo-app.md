@@ -6,12 +6,12 @@ ms.author: scaddie
 ms.custom: mvc, seodec18
 ms.date: 01/31/2019
 uid: tutorials/first-mongo-app
-ms.openlocfilehash: 91d8be6cd9160eefe56731d23d5dc7ba18eb6a8f
-ms.sourcegitcommit: 191d21c1e37b56f0df0187e795d9a56388bbf4c7
+ms.openlocfilehash: 5b8a0c963940d65545579b7120edac3571e4ad2a
+ms.sourcegitcommit: 3e9e1f6d572947e15347e818f769e27dea56b648
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 03/08/2019
-ms.locfileid: "57665461"
+ms.lasthandoff: 03/30/2019
+ms.locfileid: "58750694"
 ---
 # <a name="create-a-web-api-with-aspnet-core-and-mongodb"></a>Создание веб-API с помощью ASP.NET Core и MongoDB
 
@@ -242,6 +242,7 @@ ms.locfileid: "57665461"
 
     * использует класс `BookService` для выполнения операций CRUD;
     * содержит методы действий для поддержки запросов HTTP GET, POST, PUT и DELETE.
+    * Метод <xref:System.Web.Http.ApiController.CreatedAtRoute*> возвращает ответ 201, который представляет собой стандартный ответ для метода HTTP POST, создающий новый ресурс на сервере. `CreatedAtRoute` также добавляет в ответ заголовок расположения. Заголовок расположения указывает URI вновь созданной задачи. См. раздел [10.2.2 201 Created](http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html).
 1. Выполните сборку и запуск приложения.
 1. В браузере перейдите в `http://localhost:<port>/api/books`. Отобразится такой ответ JSON:
 

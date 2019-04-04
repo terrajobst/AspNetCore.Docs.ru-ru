@@ -2,15 +2,17 @@
 title: Использование нескольких сред в ASP.NET Core
 author: rick-anderson
 description: Сведения об управлении поведением приложений в разных средах в приложениях ASP.NET Core.
+monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
-ms.date: 01/22/2019
+ms.custom: mvc
+ms.date: 03/30/2019
 uid: fundamentals/environments
-ms.openlocfilehash: 5982f3e51a68dfa29af482067156c42006f50c0c
-ms.sourcegitcommit: 5f299daa7c8102d56a63b214b9a34cc4bc87bc42
+ms.openlocfilehash: 4fc43935aa058efc4497d3d9eb607df6c0899443
+ms.sourcegitcommit: 5995f44e9e13d7e7aa8d193e2825381c42184e47
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58208461"
+ms.lasthandoff: 04/02/2019
+ms.locfileid: "58809241"
 ---
 # <a name="use-multiple-environments-in-aspnet-core"></a>Использование нескольких сред в ASP.NET Core
 
@@ -91,8 +93,6 @@ ASP.NET Core считывает переменную среды `ASPNETCORE_ENVI
 }
 ```
 
-::: moniker range=">= aspnetcore-2.1"
-
 > [!NOTE]
 > Свойство `applicationUrl` в *launchSettings.json* может задать список URL-адресов сервера. Для разделения URL-адресов в списке используется точка с запятой:
 >
@@ -106,8 +106,6 @@ ASP.NET Core считывает переменную среды `ASPNETCORE_ENVI
 >    }
 > }
 > ```
-
-::: moniker-end
 
 Когда приложение запускается с помощью команды [dotnet run](/dotnet/core/tools/dotnet-run), используется первый профиль с атрибутом `"commandName": "Project"`. Значение `commandName` определяет запускаемый веб-сервер. `commandName` может иметь одно из следующих значений:
 
@@ -349,8 +347,6 @@ public class Startup
 
 Используйте перегрузку [UseStartup(IWebHostBuilder, String)](/dotnet/api/microsoft.aspnetcore.hosting.hostingabstractionswebhostbuilderextensions.usestartup), которая принимает имя сборки:
 
-::: moniker range=">= aspnetcore-2.1"
-
 ```csharp
 public static void Main(string[] args)
 {
@@ -366,53 +362,11 @@ public static IWebHostBuilder CreateWebHostBuilder(string[] args)
 }
 ```
 
-::: moniker-end
-
-::: moniker range="= aspnetcore-2.0"
-
-```csharp
-public static void Main(string[] args)
-{
-    CreateWebHost(args).Run();
-}
-
-public static IWebHost CreateWebHost(string[] args)
-{
-    var assemblyName = typeof(Startup).GetTypeInfo().Assembly.FullName;
-
-    return WebHost.CreateDefaultBuilder(args)
-        .UseStartup(assemblyName)
-        .Build();
-}
-```
-
-::: moniker-end
-
-::: moniker range="< aspnetcore-2.0"
-
-```csharp
-public class Program
-{
-    public static void Main(string[] args)
-    {
-        var assemblyName = typeof(Startup).GetTypeInfo().Assembly.FullName;
-
-        var host = new WebHostBuilder()
-            .UseStartup(assemblyName)
-            .Build();
-
-        host.Run();
-    }
-}
-```
-
-::: moniker-end
-
 ### <a name="startup-method-conventions"></a>Соглашения о методах Startup
 
 Методы [Configure](/dotnet/api/microsoft.aspnetcore.hosting.startupbase.configure) и [ConfigureServices](/dotnet/api/microsoft.aspnetcore.hosting.startupbase.configureservices) поддерживают версии для конкретных сред в формате `Configure<EnvironmentName>` и `Configure<EnvironmentName>Services`:
 
-[!code-csharp[](environments/sample/EnvironmentsSample/Startup.cs?name=snippet_all&highlight=15,51)]
+[!code-csharp[](environments/sample/EnvironmentsSample/Startup.cs?name=snippet_all&highlight=15,42)]
 
 ## <a name="additional-resources"></a>Дополнительные ресурсы
 

@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 12/13/2018
 uid: tutorials/first-mvc-app/new-field
-ms.openlocfilehash: 44487b91c8bbd353157a5f5f1b834187e47e2f3e
-ms.sourcegitcommit: 57792e5f594db1574742588017c708350958bdf0
+ms.openlocfilehash: cf8bb67703b564a711105123117498c94ab44e68
+ms.sourcegitcommit: 3e9e1f6d572947e15347e818f769e27dea56b648
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58264649"
+ms.lasthandoff: 03/30/2019
+ms.locfileid: "58750523"
 ---
 # <a name="add-a-new-field-to-an-aspnet-core-mvc-app"></a>Добавление нового поля в приложение MVC ASP.NET Core
 
@@ -38,7 +38,7 @@ ms.locfileid: "58264649"
 Поскольку в класс `Movie` было добавлено новое поле, необходимо обновить утвержденный список привязки, включив в него новое свойство. В файле *MoviesController.cs* обновите атрибут `[Bind]` для методов действия `Create` и `Edit`, включив свойство `Rating`:
 
 ```csharp
-[Bind("ID,Title,ReleaseDate,Genre,Price,Rating")]
+[Bind("Id,Title,ReleaseDate,Genre,Price,Rating")]
    ```
 
 Обновите шаблоны представлений, чтобы реализовать отображение, создание и редактирование нового свойства `Rating` в представлении браузера.
