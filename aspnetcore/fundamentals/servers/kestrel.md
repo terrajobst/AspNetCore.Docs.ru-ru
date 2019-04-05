@@ -4,14 +4,14 @@ author: guardrex
 description: Общие сведения о Kestrel — кроссплатформенном веб-сервере для ASP.NET Core.
 ms.author: tdykstra
 ms.custom: mvc
-ms.date: 03/04/2019
+ms.date: 03/28/2019
 uid: fundamentals/servers/kestrel
-ms.openlocfilehash: 5fc6c78f3eb76fcf3dd663c8d878250f0051f153
-ms.sourcegitcommit: 191d21c1e37b56f0df0187e795d9a56388bbf4c7
+ms.openlocfilehash: ab56f01c000c5404b58d79727b5b426d801081c2
+ms.sourcegitcommit: 3e9e1f6d572947e15347e818f769e27dea56b648
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 03/08/2019
-ms.locfileid: "57665643"
+ms.lasthandoff: 03/30/2019
+ms.locfileid: "58751069"
 ---
 # <a name="kestrel-web-server-implementation-in-aspnet-core"></a>Реализации веб-сервера Kestrel в ASP.NET Core
 
@@ -447,9 +447,83 @@ public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
 
 Указывает конфигурацию `Action` для выполнения каждой заданной конечной точки. Если вызвать `ConfigureEndpointDefaults` несколько раз, предыдущие элементы `Action` будут заменены последним элементом `Action`.
 
+::: moniker range=">= aspnetcore-3.0"
+
+```csharp
+Host.CreateDefaultBuilder(args)
+    .ConfigureWebHostDefaults(webBuilder =>
+    {
+        webBuilder.ConfigureKestrel(serverOptions =>
+        {
+            serverOptions.ConfigureEndpointDefaults(configureOptions =>
+            {
+                configureOptions.NoDelay = true;
+            });
+        });
+        webBuilder.UseStartup<Startup>();
+    });
+```
+
+::: moniker-end
+
+::: moniker range="< aspnetcore-3.0"
+
+```csharp
+public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
+    WebHost.CreateDefaultBuilder(args)
+        .UseStartup<Startup>()
+        .ConfigureKestrel((context, options) =>
+        {
+            options.ConfigureEndpointDefaults(configureOptions =>
+            {
+                configureOptions.NoDelay = true;
+            });
+        });
+```
+
+::: moniker-end
+
 ### <a name="configurehttpsdefaultsactionlthttpsconnectionadapteroptionsgt"></a>ConfigureHttpsDefaults(Action&lt;HttpsConnectionAdapterOptions&gt;)
 
 Указывает конфигурацию `Action` для выполнения каждой конечной точки HTTPS. Если вызвать `ConfigureHttpsDefaults` несколько раз, предыдущие элементы `Action` будут заменены последним элементом `Action`.
+
+::: moniker range=">= aspnetcore-3.0"
+
+```csharp
+Host.CreateDefaultBuilder(args)
+    .ConfigureWebHostDefaults(webBuilder =>
+    {
+        webBuilder.ConfigureKestrel(serverOptions =>
+        {
+            serverOptions.ConfigureHttpsDefaults(options =>
+            {
+                // certificate is an X509Certificate2
+                options.ServerCertificate = certificate;
+            });
+        });
+        webBuilder.UseStartup<Startup>();
+    });
+```
+
+::: moniker-end
+
+::: moniker range="< aspnetcore-3.0"
+
+```csharp
+public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
+    WebHost.CreateDefaultBuilder(args)
+        .UseStartup<Startup>()
+        .ConfigureKestrel((context, options) =>
+        {
+            options.ConfigureHttpsDefaults(httpsOptions =>
+            {
+                // certificate is an X509Certificate2
+                httpsOptions.ServerCertificate = certificate;
+            });
+        });
+```
+
+::: moniker-end
 
 ### <a name="configureiconfiguration"></a>Configure(IConfiguration)
 
@@ -495,6 +569,8 @@ public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
 *Отсутствие конфигурации*
 
 Kestrel ожидает передачи данных через `http://localhost:5000` и `https://localhost:5001` (если доступен сертификат по умолчанию).
+
+<a name="configuration"></a>
 
 *Замена сертификата по умолчанию из конфигурации*
 
