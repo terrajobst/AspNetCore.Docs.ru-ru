@@ -1,24 +1,24 @@
 ---
-title: Введение в компоненты Razor
+title: Введение в компоненты Razor в ASP.NET Core
 author: guardrex
 description: Узнайте больше о компонентах Razor в ASP.NET Core, которые позволяют создать интерактивный клиентский веб-интерфейс с использованием .NET в приложении ASP.NET Core.
 monikerRange: '>= aspnetcore-3.0'
 ms.author: riande
-ms.custom: mvc
+ms.custom: seoapril2019
 ms.date: 03/27/2019
 uid: razor-components/index
-ms.openlocfilehash: 8b2e87fe856598a5ac231e3bc1d413957829b448
-ms.sourcegitcommit: 3e9e1f6d572947e15347e818f769e27dea56b648
+ms.openlocfilehash: 43d5cf1d752b66a531c8d974deeb5a5fc8e94b43
+ms.sourcegitcommit: 1a7000630e55da90da19b284e1b2f2f13a393d74
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 03/30/2019
-ms.locfileid: "58751017"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "59012660"
 ---
 # <a name="introduction-to-razor-components"></a>Введение в компоненты Razor
 
 Авторы: [Дэниэл Рот (Daniel Roth)](https://github.com/danroth27) и [Люк Лэтем (Luke Latham)](https://github.com/guardrex)
 
-*Компоненты Razor* — это средства для создания интерактивного клиентского веб-интерфейса с использованием .NET, которые предоставляют такие возможности:
+*Компоненты Razor*, представленные в ASP.NET Core 3.0 (предварительная версия), позволяют создавать интерактивный клиентский веб-интерфейс с использованием .NET:
 
 * создание многофункциональных интерактивных пользовательских интерфейсов с помощью C# (а не JavaScript);
 * совместное использование серверной и клиентской логик приложений, написанных с помощью .NET;
@@ -86,6 +86,6 @@ ms.locfileid: "58751017"
 
 * <xref:spa/blazor/index>
 * [WebAssembly](http://webassembly.org/)
-* [Руководство по языку C#](/dotnet/csharp/)
+* [Руководство по языку C#](/dotnet/csharp/)
 * <xref:mvc/views/razor>
 * [HTML](https://www.w3.org/html/)

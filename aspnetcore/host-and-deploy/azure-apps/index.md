@@ -7,12 +7,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 03/30/2019
 uid: host-and-deploy/azure-apps/index
-ms.openlocfilehash: f9a74fdd94da4c913ac8822ee7bd58c85a9ce72c
-ms.sourcegitcommit: 3e9e1f6d572947e15347e818f769e27dea56b648
+ms.openlocfilehash: 009ee97d954a21f5fca1713b2b45218cac235e33
+ms.sourcegitcommit: 1a7000630e55da90da19b284e1b2f2f13a393d74
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 03/30/2019
-ms.locfileid: "58750926"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "59012842"
 ---
 # <a name="deploy-aspnet-core-apps-to-azure-app-service"></a>Развертывание приложений ASP.NET Core в Службе приложений Azure
 
@@ -22,10 +22,10 @@ ms.locfileid: "58750926"
 
 [Документация по службе приложений](/azure/app-service/) — это место, где хранятся документация, учебники, примеры, руководства и другие ресурсы, связанные с приложениями Azure. Размещению приложений ASP.NET Core посвящены следующие два руководства.
 
-[Создание веб-приложения ASP.NET Core в Azure](/azure/app-service/app-service-web-get-started-dotnet)  
+[Создание веб-приложения ASP.NET Core в Azure](/azure/app-service/app-service-web-get-started-dotnet)  
 Создайте веб-приложение ASP.NET Core и разверните его в службе приложений Azure на базе Windows с помощью Visual Studio.
 
-[Создание приложения ASP.NET Core в Службе приложений в Linux](/azure/app-service/containers/quickstart-dotnetcore)  
+[Создание приложения ASP.NET Core в Службе приложений в Linux](/azure/app-service/containers/quickstart-dotnetcore)  
 Создайте веб-приложение ASP.NET Core и разверните его в службе приложений Azure на базе Linux с помощью командной строки.
 
 Следующие статьи входят в документацию по ASP.NET Core.
@@ -39,7 +39,7 @@ ms.locfileid: "58750926"
 [Создание первого конвейера](/azure/devops/pipelines/get-started-yaml)  
 Сведения о настройке сборки CI для приложения ASP.NET Core и последующем создании выпуска непрерывного развертывания в службе приложений Azure.
 
-[Песочница веб-приложений Azure](https://github.com/projectkudu/kudu/wiki/Azure-Web-App-sandbox)  
+[Песочница веб-приложений Azure](https://github.com/projectkudu/kudu/wiki/Azure-Web-App-sandbox)  
 Сведения об ограничениях среды выполнения службы приложений Azure, создаваемых платформой приложений Azure.
 
 ## <a name="application-configuration"></a>Настройка приложения
@@ -98,10 +98,10 @@ ms.locfileid: "58750926"
 
 Сведения о мониторинге, ведении журналов, а также поиске и устранении неполадок см. в следующих статьях.
 
-[Мониторинг приложений в Службе приложений Azure](/azure/app-service/web-sites-monitor)  
+[Мониторинг приложений в Службе приложений Azure](/azure/app-service/web-sites-monitor)  
 Сведения о том, как толковать квоты и параметры для приложений и планы службы приложений.
 
-[Включение функции ведения журналов диагностики для приложений в Службе приложений Azure](/azure/app-service/web-sites-enable-diagnostic-log)  
+[Включение журналов диагностики для приложений в Службе приложений Azure](/azure/app-service/web-sites-enable-diagnostic-log)  
 Сведения о том, как включать и где искать функцию ведения журнала диагностики для кодов статуса HTTP, невыполненных запросов и активности веб-сервера.
 
 <xref:fundamentals/error-handling>  
@@ -168,12 +168,13 @@ ms.locfileid: "58750926"
 > ```powershell
 > Test-Path D:\home\SiteExtensions\AspNetCoreRuntime.{X.Y}.x64\
 > ```
+>
 > Эта команда возвращает `True`, если установлена предварительная версия среды выполнения x64.
 
 > [!NOTE]
 > **Расширения ASP.NET Core** включают дополнительные функциональные возможности для ASP.NET Core в службах приложений Azure, например включение ведения журналов Azure. Расширение устанавливается автоматически при развертывании из Visual Studio. Если расширение не установлено, установите его для приложения.
 
-**Использование расширения сайта предварительной версии с шаблоном ARM**
+**Использование предварительной версии расширения сайта с шаблоном ARM**
 
 Если вы используете шаблон ARM для создания и развертывания приложений, можно использовать тип ресурса `siteextensions`, чтобы добавить расширение сайта в веб-приложение. Например:
 
@@ -234,10 +235,10 @@ ms.locfileid: "58750926"
 
 ## <a name="additional-resources"></a>Дополнительные ресурсы
 
-* [Обзор Службы приложений](/azure/app-service/app-service-web-overview)
-* [Служба приложений Azure: оптимальное место для размещения приложений .NET (55-минутное видео)](https://channel9.msdn.com/events/dotnetConf/2017/T222)
-* [Пятница с Azure. Практика диагностики и устранения неполадок в Службе приложений Azure (12-минутное видео)](https://channel9.msdn.com/Shows/Azure-Friday/Azure-App-Service-Diagnostic-and-Troubleshooting-Experience)
-* [Общие сведения о диагностике в службе приложений Azure](/azure/app-service/app-service-diagnostics)
+* [Обзор Службы приложений](/azure/app-service/app-service-web-overview)
+* [Azure App Service: The Best Place to Host your .NET Apps (55-минутное обзорное видео "Служба приложений Azure: лучшее место для размещения приложений .NET")](https://channel9.msdn.com/events/dotnetConf/2017/T222)
+* [Azure Friday: Azure App Service Diagnostic and Troubleshooting Experience (12-минутное видео "Пятница с Azure: использование диагностики и устранения неполадок в Службе приложений Azure")](https://channel9.msdn.com/Shows/Azure-Friday/Azure-App-Service-Diagnostic-and-Troubleshooting-Experience)
+* [Общие сведения о диагностике в Службе приложений Azure](/azure/app-service/app-service-diagnostics)
 * <xref:host-and-deploy/web-farm>
 
 Служба приложений Azure на Windows Server использует [службы IIS](https://www.iis.net/). Технологии IIS посвящены следующие статьи.
@@ -245,4 +246,4 @@ ms.locfileid: "58750926"
 * <xref:host-and-deploy/iis/index>
 * <xref:host-and-deploy/aspnet-core-module>
 * <xref:host-and-deploy/iis/modules>
-* [Windows Server — содержимое для ИТ-администраторов по текущим и предыдущим выпускам](/windows-server/windows-server-versions)
+* [Windows Server — материалы для ИТ-администраторов по текущим и предыдущим выпускам](/windows-server/windows-server-versions)
