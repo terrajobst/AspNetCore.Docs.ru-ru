@@ -1,23 +1,23 @@
 ---
 title: Настройка внешней учетной записи Facebook в ASP.NET Core
 author: rick-anderson
-description: В этом учебнике показано интеграцию Facebook учетной записи пользователя и проверки подлинности в существующее приложение ASP.NET Core.
+description: Руководство с примерами кода, демонстрации интеграции проверки подлинности пользователя учетной записи Facebook в существующее приложение ASP.NET Core.
 ms.author: riande
 ms.custom: mvc, seodec18
-ms.date: 12/18/2018
+ms.date: 03/04/2019
 uid: security/authentication/facebook-logins
-ms.openlocfilehash: 5fd40e7b42b17d4a3b858de15c8ed03fb64ce690
-ms.sourcegitcommit: 3e9e1f6d572947e15347e818f769e27dea56b648
+ms.openlocfilehash: b69a6f3955d59aaff273a965d8820862e187cd51
+ms.sourcegitcommit: 6bde1fdf686326c080a7518a6725e56e56d8886e
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 03/30/2019
-ms.locfileid: "58751096"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59068213"
 ---
 # <a name="facebook-external-login-setup-in-aspnet-core"></a>Настройка внешней учетной записи Facebook в ASP.NET Core
 
 Авторы: [Валерий Новицкий](https://github.com/01binary) (Valeriy Novytskyy) и [Рик Андерсон](https://twitter.com/RickAndMSFT) (Rick Anderson)
 
-Этом руководстве показано, как включить пользователей выполнить вход с использованием учетной записи Facebook, используя образец проекта ASP.NET Core 2.0, созданные на [предыдущую страницу](xref:security/authentication/social/index). Мы начнем с создания код приложения Facebook, следуя [официальный действия](https://developers.facebook.com).
+Это руководство с примерами кода показано, как включить пользователей выполнить вход с использованием учетной записи Facebook, используя образец проекта ASP.NET Core 2.0, созданные на [предыдущую страницу](xref:security/authentication/social/index). Мы начнем с создания код приложения Facebook, следуя [официальный действия](https://developers.facebook.com).
 
 ## <a name="create-the-app-in-facebook"></a>Создать приложение в Facebook
 

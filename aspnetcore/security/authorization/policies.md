@@ -4,14 +4,14 @@ author: rick-anderson
 description: Узнайте, как создать и использовать обработчики политики авторизации для принудительного применения требований к авторизации в приложении ASP.NET Core.
 ms.author: riande
 ms.custom: mvc
-ms.date: 11/21/2017
+ms.date: 04/05/2019
 uid: security/authorization/policies
-ms.openlocfilehash: e72f15c28fb7b62c671dd6475cc323cacce42de6
-ms.sourcegitcommit: 5f299daa7c8102d56a63b214b9a34cc4bc87bc42
+ms.openlocfilehash: ea9d687d3810c104d5b3fa39033849c21569709b
+ms.sourcegitcommit: 6bde1fdf686326c080a7518a6725e56e56d8886e
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58208325"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59068174"
 ---
 # <a name="policy-based-authorization-in-aspnet-core"></a>Авторизация на основе политик в ASP.NET Core
 
@@ -96,7 +96,10 @@ ms.locfileid: "58208325"
 
 * Чтобы гарантировать сбоя, даже если другие обработчики требований, вызовите `context.Fail`.
 
-Если задано значение `false`, [InvokeHandlersAfterFailure](/dotnet/api/microsoft.aspnetcore.authorization.authorizationoptions.invokehandlersafterfailure#Microsoft_AspNetCore_Authorization_AuthorizationOptions_InvokeHandlersAfterFailure) запуск обработчиков игнорирует свойство (в ASP.NET Core 1.1 и более поздние версии) при `context.Fail` вызывается. `InvokeHandlersAfterFailure` по умолчанию используется `true`, в этом случае вызываются все обработчики. Благодаря этому потребности для получения побочные эффекты, такие как ведение журнала, которые всегда выполняются даже в том случае, если `context.Fail` был вызван в другой обработчик.
+Если обработчик вызывает `context.Succeed` или `context.Fail`, по-прежнему вызываются все обработчики. Благодаря этому потребности для получения побочные эффекты, такие как ведение журнала, что производится, даже если другой обработчик имеет успешно проверен или не удалось выполнить требование. Если задано значение `false`, [InvokeHandlersAfterFailure](/dotnet/api/microsoft.aspnetcore.authorization.authorizationoptions.invokehandlersafterfailure#Microsoft_AspNetCore_Authorization_AuthorizationOptions_InvokeHandlersAfterFailure) запуск обработчиков игнорирует свойство (в ASP.NET Core 1.1 и более поздние версии) при `context.Fail` вызывается. `InvokeHandlersAfterFailure` по умолчанию используется `true`, в этом случае вызываются все обработчики.
+
+> [!NOTE]
+> Авторизация обработчики вызываются в том случае, даже в случае сбоя проверки подлинности.
 
 <a name="security-authorization-policies-based-multiple-handlers"></a>
 

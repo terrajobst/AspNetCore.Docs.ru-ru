@@ -4,14 +4,14 @@ author: rick-anderson
 description: Узнайте, как CORS в качестве стандарта для предоставления или отклонения запросов независимо от источника в приложении ASP.NET Core.
 ms.author: riande
 ms.custom: mvc
-ms.date: 02/27/2019
+ms.date: 04/07/2019
 uid: security/cors
-ms.openlocfilehash: 2cad26d0f61519f63888a2bc399bb7e8a0f1ee04
-ms.sourcegitcommit: 5f299daa7c8102d56a63b214b9a34cc4bc87bc42
+ms.openlocfilehash: fe5b750c44e5fad9ba80efb2cc8116d0a64b1a17
+ms.sourcegitcommit: 6bde1fdf686326c080a7518a6725e56e56d8886e
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58210136"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59068301"
 ---
 # <a name="enable-cross-origin-requests-cors-in-aspnet-core"></a>Включение запросов о происхождении (CORS) в ASP.NET Core
 
@@ -57,7 +57,7 @@ Internet Explorer не считает порт, при сравнении ист
 Предыдущий код:
 
 * Задает имя политики "\_myAllowSpecificOrigins». Имя политики является произвольным.
-* Вызовы <xref:Microsoft.AspNetCore.Builder.CorsMiddlewareExtensions.UseCors*> метод расширения, который позволяет ядер.
+* Вызовы <xref:Microsoft.AspNetCore.Builder.CorsMiddlewareExtensions.UseCors*> метод расширения, который включает доступ CORS.
 * Вызовы <xref:Microsoft.Extensions.DependencyInjection.CorsServiceCollectionExtensions.AddCors*> с [лямбда-выражение](/dotnet/csharp/programming-guide/statements-expressions-operators/lambda-expressions). Лямбда-выражение принимает <xref:Microsoft.AspNetCore.Cors.Infrastructure.CorsPolicyBuilder> объекта. [Параметры конфигурации](#cors-policy-options), такие как `WithOrigins`, описаны далее в этой статье.
 
 <xref:Microsoft.Extensions.DependencyInjection.MvcCorsMvcCoreBuilderExtensions.AddCors*> Вызов метода добавляет CORS службы в контейнер службы приложения:
@@ -170,7 +170,7 @@ to
 to remove the ambiguous **This**.
 -->
 
-`AllowAnyOrigin` влияет на запросы перед запуском выявила и `Access-Control-Allow-Origin` заголовка. Дополнительные сведения см. в разделе [перед запуском выявила запросы](#preflight-requests) раздел.
+`AllowAnyOrigin` Влияет на запросы перед запуском выявила и `Access-Control-Allow-Origin` заголовка. Дополнительные сведения см. в разделе [перед запуском выявила запросы](#preflight-requests) раздел.
 
 ::: moniker range=">= aspnetcore-2.0"
 
