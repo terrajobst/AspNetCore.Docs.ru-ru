@@ -4,15 +4,15 @@ description: В этом руководстве вы начинаете испо
 author: rick-anderson
 ms.author: tdykstra
 ms.custom: mvc
-ms.date: 02/04/2019
+ms.date: 03/27/2019
 ms.topic: tutorial
 uid: data/ef-mvc/migrations
-ms.openlocfilehash: 6d4ed0e95499c30417e1cfd07f57de824a8a62ed
-ms.sourcegitcommit: 57792e5f594db1574742588017c708350958bdf0
+ms.openlocfilehash: 8a14ada241330ca33811b7cce70daf26ff8fc13a
+ms.sourcegitcommit: 3e9e1f6d572947e15347e818f769e27dea56b648
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58265523"
+ms.lasthandoff: 03/30/2019
+ms.locfileid: "58750632"
 ---
 # <a name="tutorial-using-the-migrations-feature---aspnet-mvc-with-ef-core"></a>Учебник. Использование ASP.NET MVC с EF Core. Функции миграций
 
@@ -22,7 +22,6 @@ ms.locfileid: "58265523"
 
 > [!div class="checklist"]
 > * Дополнительные сведения о миграциях
-> * Дополнительные сведения о пакетах миграции NuGet
 > * Изменение строки подключения
 > * Создание первоначальной миграции
 > * Обзор методов Up и Down
@@ -31,7 +30,7 @@ ms.locfileid: "58265523"
 
 ## <a name="prerequisites"></a>Предварительные требования
 
-* [Добавление сортировки, фильтрации и разбиения по страницам с использованием EF Core в приложении MVC ASP.NET Core](sort-filter-page.md)
+* [Сортировка, фильтрация и разбиение на страницы](sort-filter-page.md)
 
 ## <a name="about-migrations"></a>Сведения о миграциях
 
@@ -39,15 +38,7 @@ ms.locfileid: "58265523"
 
 Этот способ для обеспечения синхронизации базы данных с моделью данных хорошо работает до развертывания приложения в рабочей среде. Когда приложение выполняется в рабочей среде, оно обычно хранит данные, которые вы хотите сохранить, и вам нежелательно терять все при каждом изменении, например при добавлении нового столбца. Функция миграций EF Core решает эту проблему, позволяя EF обновить схему базы данных вместо создания базы данных.
 
-## <a name="about-nuget-migration-packages"></a>Сведения о пакетах миграции NuGet
-
 Для работы с миграциями можно использовать **консоль диспетчера пакетов** (PMC) или интерфейс командной строки (CLI).  Эти руководства демонстрируют использование команд интерфейса командной строки. Дополнительные сведения о PMC [приведены в конце этого руководства](#pmc).
-
-Средства EF для интерфейса командной строки (CLI) доступны в [Microsoft.EntityFrameworkCore.Tools.DotNet](https://www.nuget.org/packages/Microsoft.EntityFrameworkCore.Tools.DotNet). Чтобы установить этот пакет, добавьте его в коллекцию `DotNetCliToolReference` в файле *CSPROJ*, как показано ниже. **Примечание.** Необходимо установить этот пакет, изменив файл *.csproj*. Использовать команду `install-package` или графический пользовательский интерфейс диспетчера пакетов нельзя. Вы можете изменить файл *CSPROJ*, щелкнув правой кнопкой мыши имя проекта в **обозревателе решений** и выбрав пункт **Изменить ContosoUniversity.csproj**.
-
-[!code-xml[](intro/samples/cu/ContosoUniversity.csproj?range=12-15&highlight=2)]
-
-(На момент написания руководства номера версий в этом примере были актуальными.)
 
 ## <a name="change-the-connection-string"></a>Изменение строки подключения
 
@@ -86,10 +77,8 @@ dotnet ef migrations add InitialCreate
 В командном окне отображаются следующие выходные данные:
 
 ```console
-info: Microsoft.AspNetCore.DataProtection.KeyManagement.XmlKeyManager[0]
-      User profile is available. Using 'C:\Users\username\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
-info: Microsoft.EntityFrameworkCore.Infrastructure[100403]
-      Entity Framework Core 2.0.0-rtm-26452 initialized 'SchoolContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+info: Microsoft.EntityFrameworkCore.Infrastructure[10403]
+      Entity Framework Core 2.2.0-rtm-35687 initialized 'SchoolContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
 Done. To undo this action, use 'ef migrations remove'
 ```
 
@@ -129,15 +118,19 @@ dotnet ef database update
 Выходные данные команды аналогичны команде `migrations add`, за исключением того, что вы видите журналы для команд SQL, настраивающих базу данных. В приведенном ниже примере выходных данных большинство журналов опущено. Если вам не нужен такой уровень детализации сообщений журнала, можно изменить уровень ведения журнала в файле *appsettings.Development.json*. Для получения дополнительной информации см. <xref:fundamentals/logging/index>.
 
 ```text
-info: Microsoft.AspNetCore.DataProtection.KeyManagement.XmlKeyManager[0]
-      User profile is available. Using 'C:\Users\username\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
-info: Microsoft.EntityFrameworkCore.Infrastructure[100403]
-      Entity Framework Core 2.0.0-rtm-26452 initialized 'SchoolContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
-info: Microsoft.EntityFrameworkCore.Database.Command[200101]
-      Executed DbCommand (467ms) [Parameters=[], CommandType='Text', CommandTimeout='60']
+info: Microsoft.EntityFrameworkCore.Infrastructure[10403]
+      Entity Framework Core 2.2.0-rtm-35687 initialized 'SchoolContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (274ms) [Parameters=[], CommandType='Text', CommandTimeout='60']
       CREATE DATABASE [ContosoUniversity2];
-info: Microsoft.EntityFrameworkCore.Database.Command[200101]
-      Executed DbCommand (20ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (60ms) [Parameters=[], CommandType='Text', CommandTimeout='60']
+      IF SERVERPROPERTY('EngineEdition') <> 5
+      BEGIN
+          ALTER DATABASE [ContosoUniversity2] SET READ_COMMITTED_SNAPSHOT ON;
+      END;
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (15ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
       CREATE TABLE [__EFMigrationsHistory] (
           [MigrationId] nvarchar(150) NOT NULL,
           [ProductVersion] nvarchar(32) NOT NULL,
@@ -146,10 +139,10 @@ info: Microsoft.EntityFrameworkCore.Database.Command[200101]
 
 <logs omitted for brevity>
 
-info: Microsoft.EntityFrameworkCore.Database.Command[200101]
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
       Executed DbCommand (3ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
       INSERT INTO [__EFMigrationsHistory] ([MigrationId], [ProductVersion])
-      VALUES (N'20170816151242_InitialCreate', N'2.0.0-rtm-26452');
+      VALUES (N'20190327172701_InitialCreate', N'2.2.0-rtm-35687');
 Done.
 ```
 
@@ -190,6 +183,7 @@ Done.
 > * Дополнительные сведения о моментальном снимке модели данных
 > * Применение миграции
 
-В следующем руководстве описаны более сложные вопросы, связанные с развертыванием модели данных. Попутно вы создадите и примените дополнительные миграции.
+В следующем учебнике описаны более сложные вопросы, связанные с развертыванием модели данных. Попутно вы создадите и примените дополнительные миграции.
+
 > [!div class="nextstepaction"]
 > [Создание и применение дополнительных миграций](complex-data-model.md)

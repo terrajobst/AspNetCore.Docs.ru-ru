@@ -5,20 +5,37 @@ description: Сведения об универсальном узле в ASP.N
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 11/28/2018
+ms.date: 03/31/2019
 uid: fundamentals/host/generic-host
-ms.openlocfilehash: 817b7b3b420520992f18f1f207b412bc4555bdfa
-ms.sourcegitcommit: a1c43150ed46aa01572399e8aede50d4668745ca
+ms.openlocfilehash: bb6afe59fcad685d18cdc9c8d90cfcc7b3a6541d
+ms.sourcegitcommit: 5995f44e9e13d7e7aa8d193e2825381c42184e47
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58327395"
+ms.lasthandoff: 04/02/2019
+ms.locfileid: "58809199"
 ---
 # <a name="net-generic-host"></a>Универсальный узел .NET
 
 Автор [Люк Латэм](https://github.com/guardrex) (Luke Latham)
 
-::: moniker range="<= aspnetcore-2.2"
+::: moniker range=">= aspnetcore-3.0"
+
+Приложения ASP.NET Core настраивают и запускают узел. Узел отвечает за запуск приложения и управление временем существования.
+
+В этой статье описывается универсальный узел .NET Core (<xref:Microsoft.Extensions.Hosting.HostBuilder>).
+
+Универсальный узел отличается от веб-узла, поскольку отделяет конвейер HTTP от API веб-узла, чтобы можно было использовать больше сценариев узла. Обмен сообщениями, фоновые задачи и другие рабочие нагрузки, не связанные с HTTP, могут использовать перекрестные возможности универсальных узлов, такие как конфигурация, внедрение зависимости (DI) и ведение журналов.
+
+Начиная с ASP.NET Core 3.0, универсальный узел рекомендуется для рабочих нагрузок HTTP и не связанных с HTTP. Реализация сервера HTTP, при наличии, выполняется как реализация <xref:Microsoft.Extensions.Hosting.IHostedService>. <xref:Microsoft.Extensions.Hosting.IHostedService> представляет собой интерфейс, который может использоваться для других рабочих нагрузок.
+
+Веб-узел больше не рекомендуется для веб-приложений, но остается доступным для обратной совместимости.
+
+> [!NOTE]
+> Оставшаяся часть статьи еще не обновлена для версии 3.0.
+
+::: moniker-end
+
+::: moniker range="< aspnetcore-3.0"
 
 Приложения ASP.NET Core настраивают и запускают узел. Узел отвечает за запуск приложения и управление временем существования.
 
@@ -27,23 +44,6 @@ ms.locfileid: "58327395"
 Универсальный узел предназначен для отделения конвейера HTTP от API веб-узла, чтобы можно было иметь больше сценариев узла. Обмен сообщениями, фоновые задачи и другие рабочие нагрузки, не связанные с HTTP, используют перекрестные возможности универсальных узлов, такие как конфигурация, внедрение зависимости (DI) и ведение журналов.
 
 Универсальный узел является новой возможностью ASP.NET Core 2.1 и не подходит для сценариев с веб-размещением. Сведения о сценариях с веб-размещением см. в статье о [веб-узле](xref:fundamentals/host/web-host). Универсальный узел заменит веб-узел в будущих версиях. Он будет выступать основным узлом API для сценариев HTTP и "не HTTP".
-
-::: moniker-end
-
-::: moniker range="> aspnetcore-2.2"
-
-Приложения ASP.NET Core настраивают и запускают узел. Узел отвечает за запуск приложения и управление временем существования.
-
-В этой статье описывается универсальный узел .NET Core (<xref:Microsoft.Extensions.Hosting.HostBuilder>).
-
-Универсальный узел отличается от веб-узла, поскольку отделяет конвейер HTTP от API веб-узла, чтобы можно было использовать больше сценариев узла. Обмен сообщениями, фоновые задачи и другие рабочие нагрузки, не связанные с HTTP, могут использовать перекрестные возможности универсальных узлов, такие как конфигурация, внедрение зависимости (DI) и ведение журналов.
-
-Начиная с ASP.NET Core 3.0, универсальный узел рекомендуется для рабочих нагрузок HTTP и не связанных с HTTP. Реализация сервера HTTP, при наличии, выполняется как реализация <xref:Microsoft.Extensions.Hosting.IHostedService>. `IHostedService` представляет собой интерфейс, который может использоваться для других рабочих нагрузок.
-
-Веб-узел больше не рекомендуется для веб-приложений, но остается доступным для обратной совместимости.
-
-> [!NOTE]
-> Оставшаяся часть статьи еще не обновлена для версии 3.0.
 
 ::: moniker-end
 
@@ -60,7 +60,7 @@ ms.locfileid: "58327395"
 
 Библиотека универсального узла находится в пространстве имен <xref:Microsoft.Extensions.Hosting> и включена в пакет [Microsoft.Extensions.Hosting](https://www.nuget.org/packages/Microsoft.Extensions.Hosting/). Пакет `Microsoft.Extensions.Hosting` входит в состав [метапакета Microsoft.AspNetCore.App](xref:fundamentals/metapackage-app) (ASP.NET Core 2.1 или более поздней версии).
 
-<xref:Microsoft.Extensions.Hosting.IHostedService> — это точка входа для выполнения кода. Каждая реализация `IHostedService` выполняется в порядке [регистрации служб в ConfigureServices](#configureservices). Метод <xref:Microsoft.Extensions.Hosting.IHostedService.StartAsync*> вызывается в каждом `IHostedService` при запуске узла, а метод <xref:Microsoft.Extensions.Hosting.IHostedService.StopAsync*> вызывается в порядке, обратном регистрации, когда узел корректно завершает работу.
+<xref:Microsoft.Extensions.Hosting.IHostedService> — это точка входа для выполнения кода. Каждая реализация <xref:Microsoft.Extensions.Hosting.IHostedService> выполняется в порядке [регистрации служб в ConfigureServices](#configureservices). Метод <xref:Microsoft.Extensions.Hosting.IHostedService.StartAsync*> вызывается в каждом <xref:Microsoft.Extensions.Hosting.IHostedService> при запуске узла, а метод <xref:Microsoft.Extensions.Hosting.IHostedService.StopAsync*> вызывается в порядке, обратном регистрации, когда узел корректно завершает работу.
 
 ## <a name="set-up-a-host"></a>Создание узла
 
@@ -152,13 +152,13 @@ var host = new HostBuilder()
 
 ### <a name="configurehostconfiguration"></a>ConfigureHostConfiguration
 
-Метод `ConfigureHostConfiguration` использует <xref:Microsoft.Extensions.Configuration.IConfigurationBuilder>, чтобы создать экземпляр <xref:Microsoft.Extensions.Configuration.IConfiguration> для узла. Конфигурация узла применяется для инициализации <xref:Microsoft.Extensions.Hosting.IHostingEnvironment> в целях использования в процессе сборки приложения.
+Метод <xref:Microsoft.Extensions.Hosting.HostBuilder.ConfigureHostConfiguration*> использует <xref:Microsoft.Extensions.Configuration.IConfigurationBuilder>, чтобы создать экземпляр <xref:Microsoft.Extensions.Configuration.IConfiguration> для узла. Конфигурация узла применяется для инициализации <xref:Microsoft.Extensions.Hosting.IHostingEnvironment> в целях использования в процессе сборки приложения.
 
-Метод `ConfigureHostConfiguration` может вызываться несколько раз с накоплением результатов. Узел использует значение, заданное последним для данного ключа.
+Метод <xref:Microsoft.Extensions.Hosting.HostBuilder.ConfigureHostConfiguration*> может вызываться несколько раз с накоплением результатов. Узел использует значение, заданное последним для данного ключа.
 
 Конфигурация узла автоматически передается в конфигурацию приложения ([ConfigureAppConfiguration](#configureappconfiguration) и остальную часть приложения).
 
-Поставщики не включены по умолчанию. Необходимо явно указать поставщики конфигурации, требуемые приложению в `ConfigureHostConfiguration`, в том числе:
+Поставщики не включены по умолчанию. Необходимо явно указать поставщики конфигурации, требуемые приложению в <xref:Microsoft.Extensions.Hosting.HostBuilder.ConfigureHostConfiguration*>, в том числе:
 
 * конфигурация файла (например, из файла *hostsettings.json*);
 * конфигурация переменной среды;
@@ -179,17 +179,17 @@ var host = new HostBuilder()
 
 Дополнительную конфигурацию можно указать с помощью ключей [applicationName](#application-key-name) и [contentRoot](#content-root).
 
-Пример конфигурации `HostBuilder` с использованием `ConfigureHostConfiguration`:
+Пример конфигурации `HostBuilder` с использованием <xref:Microsoft.Extensions.Hosting.HostBuilder.ConfigureHostConfiguration*>:
 
 [!code-csharp[](generic-host/samples-snapshot/2.x/GenericHostSample/Program.cs?name=snippet_ConfigureHostConfiguration)]
 
 ## <a name="configureappconfiguration"></a>ConfigureAppConfiguration
 
-Конфигурация приложения создается путем вызова метода <xref:Microsoft.Extensions.Hosting.HostBuilder.ConfigureAppConfiguration*> в реализации <xref:Microsoft.Extensions.Hosting.IHostBuilder>. Метод `ConfigureAppConfiguration` использует <xref:Microsoft.Extensions.Configuration.IConfigurationBuilder>, чтобы создать экземпляр <xref:Microsoft.Extensions.Configuration.IConfiguration> для приложения. Метод `ConfigureAppConfiguration` может вызываться несколько раз с накоплением результатов. Приложение использует значение, заданное последним для данного ключа. Конфигурация, созданная с помощью `ConfigureAppConfiguration`, доступна в свойствах [HostBuilderContext.Configuration](xref:Microsoft.Extensions.Hosting.HostBuilderContext.Configuration*) для последующих операций и в <xref:Microsoft.Extensions.Hosting.IHost.Services*>.
+Конфигурация приложения создается путем вызова метода <xref:Microsoft.Extensions.Hosting.HostBuilder.ConfigureAppConfiguration*> в реализации <xref:Microsoft.Extensions.Hosting.IHostBuilder>. Метод <xref:Microsoft.Extensions.Hosting.HostBuilder.ConfigureAppConfiguration*> использует <xref:Microsoft.Extensions.Configuration.IConfigurationBuilder>, чтобы создать экземпляр <xref:Microsoft.Extensions.Configuration.IConfiguration> для приложения. Метод <xref:Microsoft.Extensions.Hosting.HostBuilder.ConfigureAppConfiguration*> может вызываться несколько раз с накоплением результатов. Приложение использует значение, заданное последним для данного ключа. Конфигурация, созданная с помощью <xref:Microsoft.Extensions.Hosting.HostBuilder.ConfigureAppConfiguration*>, доступна в свойствах [HostBuilderContext.Configuration](xref:Microsoft.Extensions.Hosting.HostBuilderContext.Configuration*) для последующих операций и в <xref:Microsoft.Extensions.Hosting.IHost.Services*>.
 
 Конфигурация приложения автоматически получает конфигурацию узла, предоставленную с помощью [ConfigureHostConfiguration](#configurehostconfiguration).
 
-Пример конфигурации приложения с использованием `ConfigureAppConfiguration`:
+Пример конфигурации приложения с использованием <xref:Microsoft.Extensions.Hosting.HostBuilder.ConfigureAppConfiguration*>:
 
 [!code-csharp[](generic-host/samples-snapshot/2.x/GenericHostSample/Program.cs?name=snippet_ConfigureAppConfiguration)]
 
@@ -209,13 +209,14 @@ var host = new HostBuilder()
 
 ```xml
 <ItemGroup>
-  <Content Include="**\*.json" Exclude="bin\**\*;obj\**\*" CopyToOutputDirectory="PreserveNewest" />
+  <Content Include="**\*.json" Exclude="bin\**\*;obj\**\*" 
+      CopyToOutputDirectory="PreserveNewest" />
 </ItemGroup>
 ```
 
 ## <a name="configureservices"></a>ConfigureServices
 
-Метод <xref:Microsoft.Extensions.Hosting.HostingHostBuilderExtensions.ConfigureServices*> добавляет службы в контейнер [внедрения зависимостей](xref:fundamentals/dependency-injection) приложения. Метод `ConfigureServices` может вызываться несколько раз с накоплением результатов.
+Метод <xref:Microsoft.Extensions.Hosting.HostingHostBuilderExtensions.ConfigureServices*> добавляет службы в контейнер [внедрения зависимостей](xref:fundamentals/dependency-injection) приложения. Метод <xref:Microsoft.Extensions.Hosting.HostingHostBuilderExtensions.ConfigureServices*> может вызываться несколько раз с накоплением результатов.
 
 Размещенная служба — это класс с логикой фоновой задачи, реализующий интерфейс <xref:Microsoft.Extensions.Hosting.IHostedService>. Для получения дополнительной информации см. <xref:fundamentals/host/hosted-services>.
 
@@ -225,13 +226,13 @@ var host = new HostBuilder()
 
 ## <a name="configurelogging"></a>ConfigureLogging
 
-Метод <xref:Microsoft.Extensions.Hosting.HostingHostBuilderExtensions.ConfigureLogging*> добавляет делегат для настройки указанного интерфейса <xref:Microsoft.Extensions.Logging.ILoggingBuilder>. Метод `ConfigureLogging` может вызываться несколько раз с накоплением результатов.
+Метод <xref:Microsoft.Extensions.Hosting.HostingHostBuilderExtensions.ConfigureLogging*> добавляет делегат для настройки указанного интерфейса <xref:Microsoft.Extensions.Logging.ILoggingBuilder>. Метод <xref:Microsoft.Extensions.Hosting.HostingHostBuilderExtensions.ConfigureLogging*> может вызываться несколько раз с накоплением результатов.
 
 [!code-csharp[](generic-host/samples-snapshot/2.x/GenericHostSample/Program.cs?name=snippet_ConfigureLogging)]
 
 ### <a name="useconsolelifetime"></a>UseConsoleLifetime
 
-Метод <xref:Microsoft.Extensions.Hosting.HostingHostBuilderExtensions.UseConsoleLifetime*> прослушивает сигналы `Ctrl+C`/SIGINT или SIGTERM и вызывает метод <xref:Microsoft.Extensions.Hosting.IApplicationLifetime.StopApplication*> для запуска процесса завершения работы. Метод `UseConsoleLifetime` разблокирует расширения, такие как [RunAsync](#runasync) и [WaitForShutdownAsync](#waitforshutdownasync). Класс <xref:Microsoft.Extensions.Hosting.Internal.ConsoleLifetime> предварительно зарегистрирован и является реализацией времени жизни по умолчанию. Используется то время жизни, которое зарегистрировано последним.
+Метод <xref:Microsoft.Extensions.Hosting.HostingHostBuilderExtensions.UseConsoleLifetime*> прослушивает сигналы CTRL + C/SIGINT или SIGTERM и вызывает метод <xref:Microsoft.Extensions.Hosting.IApplicationLifetime.StopApplication*> для запуска процесса завершения работы. Метод <xref:Microsoft.Extensions.Hosting.HostingHostBuilderExtensions.UseConsoleLifetime*> разблокирует расширения, такие как [RunAsync](#runasync) и [WaitForShutdownAsync](#waitforshutdownasync). Класс <xref:Microsoft.Extensions.Hosting.Internal.ConsoleLifetime> предварительно зарегистрирован и является реализацией времени жизни по умолчанию. Используется то время жизни, которое зарегистрировано последним.
 
 [!code-csharp[](generic-host/samples-snapshot/2.x/GenericHostSample/Program.cs?name=snippet_UseConsoleLifetime)]
 
@@ -239,7 +240,7 @@ var host = new HostBuilder()
 
 Для поддержки подключения к другим контейнерам узел может принимать <xref:Microsoft.Extensions.DependencyInjection.IServiceProviderFactory%601>. Предоставляет фабрику, не являющуюся частью регистрации контейнера внедрения зависимостей, а являющуюся встроенной функцией узла, которая используется для создания конкретных контейнеров внедрения зависимостей. [UseServiceProviderFactory (IServiceProviderFactory&lt;TContainerBuilder&gt;)](xref:Microsoft.Extensions.Hosting.HostBuilder.UseServiceProviderFactory*) переопределяет фабрику по умолчанию, используемую для создания поставщика службы приложения.
 
-Пользовательская конфигурация контейнера управляется методом <xref:Microsoft.Extensions.Hosting.HostBuilder.ConfigureContainer*>. Метод `ConfigureContainer` обеспечивает возможности строго типизированной настройки контейнера на основе базового API узла. Метод `ConfigureContainer` может вызываться несколько раз с накоплением результатов.
+Пользовательская конфигурация контейнера управляется методом <xref:Microsoft.Extensions.Hosting.HostBuilder.ConfigureContainer*>. Метод <xref:Microsoft.Extensions.Hosting.HostBuilder.ConfigureContainer*> обеспечивает возможности строго типизированной настройки контейнера на основе базового API узла. Метод <xref:Microsoft.Extensions.Hosting.HostBuilder.ConfigureContainer*> может вызываться несколько раз с накоплением результатов.
 
 Создание контейнера службы для приложения:
 
@@ -255,7 +256,7 @@ var host = new HostBuilder()
 
 ## <a name="extensibility"></a>Расширение среды
 
-Расширяемость узла выполняется с помощью методов расширения класса `IHostBuilder`. В следующем примере показано, как метод расширения расширяет реализацию класса `IHostBuilder` с помощью класса [TimedHostedService](xref:fundamentals/host/hosted-services#timed-background-tasks), пример которого приведен в статье <xref:fundamentals/host/hosted-services>.
+Расширяемость узла выполняется с помощью методов расширения класса <xref:Microsoft.Extensions.Hosting.IHostBuilder>. В следующем примере показано, как метод расширения расширяет реализацию класса <xref:Microsoft.Extensions.Hosting.IHostBuilder> с помощью класса [TimedHostedService](xref:fundamentals/host/hosted-services#timed-background-tasks), пример которого приведен в статье <xref:fundamentals/host/hosted-services>.
 
 ```csharp
 var host = new HostBuilder()
@@ -285,7 +286,7 @@ public static class Extensions
 
 ## <a name="manage-the-host"></a>Управление узлом
 
-Реализация <xref:Microsoft.Extensions.Hosting.IHost> отвечает за запуск и остановку реализаций `IHostedService`, которые зарегистрированы в контейнере службы.
+Реализация <xref:Microsoft.Extensions.Hosting.IHost> отвечает за запуск и остановку реализаций <xref:Microsoft.Extensions.Hosting.IHostedService>, которые зарегистрированы в контейнере службы.
 
 ### <a name="run"></a>Выполнить
 
@@ -306,7 +307,7 @@ public class Program
 
 ### <a name="runasync"></a>RunAsync
 
-Метод <xref:Microsoft.Extensions.Hosting.HostingAbstractionsHostExtensions.RunAsync*> запускает приложение и возвращает объект `Task`, который завершается при активации токена отмены или завершение работы:
+Метод <xref:Microsoft.Extensions.Hosting.HostingAbstractionsHostExtensions.RunAsync*> запускает приложение и возвращает объект <xref:System.Threading.Tasks.Task>, который завершается при активации токена отмены или завершение работы:
 
 ```csharp
 public class Program
@@ -323,7 +324,7 @@ public class Program
 
 ### <a name="runconsoleasync"></a>RunConsoleAsync
 
-Метод <xref:Microsoft.Extensions.Hosting.HostingHostBuilderExtensions.RunConsoleAsync*> включает поддержку консоли, собирает и запускает узел и ожидает сигналы `Ctrl+C`/SIGINT или SIGTERM для завершения работы.
+Метод <xref:Microsoft.Extensions.Hosting.HostingHostBuilderExtensions.RunConsoleAsync*> включает поддержку консоли, собирает и запускает узел и ожидает сигналы CTRL + C/SIGINT или SIGTERM для завершения работы.
 
 ```csharp
 public class Program
@@ -387,7 +388,7 @@ public class Program
 
 ### <a name="waitforshutdown"></a>WaitForShutdown
 
-Метод <xref:Microsoft.Extensions.Hosting.HostingAbstractionsHostExtensions.WaitForShutdown*> запускается с помощью <xref:Microsoft.Extensions.Hosting.IHostLifetime>, например <xref:Microsoft.Extensions.Hosting.Internal.ConsoleLifetime> (прослушивает `Ctrl+C`/SIGINT или SIGTERM). `WaitForShutdown` вызывает <xref:Microsoft.Extensions.Hosting.IHost.StopAsync*>.
+Метод <xref:Microsoft.Extensions.Hosting.HostingAbstractionsHostExtensions.WaitForShutdown*> запускается с помощью <xref:Microsoft.Extensions.Hosting.IHostLifetime>, например <xref:Microsoft.Extensions.Hosting.Internal.ConsoleLifetime> (прослушивает CTRL + C/SIGINT или SIGTERM). <xref:Microsoft.Extensions.Hosting.HostingAbstractionsHostExtensions.WaitForShutdown*> вызывает <xref:Microsoft.Extensions.Hosting.IHost.StopAsync*>.
 
 ```csharp
 public class Program
@@ -409,7 +410,7 @@ public class Program
 
 ### <a name="waitforshutdownasync"></a>WaitForShutdownAsync
 
-Метод <xref:Microsoft.Extensions.Hosting.HostingAbstractionsHostExtensions.WaitForShutdownAsync*> возвращает объект `Task`, который завершается после активации завершения работы через токен, и вызывает метод <xref:Microsoft.Extensions.Hosting.IHost.StopAsync*>.
+Метод <xref:Microsoft.Extensions.Hosting.HostingAbstractionsHostExtensions.WaitForShutdownAsync*> возвращает объект <xref:System.Threading.Tasks.Task>, который завершается после активации завершения работы через токен, и вызывает метод <xref:Microsoft.Extensions.Hosting.IHost.StopAsync*>.
 
 ```csharp
 public class Program
@@ -464,7 +465,7 @@ public class Program
 
 ## <a name="ihostingenvironment-interface"></a>Интерфейс IHostingEnvironment
 
-Интерфейс <xref:Microsoft.Extensions.Hosting.IHostingEnvironment> предоставляет сведения о среде размещения приложения. Чтобы получить интерфейс `IHostingEnvironment` для использования его свойств и методов расширения, воспользуйтесь [внедрением конструктора](xref:fundamentals/dependency-injection):
+Интерфейс <xref:Microsoft.Extensions.Hosting.IHostingEnvironment> предоставляет сведения о среде размещения приложения. Чтобы получить интерфейс <xref:Microsoft.Extensions.Hosting.IHostingEnvironment> для использования его свойств и методов расширения, воспользуйтесь [внедрением конструктора](xref:fundamentals/dependency-injection):
 
 ```csharp
 public class MyClass
@@ -487,7 +488,7 @@ public class MyClass
 
 ## <a name="iapplicationlifetime-interface"></a>Интерфейс IApplicationLifetime
 
-Интерфейс <xref:Microsoft.Extensions.Hosting.IApplicationLifetime> позволяет выполнять действия после запуска и завершения работы, включая запросы о нормальном завершении работы. Три свойства этого интерфейса представляют собой токены отмены, которые служат для регистрации методов `Action`, определяющих события запуска и завершения работы.
+Интерфейс <xref:Microsoft.Extensions.Hosting.IApplicationLifetime> позволяет выполнять действия после запуска и завершения работы, включая запросы о нормальном завершении работы. Три свойства этого интерфейса представляют собой токены отмены, которые служат для регистрации методов <xref:System.Action>, определяющих события запуска и завершения работы.
 
 | Токен отмены | Условие инициации&#8230; |
 | ------------------ | --------------------- |
@@ -495,13 +496,13 @@ public class MyClass
 | <xref:Microsoft.Extensions.Hosting.IApplicationLifetime.ApplicationStopped*> | Заканчивается нормальное завершение работы узла. Все запросы должны быть обработаны. Завершение работы блокируется до тех пор, пока это событие не завершится. |
 | <xref:Microsoft.Extensions.Hosting.IApplicationLifetime.ApplicationStopping*> | Происходит нормальное завершение работы узла. Запросы могут все еще обрабатываться. Завершение работы блокируется до тех пор, пока это событие не завершится. |
 
-Конструктор внедряет службу `IApplicationLifetime` в любой класс. [Пример приложения](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/host/generic-host/samples/) использует внедрение в конструкторе в класс `LifetimeEventsHostedService` (реализацию `IHostedService`) для регистрации событий.
+Конструктор внедряет службу <xref:Microsoft.Extensions.Hosting.IApplicationLifetime> в любой класс. [Пример приложения](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/host/generic-host/samples/) использует внедрение в конструкторе в класс `LifetimeEventsHostedService` (реализацию <xref:Microsoft.Extensions.Hosting.IHostedService>) для регистрации событий.
 
 *LifetimeEventsHostedService.cs*:
 
 [!code-csharp[](generic-host/samples/2.x/GenericHostSample/LifetimeEventsHostedService.cs?name=snippet1)]
 
-Метод <xref:Microsoft.Extensions.Hosting.IApplicationLifetime.StopApplication*> запрашивает остановку приложения. Следующий класс использует `StopApplication` для корректного завершения работы приложения при вызове метода класса `Shutdown`:
+Метод <xref:Microsoft.Extensions.Hosting.IApplicationLifetime.StopApplication*> запрашивает остановку приложения. Следующий класс использует <xref:Microsoft.Extensions.Hosting.IApplicationLifetime.StopApplication*> для корректного завершения работы приложения при вызове метода класса `Shutdown`:
 
 ```csharp
 public class MyClass
@@ -523,4 +524,3 @@ public class MyClass
 ## <a name="additional-resources"></a>Дополнительные ресурсы
 
 * <xref:fundamentals/host/hosted-services>
-* [Репозиторий примеров размещения на GitHub](https://github.com/aspnet/Hosting/tree/release/2.1/samples)

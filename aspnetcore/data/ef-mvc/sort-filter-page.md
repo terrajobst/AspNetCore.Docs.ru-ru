@@ -3,15 +3,15 @@ title: Учебник. Использование ASP.NET MVC с EF Core. До�
 description: Из этого руководства вы узнаете, как добавить на страницу указателя учащихся сортировку, фильтрацию и разбиение на страницы. Здесь также описывается создание страницы с простой группировкой.
 author: rick-anderson
 ms.author: tdykstra
-ms.date: 02/04/2019
+ms.date: 03/27/2019
 ms.topic: tutorial
 uid: data/ef-mvc/sort-filter-page
-ms.openlocfilehash: 51b6b08d2410652f93427371aec299eb4c8789f1
-ms.sourcegitcommit: 5e3797a02ff3c48bb8cb9ad4320bfd169ebe8aba
+ms.openlocfilehash: dff5a5b1ba3c8ed07ccc8d134f8cfeb25b9f6689
+ms.sourcegitcommit: 3e9e1f6d572947e15347e818f769e27dea56b648
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56103063"
+ms.lasthandoff: 03/30/2019
+ms.locfileid: "58751041"
 ---
 # <a name="tutorial-add-sorting-filtering-and-paging---aspnet-mvc-with-ef-core"></a>Учебник. Использование ASP.NET MVC с EF Core. Добавление сортировки, фильтрации и разбиения на страницы
 
@@ -33,7 +33,7 @@ ms.locfileid: "56103063"
 
 ## <a name="prerequisites"></a>Предварительные требования
 
-* [Реализации функций CRUD с использованием EF Core в веб-приложении MVC ASP.NET Core](crud.md)
+* [Реализация функциональности CRUD](crud.md)
 
 ## <a name="add-column-sort-links"></a>Добавление ссылок для сортировки столбцов
 
@@ -144,7 +144,7 @@ public async Task<IActionResult> Index(
     string sortOrder,
     string currentFilter,
     string searchString,
-    int? page)
+    int? pageNumber)
 ```
 
 При первом отображении страницы или если пользователь еще не нажимал на ссылки сортировки и перелистывания, все параметры будут иметь значение null.  При нажатии на кнопку перелистывания переменная page будет содержать номер страницы для отображения.
@@ -158,7 +158,7 @@ public async Task<IActionResult> Index(
 ```csharp
 if (searchString != null)
 {
-    page = 1;
+    pageNumber = 1;
 }
 else
 {
@@ -169,10 +169,10 @@ else
 В конце метода `Index` метод `PaginatedList.CreateAsync` преобразует результат запроса студентов в страницу коллекции, поддерживающую разбиение на страницы. Это страница со студентами затем передается в представление.
 
 ```csharp
-return View(await PaginatedList<Student>.CreateAsync(students.AsNoTracking(), page ?? 1, pageSize));
+return View(await PaginatedList<Student>.CreateAsync(students.AsNoTracking(), pageNumber ?? 1, pageSize));
 ```
 
-Метод `PaginatedList.CreateAsync` принимает номер страницы. Два вопросительных знака являются оператором объединения с null. Этот оператор определяет значение по умолчанию для значения null; выражение `(page ?? 1)` возвращает значение переменной `page`, если она имеет значение, и возвращает 1, если переменная `page` имеет значение null.
+Метод `PaginatedList.CreateAsync` принимает номер страницы. Два вопросительных знака являются оператором объединения с null. Этот оператор определяет значение по умолчанию для значения null; выражение `(pageNumber ?? 1)` возвращает значение переменной `pageNumber`, если она имеет значение, и возвращает 1, если переменная `pageNumber` имеет значение null.
 
 ## <a name="add-paging-links"></a>Добавление ссылок для разбиения по страницам
 
@@ -193,7 +193,7 @@ return View(await PaginatedList<Student>.CreateAsync(students.AsNoTracking(), pa
 ```html
 <a asp-action="Index"
    asp-route-sortOrder="@ViewData["CurrentSort"]"
-   asp-route-page="@(Model.PageIndex - 1)"
+   asp-route-pageNumber="@(Model.PageIndex - 1)"
    asp-route-currentFilter="@ViewData["CurrentFilter"]"
    class="btn btn-default @prevDisabled">
    Previous
@@ -234,7 +234,7 @@ return View(await PaginatedList<Student>.CreateAsync(students.AsNoTracking(), pa
 
 [!code-csharp[](intro/samples/cu/Controllers/HomeController.cs?name=snippet_AddContext&highlight=3,5,7)]
 
-Замените метод `About` следующим кодом:
+Добавьте метод `About` со следующим кодом.
 
 [!code-csharp[](intro/samples/cu/Controllers/HomeController.cs?name=snippet_UseDbSet)]
 
@@ -244,7 +244,7 @@ return View(await PaginatedList<Student>.CreateAsync(students.AsNoTracking(), pa
 
 ### <a name="modify-the-about-view"></a>Изменение представления About
 
-Замените код в файле *Views/Home/About.cshtml* следующим кодом:
+Добавьте файл *Views/Home/About.cshtml* со следующим кодом.
 
 [!code-html[](intro/samples/cu/Views/Home/About.cshtml)]
 
@@ -266,6 +266,7 @@ return View(await PaginatedList<Student>.CreateAsync(students.AsNoTracking(), pa
 > * Добавление ссылок для разбиения по страницам
 > * Создание страницы сведений
 
-В следующем руководстве описано, как с помощью миграций обрабатывать изменения в модели данных.
+В следующем учебнике описано, как с помощью миграций обрабатывать изменения в модели данных.
+
 > [!div class="nextstepaction"]
-> [Обработка изменений модели данных](migrations.md)
+> [Далее: Обработка изменений модели данных](migrations.md)

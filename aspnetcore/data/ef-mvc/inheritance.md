@@ -4,15 +4,15 @@ description: В этом учебнике показано, как реализ�
 author: rick-anderson
 ms.author: tdykstra
 ms.custom: mvc
-ms.date: 02/05/2019
+ms.date: 03/27/2019
 ms.topic: tutorial
 uid: data/ef-mvc/inheritance
-ms.openlocfilehash: 0a5eb1aba43bc2adf746202772c7f98eff49b4ff
-ms.sourcegitcommit: 5e3797a02ff3c48bb8cb9ad4320bfd169ebe8aba
+ms.openlocfilehash: ba688b259206f21045376b6a38a266ad7528aec1
+ms.sourcegitcommit: 3e9e1f6d572947e15347e818f769e27dea56b648
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56103011"
+ms.lasthandoff: 03/30/2019
+ms.locfileid: "58750766"
 ---
 # <a name="tutorial-implement-inheritance---aspnet-mvc-with-ef-core"></a>Учебник. Использование ASP.NET MVC с EF Core. Реализация наследования
 
@@ -32,7 +32,7 @@ ms.locfileid: "56103011"
 
 ## <a name="prerequisites"></a>Предварительные требования
 
-* [Обработка параллелизма с использованием EF Core в веб-приложении MVC ASP.NET Core](concurrency.md)
+* [Обработка параллелизма](concurrency.md)
 
 ## <a name="map-inheritance-to-database"></a>Сопоставление наследования с базой данных
 
@@ -168,6 +168,7 @@ dotnet ef database update
 > * Создание и обновление миграций
 > * Тестирование реализации
 
-В следующем руководстве описано, как использовать несколько сценариев Entity Framework с расширенными возможностями.
+В следующем учебнике описано, как использовать несколько сценариев Entity Framework с расширенными возможностями.
+
 > [!div class="nextstepaction"]
-> [Дополнительные разделы](advanced.md)
+> [Далее: Дополнительные разделы](advanced.md)

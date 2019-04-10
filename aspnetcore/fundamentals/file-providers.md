@@ -2,16 +2,17 @@
 title: Поставщики файлов в ASP.NET Core
 author: guardrex
 description: Сведения о том, как ASP.NET Core абстрагирует доступ к файловой системе с помощью поставщиков файлов.
+monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 08/01/2018
+ms.date: 03/30/2019
 uid: fundamentals/file-providers
-ms.openlocfilehash: 5d0d46ba82cd84e48e5a9b23d6d330d8888beb41
-ms.sourcegitcommit: 408921a932448f66cb46fd53c307a864f5323fe5
+ms.openlocfilehash: 2ce40ea0d576d08a6b42c3eb6693754f2a0bddce
+ms.sourcegitcommit: 5995f44e9e13d7e7aa8d193e2825381c42184e47
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51570104"
+ms.lasthandoff: 04/02/2019
+ms.locfileid: "58809225"
 ---
 # <a name="file-providers-in-aspnet-core"></a>Поставщики файлов в ASP.NET Core
 
@@ -50,25 +51,11 @@ ASP.NET Core абстрагирует доступ к файловой сист�
 
 Доступны три реализации `IFileProvider`.
 
-::: moniker range=">= aspnetcore-2.0"
-
-| Реализация | Описание: |
+| Реализация | Описание |
 | -------------- | ----------- |
 | [PhysicalFileProvider](#physicalfileprovider) | Физический поставщик используется для доступа к физическим файлам системы. |
 | [ManifestEmbeddedFileProvider](#manifestembeddedfileprovider) | Поставщик внедренных манифестов используется для доступа к файлам, внедренным в сборки. |
 | [CompositeFileProvider](#compositefileprovider) | Составной поставщик используется для предоставления комбинированного доступа к файлам и каталогам из одного или нескольких поставщиков. |
-
-::: moniker-end
-
-::: moniker range="< aspnetcore-2.0"
-
-| Реализация | Описание: |
-| -------------- | ----------- |
-| [PhysicalFileProvider](#physicalfileprovider) | Физический поставщик используется для доступа к физическим файлам системы. |
-| [EmbeddedFileProvider](#embeddedfileprovider) | Внедренный поставщик используется для доступа к файлам, внедренным в сборки. |
-| [CompositeFileProvider](#compositefileprovider) | Составной поставщик используется для предоставления комбинированного доступа к файлам и каталогам из одного или нескольких поставщиков. |
-
-::: moniker-end
 
 ### <a name="physicalfileprovider"></a>PhysicalFileProvider
 
@@ -102,8 +89,6 @@ var physicalProvider = _env.ContentRootFileProvider;
 
 Вы можете внедрить провайдер в конструктор любого класса и назначить его локальному полю. Используйте это поле в методах класса для доступа к файлам.
 
-::: moniker range=">= aspnetcore-2.0"
-
 В нашем примере приложения класс `IndexModel` получает экземпляр `IFileProvider` для извлечения содержимого из основного каталога приложения.
 
 *Pages/Index.cshtml.cs*:
@@ -116,32 +101,9 @@ var physicalProvider = _env.ContentRootFileProvider;
 
 [!code-cshtml[](file-providers/samples/2.x/FileProviderSample/Pages/Index.cshtml?name=snippet1)]
 
-::: moniker-end
-
-::: moniker range="< aspnetcore-2.0"
-
-В нашем примере приложения класс `HomeController` получает экземпляр `IFileProvider` для извлечения содержимого из основного каталога приложения.
-
-*Controllers/HomeController.cs*:
-
-[!code-csharp[](file-providers/samples/1.x/FileProviderSample/Controllers/HomeController.cs?name=snippet1)]
-
-В этом представлении выполняется итерация `IDirectoryContents`.
-
-*Views/Home/Index.cshtml*:
-
-[!code-cshtml[](file-providers/samples/1.x/FileProviderSample/Views/Home/Index.cshtml?name=snippet1)]
-
-::: moniker-end
-
-::: moniker range=">= aspnetcore-2.0"
-
 ### <a name="manifestembeddedfileprovider"></a>ManifestEmbeddedFileProvider
 
 [ManifestEmbeddedFileProvider](/dotnet/api/microsoft.extensions.fileproviders.manifestembeddedfileprovider) используется для доступа к файлам, внедренным в сборки. `ManifestEmbeddedFileProvider` использует манифест, скомпилированный в сборку, для воссоздания исходных путей для внедренных файлов.
-
-> [!NOTE]
-> `ManifestEmbeddedFileProvider` доступно в ASP.NET Core 2.1 и более поздних версий. Чтобы получить доступ к файлам, внедренным в сборки, из ASP.NET Core 2.0 или более ранних версий см. в [версии этой статьи для ASP.NET Core 1.x](/aspnet/core/fundamentals/file-providers?view=aspnetcore-1.1).
 
 Чтобы создать манифест для внедренных файлов, задайте для свойства `<GenerateEmbeddedFilesManifest>` значение `true`. Выберите файлы для внедрения с помощью [&lt;EmbeddedResource&gt;](/dotnet/core/tools/csproj#default-compilation-includes-in-net-core-projects):
 
@@ -164,82 +126,30 @@ var manifestEmbeddedProvider =
 * ограничить файлы по дате последнего изменения;
 * указать имя внедренного ресурса, содержащего внедренный файл манифеста.
 
-| Перегрузка | Описание: |
+| Перегрузка | Описание |
 | -------- | ----------- |
 | [ManifestEmbeddedFileProvider(Assembly, String)](/dotnet/api/microsoft.extensions.fileproviders.manifestembeddedfileprovider.-ctor#Microsoft_Extensions_FileProviders_ManifestEmbeddedFileProvider__ctor_System_Reflection_Assembly_System_String_) | Принимает необязательный параметр `root` со значением относительного пути. Укажите `root`, чтобы ограничить вызовы [GetDirectoryContents](/dotnet/api/microsoft.extensions.fileproviders.ifileprovider.getdirectorycontents) только ресурсами по указанному пути. |
 | [ManifestEmbeddedFileProvider(Assembly, String, DateTimeOffset)](/dotnet/api/microsoft.extensions.fileproviders.manifestembeddedfileprovider.-ctor#Microsoft_Extensions_FileProviders_ManifestEmbeddedFileProvider__ctor_System_Reflection_Assembly_System_String_System_DateTimeOffset_) | Принимает необязательный параметр `root` со значением относительного пути и дату `lastModified` в параметре [DateTimeOffset](/dotnet/api/system.datetimeoffset). Дата `lastModified` ограничивает дату последнего изменения для экземпляров [IFileInfo](/dotnet/api/microsoft.extensions.fileproviders.ifileinfo), возвращаемых функцией [IFileProvider](/dotnet/api/microsoft.extensions.fileproviders.ifileprovider). |
 | [ManifestEmbeddedFileProvider(Assembly, String, String, DateTimeOffset)](/dotnet/api/microsoft.extensions.fileproviders.manifestembeddedfileprovider.-ctor#Microsoft_Extensions_FileProviders_ManifestEmbeddedFileProvider__ctor_System_Reflection_Assembly_System_String_System_String_System_DateTimeOffset_) | Принимает необязательный параметр `root` со значением относительного пути, дату `lastModified` и параметры `manifestName`. `manifestName` здесь представляет имя встроенного ресурса, содержащего манифест. |
 
-::: moniker-end
-
-::: moniker range="< aspnetcore-2.0"
-
-### <a name="embeddedfileprovider"></a>EmbeddedFileProvider
-
-[EmbeddedFileProvider](/dotnet/api/microsoft.extensions.fileproviders.embeddedfileprovider) используется для доступа к файлам, внедренным в сборки. Укажите файлы для внедрения с помощью свойства [&lt;EmbeddedResource&gt;](/dotnet/core/tools/csproj#default-compilation-includes-in-net-core-projects) в файле проекта:
-
-```xml
-<ItemGroup>
-  <EmbeddedResource Include="Resource.txt" />
-</ItemGroup>
-```
-
-Используйте [стандартные маски](#glob-patterns) для указания одного или нескольких файлов, которые вы хотите внедрить в сборку.
-
-Наш пример приложения создает `EmbeddedFileProvider` и передает в соответствующий конструктор текущую выполняемую сборку.
-
-*Startup.cs*:
-
-```csharp
-var embeddedProvider = new EmbeddedFileProvider(Assembly.GetEntryAssembly());
-```
-
-Внедренные ресурсы не предоставляют каталоги. Вместо этого путь к ресурсу (через пространство имен) внедряется в имя файла с помощью разделителей `.`. В нашем примере приложения `baseNamespace` имеет значение `FileProviderSample.`.
-
-Конструктор [EmbeddedFileProvider(Assembly, String)](/dotnet/api/microsoft.extensions.fileproviders.embeddedfileprovider.-ctor#Microsoft_Extensions_FileProviders_EmbeddedFileProvider__ctor_System_Reflection_Assembly_) принимает необязательный параметр `baseNamespace`. Укажите базовое пространство имен, чтобы ограничить вызовы [GetDirectoryContents](/dotnet/api/microsoft.extensions.fileproviders.ifileprovider.getdirectorycontents) только ресурсами в указанном пространстве имен.
-
-::: moniker-end
-
 ### <a name="compositefileprovider"></a>CompositeFileProvider
 
 [CompositeFileProvider](/dotnet/api/microsoft.extensions.fileproviders.compositefileprovider) объединяет экземпляры `IFileProvider`, предоставляя единый интерфейс для работы с файлами от нескольких поставщиков. При создании `CompositeFileProvider` передайте в соответствующий конструктор один или несколько экземпляров `IFileProvider`:
-
-::: moniker range=">= aspnetcore-2.0"
 
 В нашем примере приложения `PhysicalFileProvider` и `ManifestEmbeddedFileProvider` предоставляют файлы для `CompositeFileProvider` с регистрацией в контейнере служб приложения:
 
 [!code-csharp[](file-providers/samples/2.x/FileProviderSample/Startup.cs?name=snippet1)]
 
-::: moniker-end
-
-::: moniker range="< aspnetcore-2.0"
-
-В нашем примере приложения `PhysicalFileProvider` и `EmbeddedFileProvider` предоставляют файлы для `CompositeFileProvider` с регистрацией в контейнере служб приложения:
-
-[!code-csharp[](file-providers/samples/1.x/FileProviderSample/Startup.cs?name=snippet1)]
-
-::: moniker-end
-
 ## <a name="watch-for-changes"></a>Отслеживание изменений
 
 Метод [IFileProvider.Watch](/dotnet/api/microsoft.extensions.fileproviders.ifileprovider.watch) позволяет контролировать изменения в одном или нескольких файлах или каталогах. `Watch` принимает строку пути, которая можно использовать [стандартные маски](#glob-patterns) для указания нескольких файлов. `Watch` возвращает [IChangeToken](/dotnet/api/microsoft.extensions.primitives.ichangetoken). Этот токен изменений предоставляет следующие свойства:
 
-* [HasChanged](/dotnet/api/microsoft.extensions.primitives.ichangetoken.haschanged) — свойство, которое можно проверить, чтобы определить, произошло ли изменение.
-* [RegisterChangeCallback](/dotnet/api/microsoft.extensions.primitives.ichangetoken.registerchangecallback) — вызывается при обнаружении изменений по указанной строке пути. Каждый токен изменения выполняет соответствующий обратный вызов только в ответ на отдельное изменение. Чтобы реализовать постоянное наблюдение, используйте [TaskCompletionSource](/dotnet/api/system.threading.tasks.taskcompletionsource-1), как показано ниже, или повторно создавайте экземпляры `IChangeToken` в ответ на изменения.
+* [HasChanged](/dotnet/api/microsoft.extensions.primitives.ichangetoken.haschanged): свойство, которое можно проверить, чтобы определить, произошло ли изменение.
+* [RegisterChangeCallback](/dotnet/api/microsoft.extensions.primitives.ichangetoken.registerchangecallback): вызывается при обнаружении изменений по указанной строке пути. Каждый токен изменения выполняет соответствующий обратный вызов только в ответ на отдельное изменение. Чтобы реализовать постоянное наблюдение, используйте [TaskCompletionSource](/dotnet/api/system.threading.tasks.taskcompletionsource-1), как показано ниже, или повторно создавайте экземпляры `IChangeToken` в ответ на изменения.
 
 В нашем примере консольное приложение *WatchConsole* будет отображать сообщение при изменении текстового файла:
 
-::: moniker range=">= aspnetcore-2.0"
-
 [!code-csharp[](file-providers/samples/2.x/WatchConsole/Program.cs?name=snippet1&highlight=1-2,16,19-20)]
-
-::: moniker-end
-
-::: moniker range="< aspnetcore-2.0"
-
-[!code-csharp[](file-providers/samples/1.x/WatchConsole/Program.cs?name=snippet1&highlight=1-2,16,19-20)]
-
-::: moniker-end
 
 Некоторые файловые системы, такие как контейнеры Docker и сетевые папки, не могут надежно отправлять уведомления об изменениях. Задайте для переменной среды `DOTNET_USE_POLLING_FILE_WATCHER` значение `1` или `true`, чтобы опрашивать файловую систему на предмет изменений каждые 4 секунды (это значение нельзя изменить).
 

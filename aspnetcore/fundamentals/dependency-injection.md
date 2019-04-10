@@ -2,16 +2,17 @@
 title: Внедрение зависимостей в ASP.NET Core
 author: guardrex
 description: Сведения о том, как ASP.NET Core реализует внедрение зависимостей и как его использовать.
+monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 02/25/2019
+ms.date: 03/28/2019
 uid: fundamentals/dependency-injection
-ms.openlocfilehash: cc020d7397b03f8ecd6cebf98a14b4aaebb47940
-ms.sourcegitcommit: 687ffb15ebe65379f75c84739ea851d5a0d788b7
+ms.openlocfilehash: 8312f3375296a8530ac2db3db46d062b7b9e76b9
+ms.sourcegitcommit: 3e9e1f6d572947e15347e818f769e27dea56b648
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58488693"
+ms.lasthandoff: 03/30/2019
+ms.locfileid: "58750604"
 ---
 # <a name="dependency-injection-in-aspnet-core"></a>Внедрение зависимостей в ASP.NET Core
 
@@ -44,8 +45,6 @@ public class MyDependency
 }
 ```
 
-::: moniker range=">= aspnetcore-2.1"
-
 Чтобы сделать метод `WriteMessage` доступным какому-то классу, можно создать экземпляр класса `MyDependency`. Класс `MyDependency` выступает зависимостью класса `IndexModel`.
 
 ```csharp
@@ -61,29 +60,6 @@ public class IndexModel : PageModel
 }
 ```
 
-::: moniker-end
-
-::: moniker range="<= aspnetcore-2.0"
-
-Чтобы сделать метод `WriteMessage` доступным какому-то классу, можно создать экземпляр класса `MyDependency`. Класс `MyDependency` выступает зависимостью класса `HomeController`.
-
-```csharp
-public class HomeController : Controller
-{
-    MyDependency _dependency = new MyDependency();
-
-    public async Task<IActionResult> Index()
-    {
-        await _dependency.WriteMessage(
-            "HomeController.Index created this message.");
-
-        return View();
-    }
-}
-```
-
-::: moniker-end
-
 Этот класс создает экземпляр `MyDependency` и напрямую зависит от него. Зависимости в коде (как в предыдущем примере) представляют собой определенную проблему. Их следует избегать по следующим причинам:
 
 * Чтобы заменить `MyDependency` другой реализацией, класс необходимо изменить.
@@ -98,31 +74,11 @@ public class HomeController : Controller
 
 В [примере приложения](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/dependency-injection/samples) интерфейс `IMyDependency` определяет метод, который служба предоставляет приложению.
 
-::: moniker range=">= aspnetcore-2.1"
-
 [!code-csharp[](dependency-injection/samples/2.x/DependencyInjectionSample/Interfaces/IMyDependency.cs?name=snippet1)]
-
-::: moniker-end
-
-::: moniker range="<= aspnetcore-2.0"
-
-[!code-csharp[](dependency-injection/samples/1.x/DependencyInjectionSample/Interfaces/IMyDependency.cs?name=snippet1)]
-
-::: moniker-end
 
 Этот интерфейс реализуется конкретным типом, `MyDependency`.
 
-::: moniker range=">= aspnetcore-2.1"
-
 [!code-csharp[](dependency-injection/samples/2.x/DependencyInjectionSample/Services/MyDependency.cs?name=snippet1)]
-
-::: moniker-end
-
-::: moniker range="<= aspnetcore-2.0"
-
-[!code-csharp[](dependency-injection/samples/1.x/DependencyInjectionSample/Services/MyDependency.cs?name=snippet1)]
-
-::: moniker-end
 
 `MyDependency` запрашивает [ILogger&lt;TCategoryName&gt;](/dotnet/api/microsoft.extensions.logging.ilogger-1) в своем конструкторе. Использование цепочки внедрений зависимостей не является чем-то необычным. Каждая запрашиваемая зависимость запрашивает собственные зависимости. Контейнер разрешает зависимости в графе и возвращает полностью разрешенную службу. Весь набор зависимостей, которые нужно разрешить, обычно называют *деревом зависимостей*, *графом зависимостей* или *графом объектов*.
 
@@ -136,17 +92,7 @@ services.AddSingleton(typeof(ILogger<T>), typeof(Logger<T>));
 
 В примере приложения служба `IMyDependency` зарегистрирована с конкретным типом `MyDependency`. Регистрация регулирует время существования службы согласно времени существования одного запроса. Подробнее о [времени существования служб](#service-lifetimes) мы поговорим далее в этой статье.
 
-::: moniker range=">= aspnetcore-2.1"
-
-[!code-csharp[](dependency-injection/samples/2.x/DependencyInjectionSample/Startup.cs?name=snippet1&highlight=11)]
-
-::: moniker-end
-
-::: moniker range="<= aspnetcore-2.0"
-
-[!code-csharp[](dependency-injection/samples/1.x/DependencyInjectionSample/Startup.cs?name=snippet1&highlight=5)]
-
-::: moniker-end
+[!code-csharp[](dependency-injection/samples/2.x/DependencyInjectionSample/Startup.cs?name=snippet1&highlight=5)]
 
 > [!NOTE]
 > Каждый метод расширения `services.Add{SERVICE_NAME}` добавляет (а потенциально и настраивает) службы. Например, `services.AddMvc()` добавляет службы, которые нужны для Razor Pages и MVC. Рекомендуем придерживаться такого подхода в приложениях. Поместите методы расширения в пространство имен [Microsoft.Extensions.DependencyInjection](/dotnet/api/microsoft.extensions.dependencyinjection), чтобы инкапсулировать группы зарегистрированных служб.
@@ -171,17 +117,7 @@ public class MyDependency : IMyDependency
 
 В примере приложения запрашивается экземпляр `IMyDependency`, который затем используется для вызова метода службы `WriteMessage`.
 
-::: moniker range=">= aspnetcore-2.1"
-
 [!code-csharp[](dependency-injection/samples/2.x/DependencyInjectionSample/Pages/Index.cshtml.cs?name=snippet1&highlight=3,6,13,29-30)]
-
-::: moniker-end
-
-::: moniker range="<= aspnetcore-2.0"
-
-[!code-csharp[](dependency-injection/samples/1.x/DependencyInjectionSample/Controllers/MyDependencyController.cs?name=snippet1&highlight=3,5-8,13-14)]
-
-::: moniker-end
 
 ## <a name="framework-provided-services"></a>Платформенные службы
 
@@ -228,11 +164,11 @@ public void ConfigureServices(IServiceCollection services)
 
 **Временный**
 
-Временные службы времени существования создаются при каждом их запросе. Это время существования лучше всего подходит для простых служб без отслеживания состояния.
+Временные службы времени существования создаются при каждом их запросе из контейнера служб. Это время существования лучше всего подходит для простых служб без отслеживания состояния.
 
 **Ограниченный областью**
 
-Службы времени существования с заданной областью создаются один раз для каждого запроса.
+Службы времени существования с заданной областью создаются один раз для каждого клиентского запроса (подключения).
 
 > [!WARNING]
 > При использовании такой службы в ПО промежуточного слоя внедрите ее в метод `Invoke` или `InvokeAsync`. Не внедряйте службу через внедрение конструктора, поскольку в таком случае служба будет вести себя как одноэлементный объект. Для получения дополнительной информации см. <xref:fundamentals/middleware/index>.
@@ -259,87 +195,35 @@ public void ConfigureServices(IServiceCollection services)
 
 ## <a name="entity-framework-contexts"></a>Контексты Entity Framework
 
-Контексты Entity Framework обычно добавляются в контейнер службы с помощью [времени существования с заданной областью](#service-lifetimes), поскольку операции базы данных в веб-приложении обычно относятся к области запроса. Время существования по умолчанию имеет заданную область, если время существования не указано в перегрузке <xref:Microsoft.Extensions.DependencyInjection.EntityFrameworkServiceCollectionExtensions.AddDbContext*> при регистрации контекста базы данных. Службы данного времени существования не должны использовать контекст базы данных с временем существования короче, чем у службы.
+Контексты Entity Framework обычно добавляются в контейнер службы с помощью [времени существования с заданной областью](#service-lifetimes), поскольку операции базы данных в веб-приложении обычно относятся к области клиентского запроса. Время существования по умолчанию имеет заданную область, если время существования не указано в перегрузке <xref:Microsoft.Extensions.DependencyInjection.EntityFrameworkServiceCollectionExtensions.AddDbContext*> при регистрации контекста базы данных. Службы данного времени существования не должны использовать контекст базы данных с временем существования короче, чем у службы.
 
 ## <a name="lifetime-and-registration-options"></a>Параметры времени существования и регистрации
 
 Чтобы продемонстрировать различия между указанными вариантами времени существования и регистрации, рассмотрим интерфейсы, представляющие задачи в виде операции с уникальным идентификатором `OperationId`. В зависимости от того, как время существования службы операции настроено для этих интерфейсов, при запросе из класса контейнер предоставляет тот же или другой экземпляр службы.
 
-::: moniker range=">= aspnetcore-2.1"
-
 [!code-csharp[](dependency-injection/samples/2.x/DependencyInjectionSample/Interfaces/IOperation.cs?name=snippet1)]
-
-::: moniker-end
-
-::: moniker range="<= aspnetcore-2.0"
-
-[!code-csharp[](dependency-injection/samples/1.x/DependencyInjectionSample/Interfaces/IOperation.cs?name=snippet1)]
-
-::: moniker-end
 
 Интерфейсы реализованы в классе `Operation`. Если идентификатор GUID не предоставлен, конструктор `Operation` создает его.
 
-::: moniker range=">= aspnetcore-2.1"
-
 [!code-csharp[](dependency-injection/samples/2.x/DependencyInjectionSample/Models/Operation.cs?name=snippet1)]
-
-::: moniker-end
-
-::: moniker range="<= aspnetcore-2.0"
-
-[!code-csharp[](dependency-injection/samples/1.x/DependencyInjectionSample/Models/Operation.cs?name=snippet1)]
-
-::: moniker-end
 
 Регистрируется служба `OperationService`, которая зависит от каждого из других типов `Operation`. Когда служба `OperationService` запрашивается через внедрение зависимостей, она получает либо новый экземпляр каждой службы, либо экземпляр уже существующей службы в зависимости от времени существования зависимой службы.
 
-* Если при запросе создаются временные службы, `OperationId` службы `IOperationTransient` отличается от `OperationId` службы `OperationService`. `OperationService` получает новый экземпляр класса `IOperationTransient`. Новый экземпляр возвращает другой идентификатор `OperationId`.
-* Если при запросе создаются регулируемые службы, идентификатор `OperationId` службы `IOperationScoped` будет таким же, как для службы `OperationService` в запросе. В разных запросах обе службы используют разные значения `OperationId`.
-* Если одинарные службы и службы с одинарным экземпляром создаются один раз и используются во всех запросах и службах, идентификатор `OperationId` будет одинаковым во всех запросах служб.
-
-::: moniker range=">= aspnetcore-2.1"
+* Если при запросе из контейнера создаются временные службы, `OperationId` службы `IOperationTransient` отличается от `OperationId` службы `OperationService`. `OperationService` получает новый экземпляр класса `IOperationTransient`. Новый экземпляр возвращает другой идентификатор `OperationId`.
+* Если при каждом клиентском запросе создаются регулируемые службы, идентификатор `OperationId` службы `IOperationScoped` будет таким же, как для службы `OperationService` в клиентском запросе. В разных клиентских запросах обе службы используют разные значения `OperationId`.
+* Если одинарные службы и службы с одинарным экземпляром создаются один раз и используются во всех клиентских запросах и службах, идентификатор `OperationId` будет одинаковым во всех запросах служб.
 
 [!code-csharp[](dependency-injection/samples/2.x/DependencyInjectionSample/Services/OperationService.cs?name=snippet1)]
 
-::: moniker-end
-
-::: moniker range="<= aspnetcore-2.0"
-
-[!code-csharp[](dependency-injection/samples/1.x/DependencyInjectionSample/Services/OperationService.cs?name=snippet1)]
-
-::: moniker-end
-
 В `Startup.ConfigureServices` каждый тип добавляется в контейнер согласно его времени существования.
 
-::: moniker range=">= aspnetcore-2.1"
-
-[!code-csharp[](dependency-injection/samples/2.x/DependencyInjectionSample/Startup.cs?name=snippet1&highlight=12-15,18)]
-
-::: moniker-end
-
-::: moniker range="<= aspnetcore-2.0"
-
-[!code-csharp[](dependency-injection/samples/1.x/DependencyInjectionSample/Startup.cs?name=snippet1&highlight=6-9,12)]
-
-::: moniker-end
+[!code-csharp[](dependency-injection/samples/2.x/DependencyInjectionSample/Startup.cs?name=snippet1&highlight=6-9,12)]
 
 Служба `IOperationSingletonInstance` использует определенный экземпляр с известным идентификатором `Guid.Empty`. Понятно, когда этот тип используется (его GUID — все нули).
-
-::: moniker range=">= aspnetcore-2.1"
 
 В примере приложения показано время существования объектов в пределах одного и нескольких запросов. В примере приложения `IndexModel` запрашивает каждый вид типа `IOperation`, а также `OperationService`. После этого на странице отображаются все значения `OperationId` службы и класса модели страниц в виде назначенных свойств.
 
 [!code-csharp[](dependency-injection/samples/2.x/DependencyInjectionSample/Pages/Index.cshtml.cs?name=snippet1&highlight=7-11,14-18,21-25)]
-
-::: moniker-end
-
-::: moniker range="<= aspnetcore-2.0"
-
-В примере приложения показано время существования объектов в пределах одного и нескольких запросов. Образец приложения содержит контроллер `OperationsController`, который запрашивает каждый вид типа `IOperation`, а также `OperationService`. Чтобы отобразить значения `OperationId` службы, действие `Index` помещает службы в `ViewBag`.
-
-[!code-csharp[](dependency-injection/samples/1.x/DependencyInjectionSample/Controllers/OperationsController.cs?name=snippet1)]
-
-::: moniker-end
 
 Результаты двух запросов будут выглядеть так:
 
@@ -377,8 +261,8 @@ Instance: 00000000-0000-0000-0000-000000000000
 
 Проанализируйте, какие значения `OperationId` изменяются в пределах одного и нескольких запросов.
 
-* *Временные* объекты всегда разные. Обратите внимание, что временное значение `OperationId` отличается в первом и втором запросе, а также в обеих операциях `OperationService`. Каждой службе и каждому запросу предоставляется новый экземпляр.
-* *Регулируемые* объекты остаются неизменными в пределах одного запроса, но в разных запросах используются разные объекты.
+* *Временные* объекты всегда разные. Временное значение `OperationId` отличается в первом и втором клиентских запросах, а также в обеих операциях `OperationService`. Каждому запросу службы и каждому клиентскому запросу предоставляется новый экземпляр.
+* *Ограниченные по области* объекты одинаковы в рамках клиентского запроса, но различаются для разных запросов.
 * *Одинарные* объекты остаются неизменными для всех объектов и запросов независимо от того, предоставляется ли в `ConfigureServices` экземпляр `Operation`.
 
 ## <a name="call-services-from-main"></a>Вызов служб из функции main
@@ -412,14 +296,10 @@ public static void Main(string[] args)
 
 ## <a name="scope-validation"></a>Проверка области
 
-::: moniker range=">= aspnetcore-2.0"
-
 Когда приложение выполняется в среде разработки, поставщик службы по умолчанию проверяет следующее:
 
 * Службы с заданной областью не разрешаются из корневого поставщика службы, прямо или косвенно.
 * Службы с заданной областью не вводятся в одноэлементные объекты, прямо или косвенно.
-
-::: moniker-end
 
 Корневой поставщик службы создается при вызове [BuildServiceProvider](/dotnet/api/microsoft.extensions.dependencyinjection.servicecollectioncontainerbuilderextensions.buildserviceprovider). Время существования корневого поставщика службы соответствует времени существования приложения или сервера — поставщик запускается с приложением и удаляется, когда приложение завершает работу.
 
@@ -476,13 +356,6 @@ public void ConfigureServices(IServiceCollection services)
 }
 ```
 
-::: moniker range="= aspnetcore-1.0"
-
-> [!NOTE]
-> В ASP.NET Core 1.0 контейнер вызывает удаление для *всех* объектов `IDisposable`, включая те, которые он не создавал.
-
-::: moniker-end
-
 ## <a name="default-service-container-replacement"></a>Замена стандартного контейнера служб
 
 Встроенный контейнер служб предназначен для удовлетворения базовых потребностей платформы и большинства клиентских приложений. Мы рекомендуем использовать встроенный контейнер, если только не требуется конкретная функциональная возможность, которую он не поддерживает. Некоторые функции, поддерживаемые сторонними контейнерами, отсутствуют во встроенном контейнере:
@@ -537,7 +410,7 @@ public void ConfigureServices(IServiceCollection services)
 
 ### <a name="thread-safety"></a>Потокобезопасность
 
-Одноэлементные службы должны быть потокобезопасными. Если одноэлементная служба имеет зависимость от временной службы, с учетом характера использования одноэлементной службой к этой временной службе также может предъявляться требование потокобезопасности.
+Создавайте потокобезопасные одноэлементные службы. Если одноэлементная служба имеет зависимость от временной службы, с учетом характера использования одноэлементной службой к этой временной службе также может предъявляться требование потокобезопасности.
 
 Фабричный метод одной службы, например второй аргумент для [AddSingleton&lt;TService&gt;(IServiceCollection, Func&lt;IServiceProvider,TService&gt;)](/dotnet/api/microsoft.extensions.dependencyinjection.servicecollectionserviceextensions.addsingleton#Microsoft_Extensions_DependencyInjection_ServiceCollectionServiceExtensions_AddSingleton__1_Microsoft_Extensions_DependencyInjection_IServiceCollection_System_Func_System_IServiceProvider___0__), не обязательно должен быть потокобезопасным. Как и конструктор типов (`static`), он гарантированно будет вызываться один раз одним потоком.
 

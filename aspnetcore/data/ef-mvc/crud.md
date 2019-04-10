@@ -7,12 +7,12 @@ ms.custom: mvc
 ms.date: 02/04/2019
 ms.topic: tutorial
 uid: data/ef-mvc/crud
-ms.openlocfilehash: 83f5d4bdc3d5872109649818b61a6dbb656fd8be
-ms.sourcegitcommit: 57792e5f594db1574742588017c708350958bdf0
+ms.openlocfilehash: cee521eec3172c04b4d9d93c12076c42c9adff18
+ms.sourcegitcommit: 3e9e1f6d572947e15347e818f769e27dea56b648
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58264833"
+ms.lasthandoff: 03/30/2019
+ms.locfileid: "58750621"
 ---
 # <a name="tutorial-implement-crud-functionality---aspnet-mvc-with-ef-core"></a>Учебник. Использование ASP.NET MVC с EF Core. Реализация функциональности CRUD
 
@@ -32,7 +32,7 @@ ms.locfileid: "58264833"
 
 ## <a name="prerequisites"></a>Предварительные требования
 
-* [Начало работы с EF Core в веб-приложении MVC ASP.NET Core](intro.md)
+* [Начало работы с EF Core и ASP.NET Core MVC](intro.md)
 
 ## <a name="customize-the-details-page"></a>Настройка страницы сведений
 
@@ -243,7 +243,7 @@ public class Student
 
 Замените метод действия HttpPost `Delete` (имеет имя `DeleteConfirmed`) следующим кодом, в котором выполняется фактическая операция удаления и перехватываются любые ошибки при обновлении базы данных.
 
-[!code-csharp[](intro/samples/cu/Controllers/StudentsController.cs?name=snippet_DeleteWithReadFirst&highlight=6,8-11,13-14,18-23)]
+[!code-csharp[](intro/samples/cu/Controllers/StudentsController.cs?name=snippet_DeleteWithReadFirst&highlight=6-9,11-12,16-21)]
 
 Этот код извлекает выбранную сущность и вызывает метод `Remove`, чтобы присвоить ей состояние `Deleted`. При вызове метода `SaveChanges` создается инструкция SQL DELETE.
 
@@ -306,6 +306,7 @@ public class Student
 > * Обновление страницы удаления
 > * Закрытие подключений к базам данных
 
-В следующем руководстве описано, как добавить на страницу **Index** (Указатель) функции добавления, сортировки, фильтрации и разбиения на страницы.
+В следующем учебнике описано, как добавить на страницу **Index** (Указатель) функции добавления, сортировки, фильтрации и разбиения на страницы.
+
 > [!div class="nextstepaction"]
-> [Сортировка, фильтрация и разбиение на страницы](sort-filter-page.md)
+> [Далее: Сортировка, фильтрация и разбиение на страницы](sort-filter-page.md)

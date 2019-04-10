@@ -1,17 +1,18 @@
 ---
 title: Среда размещения ASP.NET Core в операционной системе Linux с Nginx
-author: rick-anderson
+author: guardrex
 description: В статье описывается процедура настройки Nginx как обратного прокси-сервера на Ubuntu 16.04 для перенаправления трафика HTTP в веб-приложение ASP.NET Core, выполняемое в Kestrel.
+monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 02/27/2019
+ms.date: 03/31/2019
 uid: host-and-deploy/linux-nginx
-ms.openlocfilehash: 11754279d18a2449451364b4aaba723b7afb06d5
-ms.sourcegitcommit: 036d4b03fd86ca5bb378198e29ecf2704257f7b2
+ms.openlocfilehash: 1a299cbd5fb9d971176d7d440efdad68e3780231
+ms.sourcegitcommit: 5995f44e9e13d7e7aa8d193e2825381c42184e47
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57345928"
+ms.lasthandoff: 04/02/2019
+ms.locfileid: "58809345"
 ---
 # <a name="host-aspnet-core-on-linux-with-nginx"></a>Среда размещения ASP.NET Core в операционной системе Linux с Nginx
 
@@ -43,6 +44,11 @@ ms.locfileid: "57345928"
 ## <a name="publish-and-copy-over-the-app"></a>Публикация и копирование приложения
 
 Настройте приложение, чтобы [его развертывание зависело от платформы](/dotnet/core/deploying/#framework-dependent-deployments-fdd).
+
+Если приложение запускается локально и не настроено для безопасного подключения (HTTPS), следует применять один из следующих подходов.
+
+* Настройка приложения для обработки безопасных локальных подключений. Дополнительные сведения см. в разделе [Конфигурация HTTPS](#https-configuration).
+* Удалите `https://localhost:5001` (при его наличии) из свойства `applicationUrl` в файле *Properties/launchSettings.json*.
 
 Запустите [dotnet publish](/dotnet/core/tools/dotnet-publish) в среде разработки, чтобы упаковать приложение в каталог (например, *bin/Release/&lt;target_framework_moniker&gt;/publish*), который может выполняться на сервере:
 
@@ -76,8 +82,6 @@ Kestrel является отличным решением для обслужи
 
 Любой компонент, который зависит от схемы, например проверка подлинности, генерация ссылок, перенаправление и геолокация, должен находиться после вызова ПО промежуточного слоя перенаправления заголовков. Как правило, ПО промежуточного слоя перенаправления заголовков должно выполняться до остального ПО промежуточного слоя, за исключением ПО промежуточного слоя для диагностики и обработки ошибок. Такой порядок гарантирует, что ПО промежуточного слоя, полагающееся на сведения о перенаправленных заголовках, может использовать значения заголовков для обработки.
 
-::: moniker range=">= aspnetcore-2.0"
-
 Вызовите метод <xref:Microsoft.AspNetCore.Builder.ForwardedHeadersExtensions.UseForwardedHeaders*> в методе `Startup.Configure` перед вызовом <xref:Microsoft.AspNetCore.Builder.AuthAppBuilderExtensions.UseAuthentication*> или другого ПО промежуточного слоя, предназначенного для проверки подлинности. В ПО промежуточного слоя настройте перенаправление заголовков `X-Forwarded-For` и `X-Forwarded-Proto`:
 
 ```csharp
@@ -88,28 +92,6 @@ app.UseForwardedHeaders(new ForwardedHeadersOptions
 
 app.UseAuthentication();
 ```
-
-::: moniker-end
-
-::: moniker range="< aspnetcore-2.0"
-
-Вызовите метод <xref:Microsoft.AspNetCore.Builder.ForwardedHeadersExtensions.UseForwardedHeaders*> в методе `Startup.Configure` перед вызовом <xref:Microsoft.AspNetCore.Builder.BuilderExtensions.UseIdentity*> и <xref:Microsoft.AspNetCore.Builder.FacebookAppBuilderExtensions.UseFacebookAuthentication*> или другого ПО промежуточного слоя, предназначенного для проверки подлинности. В ПО промежуточного слоя настройте перенаправление заголовков `X-Forwarded-For` и `X-Forwarded-Proto`:
-
-```csharp
-app.UseForwardedHeaders(new ForwardedHeadersOptions
-{
-    ForwardedHeaders = ForwardedHeaders.XForwardedFor | ForwardedHeaders.XForwardedProto
-});
-
-app.UseIdentity();
-app.UseFacebookAuthentication(new FacebookOptions()
-{
-    AppId = Configuration["Authentication:Facebook:AppId"],
-    AppSecret = Configuration["Authentication:Facebook:AppSecret"]
-});
-```
-
-::: moniker-end
 
 Если параметр <xref:Microsoft.AspNetCore.Builder.ForwardedHeadersOptions> не задан для ПО промежуточного слоя, по умолчанию перенаправляются заголовки `None`.
 
@@ -237,6 +219,12 @@ Linux имеет файловую систему, в которой учитыв
 systemd-escape "<value-to-escape>"
 ```
 
+Разделители-двоеточия (`:`) не поддерживаются в именах переменных среды. Следует использовать двойной знак подчеркивания (`__`) вместо двоеточия. [Поставщик конфигурации переменных среды](xref:fundamentals/configuration/index#environment-variables-configuration-provider) преобразует двойные символы подчеркивания в двоеточия, когда переменные среды считываются в конфигурации. В следующем примере ключ строки подключения `ConnectionStrings:DefaultConnection` задается в файле определения службы как `ConnectionStrings__DefaultConnection`.
+
+```
+Environment=ConnectionStrings__DefaultConnection={Connection String}
+```
+
 Сохраните файл и включите службу.
 
 ```bash
@@ -350,6 +338,17 @@ static char ngx_http_server_full_string[] = "Server: Web Server" CRLF;
 Настройте дополнительные обязательные модули на сервере. Для дополнительной защиты приложения можно использовать межсетевой экран для веб-приложений, например [ModSecurity](https://www.modsecurity.org/).
 
 #### <a name="https-configuration"></a>Конфигурация HTTPS
+
+**Настройка приложения для безопасных (HTTPS) локальных подключений**
+
+Команда [dotnet run](/dotnet/core/tools/dotnet-run) использует файл приложения *Properties/launchSettings.json*, который настраивает приложение для прослушивания URL-адресов, заданных свойством `applicationUrl` (например, `https://localhost:5001;http://localhost:5000`).
+
+Настройте приложение для использования при разработке сертификата для команды `dotnet run` или среды разработки (F5 или CTRL + F5 в Visual Studio Code), используя один из следующих подходов.
+
+* [Замена сертификата по умолчанию из конфигурации](xref:fundamentals/servers/kestrel#configuration) (*рекомендуется*)
+* [KestrelServerOptions.ConfigureHttpsDefaults](xref:fundamentals/servers/kestrel#configurehttpsdefaultsactionhttpsconnectionadapteroptions)
+
+**Настройка обратного прокси-сервера для безопасного подключения клиентов (HTTPS)**
 
 * Настройте сервер для прослушивания трафика HTTPS через порт `443`, указав действительный сертификат, выпущенный доверенным центром сертификации (ЦС).
 

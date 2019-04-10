@@ -561,10 +561,14 @@ items:
       name: Обзор
     - uid: razor-components/get-started
       name: Начало работы
+    - uid: razor-components/hosting-models
+      name: Модели размещения
     - uid: tutorials/first-razor-components-app
       name: Создание первого приложения
     - uid: razor-components/components
       name: Компоненты
+    - uid: razor-components/forms-validation
+      name: Формы и проверка
     - uid: razor-components/class-libraries
       name: Библиотеки компонентов
     - uid: razor-components/layouts
@@ -577,14 +581,12 @@ items:
       name: Взаимодействие с JavaScript
     - uid: razor-components/debug
       name: Отладка
-    - uid: razor-components/hosting-models
-      name: Модели размещения
     - name: Размещение и развертывание
       items:
-      - uid: host-and-deploy/razor-components/index
+      - uid: host-and-deploy/razor-components-blazor/index
         name: Обзор
-      - uid: host-and-deploy/razor-components/configure-linker
-        name: Настройка компоновщика
+      - uid: host-and-deploy/razor-components-blazor/razor-components
+        name: Компоненты Razor
   - name: Одностраничные приложения
     items:
     - name: Blazor
@@ -593,10 +595,14 @@ items:
         name: Обзор
       - uid: spa/blazor/get-started
         name: Начало работы
+      - uid: razor-components/hosting-models
+        name: Модели размещения
       - uid: tutorials/first-razor-components-app
         name: Создание первого приложения
       - uid: razor-components/components
         name: Компоненты
+      - uid: razor-components/forms-validation
+        name: Формы и проверка
       - uid: razor-components/class-libraries
         name: Библиотеки компонентов
       - uid: razor-components/layouts
@@ -609,13 +615,13 @@ items:
         name: Взаимодействие с JavaScript
       - uid: razor-components/debug
         name: Отладка
-      - uid: razor-components/hosting-models
-        name: Модели размещения
       - name: Размещение и развертывание
         items:
-        - uid: host-and-deploy/razor-components/index
+        - uid: host-and-deploy/razor-components-blazor/index
           name: Обзор
-        - uid: host-and-deploy/razor-components/configure-linker
+        - uid: host-and-deploy/razor-components-blazor/blazor
+          name: Blazor
+        - uid: host-and-deploy/razor-components-blazor/configure-linker
           name: Настройка компоновщика
     - uid: spa/angular
       name: Angular
@@ -774,11 +780,15 @@ items:
   - uid: host-and-deploy/health-checks
     name: Проверки работоспособности
     displayName: deploy, publish
-  - name: Компоненты Razor
+  - name: Компоненты Razor и Blazor
     items:
-    - uid: host-and-deploy/razor-components/index
+    - uid: host-and-deploy/razor-components-blazor/index
       name: Обзор
-    - uid: host-and-deploy/razor-components/configure-linker
+    - uid: host-and-deploy/razor-components-blazor/blazor
+      name: Blazor
+    - uid: host-and-deploy/razor-components-blazor/razor-components
+      name: Компоненты Razor
+    - uid: host-and-deploy/razor-components-blazor/configure-linker
       name: Настройка компоновщика
 - name: Безопасность и удостоверения
   displayName: authentication, authorization
@@ -1083,9 +1093,9 @@ items:
   href: /dotnet/api/?view=aspnetcore-2.2
 - name: Участие
   href: https://github.com/aspnet/Docs/blob/master/CONTRIBUTING.md
-ms.openlocfilehash: d9ab9beacab19a0e004878d2645b1106bf5dc0d6
-ms.sourcegitcommit: 3e9e1f6d572947e15347e818f769e27dea56b648
+ms.openlocfilehash: 0065707eeaf77327e553b3c43b65e11063edd7e0
+ms.sourcegitcommit: 6bde1fdf686326c080a7518a6725e56e56d8886e
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 03/30/2019
-ms.locfileid: "58751109"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59068395"

@@ -4,15 +4,15 @@ description: В этом учебнике описываются полезны�
 author: rick-anderson
 ms.author: tdykstra
 ms.custom: mvc
-ms.date: 02/05/2019
+ms.date: 03/27/2019
 ms.topic: tutorial
 uid: data/ef-mvc/advanced
-ms.openlocfilehash: c4804bd6614c7d5a2a30c8f59a645f603929ad52
-ms.sourcegitcommit: 57792e5f594db1574742588017c708350958bdf0
+ms.openlocfilehash: c6255e2b4fc67c6174bab4458ec82035b1886002
+ms.sourcegitcommit: 3e9e1f6d572947e15347e818f769e27dea56b648
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58264588"
+ms.lasthandoff: 03/30/2019
+ms.locfileid: "58750612"
 ---
 # <a name="tutorial-learn-about-advanced-scenarios---aspnet-mvc-with-ef-core"></a>Учебник. Сведения о сложных сценариях для ASP.NET MVC с EF Core
 
@@ -33,7 +33,7 @@ ms.locfileid: "58264588"
 
 ## <a name="prerequisites"></a>Предварительные требования
 
-* Выполните инструкции из руководства [ASP.NET Core MVC с EF Core — наследование — 9 из 10](inheritance.md)
+* [Реализация наследования](inheritance.md)
 
 ## <a name="perform-raw-sql-queries"></a>Выполнение прямых SQL-запросов
 
@@ -53,7 +53,7 @@ ms.locfileid: "58264588"
 
 В файле *DepartmentsController.cs* в методе `Details` замените код, извлекающий кафедру, вызовом метода `FromSql`, как показано ниже в выделенном коде:
 
-[!code-csharp[](intro/samples/cu/Controllers/DepartmentsController.cs?name=snippet_RawSQL&highlight=8,9,10,13)]
+[!code-csharp[](intro/samples/cu/Controllers/DepartmentsController.cs?name=snippet_RawSQL&highlight=8,9,10)]
 
 Чтобы убедиться, что новый код работает правильно, выберите вкладку **Departments** (Кафедры) и щелкните **Details** (Сведения) для одной из кафедр.
 
@@ -276,6 +276,7 @@ dotnet ef database drop
 > * Сведения об исходном коде EF Core и планах разработки
 > * Сведения об использовании динамических запросов LINQ для упрощения кода
 
-На этом серия учебников, посвященных использованию платформы Entity Framework Core в приложении ASP.NET Core MVC, завершена. Если вам нужны сведения об использовании EF 6 с ASP.NET Core, изучите следующую статью.
+На этом серия учебников, посвященных использованию платформы Entity Framework Core в приложении ASP.NET Core MVC, завершена. В этой серии мы работали с новой базой данных; альтернативой является реконструкция модели по существующей базе данных.
+
 > [!div class="nextstepaction"]
-> [EF 6 с ASP.NET Core](../entity-framework-6.md)
+> [Учебник. Использование EF Core с MVC (существующая база данных)](/ef/core/get-started/aspnetcore/new-db?toc=/aspnet/core/toc.json&bc=/aspnet/core/breadcrumb/toc.json)

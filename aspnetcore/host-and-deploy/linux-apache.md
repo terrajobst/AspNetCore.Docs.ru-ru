@@ -1,17 +1,18 @@
 ---
 title: Размещение ASP.NET Core в операционной системе Linux с Apache
+author: guardrex
 description: Процедура настройки Apache в качестве обратного прокси-сервера в CentOS для перенаправления трафика HTTP в веб-приложение ASP.NET Core, выполняемое в Kestrel.
-author: spboyer
+monikerRange: '>= aspnetcore-2.1'
 ms.author: spboyer
 ms.custom: mvc
-ms.date: 02/27/2019
+ms.date: 03/31/2019
 uid: host-and-deploy/linux-apache
-ms.openlocfilehash: 69026997b2c269a4fb56ed2a79fa42ae218368e1
-ms.sourcegitcommit: 036d4b03fd86ca5bb378198e29ecf2704257f7b2
+ms.openlocfilehash: 34da0653ff29acf3044e69e032307d1a3da7044a
+ms.sourcegitcommit: 5995f44e9e13d7e7aa8d193e2825381c42184e47
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57345941"
+ms.lasthandoff: 04/02/2019
+ms.locfileid: "58809280"
 ---
 # <a name="host-aspnet-core-on-linux-with-apache"></a>Размещение ASP.NET Core в операционной системе Linux с Apache
 
@@ -31,6 +32,11 @@ ms.locfileid: "57345941"
 ## <a name="publish-and-copy-over-the-app"></a>Публикация и копирование приложения
 
 Настройте приложение, чтобы [его развертывание зависело от платформы](/dotnet/core/deploying/#framework-dependent-deployments-fdd).
+
+Если приложение запускается локально и не настроено для безопасного подключения (HTTPS), следует применять один из следующих подходов.
+
+* Настройка приложения для обработки безопасных локальных подключений. Дополнительные сведения см. в разделе [Конфигурация HTTPS](#https-configuration).
+* Удалите `https://localhost:5001` (при его наличии) из свойства `applicationUrl` в файле *Properties/launchSettings.json*.
 
 Запустите [dotnet publish](/dotnet/core/tools/dotnet-publish) в среде разработки, чтобы упаковать приложение в каталог (например, *bin/Release/&lt;target_framework_moniker&gt;/publish*), который может выполняться на сервере:
 
@@ -55,8 +61,6 @@ dotnet publish --configuration Release
 
 Любой компонент, который зависит от схемы, например проверка подлинности, генерация ссылок, перенаправление и геолокация, должен находиться после вызова ПО промежуточного слоя перенаправления заголовков. Как правило, ПО промежуточного слоя перенаправления заголовков должно выполняться до остального ПО промежуточного слоя, за исключением ПО промежуточного слоя для диагностики и обработки ошибок. Такой порядок гарантирует, что ПО промежуточного слоя, полагающееся на сведения о перенаправленных заголовках, может использовать значения заголовков для обработки.
 
-::: moniker range=">= aspnetcore-2.0"
-
 Вызовите метод <xref:Microsoft.AspNetCore.Builder.ForwardedHeadersExtensions.UseForwardedHeaders*> в методе `Startup.Configure` перед вызовом <xref:Microsoft.AspNetCore.Builder.AuthAppBuilderExtensions.UseAuthentication*> или другого ПО промежуточного слоя, предназначенного для проверки подлинности. В ПО промежуточного слоя настройте перенаправление заголовков `X-Forwarded-For` и `X-Forwarded-Proto`:
 
 ```csharp
@@ -67,28 +71,6 @@ app.UseForwardedHeaders(new ForwardedHeadersOptions
 
 app.UseAuthentication();
 ```
-
-::: moniker-end
-
-::: moniker range="< aspnetcore-2.0"
-
-Вызовите метод <xref:Microsoft.AspNetCore.Builder.ForwardedHeadersExtensions.UseForwardedHeaders*> в методе `Startup.Configure` перед вызовом <xref:Microsoft.AspNetCore.Builder.BuilderExtensions.UseIdentity*> и <xref:Microsoft.AspNetCore.Builder.FacebookAppBuilderExtensions.UseFacebookAuthentication*> или другого ПО промежуточного слоя, предназначенного для проверки подлинности. В ПО промежуточного слоя настройте перенаправление заголовков `X-Forwarded-For` и `X-Forwarded-Proto`:
-
-```csharp
-app.UseForwardedHeaders(new ForwardedHeadersOptions
-{
-    ForwardedHeaders = ForwardedHeaders.XForwardedFor | ForwardedHeaders.XForwardedProto
-});
-
-app.UseIdentity();
-app.UseFacebookAuthentication(new FacebookOptions()
-{
-    AppId = Configuration["Authentication:Facebook:AppId"],
-    AppSecret = Configuration["Authentication:Facebook:AppSecret"]
-});
-```
-
-::: moniker-end
 
 Если параметр <xref:Microsoft.AspNetCore.Builder.ForwardedHeadersOptions> не задан для ПО промежуточного слоя, по умолчанию перенаправляются заголовки `None`.
 
@@ -228,6 +210,12 @@ TimeoutStopSec=90
 systemd-escape "<value-to-escape>"
 ```
 
+Разделители-двоеточия (`:`) не поддерживаются в именах переменных среды. Следует использовать двойной знак подчеркивания (`__`) вместо двоеточия. [Поставщик конфигурации переменных среды](xref:fundamentals/configuration/index#environment-variables-configuration-provider) преобразует двойные символы подчеркивания в двоеточия, когда переменные среды считываются в конфигурации. В следующем примере ключ строки подключения `ConnectionStrings:DefaultConnection` задается в файле определения службы как `ConnectionStrings__DefaultConnection`.
+
+```
+Environment=ConnectionStrings__DefaultConnection={Connection String}
+```
+
 Сохраните файл и включите службу.
 
 ```bash
@@ -325,6 +313,17 @@ rich rules:
 ```
 
 ### <a name="https-configuration"></a>Конфигурация HTTPS
+
+**Настройка приложения для безопасных (HTTPS) локальных подключений**
+
+Команда [dotnet run](/dotnet/core/tools/dotnet-run) использует файл приложения *Properties/launchSettings.json*, который настраивает приложение для прослушивания URL-адресов, заданных свойством `applicationUrl` (например, `https://localhost:5001;http://localhost:5000`).
+
+Настройте приложение для использования при разработке сертификата для команды `dotnet run` или среды разработки (F5 или CTRL + F5 в Visual Studio Code), используя один из следующих подходов.
+
+* [Замена сертификата по умолчанию из конфигурации](xref:fundamentals/servers/kestrel#configuration) (*рекомендуется*)
+* [KestrelServerOptions.ConfigureHttpsDefaults](xref:fundamentals/servers/kestrel#configurehttpsdefaultsactionhttpsconnectionadapteroptions)
+
+**Настройка обратного прокси-сервера для безопасного подключения клиентов (HTTPS)**
 
 Apache для HTTPS настраивается с помощью модуля *mod_ssl*. При установке модуля *httpd* автоматически добавляется и модуль *mod_ssl*. Если он по каким-то причинам отсутствует, добавьте его в систему с помощью `yum`.
 
