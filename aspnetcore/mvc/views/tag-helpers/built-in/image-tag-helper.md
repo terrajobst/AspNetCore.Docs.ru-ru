@@ -4,14 +4,14 @@ author: pkellner
 description: Сведения о работе со вспомогательной функцией тега изображения.
 ms.author: riande
 ms.custom: mvc
-ms.date: 10/10/2018
+ms.date: 04/06/2019
 uid: mvc/views/tag-helpers/builtin-th/image-tag-helper
-ms.openlocfilehash: 5eb74a6698911a1c594d11573192cb1b9ed53b49
-ms.sourcegitcommit: 4bdf7703aed86ebd56b9b4bae9ad5700002af32d
+ms.openlocfilehash: 916a68c187cbf516a59d3c5d7578cdb6ada01b86
+ms.sourcegitcommit: 948e533e02c2a7cb6175ada20b2c9cabb7786d0b
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/15/2018
-ms.locfileid: "49325839"
+ms.lasthandoff: 04/10/2019
+ms.locfileid: "59468822"
 ---
 # <a name="image-tag-helper-in-aspnet-core"></a>Вспомогательная функция тега изображения в ASP.NET Core
 
@@ -26,7 +26,7 @@ ms.locfileid: "49325839"
 * Уникальная строка отключения кэширования добавляется в качестве параметра запроса к источнику изображения.
 * При изменении файла на веб-сервере узла создается уникальный URL-адрес запроса, включающий в себя обновленный параметр запроса.
 
-Общие сведения о вспомогательных функциях тегов см. в разделе <xref:mvc/views/tag-helpers/intro>.
+Общие сведения о вспомогательных функциях тегов см. здесь: <xref:mvc/views/tag-helpers/intro>.
 
 ## <a name="image-tag-helper-attributes"></a>Атрибуты вспомогательной функции тега изображения
 
@@ -43,13 +43,13 @@ ms.locfileid: "49325839"
 В приведенном ниже примере используется вспомогательная функция тега изображения:
 
 ```cshtml
-<img src="~/images/asplogo.png" asp-append-version="true" />
+<img src="~/images/asplogo.png" asp-append-version="true">
 ```
 
 Если статический файл существует в каталоге */wwwroot/images/*, создаваемый код HTML будет похож на следующий (хэш-код будет иным):
 
 ```html
-<img src="/images/asplogo.png?v=Kl_dqr9NVtnMdsM2MUg4qthUnWZm5T1fCEimBPWDNgM" />
+<img src="/images/asplogo.png?v=Kl_dqr9NVtnMdsM2MUg4qthUnWZm5T1fCEimBPWDNgM">
 ```
 
 В качестве значения параметру `v` присваивается значение хэша файла *asplogo.png* на диске. Если веб-серверу не удается получить доступ для чтения к указанному статическому файлу, параметр `v` не добавляется к атрибуту `src` в преобразованной разметке.
