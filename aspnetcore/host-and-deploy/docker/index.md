@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 01/08/2018
 uid: host-and-deploy/docker/index
-ms.openlocfilehash: 272bd0a0dad2fb62c33dcedd1ce8430eefb2c238
-ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
+ms.openlocfilehash: e56f90ec7272ce0411651ee6f8e7c754ae44b78d
+ms.sourcegitcommit: 9b7fcb4ce00a3a32e153a080ebfaae4ef417aafa
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36276092"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59516265"
 ---
 # <a name="host-aspnet-core-in-docker-containers"></a>Размещение ASP.NET Core в контейнерах Docker
 
@@ -28,9 +28,6 @@ ms.locfileid: "36276092"
 
 [Контейнеры, образы и реестры Docker](/dotnet/standard/microservices-architecture/container-docker-introduction/docker-containers-images-registries)  
 Узнайте о хранении образов контейнеров Docker в реестре образов для согласованного развертывания в средах.
-
-[Создание образов Docker для приложений .NET Core](/dotnet/articles/core/docker/building-net-docker-images)  
-Узнайте, как создавать и добавлять в Docker приложение ASP.NET Core. Изучите образы Docker, поддерживаемые корпорацией Майкрософт, и ознакомьтесь с вариантами использования.
 
 [Инструменты Visual Studio для Docker](xref:host-and-deploy/docker/visual-studio-tools-for-docker)  
 Узнайте, как Visual Studio 2017 поддерживает создание, отладку и запуск приложений ASP.NET Core, предназначенных для .NET Framework или .NET Core, в Docker для Windows. Поддерживаются контейнеры Windows и Linux.
