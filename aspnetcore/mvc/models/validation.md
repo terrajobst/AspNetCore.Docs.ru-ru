@@ -4,14 +4,15 @@ author: tdykstra
 description: Сведения о проверке модели в ASP.NET Core MVC и Razor Pages.
 ms.author: riande
 ms.custom: mvc
-ms.date: 04/01/2019
+ms.date: 04/06/2019
+monikerRange: '>= aspnetcore-2.1'
 uid: mvc/models/validation
-ms.openlocfilehash: b766d47f296745ba4be6ea8cb6335db9c3e2d975
-ms.sourcegitcommit: 5995f44e9e13d7e7aa8d193e2825381c42184e47
+ms.openlocfilehash: 1ae3c20478b02d6f654e65fdf34c88e1ffb837f8
+ms.sourcegitcommit: 948e533e02c2a7cb6175ada20b2c9cabb7786d0b
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 04/02/2019
-ms.locfileid: "58809319"
+ms.lasthandoff: 04/10/2019
+ms.locfileid: "59468741"
 ---
 # <a name="model-validation-in-aspnet-core-mvc-and-razor-pages"></a>Проверка модели в ASP.NET Core MVC и Razor Pages
 
@@ -23,23 +24,11 @@ ms.locfileid: "58809319"
 
 Состояние модели представляет ошибки, создаваемые двумя подсистемами: привязкой модели и проверкой модели. Ошибки, поступающие из [привязки модели](model-binding.md), чаще всего представляют собой ошибки преобразования данных (например, x вводится в поле, которое ожидает целое число). Проверка модели проводится после привязки модели и сообщает об ошибках, при которых данные не соответствуют бизнес-правилам (например, 0 вводится в поле, которое ожидает оценку от 1 до 5).
 
-::: moniker range=">= aspnetcore-2.1"
-
-Привязка модели и проверка модели происходят перед выполнением действия контроллера или метода обработчика Razor Pages. Приложение отвечает за проверку `ModelState.IsValid` и реагирует соответствующим образом. Веб-приложения обычно повторно отображают страницы с сообщением об ошибке.
-
-[!code-csharp[](validation/sample_snapshot/Create.cshtml.cs?name=snippet&highlight=3-6)]
-
-::: moniker-end
-
-::: moniker range=">= aspnetcore-2.1"
-
 Привязка модели и проверка модели происходят перед выполнением действия контроллера или метода обработчика Razor Pages. Веб-приложение отвечает за проверку `ModelState.IsValid` и реагирует соответствующим образом. Веб-приложения обычно повторно отображают страницы с сообщением об ошибке.
 
 [!code-csharp[](validation/sample_snapshot/Create.cshtml.cs?name=snippet&highlight=3-6)]
 
 Контроллерам веб-API не нужно проверять `ModelState.IsValid` при наличии атрибута `[ApiController]`. В этом случае автоматически возвращается ответ HTTP 400, содержащий сведения о проблеме, если состояние модели недопустимо. Дополнительные сведения см. в разделе [Автоматические отклики HTTP 400](xref:web-api/index#automatic-http-400-responses).
-
-::: moniker-end
 
 ## <a name="rerun-validation"></a>Перезапуск проверки
 
@@ -122,8 +111,8 @@ ms.locfileid: "58809319"
 
 1. Создайте для вызова из JavaScript метод действия.  Метод проверки jQuery [remote](https://jqueryvalidation.org/remote-method/) ожидает ответ JSON.
 
-   * `"true"` означает, что входные данные допустимы.
-   * `"false"`, `undefined` или `null` означают, что входные данные недопустимы.  Вывод стандартного сообщения об ошибке
+   * `"true"` означает, что входные данные являются допустимыми.
+   * `"false"`, `undefined` или `null` означают, что входные данные являются недопустимыми.  Вывод стандартного сообщения об ошибке
    * Все прочие значения означают, что входные данные недопустимы. Вывод строки как настраиваемого сообщения об ошибке.
 
    Ниже приведен пример метода действия, который возвращает настраиваемое сообщение об ошибке.
@@ -140,7 +129,7 @@ ms.locfileid: "58809319"
 
 [!code-csharp[](validation/sample/Models/User.cs?name=snippet_UserNameProperties)]
 
-Свойству `AdditionalFields` можно было бы явным образом присвоить строки `"FirstName"` и `"LastName"`, однако применение оператора [`nameof`](/dotnet/csharp/language-reference/keywords/nameof) упрощает дальнейший рефакторинг. Методу действия для этой проверки необходимо принимать аргументы для имени и фамилии.
+`AdditionalFields` можно явно присвоить строкам `"FirstName"` и `"LastName"`, но использование оператора [`nameof`](/dotnet/csharp/language-reference/keywords/nameof) упрощает дальнейший рефакторинг. Методу действия для этой проверки необходимо принимать аргументы для имени и фамилии.
 
 [!code-csharp[](validation/sample/Controllers/UsersController.cs?name=snippet_VerifyName)]
 
@@ -153,7 +142,7 @@ ms.locfileid: "58809319"
 public string MiddleName { get; set; }
 ```
 
-`AdditionalFields`, как и все аргументы атрибутов, должен представлять собой константное выражение. Поэтому не следует использовать [интерполированную строку](/dotnet/csharp/language-reference/keywords/interpolated-strings) или вызов <xref:System.String.Join*>для инициализации `AdditionalFields`.
+`AdditionalFields`— требуется константное выражение, как и для всех аргументов атрибутов. Поэтому не следует использовать [интерполированную строку](/dotnet/csharp/language-reference/keywords/interpolated-strings) или вызов <xref:System.String.Join*>для инициализации `AdditionalFields`.
 
 ## <a name="alternatives-to-built-in-attributes"></a>Альтернативы для встроенных атрибутов
 
@@ -161,7 +150,6 @@ public string MiddleName { get; set; }
 
 * [Создать настраиваемые атрибуты](#custom-attributes).
 * [Реализовать IValidatableObject](#ivalidatableobject).
-
 
 ## <a name="custom-attributes"></a>Настраиваемые атрибуты
 
@@ -180,8 +168,6 @@ public string MiddleName { get; set; }
 Предыдущий пример работает только с типами `Movie`. Другой вариант для проверки на уровне класса — реализация `IValidatableObject` в классе модели, как показано в следующем примере.
 
 [!code-csharp[](validation/sample/Models/MovieIValidatable.cs?name=snippet&highlight=1,26-34)]
-
-::: moniker range=">= aspnetcore-2.1"
 
 ## <a name="top-level-node-validation"></a>Проверка узлов верхнего уровня
 
@@ -210,15 +196,11 @@ public string MiddleName { get; set; }
 
 [!code-csharp[](validation/sample_snapshot/Startup.cs?name=snippet_AddMvc&highlight=4)]
 
-::: moniker-end
-
 ## <a name="maximum-errors"></a>Максимальное количество ошибок
 
 При достижении максимального количества ошибок (по умолчанию 200) проверка прекращается. Это число можно изменить с помощью следующего кода в `Startup.ConfigureServices`:
 
 [!code-csharp[](validation/sample/Startup.cs?name=snippet_MaxModelValidationErrors&highlight=3)]
-
-::: moniker range=">= aspnetcore-2.1"
 
 ## <a name="maximum-recursion"></a>Максимальная рекурсия
 
@@ -227,8 +209,6 @@ public string MiddleName { get; set; }
 ## <a name="automatic-short-circuit"></a>Автоматическое сокращение
 
 Проверка автоматически сокращается (пропускается), если граф модели не требует проверки. К числу объектов, которые среда выполнения пропускает при проверке, относятся коллекции примитивов (такие как `byte[]`, `string[]`, `Dictionary<string, string>`) и сложные графы объектов, которые не имеют проверяющих элементов управления.
-
-::: moniker-end
 
 ## <a name="disable-validation"></a>Отключение проверки
 
@@ -270,7 +250,7 @@ public string MiddleName { get; set; }
             <div class="col-md-10">
                 <input class="form-control" type="datetime"
                 data-val="true" data-val-required="The ReleaseDate field is required."
-                id="ReleaseDate" name="ReleaseDate" value="" />
+                id="ReleaseDate" name="ReleaseDate" value="">
                 <span class="text-danger field-validation-valid"
                 data-valmsg-for="ReleaseDate" data-valmsg-replace="true"></span>
             </div>
@@ -281,7 +261,7 @@ public string MiddleName { get; set; }
 
 Обратите внимание на то, что атрибуты `data-` в выходных данных HTML соответствуют атрибутам проверки для свойства `ReleaseDate`. Атрибут `data-val-required` содержит сообщение об ошибке, которое выводится, если пользователь не заполнил поле даты выхода. Скрипт ненавязчивой проверки jQuery передает это значение в метод [`required()`](https://jqueryvalidation.org/required-method/) подключаемого модуля jQuery Validate, который затем выводит это сообщение в соответствующем элементе **\<span>**.
 
-Проверка типа данных основана на типе свойства в .NET, если его не переопределяет атрибут `[DataType]`. Браузеры имеют свои сообщения об по умолчанию, но пакет ненавязчивой проверки jQuery может переопределять эти сообщения. Атрибуты и подклассы `[DataType]`, такие как `[EmailAddress]`, позволяют указать сообщение об ошибке.
+Проверка типа данных основана на типе свойства в .NET, если его не переопределяет атрибут `[DataType]`. Браузеры имеют свои сообщения об по умолчанию, но пакет ненавязчивой проверки jQuery может переопределять эти сообщения. `[DataType]` — атрибуты и подклассы, такие как `[EmailAddress]`, позволяют определить сообщение об ошибке.
 
 ### <a name="add-validation-to-dynamic-forms"></a>Добавление проверки к динамическим формам
 
@@ -308,7 +288,7 @@ $.get({
 
 ### <a name="add-validation-to-dynamic-controls"></a>Добавление проверки к динамическим элементам управления
 
-Метод `$.validator.unobtrusive.parse()` обрабатывает всю форму, а не отдельные динамически создаваемые элементы управления, такие как `<input/>` и `<select/>`. Для повторной обработки формы удалите данные проверки, которые были добавлены при анализе формы ранее, как показано в следующем примере:
+Метод `$.validator.unobtrusive.parse()` обрабатывает всю форму, а не отдельные динамически создаваемые элементы управления, такие как `<input>` и `<select/>`. Для повторной обработки формы удалите данные проверки, которые были добавлены при анализе формы ранее, как показано в следующем примере:
 
 ```js
 $.get({
@@ -349,7 +329,7 @@ $.get({
     data-val-classicmovie1="Classic movies must have a release year earlier than 1960."
     data-val-classicmovie1-year="1960"
     data-val-required="The ReleaseDate field is required."
-    id="ReleaseDate" name="ReleaseDate" value="" />
+    id="ReleaseDate" name="ReleaseDate" value="">
 ```
 
 Как отмечалось ранее, [вспомогательные функции тегов](xref:mvc/views/tag-helpers/intro) и [вспомогательные методы HTML](xref:mvc/views/overview) используют сведения из атрибутов проверки для подготовки к отрисовке атрибутов `data-`. Существует два варианта для написания кода, который приводит к созданию настраиваемых атрибутов HTML `data-`.

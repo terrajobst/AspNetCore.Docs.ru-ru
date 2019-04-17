@@ -4,14 +4,14 @@ author: ardalis
 description: Сведения об использовании привязки модели и потоковой передачи для передачи файлов в ASP.NET Core MVC.
 ms.author: riande
 ms.custom: mvc
-ms.date: 10/24/2018
+ms.date: 04/06/2019
 uid: mvc/models/file-uploads
-ms.openlocfilehash: 5e6e2cd5fac25e2abe27915c2f4caa64b13e90bd
-ms.sourcegitcommit: d75d8eb26c2cce19876c8d5b65ac8a4b21f625ef
+ms.openlocfilehash: 831f0c84f0ff062e9e24ccbf4ca81b7143c66e66
+ms.sourcegitcommit: 948e533e02c2a7cb6175ada20b2c9cabb7786d0b
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 02/19/2019
-ms.locfileid: "56409987"
+ms.lasthandoff: 04/10/2019
+ms.locfileid: "59468557"
 ---
 # <a name="file-uploads-in-aspnet-core"></a>Передача файлов в ASP.NET Core
 
@@ -19,7 +19,7 @@ ms.locfileid: "56409987"
 
 Действия ASP.NET MVC поддерживают передачу одного или нескольких файлов с помощью простой привязки модели для небольших файлов или потоковой передачи для более крупных файлов.
 
-[Просмотреть или скачать образец с GitHub](https://github.com/aspnet/Docs/tree/master/aspnetcore/mvc/models/file-uploads/sample/FileUploadSample)
+[Просмотреть или скачать пример на GitHub](https://github.com/aspnet/Docs/tree/master/aspnetcore/mvc/models/file-uploads/sample/FileUploadSample)
 
 ## <a name="uploading-small-files-with-model-binding"></a>Передача небольших файлов с помощью привязки модели
 
@@ -30,12 +30,12 @@ ms.locfileid: "56409987"
     <div class="form-group">
         <div class="col-md-10">
             <p>Upload one or more files using this form:</p>
-            <input type="file" name="files" multiple />
+            <input type="file" name="files" multiple>
         </div>
     </div>
     <div class="form-group">
         <div class="col-md-10">
-            <input type="submit" value="Upload" />
+            <input type="submit" value="Upload">
         </div>
     </div>
 </form>
@@ -94,7 +94,7 @@ public class RegisterViewModel
 ```
 
 > [!NOTE]
-> `IFormFile` можно использовать непосредственно как параметр метода действия или как свойство viewmodel, как показано выше.
+> `IFormFile` можно использовать непосредственно как параметр метода действия или свойство viewmodel, как показано выше.
 
 Скопируйте экземпляр `IFormFile` в поток и сохраните его в байтовом массиве:
 

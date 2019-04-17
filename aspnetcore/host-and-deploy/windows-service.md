@@ -5,14 +5,14 @@ description: Узнайте, как разместить приложение AS
 monikerRange: '>= aspnetcore-2.1'
 ms.author: tdykstra
 ms.custom: mvc
-ms.date: 03/08/2019
+ms.date: 04/04/2019
 uid: host-and-deploy/windows-service
-ms.openlocfilehash: ecc7f3a8cd813c2803d03294e38d726905eeb1b8
-ms.sourcegitcommit: 34bf9fc6ea814c039401fca174642f0acb14be3c
+ms.openlocfilehash: 544eefa87898e82ec2bf8f9f61ce4e26dd554bb7
+ms.sourcegitcommit: 6bde1fdf686326c080a7518a6725e56e56d8886e
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 03/14/2019
-ms.locfileid: "57841427"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59068340"
 ---
 # <a name="host-aspnet-core-in-a-windows-service"></a>Размещение ASP.NET Core в службе Windows
 
@@ -20,11 +20,19 @@ ms.locfileid: "57841427"
 
 Приложение ASP.NET Core можно разместить в Windows в качестве [службы Windows](/dotnet/framework/windows-services/introduction-to-windows-service-applications) без использования IIS. При размещении в качестве службы Windows приложение автоматически запускается после перезагрузки.
 
-[Просмотреть или скачать образец кода](https://github.com/aspnet/Docs/tree/master/aspnetcore/host-and-deploy/windows-service/samples) ([как скачивать](xref:index#how-to-download-a-sample))
+[Просмотреть или скачать образец кода](https://github.com/aspnet/Docs/tree/master/aspnetcore/host-and-deploy/windows-service/) ([как скачивать](xref:index#how-to-download-a-sample))
 
 ## <a name="prerequisites"></a>Предварительные требования
 
-* [PowerShell 6](https://github.com/PowerShell/PowerShell)
+* [PowerShell 6.2 или более поздней версии.](https://github.com/PowerShell/PowerShell)
+
+> [!NOTE]
+> Для версий ОС Windows, предшествующих Windows 10 с обновлением за октябрь 2018 г. (версия 1809, сборка 10.0.17763), необходимо импортировать модули [Microsoft.PowerShell.LocalAccounts](/powershell/module/microsoft.powershell.localaccounts) и [WindowsCompatibility](https://github.com/PowerShell/WindowsCompatibility), чтобы включить поддержку командлета [New-LocalUser](/powershell/module/microsoft.powershell.localaccounts/new-localuser), используемого в разделе [Создание учетной записи пользователя](#create-a-user-account).
+>
+> ```powershell
+> Install-Module WindowsCompatibility -Scope CurrentUser
+> Import-WinModule Microsoft.PowerShell.LocalAccounts
+> ```
 
 ## <a name="deployment-type"></a>Тип развертывания
 
@@ -129,7 +137,7 @@ ms.locfileid: "57841427"
 
 Опубликуйте приложение с помощью команды [dotnet publish](/dotnet/articles/core/tools/dotnet-publish), [профиля публикации Visual Studio](xref:host-and-deploy/visual-studio-publish-profiles) или Visual Studio Code. Если вы используете Visual Studio, выберите **FolderProfile** и настройте **целевое расположение**, прежде чем нажимать кнопку **Опубликовать**.
 
-Чтобы опубликовать пример приложения с помощью интерфейса командной строки (CLI), выполните в командной строке команду [dotnet publish](/dotnet/core/tools/dotnet-publish) в папке проекта с конфигурацией выпуска, передаваемой параметру [-c|--configuration](/dotnet/core/tools/dotnet-publish#options). Чтобы опубликовать этот пример в папке за пределами приложения, задайте параметр [-o|--output](/dotnet/core/tools/dotnet-publish#options) и укажите путь.
+Чтобы опубликовать пример приложения с помощью интерфейса командной строки (CLI), выполните в командной строке Windows команду [dotnet publish](/dotnet/core/tools/dotnet-publish) в папке проекта с конфигурацией выпуска, передаваемой параметру [-c|--configuration](/dotnet/core/tools/dotnet-publish#options). Чтобы опубликовать этот пример в папке за пределами приложения, задайте параметр [-o|--output](/dotnet/core/tools/dotnet-publish#options) и укажите путь.
 
 ### <a name="publish-a-framework-dependent-deployment-fdd"></a>Публикация зависящего от платформы развертывания
 
@@ -151,69 +159,64 @@ dotnet publish --configuration Release --runtime win7-x64 --output c:\svc
 
 ## <a name="create-a-user-account"></a>Создание учетной записи пользователя
 
-Создайте для службы учетную запись пользователя с помощью команды `net user` из административной командной оболочки PowerShell 6:
+Создайте для службы учетную запись пользователя с помощью командлета [New-LocalUser](/powershell/module/microsoft.powershell.localaccounts/new-localuser) из административной командной оболочки PowerShell 6.
 
 ```powershell
-net user {USER ACCOUNT} {PASSWORD} /add
+New-LocalUser -Name {NAME}
 ```
 
-Срок действия пароля по умолчанию составляет шесть недель.
+Укажите [надежный пароль](/windows/security/threat-protection/security-policy-settings/password-must-meet-complexity-requirements) при появлении соответствующего запроса.
 
-Для примера приложения создайте учетную запись пользователя с именем `ServiceUser` и пароль. В следующей команде замените `{PASSWORD}` на [надежный пароль](/windows/security/threat-protection/security-policy-settings/password-must-meet-complexity-requirements).
+Для примера приложения создайте учетную запись пользователя с именем `ServiceUser`.
 
 ```powershell
-net user ServiceUser {PASSWORD} /add
+New-LocalUser -Name ServiceUser
 ```
 
-Если вам нужно добавить пользователя в группу, используйте команду `net localgroup`, где `{GROUP}` — это имя группы:
+Параметр срока действия учетной записи <xref:System.DateTime> можно задать с помощью параметра `-AccountExpires`, передаваемого в командлет [New-LocalUser](/powershell/module/microsoft.powershell.localaccounts/new-localuser).
 
-```powershell
-net localgroup {GROUP} {USER ACCOUNT} /add
-```
-
-Дополнительные сведения см. в статье [Service User Accounts](/windows/desktop/services/service-user-accounts) (Учетные записи пользователей службы).
+Дополнительные сведения см. в статьях [Microsoft.PowerShell.LocalAccounts](/powershell/module/microsoft.powershell.localaccounts/) и [Service User Accounts](/windows/desktop/services/service-user-accounts) (Учетные записи пользователей служб).
 
 Альтернативный подход к управлению пользователями при работе с Active Directory заключается в применении управляемых учетных записей служб. Дополнительные сведения см. в [обзоре групповых управляемых учетных записей службы](/windows-server/security/group-managed-service-accounts/group-managed-service-accounts-overview).
 
 ## <a name="set-permission-log-on-as-a-service"></a>Установка разрешений: Вход в систему в качестве службы
 
-Предоставьте доступ на запись, чтение и выполнение для папки приложения с помощью команды [icacls](/windows-server/administration/windows-commands/icacls):
+Предоставьте доступ на запись, чтение и выполнение к папке приложения с помощью команды [icacls](/windows-server/administration/windows-commands/icacls) из административной командной оболочки PowerShell 6.
 
 ```powershell
-icacls "{PATH}" /grant {USER ACCOUNT}:(OI)(CI){PERMISSION FLAGS} /t
+icacls "{PATH}" /grant "{USER ACCOUNT}:(OI)(CI){PERMISSION FLAGS}" /t
 ```
 
-* `{PATH}` &ndash; путь к папке приложения.
-* `{USER ACCOUNT}` &ndash; учетная запись пользователя (SID).
-* `(OI)` &ndash; флаг наследования объекта, который распространяет разрешения на вложенные файлы.
-* `(CI)` &ndash; флаг наследования контейнера, который распространяет разрешения на вложенные папки.
-* `{PERMISSION FLAGS}` &ndash; устанавливает разрешения для доступа к приложениям.
+* `{PATH}` — путь к папке приложения.
+* `{USER ACCOUNT}` — учетная запись пользователя (SID).
+* `(OI)` — флаг наследования объекта, который распространяет разрешения на вложенные файлы.
+* `(CI)` — флаг наследования контейнера, который распространяет разрешения на вложенные папки.
+* `{PERMISSION FLAGS}` — устанавливает права доступа к приложению.
   * Запись (`W`)
   * Чтение (`R`)
   * Выполнение (`X`)
   * Полное (`F`)
   * Изменение (`M`)
-* `/t` &ndash; применяется рекурсивно к имеющимся вложенным папкам и файлам.
+* `/t` — применяется рекурсивно к существующим вложенным папкам и файлам.
 
-Для примера приложения, опубликованного в папке *c:\\svc*, и учетной записи `ServiceUser` с разрешениями на запись, чтение и выполнение используйте следующую команду:
+Для примера приложения, опубликованного в папке *c:\\svc*, и учетной записи `ServiceUser` с разрешениями на запись, чтение и выполнение выполните следующую команду в административной командной оболочке PowerShell 6:
 
 ```powershell
-icacls "c:\svc" /grant ServiceUser:(OI)(CI)WRX /t
+icacls "c:\svc" /grant "ServiceUser:(OI)(CI)WRX" /t
 ```
 
 Дополнительные сведения см. в статье об [icacls](/windows-server/administration/windows-commands/icacls).
 
 ## <a name="create-the-service"></a>Создание службы
 
-Используйте скрипт PowerShell [RegisterService.ps1](https://github.com/aspnet/Docs/tree/master/aspnetcore/host-and-deploy/windows-service/scripts), чтобы зарегистрировать службу. Из административной командной строки PowerShell 6 выполните следующую команду:
+Используйте скрипт PowerShell [RegisterService.ps1](https://github.com/aspnet/Docs/tree/master/aspnetcore/host-and-deploy/windows-service/scripts), чтобы зарегистрировать службу. Из административной командной оболочки PowerShell 6 выполните скрипт с помощью такой команды:
 
 ```powershell
 .\RegisterService.ps1 
     -Name {NAME} 
     -DisplayName "{DISPLAY NAME}" 
     -Description "{DESCRIPTION}" 
-    -Path "{PATH}" 
-    -Exe {ASSEMBLY}.exe 
+    -Exe "{PATH TO EXE}\{ASSEMBLY NAME}.exe" 
     -User {DOMAIN\USER}
 ```
 
@@ -221,15 +224,14 @@ icacls "c:\svc" /grant ServiceUser:(OI)(CI)WRX /t
 
 * Служба называется **MyService**.
 * Опубликованная служба размещается в папке *c:\\svc*. Исполняемый файл приложения с именем *SampleApp.exe*.
-* Служба работает под учетной записью `ServiceUser`. В следующем примере именем локального компьютера является `Desktop-PC`.
+* Служба работает под учетной записью `ServiceUser`. В следующем примере команды `Desktop-PC` является именем локального компьютера. Замените `Desktop-PC` именем компьютера или доменом своей системы.
 
 ```powershell
 .\RegisterService.ps1 
     -Name MyService 
     -DisplayName "My Cool Service" 
     -Description "This is the Sample App service." 
-    -Path "c:\svc" 
-    -Exe SampleApp.exe 
+    -Exe "c:\svc\SampleApp.exe" 
     -User Desktop-PC\ServiceUser
 ```
 

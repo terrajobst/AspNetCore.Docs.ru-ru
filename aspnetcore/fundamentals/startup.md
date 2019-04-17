@@ -7,12 +7,12 @@ ms.author: tdykstra
 ms.custom: mvc
 ms.date: 01/17/2019
 uid: fundamentals/startup
-ms.openlocfilehash: 9556ec076fce3500115cf0e934202f11b175ccd3
-ms.sourcegitcommit: 3e9e1f6d572947e15347e818f769e27dea56b648
+ms.openlocfilehash: 362186be6feeeefeca3c56688ee6420de5fb9659
+ms.sourcegitcommit: 948e533e02c2a7cb6175ada20b2c9cabb7786d0b
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 03/30/2019
-ms.locfileid: "58750788"
+ms.lasthandoff: 04/10/2019
+ms.locfileid: "59468628"
 ---
 # <a name="app-startup-in-aspnet-core"></a>Запуск приложения в ASP.NET Core
 
@@ -63,22 +63,24 @@ ms.locfileid: "58750788"
 
 Для функций, нуждающихся в значительной настройке, существуют методы расширения `Add{Service}` в <xref:Microsoft.Extensions.DependencyInjection.IServiceCollection>. Обычное приложение ASP.NET Core регистрирует службы для Entity Framework, удостоверения и MVC:
 
-[!code-csharp[](startup/sample_snapshot/Startup3.cs?highlight=4,7,11)]
+[!code-csharp[](startup/sample_snapshot/Startup3.cs)]
 
 Добавление служб в контейнер служб делает их доступными в приложении и в методе `Configure`. Службы разрешаются посредством [внедрения зависимостей](xref:fundamentals/dependency-injection) или из <xref:Microsoft.AspNetCore.Builder.IApplicationBuilder.ApplicationServices*>.
 
+Подробнее о `SetCompatibilityVersion` см. в сведениях о [SetCompatibilityVersion](xref:mvc/compatibility-version).
+
 ## <a name="the-configure-method"></a>Метод Configure 
 
-Метод <xref:Microsoft.AspNetCore.Hosting.StartupBase.Configure*> используется для указания того, как приложение реагирует на HTTP-запросы. Конвейер запросов настраивается путем добавления компонентов [ПО промежуточного слоя](xref:fundamentals/middleware/index) в экземпляр <xref:Microsoft.AspNetCore.Builder.IApplicationBuilder>. `IApplicationBuilder` доступен для метода `Configure`, но он не зарегистрирован в контейнере службы. При размещении создается `IApplicationBuilder` и передается непосредственно в `Configure`.
+Метод <xref:Microsoft.AspNetCore.Hosting.StartupBase.Configure*> используется для указания того, как приложение реагирует на HTTP-запросы. Конвейер запросов настраивается путем добавления компонентов [ПО промежуточного слоя](xref:fundamentals/middleware/index) в экземпляр <xref:Microsoft.AspNetCore.Builder.IApplicationBuilder>. `IApplicationBuilder` — доступно для метода `Configure`, но без регистрации в контейнере службы. При размещении создается `IApplicationBuilder` и передается непосредственно в `Configure`.
 
 [Шаблоны ASP.NET Core](/dotnet/core/tools/dotnet-new) настраивают конвейер с поддержкой следующих компонентов и функций:
 
 * [Страница со сведениями об исключении для разработчика](xref:fundamentals/error-handling#developer-exception-page)
-* [обработчиков исключений](xref:fundamentals/error-handling#configure-a-custom-exception-handling-page);
+* [Обработчик исключений](xref:fundamentals/error-handling#exception-handler-page)
 * [HTTP Strict Transport Security (HSTS)](xref:security/enforcing-ssl#http-strict-transport-security-protocol-hsts)
-* [перенаправления HTTPS](xref:security/enforcing-ssl);
+* [Перенаправление HTTPS](xref:security/enforcing-ssl)
 * [Статические файлы](xref:fundamentals/static-files)
-* [общего регламента по защите данных (GDPR)](xref:security/gdpr);
+* [Общий регламент по защите данных (GDPR)](xref:security/gdpr)
 * ASP.NET Core [MVC](xref:mvc/overview) и [Razor Pages](xref:razor-pages/index).
 
 [!code-csharp[](startup/sample_snapshot/Startup4.cs)]

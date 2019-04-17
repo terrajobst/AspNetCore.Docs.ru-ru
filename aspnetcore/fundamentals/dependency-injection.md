@@ -5,14 +5,14 @@ description: Сведения о том, как ASP.NET Core реализует 
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 03/28/2019
+ms.date: 04/07/2019
 uid: fundamentals/dependency-injection
-ms.openlocfilehash: 8312f3375296a8530ac2db3db46d062b7b9e76b9
-ms.sourcegitcommit: 3e9e1f6d572947e15347e818f769e27dea56b648
+ms.openlocfilehash: da6ddf1f0efd164a58f017ff55ce216bbefa7cc6
+ms.sourcegitcommit: 6bde1fdf686326c080a7518a6725e56e56d8886e
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 03/30/2019
-ms.locfileid: "58750604"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59068327"
 ---
 # <a name="dependency-injection-in-aspnet-core"></a>Внедрение зависимостей в ASP.NET Core
 
@@ -82,7 +82,7 @@ public class IndexModel : PageModel
 
 `MyDependency` запрашивает [ILogger&lt;TCategoryName&gt;](/dotnet/api/microsoft.extensions.logging.ilogger-1) в своем конструкторе. Использование цепочки внедрений зависимостей не является чем-то необычным. Каждая запрашиваемая зависимость запрашивает собственные зависимости. Контейнер разрешает зависимости в графе и возвращает полностью разрешенную службу. Весь набор зависимостей, которые нужно разрешить, обычно называют *деревом зависимостей*, *графом зависимостей* или *графом объектов*.
 
-`IMyDependency` и `ILogger<TCategoryName>` должны быть зарегистрированы в контейнере служб. `IMyDependency` регистрируется в `Startup.ConfigureServices`. Службу `ILogger<TCategoryName>` регистрирует инфраструктура абстракций ведения журналов, поэтому такая служба является [платформенной](#framework-provided-services), что означает, что ее по умолчанию регистрирует платформа.
+`IMyDependency` и `ILogger<TCategoryName>` должны быть зарегистрированы в контейнере служб. `IMyDependency` регистрируется в `Startup.ConfigureServices`. `ILogger<TCategoryName>` регистрирует инфраструктура абстракций ведения журналов, поэтому такая служба является [платформенной](#framework-provided-services), что означает, что ее по умолчанию регистрирует платформа.
 
 Контейнер разрешает `ILogger<TCategoryName>`, используя преимущества [(универсальных) открытых типов](/dotnet/csharp/language-reference/language-specification/types#open-and-closed-types), что устраняет необходимость регистрации каждого [(универсального) сконструированного типа](/dotnet/csharp/language-reference/language-specification/types#constructed-types).
 
@@ -166,14 +166,14 @@ public void ConfigureServices(IServiceCollection services)
 
 Временные службы времени существования создаются при каждом их запросе из контейнера служб. Это время существования лучше всего подходит для простых служб без отслеживания состояния.
 
-**Ограниченный областью**
+**Область действия**
 
 Службы времени существования с заданной областью создаются один раз для каждого клиентского запроса (подключения).
 
 > [!WARNING]
 > При использовании такой службы в ПО промежуточного слоя внедрите ее в метод `Invoke` или `InvokeAsync`. Не внедряйте службу через внедрение конструктора, поскольку в таком случае служба будет вести себя как одноэлементный объект. Для получения дополнительной информации см. <xref:fundamentals/middleware/index>.
 
-**Одноэлементные**
+**Одноэлементный**
 
 Одинарные службы создаются при первом запросе (или при выполнении `ConfigureServices`, когда экземпляр указан во время регистрации службы) и существуют в единственном экземпляре. Созданный экземпляр используют все последующие запросы. Если в приложении нужно использовать одинарные службы, рекомендуется разрешить контейнеру служб управлять временем их существования. Реализовывать конструктивный шаблон с одинарными службами и предоставлять пользовательский код для управления временем существования объекта в классе категорически не рекомендуется.
 
@@ -185,7 +185,7 @@ public void ConfigureServices(IServiceCollection services)
 Службы можно разрешать двумя методами:
 
 * `IServiceProvider`
-* [ActivatorUtilities.](/dotnet/api/microsoft.extensions.dependencyinjection.activatorutilities) Позволяет создавать объекты без регистрации службы в контейнере внедрения зависимостей. `ActivatorUtilities` используется с абстракциями пользовательского уровня, например со вспомогательными функциями для тегов, контроллерами MVC, и связывателями моделей.
+* [ActivatorUtilities.](/dotnet/api/microsoft.extensions.dependencyinjection.activatorutilities) Позволяет создавать объекты без регистрации службы в контейнере внедрения зависимостей. `ActivatorUtilities` используется с абстракциями пользовательского уровня, например вспомогательными приложениями для тегов, контроллерами MVC, и связывателями моделей.
 
 Конструкторы могут принимать аргументы, которые не предоставляются внедрением зависимостей, но эти аргументы должны назначать значения по умолчанию.
 
@@ -227,7 +227,7 @@ public void ConfigureServices(IServiceCollection services)
 
 Результаты двух запросов будут выглядеть так:
 
-**Первый запрос**
+**Первый запрос:**
 
 Операции контроллера:
 
@@ -236,14 +236,14 @@ Scoped: 5d997e2d-55f5-4a64-8388-51c4e3a1ad19
 Singleton: 01271bc1-9e31-48e7-8f7c-7261b040ded9  
 Instance: 00000000-0000-0000-0000-000000000000
 
-Операции `OperationService`:
+`OperationService` Операции:
 
 Transient: c6b049eb-1318-4e31-90f1-eb2dd849ff64  
 Scoped: 5d997e2d-55f5-4a64-8388-51c4e3a1ad19  
 Singleton: 01271bc1-9e31-48e7-8f7c-7261b040ded9  
 Instance: 00000000-0000-0000-0000-000000000000
 
-**Второй запрос**
+**Второй запрос:**
 
 Операции контроллера:
 
@@ -252,7 +252,7 @@ Scoped: 31e820c5-4834-4d22-83fc-a60118acb9f4
 Singleton: 01271bc1-9e31-48e7-8f7c-7261b040ded9  
 Instance: 00000000-0000-0000-0000-000000000000
 
-Операции `OperationService`:
+`OperationService` Операции:
 
 Transient: c4cbacb8-36a2-436d-81c8-8c1b78808aaf  
 Scoped: 31e820c5-4834-4d22-83fc-a60118acb9f4  
@@ -364,7 +364,7 @@ public void ConfigureServices(IServiceCollection services)
 * Внедрение по имени
 * Дочерние контейнеры
 * Настраиваемое управление временем существования
-* `Func<T>` поддерживает отложенную инициализацию
+* `Func<T>` Поддержка отложенной инициализации
 
 Список некоторых контейнеров, которые поддерживают адаптеры, см. в разделе [Файл readme.md внедрения зависимостей](https://github.com/aspnet/Extensions/tree/master/src/DependencyInjection).
 
@@ -372,8 +372,8 @@ public void ConfigureServices(IServiceCollection services)
 
 * Установите соответствующие пакеты контейнера:
 
-  * [Autofac](https://www.nuget.org/packages/Autofac/);
-  * [Autofac.Extensions.DependencyInjection](https://www.nuget.org/packages/Autofac.Extensions.DependencyInjection/).
+  * [Autofac](https://www.nuget.org/packages/Autofac/)
+  * [Autofac.Extensions.DependencyInjection](https://www.nuget.org/packages/Autofac.Extensions.DependencyInjection/)
 
 * Настройте контейнер в `Startup.ConfigureServices` и возвратите `IServiceProvider`.
 
@@ -416,13 +416,46 @@ public void ConfigureServices(IServiceCollection services)
 
 ## <a name="recommendations"></a>Рекомендации
 
-* Разрешение служб на основе `async/await` и `Task` не поддерживается. C# не поддерживает асинхронные конструкторы, поэтому рекомендуем использовать асинхронные методы после асинхронного разрешения службы.
+* `async/await` и `Task` — разрешение служб не поддерживается. C# не поддерживает асинхронные конструкторы, поэтому рекомендуем использовать асинхронные методы после асинхронного разрешения службы.
 
 * Не храните данные и конфигурацию непосредственно в контейнере служб. Например, обычно не следует добавлять корзину пользователя в контейнер служб. Конфигурация должна использовать [шаблон параметров](xref:fundamentals/configuration/options). Аналогичным образом, избегайте объектов "хранения данных", которые служат лишь для доступа к некоторому другому объекту. Лучше запросить фактический элемент через внедрение зависимостей.
 
 * Не используйте статический доступ к службам (например, не используйте везде [IApplicationBuilder.ApplicationServices](/dotnet/api/microsoft.aspnetcore.builder.iapplicationbuilder.applicationservices)).
 
-* Старайтесь не использовать *схему указателя служб*. Например, не вызывайте <xref:System.IServiceProvider.GetService*> для получения экземпляра службы, когда можно использовать внедрение зависимостей. Другой вариант указателя службы, позволяющий избежать этого, — внедрение фабрики, которая разрешает зависимости во время выполнения. Оба метода смешивают стратегии [инверсии управления](/dotnet/standard/modern-web-apps-azure-architecture/architectural-principles#dependency-inversion).
+* Старайтесь не использовать *схему указателя служб*. Например, не вызывайте <xref:System.IServiceProvider.GetService*> для получения экземпляра службы, когда можно использовать внедрение зависимостей:
+
+  **Неправильно:**
+
+  ```csharp
+  public void MyMethod()
+  {
+      var options = 
+          _services.GetService<IOptionsMonitor<MyOptions>>();
+      var option = options.CurrentValue.Option;
+
+      ...
+  }
+  ```
+
+  **Правильно**:
+
+  ```csharp
+  private readonly MyOptions _options;
+
+  public MyClass(IOptionsMonitor<MyOptions> options)
+  {
+      _options = options.CurrentValue;
+  }
+
+  public void MyMethod()
+  {
+      var option = _options.Option;
+
+      ...
+  }
+  ```
+
+* Другой вариант указателя службы, позволяющий избежать этого, — внедрение фабрики, которая разрешает зависимости во время выполнения. Оба метода смешивают стратегии [инверсии управления](/dotnet/standard/modern-web-apps-azure-architecture/architectural-principles#dependency-inversion).
 
 * Не используйте статический доступ к `HttpContext` (например, [IHttpContextAccessor.HttpContext](/dotnet/api/microsoft.aspnetcore.http.ihttpcontextaccessor.httpcontext)).
 
@@ -439,5 +472,5 @@ public void ConfigureServices(IServiceCollection services)
 * <xref:fundamentals/middleware/extensibility>
 * [Написание чистого кода в ASP.NET Core с внедрением зависимостей (MSDN)](https://msdn.microsoft.com/magazine/mt703433.aspx)
 * [Принцип явных зависимостей](/dotnet/standard/modern-web-apps-azure-architecture/architectural-principles#explicit-dependencies)
-* [Контейнеры с инверсией управления и шаблон внедрения зависимостей (Мартин Фаулер)](https://www.martinfowler.com/articles/injection.html)
-* [How to register a service with multiple interfaces in ASP.NET Core DI](https://andrewlock.net/how-to-register-a-service-with-multiple-interfaces-for-in-asp-net-core-di/) (Регистрация службы с несколькими интерфейсами с помощью внедрения зависимостей ASP.NET Core)
+* [Контейнеры с инверсией управления и шаблон внедрения зависимостей (Мартин Фаулер (Martin Fowler))](https://www.martinfowler.com/articles/injection.html)
+* [Регистрация службы с несколькими интерфейсами с помощью внедрения зависимостей ASP.NET Core](https://andrewlock.net/how-to-register-a-service-with-multiple-interfaces-for-in-asp-net-core-di/)

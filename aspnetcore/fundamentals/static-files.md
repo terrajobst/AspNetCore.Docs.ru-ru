@@ -4,14 +4,14 @@ author: rick-anderson
 description: Узнайте, как в веб-приложениях ASP.NET Core обслуживать и защищать статические файлы, а также как настраивать ПО промежуточного слоя по размещению статических файлов.
 ms.author: riande
 ms.custom: mvc
-ms.date: 12/18/2018
+ms.date: 04/08/2019
 uid: fundamentals/static-files
-ms.openlocfilehash: 114fee0795977043f3a74a81a15923a8bf5faf6b
-ms.sourcegitcommit: 5f299daa7c8102d56a63b214b9a34cc4bc87bc42
+ms.openlocfilehash: 12c7b39bee462ff83188a5a0f10b133ca273863b
+ms.sourcegitcommit: 258a97159da206f9009f23fdf6f8fa32f178e50b
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58208639"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59425066"
 ---
 # <a name="static-files-in-aspnet-core"></a>Статические файлы в ASP.NET Core
 
@@ -154,7 +154,7 @@ ms.locfileid: "58208639"
 [!code-csharp[](static-files/samples/1x/StartupEmpty.cs?name=snippet_ConfigureMethod&highlight=3)]
 
 > [!IMPORTANT]
-> Для обслуживания файла по умолчанию метод `UseDefaultFiles`должен быть вызван до метода `UseStaticFiles`. Метод `UseDefaultFiles` фактически не обслуживает файл, а только перезаписывает URL-адрес. Для обслуживания файла включите ПО промежуточного слоя для статических файлов, вызвав метод `UseStaticFiles`.
+> `UseDefaultFiles` следует вызывать перед `UseStaticFiles` для обслуживания файла по умолчанию. `UseDefaultFiles` только перезаписывает URL-адрес, но не обслуживает файл. Для обслуживания файла включите ПО промежуточного слоя для статических файлов, вызвав метод `UseStaticFiles`.
 
 При вызове метода `UseDefaultFiles` запросы к папке будут искать следующие файлы:
 
@@ -200,7 +200,7 @@ app.UseFileServer(enableDirectoryBrowsing: true);
 
 [!code-csharp[](static-files/samples/1x/StartupUseFileServer.cs?name=snippet_ConfigureMethod&highlight=5-11)]
 
-Метод `AddDirectoryBrowser` должен вызываться при значении `true` свойства `EnableDirectoryBrowsing`:
+`AddDirectoryBrowser` следует вызывать, когда у свойства `EnableDirectoryBrowsing` значение `true`:
 
 [!code-csharp[](static-files/samples/1x/StartupUseFileServer.cs?name=snippet_ConfigureServicesMethod)]
 
@@ -208,15 +208,15 @@ app.UseFileServer(enableDirectoryBrowsing: true);
 
 | URI            |                             Ответ  |
 | ------- | ------|
-| *http://\<адрес_сервера>/StaticFiles/images/banner1.svg*    |      MyStaticFiles/images/banner1.svg |
-| *http://\<адрес_сервера>/StaticFiles*             |     MyStaticFiles/default.html |
+| *http://\<server_address>/StaticFiles/images/banner1.svg*    |      MyStaticFiles/images/banner1.svg |
+| *http://\<server_address>/StaticFiles*             |     MyStaticFiles/default.html |
 
 Если в каталоге *MyStaticFiles* отсутствует файл с именем по умолчанию, то *http://\<адрес_сервера>/StaticFiles* возвращает список содержимого каталога с доступными для перехода ссылками:
 
 ![Список статических файлов](static-files/_static/db2.png)
 
 > [!NOTE]
-> Методы `UseDefaultFiles` и `UseDirectoryBrowser` используют URL-адрес *http://\<адрес_сервера>/StaticFiles* без завершающей косой черты, чтобы вызвать перенаправление на стороне клиента на адрес *http://\<адрес_сервера>/StaticFiles/*. Обратите внимание на добавление завершающей косой черты. Относительные URL-адреса в документах считаются недопустимыми без косой черты в конце.
+> <xref:Microsoft.AspNetCore.Builder.DefaultFilesExtensions.UseDefaultFiles*> и <xref:Microsoft.AspNetCore.Builder.DirectoryBrowserExtensions.UseDirectoryBrowser*> выполняют перенаправление на стороне клиента из `http://{SERVER ADDRESS}/StaticFiles` (без косой черты в конце) в `http://{SERVER ADDRESS}/StaticFiles/` (с косой чертой в конце). Относительные URL-адреса в каталоге *StaticFiles* считаются недопустимыми без косой черты в конце.
 
 ## <a name="fileextensioncontenttypeprovider"></a>FileExtensionContentTypeProvider
 
@@ -242,7 +242,7 @@ app.UseFileServer(enableDirectoryBrowsing: true);
 ### <a name="considerations"></a>Особенности
 
 > [!WARNING]
-> Использование `UseDirectoryBrowser` и `UseStaticFiles` может привести к утечке конфиденциальной информации. Настоятельно рекомендуется отключать просмотр каталогов в рабочей среде. Тщательно проверьте, просмотр каких каталогов разрешен посредством `UseStaticFiles` или `UseDirectoryBrowser`. Весь каталог и его подкаталоги становятся общедоступными. Храните файлы, предназначенные для общего доступа, в выделенных каталогах, таких как *\<корневой_каталог_содержимого>/wwwroot*. Отделите эти файлы от представлений MVC, страниц Razor (только для версии 2.x), файлов конфигурации и т.д.
+> `UseDirectoryBrowser` и `UseStaticFiles` могут привести к утечке секретов. Настоятельно рекомендуется отключать просмотр каталогов в рабочей среде. Тщательно проверьте, просмотр каких каталогов разрешен посредством `UseStaticFiles` или `UseDirectoryBrowser`. Весь каталог и его подкаталоги становятся общедоступными. Храните файлы, предназначенные для общего доступа, в выделенных каталогах, таких как *\<корневой_каталог_содержимого>/wwwroot*. Отделите эти файлы от представлений MVC, страниц Razor (только для версии 2.x), файлов конфигурации и т.д.
 
 * К URL-адресам содержимого, к которому предоставлен доступ методами `UseDirectoryBrowser` и `UseStaticFiles`, применяются те же требования по регистрозависимости и запрещенным символам, что и к базовой файловой системе. Например, в Windows не учитывается регистр, а в macOS и Linux &mdash; учитывается.
 

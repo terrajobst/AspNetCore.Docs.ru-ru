@@ -5,12 +5,12 @@ description: В этой серии руководств объясняется,
 ms.author: riande
 ms.date: 12/5/2018
 uid: tutorials/razor-pages/razor-pages-start
-ms.openlocfilehash: 88449a0064dad42d8d2bf9fbdd67078e4c2ba8de
-ms.sourcegitcommit: 5f299daa7c8102d56a63b214b9a34cc4bc87bc42
+ms.openlocfilehash: 1d264ca4a605d8291e273a8f054c92e7eefa5548
+ms.sourcegitcommit: 948e533e02c2a7cb6175ada20b2c9cabb7786d0b
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58210071"
+ms.lasthandoff: 04/10/2019
+ms.locfileid: "59468851"
 ---
 # <a name="tutorial-get-started-with-razor-pages-in-aspnet-core"></a>Учебник. Начало работы с Razor Pages в ASP.NET Core
 
@@ -39,7 +39,7 @@ ms.locfileid: "58210071"
 
 ## <a name="create-a-razor-pages-web-app"></a>Создание веб-приложения Razor Pages
 
-# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
+# [<a name="visual-studio"></a>Visual Studio](#tab/visual-studio)
 
 * В меню **Файл** Visual Studio откройте меню **Создать** > **Проект**.
 
@@ -55,7 +55,7 @@ ms.locfileid: "58210071"
 
   ![обозреватель решений](razor-pages-start/_static/se2.2.png)
 
-# <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code.](#tab/visual-studio-code)
+# [<a name="visual-studio-code"></a>Visual Studio Code](#tab/visual-studio-code)
 
 * Откройте [Интегрированный терминал](https://code.visualstudio.com/docs/editor/integrated-terminal).
 
@@ -75,15 +75,14 @@ ms.locfileid: "58210071"
 
 * Выберите ответ **Да**.
 
-# <a name="visual-studio-for-mactabvisual-studio-mac"></a>[Visual Studio для Mac](#tab/visual-studio-mac)
+# [<a name="visual-studio-for-mac"></a>Visual Studio для Mac](#tab/visual-studio-mac)
 
-Из терминала выполните следующие команды:
+В терминале выполните следующую команду:
 
 <!-- TODO: update these instruction once mac support 2.2 projects -->
 
 ```console
 dotnet new webapp -o RazorPagesMovie
-cd RazorPagesMovie
 ```
 
 Указанные выше команды используют [интерфейс командной строки .NET Core](/dotnet/core/tools/dotnet) для создания проекта Razor Pages.
@@ -98,31 +97,13 @@ cd RazorPagesMovie
 
 ## <a name="run-the-app"></a>Запуск приложения
 
-# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
+# [<a name="visual-studio"></a>Visual Studio](#tab/visual-studio)
 
 * Нажмите клавиши CTRL+F5, чтобы выполнить запуск без отладчика.
 
   [!INCLUDE[](~/includes/trustCertVS.md)]
 
   Visual Studio запускает [IIS Express](/iis/extensions/introduction-to-iis-express/iis-express-overview), а затем приложение. В адресной строке указывается `localhost:port#`, а не что-либо типа `example.com`. Это связано с тем, что `localhost` — стандартное имя узла для локального компьютера. Localhost обслуживает только веб-запросы с локального компьютера. Когда Visual Studio создает веб-проект, для веб-сервера используется случайный порт.
-  
-# <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code.](#tab/visual-studio-code)
-
-* Нажмите клавиши **CTRL-F5**, чтобы выполнить запуск без отладчика.
-
-  [!INCLUDE[](~/includes/trustCertVSC.md)]
-
-  Visual Studio Code запускает [Kestrel](xref:fundamentals/servers/kestrel), открывает браузер и переходит к `http://localhost:5001`. В адресной строке указывается `localhost:port#`, а не что-либо типа `example.com`. Это связано с тем, что `localhost` — стандартное имя узла для локального компьютера. Localhost обслуживает только веб-запросы с локального компьютера.
-  
-# <a name="visual-studio-for-mactabvisual-studio-mac"></a>[Visual Studio для Mac](#tab/visual-studio-mac)
-
-Выберите **Выполнить > Запуск без отладки**, чтобы запустить приложение. Visual Studio запускает [Kestrel](xref:fundamentals/servers/kestrel), открывает браузер и переходит к `http://localhost:5001`.
-
-[!INCLUDE[](~/includes/trustCertMac.md)]
-
-<!-- End of VS tabs -->
-
----
 
 * На домашней странице нажмите **Принять**, чтобы согласиться на отслеживание.
 
@@ -133,6 +114,46 @@ cd RazorPagesMovie
   На следующем рисунке показано приложение после принятия отслеживания:
 
   ![Домашняя или индексная страница](razor-pages-start/_static/home2.2.png)
+  
+# [<a name="visual-studio-code"></a>Visual Studio Code](#tab/visual-studio-code)
+
+  [!INCLUDE[](~/includes/trustCertVSC.md)]
+
+* Нажмите клавиши **CTRL-F5**, чтобы выполнить запуск без отладчика.
+
+  Visual Studio Code запускает [Kestrel](xref:fundamentals/servers/kestrel), открывает браузер и переходит к `http://localhost:5001`. В адресной строке указывается `localhost:port#`, а не что-либо типа `example.com`. Это связано с тем, что `localhost` — стандартное имя узла для локального компьютера. Localhost обслуживает только веб-запросы с локального компьютера.
+
+* На домашней странице нажмите **Принять**, чтобы согласиться на отслеживание.
+
+  Это приложение не отслеживает персональные данные, но в шаблон проекта входит компонент согласия на случай, если приложение должно соответствовать [общему регламенту по защите данных (GDPR)](xref:security/gdpr) Европейского Союза.
+
+  ![Домашняя или индексная страница](razor-pages-start/_static/homeGDPR2.2.png)
+
+  На следующем рисунке показано приложение после принятия отслеживания:
+
+  ![Домашняя или индексная страница](razor-pages-start/_static/home2.2.png)
+  
+# [<a name="visual-studio-for-mac"></a>Visual Studio для Mac](#tab/visual-studio-mac)
+
+  [!INCLUDE[](~/includes/trustCertMac.md)]
+
+* Нажмите клавиши **Cmd-Opt-F5**, чтобы выполнить запуск без отладчика.
+
+  Visual Studio запускает [Kestrel](xref:fundamentals/servers/kestrel), открывает браузер и переходит к `http://localhost:5001`.
+
+* На домашней странице нажмите **Принять**, чтобы согласиться на отслеживание.
+
+  Это приложение не отслеживает персональные данные, но в шаблон проекта входит компонент согласия на случай, если приложение должно соответствовать [общему регламенту по защите данных (GDPR)](xref:security/gdpr) Европейского Союза.
+
+  ![Домашняя или индексная страница](razor-pages-start/_static/homeGDPR2.2_safari.png)
+
+  На следующем рисунке показано приложение после принятия отслеживания:
+
+  ![Домашняя или индексная страница](razor-pages-start/_static/home2.2_safari.png)
+
+<!-- End of VS tabs -->
+
+---
 
 ## <a name="examine-the-project-files"></a>Анализ файлов проекта
 

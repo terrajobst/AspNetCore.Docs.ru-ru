@@ -4,14 +4,14 @@ author: rick-anderson
 description: В этом руководстве демонстрируется построение приложения ASP.NET Core 2.x с использованием OAuth 2.0 с внешними поставщиками проверки подлинности.
 ms.author: riande
 ms.custom: mvc
-ms.date: 1/19/2019
+ms.date: 4/19/2019
 uid: security/authentication/social/index
-ms.openlocfilehash: 48dd8b772234ff18158423a36ed1716102bc2f31
-ms.sourcegitcommit: 184ba5b44d1c393076015510ac842b77bc9d4d93
+ms.openlocfilehash: 61482481358256dc9ddd1a0a894541040a8a452f
+ms.sourcegitcommit: 9b7fcb4ce00a3a32e153a080ebfaae4ef417aafa
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/18/2019
-ms.locfileid: "54396146"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59516330"
 ---
 # <a name="facebook-google-and-external-provider-authentication-in-aspnet-core"></a>Проверка подлинности Facebook, Google и внешних поставщиков в ASP.NET Core
 
@@ -23,14 +23,60 @@ ms.locfileid: "54396146"
 
 ![Значки социальных сетей для Facebook, Twitter, Google+ и Windows](index/_static/social.png)
 
-Возможность выполнять вход с использованием существующих учетных данных очень удобна и позволяет передать все задачи, связанные с управлением процессом входа, сторонней организации. Демонстрацию того, как вход с использованием учетных данных социальных сетей помогает повысить трафик и количество конверсий, см. в примерах для [Facebook](https://www.facebook.com/unsupportedbrowser) и [Twitter](https://dev.twitter.com/resources/case-studies).
+Позволяет пользователям входить в систему с имеющимися учетными данными:
+* Удобно для пользователей.
+* Многие задачи, связанные с управлением процессом входа, передаются сторонним производителям. 
+
+Демонстрацию того, как вход с использованием учетных данных социальных сетей помогает повысить трафик и количество конверсий, см. в примерах для [Facebook](https://www.facebook.com/unsupportedbrowser) и [Twitter](https://dev.twitter.com/resources/case-studies).
 
 ## <a name="create-a-new-aspnet-core-project"></a>Создание проекта ASP.NET Core
 
-* В Visual Studio 2017 создайте проект на начальной странице или выбрав **Файл** > **Создать** > **Проект**.
+# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-* Выберите шаблон **Веб-приложение ASP.NET Core** из категории **Visual C#** > **.NET Core**:
+* В меню **Файл** Visual Studio откройте меню **Создать** > **Проект**.
+* Создайте новое веб-приложение ASP.NET Core.
+* Выберите в раскрывающемся списке **ASP.NET Core 2.2**, а затем **Веб-приложение**.
 * Выберите **Изменить проверку подлинности** и задайте способ **Учетные записи отдельных пользователей**.
+
+# <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code.](#tab/visual-studio-code)
+
+* Откройте [Интегрированный терминал](https://code.visualstudio.com/docs/editor/integrated-terminal).
+
+* Смените каталог (`cd`) на папку, в которой будет содержаться проект.
+
+* Выполните следующие команды:
+
+  ```console
+  dotnet new webapp -o WebApp1
+  code -r WebApp1
+  ```
+
+  * Команда `dotnet new` создает новый проект Razor Pages в папке *WebApp1*.
+  * Команда `code` открывает папку *WebApp1* в новом экземпляре Visual Studio Code.
+
+  Появится диалоговое окно с предупреждением **В WebApp1 отсутствуют необходимые ресурсы для сборки и отладки. Добавить их?**
+
+* Выберите ответ **Да**.
+
+# <a name="visual-studio-for-mactabvisual-studio-mac"></a>[Visual Studio для Mac](#tab/visual-studio-mac)
+
+В терминале выполните следующую команду:
+
+<!-- TODO: update these instruction once mac support 2.2 projects -->
+
+```console
+dotnet new webapp -o WebApp1
+```
+
+Указанные выше команды используют [интерфейс командной строки .NET Core](/dotnet/core/tools/dotnet) для создания проекта Razor Pages.
+
+## <a name="open-the-project"></a>Открытие проекта
+
+В Visual Studio откройте меню **Файл > Открыть** и выберите файл *WebApp1.csproj*.
+
+<!-- End of VS tabs -->
+
+---
 
 ## <a name="apply-migrations"></a>Применение миграции
 
@@ -67,7 +113,7 @@ ms.locfileid: "54396146"
 
 Чтобы создать пароль и войти с использованием адреса электронной почты, который был настроен при входе с использованием внешнего поставщика, выполните следующие действия:
 
-* Выберите ссылку **Здравствуйте, &lt;псевдоним электронной почты&gt;** в правом верхнем углу, чтобы перейти к представлению **Управление**.
+* Щелкните ссылку **Здравствуйте, &lt;псевдоним электронной почты&gt;** в правом верхнем углу, чтобы перейти к представлению **Управление**.
 
 ![Представление управления веб-приложения](index/_static/pass1a.png)
 

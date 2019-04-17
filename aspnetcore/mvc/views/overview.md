@@ -3,14 +3,14 @@ title: Представления в ASP.NET Core MVC
 author: ardalis
 description: Узнайте, как представления обеспечивают отображение данных приложения и взаимодействие с пользователем в ASP.NET Core MVC.
 ms.author: riande
-ms.date: 12/12/2017
+ms.date: 04/03/2019
 uid: mvc/views/overview
-ms.openlocfilehash: 0ee1fef9e9da15d91427a2eb5b5f530a0b77ce33
-ms.sourcegitcommit: 57792e5f594db1574742588017c708350958bdf0
+ms.openlocfilehash: 766996645bc6ef2b6be42d729baf5d57f55b6ddd
+ms.sourcegitcommit: 1a7000630e55da90da19b284e1b2f2f13a393d74
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58265394"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "59012803"
 ---
 # <a name="views-in-aspnet-core-mvc"></a>Представления в ASP.NET Core MVC
 
@@ -192,7 +192,7 @@ namespace WebApplication1.ViewModels
 
 ### <a name="weakly-typed-data-viewdata-viewdata-attribute-and-viewbag"></a>Нестрого типизированные данные (ViewData, атрибут ViewData и ViewBag)
 
-`ViewBag`Свойство  *недоступно в Razor Pages.*
+`ViewBag` *— недоступно в Razor Pages.*
 
 Помимо строго типизированных представлений, представления имеют доступ к *нестрого типизированной* (*слабо типизированной*) коллекции данных. В отличие от строгих типов, *нестрогие типы* (или *слабые типы*) предполагают, что тип используемых данных не объявляется явным образом. Коллекцию нестрого типизированных данных можно использовать для передачи небольших объемов данных в контроллеры и представления или из них.
 
@@ -202,15 +202,15 @@ namespace WebApplication1.ViewModels
 | Представлением и [представлением макета](xref:mvc/views/layout)   | Задание содержимого элемента **\<title>** в представлении макета из файла представления.  |
 | [Частичным представлением](xref:mvc/views/partial) и представлением | Мини-приложение, в котором данные выводятся на основе запрошенной пользователем веб-страницы.      |
 
-На эту коллекцию можно ссылаться в контроллерах и представлениях посредством свойства `ViewData` или `ViewBag`. Свойство `ViewData` представляет собой словарь нестрого типизированных объектов. Свойство `ViewBag` представляет собой оболочку для свойства `ViewData`, которая предоставляет динамические свойства для базовой коллекции `ViewData`.
+На эту коллекцию можно ссылаться в контроллерах и представлениях посредством свойства `ViewData` или `ViewBag`. Свойство `ViewData` представляет собой словарь нестрого типизированных объектов. Свойство `ViewBag` представляет собой оболочку для свойства `ViewData`, которая предоставляет динамические свойства для базовой коллекции `ViewData`. Примечание. При поиске ключей регистр учитывается для `ViewData` и `ViewBag`.
 
-Свойства `ViewData` и `ViewBag` разрешаются динамически во время выполнения. Так как они не обеспечивают проверку во время компиляции, их использование обычно приводит к большему числу ошибок, чем использование viewmodel. По этой причине некоторые разработчики предпочитают как можно реже использовать свойства `ViewData` и `ViewBag` или не использовать их вовсе.
+`ViewData` и `ViewBag` разрешаются динамически во время выполнения. Так как они не обеспечивают проверку во время компиляции, их использование обычно приводит к большему числу ошибок, чем использование viewmodel. По этой причине некоторые разработчики предпочитают как можно реже использовать свойства `ViewData` и `ViewBag` или не использовать их вовсе.
 
 <a name="VD"></a>
 
 **ViewData**
 
-`ViewData` — это объект [ViewDataDictionary](/dotnet/api/microsoft.aspnetcore.mvc.viewfeatures.viewdatadictionary), доступ к которому осуществляется посредством ключей `string`. Строковые данные можно сохранять и использовать напрямую без приведения, однако при извлечении других значений объекта `ViewData` их необходимо приводить к соответствующим типам. С помощью свойства `ViewData` можно передавать данные, включая [частичные представления](xref:mvc/views/partial) и [макеты](xref:mvc/views/layout), из контроллеров в представления и внутри представлений.
+`ViewData` — это объект [ViewDataDictionary](/dotnet/api/microsoft.aspnetcore.mvc.viewfeatures.viewdatadictionary), доступ к которому осуществляется с использованием ключей `string`. Строковые данные можно сохранять и использовать напрямую без приведения, однако при извлечении других значений объекта `ViewData` их необходимо приводить к соответствующим типам. С помощью свойства `ViewData` можно передавать данные, включая [частичные представления](xref:mvc/views/partial) и [макеты](xref:mvc/views/layout), из контроллеров в представления и внутри представлений.
 
 Ниже приведен пример, в котором с помощью свойства `ViewData` в действии задаются значения для приветствия и адреса.
 
@@ -292,9 +292,9 @@ public class HomeController : Controller
 
 **ViewBag**
 
-`ViewBag`Свойство  *недоступно в Razor Pages.*
+`ViewBag` *— недоступно в Razor Pages.*
 
-`ViewBag` — это объект [DynamicViewData](/dotnet/api/microsoft.aspnetcore.mvc.viewfeatures.internal.dynamicviewdata), который обеспечивает динамический доступ к объектам, хранящимся в `ViewData`. Работать со свойством `ViewBag` может быть удобнее, так как оно не требует приведения. В приведенном ниже примере демонстрируется использование свойства `ViewBag` с тем же результатом, что и свойства `ViewData` ранее.
+`ViewBag` — это объект [DynamicViewData`ViewData`, который обеспечивает динамический доступ к объектам, хранящимся в ](/dotnet/api/microsoft.aspnetcore.mvc.viewfeatures.internal.dynamicviewdata). `ViewBag` можно использовать более оптимально, так как приведение не требуется. В приведенном ниже примере демонстрируется использование свойства `ViewBag` с тем же результатом, что и свойства `ViewData` ранее.
 
 ```csharp
 public IActionResult SomeAction()
@@ -325,7 +325,7 @@ public IActionResult SomeAction()
 
 **Одновременное использование ViewData и ViewBag**
 
-`ViewBag`Свойство  *недоступно в Razor Pages.*
+`ViewBag` *— недоступно в Razor Pages.*
 
 Так как свойства `ViewData` и `ViewBag` ссылаются на одну и ту же базовую коллекцию `ViewData`, вы можете использовать `ViewData` и `ViewBag` вместе в различных сочетаниях при чтении и записи значений.
 
@@ -365,15 +365,15 @@ public IActionResult SomeAction()
 
 **Сводка различий между ViewData и ViewBag**
 
- Свойство `ViewBag` недоступно в Razor Pages.
+ `ViewBag` — недоступно в Razor Pages.
 
 * `ViewData`
   * Является производным от [ViewDataDictionary](/dotnet/api/microsoft.aspnetcore.mvc.viewfeatures.viewdatadictionary), поэтому имеет свойства словаря, которые могут быть полезны, например `ContainsKey`, `Add`, `Remove` и `Clear`.
-  * Ключи в словаре представляют собой строки, поэтому пробел допустим. Пример: `ViewData["Some Key With Whitespace"]`
+  * Ключи в словаре представляют собой строки, поэтому пробел допустим. Пример `ViewData["Some Key With Whitespace"]`
   * Любой тип, кроме `string`, должен быть приведен в представлении так, чтобы он мог использоваться в `ViewData`.
 * `ViewBag`
   * Является производным от [DynamicViewData](/dotnet/api/microsoft.aspnetcore.mvc.viewfeatures.internal.dynamicviewdata), поэтому позволяет создавать динамические свойства с помощью точечной нотации (`@ViewBag.SomeKey = <value or object>`); приведение не требуется. Синтаксис свойства `ViewBag` позволяет быстрее добавлять его в контроллеры и представления.
-  * Проще проверять значение NULL. Пример: `@ViewBag.Person?.Name`
+  * Проще проверять значение NULL. Пример `@ViewBag.Person?.Name`
 
 **Выбор между ViewData и ViewBag**
 

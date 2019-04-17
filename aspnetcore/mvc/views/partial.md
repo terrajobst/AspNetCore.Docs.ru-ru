@@ -4,14 +4,14 @@ author: ardalis
 description: Узнайте, как с помощью частичных представлений разбить большие файлы разметки на части и предотвратить дублирование стандартных блоков разметки на веб-страницах приложений ASP.NET Core.
 ms.author: riande
 ms.custom: mvc
-ms.date: 09/11/2018
+ms.date: 04/06/2019
 uid: mvc/views/partial
-ms.openlocfilehash: b7c1545007086053e879bce6781802959da77901
-ms.sourcegitcommit: a1c43150ed46aa01572399e8aede50d4668745ca
+ms.openlocfilehash: 65da78d6df3f179df9bdfa3a32af8736b71bbac5
+ms.sourcegitcommit: 948e533e02c2a7cb6175ada20b2c9cabb7786d0b
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58327382"
+ms.lasthandoff: 04/10/2019
+ms.locfileid: "59468712"
 ---
 # <a name="partial-views-in-aspnet-core"></a>Частичные представления в ASP.NET Core
 
@@ -75,7 +75,7 @@ ms.locfileid: "58327382"
 В файле разметки частичное представление может указываться несколькими способами. Мы рекомендуем использовать в приложениях один из следующих методов асинхронного отображения:
 
 * [Вспомогательная функция тега частичного представления](#partial-tag-helper)
-* [Асинхронное вспомогательное приложение HTML](#asynchronous-html-helper)
+* [Асинхронный вспомогательный метод HTML](#asynchronous-html-helper)
 
 ::: moniker-end
 
@@ -83,8 +83,8 @@ ms.locfileid: "58327382"
 
 В файле разметки частичное представление может указываться двумя способами.
 
-* [Асинхронное вспомогательное приложение HTML](#asynchronous-html-helper)
-* [Синхронное вспомогательное приложение HTML](#synchronous-html-helper)
+* [Асинхронный вспомогательный метод HTML](#asynchronous-html-helper)
+* [Синхронный вспомогательный метод HTML](#synchronous-html-helper)
 
 Мы рекомендуем использовать в приложениях [асинхронное вспомогательное приложение HTML](#asynchronous-html-helper).
 
@@ -182,7 +182,7 @@ ms.locfileid: "58327382"
 
 ### <a name="synchronous-html-helper"></a>Синхронный вспомогательный метод HTML
 
-<xref:Microsoft.AspNetCore.Mvc.Rendering.HtmlHelperPartialExtensions.Partial*> и <xref:Microsoft.AspNetCore.Mvc.Rendering.HtmlHelperPartialExtensions.RenderPartial*> — это синхронные эквиваленты `PartialAsync` и `RenderPartialAsync` соответственно. Мы не рекомендуем использовать синхронные эквиваленты, так как в некоторых случаях они приводят к взаимоблокировке. Синхронные методы будут удалены в будущем выпуске.
+<xref:Microsoft.AspNetCore.Mvc.Rendering.HtmlHelperPartialExtensions.Partial*> и <xref:Microsoft.AspNetCore.Mvc.Rendering.HtmlHelperPartialExtensions.RenderPartial*> — это синхронные эквиваленты `PartialAsync` и `RenderPartialAsync` соответственно. Мы не рекомендуем использовать синхронные эквиваленты, так как в некоторых случаях они приводят к взаимоблокировке. Синхронные методы будут удалены в будущем выпуске.
 
 > [!IMPORTANT]
 > Если вам нужно выполнять код, используйте [компонент представления](xref:mvc/views/view-components) вместо частичного представления.
@@ -243,7 +243,7 @@ ms.locfileid: "58327382"
 
 ## <a name="access-data-from-partial-views"></a>Доступ к данным из частичных представлений
 
-Когда создается экземпляр частичного представления, он получает *копию* словаря `ViewData` из родительского представления. Изменения, вносимые в данные в частичном представлении, не сохраняются в родительском представлении. Изменения объекта `ViewData` в частичном представлении утрачиваются при возврате этого представления.
+Когда создается экземпляр частичного представления, он получает *копию* словаря `ViewData` из родительского представления. Изменения, вносимые в данные в частичном представлении, не сохраняются в родительском представлении. `ViewData` — изменения в частичном представлении утрачиваются при возврате этого представления.
 
 В следующем примере показано, как передать экземпляр [ViewDataDictionary](/dotnet/api/microsoft.aspnetcore.mvc.viewfeatures.viewdatadictionary) в частичное представление:
 

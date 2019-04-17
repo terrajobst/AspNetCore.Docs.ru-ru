@@ -7,12 +7,12 @@ ms.custom: mvc
 ms.date: 02/06/2019
 ms.topic: tutorial
 uid: data/ef-mvc/intro
-ms.openlocfilehash: 282af56eb911aea53a6ce945e7c1177c158fc342
-ms.sourcegitcommit: 3e9e1f6d572947e15347e818f769e27dea56b648
+ms.openlocfilehash: 5a2ec9a8d85925e55840962cc90b3092953e7920
+ms.sourcegitcommit: 1a7000630e55da90da19b284e1b2f2f13a393d74
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 03/30/2019
-ms.locfileid: "58750586"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "59012855"
 ---
 # <a name="tutorial-get-started-with-ef-core-in-an-aspnet-mvc-web-app"></a>Учебник. Начало работы с EF Core в веб-приложении MVC ASP.NET
 
@@ -39,8 +39,8 @@ ms.locfileid: "58750586"
 
 * [Пакет SDK для .NET Core 2.2](https://www.microsoft.com/net/download)
 * [Visual Studio 2017 или 2019](https://visualstudio.microsoft.com/downloads/) с указанными ниже рабочими нагрузками
-    * Рабочая нагрузка **ASP.NET и веб-разработка**
-    * Рабочая нагрузка **Кроссплатформенная разработка .NET Core**
+  * Рабочая нагрузка **ASP.NET и веб-разработка**
+  * Рабочая нагрузка **Кроссплатформенная разработка .NET Core**
 
 ## <a name="troubleshooting"></a>Устранение неполадок
 
@@ -341,7 +341,7 @@ ASP.NET Core по умолчанию реализует технологию [в
 
 * Ключевое слово `await` предписывает компилятору разделить метод на две части. Первая часть завершается операцией, которая запускается в асинхронном режиме. Вторая часть помещается в метод обратного вызова, который вызывается при завершении операции.
 
-* `ToListAsync` является асинхронной версией метода расширения `ToList`.
+* `ToListAsync` — это асинхронная версия метода расширения `ToList`.
 
 При написании асинхронного кода, который использует Entity Framework, необходимо учитывать некоторые моменты:
 
@@ -355,7 +355,7 @@ ASP.NET Core по умолчанию реализует технологию [в
 
 ## <a name="get-the-code"></a>Получение кода
 
-[Скачайте или ознакомьтесь с готовым приложением.](https://github.com/aspnet/Docs/tree/master/aspnetcore/data/ef-mvc/intro/samples/cu-final)
+[Скачайте готовое приложение или ознакомьтесь с ним.](https://github.com/aspnet/Docs/tree/master/aspnetcore/data/ef-mvc/intro/samples/cu-final)
 
 ## <a name="next-steps"></a>Следующие шаги
 

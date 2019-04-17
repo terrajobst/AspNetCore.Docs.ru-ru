@@ -6,12 +6,12 @@ ms.author: scaddie
 ms.custom: mvc, seodec18
 ms.date: 01/31/2019
 uid: tutorials/first-mongo-app
-ms.openlocfilehash: 5b8a0c963940d65545579b7120edac3571e4ad2a
-ms.sourcegitcommit: 3e9e1f6d572947e15347e818f769e27dea56b648
+ms.openlocfilehash: 95a5f8bdb4b302d6bdae7b5809b54f1b263e6ee4
+ms.sourcegitcommit: 1a7000630e55da90da19b284e1b2f2f13a393d74
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 03/30/2019
-ms.locfileid: "58750694"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "59012868"
 ---
 # <a name="create-a-web-api-with-aspnet-core-and-mongodb"></a>Создание веб-API с помощью ASP.NET Core и MongoDB
 
@@ -31,20 +31,20 @@ ms.locfileid: "58750694"
 
 ## <a name="prerequisites"></a>Предварительные требования
 
-# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
+# [<a name="visual-studio"></a>Visual Studio](#tab/visual-studio)
 
 * [Пакет SDK для .NET Core 2.2 или более поздней версии](https://www.microsoft.com/net/download/all)
 * [Visual Studio 2017 15.9 или более поздней версии](https://www.visualstudio.com/downloads/?utm_medium=microsoft&utm_source=docs.microsoft.com&utm_campaign=button+cta&utm_content=download+vs2017) с рабочей нагрузкой **ASP.NET и веб-разработка**
 * [MongoDB](https://docs.mongodb.com/manual/tutorial/install-mongodb-on-windows/)
 
-# <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code.](#tab/visual-studio-code)
+# [<a name="visual-studio-code"></a>Visual Studio Code](#tab/visual-studio-code)
 
 * [Пакет SDK для .NET Core 2.2 или более поздней версии](https://www.microsoft.com/net/download/all)
-* [Visual Studio Code.](https://code.visualstudio.com/download)
+* [Visual Studio Code](https://code.visualstudio.com/download)
 * [C# для Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp)
 * [MongoDB](https://docs.mongodb.com/manual/administration/install-community/)
 
-# <a name="visual-studio-for-mactabvisual-studio-mac"></a>[Visual Studio для Mac](#tab/visual-studio-mac)
+# [<a name="visual-studio-for-mac"></a>Visual Studio для Mac](#tab/visual-studio-mac)
 
 * [Пакет SDK для .NET Core 2.2 или более поздней версии](https://www.microsoft.com/net/download/all)
 * [Visual Studio для Mac 7.7 или более поздней версии](https://www.visualstudio.com/downloads/)
@@ -140,7 +140,7 @@ ms.locfileid: "58750694"
 
 ## <a name="create-the-aspnet-core-web-api-project"></a>Создание проекта веб-API ASP.NET Core
 
-# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
+# [<a name="visual-studio"></a>Visual Studio](#tab/visual-studio)
 
 1. Откройте **Файл** > **Создать** > **Проект**.
 1. Выберите **Веб-приложение ASP.NET Core**, назовите проект *BooksApi* и нажмите кнопку **ОК**.
@@ -151,7 +151,7 @@ ms.locfileid: "58750694"
     Install-Package MongoDB.Driver -Version {VERSION}
     ```
 
-# <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code.](#tab/visual-studio-code)
+# [<a name="visual-studio-code"></a>Visual Studio Code](#tab/visual-studio-code)
 
 1. В командной оболочке выполните такие команды:
 
@@ -169,7 +169,7 @@ ms.locfileid: "58750694"
     dotnet add BooksApi.csproj package MongoDB.Driver -v {VERSION}
     ```
 
-# <a name="visual-studio-for-mactabvisual-studio-mac"></a>[Visual Studio для Mac](#tab/visual-studio-mac)
+# [<a name="visual-studio-for-mac"></a>Visual Studio для Mac](#tab/visual-studio-mac)
 
 1. Откройте **Файл** > **Создать решение** > **.NET Core** > **Приложение**.
 1. Выберите шаблон проекта **Веб-API ASP.NET Core** для C# и нажмите **Далее**.
@@ -217,20 +217,20 @@ ms.locfileid: "58750694"
 
 Класс `BookService` использует следующие члены `MongoDB.Driver` для выполнения операций CRUD в базе данных:
 
-* `MongoClient` &ndash; считывает экземпляр сервера для выполнения операций с базой данных. Конструктор этого класса предоставляет строку подключения MongoDB.
+* `MongoClient` — считывает экземпляр сервера для выполнения операций с базой данных. Конструктор этого класса предоставляет строку подключения MongoDB.
 
     [!code-csharp[](first-mongo-app/sample/BooksApi/Services/BookService.cs?name=snippet_BookServiceConstructor&highlight=3)]
 
-* `IMongoDatabase` &ndash; представляет базу данных Mongo для выполнения операций. В этом руководстве используется универсальный метод `GetCollection<T>(collection)` в интерфейсе для получения доступа к данным в определенной коллекции. Операции CRUD могут выполняться с коллекцией после вызова этого метода. В вызове метода `GetCollection<T>(collection)`:
+* `IMongoDatabase` — представляет базу данных Mongo для выполнения операций. В этом руководстве используется универсальный метод `GetCollection<T>(collection)` в интерфейсе для получения доступа к данным в определенной коллекции. Операции CRUD могут выполняться с коллекцией после вызова этого метода. В вызове метода `GetCollection<T>(collection)`:
   * `collection` представляет имя коллекции;
   * `T` представляет тип объекта среды CLR, хранящегося в коллекции;
 
 `GetCollection<T>(collection)` возвращает объект `MongoCollection`, представляющий коллекцию. В этом руководстве следующие методы вызываются для коллекции:
 
-* `Find<T>` &ndash; возвращает все документы в коллекции, соответствующие заданным критериям поиска.
-* `InsertOne` &ndash; вставляет предоставленный объект в виде нового документа в коллекции.
-* `ReplaceOne` &ndash; заменяет один документ, отвечающий заданным критериям поиска, предоставленным объектом.
-* `DeleteOne` &ndash; удаляет один документ, отвечающий заданным критериям поиска.
+* `Find<T>` — возвращает все документы в коллекции, соответствующие заданным критериям поиска.
+* `InsertOne` — вставляет предоставленный объект в виде нового документа в коллекции.
+* `ReplaceOne` — заменяет один документ, отвечающий заданным критериям поиска, предоставленным объектом.
+* `DeleteOne` — удаляет один документ, отвечающий заданным критериям поиска.
 
 ## <a name="add-a-controller"></a>Добавление контроллера
 
@@ -269,5 +269,6 @@ ms.locfileid: "58750694"
 
 Дополнительные сведения о сборке веб-API ASP.NET Core см. в этих статьях:
 
+* [Версия статьи на YouTube](https://www.youtube.com/watch?v=7uJt_sOenyo&feature=youtu.be)
 * <xref:web-api/index>
 * <xref:web-api/action-return-types>

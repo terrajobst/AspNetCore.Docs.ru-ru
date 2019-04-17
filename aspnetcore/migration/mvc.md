@@ -5,12 +5,12 @@ description: Узнайте, как приступить к миграции п�
 ms.author: riande
 ms.date: 04/06/2019
 uid: migration/mvc
-ms.openlocfilehash: a85b9f15be8ad9ca66b20ef1f4422fe67806a797
-ms.sourcegitcommit: 948e533e02c2a7cb6175ada20b2c9cabb7786d0b
+ms.openlocfilehash: a9e2b41b933ed04a23515564892ed1694a4ac4f8
+ms.sourcegitcommit: 017b673b3c700d2976b77201d0ac30172e2abc87
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 04/10/2019
-ms.locfileid: "59468544"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59614400"
 ---
 # <a name="migrate-from-aspnet-mvc-to-aspnet-core-mvc"></a>Миграция с ASP.NET MVC для ASP.NET Core MVC
 
@@ -204,5 +204,5 @@ ASP.NET Core преобразует необработанные исключе�
 
 ## <a name="additional-resources"></a>Дополнительные ресурсы
 
-* <xref:razor-components/index>
+* <xref:blazor/index>
 * <xref:mvc/views/tag-helpers/intro>

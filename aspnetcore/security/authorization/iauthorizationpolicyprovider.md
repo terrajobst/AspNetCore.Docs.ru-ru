@@ -4,14 +4,14 @@ author: mjrousos
 description: Сведения об использовании пользовательских IAuthorizationPolicyProvider в приложении ASP.NET Core для динамического создания политик авторизации.
 ms.author: riande
 ms.custom: mvc
-ms.date: 01/21/2019
+ms.date: 04/15/2019
 uid: security/authorization/iauthorizationpolicyprovider
-ms.openlocfilehash: ca57a9fd8e3c11f15fe14bbe4538bc748c4c84b6
-ms.sourcegitcommit: 728f4e47be91e1c87bb7c0041734191b5f5c6da3
+ms.openlocfilehash: e17372bb0ec9091c385a70b1e907eaa3cff24003
+ms.sourcegitcommit: 017b673b3c700d2976b77201d0ac30172e2abc87
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54444159"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59614413"
 ---
 # <a name="custom-authorization-policy-providers-using-iauthorizationpolicyprovider-in-aspnet-core"></a>Настраиваемые поставщики политики авторизации, используя IAuthorizationPolicyProvider в ASP.NET Core 
 
@@ -44,7 +44,7 @@ ms.locfileid: "54444159"
 
 Один из сценариев где `IAuthorizationPolicyProvider` полезно используется, чтобы предоставить настраиваемый `[Authorize]` атрибуты, чьи требования зависят от параметра. Например, в [авторизации на основе политики](xref:security/authorization/policies) документации, на основе возраста («AtLeast21») политика была использована в качестве образца. Если другой контроллер действия в приложении должны быть доступными для пользователей *различных* возраста, может оказаться полезным для многих различных политик на основе возраста. Вместо регистрации все различные возрастное политики, которые приложение нужно включить в `AuthorizationOptions`, вы можете создать политики динамически на основе собственной `IAuthorizationPolicyProvider`. Чтобы сделать с помощью политики, проще, можно добавить заметку действия с пользовательский атрибут авторизации как `[MinimumAgeAuthorize(20)]`.
 
-## <a name="custom-authorization-attributes"></a>Атрибуты настраиваемой авторизации
+## <a name="custom-authorization-attributes"></a>Настраиваемые атрибуты авторизации
 
 Политики авторизации идентифицируются по их именам. Пользовательский `MinimumAgeAuthorizeAttribute` описано ранее, необходимо сопоставить аргументов в строку, которая может использоваться для получения соответствующей политики авторизации. Это можно сделать путем наследования от `AuthorizeAttribute` и `Age` свойство wrap `AuthorizeAttribute.Policy` свойство.
 
@@ -119,12 +119,32 @@ internal class MinimumAgePolicyProvider : IAuthorizationPolicyProvider
 
 ## <a name="multiple-authorization-policy-providers"></a>Несколько поставщиков политики авторизации
 
-При использовании пользовательских `IAuthorizationPolicyProvider` реализаций, имейте в виду, что ASP.NET Core использует только один экземпляр `IAuthorizationPolicyProvider`. Если пользовательский поставщик не может предоставить политики авторизации для имена всех политик, он должен выполнить откат до резервного копирования поставщика. Имена политик могут включать, поступающими от политики по умолчанию для `[Authorize]` атрибуты без имени.
+При использовании пользовательских `IAuthorizationPolicyProvider` реализаций, имейте в виду, что ASP.NET Core использует только один экземпляр `IAuthorizationPolicyProvider`. Если пользовательский поставщик не может предоставить политики авторизации для все имена политик, которые будут использоваться, он должен выполнить откат до резервного копирования поставщика. 
 
-Например рассмотрим, что приложение требуется политики возраста пользовательский и более традиционных получения политик на основе ролей. Такое приложение может использовать поставщик политики настраиваемой авторизации:
+Например рассмотрим приложение, политики возраста пользовательский и более традиционных получения политик на основе ролей. Такое приложение может использовать поставщик политики настраиваемой авторизации:
 
 * Пытается проанализировать имена политик. 
 * Вызывает другую политику поставщика (например `DefaultAuthorizationPolicyProvider`) Если политика не может содержать возраст.
+
+Пример `IAuthorizationPolicyProvider` реализации, показанной выше можно обновить для использования `DefaultAuthorizationPolicyProvider` путем создания резервной политику поставщика в своем конструкторе (для использования в случае, если имя политики не соответствует его ожидаемому шаблону «MinimumAge» + возраст).
+
+```csharp
+private DefaultAuthorizationPolicyProvider FallbackPolicyProvider { get; }
+
+public MinimumAgePolicyProvider(IOptions<AuthorizationOptions> options)
+{
+    // ASP.NET Core only uses one authorization policy provider, so if the custom implementation
+    // doesn't handle all policies it should fall back to an alternate provider.
+    FallbackPolicyProvider = new DefaultAuthorizationPolicyProvider(options);
+}
+```
+
+Затем `GetPolicyAsync` метода могут быть обновлены для использования `FallbackPolicyProvider` вместо возврата null:
+
+```csharp
+...
+return FallbackPolicyProvider.GetPolicyAsync(policyName);
+```
 
 ## <a name="default-policy"></a>Политика по умолчанию
 
@@ -137,10 +157,18 @@ public Task<AuthorizationPolicy> GetDefaultPolicyAsync() =>
     Task.FromResult(new AuthorizationPolicyBuilder().RequireAuthenticatedUser().Build());
 ```
 
-Как и в случае со всеми аспектами пользовательского `IAuthorizationPolicyProvider`, этот параметр можно изменить, при необходимости. В некоторых случаях:
+Как и в случае со всеми аспектами пользовательского `IAuthorizationPolicyProvider`, этот параметр можно изменить, при необходимости. В некоторых случаях может возникнуть необходимость получить политику по умолчанию из переход на резервный ресурс `IAuthorizationPolicyProvider`.
 
-* Политики авторизации по умолчанию не может быть использована.
-* Получение политики по умолчанию можно делегировать переход на резервный ресурс `IAuthorizationPolicyProvider`.
+## <a name="required-policy"></a>Необходимая политика
+
+Пользовательский `IAuthorizationPolicyProvider` должен реализовывать `GetRequiredPolicyAsync` для, при необходимости укажите политику, которая всегда является обязательным. Если `GetRequiredPolicyAsync` возвращает отличное от null политику, политики будут объединены с другими (с именем или по умолчанию) политика, которая запрашивается.
+
+Если необходима политика не требуется, поставщик может просто возвращают значение null или обращаться к резервный поставщик:
+
+```csharp
+public Task<AuthorizationPolicy> GetRequiredPolicyAsync() => 
+    Task.FromResult<AuthorizationPolicy>(null);
+```
 
 ## <a name="use-a-custom-iauthorizationpolicyprovider"></a>Используйте пользовательские IAuthorizationPolicyProvider
 

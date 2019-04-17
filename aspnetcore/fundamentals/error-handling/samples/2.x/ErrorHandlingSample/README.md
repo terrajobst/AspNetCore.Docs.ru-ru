@@ -1,25 +1,11 @@
 ---
-ms.openlocfilehash: b1f7c306533e70f84e73a020c74756b91cae7ea7
-ms.sourcegitcommit: 191d21c1e37b56f0df0187e795d9a56388bbf4c7
+ms.openlocfilehash: 5636beb47e32b184211fb2555c6d9d067550727f
+ms.sourcegitcommit: 948e533e02c2a7cb6175ada20b2c9cabb7786d0b
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 03/08/2019
-ms.locfileid: "57665758"
+ms.lasthandoff: 04/10/2019
+ms.locfileid: "59468728"
 ---
 # <a name="error-handling-sample-application"></a>Пример приложения для обработки ошибок
 
-Этот пример приложения демонстрирует сценарии, описанные в статье [Обработка ошибок в ASP.NET Core](https://docs.microsoft.com/aspnet/core/fundamentals/error-handling).
-
-## <a name="configure-a-custom-exception-handling-page"></a>Настройка пользовательской страницы обработки исключений
-
-Если приложение не выполняется в среде разработки, ПО промежуточного слоя для обработки исключений:
-
-* Перехватывает исключения.
-* Ведет журнал исключений.
-* повторно выполняет запрос в альтернативном конвейере по указанному пути.
-
-## <a name="configure-custom-exception-handling-code"></a>Настройка пользовательского кода обработки исключений
-
-Альтернативой предоставления конечной точки для обработки ошибок с помощью пользовательской страницы обработки исключений является предоставление лямбда-функции методу `UseExceptionHandler`. Использование лямбда-функции с методом `UseExceptionHandler` позволяет получить доступ к ошибке до возврата ответа.
-
-Пример приложения демонстрирует пользовательский код обработки исключений в методе `Startup.Configure`. Следуйте инструкциям в верхней части файла *Startup.cs* (`LambdaErrorHandler`). После запуска приложения вызовите исключение с помощью ссылки **Выдать исключение** на странице указателя.
+Этот пример приложения демонстрирует сценарии, описанные в руководстве по [обработке ошибок в ASP.NET Core](https://docs.microsoft.com/aspnet/core/fundamentals/error-handling).

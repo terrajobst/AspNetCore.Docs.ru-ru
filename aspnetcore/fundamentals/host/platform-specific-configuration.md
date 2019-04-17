@@ -5,14 +5,14 @@ description: Узнайте, как улучшить приложение ASP.NE
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc, seodec18
-ms.date: 03/23/2019
+ms.date: 04/06/2019
 uid: fundamentals/configuration/platform-specific-configuration
-ms.openlocfilehash: c174d658c84ada88eef17528c663735a91347ba7
-ms.sourcegitcommit: 7d6019f762fc5b8cbedcd69801e8310f51a17c18
+ms.openlocfilehash: c2a2e1fbd288ff292c6759d03fae51876cdb5704
+ms.sourcegitcommit: 258a97159da206f9009f23fdf6f8fa32f178e50b
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58419450"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59425079"
 ---
 # <a name="use-hosting-startup-assemblies-in-aspnet-core"></a>Использование начальных сборок размещения в ASP.NET Core
 
@@ -44,10 +44,10 @@ ms.locfileid: "58419450"
 
 * Чтобы предотвратить загрузку всех начальных сборок размещения, установите значение `true` или `1` для одного из следующих параметров:
   * Параметр конфигурации узла [Запретить размещение при запуске](xref:fundamentals/host/web-host#prevent-hosting-startup).
-  * Переменная среды `ASPNETCORE_PREVENTHOSTINGSTARTUP`.
+  * `ASPNETCORE_PREVENTHOSTINGSTARTUP` — переменная среды.
 * Чтобы предотвратить загрузку конкретных сборок размещения, установите строку, содержащую разделенный точками с запятой список сборок размещения, которые необходимо исключить при запуске, в качестве значения одного из следующих параметров:
   * Параметр конфигурации узла [Исключаемые сборки размещения при запуске](xref:fundamentals/host/web-host#hosting-startup-exclude-assemblies).
-  * Переменная среды `ASPNETCORE_HOSTINGSTARTUPEXCLUDEASSEMBLIES`.
+  * `ASPNETCORE_HOSTINGSTARTUPEXCLUDEASSEMBLIES` — переменная среды.
 
 Если заданы параметры конфигурации узла и переменная среды, на поведение влияют параметры узла.
 
@@ -124,7 +124,7 @@ ms.locfileid: "58419450"
 
 [!code-csharp[](platform-specific-configuration/samples-snapshot/2.x/StartupEnhancement.cs?name=snippet1)]
 
-Класс реализует `IHostingStartup`. Метод класса [Configure](/dotnet/api/microsoft.aspnetcore.hosting.ihostingstartup.configure) использует [IWebHostBuilder](/dotnet/api/microsoft.aspnetcore.hosting.iwebhostbuilder) для добавления улучшений в приложение. `IHostingStartup.Configure` в начальной сборке размещения вызывается средой выполнения до `Startup.Configure` в пользовательском коде, что позволяет пользовательскому коду перезаписать конфигурацию, предоставленную начальной сборкой размещения.
+Класс реализует `IHostingStartup`. Метод класса [Configure](/dotnet/api/microsoft.aspnetcore.hosting.ihostingstartup.configure) использует [IWebHostBuilder](/dotnet/api/microsoft.aspnetcore.hosting.iwebhostbuilder) для добавления улучшений в приложение. `IHostingStartup.Configure` в начальной сборке размещения вызывается средой выполнения раньше, чем `Startup.Configure` в пользовательском коде. Это позволяет пользовательскому коду перезаписать конфигурацию, предоставленную начальной сборкой размещения.
 
 [!code-csharp[](platform-specific-configuration/samples-snapshot/2.x/StartupEnhancement.cs?name=snippet2&highlight=3,5)]
 
@@ -279,10 +279,10 @@ dotnet store --manifest store.manifest.csproj --runtime win7-x64 --output ./depl
 {ADDITIONAL DEPENDENCIES PATH}/shared/{SHARED FRAMEWORK NAME}/{SHARED FRAMEWORK VERSION}/{ENHANCEMENT ASSEMBLY NAME}.deps.json
 ```
 
-* `{ADDITIONAL DEPENDENCIES PATH}` &ndash; расположение, добавленное к переменной среды `DOTNET_ADDITIONAL_DEPS`.
-* `{SHARED FRAMEWORK NAME}` &ndash; общая платформа, требуемая для этого файла дополнительных зависимостей.
-* `{SHARED FRAMEWORK VERSION}` &ndash; минимальная версия общей платформы.
-* `{ENHANCEMENT ASSEMBLY NAME}` &ndash; имя сборки расширения.
+* `{ADDITIONAL DEPENDENCIES PATH}` — расположение, добавляемое к переменной среды `DOTNET_ADDITIONAL_DEPS`.
+* `{SHARED FRAMEWORK NAME}` — общая платформа, требуемая для этого файла дополнительных зависимостей.
+* `{SHARED FRAMEWORK VERSION}` — минимальная версия общей платформы.
+* `{ENHANCEMENT ASSEMBLY NAME}` — имя сборки расширения.
 
 В примере приложения (проект *RuntimeStore*) файл дополнительных зависимостей помещается в следующее расположение:
 
@@ -381,7 +381,14 @@ dotnet nuget locals all --clear
 **Активация из сборки среды выполнения, развернутой в хранилище**
 
 1. В проекте *StartupDiagnostics* используется [PowerShell](/powershell/scripting/powershell-scripting) для изменения файла *StartupDiagnostics.deps.json*. PowerShell устанавливается по умолчанию в Windows начиная с Windows 7 с пакетом обновления 1 (SP1) и Windows Server 2008 R2 с пакетом обновления 1 (SP1). Для установки PowerShell на других платформах см. раздел [Установка Windows PowerShell](/powershell/scripting/setup/installing-powershell#powershell-core).
-1. Выполните сценарий *build.ps1*, находящийся в папке *RuntimeStore*. Для размещения при запуске, развернутом в Windows, команда `dotnet store` в сценарии использует [идентификатор среды выполнения (RID)](/dotnet/core/rid-catalog) `win7-x64`. При выполнении размещения при запуске для другой среды выполнения укажите соответствующий RID.
-1. Выполните сценарий *deploy.ps1*, находящийся в папке *deployment*.
+1. Выполните сценарий *build.ps1*, находящийся в папке *RuntimeStore*. Скрипт выполняет следующее:
+   * создает пакет `StartupDiagnostics`;
+   * создает хранилище среды выполнения для `StartupDiagnostics` в папке для *хранения*. Для размещения при запуске, развернутом в Windows, команда `dotnet store` в сценарии использует [идентификатор среды выполнения (RID)](/dotnet/core/rid-catalog) `win7-x64`. При выполнении размещения при запуске для другой среды выполнения укажите соответствующий RID в строке 37 скрипта.
+   * Создает `additionalDeps` для `StartupDiagnostics` в папке *additionalDeps/shared/Microsoft.AspNetCore.App/{Версия_общей_платформы}/*.
+   * Размещает файл *deploy.ps1* в папке для *развертывания*.
+1. Выполните сценарий *deploy.ps1*, находящийся в папке *deployment*. Скрипт присоединяет:
+   * `StartupDiagnostics` к переменной среды `ASPNETCORE_HOSTINGSTARTUPASSEMBLIES`.
+   * Путь зависимостей размещения при запуске к переменной среды `DOTNET_ADDITIONAL_DEPS`.
+   * Путь хранения среды выполнения к переменной среды `DOTNET_SHARED_STORE`.
 1. Выполните пример приложения.
 1. Запросите конечную точку `/services` для просмотра зарегистрированных служб приложения. Запросите конечную точку `/diag` для просмотра диагностических сведений.
