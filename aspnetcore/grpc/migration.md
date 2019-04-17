@@ -6,12 +6,12 @@ monikerRange: '>= aspnetcore-3.0'
 ms.author: johluo
 ms.date: 03/31/2019
 uid: grpc/migration
-ms.openlocfilehash: ffe5ccbd99c6920e093eddc00fc60a9f66aab527
-ms.sourcegitcommit: 5995f44e9e13d7e7aa8d193e2825381c42184e47
+ms.openlocfilehash: 4d489b5aecf2e15fbbe3ac472b991a4365cd47c1
+ms.sourcegitcommit: 57a974556acd09363a58f38c26f74dc21e0d4339
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 04/02/2019
-ms.locfileid: "59515629"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59672623"
 ---
 # <a name="migrating-grpc-services-from-c-core-to-aspnet-core"></a>Миграция служб gRPC из C-core на ASP.NET Core
 
@@ -27,7 +27,7 @@ ms.locfileid: "59515629"
 
 * Для каждого запроса создается новый экземпляр реализации службы.
 * Невозможно получить совместного использования состояния между запросами через члены экземпляра в реализации типа.
-* Ожидается, для хранения общих состояний в это отдельная служба в контейнере внедрения Зависимостей. В конструкторе класса реализации службы gRPC разрешаются хранимые общих состояний. 
+* Ожидается, для хранения общих состояний в это отдельная служба в контейнере внедрения Зависимостей. В конструкторе класса реализации службы gRPC разрешаются хранимые общих состояний.
 
 Дополнительные сведения о времени существования службы, см. в разделе <xref:fundamentals/dependency-injection#service-lifetimes>.
 
