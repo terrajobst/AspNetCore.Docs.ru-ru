@@ -4,14 +4,14 @@ author: guardrex
 description: Сведения о размещении приложений ASP.NET Core в службах Windows Server Internet Information Services (IIS).
 ms.author: riande
 ms.custom: mvc
-ms.date: 03/23/2019
+ms.date: 04/16/2019
 uid: host-and-deploy/iis/index
-ms.openlocfilehash: 477568dd64fb1442011abb4229299e7dece40da9
-ms.sourcegitcommit: 687ffb15ebe65379f75c84739ea851d5a0d788b7
+ms.openlocfilehash: 65721a734cb35a2b20fd283ad54237eb896083a9
+ms.sourcegitcommit: 57a974556acd09363a58f38c26f74dc21e0d4339
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58488758"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59672649"
 ---
 # <a name="host-aspnet-core-on-windows-with-iis"></a>Размещение ASP.NET Core в Windows со службами IIS
 
@@ -588,7 +588,7 @@ ICACLS C:\sites\MyWebApp /grant "IIS AppPool\DefaultAppPool":F
 
 При внутрипроцессном развертывании и установленном подключении HTTP/2 [HttpRequest.Protocol](xref:Microsoft.AspNetCore.Http.HttpRequest.Protocol*) возвращает `HTTP/2`. При внепроцессном развертывании и установленном подключении HTTP/2 [HttpRequest.Protocol](xref:Microsoft.AspNetCore.Http.HttpRequest.Protocol*) возвращает `HTTP/1.1`.
 
-Дополнительные сведения о моделях размещения внутри и вне процесса см. в статьях <xref:host-and-deploy/aspnet-core-module> и <xref:host-and-deploy/aspnet-core-module>.
+Дополнительные сведения о внутрипроцессной и внепроцессной моделях размещения см. в статье <xref:host-and-deploy/aspnet-core-module>.
 
 ::: moniker-end
 
