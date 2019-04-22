@@ -261,10 +261,82 @@ items:
       name: Внедрение зависимостей — представления
     - uid: mvc/controllers/testing
       name: Модульный тест
-  - uid: razor-components/index
-    name: Компоненты Razor
+  - name: Blazor
+    items:
+    - uid: blazor/index
+      name: Обзор
+    - uid: blazor/get-started
+      name: Начало работы
+    - uid: blazor/hosting-models
+      name: Модели размещения
+    - uid: tutorials/first-blazor-app
+      name: Создание первого приложения
+    - uid: blazor/components
+      name: Компоненты
+    - uid: blazor/forms-validation
+      name: Формы и проверка
+    - uid: blazor/class-libraries
+      name: Библиотеки компонентов
+    - uid: blazor/layouts
+      name: Макеты
+    - uid: blazor/dependency-injection
+      name: Внедрение зависимостей
+    - uid: blazor/routing
+      name: Маршрутизация
+    - uid: blazor/javascript-interop
+      name: Взаимодействие с JavaScript
+    - uid: blazor/debug
+      name: Отладка
+    - name: Размещение и развертывание
+      items:
+      - uid: host-and-deploy/blazor/index
+        name: Обзор
+      - uid: host-and-deploy/blazor/client-side
+        name: Компоненты на стороне клиента
+      - uid: host-and-deploy/blazor/server-side
+        name: Компоненты на стороне сервера
+      - uid: host-and-deploy/blazor/configure-linker
+        name: Настройка компоновщика
+  - name: Клиентская разработка
+    items:
+    - name: Одностраничные приложения
+      items:
+      - uid: spa/angular
+        name: Angular
+      - uid: spa/react
+        name: React
+      - uid: spa/react-with-redux
+        name: Использование React с Redux
+      - uid: client-side/spa-services
+        name: JavaScriptServices
+    - name: LibMan
+      items:
+      - uid: client-side/libman/index
+        name: Обзор
+      - uid: client-side/libman/libman-cli
+        name: CLI
+      - uid: client-side/libman/libman-vs
+        name: Visual Studio
+    - uid: client-side/using-gulp
+      name: Gulp
+    - uid: client-side/using-grunt
+      name: Grunt
+    - uid: client-side/bower
+      name: Bower
+    - uid: client-side/bundling-and-minification
+      name: Объединение и минификация
+    - uid: client-side/using-browserlink
+      name: Привязывание к браузеру
   - uid: fundamentals/app-state
     name: Состояние сеанса и приложения
+  - uid: mvc/views/layout
+    name: Макет
+  - uid: mvc/models/model-binding
+    name: Привязка модели
+  - uid: mvc/models/validation
+    name: Проверка модели
+  - uid: mvc/views/razor
+    name: Синтаксис Razor
   - name: Вспомогательные функции тегов
     items:
     - uid: mvc/views/tag-helpers/intro
@@ -303,14 +375,6 @@ items:
         href: mvc/views/working-with-forms.md#the-validation-message-tag-helper
       - name: Сводка проверки
         href: mvc/views/working-with-forms.md#the-validation-summary-tag-helper
-  - uid: mvc/views/layout
-    name: Макет
-  - uid: mvc/models/model-binding
-    name: Привязка модели
-  - uid: mvc/models/validation
-    name: Проверка модели
-  - uid: mvc/views/razor
-    name: Синтаксис Razor
   - name: Дополнительно
     items:
     - uid: mvc/views/view-components
@@ -553,102 +617,6 @@ items:
       href: /azure/visual-studio/vs-storage-aspnet5-getting-started-queues?toc=/aspnet/core/toc.json&bc=/aspnet/core/breadcrumb/toc.json
     - name: Хранилище таблиц
       href: /azure/visual-studio/vs-storage-aspnet5-getting-started-tables?toc=/aspnet/core/toc.json&bc=/aspnet/core/breadcrumb/toc.json
-- name: Клиентская разработка
-  items:
-  - name: Компоненты Razor
-    items:
-    - uid: razor-components/index
-      name: Обзор
-    - uid: razor-components/get-started
-      name: Начало работы
-    - uid: razor-components/hosting-models
-      name: Модели размещения
-    - uid: tutorials/first-razor-components-app
-      name: Создание первого приложения
-    - uid: razor-components/components
-      name: Компоненты
-    - uid: razor-components/forms-validation
-      name: Формы и проверка
-    - uid: razor-components/class-libraries
-      name: Библиотеки компонентов
-    - uid: razor-components/layouts
-      name: Макеты
-    - uid: razor-components/dependency-injection
-      name: Внедрение зависимостей
-    - uid: razor-components/routing
-      name: Маршрутизация
-    - uid: razor-components/javascript-interop
-      name: Взаимодействие с JavaScript
-    - uid: razor-components/debug
-      name: Отладка
-    - name: Размещение и развертывание
-      items:
-      - uid: host-and-deploy/razor-components-blazor/index
-        name: Обзор
-      - uid: host-and-deploy/razor-components-blazor/razor-components
-        name: Компоненты Razor
-  - name: Одностраничные приложения
-    items:
-    - name: Blazor
-      items:
-      - uid: spa/blazor/index
-        name: Обзор
-      - uid: spa/blazor/get-started
-        name: Начало работы
-      - uid: razor-components/hosting-models
-        name: Модели размещения
-      - uid: tutorials/first-razor-components-app
-        name: Создание первого приложения
-      - uid: razor-components/components
-        name: Компоненты
-      - uid: razor-components/forms-validation
-        name: Формы и проверка
-      - uid: razor-components/class-libraries
-        name: Библиотеки компонентов
-      - uid: razor-components/layouts
-        name: Макеты
-      - uid: razor-components/dependency-injection
-        name: Внедрение зависимостей
-      - uid: razor-components/routing
-        name: Маршрутизация
-      - uid: razor-components/javascript-interop
-        name: Взаимодействие с JavaScript
-      - uid: razor-components/debug
-        name: Отладка
-      - name: Размещение и развертывание
-        items:
-        - uid: host-and-deploy/razor-components-blazor/index
-          name: Обзор
-        - uid: host-and-deploy/razor-components-blazor/blazor
-          name: Blazor
-        - uid: host-and-deploy/razor-components-blazor/configure-linker
-          name: Настройка компоновщика
-    - uid: spa/angular
-      name: Angular
-    - uid: spa/react
-      name: React
-    - uid: spa/react-with-redux
-      name: Использование React с Redux
-    - uid: client-side/spa-services
-      name: JavaScriptServices
-  - name: LibMan
-    items:
-    - uid: client-side/libman/index
-      name: Обзор
-    - uid: client-side/libman/libman-cli
-      name: CLI
-    - uid: client-side/libman/libman-vs
-      name: Visual Studio
-  - uid: client-side/using-gulp
-    name: Gulp
-  - uid: client-side/using-grunt
-    name: Grunt
-  - uid: client-side/bower
-    name: Bower
-  - uid: client-side/bundling-and-minification
-    name: Объединение и минификация
-  - uid: client-side/using-browserlink
-    name: Привязывание к браузеру
 - name: Размещение и развертывание
   displayName: publish
   items:
@@ -777,15 +745,15 @@ items:
   - uid: host-and-deploy/health-checks
     name: Проверки работоспособности
     displayName: deploy, publish
-  - name: Компоненты Razor и Blazor
+  - name: Blazor
     items:
-    - uid: host-and-deploy/razor-components-blazor/index
+    - uid: host-and-deploy/blazor/index
       name: Обзор
-    - uid: host-and-deploy/razor-components-blazor/blazor
-      name: Blazor
-    - uid: host-and-deploy/razor-components-blazor/razor-components
-      name: Компоненты Razor
-    - uid: host-and-deploy/razor-components-blazor/configure-linker
+    - uid: host-and-deploy/blazor/client-side
+      name: Компоненты на стороне клиента
+    - uid: host-and-deploy/blazor/server-side
+      name: Компоненты на стороне сервера
+    - uid: host-and-deploy/blazor/configure-linker
       name: Настройка компоновщика
 - name: Безопасность и удостоверения
   displayName: authentication, authorization
@@ -1090,9 +1058,9 @@ items:
   href: /dotnet/api/?view=aspnetcore-2.2
 - name: Участие
   href: https://github.com/aspnet/Docs/blob/master/CONTRIBUTING.md
-ms.openlocfilehash: e788460a2de31aa570907b4561d30ad0da2ca854
-ms.sourcegitcommit: 9b7fcb4ce00a3a32e153a080ebfaae4ef417aafa
+ms.openlocfilehash: 1863125cec772262c41884af343f66ec8fcb53ad
+ms.sourcegitcommit: 017b673b3c700d2976b77201d0ac30172e2abc87
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59516278"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59614302"
