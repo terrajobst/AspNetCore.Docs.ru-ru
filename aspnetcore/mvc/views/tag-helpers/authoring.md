@@ -4,14 +4,14 @@ author: rick-anderson
 description: Сведения о разработке вспомогательных функций тегов в ASP.NET Core.
 ms.author: riande
 ms.custom: mvc
-ms.date: 10/24/2018
+ms.date: 04/12/2019
 uid: mvc/views/tag-helpers/authoring
-ms.openlocfilehash: ddfd7cb8c67e28709b8ce75d5a4d0a8c0c0cc43c
-ms.sourcegitcommit: 5f299daa7c8102d56a63b214b9a34cc4bc87bc42
+ms.openlocfilehash: 19b7df1abc8765cb9a77487e39c4365fdacf2b65
+ms.sourcegitcommit: 017b673b3c700d2976b77201d0ac30172e2abc87
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58210084"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59614426"
 ---
 # <a name="author-tag-helpers-in-aspnet-core"></a>Создание вспомогательных функций тегов в ASP.NET Core
 
@@ -65,7 +65,9 @@ ms.locfileid: "58210084"
    public class Email : TagHelper
    ```
 
-1. Чтобы сделать класс `EmailTagHelper` доступным для всех представлений Razor, добавьте директиву `addTagHelper` в файл *Views/_ViewImports.cshtml*: [!code-html[](../../../mvc/views/tag-helpers/authoring/sample/AuthoringTagHelpers/src/AuthoringTagHelpers/Views/_ViewImportsCopyEmail.cshtml?highlight=2,3)]
+1. Чтобы сделать класс `EmailTagHelper` доступным для всех представлений Razor, добавьте директиву `addTagHelper` в файл *Views/_ViewImports.cshtml*:
+
+   [!code-html[](../../../mvc/views/tag-helpers/authoring/sample/AuthoringTagHelpers/src/AuthoringTagHelpers/Views/_ViewImportsCopyEmail.cshtml?highlight=2,3)]
 
    В приведенном выше коде используется синтаксис с подстановочным знаком, который указывает, что будут доступны все вспомогательные функции тегов в сборке. Первая строка после `@addTagHelper` указывает на загружаемую вспомогательную функцию тега (символ "*" соответствует всем вспомогательным функциям тегов), а вторая строка ("AuthoringTagHelpers") указывает на сборку, в которой находится вспомогательная функция тега. Кроме того, обратите внимание на то, что во второй строке с помощью синтаксиса с подстановочным знаком добавляются вспомогательные функции тегов ASP.NET Core MVC (эти вспомогательные функции рассматриваются в статье [Общие сведения о вспомогательных функциях тегов](intro.md)). Вспомогательная функция тега становится доступной для представления Razor посредством директивы `@addTagHelper`. Вы также можете указать полное имя вспомогательной функции тега, как показано ниже.
 

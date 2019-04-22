@@ -1,74 +1,109 @@
 ---
 title: Использовать потоковую передачу в ASP.NET Core SignalR
 author: bradygaster
-description: Узнайте, как для получения потоков из значений из методов концентратора на сервере и используют потоки, с помощью клиентов .NET и JavaScript.
+description: Узнайте, как выполнять потоковый обмен данными между клиентом и сервером.
 monikerRange: '>= aspnetcore-2.1'
 ms.author: bradyg
 ms.custom: mvc
-ms.date: 11/14/2018
+ms.date: 04/12/2019
 uid: signalr/streaming
-ms.openlocfilehash: 7c176e3f21ffca7b97d9d3c2e8861032f22587b8
-ms.sourcegitcommit: 57792e5f594db1574742588017c708350958bdf0
+ms.openlocfilehash: 83bbb231482d9c1606be3c5bbbeb1cc3b8efcf7d
+ms.sourcegitcommit: eb784a68219b4829d8e50c8a334c38d4b94e0cfa
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58264305"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "59982660"
 ---
 # <a name="use-streaming-in-aspnet-core-signalr"></a>Использовать потоковую передачу в ASP.NET Core SignalR
 
 По [Бреннан Конрой](https://github.com/BrennanConroy)
 
-ASP.NET Core SignalR поддерживает потоковой передачи возвращаемые значения методов сервера. Это полезно для сценариев, источник фрагментах данных со временем. При возвращаемое значение передается клиенту, каждый фрагмент отправляется клиенту, как только она становится доступны, вместо ожидания возвращения всех данные станут доступны.
-
-[Просмотреть или скачать образец кода](https://github.com/aspnet/Docs/tree/live/aspnetcore/signalr/streaming/sample) ([как скачивать](xref:index#how-to-download-a-sample))
-
-## <a name="set-up-the-hub"></a>Настройка концентратора
-
 ::: moniker range=">= aspnetcore-3.0"
 
-Метод концентратора автоматически становится потоковой передачи метода концентратора, если он возвращает `ChannelReader<T>`, `IAsyncEnumerable<T>`, `Task<ChannelReader<T>>`, или `Task<IAsyncEnumerable<T>>`.
+ASP.NET Core SignalR поддерживает потоковой передачи от клиента к серверу и от сервера клиенту. Это полезно в сценариях, где фрагментов данных поступают по времени. При потоковой передаче, каждый фрагмент отправляется на клиенте или сервере как только она становится доступны, вместо ожидания возвращения всех данных станут доступны.
 
 ::: moniker-end
 
 ::: moniker range="< aspnetcore-3.0"
 
-Метод концентратора автоматически становится потоковой передачи метода концентратора, если он возвращает `ChannelReader<T>` или `Task<ChannelReader<T>>`.
+ASP.NET Core SignalR поддерживает потоковой передачи возвращаемые значения методов сервера. Это полезно в сценариях, где фрагментов данных поступают по времени. При возвращаемое значение передается клиенту, каждый фрагмент отправляется клиенту, как только она становится доступны, вместо ожидания возвращения всех данные станут доступны.
 
 ::: moniker-end
+
+[Просмотреть или скачать образец кода](https://github.com/aspnet/Docs/tree/live/aspnetcore/signalr/streaming/samples/) ([как скачивать](xref:index#how-to-download-a-sample))
+
+## <a name="set-up-a-hub-for-streaming"></a>Настройка концентратора для потоковой передачи
 
 ::: moniker range=">= aspnetcore-3.0"
 
-В ASP.NET Core 3.0 или более поздней версии, могут возвращать потоковой передачи методов концентратора `IAsyncEnumerable<T>` в дополнение к `ChannelReader<T>`. Самый простой способ возврата `IAsyncEnumerable<T>` заключается в изменении метода концентратора асинхронный метод итератора, как показано в следующем примере. Методы итератора async центра может принять `CancellationToken` параметр, который активируется, когда клиент отменяет подписку из потока. Асинхронные методы итератора легко избежать распространенных проблем с каналами, например не возвращает `ChannelReader` достаточно рано или выход из метода, не завершая `ChannelWriter`.
-
-[!INCLUDE[](~/includes/csharp-8-required.md)]
-
-[!code-csharp[Streaming hub async iterator method](streaming/sample/Hubs/AsyncEnumerableHub.cs?name=snippet_AsyncIterator)]
+Метод концентратора автоматически становится потоковой передачи метода концентратора, если он возвращает <xref:System.Threading.Channels.ChannelReader`1>, `IAsyncEnumerable<T>`, `Task<ChannelReader<T>>`, или `Task<IAsyncEnumerable<T>>`.
 
 ::: moniker-end
 
-В следующем примере показано с основами потоковой передачи данных на клиент с помощью каналов. Каждый раз, когда объект записывается `ChannelWriter` этого объекта немедленно отправляется клиенту. В конце `ChannelWriter` завершения, чтобы сообщить клиенту поток закрыт.
+::: moniker range="< aspnetcore-3.0"
+
+Метод концентратора автоматически становится потоковой передачи метода концентратора, если он возвращает <xref:System.Threading.Channels.ChannelReader`1> или `Task<ChannelReader<T>>`.
+
+::: moniker-end
+
+### <a name="server-to-client-streaming"></a>Клиентом и сервером потоковой передачи
+
+::: moniker range=">= aspnetcore-3.0"
+
+Потоковая передача методов концентратора может возвращать `IAsyncEnumerable<T>` в дополнение к `ChannelReader<T>`. Самый простой способ возврата `IAsyncEnumerable<T>` заключается в изменении метода концентратора асинхронный метод итератора, как показано в следующем примере. Методы итератора async центра может принять `CancellationToken` параметр, который активируется, когда клиент отменяет подписку из потока. Асинхронные методы итератора избежать распространенных проблем с каналами, например не возвращают `ChannelReader` достаточно рано или выход из метода, не завершая <xref:System.Threading.Channels.ChannelWriter`1>.
+
+[!INCLUDE[](~/includes/csharp-8-required.md)]
+
+[!code-csharp[Streaming hub async iterator method](streaming/samples/3.0/Hubs/AsyncEnumerableHub.cs?name=snippet_AsyncIterator)]
+
+::: moniker-end
+
+В следующем примере показано с основами потоковой передачи данных на клиент с помощью каналов. Каждый раз, когда объект записывается <xref:System.Threading.Channels.ChannelWriter`1>, объект немедленно отправляется клиенту. В конце `ChannelWriter` завершения, чтобы сообщить клиенту поток закрыт.
 
 > [!NOTE]
-> * Запись `ChannelWriter` в фоновом потоке и возврат `ChannelReader` как можно скорее. Другие вызовы концентратора будут заблокированы до `ChannelReader` возвращается.
-> * Перенос логики в `try ... catch` и завершите `Channel` в catch и за ее пределами catch, чтобы убедиться, что концентратор вызов метода завершается должным образом.
+> Запись `ChannelWriter<T>` в фоновом потоке и возврат `ChannelReader` как можно скорее. Другие вызовы концентратора будут заблокированы, пока `ChannelReader` возвращается.
+>
+> Перенос логики в `try ... catch`. Завершить `Channel` в `catch` так и вне `catch` чтобы убедиться, что концентратор вызов метода завершается должным образом.
+
+::: moniker range=">= aspnetcore-3.0"
+
+[!code-csharp[Streaming hub method](streaming/samples/3.0/Hubs/StreamHub.cs?name=snippet1)]
+
+::: moniker-end
+
+::: moniker range="= aspnetcore-2.2"
+
+[!code-csharp[Streaming hub method](streaming/samples/2.2/Hubs/StreamHub.cs?name=snippet1)]
+
+::: moniker-end
 
 ::: moniker range="= aspnetcore-2.1"
 
-[!code-csharp[Streaming hub method](streaming/sample/Hubs/StreamHub.aspnetcore21.cs?name=snippet1)]
+[!code-csharp[Streaming hub method](streaming/samples/2.1/Hubs/StreamHub.cs?name=snippet1)]
 
 ::: moniker-end
 
 ::: moniker range=">= aspnetcore-2.2"
 
-[!code-csharp[Streaming hub method](streaming/sample/Hubs/StreamHub.cs?name=snippet1)]
+Может принимать-клиентом и сервером потоковой передачи методов концентратора `CancellationToken` параметр, который активируется, когда клиент отменяет подписку из потока. Используйте этот маркер для остановки работы сервера и освободить все ресурсы, если клиент отключается до окончания потока.
 
-В ASP.NET Core 2.2 или более поздней версии, могут принимать потоковой передачи методов концентратора `CancellationToken` параметр, который активируется, когда клиент отменяет подписку из потока. Используйте этот маркер для остановки работы сервера и освободить все ресурсы, если клиент отключается до окончания потока.
+::: moniker-end
+
+::: moniker range=">= aspnetcore-3.0"
+
+### <a name="client-to-server-streaming"></a>Клиент сервер потоковой передачи
+
+Метод концентратора, автоматически становится клиентом и сервером потоковой передачи метода концентратора, если он принимает один или несколько <xref:System.Threading.Channels.ChannelReader`1>s. В следующем примере показано основные данные потоковой передачи, отправленные клиентом. Каждый раз, когда клиент записывает <xref:System.Threading.Channels.ChannelWriter`1>, данные записываются в `ChannelReader` на сервере, который считывает данные из метода концентратора.
+
+[!code-csharp[Streaming upload hub method](streaming/samples/3.0/Hubs/StreamHub.cs?name=snippet2)]
 
 ::: moniker-end
 
 ## <a name="net-client"></a>Клиент .NET
 
-`StreamAsChannelAsync` Метод `HubConnection` используется для вызова метода потоковой передачи. Передайте имя метода концентратора и аргументы, заданные в методе концентратора, чтобы `StreamAsChannelAsync`. Универсальный параметр на `StreamAsChannelAsync<T>` указывает тип объектов, возвращаемых методом потоковой передачи. Объект `ChannelReader<T>` возвращается из вызова потока и представляет собой поток на стороне клиента. Чтобы считать данные, распространенный шаблон — запустить цикл для `WaitToReadAsync` и вызвать `TryRead` когда данные недоступны. Цикл завершится, когда поток был закрыт сервером или маркер отмены, переданный `StreamAsChannelAsync` отменяется.
+### <a name="server-to-client-streaming"></a>Клиентом и сервером потоковой передачи
+
+`StreamAsChannelAsync` Метод `HubConnection` используется для вызова метода клиентом и сервером потоковой передачи. Передайте имя метода концентратора и аргументы, заданные в методе концентратора, чтобы `StreamAsChannelAsync`. Универсальный параметр на `StreamAsChannelAsync<T>` указывает тип объектов, возвращаемых методом потоковой передачи. Объект `ChannelReader<T>` возвращается из вызова потока и представляет собой поток на стороне клиента.
 
 ::: moniker range=">= aspnetcore-2.2"
 
@@ -115,36 +150,72 @@ Console.WriteLine("Streaming completed");
 
 ::: moniker-end
 
+::: moniker range=">= aspnetcore-3.0"
+
+### <a name="client-to-server-streaming"></a>Клиент сервер потоковой передачи
+
+Чтобы вызвать метод потоковой передачи концентратора клиент сервер от клиента .NET, создайте `Channel` и передать `ChannelReader` как аргумент `SendAsync`, `InvokeAsync`, или `StreamAsChannelAsync`в зависимости от вызова метода концентратора.
+
+Каждый раз, когда данные записываются в `ChannelWriter`, метод концентратора на сервере получает новый элемент с данными от клиента.
+
+Для завершения потока, завершить канал с `channel.Writer.Complete()`.
+
+```csharp
+var channel = Channel.CreateBounded<string>(10);
+await connection.SendAsync("UploadStream", channel.Reader);
+await channel.Writer.WriteAsync("some data");
+await channel.Writer.WriteAsync("some more data");
+channel.Writer.Complete();
+```
+
+::: moniker-end
+
 ## <a name="javascript-client"></a>Клиент JavaScript
 
-Клиенты JavaScript вызывать методы потоковой передачи концентраторов с помощью `connection.stream`. `stream` Метод принимает два аргумента:
+### <a name="server-to-client-streaming"></a>Клиентом и сервером потоковой передачи
+
+Клиенты JavaScript вызывать-клиентом и сервером потоковой передачи методов Hub с помощью `connection.stream`. `stream` Метод принимает два аргумента:
 
 * Имя метода концентратора. В следующем примере, является имя метода концентратора `Counter`.
-* Аргументы, определенный в методе концентратора. В следующем примере аргументы являются: счетчик для числа элементов потока для получения и задержку между элементами потока.
+* Аргументы, определенный в методе концентратора. В следующем примере аргументы являются подсчет числа элементов потока для получения и задержку между элементами потока.
 
-`connection.stream` Возвращает `IStreamResult` , содержащее `subscribe` метод. Передайте `IStreamSubscriber` для `subscribe` и задайте `next`, `error`, и `complete` обратные вызовы для получения уведомлений из `stream` вызова.
+`connection.stream` Возвращает `IStreamResult`, который содержит `subscribe` метод. Передайте `IStreamSubscriber` для `subscribe` и задайте `next`, `error`, и `complete` обратные вызовы для получения уведомлений из `stream` вызова.
 
-[!code-javascript[Streaming javascript](streaming/sample/wwwroot/js/stream.js?range=19-36)]
+::: moniker range=">= aspnetcore-2.2"
+
+[!code-javascript[Streaming javascript](streaming/samples/2.2/wwwroot/js/stream.js?range=19-36)]
+
+Чтобы завершить поток, из клиента, вызовите `dispose` метод `ISubscription` , возвращаемый методом `subscribe` метод. Вызов этого метода приводит к отмене `CancellationToken` параметр метода концентратора, если вы указали один.
+
+::: moniker-end
 
 ::: moniker range="= aspnetcore-2.1"
+
+[!code-javascript[Streaming javascript](streaming/samples/2.1/wwwroot/js/stream.js?range=19-36)]
 
 Чтобы завершить поток, из клиента, вызовите `dispose` метод `ISubscription` , возвращаемый методом `subscribe` метод.
 
 ::: moniker-end
 
-::: moniker range=">= aspnetcore-2.2"
-
-Чтобы завершить поток, из клиента, вызовите `dispose` метод `ISubscription` , возвращаемый методом `subscribe` метод. Вызов этого метода приведет к `CancellationToken` параметр метода концентратора (Если вы указали один) отменяется.
-
-::: moniker-end
-
 ::: moniker range=">= aspnetcore-3.0"
+
+### <a name="client-to-server-streaming"></a>Клиент сервер потоковой передачи
+
+Клиенты JavaScript вызывать клиентом и сервером потоковой передачи методов концентраторов, передав `Subject` как аргумент `send`, `invoke`, или `stream`в зависимости от вызова метода концентратора. `Subject` — Это класс, который выглядит как `Subject`. Например в RxJS, можно использовать [субъекта](https://rxjs-dev.firebaseapp.com/api/index/class/Subject) класс из этой библиотеки.
+
+[!code-javascript[Upload javascript](streaming/samples/3.0/wwwroot/js/stream.js?range=41-51)]
+
+Вызов `subject.next(item)` с элемент записывает элемент в поток, а метод концентратора получает элемента на сервере.
+
+Чтобы завершить поток, вызовите `subject.complete()`.
 
 ## <a name="java-client"></a>Клиент Java
 
-Клиент SignalR Java использует `stream` метод для вызова методов потоковой передачи. Он принимает три или более аргументов:
+### <a name="server-to-client-streaming"></a>Клиентом и сервером потоковой передачи
 
-* Ожидаемый тип элементов потока
+Клиент SignalR Java использует `stream` метод для вызова методов потоковой передачи. `stream` принимает три или более аргументов:
+
+* Ожидаемый тип элементов потока.
 * Имя метода концентратора.
 * Аргументы, определенный в методе концентратора.
 
@@ -156,11 +227,11 @@ hubConnection.stream(String.class, "ExampleStreamingHubMethod", "Arg1")
         () -> {/* Define your onCompleted handler here. */});
 ```
 
-`stream` Метод `HubConnection` Возвращает наблюдаемый объект типа элемента потока. Наблюдаемого типа `subscribe` метод является определение вашего `onNext`, `onError` и `onCompleted` обработчиков.
+`stream` Метод `HubConnection` Возвращает наблюдаемый объект типа элемента потока. Наблюдаемого типа `subscribe` метод именно `onNext`, `onError` и `onCompleted` определены обработчики.
 
 ::: moniker-end
 
-## <a name="related-resources"></a>Связанные ресурсы
+## <a name="additional-resources"></a>Дополнительные ресурсы
 
 * [Центры](xref:signalr/hubs)
 * [Клиент .NET](xref:signalr/dotnet-client)

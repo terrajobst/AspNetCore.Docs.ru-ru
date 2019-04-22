@@ -8,10 +8,10 @@ ms.custom: mvc, seodec18
 ms.date: 04/06/2019
 uid: fundamentals/configuration/platform-specific-configuration
 ms.openlocfilehash: c2a2e1fbd288ff292c6759d03fae51876cdb5704
-ms.sourcegitcommit: 258a97159da206f9009f23fdf6f8fa32f178e50b
+ms.sourcegitcommit: 78339e9891c8676db01a6e81e9cb0cdaa280162f
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/17/2019
 ms.locfileid: "59425079"
 ---
 # <a name="use-hosting-startup-assemblies-in-aspnet-core"></a>Использование начальных сборок размещения в ASP.NET Core
@@ -44,10 +44,10 @@ ms.locfileid: "59425079"
 
 * Чтобы предотвратить загрузку всех начальных сборок размещения, установите значение `true` или `1` для одного из следующих параметров:
   * Параметр конфигурации узла [Запретить размещение при запуске](xref:fundamentals/host/web-host#prevent-hosting-startup).
-  * `ASPNETCORE_PREVENTHOSTINGSTARTUP` — переменная среды.
+  * Переменная среды `ASPNETCORE_PREVENTHOSTINGSTARTUP`.
 * Чтобы предотвратить загрузку конкретных сборок размещения, установите строку, содержащую разделенный точками с запятой список сборок размещения, которые необходимо исключить при запуске, в качестве значения одного из следующих параметров:
   * Параметр конфигурации узла [Исключаемые сборки размещения при запуске](xref:fundamentals/host/web-host#hosting-startup-exclude-assemblies).
-  * `ASPNETCORE_HOSTINGSTARTUPEXCLUDEASSEMBLIES` — переменная среды.
+  * Переменная среды `ASPNETCORE_HOSTINGSTARTUPEXCLUDEASSEMBLIES`.
 
 Если заданы параметры конфигурации узла и переменная среды, на поведение влияют параметры узла.
 
@@ -124,7 +124,7 @@ ms.locfileid: "59425079"
 
 [!code-csharp[](platform-specific-configuration/samples-snapshot/2.x/StartupEnhancement.cs?name=snippet1)]
 
-Класс реализует `IHostingStartup`. Метод класса [Configure](/dotnet/api/microsoft.aspnetcore.hosting.ihostingstartup.configure) использует [IWebHostBuilder](/dotnet/api/microsoft.aspnetcore.hosting.iwebhostbuilder) для добавления улучшений в приложение. `IHostingStartup.Configure` в начальной сборке размещения вызывается средой выполнения раньше, чем `Startup.Configure` в пользовательском коде. Это позволяет пользовательскому коду перезаписать конфигурацию, предоставленную начальной сборкой размещения.
+Класс реализует `IHostingStartup`. Метод класса [Configure](/dotnet/api/microsoft.aspnetcore.hosting.ihostingstartup.configure) использует [IWebHostBuilder](/dotnet/api/microsoft.aspnetcore.hosting.iwebhostbuilder) для добавления улучшений в приложение. `IHostingStartup.Configure` в начальной сборке размещения вызывается средой выполнения до `Startup.Configure` в пользовательском коде, что позволяет пользовательскому коду перезаписать конфигурацию, предоставленную начальной сборкой размещения.
 
 [!code-csharp[](platform-specific-configuration/samples-snapshot/2.x/StartupEnhancement.cs?name=snippet2&highlight=3,5)]
 
@@ -279,10 +279,10 @@ dotnet store --manifest store.manifest.csproj --runtime win7-x64 --output ./depl
 {ADDITIONAL DEPENDENCIES PATH}/shared/{SHARED FRAMEWORK NAME}/{SHARED FRAMEWORK VERSION}/{ENHANCEMENT ASSEMBLY NAME}.deps.json
 ```
 
-* `{ADDITIONAL DEPENDENCIES PATH}` — расположение, добавляемое к переменной среды `DOTNET_ADDITIONAL_DEPS`.
-* `{SHARED FRAMEWORK NAME}` — общая платформа, требуемая для этого файла дополнительных зависимостей.
-* `{SHARED FRAMEWORK VERSION}` — минимальная версия общей платформы.
-* `{ENHANCEMENT ASSEMBLY NAME}` — имя сборки расширения.
+* `{ADDITIONAL DEPENDENCIES PATH}` &ndash; расположение, добавленное к переменной среды `DOTNET_ADDITIONAL_DEPS`.
+* `{SHARED FRAMEWORK NAME}` &ndash; общая платформа, требуемая для этого файла дополнительных зависимостей.
+* `{SHARED FRAMEWORK VERSION}` &ndash; минимальная версия общей платформы.
+* `{ENHANCEMENT ASSEMBLY NAME}` &ndash; имя сборки расширения.
 
 В примере приложения (проект *RuntimeStore*) файл дополнительных зависимостей помещается в следующее расположение:
 

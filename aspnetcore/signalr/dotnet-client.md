@@ -5,14 +5,14 @@ description: Сведения о клиенте .NET, ASP.NET Core SignalR
 monikerRange: '>= aspnetcore-2.1'
 ms.author: bradyg
 ms.custom: mvc
-ms.date: 03/14/2019
+ms.date: 04/17/2019
 uid: signalr/dotnet-client
-ms.openlocfilehash: a03abef53aa44f0a1016b8f72d8e3a7af2f9bed1
-ms.sourcegitcommit: d913bca90373c07f89b1d1df01af5fc01fc908ef
+ms.openlocfilehash: 640d75157e42ffa6d78235c5be03e4846e8dcde9
+ms.sourcegitcommit: eb784a68219b4829d8e50c8a334c38d4b94e0cfa
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 03/14/2019
-ms.locfileid: "57978308"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "59982950"
 ---
 # <a name="aspnet-core-signalr-net-client"></a>Клиент .NET SignalR ASP.NET Core
 
@@ -63,6 +63,10 @@ connection.Closed += (error) => {
 `InvokeAsync` вызывает методы концентратора. Передайте имя метода концентратора и все аргументы, заданные в методе концентратора, чтобы `InvokeAsync`. SignalR является асинхронным, поэтому используйте `async` и `await` при выполнении вызовов.
 
 [!code-csharp[InvokeAsync method](dotnet-client/sample/signalrchatclient/MainWindow.xaml.cs?name=snippet_InvokeAsync)]
+
+`InvokeAsync` Возвращает метод `Task` которой завершается при возврате метода сервера. Возвращаемое значение, если таковой имеется, предоставляется в результате `Task`. Любые исключения, создаваемые на сервере метод создания непредвиденное `Task`. Используйте `await` синтаксис для ожидания завершения метода сервера и `try...catch` синтаксис для обработки ошибок.
+
+`SendAsync` Возвращает метод `Task` которого завершается, когда сообщение отправлено на сервер. Возвращаемое значение не указано с этого момента `Task` не приходится ждать завершения работы метода сервера. Все исключения, возникшие на стороне клиента при отправке сообщения создают непредвиденное `Task`. Используйте `await` и `try...catch` синтаксис для обработки ошибок отправки.
 
 > [!NOTE]
 > Если вы используете службу Azure SignalR в *бессерверной режим*, нельзя вызывать методы концентратора клиента. Дополнительные сведения см. в разделе [документации по службе SignalR](/azure/azure-signalr/signalr-concept-serverless-development-config).

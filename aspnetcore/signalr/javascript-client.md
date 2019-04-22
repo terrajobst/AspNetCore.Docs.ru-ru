@@ -7,12 +7,12 @@ ms.author: bradyg
 ms.custom: mvc
 ms.date: 04/17/2019
 uid: signalr/javascript-client
-ms.openlocfilehash: e58015221497a9f962edf9f9fdba7ea3025d7694
-ms.sourcegitcommit: 78339e9891c8676db01a6e81e9cb0cdaa280162f
+ms.openlocfilehash: f1f072e63928502fa1bad62e808ff035e57f2fd3
+ms.sourcegitcommit: eb784a68219b4829d8e50c8a334c38d4b94e0cfa
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59705609"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "59983017"
 ---
 # <a name="aspnet-core-signalr-javascript-client"></a>Клиент ASP.NET Core SignalR JavaScript
 
@@ -66,6 +66,13 @@ npm устанавливает содержимое пакета в *node_module
 
 > [!NOTE]
 > Если вы используете службу Azure SignalR в *бессерверной режим*, нельзя вызывать методы концентратора клиента. Дополнительные сведения см. в разделе [документации по службе SignalR](/azure/azure-signalr/signalr-concept-serverless-development-config).
+
+`invoke` Метод возвращает JavaScript [обещание](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise). `Promise` Разрешается с возвращаемым значением (если таковые имеются) при возвращении метода на сервере. Если на сервере метод вызывает ошибку, `Promise` отклоняется с сообщением об ошибке. Используйте `then` и `catch` методы `Promise` сам для обработки таких случаев (или `await` синтаксиса).
+
+`send` Метод возвращает JavaScript `Promise`. `Promise` Разрешается, когда сообщение было отправлено на сервер. Если возникает ошибка отправки сообщений и `Promise` отклоняется с сообщением об ошибке. Используйте `then` и `catch` методы `Promise` сам для обработки таких случаев (или `await` синтаксиса).
+
+> [!NOTE]
+> С помощью `send` не приходится ждать сервер получил сообщение. Следовательно он не поддерживается для возвращения данных или ошибки с сервера.
 
 ## <a name="call-client-methods-from-hub"></a>Вызывать методы клиента от концентратора
 

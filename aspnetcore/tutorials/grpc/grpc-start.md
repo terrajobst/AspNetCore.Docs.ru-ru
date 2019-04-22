@@ -6,12 +6,12 @@ monikerRange: '>= aspnetcore-3.0'
 ms.author: johluo
 ms.date: 2/26/2019
 uid: tutorials/grpc/grpc-start
-ms.openlocfilehash: 5f7a2f6b57804b3295b23c322dcbac553b05528b
-ms.sourcegitcommit: 088e6744cd67a62f214f25146313a53949b17d35
+ms.openlocfilehash: a67050331cc8563b1baf5312b92910c1bbdfbd69
+ms.sourcegitcommit: 57a974556acd09363a58f38c26f74dc21e0d4339
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58320060"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59672571"
 ---
 # <a name="tutorial-get-started-with-grpc-service-in-aspnet-core"></a>Учебник. Начало работы со службой gRPC в ASP.NET Core
 
@@ -27,7 +27,7 @@ ms.locfileid: "58320060"
 
 > [!div class="checklist"]
 > * Создание службы gRPC.
-> * Запустите службу.
+> * Запуск службы gRPC.
 > * Анализ файлов проекта.
 
 [!INCLUDE[](~/includes/net-core-prereqs-all-3.0.md)]
@@ -83,31 +83,23 @@ ms.locfileid: "58320060"
 
 ---
 
-### <a name="test-the-service"></a>Проверка службы
+### <a name="run-the-service"></a>Запуск службы
 
 # <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-* Убедитесь, что проект **GrpcGreeter.Server** назначен запускаемым проектом и нажмите клавиши CTRL+F5, чтобы запустить службу gRPC без отладчика.
+* Нажмите CTRL + F5, чтобы запустить службу gRPC без отладчика.
 
   Служба запустится в командной строке Visual Studio. В журналах отобразятся сведения о том, что служба ожидает передачи данных через `http://localhost:50051`.
 
   ![Новое веб-приложение ASP.NET Core](grpc-start/_static/server_start.png)
 
-* После запуска службы назначьте проект **GrpcGreeter.Server** запускаемым проектом и нажмите клавиши CTRL+F5, чтобы запустить клиент без отладчика.
-
-  Клиент отправляет приветствие в службу с сообщением, содержащим его имя "GreeterClient". Служба отправляет ответное сообщение "Hello GreeterClient", которое отображается в командной строке.
-
-  ![Новое веб-приложение ASP.NET Core](grpc-start/_static/client.png)
-
-  Служба записывает сведения об успешном вызове в журналы, что отображается в командной строке.
-
-  ![Новое веб-приложение ASP.NET Core](grpc-start/_static/server_complete.png)
-
 # <a name="visual-studio-code--visual-studio-for-mactabvisual-studio-codevisual-studio-mac"></a>[Visual Studio Code/Visual Studio для Mac](#tab/visual-studio-code+visual-studio-mac)
 
-* Выполните команду `dotnet run` в командной строке, чтобы запустить проект сервера GrpcGreeter.Server. В журналах отобразятся сведения о том, что служба ожидает передачи данных через `http://localhost:50051`.
+* Выполните команду `dotnet run` в командной строке, чтобы запустить проект gRPC Greeter с именем GrpcGreeter. В журналах отобразятся сведения о том, что служба ожидает передачи данных через `http://localhost:50051`.
 
 ```console
+dbug: Grpc.AspNetCore.Server.Internal.GrpcServiceBinder[1]
+      Added gRPC method 'SayHello' to service 'Greet.Greeter'. Method type: 'Unary', route pattern: '/Greet.Greeter/SayHello'.
 info: Microsoft.Hosting.Lifetime[0]
       Now listening on: http://localhost:50051
 info: Microsoft.Hosting.Lifetime[0]
@@ -115,58 +107,35 @@ info: Microsoft.Hosting.Lifetime[0]
 info: Microsoft.Hosting.Lifetime[0]
       Hosting environment: Development
 info: Microsoft.Hosting.Lifetime[0]
-      Content root path: C:\example\GrpcGreeter\GrpcGreeter.Server
-```
-
-* Выполните команду `dotnet run` в командной строке, чтобы запустить проект клиента GrpcGreeter.Client.
-
-Клиент отправляет приветствие в службу с сообщением, содержащим его имя "GreeterClient". Служба отправляет ответное сообщение "Hello GreeterClient", которое отображается в командной строке.
-
-```console
-Greeting: Hello GreeterClient
-Press any key to exit...
-```
-
-Служба записывает сведения об успешном вызове в журналы, что отображается в командной строке.
-
-```console
-info: Microsoft.Hosting.Lifetime[0]
-      Now listening on: http://localhost:50051
-info: Microsoft.Hosting.Lifetime[0]
-      Application started. Press Ctrl+C to shut down.
-info: Microsoft.Hosting.Lifetime[0]
-      Hosting environment: Development
-info: Microsoft.Hosting.Lifetime[0]
-      Content root path: C:\gh\tp\GrpcGreeter\GrpcGreeter.Server
-info: Microsoft.AspNetCore.Hosting.Internal.GenericWebHostService[1]
-      Request starting HTTP/2 POST http://localhost:50051/Greet.Greeter/SayHello application/grpc
-info: Microsoft.AspNetCore.Hosting.Internal.GenericWebHostService[2]
-      Request finished in 107.46730000000001ms 200 application/grpc
+      Content root path: C:\gh\Docs\aspnetcore\tutorials\grpc\grpc-start\samples\GrpcGreeter
 ```
 
 <!-- End of combined VS/Mac tabs -->
 
 ---
 
+В следующем руководстве будет демонстрироваться создание клиента gRPC, который необходим для тестирования службы Greeter.
+
 ### <a name="examine-the-project-files-of-the-grpc-project"></a>Изучение файлов проекта gRPC
 
-Файлы GrpcGreeter.Server:
+Файлы GrpcGreeter:
 
 * greet.proto. Файл *Protos/greet.proto* определяет службу gRPC `Greeter` и используется для создания ресурсов сервера gRPC. Для получения дополнительной информации см. <xref:grpc/index>.
 * Папка *Services* содержит реализацию службы `Greeter`.
 * Файл *appSettings.json* содержит данные конфигурации, такие как протокол, используемый в Kestrel. Для получения дополнительной информации см. <xref:fundamentals/configuration/index>.
 * *Program.cs*: содержит точку входа для службы gRPC. Для получения дополнительной информации см. <xref:fundamentals/host/web-host>.
-* Startup.cs
+* Startup.cs: содержит код, задающий поведение приложения. Для получения дополнительной информации см. <xref:fundamentals/startup>.
 
-содержит код, задающий поведение приложения. Для получения дополнительной информации см. <xref:fundamentals/startup>.
+### <a name="test-the-service"></a>Проверка службы
 
-Файл клиента GrpcGreeter.Client:
-
-файл *Program.cs* содержит точку входа и логику для клиента gRPC.
+## <a name="additional-resources"></a>Дополнительные ресурсы
 
 В этом учебнике рассмотрены следующие задачи.
 
 > [!div class="checklist"]
 > * создание службы gRPC;
-> * запуск службы и клиента для тестирования службы;
+> * запуск службы gRPC.
 > * Анализ файлов проекта.
+
+> [!div class="step-by-step"]
+> [Далее: создание клиента gRPC в .NET Core](xref:tutorials/grpc/grpc-client)

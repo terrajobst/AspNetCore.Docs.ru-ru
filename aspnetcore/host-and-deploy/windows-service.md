@@ -8,10 +8,10 @@ ms.custom: mvc
 ms.date: 04/04/2019
 uid: host-and-deploy/windows-service
 ms.openlocfilehash: 544eefa87898e82ec2bf8f9f61ce4e26dd554bb7
-ms.sourcegitcommit: 6bde1fdf686326c080a7518a6725e56e56d8886e
+ms.sourcegitcommit: 78339e9891c8676db01a6e81e9cb0cdaa280162f
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/17/2019
 ms.locfileid: "59068340"
 ---
 # <a name="host-aspnet-core-in-a-windows-service"></a>Размещение ASP.NET Core в службе Windows
@@ -24,7 +24,7 @@ ms.locfileid: "59068340"
 
 ## <a name="prerequisites"></a>Предварительные требования
 
-* [PowerShell 6.2 или более поздней версии.](https://github.com/PowerShell/PowerShell)
+* [PowerShell 6.2 или более поздней версии](https://github.com/PowerShell/PowerShell)
 
 > [!NOTE]
 > Для версий ОС Windows, предшествующих Windows 10 с обновлением за октябрь 2018 г. (версия 1809, сборка 10.0.17763), необходимо импортировать модули [Microsoft.PowerShell.LocalAccounts](/powershell/module/microsoft.powershell.localaccounts) и [WindowsCompatibility](https://github.com/PowerShell/WindowsCompatibility), чтобы включить поддержку командлета [New-LocalUser](/powershell/module/microsoft.powershell.localaccounts/new-localuser), используемого в разделе [Создание учетной записи пользователя](#create-a-user-account).
@@ -187,17 +187,17 @@ New-LocalUser -Name ServiceUser
 icacls "{PATH}" /grant "{USER ACCOUNT}:(OI)(CI){PERMISSION FLAGS}" /t
 ```
 
-* `{PATH}` — путь к папке приложения.
-* `{USER ACCOUNT}` — учетная запись пользователя (SID).
-* `(OI)` — флаг наследования объекта, который распространяет разрешения на вложенные файлы.
-* `(CI)` — флаг наследования контейнера, который распространяет разрешения на вложенные папки.
-* `{PERMISSION FLAGS}` — устанавливает права доступа к приложению.
+* `{PATH}` &ndash; путь к папке приложения.
+* `{USER ACCOUNT}` &ndash; учетная запись пользователя (SID).
+* `(OI)` &ndash; флаг наследования объекта, который распространяет разрешения на вложенные файлы.
+* `(CI)` &ndash; флаг наследования контейнера, который распространяет разрешения на вложенные папки.
+* `{PERMISSION FLAGS}` &ndash; устанавливает разрешения для доступа к приложениям.
   * Запись (`W`)
   * Чтение (`R`)
   * Выполнение (`X`)
   * Полное (`F`)
   * Изменение (`M`)
-* `/t` — применяется рекурсивно к существующим вложенным папкам и файлам.
+* `/t` &ndash; применяется рекурсивно к имеющимся вложенным папкам и файлам.
 
 Для примера приложения, опубликованного в папке *c:\\svc*, и учетной записи `ServiceUser` с разрешениями на запись, чтение и выполнение выполните следующую команду в административной командной оболочке PowerShell 6:
 

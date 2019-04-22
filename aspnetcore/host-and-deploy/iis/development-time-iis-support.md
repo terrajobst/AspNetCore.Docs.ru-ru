@@ -8,10 +8,10 @@ ms.custom: mvc
 ms.date: 04/08/2019
 uid: host-and-deploy/iis/development-time-iis-support
 ms.openlocfilehash: 6f555858239b4432d252f8b3ac7add5c3e8bfe62
-ms.sourcegitcommit: 258a97159da206f9009f23fdf6f8fa32f178e50b
+ms.sourcegitcommit: 78339e9891c8676db01a6e81e9cb0cdaa280162f
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/17/2019
 ms.locfileid: "59425105"
 ---
 # <a name="development-time-iis-support-in-visual-studio-for-aspnet-core"></a>Поддержка служб IIS во время разработки в Visual Studio для ASP.NET Core
@@ -42,7 +42,7 @@ ms.locfileid: "59425105"
 * **Привязка сайта**
   * Для приложений, которым требуется протокол HTTPS, создайте привязку к порту 443 с помощью сертификата. Обычно используется **сертификат разработки IIS Express**, но подойдет и любой другой действительный сертификат.
   * Для приложений, использующих протокол HTTP, подтвердите привязку к порту 80 или создайте привязку к порту 80 для нового сайта.
-  * Используйте одну привязку либо для HTTP, либо для HTTPS. **Общая привязка к портам HTTP и HTTPS не поддерживается.**
+  * Используйте одну привязку либо для HTTP, либо для HTTPS. **Одновременная привязка к портам HTTP и HTTPS не поддерживается.**
 
 ## <a name="enable-development-time-iis-support-in-visual-studio"></a>Включение поддержки служб IIS в Visual Studio во время разработки
 
@@ -151,8 +151,8 @@ ms.locfileid: "59425105"
 
 ## <a name="additional-resources"></a>Дополнительные ресурсы
 
-* [Getting Started with the IIS Manager in IIS (Начало работы с диспетчером IIS в IIS)](/iis/get-started/getting-started-with-iis/getting-started-with-the-iis-manager-in-iis-7-and-iis-8)
+* [Начало работы с диспетчером IIS в IIS](/iis/get-started/getting-started-with-iis/getting-started-with-the-iis-manager-in-iis-7-and-iis-8)
 * [Размещение ASP.NET Core в Windows со службами IIS](xref:host-and-deploy/iis/index)
 * [Введение в модуль ASP.NET Core](xref:host-and-deploy/aspnet-core-module)
 * [Справочник по конфигурации модуля ASP.NET Core](xref:host-and-deploy/aspnet-core-module)
-* [Принудительное использование HTTPS](xref:security/enforcing-ssl)
+* [Принудительное использование HTTPS](xref:security/enforcing-ssl)

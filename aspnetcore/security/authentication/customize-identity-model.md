@@ -3,14 +3,14 @@ title: Настройка модели удостоверения в ASP.NET Cor
 author: ajcvickers
 description: В этой статье описывается настройка базовой модели данных Entity Framework Core для ASP.NET Core Identity.
 ms.author: avickers
-ms.date: 09/24/2018
+ms.date: 04/24/2019
 uid: security/authentication/customize_identity_model
-ms.openlocfilehash: 0aa7448ac37a97a4d09a04caf365f641f22f5997
-ms.sourcegitcommit: a1c43150ed46aa01572399e8aede50d4668745ca
+ms.openlocfilehash: ae5f4567a8921ce277cd6153f37a5558bcf4e261
+ms.sourcegitcommit: eb784a68219b4829d8e50c8a334c38d4b94e0cfa
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58327305"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "59982789"
 ---
 # <a name="identity-model-customization-in-aspnet-core"></a>Настройка модели удостоверения в ASP.NET Core
 
@@ -34,7 +34,7 @@ ms.locfileid: "58327305"
 * .NET Core CLI при помощи командной строки. Дополнительные сведения см. в разделе [средства командной строки EF Core .NET](/ef/core/miscellaneous/cli/dotnet).
 * Щелкнув **применить миграции** кнопку на странице ошибки при запуске приложения.
 
-ASP.NET Core есть обработчик страницы ошибок во время разработки. Обработчик может применить миграции, при запуске приложения. Для рабочих приложений, бывает необходимо создавать скрипты SQL по миграции и развертывания изменений базы данных как часть управляемой развертывания приложения и базы данных.
+ASP.NET Core есть обработчик страницы ошибок во время разработки. Обработчик может применить миграции, при запуске приложения. Рабочих приложений обычно создавать скрипты SQL по миграции и развертывания изменений базы данных как часть управляемого приложения и развертывания базы данных.
 
 Когда создается новое приложение с использованием удостоверения, шаги 1 и 2 выше уже были завершены. То есть начальную модель данных уже существует, и первоначальной миграции был добавлен в проект. Первоначальной миграции по-прежнему необходимо применить к базе данных. Первоначальной миграции могут применяться через одну из следующих подходов:
 
@@ -50,7 +50,7 @@ ASP.NET Core есть обработчик страницы ошибок во в
 
 Модель удостоверения состоит из следующих типов сущностей.
 
-|Тип сущности|Описание:                                                  |
+|Тип сущности|Описание                                                  |
 |-----------|-------------------------------------------------------------|
 |`User`     |Представляет пользователя.                                         |
 |`Role`     |Представляет роль.                                           |
@@ -300,6 +300,16 @@ public abstract class IdentityUserContext<
 
 ### <a name="custom-user-data"></a>Пользовательские данные
 
+<!--
+set projNam=WebApp1
+dotnet new webapp -o %projNam%
+cd %projNam%
+dotnet add package Microsoft.VisualStudio.Web.CodeGeneration.Design 
+dotnet aspnet-codegenerator identity  -dc ApplicationDbContext --useDefaultUI 
+dotnet ef migrations add CreateIdentitySchema
+dotnet ef database update
+ -->
+
 [Пользовательские данные](xref:security/authentication/add-user-data) поддерживается путем наследования от `IdentityUser`. Имя этого типа обычно `ApplicationUser`:
 
 ```csharp
@@ -318,14 +328,26 @@ public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
         : base(options)
     {
     }
+
+    protected override void OnModelCreating(ModelBuilder builder)
+    {
+        base.OnModelCreating(builder);
+    }
 }
 ```
 
 Нет необходимости в Переопределите `OnModelCreating` в `ApplicationDbContext` класса. Сопоставляет EF Core `CustomTag` свойство по соглашению. Тем не менее, требуется обновить, чтобы создать новую базу данных `CustomTag` столбца. Чтобы создать столбец, добавить миграцию и затем обновить базу данных, как описано в разделе [удостоверений и миграций EF Core](#identity-and-ef-core-migrations).
 
-Обновление `Startup.ConfigureServices` использовать новый `ApplicationUser` класса:
+Обновление *Pages/Shared/_LoginPartial.cshtml* и замените `IdentityUser` с `ApplicationUser`:
 
-::: moniker range=">= aspnetcore-2.1"
+```
+@using Microsoft.AspNetCore.Identity
+@using WebApp1.Areas.Identity.Data
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
+```
+
+Обновление *Areas/Identity/IdentityHostingStartup.cs* или `Startup.ConfigureServices` и замените `IdentityUser` с `ApplicationUser`.
 
 ```csharp
 services.AddDefaultIdentity<ApplicationUser>()
@@ -337,28 +359,6 @@ services.AddDefaultIdentity<ApplicationUser>()
 
 * [Удостоверение шаблона](xref:security/authentication/scaffold-identity)
 * [Добавление, скачивание и удаление пользовательские данные для удостоверения](xref:security/authentication/add-user-data)
-
-::: moniker-end
-
-::: moniker range="= aspnetcore-2.0"
-
-```csharp
-services.AddIdentity<ApplicationUser, IdentityRole>()
-        .AddEntityFrameworkStores<ApplicationDbContext>()
-        .AddDefaultTokenProviders();
-```
-
-::: moniker-end
-
-::: moniker range="<= aspnetcore-1.1"
-
-```csharp
-services.AddIdentity<ApplicationUser, IdentityRole>()
-        .AddEntityFrameworkStores<ApplicationDbContext, Guid>()
-        .AddDefaultTokenProviders();
-```
-
-::: moniker-end
 
 ### <a name="change-the-primary-key-type"></a>Изменение типа первичного ключа
 
