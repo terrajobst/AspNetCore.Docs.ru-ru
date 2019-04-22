@@ -8,10 +8,10 @@ ms.custom: mvc
 ms.date: 01/17/2019
 uid: fundamentals/startup
 ms.openlocfilehash: 362186be6feeeefeca3c56688ee6420de5fb9659
-ms.sourcegitcommit: 948e533e02c2a7cb6175ada20b2c9cabb7786d0b
+ms.sourcegitcommit: 78339e9891c8676db01a6e81e9cb0cdaa280162f
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 04/10/2019
+ms.lasthandoff: 04/17/2019
 ms.locfileid: "59468628"
 ---
 # <a name="app-startup-in-aspnet-core"></a>Запуск приложения в ASP.NET Core
@@ -71,16 +71,16 @@ ms.locfileid: "59468628"
 
 ## <a name="the-configure-method"></a>Метод Configure 
 
-Метод <xref:Microsoft.AspNetCore.Hosting.StartupBase.Configure*> используется для указания того, как приложение реагирует на HTTP-запросы. Конвейер запросов настраивается путем добавления компонентов [ПО промежуточного слоя](xref:fundamentals/middleware/index) в экземпляр <xref:Microsoft.AspNetCore.Builder.IApplicationBuilder>. `IApplicationBuilder` — доступно для метода `Configure`, но без регистрации в контейнере службы. При размещении создается `IApplicationBuilder` и передается непосредственно в `Configure`.
+Метод <xref:Microsoft.AspNetCore.Hosting.StartupBase.Configure*> используется для указания того, как приложение реагирует на HTTP-запросы. Конвейер запросов настраивается путем добавления компонентов [ПО промежуточного слоя](xref:fundamentals/middleware/index) в экземпляр <xref:Microsoft.AspNetCore.Builder.IApplicationBuilder>. `IApplicationBuilder` доступен для метода `Configure`, но он не зарегистрирован в контейнере службы. При размещении создается `IApplicationBuilder` и передается непосредственно в `Configure`.
 
 [Шаблоны ASP.NET Core](/dotnet/core/tools/dotnet-new) настраивают конвейер с поддержкой следующих компонентов и функций:
 
 * [Страница со сведениями об исключении для разработчика](xref:fundamentals/error-handling#developer-exception-page)
-* [Обработчик исключений](xref:fundamentals/error-handling#exception-handler-page)
+* [обработчиков исключений](xref:fundamentals/error-handling#exception-handler-page);
 * [HTTP Strict Transport Security (HSTS)](xref:security/enforcing-ssl#http-strict-transport-security-protocol-hsts)
-* [Перенаправление HTTPS](xref:security/enforcing-ssl)
+* [перенаправления HTTPS](xref:security/enforcing-ssl);
 * [Статические файлы](xref:fundamentals/static-files)
-* [Общий регламент по защите данных (GDPR)](xref:security/gdpr)
+* [общего регламента по защите данных (GDPR)](xref:security/gdpr);
 * ASP.NET Core [MVC](xref:mvc/overview) и [Razor Pages](xref:razor-pages/index).
 
 [!code-csharp[](startup/sample_snapshot/Startup4.cs)]

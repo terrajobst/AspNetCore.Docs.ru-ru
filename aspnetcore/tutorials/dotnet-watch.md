@@ -6,17 +6,17 @@ ms.author: riande
 ms.date: 05/31/2018
 uid: tutorials/dotnet-watch
 ms.openlocfilehash: 40ecca1c6f9d519b24649d0c28946d95b820c07c
-ms.sourcegitcommit: 6bde1fdf686326c080a7518a6725e56e56d8886e
+ms.sourcegitcommit: 78339e9891c8676db01a6e81e9cb0cdaa280162f
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/17/2019
 ms.locfileid: "59068200"
 ---
 # <a name="develop-aspnet-core-apps-using-a-file-watcher"></a>Разработка приложений ASP.NET Core с использованием наблюдателя файлов
 
 Авторы: [Рик Андерсон](https://twitter.com/RickAndMSFT) (Rick Anderson) и [Виктор Хурдугачи](https://twitter.com/victorhurdugaci) (Victor Hurdugaci)
 
-`dotnet watch` — это средство, которое запускает команду [.NET Core CLI](/dotnet/core/tools) при изменении исходных файлов. Например, в результате изменения файла может выполняться компиляция, тестирование или развертывание.
+`dotnet watch` — это средство, которое запускает команду [.NET Core CLI](/dotnet/core/tools) при изменении исходных файлов. Например, в результате изменения файла может выполняться компиляция, тестирование или развертывание.
 
 В этом руководстве используется уже существующее приложение веб-API с двумя конечными точками, одна из которых возвращает сумму, а другая — произведение. В методе произведения есть ошибка, которая исправлена в этом руководстве.
 
@@ -135,7 +135,7 @@ public static int Product(int a, int b)
 
 ## <a name="opt-out-of-files-to-be-watched"></a>Удаление файлов из списка наблюдения
 
-`dotnet-watch` можно настроить так, чтобы игнорировать параметры по умолчанию. Чтобы пропускать определенные файлы, добавьте атрибут `Watch="false"` в определение элемента в файле *.csproj*:
+Можно настроить `dotnet-watch` так, чтобы игнорировать параметры по умолчанию. Чтобы пропускать определенные файлы, добавьте атрибут `Watch="false"` в определение элемента в файле *.csproj*:
 
 ```xml
 <ItemGroup>

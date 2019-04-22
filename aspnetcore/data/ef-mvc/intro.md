@@ -8,10 +8,10 @@ ms.date: 02/06/2019
 ms.topic: tutorial
 uid: data/ef-mvc/intro
 ms.openlocfilehash: 5a2ec9a8d85925e55840962cc90b3092953e7920
-ms.sourcegitcommit: 1a7000630e55da90da19b284e1b2f2f13a393d74
+ms.sourcegitcommit: 78339e9891c8676db01a6e81e9cb0cdaa280162f
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 04/04/2019
+ms.lasthandoff: 04/17/2019
 ms.locfileid: "59012855"
 ---
 # <a name="tutorial-get-started-with-ef-core-in-an-aspnet-mvc-web-app"></a>Учебник. Начало работы с EF Core в веб-приложении MVC ASP.NET
@@ -341,7 +341,7 @@ ASP.NET Core по умолчанию реализует технологию [в
 
 * Ключевое слово `await` предписывает компилятору разделить метод на две части. Первая часть завершается операцией, которая запускается в асинхронном режиме. Вторая часть помещается в метод обратного вызова, который вызывается при завершении операции.
 
-* `ToListAsync` — это асинхронная версия метода расширения `ToList`.
+* `ToListAsync` является асинхронной версией метода расширения `ToList`.
 
 При написании асинхронного кода, который использует Entity Framework, необходимо учитывать некоторые моменты:
 
@@ -355,7 +355,7 @@ ASP.NET Core по умолчанию реализует технологию [в
 
 ## <a name="get-the-code"></a>Получение кода
 
-[Скачайте готовое приложение или ознакомьтесь с ним.](https://github.com/aspnet/Docs/tree/master/aspnetcore/data/ef-mvc/intro/samples/cu-final)
+[Скачайте или ознакомьтесь с готовым приложением.](https://github.com/aspnet/Docs/tree/master/aspnetcore/data/ef-mvc/intro/samples/cu-final)
 
 ## <a name="next-steps"></a>Следующие шаги
 

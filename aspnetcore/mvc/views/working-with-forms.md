@@ -7,10 +7,10 @@ ms.custom: mvc
 ms.date: 04/06/2019
 uid: mvc/views/working-with-forms
 ms.openlocfilehash: 6eff3bf03e650e154b5c767c9bcdd915e7db8b47
-ms.sourcegitcommit: 948e533e02c2a7cb6175ada20b2c9cabb7786d0b
+ms.sourcegitcommit: 78339e9891c8676db01a6e81e9cb0cdaa280162f
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 04/10/2019
+ms.lasthandoff: 04/17/2019
 ms.locfileid: "59468806"
 ---
 # <a name="tag-helpers-in-forms-in-aspnet-core"></a>Вспомогательные функции тегов в формах в ASP.NET Core
@@ -33,7 +33,7 @@ ms.locfileid: "59468806"
 
 * Предоставляет атрибут `asp-route-<Parameter Name>`, где `<Parameter Name>` добавляется в значения маршрута. Параметры `routeValues` для `Html.BeginForm` и `Html.BeginRouteForm` предоставляют аналогичные функциональные возможности.
 
-* включает альтернативу вспомогательному приложению HTML `Html.BeginForm` и `Html.BeginRouteForm`
+* Располагает альтернативой вспомогательному методу HTML — `Html.BeginForm` и `Html.BeginRouteForm`.
 
 Пример:
 
@@ -171,7 +171,7 @@ public class HomeController : Controller
 
 Вспомогательная функция тега входных данных:
 
-* Создает атрибуты HTML `id` и `name` для имени выражения, указанного в атрибуте `asp-for`. `asp-for="Property1.Property2"` эквивалентно `m => m.Property1.Property2`. Имя выражения совпадает со значением атрибута `asp-for`. Дополнительные сведения см. в разделе [Имена выражений](#expression-names) .
+* Создает атрибуты HTML `id` и `name` для имени выражения, указанного в атрибуте `asp-for`. `asp-for="Property1.Property2"` равно `m => m.Property1.Property2`. Имя выражения совпадает со значением атрибута `asp-for`. Дополнительные сведения см. в разделе [Имена выражений](#expression-names) .
 
 * Задает значение атрибута HTML `type` на основе атрибутов типа модели и [заметок к данным](/dotnet/api/microsoft.aspnetcore.mvc.dataannotations.iattributeadapter), примененным к свойству модели.
 
@@ -245,11 +245,11 @@ Type expected
 
 ### <a name="html-helper-alternatives-to-input-tag-helper"></a>Альтернативы вспомогательного метода HTML вспомогательной функции тега входных данных
 
-`Html.TextBox`, `Html.TextBoxFor`, `Html.Editor` и `Html.EditorFor` включают функции, перекрывающиеся со вспомогательной функцией тега входных данных. Вспомогательная функция тега входных данных будет автоматически задавать атрибут `type`, а `Html.TextBox` и `Html.TextBoxFor` — нет. `Html.Editor` и `Html.EditorFor` обрабатывают коллекции, сложные объекты и шаблоны, а вспомогательная функция тега входных данных не делает этого. Вспомогательная функция тега входных данных, `Html.EditorFor` и `Html.TextBoxFor` являются строго типизированными (они используют лямбда-выражения); а `Html.TextBox` и `Html.Editor` не являются таковыми (они используют имена выражений).
+`Html.TextBox`, `Html.TextBoxFor`, `Html.Editor` и `Html.EditorFor` имеют функции, перекрывающиеся со вспомогательной функцией тега входных данных. Вспомогательная функция тега входных данных будет автоматически задавать атрибут `type`, а `Html.TextBox` и `Html.TextBoxFor` — нет. `Html.Editor` и `Html.EditorFor` обрабатывают коллекции, сложные объекты и шаблоны, а вспомогательная функция тега входных данных не делает этого. Вспомогательная функция тега входных данных, `Html.EditorFor` и `Html.TextBoxFor` являются строго типизированными (они используют лямбда-выражения); а `Html.TextBox` и `Html.Editor` не являются таковыми (они используют имена выражений).
 
 ### <a name="htmlattributes"></a>HtmlAttributes
 
-`@Html.Editor()` и `@Html.EditorFor()` используют специальную запись `ViewDataDictionary` с именем `htmlAttributes` при выполнении шаблонов по умолчанию. Это поведение дополняется параметрами `additionalViewData`. Ключ "htmlAttributes" не учитывает регистр. Ключ "htmlAttributes" обрабатывается так же, как `htmlAttributes` объект, передаваемый во вспомогательные функции входных данных, такие как `@Html.TextBox()`.
+При выполнении шаблонов по умолчанию `@Html.Editor()` и `@Html.EditorFor()` используют специальную запись `ViewDataDictionary` с именем `htmlAttributes`. Это поведение дополняется параметрами `additionalViewData`. Ключ "htmlAttributes" не учитывает регистр. Ключ "htmlAttributes" обрабатывается так же, как `htmlAttributes` объект, передаваемый во вспомогательные функции входных данных, такие как `@Html.TextBox()`.
 
 ```HTML
 @Html.EditorFor(model => model.YourProperty, 
@@ -277,7 +277,7 @@ Type expected
 
 Когда MVC ASP.NET Core рассчитывает значение `ModelExpression`, он оценивает несколько источников, включая `ModelState`. Вы можете использовать `<input type="text" asp-for="@Name">`. Рассчитанный атрибут `value` является первым значением, отличным от NULL, из:
 
-* `ModelState` — запись с ключом Name.
+* записи `ModelState` с ключом "Name";
 * результата выражения `Model.Name`.
 
 ### <a name="navigating-child-properties"></a>Навигация по дочерним свойствам
@@ -334,7 +334,7 @@ public IActionResult Edit(int id, int colorIndex)
 
 [!code-HTML[](working-with-forms/sample/final/Views/Shared/EditorTemplates/ToDoItem.cshtml)]
 
-`foreach` следует по возможности использовать, когда значение будет применяться в эквивалентном контексте `asp-for` или `Html.DisplayFor`. Обычно лучше использовать `for`, чем `foreach` (если сценарий позволяет), так как ему не нужно выделять перечислитель. Тем не менее оценка индексатора в выражении LINQ может быть недешевой, поэтому ее нужно минимизировать.
+По возможности следует использовать `foreach`, когда значение будет применяться в эквивалентном контексте `asp-for` или `Html.DisplayFor`. Обычно лучше использовать `for`, чем `foreach` (если сценарий позволяет), так как ему не нужно выделять перечислитель. Тем не менее оценка индексатора в выражении LINQ может быть недешевой, поэтому ее нужно минимизировать.
 
 &nbsp;
 
@@ -349,7 +349,7 @@ public IActionResult Edit(int id, int colorIndex)
 
 * Обеспечивает строгую типизацию.
 
-* Альтернатива вспомогательному приложению HTML: `Html.TextAreaFor`
+* Располагает альтернативой вспомогательному методу HTML — `Html.TextAreaFor`.
 
 Пример:
 
@@ -411,7 +411,7 @@ public IActionResult Edit(int id, int colorIndex)
 
 * Проверка также выполняется на сервере. На клиентах может быть отключена поддержка JavaScript, поэтому некоторые проверки выполняются только на стороне сервера.
 
-* Альтернатива вспомогательному приложению HTML: `Html.ValidationMessageFor`
+* Располагает альтернативой вспомогательному методу HTML — `Html.ValidationMessageFor`.
 
 `Validation Message Tag Helper` используется с атрибутом `asp-validation-for` в элементе HTML [span](https://developer.mozilla.org/docs/Web/HTML/Element/span).
 
@@ -445,7 +445,7 @@ public IActionResult Edit(int id, int colorIndex)
 
 * Работает с элементами `<div>`, имеющими атрибут `asp-validation-summary`.
 
-* Альтернатива вспомогательному приложению HTML: `@Html.ValidationSummary`
+* Располагает альтернативой вспомогательному методу HTML — `@Html.ValidationSummary`.
 
 `Validation Summary Tag Helper` используется для отображения сводки по сообщениям проверки. Значением атрибута `asp-validation-summary` может быть любое из следующих:
 
@@ -488,7 +488,7 @@ public IActionResult Edit(int id, int colorIndex)
 
 * Создает элемент [select](https://www.w3.org/wiki/HTML/Elements/select) и связанные элементы [option](https://www.w3.org/wiki/HTML/Elements/option) для свойств модели.
 
-* включает альтернативу вспомогательному приложению HTML `Html.DropDownListFor` и `Html.ListBoxFor`
+* Располагает альтернативой вспомогательному методу HTML — `Html.DropDownListFor` и `Html.ListBoxFor`.
 
 `Select Tag Helper` `asp-for` указывает имя свойства модели для элемента [select](https://www.w3.org/wiki/HTML/Elements/select), а `asp-items` указывает элементы [option](https://www.w3.org/wiki/HTML/Elements/option).  Например:
 

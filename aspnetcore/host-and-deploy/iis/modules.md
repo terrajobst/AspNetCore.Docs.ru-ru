@@ -7,10 +7,10 @@ ms.custom: mvc
 ms.date: 02/28/2019
 uid: host-and-deploy/iis/modules
 ms.openlocfilehash: 9770801b527829b131257da7c6e670bd33c23634
-ms.sourcegitcommit: 948e533e02c2a7cb6175ada20b2c9cabb7786d0b
+ms.sourcegitcommit: 78339e9891c8676db01a6e81e9cb0cdaa280162f
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 04/10/2019
+ms.lasthandoff: 04/17/2019
 ms.locfileid: "59468877"
 ---
 # <a name="iis-modules-with-aspnet-core"></a>Модули IIS с ASP.NET Core
@@ -33,7 +33,7 @@ ms.locfileid: "59468877"
 | **Ошибки HTTP**<br>`CustomErrorModule`                                                           | Нет  | [ПО промежуточного слоя для страниц кода состояния](xref:fundamentals/error-handling#usestatuscodepages) |
 | **Настраиваемое ведение журнала**<br>`CustomLoggingModule`                                                      | Да | |
 | **Документ по умолчанию**<br>`DefaultDocumentModule`                                                  | Нет  | [ПО промежуточного слоя для файлов по умолчанию](xref:fundamentals/static-files#serve-a-default-document) |
-| **Дайджест-аутентификация**<br>`DigestAuthenticationModule`                                        | Да | |
+| **Дайджест-проверка подлинности**<br>`DigestAuthenticationModule`                                        | Да | |
 | **Просмотр каталогов**<br>`DirectoryListingModule`                                               | Нет  | [ПО промежуточного слоя для просмотра каталогов](xref:fundamentals/static-files#enable-directory-browsing) |
 | **Динамическое сжатие**<br>`DynamicCompressionModule`                                            | Да | [ПО промежуточного слоя для сжатия ответов](xref:performance/response-compression) |
 | **Трассировка неудачно завершенных запросов**<br>`FailedRequestsTracingModule`                                     | Да | [Ведение журналов ASP.NET Core](xref:fundamentals/logging/index#tracesource-provider) |
@@ -47,15 +47,15 @@ ms.locfileid: "59468877"
 | **Фильтры ISAPI**<br>`IsapiFilterModule`                                                         | Да | [ПО промежуточного слоя](xref:fundamentals/middleware/index) |
 | **ISAPI**<br>`IsapiModule`                                                                       | Да | [ПО промежуточного слоя](xref:fundamentals/middleware/index) |
 | **Поддержка протоколов**<br>`ProtocolSupportModule`                                                  | Да | |
-| **Фильтрация запросов**<br>`RequestFilteringModule`                                                | Да | [ПО промежуточного слоя для переопределения URL-адресов `IRule`](xref:fundamentals/url-rewriting#irule-based-rule) |
+| **Фильтрация запросов**<br>`RequestFilteringModule`                                                | Да | [ПО промежуточного слоя для переопределения URL-адресов`IRule`](xref:fundamentals/url-rewriting#irule-based-rule) |
 | **Монитор запросов**<br>`RequestMonitorModule`                                                    | Да | |
 | **Переопределение URL-адресов**&#8224;<br>`RewriteModule`                                                      | Да | [ПО промежуточного слоя для переопределения URL-адресов](xref:fundamentals/url-rewriting) |
 | **Включения на стороне сервера**<br>`ServerSideIncludeModule`                                            | Нет  | |
 | **Статическое сжатие**<br>`StaticCompressionModule`                                              | Нет  | [ПО промежуточного слоя для сжатия ответов](xref:performance/response-compression) |
 | **Статическое содержимое**<br>`StaticFileModule`                                                         | Нет  | [ПО промежуточного слоя для статических файлов](xref:fundamentals/static-files) |
-| **Кэшировании токенов**<br>`TokenCacheModule`                                                          | Да | |
+| **Кэшировании маркеров**<br>`TokenCacheModule`                                                          | Да | |
 | **Кэширование URI**<br>`UriCacheModule`                                                              | Да | |
-| **Авторизация URL-адресов**<br>`UrlAuthorizationModule`                                                | Да | [Идентификация ASP.NET Core](xref:security/authentication/identity) |
+| **Авторизация URL-адреса**<br>`UrlAuthorizationModule`                                                | Да | [Идентификация ASP.NET Core](xref:security/authentication/identity) |
 | **Проверка подлинности Windows**<br>`WindowsAuthenticationModule`                                      | Да | |
 
 &#8224;В модуле переопределения URL-адресов типы сопоставления `isFile` и `isDirectory` не работают с приложениями ASP.NET Core из-за изменений в [структуре каталогов](xref:host-and-deploy/directory-structure).
@@ -69,7 +69,7 @@ ms.locfileid: "59468877"
 | AnonymousIdentification | |
 | DefaultAuthentication   | |
 | FileAuthorization       | |
-| FormsAuthentication     | [ПО промежуточного слоя для аутентификации на основе файлов cookie](xref:security/authentication/cookie) |
+| FormsAuthentication     | [ПО промежуточного слоя для аутентификации по файлам cookie](xref:security/authentication/cookie) |
 | OutputCache             | [ПО промежуточного слоя для кэширования ответов](xref:performance/caching/middleware) |
 | Профиль                 | |
 | RoleManager             | |
@@ -160,14 +160,14 @@ Appcmd.exe delete module MODULE_NAME /app.name:APPLICATION_NAME
 
 Для запуска приложения ASP.NET Core нужны только два модуля: модуль анонимной аутентификации и модуль ASP.NET Core.
 
-Модуль кэширования URI (`UriCacheModule`) позволяет IIS кэшировать конфигурацию веб-сайта на уровне URL-адресов. Без этого модуля IIS придется заново считывать и анализировать конфигурацию при каждом новом запросе, даже если один URL-адрес запрашивается несколько раз подряд. Синтаксический анализ конфигурации при каждом запросе значительно снижает производительность системы. *Мы рекомендуем включать модуль кэширования URI во все развертывания ASP.NET Core, хотя он и не является строго обязательным для запуска размещенного приложения ASP.NET Core.*
+Модуль кэширования URI (`UriCacheModule`) позволяет IIS кэшировать конфигурацию веб-сайта на уровне URL-адресов. Без этого модуля IIS придется заново считывать и анализировать конфигурацию при каждом новом запросе, даже если один URL-адрес запрашивается несколько раз подряд. Синтаксический анализ конфигурации при каждом запросе значительно снижает производительность системы. *Поэтому мы настоятельно рекомендуем включать модуль кэширования URI во все развертывания ASP.NET Core, хотя он и не является строго обязательным для запуска размещенного приложения ASP.NET Core.*
 
-Модуль кэширования HTTP (`HttpCacheModule`) реализует кэш вывода служб IIS, а также логику кэширования элементов в кэше HTTP.sys. Без этого модуля содержимое не кэшируется в режиме ядра и все профили кэша игнорируются. Удаление модуля кэширования HTTP обычно крайне негативно влияет на производительность системы и потребление ресурсов. *Мы рекомендуем включать модуль кэширования HTTP во все развертывания ASP.NET Core, хотя он и не является строго обязательным для запуска размещенного приложения ASP.NET Core.*
+Модуль кэширования HTTP (`HttpCacheModule`) реализует кэш вывода служб IIS, а также логику кэширования элементов в кэше HTTP.sys. Без этого модуля содержимое не кэшируется в режиме ядра и все профили кэша игнорируются. Удаление модуля кэширования HTTP обычно крайне негативно влияет на производительность системы и потребление ресурсов. *Поэтому мы настоятельно рекомендуем включать модуль кэширования HTTP во все развертывания ASP.NET Core, хотя он и не является строго обязательным для запуска размещенного приложения ASP.NET Core.*
 
 ## <a name="additional-resources"></a>Дополнительные ресурсы
 
 * <xref:host-and-deploy/iis/index>
-* [Общие сведения об архитектуре IIS. Модули в IIS](/iis/get-started/introduction-to-iis/introduction-to-iis-architecture#modules-in-iis)
+* [Введение в архитектуры служб IIS. Модули в службах IIS](/iis/get-started/introduction-to-iis/introduction-to-iis-architecture#modules-in-iis)
 * [Общие сведения о модулях IIS](/iis/get-started/introduction-to-iis/iis-modules-overview)
 * [Настройка ролей и модулей в IIS 7.0](https://technet.microsoft.com/library/cc627313.aspx)
-* [IIS `<system.webServer>`](/iis/configuration/system.webServer/)
+* [Службы IIS`<system.webServer>`](/iis/configuration/system.webServer/)

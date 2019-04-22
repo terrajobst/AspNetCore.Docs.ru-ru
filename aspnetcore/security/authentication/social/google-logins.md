@@ -6,18 +6,18 @@ ms.author: riande
 ms.custom: mvc, seodec18
 ms.date: 1/11/2019
 uid: security/authentication/google-logins
-ms.openlocfilehash: 1328bcbce3e6e4786f9d410d1f28f309dc9d2722
-ms.sourcegitcommit: 3e9e1f6d572947e15347e818f769e27dea56b648
+ms.openlocfilehash: 44c79b3279db7946b6d89a726bd3f5acfb5f51af
+ms.sourcegitcommit: 78339e9891c8676db01a6e81e9cb0cdaa280162f
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 03/30/2019
-ms.locfileid: "58750549"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59705595"
 ---
 # <a name="google-external-login-setup-in-aspnet-core"></a>Настройка внешней учетной записи Google в ASP.NET Core
 
 Авторы: [Валерий Новицкий](https://github.com/01binary) (Valeriy Novytskyy) и [Рик Андерсон](https://twitter.com/RickAndMSFT) (Rick Anderson)
 
-В января 2019 Google начал [завершение работы](https://developers.google.com/+/api-shutdown) Google + вход и разработчикам необходимо переместить в новый входа Google в системе, марта. ASP.NET Core 2.1 и 2.2 пакетов для проверки подлинности Google будут обновлены в феврале в соответствии с изменениями. Дополнительные сведения и временные способы устранения рисков для ASP.NET Core, см. в разделе [проблема GitHub](https://github.com/aspnet/AspNetCore/issues/6486). Этот учебник был обновлен с помощью нового процесса установки.
+[Начиная с 7 марта 2019 г. была завершена традиционные Google + API](https://developers.google.com/+/api-shutdown). Google + вход и разработчикам необходимо переместить в новый входа Google в системе. Пакеты ASP.NET Core 2.1 и 2.2 для проверки подлинности Google обновили в соответствии с изменениями. Дополнительные сведения и временные способы устранения рисков для ASP.NET Core, см. в разделе [проблема GitHub](https://github.com/aspnet/AspNetCore/issues/6486). Этот учебник был обновлен с помощью нового процесса установки.
 
 Этом руководстве показано, как разрешить пользователям выполнить вход с использованием своей учетной записью Google, с помощью ASP.NET Core 2.2 проект, созданный на [предыдущую страницу](xref:security/authentication/social/index).
 

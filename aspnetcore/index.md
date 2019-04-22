@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 04/07/2019
 uid: index
-ms.openlocfilehash: 944c8a93aff53b8d72fda03f5df9c5ba45990cbc
-ms.sourcegitcommit: 6bde1fdf686326c080a7518a6725e56e56d8886e
+ms.openlocfilehash: 9cb598c4068586e4e960ec40743c4f54f09995ad
+ms.sourcegitcommit: 017b673b3c700d2976b77201d0ac30172e2abc87
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59068276"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59614375"
 ---
 # <a name="introduction-to-aspnet-core"></a>Введение в ASP.NET Core
 
@@ -44,7 +44,7 @@ ASP.NET Core MVC предоставляет функции, которые по�
 
 ## <a name="client-side-development"></a>Клиентская разработка
 
-ASP.NET Core легко интегрируется с распространенными клиентскими платформами и библиотеками, в том числе [компонентами Razor](xref:razor-components/index), [Angular](xref:spa/angular), [React](xref:spa/react) и [Bootstrap](https://getbootstrap.com/). Дополнительные сведения см. в разделе [Компоненты Razor](xref:razor-components/index), а также в похожих темах в разделе *Разработка на стороне клиента*.
+ASP.NET Core легко интегрируется с популярными клиентскими платформами и библиотеками, включая [Blazor](xref:blazor/index), [Angular](xref:spa/angular), [React](xref:spa/react) и [Bootstrap](https://getbootstrap.com/). Подробнее см. <xref:blazor/index> и связанные материалы о *разработке на стороне клиента*.
 
 <a name="target-framework"></a>
 

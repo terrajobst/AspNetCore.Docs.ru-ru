@@ -7,10 +7,10 @@ ms.author: scaddie
 ms.date: 04/06/2019
 uid: mvc/views/tag-helpers/th-components
 ms.openlocfilehash: fdad4ae367245cd3beabaf90587c1fe5e9162afe
-ms.sourcegitcommit: 948e533e02c2a7cb6175ada20b2c9cabb7786d0b
+ms.sourcegitcommit: 78339e9891c8676db01a6e81e9cb0cdaa280162f
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 04/10/2019
+ms.lasthandoff: 04/17/2019
 ms.locfileid: "59468599"
 ---
 # <a name="tag-helper-components-in-aspnet-core"></a>Вспомогательные компоненты тегов в ASP.NET Core
@@ -40,10 +40,10 @@ ASP.NET Core включает в себя два встроенных вспом
 
 В приведенном выше коде:
 
-* `AddressStyleTagHelperComponent` реализует <xref:Microsoft.AspNetCore.Razor.TagHelpers.TagHelperComponent>. Абстракция:
+* Объект `AddressStyleTagHelperComponent` реализует интерфейс <xref:Microsoft.AspNetCore.Razor.TagHelpers.TagHelperComponent>. Абстракция:
   * Позволяет инициализировать класс с <xref:Microsoft.AspNetCore.Razor.TagHelpers.TagHelperContext>.
   * Позволяет использовать вспомогательные компоненты тегов для добавления или изменения элементов HTML.
-* Свойство <xref:Microsoft.AspNetCore.Razor.TagHelpers.TagHelperComponent.Order*> определяет порядок отображения компонентов. `Order` требуется, если вспомогательные компоненты тегов используются в приложении несколько раз.
+* Свойство <xref:Microsoft.AspNetCore.Razor.TagHelpers.TagHelperComponent.Order*> определяет порядок отображения компонентов. Свойство `Order` необходимо, если вспомогательные компоненты тегов используются в приложении несколько раз.
 * <xref:Microsoft.AspNetCore.Razor.TagHelpers.TagHelperComponent.ProcessAsync*> сравнивает свойство <xref:Microsoft.AspNetCore.Razor.TagHelpers.TagHelperContext.TagName*> контекста выполнения со значением `head`. Если сравнение возвращает результат TRUE, содержимое поля `_style` внедряется в элемент HTML `<head>`.
 
 ### <a name="inject-into-html-body-element"></a>Внедрение в элемент HTML "body"
@@ -62,9 +62,9 @@ ASP.NET Core включает в себя два встроенных вспом
 
 Вспомогательные компоненты тегов необходимо добавить в коллекцию вспомогательных компонентов тегов приложения. Добавить его в коллекцию можно тремя способами:
 
-1. [Регистрация с помощью контейнера служб](#registration-via-services-container)
-1. [Регистрация с помощью файла Razor](#registration-via-razor-file)
-1. [Регистрация с помощью модели страницы или контроллера](#registration-via-page-model-or-controller)
+1. [регистрация с помощью контейнера служб](#registration-via-services-container);
+1. [регистрация с помощью файла Razor](#registration-via-razor-file);
+1. [регистрация с помощью модели страницы или контроллера](#registration-via-page-model-or-controller).
 
 ### <a name="registration-via-services-container"></a>Регистрация с помощью контейнера служб
 
@@ -76,7 +76,7 @@ ASP.NET Core включает в себя два встроенных вспом
 
 Если вспомогательный компонент тегов не зарегистрирован в системе DI, его можно зарегистрировать со страницы Razor Pages или из представления MVC. Этот метод используется для управления внедренной разметкой и порядком выполнения компонентов из файла Razor.
 
-`ITagHelperComponentManager` добавляет вспомогательные компоненты тегов и удаляет их из приложения. Этот метод демонстрируется в следующем коде на примере `AddressTagHelperComponent`:
+`ITagHelperComponentManager` позволяет добавлять вспомогательные компоненты тегов и (или) удалять их из приложения. Этот метод демонстрируется в следующем коде на примере `AddressTagHelperComponent`:
 
 [!code-cshtml[](th-components/samples/RazorPagesSample/Pages/Contact.cshtml?name=snippet_ITagHelperComponentManager)]
 
@@ -85,7 +85,7 @@ ASP.NET Core включает в себя два встроенных вспом
 * Директива `@inject` предоставляет экземпляр `ITagHelperComponentManager`. Этот экземпляр сохраняется в переменной с именем `manager`, из которой он будет доступен далее в коде файла Razor.
 * Экземпляр `AddressTagHelperComponent` добавляется в коллекцию вспомогательных компонентов тегов.
 
-`AddressTagHelperComponent` изменяется для включения конструктора, который принимает параметры `markup` и `order`:
+В `AddressTagHelperComponent` вносятся изменения для создания конструктора, который принимает параметры `markup` и `order`:
 
 [!code-csharp[](th-components/samples/RazorPagesSample/TagHelpers/AddressTagHelperComponent.cs?name=snippet_Constructor)]
 

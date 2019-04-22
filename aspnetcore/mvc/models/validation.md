@@ -8,10 +8,10 @@ ms.date: 04/06/2019
 monikerRange: '>= aspnetcore-2.1'
 uid: mvc/models/validation
 ms.openlocfilehash: 1ae3c20478b02d6f654e65fdf34c88e1ffb837f8
-ms.sourcegitcommit: 948e533e02c2a7cb6175ada20b2c9cabb7786d0b
+ms.sourcegitcommit: 78339e9891c8676db01a6e81e9cb0cdaa280162f
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 04/10/2019
+ms.lasthandoff: 04/17/2019
 ms.locfileid: "59468741"
 ---
 # <a name="model-validation-in-aspnet-core-mvc-and-razor-pages"></a>Проверка модели в ASP.NET Core MVC и Razor Pages
@@ -111,8 +111,8 @@ ms.locfileid: "59468741"
 
 1. Создайте для вызова из JavaScript метод действия.  Метод проверки jQuery [remote](https://jqueryvalidation.org/remote-method/) ожидает ответ JSON.
 
-   * `"true"` означает, что входные данные являются допустимыми.
-   * `"false"`, `undefined` или `null` означают, что входные данные являются недопустимыми.  Вывод стандартного сообщения об ошибке
+   * `"true"` означает, что входные данные допустимы.
+   * `"false"`, `undefined` или `null` означают, что входные данные недопустимы.  Вывод стандартного сообщения об ошибке
    * Все прочие значения означают, что входные данные недопустимы. Вывод строки как настраиваемого сообщения об ошибке.
 
    Ниже приведен пример метода действия, который возвращает настраиваемое сообщение об ошибке.
@@ -129,7 +129,7 @@ ms.locfileid: "59468741"
 
 [!code-csharp[](validation/sample/Models/User.cs?name=snippet_UserNameProperties)]
 
-`AdditionalFields` можно явно присвоить строкам `"FirstName"` и `"LastName"`, но использование оператора [`nameof`](/dotnet/csharp/language-reference/keywords/nameof) упрощает дальнейший рефакторинг. Методу действия для этой проверки необходимо принимать аргументы для имени и фамилии.
+Свойству `AdditionalFields` можно было бы явным образом присвоить строки `"FirstName"` и `"LastName"`, однако применение оператора [`nameof`](/dotnet/csharp/language-reference/keywords/nameof) упрощает дальнейший рефакторинг. Методу действия для этой проверки необходимо принимать аргументы для имени и фамилии.
 
 [!code-csharp[](validation/sample/Controllers/UsersController.cs?name=snippet_VerifyName)]
 
@@ -142,7 +142,7 @@ ms.locfileid: "59468741"
 public string MiddleName { get; set; }
 ```
 
-`AdditionalFields`— требуется константное выражение, как и для всех аргументов атрибутов. Поэтому не следует использовать [интерполированную строку](/dotnet/csharp/language-reference/keywords/interpolated-strings) или вызов <xref:System.String.Join*>для инициализации `AdditionalFields`.
+`AdditionalFields`, как и все аргументы атрибутов, должен представлять собой константное выражение. Поэтому не следует использовать [интерполированную строку](/dotnet/csharp/language-reference/keywords/interpolated-strings) или вызов <xref:System.String.Join*>для инициализации `AdditionalFields`.
 
 ## <a name="alternatives-to-built-in-attributes"></a>Альтернативы для встроенных атрибутов
 
@@ -261,7 +261,7 @@ public string MiddleName { get; set; }
 
 Обратите внимание на то, что атрибуты `data-` в выходных данных HTML соответствуют атрибутам проверки для свойства `ReleaseDate`. Атрибут `data-val-required` содержит сообщение об ошибке, которое выводится, если пользователь не заполнил поле даты выхода. Скрипт ненавязчивой проверки jQuery передает это значение в метод [`required()`](https://jqueryvalidation.org/required-method/) подключаемого модуля jQuery Validate, который затем выводит это сообщение в соответствующем элементе **\<span>**.
 
-Проверка типа данных основана на типе свойства в .NET, если его не переопределяет атрибут `[DataType]`. Браузеры имеют свои сообщения об по умолчанию, но пакет ненавязчивой проверки jQuery может переопределять эти сообщения. `[DataType]` — атрибуты и подклассы, такие как `[EmailAddress]`, позволяют определить сообщение об ошибке.
+Проверка типа данных основана на типе свойства в .NET, если его не переопределяет атрибут `[DataType]`. Браузеры имеют свои сообщения об по умолчанию, но пакет ненавязчивой проверки jQuery может переопределять эти сообщения. Атрибуты и подклассы `[DataType]`, такие как `[EmailAddress]`, позволяют указать сообщение об ошибке.
 
 ### <a name="add-validation-to-dynamic-forms"></a>Добавление проверки к динамическим формам
 

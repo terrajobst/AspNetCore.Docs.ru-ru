@@ -8,10 +8,10 @@ ms.custom: mvc
 ms.date: 02/25/2019
 uid: security/key-vault-configuration
 ms.openlocfilehash: 8fd1cca1803d3f1d44d80ec63c5cfc259cbdaf55
-ms.sourcegitcommit: 1a7000630e55da90da19b284e1b2f2f13a393d74
+ms.sourcegitcommit: 78339e9891c8676db01a6e81e9cb0cdaa280162f
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 04/04/2019
+ms.lasthandoff: 04/17/2019
 ms.locfileid: "59012699"
 ---
 # <a name="azure-key-vault-configuration-provider-in-aspnet-core"></a>Поставщик конфигурации хранилища ключей Azure в ASP.NET Core
@@ -213,7 +213,7 @@ az keyvault set-policy --name '{KEY VAULT NAME}' --object-id {OBJECT ID} --secre
 
 * Имя хранилища ключей: `contosovault`
 * Идентификатор приложения: `627e911e-43cc-61d4-992e-12db9c81b413`
-* Пароль. `g58K3dtg59o1Pa+e59v2Tx829w6VxTB2yv9sv/101di=`
+* Пароль: `g58K3dtg59o1Pa+e59v2Tx829w6VxTB2yv9sv/101di=`
 
 `IKeyVaultSecretManager` Реализации реагирует на префиксы версии секретов, чтобы загрузить правильный секрет в конфигурации:
 

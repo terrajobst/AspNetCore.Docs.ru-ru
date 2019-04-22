@@ -5,14 +5,14 @@ description: Общие сведения о клиенте ASP.NET Core SignalR 
 monikerRange: '>= aspnetcore-2.1'
 ms.author: bradyg
 ms.custom: mvc
-ms.date: 03/14/2019
+ms.date: 04/17/2019
 uid: signalr/javascript-client
-ms.openlocfilehash: a0980dca2eb8d483a9d9f1c5667fb74ee06364f0
-ms.sourcegitcommit: d913bca90373c07f89b1d1df01af5fc01fc908ef
+ms.openlocfilehash: e58015221497a9f962edf9f9fdba7ea3025d7694
+ms.sourcegitcommit: 78339e9891c8676db01a6e81e9cb0cdaa280162f
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 03/14/2019
-ms.locfileid: "57978346"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59705609"
 ---
 # <a name="aspnet-core-signalr-javascript-client"></a>Клиент ASP.NET Core SignalR JavaScript
 
@@ -104,7 +104,140 @@ SignalR определяют, какой метод клиента для выз
 
 ## <a name="reconnect-clients"></a>Повторное подключение клиентов
 
-Клиент JavaScript для SignalR не повторное соединение производится автоматически. Необходимо написать код, который позволит приложению повторно подключиться клиент вручную. Следующий код демонстрирует подход обычно повторного подключения:
+::: moniker range=">= aspnetcore-3.0"
+
+### <a name="automatically-reconnect"></a>Автоматическое переподключение
+
+Клиент JavaScript для SignalR можно настроить для автоматического подключения с помощью `withAutomaticReconnect` метод [HubConnectionBuilder](/javascript/api/%40aspnet/signalr/hubconnectionbuilder). Он не будет повторное соединение производится автоматически по умолчанию.
+
+```javascript
+const connection = new signalR.HubConnectionBuilder()
+    .withUrl("/chatHub")
+    .withAutomaticReconnect()
+    .build();
+```
+
+Без параметров `withAutomaticReconnect()` служит для настройки клиента в течение 0, 2, 10 и 30 секунд соответственно, перед попыткой попытками повторного подключения после четырех неудачных попыток.
+
+Прежде чем выполнять любые попытки повторного подключения `HubConnection` будет переход на `HubConnectionState.Reconnecting` состояния и запускать его `onreconnecting` обратные вызовы вместо переход к `Disconnected` состояния и активации его `onclose` обратные вызовы, такие как `HubConnection`настроена без автоматического повторного подключения. Это дает возможность предупредить пользователей о том, что соединение было потеряно и отключать элементы пользовательского интерфейса.
+
+```javascript
+connection.onreconnecting((error) => {
+  console.assert(connection.state === signalR.HubConnectionState.Reconnecting);
+
+  document.getElementById("messageInput").disabled = true;
+
+  const li = document.createElement("li");
+  li.textContent = `Connection lost due to error "${error}". Reconnecting.`;
+  document.getElementById("messagesList").appendChild(li);
+});
+```
+
+Если клиент успешном повторном подключении в первые четыре попытки, `HubConnection` перейдет к `Connected` состояния и запускать его `onreconnected` обратные вызовы. Это дает возможность для информирования пользователей, подключение будет восстановлено.
+
+Так как подключение выглядит совершенно новое на сервер новый `connectionId` будет предоставляться `onreconnected` обратного вызова.
+
+> [!WARNING]
+> `onreconnected` Обратного вызова `connectionId` параметра будет неопределенным, если `HubConnection` был настроен для [пропустить согласования](xref:signalr/configuration#configure-client-options).
+
+```javascript
+connection.onreconnected((connectionId) => {
+  console.assert(connection.state === signalR.HubConnectionState.Connected);
+
+  document.getElementById("messageInput").disabled = false;
+
+  const li = document.createElement("li");
+  li.textContent = `Connection reestablished. Connected with connectionId "${connectionId}".`;
+  document.getElementById("messagesList").appendChild(li);
+});
+```
+
+`withAutomaticReconnect()` не настроить `HubConnection` попытки при сбоях начальной загрузки, поэтому при сбоях загрузки нужно обрабатывать вручную:
+
+```javascript
+async function start() {
+    try {
+        await connection.start();
+        console.assert(connection.state === signalR.HubConnectionState.Connected);
+        console.log("connected");
+    } catch (err) {
+        console.assert(connection.state === signalR.HubConnectionState.Disconnected);
+        console.log(err);
+        setTimeout(() => start(), 5000);
+    }
+};
+```
+
+Если клиент не повторного подключения успешно в первые четыре попытки, `HubConnection` будет переход к `Disconnected` состояния и запускать его [onclose](/javascript/api/%40aspnet/signalr/hubconnection#onclose) обратные вызовы. Это дает возможность для информирования пользователей, соединение постоянно потерян и рекомендует обновить страницу:
+
+```javascript
+connection.onclose((error) => {
+  console.assert(connection.state === signalR.HubConnectionState.Disconnected);
+
+  document.getElementById("messageInput").disabled = true;
+
+  const li = document.createElement("li");
+  li.textContent = `Connection closed due to error "${error}". Try refreshing this page to restart the connection.`;
+  document.getElementById("messagesList").appendChild(li);
+})
+```
+
+Чтобы настроить настраиваемое количество попыток повторного подключения до отключения или повторного подключения этот интервал, `withAutomaticReconnect` принимает массив чисел, представляющий задержку в миллисекундах для ожидания перед началом каждой попытки повторного подключения.
+
+```javascript
+const connection = new signalR.HubConnectionBuilder()
+    .withUrl("/chatHub")
+    .withAutomaticReconnect([0, 0, 10000])
+    .build();
+
+    // .withAutomaticReconnect([0, 2000, 10000, 30000]) yields the default behavior
+```
+
+В предыдущем примере настраивается `HubConnection` запустить попытки повторных подключений сразу же после потери связи. Это справедливо также для настройки по умолчанию.
+
+В случае с первой попытки повторного подключения со второй попытки повторного подключения будут также применены немедленно вместо ожидания 2 секунды, как в конфигурации по умолчанию.
+
+В случае со второй попытки повторного подключения третьей попытки повторного подключения начнется через 10 секунд и снова станет как конфигурацию по умолчанию.
+
+Пользовательское поведение затем еще раз расходится со всеми поведение по умолчанию путем остановки после сбоя вместо того, один попытки третий повторное соединение более повторного подключения попытки еще на 30 секунд, как в конфигурации по умолчанию.
+
+Если вы хотите еще лучше контролировать время и число автоматическое переподключение попыток, `withAutomaticReconnect` принимает объект, реализующий интерфейс `IReconnectPolicy` интерфейс, который содержит один метод с именем `nextRetryDelayInMilliseconds`.
+
+`nextRetryDelayInMilliseconds` принимает два аргумента: `previousRetryCount` и `elapsedMilliseconds`, которые являются оба числа. Перед первой попытки повторного подключения оба `previousRetryCount` и `elapsedMilliseconds` будут равны нулю. После каждой попытки повтора неудачных `previousRetryCount` увеличивается на единицу и `elapsedMilliseconds` будут обновлены в соответствии с время, затраченное на повторное подключение в данный момент в миллисекундах.
+
+`nextRetryDelayInMilliseconds` должен возвращать либо число, представляющее количество миллисекунд ожидания перед следующей попыткой повторного подключения или `null` Если `HubConnection` должна прекратиться, повторное подключение.
+
+```javascript
+const connection = new signalR.HubConnectionBuilder()
+    .withUrl("/chatHub")
+    .withAutomaticReconnect({
+        nextRetryDelayInMilliseconds: (previousRetryCount, elapsedMilliseconds) => {
+          if (elapsedMilliseconds < 60000) {
+            // If we've been reconnecting for less than 60 seconds so far,
+            // wait between 0 and 10 seconds before the next reconnect attempt.
+            return Math.random() * 10000;
+          } else {
+            // If we've been reconnecting for more than 60 seconds so far, stop reconnecting.
+            return null;
+          }
+        })
+    .build();
+```
+
+Кроме того, можно написать код, который позволит приложению повторно подключиться клиент вручную, как показано в [вручную переподключить](#manually-reconnect).
+
+::: moniker-end
+
+### <a name="manually-reconnect"></a>Вручную переподключить
+
+::: moniker range="< aspnetcore-3.0"
+
+> [!WARNING]
+> До версии 3.0 клиент JavaScript для SignalR не повторное соединение производится автоматически. Необходимо написать код, который позволит приложению повторно подключиться клиент вручную.
+
+::: moniker-end
+
+Следующий код демонстрирует подход обычно ручного повторного подключения:
 
 1. Функции (в этом случае `start` функции) создается при запуске подключения.
 1. Вызовите `start` функции в соединении `onclose` обработчик событий.

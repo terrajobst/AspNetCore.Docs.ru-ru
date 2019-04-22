@@ -7,10 +7,10 @@ ms.custom: mvc
 ms.date: 04/06/2019
 uid: mvc/models/file-uploads
 ms.openlocfilehash: 831f0c84f0ff062e9e24ccbf4ca81b7143c66e66
-ms.sourcegitcommit: 948e533e02c2a7cb6175ada20b2c9cabb7786d0b
+ms.sourcegitcommit: 78339e9891c8676db01a6e81e9cb0cdaa280162f
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 04/10/2019
+ms.lasthandoff: 04/17/2019
 ms.locfileid: "59468557"
 ---
 # <a name="file-uploads-in-aspnet-core"></a>Передача файлов в ASP.NET Core
@@ -19,7 +19,7 @@ ms.locfileid: "59468557"
 
 Действия ASP.NET MVC поддерживают передачу одного или нескольких файлов с помощью простой привязки модели для небольших файлов или потоковой передачи для более крупных файлов.
 
-[Просмотреть или скачать пример на GitHub](https://github.com/aspnet/Docs/tree/master/aspnetcore/mvc/models/file-uploads/sample/FileUploadSample)
+[Просмотреть или скачать образец с GitHub](https://github.com/aspnet/Docs/tree/master/aspnetcore/mvc/models/file-uploads/sample/FileUploadSample)
 
 ## <a name="uploading-small-files-with-model-binding"></a>Передача небольших файлов с помощью привязки модели
 
@@ -94,7 +94,7 @@ public class RegisterViewModel
 ```
 
 > [!NOTE]
-> `IFormFile` можно использовать непосредственно как параметр метода действия или свойство viewmodel, как показано выше.
+> `IFormFile` можно использовать непосредственно как параметр метода действия или как свойство viewmodel, как показано выше.
 
 Скопируйте экземпляр `IFormFile` в поток и сохраните его в байтовом массиве:
 
