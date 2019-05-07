@@ -1,7 +1,7 @@
 ---
 title: Примеры проверки подлинности для ASP.NET Core
 author: rick-anderson
-description: Ссылки на примеры проверки подлинности в ASP.NET Core репозитории.
+description: Ссылки на репозитории с примерами проверки подлинности в ASP.NET Core.
 ms.author: riande
 ms.date: 01/31/2019
 uid: security/authentication/samples
@@ -12,23 +12,23 @@ ms.contentlocale: ru-RU
 ms.lasthandoff: 01/30/2019
 ms.locfileid: "55236682"
 ---
-# <a name="authentication-samples-for-aspnet-core"></a>Примеры проверки подлинности для ASP.NET Core
+# <a name="authentication-samples-for-aspnet-core"></a>Примеры проверки подлинности в ASP.NET Core
 
 Автор: [Рик Андерсон](https://twitter.com/RickAndMSFT) (Rick Anderson)
 
-[Репозитория ASP.NET Core](https://github.com/aspnet/AspNetCore) содержит следующие примеры проверки подлинности *AspNetCore/src/Security/samples* папку:
+[Репозиторий ASP.NET Core](https://github.com/aspnet/AspNetCore) содержит следующие примеры проверки подлинности в папке *AspNetCore/src/Security/samples*:
 
-* [Преобразование заявок](https://github.com/aspnet/AspNetCore/tree/release/2.2/src/Security/samples/ClaimsTransformation)
-* [Файл cookie проверки подлинности](https://github.com/aspnet/AspNetCore/tree/release/2.2/src/Security/samples/Cookies)
-* [Поставщик настраиваемой политики — IAuthorizationPolicyProvider](https://github.com/aspnet/AspNetCore/tree/release/2.2/src/Security/samples/CustomPolicyProvider)
+* [Преобразование утверждений](https://github.com/aspnet/AspNetCore/tree/release/2.2/src/Security/samples/ClaimsTransformation)
+* [Проверка подлинности с помощью cookies](https://github.com/aspnet/AspNetCore/tree/release/2.2/src/Security/samples/Cookies)
+* [Провайдер пользовательской политики — IAuthorizationPolicyProvider](https://github.com/aspnet/AspNetCore/tree/release/2.2/src/Security/samples/CustomPolicyProvider)
 * [Схемы динамической проверки подлинности и параметры](https://github.com/aspnet/AspNetCore/tree/release/2.2/src/Security/samples/DynamicSchemes)
-* [Внешние утверждений](https://github.com/aspnet/AspNetCore/tree/release/2.2/src/Security/samples/Identity.ExternalClaims)
-* [Выбор между файл cookie и другую схему проверки подлинности на основе запроса](https://github.com/aspnet/AspNetCore/tree/release/2.2/src/Security/samples/PathSchemeSelection)
-* [Ограничивает доступ к статическим файлам](https://github.com/aspnet/AspNetCore/tree/release/2.2/src/Security/samples/StaticFilesAuth)
+* [Внешние утверждения](https://github.com/aspnet/AspNetCore/tree/release/2.2/src/Security/samples/Identity.ExternalClaims)
+* [Выбор между cookie и другой схемой проверки подлинности на основе запроса](https://github.com/aspnet/AspNetCore/tree/release/2.2/src/Security/samples/PathSchemeSelection)
+* [Огранение доступа к статическим файлам](https://github.com/aspnet/AspNetCore/tree/release/2.2/src/Security/samples/StaticFilesAuth)
 
-## <a name="run-the-samples"></a>Выполнение примеров
+## <a name="run-the-samples"></a>Запуск примеров
 
-* Выберите [ветви](https://github.com/aspnet/AspNetCore). Например `release/2.2` 
-* Клонируйте или скачайте [репозитория ASP.NET Core](https://github.com/aspnet/AspNetCore).
-* Проверка установки [пакет SDK для .NET Core](https://www.microsoft.com/net/download/all) версию, которая соответствует клон репозитория ASP.NET Core.
-* Перейдите к выборке в *AspNetCore/src/Security/samples* и запуск примера с `dotnet run`.
+* Выберите [ветвь](https://github.com/aspnet/AspNetCore). Например `release/2.2` 
+* Склонируйте или скачайте [репозиторий ASP.NET Core](https://github.com/aspnet/AspNetCore).
+* Проверьте, что у вас установлен [пакет SDK для .NET Core](https://www.microsoft.com/net/download/all) версии, которая соответствует репозиторию ASP.NET Core.
+* Перейдите к примеру в *AspNetCore/src/Security/samples* и запустите его с помощью `dotnet run`.
