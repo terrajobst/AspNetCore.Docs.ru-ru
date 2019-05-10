@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 10/24/2018
 uid: security/authentication/identity-custom-storage-providers
-ms.openlocfilehash: ccd56d0c15639e1ad29094e947f8055702ee2264
-ms.sourcegitcommit: 2c7ffe349eabdccf2ed748dd303ffd0ba6e1cfe3
+ms.openlocfilehash: 5a0797fcfe93d49b941b61688ae8f58a1b5d7614
+ms.sourcegitcommit: dd9c73db7853d87b566eef136d2162f648a43b85
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56833674"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65086346"
 ---
 # <a name="custom-storage-providers-for-aspnet-core-identity"></a>Пользовательские поставщики хранилищ для ASP.NET Core Identity
 
@@ -19,7 +19,7 @@ ms.locfileid: "56833674"
 
 Удостоверение ASP.NET Core является расширяемой системой, что дает возможность создать поставщика пользовательского хранилища и подключить его к своему приложению. В этом разделе описывается создание поставщика настраиваемого хранилища для ASP.NET Core Identity. Он содержит важные основные понятия для создания собственного поставщика хранилища, но не пошаговое руководство.
 
-[Просмотреть или скачать образец с GitHub](https://github.com/aspnet/Docs/tree/master/aspnetcore/security/authentication/identity/sample).
+[Просмотреть или скачать образец с GitHub](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/security/authentication/identity/sample).
 
 ## <a name="introduction"></a>Вступление
 
@@ -139,7 +139,7 @@ dotnet new webapi -au Individual
 * [IUserTwoFactorStore](/dotnet/api/microsoft.aspnetcore.identity.iusertwofactorstore-1)
 * [IUserLockoutStore](/dotnet/api/microsoft.aspnetcore.identity.iuserlockoutstore-1)
 
-Необязательные интерфейсы наследуются от класса `IUserStore<TUser>`. Вы увидите хранить в частично реализованные тестового пользователя [пример приложения](https://github.com/aspnet/Docs/blob/master/aspnetcore/security/authentication/identity-custom-storage-providers/sample/CustomIdentityProviderSample/CustomProvider/CustomUserStore.cs).
+Необязательные интерфейсы наследуются от класса `IUserStore<TUser>`. Вы увидите хранить в частично реализованные тестового пользователя [пример приложения](https://github.com/aspnet/AspNetCore.Docs/blob/master/aspnetcore/security/authentication/identity-custom-storage-providers/sample/CustomIdentityProviderSample/CustomProvider/CustomUserStore.cs).
 
 В рамках `UserStore` , использовать классы доступа к данным, которые созданы для выполнения операций. Они передаются с использованием внедрения зависимостей. Например, в SQL Server с помощью Dapper реализации `UserStore` класс имеет `CreateAsync` метод, который использует экземпляр `DapperUsersTable` для вставки новой записи:
 

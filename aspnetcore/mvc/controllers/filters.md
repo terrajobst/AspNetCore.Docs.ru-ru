@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 02/08/2019
 uid: mvc/controllers/filters
-ms.openlocfilehash: 4fe04cde2a234302845b2cbded106f1e809842bc
-ms.sourcegitcommit: 5f299daa7c8102d56a63b214b9a34cc4bc87bc42
+ms.openlocfilehash: f357df0bbc51e881132e36ccb20f4ffdc3035032
+ms.sourcegitcommit: 5b0eca8c21550f95de3bb21096bd4fd4d9098026
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58209298"
+ms.lasthandoff: 04/27/2019
+ms.locfileid: "64883469"
 ---
 # <a name="filters-in-aspnet-core"></a>Фильтры в ASP.NET Core
 
@@ -27,7 +27,7 @@ ms.locfileid: "58209298"
 
 Для обработки сквозной функциональности можно создавать настраиваемые фильтры. Фильтры могут предотвратить дублирование кода в действиях. Например, можно объединить обработку ошибок с помощью фильтра исключений обработки ошибок.
 
-[Просмотреть или скачать образец с GitHub](https://github.com/aspnet/Docs/tree/master/aspnetcore/mvc/controllers/filters/sample).
+[Просмотреть или скачать образец с GitHub](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/controllers/filters/sample).
 
 ## <a name="how-filters-work"></a>Как работают фильтры
 
@@ -425,4 +425,4 @@ public class UnprocessableResultFilter : Attribute, IAlwaysRunResultFilter
 ## <a name="next-actions"></a>Дальнейшие действия
 
 * Дополнительные сведения см. в статье [Filter methods for Razor Pages in ASP.NET Core](xref:razor-pages/filter) (Методы фильтрации для Razor Pages в ASP.NET Core).
-* Чтобы поэкспериментировать с фильтрами, [скачайте, протестируйте и измените образец GitHub](https://github.com/aspnet/Docs/tree/master/aspnetcore/mvc/controllers/filters/sample).
+* Чтобы поэкспериментировать с фильтрами, [скачайте, протестируйте и измените образец GitHub](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/controllers/filters/sample).

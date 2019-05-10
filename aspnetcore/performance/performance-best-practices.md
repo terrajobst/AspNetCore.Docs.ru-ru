@@ -6,12 +6,12 @@ monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.date: 04/13/2019
 uid: performance/performance-best-practices
-ms.openlocfilehash: 095db38cf3102f6e18930efdbbaeeb90dffad8af
-ms.sourcegitcommit: 017b673b3c700d2976b77201d0ac30172e2abc87
+ms.openlocfilehash: 28dc7fb40c1b60f643108dcb44593a08942a1650
+ms.sourcegitcommit: dd9c73db7853d87b566eef136d2162f648a43b85
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 04/16/2019
-ms.locfileid: "59614452"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65087495"
 ---
 # <a name="aspnet-core-performance-best-practices"></a>Рекомендации по производительности ASP.NET Core
 
@@ -44,7 +44,7 @@ ms.locfileid: "59614452"
 * Асинхронный вызов доступа к данным и длительных операций API-интерфейсы.
 * Сделать контроллер/Razor действия страницы асинхронным. Весь стек вызова является асинхронным, чтобы использовать преимущества [async/await](/dotnet/csharp/programming-guide/concepts/async/) шаблонов.
 
-Профилировщик такие как [PerfView](https://github.com/Microsoft/perfview), можно использовать для поиска обсуждений, часто добавляемый [пула потоков](/windows/desktop/procthread/thread-pool). `Microsoft-Windows-DotNETRuntime/ThreadPoolWorkerThread/Start` Указывает поток, добавляемые в пул потоков. <!--  For more information, see [async guidance docs](TBD-Link_To_Davifowl_Doc  -->
+Профилировщик такие как [PerfView](https://github.com/Microsoft/perfview), можно использовать для поиска обсуждений, часто добавляемый [пула потоков](/windows/desktop/procthread/thread-pools). `Microsoft-Windows-DotNETRuntime/ThreadPoolWorkerThread/Start` Указывает поток, добавляемые в пул потоков. <!--  For more information, see [async guidance docs](TBD-Link_To_Davifowl_Doc  -->
 
 ## <a name="minimize-large-object-allocations"></a>Свести к минимуму распределения больших объектов
 

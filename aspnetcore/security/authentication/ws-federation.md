@@ -7,11 +7,11 @@ ms.custom: mvc
 ms.date: 01/16/2019
 uid: security/authentication/ws-federation
 ms.openlocfilehash: 7967410686da0e59742b721c0154e143bf19ba01
-ms.sourcegitcommit: 2c7ffe349eabdccf2ed748dd303ffd0ba6e1cfe3
+ms.sourcegitcommit: 5b0eca8c21550f95de3bb21096bd4fd4d9098026
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56833544"
+ms.lasthandoff: 04/27/2019
+ms.locfileid: "64897571"
 ---
 # <a name="authenticate-users-with-ws-federation-in-aspnet-core"></a>Проверка подлинности пользователей с помощью WS-Federation в ASP.NET Core
 

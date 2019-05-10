@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 10/24/2018
 uid: data/ef-rp/sort-filter-page
-ms.openlocfilehash: 162586059e3115bc15efaa63a9a0652e09872f1b
-ms.sourcegitcommit: 5f299daa7c8102d56a63b214b9a34cc4bc87bc42
+ms.openlocfilehash: 228722ecdc0fb19e024b7154393390fe6d34c5ff
+ms.sourcegitcommit: 5b0eca8c21550f95de3bb21096bd4fd4d9098026
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58209969"
+ms.lasthandoff: 04/27/2019
+ms.locfileid: "64887309"
 ---
 # <a name="razor-pages-with-ef-core-in-aspnet-core---sort-filter-paging---3-of-8"></a>Razor Pages с EF Core в ASP.NET Core — сортировка, фильтрация, разбиение на страницы — 3 из 8
 
@@ -29,7 +29,7 @@ ms.locfileid: "58209969"
 
 ![Страница указателя учащихся](sort-filter-page/_static/paging.png)
 
-При возникновении проблем, которые вам не удается устранить, скачайте [готовое приложение](https://github.com/aspnet/Docs/tree/master/aspnetcore/data/ef-rp/intro/samples).
+При возникновении проблем, которые вам не удается устранить, скачайте [готовое приложение](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/data/ef-rp/intro/samples).
 
 ## <a name="add-sorting-to-the-index-page"></a>Добавление сортировки на страницу индекса
 
@@ -275,13 +275,13 @@ http://localhost:5000/Students?SearchString=an
 
 Запустите приложение и перейдите на страницу "About" (О программе). Количество зачисленных студентов по дням отображается в таблице.
 
-При возникновении проблем, которые вам не удается устранить, скачайте [готовое приложение для этого этапа](https://github.com/aspnet/Docs/tree/master/aspnetcore/data/ef-rp/intro/samples/StageSnapShots/cu-part3-sorting).
+При возникновении проблем, которые вам не удается устранить, скачайте [готовое приложение для этого этапа](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/data/ef-rp/intro/samples/StageSnapShots/cu-part3-sorting).
 
 ![Страница About](sort-filter-page/_static/about.png)
 
 ## <a name="additional-resources"></a>Дополнительные ресурсы
 
-* [Отладка источника ASP.NET Core 2.x](https://github.com/aspnet/Docs/issues/4155)
+* [Отладка источника ASP.NET Core 2.x](https://github.com/aspnet/AspNetCore.Docs/issues/4155)
 * [Версия руководства на YouTube](https://www.youtube.com/watch?v=MDs7PFpoMqI)
 
 В следующем руководстве приложение использует миграции для обновления модели данных.

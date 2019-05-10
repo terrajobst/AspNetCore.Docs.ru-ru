@@ -1,11 +1,3 @@
----
-ms.openlocfilehash: 98a03118954baa85b093a0514e1ac6f0fb6353e8
-ms.sourcegitcommit: 088e6744cd67a62f214f25146313a53949b17d35
-ms.translationtype: HT
-ms.contentlocale: ru-RU
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58320112"
----
 # <a name="contribute-to-the-aspnet-core-documentation"></a>Внесите свой вклад в документацию по ASP.NET Core
 
 В этом документе рассматривается процесс участия в написании статей и примеров кода, размещенных на [сайте документации по ASP.NET](https://docs.microsoft.com/aspnet/). Вы можете исправлять опечатки и размещать новые статьи.

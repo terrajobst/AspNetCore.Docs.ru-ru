@@ -5,12 +5,12 @@ description: В этом учебнике вы начинаете использ
 ms.author: riande
 ms.date: 6/31/2017
 uid: data/ef-rp/migrations
-ms.openlocfilehash: 1803c6d3956121e4e7091f4f951917425e87c335
-ms.sourcegitcommit: 7d6019f762fc5b8cbedcd69801e8310f51a17c18
+ms.openlocfilehash: 5b8228130378059aebe21c9c3ea1eb72e4c6aad9
+ms.sourcegitcommit: dd9c73db7853d87b566eef136d2162f648a43b85
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58419476"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65086171"
 ---
 # <a name="razor-pages-with-ef-core-in-aspnet-core---migrations---4-of-8"></a>Razor Pages с EF Core в ASP.NET Core — миграции — 4 из 8
 
@@ -25,7 +25,7 @@ ms.locfileid: "58419476"
 В этом учебнике используется функция миграций EF Core для управления изменениями модели данных.
 
 При возникновении проблем, которые вам не удается устранить, скачайте [готовое приложение](
-https://github.com/aspnet/Docs/tree/master/aspnetcore/data/ef-rp/intro/samples).
+https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/data/ef-rp/intro/samples).
 
 При разработке нового приложения модель данных часто изменяется. При каждом изменении нарушается синхронизация модели с базой данных. Вы начали работу с этим учебником, настроив платформу Entity Framework для создания базы данных, если она еще не существует. Каждый раз при изменении модели данных:
 
@@ -161,7 +161,7 @@ context.Database.EnsureCreated();
 ## <a name="troubleshooting"></a>Устранение неполадок
 
 Скачайте [готовое приложение](
-https://github.com/aspnet/Docs/tree/master/aspnetcore/data/ef-rp/intro/samples/StageSnapShots/cu-part4-migrations).
+https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/data/ef-rp/intro/samples/StageSnapShots/cu-part4-migrations).
 
 Приложение создает следующее исключение:
 

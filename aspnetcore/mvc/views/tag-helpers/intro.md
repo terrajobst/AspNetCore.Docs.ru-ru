@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: H1Hack27Feb2017
 ms.date: 03/18/2019
 uid: mvc/views/tag-helpers/intro
-ms.openlocfilehash: 7768dd45bdbe40c16176d57a76823cbb9dd0b91b
-ms.sourcegitcommit: 57792e5f594db1574742588017c708350958bdf0
+ms.openlocfilehash: 11d2914b5797735fb6a262a31bdb49f58391579f
+ms.sourcegitcommit: 5b0eca8c21550f95de3bb21096bd4fd4d9098026
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58264620"
+ms.lasthandoff: 04/27/2019
+ms.locfileid: "64884059"
 ---
 # <a name="tag-helpers-in-aspnet-core"></a>Вспомогательные функции тегов в ASP.NET Core
 
@@ -248,6 +248,8 @@ IntelliSense помогает написать всю строку.
 Вы можете настроить шрифт и цвет, последовательно выбрав **Сервис** > **Параметры** > **Среда** > **Шрифты и цвета**:
 
 ![изображение](intro/_static/fontoptions2.png)
+
+[!INCLUDE[](~/includes/built-in-TH.md)]
 
 ## <a name="additional-resources"></a>Дополнительные ресурсы
 

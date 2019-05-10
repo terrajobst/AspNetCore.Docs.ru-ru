@@ -7,11 +7,11 @@ ms.custom: mvc
 ms.date: 01/10/2019
 uid: migration/proper-to-2x/membership-to-core-identity
 ms.openlocfilehash: 3b708da13ff9f2887eee87ea17844312a4fe1b8d
-ms.sourcegitcommit: 57792e5f594db1574742588017c708350958bdf0
+ms.sourcegitcommit: dd9c73db7853d87b566eef136d2162f648a43b85
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58264723"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65084874"
 ---
 # <a name="migrate-from-aspnet-membership-authentication-to-aspnet-core-20-identity"></a>Перенос из проверки подлинности членства ASP.NET, в удостоверение ASP.NET Core 2.0
 
@@ -65,7 +65,7 @@ ASP.NET Core 2.0 соответствует [удостоверений](/aspnet
 
 Существуют небольшие отличия в структуры таблиц и полей для членства и удостоверения ASP.NET Core. Шаблон значительно изменяется для проверки подлинности и авторизации с приложениями ASP.NET и ASP.NET Core. Основные объекты, которые по-прежнему используются с удостоверением *пользователей* и *ролей*. Ниже приведены таблицы сопоставления для *пользователей*, *ролей*, и *UserRoles*.
 
-### <a name="users"></a>Пользователи
+### <a name="users"></a>Users
 
 |*Удостоверение<br>(dbo. AspNetUsers)*        ||*Членство<br>(dbo.aspnet_Users / dbo.aspnet_Membership)*||
 |----------------------------------------|-----------------------------------------------------------|

@@ -7,24 +7,24 @@ ms.author: riande
 ms.date: 11/10/2018
 ms.custom: mvc, seodec18
 uid: razor-pages/upload-files
-ms.openlocfilehash: a12653e5dc99ad731de63e151af6dbdbe38ffefc
-ms.sourcegitcommit: 8a84ce880b4c40d6694ba6423038f18fc2eb5746
-ms.translationtype: HT
+ms.openlocfilehash: 07457d57b7d3b444c8cea818149569407f1dd8e8
+ms.sourcegitcommit: dd9c73db7853d87b566eef136d2162f648a43b85
+ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60165226"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65085720"
 ---
 # <a name="upload-files-to-a-razor-page-in-aspnet-core"></a>Отправка файлов на страницу Razor в ASP.NET Core
 
 Автор [Люк Латэм](https://github.com/guardrex) (Luke Latham)
 
-Этот раздел построен на основе [пример приложения](https://github.com/aspnet/Docs/tree/master/aspnetcore/tutorials/razor-pages/razor-pages-start/sample) в <xref:tutorials/razor-pages/razor-pages-start>.
+Этот раздел построен на основе [пример приложения](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/tutorials/razor-pages/razor-pages-start/sample) в <xref:tutorials/razor-pages/razor-pages-start>.
 
 В этом разделе показано, как использовать простой привязки модели для передачи файлов, который хорошо подходит для небольших файлов. Сведения о потоковой передаче больших файлов см. в статье [Отправка больших файлов с помощью потоковой передачи](xref:mvc/models/file-uploads#uploading-large-files-with-streaming).
 
 В следующих действиях в пример приложения добавляется функция отправки файлов с расписанием фильмов. Расписание фильмов представлено классом `Schedule`. Он включает в себя две версии расписания. Одна версия, `PublicSchedule`, предоставляется клиентам. Для сотрудников организации используется другая версия — `PrivateSchedule`. Каждая версия отправляется в виде отдельного файла. В руководстве показано, как выполнить две отправки файла со страницы на сервер с помощью отдельной операции POST.
 
-[Просмотреть или скачать образец кода](https://github.com/aspnet/Docs/tree/master/aspnetcore/razor-pages/upload-files/samples) ([как скачивать](xref:index#how-to-download-a-sample))
+[Просмотреть или скачать образец кода](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/razor-pages/upload-files/samples) ([как скачивать](xref:index#how-to-download-a-sample))
 
 ## <a name="security-considerations"></a>Замечания по безопасности
 

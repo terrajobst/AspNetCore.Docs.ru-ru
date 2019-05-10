@@ -7,12 +7,12 @@ ms.author: bradyg
 ms.custom: mvc
 ms.date: 06/04/2018
 uid: signalr/groups
-ms.openlocfilehash: 45f2bb44e03a586b7fc186525fdd3a2645c820d5
-ms.sourcegitcommit: ed76cc752966c604a795fbc56d5a71d16ded0b58
+ms.openlocfilehash: 180f8b4551eea39cc340bf1d250f4575cb5f71ed
+ms.sourcegitcommit: dd9c73db7853d87b566eef136d2162f648a43b85
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55667756"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65087435"
 ---
 # <a name="manage-users-and-groups-in-signalr"></a>Управление пользователями и группами в SignalR
 
@@ -20,7 +20,7 @@ ms.locfileid: "55667756"
 
 SignalR позволяет сообщения отправляться на все подключения, связанные с конкретным пользователем, а также с именем группы подключений.
 
-[Просмотреть или скачать образец кода](https://github.com/aspnet/Docs/tree/master/aspnetcore/signalr/groups/sample/) [(способ загрузки)](xref:index#how-to-download-a-sample)
+[Просмотреть или скачать образец кода](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/signalr/groups/sample/) [(способ загрузки)](xref:index#how-to-download-a-sample)
 
 ## <a name="users-in-signalr"></a>Пользователи в SignalR
 

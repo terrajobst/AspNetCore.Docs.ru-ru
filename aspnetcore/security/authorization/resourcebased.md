@@ -6,12 +6,12 @@ ms.author: scaddie
 ms.custom: mvc
 ms.date: 11/15/2018
 uid: security/authorization/resourcebased
-ms.openlocfilehash: 6a163caa26b277fbee6b9d61f8f1d16a60c75b03
-ms.sourcegitcommit: d3392f688cfebc1f25616da7489664d69c6ee330
+ms.openlocfilehash: afc152ea677cab42d57bd642b4821159f125117e
+ms.sourcegitcommit: 5b0eca8c21550f95de3bb21096bd4fd4d9098026
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/16/2018
-ms.locfileid: "51818373"
+ms.lasthandoff: 04/27/2019
+ms.locfileid: "64891741"
 ---
 # <a name="resource-based-authorization-in-aspnet-core"></a>Авторизация на основе ресурсов в ASP.NET Core
 
@@ -19,7 +19,7 @@ ms.locfileid: "51818373"
 
 Атрибут оценивается перед привязкой данных и перед выполнением обработчика страницы или действие, которое загружает документ. По этим причинам декларативной авторизации с помощью `[Authorize]` атрибут недостаточно. Вместо этого можно вызвать метод настраиваемой авторизации&mdash;стиль, известный как *принудительной авторизации*.
 
-[Просмотреть или скачать пример кода](https://github.com/aspnet/Docs/tree/master/aspnetcore/security/authorization/resourcebased/samples) ([описание скачивания](xref:index#how-to-download-a-sample)).
+[Просмотреть или скачать пример кода](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/security/authorization/resourcebased/samples) ([описание скачивания](xref:index#how-to-download-a-sample)).
 
 [Создание приложения ASP.NET Core с помощью данных пользователя с помощью авторизации](xref:security/authorization/secure-data) содержит пример приложения, использующего авторизации на основе ресурсов.
 
