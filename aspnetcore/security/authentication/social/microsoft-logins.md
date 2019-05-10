@@ -1,152 +1,96 @@
 ---
 title: Настройка внешней учетной записи учетной записи Майкрософт с помощью ASP.NET Core
 author: rick-anderson
-description: В этом учебнике показано интеграции проверки подлинности пользователя учетной записи Майкрософт в существующее приложение ASP.NET Core.
+description: В этом примере демонстрируется интеграция проверки подлинности пользователя учетной записи Майкрософт в существующее приложение ASP.NET Core.
 ms.author: riande
 ms.custom: mvc
-ms.date: 11/11/2018
+ms.date: 5/11/2019
 uid: security/authentication/microsoft-logins
-ms.openlocfilehash: 1733d049d6752c24d7749b5b5ae2a4b866492358
-ms.sourcegitcommit: 3e9e1f6d572947e15347e818f769e27dea56b648
+ms.openlocfilehash: 1c78cc957b6ff77c91c8ca4aef59a1cacd85a8ca
+ms.sourcegitcommit: 3376f224b47a89acf329b2d2f9260046a372f924
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 03/30/2019
-ms.locfileid: "58750996"
+ms.lasthandoff: 05/10/2019
+ms.locfileid: "65517092"
 ---
-# <a name="microsoft-account-external-login-setup-with-aspnet-core"></a><span data-ttu-id="a4b75-103">Настройка внешней учетной записи учетной записи Майкрософт с помощью ASP.NET Core</span><span class="sxs-lookup"><span data-stu-id="a4b75-103">Microsoft Account external login setup with ASP.NET Core</span></span>
+# <a name="microsoft-account-external-login-setup-with-aspnet-core"></a><span data-ttu-id="1c046-103">Настройка внешней учетной записи учетной записи Майкрософт с помощью ASP.NET Core</span><span class="sxs-lookup"><span data-stu-id="1c046-103">Microsoft Account external login setup with ASP.NET Core</span></span>
 
-<span data-ttu-id="a4b75-104">Авторы: [Валерий Новицкий](https://github.com/01binary) (Valeriy Novytskyy) и [Рик Андерсон](https://twitter.com/RickAndMSFT) (Rick Anderson)</span><span class="sxs-lookup"><span data-stu-id="a4b75-104">By [Valeriy Novytskyy](https://github.com/01binary) and [Rick Anderson](https://twitter.com/RickAndMSFT)</span></span>
+<span data-ttu-id="1c046-104">Авторы: [Валерий Новицкий](https://github.com/01binary) (Valeriy Novytskyy) и [Рик Андерсон](https://twitter.com/RickAndMSFT) (Rick Anderson)</span><span class="sxs-lookup"><span data-stu-id="1c046-104">By [Valeriy Novytskyy](https://github.com/01binary) and [Rick Anderson](https://twitter.com/RickAndMSFT)</span></span>
 
-<span data-ttu-id="a4b75-105">Этом руководстве показано, как включить пользователей выполнить вход с использованием своей учетной записью Майкрософт, используя образец проекта ASP.NET Core 2.0, созданные на [предыдущую страницу](xref:security/authentication/social/index).</span><span class="sxs-lookup"><span data-stu-id="a4b75-105">This tutorial shows you how to enable your users to sign in with their Microsoft account using a sample ASP.NET Core 2.0 project created on the [previous page](xref:security/authentication/social/index).</span></span>
+<span data-ttu-id="1c046-105">В этом примере показано, как разрешить пользователям выполнить вход с использованием своей учетной записью Майкрософт, с помощью ASP.NET Core 2.2 проект, созданный на [предыдущую страницу](xref:security/authentication/social/index).</span><span class="sxs-lookup"><span data-stu-id="1c046-105">This sample shows you how to enable users to sign in with their Microsoft account using the ASP.NET Core 2.2 project created on the [previous page](xref:security/authentication/social/index).</span></span>
 
-## <a name="create-the-app-in-microsoft-developer-portal"></a><span data-ttu-id="a4b75-106">Создание приложения на портале разработчика Майкрософт</span><span class="sxs-lookup"><span data-stu-id="a4b75-106">Create the app in Microsoft Developer Portal</span></span>
+## <a name="create-the-app-in-microsoft-developer-portal"></a><span data-ttu-id="1c046-106">Создание приложения на портале разработчика Майкрософт</span><span class="sxs-lookup"><span data-stu-id="1c046-106">Create the app in Microsoft Developer Portal</span></span>
 
-* <span data-ttu-id="a4b75-107">Перейдите к [ https://apps.dev.microsoft.com ](https://apps.dev.microsoft.com) и создать или войти в учетную запись Майкрософт:</span><span class="sxs-lookup"><span data-stu-id="a4b75-107">Navigate to [https://apps.dev.microsoft.com](https://apps.dev.microsoft.com) and create or sign into a Microsoft account:</span></span>
+* <span data-ttu-id="1c046-107">Перейдите к [Azure портал регистрации приложений](https://go.microsoft.com/fwlink/?linkid=2083908) странице и создавать или входить в учетную запись Майкрософт:</span><span class="sxs-lookup"><span data-stu-id="1c046-107">Navigate to the [Azure portal - App registrations](https://go.microsoft.com/fwlink/?linkid=2083908) page and create or sign into a Microsoft account:</span></span>
 
-![Диалоговое окно входа](index/_static/MicrosoftDevLogin.png)
+<span data-ttu-id="1c046-108">Если у вас нет учетной записи Майкрософт, выберите **создать**.</span><span class="sxs-lookup"><span data-stu-id="1c046-108">If you don't have a Microsoft account, select **Create one**.</span></span> <span data-ttu-id="1c046-109">После входа вы будете перенаправлены на **регистрация приложений** страницы:</span><span class="sxs-lookup"><span data-stu-id="1c046-109">After signing in you are redirected to the **App registrations** page:</span></span>
 
-<span data-ttu-id="a4b75-109">Если у вас нет учетной записи Майкрософт, коснитесь  **[создайте ее!](https://signup.live.com/signup?wa=wsignin1.0&rpsnv=13&ct=1478151035&rver=6.7.6643.0&wp=SAPI_LONG&wreply=https%3a%2f%2fapps.dev.microsoft.com%2fLoginPostBack&id=293053&aadredir=1&contextid=D70D4F21246BAB50&bk=1478151036&uiflavor=web&uaid=f0c3de863a914c358b8dc01b1ff49e85&mkt=EN-US&lc=1033&lic=1)**</span><span class="sxs-lookup"><span data-stu-id="a4b75-109">If you don't already have a Microsoft account, tap **[Create one!](https://signup.live.com/signup?wa=wsignin1.0&rpsnv=13&ct=1478151035&rver=6.7.6643.0&wp=SAPI_LONG&wreply=https%3a%2f%2fapps.dev.microsoft.com%2fLoginPostBack&id=293053&aadredir=1&contextid=D70D4F21246BAB50&bk=1478151036&uiflavor=web&uaid=f0c3de863a914c358b8dc01b1ff49e85&mkt=EN-US&lc=1033&lic=1)**</span></span> <span data-ttu-id="a4b75-110">После входа вы будете перенаправлены на **моих приложений** страницы:</span><span class="sxs-lookup"><span data-stu-id="a4b75-110">After signing in you are redirected to **My applications** page:</span></span>
+* <span data-ttu-id="1c046-110">Выберите **Новая регистрация**</span><span class="sxs-lookup"><span data-stu-id="1c046-110">Select **New registration**</span></span>
+* <span data-ttu-id="1c046-111">Введите **имя**.</span><span class="sxs-lookup"><span data-stu-id="1c046-111">Enter a **Name**.</span></span>
+* <span data-ttu-id="1c046-112">Выберите параметр для **поддерживаемые типы учетных записей**.</span><span class="sxs-lookup"><span data-stu-id="1c046-112">Select an option for **Supported account types**.</span></span>  <!-- Accounts for any org work with MS domain accounts. Most folks probably want the last option, personal MS accounts -->
+* <span data-ttu-id="1c046-113">В разделе **URI перенаправления**, введите URL-адрес разработки с `/signin-microsoft` добавляется.</span><span class="sxs-lookup"><span data-stu-id="1c046-113">Under **Redirect URI**, enter your development URL with `/signin-microsoft` appended.</span></span> <span data-ttu-id="1c046-114">Например, `https://localhost:44389/signin-microsoft`.</span><span class="sxs-lookup"><span data-stu-id="1c046-114">For example, `https://localhost:44389/signin-microsoft`.</span></span> <span data-ttu-id="1c046-115">Схема проверки подлинности Майкрософт, Настройка описывается далее в этом образце автоматически будет обрабатывать запросы на `/signin-microsoft` маршрута, чтобы реализовать поток OAuth.</span><span class="sxs-lookup"><span data-stu-id="1c046-115">The Microsoft authentication scheme configured later in this sample will automatically handle requests at `/signin-microsoft` route to implement the OAuth flow.</span></span>
+* <span data-ttu-id="1c046-116">Выберите **регистрации**</span><span class="sxs-lookup"><span data-stu-id="1c046-116">Select **Register**</span></span>
 
-![Портал разработчиков Microsoft открыть в Microsoft Edge](index/_static/MicrosoftDev.png)
+### <a name="create-client-secret"></a><span data-ttu-id="1c046-117">Создайте секрет клиента</span><span class="sxs-lookup"><span data-stu-id="1c046-117">Create client secret</span></span>
 
-* <span data-ttu-id="a4b75-112">Коснитесь **Добавление веб-приложения** в верхнем правом углу, а затем введите ваш **имя_приложения** и **контактный адрес электронной почты**:</span><span class="sxs-lookup"><span data-stu-id="a4b75-112">Tap **Add an app** in the upper right corner and enter your **Application Name** and **Contact Email**:</span></span>
+* <span data-ttu-id="1c046-118">В левой области выберите **сертификаты и секреты**.</span><span class="sxs-lookup"><span data-stu-id="1c046-118">In the left pane, select **Certificates & secrets**.</span></span>
+* <span data-ttu-id="1c046-119">В разделе **секреты клиента**выберите **новый секрет клиента**</span><span class="sxs-lookup"><span data-stu-id="1c046-119">Under **Client secrets**, select **New client secret**</span></span>
 
-![Диалоговое окно создания регистрации приложения](index/_static/MicrosoftDevAppCreate.png)
+  * <span data-ttu-id="1c046-120">Добавьте описание секрет клиента.</span><span class="sxs-lookup"><span data-stu-id="1c046-120">Add a description for the client secret.</span></span>
+  * <span data-ttu-id="1c046-121">Выберите **добавить** кнопки.</span><span class="sxs-lookup"><span data-stu-id="1c046-121">Select the **Add** button.</span></span>
 
-* <span data-ttu-id="a4b75-114">Для целей данного учебника, снимите **руководство по настройке** "флажок".</span><span class="sxs-lookup"><span data-stu-id="a4b75-114">For the purposes of this tutorial, clear the **Guided Setup** check box.</span></span>
-
-* <span data-ttu-id="a4b75-115">Коснитесь **создать** продолжать **регистрации** страницы.</span><span class="sxs-lookup"><span data-stu-id="a4b75-115">Tap **Create** to continue to the **Registration** page.</span></span> <span data-ttu-id="a4b75-116">Укажите **имя** и обратите внимание на значение **идентификатор приложения**, который можно использовать в качестве `ClientId` далее в этом руководстве:</span><span class="sxs-lookup"><span data-stu-id="a4b75-116">Provide a **Name** and note the value of the **Application Id**, which you use as `ClientId` later in the tutorial:</span></span>
-
-![Страница регистрации](index/_static/MicrosoftDevAppReg.png)
-
-* <span data-ttu-id="a4b75-118">Коснитесь **Добавление платформы** в **платформ** и выберите **Web** платформы:</span><span class="sxs-lookup"><span data-stu-id="a4b75-118">Tap **Add Platform** in the **Platforms** section and select the **Web** platform:</span></span>
-
-![Добавить диалоговое окно платформы](index/_static/MicrosoftDevAppPlatform.png)
-
-* <span data-ttu-id="a4b75-120">В новом **Web** платформы введите свой URL-адрес разработки с `/signin-microsoft` добавляется в **URL-адреса перенаправления** поле (например: `https://localhost:44320/signin-microsoft`).</span><span class="sxs-lookup"><span data-stu-id="a4b75-120">In the new **Web** platform section, enter your development URL with `/signin-microsoft` appended into the **Redirect URLs** field (for example: `https://localhost:44320/signin-microsoft`).</span></span> <span data-ttu-id="a4b75-121">Схема проверки подлинности Майкрософт, Настройка описывается далее в этом руководстве автоматически будет обрабатывать запросы на `/signin-microsoft` маршрута, чтобы реализовать поток OAuth:</span><span class="sxs-lookup"><span data-stu-id="a4b75-121">The Microsoft authentication scheme configured later in this tutorial will automatically handle requests at `/signin-microsoft` route to implement the OAuth flow:</span></span>
-
-![Веб-платформы раздел](index/_static/MicrosoftRedirectUri.png)
+* <span data-ttu-id="1c046-122">В разделе **секреты клиента**, скопируйте значение секрета клиента.</span><span class="sxs-lookup"><span data-stu-id="1c046-122">Under **Client secrets**, copy the value of the client secret.</span></span>
 
 > [!NOTE]
-> <span data-ttu-id="a4b75-123">Сегмент URI `/signin-microsoft` задан в качестве обратного вызова по умолчанию поставщика проверки подлинности Майкрософт.</span><span class="sxs-lookup"><span data-stu-id="a4b75-123">The URI segment `/signin-microsoft` is set as the default callback of the Microsoft authentication provider.</span></span> <span data-ttu-id="a4b75-124">URI обратного вызова по умолчанию можно изменить при настройке по промежуточного слоя проверки подлинности Майкрософт с помощью наследуемого [RemoteAuthenticationOptions.CallbackPath](/dotnet/api/microsoft.aspnetcore.authentication.remoteauthenticationoptions.callbackpath) свойство [MicrosoftAccountOptions](/dotnet/api/microsoft.aspnetcore.authentication.microsoftaccount.microsoftaccountoptions) класса.</span><span class="sxs-lookup"><span data-stu-id="a4b75-124">You can change the default callback URI while configuring the Microsoft authentication middleware via the inherited [RemoteAuthenticationOptions.CallbackPath](/dotnet/api/microsoft.aspnetcore.authentication.remoteauthenticationoptions.callbackpath) property of the [MicrosoftAccountOptions](/dotnet/api/microsoft.aspnetcore.authentication.microsoftaccount.microsoftaccountoptions) class.</span></span>
+> <span data-ttu-id="1c046-123">Сегмент URI `/signin-microsoft` задан в качестве обратного вызова по умолчанию поставщика проверки подлинности Майкрософт.</span><span class="sxs-lookup"><span data-stu-id="1c046-123">The URI segment `/signin-microsoft` is set as the default callback of the Microsoft authentication provider.</span></span> <span data-ttu-id="1c046-124">URI обратного вызова по умолчанию можно изменить при настройке по промежуточного слоя проверки подлинности Майкрософт с помощью наследуемого [RemoteAuthenticationOptions.CallbackPath](/dotnet/api/microsoft.aspnetcore.authentication.remoteauthenticationoptions.callbackpath) свойство [MicrosoftAccountOptions](/dotnet/api/microsoft.aspnetcore.authentication.microsoftaccount.microsoftaccountoptions) класса.</span><span class="sxs-lookup"><span data-stu-id="1c046-124">You can change the default callback URI while configuring the Microsoft authentication middleware via the inherited [RemoteAuthenticationOptions.CallbackPath](/dotnet/api/microsoft.aspnetcore.authentication.remoteauthenticationoptions.callbackpath) property of the [MicrosoftAccountOptions](/dotnet/api/microsoft.aspnetcore.authentication.microsoftaccount.microsoftaccountoptions) class.</span></span>
 
-* <span data-ttu-id="a4b75-125">Коснитесь **Добавление URL-адреса** чтобы URL-адрес был добавлен.</span><span class="sxs-lookup"><span data-stu-id="a4b75-125">Tap **Add URL** to ensure the URL was added.</span></span>
+## <a name="store-the-microsoft-client-id-and-client-secret"></a><span data-ttu-id="1c046-125">Store Microsoft клиента идентификатор и секрет клиента</span><span class="sxs-lookup"><span data-stu-id="1c046-125">Store the Microsoft client ID and client secret</span></span>
 
-* <span data-ttu-id="a4b75-126">Заполните все остальные параметры приложения, при необходимости и коснитесь **Сохранить** в нижней части страницы, чтобы сохранить изменения в конфигурации приложения.</span><span class="sxs-lookup"><span data-stu-id="a4b75-126">Fill out any other application settings if necessary and tap **Save** at the bottom of the page to save changes to app configuration.</span></span>
+<span data-ttu-id="1c046-126">Выполните следующие команды, чтобы обеспечить безопасное хранение `ClientId` и `ClientSecret` с помощью [Secret Manager](xref:security/app-secrets):</span><span class="sxs-lookup"><span data-stu-id="1c046-126">Run the following commands to securely store `ClientId` and `ClientSecret` using [Secret Manager](xref:security/app-secrets):</span></span>
 
-* <span data-ttu-id="a4b75-127">При развертывании на сайте необходимо будет пересмотреть **регистрации** странице и задайте новый общедоступный URL-адрес.</span><span class="sxs-lookup"><span data-stu-id="a4b75-127">When deploying the site you'll need to revisit the **Registration** page and set a new public URL.</span></span>
+```console
+dotnet user-secrets set Authentication:Microsoft:ClientId <Client-Id>
+dotnet user-secrets set Authentication:Microsoft:ClientSecret <Client-Secret>
+```
 
-## <a name="store-microsoft-application-id-and-password"></a><span data-ttu-id="a4b75-128">Store Microsoft Application Id и пароль</span><span class="sxs-lookup"><span data-stu-id="a4b75-128">Store Microsoft Application Id and Password</span></span>
-
-* <span data-ttu-id="a4b75-129">Примечание `Application Id` на **регистрации** страницы.</span><span class="sxs-lookup"><span data-stu-id="a4b75-129">Note the `Application Id` displayed on the **Registration** page.</span></span>
-
-* <span data-ttu-id="a4b75-130">Коснитесь **создать новый пароль** в **секретов приложения** раздел.</span><span class="sxs-lookup"><span data-stu-id="a4b75-130">Tap **Generate New Password** in the **Application Secrets** section.</span></span> <span data-ttu-id="a4b75-131">Откроется окно, где можно скопировать пароль приложения:</span><span class="sxs-lookup"><span data-stu-id="a4b75-131">This displays a box where you can copy the application password:</span></span>
-
-![Диалоговое окно создания пароля, созданных](index/_static/MicrosoftDevPassword.png)
-
-<span data-ttu-id="a4b75-133">Связать конфиденциальные параметры, такие как Microsoft `Application ID` и `Password` для конфигурации приложения с помощью [Secret Manager](xref:security/app-secrets).</span><span class="sxs-lookup"><span data-stu-id="a4b75-133">Link sensitive settings like Microsoft `Application ID` and `Password` to your application configuration using the [Secret Manager](xref:security/app-secrets).</span></span> <span data-ttu-id="a4b75-134">В целях этого учебника назовите токены `Authentication:Microsoft:ApplicationId` и `Authentication:Microsoft:Password`.</span><span class="sxs-lookup"><span data-stu-id="a4b75-134">For the purposes of this tutorial, name the tokens `Authentication:Microsoft:ApplicationId` and `Authentication:Microsoft:Password`.</span></span>
+<span data-ttu-id="1c046-127">Связать конфиденциальные параметры, такие как Microsoft `ClientId` и `ClientSecret` для конфигурации приложения с помощью [Secret Manager](xref:security/app-secrets).</span><span class="sxs-lookup"><span data-stu-id="1c046-127">Link sensitive settings like Microsoft `ClientId` and `ClientSecret` to your application configuration using the [Secret Manager](xref:security/app-secrets).</span></span> <span data-ttu-id="1c046-128">В целях этого примера назовите токены `Authentication:Microsoft:ClientId` и `Authentication:Microsoft:ClientSecret`.</span><span class="sxs-lookup"><span data-stu-id="1c046-128">For the purposes of this sample, name the tokens `Authentication:Microsoft:ClientId` and `Authentication:Microsoft:ClientSecret`.</span></span>
 
 [!INCLUDE[](~/includes/environmentVarableColon.md)]
 
-## <a name="configure-microsoft-account-authentication"></a><span data-ttu-id="a4b75-135">Настройка проверки подлинности учетной записи Майкрософт</span><span class="sxs-lookup"><span data-stu-id="a4b75-135">Configure Microsoft Account Authentication</span></span>
+## <a name="configure-microsoft-account-authentication"></a><span data-ttu-id="1c046-129">Настройка проверки подлинности учетной записи Майкрософт</span><span class="sxs-lookup"><span data-stu-id="1c046-129">Configure Microsoft Account Authentication</span></span>
 
-<span data-ttu-id="a4b75-136">Шаблон проекта, используемый в этом руководстве гарантирует, что [Microsoft.AspNetCore.Authentication.MicrosoftAccount](https://www.nuget.org/packages/Microsoft.AspNetCore.Authentication.MicrosoftAccount) пакет уже установлен.</span><span class="sxs-lookup"><span data-stu-id="a4b75-136">The project template used in this tutorial ensures that [Microsoft.AspNetCore.Authentication.MicrosoftAccount](https://www.nuget.org/packages/Microsoft.AspNetCore.Authentication.MicrosoftAccount) package is already installed.</span></span>
+<span data-ttu-id="1c046-130">Добавление службы учетной записи Майкрософт в `ConfigureServices` метод в *Startup.cs* файла:</span><span class="sxs-lookup"><span data-stu-id="1c046-130">Add the Microsoft Account service in the `ConfigureServices` method in *Startup.cs* file:</span></span>
 
-* <span data-ttu-id="a4b75-137">Установить этот пакет с помощью Visual Studio 2017, щелкните правой кнопкой мыши проект и выберите **управление пакетами NuGet**.</span><span class="sxs-lookup"><span data-stu-id="a4b75-137">To install this package with Visual Studio 2017, right-click on the project and select **Manage NuGet Packages**.</span></span>
-* <span data-ttu-id="a4b75-138">Чтобы установить с помощью интерфейса командной строки .NET Core, выполните следующую команду в каталоге проекта:</span><span class="sxs-lookup"><span data-stu-id="a4b75-138">To install with .NET Core CLI, execute the following in your project directory:</span></span>
-
-   `dotnet add package Microsoft.AspNetCore.Authentication.MicrosoftAccount`
-
-::: moniker range=">= aspnetcore-2.0"
-
-<span data-ttu-id="a4b75-139">Добавление службы учетной записи Майкрософт в `ConfigureServices` метод в *Startup.cs* файла:</span><span class="sxs-lookup"><span data-stu-id="a4b75-139">Add the Microsoft Account service in the `ConfigureServices` method in *Startup.cs* file:</span></span>
-
-```csharp
-services.AddDefaultIdentity<IdentityUser>()
-        .AddDefaultUI(UIFramework.Bootstrap4)
-        .AddEntityFrameworkStores<ApplicationDbContext>();
-
-services.AddAuthentication().AddMicrosoftAccount(microsoftOptions =>
-{
-    microsoftOptions.ClientId = Configuration["Authentication:Microsoft:ApplicationId"];
-    microsoftOptions.ClientSecret = Configuration["Authentication:Microsoft:Password"];
-});
-```
+[!code-csharp[](~/security/authentication/social/social-code/StartupMS.cs?name=snippet&highlight=10-14)]
 
 [!INCLUDE [default settings configuration](includes/default-settings.md)]
 
 [!INCLUDE[](includes/chain-auth-providers.md)]
 
-::: moniker-end
+<span data-ttu-id="1c046-131">См. в разделе [MicrosoftAccountOptions](/dotnet/api/microsoft.aspnetcore.builder.microsoftaccountoptions) Справочник по API, Дополнительные сведения о параметрах конфигурации, поддерживается проверка подлинности учетной записи Майкрософт.</span><span class="sxs-lookup"><span data-stu-id="1c046-131">See the [MicrosoftAccountOptions](/dotnet/api/microsoft.aspnetcore.builder.microsoftaccountoptions) API reference for more information on configuration options supported by Microsoft Account authentication.</span></span> <span data-ttu-id="1c046-132">Это может использоваться для запроса различные сведения о пользователе.</span><span class="sxs-lookup"><span data-stu-id="1c046-132">This can be used to request different information about the user.</span></span>
 
-::: moniker range="< aspnetcore-2.0"
+## <a name="sign-in-with-microsoft-account"></a><span data-ttu-id="1c046-133">Войдите с помощью учетной записи Майкрософт</span><span class="sxs-lookup"><span data-stu-id="1c046-133">Sign in with Microsoft Account</span></span>
 
-<span data-ttu-id="a4b75-140">Добавьте по промежуточного слоя учетной записи Майкрософт в `Configure` метод в *Startup.cs* файла:</span><span class="sxs-lookup"><span data-stu-id="a4b75-140">Add the Microsoft Account middleware in the `Configure` method in *Startup.cs* file:</span></span>
+<span data-ttu-id="1c046-134">Запустите и нажмите кнопку **вход**.</span><span class="sxs-lookup"><span data-stu-id="1c046-134">Run the and click **Log in**.</span></span> <span data-ttu-id="1c046-135">Появится возможность входа с учетной записью Майкрософт.</span><span class="sxs-lookup"><span data-stu-id="1c046-135">An option to sign in with Microsoft appears.</span></span> <span data-ttu-id="1c046-136">Если щелкнуть on Microsoft, вы будете перенаправлены в корпорацию Майкрософт для проверки подлинности.</span><span class="sxs-lookup"><span data-stu-id="1c046-136">When you click on Microsoft, you are redirected to Microsoft for authentication.</span></span> <span data-ttu-id="1c046-137">После входа под учетной записью Майкрософт (если это не сделано) вам будет предложено разрешить приложению доступ к вашим сведениям:</span><span class="sxs-lookup"><span data-stu-id="1c046-137">After signing in with your Microsoft Account (if not already signed in) you will be prompted to let the app access your info:</span></span>
 
-```csharp
-app.UseMicrosoftAccountAuthentication(new MicrosoftAccountOptions()
-{
-    ClientId = Configuration["Authentication:Microsoft:ApplicationId"],
-    ClientSecret = Configuration["Authentication:Microsoft:Password"]
-});
-```
+<span data-ttu-id="1c046-138">Коснитесь **Да** и вы будете перенаправлены обратно на веб-узел, где вы можете задать свой адрес электронной почты.</span><span class="sxs-lookup"><span data-stu-id="1c046-138">Tap **Yes** and you will be redirected back to the web site where you can set your email.</span></span>
 
-::: moniker-end
-
-<span data-ttu-id="a4b75-141">Несмотря на то, что терминология, используемая на портале разработчиков Майкрософт называет эти маркеры `ApplicationId` и `Password`, они виде `ClientId` и `ClientSecret` в конфигурацию API.</span><span class="sxs-lookup"><span data-stu-id="a4b75-141">Although the terminology used on Microsoft Developer Portal names these tokens `ApplicationId` and `Password`, they're exposed as `ClientId` and `ClientSecret` to the configuration API.</span></span>
-
-<span data-ttu-id="a4b75-142">См. в разделе [MicrosoftAccountOptions](/dotnet/api/microsoft.aspnetcore.builder.microsoftaccountoptions) Справочник по API, Дополнительные сведения о параметрах конфигурации, поддерживается проверка подлинности учетной записи Майкрософт.</span><span class="sxs-lookup"><span data-stu-id="a4b75-142">See the [MicrosoftAccountOptions](/dotnet/api/microsoft.aspnetcore.builder.microsoftaccountoptions) API reference for more information on configuration options supported by Microsoft Account authentication.</span></span> <span data-ttu-id="a4b75-143">Это может использоваться для запроса различные сведения о пользователе.</span><span class="sxs-lookup"><span data-stu-id="a4b75-143">This can be used to request different information about the user.</span></span>
-
-## <a name="sign-in-with-microsoft-account"></a><span data-ttu-id="a4b75-144">Войдите с помощью учетной записи Майкрософт</span><span class="sxs-lookup"><span data-stu-id="a4b75-144">Sign in with Microsoft Account</span></span>
-
-<span data-ttu-id="a4b75-145">Запустите приложение и нажмите кнопку **вход**.</span><span class="sxs-lookup"><span data-stu-id="a4b75-145">Run your application and click **Log in**.</span></span> <span data-ttu-id="a4b75-146">Появится возможность входа с учетной записью Майкрософт:</span><span class="sxs-lookup"><span data-stu-id="a4b75-146">An option to sign in with Microsoft appears:</span></span>
-
-![Веб-приложение журнала на странице: Пользователь не прошел проверку подлинности](index/_static/DoneMicrosoft.png)
-
-<span data-ttu-id="a4b75-148">Если щелкнуть on Microsoft, вы будете перенаправлены в корпорацию Майкрософт для проверки подлинности.</span><span class="sxs-lookup"><span data-stu-id="a4b75-148">When you click on Microsoft, you are redirected to Microsoft for authentication.</span></span> <span data-ttu-id="a4b75-149">После входа под учетной записью Майкрософт (если это не сделано) вам будет предложено разрешить приложению доступ к вашим сведениям:</span><span class="sxs-lookup"><span data-stu-id="a4b75-149">After signing in with your Microsoft Account (if not already signed in) you will be prompted to let the app access your info:</span></span>
-
-![Диалоговое окно проверки подлинности Майкрософт](index/_static/MicrosoftLogin.png)
-
-<span data-ttu-id="a4b75-151">Коснитесь **Да** и вы будете перенаправлены обратно на веб-узел, где вы можете задать свой адрес электронной почты.</span><span class="sxs-lookup"><span data-stu-id="a4b75-151">Tap **Yes** and you will be redirected back to the web site where you can set your email.</span></span>
-
-<span data-ttu-id="a4b75-152">Теперь вы вошли с использованием учетных данных Майкрософт:</span><span class="sxs-lookup"><span data-stu-id="a4b75-152">You are now logged in using your Microsoft credentials:</span></span>
-
-![Веб-приложение: Пользователь прошел проверку подлинности](index/_static/Done.png)
+<span data-ttu-id="1c046-139">Теперь вы вошли с использованием учетных данных Майкрософт:</span><span class="sxs-lookup"><span data-stu-id="1c046-139">You are now logged in using your Microsoft credentials:</span></span>
 
 [!INCLUDE[Forward request information when behind a proxy or load balancer section](includes/forwarded-headers-middleware.md)]
 
-## <a name="troubleshooting"></a><span data-ttu-id="a4b75-154">Устранение неполадок</span><span class="sxs-lookup"><span data-stu-id="a4b75-154">Troubleshooting</span></span>
+## <a name="troubleshooting"></a><span data-ttu-id="1c046-140">Устранение неполадок</span><span class="sxs-lookup"><span data-stu-id="1c046-140">Troubleshooting</span></span>
 
-* <span data-ttu-id="a4b75-155">Если поставщик учетной записи Майкрософт вы будете перенаправлены к странице ошибки входа, обратите внимание, ошибка заголовок и описание параметров строки запроса сразу после `#` (хэштег) в Uri.</span><span class="sxs-lookup"><span data-stu-id="a4b75-155">If the Microsoft Account provider redirects you to a sign in error page, note the error title and description query string parameters directly following the `#` (hashtag) in the Uri.</span></span>
+* <span data-ttu-id="1c046-141">Если поставщик учетной записи Майкрософт вы будете перенаправлены к странице ошибки входа, обратите внимание, ошибка заголовок и описание параметров строки запроса сразу после `#` (хэштег) в Uri.</span><span class="sxs-lookup"><span data-stu-id="1c046-141">If the Microsoft Account provider redirects you to a sign in error page, note the error title and description query string parameters directly following the `#` (hashtag) in the Uri.</span></span>
 
-  <span data-ttu-id="a4b75-156">Несмотря на то, что сообщение об ошибке кажется указывают на проблему с использованием проверки подлинности, наиболее распространенной причиной является Uri, не соответствующих ни одному из приложения **URI перенаправления** для **Web** платформы .</span><span class="sxs-lookup"><span data-stu-id="a4b75-156">Although the error message seems to indicate a problem with Microsoft authentication, the most common cause is your application Uri not matching any of the **Redirect URIs** specified for the **Web** platform.</span></span>
-* <span data-ttu-id="a4b75-157">**ASP.NET Core 2.x только:** Если удостоверение не настроена, вызвав `services.AddIdentity` в `ConfigureServices`, пытающиеся выполнить проверку подлинности приведет к *ArgumentException: Необходимо указать параметр «SignInScheme»*.</span><span class="sxs-lookup"><span data-stu-id="a4b75-157">**ASP.NET Core 2.x only:** If Identity isn't configured by calling `services.AddIdentity` in `ConfigureServices`, attempting to authenticate will result in *ArgumentException: The 'SignInScheme' option must be provided*.</span></span> <span data-ttu-id="a4b75-158">Шаблон проекта, используемый в этом руководстве гарантирует, что это будет сделано.</span><span class="sxs-lookup"><span data-stu-id="a4b75-158">The project template used in this tutorial ensures that this is done.</span></span>
-* <span data-ttu-id="a4b75-159">Если база данных сайта не был создан путем применения первоначальной миграции, вы получите *сбой операции из базы данных при обработке запроса* ошибки.</span><span class="sxs-lookup"><span data-stu-id="a4b75-159">If the site database has not been created by applying the initial migration, you will get *A database operation failed while processing the request* error.</span></span> <span data-ttu-id="a4b75-160">Коснитесь **применить миграции** для создания базы данных и обновить, чтобы продолжить выполнение после ошибки.</span><span class="sxs-lookup"><span data-stu-id="a4b75-160">Tap **Apply Migrations** to create the database and refresh to continue past the error.</span></span>
+  <span data-ttu-id="1c046-142">Несмотря на то, что сообщение об ошибке кажется указывают на проблему с использованием проверки подлинности, наиболее распространенной причиной является Uri, не соответствующих ни одному из приложения **URI перенаправления** для **Web** платформы .</span><span class="sxs-lookup"><span data-stu-id="1c046-142">Although the error message seems to indicate a problem with Microsoft authentication, the most common cause is your application Uri not matching any of the **Redirect URIs** specified for the **Web** platform.</span></span>
+* <span data-ttu-id="1c046-143">Если удостоверение не настроена, вызвав `services.AddIdentity` в `ConfigureServices`, пытающиеся выполнить проверку подлинности приведет к *ArgumentException: Необходимо указать параметр «SignInScheme»*.</span><span class="sxs-lookup"><span data-stu-id="1c046-143">If Identity isn't configured by calling `services.AddIdentity` in `ConfigureServices`, attempting to authenticate will result in *ArgumentException: The 'SignInScheme' option must be provided*.</span></span> <span data-ttu-id="1c046-144">Шаблон проекта, используемый в этом примере гарантирует, что это будет сделано.</span><span class="sxs-lookup"><span data-stu-id="1c046-144">The project template used in this sample ensures that this is done.</span></span>
+* <span data-ttu-id="1c046-145">Если база данных сайта не был создан путем применения первоначальной миграции, вы получите *сбой операции из базы данных при обработке запроса* ошибки.</span><span class="sxs-lookup"><span data-stu-id="1c046-145">If the site database has not been created by applying the initial migration, you will get *A database operation failed while processing the request* error.</span></span> <span data-ttu-id="1c046-146">Коснитесь **применить миграции** для создания базы данных и обновить, чтобы продолжить выполнение после ошибки.</span><span class="sxs-lookup"><span data-stu-id="1c046-146">Tap **Apply Migrations** to create the database and refresh to continue past the error.</span></span>
 
-## <a name="next-steps"></a><span data-ttu-id="a4b75-161">Следующие шаги</span><span class="sxs-lookup"><span data-stu-id="a4b75-161">Next steps</span></span>
+## <a name="next-steps"></a><span data-ttu-id="1c046-147">Следующие шаги</span><span class="sxs-lookup"><span data-stu-id="1c046-147">Next steps</span></span>
 
-* <span data-ttu-id="a4b75-162">В этой статье объясняется, как можно выполнить проверку подлинности с корпорацией Майкрософт.</span><span class="sxs-lookup"><span data-stu-id="a4b75-162">This article showed how you can authenticate with Microsoft.</span></span> <span data-ttu-id="a4b75-163">Можно выполнить аналогичный подход для проверки подлинности с помощью других поставщиков, перечисленных на [предыдущую страницу](xref:security/authentication/social/index).</span><span class="sxs-lookup"><span data-stu-id="a4b75-163">You can follow a similar approach to authenticate with other providers listed on the [previous page](xref:security/authentication/social/index).</span></span>
+* <span data-ttu-id="1c046-148">В этой статье объясняется, как можно выполнить проверку подлинности с корпорацией Майкрософт.</span><span class="sxs-lookup"><span data-stu-id="1c046-148">This article showed how you can authenticate with Microsoft.</span></span> <span data-ttu-id="1c046-149">Можно выполнить аналогичный подход для проверки подлинности с помощью других поставщиков, перечисленных на [предыдущую страницу](xref:security/authentication/social/index).</span><span class="sxs-lookup"><span data-stu-id="1c046-149">You can follow a similar approach to authenticate with other providers listed on the [previous page](xref:security/authentication/social/index).</span></span>
 
-* <span data-ttu-id="a4b75-164">После публикации веб-сайт веб-приложение Azure, необходимо создать новый `Password` на портале разработчика Microsoft.</span><span class="sxs-lookup"><span data-stu-id="a4b75-164">Once you publish your web site to Azure web app, you should create a new `Password` in the Microsoft Developer Portal.</span></span>
+* <span data-ttu-id="1c046-150">После публикации веб-сайт веб-приложение Azure, создание нового клиента секретов на портале разработчика Microsoft.</span><span class="sxs-lookup"><span data-stu-id="1c046-150">Once you publish your web site to Azure web app, create a new client secrets in the Microsoft Developer Portal.</span></span>
 
-* <span data-ttu-id="a4b75-165">Задайте `Authentication:Microsoft:ApplicationId` и `Authentication:Microsoft:Password` как параметры приложения на портале Azure.</span><span class="sxs-lookup"><span data-stu-id="a4b75-165">Set the `Authentication:Microsoft:ApplicationId` and `Authentication:Microsoft:Password` as application settings in the Azure portal.</span></span> <span data-ttu-id="a4b75-166">Система конфигурации предназначена для чтения разделов из переменных среды.</span><span class="sxs-lookup"><span data-stu-id="a4b75-166">The configuration system is set up to read keys from environment variables.</span></span>
+* <span data-ttu-id="1c046-151">Задайте `Authentication:Microsoft:ClientId` и `Authentication:Microsoft:ClientSecret` как параметры приложения на портале Azure.</span><span class="sxs-lookup"><span data-stu-id="1c046-151">Set the `Authentication:Microsoft:ClientId` and `Authentication:Microsoft:ClientSecret` as application settings in the Azure portal.</span></span> <span data-ttu-id="1c046-152">Система конфигурации предназначена для чтения разделов из переменных среды.</span><span class="sxs-lookup"><span data-stu-id="1c046-152">The configuration system is set up to read keys from environment variables.</span></span>
