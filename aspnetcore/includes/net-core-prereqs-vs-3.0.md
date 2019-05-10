@@ -1,10 +1,2 @@
----
-ms.openlocfilehash: 68adb4a8070706f15c68e86aafde9e0c7e75d5c0
-ms.sourcegitcommit: 78339e9891c8676db01a6e81e9cb0cdaa280162f
-ms.translationtype: MT
-ms.contentlocale: ru-RU
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59532458"
----
-* <span data-ttu-id="09234-101">[Visual Studio 2019](https://visualstudio.microsoft.com/vs/) с **ASP.NET и веб-разработка** рабочей нагрузки</span><span class="sxs-lookup"><span data-stu-id="09234-101">[Visual Studio 2019](https://visualstudio.microsoft.com/vs/) with the **ASP.NET and web development** workload</span></span>
-* [<span data-ttu-id="09234-102">Предварительная версия .NET core SDK 3.0</span><span class="sxs-lookup"><span data-stu-id="09234-102">.NET Core SDK 3.0 Preview</span></span>](https://dotnet.microsoft.com/download/dotnet-core/3.0)
+* <span data-ttu-id="a12b8-101">[Visual Studio 2019](https://visualstudio.microsoft.com/vs/) с **ASP.NET и веб-разработка** рабочей нагрузки</span><span class="sxs-lookup"><span data-stu-id="a12b8-101">[Visual Studio 2019](https://visualstudio.microsoft.com/vs/) with the **ASP.NET and web development** workload</span></span>
+* [<span data-ttu-id="a12b8-102">Предварительная версия .NET core SDK 3.0</span><span class="sxs-lookup"><span data-stu-id="a12b8-102">.NET Core SDK 3.0 Preview</span></span>](https://dotnet.microsoft.com/download/dotnet-core/3.0)
