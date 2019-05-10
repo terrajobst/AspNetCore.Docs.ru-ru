@@ -6,18 +6,14 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 10/24/2018
 uid: data/ef-rp/sort-filter-page
-ms.openlocfilehash: 228722ecdc0fb19e024b7154393390fe6d34c5ff
-ms.sourcegitcommit: 5b0eca8c21550f95de3bb21096bd4fd4d9098026
+ms.openlocfilehash: 06de728096b91b128c6bc3eb7791609d2161cd9b
+ms.sourcegitcommit: 3376f224b47a89acf329b2d2f9260046a372f924
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 04/27/2019
-ms.locfileid: "64887309"
+ms.lasthandoff: 05/10/2019
+ms.locfileid: "65516998"
 ---
 # <a name="razor-pages-with-ef-core-in-aspnet-core---sort-filter-paging---3-of-8"></a>Razor Pages с EF Core в ASP.NET Core — сортировка, фильтрация, разбиение на страницы — 3 из 8
-
-[!INCLUDE[2.0 version](~/includes/RP-EF/20-pdf.md)]
-
-::: moniker range=">= aspnetcore-2.1"
 
 Авторы: [Том Дайкстра](https://github.com/tdykstra) (Tom Dykstra), [Рик Андерсон](https://twitter.com/RickAndMSFT) (Rick Anderson) и [Йон П. Смит](https://twitter.com/thereformedprog) (Jon P Smith)
 
@@ -286,7 +282,7 @@ http://localhost:5000/Students?SearchString=an
 
 В следующем руководстве приложение использует миграции для обновления модели данных.
 
-::: moniker-end
+
 
 > [!div class="step-by-step"]
 > [Назад](xref:data/ef-rp/crud)

@@ -6,12 +6,12 @@ ms.author: tdykstra
 ms.custom: mvc
 ms.date: 08/31/2018
 uid: security/ip-safelist
-ms.openlocfilehash: 286f199c0d9164fa70d511aba523210c85c2fdfd
-ms.sourcegitcommit: 375e9a67f5e1f7b0faaa056b4b46294cc70f55b7
+ms.openlocfilehash: cfbb50ea33ae3af577f13b00bccc75fe0be57f79
+ms.sourcegitcommit: 5b0eca8c21550f95de3bb21096bd4fd4d9098026
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50207736"
+ms.lasthandoff: 04/27/2019
+ms.locfileid: "64898151"
 ---
 # <a name="client-ip-safelist-for-aspnet-core"></a>Объединение списков надежных IP-адрес клиента для ASP.NET Core
 
@@ -25,7 +25,7 @@ ms.locfileid: "50207736"
 
 Пример приложения показаны оба подхода. В каждом случае строка, содержащая утвержденных клиентских IP-адресов хранится в параметр приложения. В по промежуточного слоя или фильтр анализирует строку в список и проверяет, является ли удаленный IP-адрес в списке. В противном случае возвращается код состояния HTTP 403-запрещено.
 
-[Просмотреть или скачать образец кода](https://github.com/aspnet/Docs/tree/master/aspnetcore/security/ip-safelist/samples/2.x/ClientIpAspNetCore) ([как скачивать](xref:index#how-to-download-a-sample))
+[Просмотреть или скачать образец кода](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/security/ip-safelist/samples/2.x/ClientIpAspNetCore) ([как скачивать](xref:index#how-to-download-a-sample))
 
 ## <a name="the-safelist"></a>Объединение списков надежных
 

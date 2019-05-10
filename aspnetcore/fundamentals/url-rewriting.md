@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 12/18/2018
 uid: fundamentals/url-rewriting
-ms.openlocfilehash: d2dd5e9b7f196bcbd1940f7ef58331dabd2367a1
-ms.sourcegitcommit: 816f39e852a8f453e8682081871a31bc66db153a
+ms.openlocfilehash: 72d5b2e902a95442ccffb7a149b917c50373775b
+ms.sourcegitcommit: 5b0eca8c21550f95de3bb21096bd4fd4d9098026
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53637811"
+ms.lasthandoff: 04/27/2019
+ms.locfileid: "64889929"
 ---
 # <a name="url-rewriting-middleware-in-aspnet-core"></a>ПО промежуточного слоя для переопределения URL-адресов в ASP.NET Core
 
@@ -38,7 +38,7 @@ ms.locfileid: "53637811"
 > [!NOTE]
 > Переопределение URL-адресов может снижать производительность приложения. Следует по возможности ограничить число и сложность правил.
 
-[Просмотреть или скачать образец кода](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/url-rewriting/samples/) ([как скачивать](xref:index#how-to-download-a-sample))
+[Просмотреть или скачать образец кода](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/url-rewriting/samples/) ([как скачивать](xref:index#how-to-download-a-sample))
 
 ## <a name="url-redirect-and-url-rewrite"></a>Перенаправление и переопределение URL-адресов
 
@@ -68,7 +68,7 @@ ms.locfileid: "53637811"
 
 ## <a name="url-rewriting-sample-app"></a>Пример приложения с переопределением URL-адресов
 
-Вы можете ознакомиться с функциями ПО промежуточного слоя переопределения URL-адресов на [примере приложения](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/url-rewriting/samples/). Это приложение применяет правила перенаправления и переопределения и показывает перенаправленный или переопределенный URL-адрес для нескольких сценариев.
+Вы можете ознакомиться с функциями ПО промежуточного слоя переопределения URL-адресов на [примере приложения](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/url-rewriting/samples/). Это приложение применяет правила перенаправления и переопределения и показывает перенаправленный или переопределенный URL-адрес для нескольких сценариев.
 
 ## <a name="when-to-use-url-rewriting-middleware"></a>Условия для использования ПО промежуточного слоя для переопределения URL-адресов
 

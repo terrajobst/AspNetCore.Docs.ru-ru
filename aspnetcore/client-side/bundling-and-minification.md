@@ -7,11 +7,11 @@ ms.custom: mvc
 ms.date: 11/20/2018
 uid: client-side/bundling-and-minification
 ms.openlocfilehash: 5d5f0aadb7740c9b2b959d12a585cd8c91758ce8
-ms.sourcegitcommit: 4225e2c49a0081e6ac15acff673587201f54b4aa
+ms.sourcegitcommit: 5b0eca8c21550f95de3bb21096bd4fd4d9098026
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52282149"
+ms.lasthandoff: 04/27/2019
+ms.locfileid: "64894301"
 ---
 # <a name="bundle-and-minify-static-assets-in-aspnet-core"></a>Объединение и Минификация статических ресурсов в ASP.NET Core
 
@@ -86,7 +86,7 @@ ms.locfileid: "52282149"
 Варианты конфигурации:
 
 * `outputFileName`: Имя файла пакета для вывода. Может содержать относительный путь от *bundleconfig.json* файла. **Обязательно**
-* `inputFiles`: Массив файлов, которые объединены. Это относительные пути к файлу конфигурации. **Необязательный**, * пустое значение приводит к пустой выходной файл. [Этот режим](http://www.tldp.org/LDP/abs/html/globbingref.html) поддерживаются шаблоны.
+* `inputFiles`: Массив файлов, чтобы объединить. Это относительные пути к файлу конфигурации. **Необязательный**, * пустое значение приводит к пустой выходной файл. [Этот режим](http://www.tldp.org/LDP/abs/html/globbingref.html) поддерживаются шаблоны.
 * `minify`: Параметры минификации тип выходных данных. **Необязательный**, *по умолчанию — `minify: { enabled: true }`*
   * Параметры конфигурации доступны на тип выходного файла.
     * [Уменьшитель CSS](https://github.com/madskristensen/BundlerMinifier/wiki/cssminifier)

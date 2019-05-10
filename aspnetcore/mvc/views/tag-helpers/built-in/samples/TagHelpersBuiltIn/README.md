@@ -1,11 +1,3 @@
----
-ms.openlocfilehash: 3113220696eb3e3cb8c126cd1287e60203d96378
-ms.sourcegitcommit: 5f299daa7c8102d56a63b214b9a34cc4bc87bc42
-ms.translationtype: HT
-ms.contentlocale: ru-RU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58208338"
----
 # <a name="aspnet-core-built-in-tag-helpers-sample"></a>Образец встроенных вспомогательных функций тегов в ASP.NET Core
 
 В этом примере демонстрируются вариации встроенных вспомогательных функций тега в MVC и Razor Pages:

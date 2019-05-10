@@ -7,18 +7,18 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 02/13/2019
 uid: performance/response-compression
-ms.openlocfilehash: e87480ebb81791ed233f3e2308e35e21e081824f
-ms.sourcegitcommit: 6ba5fb1fd0b7f9a6a79085b0ef56206e462094b7
+ms.openlocfilehash: e312d43fb62106f6ecb98367c29daa377bb227c9
+ms.sourcegitcommit: 5b0eca8c21550f95de3bb21096bd4fd4d9098026
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56248372"
+ms.lasthandoff: 04/27/2019
+ms.locfileid: "64893351"
 ---
 # <a name="response-compression-in-aspnet-core"></a>Сжатие откликов в ASP.NET Core
 
 Автор [Люк Латэм](https://github.com/guardrex) (Luke Latham)
 
-[Просмотреть или скачать образец кода](https://github.com/aspnet/Docs/tree/master/aspnetcore/performance/response-compression/samples) ([как скачивать](xref:index#how-to-download-a-sample))
+[Просмотреть или скачать образец кода](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/performance/response-compression/samples) ([как скачивать](xref:index#how-to-download-a-sample))
 
 Пропускная способность сети является ограниченным ресурсом. Уменьшение размера ответа обычно часто значительно увеличивается скорость реагирования приложения. Для сжатия ответов приложения является одним из способов уменьшить размеры полезной нагрузки.
 
@@ -44,7 +44,7 @@ ms.locfileid: "56248372"
 
 ::: moniker range=">= aspnetcore-2.2"
 
-| `Accept-Encoding` значения заголовка | Поддерживается по промежуточного слоя | Описание: |
+| `Accept-Encoding` значения заголовка | Поддерживается по промежуточного слоя | Описание |
 | ------------------------------- | :------------------: | ----------- |
 | `br`                            | Да (по умолчанию)        | [Формат сжатых данных Brotli](https://tools.ietf.org/html/rfc7932) |
 | `deflate`                       | Нет                   | [Формат DEFLATE сжатых данных](https://tools.ietf.org/html/rfc1951) |
@@ -58,7 +58,7 @@ ms.locfileid: "56248372"
 
 ::: moniker range="< aspnetcore-2.2"
 
-| `Accept-Encoding` значения заголовка | Поддерживается по промежуточного слоя | Описание: |
+| `Accept-Encoding` значения заголовка | Поддерживается по промежуточного слоя | Описание |
 | ------------------------------- | :------------------: | ----------- |
 | `br`                            | Нет                   | [Формат сжатых данных Brotli](https://tools.ietf.org/html/rfc7932) |
 | `deflate`                       | Нет                   | [Формат DEFLATE сжатых данных](https://tools.ietf.org/html/rfc1951) |
@@ -89,7 +89,7 @@ ms.locfileid: "56248372"
 | `Content-Type`     | Указывает тип MIME содержимого. Каждый ответ следует указать его `Content-Type`. По промежуточного слоя проверяет это значение, чтобы определить, следует ли сжимать ответа. По промежуточного слоя задает набор [по умолчанию типы MIME](#mime-types) , его можно закодировать, но можно заменить или добавить типы MIME. |
 | `Vary`             | При отправке сервером со значением `Accept-Encoding` для клиентов и прокси-серверы, `Vary` заголовок указывает клиенту или прокси-сервер, его следует кэшировать (различаться) ответы на основе значения из `Accept-Encoding` заголовок запроса. Результат возврата содержимого с помощью `Vary: Accept-Encoding` заголовка является как краткая, так и без сжатия ответов, кэшируются отдельно. |
 
-Изучите возможности по промежуточного слоя сжатия ответов с [пример приложения](https://github.com/aspnet/Docs/tree/master/aspnetcore/performance/response-compression/samples). В образце показано:
+Изучите возможности по промежуточного слоя сжатия ответов с [пример приложения](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/performance/response-compression/samples). В образце показано:
 
 * Сжатие ответов приложения с помощью Gzip и сжатие пользовательских поставщиков.
 * Как добавить тип MIME по умолчанию список типов MIME для сжатия.
@@ -194,7 +194,7 @@ public void ConfigureServices(IServiceCollection services)
 
 Установка уровня с помощью сжатия <xref:Microsoft.AspNetCore.ResponseCompression.BrotliCompressionProviderOptions>. По умолчанию используется поставщик сжатие Brotli наиболее быстрый уровень сжатия ([CompressionLevel.Fastest](xref:System.IO.Compression.CompressionLevel)), который может не обеспечить наиболее эффективное сжатие. При необходимости наиболее эффективного сжатия настройте по промежуточного слоя для оптимального сжатия.
 
-| Уровень сжатия | Описание: |
+| Уровень сжатия | Описание |
 | ----------------- | ----------- |
 | [CompressionLevel.Fastest](xref:System.IO.Compression.CompressionLevel) | Сжатие следует выполнить как можно быстрее, даже если полученный результат не сжат оптимально. |
 | [CompressionLevel.NoCompression](xref:System.IO.Compression.CompressionLevel) | Не требуется сжимать. |
@@ -257,7 +257,7 @@ public void ConfigureServices(IServiceCollection services)
 
 Установка уровня с помощью сжатия <xref:Microsoft.AspNetCore.ResponseCompression.GzipCompressionProviderOptions>. По умолчанию используется поставщик сжатие Gzip наиболее быстрый уровень сжатия ([CompressionLevel.Fastest](xref:System.IO.Compression.CompressionLevel)), который может не обеспечить наиболее эффективное сжатие. При необходимости наиболее эффективного сжатия настройте по промежуточного слоя для оптимального сжатия.
 
-| Уровень сжатия | Описание: |
+| Уровень сжатия | Описание |
 | ----------------- | ----------- |
 | [CompressionLevel.Fastest](xref:System.IO.Compression.CompressionLevel) | Сжатие следует выполнить как можно быстрее, даже если полученный результат не сжат оптимально. |
 | [CompressionLevel.NoCompression](xref:System.IO.Compression.CompressionLevel) | Не требуется сжимать. |
@@ -350,7 +350,7 @@ public void ConfigureServices(IServiceCollection services)
 
 ## <a name="middleware-issue-when-behind-an-nginx-reverse-proxy"></a>По промежуточного слоя проблемы при работе за Nginx обратный прокси-сервер
 
-При наличии запроса, передаются Nginx, `Accept-Encoding` заголовок удаляется. Удаление `Accept-Encoding` заголовок запрещает сжатие ответ по промежуточного слоя. Дополнительные сведения см. в разделе [NGINX: Сжатие и распаковку](https://www.nginx.com/resources/admin-guide/compression-and-decompression/). Эта проблема отслеживается [выяснить сквозной сжатие для Nginx (aspnet/BasicMiddleware \#123)](https://github.com/aspnet/BasicMiddleware/issues/123).
+При наличии запроса, передаются Nginx, `Accept-Encoding` заголовок удаляется. Удаление `Accept-Encoding` заголовок запрещает сжатие ответ по промежуточного слоя. Дополнительные сведения см. в статье об [использовании Сжатие и распаковку](https://www.nginx.com/resources/admin-guide/compression-and-decompression/). Эта проблема отслеживается [выяснить сквозной сжатие для Nginx (aspnet/BasicMiddleware \#123)](https://github.com/aspnet/BasicMiddleware/issues/123).
 
 ## <a name="working-with-iis-dynamic-compression"></a>Работа с динамического сжатия служб IIS
 

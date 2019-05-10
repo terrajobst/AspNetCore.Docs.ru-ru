@@ -5,12 +5,12 @@ description: Узнайте, как включение создания кода
 ms.author: riande
 ms.date: 08/14/2018
 uid: security/authentication/identity-enable-qrcodes
-ms.openlocfilehash: 5581f2001036746974a858d8a664db16df50edb2
-ms.sourcegitcommit: 5f299daa7c8102d56a63b214b9a34cc4bc87bc42
+ms.openlocfilehash: a7fdc86b3fe94e714e5147c89a32fce13757d1c1
+ms.sourcegitcommit: 5b0eca8c21550f95de3bb21096bd4fd4d9098026
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58209230"
+ms.lasthandoff: 04/27/2019
+ms.locfileid: "64896731"
 ---
 # <a name="enable-qr-code-generation-for-totp-authenticator-apps-in-aspnet-core"></a>Включение создания QR-код для приложения TOTP для проверки подлинности в ASP.NET Core
 
@@ -85,7 +85,7 @@ ASP.NET Core поставляется с поддержкой проверки �
 
 ::: moniker range=">= aspnetcore-2.1"
 
-Имя сайта в QR-код берется из имени проекта, выбранный при первоначальном создании проекта. Его можно изменить путем поиска `GenerateQrCodeUri(string email, string unformattedKey)` метод в */Areas/Identity/Pages/Account/Manage/EnableAuthenticator.cshtml*.
+Имя сайта в QR-код берется из имени проекта, выбранный при первоначальном создании проекта. Его можно изменить путем поиска `GenerateQrCodeUri(string email, string unformattedKey)` метод в */Areas/Identity/Pages/Account/Manage/EnableAuthenticator.cshtml.cs*.
 
 ::: moniker-end
 

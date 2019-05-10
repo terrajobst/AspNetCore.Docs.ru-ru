@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 12/06/2018
 uid: host-and-deploy/azure-apps/azure-continuous-deployment
-ms.openlocfilehash: e12c2ee0b78db105b431770e8644e7d19d915765
-ms.sourcegitcommit: b34b25da2ab68e6495b2460ff570468f16a9bf0d
+ms.openlocfilehash: 3b344505739bb4292ed1683c73ff314b6e4e01e9
+ms.sourcegitcommit: 5b0eca8c21550f95de3bb21096bd4fd4d9098026
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53284447"
+ms.lasthandoff: 04/27/2019
+ms.locfileid: "64890099"
 ---
 # <a name="continuous-deployment-to-azure-with-visual-studio-and-git-with-aspnet-core"></a>Непрерывное развертывание ASP.NET Core в Azure с помощью Visual Studio и Git
 
@@ -30,7 +30,7 @@ ms.locfileid: "53284447"
 
 В этом руководстве предполагается, что установлено следующее программное обеспечение:
 
-* [Visual Studio](https://www.visualstudio.com)
+* [Visual Studio](https://visualstudio.microsoft.com)
 * [!INCLUDE [](~/includes/net-core-sdk-download-link.md)]
 * [Git](https://git-scm.com/downloads) для Windows.
 

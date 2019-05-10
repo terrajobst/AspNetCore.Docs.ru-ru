@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 04/06/2019
 uid: security/cookie-sharing
-ms.openlocfilehash: 7a049ed8787808e228859afc051b8697a6261c21
-ms.sourcegitcommit: 78339e9891c8676db01a6e81e9cb0cdaa280162f
+ms.openlocfilehash: 94fafc91012b5a7e0888a6ebf37f517c129af2ac
+ms.sourcegitcommit: 5b0eca8c21550f95de3bb21096bd4fd4d9098026
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59068314"
+ms.lasthandoff: 04/27/2019
+ms.locfileid: "64892801"
 ---
 # <a name="share-cookies-among-apps-with-aspnet-and-aspnet-core"></a>Совместное использование приложениями файлов cookie с помощью ASP.NET и ASP.NET Core
 
@@ -19,7 +19,7 @@ ms.locfileid: "59068314"
 
 Веб-сайтов часто состоят из отдельных веб-приложений, работающих вместе. Для работы единого входа (SSO), веб-приложений в пределах сайта должны совместно использовать файлы cookie проверки подлинности. Для поддержки этого сценария, в стеке защиты данных позволяет совместное использование проверки подлинности файла cookie Katana и билеты проверки подлинности файла cookie ASP.NET Core.
 
-[Просмотреть или скачать образец кода](https://github.com/aspnet/Docs/tree/master/aspnetcore/security/cookie-sharing/sample/) ([как скачивать](xref:index#how-to-download-a-sample))
+[Просмотреть или скачать образец кода](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/security/cookie-sharing/sample/) ([как скачивать](xref:index#how-to-download-a-sample))
 
 В примере показано совместное использование трех приложениях, использующих файл cookie проверки подлинности файла cookie:
 
@@ -57,7 +57,7 @@ ms.locfileid: "59068314"
 options.Cookie.Domain = ".contoso.com";
 ```
 
-См. в разделе *CookieAuthWithIdentity.Core* в проекте [пример кода](https://github.com/aspnet/Docs/tree/master/aspnetcore/security/cookie-sharing/sample/) ([загрузке](xref:index#how-to-download-a-sample)).
+См. в разделе *CookieAuthWithIdentity.Core* в проекте [пример кода](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/security/cookie-sharing/sample/) ([загрузке](xref:index#how-to-download-a-sample)).
 
 ::: moniker-end
 
@@ -105,7 +105,7 @@ app.AddIdentity<ApplicationUser, IdentityRole>(options =>
 options.Cookie.Domain = ".contoso.com";
 ```
 
-См. в разделе *CookieAuth.Core* в проекте [пример кода](https://github.com/aspnet/Docs/tree/master/aspnetcore/security/cookie-sharing/sample/) ([загрузке](xref:index#how-to-download-a-sample)).
+См. в разделе *CookieAuth.Core* в проекте [пример кода](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/security/cookie-sharing/sample/) ([загрузке](xref:index#how-to-download-a-sample)).
 
 ::: moniker-end
 
@@ -167,7 +167,7 @@ app.UseCookieAuthentication(new CookieAuthenticationOptions
 
 [!code-csharp[](cookie-sharing/sample/CookieAuthWithIdentity.NETFramework/CookieAuthWithIdentity.NETFramework/App_Start/Startup.Auth.cs?name=snippet1)]
 
-См. в разделе *CookieAuthWithIdentity.NETFramework* в проекте [пример кода](https://github.com/aspnet/Docs/tree/master/aspnetcore/security/cookie-sharing/sample/) ([загрузке](xref:index#how-to-download-a-sample)).
+См. в разделе *CookieAuthWithIdentity.NETFramework* в проекте [пример кода](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/security/cookie-sharing/sample/) ([загрузке](xref:index#how-to-download-a-sample)).
 
 При создании удостоверения пользователя, тип проверки подлинности должен соответствовать типу, определенные в `AuthenticationType` набор с `UseCookieAuthentication`.
 

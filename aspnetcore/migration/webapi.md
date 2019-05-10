@@ -6,12 +6,12 @@ ms.author: scaddie
 ms.custom: mvc
 ms.date: 12/10/2018
 uid: migration/webapi
-ms.openlocfilehash: 9806c502f8f5244740f9f9614657a40cfaa03314
-ms.sourcegitcommit: 1872d2e6f299093c78a6795a486929ffb0bbffff
+ms.openlocfilehash: ea14b7128582a21b36c70041d59fb638eebdbef0
+ms.sourcegitcommit: 5b0eca8c21550f95de3bb21096bd4fd4d9098026
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53216837"
+ms.lasthandoff: 04/27/2019
+ms.locfileid: "64895011"
 ---
 # <a name="migrate-from-aspnet-web-api-to-aspnet-core"></a>Перенос из веб-API ASP.NET в ASP.NET Core
 
@@ -19,7 +19,7 @@ ms.locfileid: "53216837"
 
 Веб-API ASP.NET 4.x является HTTP-службу, подходящее для широкого круга клиентов, включая браузеры и мобильные устройства. ASP.NET Core объединяет 4.x ASP.NET MVC и веб-приложение API моделирует в более простую модель программирования, известный как ASP.NET Core MVC. В этой статье показаны действия, необходимые для миграции из веб-API ASP.NET 4.x ASP.NET Core MVC.
 
-[Просмотреть или скачать образец кода](https://github.com/aspnet/Docs/tree/master/aspnetcore/migration/webapi/sample) ([как скачивать](xref:index#how-to-download-a-sample))
+[Просмотреть или скачать образец кода](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/migration/webapi/sample) ([как скачивать](xref:index#how-to-download-a-sample))
 
 ## <a name="prerequisites"></a>Предварительные требования
 

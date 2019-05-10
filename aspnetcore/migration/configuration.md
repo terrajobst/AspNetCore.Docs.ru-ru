@@ -5,12 +5,12 @@ description: Узнайте, как выполнять миграцию конф
 ms.author: riande
 ms.date: 10/14/2016
 uid: migration/configuration
-ms.openlocfilehash: 5a1c4d0cbbdf74a00073c654e78a05f44948caae
-ms.sourcegitcommit: 375e9a67f5e1f7b0faaa056b4b46294cc70f55b7
+ms.openlocfilehash: c379f1f64dc5ab8aeb48055124e86e4e60d93785
+ms.sourcegitcommit: 5b0eca8c21550f95de3bb21096bd4fd4d9098026
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50205916"
+ms.lasthandoff: 04/27/2019
+ms.locfileid: "64894931"
 ---
 # <a name="migrate-configuration-to-aspnet-core"></a>Перенос конфигурации в ASP.NET Core
 
@@ -18,7 +18,7 @@ ms.locfileid: "50205916"
 
 В предыдущей статье, мы начали [миграции проекта ASP.NET MVC в ASP.NET Core MVC](xref:migration/mvc). В этой статье мы переносим конфигурации.
 
-[Просмотреть или скачать образец кода](https://github.com/aspnet/Docs/tree/master/aspnetcore/migration/configuration/samples) ([как скачивать](xref:index#how-to-download-a-sample))
+[Просмотреть или скачать образец кода](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/migration/configuration/samples) ([как скачивать](xref:index#how-to-download-a-sample))
 
 ## <a name="setup-configuration"></a>Настройка установки
 

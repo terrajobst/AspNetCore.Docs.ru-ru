@@ -7,18 +7,18 @@ ms.author: bradyg
 ms.custom: mvc
 ms.date: 11/20/2018
 uid: signalr/hubs
-ms.openlocfilehash: f037c1f6fd7ef773b8e7b2fd4fdf6e28222c441a
-ms.sourcegitcommit: a1c43150ed46aa01572399e8aede50d4668745ca
+ms.openlocfilehash: eb87aab2b7f3a58c6cec80f48f7616749f0809e2
+ms.sourcegitcommit: 5b0eca8c21550f95de3bb21096bd4fd4d9098026
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58327265"
+ms.lasthandoff: 04/27/2019
+ms.locfileid: "64897081"
 ---
 # <a name="use-hubs-in-signalr-for-aspnet-core"></a>Использование центров в SignalR для ASP.NET Core
 
 По [Рейчел Аппель](https://twitter.com/rachelappel) и [Кевин Гриффин](https://twitter.com/1kevgriff)
 
-[Просмотреть или скачать образец кода](https://github.com/aspnet/Docs/tree/master/aspnetcore/signalr/hubs/sample/ ) [(способ загрузки)](xref:index#how-to-download-a-sample)
+[Просмотреть или скачать образец кода](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/signalr/hubs/sample/ ) [(способ загрузки)](xref:index#how-to-download-a-sample)
 
 ## <a name="what-is-a-signalr-hub"></a>Что такое концентратор SignalR
 
@@ -60,7 +60,7 @@ public class ChatHub : Hub
 
 `Hub` Класс имеет `Context` свойство, которое содержит следующие свойства, используя сведения о подключении:
 
-| Свойство. | Описание: |
+| Свойство | Описание |
 | ------ | ----------- |
 | `ConnectionId` | Получает уникальный идентификатор для подключения, назначенный SignalR. Есть один идентификатор подключения для каждого подключения.|
 | `UserIdentifier` | Получает [идентификатор пользователя](xref:signalr/groups). По умолчанию использует SignalR `ClaimTypes.NameIdentifier` из `ClaimsPrincipal` связан с соединением в качестве идентификатора пользователя. |
@@ -71,7 +71,7 @@ public class ChatHub : Hub
 
 `Hub.Context` также содержит следующие методы:
 
-| Метод | Описание: |
+| Метод | Описание |
 | ------ | ----------- |
 | `GetHttpContext` | Возвращает `HttpContext` подключения или `null` Если соединение не ассоциировано с HTTP-запроса. Для подключений по протоколу HTTP можно использовать этот метод для получения сведений, таких как HTTP-заголовки и строки запросов. |
 | `Abort` | Прерывает подключение. |
@@ -80,7 +80,7 @@ public class ChatHub : Hub
 
 `Hub` Класс имеет `Clients` свойство, которое содержит следующие свойства для обмена данными между сервером и клиентом:
 
-| Свойство. | Описание |
+| Свойство | Описание |
 | ------ | ----------- |
 | `All` | Вызывает метод на все подключенные клиенты |
 | `Caller` | Вызывает метод на стороне клиента, вызвавшему метод концентратора |

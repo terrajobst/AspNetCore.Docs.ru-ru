@@ -7,11 +7,11 @@ ms.custom: H1Hack27Feb2017
 ms.date: 09/22/2017
 uid: client-side/using-browserlink
 ms.openlocfilehash: 452ba5149563c186750466f471c7b950f0017614
-ms.sourcegitcommit: d53e0cc71542b92de867bcce51575b054886f529
+ms.sourcegitcommit: 5b0eca8c21550f95de3bb21096bd4fd4d9098026
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "41838613"
+ms.lasthandoff: 04/27/2019
+ms.locfileid: "64894711"
 ---
 # <a name="browser-link-in-aspnet-core"></a>Связь с браузером в ASP.NET Core
 
@@ -53,7 +53,7 @@ install-package Microsoft.VisualStudio.Web.BrowserLink
 
 ::: moniker-end
 
-### <a name="configuration"></a>Конфигурация
+### <a name="configuration"></a>Параметр Configuration
 
 В методе `Startup.Configure`:
 
@@ -83,7 +83,7 @@ if (env.IsDevelopment())
 
 * Обновите веб-приложения в нескольких браузерах за один раз.
 * Откройте **мониторинга связи с браузером**.
-* Включение или отключение **связь с браузером**. Примечание: Привязывание к браузеру отключен по умолчанию в Visual Studio 2017 (версии 15.3).
+* Включение или отключение **связь с браузером**. Примечание. Связь с браузером отключен по умолчанию в Visual Studio 2017 (версии 15.3).
 * Включение или отключение [Автосинхронизация CSS](#enable-or-disable-css-auto-sync).
 
 > [!NOTE]

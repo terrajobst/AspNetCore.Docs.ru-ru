@@ -6,11 +6,11 @@ ms.author: riande
 ms.date: 10/14/2016
 uid: security/data-protection/configuration/default-settings
 ms.openlocfilehash: 2f022a4c7519485fe629ce47c27d214c8c27d5bc
-ms.sourcegitcommit: af8a6eb5375ef547a52ffae22465e265837aa82b
+ms.sourcegitcommit: 5b0eca8c21550f95de3bb21096bd4fd4d9098026
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56159215"
+ms.lasthandoff: 04/27/2019
+ms.locfileid: "64897281"
 ---
 # <a name="data-protection-key-management-and-lifetime-in-aspnet-core"></a>Управление ключами для защиты данных и время существования в ASP.NET Core
 
@@ -27,12 +27,12 @@ ms.locfileid: "56159215"
 
 1. Если профиль пользователя, ключи сохраняются в *%LOCALAPPDATA%\ASP.NET\DataProtection-Keys* папки. Если операционная система Windows, они шифруются при хранении с помощью DPAPI.
 
-   Пул приложений [setProfileEnvironment атрибут](/iis/configuration/system.applicationhost/applicationpools/add/processmodel#configuration) также должна быть включена. Значением свойства `setProfileEnvironment` по умолчанию является `true`. В некоторых сценариях (например, ОС Windows) `setProfileEnvironment` присваивается `false`. Если ключи не хранятся в каталоге профиля пользователя, как ожидается, что:
+   Также необходимо включить атрибут [setProfileEnvironment](/iis/configuration/system.applicationhost/applicationpools/add/processmodel#configuration) пула приложений. Значением свойства `setProfileEnvironment` по умолчанию является `true`. В некоторых сценариях (например, в ОС Windows) для параметра `setProfileEnvironment` установлено значение `false`. Если ключи не хранятся в каталоге профиля пользователя:
 
-   1. Перейдите к *%windir%/system32/inetsrv/config* папки.
-   1. Откройте *applicationHost.config* файл.
+   1. Перейдите к папке *%windir%/system32/inetsrv/config*.
+   1. Откройте файл *applicationHost.config*.
    1. Найдите элемент `<system.applicationHost><applicationPools><applicationPoolDefaults><processModel>` .
-   1. Убедитесь, что `setProfileEnvironment` атрибут отсутствует, которое по умолчанию значение для `true`, или ему явно присвоено значение атрибута `true`.
+   1. Убедитесь, что атрибут `setProfileEnvironment` отсутствует и установлено значение по умолчанию `true`, или же явно задайте для атрибута значение `true`.
 
 1. Если приложение размещается в службах IIS, ключи сохраняются в реестре HKLM, в специальный раздел, который будет доступен только для учетной записи рабочего процесса. Неактивные ключи шифруются с помощью API защиты данных.
 

@@ -6,11 +6,11 @@ ms.author: riande
 ms.date: 02/11/2019
 uid: security/authentication/identity-configuration
 ms.openlocfilehash: 823182bed2cb953e07f9374d135868aeb2be9c60
-ms.sourcegitcommit: 5f299daa7c8102d56a63b214b9a34cc4bc87bc42
+ms.sourcegitcommit: 5b0eca8c21550f95de3bb21096bd4fd4d9098026
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58210123"
+ms.lasthandoff: 04/27/2019
+ms.locfileid: "64892351"
 ---
 # <a name="configure-aspnet-core-identity"></a>Настройка удостоверения ASP.NET Core
 
@@ -127,7 +127,7 @@ ms.locfileid: "58210123"
 | [RequireConfirmedEmail](/dotnet/api/microsoft.aspnetcore.identity.signinoptions.requireconfirmedemail) | Требуется подтверждена электронной почты для входа. | `false` |
 | [RequireConfirmedPhoneNumber](/dotnet/api/microsoft.aspnetcore.identity.signinoptions.requireconfirmedphonenumber) | Требуется номер подтверждена телефона для входа. | `false` |
 
-### <a name="tokens"></a>Токены
+### <a name="tokens"></a>лексемы
 
 [IdentityOptions.Tokens](/dotnet/api/microsoft.aspnetcore.identity.identityoptions.tokens) указывает [TokenOptions](/dotnet/api/microsoft.aspnetcore.identity.tokenoptions) со свойствами, приведенных в таблице.
 
@@ -140,7 +140,7 @@ ms.locfileid: "58210123"
 |     [PasswordResetTokenProvider](/dotnet/api/microsoft.aspnetcore.identity.tokenoptions.passwordresettokenprovider)     | Возвращает или задает [IUserTwoFactorTokenProvider\<TUser >](/dotnet/api/microsoft.aspnetcore.identity.iusertwofactortokenprovider-1) используется для создания токенов, используемых в сообщениях электронной почты для сброса пароля. |
 |                    [ProviderMap](/dotnet/api/microsoft.aspnetcore.identity.tokenoptions.providermap)                    |                Используется для конструирования [Поставщик маркера пользователя](/dotnet/api/microsoft.aspnetcore.identity.tokenproviderdescriptor) с ключом, используемым в качестве имени поставщика.                 |
 
-### <a name="user"></a>Пользователь
+### <a name="user"></a>Пользовательская
 
 [!code-csharp[](identity-configuration/sample/Startup.cs?name=snippet_user)]
 
@@ -179,7 +179,7 @@ ms.locfileid: "58210123"
 
 <xref:Microsoft.AspNetCore.Identity.PasswordHasherOptions> Возвращает и задает параметры для хэширования пароля.
 
-| Параметр | Описание: |
+| Параметр | Описание |
 | ------ | ----------- |
 | <xref:Microsoft.AspNetCore.Identity.PasswordHasherOptions.CompatibilityMode> | Режим совместимости, используемый при хэшировании новые пароли. По умолчанию — <xref:Microsoft.AspNetCore.Identity.PasswordHasherCompatibilityMode.IdentityV3>. Первый байт хэшированный пароль, который называется *формат маркера*, указывает версию алгоритм хэширования, используемый для хэширования пароля. При проверке пароля с хэшем, <xref:Microsoft.AspNetCore.Identity.PasswordHasher`1.VerifyHashedPassword*> метод Выбор правильного алгоритма, в зависимости от первого байта. Клиент способен для проверки подлинности независимо от того, из которых версией алгоритма, использованный для хэширования пароля. Настройка режима совместимости влияет на хэширования *новые пароли*. |
 | <xref:Microsoft.AspNetCore.Identity.PasswordHasherOptions.IterationCount> | Число итераций, используемых при хэшировании пароли с помощью PBKDF2. Это значение используется, только если <xref:Microsoft.AspNetCore.Identity.PasswordHasherOptions.CompatibilityMode> присваивается <xref:Microsoft.AspNetCore.Identity.PasswordHasherCompatibilityMode.IdentityV3>. Значение должно быть целым положительным числом, значение по умолчанию — `10000`. |

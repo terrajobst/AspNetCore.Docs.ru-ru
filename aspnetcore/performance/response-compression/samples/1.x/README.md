@@ -1,6 +1,6 @@
 # <a name="response-compression-sample-application-aspnet-core-1x"></a>Пример сжатия ответа приложения (ASP.NET Core 1.x)
 
-В этом примере описывается использование ASP.NET Core 1.x по промежуточного слоя для сжатия HTTP-ответы для по сжатия ответов. В примере демонстрируется Gzip и поставщики пользовательских сжатия для ответов, текстом и изображением и показано, как добавить тип MIME для сжатия. Пример ASP.NET Core 2.x, см. в разделе [ответа сжатия пример приложения (ASP.NET Core 2.x)](https://github.com/aspnet/Docs/tree/master/aspnetcore/performance/response-compression/samples/2.x).
+В этом примере описывается использование ASP.NET Core 1.x по промежуточного слоя для сжатия HTTP-ответы для по сжатия ответов. В примере демонстрируется Gzip и поставщики пользовательских сжатия для ответов, текстом и изображением и показано, как добавить тип MIME для сжатия. Пример ASP.NET Core 2.x, см. в разделе [ответа сжатия пример приложения (ASP.NET Core 2.x)](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/performance/response-compression/samples/2.x).
 
 ## <a name="examples-in-this-sample"></a>Включенные примеры
 

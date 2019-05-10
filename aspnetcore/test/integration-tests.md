@@ -7,12 +7,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 02/25/2019
 uid: test/integration-tests
-ms.openlocfilehash: 11a8f4296e1b0b229c736645f1aa598307b88ec4
-ms.sourcegitcommit: 088e6744cd67a62f214f25146313a53949b17d35
+ms.openlocfilehash: 46c3b227ca0b3def5ab7d527a2f6ef2497d55f83
+ms.sourcegitcommit: 5b0eca8c21550f95de3bb21096bd4fd4d9098026
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58320190"
+ms.lasthandoff: 04/27/2019
+ms.locfileid: "64892071"
 ---
 # <a name="integration-tests-in-aspnet-core"></a>Интеграционные тесты в ASP.NET Core
 
@@ -22,7 +22,7 @@ ms.locfileid: "58320190"
 
 Этот раздел предполагает базовое понимание модульных тестов. Если вы не знакомы с основными понятиями тестирования, см. раздел [модульное тестирование в .NET Core и .NET Standard](/dotnet/core/testing/) и связанное с ним содержимое.
 
-[Просмотреть или скачать образец кода](https://github.com/aspnet/Docs/tree/master/aspnetcore/test/integration-tests/samples) ([как скачивать](xref:index#how-to-download-a-sample))
+[Просмотреть или скачать образец кода](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/test/integration-tests/samples) ([как скачивать](xref:index#how-to-download-a-sample))
 
 Пример приложения — это приложение Razor Pages, и оно предполагает базовое понимание страниц Razor. Если вы не знакомы с Razor Pages, см. следующие разделы:
 
@@ -104,7 +104,7 @@ ms.locfileid: "58320190"
   * [Microsoft.AspNetCore.Mvc.Testing](https://www.nuget.org/packages/Microsoft.AspNetCore.Mvc.Testing/)
 * Указывать Web SDK в файле проекта (`<Project Sdk="Microsoft.NET.Sdk.Web">`). Web SDK необходим при ссылке на [метапакет Microsoft.AspNetCore.App](xref:fundamentals/metapackage-app).
 
-Выполнение необходимых требований можно посмотреть в [примере приложения](https://github.com/aspnet/Docs/tree/master/aspnetcore/test/integration-tests/samples/). Изучите файл *tests/RazorPagesProject.Tests/RazorPagesProject.Tests.csproj*. Образец приложения использует платформу тестирования [xUnit](https://xunit.github.io/) и библиотеку анализа [AngleSharp](https://anglesharp.github.io/), поэтому он также ссылается на:
+Выполнение необходимых требований можно посмотреть в [примере приложения](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/test/integration-tests/samples/). Изучите файл *tests/RazorPagesProject.Tests/RazorPagesProject.Tests.csproj*. Образец приложения использует платформу тестирования [xUnit](https://xunit.github.io/) и библиотеку анализа [AngleSharp](https://anglesharp.github.io/), поэтому он также ссылается на:
 
 * [xUnit](https://www.nuget.org/packages/xunit/)
 * [xUnit.Runner.VisualStudio](https://www.nuget.org/packages/xunit.runner.visualstudio/)
@@ -155,7 +155,7 @@ ms.locfileid: "58320190"
 
    [!code-csharp[](integration-tests/samples/2.x/IntegrationTestsSample/tests/RazorPagesProject.Tests/CustomWebApplicationFactory.cs?name=snippet1)]
 
-   Заполнение в базе данных [пример приложения](https://github.com/aspnet/Docs/tree/master/aspnetcore/test/integration-tests/samples) осуществляется `InitializeDbForTests` метод. Метод описан в [пример тестов интеграции: Тестирование приложения организации](#test-app-organization) раздел.
+   Заполнение в базе данных [пример приложения](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/test/integration-tests/samples) осуществляется `InitializeDbForTests` метод. Метод описан в [пример тестов интеграции: Тестирование приложения организации](#test-app-organization) раздел.
 
 2. Использование настраиваемого `CustomWebApplicationFactory` в тестовых классов. В следующем примере используется фабрики в `IndexPageTests` класса:
 
@@ -173,7 +173,7 @@ ms.locfileid: "58320190"
 1. Выполните синтаксический анализ против подделки файла cookie и маркер проверки запроса из ответа.
 1. Выполнения запроса POST против подделки файла cookie и запрос проверки подлинности маркера на месте.
 
-`SendAsync` Вспомогательные методы расширения (*Helpers/HttpClientExtensions.cs*) и `GetDocumentAsync` вспомогательный метод (*Helpers/HtmlHelpers.cs*) в [пример приложения](https://github.com/aspnet/Docs/tree/master/aspnetcore/test/integration-tests/samples/) использовать [AngleSharp](https://anglesharp.github.io/) средство синтаксического анализа для обработки против подделки проверку с помощью следующих методов:
+`SendAsync` Вспомогательные методы расширения (*Helpers/HttpClientExtensions.cs*) и `GetDocumentAsync` вспомогательный метод (*Helpers/HtmlHelpers.cs*) в [пример приложения](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/test/integration-tests/samples/) использовать [AngleSharp](https://anglesharp.github.io/) средство синтаксического анализа для обработки против подделки проверку с помощью следующих методов:
 
 * `GetDocumentAsync` &ndash; Получает [HttpResponseMessage](/dotnet/api/system.net.http.httpresponsemessage) и возвращает `IHtmlDocument`. `GetDocumentAsync` использует фабрику, которая подготавливает *виртуального ответа* на основе исходного `HttpResponseMessage`. Дополнительные сведения см. в разделе [AngleSharp документации](https://github.com/AngleSharp/AngleSharp#documentation).
 * `SendAsync` методы расширения для `HttpClient` compose [HttpRequestMessage](/dotnet/api/system.net.http.httprequestmessage) и вызвать [SendAsync(HttpRequestMessage)](/dotnet/api/system.net.http.httpclient.sendasync#System_Net_Http_HttpClient_SendAsync_System_Net_Http_HttpRequestMessage_) для отправки запросов на SUT. Перегрузок для `SendAsync` принять HTML-форма (`IHtmlFormElement`) и следующие:
@@ -188,7 +188,7 @@ ms.locfileid: "58320190"
 
 Если в методе теста, необходима дополнительная настройка [WithWebHostBuilder](/dotnet/api/microsoft.aspnetcore.mvc.testing.webapplicationfactory-1.withwebhostbuilder) создает новую `WebApplicationFactory` с [IWebHostBuilder](/dotnet/api/microsoft.aspnetcore.hosting.iwebhostbuilder) , дальнейшей настройки конфигурации.
 
-`Post_DeleteMessageHandler_ReturnsRedirectToRoot` Метод из теста [пример приложения](https://github.com/aspnet/Docs/tree/master/aspnetcore/test/integration-tests/samples) демонстрируется использование `WithWebHostBuilder`. Этот тест выполняет удаление записи в базе данных путем отправки формы в SUT активации.
+`Post_DeleteMessageHandler_ReturnsRedirectToRoot` Метод из теста [пример приложения](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/test/integration-tests/samples) демонстрируется использование `WithWebHostBuilder`. Этот тест выполняет удаление записи в базе данных путем отправки формы в SUT активации.
 
 Так как другой проверять в `IndexPageTests` класс выполняет операцию, которая удаляет все записи в базе данных и могут выполняться перед `Post_DeleteMessageHandler_ReturnsRedirectToRoot` метод, базы данных будет заполняться данными в этом тестовом методе, чтобы обеспечить наличие SUT для удаления записи. Выбрав `deleteBtn1` кнопки `messages` формы в SUT моделируется в запросе к SUT:
 
@@ -311,7 +311,7 @@ _client = _factory.CreateClient(clientOptions);
 
 ## <a name="disable-shadow-copying"></a>Отключить теневое копирование
 
-Теневое копирование вызывает ошибки в тестах для выполнения в той же папке в выходную папку. Для тестов для правильной работы теневое копирование, необходимо отключить. [Пример приложения](https://github.com/aspnet/Docs/tree/master/aspnetcore/test/integration-tests/samples) использует xUnit и отключает теневого копирования для xUnit, включив *xunit.runner.json* файл с параметром правильная конфигурация. Дополнительные сведения см. в разделе [Настройка xUnit с помощью JSON](https://xunit.github.io/docs/configuring-with-json.html).
+Теневое копирование вызывает ошибки в тестах для выполнения в той же папке в выходную папку. Для тестов для правильной работы теневое копирование, необходимо отключить. [Пример приложения](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/test/integration-tests/samples) использует xUnit и отключает теневого копирования для xUnit, включив *xunit.runner.json* файл с параметром правильная конфигурация. Дополнительные сведения см. в разделе [Настройка xUnit с помощью JSON](https://xunit.github.io/docs/configuring-with-json.html).
 
 Добавить *xunit.runner.json* файла корневой каталог тестового проекта со следующим содержимым:
 
@@ -327,14 +327,14 @@ _client = _factory.CreateClient(clientOptions);
 
 ## <a name="integration-tests-sample"></a>Пример тестов интеграции
 
-[Пример приложения](https://github.com/aspnet/Docs/tree/master/aspnetcore/test/integration-tests/samples) состоит из двух приложений:
+[Пример приложения](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/test/integration-tests/samples) состоит из двух приложений:
 
 | Приложение | Папка проекта | Описание: |
 | --- | -------------- | ----------- |
 | Сообщение приложения (SUT) | *src/RazorPagesProject* | Позволяет пользователю добавить, удалить один, удалить все и анализ сообщений. |
 | Тестирование приложения | *tests/RazorPagesProject.Tests* | Используется для тестирования интеграции SUT. |
 
-Тесты можно выполнять с помощью встроенной возможности интерфейса IDE, например [Visual Studio](https://www.visualstudio.com/vs/). При использовании [Visual Studio Code](https://code.visualstudio.com/) или из командной строки, выполните следующую команду в командной строке в *tests/RazorPagesProject.Tests* папку:
+Тесты можно выполнять с помощью встроенной возможности интерфейса IDE, например [Visual Studio](https://visualstudio.microsoft.com). При использовании [Visual Studio Code](https://code.visualstudio.com/) или из командной строки, выполните следующую команду в командной строке в *tests/RazorPagesProject.Tests* папку:
 
 ```console
 dotnet test

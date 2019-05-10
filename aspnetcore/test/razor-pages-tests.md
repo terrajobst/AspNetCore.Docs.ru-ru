@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 11/27/2017
 uid: test/razor-pages-tests
-ms.openlocfilehash: 5116ec3c3d6c27f9b0e098f82c82dd7b7337b8f6
-ms.sourcegitcommit: 375e9a67f5e1f7b0faaa056b4b46294cc70f55b7
+ms.openlocfilehash: f1526b8803f43ec8cbe77c1d2c100d9daf6cd316
+ms.sourcegitcommit: 5b0eca8c21550f95de3bb21096bd4fd4d9098026
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50207502"
+ms.lasthandoff: 04/27/2019
+ms.locfileid: "64893721"
 ---
 # <a name="razor-pages-unit-tests-in-aspnet-core"></a>Тестирование страниц Razor в ASP.NET Core
 
@@ -30,16 +30,16 @@ ASP.NET Core поддерживает модульные тесты прилож
 * [Начало работы с Razor Pages](xref:tutorials/razor-pages/razor-pages-start)
 * [Модульное тестирование C# в .NET Core с помощью команды dotnet test и xUnit](/dotnet/articles/core/testing/unit-testing-with-dotnet-test)
 
-[Просмотреть или скачать образец кода](https://github.com/aspnet/Docs/tree/master/aspnetcore/test/razor-pages-tests/samples) ([как скачивать](xref:index#how-to-download-a-sample))
+[Просмотреть или скачать образец кода](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/test/razor-pages-tests/samples) ([как скачивать](xref:index#how-to-download-a-sample))
 
 Пример проекта состоит из двух приложений:
 
 | Приложение         | Папка проекта                        | Описание |
 | ----------- | ------------------------------------- | ----------- |
 | Сообщение приложения | *src/RazorPagesTestSample*            | Позволяет пользователю добавить, удалить один, удалить все и анализ сообщений. |
-| Тестирование приложения    | *tests/RazorPagesTestSample.Tests*    | Используется для сообщения приложения модульного теста: доступа к данным уровня (DAL) и модель страницы индекса. |
+| Тестирование приложения    | *tests/RazorPagesTestSample.Tests*    | Используется для сообщения приложения модульного теста: Уровень доступа к данным (DAL) и модель страницы индекса. |
 
-Тесты можно выполнять с помощью встроенной возможности интерфейса IDE, например [Visual Studio](https://www.visualstudio.com/vs/). При использовании [Visual Studio Code](https://code.visualstudio.com/) или из командной строки, выполните следующую команду в командной строке в *tests/RazorPagesTestSample.Tests* папку:
+Тесты можно выполнять с помощью встроенной возможности интерфейса IDE, например [Visual Studio](https://visualstudio.microsoft.com). При использовании [Visual Studio Code](https://code.visualstudio.com/) или из командной строки, выполните следующую команду в командной строке в *tests/RazorPagesTestSample.Tests* папку:
 
 ```console
 dotnet test
@@ -108,9 +108,9 @@ using (var db = new AppDbContext(Utilities.TestingDbContextOptions()))
 
 Все методы теста в `DataAccessLayerTest` класс (*UnitTests/DataAccessLayerTest.cs*) следует той же модели, расположение-Act-утверждение:
 
-1. Упорядочить: База данных настроена для теста и/или определенных ожидаемый результат.
-1. ACT: Выполняется тест.
-1. Assert: Утверждения выполняются для определения того, является ли результат теста успешно.
+1. Упорядочите: База данных настроена для теста и/или определенных ожидаемый результат.
+1. ACT: Тест выполняется.
+1. Утверждение: Чтобы определить, является ли результат теста успешно выполняются утверждения.
 
 Например `DeleteMessageAsync` метод отвечает за удаление одного сообщения определяется его `Id` (*src/RazorPagesTestSample/Data/AppDbContext.cs*):
 
@@ -124,7 +124,7 @@ using (var db = new AppDbContext(Utilities.TestingDbContextOptions()))
 
 [!code-csharp[](razor-pages-tests/samples/2.x/tests/RazorPagesTestSample.Tests/UnitTests/DataAccessLayerTest.cs?name=snippet1)]
 
-Метод: `DeleteMessageAsync` метода передавая `recId` из `1`:
+Выполняет метод: `DeleteMessageAsync` Метода передавая `recId` из `1`:
 
 [!code-csharp[](razor-pages-tests/samples/2.x/tests/RazorPagesTestSample.Tests/UnitTests/DataAccessLayerTest.cs?name=snippet2)]
 

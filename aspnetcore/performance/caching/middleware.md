@@ -7,18 +7,18 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 02/20/2019
 uid: performance/caching/middleware
-ms.openlocfilehash: c7c3dbd0c9cf029fa6921d77450e780768c8aa6e
-ms.sourcegitcommit: 0945078a09c372f17e9b003758ed87e99c2449f4
+ms.openlocfilehash: ddbd547ec0fdd09da1f3e3ce30f8fa35a34870c2
+ms.sourcegitcommit: 5b0eca8c21550f95de3bb21096bd4fd4d9098026
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56647919"
+ms.lasthandoff: 04/27/2019
+ms.locfileid: "64897371"
 ---
 # <a name="response-caching-middleware-in-aspnet-core"></a>По промежуточного слоя в ASP.NET Core кэширования ответов
 
 По [Люк Лэтем](https://github.com/guardrex) и [Джон Luo](https://github.com/JunTaoLuo)
 
-[Просмотреть или скачать пример кода](https://github.com/aspnet/Docs/tree/master/aspnetcore/performance/caching/middleware/samples) ([описание скачивания](xref:index#how-to-download-a-sample)).
+[Просмотреть или скачать пример кода](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/performance/caching/middleware/samples) ([описание скачивания](xref:index#how-to-download-a-sample)).
 
 В этой статье описывается настройка по промежуточного слоя для кэширования ответа в приложении ASP.NET Core. По промежуточного слоя определяет, когда кэшируемых ответов, ответы на магазины и служит ответы из кэша. Общие сведения о HTTP-кэширования и `ResponseCache` атрибут, см. в разделе [кэширование ответов](xref:performance/caching/response).
 
