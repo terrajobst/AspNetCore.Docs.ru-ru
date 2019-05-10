@@ -7,12 +7,12 @@ ms.author: bradyg
 ms.custom: mvc
 ms.date: 11/01/2018
 uid: signalr/hubcontext
-ms.openlocfilehash: 73cf2c9d30ed5e409a75827fdab1f22b20427884
-ms.sourcegitcommit: ebf4e5a7ca301af8494edf64f85d4a8deb61d641
+ms.openlocfilehash: 7ec52d4711fc191dcb83120cf54b1dc28c41f947
+ms.sourcegitcommit: 5b0eca8c21550f95de3bb21096bd4fd4d9098026
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54837940"
+ms.lasthandoff: 04/27/2019
+ms.locfileid: "64894481"
 ---
 # <a name="send-messages-from-outside-a-hub"></a>Отправка сообщения извне концентратору
 
@@ -20,7 +20,7 @@ ms.locfileid: "54837940"
 
 Центр SignalR — это основная абстракция для отправки сообщений для клиентов, подключенных к серверу SignalR. Можно также отправлять сообщения из других мест в приложении с помощью `IHubContext` службы. В этой статье объясняется, как получить доступ к SignalR `IHubContext` для отправки уведомлений клиентам из за пределами концентратору.
 
-[Просмотреть или скачать образец кода](https://github.com/aspnet/Docs/tree/master/aspnetcore/signalr/hubcontext/sample/) [(способ загрузки)](xref:index#how-to-download-a-sample)
+[Просмотреть или скачать образец кода](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/signalr/hubcontext/sample/) [(способ загрузки)](xref:index#how-to-download-a-sample)
 
 ## <a name="get-an-instance-of-ihubcontext"></a>Получить экземпляр IHubContext
 

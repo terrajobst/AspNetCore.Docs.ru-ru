@@ -7,11 +7,11 @@ ms.custom: mvc
 ms.date: 10/10/2018
 uid: mvc/views/tag-helpers/builtin-th/environment-tag-helper
 ms.openlocfilehash: 379f58ed37329f047d53adf1dcfdfd2ad6a6ca4e
-ms.sourcegitcommit: 4bdf7703aed86ebd56b9b4bae9ad5700002af32d
+ms.sourcegitcommit: 5b0eca8c21550f95de3bb21096bd4fd4d9098026
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/15/2018
-ms.locfileid: "49325241"
+ms.lasthandoff: 04/27/2019
+ms.locfileid: "64887679"
 ---
 # <a name="environment-tag-helper-in-aspnet-core"></a>Вспомогательная функция тега среды в ASP.NET Core
 
@@ -19,7 +19,7 @@ ms.locfileid: "49325241"
 
 Вспомогательная функция тега среды условно отрисовывает заключенное в нее содержимое с учетом текущей [среды размещения](xref:fundamentals/environments). Единственный атрибут вспомогательной функции тега среды, `names`, — это разделенный запятыми список имен сред. Если одно из указанных имен среды соответствует текущей среде, включенное содержимое подготавливается к просмотру.
 
-Общие сведения о вспомогательных функциях тегов см. в разделе <xref:mvc/views/tag-helpers/intro>.
+Общие сведения о вспомогательных функциях тегов см. здесь: <xref:mvc/views/tag-helpers/intro>.
 
 ## <a name="environment-tag-helper-attributes"></a>Атрибуты вспомогательной функции тега среды
 

@@ -7,12 +7,12 @@ ms.author: bradyg
 ms.custom: mvc
 ms.date: 04/12/2019
 uid: signalr/streaming
-ms.openlocfilehash: d185056d3bdda089eaa46ae9b8e13ab7a4354f93
-ms.sourcegitcommit: 8a84ce880b4c40d6694ba6423038f18fc2eb5746
-ms.translationtype: HT
+ms.openlocfilehash: 8f39fdfa45766b5bbec572970f009abefefdc419
+ms.sourcegitcommit: 5b0eca8c21550f95de3bb21096bd4fd4d9098026
+ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60165080"
+ms.lasthandoff: 04/27/2019
+ms.locfileid: "64897201"
 ---
 # <a name="use-streaming-in-aspnet-core-signalr"></a>Использовать потоковую передачу в ASP.NET Core SignalR
 
@@ -30,7 +30,7 @@ ASP.NET Core SignalR поддерживает потоковой передач�
 
 ::: moniker-end
 
-[Просмотреть или скачать образец кода](https://github.com/aspnet/Docs/tree/live/aspnetcore/signalr/streaming/samples/) ([как скачивать](xref:index#how-to-download-a-sample))
+[Просмотреть или скачать образец кода](https://github.com/aspnet/AspNetCore.Docs/tree/live/aspnetcore/signalr/streaming/samples/) ([как скачивать](xref:index#how-to-download-a-sample))
 
 ## <a name="set-up-a-hub-for-streaming"></a>Настройка концентратора для потоковой передачи
 

@@ -8,11 +8,11 @@ ms.custom: mvc
 ms.date: 11/28/2018
 uid: signalr/scale
 ms.openlocfilehash: 4ac4509acc89d0091a3757c7cfbc9981614f29ad
-ms.sourcegitcommit: ebf4e5a7ca301af8494edf64f85d4a8deb61d641
+ms.sourcegitcommit: 5b0eca8c21550f95de3bb21096bd4fd4d9098026
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54836926"
+ms.lasthandoff: 04/27/2019
+ms.locfileid: "64895081"
 ---
 # <a name="aspnet-core-signalr-hosting-and-scaling"></a>ASP.NET Core SignalR размещения и масштабирования
 
@@ -66,7 +66,7 @@ An attempt was made to access a socket in a way forbidden by its access permissi
 
 Дополнительные сведения см. в разделе [документации по службе Azure SignalR](/azure/azure-signalr/signalr-overview).
 
-## <a name="redis-backplane"></a>Redis объединительной платы
+## <a name="redis-backplane"></a>Канал обмена Redis
 
 [Redis](https://redis.io/) представляет собой хранилище ключ значение в памяти, который поддерживает систему обмена сообщениями с помощью модели публикации и подписки. На задней стороне SignalR Redis используется функция pub/sub для перенаправления сообщений к другим серверам. Когда клиент делает подключения, сведения о соединении передается задней панели. Когда сервер хочет отправить сообщение всем клиентам, он отправляет к задней панели. Задняя панель знает всех подключенных клиентов, а какие серверы, они в. Он отправляет сообщение всем клиентам с помощью их соответствующих серверов. Этот процесс показан на следующей схеме:
 

@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 04/07/2019
 uid: security/cors
-ms.openlocfilehash: fe5b750c44e5fad9ba80efb2cc8116d0a64b1a17
-ms.sourcegitcommit: 78339e9891c8676db01a6e81e9cb0cdaa280162f
+ms.openlocfilehash: 655d9be894c677f8adf0fecc2b465d5ae7af2b61
+ms.sourcegitcommit: 5b0eca8c21550f95de3bb21096bd4fd4d9098026
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59068301"
+ms.lasthandoff: 04/27/2019
+ms.locfileid: "64897471"
 ---
 # <a name="enable-cross-origin-requests-cors-in-aspnet-core"></a>Включение запросов о происхождении (CORS) в ASP.NET Core
 
@@ -28,7 +28,7 @@ ms.locfileid: "59068301"
 * Позволяет серверу явным образом разрешить некоторые запросы независимо от источника, а другие — отклонять.
 * Является более безопасным и более гибким, чем предыдущие технологии, такие как [JSONP](/dotnet/framework/wcf/samples/jsonp).
 
-[Просмотреть или скачать образец кода](https://github.com/aspnet/Docs/tree/master/aspnetcore/tutorials/razor-pages/razor-pages-start/2.2-stage-samples) ([как скачивать](xref:index#how-to-download-a-sample))
+[Просмотреть или скачать образец кода](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/security/cors/sample) ([как скачивать](xref:index#how-to-download-a-sample))
 
 ## <a name="same-origin"></a>Того же происхождения
 
@@ -425,13 +425,13 @@ Test message
 
 Тестирование CORS:
 
-1. [Создание проекта API](xref:tutorials/first-web-api). Кроме того, вы можете [скачать пример](https://github.com/aspnet/Docs/tree/master/aspnetcore/security/cors/sample/Cors).
+1. [Создание проекта API](xref:tutorials/first-web-api). Кроме того, вы можете [скачать пример](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/security/cors/sample/Cors).
 1. Включите CORS, с помощью одного из методов в этом документе. Пример:
 
   [!code-csharp[](cors/sample/Cors/WebAPI/StartupTest.cs?name=snippet2&highlight=13-18)]
 
   > [!WARNING]
-  > `WithOrigins("https://localhost:<port>");` следует использовать только для тестирования примера приложения, аналогичную [скачать образец кода](https://github.com/aspnet/Docs/tree/live/aspnetcore/security/cors/sample/Cors).
+  > `WithOrigins("https://localhost:<port>");` следует использовать только для тестирования примера приложения, аналогичную [скачать образец кода](https://github.com/aspnet/AspNetCore.Docs/tree/live/aspnetcore/security/cors/sample/Cors).
 
 1. Создайте проект веб-приложения (Razor Pages или MVC). В примере используется Razor Pages. Можно создать веб-приложения в том же решении, что и проект API.
 1. Добавьте следующий выделенный код, который *Index.cshtml* файла:

@@ -8,7 +8,7 @@
 
 ## <a name="examples-in-this-sample"></a>Включенные примеры
 
-| Функция | Описание: |
+| Функция | Описание |
 | --- | --- |
 | [AuthorizePage](https://docs.microsoft.com/dotnet/api/microsoft.extensions.dependencyinjection.pageconventioncollectionextensions.authorizepage) | Добавляет [AuthorizeFilter](https://docs.microsoft.com/dotnet/api/microsoft.aspnetcore.mvc.authorization.authorizefilter) на страницу с указанным путем. |
 | [AuthorizeFolder](https://docs.microsoft.com/dotnet/api/microsoft.extensions.dependencyinjection.pageconventioncollectionextensions.authorizefolder) | Добавляет [AuthorizeFilter](https://docs.microsoft.com/dotnet/api/microsoft.aspnetcore.mvc.authorization.authorizefilter) ко всем страницам в папке по указанному пути. |

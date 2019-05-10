@@ -5,12 +5,12 @@ description: Узнайте, как добавлять классы для уп�
 ms.author: riande
 ms.date: 02/12/2019
 uid: tutorials/razor-pages/model
-ms.openlocfilehash: 9f12b9e9e35a81becd6a6da7ef4ca6d551d45938
-ms.sourcegitcommit: 5b0eca8c21550f95de3bb21096bd4fd4d9098026
+ms.openlocfilehash: 44e6f53d517b0470c5e6fa785a4061e59cda9ce6
+ms.sourcegitcommit: 20ca93d72cb0b3998637724b44523e57b089c8fd
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 04/27/2019
-ms.locfileid: "64888749"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65473609"
 ---
 # <a name="add-a-model-to-a-razor-pages-app-in-aspnet-core"></a>Добавление модели в приложение Razor Pages в ASP.NET Core
 
@@ -210,7 +210,11 @@ ASP.NET Core поддерживает [внедрение зависимосте
 
 # <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code.](#tab/visual-studio-code)
 
+Проверьте метод `Up`.
+
 # <a name="visual-studio-for-mactabvisual-studio-mac"></a>[Visual Studio для Mac](#tab/visual-studio-mac)
+
+Проверьте метод `Up`.
 
 ---
 

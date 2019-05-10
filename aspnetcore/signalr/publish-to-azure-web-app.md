@@ -7,25 +7,25 @@ ms.author: bradyg
 ms.custom: mvc
 ms.date: 04/20/2018
 uid: signalr/publish-to-azure-web-app
-ms.openlocfilehash: 66fa855590c49c4284e4b42cae57f3d4d81dd0fc
-ms.sourcegitcommit: ebf4e5a7ca301af8494edf64f85d4a8deb61d641
+ms.openlocfilehash: 1c472711a86edae8dc6e207734aa54e48c02d47d
+ms.sourcegitcommit: dd9c73db7853d87b566eef136d2162f648a43b85
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54837680"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65087684"
 ---
 # <a name="publish-an-aspnet-core-signalr-app-to-an-azure-web-app"></a>Публикация ASP.NET Core SignalR приложения для веб-приложение Azure
 
 [Веб-приложение Azure](/azure/app-service/app-service-web-overview) — [Microsoft облачные вычисления](https://azure.microsoft.com/) службу платформы для размещения веб-приложений, включая ASP.NET Core.
 
 > [!NOTE]
-> Эта статья относится к публикации приложения ASP.NET Core SignalR из Visual Studio. Посетите [SignalR службы для Azure](https://azure.microsoft.com/en-gb/services/signalr-service?) Дополнительные сведения об использовании SignalR в Azure.
+> Эта статья относится к публикации приложения ASP.NET Core SignalR из Visual Studio. Посетите [SignalR службы для Azure](https://azure.microsoft.com/services/signalr-service) Дополнительные сведения об использовании SignalR в Azure.
 
 ## <a name="publish-the-app"></a>Публикация приложения
 
 Visual Studio предоставляет встроенные средства для публикации в веб-приложение Azure. Visual Studio Code пользователь может использовать [Azure CLI](/cli/azure) команды, чтобы публиковать приложения в Azure. В этой статье рассматриваются публикации с помощью средств в Visual Studio. Чтобы опубликовать приложение с помощью Azure CLI, см. в разделе [публикации приложения ASP.NET Core в Azure с помощью средств командной строки](/azure/app-service/app-service-web-get-started-dotnet).
 
-Щелкните правой кнопкой мыши проект в **обозревателе решений** и выберите **публикации**. Убедитесь, что **создать** возвратом **выберите целевой объект публикации** диалоговое окно, а затем выберите **публикации**.
+В **обозревателе решений** щелкните правой кнопкой мыши проект и выберите **Опубликовать**. Убедитесь, что **создать** возвратом **выберите целевой объект публикации** диалоговое окно, а затем выберите **публикации**.
 
 ![Выбор целевого объекта публикации](publish-to-azure-web-app/_static/pick-publish-target-dialog.png)
 

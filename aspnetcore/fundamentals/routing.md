@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 02/13/2019
 uid: fundamentals/routing
-ms.openlocfilehash: 622f28f3b4348820c8781e0ba14ae5137136e797
-ms.sourcegitcommit: 036d4b03fd86ca5bb378198e29ecf2704257f7b2
+ms.openlocfilehash: 0c2df3ec63f393b961754f496830cccb26f1cb76
+ms.sourcegitcommit: 5b0eca8c21550f95de3bb21096bd4fd4d9098026
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57346571"
+ms.lasthandoff: 04/27/2019
+ms.locfileid: "64884569"
 ---
 # <a name="routing-in-aspnet-core"></a>Маршрутизация в ASP.NET Core
 
@@ -70,7 +70,7 @@ services.AddMvc()
 > [!IMPORTANT]
 > В этом документе рассматривается низкоуровневая маршрутизация ASP.NET Core. Сведения о маршрутизации ASP.NET Core MVC см. в разделе <xref:mvc/controllers/routing>. Сведения о соглашениях о маршрутизации в Razor Pages см. в разделе <xref:razor-pages/razor-pages-conventions>.
 
-[Просмотреть или скачать образец кода](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/routing/samples) ([как скачивать](xref:index#how-to-download-a-sample))
+[Просмотреть или скачать образец кода](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/routing/samples) ([как скачивать](xref:index#how-to-download-a-sample))
 
 ## <a name="routing-basics"></a>Основы маршрутизации
 
@@ -734,7 +734,7 @@ ASP.NET Core предоставляет соглашения об API для и�
 
 [!code-csharp[](routing/samples/2.x/RoutingSample/Startup.cs?name=snippet_Dictionary)]
 
-В результате приведенного выше примера создается <xref:Microsoft.AspNetCore.Routing.VirtualPathData.VirtualPath> со значением `/package/create/123`. Словарь предоставляет значения маршрута `operation` и `id` шаблона "Отслеживание маршрута пакета", `package/{operation}/{id}`. Дополнительные сведения см. в примере кода в разделе [Использование ПО промежуточного слоя маршрутизации](#use-routing-middleware) или в [примере приложения](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/routing/samples).
+В результате приведенного выше примера создается <xref:Microsoft.AspNetCore.Routing.VirtualPathData.VirtualPath> со значением `/package/create/123`. Словарь предоставляет значения маршрута `operation` и `id` шаблона "Отслеживание маршрута пакета", `package/{operation}/{id}`. Дополнительные сведения см. в примере кода в разделе [Использование ПО промежуточного слоя маршрутизации](#use-routing-middleware) или в [примере приложения](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/routing/samples).
 
 Второй параметр конструктора <xref:Microsoft.AspNetCore.Routing.VirtualPathContext> — это коллекция *значений окружения*. Значения окружения упрощают разработку, ограничивая число значений, которые необходимо указывать в определенном контексте запроса. Текущие значения маршрута текущего запроса считаются значениями окружения для создания ссылки. В приложении ASP.NET MVC в действии `About` контроллера `HomeController` не нужно задавать значение маршрута контроллера, указывающее на действие `Index` &mdash; используется значение окружения `Home`.
 
