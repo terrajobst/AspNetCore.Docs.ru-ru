@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 10/11/2018
 uid: security/anti-request-forgery
-ms.openlocfilehash: 88a2d127407378b9e83df7f48b1938ed081f9bb2
-ms.sourcegitcommit: 5f299daa7c8102d56a63b214b9a34cc4bc87bc42
+ms.openlocfilehash: 4498bd88e7188ea6c0063aeec054bc20e13ed5f1
+ms.sourcegitcommit: dd9c73db7853d87b566eef136d2162f648a43b85
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58208532"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65086443"
 ---
 # <a name="prevent-cross-site-request-forgery-xsrfcsrf-attacks-in-aspnet-core"></a>Предотвращения межсайтовых (запросов XSRF/CSRF) атак с подделкой в ASP.NET Core
 
@@ -217,7 +217,7 @@ services.AddAntiforgery(options =>
 });
 ```
 
-| Параметр | Описание: |
+| Параметр | Описание |
 | ------ | ----------- |
 | [Файл cookie](/dotnet/api/microsoft.aspnetcore.antiforgery.antiforgeryoptions.cookie) | Определяет параметры, используемые для создания против подделки файлы cookie. |
 | [CookieDomain](/dotnet/api/microsoft.aspnetcore.antiforgery.antiforgeryoptions.cookiedomain) | Домен cookie. По умолчанию — `null`. Это свойство является устаревшим и будет удален в будущей версии. Рекомендуемой альтернативой является Cookie.Domain. |
@@ -448,7 +448,7 @@ public void ConfigureServices(IServiceCollection services)
 }
 ```
 
-[Просмотреть или скачать образец кода](https://github.com/aspnet/Docs/tree/master/aspnetcore/security/anti-request-forgery/sample/AngularSample) ([как скачивать](xref:index#how-to-download-a-sample))
+[Просмотреть или скачать образец кода](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/security/anti-request-forgery/sample/AngularSample) ([как скачивать](xref:index#how-to-download-a-sample))
 
 ## <a name="extend-antiforgery"></a>Расширение защиты от подделки
 
