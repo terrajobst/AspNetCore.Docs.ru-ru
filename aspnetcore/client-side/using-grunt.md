@@ -3,20 +3,20 @@ title: Использование Grunt в ASP.NET Core
 author: rick-anderson
 description: ''
 ms.author: riande
-ms.date: 10/14/2016
+ms.date: 05/10/2019
 uid: client-side/using-grunt
-ms.openlocfilehash: fc912974fb6ed3c65bb46a7d616d9e531587d946
-ms.sourcegitcommit: 5b0eca8c21550f95de3bb21096bd4fd4d9098026
+ms.openlocfilehash: 73b7704726db9d93588dddd3f3b05a23fb3425b3
+ms.sourcegitcommit: ffe3ed7921ec6c7c70abaac1d10703ec9a43374c
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 04/27/2019
-ms.locfileid: "64894641"
+ms.lasthandoff: 05/11/2019
+ms.locfileid: "65535942"
 ---
 # <a name="use-grunt-in-aspnet-core"></a>Использование Grunt в ASP.NET Core
 
 По [Райс Ноэл](https://blog.falafel.com/falafel-software-recognized-sitefinity-website-year/)
 
-Grunt является запускателя задач JavaScript, автоматизирующего минификации скрипт, компиляции TypeScript, средства «lint» качество кода, предварительной процессоров CSS и практически любые повторяющихся рутинную работу, необходимо, выполнив для поддержки разработки клиентских приложений. Grunt полностью поддерживается в Visual Studio, то, что шаблоны проектов ASP.NET с помощью средства Gulp по умолчанию (см. в разделе [использование Gulp](using-gulp.md)).
+Grunt является запускателя задач JavaScript, автоматизирующего минификации скрипт, компиляции TypeScript, средства «lint» качество кода, предварительной процессоров CSS и практически любые повторяющихся рутинную работу, необходимо, выполнив для поддержки разработки клиентских приложений. Grunt полностью поддерживается в Visual Studio.
 
 В этом примере использует пустой проект ASP.NET Core в качестве начальной точки, демонстрирует, как автоматизировать процесс построения клиента с нуля.
 
@@ -286,7 +286,3 @@ grunt.loadNpmTasks('grunt-contrib-watch');
 ## <a name="summary"></a>Сводка
 
 Grunt является запускатель задач мощные, позволяют автоматизировать большинство задач сборки клиента. Grunt использует NPM для доставки пакетов и функций, средств интеграции с Visual Studio. Visual Studio Task Runner Explorer обнаруживает изменения в файлах конфигурации и предоставляет удобный интерфейс для выполнения задач, просмотр выполняющихся задач и привязывание задач к событиям Visual Studio.
-
-## <a name="additional-resources"></a>Дополнительные ресурсы
-
-* [Использование Gulp](using-gulp.md)

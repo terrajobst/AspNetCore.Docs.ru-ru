@@ -4,14 +4,14 @@ author: mjrousos
 description: Советы для повышения производительности в приложениях ASP.NET Core и как избежать распространенных проблем производительности.
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
-ms.date: 04/13/2019
+ms.date: 05/10/2019
 uid: performance/performance-best-practices
-ms.openlocfilehash: 28dc7fb40c1b60f643108dcb44593a08942a1650
-ms.sourcegitcommit: dd9c73db7853d87b566eef136d2162f648a43b85
+ms.openlocfilehash: 7651dff18f98c60057660c8946c3daa66d272f6a
+ms.sourcegitcommit: ffe3ed7921ec6c7c70abaac1d10703ec9a43374c
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65087495"
+ms.lasthandoff: 05/11/2019
+ms.locfileid: "65536073"
 ---
 # <a name="aspnet-core-performance-best-practices"></a>Рекомендации по производительности ASP.NET Core
 
@@ -130,7 +130,7 @@ ms.locfileid: "65087495"
 Рекомендуемые действия.
 
 * **Сделать** использовать ASP.NET Core [встроенную поддержку](xref:client-side/bundling-and-minification) для объединение и Минификация активов клиента.
-* **Сделать** рассмотрим другие сторонние средства, такие как [Gulp](xref:client-side/using-gulp) или [Webpack](https://webpack.js.org/) для управления активами сложных клиента.
+* **Сделать** рассмотрим другие сторонние средства, такие как [Webpack](https://webpack.js.org/), для управления активами сложных клиента.
 
 ## <a name="compress-responses"></a>Сжатия ответов
 
