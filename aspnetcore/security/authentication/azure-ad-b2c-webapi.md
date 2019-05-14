@@ -6,12 +6,12 @@ ms.author: casoper
 ms.date: 09/21/2018
 ms.custom: mvc, seodec18
 uid: security/authentication/azure-ad-b2c-webapi
-ms.openlocfilehash: 00e7c9a438260ef8e12e567e521fc44b2ffa9cca
-ms.sourcegitcommit: dd9c73db7853d87b566eef136d2162f648a43b85
+ms.openlocfilehash: 0eb8b533f44a1f72cfc3c4ec5ec060adb37eed6c
+ms.sourcegitcommit: 6afe57fb8d9055f88fedb92b16470398c4b9b24a
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65086332"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65610368"
 ---
 # <a name="authentication-in-web-apis-with-azure-active-directory-b2c-in-aspnet-core"></a>Проверка подлинности в веб-API с помощью Azure Active Directory B2C в ASP.NET Core
 
@@ -37,7 +37,7 @@ Azure Active Directory (Azure AD) и Azure AD B2C являются отдель�
 Ниже приведены необходимые для этого пошагового руководства.
 
 * [Подписки Microsoft Azure](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)
-* [Visual Studio 2017](https://aka.ms/vsdownload?utm_source=mscom&utm_campaign=msdocs) (любой выпуск)
+* [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/?utm_medium=microsoft&utm_source=docs.microsoft.com&utm_campaign=inline+link&utm_content=download+vs2019)
 * [Postman](https://www.getpostman.com/postman)
 
 ## <a name="create-the-azure-active-directory-b2c-tenant"></a>Создание клиента Azure Active Directory B2C
@@ -65,7 +65,7 @@ Azure Active Directory (Azure AD) и Azure AD B2C являются отдель�
 
 После регистрации API отображается список приложений и интерфейсов API в клиенте. Выберите API, который ранее был зарегистрирован. Выберите **копирования** значок справа от **идентификатор приложения** поле, чтобы скопировать его в буфер обмена. Выберите **опубликованные области** и проверьте значение по умолчанию *user_impersonation* область присутствует.
 
-## <a name="create-an-aspnet-core-app-in-visual-studio-2017"></a>Создание приложения ASP.NET Core в Visual Studio 2017
+## <a name="create-an-aspnet-core-app-in-visual-studio"></a>Создание приложения ASP.NET Core в Visual Studio
 
 Шаблон веб-приложения Visual Studio можно настроить для использования клиента Azure AD B2C для проверки подлинности.
 

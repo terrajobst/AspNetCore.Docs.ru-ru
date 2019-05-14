@@ -5,12 +5,12 @@ description: Узнайте, как настроить проверку подл
 ms.date: 02/27/2019
 ms.custom: mvc
 uid: security/authentication/azure-ad-b2c
-ms.openlocfilehash: 86be999e02cfe34193bd594dcf89e8872590cca5
-ms.sourcegitcommit: 5b0eca8c21550f95de3bb21096bd4fd4d9098026
+ms.openlocfilehash: 46654e38c780cfc9c44e7ba479419320ee684b76
+ms.sourcegitcommit: 6afe57fb8d9055f88fedb92b16470398c4b9b24a
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 04/27/2019
-ms.locfileid: "64898021"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65610684"
 ---
 # <a name="cloud-authentication-with-azure-active-directory-b2c-in-aspnet-core"></a>Проверка подлинности Cloud с Azure Active Directory B2C в ASP.NET Core
 
@@ -34,7 +34,7 @@ ms.locfileid: "64898021"
 Ниже приведены необходимые для этого пошагового руководства.
 
 * [Подписки Microsoft Azure](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)
-* [Visual Studio 2017](https://aka.ms/vsdownload?utm_source=mscom&utm_campaign=msdocs) (любой выпуск)
+* [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/?utm_medium=microsoft&utm_source=docs.microsoft.com&utm_campaign=inline+link&utm_content=download+vs2019)
 
 ## <a name="create-the-azure-active-directory-b2c-tenant"></a>Создание клиента Azure Active Directory B2C
 
@@ -62,7 +62,7 @@ ms.locfileid: "64898021"
 
 Ничего больше можно настроить в клиенте Azure AD B2C в настоящее время, но не закрывайте окно браузера. После создания приложения ASP.NET Core есть дополнительные конфигурации.
 
-## <a name="create-an-aspnet-core-app-in-visual-studio-2017"></a>Создание приложения ASP.NET Core в Visual Studio 2017
+## <a name="create-an-aspnet-core-app-in-visual-studio"></a>Создание приложения ASP.NET Core в Visual Studio
 
 Шаблон веб-приложения Visual Studio можно настроить для использования клиента Azure AD B2C для проверки подлинности.
 

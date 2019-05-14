@@ -5,14 +5,14 @@ description: Сведения об использовании интерфейс
 monikerRange: '>= aspnetcore-2.1'
 ms.author: scaddie
 ms.custom: mvc
-ms.date: 03/30/2019
+ms.date: 05/10/2019
 uid: fundamentals/http-requests
-ms.openlocfilehash: 84cdbca20e7c7aaa1941c78483cc36a9f0b24505
-ms.sourcegitcommit: 5b0eca8c21550f95de3bb21096bd4fd4d9098026
+ms.openlocfilehash: 540f14ad2b290d276436033a94d4c815888e5a95
+ms.sourcegitcommit: ffe3ed7921ec6c7c70abaac1d10703ec9a43374c
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 04/27/2019
-ms.locfileid: "64888949"
+ms.lasthandoff: 05/11/2019
+ms.locfileid: "65536007"
 ---
 # <a name="make-http-requests-using-ihttpclientfactory-in-aspnet-core"></a>Выполнения HTTP-запросов с помощью IHttpClientFactory в ASP.NET Core
 
@@ -27,9 +27,13 @@ ms.locfileid: "64888949"
 
 [Просмотреть или скачать образец кода](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/http-requests/samples) ([как скачивать](xref:index#how-to-download-a-sample))
 
+::: moniker range="<= aspnetcore-2.2"
+
 ## <a name="prerequisites"></a>Предварительные требования
 
 Для проектов, предназначенных для .NET Framework, необходимо установить пакет NuGet [Microsoft.Extensions.Http](https://www.nuget.org/packages/Microsoft.Extensions.Http/). Пакет `Microsoft.Extensions.Http` уже включен в проекты, предназначенные для .NET Core и ссылающиеся на [метапакет Microsoft.AspNetCore.App](xref:fundamentals/metapackage-app).
+
+::: moniker-end
 
 ## <a name="consumption-patterns"></a>Принципы использования
 
@@ -197,11 +201,10 @@ public class ValuesController : ControllerBase
 
 `IHttpClientFactory` интегрируется с популярной библиотекой сторонних разработчиков под названием [Polly](https://github.com/App-vNext/Polly). Polly — это комплексная библиотека, обеспечивающая отказоустойчивость и обработку временных сбоев в .NET. Она позволяет разработчикам выражать политики, например политику повтора, размыкателя цепи, времени ожидания, изоляции отсеков и отката, более эффективным и потокобезопасным образом.
 
-Для использования политик Polly с настроенными экземплярами `HttpClient` предоставляются методы расширения. Расширения Polly доступны в пакете NuGet [Microsoft.Extensions.Http.Polly](https://www.nuget.org/packages/Microsoft.Extensions.Http.Polly/). Этот пакет не входит в состав [метапакета Microsoft.AspNetCore.App](xref:fundamentals/metapackage-app). Для использования расширений в проект необходимо включить явную ссылку `<PackageReference />`.
+Для использования политик Polly с настроенными экземплярами `HttpClient` предоставляются методы расширения. Расширения Polly:
 
-[!code-csharp[](http-requests/samples/2.x/HttpClientFactorySample/HttpClientFactorySample.csproj?highlight=10)]
-
-После восстановления этого пакета будут доступны методы расширения для поддержки добавления обработчиков на основе Polly в клиенты.
+* Поддерживает добавление обработчиков на основе Polly клиентам.
+* Можно использовать после установки пакета NuGet [Microsoft.Extensions.Http.Polly](https://www.nuget.org/packages/Microsoft.Extensions.Http.Polly/). Пакет не включен в общую платформу ASP.NET Core.
 
 ### <a name="handle-transient-faults"></a>Обработка временных сбоев
 
@@ -219,11 +222,11 @@ public class ValuesController : ControllerBase
 
 [!code-csharp[Main](http-requests/samples/2.x/HttpClientFactorySample/Startup.cs?name=snippet8)]
 
-В приведенном выше коде для запроса GET время ожидания составляет 10 секунд. Для остальных методов HTTP время ожидания — 30 секунд.
+Если в приведенном выше коде исходящий запрос является запросом HTTP GET, применяется время ожидания 10 секунд. Для остальных методов HTTP время ожидания — 30 секунд.
 
 ### <a name="add-multiple-polly-handlers"></a>Добавление нескольких обработчиков Polly
 
-Вложение политик Polly для расширения функциональных возможностей — это распространенная практика:
+Общепринятой практикой является вложение политик Polly для предоставления расширенной функциональности:
 
 [!code-csharp[Main](http-requests/samples/2.x/HttpClientFactorySample/Startup.cs?name=snippet9)]
 
