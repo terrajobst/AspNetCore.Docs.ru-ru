@@ -168,7 +168,7 @@ tcpdump -i [interface] -w trace.pcap
 
 ### <a name="microsoft-edge-and-internet-explorer"></a>Microsoft Edge и Internet Explorer
 
-(Инструкции одинаковы для Edge и Internet Explorer)
+(Инструкции одинаковы для Microsoft Edge и Internet Explorer)
 
 1. Нажмите клавишу F12, чтобы открыть средства разработчика
 2. Щелкните вкладку "Сеть"
