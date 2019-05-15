@@ -5,14 +5,14 @@ description: Узнайте, как использовать поставщик 
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 02/25/2019
+ms.date: 05/13/2019
 uid: security/key-vault-configuration
-ms.openlocfilehash: 45eca05b5eb41815924ca48f60c3b00046c6bdaf
-ms.sourcegitcommit: 5b0eca8c21550f95de3bb21096bd4fd4d9098026
+ms.openlocfilehash: 78c63cf135ca92f0b5f6c6828b2ae34a44a7b36c
+ms.sourcegitcommit: 3ee6ee0051c3d2c8d47a58cb17eef1a84a4c46a0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 04/27/2019
-ms.locfileid: "64894991"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65621017"
 ---
 # <a name="azure-key-vault-configuration-provider-in-aspnet-core"></a>Поставщик конфигурации хранилища ключей Azure в ASP.NET Core
 
@@ -111,7 +111,7 @@ dotnet user-secrets set "Section:SecretName" "secret_value_2_dev"
    az keyvault secret set --vault-name "{KEY VAULT NAME}" --name "Section--SecretName" --value "secret_value_2_prod"
    ```
 
-## <a name="use-application-id-and-client-secret-for-non-azure-hosted-apps"></a>Используйте идентификатор приложения и секрет клиента для приложений без размещения Azure
+## <a name="use-application-id-and-x509-certificate-for-non-azure-hosted-apps"></a>Используйте идентификатор приложения и X.509 сертификат для приложений без размещения Azure
 
 Настройка Azure AD, Azure Key Vault и приложение для использования идентификатор приложения Azure Active Directory и X.509 сертификата для проверки подлинности в хранилище ключей **когда приложение размещается за пределами Azure**. Дополнительные сведения см. в разделе [о ключи, секреты и сертификаты](/azure/key-vault/about-keys-secrets-and-certificates).
 
@@ -120,12 +120,15 @@ dotnet user-secrets set "Section:SecretName" "secret_value_2_dev"
 
 Пример приложения использует идентификатор приложения и сертификат X.509 при `#define` инструкция в верхней части *Program.cs* для файла `Certificate`.
 
+1. Создайте архив PKCS #12 (*.pfx*) сертификата. Существуют следующие параметры для создания сертификатов [MakeCert на Windows](/windows/desktop/seccrypto/makecert) и [OpenSSL](https://www.openssl.org/).
+1. Установите сертификат в хранилище личных сертификатов текущего пользователя. Пометить ключ как экспортируемый является необязательным. Обратите внимание, отпечаток сертификата, который используется далее в этом разделе.
+1. Экспорт в архив PKCS #12 (*.pfx*) сертификат как сертификат в кодировке DER (*.cer*).
 1. Регистрация приложения в Azure AD (**регистрация приложений**).
-1. Отправьте открытый ключ:
+1. Отправить сертификат в кодировке DER (*.cer*) в Azure AD:
    1. Выберите приложение в Azure AD.
-   1. Перейдите к **параметры** > **ключи**.
-   1. Выберите **отправить открытый ключ** для отправки сертификата, который содержит открытый ключ. Помимо использования *.cer*, *PEM-файл*, или *.crt* сертификат, *.pfx* можно загрузить сертификат.
-1. Store имя хранилища ключей и идентификатор приложения в приложении *appsettings.json* файла. Поместите сертификат в корне приложения или в хранилище сертификатов приложения&dagger;.
+   1. Перейдите к **сертификаты и секреты**.
+   1. Выберите **отправка сертификата** для отправки сертификата, который содержит открытый ключ. Объект *.cer*, *PEM-файл*, или *.crt* сертификат допустим.
+1. Store имя хранилища ключей, идентификатор приложения и отпечаток сертификата в приложении *appsettings.json* файла.
 1. Перейдите к **хранилища ключей** на портале Azure.
 1. Выберите хранилище ключей, созданный в [хранилища секретов в рабочей среде с хранилищем ключей Azure](#secret-storage-in-the-production-environment-with-azure-key-vault) раздел.
 1. Выберите **политики доступа**.
@@ -136,8 +139,6 @@ dotnet user-secrets set "Section:SecretName" "secret_value_2_dev"
 1. Нажмите кнопку **Сохранить**.
 1. Разверните приложение.
 
-&dagger;В примере приложения, сертификат используется непосредственно из файла физические в корне приложения путем создания нового `X509Certificate2` при вызове `AddAzureKeyVault`. Альтернативным подходом является операционной системой для управления сертификатом. Дополнительные сведения см. в разделе [операционной системой для управления сертификатом X.509](#allow-the-os-to-manage-the-x509-certificate) раздел.
-
 `Certificate` Пример приложения получает свои значения конфигурации из `IConfigurationRoot` с тем же именем, что имя секрета:
 
 * Не иерархическими значениями: Значение для `SecretName` получается с помощью `config["SecretName"]`.
@@ -145,14 +146,15 @@ dotnet user-secrets set "Section:SecretName" "secret_value_2_dev"
   * `config["Section:SecretName"]`
   * `config.GetSection("Section")["SecretName"]`
 
-Приложение вызывает `AddAzureKeyVault` с помощью значений, предоставленных *appsettings.json* файла:
+Сертификат X.509 является управляемым Операционной системой. Приложение вызывает `AddAzureKeyVault` с помощью значений, предоставленных *appsettings.json* файла:
 
-[!code-csharp[](key-vault-configuration/sample/Program.cs?name=snippet1&highlight=12-15)]
+[!code-csharp[](key-vault-configuration/sample/Program.cs?name=snippet1&highlight=20-23)]
 
 Примеры значений:
 
 * Имя хранилища ключей: `contosovault`
 * Идентификатор приложения: `627e911e-43cc-61d4-992e-12db9c81b413`
+* Отпечаток сертификата: `fe14593dd66b2406c5269d742d04b6e1ab03adb1`
 
 *appsettings.json*:
 
@@ -203,17 +205,7 @@ az keyvault set-policy --name '{KEY VAULT NAME}' --object-id {OBJECT ID} --secre
 
 `AddAzureKeyVault` вызывается с пользовательским `IKeyVaultSecretManager`:
 
-[!code-csharp[](key-vault-configuration/sample_snapshot/Program.cs?name=snippet1&highlight=22)]
-
-Предоставленные значения для имени хранилища ключей, идентификатор приложения и пароль (секрет клиента) *appsettings.json* файла:
-
-[!code-json[](key-vault-configuration/sample/appsettings.json)]
-
-Примеры значений:
-
-* Имя хранилища ключей: `contosovault`
-* Идентификатор приложения: `627e911e-43cc-61d4-992e-12db9c81b413`
-* Пароль: `g58K3dtg59o1Pa+e59v2Tx829w6VxTB2yv9sv/101di=`
+[!code-csharp[](key-vault-configuration/sample_snapshot/Program.cs?highlight=30-34)]
 
 `IKeyVaultSecretManager` Реализации реагирует на префиксы версии секретов, чтобы загрузить правильный секрет в конфигурации:
 
@@ -261,44 +253,6 @@ az keyvault set-policy --name '{KEY VAULT NAME}' --object-id {OBJECT ID} --secre
 
 > [!NOTE]
 > Можно также предоставить собственную `KeyVaultClient` реализацию `AddAzureKeyVault`. Пользовательский клиент позволяет совместно использовать один экземпляр клиента приложения.
-
-## <a name="allow-the-os-to-manage-the-x509-certificate"></a>Операционной системой для управления сертификатом X.509
-
-Сертификат X.509 можно управлять Операционной системой. В следующем примере используется `AddAzureKeyVault` перегрузку, которая принимает `X509Certificate2` из хранилища сертификатов текущего пользователя компьютера и отпечаток сертификата, предоставленных конфигурации:
-
-```csharp
-// using System.Linq;
-// using System.Security.Cryptography.X509Certificates;
-// using Microsoft.Extensions.Configuration;
-
-WebHost.CreateDefaultBuilder(args)
-    .ConfigureAppConfiguration((context, config) =>
-    {
-        if (context.HostingEnvironment.IsProduction())
-        {
-            var builtConfig = config.Build();
-
-            using (var store = new X509Store(StoreName.My, 
-                StoreLocation.CurrentUser))
-            {
-                store.Open(OpenFlags.ReadOnly);
-                var certs = store.Certificates
-                    .Find(X509FindType.FindByThumbprint, 
-                        builtConfig["CertificateThumbprint"], false);
-
-                config.AddAzureKeyVault(
-                    builtConfig["KeyVaultName"], 
-                    builtConfig["AzureADApplicationId"], 
-                    certs.OfType<X509Certificate2>().Single());
-
-                store.Close();
-            }
-        }
-    })
-    .UseStartup<Startup>();
-```
-
-Дополнительные сведения см. в разделе [проверка подлинности с помощью сертификата вместо секрета клиента](/azure/key-vault/key-vault-use-from-web-application#authenticate-with-a-certificate-instead-of-a-client-secret).
 
 ## <a name="bind-an-array-to-a-class"></a>Привязка массива к классу
 
@@ -358,13 +312,12 @@ Configuration.Reload();
 
 Если приложение не удается загрузить конфигурацию с помощью поставщика, сообщение об ошибке записывается [инфраструктуры ведения журнала ASP.NET Core](xref:fundamentals/logging/index). Следующие условия не позволит конфигурации загрузки:
 
-* Приложение не настроено правильно, в Azure Active Directory.
+* Приложение или сертификат неправильно настроено в Azure Active Directory.
 * Хранилище ключей не существует в хранилище ключей Azure.
 * Приложение не имеет разрешения на доступ к хранилищу ключей.
 * Политика доступа не включает `Get` и `List` разрешения.
 * В хранилище ключей данные конфигурации (пара «имя значение») ошибочно названы, отсутствуют, отключена или истек срок действия.
-* Приложение имеет имя неправильный хранилища ключей (`KeyVaultName`), идентификатор приложения Azure AD (`AzureADApplicationId`), или паролей Azure AD (секрет клиента) (`AzureADPassword`).
-* Паролей Azure AD (секрет клиента) (`AzureADPassword`) срок действия истек.
+* Приложение имеет имя неправильный хранилища ключей (`KeyVaultName`), идентификатор приложения Azure AD (`AzureADApplicationId`), или отпечаток сертификата Azure AD (`AzureADCertThumbprint`).
 * В приложении для значения, которое вы пытаетесь загрузить неправильный ключ конфигурации (имя).
 
 ## <a name="additional-resources"></a>Дополнительные ресурсы
