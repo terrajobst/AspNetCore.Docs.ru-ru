@@ -7,12 +7,12 @@ ms.custom: mvc
 ms.date: 02/06/2019
 ms.topic: tutorial
 uid: data/ef-mvc/intro
-ms.openlocfilehash: 8cad650cacd0b467a45a13c7dde0410aa41fdb32
-ms.sourcegitcommit: b508b115107e0f8d7f62b25cfcc8ad45e1373459
+ms.openlocfilehash: a93d5af314f1ff679a8df636297a0d5849ebdb8d
+ms.sourcegitcommit: 6afe57fb8d9055f88fedb92b16470398c4b9b24a
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65212564"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65610209"
 ---
 # <a name="tutorial-get-started-with-ef-core-in-an-aspnet-mvc-web-app"></a>Учебник. Начало работы с EF Core в веб-приложении MVC ASP.NET
 
@@ -38,7 +38,7 @@ ms.locfileid: "65212564"
 ## <a name="prerequisites"></a>Предварительные требования
 
 * [Пакет SDK для .NET Core 2.2](https://www.microsoft.com/net/download)
-* [Visual Studio 2017 или 2019](https://visualstudio.microsoft.com/downloads/) с указанными ниже рабочими нагрузками
+* [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/?utm_medium=microsoft&utm_source=docs.microsoft.com&utm_campaign=inline+link&utm_content=download+vs2019) с указанными ниже рабочими нагрузками.
   * Рабочая нагрузка **ASP.NET и веб-разработка**
   * Рабочая нагрузка **Кроссплатформенная разработка .NET Core**
 

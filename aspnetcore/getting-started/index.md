@@ -4,24 +4,24 @@ author: rick-anderson
 description: Краткий учебник, в котором с помощью ASP.NET Core создается и запускается простое приложение Hello World.
 ms.author: riande
 ms.custom: mvc
-ms.date: 01/15/2019
+ms.date: 5/15/2019
 uid: getting-started
-ms.openlocfilehash: 76728c484368a8b63130c259a9663473970846d3
-ms.sourcegitcommit: 5f299daa7c8102d56a63b214b9a34cc4bc87bc42
+ms.openlocfilehash: 9227dcfbc84376d9d73bc6fc0dd76085779acae1
+ms.sourcegitcommit: 6afe57fb8d9055f88fedb92b16470398c4b9b24a
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58209480"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65610308"
 ---
 # <a name="tutorial-get-started-with-aspnet-core"></a>Учебник. Начало работы с ASP.NET Core
 
-В этом руководстве показано, как использовать интерфейс командной строки .NET Core для создания веб-приложения ASP.NET Core.
+В этом учебнике показано, как использовать интерфейс командной строки .NET Core для создания и запуска веб-приложения ASP.NET Core.
 
 Вы научитесь:
 
 > [!div class="checklist"]
 > * создавать проект веб-приложения;
-> * включать локальный HTTPS;
+> * устанавливать доверие к сертификату разработки;
 > * Запустите приложение.
 > * редактировать страницу Razor.
 
@@ -41,7 +41,7 @@ ms.locfileid: "58209480"
 dotnet new webapp -o aspnetcoreapp
 ```
 
-## <a name="enable-local-https"></a>Включение локального HTTPS
+### <a name="trust-the-development-certificate"></a>Установка доверия к сертификату разработки
 
 Установите доверие к сертификату разработки HTTPS.
 
@@ -70,6 +70,8 @@ dotnet dev-certs https --trust
 Эта команда может запросить пароль для установки сертификата в системной цепочке ключей. Введите пароль, если согласны доверять сертификату разработки.
 
 # <a name="linuxtablinux"></a>[Linux](#tab/linux)
+
+Дополнительные сведения о подсистеме Windows для Linux см. в разделе [Trust HTTPS certificate from Windows Subsystem for Linux](xref:security/enforcing-ssl#wsl) (Установка доверия к сертификату HTTPS из подсистемы Windows для Linux).
 
 Просмотрите документацию по дистрибутиву Linux, чтобы узнать, как установить отношение доверия к сертификату разработки HTTPS.
 
@@ -102,7 +104,7 @@ dotnet run
 
 > [!div class="checklist"]
 > * создавать проект веб-приложения;
-> * включать локальный HTTPS;
+> * устанавливать доверие к сертификату разработки;
 > * Запустите проект.
 > * вносить изменения.
 

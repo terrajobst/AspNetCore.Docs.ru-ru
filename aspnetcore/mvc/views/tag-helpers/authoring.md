@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 04/29/2019
 uid: mvc/views/tag-helpers/authoring
-ms.openlocfilehash: 37e39ac93e7b67184dfc238d58e12c2be8d84f91
-ms.sourcegitcommit: dd9c73db7853d87b566eef136d2162f648a43b85
+ms.openlocfilehash: d7a5656131189ffafb60a7b1db0b8d93a3787ae2
+ms.sourcegitcommit: 3ee6ee0051c3d2c8d47a58cb17eef1a84a4c46a0
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65087349"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65621045"
 ---
 # <a name="author-tag-helpers-in-aspnet-core"></a>Создание вспомогательных функций тегов в ASP.NET Core
 
@@ -313,3 +313,12 @@ the following snippet uses TagHelpers3 and should use TagHelpers (not the 3)
 [!code-csharp[](../../views/tag-helpers/authoring/sample/AuthoringTagHelpers/src/AuthoringTagHelpers/TagHelpers/z1AutoLinkerCopy.cs?highlight=5,6,10&range=8-21)]
 
 * При нескольких вызовах `GetChildContentAsync` возвращается одно и то же значение и тело функции `TagHelper` не выполняется повторно, если только не передать параметр false, который указывает на то, что не следует использовать кэшированный результат.
+
+## <a name="load-minified-partial-view-taghelper"></a>Загрузка функции TagHelper с сокращенным частичным представлением
+
+В рабочих средах производительность можно улучшить путем загрузки сокращенных частичных представлений. Чтобы воспользоваться сокращенным частичным представлением в рабочей среде:
+
+* Создайте или настройте процесс предварительной сборки, который минимизирует частичные представления.
+* Используйте следующий код, чтобы загрузить сокращенные частичные представления в средах, не предназначенных для разработки.
+
+[!code-csharp[](authoring/sample/AuthoringTagHelpers/src/MinifiedVersionTagHelper.cs?name=snippet)]
