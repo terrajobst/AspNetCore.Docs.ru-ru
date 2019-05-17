@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 02/4/2019
 uid: tutorials/first-web-api
-ms.openlocfilehash: 24c87f2ad0446aef51f9d648fd20c181cbeaed2e
-ms.sourcegitcommit: 036d4b03fd86ca5bb378198e29ecf2704257f7b2
+ms.openlocfilehash: dce2926e3cb19d6ac8d2af0e9b96c31dee1d92fd
+ms.sourcegitcommit: dd9c73db7853d87b566eef136d2162f648a43b85
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57346478"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65087522"
 ---
 # <a name="tutorial-create-a-web-api-with-aspnet-core-mvc"></a>Учебник. Создание веб-API с помощью MVC ASP.NET Core
 
@@ -216,7 +216,7 @@ ms.locfileid: "57346478"
 Предыдущий код:
 
 * Определяет класс контроллера API без методов.
-* Декорируйте этот класс атрибутом [`[ApiController]`](/dotnet/api/microsoft.aspnetcore.mvc.apicontrollerattribute). Этот атрибут указывает, что контроллер отвечает на запросы веб-API. Дополнительные сведения о поведении, которое реализует этот атрибут, см. в статье [Заметка с атрибутом ApiController](xref:web-api/index#annotation-with-apicontroller-attribute).
+* Добавляет в класс атрибут [[ApiController]](/dotnet/api/microsoft.aspnetcore.mvc.apicontrollerattribute). Этот атрибут указывает, что контроллер отвечает на запросы веб-API. Дополнительные сведения о поведении, которое реализует этот атрибут, см. в <xref:web-api/index>.
 * Использует внедрение зависимостей для внедрения контекста базы данных (`TodoContext`) в контроллер. Контекст базы данных используется в каждом методе [создания, чтения, обновления и удаления](https://wikipedia.org/wiki/Create,_read,_update_and_delete) в контроллере.
 * Добавляет элемент `Item1` в базу данных, если она пуста. Этот код находится в конструкторе и выполняется каждый раз при обнаружении нового HTTP-запроса. Если вы удалите все элементы, конструктор создаст `Item1` при следующем вызове метода API. Поэтому может создаться впечатление, что удаление не было выполнено, хотя это не так.
 
@@ -443,7 +443,7 @@ ms.locfileid: "57346478"
 
 ## <a name="additional-resources"></a>Дополнительные ресурсы
 
-[Просмотреть или скачать пример кода для этого учебника](https://github.com/aspnet/Docs/tree/master/aspnetcore/tutorials/first-web-api/samples). См. раздел [Практическое руководство. Скачивание файла](xref:index#how-to-download-a-sample).
+[Просмотреть или скачать пример кода для этого учебника](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/tutorials/first-web-api/samples). См. раздел [Практическое руководство. Скачивание файла](xref:index#how-to-download-a-sample).
 
 Дополнительные сведения см. в следующих ресурсах:
 

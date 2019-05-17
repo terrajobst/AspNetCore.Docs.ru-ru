@@ -4,14 +4,14 @@ author: tdykstra
 description: Сведения о платформе ведения журналов в ASP.NET Core. Ознакомьтесь со встроенными поставщиками ведения журналов и получите подробные сведения о распространенных сторонних поставщиках.
 ms.author: tdykstra
 ms.custom: mvc
-ms.date: 03/02/2019
+ms.date: 05/01/2019
 uid: fundamentals/logging/index
-ms.openlocfilehash: 8a2e310b47e32e9015b0c127ed79d8f6bdf2e44d
-ms.sourcegitcommit: eb784a68219b4829d8e50c8a334c38d4b94e0cfa
+ms.openlocfilehash: ee7d4b2ae04b5f6c262acc5da0f86f90ab50585f
+ms.sourcegitcommit: dd9c73db7853d87b566eef136d2162f648a43b85
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "59982857"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65085674"
 ---
 # <a name="logging-in-aspnet-core"></a>Ведение журналов в ASP.NET Core
 
@@ -19,7 +19,7 @@ ms.locfileid: "59982857"
 
 ASP.NET Core поддерживает API ведения журналов, который работает с разными встроенными и сторонними поставщиками. В этой статье описано, как использовать в коде API ведения журналов, работающего со встроенными поставщиками.
 
-[Просмотреть или скачать образец кода](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/logging/index/samples) ([как скачивать](xref:index#how-to-download-a-sample))
+[Просмотреть или скачать образец кода](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/logging/index/samples) ([как скачивать](xref:index#how-to-download-a-sample))
 
 ## <a name="add-providers"></a>Добавление поставщиков
 
@@ -54,7 +54,7 @@ ASP.NET Core поддерживает API ведения журналов, ко�
 [Внедрение зависимостей](xref:fundamentals/dependency-injection) (DI) ASP.NET Core предоставляет экземпляр `ILoggerFactory`. Методы расширения `AddConsole` и `AddDebug` определены в пакетах [Microsoft.Extensions.Logging.Console](https://www.nuget.org/packages/Microsoft.Extensions.Logging.Console/) и [Microsoft.Extensions.Logging.Debug](https://www.nuget.org/packages/Microsoft.Extensions.Logging.Debug/). Каждый метод расширения вызывает метод `ILoggerFactory.AddProvider`, передавая экземпляр поставщика.
 
 > [!NOTE]
-> [Пример приложения](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/logging/index/samples/1.x) добавляет поставщиков ведения журнала в метод `Startup.Configure`. Чтобы получить выходные данные журнала из выполняемого ранее кода, добавьте поставщики ведения журналов в конструктор класса `Startup`.
+> [Пример приложения](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/logging/index/samples/1.x) добавляет поставщиков ведения журнала в метод `Startup.Configure`. Чтобы получить выходные данные журнала из выполняемого ранее кода, добавьте поставщики ведения журналов в конструктор класса `Startup`.
 
 ::: moniker-end
 
@@ -496,11 +496,12 @@ System.Exception: Item not found exception.
 
 * Консоль
 * Отладка
+* EventSource
 * EventLog
+* TraceSource
 * AzureAppServicesFile
 * AzureAppServicesBlob
-* TraceSource
-* EventSource
+* ApplicationInsights
 
 ### <a name="default-minimum-level"></a>Минимальный уровень по умолчанию
 
@@ -616,8 +617,9 @@ warn: TodoApi.Controllers.TodoController[4000]
 * [EventSource](#eventsource-provider)
 * [EventLog](#windows-eventlog-provider)
 * [TraceSource](#tracesource-provider)
-
-Параметры для [ведения журналов в Azure](#logging-in-azure) рассматриваются далее в этой статье.
+* [AzureAppServicesFile](#azure-app-service-provider)
+* [AzureAppServicesBlob](#azure-app-service-provider)
+* [ApplicationInsights](#azure-application-insights-trace-logging)
 
 См. сведения о <xref:host-and-deploy/iis/troubleshoot#aspnet-core-module-stdout-log>ведении журналов stdout<xref:host-and-deploy/azure-apps/troubleshoot#aspnet-core-module-stdout-log>.
 
@@ -767,19 +769,6 @@ loggerFactory.AddTraceSource(sourceSwitchName);
 
 ::: moniker-end
 
-## <a name="logging-in-azure"></a>Ведение журналов в Azure
-
-См. сведения о ведении журналов в Azure:
-
-* [Поставщик Службы приложений Azure](#azure-app-service-provider)
-* [Потоковая передача журналов Azure](#azure-log-streaming)
-
-::: moniker range=">= aspnetcore-1.1"
-
-* [Ведение журнала трассировки Azure Application Insights](#azure-application-insights-trace-logging)
-
-::: moniker-end
-
 ### <a name="azure-app-service-provider"></a>Поставщик службы приложений Azure
 
 Пакет поставщика [Microsoft.Extensions.Logging.AzureAppServices](https://www.nuget.org/packages/Microsoft.Extensions.Logging.AzureAppServices) записывает журналы в текстовые файлы в файловой системе приложения службы приложений Azure и в [хранилище больших двоичных объектов](https://azure.microsoft.com/documentation/articles/storage-dotnet-how-to-use-blobs/#what-is-blob-storage) в учетной записи хранения Azure. Пакет поставщика доступен для приложений, предназначенных для .NET Core 1.1 или более поздней версии.
@@ -842,7 +831,7 @@ loggerFactory.AddAzureWebAppDiagnostics();
 
 Поставщик работает только при выполнении проекта в среде Azure. Он не функционирует при запуске проекта в локальной среде &mdash;(то есть не выполняет запись в локальные файлы или в локальное хранилище разработки для больших двоичных объектов).
 
-### <a name="azure-log-streaming"></a>Потоковая передача журналов Azure
+#### <a name="azure-log-streaming"></a>Потоковая передача журналов Azure
 
 Потоковая передача журналов Azure позволяет просматривать активность журнала в реальном времени из следующих источников:
 
@@ -865,14 +854,23 @@ loggerFactory.AddAzureWebAppDiagnostics();
 
 ### <a name="azure-application-insights-trace-logging"></a>Ведение журнала трассировки Azure Application Insights
 
-Пакет SDK Application Insights может собирать и отправлять журналы, созданные инфраструктурой ведения журналов ASP.NET Core. Дополнительные сведения см. в следующих ресурсах:
+Пакет поставщика [Microsoft.Extensions.Logging.ApplicationInsights](https://www.nuget.org/packages/Microsoft.Extensions.Logging.ApplicationInsights) записывает журналы в Azure Application Insights. Служба Application Insights отслеживает веб-приложения и предоставляет средства для создания запросов и анализа данных телеметрии. Используя этого поставщика, вы сможете выполнять запросы к журналам и их анализ с помощью средств Application Insights.
+
+Поставщик ведения журнала включается как зависимость [Microsoft.ApplicationInsights.AspNetCore](https://www.nuget.org/packages/Microsoft.ApplicationInsights.AspNetCore). Этот пакет предоставляет всю доступную телеметрию для ASP.NET Core. Если вы используете этот пакет, пакет поставщика устанавливать не нужно.
+
+Не используйте пакет [Microsoft.ApplicationInsights.Web](https://www.nuget.org/packages/Microsoft.ApplicationInsights.Web), который предназначен для ASP.NET 4.x.
+
+Дополнительные сведения см. в следующих ресурсах:
 
 * [Общие сведения об Application Insights](/azure/application-insights/app-insights-overview)
-* [Application Insights для ASP.NET Core](/azure/application-insights/app-insights-asp-net-core)
+* [Application Insights для приложений ASP.NET Core](/azure/azure-monitor/app/asp-net-core-no-visualstudio) — начните изучение с этой статьи, если вы хотите полностью реализовать возможности Application Insights для телеметрии и ведения журналов.
+* [ApplicationInsightsLoggerProvider for .NET Core ILogger logs](/azure/azure-monitor/app/ilogger) (Поставщик ведения журналов Application Insights для журналов .NET Core ILogger) — начните изучение с этой статьи, если вы хотите внедрить поставщика ведения журналов, не используя остальные возможности Application Insights для телеметрии.
 * [Адаптеры ведения журналов в Application Insights](https://github.com/Microsoft/ApplicationInsights-dotnet-logging/blob/develop/README.md).
-* [Примеры реализации Application Insights ILogger](/azure/azure-monitor/app/ilogger)
-
+* [Инструментирование серверного кода веб-приложения с помощью Application Insights](/learn/modules/instrument-web-app-code-with-application-insights) — интерактивный учебник на сайте Microsoft Learn.
 ::: moniker-end
+
+> [!NOTE]
+> По состоянию на 1 мая 2019 года статья [Application Insights для приложений ASP.NET Core](/azure/azure-monitor/app/asp-net-core) является устаревшей, и инструкции из этого руководства не работают. Используйте вместо нее [эту статью](/azure/azure-monitor/app/asp-net-core-no-visualstudio). Мы знаем об этой проблеме и работаем над ее устранением.
 
 ## <a name="third-party-logging-providers"></a>Сторонние поставщики ведения журналов
 
@@ -885,7 +883,7 @@ loggerFactory.AddAzureWebAppDiagnostics();
 * [Loggr](http://loggr.net/) ([в репозитории GitHub](https://github.com/imobile3/Loggr.Extensions.Logging));
 * [NLog](http://nlog-project.org/) ([в репозитории GitHub](https://github.com/NLog/NLog.Extensions.Logging));
 * [Sentry](https://sentry.io/welcome/) ([репозиторий GitHub](https://github.com/getsentry/sentry-dotnet))
-* [Serilog](https://serilog.net/) ([в репозитории GitHub](https://github.com/serilog/serilog-extensions-logging)).
+* [Serilog](https://serilog.net/) ([в репозитории GitHub](https://github.com/serilog/serilog-aspnetcore)).
 * [Stackdriver](https://cloud.google.com/dotnet/docs/stackdriver#logging) ([репозиторий Github](https://github.com/googleapis/google-cloud-dotnet))
 
 Некоторые сторонние платформы выполняют [семантическое ведение журналов, также известное как структурированное ведение журналов](https://softwareengineering.stackexchange.com/questions/312197/benefits-of-structured-logging-vs-basic-logging).

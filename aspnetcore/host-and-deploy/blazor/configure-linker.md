@@ -5,22 +5,20 @@ description: Сведения о том, как управлять компон�
 monikerRange: '>= aspnetcore-3.0'
 ms.author: riande
 ms.custom: mvc
-ms.date: 04/15/2019
+ms.date: 04/24/2019
 uid: host-and-deploy/blazor/configure-linker
-ms.openlocfilehash: 01e18498a16e86392755b02b92ffda929669cb7d
-ms.sourcegitcommit: 017b673b3c700d2976b77201d0ac30172e2abc87
+ms.openlocfilehash: 00676d4311f8955c3c1ef38d31219d62ea9f4a25
+ms.sourcegitcommit: 5b0eca8c21550f95de3bb21096bd4fd4d9098026
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 04/16/2019
-ms.locfileid: "59614741"
+ms.lasthandoff: 04/27/2019
+ms.locfileid: "64887779"
 ---
 # <a name="configure-the-linker-for-blazor"></a>Настройка компоновщика для Blazor
 
 Автор [Люк Латэм](https://github.com/guardrex) (Luke Latham)
 
-[!INCLUDE[](~/includes/razor-components-preview-notice.md)]
-
-Blazor выполняет компоновку для [промежуточного языка (IL)](/dotnet/standard/managed-code#intermediate-language--execution) при каждой сборке в режиме выпуска, чтобы удалить ненужный код из выходных сборок приложения.
+Blazor выполняет компоновку [промежуточного языка (IL)](/dotnet/standard/managed-code#intermediate-language--execution) во время сборки выпуска для удаления ненужных IL из выходных данных сборки приложения.
 
 Управлять компоновкой сборок можно одним из следующих способов:
 

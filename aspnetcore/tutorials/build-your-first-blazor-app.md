@@ -5,44 +5,32 @@ description: Пошаговое создание приложения Blazor.
 monikerRange: '>= aspnetcore-3.0'
 ms.author: riande
 ms.custom: mvc
-ms.date: 04/15/2019
+ms.date: 04/18/2019
 uid: tutorials/first-blazor-app
-ms.openlocfilehash: 310eb211f68076d6f52d6427940e07736d833e5b
-ms.sourcegitcommit: 017b673b3c700d2976b77201d0ac30172e2abc87
+ms.openlocfilehash: d235fec4e128ad8622a06d301eeac15c4862c159
+ms.sourcegitcommit: dd9c73db7853d87b566eef136d2162f648a43b85
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 04/16/2019
-ms.locfileid: "59614753"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65087726"
 ---
 # <a name="build-your-first-blazor-app"></a>Создание приложения Blazor
 
 Авторы: [Дэниэл Рот (Daniel Roth)](https://github.com/danroth27) и [Люк Лэтем (Luke Latham)](https://github.com/guardrex)
 
-[!INCLUDE[](~/includes/razor-components-preview-notice.md)]
+В этом руководстве показано, как создать и изменить приложение Blazor.
 
-В этом руководстве показано, как создать приложение с помощью серверных компонентов Razor или Blazor на стороне клиента.
-
-Сведения о работе с серверными компонентами Razor для ASP.NET Core (*рекомендуется*):
-
-* Выполните инструкции из руководства по *работе с компонентами Razor* в статье <xref:blazor/get-started#server-side-razor-components-experience>, чтобы создать проект на основе компонентов Razor.
-* Задайте для проекта имя `RazorComponents`.
-
-Сведения для работы с Blazor:
-
-* Выполните инструкции из руководства по *работе с компонентами BLazor* в статье <xref:blazor/get-started#client-side-blazor-experience>, чтобы создать проект на основе Blazor.
-* Задайте для проекта имя `Blazor`.
-
-[Просмотреть или скачать пример кода](https://github.com/aspnet/Docs/tree/master/aspnetcore/tutorials/build-your-first-blazor-app/samples/) ([описание скачивания](xref:index#how-to-download-a-sample)). Предварительные условия описаны в следующих разделах.
+Следуйте указаниям из статьи <xref:blazor/get-started>, чтобы создать проект Blazor для этого руководства.
 
 ## <a name="build-components"></a>Сборка компонентов
 
-1. Перейдите к каждой из трех страниц приложения в папке *Components/Pages* (в Blazor это *Pages*): домашнюю, счетчика и получения данных. Эти страницы реализуются такими файлами компонентов Razor, как *Index.razor*, *Counter.razor* и *FetchData.razor* (в Blazor по-прежнему используется расширение файла *.cshtml* — *Index.cshtml*, *Counter.cshtml* и *FetchData.cshtml*).
+1. Перейдите на каждую из трех страниц, размещенных в папке *Pages*: домашнюю, счетчика и получения данных. Эти страницы реализованы в виде файлов компонентов Razor *Index.razor*, *Counter.razor* и *FetchData.razor*.
 
 1. На странице Counter нажмите кнопку **Click me** (Щелкните здесь), чтобы увеличить значение счетчика без обновления страницы. Обычно для увеличения значений счетчика на веб-странице требуется код JavaScript, но Blazor реализует более правильный подход с использованием C#.
 
 1. Изучите реализацию компонента Counter в файле *Counter.razor*.
 
-   *Components/Pages/Counter.razor* (*Pages/Counter.cshtml* в Blazor):
+   *Pages/Counter.razor*:
 
    [!code-cshtml[](build-your-first-blazor-app/samples_snapshot/3.x/Counter1.razor)]
 
@@ -61,21 +49,21 @@ ms.locfileid: "59614753"
 
    [!code-cshtml[](build-your-first-blazor-app/samples_snapshot/3.x/Counter2.razor?highlight=14)]
 
-1. Скомпилируйте и запустите приложение, чтобы увидеть изменения. Нажмите кнопку **Click me** (Щелкните здесь), и значение счетчика увеличится на два.
+1. Скомпилируйте и запустите приложение, чтобы увидеть изменения. Нажмите кнопку **Click Me** (Щелкните здесь). Значение счетчика увеличится на две единицы.
 
 ## <a name="use-components"></a>Использование компонентов
 
-Включите компонент в другой компонент, используя синтаксис в стиле HTML.
+Включите компонент в другой компонент, используя синтаксис HTML.
 
-1. Добавьте компонент Counter в компонент Index (домашняя страница), разместив элемент `<Counter />` внутри компонента Index.
+1. Добавьте компонент Counter в компонент Index, разместив элемент `<Counter />` внутри компонента Index (*Index.razor*).
 
-   Если вы используете Blazor для этой задачи, в компонент индекса добавляется компонент опроса Prompt (элемент `<SurveyPrompt>`). Замените элемент `<SurveyPrompt>` элементом `<Counter>`.
+   Если вы используете для этой задачи клиентскую часть Blazor, в компонент Index добавляется компонент Survey Prompt (элемент `<SurveyPrompt>`). Замените элемент `<SurveyPrompt>` элементом `<Counter>`. Если вы используете для этой задачи серверное приложение Blazor, добавьте к компоненту Index элемент `<Counter>`:
 
-   *Components/Pages/Index.razor* (*Pages/Index.cshtml* в Blazor):
+   *Pages/Index.razor*:
 
-   [!code-cshtml[](build-your-first-blazor-app/samples_snapshot/3.x/Index.razor?highlight=7)]
+   [!code-cshtml[](build-your-first-blazor-app/samples_snapshot/3.x/Index1.razor?highlight=7)]
 
-1. Скомпилируйте и запустите приложение. На домашней странице есть свой счетчик.
+1. Скомпилируйте и запустите приложение. Компонент Index имеет свой собственный счетчик.
 
 ## <a name="component-parameters"></a>Параметры компонентов
 
@@ -86,36 +74,36 @@ ms.locfileid: "59614753"
    * Добавьте свойство `IncrementAmount` с атрибутом `[Parameter]`.
    * Изменение метод `IncrementCount`, чтобы он использовал `IncrementAmount` при увеличении значения `currentCount`.
 
-   *Components/Pages/Counter.razor* (*Pages/Counter.cshtml* в Blazor):
+   *Pages/Counter.razor*:
 
-   [!code-cshtml[](build-your-first-blazor-app/samples/3.x/RazorComponents/Components/Pages/Counter.razor?highlight=12,16)]
+   [!code-cshtml[](build-your-first-blazor-app/samples_snapshot/3.x/Counter.razor?highlight=13,17)]
 
 <!-- Add back when supported.
    > [!NOTE]
    > From Visual Studio, you can quickly add a component parameter by using the `para` snippet. Type `para` and press the `Tab` key twice.
 -->
 
-1. Укажите параметр `IncrementAmount` в элементе `<Counter>` для компонента домашней страницы, используя атрибут. Установите приращение счетчика на десять.
+1. Укажите параметр `IncrementAmount` в элементе `<Counter>` для компонента домашней страницы, используя соответствующий атрибут. Установите приращение счетчика на десять.
 
-   *Components/Pages/Index.razor* (*Pages/Index.cshtml* в Blazor):
+   *Pages/Index.razor*:
 
-   [!code-cshtml[](build-your-first-blazor-app/samples/3.x/RazorComponents/Components/Pages/Index.razor?highlight=7)]
+   [!code-cshtml[](build-your-first-blazor-app/samples_snapshot/3.x/Index2.razor?highlight=7)]
 
-1. Перезагрузите домашнюю страницу. Теперь значение счетчика на домашней странице будет увеличиваться на десять при каждом нажатии кнопки **Click me** (Щелкните здесь). А значение счетчика на странице Counter увеличивается на единицу.
+1. Перезагрузите компонент Index. Теперь значение счетчика на домашней странице будет увеличиваться на десять при каждом нажатии кнопки **Click me** (Щелкните здесь). Счетчик в компоненте Counter продолжает увеличиваться на единицу.
 
 ## <a name="route-to-components"></a>Маршрутизация к компонентам
 
-Директива `@page` в верхней части файла *Counter.razor* указывает, что этот компонент является конечной точкой маршрутизации. Компонент Counter обрабатывает запросы, направляемые к `/Counter`. Без директивы `@page` этот компонент не будет обрабатывать перенаправленные запросы, но остается доступным для использования другими компонентами.
+Директива `@page` в верхней части файла *Counter.razor* указывает, что этот компонент является конечной точкой маршрутизации. Компонент Counter обрабатывает запросы, направляемые к `/counter`. Без директивы `@page` этот компонент не будет обрабатывать перенаправленные запросы, но останется доступным для использования другими компонентами.
 
 ## <a name="dependency-injection"></a>Внедрение зависимостей
 
 Службы, зарегистрированные в контейнере служб приложения, доступны компонентам через [внедрение зависимостей](xref:fundamentals/dependency-injection). Внедрите службы в компонент с помощью директивы `@inject`.
 
-Изучите директивы компонента FetchData в примере приложения.
+Изучите директивы компонента FetchData.
 
-В примере приложения Razor Components служба `WeatherForecastService` зарегистрирована как [отдельная](xref:fundamentals/dependency-injection#service-lifetimes), то есть для всего приложения предоставляется один экземпляр этой службы. Директива `@inject` используется для внедрения экземпляра службы `WeatherForecastService` в компонент.
+Если вы используете серверное приложение Razor, служба `WeatherForecastService` зарегистрирована как [отдельная](xref:fundamentals/dependency-injection#service-lifetimes), то есть для всего приложения предоставляется один экземпляр этой службы. Директива `@inject` используется для внедрения экземпляра службы `WeatherForecastService` в компонент.
 
-*Components/Pages/FetchData.razor*:
+*Pages/FetchData.razor*:
 
 [!code-cshtml[](build-your-first-blazor-app/samples_snapshot/3.x/FetchData1.razor?highlight=3)]
 
@@ -123,24 +111,22 @@ ms.locfileid: "59614753"
 
 [!code-cshtml[](build-your-first-blazor-app/samples_snapshot/3.x/FetchData2.razor?highlight=6)]
 
-В версии Blazor примера приложения `HttpClient` внедряется для получения данных прогноза погоды из файла *weather.json* в папке *wwwroot/sample-data*.
+Если вы работаете с приложением Blazor на стороне клиента, внедряется `HttpClient` для получения данных прогноза погоды из файла *weather.json*, расположенного в папке *wwwroot/sample-data*.
 
-*Pages/FetchData.cshtml*:
+*Pages/FetchData.razor*:
 
-[!code-cshtml[](build-your-first-blazor-app/samples_snapshot/3.x/FetchData1.cshtml?highlight=7)]
+[!code-cshtml[](build-your-first-blazor-app/samples_snapshot/3.x/FetchData1_client.razor?highlight=7-8)]
 
-В обеих версиях примера приложения цикл [@foreach](/dotnet/csharp/language-reference/keywords/foreach-in) используется для отображения каждого экземпляра прогноза в отдельной строке в таблице погоды.
+Цикл [\@foreach](/dotnet/csharp/language-reference/keywords/foreach-in) используется для отображения каждого экземпляра прогноза в отдельной строке в таблице погоды.
 
 [!code-cshtml[](build-your-first-blazor-app/samples_snapshot/3.x/FetchData3.razor?highlight=11-19)]
+
 
 ## <a name="build-a-todo-list"></a>Создание списка дел
 
 Добавьте в приложение новый компонент, представляющий собой простой список дел.
 
-1. Добавьте в пример приложения пустой файл:
-
-   * если вы используете Razor Components, добавьте файл *Todo.razor* в папку *Components/Pages*;
-   * если вы используете Blazor, добавьте файл *Todo.cshtml* в папку *Pages*.
+1. Добавьте пустой файл с именем *Todo.cshtml* в папку *Pages*.
 
 1. Задайте начальную разметку компонента.
 
@@ -152,9 +138,9 @@ ms.locfileid: "59614753"
 
 1. Добавьте компонент Todo на панель навигации.
 
-   Компонент NavMenu (*Components/Shared/NavMenu.razor* или *Shared/NavMenu.cshtml* в Blazor) используется в макете приложения. Макетами называются компоненты, которые избавляют от дублирования содержимого в приложении. Для получения дополнительной информации см. <xref:blazor/layouts>.
+   Компонент NavMenu (*Shared/NavMenu.razor*) используется в макете этого приложения. Макетами называются компоненты, которые избавляют от дублирования содержимого в приложении. Для получения дополнительной информации см. <xref:blazor/layouts>.
 
-   Добавьте `<NavLink>` в компонент Todo. Для этого добавьте представленную ниже разметку с элементом списка под существующие элементы списка в файле *Components/Shared/NavMenu.razor* (*Shared/NavMenu.cshtml* в Blazor).
+   Добавьте `<NavLink>` для компонента списка дел, добавив следующую разметку с элементом списка под существующими элементами списка в файл *Shared/NavMenu.razor*.
 
    ```cshtml
    <li class="nav-item px-3">
@@ -168,16 +154,16 @@ ms.locfileid: "59614753"
 
 1. Добавьте в корень проекта файл *TodoItem.cs*, который будет размещать класс для элемента списка дел. Используйте следующий код C# для класса `TodoItem`.
 
-   [!code-cshtml[](build-your-first-blazor-app/samples/3.x/RazorComponents/TodoItem.cs)]
+   [!code-cshtml[](build-your-first-blazor-app/samples_snapshot/3.x/TodoItem.cs)]
 
-1. Вернитесь к компоненту Todo (*Components/Pages/Todo.razor* или *Pages/Todo.cshtml* в Blazor).
+1. Снова вернитесь к компоненту Todo (*Pages/Todo.razor*).
 
-   * Добавьте поле в список дел в блоке `@functions`. Компонент Todo использует это поле для хранения состояния списка дел.
+   * Добавьте поле для элементов списка дел в блоке `@functions`. Компонент Todo использует это поле для хранения состояния списка дел.
    * Добавьте разметку неупорядоченного списка и цикл `foreach` для отображения каждого элемента списка дела в виде элемента списка.
 
    [!code-cshtml[](build-your-first-blazor-app/samples_snapshot/3.x/ToDo4.razor?highlight=5-10,12-14)]
 
-1. Приложению необходимы элементы пользовательского интерфейса для добавления дел в список. Добавьте текстовое поле и кнопку под списком.
+1. Приложению необходимы элементы пользовательского интерфейса для добавления элементов в список дел. Добавьте текстовое поле и кнопку под списком.
 
    [!code-cshtml[](build-your-first-blazor-app/samples_snapshot/3.x/ToDo5.razor?highlight=12-13)]
 
@@ -201,7 +187,7 @@ ms.locfileid: "59614753"
 
    [!code-cshtml[](build-your-first-blazor-app/samples_snapshot/3.x/ToDo8.razor?highlight=19-26)]
 
-1. Скомпилируйте и запустите приложение. Добавьте несколько элементов в список Todo, чтобы протестировать работу нового кода.
+1. Скомпилируйте и запустите приложение. Добавьте несколько задач в список дел, чтобы проверить работу нового кода.
 
 1. Вы можете сделать текст заголовка для каждого элемента списка дел редактируемым, а по дополнительному флажку пользователь сможет отслеживать завершение задач. Добавьте флажок для каждого элемента списка дел и привяжите его значение к свойству `IsDone`. Замените `@todo.Title` элементом `<input>`, который привязан к `@todo.Title`.
 
@@ -213,9 +199,9 @@ ms.locfileid: "59614753"
    <h1>Todo (@todos.Count(todo => !todo.IsDone))</h1>
    ```
 
-1. Завершенный компонент Todo (*Components/Pages/Todo.razor* или *Pages/Todo.cshtml* в Blazor):
+1. Готовый компонент Todo (*Pages/Todo.razor*).
 
-   [!code-cshtml[](build-your-first-blazor-app/samples/3.x/RazorComponents/Components/Pages/Todo.razor)]
+   [!code-cshtml[](build-your-first-blazor-app/samples_snapshot/3.x/Todo.razor)]
 
 1. Скомпилируйте и запустите приложение. Добавьте элементы в список дел, чтобы протестировать новый код.
 

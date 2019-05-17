@@ -6,18 +6,14 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 10/24/2018
 uid: data/ef-rp/complex-data-model
-ms.openlocfilehash: 311f72699b6291996a43d56247bd3d2bfab596e6
-ms.sourcegitcommit: 088e6744cd67a62f214f25146313a53949b17d35
+ms.openlocfilehash: a65543f805b197031bd46ef1974d4d4a5018b2d1
+ms.sourcegitcommit: 3376f224b47a89acf329b2d2f9260046a372f924
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58320252"
+ms.lasthandoff: 05/10/2019
+ms.locfileid: "65516903"
 ---
 # <a name="razor-pages-with-ef-core-in-aspnet-core---data-model---5-of-8"></a>Razor Pages с EF Core в ASP.NET Core — модель данных— 5 из 8
-
-[!INCLUDE[2.0 version](~/includes/RP-EF/20-pdf.md)]
-
-::: moniker range=">= aspnetcore-2.1"
 
 Авторы: [Том Дайкстра](https://github.com/tdykstra) (Tom Dykstra) и [Рик Андерсон](https://twitter.com/RickAndMSFT) (Rick Anderson)
 
@@ -33,7 +29,7 @@ ms.locfileid: "58320252"
 ![Схема сущностей](complex-data-model/_static/diagram.png)
 
 При возникновении проблем, которые вам не удается устранить, скачайте [готовое приложение](
-https://github.com/aspnet/Docs/tree/master/aspnetcore/data/ef-rp/intro/samples).
+https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/data/ef-rp/intro/samples).
 
 ## <a name="customize-the-data-model-with-attributes"></a>Настройка модели данных с использованием атрибутов
 
@@ -385,19 +381,18 @@ public ICollection<Course> Courses { get; set; }
 
 Примечание. По соглашению EF Core разрешает каскадное удаление для внешних ключей, не допускающих значение null, и связей "многие ко многим". Каскадное удаление может привести к циклическим правилам каскадного удаления. Такие правила вызывают исключение при добавлении миграции.
 
-Например, если свойство `Department.InstructorID` не было определено как допускающее значение null:
+Например, если свойство `Department.InstructorID` было определено как не допускающее значения NULL:
 
-* EF Core настраивает правило каскадного удаления для удаления преподавателя при удалении кафедры.
-* Удаление преподавателя при удалении кафедры не является запланированным поведением.
+* EF Core настраивает правило каскадного удаления для удаления кафедры при удалении преподавателя.
+* Удаление кафедры при удалении преподавателя не является запланированным поведением.
+* Следующий текучий API будет задать правило ограничения вместо каскада.
 
-Если бизнес-правила требуют, чтобы свойство `InstructorID` не допускало значение null, используйте следующий оператор текучего API:
-
- ```csharp
- modelBuilder.Entity<Department>()
-    .HasOne(d => d.Administrator)
-    .WithMany()
-    .OnDelete(DeleteBehavior.Restrict)
- ```
+   ```csharp
+   modelBuilder.Entity<Department>()
+      .HasOne(d => d.Administrator)
+      .WithMany()
+      .OnDelete(DeleteBehavior.Restrict)
+  ```
 
 Предыдущий код отключает каскадное удаление для связи кафедры и преподавателя.
 
@@ -671,7 +666,7 @@ dotnet ef database update
 * [Версия руководства на YouTube (часть 1)](https://www.youtube.com/watch?v=0n2f0ObgCoA)
 * [Версия руководства на YouTube (часть 2)](https://www.youtube.com/watch?v=Je0Z5K1TNmY)
 
-::: moniker-end
+
 
 > [!div class="step-by-step"]
 > [Назад](xref:data/ef-rp/migrations)

@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 04/07/2019
 uid: index
-ms.openlocfilehash: 9cb598c4068586e4e960ec40743c4f54f09995ad
-ms.sourcegitcommit: 017b673b3c700d2976b77201d0ac30172e2abc87
+ms.openlocfilehash: 6dd722b3b78d2af81497bde9e0519feb9af84748
+ms.sourcegitcommit: dd9c73db7853d87b566eef136d2162f648a43b85
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 04/16/2019
-ms.locfileid: "59614375"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65086138"
 ---
 # <a name="introduction-to-aspnet-core"></a>Введение в ASP.NET Core
 
@@ -24,7 +24,7 @@ ASP.NET Core является кроссплатформенной, высоко
 * Выполнять развертывания в облаке или локальной среде.
 * Работать в [.NET Core или .NET Framework](/dotnet/articles/standard/choosing-core-framework-server).
 
-## <a name="why-to-use-aspnet-core"></a>Зачем использовать ASP.NET Core?
+## <a name="why-choose-aspnet-core"></a>Преимущества, обеспечиваемые ASP.NET Core
 
 Миллионы разработчиков использовали и продолжают использовать [ASP.NET 4.x](/aspnet/overview) для создания веб-приложений. ASP.NET Core — это модификация ASP.NET 4.x с архитектурными изменениями, формирующими более рациональную и более модульную платформу.
 
@@ -101,7 +101,7 @@ ASP.NET Core версии 3.0 и более поздних будут выпол
 
 Многие статьи и учебники содержат ссылки на примеры кода.
 
-1. [Загрузите ZIP-файл репозитория ASP.NET](https://codeload.github.com/aspnet/Docs/zip/master).
+1. [Загрузите ZIP-файл репозитория ASP.NET](https://codeload.github.com/aspnet/AspNetCore.Docs/zip/master).
 1. Распакуйте файл *Docs-master.zip*.
 1. Перейдите в папку примера по URL-адресу, указанному в примере.
 
@@ -148,7 +148,7 @@ WebHost.CreateDefaultBuilder(args)
 
 Вы можете спокойно проигнорировать или удалить инструкции `#region` и `#endregion` вокруг кода. Не изменяйте код внутри этих инструкций, если планируете запустить примеры сценариев, описанные в разделе. Вы можете изменить код, экспериментируя с другими сценариями.
 
-Дополнительные сведения см. в разделе[Участие в написании документации ASP.NET: Фрагменты кода](https://github.com/aspnet/Docs/blob/master/CONTRIBUTING.md#code-snippets).
+Дополнительные сведения см. в разделе[Участие в написании документации ASP.NET: Фрагменты кода](https://github.com/aspnet/AspNetCore.Docs/blob/master/CONTRIBUTING.md#code-snippets).
 
 ## <a name="next-steps"></a>Следующие шаги
 

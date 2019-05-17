@@ -7,12 +7,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 03/02/2019
 uid: mvc/views/view-compilation
-ms.openlocfilehash: 11195f00e922f6817a0fa0988fad9d8082dea30a
-ms.sourcegitcommit: 5b0eca8c21550f95de3bb21096bd4fd4d9098026
+ms.openlocfilehash: eba9de26e1af8c4df06b846748d8aa9380fc1862
+ms.sourcegitcommit: a3926eae3f687013027a2828830c12a89add701f
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 04/27/2019
-ms.locfileid: "64883699"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65450882"
 ---
 # <a name="razor-file-compilation-in-aspnet-core"></a>Компиляция файлов Razor в ASP.NET Core
 
@@ -133,9 +133,9 @@ dotnet publish -c Release
       .AddRazorRuntimeCompilation()
   ```
 
-Чтобы компиляция в среде выполнения работала после развертывания, приложения должны дополнительно изменить свои файлы проекта и задать значение `PreserveCompilationReferences` для `true`.
+Чтобы выполнялась компиляция в среде выполнения при развертывании, в файлах проектов приложений параметру `PreserveCompilationReferences` необходимо задать значение `true`.
 
-[!code-xml[](view-compilation/sample/RuntimeCompilation.csproj?highlight=3)]
+[!code-xml[](view-compilation/sample/RuntimeCompilation.csproj?highlight=4)]
 
 ::: moniker-end
 

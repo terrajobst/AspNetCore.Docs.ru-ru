@@ -4,15 +4,15 @@ description: В этом руководстве вы добавите допол
 author: rick-anderson
 ms.author: tdykstra
 ms.custom: mvc
-ms.date: 02/05/2019
+ms.date: 03/27/2019
 ms.topic: tutorial
 uid: data/ef-mvc/complex-data-model
-ms.openlocfilehash: 5ab893dd77ff2cc9a735702eb3a547ed8bcb2197
-ms.sourcegitcommit: 57792e5f594db1574742588017c708350958bdf0
+ms.openlocfilehash: 2776e3357941d0e7932882c39af121f85d037d62
+ms.sourcegitcommit: 5b0eca8c21550f95de3bb21096bd4fd4d9098026
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58264865"
+ms.lasthandoff: 04/27/2019
+ms.locfileid: "64887249"
 ---
 # <a name="tutorial-create-a-complex-data-model---aspnet-mvc-with-ef-core"></a>Учебник. Использование ASP.NET MVC с EF  Core. Создание сложной модели данных
 
@@ -40,7 +40,7 @@ ms.locfileid: "58264865"
 
 ## <a name="prerequisites"></a>Предварительные требования
 
-* [Использование функции миграций EF Core для ASP.NET Core в веб-приложении MVC](migrations.md)
+* [Использование миграций EF Core](migrations.md)
 
 ## <a name="customize-the-data-model"></a>Настройка модели данных
 
@@ -320,7 +320,7 @@ public ICollection<Course> Courses { get; set; }
 ```
 
 > [!NOTE]
-> По соглашению Entity Framework разрешает каскадное удаление для внешних ключей, не допускающих значение null, и связей многие ко многим. Это может привести к циклическим правилам каскадного удаления, которые вызывают исключение при попытке добавить миграцию. Например, если вы не определили свойство Department.InstructorID как допускающее значение null, EF настраивает правило каскадного удаления для удаления преподавателя при удалении кафедры, что вам не нужно. Если бизнес-правила требуют, чтобы свойство `InstructorID` не допускало значение null, используйте следующий оператор текучего API, чтобы отключить каскадное удаление для этой связи:
+> По соглашению Entity Framework разрешает каскадное удаление для внешних ключей, не допускающих значение null, и связей многие ко многим. Это может привести к циклическим правилам каскадного удаления, которые вызывают исключение при попытке добавить миграцию. Например, если вы не определили свойство Department.InstructorID как допускающее значение NULL, EF настраивает правило каскадного удаления для удаления кафедры при удалении преподавателя, что вам не нужно. Если бизнес-правила требуют, чтобы свойство `InstructorID` не допускало значение null, используйте следующий оператор текучего API, чтобы отключить каскадное удаление для этой связи:
 >
 > ```csharp
 > modelBuilder.Entity<Department>()
@@ -509,7 +509,7 @@ dotnet ef database update
 
 ## <a name="get-the-code"></a>Получение кода
 
-[Скачайте или ознакомьтесь с готовым приложением.](https://github.com/aspnet/Docs/tree/master/aspnetcore/data/ef-mvc/intro/samples/cu-final)
+[Скачайте или ознакомьтесь с готовым приложением.](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/data/ef-mvc/intro/samples/cu-final)
 
 ## <a name="next-steps"></a>Следующие шаги
 
@@ -530,5 +530,6 @@ dotnet ef database update
 > * Обновление базы данных
 
 В следующем руководстве описано, как получить доступ к связанным данным.
+
 > [!div class="nextstepaction"]
-> [Получение доступа к связанным данным](read-related-data.md)
+> [Далее: Получение доступа к связанным данным](read-related-data.md)

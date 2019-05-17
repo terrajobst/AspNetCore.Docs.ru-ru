@@ -6,27 +6,27 @@ ms.author: scaddie
 ms.custom: mvc
 ms.date: 09/12/2018
 uid: host-and-deploy/docker/visual-studio-tools-for-docker
-ms.openlocfilehash: 42f8071eadabba3eb8cb738be1720f4c6195808c
-ms.sourcegitcommit: 375e9a67f5e1f7b0faaa056b4b46294cc70f55b7
+ms.openlocfilehash: 3bf3d8d0a627d97090e3ce9fef7e380f03c7626d
+ms.sourcegitcommit: 5b0eca8c21550f95de3bb21096bd4fd4d9098026
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50207242"
+ms.lasthandoff: 04/27/2019
+ms.locfileid: "64888369"
 ---
 # <a name="visual-studio-tools-for-docker-with-aspnet-core"></a>Использование средств Visual Studio для Docker с ASP.NET Core
 
 Visual Studio 2017 поддерживает создание, отладку и запуск контейнерных приложений ASP.NET Core, предназначенных для .NET Core. Поддерживаются контейнеры Windows и Linux.
 
-[Просмотреть или скачать образец кода](https://github.com/aspnet/Docs/tree/master/aspnetcore/host-and-deploy/docker/visual-studio-tools-for-docker/samples) ([как скачивать](xref:index#how-to-download-a-sample))
+[Просмотреть или скачать образец кода](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/host-and-deploy/docker/visual-studio-tools-for-docker/samples) ([как скачивать](xref:index#how-to-download-a-sample))
 
 ## <a name="prerequisites"></a>Предварительные требования
 
 * [Docker для Windows](https://docs.docker.com/docker-for-windows/install/)
-* [Visual Studio 2017](https://www.visualstudio.com/) с рабочей нагрузкой **Кроссплатформенная разработка .NET Core**
+* [Visual Studio 2017](https://visualstudio.microsoft.com) с рабочей нагрузкой **Кроссплатформенная разработка .NET Core**
 
 ## <a name="installation-and-setup"></a>Установка и настройка
 
-Чтобы установить Docker, сначала ознакомьтесь с разделом [Docker для Windows: что следует знать перед установкой](https://docs.docker.com/docker-for-windows/install/#what-to-know-before-you-install). Затем [установите Docker для Windows](https://docs.docker.com/docker-for-windows/install/).
+Перед установкой Docker ознакомьтесь со статьей о [Docker для Windows и том, что следует знать перед установкой](https://docs.docker.com/docker-for-windows/install/#what-to-know-before-you-install). Затем [установите Docker для Windows](https://docs.docker.com/docker-for-windows/install/).
 
 Нужно настроить **[Общие диски](https://docs.docker.com/docker-for-windows/#shared-drives)** в Docker для Windows, чтобы обеспечить поддержку сопоставления тома и отладки. Щелкните правой кнопкой мыши значок Docker на панели задач и выберите пункт **Параметры**, а затем — **Общие диски**. Выберите диск, на котором Docker сохраняет файлы. Нажмите кнопку **Применить**.
 
@@ -84,7 +84,7 @@ Visual Studio 2017 поддерживает создание, отладку �
 
 Visual Studio 2017 версии 15.7 или более ранние версии поддерживают [Docker Compose](https://docs.docker.com/compose/overview/) как единственное решение для оркестрации контейнеров. Для добавления артефактов Docker Compose необходимо последовательно выбрать **Добавить** > **Поддержка Docker**.
 
-Visual Studio 2017 версии 15.8 или более поздние версии поддерживают решение для оркестрации только когда это указано отдельно. В **Обозревателе решений** щелкните проект правой кнопкой мыши и выберите пункты **Добавить** > **Поддержка оркестратора контейнеров**. Предлагаются два различных варианта: [Docker Compose](#docker-compose) и [Service Fabric](#service-fabric).
+Visual Studio 2017 версии 15.8 или более поздние версии поддерживают решение для оркестрации только когда это указано отдельно. В **Обозревателе решений** щелкните проект правой кнопкой мыши и выберите пункты **Добавить** > **Поддержка оркестратора контейнеров**. Доступны два варианта: [Docker Compose](#docker-compose) и [Service Fabric](#service-fabric).
 
 ### <a name="docker-compose"></a>Docker Compose
 
@@ -232,7 +232,7 @@ microsoft/aspnetcore        2.0     c69d39472da9  13 days ago     347MB
 ## <a name="additional-resources"></a>Дополнительные ресурсы
 
 * [Разработка с помощью контейнеров в Visual Studio](/visualstudio/containers)
-* [Azure Service Fabric: подготовка среды разработки](/azure/service-fabric/service-fabric-get-started)
+* [Azure Service Fabric: Prepare your development environment](/azure/service-fabric/service-fabric-get-started) (Настройка среды разработки для Windows)
 * [Руководство по развертыванию приложения .NET в контейнере Windows в Azure Service Fabric](/azure/service-fabric/service-fabric-host-app-in-a-container)
 * [Устранение неполадок при разработке Visual Studio 2017 с использованием Docker](/azure/vs-azure-tools-docker-troubleshooting-docker-errors)
 * [Средства Visual Studio для Docker — репозиторий GitHub](https://github.com/Microsoft/DockerTools)

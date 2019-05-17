@@ -92,7 +92,11 @@
     - name: Приложения удаленного вызова процедур
       items:
         - name: Начало работы со службой gRPC в ASP.NET Core
+          uid: tutorials/grpc/index
+        - name: Создание службы приветствия gRPC в ASP.NET Core
           uid: tutorials/grpc/grpc-start
+        - name: Создание клиента gRPC в .NET Core
+          uid: tutorials/grpc/grpc-client
     - name: Доступ к данным
       items:
         - name: EF Core с Razor Pages
@@ -230,8 +234,9 @@
         - name: Обзор
           uid: mvc/overview
         - name: Учебник
-          uid: tutorials/first-mvc-app/index
           items:
+            - name: Обзор
+              uid: tutorials/first-mvc-app/index
             - name: Начало работы
               uid: tutorials/first-mvc-app/start-mvc
             - name: Добавление контроллера
@@ -324,8 +329,6 @@
               uid: client-side/libman/libman-cli
             - name: Visual Studio
               uid: client-side/libman/libman-vs
-        - name: Gulp
-          uid: client-side/using-gulp
         - name: Grunt
           uid: client-side/using-grunt
         - name: Bower
@@ -338,13 +341,10 @@
       uid: fundamentals/app-state
     - name: Макет
       uid: mvc/views/layout
-    - name: Привязка модели
-      uid: mvc/models/model-binding
-    - name: Проверка модели
-      uid: mvc/models/validation
     - name: Синтаксис Razor
       uid: mvc/views/razor
     - name: Вспомогательные функции тегов
+      uid: mvc/views/tag-helpers/builtin-th/Index
       items:
         - name: Обзор
           uid: mvc/views/tag-helpers/intro
@@ -396,10 +396,6 @@
           uid: mvc/controllers/areas
         - name: Части приложения
           uid: mvc/extensibility/app-parts
-        - name: Пользовательская привязка модели
-          uid: mvc/advanced/custom-model-binding
-        - name: Совместимая версия
-          uid: mvc/compatibility-version
 - name: API веб-приложений
   items:
     - name: Обзор
@@ -1000,6 +996,14 @@
       uid: fundamentals/troubleshoot-aspnet-core-localization
 - name: Дополнительно
   items:
+    - name: Привязка модели
+      uid: mvc/models/model-binding
+    - name: Пользовательская привязка модели
+      uid: mvc/advanced/custom-model-binding
+    - name: Проверка модели
+      uid: mvc/models/validation
+    - name: Совместимая версия
+      uid: mvc/compatibility-version
     - name: Написание ПО промежуточного слоя
       uid: fundamentals/middleware/write
     - name: Операции запросов и ответов
@@ -1076,4 +1080,4 @@
 - name: Справочник по интерфейсам API
   href: /dotnet/api/?view=aspnetcore-2.2
 - name: Участие
-  href: 'https://github.com/aspnet/Docs/blob/master/CONTRIBUTING.md'
+  href: 'https://github.com/aspnet/AspNetCore.Docs/blob/master/CONTRIBUTING.md'

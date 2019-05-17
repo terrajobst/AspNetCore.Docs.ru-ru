@@ -6,12 +6,12 @@ ms.author: tdykstra
 ms.date: 03/27/2019
 ms.topic: tutorial
 uid: data/ef-mvc/sort-filter-page
-ms.openlocfilehash: dff5a5b1ba3c8ed07ccc8d134f8cfeb25b9f6689
-ms.sourcegitcommit: 3e9e1f6d572947e15347e818f769e27dea56b648
+ms.openlocfilehash: 921e27bf56587813f835357c9090c91a155c087b
+ms.sourcegitcommit: b508b115107e0f8d7f62b25cfcc8ad45e1373459
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 03/30/2019
-ms.locfileid: "58751041"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65212549"
 ---
 # <a name="tutorial-add-sorting-filtering-and-paging---aspnet-mvc-with-ef-core"></a>Учебник. Использование ASP.NET MVC с EF Core. Добавление сортировки, фильтрации и разбиения на страницы
 
@@ -211,10 +211,8 @@ return View(await PaginatedList<Student>.CreateAsync(students.AsNoTracking(), pa
 На странице **About** веб-сайта "Университет Contoso" будет отображаться количество зачисленных студентов по дням. Для этого понадобится группировка и выполнение простых расчетов в группах. Для выполнения этой задачи нам потребуется следующее:
 
 * Создать класс модели представления для данных, которые необходимо передать в представление.
-
-* Изменить метод About контроллера Home.
-
-* Изменить представления About.
+* Создать метод About в контроллере Home.
+* Создать представление About.
 
 ### <a name="create-the-view-model"></a>Создание модели представления
 
@@ -239,10 +237,8 @@ return View(await PaginatedList<Student>.CreateAsync(students.AsNoTracking(), pa
 [!code-csharp[](intro/samples/cu/Controllers/HomeController.cs?name=snippet_UseDbSet)]
 
 Запрос LINQ группирует записи из таблицы студентов по дате зачисления, вычисляет число записей в каждой группе и сохраняет результаты в коллекцию объектов моделей представления `EnrollmentDateGroup`.
-> [!NOTE]
-> В Entity Framework Core версии 1.0 клиенту возвращался весь результирующий набор, и группировка выполнялась на стороне клиента. В некоторых случаях это может вызвать проблемы с производительностью. Тестирование производительности необходимо выполнять на объемах данных, сопоставимых с объемами данных в рабочей среде, и при необходимости использовать необработанный SQL для выполнения группировки на сервере. Сведения об использовании необработанного SQL см. в [последнем руководстве серии](advanced.md).
 
-### <a name="modify-the-about-view"></a>Изменение представления About
+### <a name="create-the-about-view"></a>Создание представления About
 
 Добавьте файл *Views/Home/About.cshtml* со следующим кодом.
 
@@ -252,7 +248,7 @@ return View(await PaginatedList<Student>.CreateAsync(students.AsNoTracking(), pa
 
 ## <a name="get-the-code"></a>Получение кода
 
-[Скачайте или ознакомьтесь с готовым приложением.](https://github.com/aspnet/Docs/tree/master/aspnetcore/data/ef-mvc/intro/samples/cu-final)
+[Скачайте или ознакомьтесь с готовым приложением.](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/data/ef-mvc/intro/samples/cu-final)
 
 ## <a name="next-steps"></a>Следующие шаги
 

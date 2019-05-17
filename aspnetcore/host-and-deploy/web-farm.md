@@ -7,11 +7,11 @@ ms.custom: mvc
 ms.date: 11/26/2018
 uid: host-and-deploy/web-farm
 ms.openlocfilehash: 4873665e6174a6acf885e1ebb41fb005d646bd1f
-ms.sourcegitcommit: e9b99854b0a8021dafabee0db5e1338067f250a9
+ms.sourcegitcommit: 5b0eca8c21550f95de3bb21096bd4fd4d9098026
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52450675"
+ms.lasthandoff: 04/27/2019
+ms.locfileid: "64884159"
 ---
 # <a name="host-aspnet-core-in-a-web-farm"></a>Размещение ASP.NET Core в веб-ферме
 
@@ -51,7 +51,7 @@ ms.locfileid: "52450675"
 
 ### <a name="caching"></a>Кэширование
 
-В среде веб-фермы механизм кэширования должен совместно использовать кэшированные элементы на узлах веб-фермы. Кэширование должно зависеть от общего кэша Redis, общей базы данных SQL Server или пользовательской реализации кэширования, которая совместно использует кэшированные элементы в веб-ферме. Дополнительные сведения см. в разделе <xref:performance/caching/distributed>.
+В среде веб-фермы механизм кэширования должен совместно использовать кэшированные элементы на узлах веб-фермы. Кэширование должно зависеть от общего кэша Redis, общей базы данных SQL Server или пользовательской реализации кэширования, которая совместно использует кэшированные элементы в веб-ферме. Для получения дополнительной информации см. <xref:performance/caching/distributed>.
 
 ## <a name="dependent-components"></a>Зависимые компоненты
 
@@ -60,10 +60,10 @@ ms.locfileid: "52450675"
 | Сценарий | Зависит от &hellip; |
 | -------- | ------------------- |
 | Проверка подлинности | Защита данных (см. раздел <xref:security/data-protection/configuration/overview>).<br><br>Дополнительные сведения см. в разделах <xref:security/authentication/cookie> и <xref:security/cookie-sharing>. |
-| идентификации | Проверка подлинности и конфигурация базы данных.<br><br>Дополнительные сведения см. в разделе <xref:security/authentication/identity>. |
-| Сеанс | Защита данных (зашифрованные файлы cookie) (см. раздел <xref:security/data-protection/configuration/overview>) и кэширование (см. раздел <xref:performance/caching/distributed>).<br><br>Дополнительные сведения см. в разделе [Состояние сеанса](xref:fundamentals/app-state#session-state). |
-| TempData | Защита данных (зашифрованные файлы cookie) (см. раздел <xref:security/data-protection/configuration/overview>) или сеанс (см. раздел [Состояние сеанса](xref:fundamentals/app-state#session-state)).<br><br>Дополнительные сведения см. в разделе [Состояние сеанса](xref:fundamentals/app-state#tempdata). |
-| Защита от подделки | Защита данных (см. раздел <xref:security/data-protection/configuration/overview>).<br><br>Дополнительные сведения см. в разделе <xref:security/anti-request-forgery>. |
+| идентификации | Проверка подлинности и конфигурация базы данных.<br><br>Для получения дополнительной информации см. <xref:security/authentication/identity>. |
+| Сеанс | Защита данных (зашифрованные файлы cookie) (см. раздел <xref:security/data-protection/configuration/overview>) и кэширование (см. раздел <xref:performance/caching/distributed>).<br><br>Дополнительные сведения см. в статье [Состояние сеанса и приложения в ASP.NET Core](xref:fundamentals/app-state#session-state). |
+| TempData | Защита данных (зашифрованные файлы cookie) (см. в <xref:security/data-protection/configuration/overview>) или в разделе "Сеанс" статьи [Состояние сеанса и приложения в ASP.NET Core](xref:fundamentals/app-state#session-state)).<br><br>Дополнительные сведения см. в статье [Состояние сеанса и приложения в ASP.NET Core](xref:fundamentals/app-state#tempdata). |
+| Защита от подделки | Защита данных (см. раздел <xref:security/data-protection/configuration/overview>).<br><br>Для получения дополнительной информации см. <xref:security/anti-request-forgery>. |
 
 ## <a name="troubleshoot"></a>Устранение неполадок
 

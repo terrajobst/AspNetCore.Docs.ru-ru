@@ -5,14 +5,14 @@ description: Узнайте, как настроить проверки рабо
 monikerRange: '>= aspnetcore-2.2'
 ms.author: riande
 ms.custom: mvc
-ms.date: 03/11/2019
+ms.date: 04/23/2019
 uid: host-and-deploy/health-checks
-ms.openlocfilehash: 0bb80a5fccc8240c6f1fb8e59b379766bfd90d9e
-ms.sourcegitcommit: 687ffb15ebe65379f75c84739ea851d5a0d788b7
+ms.openlocfilehash: 5119267a8da5c950989b14b7c2e818aa22806506
+ms.sourcegitcommit: 5b0eca8c21550f95de3bb21096bd4fd4d9098026
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58488719"
+ms.lasthandoff: 04/27/2019
+ms.locfileid: "64887929"
 ---
 # <a name="health-checks-in-aspnet-core"></a>Проверки работоспособности в ASP.NET Core
 
@@ -26,7 +26,7 @@ ASP.NET Core предоставляет ПО промежуточного сло
 * Использование памяти, диска и других ресурсов физического сервера можно отслеживать с точки зрения работоспособности.
 * Проверки работоспособности позволяют проверять зависимости приложения, такие как базы данных и конечные точки внешних служб, чтобы убедиться в доступности и нормальной работе.
 
-[Просмотреть или скачать образец кода](https://github.com/aspnet/Docs/tree/master/aspnetcore/host-and-deploy/health-checks/samples) ([как скачивать](xref:index#how-to-download-a-sample))
+[Просмотреть или скачать образец кода](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/host-and-deploy/health-checks/samples) ([как скачивать](xref:index#how-to-download-a-sample))
 
 Пример приложения включает примеры сценариев, описанных в этом разделе. Чтобы запустить пример приложения для заданного сценария, используйте команду [dotnet run](/dotnet/core/tools/dotnet-run) из папки проекта в командной строке. См. файл *README.md* приложения и описания сценариев в этом разделе, чтобы получить сведения о том, как использовать пример приложения.
 
@@ -36,7 +36,7 @@ ASP.NET Core предоставляет ПО промежуточного сло
 
 Добавьте ссылку на [метапакет Microsoft.AspNetCore.App](xref:fundamentals/metapackage-app) или ссылку на пакет [Microsoft.AspNetCore.Diagnostics.HealthCheck](https://www.nuget.org/packages/Microsoft.AspNetCore.Diagnostics.HealthChecks).
 
-В примере приложения приведен код запуска для демонстрации проверки работоспособности для нескольких сценариев. Сценарий [проверки базы данных](#database-probe) проверяет работоспособность подключения базы данных с помощью [BeatPulse](https://github.com/Xabaril/BeatPulse). Сценарий [проверки DbContext](#entity-framework-core-dbcontext-probe) проверяет базу данных с помощью EF Core `DbContext`. Чтобы изучить сценарии для баз данных, пример приложения выполняет следующие действия.
+В примере приложения приведен код запуска для демонстрации проверки работоспособности для нескольких сценариев. Сценарий [проверки базы данных](#database-probe) проверяет работоспособность подключения базы данных с помощью [AspNetCore.Diagnostics.HealthChecks](https://github.com/Xabaril/AspNetCore.Diagnostics.HealthChecks). Сценарий [проверки DbContext](#entity-framework-core-dbcontext-probe) проверяет базу данных с помощью EF Core `DbContext`. Чтобы изучить сценарии для баз данных, пример приложения выполняет следующие действия.
 
 * Создает базу данных и указывает ее строку подключения в файле приложения *appsettings.json*.
 * Содержит следующие ссылки на пакеты в своем файле проекта.
@@ -44,7 +44,7 @@ ASP.NET Core предоставляет ПО промежуточного сло
   * [Microsoft.Extensions.Diagnostics.HealthChecks.EntityFrameworkCore](https://www.nuget.org/packages/Microsoft.Extensions.Diagnostics.HealthChecks.EntityFrameworkCore/)
 
 > [!NOTE]
-> [BeatPulse](https://github.com/Xabaril/BeatPulse) не поддерживается и не обслуживается корпорацией Майкрософт.
+> [AspNetCore.Diagnostics.HealthChecks](https://github.com/Xabaril/AspNetCore.Diagnostics.HealthChecks) — это порт [BeatPulse](https://github.com/xabaril/beatpulse), и он не поддерживается корпорацией Майкрософт.
 
 В другом сценарии проверки работоспособности демонстрируется способ фильтрации проверок работоспособности по порту управления. Пример приложения требует создать файл *Properties/launchSettings.json*, который включает в себя URL-адрес управления и порт управления. Дополнительные сведения см. в разделе [Фильтр по портам](#filter-by-port).
 
@@ -286,18 +286,18 @@ private static Task WriteResponse(HttpContext httpContext,
 
 Проверка работоспособности может задать запрос для выполнения в качестве логического теста для указания того, отвечает ли база данных как обычно.
 
-Пример приложения использует [BeatPulse](https://github.com/Xabaril/BeatPulse), библиотеку проверки работоспособности для приложений ASP.NET Core, чтобы проверить работоспособность базы данных SQL Server. BeatPulse выполняет запрос `SELECT 1` к базе данных, чтобы подтвердить, что подключение к базе данных находится в работоспособном состоянии.
+Пример приложения использует [AspNetCore.Diagnostics.HealthChecks](https://github.com/Xabaril/AspNetCore.Diagnostics.HealthChecks), библиотеку проверки работоспособности для приложений ASP.NET Core, чтобы проверить работоспособность базы данных SQL Server. `AspNetCore.Diagnostics.HealthChecks` выполняет запрос `SELECT 1` к базе данных, чтобы подтвердить, что подключение к базе данных находится в работоспособном состоянии.
 
 > [!WARNING]
 > При проверке подключения к базе данных с помощью запроса выберите запрос, возвращающий результат быстро. Метод запроса связан с риском перегрузки базы данных и снижения ее производительности. В большинстве случаев тестовый запрос не является обязательным. Достаточно успешного подключения к базе данных. Если вам понадобится выполнить запрос, выберите простой запрос SELECT, например `SELECT 1`.
 
-Чтобы использовать библиотеку BeatPulse, включите ссылку на пакет [AspNetCore.HealthChecks.SqlServer](https://www.nuget.org/packages/AspNetCore.HealthChecks.SqlServer/).
+Добавьте ссылку на пакет [AspNetCore.HealthChecks.SqlServer](https://www.nuget.org/packages/AspNetCore.HealthChecks.SqlServer/).
 
 Укажите допустимую строку подключения к базе данных в файле примера приложения *appsettings.json*. Приложение использует базу данных SQL Server с именем `HealthCheckSample`:
 
 [!code-json[](health-checks/samples/2.x/HealthChecksSample/appsettings.json?highlight=3)]
 
-Зарегистрируйте службы проверки работоспособности при помощи <xref:Microsoft.Extensions.DependencyInjection.HealthCheckServiceCollectionExtensions.AddHealthChecks*> в `Startup.ConfigureServices`. Пример приложения вызывает метод BeatPulse `AddSqlServer` со строкой подключения базы данных (*DbHealthStartup.cs*):
+Зарегистрируйте службы проверки работоспособности при помощи <xref:Microsoft.Extensions.DependencyInjection.HealthCheckServiceCollectionExtensions.AddHealthChecks*> в `Startup.ConfigureServices`. Пример приложения вызывает метод `AddSqlServer` со строкой подключения базы данных (*DbHealthStartup.cs*):
 
 [!code-csharp[](health-checks/samples/2.x/HealthChecksSample/DbHealthStartup.cs?name=snippet_ConfigureServices)]
 
@@ -312,7 +312,7 @@ dotnet run --scenario db
 ```
 
 > [!NOTE]
-> [BeatPulse](https://github.com/Xabaril/BeatPulse) не поддерживается и не обслуживается корпорацией Майкрософт.
+> [AspNetCore.Diagnostics.HealthChecks](https://github.com/Xabaril/AspNetCore.Diagnostics.HealthChecks) — это порт [BeatPulse](https://github.com/xabaril/beatpulse), и он не поддерживается корпорацией Майкрософт.
 
 ## <a name="entity-framework-core-dbcontext-probe"></a>Проверка DbContext в Entity Framework Core
 
@@ -469,9 +469,9 @@ dotnet run --scenario writer
 ```
 
 > [!NOTE]
-> [BeatPulse](https://github.com/Xabaril/BeatPulse) включает сценарии для проверки работоспособности на основе метрик, включая проверки жизнеспособности для дискового хранилища и максимальных значений.
+> [AspNetCore.Diagnostics.HealthChecks](https://github.com/Xabaril/AspNetCore.Diagnostics.HealthChecks) содержит сценарии для проверки работоспособности на основе метрик, включая проверки жизнеспособности для дискового хранилища и максимальных значений.
 >
-> [BeatPulse](https://github.com/Xabaril/BeatPulse) не поддерживается и не обслуживается корпорацией Майкрософт.
+> [AspNetCore.Diagnostics.HealthChecks](https://github.com/Xabaril/AspNetCore.Diagnostics.HealthChecks) — это порт [BeatPulse](https://github.com/xabaril/beatpulse), и он не поддерживается корпорацией Майкрософт.
 
 ## <a name="filter-by-port"></a>Фильтр по портам
 
@@ -681,6 +681,6 @@ Task PublishAsync(HealthReport report, CancellationToken cancellationToken);
 ::: moniker-end
 
 > [!NOTE]
-> [BeatPulse](https://github.com/Xabaril/BeatPulse) включает издатели для нескольких систем, в том числе [Application Insights](/azure/application-insights/app-insights-overview).
+> [AspNetCore.Diagnostics.HealthChecks](https://github.com/Xabaril/AspNetCore.Diagnostics.HealthChecks) содержит издатели для нескольких систем, в том числе [Application Insights](/azure/application-insights/app-insights-overview).
 >
-> [BeatPulse](https://github.com/Xabaril/BeatPulse) не поддерживается и не обслуживается корпорацией Майкрософт.
+> [AspNetCore.Diagnostics.HealthChecks](https://github.com/Xabaril/AspNetCore.Diagnostics.HealthChecks) — это порт [BeatPulse](https://github.com/xabaril/beatpulse), и он не поддерживается корпорацией Майкрософт.

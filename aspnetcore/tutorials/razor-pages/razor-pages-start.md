@@ -3,14 +3,14 @@ title: Учебник. Начало работы с Razor Pages в ASP.NET Core
 author: rick-anderson
 description: В этой серии руководств объясняется, как использовать Razor Pages в ASP.NET Core. Узнайте, как создать модель, сгенерировать код для Razor Pages, использовать Entity Framework Core и SQL Server для доступа к данным, добавлять функции поиска и проверки ввода, а также использовать возможность миграции для обновления модели.
 ms.author: riande
-ms.date: 12/5/2018
+ms.date: 05/09/2019
 uid: tutorials/razor-pages/razor-pages-start
-ms.openlocfilehash: 1d264ca4a605d8291e273a8f054c92e7eefa5548
-ms.sourcegitcommit: 5b0eca8c21550f95de3bb21096bd4fd4d9098026
+ms.openlocfilehash: 9307291756baf1bef714d6dae2f8d25d3aa6f922
+ms.sourcegitcommit: 3376f224b47a89acf329b2d2f9260046a372f924
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 04/27/2019
-ms.locfileid: "64891159"
+ms.lasthandoff: 05/10/2019
+ms.locfileid: "65517111"
 ---
 # <a name="tutorial-get-started-with-razor-pages-in-aspnet-core"></a>Учебник. Начало работы с Razor Pages в ASP.NET Core
 
@@ -59,7 +59,7 @@ ms.locfileid: "64891159"
 
 * Откройте [Интегрированный терминал](https://code.visualstudio.com/docs/editor/integrated-terminal).
 
-* Смените каталог (`cd`) на папку, в которой будет содержаться проект.
+* Перейдите в каталог `cd`, в котором находится проект.
 
 * Выполните следующие команды:
 
@@ -69,7 +69,7 @@ ms.locfileid: "64891159"
   ```
 
   * Команда `dotnet new` создает новый проект Razor Pages в папке *RazorPagesMovie*.
-  * Команда `code` открывает папку *RazorPagesMovie* в новом экземпляре Visual Studio Code.
+  * Команда `code` открывает папку *RazorPagesMovie* в текущем экземпляре Visual Studio Code.
 
   Появится диалоговое окно с предупреждением **В RazorPagesMovie отсутствуют необходимые ресурсы для сборки и отладки. Добавить их?**
 

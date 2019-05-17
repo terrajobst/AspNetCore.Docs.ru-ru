@@ -3,14 +3,14 @@ title: Области в ASP.NET Core
 author: rick-anderson
 description: Сведения о том, что области — это возможность ASP.NET MVC, которая служит для объединения связанных функций в группу в виде отдельного пространства имен (для маршрутизации) и структуры папок (для представлений).
 ms.author: riande
-ms.date: 02/14/2019
+ms.date: 05/06/2019
 uid: mvc/controllers/areas
-ms.openlocfilehash: 79bc023a7bd00a9d4de375e3cddaafd148251469
-ms.sourcegitcommit: 57792e5f594db1574742588017c708350958bdf0
+ms.openlocfilehash: 35c7682861f7392b0bcda7326e4d7f5ccc356bda
+ms.sourcegitcommit: b508b115107e0f8d7f62b25cfcc8ad45e1373459
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58264768"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65212589"
 ---
 # <a name="areas-in-aspnet-core"></a>Области в ASP.NET Core
 
@@ -25,7 +25,7 @@ ms.locfileid: "58264768"
 * Приложение состоит из нескольких высокоуровневых функциональных частей, которые могут быть разделены логически.
 * Необходимо разделить приложение так, чтобы с каждой функциональной областью можно было работать отдельно.
 
-[Просмотреть или скачать пример кода](https://github.com/aspnet/Docs/tree/master/aspnetcore/mvc/controllers/areas/samples) ([описание скачивания](xref:index#how-to-download-a-sample)). Пример загрузки содержит простое приложение для тестирования областей.
+[Просмотреть или скачать пример кода](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/controllers/areas/samples) ([описание скачивания](xref:index#how-to-download-a-sample)). Пример загрузки содержит простое приложение для тестирования областей.
 
 Если вы используете Razor Pages, см. раздел [Области c Razor Pages](#areas-with-razor-pages) далее в этом документе.
 
@@ -34,8 +34,13 @@ ms.locfileid: "58264768"
 Типичное веб-приложение ASP.NET Core, использующее области, контроллеры и представления, содержит следующие элементы.
 
 * [Структура папки области](#area-folder-structure).
-* Контроллеры с атрибутом [&lbrack;Область&rbrack;](#attribute) для привязки контроллера к области: [!code-csharp[](areas/samples/MVCareas/Areas/Products/Controllers/ManageController.cs?name=snippet2)]
-* [Маршрут к области, добавленный к запуску](#add-area-route): [!code-csharp[](areas/samples/MVCareas/Startup.cs?name=snippet2&highlight=3-6)]
+* Контроллеры с атрибутом [&lbrack;Область&rbrack;](#attribute) для привязки контроллера к области:
+
+  [!code-csharp[](areas/samples/MVCareas/Areas/Products/Controllers/ManageController.cs?name=snippet2)]
+
+* [Маршрут к области, добавленный к запуску](#add-area-route):
+
+  [!code-csharp[](areas/samples/MVCareas/Startup.cs?name=snippet2&highlight=3-6)]
 
 ### <a name="area-folder-structure"></a>Структура папки области
 
@@ -99,7 +104,7 @@ ms.locfileid: "58264768"
 
 ### <a name="link-generation-with-mvc-areas"></a>Создание ссылки с областями MVC
 
-В следующем коде из [примера загрузки](https://github.com/aspnet/Docs/tree/master/aspnetcore/mvc/controllers/areas/samples) показано создание ссылок с указанной областью:
+В следующем коде из [примера загрузки](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/controllers/areas/samples) показано создание ссылок с указанной областью:
 
 [!code-cshtml[](areas/samples/MVCareas/Views/Shared/_testLinksPartial.cshtml?name=snippet)]
 
@@ -127,7 +132,7 @@ ms.locfileid: "58264768"
 
 ## <a name="areas-with-razor-pages"></a>Области c Razor Pages
 
-Для создания областей с Razor Pages необходима папка *Areas/&lt;имя_области&gt;/Pages* в корневом каталоге приложения. В [этом примере](https://github.com/aspnet/Docs/tree/master/aspnetcore/mvc/controllers/areas/samples) используется следующая структура папок.
+Для создания областей с Razor Pages необходима папка *Areas/&lt;имя_области&gt;/Pages* в корневом каталоге приложения. В [этом примере](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/controllers/areas/samples) используется следующая структура папок.
 
 * Имя проекта
   * Области
@@ -144,7 +149,7 @@ ms.locfileid: "58264768"
 
 ### <a name="link-generation-with-razor-pages-and-areas"></a>Создание ссылки с Razor Pages и областями
 
-В следующем коде из [этого примера](https://github.com/aspnet/Docs/tree/master/aspnetcore/mvc/controllers/areas/samples/RPareas) показано создание ссылок с указанной областью (например, `asp-area="Products"`).
+В следующем коде из [этого примера](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/controllers/areas/samples/RPareas) показано создание ссылок с указанной областью (например, `asp-area="Products"`).
 
 [!code-cshtml[](areas/samples/RPareas/Pages/Shared/_testLinksPartial.cshtml?name=snippet)]
 
@@ -160,7 +165,7 @@ ms.locfileid: "58264768"
 
 * Ссылка, созданная с помощью `<a asp-page="/Manage/About">` будет правильной, только если последний запрос был к странице в области `Services`. Например `/Services/Manage/`, `/Services/Manage/Index` или `/Services/Manage/About`.
 * Ссылка, созданная с помощью `<a asp-page="/About">` будет правильной, только если последний запрос был к странице в области `/Home`.
-* Это код из [этого примера](https://github.com/aspnet/Docs/tree/master/aspnetcore/mvc/controllers/areas/samples/RPareas).
+* Это код из [этого примера](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/controllers/areas/samples/RPareas).
 
 ### <a name="import-namespace-and-tag-helpers-with-viewimports-file"></a>Импорт пространства имен и вспомогательных функций тегов с помощью файла _ViewImports
 
@@ -179,7 +184,9 @@ ms.locfileid: "58264768"
 
 [!code-cshtml[](areas/samples/RPareas/Areas/Products/Pages/_ViewImports.cshtml)]
 
-В следующем примере показана разметка страницы с кодом Razor */Products/About*: [!code-cshtml[](areas/samples/RPareas/Areas/Products/Pages/About.cshtml)]
+В следующем примере показана разметка страницы с кодом Razor */Products/About*:
+
+[!code-cshtml[](areas/samples/RPareas/Areas/Products/Pages/About.cshtml)]
 
 В предыдущем файле пространство имен и директива `@addTagHelper` импортируются в файл с помощью файла *Areas/Products/Pages/_ViewImports.cshtml*.
 
