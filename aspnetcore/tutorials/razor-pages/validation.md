@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 12/5/2018
 uid: tutorials/razor-pages/validation
-ms.openlocfilehash: e9214139c0e6e958445feb13b6350bad376a0152
-ms.sourcegitcommit: 5b0eca8c21550f95de3bb21096bd4fd4d9098026
+ms.openlocfilehash: 38e1fff9c7a212af992951dbf57e124cae69d36f
+ms.sourcegitcommit: ccbb84ae307a5bc527441d3d509c20b5c1edde05
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 04/27/2019
-ms.locfileid: "64884169"
+ms.lasthandoff: 05/19/2019
+ms.locfileid: "65874991"
 ---
 # <a name="add-validation-to-an-aspnet-core-razor-page"></a>Добавление проверки на страницу Razor в ASP.NET Core
 
@@ -28,22 +28,7 @@ ms.locfileid: "64884169"
 
 Ярким примером применения принципа "Не повторяйся" является поддержка проверки, реализуемая на страницах Razor и на платформе Entity Framework. Правила проверки декларативно определяются в одном месте (в классе модели) и затем применяются в рамках всего приложения.
 
-### <a name="adding-validation-rules-to-the-movie-model"></a>Добавление правил проверки к модели фильма
-
-Откройте файл *Models/Movie.cs*. Класс [DataAnnotations](/aspnet/mvc/overview/older-versions/mvc-music-store/mvc-music-store-part-6) предоставляет набор встроенных атрибутов проверки, которые декларативно применяются к классу или свойству. Кроме того, DataAnnotations содержит атрибуты форматирования (такие как `DataType`), которые обеспечивают форматирование и не предназначены для проверки.
-
-Обновите класс `Movie`, чтобы использовать преимущества атрибутов проверки `Required`, `StringLength`, `RegularExpression` и `Range`.
-
-[!code-csharp[](~/tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie22/Models/MovieDateRatingDA.cs?name=snippet1)]
-
-Атрибуты проверки определяют поведение, которое применяется к свойствам модели.
-
-* Атрибуты `Required` и `MinimumLength` означают, что свойство должно иметь значение. Но пользователь может ввести пробел, чтобы соблюсти ограничение проверки для типа, допускающего значение null. [Типы значений](/dotnet/csharp/language-reference/keywords/value-types), не допускающие значение null (например, `decimal`, `int`, `float` и `DateTime`), являются обязательными и не требуют атрибута `Required`.
-* Атрибут `RegularExpression` ограничивает символы, которые может ввести пользователь. В приведенном выше коде строка `Genre` должна начинаться с одной или нескольких заглавных букв, после чего могут следовать ноль или несколько букв, двойных или одинарных кавычек, пробелов или дефисов. Строка `Rating` должна начинаться с одной или нескольких заглавных букв, после чего могут следовать ноль или несколько букв, цифр, двойных или одинарных кавычек, пробелов или дефисов.
-* Атрибут `Range` ограничивает диапазон значений.
-* Атрибут `StringLength` задает максимальную и при необходимости минимальную длину строки. 
-
-Наличие правил проверки, которые автоматически применяются ASP.NET Core, помогает повысить степень надежности приложения. Автоматическая проверка моделей помогает защитить приложение, поскольку вам не приходится беспокоиться о самостоятельной проверке добавляемого кода.
+[!INCLUDE[](~/includes/RP-MVC/validation.md)]
 
 ### <a name="validation-error-ui-in-razor-pages"></a>Пользовательский интерфейс проверки ошибок на страницах Razor
 

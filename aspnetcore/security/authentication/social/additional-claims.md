@@ -2,17 +2,17 @@
 title: Сохранять дополнительные утверждения и маркеры от внешних поставщиков в ASP.NET Core
 author: guardrex
 description: Узнайте, как установить дополнительные утверждения и маркеры от внешних поставщиков.
-monikerRange: '>= aspnetcore-2.0'
+monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 11/11/2018
+ms.date: 05/14/2019
 uid: security/authentication/social/additional-claims
-ms.openlocfilehash: 37c7a51217576669bcaed79d4a212e6412aa8945
-ms.sourcegitcommit: 5b0eca8c21550f95de3bb21096bd4fd4d9098026
+ms.openlocfilehash: e18287e5a4171b3f7a6daa122111448b8447c1da
+ms.sourcegitcommit: ccbb84ae307a5bc527441d3d509c20b5c1edde05
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 04/27/2019
-ms.locfileid: "64897671"
+ms.lasthandoff: 05/19/2019
+ms.locfileid: "65874842"
 ---
 # <a name="persist-additional-claims-and-tokens-from-external-providers-in-aspnet-core"></a>Сохранять дополнительные утверждения и маркеры от внешних поставщиков в ASP.NET Core
 
@@ -24,7 +24,7 @@ ms.locfileid: "64897671"
 
 ## <a name="prerequisites"></a>Предварительные требования
 
-Решите, какие поставщики внешней проверки подлинности для поддержки в приложении. Для каждого поставщика Регистрация приложения и получить идентификатор клиента и секрет клиента. Дополнительные сведения см. в разделе <xref:security/authentication/social/index>. [Пример приложения](#sample-app-instructions) использует [поставщик проверки подлинности Google](xref:security/authentication/google-logins).
+Решите, какие поставщики внешней проверки подлинности для поддержки в приложении. Для каждого поставщика Регистрация приложения и получить идентификатор клиента и секрет клиента. Дополнительные сведения см. в разделе <xref:security/authentication/social/index>. Пример приложения использует [поставщик проверки подлинности Google](xref:security/authentication/google-logins).
 
 ## <a name="set-the-client-id-and-client-secret"></a>Задание идентификатора и секрета клиента
 
@@ -39,7 +39,7 @@ ms.locfileid: "64897671"
 
 Пример приложения настраивает поставщик проверки подлинности Google с Идентификатором клиента и секрет клиента, предоставляемый Google:
 
-[!code-csharp[](additional-claims/samples/2.x/AdditionalClaimsSample/Startup.cs?name=snippet_AddGoogle&highlight=4,6)]
+[!code-csharp[](additional-claims/samples/2.x/ClaimsSample/Startup.cs?name=snippet_AddGoogle&highlight=4,9)]
 
 ## <a name="establish-the-authentication-scope"></a>Установить область проверки подлинности
 
@@ -48,27 +48,39 @@ ms.locfileid: "64897671"
 | Поставщик  | Область                                                            |
 | --------- | ---------------------------------------------------------------- |
 | Facebook  | `https://www.facebook.com/dialog/oauth`                          |
-| Google    | `https://www.googleapis.com/auth/plus.login`                     |
+| Google    | `https://www.googleapis.com/auth/userinfo.profile`               |
 | Майкрософт | `https://login.microsoftonline.com/common/oauth2/v2.0/authorize` |
 | Twitter   | `https://api.twitter.com/oauth/authenticate`                     |
 
-Пример приложения добавляет Google `plus.login` область для запроса входа Google + в разрешениях:
+В примере приложения, Google `userinfo.profile` область автоматически добавляется платформой при <xref:Microsoft.Extensions.DependencyInjection.GoogleExtensions.AddGoogle*> вызывается <xref:Microsoft.AspNetCore.Authentication.AuthenticationBuilder>. Если приложению требуется дополнительные области, их необходимо добавьте в параметры. В следующем примере, Google `https://www.googleapis.com/auth/user.birthday.read` область добавляется для получения день рождения пользователя:
 
-[!code-csharp[](additional-claims/samples/2.x/AdditionalClaimsSample/Startup.cs?name=snippet_AddGoogle&highlight=7)]
+```csharp
+options.Scope.Add("https://www.googleapis.com/auth/user.birthday.read");
+```
 
 ## <a name="map-user-data-keys-and-create-claims"></a>Сопоставить ключи данных пользователя и создать утверждения
 
-В параметрах поставщика, укажите <xref:Microsoft.AspNetCore.Authentication.ClaimActionCollectionMapExtensions.MapJsonKey*> для каждого ключа в внешнего поставщика JSON пользовательские данные для удостоверения приложения для чтения при входе. Дополнительные сведения о типах утверждений, см. в разделе <xref:System.Security.Claims.ClaimTypes>.
+В параметрах поставщика, укажите <xref:Microsoft.AspNetCore.Authentication.ClaimActionCollectionMapExtensions.MapJsonKey*> или <xref:Microsoft.AspNetCore.Authentication.ClaimActionCollectionMapExtensions.MapJsonSubKey*> каждый ключ/подраздел в внешнего поставщика JSON пользовательские данные для удостоверения приложения для чтения при входе. Дополнительные сведения о типах утверждений, см. в разделе <xref:System.Security.Claims.ClaimTypes>.
 
-Пример приложения создает <xref:System.Security.Claims.ClaimTypes.Gender> утверждение от `gender` ключа в данных пользователя Google:
+Пример приложения создает языкового стандарта (`urn:google:locale`) и рисунка (`urn:google:picture`) утверждений от `locale` и `picture` ключи в пользовательских данных Google:
 
-[!code-csharp[](additional-claims/samples/2.x/AdditionalClaimsSample/Startup.cs?name=snippet_AddGoogle&highlight=8)]
+[!code-csharp[](additional-claims/samples/2.x/ClaimsSample/Startup.cs?name=snippet_AddGoogle&highlight=13-14)]
 
-В <xref:Microsoft.AspNetCore.Identity.UI.Pages.Account.Internal.ExternalLoginModel.OnPostConfirmationAsync*>, <xref:Microsoft.AspNetCore.Identity.IdentityUser> (`ApplicationUser`) осуществил вход в приложение с помощью <xref:Microsoft.AspNetCore.Identity.SignInManager%601.SignInAsync*>. Во время входа в систему <xref:Microsoft.AspNetCore.Identity.UserManager%601> можно хранить `ApplicationUser` утверждения для пользовательских данных, доступных из <xref:Microsoft.AspNetCore.Identity.ExternalLoginInfo.Principal*>.
+В <xref:Microsoft.AspNetCore.Identity.UI.Pages.Account.Internal.ExternalLoginModel.OnPostConfirmationAsync*>, <xref:Microsoft.AspNetCore.Identity.IdentityUser> (`ApplicationUser`) осуществил вход в приложение с помощью <xref:Microsoft.AspNetCore.Identity.SignInManager%601.SignInAsync*>. Во время входа в систему <xref:Microsoft.AspNetCore.Identity.UserManager%601> можно хранить `ApplicationUser` утверждений для пользовательских данных, доступных из <xref:Microsoft.AspNetCore.Identity.ExternalLoginInfo.Principal*>.
 
-В примере приложения `OnPostConfirmationAsync` (*Account/ExternalLogin.cshtml.cs*) устанавливает <xref:System.Security.Claims.ClaimTypes.Gender> утверждения для со знаком в `ApplicationUser`:
+В примере приложения `OnPostConfirmationAsync` (*Account/ExternalLogin.cshtml.cs*) устанавливает языковой стандарт (`urn:google:locale`) и рисунка (`urn:google:picture`) утверждения для со знаком в `ApplicationUser`, включая утверждение для <xref:System.Security.Claims.ClaimTypes.GivenName> :
 
-[!code-csharp[](additional-claims/samples/2.x/AdditionalClaimsSample/Pages/Account/ExternalLogin.cshtml.cs?name=snippet_OnPostConfirmationAsync&highlight=30-31)]
+[!code-csharp[](additional-claims/samples/2.x/ClaimsSample/Areas/Identity/Pages/Account/ExternalLogin.cshtml.cs?name=snippet_OnPostConfirmationAsync&highlight=35-51)]
+
+По умолчанию утверждения пользователя хранятся в файле cookie проверки подлинности. Если файл cookie проверки подлинности слишком велико, это может привести приложение сбоем, так как:
+
+* Браузер обнаруживает, что заголовок cookie слишком много времени.
+* Общий размер запроса слишком велик.
+
+Если большой объем сведений о пользователях является обязательным для обработки запросов пользователя:
+
+* Ограничьте количество и размер утверждения пользователей для только что приложение требует обработки запроса.
+* Использовать пользовательский <xref:Microsoft.AspNetCore.Authentication.Cookies.ITicketStore> для по промежуточного слоя проверки подлинности <xref:Microsoft.AspNetCore.Authentication.Cookies.CookieAuthenticationOptions.SessionStore> для хранения идентификаторов всех запросов. Сохранить большие объемы информации идентификации на сервере при отправке только небольшой сеансовый ключ идентификатора клиента.
 
 ## <a name="save-the-access-token"></a>Сохранить маркер доступа
 
@@ -76,70 +88,72 @@ ms.locfileid: "64897671"
 
 В примере приложения задает значение `SaveTokens` для `true` в <xref:Microsoft.AspNetCore.Authentication.Google.GoogleOptions>:
 
-[!code-csharp[](additional-claims/samples/2.x/AdditionalClaimsSample/Startup.cs?name=snippet_AddGoogle&highlight=9)]
+[!code-csharp[](additional-claims/samples/2.x/ClaimsSample/Startup.cs?name=snippet_AddGoogle&highlight=15)]
 
 Когда `OnPostConfirmationAsync` выполняет, сохранить маркер доступа ([ExternalLoginInfo.AuthenticationTokens](xref:Microsoft.AspNetCore.Identity.ExternalLoginInfo.AuthenticationTokens*)) из внешнего поставщика в `ApplicationUser`в `AuthenticationProperties`.
 
-Это пример приложения сохраняет маркер доступа в:
+Это пример приложения сохраняет маркер доступа в `OnPostConfirmationAsync` (Регистрация нового пользователя) и `OnGetCallbackAsync` (ранее зарегистрированного пользователя) в *Account/ExternalLogin.cshtml.cs*:
 
-* `OnPostConfirmationAsync` &ndash; Выполняет для регистрация нового пользователя.
-* `OnGetCallbackAsync` &ndash; Выполняется, если ранее зарегистрированный пользователь входит в приложение.
-
-*Account/ExternalLogin.cshtml.cs*:
-
-[!code-csharp[](additional-claims/samples/2.x/AdditionalClaimsSample/Pages/Account/ExternalLogin.cshtml.cs?name=snippet_OnPostConfirmationAsync&highlight=34-35)]
-
-[!code-csharp[](additional-claims/samples/2.x/AdditionalClaimsSample/Pages/Account/ExternalLogin.cshtml.cs?name=snippet_OnGetCallbackAsync&highlight=31-32)]
+[!code-csharp[](additional-claims/samples/2.x/ClaimsSample/Areas/Identity/Pages/Account/ExternalLogin.cshtml.cs?name=snippet_OnPostConfirmationAsync&highlight=54-56)]
 
 ## <a name="how-to-add-additional-custom-tokens"></a>Как добавить дополнительные пользовательские маркеры
 
 Чтобы продемонстрировать, как добавить пользовательский маркер, который хранится как часть `SaveTokens`, пример приложения добавляет <xref:Microsoft.AspNetCore.Authentication.AuthenticationToken> с текущим <xref:System.DateTime> для [AuthenticationToken.Name](xref:Microsoft.AspNetCore.Authentication.AuthenticationToken.Name*) из `TicketCreated`:
 
-[!code-csharp[](additional-claims/samples/2.x/AdditionalClaimsSample/Startup.cs?name=snippet_AddGoogle&highlight=10-21)]
+[!code-csharp[](additional-claims/samples/2.x/ClaimsSample/Startup.cs?name=snippet_AddGoogle&highlight=17-28)]
 
-## <a name="sample-app-instructions"></a>Примеры инструкций по назначению приложения
+## <a name="creating-and-adding-claims"></a>Создание и добавление утверждений
 
-Этот пример демонстрирует способы:
+Платформа предоставляет общие действия и методы расширения для создания и добавления утверждений в коллекцию. Дополнительные сведения см. в разделах <xref:Microsoft.AspNetCore.Authentication.ClaimActionCollectionMapExtensions> и <xref:Microsoft.AspNetCore.Authentication.ClaimActionCollectionUniqueExtensions>.
 
-* Получите Пол пользователя от Google и сохраняет Пол утверждение со значением.
-* Store маркер доступа Google в пользователя `AuthenticationProperties`.
+Пользователи могут определять настраиваемые действия путем наследования от <xref:Microsoft.AspNetCore.Authentication.OAuth.Claims.ClaimAction> и реализация абстрактного <xref:Microsoft.AspNetCore.Authentication.OAuth.Claims.ClaimAction.Run*> метод.
 
-Чтобы использовать пример приложения:
+Дополнительные сведения см. в разделе <xref:Microsoft.AspNetCore.Authentication.OAuth.Claims>.
 
-1. Регистрация приложения и получить допустимый идентификатор клиента и секрет клиента для проверки подлинности Google. Дополнительные сведения см. в разделе <xref:security/authentication/google-logins>.
-1. Указание идентификатора клиента и секрет клиента для приложения в <xref:Microsoft.AspNetCore.Authentication.Google.GoogleOptions> из `Startup.ConfigureServices`.
-1. Запустите приложение и запрос страницы Мои утверждения. Если пользователь не вошел в систему, которую перенаправляет пользователя приложение в Google. Войдите с помощью Google. Google перенаправляет пользователя обратно к приложению (`/Home/MyClaims`). Пользователь проходит проверку подлинности и загрузке страницы Мои утверждения. Пол утверждения находится в каталоге **утверждения пользователей** со значением, полученный из Google. Маркер доступа появится в **свойства проверки подлинности**.
+## <a name="removal-of-claim-actions-and-claims"></a>Удаление Утверждение действий и утверждений
+
+[ClaimActionCollection.Remove(String)](xref:Microsoft.AspNetCore.Authentication.OAuth.Claims.ClaimActionCollection.Remove*) удаляет все утверждения действия для заданного <xref:Microsoft.AspNetCore.Authentication.OAuth.Claims.ClaimAction.ClaimType> из коллекции. [ClaimActionCollectionMapExtensions.DeleteClaim (ClaimActionCollection, String)](xref:Microsoft.AspNetCore.Authentication.ClaimActionCollectionMapExtensions.DeleteClaim*) удаляет утверждение заданного <xref:Microsoft.AspNetCore.Authentication.OAuth.Claims.ClaimAction.ClaimType> из удостоверения. <xref:Microsoft.AspNetCore.Authentication.ClaimActionCollectionMapExtensions.DeleteClaim*> Чаще всего используется со [OpenID Connect (OIDC)](/azure/active-directory/develop/v2-protocols-oidc) удалить сформированные протокола утверждений.
+
+## <a name="sample-app-output"></a>Образец выходных данных приложения
 
 ```
 User Claims
 
 http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier
-    b36a7b09-9135-4810-b7a5-78697ff23e99
+    9b342344f-7aab-43c2-1ac1-ba75912ca999
 http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name
-    username@gmail.com
+    someone@gmail.com
 AspNet.Identity.SecurityStamp
-    29G2TB881ATCUQFJSRFG1S0QJ0OOAWVT
-http://schemas.xmlsoap.org/ws/2005/05/identity/claims/gender
-    female
-http://schemas.microsoft.com/ws/2008/06/identity/claims/authenticationmethod
-    Google
+    7D4312MOWRYYBFI1KXRPHGOSTBVWSFDE
+http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname
+    Judy
+urn:google:locale
+    en
+urn:google:picture
+    https://lh4.googleusercontent.com/-XXXXXX/XXXXXX/XXXXXX/XXXXXX/photo.jpg
 
 Authentication Properties
 
 .Token.access_token
-    bv42.Dgw...GQMv9ArLPs
+    yc23.AlvoZqz56...1lxltXV7D-ZWP9
 .Token.token_type
     Bearer
 .Token.expires_at
-    2018-08-27T19:08:00.0000000+00:00
+    2019-04-11T22:14:51.0000000+00:00
 .Token.TicketCreated
-    8/27/2018 6:08:00 PM
+    4/11/2019 9:14:52 PM
 .TokenNames
     access_token;token_type;expires_at;TicketCreated
+.persistent
 .issued
-    Mon, 27 Aug 2018 18:08:05 GMT
+    Thu, 11 Apr 2019 20:51:06 GMT
 .expires
-    Mon, 10 Sep 2018 18:08:05 GMT
+    Thu, 25 Apr 2019 20:51:06 GMT
+
 ```
 
 [!INCLUDE[Forward request information when behind a proxy or load balancer section](includes/forwarded-headers-middleware.md)]
+
+## <a name="additional-resources"></a>Дополнительные ресурсы
+
+* [engineering SocialSample приложение ASPNET/AspNetCore](https://github.com/aspnet/AspNetCore/tree/master/src/Security/Authentication/samples/SocialSample) &ndash; связанного примера приложения находится на [репозиторий GitHub aspnet/AspNetCore](https://github.com/aspnet/AspNetCore) `master` engineering ветви. `master` Ветвь содержит код в активной разработке для следующего выпуска ASP.NET Core. Чтобы просмотреть версию примера приложения для новой версии ASP.NET Core, используйте **ветви** раскрывающийся список для выбора ветви выпуска (например `release/2.2`).
