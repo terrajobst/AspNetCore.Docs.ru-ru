@@ -4,14 +4,14 @@ author: rick-anderson
 description: В этом руководстве демонстрируется построение приложения ASP.NET Core 2.x с использованием OAuth 2.0 с внешними поставщиками проверки подлинности.
 ms.author: riande
 ms.custom: mvc
-ms.date: 4/19/2019
+ms.date: 05/10/2019
 uid: security/authentication/social/index
-ms.openlocfilehash: e2d68ac93bdcfa2fc015e8447ea38626787cdb02
-ms.sourcegitcommit: a3926eae3f687013027a2828830c12a89add701f
+ms.openlocfilehash: 8dac8a8a2276388414b6bb1211e970617b001637
+ms.sourcegitcommit: ccbb84ae307a5bc527441d3d509c20b5c1edde05
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65451042"
+ms.lasthandoff: 05/19/2019
+ms.locfileid: "65874811"
 ---
 # <a name="facebook-google-and-external-provider-authentication-in-aspnet-core"></a>Проверка подлинности Facebook, Google и внешних поставщиков в ASP.NET Core
 
@@ -33,10 +33,12 @@ ms.locfileid: "65451042"
 
 # <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-* В меню **Файл** Visual Studio откройте меню **Создать** > **Проект**.
-* Создайте новое веб-приложение ASP.NET Core.
-* Выберите в раскрывающемся списке **ASP.NET Core 2.2**, а затем **Веб-приложение**.
-* Выберите **Изменить проверку подлинности** и задайте способ **Учетные записи отдельных пользователей**.
+* Создайте новый проект.
+* Выберите **Веб-приложение ASP.NET Core** и нажмите **Далее**.
+* Укажите **Имя проекта** и подтвердите либо измените **Расположение**. Выберите **Создать**.
+* В раскрывающемся списке выберите **ASP.NET Core 2.2**. В списке шаблонов выберите **Веб-приложение**.
+* В разделе **Проверка подлинности** выберите **Изменить** и в качестве типа проверки подлинности задайте **Индивидуальные учетные записи пользователей**. Нажмите кнопку **ОК**.
+* В окне **Создать веб-приложение ASP.NET Core** выберите **Создать**.
 
 # <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code.](#tab/visual-studio-code)
 
@@ -56,27 +58,14 @@ ms.locfileid: "65451042"
   * `-au Individual` создает код для отдельной проверки подлинности.
   * Команда `code` открывает папку *WebApp1* в новом экземпляре Visual Studio Code.
 
-  Появится диалоговое окно с предупреждением **В WebApp1 отсутствуют необходимые ресурсы для сборки и отладки. Добавить их?**
-
-* Выберите ответ **Да**.
+* Появится диалоговое окно с предупреждением **В WebApp1 отсутствуют необходимые ресурсы для сборки и отладки. Добавить их?** Выберите ответ **Да**.
 
 # <a name="visual-studio-for-mactabvisual-studio-mac"></a>[Visual Studio для Mac](#tab/visual-studio-mac)
 
-В терминале выполните следующую команду:
-
-<!-- TODO: update these instruction once mac support 2.2 projects -->
-
-```console
-dotnet new webapp -o WebApp1 -au Individual
-```
-
-Указанные выше команды используют [интерфейс командной строки .NET Core](/dotnet/core/tools/dotnet) для создания проекта Razor Pages.
-
-## <a name="open-the-project"></a>Открытие проекта
-
-В Visual Studio откройте меню **Файл > Открыть** и выберите файл *WebApp1.csproj*.
-
-<!-- End of VS tabs -->
+* Выберите **Файл** > **Новое решение**.
+* Выберите **.NET Core** > **Приложение** на боковой панели. Выберите шаблон **Веб-приложение**. Выберите **Далее**.
+* В раскрывающемся списке **Целевая платформа** выберите **.NET Core 2.2**. Выберите **Далее**.
+* Укажите **Имя проекта**. Подтвердите или измените **Расположение**. Выберите **Создать**.
 
 ---
 
