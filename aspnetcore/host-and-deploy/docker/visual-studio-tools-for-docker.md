@@ -6,23 +6,23 @@ ms.author: scaddie
 ms.custom: mvc
 ms.date: 09/12/2018
 uid: host-and-deploy/docker/visual-studio-tools-for-docker
-ms.openlocfilehash: 3bf3d8d0a627d97090e3ce9fef7e380f03c7626d
-ms.sourcegitcommit: 5b0eca8c21550f95de3bb21096bd4fd4d9098026
+ms.openlocfilehash: b0d884fe2fe56f267ad70c388a08cd3fe6256364
+ms.sourcegitcommit: 6afe57fb8d9055f88fedb92b16470398c4b9b24a
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 04/27/2019
-ms.locfileid: "64888369"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65610377"
 ---
 # <a name="visual-studio-tools-for-docker-with-aspnet-core"></a>Использование средств Visual Studio для Docker с ASP.NET Core
 
-Visual Studio 2017 поддерживает создание, отладку и запуск контейнерных приложений ASP.NET Core, предназначенных для .NET Core. Поддерживаются контейнеры Windows и Linux.
+Visual Studio 2017 и более поздних версий поддерживает сборку, отладку и запуск контейнерных приложений ASP.NET Core для работы с .NET Core. Поддерживаются контейнеры Windows и Linux.
 
 [Просмотреть или скачать образец кода](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/host-and-deploy/docker/visual-studio-tools-for-docker/samples) ([как скачивать](xref:index#how-to-download-a-sample))
 
 ## <a name="prerequisites"></a>Предварительные требования
 
 * [Docker для Windows](https://docs.docker.com/docker-for-windows/install/)
-* [Visual Studio 2017](https://visualstudio.microsoft.com) с рабочей нагрузкой **Кроссплатформенная разработка .NET Core**
+* [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/?utm_medium=microsoft&utm_source=docs.microsoft.com&utm_campaign=inline+link&utm_content=download+vs2019) с рабочей нагрузкой **Кроссплатформенная разработка .NET Core**
 
 ## <a name="installation-and-setup"></a>Установка и настройка
 
@@ -112,7 +112,7 @@ Visual Studio 2017 версии 15.8 или более поздние вер�
 Помимо базовых [Предварительных требований](#prerequisites) для решения по оркестрации [Service Fabric](/azure/service-fabric/) необходимо выполнить следующие предварительные условия:
 
 * [Пакет SDK для Microsoft Azure Service Fabric](https://www.microsoft.com/web/handlers/webpi.ashx?command=getinstallerredirect&appid=MicrosoftAzure-ServiceFabric-CoreSDK) версии 2.6 или более поздней версии
-* Рабочая нагрузка **Разработка для Azure** Visual Studio 2017
+* Рабочая нагрузка **Разработки Azure** в Visual Studio
 
 Service Fabric не поддерживает запуск контейнеров Linux в кластере локальной разработки в Windows. Если в проекте уже используется контейнер Linux, Visual Studio предложит переключиться на контейнеры Windows.
 

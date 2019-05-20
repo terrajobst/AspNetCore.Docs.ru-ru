@@ -3,14 +3,15 @@ title: Просмотр компонентов в ASP.NET Core
 author: rick-anderson
 description: Узнайте, как компоненты представления используются в ASP.NET Core и как добавить их в приложения.
 ms.author: riande
-ms.date: 1/30/2019
+ms.custom: mvc
+ms.date: 5/14/2019
 uid: mvc/views/view-components
-ms.openlocfilehash: 2bcf6411933b884c2f96d926827079dfbc25ca74
-ms.sourcegitcommit: 5b0eca8c21550f95de3bb21096bd4fd4d9098026
+ms.openlocfilehash: 17fd7aa977868d522df9f27e0c23d07b016bfb7c
+ms.sourcegitcommit: 3ee6ee0051c3d2c8d47a58cb17eef1a84a4c46a0
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 04/27/2019
-ms.locfileid: "64891279"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65621070"
 ---
 # <a name="view-components-in-aspnet-core"></a>Просмотр компонентов в ASP.NET Core
 
@@ -40,6 +41,8 @@ ms.locfileid: "64891279"
 * Панель входа, которая должна отображаться на каждой странице и содержит ссылки для выхода или входа в зависимости от состояния входа пользователя
 
 Компонент представления состоит из двух частей: класса (обычно производного от [ViewComponent](/dotnet/api/microsoft.aspnetcore.mvc.viewcomponent)) и возвращаемого результата (обычно это представление). Как и контроллеры, компонент представления может быть объектом POCO, но большинству разработчиков потребуются преимущества методов и свойств, доступные при наследовании от `ViewComponent`.
+
+При оценке компонентов представлений на соответствие требованиям приложения попробуйте вместо этого использовать компоненты Razor. Компоненты Razor также объединяют разметку с кодом C# для создания многоразовых единиц пользовательского интерфейса. Компоненты Razor предназначены для повышения производительности разработчика при разработке логики и структуры пользовательского интерфейса на стороне клиента. Для получения дополнительной информации см. <xref:blazor/components>.
 
 ## <a name="creating-a-view-component"></a>Создание компонента представления
 

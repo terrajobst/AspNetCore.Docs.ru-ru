@@ -3,14 +3,14 @@ title: Области в ASP.NET Core
 author: rick-anderson
 description: Сведения о том, что области — это возможность ASP.NET MVC, которая служит для объединения связанных функций в группу в виде отдельного пространства имен (для маршрутизации) и структуры папок (для представлений).
 ms.author: riande
-ms.date: 05/06/2019
+ms.date: 05/10/2019
 uid: mvc/controllers/areas
-ms.openlocfilehash: 35c7682861f7392b0bcda7326e4d7f5ccc356bda
-ms.sourcegitcommit: b508b115107e0f8d7f62b25cfcc8ad45e1373459
+ms.openlocfilehash: f3a75bc307a206e43241b421f448b09011868d08
+ms.sourcegitcommit: ffe3ed7921ec6c7c70abaac1d10703ec9a43374c
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65212589"
+ms.lasthandoff: 05/11/2019
+ms.locfileid: "65535973"
 ---
 # <a name="areas-in-aspnet-core"></a>Области в ASP.NET Core
 
@@ -169,9 +169,9 @@ ms.locfileid: "65212589"
 
 ### <a name="import-namespace-and-tag-helpers-with-viewimports-file"></a>Импорт пространства имен и вспомогательных функций тегов с помощью файла _ViewImports
 
-Файл *_ViewImports* можно добавить к каждой области в папке *Pages*, чтобы импортировать пространство имен и вспомогательные функции тегов для каждой страницы с кодом Razor в папке.
+Файл *_ViewImports.cshtml* файл можно добавить к каждой области папки *Pages* для импорта пространства имен и вспомогательных функций тегов в каждую папку страницы Razor Pages.
 
-Рассмотрим область *Services* из примера кода, которая не содержит файл *_ViewImports*. В следующем примере показана разметка страницы с кодом Razor */Services/Manage/About*.
+Рассмотрите область *служб* в примере кода, которая не содержит файл *_ViewImports.cshtml*. В следующем примере показана разметка страницы с кодом Razor */Services/Manage/About*.
 
 [!code-cshtml[](areas/samples/RPareas/Areas/Services/Pages/Manage/About.cshtml)]
 
@@ -180,7 +180,7 @@ ms.locfileid: "65212589"
 * Для указания модели (`@model RPareas.Areas.Services.Pages.Manage.AboutModel`) необходимо использовать полное доменное имя.
 * [Вспомогательные функции тегов](xref:mvc/views/tag-helpers/intro) включены с помощью `@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers`.
 
-В этом примере область Products содержит такой файл *_ViewImports*:
+В примере загрузка область продуктов содержит следующий файл *_ViewImports.cshtml*:
 
 [!code-cshtml[](areas/samples/RPareas/Areas/Products/Pages/_ViewImports.cshtml)]
 
@@ -198,4 +198,4 @@ ms.locfileid: "65212589"
 
 ### <a name="publishing-areas"></a>Публикация областей
 
-Все файлы `*.cshtml` и `wwwroot/**` публикуются в каталоге выходных данных при включении элемента `<Project Sdk="Microsoft.NET.Sdk.Web">` в файл CSPROJ.
+Все файлы CSHTML и файлы в каталоге *wwwroot* публикуются в выходных данных, если в файл CSPROJ включен `<Project Sdk="Microsoft.NET.Sdk.Web">`.

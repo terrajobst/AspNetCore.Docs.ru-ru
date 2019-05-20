@@ -5,14 +5,14 @@ description: Пошаговое создание приложения Blazor.
 monikerRange: '>= aspnetcore-3.0'
 ms.author: riande
 ms.custom: mvc
-ms.date: 04/18/2019
+ms.date: 05/14/2019
 uid: tutorials/first-blazor-app
-ms.openlocfilehash: d235fec4e128ad8622a06d301eeac15c4862c159
-ms.sourcegitcommit: dd9c73db7853d87b566eef136d2162f648a43b85
+ms.openlocfilehash: c1b142ebdbd85eb10ddf8c8b70edd9782732a4f1
+ms.sourcegitcommit: 3ee6ee0051c3d2c8d47a58cb17eef1a84a4c46a0
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65087726"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65621101"
 ---
 # <a name="build-your-first-blazor-app"></a>Создание приложения Blazor
 
@@ -151,6 +151,14 @@ ms.locfileid: "65087726"
    ```
 
 1. Скомпилируйте и запустите приложение. Посетите новую страницу Todo, чтобы убедиться, что ссылка на компонент Todo работает правильно.
+
+1. При создании приложения Blazor на стороне сервера добавьте пространство имен приложения в файл *\_Imports.razor*. Следующая инструкция `@using` предполагает, что пространство имен приложения является `WebApplication`:
+
+   ```cshtml
+   @using WebApplication
+   ```
+   
+   Клиентские приложения Blazor включают пространство имен приложения по умолчанию в файле *\_Imports.razor*.
 
 1. Добавьте в корень проекта файл *TodoItem.cs*, который будет размещать класс для элемента списка дел. Используйте следующий код C# для класса `TodoItem`.
 
