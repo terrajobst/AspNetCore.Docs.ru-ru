@@ -7,12 +7,12 @@ ms.author: tdykstra
 ms.custom: mvc
 ms.date: 01/17/2019
 uid: fundamentals/startup
-ms.openlocfilehash: 362186be6feeeefeca3c56688ee6420de5fb9659
-ms.sourcegitcommit: 5b0eca8c21550f95de3bb21096bd4fd4d9098026
+ms.openlocfilehash: 7e1741d2bed15f36a967713a2f9bd0d93801c8d0
+ms.sourcegitcommit: ccbb84ae307a5bc527441d3d509c20b5c1edde05
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 04/27/2019
-ms.locfileid: "64884509"
+ms.lasthandoff: 05/19/2019
+ms.locfileid: "65874942"
 ---
 # <a name="app-startup-in-aspnet-core"></a>Запуск приложения в ASP.NET Core
 
@@ -27,7 +27,7 @@ ms.locfileid: "64884509"
 * При необходимости содержит метод <xref:Microsoft.AspNetCore.Hosting.StartupBase.ConfigureServices*> для настройки *служб* приложения. Служба — многократно используемый компонент, обеспечивающий функциональность приложения. Службы настраиваются &mdash; или *регистрируются*&mdash;в `ConfigureServices` и используются в приложениях с помощью [внедрения зависимостей (DI)](xref:fundamentals/dependency-injection) или <xref:Microsoft.AspNetCore.Builder.IApplicationBuilder.ApplicationServices*>.
 * Содержит метод <xref:Microsoft.AspNetCore.Hosting.StartupBase.Configure*> для создания конвейера обработки запросов приложения.
 
-`ConfigureServices` и `Configure` вызываются средой выполнения при запуске приложения:
+`ConfigureServices` и `Configure` вызываются средой выполнения ASP.NET Core при запуске приложения:
 
 [!code-csharp[](startup/sample_snapshot/Startup1.cs?highlight=4,10)]
 

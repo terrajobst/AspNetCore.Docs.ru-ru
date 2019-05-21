@@ -7,12 +7,12 @@ ms.author: scaddie
 ms.custom: mvc
 ms.date: 05/10/2019
 uid: fundamentals/http-requests
-ms.openlocfilehash: 540f14ad2b290d276436033a94d4c815888e5a95
-ms.sourcegitcommit: ffe3ed7921ec6c7c70abaac1d10703ec9a43374c
+ms.openlocfilehash: 8b95f63c0e06a2b7d1d66064def192f91b8ffbb4
+ms.sourcegitcommit: ccbb84ae307a5bc527441d3d509c20b5c1edde05
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 05/11/2019
-ms.locfileid: "65536007"
+ms.lasthandoff: 05/19/2019
+ms.locfileid: "65874963"
 ---
 # <a name="make-http-requests-using-ihttpclientfactory-in-aspnet-core"></a>Выполнения HTTP-запросов с помощью IHttpClientFactory в ASP.NET Core
 
@@ -20,7 +20,7 @@ ms.locfileid: "65536007"
 
 <xref:System.Net.Http.IHttpClientFactory> можно зарегистрировать и использовать для настройки и создания экземпляров <xref:System.Net.Http.HttpClient> в приложении. Так вы получите следующие преимущества:
 
-* Центральное расположение для именования и настройки логических экземпляров `HttpClient`. Например, можно зарегистрировать и использовать клиент *github* для доступа к GitHub. Можно зарегистрировать клиент по умолчанию для других целей.
+* Центральное расположение для именования и настройки логических экземпляров `HttpClient`. Например, можно зарегистрировать и настроить клиент *github* для доступа к [GitHub](https://github.com/). Можно зарегистрировать клиент по умолчанию для других целей.
 * Кодификация концепции исходящего ПО промежуточного слоя путем делегирования обработчиков в `HttpClient` и предоставление расширений для ПО промежуточного слоя на основе Polly для использования этой возможности.
 * Управление созданием пулов и временем существования базовых экземпляров `HttpClientMessageHandler` с целью избежать обычных проблем с DNS, которые возникают при управлении временем существования `HttpClient` вручную.
 * Настройка параметров ведения журнала (через `ILogger`) для всех запросов, отправленных через клиентов, созданных фабрикой.
