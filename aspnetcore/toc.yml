@@ -277,6 +277,8 @@
       items:
         - name: Обзор
           uid: blazor/index
+        - name: Поддерживаемые платформы
+          uid: blazor/supported-platforms
         - name: Начало работы
           uid: blazor/get-started
         - name: Модели размещения
