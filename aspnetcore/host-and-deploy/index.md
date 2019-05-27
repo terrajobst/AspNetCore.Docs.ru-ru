@@ -2,16 +2,17 @@
 title: Размещение и развертывание ASP.NET Core
 author: guardrex
 description: Сведения о настройке сред размещения и развертывании приложений ASP.NET Core.
+monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 12/06/2018
+ms.date: 05/12/2019
 uid: host-and-deploy/index
-ms.openlocfilehash: f443a8ee28a859b5075a8bb03016407af9a3ddb1
-ms.sourcegitcommit: 5b0eca8c21550f95de3bb21096bd4fd4d9098026
+ms.openlocfilehash: 068c5f357b8010d78493a78a10c353e3317f3867
+ms.sourcegitcommit: b4ef2b00f3e1eb287138f8b43c811cb35a100d3e
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 04/27/2019
-ms.locfileid: "64882109"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65969885"
 ---
 # <a name="host-and-deploy-aspnet-core"></a>Размещение и развертывание ASP.NET Core
 
@@ -46,19 +47,9 @@ ms.locfileid: "64882109"
 
 ## <a name="set-up-a-reverse-proxy"></a>Настройка обратного прокси-сервера
 
-::: moniker range=">= aspnetcore-2.0"
-
 Если приложение использует сервер [Kestrel](xref:fundamentals/servers/kestrel), вы можете использовать [Nginx](xref:host-and-deploy/linux-nginx), [Apache](xref:host-and-deploy/linux-apache) или [IIS](xref:host-and-deploy/iis/index) в качестве обратного прокси-сервера. Обратный прокси-сервер получает HTTP-запросы из Интернета и пересылает их в Kestrel.
 
-Любая из этих конфигураций&mdash;с обратным прокси-сервером и без него &mdash;является поддерживаемой для размещения основных компонентов приложений ASP.NET версии 2.0 и выше. Дополнительные сведения см. в статье [Использование Kestrel с обратным прокси-сервером](xref:fundamentals/servers/kestrel#when-to-use-kestrel-with-a-reverse-proxy).
-
-::: moniker-end
-
-::: moniker range="< aspnetcore-2.0"
-
-Если приложение использует сервер [Kestrel](xref:fundamentals/servers/kestrel), и к приложению открыт доступ из Интернета, используйте в качестве обратного прокси-сервера [nginx](xref:host-and-deploy/linux-nginx), [Apache](xref:host-and-deploy/linux-apache) или [IIS](xref:host-and-deploy/iis/index). Обратный прокси-сервер получает HTTP-запросы из Интернета и пересылает их в Kestrel. Основной причиной использования обратного прокси-сервера является безопасность. Дополнительные сведения см. в статье [Использование Kestrel с обратным прокси-сервером](xref:fundamentals/servers/kestrel?tabs=aspnetcore1x#when-to-use-kestrel-with-a-reverse-proxy).
-
-::: moniker-end
+Любая из этих конфигураций &mdash; с обратным прокси-сервером и без него &mdash; является поддерживаемой конфигурацией для размещения. Дополнительные сведения см. в статье [Использование Kestrel с обратным прокси-сервером](xref:fundamentals/servers/kestrel#when-to-use-kestrel-with-a-reverse-proxy).
 
 ## <a name="proxy-server-and-load-balancer-scenarios"></a>Сценарии использования прокси-сервера и подсистемы балансировки нагрузки
 

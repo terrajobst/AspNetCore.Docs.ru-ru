@@ -7,12 +7,12 @@ ms.author: jamesnk
 ms.custom: mvc
 ms.date: 04/09/2019
 uid: grpc/configuration
-ms.openlocfilehash: 66dfb9ec136616f10c1b7aaad766e18813b87de4
-ms.sourcegitcommit: dd9c73db7853d87b566eef136d2162f648a43b85
+ms.openlocfilehash: 851c9ca1f7d62f6f368df66bb38eb4bbaf64bf32
+ms.sourcegitcommit: 5d384db2fa9373a93b5d15e985fb34430e49ad7a
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65087352"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66041893"
 ---
 # <a name="grpc-for-aspnet-core-configuration"></a>gRPC для конфигурации ASP.NET Core
 
@@ -48,36 +48,6 @@ services.AddGrpc().AddServiceOptions<MyService>(options =>
 {
     options.ReceiveMaxMessageSize = 10 * 1024 * 1024; // 10 megabytes
 });
-```
-
-## <a name="configure-kestrel-options"></a>Настроить параметры Kestrel
-
-Сервер kestrel имеет параметры конфигурации, которые влияют на поведение gRPC для ASP.NET.
-
-### <a name="request-body-data-rate-limit"></a>Ограничение частоты запросов текста данных
-
-По умолчанию сервер Kestrel налагает [скорость передачи данных запроса минимальное тело](
-<xref:Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServerLimits.MinRequestBodyDataRate>). Для клиента потоковой передачи и потоковой передаче вызовов дуплексный режим это значение не может быть удовлетворен и соединение может быть превышено время ожидания. Текст, ограничения скорость передачи данных должна быть отключена, если служба gRPC включает клиент потоковой передачи и потоковой передаче вызовов дуплексных запроса минимальное:
-
-```csharp
-public class Program
-{
-    public static void Main(string[] args)
-    {
-        CreateHostBuilder(args).Build().Run();
-    }
-
-    public static IHostBuilder CreateHostBuilder(string[] args) =>
-         Host.CreateDefaultBuilder(args)
-    .ConfigureWebHostDefaults(webBuilder =>
-    {
-        webBuilder.UseStartup<Startup>();
-        webBuilder.ConfigureKestrel((context, options) =>
-        {
-            options.Limits.MinRequestBodyDataRate = null;
-        });
-    });
-}
 ```
 
 ## <a name="additional-resources"></a>Дополнительные ресурсы

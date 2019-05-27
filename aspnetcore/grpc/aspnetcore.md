@@ -6,12 +6,12 @@ monikerRange: '>= aspnetcore-3.0'
 ms.author: johluo
 ms.date: 03/08/2019
 uid: grpc/aspnetcore
-ms.openlocfilehash: c99a499fad824c3ac026f6f390c826c0418fc069
-ms.sourcegitcommit: 57a974556acd09363a58f38c26f74dc21e0d4339
+ms.openlocfilehash: 1f019fac23982a95fa37d43099522f4b3e9d107a
+ms.sourcegitcommit: 5d384db2fa9373a93b5d15e985fb34430e49ad7a
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59515602"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66039283"
 ---
 # <a name="grpc-services-with-aspnet-core"></a>Службы gRPC в ASP.NET Core
 
@@ -77,32 +77,6 @@ GRPC API предоставляет доступ к некоторым данн�
 `ServerCallContext` не предоставляет полный доступ к `HttpContext` в интерфейсах для ASP.NET. `GetHttpContext` Метод расширения предоставляет полный доступ к `HttpContext` представляет базовое сообщение HTTP/2 в интерфейсах API ASP.NET:
 
 [!code-cs[](~/tutorials/grpc/grpc-start/samples/GrpcGreeter/Services/GreeterService.cs?name=snippet1)]
-
-### <a name="request-body-data-rate-limit"></a>Ограничение частоты запросов текста данных
-
-По умолчанию сервер Kestrel налагает [скорость передачи данных запроса минимальное тело](
-<xref:Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServerLimits.MinRequestBodyDataRate>). Для клиента потоковой передачи и потоковой передаче вызовов дуплексный режим это значение не может быть удовлетворен и соединение может быть превышено время ожидания. Текст, ограничения скорость передачи данных должна быть отключена, если служба gRPC включает клиент потоковой передачи и потоковой передаче вызовов дуплексных запроса минимальное:
-
-```csharp
-public class Program
-{
-    public static void Main(string[] args)
-    {
-        CreateHostBuilder(args).Build().Run();
-    }
-
-    public static IHostBuilder CreateHostBuilder(string[] args) =>
-         Host.CreateDefaultBuilder(args)
-    .ConfigureWebHostDefaults(webBuilder =>
-    {
-        webBuilder.UseStartup<Startup>();
-        webBuilder.ConfigureKestrel((context, options) =>
-        {
-            options.Limits.MinRequestBodyDataRate = null;
-        });
-    });
-}
-```
 
 ## <a name="additional-resources"></a>Дополнительные ресурсы
 

@@ -2,16 +2,17 @@
 title: Размещение ASP.NET Core в Windows со службами IIS
 author: guardrex
 description: Сведения о размещении приложений ASP.NET Core в службах Windows Server Internet Information Services (IIS).
+monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 05/07/2019
+ms.date: 05/19/2019
 uid: host-and-deploy/iis/index
-ms.openlocfilehash: c8e742047230339434b910de9a8a2492bc4da1ff
-ms.sourcegitcommit: a3926eae3f687013027a2828830c12a89add701f
+ms.openlocfilehash: aff4b857394c554e94dd8929dca809eb1a4387f2
+ms.sourcegitcommit: b4ef2b00f3e1eb287138f8b43c811cb35a100d3e
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65450980"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65970049"
 ---
 # <a name="host-aspnet-core-on-windows-with-iis"></a>Размещение ASP.NET Core в Windows со службами IIS
 
@@ -42,8 +43,6 @@ ms.locfileid: "65450980"
 
 ### <a name="enable-the-iisintegration-components"></a>Включение компонентов IISIntegration
 
-::: moniker range=">= aspnetcore-2.1"
-
 Обычно *Program.cs* вызывает <xref:Microsoft.AspNetCore.WebHost.CreateDefaultBuilder*>, чтобы начать настройку узла:
 
 ```csharp
@@ -51,20 +50,6 @@ public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
     WebHost.CreateDefaultBuilder(args)
         ...
 ```
-
-::: moniker-end
-
-::: moniker range="= aspnetcore-2.0"
-
-Обычно *Program.cs* вызывает <xref:Microsoft.AspNetCore.WebHost.CreateDefaultBuilder*>, чтобы начать настройку узла:
-
-```csharp
-public static IWebHost BuildWebHost(string[] args) =>
-    WebHost.CreateDefaultBuilder(args)
-        ...
-```
-
-::: moniker-end
 
 ::: moniker range=">= aspnetcore-2.2"
 
@@ -90,7 +75,7 @@ public static IWebHost BuildWebHost(string[] args) =>
 
 ::: moniker-end
 
-::: moniker range="= aspnetcore-2.1"
+::: moniker range="< aspnetcore-2.2"
 
 `CreateDefaultBuilder` настраивает сервер [Kestrel](xref:fundamentals/servers/kestrel) в качестве веб-сервера и активирует интеграцию IIS, задавая базовый путь и порт для [модуля ASP.NET Core](xref:host-and-deploy/aspnet-core-module).
 
@@ -101,44 +86,6 @@ public static IWebHost BuildWebHost(string[] args) =>
 * [Конфигурацией](xref:fundamentals/configuration/index) (или [параметром командной строки--urls](xref:fundamentals/host/web-host#override-configuration)).
 
 Вызовы `UseUrls` или API `Listen` Kestrel при работе с этим модулем не требуются. При вызове `UseUrls` или `Listen` Kestrel ожидает передачи данных на порт, указанный только при выполнении приложения без IIS.
-
-::: moniker-end
-
-::: moniker range="= aspnetcore-2.0"
-
-`CreateDefaultBuilder` настраивает сервер [Kestrel](xref:fundamentals/servers/kestrel) в качестве веб-сервера и активирует интеграцию IIS, задавая базовый путь и порт для [модуля ASP.NET Core](xref:host-and-deploy/aspnet-core-module).
-
-Модуль ASP.NET Core создает динамический порт для назначения серверному процессу. `CreateDefaultBuilder` вызывает метод <xref:Microsoft.AspNetCore.Hosting.WebHostBuilderIISExtensions.UseIISIntegration*>. `UseIISIntegration` настраивает Kestrel для прослушивания динамического порта по IP-адресу localhost (`localhost`). Если динамический порт — 1234, Kestrel прослушивает `localhost:1234`. Эта конфигурация заменяет другие конфигурации URL-адресов, предоставляемые:
-
-* `UseUrls`
-* [API прослушивания Kestrel](xref:fundamentals/servers/kestrel#endpoint-configuration);
-* [Конфигурацией](xref:fundamentals/configuration/index) (или [параметром командной строки--urls](xref:fundamentals/host/web-host#override-configuration)).
-
-Вызовы `UseUrls` или API `Listen` Kestrel при работе с этим модулем не требуются. При вызове `UseUrls` или `Listen` Kestrel ожидает передачи данных на порт, указанный только при выполнении приложения без IIS.
-
-::: moniker-end
-
-::: moniker range="< aspnetcore-2.0"
-
-Включите в зависимости приложения зависимость от пакета [Microsoft.AspNetCore.Server.IISIntegration](https://www.nuget.org/packages/Microsoft.AspNetCore.Server.IISIntegration/). Используйте ПО промежуточного слоя для интеграции IIS, добавив метод расширения <xref:Microsoft.AspNetCore.Hosting.WebHostBuilderIISExtensions.UseIISIntegration*> в <xref:Microsoft.AspNetCore.Hosting.WebHostBuilder>:
-
-```csharp
-var host = new WebHostBuilder()
-    .UseKestrel()
-    .UseIISIntegration()
-    ...
-```
-
-<xref:Microsoft.AspNetCore.Hosting.WebHostBuilderKestrelExtensions.UseKestrel*> и <xref:Microsoft.AspNetCore.Hosting.WebHostBuilderIISExtensions.UseIISIntegration*> являются обязательными элементами. Код, вызывающий `UseIISIntegration`, не влияет на переносимость кода. Если приложение запускается не в IIS (например, запускается непосредственно в Kestrel), `UseIISIntegration` не работает.
-
-Модуль ASP.NET Core создает динамический порт для назначения серверному процессу. `UseIISIntegration` настраивает Kestrel для прослушивания динамического порта по IP-адресу localhost (`localhost`). Если динамический порт — 1234, Kestrel прослушивает `localhost:1234`. Эта конфигурация заменяет другие конфигурации URL-адресов, предоставляемые:
-
-* `UseUrls`
-* [Конфигурацией](xref:fundamentals/configuration/index) (или [параметром командной строки--urls](xref:fundamentals/host/web-host#override-configuration)).
-
-При использовании этого модуля вызов `UseUrls` не требуется. При вызове `UseUrls` Kestrel ожидает передачи данных на порт, указанный только при выполнении приложения без IIS.
-
-При вызове `UseUrls` в приложении ASP.NET Core 1.0 следует выполнять вызов **до** вызова `UseIISIntegration`, чтобы исключить перезапись порта, настроенного в модуле. В ASP.NET Core 1.1 соблюдать этот порядок вызовов не требуется, так как параметр модуля переопределяет `UseUrls`.
 
 ::: moniker-end
 
@@ -174,12 +121,16 @@ services.Configure<IISServerOptions>(options =>
 
 ::: moniker-end
 
-::: moniker range="= aspnetcore-2.2"
+::: moniker range="< aspnetcore-3.0"
 
 | Параметр                         | Значение по умолчанию | Параметр |
 | ------------------------------ | :-----: | ------- |
 | `AutomaticAuthentication`      | `true`  | Если значение — `true`, сервер IIS задает свойство `HttpContext.User`, использующее [проверку подлинности Windows](xref:security/authentication/windowsauth). Если значение — `false`, сервер только предоставляет идентификатор для `HttpContext.User` и отвечает на явные запросы защиты от `AuthenticationScheme`. Для работы `AutomaticAuthentication` необходимо включить в службах IIS проверку подлинности Windows. Дополнительные сведения: [Проверка подлинности Windows](xref:security/authentication/windowsauth). |
 | `AuthenticationDisplayName`    | `null`  | Задает отображаемое имя для пользователей на страницах входа. |
+
+::: moniker-end
+
+::: moniker range=">= aspnetcore-2.2"
 
 **Модель размещения вне процесса**
 
@@ -352,7 +303,7 @@ services.Configure<IISOptions>(options =>
 
    ![Выбор значения "Без управляемого кода" для параметра "Версия среды CLR .NET".](index/_static/edit-apppool-ws2016.png)
 
-    ASP.NET Core выполняется в отдельном процессе и управляет средой выполнения. Для ASP.NET Core не требуется загрузка классической среды CLR. Задавать для параметра **Версия среды CLR .NET** значение **Без управляемого кода** необязательно.
+    ASP.NET Core выполняется в отдельном процессе и управляет средой выполнения. ASP.NET Core не зависит от загрузки среды CLR для ПК (.NET CLR) &mdash; для размещения приложения в рабочем процессе запускается CoreCLR для .NET Core. Задавать для параметра **Версия среды CLR .NET** значение **Без управляемого кода** необязательно, но рекомендуется.
 
 1. *ASP.NET Core 2.2 или более поздней версии*: для 64-разрядного (x64) [автономного развертывания](/dotnet/core/deploying/#self-contained-deployments-scd), в котором используется [модель размещения в процессе](xref:fundamentals/servers/index#in-process-hosting-model), отключите пул приложений для 32-разрядных (x86) процессов.
 
@@ -505,7 +456,7 @@ services.Configure<IISOptions>(options =>
 
 Для размещения приложения ASP.NET Core в качестве приложения, вложенного в другое приложение ASP.NET Core, сделайте следующее:
 
-1. Создайте пул приложений для вложенного приложения. Для параметра **Версия среды CLR .NET** выберите значение **Без управляемого кода**.
+1. Создайте пул приложений для вложенного приложения. Установите для параметра **Версия среды CLR .NET** значение **Без управляемого кода**, так как для размещения приложения в рабочем процессе запускается CoreCLR для .NET Core, а не среда CRL для настольных ПК (.NET CLR).
 
 1. Добавьте корневой веб-сайт в диспетчере служб IIS с вложенным приложением в папке внутри корневого веб-сайта.
 
@@ -629,6 +580,83 @@ ICACLS C:\sites\MyWebApp /grant "IIS AppPool\DefaultAppPool":F
 *Этот раздел относится только к приложениям ASP.NET Core, предназначенным для .NET Framework.*
 
 Для приложения ASP.NET Core, предназначенного для .NET Framework, параметры OPTIONS не передаются в приложение по умолчанию в службах IIS. Чтобы узнать, как настроить обработчики приложения IIS в файле *web.config* для передачи запросов OPTIONS, см. раздел [Enable cross-origin requests in ASP.NET Web API 2. How CORS Works](/aspnet/web-api/overview/security/enabling-cross-origin-requests-in-web-api#how-cors-works) (Включение запросов CORS в ASP.NET Web API 2. Принцип работы CORS).
+
+::: moniker range=">= aspnetcore-2.2"
+
+## <a name="application-initialization-module-and-idle-timeout"></a>Модуль инициализации приложений и время ожидания в режиме простоя
+
+Размещение в IIS с помощью модуля ASP.NET Core версии 2:
+
+* [Модуль инициализации приложений](#application-initialization-module) — приложение, размещенное [в процессе](xref:fundamentals/servers/index#in-process-hosting-model) или [вне процесса](xref:fundamentals/servers/index#out-of-process-hosting-model), можно настроить на автоматический запуск при перезапуске рабочего процесса или сервера.
+* [Время ожидания в режиме простоя](#idle-timeout) — приложение, размещенное [в процессе](xref:fundamentals/servers/index#in-process-hosting-model) можно настроить на игнорирование времени ожидания в периоды неактивности.
+
+### <a name="application-initialization-module"></a>Модуль инициализации приложений
+
+*Применяется к приложениям, размещенным в процессе и вне процесса.*
+
+Функция [инициализации приложений](/iis/get-started/whats-new-in-iis-8/iis-80-application-initialization) в IIS отправляет в приложение HTTP-запрос при запуске или перезапуске пула приложений. Этот запрос инициирует запуск приложения. По умолчанию IIS отправляет запрос к корневому URL-адресу приложения (`/`) для его инициализации (подробные сведения о конфигурации см. в [дополнительных ресурсах](#application-initialization-module-and-idle-timeout-additional-resources)).
+
+Убедитесь, что включена роль инициализации приложения IIS.
+
+На настольных компьютерах с Windows 7 или более поздней версии при локальном использовании IIS:
+
+1. Последовательно выберите **Панель управления** > **Программы** > **Программы и компоненты** > **Включение или отключение компонентов Windows** (в левой части экрана).
+1. Откройте **Службы IIS** > **Службы Интернета** > **Компоненты разработки приложений**.
+1. Установите флажок **Инициализация приложений**.
+
+В Windows Server 2008 R2 и более поздней версии:
+
+1. Откройте **мастер добавления ролей и компонентов**.
+1. На панели **Выбор служб ролей** разверните узел **Разработка приложений**.
+1. Установите флажок **Инициализация приложений**.
+
+Чтобы включить модуль инициализации приложений для сайта, используйте один из следующих подходов.
+
+* При использовании диспетчера IIS:
+
+  1. Выберите **Пулы приложений** на панели **Подключения**.
+  1. Щелкните пул приложений в списке правой кнопкой мыши и выберите **Дополнительные параметры**.
+  1. Для **режима запуска** по умолчанию задано значение **OnDemand**. Выберите для параметра **Режим запуска** значение **AlwaysRunning**. Нажмите кнопку **ОК**.
+  1. Откройте узел **Сайты** на панели **Подключения**.
+  1. Щелкните приложение правой кнопкой мыши и выберите **Управление веб-сайтом** > **Дополнительные параметры**.
+  1. По умолчанию для параметра **Предварительная загрузка включена** установлено значение **False**. Для параметра **Предварительная загрузка включена** выберите значение **True**. Нажмите кнопку **ОК**.
+
+* Откройте файл *web.config* и добавьте элемент `<applicationInitialization>` с параметром `doAppInitAfterRestart`, для которого установлено значение `true`, к элементам `<system.webServer>` в файле *web.config* приложения:
+
+  ```xml
+  <?xml version="1.0" encoding="utf-8"?>
+  <configuration>
+    <location path="." inheritInChildApplications="false">
+      <system.webServer>
+        <applicationInitialization doAppInitAfterRestart="true" />
+      </system.webServer>
+    </location>
+  </configuration>
+  ```
+
+### <a name="idle-timeout"></a>Время ожидания в режиме простоя
+
+*Применяется только к приложениям, размещенным в процессе.*
+
+Чтобы предотвратить переход приложения из состояния простоя, задайте для пула приложений время ожидания в режиме простоя с помощью диспетчера IIS:
+
+1. Выберите **Пулы приложений** на панели **Подключения**.
+1. Щелкните пул приложений в списке правой кнопкой мыши и выберите **Дополнительные параметры**.
+1. По умолчанию для параметра **Тайм-аут простоя (в минутах)** установлено значение **20** минут. Задайте для параметра **Тайм-аут простоя (в минутах)** значение **0**. Нажмите кнопку **ОК**.
+1. Перезапустите рабочий процесс.
+
+Чтобы не истекло время ожидания в приложениях, размещенных [вне процесса](xref:fundamentals/servers/index#out-of-process-hosting-model), воспользуйтесь одним из таких методов:
+
+* Проверьте связь с приложением из внешней службы, чтобы оно продолжило работу.
+* Если приложение размещает только фоновые службы, избегайте размещения в службах IIS и воспользуйтесь [службой Windows для размещения приложения ASP.NET Core](xref:host-and-deploy/windows-service).
+
+### <a name="application-initialization-module-and-idle-timeout-additional-resources"></a>Дополнительные ресурсы по модулю инициализации приложений и времени ожидания в режиме простоя
+
+* [Инициализация приложений в IIS 8.0](/iis/get-started/whats-new-in-iis-8/iis-80-application-initialization)
+* [Инициализация приложений: элемент \<applicationInitialization>](/iis/configuration/system.webserver/applicationinitialization/).
+* [Параметры модели процессов для пула приложений: элемент \<processModel>](/iis/configuration/system.applicationhost/applicationpools/add/processmodel).
+
+::: moniker-end
 
 ## <a name="deployment-resources-for-iis-administrators"></a>Ресурсы развертывания для администраторов IIS
 
