@@ -5,14 +5,14 @@ description: Общие сведения о веб-сервере HTTP.sys дл�
 monikerRange: '>= aspnetcore-2.0'
 ms.author: tdykstra
 ms.custom: mvc
-ms.date: 02/21/2019
+ms.date: 05/27/2019
 uid: fundamentals/servers/httpsys
-ms.openlocfilehash: 7ba27b404cd10752ff9e304cd0a272eff7fa627a
-ms.sourcegitcommit: dd9c73db7853d87b566eef136d2162f648a43b85
+ms.openlocfilehash: d91a0f7b83fb073147978319edfbed0bda9a1c44
+ms.sourcegitcommit: 06c4f2910dd54ded25e1b8750e09c66578748bc9
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65087055"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66395955"
 ---
 # <a name="httpsys-web-server-implementation-in-aspnet-core"></a>Реализация веб-сервера HTTP.sys в ASP.NET Core
 
@@ -271,7 +271,7 @@ HTTP.sys делегирует задачи в проверку подлинно�
 
 ## <a name="additional-resources"></a>Дополнительные ресурсы
 
-* [Включить проверку подлинности Windows с использованием HTTP.sys](xref:security/authentication/windowsauth#enable-windows-authentication-with-httpsys)
+* [Включить проверку подлинности Windows с использованием HTTP.sys](xref:security/authentication/windowsauth#httpsys)
 * [API сервера HTTP](https://msdn.microsoft.com/library/windows/desktop/aa364510.aspx)
 * [Репозиторий GitHub ASPNET/HttpSysServer (исходный код)](https://github.com/aspnet/HttpSysServer/)
 * [Узел](xref:fundamentals/index#host)
