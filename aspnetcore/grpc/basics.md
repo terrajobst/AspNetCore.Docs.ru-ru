@@ -6,12 +6,12 @@ monikerRange: '>= aspnetcore-3.0'
 ms.author: johluo
 ms.date: 03/31/2019
 uid: grpc/basics
-ms.openlocfilehash: 7c5ecf21124414b21f5c36b76e90bde67ac1f958
-ms.sourcegitcommit: 57a974556acd09363a58f38c26f74dc21e0d4339
+ms.openlocfilehash: 5a88bd0e9f789058b3606691c5ebd9a74325ac9b
+ms.sourcegitcommit: 4d05e30567279072f1b070618afe58ae1bcefd5a
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59672675"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66376346"
 ---
 # <a name="grpc-services-with-c"></a>gRPC служб с помощью C\#
 
@@ -32,13 +32,13 @@ gRPC использует первого контракта подход к ра
 * `Greeter` Служба определяет `SayHello` вызова.
 * `SayHello` отправляет `HelloRequest` сообщений и получает `HelloResponse` сообщение:
 
-[!code-proto[](~/tutorials/grpc/grpc-start/samples/GrpcGreeter/Protos/greet.proto)]
+[!code-proto[](~/tutorials//grpc/grpc-start/sample/GrpcGreeter/Protos/greet.proto)]
 
 ## <a name="add-a-proto-file-to-a-c-app"></a>Добавьте файл .proto C\# приложения
 
 *.Proto* файл включен в проекте путем добавления его в `<Protobuf>` группы элементов:
 
-[!code-xml[](~/tutorials/grpc/grpc-start/samples/GrpcGreeter/GrpcGreeter.csproj?highlight=2&range=7-11)]
+[!code-xml[](~/tutorials//grpc/grpc-start/sample/GrpcGreeter/GrpcGreeter.csproj?highlight=2&range=7-11)]
 
 ## <a name="c-tooling-support-for-proto-files"></a>C#Поддержка средств для .proto файлов
 
@@ -50,9 +50,9 @@ gRPC использует первого контракта подход к ра
 
 Этот пакет необходим для клиентских и серверных проектов. `Grpc.Tools` можно добавить с помощью диспетчера пакетов в Visual Studio или добавление `<PackageReference>` в файл проекта:
 
-[!code-xml[](~/tutorials/grpc/grpc-start/samples/GrpcGreeter/GrpcGreeter.csproj?highlight=1&range=17)]
+[!code-xml[](~/tutorials//grpc/grpc-start/sample/GrpcGreeter/GrpcGreeter.csproj?highlight=1&range=17)]
 
-Пакет средств не требуется во время выполнения, поэтому зависимость помечается `PrivateAssets="All"`.
+Пакет инструментов не требуется во время выполнения, поэтому зависимость помечается `PrivateAssets="All"`.
 
 ## <a name="generated-c-assets"></a>Созданный C# активы
 
@@ -60,15 +60,15 @@ gRPC использует первого контракта подход к ра
 
 Для ресурсов на сервере создается абстрактный базовый тип службы. Базовый тип содержит определения всех вызовов gRPC содержащихся в *.proto* файла. Создайте реализацию конкретная служба, которая наследуется от этого базового типа и реализует логику для вызовов gRPC. Для `greet.proto`, пример было сказано ранее, абстрактный `GreeterBase` тип, содержащий виртуальный `SayHello` метод создается. Конкретная реализация `GreeterService` переопределяет метод и реализует логику обработки вызова gRPC.
 
-[!code-csharp[](~/tutorials/grpc/grpc-start/samples/GrpcGreeter/Services/GreeterService.cs?name=snippet)]
+[!code-csharp[](~/tutorials//grpc/grpc-start/sample/GrpcGreeter/Services/GreeterService.cs?name=snippet)]
 
 Для ресурсов на стороне клиента создается тип конкретного клиента. Вызывает gRPC *.proto* файл преобразуются в методы в конкретный тип, который можно использовать. Для `greet.proto`, пример было сказано ранее, устойчивый `GreeterClient` создан тип. Вызовите `GreeterClient.SayHello` инициировать gRPC вызов на сервер.
 
-[!code-csharp[](~/tutorials/grpc/grpc-start/samples/GrpcGreeterClient/Program.cs?highlight=5-8&name=snippet)]
+[!code-csharp[](~/tutorials//grpc/grpc-start/sample/GrpcGreeterClient/Program.cs?highlight=5-8&name=snippet)]
 
 По умолчанию, серверных и клиентских средств будут сгенерированы для каждой *.proto* файл, включенный в `<Protobuf>` группу элементов. Чтобы обеспечить только серверные ресурсы создаются в проекте сервера `GrpcServices` атрибут имеет значение `Server`.
 
-[!code-xml[](~/tutorials/grpc/grpc-start/samples/GrpcGreeter/GrpcGreeter.csproj?highlight=2&range=7-11)]
+[!code-xml[](~/tutorials//grpc/grpc-start/sample/GrpcGreeter/GrpcGreeter.csproj?highlight=2&range=7-11)]
 
 Аналогично, атрибут задается `Client` в клиентские проекты.
 

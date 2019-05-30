@@ -92,10 +92,6 @@
     - name: Приложения удаленного вызова процедур
       items:
         - name: Начало работы со службой gRPC в ASP.NET Core
-          uid: tutorials/grpc/index
-        - name: Создание службы приветствия gRPC в ASP.NET Core
-          uid: tutorials/grpc/grpc-start
-        - name: Создание клиента gRPC в .NET Core
           uid: tutorials/grpc/grpc-client
     - name: Доступ к данным
       items:
@@ -321,7 +317,7 @@
               uid: spa/react
             - name: Использование React с Redux
               uid: spa/react-with-redux
-            - name: JavaScriptServices
+            - name: Службы JavaScript
               uid: client-side/spa-services
         - name: LibMan
           items:
@@ -534,14 +530,8 @@
       uid: grpc/migration
     - name: 'Сравнение служб gRPC, с API HTTP'
       uid: grpc/comparison
-    - name: Учебники
-      items:
-        - name: Начало работы со службой gRPC в ASP.NET Core
-          uid: tutorials/grpc/index
-        - name: Создание службы Greeter gRPC в ASP.NET Core
-          uid: tutorials/grpc/grpc-start
-        - name: Создание клиента gRPC в .NET Core
-          uid: tutorials/grpc/grpc-client
+    - name: Создание клиента и сервера gRPC
+      uid: tutorials/grpc/grpc-client
 - name: 'Тестирование, отладка и устранение неполадок'
   items:
     - name: Модульное тестирование
