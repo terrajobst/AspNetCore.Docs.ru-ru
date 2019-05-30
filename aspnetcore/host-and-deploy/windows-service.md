@@ -5,62 +5,96 @@ description: Узнайте, как разместить приложение AS
 monikerRange: '>= aspnetcore-2.1'
 ms.author: tdykstra
 ms.custom: mvc
-ms.date: 05/04/2019
+ms.date: 05/21/2019
 uid: host-and-deploy/windows-service
-ms.openlocfilehash: ec3a37fd859df7592fa0d6d9cc0109942a570e7a
-ms.sourcegitcommit: dd9c73db7853d87b566eef136d2162f648a43b85
+ms.openlocfilehash: ab36bc1b2827c80bb1e7b9e8cee558b346a991f8
+ms.sourcegitcommit: b8ed594ab9f47fa32510574f3e1b210cff000967
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65086992"
+ms.lasthandoff: 05/28/2019
+ms.locfileid: "66251420"
 ---
-# <a name="host-aspnet-core-in-a-windows-service"></a><span data-ttu-id="7312d-103">Размещение ASP.NET Core в службе Windows</span><span class="sxs-lookup"><span data-stu-id="7312d-103">Host ASP.NET Core in a Windows Service</span></span>
+# <a name="host-aspnet-core-in-a-windows-service"></a><span data-ttu-id="34ed4-103">Размещение ASP.NET Core в службе Windows</span><span class="sxs-lookup"><span data-stu-id="34ed4-103">Host ASP.NET Core in a Windows Service</span></span>
 
-<span data-ttu-id="7312d-104">Авторы: [Люк Латэм](https://github.com/guardrex) (Luke Latham) и [Tom Dykstra](https://github.com/tdykstra) (Том Дайкстра)</span><span class="sxs-lookup"><span data-stu-id="7312d-104">By [Luke Latham](https://github.com/guardrex) and [Tom Dykstra](https://github.com/tdykstra)</span></span>
+<span data-ttu-id="34ed4-104">Авторы: [Люк Латэм](https://github.com/guardrex) (Luke Latham) и [Tom Dykstra](https://github.com/tdykstra) (Том Дайкстра)</span><span class="sxs-lookup"><span data-stu-id="34ed4-104">By [Luke Latham](https://github.com/guardrex) and [Tom Dykstra](https://github.com/tdykstra)</span></span>
 
-<span data-ttu-id="7312d-105">Приложение ASP.NET Core можно разместить в Windows в качестве [службы Windows](/dotnet/framework/windows-services/introduction-to-windows-service-applications) без использования IIS.</span><span class="sxs-lookup"><span data-stu-id="7312d-105">An ASP.NET Core app can be hosted on Windows as a [Windows Service](/dotnet/framework/windows-services/introduction-to-windows-service-applications) without using IIS.</span></span> <span data-ttu-id="7312d-106">При размещении в качестве службы Windows приложение автоматически запускается после перезагрузки.</span><span class="sxs-lookup"><span data-stu-id="7312d-106">When hosted as a Windows Service, the app automatically starts after reboots.</span></span>
+<span data-ttu-id="34ed4-105">Приложение ASP.NET Core можно разместить в Windows в качестве [службы Windows](/dotnet/framework/windows-services/introduction-to-windows-service-applications) без использования IIS.</span><span class="sxs-lookup"><span data-stu-id="34ed4-105">An ASP.NET Core app can be hosted on Windows as a [Windows Service](/dotnet/framework/windows-services/introduction-to-windows-service-applications) without using IIS.</span></span> <span data-ttu-id="34ed4-106">При размещении в качестве службы Windows приложение автоматически запускается после перезагрузки сервера.</span><span class="sxs-lookup"><span data-stu-id="34ed4-106">When hosted as a Windows Service, the app automatically starts after server reboots.</span></span>
 
-<span data-ttu-id="7312d-107">[Просмотреть или скачать образец кода](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/host-and-deploy/windows-service/) ([как скачивать](xref:index#how-to-download-a-sample))</span><span class="sxs-lookup"><span data-stu-id="7312d-107">[View or download sample code](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/host-and-deploy/windows-service/) ([how to download](xref:index#how-to-download-a-sample))</span></span>
+<span data-ttu-id="34ed4-107">[Просмотреть или скачать образец кода](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/host-and-deploy/windows-service/) ([как скачивать](xref:index#how-to-download-a-sample))</span><span class="sxs-lookup"><span data-stu-id="34ed4-107">[View or download sample code](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/host-and-deploy/windows-service/) ([how to download](xref:index#how-to-download-a-sample))</span></span>
 
-## <a name="prerequisites"></a><span data-ttu-id="7312d-108">Предварительные требования</span><span class="sxs-lookup"><span data-stu-id="7312d-108">Prerequisites</span></span>
+## <a name="prerequisites"></a><span data-ttu-id="34ed4-108">Предварительные требования</span><span class="sxs-lookup"><span data-stu-id="34ed4-108">Prerequisites</span></span>
 
-* [<span data-ttu-id="7312d-109">PowerShell 6.2 или более поздней версии</span><span class="sxs-lookup"><span data-stu-id="7312d-109">PowerShell 6.2 or later</span></span>](https://github.com/PowerShell/PowerShell)
+* [<span data-ttu-id="34ed4-109">Пакет SDK для ASP.NET Core 2.1 или более поздней версии</span><span class="sxs-lookup"><span data-stu-id="34ed4-109">ASP.NET Core SDK 2.1 or later</span></span>](https://dotnet.microsoft.com/download)
+* [<span data-ttu-id="34ed4-110">PowerShell 6.2 или более поздней версии</span><span class="sxs-lookup"><span data-stu-id="34ed4-110">PowerShell 6.2 or later</span></span>](https://github.com/PowerShell/PowerShell)
 
-> [!NOTE]
-> <span data-ttu-id="7312d-110">Для версий ОС Windows, предшествующих Windows 10 с обновлением за октябрь 2018 г. (версия 1809, сборка 10.0.17763), необходимо импортировать модули [Microsoft.PowerShell.LocalAccounts](/powershell/module/microsoft.powershell.localaccounts) и [WindowsCompatibility](https://github.com/PowerShell/WindowsCompatibility), чтобы включить поддержку командлета [New-LocalUser](/powershell/module/microsoft.powershell.localaccounts/new-localuser), используемого в разделе [Создание учетной записи пользователя](#create-a-user-account).</span><span class="sxs-lookup"><span data-stu-id="7312d-110">For Windows OS earlier than the Windows 10 October 2018 Update (version 1809/build 10.0.17763), the [Microsoft.PowerShell.LocalAccounts](/powershell/module/microsoft.powershell.localaccounts) module must be imported with the [WindowsCompatibility module](https://github.com/PowerShell/WindowsCompatibility) to gain access to the [New-LocalUser](/powershell/module/microsoft.powershell.localaccounts/new-localuser) cmdlet used in the [Create a user account](#create-a-user-account) section:</span></span>
->
-> ```powershell
-> Install-Module WindowsCompatibility -Scope CurrentUser
-> Import-WinModule Microsoft.PowerShell.LocalAccounts
-> ```
+## <a name="app-configuration"></a><span data-ttu-id="34ed4-111">Конфигурация приложения</span><span class="sxs-lookup"><span data-stu-id="34ed4-111">App configuration</span></span>
 
-## <a name="deployment-type"></a><span data-ttu-id="7312d-111">Тип развертывания</span><span class="sxs-lookup"><span data-stu-id="7312d-111">Deployment type</span></span>
+::: moniker range=">= aspnetcore-3.0"
 
-<span data-ttu-id="7312d-112">Вы можете создать зависящее от платформы или автономное развертывание службы Windows.</span><span class="sxs-lookup"><span data-stu-id="7312d-112">You can create either a framework-dependent or self-contained Windows Service deployment.</span></span> <span data-ttu-id="7312d-113">Дополнительные сведения и рекомендации по сценариям развертывания см. в статье [Развертывание приложений .NET Core](/dotnet/core/deploying/).</span><span class="sxs-lookup"><span data-stu-id="7312d-113">For information and advice on deployment scenarios, see [.NET Core application deployment](/dotnet/core/deploying/).</span></span>
+<span data-ttu-id="34ed4-112">`IHostBuilder.UseWindowsService` в составе пакета [Microsoft.Extensions.Hosting.WindowsServices](https://www.nuget.org/packages/Microsoft.Extensions.Hosting.WindowsServices) вызывается при создании узла.</span><span class="sxs-lookup"><span data-stu-id="34ed4-112">`IHostBuilder.UseWindowsService`, provided by the [Microsoft.Extensions.Hosting.WindowsServices](https://www.nuget.org/packages/Microsoft.Extensions.Hosting.WindowsServices) package, is called when building the host.</span></span> <span data-ttu-id="34ed4-113">Если приложение выполняется как служба Windows, метод отвечает за следующие действия:</span><span class="sxs-lookup"><span data-stu-id="34ed4-113">If the app is running as a Windows Service, the method:</span></span>
 
-### <a name="framework-dependent-deployment"></a><span data-ttu-id="7312d-114">развертывание, зависящее от платформы;</span><span class="sxs-lookup"><span data-stu-id="7312d-114">Framework-dependent deployment</span></span>
+* <span data-ttu-id="34ed4-114">Задает для узла время существования `WindowsServiceLifetime`.</span><span class="sxs-lookup"><span data-stu-id="34ed4-114">Sets the host lifetime to `WindowsServiceLifetime`.</span></span>
+* <span data-ttu-id="34ed4-115">Задает корневой каталог содержимого.</span><span class="sxs-lookup"><span data-stu-id="34ed4-115">Sets the content root.</span></span>
+* <span data-ttu-id="34ed4-116">Включает ведение журнала событий с именем приложения в качестве имени источника по умолчанию.</span><span class="sxs-lookup"><span data-stu-id="34ed4-116">Enables logging to the event log with the application name as the default source name.</span></span>
+  * <span data-ttu-id="34ed4-117">Уровень ведения журнала можно задать с помощью ключа `Logging:LogLevel:Default` в файле *appsettings.Production.json*.</span><span class="sxs-lookup"><span data-stu-id="34ed4-117">The log level can be configured using the `Logging:LogLevel:Default` key in the *appsettings.Production.json* file.</span></span>
+  * <span data-ttu-id="34ed4-118">Только администраторы могут создавать источники событий.</span><span class="sxs-lookup"><span data-stu-id="34ed4-118">Only administrators can create new event sources.</span></span> <span data-ttu-id="34ed4-119">Если источник событий создать нельзя, используя имя приложения, для источника *Приложение* регистрируется предупреждение и журналы событий отключаются.</span><span class="sxs-lookup"><span data-stu-id="34ed4-119">When an event source can't be created using the application name, a warning is logged to the *Application* source and event logs are disabled.</span></span>
 
-<span data-ttu-id="7312d-115">Зависящее от платформы развертывание (FDD) требует наличия в целевой системе общей для всей системы версии .NET Core.</span><span class="sxs-lookup"><span data-stu-id="7312d-115">Framework-dependent deployment (FDD) relies on the presence of a shared system-wide version of .NET Core on the target system.</span></span> <span data-ttu-id="7312d-116">При использовании сценария с FDD с приложением ASP.NET Core (службой Windows) с помощью пакета SDK создается исполняемый файл (*\*.exe*), который называется *исполняемым файлом, зависящим от платформы*.</span><span class="sxs-lookup"><span data-stu-id="7312d-116">When the FDD scenario is used with an ASP.NET Core Windows Service app, the SDK produces an executable (*\*.exe*), called a *framework-dependent executable*.</span></span>
+[!code-csharp[](windows-service/samples/3.x/AspNetCoreService/Program.cs?name=snippet_Program)]
 
-### <a name="self-contained-deployment"></a><span data-ttu-id="7312d-117">автономное развертывание;</span><span class="sxs-lookup"><span data-stu-id="7312d-117">Self-contained deployment</span></span>
+::: moniker-end
 
-<span data-ttu-id="7312d-118">Для автономного развертывания (SCD) общие компоненты в целевой системе не требуются.</span><span class="sxs-lookup"><span data-stu-id="7312d-118">Self-contained deployment (SCD) doesn't rely on the presence of shared components on the target system.</span></span> <span data-ttu-id="7312d-119">Среда выполнения и зависимости приложения развертываются с приложением в системе для размещения.</span><span class="sxs-lookup"><span data-stu-id="7312d-119">The runtime and the app's dependencies are deployed with the app to the hosting system.</span></span>
+::: moniker range="< aspnetcore-3.0"
 
-## <a name="convert-a-project-into-a-windows-service"></a><span data-ttu-id="7312d-120">Преобразование проекта в службу Windows</span><span class="sxs-lookup"><span data-stu-id="7312d-120">Convert a project into a Windows Service</span></span>
+<span data-ttu-id="34ed4-120">Приложение требует ссылки на пакеты для [Microsoft.AspNetCore.Hosting.WindowsServices](https://www.nuget.org/packages/Microsoft.AspNetCore.Hosting.WindowsServices) и [Microsoft.Extensions.Logging.EventLog](https://www.nuget.org/packages/Microsoft.Extensions.Logging.EventLog).</span><span class="sxs-lookup"><span data-stu-id="34ed4-120">The app requires package references for [Microsoft.AspNetCore.Hosting.WindowsServices](https://www.nuget.org/packages/Microsoft.AspNetCore.Hosting.WindowsServices) and [Microsoft.Extensions.Logging.EventLog](https://www.nuget.org/packages/Microsoft.Extensions.Logging.EventLog).</span></span>
 
-<span data-ttu-id="7312d-121">Внесите следующие изменения в существующий проект ASP.NET Core, чтобы запустить приложение в качестве службы:</span><span class="sxs-lookup"><span data-stu-id="7312d-121">Make the following changes to an existing ASP.NET Core project to run the app as a service:</span></span>
+<span data-ttu-id="34ed4-121">Для тестирования и отладки при работе вне службы добавьте код, чтобы определить, как выполняется приложение: в качестве службы или консольного приложения.</span><span class="sxs-lookup"><span data-stu-id="34ed4-121">To test and debug when running outside of a service, add code to determine if the app is running as a service or a console app.</span></span> <span data-ttu-id="34ed4-122">Проверьте, присоединен ли отладчик или присутствует ли параметр `--console`.</span><span class="sxs-lookup"><span data-stu-id="34ed4-122">Inspect if the debugger is attached or a `--console` switch is present.</span></span> <span data-ttu-id="34ed4-123">Если одно из условий имеет значение true (приложение выполняется не в качестве службы), вызовите <xref:Microsoft.AspNetCore.Hosting.WebHostExtensions.Run*>.</span><span class="sxs-lookup"><span data-stu-id="34ed4-123">If either condition is true (the app isn't run as a service), call <xref:Microsoft.AspNetCore.Hosting.WebHostExtensions.Run*>.</span></span> <span data-ttu-id="34ed4-124">Если условия имеют значение false (приложение выполняется в качестве службы), сделайте следующее:</span><span class="sxs-lookup"><span data-stu-id="34ed4-124">If the conditions are false (the app is run as a service):</span></span>
 
-### <a name="project-file-updates"></a><span data-ttu-id="7312d-122">Обновления файла проекта</span><span class="sxs-lookup"><span data-stu-id="7312d-122">Project file updates</span></span>
+* <span data-ttu-id="34ed4-125">Вызовите <xref:System.IO.Directory.SetCurrentDirectory*> и используйте путь к расположению для публикации приложения.</span><span class="sxs-lookup"><span data-stu-id="34ed4-125">Call <xref:System.IO.Directory.SetCurrentDirectory*> and use a path to the app's published location.</span></span> <span data-ttu-id="34ed4-126">Не вызывайте <xref:System.IO.Directory.GetCurrentDirectory*> для получения пути, так как при вызове <xref:System.IO.Directory.GetCurrentDirectory*> приложение службы Windows возвращает папку *C:\\WINDOWS\\system32*.</span><span class="sxs-lookup"><span data-stu-id="34ed4-126">Don't call <xref:System.IO.Directory.GetCurrentDirectory*> to obtain the path because a Windows Service app returns the *C:\\WINDOWS\\system32* folder when <xref:System.IO.Directory.GetCurrentDirectory*> is called.</span></span> <span data-ttu-id="34ed4-127">Дополнительные сведения см. в разделе [Текущий каталог и корневой каталог содержимого](#current-directory-and-content-root).</span><span class="sxs-lookup"><span data-stu-id="34ed4-127">For more information, see the [Current directory and content root](#current-directory-and-content-root) section.</span></span> <span data-ttu-id="34ed4-128">Этот шаг выполняется до того, как приложение будет настроено в `CreateWebHostBuilder`.</span><span class="sxs-lookup"><span data-stu-id="34ed4-128">This step is performed before the app is configured in `CreateWebHostBuilder`.</span></span>
+* <span data-ttu-id="34ed4-129">Вызовите <xref:Microsoft.AspNetCore.Hosting.WindowsServices.WebHostWindowsServiceExtensions.RunAsService*>, чтобы запустить приложение в качестве службы.</span><span class="sxs-lookup"><span data-stu-id="34ed4-129">Call <xref:Microsoft.AspNetCore.Hosting.WindowsServices.WebHostWindowsServiceExtensions.RunAsService*> to run the app as a service.</span></span>
 
-<span data-ttu-id="7312d-123">Измените файл проекта с учетом выбранного [типа развертывания](#deployment-type).</span><span class="sxs-lookup"><span data-stu-id="7312d-123">Based on your choice of [deployment type](#deployment-type), update the project file:</span></span>
+<span data-ttu-id="34ed4-130">Так как [поставщик конфигурации командной строки](xref:fundamentals/configuration/index#command-line-configuration-provider) требует указания пар "имя-значение" для аргументов командной строки, параметр `--console` удаляется из аргументов, прежде чем <xref:Microsoft.AspNetCore.WebHost.CreateDefaultBuilder*> получит их.</span><span class="sxs-lookup"><span data-stu-id="34ed4-130">Because the [Command-line Configuration Provider](xref:fundamentals/configuration/index#command-line-configuration-provider) requires name-value pairs for command-line arguments, the `--console` switch is removed from the arguments before <xref:Microsoft.AspNetCore.WebHost.CreateDefaultBuilder*> receives the arguments.</span></span>
 
-#### <a name="framework-dependent-deployment-fdd"></a><span data-ttu-id="7312d-124">Зависящее от платформы развертывание</span><span class="sxs-lookup"><span data-stu-id="7312d-124">Framework-dependent Deployment (FDD)</span></span>
+<span data-ttu-id="34ed4-131">Для записи данных в журнал событий Windows добавьте поставщик EventLog в <xref:Microsoft.AspNetCore.Hosting.WebHostBuilder.ConfigureLogging*>.</span><span class="sxs-lookup"><span data-stu-id="34ed4-131">To write to the Windows Event Log, add the EventLog provider to <xref:Microsoft.AspNetCore.Hosting.WebHostBuilder.ConfigureLogging*>.</span></span> <span data-ttu-id="34ed4-132">Задайте уровень ведения журнала с помощью ключа `Logging:LogLevel:Default` в файле *appsettings.Production.json*.</span><span class="sxs-lookup"><span data-stu-id="34ed4-132">Set the logging level with the `Logging:LogLevel:Default` key in the *appsettings.Production.json* file.</span></span>
 
-<span data-ttu-id="7312d-125">Добавьте [идентификатор среды выполнения](/dotnet/core/rid-catalog) Windows в `<PropertyGroup>`, где содержится требуемая версия платформы.</span><span class="sxs-lookup"><span data-stu-id="7312d-125">Add a Windows [Runtime Identifier (RID)](/dotnet/core/rid-catalog) to the `<PropertyGroup>` that contains the target framework.</span></span> <span data-ttu-id="7312d-126">В следующем примере для RID задано значение `win7-x64`.</span><span class="sxs-lookup"><span data-stu-id="7312d-126">In the following example, the RID is set to `win7-x64`.</span></span> <span data-ttu-id="7312d-127">Добавьте свойство `<SelfContained>` со значением `false`.</span><span class="sxs-lookup"><span data-stu-id="7312d-127">Add the `<SelfContained>` property set to `false`.</span></span> <span data-ttu-id="7312d-128">Эти свойства дают пакету SDK инструкцию создать исполняемый файл (*EXE*) для Windows.</span><span class="sxs-lookup"><span data-stu-id="7312d-128">These properties instruct the SDK to generate an executable (*.exe*) file for Windows.</span></span>
+<span data-ttu-id="34ed4-133">В следующем примере `RunAsCustomService` вызывается вместо <xref:Microsoft.AspNetCore.Hosting.WindowsServices.WebHostWindowsServiceExtensions.RunAsService*> для обработки событий времени существования в приложении.</span><span class="sxs-lookup"><span data-stu-id="34ed4-133">In the following example from the sample app, `RunAsCustomService` is called instead of <xref:Microsoft.AspNetCore.Hosting.WindowsServices.WebHostWindowsServiceExtensions.RunAsService*> in order to handle lifetime events within the app.</span></span> <span data-ttu-id="34ed4-134">Дополнительные сведения см. в разделе [Обработка событий запуска и остановки](#handle-starting-and-stopping-events).</span><span class="sxs-lookup"><span data-stu-id="34ed4-134">For more information, see the [Handle starting and stopping events](#handle-starting-and-stopping-events) section.</span></span>
 
-<span data-ttu-id="7312d-129">Файл *web.config*, который обычно создается при публикации приложения ASP.NET Core, не требуется для приложения служб Windows.</span><span class="sxs-lookup"><span data-stu-id="7312d-129">A *web.config* file, which is normally produced when publishing an ASP.NET Core app, is unnecessary for a Windows Services app.</span></span> <span data-ttu-id="7312d-130">Отмените создание файла *web.config*, добавив свойство `<IsTransformWebConfigDisabled>` со значением `true`.</span><span class="sxs-lookup"><span data-stu-id="7312d-130">To disable the creation of the *web.config* file, add the `<IsTransformWebConfigDisabled>` property set to `true`.</span></span>
+[!code-csharp[](windows-service/samples/2.x/AspNetCoreService/Program.cs?name=snippet_Program)]
 
-::: moniker range=">= aspnetcore-2.2"
+::: moniker-end
+
+## <a name="deployment-type"></a><span data-ttu-id="34ed4-135">Тип развертывания</span><span class="sxs-lookup"><span data-stu-id="34ed4-135">Deployment type</span></span>
+
+<span data-ttu-id="34ed4-136">Дополнительные сведения и рекомендации по сценариям развертывания см. в статье [Развертывание приложений .NET Core](/dotnet/core/deploying/).</span><span class="sxs-lookup"><span data-stu-id="34ed4-136">For information and advice on deployment scenarios, see [.NET Core application deployment](/dotnet/core/deploying/).</span></span>
+
+### <a name="framework-dependent-deployment-fdd"></a><span data-ttu-id="34ed4-137">Зависящее от платформы развертывание (FDD)</span><span class="sxs-lookup"><span data-stu-id="34ed4-137">Framework-dependent deployment (FDD)</span></span>
+
+<span data-ttu-id="34ed4-138">Зависящее от платформы развертывание (FDD) требует наличия в целевой системе общей для всей системы версии .NET Core.</span><span class="sxs-lookup"><span data-stu-id="34ed4-138">Framework-dependent deployment (FDD) relies on the presence of a shared system-wide version of .NET Core on the target system.</span></span> <span data-ttu-id="34ed4-139">Если сценарий с FDD используется согласно инструкций в этой статье, пакет SDK создаcт исполняемый файл ( *.exe*), который называется *исполняемым файлом, зависящим от платформы*.</span><span class="sxs-lookup"><span data-stu-id="34ed4-139">When the FDD scenario is adopted following the guidance in this article, the SDK produces an executable (*.exe*), called a *framework-dependent executable*.</span></span>
+
+::: moniker range=">= aspnetcore-3.0"
+
+<span data-ttu-id="34ed4-140">Добавьте следующие элементы свойства в файл проекта:</span><span class="sxs-lookup"><span data-stu-id="34ed4-140">Add the following property elements to the project file:</span></span>
+
+* <span data-ttu-id="34ed4-141">`<OutputType>` — тип выходных данных приложения (`Exe` для исполняемого файла).</span><span class="sxs-lookup"><span data-stu-id="34ed4-141">`<OutputType>` &ndash; The app's output type (`Exe` for executable).</span></span>
+* <span data-ttu-id="34ed4-142">`<LangVersion>` — версия языка C# (`latest` или `preview`).</span><span class="sxs-lookup"><span data-stu-id="34ed4-142">`<LangVersion>` &ndash; The C# language version (`latest` or `preview`).</span></span>
+
+<span data-ttu-id="34ed4-143">Файл *web.config*, который обычно создается при публикации приложения ASP.NET Core, не требуется для приложения служб Windows.</span><span class="sxs-lookup"><span data-stu-id="34ed4-143">A *web.config* file, which is normally produced when publishing an ASP.NET Core app, is unnecessary for a Windows Services app.</span></span> <span data-ttu-id="34ed4-144">Отмените создание файла *web.config*, добавив свойство `<IsTransformWebConfigDisabled>` со значением `true`.</span><span class="sxs-lookup"><span data-stu-id="34ed4-144">To disable the creation of the *web.config* file, add the `<IsTransformWebConfigDisabled>` property set to `true`.</span></span>
+
+```xml
+<PropertyGroup>
+  <TargetFramework>netcoreapp3.0</TargetFramework>
+  <OutputType>Exe</OutputType>
+  <LangVersion>preview</LangVersion>
+  <IsTransformWebConfigDisabled>true</IsTransformWebConfigDisabled>
+</PropertyGroup>
+```
+
+::: moniker-end
+
+::: moniker range="= aspnetcore-2.2"
+
+<span data-ttu-id="34ed4-145">[Идентификатор среды выполнения](/dotnet/core/rid-catalog) Windows ([\<RuntimeIdentifier>](/dotnet/core/tools/csproj#runtimeidentifier)) содержит целевую версию платформы.</span><span class="sxs-lookup"><span data-stu-id="34ed4-145">The Windows [Runtime Identifier (RID)](/dotnet/core/rid-catalog) ([\<RuntimeIdentifier>](/dotnet/core/tools/csproj#runtimeidentifier)) contains the target framework.</span></span> <span data-ttu-id="34ed4-146">В следующем примере для RID задано значение `win7-x64`.</span><span class="sxs-lookup"><span data-stu-id="34ed4-146">In the following example, the RID is set to `win7-x64`.</span></span> <span data-ttu-id="34ed4-147">Свойству `<SelfContained>` задано значение `false`.</span><span class="sxs-lookup"><span data-stu-id="34ed4-147">The `<SelfContained>` property is set to `false`.</span></span> <span data-ttu-id="34ed4-148">Эти свойства указывают пакету SDK создать исполняемый файл ( *.exe*) для Windows и приложение, которое зависит от общей платформы .NET Core.</span><span class="sxs-lookup"><span data-stu-id="34ed4-148">These properties instruct the SDK to generate an executable (*.exe*) file for Windows and an app that depends on the shared .NET Core framework.</span></span>
+
+<span data-ttu-id="34ed4-149">Файл *web.config*, который обычно создается при публикации приложения ASP.NET Core, не требуется для приложения служб Windows.</span><span class="sxs-lookup"><span data-stu-id="34ed4-149">A *web.config* file, which is normally produced when publishing an ASP.NET Core app, is unnecessary for a Windows Services app.</span></span> <span data-ttu-id="34ed4-150">Отмените создание файла *web.config*, добавив свойство `<IsTransformWebConfigDisabled>` со значением `true`.</span><span class="sxs-lookup"><span data-stu-id="34ed4-150">To disable the creation of the *web.config* file, add the `<IsTransformWebConfigDisabled>` property set to `true`.</span></span>
 
 ```xml
 <PropertyGroup>
@@ -75,7 +109,11 @@ ms.locfileid: "65086992"
 
 ::: moniker range="= aspnetcore-2.1"
 
-<span data-ttu-id="7312d-131">Добавьте свойство `<UseAppHost>` со значением `true`.</span><span class="sxs-lookup"><span data-stu-id="7312d-131">Add the `<UseAppHost>` property set to `true`.</span></span> <span data-ttu-id="7312d-132">Это свойство предоставляет службу с путем активации (исполняемый файл, *EXE*) для FDD.</span><span class="sxs-lookup"><span data-stu-id="7312d-132">This property provides the service with an activation path (an executable, *.exe*) for an FDD.</span></span>
+<span data-ttu-id="34ed4-151">[Идентификатор среды выполнения](/dotnet/core/rid-catalog) Windows ([\<RuntimeIdentifier>](/dotnet/core/tools/csproj#runtimeidentifier)) содержит целевую версию платформы.</span><span class="sxs-lookup"><span data-stu-id="34ed4-151">The Windows [Runtime Identifier (RID)](/dotnet/core/rid-catalog) ([\<RuntimeIdentifier>](/dotnet/core/tools/csproj#runtimeidentifier)) contains the target framework.</span></span> <span data-ttu-id="34ed4-152">В следующем примере для RID задано значение `win7-x64`.</span><span class="sxs-lookup"><span data-stu-id="34ed4-152">In the following example, the RID is set to `win7-x64`.</span></span> <span data-ttu-id="34ed4-153">Свойству `<SelfContained>` задано значение `false`.</span><span class="sxs-lookup"><span data-stu-id="34ed4-153">The `<SelfContained>` property is set to `false`.</span></span> <span data-ttu-id="34ed4-154">Эти свойства указывают пакету SDK создать исполняемый файл ( *.exe*) для Windows и приложение, которое зависит от общей платформы .NET Core.</span><span class="sxs-lookup"><span data-stu-id="34ed4-154">These properties instruct the SDK to generate an executable (*.exe*) file for Windows and an app that depends on the shared .NET Core framework.</span></span>
+
+<span data-ttu-id="34ed4-155">Свойству `<UseAppHost>` задано значение `true`.</span><span class="sxs-lookup"><span data-stu-id="34ed4-155">The `<UseAppHost>` property is set to `true`.</span></span> <span data-ttu-id="34ed4-156">Это свойство предоставляет службу с путем активации (исполняемый файл, *EXE*) для FDD.</span><span class="sxs-lookup"><span data-stu-id="34ed4-156">This property provides the service with an activation path (an executable, *.exe*) for an FDD.</span></span>
+
+<span data-ttu-id="34ed4-157">Файл *web.config*, который обычно создается при публикации приложения ASP.NET Core, не требуется для приложения служб Windows.</span><span class="sxs-lookup"><span data-stu-id="34ed4-157">A *web.config* file, which is normally produced when publishing an ASP.NET Core app, is unnecessary for a Windows Services app.</span></span> <span data-ttu-id="34ed4-158">Отмените создание файла *web.config*, добавив свойство `<IsTransformWebConfigDisabled>` со значением `true`.</span><span class="sxs-lookup"><span data-stu-id="34ed4-158">To disable the creation of the *web.config* file, add the `<IsTransformWebConfigDisabled>` property set to `true`.</span></span>
 
 ```xml
 <PropertyGroup>
@@ -89,250 +127,191 @@ ms.locfileid: "65086992"
 
 ::: moniker-end
 
-#### <a name="self-contained-deployment-scd"></a><span data-ttu-id="7312d-133">Автономное развертывание</span><span class="sxs-lookup"><span data-stu-id="7312d-133">Self-contained Deployment (SCD)</span></span>
+### <a name="self-contained-deployment-scd"></a><span data-ttu-id="34ed4-159">Автономное развертывание</span><span class="sxs-lookup"><span data-stu-id="34ed4-159">Self-contained deployment (SCD)</span></span>
 
-<span data-ttu-id="7312d-134">Подтвердите наличие [идентификатора среды выполнения](/dotnet/core/rid-catalog) Windows или добавьте его в `<PropertyGroup>`, где содержится требуемая версия платформы.</span><span class="sxs-lookup"><span data-stu-id="7312d-134">Confirm the presence of a Windows [Runtime Identifier (RID)](/dotnet/core/rid-catalog) or add a RID to the `<PropertyGroup>` that contains the target framework.</span></span> <span data-ttu-id="7312d-135">Отмените создание файла *web.config*, добавив свойство `<IsTransformWebConfigDisabled>` со значением `true`.</span><span class="sxs-lookup"><span data-stu-id="7312d-135">Disable the creation of a *web.config* file by adding the `<IsTransformWebConfigDisabled>` property set to `true`.</span></span>
+<span data-ttu-id="34ed4-160">Для автономного развертывания необязательно наличие общей платформы в системе размещения.</span><span class="sxs-lookup"><span data-stu-id="34ed4-160">Self-contained deployment (SCD) doesn't rely on the presence of a shared framework on the host system.</span></span> <span data-ttu-id="34ed4-161">Среда выполнения и зависимости приложения развертываются с приложением.</span><span class="sxs-lookup"><span data-stu-id="34ed4-161">The runtime and the app's dependencies are deployed with the app.</span></span>
+
+<span data-ttu-id="34ed4-162">[Идентификатор среды выполнения](/dotnet/core/rid-catalog) Windows включается в `<PropertyGroup>`, где содержится целевая платформа:</span><span class="sxs-lookup"><span data-stu-id="34ed4-162">A Windows [Runtime Identifier (RID)](/dotnet/core/rid-catalog) is included in the `<PropertyGroup>` that contains the target framework:</span></span>
 
 ```xml
-<PropertyGroup>
-  <TargetFramework>netcoreapp2.2</TargetFramework>
-  <RuntimeIdentifier>win7-x64</RuntimeIdentifier>
-  <IsTransformWebConfigDisabled>true</IsTransformWebConfigDisabled>
-</PropertyGroup>
+<RuntimeIdentifier>win7-x64</RuntimeIdentifier>
 ```
 
-<span data-ttu-id="7312d-136">Чтобы выполнить публикацию для нескольких идентификаторов RID, сделайте следующее.</span><span class="sxs-lookup"><span data-stu-id="7312d-136">To publish for multiple RIDs:</span></span>
+<span data-ttu-id="34ed4-163">Чтобы выполнить публикацию для нескольких идентификаторов RID, сделайте следующее.</span><span class="sxs-lookup"><span data-stu-id="34ed4-163">To publish for multiple RIDs:</span></span>
 
-* <span data-ttu-id="7312d-137">Укажите список идентификаторов RID, разделив их точкой с запятой.</span><span class="sxs-lookup"><span data-stu-id="7312d-137">Provide the RIDs in a semicolon-delimited list.</span></span>
-* <span data-ttu-id="7312d-138">Укажите имя свойства `<RuntimeIdentifiers>` (множественное число).</span><span class="sxs-lookup"><span data-stu-id="7312d-138">Use the property name `<RuntimeIdentifiers>` (plural).</span></span>
+* <span data-ttu-id="34ed4-164">Укажите список идентификаторов RID, разделив их точкой с запятой.</span><span class="sxs-lookup"><span data-stu-id="34ed4-164">Provide the RIDs in a semicolon-delimited list.</span></span>
+* <span data-ttu-id="34ed4-165">Используйте имя свойства [\<RuntimeIdentifiers>](/dotnet/core/tools/csproj#runtimeidentifiers) (во множественном числе).</span><span class="sxs-lookup"><span data-stu-id="34ed4-165">Use the property name [\<RuntimeIdentifiers>](/dotnet/core/tools/csproj#runtimeidentifiers) (plural).</span></span>
 
-  <span data-ttu-id="7312d-139">Дополнительные сведения см. в [каталоге RID для .NET Core](/dotnet/core/rid-catalog).</span><span class="sxs-lookup"><span data-stu-id="7312d-139">For more information, see [.NET Core RID Catalog](/dotnet/core/rid-catalog).</span></span>
+<span data-ttu-id="34ed4-166">Дополнительные сведения см. в [каталоге RID для .NET Core](/dotnet/core/rid-catalog).</span><span class="sxs-lookup"><span data-stu-id="34ed4-166">For more information, see [.NET Core RID Catalog](/dotnet/core/rid-catalog).</span></span>
 
-<span data-ttu-id="7312d-140">Добавьте ссылку на пакет для [Microsoft.AspNetCore.Hosting.WindowsServices](https://www.nuget.org/packages/Microsoft.AspNetCore.Hosting.WindowsServices).</span><span class="sxs-lookup"><span data-stu-id="7312d-140">Add a package reference for [Microsoft.AspNetCore.Hosting.WindowsServices](https://www.nuget.org/packages/Microsoft.AspNetCore.Hosting.WindowsServices).</span></span>
+::: moniker range="< aspnetcore-3.0"
 
-<span data-ttu-id="7312d-141">Чтобы включить ведение журнала событий Windows, добавьте ссылку на пакет для [Microsoft.Extensions.Logging.EventLog](https://www.nuget.org/packages/Microsoft.Extensions.Logging.EventLog).</span><span class="sxs-lookup"><span data-stu-id="7312d-141">To enable Windows Event Log logging, add a package reference for [Microsoft.Extensions.Logging.EventLog](https://www.nuget.org/packages/Microsoft.Extensions.Logging.EventLog).</span></span>
+<span data-ttu-id="34ed4-167">Для свойства `<SelfContained>` задано значение `true`:</span><span class="sxs-lookup"><span data-stu-id="34ed4-167">A `<SelfContained>` property is set to `true`:</span></span>
 
-<span data-ttu-id="7312d-142">Дополнительные сведения см. в разделе [Обработка событий запуска и остановки](#handle-starting-and-stopping-events).</span><span class="sxs-lookup"><span data-stu-id="7312d-142">For more information, see the [Handle starting and stopping events](#handle-starting-and-stopping-events) section.</span></span>
-
-### <a name="programmain-updates"></a><span data-ttu-id="7312d-143">Обновления Program.Main</span><span class="sxs-lookup"><span data-stu-id="7312d-143">Program.Main updates</span></span>
-
-<span data-ttu-id="7312d-144">Внесите следующие изменения в `Program.Main`:</span><span class="sxs-lookup"><span data-stu-id="7312d-144">Make the following changes in `Program.Main`:</span></span>
-
-* <span data-ttu-id="7312d-145">Для тестирования и отладки при работе вне службы добавьте код, чтобы определить, как выполняется приложение: в качестве службы или консольного приложения.</span><span class="sxs-lookup"><span data-stu-id="7312d-145">To test and debug when running outside of a service, add code to determine if the app is running as a service or a console app.</span></span> <span data-ttu-id="7312d-146">Проверьте, присоединен ли отладчик или присутствует ли аргумент командной строки `--console`.</span><span class="sxs-lookup"><span data-stu-id="7312d-146">Inspect if the debugger is attached or a `--console` command-line argument is present.</span></span>
-
-  <span data-ttu-id="7312d-147">Если одно из условий имеет значение true (приложение выполняется не в качестве службы), вызовите <xref:Microsoft.AspNetCore.Hosting.WebHostExtensions.Run*> на веб-узле.</span><span class="sxs-lookup"><span data-stu-id="7312d-147">If either condition is true (the app isn't run as a service), call <xref:Microsoft.AspNetCore.Hosting.WebHostExtensions.Run*> on the Web Host.</span></span>
-
-  <span data-ttu-id="7312d-148">Если условия имеют значение false (приложение выполняется в качестве службы), сделайте следующее:</span><span class="sxs-lookup"><span data-stu-id="7312d-148">If the conditions are false (the app is run as a service):</span></span>
-
-  * <span data-ttu-id="7312d-149">Вызовите <xref:System.IO.Directory.SetCurrentDirectory*> и используйте путь к расположению для публикации приложения.</span><span class="sxs-lookup"><span data-stu-id="7312d-149">Call <xref:System.IO.Directory.SetCurrentDirectory*> and use a path to the app's published location.</span></span> <span data-ttu-id="7312d-150">Не вызывайте <xref:System.IO.Directory.GetCurrentDirectory*> для получения пути, так как при вызове <xref:System.IO.Directory.GetCurrentDirectory*> приложение службы Windows возвращает папку *C:\\WINDOWS\\system32*.</span><span class="sxs-lookup"><span data-stu-id="7312d-150">Don't call <xref:System.IO.Directory.GetCurrentDirectory*> to obtain the path because a Windows Service app returns the *C:\\WINDOWS\\system32* folder when <xref:System.IO.Directory.GetCurrentDirectory*> is called.</span></span> <span data-ttu-id="7312d-151">Дополнительные сведения см. в разделе [Текущий каталог и корневой каталог содержимого](#current-directory-and-content-root).</span><span class="sxs-lookup"><span data-stu-id="7312d-151">For more information, see the [Current directory and content root](#current-directory-and-content-root) section.</span></span>
-  * <span data-ttu-id="7312d-152">Вызовите <xref:Microsoft.AspNetCore.Hosting.WindowsServices.WebHostWindowsServiceExtensions.RunAsService*>, чтобы запустить приложение в качестве службы.</span><span class="sxs-lookup"><span data-stu-id="7312d-152">Call <xref:Microsoft.AspNetCore.Hosting.WindowsServices.WebHostWindowsServiceExtensions.RunAsService*> to run the app as a service.</span></span>
-
-  <span data-ttu-id="7312d-153">Так как для [поставщика конфигурации командной строки](xref:fundamentals/configuration/index#command-line-configuration-provider) требуется пара имя-значение для аргументов командной строки, параметр `--console` удаляется из аргументов, прежде чем <xref:Microsoft.AspNetCore.WebHost.CreateDefaultBuilder*> получит его.</span><span class="sxs-lookup"><span data-stu-id="7312d-153">Because the [Command-line Configuration Provider](xref:fundamentals/configuration/index#command-line-configuration-provider) requires name-value pairs for command-line arguments, the `--console` switch is removed from the arguments before <xref:Microsoft.AspNetCore.WebHost.CreateDefaultBuilder*> receives them.</span></span>
-
-* <span data-ttu-id="7312d-154">Для записи данных в журнал событий Windows добавьте поставщик EventLog в <xref:Microsoft.AspNetCore.Hosting.WebHostBuilder.ConfigureLogging*>.</span><span class="sxs-lookup"><span data-stu-id="7312d-154">To write to the Windows Event Log, add the EventLog provider to <xref:Microsoft.AspNetCore.Hosting.WebHostBuilder.ConfigureLogging*>.</span></span> <span data-ttu-id="7312d-155">Задайте уровень ведения журнала с помощью ключа `Logging:LogLevel:Default` в файле *appsettings.Production.json*.</span><span class="sxs-lookup"><span data-stu-id="7312d-155">Set the logging level with the `Logging:LogLevel:Default` key in the *appsettings.Production.json* file.</span></span> <span data-ttu-id="7312d-156">Для демонстрации и тестирования в файле параметров примера приложения для рабочей среды мы укажем такой уровень ведения журнала: `Information`.</span><span class="sxs-lookup"><span data-stu-id="7312d-156">For demonstration and testing purposes, the sample app's Production settings file sets the logging level to `Information`.</span></span> <span data-ttu-id="7312d-157">В рабочей среде обычно присваивается значение `Error`.</span><span class="sxs-lookup"><span data-stu-id="7312d-157">In production, the value is typically set to `Error`.</span></span> <span data-ttu-id="7312d-158">Для получения дополнительной информации см. <xref:fundamentals/logging/index#windows-eventlog-provider>.</span><span class="sxs-lookup"><span data-stu-id="7312d-158">For more information, see <xref:fundamentals/logging/index#windows-eventlog-provider>.</span></span>
-
-[!code-csharp[](windows-service/samples/2.x/AspNetCoreService/Program.cs?name=snippet_Program)]
-
-## <a name="publish-the-app"></a><span data-ttu-id="7312d-159">Публикация приложения</span><span class="sxs-lookup"><span data-stu-id="7312d-159">Publish the app</span></span>
-
-<span data-ttu-id="7312d-160">Опубликуйте приложение с помощью команды [dotnet publish](/dotnet/articles/core/tools/dotnet-publish), [профиля публикации Visual Studio](xref:host-and-deploy/visual-studio-publish-profiles) или Visual Studio Code.</span><span class="sxs-lookup"><span data-stu-id="7312d-160">Publish the app using [dotnet publish](/dotnet/articles/core/tools/dotnet-publish), a [Visual Studio publish profile](xref:host-and-deploy/visual-studio-publish-profiles), or Visual Studio Code.</span></span> <span data-ttu-id="7312d-161">Если вы используете Visual Studio, выберите **FolderProfile** и настройте **целевое расположение**, прежде чем нажимать кнопку **Опубликовать**.</span><span class="sxs-lookup"><span data-stu-id="7312d-161">When using Visual Studio, select the **FolderProfile** and configure the **Target Location** before selecting the **Publish** button.</span></span>
-
-<span data-ttu-id="7312d-162">Чтобы опубликовать пример приложения с помощью интерфейса командной строки (CLI), выполните в командной строке Windows команду [dotnet publish](/dotnet/core/tools/dotnet-publish) в папке проекта с конфигурацией выпуска, передаваемой параметру [-c|--configuration](/dotnet/core/tools/dotnet-publish#options).</span><span class="sxs-lookup"><span data-stu-id="7312d-162">To publish the sample app using command-line interface (CLI) tools, run the [dotnet publish](/dotnet/core/tools/dotnet-publish) command in a Windows command shell from the project folder with a Release configuration passed to the [-c|--configuration](/dotnet/core/tools/dotnet-publish#options) option.</span></span> <span data-ttu-id="7312d-163">Чтобы опубликовать этот пример в папке за пределами приложения, задайте параметр [-o|--output](/dotnet/core/tools/dotnet-publish#options) и укажите путь.</span><span class="sxs-lookup"><span data-stu-id="7312d-163">Use the [-o|--output](/dotnet/core/tools/dotnet-publish#options) option with a path to publish to a folder outside of the app.</span></span>
-
-### <a name="publish-a-framework-dependent-deployment-fdd"></a><span data-ttu-id="7312d-164">Публикация зависящего от платформы развертывания</span><span class="sxs-lookup"><span data-stu-id="7312d-164">Publish a Framework-dependent Deployment (FDD)</span></span>
-
-<span data-ttu-id="7312d-165">В следующем примере приложение публикуется в папке *c:\\svc*.</span><span class="sxs-lookup"><span data-stu-id="7312d-165">In the following example, the app is published to the *c:\\svc* folder:</span></span>
-
-```console
-dotnet publish --configuration Release --output c:\svc
+```xml
+<SelfContained>true</SelfContained>
 ```
 
-### <a name="publish-a-self-contained-deployment-scd"></a><span data-ttu-id="7312d-166">Публикация автономного развертывания</span><span class="sxs-lookup"><span data-stu-id="7312d-166">Publish a Self-contained Deployment (SCD)</span></span>
+::: moniker-end
 
-<span data-ttu-id="7312d-167">Идентификатор RID следует указать в свойстве `<RuntimeIdenfifier>` (или `<RuntimeIdentifiers>`) в файле проекта.</span><span class="sxs-lookup"><span data-stu-id="7312d-167">The RID must be specified in the `<RuntimeIdenfifier>` (or `<RuntimeIdentifiers>`) property of the project file.</span></span> <span data-ttu-id="7312d-168">Укажите среду выполнения в параметре [-r|--runtime](/dotnet/core/tools/dotnet-publish#options) команды `dotnet publish`.</span><span class="sxs-lookup"><span data-stu-id="7312d-168">Supply the runtime to the [-r|--runtime](/dotnet/core/tools/dotnet-publish#options) option of the `dotnet publish` command.</span></span>
+## <a name="service-user-account"></a><span data-ttu-id="34ed4-168">Учетная запись пользователя службы</span><span class="sxs-lookup"><span data-stu-id="34ed4-168">Service user account</span></span>
 
-<span data-ttu-id="7312d-169">В следующем примере приложение публикуется для среды выполнения `win7-x64` в папке *c:\\svc*.</span><span class="sxs-lookup"><span data-stu-id="7312d-169">In the following example, the app is published for the `win7-x64` runtime to the *c:\\svc* folder:</span></span>
+<span data-ttu-id="34ed4-169">Создайте для службы учетную запись пользователя с помощью командлета [New-LocalUser](/powershell/module/microsoft.powershell.localaccounts/new-localuser) в административной оболочке PowerShell 6.</span><span class="sxs-lookup"><span data-stu-id="34ed4-169">To create a user account for a service, use the [New-LocalUser](/powershell/module/microsoft.powershell.localaccounts/new-localuser) cmdlet from an administrative PowerShell 6 command shell.</span></span>
 
-```console
-dotnet publish --configuration Release --runtime win7-x64 --output c:\svc
-```
+<span data-ttu-id="34ed4-170">Обновление Windows 10 за октябрь 2018 г. (версия 1809, сборка 10.0.17763) или более поздней версии:</span><span class="sxs-lookup"><span data-stu-id="34ed4-170">On Windows 10 October 2018 Update (version 1809/build 10.0.17763) or later:</span></span>
 
-## <a name="create-a-user-account"></a><span data-ttu-id="7312d-170">Создание учетной записи пользователя</span><span class="sxs-lookup"><span data-stu-id="7312d-170">Create a user account</span></span>
-
-<span data-ttu-id="7312d-171">Создайте для службы учетную запись пользователя с помощью командлета [New-LocalUser](/powershell/module/microsoft.powershell.localaccounts/new-localuser) из административной командной оболочки PowerShell 6.</span><span class="sxs-lookup"><span data-stu-id="7312d-171">Create a user account for the service using the [New-LocalUser](/powershell/module/microsoft.powershell.localaccounts/new-localuser) cmdlet from an administrative PowerShell 6 command shell:</span></span>
-
-```powershell
+```PowerShell
 New-LocalUser -Name {NAME}
 ```
 
-<span data-ttu-id="7312d-172">Укажите [надежный пароль](/windows/security/threat-protection/security-policy-settings/password-must-meet-complexity-requirements) при появлении соответствующего запроса.</span><span class="sxs-lookup"><span data-stu-id="7312d-172">Provide a [strong password](/windows/security/threat-protection/security-policy-settings/password-must-meet-complexity-requirements) when prompted.</span></span>
+<span data-ttu-id="34ed4-171">Версия Windows, предшествующая обновлению Windows 10 за октябрь 2018 г. (версия 1809, сборка 10.0.17763):</span><span class="sxs-lookup"><span data-stu-id="34ed4-171">On Windows OS earlier than the Windows 10 October 2018 Update (version 1809/build 10.0.17763):</span></span>
 
-<span data-ttu-id="7312d-173">Для примера приложения создайте учетную запись пользователя с именем `ServiceUser`.</span><span class="sxs-lookup"><span data-stu-id="7312d-173">For the sample app, create a user account with the name `ServiceUser`.</span></span>
-
-```powershell
-New-LocalUser -Name ServiceUser
+```console
+powershell -Command "New-LocalUser -Name {NAME}"
 ```
 
-<span data-ttu-id="7312d-174">Параметр срока действия учетной записи <xref:System.DateTime> можно задать с помощью параметра `-AccountExpires`, передаваемого в командлет [New-LocalUser](/powershell/module/microsoft.powershell.localaccounts/new-localuser).</span><span class="sxs-lookup"><span data-stu-id="7312d-174">Unless the `-AccountExpires` parameter is supplied to the [New-LocalUser](/powershell/module/microsoft.powershell.localaccounts/new-localuser) cmdlet with an expiration <xref:System.DateTime>, the account doesn't expire.</span></span>
+<span data-ttu-id="34ed4-172">Укажите [надежный пароль](/windows/security/threat-protection/security-policy-settings/password-must-meet-complexity-requirements) при появлении соответствующего запроса.</span><span class="sxs-lookup"><span data-stu-id="34ed4-172">Provide a [strong password](/windows/security/threat-protection/security-policy-settings/password-must-meet-complexity-requirements) when prompted.</span></span>
 
-<span data-ttu-id="7312d-175">Дополнительные сведения см. в статьях [Microsoft.PowerShell.LocalAccounts](/powershell/module/microsoft.powershell.localaccounts/) и [Service User Accounts](/windows/desktop/services/service-user-accounts) (Учетные записи пользователей служб).</span><span class="sxs-lookup"><span data-stu-id="7312d-175">For more information, see [Microsoft.PowerShell.LocalAccounts](/powershell/module/microsoft.powershell.localaccounts/) and [Service User Accounts](/windows/desktop/services/service-user-accounts).</span></span>
+<span data-ttu-id="34ed4-173">Параметр срока действия учетной записи <xref:System.DateTime> можно задать с помощью параметра `-AccountExpires`, передаваемого в командлет [New-LocalUser](/powershell/module/microsoft.powershell.localaccounts/new-localuser).</span><span class="sxs-lookup"><span data-stu-id="34ed4-173">Unless the `-AccountExpires` parameter is supplied to the [New-LocalUser](/powershell/module/microsoft.powershell.localaccounts/new-localuser) cmdlet with an expiration <xref:System.DateTime>, the account doesn't expire.</span></span>
 
-<span data-ttu-id="7312d-176">Альтернативный подход к управлению пользователями при работе с Active Directory заключается в применении управляемых учетных записей служб.</span><span class="sxs-lookup"><span data-stu-id="7312d-176">An alternative approach to managing users when using Active Directory is to use Managed Service Accounts.</span></span> <span data-ttu-id="7312d-177">Дополнительные сведения см. в [обзоре групповых управляемых учетных записей службы](/windows-server/security/group-managed-service-accounts/group-managed-service-accounts-overview).</span><span class="sxs-lookup"><span data-stu-id="7312d-177">For more information, see [Group Managed Service Accounts Overview](/windows-server/security/group-managed-service-accounts/group-managed-service-accounts-overview).</span></span>
+<span data-ttu-id="34ed4-174">Дополнительные сведения см. в статьях [Microsoft.PowerShell.LocalAccounts](/powershell/module/microsoft.powershell.localaccounts/) и [Service User Accounts](/windows/desktop/services/service-user-accounts) (Учетные записи пользователей служб).</span><span class="sxs-lookup"><span data-stu-id="34ed4-174">For more information, see [Microsoft.PowerShell.LocalAccounts](/powershell/module/microsoft.powershell.localaccounts/) and [Service User Accounts](/windows/desktop/services/service-user-accounts).</span></span>
 
-## <a name="set-permission-log-on-as-a-service"></a><span data-ttu-id="7312d-178">Установка разрешений: Вход в систему в качестве службы</span><span class="sxs-lookup"><span data-stu-id="7312d-178">Set permission: Log on as a service</span></span>
+<span data-ttu-id="34ed4-175">Альтернативный подход к управлению пользователями при работе с Active Directory заключается в применении управляемых учетных записей служб.</span><span class="sxs-lookup"><span data-stu-id="34ed4-175">An alternative approach to managing users when using Active Directory is to use Managed Service Accounts.</span></span> <span data-ttu-id="34ed4-176">Дополнительные сведения см. в [обзоре групповых управляемых учетных записей службы](/windows-server/security/group-managed-service-accounts/group-managed-service-accounts-overview).</span><span class="sxs-lookup"><span data-stu-id="34ed4-176">For more information, see [Group Managed Service Accounts Overview](/windows-server/security/group-managed-service-accounts/group-managed-service-accounts-overview).</span></span>
 
-<span data-ttu-id="7312d-179">Предоставьте доступ на запись, чтение и выполнение к папке приложения с помощью команды [icacls](/windows-server/administration/windows-commands/icacls) из административной командной оболочки PowerShell 6.</span><span class="sxs-lookup"><span data-stu-id="7312d-179">Grant write/read/execute access to the app's folder using the [icacls](/windows-server/administration/windows-commands/icacls) command an administrative PowerShell 6 command shell.</span></span>
+## <a name="log-on-as-a-service-rights"></a><span data-ttu-id="34ed4-177">Права на вход в качестве службы</span><span class="sxs-lookup"><span data-stu-id="34ed4-177">Log on as a service rights</span></span>
 
-```powershell
-icacls "{PATH}" /grant "{USER ACCOUNT}:(OI)(CI){PERMISSION FLAGS}" /t
-```
+<span data-ttu-id="34ed4-178">Чтобы настроить право *Вход в качестве службы* для учетной записи пользователя службы, сделайте следующее:</span><span class="sxs-lookup"><span data-stu-id="34ed4-178">To establish *Log on as a service* rights for a service user account:</span></span>
 
-* <span data-ttu-id="7312d-180">`{PATH}` &ndash; путь к папке приложения.</span><span class="sxs-lookup"><span data-stu-id="7312d-180">`{PATH}` &ndash; Path to the app's folder.</span></span>
-* <span data-ttu-id="7312d-181">`{USER ACCOUNT}` &ndash; учетная запись пользователя (SID).</span><span class="sxs-lookup"><span data-stu-id="7312d-181">`{USER ACCOUNT}` &ndash; The user account (SID).</span></span>
-* <span data-ttu-id="7312d-182">`(OI)` &ndash; флаг наследования объекта, который распространяет разрешения на вложенные файлы.</span><span class="sxs-lookup"><span data-stu-id="7312d-182">`(OI)` &ndash; The Object Inherit flag propagates permissions to subordinate files.</span></span>
-* <span data-ttu-id="7312d-183">`(CI)` &ndash; флаг наследования контейнера, который распространяет разрешения на вложенные папки.</span><span class="sxs-lookup"><span data-stu-id="7312d-183">`(CI)` &ndash; The Container Inherit flag propagates permissions to subordinate folders.</span></span>
-* <span data-ttu-id="7312d-184">`{PERMISSION FLAGS}` &ndash; устанавливает разрешения для доступа к приложениям.</span><span class="sxs-lookup"><span data-stu-id="7312d-184">`{PERMISSION FLAGS}` &ndash; Sets the app's access permissions.</span></span>
-  * <span data-ttu-id="7312d-185">Запись (`W`)</span><span class="sxs-lookup"><span data-stu-id="7312d-185">Write (`W`)</span></span>
-  * <span data-ttu-id="7312d-186">Чтение (`R`)</span><span class="sxs-lookup"><span data-stu-id="7312d-186">Read (`R`)</span></span>
-  * <span data-ttu-id="7312d-187">Выполнение (`X`)</span><span class="sxs-lookup"><span data-stu-id="7312d-187">Execute (`X`)</span></span>
-  * <span data-ttu-id="7312d-188">Полное (`F`)</span><span class="sxs-lookup"><span data-stu-id="7312d-188">Full (`F`)</span></span>
-  * <span data-ttu-id="7312d-189">Изменение (`M`)</span><span class="sxs-lookup"><span data-stu-id="7312d-189">Modify (`M`)</span></span>
-* <span data-ttu-id="7312d-190">`/t` &ndash; применяется рекурсивно к имеющимся вложенным папкам и файлам.</span><span class="sxs-lookup"><span data-stu-id="7312d-190">`/t` &ndash; Apply recursively to existing subordinate folders and files.</span></span>
+1. <span data-ttu-id="34ed4-179">Откройте редактор локальной политики безопасности, запустив *secpool.msc*.</span><span class="sxs-lookup"><span data-stu-id="34ed4-179">Open the Local Security Policy editor by running *secpool.msc*.</span></span>
+1. <span data-ttu-id="34ed4-180">Разверните узел **Локальные политики** и выберите **Назначение прав пользователя**.</span><span class="sxs-lookup"><span data-stu-id="34ed4-180">Expand the **Local Policies** node and select **User Rights Assignment**.</span></span>
+1. <span data-ttu-id="34ed4-181">Откройте политику **Вход в качестве службы**.</span><span class="sxs-lookup"><span data-stu-id="34ed4-181">Open the **Log on as a service** policy.</span></span>
+1. <span data-ttu-id="34ed4-182">Щелкните **Добавить пользователя или группу**.</span><span class="sxs-lookup"><span data-stu-id="34ed4-182">Select **Add User or Group**.</span></span>
+1. <span data-ttu-id="34ed4-183">Укажите имя объекта (учетная запись пользователя) одним из следующих способов:</span><span class="sxs-lookup"><span data-stu-id="34ed4-183">Provide the object name (user account) using either of the following approaches:</span></span>
+   1. <span data-ttu-id="34ed4-184">Укажите учетную запись пользователя (`{DOMAIN OR COMPUTER NAME\USER}`) в поле для имени объекта и нажмите **ОК**, чтобы назначить политику пользователю.</span><span class="sxs-lookup"><span data-stu-id="34ed4-184">Type the user account (`{DOMAIN OR COMPUTER NAME\USER}`) in the object name field and select **OK** to add the user to the policy.</span></span>
+   1. <span data-ttu-id="34ed4-185">Выберите **Дополнительно**.</span><span class="sxs-lookup"><span data-stu-id="34ed4-185">Select **Advanced**.</span></span> <span data-ttu-id="34ed4-186">Нажмите **Найти**.</span><span class="sxs-lookup"><span data-stu-id="34ed4-186">Select **Find Now**.</span></span> <span data-ttu-id="34ed4-187">Выберите учетную запись пользователя из списка.</span><span class="sxs-lookup"><span data-stu-id="34ed4-187">Select the user account from the list.</span></span> <span data-ttu-id="34ed4-188">Нажмите кнопку **ОК**.</span><span class="sxs-lookup"><span data-stu-id="34ed4-188">Select **OK**.</span></span> <span data-ttu-id="34ed4-189">Нажмите **ОК** еще раз, чтобы назначить политику пользователю.</span><span class="sxs-lookup"><span data-stu-id="34ed4-189">Select **OK** again to add the user to the policy.</span></span>
+1. <span data-ttu-id="34ed4-190">Нажмите **ОК** или **Применить**, чтобы сохранить изменения.</span><span class="sxs-lookup"><span data-stu-id="34ed4-190">Select **OK** or **Apply** to accept the changes.</span></span>
 
-<span data-ttu-id="7312d-191">Для примера приложения, опубликованного в папке *c:\\svc*, и учетной записи `ServiceUser` с разрешениями на запись, чтение и выполнение выполните следующую команду в административной командной оболочке PowerShell 6:</span><span class="sxs-lookup"><span data-stu-id="7312d-191">For the sample app published to the *c:\\svc* folder and the `ServiceUser` account with write/read/execute permissions, use the following command an administrative PowerShell 6 command shell.</span></span>
+## <a name="create-and-manage-the-windows-service"></a><span data-ttu-id="34ed4-191">Создание службы Windows и управление ею</span><span class="sxs-lookup"><span data-stu-id="34ed4-191">Create and manage the Windows Service</span></span>
 
-```powershell
-icacls "c:\svc" /grant "ServiceUser:(OI)(CI)WRX" /t
-```
+### <a name="create-a-service"></a><span data-ttu-id="34ed4-192">Создание службы</span><span class="sxs-lookup"><span data-stu-id="34ed4-192">Create a service</span></span>
 
-<span data-ttu-id="7312d-192">Дополнительные сведения см. в статье об [icacls](/windows-server/administration/windows-commands/icacls).</span><span class="sxs-lookup"><span data-stu-id="7312d-192">For more information, see [icacls](/windows-server/administration/windows-commands/icacls).</span></span>
-
-## <a name="create-the-service"></a><span data-ttu-id="7312d-193">Создание службы</span><span class="sxs-lookup"><span data-stu-id="7312d-193">Create the service</span></span>
-
-<span data-ttu-id="7312d-194">Используйте скрипт PowerShell [RegisterService.ps1](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/host-and-deploy/windows-service/scripts), чтобы зарегистрировать службу.</span><span class="sxs-lookup"><span data-stu-id="7312d-194">Use the [RegisterService.ps1](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/host-and-deploy/windows-service/scripts) PowerShell script to register the service.</span></span> <span data-ttu-id="7312d-195">Из административной командной оболочки PowerShell 6 выполните скрипт с помощью такой команды:</span><span class="sxs-lookup"><span data-stu-id="7312d-195">From an administrative PowerShell 6 command shell, execute the script with the following command:</span></span>
+<span data-ttu-id="34ed4-193">Зарегистрируйте службу с помощью команды PowerShell.</span><span class="sxs-lookup"><span data-stu-id="34ed4-193">Use PowerShell commands to register a service.</span></span> <span data-ttu-id="34ed4-194">В административной оболочке PowerShell 6 выполните следующие команды:</span><span class="sxs-lookup"><span data-stu-id="34ed4-194">From an administrative PowerShell 6 command shell, execute the following commands:</span></span>
 
 ```powershell
-.\RegisterService.ps1 
-    -Name {NAME} 
-    -DisplayName "{DISPLAY NAME}" 
-    -Description "{DESCRIPTION}" 
-    -Exe "{PATH TO EXE}\{ASSEMBLY NAME}.exe" 
-    -User {DOMAIN\USER}
+$acl = Get-Acl "{EXE PATH}"
+$aclRuleArgs = {DOMAIN OR COMPUTER NAME\USER}, "Read,Write,ReadAndExecute", "ContainerInherit,ObjectInherit", "None", "Allow"
+$accessRule = New-Object System.Security.AccessControl.FileSystemAccessRule($aclRuleArgs)
+$acl.SetAccessRule($accessRule)
+$acl | Set-Acl "{EXE PATH}"
+
+New-Service -Name {NAME} -BinaryPathName {EXE FILE PATH} -Credential {DOMAIN OR COMPUTER NAME\USER} -Description "{DESCRIPTION}" -DisplayName "{DISPLAY NAME}" -StartupType Automatic
 ```
 
-<span data-ttu-id="7312d-196">В примере ниже для примера приложения указано следующее:</span><span class="sxs-lookup"><span data-stu-id="7312d-196">In the following example for the sample app:</span></span>
+* <span data-ttu-id="34ed4-195">`{EXE PATH}` — путь к папке приложения на узле (например, `d:\myservice`).</span><span class="sxs-lookup"><span data-stu-id="34ed4-195">`{EXE PATH}` &ndash; Path to the app's folder on the host (for example, `d:\myservice`).</span></span> <span data-ttu-id="34ed4-196">Не включайте исполняемый файл приложения в путь.</span><span class="sxs-lookup"><span data-stu-id="34ed4-196">Don't include the app's executable in the path.</span></span> <span data-ttu-id="34ed4-197">Завершающая косая черта не требуется.</span><span class="sxs-lookup"><span data-stu-id="34ed4-197">A trailing slash isn't required.</span></span>
+* <span data-ttu-id="34ed4-198">`{DOMAIN OR COMPUTER NAME\USER}` —учетная запись пользователя службы (например, `Contoso\ServiceUser`).</span><span class="sxs-lookup"><span data-stu-id="34ed4-198">`{DOMAIN OR COMPUTER NAME\USER}` &ndash; Service user account (for example, `Contoso\ServiceUser`).</span></span>
+* <span data-ttu-id="34ed4-199">`{NAME}` — имя службы (например, `MyService`).</span><span class="sxs-lookup"><span data-stu-id="34ed4-199">`{NAME}` &ndash; Service name (for example, `MyService`).</span></span>
+* <span data-ttu-id="34ed4-200">`{EXE FILE PATH}` — путь к исполняемому файлу приложения (например, `d:\myservice\myservice.exe`).</span><span class="sxs-lookup"><span data-stu-id="34ed4-200">`{EXE FILE PATH}` &ndash; The app's executable path (for example, `d:\myservice\myservice.exe`).</span></span> <span data-ttu-id="34ed4-201">Включите имя исполняемого файла с расширением.</span><span class="sxs-lookup"><span data-stu-id="34ed4-201">Include the executable's file name with extension.</span></span>
+* <span data-ttu-id="34ed4-202">`{DESCRIPTION}` — описание службы (например, `My sample service`).</span><span class="sxs-lookup"><span data-stu-id="34ed4-202">`{DESCRIPTION}` &ndash; Service description (for example, `My sample service`).</span></span>
+* <span data-ttu-id="34ed4-203">`{DISPLAY NAME}` — отображаемое имя службы (например, `My Service`).</span><span class="sxs-lookup"><span data-stu-id="34ed4-203">`{DISPLAY NAME}` &ndash; Service display name (for example, `My Service`).</span></span>
 
-* <span data-ttu-id="7312d-197">Служба называется **MyService**.</span><span class="sxs-lookup"><span data-stu-id="7312d-197">The service is named **MyService**.</span></span>
-* <span data-ttu-id="7312d-198">Опубликованная служба размещается в папке *c:\\svc*.</span><span class="sxs-lookup"><span data-stu-id="7312d-198">The published service resides in the *c:\\svc* folder.</span></span> <span data-ttu-id="7312d-199">Исполняемый файл приложения с именем *SampleApp.exe*.</span><span class="sxs-lookup"><span data-stu-id="7312d-199">The app executable is named *SampleApp.exe*.</span></span>
-* <span data-ttu-id="7312d-200">Служба работает под учетной записью `ServiceUser`.</span><span class="sxs-lookup"><span data-stu-id="7312d-200">The service runs under the `ServiceUser` account.</span></span> <span data-ttu-id="7312d-201">В следующем примере команды `Desktop-PC` является именем локального компьютера.</span><span class="sxs-lookup"><span data-stu-id="7312d-201">In the following example command, the local machine name is `Desktop-PC`.</span></span> <span data-ttu-id="7312d-202">Замените `Desktop-PC` именем компьютера или доменом своей системы.</span><span class="sxs-lookup"><span data-stu-id="7312d-202">Replace `Desktop-PC` with the computer name or domain for your system.</span></span>
+### <a name="start-a-service"></a><span data-ttu-id="34ed4-204">Запуск службы</span><span class="sxs-lookup"><span data-stu-id="34ed4-204">Start a service</span></span>
+
+<span data-ttu-id="34ed4-205">Запустите службу с помощью следующей команды PowerShell 6:</span><span class="sxs-lookup"><span data-stu-id="34ed4-205">Start a service with the following PowerShell 6 command:</span></span>
 
 ```powershell
-.\RegisterService.ps1 
-    -Name MyService 
-    -DisplayName "My Cool Service" 
-    -Description "This is the Sample App service." 
-    -Exe "c:\svc\SampleApp.exe" 
-    -User Desktop-PC\ServiceUser
+Start-Service -Name {NAME}
 ```
 
-## <a name="manage-the-service"></a><span data-ttu-id="7312d-203">Управление службой</span><span class="sxs-lookup"><span data-stu-id="7312d-203">Manage the service</span></span>
+<span data-ttu-id="34ed4-206">Команде потребуется несколько секунд, чтобы запустить службу.</span><span class="sxs-lookup"><span data-stu-id="34ed4-206">The command takes a few seconds to start the service.</span></span>
 
-### <a name="start-the-service"></a><span data-ttu-id="7312d-204">Запуск службы</span><span class="sxs-lookup"><span data-stu-id="7312d-204">Start the service</span></span>
+### <a name="determine-a-services-status"></a><span data-ttu-id="34ed4-207">Определение состояния службы</span><span class="sxs-lookup"><span data-stu-id="34ed4-207">Determine a service's status</span></span>
 
-<span data-ttu-id="7312d-205">Запустите службу с помощью команды PowerShell 6 `Start-Service -Name {NAME}`.</span><span class="sxs-lookup"><span data-stu-id="7312d-205">Start the service with the `Start-Service -Name {NAME}` PowerShell 6 command.</span></span>
-
-<span data-ttu-id="7312d-206">Чтобы запустить пример службы приложения, используйте следующую команду:</span><span class="sxs-lookup"><span data-stu-id="7312d-206">To start the sample app service, use the following command:</span></span>
+<span data-ttu-id="34ed4-208">Чтобы проверить состояние службы, используйте следующую команду PowerShell 6:</span><span class="sxs-lookup"><span data-stu-id="34ed4-208">To check the status of a service, use the following PowerShell 6 command:</span></span>
 
 ```powershell
-Start-Service -Name MyService
+Get-Service -Name {NAME}
 ```
 
-<span data-ttu-id="7312d-207">Команде потребуется несколько секунд, чтобы запустить службу.</span><span class="sxs-lookup"><span data-stu-id="7312d-207">The command takes a few seconds to start the service.</span></span>
-
-### <a name="determine-the-service-status"></a><span data-ttu-id="7312d-208">Определение состояния службы</span><span class="sxs-lookup"><span data-stu-id="7312d-208">Determine the service status</span></span>
-
-<span data-ttu-id="7312d-209">Чтобы проверить состояние службы, используйте команду PowerShell 6 `Get-Service -Name {NAME}`.</span><span class="sxs-lookup"><span data-stu-id="7312d-209">To check the status of the service, use the `Get-Service -Name {NAME}` PowerShell 6 command.</span></span> <span data-ttu-id="7312d-210">Состояние отображается одним из следующих значений:</span><span class="sxs-lookup"><span data-stu-id="7312d-210">The status is reported as one of the following values:</span></span>
+<span data-ttu-id="34ed4-209">Состояние отображается одним из следующих значений:</span><span class="sxs-lookup"><span data-stu-id="34ed4-209">The status is reported as one of the following values:</span></span>
 
 * `Starting`
 * `Running`
 * `Stopping`
 * `Stopped`
 
-<span data-ttu-id="7312d-211">Чтобы проверить состояние примера службы приложения, используйте следующую команду:</span><span class="sxs-lookup"><span data-stu-id="7312d-211">Use the following command to check the status of the sample app service:</span></span>
+### <a name="stop-a-service"></a><span data-ttu-id="34ed4-210">Остановка службы</span><span class="sxs-lookup"><span data-stu-id="34ed4-210">Stop a service</span></span>
+
+<span data-ttu-id="34ed4-211">Остановите службу с помощью следующей команды PowerShell 6:</span><span class="sxs-lookup"><span data-stu-id="34ed4-211">Stop a service with the following Powershell 6 command:</span></span>
 
 ```powershell
-Get-Service -Name MyService
+Stop-Service -Name {NAME}
 ```
 
-### <a name="browse-a-web-app-service"></a><span data-ttu-id="7312d-212">Обзор службы веб-приложений</span><span class="sxs-lookup"><span data-stu-id="7312d-212">Browse a web app service</span></span>
+### <a name="remove-a-service"></a><span data-ttu-id="34ed4-212">Удаление службы</span><span class="sxs-lookup"><span data-stu-id="34ed4-212">Remove a service</span></span>
 
-<span data-ttu-id="7312d-213">Если служба находится в состоянии `RUNNING` и является веб-приложением, найдите приложение по его пути (по умолчанию `http://localhost:5000`, который перенаправляет на `https://localhost:5001` при использовании [ПО промежуточного слоя перенаправления на HTTPS](xref:security/enforcing-ssl)).</span><span class="sxs-lookup"><span data-stu-id="7312d-213">When the service is in the `RUNNING` state and if the service is a web app, browse the app at its path (by default, `http://localhost:5000`, which redirects to `https://localhost:5001` when using [HTTPS Redirection Middleware](xref:security/enforcing-ssl)).</span></span>
-
-<span data-ttu-id="7312d-214">Чтобы получить пример службы приложений, найдите приложение по адресу `http://localhost:5000`.</span><span class="sxs-lookup"><span data-stu-id="7312d-214">For the sample app service, browse the app at `http://localhost:5000`.</span></span>
-
-### <a name="stop-the-service"></a><span data-ttu-id="7312d-215">Остановите службу</span><span class="sxs-lookup"><span data-stu-id="7312d-215">Stop the service</span></span>
-
-<span data-ttu-id="7312d-216">Остановите службу с помощью команды PowerShell 6 `Stop-Service -Name {NAME}`.</span><span class="sxs-lookup"><span data-stu-id="7312d-216">Stop the service with the `Stop-Service -Name {NAME}` Powershell 6 command.</span></span>
-
-<span data-ttu-id="7312d-217">Чтобы остановить пример службы приложения, используйте следующую команду:</span><span class="sxs-lookup"><span data-stu-id="7312d-217">The following command stops the sample app service:</span></span>
+<span data-ttu-id="34ed4-213">После небольшой задержки для остановки службы удалите службу с помощью следующей команды Powershell 6:</span><span class="sxs-lookup"><span data-stu-id="34ed4-213">After a short delay to stop a service, remove a service with the following Powershell 6 command:</span></span>
 
 ```powershell
-Stop-Service -Name MyService
+Remove-Service -Name {NAME}
 ```
 
-### <a name="remove-the-service"></a><span data-ttu-id="7312d-218">Удаление службы</span><span class="sxs-lookup"><span data-stu-id="7312d-218">Remove the service</span></span>
+::: moniker range="< aspnetcore-3.0"
 
-<span data-ttu-id="7312d-219">После небольшой задержки для остановки службы удалите службу с помощью команды Powershell 6 `Remove-Service -Name {NAME}`.</span><span class="sxs-lookup"><span data-stu-id="7312d-219">After a short delay to stop a service, remove the service with the `Remove-Service -Name {NAME}` Powershell 6 command.</span></span>
+## <a name="handle-starting-and-stopping-events"></a><span data-ttu-id="34ed4-214">Обработка событий запуска и остановки</span><span class="sxs-lookup"><span data-stu-id="34ed4-214">Handle starting and stopping events</span></span>
 
-<span data-ttu-id="7312d-220">Следующая команда удаляет пример службы приложения:</span><span class="sxs-lookup"><span data-stu-id="7312d-220">The following command removes the sample app service:</span></span>
+<span data-ttu-id="34ed4-215">Чтобы обработать события <xref:Microsoft.AspNetCore.Hosting.WindowsServices.WebHostService.OnStarting*>, <xref:Microsoft.AspNetCore.Hosting.WindowsServices.WebHostService.OnStarted*> и <xref:Microsoft.AspNetCore.Hosting.WindowsServices.WebHostService.OnStopping*>, сделайте следующее:</span><span class="sxs-lookup"><span data-stu-id="34ed4-215">To handle <xref:Microsoft.AspNetCore.Hosting.WindowsServices.WebHostService.OnStarting*>, <xref:Microsoft.AspNetCore.Hosting.WindowsServices.WebHostService.OnStarted*>, and <xref:Microsoft.AspNetCore.Hosting.WindowsServices.WebHostService.OnStopping*> events:</span></span>
 
-```powershell
-Remove-Service -Name MyService
-```
-
-## <a name="handle-starting-and-stopping-events"></a><span data-ttu-id="7312d-221">Обработка событий запуска и остановки</span><span class="sxs-lookup"><span data-stu-id="7312d-221">Handle starting and stopping events</span></span>
-
-<span data-ttu-id="7312d-222">Чтобы правильно обрабатывать события <xref:Microsoft.AspNetCore.Hosting.WindowsServices.WebHostService.OnStarting*>, <xref:Microsoft.AspNetCore.Hosting.WindowsServices.WebHostService.OnStarted*> и <xref:Microsoft.AspNetCore.Hosting.WindowsServices.WebHostService.OnStopping*>, внесите дополнительные изменения:</span><span class="sxs-lookup"><span data-stu-id="7312d-222">To handle <xref:Microsoft.AspNetCore.Hosting.WindowsServices.WebHostService.OnStarting*>, <xref:Microsoft.AspNetCore.Hosting.WindowsServices.WebHostService.OnStarted*>, and <xref:Microsoft.AspNetCore.Hosting.WindowsServices.WebHostService.OnStopping*> events, perform the following additional changes:</span></span>
-
-1. <span data-ttu-id="7312d-223">Создайте класс, производный от <xref:Microsoft.AspNetCore.Hosting.WindowsServices.WebHostService>, с методами `OnStarting`, `OnStarted` и `OnStopping`:</span><span class="sxs-lookup"><span data-stu-id="7312d-223">Create a class that derives from <xref:Microsoft.AspNetCore.Hosting.WindowsServices.WebHostService> with the `OnStarting`, `OnStarted`, and `OnStopping` methods:</span></span>
+1. <span data-ttu-id="34ed4-216">Создайте класс, производный от <xref:Microsoft.AspNetCore.Hosting.WindowsServices.WebHostService>, с методами `OnStarting`, `OnStarted` и `OnStopping`:</span><span class="sxs-lookup"><span data-stu-id="34ed4-216">Create a class that derives from <xref:Microsoft.AspNetCore.Hosting.WindowsServices.WebHostService> with the `OnStarting`, `OnStarted`, and `OnStopping` methods:</span></span>
 
    [!code-csharp[](windows-service/samples/2.x/AspNetCoreService/CustomWebHostService.cs?name=snippet_CustomWebHostService)]
 
-2. <span data-ttu-id="7312d-224">Создайте метод расширения для <xref:Microsoft.AspNetCore.Hosting.IWebHost>, который передает `CustomWebHostService` в <xref:System.ServiceProcess.ServiceBase.Run*>:</span><span class="sxs-lookup"><span data-stu-id="7312d-224">Create an extension method for <xref:Microsoft.AspNetCore.Hosting.IWebHost> that passes the `CustomWebHostService` to <xref:System.ServiceProcess.ServiceBase.Run*>:</span></span>
+2. <span data-ttu-id="34ed4-217">Создайте метод расширения для <xref:Microsoft.AspNetCore.Hosting.IWebHost>, который передает `CustomWebHostService` в <xref:System.ServiceProcess.ServiceBase.Run*>:</span><span class="sxs-lookup"><span data-stu-id="34ed4-217">Create an extension method for <xref:Microsoft.AspNetCore.Hosting.IWebHost> that passes the `CustomWebHostService` to <xref:System.ServiceProcess.ServiceBase.Run*>:</span></span>
 
    [!code-csharp[](windows-service/samples/2.x/AspNetCoreService/WebHostServiceExtensions.cs?name=ExtensionsClass)]
 
-3. <span data-ttu-id="7312d-225">В `Program.Main` вызовите метод расширения `RunAsCustomService` вместо <xref:Microsoft.AspNetCore.Hosting.WindowsServices.WebHostWindowsServiceExtensions.RunAsService*>:</span><span class="sxs-lookup"><span data-stu-id="7312d-225">In `Program.Main`, call the `RunAsCustomService` extension method instead of <xref:Microsoft.AspNetCore.Hosting.WindowsServices.WebHostWindowsServiceExtensions.RunAsService*>:</span></span>
+3. <span data-ttu-id="34ed4-218">В `Program.Main` вызовите метод расширения `RunAsCustomService` вместо <xref:Microsoft.AspNetCore.Hosting.WindowsServices.WebHostWindowsServiceExtensions.RunAsService*>:</span><span class="sxs-lookup"><span data-stu-id="34ed4-218">In `Program.Main`, call the `RunAsCustomService` extension method instead of <xref:Microsoft.AspNetCore.Hosting.WindowsServices.WebHostWindowsServiceExtensions.RunAsService*>:</span></span>
 
    ```csharp
    host.RunAsCustomService();
    ```
 
-   <span data-ttu-id="7312d-226">Чтобы узнать расположение <xref:Microsoft.AspNetCore.Hosting.WindowsServices.WebHostWindowsServiceExtensions.RunAsService*> в `Program.Main`, см. пример кода, приведенный в разделе [Преобразование проекта в службу Windows](#convert-a-project-into-a-windows-service).</span><span class="sxs-lookup"><span data-stu-id="7312d-226">To see the location of <xref:Microsoft.AspNetCore.Hosting.WindowsServices.WebHostWindowsServiceExtensions.RunAsService*> in `Program.Main`, refer to the code sample shown in the [Convert a project into a Windows Service](#convert-a-project-into-a-windows-service) section.</span></span>
+   <span data-ttu-id="34ed4-219">Чтобы узнать расположение <xref:Microsoft.AspNetCore.Hosting.WindowsServices.WebHostWindowsServiceExtensions.RunAsService*> в `Program.Main`, см. пример кода из раздела [Тип развертывания](#deployment-type).</span><span class="sxs-lookup"><span data-stu-id="34ed4-219">To see the location of <xref:Microsoft.AspNetCore.Hosting.WindowsServices.WebHostWindowsServiceExtensions.RunAsService*> in `Program.Main`, refer to the code sample shown in the [Deployment type](#deployment-type) section.</span></span>
 
-## <a name="proxy-server-and-load-balancer-scenarios"></a><span data-ttu-id="7312d-227">Сценарии использования прокси-сервера и подсистемы балансировки нагрузки</span><span class="sxs-lookup"><span data-stu-id="7312d-227">Proxy server and load balancer scenarios</span></span>
+::: moniker-end
 
-<span data-ttu-id="7312d-228">Для служб, которые взаимодействуют с запросами из Интернета или корпоративной сети и размещаются за прокси-сервером или подсистемой балансировки нагрузки, может потребоваться дополнительная настройка.</span><span class="sxs-lookup"><span data-stu-id="7312d-228">Services that interact with requests from the Internet or a corporate network and are behind a proxy or load balancer might require additional configuration.</span></span> <span data-ttu-id="7312d-229">Для получения дополнительной информации см. <xref:host-and-deploy/proxy-load-balancer>.</span><span class="sxs-lookup"><span data-stu-id="7312d-229">For more information, see <xref:host-and-deploy/proxy-load-balancer>.</span></span>
+## <a name="proxy-server-and-load-balancer-scenarios"></a><span data-ttu-id="34ed4-220">Сценарии использования прокси-сервера и подсистемы балансировки нагрузки</span><span class="sxs-lookup"><span data-stu-id="34ed4-220">Proxy server and load balancer scenarios</span></span>
 
-## <a name="configure-https"></a><span data-ttu-id="7312d-230">Настройка HTTPS</span><span class="sxs-lookup"><span data-stu-id="7312d-230">Configure HTTPS</span></span>
+<span data-ttu-id="34ed4-221">Для служб, которые взаимодействуют с запросами из Интернета или корпоративной сети и размещаются за прокси-сервером или подсистемой балансировки нагрузки, может потребоваться дополнительная настройка.</span><span class="sxs-lookup"><span data-stu-id="34ed4-221">Services that interact with requests from the Internet or a corporate network and are behind a proxy or load balancer might require additional configuration.</span></span> <span data-ttu-id="34ed4-222">Для получения дополнительной информации см. <xref:host-and-deploy/proxy-load-balancer>.</span><span class="sxs-lookup"><span data-stu-id="34ed4-222">For more information, see <xref:host-and-deploy/proxy-load-balancer>.</span></span>
 
-<span data-ttu-id="7312d-231">Чтобы настроить службу с защищенной конечной точкой, сделайте следующее:</span><span class="sxs-lookup"><span data-stu-id="7312d-231">To configure the service with a secure endpoint:</span></span>
+## <a name="configure-https"></a><span data-ttu-id="34ed4-223">Настройка HTTPS</span><span class="sxs-lookup"><span data-stu-id="34ed4-223">Configure HTTPS</span></span>
 
-1. <span data-ttu-id="7312d-232">Создайте сертификат X.509 для системы размещения с помощью механизмов получения и развертывания сертификата вашей платформы.</span><span class="sxs-lookup"><span data-stu-id="7312d-232">Create an X.509 certificate for the hosting system using your platform's certificate acquisition and deployment mechanisms.</span></span>
+<span data-ttu-id="34ed4-224">Чтобы настроить службу с защищенной конечной точкой, сделайте следующее:</span><span class="sxs-lookup"><span data-stu-id="34ed4-224">To configure a service with a secure endpoint:</span></span>
 
-1. <span data-ttu-id="7312d-233">Укажите [конфигурацию конечной точки HTTPS для сервера Kestrel](xref:fundamentals/servers/kestrel#endpoint-configuration), чтобы использовать сертификат.</span><span class="sxs-lookup"><span data-stu-id="7312d-233">Specify a [Kestrel server HTTPS endpoint configuration](xref:fundamentals/servers/kestrel#endpoint-configuration) to use the certificate.</span></span>
+1. <span data-ttu-id="34ed4-225">Создайте сертификат X.509 для системы размещения с помощью механизмов получения и развертывания сертификата вашей платформы.</span><span class="sxs-lookup"><span data-stu-id="34ed4-225">Create an X.509 certificate for the hosting system using your platform's certificate acquisition and deployment mechanisms.</span></span>
 
-<span data-ttu-id="7312d-234">Использование сертификата разработки ASP.NET Core HTTPS для защиты конечной точки службы не поддерживается.</span><span class="sxs-lookup"><span data-stu-id="7312d-234">Use of the ASP.NET Core HTTPS development certificate to secure a service endpoint isn't supported.</span></span>
+1. <span data-ttu-id="34ed4-226">Укажите [конфигурацию конечной точки HTTPS для сервера Kestrel](xref:fundamentals/servers/kestrel#endpoint-configuration), чтобы использовать сертификат.</span><span class="sxs-lookup"><span data-stu-id="34ed4-226">Specify a [Kestrel server HTTPS endpoint configuration](xref:fundamentals/servers/kestrel#endpoint-configuration) to use the certificate.</span></span>
 
-## <a name="current-directory-and-content-root"></a><span data-ttu-id="7312d-235">Текущий каталог и корневой каталог содержимого</span><span class="sxs-lookup"><span data-stu-id="7312d-235">Current directory and content root</span></span>
+<span data-ttu-id="34ed4-227">Использование сертификата разработки ASP.NET Core HTTPS для защиты конечной точки службы не поддерживается.</span><span class="sxs-lookup"><span data-stu-id="34ed4-227">Use of the ASP.NET Core HTTPS development certificate to secure a service endpoint isn't supported.</span></span>
 
-<span data-ttu-id="7312d-236">Для службы Windows <xref:System.IO.Directory.GetCurrentDirectory*> возвращает текущий рабочий каталог *C:\\WINDOWS\\system32*.</span><span class="sxs-lookup"><span data-stu-id="7312d-236">The current working directory returned by calling <xref:System.IO.Directory.GetCurrentDirectory*> for a Windows Service is the *C:\\WINDOWS\\system32* folder.</span></span> <span data-ttu-id="7312d-237">Папка *system32* не подходит для хранения файлов службы (например, файлов параметров).</span><span class="sxs-lookup"><span data-stu-id="7312d-237">The *system32* folder isn't a suitable location to store a service's files (for example, settings files).</span></span> <span data-ttu-id="7312d-238">Используйте один из следующих методов для сохранения ресурсов и файлов параметров службы и доступа к ним.</span><span class="sxs-lookup"><span data-stu-id="7312d-238">Use one of the following approaches to maintain and access a service's assets and settings files.</span></span>
+## <a name="current-directory-and-content-root"></a><span data-ttu-id="34ed4-228">Текущий каталог и корневой каталог содержимого</span><span class="sxs-lookup"><span data-stu-id="34ed4-228">Current directory and content root</span></span>
 
-### <a name="set-the-content-root-path-to-the-apps-folder"></a><span data-ttu-id="7312d-239">Указание папки приложения в качестве пути корневого каталога содержимого</span><span class="sxs-lookup"><span data-stu-id="7312d-239">Set the content root path to the app's folder</span></span>
+<span data-ttu-id="34ed4-229">Для службы Windows <xref:System.IO.Directory.GetCurrentDirectory*> возвращает текущий рабочий каталог *C:\\WINDOWS\\system32*.</span><span class="sxs-lookup"><span data-stu-id="34ed4-229">The current working directory returned by calling <xref:System.IO.Directory.GetCurrentDirectory*> for a Windows Service is the *C:\\WINDOWS\\system32* folder.</span></span> <span data-ttu-id="34ed4-230">Папка *system32* не подходит для хранения файлов службы (например, файлов параметров).</span><span class="sxs-lookup"><span data-stu-id="34ed4-230">The *system32* folder isn't a suitable location to store a service's files (for example, settings files).</span></span> <span data-ttu-id="34ed4-231">Используйте один из следующих методов для сохранения ресурсов и файлов параметров службы и доступа к ним.</span><span class="sxs-lookup"><span data-stu-id="34ed4-231">Use one of the following approaches to maintain and access a service's assets and settings files.</span></span>
 
-<span data-ttu-id="7312d-240"><xref:Microsoft.Extensions.Hosting.IHostingEnvironment.ContentRootPath*> — это тот же путь, предоставленный аргументом `binPath` при создании службы.</span><span class="sxs-lookup"><span data-stu-id="7312d-240">The <xref:Microsoft.Extensions.Hosting.IHostingEnvironment.ContentRootPath*> is the same path provided to the `binPath` argument when the service is created.</span></span> <span data-ttu-id="7312d-241">Чтобы не вызывать метод `GetCurrentDirectory` для создания путей к файлам параметров, вызовите <xref:System.IO.Directory.SetCurrentDirectory*> с указанным путем к корневому каталогу содержимого приложения.</span><span class="sxs-lookup"><span data-stu-id="7312d-241">Instead of calling `GetCurrentDirectory` to create paths to settings files, call <xref:System.IO.Directory.SetCurrentDirectory*> with the path to the app's content root.</span></span>
+::: moniker range=">= aspnetcore-3.0"
 
-<span data-ttu-id="7312d-242">В `Program.Main` определите путь к папке с исполняемым файлом службы и используйте этот путь, чтобы создать корневой каталог содержимого приложения.</span><span class="sxs-lookup"><span data-stu-id="7312d-242">In `Program.Main`, determine the path to the folder of the service's executable and use the path to establish the app's content root:</span></span>
+### <a name="use-contentrootpath-or-contentrootfileprovider"></a><span data-ttu-id="34ed4-232">Использование ContentRootPath или ContentRootFileProvider</span><span class="sxs-lookup"><span data-stu-id="34ed4-232">Use ContentRootPath or ContentRootFileProvider</span></span>
+
+<span data-ttu-id="34ed4-233">Используйте [IHostEnvironment.ContentRootPath](xref:Microsoft.Extensions.Hosting.IHostEnvironment.ContentRootPath) или <xref:Microsoft.Extensions.Hosting.IHostEnvironment.ContentRootFileProvider> для поиска ресурсов приложения.</span><span class="sxs-lookup"><span data-stu-id="34ed4-233">Use [IHostEnvironment.ContentRootPath](xref:Microsoft.Extensions.Hosting.IHostEnvironment.ContentRootPath) or <xref:Microsoft.Extensions.Hosting.IHostEnvironment.ContentRootFileProvider> to locate an app's resources.</span></span>
+
+::: moniker-end
+
+::: moniker range="< aspnetcore-3.0"
+
+### <a name="set-the-content-root-path-to-the-apps-folder"></a><span data-ttu-id="34ed4-234">Указание папки приложения в качестве пути корневого каталога содержимого</span><span class="sxs-lookup"><span data-stu-id="34ed4-234">Set the content root path to the app's folder</span></span>
+
+<span data-ttu-id="34ed4-235"><xref:Microsoft.Extensions.Hosting.IHostingEnvironment.ContentRootPath*> — это тот же путь, который предоставляется аргументу `binPath` при создании службы.</span><span class="sxs-lookup"><span data-stu-id="34ed4-235">The <xref:Microsoft.Extensions.Hosting.IHostingEnvironment.ContentRootPath*> is the same path provided to the `binPath` argument when a service is created.</span></span> <span data-ttu-id="34ed4-236">Чтобы не вызывать метод `GetCurrentDirectory` для создания путей к файлам параметров, вызовите <xref:System.IO.Directory.SetCurrentDirectory*> с указанным путем к корневому каталогу содержимого приложения.</span><span class="sxs-lookup"><span data-stu-id="34ed4-236">Instead of calling `GetCurrentDirectory` to create paths to settings files, call <xref:System.IO.Directory.SetCurrentDirectory*> with the path to the app's content root.</span></span>
+
+<span data-ttu-id="34ed4-237">В `Program.Main` определите путь к папке с исполняемым файлом службы и используйте этот путь, чтобы создать корневой каталог содержимого приложения.</span><span class="sxs-lookup"><span data-stu-id="34ed4-237">In `Program.Main`, determine the path to the folder of the service's executable and use the path to establish the app's content root:</span></span>
 
 ```csharp
 var pathToExe = Process.GetCurrentProcess().MainModule.FileName;
@@ -344,12 +323,26 @@ CreateWebHostBuilder(args)
     .RunAsService();
 ```
 
-### <a name="store-the-services-files-in-a-suitable-location-on-disk"></a><span data-ttu-id="7312d-243">Хранение файлов службы в подходящем месте на диске</span><span class="sxs-lookup"><span data-stu-id="7312d-243">Store the service's files in a suitable location on disk</span></span>
+::: moniker-end
 
-<span data-ttu-id="7312d-244">Укажите абсолютный путь к папке, содержащей файлы, с помощью <xref:Microsoft.Extensions.Configuration.FileConfigurationExtensions.SetBasePath*> при использовании <xref:Microsoft.Extensions.Configuration.IConfigurationBuilder>.</span><span class="sxs-lookup"><span data-stu-id="7312d-244">Specify an absolute path with <xref:Microsoft.Extensions.Configuration.FileConfigurationExtensions.SetBasePath*> when using an <xref:Microsoft.Extensions.Configuration.IConfigurationBuilder> to the folder containing the files.</span></span>
+### <a name="store-a-services-files-in-a-suitable-location-on-disk"></a><span data-ttu-id="34ed4-238">Хранение файлов службы в подходящем расположении на диске</span><span class="sxs-lookup"><span data-stu-id="34ed4-238">Store a service's files in a suitable location on disk</span></span>
 
-## <a name="additional-resources"></a><span data-ttu-id="7312d-245">Дополнительные ресурсы</span><span class="sxs-lookup"><span data-stu-id="7312d-245">Additional resources</span></span>
+<span data-ttu-id="34ed4-239">Укажите абсолютный путь к папке, содержащей файлы, с помощью <xref:Microsoft.Extensions.Configuration.FileConfigurationExtensions.SetBasePath*> при использовании <xref:Microsoft.Extensions.Configuration.IConfigurationBuilder>.</span><span class="sxs-lookup"><span data-stu-id="34ed4-239">Specify an absolute path with <xref:Microsoft.Extensions.Configuration.FileConfigurationExtensions.SetBasePath*> when using an <xref:Microsoft.Extensions.Configuration.IConfigurationBuilder> to the folder containing the files.</span></span>
 
-* <span data-ttu-id="7312d-246">[Конфигурация конечных точек Kestrel](xref:fundamentals/servers/kestrel#endpoint-configuration) (включает конфигурацию HTTPS и поддержку SNI)</span><span class="sxs-lookup"><span data-stu-id="7312d-246">[Kestrel endpoint configuration](xref:fundamentals/servers/kestrel#endpoint-configuration) (includes HTTPS configuration and SNI support)</span></span>
+## <a name="additional-resources"></a><span data-ttu-id="34ed4-240">Дополнительные ресурсы</span><span class="sxs-lookup"><span data-stu-id="34ed4-240">Additional resources</span></span>
+
+::: moniker range=">= aspnetcore-3.0"
+
+* <span data-ttu-id="34ed4-241">[Конфигурация конечных точек Kestrel](xref:fundamentals/servers/kestrel#endpoint-configuration) (включает конфигурацию HTTPS и поддержку SNI)</span><span class="sxs-lookup"><span data-stu-id="34ed4-241">[Kestrel endpoint configuration](xref:fundamentals/servers/kestrel#endpoint-configuration) (includes HTTPS configuration and SNI support)</span></span>
+* <xref:fundamentals/host/generic-host>
+* <xref:test/troubleshoot>
+
+::: moniker-end
+
+::: moniker range="< aspnetcore-3.0"
+
+* <span data-ttu-id="34ed4-242">[Конфигурация конечных точек Kestrel](xref:fundamentals/servers/kestrel#endpoint-configuration) (включает конфигурацию HTTPS и поддержку SNI)</span><span class="sxs-lookup"><span data-stu-id="34ed4-242">[Kestrel endpoint configuration](xref:fundamentals/servers/kestrel#endpoint-configuration) (includes HTTPS configuration and SNI support)</span></span>
 * <xref:fundamentals/host/web-host>
 * <xref:test/troubleshoot>
+
+::: moniker-end
