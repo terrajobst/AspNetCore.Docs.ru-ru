@@ -5,14 +5,14 @@ description: Узнайте, как происходит компиляция ф
 monikerRange: '>= aspnetcore-1.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 03/02/2019
+ms.date: 05/30/2019
 uid: mvc/views/view-compilation
-ms.openlocfilehash: df25c9ad03ff52c43aac1a761462772547b3b954
-ms.sourcegitcommit: 6afe57fb8d9055f88fedb92b16470398c4b9b24a
+ms.openlocfilehash: b78831dd95a721e35d4bf5b44cdd8823472f6aa2
+ms.sourcegitcommit: 06c4f2910dd54ded25e1b8750e09c66578748bc9
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65610144"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66395890"
 ---
 # <a name="razor-file-compilation-in-aspnet-core"></a>Компиляция файлов Razor в ASP.NET Core
 
@@ -45,7 +45,7 @@ ms.locfileid: "65610144"
 ## <a name="razor-compilation"></a>Компиляция Razor
 
 ::: moniker range=">= aspnetcore-3.0"
-Компиляция файлов Razor во время сборки и публикации включена по умолчанию с помощью пакета SDK для Razor. Если этот параметр включен, компиляция в среде выполнения будет дополнять компиляцию во время сборки, что позволит обновлять файлы Razor при редактировании.
+Компиляция файлов Razor во время сборки и публикации включена по умолчанию с помощью пакета SDK для Razor. Если эта возможность включена, компиляция в среде выполнения дополняет компиляцию во время сборки, позволяя обновлять файлы Razor при редактировании.
 
 ::: moniker-end
 

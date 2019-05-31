@@ -4,14 +4,14 @@ author: ardalis
 description: Сведения о форматировании данных отклика в веб-API ASP.NET Core.
 ms.author: riande
 ms.custom: H1Hack27Feb2017
-ms.date: 05/21/2019
+ms.date: 05/29/2019
 uid: web-api/advanced/formatting
-ms.openlocfilehash: bd86015773068b6f75f64a0599d710281f7d4d60
-ms.sourcegitcommit: e67356f5e643a5d43f6d567c5c998ce6002bdeb4
+ms.openlocfilehash: 7628565d8646c0a057e28aa54dc9ce9198750c15
+ms.sourcegitcommit: 9ae1fd11f39b0a72b2ae42f0b450345e6e306bc0
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 05/22/2019
-ms.locfileid: "66004956"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66415680"
 ---
 # <a name="format-response-data-in-aspnet-core-web-api"></a>Форматирование данных отклика в веб-API ASP.NET Core
 
@@ -133,13 +133,17 @@ services.AddMvc()
 
 ### <a name="add-xml-format-support"></a>Добавление поддержки формата XML
 
-Чтобы добавить поддержку форматирования XML, установите пакет NuGet [Microsoft.AspNetCore.Mvc.Formatters.Xml](https://www.nuget.org/packages/Microsoft.AspNetCore.Mvc.Formatters.Xml/).
+::: moniker range="<= aspnetcore-2.2"
 
-Форматировщики XML, реализованные с помощью `System.Xml.Serialization.XmlSerializer`, можно настроить в `Startup.ConfigureServices` следующим образом:
+Чтобы включить поддержку форматирования XML в ASP.NET Core версии 2.2 или более ранней, установите пакет NuGet [Microsoft.AspNetCore.Mvc.Formatters.Xml](https://www.nuget.org/packages/Microsoft.AspNetCore.Mvc.Formatters.Xml/).
+
+::: moniker-end
+
+Форматировщики XML, реализованные с помощью `System.Xml.Serialization.XmlSerializer`, можно настроить путем вызова <xref:Microsoft.Extensions.DependencyInjection.MvcXmlMvcBuilderExtensions.AddXmlSerializerFormatters*> в `Startup.ConfigureServices`:
 
 [!code-csharp[](./formatting/sample/Startup.cs?name=snippet1&highlight=2)]
 
-А форматировщики XML, реализованные с помощью `System.Runtime.Serialization.DataContractSerializer`, можно настроить в `Startup.ConfigureServices`, как показано ниже:
+А форматировщики XML, реализованные с помощью `System.Runtime.Serialization.DataContractSerializer`, можно настроить путем вызова <xref:Microsoft.Extensions.DependencyInjection.MvcXmlMvcBuilderExtensions.AddXmlDataContractSerializerFormatters*> в `Startup.ConfigureServices`:
 
 ```csharp
 services.AddMvc()

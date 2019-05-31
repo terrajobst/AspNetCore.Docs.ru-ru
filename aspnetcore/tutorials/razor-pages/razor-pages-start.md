@@ -3,14 +3,14 @@ title: Учебник. Начало работы с Razor Pages в ASP.NET Core
 author: rick-anderson
 description: В этой серии руководств объясняется, как использовать Razor Pages в ASP.NET Core. Узнайте, как создать модель, сгенерировать код для Razor Pages, использовать Entity Framework Core и SQL Server для доступа к данным, добавлять функции поиска и проверки ввода, а также использовать возможность миграции для обновления модели.
 ms.author: riande
-ms.date: 05/09/2019
+ms.date: 05/30/2019
 uid: tutorials/razor-pages/razor-pages-start
-ms.openlocfilehash: 9307291756baf1bef714d6dae2f8d25d3aa6f922
-ms.sourcegitcommit: 3376f224b47a89acf329b2d2f9260046a372f924
+ms.openlocfilehash: e9f11f68aa138ab74a0ffbbd0e32067bc984606d
+ms.sourcegitcommit: 9ae1fd11f39b0a72b2ae42f0b450345e6e306bc0
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 05/10/2019
-ms.locfileid: "65517111"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66415662"
 ---
 # <a name="tutorial-get-started-with-razor-pages-in-aspnet-core"></a>Учебник. Начало работы с Razor Pages в ASP.NET Core
 
@@ -20,7 +20,7 @@ ms.locfileid: "65517111"
 
 [!INCLUDE[](~/includes/advancedRP.md)]
 
-В конце серии вы получите приложение, которое управляет базой данных фильмов.  
+Пройдя всю серию, вы получите приложение, которое управляет базой данных фильмов.  
 
 [!INCLUDE[View or download sample code](~/includes/rp/download.md)]
 
@@ -31,7 +31,7 @@ ms.locfileid: "65517111"
 > * Запустите приложение.
 > * Анализ файлов проекта.
 
-В конце этого учебника вы получите рабочее веб-приложения Razor Pages, сборку которого вы будете выполнять в последующих учебниках.
+Пройдя это руководство, вы получите рабочее веб-приложение Razor Pages, сборка которого описана в последующих руководствах.
 
 ![Домашняя или индексная страница](razor-pages-start/_static/home2.2.png)
 
@@ -71,9 +71,9 @@ ms.locfileid: "65517111"
   * Команда `dotnet new` создает новый проект Razor Pages в папке *RazorPagesMovie*.
   * Команда `code` открывает папку *RazorPagesMovie* в текущем экземпляре Visual Studio Code.
 
-  Появится диалоговое окно с предупреждением **В RazorPagesMovie отсутствуют необходимые ресурсы для сборки и отладки. Добавить их?**
+* Когда значок строки состояния OmniSharp станет зеленым, появится диалоговое окно с предупреждением **Required assets to build and debug are missing from 'RazorPagesMovie'. (В RazorPagesMovie отсутствуют необходимые ресурсы для сборки и отладки.) Добавить их?** Выберите ответ **Да**.
 
-* Выберите ответ **Да**.
+  Каталог *.vscode*, содержащий файлы *launch.json* и *tasks.json*, добавляется в корневой каталог проекта.
 
 # <a name="visual-studio-for-mactabvisual-studio-mac"></a>[Visual Studio для Mac](#tab/visual-studio-mac)
 
