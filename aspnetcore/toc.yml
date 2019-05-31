@@ -92,7 +92,7 @@
     - name: Приложения удаленного вызова процедур
       items:
         - name: Начало работы со службой gRPC в ASP.NET Core
-          uid: tutorials/grpc/grpc-client
+          uid: tutorials/grpc/grpc-start
     - name: Доступ к данным
       items:
         - name: EF Core с Razor Pages
@@ -530,8 +530,6 @@
       uid: grpc/migration
     - name: 'Сравнение служб gRPC, с API HTTP'
       uid: grpc/comparison
-    - name: Создание клиента и сервера gRPC
-      uid: tutorials/grpc/grpc-client
 - name: 'Тестирование, отладка и устранение неполадок'
   items:
     - name: Модульное тестирование
