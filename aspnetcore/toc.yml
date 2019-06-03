@@ -91,7 +91,7 @@
           uid: tutorials/signalr-typescript-webpack
     - name: Приложения удаленного вызова процедур
       items:
-        - name: Начало работы со службой gRPC в ASP.NET Core
+        - name: "Начало работы со службой\_gRPC"
           uid: tutorials/grpc/grpc-start
     - name: Доступ к данным
       items:
