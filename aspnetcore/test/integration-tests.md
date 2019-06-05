@@ -5,14 +5,14 @@ description: Узнайте, как с помощью интеграционны
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 02/25/2019
+ms.date: 06/05/2019
 uid: test/integration-tests
-ms.openlocfilehash: 46c3b227ca0b3def5ab7d527a2f6ef2497d55f83
-ms.sourcegitcommit: 5b0eca8c21550f95de3bb21096bd4fd4d9098026
+ms.openlocfilehash: 3af2a1f7c6a65d7ff42597972ee151a50fc95fb6
+ms.sourcegitcommit: c716ea9155a6b404c1f3d3d34e2388454cd276d7
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 04/27/2019
-ms.locfileid: "64892071"
+ms.lasthandoff: 06/05/2019
+ms.locfileid: "66716374"
 ---
 # <a name="integration-tests-in-aspnet-core"></a>Интеграционные тесты в ASP.NET Core
 
@@ -84,7 +84,7 @@ ms.locfileid: "64892071"
 
 Пакет `Microsoft.AspNetCore.Mvc.Testing` выполняет следующие задачи:
 
-* Копирует файл зависимостей (*\*.deps*) из SUT в папку *bin* тестового проекта.
+* Копирует файл зависимостей ( *\*.deps*) из SUT в тестовый проект *bin* каталога.
 * Назначает корневой каталог проекта SUT в качестве корневого каталога контента, чтобы статические файлы и страницы/представления были найдены при выполнении тестов.
 * Предоставляет класс [WebApplicationFactory](/dotnet/api/microsoft.aspnetcore.mvc.testing.webapplicationfactory-1) для упрощения начальной загрузки SUT с `TestServer`.
 
@@ -127,6 +127,8 @@ ms.locfileid: "64892071"
 Метод [CreateClient](/dotnet/api/microsoft.aspnetcore.mvc.testing.webapplicationfactory-1.createclient) создает экземпляр класса `HttpClient`, который автоматически следует за перенаправлениями и обрабатывает файлы cookie.
 
 [!code-csharp[](integration-tests/samples/2.x/IntegrationTestsSample/tests/RazorPagesProject.Tests/IntegrationTests/BasicTests.cs?name=snippet1)]
+
+По умолчанию, не сохраняются файлы cookie необязательные различных запросов, когда [политика одобрения GDPR](xref:security/gdpr) включен. Для сохранения файлов cookie, необязательные, например используемые поставщик TempData, пометьте их как важное значение для тестов. Сведения о маркировке файл cookie как основные, см. в разделе [важные файлы cookie](xref:security/gdpr#essential-cookies).
 
 ### <a name="test-a-secure-endpoint"></a>Проверка защищенной конечной точки
 
@@ -270,7 +272,7 @@ _client = _factory.CreateClient(clientOptions);
 
 ## <a name="how-the-test-infrastructure-infers-the-app-content-root-path"></a>Как в инфраструктуре тестирования выводит путь корня содержимого приложения
 
-`WebApplicationFactory` Конструктора определяет путь корня содержимого приложения, выполнив поиск [WebApplicationFactoryContentRootAttribute](/dotnet/api/microsoft.aspnetcore.mvc.testing.webapplicationfactorycontentrootattribute) на сборку, содержащую интеграционные тесты с ключом, равным `TEntryPoint` сборки `System.Reflection.Assembly.FullName`. В случае, если атрибут с правильным ключом не найден, `WebApplicationFactory` переключение на поиск файла решения (*\*.sln*) и добавляет `TEntryPoint` имя сборки в каталоге решения. Корневой каталог приложения (путь корня содержимого) используется для обнаружения представления и файлы содержимого.
+`WebApplicationFactory` Конструктора определяет путь корня содержимого приложения, выполнив поиск [WebApplicationFactoryContentRootAttribute](/dotnet/api/microsoft.aspnetcore.mvc.testing.webapplicationfactorycontentrootattribute) на сборку, содержащую интеграционные тесты с ключом, равным `TEntryPoint` сборки `System.Reflection.Assembly.FullName`. В случае, если атрибут с правильным ключом не найден, `WebApplicationFactory` переключение на поиск файла решения ( *\*.sln*) и добавляет `TEntryPoint` имя сборки в каталоге решения. Корневой каталог приложения (путь корня содержимого) используется для обнаружения представления и файлы содержимого.
 
 В большинстве случаев нет необходимости явно задать корневой каталог содержимого приложения, как логика поиска обычно находит правильный корневой каталог содержимого во время выполнения. В специальных случаях, где не найден корневой каталог содержимого с помощью алгоритма встроенные поисковые, содержимого, что корневой можно указать явным образом или с помощью пользовательской логики приложения. Чтобы задать корневой каталог содержимого приложения в этих сценариях, вызовите `UseSolutionRelativeContentRoot` метод расширения из [Microsoft.AspNetCore.TestHost](https://www.nuget.org/packages/Microsoft.AspNetCore.TestHost) пакета. Укажите относительный путь решения и шаблон файла имя или glob дополнительное средство решения (по умолчанию = `*.sln`).
 
@@ -311,7 +313,7 @@ _client = _factory.CreateClient(clientOptions);
 
 ## <a name="disable-shadow-copying"></a>Отключить теневое копирование
 
-Теневое копирование вызывает ошибки в тестах для выполнения в той же папке в выходную папку. Для тестов для правильной работы теневое копирование, необходимо отключить. [Пример приложения](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/test/integration-tests/samples) использует xUnit и отключает теневого копирования для xUnit, включив *xunit.runner.json* файл с параметром правильная конфигурация. Дополнительные сведения см. в разделе [Настройка xUnit с помощью JSON](https://xunit.github.io/docs/configuring-with-json.html).
+Теневое копирование вызывает ошибки в тестах для выполнения в каталоге, отличном от в выходной каталог. Для тестов для правильной работы теневое копирование, необходимо отключить. [Пример приложения](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/test/integration-tests/samples) использует xUnit и отключает теневого копирования для xUnit, включив *xunit.runner.json* файл с параметром правильная конфигурация. Дополнительные сведения см. в разделе [Настройка xUnit с помощью JSON](https://xunit.github.io/docs/configuring-with-json.html).
 
 Добавить *xunit.runner.json* файла корневой каталог тестового проекта со следующим содержимым:
 
@@ -329,12 +331,12 @@ _client = _factory.CreateClient(clientOptions);
 
 [Пример приложения](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/test/integration-tests/samples) состоит из двух приложений:
 
-| Приложение | Папка проекта | Описание: |
-| --- | -------------- | ----------- |
+| Приложение | Каталог проекта | Описание |
+| --- | ----------------- | ----------- |
 | Сообщение приложения (SUT) | *src/RazorPagesProject* | Позволяет пользователю добавить, удалить один, удалить все и анализ сообщений. |
 | Тестирование приложения | *tests/RazorPagesProject.Tests* | Используется для тестирования интеграции SUT. |
 
-Тесты можно выполнять с помощью встроенной возможности интерфейса IDE, например [Visual Studio](https://visualstudio.microsoft.com). При использовании [Visual Studio Code](https://code.visualstudio.com/) или из командной строки, выполните следующую команду в командной строке в *tests/RazorPagesProject.Tests* папку:
+Тесты можно выполнять с помощью встроенной возможности интерфейса IDE, например [Visual Studio](https://visualstudio.microsoft.com). При использовании [Visual Studio Code](https://code.visualstudio.com/) или из командной строки, выполните следующую команду в командной строке в *tests/RazorPagesProject.Tests* каталог:
 
 ```console
 dotnet test
@@ -357,10 +359,10 @@ SUT — это система сообщение Razor Pages со следующ
 
 ### <a name="test-app-organization"></a>Тестирование приложений организации
 
-Тестирование приложения — это консольное приложение внутри *tests/RazorPagesProject.Tests* папки.
+Тестирование приложения — это консольное приложение внутри *tests/RazorPagesProject.Tests* каталога.
 
-| Папка тестового приложения | Описание: |
-| --------------- | ----------- |
+| Каталог тестового приложения | Описание |
+| ------------------ | ----------- |
 | *BasicTests* | *BasicTests.cs* содержит методы для тестирования маршрутизации, доступ к защищенную страницу, не прошедшие проверку подлинности пользователя с правами и получить профиль пользователя GitHub и проверки входа пользователя для профиля. |
 | *IntegrationTests* | *IndexPageTests.cs* содержит тесты интеграции для страницы индекса, с помощью пользовательских `WebApplicationFactory` класса. |
 | *Вспомогательные функции и служебные программы* | <ul><li>*Utilities.cs* содержит `InitializeDbForTests` метод, используемый для заполнения базы тестовыми данными.</li><li>*HtmlHelpers.cs* предоставляет метод для возврата AngleSharp `IHtmlDocument` для использования в методы теста.</li><li>*HttpClientExtensions.cs* предоставляют перегрузки для `SendAsync` для отправки запросов на SUT.</li></ul> |
