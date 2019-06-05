@@ -6,12 +6,12 @@ monikerRange: '>= aspnetcore-2.0'
 ms.author: riande
 ms.date: 04/06/2019
 uid: razor-pages/index
-ms.openlocfilehash: 7df57153efc58b6a19ce663eb31d173da11b1005
-ms.sourcegitcommit: 5b0eca8c21550f95de3bb21096bd4fd4d9098026
+ms.openlocfilehash: 93796fa1edfa316790794d3775342147ea28ae2e
+ms.sourcegitcommit: 5dd2ce9709c9e41142771e652d1a4bd0b5248cec
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 04/27/2019
-ms.locfileid: "64881999"
+ms.lasthandoff: 06/05/2019
+ms.locfileid: "66692538"
 ---
 # <a name="introduction-to-razor-pages-in-aspnet-core"></a>Введение в Razor Pages в ASP.NET Core
 
@@ -22,8 +22,6 @@ Razor Pages — это новый аспект платформы MVC ASP.NET�
 Если вам нужно руководство, использующее подход "модель-представление-контроллер", см. статью [Начало работы с MVC в ASP.NET Core](xref:tutorials/first-mvc-app/start-mvc).
 
 Этот документ содержит вводные сведения о Razor Pages. Это не пошаговое руководство. Если некоторые разделы покажутся вам слишком сложными, см. [Начало работы с Razor Pages](xref:tutorials/razor-pages/razor-pages-start). Общие сведения об ASP.NET Core см. в разделе [Введение в ASP.NET Core](xref:index).
-
-## <a name="prerequisites"></a>Предварительные требования
 
 [!INCLUDE[](~/includes/net-core-prereqs-all-2.2.md)]
 
