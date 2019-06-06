@@ -5,14 +5,14 @@ description: Узнайте, как получить доступ к точка�
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 05/29/2018
+ms.date: 06/05/2019
 uid: security/gdpr
-ms.openlocfilehash: c5c13dbd1006d10aba0f54b0b9d72b527ee98945
-ms.sourcegitcommit: 5b0eca8c21550f95de3bb21096bd4fd4d9098026
+ms.openlocfilehash: 967f3246836c93a1af56f7109edb056220606b58
+ms.sourcegitcommit: c716ea9155a6b404c1f3d3d34e2388454cd276d7
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 04/27/2019
-ms.locfileid: "64894111"
+ms.lasthandoff: 06/05/2019
+ms.locfileid: "66716346"
 ---
 # <a name="eu-general-data-protection-regulation-gdpr-support-in-aspnet-core"></a>Поддержка общих данных защиты стабилизации (GDPR) ЕС в ASP.NET Core
 
@@ -30,13 +30,13 @@ ASP.NET Core предоставляет интерфейсы API и шаблон
 
 [Просмотреть или скачать образец кода](https://github.com/aspnet/AspNetCore.Docs/tree/live/aspnetcore/security/gdpr/sample) ([как скачивать](xref:index#how-to-download-a-sample))
 
-## <a name="aspnet-core-gdpr-support-in-template-generated-code"></a>Поддержка GDPR ASP.NET Core в шаблоне созданный код
+## <a name="aspnet-core-gdpr-support-in-template-generated-code"></a>Поддержка ASP.NET Core GDPR в код, созданный шаблон
 
 Razor Pages и MVC следующую поддержку GDPR включают проекты, созданные с помощью шаблонов проекта:
 
-* [CookiePolicyOptions](/dotnet/api/microsoft.aspnetcore.builder.cookiepolicyoptions) и [UseCookiePolicy](/dotnet/api/microsoft.aspnetcore.builder.cookiepolicyappbuilderextensions.usecookiepolicy) задаются в `Startup`.
-* *_CookieConsentPartial.cshtml* [частичное представление](xref:mvc/views/tag-helpers/builtin-th/partial-tag-helper).
-* *Pages/Privacy.cshtml* страницы или *Views/Home/Privacy.cshtml* представление будет содержать подробные сведения о политике конфиденциальности веб сайта страницы. *_CookieConsentPartial.cshtml* файл создает ссылку на страницу о конфиденциальности.
+* [CookiePolicyOptions](/dotnet/api/microsoft.aspnetcore.builder.cookiepolicyoptions) и [UseCookiePolicy](/dotnet/api/microsoft.aspnetcore.builder.cookiepolicyappbuilderextensions.usecookiepolicy) задаются в `Startup` класса.
+* *\_CookieConsentPartial.cshtml* [частичное представление](xref:mvc/views/tag-helpers/builtin-th/partial-tag-helper). **Accept** кнопка включается в этот файл. Когда пользователь щелкает **Accept** кнопку, предоставление согласия для хранения файлов cookie предоставляется.
+* *Pages/Privacy.cshtml* страницы или *Views/Home/Privacy.cshtml* представление будет содержать подробные сведения о политике конфиденциальности веб сайта страницы. *\_CookieConsentPartial.cshtml* файл создает ссылку на страницу о конфиденциальности.
 * Для приложений, созданных с помощью отдельных учетных записей пользователей, управление ссылками на странице загрузки и удалить [персональные данные пользователя](#pd).
 
 ### <a name="cookiepolicyoptions-and-usecookiepolicy"></a>CookiePolicyOptions и UseCookiePolicy
@@ -49,29 +49,29 @@ Razor Pages и MVC следующую поддержку GDPR включают �
 
 [!code-csharp[](gdpr/sample/Startup.cs?name=snippet1&highlight=51)]
 
-### <a name="cookieconsentpartialcshtml-partial-view"></a>_CookieConsentPartial.cshtml partial view
+### <a name="cookieconsentpartialcshtml-partial-view"></a>\_CookieConsentPartial.cshtml частичного представления
 
-*_CookieConsentPartial.cshtml* частичного представления:
+*\_CookieConsentPartial.cshtml* частичного представления:
 
 [!code-html[](gdpr/sample/RP/Pages/Shared/_CookieConsentPartial.cshtml)]
 
 Это частично:
 
-* Получает состояние отслеживания для пользователя. Если приложению требуется согласие, пользователь должен дать согласие, прежде чем можно отслеживать файлы cookie. Если требуется согласие, на панели согласия файл cookie является фиксированным в верхней части панели навигации, созданные *_Layout.cshtml* файла.
+* Получает состояние отслеживания для пользователя. Если приложению требуется согласие, пользователь должен дать согласие, прежде чем можно отслеживать файлы cookie. Если требуется согласие, на панели согласия файл cookie является фиксированным в верхней части панели навигации, созданные  *\_Layout.cshtml* файла.
 * Предоставляет HTML `<p>` элемент таким образом, конфиденциальности и файлах cookie с помощью политики.
 * Ссылка на страницу конфиденциальность или представление, где подробно описаны политика конфиденциальности веб сайта.
 
 ## <a name="essential-cookies"></a>Важные файлы cookie
 
-Если согласие не предоставляется, только файлы cookie, помеченные как важные, отправляются в браузер. Следующий код делает файл cookie, необходимо:
+Если согласие для хранения файлов cookie не указано, только файлы cookie, помеченные как важные, отправляются в браузер. Следующий код делает файл cookie, необходимо:
 
 [!code-csharp[Main](gdpr/sample/RP/Pages/Cookie.cshtml.cs?name=snippet1&highlight=5)]
 
 <a name="tempdata"></a>
 
-## <a name="tempdata-provider-and-session-state-cookies-are-not-essential"></a>TempData поставщика и состояния файлов cookie сеанса не важны
+### <a name="tempdata-provider-and-session-state-cookies-arent-essential"></a>TempData поставщика и состояния файлов cookie сеанса не имеют существенного значения
 
-[Поставщик Tempdata](xref:fundamentals/app-state#tempdata) важного файла cookie. Если отслеживание отключено, поставщик Tempdata недоступно. Чтобы включить поставщик Tempdata, при отключении отслеживания, пометить файл cookie TempData ключевым в `Startup.ConfigureServices`:
+[Поставщик TempData](xref:fundamentals/app-state#tempdata) важного файла cookie. Если отслеживание отключено, поставщик TempData недоступно. Чтобы включить поставщик TempData, при отключении отслеживания, пометить файл cookie TempData ключевым в `Startup.ConfigureServices`:
 
 [!code-csharp[Main](gdpr/sample/RP/Startup.cs?name=snippet1)]
 
