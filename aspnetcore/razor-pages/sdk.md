@@ -5,14 +5,14 @@ description: Сведения о применении в ASP.NET Core функц
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc, seodec18
-ms.date: 10/25/2018
+ms.date: 06/05/2019
 uid: razor-pages/sdk
-ms.openlocfilehash: de51c9443e639cd64c234b6975cf7252bb7a2b9a
-ms.sourcegitcommit: 5b0eca8c21550f95de3bb21096bd4fd4d9098026
+ms.openlocfilehash: 8c4e882af93b043afaa0bcf86fd1583405f84be9
+ms.sourcegitcommit: e7e04a45195d4e0527af6f7cf1807defb56dc3c3
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 04/27/2019
-ms.locfileid: "64895301"
+ms.lasthandoff: 06/06/2019
+ms.locfileid: "66750179"
 ---
 # <a name="aspnet-core-razor-sdk"></a>Пакет SDK для Razor в ASP.NET Core
 
@@ -72,7 +72,7 @@ ms.locfileid: "64895301"
 | Элементы | Описание |
 | ----- | ----------- |
 | `RazorGenerate` | Элементы (файлы *.cshtml*), которые являются входными данными для целей создания кода. |
-| `RazorCompile` | Элементы Item (*.cs* файлы), являются входными значениями для целевых сред компиляции Razor. Используйте этот элемент ItemGroup, чтобы указать дополнительные файлы для компиляции в сборку Razor. |
+| `RazorCompile` | Элементы Item ( *.cs* файлы), являются входными значениями для целевых сред компиляции Razor. Используйте этот элемент ItemGroup, чтобы указать дополнительные файлы для компиляции в сборку Razor. |
 | `RazorTargetAssemblyAttribute` | Элементы, используемые для создания атрибутов для сборки Razor. Пример:  <br>`RazorAssemblyAttribute`<br>`Include="System.Reflection.AssemblyMetadataAttribute"`<br>`_Parameter1="BuildSource" _Parameter2="https://docs.microsoft.com/">` |
 | `RazorEmbeddedResource` | Элемент элементы добавляются в виде внедренных ресурсов на созданную сборку Razor. |
 
@@ -85,10 +85,10 @@ ms.locfileid: "64895301"
 | `EnableDefaultRazorGenerateItems` | При значении `true` включает файлы *.cshtml* из элементов `Content` в элементы `RazorGenerate`. |
 | `GenerateRazorTargetAssemblyInfo` | Когда `true`, приводит к возникновению ошибки *.cs* файл, содержащий атрибуты, указанные фильтром `RazorAssemblyAttribute` и файл в выходных данных компиляции. |
 | `EnableDefaultRazorTargetAssemblyInfoAttributes` | При значении `true` добавляет стандартный набор атрибутов сборки в `RazorAssemblyAttribute`. |
-| `CopyRazorGenerateFilesToPublishDirectory` | Когда `true`, копии `RazorGenerate` элементы (*.cshtml*) файлы в каталог публикации. Как правило файлы Razor не требуются для опубликованного приложения, если они участвуют в компиляции во время сборки или во время публикации. По умолчанию — `false`. |
+| `CopyRazorGenerateFilesToPublishDirectory` | Когда `true`, копии `RazorGenerate` элементы ( *.cshtml*) файлы в каталог публикации. Как правило файлы Razor не требуются для опубликованного приложения, если они участвуют в компиляции во время сборки или во время публикации. По умолчанию — `false`. |
 | `CopyRefAssembliesToPublishDirectory` | При значении `true` копирует элементы базовой сборки в каталог публикации. Как правило ссылочные сборки не являются обязательными для опубликованного приложения случае во время сборки или публикации во время компиляции Razor. Значение `true` Если опубликованного приложения требует компиляции во время выполнения. Например, значение равно `true` Если приложение изменяет *.cshtml* файлы во время выполнения или использует внедренные представления. По умолчанию — `false`. |
-| `IncludeRazorContentInPack` | Когда `true`, все элементы содержимого Razor (*.cshtml* файлы) отмечены для включения в создаваемый пакет NuGet. По умолчанию — `false`. |
-| `EmbedRazorGenerateSources` | При значении `true` добавляет элементы RazorGenerate (*.cshtml*) в виде внедренных файлов к создаваемой сборке Razor. По умолчанию — `false`. |
+| `IncludeRazorContentInPack` | Когда `true`, все элементы содержимого Razor ( *.cshtml* файлы) отмечены для включения в создаваемый пакет NuGet. По умолчанию — `false`. |
+| `EmbedRazorGenerateSources` | При значении `true` добавляет элементы RazorGenerate ( *.cshtml*) в виде внедренных файлов к создаваемой сборке Razor. По умолчанию — `false`. |
 | `UseRazorBuildServer` | При значении `true` использует серверный процесс постоянной сборки для разгрузки работы по созданию кода. По умолчанию используется значение `UseSharedCompilation`. |
 
 Дополнительные сведения о свойствах см. в статье [MSBuild Properties](/visualstudio/msbuild/msbuild-properties) (Свойства MSBuild).
@@ -105,3 +105,13 @@ ms.locfileid: "64895301"
 * По умолчанию пакет SDK для Razor не публикует базовые сборки, необходимые для компиляции среды выполнения. Это приведет к сбою компиляции, если модель приложения зависит от компиляции среды выполнения &mdash; например, приложение использует внедренные представления или меняет представления после публикации. Установите для `CopyRefAssembliesToPublishDirectory` значение `true`, чтобы продолжить публикацию базовых сборок.
 
 * Для веб-приложения, убедитесь в приложение предназначено для `Microsoft.NET.Sdk.Web` пакета SDK.
+
+## <a name="razor-language-version"></a>Версия языка Razor
+
+При нацеливании `Microsoft.NET.Sdk.Web` SDK, версию языка Razor выводится из приложения целевой версии платформы. Для проектов, предназначенных для `Microsoft.NET.Sdk.Razor` SDK или версии в тех редких случаях, что приложению требуется другой версии языка Razor выводимого значения, можно настроить, задав `<RazorLangVersion>` свойство в файле проекта приложения:
+
+```xml
+<PropertyGroup>
+  <RazorLangVersion>{VERSION}</RazorLangVersion>
+</PropertyGroup>
+```

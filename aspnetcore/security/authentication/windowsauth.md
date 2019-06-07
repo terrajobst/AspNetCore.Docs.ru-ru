@@ -5,14 +5,14 @@ description: Узнайте, как настроить проверку подл
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc, seodec18
-ms.date: 05/29/2019
+ms.date: 06/05/2019
 uid: security/authentication/windowsauth
-ms.openlocfilehash: 9dfff5dcba409ddca7e05c771b864ab121e0ea85
-ms.sourcegitcommit: 06c4f2910dd54ded25e1b8750e09c66578748bc9
+ms.openlocfilehash: 900bbf5f14b1876ad537b2b77e4ba07d7aa168f2
+ms.sourcegitcommit: e7e04a45195d4e0527af6f7cf1807defb56dc3c3
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66395931"
+ms.lasthandoff: 06/06/2019
+ms.locfileid: "66750163"
 ---
 # <a name="configure-windows-authentication-in-aspnet-core"></a>Настройка проверки подлинности Windows в ASP.NET Core
 
@@ -22,9 +22,17 @@ ms.locfileid: "66395931"
 
 Проверка подлинности Windows зависит от операционной системы для проверки подлинности пользователей, приложений ASP.NET Core. Можно использовать проверку подлинности Windows, когда сервер работает в корпоративной сети с помощью удостоверения домена Active Directory или учетных записей Windows для идентификации пользователей. Проверка подлинности Windows является наилучшим образом подходит для среды интрасети, где пользователи, клиентские приложения и веб-серверы принадлежат к тому же домену Windows.
 
-## <a name="launch-settings-debugger"></a>Параметры (отладчик) запуска
+## <a name="iisiis-express"></a>IIS/IIS Express
 
-Конфигурация параметров запуска влияет только на *Properties/launchSettings.json* файл и не настраивает сервер IIS или HTTP.sys для проверки подлинности Windows. Описывается настройка сервера в [включения служб проверки подлинности для IIS или HTTP.sys](#authentication-services-for-iis-or-httpsys) раздел.
+Добавить службы проверки подлинности путем вызова <xref:Microsoft.Extensions.DependencyInjection.AuthenticationServiceCollectionExtensions.AddAuthentication*> (<xref:Microsoft.AspNetCore.Server.IISIntegration?displayProperty=fullName> пространства имен) в `Startup.ConfigureServices`:
+
+```csharp
+services.AddAuthentication(IISDefaults.AuthenticationScheme);
+```
+
+### <a name="launch-settings-debugger"></a>Параметры (отладчик) запуска
+
+Конфигурация параметров запуска влияет только на *Properties/launchSettings.json* файл для IIS Express и не настраивает IIS для Windows проверки подлинности. Конфигурация сервера описан в [IIS](#iis) раздел.
 
 **Веб-приложение** шаблон, доступный через Visual Studio или .NET Core CLI можно настроить для поддержки проверки подлинности Windows, которая обновляет *Properties/launchSettings.json* файла автоматически.
 
@@ -76,17 +84,7 @@ dotnet new webapp --auth Windows
 
 При изменении существующего проекта, убедитесь, что файл проекта содержит ссылку на пакет для [метапакет Microsoft.AspNetCore.App](xref:fundamentals/metapackage-app) **или** [ Microsoft.AspNetCore.Authentication](https://www.nuget.org/packages/Microsoft.AspNetCore.Authentication/) пакет NuGet.
 
-## <a name="authentication-services-for-iis-or-httpsys"></a>Службы проверки подлинности для IIS или HTTP.sys
-
-В зависимости от размещения сценария, следуйте указаниям в **либо** [IIS](#iis) разделе **или** [HTTP.sys](#httpsys) раздел.
-
 ### <a name="iis"></a>IIS
-
-Добавить службы проверки подлинности путем вызова <xref:Microsoft.Extensions.DependencyInjection.AuthenticationServiceCollectionExtensions.AddAuthentication*> (<xref:Microsoft.AspNetCore.Server.IISIntegration?displayProperty=fullName> пространства имен) в `Startup.ConfigureServices`:
-
-```csharp
-services.AddAuthentication(IISDefaults.AuthenticationScheme);
-```
 
 Службы IIS используют [модуля ASP.NET Core](xref:host-and-deploy/aspnet-core-module) для размещения приложений ASP.NET Core. Проверка подлинности Windows настроена для IIS с помощью *web.config* файл. В следующих разделах показано как:
 
@@ -127,9 +125,9 @@ services.AddAuthentication(IISDefaults.AuthenticationScheme);
   * Используйте диспетчер служб IIS, чтобы присвоить параметрам в *web.config* файл после файл перезаписывается при развертывании.
   * Добавить *файл web.config* приложение локально с параметрами.
 
-### <a name="httpsys"></a>HTTP.sys
+## <a name="httpsys"></a>HTTP.sys
 
-Несмотря на то что [Kestrel](xref:fundamentals/servers/kestrel) не поддерживает проверку подлинности Windows, можно использовать [HTTP.sys](xref:fundamentals/servers/httpsys) для поддержки сценариев резидентных в Windows.
+В резидентных сценариях [Kestrel](xref:fundamentals/servers/kestrel) не поддержки проверки подлинности Windows, но вы можете использовать [HTTP.sys](xref:fundamentals/servers/httpsys).
 
 Добавить службы проверки подлинности путем вызова <xref:Microsoft.Extensions.DependencyInjection.AuthenticationServiceCollectionExtensions.AddAuthentication*> (<xref:Microsoft.AspNetCore.Server.HttpSys?displayProperty=fullName> пространства имен) в `Startup.ConfigureServices`:
 

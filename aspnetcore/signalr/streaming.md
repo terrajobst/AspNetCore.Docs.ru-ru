@@ -5,14 +5,14 @@ description: Узнайте, как выполнять потоковый обм
 monikerRange: '>= aspnetcore-2.1'
 ms.author: bradyg
 ms.custom: mvc
-ms.date: 04/12/2019
+ms.date: 06/05/2019
 uid: signalr/streaming
-ms.openlocfilehash: 8f39fdfa45766b5bbec572970f009abefefdc419
-ms.sourcegitcommit: 5b0eca8c21550f95de3bb21096bd4fd4d9098026
+ms.openlocfilehash: a75156f398e113393ddb891d16eec3f09de80c09
+ms.sourcegitcommit: e7e04a45195d4e0527af6f7cf1807defb56dc3c3
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 04/27/2019
-ms.locfileid: "64897201"
+ms.lasthandoff: 06/06/2019
+ms.locfileid: "66750187"
 ---
 # <a name="use-streaming-in-aspnet-core-signalr"></a>Использовать потоковую передачу в ASP.NET Core SignalR
 
@@ -36,7 +36,7 @@ ASP.NET Core SignalR поддерживает потоковой передач�
 
 ::: moniker range=">= aspnetcore-3.0"
 
-Метод концентратора автоматически становится потоковой передачи метода концентратора, если он возвращает <xref:System.Threading.Channels.ChannelReader%601>, `IAsyncEnumerable<T>`, `Task<ChannelReader<T>>`, или `Task<IAsyncEnumerable<T>>`.
+Метод концентратора автоматически становится потоковой передачи метода концентратора, если он возвращает <xref:System.Collections.Generic.IAsyncEnumerable`1>, <xref:System.Threading.Channels.ChannelReader%601>, `Task<IAsyncEnumerable<T>>`, или `Task<ChannelReader<T>>`.
 
 ::: moniker-end
 
@@ -93,9 +93,23 @@ ASP.NET Core SignalR поддерживает потоковой передач�
 
 ### <a name="client-to-server-streaming"></a>Клиент сервер потоковой передачи
 
-Метод концентратора, автоматически становится клиентом и сервером потоковой передачи метода концентратора, если он принимает один или несколько <xref:System.Threading.Channels.ChannelReader`1>s. В следующем примере показано основные данные потоковой передачи, отправленные клиентом. Каждый раз, когда клиент записывает <xref:System.Threading.Channels.ChannelWriter`1>, данные записываются в `ChannelReader` на сервере, который считывает данные из метода концентратора.
+Метод концентратора, автоматически становится клиентом и сервером потоковой передачи метода концентратора, если он принимает один или несколько объектов типа <xref:System.Threading.Channels.ChannelReader%601> или <xref:System.Collections.Generic.IAsyncEnumerable%601>. В следующем примере показано основные данные потоковой передачи, отправленные клиентом. Каждый раз, когда клиент записывает <xref:System.Threading.Channels.ChannelWriter%601>, данные записываются в `ChannelReader` на сервере, из которой считывает метода концентратора.
 
 [!code-csharp[Streaming upload hub method](streaming/samples/3.0/Hubs/StreamHub.cs?name=snippet2)]
+
+<xref:System.Collections.Generic.IAsyncEnumerable%601> Соответствует версии метода.
+
+[!INCLUDE[](~/includes/csharp-8-required.md)]
+
+```csharp
+public async Task UploadStream(IAsyncEnumerable<Stream> stream) 
+{
+    await foreach (var item in stream)
+    {
+        Console.WriteLine(item);
+    }
+}
+```
 
 ::: moniker-end
 
@@ -103,9 +117,55 @@ ASP.NET Core SignalR поддерживает потоковой передач�
 
 ### <a name="server-to-client-streaming"></a>Клиентом и сервером потоковой передачи
 
-`StreamAsChannelAsync` Метод `HubConnection` используется для вызова метода клиентом и сервером потоковой передачи. Передайте имя метода концентратора и аргументы, заданные в методе концентратора, чтобы `StreamAsChannelAsync`. Универсальный параметр на `StreamAsChannelAsync<T>` указывает тип объектов, возвращаемых методом потоковой передачи. Объект `ChannelReader<T>` возвращается из вызова потока и представляет собой поток на стороне клиента.
+
+::: moniker range=">= aspnetcore-3.0"
+
+`StreamAsync` И `StreamAsChannelAsync` методы `HubConnection` используются для вызова методов потоковой передачи-клиентом и сервером. Передайте имя метода концентратора и аргументы, заданные в методе концентратора, чтобы `StreamAsync` или `StreamAsChannelAsync`. Универсальный параметр на `StreamAsync<T>` и `StreamAsChannelAsync<T>` указывает тип объектов, возвращаемых методом потоковой передачи. Объект типа `IAsyncEnumerable<T>` или `ChannelReader<T>` возвращается из вызова потока и представляет собой поток на стороне клиента.
+
+Объект `StreamAsync` пример, который возвращает `IAsyncEnumerable<int>`:
+
+```csharp
+// Call "Cancel" on this CancellationTokenSource to send a cancellation message to
+// the server, which will trigger the corresponding token in the hub method.
+var cancellationTokenSource = new CancellationTokenSource();
+var stream = await hubConnection.StreamAsync<int>(
+    "Counter", 10, 500, cancellationTokenSource.Token);
+
+await foreach (var count in stream)
+{
+    Console.WriteLine($"{count}");
+}
+
+Console.WriteLine("Streaming completed");
+```
+
+Соответствующий `StreamAsChannelAsync` пример, который возвращает `ChannelReader<int>`:
+
+```csharp
+// Call "Cancel" on this CancellationTokenSource to send a cancellation message to
+// the server, which will trigger the corresponding token in the hub method.
+var cancellationTokenSource = new CancellationTokenSource();
+var channel = await hubConnection.StreamAsChannelAsync<int>(
+    "Counter", 10, 500, cancellationTokenSource.Token);
+
+// Wait asynchronously for data to become available
+while (await channel.WaitToReadAsync())
+{
+    // Read all currently available data synchronously, before waiting for more data
+    while (channel.TryRead(out var count))
+    {
+        Console.WriteLine($"{count}");
+    }
+}
+
+Console.WriteLine("Streaming completed");
+```
+
+::: moniker-end
 
 ::: moniker range=">= aspnetcore-2.2"
+
+`StreamAsChannelAsync` Метод `HubConnection` используется для вызова метода клиентом и сервером потоковой передачи. Передайте имя метода концентратора и аргументы, заданные в методе концентратора, чтобы `StreamAsChannelAsync`. Универсальный параметр на `StreamAsChannelAsync<T>` указывает тип объектов, возвращаемых методом потоковой передачи. Объект `ChannelReader<T>` возвращается из вызова потока и представляет собой поток на стороне клиента.
 
 ```csharp
 // Call "Cancel" on this CancellationTokenSource to send a cancellation message to
@@ -131,6 +191,8 @@ Console.WriteLine("Streaming completed");
 
 ::: moniker range="= aspnetcore-2.1"
 
+`StreamAsChannelAsync` Метод `HubConnection` используется для вызова метода клиентом и сервером потоковой передачи. Передайте имя метода концентратора и аргументы, заданные в методе концентратора, чтобы `StreamAsChannelAsync`. Универсальный параметр на `StreamAsChannelAsync<T>` указывает тип объектов, возвращаемых методом потоковой передачи. Объект `ChannelReader<T>` возвращается из вызова потока и представляет собой поток на стороне клиента.
+
 ```csharp
 var channel = await hubConnection
     .StreamAsChannelAsync<int>("Counter", 10, 500, CancellationToken.None);
@@ -154,11 +216,29 @@ Console.WriteLine("Streaming completed");
 
 ### <a name="client-to-server-streaming"></a>Клиент сервер потоковой передачи
 
-Чтобы вызвать метод потоковой передачи концентратора клиент сервер от клиента .NET, создайте `Channel` и передать `ChannelReader` как аргумент `SendAsync`, `InvokeAsync`, или `StreamAsChannelAsync`в зависимости от вызова метода концентратора.
+Существует два способа вызова клиентом и сервером потоковой передачи метода концентратора от клиента .NET. Вы можете либо передайте в `IAsyncEnumerable<T>` или `ChannelReader` как аргумент `SendAsync`, `InvokeAsync`, или `StreamAsChannelAsync`в зависимости от вызова метода концентратора.
 
-Каждый раз, когда данные записываются в `ChannelWriter`, метод концентратора на сервере получает новый элемент с данными от клиента.
+Каждый раз, когда данные записываются в `IAsyncEnumerable` или `ChannelWriter` объекта, метод концентратора на сервере получает новый элемент с данными от клиента.
 
-Для завершения потока, завершить канал с `channel.Writer.Complete()`.
+При использовании `IAsyncEnumerable` объекта потока заканчивается после метода, возвращающего поток элементов завершает работу.
+
+[!INCLUDE[](~/includes/csharp-8-required.md)]
+
+```csharp
+async IAsyncEnumerable<string> clientStreamData()
+{
+    for (var i = 0; i < 5; i++)
+    {
+        var data = await FetchSomeData();
+        yield return data;
+    }
+    //After the for loop has completed and the local function exits the stream completion will be sent.
+}
+
+await connection.SendAsync("UploadStream", clientStreamData());
+```
+
+Или если вы используете `ChannelWriter`, выполнения канал с `channel.Writer.Complete()`:
 
 ```csharp
 var channel = Channel.CreateBounded<string>(10);
