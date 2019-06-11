@@ -1,17 +1,17 @@
 ---
-title: Сборка веб-API с использованием ASP.NET Core и MongoDB
+title: Создание веб-API с помощью ASP.NET Core и MongoDB
 author: prkhandelwal
-description: В руководстве показано, как выполнять сборку веб-API ASP.NET Core с помощью базы данных NoSQL MongoDB.
+description: В этом руководстве показано, как создать веб-API ASP.NET Core с помощью базы данных NoSQL MongoDB.
 ms.author: scaddie
 ms.custom: mvc, seodec18
-ms.date: 01/31/2019
+ms.date: 06/04/2019
 uid: tutorials/first-mongo-app
-ms.openlocfilehash: f593a8d2d06897736b12f49f25c6049ea994a88a
-ms.sourcegitcommit: 6afe57fb8d9055f88fedb92b16470398c4b9b24a
+ms.openlocfilehash: 6a8c5d75f562b38015101e039a2f5d96a5491595
+ms.sourcegitcommit: 5dd2ce9709c9e41142771e652d1a4bd0b5248cec
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65610616"
+ms.lasthandoff: 06/05/2019
+ms.locfileid: "66692551"
 ---
 # <a name="create-a-web-api-with-aspnet-core-and-mongodb"></a>Создание веб-API с помощью ASP.NET Core и MongoDB
 
@@ -143,8 +143,9 @@ ms.locfileid: "65610616"
 # <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 1. Откройте **Файл** > **Создать** > **Проект**.
-1. Выберите **Веб-приложение ASP.NET Core**, назовите проект *BooksApi* и нажмите кнопку **ОК**.
-1. Выберите **.NET Core** требуемой версии .NET Framework и **ASP.NET Core 2.2**. Выберите шаблон проекта **API** и нажмите кнопку **ОК**.
+1. Выберите тип проекта **Веб-приложение ASP.NET Core** и нажмите кнопку **Далее**.
+1. Задайте для проекта имя *BooksApi* и нажмите кнопку **Создать**.
+1. Выберите **.NET Core** требуемой версии .NET Framework и **ASP.NET Core 2.2**. Выберите шаблон проекта **API** и нажмите кнопку **Создать**.
 1. Посетите страницу [коллекции NuGet: MongoDB.Driver](https://www.nuget.org/packages/MongoDB.Driver/), чтобы узнать последнюю стабильную версию драйвера .NET для MongoDB. В окне **Консоль диспетчера пакетов** перейдите в корневую папку проекта. Выполните следующую команду, чтобы установить драйвер .NET для MongoDB:
 
     ```powershell
@@ -162,7 +163,7 @@ ms.locfileid: "65610616"
 
     Новый проект веб-API ASP.NET Core для работы с .NET Core будет создан и открыт в Visual Studio Code.
 
-1. Нажмите **Yes** (Да), когда отобразится уведомление *Required assets to build and debug are missing from 'BooksApi'. Add them?* (В BooksApi отсутствуют необходимые ресурсы для сборки и отладки. Добавить их?).
+1. Когда значок строки состояния OmniSharp станет зеленым, появится диалоговое окно с предупреждением **Required assets to build and debug are missing from "BooksApi". Add them?** (В BooksApi отсутствуют необходимые ресурсы для сборки и отладки. Добавить их?). Выберите ответ **Да**.
 1. Посетите страницу [коллекции NuGet: MongoDB.Driver](https://www.nuget.org/packages/MongoDB.Driver/), чтобы узнать последнюю стабильную версию драйвера .NET для MongoDB. Откройте **Интегрированный терминал** и перейдите в корневую папку проекта. Выполните следующую команду, чтобы установить драйвер .NET для MongoDB:
 
     ```console
@@ -171,80 +172,109 @@ ms.locfileid: "65610616"
 
 # <a name="visual-studio-for-mactabvisual-studio-mac"></a>[Visual Studio для Mac](#tab/visual-studio-mac)
 
-1. Откройте **Файл** > **Создать решение** > **.NET Core** > **Приложение**.
-1. Выберите шаблон проекта **Веб-API ASP.NET Core** для C# и нажмите **Далее**.
-1. В раскрывающемся списке **Требуемая версия .NET Framework** выберите **.NET Core 2.2** и нажмите **Далее**.
+1. Откройте **Файл** > **Создать решение** >  **.NET Core** > **Приложение**.
+1. Выберите шаблон проекта **Веб-API ASP.NET Core** для C# и нажмите кнопку **Далее**.
+1. В раскрывающемся списке **Требуемая версия .NET Framework** выберите **.NET Core 2.2** и нажмите кнопку **Далее**.
 1. Введите *BooksApi* в поле **Имя проекта** и нажмите **Создать**.
 1. На панели **Решение** щелкните правой кнопкой мыши узел проекта **Зависимости** и выберите **Добавить пакеты**.
-1. Введите *MongoDB.Driver* в поле поиска, выберите пакет *MongoDB.Driver* и нажмите **Добавить пакет**.
+1. В поле поиска введите *MongoDB.Driver*, выберите пакет *MongoDB.Driver* и нажмите **Добавить пакет**.
 1. Нажмите кнопку **Принимаю** в диалоговом окне **Принятие условий лицензионного соглашения**.
 
 ---
 
-## <a name="add-a-model"></a>Добавление модели
+## <a name="add-an-entity-model"></a>Добавление модели сущности
 
 1. Добавьте каталог *Models* в корневую папку проекта.
 1. Добавьте класс `Book` в каталог *Models* с помощью такого кода:
 
     [!code-csharp[](first-mongo-app/sample/BooksApi/Models/Book.cs)]
 
-В классе выше свойство `Id`:
+    В классе выше свойство `Id`:
+    
+    * требуется для сопоставления объекта среды CLR с коллекцией MongoDB.
+    * Помечается с помощью [[BsonId]](https://api.mongodb.com/csharp/current/html/T_MongoDB_Bson_Serialization_Attributes_BsonIdAttribute.htm) для назначения этого свойства в качестве первичного ключа документа.
+    * Помечается с помощью [[BsonRepresentation(BsonType.ObjectId)]](https://api.mongodb.com/csharp/current/html/T_MongoDB_Bson_Serialization_Attributes_BsonRepresentationAttribute.htm), чтобы разрешить передачу параметра в качестве типа `string` вместо структуры [ObjectId](https://api.mongodb.com/csharp/current/html/T_MongoDB_Bson_ObjectId.htm). Mongo обрабатывает преобразование из `string` в `ObjectId`.
+    
+    Другие свойства в классе помечаются с использованием атрибута [[BsonElement]](https://api.mongodb.com/csharp/current/html/T_MongoDB_Bson_Serialization_Attributes_BsonElementAttribute.htm). Значение атрибута представляет имя свойства в коллекции MongoDB.
 
-* требуется для сопоставления объекта среды CLR с коллекцией MongoDB.
-* Помечается с помощью `[BsonId]` для назначения этого свойства в качестве первичного ключа документа.
-* Помечается с помощью `[BsonRepresentation(BsonType.ObjectId)]`, чтобы разрешить передачу параметра в качестве типа `string` вместо `ObjectId`. Mongo обрабатывает преобразование из `string` в `ObjectId`.
+## <a name="add-a-configuration-model"></a>Добавление модели конфигурации
 
-Другие свойства в классе помечаются с использованием атрибута `[BsonElement]`. Значение атрибута представляет имя свойства в коллекции MongoDB.
+1. Добавьте в файл *appsettings.json* перечисленные ниже значения конфигурации базы данных.
 
-## <a name="add-a-crud-operations-class"></a>Добавление класса операций CRUD
+    [!code-json[](first-mongo-app/sample/BooksApi/appsettings.json?highlight=2-6)]
+
+1. Добавьте в каталог *Models* файл *BookstoreDatabaseSettings.cs* со следующим кодом:
+
+    [!code-csharp[](first-mongo-app/sample/BooksApi/Models/BookstoreDatabaseSettings.cs)]
+
+    Предыдущий класс `BookstoreDatabaseSettings` используется для хранения значений свойств `BookstoreDatabaseSettings` файла *appsettings.json*. Свойства JSON и C# имеют одинаковые имена, что упрощает сопоставление.
+
+1. Добавьте в `Startup.ConfigureServices` следующий код перед вызовом `AddMvc`:
+
+    [!code-csharp[](first-mongo-app/sample/BooksApi/Startup.cs?name=snippet_ConfigureDatabaseSettings)]
+
+    В приведенном выше коде:
+
+    * Экземпляр конфигурации, к которому привязан раздел `BookstoreDatabaseSettings` файла *appsettings.json*, зарегистрирован в контейнере внедрения зависимостей (DI). Например, свойство `ConnectionString` объекта `BookstoreDatabaseSettings` заполняется свойством `BookstoreDatabaseSettings:ConnectionString` в файле *appsettings.json*.
+    * Интерфейс `IBookstoreDatabaseSettings` регистрируется в DI с использованием [времени существования отдельной службы](xref:fundamentals/dependency-injection#service-lifetimes). При внедрении экземпляр интерфейса разрешается в объект `BookstoreDatabaseSettings`.
+
+1. Добавьте следующий код в самое начало файла *Startup.cs*, чтобы разрешить ссылки `BookstoreDatabaseSettings` и `IBookstoreDatabaseSettings`:
+
+    [!code-csharp[](first-mongo-app/sample/BooksApi/Startup.cs?name=snippet_UsingBooksApiModels)]
+
+## <a name="add-a-crud-operations-service"></a>Добавление службы операций CRUD
 
 1. Добавьте каталог *Services* в корневую папку проекта.
 1. Добавьте класс `BookService` в каталог *Services* с помощью такого кода:
 
     [!code-csharp[](first-mongo-app/sample/BooksApi/Services/BookService.cs?name=snippet_BookServiceClass)]
 
-1. Добавьте строку подключения MongoDB в файл *appsettings.json*:
+    В предыдущем коде экземпляр `IBookstoreDatabaseSettings` извлекается из DI посредством внедрения конструктора. Таким образом обеспечивается доступ к значениям конфигурации в файле *appsettings.json*, которые были добавлены в разделе [Добавление модели конфигурации](#add-a-configuration-model).
 
-    [!code-csharp[](first-mongo-app/sample/BooksApi/appsettings.json?highlight=2-4)]
+1. В `Startup.ConfigureServices` зарегистрируйте класс `BookService` в DI:
 
-    Обращение к предыдущему свойству `BookstoreDb` выполняется в конструкторе класса `BookService`.
+    [!code-csharp[](first-mongo-app/sample/BooksApi/Startup.cs?name=snippet_ConfigureServices&highlight=9)]
 
-1. Зарегистрируйте класс `BookService` в `Startup.ConfigureServices` с помощью системы внедрения зависимостей:
+    В предыдущем коде класс `BookService` регистрируется в DI, чтобы обеспечить поддержку внедрения через конструктор в используемые классы. Время существования отдельной службы — наиболее подходящий вариант, так как `BookService` имеет прямую зависимость от `MongoClient`. В соответствии с официальными [правилами повторного использования клиента Mongo](https://mongodb.github.io/mongo-csharp-driver/2.8/reference/driver/connecting/#re-use) `MongoClient` следует регистрировать в DI с использованием времени существования отдельной службы.
 
-    [!code-csharp[](first-mongo-app/sample/BooksApi/Startup.cs?name=snippet_ConfigureServices&highlight=3)]
+1. Добавьте следующий код в самое начало файла *Startup.cs*, чтобы разрешить ссылку `BookService`:
 
-    Это необходимо, чтобы включить поддержку внедрения через конструктор в используемые классы.
+    [!code-csharp[](first-mongo-app/sample/BooksApi/Startup.cs?name=snippet_UsingBooksApiServices)]
 
 Класс `BookService` использует следующие члены `MongoDB.Driver` для выполнения операций CRUD в базе данных:
 
-* `MongoClient` &ndash; считывает экземпляр сервера для выполнения операций с базой данных. Конструктор этого класса предоставляет строку подключения MongoDB.
+* [MongoClient](https://api.mongodb.com/csharp/current/html/T_MongoDB_Driver_MongoClient.htm) &ndash; считывает экземпляр сервера для выполнения операций с базой данных. Конструктор этого класса предоставляет строку подключения MongoDB.
 
     [!code-csharp[](first-mongo-app/sample/BooksApi/Services/BookService.cs?name=snippet_BookServiceConstructor&highlight=3)]
 
-* `IMongoDatabase` &ndash; представляет базу данных Mongo для выполнения операций. В этом руководстве используется универсальный метод `GetCollection<T>(collection)` в интерфейсе для получения доступа к данным в определенной коллекции. Операции CRUD могут выполняться с коллекцией после вызова этого метода. В вызове метода `GetCollection<T>(collection)`:
+* [IMongoDatabase](https://api.mongodb.com/csharp/current/html/T_MongoDB_Driver_IMongoDatabase.htm) &ndash; представляет базу данных Mongo для выполнения операций. В этом руководстве используется универсальный метод [GetCollection<TDocument>(collection)](https://api.mongodb.com/csharp/current/html/M_MongoDB_Driver_IMongoDatabase_GetCollection__1.htm) интерфейса для получения доступа к данным в определенной коллекции. Операции CRUD следует выполнять с коллекцией после вызова этого метода. В вызове метода `GetCollection<TDocument>(collection)`:
   * `collection` представляет имя коллекции;
-  * `T` представляет тип объекта среды CLR, хранящегося в коллекции;
+  * `TDocument` представляет тип объекта среды CLR, хранящегося в коллекции;
 
-`GetCollection<T>(collection)` возвращает объект `MongoCollection`, представляющий коллекцию. В этом руководстве следующие методы вызываются для коллекции:
+`GetCollection<TDocument>(collection)` возвращает объект [MongoCollection](https://api.mongodb.com/csharp/current/html/T_MongoDB_Driver_MongoCollection.htm), представляющий коллекцию. В этом руководстве следующие методы вызываются для коллекции:
 
-* `Find<T>` &ndash; возвращает все документы в коллекции, соответствующие заданным критериям поиска.
-* `InsertOne` &ndash; вставляет предоставленный объект в виде нового документа в коллекции.
-* `ReplaceOne` &ndash; заменяет один документ, отвечающий заданным критериям поиска, предоставленным объектом.
-* `DeleteOne` &ndash; удаляет один документ, отвечающий заданным критериям поиска.
+* [DeleteOne](https://api.mongodb.com/csharp/current/html/M_MongoDB_Driver_IMongoCollection_1_DeleteOne.htm) &ndash; удаляет один документ, отвечающий заданным критериям поиска.
+* [Find\<TDocument>](https://api.mongodb.com/csharp/current/html/M_MongoDB_Driver_IMongoCollectionExtensions_Find__1_1.htm) &ndash; возвращает все документы в коллекции, соответствующие заданным критериям поиска.
+* [InsertOne](https://api.mongodb.com/csharp/current/html/M_MongoDB_Driver_IMongoCollection_1_InsertOne.htm) &ndash; вставляет предоставленный объект в виде нового документа в коллекции.
+* [ReplaceOne](https://api.mongodb.com/csharp/current/html/M_MongoDB_Driver_IMongoCollection_1_ReplaceOne.htm) &ndash; заменяет один документ, отвечающий заданным критериям поиска, предоставленным объектом.
 
 ## <a name="add-a-controller"></a>Добавление контроллера
 
-1. Добавьте класс `BooksController` в каталог *Controllers* с помощью такого кода:
+Добавьте класс `BooksController` в каталог *Controllers* с помощью такого кода:
 
-    [!code-csharp[](first-mongo-app/sample/BooksApi/Controllers/BooksController.cs)]
+[!code-csharp[](first-mongo-app/sample/BooksApi/Controllers/BooksController.cs)]
 
-    Предыдущий контроллер веб-API:
+Предыдущий контроллер веб-API:
 
-    * использует класс `BookService` для выполнения операций CRUD;
-    * содержит методы действий для поддержки запросов HTTP GET, POST, PUT и DELETE.
-    * Метод <xref:System.Web.Http.ApiController.CreatedAtRoute*> возвращает ответ 201, который представляет собой стандартный ответ для метода HTTP POST, создающий новый ресурс на сервере. `CreatedAtRoute` также добавляет в ответ заголовок расположения. Заголовок расположения указывает URI вновь созданной задачи. См. раздел [10.2.2 201 Created](http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html).
+* использует класс `BookService` для выполнения операций CRUD;
+* содержит методы действий для поддержки запросов HTTP GET, POST, PUT и DELETE.
+* Вызывает <xref:System.Web.Http.ApiController.CreatedAtRoute*> в методе действия `Create` для возврата ответа [HTTP 201](http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html). Код состояния 201 представляет собой стандартный ответ метода HTTP POST, создающего ресурс на сервере. `CreatedAtRoute` также добавляет заголовок `Location` в ответ. Заголовок `Location` указывает универсальный код ресурса (URI) созданной книги.
+
+## <a name="test-the-web-api"></a>Тестирование веб-API
+
 1. Выполните сборку и запуск приложения.
-1. В браузере перейдите в `http://localhost:<port>/api/books`. Отобразится такой ответ JSON:
+
+1. Перейдите по адресу `http://localhost:<port>/api/books`, чтобы протестировать не имеющий параметров метод действия `Get` контроллера. Отобразится такой ответ JSON:
 
     ```json
     [
@@ -263,6 +293,18 @@ ms.locfileid: "65610616"
         "author":"Robert C. Martin"
       }
     ]
+    ```
+
+1. Перейдите по адресу `http://localhost:<port>/api/books/5bfd996f7b8e48dc15ff215e`, чтобы протестировать перегруженный метод действия `Get` контроллера. Отобразится такой ответ JSON:
+
+    ```json
+    {
+      "id":"5bfd996f7b8e48dc15ff215e",
+      "bookName":"Clean Code",
+      "price":43.15,
+      "category":"Computers",
+      "author":"Robert C. Martin"
+    }
     ```
 
 ## <a name="next-steps"></a>Следующие шаги

@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 02/13/2019
 uid: fundamentals/routing
-ms.openlocfilehash: 0c2df3ec63f393b961754f496830cccb26f1cb76
-ms.sourcegitcommit: 5b0eca8c21550f95de3bb21096bd4fd4d9098026
+ms.openlocfilehash: 2a7a942f43de94326e84977f09dc9a2e24dd00f0
+ms.sourcegitcommit: 5dd2ce9709c9e41142771e652d1a4bd0b5248cec
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 04/27/2019
-ms.locfileid: "64884569"
+ms.lasthandoff: 06/05/2019
+ms.locfileid: "66692578"
 ---
 # <a name="routing-in-aspnet-core"></a>Маршрутизация в ASP.NET Core
 
@@ -165,7 +165,9 @@ services.AddMvc()
 
 [RouteData.Routers](xref:Microsoft.AspNetCore.Routing.RouteData.Routers) — это список маршрутов, которые участвовали в успешном сопоставлении с запросом. Маршруты могут быть вложены друг в друга. Свойство <xref:Microsoft.AspNetCore.Routing.RouteData.Routers> отражает путь по логическому дереву маршрутов, который привел к совпадению. Как правило, первый элемент в свойстве <xref:Microsoft.AspNetCore.Routing.RouteData.Routers> — это коллекция маршрутов, используемая для формирования URL-адресов. Последний элемент в свойстве <xref:Microsoft.AspNetCore.Routing.RouteData.Routers> — это соответствующий обработчик маршрутов.
 
-### <a name="url-generation"></a>Формирование URL-адреса
+<a name="lg"></a>
+
+### <a name="url-generation-with-linkgenerator"></a>Создание URL-адреса с помощью LinkGenerator
 
 ::: moniker range=">= aspnetcore-2.2"
 

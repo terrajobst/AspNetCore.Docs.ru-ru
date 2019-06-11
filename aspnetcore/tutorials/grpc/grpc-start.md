@@ -4,14 +4,14 @@ author: juntaoluo
 description: В этом учебнике объясняется, как создать службу и клиента gRPC в ASP.NET Core. Узнайте, как создать проект службы gRPC, изменить файл proto и добавить дуплексный режим потоковой передачи вызовов.
 monikerRange: '>= aspnetcore-3.0'
 ms.author: johluo
-ms.date: 5/30/2019
+ms.date: 06/05/2019
 uid: tutorials/grpc/grpc-start
-ms.openlocfilehash: 2b4325d2413e335a3061a7695def88a1b23ee52b
-ms.sourcegitcommit: 4d05e30567279072f1b070618afe58ae1bcefd5a
+ms.openlocfilehash: 71e3321819eb7169f0896abe3e07849f59ea6fc7
+ms.sourcegitcommit: 5dd2ce9709c9e41142771e652d1a4bd0b5248cec
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66376375"
+ms.lasthandoff: 06/05/2019
+ms.locfileid: "66692529"
 ---
 # <a name="tutorial-create-a-grpc-client-and-server-in-aspnet-core"></a>Учебник. Создание клиента и сервера gRPC в ASP.NET Core
 
@@ -161,7 +161,7 @@ code -r GrpcGreeterClient
 
 Установка пакетов с помощью консоли диспетчера пакетов (PMC) или управления пакетами NuGet
 
-####  <a name="pmc-option-to-install-packages"></a>Установка пакетов с помощью консоли диспетчера пакетов
+#### <a name="pmc-option-to-install-packages"></a>Установка пакетов с помощью консоли диспетчера пакетов
 
 * В Visual Studio выберите пункты меню **Сервис** > **Диспетчер пакетов NuGet** > **Консоль диспетчера пакетов**.
 * В **консоли диспетчера пакетов** перейдите в каталог, в котором содержится файл *GrpcGreeterClient.csproj*.
@@ -169,7 +169,7 @@ code -r GrpcGreeterClient
 
  ```powershell
 Install-Package Grpc.Core
-Install-Package Grpc.Protobuf
+Install-Package Google.Protobuf
 Install-Package Grpc.Tools
 ```
 
@@ -218,7 +218,7 @@ dotnet add GrpcGreeterClient.csproj package Grpc.Tools
 
   Щелкните проект правой кнопкой мыши и выберите **Сервис > Изменить файл**.
 
-  ------
+  ---
 
 * Добавьте файл **greet.proto** в `<Protobuf>` группу элементов файла проекта GrpcGreeterClient:
 
@@ -230,7 +230,7 @@ dotnet add GrpcGreeterClient.csproj package Grpc.Tools
 
 Выполните сборку проекта клиента, чтобы запустить формирование ресурсов клиента C#.
 
-### <a name="create-the-greater-client"></a>Создание клиента Greeter
+### <a name="create-the-greeter-client"></a>Создание клиента Greeter
 
 Соберите проект, чтобы создать типы в пространстве имен **Greeter**. Типы `Greeter` создаются автоматически в процессе сборки.
 

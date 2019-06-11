@@ -3,14 +3,14 @@ title: Учебник. Начало работы с Razor Pages в ASP.NET Core
 author: rick-anderson
 description: В этой серии руководств объясняется, как использовать Razor Pages в ASP.NET Core. Узнайте, как создать модель, сгенерировать код для Razor Pages, использовать Entity Framework Core и SQL Server для доступа к данным, добавлять функции поиска и проверки ввода, а также использовать возможность миграции для обновления модели.
 ms.author: riande
-ms.date: 05/30/2019
+ms.date: 6/3/2019
 uid: tutorials/razor-pages/razor-pages-start
-ms.openlocfilehash: e9f11f68aa138ab74a0ffbbd0e32067bc984606d
-ms.sourcegitcommit: 9ae1fd11f39b0a72b2ae42f0b450345e6e306bc0
+ms.openlocfilehash: d843e47ccb5180fab34b4c4c4a4b5cbda21289bf
+ms.sourcegitcommit: a1364109d11d414121a6337b611bee61d6e489e9
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66415662"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66491216"
 ---
 # <a name="tutorial-get-started-with-razor-pages-in-aspnet-core"></a>Учебник. Начало работы с Razor Pages в ASP.NET Core
 
@@ -43,13 +43,17 @@ ms.locfileid: "66415662"
 
 * В меню **Файл** Visual Studio откройте меню **Создать** > **Проект**.
 
-* Создайте новое веб-приложение ASP.NET Core. Назовите проект **RazorPagesMovie**. Очень важно, чтобы проект имел имя *RazorPagesMovie*, так как пространства имен при копировании и вставке кода должны совпасть.
+* Создайте веб-приложение ASP.NET Core и нажмите кнопку **Далее**.
 
   ![Новое веб-приложение ASP.NET Core](razor-pages-start/_static/np_2.1.png)
 
-* Выберите в раскрывающемся списке **ASP.NET Core 2.2**, а затем **Веб-приложение**.
+* Назовите проект **RazorPagesMovie**. Очень важно, чтобы проект имел имя *RazorPagesMovie*, так как пространства имен при копировании и вставке кода должны совпасть.
 
-  ![Новое веб-приложение ASP.NET Core](razor-pages-start/_static/np_2_2.2.png)
+  ![Новое веб-приложение ASP.NET Core](razor-pages-start/_static/config.png)
+
+* Выберите в раскрывающемся списке пункт **ASP.NET Core 2.2**, затем — **Веб-приложение** и нажмите кнопку **Создать**.
+
+![Новое веб-приложение ASP.NET Core](razor-pages-start/_static/np_2_2.2.png)
 
   Создается следующий начальный проект:
 

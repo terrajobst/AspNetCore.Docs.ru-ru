@@ -5,14 +5,14 @@ description: Узнайте, как разместить приложение AS
 monikerRange: '>= aspnetcore-2.1'
 ms.author: tdykstra
 ms.custom: mvc
-ms.date: 05/21/2019
+ms.date: 06/03/2019
 uid: host-and-deploy/windows-service
-ms.openlocfilehash: ab36bc1b2827c80bb1e7b9e8cee558b346a991f8
-ms.sourcegitcommit: b8ed594ab9f47fa32510574f3e1b210cff000967
+ms.openlocfilehash: 4cfca4b38543ff073bb98dc09b483d96096928ae
+ms.sourcegitcommit: 5dd2ce9709c9e41142771e652d1a4bd0b5248cec
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 05/28/2019
-ms.locfileid: "66251420"
+ms.lasthandoff: 06/05/2019
+ms.locfileid: "66692568"
 ---
 # <a name="host-aspnet-core-in-a-windows-service"></a>Размещение ASP.NET Core в службе Windows
 
@@ -26,6 +26,35 @@ ms.locfileid: "66251420"
 
 * [Пакет SDK для ASP.NET Core 2.1 или более поздней версии](https://dotnet.microsoft.com/download)
 * [PowerShell 6.2 или более поздней версии](https://github.com/PowerShell/PowerShell)
+
+::: moniker range=">= aspnetcore-3.0"
+
+## <a name="worker-service-template"></a>Шаблон службы рабочей роли
+
+Шаблон службы рабочей роли ASP.NET Core может служить отправной точкой для написания длительно выполняющихся приложений служб. Чтобы использовать шаблон в качестве основы для приложения службы Windows, выполните указанные ниже действия.
+
+1. Создайте приложение службы рабочей роли на основе шаблона .NET Core.
+1. Согласно указаниям в разделе [Конфигурация приложения](#app-configuration) измените приложение службы рабочей роли так, чтобы оно могло выполняться как служба Windows.
+
+# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
+
+1. Создайте новый проект.
+1. Выберите **Новое веб-приложение ASP.NET Core**. Выберите **Далее**.
+1. В поле **Имя проекта** укажите имя проекта или оставьте имя по умолчанию. Выберите **Создать**.
+1. В диалоговом окне **Создание веб-приложения ASP.NET Core** убедитесь в том, что выбраны платформы **.NET Core** и **ASP.NET Core 3.0**.
+1. Выберите шаблон **Служба рабочей роли**. Выберите **Создать**.
+
+# <a name="visual-studio-code--net-core-clitabvisual-studio-codenetcore-cli"></a>[Visual Studio Code или .NET Core CLI](#tab/visual-studio-code+netcore-cli)
+
+Используйте шаблон службы рабочей роли (`worker`) с командой [dotnet new](/dotnet/core/tools/dotnet-new) из командной оболочки. В приведенном ниже примере создается приложение службы рабочей роли с именем `ContosoWorkerService`. Папка для приложения `ContosoWorkerService` создается автоматически при выполнении команды.
+
+```console
+dotnet new worker -o ContosoWorkerService
+```
+
+---
+
+::: moniker-end
 
 ## <a name="app-configuration"></a>Конфигурация приложения
 

@@ -5,14 +5,14 @@ description: Сведения о настройке модуля ASP.NET Core д
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 05/17/2019
+ms.date: 06/05/2019
 uid: host-and-deploy/aspnet-core-module
-ms.openlocfilehash: 11906f34f4aa358fda126772e2147dc805c28e81
-ms.sourcegitcommit: 06c4f2910dd54ded25e1b8750e09c66578748bc9
+ms.openlocfilehash: f287a9bad623c5ff5c41868c7c4408b572b39000
+ms.sourcegitcommit: c716ea9155a6b404c1f3d3d34e2388454cd276d7
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66395946"
+ms.lasthandoff: 06/05/2019
+ms.locfileid: "66716363"
 ---
 # <a name="aspnet-core-module"></a>Модуль ASP.NET Core
 
@@ -156,7 +156,7 @@ ms.locfileid: "66395946"
 
 ## <a name="how-to-install-and-use-the-aspnet-core-module"></a>Как установить и использовать модуль ASP.NET Core
 
-Инструкции о том, как установить и использовать модуль ASP.NET Core, см. в разделе <xref:host-and-deploy/iis/index>.
+Инструкции о том, как установить модуль ASP.NET Core, см. в разделе [Установка пакета размещения .NET Core](xref:host-and-deploy/iis/index#install-the-net-core-hosting-bundle).
 
 ## <a name="configuration-with-webconfig"></a>Конфигурация с помощью файла web.config
 
