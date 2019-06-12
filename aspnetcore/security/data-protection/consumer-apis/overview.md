@@ -3,14 +3,14 @@ title: Обзор потребительских API для ASP.NET Core
 author: rick-anderson
 description: Получите краткий обзор различных потребителя интерфейсы API, доступные в библиотеке защиты данных ASP.NET Core.
 ms.author: riande
-ms.date: 10/14/2016
+ms.date: 06/11/2019
 uid: security/data-protection/consumer-apis/overview
-ms.openlocfilehash: b0d11d097ee2d448b6781f6fa84445f6400fbc76
-ms.sourcegitcommit: dd9c73db7853d87b566eef136d2162f648a43b85
+ms.openlocfilehash: ff9badb55813cae0aa72d3a95dc53792332f109b
+ms.sourcegitcommit: 1bb3f3f1905b4e7d4ca1b314f2ce6ee5dd8be75f
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65087532"
+ms.lasthandoff: 06/11/2019
+ms.locfileid: "66837379"
 ---
 # <a name="consumer-apis-overview-for-aspnet-core"></a>Обзор потребительских API для ASP.NET Core
 
@@ -32,7 +32,7 @@ ms.locfileid: "65087532"
 
 ## <a name="consuming-these-interfaces"></a>Использование этих интерфейсов
 
-Поддерживающие внедрение Зависимостей компонента, предполагаемое использование является, что компонент занять `IDataProtectionProvider` параметр в конструкторе автоматически, и что в системе внедрения Зависимостей этой службы при создании экземпляра компонента.
+Компонента, поддерживающие внедрение Зависимостей, предполагаемое использование состоит в том, что компонент принимает `IDataProtectionProvider` параметр в конструкторе автоматически, и что в системе внедрения Зависимостей этой службы при создании экземпляра компонента.
 
 > [!NOTE]
 > Возможно, поддерживающие внедрение Зависимостей, нельзя использовать с механизмом, описанным здесь некоторые приложения (например, консольных приложений или приложений ASP.NET 4.x). См. Эти сценарии [зависимые сценарии не DI](xref:security/data-protection/configuration/non-di-scenarios) Дополнительные сведения о том, как экземпляр `IDataProtection` поставщика, минуя внедрения Зависимостей.
