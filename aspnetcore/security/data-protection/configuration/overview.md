@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 04/11/2019
 uid: security/data-protection/configuration/overview
-ms.openlocfilehash: ee43427fa1e82a365d49df50567b4ca7afb5a5d3
-ms.sourcegitcommit: 5b0eca8c21550f95de3bb21096bd4fd4d9098026
+ms.openlocfilehash: 65a927b6288ca6cc41ee1bedd1080e52ffe0d3e1
+ms.sourcegitcommit: 335a88c1b6e7f0caa8a3a27db57c56664d676d34
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 04/27/2019
-ms.locfileid: "64897301"
+ms.lasthandoff: 06/12/2019
+ms.locfileid: "67034924"
 ---
 # <a name="configure-aspnet-core-data-protection"></a>Настройка защиты данных в ASP.NET Core
 
@@ -23,7 +23,7 @@ ms.locfileid: "64897301"
 В таких случаях системы защиты данных предлагает широкие возможности настройки API.
 
 > [!WARNING]
-> Как и файлы конфигурации, набора ключей защиты данных должны быть защищены с помощью соответствующих разрешений. Можно выбрать для шифрования ключей при хранении, но это не предотвращает злоумышленники созданием новых ключей. Следовательно это повлияет на безопасность приложения. Место хранения, настроен с защитой данных должны иметь его доступ возможен только из самого, аналогично тому, как бы Защита файлов конфигурации приложения. Например если вы решили хранить на диске вашего набора ключей, используйте разрешения файловой системы. Убедитесь, удостоверение, под которой запущено приложение чтения, записи и доступа к этому каталогу. Если вы используете хранилище таблиц Azure, веб-приложения должны иметь возможность читать, записывать и создавать новые записи в хранилище таблиц и т. д.
+> Как и файлы конфигурации, набора ключей защиты данных должны быть защищены с помощью соответствующих разрешений. Можно выбрать для шифрования ключей при хранении, но это не предотвращает злоумышленники созданием новых ключей. Следовательно это повлияет на безопасность приложения. Место хранения, настроен с защитой данных должны иметь его доступ возможен только из самого, аналогично тому, как бы Защита файлов конфигурации приложения. Например если вы решили хранить на диске вашего набора ключей, используйте разрешения файловой системы. Убедитесь, удостоверение, под которой запущено приложение чтения, записи и доступа к этому каталогу. Если вы используете хранилище BLOB-объектов, веб-приложения должны иметь возможность читать, записывать и создавать новые записи в хранилище больших двоичных объектов и т. д.
 >
 > Метод расширения [AddDataProtection](/dotnet/api/microsoft.extensions.dependencyinjection.dataprotectionservicecollectionextensions.adddataprotection) возвращает [IDataProtectionBuilder](/dotnet/api/microsoft.aspnetcore.dataprotection.idataprotectionbuilder). `IDataProtectionBuilder` Предоставляет методы расширения, что вы можете связать вместе, чтобы настроить защиту данных.
 
@@ -42,7 +42,7 @@ public void ConfigureServices(IServiceCollection services)
 }
 ```
 
-Задать место хранения набора ключей (например, [PersistKeysToAzureBlobStorage](/dotnet/api/microsoft.aspnetcore.dataprotection.azuredataprotectionbuilderextensions.persistkeystoazureblobstorage)). Необходимо задать расположение, так как вызов `ProtectKeysWithAzureKeyVault` реализует [IXmlEncryptor](/dotnet/api/microsoft.aspnetcore.dataprotection.xmlencryption.ixmlencryptor) , отключает параметры защиты автоматические данные, включая место хранения набора ключей. Предыдущий пример использует хранилище BLOB-объектов для хранения набора ключей. Дополнительные сведения см. в разделе [поставщики хранилища ключей: Azure и Redis](xref:security/data-protection/implementation/key-storage-providers#azure-and-redis). Также можно сохранить локально с помощью набора ключей [PersistKeysToFileSystem](xref:security/data-protection/implementation/key-storage-providers#file-system).
+Задать место хранения набора ключей (например, [PersistKeysToAzureBlobStorage](/dotnet/api/microsoft.aspnetcore.dataprotection.azuredataprotectionbuilderextensions.persistkeystoazureblobstorage)). Необходимо задать расположение, так как вызов `ProtectKeysWithAzureKeyVault` реализует [IXmlEncryptor](/dotnet/api/microsoft.aspnetcore.dataprotection.xmlencryption.ixmlencryptor) , отключает параметры защиты автоматические данные, включая место хранения набора ключей. Предыдущий пример использует хранилище BLOB-объектов для хранения набора ключей. Дополнительные сведения см. в разделе [поставщики хранилища ключей: службы хранилища Azure](xref:security/data-protection/implementation/key-storage-providers#azure-storage). Также можно сохранить локально с помощью набора ключей [PersistKeysToFileSystem](xref:security/data-protection/implementation/key-storage-providers#file-system).
 
 `keyIdentifier` Является идентификатор ключа хранилища ключей, используемый для шифрования ключа. Например, ключ, созданный в хранилище ключей с именем `dataprotection` в `contosokeyvault` имеет идентификатор ключа `https://contosokeyvault.vault.azure.net/keys/dataprotection/`. Укажите приложение с **распаковку ключа** и **Wrap Key** разрешений в хранилище ключей.
 
@@ -170,7 +170,7 @@ public void ConfigureServices(IServiceCollection services)
 
 Механизм изоляции работает путем оценки каждого приложения на локальном компьютере как уникальный клиент, таким образом <xref:Microsoft.AspNetCore.DataProtection.IDataProtector> административного доступа для любого приложения автоматически включает в себя идентификатор приложения в качестве дискриминатора. Уникальный идентификатор приложения — это физический путь приложения:
 
-* Для приложений, размещенных в [IIS](xref:fundamentals/servers/index#iis-http-server), уникальный идентификатор — это физический путь приложения IIS. Если приложение развертывается в среде веб-фермы, это значение стабильна, при условии, что в средах службы IIS настраиваются сходным образом на всех компьютерах веб-фермы.
+* Для приложений, размещенных в IIS уникальный идентификатор — это физический путь приложения IIS. Если приложение развертывается в среде веб-фермы, это значение стабильна, при условии, что в средах службы IIS настраиваются сходным образом на всех компьютерах веб-фермы.
 * Для резидентных приложений, запущенных в [сервер Kestrel](xref:fundamentals/servers/index#kestrel), уникальный идентификатор — это физический путь к приложению на диске.
 
 Уникальный идентификатор позволяет избежать простоев в случае сброса&mdash;как отдельные приложения и самой виртуальной машине.

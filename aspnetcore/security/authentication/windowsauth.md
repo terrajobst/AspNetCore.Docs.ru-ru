@@ -5,22 +5,35 @@ description: Узнайте, как настроить проверку подл
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc, seodec18
-ms.date: 06/05/2019
+ms.date: 06/12/2019
 uid: security/authentication/windowsauth
-ms.openlocfilehash: 900bbf5f14b1876ad537b2b77e4ba07d7aa168f2
-ms.sourcegitcommit: e7e04a45195d4e0527af6f7cf1807defb56dc3c3
+ms.openlocfilehash: 93f833adff95f25d570947cd1a9035d652f522c2
+ms.sourcegitcommit: 335a88c1b6e7f0caa8a3a27db57c56664d676d34
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 06/06/2019
-ms.locfileid: "66750163"
+ms.lasthandoff: 06/12/2019
+ms.locfileid: "67034953"
 ---
 # <a name="configure-windows-authentication-in-aspnet-core"></a>Настройка проверки подлинности Windows в ASP.NET Core
 
 По [Scott Addie](https://twitter.com/Scott_Addie) и [Люк Лэтем](https://github.com/guardrex)
 
-[Проверка подлинности Windows](/iis/configuration/system.webServer/security/authentication/windowsAuthentication/) можно настроить для приложений ASP.NET Core, размещенных с [IIS](xref:host-and-deploy/iis/index) или [HTTP.sys](xref:fundamentals/servers/httpsys).
+::: moniker range=">= aspnetcore-3.0"
+
+Проверка подлинности Windows (также называется Negotiate, Kerberos или NTLM проверка подлинности) можно настроить для приложений ASP.NET Core, размещенных с [IIS](xref:host-and-deploy/iis/index), [Kestrel](xref:fundamentals/servers/kestrel), или [HTTP.sys](xref:fundamentals/servers/httpsys) .
+
+::: moniker-end
+
+::: moniker range="< aspnetcore-3.0"
+
+Проверка подлинности Windows (также называется Negotiate, Kerberos или NTLM проверка подлинности) можно настроить для приложений ASP.NET Core, размещенных с [IIS](xref:host-and-deploy/iis/index) или [HTTP.sys](xref:fundamentals/servers/httpsys).
+
+::: moniker-end
 
 Проверка подлинности Windows зависит от операционной системы для проверки подлинности пользователей, приложений ASP.NET Core. Можно использовать проверку подлинности Windows, когда сервер работает в корпоративной сети с помощью удостоверения домена Active Directory или учетных записей Windows для идентификации пользователей. Проверка подлинности Windows является наилучшим образом подходит для среды интрасети, где пользователи, клиентские приложения и веб-серверы принадлежат к тому же домену Windows.
+
+> [!NOTE]
+> Проверка подлинности Windows не поддерживается с HTTP/2. Проблемы проверки подлинности могут отправляться на ответы HTTP/2, но клиент необходимо понизить HTTP/1.1 до проверки подлинности.
 
 ## <a name="iisiis-express"></a>IIS/IIS Express
 
@@ -125,9 +138,65 @@ dotnet new webapp --auth Windows
   * Используйте диспетчер служб IIS, чтобы присвоить параметрам в *web.config* файл после файл перезаписывается при развертывании.
   * Добавить *файл web.config* приложение локально с параметрами.
 
+::: moniker range=">= aspnetcore-3.0"
+
+## <a name="kestrel"></a>Kestrel
+
+ [Microsoft.AspNetCore.Authentication.Negotiate](https://www.nuget.org/packages/Microsoft.AspNetCore.Authentication.Negotiate) пакет NuGet может использоваться с [Kestrel](xref:fundamentals/servers/kestrel) для поддержки проверки подлинности Windows, с помощью Negotiate, Kerberos и NTLM в Windows, Linux и macOS.
+
+> [!WARNING]
+> Учетные данные могут сохраняться среди запросов на подключение. *Согласование проверки подлинности не должны использоваться с прокси-серверы, если прокси-сервер поддерживает сходство соединения 1:1 (постоянное подключение), с Kestrel.* Это означает, что не следует использовать проверку подлинности согласованием с Kestrel за службами IIS [модуль Core ASP.NET (ANCM) вне процесса](xref:host-and-deploy/iis/index#out-of-process-hosting-model).
+
+ Добавить службы проверки подлинности путем вызова <xref:Microsoft.Extensions.DependencyInjection.AuthenticationServiceCollectionExtensions.AddAuthentication*> (`Microsoft.AspNetCore.Authentication.Negotiate` пространства имен) и `AddNegotitate` (`Microsoft.AspNetCore.Authentication.Negotiate` пространства имен) в `Startup.ConfigureServices`:
+
+ ```csharp
+services.AddAuthentication(NegotiateDefaults.AuthenticationScheme)
+    .AddNegotiate();
+```
+
+Добавьте по промежуточного слоя проверки подлинности путем вызова <xref:Microsoft.AspNetCore.Builder.AuthAppBuilderExtensions.UseAuthentication*> в `Startup.Configure`:
+
+ ```csharp
+app.UseAuthentication();
+
+app.UseMvc();
+```
+
+Дополнительные сведения о по промежуточного слоя, см. в разделе <xref:fundamentals/middleware/index>.
+
+Разрешены анонимные запросы. Используйте [авторизации ASP.NET Core](xref:security/authorization/introduction) бросить вызов анонимные запросы для проверки подлинности.
+
+### <a name="windows-environment-configuration"></a>Конфигурация среды Windows
+
+[Microsoft.AspNetCore.Authentication.Negotiate](https://www.nuget.org/packages/Microsoft.AspNetCore.Authentication.Negotiate) компонент выполняет проверку подлинности в режиме пользователя. Необходимо добавить имена участника-службы (SPN) с учетной записью пользователя, под управлением службы, а не учетной записи компьютера. Выполнение `setspn -S HTTP/mysrevername.mydomain.com myuser` в административной командной оболочке.
+
+### <a name="linux-and-macos-environment-configuration"></a>Конфигурации среды Linux и macOS
+
+Инструкции по присоединению к домену Windows машину Linux или macOS [подключение к серверу SQL Server, использование проверки подлинности Windows — Kerberos Studio данных Azure](/sql/azure-data-studio/enable-kerberos?view=sql-server-2017#join-your-os-to-the-active-directory-domain-controller) статьи. Инструкции создания учетной записи компьютера для компьютера Linux в домене. Имена участников-служб необходимо добавить в эту учетную запись компьютера.
+
+> [!NOTE]
+> Если следовать инструкциям в [подключение к серверу SQL Server, использование проверки подлинности Windows — Kerberos Studio данных Azure](/sql/azure-data-studio/enable-kerberos?view=sql-server-2017#join-your-os-to-the-active-directory-domain-controller) статьи, замените `python-software-properties` с `python3-software-properties` при необходимости.
+
+Как только Linux или macOS компьютер присоединен к домену, необходимы дополнительные действия для предоставления [файла keytab](https://blogs.technet.microsoft.com/pie/2018/01/03/all-you-need-to-know-about-keytab-files/) с имена SPN:
+
+* На контроллере домена добавьте учетную запись компьютера новой веб-службы SPN:
+  * `setspn -S HTTP/mywebservice.mydomain.com mymachine`
+  * `setspn -S HTTP/mywebservice@MYDOMAIN.COM mymachine`
+* Используйте [ktpass](/windows-server/administration/windows-commands/ktpass) для создания файла keytab:
+  * `ktpass -princ HTTP/mywebservice.mydomain.com@MYDOMAIN.COM -pass myKeyTabFilePassword -mapuser MYDOMAIN\mymachine$ -pType KRB5_NT_PRINCIPAL -out c:\temp\mymachine.HTTP.keytab -crypto AES256-SHA1`
+  * Некоторые поля должно быть указано в верхний регистр, как указано.
+* Скопируйте файл keytab на компьютер Linux или macOS.
+* Выберите файл keytab через переменную среды: `export KRB5_KTNAME=/tmp/mymachine.HTTP.keytab`
+* Вызвать `klist` Показать имена SPN, доступные в настоящий момент.
+
+> [!NOTE]
+> Файла keytab содержит учетные данные домена для доступа и должен быть защищен соответствующим образом.
+
+::: moniker-end
+
 ## <a name="httpsys"></a>HTTP.sys
 
-В резидентных сценариях [Kestrel](xref:fundamentals/servers/kestrel) не поддержки проверки подлинности Windows, но вы можете использовать [HTTP.sys](xref:fundamentals/servers/httpsys).
+[HTTP.sys](xref:fundamentals/servers/httpsys) поддерживает проверку подлинности Windows режима ядра с помощью Negotiate, NTLM или обычную проверку подлинности.
 
 Добавить службы проверки подлинности путем вызова <xref:Microsoft.Extensions.DependencyInjection.AuthenticationServiceCollectionExtensions.AddAuthentication*> (<xref:Microsoft.AspNetCore.Server.HttpSys?displayProperty=fullName> пространства имен) в `Startup.ConfigureServices`:
 
@@ -177,6 +246,12 @@ ASP.NET Core не реализует олицетворения. Приложе�
 [!code-csharp[](windowsauth/sample_snapshot/Startup.cs?highlight=10-19)]
 
 `RunImpersonated` не поддерживает асинхронные операции и не должны использоваться для сложных сценариев. Например упаковки всего запросов или по промежуточного слоя цепочек не поддерживается и не рекомендуется.
+
+::: moniker range=">= aspnetcore-3.0"
+
+Хотя [Microsoft.AspNetCore.Authentication.Negotiate](https://www.nuget.org/packages/Microsoft.AspNetCore.Authentication.Negotiate) пакет включает проверку подлинности в Windows, Linux и macOS, олицетворение поддерживается только в Windows.
+
+::: moniker-end
 
 ## <a name="claims-transformations"></a>Преобразования утверждений
 
