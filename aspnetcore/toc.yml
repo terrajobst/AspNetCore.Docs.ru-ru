@@ -166,10 +166,10 @@
       uid: fundamentals/middleware/index
     - name: Узел
       items:
-        - name: Веб-узел
-          uid: fundamentals/host/web-host
         - name: Универсальный узел
           uid: fundamentals/host/generic-host
+        - name: Веб-узел
+          uid: fundamentals/host/web-host
     - name: Серверы
       uid: fundamentals/servers/index
     - name: Параметр Configuration
