@@ -7,12 +7,12 @@ ms.author: riande
 ms.custom: mvc, seoapril2019
 ms.date: 05/01/2019
 uid: blazor/index
-ms.openlocfilehash: bd7d2d3e6702844627f19dfbbbad5c52389a52e5
-ms.sourcegitcommit: dd9c73db7853d87b566eef136d2162f648a43b85
+ms.openlocfilehash: d58115b17536cad0b3927e6d32b7dbe8db8e4b0f
+ms.sourcegitcommit: 335a88c1b6e7f0caa8a3a27db57c56664d676d34
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65085781"
+ms.lasthandoff: 06/12/2019
+ms.locfileid: "67034419"
 ---
 # <a name="introduction-to-blazor"></a>Введение в Blazor
 
@@ -51,10 +51,10 @@ ms.locfileid: "65085781"
 
     @ChildContent
 
-    <button onclick="@OnYes">Yes!</button>
+    <button @onclick="@OnYes">Yes!</button>
 </div>
 
-@functions {
+@code {
     [Parameter]
     private string Title { get; set; }
 
@@ -98,7 +98,7 @@ Blazor на стороне клиента — это платформа для 
 
 Выполнение кода .NET в веб-браузерах становится возможным благодаря технологии [WebAssembly](http://webassembly.org) (сокращенно *wasm*). WebAssembly — это открытый веб-стандарт, который поддерживается в веб-браузерах без подключаемых модулей. WebAssembly — это компактный формат байт-кода, оптимизированный для быстрой загрузки и максимального быстродействия.
 
-Код WebAssembly может обращаться к любым функциям браузера через JavaScript благодаря поддержке *взаимодействия с JavaScript***. Код .NET, который выполняется через WebAssembly в браузере, выполняется в той же доверенной песочнице, что и код JavaScript. Это практически устраняет любые возможности для выполнения вредоносных действий из приложения на клиентском компьютере.
+Код WebAssembly может обращаться к любым функциям браузера через JavaScript благодаря поддержке *взаимодействия с JavaScript* ** . Код .NET, который выполняется через WebAssembly в браузере, выполняется в той же доверенной песочнице, что и код JavaScript. Это практически устраняет любые возможности для выполнения вредоносных действий из приложения на клиентском компьютере.
 
 ![Blazor на стороне клиента выполняет код .NET в браузере с WebAssembly.](index/_static/blazor-client-side.png)
 

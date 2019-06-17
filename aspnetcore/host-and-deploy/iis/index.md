@@ -5,14 +5,14 @@ description: Сведения о размещении приложений ASP.N
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 05/24/2019
+ms.date: 05/28/2019
 uid: host-and-deploy/iis/index
-ms.openlocfilehash: 41c07b86b50ea50df7420cb81f7b10133d395231
-ms.sourcegitcommit: a04eb20e81243930ec829a9db5dd5de49f669450
+ms.openlocfilehash: 7906891599b90fa73926781ca1a111e687798f63
+ms.sourcegitcommit: 335a88c1b6e7f0caa8a3a27db57c56664d676d34
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 06/03/2019
-ms.locfileid: "66470386"
+ms.lasthandoff: 06/12/2019
+ms.locfileid: "67034779"
 ---
 # <a name="host-aspnet-core-on-windows-with-iis"></a>Размещение ASP.NET Core в Windows со службами IIS
 
@@ -41,43 +41,68 @@ ms.locfileid: "66470386"
 
 Используйте 64-разрядный (x64) пакет SDK для .NET Core для публикации 64-разрядной версии приложения. Для этого в системе узла должна присутствовать 64-разрядная версия среды выполнения.
 
-## <a name="application-configuration"></a>Настройка приложения
-
-### <a name="enable-the-iisintegration-components"></a>Включение компонентов IISIntegration
-
-Обычно *Program.cs* вызывает <xref:Microsoft.AspNetCore.WebHost.CreateDefaultBuilder*>, чтобы начать настройку узла:
-
-```csharp
-public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
-    WebHost.CreateDefaultBuilder(args)
-        ...
-```
-
 ::: moniker range=">= aspnetcore-2.2"
 
-**Модель внутрипроцессного размещения**
+## <a name="hosting-models"></a>Модели размещения
 
-`CreateDefaultBuilder` добавляет экземпляр <xref:Microsoft.AspNetCore.Hosting.Server.IServer>. При этом вызывается метод <xref:Microsoft.AspNetCore.Hosting.WebHostBuilderIISExtensions.UseIIS*> для загрузки [CoreCLR](/dotnet/standard/glossary#coreclr) и размещения приложения внутри рабочего процесса IIS (*w3wp.exe* или *iisexpress.exe*). Тесты производительности показывают, что размещение приложения .NET Core внутри процесса позволяет обрабатывать значительно больше запросов, чем при размещении приложения вне процесса с перенаправлением запросов к серверу [Kestrel](xref:fundamentals/servers/kestrel).
+### <a name="in-process-hosting-model"></a>Модель внутрипроцессного размещения
+
+При внутрипроцессном размещении приложение ASP.NET Core выполняется в том же процессе, что и рабочий процесс IIS. При этом повышается производительность по сравнению с внепроцессным размещением, так как запросы не передаются через адаптер замыкания на себя (сетевой интерфейс, который возвращает исходящий сетевой трафик на тот же компьютер). IIS обрабатывает управление процессом с помощью [службы активации процессов Windows (WAS)](/iis/manage/provisioning-and-managing-iis/features-of-the-windows-process-activation-service-was).
+
+[Модуль ASP.NET Core](xref:host-and-deploy/aspnet-core-module):
+
+* Инициализирует приложение.
+  * Загружает [CoreCLR](/dotnet/standard/glossary#coreclr).
+  * Вызывает `Program.Main`.
+* Управляет жизненным циклом собственного запроса IIS.
 
 Модель внутрипроцессного размещения не поддерживается для приложений ASP.NET Core, предназначенных для .NET Framework.
 
-**Модель размещения вне процесса**
+На следующей схеме показана связь между IIS, модулем ASP.NET Core и приложением, размещенным внутри процесса.
 
-Для внепроцессного размещения в IIS метод `CreateDefaultBuilder` настраивает сервер [Kestrel](xref:fundamentals/servers/kestrel) в качестве веб-сервера и активирует интеграцию с IIS, задавая базовый путь и порт для [модуля ASP.NET Core](xref:host-and-deploy/aspnet-core-module).
+![Модуль ASP.NET Core в сценарии внутрипроцессного размещения](index/_static/ancm-inprocess.png)
 
-Модуль ASP.NET Core создает динамический порт для назначения серверному процессу. `CreateDefaultBuilder` добавляет ПО промежуточного слоя для интеграции IIS и [ПО промежуточного слоя переадресации заголовков](xref:host-and-deploy/proxy-load-balancer). Для этого вызывается метод <xref:Microsoft.AspNetCore.Hosting.WebHostBuilderIISExtensions.UseIISIntegration*>. `UseIISIntegration` настраивает Kestrel для прослушивания динамического порта по IP-адресу localhost (`127.0.0.1`). Если динамический порт — 1234, Kestrel прослушивает `127.0.0.1:1234`. Эта конфигурация заменяет другие конфигурации URL-адресов, предоставляемые:
+Запрос поступает из Интернета в драйвер HTTP.sys в режиме ядра. Драйвер направляет собственный запрос к IIS на настроенный порт веб-сайта — обычно 80 (HTTP) или 443 (HTTPS). Модуль получает собственный запрос и передает его на HTTP-сервер IIS (`IISHttpServer`). HTTP-сервер IIS — это реализация внутрипроцессного сервера для IIS, в которой запрос преобразовывается из собственной формы в управляемую.
 
-* `UseUrls`
-* [API прослушивания Kestrel](xref:fundamentals/servers/kestrel#endpoint-configuration);
-* [Конфигурацией](xref:fundamentals/configuration/index) (или [параметром командной строки--urls](xref:fundamentals/host/web-host#override-configuration)).
+После того как HTTP-сервер IIS обрабатывает запрос, он передается в конвейер ПО промежуточного слоя ASP.NET Core. Конвейер ПО промежуточного слоя обрабатывает запрос и передает его в качестве экземпляра `HttpContext` в логику приложения. Ответ приложения передается обратно в службы IIS через HTTP-сервер IIS. IIS отправляет ответ клиенту, который инициировал запрос.
 
-Вызовы `UseUrls` или API `Listen` Kestrel при работе с этим модулем не требуются. При вызове `UseUrls` или `Listen` Kestrel ожидает передачи данных на порты, указанные только при выполнении приложения без IIS.
+Внутрипроцессное размещение необходимо явно выбирать в существующих приложениях, но в шаблонах [dotnet new](/dotnet/core/tools/dotnet-new) оно включено по умолчанию для всех сценариев IIS и IIS Express.
 
-Дополнительные сведения о моделях внутри- и внепроцессного размещения см. в разделах [Модуль ASP.NET Core](xref:host-and-deploy/aspnet-core-module) и [Справочник по конфигурации модуля ASP.NET Core](xref:host-and-deploy/aspnet-core-module).
+`CreateDefaultBuilder` добавляет экземпляр <xref:Microsoft.AspNetCore.Hosting.Server.IServer>. При этом вызывается метод <xref:Microsoft.AspNetCore.Hosting.WebHostBuilderIISExtensions.UseIIS*> для загрузки [CoreCLR](/dotnet/standard/glossary#coreclr) и размещения приложения внутри рабочего процесса IIS (*w3wp.exe* или *iisexpress.exe*). Тесты производительности показывают, что размещение приложения .NET Core внутри процесса позволяет обрабатывать значительно больше запросов, чем при размещении приложения вне процесса с перенаправлением запросов к серверу [Kestrel](xref:fundamentals/servers/kestrel).
+
+### <a name="out-of-process-hosting-model"></a>Модель размещения вне процесса
+
+Так как приложения ASP.NET Core выполняются в процессе, отделенном от рабочего процесса IIS, этот модуль обрабатывает управление процессами. Модуль запускает процесс для приложения ASP.NET Core при поступлении первого запроса и перезапускает приложение при сбое или завершении работы. Это, по сути, совпадает с поведением приложений, выполняемых внутрипроцессно и управляемых [службой активации процессов Windows (WAS)](/iis/manage/provisioning-and-managing-iis/features-of-the-windows-process-activation-service-was).
+
+На следующей схеме показана связь между IIS, модулем ASP.NET Core и приложением, размещенным вне процесса.
+
+![Модуль ASP.NET Core в сценарии внепроцессного размещения](index/_static/ancm-outofprocess.png)
+
+Запросы поступают из Интернета в драйвер HTTP.sys в режиме ядра. Драйвер направляет запросы к службам IIS на настроенный порт веб-сайта — обычно 80 (HTTP) или 443 (HTTPS). Модуль перенаправляет запросы Kestrel на случайный порт для приложения, отличающийся от порта 80 или 443.
+
+Модуль задает порт с помощью переменной среды во время запуска, а расширение <xref:Microsoft.AspNetCore.Hosting.WebHostBuilderIISExtensions.UseIISIntegration*> настраивает сервер для прослушивания `http://localhost:{PORT}`. Выполняются дополнительные проверки, и запросы не из модуля отклоняются. Модуль не поддерживает переадресацию по HTTPS, поэтому запросы переадресовываются по протоколу HTTP, даже если были получены IIS по протоколу HTTPS.
+
+После того как Kestrel забирает запрос из модуля, запрос передается в конвейер ПО промежуточного слоя ASP.NET Core. Конвейер ПО промежуточного слоя обрабатывает запрос и передает его в качестве экземпляра `HttpContext` в логику приложения. ПО промежуточного слоя, добавленное интеграцией IIS, обновляет схему, удаленный IP-адрес и базовый путь для переадресации запроса в Kestrel. Отклик приложения передается обратно в службу IIS, которая отправляет его обратно в HTTP-клиент, инициировавший запрос.
 
 ::: moniker-end
 
 ::: moniker range="< aspnetcore-2.2"
+
+ASP.NET Core поставляется с [сервером Kestrel](xref:fundamentals/servers/kestrel), который является кроссплатформенным HTTP-сервером по умолчанию.
+
+При использовании [IIS](/iis/get-started/introduction-to-iis/introduction-to-iis-architecture) или [IIS Express](/iis/extensions/introduction-to-iis-express/iis-express-overview) приложение запускается отдельно от рабочего процесса IIS (*внепроцессно*) с [сервером Kestrel](xref:fundamentals/servers/index#kestrel).
+
+Так как приложения ASP.NET Core выполняются в процессе, отделенном от рабочего процесса IIS, этот модуль обрабатывает управление процессами. Модуль запускает процесс для приложения ASP.NET Core при поступлении первого запроса и перезапускает приложение при сбое или завершении работы. Это, по сути, совпадает с поведением приложений, выполняемых внутрипроцессно и управляемых [службой активации процессов Windows (WAS)](/iis/manage/provisioning-and-managing-iis/features-of-the-windows-process-activation-service-was).
+
+На следующей схеме показана связь между IIS, модулем ASP.NET Core и приложением, размещенным вне процесса.
+
+![Модуль ASP.NET Core](index/_static/ancm-outofprocess.png)
+
+Запросы поступают из Интернета в драйвер HTTP.sys в режиме ядра. Драйвер направляет запросы к службам IIS на настроенный порт веб-сайта — обычно 80 (HTTP) или 443 (HTTPS). Модуль перенаправляет запросы Kestrel на случайный порт для приложения, отличающийся от порта 80 или 443.
+
+Модуль задает порт с помощью переменной среды во время запуска, а [ПО промежуточного слоя для интеграции IIS](xref:host-and-deploy/iis/index#enable-the-iisintegration-components) настраивает сервер для прослушивания `http://localhost:{port}`. Выполняются дополнительные проверки, и запросы не из модуля отклоняются. Модуль не поддерживает переадресацию по HTTPS, поэтому запросы переадресовываются по протоколу HTTP, даже если были получены IIS по протоколу HTTPS.
+
+После того как Kestrel забирает запрос из модуля, запрос передается в конвейер ПО промежуточного слоя ASP.NET Core. Конвейер ПО промежуточного слоя обрабатывает запрос и передает его в качестве экземпляра `HttpContext` в логику приложения. ПО промежуточного слоя, добавленное интеграцией IIS, обновляет схему, удаленный IP-адрес и базовый путь для переадресации запроса в Kestrel. Отклик приложения передается обратно в службу IIS, которая отправляет его обратно в HTTP-клиент, инициировавший запрос.
 
 `CreateDefaultBuilder` настраивает сервер [Kestrel](xref:fundamentals/servers/kestrel) в качестве веб-сервера и активирует интеграцию IIS, задавая базовый путь и порт для [модуля ASP.NET Core](xref:host-and-deploy/aspnet-core-module).
 
@@ -89,9 +114,25 @@ public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
 
 Вызовы `UseUrls` или API `Listen` Kestrel при работе с этим модулем не требуются. При вызове `UseUrls` или `Listen` Kestrel ожидает передачи данных на порт, указанный только при выполнении приложения без IIS.
 
+Дополнительные сведения о моделях внутри- и внепроцессного размещения см. в разделах [Модуль ASP.NET Core](xref:host-and-deploy/aspnet-core-module) и [Справочник по конфигурации модуля ASP.NET Core](xref:host-and-deploy/aspnet-core-module).
+
 ::: moniker-end
 
+Инструкции по настройке модуля ASP.NET Core см. в статье <xref:host-and-deploy/aspnet-core-module>.
+
 Дополнительные сведения о размещении см. в разделе [Размещение в ASP.NET Core](xref:fundamentals/index#host).
+
+## <a name="application-configuration"></a>Настройка приложения
+
+### <a name="enable-the-iisintegration-components"></a>Включение компонентов IISIntegration
+
+Обычно *Program.cs* вызывает <xref:Microsoft.AspNetCore.WebHost.CreateDefaultBuilder*>, чтобы начать настройку узла, обеспечивающего интеграцию со службами IIS:
+
+```csharp
+public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
+    WebHost.CreateDefaultBuilder(args)
+        ...
+```
 
 ### <a name="iis-options"></a>Параметры служб IIS
 
@@ -171,7 +212,7 @@ services.Configure<IISOptions>(options =>
 
 Файл *web.config* может содержать дополнительные параметры конфигурации IIS, управляющие активными модулями IIS. Сведения о модулях IIS, которые могут обрабатывать запросы к приложениям ASP.NET Core, см. в статье [Модули IIS](xref:host-and-deploy/iis/modules).
 
-Чтобы пакет SDK не преобразовывал файл *web.config*, добавьте в файл проекта свойство **\<IsTransformWebConfigDisabled>** .
+Чтобы пакет SDK не преобразовывал файл *web.config*, добавьте в файл проекта свойство **\<IsTransformWebConfigDisabled>**.
 
 ```xml
 <PropertyGroup>
@@ -199,7 +240,7 @@ services.Configure<IISOptions>(options =>
 
 Включите роль сервера **Веб-сервер (IIS)** и настройте службы роли.
 
-1. В меню **Управление** запустите мастер **Добавить роли и компоненты** или в окне **Диспетчер серверов** щелкните соответствующую ссылку. На этапе **Роли сервера** установите флажок **Веб-сервер (IIS)** .
+1. В меню **Управление** запустите мастер **Добавить роли и компоненты** или в окне **Диспетчер серверов** щелкните соответствующую ссылку. На этапе **Роли сервера** установите флажок **Веб-сервер (IIS)**.
 
    ![Роль "Веб-сервер (IIS)" выбрана на странице "Выбор ролей сервера".](index/_static/server-roles-ws2016.png)
 
@@ -307,7 +348,7 @@ services.Configure<IISOptions>(options =>
 
     ASP.NET Core выполняется в отдельном процессе и управляет средой выполнения. ASP.NET Core не зависит от загрузки среды CLR для ПК (.NET CLR) &mdash; для размещения приложения в рабочем процессе запускается CoreCLR для .NET Core. Задавать для параметра **Версия среды CLR .NET** значение **Без управляемого кода** необязательно, но рекомендуется.
 
-1. *ASP.NET Core 2.2 или более поздней версии*: для 64-разрядного (x64) [автономного развертывания](/dotnet/core/deploying/#self-contained-deployments-scd), в котором используется [модель размещения в процессе](xref:fundamentals/servers/index#in-process-hosting-model), отключите пул приложений для 32-разрядных (x86) процессов.
+1. *ASP.NET Core 2.2 или более поздней версии*: для 64-разрядного (x64) [автономного развертывания](/dotnet/core/deploying/#self-contained-deployments-scd), в котором используется [модель размещения в процессе](#in-process-hosting-model), отключите пул приложений для 32-разрядных (x86) процессов.
 
    На боковой панели **Действия** в разделе **Пулы приложений** диспетчера IIS выберите **Задать значения по умолчанию для пула приложений** или **Дополнительные параметры**. Найдите пункт **Включить 32-разрядные приложения** и задайте значение `False`. Этот параметр не влияет на приложения, развернутые для [размещения вне процесса](xref:host-and-deploy/aspnet-core-module#out-of-process-hosting-model).
 
@@ -524,7 +565,7 @@ services.Configure<IISOptions>(options =>
 
 1. Нажмите кнопку **Размещение** и выберите систему.
 
-1. В поле **Введите имена выбираемых объектов** введите **IIS AppPool\\<имя_пула_приложений>** . Нажмите кнопку **Проверить имена**. В случае с *DefaultAppPool* проверьте имена с помощью **IIS AppPool\DefaultAppPool**. После нажатия кнопки **Проверить имена** в области имен объектов отобразится значение **DefaultAppPool**. Вручную ввести имя пула приложений в области имен объектов нельзя. При поиске имени объекта используйте формат **IIS AppPool\\<имя_пула_приложений>** .
+1. В поле **Введите имена выбираемых объектов** введите **IIS AppPool\\<имя_пула_приложений>**. Нажмите кнопку **Проверить имена**. В случае с *DefaultAppPool* проверьте имена с помощью **IIS AppPool\DefaultAppPool**. После нажатия кнопки **Проверить имена** в области имен объектов отобразится значение **DefaultAppPool**. Вручную ввести имя пула приложений в области имен объектов нельзя. При поиске имени объекта используйте формат **IIS AppPool\\<имя_пула_приложений>**.
 
    ![Диалоговое окно "Выбор пользователей или групп" для папки приложения. До нажатия кнопки "Проверить имена" в области имен объектов к строке IIS AppPool\" добавилось имя пула приложений, DefaultAppPool.](index/_static/select-users-or-groups-1.png)
 
@@ -589,8 +630,8 @@ ICACLS C:\sites\MyWebApp /grant "IIS AppPool\DefaultAppPool":F
 
 Размещение в IIS с помощью модуля ASP.NET Core версии 2:
 
-* [Модуль инициализации приложений](#application-initialization-module) — приложение, размещенное [в процессе](xref:fundamentals/servers/index#in-process-hosting-model) или [вне процесса](xref:fundamentals/servers/index#out-of-process-hosting-model), можно настроить на автоматический запуск при перезапуске рабочего процесса или сервера.
-* [Время ожидания в режиме простоя](#idle-timeout) — приложение, размещенное [в процессе](xref:fundamentals/servers/index#in-process-hosting-model) можно настроить на игнорирование времени ожидания в периоды неактивности.
+* [Модуль инициализации приложений](#application-initialization-module) &ndash; приложение, размещенное [в процессе](#in-process-hosting-model) или [вне процесса](#out-of-process-hosting-model). Его можно настроить на автоматический запуск при перезапуске рабочего процесса или сервера.
+* [Время ожидания в режиме простоя](#idle-timeout) — приложение, размещенное [в процессе](#in-process-hosting-model) можно настроить на игнорирование времени ожидания в периоды неактивности.
 
 ### <a name="application-initialization-module"></a>Модуль инициализации приложений
 
@@ -647,7 +688,7 @@ ICACLS C:\sites\MyWebApp /grant "IIS AppPool\DefaultAppPool":F
 1. По умолчанию для параметра **Тайм-аут простоя (в минутах)** установлено значение **20** минут. Задайте для параметра **Тайм-аут простоя (в минутах)** значение **0**. Нажмите кнопку **ОК**.
 1. Перезапустите рабочий процесс.
 
-Чтобы не истекло время ожидания в приложениях, размещенных [вне процесса](xref:fundamentals/servers/index#out-of-process-hosting-model), воспользуйтесь одним из таких методов:
+Чтобы не истекло время ожидания в приложениях, размещенных [вне процесса](#out-of-process-hosting-model), воспользуйтесь одним из таких методов:
 
 * Проверьте связь с приложением из внешней службы, чтобы оно продолжило работу.
 * Если приложение размещает только фоновые службы, избегайте размещения в службах IIS и воспользуйтесь [службой Windows для размещения приложения ASP.NET Core](xref:host-and-deploy/windows-service).

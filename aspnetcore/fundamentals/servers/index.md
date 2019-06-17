@@ -2,22 +2,41 @@
 title: Реализации веб-сервера в ASP.NET Core
 author: guardrex
 description: Откройте возможности веб-серверов Kestrel и HTTP.sys для ASP.NET Core. Рекомендации по выбору сервера и сведения о сценариях использования обратного прокси-сервера.
+monikerRange: '>= aspnetcore-2.1'
 ms.author: tdykstra
 ms.custom: mvc
-ms.date: 05/24/2019
+ms.date: 06/01/2019
 uid: fundamentals/servers/index
-ms.openlocfilehash: 82a4bd0173b0aab094ac5ac9f89d5358ba585d3d
-ms.sourcegitcommit: b8ed594ab9f47fa32510574f3e1b210cff000967
+ms.openlocfilehash: 6b4debdaf386bb596c600d3216e78c0cd0380f93
+ms.sourcegitcommit: 335a88c1b6e7f0caa8a3a27db57c56664d676d34
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 05/28/2019
-ms.locfileid: "66251351"
+ms.lasthandoff: 06/12/2019
+ms.locfileid: "67034845"
 ---
 # <a name="web-server-implementations-in-aspnet-core"></a>Реализации веб-сервера в ASP.NET Core
 
 Авторы: [Том Дисктра](https://github.com/tdykstra) (Tom Dykstra), [Стив Смит](https://ardalis.com/) (Steve Smith), [Стивен Хальтер](https://twitter.com/halter73) (Stephen Halter) и [Крис Росс](https://github.com/Tratcher) (Chris Ross)
 
 Приложение ASP.NET Core выполняется вместе с внутрипроцессной реализацией HTTP-сервера. Реализация сервера прослушивает HTTP-запросы и передает их в приложение как набор [функций запросов](xref:fundamentals/request-features), объединенных в <xref:Microsoft.AspNetCore.Http.HttpContext>.
+
+## <a name="kestrel"></a>Kestrel
+
+Веб-сервер Kestrel по умолчанию включается в шаблоны проектов ASP.NET Core.
+
+Kestrel используется в следующих сценариях:
+
+* Сам по себе как пограничный сервер обработки запросов непосредственно из сети, включая Интернет.
+
+  ![Kestrel взаимодействует с Интернетом напрямую, без обратного прокси-сервера](kestrel/_static/kestrel-to-internet2.png)
+
+* С *обратным прокси-сервером*, таким как [службы IIS](https://www.iis.net/), [Nginx](http://nginx.org) или [Apache](https://httpd.apache.org/). Обратный прокси-сервер получает HTTP-запросы из Интернета и пересылает их в Kestrel.
+
+  ![Kestrel взаимодействует с Интернетом косвенно, через обратный прокси-сервер, такой как IIS, Nginx или Apache.](kestrel/_static/kestrel-to-internet.png)
+
+Любая из этих конфигураций размещения&mdash;с обратным прокси-сервером и без него&mdash; поддерживается для приложений ASP.NET Core версии 2.1 и выше.
+
+Инструкции по настройке Kestrel и сведения о том, когда следует использовать Kestrel в конфигурации обратного прокси-сервера, см. в статье <xref:fundamentals/servers/kestrel>.
 
 ::: moniker range=">= aspnetcore-2.2"
 
@@ -26,56 +45,23 @@ ms.locfileid: "66251351"
 В состав ASP.NET Core входит следующее:
 
 * Сервер [Kestrel](xref:fundamentals/servers/kestrel) — это реализация кроссплатформенного HTTP-сервера по умолчанию.
-* HTTP-сервер IIS — это [внутрипроцессный сервер для службы IIS](#in-process-hosting-model).
+* HTTP-сервер IIS — это [внутрипроцессный сервер для службы IIS](#hosting-models).
 * [Сервер HTTP.sys](xref:fundamentals/servers/httpsys) — это HTTP-сервер, предназначенный только для Windows и основанный на [драйвере ядра HTTP.sys и API HTTP-сервера](/windows/desktop/Http/http-api-start-page).
 
 При использовании [IIS](/iis/get-started/introduction-to-iis/introduction-to-iis-architecture) или [IIS Express](/iis/extensions/introduction-to-iis-express/iis-express-overview) приложение запускается одним из следующих способов:
 
-* В том же процессе, что и рабочий процесс IIS ([модель внутрипроцессного размещения](#in-process-hosting-model)), с использованием [HTTP-сервера IIS](#iis-http-server). *Внутрипроцессное размещение* является рекомендуемой конфигурацией.
-* В процессе отдельно от рабочего процесса IIS ([модель внепроцессного размещения](#out-of-process-hosting-model)) с использованием [сервера Kestrel](#kestrel).
+* В том же процессе, что и рабочий процесс IIS ([модель внутрипроцессного размещения](#hosting-models)), с использованием HTTP-сервера IIS. *Внутрипроцессное размещение* является рекомендуемой конфигурацией.
+* В процессе отдельно от рабочего процесса IIS ([модель внепроцессного размещения](#hosting-models)) с использованием [сервера Kestrel](#kestrel).
 
 [Модуль ASP.NET Core](xref:host-and-deploy/aspnet-core-module) — это собственный модуль IIS, который обрабатывает собственные запросы IIS между службами IIS и HTTP-сервером IIS (внутрипроцессно) или сервером Kestrel. Для получения дополнительной информации см. <xref:host-and-deploy/aspnet-core-module>.
 
 ## <a name="hosting-models"></a>Модели размещения
 
-### <a name="in-process-hosting-model"></a>Модель внутрипроцессного размещения
-
 При внутрипроцессном размещении приложение ASP.NET Core выполняется в том же процессе, что и рабочий процесс IIS. При этом повышается производительность по сравнению с внепроцессным размещением, так как запросы не передаются через адаптер замыкания на себя (сетевой интерфейс, который возвращает исходящий сетевой трафик на тот же компьютер). IIS обрабатывает управление процессом с помощью [службы активации процессов Windows (WAS)](/iis/manage/provisioning-and-managing-iis/features-of-the-windows-process-activation-service-was).
 
-Модуль ASP.NET Core:
+При внепроцессном размещении приложения ASP.NET Core выполняются в процессе, отделенном от рабочего процесса IIS, а модуль управляет процессами. Модуль запускает процесс для приложения ASP.NET Core при поступлении первого запроса и перезапускает приложение при сбое или завершении работы. Это, по сути, совпадает с поведением приложений, выполняемых внутрипроцессно и управляемых [службой активации процессов Windows (WAS)](/iis/manage/provisioning-and-managing-iis/features-of-the-windows-process-activation-service-was).
 
-* Инициализирует приложение.
-  * Загружает [CoreCLR](/dotnet/standard/glossary#coreclr).
-  * Вызывает `Program.Main`.
-* Управляет жизненным циклом собственного запроса IIS.
-
-Модель внутрипроцессного размещения не поддерживается для приложений ASP.NET Core, предназначенных для .NET Framework.
-
-На следующей схеме показана связь между IIS, модулем ASP.NET Core и приложением, размещенным внутри процесса.
-
-![Модуль ASP.NET Core](_static/ancm-inprocess.png)
-
-Запрос поступает из Интернета в драйвер HTTP.sys в режиме ядра. Драйвер направляет собственный запрос к IIS на настроенный порт веб-сайта — обычно 80 (HTTP) или 443 (HTTPS). Модуль получает собственный запрос и передает его на HTTP-сервер IIS (`IISHttpServer`). HTTP-сервер IIS — это реализация внутрипроцессного сервера для IIS, в которой запрос преобразовывается из собственной формы в управляемую.
-
-После того как HTTP-сервер IIS обрабатывает запрос, он передается в конвейер ПО промежуточного слоя ASP.NET Core. Конвейер ПО промежуточного слоя обрабатывает запрос и передает его в качестве экземпляра `HttpContext` в логику приложения. Ответ приложения передается обратно в службы IIS через HTTP-сервер IIS. IIS отправляет ответ клиенту, который инициировал запрос.
-
-Внутрипроцессное размещение необходимо явно выбирать в существующих приложениях, но в шаблонах [dotnet new](/dotnet/core/tools/dotnet-new) оно включено по умолчанию для всех сценариев IIS и IIS Express.
-
-### <a name="out-of-process-hosting-model"></a>Модель размещения вне процесса
-
-Так как приложения ASP.NET Core выполняются в процессе, отделенном от рабочего процесса IIS, этот модуль обрабатывает управление процессами. Модуль запускает процесс для приложения ASP.NET Core при поступлении первого запроса и перезапускает приложение при сбое или завершении работы. Это, по сути, совпадает с поведением приложений, выполняемых внутрипроцессно и управляемых [службой активации процессов Windows (WAS)](/iis/manage/provisioning-and-managing-iis/features-of-the-windows-process-activation-service-was).
-
-На следующей схеме показана связь между IIS, модулем ASP.NET Core и приложением, размещенным вне процесса.
-
-![Модуль ASP.NET Core](_static/ancm-outofprocess.png)
-
-Запросы поступают из Интернета в драйвер HTTP.sys в режиме ядра. Драйвер направляет запросы к службам IIS на настроенный порт веб-сайта — обычно 80 (HTTP) или 443 (HTTPS). Модуль перенаправляет запросы Kestrel на случайный порт для приложения, отличающийся от порта 80 или 443.
-
-Модуль задает порт с помощью переменной среды во время запуска, а расширение <xref:Microsoft.AspNetCore.Hosting.WebHostBuilderIISExtensions.UseIISIntegration*> настраивает сервер для прослушивания `http://localhost:{PORT}`. Выполняются дополнительные проверки, и запросы не из модуля отклоняются. Модуль не поддерживает переадресацию по HTTPS, поэтому запросы переадресовываются по протоколу HTTP, даже если были получены IIS по протоколу HTTPS.
-
-После того как Kestrel забирает запрос из модуля, запрос передается в конвейер ПО промежуточного слоя ASP.NET Core. Конвейер ПО промежуточного слоя обрабатывает запрос и передает его в качестве экземпляра `HttpContext` в логику приложения. ПО промежуточного слоя, добавленное интеграцией IIS, обновляет схему, удаленный IP-адрес и базовый путь для переадресации запроса в Kestrel. Отклик приложения передается обратно в службу IIS, которая отправляет его обратно в HTTP-клиент, инициировавший запрос.
-
-Инструкции по настройке модуля ASP.NET Core и IIS см. в следующих статьях:
+Дополнительные сведения и инструкции по настройке см. в следующих статьях:
 
 * <xref:host-and-deploy/iis/index>
 * <xref:host-and-deploy/aspnet-core-module>
@@ -132,42 +118,6 @@ ASP.NET Core поставляется с [сервером Kestrel](xref:fundame
 
 ::: moniker-end
 
-## <a name="kestrel"></a>Kestrel
-
-Веб-сервер Kestrel по умолчанию включается в шаблоны проектов ASP.NET Core.
-
-::: moniker range=">= aspnetcore-2.0"
-
-Kestrel можно использовать:
-
-* Сам по себе как пограничный сервер обработки запросов непосредственно из сети, включая Интернет.
-
-  ![Kestrel взаимодействует с Интернетом напрямую, без обратного прокси-сервера](kestrel/_static/kestrel-to-internet2.png)
-
-* С *обратным прокси-сервером*, таким как [службы IIS](https://www.iis.net/), [Nginx](http://nginx.org) или [Apache](https://httpd.apache.org/). Обратный прокси-сервер получает HTTP-запросы из Интернета и пересылает их в Kestrel.
-
-  ![Kestrel взаимодействует с Интернетом косвенно, через обратный прокси-сервер, такой как IIS, Nginx или Apache.](kestrel/_static/kestrel-to-internet.png)
-
-Любая из этих конфигураций размещения&mdash;с обратным прокси-сервером и без него&mdash; поддерживается для приложений ASP.NET Core версии 2.1 и выше.
-
-::: moniker-end
-
-::: moniker range="< aspnetcore-2.0"
-
-Если приложение принимает запросы только от внутренней сети, можно использовать Kestrel сам по себе.
-
-![Kestrel взаимодействует с внутренней сетью напрямую](kestrel/_static/kestrel-to-internal.png)
-
-Если приложение имеет доступ к Интернету, Kestrel должен использовать *обратный прокси-сервер*, такой как [службы IIS](https://www.iis.net/), [Nginx](http://nginx.org) или [Apache](https://httpd.apache.org/). Обратный прокси-сервер получает HTTP-запросы из Интернета и пересылает их в Kestrel.
-
-![Kestrel взаимодействует с Интернетом косвенно, через обратный прокси-сервер, такой как IIS, Nginx или Apache.](kestrel/_static/kestrel-to-internet.png)
-
-Основная причина использования обратного прокси-сервера для развертываний пограничных серверов, открытых для общего доступа, — это безопасность. Версии Kestrel 1.x не обладают важными функциями безопасности для защиты от атак из Интернета. Сюда входят, например, соответствующее время ожидания, предельные размеры запроса и максимальное количество одновременных подключений.
-
-::: moniker-end
-
-Инструкции по настройке Kestrel и сведения о том, когда следует использовать Kestrel в конфигурации обратного прокси-сервера, см. в статье <xref:fundamentals/servers/kestrel>.
-
 ### <a name="nginx-with-kestrel"></a>Nginx с Kestrel
 
 Сведения о том, как использовать Nginx в Linux в качестве обратного прокси-сервера для Kestrel, см. в <xref:host-and-deploy/linux-nginx>.
@@ -175,14 +125,6 @@ Kestrel можно использовать:
 ### <a name="apache-with-kestrel"></a>Apache с Kestrel
 
 Сведения о том, как использовать Apache в Linux в качестве обратного прокси-сервера для Kestrel, см. в <xref:host-and-deploy/linux-apache>.
-
-::: moniker range=">= aspnetcore-2.2"
-
-## <a name="iis-http-server"></a>HTTP-сервер IIS
-
-HTTP-сервер IIS — это [внутрипроцессный сервер](#in-process-hosting-model) для служб IIS, который требуется для внутрипроцессных развертываний. [Модуль ASP.NET Core](xref:host-and-deploy/aspnet-core-module) обрабатывает собственные запросы IIS между HTTP-сервером IIS и службами IIS. Для получения дополнительной информации см. <xref:host-and-deploy/aspnet-core-module>.
-
-::: moniker-end
 
 ## <a name="httpsys"></a>HTTP.sys
 
