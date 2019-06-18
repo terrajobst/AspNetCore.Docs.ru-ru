@@ -1,151 +1,428 @@
 ---
 title: Привязка модели в ASP.NET Core
 author: tdykstra
-description: Узнайте, как привязка модели в ASP.NET Core MVC сопоставляет данные из HTTP-запросов с параметрами методов действия.
+description: Узнайте, как работает привязка модели в ASP.NET Core и как настроить ее поведение.
 ms.assetid: 0be164aa-1d72-4192-bd6b-192c9c301164
 ms.author: tdykstra
-ms.date: 11/13/2018
+ms.date: 05/31/2019
 uid: mvc/models/model-binding
-ms.openlocfilehash: 1dc9b41328ed78440622acc1865b6f088d394403
-ms.sourcegitcommit: 5b0eca8c21550f95de3bb21096bd4fd4d9098026
+ms.openlocfilehash: 7d62ccecdacbd34a38a1fd8c58979a9b09cf86e8
+ms.sourcegitcommit: e7e04a45195d4e0527af6f7cf1807defb56dc3c3
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 04/27/2019
-ms.locfileid: "64883149"
+ms.lasthandoff: 06/06/2019
+ms.locfileid: "66750203"
 ---
-# <a name="model-binding-in-aspnet-core"></a><span data-ttu-id="00960-103">Привязка модели в ASP.NET Core</span><span class="sxs-lookup"><span data-stu-id="00960-103">Model Binding in ASP.NET Core</span></span>
+# <a name="model-binding-in-aspnet-core"></a><span data-ttu-id="a193a-103">Привязка модели в ASP.NET Core</span><span class="sxs-lookup"><span data-stu-id="a193a-103">Model Binding in ASP.NET Core</span></span>
 
-<span data-ttu-id="00960-104">Автор: [Рэйчел Аппель](https://github.com/rachelappel) (Rachel Appel)</span><span class="sxs-lookup"><span data-stu-id="00960-104">By [Rachel Appel](https://github.com/rachelappel)</span></span>
+<span data-ttu-id="a193a-104">В этой статье объясняется, что такое привязка модели, как это работает и как настроить ее поведение.</span><span class="sxs-lookup"><span data-stu-id="a193a-104">This article explains what model binding is, how it works, and how to customize its behavior.</span></span>
 
-## <a name="introduction-to-model-binding"></a><span data-ttu-id="00960-105">Общие сведения о привязке модели</span><span class="sxs-lookup"><span data-stu-id="00960-105">Introduction to model binding</span></span>
+<span data-ttu-id="a193a-105">[Просмотреть или скачать пример кода](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/models/model-binding/samples) ([описание скачивания](xref:index#how-to-download-a-sample)).</span><span class="sxs-lookup"><span data-stu-id="a193a-105">[View or download sample code](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/models/model-binding/samples) ([how to download](xref:index#how-to-download-a-sample)).</span></span>
 
-<span data-ttu-id="00960-106">Привязка модели в ASP.NET Core MVC сопоставляет данные из HTTP-запросов с параметрами методов действия.</span><span class="sxs-lookup"><span data-stu-id="00960-106">Model binding in ASP.NET Core MVC maps data from HTTP requests to action method parameters.</span></span> <span data-ttu-id="00960-107">Параметры могут быть простыми типами, такими как строки, целые числа или значения с плавающей запятой, или они могут быть сложными типами.</span><span class="sxs-lookup"><span data-stu-id="00960-107">The parameters may be simple types such as strings, integers, or floats, or they may be complex types.</span></span> <span data-ttu-id="00960-108">Это отличная возможность в MVC, так как сопоставление входящих данных с аналогами часто является повторяющейся операцией независимо от размера и сложности данных.</span><span class="sxs-lookup"><span data-stu-id="00960-108">This is a great feature of MVC because mapping incoming data to a counterpart is an often repeated scenario, regardless of size or complexity of the data.</span></span> <span data-ttu-id="00960-109">В MVC эта проблема решается путем абстрагирования привязки, поэтому разработчикам не нужно переписывать незначительно отличающуюся версию одного и того же кода в каждом приложении.</span><span class="sxs-lookup"><span data-stu-id="00960-109">MVC solves this problem by abstracting binding away so developers don't have to keep rewriting a slightly different version of that same code in every app.</span></span> <span data-ttu-id="00960-110">Написание собственного кода для преобразователя типов занимает много времени и подвержено ошибкам.</span><span class="sxs-lookup"><span data-stu-id="00960-110">Writing your own text to type converter code is tedious, and error prone.</span></span>
+## <a name="what-is-model-binding"></a><span data-ttu-id="a193a-106">Что такое привязка модели</span><span class="sxs-lookup"><span data-stu-id="a193a-106">What is Model binding</span></span>
 
-## <a name="how-model-binding-works"></a><span data-ttu-id="00960-111">Принцип действия привязки модели</span><span class="sxs-lookup"><span data-stu-id="00960-111">How model binding works</span></span>
+<span data-ttu-id="a193a-107">Контроллеры и Razor Pages работают с данными, поступающими из HTTP-запросов.</span><span class="sxs-lookup"><span data-stu-id="a193a-107">Controllers and Razor pages work with data that comes from HTTP requests.</span></span> <span data-ttu-id="a193a-108">Например, данные о маршруте могут предоставлять ключ записи, а опубликованные поля формы могут предоставлять значения для свойств модели.</span><span class="sxs-lookup"><span data-stu-id="a193a-108">For example, route data may provide a record key, and posted form fields may provide values for the properties of the model.</span></span> <span data-ttu-id="a193a-109">Написание кода для получения этих значений и их преобразования из строк в типы .NET будет утомительной задачей с высоким риском ошибок.</span><span class="sxs-lookup"><span data-stu-id="a193a-109">Writing code to retrieve each of these values and convert them from strings to .NET types would be tedious and error-prone.</span></span> <span data-ttu-id="a193a-110">Привязка модели позволяет автоматизировать этот процесс.</span><span class="sxs-lookup"><span data-stu-id="a193a-110">Model binding automates this process.</span></span> <span data-ttu-id="a193a-111">Система привязки модели:</span><span class="sxs-lookup"><span data-stu-id="a193a-111">The model binding system:</span></span>
 
-<span data-ttu-id="00960-112">Когда MVC получает HTTP-запрос, он направляет его в определенный метод действия контроллера.</span><span class="sxs-lookup"><span data-stu-id="00960-112">When MVC receives an HTTP request, it routes it to a specific action method of a controller.</span></span> <span data-ttu-id="00960-113">Он определяет, какой метод действия необходимо запустить с учетом данных маршрута, а затем привязывает значения из HTTP-запроса к параметрам метода действия.</span><span class="sxs-lookup"><span data-stu-id="00960-113">It determines which action method to run based on what is in the route data, then it binds values from the HTTP request to that action method's parameters.</span></span> <span data-ttu-id="00960-114">Например, рассмотрим следующий URL-адрес:</span><span class="sxs-lookup"><span data-stu-id="00960-114">For example, consider the following URL:</span></span>
+* <span data-ttu-id="a193a-112">Извлекает данные из различных источников, таких как данные о маршруте, поля формы и строки запроса.</span><span class="sxs-lookup"><span data-stu-id="a193a-112">Retrieves data from various sources such as route data, form fields, and query strings.</span></span>
+* <span data-ttu-id="a193a-113">Предоставляет данные для контроллеров и страниц Razor в параметрах метода и открытых свойствах.</span><span class="sxs-lookup"><span data-stu-id="a193a-113">Provides the data to controllers and Razor pages in method parameters and public properties.</span></span>
+* <span data-ttu-id="a193a-114">Преобразует строковые данные в типы .NET.</span><span class="sxs-lookup"><span data-stu-id="a193a-114">Converts string data to .NET types.</span></span>
+* <span data-ttu-id="a193a-115">Обновляет свойства сложных типов.</span><span class="sxs-lookup"><span data-stu-id="a193a-115">Updates properties of complex types.</span></span>
 
-`http://contoso.com/movies/edit/2`
+## <a name="example"></a><span data-ttu-id="a193a-116">Пример</span><span class="sxs-lookup"><span data-stu-id="a193a-116">Example</span></span>
 
-<span data-ttu-id="00960-115">Поскольку шаблон маршрута имеет вид `{controller=Home}/{action=Index}/{id?}`, направляет `movies/edit/2` в контроллер `Movies`, и его метод действия `Edit`.</span><span class="sxs-lookup"><span data-stu-id="00960-115">Since the route template looks like this, `{controller=Home}/{action=Index}/{id?}`, `movies/edit/2` routes to the `Movies` controller, and its `Edit` action method.</span></span> <span data-ttu-id="00960-116">Он также принимает необязательный параметр `id`.</span><span class="sxs-lookup"><span data-stu-id="00960-116">It also accepts an optional parameter called `id`.</span></span> <span data-ttu-id="00960-117">Код для метода действия должен выглядеть примерно следующим образом:</span><span class="sxs-lookup"><span data-stu-id="00960-117">The code for the action method should look something like this:</span></span>
+<span data-ttu-id="a193a-117">Предположим, у вас есть следующий метод действия:</span><span class="sxs-lookup"><span data-stu-id="a193a-117">Suppose you have the following action method:</span></span>
 
-```csharp
-public IActionResult Edit(int? id)
-   ```
+[!code-csharp[](model-binding/samples/2.x/Controllers/PetsController.cs?name=snippet_DogsOnly)]
 
-<span data-ttu-id="00960-118">Примечание. Строки в URL-адресе не учитывают регистр.</span><span class="sxs-lookup"><span data-stu-id="00960-118">Note: The strings in the URL route are not case sensitive.</span></span>
+<span data-ttu-id="a193a-118">И приложение получает запрос с этим URL-адресом:</span><span class="sxs-lookup"><span data-stu-id="a193a-118">And the app receives a request with this URL:</span></span>
 
-<span data-ttu-id="00960-119">MVC попытается привязать данные запроса к параметрам действия по имени.</span><span class="sxs-lookup"><span data-stu-id="00960-119">MVC will try to bind request data to the action parameters by name.</span></span> <span data-ttu-id="00960-120">MVC будет искать значения для каждого параметра, используя имя параметра и имена его открытых задаваемых свойств.</span><span class="sxs-lookup"><span data-stu-id="00960-120">MVC will look for values for each parameter using the parameter name and the names of its public settable properties.</span></span> <span data-ttu-id="00960-121">В приведенном выше примере единственным параметром действия является `id`, который MVC привязывает к значению с тем же именем в значениях маршрута.</span><span class="sxs-lookup"><span data-stu-id="00960-121">In the above example, the only action parameter is named `id`, which MVC binds to the value with the same name in the route values.</span></span> <span data-ttu-id="00960-122">Помимо значений маршрута, MVC будет привязывать данные из различных частей запроса, следуя установленному порядку.</span><span class="sxs-lookup"><span data-stu-id="00960-122">In addition to route values MVC will bind data from various parts of the request and it does so in a set order.</span></span> <span data-ttu-id="00960-123">Ниже приведен список источников данных в порядке, в котором их просматривает привязка модели.</span><span class="sxs-lookup"><span data-stu-id="00960-123">Below is a list of the data sources in the order that model binding looks through them:</span></span>
-
-1. <span data-ttu-id="00960-124">`Form values`: это значения формы, включаемые в HTTP-запрос с помощью метода POST.</span><span class="sxs-lookup"><span data-stu-id="00960-124">`Form values`: These are form values that go in the HTTP request using the POST method.</span></span> <span data-ttu-id="00960-125">(включая запросы POST jQuery)</span><span class="sxs-lookup"><span data-stu-id="00960-125">(including jQuery POST requests).</span></span>
-
-2. <span data-ttu-id="00960-126">`Route values`: набор значений маршрута, предоставляемых функцией [маршрутизации](xref:fundamentals/routing).</span><span class="sxs-lookup"><span data-stu-id="00960-126">`Route values`: The set of route values provided by [Routing](xref:fundamentals/routing)</span></span>
-
-3. <span data-ttu-id="00960-127">`Query strings`: часть строки запроса URI.</span><span class="sxs-lookup"><span data-stu-id="00960-127">`Query strings`: The query string part of the URI.</span></span>
-
-<!-- DocFX BUG
-The link works but generates an error when building with DocFX
-@fundamentals/routing
-[Routing](xref:fundamentals/routing)
--->
-
-<span data-ttu-id="00960-128">Примечание. Значения форм, данные маршрутов и строки запросов хранятся как пары "имя-значение".</span><span class="sxs-lookup"><span data-stu-id="00960-128">Note: Form values, route data, and query strings are all stored as name-value pairs.</span></span>
-
-<span data-ttu-id="00960-129">Так как привязка модели запросила ключ `id`, а в значениях формы нет ничего с именем `id`, она перешла к поиску ключа в значениях маршрута.</span><span class="sxs-lookup"><span data-stu-id="00960-129">Since model binding asked for a key named `id` and there's nothing named `id` in the form values, it moved on to the route values looking for that key.</span></span> <span data-ttu-id="00960-130">В нашем примере найдено совпадение.</span><span class="sxs-lookup"><span data-stu-id="00960-130">In our example, it's a match.</span></span> <span data-ttu-id="00960-131">Выполняется привязка, а значение преобразуется в целое число 2.</span><span class="sxs-lookup"><span data-stu-id="00960-131">Binding happens, and the value is converted to the integer 2.</span></span> <span data-ttu-id="00960-132">Тот же запрос с использованием Edit(string id) приведет к преобразованию в строку "2".</span><span class="sxs-lookup"><span data-stu-id="00960-132">The same request using Edit(string id) would convert to the string "2".</span></span>
-
-<span data-ttu-id="00960-133">Пока в примере используются простые типы.</span><span class="sxs-lookup"><span data-stu-id="00960-133">So far the example uses simple types.</span></span> <span data-ttu-id="00960-134">В MVC простыми типами являются любые типы-примитивы .NET или типы с преобразователем строковых типов.</span><span class="sxs-lookup"><span data-stu-id="00960-134">In MVC simple types are any .NET primitive type or type with a string type converter.</span></span> <span data-ttu-id="00960-135">Если бы параметром метода действия был класс, такой как тип `Movie`, который в качестве свойств содержал простые и сложные типы, привязка модели MVC обработала бы его соответствующим образом.</span><span class="sxs-lookup"><span data-stu-id="00960-135">If the action method's parameter were a class such as the `Movie` type, which contains both simple and complex types as properties, MVC's model binding will still handle it nicely.</span></span> <span data-ttu-id="00960-136">При поиске совпадений она использует отражение и рекурсию для обхода свойств сложных типов.</span><span class="sxs-lookup"><span data-stu-id="00960-136">It uses reflection and recursion to traverse the properties of complex types looking for matches.</span></span> <span data-ttu-id="00960-137">Для привязки значений к свойствам привязка модели ищет шаблон *имя_параметра.имя_свойства*.</span><span class="sxs-lookup"><span data-stu-id="00960-137">Model binding looks for the pattern *parameter_name.property_name* to bind values to properties.</span></span> <span data-ttu-id="00960-138">Если она не находит совпадающие значения этого вида, будет предпринята попытка привязки с помощью только имени свойства.</span><span class="sxs-lookup"><span data-stu-id="00960-138">If it doesn't find matching values of this form, it will attempt to bind using just the property name.</span></span> <span data-ttu-id="00960-139">Для таких типов, например типов `Collection`, привязка модели ищет совпадения с *имя_параметра [индекс]* или просто *[индекс]*.</span><span class="sxs-lookup"><span data-stu-id="00960-139">For those types such as `Collection` types, model binding looks for matches to *parameter_name[index]* or just *[index]*.</span></span> <span data-ttu-id="00960-140">Привязка модели аналогичным образом обрабатывает типы `Dictionary`, выполняя поиск *имя_параметра[ключ]* или просто *[ключ]*, при условии, что ключи являются простыми типами.</span><span class="sxs-lookup"><span data-stu-id="00960-140">Model binding treats  `Dictionary` types similarly, asking for *parameter_name[key]* or just *[key]*, as long as the keys are simple types.</span></span> <span data-ttu-id="00960-141">Поддерживаемые ключи совпадают с именами полей HTML и вспомогательными функциями тегов, созданными для того же типа модели.</span><span class="sxs-lookup"><span data-stu-id="00960-141">Keys that are supported match the field names HTML and tag helpers generated for the same model type.</span></span> <span data-ttu-id="00960-142">Благодаря полной совместимости значений для удобства пользователей в полях формы остаются введенные значения, например, если привязанные данные не прошли проверку.</span><span class="sxs-lookup"><span data-stu-id="00960-142">This enables round-tripping values so that the form fields remain filled with the user's input for their convenience, for example, when bound data from a create or edit didn't pass validation.</span></span>
-
-<span data-ttu-id="00960-143">Чтобы реализовать привязку модели, этот класс должен иметь открытый конструктор по умолчанию, а также открытые и доступные для записи свойства, подлежащие привязке.</span><span class="sxs-lookup"><span data-stu-id="00960-143">To make model binding possible, the class must have a public default constructor and public writable properties to bind.</span></span> <span data-ttu-id="00960-144">Когда происходит привязка модели, класс создается с помощью открытого конструктора по умолчанию, а затем можно задать свойства.</span><span class="sxs-lookup"><span data-stu-id="00960-144">When model binding occurs, the class is instantiated using the public default constructor, then the properties can be set.</span></span>
-
-<span data-ttu-id="00960-145">После привязки параметра привязка модели прекращает поиск значений с таким именем и переходит к привязке следующего параметра.</span><span class="sxs-lookup"><span data-stu-id="00960-145">When a parameter is bound, model binding stops looking for values with that name and it moves on to bind the next parameter.</span></span> <span data-ttu-id="00960-146">В противном случае привязка модели по умолчанию задает для параметров значения по умолчанию в зависимости от их типа:</span><span class="sxs-lookup"><span data-stu-id="00960-146">Otherwise, the default model binding behavior sets parameters to their default values depending on their type:</span></span>
-
-* <span data-ttu-id="00960-147">`T[]`: за исключением массивов типа `byte[]`, привязка задает параметрам типа `T[]` значение `Array.Empty<T>()`.</span><span class="sxs-lookup"><span data-stu-id="00960-147">`T[]`: With the exception of arrays of type `byte[]`, binding sets parameters of type `T[]` to `Array.Empty<T>()`.</span></span> <span data-ttu-id="00960-148">Массивам типа `byte[]` задается значение `null`.</span><span class="sxs-lookup"><span data-stu-id="00960-148">Arrays of type `byte[]` are set to `null`.</span></span>
-
-* <span data-ttu-id="00960-149">Ссылочные типы. Привязка создает экземпляр класса с помощью конструктора по умолчанию без задания свойств.</span><span class="sxs-lookup"><span data-stu-id="00960-149">Reference Types: Binding creates an instance of a class with the default constructor without setting properties.</span></span> <span data-ttu-id="00960-150">Однако привязка модели задает параметрам типа `string` значение `null`.</span><span class="sxs-lookup"><span data-stu-id="00960-150">However, model binding sets `string` parameters to `null`.</span></span>
-
-* <span data-ttu-id="00960-151">Типы, допускающие значения NULL. Типам, допускающим значение NULL, задается значение `null`.</span><span class="sxs-lookup"><span data-stu-id="00960-151">Nullable Types: Nullable types are set to `null`.</span></span> <span data-ttu-id="00960-152">В приведенном выше примере привязка модели задает `id` значение `null`, так как он имеет тип `int?`.</span><span class="sxs-lookup"><span data-stu-id="00960-152">In the above example, model binding sets `id` to `null` since it's of type `int?`.</span></span>
-
-* <span data-ttu-id="00960-153">Типы значений. Типам значений, не допускающим значение NULL и имеющим тип `T`, задается значение `default(T)`.</span><span class="sxs-lookup"><span data-stu-id="00960-153">Value Types: Non-nullable value types of type `T` are set to `default(T)`.</span></span> <span data-ttu-id="00960-154">Например, привязка модели присвоит параметру `int id` значение 0.</span><span class="sxs-lookup"><span data-stu-id="00960-154">For example, model binding will set a parameter `int id` to 0.</span></span> <span data-ttu-id="00960-155">Вместо значений по умолчанию рекомендуется использовать проверку модели или типы, допускающие значение NULL.</span><span class="sxs-lookup"><span data-stu-id="00960-155">Consider using model validation or nullable types rather than relying on default values.</span></span>
-
-<span data-ttu-id="00960-156">Если привязка завершается сбоем, MVC не вызывает ошибку.</span><span class="sxs-lookup"><span data-stu-id="00960-156">If binding fails, MVC doesn't throw an error.</span></span> <span data-ttu-id="00960-157">Каждое действие, которое принимает вводимые пользователем данные, должно проверять свойство `ModelState.IsValid`.</span><span class="sxs-lookup"><span data-stu-id="00960-157">Every action which accepts user input should check the `ModelState.IsValid` property.</span></span>
-
-<span data-ttu-id="00960-158">Примечание. Каждая запись в свойстве `ModelState` контроллера является классом `ModelStateEntry`, содержащим свойство `Errors`.</span><span class="sxs-lookup"><span data-stu-id="00960-158">Note: Each entry in the controller's `ModelState` property is a `ModelStateEntry` containing an `Errors` property.</span></span> <span data-ttu-id="00960-159">Необходимость запрашивать эту коллекцию самостоятельно возникает редко.</span><span class="sxs-lookup"><span data-stu-id="00960-159">It's rarely necessary to query this collection yourself.</span></span> <span data-ttu-id="00960-160">Взамен рекомендуется использовать `ModelState.IsValid`.</span><span class="sxs-lookup"><span data-stu-id="00960-160">Use `ModelState.IsValid` instead.</span></span>
-
-<span data-ttu-id="00960-161">Кроме того, существуют некоторые особые типы данных, которые MVC необходимо учитывать при выполнении привязки модели:</span><span class="sxs-lookup"><span data-stu-id="00960-161">Additionally, there are some special data types that MVC must consider when performing model binding:</span></span>
-
-* <span data-ttu-id="00960-162">`IFormFile`, `IEnumerable<IFormFile>`: один или несколько отправленных файлов, которые являются частью HTTP-запроса.</span><span class="sxs-lookup"><span data-stu-id="00960-162">`IFormFile`, `IEnumerable<IFormFile>`: One or more uploaded files that are part of the HTTP request.</span></span>
-
-* <span data-ttu-id="00960-163">`CancellationToken`: используется для отмены действия в асинхронных контроллерах.</span><span class="sxs-lookup"><span data-stu-id="00960-163">`CancellationToken`: Used to cancel activity in asynchronous controllers.</span></span>
-
-<span data-ttu-id="00960-164">Эти типы можно привязать к параметрам действия или к свойствам в типе класса.</span><span class="sxs-lookup"><span data-stu-id="00960-164">These types can be bound to action parameters or to properties on a class type.</span></span>
-
-<span data-ttu-id="00960-165">После привязки модели происходит [проверка](validation.md).</span><span class="sxs-lookup"><span data-stu-id="00960-165">Once model binding is complete, [Validation](validation.md) occurs.</span></span> <span data-ttu-id="00960-166">Привязка модели по умолчанию отлично подходит для подавляющего большинства сценариев разработки.</span><span class="sxs-lookup"><span data-stu-id="00960-166">Default model binding works great for the vast majority of development scenarios.</span></span> <span data-ttu-id="00960-167">Она также является расширяемой, поэтому если у вас есть особые потребности, можно настроить встроенное поведение.</span><span class="sxs-lookup"><span data-stu-id="00960-167">It's also extensible so if you have unique needs you can customize the built-in behavior.</span></span>
-
-## <a name="customize-model-binding-behavior-with-attributes"></a><span data-ttu-id="00960-168">Настройка поведения привязки модели с помощью атрибутов</span><span class="sxs-lookup"><span data-stu-id="00960-168">Customize model binding behavior with attributes</span></span>
-
-<span data-ttu-id="00960-169">В MVC есть несколько атрибутов, которые можно использовать для направления поведения привязки модели по умолчанию в другой источник.</span><span class="sxs-lookup"><span data-stu-id="00960-169">MVC contains several attributes that you can use to direct its default model binding behavior to a different source.</span></span> <span data-ttu-id="00960-170">Например, с помощью атрибутов `[BindRequired]` или `[BindNever]` можно указать, требуется ли привязка для свойства или она вообще не должна выполняться.</span><span class="sxs-lookup"><span data-stu-id="00960-170">For example, you can specify whether binding is required for a property, or if it should never happen at all by using the `[BindRequired]` or `[BindNever]` attributes.</span></span> <span data-ttu-id="00960-171">Кроме того, можно переопределить источник данных по умолчанию и указать источник данных связывателя модели.</span><span class="sxs-lookup"><span data-stu-id="00960-171">Alternatively, you can override the default data source, and specify the model binder's data source.</span></span> <span data-ttu-id="00960-172">Ниже приведен список атрибутов привязки модели.</span><span class="sxs-lookup"><span data-stu-id="00960-172">Below is a list of model binding attributes:</span></span>
-
-* <span data-ttu-id="00960-173">`[BindRequired]`: этот атрибут добавляет ошибку состояния модели, если привязку выполнить невозможно.</span><span class="sxs-lookup"><span data-stu-id="00960-173">`[BindRequired]`: This attribute adds a model state error if binding cannot occur.</span></span>
-
-* <span data-ttu-id="00960-174">`[BindNever]`: указывает связывателю модели никогда не выполнять привязку к этому параметру.</span><span class="sxs-lookup"><span data-stu-id="00960-174">`[BindNever]`: Tells the model binder to never bind to this parameter.</span></span>
-
-* <span data-ttu-id="00960-175">`[FromHeader]`, `[FromQuery]`, `[FromRoute]`, `[FromForm]`: используются для указания точного источника привязки, который необходимо применить.</span><span class="sxs-lookup"><span data-stu-id="00960-175">`[FromHeader]`, `[FromQuery]`, `[FromRoute]`, `[FromForm]`: Use these to specify the exact binding source you want to apply.</span></span>
-
-* <span data-ttu-id="00960-176">`[FromServices]`: этот атрибут использует [внедрение зависимостей](../../fundamentals/dependency-injection.md) для привязки параметров из служб.</span><span class="sxs-lookup"><span data-stu-id="00960-176">`[FromServices]`: This attribute uses [dependency injection](../../fundamentals/dependency-injection.md) to bind parameters from services.</span></span>
-
-* <span data-ttu-id="00960-177">`[FromBody]`: используйте настроенные форматировщики для привязки данных из текста запроса.</span><span class="sxs-lookup"><span data-stu-id="00960-177">`[FromBody]`: Use the configured formatters to bind data from the request body.</span></span> <span data-ttu-id="00960-178">Модуль форматирования выбирается в зависимости от типа содержимого запроса.</span><span class="sxs-lookup"><span data-stu-id="00960-178">The formatter is selected based on content type of the request.</span></span>
-
-* <span data-ttu-id="00960-179">`[ModelBinder]`: используется для переопределения связывателя модели, источника привязки и имени по умолчанию.</span><span class="sxs-lookup"><span data-stu-id="00960-179">`[ModelBinder]`: Used to override the default model binder, binding source and name.</span></span>
-
-<span data-ttu-id="00960-180">Атрибуты очень полезны при переопределении поведения по умолчанию привязки модели.</span><span class="sxs-lookup"><span data-stu-id="00960-180">Attributes are very helpful tools when you need to override the default behavior of model binding.</span></span>
-
-## <a name="customize-model-binding-and-validation-globally"></a><span data-ttu-id="00960-181">Глобальная настройка привязки и проверки модели</span><span class="sxs-lookup"><span data-stu-id="00960-181">Customize model binding and validation globally</span></span>
-
-<span data-ttu-id="00960-182">Поведение привязки модели и системы проверки определяется классом [ModelMetadata](/dotnet/api/microsoft.aspnetcore.mvc.modelbinding.modelmetadata), который описывает:</span><span class="sxs-lookup"><span data-stu-id="00960-182">The model binding and validation system's behavior is driven by [ModelMetadata](/dotnet/api/microsoft.aspnetcore.mvc.modelbinding.modelmetadata) that describes:</span></span>
-
-* <span data-ttu-id="00960-183">Как модель будет привязана.</span><span class="sxs-lookup"><span data-stu-id="00960-183">How a model is to be bound.</span></span>
-* <span data-ttu-id="00960-184">Как выполняется проверка типа и его свойств.</span><span class="sxs-lookup"><span data-stu-id="00960-184">How validation occurs on the type and its properties.</span></span>
-
-<span data-ttu-id="00960-185">Аспекты поведения системы можно настроить глобально, добавив поставщика сведений в [MvcOptions.ModelMetadataDetailsProviders](/dotnet/api/microsoft.aspnetcore.mvc.mvcoptions.modelmetadatadetailsproviders#Microsoft_AspNetCore_Mvc_MvcOptions_ModelMetadataDetailsProviders).</span><span class="sxs-lookup"><span data-stu-id="00960-185">Aspects of the system's behavior can be configured globally by adding a details provider to [MvcOptions.ModelMetadataDetailsProviders](/dotnet/api/microsoft.aspnetcore.mvc.mvcoptions.modelmetadatadetailsproviders#Microsoft_AspNetCore_Mvc_MvcOptions_ModelMetadataDetailsProviders).</span></span> <span data-ttu-id="00960-186">MVC имеет несколько встроенных поставщиков сведений, которые позволяют настраивать такое поведение, как отключение привязки модели или проверки для определенных типов.</span><span class="sxs-lookup"><span data-stu-id="00960-186">MVC has a few built-in details providers that allow configuring behavior such as disabling model binding or validation for certain types.</span></span>
-
-<span data-ttu-id="00960-187">Для отключения привязки модели для всех моделей определенного типа добавьте [ExcludeBindingMetadataProvider](/dotnet/api/microsoft.aspnetcore.mvc.modelbinding.metadata.excludebindingmetadataprovider) в `Startup.ConfigureServices`.</span><span class="sxs-lookup"><span data-stu-id="00960-187">To disable model binding on all models of a certain type, add an [ExcludeBindingMetadataProvider](/dotnet/api/microsoft.aspnetcore.mvc.modelbinding.metadata.excludebindingmetadataprovider) in `Startup.ConfigureServices`.</span></span> <span data-ttu-id="00960-188">Например, для отключения привязки модели для всех моделей типа `System.Version`:</span><span class="sxs-lookup"><span data-stu-id="00960-188">For example, to disable model binding on all models of type `System.Version`:</span></span>
-
-```csharp
-services.AddMvc().AddMvcOptions(options =>
-    options.ModelMetadataDetailsProviders.Add(
-        new ExcludeBindingMetadataProvider(typeof(System.Version))));
+```
+http://contoso.com/api/pets/2?DogsOnly=true
 ```
 
-<span data-ttu-id="00960-189">Чтобы отключить проверку свойств определенного типа, добавьте [SuppressChildValidationMetadataProvider](/dotnet/api/microsoft.aspnetcore.mvc.modelbinding.suppresschildvalidationmetadataprovider) в `Startup.ConfigureServices`.</span><span class="sxs-lookup"><span data-stu-id="00960-189">To disable validation on properties of a certain type, add a [SuppressChildValidationMetadataProvider](/dotnet/api/microsoft.aspnetcore.mvc.modelbinding.suppresschildvalidationmetadataprovider) in `Startup.ConfigureServices`.</span></span> <span data-ttu-id="00960-190">Например, чтобы отключить проверку по свойствам типа `System.Guid`:</span><span class="sxs-lookup"><span data-stu-id="00960-190">For example, to disable validation on properties of type `System.Guid`:</span></span>
+<span data-ttu-id="a193a-119">Привязка модели выполняет следующие действия, после того, как система маршрутизации выберет метод действия:</span><span class="sxs-lookup"><span data-stu-id="a193a-119">Model binding goes though the following steps after the routing system selects the action method:</span></span>
+
+* <span data-ttu-id="a193a-120">Находит первый параметр `GetByID`, целое число с именем `id`.</span><span class="sxs-lookup"><span data-stu-id="a193a-120">Finds the first parameter of `GetByID`, an integer named `id`.</span></span>
+* <span data-ttu-id="a193a-121">Просматривает доступные источники в HTTP-запросе и находит `id` = "2" в данных маршрута.</span><span class="sxs-lookup"><span data-stu-id="a193a-121">Looks through the available sources in the HTTP request and finds `id` = "2" in route data.</span></span>
+* <span data-ttu-id="a193a-122">Преобразует строку "2" в целое число 2.</span><span class="sxs-lookup"><span data-stu-id="a193a-122">Converts the string "2" into integer 2.</span></span>
+* <span data-ttu-id="a193a-123">Находит следующий параметр `GetByID`, логическое значение с именем `dogsOnly`.</span><span class="sxs-lookup"><span data-stu-id="a193a-123">Finds the next parameter of `GetByID`, a boolean named `dogsOnly`.</span></span>
+* <span data-ttu-id="a193a-124">Просматривает источники и находит "DogsOnly=true" в строке запроса.</span><span class="sxs-lookup"><span data-stu-id="a193a-124">Looks through the sources and finds "DogsOnly=true" in the query string.</span></span> <span data-ttu-id="a193a-125">Сопоставление имен не учитывает регистр.</span><span class="sxs-lookup"><span data-stu-id="a193a-125">Name matching is not case-sensitive.</span></span>
+* <span data-ttu-id="a193a-126">Преобразует строку "true" в логическое значение `true`.</span><span class="sxs-lookup"><span data-stu-id="a193a-126">Converts the string "true" into boolean `true`.</span></span>
+
+<span data-ttu-id="a193a-127">Затем платформа вызывает метод `GetById`, передавая 2 для параметра `id` и `true` для параметра `dogsOnly`.</span><span class="sxs-lookup"><span data-stu-id="a193a-127">The framework then calls the `GetById` method, passing in 2 for the `id` parameter, and `true` for the `dogsOnly` parameter.</span></span>
+
+<span data-ttu-id="a193a-128">В приведенном выше примере целевые объекты привязки модели — это параметры методов, которые являются примитивными типами.</span><span class="sxs-lookup"><span data-stu-id="a193a-128">In the preceding example, the model binding targets are method parameters that are simple types.</span></span> <span data-ttu-id="a193a-129">Целевые объекты также могут быть свойствами сложного типа.</span><span class="sxs-lookup"><span data-stu-id="a193a-129">Targets may also be the properties of a complex type.</span></span> <span data-ttu-id="a193a-130">После успешной привязки каждого свойства осуществляется [проверка модели](xref:mvc/models/validation) для этого свойства.</span><span class="sxs-lookup"><span data-stu-id="a193a-130">After each property is successfully bound, [model validation](xref:mvc/models/validation) occurs for that property.</span></span> <span data-ttu-id="a193a-131">Записи о данных, привязанных к модели, а также об ошибках привязки или проверки хранятся в [ControllerBase.ModelState](xref:Microsoft.AspNetCore.Mvc.ControllerBase.ModelState) или [PageModel.ModelState](xref:Microsoft.AspNetCore.Mvc.ControllerBase.ModelState).</span><span class="sxs-lookup"><span data-stu-id="a193a-131">The record of what data is bound to the model, and any binding or validation errors, is stored in [ControllerBase.ModelState](xref:Microsoft.AspNetCore.Mvc.ControllerBase.ModelState) or [PageModel.ModelState](xref:Microsoft.AspNetCore.Mvc.ControllerBase.ModelState).</span></span> <span data-ttu-id="a193a-132">Чтобы узнать об успешном выполнении этого процесса, приложение проверяет наличие флага [ModelState.IsValid](xref:Microsoft.AspNetCore.Mvc.ModelBinding.ModelStateDictionary.IsValid).</span><span class="sxs-lookup"><span data-stu-id="a193a-132">To find out if this process was successful, the app checks the [ModelState.IsValid](xref:Microsoft.AspNetCore.Mvc.ModelBinding.ModelStateDictionary.IsValid) flag.</span></span>
+
+## <a name="targets"></a><span data-ttu-id="a193a-133">Целевые объекты</span><span class="sxs-lookup"><span data-stu-id="a193a-133">Targets</span></span>
+
+<span data-ttu-id="a193a-134">Привязка модели попытается найти значения для следующих типов целевых объектов:</span><span class="sxs-lookup"><span data-stu-id="a193a-134">Model binding tries to find values for the following kinds of targets:</span></span>
+
+* <span data-ttu-id="a193a-135">Параметры метода действия контроллера, к которому направлен запрос.</span><span class="sxs-lookup"><span data-stu-id="a193a-135">Parameters of the controller action method that a request is routed to.</span></span>
+* <span data-ttu-id="a193a-136">Параметры метода обработчика Razor Pages, к которому направлен запрос.</span><span class="sxs-lookup"><span data-stu-id="a193a-136">Parameters of the Razor Pages handler method that a request is routed to.</span></span> 
+* <span data-ttu-id="a193a-137">Открытые свойства контроллера или класса `PageModel`, если задано атрибутами.</span><span class="sxs-lookup"><span data-stu-id="a193a-137">Public properties of a controller or `PageModel` class, if specified by attributes.</span></span>
+
+### <a name="bindproperty-attribute"></a><span data-ttu-id="a193a-138">Атрибут [BindProperty]</span><span class="sxs-lookup"><span data-stu-id="a193a-138">[BindProperty] attribute</span></span>
+
+<span data-ttu-id="a193a-139">Может применяться к открытому свойству контроллера или класса `PageModel` для привязки модели для этого свойства:</span><span class="sxs-lookup"><span data-stu-id="a193a-139">Can be applied to a public property of a controller or `PageModel` class to cause model binding to target that property:</span></span>
+
+[!code-csharp[](model-binding/samples/2.x/Pages/Instructors/Edit.cshtml.cs?name=snippet_BindProperty&highlight=7-8)]
+
+### <a name="bindpropertiesattribute"></a><span data-ttu-id="a193a-140">Атрибут [BindProperties]</span><span class="sxs-lookup"><span data-stu-id="a193a-140">[BindProperties] attribute</span></span>
+
+<span data-ttu-id="a193a-141">Доступно в ASP.NET Core 2.1 и более поздней версии.</span><span class="sxs-lookup"><span data-stu-id="a193a-141">Available in ASP.NET Core 2.1 and later.</span></span>  <span data-ttu-id="a193a-142">Может применяться к контроллеру или классу `PageModel`, чтобы привязка модели была направлена на все открытые свойства этого класса:</span><span class="sxs-lookup"><span data-stu-id="a193a-142">Can be applied to a controller or `PageModel` class to tell model binding to target all public properties of the class:</span></span>
+
+[!code-csharp[](model-binding/samples/2.x/Pages/Instructors/Create.cshtml.cs?name=snippet_BindProperties&highlight=1-2)]
+
+### <a name="model-binding-for-http-get-requests"></a><span data-ttu-id="a193a-143">Привязка модели для HTTP-запросов GET</span><span class="sxs-lookup"><span data-stu-id="a193a-143">Model binding for HTTP GET requests</span></span>
+
+<span data-ttu-id="a193a-144">По умолчанию свойства не привязываются к HTTP-запросам GET.</span><span class="sxs-lookup"><span data-stu-id="a193a-144">By default, properties are not bound for HTTP GET requests.</span></span> <span data-ttu-id="a193a-145">Как правило, для запроса GET вам нужен только параметр идентификатора записи.</span><span class="sxs-lookup"><span data-stu-id="a193a-145">Typically, all you need for a GET request is a record ID parameter.</span></span> <span data-ttu-id="a193a-146">Идентификатор записи используется для поиска элемента в базе данных.</span><span class="sxs-lookup"><span data-stu-id="a193a-146">The record ID is used to look up the item in the database.</span></span> <span data-ttu-id="a193a-147">Поэтому не нужно привязывать свойство, которое содержит экземпляр модели.</span><span class="sxs-lookup"><span data-stu-id="a193a-147">Therefore, there is no need to bind a property that holds an instance of the model.</span></span> <span data-ttu-id="a193a-148">Если вы хотите привязать свойства к данным от запросов GET, задайте для свойства `SupportsGet` значение `true`:</span><span class="sxs-lookup"><span data-stu-id="a193a-148">In scenarios where you do want properties bound to data from GET requests, set the `SupportsGet` property to `true`:</span></span>
+
+[!code-csharp[](model-binding/samples/2.x/Pages/Instructors/Index.cshtml.cs?name=snippet_SupportsGet)]
+
+## <a name="sources"></a><span data-ttu-id="a193a-149">Источники</span><span class="sxs-lookup"><span data-stu-id="a193a-149">Sources</span></span>
+
+<span data-ttu-id="a193a-150">По умолчанию привязка модели получает данные в виде пар "ключ-значение" из следующих источников в HTTP-запросе:</span><span class="sxs-lookup"><span data-stu-id="a193a-150">By default, model binding gets data in the form of key-value pairs from the following sources in an HTTP request:</span></span>
+
+1. <span data-ttu-id="a193a-151">Поля формы</span><span class="sxs-lookup"><span data-stu-id="a193a-151">Form fields</span></span> 
+1. <span data-ttu-id="a193a-152">Текст запроса (для [контроллеров, имеющих атрибут [ApiController]](xref:web-api/index#binding-source-parameter-inference).)</span><span class="sxs-lookup"><span data-stu-id="a193a-152">The request body (For [controllers that have the [ApiController] attribute](xref:web-api/index#binding-source-parameter-inference).)</span></span>
+1. <span data-ttu-id="a193a-153">Данные маршрута</span><span class="sxs-lookup"><span data-stu-id="a193a-153">Route data</span></span>
+1. <span data-ttu-id="a193a-154">Параметры строки запроса</span><span class="sxs-lookup"><span data-stu-id="a193a-154">Query string parameters</span></span>
+1. <span data-ttu-id="a193a-155">Отправленные файлы</span><span class="sxs-lookup"><span data-stu-id="a193a-155">Uploaded files</span></span> 
+
+<span data-ttu-id="a193a-156">Для каждого целевого параметра или свойства источники проверяются в порядке, указанном в этом списке.</span><span class="sxs-lookup"><span data-stu-id="a193a-156">For each target parameter or property, the sources are scanned in the order indicated in this list.</span></span> <span data-ttu-id="a193a-157">Существует несколько исключений:</span><span class="sxs-lookup"><span data-stu-id="a193a-157">There are a few exceptions:</span></span>
+
+* <span data-ttu-id="a193a-158">Данные маршрутизации и значения строк запросов используются только для примитивных типов.</span><span class="sxs-lookup"><span data-stu-id="a193a-158">Route data and query string values are used only for simple types.</span></span>
+* <span data-ttu-id="a193a-159">Отправленные файлы привязаны только к типам целевых объектов, которые реализуют `IFormFile` или `IEnumerable<IFormFile>`.</span><span class="sxs-lookup"><span data-stu-id="a193a-159">Uploaded files are bound only to target types that implement `IFormFile` or `IEnumerable<IFormFile>`.</span></span>
+
+<span data-ttu-id="a193a-160">Если поведение по умолчанию не дает правильные результаты, можно использовать один из следующих атрибутов для указания источника для любого заданного целевого объекта.</span><span class="sxs-lookup"><span data-stu-id="a193a-160">If the default behavior doesn't give the right results, you can use one of the following attributes to specify the source to use for any given target.</span></span> 
+
+* <span data-ttu-id="a193a-161">[[FromQuery]](xref:Microsoft.AspNetCore.Mvc.FromQueryAttribute): возвращает значения из строки запроса.</span><span class="sxs-lookup"><span data-stu-id="a193a-161">[[FromQuery]](xref:Microsoft.AspNetCore.Mvc.FromQueryAttribute) - Gets values from the query string.</span></span> 
+* <span data-ttu-id="a193a-162">[[FromRoute]](xref:Microsoft.AspNetCore.Mvc.FromRouteAttribute): возвращает значения из данных маршрута.</span><span class="sxs-lookup"><span data-stu-id="a193a-162">[[FromRoute]](xref:Microsoft.AspNetCore.Mvc.FromRouteAttribute) - Gets values from route data.</span></span>
+* <span data-ttu-id="a193a-163">[[FromForm]](xref:Microsoft.AspNetCore.Mvc.FromFormAttribute): возвращает значения из опубликованных полей формы.</span><span class="sxs-lookup"><span data-stu-id="a193a-163">[[FromForm]](xref:Microsoft.AspNetCore.Mvc.FromFormAttribute) - Gets values from posted form fields.</span></span>
+* <span data-ttu-id="a193a-164">[[FromBody]](xref:Microsoft.AspNetCore.Mvc.FromBodyAttribute): возвращает значения из текста запроса.</span><span class="sxs-lookup"><span data-stu-id="a193a-164">[[FromBody]](xref:Microsoft.AspNetCore.Mvc.FromBodyAttribute) - Gets values from the request body.</span></span>
+* <span data-ttu-id="a193a-165">[[FromHeader]](xref:Microsoft.AspNetCore.Mvc.FromHeaderAttribute): возвращает значения из заголовков HTTP.</span><span class="sxs-lookup"><span data-stu-id="a193a-165">[[FromHeader]](xref:Microsoft.AspNetCore.Mvc.FromHeaderAttribute) - Gets values from HTTP headers.</span></span>
+
+<span data-ttu-id="a193a-166">Эти атрибуты:</span><span class="sxs-lookup"><span data-stu-id="a193a-166">These attributes:</span></span>
+
+* <span data-ttu-id="a193a-167">Добавляются к свойствам модели по отдельности (не к классу модели), как показано в следующем примере:</span><span class="sxs-lookup"><span data-stu-id="a193a-167">Are added to model properties individually (not to the model class), as in the following example:</span></span>
+
+  [!code-csharp[](model-binding/samples/2.x/Models/Instructor.cs?name=snippet_FromQuery&highlight=5-6)]
+
+* <span data-ttu-id="a193a-168">При необходимости принимают значение имени модели в конструкторе.</span><span class="sxs-lookup"><span data-stu-id="a193a-168">Optionally accept a model name value in the constructor.</span></span> <span data-ttu-id="a193a-169">Этот параметр предоставляется в том случае, если имя свойства не соответствует значению в запросе.</span><span class="sxs-lookup"><span data-stu-id="a193a-169">This option is provided in case the property name doesn't match the value in the request.</span></span> <span data-ttu-id="a193a-170">Например, значение в запросе может быть заголовком с дефисом в имени, как показано в следующем примере:</span><span class="sxs-lookup"><span data-stu-id="a193a-170">For instance, the value in the request might be a header with a hyphen in its name, as in the following example:</span></span>
+
+  [!code-csharp[](model-binding/samples/2.x/Pages/Instructors/Index.cshtml.cs?name=snippet_FromHeader)]
+
+### <a name="frombody-attribute"></a><span data-ttu-id="a193a-171">Атрибут [FromBody]</span><span class="sxs-lookup"><span data-stu-id="a193a-171">[FromBody] attribute</span></span>
+
+<span data-ttu-id="a193a-172">Данные текста запроса анализируются с помощью форматировщиков входных данных для конкретного типа содержимого запроса.</span><span class="sxs-lookup"><span data-stu-id="a193a-172">The request body data is parsed by using input formatters specific to the content type of the request.</span></span> <span data-ttu-id="a193a-173">Форматировщики входных данных описываются [далее в этой статье](#input-formatters).</span><span class="sxs-lookup"><span data-stu-id="a193a-173">Input formatters are explained [later in this article](#input-formatters).</span></span>
+
+<span data-ttu-id="a193a-174">Не применяют `[FromBody]` к нескольким параметрам в методе действия.</span><span class="sxs-lookup"><span data-stu-id="a193a-174">Don't apply `[FromBody]` to more than one parameter per action method.</span></span> <span data-ttu-id="a193a-175">Среда выполнения ASP.NET Core делегирует ответственность за считывание потока запроса форматировщику входных данных.</span><span class="sxs-lookup"><span data-stu-id="a193a-175">The ASP.NET Core runtime delegates the responsibility of reading the request stream to the input formatter.</span></span> <span data-ttu-id="a193a-176">После считывания потока запроса он больше не доступен для повторного чтения для привязки других параметров `[FromBody]`.</span><span class="sxs-lookup"><span data-stu-id="a193a-176">Once the request stream is read, it's no longer available to be read again for binding other `[FromBody]` parameters.</span></span>
+
+### <a name="additional-sources"></a><span data-ttu-id="a193a-177">Дополнительные источники</span><span class="sxs-lookup"><span data-stu-id="a193a-177">Additional sources</span></span>
+
+<span data-ttu-id="a193a-178">Исходные данные предоставляются системой привязки модели *поставщиками значений*.</span><span class="sxs-lookup"><span data-stu-id="a193a-178">Source data is provided to the model binding system by *value providers*.</span></span> <span data-ttu-id="a193a-179">Вы можете записать и зарегистрировать пользовательские поставщики значений, которые получают данные для привязки модели из других источников.</span><span class="sxs-lookup"><span data-stu-id="a193a-179">You can write and register custom value providers that get data for model binding from other sources.</span></span> <span data-ttu-id="a193a-180">Например, вам могут потребоваться данные из файлов cookie или состояния сеанса.</span><span class="sxs-lookup"><span data-stu-id="a193a-180">For example, you might want data from cookies or session state.</span></span> <span data-ttu-id="a193a-181">Для получения данных из нового источника:</span><span class="sxs-lookup"><span data-stu-id="a193a-181">To get data from a new source:</span></span>
+
+* <span data-ttu-id="a193a-182">Создайте класс, реализующий `IValueProvider`.</span><span class="sxs-lookup"><span data-stu-id="a193a-182">Create a class that implements `IValueProvider`.</span></span>
+* <span data-ttu-id="a193a-183">Создайте класс, реализующий `IValueProviderFactory`.</span><span class="sxs-lookup"><span data-stu-id="a193a-183">Create a class that implements `IValueProviderFactory`.</span></span>
+* <span data-ttu-id="a193a-184">Зарегистрируйте класс фабрики в `Startup.ConfigureServices`.</span><span class="sxs-lookup"><span data-stu-id="a193a-184">Register the factory class in `Startup.ConfigureServices`.</span></span>
+
+<span data-ttu-id="a193a-185">Пример приложения включает пример [поставщика значений](https://github.com/aspnet/AspNetCore.Docs/blob/master/aspnetcore/mvc/models/model-binding/samples/2.x/CookieValueProvider.cs) и [фабрики](https://github.com/aspnet/AspNetCore.Docs/blob/master/aspnetcore/mvc/models/model-binding/samples/2.x/CookieValueProviderFactory.cs), которая получает значения из файлов cookie.</span><span class="sxs-lookup"><span data-stu-id="a193a-185">The sample app includes a [value provider](https://github.com/aspnet/AspNetCore.Docs/blob/master/aspnetcore/mvc/models/model-binding/samples/2.x/CookieValueProvider.cs) and [factory](https://github.com/aspnet/AspNetCore.Docs/blob/master/aspnetcore/mvc/models/model-binding/samples/2.x/CookieValueProviderFactory.cs) example that gets values from cookies.</span></span> <span data-ttu-id="a193a-186">Ниже приведен код регистрации в `Startup.ConfigureServices`:</span><span class="sxs-lookup"><span data-stu-id="a193a-186">Here's the registration code in `Startup.ConfigureServices`:</span></span>
+
+[!code-csharp[](model-binding/samples/2.x/Startup.cs?name=snippet_ValueProvider&highlight=3)]
+
+<span data-ttu-id="a193a-187">Этот код помещает поставщик пользовательских значений после всех встроенных поставщиков значений.</span><span class="sxs-lookup"><span data-stu-id="a193a-187">The code shown puts the custom value provider after all the built-in value providers.</span></span>  <span data-ttu-id="a193a-188">Чтобы сделать его первым в списке, вызовите `Insert(0, new CookieValueProviderFactory())` вместо `Add`.</span><span class="sxs-lookup"><span data-stu-id="a193a-188">To make it the first in the list, call `Insert(0, new CookieValueProviderFactory())` instead of `Add`.</span></span>
+
+## <a name="no-source-for-a-model-property"></a><span data-ttu-id="a193a-189">Отсутствие источника для свойства модели</span><span class="sxs-lookup"><span data-stu-id="a193a-189">No source for a model property</span></span>
+
+<span data-ttu-id="a193a-190">По умолчанию ошибка состояния модели не создается, если не найдено значение для свойства модели.</span><span class="sxs-lookup"><span data-stu-id="a193a-190">By default, a model state error isn't created if no value is found for a model property.</span></span> <span data-ttu-id="a193a-191">Свойство получает значение NULL или значение по умолчанию:</span><span class="sxs-lookup"><span data-stu-id="a193a-191">The property is set to null or a default value:</span></span>
+
+* <span data-ttu-id="a193a-192">Примитивным типам, допускающим значение NULL, задается значение `null`.</span><span class="sxs-lookup"><span data-stu-id="a193a-192">Nullable simple types are set to `null`.</span></span>
+* <span data-ttu-id="a193a-193">Типам значений, не допускающим значение NULL, задается значение `default(T)`.</span><span class="sxs-lookup"><span data-stu-id="a193a-193">Non-nullable value types are set to `default(T)`.</span></span> <span data-ttu-id="a193a-194">Например, параметр `int id` получает значение 0.</span><span class="sxs-lookup"><span data-stu-id="a193a-194">For example, a parameter `int id` is set to 0.</span></span>
+* <span data-ttu-id="a193a-195">Для сложных типов привязка модели создает экземпляр с помощью конструктора по умолчанию без задания свойств.</span><span class="sxs-lookup"><span data-stu-id="a193a-195">For complex Types, model binding creates an instance by using the default constructor, without setting properties.</span></span>
+* <span data-ttu-id="a193a-196">Массивы имеют значение `Array.Empty<T>()`, за исключением массивов `byte[]`, которые имеют значение `null`.</span><span class="sxs-lookup"><span data-stu-id="a193a-196">Arrays are set to `Array.Empty<T>()`, except that `byte[]` arrays are set to `null`.</span></span>
+
+<span data-ttu-id="a193a-197">Если состояние модели должно быть признано недействительным, когда в полях формы не найдены данные для свойства модели, используйте [атрибут [BindRequired]](#bindrequired-attribute).</span><span class="sxs-lookup"><span data-stu-id="a193a-197">If model state should be invalidated when nothing is found in form fields for a model property, use the [[BindRequired] attribute](#bindrequired-attribute).</span></span>
+
+<span data-ttu-id="a193a-198">Обратите внимание, это поведение `[BindRequired]` применяется к привязке модели из опубликованных данных формы, а не к данным JSON или XML в тексте запроса.</span><span class="sxs-lookup"><span data-stu-id="a193a-198">Note that this `[BindRequired]` behavior applies to model binding from posted form data, not to JSON or XML data in a request body.</span></span> <span data-ttu-id="a193a-199">Данные основного текста запроса обрабатываются [форматировщиками входных данных](#input-formatters).</span><span class="sxs-lookup"><span data-stu-id="a193a-199">Request body data is handled by [input formatters](#input-formatters).</span></span>
+
+## <a name="type-conversion-errors"></a><span data-ttu-id="a193a-200">Ошибки преобразования типа</span><span class="sxs-lookup"><span data-stu-id="a193a-200">Type conversion errors</span></span>
+
+<span data-ttu-id="a193a-201">Если источник найден, но его нельзя преобразовать в тип целевого объекта, состояние модели помечается как недопустимое.</span><span class="sxs-lookup"><span data-stu-id="a193a-201">If a source is found but can't be converted into the target type, model state is flagged as invalid.</span></span> <span data-ttu-id="a193a-202">Параметр или свойство целевого объекта получает значение NULL или значение по умолчанию, как отмечалось в предыдущем разделе.</span><span class="sxs-lookup"><span data-stu-id="a193a-202">The target parameter or property is set to null or a default value, as noted in the previous section.</span></span>
+
+<span data-ttu-id="a193a-203">В контроллере API с атрибутом `[ApiController]` недопустимое состояние модели приводит к автоматическому ответу HTTP 400.</span><span class="sxs-lookup"><span data-stu-id="a193a-203">In an API controller that has the `[ApiController]` attribute, invalid model state results in an automatic HTTP 400 response.</span></span>
+
+<span data-ttu-id="a193a-204">На странице Razor повторно отображается страница с сообщением об ошибке:</span><span class="sxs-lookup"><span data-stu-id="a193a-204">In a Razor page, redisplay the page with an error message:</span></span>
+
+[!code-csharp[](model-binding/samples/2.x/Pages/Instructors/Create.cshtml.cs?name=snippet_HandleMBError&highlight=3-6)]
+
+<span data-ttu-id="a193a-205">Проверка на стороне клиента перехватывает большинство неверных данных, которые в противном случае были бы отправлены в форму Razor Pages.</span><span class="sxs-lookup"><span data-stu-id="a193a-205">Client-side validation catches most bad data that would otherwise be submitted to a Razor Pages form.</span></span> <span data-ttu-id="a193a-206">Эта проверка затрудняет срабатывание выделенного выше кода.</span><span class="sxs-lookup"><span data-stu-id="a193a-206">This validation makes it hard to trigger the preceding highlighted code.</span></span> <span data-ttu-id="a193a-207">Пример приложения включает кнопку **Отправить с неверной датой**, которая помещает недопустимые данные в поле **Дата приема на работу** и отправляет форму.</span><span class="sxs-lookup"><span data-stu-id="a193a-207">The sample app includes a **Submit with Invalid Date** button that puts bad data in the **Hire Date** field and submits the form.</span></span> <span data-ttu-id="a193a-208">Эта кнопка показывает, как работает код для повторного отображения страницы, если возникла ошибка преобразования данных.</span><span class="sxs-lookup"><span data-stu-id="a193a-208">This button shows how the code for redisplaying the page works when data conversion errors occur.</span></span>
+
+<span data-ttu-id="a193a-209">Когда страница отображается повторно приведенным выше кодом, недопустимые входные данные не отображаются в поле формы.</span><span class="sxs-lookup"><span data-stu-id="a193a-209">When the page is redisplayed by the preceding code, the invalid input is not shown in the form field.</span></span> <span data-ttu-id="a193a-210">Это связано с тем, что свойству модели задано значение NULL или значение по умолчанию.</span><span class="sxs-lookup"><span data-stu-id="a193a-210">This is because the model property has been set to null or a default value.</span></span> <span data-ttu-id="a193a-211">Недопустимые входные данные отображаются в сообщении об ошибке.</span><span class="sxs-lookup"><span data-stu-id="a193a-211">The invalid input does appear in an error message.</span></span> <span data-ttu-id="a193a-212">Но если требуется повторно отобразить неправильные данные в поле формы, возможно, следует сделать свойство модели строкой и выполнить преобразование данных вручную.</span><span class="sxs-lookup"><span data-stu-id="a193a-212">But if you want to redisplay the bad data in the form field, consider making the model property a string and doing the data conversion manually.</span></span>
+
+<span data-ttu-id="a193a-213">Та же стратегия рекомендуется в том случае, если вы не хотите, чтобы ошибки преобразования типов приводили к ошибкам состояния модели.</span><span class="sxs-lookup"><span data-stu-id="a193a-213">The same strategy is recommended if you don't want type conversion errors to result in model state errors.</span></span> <span data-ttu-id="a193a-214">В этом случае следует сделать свойство модели строкой.</span><span class="sxs-lookup"><span data-stu-id="a193a-214">In that case, make the model property a string.</span></span>
+
+## <a name="simple-types"></a><span data-ttu-id="a193a-215">Простые типы</span><span class="sxs-lookup"><span data-stu-id="a193a-215">Simple types</span></span>
+
+<span data-ttu-id="a193a-216">Связыватель модели может преобразовать исходные строки в следующие примитивные типы:</span><span class="sxs-lookup"><span data-stu-id="a193a-216">The simple types that the model binder can convert source strings into include the following:</span></span>
+
+* [<span data-ttu-id="a193a-217">Boolean</span><span class="sxs-lookup"><span data-stu-id="a193a-217">Boolean</span></span>](xref:System.ComponentModel.BooleanConverter)
+* <span data-ttu-id="a193a-218">[Byte](xref:System.ComponentModel.ByteConverter), [SByte](xref:System.ComponentModel.SByteConverter)</span><span class="sxs-lookup"><span data-stu-id="a193a-218">[Byte](xref:System.ComponentModel.ByteConverter), [SByte](xref:System.ComponentModel.SByteConverter)</span></span>
+* [<span data-ttu-id="a193a-219">Char</span><span class="sxs-lookup"><span data-stu-id="a193a-219">Char</span></span>](xref:System.ComponentModel.CharConverter)
+* [<span data-ttu-id="a193a-220">DateTime</span><span class="sxs-lookup"><span data-stu-id="a193a-220">DateTime</span></span>](xref:System.ComponentModel.DateTimeConverter)
+* [<span data-ttu-id="a193a-221">DateTimeOffset</span><span class="sxs-lookup"><span data-stu-id="a193a-221">DateTimeOffset</span></span>](xref:System.ComponentModel.DateTimeOffsetConverter)
+* [<span data-ttu-id="a193a-222">Decimal</span><span class="sxs-lookup"><span data-stu-id="a193a-222">Decimal</span></span>](xref:System.ComponentModel.DecimalConverter)
+* [<span data-ttu-id="a193a-223">Double</span><span class="sxs-lookup"><span data-stu-id="a193a-223">Double</span></span>](xref:System.ComponentModel.DoubleConverter)
+* [<span data-ttu-id="a193a-224">Enum</span><span class="sxs-lookup"><span data-stu-id="a193a-224">Enum</span></span>](xref:System.ComponentModel.EnumConverter)
+* [<span data-ttu-id="a193a-225">Guid</span><span class="sxs-lookup"><span data-stu-id="a193a-225">Guid</span></span>](xref:System.ComponentModel.GuidConverter)
+* <span data-ttu-id="a193a-226">[Int16](xref:System.ComponentModel.Int16Converter), [Int32](xref:System.ComponentModel.Int32Converter), [Int64](xref:System.ComponentModel.Int64Converter)</span><span class="sxs-lookup"><span data-stu-id="a193a-226">[Int16](xref:System.ComponentModel.Int16Converter), [Int32](xref:System.ComponentModel.Int32Converter), [Int64](xref:System.ComponentModel.Int64Converter)</span></span>
+* [<span data-ttu-id="a193a-227">Single</span><span class="sxs-lookup"><span data-stu-id="a193a-227">Single</span></span>](xref:System.ComponentModel.SingleConverter)
+* [<span data-ttu-id="a193a-228">TimeSpan</span><span class="sxs-lookup"><span data-stu-id="a193a-228">TimeSpan</span></span>](xref:System.ComponentModel.TimeSpanConverter)
+* <span data-ttu-id="a193a-229">[UInt16](xref:System.ComponentModel.UInt16Converter), [UInt32](xref:System.ComponentModel.UInt32Converter), [UInt64](xref:System.ComponentModel.UInt64Converter)</span><span class="sxs-lookup"><span data-stu-id="a193a-229">[UInt16](xref:System.ComponentModel.UInt16Converter), [UInt32](xref:System.ComponentModel.UInt32Converter), [UInt64](xref:System.ComponentModel.UInt64Converter)</span></span>
+* [<span data-ttu-id="a193a-230">Uri</span><span class="sxs-lookup"><span data-stu-id="a193a-230">Uri</span></span>](xref:System.UriTypeConverter)
+* [<span data-ttu-id="a193a-231">Version</span><span class="sxs-lookup"><span data-stu-id="a193a-231">Version</span></span>](xref:System.ComponentModel.VersionConverter)
+
+## <a name="complex-types"></a><span data-ttu-id="a193a-232">Сложные типы</span><span class="sxs-lookup"><span data-stu-id="a193a-232">Complex types</span></span>
+
+<span data-ttu-id="a193a-233">Сложный тип должен иметь открытый конструктор по умолчанию, а также открытые и доступные для записи свойства, подлежащие привязке.</span><span class="sxs-lookup"><span data-stu-id="a193a-233">A complex type must have a public default constructor and public writable properties to bind.</span></span> <span data-ttu-id="a193a-234">Когда происходит привязка модели, класс создается с помощью открытого конструктора по умолчанию.</span><span class="sxs-lookup"><span data-stu-id="a193a-234">When model binding occurs, the class is instantiated using the public default constructor.</span></span> 
+
+<span data-ttu-id="a193a-235">Для каждого свойства сложного типа привязка модели ищет в источниках шаблон имени *prefix.property_name*.</span><span class="sxs-lookup"><span data-stu-id="a193a-235">For each property of the complex type, model binding looks through the sources for the name pattern *prefix.property_name*.</span></span> <span data-ttu-id="a193a-236">Если ничего не найдено, он ищет только *property_name* без префикса.</span><span class="sxs-lookup"><span data-stu-id="a193a-236">If nothing is found, it looks for just *property_name* without the prefix.</span></span>
+
+<span data-ttu-id="a193a-237">Для привязки к параметру префикс является именем параметра.</span><span class="sxs-lookup"><span data-stu-id="a193a-237">For binding to a parameter, the prefix is the parameter name.</span></span> <span data-ttu-id="a193a-238">Для привязки к открытому свойству `PageModel` префикс является именем открытого свойства.</span><span class="sxs-lookup"><span data-stu-id="a193a-238">For binding to a `PageModel` public property, the prefix is the public property name.</span></span> <span data-ttu-id="a193a-239">Некоторые атрибуты имеют свойство `Prefix`, которое позволяет переопределить использование по умолчанию для имени параметра или свойства.</span><span class="sxs-lookup"><span data-stu-id="a193a-239">Some attributes have a `Prefix` property that lets you override the default usage of parameter or property name.</span></span>
+
+<span data-ttu-id="a193a-240">Предположим, например, что сложный тип принадлежит к следующему классу `Instructor`:</span><span class="sxs-lookup"><span data-stu-id="a193a-240">For example, suppose the complex type is the following `Instructor` class:</span></span>
+
+  ```csharp
+  public class Instructor
+  {
+      public int ID { get; set; }
+      public string LastName { get; set; }
+      public string FirstName { get; set; }
+  }
+  ```
+
+### <a name="prefix--parameter-name"></a><span data-ttu-id="a193a-241">Префикс — это имя параметра</span><span class="sxs-lookup"><span data-stu-id="a193a-241">Prefix = parameter name</span></span>
+
+<span data-ttu-id="a193a-242">Если модель, которую нужно привязать, является параметром с именем `instructorToUpdate`:</span><span class="sxs-lookup"><span data-stu-id="a193a-242">If the model to be bound is a parameter named `instructorToUpdate`:</span></span>
 
 ```csharp
-services.AddMvc().AddMvcOptions(options =>
-    options.ModelMetadataDetailsProviders.Add(
-        new SuppressChildValidationMetadataProvider(typeof(System.Guid))));
+public IActionResult OnPost(int? id, Instructor instructorToUpdate)
 ```
 
-## <a name="bind-formatted-data-from-the-request-body"></a><span data-ttu-id="00960-191">Привязка отформатированных данных из текста запроса</span><span class="sxs-lookup"><span data-stu-id="00960-191">Bind formatted data from the request body</span></span>
+<span data-ttu-id="a193a-243">Привязка модели начинается с поиска источников ключа `instructorToUpdate.ID`.</span><span class="sxs-lookup"><span data-stu-id="a193a-243">Model binding starts by looking through the sources for the key `instructorToUpdate.ID`.</span></span> <span data-ttu-id="a193a-244">Если он не найден, ищется `ID` без префикса.</span><span class="sxs-lookup"><span data-stu-id="a193a-244">If that isn't found, it looks for `ID` without a prefix.</span></span>
 
-<span data-ttu-id="00960-192">Данные запроса могут иметь различные форматы, включая JSON, XML и многие другие.</span><span class="sxs-lookup"><span data-stu-id="00960-192">Request data can come in a variety of formats including JSON, XML and many others.</span></span> <span data-ttu-id="00960-193">Если вы используете атрибут [FromBody], чтобы указать необходимость привязки параметра к данным в тексте запроса, MVC использует настроенный набор модулей форматирования для обработки данных запроса на основе его типа содержимого.</span><span class="sxs-lookup"><span data-stu-id="00960-193">When you use the [FromBody] attribute to indicate that you want to bind a parameter to data in the request body, MVC uses a configured set of formatters to handle the request data based on its content type.</span></span> <span data-ttu-id="00960-194">По умолчанию MVC содержит класс `JsonInputFormatter` для обработки данных JSON, но вы можете добавить дополнительные модули форматирования для обработки XML и других пользовательских форматов.</span><span class="sxs-lookup"><span data-stu-id="00960-194">By default MVC includes a `JsonInputFormatter` class for handling JSON data, but you can add additional formatters for handling XML and other custom formats.</span></span>
+### <a name="prefix--property-name"></a><span data-ttu-id="a193a-245">Префикс — это имя свойства</span><span class="sxs-lookup"><span data-stu-id="a193a-245">Prefix = property name</span></span>
+
+<span data-ttu-id="a193a-246">Если модель для привязки является свойством с именем `Instructor` контроллера или класса `PageModel`:</span><span class="sxs-lookup"><span data-stu-id="a193a-246">If the model to be bound is a property named `Instructor` of the controller or `PageModel` class:</span></span>
+
+```csharp
+[BindProperty]
+public Instructor Instructor { get; set; }
+```
+
+<span data-ttu-id="a193a-247">Привязка модели начинается с поиска источников ключа `Instructor.ID`.</span><span class="sxs-lookup"><span data-stu-id="a193a-247">Model binding starts by looking through the sources for the key `Instructor.ID`.</span></span> <span data-ttu-id="a193a-248">Если он не найден, ищется `ID` без префикса.</span><span class="sxs-lookup"><span data-stu-id="a193a-248">If that isn't found, it looks for `ID` without a prefix.</span></span>
+
+### <a name="custom-prefix"></a><span data-ttu-id="a193a-249">Пользовательский префикс</span><span class="sxs-lookup"><span data-stu-id="a193a-249">Custom prefix</span></span>
+
+<span data-ttu-id="a193a-250">Если модель для привязки — это параметр с именем `instructorToUpdate`, а атрибут `Bind` задает `Instructor` как префикс:</span><span class="sxs-lookup"><span data-stu-id="a193a-250">If the model to be bound is a parameter named `instructorToUpdate` and a `Bind` attribute specifies `Instructor` as the prefix:</span></span>
+
+```csharp
+public IActionResult OnPost(
+    int? id, [Bind(Prefix = "Instructor")] Instructor instructorToUpdate)
+```
+
+<span data-ttu-id="a193a-251">Привязка модели начинается с поиска источников ключа `Instructor.ID`.</span><span class="sxs-lookup"><span data-stu-id="a193a-251">Model binding starts by looking through the sources for the key `Instructor.ID`.</span></span> <span data-ttu-id="a193a-252">Если он не найден, ищется `ID` без префикса.</span><span class="sxs-lookup"><span data-stu-id="a193a-252">If that isn't found, it looks for `ID` without a prefix.</span></span>
+
+### <a name="attributes-for-complex-type-targets"></a><span data-ttu-id="a193a-253">Атрибуты для целевых объектов сложного типа</span><span class="sxs-lookup"><span data-stu-id="a193a-253">Attributes for complex type targets</span></span>
+
+<span data-ttu-id="a193a-254">Несколько встроенных атрибутов доступны для управления привязкой моделей сложных типов:</span><span class="sxs-lookup"><span data-stu-id="a193a-254">Several built-in attributes are available for controlling model binding of complex types:</span></span>
+
+* `[BindRequired]`
+* `[BindNever]`
+* `[Bind]`
 
 > [!NOTE]
-> <span data-ttu-id="00960-195">Для каждого действия с атрибутом `[FromBody]` может существовать не более одного параметра.</span><span class="sxs-lookup"><span data-stu-id="00960-195">There can be at most one parameter per action decorated with `[FromBody]`.</span></span> <span data-ttu-id="00960-196">Среда выполнения ASP.NET Core MVC делегирует ответственность за считывание потока запроса модулю форматирования.</span><span class="sxs-lookup"><span data-stu-id="00960-196">The ASP.NET Core MVC run-time delegates the responsibility of reading the request stream to the formatter.</span></span> <span data-ttu-id="00960-197">После считывания потока запроса для параметра, как правило, невозможно повторно считать поток запроса для привязки других параметров `[FromBody]`.</span><span class="sxs-lookup"><span data-stu-id="00960-197">Once the request stream is read for a parameter, it's generally not possible to read the request stream again for binding other `[FromBody]` parameters.</span></span>
+> <span data-ttu-id="a193a-255">Эти атрибуты влияют на привязку модели, если опубликованные данные формы являются источником значений.</span><span class="sxs-lookup"><span data-stu-id="a193a-255">These attributes affect model binding when posted form data is the source of values.</span></span> <span data-ttu-id="a193a-256">Они не влияют на форматировщики входных данных, которые обрабатывают опубликованные тексты запросов JSON и XML.</span><span class="sxs-lookup"><span data-stu-id="a193a-256">They do not affect input formatters, which process posted JSON and XML request bodies.</span></span> <span data-ttu-id="a193a-257">Форматировщики входных данных описываются [далее в этой статье](#input-formatters).</span><span class="sxs-lookup"><span data-stu-id="a193a-257">Input formatters are explained [later in this article](#input-formatters).</span></span>
+>
+> <span data-ttu-id="a193a-258">Также см. обсуждение атрибута `[Required]` в разделе [Проверка модели](xref:mvc/models/validation#required-attribute).</span><span class="sxs-lookup"><span data-stu-id="a193a-258">See also the discussion of the `[Required]` attribute in [Model validation](xref:mvc/models/validation#required-attribute).</span></span>
 
-> [!NOTE]
-> <span data-ttu-id="00960-198">`JsonInputFormatter` является модулем форматирования по умолчанию и основан на [Json.NET](https://www.newtonsoft.com/json).</span><span class="sxs-lookup"><span data-stu-id="00960-198">The `JsonInputFormatter` is the default formatter and is based on [Json.NET](https://www.newtonsoft.com/json).</span></span>
+### <a name="bindrequired-attribute"></a><span data-ttu-id="a193a-259">Атрибут [BindRequired]</span><span class="sxs-lookup"><span data-stu-id="a193a-259">[BindRequired] attribute</span></span>
 
-<span data-ttu-id="00960-199">ASP.NET Core выбирает модули форматирования входных данных на основе заголовка [Content-Type](https://www.w3.org/Protocols/rfc1341/4_Content-Type.html) и типа параметра, если отсутствует примененный к нему атрибут, указывающий иное.</span><span class="sxs-lookup"><span data-stu-id="00960-199">ASP.NET Core selects input formatters based on the [Content-Type](https://www.w3.org/Protocols/rfc1341/4_Content-Type.html) header and the type of the parameter, unless there's an attribute applied to it specifying otherwise.</span></span> <span data-ttu-id="00960-200">Чтобы использовать XML или другой формат, его необходимо настроить в файле *Startup.cs*, но, возможно, сначала потребуется получить ссылку на `Microsoft.AspNetCore.Mvc.Formatters.Xml` с помощью NuGet.</span><span class="sxs-lookup"><span data-stu-id="00960-200">If you'd like to use XML or another format you must configure it in the *Startup.cs* file, but you may first have to obtain a reference to `Microsoft.AspNetCore.Mvc.Formatters.Xml` using NuGet.</span></span> <span data-ttu-id="00960-201">Код запуска должен выглядеть примерно следующим образом:</span><span class="sxs-lookup"><span data-stu-id="00960-201">Your startup code should look something like this:</span></span>
+<span data-ttu-id="a193a-260">Может применяться только к свойствам модели, а не к параметрам метода.</span><span class="sxs-lookup"><span data-stu-id="a193a-260">Can only be applied to model properties, not to method parameters.</span></span> <span data-ttu-id="a193a-261">Приводит к тому, что привязка модели добавляет ошибку состояния модели, если привязка для свойства модели невозможна.</span><span class="sxs-lookup"><span data-stu-id="a193a-261">Causes model binding to add a model state error if binding cannot occur for a model's property.</span></span> <span data-ttu-id="a193a-262">Ниже приведен пример:</span><span class="sxs-lookup"><span data-stu-id="a193a-262">Here's an example:</span></span>
+
+[!code-csharp[](model-binding/samples/2.x/Models/InstructorWithCollection.cs?name=snippet_BindRequired&highlight=8-9)]
+
+### <a name="bindnever-attribute"></a><span data-ttu-id="a193a-263">Атрибут [BindNever]</span><span class="sxs-lookup"><span data-stu-id="a193a-263">[BindNever] attribute</span></span>
+
+<span data-ttu-id="a193a-264">Может применяться только к свойствам модели, а не к параметрам метода.</span><span class="sxs-lookup"><span data-stu-id="a193a-264">Can only be applied to model properties, not to method parameters.</span></span> <span data-ttu-id="a193a-265">Запрещает привязке модели задавать свойство модели.</span><span class="sxs-lookup"><span data-stu-id="a193a-265">Prevents model binding from setting a model's property.</span></span> <span data-ttu-id="a193a-266">Ниже приведен пример:</span><span class="sxs-lookup"><span data-stu-id="a193a-266">Here's an example:</span></span>
+
+[!code-csharp[](model-binding/samples/2.x/Models/InstructorWithDictionary.cs?name=snippet_BindNever&highlight=3-4)]
+
+### <a name="bind-attribute"></a><span data-ttu-id="a193a-267">Атрибут [Bind]</span><span class="sxs-lookup"><span data-stu-id="a193a-267">[Bind] attribute</span></span>
+
+<span data-ttu-id="a193a-268">Может быть применен к классу или параметру метода.</span><span class="sxs-lookup"><span data-stu-id="a193a-268">Can be applied to a class or a method parameter.</span></span> <span data-ttu-id="a193a-269">Указывает, какие свойства модели должны быть включены в привязку модели.</span><span class="sxs-lookup"><span data-stu-id="a193a-269">Specifies which properties of a model should be included in model binding.</span></span>
+
+<span data-ttu-id="a193a-270">В следующем примере только указанные свойства модели `Instructor` привязываются, когда вызывается любой метод действия или обработчик:</span><span class="sxs-lookup"><span data-stu-id="a193a-270">In the following example, only the specified properties of the `Instructor` model are bound when any handler or action method is called:</span></span>
 
 ```csharp
-public void ConfigureServices(IServiceCollection services)
-{
-    services.AddMvc()
-        .AddXmlSerializerFormatters();
-   }
+[Bind("LastName,FirstMidName,HireDate")]
+public class Instructor
 ```
 
-<span data-ttu-id="00960-202">Код в файле *Startup.cs* содержит метод `ConfigureServices` с аргументом `services`, который можно использовать для построения служб для приложения ASP.NET Core.</span><span class="sxs-lookup"><span data-stu-id="00960-202">Code in the *Startup.cs* file contains a `ConfigureServices` method with a `services` argument you can use to build up services for your ASP.NET Core app.</span></span> <span data-ttu-id="00960-203">В примере показано добавление модуля форматирования XML в качестве службы, которую MVC будет предоставлять для этого приложения.</span><span class="sxs-lookup"><span data-stu-id="00960-203">In the sample, we are adding an XML formatter as a service that MVC will provide for this app.</span></span> <span data-ttu-id="00960-204">Аргумент `options`, переданный в метод `AddMvc`, позволяет добавлять фильтры, модули форматирования и другие системные параметры из MVC при запуске приложения и управлять ими.</span><span class="sxs-lookup"><span data-stu-id="00960-204">The `options` argument passed into the `AddMvc` method allows you to add and manage filters, formatters, and other system options from MVC upon app startup.</span></span> <span data-ttu-id="00960-205">Затем для работы с необходимым форматом атрибут `Consumes` применяется к классам контроллера или методам действий.</span><span class="sxs-lookup"><span data-stu-id="00960-205">Then apply the `Consumes` attribute to controller classes or action methods to work with the format you want.</span></span>
+<span data-ttu-id="a193a-271">В следующем примере только указанные свойства модели `Instructor` привязываются, когда вызывается метод `OnPost`:</span><span class="sxs-lookup"><span data-stu-id="a193a-271">In the following example, only the specified properties of the `Instructor` model are bound when the `OnPost` method is called:</span></span>
 
-### <a name="custom-model-binding"></a><span data-ttu-id="00960-206">Пользовательская привязка модели</span><span class="sxs-lookup"><span data-stu-id="00960-206">Custom Model Binding</span></span>
+```csharp
+[HttpPost]
+public IActionResult OnPost([Bind("LastName,FirstMidName,HireDate")] Instructor instructor)
+```
 
-<span data-ttu-id="00960-207">Для расширения возможностей привязки модели можно написать собственные пользовательские связыватели модели.</span><span class="sxs-lookup"><span data-stu-id="00960-207">You can extend model binding by writing your own custom model binders.</span></span> <span data-ttu-id="00960-208">Узнайте больше о [пользовательской привязке модели](../advanced/custom-model-binding.md).</span><span class="sxs-lookup"><span data-stu-id="00960-208">Learn more about [custom model binding](../advanced/custom-model-binding.md).</span></span>
+<span data-ttu-id="a193a-272">Атрибут `[Bind]` может использоваться для защиты от чрезмерной передачи данных при *создании*.</span><span class="sxs-lookup"><span data-stu-id="a193a-272">The `[Bind]` attribute can be used to protect against overposting in *create* scenarios.</span></span> <span data-ttu-id="a193a-273">Он не работает в сценариях редактирования, поскольку исключенным свойствам задается значение NULL или значение по умолчанию, но не оставляется значение без изменений.</span><span class="sxs-lookup"><span data-stu-id="a193a-273">It doesn't work well in edit scenarios because excluded properties are set to null or a default value instead of being left unchanged.</span></span> <span data-ttu-id="a193a-274">Для защиты от чрезмерной передачи данных рекомендуется использовать модели представлений вместо атрибута `[Bind]`.</span><span class="sxs-lookup"><span data-stu-id="a193a-274">For defense against overposting, view models are recommended rather than the `[Bind]` attribute.</span></span> <span data-ttu-id="a193a-275">Дополнительные сведения см. в разделе [Примечание по безопасности о чрезмерной передаче данных](xref:data/ef-mvc/crud#security-note-about-overposting).</span><span class="sxs-lookup"><span data-stu-id="a193a-275">For more information, see [Security note about overposting](xref:data/ef-mvc/crud#security-note-about-overposting).</span></span>
+
+## <a name="collections"></a><span data-ttu-id="a193a-276">Коллекции</span><span class="sxs-lookup"><span data-stu-id="a193a-276">Collections</span></span>
+
+<span data-ttu-id="a193a-277">Для целевых объектов, которые являются коллекциями примитивных типов, привязка модели ищет совпадения с *parameter_name* или *property_name*.</span><span class="sxs-lookup"><span data-stu-id="a193a-277">For targets that are collections of simple types, model binding looks for matches to *parameter_name* or *property_name*.</span></span> <span data-ttu-id="a193a-278">Если совпадений не найдено, она ищет один из поддерживаемых форматов без префикса.</span><span class="sxs-lookup"><span data-stu-id="a193a-278">If no match is found, it looks for one of the supported formats without the prefix.</span></span> <span data-ttu-id="a193a-279">Например:</span><span class="sxs-lookup"><span data-stu-id="a193a-279">For example:</span></span>
+
+* <span data-ttu-id="a193a-280">Предположим, что параметром для привязки является массив с именем `selectedCourses`:</span><span class="sxs-lookup"><span data-stu-id="a193a-280">Suppose the parameter to be bound is an array named `selectedCourses`:</span></span>
+
+  ```csharp
+  public IActionResult OnPost(int? id, int[] selectedCourses)
+  ```
+
+* <span data-ttu-id="a193a-281">Строковые данные формы или запроса могут иметь один из следующих форматов:</span><span class="sxs-lookup"><span data-stu-id="a193a-281">Form or query string data can be in one of the following formats:</span></span>
+   
+  ```
+  selectedCourses=1050&selectedCourses=2000 
+  ```
+
+  ```
+  selectedCourses[0]=1050&selectedCourses[1]=2000
+  ```
+
+  ```
+  [0]=1050&[1]=2000
+  ```
+
+  ```
+  selectedCourses[a]=1050&selectedCourses[b]=2000&selectedCourses.index=a&selectedCourses.index=b
+  ```
+
+  ```
+  [a]=1050&[b]=2000&index=a&index=b
+  ```
+
+* <span data-ttu-id="a193a-282">Следующий формат поддерживается только в данных формы:</span><span class="sxs-lookup"><span data-stu-id="a193a-282">The following format is supported only in form data:</span></span>
+
+  ```
+  selectedCourses[]=1050&selectedCourses[]=2000
+  ```
+
+* <span data-ttu-id="a193a-283">Для всех перечисленных ранее форматов привязка модели передает массив из двух элементов в параметр `selectedCourses`:</span><span class="sxs-lookup"><span data-stu-id="a193a-283">For all of the preceding example formats, model binding passes an array of two items to the `selectedCourses` parameter:</span></span>
+
+  * <span data-ttu-id="a193a-284">selectedCourses[0]=1050</span><span class="sxs-lookup"><span data-stu-id="a193a-284">selectedCourses[0]=1050</span></span>
+  * <span data-ttu-id="a193a-285">selectedCourses[1]=2000</span><span class="sxs-lookup"><span data-stu-id="a193a-285">selectedCourses[1]=2000</span></span>
+
+  <span data-ttu-id="a193a-286">Форматы данных, которые используют номера нижних индексов (... [0] ... [1] ...), должны нумероваться последовательно, начиная с нуля.</span><span class="sxs-lookup"><span data-stu-id="a193a-286">Data formats that use subscript numbers (... [0] ... [1] ...) must ensure that they are numbered sequentially starting at zero.</span></span> <span data-ttu-id="a193a-287">Если в нумерации есть пробелы, все элементы после пробела не учитываются.</span><span class="sxs-lookup"><span data-stu-id="a193a-287">If there are any gaps in subscript numbering, all items after the gap are ignored.</span></span> <span data-ttu-id="a193a-288">Например, если указаны индексы 0 и 2, а не 0 и 1, второй элемент игнорируется.</span><span class="sxs-lookup"><span data-stu-id="a193a-288">For example, if the subscripts are 0 and 2 instead of 0 and 1, the second item is ignored.</span></span>
+
+## <a name="dictionaries"></a><span data-ttu-id="a193a-289">Словари</span><span class="sxs-lookup"><span data-stu-id="a193a-289">Dictionaries</span></span>
+
+<span data-ttu-id="a193a-290">Для целевых объектов `Dictionary` привязка модели ищет совпадения с *parameter_name* или *property_name*.</span><span class="sxs-lookup"><span data-stu-id="a193a-290">For `Dictionary` targets, model binding looks for matches to *parameter_name* or *property_name*.</span></span> <span data-ttu-id="a193a-291">Если совпадений не найдено, она ищет один из поддерживаемых форматов без префикса.</span><span class="sxs-lookup"><span data-stu-id="a193a-291">If no match is found, it looks for one of the supported formats without the prefix.</span></span> <span data-ttu-id="a193a-292">Например:</span><span class="sxs-lookup"><span data-stu-id="a193a-292">For example:</span></span>
+
+* <span data-ttu-id="a193a-293">Предположим, что целевой параметр является `Dictionary<string, string>` с именем `selectedCourses`:</span><span class="sxs-lookup"><span data-stu-id="a193a-293">Suppose the target parameter is a `Dictionary<string, string>` named `selectedCourses`:</span></span>
+
+  ```csharp
+  public IActionResult OnPost(int? id, Dictionary<int, string> selectedCourses)
+  ```
+
+* <span data-ttu-id="a193a-294">Опубликованные строковые данные формы или запроса могут выглядеть как один из следующих примеров:</span><span class="sxs-lookup"><span data-stu-id="a193a-294">The posted form or query string data can look like one of the following examples:</span></span>
+
+  ```
+  selectedCourses[1050]=Chemistry&selectedCourses[2000]=Economics
+  ```
+
+  ```
+  [1050]=Chemistry&selectedCourses[2000]=Economics
+  ```
+
+  ```
+  selectedCourses[0].Key=1050&selectedCourses[0].Value=Chemistry&
+  selectedCourses[1].Key=2000&selectedCourses[1].Value=Economics
+  ```
+
+  ```
+  [0].Key=1050&[0].Value=Chemistry&[1].Key=2000&[1].Value=Economics
+  ```
+
+* <span data-ttu-id="a193a-295">Для всех перечисленных ранее форматов привязка модели передает словарь из двух элементов в параметр `selectedCourses`:</span><span class="sxs-lookup"><span data-stu-id="a193a-295">For all of the preceding example formats, model binding passes a dictionary of two items to the `selectedCourses` parameter:</span></span>
+
+  * <span data-ttu-id="a193a-296">selectedCourses["1050"]="Chemistry"</span><span class="sxs-lookup"><span data-stu-id="a193a-296">selectedCourses["1050"]="Chemistry"</span></span>
+  * <span data-ttu-id="a193a-297">selectedCourses["2000"]="Economics"</span><span class="sxs-lookup"><span data-stu-id="a193a-297">selectedCourses["2000"]="Economics"</span></span>
+
+## <a name="special-data-types"></a><span data-ttu-id="a193a-298">Специальные типы данных</span><span class="sxs-lookup"><span data-stu-id="a193a-298">Special data types</span></span>
+
+<span data-ttu-id="a193a-299">Существуют некоторые особые типы данных, которые может обрабатывать привязка модели.</span><span class="sxs-lookup"><span data-stu-id="a193a-299">There are some special data types that model binding can handle.</span></span>
+
+### <a name="iformfile-and-iformfilecollection"></a><span data-ttu-id="a193a-300">IFormFile и IFormFileCollection</span><span class="sxs-lookup"><span data-stu-id="a193a-300">IFormFile and IFormFileCollection</span></span>
+
+<span data-ttu-id="a193a-301">Переданный файл, включенный в HTTP-запрос.</span><span class="sxs-lookup"><span data-stu-id="a193a-301">An uploaded file included in the HTTP request.</span></span>  <span data-ttu-id="a193a-302">Также поддерживается `IEnumerable<IFormFile>` для нескольких файлов.</span><span class="sxs-lookup"><span data-stu-id="a193a-302">Also supported is `IEnumerable<IFormFile>` for multiple files.</span></span>
+
+### <a name="cancellationtoken"></a><span data-ttu-id="a193a-303">CancellationToken</span><span class="sxs-lookup"><span data-stu-id="a193a-303">CancellationToken</span></span>
+
+<span data-ttu-id="a193a-304">используется для отмены действия в асинхронных контроллерах.</span><span class="sxs-lookup"><span data-stu-id="a193a-304">Used to cancel activity in asynchronous controllers.</span></span>
+
+### <a name="formcollection"></a><span data-ttu-id="a193a-305">FormCollection</span><span class="sxs-lookup"><span data-stu-id="a193a-305">FormCollection</span></span>
+
+<span data-ttu-id="a193a-306">Используется для извлечения всех значений из опубликованных данных формы.</span><span class="sxs-lookup"><span data-stu-id="a193a-306">Used to retrieve all the values from posted form data.</span></span>
+
+## <a name="input-formatters"></a><span data-ttu-id="a193a-307">Форматировщики входных данных</span><span class="sxs-lookup"><span data-stu-id="a193a-307">Input formatters</span></span>
+
+<span data-ttu-id="a193a-308">Данные в тексте запроса могут быть в формате JSON, XML или другом формате.</span><span class="sxs-lookup"><span data-stu-id="a193a-308">Data in the request body can be in JSON, XML, or some other format.</span></span> <span data-ttu-id="a193a-309">Для анализа этих данных модель привязки использует *форматировщик входных данных*, настроенный для обработки определенного типа содержимого.</span><span class="sxs-lookup"><span data-stu-id="a193a-309">To parse this data, model binding uses an *input formatter* that is configured to handle a particular content type.</span></span> <span data-ttu-id="a193a-310">По умолчанию ASP.NET Core включает форматировщики входных данных на основе JSON для обработки данных JSON.</span><span class="sxs-lookup"><span data-stu-id="a193a-310">By default, ASP.NET Core includes JSON based input formatters for handling JSON data.</span></span> <span data-ttu-id="a193a-311">Вы можете добавить другие форматировщики для других типов содержимого.</span><span class="sxs-lookup"><span data-stu-id="a193a-311">You can add other formatters for other content types.</span></span>
+
+<span data-ttu-id="a193a-312">ASP.NET Core выбирает форматировщики входных данных на основе атрибута [Consumes](xref:Microsoft.AspNetCore.Mvc.ConsumesAttribute).</span><span class="sxs-lookup"><span data-stu-id="a193a-312">ASP.NET Core selects input formatters based on the [Consumes](xref:Microsoft.AspNetCore.Mvc.ConsumesAttribute) attribute.</span></span> <span data-ttu-id="a193a-313">Если атрибут отсутствует, используется [Заголовок Content-Type](https://www.w3.org/Protocols/rfc1341/4_Content-Type.html).</span><span class="sxs-lookup"><span data-stu-id="a193a-313">If no attribute is present, it uses the [Content-Type header](https://www.w3.org/Protocols/rfc1341/4_Content-Type.html).</span></span>
+
+<span data-ttu-id="a193a-314">Чтобы использовать встроенные форматировщики входных данных XML:</span><span class="sxs-lookup"><span data-stu-id="a193a-314">To use the built-in XML input formatters:</span></span>
+
+* <span data-ttu-id="a193a-315">Установите пакет NuGet `Microsoft.AspNetCore.Mvc.Formatters.Xml`.</span><span class="sxs-lookup"><span data-stu-id="a193a-315">Install the `Microsoft.AspNetCore.Mvc.Formatters.Xml` NuGet package.</span></span>
+
+* <span data-ttu-id="a193a-316">В `Startup.ConfigureServices` вызовите <xref:Microsoft.Extensions.DependencyInjection.MvcXmlMvcCoreBuilderExtensions.AddXmlSerializerFormatters*> или <xref:Microsoft.Extensions.DependencyInjection.MvcXmlMvcCoreBuilderExtensions.AddXmlDataContractSerializerFormatters*>.</span><span class="sxs-lookup"><span data-stu-id="a193a-316">In `Startup.ConfigureServices`, call <xref:Microsoft.Extensions.DependencyInjection.MvcXmlMvcCoreBuilderExtensions.AddXmlSerializerFormatters*> or <xref:Microsoft.Extensions.DependencyInjection.MvcXmlMvcCoreBuilderExtensions.AddXmlDataContractSerializerFormatters*>.</span></span>
+
+  [!code-csharp[](model-binding/samples/2.x/Startup.cs?name=snippet_ValueProvider&highlight=9)]
+
+* <span data-ttu-id="a193a-317">Примените атрибут `Consumes` к классам контроллера или методам действий, которые должны ожидать XML в тексте запроса.</span><span class="sxs-lookup"><span data-stu-id="a193a-317">Apply the `Consumes` attribute to controller classes or action methods that should expect XML in the request body.</span></span>
+
+  ```csharp
+  [HttpPost]
+  [Consumes("application/xml")]
+  public ActionResult<Pet> Create(Pet pet)
+  ```
+
+  <span data-ttu-id="a193a-318">Дополнительные сведения см. в разделе [Введение в сериализацию XML](https://docs.microsoft.com/en-us/dotnet/standard/serialization/introducing-xml-serialization).</span><span class="sxs-lookup"><span data-stu-id="a193a-318">For more information, see [Introducing XML Serialization](https://docs.microsoft.com/en-us/dotnet/standard/serialization/introducing-xml-serialization).</span></span>
+
+## <a name="exclude-specified-types-from-model-binding"></a><span data-ttu-id="a193a-319">Исключение указанных типов из привязки модели</span><span class="sxs-lookup"><span data-stu-id="a193a-319">Exclude specified types from model binding</span></span>
+
+<span data-ttu-id="a193a-320">Поведение привязки модели и системы проверки определяется классом [ModelMetadata](/dotnet/api/microsoft.aspnetcore.mvc.modelbinding.modelmetadata).</span><span class="sxs-lookup"><span data-stu-id="a193a-320">The model binding and validation systems' behavior is driven by [ModelMetadata](/dotnet/api/microsoft.aspnetcore.mvc.modelbinding.modelmetadata).</span></span> <span data-ttu-id="a193a-321">Вы можете настроить `ModelMetadata`, добавив поставщик сведений в [MvcOptions.ModelMetadataDetailsProviders](xref:Microsoft.AspNetCore.Mvc.MvcOptions.ModelMetadataDetailsProviders).</span><span class="sxs-lookup"><span data-stu-id="a193a-321">You can customize `ModelMetadata` by adding a details provider to [MvcOptions.ModelMetadataDetailsProviders](xref:Microsoft.AspNetCore.Mvc.MvcOptions.ModelMetadataDetailsProviders).</span></span> <span data-ttu-id="a193a-322">Встроенные поставщики сведений доступны для отключения привязки модели или проверки для указанных типов.</span><span class="sxs-lookup"><span data-stu-id="a193a-322">Built-in details providers are available for disabling model binding or validation for specified types.</span></span>
+
+<span data-ttu-id="a193a-323">Чтобы отключить привязку модели для всех моделей указанного типа, добавьте <xref:Microsoft.AspNetCore.Mvc.ModelBinding.Metadata.ExcludeBindingMetadataProvider> в `Startup.ConfigureServices`.</span><span class="sxs-lookup"><span data-stu-id="a193a-323">To disable model binding on all models of a specified type, add an <xref:Microsoft.AspNetCore.Mvc.ModelBinding.Metadata.ExcludeBindingMetadataProvider> in `Startup.ConfigureServices`.</span></span> <span data-ttu-id="a193a-324">Например, для отключения привязки модели для всех моделей типа `System.Version`:</span><span class="sxs-lookup"><span data-stu-id="a193a-324">For example, to disable model binding on all models of type `System.Version`:</span></span>
+
+[!code-csharp[](model-binding/samples/2.x/Startup.cs?name=snippet_ValueProvider&highlight=4-5)]
+
+<span data-ttu-id="a193a-325">Чтобы отключить проверку свойств указанного типа, добавьте <xref:Microsoft.AspNetCore.Mvc.ModelBinding.SuppressChildValidationMetadataProvider> в `Startup.ConfigureServices`.</span><span class="sxs-lookup"><span data-stu-id="a193a-325">To disable validation on properties of a specified type, add a <xref:Microsoft.AspNetCore.Mvc.ModelBinding.SuppressChildValidationMetadataProvider> in `Startup.ConfigureServices`.</span></span> <span data-ttu-id="a193a-326">Например, чтобы отключить проверку по свойствам типа `System.Guid`:</span><span class="sxs-lookup"><span data-stu-id="a193a-326">For example, to disable validation on properties of type `System.Guid`:</span></span>
+
+[!code-csharp[](model-binding/samples/2.x/Startup.cs?name=snippet_ValueProvider&highlight=6-7)]
+
+## <a name="custom-model-binders"></a><span data-ttu-id="a193a-327">Настраиваемые связыватели модели</span><span class="sxs-lookup"><span data-stu-id="a193a-327">Custom model binders</span></span>
+
+<span data-ttu-id="a193a-328">Привязку модели можно расширить путем написания пользовательского связывателя модели и с помощью атрибута `[ModelBinder]`, чтобы выбрать его для заданного целевого объекта.</span><span class="sxs-lookup"><span data-stu-id="a193a-328">You can extend model binding by writing a custom model binder and using the `[ModelBinder]` attribute to select it for a given target.</span></span> <span data-ttu-id="a193a-329">Узнайте больше о [пользовательской привязке модели](xref:mvc/advanced/custom-model-binding).</span><span class="sxs-lookup"><span data-stu-id="a193a-329">Learn more about [custom model binding](xref:mvc/advanced/custom-model-binding).</span></span>
+
+## <a name="manual-model-binding"></a><span data-ttu-id="a193a-330">Привязка модели вручную</span><span class="sxs-lookup"><span data-stu-id="a193a-330">Manual model binding</span></span>
+
+<span data-ttu-id="a193a-331">Привязка модели может вызываться вручную с помощью метода <xref:Microsoft.AspNetCore.Mvc.ControllerBase.TryUpdateModelAsync*>.</span><span class="sxs-lookup"><span data-stu-id="a193a-331">Model binding can be invoked manually by using the <xref:Microsoft.AspNetCore.Mvc.ControllerBase.TryUpdateModelAsync*> method.</span></span> <span data-ttu-id="a193a-332">Этот метод определен в классах `ControllerBase` и `PageModel`.</span><span class="sxs-lookup"><span data-stu-id="a193a-332">The method is defined on both `ControllerBase` and `PageModel` classes.</span></span> <span data-ttu-id="a193a-333">Перегрузки метода позволяют задать поставщик префиксов и значений.</span><span class="sxs-lookup"><span data-stu-id="a193a-333">Method overloads let you specify the prefix and value provider to use.</span></span> <span data-ttu-id="a193a-334">Этот метод возвращает `false` при сбое привязки модели.</span><span class="sxs-lookup"><span data-stu-id="a193a-334">The method returns `false` if model binding fails.</span></span> <span data-ttu-id="a193a-335">Ниже приведен пример:</span><span class="sxs-lookup"><span data-stu-id="a193a-335">Here's an example:</span></span>
+
+[!code-csharp[](model-binding/samples/2.x/Pages/InstructorsWithCollection/Create.cshtml.cs?name=snippet_TryUpdate&highlight=1-4)]
+
+## <a name="fromservices-attribute"></a><span data-ttu-id="a193a-336">Атрибут [FromServices]</span><span class="sxs-lookup"><span data-stu-id="a193a-336">[FromServices] attribute</span></span>
+
+<span data-ttu-id="a193a-337">Имя этого атрибута соответствует шаблону атрибутов привязки модели, которые указывают источник данных.</span><span class="sxs-lookup"><span data-stu-id="a193a-337">This attribute's name follows the pattern of model binding attributes that specify a data source.</span></span> <span data-ttu-id="a193a-338">Но это не связано с привязкой данных от поставщика значений.</span><span class="sxs-lookup"><span data-stu-id="a193a-338">But it's not about binding data from a value provider.</span></span> <span data-ttu-id="a193a-339">Он получает экземпляр типа из контейнера [внедрения зависимостей](xref:fundamentals/dependency-injection).</span><span class="sxs-lookup"><span data-stu-id="a193a-339">It gets an instance of a type from the [dependency injection](xref:fundamentals/dependency-injection) container.</span></span> <span data-ttu-id="a193a-340">Он предназначен для предоставления альтернативы внедрению через конструктор, когда вам нужна служба, только если вызывается конкретный метод.</span><span class="sxs-lookup"><span data-stu-id="a193a-340">Its purpose is to provide an alternative to constructor injection for when you need a service only if a particular method is called.</span></span>
+
+## <a name="additional-resources"></a><span data-ttu-id="a193a-341">Дополнительные ресурсы</span><span class="sxs-lookup"><span data-stu-id="a193a-341">Additional resources</span></span>
+
+* <xref:mvc/models/validation>
+* <xref:mvc/advanced/custom-model-binding>
