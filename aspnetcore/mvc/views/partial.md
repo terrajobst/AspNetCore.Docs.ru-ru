@@ -4,20 +4,20 @@ author: ardalis
 description: Узнайте, как с помощью частичных представлений разбить большие файлы разметки на части и предотвратить дублирование стандартных блоков разметки на веб-страницах приложений ASP.NET Core.
 ms.author: riande
 ms.custom: mvc
-ms.date: 04/06/2019
+ms.date: 06/12/2019
 uid: mvc/views/partial
-ms.openlocfilehash: e13b2ea974697bb12c121d1a70fb5079d6aadb2d
-ms.sourcegitcommit: 5b0eca8c21550f95de3bb21096bd4fd4d9098026
+ms.openlocfilehash: 901fd52f89969141713e443890781a77308bd901
+ms.sourcegitcommit: 335a88c1b6e7f0caa8a3a27db57c56664d676d34
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 04/27/2019
-ms.locfileid: "64887469"
+ms.lasthandoff: 06/12/2019
+ms.locfileid: "67034912"
 ---
 # <a name="partial-views-in-aspnet-core"></a>Частичные представления в ASP.NET Core
 
 Авторы: [Стив Смит](https://ardalis.com/) (Steve Smith), [Люк Лэтэм](https://github.com/guardrex) (Luke Latham), [Махер Джендуби](https://twitter.com/maherjend) (Maher JENDOUBI), [Рик Андерсон](https://twitter.com/RickAndMSFT) (Rick Anderson) и [Скотт Собер](https://twitter.com/scottsauber) (Scott Sauber).
 
-Частичное представление — это файл разметки [Razor](xref:mvc/views/razor) (*.cshtml*), отображающий выходные данные HTML *внутри* выходных данных другого файла разметки.
+Частичное представление — это файл разметки [Razor](xref:mvc/views/razor) ( *.cshtml*), отображающий выходные данные HTML *внутри* выходных данных другого файла разметки.
 
 ::: moniker range=">= aspnetcore-2.1"
 
@@ -48,7 +48,7 @@ ms.locfileid: "64887469"
 
 Частичное представление — это файл разметки *.cshtml*, размещенный в папке *Views* (в модели MVC) или *Pages* (в модели Razor Pages).
 
-В модели ASP.NET Core MVC элемент контроллера <xref:Microsoft.AspNetCore.Mvc.ViewResult> может возвращать представление или частичное представление. Аналогичная возможность будет добавлена для Razor Pages в ASP.NET Core 2.2. В Razor Pages <xref:Microsoft.AspNetCore.Mvc.RazorPages.PageModel> может возвращать <xref:Microsoft.AspNetCore.Mvc.PartialViewResult>. См. дополнительные сведения о [создании ссылок на частичные представления и их отображении](#reference-a-partial-view).
+В модели ASP.NET Core MVC элемент контроллера <xref:Microsoft.AspNetCore.Mvc.ViewResult> может возвращать представление или частичное представление. В Razor Pages <xref:Microsoft.AspNetCore.Mvc.RazorPages.PageModel> может возвращать частичное представление, представленное в виде объекта <xref:Microsoft.AspNetCore.Mvc.PartialViewResult>. См. дополнительные сведения о [создании ссылок на частичные представления и их отображении](#reference-a-partial-view).
 
 В отличие от представления MVC и отображения страниц, частичное представление не выполняет файл *_ViewStart.cshtml*. Дополнительные сведения о файле *_ViewStart.cshtml*, см. здесь: <xref:mvc/views/layout>.
 
@@ -60,7 +60,7 @@ ms.locfileid: "64887469"
 
 Частичное представление — это файл разметки *.cshtml*, размещенный в папке *Views*.
 
-Элемент контроллера <xref:Microsoft.AspNetCore.Mvc.ViewResult> может возвращать представление или частичное представление.
+Элемент контроллера <xref:Microsoft.AspNetCore.Mvc.ViewResult> может возвращать представление или частичное представление. См. дополнительные сведения о [создании ссылок на частичные представления и их отображении](#reference-a-partial-view).
 
 В отличие от представления MVC, частичное представление не выполняет файл *_ViewStart.cshtml*. Дополнительные сведения о файле *_ViewStart.cshtml*, см. здесь: <xref:mvc/views/layout>.
 
@@ -69,6 +69,33 @@ ms.locfileid: "64887469"
 ::: moniker-end
 
 ## <a name="reference-a-partial-view"></a>Ссылка на частичное представление
+
+::: moniker range=">= aspnetcore-2.0"
+
+### <a name="use-a-partial-view-in-a-razor-pages-pagemodel"></a>Использование частичного представления в PageModel Razor Pages
+
+В ASP.NET Core 2.0 или 2.1 следующий метод обработчика преобразует для просмотра частичное представление *\_AuthorPartialRP.cshtml* в ответ:
+
+```csharp
+public IActionResult OnGetPartial() =>
+    new PartialViewResult
+    {
+        ViewName = "_AuthorPartialRP",
+        ViewData = ViewData,
+    };
+```
+
+::: moniker-end
+
+::: moniker range=">= aspnetcore-2.2"
+
+В ASP.NET Core 2.2 или более поздней версии метод обработчика может вызвать метод <xref:Microsoft.AspNetCore.Mvc.RazorPages.PageBase.Partial*>, чтобы выдать объект `PartialViewResult`:
+
+[!code-csharp[](partial/sample/PartialViewsSample/Pages/DiscoveryRP.cshtml.cs?name=snippet_OnGetPartial)]
+
+::: moniker-end
+
+### <a name="use-a-partial-view-in-a-markup-file"></a>Использование частичного представления в файле разметки
 
 ::: moniker range=">= aspnetcore-2.1"
 
@@ -263,7 +290,7 @@ ms.locfileid: "64887469"
 
 Следующая разметка для примера приложения взята со страницы *Pages/ArticlesRP/ReadRP.cshtml*. Эта страница содержит два частичных представления. Второе частичное представление передает модель и объект `ViewData` в первое частичное представление. Используйте перегрузку конструктора `ViewDataDictionary`, чтобы передать новый словарь `ViewData` и при этом сохранить существующий словарь `ViewData`.
 
-[!code-cshtml[](partial/sample/PartialViewsSample/Pages/ArticlesRP/ReadRP.cshtml?name=snippet_ReadPartialViewRP&highlight=5,15-19)]
+[!code-cshtml[](partial/sample/PartialViewsSample/Pages/ArticlesRP/ReadRP.cshtml?name=snippet_ReadPartialViewRP&highlight=5,15-20)]
 
 *Pages/Shared/_AuthorPartialRP.cshtml* — это первое частичное представление, указанное в файле разметки *ReadRP.cshtml*:
 
@@ -279,7 +306,7 @@ ms.locfileid: "64887469"
 
 В приведенной ниже разметке для примера приложения показано представление *Views/Articles/Read.cshtml*. Это представление содержит два частичных представления. Второе частичное представление передает модель и объект `ViewData` в первое частичное представление. Используйте перегрузку конструктора `ViewDataDictionary`, чтобы передать новый словарь `ViewData` и при этом сохранить существующий словарь `ViewData`.
 
-[!code-cshtml[](partial/sample/PartialViewsSample/Views/Articles/Read.cshtml?name=snippet_ReadPartialView&highlight=5,15-19)]
+[!code-cshtml[](partial/sample/PartialViewsSample/Views/Articles/Read.cshtml?name=snippet_ReadPartialView&highlight=5,15-20)]
 
 *Views/Shared/_AuthorPartialRP.cshtml* — это первое частичное представление, указанное в файле разметки *Read.cshtml*:
 

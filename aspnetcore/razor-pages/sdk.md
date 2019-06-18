@@ -5,29 +5,43 @@ description: Сведения о применении в ASP.NET Core функц
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc, seodec18
-ms.date: 06/05/2019
+ms.date: 06/18/2019
 uid: razor-pages/sdk
-ms.openlocfilehash: 8c4e882af93b043afaa0bcf86fd1583405f84be9
-ms.sourcegitcommit: e7e04a45195d4e0527af6f7cf1807defb56dc3c3
+ms.openlocfilehash: fa69e4840377e0c1c8291c7ba9305a27bd3e6b82
+ms.sourcegitcommit: 516f166c5f7cec54edf3d9c71e6e2ba53fb3b0e5
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 06/06/2019
-ms.locfileid: "66750179"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67196361"
 ---
 # <a name="aspnet-core-razor-sdk"></a>Пакет SDK для Razor в ASP.NET Core
 
 Автор: [Рик Андерсон](https://twitter.com/RickAndMSFT) (Rick Anderson)
+
+## <a name="overview"></a>Обзор
 
 [!INCLUDE[](~/includes/2.1-SDK.md)] Включает в себя `Microsoft.NET.Sdk.Razor` MSBuild SDK (Razor SDK). Пакет SDK для Razor:
 
 * Стандартизирует процесс создания, упаковки и публикации проектов, содержащих файлы [Razor](xref:mvc/views/razor), для проектов на основе MVC ASP.NET.
 * Включает набор предопределенных целевых объектов, свойств и элементов, которые позволяют настраивать параметры компиляции файлов Razor.
 
+::: moniker range=">= aspnetcore-2.1 <= aspnetcore-2.2"
+
+Пакет SDK для Razor включает `<Content>` элемент с `Include` атрибут `**\*.cshtml` маски. Совпадающие файлы публикуются.
+
+::: moniker-end
+
+::: moniker range=">= aspnetcore-3.0"
+
+Пакет SDK для Razor включает `<Content>` элементов при помощи `Include` атрибуты значения `**\*.cshtml` и `**\*.razor` шаблонов глобализации. Совпадающие файлы публикуются.
+
+::: moniker-end
+
 ## <a name="prerequisites"></a>Предварительные требования
 
 [!INCLUDE[](~/includes/2.1-SDK.md)]
 
-## <a name="using-the-razor-sdk"></a>Использование пакета SDK для Razor
+## <a name="use-the-razor-sdk"></a>Используйте пакет SDK для Razor
 
 Большинство веб-приложений не требуется явно ссылаться на пакет SDK Razor.
 
@@ -37,7 +51,7 @@ ms.locfileid: "66750179"
 
   ```xml
   <Project SDK="Microsoft.NET.Sdk.Razor">
-    ...
+    <!-- omitted for brevity -->
   </Project>
   ```
 
@@ -72,7 +86,7 @@ ms.locfileid: "66750179"
 | Элементы | Описание |
 | ----- | ----------- |
 | `RazorGenerate` | Элементы (файлы *.cshtml*), которые являются входными данными для целей создания кода. |
-| `RazorCompile` | Элементы Item ( *.cs* файлы), являются входными значениями для целевых сред компиляции Razor. Используйте этот элемент ItemGroup, чтобы указать дополнительные файлы для компиляции в сборку Razor. |
+| `RazorCompile` | Элементы Item ( *.cs* файлы), являются входными значениями для целевых сред компиляции Razor. Используйте этот `ItemGroup` чтобы указать дополнительные файлы, компилируемые в сборки Razor. |
 | `RazorTargetAssemblyAttribute` | Элементы, используемые для создания атрибутов для сборки Razor. Пример:  <br>`RazorAssemblyAttribute`<br>`Include="System.Reflection.AssemblyMetadataAttribute"`<br>`_Parameter1="BuildSource" _Parameter2="https://docs.microsoft.com/">` |
 | `RazorEmbeddedResource` | Элемент элементы добавляются в виде внедренных ресурсов на созданную сборку Razor. |
 
@@ -115,3 +129,8 @@ ms.locfileid: "66750179"
   <RazorLangVersion>{VERSION}</RazorLangVersion>
 </PropertyGroup>
 ```
+
+## <a name="additional-resources"></a>Дополнительные ресурсы
+
+* [Дополнения к формату CSPROJ для .NET Core](/dotnet/core/tools/csproj)
+* [Общие элементы проектов MSBuild](/visualstudio/msbuild/common-msbuild-project-items)

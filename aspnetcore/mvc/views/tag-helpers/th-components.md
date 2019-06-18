@@ -4,14 +4,14 @@ author: scottaddie
 description: Сведения о вспомогательных компонентах тегов и его использовании в ASP.NET Core.
 monikerRange: '>= aspnetcore-2.0'
 ms.author: scaddie
-ms.date: 04/06/2019
+ms.date: 06/12/2019
 uid: mvc/views/tag-helpers/th-components
-ms.openlocfilehash: 777bbcca3d1c2f03f386fa62df2a2e0b00409318
-ms.sourcegitcommit: 5b0eca8c21550f95de3bb21096bd4fd4d9098026
+ms.openlocfilehash: b5b3abea6492cfaa7d6acd0e54073a8db12eb2a5
+ms.sourcegitcommit: 335a88c1b6e7f0caa8a3a27db57c56664d676d34
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 04/27/2019
-ms.locfileid: "64889739"
+ms.lasthandoff: 06/12/2019
+ms.locfileid: "67034762"
 ---
 # <a name="tag-helper-components-in-aspnet-core"></a>Вспомогательные компоненты тегов в ASP.NET Core
 
@@ -62,9 +62,16 @@ ASP.NET Core включает в себя два встроенных вспом
 
 Вспомогательные компоненты тегов необходимо добавить в коллекцию вспомогательных компонентов тегов приложения. Добавить его в коллекцию можно тремя способами:
 
-1. [регистрация с помощью контейнера служб](#registration-via-services-container);
-1. [регистрация с помощью файла Razor](#registration-via-razor-file);
-1. [регистрация с помощью модели страницы или контроллера](#registration-via-page-model-or-controller).
+* [Вспомогательные компоненты тегов в ASP.NET Core](#tag-helper-components-in-aspnet-core)
+  * [Варианты использования](#use-cases)
+    * [Внедрение в элемент HTML "head"](#inject-into-html-head-element)
+    * [Внедрение в элемент HTML "body"](#inject-into-html-body-element)
+  * [Регистрация компонента](#register-a-component)
+    * [регистрация с помощью контейнера служб](#registration-via-services-container);
+    * [регистрация с помощью файла Razor](#registration-via-razor-file);
+    * [регистрация с помощью модели страницы или контроллера](#registration-via-page-model-or-controller).
+  * [Создание компонента](#create-a-component)
+  * [Дополнительные ресурсы](#additional-resources)
 
 ### <a name="registration-via-services-container"></a>Регистрация с помощью контейнера служб
 

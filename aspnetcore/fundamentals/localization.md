@@ -5,12 +5,12 @@ description: Сведения о службах и ПО промежуточно
 ms.author: riande
 ms.date: 01/14/2017
 uid: fundamentals/localization
-ms.openlocfilehash: 3192ad150b914c00b315f38bd9fe077ebf402b37
-ms.sourcegitcommit: 687ffb15ebe65379f75c84739ea851d5a0d788b7
+ms.openlocfilehash: ec78d35daf6823779fca491aca7b7b309db4b02e
+ms.sourcegitcommit: e7e04a45195d4e0527af6f7cf1807defb56dc3c3
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58488706"
+ms.lasthandoff: 06/06/2019
+ms.locfileid: "66750040"
 ---
 # <a name="globalization-and-localization-in-aspnet-core"></a>Глобализация и локализация в ASP.NET Core
 
@@ -30,7 +30,7 @@ ms.locfileid: "58488706"
 
 3. реализацию стратегии по выбору языка и региональных параметров для каждого запроса.
 
-[Просмотреть или скачать образец кода](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/localization/sample/Localization) ([как скачивать](xref:index#how-to-download-a-sample))
+[Просмотреть или скачать образец кода](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/localization/sample/Localization) ([как скачивать](xref:index#how-to-download-a-sample))
 
 ## <a name="make-the-apps-content-localizable"></a>Обеспечение возможности локализации для содержимого приложения
 
@@ -348,3 +348,4 @@ services.Configure<RequestLocalizationOptions>(options =>
 * [Глобализация и локализация приложений .NET](/dotnet/standard/globalization-localization/index)
 * [Ресурсы в RESX-файлах](/dotnet/framework/resources/working-with-resx-files-programmatically)
 * [Набор средств многоязычных приложений Майкрософт](https://marketplace.visualstudio.com/items?itemName=MultilingualAppToolkit.MultilingualAppToolkit-18308)
+* [Локализация и универсальные шаблоны](https://github.com/hishamco/hishambinateya.com/blob/master/Posts/localization-and-generics.md)

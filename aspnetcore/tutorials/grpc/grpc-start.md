@@ -4,14 +4,14 @@ author: juntaoluo
 description: В этом учебнике объясняется, как создать службу и клиента gRPC в ASP.NET Core. Узнайте, как создать проект службы gRPC, изменить файл proto и добавить дуплексный режим потоковой передачи вызовов.
 monikerRange: '>= aspnetcore-3.0'
 ms.author: johluo
-ms.date: 06/05/2019
+ms.date: 06/12/2019
 uid: tutorials/grpc/grpc-start
-ms.openlocfilehash: 71e3321819eb7169f0896abe3e07849f59ea6fc7
-ms.sourcegitcommit: 5dd2ce9709c9e41142771e652d1a4bd0b5248cec
+ms.openlocfilehash: 919db3f31310342657c89100a6e25e8293648a9f
+ms.sourcegitcommit: 335a88c1b6e7f0caa8a3a27db57c56664d676d34
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 06/05/2019
-ms.locfileid: "66692529"
+ms.lasthandoff: 06/12/2019
+ms.locfileid: "67034806"
 ---
 # <a name="tutorial-create-a-grpc-client-and-server-in-aspnet-core"></a>Учебник. Создание клиента и сервера gRPC в ASP.NET Core
 
@@ -86,13 +86,13 @@ ms.locfileid: "66692529"
 
 # <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-* Нажмите CTRL + F5, чтобы запустить службу gRPC без отладчика.
+* Нажмите `Ctrl+F5`, чтобы запустить службу gRPC без отладчика.
 
   Служба запустится в командной строке Visual Studio.
 
 # <a name="visual-studio-code--visual-studio-for-mactabvisual-studio-codevisual-studio-mac"></a>[Visual Studio Code/Visual Studio для Mac](#tab/visual-studio-code+visual-studio-mac)
 
-* Выполните команду `dotnet run` в командной строке, чтобы запустить проект gRPC Greeter с именем GrpcGreeter.
+* Выполните команду `dotnet run` в командной строке, чтобы запустить проект gRPC Greeter с именем *GrpcGreeter*.
 
 <!-- End of combined VS/Mac tabs -->
 
@@ -112,7 +112,7 @@ info: Microsoft.Hosting.Lifetime[0]
 
 ### <a name="examine-the-project-files"></a>Анализ файлов проекта
 
-Файлы GrpcGreeter:
+Файлы проекта *GrpcGreeter*:
 
 * *greet.proto*: Файл *Protos/greet.proto* определяет службу gRPC `Greeter` и используется для создания ресурсов сервера gRPC. Дополнительные сведения см. в разделе [Введение в gRPC](xref:grpc/index).
 * Папка *Services* содержит реализацию службы `Greeter`.
@@ -153,13 +153,13 @@ code -r GrpcGreeterClient
 
 Добавьте следующие пакеты в клиентский проект gRPC:
 
-* [Grpc.Core](https://www.nuget.org/packages/Grpc.Core), который содержит API C# для клиента C-core;
+* [Grpc.Net.Client](https://www.nuget.org/packages/Grpc.Net.Client), который содержит клиент .NET Core.
 * [Google.Protobuf](https://www.nuget.org/packages/Google.Protobuf/), который содержит API сообщений protobuf для C#;
 * [Grpc.Tools](https://www.nuget.org/packages/Grpc.Tools/), который содержит поддержку инструментов C# для файлов protobuf. Пакет инструментов не требуется во время выполнения, поэтому зависимость помечается `PrivateAssets="All"`.
 
 ### <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-Установка пакетов с помощью консоли диспетчера пакетов (PMC) или управления пакетами NuGet
+Установка пакетов с помощью консоли диспетчера пакетов (PMC) или управления пакетами NuGet.
 
 #### <a name="pmc-option-to-install-packages"></a>Установка пакетов с помощью консоли диспетчера пакетов
 
@@ -168,7 +168,7 @@ code -r GrpcGreeterClient
 * Выполните следующие команды:
 
  ```powershell
-Install-Package Grpc.Core
+Install-Package Grpc.Net.Client
 Install-Package Google.Protobuf
 Install-Package Grpc.Tools
 ```
@@ -186,7 +186,7 @@ Install-Package Grpc.Tools
 Во **встроенном терминале** выполните следующие команды:
 
 ```console
-dotnet add GrpcGreeterClient.csproj package Grpc.Core
+dotnet add GrpcGreeterClient.csproj package Grpc.Net.Client
 dotnet add GrpcGreeterClient.csproj package Google.Protobuf
 dotnet add GrpcGreeterClient.csproj package Grpc.Tools
 ```
@@ -194,8 +194,8 @@ dotnet add GrpcGreeterClient.csproj package Grpc.Tools
 ### <a name="visual-studio-for-mactabvisual-studio-mac"></a>[Visual Studio для Mac](#tab/visual-studio-mac)
 
 * Щелкните правой кнопкой мыши папку **Пакеты** на **панели решения** > **Добавление пакетов**
-* В поле поиска введите **Grpc.Core**.
-* В области результатов выберите пакет **Grpc.Core** и нажмите кнопку **Добавить пакет**
+* В поле поиска введите **Grpc.Net.Client**.
+* В области результатов выберите пакет **Grpc.Net.Client** и нажмите кнопку **Добавить пакет**
 * Повторите все шаги для `Google.Protobuf` и `Grpc.Tools`.
 
 ---
@@ -242,23 +242,21 @@ dotnet add GrpcGreeterClient.csproj package Grpc.Tools
 
 Клиент Greeter создается следующим образом:
 
-* Создание экземпляра `Channel` со сведениями для создания подключения к службе gRPC.
-* Использование `Channel` для создания клиента Greeter:
+* Создание экземпляра `HttpClient` со сведениями для создания подключения к службе gRPC.
+* Использование `HttpClient` для создания клиента Greeter:
 
-[!code-cs[](~/tutorials/grpc/grpc-start/sample/GrpcGreeterClient/Program.cs?name=snippet&highlight=4-6)]
+[!code-cs[](~/tutorials/grpc/grpc-start/sample/GrpcGreeterClient/Program.cs?name=snippet&highlight=3-9)]
 
 Клиент Greeter вызывает асинхронный метод `SayHello`. Отображается результат вызова `SayHello`:
 
-[!code-cs[](~/tutorials/grpc/grpc-start/sample/GrpcGreeterClient/Program.cs?name=snippet&highlight=7-9)]
-
-Завершите работу `Channel`, используемого клиентом, после завершения операций для освобождения всех ресурсов.
+[!code-cs[](~/tutorials/grpc/grpc-start/sample/GrpcGreeterClient/Program.cs?name=snippet&highlight=10-12)]
 
 ## <a name="test-the-grpc-client-with-the-grpc-greeter-service"></a>Тестирование клиента gRPC с помощью службы Greeter gRPC
 
 ### <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-* В службе Greeter нажмите клавиши CTRL+F5 для запуска сервера без отладчика.
-* В проекте GrpcGreeterClient нажмите клавиши CTRL+F5 для запуска сервера без отладчика.
+* В службе Greeter нажмите `Ctrl+F5` для запуска сервера без отладчика.
+* В проекте `GrpcGreeterClient` нажмите `Ctrl+F5` для запуска сервера без отладчика.
 
 ### <a name="visual-studio-code--visual-studio-for-mactabvisual-studio-codevisual-studio-mac"></a>[Visual Studio Code/Visual Studio для Mac](#tab/visual-studio-code+visual-studio-mac)
 

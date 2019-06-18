@@ -3,20 +3,26 @@ title: Миграция проверки подлинности и удосто�
 author: scottaddie
 description: В этой статье описаны наиболее распространенные действия при миграции проверка подлинности ASP.NET Core 1.x и удостоверение ASP.NET Core 2.0.
 ms.author: scaddie
-ms.date: 12/18/2018
+ms.date: 06/13/2019
 uid: migration/1x-to-2x/identity-2x
-ms.openlocfilehash: 086deac51af186012315d5b6a1236c92c8980037
-ms.sourcegitcommit: 5d384db2fa9373a93b5d15e985fb34430e49ad7a
+ms.openlocfilehash: 3e8bc75b87a85159c9668b52eea32bb7d700be6c
+ms.sourcegitcommit: 516f166c5f7cec54edf3d9c71e6e2ba53fb3b0e5
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66039244"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67196380"
 ---
 # <a name="migrate-authentication-and-identity-to-aspnet-core-20"></a>Миграция проверки подлинности и удостоверения в ASP.NET Core 2.0
 
 По [Scott Addie](https://github.com/scottaddie) и [поздравить Хао](https://github.com/HaoK)
 
-ASP.NET Core 2.0 реализована новая модель для проверки подлинности и [удостоверений](xref:security/authentication/identity) с помощью служб, который упрощает настройку. Приложения ASP.NET Core 1.x, использующие проверку подлинности или удостоверение можно обновить для использования новой модели, как описано ниже.
+ASP.NET Core 2.0 реализована новая модель для проверки подлинности и [удостоверений](xref:security/authentication/identity) , упрощает настройку с помощью служб. Приложения ASP.NET Core 1.x, использующие проверку подлинности или удостоверение можно обновить для использования новой модели, как описано ниже.
+
+## <a name="update-namespaces"></a>Обновление пространства имен
+
+В версии 1.x, классов, так `IdentityRole` и `IdentityUser` были найдены в `Microsoft.AspNetCore.Identity.EntityFrameworkCore` пространства имен.
+
+В версии 2.0 <xref:Microsoft.AspNetCore.Identity> пространство имен стали новый дом для нескольких таких классов. С кодом удостоверений по умолчанию, затронутых классы включают `ApplicationUser` и `Startup`. Настройка вашей `using` инструкций для разрешения затронутых ссылок.
 
 <a name="auth-middleware"></a>
 
@@ -303,13 +309,13 @@ services.AddAuthentication(options =>
 
 Первый вариант, описанных выше 2.0 изменения не влияют.
 
-Второй вариант, описанных выше зависит от изменения версии 2.0. Например, вы может разрешение анонимных пользователей в веб-приложения в IIS или [HTTP.sys](xref:fundamentals/servers/httpsys) слоя но авторизацию пользователей на уровне контроллера. В этом случае значение схемы по умолчанию `IISDefaults.AuthenticationScheme` в `Startup.ConfigureServices` метод:
+Второй вариант, описанных выше зависит от изменения версии 2.0. Например, вам может позволяя анонимным пользователям в свое приложение в IIS или [HTTP.sys](xref:fundamentals/servers/httpsys) слоя но авторизацию пользователей на уровне контроллера. В этом случае значение схемы по умолчанию `IISDefaults.AuthenticationScheme` в `Startup.ConfigureServices` метод:
 
 ```csharp
 services.AddAuthentication(IISDefaults.AuthenticationScheme);
 ```
 
-Не удалось установить схему по умолчанию соответствующим образом предотвращает запроса authorize бросить вызов работу.
+Не удалось установить схему по умолчанию предотвращает запроса authorize бросить вызов работу.
 
 <a name="identity-cookie-options"></a>
 
@@ -317,7 +323,7 @@ services.AddAuthentication(IISDefaults.AuthenticationScheme);
 
 Побочный эффект изменения 2.0 заключается в переходе на использование именованных параметров, а не к экземпляру параметры файла cookie. Возможность настраивать имена схем идентификации файл cookie удаляется.
 
-Например, 1.x проекты использующие [внедрение через конструктор](xref:mvc/controllers/dependency-injection#constructor-injection) для передачи `IdentityCookieOptions` параметр в *AccountController.cs*. Схема проверки подлинности внешних файлов cookie осуществляется из предоставленного экземпляра.
+Например, 1.x проекты использующие [внедрение через конструктор](xref:mvc/controllers/dependency-injection#constructor-injection) для передачи `IdentityCookieOptions` параметр в *AccountController.cs* и *ManageController.cs*. Схема проверки подлинности внешних файлов cookie осуществляется из предоставленного экземпляра.
 
 [!code-csharp[](../1x-to-2x/samples/AspNetCoreDotNetCore1App/AspNetCoreDotNetCore1App/Controllers/AccountController.cs?name=snippet_AccountControllerConstructor&highlight=4,11)]
 
@@ -325,9 +331,17 @@ services.AddAuthentication(IISDefaults.AuthenticationScheme);
 
 [!code-csharp[](../1x-to-2x/samples/AspNetCoreDotNetCore2App/AspNetCoreDotNetCore2App/Controllers/AccountController.cs?name=snippet_AccountControllerConstructor)]
 
-`IdentityConstants.ExternalScheme` Константа может быть использована напрямую:
+в проектах 1.x, используемых `_externalCookieScheme` поля следующим образом:
+
+[!code-csharp[](../1x-to-2x/samples/AspNetCoreDotNetCore1App/AspNetCoreDotNetCore1App/Controllers/AccountController.cs?name=snippet_AuthenticationProperty)]
+
+В проектах 2.0 замените предыдущий код следующим. `IdentityConstants.ExternalScheme` Константа может использоваться непосредственно.
 
 [!code-csharp[](../1x-to-2x/samples/AspNetCoreDotNetCore2App/AspNetCoreDotNetCore2App/Controllers/AccountController.cs?name=snippet_AuthenticationProperty)]
+
+Разрешить только что добавленного `SignOutAsync` вызовите путем импорта следующее пространство имен:
+
+[!code-csharp[](../1x-to-2x/samples/AspNetCoreDotNetCore2App/AspNetCoreDotNetCore2App/Controllers/AccountController.cs?name=snippet_AuthenticationImport)]
 
 <a name="navigation-properties"></a>
 
@@ -389,21 +403,21 @@ protected override void OnModelCreating(ModelBuilder builder)
 
 ## <a name="replace-getexternalauthenticationschemes"></a>Замените GetExternalAuthenticationSchemes
 
-Синхронный метод `GetExternalAuthenticationSchemes` был удален, а асинхронная версия. проекты 1.x имеется следующий код *ManageController.cs*:
+Синхронный метод `GetExternalAuthenticationSchemes` был удален, а асинхронная версия. проекты 1.x имеется следующий код *Controllers/ManageController.cs*:
 
 [!code-csharp[](../1x-to-2x/samples/AspNetCoreDotNetCore1App/AspNetCoreDotNetCore1App/Controllers/ManageController.cs?name=snippet_GetExternalAuthenticationSchemes)]
 
-Этот метод представлен в *Login.cshtml* слишком:
+Этот метод представлен в *Views/Account/Login.cshtml* слишком:
 
-[!code-cshtml[](../1x-to-2x/samples/AspNetCoreDotNetCore1App/AspNetCoreDotNetCore1App/Views/Account/Login.cshtml?range=62,75-84)]
+[!code-cshtml[](../1x-to-2x/samples/AspNetCoreDotNetCore1App/AspNetCoreDotNetCore1App/Views/Account/Login.cshtml?name=snippet_GetExtAuthNSchemes&highlight=2)]
 
-В проектах 2.0 используйте `GetExternalAuthenticationSchemesAsync` метод:
+В проектах 2.0 используйте <xref:Microsoft.AspNetCore.Identity.SignInManager`1.GetExternalAuthenticationSchemesAsync*> метод. Изменение *ManageController.cs* похожа на следующий код:
 
 [!code-csharp[](../1x-to-2x/samples/AspNetCoreDotNetCore2App/AspNetCoreDotNetCore2App/Controllers/ManageController.cs?name=snippet_GetExternalAuthenticationSchemesAsync)]
 
 В *Login.cshtml*, `AuthenticationScheme` свойство с доступом в `foreach` примет цикл `Name`:
 
-[!code-cshtml[](../1x-to-2x/samples/AspNetCoreDotNetCore2App/AspNetCoreDotNetCore2App/Views/Account/Login.cshtml?range=62,75-84)]
+[!code-cshtml[](../1x-to-2x/samples/AspNetCoreDotNetCore2App/AspNetCoreDotNetCore2App/Views/Account/Login.cshtml?name=snippet_GetExtAuthNSchemesAsync&highlight=2,19)]
 
 <a name="property-change"></a>
 
@@ -421,4 +435,4 @@ protected override void OnModelCreating(ModelBuilder builder)
 
 ## <a name="additional-resources"></a>Дополнительные ресурсы
 
-Дополнительные сведения и обсуждение, см. в разделе [обсуждение Auth 2.0](https://github.com/aspnet/Security/issues/1338) проблемы на сайте GitHub.
+Дополнительные сведения см. в разделе [обсуждение Auth 2.0](https://github.com/aspnet/Security/issues/1338) проблемы на сайте GitHub.
