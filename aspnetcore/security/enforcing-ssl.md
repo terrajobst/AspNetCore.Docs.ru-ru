@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 12/01/2018
 uid: security/enforcing-ssl
-ms.openlocfilehash: 8d48877153d6d75348e29299c669125904236de8
-ms.sourcegitcommit: 5dd2ce9709c9e41142771e652d1a4bd0b5248cec
+ms.openlocfilehash: 08ce50775d1b5348cb0528a1724cec2e5c72dae2
+ms.sourcegitcommit: 4ef0362ef8b6e5426fc5af18f22734158fe587e1
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 06/05/2019
-ms.locfileid: "66692590"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67152905"
 ---
 # <a name="enforce-https-in-aspnet-core"></a>Принудительное использование HTTPS в ASP.NET Core
 
@@ -24,11 +24,32 @@ ms.locfileid: "66692590"
 
 Интерфейс API может препятствовать передачи конфиденциальных данных при первом запросе клиента.
 
+::: moniker range="< aspnetcore-3.0"
+
 > [!WARNING]
+> ## <a name="api-projects"></a>Проекты API
+>
 > Сделать **не** использовать [RequireHttpsAttribute](/dotnet/api/microsoft.aspnetcore.mvc.requirehttpsattribute) на веб-API, получения конфиденциальной информации. `RequireHttpsAttribute` использует коды состояния HTTP для перенаправления браузеров с HTTP на HTTPS. Клиенты API не может понять и подчиняются перенаправление с HTTP на HTTPS. Такие клиенты могут отправлять данные по протоколу HTTP. Веб-API должен:
 >
 > * Прослушивает HTTP.
 > * Закрыть соединение с кодом состояния 400 (неправильный запрос) и не обработать запрос.
+::: moniker-end
+
+::: moniker range=">= aspnetcore-3.0"
+
+> [!WARNING]
+> ## <a name="api-projects"></a>Проекты API
+>
+> Сделать **не** использовать [RequireHttpsAttribute](/dotnet/api/microsoft.aspnetcore.mvc.requirehttpsattribute) на веб-API, получения конфиденциальной информации. `RequireHttpsAttribute` использует коды состояния HTTP для перенаправления браузеров с HTTP на HTTPS. Клиенты API не может понять и подчиняются перенаправление с HTTP на HTTPS. Такие клиенты могут отправлять данные по протоколу HTTP. Веб-API должен:
+>
+> * Прослушивает HTTP.
+> * Закрыть соединение с кодом состояния 400 (неправильный запрос) и не обработать запрос.
+>
+> ## <a name="hsts-and-api-projects"></a>Проекты HSTS и API
+>
+> Проекты API по умолчанию не включают [HSTS](#hsts) так, как HSTS обычно является единственной инструкцией в браузере. Прочие вызывающие программы, например телефон или классических приложений, сделать **не** подчиняются инструкцию. Даже в обозревателях прошедшего проверку подлинности один вызов API по протоколу HTTP имеет риски на небезопасной сети. Безопасный подход — настроить проекты API только прослушивать и отвечать по протоколу HTTPS.
+
+::: moniker-end
 
 ## <a name="require-https"></a>Требование к использованию протокола HTTPS
 
@@ -159,6 +180,8 @@ public void ConfigureServices(IServiceCollection services)
 ::: moniker-end
 
 ::: moniker range=">= aspnetcore-2.1"
+
+<a name="hsts"></a>
 
 ## <a name="http-strict-transport-security-protocol-hsts"></a>Безопасность строгой транспортный протокол HTTP (HSTS)
 

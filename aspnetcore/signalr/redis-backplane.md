@@ -7,12 +7,12 @@ ms.author: bradyg
 ms.custom: mvc
 ms.date: 11/28/2018
 uid: signalr/redis-backplane
-ms.openlocfilehash: 9d2a942dba6abe669126efee7f2b3cdd6560658e
-ms.sourcegitcommit: dd9c73db7853d87b566eef136d2162f648a43b85
+ms.openlocfilehash: adf9bbce1353fd811a4044e173533f76bc4193de
+ms.sourcegitcommit: 4ef0362ef8b6e5426fc5af18f22734158fe587e1
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65087664"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67152917"
 ---
 # <a name="set-up-a-redis-backplane-for-aspnet-core-signalr-scale-out"></a>Настройка Redis объединительной платы для горизонтального масштабирования ASP.NET Core SignalR
 
@@ -184,9 +184,9 @@ services.AddSignalR()
 
 ::: moniker-end
 
-## <a name="clustering"></a>Кластеризация
+## <a name="redis-clustering"></a>Кластеризацию redis
 
-Кластер — это метод, для достижения высокого уровня доступности с помощью нескольких серверов Redis. Кластеризация не поддерживается официально, но она может работать.
+[Кластеризация redis](https://redis.io/topics/cluster-spec) — это метод, для достижения высокого уровня доступности с помощью нескольких серверов Redis. Кластеризация не поддерживается официально, но она может работать.
 
 ## <a name="next-steps"></a>Следующие шаги
 
