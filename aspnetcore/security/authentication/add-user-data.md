@@ -3,15 +3,15 @@ title: Добавить, загрузки и удаления данных по�
 author: rick-anderson
 description: Узнайте, как добавить пользовательские данные для удостоверения в проекте ASP.NET Core. Удаление данных в соответствии с GDPR.
 ms.author: riande
-ms.date: 6/16/2018
+ms.date: 06/18/2019
 ms.custom: mvc, seodec18
 uid: security/authentication/add-user-data
-ms.openlocfilehash: d704041f73a7d4773c3da9a23f120b07a03d64ac
-ms.sourcegitcommit: dd9c73db7853d87b566eef136d2162f648a43b85
+ms.openlocfilehash: c219500b7595fd8d200e4e5e742b1e1fda836ba3
+ms.sourcegitcommit: a1283d486ac1dcedfc7ea302e1cc882833e2c515
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65086491"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67207740"
 ---
 # <a name="add-download-and-delete-custom-user-data-to-identity-in-an-aspnet-core-project"></a>Добавление, скачивание и удаление пользовательских данных для удостоверений в проекте ASP.NET Core
 
@@ -20,11 +20,11 @@ ms.locfileid: "65086491"
 В этой статье показано, как:
 
 * Добавьте пользовательские данные веб-приложение ASP.NET Core.
-* Украшение модели пользовательских данных с [PersonalData](/dotnet/api/microsoft.aspnetcore.identity.personaldataattribute?view=aspnetcore-2.1) атрибут, чтобы оно автоматически доступно для загрузки и удаления. Возможность загрузки и удаления данных помогает обеспечить соответствие [GDPR](xref:security/gdpr) требования.
+* Украшение модели пользовательских данных с <xref:Microsoft.AspNetCore.Identity.PersonalDataAttribute> атрибут, чтобы оно автоматически доступно для загрузки и удаления. Возможность загрузки и удаления данных помогает обеспечить соответствие [GDPR](xref:security/gdpr) требования.
 
 В примере проекта создается на основе веб-приложения Razor Pages, но инструкции одинаковы для веб-приложения ASP.NET Core MVC.
 
-[Просмотреть или скачать образец кода](https://github.com/aspnet/AspNetCore.Docs/tree/live/aspnetcore/security/authentication/add-user-data) ([как скачивать](xref:index#how-to-download-a-sample))
+[Просмотреть или скачать образец кода](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/security/authentication/add-user-data) ([как скачивать](xref:index#how-to-download-a-sample))
 
 ## <a name="prerequisites"></a>Предварительные требования
 
@@ -34,7 +34,7 @@ ms.locfileid: "65086491"
 
 # <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-* В меню **Файл** Visual Studio откройте меню **Создать** > **Проект**. Назовите проект **WebApp1** Если вы хотите его совпадать с пространством имен [загрузить образец](https://github.com/aspnet/AspNetCore.Docs/tree/live/aspnetcore/security/authentication/add-user-data/sample) кода.
+* В меню **Файл** Visual Studio откройте меню **Создать** > **Проект**. Назовите проект **WebApp1** Если вы хотите его совпадать с пространством имен [загрузить образец](https://github.com/aspnet/AspNetCore.Docs/tree/live/aspnetcore/security/authentication/add-user-data) кода.
 * Выберите **веб-приложение ASP.NET Core** > **ОК**
 * Выберите **ASP.NET Core 2.2** в раскрывающемся списке
 * Выберите **веб-приложение**  > **ОК**
