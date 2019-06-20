@@ -7,12 +7,12 @@ ms.custom: mvc
 ms.date: 03/27/2019
 ms.topic: tutorial
 uid: data/ef-mvc/concurrency
-ms.openlocfilehash: d3954800f4f1358565a627768e34465215dc4f6e
-ms.sourcegitcommit: 5b0eca8c21550f95de3bb21096bd4fd4d9098026
+ms.openlocfilehash: bfe417a6153f74cf0ca2d9bcde4db1bba8453b3b
+ms.sourcegitcommit: 4ef0362ef8b6e5426fc5af18f22734158fe587e1
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 04/27/2019
-ms.locfileid: "64886659"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67152883"
 ---
 # <a name="tutorial-handle-concurrency---aspnet-mvc-with-ef-core"></a>Учебник. Использование ASP.NET Core MVC с EF Core. Обработка параллелизма
 
@@ -154,7 +154,7 @@ dotnet ef database update
 
 [!code-csharp[](intro/samples/cu/Controllers/DepartmentsController.cs?name=snippet_EditPost)]
 
-Код начинает пытаться считать кафедру для обновления. Если метод `SingleOrDefaultAsync` возвращает значение null, кафедра была удалена другим пользователем. В этом случае код использует переданные значения из формы для создания сущности кафедры, чтобы страницу "Edit" (Редактирование) можно было отобразить повторно с сообщением об ошибке. Кроме того, повторно создать сущность кафедры не нужно, если вы выводите только сообщение об ошибке без повторного отображения полей кафедры.
+Код начинает пытаться считать кафедру для обновления. Если метод `FirstOrDefaultAsync` возвращает значение null, кафедра была удалена другим пользователем. В этом случае код использует переданные значения из формы для создания сущности кафедры, чтобы страницу "Edit" (Редактирование) можно было отобразить повторно с сообщением об ошибке. Кроме того, повторно создать сущность кафедры не нужно, если вы выводите только сообщение об ошибке без повторного отображения полей кафедры.
 
 Представление сохраняет исходное значение `RowVersion` в скрытом поле, а данный метод получает это значение в параметре `rowVersion`. Перед вызовом `SaveChanges` нужно поместить это исходное значение свойства `RowVersion` в коллекцию `OriginalValues` для сущности.
 

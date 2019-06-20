@@ -5,12 +5,12 @@ description: В этой серии руководств объясняется,
 ms.author: riande
 ms.date: 6/3/2019
 uid: tutorials/razor-pages/razor-pages-start
-ms.openlocfilehash: e7d0312bd4b54586f4a3d403f464ded1aa49bcac
-ms.sourcegitcommit: 9691b742134563b662948b0ed63f54ef7186801e
+ms.openlocfilehash: ee5ef572db8b3c4e152fd864177c0eea3edc1f20
+ms.sourcegitcommit: f5762967df3be8b8c868229e679301f2f7954679
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 06/10/2019
-ms.locfileid: "66824703"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67048213"
 ---
 # <a name="tutorial-get-started-with-razor-pages-in-aspnet-core"></a>Учебник. Начало работы с Razor Pages в ASP.NET Core
 
@@ -170,23 +170,23 @@ dotnet new webapp -o RazorPagesMovie
 * Файл *.cshtml*, содержащий HTML-разметку с кодом C# и синтаксисом Razor.
 * Файл *. cshtml.cs*, содержащий код C#, который обрабатывает события страницы.
 
-Имена вспомогательных файлов начинаются с символа подчеркивания. Например, файл *_Layout.cshtml* настраивает элементы пользовательского интерфейса, общие для всех страниц. Этот файл настраивает меню навигации в верхней части страницы и уведомление об авторских правах в нижней части страницы. Для получения дополнительной информации см. <xref:mvc/views/layout>.
+Имена вспомогательных файлов начинаются с символа подчеркивания. Например, файл *_Layout.cshtml* настраивает элементы пользовательского интерфейса, общие для всех страниц. Этот файл настраивает меню навигации в верхней части страницы и уведомление об авторских правах в нижней части страницы. Дополнительные сведения можно найти по адресу: <xref:mvc/views/layout>.
 
 ### <a name="wwwroot-folder"></a>Папка wwwroot
 
-Содержит статические файлы, такие как HTML-файлы, файлы JavaScript и CSS-файлы. Для получения дополнительной информации см. <xref:fundamentals/static-files>.
+Содержит статические файлы, такие как HTML-файлы, файлы JavaScript и CSS-файлы. Дополнительные сведения можно найти по адресу: <xref:fundamentals/static-files>.
 
 ### <a name="appsettingsjson"></a>appSettings.json
 
-Содержит данные конфигурации, например строки подключения. Для получения дополнительной информации см. <xref:fundamentals/configuration/index>.
+Содержит данные конфигурации, например строки подключения. Дополнительные сведения можно найти по адресу: <xref:fundamentals/configuration/index>.
 
 ### <a name="programcs"></a>Program.cs
 
-Содержит точку входа для программы. Для получения дополнительной информации см. <xref:fundamentals/host/web-host>.
+Содержит точку входа для программы. Дополнительные сведения можно найти по адресу: <xref:fundamentals/host/generic-host>.
 
 ### <a name="startupcs"></a>Startup.cs
 
-Содержит код, который настраивает поведение приложения, например, требуется ли согласие для файлов cookie. Для получения дополнительной информации см. <xref:fundamentals/startup>.
+Содержит код, который настраивает поведение приложения, например, требуется ли согласие для файлов cookie. Дополнительные сведения можно найти по адресу: <xref:fundamentals/startup>.
 
 ## <a name="additional-resources"></a>Дополнительные ресурсы
 
