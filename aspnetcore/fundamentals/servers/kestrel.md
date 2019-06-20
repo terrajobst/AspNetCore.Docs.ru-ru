@@ -5,14 +5,14 @@ description: Общие сведения о Kestrel — кроссплатфо�
 monikerRange: '>= aspnetcore-2.1'
 ms.author: tdykstra
 ms.custom: mvc
-ms.date: 05/28/2019
+ms.date: 06/18/2019
 uid: fundamentals/servers/kestrel
-ms.openlocfilehash: 0ba207bf6c78476a8c778b95710fd89be50d397a
-ms.sourcegitcommit: 335a88c1b6e7f0caa8a3a27db57c56664d676d34
+ms.openlocfilehash: b18e7139970accd504a83e458afb2c7f9035a921
+ms.sourcegitcommit: a1283d486ac1dcedfc7ea302e1cc882833e2c515
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 06/12/2019
-ms.locfileid: "67034835"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67207764"
 ---
 # <a name="kestrel-web-server-implementation-in-aspnet-core"></a>Реализации веб-сервера Kestrel в ASP.NET Core
 
@@ -479,7 +479,7 @@ public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
 * Ключ конфигурации узла `urls`.
 * Метод расширения `UseUrls`.
 
-Значение, указанное с помощью этих подходов, может быть одной или несколькими конечными точками HTTP и HTTPS (HTTPS при наличии сертификата по умолчанию). Настройте значение в виде списка с разделением точкой с запятой (например, `"Urls": "http://localhost:8000; http://localhost:8001"`).
+Значение, указанное с помощью этих подходов, может быть одной или несколькими конечными точками HTTP и HTTPS (HTTPS при наличии сертификата по умолчанию). Настройте значение в виде списка с разделением точкой с запятой (например, `"Urls": "http://localhost:8000;http://localhost:8001"`).
 
 Дополнительные сведения о таких подходах см. в разделах [URL-адреса сервера](xref:fundamentals/host/web-host#server-urls) и [Переопределение конфигурации](xref:fundamentals/host/web-host#override-configuration).
 
@@ -639,7 +639,7 @@ Kestrel ожидает передачи данных через `http://localhos
 ```json
 {
 "Kestrel": {
-  "EndPoints": {
+  "Endpoints": {
     "Http": {
       "Url": "http://localhost:5000"
     },
@@ -1056,7 +1056,7 @@ private class TlsFilterAdapter : IConnectionAdapter
 ```json
 {
   "Kestrel": {
-    "EndPointDefaults": {
+    "EndpointDefaults": {
       "Protocols": "Http1AndHttp2"
     }
   }
@@ -1068,7 +1068,7 @@ private class TlsFilterAdapter : IConnectionAdapter
 ```json
 {
   "Kestrel": {
-    "EndPoints": {
+    "Endpoints": {
       "HttpsDefaultCert": {
         "Url": "https://localhost:5001",
         "Protocols": "Http1AndHttp2"
