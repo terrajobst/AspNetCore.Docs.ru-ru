@@ -3,14 +3,14 @@ title: Миграция проверки подлинности и удосто�
 author: scottaddie
 description: В этой статье описаны наиболее распространенные действия при миграции проверка подлинности ASP.NET Core 1.x и удостоверение ASP.NET Core 2.0.
 ms.author: scaddie
-ms.date: 06/13/2019
+ms.date: 06/21/2019
 uid: migration/1x-to-2x/identity-2x
-ms.openlocfilehash: 3e8bc75b87a85159c9668b52eea32bb7d700be6c
-ms.sourcegitcommit: 516f166c5f7cec54edf3d9c71e6e2ba53fb3b0e5
+ms.openlocfilehash: c83356e12fa5ae581b369265b9d857b08445ed51
+ms.sourcegitcommit: 9f11685382eb1f4dd0fb694dea797adacedf9e20
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67196380"
+ms.lasthandoff: 06/21/2019
+ms.locfileid: "67313747"
 ---
 # <a name="migrate-authentication-and-identity-to-aspnet-core-20"></a>Миграция проверки подлинности и удостоверения в ASP.NET Core 2.0
 
@@ -304,18 +304,31 @@ services.AddAuthentication(options =>
 ## <a name="windows-authentication-httpsys--iisintegration"></a>Проверка подлинности Windows (HTTP.sys / IISIntegration)
 
 Существует два варианта проверки подлинности Windows.
-1. Узел разрешает только пользователям, прошедшим проверку подлинности
-2. Узел позволяет использовать объекты анонимных и прошедшие проверку пользователи
 
-Первый вариант, описанных выше 2.0 изменения не влияют.
+* Узел разрешает только пользователям, прошедшим проверку подлинности. Этот вариант не влияют изменения 2.0.
+* Узел позволяет использовать объекты анонимных и прошедшие проверку пользователи. Этот вариант зависит от изменения версии 2.0. Например, приложение должно позволять анонимных пользователей на [IIS](xref:host-and-deploy/iis/index) или [HTTP.sys](xref:fundamentals/servers/httpsys) слоя, но авторизация пользователей на уровне контроллера. В этом случае задайте схему по умолчанию `Startup.ConfigureServices` метод.
 
-Второй вариант, описанных выше зависит от изменения версии 2.0. Например, вам может позволяя анонимным пользователям в свое приложение в IIS или [HTTP.sys](xref:fundamentals/servers/httpsys) слоя но авторизацию пользователей на уровне контроллера. В этом случае значение схемы по умолчанию `IISDefaults.AuthenticationScheme` в `Startup.ConfigureServices` метод:
+  Для [Microsoft.AspNetCore.Server.IISIntegration](https://www.nuget.org/packages/Microsoft.AspNetCore.Server.IISIntegration/), значение схемы по умолчанию `IISDefaults.AuthenticationScheme`:
 
-```csharp
-services.AddAuthentication(IISDefaults.AuthenticationScheme);
-```
+  ```csharp
+  using Microsoft.AspNetCore.Server.IISIntegration;
 
-Не удалось установить схему по умолчанию предотвращает запроса authorize бросить вызов работу.
+  services.AddAuthentication(IISDefaults.AuthenticationScheme);
+  ```
+
+  Для [Microsoft.AspNetCore.Server.HttpSys](https://www.nuget.org/packages/Microsoft.AspNetCore.Server.HttpSys/), значение схемы по умолчанию `HttpSysDefaults.AuthenticationScheme`:
+
+  ```csharp
+  using Microsoft.AspNetCore.Server.HttpSys;
+
+  services.AddAuthentication(HttpSysDefaults.AuthenticationScheme);
+  ```
+
+  Не удалось установить схему по умолчанию не запроса authorize (запрос) может работать со следующим исключением:
+
+  > `System.InvalidOperationException`: Нет значение authenticationScheme указан и было DefaultChallengeScheme, не найден.
+
+Дополнительные сведения см. в разделе <xref:security/authentication/windowsauth>.
 
 <a name="identity-cookie-options"></a>
 

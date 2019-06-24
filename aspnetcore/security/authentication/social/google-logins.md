@@ -4,14 +4,14 @@ author: rick-anderson
 description: В этом учебнике показано интеграцию Google учетной записи пользователя и проверки подлинности в существующее приложение ASP.NET Core.
 ms.author: riande
 ms.custom: mvc, seodec18
-ms.date: 1/11/2019
+ms.date: 06/19/2019
 uid: security/authentication/google-logins
-ms.openlocfilehash: 44c79b3279db7946b6d89a726bd3f5acfb5f51af
-ms.sourcegitcommit: 5b0eca8c21550f95de3bb21096bd4fd4d9098026
+ms.openlocfilehash: b0edac411e73cd2eec7c4e212b99971577f59cfb
+ms.sourcegitcommit: 06a455d63ff7d6b571ca832e8117f4ac9d646baf
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 04/27/2019
-ms.locfileid: "64895541"
+ms.lasthandoff: 06/21/2019
+ms.locfileid: "67316453"
 ---
 # <a name="google-external-login-setup-in-aspnet-core"></a>Настройка внешней учетной записи Google в ASP.NET Core
 
@@ -25,7 +25,7 @@ ms.locfileid: "64895541"
 
 * Перейдите к [интеграция Google Sign-In в веб-приложения](https://developers.google.com/identity/sign-in/web/devconsole-project) и выберите **НАСТРОИТЬ ПРОЕКТ**.
 * В **настроить клиент OAuth** диалоговом окне выберите **веб-сервере**.
-* В **авторизованные URI перенаправления** текстовом поле, значение URI перенаправления. Например `https://localhost:5001/signin-google` 
+* В **авторизованные URI перенаправления** текстовом поле, значение URI перенаправления. Например: `https://localhost:5001/signin-google`
 * Сохранить **идентификатор клиента** и **секрет клиента**.
 * При развертывании на сайте, зарегистрировать новый общедоступный URL-адрес из **консоли Google**.
 
@@ -44,7 +44,9 @@ dotnet user-secrets set "Authentication:Google:ClientSecret" "<client secret>"
 
 ## <a name="configure-google-authentication"></a>Настройка проверки подлинности Google
 
-Добавить службу Google `Startup.ConfigureServices`.
+Добавить службу Google `Startup.ConfigureServices`:
+
+[!code-csharp[](~/security/authentication/social/social-code/StartupGoogle.cs?name=snippet_ConfigureServices&highlight=10-18)]
 
 [!INCLUDE [default settings configuration](includes/default-settings2-2.md)]
 
@@ -58,7 +60,7 @@ dotnet user-secrets set "Authentication:Google:ClientSecret" "<client secret>"
 
 [!INCLUDE[](includes/chain-auth-providers.md)]
 
-См. в разделе [GoogleOptions](/dotnet/api/microsoft.aspnetcore.authentication.google.googleoptions) Справочник по API, Дополнительные сведения о параметрах конфигурации, поддерживается проверка подлинности Google. Это может использоваться для запроса различные сведения о пользователе.
+См. в разделе <xref:Microsoft.AspNetCore.Authentication.Google.GoogleOptions> Справочник по API, Дополнительные сведения о параметрах конфигурации, поддерживается проверка подлинности Google. Это может использоваться для запроса различные сведения о пользователе.
 
 ## <a name="change-the-default-callback-uri"></a>Изменить URI обратного вызова по умолчанию
 
@@ -67,8 +69,8 @@ dotnet user-secrets set "Authentication:Google:ClientSecret" "<client secret>"
 ## <a name="troubleshooting"></a>Устранение неполадок
 
 * Если вход не работает, а не получают все ошибки, переключитесь в режим разработки для упрощения процесса отладки проблемы.
-* Если удостоверение не настроена, вызвав `services.AddIdentity` в `ConfigureServices`, попытка проверки подлинности приводит к *ArgumentException: Необходимо указать параметр «SignInScheme»*. Шаблон проекта, используемый в этом руководстве гарантирует, что это будет сделано.
-* Если база данных сайта не был создан путем применения первоначальной миграции, вы получаете *сбой операции из базы данных при обработке запроса* ошибки. Коснитесь **применить миграции** для создания базы данных и обновить, чтобы продолжить выполнение после ошибки.
+* Если удостоверение не настроена, вызвав `services.AddIdentity` в `ConfigureServices`, попытка проверки подлинности приводит к *ArgumentException: Необходимо указать параметр «SignInScheme»* . Шаблон проекта, используемый в этом руководстве гарантирует, что это будет сделано.
+* Если база данных сайта не был создан путем применения первоначальной миграции, вы получаете *сбой операции из базы данных при обработке запроса* ошибки. Выберите **применить миграции** для создания базы данных и обновите страницу, чтобы продолжить выполнение после ошибки.
 
 ## <a name="next-steps"></a>Следующие шаги
 

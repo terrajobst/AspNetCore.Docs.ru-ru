@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 5/11/2019
 uid: security/authentication/microsoft-logins
-ms.openlocfilehash: 1c78cc957b6ff77c91c8ca4aef59a1cacd85a8ca
-ms.sourcegitcommit: 3376f224b47a89acf329b2d2f9260046a372f924
+ms.openlocfilehash: 16ec2d5f2bccc59958b884869ef42af9cfa13df0
+ms.sourcegitcommit: 06a455d63ff7d6b571ca832e8117f4ac9d646baf
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 05/10/2019
-ms.locfileid: "65517092"
+ms.lasthandoff: 06/21/2019
+ms.locfileid: "67316591"
 ---
 # <a name="microsoft-account-external-login-setup-with-aspnet-core"></a>Настройка внешней учетной записи учетной записи Майкрософт с помощью ASP.NET Core
 
@@ -59,7 +59,7 @@ dotnet user-secrets set Authentication:Microsoft:ClientSecret <Client-Secret>
 
 ## <a name="configure-microsoft-account-authentication"></a>Настройка проверки подлинности учетной записи Майкрософт
 
-Добавление службы учетной записи Майкрософт в `ConfigureServices` метод в *Startup.cs* файла:
+Добавить учетную запись Майкрософт службу `Startup.ConfigureServices`:
 
 [!code-csharp[](~/security/authentication/social/social-code/StartupMS.cs?name=snippet&highlight=10-14)]
 
@@ -84,7 +84,7 @@ dotnet user-secrets set Authentication:Microsoft:ClientSecret <Client-Secret>
 * Если поставщик учетной записи Майкрософт вы будете перенаправлены к странице ошибки входа, обратите внимание, ошибка заголовок и описание параметров строки запроса сразу после `#` (хэштег) в Uri.
 
   Несмотря на то, что сообщение об ошибке кажется указывают на проблему с использованием проверки подлинности, наиболее распространенной причиной является Uri, не соответствующих ни одному из приложения **URI перенаправления** для **Web** платформы .
-* Если удостоверение не настроена, вызвав `services.AddIdentity` в `ConfigureServices`, пытающиеся выполнить проверку подлинности приведет к *ArgumentException: Необходимо указать параметр «SignInScheme»*. Шаблон проекта, используемый в этом примере гарантирует, что это будет сделано.
+* Если удостоверение не настроена, вызвав `services.AddIdentity` в `ConfigureServices`, пытающиеся выполнить проверку подлинности приведет к *ArgumentException: Необходимо указать параметр «SignInScheme»* . Шаблон проекта, используемый в этом примере гарантирует, что это будет сделано.
 * Если база данных сайта не был создан путем применения первоначальной миграции, вы получите *сбой операции из базы данных при обработке запроса* ошибки. Коснитесь **применить миграции** для создания базы данных и обновить, чтобы продолжить выполнение после ошибки.
 
 ## <a name="next-steps"></a>Следующие шаги
