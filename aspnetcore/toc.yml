@@ -220,8 +220,6 @@
               uid: tutorials/razor-pages/validation
         - name: Фильтры
           uid: razor-pages/filter
-        - name: Библиотеки классов Razor
-          uid: razor-pages/ui-class
         - name: Соглашения для маршрутов и приложений
           uid: razor-pages/razor-pages-conventions
         - name: Отправка файлов
@@ -344,6 +342,8 @@
       uid: mvc/views/layout
     - name: Синтаксис Razor
       uid: mvc/views/razor
+    - name: Библиотеки классов Razor
+      uid: razor-pages/ui-class
     - name: Вспомогательные функции тегов
       uid: mvc/views/tag-helpers/builtin-th/Index
       items:
