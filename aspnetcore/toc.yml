@@ -298,6 +298,8 @@
           uid: blazor/javascript-interop
         - name: Отладка
           uid: blazor/debug
+        - name: Вызов веб-API
+          uid: blazor/call-web-api
         - name: Размещение и развертывание
           items:
             - name: Обзор
