@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 11/27/2017
 uid: test/razor-pages-tests
-ms.openlocfilehash: f1526b8803f43ec8cbe77c1d2c100d9daf6cd316
-ms.sourcegitcommit: 5b0eca8c21550f95de3bb21096bd4fd4d9098026
+ms.openlocfilehash: f0e47f975579dc114eaeda375028ec62696f58ed
+ms.sourcegitcommit: 763af2cbdab0da62d1f1cfef4bcf787f251dfb5c
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 04/27/2019
-ms.locfileid: "64893721"
+ms.lasthandoff: 06/26/2019
+ms.locfileid: "67394739"
 ---
 # <a name="razor-pages-unit-tests-in-aspnet-core"></a>Тестирование страниц Razor в ASP.NET Core
 
@@ -66,7 +66,7 @@ dotnet test
 | Папка тестового приложения | Описание |
 | --------------- | ----------- |
 | *UnitTests*     | <ul><li>*DataAccessLayerTest.cs* содержит модульные тесты для DAL.</li><li>*IndexPageTests.cs* содержит модульные тесты для модели страницы индекса.</li></ul> |
-| *Служебные программы*     | Содержит `TestingDbContextOptions` метод, используемый для создания новой базы данных параметры контекста для каждого модульного теста DAL, таким образом, чтобы база данных будет переведена в состояние базовых показателей для каждого теста. |
+| *Служебные программы*     | Содержит `TestDbContextOptions` метод, используемый для создания новой базы данных параметры контекста для каждого модульного теста DAL, таким образом, чтобы база данных будет переведена в состояние базовых показателей для каждого теста. |
 
 Платформа тестирования — [xUnit](https://xunit.github.io/). Объект платформа имитированной [Moq](https://github.com/moq/moq4).
 
@@ -93,14 +93,14 @@ using (var db = new AppDbContext(optionsBuilder.Options))
 }
 ```
 
-Проблема этого подхода является то, что каждый тест получает базы данных в то состояние, предыдущий тест остался. При попытке записать atomic модульные тесты, пересекаются друг с другом, это может быть проблематичным. Чтобы принудительно `AppDbContext` использовать новый контекст базы данных для каждого теста, укажите `DbContextOptions` экземпляр, который основан на новый поставщик службы. Тестирование приложения показано, как это сделать с помощью его `Utilities` метод класса `TestingDbContextOptions` (*tests/RazorPagesTestSample.Tests/Utilities/Utilities.cs*):
+Проблема этого подхода является то, что каждый тест получает базы данных в то состояние, предыдущий тест остался. При попытке записать atomic модульные тесты, пересекаются друг с другом, это может быть проблематичным. Чтобы принудительно `AppDbContext` использовать новый контекст базы данных для каждого теста, укажите `DbContextOptions` экземпляр, который основан на новый поставщик службы. Тестирование приложения показано, как это сделать с помощью его `Utilities` метод класса `TestDbContextOptions` (*tests/RazorPagesTestSample.Tests/Utilities/Utilities.cs*):
 
 [!code-csharp[](razor-pages-tests/samples/2.x/tests/RazorPagesTestSample.Tests/Utilities/Utilities.cs?name=snippet1)]
 
 С помощью `DbContextOptions` в DAL модульных тестов позволяет каждого теста, чтобы выполняться атомарным образом с экземпляром свежей базы данных:
 
 ```csharp
-using (var db = new AppDbContext(Utilities.TestingDbContextOptions()))
+using (var db = new AppDbContext(Utilities.TestDbContextOptions()))
 {
     // Use the db here in the unit test.
 }

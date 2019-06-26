@@ -4,21 +4,21 @@ author: Rick-Anderson
 description: В этой статье описывается создание многократно используемых Razor пользовательского интерфейса, использование частичных представлений в библиотеку классов, в ASP.NET Core.
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
-ms.date: 09/07/2018
+ms.date: 06/24/2019
 ms.custom: mvc, seodec18
 uid: razor-pages/ui-class
-ms.openlocfilehash: 7ec36cc8f4832fb1e1a50831dfcb88f3cafb5ca9
-ms.sourcegitcommit: 5b0eca8c21550f95de3bb21096bd4fd4d9098026
+ms.openlocfilehash: 96ef8fc055a6b92cd0808d02031d917b8446f305
+ms.sourcegitcommit: 763af2cbdab0da62d1f1cfef4bcf787f251dfb5c
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 04/27/2019
-ms.locfileid: "64895291"
+ms.lasthandoff: 06/26/2019
+ms.locfileid: "67394744"
 ---
 # <a name="create-reusable-ui-using-the-razor-class-library-project-in-aspnet-core"></a>Создание многократно используемых пользовательским Интерфейсом, с использованием проекта библиотеки классов Razor в ASP.NET Core
 
 Автор: [Рик Андерсон](https://twitter.com/RickAndMSFT) (Rick Anderson)
 
-Представления Razor, страницы, контроллеры, модели страниц, [Просмотр компонентов](xref:mvc/views/view-components) и модели данных можно создавать в библиотеке классов Razor (RCL). RCL можно упаковать и использовать повторно. Приложения могут включать RCL и переопределять содержащиеся в нем представления и страницы. При обнаружении представления, частичного представления или страницы Razor и в веб-приложении, и в RCL приоритет имеет разметка Razor (файл *.cshtml*) в веб-приложении.
+Представления Razor, страницы, контроллеры, модели страниц [компоненты Razor](xref:blazor/class-libraries), [компоненты представлений](xref:mvc/views/view-components), и модели данных может быть встроен в библиотеку классов Razor (RCL). RCL можно упаковать и использовать повторно. Приложения могут включать RCL и переопределять содержащиеся в нем представления и страницы. При обнаружении представления, частичного представления или страницы Razor и в веб-приложении, и в RCL приоритет имеет разметка Razor (файл *.cshtml*) в веб-приложении.
 
 Эта функция требует [!INCLUDE[](~/includes/2.1-SDK.md)]
 
@@ -34,7 +34,7 @@ ms.locfileid: "64895291"
 * Убедитесь, что выбрано **ASP.NET Core 2.1** или более поздней версии.
 * Выберите **Библиотека классов Razor** > **OK**.
 
-Библиотеки классов Razor имеет следующий файл проекта:
+RCL имеет следующий файл проекта:
 
 [!code-xml[Main](ui-class/samples/cli/RazorUIClassLib/RazorUIClassLib.csproj)]
 
@@ -54,20 +54,20 @@ dotnet new razorclasslib -o RazorUIClassLib
 
 Шаблоны ASP.NET Core считает содержимое RCL *областей* папки. См. в разделе [макет страниц RCL](#afs) для создания содержимого в RCL, который предоставляет `~/Pages` вместо `~/Areas/Pages`.
 
-## <a name="referencing-razor-class-library-content"></a>Создание ссылок на содержимое библиотеки классов Razor
+## <a name="referencing-rcl-content"></a>Ссылки на содержимое RCL
 
 На RCL могут ссылаться:
 
 * Пакет NuGet. См. [Создание пакетов NuGet](/nuget/create-packages/creating-a-package), [dotnet add package](/dotnet/core/tools/dotnet-add-package) и [Создание и публикация пакета NuGet](/nuget/quickstart/create-and-publish-a-package-using-visual-studio).
 * *{ProjectName}.csproj*. См. [dotnet-add reference](/dotnet/core/tools/dotnet-add-reference).
 
-## <a name="walkthrough-create-a-razor-class-library-project-and-use-from-a-razor-pages-project"></a>Пошаговое руководство. Создать проект библиотеки классов Razor и использовать из проекта Razor Pages
+## <a name="walkthrough-create-an-rcl-project-and-use-from-a-razor-pages-project"></a>Пошаговое руководство. Создание проекта RCL и использовать из проекта Razor Pages
 
 Вы можете не создавать, а загрузить [целый проект](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/razor-pages/ui-class/samples) и протестировать его. Образец загрузки содержит дополнительный код и ссылки, что упрощает тестирование проекта. Оставьте свой комментарий о сравнении образцов загрузки с пошаговыми инструкциями в [этой проблеме GitHub](https://github.com/aspnet/AspNetCore.Docs/issues/6098).
 
 ### <a name="test-the-download-app"></a>Тестирование приложения загрузки
 
-Если вы еще не загрузили завершенное приложение и вместо этого хотите создать проект пошагового руководства, перейдите к [следующему разделу](#create-a-razor-class-library).
+Если вы еще не загрузили завершенное приложение и вместо этого хотите создать проект пошагового руководства, перейдите к [следующему разделу](#create-an-rcl).
 
 # <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
 
@@ -91,9 +91,9 @@ dotnet run
 
 Следуйте инструкциям в разделе [Тестирование WebApp1](#test)
 
-## <a name="create-a-razor-class-library"></a>Создание библиотеки классов Razor
+## <a name="create-an-rcl"></a>Создание RCL
 
-В этом разделе создается библиотека классов Razor (RCL). Файлы Razor будут добавлены в RCL.
+В этом разделе создается RCL. Файлы Razor будут добавлены в RCL.
 
 # <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
 
@@ -118,7 +118,7 @@ dotnet new viewstart -o RazorUIClassLib/Areas/MyFeature/Pages
 
 Предыдущие команды:
 
-* Создает библиотеку классов Razor (RCL) `RazorUIClassLib`.
+* Создает `RazorUIClassLib` RCL.
 * Создает страницу Razor _Message и добавляет ее в RCL. Параметр `-np` создает страницу без `PageModel`.
 * Создает [_ViewStart.cshtml](xref:mvc/views/layout#running-code-before-each-view) файл и добавляет его к RCL.
 
@@ -174,7 +174,7 @@ dotnet build RazorUIClassLib
 
 # <a name="net-core-clitabnetcore-cli"></a>[Интерфейс командной строки .NET Core](#tab/netcore-cli)
 
-Создайте веб-приложение Razor Pages и файл решения, содержащий приложение Razor Pages и библиотеку классов Razor:
+Создание веб-приложения Razor Pages и файл решения, содержащего приложение Razor Pages и RCL:
 
 ```console
 dotnet new webapp -o WebApp1
@@ -197,13 +197,13 @@ dotnet run
 
 ### <a name="test-webapp1"></a>Тестирование WebApp1
 
-Убедитесь, что используется библиотека классов пользовательского интерфейса Razor.
+Убедитесь, что библиотеки классов пользовательского интерфейса Razor используется:
 
 * Перейдите по адресу `/MyFeature/Page1`.
 
 ## <a name="override-views-partial-views-and-pages"></a>Переопределение представлений, частичных представлений и страниц
 
-При обнаружении представления, частичного представления или страницы Razor и в веб-приложении, и в библиотеке классов Razor приоритет имеет разметка Razor (файл *.cshtml*) в веб-приложении. Например, добавить *WebApp1/Areas/MyFeature/Pages/Page1.cshtml* для WebApp1, и страница Page1 в WebApp1 будет иметь приоритет над Page1 в библиотеке классов Razor.
+При обнаружении представления, частичного представления или страницы Razor и в веб-приложении, и в RCL приоритет имеет разметка Razor (файл *.cshtml*) в веб-приложении. Например, добавить *WebApp1/Areas/MyFeature/Pages/Page1.cshtml* для WebApp1, и страница Page1 в WebApp1 будет иметь приоритет над Page1 в RCL.
 
 В примере загрузки переименуйте *WebApp1/Areas/MyFeature2* в *WebApp1/Areas/MyFeature*, чтобы протестировать приоритет.
 
@@ -227,3 +227,30 @@ dotnet run
   <partial name="_Footer">
 </body>
 ```
+
+## <a name="create-an-rcl-with-static-assets"></a>Создание RCL с помощью статических ресурсов
+
+RCL может потребоваться дополнительное статических ресурсов, которые могут ссылаться принимающего приложения RCL. ASP.NET Core позволяет создавать RCLs, включающие статических ресурсов, которые доступны для принимающего приложения.
+
+Чтобы включить дополнительное ресурсов как часть RCL, создать *wwwroot* папку в библиотеке классов и включают все необходимые файлы в этой папке.
+
+При упаковке RCL, всех сопутствующих средств в *wwwroot* папки, автоматически включаются в пакет и становятся доступными для приложения, ссылающиеся на пакет.
+
+### <a name="consume-content-from-a-referenced-rcl"></a>Использовать содержимое из упоминаемой RCL
+
+Файлы, включенные в *wwwroot* папке RCL предоставляются в приложении по префиксу `_content/{LIBRARY NAME}/`. `{LIBRARY NAME}` имя проекта библиотеки преобразуется в нижний регистр с периодами (`.`) удалены. Например, библиотеку *Razor.Class.Lib* приводит путь для статического контента на `_content/razorclasslib/`.
+
+Много приложение ссылается на статические ресурсы, предоставляемые библиотекой с `<script>`, `<style>`, `<img>`и другие теги HTML. Много приложение должно иметь [статических файлов поддержки](xref:fundamentals/static-files) включена.
+
+### <a name="multi-project-development-flow"></a>Последовательностью разработки для нескольких проектов
+
+Использование приложения при запуске:
+
+* Ресурсы в RCL остаются в исходных папках. Ресурсы не перемещаются в приложении.
+* Любые изменения в RCL *wwwroot* папку отражается в приложении после RCL перестраивается и без перестроения принимающего приложения.
+
+При построении RCL создается манифест, описывающий расположения средств статического веб. Много приложение читает манифест во время выполнения, чтобы использовать ресурсы из указанных проектов и пакетов. При добавлении нового актива для RCL RCL необходимо перестроить, чтобы обновить его манифест, прежде чем много приложению доступ к нового средства.
+
+### <a name="publish"></a>Публикация
+
+При публикации приложения, сопровождающий ресурсы из всех указанных проектов и пакетов копируется в *wwwroot* папки опубликованного приложения в разделе `_content/{LIBRARY NAME}/`.
