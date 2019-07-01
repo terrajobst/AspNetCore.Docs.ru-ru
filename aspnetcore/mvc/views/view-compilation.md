@@ -5,14 +5,14 @@ description: Узнайте, как происходит компиляция ф
 monikerRange: '>= aspnetcore-1.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 05/30/2019
+ms.date: 06/20/2019
 uid: mvc/views/view-compilation
-ms.openlocfilehash: b78831dd95a721e35d4bf5b44cdd8823472f6aa2
-ms.sourcegitcommit: 06c4f2910dd54ded25e1b8750e09c66578748bc9
+ms.openlocfilehash: ff66148fc9aad2871f9f55ce76b5a0dacb0ad10c
+ms.sourcegitcommit: 9f11685382eb1f4dd0fb694dea797adacedf9e20
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66395890"
+ms.lasthandoff: 06/21/2019
+ms.locfileid: "67313788"
 ---
 # <a name="razor-file-compilation-in-aspnet-core"></a>Компиляция файлов Razor в ASP.NET Core
 
@@ -125,17 +125,13 @@ dotnet publish -c Release
 Компиляция в среде выполнения включается с помощью пакета `Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation`. Чтобы включить компиляцию в среде выполнения, необходимо:
 
 * установить пакет NuGet [Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation](https://www.nuget.org/packages/Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation/).
-* Обновите `ConfigureServices` приложения, чтобы включить вызов `AddMvcRazorRuntimeCompilation`:
+* Обновите метод `Startup.ConfigureServices` в проекте, чтобы включить в него вызов к `AddRazorRuntimeCompilation`:
 
   ```csharp
   services
-      .AddMvc()
-      .AddRazorRuntimeCompilation()
+      .AddControllersWithViews()
+      .AddRazorRuntimeCompilation();
   ```
-
-Чтобы выполнялась компиляция в среде выполнения при развертывании, в файлах проектов приложений параметру `PreserveCompilationReferences` необходимо задать значение `true`.
-
-[!code-xml[](view-compilation/sample/RuntimeCompilation.csproj?highlight=4)]
 
 ::: moniker-end
 

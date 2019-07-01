@@ -4,14 +4,14 @@ author: guardrex
 description: Сведения о диагностике проблем с развертываниями ASP.NET Core в службе приложений Azure.
 ms.author: riande
 ms.custom: mvc
-ms.date: 03/06/2019
+ms.date: 06/19/2019
 uid: host-and-deploy/azure-apps/troubleshoot
-ms.openlocfilehash: 7a0bb7df27ebbea0eac79771452295846fad563a
-ms.sourcegitcommit: a04eb20e81243930ec829a9db5dd5de49f669450
+ms.openlocfilehash: d78499c1a82a011239f6b62b546f304a5d5017e2
+ms.sourcegitcommit: 9f11685382eb1f4dd0fb694dea797adacedf9e20
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 06/03/2019
-ms.locfileid: "66470438"
+ms.lasthandoff: 06/21/2019
+ms.locfileid: "67313761"
 ---
 # <a name="troubleshoot-aspnet-core-on-azure-app-service"></a>Устранение неполадок ASP.NET Core в службе приложений Azure
 
@@ -21,122 +21,14 @@ ms.locfileid: "66470438"
 
 Эта статья содержит инструкции по диагностике проблемы запуска приложения ASP.NET Core с помощью средств диагностики службы приложений Azure. Дополнительные советы по устранению неполадок см. в разделе [Общие сведения о диагностике службы приложений Azure](/azure/app-service/app-service-diagnostics) и [Практическое руководство. Мониторинг приложений в службе приложений Azure](/azure/app-service/web-sites-monitor) в документации по Azure.
 
-## <a name="app-startup-errors"></a>Ошибки при запуске приложения
+Дополнительные статьи по устранению неполадок:
 
-**502.5 Process Failure** (ошибка процесса). Рабочий процесс завершается ошибкой. Приложение не запускается.
+* Службы IIS также используют [модуль ASP.NET Core](xref:host-and-deploy/aspnet-core-module) для размещения приложений. Советы по устранению неполадок, касающиеся служб IIS, см. в статье <xref:host-and-deploy/iis/troubleshoot>.
+* В статье <xref:fundamentals/error-handling> описывается, как обрабатывать ошибки в приложениях ASP.NET Core при разработке в локальной системе.
+* Статья [Знакомство с отладчиком Visual Studio](/visualstudio/debugger/getting-started-with-the-debugger) описывает возможности отладчика Visual Studio.
+* [Статья об отладке с помощью Visual Studio Code](https://code.visualstudio.com/docs/editor/debugging) описывает поддержку отладки, встроенную в Visual Studio Code.
 
-[Модуль ASP.NET Core](xref:host-and-deploy/aspnet-core-module) пытается запустить рабочий процесс, но он не запускается. Изучение журнала событий приложения часто помогает устранить проблемы такого типа. Доступ к журналу описан в разделе [Журнал событий приложения](#application-event-log).
-
-Когда неправильно сконфигурированное приложение приводит к сбою рабочего процесса, возвращается страница ошибки *502.5 — ошибка процесса*.
-
-![Окно браузера, показывающее страницу "502.5 — ошибка процесса"](troubleshoot/_static/process-failure-page.png)
-
-**500 — внутренняя ошибка сервера**
-
-Приложение запускается, но ошибка не позволяет серверу выполнить запрос.
-
-Эта ошибка возникает в коде приложения при запуске или при создании ответа. Ответ может не иметь содержимого или ответ в браузере может выглядеть как *500 — внутренняя ошибка сервера*. Как правило, в журнале событий приложения указывается, что приложение запускается в обычном режиме. Сервер действует правильно. Приложение запустилось, но оно не может генерировать действительный ответ. Чтобы устранить проблему, [запустите приложение в консоли Kudu](#run-the-app-in-the-kudu-console) или [включите журнал модуля stdout ASP.NET Core](#aspnet-core-module-stdout-log).
-
-::: moniker range="= aspnetcore-2.2"
-
-### <a name="50030-in-process-startup-failure"></a>500.30 In-Process Startup Failure (ошибка внутрипроцессного запуска)
-
-Рабочий процесс завершается ошибкой. Приложение не запускается.
-
-Модуль ASP.NET Core пытается запустить среду CLR .NET Core внутри процесса, но она не запускается. Обычно причина сбоя при запуске процесса определяется по записям в [журнале событий приложения](#application-event-log) и [журнале вывода stdout модуля ASP.NET Core](#aspnet-core-module-stdout-log).
-
-::: moniker-end
-
-::: moniker range=">= aspnetcore-3.0"
-
-### <a name="50031-ancm-failed-to-find-native-dependencies"></a>500.31 ANCM Failed to Find Native Dependencies (ANCM не удалось найти собственные зависимости)
-
-Рабочий процесс завершается ошибкой. Приложение не запускается.
-
-Модуль ASP.NET Core пытается запустить среду выполнения .NET Core внутри процесса, но она не запускается. Наиболее распространенная причина этой ошибки в том, что среда выполнения `Microsoft.NETCore.App` или `Microsoft.AspNetCore.App` не установлена. Если целевой платформой развернутого приложения является ASP.NET Core 3.0, но эта версия отсутствует на компьютере, происходит данная ошибка. Пример сообщения об ошибке:
-
-```
-The specified framework 'Microsoft.NETCore.App', version '3.0.0' was not found.
-  - The following frameworks were found:
-      2.2.1 at [C:\Program Files\dotnet\x64\shared\Microsoft.NETCore.App]
-      3.0.0-preview5-27626-15 at [C:\Program Files\dotnet\x64\shared\Microsoft.NETCore.App]
-      3.0.0-preview6-27713-13 at [C:\Program Files\dotnet\x64\shared\Microsoft.NETCore.App]
-      3.0.0-preview6-27714-15 at [C:\Program Files\dotnet\x64\shared\Microsoft.NETCore.App]
-      3.0.0-preview6-27723-08 at [C:\Program Files\dotnet\x64\shared\Microsoft.NETCore.App]
-```
-
-В сообщении об ошибке перечислены все установленные версии .NET Core и указывается версия, которая требуется приложению. Чтобы устранить эту ошибку, выполните одно из указанных ниже действий.
-
-* Установите соответствующую версию .NET Core на компьютере.
-* Измените целевую версию .NET Core приложения на версию, имеющуюся на компьютере.
-* Опубликуйте приложение как [автономное развертывание](/dotnet/core/deploying/#self-contained-deployments-scd).
-
-При запуске в среде разработки (переменная среды `ASPNETCORE_ENVIRONMENT` имеет значение `Development`) ошибка записывается в ответ HTTP. Причину сбоя при запуске процесса можно также узнать в [журнале событий приложения](#application-event-log).
-
-### <a name="50032-ancm-failed-to-load-dll"></a>500.32 ANCM Failed to Load dll (ANCM не удалось загрузить библиотеку DLL)
-
-Рабочий процесс завершается ошибкой. Приложение не запускается.
-
-Наиболее распространенная причина этой ошибки в том, что приложение опубликовано для несовместимой архитектуры процессора. Если рабочий процесс выполняется как 32-разрядное приложение, но приложение было опубликовано для 64-разрядной архитектуры, происходит эта ошибка.
-
-Чтобы устранить эту ошибку, выполните одно из указанных ниже действий.
-
-* Повторно опубликуйте приложение для той же архитектуры процессора, для которой предназначен рабочий процесс.
-* Опубликуйте приложение как [зависящее от платформы развертывание](/dotnet/core/deploying/#framework-dependent-executables-fde).
-
-### <a name="50033-ancm-request-handler-load-failure"></a>500.33 ANCM Request Handler Load Failure (Ошибка загрузки обработчика запросов ANCM)
-
-Рабочий процесс завершается ошибкой. Приложение не запускается.
-
-Приложение не ссылается на платформу `Microsoft.AspNetCore.App`. В модуле ASP.NET Core могут размещаться только приложения, предназначенные для платформы `Microsoft.AspNetCore.App`.
-
-Для устранения этой ошибки убедитесь в том, что приложение предназначено для платформы `Microsoft.AspNetCore.App`. В файле `.runtimeconfig.json` проверьте, является ли эта платформа целевой для приложения.
-
-### <a name="50034-ancm-mixed-hosting-models-not-supported"></a>500.34 ANCM Mixed Hosting Models Not Supported (Смешанные модели размещения ANCM не поддерживаются)
-
-В одном рабочем процессе не могут выполняться одновременно внутрипроцессное приложение и внепроцессное приложение.
-
-Для устранения этой ошибки запускайте приложения в отдельных пулах приложений IIS.
-
-### <a name="50035-ancm-multiple-in-process-applications-in-same-process"></a>500.35 ANCM Multiple In-Process Applications in same Process (Несколько внутрипроцессных приложений ANCM в одном процессе)
-
-В одном рабочем процессе не могут выполняться одновременно внутрипроцессное приложение и внепроцессное приложение.
-
-Для устранения этой ошибки запускайте приложения в отдельных пулах приложений IIS.
-
-### <a name="50036-ancm-out-of-process-handler-load-failure"></a>500.36 ANCM Out-Of-Process Handler Load Failure (Ошибка загрузки внепроцессного обработчика ANCM)
-
-Рядом с файлом *aspnetcorev2.dll* нет внепроцессного обработчика запросов *aspnetcorev2_outofprocess.dll*. Это свидетельствует о поврежденной установке модуля ASP.NET Core.
-
-Для устранения этой ошибки восстановите установку [пакета размещения .NET Core](xref:host-and-deploy/iis/index#install-the-net-core-hosting-bundle) (для служб IIS) или Visual Studio (для IIS Express).
-
-### <a name="50037-ancm-failed-to-start-within-startup-time-limit"></a>500.37 ANCM Failed to Start Within Startup Time Limit (Модуль ANCM не запустился в течение предельного времени запуска)
-
-Модуль ANCM не запустился в течение заданного предельного времени запуска. По умолчанию время ожидания составляет 120 секунд.
-
-Эта ошибка может произойти, если на одном компьютере запускается много приложений. Обратите внимание на пики использования ЦП и памяти на сервере во время запуска. Возможно, потребуется регулировать процесс запуска нескольких приложений.
-
-### <a name="50030-in-process-startup-failure"></a>500.30 In-Process Startup Failure (ошибка внутрипроцессного запуска)
-
-Рабочий процесс завершается ошибкой. Приложение не запускается.
-
-Модуль ASP.NET Core пытается запустить среду выполнения .NET Core внутри процесса, но она не запускается. Обычно причина сбоя при запуске процесса определяется по записям в [журнале событий приложения](#application-event-log) и [журнале вывода stdout модуля ASP.NET Core](#aspnet-core-module-stdout-log).
-
-### <a name="5000-in-process-handler-load-failure"></a>500.0 In-Process Handler Load Failure (ошибка загрузки внутрипроцессного обработчика)
-
-Рабочий процесс завершается ошибкой. Приложение не запускается.
-
-Причину сбоя при запуске процесса можно также узнать в [журнале событий приложения](#application-event-log).
-
-::: moniker-end
-
-**Сброс подключения**
-
-Если ошибка возникает после отправки заголовков, сервер уже не может отправить страницу **500 — внутренняя ошибка сервера**. Это часто происходит, когда ошибка возникает во время сериализации составных объектов ответа. Этот тип ошибки отображается на стороне клиента как ошибка *Сброс подключения*. [Ведение журналов для приложений](xref:fundamentals/logging/index) может помочь устранить эти ошибки.
-
-## <a name="default-startup-limits"></a>Ограничения по умолчанию при запуске
-
-Параметру *startupTimeLimit* модуля ASP.NET Core установлено значение по умолчанию 120 секунд. Если оставить значение по умолчанию, то прежде чем журнал модуля зарегистрирует ошибку запуска приложения, может пройти до двух минут. Сведения о настройке модуля см. в разделе [Атрибуты элемента aspNetCore](xref:host-and-deploy/aspnet-core-module#attributes-of-the-aspnetcore-element).
+[!INCLUDE[](~/includes/azure-iis-startup-errors.md)]
 
 ## <a name="troubleshoot-app-startup-errors"></a>Устранение неполадок при запуске приложения
 

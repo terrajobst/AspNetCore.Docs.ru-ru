@@ -4,14 +4,14 @@ author: zuckerthoben
 description: Узнайте, как использовать NSwag для создания документации и страниц справки для веб-API в ASP.NET Core.
 ms.author: scaddie
 ms.custom: mvc
-ms.date: 12/30/2018
+ms.date: 06/21/2019
 uid: tutorials/get-started-with-nswag
-ms.openlocfilehash: 787f51629b044e638d2790b3dda8723c2644c2d8
-ms.sourcegitcommit: a04eb20e81243930ec829a9db5dd5de49f669450
+ms.openlocfilehash: c5b2dc47328d6d3c271a87579fa8c300109bd734
+ms.sourcegitcommit: 06a455d63ff7d6b571ca832e8117f4ac9d646baf
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 06/03/2019
-ms.locfileid: "66470428"
+ms.lasthandoff: 06/21/2019
+ms.locfileid: "67316558"
 ---
 # <a name="get-started-with-nswag-and-aspnet-core"></a>Начало работы с NSwag и ASP.NET Core
 
@@ -43,7 +43,7 @@ NSwag обеспечивает следующие возможности:
 * создавать спецификации Swagger для реализованного веб-API;
 * применять пользовательский интерфейс Swagger для просмотра и тестирования веб-API.
 
-Чтобы использовать ПО промежуточного слоя [NSwag](https://github.com/RSuter/NSwag) для ASP.NET Core, установите пакет NuGet [NSwag.AspNetCore](https://www.nuget.org/packages/NSwag.AspNetCore/). Этот пакет содержит ПО промежуточного слоя, которое позволяет создавать и использовать спецификацию Swagger, пользовательский интерфейс Swagger (версий 2 и 3) и [пользовательский интерфейс ReDoc](https://github.com/Rebilly/ReDoc).
+Чтобы использовать ПО промежуточного слоя [NSwag](https://github.com/RicoSuter/NSwag) для ASP.NET Core, установите пакет NuGet [NSwag.AspNetCore](https://www.nuget.org/packages/NSwag.AspNetCore/). Этот пакет содержит ПО промежуточного слоя, которое позволяет создавать и использовать спецификацию Swagger, пользовательский интерфейс Swagger (версий 2 и 3) и [пользовательский интерфейс ReDoc](https://github.com/Rebilly/ReDoc).
 
 Чтобы установить пакет NuGet NSwag, воспользуйтесь одним из следующих способов.
 
@@ -91,17 +91,13 @@ dotnet add TodoApi.csproj package NSwag.AspNetCore
 
 ## <a name="add-and-configure-swagger-middleware"></a>Добавление и настройка ПО промежуточного слоя Swagger
 
- Добавьте Swagger в приложение ASP.NET Core и настройте это ПО промежуточного слоя, выполнив следующие действия в классе `Startup`:
+Добавьте Swagger в приложение ASP.NET Core и настройте это ПО промежуточного слоя, выполнив следующие действия:
 
-* Импортируйте такие пространства имен:
-
-[!code-csharp[](../tutorials/web-api-help-pages-using-swagger/samples/2.0/TodoApi.NSwag/Startup.cs?name=snippet_StartupConfigureImports)]
-
-* Используя метод `ConfigureServices`, зарегистрируйте необходимые службы Swagger:
+* Используя метод `Startup.ConfigureServices`, зарегистрируйте необходимые службы Swagger:
 
 [!code-csharp[](../tutorials/web-api-help-pages-using-swagger/samples/2.0/TodoApi.NSwag/Startup.cs?name=snippet_ConfigureServices&highlight=8)]
 
-* В методе `Configure` включите ПО промежуточного слоя для обслуживания созданной спецификации Swagger и пользовательского интерфейса Swagger:
+* В методе `Startup.Configure` включите ПО промежуточного слоя для обслуживания созданной спецификации Swagger и пользовательского интерфейса Swagger:
 
 [!code-csharp[](../tutorials/web-api-help-pages-using-swagger/samples/2.0/TodoApi.NSwag/Startup.cs?name=snippet_Configure&highlight=6-7)]
 
@@ -113,15 +109,15 @@ dotnet add TodoApi.csproj package NSwag.AspNetCore
 
 Можно воспользоваться преимуществами создания кода в NSwag, выбрав один из следующих вариантов:
 
-* [NSwagStudio](https://github.com/NSwag/NSwag/wiki/NSwagStudio) — это классическое приложение Windows для создания клиентского кода API на C# или TypeScript.
+* [NSwagStudio](https://github.com/RicoSuter/NSwag/wiki/NSwagStudio) — это классическое приложение Windows для создания клиентского кода API на C# или TypeScript.
 * Пакеты NuGet [NSwag.CodeGeneration.CSharp](https://www.nuget.org/packages/NSwag.CodeGeneration.CSharp/) или [NSwag.CodeGeneration.TypeScript](https://www.nuget.org/packages/NSwag.CodeGeneration.TypeScript/) для создания кода внутри проекта.
-* NSwag из [командной строки](https://github.com/NSwag/NSwag/wiki/CommandLine).
-* Пакет NuGet [NSwag.MSBuild](https://github.com/NSwag/NSwag/wiki/MSBuild).
+* NSwag из [командной строки](https://github.com/RicoSuter/NSwag/wiki/CommandLine).
+* Пакет NuGet [NSwag.MSBuild](https://github.com/RicoSuter/NSwag/wiki/MSBuild).
 * [Подключенная служба Unchase OpenAPI (Swagger)](https://marketplace.visualstudio.com/items?itemName=Unchase.unchaseopenapiconnectedservice) &ndash; — это подключенная служба Visual Studio для создания клиентского кода API на C# или TypeScript. Она также создает контроллеры C# для служб OpenAPI с NSwag.
 
 ### <a name="generate-code-with-nswagstudio"></a>Создание кода с помощью NSwagStudio
 
-* Установите NSwagStudio, следуя инструкциям из [репозитория NSwagStudio на веб-сайте GitHub](https://github.com/RSuter/NSwag/wiki/NSwagStudio).
+* Установите NSwagStudio, следуя инструкциям из [репозитория NSwagStudio на веб-сайте GitHub](https://github.com/RicoSuter/NSwag/wiki/NSwagStudio).
 * Запустите NSwagStudio и введите URL-адрес файла *swagger.json* в текстовое поле **Swagger Specification URL** (URL-адрес спецификации Swagger). Например, *http://localhost:44354/swagger/v1/swagger.json* .
 * Нажмите кнопку **Create local Copy** (Создать локальную копию), чтобы создать представление JSON своей спецификации Swagger.
 
@@ -277,7 +273,7 @@ Swagger предоставляет параметры для документи�
 
 ::: moniker range=">= aspnetcore-2.1"
 
- Так как NSwag использует [отражение](/dotnet/csharp/programming-guide/concepts/reflection), а рекомендуемый тип возвращаемого значения для действий веб-API — это [IActionResult\<T >](xref:Microsoft.AspNetCore.Mvc.ActionResult%601), NSwag может определить только тип возвращаемого значения, задаваемый `T`. Невозможно автоматически определить другие возможные типы возвращаемого значения. 
+ Так как NSwag использует [отражение](/dotnet/csharp/programming-guide/concepts/reflection), а рекомендуемый тип возвращаемого значения для действий веб-API — это [IActionResult\<T >](xref:Microsoft.AspNetCore.Mvc.ActionResult%601), NSwag может определить только тип возвращаемого значения, задаваемый `T`. Невозможно автоматически определить другие возможные типы возвращаемого значения.
 
 Рассмотрим следующий пример.
 
@@ -287,7 +283,7 @@ Swagger предоставляет параметры для документи�
 
 [!code-csharp[](../tutorials/web-api-help-pages-using-swagger/samples/2.1/TodoApi.NSwag/Controllers/TodoController.cs?name=snippet_CreateActionAttributes)]
 
-В ASP.NET Core 2.2 или более поздней версии можно использовать соглашения вместо явного добавления `[ProducesResponseType]` к отдельным действиям. Для получения дополнительной информации см. <xref:web-api/advanced/conventions>.
+В ASP.NET Core 2.2 или более поздней версии можно использовать соглашения вместо явного добавления `[ProducesResponseType]` к отдельным действиям. Дополнительные сведения можно найти по адресу: <xref:web-api/advanced/conventions>.
 
 ::: moniker-end
 

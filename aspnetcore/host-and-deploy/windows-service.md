@@ -7,12 +7,12 @@ ms.author: tdykstra
 ms.custom: mvc
 ms.date: 06/03/2019
 uid: host-and-deploy/windows-service
-ms.openlocfilehash: 4cfca4b38543ff073bb98dc09b483d96096928ae
-ms.sourcegitcommit: 5dd2ce9709c9e41142771e652d1a4bd0b5248cec
+ms.openlocfilehash: 3a254af4d56cb4abc7004a67b0d0b42de2b878b1
+ms.sourcegitcommit: 47cc13ab90913af9a2887cef0896bb4e9aba4dd5
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 06/05/2019
-ms.locfileid: "66692568"
+ms.lasthandoff: 06/26/2019
+ms.locfileid: "67399105"
 ---
 # <a name="host-aspnet-core-in-a-windows-service"></a>Размещение ASP.NET Core в службе Windows
 
@@ -211,7 +211,7 @@ powershell -Command "New-LocalUser -Name {NAME}"
 
 Чтобы настроить право *Вход в качестве службы* для учетной записи пользователя службы, сделайте следующее:
 
-1. Откройте редактор локальной политики безопасности, запустив *secpool.msc*.
+1. Откройте редактор локальной политики безопасности, запустив *secpol.msc*.
 1. Разверните узел **Локальные политики** и выберите **Назначение прав пользователя**.
 1. Откройте политику **Вход в качестве службы**.
 1. Щелкните **Добавить пользователя или группу**.
@@ -310,7 +310,7 @@ Remove-Service -Name {NAME}
 
 ## <a name="proxy-server-and-load-balancer-scenarios"></a>Сценарии использования прокси-сервера и подсистемы балансировки нагрузки
 
-Для служб, которые взаимодействуют с запросами из Интернета или корпоративной сети и размещаются за прокси-сервером или подсистемой балансировки нагрузки, может потребоваться дополнительная настройка. Для получения дополнительной информации см. <xref:host-and-deploy/proxy-load-balancer>.
+Для служб, которые взаимодействуют с запросами из Интернета или корпоративной сети и размещаются за прокси-сервером или подсистемой балансировки нагрузки, может потребоваться дополнительная настройка. Дополнительные сведения можно найти по адресу: <xref:host-and-deploy/proxy-load-balancer>.
 
 ## <a name="configure-https"></a>Настройка HTTPS
 

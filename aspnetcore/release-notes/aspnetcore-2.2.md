@@ -6,12 +6,12 @@ ms.author: tdykstra
 ms.custom: mvc
 ms.date: 12/18/2018
 uid: aspnetcore-2.2
-ms.openlocfilehash: cdc761b645b91777bdf6084c3ad4659fcea55039
-ms.sourcegitcommit: 5b0eca8c21550f95de3bb21096bd4fd4d9098026
+ms.openlocfilehash: ad7b5ecc4f03d845375b1612150da183df9ec0d9
+ms.sourcegitcommit: 06a455d63ff7d6b571ca832e8117f4ac9d646baf
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 04/27/2019
-ms.locfileid: "64883209"
+ms.lasthandoff: 06/21/2019
+ms.locfileid: "67316580"
 ---
 # <a name="whats-new-in-aspnet-core-22"></a>Новые возможности ASP.NET Core 2.2
 
@@ -19,7 +19,7 @@ ms.locfileid: "64883209"
 
 ## <a name="openapi-analyzers--conventions"></a>Соглашения и анализаторы OpenAPI
 
-OpenAPI (ранее Swagger) — это не зависящая от языка спецификация для описания REST API. В экосистеме OpenAPI представлены средства для обнаружения, тестирования и создания кода клиента в соответствии со спецификацией. Поддержка создания и визуализации документов OpenAPI в ASP.NET Core MVC обеспечивается за счет управляемых сообществом проектов, таких как [NSwag](https://github.com/RSuter/NSwag) и [Swashbuckle.AspNetCore](https://github.com/domaindrivendev/Swashbuckle.AspNetCore). В ASP.NET Core 2.2 представлены улучшенные средства и возможности среды выполнения для создания документов OpenAPI.
+OpenAPI (ранее Swagger) — это не зависящая от языка спецификация для описания REST API. В экосистеме OpenAPI представлены средства для обнаружения, тестирования и создания кода клиента в соответствии со спецификацией. Поддержка создания и визуализации документов OpenAPI в ASP.NET Core MVC обеспечивается за счет управляемых сообществом проектов, таких как [NSwag](https://github.com/RicoSuter/NSwag) и [Swashbuckle.AspNetCore](https://github.com/domaindrivendev/Swashbuckle.AspNetCore). В ASP.NET Core 2.2 представлены улучшенные средства и возможности среды выполнения для создания документов OpenAPI.
 
 Дополнительные сведения см. в следующих ресурсах:
 
@@ -53,7 +53,7 @@ OpenAPI (ранее Swagger) — это не зависящая от языка
 
 ## <a name="http2-in-kestrel"></a>HTTP/2 в Kestrel
 
-В ASP.NET Core 2.2 добавлена поддержка HTTP/2. 
+В ASP.NET Core 2.2 добавлена поддержка HTTP/2.
 
 HTTP/2 является основной редакцией HTTP-протокола. Заметными нововведениями в HTTP/2 стали поддержка сжатия заголовков и полное мультиплексирование потоков в рамках одного соединения. Версия HTTP/2 сохраняет семантику HTTP (методы, заголовки HTTP и т. д.), однако она заметно отличается от HTTP/1.x в отношении механизмов кадрирования и передачи данных по сети.
 

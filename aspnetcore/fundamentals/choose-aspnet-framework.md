@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc, seodec18
 ms.date: 05/02/2019
 uid: fundamentals/choose-between-aspnet-and-aspnetcore
-ms.openlocfilehash: a51d9946c9e65bd1665c610153f724c6087c9f7f
-ms.sourcegitcommit: b8ed594ab9f47fa32510574f3e1b210cff000967
+ms.openlocfilehash: 97d65df8df1e27694d818098958288874e8ab92e
+ms.sourcegitcommit: 47cc13ab90913af9a2887cef0896bb4e9aba4dd5
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 05/28/2019
-ms.locfileid: "66251370"
+ms.lasthandoff: 06/26/2019
+ms.locfileid: "67399166"
 ---
 # <a name="choose-between-aspnet-4x-and-aspnet-core"></a>Выбор между ASP.NET 4.x и ASP.NET Core
 
@@ -36,7 +36,7 @@ ASP.NET 4.x — это развитая платформа, предостав�
 |Предназначена для Windows, macOS или Linux|Предназначена для Windows|
 |[Razor Pages](xref:razor-pages/index) — рекомендуемый метод создания пользовательского веб-интерфейса в ASP.NET Core 2.x. См. также [MVC](xref:mvc/overview), [веб-API](xref:tutorials/first-web-api), и [SignalR](xref:signalr/introduction).|Использование [веб-форм](/aspnet/web-forms), [SignalR](/aspnet/signalr), [MVC](/aspnet/mvc), [веб-API](/aspnet/web-api/), [веб-перехватчиков](/aspnet/webhooks/) или [веб-страниц](/aspnet/web-pages)|
 |Несколько версий для одного компьютера|Одна версия для одного компьютера|
-|Разработка в Visual Studio, [Visual Studio для Mac](https://visualstudio.microsoft.com/vs/mac/) или [Visual Studio Code](https://code.visualstudio.com/) с использованием C# или F#|Разработка с Visual Studio с использованием C#, VB и F#|
+|Разработка в [Visual Studio](https://visualstudio.microsoft.com/vs/), [Visual Studio для Mac](https://visualstudio.microsoft.com/vs/mac/) или [Visual Studio Code](https://code.visualstudio.com/) с использованием C# или F#|Разработка с [Visual Studio](https://visualstudio.microsoft.com/vs/) с использованием C#, VB или F#|
 |Более высокая производительность, чем в ASP.NET 4.x|Хорошая производительность|
 |[Выбор среды выполнения .NET Framework или .NET Core](/dotnet/standard/choosing-core-framework-server)|Использование среды выполнения .NET Framework|
 

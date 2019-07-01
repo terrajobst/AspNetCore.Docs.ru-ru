@@ -1,18 +1,18 @@
 ---
-title: Размещение и развертывание Blazor на стороне сервера
+title: Размещение и развертывание приложений Blazor на стороне сервера с помощью ASP.NET Core
 author: guardrex
 description: Узнайте, как выполнять размещение и развертывание приложения Blazor на стороне сервера с помощью ASP.NET Core.
 monikerRange: '>= aspnetcore-3.0'
 ms.author: riande
 ms.custom: mvc
-ms.date: 04/26/2019
+ms.date: 06/11/2019
 uid: host-and-deploy/blazor/server-side
-ms.openlocfilehash: 8e44be09a4cceba2509f3e86abf3ce5fd2d077bd
-ms.sourcegitcommit: 5b0eca8c21550f95de3bb21096bd4fd4d9098026
+ms.openlocfilehash: 8b332c2fb439e9832d604ed26f972b266eed2507
+ms.sourcegitcommit: 9bb29f9ba6f0645ee8b9cabda07e3a5aa52cd659
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 04/27/2019
-ms.locfileid: "64887769"
+ms.lasthandoff: 06/26/2019
+ms.locfileid: "67406124"
 ---
 # <a name="host-and-deploy-blazor-server-side"></a>Размещение и развертывание Blazor на стороне сервера
 
@@ -28,19 +28,19 @@ ms.locfileid: "64887769"
 
 Необходим веб-сервер, позволяющий размещать приложения ASP.NET Core. Visual Studio содержит шаблон проекта **Blazor (на стороне сервера)** (шаблон `blazorserverside` при использовании команды [dotnet new](/dotnet/core/tools/dotnet-new)).
 
-<!--
+## <a name="connection-scale-out"></a>Горизонтальное масштабирование подключений
 
-**INSERT: Concerns are the same as publishing an ASP.NET Core SignalR app**
+Приложения Blazor, работающие на стороне сервера, требуют наличия одного активного подключения SignalR для каждого пользователя. В Рабочем развертывании Blazor на стороне сервера необходимо реализовать решение для поддержки нужного приложению числа одновременных подключений. [Служба Azure SignalR](/azure/azure-signalr/) управляет масштабированием подключений и является рекомендуемым решением для масштабирования приложений Blazor, работающих на стороне сервера. Дополнительные сведения можно найти по адресу: <xref:signalr/publish-to-azure-web-app>.
 
-**INSERT: Content on the Azure SignalR Service**
+## <a name="signalr-configuration"></a>Конфигурация SignalR
 
-**INSERT: Manually turn on WebSockets support**
-
--->
+Служба SignalR настраивается ASP.NET Core для самых распространенных сценариев приложений Blazor на стороне сервера. Подробные сведения о пользовательских и расширенных сценариях можно найти в статьях о SignalR в разделе [Дополнительные ресурсы](#additional-resources).
 
 ## <a name="additional-resources"></a>Дополнительные ресурсы
 
 * <xref:signalr/introduction>
+* [Документация по службе Azure SignalR](/azure/azure-signalr/)
+* [Краткое руководство. Создание чата с помощью службы SignalR](/azure/azure-signalr/signalr-quickstart-dotnet-core)
 * <xref:host-and-deploy/index>
 * <xref:tutorials/publish-to-azure-webapp-using-vs>
 * [Развертывание предварительной версии ASP.NET Core в службе приложений Azure](xref:host-and-deploy/azure-apps/index#deploy-aspnet-core-preview-release-to-azure-app-service)

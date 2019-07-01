@@ -4,14 +4,14 @@ author: guardrex
 description: Сведения о веб-узле в ASP.NET Core, который отвечает за запуск приложений и управление временем существования.
 ms.author: riande
 ms.custom: mvc
-ms.date: 05/11/2019
+ms.date: 06/14/2019
 uid: fundamentals/host/web-host
-ms.openlocfilehash: 48f3b664d901bdfb27cdf9e798fa60c0587d1def
-ms.sourcegitcommit: 6afe57fb8d9055f88fedb92b16470398c4b9b24a
+ms.openlocfilehash: c5d5b723b31a5c211a47e378e50be858fda0b2bd
+ms.sourcegitcommit: 9f11685382eb1f4dd0fb694dea797adacedf9e20
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65610290"
+ms.lasthandoff: 06/21/2019
+ms.locfileid: "67313799"
 ---
 # <a name="aspnet-core-web-host"></a>Веб-узел ASP.NET Core
 
@@ -19,27 +19,21 @@ ms.locfileid: "65610290"
 
 Приложения ASP.NET Core настраивают и запускают *узел*. Узел отвечает за запуск приложения и управление временем существования. Узел настраивает как минимум сервер и конвейер обработки запросов. Узел также может настроить ведение журнала, внедрение зависимостей и конфигурацию.
 
-::: moniker range="<= aspnetcore-1.1"
+::: moniker range=">= aspnetcore-3.0"
 
-Для версии 1.1 этого раздела скачайте статью [Веб-узел ASP.NET Core (версия 1.1, PDF-файл)](https://webpifeed.blob.core.windows.net/webpifeed/Partners/Web-Host_1.1.pdf).
-
-::: moniker-end
-
-::: moniker range=">= aspnetcore-2.1 <= aspnetcore-2.2"
-
-В этой статье рассматривается веб-узел ASP.NET Core (<xref:Microsoft.AspNetCore.Hosting.IWebHostBuilder>), который предназначен для размещения веб-приложений. Сведения об универсальном узле .NET ([IHostBuilder](/dotnet/api/microsoft.extensions.hosting.ihostbuilder)) см. в статье <xref:fundamentals/host/generic-host>.
+В этой статье описывается веб-узел, доступ к которому предоставляется только для обеспечения обратной совместимости. Для приложений всех типов рекомендуется использовать [универсальный узел](xref:fundamentals/host/generic-host).
 
 ::: moniker-end
 
-::: moniker range="> aspnetcore-2.2"
+::: moniker range="<= aspnetcore-2.2"
 
-В этой статье рассматривается веб-узел ASP.NET Core ([IWebHostBuilder](/dotnet/api/microsoft.aspnetcore.hosting.iwebhostbuilder)). В ASP.NET Core 3.0 универсальный узел заменяет веб-узел. Дополнительную информацию см. в разделе [Узел](xref:fundamentals/index#host).
+В этой статье описывается веб-узел, который предназначен для размещения веб-приложений. Для приложений других типов используйте [универсальный узел](xref:fundamentals/host/generic-host).
 
 ::: moniker-end
 
 ## <a name="set-up-a-host"></a>Создание узла
 
-Создайте узел с помощью экземпляра [IWebHostBuilder](/dotnet/api/microsoft.aspnetcore.hosting.iwebhostbuilder). Обычно это делается в точке входа в приложение, то есть в методе `Main`. Имя метода построителя `CreateWebHostBuilder` — это специальное имя, которое определяет метод построителя для внешних компонентов, таких как [Entity Framework](/ef/core/).
+Создайте узел с помощью экземпляра [IWebHostBuilder](/dotnet/api/microsoft.aspnetcore.hosting.iwebhostbuilder). Обычно это делается в точке входа в приложение, то есть в методе `Main`.
 
 В шаблонах проектов метод `Main` находится в файле *Program.cs*. Обычно приложение вызывает [CreateDefaultBuilder](/dotnet/api/microsoft.aspnetcore.webhost.createdefaultbuilder), чтобы начать настройку узла:
 
@@ -56,6 +50,8 @@ public class Program
             .UseStartup<Startup>();
 }
 ```
+
+Код, который вызывает `CreateDefaultBuilder`, находится в методе `CreateWebHostBuilder`, что отделяет его от кода в методе `Main`, который вызывает `Run` для объекта построителя. Такое отделение требуется, если вы используете [инструменты Entity Framework Core](/ef/core/miscellaneous/cli/). Эти инструменты используют метод `CreateWebHostBuilder`, который они могут вызвать во время разработки для настройки узла без необходимости запускать приложение. В качестве альтернативного способа можно использовать реализацию `IDesignTimeDbContextFactory`. Подробные сведения см. в статье [Design-time DbContext Creation](/ef/core/miscellaneous/cli/dbcontext-creation) (Создание экземпляра DbContext во время разработки).
 
 Метод `CreateDefaultBuilder` выполняет указанные ниже задачи.
 
@@ -131,9 +127,9 @@ public class Program
 Дополнительные сведения о конфигурации приложения см. в разделе <xref:fundamentals/configuration/index>.
 
 > [!NOTE]
-> Помимо использования статического метода `CreateDefaultBuilder`, в ASP.NET Core 2.x поддерживается создание узла на основе [WebHostBuilder](/dotnet/api/microsoft.aspnetcore.hosting.webhostbuilder). Дополнительные сведения см. на вкладке со сведениями об ASP.NET Core 1.x.
+> Помимо использования статического метода `CreateDefaultBuilder`, в ASP.NET Core 2.x поддерживается создание узла на основе [WebHostBuilder](/dotnet/api/microsoft.aspnetcore.hosting.webhostbuilder).
 
-При настройке узла можно предоставить методы [Configure](/dotnet/api/microsoft.aspnetcore.hosting.webhostbuilderextensions.configure?view=aspnetcore-1.1) и [ConfigureServices](/dotnet/api/microsoft.aspnetcore.hosting.webhostbuilder.configureservices?view=aspnetcore-1.1). Если используется класс `Startup`, в нем должен быть определен метод `Configure`. Для получения дополнительной информации см. <xref:fundamentals/startup>. Несколько вызовов `ConfigureServices` добавляются друг к другу. При нескольких вызовах `Configure` или `UseStartup` в `WebHostBuilder` предыдущие параметры заменяются.
+При настройке узла можно предоставить методы [Configure](/dotnet/api/microsoft.aspnetcore.hosting.webhostbuilderextensions.configure) и [ConfigureServices](/dotnet/api/microsoft.aspnetcore.hosting.webhostbuilder.configureservices). Если используется класс `Startup`, в нем должен быть определен метод `Configure`. Дополнительные сведения можно найти по адресу: <xref:fundamentals/startup>. Несколько вызовов `ConfigureServices` добавляются друг к другу. При нескольких вызовах `Configure` или `UseStartup` в `WebHostBuilder` предыдущие параметры заменяются.
 
 ## <a name="host-configuration-values"></a>Значения конфигурации узла
 
@@ -221,7 +217,7 @@ WebHost.CreateDefaultBuilder(args)
 **Задается с помощью**: `UseEnvironment`  
 **Переменная среды**: `ASPNETCORE_ENVIRONMENT`
 
-В качестве среды можно указать любое значение. В платформе определены значения `Development`, `Staging` и `Production`. Регистр символов в значениях не учитывается. По умолчанию значение параметра *Среда* считывается из переменной среды `ASPNETCORE_ENVIRONMENT`. При использовании [Visual Studio](https://visualstudio.microsoft.com) переменные среды можно задавать в файле *launchSettings.json*. Для получения дополнительной информации см. <xref:fundamentals/environments>.
+В качестве среды можно указать любое значение. В платформе определены значения `Development`, `Staging` и `Production`. Регистр символов в значениях не учитывается. По умолчанию значение параметра *Среда* считывается из переменной среды `ASPNETCORE_ENVIRONMENT`. При использовании [Visual Studio](https://visualstudio.microsoft.com) переменные среды можно задавать в файле *launchSettings.json*. Дополнительные сведения можно найти по адресу: <xref:fundamentals/environments>.
 
 ```csharp
 WebHost.CreateDefaultBuilder(args)
@@ -293,7 +289,7 @@ WebHost.CreateDefaultBuilder(args)
 
 ### <a name="prevent-hosting-startup"></a>Запретить запуск размещения
 
-Запрещает автоматическую загрузку начальных сборок размещения, включая начальные сборки размещения, настроенные сборкой приложения. Для получения дополнительной информации см. <xref:fundamentals/configuration/platform-specific-configuration>.
+Запрещает автоматическую загрузку начальных сборок размещения, включая начальные сборки размещения, настроенные сборкой приложения. Дополнительные сведения можно найти по адресу: <xref:fundamentals/configuration/platform-specific-configuration>.
 
 **Ключ**: preventHostingStartup  
 **Тип**: *bool* (`true` или `1`)  
@@ -323,7 +319,7 @@ WebHost.CreateDefaultBuilder(args)
     .UseUrls("http://*:5000;http://localhost:5001;https://hostname:5002")
 ```
 
-Kestrel имеет собственный интерфейс API настройки конечных точек. Для получения дополнительной информации см. <xref:fundamentals/servers/kestrel#endpoint-configuration>.
+Kestrel имеет собственный интерфейс API настройки конечных точек. Дополнительные сведения можно найти по адресу: <xref:fundamentals/servers/kestrel#endpoint-configuration>.
 
 ### <a name="shutdown-timeout"></a>Время ожидания завершения работы
 
@@ -509,7 +505,7 @@ using (var host = WebHost.Start("http://localhost:8080", app => app.Response.Wri
 }
 ```
 
-Результат будет тем же, что и при использовании **Start(RequestDelegate app)**, но приложение отвечает по адресу `http://localhost:8080`.
+Результат будет тем же, что и при использовании **Start(RequestDelegate app)** , но приложение отвечает по адресу `http://localhost:8080`.
 
 **Start(Action&lt;IRouteBuilder&gt; routeBuilder)**
 
@@ -566,7 +562,7 @@ using (var host = WebHost.Start("http://localhost:8080", router => router
 }
 ```
 
-Результат будет тем же, что и при использовании **Start(Action&lt;IRouteBuilder&gt; routeBuilder)**, но приложение будет отвечать по адресу `http://localhost:8080`.
+Результат будет тем же, что и при использовании **Start(Action&lt;IRouteBuilder&gt; routeBuilder)** , но приложение будет отвечать по адресу `http://localhost:8080`.
 
 **StartWith(Action&lt;IApplicationBuilder&gt; app)**
 
@@ -608,7 +604,7 @@ using (var host = WebHost.StartWith("http://localhost:8080", app =>
 }
 ```
 
-Результат будет тем же, что и при использовании **StartWith(Action&lt;IApplicationBuilder&gt; app)**, но приложение будет отвечать по адресу `http://localhost:8080`.
+Результат будет тем же, что и при использовании **StartWith(Action&lt;IApplicationBuilder&gt; app)** , но приложение будет отвечать по адресу `http://localhost:8080`.
 
 ## <a name="ihostingenvironment-interface"></a>Интерфейс IHostingEnvironment
 
@@ -661,7 +657,7 @@ public class Startup
 ```
 
 > [!NOTE]
-> Помимо метода расширения `IsDevelopment`, интерфейс `IHostingEnvironment` предоставляет методы `IsStaging`, `IsProduction` и `IsEnvironment(string environmentName)`. Для получения дополнительной информации см. <xref:fundamentals/environments>.
+> Помимо метода расширения `IsDevelopment`, интерфейс `IHostingEnvironment` предоставляет методы `IsStaging`, `IsProduction` и `IsEnvironment(string environmentName)`. Дополнительные сведения можно найти по адресу: <xref:fundamentals/environments>.
 
 Службу `IHostingEnvironment` также можно внедрять непосредственно в метод `Configure` для настройки конвейера обработки:
 
