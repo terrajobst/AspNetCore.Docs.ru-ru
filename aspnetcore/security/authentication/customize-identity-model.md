@@ -3,14 +3,14 @@ title: Настройка модели удостоверения в ASP.NET Cor
 author: ajcvickers
 description: В этой статье описывается настройка базовой модели данных Entity Framework Core для ASP.NET Core Identity.
 ms.author: avickers
-ms.date: 04/24/2019
+ms.date: 07/01/2019
 uid: security/authentication/customize_identity_model
-ms.openlocfilehash: 53ce77e20722f3ba3282ff4455a0b70d30e635b0
-ms.sourcegitcommit: ffe3ed7921ec6c7c70abaac1d10703ec9a43374c
+ms.openlocfilehash: f549fdff4a416b5fadcb2b1078b051bbab8e402e
+ms.sourcegitcommit: eb3e51d58dd713eefc242148f45bd9486be3a78a
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 05/11/2019
-ms.locfileid: "65536024"
+ms.lasthandoff: 07/02/2019
+ms.locfileid: "67500483"
 ---
 # <a name="identity-model-customization-in-aspnet-core"></a>Настройка модели удостоверения в ASP.NET Core
 
@@ -72,7 +72,7 @@ ASP.NET Core есть обработчик страницы ошибок во в
 
 ### <a name="default-model-configuration"></a>Конфигурация модели по умолчанию
 
-Определяет удостоверение, многие *классы контекста* , наследуемым от <xref:Microsoft.EntityFrameworkCore.DbContext> Настройка и использование модели. Эта настройка выполняется с помощью [EF Core Fluent API для Code First](/ef/core/modeling/) в <xref:Microsoft.EntityFrameworkCore.DbContext.OnModelCreating*> метод класса контекста. По умолчанию используется:
+Определяет удостоверение, многие *классы контекста* , наследуемым от [DbContext](/dotnet/api/microsoft.entityframeworkcore.dbcontext) Настройка и использование модели. Эта настройка выполняется с помощью [EF Core Fluent API для Code First](/ef/core/modeling/) в [OnModelCreating](/dotnet/api/microsoft.entityframeworkcore.dbcontext.onmodelcreating) метод класса контекста. По умолчанию используется:
 
 ```csharp
 builder.Entity<TUser>(b =>
@@ -463,7 +463,7 @@ services.AddDefaultIdentity<ApplicationUser>()
             .AddDefaultTokenProviders();
     ```
 
-    Тип данных первичный ключ определяется путем анализа <xref:Microsoft.EntityFrameworkCore.DbContext> объекта.
+    Тип данных первичный ключ определяется путем анализа [DbContext](/dotnet/api/microsoft.entityframeworkcore.dbcontext) объекта.
 
     В ASP.NET Core 2.1 или более поздней версии удостоверение предоставляется как библиотека классов Razor. Дополнительные сведения см. в разделе <xref:security/authentication/scaffold-identity>. Следовательно, предыдущий код требует вызова <xref:Microsoft.AspNetCore.Identity.IdentityBuilderUIExtensions.AddDefaultUI*>. Если удостоверение шаблон был использован для добавления в проект файлы, удалите вызов `AddDefaultUI`.
 
@@ -477,7 +477,7 @@ services.AddDefaultIdentity<ApplicationUser>()
             .AddDefaultTokenProviders();
     ```
 
-    Тип данных первичный ключ определяется путем анализа <xref:Microsoft.EntityFrameworkCore.DbContext> объекта.
+    Тип данных первичный ключ определяется путем анализа [DbContext](/dotnet/api/microsoft.entityframeworkcore.dbcontext) объекта.
 
     ::: moniker-end
 
@@ -507,7 +507,7 @@ services.AddDefaultIdentity<ApplicationUser>()
 
     [!code-csharp[](customize-identity-model/samples/2.1/RazorPagesSampleApp/Startup.cs?name=snippet_ConfigureServices&highlight=13-16)]
 
-    Тип данных первичный ключ определяется путем анализа <xref:Microsoft.EntityFrameworkCore.DbContext> объекта.
+    Тип данных первичный ключ определяется путем анализа [DbContext](/dotnet/api/microsoft.entityframeworkcore.dbcontext) объекта.
 
     В ASP.NET Core 2.1 или более поздней версии удостоверение предоставляется как библиотека классов Razor. Дополнительные сведения см. в разделе <xref:security/authentication/scaffold-identity>. Следовательно, предыдущий код требует вызова <xref:Microsoft.AspNetCore.Identity.IdentityBuilderUIExtensions.AddDefaultUI*>. Если удостоверение шаблон был использован для добавления в проект файлы, удалите вызов `AddDefaultUI`.
 
@@ -521,7 +521,7 @@ services.AddDefaultIdentity<ApplicationUser>()
 
     [!code-csharp[](customize-identity-model/samples/2.0/RazorPagesSampleApp/Startup.cs?name=snippet_ConfigureServices&highlight=7-9)]
 
-    Тип данных первичный ключ определяется путем анализа <xref:Microsoft.EntityFrameworkCore.DbContext> объекта.
+    Тип данных первичный ключ определяется путем анализа [DbContext](/dotnet/api/microsoft.entityframeworkcore.dbcontext) объекта.
 
     ::: moniker-end
 
@@ -962,7 +962,7 @@ protected override void OnModelCreating(ModelBuilder modelBuilder)
 Типы сущностей можно сделать для отложенной загрузки несколькими способами, как описано в разделе [документации по EF Core](/ef/core/querying/related-data#lazy-loading). Для простоты используйте прокси отложенной загрузки, которая требует:
 
 * Установка [Microsoft.EntityFrameworkCore.Proxies](https://www.nuget.org/packages/Microsoft.EntityFrameworkCore.Proxies/) пакета.
-* Вызов <xref:Microsoft.EntityFrameworkCore.ProxiesExtensions.UseLazyLoadingProxies*> внутри <xref:Microsoft.Extensions.DependencyInjection.EntityFrameworkServiceCollectionExtensions.AddDbContext*>.
+* Вызов <xref:Microsoft.EntityFrameworkCore.ProxiesExtensions.UseLazyLoadingProxies*> внутри [AddDbContext\<TContext >](/dotnet/api/microsoft.extensions.dependencyinjection.entityframeworkservicecollectionextensions.adddbcontext).
 * Типы общей сущности с `public virtual` свойства навигации.
 
 В следующем примере показан вызов `UseLazyLoadingProxies` в `Startup.ConfigureServices`:
