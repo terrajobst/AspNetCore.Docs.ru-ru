@@ -5,14 +5,14 @@ description: Сведения о настройке модуля ASP.NET Core д
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 06/05/2019
+ms.date: 06/17/2019
 uid: host-and-deploy/aspnet-core-module
-ms.openlocfilehash: f287a9bad623c5ff5c41868c7c4408b572b39000
-ms.sourcegitcommit: c716ea9155a6b404c1f3d3d34e2388454cd276d7
+ms.openlocfilehash: d5392ff6b15eeb3a4502df578665538b936aae6f
+ms.sourcegitcommit: 28a2874765cefe9eaa068dceb989a978ba2096aa
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 06/05/2019
-ms.locfileid: "66716363"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67167069"
 ---
 # <a name="aspnet-core-module"></a>Модуль ASP.NET Core
 
@@ -256,7 +256,7 @@ ms.locfileid: "66716363"
 
 ::: moniker range=">= aspnetcore-2.2"
 
-| Атрибут | Описание | Значение по умолчанию |
+| Атрибут | ОПИСАНИЕ | Значение по умолчанию |
 | --------- | ----------- | :-----: |
 | `arguments` | <p>Необязательный строковый атрибут.</p><p>Аргументы для исполняемого файла, указанного в атрибуте **processPath**.</p> | |
 | `disableStartUpErrorPage` | <p>Дополнительный логический атрибут.</p><p>Если значение равно true, страница **502.5 — ошибка процесса** подавляется и страница в файле *web.config* с кодом состояния 502 имеет более высокий приоритет.</p> | `false` |
@@ -275,7 +275,7 @@ ms.locfileid: "66716363"
 
 ::: moniker range="< aspnetcore-2.2"
 
-| Атрибут | Описание | Значение по умолчанию |
+| Атрибут | ОПИСАНИЕ | Значение по умолчанию |
 | --------- | ----------- | :-----: |
 | `arguments` | <p>Необязательный строковый атрибут.</p><p>Аргументы для исполняемого файла, указанного в атрибуте **processPath**.</p>| |
 | `disableStartUpErrorPage` | <p>Дополнительный логический атрибут.</p><p>Если значение равно true, страница **502.5 — ошибка процесса** подавляется и страница в файле *web.config* с кодом состояния 502 имеет более высокий приоритет.</p> | `false` |
@@ -451,11 +451,27 @@ ms.locfileid: "66716363"
     stdoutLogFile="\\?\%home%\LogFiles\stdout"
     hostingModel="InProcess">
   <handlerSettings>
-    <handlerSetting name="debugFile" value="aspnetcore-debug.log" />
+    <handlerSetting name="debugFile" value=".\logs\aspnetcore-debug.log" />
     <handlerSetting name="debugLevel" value="FILE,TRACE" />
   </handlerSettings>
 </aspNetCore>
 ```
+
+::: moniker-end
+
+::: moniker range=">= aspnetcore-3.0"
+
+Все папки, указанные в пути (*logs* в приведенном выше примере), создаются модулем при создании файла журнала. Пул приложений должен иметь доступ на запись в папку, где записываются журналы (используйте атрибут `IIS AppPool\<app_pool_name>` для предоставления разрешения на запись).
+
+::: moniker-end
+
+::: moniker range="< aspnetcore-3.0"
+
+Папки, указанные в пути к значению `<handlerSetting>` (*logs* в приведенном выше примере), не создаются модулем автоматически и должны заранее существовать в развертывании. Пул приложений должен иметь доступ на запись в папку, где записываются журналы (используйте атрибут `IIS AppPool\<app_pool_name>` для предоставления разрешения на запись).
+
+::: moniker-end
+
+::: moniker range=">= aspnetcore-2.2"
 
 Значения уровня отладки (`debugLevel`) могут включать уровень и расположение.
 

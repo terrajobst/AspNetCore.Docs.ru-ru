@@ -1,20 +1,20 @@
 ---
-title: Размещение и развертывание Blazor на стороне клиента
+title: Размещение и развертывание приложений Blazor на стороне клиента с помощью ASP.NET Core
 author: guardrex
 description: Узнайте, как размещать и развертывать приложение Blazor с помощью ASP.NET Core, сетей доставки содержимого (CDN), файловых серверов и GitHub Pages.
 monikerRange: '>= aspnetcore-3.0'
 ms.author: riande
 ms.custom: mvc
-ms.date: 05/21/2019
+ms.date: 06/14/2019
 uid: host-and-deploy/blazor/client-side
-ms.openlocfilehash: b50516b4dce28a6b105b2ab8b9386060d5392983
-ms.sourcegitcommit: 4d05e30567279072f1b070618afe58ae1bcefd5a
+ms.openlocfilehash: 7567473ae8acd9e1072954907f0fe9c7beea29ad
+ms.sourcegitcommit: 4ef0362ef8b6e5426fc5af18f22734158fe587e1
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66376392"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67153190"
 ---
-# <a name="host-and-deploy-blazor-client-side"></a>Размещение и развертывание Blazor на стороне клиента
+# <a name="host-and-deploy-aspnet-core-blazor-client-side"></a>Размещение и развертывание приложений Blazor на стороне клиента с помощью ASP.NET Core
 
 Авторы: [Люк Лэтем](https://github.com/guardrex), [Рэйнер Стропек](https://www.timecockpit.com) и [Дэниэл Рот](https://github.com/danroth27)
 
@@ -102,7 +102,7 @@ ms.locfileid: "66376392"
 
 ## <a name="configure-the-linker"></a>Настройка компоновщика
 
-Blazor выполняет компоновку для промежуточного языка (IL) в каждой сборке, чтобы удалить ненужный код из выходных сборок. Связыванием сборки можно управлять в процессе сборки. Для получения дополнительной информации см. <xref:host-and-deploy/blazor/configure-linker>.
+Blazor выполняет компоновку для промежуточного языка (IL) в каждой сборке, чтобы удалить ненужный код из выходных сборок. Связыванием сборки можно управлять в процессе сборки. Дополнительные сведения можно найти по адресу: <xref:host-and-deploy/blazor/configure-linker>.
 
 ## <a name="rewrite-urls-for-correct-routing"></a>Переопределение URL-адресов для маршрутизации
 

@@ -2,16 +2,17 @@
 title: Написание пользовательского ПО промежуточного слоя ASP.NET Core
 author: rick-anderson
 description: Узнайте, как написать пользовательское ПО промежуточного слоя ASP.NET Core.
+monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 02/14/2019
+ms.date: 06/17/2019
 uid: fundamentals/middleware/write
-ms.openlocfilehash: 2c5577394a10370d92c8a83f9d806b63f3245c8b
-ms.sourcegitcommit: 5b0eca8c21550f95de3bb21096bd4fd4d9098026
+ms.openlocfilehash: 352db93dd7061070c76e34f6c03883f68e2041ee
+ms.sourcegitcommit: 28a2874765cefe9eaa068dceb989a978ba2096aa
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 04/27/2019
-ms.locfileid: "64889169"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67167109"
 ---
 # <a name="write-custom-aspnet-core-middleware"></a>Написание пользовательского ПО промежуточного слоя ASP.NET Core
 
@@ -27,33 +28,28 @@ ms.locfileid: "64889169"
 
 Приведенный выше пример кода демонстрирует создание компонента промежуточного слоя. Дополнительные сведения о встроенной поддержке локализации в ASP.NET Core см. в разделе <xref:fundamentals/localization>.
 
-Это ПО промежуточного слоя можно проверить, передав язык и региональные параметры. Например, `http://localhost:7997/?culture=no`.
+Протестируйте ПО промежуточного слоя, передав язык и региональные параметры. Например, выполните запрос `https://localhost:5001/?culture=no`.
 
 Следующий код перемещает делегат ПО промежуточного слоя в класс.
 
 [!code-csharp[](index/snapshot/Culture/RequestCultureMiddleware.cs)]
 
-::: moniker range="< aspnetcore-2.0"
+Класс ПО промежуточного слоя должен включать следующее:
 
-Метод ПО промежуточного слоя `Task` должен иметь имя `Invoke`. В ASP.NET Core 2.0 и более поздних версиях имя может быть `Invoke` или `InvokeAsync`.
+* Открытый конструктор с параметром типа <xref:Microsoft.AspNetCore.Http.RequestDelegate>.
+* Открытый метод с именем `Invoke` или `InvokeAsync`. Этот метод должен:
+  * вернуть `Task`;
+  * принять первый параметр типа <xref:Microsoft.AspNetCore.Http.HttpContext>.
+  
+Дополнительные параметры для конструктора и `Invoke`/`InvokeAsync` заполняются с помощью [внедрения зависимости](xref:fundamentals/dependency-injection).
 
-::: moniker-end
+## <a name="middleware-dependencies"></a>Зависимости ПО промежуточного слоя
 
-## <a name="middleware-extension-method"></a>Метод расширения ПО промежуточного слоя
-
-Следующий метод расширения предоставляет ПО промежуточного слоя посредством <xref:Microsoft.AspNetCore.Builder.IApplicationBuilder>:
-
-[!code-csharp[](index/snapshot/Culture/RequestCultureMiddlewareExtensions.cs)]
-
-Следующий код вызывает ПО промежуточного слоя из `Startup.Configure`.
-
-[!code-csharp[](index/snapshot/Culture/Startup.cs?name=snippet1&highlight=5)]
-
-ПО промежуточного слоя должно соответствовать [принципу явных зависимостей](/dotnet/standard/modern-web-apps-azure-architecture/architectural-principles#explicit-dependencies), предоставляя свои зависимости в своем конструкторе. ПО промежуточного слоя создается один раз за *время существования приложения*. В разделе [Зависимости отдельных запросов](#per-request-dependencies) приведены сведения о том, как использовать службы совместно с ПО промежуточного слоя внутри запроса.
+ПО промежуточного слоя должно соответствовать [принципу явных зависимостей](/dotnet/standard/modern-web-apps-azure-architecture/architectural-principles#explicit-dependencies), предоставляя свои зависимости в своем конструкторе. ПО промежуточного слоя создается один раз за *время существования приложения*. В разделе [Зависимости отдельных запросов](#per-request-middleware-dependencies) приведены сведения о том, как использовать службы совместно с ПО промежуточного слоя внутри запроса.
 
 Компоненты промежуточного слоя могут разрешать свои зависимости, возникшие в результате [внедрения зависимостей](xref:fundamentals/dependency-injection), за счет параметров конструктора. [UseMiddleware&lt;T&gt;](/dotnet/api/microsoft.aspnetcore.builder.usemiddlewareextensions.usemiddleware#Microsoft_AspNetCore_Builder_UseMiddlewareExtensions_UseMiddleware_Microsoft_AspNetCore_Builder_IApplicationBuilder_System_Type_System_Object___) также может принимать дополнительные параметры напрямую.
 
-## <a name="per-request-dependencies"></a>Зависимости отдельных запросов
+## <a name="per-request-middleware-dependencies"></a>Зависимости ПО промежуточного слоя для отдельных запросов
 
 Так как ПО промежуточного слоя создается при запуске приложения, а не для отдельных запросов, службы времени существования *scoped*, используемые конструкторами ПО промежуточного слоя, не являются общими с другими типами, возникшими в результате внедрения зависимостей, в каждом из запросов. Если необходимо предоставить службу *scoped* для совместного использования ПО промежуточного слоя и другими типами, добавьте ее в сигнатуру метода `Invoke`. Метод `Invoke` может принимать дополнительные параметры, заполняемые при внедрении зависимостей.
 
@@ -75,6 +71,16 @@ public class CustomMiddleware
     }
 }
 ```
+
+## <a name="middleware-extension-method"></a>Метод расширения ПО промежуточного слоя
+
+Следующий метод расширения предоставляет ПО промежуточного слоя посредством <xref:Microsoft.AspNetCore.Builder.IApplicationBuilder>:
+
+[!code-csharp[](index/snapshot/Culture/RequestCultureMiddlewareExtensions.cs)]
+
+Следующий код вызывает ПО промежуточного слоя из `Startup.Configure`.
+
+[!code-csharp[](index/snapshot/Culture/Startup.cs?name=snippet1&highlight=5)]
 
 ## <a name="additional-resources"></a>Дополнительные ресурсы
 

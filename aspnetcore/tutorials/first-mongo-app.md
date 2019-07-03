@@ -6,12 +6,12 @@ ms.author: scaddie
 ms.custom: mvc, seodec18
 ms.date: 06/10/2019
 uid: tutorials/first-mongo-app
-ms.openlocfilehash: 5e3bdb10f0e192ba98df442959ceb68dc7c7adc5
-ms.sourcegitcommit: 9691b742134563b662948b0ed63f54ef7186801e
+ms.openlocfilehash: 426b4c0dee290153b9b1bf83deec14fa728183cb
+ms.sourcegitcommit: f5762967df3be8b8c868229e679301f2f7954679
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 06/10/2019
-ms.locfileid: "66824787"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67048078"
 ---
 # <a name="create-a-web-api-with-aspnet-core-and-mongodb"></a>Создание веб-API с помощью ASP.NET Core и MongoDB
 
@@ -270,7 +270,7 @@ ms.locfileid: "66824787"
 
     [!code-csharp[](first-mongo-app/sample/BooksApi/Services/BookService.cs?name=snippet_BookServiceConstructor&highlight=3)]
 
-* [IMongoDatabase](https://api.mongodb.com/csharp/current/html/T_MongoDB_Driver_IMongoDatabase.htm) &ndash; представляет базу данных Mongo для выполнения операций. В этом руководстве используется универсальный метод [GetCollection<TDocument>(collection)](https://api.mongodb.com/csharp/current/html/M_MongoDB_Driver_IMongoDatabase_GetCollection__1.htm) интерфейса для получения доступа к данным в определенной коллекции. Операции CRUD следует выполнять с коллекцией после вызова этого метода. В вызове метода `GetCollection<TDocument>(collection)`:
+* [IMongoDatabase](https://api.mongodb.com/csharp/current/html/T_MongoDB_Driver_IMongoDatabase.htm) &ndash; представляет базу данных Mongo для выполнения операций. В этом руководстве используется универсальный метод [GetCollection\<TDocument>(collection)](https://api.mongodb.com/csharp/current/html/M_MongoDB_Driver_IMongoDatabase_GetCollection__1.htm) интерфейса для получения доступа к данным в определенной коллекции. Операции CRUD следует выполнять с коллекцией после вызова этого метода. В вызове метода `GetCollection<TDocument>(collection)`:
   * `collection` представляет имя коллекции;
   * `TDocument` представляет тип объекта среды CLR, хранящегося в коллекции;
 

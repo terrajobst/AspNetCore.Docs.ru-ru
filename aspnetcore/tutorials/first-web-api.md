@@ -1,19 +1,19 @@
 ---
-title: Учебник. Создание веб-API с помощью MVC ASP.NET Core
+title: Учебник. Создание веб-API с помощью ASP.NET Core
 author: rick-anderson
-description: Построение веб-API с помощью ASP.NET Core MVC
+description: Узнайте, как создать веб-API с помощью ASP.NET Core.
 ms.author: riande
 ms.custom: mvc
-ms.date: 02/4/2019
+ms.date: 06/18/2019
 uid: tutorials/first-web-api
-ms.openlocfilehash: dce2926e3cb19d6ac8d2af0e9b96c31dee1d92fd
-ms.sourcegitcommit: dd9c73db7853d87b566eef136d2162f648a43b85
+ms.openlocfilehash: 17e8ee08fca775b8fccc3f2e6cd6067caca9c79f
+ms.sourcegitcommit: a1283d486ac1dcedfc7ea302e1cc882833e2c515
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65087522"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67207784"
 ---
-# <a name="tutorial-create-a-web-api-with-aspnet-core-mvc"></a>Учебник. Создание веб-API с помощью MVC ASP.NET Core
+# <a name="tutorial-create-a-web-api-with-aspnet-core"></a>Учебник. Создание веб-API с помощью ASP.NET Core
 
 Авторы: [Рик Андерсон](https://twitter.com/RickAndMSFT) и [Майк Уоссон](https://github.com/mikewasson)
 
@@ -39,7 +39,7 @@ ms.locfileid: "65087522"
 
 В этом руководстве создается следующий API-интерфейс:
 
-|API | Описание | Текст запроса | Текст ответа |
+|API | ОПИСАНИЕ | Текст запроса | Текст ответа |
 |--- | ---- | ---- | ---- |
 |GET/api/todo | Получение всех элементов задач | Нет | Массив элементов задач|
 |GET/api/todo/{id} | Получение объекта по идентификатору | Нет | Элемент задачи|
@@ -88,7 +88,7 @@ ms.locfileid: "65087522"
 
   ![Диалоговое окно "Новый проект" в macOS](first-web-api-mac/_static/1.png)
   
-* В диалоговом окне **Настройка нового веб-API ASP.NET Core** оставьте установленное по умолчанию значение для параметра **Целевая платформа**, то есть **.NET Core 2.2*.
+* В диалоговом окне **Настройка нового веб-API ASP.NET Core** оставьте установленное по умолчанию значение для параметра **Целевая платформа**, то есть * *.NET Core 2.2*.
 
 * Введите *TodoApi* в поле **Имя проекта** и выберите команду **Создать**.
 
@@ -276,7 +276,7 @@ ms.locfileid: "65087522"
 
 В этом учебнике для тестирования веб-API используется Postman.
 
-* Установка [Postman](https://www.getpostman.com/apps)
+* Установка [Postman](https://www.getpostman.com/downloads/)
 * Запустите веб-приложение.
 * Запустите Postman.
 * Отключение параметра **Проверка SSL-сертификата**
@@ -315,7 +315,7 @@ ms.locfileid: "65087522"
 * В Postman укажите метод HTTP `POST`.
 * Откройте вкладку **Тело**.
 * Установите переключатель **без обработки**.
-* Задайте тип **JSON (приложение/json)**.
+* Задайте тип **JSON (приложение/json)** .
 * В теле запроса введите код JSON для элемента списка дел:
 
     ```json

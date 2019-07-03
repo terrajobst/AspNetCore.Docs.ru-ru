@@ -6,12 +6,12 @@ monikerRange: '>= aspnetcore-3.0'
 ms.author: johluo
 ms.date: 06/12/2019
 uid: tutorials/grpc/grpc-start
-ms.openlocfilehash: 919db3f31310342657c89100a6e25e8293648a9f
-ms.sourcegitcommit: 335a88c1b6e7f0caa8a3a27db57c56664d676d34
+ms.openlocfilehash: 6aef56ecd61ad71e166c03c12b28b25b931cdd88
+ms.sourcegitcommit: 4ef0362ef8b6e5426fc5af18f22734158fe587e1
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 06/12/2019
-ms.locfileid: "67034806"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67152923"
 ---
 # <a name="tutorial-create-a-grpc-client-and-server-in-aspnet-core"></a>Учебник. Создание клиента и сервера gRPC в ASP.NET Core
 
@@ -116,14 +116,15 @@ info: Microsoft.Hosting.Lifetime[0]
 
 * *greet.proto*: Файл *Protos/greet.proto* определяет службу gRPC `Greeter` и используется для создания ресурсов сервера gRPC. Дополнительные сведения см. в разделе [Введение в gRPC](xref:grpc/index).
 * Папка *Services* содержит реализацию службы `Greeter`.
-* *appSettings.json*: содержит данные конфигурации, такие как протокол, используемый в Kestrel. Для получения дополнительной информации см. <xref:fundamentals/configuration/index>.
-* *Program.cs*: содержит точку входа для службы gRPC. Для получения дополнительной информации см. <xref:fundamentals/host/web-host>.
+* *appSettings.json*: содержит данные конфигурации, такие как протокол, используемый в Kestrel. Дополнительные сведения можно найти по адресу: <xref:fundamentals/configuration/index>.
+* *Program.cs*: содержит точку входа для службы gRPC. Дополнительные сведения можно найти по адресу: <xref:fundamentals/host/generic-host>.
 * *Startup.cs*: содержит код, задающий поведение приложения. Дополнительные сведения: [Запуск приложения](xref:fundamentals/startup).
 
 ## <a name="create-the-grpc-client-in-a-net-console-app"></a>Создание клиента gRPC в консольном приложении .NET
 
 ## <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
 
+* Откройте еще один экземпляр Visual Studio.
 * Выберите **Файл** > **Создать** > **Проект** в меню.
 * В диалоговом окне **Создать проект** выберите **Консольное приложение (.NET Core)** .
 * Выберите **Далее**
@@ -151,7 +152,7 @@ code -r GrpcGreeterClient
 
 ### <a name="add-required-packages"></a>Добавление необходимых пакетов
 
-Добавьте следующие пакеты в клиентский проект gRPC:
+Для клиентского проекта gRPC требуются следующие пакеты:
 
 * [Grpc.Net.Client](https://www.nuget.org/packages/Grpc.Net.Client), который содержит клиент .NET Core.
 * [Google.Protobuf](https://www.nuget.org/packages/Google.Protobuf/), который содержит API сообщений protobuf для C#;
@@ -208,7 +209,7 @@ dotnet add GrpcGreeterClient.csproj package Grpc.Tools
 
   # <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio) 
 
-  Щелкните правой кнопкой мыши проект и выберите **Изменить GrpcGreeterClient.csproj**.
+  Щелкните проект правой кнопкой мыши и выберите **Изменить файл проекта**.
 
   # <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code.](#tab/visual-studio-code) 
 
@@ -220,7 +221,7 @@ dotnet add GrpcGreeterClient.csproj package Grpc.Tools
 
   ---
 
-* Добавьте файл **greet.proto** в `<Protobuf>` группу элементов файла проекта GrpcGreeterClient:
+* Добавьте группу элементов с элементом `<Protobuf>`, ссылающимся на файл **greet.proto**:
 
   ```XML
   <ItemGroup>
@@ -228,11 +229,9 @@ dotnet add GrpcGreeterClient.csproj package Grpc.Tools
   </ItemGroup>
   ```
 
-Выполните сборку проекта клиента, чтобы запустить формирование ресурсов клиента C#.
-
 ### <a name="create-the-greeter-client"></a>Создание клиента Greeter
 
-Соберите проект, чтобы создать типы в пространстве имен **Greeter**. Типы `Greeter` создаются автоматически в процессе сборки.
+Скомпилируйте проект, чтобы создать типы в пространстве имен `GrpcGreeter`. Типы `GrpcGreeter` создаются автоматически в процессе сборки.
 
 Добавьте в файл *Program.cs* клиента gRPC следующий код:
 
