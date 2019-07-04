@@ -5,12 +5,12 @@ description: Объяснение с помощью Facebook, Google, Twitter, �
 ms.author: riande
 ms.date: 07/04/2019
 uid: security/authentication/social/social-without-identity
-ms.openlocfilehash: e67da513fef1ce453110c465b08e9c7965e71df5
-ms.sourcegitcommit: d6e51c60439f03a8992bda70cc982ddb15d3f100
+ms.openlocfilehash: 1e7124e8b07c0faf2d005ec3ef55c0414a697d64
+ms.sourcegitcommit: f6e6730872a7d6f039f97d1df762f0d0bd5e34cf
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/03/2019
-ms.locfileid: "67557653"
+ms.lasthandoff: 07/04/2019
+ms.locfileid: "67561566"
 ---
 # <a name="use-social-sign-in-provider-authentication-without-aspnet-core-identity"></a>Использовать проверку подлинности поставщиков социальных сетей вход без ASP.NET Core Identity
 
@@ -47,7 +47,7 @@ ms.locfileid: "67557653"
 
 Дополнительные сведения о схемы проверки подлинности и проверки подлинности файла cookie, см. в разделе <xref:security/authentication/cookie>.
 
-## <a name="applying-basic-authorization"></a>Применение базовой авторизации
+## <a name="applying-authorization"></a>Применение авторизации
 
 Проверить конфигурацию проверки подлинности приложения, применяя `AuthorizeAttribute` атрибут контроллера, действия или страницы. Следующий код ограничивает доступ к *конфиденциальности* страницы для пользователей, которые прошли проверку подлинности:
 

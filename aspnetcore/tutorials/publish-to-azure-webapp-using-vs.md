@@ -7,10 +7,10 @@ ms.custom: mvc
 ms.date: 12/06/2018
 uid: tutorials/publish-to-azure-webapp-using-vs
 ms.openlocfilehash: c0251032d83349d4d3925d1ec594c9230ed6ad2d
-ms.sourcegitcommit: a1283d486ac1dcedfc7ea302e1cc882833e2c515
+ms.sourcegitcommit: 6d9cf728465cdb0de1037633a8b7df9a8989cccb
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 07/01/2019
 ms.locfileid: "67207647"
 ---
 # <a name="publish-an-aspnet-core-app-to-azure-with-visual-studio"></a>Публикация приложения ASP.NET Core в Azure с помощью Visual Studio
@@ -102,7 +102,7 @@ Visual Studio создает решение.
 
 * Выберите вкладку **Службы**, чтобы создать базу данных.
 
-* Выберите зеленый значок **+**, чтобы создать базу данных SQL.
+* Выберите зеленый значок **+** , чтобы создать базу данных SQL.
 
 ![Новая база данных SQL](publish-to-azure-webapp-using-vs/_static/sql.png)
 
@@ -158,7 +158,7 @@ Visual Studio создает веб-приложение и SQL Server в Azure.
 
     [!code-html[About](publish-to-azure-webapp-using-vs/sample/about.cshtml?highlight=9&range=1-9)]
 
-* Щелкните правой кнопкой мыши проект и снова выберите пункт **Опубликовать...**.
+* Щелкните правой кнопкой мыши проект и снова выберите пункт **Опубликовать...** .
 
 ![Открытое контекстное меню с выделенной ссылкой "Опубликовать"](publish-to-azure-webapp-using-vs/_static/pub.png)
 
