@@ -816,6 +816,8 @@
           uid: security/authentication/2fa
         - name: Использование проверки подлинности с помощью файлов cookie без Identity
           uid: security/authentication/cookie
+        - name: Использование проверки подлинности на основе учетной записи социальной сети без Identity
+          uid: security/authentication/social/social-without-identity
         - name: Azure Active Directory
           items:
             - name: Обзор
