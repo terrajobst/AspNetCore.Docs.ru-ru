@@ -4,14 +4,14 @@ author: rick-anderson
 description: Узнайте, как создать веб-API с помощью ASP.NET Core.
 ms.author: riande
 ms.custom: mvc
-ms.date: 06/18/2019
+ms.date: 06/23/2019
 uid: tutorials/first-web-api
-ms.openlocfilehash: 17e8ee08fca775b8fccc3f2e6cd6067caca9c79f
-ms.sourcegitcommit: a1283d486ac1dcedfc7ea302e1cc882833e2c515
+ms.openlocfilehash: a53f7019c1079296f073e743ddbf9d90fc5abad3
+ms.sourcegitcommit: d6e51c60439f03a8992bda70cc982ddb15d3f100
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67207784"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67555879"
 ---
 # <a name="tutorial-create-a-web-api-with-aspnet-core"></a>Учебник. Создание веб-API с помощью ASP.NET Core
 
@@ -49,17 +49,32 @@ ms.locfileid: "67207784"
 
 На следующем рисунке показана структура приложения.
 
-![Клиент, представленный прямоугольником слева, отправляет запрос и получает ответ от приложения (прямоугольник справа). В прямоугольнике приложения также расположены три прямоугольника, представляющих контроллер, модель и уровень доступа к данным. Запрос поступает на контроллер приложения, который выполняет операции чтения и записи между контроллером и уровнем доступа к данным. Модель сериализуется и возвращается клиенту в ответе.](first-web-api/_static/architecture.png)
+![Клиент представлен прямоугольником слева. Он отправляет запрос и получает ответ от приложения (прямоугольник справа). В прямоугольнике приложения также расположены три прямоугольника, представляющих контроллер, модель и уровень доступа к данным. Запрос поступает на контроллер приложения, который выполняет операции чтения и записи между контроллером и уровнем доступа к данным. Модель сериализуется и возвращается клиенту в ответе.](first-web-api/_static/architecture.png)
 
-[!INCLUDE[](~/includes/net-core-prereqs-all-2.2.md)]
+## <a name="prerequisites"></a>Предварительные требования
+
+# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
+
+[!INCLUDE[](~/includes/net-core-prereqs-vs2019-2.2.md)]
+
+# <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code.](#tab/visual-studio-code)
+
+[!INCLUDE[](~/includes/net-core-prereqs-vsc-2.2.md)]
+
+# <a name="visual-studio-for-mactabvisual-studio-mac"></a>[Visual Studio для Mac](#tab/visual-studio-mac)
+
+[!INCLUDE[](~/includes/net-core-prereqs-mac-2.2.md)]
+
+---
 
 ## <a name="create-a-web-project"></a>Создайте веб-проект.
 
 # <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 * В меню **Файл** выберите пункт **Создать** > **Проект**.
-* Выберите шаблон **Веб-приложение ASP.NET Core**. Назовите проект *TodoApi* и нажмите **OK**.
-* В диалоговом окне **Новое веб-приложение ASP.NET Core — TodoApi** выберите версию ASP.NET Core. Выберите шаблон **API** и нажмите кнопку **ОК**. **Не** выбирайте **Включение поддержки Docker**.
+* Выберите шаблон **Веб-приложение ASP.NET Core** и нажмите **Далее**.
+* Назовите проект *TodoApi* и нажмите **Создать**.
+* В диалоговом окне **Создание веб-приложения ASP.NET Core** убедитесь в том, что выбраны платформы **.NET Core** и **ASP.NET Core 2.2**. Выберите шаблон **API** и нажмите кнопку **Создать**. **Не** выбирайте **Включение поддержки Docker**.
 
 ![Диалоговое окно создания проекта VS](first-web-api/_static/vs.png)
 
@@ -386,13 +401,13 @@ ms.locfileid: "67207784"
 * Укажите URI удаляемого объекта, например `https://localhost:5001/api/todo/1`
 * Нажмите кнопку **Отправить**
 
-В этом примере приложения вы можете удалить все элементы, однако в случае удаления последнего элемента в момент следующего вызова API конструктор класса модели создаст новый элемент.
+В этом примере приложения вы можете удалить все элементы. Однако в случае удаления последнего элемента в момент следующего вызова API конструктор класса модели создаст новый элемент.
 
 ## <a name="call-the-api-with-jquery"></a>Вызов API с помощью jQuery
 
 В этом разделе добавляется HTML-страница, которая использует jQuery для вызова веб-API. jQuery запускает запрос и вносит на страницу подробные сведения из ответа API.
 
-Настройте в приложении [обслуживание статических файлов](/dotnet/api/microsoft.aspnetcore.builder.staticfileextensions.usestaticfiles#Microsoft_AspNetCore_Builder_StaticFileExtensions_UseStaticFiles_Microsoft_AspNetCore_Builder_IApplicationBuilder_) и [включение сопоставления файлов по умолчанию](/dotnet/api/microsoft.aspnetcore.builder.defaultfilesextensions.usedefaultfiles#Microsoft_AspNetCore_Builder_DefaultFilesExtensions_UseDefaultFiles_Microsoft_AspNetCore_Builder_IApplicationBuilder_):
+Настройте приложение для [обслуживания статических файлов](/dotnet/api/microsoft.aspnetcore.builder.staticfileextensions.usestaticfiles#Microsoft_AspNetCore_Builder_StaticFileExtensions_UseStaticFiles_Microsoft_AspNetCore_Builder_IApplicationBuilder_) и [включения сопоставления файлов по умолчанию](/dotnet/api/microsoft.aspnetcore.builder.defaultfilesextensions.usedefaultfiles#Microsoft_AspNetCore_Builder_DefaultFilesExtensions_UseDefaultFiles_Microsoft_AspNetCore_Builder_IApplicationBuilder_), обновив *Startup.cs* следующим выделенным кодом:
 
 [!code-csharp[](first-web-api/samples/2.2/TodoApi/Startup.cs?highlight=14-15&name=snippet_configure)]
 

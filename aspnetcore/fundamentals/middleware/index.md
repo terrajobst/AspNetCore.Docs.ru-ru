@@ -2,16 +2,17 @@
 title: ПО промежуточного слоя ASP.NET Core
 author: rick-anderson
 description: Сведения о ПО промежуточного слоя ASP.NET Core и конвейере запросов.
+monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 02/17/2019
+ms.date: 07/03/2019
 uid: fundamentals/middleware/index
-ms.openlocfilehash: bac121441d6856ca79affe1a3130e5cbc76debd9
-ms.sourcegitcommit: 5b0eca8c21550f95de3bb21096bd4fd4d9098026
+ms.openlocfilehash: cdb4916f277c64e4f273b2a0b9a7a4074600f7b7
+ms.sourcegitcommit: f6e6730872a7d6f039f97d1df762f0d0bd5e34cf
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 04/27/2019
-ms.locfileid: "64882339"
+ms.lasthandoff: 07/04/2019
+ms.locfileid: "67561599"
 ---
 # <a name="aspnet-core-middleware"></a>ПО промежуточного слоя ASP.NET Core
 
@@ -26,7 +27,7 @@ ms.locfileid: "64882339"
 
 Для их настройки служат методы расширения <xref:Microsoft.AspNetCore.Builder.RunExtensions.Run*>, <xref:Microsoft.AspNetCore.Builder.MapExtensions.Map*> и <xref:Microsoft.AspNetCore.Builder.UseExtensions.Use*>. Отдельный делегат запроса можно указать встроенным в качестве анонимного метода (называемого встроенным ПО промежуточного слоя) либо определить в многоразовом классе. Эти многоразовые классы и встроенные анонимные методы являются *ПО промежуточного слоя* или *компонентами промежуточного слоя*. Каждый компонент ПО промежуточного слоя в конвейере запросов отвечает за вызов следующего компонента в конвейере или замыкает конвейер. Когда промежуточный слой замыкает конвейер, он становится *терминальным промежуточным слоем*, так как препятствует обработке запроса дальнейшими компонентами промежуточного слоя.
 
-Статья <xref:migration/http-modules> поясняет различия между конвейерами запросов в ASP.NET Core и ASP.NET 4.x, а также содержит дополнительные примеры ПО промежуточного слоя.
+В статье <xref:migration/http-modules> поясняются различия между конвейерами запросов в ASP.NET Core и ASP.NET 4.x, а также приводятся дополнительные примеры ПО промежуточного слоя.
 
 ## <a name="create-a-middleware-pipeline-with-iapplicationbuilder"></a>Создание конвейера ПО промежуточного слоя с помощью IApplicationBuilder
 
@@ -62,94 +63,42 @@ ms.locfileid: "64882339"
 
 Метод `Startup.Configure` добавляет компоненты ПО промежуточного слоя для распространенных сценариев приложений:
 
-::: moniker range=">= aspnetcore-2.0"
-
 1. Обработка исключений/ошибок
-1. Протокол HTTP Strict Transport Security.
-1. Перенаправление HTTPS
-1. Статический файловый сервер
-1. Применение политик в отношении файлов cookie.
-1. Проверка подлинности
-1. Сеанс
-1. MVC
+   * Когда приложение выполняется в среде разработки:
+     * ПО промежуточного слоя страницы исключений для разработчика (<xref:Microsoft.AspNetCore.Builder.DeveloperExceptionPageExtensions.UseDeveloperExceptionPage*>) сообщает об ошибках среды выполнения приложения.
+     * ПО промежуточного слоя страницы исключений для базы данных (<xref:Microsoft.AspNetCore.Builder.DatabaseErrorPageExtensions.UseDatabaseErrorPage*>) сообщает об ошибках среды выполнения базы данных.
+   * Когда приложение выполняется в рабочей среде:
+     * ПО промежуточного слоя обработчика исключений (<xref:Microsoft.AspNetCore.Builder.ExceptionHandlerExtensions.UseExceptionHandler*>) перехватывает исключения, возникшие в указанном ниже ПО промежуточного слоя.
+     * ПО промежуточного слоя протокола HTTP Strict Transport Security Protocol (HSTS) (<xref:Microsoft.AspNetCore.Builder.HstsBuilderExtensions.UseHsts*>) добавляет заголовок `Strict-Transport-Security`.
+1. ПО промежуточного слоя перенаправления HTTPS (<xref:Microsoft.AspNetCore.Builder.HttpsPolicyBuilderExtensions.UseHttpsRedirection*>) перенаправляет запросы с HTTP на HTTPS.
+1. ПО промежуточного слоя статических файлов (<xref:Microsoft.AspNetCore.Builder.StaticFileExtensions.UseStaticFiles*>) возвращает статические файлы и сокращает дальнейшую обработку запросов.
+1. ПО промежуточного слоя политики файлов cookie (<xref:Microsoft.AspNetCore.Builder.CookiePolicyAppBuilderExtensions.UseCookiePolicy*>) обеспечивает соответствие приложения нормам Общего регламента по защите данных (GDPR) ЕС.
+1. ПО промежуточного слоя проверки подлинности (<xref:Microsoft.AspNetCore.Builder.AuthAppBuilderExtensions.UseAuthentication*>) пытается проверить подлинность пользователя, прежде чем предоставить ему доступ к защищенным ресурсам.
+1. ПО промежуточного слоя сеанса (<xref:Microsoft.AspNetCore.Builder.SessionMiddlewareExtensions.UseSession*>) устанавливает и поддерживает состояние сеанса. Если в приложении используется состояние сеанса, вызовите ПО промежуточного слоя сеанса после ПО промежуточного слоя политики файлов cookie и до ПО промежуточного слоя MVC.
+1. ПО промежуточного слоя MVC (<xref:Microsoft.AspNetCore.Builder.MvcApplicationBuilderExtensions.UseMvc*>) добавляет MVC в конвейер запросов.
 
 ```csharp
 public void Configure(IApplicationBuilder app)
 {
     if (env.IsDevelopment())
     {
-        // When the app runs in the Development environment:
-        //   Use the Developer Exception Page to report app runtime errors.
-        //   Use the Database Error Page to report database runtime errors.
         app.UseDeveloperExceptionPage();
         app.UseDatabaseErrorPage();
     }
     else
     {
-        // When the app doesn't run in the Development environment:
-        //   Enable the Exception Handler Middleware to catch exceptions
-        //     thrown in the following middlewares.
-        //   Use the HTTP Strict Transport Security Protocol (HSTS)
-        //     Middleware.
         app.UseExceptionHandler("/Error");
         app.UseHsts();
     }
 
-    // Use HTTPS Redirection Middleware to redirect HTTP requests to HTTPS.
     app.UseHttpsRedirection();
-
-    // Return static files and end the pipeline.
     app.UseStaticFiles();
-
-    // Use Cookie Policy Middleware to conform to EU General Data 
-    // Protection Regulation (GDPR) regulations.
     app.UseCookiePolicy();
-
-    // Authenticate before the user accesses secure resources.
     app.UseAuthentication();
-
-    // If the app uses session state, call Session Middleware after Cookie 
-    // Policy Middleware and before MVC Middleware.
     app.UseSession();
-
-    // Add MVC to the request pipeline.
     app.UseMvc();
 }
 ```
-
-::: moniker-end
-
-::: moniker range="< aspnetcore-2.0"
-
-1. Обработка исключений/ошибок
-1. Статические файлы
-1. Проверка подлинности
-1. Сеанс
-1. MVC
-
-```csharp
-public void Configure(IApplicationBuilder app)
-{
-    // Enable the Exception Handler Middleware to catch exceptions
-    //   thrown in the following middlewares.
-    app.UseExceptionHandler("/Home/Error");
-
-    // Return static files and end the pipeline.
-    app.UseStaticFiles();
-
-    // Authenticate before you access secure resources.
-    app.UseIdentity();
-
-    // If the app uses session state, call UseSession before 
-    // MVC Middleware.
-    app.UseSession();
-
-    // Add MVC to the request pipeline.
-    app.UseMvcWithDefaultRoute();
-}
-```
-
-::: moniker-end
 
 В предыдущем примере кода каждый метод расширения ПО промежуточного слоя представляется в <xref:Microsoft.AspNetCore.Builder.IApplicationBuilder> с использованием пространства имен <xref:Microsoft.AspNetCore.Builder?displayProperty=fullName>.
 
@@ -157,17 +106,7 @@ public void Configure(IApplicationBuilder app)
 
 Компонент промежуточного слоя для статических файлов вызывается на раннем этапе конвейера, чтобы он мог обработать запросы и выполнить замыкание, минуя остальные компоненты. Этот компонент **не** выполняет проверки авторизации. Все обрабатываемые им файлы, включая расположенные в *wwwroot*, находятся в открытом доступе. Сведения о защите статических файлов см. в статье <xref:fundamentals/static-files>.
 
-::: moniker range=">= aspnetcore-2.0"
-
 Если запрос не обрабатывается компонентом промежуточного слоя для статических файлов, он передается в компонент промежуточного слоя для проверки подлинности (<xref:Microsoft.AspNetCore.Builder.AuthAppBuilderExtensions.UseAuthentication*>), который выполняет проверку подлинности. Этот компонент не замыкает запросы, не прошедшие проверку подлинности. Хотя ПО промежуточного слоя для проверки подлинности проверяет подлинность запросов, авторизация (и отклонение) выполняются только после того, как MVC выберет указанную страницу Razor Page или контроллер MVC и действие.
-
-::: moniker-end
-
-::: moniker range="< aspnetcore-2.0"
-
-Если запрос не обрабатывается компонентом промежуточного слоя для статических файлов, он передается в компонент промежуточного слоя для удостоверений (<xref:Microsoft.AspNetCore.Builder.BuilderExtensions.UseIdentity*>), который выполняет проверку подлинности. Этот компонент не замыкает запросы, не прошедшие проверку подлинности. Хотя он проверяет подлинность запросов, авторизация (и отклонение) выполняются только после того, как MVC выберет указанный контроллер и действие.
-
-::: moniker-end
 
 Следующий пример показывает порядок компонентов промежуточного слоя, где запросы для статических файлов обрабатываются компонентом для статических файлов до компонента для сжатия откликов. Статические файлы не сжимаются с этим порядком ПО промежуточного слоя. Отклики MVC из <xref:Microsoft.AspNetCore.Builder.MvcApplicationBuilderExtensions.UseMvcWithDefaultRoute*> можно сжать.
 
@@ -181,9 +120,9 @@ public void Configure(IApplicationBuilder app)
 }
 ```
 
-### <a name="use-run-and-map"></a>Методы Use, Run и Map
+## <a name="use-run-and-map"></a>Методы Use, Run и Map
 
-Для настройки конвейера HTTP служат методы `Use`, `Run` и `Map`. Метод `Use` может замыкать конвейер (это происходит, если он не вызывает делегат запроса `next`). `Run` является соглашением, и некоторые компоненты промежуточного слоя могут предоставлять методы `Run[Middleware]`, которые выполняются в конце конвейера.
+Для настройки конвейера HTTP служат методы <xref:Microsoft.AspNetCore.Builder.UseExtensions.Use*>, <xref:Microsoft.AspNetCore.Builder.RunExtensions.Run*> и <xref:Microsoft.AspNetCore.Builder.MapExtensions.Map*>. Метод `Use` может замыкать конвейер (это происходит, если он не вызывает делегат запроса `next`). `Run` является соглашением, и некоторые компоненты промежуточного слоя могут предоставлять методы `Run[Middleware]`, которые выполняются в конце конвейера.
 
 Расширения <xref:Microsoft.AspNetCore.Builder.MapExtensions.Map*> используются в качестве соглашения для ветвления конвейера. `Map*` осуществляет ветвление конвейера запросов на основе совпадений для заданного пути запроса. Если путь запроса начинается с заданного пути, данная ветвь выполняется.
 
@@ -200,7 +139,7 @@ public void Configure(IApplicationBuilder app)
 
 Когда используется `Map`, соответствующие сегменты путей удаляются из `HttpRequest.Path` и добавляются к `HttpRequest.PathBase` для каждого запроса.
 
-[MapWhen](/dotnet/api/microsoft.aspnetcore.builder.mapwhenextensions) осуществляет ветвление конвейера запросов на основе результата заданного предиката. Любой предикат типа `Func<HttpContext, bool>` можно использовать для сопоставления запросов с новой ветвью конвейера. В следующем примере предикат служит для определения наличия переменной строки запроса `branch`.
+<xref:Microsoft.AspNetCore.Builder.MapWhenExtensions.MapWhen*> осуществляет ветвление конвейера запросов на основе результата заданного предиката. Любой предикат типа `Func<HttpContext, bool>` можно использовать для сопоставления запросов с новой ветвью конвейера. В следующем примере предикат служит для определения наличия переменной строки запроса `branch`.
 
 [!code-csharp[](index/snapshot/Chain/StartupMapWhen.cs?name=snippet1)]
 
@@ -232,18 +171,18 @@ app.Map("/level1", level1App => {
 
 ASP.NET Core содержит следующие компоненты промежуточного слоя. В столбце *Порядок* указаны сведения о размещении ПО промежуточного слоя в конвейере обработки запросов и условия, в соответствии с которыми ПО промежуточного слоя может прервать обработку запроса. Если промежуточный слой замыкает конвейер обработки запроса и препятствует обработке запроса дальнейшими компонентами промежуточного слоя, он называется *терминальным промежуточным слоем*. Дополнительные сведения о замыкании конвейера см. в разделе [Создание конвейера ПО промежуточного слоя с помощью IApplicationBuilder](#create-a-middleware-pipeline-with-iapplicationbuilder).
 
-| ПО промежуточного слоя | Описание | Номер |
+| ПО промежуточного слоя | ОПИСАНИЕ | Номер |
 | ---------- | ----------- | ----- |
 | [Authentication](xref:security/authentication/identity) | Обеспечивает поддержку проверки подлинности. | Ставится перед тем, как потребуется `HttpContext.User`. Является конечным для обратных вызовов OAuth. |
 | [Cookie Policy](xref:security/gdpr) | Позволяет отслеживать согласие пользователей на хранение личных сведений и применять минимальные стандарты для полей файлов cookie, таких как `secure` и `SameSite`. | Перед ПО промежуточного слоя, которое использует файлы cookie. Примеры Authentication, Session, MVC (TempData). |
 | [CORS](xref:security/cors) | Настраивает общий доступ к ресурсам независимо от источника. | Ставится перед компонентами, использующими CORS. |
 | [Обработка исключений](xref:fundamentals/error-handling) | Обрабатывает исключения. | Ставится перед компонентами, выдающими ошибки. |
-| [Forwarded Headers](/dotnet/api/microsoft.aspnetcore.builder.forwardedheadersextensions) | Пересылает заголовки, переданные через прокси-сервер, в текущий запрос. | Перед компонентами, использующими обновленные поля. Например: схема, узел, IP-адрес клиента, метод. |
+| [Forwarded Headers](xref:host-and-deploy/proxy-load-balancer) | Пересылает заголовки, переданные через прокси-сервер, в текущий запрос. | Перед компонентами, использующими обновленные поля. Например: схема, узел, IP-адрес клиента, метод. |
 | [Проверка работоспособности](xref:host-and-deploy/health-checks) | Проверяет работоспособность приложения ASP.NET Core и его зависимостей, таких как проверка доступности базы данных. | Является конечным, если запрос соответствует конечной точке проверки работоспособности. |
-| [HTTP Method Override](/dotnet/api/microsoft.aspnetcore.builder.httpmethodoverrideextensions) | Разрешает входящий запрос POST для переопределения этого метода. | Ставится перед компонентами, использующими обновленный метод. |
-| [HTTPS Redirection](xref:security/enforcing-ssl#require-https) | Перенаправление всех запросов HTTP на HTTPS (ASP.NET Core 2.1 или более поздней версии). | Ставится перед компонентами, использующими URL-адрес. |
-| [HTTP Strict Transport Security (HSTS)](xref:security/enforcing-ssl#http-strict-transport-security-protocol-hsts) | ПО промежуточного слоя для усовершенствования безопасности, которое добавляет специальный заголовок ответа (ASP.NET Core 2.1 или более поздней версии). | Перед отправкой ответов и после компонентов, изменяющих запросы. Примеры Forwarded Headers, URL Rewriting. |
-| [MVC](xref:mvc/overview) | Обрабатывает запросы с помощью MVC/Razor Pages (ASP.NET Core 2.0 или более поздней версии). | Является конечным, если запрос соответствует маршруту. |
+| [HTTP Method Override](xref:Microsoft.AspNetCore.Builder.HttpMethodOverrideExtensions) | Разрешает входящий запрос POST для переопределения этого метода. | Ставится перед компонентами, использующими обновленный метод. |
+| [HTTPS Redirection](xref:security/enforcing-ssl#require-https) | Перенаправляет все запросы HTTP на HTTPS. | Ставится перед компонентами, использующими URL-адрес. |
+| [HTTP Strict Transport Security (HSTS)](xref:security/enforcing-ssl#http-strict-transport-security-protocol-hsts) | ПО промежуточного слоя для повышения безопасности, которое добавляет специальный заголовок ответа. | Перед отправкой ответов и после компонентов, изменяющих запросы. Примеры Forwarded Headers, URL Rewriting. |
+| [MVC](xref:mvc/overview) | Обрабатывает запросы с помощью MVC либо Razor Pages. | Является конечным, если запрос соответствует маршруту. |
 | [OWIN](xref:fundamentals/owin) | Взаимодействие с приложениями, серверами и ПО промежуточного слоя на основе OWIN. | Является конечным, если ПО промежуточного слоя OWIN полностью обрабатывает запрос. |
 | [Кэширование ответов](xref:performance/caching/middleware) | Обеспечивает поддержку для кэширования откликов. | Ставится перед компонентами, требующими кэширование. |
 | [Сжатие откликов](xref:performance/response-compression) | Обеспечивает поддержку для сжатия откликов. | Ставится перед компонентами, требующими сжатие. |

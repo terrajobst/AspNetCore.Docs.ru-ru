@@ -192,6 +192,8 @@
       uid: fundamentals/http-requests
     - name: Статические файлы
       uid: fundamentals/static-files
+    - name: Генератор кода
+      uid: fundamentals/tools/dotnet-aspnet-codegenerator
 - name: Веб-приложения
   items:
     - name: Razor Pages
