@@ -2,16 +2,17 @@
 title: Тестирование страниц Razor в ASP.NET Core
 author: guardrex
 description: Сведения о создании модульных тестов для приложений Razor Pages.
+monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 11/27/2017
+ms.date: 07/07/2017
 uid: test/razor-pages-tests
-ms.openlocfilehash: f0e47f975579dc114eaeda375028ec62696f58ed
-ms.sourcegitcommit: 763af2cbdab0da62d1f1cfef4bcf787f251dfb5c
+ms.openlocfilehash: f89b4fcb0065e725f70deec7859e373f9158b4bd
+ms.sourcegitcommit: 91cc1f07ef178ab709ea42f8b3a10399c970496e
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 06/26/2019
-ms.locfileid: "67394739"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67622781"
 ---
 # <a name="razor-pages-unit-tests-in-aspnet-core"></a>Тестирование страниц Razor в ASP.NET Core
 
@@ -26,20 +27,20 @@ ASP.NET Core поддерживает модульные тесты прилож
 
 В этом разделе предполагается, что имеется основные приложения Razor Pages и модульные тесты. Если вы не знакомы с приложениями Razor Pages или концепциях тестирования, см. в разделах:
 
-* [Введение в Razor Pages](xref:razor-pages/index)
-* [Начало работы с Razor Pages](xref:tutorials/razor-pages/razor-pages-start)
+* <xref:razor-pages/index>
+* <xref:tutorials/razor-pages/razor-pages-start>
 * [Модульное тестирование C# в .NET Core с помощью команды dotnet test и xUnit](/dotnet/articles/core/testing/unit-testing-with-dotnet-test)
 
 [Просмотреть или скачать образец кода](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/test/razor-pages-tests/samples) ([как скачивать](xref:index#how-to-download-a-sample))
 
 Пример проекта состоит из двух приложений:
 
-| Приложение         | Папка проекта                        | Описание |
-| ----------- | ------------------------------------- | ----------- |
-| Сообщение приложения | *src/RazorPagesTestSample*            | Позволяет пользователю добавить, удалить один, удалить все и анализ сообщений. |
-| Тестирование приложения    | *tests/RazorPagesTestSample.Tests*    | Используется для сообщения приложения модульного теста: Уровень доступа к данным (DAL) и модель страницы индекса. |
+| Приложение         | Папка проекта                     | Описание |
+| ----------- | ---------------------------------- | ----------- |
+| Сообщение приложения | *src/RazorPagesTestSample*         | Пользователь может добавить сообщение, удалите одно сообщение, удалить все сообщения и проанализировать сообщения (найти среднее число слов в сообщении). |
+| Тестирование приложения    | *tests/RazorPagesTestSample.Tests* | Используется для модульного теста DAL и модель страницы индекса сообщения приложения. |
 
-Тесты можно выполнять с помощью встроенной возможности интерфейса IDE, например [Visual Studio](https://visualstudio.microsoft.com). При использовании [Visual Studio Code](https://code.visualstudio.com/) или из командной строки, выполните следующую команду в командной строке в *tests/RazorPagesTestSample.Tests* папку:
+Тесты можно выполнять с помощью встроенной возможности интерфейса IDE, например [Visual Studio](/visualstudio/test/unit-test-your-code) или [Visual Studio для Mac](/dotnet/core/tutorials/using-on-mac-vs-full-solution). При использовании [Visual Studio Code](https://code.visualstudio.com/) или из командной строки, выполните следующую команду в командной строке в *tests/RazorPagesTestSample.Tests* папку:
 
 ```console
 dotnet test
@@ -47,17 +48,17 @@ dotnet test
 
 ## <a name="message-app-organization"></a>Сообщение приложения организации
 
-Сообщение приложения — это простой система сообщение Razor Pages, со следующими характеристиками:
+Сообщение приложения — это система сообщение Razor Pages со следующими характеристиками:
 
-* Страница индекса приложения (*Pages/Index.cshtml* и *Pages/Index.cshtml.cs*) предоставляет пользовательский Интерфейс и страницы модели методы для управления, добавление, удаление и анализа сообщений (среднее слов в сообщения) .
+* Страница индекса приложения (*Pages/Index.cshtml* и *Pages/Index.cshtml.cs*) предоставляет пользовательский Интерфейс и страницы модели методы для управления, добавление, удаление и анализа (найти среднее число сообщений слов в сообщении).
 * Описывается сообщение `Message` класс (*Data/Message.cs*) с двумя свойствами: `Id` (ключ) и `Text` (сообщение). `Text` Свойство требуется, но более 200 символов.
 * Сообщения хранятся с использованием [базы данных в памяти платформа Entity Framework](/ef/core/providers/in-memory/)&#8224;.
-* Приложение содержит слой доступа к данным (DAL) в классе контекста базы данных, `AppDbContext` (*Data/AppDbContext.cs*). Эти методы DAL отмечены `virtual`, что позволяет макетирование методы для использования в тестах.
+* Приложение содержит DAL в классе контекста базы данных, `AppDbContext` (*Data/AppDbContext.cs*). Эти методы DAL отмечены `virtual`, что позволяет макетирование методы для использования в тестах.
 * Если база данных пуста при запуске приложения, хранилище сообщений инициализируется с помощью этих сообщений. Эти *заполняется данными сообщений* также используются в тестах.
 
 &#8224;В разделе EF [теста с помощью InMemory](/ef/core/miscellaneous/testing/in-memory), объясняется, как использовать базу данных в памяти для тестов с использованием MSTest. В этом разделе используется [xUnit](https://xunit.github.io/) платформы тестирования. Концепциях тестирования и тестирования реализации различных тестовых платформ доступны, но не идентичен.
 
-Несмотря на то, что приложение не использует шаблон репозитория и не эффективный пример [шаблон единицы работы (UoW)](https://martinfowler.com/eaaCatalog/unitOfWork.html), Razor Pages поддерживает эти шаблоны разработки. Дополнительные сведения см. в разделе [проектирование уровня сохраняемости инфраструктуры](/dotnet/standard/microservices-architecture/microservice-ddd-cqrs-patterns/infrastructure-persistence-layer-design) и [тестирование логики контроллера](/aspnet/core/mvc/controllers/testing) (этот пример реализует шаблон репозитория).
+Несмотря на то, что пример приложения, не использует шаблон репозитория, а не действующие пример [шаблон единицы работы (UoW)](https://martinfowler.com/eaaCatalog/unitOfWork.html), Razor Pages поддерживает эти шаблоны разработки. Дополнительные сведения см. в разделе [проектирование уровня сохраняемости инфраструктуры](/dotnet/standard/microservices-architecture/microservice-ddd-cqrs-patterns/infrastructure-persistence-layer-design) и <xref:mvc/controllers/testing> (этот пример реализует шаблон репозитория).
 
 ## <a name="test-app-organization"></a>Тестирование приложений организации
 
@@ -81,7 +82,7 @@ dotnet test
 | `DeleteAllMessagesAsync` | Удаляет все `Message` записей из базы данных.                           |
 | `DeleteMessageAsync`     | Удаляет один `Message` из базы данных с `Id`.                      |
 
-Модульные тесты из DAL требуют [DbContextOptions](/dotnet/api/microsoft.entityframeworkcore.dbcontextoptions) при создании нового `AppDbContext` для каждого теста. Один подход к созданию `DbContextOptions` для каждого теста является использование [DbContextOptionsBuilder](/dotnet/api/microsoft.entityframeworkcore.dbcontextoptionsbuilder):
+Модульные тесты из DAL требуют <xref:Microsoft.EntityFrameworkCore.DbContextOptions> при создании нового `AppDbContext` для каждого теста. Один подход к созданию `DbContextOptions` для каждого теста является использование <xref:Microsoft.EntityFrameworkCore.DbContextOptionsBuilder>:
 
 ```csharp
 var optionsBuilder = new DbContextOptionsBuilder<AppDbContext>()
@@ -148,15 +149,15 @@ using (var db = new AppDbContext(Utilities.TestDbContextOptions()))
 | Метод модели страницы | Функция |
 | ----------------- | -------- |
 | `OnGetAsync` | Получает сообщения из DAL для пользовательского интерфейса с помощью `GetMessagesAsync` метод. |
-| `OnPostAddMessageAsync` | Если `ModelState` является допустимым, вызовы функций `AddMessageAsync` для добавления сообщения в базу данных. |
+| `OnPostAddMessageAsync` | Если [ModelState](xref:Microsoft.AspNetCore.Mvc.ModelBinding.ModelStateDictionary) является допустимым, вызовы функций `AddMessageAsync` для добавления сообщения в базу данных. |
 | `OnPostDeleteAllMessagesAsync` | Вызовы `DeleteAllMessagesAsync` удалить все сообщения в базе данных. |
 | `OnPostDeleteMessageAsync` | Выполняет `DeleteMessageAsync` для удаления сообщения с `Id` указанного. |
 | `OnPostAnalyzeMessagesAsync` | Если одно или несколько сообщений находятся в базе данных, вычисляет среднее количество слов в сообщении. |
 
 Методы страниц модели проверяются с помощью семи тестов в `IndexPageTests` класс (*tests/RazorPagesTestSample.Tests/UnitTests/IndexPageTests.cs*). Тесты с помощью знакомых Assert Act расположение шаблона. Эти тесты сосредоточены на:
 
-* Определение методов выполните правильное поведение при `ModelState` является недопустимым.
-* Подтверждение методы создания правильного `IActionResult`.
+* Определение методов выполните правильное поведение при [ModelState](xref:Microsoft.AspNetCore.Mvc.ModelBinding.ModelStateDictionary) является недопустимым.
+* Подтверждение методы создания правильного <xref:Microsoft.AspNetCore.Mvc.IActionResult>.
 * Проверка, что значение назначений свойств выполняются правильно.
 
 Эта группа тесты часто макетировать методы DAL для получения ожидаемых данных, для которой выполняется метод модели страницы шага Act. Например `GetMessagesAsync` метод `AppDbContext` имитируется для получения выходных данных. При выполнении этого метода метод модели страницы макета возвращает результат. Данные не поступают из базы данных. При этом создается условия теста прогнозируемый, надежного по использованию DAL в тестах модели страницы.
@@ -181,17 +182,18 @@ using (var db = new AppDbContext(Utilities.TestDbContextOptions()))
 
 [!code-csharp[](razor-pages-tests/samples/2.x/tests/RazorPagesTestSample.Tests/UnitTests/IndexPageTests.cs?name=snippet3)]
 
-Другие тесты, в этой группе Создать страницу объекты модели, включающие `DefaultHttpContext`, `ModelStateDictionary`, `ActionContext` для установления `PageContext`, `ViewDataDictionary`и `PageContext`. Они могут пригодиться при проведении тестов. Например, сообщение приложение устанавливает `ModelState` ошибка с `AddModelError` чтобы убедиться, что является допустимым `PageResult` возвращается, когда `OnPostAddMessageAsync` выполняется:
+Другие тесты, в этой группе Создать страницу объекты модели, включающие <xref:Microsoft.AspNetCore.Http.DefaultHttpContext>, <xref:Microsoft.AspNetCore.Mvc.ModelBinding.ModelStateDictionary>, <xref:Microsoft.AspNetCore.Mvc.ActionContext> для установления `PageContext`, `ViewDataDictionary`и `PageContext`. Они могут пригодиться при проведении тестов. Например, сообщение приложение устанавливает `ModelState` ошибка с <xref:Microsoft.AspNetCore.Mvc.ModelBinding.ModelStateDictionary.AddModelError*> чтобы убедиться, что является допустимым <xref:Microsoft.AspNetCore.Mvc.RazorPages.PageResult> возвращается, когда `OnPostAddMessageAsync` выполняется:
 
 [!code-csharp[](razor-pages-tests/samples/2.x/tests/RazorPagesTestSample.Tests/UnitTests/IndexPageTests.cs?name=snippet4&highlight=11,26,29,32)]
 
 ## <a name="additional-resources"></a>Дополнительные ресурсы
 
 * [Модульное тестирование C# в .NET Core с помощью команды dotnet test и xUnit](/dotnet/articles/core/testing/unit-testing-with-dotnet-test)
-* [Контроллеры тестирования](xref:mvc/controllers/testing)
+* <xref:mvc/controllers/testing>
 * [Модульное тестирование кода](/visualstudio/test/unit-test-your-code) (Visual Studio)
-* [Интеграционные тесты](xref:test/integration-tests)
+* <xref:test/integration-tests>
 * [xUnit.net](https://xunit.github.io/)
-* [Приступая к работе с xUnit.net (.NET Core/ASP.NET Core)](https://xunit.github.io/docs/getting-started-dotnet-core)
+* [Создание полноценного решения .NET Core на базе macOS с помощью Visual Studio для Mac](/dotnet/core/tutorials/using-on-mac-vs-full-solution)
+* [Начало работы с xUnit.net. С помощью .NET Core с помощью командной строки пакета SDK для .NET](https://xunit.github.io/docs/getting-started-dotnet-core)
 * [MOQ](https://github.com/moq/moq4)
 * [Краткое руководство MOQ](https://github.com/Moq/moq4/wiki/Quickstart)
