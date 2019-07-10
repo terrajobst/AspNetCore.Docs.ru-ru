@@ -7,12 +7,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 03/07/2019
 uid: razor-pages/razor-pages-conventions
-ms.openlocfilehash: 4e07b5803adbce94982584212fa65afbfd427b64
-ms.sourcegitcommit: 5b0eca8c21550f95de3bb21096bd4fd4d9098026
+ms.openlocfilehash: 59c8af648b50deb51f3762c14348d08acd48886e
+ms.sourcegitcommit: bee530454ae2b3c25dc7ffebf93536f479a14460
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 04/27/2019
-ms.locfileid: "64893511"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67724446"
 ---
 # <a name="razor-pages-route-and-app-conventions-in-aspnet-core"></a>Соглашения для маршрутов и приложений Razor Pages в ASP.NET Core
 
@@ -270,7 +270,7 @@ public class SlugifyParameterTransformer : IOutboundParameterTransformer
 
 Модель приложений страницы используется для проверки относительного пути на наличие сегментов, ведущих к странице Page2 в папке *OtherPages*. Если условие выполняется, добавляется заголовок. Если нет, применяется `EmptyFilter`.
 
-`EmptyFilter` является [фильтром действий](xref:mvc/controllers/filters#action-filters). Поскольку в Razor Pages фильтры действий не учитываются, `EmptyFilter` является "холостой командой", как и задумано, если путь не содержит `OtherPages/Page2`.
+`EmptyFilter` является [фильтром действий](xref:mvc/controllers/filters#action-filters). Так как фильтры действий учитываются в Razor Pages, `EmptyFilter` не действует так, как предполагалось, если путь не содержит `OtherPages/Page2`.
 
 Запросите страницу Page2 по адресу `localhost:5000/OtherPages/Page2` из примера и посмотрите заголовки, чтобы проверить результат:
 
