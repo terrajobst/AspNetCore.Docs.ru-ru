@@ -7,12 +7,12 @@ ms.author: jukotali
 ms.custom: mvc
 ms.date: 02/26/2019
 uid: fundamentals/middleware/request-response
-ms.openlocfilehash: 0c321dad256e239b61907980c09d2c088c1407ff
-ms.sourcegitcommit: 0b9e767a09beaaaa4301915cdda9ef69daaf3ff2
+ms.openlocfilehash: c9f6509738ef6290666a58268fbb0584913db9d6
+ms.sourcegitcommit: 357a7120632b20465801c093e4e5bd4a315496a8
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/03/2019
-ms.locfileid: "67538577"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67649230"
 ---
 # <a name="request-and-response-operations-in-aspnet-core"></a>Операции запросов и ответов в ASP.NET Core
 
@@ -26,7 +26,7 @@ ms.locfileid: "67538577"
 
 - `FormReader`
 - `TextReader`
-- `TexWriter`
+- `TextWriter`
 - `HttpResponse.WriteAsync`
 
 Потоки по-прежнему используются. С ними продолжают работать в .NET, и многие типы потоков не имеют эквивалентного конвейера, например `FileStreams` и `ResponseCompression`.
