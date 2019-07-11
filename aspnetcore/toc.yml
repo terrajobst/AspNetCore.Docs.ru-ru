@@ -981,6 +981,8 @@
           uid: performance/caching/distributed
         - name: ПО промежуточного слоя для кэширования ответов
           uid: performance/caching/middleware
+        - name: Повторное использование объекта с помощью ObjectPool
+          uid: performance/ObjectPool
     - name: Сжатие ответов
       uid: performance/response-compression
     - name: Диагностические средства
