@@ -5,12 +5,12 @@ description: Дополнительные сведения о реализаци
 ms.author: riande
 ms.date: 10/14/2016
 uid: security/data-protection/implementation/context-headers
-ms.openlocfilehash: 2b8fd594672bf623d38bfae90d05a984f92ce6a3
-ms.sourcegitcommit: dd9c73db7853d87b566eef136d2162f648a43b85
+ms.openlocfilehash: 518423f5df93924d3df144994e4beb1755cd0bfc
+ms.sourcegitcommit: 8516b586541e6ba402e57228e356639b85dfb2b9
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65087562"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67814016"
 ---
 # <a name="context-headers-in-aspnet-core"></a>Заголовки контекста в ASP.NET Core
 
@@ -48,7 +48,7 @@ ms.locfileid: "65087562"
 
 В идеальном случае мы передаем векторы нулевой all, K_E и K_H. Тем не менее мы хотим избежать ситуации, где базовый алгоритм проверяет, наличие слабых ключи перед выполнением любых операций (в частности DES и 3DES), которая не позволяет с помощью такой шаблон простой или повторяющихся операций, как вектор все ноль.
 
-Вместо этого мы используем NIST SP800-108 Проблемы в режиме счетчика (см. в разделе [NIST SP800-108](http://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-108.pdf), 5.1 в секунду) с ключом нулевой длины, метки и контекст и HMACSHA512 как базового PRF. Мы получаем | K_E | + | K_H | байт из выходных данных, затем разложения результат K_E и K_H сами. Математически она представлена следующим образом.
+Вместо этого мы используем NIST SP800-108 Проблемы в режиме счетчика (см. в разделе [NIST SP800-108](https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-108.pdf), 5.1 в секунду) с ключом нулевой длины, метки и контекст и HMACSHA512 как базового PRF. Мы получаем | K_E | + | K_H | байт из выходных данных, затем разложения результат K_E и K_H сами. Математически она представлена следующим образом.
 
 ( K_E || K_H ) = SP800_108_CTR(prf = HMACSHA512, key = "", label = "", context = "")
 

@@ -6,12 +6,12 @@ ms.author: casoper
 ms.custom: mvc
 ms.date: 02/27/2019
 uid: security/authentication/azure-ad-b2c
-ms.openlocfilehash: 3cb878aff7bf0c6c8efe7f3f0c0f06c74acef477
-ms.sourcegitcommit: 0b9e767a09beaaaa4301915cdda9ef69daaf3ff2
+ms.openlocfilehash: 54117bf0dd45305d060eef5fecfb98ed45f8ecdb
+ms.sourcegitcommit: 8516b586541e6ba402e57228e356639b85dfb2b9
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/03/2019
-ms.locfileid: "67538734"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67815301"
 ---
 # <a name="cloud-authentication-with-azure-active-directory-b2c-in-aspnet-core"></a>Проверка подлинности Cloud с Azure Active Directory B2C в ASP.NET Core
 
@@ -43,7 +43,7 @@ ms.locfileid: "67538734"
 
 ## <a name="register-the-app-in-azure-ad-b2c"></a>Регистрация приложения в Azure AD B2C
 
-В только что созданный клиент Azure AD B2C, зарегистрируйте приложение, нажав [действия, описанные в документации по](/azure/active-directory-b2c/active-directory-b2c-app-registration#register-a-web-app) под **зарегистрировать веб-приложение** раздел. Остановиться на **создать секрет клиента приложения web** раздел. Секрет клиента не требуется в этом руководстве. 
+В только что созданный клиент Azure AD B2C, зарегистрируйте приложение, нажав [действия, описанные в документации по](/azure/active-directory-b2c/tutorial-register-applications#register-a-web-application) под **зарегистрировать веб-приложение** раздел. Остановиться на **создать секрет клиента приложения web** раздел. Секрет клиента не требуется в этом руководстве. 
 
 Используйте следующие значения:
 
@@ -57,7 +57,7 @@ ms.locfileid: "67538734"
 | **Включить собственный клиент**     | Нет                        |                                                                                                                                                                                                    |
 
 > [!WARNING]
-> Если настройка URL-адреса ответа не относящиеся к localhost, необходимо учитывать [ограничения на том, что разрешено в списке URL-адрес ответа](/azure/active-directory-b2c/active-directory-b2c-app-registration#choosing-a-web-app-or-api-reply-url). 
+> Если настройка URL-адреса ответа не относящиеся к localhost, необходимо учитывать [ограничения на том, что разрешено в списке URL-адрес ответа](/azure/active-directory-b2c/tutorial-register-applications#register-a-web-application). 
 
 После регистрации приложения, отображается список приложений в клиенте. Выберите приложение, которое только что был зарегистрирован. Выберите **копирования** значок справа от **идентификатор приложения** поле, чтобы скопировать его в буфер обмена.
 
@@ -101,7 +101,7 @@ ms.locfileid: "67538734"
 
 ## <a name="configure-policies"></a>Настройка политик
 
-Следуйте инструкциям в документации по Azure AD B2C для [создать политику регистрации или входа в систему](/azure/active-directory-b2c/active-directory-b2c-reference-policies#create-a-sign-up-or-sign-in-policy), а затем [создать политику сброса паролей](/azure/active-directory-b2c/active-directory-b2c-reference-policies#create-a-password-reset-policy). Используйте примеры значений, приведенных в документации для **поставщиков удостоверений**, **атрибуты регистрации**, и **утверждения приложения**. С помощью **запустить сейчас** кнопку для проверки политики, как описано в документации является необязательным.
+Следуйте инструкциям в документации по Azure AD B2C для [создать политику регистрации или входа в систему](/azure/active-directory-b2c/active-directory-b2c-reference-policies#user-flow-versions), а затем [создать политику сброса паролей](/azure/active-directory-b2c/active-directory-b2c-reference-policies#user-flow-versions). Используйте примеры значений, приведенных в документации для **поставщиков удостоверений**, **атрибуты регистрации**, и **утверждения приложения**. С помощью **запустить сейчас** кнопку для проверки политики, как описано в документации является необязательным.
 
 > [!WARNING]
 > Убедитесь, имена политик именно так, как описано в документации, как эти политики были использованы в **изменить способ проверки подлинности** диалоговое окно в Visual Studio. Имена политик можно проверить в *appsettings.json*.

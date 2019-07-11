@@ -7,12 +7,12 @@ ms.author: scaddie
 ms.custom: mvc
 ms.date: 03/07/2019
 uid: security/authentication/identity/spa
-ms.openlocfilehash: 4afc9ac0a3c54b452c6a1b23e4de31d7e2fc5284
-ms.sourcegitcommit: 5b0eca8c21550f95de3bb21096bd4fd4d9098026
+ms.openlocfilehash: 302a5e10a70e40e75ab9fe4b3e5a98c4e847b822
+ms.sourcegitcommit: 8516b586541e6ba402e57228e356639b85dfb2b9
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 04/27/2019
-ms.locfileid: "64894151"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67815223"
 ---
 # <a name="authentication-and-authorization-for-spas"></a>Проверка подлинности и авторизация для одностраничных приложений
 
@@ -251,7 +251,7 @@ async populateWeatherData() {
 
 Чтобы развернуть веб-сайтах Azure, развернуть приложение, описанные в [развертывание приложения в Azure](xref:tutorials/publish-to-azure-webapp-using-vs#deploy-the-app-to-azure) создать необходимые ресурсы Azure и развернуть приложение в рабочей среде.
 
-После выполнения приведенных выше инструкций, приложение развертывается в Azure, но еще не функциональной. Сертификат, используемый приложением по-прежнему необходимо настроить. Найти отпечаток сертификата для использования и выполните действия, описанные в [загрузка сертификатов](/azure/app-service/app-service-web-ssl-cert-load#load-your-certificates).
+После выполнения приведенных выше инструкций, приложение развертывается в Azure, но еще не функциональной. Сертификат, используемый приложением по-прежнему необходимо настроить. Найти отпечаток сертификата для использования и выполните действия, описанные в [загрузка сертификатов](/azure/app-service/app-service-web-ssl-cert-load#load-the-certificate-in-code).
 
 Хотя эти шаги упомянуть SSL, то **закрытые сертификаты** раздела на портале, где можно загрузить подготовленную сертификат для использования с приложением.
 

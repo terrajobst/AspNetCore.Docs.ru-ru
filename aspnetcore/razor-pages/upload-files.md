@@ -7,12 +7,12 @@ ms.author: riande
 ms.date: 11/10/2018
 ms.custom: mvc, seodec18
 uid: razor-pages/upload-files
-ms.openlocfilehash: 07457d57b7d3b444c8cea818149569407f1dd8e8
-ms.sourcegitcommit: dd9c73db7853d87b566eef136d2162f648a43b85
+ms.openlocfilehash: 14d10424951e8ec3c7909d001c6f86e5fcb45d26
+ms.sourcegitcommit: 8516b586541e6ba402e57228e356639b85dfb2b9
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65085720"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67815042"
 ---
 # <a name="upload-files-to-a-razor-page-in-aspnet-core"></a>Отправка файлов на страницу Razor в ASP.NET Core
 
@@ -64,7 +64,7 @@ ms.locfileid: "65085720"
 
 ## <a name="add-a-helper-method-to-upload-files"></a>Добавление вспомогательного метода для отправки файлов
 
-Чтобы избежать дублирования кода для обработки отправленных файлов расписания, сначала добавьте статический вспомогательный метод. Создайте папку *Utilities* в приложении и добавьте файл *FileHelpers.cs* с приведенным ниже содержимым. Вспомогательный метод `ProcessFormFile` принимает [IFormFile](/dotnet/api/microsoft.aspnetcore.http.iformfile) и [ModelStateDictionary](/api/microsoft.aspnetcore.mvc.modelbinding.modelstatedictionary) и возвращает строку, содержащую размер и содержимое файла. Выполняется проверка типа содержимого и длины. Если файл не проходит проверку, в `ModelState` добавляется ошибка.
+Чтобы избежать дублирования кода для обработки отправленных файлов расписания, сначала добавьте статический вспомогательный метод. Создайте папку *Utilities* в приложении и добавьте файл *FileHelpers.cs* с приведенным ниже содержимым. Вспомогательный метод `ProcessFormFile` принимает [IFormFile](/dotnet/api/microsoft.aspnetcore.http.iformfile) и [ModelStateDictionary](/dotnet/api/microsoft.aspnetcore.mvc.modelbinding.modelstatedictionary) и возвращает строку, содержащую размер и содержимое файла. Выполняется проверка типа содержимого и длины. Если файл не проходит проверку, в `ModelState` добавляется ошибка.
 
 ::: moniker range=">= aspnetcore-2.1"
 
@@ -117,7 +117,7 @@ public async Task<IActionResult> OnPostAsync()
 
 ### <a name="save-the-file-to-azure-blob-storage"></a>Сохранение файла в хранилище BLOB-объектов Azure
 
-Чтобы отправить содержимое файла в хранилище BLOB-объектов Azure, см. руководство по [началу работы с хранилище BLOB-объектов Azure с помощью .NET](/azure/storage/blobs/storage-dotnet-how-to-use-blobs). В статье демонстрируется использование [UploadFromStream](/dotnet/api/microsoft.windowsazure.storage.file.cloudfile.uploadfromstreamasync) для сохранения [FileStream](/dotnet/api/system.io.filestream) в хранилище больших двоичных объектов.
+Чтобы отправить содержимое файла в хранилище BLOB-объектов Azure, см. руководство по [началу работы с хранилище BLOB-объектов Azure с помощью .NET](/azure/storage/blobs/storage-dotnet-how-to-use-blobs). В статье демонстрируется использование [UploadFromStream](/dotnet/api/microsoft.azure.storage.file.cloudfile.uploadfromstreamasync) для сохранения [FileStream](/dotnet/api/system.io.filestream) в хранилище больших двоичных объектов.
 
 ## <a name="add-the-schedule-class"></a>Добавление класса Schedule
 
@@ -186,9 +186,9 @@ Update-Database
 
 ::: moniker-end
 
-Каждая группа формы включает метку **\<label>**, отображающую имя каждого свойства класса. Атрибуты `Display` в модели `FileUpload` предоставляют отображаемые значения для меток. Например, отображаемое имя свойства `UploadPublicSchedule` задается с помощью `[Display(Name="Public Schedule")]`, в результате чего при отрисовке формы в метке отображается текст "Public Schedule" (Общее расписание).
+Каждая группа формы включает метку **\<label>** , отображающую имя каждого свойства класса. Атрибуты `Display` в модели `FileUpload` предоставляют отображаемые значения для меток. Например, отображаемое имя свойства `UploadPublicSchedule` задается с помощью `[Display(Name="Public Schedule")]`, в результате чего при отрисовке формы в метке отображается текст "Public Schedule" (Общее расписание).
 
-Каждая группа формы включает период проверки **\<span>**. Если введенные пользователем данные не соответствуют атрибутам свойства, заданным в классе `FileUpload`, или какой-либо из этапов проверки файла в методе `ProcessFormFile` завершается с ошибкой, модель не проходит проверку. При сбое проверки модели для пользователя выводится сообщение с полезными данными. Например, для свойства `Title` указаны `[Required]` и `[StringLength(60, MinimumLength = 3)]`. Если пользователь не задает заголовок, он получает сообщение, указывающее на обязательный характер этого значения. Если пользователь вводит значение длиной менее 3 или более 60 символов, он получает сообщение о неправильной длине. Если указан файл без содержимого, появляется сообщение о том, что этот файл пуст.
+Каждая группа формы включает период проверки **\<span>** . Если введенные пользователем данные не соответствуют атрибутам свойства, заданным в классе `FileUpload`, или какой-либо из этапов проверки файла в методе `ProcessFormFile` завершается с ошибкой, модель не проходит проверку. При сбое проверки модели для пользователя выводится сообщение с полезными данными. Например, для свойства `Title` указаны `[Required]` и `[StringLength(60, MinimumLength = 3)]`. Если пользователь не задает заголовок, он получает сообщение, указывающее на обязательный характер этого значения. Если пользователь вводит значение длиной менее 3 или более 60 символов, он получает сообщение о неправильной длине. Если указан файл без содержимого, появляется сообщение о том, что этот файл пуст.
 
 ## <a name="add-the-page-model"></a>Добавление страничной модели
 

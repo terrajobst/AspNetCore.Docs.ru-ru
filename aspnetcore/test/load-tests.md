@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 04/05/2019
 uid: test/loadtests
-ms.openlocfilehash: 3c21da6c799bc3080a1a16cb62ae4535b8890a1b
-ms.sourcegitcommit: bee530454ae2b3c25dc7ffebf93536f479a14460
+ms.openlocfilehash: 4b07dd1af7e0c1d3ce9baa167b69fd8f80df204a
+ms.sourcegitcommit: 8516b586541e6ba402e57228e356639b85dfb2b9
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67724486"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67815170"
 ---
 # <a name="aspnet-core-loadstress-testing"></a>ASP.NET Core нагрузки/нагрузочное тестирование
 
@@ -23,7 +23,7 @@ ms.locfileid: "67724486"
 
 Нагрузочные тесты определить можно восстановиться после сбоя и корректно вернуться к поведению приложения под нагрузкой. Под нагрузкой приложение запускается не в обычных условиях.
 
-Visual Studio 2019 — это последняя версия Visual Studio с помощью функций нагрузочного тестирования. Для клиентов, которым требуется в будущем средства тестирования нагрузки мы рекомендуем альтернативные средства, такие как Apache JMeter, Akamai CloudTest и BlazeMeter. Дополнительные сведения см. в разделе [заметки о выпуске Visual Studio 2019](/visualstudio/releases/2019/release-notes#test-tools).
+Visual Studio 2019 — это последняя версия Visual Studio с помощью функций нагрузочного тестирования. Для клиентов, которым требуется в будущем средства тестирования нагрузки мы рекомендуем альтернативные средства, такие как Apache JMeter, Akamai CloudTest и BlazeMeter. Дополнительные сведения см. в разделе [заметки о выпуске Visual Studio 2019](/visualstudio/releases/2019/release-notes-v16.0#test-tools).
 
 Службы нагрузочного тестирования в Azure DevOps заканчивается через 2020 г. Дополнительные сведения см. в разделе [Облачное нагрузочное тестирование службы конца своего жизненного цикла](https://devblogs.microsoft.com/devops/cloud-based-load-testing-service-eol/).
 
@@ -72,7 +72,7 @@ Visual Studio позволяет пользователям создавать, 
 * [ApacheBench (ab)](https://httpd.apache.org/docs/2.4/programs/ab.html)
 * [Gatling](https://gatling.io/)
 * [Locust](https://locust.io/)
-* [Западная WebSurge ветра](http://websurge.west-wind.com/)
+* [Западная WebSurge ветра](https://websurge.west-wind.com/)
 * [Netling](https://github.com/hallatore/Netling)
 * [Vegeta](https://github.com/tsenart/vegeta)
 

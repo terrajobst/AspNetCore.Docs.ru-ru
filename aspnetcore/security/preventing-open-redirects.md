@@ -5,12 +5,12 @@ description: Показывает, как предотвратить атаки 
 ms.author: riande
 ms.date: 07/07/2017
 uid: security/preventing-open-redirects
-ms.openlocfilehash: 0896189d2caaccb19647eb7c6d57f29dfc0290dd
-ms.sourcegitcommit: 5b0eca8c21550f95de3bb21096bd4fd4d9098026
+ms.openlocfilehash: 9d8cac8708fe9aeadba5af1287362a20df7f6bfe
+ms.sourcegitcommit: 8516b586541e6ba402e57228e356639b85dfb2b9
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 04/27/2019
-ms.locfileid: "64891621"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67815491"
 ---
 # <a name="prevent-open-redirect-attacks-in-aspnet-core"></a>Предотвращение атак открытого перенаправления в ASP.NET Core
 
@@ -58,7 +58,7 @@ public IActionResult SomeAction(string redirectUrl)
 
 ### <a name="islocalurl"></a>IsLocalUrl
 
-Используйте [IsLocalUrl](/dotnet/api/Microsoft.AspNetCore.Mvc.IUrlHelper?view=aspnetcore-2.0#Microsoft_AspNetCore_Mvc_IUrlHelper_IsLocalUrl_System_String_) метод для проверки перед перенаправлением URL-адреса:
+Используйте [IsLocalUrl](/dotnet/api/Microsoft.AspNetCore.Mvc.IUrlHelper.islocalurl#Microsoft_AspNetCore_Mvc_IUrlHelper_IsLocalUrl_System_String_) метод для проверки перед перенаправлением URL-адреса:
 
 В следующем примере показано, как проверить, является ли URL-адрес локальным, перед перенаправлением.
 

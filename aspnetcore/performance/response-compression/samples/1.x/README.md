@@ -17,6 +17,6 @@
 
 ## <a name="using-the-sample"></a>Использование образца
 
-1. Запрос с помощью [Fiddler](http://www.telerik.com/fiddler), [Firebug](http://getfirebug.com/), или [Postman](https://www.getpostman.com/) к приложению без `Accept-Encoding` заголовок и Примечание полезные данные ответа, размер ответа, и заголовки ответа.
+1. Запрос с помощью [Fiddler](https://www.telerik.com/fiddler), [Firebug](https://getfirebug.com/), или [Postman](https://www.getpostman.com/) к приложению без `Accept-Encoding` заголовок и Примечание полезные данные ответа, размер ответа, и заголовки ответа.
 1. Добавление `Accept-Encoding: gzip` заголовка и обратите внимание на размер сжатого ответа и заголовки ответа. Вы видите drop, размер ответа и `Content-Encoding: gzip` в примере приложения включен заголовок ответа. Если взглянуть на тексте ответа для Lorem Ipsum или **testfile1kb.txt** ответа, вы видите, что текст является сжатые и может быть прочитан.
 1. Добавление `Accept-Encoding: mycustomcompression` заголовка и обратите внимание, заголовки ответа. `CustomCompressionProvider` Пустую реализацию, фактически не сжимать ответ, но можно создать оболочку поток сжатия для `CreateStream()` метод.

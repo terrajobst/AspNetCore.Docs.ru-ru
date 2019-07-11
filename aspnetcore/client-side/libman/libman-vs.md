@@ -6,12 +6,12 @@ ms.author: scaddie
 ms.custom: mvc
 ms.date: 08/20/2018
 uid: client-side/libman/libman-vs
-ms.openlocfilehash: d0494b96447ad2b256acbde7748209ff430ae7c1
-ms.sourcegitcommit: 6afe57fb8d9055f88fedb92b16470398c4b9b24a
+ms.openlocfilehash: ebfb405516d968bf5d5b8cff956a9892457027f2
+ms.sourcegitcommit: 8516b586541e6ba402e57228e356639b85dfb2b9
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65610181"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67813464"
 ---
 # <a name="use-libman-with-aspnet-core-in-visual-studio"></a>Использование LibMan с ASP.NET Core в Visual Studio
 
@@ -28,7 +28,7 @@ Visual Studio имеет встроенную поддержку [LibMan](xref:c
 
 ## <a name="prerequisites"></a>Предварительные требования
 
-* [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/?utm_medium=microsoft&utm_source=docs.microsoft.com&utm_campaign=inline+link&utm_content=download+vs2019) с **ASP.NET и веб-разработка** рабочей нагрузки
+* [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/?utm_medium=microsoft&utm_source=docs.microsoft.com&utm_campaign=inline+link&utm_content=download+vs2019) с рабочей нагрузкой **ASP.NET и веб-разработка**
 
 ## <a name="add-library-files"></a>Добавьте файлы библиотеки
 
@@ -69,7 +69,7 @@ Visual Studio имеет встроенную поддержку [LibMan](xref:c
   |*Страницы* папку в проекте                 |*Страниц/jquery /*       |
 
 * Нажмите кнопку **установить** кнопку, чтобы загрузить файлы, каждой конфигурации в *libman.json*.
-* Просмотрите **диспетчер библиотек** веб-канала из **вывода** окно для сведения об установке. Пример:
+* Просмотрите **диспетчер библиотек** веб-канала из **вывода** окно для сведения об установке. Например:
 
   ```console
   Restore operation started...
@@ -94,13 +94,13 @@ Visual Studio имеет встроенную поддержку [LibMan](xref:c
 
 **&#8224;** Если *libman.json* файл в корневую папку проекта еще не существует, он будет создан с содержимым шаблонов элемента по умолчанию.
 
-Visual Studio предлагает широкие возможности JSON, поддержка, такие как Раскраска редактирования, форматирование, IntelliSense и проверки схемы. Схема JSON манифесте LibMan находится по адресу [ http://json.schemastore.org/libman ](http://json.schemastore.org/libman).
+Visual Studio предлагает широкие возможности JSON, поддержка, такие как Раскраска редактирования, форматирование, IntelliSense и проверки схемы. Схема JSON манифесте LibMan находится по адресу [ https://json.schemastore.org/libman ](https://json.schemastore.org/libman).
 
 В следующем файле манифеста, LibMan извлекает файлы в конфигурацию, определенную в `libraries` свойство. Объяснение объектных литералов, определенные в `libraries` ниже:
 
 * Подмножество [jQuery](https://jquery.com/) версии 3.3.1 извлекается из CDNJS поставщика. Подмножество определяется в `files` свойство&mdash;*jquery.min.js*, *jquery.js*, и *jquery.min.map*. Файлы помещаются в проекте *wwwroot/lib/jquery* папки.
 * Полностью [начальной загрузки](https://getbootstrap.com/) и помещает его в версии 4.1.3 *wwwroot/lib/bootstrap* папки. Объектный литерал `provider` переопределения свойств `defaultProvider` значение свойства. LibMan извлекает начальной загрузки файлов от поставщика unpkg.
-* Подмножество [Lodash](https://lodash.com/) был утвержден, управляющий текст внутри организации. *Lodash.js* и *lodash.min.js* файлы загружаются из локальной файловой системы в *C:\\temp\\lodash\\*. Файлы копируются в проект *wwwroot/lib/lodash* папки.
+* Подмножество [Lodash](https://lodash.com/) был утвержден, управляющий текст внутри организации. *Lodash.js* и *lodash.min.js* файлы загружаются из локальной файловой системы в *C:\\temp\\lodash\\* . Файлы копируются в проект *wwwroot/lib/lodash* папки.
 
 [!code-json[](samples/LibManSample/libman.json)]
 
@@ -160,7 +160,7 @@ LibMan можно восстановить файлы библиотеки, оп
 Во время выполнения операции восстановления:
 
 * Значок центра состояния задач (TSC) в строке состояния Visual Studio будет анимироваться и будет считывать *запуска операции восстановления*. При выборе значка открывается со списком известных фоновых задач всплывающей подсказки.
-* Сообщения будут отправляться в строке состояния и **диспетчер библиотек** веб-канала из **вывода** окна. Пример:
+* Сообщения будут отправляться в строке состояния и **диспетчер библиотек** веб-канала из **вывода** окна. Например:
 
   ```console
   Restore operation started...
@@ -185,7 +185,7 @@ LibMan можно восстановить файлы библиотеки, оп
 Во время выполнения операции очистки:
 
 * Значок TSC в строке состояния Visual Studio будет анимироваться и будет считывать *начала операции библиотеки клиента*. При выборе значка открывается со списком известных фоновых задач всплывающей подсказки.
-* Сообщения отправляются в строке состояния и **диспетчер библиотек** веб-канала из **вывода** окна. Пример:
+* Сообщения отправляются в строке состояния и **диспетчер библиотек** веб-канала из **вывода** окна. Например:
 
 ```console
 Clean libraries operation started...
@@ -201,7 +201,7 @@ Clean libraries operation completed
 
 * Откройте *libman.json*.
 * Поместите курсор внутри соответствующего `libraries` литерала объекта.
-* Щелкните значок лампочки, который отображается в левом поле и выберите **удаления \<library_name > @\<library_version >**:
+* Щелкните значок лампочки, который отображается в левом поле и выберите **удаления \<library_name > @\<library_version >** :
 
   ![Удаление библиотеки контекстного меню](_static/uninstall-menu-option.png)
 

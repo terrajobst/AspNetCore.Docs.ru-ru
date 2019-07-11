@@ -5,12 +5,12 @@ description: Дополнительные сведения о межсайтов
 ms.author: riande
 ms.date: 10/02/2018
 uid: security/cross-site-scripting
-ms.openlocfilehash: 50f0211a2c64708d9b788dd10ce9064e66014d55
-ms.sourcegitcommit: 5b0eca8c21550f95de3bb21096bd4fd4d9098026
+ms.openlocfilehash: 1e9e988be68313cfd493832519c1be89335d6e48
+ms.sourcegitcommit: 8516b586541e6ba402e57228e356639b85dfb2b9
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 04/27/2019
-ms.locfileid: "64895351"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67815210"
 ---
 # <a name="prevent-cross-site-scripting-xss-in-aspnet-core"></a>Предотвращения межсайтовых сценариев (XSS) в ASP.NET Core
 
@@ -57,7 +57,7 @@ AT основных уровня XSS осуществляется честных
 
 ## <a name="javascript-encoding-using-razor"></a>JavaScript кодирование с помощью Razor
 
-Могут возникнуть ситуации, нужно вставить значение в JavaScript для обработки в представлении. Это можно сделать двумя способами. Наиболее безопасным способом для вставки значений — разместить значение в атрибуте данных тега и его можно получить в JavaScript. Пример:
+Могут возникнуть ситуации, нужно вставить значение в JavaScript для обработки в представлении. Это можно сделать двумя способами. Наиболее безопасным способом для вставки значений — разместить значение в атрибуте данных тега и его можно получить в JavaScript. Например:
 
 ```cshtml
 @{
@@ -214,7 +214,7 @@ services.AddSingleton<HtmlEncoder>(
 <p>This link text is in Chinese: <a href="/">汉语/漢語</a></p>
    ```
 
-Список безопасных диапазоны задаются в виде таблиц кодировок Юникода, не языки. [Стандарта Юникод](http://unicode.org/) имеет список [кода диаграммы](http://www.unicode.org/charts/index.html) можно использовать для поиска таблица, содержащая символы. Каждый из которых, Html, JavaScript и URL-адрес, необходимо настроить по отдельности.
+Список безопасных диапазоны задаются в виде таблиц кодировок Юникода, не языки. [Стандарта Юникод](https://unicode.org/) имеет список [кода диаграммы](https://www.unicode.org/charts/index.html) можно использовать для поиска таблица, содержащая символы. Каждый из которых, Html, JavaScript и URL-адрес, необходимо настроить по отдельности.
 
 > [!NOTE]
 > Настройка надежных влияет только на кодировщиков, отправляемый с помощью внедрения Зависимостей. Если прямой доступ к кодировщик через `System.Text.Encodings.Web.*Encoder.Default` затем по умолчанию, Basic Latin только safelist будет использоваться.

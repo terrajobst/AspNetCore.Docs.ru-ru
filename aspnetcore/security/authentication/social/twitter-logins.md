@@ -4,14 +4,14 @@ author: rick-anderson
 description: В этом учебнике показано интеграции проверки подлинности пользователя учетной записи Twitter в существующее приложение ASP.NET Core.
 ms.author: riande
 ms.custom: mvc
-ms.date: 5/11/2019
+ms.date: 05/11/2019
 uid: security/authentication/twitter-logins
-ms.openlocfilehash: 486d58b600ca5326a0728de40bb386fbb9440f67
-ms.sourcegitcommit: 3376f224b47a89acf329b2d2f9260046a372f924
+ms.openlocfilehash: d816ed27898639b0af6896a51ac035d5526c5d29
+ms.sourcegitcommit: 8516b586541e6ba402e57228e356639b85dfb2b9
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 05/10/2019
-ms.locfileid: "65516886"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67814075"
 ---
 # <a name="twitter-external-sign-in-setup-with-aspnet-core"></a>Twitter внешнего входа в программу установки с помощью ASP.NET Core
 
@@ -71,7 +71,7 @@ dotnet user-secrets set Authentication:Twitter:ConsumerAPISecret <Secret>
 
 ## <a name="troubleshooting"></a>Устранение неполадок
 
-* **ASP.NET Core 2.x только:** Если удостоверение не настроена, вызвав `services.AddIdentity` в `ConfigureServices`, пытающиеся выполнить проверку подлинности приведет к *ArgumentException: Необходимо указать параметр «SignInScheme»*. Шаблон проекта, используемый в этом примере гарантирует, что это будет сделано.
+* **ASP.NET Core 2.x только:** Если удостоверение не настроена, вызвав `services.AddIdentity` в `ConfigureServices`, пытающиеся выполнить проверку подлинности приведет к *ArgumentException: Необходимо указать параметр «SignInScheme»* . Шаблон проекта, используемый в этом примере гарантирует, что это будет сделано.
 * Если база данных сайта не был создан путем применения первоначальной миграции, вы получите *сбой операции из базы данных при обработке запроса* ошибки. Коснитесь **применить миграции** для создания базы данных и обновить, чтобы продолжить выполнение после ошибки.
 
 ## <a name="next-steps"></a>Следующие шаги

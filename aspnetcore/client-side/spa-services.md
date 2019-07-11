@@ -7,16 +7,16 @@ ms.author: scaddie
 ms.custom: H1Hack27Feb2017
 ms.date: 05/28/2019
 uid: client-side/spa-services
-ms.openlocfilehash: c7cd35865c5bddf0e5efaa9e616832b6755d9227
-ms.sourcegitcommit: e7e04a45195d4e0527af6f7cf1807defb56dc3c3
+ms.openlocfilehash: 19710b58bca606d21feda9069ad00edd1e4f72e9
+ms.sourcegitcommit: 8516b586541e6ba402e57228e356639b85dfb2b9
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 06/06/2019
-ms.locfileid: "66750123"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67813474"
 ---
 # <a name="use-javascript-services-to-create-single-page-applications-in-aspnet-core"></a>Использование служб JavaScript для создания одностраничных приложений ASP.NET Core
 
-По [Scott Addie](https://github.com/scottaddie) и [Fiyaz Hasan](http://fiyazhasan.me/)
+По [Scott Addie](https://github.com/scottaddie) и [Fiyaz Hasan](https://fiyazhasan.me/)
 
 Одностраничное приложение (SPA) — это популярный тип веб-приложения из-за его присущие многофункциональном пользовательском интерфейсе. Интеграция клиентские платформы одностраничных ПРИЛОЖЕНИЙ или библиотек, таких как [Angular](https://angular.io/) или [React](https://facebook.github.io/react/), серверные платформы, такие как ASP.NET Core довольно сложно. Службы JavaScript был разработан для трудностей, в процессе интеграции. Он позволяет работать между различными клиентскими и стеков технологий сервера.
 
@@ -96,7 +96,7 @@ npm i -S aspnet-prerendering
 
 ### <a name="asp-prerender-module-tag-helper"></a>Вспомогательная функция тега ASP-prerender-module
 
-`asp-prerender-module` Вспомогательной функции тега, используемый в предыдущем примере код выполняет *ClientApp/dist/main-server.js* на сервере с помощью Node.js. Для ясности *main server.js* файл — это артефакт задачи транспилирования TypeScript для JavaScript в [Webpack](http://webpack.github.io/) процесс сборки. Webpack определяется псевдоним точки входа `main-server`; и начинается обход графа зависимостей для данного псевдонима *ClientApp/boot-server.ts* файла:
+`asp-prerender-module` Вспомогательной функции тега, используемый в предыдущем примере код выполняет *ClientApp/dist/main-server.js* на сервере с помощью Node.js. Для ясности *main server.js* файл — это артефакт задачи транспилирования TypeScript для JavaScript в [Webpack](https://webpack.github.io/) процесс сборки. Webpack определяется псевдоним точки входа `main-server`; и начинается обход графа зависимостей для данного псевдонима *ClientApp/boot-server.ts* файла:
 
 [!code-javascript[](../client-side/spa-services/sample/SpaServicesSampleApp/webpack.config.js?range=53)]
 

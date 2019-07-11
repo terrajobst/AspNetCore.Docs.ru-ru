@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 04/11/2019
 uid: performance/caching/memory
-ms.openlocfilehash: 1474dd397f2a8f83c7a1b0ead511b7f5751865bb
-ms.sourcegitcommit: 5b0eca8c21550f95de3bb21096bd4fd4d9098026
+ms.openlocfilehash: ffd21f014c02f46d19364a7a54686b8d5c95dc1a
+ms.sourcegitcommit: 8516b586541e6ba402e57228e356639b85dfb2b9
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 04/27/2019
-ms.locfileid: "64894351"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67815033"
 ---
 # <a name="cache-in-memory-in-aspnet-core"></a>Кэш в памяти в ASP.NET Core
 
@@ -97,7 +97,7 @@ Non прикрепленные сеансы на веб-ферме требуе�
 
 ![Представление index отображаются два различных времени](memory/_static/time.png)
 
-В следующем коде используется [GetOrCreate](/dotnet/api/microsoft.extensions.caching.memory.cacheextensions#Microsoft_Extensions_Caching_Memory_CacheExtensions_GetOrCreate__1_Microsoft_Extensions_Caching_Memory_IMemoryCache_System_Object_System_Func_Microsoft_Extensions_Caching_Memory_ICacheEntry___0__) и [GetOrCreateAsync](/dotnet/api/microsoft.extensions.caching.memory.cacheextensions#Microsoft_Extensions_Caching_Memory_CacheExtensions_GetOrCreateAsync__1_Microsoft_Extensions_Caching_Memory_IMemoryCache_System_Object_System_Func_Microsoft_Extensions_Caching_Memory_ICacheEntry_System_Threading_Tasks_Task___0___) для кэширования данных.
+В следующем коде используется [GetOrCreate](/dotnet/api/microsoft.extensions.caching.memory.cacheextensions.getorcreate#Microsoft_Extensions_Caching_Memory_CacheExtensions_GetOrCreate__1_Microsoft_Extensions_Caching_Memory_IMemoryCache_System_Object_System_Func_Microsoft_Extensions_Caching_Memory_ICacheEntry___0__) и [GetOrCreateAsync](/dotnet/api/microsoft.extensions.caching.memory.cacheextensions.getorcreateasync#Microsoft_Extensions_Caching_Memory_CacheExtensions_GetOrCreateAsync__1_Microsoft_Extensions_Caching_Memory_IMemoryCache_System_Object_System_Func_Microsoft_Extensions_Caching_Memory_ICacheEntry_System_Threading_Tasks_Task___0___) для кэширования данных.
 
 [!code-csharp[](memory/sample/WebCache/Controllers/HomeController.cs?name=snippet2&highlight=3-7,14-19)]
 
@@ -124,7 +124,7 @@ Non прикрепленные сеансы на веб-ферме требуе�
 
 Объект `MemoryCache` экземпляр может при необходимости указывать и обеспечивать максимального размера. Предельный размер памяти не имеет определенных единица измерения, поскольку отсутствует механизм для измерения размера записей кэша. Если предельный размер кэш-памяти, все записи необходимо указать размер. Среда выполнения ASP.NET Core не ограничивает размер кэша в зависимости от нехватки памяти. Он работает для разработчика, чтобы ограничить размер кэша. Указанный размер измеряется в выбору разработчика.
 
-Пример:
+Например:
 
 * Если веб-приложения был главным образом кэширование строк, каждый размер кэша запись может быть длину строки.
 * Приложение может определить размер всех записей как 1, а максимальный размер составляет количество записей.

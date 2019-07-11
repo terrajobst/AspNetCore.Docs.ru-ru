@@ -7,12 +7,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 05/13/2019
 uid: security/key-vault-configuration
-ms.openlocfilehash: 78c63cf135ca92f0b5f6c6828b2ae34a44a7b36c
-ms.sourcegitcommit: 3ee6ee0051c3d2c8d47a58cb17eef1a84a4c46a0
+ms.openlocfilehash: be176ed612be0773c4a5b52607c023da3856ac14
+ms.sourcegitcommit: 8516b586541e6ba402e57228e356639b85dfb2b9
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65621017"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67815330"
 ---
 # <a name="azure-key-vault-configuration-provider-in-aspnet-core"></a>Поставщик конфигурации хранилища ключей Azure в ASP.NET Core
 
@@ -34,7 +34,7 @@ ms.locfileid: "65621017"
 Чтобы внедрить [управляемые удостоверения для ресурсов Azure](/azure/active-directory/managed-identities-azure-resources/overview) сценарий, добавьте ссылку на пакет [Microsoft.Azure.Services.AppAuthentication](https://www.nuget.org/packages/Microsoft.Azure.Services.AppAuthentication/) пакета.
 
 > [!NOTE]
-> На момент написания статьи, последний стабильный выпуск `Microsoft.Azure.Services.AppAuthentication`, версии `1.0.3`, обеспечивает поддержку для [назначенный системой управляемые удостоверения](/azure/active-directory/managed-identities-azure-resources/overview#how-does-the-managed-identities-for-azure-resources-worka-namehow-does-it-worka). Поддержка *назначаемого пользователем управляемого удостоверения* доступен в `1.2.0-preview2` пакета. В этом разделе демонстрируется использование удостоверения, управляемые системой, и предоставленный пример приложения использует версию `1.0.3` из `Microsoft.Azure.Services.AppAuthentication` пакета.
+> На момент написания статьи, последний стабильный выпуск `Microsoft.Azure.Services.AppAuthentication`, версии `1.0.3`, обеспечивает поддержку для [назначенный системой управляемые удостоверения](/azure/active-directory/managed-identities-azure-resources/overview#how-does-the-managed-identities-for-azure-resources-work). Поддержка *назначаемого пользователем управляемого удостоверения* доступен в `1.2.0-preview2` пакета. В этом разделе демонстрируется использование удостоверения, управляемые системой, и предоставленный пример приложения использует версию `1.0.3` из `Microsoft.Azure.Services.AppAuthentication` пакета.
 
 ## <a name="sample-app"></a>Пример приложения
 
@@ -120,11 +120,11 @@ dotnet user-secrets set "Section:SecretName" "secret_value_2_dev"
 
 Пример приложения использует идентификатор приложения и сертификат X.509 при `#define` инструкция в верхней части *Program.cs* для файла `Certificate`.
 
-1. Создайте архив PKCS #12 (*.pfx*) сертификата. Существуют следующие параметры для создания сертификатов [MakeCert на Windows](/windows/desktop/seccrypto/makecert) и [OpenSSL](https://www.openssl.org/).
+1. Создайте архив PKCS #12 ( *.pfx*) сертификата. Существуют следующие параметры для создания сертификатов [MakeCert на Windows](/windows/desktop/seccrypto/makecert) и [OpenSSL](https://www.openssl.org/).
 1. Установите сертификат в хранилище личных сертификатов текущего пользователя. Пометить ключ как экспортируемый является необязательным. Обратите внимание, отпечаток сертификата, который используется далее в этом разделе.
-1. Экспорт в архив PKCS #12 (*.pfx*) сертификат как сертификат в кодировке DER (*.cer*).
+1. Экспорт в архив PKCS #12 ( *.pfx*) сертификат как сертификат в кодировке DER ( *.cer*).
 1. Регистрация приложения в Azure AD (**регистрация приложений**).
-1. Отправить сертификат в кодировке DER (*.cer*) в Azure AD:
+1. Отправить сертификат в кодировке DER ( *.cer*) в Azure AD:
    1. Выберите приложение в Azure AD.
    1. Перейдите к **сертификаты и секреты**.
    1. Выберите **отправка сертификата** для отправки сертификата, который содержит открытый ключ. Объект *.cer*, *PEM-файл*, или *.crt* сертификат допустим.

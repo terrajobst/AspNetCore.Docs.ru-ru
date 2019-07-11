@@ -7,12 +7,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 02/13/2019
 uid: performance/response-compression
-ms.openlocfilehash: e312d43fb62106f6ecb98367c29daa377bb227c9
-ms.sourcegitcommit: 5b0eca8c21550f95de3bb21096bd4fd4d9098026
+ms.openlocfilehash: d5d2da3dc0a8a452de97d98161d429389d2f7638
+ms.sourcegitcommit: 8516b586541e6ba402e57228e356639b85dfb2b9
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 04/27/2019
-ms.locfileid: "64893351"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67815605"
 ---
 # <a name="response-compression-in-aspnet-core"></a>Сжатие откликов в ASP.NET Core
 
@@ -30,7 +30,7 @@ ms.locfileid: "64893351"
 
 * Не удается использовать со следующими технологиями сжатия на основе сервера:
   * [Модуль динамического сжатия служб IIS](https://www.iis.net/overview/reliability/dynamiccachingandcompression)
-  * [Модуль mod_deflate Apache](http://httpd.apache.org/docs/current/mod/mod_deflate.html)
+  * [Модуль mod_deflate Apache](https://httpd.apache.org/docs/current/mod/mod_deflate.html)
   * [Nginx сжатия и распаковки](https://www.nginx.com/resources/admin-guide/compression-and-decompression/)
 * Размещение непосредственно на:
   * [Сервер HTTP.sys](xref:fundamentals/servers/httpsys) (ранее называвшихся WebListener)
@@ -70,7 +70,7 @@ ms.locfileid: "64893351"
 
 ::: moniker-end
 
-Дополнительные сведения см. в разделе [IANA официальный кодирования списка содержимого](http://www.iana.org/assignments/http-parameters/http-parameters.xml#http-content-coding-registry).
+Дополнительные сведения см. в разделе [IANA официальный кодирования списка содержимого](https://www.iana.org/assignments/http-parameters/http-parameters.xml#http-content-coding-registry).
 
 По промежуточного слоя можно добавить дополнительное сжатие поставщиков для пользовательских `Accept-Encoding` значения заголовка. Дополнительные сведения см. в разделе [настраиваемые поставщики](#custom-providers) ниже.
 
@@ -146,7 +146,7 @@ public class Startup
 Примечания.
 
 * `app.UseResponseCompression` должен вызываться перед `app.UseMvc`.
-* Используйте это средство, например [Fiddler](http://www.telerik.com/fiddler), [Firebug](http://getfirebug.com/), или [Postman](https://www.getpostman.com/) присвоить `Accept-Encoding` заголовок запроса и изучите заголовки ответа, размер и текст.
+* Используйте это средство, например [Fiddler](https://www.telerik.com/fiddler), [Firebug](https://getfirebug.com/), или [Postman](https://www.getpostman.com/) присвоить `Accept-Encoding` заголовок запроса и изучите заголовки ответа, размер и текст.
 
 Отправить запрос в пример приложения без `Accept-Encoding` заголовка и обратите внимание, что ответ без сжатия. `Content-Encoding` И `Vary` заголовки не присутствуют в ответе.
 
@@ -385,4 +385,4 @@ public void ConfigureServices(IServiceCollection services)
 * [Сеть разработчиков Mozilla: Приемлемой кодировкой](https://developer.mozilla.org/docs/Web/HTTP/Headers/Accept-Encoding)
 * [Раздел RFC 7231 3.1.2.1: Codings содержимого](https://tools.ietf.org/html/rfc7231#section-3.1.2.1)
 * [RFC 7230 разделе 4.2.3: Кодирование в gzip](https://tools.ietf.org/html/rfc7230#section-4.2.3)
-* [Версия спецификации формата файла GZIP 4.3](http://www.ietf.org/rfc/rfc1952.txt)
+* [Версия спецификации формата файла GZIP 4.3](https://www.ietf.org/rfc/rfc1952.txt)

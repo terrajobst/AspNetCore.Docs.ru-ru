@@ -6,12 +6,12 @@ monikerRange: '>= aspnetcore-1.1'
 ms.author: riande
 ms.date: 04/11/2019
 uid: performance/diagnostic-tools
-ms.openlocfilehash: 66676b5a2b95b87bfbbd50022e279e35a12b9793
-ms.sourcegitcommit: 5b0eca8c21550f95de3bb21096bd4fd4d9098026
+ms.openlocfilehash: d273897b9ad26d57eb94b196b58f14019a96d07d
+ms.sourcegitcommit: 8516b586541e6ba402e57228e356639b85dfb2b9
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 04/27/2019
-ms.locfileid: "64894191"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67815622"
 ---
 # <a name="performance-diagnostic-tools"></a>Средства диагностики производительности
 
@@ -53,7 +53,7 @@ Application Insights можно использовать в различных �
 
 [PerfView](https://github.com/Microsoft/perfview) представляет собой средство анализа производительности, созданные командой .NET, в частности, для диагностики проблем с производительностью .NET. PerfView обеспечивает анализ ЦП использования памяти и сборки Мусора поведение, событий производительности и время по часам.
 
-Дополнительные сведения о PerfView и как приступить к работе с [видео учебники по PerfView](http://channel9.msdn.com/Series/PerfView-Tutorial) или посредством считывания руководства пользователя, доступных в средстве или [на сайте GitHub](https://github.com/Microsoft/perfview).
+Дополнительные сведения о PerfView и как приступить к работе с [видео учебники по PerfView](https://channel9.msdn.com/Series/PerfView-Tutorial) или посредством считывания руководства пользователя, доступных в средстве или [на сайте GitHub](https://github.com/Microsoft/perfview).
 
 ## <a name="windows-performance-toolkit"></a>Windows Performance Toolkit
 

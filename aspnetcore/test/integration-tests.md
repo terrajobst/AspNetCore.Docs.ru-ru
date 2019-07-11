@@ -7,12 +7,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 06/05/2019
 uid: test/integration-tests
-ms.openlocfilehash: 3af2a1f7c6a65d7ff42597972ee151a50fc95fb6
-ms.sourcegitcommit: c716ea9155a6b404c1f3d3d34e2388454cd276d7
+ms.openlocfilehash: a4e22e53b4658a7c6da3c9e15671a355b212f559
+ms.sourcegitcommit: 8516b586541e6ba402e57228e356639b85dfb2b9
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 06/05/2019
-ms.locfileid: "66716374"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67815366"
 ---
 # <a name="integration-tests-in-aspnet-core"></a>Интеграционные тесты в ASP.NET Core
 
@@ -184,7 +184,7 @@ ms.locfileid: "66716374"
   * Кнопка "Отправить" (`IHtmlElement`) и формируют значения (`IEnumerable<KeyValuePair<string, string>>`)
 
 > [!NOTE]
-> [AngleSharp](https://anglesharp.github.io/) стороннего синтаксического анализа библиотека, используемая для демонстрационных целей в этой статье и в примере приложения. AngleSharp не поддерживается или для интеграционного тестирования приложений ASP.NET Core. Можно использовать другие средства синтаксического анализа, таких как [пакет гибкость получена строка Html (HAP)](http://html-agility-pack.net/). Другой подход заключается в написании кода непосредственно обрабатывать сложные системы токен проверки запроса и против подделки файла cookie.
+> [AngleSharp](https://anglesharp.github.io/) стороннего синтаксического анализа библиотека, используемая для демонстрационных целей в этой статье и в примере приложения. AngleSharp не поддерживается или для интеграционного тестирования приложений ASP.NET Core. Можно использовать другие средства синтаксического анализа, таких как [пакет гибкость получена строка Html (HAP)](https://html-agility-pack.net/). Другой подход заключается в написании кода непосредственно обрабатывать сложные системы токен проверки запроса и против подделки файла cookie.
 
 ## <a name="customize-the-client-with-withwebhostbuilder"></a>Настройка клиента с WithWebHostBuilder
 
