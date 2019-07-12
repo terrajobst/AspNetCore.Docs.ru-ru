@@ -7,12 +7,12 @@ ms.author: riande
 ms.custom: mvc, seoapril2019
 ms.date: 07/01/2019
 uid: blazor/index
-ms.openlocfilehash: dbfadf9481cf16279e2a491bc04f51058e1d8a9c
-ms.sourcegitcommit: eb3e51d58dd713eefc242148f45bd9486be3a78a
+ms.openlocfilehash: d91ba4fd5ada714a539375715745241f05e9fc70
+ms.sourcegitcommit: 8516b586541e6ba402e57228e356639b85dfb2b9
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/02/2019
-ms.locfileid: "67500420"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67813370"
 ---
 # <a name="introduction-to-blazor"></a>Введение в Blazor
 
@@ -107,7 +107,7 @@ Blazor на стороне клиента — это платформа для 
 
 Выполнение кода .NET в веб-браузерах становится возможным благодаря технологии [WebAssembly](http://webassembly.org) (сокращенно *wasm*). WebAssembly — это компактный формат байт-кода, оптимизированный для быстрой загрузки и максимального быстродействия. WebAssembly — это открытый веб-стандарт, который поддерживается в веб-браузерах без подключаемых модулей.
 
-Код WebAssembly может обращаться к любым функциям браузера через JavaScript благодаря поддержке *взаимодействия с JavaScript*. Код .NET, который обрабатывается через WebAssembly в браузере, выполняется в песочнице для JavaScript этого браузера, которая включает средства защиты от вредоносных действий на клиентском компьютере.
+Код WebAssembly может обращаться к любым функциям браузера через JavaScript благодаря поддержке *взаимодействия с JavaScript* ** . Код .NET, который обрабатывается через WebAssembly в браузере, выполняется в песочнице для JavaScript этого браузера, которая включает средства защиты от вредоносных действий на клиентском компьютере.
 
 ![Blazor на стороне клиента выполняет код .NET в браузере с WebAssembly.](index/_static/blazor-client-side.png)
 
@@ -145,7 +145,7 @@ API, которые не используются в веб-браузере (н
 
 ## <a name="additional-resources"></a>Дополнительные ресурсы
 
-* [WebAssembly](http://webassembly.org/)
+* [WebAssembly](https://webassembly.org/)
 * <xref:blazor/hosting-models>
 * [Руководство по языку C#](/dotnet/csharp/)
 * <xref:mvc/views/razor>
