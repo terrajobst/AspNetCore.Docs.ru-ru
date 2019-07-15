@@ -1,3 +1,3 @@
-* [<span data-ttu-id="7e895-101">Visual Studio Code.</span><span class="sxs-lookup"><span data-stu-id="7e895-101">Visual Studio Code</span></span>](https://code.visualstudio.com/download)
-* [<span data-ttu-id="7e895-102">Пакет SDK для .NET Core 2.2 или более поздней версии</span><span class="sxs-lookup"><span data-stu-id="7e895-102">.NET Core SDK 2.2 or later</span></span>](https://www.microsoft.com/net/download/all)
-* [<span data-ttu-id="7e895-103">C# для Visual Studio Code (последняя версия)</span><span class="sxs-lookup"><span data-stu-id="7e895-103">C# for Visual Studio Code (latest version)</span></span>](https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp)
+* [<span data-ttu-id="5c0c9-101">Visual Studio Code.</span><span class="sxs-lookup"><span data-stu-id="5c0c9-101">Visual Studio Code</span></span>](https://code.visualstudio.com/download)
+* [<span data-ttu-id="5c0c9-102">Пакет SDK для .NET Core 2.2 или более поздней версии</span><span class="sxs-lookup"><span data-stu-id="5c0c9-102">.NET Core SDK 2.2 or later</span></span>](https://www.microsoft.com/net/download/all)
+* [<span data-ttu-id="5c0c9-103">C# для Visual Studio Code (последняя версия)</span><span class="sxs-lookup"><span data-stu-id="5c0c9-103">C# for Visual Studio Code (latest version)</span></span>](https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp)
