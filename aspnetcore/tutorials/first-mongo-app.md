@@ -4,14 +4,14 @@ author: prkhandelwal
 description: В этом руководстве показано, как создать веб-API ASP.NET Core с помощью базы данных NoSQL MongoDB.
 ms.author: scaddie
 ms.custom: mvc, seodec18
-ms.date: 06/10/2019
+ms.date: 07/10/2019
 uid: tutorials/first-mongo-app
-ms.openlocfilehash: 426b4c0dee290153b9b1bf83deec14fa728183cb
-ms.sourcegitcommit: f5762967df3be8b8c868229e679301f2f7954679
+ms.openlocfilehash: c64f6e69a19e294a18cc72c860af0a03ef70d444
+ms.sourcegitcommit: 357a7120632b20465801c093e4e5bd4a315496a8
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67048078"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67649194"
 ---
 # <a name="create-a-web-api-with-aspnet-core-and-mongodb"></a>Создание веб-API с помощью ASP.NET Core и MongoDB
 
@@ -109,6 +109,9 @@ ms.locfileid: "67048078"
       ]
     }
     ```
+  
+  > [!NOTE]
+  > Идентификаторы в этой статье не будут соответствовать идентификаторам в запущенном примере.
 
 1. Просмотрите документы в базе данных, используя такую команду:
 
@@ -173,7 +176,7 @@ ms.locfileid: "67048078"
 
 # <a name="visual-studio-for-mactabvisual-studio-mac"></a>[Visual Studio для Mac](#tab/visual-studio-mac)
 
-1. Откройте **Файл** > **Создать решение** >  **.NET Core** > **Приложение**.
+1. Откройте **Файл** > **Создать решение** > **.NET Core** > **Приложение**.
 1. Выберите шаблон проекта **Веб-API ASP.NET Core** для C# и нажмите кнопку **Далее**.
 1. В раскрывающемся списке **Требуемая версия .NET Framework** выберите **.NET Core 2.2** и нажмите кнопку **Далее**.
 1. Введите *BooksApi* в поле **Имя проекта** и нажмите **Создать**.
@@ -318,11 +321,11 @@ ms.locfileid: "67048078"
     ]
     ```
 
-1. Перейдите по адресу `http://localhost:<port>/api/books/5bfd996f7b8e48dc15ff215e`, чтобы протестировать перегруженный метод действия `Get` контроллера. Отобразится такой ответ JSON:
+1. Перейдите по адресу `http://localhost:<port>/api/books/{id here}`, чтобы протестировать перегруженный метод действия `Get` контроллера. Отобразится такой ответ JSON:
 
     ```json
     {
-      "id":"5bfd996f7b8e48dc15ff215e",
+      "id":"{ID}",
       "bookName":"Clean Code",
       "price":43.15,
       "category":"Computers",

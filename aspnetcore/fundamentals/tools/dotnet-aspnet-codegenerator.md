@@ -1,16 +1,17 @@
 ---
 title: Команда dotnet aspnet-codegenerator
 author: rick-anderson
+description: Команда dotnet aspnet-codegenerator формирует шаблоны для проектов ASP.NET Core.
+monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
-description: Команда dotnet aspnet-codegenerator формирует шаблоны для проектов ASP.NET Core
 ms.date: 07/04/2019
 uid: fundamentals/tools/dotnet-aspnet-codegenerator
-ms.openlocfilehash: 55b592d9d203970777c84438e210519957abb35d
-ms.sourcegitcommit: f6e6730872a7d6f039f97d1df762f0d0bd5e34cf
+ms.openlocfilehash: c96362f320efd84c35dc07294a2968a2c687ee94
+ms.sourcegitcommit: b9e914ef274b5ec359582f299724af6234dce135
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/04/2019
-ms.locfileid: "67561687"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67596141"
 ---
 # <a name="dotnet-aspnet-codegenerator"></a>dotnet aspnet-codegenerator
 
@@ -18,20 +19,20 @@ ms.locfileid: "67561687"
 
 Команда `dotnet aspnet-codegenerator` запускает подсистему формирования шаблонов ASP.NET Core. Команду `dotnet aspnet-codegenerator` достаточно применить для формирования шаблонов из командной строки. Ее не нужно использовать для формирования шаблонов с помощью Visual Studio.
 
-Эта статья относится к [пакету SDK для .NET Core 2.2.x](https://dotnet.microsoft.com/download/dotnet-core/2.2) и более поздних версий.
+Эта статья относится к [пакету SDK для .NET Core 2.1](https://dotnet.microsoft.com/download/dotnet-core/2.1) и более поздних версий.
 
 ## <a name="installing-aspnet-codegenerator"></a>Установка aspnet-codegenerator
 
-`aspnet-codegenerator` — [глобальное средство](/dotnet/core/tools/global-tools), которое нужно установить. Следующая команда позволяет установить последнюю стабильную версию средства `aspnet-codegenerator`:
+`dotnet-aspnet-codegenerator` — [глобальное средство](/dotnet/core/tools/global-tools), которое нужно установить. Следующая команда позволяет установить последнюю стабильную версию средства `dotnet-aspnet-codegenerator`:
 
 ```console
-dotnet tool install -g aspnet-codegenerator
+dotnet tool install -g dotnet-aspnet-codegenerator
 ```
 
-Приведенная ниже команда позволяет обновить `aspnet-codegenerator` до последней стабильной версии, доступной из установленных пакетов SDK для .NET Core.
+Приведенная ниже команда позволяет обновить `dotnet-aspnet-codegenerator` до последней стабильной версии, доступной из установленных пакетов SDK для .NET Core.
 
 ```console
-dotnet tool update -g aspnet-codegenerator
+dotnet tool update -g dotnet-aspnet-codegenerator
 ```
 
 ## <a name="synopsis"></a>Краткий обзор
@@ -43,7 +44,7 @@ dotnet aspnet-codegenerator [-h|--help]
 
 ## <a name="description"></a>ОПИСАНИЕ
 
-Глобальная команда `dotnet aspnet-codegenerator ` запускает генератор кода и подсистему формирования шаблонов ASP.NET Core.
+Глобальная команда `dotnet aspnet-codegenerator` запускает генератор кода и подсистему формирования шаблонов ASP.NET Core.
 
 ## <a name="arguments"></a>Аргументы
 

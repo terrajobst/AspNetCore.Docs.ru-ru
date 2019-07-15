@@ -4,14 +4,14 @@ author: tdykstra
 description: Сведения о платформе ведения журналов в ASP.NET Core. Ознакомьтесь со встроенными поставщиками ведения журналов и получите подробные сведения о распространенных сторонних поставщиках.
 ms.author: tdykstra
 ms.custom: mvc
-ms.date: 05/01/2019
+ms.date: 07/11/2019
 uid: fundamentals/logging/index
-ms.openlocfilehash: 03d494706fb18a28792fa2cfb93bed4c73791873
-ms.sourcegitcommit: 8516b586541e6ba402e57228e356639b85dfb2b9
+ms.openlocfilehash: 51433cbf35e434300fbefae29f33594e765bcc7b
+ms.sourcegitcommit: 7a40c56bf6a6aaa63a7ee83a2cac9b3a1d77555e
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67815106"
+ms.lasthandoff: 07/12/2019
+ms.locfileid: "67855923"
 ---
 # <a name="logging-in-aspnet-core"></a>Ведение журналов в ASP.NET Core
 
@@ -51,7 +51,7 @@ ASP.NET Core поддерживает API ведения журналов, ко�
 
 Чтобы использовать поставщик, установите его пакет NuGet и вызовите метод расширения поставщика в экземпляре <xref:Microsoft.Extensions.Logging.ILoggerFactory>.
 
-[!code-csharp[](index/samples/1.x/TodoApiSample//Startup.cs?name=snippet_AddConsoleAndDebug&highlight=3,5-7)]
+[!code-csharp[](index/samples/1.x/TodoApiSample/Startup.cs?name=snippet_AddConsoleAndDebug&highlight=3,5-7)]
 
 [Внедрение зависимостей](xref:fundamentals/dependency-injection) (DI) ASP.NET Core предоставляет экземпляр `ILoggerFactory`. Методы расширения `AddConsole` и `AddDebug` определены в пакетах [Microsoft.Extensions.Logging.Console](https://www.nuget.org/packages/Microsoft.Extensions.Logging.Console/) и [Microsoft.Extensions.Logging.Debug](https://www.nuget.org/packages/Microsoft.Extensions.Logging.Debug/). Каждый метод расширения вызывает метод `ILoggerFactory.AddProvider`, передавая экземпляр поставщика.
 
@@ -645,6 +645,8 @@ loggerFactory.AddConsole();
 
 [Перегрузки AddConsole](xref:Microsoft.Extensions.Logging.ConsoleLoggerExtensions) позволяют передавать минимальный уровень ведения журналов, функцию фильтрации и логическое значение, определяющее поддержку областей. Другим вариантом является передача объекта `IConfiguration`, который может указать поддержку областей и уровни ведения журнала.
 
+Параметры поставщика Console см. в разделе <xref:Microsoft.Extensions.Logging.Console.ConsoleLoggerOptions>.
+
 Поставщик Console оказывает значительное влияние на производительность и потому, как правило, не подходит для использования в рабочей среде.
 
 При создании проекта в Visual Studio метод `AddConsole` выглядит следующим образом:
@@ -655,7 +657,7 @@ loggerFactory.AddConsole(Configuration.GetSection("Logging"));
 
 Этот код ссылается на раздел `Logging` файла *appSettings.json*:
 
-[!code-json[](index/samples/1.x/TodoApiSample//appsettings.json)]
+[!code-json[](index/samples/1.x/TodoApiSample/appsettings.json)]
 
 Приведенные параметры ограничивают журналы платформы предупреждениями, но разрешают регистрацию приложений на уровне отладки, как описано в разделе [Фильтрация журналов](#log-filtering). Дополнительные сведения см. в разделе [Конфигурация](xref:fundamentals/configuration/index).
 

@@ -6,59 +6,22 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 10/10/2018
 uid: mvc/views/tag-helpers/builtin-th/Index
-ms.openlocfilehash: 9cca912f43159e778a4c9419e6171f06b4037b8b
-ms.sourcegitcommit: 036d4b03fd86ca5bb378198e29ecf2704257f7b2
+ms.openlocfilehash: f19cfa5b843bde8a8633ce778562707e566bebb9
+ms.sourcegitcommit: 7a40c56bf6a6aaa63a7ee83a2cac9b3a1d77555e
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57346019"
+ms.lasthandoff: 07/12/2019
+ms.locfileid: "67856106"
 ---
 # <a name="aspnet-core-built-in-tag-helpers"></a>Встроенные вспомогательные функции тегов ASP.NET Core
 
-Автор: [Питер Кельнер (Peter Kellner)](http://peterkellner.net)
+Автор: [Питер Кельнер (Peter Kellner)](https://peterkellner.net)
 
 Общие сведения о вспомогательных функциях тегов см. здесь: <xref:mvc/views/tag-helpers/intro>.
 
-> [!NOTE]
-> Есть и другие встроенные вспомогательные функции тегов, которые здесь не описаны. Эти вспомогательные функции используются внутренними механизмами системой просмотра [Razor](xref:mvc/views/razor). В их число входит вспомогательная функция для знака `~` (тильда), который указывает на корневой путь веб-сайта.
+Есть и другие встроенные вспомогательные функции тегов, которые не описаны в этом документе. Неописанные вспомогательные функции тегов используются системой просмотра [Razor](xref:mvc/views/razor) для внутренних целей. Вспомогательная функция тега для символа `~` (тильда) не описана. Вспомогательная функция тега "тильда" разворачивается к корневому пути веб-сайта.
 
-## <a name="built-in-aspnet-core-tag-helpers"></a>Встроенные вспомогательные функции тегов ASP.NET Core
-
-**[Вспомогательная функция тега привязки](xref:mvc/views/tag-helpers/builtin-th/anchor-tag-helper)**
-
-**[Вспомогательная функция тега кэша](xref:mvc/views/tag-helpers/builtin-th/cache-tag-helper)**
-
-**[Вспомогательная функция тега распределенного кэша](xref:mvc/views/tag-helpers/builtin-th/distributed-cache-tag-helper)**
-
-**[Вспомогательная функция тега среды](xref:mvc/views/tag-helpers/builtin-th/environment-tag-helper)**
-
-[comment]: **[FormActionTagHelper](xref:mvc/views/tag-helpers/builtin-th/form-action-tag-helper)**
-
-**[Вспомогательная функция тега форм](xref:mvc/views/working-with-forms#the-form-tag-helper)**
-
-**[Вспомогательный объект для тегов действий формы](xref:mvc/views/working-with-forms#the-form-action-tag-helper)**
-
-**[Вспомогательная функция тега образа](xref:mvc/views/tag-helpers/builtin-th/image-tag-helper)**
-
-**[Вспомогательная функция тега Input](xref:mvc/views/working-with-forms#the-input-tag-helper)**
-
-**[Вспомогательная функция тега метки](xref:mvc/views/working-with-forms#the-label-tag-helper)**
-
-[comment]: **[LinkTagHelper](xref:mvc/views/tag-helpers/builtin-th/link-tag-helper)**
-
-[comment]: **[OptionTagHelper](xref:mvc/views/tag-helpers/builtin-th/option-tag-helper)**
-
-[comment]: **[ScriptTagHelper](xref:mvc/views/tag-helpers/builtin-th/script-tag-helper)**
-
-**[Вспомогательная функция тега частичного представления](xref:mvc/views/tag-helpers/builtin-th/partial-tag-helper)**
-
-**[Вспомогательная функция тега Select](xref:mvc/views/working-with-forms#the-select-tag-helper)**
-
-**[Вспомогательная функция тега Textarea](xref:mvc/views/working-with-forms#the-textarea-tag-helper)**
-
-**[Вспомогательная функция тега сообщения о проверке](xref:mvc/views/working-with-forms#the-validation-message-tag-helper)**
-
-**[Вспомогательная функция тега сводки по проверке](xref:mvc/views/working-with-forms#the-validation-summary-tag-helper)**
+[!INCLUDE[](~/includes/built-in-TH.md)]
 
 ## <a name="additional-resources"></a>Дополнительные ресурсы
 
