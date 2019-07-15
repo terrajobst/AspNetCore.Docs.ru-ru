@@ -44,7 +44,7 @@ dotnet aspnet-codegenerator identity -h
 dotnet aspnet-codegenerator identity -dc MyWeb.Data.ApplicationDbContext --files Account.Register
 ```
 
-PowerShell используется точка с запятой в качестве разделителя команды. Если вы используете PowerShell, escape-точка с запятой в списке файлов или поместить в список файлов в двойные кавычки. Пример:
+PowerShell используется точка с запятой в качестве разделителя команды. Если вы используете PowerShell, escape-точка с запятой в списке файлов или поместить в список файлов в двойные кавычки. Например:
 
 ```console
 dotnet aspnet-codegenerator identity -dc MyWeb.Data.ApplicationDbContext --files "Account.Register;Account.Login;Account.Logout"

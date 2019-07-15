@@ -9,6 +9,6 @@
 
 # <a name="net-core-clitabnetcore-cli"></a>[Интерфейс командной строки .NET Core](#tab/netcore-cli)
 
-Существует много сторонних средств, можно загрузить для управления и просмотра базой данных SQLite, например [DB Browser для SQLite](http://sqlitebrowser.org/).
+Существует много сторонних средств, можно загрузить для управления и просмотра базой данных SQLite, например [DB Browser для SQLite](https://sqlitebrowser.org/).
 
 ---
