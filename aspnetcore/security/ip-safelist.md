@@ -6,12 +6,12 @@ ms.author: tdykstra
 ms.custom: mvc
 ms.date: 08/31/2018
 uid: security/ip-safelist
-ms.openlocfilehash: cfbb50ea33ae3af577f13b00bccc75fe0be57f79
-ms.sourcegitcommit: 5b0eca8c21550f95de3bb21096bd4fd4d9098026
+ms.openlocfilehash: ca05989efabea3a71c6912e98055a6746e0f5966
+ms.sourcegitcommit: 1bf80f4acd62151ff8cce517f03f6fa891136409
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 04/27/2019
-ms.locfileid: "64898151"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "68223937"
 ---
 # <a name="client-ip-safelist-for-aspnet-core"></a>Объединение списков надежных IP-адрес клиента для ASP.NET Core
 
@@ -23,7 +23,7 @@ ms.locfileid: "64898151"
 * Фильтры действий для проверки IP-адрес удаленного запросы для определенных контроллеров или методы действий.
 * Фильтры страниц Razor для проверки IP-адрес удаленного запросов для страниц Razor.
 
-Пример приложения показаны оба подхода. В каждом случае строка, содержащая утвержденных клиентских IP-адресов хранится в параметр приложения. В по промежуточного слоя или фильтр анализирует строку в список и проверяет, является ли удаленный IP-адрес в списке. В противном случае возвращается код состояния HTTP 403-запрещено.
+В каждом случае строка, содержащая утвержденных клиентских IP-адресов хранится в параметр приложения. В по промежуточного слоя или фильтр анализирует строку в список и проверяет, является ли удаленный IP-адрес в списке. В противном случае возвращается код состояния HTTP 403-запрещено.
 
 [Просмотреть или скачать образец кода](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/security/ip-safelist/samples/2.x/ClientIpAspNetCore) ([как скачивать](xref:index#how-to-download-a-sample))
 
@@ -37,7 +37,7 @@ ms.locfileid: "64898151"
 
 `Configure` Метод добавляет по промежуточного слоя и передает ему строку safelist в качестве параметра конструктора.
 
-[!code-csharp[](ip-safelist/samples/2.x/ClientIpAspNetCore/Startup.cs?name=snippet_Configure&highlight=7)]
+[!code-csharp[](ip-safelist/samples/2.x/ClientIpAspNetCore/Startup.cs?name=snippet_Configure&highlight=10)]
 
 По промежуточного слоя выполняет синтаксический анализ строки в массив и ищет удаленный IP-адрес в массиве. Если удаленный IP-адрес не найден, по промежуточного слоя возвращает HTTP 401 запрещено. Этот процесс проверки пропускается для запросов HTTP Get.
 
