@@ -7,12 +7,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 06/26/2019
 uid: security/blazor/index
-ms.openlocfilehash: b3bca26e7088a8353084a065f9b9593c9d8e08e6
-ms.sourcegitcommit: 9bb29f9ba6f0645ee8b9cabda07e3a5aa52cd659
+ms.openlocfilehash: 097a747f68729109922af5c68dfd918024ee6146
+ms.sourcegitcommit: 040aedca220ed24ee1726e6886daf6906f95a028
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 06/26/2019
-ms.locfileid: "67406187"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "67893617"
 ---
 # <a name="aspnet-core-blazor-authentication-and-authorization"></a>Аутентификация и авторизация в ASP.NET Core Blazor
 
@@ -41,7 +41,7 @@ Blazor использует существующие механизмы ауте
 
 Следуйте указаниям для Visual Studio, которые представлены в статье <xref:blazor/get-started>, чтобы создать проект Blazor на стороне сервера с механизмом аутентификации.
 
-Выбрав шаблон **Blazor (на стороне сервера)** в диалоговом окне **Создание веб-приложения ASP.NET Core**, щелкните **Изменить** в разделе **Аутентификация**.
+Выбрав шаблон **Серверное приложение Blazor** в диалоговом окне **Создать веб-приложение ASP.NET Core**, щелкните **Изменить** в разделе **Проверка подлинности**.
 
 Откроется диалоговое окно с тем же набором механизмов аутентификации, которые доступны для других проектов ASP.NET Core.
 
@@ -62,7 +62,7 @@ dotnet new blazorserverside -o {APP NAME} -au {AUTHENTICATION}
 
 Допустимые значения аутентификации (`{AUTHENTICATION}`) перечислены в следующей таблице.
 
-| Механизм аутентификации                                                                 | Значение`{AUTHENTICATION}`  |
+| Механизм аутентификации                                                                 | Значение`{AUTHENTICATION}` |
 | ---------------------------------------------------------------------------------------- | :----------------------: |
 | Без аутентификации                                                                        | `None`                   |
 | Индивидуальное лицо<br>Пользователи, сохраненные в приложении с помощью ASP.NET Core Identity                        | `Individual`             |

@@ -431,6 +431,8 @@
       uid: web-api/advanced/analyzers
     - name: Соглашения
       uid: web-api/advanced/conventions
+    - name: Тестирование API-интерфейсов с HTTP REPL
+      uid: web-api/http-repl
 - name: Приложения в режиме реального времени
   displayName: signalr
   items:
