@@ -6,12 +6,12 @@ ms.author: scaddie
 ms.custom: mvc, seodec18
 ms.date: 07/10/2019
 uid: tutorials/first-mongo-app
-ms.openlocfilehash: c64f6e69a19e294a18cc72c860af0a03ef70d444
-ms.sourcegitcommit: 357a7120632b20465801c093e4e5bd4a315496a8
+ms.openlocfilehash: 99b28407a249a5c0bc6a0cf3a285c04f1d6187a7
+ms.sourcegitcommit: 8516b586541e6ba402e57228e356639b85dfb2b9
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/08/2019
-ms.locfileid: "67649194"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67815656"
 ---
 # <a name="create-a-web-api-with-aspnet-core-and-mongodb"></a>Создание веб-API с помощью ASP.NET Core и MongoDB
 
@@ -176,7 +176,7 @@ ms.locfileid: "67649194"
 
 # <a name="visual-studio-for-mactabvisual-studio-mac"></a>[Visual Studio для Mac](#tab/visual-studio-mac)
 
-1. Откройте **Файл** > **Создать решение** > **.NET Core** > **Приложение**.
+1. Откройте **Файл** > **Создать решение** >  **.NET Core** > **Приложение**.
 1. Выберите шаблон проекта **Веб-API ASP.NET Core** для C# и нажмите кнопку **Далее**.
 1. В раскрывающемся списке **Требуемая версия .NET Framework** выберите **.NET Core 2.2** и нажмите кнопку **Далее**.
 1. Введите *BooksApi* в поле **Имя проекта** и нажмите **Создать**.
@@ -294,7 +294,7 @@ ms.locfileid: "67649194"
 
 * использует класс `BookService` для выполнения операций CRUD;
 * содержит методы действий для поддержки запросов HTTP GET, POST, PUT и DELETE.
-* Вызывает <xref:System.Web.Http.ApiController.CreatedAtRoute*> в методе действия `Create` для возврата ответа [HTTP 201](http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html). Код состояния 201 представляет собой стандартный ответ метода HTTP POST, создающего ресурс на сервере. `CreatedAtRoute` также добавляет заголовок `Location` в ответ. Заголовок `Location` указывает универсальный код ресурса (URI) созданной книги.
+* Вызывает <xref:System.Web.Http.ApiController.CreatedAtRoute*> в методе действия `Create` для возврата ответа [HTTP 201](https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html). Код состояния 201 представляет собой стандартный ответ метода HTTP POST, создающего ресурс на сервере. `CreatedAtRoute` также добавляет заголовок `Location` в ответ. Заголовок `Location` указывает универсальный код ресурса (URI) созданной книги.
 
 ## <a name="test-the-web-api"></a>Тестирование веб-API
 

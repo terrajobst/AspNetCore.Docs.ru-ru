@@ -3,14 +3,14 @@ title: Razor Pages с EF Core в ASP.NET Core — миграции — 4 из�
 author: rick-anderson
 description: В этом учебнике вы начинаете использовать функцию миграций EF Core для управления изменениями модели данных в приложении ASP.NET Core MVC.
 ms.author: riande
-ms.date: 6/31/2017
+ms.date: 06/30/2017
 uid: data/ef-rp/migrations
-ms.openlocfilehash: 406b94d74a99dcec3b2ce01a5eb3313c48819148
-ms.sourcegitcommit: 3376f224b47a89acf329b2d2f9260046a372f924
+ms.openlocfilehash: 54225a8126e04eb4ff3a6a0cde9d305249299887
+ms.sourcegitcommit: 1bf80f4acd62151ff8cce517f03f6fa891136409
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 05/10/2019
-ms.locfileid: "65517005"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "68223868"
 ---
 # <a name="razor-pages-with-ef-core-in-aspnet-core---migrations---4-of-8"></a>Razor Pages с EF Core в ASP.NET Core — миграции — 4 из 8
 

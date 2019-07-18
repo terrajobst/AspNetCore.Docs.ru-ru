@@ -4,18 +4,18 @@ author: pkellner
 description: Обнаруживайте атрибуты вспомогательной функции тега привязки ASP.NET Core и роль, которую играет каждый атрибут в расширении поведения тега привязки HTML.
 ms.author: scaddie
 ms.custom: mvc
-ms.date: 4/18/2019
+ms.date: 04/18/2019
 uid: mvc/views/tag-helpers/builtin-th/anchor-tag-helper
-ms.openlocfilehash: de45c99194d4825c1e404aa193b0f076ba659748
-ms.sourcegitcommit: 5b0eca8c21550f95de3bb21096bd4fd4d9098026
+ms.openlocfilehash: 44fc4ff6334e33630974181021aa1a6880a89917
+ms.sourcegitcommit: 7a40c56bf6a6aaa63a7ee83a2cac9b3a1d77555e
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 04/27/2019
-ms.locfileid: "64883429"
+ms.lasthandoff: 07/12/2019
+ms.locfileid: "67856226"
 ---
 # <a name="anchor-tag-helper-in-aspnet-core"></a>Вспомогательная функция тега привязки в ASP.NET Core MVC
 
-Авторы: [Питер Кельнер (Peter Kellner)](http://peterkellner.net) и [Скотт Эдди](https://github.com/scottaddie) (Scott Addie).
+Авторы: [Питер Кельнер (Peter Kellner)](https://peterkellner.net) и [Скотт Эдди](https://github.com/scottaddie) (Scott Addie).
 
 [Вспомогательная функция тега привязки](xref:Microsoft.AspNetCore.Mvc.TagHelpers.AnchorTagHelper) повышает эффективность стандартного тега привязки HTML (`<a ... ></a>`) путем добавления новых атрибутов. Как правило, все имена атрибутов начинаются с `asp-`. Отображаемое значение атрибута `href` элемента привязки определяется значениями атрибутов `asp-`.
 
@@ -41,7 +41,7 @@ ms.locfileid: "64883429"
 <a href="/Speaker">All Speakers</a>
 ```
 
-Если атрибут `asp-controller` указан, а атрибут `asp-action` — нет, действием контроллера, связанным с выполняющимся представлением, будет заданное по умолчанию значение `asp-action`. Если `asp-action` исключается из предыдущего исправления, а в представлении *Index* (*/Home*) *HomeController* используется вспомогательная функция тега привязки, создается следующий код HTML:
+Если атрибут `asp-controller` указан, а атрибут `asp-action` — нет, действием контроллера, связанным с выполняющимся представлением, будет заданное по умолчанию значение `asp-action`. Если `asp-action` исключается из предыдущего исправления, а в представлении *Index* ( */Home*) *HomeController* используется вспомогательная функция тега привязки, создается следующий код HTML:
 
 ```html
 <a href="/Home">All Speakers</a>

@@ -7,12 +7,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 04/08/2019
 uid: host-and-deploy/iis/development-time-iis-support
-ms.openlocfilehash: d2b2456c7ab6b72f2270b6edc17000695061cc2b
-ms.sourcegitcommit: 5b0eca8c21550f95de3bb21096bd4fd4d9098026
+ms.openlocfilehash: f2d5dbbdc80eec035616ddea234ee5d3343eeae8
+ms.sourcegitcommit: 8516b586541e6ba402e57228e356639b85dfb2b9
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 04/27/2019
-ms.locfileid: "64887759"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67815179"
 ---
 # <a name="development-time-iis-support-in-visual-studio-for-aspnet-core"></a>Поддержка служб IIS во время разработки в Visual Studio для ASP.NET Core
 
@@ -58,7 +58,7 @@ ms.locfileid: "64887759"
 
 Если новому проекту требуется протокол HTTPS, установите флажок **Configure for HTTPS** (Настроить для HTTPS) в окне **Создать веб-приложение ASP.NET Core**. Установка флажка добавляет [ПО промежуточного слоя перенаправления HTTPS и HSTS](xref:security/enforcing-ssl) в приложение при его создании.
 
-Если существующему проекту требуется протокол HTTPS, используйте ПО промежуточного слоя перенаправления HTTPS и HSTS в `Startup.Configure`. Для получения дополнительной информации см. <xref:security/enforcing-ssl>.
+Если существующему проекту требуется протокол HTTPS, используйте ПО промежуточного слоя перенаправления HTTPS и HSTS в `Startup.Configure`. Дополнительные сведения можно найти по адресу: <xref:security/enforcing-ssl>.
 
 Для проекта, который использует протокол HTTP, поддержку [ПО промежуточного слоя перенаправления HTTPS и HSTS](xref:security/enforcing-ssl) задавать не нужно. Настройка приложения не требуется.
 
@@ -108,7 +108,7 @@ ms.locfileid: "64887759"
 
 ::: moniker-end
 
-Если Visual Studio не используется, можно вручную добавить профиль запуска в файл [launchSettings.json](http://json.schemastore.org/launchsettings) в папке *Properties*. В следующем примере настраивается профиль для использования протокола HTTPS.
+Если Visual Studio не используется, можно вручную добавить профиль запуска в файл [launchSettings.json](https://json.schemastore.org/launchsettings) в папке *Properties*. В следующем примере настраивается профиль для использования протокола HTTPS.
 
 ```json
 {

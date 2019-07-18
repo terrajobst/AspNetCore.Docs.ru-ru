@@ -5,12 +5,12 @@ description: Сведения о том, как использовать час�
 ms.author: riande
 ms.date: 01/04/2017
 uid: mvc/extensibility/app-parts
-ms.openlocfilehash: 5d5e79d3afe0eee6d0b126d4642ccd5f61bff409
-ms.sourcegitcommit: 5b0eca8c21550f95de3bb21096bd4fd4d9098026
+ms.openlocfilehash: 9d0b4b5fadcc287172f23fa36c421f04ca2ade4a
+ms.sourcegitcommit: 8516b586541e6ba402e57228e356639b85dfb2b9
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 04/27/2019
-ms.locfileid: "64888139"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67815484"
 ---
 # <a name="application-parts-in-aspnet-core"></a>Части приложения в ASP.NET Core
 
@@ -20,7 +20,7 @@ ms.locfileid: "64888139"
 
 ## <a name="introducing-application-parts"></a>Общие сведения о частях приложения
 
-Приложения MVC загружают свои компоненты из [частей приложения](/dotnet/api/microsoft.aspnetcore.mvc.applicationparts.applicationpart). В частности, класс [AssemblyPart](/dotnet/api/microsoft.aspnetcore.mvc.applicationparts.assemblypart#Microsoft_AspNetCore_Mvc_ApplicationParts_AssemblyPart) представляет часть приложения, поддерживаемую сборкой. Эти классы можно использовать для обнаружения и загрузки компонентов MVC, таких как контроллеры, компоненты представлений, вспомогательные функции тегов и источники компиляции Razor. [ApplicationPartManager](/dotnet/api/microsoft.aspnetcore.mvc.applicationparts.applicationpartmanager) отвечает за отслеживание частей приложения и поставщиков компонентов, доступных для приложения MVC. При настройке MVC можно взаимодействовать с классом `ApplicationPartManager` в `Startup`:
+Приложения MVC загружают свои компоненты из [частей приложения](/dotnet/api/microsoft.aspnetcore.mvc.applicationparts.applicationpart). В частности, класс [AssemblyPart](/dotnet/api/microsoft.aspnetcore.mvc.applicationparts.assemblypart) представляет часть приложения, поддерживаемую сборкой. Эти классы можно использовать для обнаружения и загрузки компонентов MVC, таких как контроллеры, компоненты представлений, вспомогательные функции тегов и источники компиляции Razor. [ApplicationPartManager](/dotnet/api/microsoft.aspnetcore.mvc.applicationparts.applicationpartmanager) отвечает за отслеживание частей приложения и поставщиков компонентов, доступных для приложения MVC. При настройке MVC можно взаимодействовать с классом `ApplicationPartManager` в `Startup`:
 
 ```csharp
 // create an assembly part from a class's assembly

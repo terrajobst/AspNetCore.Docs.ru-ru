@@ -7,12 +7,12 @@ ms.author: tdykstra
 ms.custom: mvc
 ms.date: 06/20/2019
 uid: fundamentals/servers/httpsys
-ms.openlocfilehash: eefe507efadb5ef0a03854d931402f9eaa23a266
-ms.sourcegitcommit: 763af2cbdab0da62d1f1cfef4bcf787f251dfb5c
+ms.openlocfilehash: 3f48cda8f89d3f3dcce220cad4e405472b510df4
+ms.sourcegitcommit: 8516b586541e6ba402e57228e356639b85dfb2b9
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 06/26/2019
-ms.locfileid: "67394762"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67814875"
 ---
 # <a name="httpsys-web-server-implementation-in-aspnet-core"></a>Реализация веб-сервера HTTP.sys в ASP.NET Core
 
@@ -195,7 +195,7 @@ HTTP.sys делегирует задачи в проверку подлинно�
    * **.NET Core** — если приложению требуется .NET Core, скачайте установщик **среды выполнения .NET Core** на странице [скачивания .NET Core](https://dotnet.microsoft.com/download) и запустите его. Не устанавливайте полный пакет SDK на сервере.
    * **.NET Framework** — если приложению требуется .NET Framework, см. [руководство по установке](/dotnet/framework/install/). Установите требуемую платформу .NET Framework. Установщик последней версии .NET Framework доступен на странице [скачивания .NET](https://dotnet.microsoft.com/download).
 
-   Если приложение [развертывается автономно](/dotnet/core/deploying/#framework-dependent-deployments-scd), в его развертывание включена среда выполнения. Устанавливать .NET Framework на сервере не нужно.
+   Если приложение [развертывается автономно](/dotnet/core/deploying/#self-contained-deployments-scd), в его развертывание включена среда выполнения. Устанавливать .NET Framework на сервере не нужно.
 
 1. Настройте URL-адреса и порты в приложении.
 

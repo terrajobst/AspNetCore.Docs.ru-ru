@@ -5,12 +5,12 @@ description: Узнайте, как ASP.NET Core поддерживает вн�
 ms.author: riande
 ms.date: 10/14/2016
 uid: mvc/views/dependency-injection
-ms.openlocfilehash: b411b164bfea81f82c5c9fc1052e0ecfe65f0bc2
-ms.sourcegitcommit: 3376f224b47a89acf329b2d2f9260046a372f924
+ms.openlocfilehash: 63feea5ddf286dd3e659f3a622cfb0f7451b9bba
+ms.sourcegitcommit: 8516b586541e6ba402e57228e356639b85dfb2b9
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 05/10/2019
-ms.locfileid: "65517053"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67815336"
 ---
 # <a name="dependency-injection-into-views-in-aspnet-core"></a>Внедрение зависимостей в представления в ASP.NET Core
 
@@ -104,6 +104,6 @@ HTML-форма, используемая для изменения этих с�
 
 При необходимости расширить существующие службы вы можете просто применять этот метод при наследовании от существующей реализации или использовании ее внутри вашей собственной.
 
-## <a name="see-also"></a>См. также раздел
+## <a name="see-also"></a>См. также
 
-* Блог Саймона Тиммса (Simon Timms): [Getting Lookup Data Into Your View](http://blog.simontimms.com/2015/06/09/getting-lookup-data-into-you-view/) (Внедрение данных подстановки в ваше представление)
+* Блог Саймона Тиммса (Simon Timms): [Getting Lookup Data Into Your View](https://blog.simontimms.com/2015/06/09/getting-lookup-data-into-you-view/) (Внедрение данных подстановки в ваше представление)

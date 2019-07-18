@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 04/06/2019
 uid: mvc/views/working-with-forms
-ms.openlocfilehash: 380d47d33706b3197dba3b9f7e3e1f186e27115f
-ms.sourcegitcommit: 5b0eca8c21550f95de3bb21096bd4fd4d9098026
+ms.openlocfilehash: a07bb4f539c8bd38b08402c598924e14c748921d
+ms.sourcegitcommit: 8516b586541e6ba402e57228e356639b85dfb2b9
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 04/27/2019
-ms.locfileid: "64890819"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67815235"
 ---
 # <a name="tag-helpers-in-forms-in-aspnet-core"></a>Вспомогательные функции тегов в формах в ASP.NET Core
 
@@ -73,7 +73,7 @@ ms.locfileid: "64890819"
 
 Ниже перечислены поддерживаемые атрибуты [AnchorTagHelper](xref:mvc/views/tag-helpers/builtin-th/anchor-tag-helper) для управления значением `formaction`.
 
-|Атрибут|Описание|
+|Атрибут|ОПИСАНИЕ|
 |---|---|
 |[asp-controller](xref:mvc/views/tag-helpers/builtin-th/anchor-tag-helper#asp-controller)|Имя контроллера.|
 |[asp-action](xref:mvc/views/tag-helpers/builtin-th/anchor-tag-helper#asp-action)|Имя метода действия.|
@@ -602,7 +602,7 @@ public IActionResult Edit(int id, int colorIndex)
 
 ### <a name="multiple-select"></a>Множественный выбор
 
-Вспомогательная функция Select автоматически создаст атрибут [multiple = "multiple"](http://w3c.github.io/html-reference/select.html), если свойство, указанное в атрибуте `asp-for`, имеет значение `IEnumerable`. Допустим, имеется такая модель:
+Вспомогательная функция Select автоматически создаст атрибут [multiple = "multiple"](https://w3c.github.io/html-reference/select.html), если свойство, указанное в атрибуте `asp-for`, имеет значение `IEnumerable`. Допустим, имеется такая модель:
 
 [!code-csharp[](../../mvc/views/working-with-forms/sample/final/ViewModels/CountryViewModelIEnumerable.cs?highlight=6)]
 

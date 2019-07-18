@@ -1,11 +1,3 @@
----
-ms.openlocfilehash: 260f774fdba4d16a4fcb00ac1c699acf4d1bf5b5
-ms.sourcegitcommit: 017b673b3c700d2976b77201d0ac30172e2abc87
-ms.translationtype: HT
-ms.contentlocale: ru-RU
-ms.lasthandoff: 04/16/2019
-ms.locfileid: "59615402"
----
 * Настройте доверие сертификату разработки HTTPS с помощью следующей команды:
 
   ```console

@@ -5,12 +5,12 @@ description: Инструкции по добавлению поиска в пр
 ms.author: riande
 ms.date: 12/13/2018
 uid: tutorials/first-mvc-app/search
-ms.openlocfilehash: ca3b0baeddd31e10243689091d435767079bb979
-ms.sourcegitcommit: a3926eae3f687013027a2828830c12a89add701f
+ms.openlocfilehash: fbec03d71e247c58fb5968290c4baf6b28120e1c
+ms.sourcegitcommit: 8516b586541e6ba402e57228e356639b85dfb2b9
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65450857"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67815068"
 ---
 # <a name="add-search-to-an-aspnet-core-mvc-app"></a>Добавление поиска в приложение MVC ASP.NET Core
 
@@ -85,7 +85,7 @@ var movies = from m in _context.Movie
 
 ![Окно браузера с ответом приложения From HttpPost Index: фильтр по слову ghost](~/tutorials/first-mvc-app/search/_static/fo.png)
 
-Тем не менее при добавлении этой версии `[HttpPost]` метода `Index` существует ограничение на общую реализацию. Допустим, вам необходимо добавить в закладки конкретный поиск или отправить друзьям ссылку, по которой они могут просмотреть аналогичный отфильтрованный список фильмов. Обратите внимание, что URL-адрес запроса HTTP POST совпадает с URL-адресом запроса GET (localhost:xxxxx/Movies/Index) — в URL-адресе отсутствуют сведения о поиске. Данные строки поиска отправляются на сервер в виде [значения поля формы](https://developer.mozilla.org/docs/Learn/HTML/Forms/Sending_and_retrieving_form_data). Вы можете проверить это с помощью средств разработчика для браузера или [инструмента Fiddler](http://www.telerik.com/fiddler). На рисунке ниже показаны средства разработчика для браузера Chrome:
+Тем не менее при добавлении этой версии `[HttpPost]` метода `Index` существует ограничение на общую реализацию. Допустим, вам необходимо добавить в закладки конкретный поиск или отправить друзьям ссылку, по которой они могут просмотреть аналогичный отфильтрованный список фильмов. Обратите внимание, что URL-адрес запроса HTTP POST совпадает с URL-адресом запроса GET (localhost:xxxxx/Movies/Index) — в URL-адресе отсутствуют сведения о поиске. Данные строки поиска отправляются на сервер в виде [значения поля формы](https://developer.mozilla.org/docs/Learn/HTML/Forms/Sending_and_retrieving_form_data). Вы можете проверить это с помощью средств разработчика для браузера или [инструмента Fiddler](https://www.telerik.com/fiddler). На рисунке ниже показаны средства разработчика для браузера Chrome:
 
 ![Вкладка "Сеть" средств разработчика в Microsoft Edge с телом запроса со значением searchString, равным ghost](~/tutorials/first-mvc-app/search/_static/f12_rb.png)
 

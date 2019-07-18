@@ -5,14 +5,14 @@ description: Рекомендации по устранению распрост
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 05/12/2019
+ms.date: 07/10/2019
 uid: host-and-deploy/azure-iis-errors-reference
-ms.openlocfilehash: 0191460f8c3dab98e6f977a29eacf0396b6789d8
-ms.sourcegitcommit: b4ef2b00f3e1eb287138f8b43c811cb35a100d3e
+ms.openlocfilehash: 3030bc57be113d9034123c96403742442b9240bb
+ms.sourcegitcommit: b40613c603d6f0cc71f3232c16df61550907f550
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65970074"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68308102"
 ---
 # <a name="common-errors-reference-for-azure-app-service-and-iis-with-aspnet-core"></a>Справочник по общим ошибкам в Службе приложений Azure и службах IIS с ASP.NET Core
 
@@ -24,12 +24,12 @@ ms.locfileid: "65970074"
 
 * поведение обозревателя (код состояния и сообщение об ошибке);
 * записи в журнале событий приложения;
-  * Служба приложений Azure &ndash; см. статью <xref:host-and-deploy/azure-apps/troubleshoot>.
+  * Служба приложений Azure &ndash; см. статью <xref:test/troubleshoot-azure-iis>.
   * IIS
     1. В меню **Windows** нажмите кнопку **Пуск**, введите *Просмотр событий* и нажмите клавишу **ВВОД**.
     1. В открывшемся окне **Просмотр событий** на боковой панели разверните узлы **Журналы Windows** > **Приложения**.
 * Записи в журнале вывода stdout и отладки модуля ASP.NET Core
-  * Служба приложений Azure &ndash; см. статью <xref:host-and-deploy/azure-apps/troubleshoot>.
+  * Служба приложений Azure &ndash; см. статью <xref:test/troubleshoot-azure-iis>.
   * IIS &ndash; следуйте инструкциям в разделах [Создание и перенаправление журнала](xref:host-and-deploy/aspnet-core-module#log-creation-and-redirection) и [Расширенные журналы диагностики](xref:host-and-deploy/aspnet-core-module#enhanced-diagnostic-logs) в статье "Модуль ASP.NET Core".
 
 Сравните собранные данные с представленной здесь информацией о распространенных ошибках. Если вы найдете соответствие, выполните рекомендации по устранению неполадок.
@@ -89,7 +89,7 @@ ms.locfileid: "65970074"
 
 * Убедитесь, что заданная для приложения **платформа** в разделе **Параметры приложения** соответствует разрядности приложения.
 
-Для получения дополнительной информации см. <xref:host-and-deploy/azure-apps/index#install-the-preview-site-extension>.
+Дополнительные сведения можно найти по адресу: <xref:host-and-deploy/azure-apps/index#install-the-preview-site-extension>.
 
 ## <a name="an-x86-app-is-deployed-but-the-app-pool-isnt-enabled-for-32-bit-apps"></a>Приложение x86 развернуто, но для 32-разрядных приложений не включен пул приложений
 
@@ -121,7 +121,7 @@ ms.locfileid: "65970074"
 
 Устранение неполадок:
 
-* Убедитесь в том, что приложение выполняется локально в Kestrel. Сбой процесса может быть результатом проблемы в приложении. Дополнительные сведения см. в статьях [Устранение неполадок ASP.NET Core в службах IIS](xref:host-and-deploy/iis/troubleshoot) или [Устранение неполадок ASP.NET Core в службе приложений Azure](xref:host-and-deploy/azure-apps/troubleshoot).
+* Убедитесь в том, что приложение выполняется локально в Kestrel. Сбой процесса может быть результатом проблемы в приложении. Дополнительные сведения можно найти по адресу: <xref:test/troubleshoot-azure-iis>.
 
 * Если это исключение возникает для развертывания приложений Azure при обновлении приложения и развертывании более новых сборок, вручную удалите все файлы предыдущего развертывания. Если останутся несовместимые сборки, то при развертывании обновленного приложения это может привести к исключению `System.BadImageFormatException`.
 
@@ -231,7 +231,7 @@ ms.locfileid: "65970074"
 
 Устранение неполадок:
 
-* Убедитесь в том, что приложение выполняется локально в Kestrel. Сбой процесса может быть результатом проблемы в приложении. Дополнительные сведения см. в статьях [Устранение неполадок ASP.NET Core в службах IIS](xref:host-and-deploy/iis/troubleshoot) или [Устранение неполадок ASP.NET Core в службе приложений Azure](xref:host-and-deploy/azure-apps/troubleshoot).
+* Убедитесь в том, что приложение выполняется локально в Kestrel. Сбой процесса может быть результатом проблемы в приложении. Дополнительные сведения можно найти по адресу: <xref:test/troubleshoot-azure-iis>.
 
 * Проверьте атрибут *processPath* для элемента `<aspNetCore>` в файле *web.config*. Он должен иметь значение `dotnet` для зависимого от платформы развертывания (FDD) или `.\{ASSEMBLY}.exe` для [автономного развертывания (SCD)](/dotnet/core/deploying/#self-contained-deployments-scd).
 
@@ -249,7 +249,7 @@ ms.locfileid: "65970074"
 
   Если требуется конкретная среда выполнения, скачайте ее на странице [скачивания версий .NET](https://dotnet.microsoft.com/download/archives) и установите в системе. Завершите установку, перезагрузив систему или перезапустив службы IIS. Для этого выполните в командной строке команду **net stop was /y**, а затем — команду **net start w3svc**.
 
-* Возможно, зависимое от платформы развертывание было развернуто в системе, где отсутствует *распространяемый компонент Microsoft Visual C++ 2015 (64-разрядный)*. Получите установщик в [Центре загрузки Майкрософт](https://www.microsoft.com/download/details.aspx?id=53840).
+* Возможно, зависимое от платформы развертывание было развернуто в системе, где отсутствует *распространяемый компонент Microsoft Visual C++ 2015 (64-разрядный)* . Получите установщик в [Центре загрузки Майкрософт](https://www.microsoft.com/download/details.aspx?id=53840).
 
 ## <a name="incorrect-arguments-of-aspnetcore-element"></a>Неверные аргументы элемента \<aspNetCore>
 
@@ -261,7 +261,7 @@ ms.locfileid: "65970074"
 
 * **Журнал stdout модуля ASP.NET Core:** вы хотели запустить команды пакета SDK для .NET? Установите пакет SDK для .NET со страницы по адресу: https://go.microsoft.com/fwlink/?LinkID=798306&clcid=0x409
 
-* **Журнал отладки модуля ASP.NET Core:** вызов hostfxr для поиска внутрипроцессного обработчика запросов завершился ошибкой без обнаружения каких-либо собственных зависимостей. Скорее всего, это означает, что приложение настроено неправильно. Проверьте версии Microsoft.NetCore.App и Microsoft.AspNetCore.App, которые являются целевыми для приложения и установлены на компьютере. возвращена ошибка HRESULT: 0x8000ffff Не удалось найти внутрипроцессный обработчик запросов. Выходные данные, записанные в результате вызова hostfxr: вы хотели запустить команды пакета SDK для .NET? Установите пакет SDK для .NET со страницы по адресу: https://go.microsoft.com/fwlink/?LinkID=798306&clcid=0x409Возвращена ошибка HRESULT: 0x8000ffff
+* **Журнал отладки модуля ASP.NET Core:** вызов hostfxr для поиска внутрипроцессного обработчика запросов завершился ошибкой без обнаружения каких-либо собственных зависимостей. Скорее всего, это означает, что приложение настроено неправильно. Проверьте версии Microsoft.NetCore.App и Microsoft.AspNetCore.App, которые являются целевыми для приложения и установлены на компьютере. возвращена ошибка HRESULT: 0x8000ffff Не удалось найти внутрипроцессный обработчик запросов. Выходные данные, записанные в результате вызова hostfxr: вы хотели запустить команды пакета SDK для .NET? Установите пакет SDK для .NET со страницы по адресу: https://go.microsoft.com/fwlink/?LinkID=798306&clcid=0x409 Возвращена ошибка HRESULT: 0x8000ffff
 
 ::: moniker-end
 
@@ -277,7 +277,7 @@ ms.locfileid: "65970074"
 
 Устранение неполадок:
 
-* Убедитесь в том, что приложение выполняется локально в Kestrel. Сбой процесса может быть результатом проблемы в приложении. Дополнительные сведения см. в статьях [Устранение неполадок ASP.NET Core в службах IIS](xref:host-and-deploy/iis/troubleshoot) или [Устранение неполадок ASP.NET Core в службе приложений Azure](xref:host-and-deploy/azure-apps/troubleshoot).
+* Убедитесь в том, что приложение выполняется локально в Kestrel. Сбой процесса может быть результатом проблемы в приложении. Дополнительные сведения можно найти по адресу: <xref:test/troubleshoot-azure-iis>.
 
 * Проверьте атрибут *arguments* для элемента `<aspNetCore>` в файле *web.config* и удостоверьтесь, что он имеет значение: а) `.\{ASSEMBLY}.dll`для развертывания, зависящего от платформы (FDD); б) отсутствует, содержит пустую строку (`arguments=""`) или список аргументов вашего приложения (`arguments="{ARGUMENT_1}, {ARGUMENT_2}, ... {ARGUMENT_X}"`) для автономного развертывания (SCD).
 
@@ -339,7 +339,7 @@ ms.locfileid: "65970074"
 
 Убедитесь, что файл *web.config* дочернего приложения не содержит раздел `<handlers>` или что дочернее приложение не наследует обработчики родительского приложения.
 
-Раздел `<system.webServer>` файла *web.config* находится внутри элемента `<location>`. Значение `false` свойства <xref:System.Configuration.SectionInformation.InheritInChildApplications*> указывает, что параметры, заданные в элементе [\<расположение>](/iis/manage/managing-your-configuration-settings/understanding-iis-configuration-delegation#the-concept-of-location), не наследуются приложениями, которые находятся во вложенном каталоге родительского приложения. Для получения дополнительной информации см. <xref:host-and-deploy/aspnet-core-module>.
+Раздел `<system.webServer>` файла *web.config* находится внутри элемента `<location>`. Значение `false` свойства <xref:System.Configuration.SectionInformation.InheritInChildApplications*> указывает, что параметры, заданные в элементе [\<расположение>](/iis/manage/managing-your-configuration-settings/understanding-iis-configuration-delegation#the-concept-of-location), не наследуются приложениями, которые находятся во вложенном каталоге родительского приложения. Дополнительные сведения можно найти по адресу: <xref:host-and-deploy/aspnet-core-module>.
 
 ::: moniker-end
 
@@ -407,6 +407,5 @@ ms.locfileid: "65970074"
 
 Дополнительные сведения см. в следующих разделах:
 
-* <xref:host-and-deploy/iis/troubleshoot>
-* <xref:host-and-deploy/azure-apps/troubleshoot>
+* <xref:test/troubleshoot-azure-iis>
 * <xref:test/troubleshoot>

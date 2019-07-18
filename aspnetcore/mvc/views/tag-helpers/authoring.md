@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 04/29/2019
 uid: mvc/views/tag-helpers/authoring
-ms.openlocfilehash: d7a5656131189ffafb60a7b1db0b8d93a3787ae2
-ms.sourcegitcommit: 3ee6ee0051c3d2c8d47a58cb17eef1a84a4c46a0
+ms.openlocfilehash: c13e63725298975fc882aa45c4e75de53e1d66a8
+ms.sourcegitcommit: 8516b586541e6ba402e57228e356639b85dfb2b9
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65621045"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67815160"
 ---
 # <a name="author-tag-helpers-in-aspnet-core"></a>Создание вспомогательных функций тегов в ASP.NET Core
 
@@ -193,7 +193,7 @@ the following snippet uses TagHelpers3 and should use TagHelpers (not the 3)
 
    [!code-csharp[](authoring/sample/AuthoringTagHelpers/src/AuthoringTagHelpers/TagHelpers/WebsiteInformationTagHelper.cs)]
 
-   * Как было сказано ранее, имена классов и свойств C# в стиле Pascal для вспомогательных функций тегов преобразуются в [кебаб-стиль](http://wiki.c2.com/?KebabCase). Поэтому для использования функции `WebsiteInformationTagHelper` в Razor необходимо написать `<website-information />`.
+   * Как было сказано ранее, имена классов и свойств C# в стиле Pascal для вспомогательных функций тегов преобразуются в [кебаб-стиль](https://wiki.c2.com/?KebabCase). Поэтому для использования функции `WebsiteInformationTagHelper` в Razor необходимо написать `<website-information />`.
 
    * Целевой элемент не определяется напрямую с помощью атрибута `[HtmlTargetElement]`, поэтому по умолчанию целевым будет элемент `website-information`. Например, вы применяете следующий атрибут (обратите внимание, что он не в стиле кебаб, но соответствует имени класса):
 
@@ -207,7 +207,7 @@ the following snippet uses TagHelpers3 and should use TagHelpers (not the 3)
    [HtmlTargetElement("Website-Information")]
    ```
 
-   * Самозакрывающиеся элементы не имеют содержимого. В этом примере в разметке Razor используется самозакрывающийся тег, но вспомогательная функция тега будет создавать элемент [section](http://www.w3.org/TR/html5/sections.html#the-section-element) (который не является самозакрывающимся, и вы добавляете содержимое внутри элемента `section`). Поэтому для записи выходных данных следует присвоить свойству `TagMode` значение `StartTagAndEndTag`. Кроме того, можно закомментировать строку, в которой задается `TagMode`, и написать разметку с закрывающим тегом. (Пример разметки приводится далее в этом руководстве.)
+   * Самозакрывающиеся элементы не имеют содержимого. В этом примере в разметке Razor используется самозакрывающийся тег, но вспомогательная функция тега будет создавать элемент [section](https://www.w3.org/TR/html5/sections.html#the-section-element) (который не является самозакрывающимся, и вы добавляете содержимое внутри элемента `section`). Поэтому для записи выходных данных следует присвоить свойству `TagMode` значение `StartTagAndEndTag`. Кроме того, можно закомментировать строку, в которой задается `TagMode`, и написать разметку с закрывающим тегом. (Пример разметки приводится далее в этом руководстве.)
 
    * Символ `$` (знак доллара) в приведенной ниже строке определяет использование [интерполированной строки](/dotnet/csharp/language-reference/keywords/interpolated-strings).
 

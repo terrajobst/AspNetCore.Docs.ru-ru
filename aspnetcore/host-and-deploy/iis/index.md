@@ -7,12 +7,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 07/16/2019
 uid: host-and-deploy/iis/index
-ms.openlocfilehash: 644d84f9adba650b3ef10ba69cc75c22845be211
-ms.sourcegitcommit: 7e00e8236ca4eabf058f07020a5a3882daf7564f
+ms.openlocfilehash: a3d8c87fdb1cbc3b8b11b15f797190d626edad59
+ms.sourcegitcommit: b40613c603d6f0cc71f3232c16df61550907f550
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68239242"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68308061"
 ---
 # <a name="host-aspnet-core-on-windows-with-iis"></a>Размещение ASP.NET Core в Windows со службами IIS
 
@@ -734,10 +734,10 @@ ICACLS C:\sites\MyWebApp /grant "IIS AppPool\DefaultAppPool":F
 [Структура каталогов](xref:host-and-deploy/directory-structure)
 
 Сведения об обнаружении активных и неактивных модулей IIS для приложения ASP.NET Core и управлении модулями IIS.  
-[Модули IIS](xref:host-and-deploy/iis/troubleshoot)
+[Модули IIS](xref:host-and-deploy/iis/modules)
 
 Сведения о диагностике проблем с развертываниями IIS приложений ASP.NET Core.  
-[Устранение неполадок](xref:host-and-deploy/iis/troubleshoot)
+[Устранение неполадок](xref:test/troubleshoot-azure-iis)
 
 Распознавание распространенных ошибок при размещении приложений ASP.NET Core в IIS.  
 [Справочник по общим ошибкам для службы приложений Azure и служб IIS](xref:host-and-deploy/azure-iis-errors-reference)

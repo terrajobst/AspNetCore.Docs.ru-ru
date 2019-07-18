@@ -6,12 +6,12 @@ ms.author: tdykstra
 ms.custom: mvc
 ms.date: 03/24/2019
 uid: web-api/jsonpatch
-ms.openlocfilehash: 14710e6431a2a7ce60fa7f190bef184da85281a0
-ms.sourcegitcommit: 5b0eca8c21550f95de3bb21096bd4fd4d9098026
+ms.openlocfilehash: 97264903d85dbb397e85fdbf7b070e2aaae74bc8
+ms.sourcegitcommit: 8516b586541e6ba402e57228e356639b85dfb2b9
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 04/27/2019
-ms.locfileid: "64888419"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67815545"
 ---
 # <a name="jsonpatch-in-aspnet-core-web-api"></a>JsonPatch в веб-API ASP.NET Core
 
@@ -71,7 +71,7 @@ ms.locfileid: "64888419"
 
 ## <a name="path-syntax"></a>Синтаксис Path
 
-Свойство [Path](http://tools.ietf.org/html/rfc6901) в объекте операции содержит косые черты между уровнями. Например, `"/address/zipCode"`.
+Свойство [Path](https://tools.ietf.org/html/rfc6901) в объекте операции содержит косые черты между уровнями. Например, `"/address/zipCode"`.
 
 Для указания элементов массива используются числовые индексы, начиная с нуля. Первый элемент массива `addresses` будет обозначаться как `/addresses/0`. Чтобы применить `add` для последнего элемента массива, укажите дефис (-) вместо номера индекса: `/addresses/-`.
 
@@ -221,6 +221,6 @@ ms.locfileid: "64888419"
 
 * [Спецификация IETF RFC 5789 для метода PATCH](https://tools.ietf.org/html/rfc5789)
 * [Спецификация IETF RFC 6902 для JSON Patch](https://tools.ietf.org/html/rfc6902)
-* [Спецификация IETF RFC 6901 для формата Path в JSON Patch](http://tools.ietf.org/html/rfc6901)
-* [Документация по JSON Patch](http://jsonpatch.com/). Содержит ссылки на ресурсы для создания документов JSON Patch.
+* [Спецификация IETF RFC 6901 для формата Path в JSON Patch](https://tools.ietf.org/html/rfc6901)
+* [Документация по JSON Patch](https://jsonpatch.com/). Содержит ссылки на ресурсы для создания документов JSON Patch.
 * [Исходный код JSON Patch для ASP.NET Core](https://github.com/aspnet/AspNetCore/tree/master/src/Features/JsonPatch/src)

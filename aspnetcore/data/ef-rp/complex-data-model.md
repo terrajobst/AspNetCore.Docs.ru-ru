@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 10/24/2018
 uid: data/ef-rp/complex-data-model
-ms.openlocfilehash: a65543f805b197031bd46ef1974d4d4a5018b2d1
-ms.sourcegitcommit: 3376f224b47a89acf329b2d2f9260046a372f924
+ms.openlocfilehash: f995f3f74da4910de518af875eb89349a8457573
+ms.sourcegitcommit: 8516b586541e6ba402e57228e356639b85dfb2b9
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 05/10/2019
-ms.locfileid: "65516903"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67813714"
 ---
 # <a name="razor-pages-with-ef-core-in-aspnet-core---data-model---5-of-8"></a>Razor Pages с EF Core в ASP.NET Core — модель данных— 5 из 8
 
@@ -486,7 +486,7 @@ public Student Student { get; set; }
 
 ## <a name="fluent-api-alternative-to-attributes"></a>Текучий API вместо атрибутов
 
-Метод `OnModelCreating` в предыдущем коде использует для настройки поведения EF Core *текучий API*. Этот API называется "текучим", так как часто используется для объединения серии вызовов методов в один оператор. В [следующем коде](/ef/core/modeling/#methods-of-configuration) показан пример текучего API:
+Метод `OnModelCreating` в предыдущем коде использует для настройки поведения EF Core *текучий API*. Этот API называется "текучим", так как часто используется для объединения серии вызовов методов в один оператор. В [следующем коде](/ef/core/modeling/#use-fluent-api-to-configure-a-model) показан пример текучего API:
 
 ```csharp
 protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -512,7 +512,7 @@ protected override void OnModelCreating(ModelBuilder modelBuilder)
 * только для конфигурации EF Core (например, `HasKey`);
 * для проверки и конфигурации EF Core (например, `[StringLength(50)]`).
 
-Дополнительные сведения о сравнении атрибутов и текучего API см. в разделе [Методы конфигурации](/ef/core/modeling/#methods-of-configuration).
+Дополнительные сведения о сравнении атрибутов и текучего API см. в разделе [Методы конфигурации](/ef/core/modeling/).
 
 ## <a name="entity-diagram-showing-relationships"></a>Схема сущностей, показывающая связи
 

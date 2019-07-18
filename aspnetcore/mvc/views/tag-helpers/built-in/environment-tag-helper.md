@@ -6,16 +6,16 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 10/10/2018
 uid: mvc/views/tag-helpers/builtin-th/environment-tag-helper
-ms.openlocfilehash: 379f58ed37329f047d53adf1dcfdfd2ad6a6ca4e
-ms.sourcegitcommit: 5b0eca8c21550f95de3bb21096bd4fd4d9098026
+ms.openlocfilehash: e2e038fe69da696b67f7aef61795e23dc8512fdf
+ms.sourcegitcommit: 7a40c56bf6a6aaa63a7ee83a2cac9b3a1d77555e
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 04/27/2019
-ms.locfileid: "64887679"
+ms.lasthandoff: 07/12/2019
+ms.locfileid: "67856137"
 ---
 # <a name="environment-tag-helper-in-aspnet-core"></a>Вспомогательная функция тега среды в ASP.NET Core
 
-Авторы: [Питер Кельнер (Peter Kellner)](http://peterkellner.net), [Хишам Бин Атейя (Hisham Bin Ateya)](https://twitter.com/hishambinateya) и [Люк Лэтэм (Luke Latham)](https://github.com/guardrex)
+Авторы: [Питер Кельнер (Peter Kellner)](https://peterkellner.net), [Хишам Бин Атейя (Hisham Bin Ateya)](https://twitter.com/hishambinateya) и [Люк Лэтэм (Luke Latham)](https://github.com/guardrex)
 
 Вспомогательная функция тега среды условно отрисовывает заключенное в нее содержимое с учетом текущей [среды размещения](xref:fundamentals/environments). Единственный атрибут вспомогательной функции тега среды, `names`, — это разделенный запятыми список имен сред. Если одно из указанных имен среды соответствует текущей среде, включенное содержимое подготавливается к просмотру.
 

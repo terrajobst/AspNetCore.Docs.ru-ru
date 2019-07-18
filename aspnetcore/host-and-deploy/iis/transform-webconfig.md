@@ -7,12 +7,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 02/07/2019
 uid: host-and-deploy/iis/transform-webconfig
-ms.openlocfilehash: bd8cf7d8515e874eefd2c326727f56d0a4b502a7
-ms.sourcegitcommit: dd9c73db7853d87b566eef136d2162f648a43b85
+ms.openlocfilehash: 58dee024f5b032d1ef13df02648727b6a07eac1f
+ms.sourcegitcommit: 8516b586541e6ba402e57228e356639b85dfb2b9
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65087083"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67813350"
 ---
 # <a name="transform-webconfig"></a>Преобразование web.config
 
@@ -182,5 +182,5 @@ dotnet publish /p:IsWebConfigTransformDisabled=true
 
 ## <a name="additional-resources"></a>Дополнительные ресурсы
 
-* [Синтаксис преобразования файла Web.config для развертывания проектов веб-приложений](http://go.microsoft.com/fwlink/?LinkId=301874)
+* [Синтаксис преобразования файла Web.config для развертывания проектов веб-приложений](https://go.microsoft.com/fwlink/?LinkId=301874)
 * [Web.config Transformation Syntax for Web Project Deployment Using Visual Studio](https://docs.microsoft.com/previous-versions/aspnet/dd465326(v=vs.110)) (Синтаксис преобразования файла Web.config для развертывания проектов веб-приложений с помощью Visual Studio)

@@ -7,12 +7,12 @@ ms.custom: mvc
 ms.date: 03/27/2019
 ms.topic: tutorial
 uid: data/ef-mvc/complex-data-model
-ms.openlocfilehash: 2776e3357941d0e7932882c39af121f85d037d62
-ms.sourcegitcommit: 5b0eca8c21550f95de3bb21096bd4fd4d9098026
+ms.openlocfilehash: 8ef458108e60850d0d54e7b1e6472c5b92984ccc
+ms.sourcegitcommit: 8516b586541e6ba402e57228e356639b85dfb2b9
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 04/27/2019
-ms.locfileid: "64887249"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67813543"
 ---
 # <a name="tutorial-create-a-complex-data-model---aspnet-mvc-with-ef-core"></a>Учебник. Использование ASP.NET MVC с EF  Core. Создание сложной модели данных
 
@@ -397,7 +397,7 @@ public Student Student { get; set; }
 
 ## <a name="about-a-fluent-api-alternative"></a>Сведения об альтернативе текучему API
 
-Код в предыдущем методе `OnModelCreating` класса `DbContext` использует для настройки поведения EF *текучий API*. Этот API называется "текучим", так как часто используется для объединения серии вызовов методов в один оператор, как показано в этом примере из [документации по EF Core](/ef/core/modeling/#methods-of-configuration):
+Код в предыдущем методе `OnModelCreating` класса `DbContext` использует для настройки поведения EF *текучий API*. Этот API называется "текучим", так как часто используется для объединения серии вызовов методов в один оператор, как показано в этом примере из [документации по EF Core](/ef/core/modeling/#use-fluent-api-to-configure-a-model):
 
 ```csharp
 protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -412,7 +412,7 @@ protected override void OnModelCreating(ModelBuilder modelBuilder)
 
 Некоторые разработчики предпочитают использовать текучий API монопольно, чтобы оставить свои классы сущностей "чистыми". Атрибуты и текучий API можно смешивать, и существует несколько конфигураций, которые можно реализовать только с помощью текучего API. На практике рекомендуется выбрать один из этих двух подходов и использовать его максимально согласованно. Если вы используете оба, обратите внимание, что при любом конфликте текучий API переопределяет атрибуты.
 
-Дополнительные сведения о сравнении атрибутов и текучего API см. в разделе [Методы конфигурации](/ef/core/modeling/#methods-of-configuration).
+Дополнительные сведения о сравнении атрибутов и текучего API см. в разделе [Методы конфигурации](/ef/core/modeling/).
 
 ## <a name="entity-diagram-showing-relationships"></a>Схема сущностей, показывающая связи
 

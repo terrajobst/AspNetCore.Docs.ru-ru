@@ -5,12 +5,12 @@ description: Узнайте, как читать и обрабатывать м�
 ms.author: riande
 ms.date: 10/14/2016
 uid: mvc/controllers/application-model
-ms.openlocfilehash: 6b0591a877c0d82e0ee6ab002eb6a6650753677b
-ms.sourcegitcommit: 5b0eca8c21550f95de3bb21096bd4fd4d9098026
+ms.openlocfilehash: f7f64c8b3a63ec66936772e724edb57037654059
+ms.sourcegitcommit: 8516b586541e6ba402e57228e356639b85dfb2b9
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 04/27/2019
-ms.locfileid: "64890999"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67815513"
 ---
 # <a name="work-with-the-application-model-in-aspnet-core"></a>Работа с моделью приложения в ASP.NET Core
 
@@ -63,7 +63,7 @@ ASP.NET Core MVC загружает модель приложения с пом�
 * добавление параметров методов действий в контекст;
 * применение маршрута и других атрибутов.
 
-Поставщик `DefaultApplicationModelProvider` реализует некоторые встроенные поведения. Он отвечает за создание класса [`ControllerModel`](/dotnet/api/microsoft.aspnetcore.mvc.applicationmodels.controllermodel), который, в свою очередь, ссылается на экземпляры [`ActionModel`](/dotnet/api/microsoft.aspnetcore.mvc.applicationmodels.actionmodel#Microsoft_AspNetCore_Mvc_ApplicationModels_ActionModel), [`PropertyModel`](/dotnet/api/microsoft.aspnetcore.mvc.applicationmodels.propertymodel) и [`ParameterModel`](/dotnet/api/microsoft.aspnetcore.mvc.applicationmodels.parametermodel#Microsoft_AspNetCore_Mvc_ApplicationModels_ParameterModel). Класс `DefaultApplicationModelProvider` является элементом внутренней реализации структуры, который может быть изменен и изменится в будущем. 
+Поставщик `DefaultApplicationModelProvider` реализует некоторые встроенные поведения. Он отвечает за создание класса [`ControllerModel`](/dotnet/api/microsoft.aspnetcore.mvc.applicationmodels.controllermodel), который, в свою очередь, ссылается на экземпляры [`ActionModel`](/dotnet/api/microsoft.aspnetcore.mvc.applicationmodels.actionmodel), [`PropertyModel`](/dotnet/api/microsoft.aspnetcore.mvc.applicationmodels.propertymodel) и [`ParameterModel`](/dotnet/api/microsoft.aspnetcore.mvc.applicationmodels.parametermodel). Класс `DefaultApplicationModelProvider` является элементом внутренней реализации структуры, который может быть изменен и изменится в будущем. 
 
 Поставщик `AuthorizationApplicationModelProvider` занимается применением поведения, связанным с атрибутами `AuthorizeFilter` и `AllowAnonymousFilter`. [Дополнительные сведения об этих атрибутах](xref:security/authorization/simple).
 

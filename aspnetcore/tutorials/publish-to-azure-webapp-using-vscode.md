@@ -4,14 +4,14 @@ author: ricardoserradas
 description: Сведения о публикации приложения ASP.NET Core в службе приложений Azure с помощью Visual Studio Code
 ms.author: riserrad
 ms.custom: mvc
-ms.date: 04/16/2019
+ms.date: 07/10/2019
 uid: tutorials/publish-to-azure-webapp-using-vscode
-ms.openlocfilehash: 2eaae62af97927fbe22e7f5d4fadfc2265c5a5cd
-ms.sourcegitcommit: 0b9e767a09beaaaa4301915cdda9ef69daaf3ff2
+ms.openlocfilehash: 97e8fcb1e5470245c80fad0875abb5fdace7853c
+ms.sourcegitcommit: b40613c603d6f0cc71f3232c16df61550907f550
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/03/2019
-ms.locfileid: "67538752"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68308316"
 ---
 # <a name="publish-an-aspnet-core-app-to-azure-with-visual-studio-code"></a>Публикация приложения ASP.NET Core в Azure с помощью Visual Studio Code
 
@@ -19,7 +19,7 @@ ms.locfileid: "67538752"
 
 [!INCLUDE [Azure App Service Preview Notice](../includes/azure-apps-preview-notice.md)]
 
-Сведения об устранении проблем развертывания службы приложений см. в статье <xref:host-and-deploy/azure-apps/troubleshoot>.
+Сведения об устранении проблем развертывания службы приложений см. в статье <xref:test/troubleshoot-azure-iis>.
 
 ## <a name="intro"></a>Введение
 

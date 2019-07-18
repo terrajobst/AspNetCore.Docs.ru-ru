@@ -6,16 +6,16 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 04/06/2019
 uid: mvc/views/tag-helpers/builtin-th/image-tag-helper
-ms.openlocfilehash: 916a68c187cbf516a59d3c5d7578cdb6ada01b86
-ms.sourcegitcommit: 5b0eca8c21550f95de3bb21096bd4fd4d9098026
+ms.openlocfilehash: 964072ad276f7e3e411ee41cb03a2efb9d05c585
+ms.sourcegitcommit: 7a40c56bf6a6aaa63a7ee83a2cac9b3a1d77555e
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 04/27/2019
-ms.locfileid: "64887669"
+ms.lasthandoff: 07/12/2019
+ms.locfileid: "67856119"
 ---
 # <a name="image-tag-helper-in-aspnet-core"></a>Вспомогательная функция тега изображения в ASP.NET Core
 
-Автор: [Питер Кельнер (Peter Kellner)](http://peterkellner.net)
+Автор: [Питер Кельнер (Peter Kellner)](https://peterkellner.net)
 
 Вспомогательная функция тега изображения расширяет возможности тега `<img>`, чтобы предоставлять поведение отключения кэширования для файлов статических изображений.
 
@@ -46,7 +46,7 @@ ms.locfileid: "64887669"
 <img src="~/images/asplogo.png" asp-append-version="true">
 ```
 
-Если статический файл существует в каталоге */wwwroot/images/*, создаваемый код HTML будет похож на следующий (хэш-код будет иным):
+Если статический файл существует в каталоге */wwwroot/images/* , создаваемый код HTML будет похож на следующий (хэш-код будет иным):
 
 ```html
 <img src="/images/asplogo.png?v=Kl_dqr9NVtnMdsM2MUg4qthUnWZm5T1fCEimBPWDNgM">

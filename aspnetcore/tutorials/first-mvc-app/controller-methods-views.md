@@ -5,12 +5,12 @@ description: Узнайте, как работать с методами, пре
 ms.author: riande
 ms.date: 12/13/2018
 uid: tutorials/first-mvc-app/controller-methods-views
-ms.openlocfilehash: 36c8141ba5827366572dabcfd0fdf9600c745706
-ms.sourcegitcommit: 5b0eca8c21550f95de3bb21096bd4fd4d9098026
+ms.openlocfilehash: 6d960da5acecbb95893bd339b4391560bedffb3d
+ms.sourcegitcommit: 8516b586541e6ba402e57228e356639b85dfb2b9
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 04/27/2019
-ms.locfileid: "64889769"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67815415"
 ---
 # <a name="controller-methods-and-views-in-aspnet-core"></a>Методы и представления контроллера в приложении ASP.NET Core
 
@@ -76,7 +76,7 @@ ASP.NET Core преобразует `https://localhost:5001/Movies/Edit/4` в з
 
 ::: moniker-end
 
-Атрибут `[Bind]` является одним из способов защиты от [чрезмерной передачи данных](/aspnet/mvc/overview/getting-started/getting-started-with-ef-using-mvc/implementing-basic-crud-functionality-with-the-entity-framework-in-asp-net-mvc-application#overpost). Свойства необходимо включать только в тот атрибут `[Bind]`, который вы хотите изменить. Дополнительные сведения см. в разделе [Защита контроллера от чрезмерной передачи данных](/aspnet/mvc/overview/getting-started/getting-started-with-ef-using-mvc/implementing-basic-crud-functionality-with-the-entity-framework-in-asp-net-mvc-application). [ViewModels](http://rachelappel.com/use-viewmodels-to-manage-data-amp-organize-code-in-asp-net-mvc-applications/) реализует альтернативный подход к защите от чрезмерной передачи данных.
+Атрибут `[Bind]` является одним из способов защиты от [чрезмерной передачи данных](/aspnet/mvc/overview/getting-started/getting-started-with-ef-using-mvc/implementing-basic-crud-functionality-with-the-entity-framework-in-asp-net-mvc-application#overpost). Свойства необходимо включать только в тот атрибут `[Bind]`, который вы хотите изменить. Дополнительные сведения см. в разделе [Защита контроллера от чрезмерной передачи данных](/aspnet/mvc/overview/getting-started/getting-started-with-ef-using-mvc/implementing-basic-crud-functionality-with-the-entity-framework-in-asp-net-mvc-application). [ViewModels](https://rachelappel.com/use-viewmodels-to-manage-data-amp-organize-code-in-asp-net-mvc-applications/) реализует альтернативный подход к защите от чрезмерной передачи данных.
 
 Обратите внимание на второй метод действия `Edit`, которому предшествует атрибут `[HttpPost]`.
 
@@ -151,7 +151,7 @@ ASP.NET Core преобразует `https://localhost:5001/Movies/Edit/4` в з
 * [Создание вспомогательных функций тегов](xref:mvc/views/tag-helpers/authoring)
 * [Защита от подделки запросов](xref:security/anti-request-forgery)
 * Защита контроллера от [чрезмерной передачи данных](/aspnet/mvc/overview/getting-started/getting-started-with-ef-using-mvc/implementing-basic-crud-functionality-with-the-entity-framework-in-asp-net-mvc-application)
-* [ViewModels](http://rachelappel.com/use-viewmodels-to-manage-data-amp-organize-code-in-asp-net-mvc-applications/)
+* [ViewModels](https://rachelappel.com/use-viewmodels-to-manage-data-amp-organize-code-in-asp-net-mvc-applications/)
 * [Вспомогательная функция тега Form](xref:mvc/views/working-with-forms)
 * [Вспомогательная функция тега Input](xref:mvc/views/working-with-forms)
 * [Вспомогательная функция тега Label](xref:mvc/views/working-with-forms)

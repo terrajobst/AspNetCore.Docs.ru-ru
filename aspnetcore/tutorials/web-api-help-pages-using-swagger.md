@@ -6,16 +6,16 @@ ms.author: scaddie
 ms.custom: mvc
 ms.date: 09/20/2018
 uid: tutorials/web-api-help-pages-using-swagger
-ms.openlocfilehash: fb65b84b781b5c19040b559f0d7635ceb00cf4a0
-ms.sourcegitcommit: 06a455d63ff7d6b571ca832e8117f4ac9d646baf
+ms.openlocfilehash: 06a942ca213c7c0a58932494be0ed23cb6896d48
+ms.sourcegitcommit: 7a40c56bf6a6aaa63a7ee83a2cac9b3a1d77555e
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 06/21/2019
-ms.locfileid: "67316565"
+ms.lasthandoff: 07/12/2019
+ms.locfileid: "67856094"
 ---
 # <a name="aspnet-core-web-api-help-pages-with-swagger--openapi"></a>Страницы справки по веб-API ASP.NET Core с использованием Swagger (OpenAPI)
 
-Авторы: [Кристоф Ниенабер (Christoph Nienaber)](https://twitter.com/zuckerthoben) и [Рико Сутер (Rico Suter)](http://rsuter.com)
+Авторы: [Кристоф Ниенабер (Christoph Nienaber)](https://twitter.com/zuckerthoben) и [Рико Сутер (Rico Suter)](https://blog.rsuter.com/)
 
 При использовании веб-API разработчику бывает сложно разобраться в различных методах. [Swagger](https://swagger.io/) (также называется [OpenAPI](https://www.openapis.org/)) позволяет решить проблему создания полезной документации и страниц справки для веб-API. Он имеет такие преимущества, как интерактивная документация, создание пакета SDK для клиента и возможность обнаружения API.
 
@@ -113,7 +113,7 @@ Swagger — это не зависящая от языка спецификац
 ![Пример тестирования в Swagger метода GET](web-api-help-pages-using-swagger/_static/get-try-it-out.png)
 
 > [!NOTE]
-> На снимках экрана используется пользовательский интерфейс Swagger версии 2. Пример версии 3 см. в разделе [Пример Petstore](http://petstore.swagger.io/).
+> На снимках экрана используется пользовательский интерфейс Swagger версии 2. Пример версии 3 см. в разделе [Пример Petstore](https://petstore.swagger.io/).
 
 ## <a name="next-steps"></a>Следующие шаги
 

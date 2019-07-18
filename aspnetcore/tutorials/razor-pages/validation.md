@@ -4,14 +4,14 @@ author: rick-anderson
 description: Практическое руководство по добавлению проверки на страницу Razor в ASP.NET Core.
 ms.author: riande
 ms.custom: mvc
-ms.date: 12/5/2018
+ms.date: 12/05/2018
 uid: tutorials/razor-pages/validation
-ms.openlocfilehash: 38e1fff9c7a212af992951dbf57e124cae69d36f
-ms.sourcegitcommit: ccbb84ae307a5bc527441d3d509c20b5c1edde05
+ms.openlocfilehash: 8495849c89ca3d6fd2b2006b61ce2ec75ff504a5
+ms.sourcegitcommit: 8516b586541e6ba402e57228e356639b85dfb2b9
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 05/19/2019
-ms.locfileid: "65874991"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67815661"
 ---
 # <a name="add-validation-to-an-aspnet-core-razor-page"></a>Добавление проверки на страницу Razor в ASP.NET Core
 
@@ -47,7 +47,7 @@ ms.locfileid: "65874991"
 Данные формы передаются на сервер только после того, как будут устранены все ошибки проверки на стороне клиента. Чтобы убедиться, что данные формы не отправляются, используйте любой из следующих способов.
 
 * Поместите точку останова в метод `OnPostAsync`. Отправьте форму с помощью команды **Create** (Создать) или **Save** (Сохранить). Точка останова не достигается ни при каких обстоятельствах.
-* Используйте [инструмент Fiddler](http://www.telerik.com/fiddler).
+* Используйте [инструмент Fiddler](https://www.telerik.com/fiddler).
 * Проследите сетевой трафик с помощью инструментов разработчика для браузера.
 
 ### <a name="server-side-validation"></a>Проверка на стороне сервера

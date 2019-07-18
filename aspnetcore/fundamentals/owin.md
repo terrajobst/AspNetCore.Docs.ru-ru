@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: H1Hack27Feb2017
 ms.date: 12/18/2018
 uid: fundamentals/owin
-ms.openlocfilehash: 9d6ce79c15fe768c260c6361ac3babecab5f3f9b
-ms.sourcegitcommit: dd9c73db7853d87b566eef136d2162f648a43b85
+ms.openlocfilehash: 7edb4db026f1b778d43ac72883690a0b2a18ee31
+ms.sourcegitcommit: 8516b586541e6ba402e57228e356639b85dfb2b9
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65087305"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67814897"
 ---
 # <a name="open-web-interface-for-net-owin-with-aspnet-core"></a>Открытый веб-интерфейс для .NET (OWIN) в ASP.NET Core
 
@@ -35,7 +35,7 @@ OWIN обеспечивает разделительный уровень, по�
 
 Поддержка OWIN для ASP.NET Core развертывается в составе пакета `Microsoft.AspNetCore.Owin`. Вы можете импортировать поддержку OWIN в проект, установив этот пакет.
 
-ПО промежуточного слоя OWIN соответствует [спецификации OWIN](http://owin.org/spec/spec/owin-1.0.0.html), где требуется задать интерфейс `Func<IDictionary<string, object>, Task>` и определенные ключи (такие как `owin.ResponseBody`). Следующее простое ПО промежуточного слоя OWIN отображает сообщение "Hello World":
+ПО промежуточного слоя OWIN соответствует [спецификации OWIN](https://owin.org/spec/spec/owin-1.0.0.html), где требуется задать интерфейс `Func<IDictionary<string, object>, Task>` и определенные ключи (такие как `owin.ResponseBody`). Следующее простое ПО промежуточного слоя OWIN отображает сообщение "Hello World":
 
 ```csharp
 public Task OwinHello(IDictionary<string, object> environment)
@@ -43,7 +43,7 @@ public Task OwinHello(IDictionary<string, object> environment)
     string responseText = "Hello World via OWIN";
     byte[] responseBytes = Encoding.UTF8.GetBytes(responseText);
 
-    // OWIN Environment Keys: http://owin.org/spec/spec/owin-1.0.0.html
+    // OWIN Environment Keys: https://owin.org/spec/spec/owin-1.0.0.html
     var responseStream = (Stream)environment["owin.ResponseBody"];
     var responseHeaders = (IDictionary<string, string[]>)environment["owin.ResponseHeaders"];
 
@@ -230,11 +230,11 @@ public class Startup
 
 ## <a name="owin-keys"></a>Ключи OWIN
 
-OWIN использует объект `IDictionary<string,object>` для передачи сведений через систему обмена запросами и откликами HTTP. ASP.NET Core реализует указанные ниже ключи. См. [основную спецификацию, расширения](http://owin.org/#spec), а также статью [Рекомендации по ключам OWIN и общие ключи](http://owin.org/spec/spec/CommonKeys.html).
+OWIN использует объект `IDictionary<string,object>` для передачи сведений через систему обмена запросами и откликами HTTP. ASP.NET Core реализует указанные ниже ключи. См. [основную спецификацию, расширения](https://owin.org/#spec), а также статью [Рекомендации по ключам OWIN и общие ключи](https://owin.org/spec/spec/CommonKeys.html).
 
 ### <a name="request-data-owin-v100"></a>Данные запроса (OWIN версии 1.0.0)
 
-| Ключ               | Значение (тип) | Описание |
+| Ключ               | Значение (тип) | ОПИСАНИЕ |
 | ----------------- | ------------ | ----------- |
 | owin.RequestScheme | `String` |  |
 | owin.RequestMethod  | `String` | |    
@@ -247,13 +247,13 @@ OWIN использует объект `IDictionary<string,object>` для пе�
 
 ### <a name="request-data-owin-v110"></a>Данные запроса (OWIN версии 1.1.0)
 
-| Ключ               | Значение (тип) | Описание |
+| Ключ               | Значение (тип) | ОПИСАНИЕ |
 | ----------------- | ------------ | ----------- |
 | owin.RequestId | `String` | Optional |
 
 ### <a name="response-data-owin-v100"></a>Данные отклика (OWIN версии 1.0.0)
 
-| Ключ               | Значение (тип) | Описание |
+| Ключ               | Значение (тип) | ОПИСАНИЕ |
 | ----------------- | ------------ | ----------- |
 | owin.ResponseStatusCode | `int` | Optional |
 | owin.ResponseReasonPhrase | `String` | Optional |
@@ -262,14 +262,14 @@ OWIN использует объект `IDictionary<string,object>` для пе�
 
 ### <a name="other-data-owin-v100"></a>Другие данные (OWIN версии 1.0.0)
 
-| Ключ               | Значение (тип) | Описание |
+| Ключ               | Значение (тип) | ОПИСАНИЕ |
 | ----------------- | ------------ | ----------- |
 | owin.CallCancelled | `CancellationToken` |  |
 | owin.Version  | `String` | |   
 
 ### <a name="common-keys"></a>Общие ключи
 
-| Ключ               | Значение (тип) | Описание |
+| Ключ               | Значение (тип) | ОПИСАНИЕ |
 | ----------------- | ------------ | ----------- |
 | ssl.ClientCertificate | `X509Certificate` |  |
 | ssl.LoadClientCertAsync  | `Func<Task>` | |    
@@ -282,30 +282,30 @@ OWIN использует объект `IDictionary<string,object>` для пе�
 
 ### <a name="sendfiles-v030"></a>SendFiles версии 0.3.0
 
-| Ключ               | Значение (тип) | Описание |
+| Ключ               | Значение (тип) | ОПИСАНИЕ |
 | ----------------- | ------------ | ----------- |
-| sendfile.SendAsync | См. описание [сигнатуры делегата](http://owin.org/spec/extensions/owin-SendFile-Extension-v0.3.0.htm) | Для каждого запроса |
+| sendfile.SendAsync | См. описание [сигнатуры делегата](https://owin.org/spec/extensions/owin-SendFile-Extension-v0.3.0.htm) | Для каждого запроса |
 
 ### <a name="opaque-v030"></a>Opaque версии 0.3.0
 
-| Ключ               | Значение (тип) | Описание |
+| Ключ               | Значение (тип) | ОПИСАНИЕ |
 | ----------------- | ------------ | ----------- |
 | opaque.Version | `String` |  |
-| opaque.Upgrade | `OpaqueUpgrade` | См. описание [сигнатуры делегата](http://owin.org/spec/extensions/owin-SendFile-Extension-v0.3.0.htm) |
+| opaque.Upgrade | `OpaqueUpgrade` | См. описание [сигнатуры делегата](https://owin.org/spec/extensions/owin-SendFile-Extension-v0.3.0.htm) |
 | opaque.Stream | `Stream` |  |
 | opaque.CallCancelled | `CancellationToken` |  |
 
 ### <a name="websocket-v030"></a>WebSocket версии 0.3.0
 
-| Ключ               | Значение (тип) | Описание |
+| Ключ               | Значение (тип) | ОПИСАНИЕ |
 | ----------------- | ------------ | ----------- |
 | websocket.Version | `String` |  |
-| websocket.Accept | `WebSocketAccept` | См. описание [сигнатуры делегата](http://owin.org/spec/extensions/owin-SendFile-Extension-v0.3.0.htm) |
+| websocket.Accept | `WebSocketAccept` | См. описание [сигнатуры делегата](https://owin.org/spec/extensions/owin-SendFile-Extension-v0.3.0.htm) |
 | websocket.AcceptAlt |  | Нет в спецификации |
 | websocket.SubProtocol | `String` | См. [раздел 4.2.2 RFC6455](https://tools.ietf.org/html/rfc6455#section-4.2.2), шаг 5.5 |
-| websocket.SendAsync | `WebSocketSendAsync` | См. описание [сигнатуры делегата](http://owin.org/spec/extensions/owin-SendFile-Extension-v0.3.0.htm)  |
-| websocket.ReceiveAsync | `WebSocketReceiveAsync` | См. описание [сигнатуры делегата](http://owin.org/spec/extensions/owin-SendFile-Extension-v0.3.0.htm)  |
-| websocket.CloseAsync | `WebSocketCloseAsync` | См. описание [сигнатуры делегата](http://owin.org/spec/extensions/owin-SendFile-Extension-v0.3.0.htm)  |
+| websocket.SendAsync | `WebSocketSendAsync` | См. описание [сигнатуры делегата](https://owin.org/spec/extensions/owin-SendFile-Extension-v0.3.0.htm)  |
+| websocket.ReceiveAsync | `WebSocketReceiveAsync` | См. описание [сигнатуры делегата](https://owin.org/spec/extensions/owin-SendFile-Extension-v0.3.0.htm)  |
+| websocket.CloseAsync | `WebSocketCloseAsync` | См. описание [сигнатуры делегата](https://owin.org/spec/extensions/owin-SendFile-Extension-v0.3.0.htm)  |
 | websocket.CallCancelled | `CancellationToken` |  |
 | websocket.ClientCloseStatus | `int` | Optional |
 | websocket.ClientCloseDescription | `String` | Optional |
