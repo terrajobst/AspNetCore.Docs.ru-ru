@@ -5,14 +5,14 @@ description: Сведения о размещении приложений ASP.N
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 05/28/2019
+ms.date: 07/16/2019
 uid: host-and-deploy/iis/index
-ms.openlocfilehash: 2dab8b4839d6778d5dc6a3daf96c1719eecfe0fb
-ms.sourcegitcommit: 763af2cbdab0da62d1f1cfef4bcf787f251dfb5c
+ms.openlocfilehash: 644d84f9adba650b3ef10ba69cc75c22845be211
+ms.sourcegitcommit: 7e00e8236ca4eabf058f07020a5a3882daf7564f
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 06/26/2019
-ms.locfileid: "67394623"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68239242"
 ---
 # <a name="host-aspnet-core-on-windows-with-iis"></a>Размещение ASP.NET Core в Windows со службами IIS
 
@@ -338,7 +338,7 @@ services.Configure<IISOptions>(options =>
 
 ## <a name="create-the-iis-site"></a>Создание сайта IIS
 
-1. В размещающей системе создайте папку, в которой будут храниться файлы и папки опубликованного приложения. Макет развертывания приложения описан в статье [Directory structure of published ASP.NET Core apps](xref:host-and-deploy/directory-structure) (Структура каталогов опубликованных приложений ASP.NET Core).
+1. В размещающей системе создайте папку, в которой будут храниться файлы и папки опубликованного приложения. На следующем этапе путь к папке предоставляется IIS как физический путь к приложению. Дополнительные сведения о папке развертывания и структуре файлов приложения см. в статье <xref:host-and-deploy/directory-structure>.
 
 1. В окне диспетчера IIS на панели **Подключения** разверните узел сервера. Щелкните правой кнопкой мыши папку **Сайты**. В контекстном меню выберите пункт **Добавить веб-сайт**.
 
@@ -372,11 +372,11 @@ services.Configure<IISOptions>(options =>
 
 ## <a name="deploy-the-app"></a>Развертывание приложения
 
-Разверните приложение в папке, созданной в размещающей системе. Рекомендуемый механизм развертывания — [веб-развертывание](/iis/publish/using-web-deploy/introduction-to-web-deploy).
+Разверните приложение в папке IIS, **физический путь** к которой вы указали в рамках раздела [Создание сайта IIS](#create-the-iis-site). Рекомендуется выполнять [веб-развертывание](/iis/publish/using-web-deploy/introduction-to-web-deploy), но есть несколько других способов переместить приложение из папки *публикации* проекта в папку развертывания размещающей системы.
 
 ### <a name="web-deploy-with-visual-studio"></a>Веб-развертывание с помощью Visual Studio
 
-Сведения о создании профиля публикации для веб-развертывания см. в статье [Профили публикации Visual Studio для развертывания приложений ASP.NET Core](xref:host-and-deploy/visual-studio-publish-profiles#publish-profiles). Если поставщик услуг размещения предоставляет профиль публикации или позволяет его создать, скачайте этот профиль и импортируйте его с помощью диалогового окна **Публикация** в Visual Studio.
+Сведения о создании профиля публикации для веб-развертывания см. в статье [Профили публикации Visual Studio для развертывания приложений ASP.NET Core](xref:host-and-deploy/visual-studio-publish-profiles#publish-profiles). Если поставщик услуг размещения предоставляет профиль публикации или позволяет его создать, скачайте этот профиль и импортируйте его с помощью диалогового окна **Публикация** в Visual Studio:
 
 ![Диалоговое окно "Публикация"](index/_static/pub-dialog.png)
 
@@ -386,11 +386,15 @@ services.Configure<IISOptions>(options =>
 
 ### <a name="alternatives-to-web-deploy"></a>Альтернативы веб-развертыванию
 
-Переместить приложение в размещающую систему можно несколькими способами: с помощью копирования вручную, Xcopy, Robocopy или PowerShell.
+Переместить приложение в размещающую систему можно несколькими способами: с помощью копирования вручную, [Xcopy](/windows-server/administration/windows-commands/xcopy), [Robocopy](/windows-server/administration/windows-commands/robocopy) или [PowerShell](/powershell/).
 
 Дополнительные сведения о развертывании ASP.NET Core в службах IIS см. в разделе [Ресурсы развертывания для администраторов IIS](#deployment-resources-for-iis-administrators).
 
 ## <a name="browse-the-website"></a>Обзор веб-сайта
+
+Когда приложение будет развернуто в размещающей системе, выполните запрос к одной из общедоступных конечных точек приложения.
+
+В приведенном ниже примере сайт привязан к **имени узла** IIS `www.mysite.com` в **порте** `80`. Запрос отправляется по адресу `http://www.mysite.com`:
 
 ![Начальная страница IIS, загруженная в браузере Microsoft Edge.](index/_static/browsewebsite.png)
 
