@@ -534,6 +534,10 @@
       uid: grpc/aspnetcore
     - name: Параметр Configuration
       uid: grpc/configuration
+    - name: Аутентификация и авторизация
+      uid: grpc/authn-and-authz
+    - name: Замечания по безопасности
+      uid: grpc/security
     - name: Миграция служб gRPC из C Core на ASP.NET Core
       uid: grpc/migration
     - name: 'Сравнение служб gRPC, с API HTTP'
@@ -560,6 +564,10 @@
       uid: test/troubleshoot
     - name: Ведение журнала
       uid: fundamentals/logging/index
+    - name: Устранение неполадок в Azure и службах IIS
+      uid: test/troubleshoot-azure-iis
+    - name: Справочник по ошибкам в Azure и службах IIS
+      uid: host-and-deploy/azure-iis-errors-reference
 - name: Доступ к данным
   items:
     - name: Учебники
@@ -656,7 +664,7 @@
           uid: host-and-deploy/aspnet-core-module
         - name: Устранение неполадок
           displayName: 'azure, deploy, publish'
-          uid: host-and-deploy/azure-apps/troubleshoot
+          uid: test/troubleshoot-azure-iis
         - name: Справочник по ошибкам
           displayName: 'azure, deploy, publish'
           uid: host-and-deploy/azure-iis-errors-reference
@@ -697,7 +705,7 @@
           uid: host-and-deploy/iis/modules
         - name: Устранение неполадок
           displayName: 'deploy, publish'
-          uid: host-and-deploy/iis/troubleshoot
+          uid: test/troubleshoot-azure-iis
         - name: Справочник по ошибкам
           displayName: 'deploy, publish'
           uid: host-and-deploy/azure-iis-errors-reference
