@@ -7,12 +7,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 07/09/2019
 uid: fundamentals/dependency-injection
-ms.openlocfilehash: 1455aa9ce4ea24eaeb396134f91b6d089b346c17
-ms.sourcegitcommit: bee530454ae2b3c25dc7ffebf93536f479a14460
+ms.openlocfilehash: 9293de38dcca1c0672f9cc3defa8d3c1b0b13d5a
+ms.sourcegitcommit: 7a40c56bf6a6aaa63a7ee83a2cac9b3a1d77555e
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67724444"
+ms.lasthandoff: 07/12/2019
+ms.locfileid: "67855901"
 ---
 # <a name="dependency-injection-in-aspnet-core"></a>Внедрение зависимостей в ASP.NET Core
 
@@ -95,7 +95,7 @@ services.AddSingleton(typeof(ILogger<T>), typeof(Logger<T>));
 [!code-csharp[](dependency-injection/samples/2.x/DependencyInjectionSample/Startup.cs?name=snippet1&highlight=5)]
 
 > [!NOTE]
-> Каждый метод расширения `services.Add{SERVICE_NAME}` добавляет (а потенциально и настраивает) службы. Например, `services.AddMvc()` добавляет службы, которые нужны для Razor Pages и MVC. Рекомендуем придерживаться такого подхода в приложениях. Поместите методы расширения в пространство имен <xref:Microsoft.Extensions.DependencyInjection?displayProperty=fullName>, чтобы инкапсулировать группы зарегистрированных служб.
+> Каждый метод расширения `services.Add{SERVICE_NAME}` добавляет (а потенциально и настраивает) службы. Например, `services.AddMvc()` добавляет службы, которые нужны для Razor Pages и MVC. Рекомендуем придерживаться такого подхода в приложениях. Поместите методы расширения в пространство имен [Microsoft.Extensions.DependencyInjection](/dotnet/api/microsoft.extensions.dependencyinjection), чтобы инкапсулировать группы зарегистрированных служб.
 
 Если конструктору службы требуется [встроенный тип](/dotnet/csharp/language-reference/keywords/built-in-types-table), например `string`, его можно внедрить с помощью [конфигурации](xref:fundamentals/configuration/index) или [шаблона параметров](xref:fundamentals/configuration/options).
 
@@ -140,7 +140,7 @@ public class MyDependency : IMyDependency
 | <xref:System.Diagnostics.DiagnosticSource?displayProperty=fullName> | Одноэлементный |
 | <xref:System.Diagnostics.DiagnosticListener?displayProperty=fullName> | Одноэлементный |
 
-Если зарегистрировать службу (включая ее зависимые службы, если нужно) можно, используя метод расширения коллекции служб, для регистрации всех служб, необходимых этой службе, рекомендуется использовать один метод расширения `Add{SERVICE_NAME}`. Ниже приведен пример того, как добавить дополнительные службы в контейнер с помощью методов расширения <xref:Microsoft.Extensions.DependencyInjection.EntityFrameworkServiceCollectionExtensions.AddDbContext*>, <xref:Microsoft.Extensions.DependencyInjection.IdentityServiceCollectionExtensions.AddIdentityCore*> и <xref:Microsoft.Extensions.DependencyInjection.MvcServiceCollectionExtensions.AddMvc*>:
+Если зарегистрировать службу (включая ее зависимые службы, если нужно) можно, используя метод расширения коллекции служб, для регистрации всех служб, необходимых этой службе, рекомендуется использовать один метод расширения `Add{SERVICE_NAME}`. Ниже приведен пример того, как добавить дополнительные службы в контейнер с помощью методов расширения [AddDbContext\<TContext>](/dotnet/api/microsoft.extensions.dependencyinjection.entityframeworkservicecollectionextensions.adddbcontext), <xref:Microsoft.Extensions.DependencyInjection.IdentityServiceCollectionExtensions.AddIdentityCore*> и <xref:Microsoft.Extensions.DependencyInjection.MvcServiceCollectionExtensions.AddMvc*>.
 
 ```csharp
 public void ConfigureServices(IServiceCollection services)
@@ -186,11 +186,11 @@ public void ConfigureServices(IServiceCollection services)
 
 | Метод | Автоматический<br>object<br>удаление | Несколько<br>реализации | Передача аргументов |
 | ------ | :-----------------------------: | :-------------------------: | :-------: |
-| `Add{LIFETIME}<{SERVICE}, {IMPLEMENTATION}>()`<br>Пример<br>`services.AddScoped<IMyDep, MyDep>();` | Yes | Да | Нет  |
+| `Add{LIFETIME}<{SERVICE}, {IMPLEMENTATION}>()`<br>Пример<br>`services.AddScoped<IMyDep, MyDep>();` | Yes | Да | Нет |
 | `Add{LIFETIME}<{SERVICE}>(sp => new {IMPLEMENTATION})`<br>Примеры<br>`services.AddScoped<IMyDep>(sp => new MyDep());`<br>`services.AddScoped<IMyDep>(sp => new MyDep("A string!"));` | Yes | Да | Yes |
-| `Add{LIFETIME}<{IMPLEMENTATION}>()`<br>Пример<br>`services.AddScoped<MyDep>();` | Yes | Нет  | Нет  |
-| `Add{LIFETIME}<{SERVICE}>(new {IMPLEMENTATION})`<br>Примеры<br>`services.AddScoped<IMyDep>(new MyDep());`<br>`services.AddScoped<IMyDep>(new MyDep("A string!"));` | Нет  | Yes | Yes |
-| `Add{LIFETIME}(new {IMPLEMENTATION})`<br>Примеры<br>`services.AddScoped(new MyDep());`<br>`services.AddScoped(new MyDep("A string!"));` | Нет  | Нет  | Yes |
+| `Add{LIFETIME}<{IMPLEMENTATION}>()`<br>Пример<br>`services.AddScoped<MyDep>();` | Yes | Нет | Нет |
+| `Add{LIFETIME}<{SERVICE}>(new {IMPLEMENTATION})`<br>Примеры<br>`services.AddScoped<IMyDep>(new MyDep());`<br>`services.AddScoped<IMyDep>(new MyDep("A string!"));` | Нет | Yes | Yes |
+| `Add{LIFETIME}(new {IMPLEMENTATION})`<br>Примеры<br>`services.AddScoped(new MyDep());`<br>`services.AddScoped(new MyDep("A string!"));` | Нет | Нет | Yes |
 
 Дополнительные сведения об удалении типа см. в разделе [Удаление служб](#disposal-of-services). Распространенный сценарий для нескольких реализаций — [макеты типов для тестирования](xref:test/integration-tests#inject-mock-services).
 
@@ -242,7 +242,7 @@ services.TryAddEnumerable(ServiceDescriptor.Singleton<IMyDep1, MyDep>());
 
 ## <a name="entity-framework-contexts"></a>Контексты Entity Framework
 
-Контексты Entity Framework обычно добавляются в контейнер службы с помощью [времени существования с заданной областью](#service-lifetimes), поскольку операции базы данных в веб-приложении обычно относятся к области клиентского запроса. Время существования по умолчанию имеет заданную область, если время существования не указано в перегрузке <xref:Microsoft.Extensions.DependencyInjection.EntityFrameworkServiceCollectionExtensions.AddDbContext*> при регистрации контекста базы данных. Службы данного времени существования не должны использовать контекст базы данных с временем существования короче, чем у службы.
+Контексты Entity Framework обычно добавляются в контейнер службы с помощью [времени существования с заданной областью](#service-lifetimes), поскольку операции базы данных в веб-приложении обычно относятся к области клиентского запроса. Время существования по умолчанию имеет заданную область, если время существования не указано в перегрузке [AddDbContext\<TContext>](/dotnet/api/microsoft.extensions.dependencyinjection.entityframeworkservicecollectionextensions.adddbcontext) при регистрации контекста базы данных. Службы данного времени существования не должны использовать контекст базы данных с временем существования короче, чем у службы.
 
 ## <a name="lifetime-and-registration-options"></a>Параметры времени существования и регистрации
 

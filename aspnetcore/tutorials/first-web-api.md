@@ -4,14 +4,14 @@ author: rick-anderson
 description: Узнайте, как создать веб-API с помощью ASP.NET Core.
 ms.author: riande
 ms.custom: mvc
-ms.date: 06/23/2019
+ms.date: 07/11/2019
 uid: tutorials/first-web-api
-ms.openlocfilehash: a53f7019c1079296f073e743ddbf9d90fc5abad3
-ms.sourcegitcommit: d6e51c60439f03a8992bda70cc982ddb15d3f100
+ms.openlocfilehash: 95410cef9753fbb0eda6136320b59682e0553ea7
+ms.sourcegitcommit: 040aedca220ed24ee1726e6886daf6906f95a028
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/03/2019
-ms.locfileid: "67555879"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "67893220"
 ---
 # <a name="tutorial-create-a-web-api-with-aspnet-core"></a>Учебник. Создание веб-API с помощью ASP.NET Core
 
@@ -99,7 +99,7 @@ ms.locfileid: "67555879"
 
   ![Новое решение macOS](first-web-api-mac/_static/sln.png)
 
-* Выберите **Приложение .NET Core** > **Веб-API ASP.NET Core** > **Далее**.
+* Выберите **.NET Core** > **Приложение** > **API** > **Далее**.
 
   ![Диалоговое окно "Новый проект" в macOS](first-web-api-mac/_static/1.png)
   
@@ -127,7 +127,7 @@ ms.locfileid: "67555879"
 
 # <a name="visual-studio-for-mactabvisual-studio-mac"></a>[Visual Studio для Mac](#tab/visual-studio-mac)
 
-Выберите **Выполнить** > **Запуск без отладки**, чтобы запустить приложение. Visual Studio для Mac запустит браузер и перейдет к `https://localhost:<port>`, где `<port>` — это номер порта, выбранный случайным образом. Появится ошибка HTTP 404 (Не найдено). Добавьте `/api/values` к URL-адресу (измените URL-адрес на `https://localhost:<port>/api/values`).
+Выберите **Выполнить** > **Начать отладку**, чтобы запустить приложение. Visual Studio для Mac запустит браузер и перейдет к `https://localhost:<port>`, где `<port>` — это номер порта, выбранный случайным образом. Появится ошибка HTTP 404 (Не найдено). Добавьте `/api/values` к URL-адресу (измените URL-адрес на `https://localhost:<port>/api/values`).
 
 ---
 
@@ -245,6 +245,8 @@ ms.locfileid: "67555879"
 
 * `GET /api/todo`
 * `GET /api/todo/{id}`
+
+Если приложение все еще выполняется, оно останавливается. Затем оно запускается снова с последними изменениями.
 
 Протестируйте приложение, вызвав эти две конечные точки в браузере. Например:
 

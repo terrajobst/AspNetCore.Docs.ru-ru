@@ -7,12 +7,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 06/11/2019
 uid: host-and-deploy/blazor/server-side
-ms.openlocfilehash: 8b332c2fb439e9832d604ed26f972b266eed2507
-ms.sourcegitcommit: 9bb29f9ba6f0645ee8b9cabda07e3a5aa52cd659
+ms.openlocfilehash: 56a03ff583bf85497e2b3bacc70123845a046e3d
+ms.sourcegitcommit: 040aedca220ed24ee1726e6886daf6906f95a028
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 06/26/2019
-ms.locfileid: "67406124"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "67892699"
 ---
 # <a name="host-and-deploy-blazor-server-side"></a>Размещение и развертывание Blazor на стороне сервера
 
@@ -26,7 +26,7 @@ ms.locfileid: "67406124"
 
 При использовании [модели размещения на сервере](xref:blazor/hosting-models#server-side) Blazor работает на сервере в приложении ASP.NET Core. Обновление элементов пользовательского интерфейса, обработка событий и вызовы JavaScript обрабатываются через подключение [SignalR](xref:signalr/introduction).
 
-Необходим веб-сервер, позволяющий размещать приложения ASP.NET Core. Visual Studio содержит шаблон проекта **Blazor (на стороне сервера)** (шаблон `blazorserverside` при использовании команды [dotnet new](/dotnet/core/tools/dotnet-new)).
+Необходим веб-сервер, позволяющий размещать приложения ASP.NET Core. Visual Studio содержит шаблон проекта **Серверное приложение Blazor** (шаблон `blazorserverside` при использовании команды [dotnet new](/dotnet/core/tools/dotnet-new)).
 
 ## <a name="connection-scale-out"></a>Горизонтальное масштабирование подключений
 

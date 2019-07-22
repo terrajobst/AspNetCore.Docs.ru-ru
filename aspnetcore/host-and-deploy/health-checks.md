@@ -5,14 +5,14 @@ description: Узнайте, как настроить проверки рабо
 monikerRange: '>= aspnetcore-2.2'
 ms.author: riande
 ms.custom: mvc
-ms.date: 04/23/2019
+ms.date: 07/11/2019
 uid: host-and-deploy/health-checks
-ms.openlocfilehash: 5119267a8da5c950989b14b7c2e818aa22806506
-ms.sourcegitcommit: 5b0eca8c21550f95de3bb21096bd4fd4d9098026
+ms.openlocfilehash: 43b6c3b55170eaf3a989d0f2779edac5290df823
+ms.sourcegitcommit: 7a40c56bf6a6aaa63a7ee83a2cac9b3a1d77555e
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 04/27/2019
-ms.locfileid: "64887929"
+ms.lasthandoff: 07/12/2019
+ms.locfileid: "67855910"
 ---
 # <a name="health-checks-in-aspnet-core"></a>Проверки работоспособности в ASP.NET Core
 
@@ -684,3 +684,20 @@ Task PublishAsync(HealthReport report, CancellationToken cancellationToken);
 > [AspNetCore.Diagnostics.HealthChecks](https://github.com/Xabaril/AspNetCore.Diagnostics.HealthChecks) содержит издатели для нескольких систем, в том числе [Application Insights](/azure/application-insights/app-insights-overview).
 >
 > [AspNetCore.Diagnostics.HealthChecks](https://github.com/Xabaril/AspNetCore.Diagnostics.HealthChecks) — это порт [BeatPulse](https://github.com/xabaril/beatpulse), и он не поддерживается корпорацией Майкрософт.
+
+## <a name="restrict-health-checks-with-mapwhen"></a>Ограничение проверок работоспособности с помощью MapWhen
+
+Используйте <xref:Microsoft.AspNetCore.Builder.MapWhenExtensions.MapWhen*> для условного ветвления конвейера запросов для конечных точек проверки работоспособности.
+
+В следующем примере `MapWhen` производит ветвление конвейера запросов для активации ПО промежуточного слоя проверки работоспособности в случае, если для конечной точки `api/HealthCheck` поступает запрос GET:
+
+```csharp
+app.MapWhen(
+    context => context.Request.Method == HttpMethod.Get.Method && 
+        context.Request.Path.StartsWith("/api/HealthCheck"),
+    builder => builder.UseHealthChecks());
+
+app.UseMvc();
+```
+
+Дополнительные сведения можно найти по адресу: <xref:fundamentals/middleware/index#use-run-and-map>.
