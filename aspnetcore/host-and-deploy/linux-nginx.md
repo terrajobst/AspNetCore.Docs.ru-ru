@@ -7,12 +7,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 03/31/2019
 uid: host-and-deploy/linux-nginx
-ms.openlocfilehash: 29b80b59f474f6a775d1eba315597e55e1e37781
-ms.sourcegitcommit: 5b0eca8c21550f95de3bb21096bd4fd4d9098026
+ms.openlocfilehash: d9db2a251820d0dab26f8a6bd2eb755090154165
+ms.sourcegitcommit: 8516b586541e6ba402e57228e356639b85dfb2b9
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 04/27/2019
-ms.locfileid: "64884199"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67813345"
 ---
 # <a name="host-aspnet-core-on-linux-with-nginx"></a>Среда размещения ASP.NET Core в операционной системе Linux с Nginx
 
@@ -104,7 +104,7 @@ services.Configure<ForwardedHeadersOptions>(options =>
 });
 ```
 
-Для получения дополнительной информации см. <xref:host-and-deploy/proxy-load-balancer>.
+Дополнительные сведения можно найти по адресу: <xref:host-and-deploy/proxy-load-balancer>.
 
 ### <a name="install-nginx"></a>Установка Nginx
 
@@ -308,7 +308,7 @@ sudo journalctl -fu kestrel-helloapp.service --since "2016-10-18" --until "2016-
 Закройте все внешние порты, которые не используются. Незамысловатый межсетевой экран (ufw) позволяет взаимодействовать с `iptables`, предоставляя интерфейс командной строки для настройки межсетевого экрана.
 
 > [!WARNING]
-> Неправильно настроенный брандмауэр предотвратит доступ ко всей системе. Если задать неправильный порт SSH, то при использовании SSH для подключения к системе произойдет ее блокировка. Порт по умолчанию — 22. Дополнительные сведения см. в [вводной статье по ufw](https://help.ubuntu.com/community/UFW) и в [этом руководстве](http://manpages.ubuntu.com/manpages/bionic/man8/ufw.8.html).
+> Неправильно настроенный брандмауэр предотвратит доступ ко всей системе. Если задать неправильный порт SSH, то при использовании SSH для подключения к системе произойдет ее блокировка. Порт по умолчанию — 22. Дополнительные сведения см. в [вводной статье по ufw](https://help.ubuntu.com/community/UFW) и в [этом руководстве](https://manpages.ubuntu.com/manpages/bionic/man8/ufw.8.html).
 
 Установите `ufw` и настройте его для разрешения прохождения трафика через все необходимые порты.
 
@@ -341,7 +341,7 @@ static char ngx_http_server_full_string[] = "Server: Web Server" CRLF;
 
 **Настройка приложения для безопасных (HTTPS) локальных подключений**
 
-Команда [dotnet run](/dotnet/core/tools/dotnet-run) использует файл приложения *Properties/launchSettings.json*, который настраивает приложение для прослушивания URL-адресов, заданных свойством `applicationUrl` (например, `https://localhost:5001; http://localhost:5000`).
+Команда [dotnet run](/dotnet/core/tools/dotnet-run) использует файл приложения *Properties/launchSettings.json*, который настраивает приложение для прослушивания URL-адресов, заданных свойством `applicationUrl` (например, `https://localhost:5001;http://localhost:5000`).
 
 Настройте приложение для использования при разработке сертификата для команды `dotnet run` или среды разработки (F5 или CTRL + F5 в Visual Studio Code), используя один из следующих подходов.
 
