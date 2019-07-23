@@ -6,12 +6,12 @@ ms.author: tdykstra
 ms.custom: mvc
 ms.date: 07/11/2019
 uid: fundamentals/logging/index
-ms.openlocfilehash: cdb5cad2302cc8ec02107021005b8590efce7533
-ms.sourcegitcommit: b40613c603d6f0cc71f3232c16df61550907f550
+ms.openlocfilehash: 4fe677e69478284db2ccab655c35b5744b6f63f9
+ms.sourcegitcommit: 059ab380744fa3be3b69aa90d431b563c57092cf
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68308219"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68410909"
 ---
 # <a name="logging-in-aspnet-core"></a>Ведение журналов в ASP.NET Core
 
@@ -865,14 +865,11 @@ loggerFactory.AddAzureWebAppDiagnostics();
 Дополнительные сведения см. в следующих ресурсах:
 
 * [Общие сведения об Application Insights](/azure/application-insights/app-insights-overview)
-* [Application Insights для приложений ASP.NET Core](/azure/azure-monitor/app/asp-net-core-no-visualstudio) — начните изучение с этой статьи, если вы хотите полностью реализовать возможности Application Insights для телеметрии и ведения журналов.
+* [Application Insights для приложений ASP.NET Core](/azure/azure-monitor/app/asp-net-core) — начните изучение с этой статьи, если вы хотите полностью реализовать возможности Application Insights для телеметрии и ведения журналов.
 * [ApplicationInsightsLoggerProvider for .NET Core ILogger logs](/azure/azure-monitor/app/ilogger) (Поставщик ведения журналов Application Insights для журналов .NET Core ILogger) — начните изучение с этой статьи, если вы хотите внедрить поставщика ведения журналов, не используя остальные возможности Application Insights для телеметрии.
-* [Адаптеры ведения журналов в Application Insights](https://github.com/Microsoft/ApplicationInsights-dotnet-logging/blob/develop/README.md).
+* [Адаптеры ведения журналов в Application Insights](https://docs.microsoft.com/azure/azure-monitor/app/asp-net-trace-logs).
 * [Инструментирование серверного кода веб-приложения с помощью Application Insights](/learn/modules/instrument-web-app-code-with-application-insights) — интерактивный учебник на сайте Microsoft Learn.
 ::: moniker-end
-
-> [!NOTE]
-> По состоянию на 1 мая 2019 года статья [Application Insights для приложений ASP.NET Core](/azure/azure-monitor/app/asp-net-core) является устаревшей, и инструкции из этого руководства не работают. Используйте вместо нее [эту статью](/azure/azure-monitor/app/asp-net-core-no-visualstudio). Мы знаем об этой проблеме и работаем над ее устранением.
 
 ## <a name="third-party-logging-providers"></a>Сторонние поставщики ведения журналов
 
