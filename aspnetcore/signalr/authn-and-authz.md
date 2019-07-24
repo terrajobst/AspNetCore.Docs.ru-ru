@@ -1,30 +1,30 @@
 ---
 title: Проверка подлинности и авторизация в ASP.NET Core SignalR
 author: bradygaster
-description: Узнайте, как использовать проверку подлинности и авторизации в ASP.NET Core SignalR.
+description: Узнайте, как использовать проверку подлинности и авторизацию в ASP.NET Core SignalR.
 monikerRange: '>= aspnetcore-2.1'
 ms.author: bradyg
 ms.custom: mvc
-ms.date: 05/09/2019
+ms.date: 07/15/2019
 uid: signalr/authn-and-authz
-ms.openlocfilehash: e8f9dc48be780fb91bdec6ea4d579f5e4f16197b
-ms.sourcegitcommit: 3376f224b47a89acf329b2d2f9260046a372f924
+ms.openlocfilehash: e7e7a9fd537ba89b64c15594652a290357a00038
+ms.sourcegitcommit: f30b18442ed12831c7e86b0db249183ccd749f59
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 05/10/2019
-ms.locfileid: "65516943"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68412541"
 ---
 # <a name="authentication-and-authorization-in-aspnet-core-signalr"></a>Проверка подлинности и авторизация в ASP.NET Core SignalR
 
-По [Andrew Stanton медсестра](https://twitter.com/anurse)
+[Эндрю Стантон-медперсонала](https://twitter.com/anurse)
 
-[Просмотреть или скачать образец кода](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/signalr/authn-and-authz/sample/) [(способ загрузки)](xref:index#how-to-download-a-sample)
+[Просмотр или скачивание образца кода](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/signalr/authn-and-authz/sample/) [(как скачать)](xref:index#how-to-download-a-sample)
 
 ## <a name="authenticate-users-connecting-to-a-signalr-hub"></a>Проверка подлинности пользователей, подключающихся к концентратору SignalR
 
-SignalR может использоваться с [проверки подлинности ASP.NET Core](xref:security/authentication/identity) чтобы связать пользователя с каждым подключением. В центре данных для проверки подлинности может осуществляться из [ `HubConnectionContext.User` ](/dotnet/api/microsoft.aspnetcore.signalr.hubconnectioncontext.user) свойство. Проверка подлинности позволяет вызывать методы для всех соединений, связанный с пользователем в центре (см. в разделе [управления пользователями и группами в SignalR](xref:signalr/groups) Дополнительные сведения). Несколько соединений могут быть связаны с одним пользователем.
+SignalR можно использовать с проверкой [подлинности ASP.NET Core](xref:security/authentication/identity) , чтобы связать пользователя с каждым подключением. В центре данные проверки подлинности можно получить из [`HubConnectionContext.User`](/dotnet/api/microsoft.aspnetcore.signalr.hubconnectioncontext.user) свойства. Проверка подлинности позволяет концентратору вызывать методы для всех подключений, связанных с пользователем (Дополнительные сведения см. [в разделе Управление пользователями и группами в SignalR](xref:signalr/groups) ). Несколько подключений могут быть связаны с одним пользователем.
 
-Ниже приведен пример `Startup.Configure` которого использует проверку подлинности SignalR и ASP.NET Core:
+Ниже приведен пример `Startup.Configure` использования SignalR и ASP.NET Core проверки подлинности.
 
 ```csharp
 public void Configure(IApplicationBuilder app)
@@ -48,25 +48,25 @@ public void Configure(IApplicationBuilder app)
 ```
 
 > [!NOTE]
-> Порядок, в котором вам зарегистрировать промежуточного по проверки подлинности SignalR и ASP.NET Core имеет значение. Всегда вызывайте метод `UseAuthentication` перед `UseSignalR` таким образом, SignalR пользователя `HttpContext`.
+> Порядок регистрации SignalR и ASP.NET Core по промежуточного слоя проверки подлинности имеет значение. Всегда вызывайте `UseSignalR` метод `UseAuthentication` перед тем, чтобы `HttpContext`у SignalR был пользователь.
 
-### <a name="cookie-authentication"></a>Файл cookie проверки подлинности
+### <a name="cookie-authentication"></a>Проверка подлинности файлов cookie
 
-В приложении на основе веб-обозревателя файл cookie проверки подлинности позволяет свои существующие учетные данные пользователя, автоматически обмениваться с подключениями SignalR. При использовании клиентского браузера, без дополнительных настроек не требуется. Если пользователь вошел в приложение, подключении SignalR автоматически наследует этой проверки подлинности.
+В приложении на основе браузера проверка подлинности cookie позволяет существующим учетным данным пользователя автоматически передаваться на подключения SignalR. При использовании клиента браузера дополнительная настройка не требуется. Если пользователь вошел в приложение, подключение SignalR автоматически наследует эту проверку подлинности.
 
-Файлы cookie представляют собой обозревателем позволяют отправлять маркеры доступа, но их можно отправлять клиентов без браузера. При использовании [клиента .NET](xref:signalr/dotnet-client), `Cookies` свойство можно задать в `.WithUrl` вызов, чтобы предоставить файл cookie. Тем не менее с использованием файла cookie проверки подлинности из клиента .NET требуется приложению предоставлять API для обмена данными проверки подлинности файла cookie.
+Файлы cookie — это ориентированный на браузер способ отправки маркеров доступа, но клиенты, не являющиеся браузерами, могут их отправить. При использовании [клиента .NET](xref:signalr/dotnet-client) `Cookies` свойство можно настроить в `.WithUrl` вызове, чтобы предоставить файл cookie. Однако для использования проверки подлинности файлов cookie из клиента .NET приложение должно предоставить API для обмена данными проверки подлинности для файла cookie.
 
-### <a name="bearer-token-authentication"></a>Маркер проверки подлинности носителя
+### <a name="bearer-token-authentication"></a>Проверка подлинности токена носителя
 
-Клиент может предоставить маркер доступа, вместо того чтобы использовать файл cookie. Сервер проверяет маркер и использует его для идентификации пользователя. Эта проверка выполняется только в том случае, если соединение установлено. В течение жизненного цикла соединения сервер не повторную сверку автоматически для проверки маркера.
+Клиент может предоставить маркер доступа вместо использования файла cookie. Сервер проверяет маркер и использует его для обнаружения пользователя. Эта проверка выполняется только при установленном соединении. Во время жизни соединения сервер не выполняет автоматическую повторную проверку, чтобы проверить отзыв маркера.
 
-На сервере проверки подлинности маркера носителя настраивается с помощью [по промежуточного слоя носителя JWT](/dotnet/api/microsoft.extensions.dependencyinjection.jwtbearerextensions.addjwtbearer).
+На сервере проверка подлинности токена носителя настраивается с помощью по [промежуточного слоя JWT Bearer](/dotnet/api/microsoft.extensions.dependencyinjection.jwtbearerextensions.addjwtbearer).
 
-В клиенте JavaScript, токен можно указать с помощью [accessTokenFactory](xref:signalr/configuration#configure-bearer-authentication) параметр.
+В клиенте JavaScript маркер можно указать с помощью параметра [акцесстокенфактори](xref:signalr/configuration#configure-bearer-authentication) .
 
 [!code-typescript[Configure Access Token](authn-and-authz/sample/wwwroot/js/chat.ts?range=63-65)]
 
-В клиенте .NET, отсутствует, аналогичное [AccessTokenProvider](xref:signalr/configuration#configure-bearer-authentication) свойство, которое может использоваться для настройки маркера:
+В клиенте .NET существует аналогичное свойство [акцесстокенпровидер](xref:signalr/configuration#configure-bearer-authentication) , которое можно использовать для настройки маркера:
 
 ```csharp
 var connection = new HubConnectionBuilder()
@@ -78,30 +78,30 @@ var connection = new HubConnectionBuilder()
 ```
 
 > [!NOTE]
-> Функция маркера доступа, вами вызывается перед **каждые** HTTP-запроса, сделанных SignalR. Если необходимо обновлять маркер, чтобы сохранить подключение active (так как он может истечь срок действия во время соединения), выполнять из этой функции и возвращают обновленный маркер.
+> Предоставляемая функция токена доступа вызывается перед **каждым** HTTP-запросом, сделанным SignalR. Если необходимо обновить токен, чтобы подключение было активно (так как оно может истечь во время подключения), сделайте это в этой функции и возвратите обновленный маркер.
 
-В стандартных веб-API в заголовке HTTP отправляются токены носителя. Тем не менее SignalR не удается задать эти заголовки в браузерах, при использовании некоторых транспортов. При использовании WebSockets и Server-Sent события, маркер передается как параметр строки запроса. Чтобы обеспечить это, на сервере, необходима дополнительная настройка:
+В стандартных веб-API токены носителя отправляются в заголовке HTTP. Однако SignalR не может установить эти заголовки в браузерах при использовании некоторых транспортов. При использовании соединений WebSockets и серверных событий токен передается как параметр строки запроса. Для поддержки этого на сервере требуется дополнительная настройка:
 
 [!code-csharp[Configure Server to accept access token from Query String](authn-and-authz/sample/Startup.cs?name=snippet)]
 
 ### <a name="cookies-vs-bearer-tokens"></a>Файлы cookie и токены носителя 
 
-Поскольку файлы cookie являются специфическими для браузеров, их отправкой из других типов клиентов повышает сложность системы, по сравнению с отправкой токены носителя. По этой причине файл cookie проверки подлинности не рекомендуется, если приложению достаточно только для проверки подлинности пользователей из клиента браузера. Токена проверки подлинности носителя — это рекомендуемый подход, при использовании клиентов, отличных от браузера клиента.
+Так как файлы cookie относятся только к браузерам, их отправка из других типов клиентов повышает сложность по сравнению с отправкой токенов носителя. По этой причине проверка подлинности файлов cookie не рекомендуется, если приложению требуется только проверка подлинности пользователей из клиента браузера. Проверка подлинности маркера носителя является рекомендуемым подходом при использовании клиентов, отличных от клиента браузера.
 
 ### <a name="windows-authentication"></a>Аутентификация Windows
 
-Если [проверки подлинности Windows](xref:security/authentication/windowsauth) настраивается в приложении, SignalR можно использовать его для обеспечения безопасности концентраторы. Тем не менее чтобы отправлять сообщения отдельным пользователям, необходимо добавить пользовательский поставщик идентификатора пользователя. Это потому, что система проверки подлинности Windows не предоставляет утверждение «Идентификатор имени», SignalR использует, чтобы определить имя пользователя.
+Если в приложении настроена [Проверка подлинности Windows](xref:security/authentication/windowsauth) , SignalR может использовать это удостоверение для защиты концентраторов. Однако для отправки сообщений отдельным пользователям необходимо добавить настраиваемого поставщика ИДЕНТИФИКАТОРов пользователей. Это обусловлено тем, что система проверки подлинности Windows не предоставляет утверждение "идентификатор имени", которое SignalR использует для определения имени пользователя.
 
-Добавьте новый класс, реализующий `IUserIdProvider` и получить одно из утверждений от пользователя для использования в качестве идентификатора. Например, чтобы использовать утверждение «Name» (это имя пользователя Windows в виде `[Domain]\[Username]`), создайте следующий класс:
+Добавьте новый класс, который реализует `IUserIdProvider` и извлекает одно из утверждений пользователя для использования в качестве идентификатора. Например, чтобы использовать утверждение "Name" (имя пользователя Windows в форме `[Domain]\[Username]`), создайте следующий класс:
 
 [!code-csharp[Name based provider](authn-and-authz/sample/nameuseridprovider.cs?name=NameUserIdProvider)]
 
-Вместо `ClaimTypes.Name`, можно использовать любое значение от `User` (такие как идентификатор Windows SID и т.д.).
+Вместо этого можно использовать любое значение `User` из (например, идентификатор SID Windows и т. д.). `ClaimTypes.Name`
 
 > [!NOTE]
-> Значение, выбираемый должно быть уникальным среди всех пользователей в вашей системе. В противном случае сообщение, предназначенное для одного пользователя могут оказаться собираетесь другого пользователя.
+> Выбранное значение должно быть уникальным для всех пользователей в системе. В противном случае сообщение, предназначенное для одного пользователя, может завершить работу другого пользователя.
 
-Зарегистрировать этот компонент в вашей `Startup.ConfigureServices` метод.
+Зарегистрируйте этот компонент в `Startup.ConfigureServices` методе.
 
 ```csharp
 public void ConfigureServices(IServiceCollection services)
@@ -113,7 +113,7 @@ public void ConfigureServices(IServiceCollection services)
 }
 ```
 
-В клиенте .NET необходимо включить проверку подлинности Windows, задав [UseDefaultCredentials](/dotnet/api/microsoft.aspnetcore.http.connections.client.httpconnectionoptions.usedefaultcredentials) свойство:
+В клиенте .NET проверка подлинности Windows должна быть включена путем установки свойства [уседефаулткредентиалс](/dotnet/api/microsoft.aspnetcore.http.connections.client.httpconnectionoptions.usedefaultcredentials) :
 
 ```csharp
 var connection = new HubConnectionBuilder()
@@ -124,49 +124,49 @@ var connection = new HubConnectionBuilder()
     .Build();
 ```
 
-Проверка подлинности Windows поддерживается только с помощью браузера клиента, при использовании Microsoft Internet Explorer или Microsoft Edge.
+Проверка подлинности Windows поддерживается только клиентом браузера при использовании Microsoft Internet Explorer или Microsoft погранично.
 
 ### <a name="use-claims-to-customize-identity-handling"></a>Использование утверждений для настройки обработки удостоверений
 
-Приложение, которое выполняет проверку подлинности пользователей можно получить идентификаторы пользователей SignalR из утверждения пользователей. Чтобы указать, каким образом SignalR создает идентификаторы пользователей, реализовать `IUserIdProvider` и зарегистрируйте реализацию.
+Приложение, выполняющее проверку подлинности пользователей, может наследовать идентификаторы пользователей SignalR от утверждений пользователей. Чтобы указать, как SignalR создает идентификаторы пользователей, `IUserIdProvider` реализуйте и зарегистрируйте реализацию.
 
-В примере кода показано, как использовать утверждения для выбора адреса электронной почты пользователя в качестве идентифицирующего свойство. 
+В примере кода показано использование утверждений для выбора адреса электронной почты пользователя в качестве идентифицирующего свойства. 
 
 > [!NOTE]
-> Значение, выбираемый должно быть уникальным среди всех пользователей в вашей системе. В противном случае сообщение, предназначенное для одного пользователя могут оказаться собираетесь другого пользователя.
+> Выбранное значение должно быть уникальным для всех пользователей в системе. В противном случае сообщение, предназначенное для одного пользователя, может завершить работу другого пользователя.
 
 [!code-csharp[Email provider](authn-and-authz/sample/EmailBasedUserIdProvider.cs?name=EmailBasedUserIdProvider)]
 
-Регистрация учетной записи добавляет утверждение с типом `ClaimsTypes.Email` для базы данных удостоверений ASP.NET.
+При регистрации учетной записи в базу данных `ClaimsTypes.Email` удостоверений ASP.NET добавляется утверждение с типом.
 
 [!code-csharp[Adding the email to the ASP.NET identity claims](authn-and-authz/sample/pages/account/Register.cshtml.cs?name=AddEmailClaim)]
 
-Зарегистрировать этот компонент в вашей `Startup.ConfigureServices`.
+Зарегистрируйте этот компонент в `Startup.ConfigureServices`.
 
 ```csharp
 services.AddSingleton<IUserIdProvider, EmailBasedUserIdProvider>();
 ```
 
-## <a name="authorize-users-to-access-hubs-and-hub-methods"></a>Авторизация пользователей для доступа к концентраторам и методам концентраторов
+## <a name="authorize-users-to-access-hubs-and-hub-methods"></a>Авторизация пользователей для доступа к концентраторам и методам концентратора
 
-По умолчанию все методы в концентраторе, могут вызываться пользователем, не прошедшие проверку подлинности. Чтобы требовать проверку подлинности, применить [Authorize](/dotnet/api/microsoft.aspnetcore.authorization.authorizeattribute) атрибут к центру:
+По умолчанию все методы в концентраторе могут вызываться пользователем, не прошедшим проверку подлинности. Чтобы включить проверку подлинности, примените к концентратору атрибут [авторизации](/dotnet/api/microsoft.aspnetcore.authorization.authorizeattribute) :
 
 [!code-csharp[Restrict a hub to only authorized users](authn-and-authz/sample/Hubs/ChatHub.cs?range=8-10,32)]
 
-Можно использовать конструктор аргументов и свойств `[Authorize]` атрибута для ограничения доступа к только пользователям, которые соответствуют определенной [политик авторизации](xref:security/authorization/policies). Например, если у вас есть пользовательской политики авторизации вызывается `MyAuthorizationPolicy` убедитесь, что только пользователи, которые соответствуют этой политике можно получить доступ к концентратора, используя следующий код:
+Можно использовать аргументы конструктора и свойства `[Authorize]` атрибута, чтобы ограничить доступ только тем пользователям, которые соответствуют определенным политикам [авторизации](xref:security/authorization/policies). Например, при наличии пользовательской политики `MyAuthorizationPolicy` авторизации можно убедиться, что только пользователи, соответствующие этой политике, могут получить доступ к концентратору с помощью следующего кода:
 
 ```csharp
 [Authorize("MyAuthorizationPolicy")]
-public class ChatHub: Hub
+public class ChatHub : Hub
 {
 }
 ```
 
-Иной концентратор методы могут иметь `[Authorize]` также применен атрибут. Если текущий пользователь не соответствует политике, применяемый к методу, вызывающему объекту возвращается ошибка:
+Отдельные методы концентратора могут `[Authorize]` также применять атрибут. Если текущий пользователь не соответствует политике, примененной к методу, вызывающему объекту будет возвращена ошибка.
 
 ```csharp
 [Authorize]
-public class ChatHub: Hub
+public class ChatHub : Hub
 {
     public async Task Send(string message)
     {
@@ -181,6 +181,81 @@ public class ChatHub: Hub
 }
 ```
 
+::: moniker range=">= aspnetcore-3.0"
+
+### <a name="use-authorization-handlers-to-customize-hub-method-authorization"></a>Использование обработчиков авторизации для настройки авторизации метода концентратора
+
+SignalR предоставляет обработчику авторизации пользовательский ресурс, когда методу концентратора требуется авторизация. Ресурс является экземпляром `HubInvocationContext`. `HubInvocationContext` Включает,имявызываемогометодаконцентратораиаргументы`HubCallerContext`для метода концентратора.
+
+Рассмотрим пример комнаты чатов, позволяющей нескольким организациям входить в систему через Azure Active Directory. Любой пользователь, у которого есть учетная запись Майкрософт, может войти в чат, но только члены владеющей Организации должны иметь возможность запрещать пользователям или просматривать историю разговора пользователей. Кроме того, может потребоваться ограничить некоторые функции от определенных пользователей. Использование обновленных функций в ASP.NET Core 3,0 — это вполне возможно. Обратите внимание `DomainRestrictedRequirement` , что служит в `IAuthorizationRequirement`качестве пользовательского. Теперь, `HubInvocationContext` когда передается параметр ресурса, внутренняя логика может проверить контекст, в котором вызывается концентратор, и принимать решения о том, чтобы разрешить пользователю выполнять отдельные методы концентратора.
+
+```csharp
+[Authorize]
+public class ChatHub : Hub
+{
+    public void SendMessage(string message)
+    {
+    }
+
+    [Authorize("DomainRestricted")]
+    public void BanUser(string username)
+    {
+    }
+
+    [Authorize("DomainRestricted")]
+    public void ViewUserHistory(string username)
+    {
+    }
+}
+
+public class DomainRestrictedRequirement : 
+    AuthorizationHandler<DomainRestrictedRequirement, HubInvocationContext>, 
+    IAuthorizationRequirement
+{
+    protected override Task HandleRequirementAsync(AuthorizationHandlerContext context,
+        DomainRestrictedRequirement requirement, 
+        HubInvocationContext resource)
+    {
+        if (IsUserAllowedToDoThis(resource.HubMethodName, context.User.Identity.Name) && 
+            context.User.Identity.Name.EndsWith("@microsoft.com"))
+        {
+            context.Succeed(requirement);
+        }
+        return Task.CompletedTask;
+    }
+
+    private bool IsUserAllowedToDoThis(string hubMethodName,
+        string currentUsername)
+    {
+        return !(currentUsername.Equals("asdf42@microsoft.com") && 
+            hubMethodName.Equals("banUser", StringComparison.OrdinalIgnoreCase));
+    }
+}
+```
+
+В `Startup.ConfigureServices`добавьте новую политику, предоставив настраиваемое `DomainRestrictedRequirement` требование в качестве параметра для создания `DomainRestricted` политики.
+
+```csharp
+public void ConfigureServices(IServiceCollection services)
+{
+    // ... other services ...
+
+    services
+        .AddAuthorization(options =>
+        {
+            options.AddPolicy("DomainRestricted", policy =>
+            {
+                policy.Requirements.Add(new DomainRestrictedRequirement());
+            });
+        });
+}
+```
+
+В предыдущем примере `DomainRestrictedRequirement` класс является `IAuthorizationRequirement` и, и его собственным `AuthorizationHandler` для этого требования. Можно разделить эти два компонента на отдельные классы для разделения проблем. Преимуществом этого примера является отсутствие необходимости внедрять `AuthorizationHandler` во время запуска, так как требование и обработчик одинаковы.
+
+::: moniker-end
+
 ## <a name="additional-resources"></a>Дополнительные ресурсы
 
-* [Маркер проверки подлинности носителя в ASP.NET Core](https://blogs.msdn.microsoft.com/webdev/2016/10/27/bearer-token-authentication-in-asp-net-core/)
+* [Проверка подлинности токена носителя в ASP.NET Core](https://blogs.msdn.microsoft.com/webdev/2016/10/27/bearer-token-authentication-in-asp-net-core/)
+* [Авторизация на основе ресурсов](xref:security/authorization/resourcebased)
