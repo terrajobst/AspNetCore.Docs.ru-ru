@@ -1,30 +1,30 @@
 ---
 title: Проверка подлинности и авторизация в ASP.NET Core SignalR
 author: bradygaster
-description: Узнайте, как использовать проверку подлинности и авторизации в ASP.NET Core SignalR.
+description: Узнайте, как использовать проверку подлинности и авторизацию в ASP.NET Core SignalR.
 monikerRange: '>= aspnetcore-2.1'
 ms.author: bradyg
 ms.custom: mvc
-ms.date: 05/09/2019
+ms.date: 07/15/2019
 uid: signalr/authn-and-authz
-ms.openlocfilehash: e8f9dc48be780fb91bdec6ea4d579f5e4f16197b
-ms.sourcegitcommit: 3376f224b47a89acf329b2d2f9260046a372f924
+ms.openlocfilehash: e7e7a9fd537ba89b64c15594652a290357a00038
+ms.sourcegitcommit: f30b18442ed12831c7e86b0db249183ccd749f59
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 05/10/2019
-ms.locfileid: "65516943"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68412541"
 ---
-# <a name="authentication-and-authorization-in-aspnet-core-signalr"></a><span data-ttu-id="7bb77-103">Проверка подлинности и авторизация в ASP.NET Core SignalR</span><span class="sxs-lookup"><span data-stu-id="7bb77-103">Authentication and authorization in ASP.NET Core SignalR</span></span>
+# <a name="authentication-and-authorization-in-aspnet-core-signalr"></a><span data-ttu-id="a27c6-103">Проверка подлинности и авторизация в ASP.NET Core SignalR</span><span class="sxs-lookup"><span data-stu-id="a27c6-103">Authentication and authorization in ASP.NET Core SignalR</span></span>
 
-<span data-ttu-id="7bb77-104">По [Andrew Stanton медсестра](https://twitter.com/anurse)</span><span class="sxs-lookup"><span data-stu-id="7bb77-104">By [Andrew Stanton-Nurse](https://twitter.com/anurse)</span></span>
+<span data-ttu-id="a27c6-104">[Эндрю Стантон-медперсонала](https://twitter.com/anurse)</span><span class="sxs-lookup"><span data-stu-id="a27c6-104">By [Andrew Stanton-Nurse](https://twitter.com/anurse)</span></span>
 
-<span data-ttu-id="7bb77-105">[Просмотреть или скачать образец кода](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/signalr/authn-and-authz/sample/) [(способ загрузки)](xref:index#how-to-download-a-sample)</span><span class="sxs-lookup"><span data-stu-id="7bb77-105">[View or download sample code](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/signalr/authn-and-authz/sample/) [(how to download)](xref:index#how-to-download-a-sample)</span></span>
+<span data-ttu-id="a27c6-105">[Просмотр или скачивание образца кода](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/signalr/authn-and-authz/sample/) [(как скачать)](xref:index#how-to-download-a-sample)</span><span class="sxs-lookup"><span data-stu-id="a27c6-105">[View or download sample code](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/signalr/authn-and-authz/sample/) [(how to download)](xref:index#how-to-download-a-sample)</span></span>
 
-## <a name="authenticate-users-connecting-to-a-signalr-hub"></a><span data-ttu-id="7bb77-106">Проверка подлинности пользователей, подключающихся к концентратору SignalR</span><span class="sxs-lookup"><span data-stu-id="7bb77-106">Authenticate users connecting to a SignalR hub</span></span>
+## <a name="authenticate-users-connecting-to-a-signalr-hub"></a><span data-ttu-id="a27c6-106">Проверка подлинности пользователей, подключающихся к концентратору SignalR</span><span class="sxs-lookup"><span data-stu-id="a27c6-106">Authenticate users connecting to a SignalR hub</span></span>
 
-<span data-ttu-id="7bb77-107">SignalR может использоваться с [проверки подлинности ASP.NET Core](xref:security/authentication/identity) чтобы связать пользователя с каждым подключением.</span><span class="sxs-lookup"><span data-stu-id="7bb77-107">SignalR can be used with [ASP.NET Core authentication](xref:security/authentication/identity) to associate a user with each connection.</span></span> <span data-ttu-id="7bb77-108">В центре данных для проверки подлинности может осуществляться из [ `HubConnectionContext.User` ](/dotnet/api/microsoft.aspnetcore.signalr.hubconnectioncontext.user) свойство.</span><span class="sxs-lookup"><span data-stu-id="7bb77-108">In a hub, authentication data can be accessed from the [`HubConnectionContext.User`](/dotnet/api/microsoft.aspnetcore.signalr.hubconnectioncontext.user) property.</span></span> <span data-ttu-id="7bb77-109">Проверка подлинности позволяет вызывать методы для всех соединений, связанный с пользователем в центре (см. в разделе [управления пользователями и группами в SignalR](xref:signalr/groups) Дополнительные сведения).</span><span class="sxs-lookup"><span data-stu-id="7bb77-109">Authentication allows the hub to call methods on all connections associated with a user (See [Manage users and groups in SignalR](xref:signalr/groups) for more information).</span></span> <span data-ttu-id="7bb77-110">Несколько соединений могут быть связаны с одним пользователем.</span><span class="sxs-lookup"><span data-stu-id="7bb77-110">Multiple connections may be associated with a single user.</span></span>
+<span data-ttu-id="a27c6-107">SignalR можно использовать с проверкой [подлинности ASP.NET Core](xref:security/authentication/identity) , чтобы связать пользователя с каждым подключением.</span><span class="sxs-lookup"><span data-stu-id="a27c6-107">SignalR can be used with [ASP.NET Core authentication](xref:security/authentication/identity) to associate a user with each connection.</span></span> <span data-ttu-id="a27c6-108">В центре данные проверки подлинности можно получить из [`HubConnectionContext.User`](/dotnet/api/microsoft.aspnetcore.signalr.hubconnectioncontext.user) свойства.</span><span class="sxs-lookup"><span data-stu-id="a27c6-108">In a hub, authentication data can be accessed from the [`HubConnectionContext.User`](/dotnet/api/microsoft.aspnetcore.signalr.hubconnectioncontext.user) property.</span></span> <span data-ttu-id="a27c6-109">Проверка подлинности позволяет концентратору вызывать методы для всех подключений, связанных с пользователем (Дополнительные сведения см. [в разделе Управление пользователями и группами в SignalR](xref:signalr/groups) ).</span><span class="sxs-lookup"><span data-stu-id="a27c6-109">Authentication allows the hub to call methods on all connections associated with a user (See [Manage users and groups in SignalR](xref:signalr/groups) for more information).</span></span> <span data-ttu-id="a27c6-110">Несколько подключений могут быть связаны с одним пользователем.</span><span class="sxs-lookup"><span data-stu-id="a27c6-110">Multiple connections may be associated with a single user.</span></span>
 
-<span data-ttu-id="7bb77-111">Ниже приведен пример `Startup.Configure` которого использует проверку подлинности SignalR и ASP.NET Core:</span><span class="sxs-lookup"><span data-stu-id="7bb77-111">The following is an example of `Startup.Configure` which uses SignalR and ASP.NET Core authentication:</span></span>
+<span data-ttu-id="a27c6-111">Ниже приведен пример `Startup.Configure` использования SignalR и ASP.NET Core проверки подлинности.</span><span class="sxs-lookup"><span data-stu-id="a27c6-111">The following is an example of `Startup.Configure` which uses SignalR and ASP.NET Core authentication:</span></span>
 
 ```csharp
 public void Configure(IApplicationBuilder app)
@@ -48,25 +48,25 @@ public void Configure(IApplicationBuilder app)
 ```
 
 > [!NOTE]
-> <span data-ttu-id="7bb77-112">Порядок, в котором вам зарегистрировать промежуточного по проверки подлинности SignalR и ASP.NET Core имеет значение.</span><span class="sxs-lookup"><span data-stu-id="7bb77-112">The order in which you register the SignalR and ASP.NET Core authentication middleware matters.</span></span> <span data-ttu-id="7bb77-113">Всегда вызывайте метод `UseAuthentication` перед `UseSignalR` таким образом, SignalR пользователя `HttpContext`.</span><span class="sxs-lookup"><span data-stu-id="7bb77-113">Always call `UseAuthentication` before `UseSignalR` so that SignalR has a user on the `HttpContext`.</span></span>
+> <span data-ttu-id="a27c6-112">Порядок регистрации SignalR и ASP.NET Core по промежуточного слоя проверки подлинности имеет значение.</span><span class="sxs-lookup"><span data-stu-id="a27c6-112">The order in which you register the SignalR and ASP.NET Core authentication middleware matters.</span></span> <span data-ttu-id="a27c6-113">Всегда вызывайте `UseSignalR` метод `UseAuthentication` перед тем, чтобы `HttpContext`у SignalR был пользователь.</span><span class="sxs-lookup"><span data-stu-id="a27c6-113">Always call `UseAuthentication` before `UseSignalR` so that SignalR has a user on the `HttpContext`.</span></span>
 
-### <a name="cookie-authentication"></a><span data-ttu-id="7bb77-114">Файл cookie проверки подлинности</span><span class="sxs-lookup"><span data-stu-id="7bb77-114">Cookie authentication</span></span>
+### <a name="cookie-authentication"></a><span data-ttu-id="a27c6-114">Проверка подлинности файлов cookie</span><span class="sxs-lookup"><span data-stu-id="a27c6-114">Cookie authentication</span></span>
 
-<span data-ttu-id="7bb77-115">В приложении на основе веб-обозревателя файл cookie проверки подлинности позволяет свои существующие учетные данные пользователя, автоматически обмениваться с подключениями SignalR.</span><span class="sxs-lookup"><span data-stu-id="7bb77-115">In a browser-based app, cookie authentication allows your existing user credentials to automatically flow to SignalR connections.</span></span> <span data-ttu-id="7bb77-116">При использовании клиентского браузера, без дополнительных настроек не требуется.</span><span class="sxs-lookup"><span data-stu-id="7bb77-116">When using the browser client, no additional configuration is needed.</span></span> <span data-ttu-id="7bb77-117">Если пользователь вошел в приложение, подключении SignalR автоматически наследует этой проверки подлинности.</span><span class="sxs-lookup"><span data-stu-id="7bb77-117">If the user is logged in to your app, the SignalR connection automatically inherits this authentication.</span></span>
+<span data-ttu-id="a27c6-115">В приложении на основе браузера проверка подлинности cookie позволяет существующим учетным данным пользователя автоматически передаваться на подключения SignalR.</span><span class="sxs-lookup"><span data-stu-id="a27c6-115">In a browser-based app, cookie authentication allows your existing user credentials to automatically flow to SignalR connections.</span></span> <span data-ttu-id="a27c6-116">При использовании клиента браузера дополнительная настройка не требуется.</span><span class="sxs-lookup"><span data-stu-id="a27c6-116">When using the browser client, no additional configuration is needed.</span></span> <span data-ttu-id="a27c6-117">Если пользователь вошел в приложение, подключение SignalR автоматически наследует эту проверку подлинности.</span><span class="sxs-lookup"><span data-stu-id="a27c6-117">If the user is logged in to your app, the SignalR connection automatically inherits this authentication.</span></span>
 
-<span data-ttu-id="7bb77-118">Файлы cookie представляют собой обозревателем позволяют отправлять маркеры доступа, но их можно отправлять клиентов без браузера.</span><span class="sxs-lookup"><span data-stu-id="7bb77-118">Cookies are a browser-specific way to send access tokens, but non-browser clients can send them.</span></span> <span data-ttu-id="7bb77-119">При использовании [клиента .NET](xref:signalr/dotnet-client), `Cookies` свойство можно задать в `.WithUrl` вызов, чтобы предоставить файл cookie.</span><span class="sxs-lookup"><span data-stu-id="7bb77-119">When using the [.NET Client](xref:signalr/dotnet-client), the `Cookies` property can be configured in the `.WithUrl` call in order to provide a cookie.</span></span> <span data-ttu-id="7bb77-120">Тем не менее с использованием файла cookie проверки подлинности из клиента .NET требуется приложению предоставлять API для обмена данными проверки подлинности файла cookie.</span><span class="sxs-lookup"><span data-stu-id="7bb77-120">However, using cookie authentication from the .NET Client requires the app to provide an API to exchange authentication data for a cookie.</span></span>
+<span data-ttu-id="a27c6-118">Файлы cookie — это ориентированный на браузер способ отправки маркеров доступа, но клиенты, не являющиеся браузерами, могут их отправить.</span><span class="sxs-lookup"><span data-stu-id="a27c6-118">Cookies are a browser-specific way to send access tokens, but non-browser clients can send them.</span></span> <span data-ttu-id="a27c6-119">При использовании [клиента .NET](xref:signalr/dotnet-client) `Cookies` свойство можно настроить в `.WithUrl` вызове, чтобы предоставить файл cookie.</span><span class="sxs-lookup"><span data-stu-id="a27c6-119">When using the [.NET Client](xref:signalr/dotnet-client), the `Cookies` property can be configured in the `.WithUrl` call in order to provide a cookie.</span></span> <span data-ttu-id="a27c6-120">Однако для использования проверки подлинности файлов cookie из клиента .NET приложение должно предоставить API для обмена данными проверки подлинности для файла cookie.</span><span class="sxs-lookup"><span data-stu-id="a27c6-120">However, using cookie authentication from the .NET Client requires the app to provide an API to exchange authentication data for a cookie.</span></span>
 
-### <a name="bearer-token-authentication"></a><span data-ttu-id="7bb77-121">Маркер проверки подлинности носителя</span><span class="sxs-lookup"><span data-stu-id="7bb77-121">Bearer token authentication</span></span>
+### <a name="bearer-token-authentication"></a><span data-ttu-id="a27c6-121">Проверка подлинности токена носителя</span><span class="sxs-lookup"><span data-stu-id="a27c6-121">Bearer token authentication</span></span>
 
-<span data-ttu-id="7bb77-122">Клиент может предоставить маркер доступа, вместо того чтобы использовать файл cookie.</span><span class="sxs-lookup"><span data-stu-id="7bb77-122">The client can provide an access token instead of using a cookie.</span></span> <span data-ttu-id="7bb77-123">Сервер проверяет маркер и использует его для идентификации пользователя.</span><span class="sxs-lookup"><span data-stu-id="7bb77-123">The server validates the token and uses it to identify the user.</span></span> <span data-ttu-id="7bb77-124">Эта проверка выполняется только в том случае, если соединение установлено.</span><span class="sxs-lookup"><span data-stu-id="7bb77-124">This validation is done only when the connection is established.</span></span> <span data-ttu-id="7bb77-125">В течение жизненного цикла соединения сервер не повторную сверку автоматически для проверки маркера.</span><span class="sxs-lookup"><span data-stu-id="7bb77-125">During the life of the connection, the server doesn't automatically revalidate to check for token revocation.</span></span>
+<span data-ttu-id="a27c6-122">Клиент может предоставить маркер доступа вместо использования файла cookie.</span><span class="sxs-lookup"><span data-stu-id="a27c6-122">The client can provide an access token instead of using a cookie.</span></span> <span data-ttu-id="a27c6-123">Сервер проверяет маркер и использует его для обнаружения пользователя.</span><span class="sxs-lookup"><span data-stu-id="a27c6-123">The server validates the token and uses it to identify the user.</span></span> <span data-ttu-id="a27c6-124">Эта проверка выполняется только при установленном соединении.</span><span class="sxs-lookup"><span data-stu-id="a27c6-124">This validation is done only when the connection is established.</span></span> <span data-ttu-id="a27c6-125">Во время жизни соединения сервер не выполняет автоматическую повторную проверку, чтобы проверить отзыв маркера.</span><span class="sxs-lookup"><span data-stu-id="a27c6-125">During the life of the connection, the server doesn't automatically revalidate to check for token revocation.</span></span>
 
-<span data-ttu-id="7bb77-126">На сервере проверки подлинности маркера носителя настраивается с помощью [по промежуточного слоя носителя JWT](/dotnet/api/microsoft.extensions.dependencyinjection.jwtbearerextensions.addjwtbearer).</span><span class="sxs-lookup"><span data-stu-id="7bb77-126">On the server, bearer token authentication is configured using the [JWT Bearer middleware](/dotnet/api/microsoft.extensions.dependencyinjection.jwtbearerextensions.addjwtbearer).</span></span>
+<span data-ttu-id="a27c6-126">На сервере проверка подлинности токена носителя настраивается с помощью по [промежуточного слоя JWT Bearer](/dotnet/api/microsoft.extensions.dependencyinjection.jwtbearerextensions.addjwtbearer).</span><span class="sxs-lookup"><span data-stu-id="a27c6-126">On the server, bearer token authentication is configured using the [JWT Bearer middleware](/dotnet/api/microsoft.extensions.dependencyinjection.jwtbearerextensions.addjwtbearer).</span></span>
 
-<span data-ttu-id="7bb77-127">В клиенте JavaScript, токен можно указать с помощью [accessTokenFactory](xref:signalr/configuration#configure-bearer-authentication) параметр.</span><span class="sxs-lookup"><span data-stu-id="7bb77-127">In the JavaScript client, the token can be provided using the [accessTokenFactory](xref:signalr/configuration#configure-bearer-authentication) option.</span></span>
+<span data-ttu-id="a27c6-127">В клиенте JavaScript маркер можно указать с помощью параметра [акцесстокенфактори](xref:signalr/configuration#configure-bearer-authentication) .</span><span class="sxs-lookup"><span data-stu-id="a27c6-127">In the JavaScript client, the token can be provided using the [accessTokenFactory](xref:signalr/configuration#configure-bearer-authentication) option.</span></span>
 
 [!code-typescript[Configure Access Token](authn-and-authz/sample/wwwroot/js/chat.ts?range=63-65)]
 
-<span data-ttu-id="7bb77-128">В клиенте .NET, отсутствует, аналогичное [AccessTokenProvider](xref:signalr/configuration#configure-bearer-authentication) свойство, которое может использоваться для настройки маркера:</span><span class="sxs-lookup"><span data-stu-id="7bb77-128">In the .NET client, there is a similar [AccessTokenProvider](xref:signalr/configuration#configure-bearer-authentication) property that can be used to configure the token:</span></span>
+<span data-ttu-id="a27c6-128">В клиенте .NET существует аналогичное свойство [акцесстокенпровидер](xref:signalr/configuration#configure-bearer-authentication) , которое можно использовать для настройки маркера:</span><span class="sxs-lookup"><span data-stu-id="a27c6-128">In the .NET client, there is a similar [AccessTokenProvider](xref:signalr/configuration#configure-bearer-authentication) property that can be used to configure the token:</span></span>
 
 ```csharp
 var connection = new HubConnectionBuilder()
@@ -78,30 +78,30 @@ var connection = new HubConnectionBuilder()
 ```
 
 > [!NOTE]
-> <span data-ttu-id="7bb77-129">Функция маркера доступа, вами вызывается перед **каждые** HTTP-запроса, сделанных SignalR.</span><span class="sxs-lookup"><span data-stu-id="7bb77-129">The access token function you provide is called before **every** HTTP request made by SignalR.</span></span> <span data-ttu-id="7bb77-130">Если необходимо обновлять маркер, чтобы сохранить подключение active (так как он может истечь срок действия во время соединения), выполнять из этой функции и возвращают обновленный маркер.</span><span class="sxs-lookup"><span data-stu-id="7bb77-130">If you need to renew the token in order to keep the connection active (because it may expire during the connection), do so from within this function and return the updated token.</span></span>
+> <span data-ttu-id="a27c6-129">Предоставляемая функция токена доступа вызывается перед **каждым** HTTP-запросом, сделанным SignalR.</span><span class="sxs-lookup"><span data-stu-id="a27c6-129">The access token function you provide is called before **every** HTTP request made by SignalR.</span></span> <span data-ttu-id="a27c6-130">Если необходимо обновить токен, чтобы подключение было активно (так как оно может истечь во время подключения), сделайте это в этой функции и возвратите обновленный маркер.</span><span class="sxs-lookup"><span data-stu-id="a27c6-130">If you need to renew the token in order to keep the connection active (because it may expire during the connection), do so from within this function and return the updated token.</span></span>
 
-<span data-ttu-id="7bb77-131">В стандартных веб-API в заголовке HTTP отправляются токены носителя.</span><span class="sxs-lookup"><span data-stu-id="7bb77-131">In standard web APIs, bearer tokens are sent in an HTTP header.</span></span> <span data-ttu-id="7bb77-132">Тем не менее SignalR не удается задать эти заголовки в браузерах, при использовании некоторых транспортов.</span><span class="sxs-lookup"><span data-stu-id="7bb77-132">However, SignalR is unable to set these headers in browsers when using some transports.</span></span> <span data-ttu-id="7bb77-133">При использовании WebSockets и Server-Sent события, маркер передается как параметр строки запроса.</span><span class="sxs-lookup"><span data-stu-id="7bb77-133">When using WebSockets and Server-Sent Events, the token is transmitted as a query string parameter.</span></span> <span data-ttu-id="7bb77-134">Чтобы обеспечить это, на сервере, необходима дополнительная настройка:</span><span class="sxs-lookup"><span data-stu-id="7bb77-134">In order to support this on the server, additional configuration is required:</span></span>
+<span data-ttu-id="a27c6-131">В стандартных веб-API токены носителя отправляются в заголовке HTTP.</span><span class="sxs-lookup"><span data-stu-id="a27c6-131">In standard web APIs, bearer tokens are sent in an HTTP header.</span></span> <span data-ttu-id="a27c6-132">Однако SignalR не может установить эти заголовки в браузерах при использовании некоторых транспортов.</span><span class="sxs-lookup"><span data-stu-id="a27c6-132">However, SignalR is unable to set these headers in browsers when using some transports.</span></span> <span data-ttu-id="a27c6-133">При использовании соединений WebSockets и серверных событий токен передается как параметр строки запроса.</span><span class="sxs-lookup"><span data-stu-id="a27c6-133">When using WebSockets and Server-Sent Events, the token is transmitted as a query string parameter.</span></span> <span data-ttu-id="a27c6-134">Для поддержки этого на сервере требуется дополнительная настройка:</span><span class="sxs-lookup"><span data-stu-id="a27c6-134">In order to support this on the server, additional configuration is required:</span></span>
 
 [!code-csharp[Configure Server to accept access token from Query String](authn-and-authz/sample/Startup.cs?name=snippet)]
 
-### <a name="cookies-vs-bearer-tokens"></a><span data-ttu-id="7bb77-135">Файлы cookie и токены носителя</span><span class="sxs-lookup"><span data-stu-id="7bb77-135">Cookies vs. bearer tokens</span></span> 
+### <a name="cookies-vs-bearer-tokens"></a><span data-ttu-id="a27c6-135">Файлы cookie и токены носителя</span><span class="sxs-lookup"><span data-stu-id="a27c6-135">Cookies vs. bearer tokens</span></span> 
 
-<span data-ttu-id="7bb77-136">Поскольку файлы cookie являются специфическими для браузеров, их отправкой из других типов клиентов повышает сложность системы, по сравнению с отправкой токены носителя.</span><span class="sxs-lookup"><span data-stu-id="7bb77-136">Because cookies are specific to browsers, sending them from other kinds of clients adds complexity compared to sending bearer tokens.</span></span> <span data-ttu-id="7bb77-137">По этой причине файл cookie проверки подлинности не рекомендуется, если приложению достаточно только для проверки подлинности пользователей из клиента браузера.</span><span class="sxs-lookup"><span data-stu-id="7bb77-137">For this reason, cookie authentication isn't recommended unless the app only needs to authenticate users from the browser client.</span></span> <span data-ttu-id="7bb77-138">Токена проверки подлинности носителя — это рекомендуемый подход, при использовании клиентов, отличных от браузера клиента.</span><span class="sxs-lookup"><span data-stu-id="7bb77-138">Bearer token authentication is the recommended approach when using clients other than the browser client.</span></span>
+<span data-ttu-id="a27c6-136">Так как файлы cookie относятся только к браузерам, их отправка из других типов клиентов повышает сложность по сравнению с отправкой токенов носителя.</span><span class="sxs-lookup"><span data-stu-id="a27c6-136">Because cookies are specific to browsers, sending them from other kinds of clients adds complexity compared to sending bearer tokens.</span></span> <span data-ttu-id="a27c6-137">По этой причине проверка подлинности файлов cookie не рекомендуется, если приложению требуется только проверка подлинности пользователей из клиента браузера.</span><span class="sxs-lookup"><span data-stu-id="a27c6-137">For this reason, cookie authentication isn't recommended unless the app only needs to authenticate users from the browser client.</span></span> <span data-ttu-id="a27c6-138">Проверка подлинности маркера носителя является рекомендуемым подходом при использовании клиентов, отличных от клиента браузера.</span><span class="sxs-lookup"><span data-stu-id="a27c6-138">Bearer token authentication is the recommended approach when using clients other than the browser client.</span></span>
 
-### <a name="windows-authentication"></a><span data-ttu-id="7bb77-139">Аутентификация Windows</span><span class="sxs-lookup"><span data-stu-id="7bb77-139">Windows authentication</span></span>
+### <a name="windows-authentication"></a><span data-ttu-id="a27c6-139">Аутентификация Windows</span><span class="sxs-lookup"><span data-stu-id="a27c6-139">Windows authentication</span></span>
 
-<span data-ttu-id="7bb77-140">Если [проверки подлинности Windows](xref:security/authentication/windowsauth) настраивается в приложении, SignalR можно использовать его для обеспечения безопасности концентраторы.</span><span class="sxs-lookup"><span data-stu-id="7bb77-140">If [Windows authentication](xref:security/authentication/windowsauth) is configured in your app, SignalR can use that identity to secure hubs.</span></span> <span data-ttu-id="7bb77-141">Тем не менее чтобы отправлять сообщения отдельным пользователям, необходимо добавить пользовательский поставщик идентификатора пользователя.</span><span class="sxs-lookup"><span data-stu-id="7bb77-141">However, in order to send messages to individual users, you need to add a custom User ID provider.</span></span> <span data-ttu-id="7bb77-142">Это потому, что система проверки подлинности Windows не предоставляет утверждение «Идентификатор имени», SignalR использует, чтобы определить имя пользователя.</span><span class="sxs-lookup"><span data-stu-id="7bb77-142">This is because the Windows authentication system doesn't provide the "Name Identifier" claim that SignalR uses to determine the user name.</span></span>
+<span data-ttu-id="a27c6-140">Если в приложении настроена [Проверка подлинности Windows](xref:security/authentication/windowsauth) , SignalR может использовать это удостоверение для защиты концентраторов.</span><span class="sxs-lookup"><span data-stu-id="a27c6-140">If [Windows authentication](xref:security/authentication/windowsauth) is configured in your app, SignalR can use that identity to secure hubs.</span></span> <span data-ttu-id="a27c6-141">Однако для отправки сообщений отдельным пользователям необходимо добавить настраиваемого поставщика ИДЕНТИФИКАТОРов пользователей.</span><span class="sxs-lookup"><span data-stu-id="a27c6-141">However, in order to send messages to individual users, you need to add a custom User ID provider.</span></span> <span data-ttu-id="a27c6-142">Это обусловлено тем, что система проверки подлинности Windows не предоставляет утверждение "идентификатор имени", которое SignalR использует для определения имени пользователя.</span><span class="sxs-lookup"><span data-stu-id="a27c6-142">This is because the Windows authentication system doesn't provide the "Name Identifier" claim that SignalR uses to determine the user name.</span></span>
 
-<span data-ttu-id="7bb77-143">Добавьте новый класс, реализующий `IUserIdProvider` и получить одно из утверждений от пользователя для использования в качестве идентификатора.</span><span class="sxs-lookup"><span data-stu-id="7bb77-143">Add a new class that implements `IUserIdProvider` and retrieve one of the claims from the user to use as the identifier.</span></span> <span data-ttu-id="7bb77-144">Например, чтобы использовать утверждение «Name» (это имя пользователя Windows в виде `[Domain]\[Username]`), создайте следующий класс:</span><span class="sxs-lookup"><span data-stu-id="7bb77-144">For example, to use the "Name" claim (which is the Windows username in the form `[Domain]\[Username]`), create the following class:</span></span>
+<span data-ttu-id="a27c6-143">Добавьте новый класс, который реализует `IUserIdProvider` и извлекает одно из утверждений пользователя для использования в качестве идентификатора.</span><span class="sxs-lookup"><span data-stu-id="a27c6-143">Add a new class that implements `IUserIdProvider` and retrieve one of the claims from the user to use as the identifier.</span></span> <span data-ttu-id="a27c6-144">Например, чтобы использовать утверждение "Name" (имя пользователя Windows в форме `[Domain]\[Username]`), создайте следующий класс:</span><span class="sxs-lookup"><span data-stu-id="a27c6-144">For example, to use the "Name" claim (which is the Windows username in the form `[Domain]\[Username]`), create the following class:</span></span>
 
 [!code-csharp[Name based provider](authn-and-authz/sample/nameuseridprovider.cs?name=NameUserIdProvider)]
 
-<span data-ttu-id="7bb77-145">Вместо `ClaimTypes.Name`, можно использовать любое значение от `User` (такие как идентификатор Windows SID и т.д.).</span><span class="sxs-lookup"><span data-stu-id="7bb77-145">Rather than `ClaimTypes.Name`, you can use any value from the `User` (such as the Windows SID identifier, etc.).</span></span>
+<span data-ttu-id="a27c6-145">Вместо этого можно использовать любое значение `User` из (например, идентификатор SID Windows и т. д.). `ClaimTypes.Name`</span><span class="sxs-lookup"><span data-stu-id="a27c6-145">Rather than `ClaimTypes.Name`, you can use any value from the `User` (such as the Windows SID identifier, etc.).</span></span>
 
 > [!NOTE]
-> <span data-ttu-id="7bb77-146">Значение, выбираемый должно быть уникальным среди всех пользователей в вашей системе.</span><span class="sxs-lookup"><span data-stu-id="7bb77-146">The value you choose must be unique among all the users in your system.</span></span> <span data-ttu-id="7bb77-147">В противном случае сообщение, предназначенное для одного пользователя могут оказаться собираетесь другого пользователя.</span><span class="sxs-lookup"><span data-stu-id="7bb77-147">Otherwise, a message intended for one user could end up going to a different user.</span></span>
+> <span data-ttu-id="a27c6-146">Выбранное значение должно быть уникальным для всех пользователей в системе.</span><span class="sxs-lookup"><span data-stu-id="a27c6-146">The value you choose must be unique among all the users in your system.</span></span> <span data-ttu-id="a27c6-147">В противном случае сообщение, предназначенное для одного пользователя, может завершить работу другого пользователя.</span><span class="sxs-lookup"><span data-stu-id="a27c6-147">Otherwise, a message intended for one user could end up going to a different user.</span></span>
 
-<span data-ttu-id="7bb77-148">Зарегистрировать этот компонент в вашей `Startup.ConfigureServices` метод.</span><span class="sxs-lookup"><span data-stu-id="7bb77-148">Register this component in your `Startup.ConfigureServices` method.</span></span>
+<span data-ttu-id="a27c6-148">Зарегистрируйте этот компонент в `Startup.ConfigureServices` методе.</span><span class="sxs-lookup"><span data-stu-id="a27c6-148">Register this component in your `Startup.ConfigureServices` method.</span></span>
 
 ```csharp
 public void ConfigureServices(IServiceCollection services)
@@ -113,7 +113,7 @@ public void ConfigureServices(IServiceCollection services)
 }
 ```
 
-<span data-ttu-id="7bb77-149">В клиенте .NET необходимо включить проверку подлинности Windows, задав [UseDefaultCredentials](/dotnet/api/microsoft.aspnetcore.http.connections.client.httpconnectionoptions.usedefaultcredentials) свойство:</span><span class="sxs-lookup"><span data-stu-id="7bb77-149">In the .NET Client, Windows Authentication must be enabled by setting the [UseDefaultCredentials](/dotnet/api/microsoft.aspnetcore.http.connections.client.httpconnectionoptions.usedefaultcredentials) property:</span></span>
+<span data-ttu-id="a27c6-149">В клиенте .NET проверка подлинности Windows должна быть включена путем установки свойства [уседефаулткредентиалс](/dotnet/api/microsoft.aspnetcore.http.connections.client.httpconnectionoptions.usedefaultcredentials) :</span><span class="sxs-lookup"><span data-stu-id="a27c6-149">In the .NET Client, Windows Authentication must be enabled by setting the [UseDefaultCredentials](/dotnet/api/microsoft.aspnetcore.http.connections.client.httpconnectionoptions.usedefaultcredentials) property:</span></span>
 
 ```csharp
 var connection = new HubConnectionBuilder()
@@ -124,49 +124,49 @@ var connection = new HubConnectionBuilder()
     .Build();
 ```
 
-<span data-ttu-id="7bb77-150">Проверка подлинности Windows поддерживается только с помощью браузера клиента, при использовании Microsoft Internet Explorer или Microsoft Edge.</span><span class="sxs-lookup"><span data-stu-id="7bb77-150">Windows Authentication is only supported by the browser client when using Microsoft Internet Explorer or Microsoft Edge.</span></span>
+<span data-ttu-id="a27c6-150">Проверка подлинности Windows поддерживается только клиентом браузера при использовании Microsoft Internet Explorer или Microsoft погранично.</span><span class="sxs-lookup"><span data-stu-id="a27c6-150">Windows Authentication is only supported by the browser client when using Microsoft Internet Explorer or Microsoft Edge.</span></span>
 
-### <a name="use-claims-to-customize-identity-handling"></a><span data-ttu-id="7bb77-151">Использование утверждений для настройки обработки удостоверений</span><span class="sxs-lookup"><span data-stu-id="7bb77-151">Use claims to customize identity handling</span></span>
+### <a name="use-claims-to-customize-identity-handling"></a><span data-ttu-id="a27c6-151">Использование утверждений для настройки обработки удостоверений</span><span class="sxs-lookup"><span data-stu-id="a27c6-151">Use claims to customize identity handling</span></span>
 
-<span data-ttu-id="7bb77-152">Приложение, которое выполняет проверку подлинности пользователей можно получить идентификаторы пользователей SignalR из утверждения пользователей.</span><span class="sxs-lookup"><span data-stu-id="7bb77-152">An app that authenticates users can derive SignalR user IDs from user claims.</span></span> <span data-ttu-id="7bb77-153">Чтобы указать, каким образом SignalR создает идентификаторы пользователей, реализовать `IUserIdProvider` и зарегистрируйте реализацию.</span><span class="sxs-lookup"><span data-stu-id="7bb77-153">To specify how SignalR creates user IDs, implement `IUserIdProvider` and register the implementation.</span></span>
+<span data-ttu-id="a27c6-152">Приложение, выполняющее проверку подлинности пользователей, может наследовать идентификаторы пользователей SignalR от утверждений пользователей.</span><span class="sxs-lookup"><span data-stu-id="a27c6-152">An app that authenticates users can derive SignalR user IDs from user claims.</span></span> <span data-ttu-id="a27c6-153">Чтобы указать, как SignalR создает идентификаторы пользователей, `IUserIdProvider` реализуйте и зарегистрируйте реализацию.</span><span class="sxs-lookup"><span data-stu-id="a27c6-153">To specify how SignalR creates user IDs, implement `IUserIdProvider` and register the implementation.</span></span>
 
-<span data-ttu-id="7bb77-154">В примере кода показано, как использовать утверждения для выбора адреса электронной почты пользователя в качестве идентифицирующего свойство.</span><span class="sxs-lookup"><span data-stu-id="7bb77-154">The sample code demonstrates how you would use claims to select the user's email address as the identifying property.</span></span> 
+<span data-ttu-id="a27c6-154">В примере кода показано использование утверждений для выбора адреса электронной почты пользователя в качестве идентифицирующего свойства.</span><span class="sxs-lookup"><span data-stu-id="a27c6-154">The sample code demonstrates how you would use claims to select the user's email address as the identifying property.</span></span> 
 
 > [!NOTE]
-> <span data-ttu-id="7bb77-155">Значение, выбираемый должно быть уникальным среди всех пользователей в вашей системе.</span><span class="sxs-lookup"><span data-stu-id="7bb77-155">The value you choose must be unique among all the users in your system.</span></span> <span data-ttu-id="7bb77-156">В противном случае сообщение, предназначенное для одного пользователя могут оказаться собираетесь другого пользователя.</span><span class="sxs-lookup"><span data-stu-id="7bb77-156">Otherwise, a message intended for one user could end up going to a different user.</span></span>
+> <span data-ttu-id="a27c6-155">Выбранное значение должно быть уникальным для всех пользователей в системе.</span><span class="sxs-lookup"><span data-stu-id="a27c6-155">The value you choose must be unique among all the users in your system.</span></span> <span data-ttu-id="a27c6-156">В противном случае сообщение, предназначенное для одного пользователя, может завершить работу другого пользователя.</span><span class="sxs-lookup"><span data-stu-id="a27c6-156">Otherwise, a message intended for one user could end up going to a different user.</span></span>
 
 [!code-csharp[Email provider](authn-and-authz/sample/EmailBasedUserIdProvider.cs?name=EmailBasedUserIdProvider)]
 
-<span data-ttu-id="7bb77-157">Регистрация учетной записи добавляет утверждение с типом `ClaimsTypes.Email` для базы данных удостоверений ASP.NET.</span><span class="sxs-lookup"><span data-stu-id="7bb77-157">The account registration adds a claim with type `ClaimsTypes.Email` to the ASP.NET identity database.</span></span>
+<span data-ttu-id="a27c6-157">При регистрации учетной записи в базу данных `ClaimsTypes.Email` удостоверений ASP.NET добавляется утверждение с типом.</span><span class="sxs-lookup"><span data-stu-id="a27c6-157">The account registration adds a claim with type `ClaimsTypes.Email` to the ASP.NET identity database.</span></span>
 
 [!code-csharp[Adding the email to the ASP.NET identity claims](authn-and-authz/sample/pages/account/Register.cshtml.cs?name=AddEmailClaim)]
 
-<span data-ttu-id="7bb77-158">Зарегистрировать этот компонент в вашей `Startup.ConfigureServices`.</span><span class="sxs-lookup"><span data-stu-id="7bb77-158">Register this component in your `Startup.ConfigureServices`.</span></span>
+<span data-ttu-id="a27c6-158">Зарегистрируйте этот компонент в `Startup.ConfigureServices`.</span><span class="sxs-lookup"><span data-stu-id="a27c6-158">Register this component in your `Startup.ConfigureServices`.</span></span>
 
 ```csharp
 services.AddSingleton<IUserIdProvider, EmailBasedUserIdProvider>();
 ```
 
-## <a name="authorize-users-to-access-hubs-and-hub-methods"></a><span data-ttu-id="7bb77-159">Авторизация пользователей для доступа к концентраторам и методам концентраторов</span><span class="sxs-lookup"><span data-stu-id="7bb77-159">Authorize users to access hubs and hub methods</span></span>
+## <a name="authorize-users-to-access-hubs-and-hub-methods"></a><span data-ttu-id="a27c6-159">Авторизация пользователей для доступа к концентраторам и методам концентратора</span><span class="sxs-lookup"><span data-stu-id="a27c6-159">Authorize users to access hubs and hub methods</span></span>
 
-<span data-ttu-id="7bb77-160">По умолчанию все методы в концентраторе, могут вызываться пользователем, не прошедшие проверку подлинности.</span><span class="sxs-lookup"><span data-stu-id="7bb77-160">By default, all methods in a hub can be called by an unauthenticated user.</span></span> <span data-ttu-id="7bb77-161">Чтобы требовать проверку подлинности, применить [Authorize](/dotnet/api/microsoft.aspnetcore.authorization.authorizeattribute) атрибут к центру:</span><span class="sxs-lookup"><span data-stu-id="7bb77-161">In order to require authentication, apply the [Authorize](/dotnet/api/microsoft.aspnetcore.authorization.authorizeattribute) attribute to the hub:</span></span>
+<span data-ttu-id="a27c6-160">По умолчанию все методы в концентраторе могут вызываться пользователем, не прошедшим проверку подлинности.</span><span class="sxs-lookup"><span data-stu-id="a27c6-160">By default, all methods in a hub can be called by an unauthenticated user.</span></span> <span data-ttu-id="a27c6-161">Чтобы включить проверку подлинности, примените к концентратору атрибут [авторизации](/dotnet/api/microsoft.aspnetcore.authorization.authorizeattribute) :</span><span class="sxs-lookup"><span data-stu-id="a27c6-161">In order to require authentication, apply the [Authorize](/dotnet/api/microsoft.aspnetcore.authorization.authorizeattribute) attribute to the hub:</span></span>
 
 [!code-csharp[Restrict a hub to only authorized users](authn-and-authz/sample/Hubs/ChatHub.cs?range=8-10,32)]
 
-<span data-ttu-id="7bb77-162">Можно использовать конструктор аргументов и свойств `[Authorize]` атрибута для ограничения доступа к только пользователям, которые соответствуют определенной [политик авторизации](xref:security/authorization/policies).</span><span class="sxs-lookup"><span data-stu-id="7bb77-162">You can use the constructor arguments and properties of the `[Authorize]` attribute to restrict access to only users matching specific [authorization policies](xref:security/authorization/policies).</span></span> <span data-ttu-id="7bb77-163">Например, если у вас есть пользовательской политики авторизации вызывается `MyAuthorizationPolicy` убедитесь, что только пользователи, которые соответствуют этой политике можно получить доступ к концентратора, используя следующий код:</span><span class="sxs-lookup"><span data-stu-id="7bb77-163">For example, if you have a custom authorization policy called `MyAuthorizationPolicy` you can ensure that only users matching that policy can access the hub using the following code:</span></span>
+<span data-ttu-id="a27c6-162">Можно использовать аргументы конструктора и свойства `[Authorize]` атрибута, чтобы ограничить доступ только тем пользователям, которые соответствуют определенным политикам [авторизации](xref:security/authorization/policies).</span><span class="sxs-lookup"><span data-stu-id="a27c6-162">You can use the constructor arguments and properties of the `[Authorize]` attribute to restrict access to only users matching specific [authorization policies](xref:security/authorization/policies).</span></span> <span data-ttu-id="a27c6-163">Например, при наличии пользовательской политики `MyAuthorizationPolicy` авторизации можно убедиться, что только пользователи, соответствующие этой политике, могут получить доступ к концентратору с помощью следующего кода:</span><span class="sxs-lookup"><span data-stu-id="a27c6-163">For example, if you have a custom authorization policy called `MyAuthorizationPolicy` you can ensure that only users matching that policy can access the hub using the following code:</span></span>
 
 ```csharp
 [Authorize("MyAuthorizationPolicy")]
-public class ChatHub: Hub
+public class ChatHub : Hub
 {
 }
 ```
 
-<span data-ttu-id="7bb77-164">Иной концентратор методы могут иметь `[Authorize]` также применен атрибут.</span><span class="sxs-lookup"><span data-stu-id="7bb77-164">Individual hub methods can have the `[Authorize]` attribute applied as well.</span></span> <span data-ttu-id="7bb77-165">Если текущий пользователь не соответствует политике, применяемый к методу, вызывающему объекту возвращается ошибка:</span><span class="sxs-lookup"><span data-stu-id="7bb77-165">If the current user doesn't match the policy applied to the method, an error is returned to the caller:</span></span>
+<span data-ttu-id="a27c6-164">Отдельные методы концентратора могут `[Authorize]` также применять атрибут.</span><span class="sxs-lookup"><span data-stu-id="a27c6-164">Individual hub methods can have the `[Authorize]` attribute applied as well.</span></span> <span data-ttu-id="a27c6-165">Если текущий пользователь не соответствует политике, примененной к методу, вызывающему объекту будет возвращена ошибка.</span><span class="sxs-lookup"><span data-stu-id="a27c6-165">If the current user doesn't match the policy applied to the method, an error is returned to the caller:</span></span>
 
 ```csharp
 [Authorize]
-public class ChatHub: Hub
+public class ChatHub : Hub
 {
     public async Task Send(string message)
     {
@@ -181,6 +181,81 @@ public class ChatHub: Hub
 }
 ```
 
-## <a name="additional-resources"></a><span data-ttu-id="7bb77-166">Дополнительные ресурсы</span><span class="sxs-lookup"><span data-stu-id="7bb77-166">Additional resources</span></span>
+::: moniker range=">= aspnetcore-3.0"
 
-* [<span data-ttu-id="7bb77-167">Маркер проверки подлинности носителя в ASP.NET Core</span><span class="sxs-lookup"><span data-stu-id="7bb77-167">Bearer Token Authentication in ASP.NET Core</span></span>](https://blogs.msdn.microsoft.com/webdev/2016/10/27/bearer-token-authentication-in-asp-net-core/)
+### <a name="use-authorization-handlers-to-customize-hub-method-authorization"></a><span data-ttu-id="a27c6-166">Использование обработчиков авторизации для настройки авторизации метода концентратора</span><span class="sxs-lookup"><span data-stu-id="a27c6-166">Use authorization handlers to customize hub method authorization</span></span>
+
+<span data-ttu-id="a27c6-167">SignalR предоставляет обработчику авторизации пользовательский ресурс, когда методу концентратора требуется авторизация.</span><span class="sxs-lookup"><span data-stu-id="a27c6-167">SignalR provides a custom resource to authorization handlers when a hub method requires authorization.</span></span> <span data-ttu-id="a27c6-168">Ресурс является экземпляром `HubInvocationContext`.</span><span class="sxs-lookup"><span data-stu-id="a27c6-168">The resource is an instance of `HubInvocationContext`.</span></span> <span data-ttu-id="a27c6-169">`HubInvocationContext` Включает,имявызываемогометодаконцентратораиаргументы`HubCallerContext`для метода концентратора.</span><span class="sxs-lookup"><span data-stu-id="a27c6-169">The `HubInvocationContext` includes the `HubCallerContext`, the name of the hub method being invoked, and the arguments to the hub method.</span></span>
+
+<span data-ttu-id="a27c6-170">Рассмотрим пример комнаты чатов, позволяющей нескольким организациям входить в систему через Azure Active Directory.</span><span class="sxs-lookup"><span data-stu-id="a27c6-170">Consider the example of a chat room allowing multiple organization sign-in via Azure Active Directory.</span></span> <span data-ttu-id="a27c6-171">Любой пользователь, у которого есть учетная запись Майкрософт, может войти в чат, но только члены владеющей Организации должны иметь возможность запрещать пользователям или просматривать историю разговора пользователей.</span><span class="sxs-lookup"><span data-stu-id="a27c6-171">Anyone with a Microsoft account can sign in to chat, but only members of the owning organization should be able to ban users or view users' chat histories.</span></span> <span data-ttu-id="a27c6-172">Кроме того, может потребоваться ограничить некоторые функции от определенных пользователей.</span><span class="sxs-lookup"><span data-stu-id="a27c6-172">Furthermore, we might want to restrict certain functionality from certain users.</span></span> <span data-ttu-id="a27c6-173">Использование обновленных функций в ASP.NET Core 3,0 — это вполне возможно.</span><span class="sxs-lookup"><span data-stu-id="a27c6-173">Using the updated features in ASP.NET Core 3.0, this is entirely possible.</span></span> <span data-ttu-id="a27c6-174">Обратите внимание `DomainRestrictedRequirement` , что служит в `IAuthorizationRequirement`качестве пользовательского.</span><span class="sxs-lookup"><span data-stu-id="a27c6-174">Note how the `DomainRestrictedRequirement` serves as a custom `IAuthorizationRequirement`.</span></span> <span data-ttu-id="a27c6-175">Теперь, `HubInvocationContext` когда передается параметр ресурса, внутренняя логика может проверить контекст, в котором вызывается концентратор, и принимать решения о том, чтобы разрешить пользователю выполнять отдельные методы концентратора.</span><span class="sxs-lookup"><span data-stu-id="a27c6-175">Now that the `HubInvocationContext` resource parameter is being passed in, the internal logic can inspect the context in which the Hub is being called and make decisions on allowing the user to execute individual Hub methods.</span></span>
+
+```csharp
+[Authorize]
+public class ChatHub : Hub
+{
+    public void SendMessage(string message)
+    {
+    }
+
+    [Authorize("DomainRestricted")]
+    public void BanUser(string username)
+    {
+    }
+
+    [Authorize("DomainRestricted")]
+    public void ViewUserHistory(string username)
+    {
+    }
+}
+
+public class DomainRestrictedRequirement : 
+    AuthorizationHandler<DomainRestrictedRequirement, HubInvocationContext>, 
+    IAuthorizationRequirement
+{
+    protected override Task HandleRequirementAsync(AuthorizationHandlerContext context,
+        DomainRestrictedRequirement requirement, 
+        HubInvocationContext resource)
+    {
+        if (IsUserAllowedToDoThis(resource.HubMethodName, context.User.Identity.Name) && 
+            context.User.Identity.Name.EndsWith("@microsoft.com"))
+        {
+            context.Succeed(requirement);
+        }
+        return Task.CompletedTask;
+    }
+
+    private bool IsUserAllowedToDoThis(string hubMethodName,
+        string currentUsername)
+    {
+        return !(currentUsername.Equals("asdf42@microsoft.com") && 
+            hubMethodName.Equals("banUser", StringComparison.OrdinalIgnoreCase));
+    }
+}
+```
+
+<span data-ttu-id="a27c6-176">В `Startup.ConfigureServices`добавьте новую политику, предоставив настраиваемое `DomainRestrictedRequirement` требование в качестве параметра для создания `DomainRestricted` политики.</span><span class="sxs-lookup"><span data-stu-id="a27c6-176">In `Startup.ConfigureServices`, add the new policy, providing the custom `DomainRestrictedRequirement` requirement as a parameter to create the `DomainRestricted` policy.</span></span>
+
+```csharp
+public void ConfigureServices(IServiceCollection services)
+{
+    // ... other services ...
+
+    services
+        .AddAuthorization(options =>
+        {
+            options.AddPolicy("DomainRestricted", policy =>
+            {
+                policy.Requirements.Add(new DomainRestrictedRequirement());
+            });
+        });
+}
+```
+
+<span data-ttu-id="a27c6-177">В предыдущем примере `DomainRestrictedRequirement` класс является `IAuthorizationRequirement` и, и его собственным `AuthorizationHandler` для этого требования.</span><span class="sxs-lookup"><span data-stu-id="a27c6-177">In the preceding example, the `DomainRestrictedRequirement` class is both an `IAuthorizationRequirement` and its own `AuthorizationHandler` for that requirement.</span></span> <span data-ttu-id="a27c6-178">Можно разделить эти два компонента на отдельные классы для разделения проблем.</span><span class="sxs-lookup"><span data-stu-id="a27c6-178">It's acceptable to split these two components into separate classes to separate concerns.</span></span> <span data-ttu-id="a27c6-179">Преимуществом этого примера является отсутствие необходимости внедрять `AuthorizationHandler` во время запуска, так как требование и обработчик одинаковы.</span><span class="sxs-lookup"><span data-stu-id="a27c6-179">A benefit of the example's approach is there's no need to inject the `AuthorizationHandler` during startup, as the requirement and the handler are the same thing.</span></span>
+
+::: moniker-end
+
+## <a name="additional-resources"></a><span data-ttu-id="a27c6-180">Дополнительные ресурсы</span><span class="sxs-lookup"><span data-stu-id="a27c6-180">Additional resources</span></span>
+
+* [<span data-ttu-id="a27c6-181">Проверка подлинности токена носителя в ASP.NET Core</span><span class="sxs-lookup"><span data-stu-id="a27c6-181">Bearer Token Authentication in ASP.NET Core</span></span>](https://blogs.msdn.microsoft.com/webdev/2016/10/27/bearer-token-authentication-in-asp-net-core/)
+* [<span data-ttu-id="a27c6-182">Авторизация на основе ресурсов</span><span class="sxs-lookup"><span data-stu-id="a27c6-182">Resource-based Authorization</span></span>](xref:security/authorization/resourcebased)
