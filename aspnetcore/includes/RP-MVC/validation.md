@@ -1,11 +1,12 @@
+<!-- USED in RP and MVC tutorial -->
 
 ## <a name="add-validation-rules-to-the-movie-model"></a>Добавление правил проверки к модели фильма
 
-Откройте файл *Movie.cs*. Пространство имен DataAnnotations предоставляет набор встроенных атрибутов проверки, которые декларативно применяются к классу или свойству. Кроме того, DataAnnotations содержит атрибуты форматирования (такие как `DataType`), которые обеспечивают форматирование и не предназначены для проверки.
+Пространство имен DataAnnotations предоставляет набор встроенных атрибутов проверки, которые декларативно применяются к классу или свойству. Кроме того, DataAnnotations содержит атрибуты форматирования (такие как `DataType`), которые обеспечивают форматирование и не предназначены для проверки.
 
 Обновите класс `Movie`, чтобы использовать преимущества встроенных атрибутов проверки `Required`, `StringLength`, `RegularExpression` и `Range`.
 
-[!code-csharp[](~/tutorials/first-mvc-app/start-mvc//sample/MvcMovie22/Models/MovieDateRatingDA.cs?name=snippet1)]
+[!code-csharp[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie22/Models/MovieDateRatingDA.cs?name=snippet1)]
 
 Атрибуты проверки определяют поведение для свойств модели, к которым они применяются:
 

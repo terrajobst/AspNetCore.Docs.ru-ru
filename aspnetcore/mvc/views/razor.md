@@ -5,12 +5,12 @@ description: Сведения о синтаксисе разметки Razor д�
 ms.author: riande
 ms.date: 06/12/2019
 uid: mvc/views/razor
-ms.openlocfilehash: 87c5b97a653c139b8b79f4270e0d9d0081815433
-ms.sourcegitcommit: 335a88c1b6e7f0caa8a3a27db57c56664d676d34
+ms.openlocfilehash: 634623aa6df860a2ff728da4e65d277326db37e2
+ms.sourcegitcommit: 051f068c78931432e030b60094c38376d64d013e
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 06/12/2019
-ms.locfileid: "67034939"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68440357"
 ---
 # <a name="razor-syntax-reference-for-aspnet-core"></a>Справочник по синтаксису Razor для ASP.NET Core
 
@@ -581,9 +581,6 @@ public class _Views_Account_Login_cshtml : RazorPage<LoginViewModel>
 ```cshtml
 @attribute [Authorize]
 ```
-
-> [!WARNING]
-> В выпуске ASP.NET Core 3.0, предварительная версия 6, существует известная проблема, при которой директивы `@attribute` не работают в файлах *\_Imports.razor* и *\_ViewImports.cshtml*. Эта проблема будет решена в предварительной версии 7.
 
 ### <a name="namespace"></a>@namespace
 
