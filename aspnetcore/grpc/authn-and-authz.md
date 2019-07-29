@@ -4,14 +4,14 @@ author: jamesnk
 description: Узнайте, как использовать проверку подлинности и авторизацию в gRPC для ASP.NET Core.
 monikerRange: '>= aspnetcore-3.0'
 ms.author: jamesnk
-ms.date: 06/07/2019
+ms.date: 07/26/2019
 uid: grpc/authn-and-authz
-ms.openlocfilehash: 49024295e4db7976924397bb24567d92d6298562
-ms.sourcegitcommit: b40613c603d6f0cc71f3232c16df61550907f550
+ms.openlocfilehash: 34f7f8a5a22159329b3d6c4524943434c460c7fb
+ms.sourcegitcommit: 0efb9e219fef481dee35f7b763165e488aa6cf9c
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68308777"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68602425"
 ---
 # <a name="authentication-and-authorization-in-grpc-for-aspnet-core"></a>Проверка подлинности и авторизация в gRPC для ASP.NET Core
 
@@ -106,12 +106,25 @@ public Ticketer.TicketerClient CreateClientWithCert(
 
 ### <a name="other-authentication-mechanisms"></a>Другие механизмы проверки подлинности
 
-Помимо токена носителя и проверки подлинности сертификата клиента, все ASP.NET Core поддерживаемые механизмы проверки подлинности, такие как OAuth, OpenID Connect и Negotiate, должны работать с gRPC. Дополнительные сведения о настройке проверки подлинности на стороне сервера см. в [ASP.NET Core Authentication](xref:security/authentication/identity) .
+Многие ASP.NET Core поддерживаемые механизмы проверки подлинности работают с gRPC:
 
-Конфигурация на стороне клиента будет зависеть от используемого механизма проверки подлинности. В предыдущих примерах проверки подлинности на стороне носителя и сертификата клиента показано несколько способов настройки клиента gRPC для отправки метаданных проверки подлинности с помощью вызовов gRPC:
+* Azure Active Directory
+* Сертификат клиента
+* IdentityServer
+* Токен JWT
+* OAuth 2,0
+* OpenID Connect подключение
+* WS-Federation
+
+Дополнительные сведения о настройке проверки подлинности на сервере см. в разделе [ASP.NET Core Authentication](xref:security/authentication/identity).
+
+Настройка клиента gRPC для использования проверки подлинности будет зависеть от используемого механизма проверки подлинности. В предыдущем примере маркера носителя и сертификата клиента показаны несколько способов настройки клиента gRPC для отправки метаданных проверки подлинности с помощью вызовов gRPC:
 
 * Строго типизированные клиенты gRPC `HttpClient` используют внутреннее. Проверку подлинности можно [`HttpClientHandler`](/dotnet/api/system.net.http.httpclienthandler)настроить для или путем добавления [`HttpMessageHandler`](/dotnet/api/system.net.http.httpmessagehandler) пользовательских экземпляров `HttpClient`в.
 * Каждый вызов gRPC имеет необязательный `CallOptions` аргумент. Пользовательские заголовки можно отправлять с помощью коллекции заголовков параметра.
+
+> [!NOTE]
+> Проверка подлинности Windows (NTLM/Kerberos/Negotiate) не может использоваться с gRPC. для gRPC требуется HTTP/2, а HTTP/2 не поддерживает проверку подлинности Windows.
 
 ## <a name="authorize-users-to-access-services-and-service-methods"></a>Авторизация пользователей для доступа к службам и методам служб
 
