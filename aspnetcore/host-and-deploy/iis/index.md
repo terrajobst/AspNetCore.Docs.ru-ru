@@ -5,14 +5,14 @@ description: Сведения о размещении приложений ASP.N
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 07/16/2019
+ms.date: 07/28/2019
 uid: host-and-deploy/iis/index
-ms.openlocfilehash: a3d8c87fdb1cbc3b8b11b15f797190d626edad59
-ms.sourcegitcommit: b40613c603d6f0cc71f3232c16df61550907f550
+ms.openlocfilehash: 7677173493e68f5a5656c18533e0ae13a7c5bece
+ms.sourcegitcommit: 0efb9e219fef481dee35f7b763165e488aa6cf9c
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68308061"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68602472"
 ---
 # <a name="host-aspnet-core-on-windows-with-iis"></a>Размещение ASP.NET Core в Windows со службами IIS
 
@@ -30,6 +30,8 @@ ms.locfileid: "68308061"
 [Сервер HTTP.sys](xref:fundamentals/servers/httpsys) (ранее назывался WebListener) не работает в конфигурации обратного прокси-сервера со службами IIS. Используйте [сервер Kestrel](xref:fundamentals/servers/kestrel).
 
 Сведения о размещении в Azure см. в статье <xref:host-and-deploy/azure-apps/index>.
+
+Рекомендации по устранению неполадок см. в статье <xref:test/troubleshoot>.
 
 ## <a name="supported-platforms"></a>Поддерживаемые платформы
 

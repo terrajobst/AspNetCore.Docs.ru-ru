@@ -13,3 +13,5 @@
 ```console
 dotnet aspnet-codegenerator razorpage -h
 ```
+
+См. подробнее о [dotnet aspnet-codegenerator](xref:fundamentals/tools/dotnet-aspnet-codegenerator). 

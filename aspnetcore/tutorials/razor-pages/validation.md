@@ -4,14 +4,14 @@ author: rick-anderson
 description: Практическое руководство по добавлению проверки на страницу Razor в ASP.NET Core.
 ms.author: riande
 ms.custom: mvc
-ms.date: 12/05/2018
+ms.date: 7/23/2019
 uid: tutorials/razor-pages/validation
-ms.openlocfilehash: 8495849c89ca3d6fd2b2006b61ce2ec75ff504a5
-ms.sourcegitcommit: 8516b586541e6ba402e57228e356639b85dfb2b9
+ms.openlocfilehash: d6d45dc7154bf415c3b098299d066b6fb37cf64d
+ms.sourcegitcommit: 16502797ea749e2690feaa5e652a65b89c007c89
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67815661"
+ms.lasthandoff: 07/25/2019
+ms.locfileid: "68483267"
 ---
 # <a name="add-validation-to-an-aspnet-core-razor-page"></a>Добавление проверки на страницу Razor в ASP.NET Core
 
@@ -56,9 +56,9 @@ ms.locfileid: "67815661"
 
 Реализация проверки на стороне сервера:
 
-* Отключите JavaScript в браузере. Это можно сделать с помощью средств разработчика в браузере. Если сделать это не удается, попробуйте использовать другой браузер.
+* Отключите JavaScript в браузере. JavaScript можно отключить с помощью средств разработчика в браузере. Если сделать это не удается, попробуйте использовать другой браузер.
 * Поместите точку останова в метод `OnPostAsync` страниц создания или редактирования.
-* Отправьте форму с ошибками проверки.
+* Отправьте форму с недопустимыми данными.
 * Проверка недопустимого состояния модели:
 
   ```csharp
@@ -68,7 +68,7 @@ ms.locfileid: "67815661"
    }
   ```
 
-В следующем коде демонстрируется часть страницы *Create.cshtml*, сформированной ранее в рамках этого руководства. Она используется на страницах создания и редактирования для отображения исходной формы и повторного вывода формы в случае ошибки.
+В следующем коде демонстрируется часть страницы *Create.cshtml*, созданной ранее в рамках этого руководства. Она используется на страницах создания и редактирования для отображения исходной формы и повторного вывода формы в случае ошибки.
 
 [!code-cshtml[](razor-pages-start/sample/RazorPagesMovie/Pages/Movies/Create.cshtml?range=14-20)]
 
@@ -117,13 +117,72 @@ public DateTime ReleaseDate { get; set; }
 
 В следующем коде демонстрируется объединение атрибутов в одной строке:
 
-[!code-csharp[](razor-pages-start/sample/RazorPagesMovie22/Models/MovieDateRatingDAmult.cs?name=snippet1)]
+[!code-csharp[](razor-pages-start/sample/RazorPagesMovie30/Models/MovieDateRatingDAmult.cs?name=snippet1)]
 
 Дополнительные операции EF Core с Razor Pages см. в статье [Начало работы с Razor Pages и EF Core](xref:data/ef-rp/intro).
 
+### <a name="apply-migrations"></a>Применение миграции
+
+DataAnnotation, примененные к классу, изменяют схему. Например, DataAnnotation, примеренные к полю `Title`, выполняют следующее:
+
+[!code-csharp[](razor-pages-start/sample/RazorPagesMovie30/Models/MovieDateRatingDA.cs?name=snippet11)]
+
+* ограничивают число символов до 60;
+* не допускают значение `null`.
+
+# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
+
+Сейчас таблица `Movie` имеет следующую схему:
+
+``` sql
+CREATE TABLE [dbo].[Movie] (
+    [ID]          INT             IDENTITY (1, 1) NOT NULL,
+    [Title]       NVARCHAR (MAX)  NULL,
+    [ReleaseDate] DATETIME2 (7)   NOT NULL,
+    [Genre]       NVARCHAR (MAX)  NULL,
+    [Price]       DECIMAL (18, 2) NOT NULL,
+    [Rating]      NVARCHAR (MAX)  NULL,
+    CONSTRAINT [PK_Movie] PRIMARY KEY CLUSTERED ([ID] ASC)
+);
+```
+
+Предыдущие изменения схемы не приводят к созданию исключения EF. Но следует создать миграцию, чтобы схема соответствовала модели.
+
+В меню **Сервис** последовательно выберите пункты **Диспетчер пакетов NuGet > Консоль диспетчера пакетов**.
+В PMC введите следующие команды:
+
+```powershell
+Add-Migration New_DataAnnotations
+Update-Database
+```
+
+`Update-Database` выполняет методы `Up` класса `New_DataAnnotations`. Проверьте метод `Up`.
+
+[!code-csharp[](razor-pages-start/sample/RazorPagesMovie30/Migrations/20190724163003_New_DataAnnotations.cs?name=snippet)]
+
+Обновленная таблица `Movie` имеет следующую схему:
+
+``` sql
+CREATE TABLE [dbo].[Movie] (
+    [ID]          INT             IDENTITY (1, 1) NOT NULL,
+    [Title]       NVARCHAR (60)   NOT NULL,
+    [ReleaseDate] DATETIME2 (7)   NOT NULL,
+    [Genre]       NVARCHAR (30)   NOT NULL,
+    [Price]       DECIMAL (18, 2) NOT NULL,
+    [Rating]      NVARCHAR (5)    NOT NULL,
+    CONSTRAINT [PK_Movie] PRIMARY KEY CLUSTERED ([ID] ASC)
+);
+```
+
+# <a name="visual-studio-code--visual-studio-for-mactabvisual-studio-codevisual-studio-mac"></a>[Visual Studio Code/Visual Studio для Mac](#tab/visual-studio-code+visual-studio-mac)
+
+Для SQLite миграция не требуется.
+
+---
+
 ### <a name="publish-to-azure"></a>Публикация в Azure
 
-Сведения о развертывании в Azure, см. в разделе [Учебник: Создание приложения ASP.NET в Azure с подключением к базе данных SQL](/azure/app-service/app-service-web-tutorial-dotnet-sqldatabase). Эти инструкции приведены для приложения ASP.NET, а не ASP.NET Core, но шаги совпадают.
+Сведения о развертывании в Azure, см. в разделе [Учебник: Создание приложения ASP.NET Core в Azure с подключением к базе данных SQL](/azure/app-service/app-service-web-tutorial-dotnetcore-sqldb).
 
 Благодарим вас за изучение общих сведений о страницах Razor. Отличным дополнением к этому руководству является руководство по [началу работы с Razor Pages и EF Core](xref:data/ef-rp/intro).
 

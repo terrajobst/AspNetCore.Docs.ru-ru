@@ -14,7 +14,43 @@
 
 Добавьте строку подключения в файл *appsettings.json*, как показано в следующем выделенном коде:
 
-[!code-json[](~/tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie/appsettings_SQLite.json?highlight=8-10)]
+::: moniker range=">= aspnetcore-3.0"
+
+[!code-json[](~/tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie30/appsettings_SQLite.json?highlight=10-12)]
+
+### <a name="add-required-nuget-packages"></a>Добавьте необходимые пакеты NuGet
+
+Выполните следующие команды .NET Core CLI, чтобы добавить в проект SQLite, Entity Framework Core и CodeGeneration.Design.
+
+```console
+dotnet add package Microsoft.EntityFrameworkCore.SQLite --version 3.0.0-*
+dotnet add package Microsoft.VisualStudio.Web.CodeGeneration.Design --version 3.0.0-*
+dotnet add package Microsoft.EntityFrameworkCore.Design --version 3.0.0-*
+dotnet add package Microsoft.EntityFrameworkCore.SqlServer --version 3.0.0-*
+```
+
+Пакет `Microsoft.VisualStudio.Web.CodeGeneration.Design` необходим для формирования шаблонов.
+
+<a name="reg"></a>
+
+### <a name="register-the-database-context"></a>Регистрация контекста базы данных
+
+Добавьте следующие инструкции `using` в начало файла *Startup.cs*.
+
+```csharp
+using RazorPagesMovie.Models;
+using Microsoft.EntityFrameworkCore;
+```
+
+Зарегистрируйте контекст базы данных в контейнере [внедрения зависимостей](xref:fundamentals/dependency-injection) в файле `Startup.ConfigureServices`.
+
+[!code-csharp[](~/tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie30/Startup.cs?name=snippet_UseSqlite&highlight=11-12)]
+
+::: moniker-end
+
+::: moniker range="< aspnetcore-3.0"
+
+[!code-json[](~/tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie/appsettings_SQLite.json?highlight=8-9)]
 
 ### <a name="add-required-nuget-packages"></a>Добавьте необходимые пакеты NuGet
 
@@ -45,3 +81,4 @@ using Microsoft.EntityFrameworkCore;
 [!code-csharp[](~/tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie22/Startup.cs?name=snippet_UseSqlite&highlight=11-12)]
 
 Соберите проект как проверку на ошибки.
+::: moniker-end
