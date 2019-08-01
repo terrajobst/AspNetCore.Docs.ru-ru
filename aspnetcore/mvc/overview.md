@@ -3,14 +3,14 @@ title: Общие сведения ASP.NET Core MVC
 author: ardalis
 description: Узнайте, почему ASP.NET MVC является многофункциональной платформой для создания веб-приложений и API-интерфейсов с помощью структуры проектирования Model-View-Controller.
 ms.author: riande
-ms.date: 01/08/2018
+ms.date: 08/01/2019
 uid: mvc/overview
-ms.openlocfilehash: 819bc93a7580626bf586b984b0ce169306df56d9
-ms.sourcegitcommit: 8516b586541e6ba402e57228e356639b85dfb2b9
+ms.openlocfilehash: 7f09751850cbfa7bb3dc79656d4530445a9767b1
+ms.sourcegitcommit: 3204bc89ae6354b61ee0a9b2770ebe5214b7790c
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67815356"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68707811"
 ---
 # <a name="overview-of-aspnet-core-mvc"></a>Общие сведения ASP.NET Core MVC
 
@@ -88,11 +88,11 @@ routes.MapRoute(name: "Default", template: "{controller=Home}/{action=Index}/{id
 [Route("api/[controller]")]
 public class ProductsController : Controller
 {
-  [HttpGet("{id}")]
-  public IActionResult GetProduct(int id)
-  {
-    ...
-  }
+    [HttpGet("{id}")]
+    public IActionResult GetProduct(int id)
+    {
+      ...
+    }
 }
 ```
 
@@ -102,7 +102,7 @@ public class ProductsController : Controller
 
 ```csharp
 public async Task<IActionResult> Login(LoginViewModel model, string returnUrl = null) { ... }
-   ```
+```
 
 ### <a name="model-validation"></a>Проверка модели
 
@@ -149,6 +149,7 @@ ASP.NET Core имеет встроенную поддержку [внедрен�
 
 ```cshtml
 @inject SomeService ServiceName
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -189,11 +190,11 @@ public class AccountController : Controller
 
 Для отрисовки представлений [представления ASP.NET Core MVC](views/overview.md) используют [подсистему просмотра Razor](views/razor.md). Razor — это компактный, выразительный и гибкий язык разметки шаблонов для определения представлений с помощью встроенного кода C#. Razor используется для динамического создания веб-содержимого на сервере. Серверный код можно полностью комбинировать с содержимым и кодом на стороне клиента.
 
-```text
+```cshtml
 <ul>
-  @for (int i = 0; i < 5; i++) {
-    <li>List item @i</li>
-  }
+    @for (int i = 0; i < 5; i++) {
+        <li>List item @i</li>
+    }
 </ul>
 ```
 
