@@ -5,12 +5,12 @@ description: Инструкции по добавлению поиска в пр
 ms.author: riande
 ms.date: 12/13/2018
 uid: tutorials/first-mvc-app/search
-ms.openlocfilehash: fbec03d71e247c58fb5968290c4baf6b28120e1c
-ms.sourcegitcommit: 8516b586541e6ba402e57228e356639b85dfb2b9
+ms.openlocfilehash: ed6c7a095143670b7d06e43db3a428dec9bf97ad
+ms.sourcegitcommit: 3204bc89ae6354b61ee0a9b2770ebe5214b7790c
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67815068"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68707847"
 ---
 # <a name="add-search-to-an-aspnet-core-mvc-app"></a>Добавление поиска в приложение MVC ASP.NET Core
 
@@ -18,7 +18,7 @@ ms.locfileid: "67815068"
 
 В этом разделе вы добавите в метод действия `Index` возможности поиска, которые позволяют выполнять поиск фильмов по *жанру* или *названию*.
 
-Обновите метод `Index`, используя следующий код:
+Обновите метод `Index`, находящийся в файле *Controllers/ MoviesController.cs*, добавив следующий код:
 
 [!code-csharp[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie/Controllers/MoviesController.cs?name=snippet_1stSearch)]
 
@@ -91,7 +91,7 @@ var movies = from m in _context.Movie
 
 В теле запроса отображается параметр поиска и маркер [XSRF](xref:security/anti-request-forgery). Обратите внимание, что, как описывается в предыдущем руководстве, [вспомогательная функция тега Form](xref:mvc/views/working-with-forms) создает маркер защиты от подделки [XSRF](xref:security/anti-request-forgery). Поскольку мы не изменяем данные, проверять маркер безопасности в методе контроллера не нужно.
 
-Так как параметр поиска находится в теле запроса, а не в URL-адресе, эти сведения о поиске нельзя добавить в закладки или открыть для общего доступа. Чтобы исправить это, необходимо указать запрос как `HTTP GET`:
+Так как параметр поиска находится в теле запроса, а не в URL-адресе, эти сведения о поиске нельзя добавить в закладки или открыть для общего доступа. Для устранения этой проблемы укажите, что запрос типа `HTTP GET` должен находиться в файле *Views/Movies/Index.cshtml*.
 
 [!code-html[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie22/Views/Movies/IndexGet.cshtml?highlight=12&range=1-23)]
 
@@ -132,7 +132,7 @@ var movies = from m in _context.Movie
 
 ## <a name="add-search-by-genre-to-the-index-view"></a>Добавление поиска по жанру в представление индекса
 
-Обновите файл `Index.cshtml` следующим образом:
+Обновите файл `Index.cshtml`, находящийся в папке *Views/Movies/* , следующим образом:
 
 [!code-cshtml[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie22/Views/Movies/IndexFormGenreNoRating.cshtml?highlight=1,15,16,17,19,28,31,34,37,43)]
 
