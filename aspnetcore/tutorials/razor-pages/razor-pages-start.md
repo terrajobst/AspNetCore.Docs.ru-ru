@@ -5,12 +5,12 @@ description: В этой серии руководств объясняется,
 ms.author: riande
 ms.date: 07/25/2019
 uid: tutorials/razor-pages/razor-pages-start
-ms.openlocfilehash: 1605197188d97f27a884739a72400da2d5818b1a
-ms.sourcegitcommit: 849af69ee3c94cdb9fd8fa1f1bb8f5a5dda7b9eb
+ms.openlocfilehash: 57a10895c718c539ece280afcb27cb4033c7fb45
+ms.sourcegitcommit: 979dbfc5e9ce09b9470789989cddfcfb57079d94
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68371989"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68682795"
 ---
 # <a name="tutorial-get-started-with-razor-pages-in-aspnet-core"></a>Учебник. Начало работы с Razor Pages в ASP.NET Core
 
@@ -133,7 +133,7 @@ dotnet new webapp -o RazorPagesMovie
 
   [!INCLUDE[](~/includes/trustCertMac.md)]
 
-* Нажмите клавиши **Cmd-Opt-F5**, чтобы выполнить запуск без отладчика.
+* Чтобы выполнить запуск без отладчика, нажмите клавиши **ALT+CMD+ВВОД**. Вы также можете в строке меню выбрать "Запуск" > "Запуск без отладки".
 
   Visual Studio запускает [Kestrel](xref:fundamentals/servers/kestrel), открывает браузер и переходит к `http://localhost:5001`.
 

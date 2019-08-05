@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 07/11/2019
 uid: tutorials/first-web-api
-ms.openlocfilehash: 95410cef9753fbb0eda6136320b59682e0553ea7
-ms.sourcegitcommit: 040aedca220ed24ee1726e6886daf6906f95a028
+ms.openlocfilehash: 60235af56077127093ac1d77338bc228a6edf073
+ms.sourcegitcommit: 0efb9e219fef481dee35f7b763165e488aa6cf9c
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67893220"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68602522"
 ---
 # <a name="tutorial-create-a-web-api-with-aspnet-core"></a>Учебник. Создание веб-API с помощью ASP.NET Core
 
@@ -19,13 +19,453 @@ ms.locfileid: "67893220"
 
 В этом учебнике приводятся основные сведения о создании веб-API с помощью ASP.NET Core.
 
-В этом руководстве вы узнаете, как:
+::: moniker range=">= aspnetcore-3.0"
+
+В этом руководстве вы узнаете, как выполнять следующие задачи:
 
 > [!div class="checklist"]
 > * Создание проекта веб-API.
-> * Добавление класса модели.
-> * Создание контекста базы данных.
-> * Регистрация контекста базы данных.
+> * Добавление класса модели и контекста базы данных.
+> * Формирование шаблонов контроллера с использованием методов CRUD.
+> * Настройка маршрутизации, URL-пути и возвращаемых значений.
+> * Вызов веб-API с помощью Postman.
+
+В итоге вы получите веб-API, позволяющий работать с элементами списка дел, хранимыми в базе данных.
+
+## <a name="overview"></a>Обзор
+
+В этом руководстве создается следующий API-интерфейс:
+
+|API | ОПИСАНИЕ | Текст запроса | Текст ответа |
+|--- | ---- | ---- | ---- |
+|GET /api/TodoItems | Получение всех элементов задач | Нет | Массив элементов задач|
+|GET /api/TodoItems/{id} | Получение объекта по идентификатору | Нет | Элемент задачи|
+|POST /api/TodoItems | Добавление нового элемента | Элемент задачи | Элемент задачи |
+|PUT /api/TodoItems/{id} | Обновление существующего элемента &nbsp; | Элемент задачи | Нет |
+|DELETE /api/TodoItems/{id} &nbsp; &nbsp; | Удаление элемента &nbsp; &nbsp; | Нет | Нет|
+
+На следующем рисунке показана структура приложения.
+
+![Клиент представлен прямоугольником слева. Он отправляет запрос и получает ответ от приложения (прямоугольник справа). В прямоугольнике приложения также расположены три прямоугольника, представляющих контроллер, модель и уровень доступа к данным. Запрос поступает на контроллер приложения, который выполняет операции чтения и записи между контроллером и уровнем доступа к данным. Модель сериализуется и возвращается клиенту в ответе.](first-web-api/_static/architecture.png)
+
+## <a name="prerequisites"></a>Предварительные требования
+
+# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
+
+[!INCLUDE[](~/includes/net-core-prereqs-vs-3.0.md)]
+
+# <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code.](#tab/visual-studio-code)
+
+[!INCLUDE[](~/includes/net-core-prereqs-vsc-3.0.md)]
+
+# <a name="visual-studio-for-mactabvisual-studio-mac"></a>[Visual Studio для Mac](#tab/visual-studio-mac)
+
+[!INCLUDE[](~/includes/net-core-prereqs-mac-3.0.md)]
+
+---
+
+## <a name="create-a-web-project"></a>Создайте веб-проект.
+
+# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
+
+* В меню **Файл** выберите **Создать** > **Проект**.
+* Выберите шаблон **Веб-приложение ASP.NET Core** и нажмите **Далее**.
+* Назовите проект *TodoApi* и нажмите **Создать**.
+* В диалоговом окне **Создание веб-приложения ASP.NET Core** убедитесь в том, что выбраны платформы **.NET Core** и **ASP.NET Core 3.0**. Выберите шаблон **API** и нажмите кнопку **Создать**. **Не** выбирайте **Включение поддержки Docker**.
+
+![Диалоговое окно создания проекта VS](first-web-api/_static/vs3.png)
+
+# <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code.](#tab/visual-studio-code)
+
+* Откройте [Интегрированный терминал](https://code.visualstudio.com/docs/editor/integrated-terminal).
+* Смените каталог (`cd`) на папку, в которой будет содержаться папка проекта.
+* Выполните следующие команды:
+
+   ```console
+   dotnet new webapi -o TodoApi
+   cd TodoAPI
+   dotnet add package Microsoft.EntityFrameworkCore.SqlServer --version 3.0.0-*
+   dotnet add package Microsoft.EntityFrameworkCore.InMemory --version 3.0.0-*
+   code -r ../TodoApi
+   ```
+
+* При появлении диалогового окна с запросом на добавление в проект необходимых ресурсов выберите **Да**.
+
+  Предыдущие команды:
+
+  * Создает новый проект веб-API и открывает его в Visual Studio Code.
+  * Добавляет пакеты NuGet, которые понадобятся в следующем разделе.
+
+# <a name="visual-studio-for-mactabvisual-studio-mac"></a>[Visual Studio для Mac](#tab/visual-studio-mac)
+
+* Выберите **Файл** > **Новое решение**.
+
+  ![Новое решение macOS](first-web-api-mac/_static/sln.png)
+
+* Выберите **.NET Core** > **Приложение** > **API** > **Далее**.
+
+  ![Диалоговое окно "Новый проект" в macOS](first-web-api-mac/_static/1.png)
+  
+* В диалоговом окне **Настройка нового веб-API ASP.NET Core** в качестве **Целевой платформы** выберите * *.NET Core 3.0*.
+
+* Введите *TodoApi* в поле **Имя проекта** и выберите команду **Создать**.
+
+  ![Диалоговое окно конфигурации](first-web-api-mac/_static/2.png)
+
+---
+
+### <a name="test-the-api"></a>Тестирование API
+
+Шаблон проекта создает API `WeatherForecast`. Вызовите метод `Get` из браузера для тестирования приложения.
+
+# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
+
+Нажмите клавиши CTRL+F5, чтобы запустить приложение. Visual Studio запустит браузер и перейдет к `https://localhost:<port>/WeatherForecast`, где `<port>` — это номер порта, выбранный случайным образом.
+
+Если появится диалоговое окно с запросом о необходимости доверять сертификату IIS Express, выберите **Да**. В появляющемся следом диалоговом окне **Предупреждение системы безопасности** выберите **Да**.
+
+# <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code.](#tab/visual-studio-code)
+
+Нажмите клавиши CTRL+F5, чтобы запустить приложение. В браузере перейдите по следующему URL-адресу: [https://localhost:5001/WeatherForecast](https://localhost:5001/WeatherForecast).
+
+# <a name="visual-studio-for-mactabvisual-studio-mac"></a>[Visual Studio для Mac](#tab/visual-studio-mac)
+
+Выберите **Выполнить** > **Начать отладку**, чтобы запустить приложение. Visual Studio для Mac запустит браузер и перейдет к `https://localhost:<port>`, где `<port>` — это номер порта, выбранный случайным образом. Появится ошибка HTTP 404 (Не найдено). Добавьте `/WeatherForecast` к URL-адресу (измените URL-адрес на `https://localhost:<port>/WeatherForecast`).
+
+---
+
+Возвращаемые данные JSON будут выглядеть примерно так:
+
+```json
+[
+    {
+        "date": "2019-07-16T19:04:05.7257911-06:00",
+        "temperatureC": 52,
+        "temperatureF": 125,
+        "summary": "Mild"
+    },
+    {
+        "date": "2019-07-17T19:04:05.7258461-06:00",
+        "temperatureC": 36,
+        "temperatureF": 96,
+        "summary": "Warm"
+    },
+    {
+        "date": "2019-07-18T19:04:05.7258467-06:00",
+        "temperatureC": 39,
+        "temperatureF": 102,
+        "summary": "Cool"
+    },
+    {
+        "date": "2019-07-19T19:04:05.7258471-06:00",
+        "temperatureC": 10,
+        "temperatureF": 49,
+        "summary": "Bracing"
+    },
+    {
+        "date": "2019-07-20T19:04:05.7258474-06:00",
+        "temperatureC": -1,
+        "temperatureF": 31,
+        "summary": "Chilly"
+    }
+]
+```
+
+## <a name="add-a-model-class"></a>Добавление класса модели
+
+*Модель* — это набор классов, представляющих данные, которыми управляет приложение. Модель этого приложения содержит единственный класс `TodoItem`.
+
+# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
+
+* В **обозревателе решений** щелкните проект правой кнопкой мыши. Выберите **Добавить** > **Новая папка**. Присвойте папке имя *Models*.
+
+* Щелкните папку *Models* правой кнопкой мыши и выберите **Добавить** > **Класс**. Присвойте классу имя *TodoItem* и выберите **Добавить**.
+
+* Замените код шаблона следующим кодом:
+
+# <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code.](#tab/visual-studio-code)
+
+* Добавьте папку с именем *Models*.
+
+* Добавьте класс `TodoItem` в папку *Models*, используя следующий код:
+
+# <a name="visual-studio-for-mactabvisual-studio-mac"></a>[Visual Studio для Mac](#tab/visual-studio-mac)
+
+* Щелкните проект правой кнопкой мыши. Выберите **Добавить** > **Новая папка**. Присвойте папке имя *Models*.
+
+  ![Новая папка](first-web-api-mac/_static/folder.png)
+
+* Правой кнопкой мыши щелкните папку *Models* и выберите **Добавить** > **Новый файл** > **Общие** > **Пустой класс**.
+
+* Назовите класс *TodoItem* и нажмите **Создать**.
+
+* Замените код шаблона следующим кодом:
+
+---
+
+  [!code-csharp[](first-web-api/samples/3.0/TodoApi/Models/TodoItem.cs)]
+
+Свойство `Id` выступает в качестве уникального ключа реляционной базы данных.
+
+Классы моделей можно размещать в любом месте проекта, но обычно для этого используется папка *Models*.
+
+## <a name="add-a-database-context"></a>Добавление контекста базы данных
+
+*Контекст базы данных* —это основной класс, который координирует функциональные возможности Entity Framework для модели данных. Этот класс является производным от класса `Microsoft.EntityFrameworkCore.DbContext`.
+
+# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
+
+### <a name="add-microsoftentityframeworkcoresqlserver"></a>Добавление Microsoft.EntityFrameworkCore.SqlServer
+
+* В меню **Сервис** выберите **Диспетчер пакетов NuGet > Управление пакетами NuGet для решения**.
+* Установите флажок **Включить предварительные выпуски**.
+* Перейдите на вкладку **Обзор** и введите **Microsoft.EntityFrameworkCore.SqlServer** в поле поиска.
+* В панели слева выберите **Microsoft.EntityFrameworkCore.SqlServer V3.0.0-preview**.
+* Установите флажок **Проект** на правой панели и выберите **Установить**.
+* Добавьте пакет NuGet `Microsoft.EntityFrameworkCore.InMemory` согласно инструкциям выше.
+
+![Диспетчер пакетов NuGet](first-web-api/_static/vs3NuGet.png)
+
+## <a name="add-the-todocontext-database-context"></a>Добавление контекста базы данных TodoContext
+
+* Щелкните папку *Models* правой кнопкой мыши и выберите **Добавить** > **Класс**. Назовите класс *TodoContext* и нажмите **Добавить**.
+
+# <a name="visual-studio-code--visual-studio-for-mactabvisual-studio-codevisual-studio-mac"></a>[Visual Studio Code/Visual Studio для Mac](#tab/visual-studio-code+visual-studio-mac)
+
+* Добавьте класс `TodoContext` в папку *Models*.
+
+---
+
+* Введите следующий код:
+
+  [!code-csharp[](first-web-api/samples/3.0/TodoApi/Models/TodoContext.cs)]
+
+## <a name="register-the-database-context"></a>Регистрация контекста базы данных
+
+В ASP.NET Core службы (такие как контекст базы данных) должны быть зарегистрированы с помощью контейнера [внедрения зависимостей](xref:fundamentals/dependency-injection). Контейнер предоставляет службу контроллерам.
+
+Обновите файл *Startup.cs*, используя следующий выделенный код:
+
+[!code-csharp[](first-web-api/samples/3.0/TodoApi/Startup.cs?highlight=7-8,23-24&name=snippet_all)]
+
+Предыдущий код:
+
+* Удалите неиспользуемые объявления `using`.
+* Добавляет контекст базы данных в контейнер внедрения зависимостей.
+* Указывает, что контекст базы данных будет использовать базу данных в памяти.
+
+## <a name="scaffold-a-controller"></a>Формирование шаблонов контроллера
+
+# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
+
+* Щелкните папку *Controllers* правой кнопкой мыши.
+* Выберите **Добавить** > **Создать шаблонный элемент**.
+* Выберите **Контроллер API с действиями, использующий Entity Framework**, а затем выберите **Добавить**.
+* В диалоговом окне **Контроллер API с действиями, использующий Entity Framework** сделайте следующее:
+
+  * Выберите **TodoItem (TodoAPI.Models)** в поле **Класс модели**.
+  * Выберите **TodoContext (TodoAPI.Models)** в поле **Класс контекста данных**.
+  * Нажмите **Добавить**
+
+# <a name="visual-studio-code--visual-studio-for-mactabvisual-studio-codevisual-studio-mac"></a>[Visual Studio Code/Visual Studio для Mac](#tab/visual-studio-code+visual-studio-mac)
+
+Выполните следующие команды:
+
+```console
+dotnet add package Microsoft.VisualStudio.Web.CodeGeneration.Design --version 3.0.0-*
+dotnet add package Microsoft.EntityFrameworkCore.Design --version 3.0.0-*
+dotnet tool install --global dotnet-aspnet-codegenerator
+dotnet aspnet-codegenerator controller -name TodoItemsController -async -api -m TodoItem -dc TodoContext  -outDir Controllers
+```
+
+Предыдущие команды:
+
+* добавляют пакеты NuGet, необходимые для формирования шаблонов;
+* устанавливают подсистему формирования шаблонов (`dotnet-aspnet-codegenerator`);
+* формируют шаблоны для `TodoItemsController`.
+
+---
+
+Сформированный код:
+
+* Определяет класс контроллера API без методов.
+* Добавляет в класс атрибут [[ApiController]](/dotnet/api/microsoft.aspnetcore.mvc.apicontrollerattribute). Этот атрибут указывает, что контроллер отвечает на запросы веб-API. Дополнительные сведения о поведении, которое реализует этот атрибут, см. в <xref:web-api/index>.
+* Использует внедрение зависимостей для внедрения контекста базы данных (`TodoContext`) в контроллер. Контекст базы данных используется в каждом методе [создания, чтения, обновления и удаления](https://wikipedia.org/wiki/Create,_read,_update_and_delete) в контроллере.
+
+## <a name="examine-the-posttodoitem-create-method"></a>Знакомство с методом создания PostTodoItem
+
+Измените инструкцию возврата в `PostTodoItem` и используйте оператор [nameof](/dotnet/csharp/language-reference/operators/nameof):
+
+[!code-csharp[](first-web-api/samples/3.0/TodoApi/Controllers/TodoItemsController.cs?name=snippet_Create)]
+
+Предыдущий код является методом HTTP POST, как указывает атрибут [[HttpPost]](/dotnet/api/microsoft.aspnetcore.mvc.httppostattribute). Этот метод получает значение элемента списка дел из текста HTTP-запроса.
+
+Метод <xref:Microsoft.AspNetCore.Mvc.ControllerBase.CreatedAtAction*>:
+
+* В случае успеха возвращает код состояния HTTP 201. HTTP 201 представляет собой стандартный ответ для метода HTTP POST, создающий ресурс на сервере.
+* Добавляет в ответ заголовок [Location](https://developer.mozilla.org/docs/Web/HTTP/Headers/Location). Заголовок `Location` указывает [URI](https://developer.mozilla.org/docs/Glossary/URI) новой созданной задачи. Дополнительные сведения см. в статье [10.2.2 201 "Создан ресурс"](https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html).
+* Указывает действие `GetTodoItem` для создания URI заголовка `Location`. Ключевое слово `nameof` C# используется для предотвращения жесткого программирования имени действия в вызове `CreatedAtAction`.
+
+### <a name="install-postman"></a>Установка Postman
+
+В этом учебнике для тестирования веб-API используется Postman.
+
+* Установка [Postman](https://www.getpostman.com/downloads/)
+* Запустите веб-приложение.
+* Запустите Postman.
+* Отключение параметра **Проверка SSL-сертификата**
+* В меню **Файл > Параметры** (вкладка **Общие*) отключите параметр **Проверка SSL-сертификата**.
+    > [!WARNING]
+    > После тестирования контроллера снова включите проверку SSL-сертификата.
+
+<a name="post"></a>
+
+### <a name="test-posttodoitem-with-postman"></a>Тестирование PostTodoItem с использованием Postman
+
+* Создайте новый запрос.
+* Установите HTTP-метод `POST`.
+* Откройте вкладку **Тело**.
+* Установите переключатель **без обработки**.
+* Задайте тип **JSON (приложение/json)** .
+* В теле запроса введите код JSON для элемента списка дел:
+
+    ```json
+    {
+      "name":"walk dog",
+      "isComplete":true
+    }
+    ```
+
+* Нажмите кнопку **Отправить**.
+
+  ![Postman с запросом Create](first-web-api/_static/3/create.png)
+
+### <a name="test-the-location-header-uri"></a>Тестирование URI заголовка расположения
+
+* Перейдите на вкладку **Заголовки** в области **Ответ**.
+* Скопируйте значение заголовка **Расположение**:
+
+  ![Вкладка "Заголовки" в консоли Postman](first-web-api/_static/3/create.png)
+
+* Укажите метод GET.
+* Вставьте URI (например, `https://localhost:5001/api/TodoItems/1`)
+* Нажмите кнопку **Отправить**.
+
+## <a name="examine-the-get-methods"></a>Знакомство с методами GET
+
+Эти методы реализуют две конечные точки GET:
+
+* `GET /api/TodoItems`
+* `GET /api/TodoItems/{id}`
+
+Протестируйте приложение, вызвав эти две конечные точки в браузере или в Postman. Например:
+
+* [https://localhost:5001/api/TodoItems](https://localhost:5001/api/TodoItems)
+* [https://localhost:5001/api/TodoItems/1](https://localhost:5001/api/TodoItems/1)
+
+При вызове `GetTodoItems` возвращается примерно такой ответ:
+
+```json
+[
+  {
+    "id": 1,
+    "name": "Item1",
+    "isComplete": false
+  }
+]
+```
+
+### <a name="test-get-with-postman"></a>Тестирование Get с использованием Postman
+
+* Создайте новый запрос.
+* Укажите метод HTTP **GET**.
+* Укажите URL-адрес запроса `https://localhost:<port>/api/TodoItems`. Например, `https://localhost:5001/api/TodoItems`.
+* Выберите режим **Представление с двумя областями** в Postman.
+* Нажмите кнопку **Отправить**.
+
+Это приложение использует выполняющуюся в памяти базу данных. Если остановить и вновь запустить его, предшествующий запрос GET не возвратит никаких данных. Если данные не возвращаются, данные для приложения получаются методом [POST](#post).
+
+## <a name="routing-and-url-paths"></a>Маршрутизация и пути URL
+
+Атрибут [`[HttpGet]`](/dotnet/api/microsoft.aspnetcore.mvc.httpgetattribute) обозначает метод, который отвечает на запрос HTTP GET. Путь URL для каждого метода формируется следующим образом:
+
+* Возьмите строку шаблона в атрибуте `Route` контроллера:
+
+  [!code-csharp[](first-web-api/samples/3.0/TodoApi/Controllers/TodoItemsController.cs?name=TodoController&highlight=1)]
+
+* Замените `[controller]` именем контроллера (по соглашению это имя класса контроллера без суффикса "Controller"). В этом примере класс контроллера имеет имя **TodoItems**, а сам контроллер, соответственно, — "TodoItems". В ASP.NET Core [маршрутизация](xref:mvc/controllers/routing) реализуется без учета регистра символов.
+* Если атрибут `[HttpGet]` имеет шаблон маршрута (например, `[HttpGet("products")]`), добавьте его к пути. В этом примере шаблон не используется. Дополнительные сведения см. в разделе [Маршрутизация атрибутов с помощью атрибутов Http[Verb]](xref:mvc/controllers/routing#attribute-routing-with-httpverb-attributes).
+
+В следующем методе `GetTodoItem` `"{id}"` — это переменная-заполнитель для уникального идентификатора элемента задачи. При вызове `GetTodoItem` параметру метода `id` присваивается значение `"{id}"` в URL-адресе.
+
+[!code-csharp[](first-web-api/samples/3.0/TodoApi/Controllers/TodoItemsController.cs?name=snippet_GetByID&highlight=1-2)]
+
+## <a name="return-values"></a>Возвращаемые значения
+
+Возвращаемое значение имеет тип `GetTodoItems`, а метод `GetTodoItem` имеет тип [ActionResult\<T> type](xref:web-api/action-return-types#actionresultt-type). ASP.NET Core автоматически сериализует объект в формат [JSON](https://www.json.org/) и записывает данные JSON в тело сообщения ответа. Код ответа для этого типа возвращаемого значения равен 200, что свидетельствует об отсутствии необработанных исключений. Необработанные исключения преобразуются в ошибки 5xx.
+
+Типы возвращаемых значений `ActionResult` могут представлять широкий спектр кодов состояний HTTP. Например, метод `GetTodoItem` может возвращать два разных значения состояния:
+
+* Если запрошенному идентификатору не соответствует ни один элемент, метод возвращает ошибку 404 ([Не найдено](/dotnet/api/microsoft.aspnetcore.mvc.controllerbase.notfound)).
+* В противном случае метод возвращает код 200 с телом ответа JSON. При возвращении `item` возвращается ответ HTTP 200.
+
+## <a name="the-puttodoitem-method"></a>Метод PutTodoItem
+
+Проверьте метод `PutTodoItem`.
+
+[!code-csharp[](first-web-api/samples/3.0/TodoApi/Controllers/TodoItemsController.cs?name=snippet_Update)]
+
+Страница `PutTodoItem` аналогична странице `PostTodoItem`, но использует запрос HTTP PUT. Ответ — [204 (Нет содержимого)](https://www.w3.org/Protocols/rfc2616/rfc2616-sec9.html). Согласно спецификации HTTP, запрос PUT требует, чтобы клиент отправлял всю обновленную сущность, а не только изменения. Чтобы обеспечить поддержку частичных обновлений, используйте [HTTP PATCH](xref:Microsoft.AspNetCore.Mvc.HttpPatchAttribute).
+
+Если возникнет ошибка вызова `PutTodoItem`, вызовите `GET`, чтобы в базе данных был один элемент.
+
+### <a name="test-the-puttodoitem-method"></a>Тестирование метода PutTodoItem
+
+Этот пример использует базу данных в памяти, которая должна быть инициирована при каждом запуске приложения. При выполнении вызова PUT в базе данных уже должен существовать какой-либо элемент. Для этого перед вызовом PUT выполните вызов GET, чтобы убедиться в наличии такого элемента в базе данных.
+
+Обновите элемент списка дел с идентификатором 1 и присвойте ему имя "feed fish":
+
+```json
+  {
+    "ID":1,
+    "name":"feed fish",
+    "isComplete":true
+  }
+```
+
+На следующем рисунке показан процесс обновления Postman:
+
+![Консоль Postman с ответом 204 (Нет содержимого)](first-web-api/_static/3/pmcput.png)
+
+## <a name="the-deletetodoitem-method"></a>Метод DeleteTodoItem
+
+Проверьте метод `DeleteTodoItem`.
+
+[!code-csharp[](first-web-api/samples/3.0/TodoApi/Controllers/TodoItemsController.cs?name=snippet_Delete)]
+
+`DeleteTodoItem`Ответ[ — 204 (нет содержимого)](https://www.w3.org/Protocols/rfc2616/rfc2616-sec9.html).
+
+### <a name="test-the-deletetodoitem-method"></a>Тестирование метода DeleteTodoItem
+
+Удалите элемент списка дел с помощью Postman:
+
+* Укажите метод `DELETE`.
+* Укажите URI удаляемого объекта, например `https://localhost:5001/api/TodoItems/1`
+* Нажмите кнопку **Отправить**
+
+## <a name="call-the-api-from-jquery"></a>Вызов API из jQuery
+
+См. [Учебник. Вызов веб-API ASP.NET Core с помощью jQuery](xref:tutorials/web-api-jquery).
+
+::: moniker-end
+
+::: moniker range="< aspnetcore-3.0"
+
+В этом руководстве вы узнаете, как выполняется следующее:
+
+> [!div class="checklist"]
+> * Создание проекта веб-API.
+> * Добавление класса модели и контекста базы данных.
 > * Добавление контроллера.
 > * Добавление методов CRUD.
 > * Настройка маршрутизации и путей URL.
@@ -34,18 +474,17 @@ ms.locfileid: "67893220"
 > * Вызов веб-API с помощью jQuery.
 
 В конечном итоге вы получите веб-API, обеспечивающий управление элементами списка дел, хранящимися в реляционной базе данных.
-
 ## <a name="overview"></a>Обзор
 
 В этом руководстве создается следующий API-интерфейс:
 
 |API | ОПИСАНИЕ | Текст запроса | Текст ответа |
 |--- | ---- | ---- | ---- |
-|GET/api/todo | Получение всех элементов задач | Нет | Массив элементов задач|
-|GET/api/todo/{id} | Получение объекта по идентификатору | Нет | Элемент задачи|
-|POST/api/todo | Добавление нового элемента | Элемент задачи | Элемент задачи |
-|PUT/api/todo/{id} | Обновление существующего элемента &nbsp; | Элемент задачи | Нет |
-|DELETE/api/todo/{id} &nbsp; &nbsp; | Удаление элемента &nbsp; &nbsp; | Нет | Нет|
+|GET /api/TodoItems | Получение всех элементов задач | Нет | Массив элементов задач|
+|GET /api/TodoItems/{id} | Получение объекта по идентификатору | Нет | Элемент задачи|
+|POST /api/TodoItems | Добавление нового элемента | Элемент задачи | Элемент задачи |
+|PUT /api/TodoItems/{id} | Обновление существующего элемента &nbsp; | Элемент задачи | Нет |
+|DELETE /api/TodoItems/{id} &nbsp; &nbsp; | Удаление элемента &nbsp; &nbsp; | Нет | Нет|
 
 На следующем рисунке показана структура приложения.
 
@@ -71,7 +510,7 @@ ms.locfileid: "67893220"
 
 # <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-* В меню **Файл** выберите пункт **Создать** > **Проект**.
+* В меню **Файл** выберите **Создать** > **Проект**.
 * Выберите шаблон **Веб-приложение ASP.NET Core** и нажмите **Далее**.
 * Назовите проект *TodoApi* и нажмите **Создать**.
 * В диалоговом окне **Создание веб-приложения ASP.NET Core** убедитесь в том, что выбраны платформы **.NET Core** и **ASP.NET Core 2.2**. Выберите шаблон **API** и нажмите кнопку **Создать**. **Не** выбирайте **Включение поддержки Docker**.
@@ -95,11 +534,11 @@ ms.locfileid: "67893220"
 
 # <a name="visual-studio-for-mactabvisual-studio-mac"></a>[Visual Studio для Mac](#tab/visual-studio-mac)
 
-* Выберите **Файл** > **Новое решение**.
+* Выберите **Файл** > **Новое решение**.
 
   ![Новое решение macOS](first-web-api-mac/_static/sln.png)
 
-* Выберите **.NET Core** > **Приложение** > **API** > **Далее**.
+* Выберите **.NET Core** > **Приложение** > **API** > **Далее**.
 
   ![Диалоговое окно "Новый проект" в macOS](first-web-api-mac/_static/1.png)
   
@@ -161,7 +600,7 @@ ms.locfileid: "67893220"
 
   ![Новая папка](first-web-api-mac/_static/folder.png)
 
-* Щелкните папку *Models* правой кнопкой мыши и выберите **Добавить** > **Новый файл** > **Общие** > **Пустой класс**.
+* Правой кнопкой мыши щелкните папку *Models* и выберите **Добавить** > **Новый файл** > **Общие** > **Пустой класс**.
 
 * Назовите класс *TodoItem* и нажмите **Создать**.
 
@@ -212,7 +651,7 @@ ms.locfileid: "67893220"
 # <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 * Щелкните папку *Controllers* правой кнопкой мыши.
-* Выберите **Добавить** > **Новый объект**.
+* Выберите **Добавить** > **Новый элемент**.
 * В диалоговом окне **Добавить новый элемент** выберите шаблон **Класс контроллера API**.
 * Присвойте классу имя *TodoController* и выберите **Добавить**.
 
@@ -413,9 +852,7 @@ ms.locfileid: "67893220"
 
 [!code-csharp[](first-web-api/samples/2.2/TodoApi/Startup.cs?highlight=14-15&name=snippet_configure)]
 
-::: moniker range=">= aspnetcore-2.2"
 Создайте папку *wwwroot* в каталоге проекта.
-::: moniker-end
 
 Добавьте HTML-файл *index.html* в каталог *wwwroot*. Замените его содержимое следующей разметкой:
 
@@ -458,6 +895,8 @@ ms.locfileid: "67893220"
 
 [!code-javascript[](first-web-api/samples/2.2/TodoApi/wwwroot/site.js?name=snippet_AjaxDelete)]
 
+::: moniker-end
+
 ## <a name="additional-resources"></a>Дополнительные ресурсы
 
 [Просмотреть или скачать пример кода для этого учебника](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/tutorials/first-web-api/samples). См. раздел [Практическое руководство. Скачивание файла](xref:index#how-to-download-a-sample).
@@ -472,24 +911,3 @@ ms.locfileid: "67893220"
 * <xref:host-and-deploy/azure-apps/index>
 * <xref:host-and-deploy/index>
 * [Версия руководства на YouTube](https://www.youtube.com/watch?v=TTkhEyGBfAk)
-
-## <a name="next-steps"></a>Следующие шаги
-
-В этом руководстве вы узнали, как:
-
-> [!div class="checklist"]
-> * Создание проекта веб-API.
-> * Добавление класса модели.
-> * Создание контекста базы данных.
-> * Регистрация контекста базы данных.
-> * Добавление контроллера.
-> * Добавление методов CRUD.
-> * Настройка маршрутизации и путей URL.
-> * Указание возвращаемых значений.
-> * Вызов веб-API с помощью Postman.
-> * Вызов веб-API с помощью jQuery.
-
-Перейдите к следующему учебнику, посвященному созданию страниц справки по API:
-
-> [!div class="nextstepaction"]
-> <xref:tutorials/get-started-with-swashbuckle>

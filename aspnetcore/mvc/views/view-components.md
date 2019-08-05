@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 05/14/2019
 uid: mvc/views/view-components
-ms.openlocfilehash: ff84abf9e0c682d22196a0a0f5f377990c80a6ae
-ms.sourcegitcommit: 8516b586541e6ba402e57228e356639b85dfb2b9
+ms.openlocfilehash: e6990368519857a27b291d7d565c09072f23f1b0
+ms.sourcegitcommit: 7001657c00358b082734ba4273693b9b3ed35d2a
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67815277"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68670086"
 ---
 # <a name="view-components-in-aspnet-core"></a>Просмотр компонентов в ASP.NET Core
 
@@ -326,6 +326,14 @@ public class PriorityList : ViewComponent
 ::: moniker-end
 
 Метод `PriorityList.Invoke` имеет синхронную подпись, но Razor обнаруживает и вызывает метод с помощью `Component.InvokeAsync` в файле разметки.
+
+## <a name="all-view-component-parameters-are-required"></a>Все параметры компонентов представления обязательны
+
+Каждый параметр в компоненте представления является обязательным атрибутом. Также см. [эту проблему в GitHub](https://github.com/aspnet/AspNetCore/issues/5011). Если какой-либо параметр отсутствует:
+
+* Сигнатура метода `InvokeAsync` не совпадет, поэтому метод не будет выполняться.
+* Компонент ViewComponent не отобразит никакой разметки.
+* Не будут выдаваться ошибки.
 
 ## <a name="additional-resources"></a>Дополнительные ресурсы
 

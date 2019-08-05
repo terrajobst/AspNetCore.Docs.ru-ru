@@ -3,14 +3,14 @@ title: Макет в ASP.NET Core
 author: ardalis
 description: Узнайте, как использовать общие макеты, директивы и как выполнять общий код перед преобразованием представлений для просмотра в приложении ASP.NET Core.
 ms.author: riande
-ms.date: 02/26/2019
+ms.date: 07/30/2019
 uid: mvc/views/layout
-ms.openlocfilehash: 7a60ee15e688d6f0e531302457604fa759213758
-ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
+ms.openlocfilehash: 6bd9dfc65c026ee524277aaaa21333d299c8981e
+ms.sourcegitcommit: 7001657c00358b082734ba4273693b9b3ed35d2a
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56899246"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68670021"
 ---
 # <a name="layout-in-aspnet-core"></a>Макет в ASP.NET Core
 
@@ -35,15 +35,15 @@ ms.locfileid: "56899246"
 
 Общие структуры HTML, такие как скрипты и таблицы стилей, также часто используются разными страницами приложения. Все эти общие элементы могут определяться в файле *макета*, на который затем может ссылаться на любое представление в приложении. Макеты сокращают повторы кода в представлениях.
 
-В соответствии с соглашением макет по умолчанию для приложения ASP.NET Core имеет имя *_Layout.cshtml*. Файл макета для новых проектов ASP.NET Core, созданных с помощью шаблонов:
+В соответствии с соглашением макет по умолчанию для приложения ASP.NET Core имеет имя *_Layout.cshtml*. В новых проектах ASP.NET Core, созданных с применением шаблонов, используются следующие файлы макета.
 
 * Razor Pages: *Pages/Shared/_Layout.cshtml*
 
-  ![в обозревателе решений](layout/_static/rp-web-project-views.png)
+  ![Папка Pages в обозревателе решений](layout/_static/rp-web-project-views.png)
 
 * Контроллер с представлениями: *Views/Shared/_Layout.cshtml*
 
- ![Папка Views в обозревателе решений](layout/_static/mvc-web-project-views.png)
+  ![Папка Views в обозревателе решений](layout/_static/mvc-web-project-views.png)
 
 Макет определяет шаблон верхнего уровня для представлений в приложении. Приложения не требуют макета. В приложении может определяться несколько макетов для разных представлений.
 

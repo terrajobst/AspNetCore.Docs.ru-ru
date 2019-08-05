@@ -5,14 +5,14 @@ description: Узнайте, как использовать глобально�
 monikerRange: '>= aspnetcore-2.1'
 ms.author: scaddie
 ms.custom: mvc
-ms.date: 07/23/2019
+ms.date: 07/25/2019
 uid: web-api/http-repl
-ms.openlocfilehash: 1ceda6182c62bb1be06cd95f14e6a46a1809253e
-ms.sourcegitcommit: 059ab380744fa3be3b69aa90d431b563c57092cf
+ms.openlocfilehash: e719d599545810d723840b0800cd6a2b4f96b123
+ms.sourcegitcommit: fbc66827e319d28bebed678ea5fd42f582fe3c34
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68410888"
+ms.lasthandoff: 07/25/2019
+ms.locfileid: "68493575"
 ---
 # <a name="test-web-apis-with-the-http-repl"></a>Тестирование веб-API с помощью HTTP REPL
 
@@ -21,7 +21,8 @@ ms.locfileid: "68410888"
 HTTP read-eval-print loop (REPL):
 
 * это кроссплатформенная программа командной строки, которая поддерживается везде, где поддерживается .NET Core;
-* служит для создания HTTP-запросов с целью тестирования веб-API ASP.NET Core и просмотра их результатов.
+* служит для создания HTTP-запросов с целью тестирования веб-API ASP.NET Core (а также веб-API, не связанных с ASP.NET Core) и просмотра их результатов;
+* может использоваться для тестирования веб-API, размещенных в любой среде, включая localhost и Службу приложений Azure.
 
 Поддерживаются следующие [HTTP-команды](https://github.com/microsoft/api-guidelines/blob/vNext/Guidelines.md#74-supported-methods):
 
@@ -44,7 +45,7 @@ HTTP read-eval-print loop (REPL):
 Чтобы установить HTTP REPL, выполните следующую команду:
 
 ```console
-dotnet tool install -g Microsoft.dotnet-httprepl --version 3.0.0-*
+dotnet tool install -g Microsoft.dotnet-httprepl --version "3.0.0-*"
 ```
 
 [Глобальное средство .NET Core](/dotnet/core/tools/global-tools#install-a-global-tool) устанавливается из пакета NuGet [Microsoft.dotnet-httprepl](https://www.nuget.org/packages/Microsoft.dotnet-httprepl).
