@@ -6,12 +6,12 @@ ms.author: riande
 ms.date: 12/18/2018
 ms.custom: mvc, seodec18
 uid: security/authorization/secure-data
-ms.openlocfilehash: 222ae1d6212b838e5c70f831960fa23a9924a0ae
-ms.sourcegitcommit: 7a40c56bf6a6aaa63a7ee83a2cac9b3a1d77555e
+ms.openlocfilehash: 4b94cc53777308deb26521a079d8a1c2742744db
+ms.sourcegitcommit: 4fe3ae892f54dc540859bff78741a28c2daa9a38
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67856140"
+ms.lasthandoff: 08/04/2019
+ms.locfileid: "68776748"
 ---
 # <a name="create-an-aspnet-core-app-with-user-data-protected-by-authorization"></a>Создание приложения ASP.NET Core с помощью данных пользователя с помощью авторизации
 
@@ -37,13 +37,13 @@ ms.locfileid: "67856140"
 * **Диспетчеры** можно утвердить или отклонить контактных данных. Только утвержденные контакты отображаются для пользователей.
 * **Администраторы** можно утверждать или отклонять и изменить или удалить все данные.
 
-Изображения в этом документе не совпадать последние шаблоны.
+Изображения в этом документе точно не соответствуют последним шаблонам.
 
 На следующем рисунке, пользователь Рик (`rick@example.com`) выполнил вход. Рик могут только просматривать утвержденные контакты и **изменить**/**удалить**/**Create New** ссылки на свои контакты. Только последней записи, созданные Рик, отображает **изменить** и **удалить** ссылки. Другие пользователи увидят последнюю запись, после менеджеру или администратору изменяет состояние на «Утверждено».
 
 ![Снимок экрана, показывающий Рик входа](secure-data/_static/rick.png)
 
-На следующем рисунке `manager@contoso.com` подписан в и в роль диспетчера:
+На следующем рисунке `manager@contoso.com` вход выполнен и в роли руководителя:
 
 ![Снимок экрана, показывающий manager@contoso.com в системе](secure-data/_static/manager1.png)
 
@@ -53,7 +53,7 @@ ms.locfileid: "67856140"
 
 **Утвердить** и **Отклонить** кнопки отображаются только для менеджеров и администраторов.
 
-На следующем рисунке `admin@contoso.com` подписан в и в роли администратора:
+На следующем рисунке `admin@contoso.com` вход выполнен и в роли администратора:
 
 ![Снимок экрана, показывающий admin@contoso.com в системе](secure-data/_static/admin.png)
 
@@ -65,9 +65,9 @@ ms.locfileid: "67856140"
 
 Пример содержит следующие обработчики авторизации:
 
-* `ContactIsOwnerAuthorizationHandler`: Гарантирует, что пользователь может изменить только свои данные.
-* `ContactManagerAuthorizationHandler`: Менеджеры для утверждения или отклонения контактов.
-* `ContactAdministratorsAuthorizationHandler`: Администраторы могут утверждать или отклонять контакты и изменить или удалить контакты.
+* `ContactIsOwnerAuthorizationHandler`: Гарантирует, что пользователь может изменять только свои данные.
+* `ContactManagerAuthorizationHandler`: Позволяет руководителям утверждать или отклонять контакты.
+* `ContactAdministratorsAuthorizationHandler`: Позволяет администраторам утверждать или отклонять контакты, а также изменять или удалять контакты.
 
 ## <a name="prerequisites"></a>Предварительные требования
 
@@ -122,7 +122,7 @@ dotnet ef database update
 
  Можно отказаться от проверки подлинности на уровне метода действия, контроллера или страницу Razor с `[AllowAnonymous]` атрибута. Задание политики проверки подлинности по умолчанию требовать от пользователей пройти проверку подлинности защищает вновь добавленный Razor Pages и контроллеры. Наличие требуется по умолчанию проверка подлинности безопаснее, чем полагаться на новые контроллеры и страницы Razor для включения `[Authorize]` атрибута.
 
-Добавить [AllowAnonymous](/dotnet/api/microsoft.aspnetcore.authorization.allowanonymousattribute) на страницы индекса и конфиденциальности, чтобы анонимные пользователи могут получить сведения о веб-узле, прежде чем они были зарегистрированы.
+Добавьте [allowAnonymous](/dotnet/api/microsoft.aspnetcore.authorization.allowanonymousattribute) на страницы индекса и конфиденциальности, чтобы анонимные пользователи могли получить сведения о сайте перед их регистрацией.
 
 [!code-csharp[](secure-data/samples/final3/Pages/Index.cshtml.cs?highlight=1,7)]
 
@@ -159,7 +159,7 @@ dotnet user-secrets set SeedUserPW <PW>
 `ContactIsOwnerAuthorizationHandler` Вызовы [контекста. Успешно](/dotnet/api/microsoft.aspnetcore.authorization.authorizationhandlercontext.succeed#Microsoft_AspNetCore_Authorization_AuthorizationHandlerContext_Succeed_Microsoft_AspNetCore_Authorization_IAuthorizationRequirement_) при связаться с владельцем текущего авторизованного пользователя. Обработчики авторизации обычно:
 
 * Вернуть `context.Succeed` при соблюдении требований.
-* Вернуть `Task.CompletedTask` Если требования не соблюдены. `Task.CompletedTask` не является об успехе или неудаче&mdash;позволяет другим обработчикам авторизации для выполнения.
+* Вернуть `Task.CompletedTask` Если требования не соблюдены. `Task.CompletedTask`не является успешным или неудачным&mdash;, что позволяет запускать другие обработчики авторизации.
 
 Если необходимо выполнить явную ошибку, возвратить [контекста. Сбой](/dotnet/api/microsoft.aspnetcore.authorization.authorizationhandlercontext.fail).
 
@@ -242,7 +242,7 @@ dotnet user-secrets set SeedUserPW <PW>
 
 В настоящее время в пользовательском Интерфейсе показано изменение и удаление ссылок для контактов, которые не могут изменяться.
 
-Внедрить службы авторизации в *Pages/_ViewImports.cshtml* файл, чтобы он был доступен для всех представлений:
+Вставьте службу авторизации в файл *pages/_ViewImports. cshtml* , чтобы она была доступна для всех представлений:
 
 [!code-cshtml[](secure-data/samples/final3/Pages/_ViewImports.cshtml?highlight=6-99)]
 
@@ -269,14 +269,14 @@ dotnet user-secrets set SeedUserPW <PW>
 
 См. в разделе [эту проблему](https://github.com/aspnet/AspNetCore.Docs/issues/8502) сведения о:
 
-* Удаление привилегий пользователя. Например отключение пользователя в приложение чата.
+* Удаление привилегий пользователя. Например, отзвука пользователя в приложении разговора.
 * Добавление прав к пользователю.
 
 ## <a name="test-the-completed-app"></a>Тестирование завершенного приложения
 
 Если вы еще не настроили пароль для учетных записей пользователей на основании добавляемых, использовать [средство Secret Manager](xref:security/app-secrets#secret-manager) Установка пароля:
 
-* Выберите надежный пароль. Использовать восемь или больше символов и хотя бы один символ верхнего регистра, чисел и символов. Например `Passw0rd!` требованиям надежный пароль.
+* Выберите надежный пароль: Используйте восемь и более символов и по крайней мере одну прописную букву, цифру и символ. Например `Passw0rd!` требованиям надежный пароль.
 * Выполните следующую команду из папки проекта, где `<PW>` пароль:
 
   ```console
@@ -314,7 +314,7 @@ dotnet user-secrets set SeedUserPW <PW>
   dotnet new webapp -o ContactManager -au Individual -uld
   ```
 
-* Добавить *Models/Contact.cs*:
+* Добавление *моделей/Contact. CS*:
 
   [!code-csharp[](secure-data/samples/starter2.1/Models/Contact.cs?name=snippet1)]
 
@@ -330,9 +330,9 @@ dotnet ef migrations add initial
 dotnet ef database update
   ```
 
-При возникновении ошибки с `dotnet aspnet-codegenerator razorpage` команды, см. в разделе [проблема GitHub](https://github.com/aspnet/Scaffolding/issues/984).
+Если при выполнении `dotnet aspnet-codegenerator razorpage` команды возникла ошибка, см. [эту ошибку в GitHub](https://github.com/aspnet/Scaffolding/issues/984).
 
-* Обновление **ContactManager** привязки в *Pages/Shared/_Layout.cshtml* файла:
+* Обновите привязку **ContactManager** в файле *pages/Shared/_layout. cshtml* :
 
  ```cshtml
 <a class="navbar-brand" asp-area="" asp-page="/Contacts/Index">ContactManager</a>
@@ -342,7 +342,7 @@ dotnet ef database update
 
 ### <a name="seed-the-database"></a>Заполнение базы данных
 
-Добавить [SeedData](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/security/authorization/secure-data/samples/starter3/Data/SeedData.cs) класс *данных* папку:
+Добавьте класс [сиддата](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/security/authorization/secure-data/samples/starter3/Data/SeedData.cs) в папку *Data* :
 
 [!code-csharp[](secure-data/samples/starter3/Data/SeedData.cs)]
 
@@ -366,7 +366,7 @@ dotnet ef database update
 
 ![Снимок экрана, показывающий Рик входа](secure-data/_static/rick.png)
 
-На следующем рисунке `manager@contoso.com` подписан в и в роль диспетчера:
+На следующем рисунке `manager@contoso.com` вход выполнен и в роли руководителя:
 
 ![Снимок экрана, показывающий manager@contoso.com в системе](secure-data/_static/manager1.png)
 
@@ -376,7 +376,7 @@ dotnet ef database update
 
 **Утвердить** и **Отклонить** кнопки отображаются только для менеджеров и администраторов.
 
-На следующем рисунке `admin@contoso.com` подписан в и в роли администратора:
+На следующем рисунке `admin@contoso.com` вход выполнен и в роли администратора:
 
 ![Снимок экрана, показывающий admin@contoso.com в системе](secure-data/_static/admin.png)
 
@@ -388,9 +388,9 @@ dotnet ef database update
 
 Пример содержит следующие обработчики авторизации:
 
-* `ContactIsOwnerAuthorizationHandler`: Гарантирует, что пользователь может изменить только свои данные.
-* `ContactManagerAuthorizationHandler`: Менеджеры для утверждения или отклонения контактов.
-* `ContactAdministratorsAuthorizationHandler`: Администраторы могут утверждать или отклонять контакты и изменить или удалить контакты.
+* `ContactIsOwnerAuthorizationHandler`: Гарантирует, что пользователь может изменять только свои данные.
+* `ContactManagerAuthorizationHandler`: Позволяет руководителям утверждать или отклонять контакты.
+* `ContactAdministratorsAuthorizationHandler`: Позволяет администраторам утверждать или отклонять контакты, а также изменять или удалять контакты.
 
 ## <a name="prerequisites"></a>Предварительные требования
 
@@ -482,7 +482,7 @@ dotnet user-secrets set SeedUserPW <PW>
 `ContactIsOwnerAuthorizationHandler` Вызовы [контекста. Успешно](/dotnet/api/microsoft.aspnetcore.authorization.authorizationhandlercontext.succeed#Microsoft_AspNetCore_Authorization_AuthorizationHandlerContext_Succeed_Microsoft_AspNetCore_Authorization_IAuthorizationRequirement_) при связаться с владельцем текущего авторизованного пользователя. Обработчики авторизации обычно:
 
 * Вернуть `context.Succeed` при соблюдении требований.
-* Вернуть `Task.CompletedTask` Если требования не соблюдены. `Task.CompletedTask` не является об успехе или неудаче&mdash;позволяет другим обработчикам авторизации для выполнения.
+* Вернуть `Task.CompletedTask` Если требования не соблюдены. `Task.CompletedTask`не является успешным или неудачным&mdash;, что позволяет запускать другие обработчики авторизации.
 
 Если необходимо выполнить явную ошибку, возвратить [контекста. Сбой](/dotnet/api/microsoft.aspnetcore.authorization.authorizationhandlercontext.fail).
 
@@ -592,14 +592,14 @@ dotnet user-secrets set SeedUserPW <PW>
 
 См. в разделе [эту проблему](https://github.com/aspnet/AspNetCore.Docs/issues/8502) сведения о:
 
-* Удаление привилегий пользователя. Например отключение пользователя в приложение чата.
+* Удаление привилегий пользователя. Например, отзвука пользователя в приложении разговора.
 * Добавление прав к пользователю.
 
 ## <a name="test-the-completed-app"></a>Тестирование завершенного приложения
 
 Если вы еще не настроили пароль для учетных записей пользователей на основании добавляемых, использовать [средство Secret Manager](xref:security/app-secrets#secret-manager) Установка пароля:
 
-* Выберите надежный пароль. Использовать восемь или больше символов и хотя бы один символ верхнего регистра, чисел и символов. Например `Passw0rd!` требованиям надежный пароль.
+* Выберите надежный пароль: Используйте восемь и более символов и по крайней мере одну прописную букву, цифру и символ. Например `Passw0rd!` требованиям надежный пароль.
 * Выполните следующую команду из папки проекта, где `<PW>` пароль:
 
   ```console
@@ -607,10 +607,11 @@ dotnet user-secrets set SeedUserPW <PW>
   ```
 
 * Удаление и обновление базы данных
+
     ```console
      dotnet ef database drop -f
      dotnet ef database update  
-```
+     ```
 
 * Перезапустите приложение, чтобы заполнить базу данных.
 
@@ -640,7 +641,7 @@ dotnet user-secrets set SeedUserPW <PW>
   dotnet new webapp -o ContactManager -au Individual -uld
   ```
 
-* Добавить *Models/Contact.cs*:
+* Добавление *моделей/Contact. CS*:
 
   [!code-csharp[](secure-data/samples/starter2.1/Models/Contact.cs?name=snippet1)]
 
