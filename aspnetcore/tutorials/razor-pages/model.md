@@ -5,12 +5,12 @@ description: Узнайте, как добавлять классы для уп�
 ms.author: riande
 ms.date: 07/22/2019
 uid: tutorials/razor-pages/model
-ms.openlocfilehash: b7f77cfa51f8d86504939e31eade0dfda8a6b1c9
-ms.sourcegitcommit: 849af69ee3c94cdb9fd8fa1f1bb8f5a5dda7b9eb
+ms.openlocfilehash: 6132f7b907014b4f57bb9ae0300e00b6ecb23f1a
+ms.sourcegitcommit: 2eb605f4f20ac4dd9de6c3b3e3453e108a357a21
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68371914"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68820065"
 ---
 # <a name="add-a-model-to-a-razor-pages-app-in-aspnet-core"></a>Добавление модели в приложение Razor Pages в ASP.NET Core
 
@@ -80,9 +80,9 @@ ms.locfileid: "68371914"
 
 ![Изображение из предыдущих инструкций.](model/_static/add_scaffold.png)
 
-Заполните поля в диалоговом окне **Добавить Razor Pages с помощью Entity Framework (CRUD)**:
+Заполните поля в диалоговом окне **Добавить Razor Pages с помощью Entity Framework (CRUD)** :
 
-* В раскрывающемся списке **Класс модели** выберите **Фильм (RazorPagesMovie.Models)**.
+* В раскрывающемся списке **Класс модели** выберите **Фильм (RazorPagesMovie.Models)** .
 * В строке **Класс контекста данных** щелкните значок плюса **+** и измените сгенерированное имя RazorPagesMovie.**Models**.RazorPagesMovieContext на RazorPagesMovie.**Data**.RazorPagesMovieContext. [Это изменение](https://developercommunity.visualstudio.com/content/problem/652166/aspnet-core-ef-scaffolder-uses-incorrect-namespace.html) не требуется. Оно создает класс контекста базы данных с правильным пространством имен.
 * Нажмите **Добавить**.
 
@@ -99,7 +99,7 @@ ms.locfileid: "68371914"
 * Установка средства формирования шаблонов:
 
   ```console
-   dotnet tool install --global dotnet-aspnet-codegenerator
+   dotnet tool install --global dotnet-aspnet-codegenerator --version 3.0.0-*
    ```
 
 * **Для Windows**: Выполните следующую команду:
@@ -122,7 +122,7 @@ ms.locfileid: "68371914"
 * Установка средства формирования шаблонов:
 
   ```console
-   dotnet tool install --global dotnet-aspnet-codegenerator
+   dotnet tool install --global dotnet-aspnet-codegenerator --version 3.0.0-*
    ```
 
 * Выполните следующую команду:
@@ -166,7 +166,7 @@ ms.locfileid: "68371914"
 В PMC введите следующие команды:
 
 ```PMC
-Add-Migration Initial
+Add-Migration InitialCreate
 Update-Database
 ```
 
@@ -321,13 +321,13 @@ Login failed for user 'User-name'.
 
 ![Изображение из предыдущих инструкций.](model/_static/add_scaffold.png)
 
-Заполните поля в диалоговом окне **Добавить Razor Pages с помощью Entity Framework (CRUD)**:
+Заполните поля в диалоговом окне **Добавить Razor Pages с помощью Entity Framework (CRUD)** :
 <!-- In the next section, change 
 (plus) sign and accept the generated name 
 to use Data, it should not use models. That will make the namespace the same for the VS version and the CLI version
 -->
 
-* В раскрывающемся списке **Класс модели** выберите **Фильм (RazorPagesMovie.Models)**.
+* В раскрывающемся списке **Класс модели** выберите **Фильм (RazorPagesMovie.Models)** .
 * В строке **Класс контекста данных** нажмите на значок плюса **+** и примите сгенерированное имя **RazorPagesMovie.Models.RazorPagesMovieContext**.
 * Нажмите **Добавить**.
 

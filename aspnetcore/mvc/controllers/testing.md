@@ -5,14 +5,14 @@ description: Узнайте, как протестировать логику к
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 07/06/2019
+ms.date: 08/03/2019
 uid: mvc/controllers/testing
-ms.openlocfilehash: 8dd2fc5d581dbcb11afbcdc0c154c0e2640f9259
-ms.sourcegitcommit: 91cc1f07ef178ab709ea42f8b3a10399c970496e
+ms.openlocfilehash: 6238454b4fb809179d78d4e743e79abadb994e5c
+ms.sourcegitcommit: 4fe3ae892f54dc540859bff78741a28c2daa9a38
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/08/2019
-ms.locfileid: "67622726"
+ms.lasthandoff: 08/04/2019
+ms.locfileid: "68776604"
 ---
 # <a name="test-controller-logic-in-aspnet-core"></a>Тестирование логики контроллера в ASP.NET Core
 
@@ -20,7 +20,7 @@ ms.locfileid: "67622726"
 
 [Контроллеры](xref:mvc/controllers/actions) играют важнейшую роль в любом приложении MVC на ASP.NET Core. Это означает, что вы должны быть полностью уверены в правильности их работы. Автоматические тесты позволяют обнаружить ошибки до развертывания приложения в рабочей среде.
 
-[Просмотреть или скачать образец кода](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/controllers/testing/sample) ([как скачивать](xref:index#how-to-download-a-sample))
+[Просмотреть или скачать образец кода](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/controllers/testing/samples/) ([как скачивать](xref:index#how-to-download-a-sample))
 
 ## <a name="unit-tests-of-controller-logic"></a>Модульное тестирование логики контроллера
 
