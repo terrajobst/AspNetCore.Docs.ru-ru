@@ -1,0 +1,21 @@
+# <a name="blazor-client-side-sample-app"></a><span data-ttu-id="d7a5c-101">Пример приложения блазор (на стороне клиента)</span><span class="sxs-lookup"><span data-stu-id="d7a5c-101">Blazor (client-side) Sample App</span></span>
+
+<span data-ttu-id="d7a5c-102">В этом примере показано использование сценариев Блазор, описанных в документации по Блазор.</span><span class="sxs-lookup"><span data-stu-id="d7a5c-102">This sample illustrates the use of Blazor scenarios described in the Blazor documentation.</span></span>
+
+## <a name="call-web-api-example"></a><span data-ttu-id="d7a5c-103">Пример вызова веб-API</span><span class="sxs-lookup"><span data-stu-id="d7a5c-103">Call web API example</span></span>
+
+<span data-ttu-id="d7a5c-104">Для примера веб-API требуется работающий веб-API на основе примера приложения для <a href="https://docs.microsoft.com/aspnet/core/tutorials/first-web-api">учебника: Создание веб-API с помощью ASP.NET Core</a> MVC.</span><span class="sxs-lookup"><span data-stu-id="d7a5c-104">The web API example requires a running web API based on the sample app for the <a href="https://docs.microsoft.com/aspnet/core/tutorials/first-web-api">Tutorial: Create a web API with ASP.NET Core MVC</a> topic.</span></span> <span data-ttu-id="d7a5c-105">Пример приложения выполняет запросы к веб-API по адресу `https://localhost:10000/api/todo`.</span><span class="sxs-lookup"><span data-stu-id="d7a5c-105">The sample app makes requests to the web API at `https://localhost:10000/api/todo`.</span></span> <span data-ttu-id="d7a5c-106">Если используется другой адрес веб-API, обновите `ServiceEndpoint` значение константы в `@functions` блоке компонента Razor.</span><span class="sxs-lookup"><span data-stu-id="d7a5c-106">If a different web API address is used, update the `ServiceEndpoint` constant value in the Razor component's `@functions` block.</span></span></p>
+
+<span data-ttu-id="d7a5c-107">Пример приложения выполняет запрос на <a href="https://docs.microsoft.com/aspnet/core/security/cors">общий доступ к ресурсам в разных источниках (CORS)</a> от `http://localhost:5000` или `https://localhost:5001` к веб-API.</span><span class="sxs-lookup"><span data-stu-id="d7a5c-107">The sample app makes a <a href="https://docs.microsoft.com/aspnet/core/security/cors">cross-origin resource sharing (CORS)</a> request from `http://localhost:5000` or `https://localhost:5001` to the web API.</span></span> <span data-ttu-id="d7a5c-108">Учетные данные (файлы cookie и заголовки авторизации) разрешены.</span><span class="sxs-lookup"><span data-stu-id="d7a5c-108">Credentials (authorization cookies/headers) are permitted.</span></span> <span data-ttu-id="d7a5c-109">Добавьте следующую конфигурацию по промежуточного слоя CORS в `Startup.Configure` метод веб-API перед вызовом: `UseMvc`</span><span class="sxs-lookup"><span data-stu-id="d7a5c-109">Add the following CORS middleware configuration to the web API's `Startup.Configure` method before it calls `UseMvc`:</span></span></p>
+
+```csharp
+app.UseCors(policy => 
+    policy.WithOrigins("http://localhost:5000", "https://localhost:5001")
+    .AllowAnyMethod()
+    .WithHeaders(HeaderNames.ContentType, HeaderNames.Authorization)
+    .AllowCredentials());
+```
+
+<span data-ttu-id="d7a5c-110">Настройте домены и порты `WithOrigins` в соответствии с требованиями приложения блазор.</span><span class="sxs-lookup"><span data-stu-id="d7a5c-110">Adjust the domains and ports of `WithOrigins` as needed for the Blazor app.</span></span>
+
+<span data-ttu-id="d7a5c-111">Веб-API настроен для CORS, чтобы разрешить авторизацию файлов cookie, заголовков и запросов из клиентского кода, но веб-API, созданный с помощью руководства, не авторизует запросы.</span><span class="sxs-lookup"><span data-stu-id="d7a5c-111">The web API is configured for CORS to permit authorization cookies/headers and requests from client code, but the web API as created by the tutorial doesn't actually authorize requests.</span></span> <span data-ttu-id="d7a5c-112">Рекомендации по реализации см. в <a href="https://docs.microsoft.com/aspnet/core/security/">статье ASP.NET Core безопасность и идентификация</a> .</span><span class="sxs-lookup"><span data-stu-id="d7a5c-112">See the <a href="https://docs.microsoft.com/aspnet/core/security/">ASP.NET Core Security and Identity articles</a> for implementation guidance.</span></span>
