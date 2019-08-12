@@ -104,8 +104,6 @@
         - name: EF Core с Razor Pages
           displayName: tutorial
           items:
-            - name: Обзор
-              uid: data/ef-rp/index
             - name: Начало работы
               uid: data/ef-rp/intro
             - name: 'Создание, чтение, обновление и удаление'
@@ -581,8 +579,6 @@
       items:
         - name: EF Core с Razor Pages
           items:
-            - name: Обзор
-              uid: data/ef-rp/index
             - name: Начало работы
               uid: data/ef-rp/intro
             - name: 'Создание, чтение, обновление и удаление'
@@ -701,6 +697,8 @@
         - name: Обзор
           displayName: 'deploy, publish'
           uid: host-and-deploy/iis/index
+        - name: Руководство по публикации в службах IIS
+          uid: tutorials/publish-to-iis
         - name: Модуль ASP.NET Core
           displayName: 'deploy, publish'
           uid: host-and-deploy/aspnet-core-module
