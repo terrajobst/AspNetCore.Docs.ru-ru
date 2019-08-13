@@ -3,14 +3,14 @@ title: Добавление контроллера в приложение MVC A
 author: rick-anderson
 description: Узнайте, как добавить контроллер в простое приложение ASP.NET Core MVC.
 ms.author: riande
-ms.date: 02/28/2017
+ms.date: 08/05/2017
 uid: tutorials/first-mvc-app/adding-controller
-ms.openlocfilehash: ab97b875956ec262623ed9862ace6a930331d80d
-ms.sourcegitcommit: 979dbfc5e9ce09b9470789989cddfcfb57079d94
+ms.openlocfilehash: 1c54959130f3a9959d4d4fdb8dcaa0d37ee2f046
+ms.sourcegitcommit: 2eb605f4f20ac4dd9de6c3b3e3453e108a357a21
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68682327"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68820061"
 ---
 # <a name="add-a-controller-to-an-aspnet-core-mvc-app"></a>Добавление контроллера в приложение MVC ASP.NET Core
 
@@ -86,9 +86,9 @@ MVC вызывает классы контроллера (и методы дей
 
 Если при переходе к приложению не указаны сегменты URL-адреса, по умолчанию устанавливаются контроллер Home и метод Index, которые заданы в выделенной выше строке шаблона.
 
-Первый сегмент URL-адреса определяет класс контроллера, который будет выполняться. Поэтому `localhost:xxxx/HelloWorld` сопоставляется с классом **HelloWorld**Controller. Вторая часть сегмента URL-адреса определяет метод действия для класса. Таким образом, `localhost:xxxx/HelloWorld/Index` выполняет метод `Index` класса `HelloWorldController`. Обратите внимание, что в этом случае достаточно перейти по адресу `localhost:xxxx/HelloWorld`, а метод `Index` вызывается по умолчанию. Это связано с тем, что если имя вызываемого метода не указано явно, для контроллера вызывается метод по умолчанию `Index`. В третьей части сегмента URL-адреса (`id`) указываются данные маршрута. Данные маршрута описаны далее в этом руководстве.
+Первый сегмент URL-адреса определяет класс контроллера, который будет выполняться. Поэтому `localhost:{PORT}/HelloWorld` сопоставляется с классом **HelloWorld**Controller. Вторая часть сегмента URL-адреса определяет метод действия для класса. Таким образом, `localhost:{PORT}/HelloWorld/Index` выполняет метод `Index` класса `HelloWorldController`. Обратите внимание, что в этом случае достаточно перейти по адресу `localhost:{PORT}/HelloWorld`, а метод `Index` вызывается по умолчанию. Это связано с тем, что если имя вызываемого метода не указано явно, для контроллера вызывается метод по умолчанию `Index`. В третьей части сегмента URL-адреса (`id`) указываются данные маршрута. Данные маршрута описаны далее в этом руководстве.
 
-Перейдите по адресу `https://localhost:xxxx/HelloWorld/Welcome`. Метод `Welcome` запускается и возвращает строку `This is the Welcome action method...`. Для этого URL-адреса заданы контроллер `HelloWorld` и метод действия `Welcome`. Часть URL-адреса `[Parameters]` на данный момент еще не использовалась.
+Перейдите по адресу `https://localhost:{PORT}/HelloWorld/Welcome`. Метод `Welcome` запускается и возвращает строку `This is the Welcome action method...`. Для этого URL-адреса заданы контроллер `HelloWorld` и метод действия `Welcome`. Часть URL-адреса `[Parameters]` на данный момент еще не использовалась.
 
 ![Окно браузера, в котором отображается ответ "This is the Welcome action method" (Это метод действия Welcome)](~/tutorials/first-mvc-app/adding-controller/_static/welcome.png)
 
@@ -104,9 +104,9 @@ MVC вызывает классы контроллера (и методы дей
 
 Запустите приложение и перейдите по адресу:
 
-   `https://localhost:xxxx/HelloWorld/Welcome?name=Rick&numtimes=4`
+   `https://localhost:{PORT}/HelloWorld/Welcome?name=Rick&numtimes=4`
 
-(Замените xxxx на номер порта.) Вы можете попробовать различные значения `name` и `numtimes` в URL-адресе. Система [привязки модели](xref:mvc/models/model-binding) MVC автоматически сопоставляет именованные параметры из строк запроса в адресной строке с параметрами метода. Дополнительные сведения см. в разделе [Привязка модели](xref:mvc/models/model-binding).
+(Замените `{PORT}` на номер порта.) Вы можете попробовать различные значения `name` и `numtimes` в URL-адресе. Система [привязки модели](xref:mvc/models/model-binding) MVC автоматически сопоставляет именованные параметры из строк запроса в адресной строке с параметрами метода. Дополнительные сведения см. в разделе [Привязка модели](xref:mvc/models/model-binding).
 
 ![Окно браузера, в котором отображается ответ Hello Rick (Привет, Rick); NumTimes= 4](~/tutorials/first-mvc-app/adding-controller/_static/rick4.png)
 
@@ -116,7 +116,7 @@ MVC вызывает классы контроллера (и методы дей
 
 [!code-csharp[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie/Controllers/HelloWorldController.cs?name=snippet_3)]
 
-Запустите приложение и введите следующий URL-адрес: `https://localhost:xxx/HelloWorld/Welcome/3?name=Rick`
+Запустите приложение и введите следующий URL-адрес: `https://localhost:{PORT}/HelloWorld/Welcome/3?name=Rick`
 
 На этот раз третий сегмент URL-адреса сопоставляется с параметром маршрута `id`. Метод `Welcome` содержит параметр `id`, который сопоставляется с шаблоном URL-адреса в методе `MapControllerRoute`. Завершающий символ `?` (в `id?`) указывает, что параметр `id` является необязательным.
 
@@ -205,9 +205,9 @@ Remove link for simplified tutorial.
 
 Если при переходе к приложению не указаны сегменты URL-адреса, по умолчанию устанавливаются контроллер Home и метод Index, которые заданы в выделенной выше строке шаблона.
 
-Первый сегмент URL-адреса определяет класс контроллера, который будет выполняться. Таким образом, `localhost:xxxx/HelloWorld` сопоставляется с классом `HelloWorldController`. Вторая часть сегмента URL-адреса определяет метод действия для класса. Таким образом, `localhost:xxxx/HelloWorld/Index` выполняет метод `Index` класса `HelloWorldController`. Обратите внимание, что в этом случае достаточно перейти по адресу `localhost:xxxx/HelloWorld`, а метод `Index` вызывается по умолчанию. Это связано с тем, что если имя вызываемого метода не задано явно, для контроллера по умолчанию вызывается метод `Index`. В третьей части сегмента URL-адреса (`id`) указываются данные маршрута. Данные маршрута описаны далее в этом руководстве.
+Первый сегмент URL-адреса определяет класс контроллера, который будет выполняться. Таким образом, `localhost:{PORT}/HelloWorld` сопоставляется с классом `HelloWorldController`. Вторая часть сегмента URL-адреса определяет метод действия для класса. Таким образом, `localhost:{PORT}/HelloWorld/Index` выполняет метод `Index` класса `HelloWorldController`. Обратите внимание, что в этом случае достаточно перейти по адресу `localhost:{PORT}/HelloWorld`, а метод `Index` вызывается по умолчанию. Это связано с тем, что если имя вызываемого метода не задано явно, для контроллера по умолчанию вызывается метод `Index`. В третьей части сегмента URL-адреса (`id`) указываются данные маршрута. Данные маршрута описаны далее в этом руководстве.
 
-Перейдите по адресу `https://localhost:xxxx/HelloWorld/Welcome`. Метод `Welcome` запускается и возвращает строку `This is the Welcome action method...`. Для этого URL-адреса заданы контроллер `HelloWorld` и метод действия `Welcome`. Часть URL-адреса `[Parameters]` на данный момент еще не использовалась.
+Перейдите по адресу `https://localhost:{PORT}/HelloWorld/Welcome`. Метод `Welcome` запускается и возвращает строку `This is the Welcome action method...`. Для этого URL-адреса заданы контроллер `HelloWorld` и метод действия `Welcome`. Часть URL-адреса `[Parameters]` на данный момент еще не использовалась.
 
 ![Окно браузера, в котором отображается ответ "This is the Welcome action method" (Это метод действия Welcome)](~/tutorials/first-mvc-app/adding-controller/_static/welcome.png)
 
@@ -223,9 +223,9 @@ Remove link for simplified tutorial.
 
 Запустите приложение и перейдите по адресу:
 
-   `https://localhost:xxxx/HelloWorld/Welcome?name=Rick&numtimes=4`
+   `https://localhost:{PORT}/HelloWorld/Welcome?name=Rick&numtimes=4`
 
-(Замените xxxx на номер порта.) Вы можете попробовать различные значения `name` и `numtimes` в URL-адресе. Система [привязки модели](xref:mvc/models/model-binding) MVC автоматически сопоставляет именованные параметры из строк запроса в адресной строке с параметрами метода. Дополнительные сведения см. в разделе [Привязка модели](xref:mvc/models/model-binding).
+(Замените `{PORT}` на номер порта.) Вы можете попробовать различные значения `name` и `numtimes` в URL-адресе. Система [привязки модели](xref:mvc/models/model-binding) MVC автоматически сопоставляет именованные параметры из строк запроса в адресной строке с параметрами метода. Дополнительные сведения см. в разделе [Привязка модели](xref:mvc/models/model-binding).
 
 ![Окно браузера, в котором отображается ответ Hello Rick (Привет, Rick); NumTimes= 4](~/tutorials/first-mvc-app/adding-controller/_static/rick4.png)
 
@@ -235,7 +235,7 @@ Remove link for simplified tutorial.
 
 [!code-csharp[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie/Controllers/HelloWorldController.cs?name=snippet_3)]
 
-Запустите приложение и введите следующий URL-адрес: `https://localhost:xxx/HelloWorld/Welcome/3?name=Rick`
+Запустите приложение и введите следующий URL-адрес: `https://localhost:{PORT}/HelloWorld/Welcome/3?name=Rick`
 
 На этот раз третий сегмент URL-адреса сопоставляется с параметром маршрута `id`. Метод `Welcome` содержит параметр `id`, который сопоставляется с шаблоном URL-адреса в методе `MapRoute`. Завершающий символ `?` (в `id?`) указывает, что параметр `id` является необязательным.
 

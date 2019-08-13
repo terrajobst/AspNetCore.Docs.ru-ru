@@ -2,7 +2,7 @@
 
 ### <a name="add-a-database-context-class"></a>Добавление класса контекста для базы данных
 
-Добавьте следующий класс `RazorPagesMovieContext` в папку *Data*:
+В проекте RazorPagesMovie создайте новую папку с именем *Data*. Добавьте следующий класс `RazorPagesMovieContext` в папку *Data*:
 
 [!code-csharp[](~/tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie22/Data/RazorPagesMovieContext.cs)]
 
@@ -18,18 +18,19 @@
 
 [!code-json[](~/tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie30/appsettings_SQLite.json?highlight=10-12)]
 
-### <a name="add-required-nuget-packages"></a>Добавьте необходимые пакеты NuGet
+### <a name="add-nuget-packages-and-ef-tools"></a>Добавление пакетов NuGet и средств EF
 
-Выполните следующие команды .NET Core CLI, чтобы добавить в проект SQLite, Entity Framework Core и CodeGeneration.Design.
+Откройте терминал для проекта RazorPagesMovie.  Щелкните правой кнопкой мыши имя проекта в строке проектирования или макета и выберите **Сервис > Открыть** в терминале. Выполните следующие команды интерфейса командной строки .NET Core в терминале:
 
 ```console
+dotnet tool install --global dotnet-ef --version 3.0.0-*
 dotnet add package Microsoft.EntityFrameworkCore.SQLite --version 3.0.0-*
 dotnet add package Microsoft.VisualStudio.Web.CodeGeneration.Design --version 3.0.0-*
 dotnet add package Microsoft.EntityFrameworkCore.Design --version 3.0.0-*
 dotnet add package Microsoft.EntityFrameworkCore.SqlServer --version 3.0.0-*
 ```
 
-Пакет `Microsoft.VisualStudio.Web.CodeGeneration.Design` необходим для формирования шаблонов.
+Приведенные выше команды добавляют в проект средства Entity Framework Core для .NET CLI и несколько пакетов. Пакет `Microsoft.VisualStudio.Web.CodeGeneration.Design` необходим для формирования шаблонов.
 
 <a name="reg"></a>
 

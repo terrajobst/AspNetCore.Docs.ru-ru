@@ -4,14 +4,14 @@ author: rick-anderson
 description: Узнайте, как создать веб-API с помощью ASP.NET Core.
 ms.author: riande
 ms.custom: mvc
-ms.date: 07/11/2019
+ms.date: 08/05/2019
 uid: tutorials/first-web-api
-ms.openlocfilehash: 60235af56077127093ac1d77338bc228a6edf073
-ms.sourcegitcommit: 0efb9e219fef481dee35f7b763165e488aa6cf9c
+ms.openlocfilehash: 855d05fa2b9c1a7572212c40adbe61bb396f4bac
+ms.sourcegitcommit: 2eb605f4f20ac4dd9de6c3b3e3453e108a357a21
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68602522"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68819832"
 ---
 # <a name="tutorial-create-a-web-api-with-aspnet-core"></a>Учебник. Создание веб-API с помощью ASP.NET Core
 
@@ -21,7 +21,7 @@ ms.locfileid: "68602522"
 
 ::: moniker range=">= aspnetcore-3.0"
 
-В этом руководстве вы узнаете, как выполнять следующие задачи:
+В этом руководстве вы узнаете, как:
 
 > [!div class="checklist"]
 > * Создание проекта веб-API.
@@ -455,13 +455,13 @@ dotnet aspnet-codegenerator controller -name TodoItemsController -async -api -m 
 
 ## <a name="call-the-api-from-jquery"></a>Вызов API из jQuery
 
-См. [Учебник. Вызов веб-API ASP.NET Core с помощью jQuery](xref:tutorials/web-api-jquery).
+Пошаговые инструкции см. в [руководстве Вызов веб-API ASP.NET Core с помощью jQuery](xref:tutorials/web-api-jquery).
 
 ::: moniker-end
 
 ::: moniker range="< aspnetcore-3.0"
 
-В этом руководстве вы узнаете, как выполняется следующее:
+В этом руководстве вы узнаете, как:
 
 > [!div class="checklist"]
 > * Создание проекта веб-API.
@@ -728,6 +728,7 @@ dotnet aspnet-codegenerator controller -name TodoItemsController -async -api -m 
 * Если запрошенному идентификатору не соответствует ни один элемент, метод возвращает ошибку 404 ([Не найдено](/dotnet/api/microsoft.aspnetcore.mvc.controllerbase.notfound)).
 * В противном случае метод возвращает код 200 с телом ответа JSON. При возвращении `item` возвращается ответ HTTP 200.
 
+
 ## <a name="test-the-gettodoitems-method"></a>Тестирование метода GetTodoItems
 
 В этом учебнике для тестирования веб-API используется Postman.
@@ -736,10 +737,19 @@ dotnet aspnet-codegenerator controller -name TodoItemsController -async -api -m 
 * Запустите веб-приложение.
 * Запустите Postman.
 * Отключение параметра **Проверка SSL-сертификата**
+
+# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
+
+* В меню **Файл** > **Параметры** (вкладка **Общие**) отключите параметр **Проверка SSL-сертификата**.
+
+# <a name="visual-studio-code--visual-studio-for-mactabvisual-studio-codevisual-studio-mac"></a>[Visual Studio Code/Visual Studio для Mac](#tab/visual-studio-code+visual-studio-mac)
+
+* В меню **Postman**  >  **Настройки** (вкладка **Общие**) отключите параметр **Проверка SSL-сертификата**. Кроме того, можно выбрать значок гаечного ключа и выбрать **Параметры**, а затем отключить проверку SSL-сертификата.
+
+---
   
-  * В меню **Файл > Параметры** (вкладка **Общие*) отключите параметр **Проверка SSL-сертификата**.
-    > [!WARNING]
-    > После тестирования контроллера снова включите проверку SSL-сертификата.
+> [!WARNING]
+> После тестирования контроллера снова включите проверку SSL-сертификата.
 
 * Создайте новый запрос.
   * Укажите метод HTTP **GET**.
@@ -751,7 +761,7 @@ dotnet aspnet-codegenerator controller -name TodoItemsController -async -api -m 
 
 ## <a name="add-a-create-method"></a>Добавление метода Create
 
-Добавьте приведенный ниже метод `PostTodoItem`.
+Добавьте следующий метод `PostTodoItem` в *Controllers/TodoController.cs*: 
 
 [!code-csharp[](first-web-api/samples/2.2/TodoApi/Controllers/TodoController.cs?name=snippet_Create)]
 
