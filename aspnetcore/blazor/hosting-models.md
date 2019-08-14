@@ -7,12 +7,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 07/01/2019
 uid: blazor/hosting-models
-ms.openlocfilehash: 9dd96ff6e3539bf1c3e932b33776b16d0fbb2d34
-ms.sourcegitcommit: 849af69ee3c94cdb9fd8fa1f1bb8f5a5dda7b9eb
+ms.openlocfilehash: 64393e826cb17550085f468f5916fca55973908f
+ms.sourcegitcommit: 89fcc6cb3e12790dca2b8b62f86609bed6335be9
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68948294"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68993389"
 ---
 # <a name="aspnet-core-blazor-hosting-models"></a>ASP.NET Core моделей размещения Блазор
 
@@ -28,10 +28,9 @@ ms.locfileid: "68948294"
 
 ![Блазор на стороне клиента: Приложение Блазор выполняется в потоке пользовательского интерфейса в браузере.](hosting-models/_static/client-side.png)
 
-Чтобы создать приложение Блазор с помощью клиентской модели размещения, используйте один из следующих шаблонов:
+Чтобы создать приложение Блазор с помощью клиентской модели размещения, используйте шаблон **приложения блазор для сборки** ([DotNet New блазорвасм](/dotnet/core/tools/dotnet-new)).
 
-* **Блазор (на стороне клиента)** ([DotNet New блазор](/dotnet/core/tools/dotnet-new)) &ndash; Развертывается как набор статических файлов.
-* **Блазор (ASP.NET Core Hosted)** ([DotNet New блазорхостед](/dotnet/core/tools/dotnet-new)) &ndash; Размещается на сервере ASP.NET Core. ASP.NET Core приложение обслуживает приложения Блазор для клиентов. Клиентское приложение Блазор может взаимодействовать с сервером по сети с помощью вызовов веб-API или [SignalR](xref:signalr/introduction).
+Выбрав шаблон **приложения блазор-Assembly** , вы можете настроить приложение для использования ASP.NET Core серверной части, установив флажок **ASP.NET Core размещения** ([DotNet New блазорвасм — Hosted](/dotnet/core/tools/dotnet-new)). ASP.NET Core приложение обслуживает приложения Блазор для клиентов. Клиентское приложение Блазор может взаимодействовать с сервером по сети с помощью вызовов веб-API или [SignalR](xref:signalr/introduction).
 
 Шаблоны включают скрипт *блазор... js* , который обрабатывает:
 
@@ -58,7 +57,7 @@ ms.locfileid: "68948294"
 
 ![Браузер взаимодействует с приложением (размещенным в приложении ASP.NET Core) на сервере через подключение SignalR.](hosting-models/_static/server-side.png)
 
-Чтобы создать приложение Блазор с помощью модели размещения на стороне сервера, используйте шаблон серверное **приложение ASP.NET Core блазор** ([DotNet New блазорсерверсиде](/dotnet/core/tools/dotnet-new)). Приложение ASP.NET Core размещает приложение на стороне сервера и создает конечную точку SignalR, в которую подключаются клиенты.
+Чтобы создать приложение Блазор с помощью модели размещения на стороне сервера, используйте шаблон серверное **приложение ASP.NET Core блазор** ([DotNet New блазорсервер](/dotnet/core/tools/dotnet-new)). Приложение ASP.NET Core размещает приложение на стороне сервера и создает конечную точку SignalR, в которую подключаются клиенты.
 
 ASP.NET Core приложение ссылается на `Startup` класс приложения для добавления:
 

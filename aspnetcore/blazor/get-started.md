@@ -5,14 +5,14 @@ description: Приступите к работе с Блазор, создав 
 monikerRange: '>= aspnetcore-3.0'
 ms.author: riande
 ms.custom: mvc
-ms.date: 07/23/2019
+ms.date: 08/13/2019
 uid: blazor/get-started
-ms.openlocfilehash: b4609858be43acf9d1b2d8be5eff4879fd56f49f
-ms.sourcegitcommit: 051f068c78931432e030b60094c38376d64d013e
+ms.openlocfilehash: 1358a2e92af9d9104e565718692b1ca1940b9d9e
+ms.sourcegitcommit: 89fcc6cb3e12790dca2b8b62f86609bed6335be9
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68948334"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68993407"
 ---
 # <a name="get-started-with-aspnet-core-blazor"></a>Начало работы с ASP.NET Core Блазор
 
@@ -25,7 +25,7 @@ ms.locfileid: "68948334"
 1. Установите шаблоны Блазор, выполнив следующую команду в командной оболочке:
 
    ```console
-   dotnet new -i Microsoft.AspNetCore.Blazor.Templates::3.0.0-preview7.19365.7
+   dotnet new -i Microsoft.AspNetCore.Blazor.Templates::3.0.0-preview8.19405.7
    ```
 
 1. Следуйте указаниям по выбору инструментов:
@@ -40,12 +40,12 @@ ms.locfileid: "68948334"
 
    4 \. В поле **Имя проекта** укажите имя проекта или оставьте имя по умолчанию. Убедитесь, что запись **расположения** указана правильно, или укажите расположение для проекта. Выберите **Создать**.
 
-   5 \. Для интерфейса Блазор на стороне клиента выберите шаблон **блазор (на стороне клиента)** . Для интерфейса Блазор на стороне сервера выберите шаблон серверное **приложение блазор** . Выберите **Создать**. Сведения о двух моделях размещения Блазор: на стороне сервера и на клиенте см. в разделе <xref:blazor/hosting-models>.
+   5 \. Для интерфейса Блазор на стороне клиента выберите шаблон **приложения блазор для сборки** . Для интерфейса Блазор на стороне сервера выберите шаблон серверное **приложение блазор** . Выберите **Создать**. Сведения о двух моделях размещения Блазор: на стороне сервера и на клиенте см. в разделе <xref:blazor/hosting-models>.
 
    6 \. Нажмите клавишу **F5** для запуска приложения.
 
    > [!NOTE]
-   > Если вы установили расширение Visual Studio Блазор для предыдущей предварительной версии ASP.NET Core Блазор (Предварительная версия 6 или более ранняя версия), вы можете удалить расширение в предварительной версии 7. Установка шаблонов Блазор в командной оболочке теперь достаточно для отображения шаблонов в Visual Studio.
+   > Если вы установили расширение Visual Studio Блазор для предыдущей предварительной версии ASP.NET Core Блазор (Предварительная версия 6 или более ранняя версия), вы можете удалить расширение. Установка шаблонов Блазор в командной оболочке теперь достаточно для отображения шаблонов в Visual Studio.
 
    # <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code.](#tab/visual-studio-code)
 
@@ -56,13 +56,13 @@ ms.locfileid: "68948334"
    3 \. Для интерфейса Блазор на стороне клиента выполните следующую команду в командной оболочке:
 
       ```console
-      dotnet new blazor -o WebApplication1
+      dotnet new blazorwasm -o WebApplication1
       ```
 
       Для интерфейса Блазор на стороне сервера выполните следующую команду в командной оболочке:
 
       ```console
-      dotnet new blazorserverside -o WebApplication1
+      dotnet new blazorserver -o WebApplication1
       ```
 
       Сведения о двух моделях размещения Блазор: на стороне сервера и на клиенте см. в разделе <xref:blazor/hosting-models>.
@@ -85,7 +85,7 @@ ms.locfileid: "68948334"
 
    3\. In the sidebar, select **.NET Core** > **App**.
 
-   4\. For a Blazor server-side experience, select the **ASP.NET Core Blazor Server App** template. For a Blazor client-side experience, select the **ASP.NET Core Blazor WebAssembly App** template. Select **Next**. For information on the two Blazor hosting models, server-side and client-side, see <xref:blazor/hosting-models>.
+   4\. For a Blazor server-side experience, select the **Blazor Server App** template. For a Blazor client-side experience, select the **Blazor WebAssembly App** template. Select **Next**. For information on the two Blazor hosting models, server-side and client-side, see <xref:blazor/hosting-models>.
 
    5\. The **Target Framework** defaults to **.NET Core 3.0**. Select **Next**.
 
@@ -100,7 +100,7 @@ ms.locfileid: "68948334"
    Для интерфейса Блазор на стороне клиента выполните следующие команды в командной оболочке:
 
    ```console
-   dotnet new blazor -o WebApplication1
+   dotnet new blazorwasm -o WebApplication1
    cd WebApplication1
    dotnet run
    ```
@@ -108,7 +108,7 @@ ms.locfileid: "68948334"
    Для интерфейса Блазор на стороне сервера выполните следующие команды в командной оболочке:
 
    ```console
-   dotnet new blazorserverside -o WebApplication1
+   dotnet new blazorserver -o WebApplication1
    cd WebApplication1
    dotnet run
    ```
@@ -152,7 +152,7 @@ ms.locfileid: "68948334"
 
 Параметры компонента указываются с помощью атрибутов или дочернего [содержимого](xref:blazor/components#child-content), которые позволяют задавать свойства дочернего компонента. Чтобы добавить параметр в `Counter` компонент, обновите `@code` блок компонента:
 
-* Добавьте свойство для `IncrementAmount` `[Parameter]` с атрибутом.
+* Добавьте открытое свойство для `IncrementAmount` `[Parameter]` с атрибутом.
 * Изменение метод `IncrementCount`, чтобы он использовал `IncrementAmount` при увеличении значения `currentCount`.
 
 *Pages/Counter.razor*:

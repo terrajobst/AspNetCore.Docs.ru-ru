@@ -4,14 +4,14 @@ author: jamesnk
 description: Узнайте, как использовать проверку подлинности и авторизацию в gRPC для ASP.NET Core.
 monikerRange: '>= aspnetcore-3.0'
 ms.author: jamesnk
-ms.date: 07/26/2019
+ms.date: 08/13/2019
 uid: grpc/authn-and-authz
-ms.openlocfilehash: 34f7f8a5a22159329b3d6c4524943434c460c7fb
-ms.sourcegitcommit: 0efb9e219fef481dee35f7b763165e488aa6cf9c
+ms.openlocfilehash: 19018c4ffae1228055a4858b496f135d015625b4
+ms.sourcegitcommit: 89fcc6cb3e12790dca2b8b62f86609bed6335be9
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68602425"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68993289"
 ---
 # <a name="authentication-and-authorization-in-grpc-for-aspnet-core"></a>Проверка подлинности и авторизация в gRPC для ASP.NET Core
 
@@ -42,6 +42,8 @@ public void Configure(IApplicationBuilder app)
 
 > [!NOTE]
 > Порядок, в котором регистрируется ASP.NET Core по промежуточного слоя проверки подлинности. Всегда `UseAuthentication` вызывайте `UseAuthorization` и `UseRouting` After и `UseEndpoints`before.
+
+Механизм проверки подлинности, используемый приложением во время вызова, необходимо настроить. Конфигурация проверки подлинности `Startup.ConfigureServices` добавляется в и будет отличаться в зависимости от используемого в приложении механизма проверки подлинности. Примеры защиты приложений ASP.NET Core см. в статье [примеры проверки](xref:security/authentication/samples)подлинности.
 
 После настройки проверки подлинности доступ к пользователю можно получить в методах службы gRPC через `ServerCallContext`.
 

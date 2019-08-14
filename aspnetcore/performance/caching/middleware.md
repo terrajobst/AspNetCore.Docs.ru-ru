@@ -5,14 +5,14 @@ description: Узнайте, как настроить и использоват
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 08/08/2019
+ms.date: 08/09/2019
 uid: performance/caching/middleware
-ms.openlocfilehash: 6371f42b100f70c6042064a6372c7b9e41fd5c73
-ms.sourcegitcommit: 776367717e990bdd600cb3c9148ffb905d56862d
+ms.openlocfilehash: 838a08c12316d218501f26d5905f9e31ab93dfc9
+ms.sourcegitcommit: 89fcc6cb3e12790dca2b8b62f86609bed6335be9
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68914994"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68994230"
 ---
 # <a name="response-caching-middleware-in-aspnet-core"></a>Кэширование ответа по промежуточного слоя в ASP.NET Core
 
@@ -24,57 +24,57 @@ ms.locfileid: "68914994"
 
 ## <a name="configuration"></a>Параметр Configuration
 
-Используйте [метапакет Microsoft. AspNetCore. app](xref:fundamentals/metapackage-app) или добавьте ссылку на пакет [Microsoft. AspNetCore. респонсекачинг](https://www.nuget.org/packages/Microsoft.AspNetCore.ResponseCaching/) .
+::: moniker range=">= aspnetcore-3.0"
+
+По промежуточного слоя для кэширования ответов создается пакет [Microsoft. AspNetCore. респонсекачинг](https://www.nuget.org/packages/Microsoft.AspNetCore.ResponseCaching/) , который неявно добавляется в ASP.NET Core приложения.
 
 В `Startup.ConfigureServices`добавьте по промежуточного слоя кэширования ответа в коллекцию служб:
 
-::: moniker range=">= aspnetcore-3.0"
-
 [!code-csharp[](middleware/samples/3.x/ResponseCachingMiddleware/Startup.cs?name=snippet1&highlight=3)]
-
-::: moniker-end
-
-::: moniker range="< aspnetcore-3.0"
-
-[!code-csharp[](middleware/samples/2.x/ResponseCachingMiddleware/Startup.cs?name=snippet1&highlight=3)]
-
-::: moniker-end
 
 Настройте приложение для использования по промежуточного слоя с <xref:Microsoft.AspNetCore.Builder.ResponseCachingExtensions.UseResponseCaching*> помощью метода расширения, который добавляет по промежуточного слоя в конвейер обработки `Startup.Configure`запросов в:
 
-::: moniker range=">= aspnetcore-3.0"
-
 [!code-csharp[](middleware/samples/3.x/ResponseCachingMiddleware/Startup.cs?name=snippet2&highlight=16)]
-
-::: moniker-end
-
-::: moniker range="< aspnetcore-3.0"
-
-[!code-csharp[](middleware/samples/2.x/ResponseCachingMiddleware/Startup.cs?name=snippet2&highlight=14)]
-
-::: moniker-end
 
 Пример приложения добавляет заголовки для управления кэшированием последующих запросов:
 
 * [Cache-Control](https://tools.ietf.org/html/rfc7234#section-5.2) &ndash; Кэширует ответы в кэше до 10 секунд.
 * [Vary](https://tools.ietf.org/html/rfc7231#section-7.1.4) Настраивает по промежуточного слоя для обслуживания кэшированного ответа только [`Accept-Encoding`](https://tools.ietf.org/html/rfc7231#section-5.3.4) в том случае, если заголовок последующих запросов совпадает с заголовком исходного запроса. &ndash;
 
-::: moniker range=">= aspnetcore-3.0"
-
 [!code-csharp[](middleware/samples_snippets/3.x/AddHeaders.cs)]
-
-::: moniker-end
-
-::: moniker range="< aspnetcore-3.0"
-
-[!code-csharp[](middleware/samples_snippets/2.x/AddHeaders.cs)]
-
-::: moniker-end
 
 По промежуточного слоя кэширования ответов кэширует только ответы сервера, приводящие к коду состояния 200 (ОК). Любые другие ответы, включая [страницы ошибок](xref:fundamentals/error-handling), по промежуточного слоя игнорируются.
 
 > [!WARNING]
 > Ответы, содержащие содержимое для прошедших проверку клиентов, должны быть помечены как недоступные для кэширования, чтобы предотвратить хранение и обслуживание этих ответов по промежуточного слоя. Сведения о том, как по промежуточного слоя определяет, является ли ответ кэшированным, см. в разделе [условия кэширования](#conditions-for-caching) .
+
+::: moniker-end
+
+::: moniker range="< aspnetcore-3.0"
+
+Используйте [метапакет Microsoft. AspNetCore. app](xref:fundamentals/metapackage-app) или добавьте ссылку на пакет [Microsoft. AspNetCore. респонсекачинг](https://www.nuget.org/packages/Microsoft.AspNetCore.ResponseCaching/) .
+
+В `Startup.ConfigureServices`добавьте по промежуточного слоя кэширования ответа в коллекцию служб:
+
+[!code-csharp[](middleware/samples/2.x/ResponseCachingMiddleware/Startup.cs?name=snippet1&highlight=3)]
+
+Настройте приложение для использования по промежуточного слоя с <xref:Microsoft.AspNetCore.Builder.ResponseCachingExtensions.UseResponseCaching*> помощью метода расширения, который добавляет по промежуточного слоя в конвейер обработки `Startup.Configure`запросов в:
+
+[!code-csharp[](middleware/samples/2.x/ResponseCachingMiddleware/Startup.cs?name=snippet2&highlight=14)]
+
+Пример приложения добавляет заголовки для управления кэшированием последующих запросов:
+
+* [Cache-Control](https://tools.ietf.org/html/rfc7234#section-5.2) &ndash; Кэширует ответы в кэше до 10 секунд.
+* [Vary](https://tools.ietf.org/html/rfc7231#section-7.1.4) Настраивает по промежуточного слоя для обслуживания кэшированного ответа только [`Accept-Encoding`](https://tools.ietf.org/html/rfc7231#section-5.3.4) в том случае, если заголовок последующих запросов совпадает с заголовком исходного запроса. &ndash;
+
+[!code-csharp[](middleware/samples_snippets/2.x/AddHeaders.cs)]
+
+По промежуточного слоя кэширования ответов кэширует только ответы сервера, приводящие к коду состояния 200 (ОК). Любые другие ответы, включая [страницы ошибок](xref:fundamentals/error-handling), по промежуточного слоя игнорируются.
+
+> [!WARNING]
+> Ответы, содержащие содержимое для прошедших проверку клиентов, должны быть помечены как недоступные для кэширования, чтобы предотвратить хранение и обслуживание этих ответов по промежуточного слоя. Сведения о том, как по промежуточного слоя определяет, является ли ответ кэшированным, см. в разделе [условия кэширования](#conditions-for-caching) .
+
+::: moniker-end
 
 ## <a name="options"></a>Параметры
 
