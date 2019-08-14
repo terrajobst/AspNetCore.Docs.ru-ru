@@ -1,2 +1,2 @@
-* [<span data-ttu-id="85b2a-101">Visual Studio для Mac 7.7 или более поздней версии</span><span class="sxs-lookup"><span data-stu-id="85b2a-101">Visual Studio for Mac version 7.7 or later</span></span>](https://visualstudio.microsoft.com/downloads/)
-* [<span data-ttu-id="85b2a-102">Пакет SDK для .NET Core 2.2 или более поздней версии</span><span class="sxs-lookup"><span data-stu-id="85b2a-102">.NET Core SDK 2.2 or later</span></span>](https://www.microsoft.com/net/download/all)
+* [<span data-ttu-id="bd295-101">Visual Studio для Mac 8.0 или последующей версии</span><span class="sxs-lookup"><span data-stu-id="bd295-101">Visual Studio for Mac version 8.0 or later</span></span>](https://visualstudio.microsoft.com/downloads/)
+* [<span data-ttu-id="bd295-102">Пакет SDK для .NET Core 2.2 или более поздней версии</span><span class="sxs-lookup"><span data-stu-id="bd295-102">.NET Core SDK 2.2 or later</span></span>](https://www.microsoft.com/net/download/all)
