@@ -6,12 +6,12 @@ monikerRange: '>= aspnetcore-3.0'
 ms.author: johluo
 ms.date: 08/07/2019
 uid: grpc/aspnetcore
-ms.openlocfilehash: 26f0d7610151460967b97665ed61deab1ef56d68
-ms.sourcegitcommit: 2719c70cd15a430479ab4007ff3e197fbf5dfee0
+ms.openlocfilehash: 38111c152c581c50767f9cd4e5fa257bd3fd804e
+ms.sourcegitcommit: 476ea5ad86a680b7b017c6f32098acd3414c0f6c
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68862931"
+ms.lasthandoff: 08/14/2019
+ms.locfileid: "69022313"
 ---
 # <a name="grpc-services-with-aspnet-core"></a>Службы gRPC в ASP.NET Core
 
@@ -87,45 +87,6 @@ API gRPC предоставляет доступ к некоторым данн�
 `ServerCallContext`не предоставляет полный доступ ко `HttpContext` всем API-интерфейсам ASP.NET. Метод расширения предоставляет полный доступ к элементу `HttpContext` , представляющему базовое сообщение HTTP/2 в API-интерфейсах ASP.NET: `GetHttpContext`
 
 [!code-csharp[](~/grpc/aspnetcore/sample/GrcpService/GreeterService2.cs?highlight=6-7&name=snippet)]
-
-## <a name="grpc-and-aspnet-core-on-macos"></a>gRPC и ASP.NET Core на macOS
-
-Kestrel не поддерживает HTTP/2 с протоколом [TLS](https://tools.ietf.org/html/rfc5246) в macOS. Шаблон ASP.NET Core gRPC и примеры по умолчанию используют протокол TLS. При попытке запустить сервер gRPC появится следующее сообщение об ошибке:
-
-> Не удалось выполнить привязку к https://localhost:5001 интерфейсу замыкания на себя IPv4: "HTTP/2 через TLS не поддерживается в macOS из-за отсутствия поддержки АЛПН".
-
-Чтобы обойти эту ошибку, настройте Kestrel и клиент gRPC для использования HTTP/2 **без** TLS. Это следует делать только во время разработки. Отсутствие использования TLS приведет к тому, что сообщения gRPC будут отправляться без шифрования.
-
-Kestrel должен настроить конечную точку HTTP/2 без TLS `Program.cs`в:
-
-```csharp
-public static IHostBuilder CreateHostBuilder(string[] args) =>
-    Host.CreateDefaultBuilder(args)
-        .ConfigureWebHostDefaults(webBuilder =>
-        {
-            webBuilder.ConfigureKestrel(options =>
-            {
-                // Setup a HTTP/2 endpoint without TLS.
-                options.ListenLocalhost(5000, o => o.Protocols = HttpProtocols.Http2);
-            });
-            webBuilder.UseStartup<Startup>();
-        });
-```
-
-Клиент gRPC должен задать `System.Net.Http.SocketsHttpHandler.Http2UnencryptedSupport` для `true` параметра значение и использовать `http` в адресе сервера:
-
-```csharp
-// This switch must be set before creating the HttpClient.
-AppContext.SetSwitch("System.Net.Http.SocketsHttpHandler.Http2UnencryptedSupport", true);
-
-var httpClient = new HttpClient();
-// The port number(5000) must match the port of the gRPC server.
-httpClient.BaseAddress = new Uri("http://localhost:5000");
-var client = GrpcClient.Create<Greeter.GreeterClient>(httpClient);
-```
-
-> [!WARNING]
-> HTTP/2 без TLS следует использовать только во время разработки приложений. В рабочих приложениях всегда следует использовать безопасность транспорта. Дополнительные сведения см. [в разделе вопросы безопасности в gRPC for ASP.NET Core](xref:grpc/security#transport-security).
 
 ## <a name="additional-resources"></a>Дополнительные ресурсы
 

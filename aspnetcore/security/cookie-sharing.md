@@ -1,46 +1,46 @@
 ---
 title: Совместное использование файлов cookie проверки подлинности между приложениями ASP.NET
 author: rick-anderson
-description: Узнайте, как совместно использовать файлы cookie проверки подлинности между ASP.NET 4.x и приложений ASP.NET Core.
+description: Узнайте, как совместно использовать файлы cookie проверки подлинности в приложениях ASP.NET 4. x и ASP.NET Core.
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 07/15/2019
+ms.date: 08/14/2019
 uid: security/cookie-sharing
-ms.openlocfilehash: b2f906ac97fe79b2a66a5ab709bcbcb03ab8cc39
-ms.sourcegitcommit: 1bf80f4acd62151ff8cce517f03f6fa891136409
+ms.openlocfilehash: 1650afce5c371d0830bb207618b9c1495f0ce587
+ms.sourcegitcommit: 476ea5ad86a680b7b017c6f32098acd3414c0f6c
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "68223912"
+ms.lasthandoff: 08/14/2019
+ms.locfileid: "69022392"
 ---
 # <a name="share-authentication-cookies-among-aspnet-apps"></a>Совместное использование файлов cookie проверки подлинности между приложениями ASP.NET
 
-По [Рик Андерсон](https://twitter.com/RickAndMSFT) и [Люк Лэтем](https://github.com/guardrex)
+[Рик Андерсон (](https://twitter.com/RickAndMSFT) и [Люк ЛаСаМ](https://github.com/guardrex)
 
-Веб-сайтов часто состоят из отдельных веб-приложений, работающих вместе. Для работы единого входа (SSO), веб-приложений в пределах сайта должны совместно использовать файлы cookie проверки подлинности. Для поддержки этого сценария, в стеке защиты данных позволяет совместное использование проверки подлинности файла cookie Katana и билеты проверки подлинности файла cookie ASP.NET Core.
+Веб-сайты часто состоят из отдельных веб-приложений, работающих вместе. Чтобы обеспечить единый вход, веб-приложения на сайте должны использовать файлы cookie проверки подлинности. Для поддержки этого сценария в стеке защиты данных разрешено совместное использование проверки подлинности Katana cookie и ASP.NET Core билетов проверки подлинности файлов cookie.
 
-В приведенных ниже примерах:
+В следующих примерах:
 
-* Имя файла cookie проверки подлинности имеет значение к общему значению `.AspNet.SharedCookie`.
-* `AuthenticationType` Присваивается `Identity.Application` явно или по умолчанию.
-* Общее имя приложения используется для включения система защиты данных для совместного использования ключей защиты данных (`SharedCookieApp`).
-* `Identity.Application` используется как схему проверки подлинности. Используется независимо от схемы, он должен использоваться согласованно *внутри и между* общего файла cookie приложения, как схема по умолчанию или установив его явным образом. Схема используется при шифровании и расшифровки куки-файлов, поэтому необходимо использовать согласованную схему в различных приложениях.
-* Общий [ключа защиты данных](xref:security/data-protection/implementation/key-management) используется место хранения.
-  * В приложениях ASP.NET Core <xref:Microsoft.AspNetCore.DataProtection.DataProtectionBuilderExtensions.PersistKeysToFileSystem*> используется для указания расположения хранилища ключей.
-  * В приложениях .NET Framework, по промежуточного слоя для файлов Cookie проверки подлинности использует реализацию <xref:Microsoft.AspNetCore.DataProtection.DataProtectionProvider>. `DataProtectionProvider` предоставляет службы защиты данных для шифрования и расшифровки данных полезные данные файлов cookie проверки подлинности. `DataProtectionProvider` Экземпляр изолирован от система защиты данных, используемых в других частях приложения. [DataProtectionProvider.Create (System.IO.DirectoryInfo, действие\<IDataProtectionBuilder >)](xref:Microsoft.AspNetCore.DataProtection.DataProtectionProvider.Create*) принимает <xref:System.IO.DirectoryInfo> для указания расположения для хранения ключей защиты данных.
-* `DataProtectionProvider` требуется [Microsoft.AspNetCore.DataProtection.Extensions](https://www.nuget.org/packages/Microsoft.AspNetCore.DataProtection.Extensions/) пакет NuGet:
-  * В приложениях ASP.NET Core 2.x, ссылаются на [метапакет Microsoft.AspNetCore.App](xref:fundamentals/metapackage-app).
-  * В приложениях .NET Framework, добавьте ссылки на пакет [Microsoft.AspNetCore.DataProtection.Extensions](https://www.nuget.org/packages/Microsoft.AspNetCore.DataProtection.Extensions/).
-* <xref:Microsoft.AspNetCore.DataProtection.DataProtectionBuilderExtensions.SetApplicationName*> Задает общее имя приложения.
+* Для имени файла cookie проверки подлинности задано общее `.AspNet.SharedCookie`значение.
+* `AuthenticationType` Значение задаетсяявно`Identity.Application` или по умолчанию.
+* Общее имя приложения позволяет системе защиты данных совместно использовать ключи защиты данных (`SharedCookieApp`).
+* `Identity.Application`используется в качестве схемы проверки подлинности. Независимо от используемой схемы, ее необходимо использовать последовательно *в и через* общие приложения cookie либо в качестве схемы по умолчанию, либо путем их явного задания. Схема используется при шифровании и расшифровке файлов cookie, поэтому согласованная схема должна использоваться в приложениях.
+* Используется общее место хранения [ключей защиты данных](xref:security/data-protection/implementation/key-management) .
+  * В ASP.NET Core приложениях <xref:Microsoft.AspNetCore.DataProtection.DataProtectionBuilderExtensions.PersistKeysToFileSystem*> используется для задания места хранения ключей.
+  * В .NET Framework приложениях по промежуточного слоя для <xref:Microsoft.AspNetCore.DataProtection.DataProtectionProvider>проверки подлинности файлов использует реализацию. `DataProtectionProvider`предоставляет службы защиты данных для шифрования и расшифровки полезных данных cookie проверки подлинности. `DataProtectionProvider` Экземпляр изолирован от системы защиты данных, используемой другими частями приложения. [Датапротектионпровидер. Create (System. IO. DirectoryInfo, Action\<идатапротектионбуилдер >)](xref:Microsoft.AspNetCore.DataProtection.DataProtectionProvider.Create*) принимает, <xref:System.IO.DirectoryInfo> чтобы указать расположение для хранилища ключей защиты данных.
+* `DataProtectionProvider`требуется пакет NuGet [Microsoft. AspNetCore. MDAC. Extensions](https://www.nuget.org/packages/Microsoft.AspNetCore.DataProtection.Extensions/) :
+  * В ASP.NET Core приложения 2. x сослаться на [Microsoft. AspNetCore. app метапакет](xref:fundamentals/metapackage-app).
+  * В .NET Framework приложения добавьте ссылку на пакет в [Microsoft. AspNetCore. "Защита](https://www.nuget.org/packages/Microsoft.AspNetCore.DataProtection.Extensions/). Extensions.
+* <xref:Microsoft.AspNetCore.DataProtection.DataProtectionBuilderExtensions.SetApplicationName*>Задает общее имя приложения.
 
-## <a name="share-authentication-cookies-among-aspnet-core-apps"></a>Совместное использование файлов cookie проверки подлинности между приложениями ASP.NET Core
+## <a name="share-authentication-cookies-among-aspnet-core-apps"></a>Совместное использование файлов cookie проверки подлинности в приложениях ASP.NET Core
 
 При использовании удостоверения ASP.NET Core:
 
-* Ключи защиты данных и имя приложения должно совместно использоваться приложениями. Общую область хранения ключей предоставляется <xref:Microsoft.AspNetCore.DataProtection.DataProtectionBuilderExtensions.PersistKeysToFileSystem*> метод в следующих примерах. Используйте <xref:Microsoft.AspNetCore.DataProtection.DataProtectionBuilderExtensions.SetApplicationName*> Настройка общего имени общего приложения (`SharedCookieApp` в следующих примерах). Дополнительные сведения см. в разделе <xref:security/data-protection/configuration/overview>.
-* Используйте <xref:Microsoft.Extensions.DependencyInjection.IdentityServiceCollectionExtensions.ConfigureApplicationCookie*> метод расширения, чтобы настроить службу защиты данных для файлов cookie.
-* В следующем примере присваивается тип проверки подлинности `Identity.Application` по умолчанию.
+* Ключи защиты данных и имя приложения должны быть общими для всех приложений. В следующих примерах для <xref:Microsoft.AspNetCore.DataProtection.DataProtectionBuilderExtensions.PersistKeysToFileSystem*> метода предоставляется общий путь к хранилищу ключей. Используйте <xref:Microsoft.AspNetCore.DataProtection.DataProtectionBuilderExtensions.SetApplicationName*> для настройки общего имени общего приложения (`SharedCookieApp` в следующих примерах). Дополнительные сведения см. в разделе <xref:security/data-protection/configuration/overview>.
+* Используйте метод <xref:Microsoft.Extensions.DependencyInjection.IdentityServiceCollectionExtensions.ConfigureApplicationCookie*> расширения, чтобы настроить службу защиты данных для файлов cookie.
+* По умолчанию используется `Identity.Application`тип проверки подлинности.
 
 В `Startup.ConfigureServices`:
 
@@ -54,7 +54,7 @@ services.ConfigureApplicationCookie(options => {
 });
 ```
 
-При использовании файлов cookie без ASP.NET Core Identity, настроить защиту данных и проверку подлинности в `Startup.ConfigureServices`. В следующем примере присваивается тип проверки подлинности `Identity.Application`:
+При использовании файлов cookie напрямую без ASP.NET Core удостоверения настройте защиту данных и проверку подлинности в `Startup.ConfigureServices`. В следующем примере тип проверки подлинности имеет значение `Identity.Application`:
 
 ```csharp
 services.AddDataProtection()
@@ -68,7 +68,7 @@ services.AddAuthentication("Identity.Application")
     });
 ```
 
-При размещении приложений, которые совместно использовать файлы cookie в поддомены, укажите общий домен в [Cookie.Domain](xref:Microsoft.AspNetCore.Http.CookieBuilder.Domain) свойство. Для совместного использования файлов cookie в приложениях в `contoso.com`, такие как `first_subdomain.contoso.com` и `second_subdomain.contoso.com`, укажите `Cookie.Domain` как `.contoso.com`:
+При размещении приложений, которые совместно используют файлы cookie в поддоменах, укажите общий домен в свойстве [cookie. domain](xref:Microsoft.AspNetCore.Http.CookieBuilder.Domain) . Для совместного использования файлов cookie `contoso.com`в приложениях в `first_subdomain.contoso.com` , `second_subdomain.contoso.com`например `.contoso.com`и, `Cookie.Domain` укажите:
 
 ```csharp
 options.Cookie.Domain = ".contoso.com";
@@ -76,35 +76,35 @@ options.Cookie.Domain = ".contoso.com";
 
 ## <a name="encrypt-data-protection-keys-at-rest"></a>Шифрование неактивных ключей защиты данных
 
-Для развертывания в рабочей среде, настройте `DataProtectionProvider` для шифрования ключей при хранении с помощью DPAPI или X509Certificate. Дополнительные сведения см. в разделе <xref:security/data-protection/implementation/key-encryption-at-rest>. В следующем примере предоставляется отпечаток сертификата <xref:Microsoft.AspNetCore.DataProtection.DataProtectionBuilderExtensions.ProtectKeysWithCertificate*>:
+Для рабочих развертываний настройте `DataProtectionProvider` для шифрования неактивных ключей с помощью DPAPI или x509. Дополнительные сведения см. в разделе <xref:security/data-protection/implementation/key-encryption-at-rest>. В следующем примере отпечаток сертификата предоставляется для <xref:Microsoft.AspNetCore.DataProtection.DataProtectionBuilderExtensions.ProtectKeysWithCertificate*>:
 
 ```csharp
 services.AddDataProtection()
     .ProtectKeysWithCertificate("{CERTIFICATE THUMBPRINT}");
 ```
 
-## <a name="share-authentication-cookies-between-aspnet-4x-and-aspnet-core-apps"></a>Совместное использование файлов cookie проверки подлинности ASP.NET 4.x и приложений ASP.NET Core
+## <a name="share-authentication-cookies-between-aspnet-4x-and-aspnet-core-apps"></a>Совместное использование файлов cookie проверки подлинности в приложениях ASP.NET 4. x и ASP.NET Core
 
-Для создания файлов cookie проверки подлинности, которые совместимы с по промежуточного слоя ASP.NET Core файл Cookie проверки подлинности можно настроить приложений ASP.NET 4.x, использующих Katana промежуточного по проверки подлинности файла Cookie. Благодаря этому обновлении некий обширный узел отдельных приложений, за несколько шагов то же время предоставляя беспроблемную работу единого входа в рамках всего сайта.
+Приложения ASP.NET 4. x, использующие по промежуточного слоя для проверки подлинности Katana cookie, можно настроить для создания файлов cookie проверки подлинности, совместимых с по промежуточного слоя ASP.NET Core cookie Authentication. Это позволяет обновлять отдельные приложения большого сайта за несколько этапов, предоставляя возможность беспрепятственного единого входа на сайте.
 
-Когда приложение использует Katana промежуточного по проверки подлинности файла Cookie, он вызывает `UseCookieAuthentication` в проекте *Startup.Auth.cs* файла. Приложения веб-проектов ASP.NET 4.x созданные в Visual Studio 2013 и более поздней версии используйте по промежуточного слоя Katana файл Cookie проверки подлинности по умолчанию. Несмотря на то что `UseCookieAuthentication` устарел и не поддерживается для приложений ASP.NET Core, вызвав `UseCookieAuthentication` в ASP.NET 4.x приложение, использующее Katana промежуточного по проверки подлинности файла Cookie является допустимым.
+Когда приложение использует по промежуточного слоя проверки подлинности `UseCookieAuthentication` Katana cookie, оно вызывает в файле *Startup.auth.CS* проекта. Проекты веб-приложений ASP.NET 4. x, созданные с помощью Visual Studio 2013 и позднее, по умолчанию используют по промежуточного слоя проверки подлинности Katana cookie. Хотя `UseCookieAuthentication` является устаревшим и не поддерживается для ASP.NET Core приложений, вызов `UseCookieAuthentication` в приложении ASP.NET 4. x, использующий по промежуточного слоя проверки подлинности Katana cookie, является допустимым.
 
-Приложение ASP.NET 4.x необходимо предназначено для .NET Framework 4.5.1 или более поздней версии. В противном случае необходимые пакеты NuGet не удается установить.
+Приложение ASP.NET 4. x должно быть предназначено для .NET Framework 4.5.1 или более поздней версии. В противном случае не удается установить необходимые пакеты NuGet.
 
-Для совместного использования файлов cookie проверки подлинности между приложения ASP.NET 4.x и приложения ASP.NET Core, настройте приложение ASP.NET Core, как указано в [совместно использовать файлы cookie проверки подлинности между приложениями ASP.NET Core](#share-authentication-cookies-among-aspnet-core-apps) раздела, а затем настройте приложение ASP.NET 4.x в качестве следующим образом.
+Чтобы предоставить общий доступ к файлам cookie проверки подлинности между приложением ASP.NET 4. x и ASP.NET Core приложением, настройте ASP.NET Core приложение, как указано в разделе [общий доступ к файлам cookie проверки подлинности между приложениями ASP.NET Core](#share-authentication-cookies-among-aspnet-core-apps) , а затем настройте приложение ASP.NET 4. x следующим образом.
 
-Убедитесь, что пакеты приложения, обновляются до последней версии. Установка [Microsoft.Owin.Security.Interop](https://www.nuget.org/packages/Microsoft.Owin.Security.Interop/) пакет в каждое приложение ASP.NET 4.x.
+Убедитесь, что пакеты приложения обновлены до последних выпусков. Установите пакет [Microsoft. Owin. Security. Interop](https://www.nuget.org/packages/Microsoft.Owin.Security.Interop/) в каждое приложение ASP.NET 4. x.
 
-Найдите и измените вызов `UseCookieAuthentication`:
+Нахождение и изменение вызова `UseCookieAuthentication`:
 
-* Измените имя файла cookie, чтобы оно соответствовало имени, используемые по промежуточного слоя ASP.NET Core файл Cookie проверки подлинности (`.AspNet.SharedCookie` в примере).
-* В следующем примере присваивается тип проверки подлинности `Identity.Application`.
-* Предоставляет экземпляр `DataProtectionProvider` инициализирован в общую папку хранилища ключей защиты данных.
-* Убедитесь, что имя приложения имеет значение с общим именем приложения, используемый для всех приложений, которые совместно используют файлы cookie проверки подлинности (`SharedCookieApp` в примере).
+* Измените имя файла cookie, чтобы оно совпадало с именем, используемым по промежуточного слоя проверки подлинности ASP.NET Core cookie (`.AspNet.SharedCookie` в примере).
+* В следующем примере тип проверки подлинности имеет значение `Identity.Application`.
+* Укажите экземпляр, `DataProtectionProvider` инициализированный в общем расположении хранилища ключей для защиты данных.
+* Убедитесь, что для имени приложения задано общее имя приложения, используемое всеми приложениями, которые совместно используют файлы`SharedCookieApp` cookie проверки подлинности (в примере).
 
-Если не задан `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier` и `http://schemas.microsoft.com/accesscontrolservice/2010/07/claims/identityprovider`, задайте <xref:System.Web.Helpers.AntiForgeryConfig.UniqueClaimTypeIdentifier> на утверждение, являющийся отличительным признаком уникальных пользователей.
+Если не задано `http://schemas.microsoft.com/accesscontrolservice/2010/07/claims/identityprovider`значение `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier` и <xref:System.Web.Helpers.AntiForgeryConfig.UniqueClaimTypeIdentifier> , задайте утверждение, которое различает уникальных пользователей.
 
-*App_Start/Startup.AUTH.cs*:
+*App_Start/Startup. auth. CS*:
 
 ```csharp
 app.UseCookieAuthentication(new CookieAuthenticationOptions
@@ -137,9 +137,9 @@ System.Web.Helpers.AntiForgeryConfig.UniqueClaimTypeIdentifier =
     "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name";
 ```
 
-При создании удостоверения пользователя, тип проверки подлинности (`Identity.Application`) должен совпадать с типом, определенные в `AuthenticationType` набор с `UseCookieAuthentication` в *App_Start/Startup.Auth.cs*.
+При создании удостоверения пользователя тип проверки подлинности (`Identity.Application`) должен соответствовать типу, определенному `AuthenticationType` в наборе `UseCookieAuthentication` в параметре *App_Start/Startup. auth. CS*.
 
-*Models/IdentityModels.cs*:
+*Models/идентитимоделс. CS*:
 
 ```csharp
 public class ApplicationUser : IdentityUser
@@ -159,11 +159,11 @@ public class ApplicationUser : IdentityUser
 }
 ```
 
-## <a name="use-a-common-user-database"></a>Использование общей базы данных пользователя
+## <a name="use-a-common-user-database"></a>Использование общей пользовательской базы данных
 
-Когда приложения использовали один идентификатор схемы (та же версия удостоверения), убедитесь, что система идентификации для каждого приложения указывает на одну и ту же базу данных пользователя. В противном случае система идентификации дает сбои во время выполнения, если предпринимается попытка сопоставить сведения в файл cookie проверки подлинности с информацией в своей базе данных.
+Если приложения используют одну и ту же схему удостоверений (идентичную версию Identity), убедитесь, что система идентификации для каждого приложения указывает на одну и ту же пользовательскую базу данных. В противном случае система идентификации выдает ошибки во время выполнения, когда пытается сопоставить информацию в файле cookie проверки подлинности с данными в своей базе данных.
 
-При идентификации схема отличается между приложениями, обычно потому, что приложения, используют разные версии Identity, совместного использования общей базы данных на основе последней версии Identity невозможны без повторное сопоставление и добавления столбцов в схемах удостоверений других приложений. Часто бывает более эффективно для обновления в других приложениях, чтобы использовать последнюю версию удостоверений, таким образом, чтобы общей базы данных может совместно использоваться приложениями.
+Если схема удостоверений различается в приложениях, обычно так как приложения используют разные версии удостоверений, общий доступ к общей базе данных на основе последней версии удостоверения невозможен без повторного сопоставления и добавления столбцов в схемах удостоверений других приложений. Часто более эффективно обновлять другие приложения, чтобы использовать последнюю версию удостоверения, чтобы обеспечить общий доступ к общей базе данных для приложений.
 
 ## <a name="additional-resources"></a>Дополнительные ресурсы
 
