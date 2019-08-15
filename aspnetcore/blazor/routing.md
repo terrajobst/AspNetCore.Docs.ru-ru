@@ -5,14 +5,14 @@ description: Узнайте, как маршрутизировать запро�
 monikerRange: '>= aspnetcore-3.0'
 ms.author: riande
 ms.custom: mvc
-ms.date: 07/02/2019
+ms.date: 08/13/2019
 uid: blazor/routing
-ms.openlocfilehash: 70cae6b3a21fe3537d6841a6716398a5fc45db62
-ms.sourcegitcommit: f30b18442ed12831c7e86b0db249183ccd749f59
+ms.openlocfilehash: 197b1a91b3540d21639c3ee775b2c490da7b23fe
+ms.sourcegitcommit: f5f0ff65d4e2a961939762fb00e654491a2c772a
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68948314"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69030396"
 ---
 # <a name="aspnet-core-blazor-routing"></a>ASP.NET Core маршрутизация Блазор
 
@@ -117,6 +117,18 @@ ms.locfileid: "68948314"
 * `NavLinkMatch.Prefix`(*по умолчанию*) Параметр активен, `NavLink` если он соответствует любому префиксу текущего URL-адреса. &ndash;
 
 В предыдущем примере домашняя `NavLink` `href=""` страница совпадает с домашним `active` URL-адресом и получает класс CSS только в URL-адресе базового пути по умолчанию `https://localhost:5001/`для приложения (например,). Второй `NavLink` получает класс, `active` когда пользователь `MyComponent` посещает любой URL-адрес с префиксом (например, `https://localhost:5001/MyComponent` и `https://localhost:5001/MyComponent/AnotherSegment`).
+
+Дополнительные `NavLink` атрибуты компонента передаются в отображаемый тег привязки. В следующем примере `NavLink` компонент `target` включает атрибут:
+
+```cshtml
+<NavLink href="my-page" target="_blank">My page</NavLink>
+```
+
+Отображается следующая разметка HTML:
+
+```html
+<a href="my-page" target="_blank" rel="noopener noreferrer">My page</a>
+```
 
 ## <a name="uri-and-navigation-state-helpers"></a>URI и вспомогательные функции состояния навигации
 

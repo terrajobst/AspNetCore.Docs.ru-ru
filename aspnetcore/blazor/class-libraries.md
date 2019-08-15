@@ -5,14 +5,14 @@ description: Узнайте, как компоненты можно включа
 monikerRange: '>= aspnetcore-3.0'
 ms.author: riande
 ms.custom: mvc
-ms.date: 07/02/2019
+ms.date: 08/13/2019
 uid: blazor/class-libraries
-ms.openlocfilehash: 402b7b072554f63f85e7cf5e55336104d235a071
-ms.sourcegitcommit: 776367717e990bdd600cb3c9148ffb905d56862d
+ms.openlocfilehash: 6e93d48bbc684845952c3db8935ccc8b190044b7
+ms.sourcegitcommit: f5f0ff65d4e2a961939762fb00e654491a2c772a
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68948444"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69030351"
 ---
 # <a name="aspnet-core-razor-components-class-libraries"></a>Библиотеки классов компонентов Razor ASP.NET Core
 
@@ -33,10 +33,9 @@ ms.locfileid: "68948444"
 # <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 1. Создайте новый проект.
-1. Выберите **Новое веб-приложение ASP.NET Core**. Выберите **Далее**.
+1. Выберите пункт **Библиотека классов Razor**. Выберите **Далее**.
+1. В диалоговом окне **Создание новой библиотеки классов Razor** выберите **создать**.
 1. В поле **Имя проекта** укажите имя проекта или оставьте имя по умолчанию. В примерах этого раздела используется имя `MyComponentLib1`проекта. Выберите **Создать**.
-1. В диалоговом окне **Создание веб-приложения ASP.NET Core** убедитесь в том, что выбраны платформы **.NET Core** и **ASP.NET Core 3.0**.
-1. Выберите шаблон " **Библиотека классов Razor** ". Выберите **Создать**.
 1. Добавьте РКЛ в решение:
    1. Щелкните решение правой кнопкой мыши. Выберите **Добавить** > **существующий проект**.
    1. Перейдите к файлу проекта РКЛ.
