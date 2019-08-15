@@ -6,12 +6,12 @@ monikerRange: '>= aspnetcore-2.0'
 ms.author: scaddie
 ms.date: 06/12/2019
 uid: mvc/views/tag-helpers/th-components
-ms.openlocfilehash: b5b3abea6492cfaa7d6acd0e54073a8db12eb2a5
-ms.sourcegitcommit: 335a88c1b6e7f0caa8a3a27db57c56664d676d34
+ms.openlocfilehash: 23e244649350b41e4112d10df63139864e5b4381
+ms.sourcegitcommit: 476ea5ad86a680b7b017c6f32098acd3414c0f6c
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 06/12/2019
-ms.locfileid: "67034762"
+ms.lasthandoff: 08/14/2019
+ms.locfileid: "69022220"
 ---
 # <a name="tag-helper-components-in-aspnet-core"></a>Вспомогательные компоненты тегов в ASP.NET Core
 
@@ -62,16 +62,9 @@ ASP.NET Core включает в себя два встроенных вспом
 
 Вспомогательные компоненты тегов необходимо добавить в коллекцию вспомогательных компонентов тегов приложения. Добавить его в коллекцию можно тремя способами:
 
-* [Вспомогательные компоненты тегов в ASP.NET Core](#tag-helper-components-in-aspnet-core)
-  * [Варианты использования](#use-cases)
-    * [Внедрение в элемент HTML "head"](#inject-into-html-head-element)
-    * [Внедрение в элемент HTML "body"](#inject-into-html-body-element)
-  * [Регистрация компонента](#register-a-component)
-    * [регистрация с помощью контейнера служб](#registration-via-services-container);
-    * [регистрация с помощью файла Razor](#registration-via-razor-file);
-    * [регистрация с помощью модели страницы или контроллера](#registration-via-page-model-or-controller).
-  * [Создание компонента](#create-a-component)
-  * [Дополнительные ресурсы](#additional-resources)
+* [регистрация с помощью контейнера служб](#registration-via-services-container);
+* [регистрация с помощью файла Razor](#registration-via-razor-file);
+* [регистрация с помощью модели страницы или контроллера](#registration-via-page-model-or-controller).
 
 ### <a name="registration-via-services-container"></a>Регистрация с помощью контейнера служб
 

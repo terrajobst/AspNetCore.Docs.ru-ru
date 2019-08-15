@@ -5,12 +5,12 @@ description: Сведения о начале работы с MVC ASP.NET Core.
 ms.author: riande
 ms.date: 08/05/2019
 uid: tutorials/first-mvc-app/start-mvc
-ms.openlocfilehash: f6a92423546ebd9d4c8e1a92fb81b6b72f847f61
-ms.sourcegitcommit: 2eb605f4f20ac4dd9de6c3b3e3453e108a357a21
+ms.openlocfilehash: 36f4811f876a6e35440445103a1f86ae06b31b6a
+ms.sourcegitcommit: 476ea5ad86a680b7b017c6f32098acd3414c0f6c
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68820100"
+ms.lasthandoff: 08/14/2019
+ms.locfileid: "69022523"
 ---
 # <a name="get-started-with-aspnet-core-mvc"></a>Начало работы с MVC ASP.NET Core
 
@@ -126,7 +126,6 @@ ms.locfileid: "68820100"
 
   ![IIS Express](start-mvc/_static/iis_express.png)
 
-
   Пример приложения приведен на следующем рисунке:
 
   ![Домашняя или индексная страница](start-mvc/_static/home2.2.png)
@@ -140,12 +139,6 @@ ms.locfileid: "68820100"
   Visual Studio Code запускает [Kestrel](xref:fundamentals/servers/kestrel), открывает браузер и переходит к `https://localhost:5001`. В адресной строке указывается `localhost:port:5001`, а не что-либо типа `example.com`. Это связано с тем, что `localhost` — стандартное имя узла для локального компьютера. Localhost обслуживает только веб-запросы с локального компьютера.
 
   Запуск приложения с помощью клавиш CTRL+F5 (режим без отладки) позволяет внести изменения в код, сохранить файл, обновить браузер и увидеть изменения в коде. Многие разработчики предпочитают использовать режим без отладки, чтобы быстро обновлять страницу и просматривать изменения.
-
-* Нажмите **Принять**, чтобы согласиться на отслеживание. Это приложение не отслеживает персональные данные. Созданный шаблоном код включает ресурсы для соблюдения [Общего регламента по защите данных (GDPR)](xref:security/gdpr).
-
-  ![Домашняя или индексная страница](start-mvc/_static/privacy.png)
-
-  На следующем рисунке показано приложение после принятия отслеживания:
 
   ![Домашняя или индексная страница](start-mvc/_static/home2.2.png)
 
