@@ -5,14 +5,14 @@ description: Узнайте, как создавать и использоват
 monikerRange: '>= aspnetcore-3.0'
 ms.author: riande
 ms.custom: mvc
-ms.date: 08/02/2019
+ms.date: 08/13/2019
 uid: blazor/components
-ms.openlocfilehash: 43457bffd748ebba68cc86d33fdeb98dc419704b
-ms.sourcegitcommit: 776367717e990bdd600cb3c9148ffb905d56862d
-ms.translationtype: MT
+ms.openlocfilehash: 8cb2dc4c3cd22fe71fe15c22762948f9dcd3c08f
+ms.sourcegitcommit: f5f0ff65d4e2a961939762fb00e654491a2c772a
+ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68948434"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69030360"
 ---
 # <a name="create-and-use-aspnet-core-razor-components"></a>Создание и использование компонентов ASP.NET Core Razor
 
@@ -26,7 +26,9 @@ ms.locfileid: "68948434"
 
 Компоненты реализуются в файлах компонентов [Razor](xref:mvc/views/razor) ( *. Razor*) с помощью комбинации C# и HTML-разметки. Компонент в Блазор формально называется *компонентом Razor*.
 
-Компоненты можно создавать с помощью расширения файла *. cshtml* . Используйте свойство MSBuild в файле проекта для обнаружения файлов Component *. cshtml.* `_RazorComponentInclude` Например, приложение, которое указывает, что все файлы *. cshtml* в папке *pages* должны рассматриваться как файлы компонентов Razor:
+Имя компонента должно начинаться с символа верхнего регистра. Например, *микулкомпонент. Razor* является допустимым, а *микулкомпонент. Razor* является недопустимым.
+
+Компоненты можно создавать с помощью расширения файла *. cshtml* , если файлы определены как файлы компонентов Razor с помощью `_RazorComponentInclude` свойства MSBuild. Например, приложение, которое указывает, что все файлы *. cshtml* в папке *pages* должны рассматриваться как файлы компонентов Razor:
 
 ```xml
 <PropertyGroup>
@@ -36,7 +38,7 @@ ms.locfileid: "68948434"
 
 Пользовательский интерфейс для компонента определяется с помощью HTML. Логика динамического отображения (например выражения, циклы и условные выражения) добавляется с помощью встроенного синтаксиса C# под названием [Razor](xref:mvc/views/razor). При компиляции приложения логика разметки и C# отрисовки HTML преобразуется в класс компонента. Имя созданного класса соответствует имени файла.
 
-Элементы класса компонента определяются в блоке `@code`. `@code` В блоке состояние компонента (свойства, поля) указывается с помощью методов обработки событий или для определения другой логики компонента. Допускается более одного `@code` блока.
+Элементы класса компонента определяются в блоке `@code`. `@code` В блоке состояние компонента (свойства, поля) указывается с помощью методов обработки событий или для определения другой логики компонента. Допускается более одного блока `@code`.
 
 > [!NOTE]
 > В предыдущих предварительных версиях ASP.NET Core 3,0 `@functions` блоки использовались для тех же целей, что `@code` и блоки в компонентах Razor. `@functions`блоки продолжают функционировать в компонентах Razor, но мы рекомендуем использовать `@code` блок в ASP.NET Core 3,0 Preview 6 или более поздней версии.
@@ -79,9 +81,11 @@ ms.locfileid: "68948434"
 
 Дополнительные сведения о подготовке компонентов к просмотру и управлении состоянием компонентов в приложениях блазор на стороне сервера см. в <xref:blazor/hosting-models> статье.
 
-## <a name="using-components"></a>Использование компонентов
+## <a name="use-components"></a>Использование компонентов
 
 Компоненты могут включать другие компоненты, объявляя их с помощью синтаксиса HTML-элементов. Разметка для использования компонента выглядит как тег HTML с именем, соответствующем типу компонента.
+
+Привязка атрибута чувствительна к регистру. Например, `@bind` является допустимым и `@Bind` является недопустимым.
 
 Следующая разметка в *index. Razor* визуализирует `HeadingComponent` экземпляр:
 
@@ -91,9 +95,11 @@ ms.locfileid: "68948434"
 
 [!code-cshtml[](common/samples/3.x/BlazorSample/Components/HeadingComponent.razor)]
 
+Если компонент содержит HTML-элемент с первой буквой в верхнем регистре, который не соответствует имени компонента, выдается предупреждение, указывающее, что элемент имеет непредвиденное имя. `@using` Добавление инструкции для пространства имен компонента делает компонент доступным, что приводит к удалению предупреждения.
+
 ## <a name="component-parameters"></a>Параметры компонентов
 
-Компоненты могут иметь *Параметры компонента*, которые определяются с помощью свойств (обычно *не являющихся открытыми*) в `[Parameter]` классе Component с атрибутом. Используйте атрибуты, чтобы указать аргументы для компонента в разметке.
+Компоненты могут иметь *Параметры компонента*, которые определяются с помощью общедоступных свойств класса Component с `[Parameter]` атрибутом. Используйте атрибуты, чтобы указать аргументы для компонента в разметке.
 
 *Components/чилдкомпонент. Razor*:
 
@@ -142,19 +148,19 @@ ms.locfileid: "68948434"
 
 @code {
     [Parameter]
-    private string Maxlength { get; set; } = "10";
+    public string Maxlength { get; set; } = "10";
 
     [Parameter]
-    private string Placeholder { get; set; } = "Input placeholder text";
+    public string Placeholder { get; set; } = "Input placeholder text";
 
     [Parameter]
-    private string Required { get; set; } = "required";
+    public string Required { get; set; } = "required";
 
     [Parameter]
-    private string Size { get; set; } = "50";
+    public string Size { get; set; } = "50";
 
     [Parameter]
-    private Dictionary<string, object> InputAttributes { get; set; } =
+    public Dictionary<string, object> InputAttributes { get; set; } =
         new Dictionary<string, object>()
         {
             { "maxlength", "10" },
@@ -187,8 +193,8 @@ ms.locfileid: "68948434"
 
 ```cshtml
 @code {
-    [Parameter(CaptureUnmatchedValues = true)]
-    private Dictionary<string, object> InputAttributes { get; set; }
+    [Parameter(CaptureUnmatchedAttributes = true)]
+    public Dictionary<string, object> InputAttributes { get; set; }
 }
 ```
 
@@ -224,6 +230,33 @@ ms.locfileid: "68948434"
 
 В отличие `onchange`от, которое срабатывает при потере фокуса элементом `oninput` , срабатывает при изменении значения текстового поля.
 
+**Глобализация**
+
+`@bind`значения форматируются для вывода и анализируются с использованием правил текущего языка и региональных параметров.
+
+Доступ к текущему языку и региональным параметрам можно получить из <xref:System.Globalization.CultureInfo.CurrentCulture?displayProperty=fullName> свойства.
+
+[CultureInfo. InvariantCulture](xref:System.Globalization.CultureInfo.InvariantCulture) используется для следующих типов полей (`<input type="{TYPE}" />`):
+
+* `date`
+* `number`
+
+Предыдущие типы полей:
+
+* Отображаются с использованием соответствующих правил форматирования на основе браузера.
+* Не может содержать текст в свободной форме.
+* Предоставление характеристик взаимодействия с пользователем в зависимости от реализации браузера.
+
+Следующие типы полей имеют особые требования к форматированию, которые в настоящее время не поддерживаются Блазор, так как они не поддерживаются всеми основными браузерами.
+
+* `datetime-local`
+* `month`
+* `week`
+
+`@bind`поддерживает параметр для <xref:System.Globalization.CultureInfo?displayProperty=fullName> обеспечения синтаксического анализа и форматирования значения. `@bind:culture` Указание языка и региональных параметров не рекомендуется при `date` использовании `number` типов полей и. `date`и `number` имеют встроенную поддержку блазор, которая предоставляет требуемый язык и региональные параметры.
+
+Сведения о том, как задать язык и региональные параметры пользователя, см. в разделе [локализация](#localization).
+
 **Строки формата**
 
 Привязка данных работает со <xref:System.DateTime> строками формата [@bind:format](xref:mvc/views/razor#bind)с помощью. Другие выражения форматирования, такие как денежные или числовые форматы, в настоящее время недоступны.
@@ -233,11 +266,20 @@ ms.locfileid: "68948434"
 
 @code {
     [Parameter]
-    private DateTime StartDate { get; set; } = new DateTime(2020, 1, 1);
+    public DateTime StartDate { get; set; } = new DateTime(2020, 1, 1);
 }
 ```
 
+В приведенном выше коде `<input>` тип поля элемента (`type`) по умолчанию `text`имеет значение. `@bind:format`поддерживается для привязки следующих типов .NET:
+
+* <xref:System.DateTime?displayProperty=fullName>
+* <xref:System.DateTime?displayProperty=fullName>?
+* <xref:System.DateTimeOffset?displayProperty=fullName>
+* <xref:System.DateTimeOffset?displayProperty=fullName>?
+
 Атрибут задает формат даты, `value` `<input>` применяемый к элементу. `@bind:format` Формат также используется для анализа значения при `onchange` возникновении события.
+
+Указание формата для `date` типа поля не рекомендуется, так как блазор имеет встроенную поддержку для форматирования дат.
 
 **Параметры компонента**
 
@@ -252,10 +294,10 @@ ms.locfileid: "68948434"
 
 @code {
     [Parameter]
-    private int Year { get; set; }
+    public int Year { get; set; }
 
     [Parameter]
-    private EventCallback<int> YearChanged { get; set; }
+    public EventCallback<int> YearChanged { get; set; }
 }
 ```
 
@@ -278,7 +320,7 @@ ms.locfileid: "68948434"
 
 @code {
     [Parameter]
-    private int ParentYear { get; set; } = 1978;
+    public int ParentYear { get; set; } = 1978;
 
     private void ChangeTheYear()
     {
@@ -477,7 +519,10 @@ await callback.InvokeAsync(arg);
 
 ## <a name="capture-references-to-components"></a>Запись ссылок на компоненты
 
-Ссылки на компоненты предоставляют способ ссылки на экземпляр компонента, чтобы можно было выполнять команды для этого экземпляра, например `Show` или. `Reset` Чтобы записать ссылку на компонент, добавьте [@ref](xref:mvc/views/razor#ref) атрибут к дочернему компоненту, а затем определите поле с тем же именем и типом, что и у дочернего компонента.
+Ссылки на компоненты предоставляют способ ссылки на экземпляр компонента, чтобы можно было выполнять команды для этого экземпляра, например `Show` или. `Reset` Чтобы записать ссылку на компонент, сделайте следующее:
+
+* [@ref](xref:mvc/views/razor#ref) Добавьте атрибут к дочернему компоненту.
+* Определите поле с тем же типом, что и у дочернего компонента.
 
 ```cshtml
 <MyLoginDialog @ref="loginDialog" ... />
@@ -496,6 +541,30 @@ await callback.InvokeAsync(arg);
 
 > [!IMPORTANT]
 > Переменная заполняется только после подготовки компонента, и ее выходные данные `MyLoginDialog` включают элемент. `loginDialog` До этого момента нет никаких ссылок на. Чтобы управлять ссылками на компоненты после завершения подготовки компонента к просмотру `OnAfterRenderAsync` , `OnAfterRender` используйте методы или.
+
+<!-- HOLD https://github.com/aspnet/AspNetCore.Docs/pull/13818
+Component references provide a way to reference a component instance so that you can issue commands to that instance, such as `Show` or `Reset`.
+
+The Razor compiler automatically generates a backing field for element and component references when using [@ref](xref:mvc/views/razor#ref). In the following example, there's no need to create a `myLoginDialog` field for the `LoginDialog` component:
+
+```cshtml
+<LoginDialog @ref="myLoginDialog" ... />
+
+@code {
+    private void OnSomething()
+    {
+        myLoginDialog.Show();
+    }
+}
+```
+
+When the component is rendered, the generated `myLoginDialog` field is populated with the `LoginDialog` component instance. You can then invoke .NET methods on the component instance.
+
+In some cases, a backing field is required. For example, declare a backing field when referencing generic components. To suppress backing field generation, specify the `@ref:suppressField` parameter.
+
+> [!IMPORTANT]
+> The generated `myLoginDialog` variable is only populated after the component is rendered and its output includes the `LoginDialog` element. Until that point, there's nothing to reference. To manipulate components references after the component has finished rendering, use the `OnAfterRenderAsync` or `OnAfterRender` methods.
+-->
 
 При захвате ссылок на компоненты используется аналогичный синтаксис для [записи ссылок на элементы](xref:blazor/javascript-interop#capture-references-to-elements), но это не функция [взаимодействия JavaScript](xref:blazor/javascript-interop) . Ссылки на компоненты не передаются&mdash;в код JavaScript, они используются только в коде .NET.
 
@@ -516,7 +585,7 @@ await callback.InvokeAsync(arg);
 
 @code {
     [Parameter]
-    private IEnumerable<Person> People { get; set; }
+    public IEnumerable<Person> People { get; set; }
 }
 ```
 
@@ -532,7 +601,7 @@ await callback.InvokeAsync(arg);
 
 @code {
     [Parameter]
-    private IEnumerable<Person> People { get; set; }
+    public IEnumerable<Person> People { get; set; }
 }
 ```
 
@@ -574,23 +643,23 @@ await callback.InvokeAsync(arg);
 * Экземпляры объектов Model (например, `Person` экземпляр, как в предыдущем примере). Это гарантирует сохранение на основе равенства ссылок на объекты.
 * Уникальные идентификаторы (например, значения первичного ключа типа `int`, `string`или `Guid`).
 
-Старайтесь не предоставлять значение, которое может неожиданно конфликтовать. Если `@key="@someObject.GetHashCode()"` указан аргумент, могут возникнуть непредвиденные конфликты, так как хэш-коды несвязанных объектов могут быть одинаковыми. Если конфликтные `@key` значения запрашиваются в пределах одного родителя `@key` , значения не будут учитываться.
+Убедитесь, что значения, `@key` используемые для, не конфликтуют. Если конфликтные значения обнаруживаются в одном родительском элементе, Блазор создает исключение, поскольку оно не может детерминированно сопоставлять старые элементы или компоненты с новыми элементами или компонентами. Используйте только уникальные значения, такие как экземпляры объекта или значения первичного ключа.
 
 ## <a name="lifecycle-methods"></a>Методы жизненного цикла
 
-`OnInitAsync`и `OnInit` выполняют код для инициализации компонента. Для выполнения асинхронной операции используйте `OnInitAsync` `await` и ключевое слово для операции:
+`OnInitializedAsync`и `OnInitialized` выполняют код для инициализации компонента. Для выполнения асинхронной операции используйте `OnInitializedAsync` `await` и ключевое слово для операции:
 
 ```csharp
-protected override async Task OnInitAsync()
+protected override async Task OnInitializedAsync()
 {
     await ...
 }
 ```
 
-Для синхронной операции используйте `OnInit`:
+Для синхронной операции используйте `OnInitialized`:
 
 ```csharp
-protected override void OnInit()
+protected override void OnInitialized()
 {
     ...
 }
@@ -632,7 +701,7 @@ protected override void OnAfterRender()
 
 Асинхронные действия, выполняемые в событиях жизненного цикла, могут не завершиться до подготовки компонента к просмотру. Объекты могут быть `null` заполнены или незаполнены данными во время выполнения метода жизненного цикла. Предоставьте логику отрисовки для подтверждения инициализации объектов. Отрисовывает элементы пользовательского интерфейса заполнителя (например, сообщение загрузки), пока объекты `null`являются объектами.
 
-В компоненте `OnInitAsync` шаблонов блазор переопределяется в асичронаусли получения данных прогноза (`forecasts`). `FetchData` Если `forecasts` параметр `null`имеет значение, пользователю выводится сообщение о загрузке. После завершения `OnInitAsync` возврата по завершении компонент перерисовывается с обновленным состоянием. `Task`
+В компоненте `OnInitializedAsync` шаблонов блазор переопределяется в асичронаусли получения данных прогноза (`forecasts`). `FetchData` Если `forecasts` параметр `null`имеет значение, пользователю выводится сообщение о загрузке. После завершения `OnInitializedAsync` возврата по завершении компонент перерисовывается с обновленным состоянием. `Task`
 
 *Pages/FetchData.razor*:
 
@@ -643,7 +712,7 @@ protected override void OnAfterRender()
 `SetParameters`можно переопределить для выполнения кода перед установкой параметров:
 
 ```csharp
-public override void SetParameters(ParameterCollection parameters)
+public override void SetParameters(ParameterView parameters)
 {
     ...
 
@@ -765,7 +834,7 @@ This is the Index page.
 
 @code {
     [Parameter]
-    private bool IsCompleted { get; set; }
+    public bool IsCompleted { get; set; }
 }
 ```
 
@@ -1063,7 +1132,7 @@ private PermInfo Permissions { get; set; }
 @code
 {
     [Parameter]
-    private string PetDetailsQuote { get; set; }
+    public string PetDetailsQuote { get; set; }
 }
 ```
 
@@ -1191,3 +1260,123 @@ builder.AddContent(seq++, "Second");
 * Не записывайте длинные блоки логики, реализованной `RenderTreeBuilder` вручную. Предпочитать `.razor` файлы и разрешите компилятору работать с порядковыми номерами.
 * Если порядковые номера задаются жестко, то для алгоритма diff требуется, чтобы только порядковые номера увеличиваются в значении. Начальное значение и зазоры несущественны. Один из этих вариантов — использовать номер строки кода в качестве порядкового номера или начать с нуля и увеличить на единицу или сотни (или любой другой интервал). 
 * Блазор использует порядковые номера, а другие платформы пользовательского интерфейса для различения структуры не используют их. Сравнение выполняется гораздо быстрее, если используются порядковые номера, и блазор имеет преимущество этапа компиляции, который автоматически обрабатывает порядковые номера для разработчиков `.razor` файлов.
+
+## <a name="localization"></a>Локализация
+
+Блазор приложения на стороне сервера локализованы с использованием по [промежуточного слоя локализации](xref:fundamentals/localization#localization-middleware). По промежуточного слоя выбирает соответствующие языки и региональные параметры для пользователей, запрашивающих ресурсы из приложения.
+
+Язык и региональные параметры можно задать с помощью одного из следующих подходов:
+
+* [Файлы "cookie"](#cookies)
+* [Предоставление пользовательского интерфейса для выбора языка и региональных параметров](#provide-ui-to-choose-the-culture)
+
+Дополнительные сведения и примеры см. в разделе <xref:fundamentals/localization>.
+
+### <a name="cookies"></a>Файлы cookie
+
+Файл cookie культуры локализации может сохранять язык и региональные параметры пользователя. Файл cookie создается `OnGet` методом страницы узла приложения (*pages/Host. cshtml. CS*). По промежуточного слоя локализации считывает файл cookie при последующих запросах, чтобы задать язык и региональные параметры пользователя. 
+
+Использование файла cookie гарантирует, что соединение WebSocket сможет правильно распространить культуру. Если схемы локализации основаны на пути URL-адреса или строке запроса, схема может не поддерживать работу с WebSockets, поэтому она не сохраняет культуру. Поэтому рекомендуемым подходом является использование файла cookie языка и региональных параметров локализации.
+
+Любой метод можно использовать для назначения языка и региональных параметров, если язык и региональные параметры сохраняются в файле cookie локализации. Если у приложения уже есть установленная схема локализации для ASP.NET Core на стороне сервера, продолжайте использовать существующую инфраструктуру локализации приложения и задавайте файл cookie культуры локализации в схеме приложения.
+
+В следующем примере показано, как задать текущий язык и региональные параметры в файле cookie, который может быть прочитан по промежуточного слоя локализации. Создайте файл *pages/Host. cshtml. CS* со следующим содержимым в приложении блазор на стороне сервера:
+
+```csharp
+public class HostModel : PageModel
+{
+    public void OnGet()
+    {
+        HttpContext.Response.Cookies.Append(
+            CookieRequestCultureProvider.DefaultCookieName,
+            CookieRequestCultureProvider.MakeCookieValue(
+                new RequestCulture(
+                    CultureInfo.CurrentCulture,
+                    CultureInfo.CurrentUICulture)));
+    }
+}
+```
+
+Локализация обрабатывается в приложении:
+
+1. Браузер отправляет в приложение исходный HTTP-запрос.
+1. Язык и региональные параметры назначаются по промежуточного слоя локализации.
+1. Метод в *_Host. cshtml. CS* сохраняет язык и региональные параметры в файле cookie как часть ответа. `OnGet`
+1. Браузер открывает подключение WebSocket для создания интерактивного сеанса Блазор на стороне сервера.
+1. По промежуточного слоя для локализации считывает файл cookie и назначает язык и региональные параметры.
+1. Сеанс на стороне сервера Блазор начинается с правильного языка и региональных параметров.
+
+## <a name="provide-ui-to-choose-the-culture"></a>Предоставление пользовательского интерфейса для выбора языка и региональных параметров
+
+Для предоставления пользовательского интерфейса, позволяющего пользователю выбирать язык и региональные параметры, рекомендуется *подход на основе перенаправления* . Процесс аналогичен тому, что происходит в веб-приложении, когда пользователь пытается получить доступ к защищенному ресурсу&mdash;, пользователь перенаправляется на страницу входа, а затем перенаправляется обратно к исходному ресурсу. 
+
+Приложение сохраняет выбранный язык и региональные параметры пользователя с помощью перенаправления к контроллеру. Контроллер устанавливает выбранный язык и региональные параметры пользователя в файл cookie и перенаправляет пользователя обратно к исходному коду URI.
+
+Установите конечную точку HTTP на сервере, чтобы задать выбранный язык и региональные параметры пользователя в файле cookie, и выполните перенаправление обратно в исходный URI:
+
+```csharp
+[Route("[controller]/[action]")]
+public class CultureController : Controller
+{
+    public IActionResult SetCulture(string culture, string redirectUri)
+    {
+        if (culture != null)
+        {
+            HttpContext.Response.Cookies.Append(
+                CookieRequestCultureProvider.DefaultCookieName,
+                CookieRequestCultureProvider.MakeCookieValue(
+                    new RequestCulture(culture)));
+        }
+
+        return LocalRedirect(redirectUri);
+    }
+}
+```
+
+> [!WARNING]
+> Используйте результат `LocalRedirect` действия, чтобы предотвратить атаки с открытым перенаправлением. Дополнительные сведения см. в разделе <xref:security/preventing-open-redirects>.
+
+В следующем компоненте показан пример выполнения начального перенаправления, когда пользователь выбирает язык и региональные параметры:
+
+```cshtml
+@inject IUriHelper UriHelper
+
+<h3>Select your language</h3>
+
+<select @onchange="OnSelected">
+    <option>Select...</option>
+    <option value="en-US">English</option>
+    <option value="fr-FR">Français</option>
+</select>
+
+@code {
+    private double textNumber;
+
+    private void OnSelected(UIChangeEventArgs e)
+    {
+        var culture = (string)e.Value;
+        var uri = new Uri(UriHelper.GetAbsoluteUri())
+            .GetComponents(UriComponents.PathAndQuery, UriFormat.Unescaped);
+        var query = $"?culture={Uri.EscapeDataString(culture)}&" +
+            $"redirectUri={Uri.EscapeDataString(uri)}";
+
+        UriHelper.NavigateTo("/Culture/SetCulture" + query, forceLoad: true);
+    }
+}
+```
+
+### <a name="use-net-localization-scenarios-in-blazor-apps"></a>Использование сценариев локализации .NET в приложениях Блазор
+
+В приложениях Блазор доступны следующие сценарии локализации и глобализации .NET:
+
+* . Система ресурсов NET
+* Форматирование чисел и дат, зависящих от языка и региональных параметров
+
+`@bind` Функция блазор выполняет глобализацию на основе текущего языка и региональных параметров пользователя. Дополнительные сведения см. в разделе [Привязка данных](#data-binding) .
+
+В настоящее время поддерживается ограниченный набор сценариев локализации ASP.NET Core:
+
+* `IStringLocalizer<>`*поддерживается* в приложениях блазор.
+* `IHtmlLocalizer<>`, `IViewLocalizer<>`и локализация заметок к данным ASP.NET Core сценариев MVC и **не поддерживается** в приложениях блазор.
+
+Дополнительные сведения см. в разделе <xref:fundamentals/localization>.

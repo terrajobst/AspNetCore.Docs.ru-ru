@@ -5,18 +5,18 @@ description: Узнайте, как с помощью интеграционны
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 06/05/2019
+ms.date: 08/05/2019
 uid: test/integration-tests
-ms.openlocfilehash: a4e22e53b4658a7c6da3c9e15671a355b212f559
-ms.sourcegitcommit: 8516b586541e6ba402e57228e356639b85dfb2b9
+ms.openlocfilehash: a86bf2b183a81f0b903a12f9d1660fb32faa6c03
+ms.sourcegitcommit: 2eb605f4f20ac4dd9de6c3b3e3453e108a357a21
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67815366"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68819940"
 ---
 # <a name="integration-tests-in-aspnet-core"></a>Интеграционные тесты в ASP.NET Core
 
-По [Люк Лэтем](https://github.com/guardrex) и [Стив Смит](https://ardalis.com/)
+[Люк ЛаСаМ](https://github.com/guardrex) и [Стив Смит](https://ardalis.com/)
 
 Интеграционные тесты гарантируют, что компоненты приложения правильно работают на уровне, который включает в себя поддерживаемую приложением инфраструктуру, например базу данных, файловую систему и сеть. ASP.NET Core поддерживает интеграционные тесты, используя платформу модульного тестирования с тестовым веб-сервером и сервером тестирования в памяти.
 
@@ -42,7 +42,7 @@ ms.locfileid: "67815366"
 * База данных
 * Файловая система
 * Сетевые устройства
-* Конвейер обработки запросов и ответов
+* Конвейер "запрос-ответ"
 
 Модульные тесты используют поддельные компоненты, известные как *fakes* (фэйки) или *макеты объектов* (моки), вместо компонентов инфраструктуры.
 
@@ -72,9 +72,9 @@ ms.locfileid: "67815366"
 
 1. Настраивается веб сервер SUT.
 1. Создается клиент тестового сервера для отправки запросов к приложению.
-1. *Расположение* выполняется шаг теста: Приложение тестирования готовит запрос.
-1. *Act* выполняется шаг теста: Клиент отправляет запрос и получает ответ.
-1. *Assert* выполняется шаг теста: *Фактическое* ответа проверяется как *передать* или *ошибкой* на основе *ожидается* ответа.
+1. Выполнение шага упорядочения теста: Тестовое приложение готовит запрос.
+1. Выполняется шаг теста "действие": Клиент отправляет запрос и получает ответ.
+1. Проверочный шаг *утверждения* выполняется: *Фактический* ответ проверяется как *пройденный* или *сбой* на основе *ожидаемого* ответа.
 1. Процесс продолжается, пока выполняются все тесты.
 1. Выводятся результаты теста.
 
@@ -84,14 +84,14 @@ ms.locfileid: "67815366"
 
 Пакет `Microsoft.AspNetCore.Mvc.Testing` выполняет следующие задачи:
 
-* Копирует файл зависимостей ( *\*.deps*) из SUT в тестовый проект *bin* каталога.
+* Копирует файл зависимостей ( *\*. Deps*) из сут в каталог *bin* тестового проекта.
 * Назначает корневой каталог проекта SUT в качестве корневого каталога контента, чтобы статические файлы и страницы/представления были найдены при выполнении тестов.
 * Предоставляет класс [WebApplicationFactory](/dotnet/api/microsoft.aspnetcore.mvc.testing.webapplicationfactory-1) для упрощения начальной загрузки SUT с `TestServer`.
 
 Документация по [модульным тестам](/dotnet/articles/core/testing/unit-testing-with-dotnet-test) описывает настройку тестового проекта и средства запуска тестов, а также содержит подробные инструкции по выполнению тестов и рекомендации по именованию тестов и тестовых классов.
 
 > [!NOTE]
-> При создании тестового проекта для приложения отделяйте модульные тесты от интеграционных, помещая их в разные проекты. Это помогает гарантировать, что инфраструктура тестирования компонентов не случайно включены в модульных тестах. Разделение модульных и интеграционных тестов также позволяет контролировать, какой набор тестов выполняется.
+> При создании тестового проекта для приложения отделяйте модульные тесты от интеграционных, помещая их в разные проекты. Это гарантирует, что компоненты тестирования инфраструктуры не будут случайно добавлены в модульные тесты. Разделение модульных и интеграционных тестов также позволяет контролировать, какой набор тестов выполняется.
 
 В сущности, между конфигурацией для тестов приложений Razor Pages и MVC-приложений нет никаких отличий. Единственное отличие заключается в том, как именуются тесты. В приложении Razor Pages тесты конечных точек страницы обычно именуются по классу модели страницы (например, `IndexPageTests` для тестирования интеграции компонентов на странице Index). В приложении MVC тесты обычно организованы по классам контроллеров и именуются по контроллеру, который они проверяют (например, `HomeControllerTests` для тестирования интеграции компонентов на контроллере Home).
 
@@ -99,26 +99,26 @@ ms.locfileid: "67815366"
 
 Тестовый проект должен выполнять следующие требования.
 
-* Ссылаться на следующие пакеты:
+* Сослаться на следующие пакеты:
   * [Microsoft.AspNetCore.App](https://www.nuget.org/packages/Microsoft.AspNetCore.App/)
-  * [Microsoft.AspNetCore.Mvc.Testing](https://www.nuget.org/packages/Microsoft.AspNetCore.Mvc.Testing/)
+  * [Microsoft. AspNetCore. MVC. Test](https://www.nuget.org/packages/Microsoft.AspNetCore.Mvc.Testing/)
 * Указывать Web SDK в файле проекта (`<Project Sdk="Microsoft.NET.Sdk.Web">`). Web SDK необходим при ссылке на [метапакет Microsoft.AspNetCore.App](xref:fundamentals/metapackage-app).
 
 Выполнение необходимых требований можно посмотреть в [примере приложения](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/test/integration-tests/samples/). Изучите файл *tests/RazorPagesProject.Tests/RazorPagesProject.Tests.csproj*. Образец приложения использует платформу тестирования [xUnit](https://xunit.github.io/) и библиотеку анализа [AngleSharp](https://anglesharp.github.io/), поэтому он также ссылается на:
 
 * [xUnit](https://www.nuget.org/packages/xunit/)
-* [xUnit.Runner.VisualStudio](https://www.nuget.org/packages/xunit.runner.visualstudio/)
-* [AngleSharp](https://www.nuget.org/packages/AngleSharp/)
+* [xUnit. Runner. VisualStudio](https://www.nuget.org/packages/xunit.runner.visualstudio/)
+* [англешарп](https://www.nuget.org/packages/AngleSharp/)
 
-## <a name="sut-environment"></a>SUT среды
+## <a name="sut-environment"></a>Среда сут
 
-Если SUT [среды](xref:fundamentals/environments) значение не задано, то по умолчанию среды разработки.
+Если [Среда](xref:fundamentals/environments) сут не задана, среда по умолчанию имеет значение Development.
 
 ## <a name="basic-tests-with-the-default-webapplicationfactory"></a>Базовые тесты со стандартной WebApplicationFactory
 
 [WebApplicationFactory&lt;TEntryPoint&gt; ](/dotnet/api/microsoft.aspnetcore.mvc.testing.webapplicationfactory-1) используется для создания [TestServer](/dotnet/api/microsoft.aspnetcore.testhost.testserver) для интеграционных тестов. `TEntryPoint` это класс точки входа SUT, обычно класс `Startup`.
 
-Классы реализуют теста *тестового стенда класс* интерфейс ([IClassFixture](https://xunit.github.io/docs/shared-context#class-fixture)) для указания класса содержит тесты и укажите общий объект экземпляры всех тестах в классе.
+Тестовые классы реализуют интерфейс *основы класса* ([иклассфикстуре](https://xunit.github.io/docs/shared-context#class-fixture)), чтобы указать, что класс содержит тесты, и предоставить экземпляры общего объекта между тестами в классе.
 
 ### <a name="basic-test-of-app-endpoints"></a>Базовое тестирование конечных точек приложения
 
@@ -128,86 +128,86 @@ ms.locfileid: "67815366"
 
 [!code-csharp[](integration-tests/samples/2.x/IntegrationTestsSample/tests/RazorPagesProject.Tests/IntegrationTests/BasicTests.cs?name=snippet1)]
 
-По умолчанию, не сохраняются файлы cookie необязательные различных запросов, когда [политика одобрения GDPR](xref:security/gdpr) включен. Для сохранения файлов cookie, необязательные, например используемые поставщик TempData, пометьте их как важное значение для тестов. Сведения о маркировке файл cookie как основные, см. в разделе [важные файлы cookie](xref:security/gdpr#essential-cookies).
+По умолчанию некритические файлы cookie не сохраняются в запросах, если включена [политика согласия GDPR](xref:security/gdpr) . Чтобы сохранить ненужные файлы cookie, например те, которые используются поставщиком TempData, пометьте их как основные в тестах. Инструкции по маркировке файла cookie в качестве основы см. в разделе [основные файлы cookie](xref:security/gdpr#essential-cookies).
 
-### <a name="test-a-secure-endpoint"></a>Проверка защищенной конечной точки
+### <a name="test-a-secure-endpoint"></a>Тестирование безопасной конечной точки
 
-Еще один тест в `BasicTests` класс проверяет, что защищенную конечную точку перенаправляет без проверки подлинности пользователя на страницу входа для приложения.
+Другой тест в `BasicTests` классе проверяет, что защищенная конечная точка перенаправляет пользователя, не прошедшего проверку подлинности, на страницу входа приложения.
 
-В SUT `/SecurePage` странице использует [AuthorizePage](/dotnet/api/microsoft.extensions.dependencyinjection.pageconventioncollectionextensions.authorizepage) соглашение о применении [AuthorizeFilter](/dotnet/api/microsoft.aspnetcore.mvc.authorization.authorizefilter) на страницу. Дополнительные сведения см. в разделе [соглашения об авторизации Razor Pages](xref:security/authorization/razor-pages-authorization#require-authorization-to-access-a-page).
+На `/SecurePage` странице сут для применения [аусоризефилтер](/dotnet/api/microsoft.aspnetcore.mvc.authorization.authorizefilter) к странице используется соглашение [аусоризепаже](/dotnet/api/microsoft.extensions.dependencyinjection.pageconventioncollectionextensions.authorizepage) . Дополнительные сведения см. в разделе [соглашения об авторизации Razor Pages](xref:security/authorization/razor-pages-authorization#require-authorization-to-access-a-page).
 
 [!code-csharp[](integration-tests/samples/2.x/IntegrationTestsSample/src/RazorPagesProject/Startup.cs?name=snippet1)]
 
-В `Get_SecurePageRequiresAnAuthenticatedUser` протестировать, [WebApplicationFactoryClientOptions](/dotnet/api/microsoft.aspnetcore.mvc.testing.webapplicationfactoryclientoptions) присваивается запрет перенаправления, задав [AllowAutoRedirect](/dotnet/api/microsoft.aspnetcore.mvc.testing.webapplicationfactoryclientoptions.allowautoredirect) для `false`:
+В этом `Get_SecurePageRequiresAnAuthenticatedUser` тесте [вебаппликатионфакториклиентоптионс](/dotnet/api/microsoft.aspnetcore.mvc.testing.webapplicationfactoryclientoptions) имеет значение запретить перенаправления, установив для `false` [алловауторедирект](/dotnet/api/microsoft.aspnetcore.mvc.testing.webapplicationfactoryclientoptions.allowautoredirect) значение:
 
 [!code-csharp[](integration-tests/samples/2.x/IntegrationTestsSample/tests/RazorPagesProject.Tests/IntegrationTests/BasicTests.cs?name=snippet2)]
 
-Запретив клиенту выполните перенаправления, можно сделать следующие проверки:
+Если запретить клиенту следовать перенаправлению, можно выполнить следующие проверки:
 
-* Можно проверить код состояния, возвращаемый SUT от ожидаемого [HttpStatusCode.Redirect](/dotnet/api/system.net.httpstatuscode) результат, не конечный код состояния после перенаправления на страницу входа, что было бы [HttpStatusCode.OK](/dotnet/api/system.net.httpstatuscode).
-* `Location` Проверяется значение заголовка в заголовке ответа, чтобы подтвердить, что он начинается с `http://localhost/Identity/Account/Login`, не окончательный входа страницы ответ, где `Location` заголовок не будет присутствовать.
+* Код состояния, возвращаемый сут, может быть проверен на соответствие ожидаемому [HttpStatusCode.](/dotnet/api/system.net.httpstatuscode) результат перенаправления, а не окончательный код состояния после перенаправления на страницу входа, что было бы [HttpStatusCode. ОК](/dotnet/api/system.net.httpstatuscode).
+* Значение заголовка в заголовках ответа проверяется, чтобы подтвердить, что начинается с `http://localhost/Identity/Account/Login`, а не на последнем ответе `Location` страницы входа, где отсутствует заголовок. `Location`
 
-Дополнительные сведения о `WebApplicationFactoryClientOptions`, см. в разделе [параметры клиента](#client-options) раздел.
+Дополнительные сведения `WebApplicationFactoryClientOptions`о см. в разделе [Параметры клиента](#client-options) .
 
-## <a name="customize-webapplicationfactory"></a>Настройка WebApplicationFactory
+## <a name="customize-webapplicationfactory"></a>Настройка Вебаппликатионфактори
 
-Веб-узел конфигурации можно создать независимо от тестовых классов путем наследования от `WebApplicationFactory` для создания одного или нескольких пользовательских фабрик:
+Конфигурацию веб-узла можно создать независимо от тестовых классов, наследуя от `WebApplicationFactory` , чтобы создать одну или несколько пользовательских фабрик:
 
-1. Наследовать от `WebApplicationFactory` и переопределить [ConfigureWebHost](/dotnet/api/microsoft.aspnetcore.mvc.testing.webapplicationfactory-1.configurewebhost). [IWebHostBuilder](/dotnet/api/microsoft.aspnetcore.hosting.iwebhostbuilder) позволяет настраивать службы коллекции с [ConfigureServices](/dotnet/api/microsoft.aspnetcore.hosting.istartup.configureservices):
+1. Наследование `WebApplicationFactory` из и переопределение [конфигуревебхост](/dotnet/api/microsoft.aspnetcore.mvc.testing.webapplicationfactory-1.configurewebhost). [Ивебхостбуилдер](/dotnet/api/microsoft.aspnetcore.hosting.iwebhostbuilder) позволяет настраивать коллекцию служб с помощью [ConfigureServices](/dotnet/api/microsoft.aspnetcore.hosting.istartup.configureservices):
 
    [!code-csharp[](integration-tests/samples/2.x/IntegrationTestsSample/tests/RazorPagesProject.Tests/CustomWebApplicationFactory.cs?name=snippet1)]
 
-   Заполнение в базе данных [пример приложения](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/test/integration-tests/samples) осуществляется `InitializeDbForTests` метод. Метод описан в [пример тестов интеграции: Тестирование приложения организации](#test-app-organization) раздел.
+   Начальное заполнение базы данных в [примере приложения](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/test/integration-tests/samples) выполняется `InitializeDbForTests` методом. Метод описан в [примере интеграционных тестов. Тестирование раздела "](#test-app-organization) Организация приложений".
 
-2. Использование настраиваемого `CustomWebApplicationFactory` в тестовых классов. В следующем примере используется фабрики в `IndexPageTests` класса:
+2. Используйте пользовательский `CustomWebApplicationFactory` класс в тестовых классах. В следующем примере используется фабрика в `IndexPageTests` классе:
 
    [!code-csharp[](integration-tests/samples/2.x/IntegrationTestsSample/tests/RazorPagesProject.Tests/IntegrationTests/IndexPageTests.cs?name=snippet1)]
 
-   Пример приложения клиента настроен на предотвращение `HttpClient` из следующих перенаправления. Как описано в [тестирования защищенную конечную точку](#test-a-secure-endpoint) раздел, это позволяет тесты, чтобы проверить результат первого отклика приложения. Первого ответа — это перенаправление во многих из этих проверок с `Location` заголовка.
+   Клиент примера приложения настроен для предотвращения `HttpClient` следующих перенаправлений. Как описано в разделе [тестирование защищенной конечной точки](#test-a-secure-endpoint) , это позволяет тестам проверять результат первого ответа приложения. Первый ответ — это перенаправление во многих из этих тестов с `Location` заголовком.
 
-3. Типичный тест использует `HttpClient` и вспомогательные методы для обработки запроса и ответа:
+3. Типичный тест использует `HttpClient` вспомогательные методы и для обработки запроса и ответа:
 
    [!code-csharp[](integration-tests/samples/2.x/IntegrationTestsSample/tests/RazorPagesProject.Tests/IntegrationTests/IndexPageTests.cs?name=snippet2)]
 
-Любой запрос POST на SUT должны удовлетворять против подделки убедитесь, что в приложении автоматически становится [против подделки система защиты данных](xref:security/data-protection/introduction). Чтобы упорядочить для запроса POST теста, необходимо тестирование приложения:
+Любой запрос POST к сут должен соответствовать проверке подделки, которая автоматически делается в [системе защиты данных](xref:security/data-protection/introduction)в приложении с защитой от подделки. Чтобы упорядочить запрос POST теста, тестовое приложение должно:
 
-1. Выполните запрос для страницы.
-1. Выполните синтаксический анализ против подделки файла cookie и маркер проверки запроса из ответа.
-1. Выполнения запроса POST против подделки файла cookie и запрос проверки подлинности маркера на месте.
+1. Выполните запрос к странице.
+1. Проанализируйте файл cookie подделки и запросите маркер проверки из ответа.
+1. Выполните запрос POST с файлом cookie подделки и запросом маркера проверки на месте.
 
-`SendAsync` Вспомогательные методы расширения (*Helpers/HttpClientExtensions.cs*) и `GetDocumentAsync` вспомогательный метод (*Helpers/HtmlHelpers.cs*) в [пример приложения](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/test/integration-tests/samples/) использовать [AngleSharp](https://anglesharp.github.io/) средство синтаксического анализа для обработки против подделки проверку с помощью следующих методов:
+Вспомогательные методы расширения `SendAsync` (*Helpers/HttpClientExtensions.cs*) и вспомогательный метод `GetDocumentAsync` (*Helpers/HtmlHelpers.cs*) в [примере приложения](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/test/integration-tests/samples/) используют средство синтаксического анализа [AngleSharp](https://anglesharp.github.io/) для обработки защиты от подделки с помощью следующих методов:
 
-* `GetDocumentAsync` &ndash; Получает [HttpResponseMessage](/dotnet/api/system.net.http.httpresponsemessage) и возвращает `IHtmlDocument`. `GetDocumentAsync` использует фабрику, которая подготавливает *виртуального ответа* на основе исходного `HttpResponseMessage`. Дополнительные сведения см. в разделе [AngleSharp документации](https://github.com/AngleSharp/AngleSharp#documentation).
-* `SendAsync` методы расширения для `HttpClient` compose [HttpRequestMessage](/dotnet/api/system.net.http.httprequestmessage) и вызвать [SendAsync(HttpRequestMessage)](/dotnet/api/system.net.http.httpclient.sendasync#System_Net_Http_HttpClient_SendAsync_System_Net_Http_HttpRequestMessage_) для отправки запросов на SUT. Перегрузок для `SendAsync` принять HTML-форма (`IHtmlFormElement`) и следующие:
-  * Кнопка в форме "Отправить" (`IHtmlElement`)
-  * Наборе значений формы (`IEnumerable<KeyValuePair<string, string>>`)
-  * Кнопка "Отправить" (`IHtmlElement`) и формируют значения (`IEnumerable<KeyValuePair<string, string>>`)
+* `GetDocumentAsync` &ndash; Получает [HttpResponseMessage](/dotnet/api/system.net.http.httpresponsemessage) и возвращает `IHtmlDocument`. `GetDocumentAsync`использует фабрику, которая подготавливает *виртуальный ответ* на основе исходного `HttpResponseMessage`. Дополнительные сведения см. в [документации по англешарп](https://github.com/AngleSharp/AngleSharp#documentation).
+* `SendAsync`методы расширения для `HttpClient` создания [HttpRequestMessage](/dotnet/api/system.net.http.httprequestmessage) и вызывают [SendAsync (HttpRequestMessage)](/dotnet/api/system.net.http.httpclient.sendasync#System_Net_Http_HttpClient_SendAsync_System_Net_Http_HttpRequestMessage_) для отправки запросов сут. Перегрузки для `SendAsync` принимают форму HTML (`IHtmlFormElement`) и следующие элементы:
+  * Кнопка "Отправить" в форме`IHtmlElement`()
+  * Коллекция значений форм (`IEnumerable<KeyValuePair<string, string>>`)
+  * Отправить кнопку (`IHtmlElement`) и значения формы (`IEnumerable<KeyValuePair<string, string>>`)
 
 > [!NOTE]
-> [AngleSharp](https://anglesharp.github.io/) стороннего синтаксического анализа библиотека, используемая для демонстрационных целей в этой статье и в примере приложения. AngleSharp не поддерживается или для интеграционного тестирования приложений ASP.NET Core. Можно использовать другие средства синтаксического анализа, таких как [пакет гибкость получена строка Html (HAP)](https://html-agility-pack.net/). Другой подход заключается в написании кода непосредственно обрабатывать сложные системы токен проверки запроса и против подделки файла cookie.
+> [Англешарп](https://anglesharp.github.io/) — это библиотека анализа сторонних производителей, используемая для демонстрационных целей в этом разделе и в примере приложения. Англешарп не поддерживается или не требуется для интеграционного тестирования ASP.NET Core приложений. Можно использовать другие средства синтаксического анализа, такие как [пакет динамичности HTML (хап)](https://html-agility-pack.net/). Другой подход заключается в написании кода для непосредственной работы с маркером проверки запроса системы защиты от подделки и с помощью файла cookie подделки.
 
-## <a name="customize-the-client-with-withwebhostbuilder"></a>Настройка клиента с WithWebHostBuilder
+## <a name="customize-the-client-with-withwebhostbuilder"></a>Настройка клиента с помощью Висвебхостбуилдер
 
-Если в методе теста, необходима дополнительная настройка [WithWebHostBuilder](/dotnet/api/microsoft.aspnetcore.mvc.testing.webapplicationfactory-1.withwebhostbuilder) создает новую `WebApplicationFactory` с [IWebHostBuilder](/dotnet/api/microsoft.aspnetcore.hosting.iwebhostbuilder) , дальнейшей настройки конфигурации.
+Если в методе теста требуется дополнительная настройка, [висвебхостбуилдер](/dotnet/api/microsoft.aspnetcore.mvc.testing.webapplicationfactory-1.withwebhostbuilder) создает новый `WebApplicationFactory` с [ивебхостбуилдер](/dotnet/api/microsoft.aspnetcore.hosting.iwebhostbuilder) , который еще настраивается конфигурацией.
 
-`Post_DeleteMessageHandler_ReturnsRedirectToRoot` Метод из теста [пример приложения](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/test/integration-tests/samples) демонстрируется использование `WithWebHostBuilder`. Этот тест выполняет удаление записи в базе данных путем отправки формы в SUT активации.
+Метод теста в [примере приложения](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/test/integration-tests/samples) `WithWebHostBuilder`демонстрирует использование. `Post_DeleteMessageHandler_ReturnsRedirectToRoot` Этот тест выполняет запись удаления в базе данных, активируя отправку формы в сут.
 
-Так как другой проверять в `IndexPageTests` класс выполняет операцию, которая удаляет все записи в базе данных и могут выполняться перед `Post_DeleteMessageHandler_ReturnsRedirectToRoot` метод, базы данных будет заполняться данными в этом тестовом методе, чтобы обеспечить наличие SUT для удаления записи. Выбрав `deleteBtn1` кнопки `messages` формы в SUT моделируется в запросе к SUT:
+Поскольку другой тест в `IndexPageTests` классе выполняет операцию, которая удаляет все записи в базе данных и может выполняться `Post_DeleteMessageHandler_ReturnsRedirectToRoot` перед методом, база данных заполняется в этом методе теста, чтобы обеспечить наличие записи для удаления сут. `deleteBtn1` Выбор кнопки `messages` формы в сут имитируется в запросе к сут:
 
 [!code-csharp[](integration-tests/samples/2.x/IntegrationTestsSample/tests/RazorPagesProject.Tests/IntegrationTests/IndexPageTests.cs?name=snippet3)]
 
 ## <a name="client-options"></a>Параметры клиента
 
-В следующей таблице показаны по умолчанию [WebApplicationFactoryClientOptions](/dotnet/api/microsoft.aspnetcore.mvc.testing.webapplicationfactoryclientoptions) доступны при создании `HttpClient` экземпляров.
+В следующей таблице показаны [вебаппликатионфакториклиентоптионс](/dotnet/api/microsoft.aspnetcore.mvc.testing.webapplicationfactoryclientoptions) по умолчанию, доступные `HttpClient` при создании экземпляров.
 
 | Параметр | Описание: | Значение по умолчанию |
 | ------ | ----------- | ------- |
-| [AllowAutoRedirect](/dotnet/api/microsoft.aspnetcore.mvc.testing.webapplicationfactoryclientoptions.allowautoredirect) | Возвращает или задает ли `HttpClient` экземпляров должен автоматически следовать ответам перенаправления. | `true` |
+| [алловауторедирект](/dotnet/api/microsoft.aspnetcore.mvc.testing.webapplicationfactoryclientoptions.allowautoredirect) | Возвращает или задает, должны ли `HttpClient` экземпляры автоматически следовать ответам перенаправления. | `true` |
 | [BaseAddress](/dotnet/api/microsoft.aspnetcore.mvc.testing.webapplicationfactoryclientoptions.baseaddress) | Возвращает или задает базовый адрес `HttpClient` экземпляров. | `http://localhost` |
-| [HandleCookies](/dotnet/api/microsoft.aspnetcore.mvc.testing.webapplicationfactoryclientoptions.handlecookies) | Возвращает или задает ли `HttpClient` экземпляров должен обрабатывать файлы cookie. | `true` |
-| [MaxAutomaticRedirections](/dotnet/api/microsoft.aspnetcore.mvc.testing.webapplicationfactoryclientoptions.maxautomaticredirections) | Возвращает или задает максимальное количество ответов переадресации, `HttpClient` экземпляры должны следовать. | 7 |
+| [хандлекукиес](/dotnet/api/microsoft.aspnetcore.mvc.testing.webapplicationfactoryclientoptions.handlecookies) | Возвращает или задает, `HttpClient` должны ли экземпляры управлять файлами cookie. | `true` |
+| [максаутоматикредиректионс](/dotnet/api/microsoft.aspnetcore.mvc.testing.webapplicationfactoryclientoptions.maxautomaticredirections) | Возвращает или задает максимальное число ответов перенаправления, которые `HttpClient` должны следовать экземплярам. | 7 |
 
-Создание `WebApplicationFactoryClientOptions` класса и передать его в [CreateClient](/dotnet/api/microsoft.aspnetcore.mvc.testing.webapplicationfactory-1.createclient) метод (в примере кода показаны значения по умолчанию):
+Создайте класс `WebApplicationFactoryClientOptions` и передайте его в метод [CreateClient](/dotnet/api/microsoft.aspnetcore.mvc.testing.webapplicationfactory-1.createclient) (значения по умолчанию показаны в примере кода):
 
 ```csharp
 // Default client option values are shown
@@ -220,17 +220,17 @@ clientOptions.MaxAutomaticRedirections = 7;
 _client = _factory.CreateClient(clientOptions);
 ```
 
-## <a name="inject-mock-services"></a>Ввести макетов служб
+## <a name="inject-mock-services"></a>Вставка служб макетирования
 
-Службы могут переопределяться в тесте с помощью вызова [ConfigureTestServices](/dotnet/api/microsoft.aspnetcore.testhost.webhostbuilderextensions.configuretestservices) в построителе узла. **Чтобы внедрить службы имитации, необходимо иметь SUT `Startup` класса `Startup.ConfigureServices` метод.**
+Службы могут быть переопределены в тесте с помощью вызова [конфигуретестсервицес](/dotnet/api/microsoft.aspnetcore.testhost.webhostbuilderextensions.configuretestservices) в построителе узлов. **Чтобы внедрить службы макетирования, сут должен иметь `Startup` класс `Startup.ConfigureServices` с методом.**
 
-Пример SUT включает областью действия службы, которая возвращает знак кавычек. Квоты внедряется в скрытом поле на странице индекса при запросе страницы индекса.
+Пример сут включает службу с заданной областью, которая возвращает кавычки. Цитата внедряется в скрытое поле на странице индекса при запросе страницы индекса.
 
-*Services/IQuoteService.cs*:
+*Services/IQuoteService. CS*:
 
 [!code-csharp[](integration-tests/samples/2.x/IntegrationTestsSample/src/RazorPagesProject/Services/IQuoteService.cs?name=snippet1)]
 
-*Services/QuoteService.cs*:
+*Services/QuoteService. CS*:
 
 [!code-csharp[](integration-tests/samples/2.x/IntegrationTestsSample/src/RazorPagesProject/Services/QuoteService.cs?name=snippet1)]
 
@@ -242,80 +242,43 @@ _client = _factory.CreateClient(clientOptions);
 
 [!code-csharp[](integration-tests/samples/2.x/IntegrationTestsSample/src/RazorPagesProject/Pages/Index.cshtml.cs?name=snippet1&highlight=4,9,20,26)]
 
-*Pages/Index.cs*:
+*Pages/index. CS*:
 
 [!code-cshtml[](integration-tests/samples/2.x/IntegrationTestsSample/src/RazorPagesProject/Pages/Index.cshtml?name=snippet_Quote)]
 
-Следующая разметка создается при запуске приложения SUT:
+При запуске приложения сут создается следующая разметка:
 
 ```html
 <input id="quote" type="hidden" value="Come on, Sarah. We&#x27;ve an appointment in 
     London, and we&#x27;re already 30,000 years late.">
 ```
 
-Для тестирования внедрения службы и квоты при тестировании интеграции, макеты службы внедряется в SUT в тесте. Макеты службы заменяет приложения `QuoteService` и службу, предоставляемую тестовое приложение, с именем `TestQuoteService`:
+Чтобы протестировать службу и внедрение цитат в интеграционный тест, служба макетирования будет внедрена в сут тестом. Служба макета заменяет приложение `QuoteService` на службу, предоставляемую тестовым приложением, называемую: `TestQuoteService`
 
-*IntegrationTests.IndexPageTests.cs*:
+*IntegrationTests.IndexPageTests.CS*:
 
 [!code-csharp[](integration-tests/samples/2.x/IntegrationTestsSample/tests/RazorPagesProject.Tests/IntegrationTests/IndexPageTests.cs?name=snippet4)]
 
-`ConfigureTestServices` вызывается, и областью действия служба зарегистрирована:
+`ConfigureTestServices`вызывается, а служба с заданной областью зарегистрирована:
 
 [!code-csharp[](integration-tests/samples/2.x/IntegrationTestsSample/tests/RazorPagesProject.Tests/IntegrationTests/IndexPageTests.cs?name=snippet5&highlight=7-10,17,20-21)]
 
-Разметки, созданный во время выполнения теста отражает текст предложения, предоставляемые `TestQuoteService`, таким образом передает утверждения:
+Разметка `TestQuoteService`, созданная во время выполнения теста, отражает текст кавычек, предоставленный, поэтому утверждение передается следующим образом:
 
 ```html
 <input id="quote" type="hidden" value="Something&#x27;s interfering with time, 
     Mr. Scarman, and time is my business.">
 ```
 
-## <a name="how-the-test-infrastructure-infers-the-app-content-root-path"></a>Как в инфраструктуре тестирования выводит путь корня содержимого приложения
+## <a name="how-the-test-infrastructure-infers-the-app-content-root-path"></a>Как инфраструктура тестирования определяет корневой путь к содержимому приложения
 
-`WebApplicationFactory` Конструктора определяет путь корня содержимого приложения, выполнив поиск [WebApplicationFactoryContentRootAttribute](/dotnet/api/microsoft.aspnetcore.mvc.testing.webapplicationfactorycontentrootattribute) на сборку, содержащую интеграционные тесты с ключом, равным `TEntryPoint` сборки `System.Reflection.Assembly.FullName`. В случае, если атрибут с правильным ключом не найден, `WebApplicationFactory` переключение на поиск файла решения ( *\*.sln*) и добавляет `TEntryPoint` имя сборки в каталоге решения. Корневой каталог приложения (путь корня содержимого) используется для обнаружения представления и файлы содержимого.
+Конструктор определяет корневой путь к содержимому приложения, выполняя поиск [вебаппликатионфакториконтентрутаттрибуте](/dotnet/api/microsoft.aspnetcore.mvc.testing.webapplicationfactorycontentrootattribute) в сборке, содержащей тесты интеграции, с `TEntryPoint` ключом, равным сборке. `System.Reflection.Assembly.FullName` `WebApplicationFactory` Если атрибут с правильным ключом не найден, `WebApplicationFactory` возвращается к поиску файла решения ( *\** `TEntryPoint` SLN) и добавляет имя сборки в каталог решения. Корневой каталог приложения (корневой путь к содержимому) используется для обнаружения представлений и файлов содержимого.
 
-В большинстве случаев нет необходимости явно задать корневой каталог содержимого приложения, как логика поиска обычно находит правильный корневой каталог содержимого во время выполнения. В специальных случаях, где не найден корневой каталог содержимого с помощью алгоритма встроенные поисковые, содержимого, что корневой можно указать явным образом или с помощью пользовательской логики приложения. Чтобы задать корневой каталог содержимого приложения в этих сценариях, вызовите `UseSolutionRelativeContentRoot` метод расширения из [Microsoft.AspNetCore.TestHost](https://www.nuget.org/packages/Microsoft.AspNetCore.TestHost) пакета. Укажите относительный путь решения и шаблон файла имя или glob дополнительное средство решения (по умолчанию = `*.sln`).
+## <a name="disable-shadow-copying"></a>Отключение теневого копирования
 
-Вызовите [UseSolutionRelativeContentRoot](/dotnet/api/microsoft.aspnetcore.testhost.webhostbuilderextensions.usesolutionrelativecontentroot) с помощью метода расширения *один* из следующих подходов:
+Теневое копирование приводит к тому, что тесты выполняются в каталоге, отличном от каталога выходного каталога. Для правильной работы тестов необходимо отключить теневое копирование. [Пример приложения](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/test/integration-tests/samples) использует xUnit и отключает теневое копирование для xUnit, включая файл *xUnit. Runner. JSON* с правильным параметром конфигурации. Дополнительные сведения см. в разделе [Настройка xUnit с помощью JSON](https://xunit.github.io/docs/configuring-with-json.html).
 
-* При настройке тестовых классов с `WebApplicationFactory`, предоставить пользовательскую конфигурацию с [IWebHostBuilder](/dotnet/api/microsoft.aspnetcore.hosting.iwebhostbuilder):
-
-   ```csharp
-   public IndexPageTests(
-       WebApplicationFactory<RazorPagesProject.Startup> factory)
-   {
-       var _factory = factory.WithWebHostBuilder(builder =>
-       {
-           builder.UseSolutionRelativeContentRoot("<SOLUTION-RELATIVE-PATH>");
-
-           ...
-       });
-   }
-   ```
-
-* При настройке тестовых классов с пользовательским `WebApplicationFactory`, наследуют от `WebApplicationFactory` и переопределить [ConfigureWebHost](/dotnet/api/microsoft.aspnetcore.mvc.testing.webapplicationfactory-1.configurewebhost):
-
-   ```csharp
-   public class CustomWebApplicationFactory<TStartup>
-       : WebApplicationFactory<RazorPagesProject.Startup>
-   {
-       protected override void ConfigureWebHost(IWebHostBuilder builder)
-       {
-           builder.ConfigureServices(services =>
-           {
-               builder.UseSolutionRelativeContentRoot("<SOLUTION-RELATIVE-PATH>");
-
-               ...
-           });
-       }
-   }
-   ```
-
-## <a name="disable-shadow-copying"></a>Отключить теневое копирование
-
-Теневое копирование вызывает ошибки в тестах для выполнения в каталоге, отличном от в выходной каталог. Для тестов для правильной работы теневое копирование, необходимо отключить. [Пример приложения](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/test/integration-tests/samples) использует xUnit и отключает теневого копирования для xUnit, включив *xunit.runner.json* файл с параметром правильная конфигурация. Дополнительные сведения см. в разделе [Настройка xUnit с помощью JSON](https://xunit.github.io/docs/configuring-with-json.html).
-
-Добавить *xunit.runner.json* файла корневой каталог тестового проекта со следующим содержимым:
+Добавьте файл *xUnit. Runner. JSON* в корень тестового проекта со следующим содержимым:
 
 ```json
 {
@@ -323,57 +286,57 @@ _client = _factory.CreateClient(clientOptions);
 }
 ```
 
-## <a name="disposal-of-objects"></a>Реализации объектов
+## <a name="disposal-of-objects"></a>Удаление объектов
 
-После тестирования `IClassFixture` реализации выполняются, [TestServer](/dotnet/api/microsoft.aspnetcore.testhost.testserver) и [HttpClient](/dotnet/api/system.net.http.httpclient) , удаляются при уничтожает xUnit [WebApplicationFactory](/dotnet/api/microsoft.aspnetcore.mvc.testing.webapplicationfactory-1) . Если экземпляров разработчиком требуют реализации, удалить их в `IClassFixture` реализации. Дополнительные сведения см. в разделе [реализация метода Dispose](/dotnet/standard/garbage-collection/implementing-dispose).
+После выполнения `IClassFixture` тестов реализации [TestServer](/dotnet/api/microsoft.aspnetcore.testhost.testserver) и [HttpClient](/dotnet/api/system.net.http.httpclient) удаляются, когда xUnit удаляет [вебаппликатионфактори](/dotnet/api/microsoft.aspnetcore.mvc.testing.webapplicationfactory-1). Если для объектов, создаваемых разработчиком, требуется реализация, удалите их в `IClassFixture` реализации. Дополнительные сведения см. [в разделе Реализация метода Dispose](/dotnet/standard/garbage-collection/implementing-dispose).
 
-## <a name="integration-tests-sample"></a>Пример тестов интеграции
+## <a name="integration-tests-sample"></a>Пример интеграционных тестов
 
 [Пример приложения](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/test/integration-tests/samples) состоит из двух приложений:
 
 | Приложение | Каталог проекта | Описание |
 | --- | ----------------- | ----------- |
-| Сообщение приложения (SUT) | *src/RazorPagesProject* | Позволяет пользователю добавить, удалить один, удалить все и анализ сообщений. |
-| Тестирование приложения | *tests/RazorPagesProject.Tests* | Используется для тестирования интеграции SUT. |
+| Приложение сообщений (сут) | *src/Разорпажеспрожект* | Позволяет пользователю добавлять, удалять, удалять все и анализировать сообщения. |
+| Тестовое приложение | *Tests/Разорпажеспрожект. Tests* | Используется для интеграции тестирования сут. |
 
-Тесты можно выполнять с помощью встроенной возможности интерфейса IDE, например [Visual Studio](https://visualstudio.microsoft.com). При использовании [Visual Studio Code](https://code.visualstudio.com/) или из командной строки, выполните следующую команду в командной строке в *tests/RazorPagesProject.Tests* каталог:
+Тесты можно выполнять с помощью встроенных функций тестирования интегрированной среды разработки, например [Visual Studio](https://visualstudio.microsoft.com). При использовании [Visual Studio Code](https://code.visualstudio.com/) или командной строки выполните следующую команду в командной строке в каталоге *Tests/разорпажеспрожект. Tests* :
 
 ```console
 dotnet test
 ```
 
-### <a name="message-app-sut-organization"></a>Сообщение приложения (SUT) организации
+### <a name="message-app-sut-organization"></a>Организация приложения для сообщений (сут)
 
-SUT — это система сообщение Razor Pages со следующими характеристиками:
+СУТ — это Razor Pages система сообщений со следующими характеристиками:
 
-* Страница индекса приложения (*Pages/Index.cshtml* и *Pages/Index.cshtml.cs*) предоставляет пользовательский Интерфейс и страницы модели методы для управления, добавление, удаление и анализа сообщений (среднее слов в сообщения) .
-* Описывается сообщение `Message` класс (*Data/Message.cs*) с двумя свойствами: `Id` (ключ) и `Text` (сообщение). `Text` Свойство требуется, но более 200 символов.
-* Сообщения хранятся с использованием [базы данных в памяти платформа Entity Framework](/ef/core/providers/in-memory/)&#8224;.
-* Приложение содержит слой доступа к данным (DAL) в классе контекста базы данных, `AppDbContext` (*Data/AppDbContext.cs*).
-* Если база данных пуста при запуске приложения, хранилище сообщений инициализируется с помощью этих сообщений.
-* Приложение содержит `/SecurePage` , которые могут быть доступны только пользователем, прошедшим проверку.
+* Страница индекса приложения (*pages/index. cshtml* и Pages */index. cshtml. CS*) предоставляет методы пользовательского интерфейса и модели страницы для управления добавлением, удалением и анализом сообщений (среднее число слов на сообщение).
+* Сообщение описывается `Message` классом (*Data/Message. CS*) с двумя свойствами: `Id` (Key) и `Text` (Message). `Text` Свойство является обязательным и ограничено 200 символами.
+* Сообщения хранятся с&#8224;помощью [Entity Framework базы данных в памяти](/ef/core/providers/in-memory/).
+* Приложение содержит уровень доступа к данным (DAL) в своем классе `AppDbContext` контекста базы данных (*Data/аппдбконтекст. CS*).
+* Если база данных пуста при запуске приложения, то хранилище сообщений инициализируется тремя сообщениями.
+* Приложение включает объект `/SecurePage` , доступ к которому может получить только пользователь, прошедший проверку подлинности.
 
-&#8224;В разделе EF [теста с помощью InMemory](/ef/core/miscellaneous/testing/in-memory), объясняется, как использовать базу данных в памяти для тестов с использованием MSTest. В этом разделе используется [xUnit](https://xunit.github.io/) платформы тестирования. Концепциях тестирования и тестирования реализации различных тестовых платформ доступны, но не идентичен.
+&#8224;Раздел EF, [тест с использованием памяти](/ef/core/miscellaneous/testing/in-memory), объясняет, как использовать базу данных в памяти для тестов с помощью MSTest. В этом разделе используется платформа тестирования [xUnit](https://xunit.github.io/) . Концепции тестирования и реализации тестов в разных платформах тестирования похожи, но не идентичны.
 
-Несмотря на то, что приложение не использует шаблон репозитория и не эффективный пример [шаблон единицы работы (UoW)](https://martinfowler.com/eaaCatalog/unitOfWork.html), Razor Pages поддерживает эти шаблоны разработки. Дополнительные сведения см. в разделе [проектирование уровня сохраняемости инфраструктуры](/dotnet/standard/microservices-architecture/microservice-ddd-cqrs-patterns/infrastructure-persistence-layer-design) и [тестирование логики контроллера](/aspnet/core/mvc/controllers/testing) (этот пример реализует шаблон репозитория).
+Хотя приложение не использует шаблон репозитория и не является эффективным примером [шаблона единицы работы (UoW)](https://martinfowler.com/eaaCatalog/unitOfWork.html), Razor Pages поддерживает эти шаблоны разработки. Дополнительные сведения см. в разделе Разработка логики [уровня сохраняемости инфраструктуры](/dotnet/standard/microservices-architecture/microservice-ddd-cqrs-patterns/infrastructure-persistence-layer-design) и [контроллера тестирования](/aspnet/core/mvc/controllers/testing) (пример реализует шаблон репозитория).
 
-### <a name="test-app-organization"></a>Тестирование приложений организации
+### <a name="test-app-organization"></a>Тестирование организации приложения
 
-Тестирование приложения — это консольное приложение внутри *tests/RazorPagesProject.Tests* каталога.
+Тестовое приложение — это консольное приложение внутри каталога *Tests/разорпажеспрожект. Tests* .
 
 | Каталог тестового приложения | Описание |
 | ------------------ | ----------- |
-| *BasicTests* | *BasicTests.cs* содержит методы для тестирования маршрутизации, доступ к защищенную страницу, не прошедшие проверку подлинности пользователя с правами и получить профиль пользователя GitHub и проверки входа пользователя для профиля. |
-| *IntegrationTests* | *IndexPageTests.cs* содержит тесты интеграции для страницы индекса, с помощью пользовательских `WebApplicationFactory` класса. |
-| *Вспомогательные функции и служебные программы* | <ul><li>*Utilities.cs* содержит `InitializeDbForTests` метод, используемый для заполнения базы тестовыми данными.</li><li>*HtmlHelpers.cs* предоставляет метод для возврата AngleSharp `IHtmlDocument` для использования в методы теста.</li><li>*HttpClientExtensions.cs* предоставляют перегрузки для `SendAsync` для отправки запросов на SUT.</li></ul> |
+| *басиктестс* | *BasicTests.CS* содержит методы теста для маршрутизации, доступа к защищенной странице непроверенного пользователя и получения профиля пользователя GitHub и проверки имени входа пользователя профиля. |
+| *Интеграционноетестирование* | *IndexPageTests.CS* содержит интеграционные тесты для страницы индекса с помощью пользовательского `WebApplicationFactory` класса. |
+| *Вспомогательные функции и служебные программы* | <ul><li>*Utilities.CS* содержит `InitializeDbForTests` метод, используемый для заполнения базы данных тестовыми данными.</li><li>*HtmlHelpers.CS* предоставляет метод, возвращающий англешарп `IHtmlDocument` для использования методами теста.</li><li>*HttpClientExtensions.CS* предоставляют перегрузки для `SendAsync` для отправки запросов в сут.</li></ul> |
 
-Платформа тестирования — [xUnit](https://xunit.github.io/). Интеграционные тесты выполняются с помощью [Microsoft.AspNetCore.TestHost](/dotnet/api/microsoft.aspnetcore.testhost), который включает [TestServer](/dotnet/api/microsoft.aspnetcore.testhost.testserver). Так как [Microsoft.AspNetCore.Mvc.Testing](https://www.nuget.org/packages/Microsoft.AspNetCore.Mvc.Testing) пакет используется для настройки тестового сервера узла и тестирования, `TestHost` и `TestServer` пакетов не требуются ссылки на прямой пакеты в файле проекта приложение тестирования или Конфигурация разработчика в тестовом приложении.
+Платформа тестирования — [xUnit](https://xunit.github.io/). Интеграционные тесты проводятся с помощью [Microsoft. AspNetCore. TestHost](/dotnet/api/microsoft.aspnetcore.testhost), который включает [TestServer](/dotnet/api/microsoft.aspnetcore.testhost.testserver). Поскольку пакет [Microsoft. AspNetCore. MVC.](https://www.nuget.org/packages/Microsoft.AspNetCore.Mvc.Testing) testing используется для настройки узла тестирования и тестового сервера, `TestHost` пакеты и `TestServer` не нуждаются в ссылках на прямые пакеты в файле проекта или разработчике тестового приложения. Настройка в тестовом приложении.
 
 **Заполнение базы данных для тестирования**
 
-Интеграционные тесты обычно требуют небольшой набор данных в базе данных перед исполнением теста. Например удаление проверить вызовы для удаления записей базы данных, поэтому база данных должна иметь по крайней мере одну запись для успешного выполнения запроса на удаление.
+Перед выполнением тестов интеграции обычно требуется небольшой набор данных в базе данных. Например, вызов теста удаления для удаления записей базы данных, поэтому база данных должна иметь по крайней мере одну запись, чтобы запрос на удаление был выполнен успешно.
 
-Пример приложения заполняющий базу данных с помощью этих сообщений в *Utilities.cs* , тестов можно использовать при выполнении:
+Пример приложения заполняет базу данных тремя сообщениями в *Utilities.CS* , которые могут использоваться тестами при выполнении:
 
 [!code-csharp[](integration-tests/samples/2.x/IntegrationTestsSample/tests/RazorPagesProject.Tests/Helpers/Utilities.cs?name=snippet1)]
 
