@@ -7,12 +7,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 08/13/2019
 uid: blazor/javascript-interop
-ms.openlocfilehash: ffd25fe0288159681f7fc052fc09e1f6fc425404
-ms.sourcegitcommit: f5f0ff65d4e2a961939762fb00e654491a2c772a
-ms.translationtype: HT
+ms.openlocfilehash: 00ea14ca95c328b5f8779785a92aa0720a96eb05
+ms.sourcegitcommit: 7a46973998623aead757ad386fe33602b1658793
+ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 08/15/2019
-ms.locfileid: "69030310"
+ms.locfileid: "69487564"
 ---
 # <a name="aspnet-core-blazor-javascript-interop"></a>ASP.NET Core взаимодействие JavaScript Блазор
 
@@ -125,11 +125,12 @@ ms.locfileid: "69030310"
 
 * `@ref` Добавьте атрибут к элементу HTML.
 * Определите поле типа `ElementReference` , имя которого соответствует значению `@ref` атрибута.
+* `@ref:suppressField` Укажите параметр, который подавляет создание резервных полей. Дополнительные сведения см. [в разделе Удаление поддержки автоматического резервного поля @ref для в 3.0.0-preview9](https://github.com/aspnet/Announcements/issues/381).
 
 В следующем примере показана запись ссылки на `username` `<input>` элемент:
 
 ```cshtml
-<input @ref="username" ... />
+<input @ref="username" @ref:suppressField ... />
 
 @code {
     ElementReference username;
@@ -158,7 +159,7 @@ window.exampleJsFunctions = {
 ```cshtml
 @inject IJSRuntime JSRuntime
 
-<input @ref="username" />
+<input @ref="username" @ref:suppressField />
 <button @onclick="SetFocus">Set focus on username</button>
 
 @code {
@@ -188,7 +189,7 @@ public static Task Focus(this ElementReference elementRef, IJSRuntime jsRuntime)
 @inject IJSRuntime JSRuntime
 @using JsInteropClasses
 
-<input @ref="username" />
+<input @ref="username" @ref:suppressField />
 <button @onclick="SetFocus">Set focus on username</button>
 
 @code {

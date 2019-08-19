@@ -7,12 +7,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 08/13/2019
 uid: blazor/components
-ms.openlocfilehash: 8cb2dc4c3cd22fe71fe15c22762948f9dcd3c08f
-ms.sourcegitcommit: f5f0ff65d4e2a961939762fb00e654491a2c772a
-ms.translationtype: HT
+ms.openlocfilehash: 5361c506f112cbb74865c3819f0b3bd578a1705a
+ms.sourcegitcommit: 38cac2552029fc19428722bb204ff9e16eb94225
+ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69030360"
+ms.lasthandoff: 08/18/2019
+ms.locfileid: "69573084"
 ---
 # <a name="create-and-use-aspnet-core-razor-components"></a>Создание и использование компонентов ASP.NET Core Razor
 
@@ -165,7 +165,7 @@ ms.locfileid: "69030360"
         {
             { "maxlength", "10" },
             { "placeholder", "Input placeholder text" },
-            { "required", "true" },
+            { "required", "required" },
             { "size", "50" }
         };
 }
@@ -185,7 +185,7 @@ ms.locfileid: "69030360"
 <input id="useAttributesDict"
        maxlength="10"
        placeholder="Input placeholder text"
-       required="true"
+       required="required"
        size="50">
 ```
 
@@ -523,9 +523,10 @@ await callback.InvokeAsync(arg);
 
 * [@ref](xref:mvc/views/razor#ref) Добавьте атрибут к дочернему компоненту.
 * Определите поле с тем же типом, что и у дочернего компонента.
+* `@ref:suppressField` Укажите параметр, который подавляет создание резервных полей. Дополнительные сведения см. [в разделе Удаление поддержки автоматического резервного поля @ref для в 3.0.0-preview9](https://github.com/aspnet/Announcements/issues/381).
 
 ```cshtml
-<MyLoginDialog @ref="loginDialog" ... />
+<MyLoginDialog @ref="loginDialog" @ref:suppressField ... />
 
 @code {
     private MyLoginDialog loginDialog;
