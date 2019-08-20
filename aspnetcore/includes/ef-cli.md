@@ -1,0 +1,1 @@
+<span data-ttu-id="34825-101">Дополнительные сведения о средствах CLI для EF Core см. в [справочнике по средствам EF Core для .Net CLI](/ef/core/miscellaneous/cli/dotnet).</span><span class="sxs-lookup"><span data-stu-id="34825-101">For more information on the CLI tools for EF Core, see [EF Core tools reference for .Net CLI](/ef/core/miscellaneous/cli/dotnet).</span></span>
