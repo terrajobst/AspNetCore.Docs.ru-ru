@@ -966,6 +966,8 @@
           uid: security/key-vault-configuration
     - name: Принудительное использование HTTPS
       uid: security/enforcing-ssl
+    - name: Размещение Docker с использованием HTTPS
+      uid: security/docker-https
     - name: 'Поддержка Общего регламента по защите данных (GDPR), принятого в ЕС'
       uid: security/gdpr
     - name: Защита от подделки запросов
