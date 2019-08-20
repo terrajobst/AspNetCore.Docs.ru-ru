@@ -5,14 +5,14 @@ description: Пошаговое создание приложения Blazor.
 monikerRange: '>= aspnetcore-3.0'
 ms.author: riande
 ms.custom: mvc
-ms.date: 07/01/2019
+ms.date: 07/26/2019
 uid: tutorials/first-blazor-app
-ms.openlocfilehash: d592c5bac1eb9822843a1ad1513a15fdfd6b1032
-ms.sourcegitcommit: eb3e51d58dd713eefc242148f45bd9486be3a78a
+ms.openlocfilehash: 88999350b9c7631e15ba9d0242da5880c8ae71ff
+ms.sourcegitcommit: 89fcc6cb3e12790dca2b8b62f86609bed6335be9
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/02/2019
-ms.locfileid: "67500310"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68994212"
 ---
 # <a name="build-your-first-blazor-app"></a>Создание приложения Blazor
 
@@ -67,7 +67,7 @@ ms.locfileid: "67500310"
 
 ## <a name="component-parameters"></a>Параметры компонентов
 
-Компоненты также могут принимать параметры. Параметры для компонентов определяются с помощью частных свойств в классе компонента с атрибутом `[Parameter]`. Используйте атрибуты, чтобы указать аргументы для компонента в разметке.
+Компоненты также могут принимать параметры. Параметры для компонентов определяются с помощью открытых свойств в классе компонента с атрибутом `[Parameter]`. Используйте атрибуты, чтобы указать аргументы для компонента в разметке.
 
 1. Обновите код C# для `@code` в компоненте:
 

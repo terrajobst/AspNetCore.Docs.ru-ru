@@ -3,14 +3,14 @@ title: Области в ASP.NET Core
 author: rick-anderson
 description: Сведения о том, что области — это возможность ASP.NET MVC, которая служит для объединения связанных функций в группу в виде отдельного пространства имен (для маршрутизации) и структуры папок (для представлений).
 ms.author: riande
-ms.date: 05/10/2019
+ms.date: 08/07/2019
 uid: mvc/controllers/areas
-ms.openlocfilehash: f3a75bc307a206e43241b421f448b09011868d08
-ms.sourcegitcommit: ffe3ed7921ec6c7c70abaac1d10703ec9a43374c
+ms.openlocfilehash: e44c726c47caa3dd0c8c92e3a2502a590bee82d1
+ms.sourcegitcommit: 2719c70cd15a430479ab4007ff3e197fbf5dfee0
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 05/11/2019
-ms.locfileid: "65535973"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68862798"
 ---
 # <a name="areas-in-aspnet-core"></a>Области в ASP.NET Core
 
@@ -116,9 +116,13 @@ ms.locfileid: "65535973"
 
 Дополнительные сведения см. в разделе [Маршрутизация к действиям контроллера](xref:mvc/controllers/routing).
 
-### <a name="shared-layout-for-areas-using-the-viewstartcshtml-file"></a>Общий макет для областей с использованием файла _ViewStart.cshtml
+### <a name="shared-layout-for-areas-using-the-_viewstartcshtml-file"></a>Общий макет для областей с использованием файла _ViewStart.cshtml
 
 Чтобы совместно использовать общий макет для всего приложения, переместите *_ViewStart.cshtml* в корневую папку приложения.
+
+### <a name="_viewimportscshtml"></a>_ViewImports.cshtml
+
+В стандартном расположении файл */Views/_ViewImports.cshtml* не применяется к областям. Чтобы использовать общие объекты [Tag Helpers](xref:mvc/views/tag-helpers/intro), `@using` или `@inject` в области, необходимо, чтобы соответствующий файл *_ViewImports.cshtml* [применялся к представлениям области](xref:mvc/views/layout#importing-shared-directives). Чтобы поведение во всех представлениях было одинаковым, переместите файл */Views/_ViewImports.cshtml* в корневую папку приложения.
 
 <a name="rename"></a>
 
@@ -167,7 +171,7 @@ ms.locfileid: "65535973"
 * Ссылка, созданная с помощью `<a asp-page="/About">` будет правильной, только если последний запрос был к странице в области `/Home`.
 * Это код из [этого примера](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/controllers/areas/samples/RPareas).
 
-### <a name="import-namespace-and-tag-helpers-with-viewimports-file"></a>Импорт пространства имен и вспомогательных функций тегов с помощью файла _ViewImports
+### <a name="import-namespace-and-tag-helpers-with-_viewimports-file"></a>Импорт пространства имен и вспомогательных функций тегов с помощью файла _ViewImports
 
 Файл *_ViewImports.cshtml* файл можно добавить к каждой области папки *Pages* для импорта пространства имен и вспомогательных функций тегов в каждую папку страницы Razor Pages.
 

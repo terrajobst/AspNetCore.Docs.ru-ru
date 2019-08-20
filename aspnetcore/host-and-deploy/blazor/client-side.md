@@ -7,12 +7,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 07/10/2019
 uid: host-and-deploy/blazor/client-side
-ms.openlocfilehash: be6b6c245440cb085a1a6b115f4f087306f7cc83
-ms.sourcegitcommit: b40613c603d6f0cc71f3232c16df61550907f550
+ms.openlocfilehash: e9a42bd4e8511d426761746047fed2d4f7dfc6dd
+ms.sourcegitcommit: 89fcc6cb3e12790dca2b8b62f86609bed6335be9
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68308091"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68994081"
 ---
 # <a name="host-and-deploy-aspnet-core-blazor-client-side"></a>Размещение и развертывание приложений Blazor на стороне клиента с помощью ASP.NET Core
 
@@ -148,7 +148,7 @@ dotnet run --pathbase=/CoolApp
 
 Дополнительные сведения см. в разделе [Значение конфигурации узла для базового пути](#path-base).
 
-Приложение может использовать [модель размещения на стороне клиента](xref:blazor/hosting-models#client-side) (на основе шаблона проекта **Blazor** (на стороне клиента) — шаблон `blazor` при использовании команды [dotnet new](/dotnet/core/tools/dotnet-new)) и размещаться как дочернее приложение IIS в приложении ASP.NET Core. В таком случае важно отключить унаследованный обработчик модулей ASP.NET Core или убедиться в том, что раздел `<handlers>` файла *web.config* корневого (родительского) приложения не унаследован дочерним приложением.
+Приложение может использовать [модель размещения на стороне клиента](xref:blazor/hosting-models#client-side) (на основе шаблона проекта **Приложение Blazor WebAssembly**  — шаблона `blazorwasm` при использовании команды [dotnet new](/dotnet/core/tools/dotnet-new)) и размещаться как дочернее приложение IIS в приложении ASP.NET Core. В таком случае важно отключить унаследованный обработчик модулей ASP.NET Core или убедиться в том, что раздел `<handlers>` файла *web.config* корневого (родительского) приложения не унаследован дочерним приложением.
 
 Удалите обработчик в опубликованном файле *web.config* приложения, добавив раздел `<handlers>` в файл:
 
@@ -180,7 +180,7 @@ dotnet run --pathbase=/CoolApp
 
 *Размещенное развертывание*  обслуживает клиентское приложение Blazor для браузеров из [приложения ASP.NET Core](xref:index), выполняющегося на веб-сервере.
 
-Приложение Blazor входит в состав приложения ASP.NET Core в публикуемых выходных данных; таким образом, два приложения развертываются вместе. Веб-сервер, позволяющий размещать приложения ASP.NET Core, является обязательным. Для размещенного развертывания Visual Studio включает шаблон проекта **Blazor (с размещением в ASP.NET Core)** (шаблон `blazorhosted` при использовании команды [dotnet new](/dotnet/core/tools/dotnet-new)).
+Приложение Blazor входит в состав приложения ASP.NET Core в публикуемых выходных данных; таким образом, два приложения развертываются вместе. Веб-сервер, позволяющий размещать приложения ASP.NET Core, является обязательным. Для размещенного развертывания Visual Studio включает шаблон проекта **Приложение Blazor WebAssembly**  (шаблон `blazorwasm` при использовании команды [dotnet new](/dotnet/core/tools/dotnet-new)) с выбранным параметром **Размещенный**.
 
 Дополнительные сведения о размещении приложения ASP.NET Core и его развертывании см. в разделе <xref:host-and-deploy/index>.
 
