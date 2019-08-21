@@ -2,21 +2,20 @@
 title: Запуск приложения в ASP.NET Core
 author: tdykstra
 description: Сведения о том, как класс Startup в ASP.NET Core настраивает службы и конвейер запросов приложения.
-monikerRange: '>= aspnetcore-2.1'
 ms.author: tdykstra
 ms.custom: mvc
-ms.date: 01/17/2019
+ms.date: 8/7/2019
 uid: fundamentals/startup
-ms.openlocfilehash: 7e1741d2bed15f36a967713a2f9bd0d93801c8d0
-ms.sourcegitcommit: ccbb84ae307a5bc527441d3d509c20b5c1edde05
+ms.openlocfilehash: 0ee1a972bf2b94119767e79c2f4ea18d3265e356
+ms.sourcegitcommit: 776367717e990bdd600cb3c9148ffb905d56862d
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 05/19/2019
-ms.locfileid: "65874942"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68913997"
 ---
 # <a name="app-startup-in-aspnet-core"></a>Запуск приложения в ASP.NET Core
 
-Авторы: [Том Дикстра](https://github.com/tdykstra) (Tom Dykstra), [Люк Лэтем](https://github.com/guardrex) (Luke Latham) и [Стив Смит](https://ardalis.com) (Steve Smith)
+Авторы: [Рик Андерсон](https://twitter.com/RickAndMSFT) (Rick Anderson), [Том Дайкстра](https://github.com/tdykstra) (Tom Dykstra), [Люк Лэтэм](https://github.com/guardrex) (Luke Latham) и [Стив Смит](https://ardalis.com) (Steve Smith)
 
 Класс `Startup` настраивает службы и конвейер запросов приложения.
 
@@ -29,11 +28,47 @@ ms.locfileid: "65874942"
 
 `ConfigureServices` и `Configure` вызываются средой выполнения ASP.NET Core при запуске приложения:
 
-[!code-csharp[](startup/sample_snapshot/Startup1.cs?highlight=4,10)]
+::: moniker range=">= aspnetcore-3.0"
 
-Класс `Startup` указывается в приложении при создании [узла](xref:fundamentals/index#host) приложения. Узел приложения создается при вызове `Build` в построителе узлов в классе `Program`. Класс `Startup` обычно указывается путем вызова метода [WebHostBuilderExtensions.UseStartup\<TStartup >](xref:Microsoft.AspNetCore.Hosting.WebHostBuilderExtensions.UseStartup*) в построителе узлов.
+[!code-csharp[](startup/3.0_samples/StartupFilterSample/Startup.cs?name=snippet)]
 
-[!code-csharp[](startup/sample_snapshot/Program3.cs?name=snippet_Program&highlight=10)]
+Предыдущий пример предназначен для [Razor Pages](xref:razor-pages/index); версия для MVC похожа.
+
+::: moniker-end
+
+::: moniker range="< aspnetcore-3.0"
+
+[!code-csharp[](startup/sample_snapshot/Startup1.cs)]
+
+::: moniker-end
+
+Класс `Startup` указывается при создании [узла](xref:fundamentals/index#host) приложения. Класс `Startup` обычно указывается путем вызова метода [`WebHostBuilderExtensions.UseStartup<TStartup>`](xref:Microsoft.AspNetCore.Hosting.WebHostBuilderExtensions.UseStartup*) в построителе узлов.
+
+::: moniker range="< aspnetcore-3.0"
+
+[!code-csharp[](startup/sample_snapshot/Program3.cs?name=snippet_Program&highlight=12)]
+
+::: moniker-end
+
+::: moniker range=">= aspnetcore-3.0"
+
+[!code-csharp[](startup/3.0_samples/Program3.cs?name=snippet_Program&highlight=12)]
+
+Узел предоставляет службы, которые доступны конструктору классов `Startup`. Приложение добавляет дополнительные службы через `ConfigureServices`. Как службы узла, так и службы приложения доступны в `Configure` и во всем приложении.
+
+При использовании <xref:Microsoft.Extensions.Hosting.IHostBuilder> в конструктор `Startup` могут внедряться только следующие типы служб:
+
+* `IWebHostEnvironment`
+* `IHostEnvironment`
+* <xref:Microsoft.Extensions.Configuration.IConfiguration>
+
+[!code-csharp[](startup/3.0_samples/StartupFilterSample/StartUp2.cs?name=snippet)]
+
+Большинство служб недоступны, пока не будет вызван метод `Configure`.
+
+::: moniker-end
+
+::: moniker range="< aspnetcore-3.0"
 
 Узел предоставляет службы, которые доступны конструктору классов `Startup`. Приложение добавляет дополнительные службы через `ConfigureServices`. Как службы узла, так и службы приложения доступны в `Configure` и во всем приложении.
 
@@ -45,9 +80,19 @@ ms.locfileid: "65874942"
 
 [!code-csharp[](startup/sample_snapshot/Startup2.cs?highlight=7-8)]
 
-Альтернативой внедрению `IHostingEnvironment` является использование подхода на основе соглашений. Когда приложение определяет отдельные классы `Startup` для различных сред (например, `StartupDevelopment`), подходящий класс `Startup` выбирается во время выполнения. Класс, у которого суффикс имени соответствует текущей среде, получает приоритет. Если приложение выполняется в среде разработки и включает в себя оба класса — `Startup` и `StartupDevelopment`, используется класс `StartupDevelopment`. Дополнительные сведения см. в статье [Использование нескольких сред](xref:fundamentals/environments#environment-based-startup-class-and-methods).
+::: moniker-end
+Альтернативой внедрению `IWebHostEnvironment` является использование подхода на основе соглашений.
+::: moniker range=">= aspnetcore-3.0"
 
-Дополнительные сведения об узле см. в статье [Узел](xref:fundamentals/index#host). Сведения об обработке ошибок во время запуска см. в разделе [Обработка исключений при запуске](xref:fundamentals/error-handling#startup-exception-handling).
+::: moniker-end
+
+::: moniker range="< aspnetcore-3.0"
+Альтернативой внедрению `IHostingEnvironment` является использование подхода на основе соглашений.
+::: moniker-end
+
+Когда приложение определяет отдельные классы `Startup` для различных сред (например, `StartupDevelopment`), подходящий класс `Startup` выбирается во время выполнения. Класс, у которого суффикс имени соответствует текущей среде, получает приоритет. Если приложение выполняется в среде разработки и включает в себя оба класса — `Startup` и `StartupDevelopment`, используется класс `StartupDevelopment`. Дополнительные сведения см. в статье [Использование нескольких сред](xref:fundamentals/environments#environment-based-startup-class-and-methods).
+
+Дополнительные сведения об узле см. в разделе [Узел](xref:fundamentals/index#host). Сведения об обработке ошибок во время запуска см. в разделе [Обработка исключений при запуске](xref:fundamentals/error-handling#startup-exception-handling).
 
 ## <a name="the-configureservices-method"></a>Метод ConfigureServices
 
@@ -57,19 +102,31 @@ ms.locfileid: "65874942"
 * Вызывается узлом перед методом `Configure` для настройки служб приложения.
 * По соглашению используется для задания [параметров конфигурации](xref:fundamentals/configuration/index).
 
-По стандартному шаблону сначала вызываются все методы `Add{Service}`, а затем все методы `services.Configure{Service}`. Пример см. в разделе [Настройка служб удостоверений](xref:security/authentication/identity#pw).
-
 Узел может настраивать некоторые службы перед вызовом методов `Startup`. Дополнительную информацию см. в разделе [Узел](xref:fundamentals/index#host).
 
-Для функций, нуждающихся в значительной настройке, существуют методы расширения `Add{Service}` в <xref:Microsoft.Extensions.DependencyInjection.IServiceCollection>. Обычное приложение ASP.NET Core регистрирует службы для Entity Framework, удостоверения и MVC:
+Для функций, нуждающихся в значительной настройке, существуют методы расширения `Add{Service}` в <xref:Microsoft.Extensions.DependencyInjection.IServiceCollection>. Например, **Add**DbContext, **Add**DefaultIdentity, **Add**EntityFrameworkStores и **Add**RazorPages:
+
+::: moniker range=">= aspnetcore-3.0"
+
+[!code-csharp[](startup/3.0_samples/StartupFilterSample/StartupIdentity.cs ?name=snippet)]
+
+::: moniker-end
+
+::: moniker range="< aspnetcore-3.0"
 
 [!code-csharp[](startup/sample_snapshot/Startup3.cs)]
 
+::: moniker-end
+
 Добавление служб в контейнер служб делает их доступными в приложении и в методе `Configure`. Службы разрешаются посредством [внедрения зависимостей](xref:fundamentals/dependency-injection) или из <xref:Microsoft.AspNetCore.Builder.IApplicationBuilder.ApplicationServices*>.
+
+::: moniker range="< aspnetcore-3.0"
 
 Подробнее о `SetCompatibilityVersion` см. в сведениях о [SetCompatibilityVersion](xref:mvc/compatibility-version).
 
-## <a name="the-configure-method"></a>Метод Configure 
+::: moniker-end
+
+## <a name="the-configure-method"></a>Метод Configure
 
 Метод <xref:Microsoft.AspNetCore.Hosting.StartupBase.Configure*> используется для указания того, как приложение реагирует на HTTP-запросы. Конвейер запросов настраивается путем добавления компонентов [ПО промежуточного слоя](xref:fundamentals/middleware/index) в экземпляр <xref:Microsoft.AspNetCore.Builder.IApplicationBuilder>. `IApplicationBuilder` доступен для метода `Configure`, но он не зарегистрирован в контейнере службы. При размещении создается `IApplicationBuilder` и передается непосредственно в `Configure`.
 
@@ -80,36 +137,84 @@ ms.locfileid: "65874942"
 * [HTTP Strict Transport Security (HSTS)](xref:security/enforcing-ssl#http-strict-transport-security-protocol-hsts)
 * [перенаправления HTTPS](xref:security/enforcing-ssl);
 * [Статические файлы](xref:fundamentals/static-files)
-* [общего регламента по защите данных (GDPR)](xref:security/gdpr);
 * ASP.NET Core [MVC](xref:mvc/overview) и [Razor Pages](xref:razor-pages/index).
+
+::: moniker range="< aspnetcore-3.0"
+
+* [общего регламента по защите данных (GDPR)](xref:security/gdpr);
+
+::: moniker-end
+
+::: moniker range=">= aspnetcore-3.0"
+
+[!code-csharp[](startup/3.0_samples/StartupFilterSample/Startup.cs?name=snippet)]
+
+Предыдущий пример предназначен для [Razor Pages](xref:razor-pages/index); версия для MVC похожа.
+
+::: moniker-end
+
+::: moniker range="< aspnetcore-3.0"
 
 [!code-csharp[](startup/sample_snapshot/Startup4.cs)]
 
-Каждый метод расширения `Use` добавляет один или несколько компонентов ПО промежуточного слоя в конвейер запросов. Например, метод расширения `UseMvc` добавляет в конвейер запросов [ПО промежуточного слоя для маршрутизации](xref:fundamentals/routing) и настраивает [MVC](xref:mvc/overview) в качестве обработчика по умолчанию.
+::: moniker-end
 
-Каждый компонент ПО промежуточного слоя в конвейере запросов отвечает за вызов следующего компонента в конвейере или замыкает цепочку, если это необходимо. Если замыкание в цепочке ПО промежуточного слоя не происходит, у каждого ПО промежуточного слоя есть еще один шанс обработать запрос перед отправкой клиенту.
+Каждый метод расширения `Use` добавляет один или несколько компонентов ПО промежуточного слоя в конвейер запросов. Например, <xref:Microsoft.AspNetCore.Builder.StaticFileExtensions.UseStaticFiles*> настраивает [ПО промежуточного слоя](xref:fundamentals/middleware/index) для обслуживания [статических файлов](xref:fundamentals/static-files).
 
-В сигнатуре метода `Configure` также могут быть указаны дополнительные службы, такие как `IHostingEnvironment` и `ILoggerFactory`. Когда дополнительные службы указаны, они внедряются, если доступны.
+Каждый компонент ПО промежуточного слоя в конвейере запросов отвечает за вызов следующего компонента в конвейере или замыкает цепочку, если это необходимо.
+
+::: moniker range=">= aspnetcore-3.0"
+
+В сигнатуре метода `Configure` могут быть указаны дополнительные службы, такие как `IWebHostEnvironment`, `ILoggerFactory` или любые службы, определенные в `ConfigureServices`. Эти службы внедряются, если доступны.
+
+::: moniker-end
+
+::: moniker range="< aspnetcore-3.0"
+
+В сигнатуре метода `Configure` могут быть указаны дополнительные службы, такие как `IHostingEnvironment`, `ILoggerFactory` или любые службы, определенные в `ConfigureServices`. Эти службы внедряются, если доступны.
+
+::: moniker-end
 
 Дополнительные сведения об использовании `IApplicationBuilder` и порядке обработки ПО промежуточного слоя см. в статье <xref:fundamentals/middleware/index>.
 
-## <a name="convenience-methods"></a>Удобный метод
+<a name="convenience-methods"></a>
+
+## <a name="configure-services-without-startup"></a>Настройка служб без запуска
 
 Для настройки служб и конвейера обработки запросов в построителе узлов вместо класса `Startup` можно использовать удобные методы `ConfigureServices` и `Configure`. Несколько вызовов `ConfigureServices` добавляются друг к другу. При наличии нескольких вызовов метода `Configure` используется последний вызов `Configure`.
 
+::: moniker range=">= aspnetcore-3.0"
+[!code-csharp[](startup/3.0_samples/StartupFilterSample/Program1.cs?name=snippet)]
+
+::: moniker-end
+
+::: moniker range="< aspnetcore-3.0"
+
 [!code-csharp[](startup/sample_snapshot/Program1.cs?highlight=16,20)]
+
+::: moniker-end
 
 ## <a name="extend-startup-with-startup-filters"></a>Расширение класса Startup с использованием фильтров запуска
 
-Используйте <xref:Microsoft.AspNetCore.Hosting.IStartupFilter> для настройки ПО промежуточного слоя в начале или конце конвейера ПО промежуточного слоя [Configure](#the-configure-method) приложения. `IStartupFilter` удобно использовать, чтобы обеспечить запуск ПО промежуточного слоя до или после ПО промежуточного слоя, добавляемого библиотеками в начале или в конце конвейера обработки запросов приложения.
+Используйте <xref:Microsoft.AspNetCore.Hosting.IStartupFilter> для настройки ПО промежуточного слоя в начале или конце конвейера ПО промежуточного слоя [Configure](#the-configure-method) приложения. `IStartupFilter` используется для создания конвейера методов `Configure`. [IStartupFilter.Configure](xref:Microsoft.AspNetCore.Hosting.IStartupFilter.Configure*) может обеспечивать запуск ПО промежуточного слоя до или после ПО промежуточного слоя, добавляемого библиотеками.
 
-`IStartupFilter` реализует отдельный метод <xref:Microsoft.AspNetCore.Hosting.StartupBase.Configure*>, который принимает и возвращает `Action<IApplicationBuilder>`. <xref:Microsoft.AspNetCore.Builder.IApplicationBuilder> определяет класс для настройки конвейера запросов приложения. Дополнительные сведения см. в разделе [Создание конвейера ПО промежуточного слоя с помощью IApplicationBuilder](xref:fundamentals/middleware/index#create-a-middleware-pipeline-with-iapplicationbuilder).
+`IStartupFilter` реализует метод <xref:Microsoft.AspNetCore.Hosting.StartupBase.Configure*>, который принимает и возвращает `Action<IApplicationBuilder>`. <xref:Microsoft.AspNetCore.Builder.IApplicationBuilder> определяет класс для настройки конвейера запросов приложения. Дополнительные сведения см. в разделе [Создание конвейера ПО промежуточного слоя с помощью IApplicationBuilder](xref:fundamentals/middleware/index#create-a-middleware-pipeline-with-iapplicationbuilder).
 
-Каждый `IStartupFilter` реализует один или несколько компонентов ПО промежуточного слоя в конвейере запросов. Фильтры вызываются в том порядке, в котором они были добавлены в контейнер службы. Фильтры могут добавлять ПО промежуточного слоя до или после передачи управления следующему фильтру, поэтому они добавляются в начало или конец конвейера приложения.
+Каждый интерфейс `IStartupFilter` может добавлять один или несколько компонентов ПО промежуточного слоя в конвейер запросов. Фильтры вызываются в том порядке, в котором они были добавлены в контейнер службы. Фильтры могут добавлять ПО промежуточного слоя до или после передачи управления следующему фильтру, поэтому они добавляются в начало или конец конвейера приложения.
 
-В следующем примере показана регистрация ПО промежуточного слоя с помощью `IStartupFilter`.
+В следующем примере показана регистрация ПО промежуточного слоя с помощью `IStartupFilter`. ПО промежуточного слоя `RequestSetOptionsMiddleware` задает значения параметров из параметра строки запроса:
 
-ПО промежуточного слоя `RequestSetOptionsMiddleware` задает значения параметров из параметра строки запроса:
+::: moniker range=">= aspnetcore-3.0"
+
+[!code-csharp[](startup/3.0_samples/StartupFilterSample/RequestSetOptionsMiddleware.cs?name=snippet1)]
+
+`RequestSetOptionsMiddleware` настраивается в классе `RequestSetOptionsStartupFilter`:
+
+[!code-csharp[](startup/3.0_samples/StartupFilterSample/RequestSetOptionsStartupFilter.cs?name=snippet1&highlight=7)]
+
+::: moniker-end
+
+::: moniker range="< aspnetcore-3.0"
 
 [!code-csharp[](startup/sample_snapshot/RequestSetOptionsMiddleware.cs?name=snippet1&highlight=21)]
 
@@ -117,22 +222,35 @@ ms.locfileid: "65874942"
 
 [!code-csharp[](startup/sample_snapshot/RequestSetOptionsStartupFilter.cs?name=snippet1&highlight=7)]
 
-`IStartupFilter` регистрируется в контейнере службы в <xref:Microsoft.AspNetCore.Hosting.StartupBase.ConfigureServices*> и дополняет `Startup` из-за пределов класса `Startup`:
+::: moniker-end
+
+`IStartupFilter` регистрируется в контейнере службы в <xref:Microsoft.AspNetCore.Hosting.StartupBase.ConfigureServices*>.
+
+::: moniker range=">= aspnetcore-3.0"
+
+[!code-csharp[](startup/3.0_samples/StartupFilterSample/Program.cs?name=snippet&highlight=19-20)]
+
+::: moniker-end
+
+::: moniker range="< aspnetcore-3.0"
 
 [!code-csharp[](startup/sample_snapshot/Program2.cs?name=snippet1&highlight=4-5)]
 
-Если указан параметр строки запроса для `option`, ПО промежуточного слоя обрабатывает присвоение значения до того, как ПО промежуточного слоя MVC отображает отклик:
+::: moniker-end
 
-![Окно обозревателя с отображаемой страницей индекса. Значение параметра отображается как "From Middleware", так как запрашивается страница с помощью параметра строки запроса и задано значение параметра "From Middleware".](startup/_static/index.png)
+Если указан параметр строки запроса для `option`, ПО промежуточного слоя обрабатывает присвоение значения до того, как ПО промежуточного слоя ASP.NET Core отображает ответ.
 
 Порядок выполнения ПО промежуточного слоя определяется порядком регистраций `IStartupFilter`:
 
 * Несколько реализаций `IStartupFilter` могут взаимодействовать с одними и теми же объектами. Если важен порядок, упорядочите регистрации службы `IStartupFilter` в соответствии с требуемым порядком выполнения ПО промежуточного слоя.
-* Библиотеки могут добавлять ПО промежуточного слоя с одной или несколькими реализациями `IStartupFilter`, которые выполняются до или после другого ПО промежуточного слоя приложения, зарегистрированного с помощью `IStartupFilter`. Чтобы вызвать ПО промежуточного слоя `IStartupFilter` до ПО промежуточного слоя, добавляемого библиотекой `IStartupFilter`, расположите регистрацию службы до добавления библиотеки в контейнер службы. Чтобы вызвать его после этого момента, расположите регистрацию службы после добавления библиотеки.
+* Библиотеки могут добавлять ПО промежуточного слоя с одной или несколькими реализациями `IStartupFilter`, которые выполняются до или после другого ПО промежуточного слоя приложения, зарегистрированного с помощью `IStartupFilter`. Чтобы вызвать ПО промежуточного слоя `IStartupFilter` до ПО промежуточного слоя, добавляемого библиотекой `IStartupFilter`, сделайте следующее:
+
+  * расположите регистрацию службы до добавления библиотеки в контейнер службы.
+  * Чтобы вызвать его после этого момента, расположите регистрацию службы после добавления библиотеки.
 
 ## <a name="add-configuration-at-startup-from-an-external-assembly"></a>Добавление конфигурации из внешней сборки при запуске
 
-Реализация <xref:Microsoft.AspNetCore.Hosting.IHostingStartup> позволяет при запуске добавлять в приложение улучшения из внешней сборки вне приложения класса `Startup`. Для получения дополнительной информации см. <xref:fundamentals/configuration/platform-specific-configuration>.
+Реализация <xref:Microsoft.AspNetCore.Hosting.IHostingStartup> позволяет при запуске добавлять в приложение улучшения из внешней сборки вне приложения класса `Startup`. Дополнительные сведения можно найти по адресу: <xref:fundamentals/configuration/platform-specific-configuration>.
 
 ## <a name="additional-resources"></a>Дополнительные ресурсы
 
