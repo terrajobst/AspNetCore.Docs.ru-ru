@@ -1,22 +1,239 @@
 ---
 title: Razor Pages с EF Core в ASP.NET Core — обновление связанных данных — 7 из 8
 author: rick-anderson
-description: В этом руководстве описано обновление связанных данных путем обновления полей внешнего ключа и свойств навигации.
+description: В этом учебнике вы обновите связанные данные путем обновления полей внешнего ключа и свойств навигации.
 ms.author: riande
-ms.date: 11/15/2017
+ms.date: 07/22/2019
 uid: data/ef-rp/update-related-data
-ms.openlocfilehash: b996e7f9c8e422060f6378a6004a53906e2af7c7
-ms.sourcegitcommit: dd9c73db7853d87b566eef136d2162f648a43b85
+ms.openlocfilehash: 4f41ad5fa17cd6ee56f14cd87fb62a47f3a4a9df
+ms.sourcegitcommit: 89fcc6cb3e12790dca2b8b62f86609bed6335be9
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65087097"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68993366"
 ---
 # <a name="razor-pages-with-ef-core-in-aspnet-core---update-related-data---7-of-8"></a>Razor Pages с EF Core в ASP.NET Core — обновление связанных данных — 7 из 8
 
 Авторы: [Том Дайкстра](https://github.com/tdykstra) (Tom Dykstra) и [Рик Андерсон](https://twitter.com/RickAndMSFT) (Rick Anderson)
 
 [!INCLUDE [about the series](../../includes/RP-EF/intro.md)]
+
+::: moniker range=">= aspnetcore-3.0"
+
+Этот учебник посвящен обновлению связанных данных. На рисунках ниже показаны некоторые готовые страницы.
+
+![Страница редактирования курса](update-related-data/_static/course-edit30.png)
+![Страница редактирования преподавателя](update-related-data/_static/instructor-edit-courses30.png)
+
+## <a name="update-the-course-create-and-edit-pages"></a>Обновление страниц создания и редактирования курсов
+
+Шаблонный код для страниц создания и редактирования курсов содержит раскрывающийся список Department (Кафедра) с идентификаторами кафедр (целочисленными). В этом раскрывающемся списке должны отображаться названия кафедр, поэтому для каждой из этих страниц требуется список названий кафедр. Чтобы предоставить этот список, используйте базовый класс для страниц создания и редактирования.
+
+### <a name="create-a-base-class-for-course-create-and-edit"></a>Создание базового класса для создания и редактирования курсов
+
+Создайте файл *Pages/Courses/DepartmentNamePageModel.cs* со следующим кодом:
+
+[!code-csharp[](intro/samples/cu30/Pages/Courses/DepartmentNamePageModel.cs)]
+
+Приведенный выше код создает [SelectList](/dotnet/api/microsoft.aspnetcore.mvc.rendering.selectlist?view=aspnetcore-2.0), содержащий список названий кафедр. Если указан параметр `selectedDepartment`, кафедра выбрана в списке `SelectList`.
+
+Классы моделей страниц Create и Edit являются производными от `DepartmentNamePageModel`.
+
+### <a name="update-the-course-create-page-model"></a>Обновление модели для страницы создания курсов
+
+Курс назначается кафедре. Базовый класс для страниц создания и редактирования предоставляет список `SelectList` для выбора кафедры. Раскрывающийся список, использующий `SelectList`, устанавливает свойство внешнего ключа `Course.DepartmentID`. Платформа EF Core использует внешний ключ `Course.DepartmentID` для загрузки свойства навигации `Department`.
+
+![Создание курса](update-related-data/_static/ddl30.png)
+
+Измените файл *Pages/Courses/Create.cshtml.cs*, используя следующий код:
+
+[!code-csharp[](intro/samples/cu30/Pages/Courses/Create.cshtml.cs?highlight=7,18,27-41)]
+
+Предыдущий код:
+
+* Происходит от `DepartmentNamePageModel`.
+* Использует `TryUpdateModelAsync`, чтобы предотвратить [чрезмерную передачу данных](xref:data/ef-rp/crud#overposting).
+* Удаляет `ViewData["DepartmentID"]`. `DepartmentNameSL` из базового класса — это строго типизированная модель, которая будет использоваться страницей Razor. Вместо слабо типизированных моделей рекомендуется использовать строго типизированные. Дополнительные сведения см. в разделе [Слабо типизированные данные (ViewData и ViewBag)](xref:mvc/views/overview#VD_VB).
+
+### <a name="update-the-course-create-razor-page"></a>Обновление страницы Razor для создания курсов
+
+Измените файл *Pages/Courses/Create.cshtml*, используя следующий код:
+
+[!code-cshtml[](intro/samples/cu30/Pages/Courses/Create.cshtml?highlight=29-34)]
+
+Приведенный выше код вносит следующие изменения:
+
+* Изменяет заголовок с **DepartmentID** на **Department**.
+* Заменяет `"ViewBag.DepartmentID"` на `DepartmentNameSL` (из базового класса).
+* Добавляет параметр "Select Department" (Выбор кафедры). В результате этого изменения вместо первой кафедры в раскрывающемся списке отображается пункт "Select Department" (Выберите кафедру), если кафедра еще не выбрана.
+* Добавляет сообщение о проверке в том случае, если не выбрана кафедра.
+
+На странице Razor Pages используется [вспомогательная функция тега Select](xref:mvc/views/working-with-forms#the-select-tag-helper):
+
+[!code-cshtml[](intro/samples/cu/Pages/Courses/Create.cshtml?range=28-35&highlight=3-6)]
+
+Протестируйте страницу создания. На странице Create отображается название, а не идентификатор кафедры.
+
+### <a name="update-the-course-edit-page-model"></a>Обновление модели для страницы редактирования курсов
+
+Измените файл *Pages/Courses/Edit.cshtml.cs*, используя следующий код:
+
+[!code-csharp[](intro/samples/cu30/Pages/Courses/Edit.cshtml.cs?highlight=8,28,35,36,40-66)]
+
+Изменения аналогичны внесенным в модель страницы Create. В приведенном выше коде `PopulateDepartmentsDropDownList` передает идентификатор кафедры, по которому выбирается кафедра в раскрывающемся списке.
+
+### <a name="update-the-course-edit-razor-page"></a>Обновление страницы Razor для редактирования курсов
+
+Измените файл *Pages/Courses/Edit.cshtml*, используя следующий код:
+
+[!code-cshtml[](intro/samples/cu30/Pages/Courses/Edit.cshtml?highlight=17-20,32-35)]
+
+Приведенный выше код вносит следующие изменения:
+
+* Отображает идентификатор курса. Как правило, первичный ключ сущности не отображается. Первичные ключи для пользователей обычно не имеют значения. В этом случае в качестве первичного ключа используется номер курса.
+* Изменяет заголовок для раскрывающегося списка кафедр с **DepartmentID** на **Department**.
+* Заменяет `"ViewBag.DepartmentID"` на `DepartmentNameSL` (из базового класса).
+
+На этой странице содержится скрытое поле (`<input type="hidden">`) с номером курса. Добавление вспомогательной функции тега `<label>` с `asp-for="Course.CourseID"` не избавляет от необходимости использовать это скрытое поле. `<input type="hidden">` необходимо, чтобы включить номер курса в отправляемые данные при нажатии пользователем кнопки **Save** (Сохранить).
+
+## <a name="update-the-course-details-and-delete-pages"></a>Обновление страниц сведений и удаления курсов
+
+Применение [AsNoTracking](/dotnet/api/microsoft.entityframeworkcore.entityframeworkqueryableextensions.asnotracking?view=efcore-2.0#Microsoft_EntityFrameworkCore_EntityFrameworkQueryableExtensions_AsNoTracking__1_System_Linq_IQueryable___0__) позволяет повысить производительность в тех сценариях, где не требуется отслеживание.
+
+### <a name="update-the-course-page-models"></a>Обновление моделей для страниц курсов
+
+Измените файл *Pages/Courses/Delete.cshtml.cs*, используя следующий код, чтобы добавить `AsNoTracking`:
+
+[!code-csharp[](intro/samples/cu30/Pages/Courses/Delete.cshtml.cs?highlight=29)]
+
+Внесите такое же изменение в файл *Pages/Courses/Details.cshtml.cs*:
+
+[!code-csharp[](intro/samples/cu30/Pages/Courses/Details.cshtml.cs?highlight=28)]
+
+### <a name="update-the-course-razor-pages"></a>Обновление страниц Razor для курсов
+
+Измените файл *Pages/Courses/Delete.cshtml*, используя следующий код:
+
+[!code-cshtml[](intro/samples/cu30/Pages/Courses/Delete.cshtml?highlight=15-20,37)]
+
+Выполните те же изменения для страницы Details.
+
+[!code-cshtml[](intro/samples/cu30/Pages/Courses/Details.cshtml?highlight=14-19,36)]
+
+## <a name="test-the-course-pages"></a>Тестирование страниц курса
+
+Протестируйте страницы создания, редактирования, сведений и удаления.
+
+## <a name="update-the-instructor-create-and-edit-pages"></a>Обновление страниц создания и редактирования преподавателей
+
+Преподаватели могут вести любое число курсов. На рисунке ниже показана страница редактирования преподавателей с массивом флажков курсов.
+
+![Страница редактирования преподавателя с курсами](update-related-data/_static/instructor-edit-courses30.png)
+
+С помощью флажков можно изменять курсы, которым назначен преподаватель. Флажок отображается для каждого курса в базе данных. Для курсов, которым назначен преподаватель, флажок установлен. Пользователь может устанавливать и снимать флажки, изменяя назначения курсов. Если число курсов было бы гораздо больше, лучше подошел бы другой пользовательский интерфейс. Однако представленный здесь способ управления связями "многие ко многим" был бы тем же. Для создания или удаления связей производятся операции с сущностью соединения.
+
+### <a name="create-a-class-for-assigned-courses-data"></a>Создание класса для данных по назначенным курсам
+
+Создайте файл *SchoolViewModels/AssignedCourseData.cs* со следующим кодом:
+
+[!code-csharp[](intro/samples/cu30/Models/SchoolViewModels/AssignedCourseData.cs)]
+
+Класс `AssignedCourseData` содержит данные для создания флажков, определяющих назначенные преподавателю курсы.
+
+### <a name="create-an-instructor-page-model-base-class"></a>Создание базового класса модели для страницы преподавателя
+
+Создайте базовый класс *Pages/Instructors/InstructorCoursesPageModel.cs*:
+
+[!code-csharp[](intro/samples/cu30/Pages/Instructors/InstructorCoursesPageModel.cs?name=snippet_All)]
+
+Базовый класс `InstructorCoursesPageModel` будет использоваться для моделей страниц редактирования и создания. `PopulateAssignedCourseData` считывает все сущности `Course` для заполнения списка `AssignedCourseDataList`. Для каждого курса код задает `CourseID`, название, а также сведения о назначении курсу преподавателя. Для эффективного поиска используется класс [HashSet](/dotnet/api/system.collections.generic.hashset-1).
+
+Так как страница Razor не содержит коллекцию сущностей Course, связыватель модели не может автоматически обновить свойство навигации `CourseAssignments`. Вместо использования связывателя модели для обновления свойства навигации `CourseAssignments` вы делаете это в новом методе `UpdateInstructorCourses`. Поэтому нужно исключить свойство `CourseAssignments` из привязки модели. Это не требует внесения никаких изменений в код, вызывающем `TryUpdateModel`, так как вы используете перегрузку на базе списка разрешений, а `CourseAssignments` отсутствует в списке включений.
+
+Если никакие флажки не выбраны, код в `UpdateInstructorCourses` инициализирует свойство навигации `CourseAssignments` с использованием пустой коллекции и возвращает следующее:
+
+[!code-csharp[](intro/samples/cu30/Pages/Instructors/InstructorCoursesPageModel.cs?name=snippet_IfNull)]
+
+После этого код в цикле проходит по всем курсам в базе данных и сравнивает каждый из них с теми, которые сейчас назначены преподавателю, в противоположность тем, которые были выбраны на странице. Чтобы упростить эффективную подстановку, последние две коллекции хранятся в объектах `HashSet`.
+
+Если флажок для курса был установлен, но курс отсутствует в свойстве навигации `Instructor.CourseAssignments`, этот курс добавляется в коллекцию в свойстве навигации.
+
+[!code-csharp[](intro/samples/cu30/Pages/Instructors/InstructorCoursesPageModel.cs?name=snippet_UpdateCourses)]
+
+Если флажок для курса не был установлен, но курс присутствует в свойстве навигации `Instructor.CourseAssignments`, этот курс удаляется из свойства навигации.
+
+[!code-csharp[](intro/samples/cu30/Pages/Instructors/InstructorCoursesPageModel.cs?name=snippet_UpdateCoursesElse)]
+
+### <a name="handle-office-location"></a>Обработка расположения кабинета
+
+Еще одна связь, с которой должна работать страница редактирования, — это связь "один к нулю или к одному" между сущностью Instructor и сущностью `OfficeAssignment`. Код изменения преподавателя должен обеспечивать указанные ниже сценарии. 
+
+* Если пользователь удаляет назначение кабинета, удаляется сущность `OfficeAssignment`.
+* Если пользователь вводит назначение пустого кабинета, создается новая сущность `OfficeAssignment`.
+* Если пользователь изменяет назначение кабинета, обновляется сущность `OfficeAssignment`.
+
+### <a name="update-the-instructor-edit-page-model"></a>Обновление модели для страницы редактирования преподавателя
+
+Измените файл *Pages/Instructors/Edit.cshtml.cs*, используя следующий код:
+
+[!code-csharp[](intro/samples/cu30/Pages/Instructors/Edit.cshtml.cs?name=snippet_All&highlight=9,28-32,38,42-77)]
+
+Предыдущий код:
+
+* Получает текущую сущность `Instructor` из базы данных, используя безотложную загрузку для свойств навигации `OfficeAssignment`, `CourseAssignment` и `CourseAssignment.Course`.
+* Обновляет извлеченную сущность `Instructor`, используя значения из связывателя модели. `TryUpdateModel` позволяет предотвратить [чрезмерную передачу данных](xref:data/ef-rp/crud#overposting).
+* Если расположение кабинета пусто, `Instructor.OfficeAssignment` получает значение NULL. Если `Instructor.OfficeAssignment` имеет значение NULL, связанная строка в таблице `OfficeAssignment` удаляется.
+* Вызывает `PopulateAssignedCourseData` в `OnGetAsync`, чтобы предоставить сведения для флажков с помощью класса модели представления `AssignedCourseData`.
+* Вызывает `UpdateInstructorCourses` в `OnPostAsync`, чтобы применить сведения флажков к редактируемой сущности Instructor.
+* Вызывает `PopulateAssignedCourseData` и `UpdateInstructorCourses` в `OnPostAsync` в случае сбоя `TryUpdateModel`. Эти вызовы методов восстанавливают данные по назначенным курсам, введенные на странице, при ее повторном отображении с сообщением об ошибке.
+
+### <a name="update-the-instructor-edit-razor-page"></a>Обновление страницы Razor для редактирования преподавателя
+
+Измените файл *Pages/Instructors/Edit.cshtml*, используя следующий код:
+
+[!code-cshtml[](intro/samples/cu30/Pages/Instructors/Edit.cshtml?highlight=29-59)]
+
+Приведенный выше код создает таблицу HTML с тремя столбцами. Каждый столбец содержит флажок и заголовок с номером и названием курса. Все флажки имеют одинаковые имена ("selectedCourses"). Поскольку используется одно и то же имя, связыватель модели интерпретирует их как группу. Атрибуту значения для каждого флажка присвоен `CourseID`. При отправке страницы связыватель модели передает массив, содержащий значения `CourseID` только для установленных флажков.
+
+При первичной отрисовке флажков выбираются курсы, назначенные преподавателю.
+
+Примечание. Описываемый здесь подход к редактированию данных курсов для преподавателя эффективен при ограниченном числе курсов. Для коллекций большего размера более практичным и эффективным было бы применение другого пользовательского интерфейса и другого метода обновления.
+
+Запустите приложение и протестируйте обновленную страницу редактирования преподавателя. Измените некоторые назначения курсов. Изменения отражаются на странице указателя.
+
+### <a name="update-the-instructor-create-page"></a>Обновление страницы создания преподавателя
+
+Обновите модель для страницы создания преподавателя и соответствующую страницу Razor, используя код, аналогичный коду страницы редактирования:
+
+[!code-csharp[](intro/samples/cu30/Pages/Instructors/Create.cshtml.cs)]
+
+[!code-cshtml[](intro/samples/cu30/Pages/Instructors/Create.cshtml)]
+
+Протестируйте страницу создания преподавателя.
+
+## <a name="update-the-instructor-delete-page"></a>Обновление страницы удаления преподавателя
+
+Измените файл *Pages/Instructors/Delete.cshtml.cs*, используя следующий код:
+
+[!code-csharp[](intro/samples/cu30/Pages/Instructors/Delete.cshtml.cs?highlight=45-61)]
+
+Приведенный выше код вносит следующие изменения:
+
+* Использует упреждающую загрузку для свойства навигации `CourseAssignments`. Требуется включить `CourseAssignments`, иначе они не будут удалены при удалении преподавателя. Чтобы избежать необходимости считывать их, настройте каскадное удаление в базе данных.
+
+* Если преподаватель, которого требуется удалить, назначен в качестве администратора любой из кафедр, удаляется назначение преподавателя из таких кафедр.
+
+Запустите приложение и протестируйте страницу удаления.
+
+## <a name="next-steps"></a>Следующие шаги
+
+> [!div class="step-by-step"]
+> [Предыдущий учебник](xref:data/ef-rp/read-related-data)
+> [Следующий учебник](xref:data/ef-rp/concurrency)
+
+::: moniker-end
+
+::: moniker range="< aspnetcore-3.0"
 
 В этом учебнике демонстрируется обновление связанных данных. При возникновении проблем, которые вам не удается устранить, [скачайте или просмотрите готовое приложение.](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/data/ef-rp/intro/samples) [Указания по скачиванию](xref:index#how-to-download-a-sample).
 
@@ -57,7 +274,7 @@ ms.locfileid: "65087097"
 
 ### <a name="update-the-courses-create-page"></a>Обновление страницы создания курсов
 
-Обновите файл *Pages/Courses/Create.cshtml*, используя следующую разметку:
+Измените файл *Pages/Courses/Create.cshtml*, используя следующий код:
 
 [!code-cshtml[](intro/samples/cu/Pages/Courses/Create.cshtml?highlight=29-34)]
 
@@ -76,7 +293,7 @@ ms.locfileid: "65087097"
 
 ### <a name="update-the-courses-edit-page"></a>Обновите страницу редактирования курсов.
 
-Обновите модель страницы редактирования, используя следующий код:
+Замените код в файле *Pages/Courses/Edit.cshtml.cs* на приведенный ниже.
 
 [!code-csharp[](intro/samples/cu/Pages/Courses/Edit.cshtml.cs?highlight=8,28,35,36,40,47-999)]
 
@@ -189,7 +406,7 @@ ms.locfileid: "65087097"
 
 <a id="notepad"></a>
 > [!NOTE]
-> При вставке кода в Visual Studio разрывы строк изменяются, нарушая код. Один раз нажмите клавиши CTRL+Z, чтобы отменить автоматическое форматирование. При нажатии клавиш CTRL+Z разрывы строк исправляются, благодаря чему код приобретает показанный здесь вид. Выравнивать отступы необязательно, однако строки `@</tr><tr>`, `@:<td>`, `@:</td>` и `@:</tr>` должны находиться на одной строке, как показано здесь. Выделите блок нового кода и три раза нажмите клавишу TAB, чтобы выровнять его с существующим кодом. Чтобы проголосовать за эту ошибку или проверить ее статус, воспользуйтесь [этой ссылкой](https://developercommunity.visualstudio.com/content/problem/147795/razor-editor-malforms-pasted-markup-and-creates-in.html).
+> При вставке кода в Visual Studio разрывы строк изменяются, нарушая код. Один раз нажмите клавиши CTRL+Z, чтобы отменить автоматическое форматирование. При нажатии клавиш CTRL+Z разрывы строк исправляются, благодаря чему код приобретает показанный здесь вид. Выравнивать отступы необязательно, однако строки `@:</tr><tr>`, `@:<td>`, `@:</td>` и `@:</tr>` должны находиться на одной строке, как показано здесь. Выделите блок нового кода и три раза нажмите клавишу TAB, чтобы выровнять его с существующим кодом. Чтобы проголосовать за эту ошибку или проверить ее статус, воспользуйтесь [этой ссылкой](https://developercommunity.visualstudio.com/content/problem/147795/razor-editor-malforms-pasted-markup-and-creates-in.html).
 
 Приведенный выше код создает таблицу HTML с тремя столбцами. Каждый столбец содержит флажок и заголовок с номером и названием курса. Все флажки имеют одинаковые имена ("selectedCourses"). Поскольку используется одно и то же имя, связыватель модели интерпретирует их как группу. Атрибуту значения для каждого флажка присвоен `CourseID`. При отправке страницы связыватель модели передает массив, содержащий значения `CourseID` только для выбранных флажков.
 
@@ -233,3 +450,5 @@ ms.locfileid: "65087097"
 > [!div class="step-by-step"]
 > [Назад](xref:data/ef-rp/read-related-data)
 > [Вперед](xref:data/ef-rp/concurrency)
+
+::: moniker-end

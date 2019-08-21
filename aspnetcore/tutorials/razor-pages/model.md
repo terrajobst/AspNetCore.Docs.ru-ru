@@ -5,12 +5,12 @@ description: Узнайте, как добавлять классы для уп�
 ms.author: riande
 ms.date: 07/22/2019
 uid: tutorials/razor-pages/model
-ms.openlocfilehash: 6132f7b907014b4f57bb9ae0300e00b6ecb23f1a
-ms.sourcegitcommit: 2eb605f4f20ac4dd9de6c3b3e3453e108a357a21
+ms.openlocfilehash: 39e2a38e0b91b7dbecf05c084ca0be5e312dcb0d
+ms.sourcegitcommit: 2719c70cd15a430479ab4007ff3e197fbf5dfee0
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68820065"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68862874"
 ---
 # <a name="add-a-model-to-a-razor-pages-app-in-aspnet-core"></a>Добавление модели в приложение Razor Pages в ASP.NET Core
 
@@ -135,18 +135,30 @@ ms.locfileid: "68820065"
 
 ---
 
-В процессе формирования шаблонов создаются и обновляются указанные ниже файлы.
-
 ### <a name="files-created"></a>Создаваемые файлы
+
+# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
+
+В процессе формирования шаблонов создаются и обновляются указанные ниже файлы.
 
 * *Pages/Movies*: Create, Delete, Details, Edit и Index.
 * *Data/RazorPagesMovieContext.cs*
 
-### <a name="file-updated"></a>Обновляемые файлы
+### <a name="updated"></a>Обновленные возможности
 
 * *Startup.cs*
 
 В следующем разделе приводится описание созданных и обновленных файлов.
+
+# <a name="visual-studio-code--visual-studio-for-mactabvisual-studio-codevisual-studio-mac"></a>[Visual Studio Code/Visual Studio для Mac](#tab/visual-studio-code+visual-studio-mac)
+
+В процессе формирования шаблонов создаются указанные ниже файлы.
+
+* *Pages/Movies*: Create, Delete, Details, Edit и Index.
+
+В следующем разделе приводится описание созданных файлов.
+
+---
 
 <a name="pmc"></a>
 

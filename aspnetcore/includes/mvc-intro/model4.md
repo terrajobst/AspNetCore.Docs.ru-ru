@@ -5,7 +5,7 @@
 | -m  | Имя модели |
 | -dc  | Контекст данных |
 | -udl | Использование макета по умолчанию |
-| --relativeFolderPath | Относительный путь к папке выходных данных для создания представлений |
+| --relativeFolderPath | Относительный путь к папке выходных данных для создания файлов |
 | --useDefaultLayout | Макет по умолчанию следует использовать для представлений. |
 | --referenceScriptLibraries | Добавляет `_ValidationScriptsPartial` для страниц редактирования и создания |
 
@@ -14,3 +14,5 @@
 ```console
 dotnet aspnet-codegenerator controller -h
 ```
+
+См. подробнее о [dotnet aspnet-codegenerator](xref:fundamentals/tools/dotnet-aspnet-codegenerator).

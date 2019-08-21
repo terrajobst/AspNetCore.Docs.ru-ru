@@ -3,14 +3,14 @@ title: Добавление модели в приложение MVC ASP.NET Co
 author: rick-anderson
 description: Добавление модели в простое приложение ASP.NET Core.
 ms.author: riande
-ms.date: 02/25/2019
+ms.date: 8/15/2019
 uid: tutorials/first-mvc-app/adding-model
-ms.openlocfilehash: fcfe97e2228c21ffea8fe7ec5df8e2ea9c398828
-ms.sourcegitcommit: 1bb3f3f1905b4e7d4ca1b314f2ce6ee5dd8be75f
+ms.openlocfilehash: 038ea8cf7c72e4aaca6e06c0208d3dd1d5597577
+ms.sourcegitcommit: 476ea5ad86a680b7b017c6f32098acd3414c0f6c
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 06/11/2019
-ms.locfileid: "66837327"
+ms.lasthandoff: 08/14/2019
+ms.locfileid: "69022474"
 ---
 # <a name="add-a-model-to-an-aspnet-core-mvc-app"></a>Добавление модели в приложение MVC ASP.NET Core
 
@@ -23,6 +23,369 @@ ms.locfileid: "66837327"
 Создаваемые вами классы моделей называются классами POCO (от **P**lain **O**ld **C**LR **O** — старые добрые объекты CLR), так как они не зависят от EF Core. Эти классы просто определяют свойства данных, которые будут храниться в базе данных.
 
 Работая с этим учебником, вы напишете классы моделей, а затем EF Core создаст базу данных. Другой вариант, который здесь не рассматривается: создание классов моделей из существующей базы данных. Дополнительные сведения об этом подходе см. в разделе [ASP.NET Core — существующая база данных](/ef/core/get-started/aspnetcore/existing-db).
+
+::: moniker range=">= aspnetcore-3.0"
+
+## <a name="add-a-data-model-class"></a>Добавление класса модели данных
+
+# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
+
+Щелкните правой кнопкой мыши папку *Models* и выберите пункт **Добавить** > **Класс**. Назовите файл *Movie.cs*.
+
+# <a name="visual-studio-code--visual-studio-for-mactabvisual-studio-codevisual-studio-mac"></a>[Visual Studio Code/Visual Studio для Mac](#tab/visual-studio-code+visual-studio-mac)
+
+Добавьте файл *Movie.cs* в папку *Models*.
+
+---
+
+Обновите файл *Movie.cs*, используя следующий код:
+
+[!code-csharp[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie3/Models/Movie.cs)]
+
+Класс `Movie` содержит поле `Id`, которое требуется базе данных в качестве первичного ключа.
+
+Атрибут [DataType](/dotnet/api/microsoft.aspnetcore.mvc.dataannotations.internal.datatypeattributeadapter) для `ReleaseDate` указывает тип данных (`Date`). С этим атрибутом:
+
+  * пользователю не требуется вводить сведения о времени в поле даты.
+  * Отображается только дата, а не время.
+
+[DataAnnotations](/dotnet/api/system.componentmodel.dataannotations) рассматриваются в следующем руководстве.
+
+## <a name="add-nuget-packages"></a>Добавление пакетов NuGet
+
+# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
+
+В меню **Сервис** последовательно выберите пункты **Диспетчер пакетов NuGet** > **Консоль диспетчера пакетов** (PMC).
+
+![Меню PMC](~/tutorials/first-mvc-app/adding-model/_static/pmc.png)
+
+В PMC выполните следующую команду:
+
+```powershell
+Install-Package Microsoft.EntityFrameworkCore.SqlServer -IncludePrerelease
+```
+
+Приведенная выше команда добавляет поставщик EF Core для SQL Server. Пакет поставщика устанавливает пакет EF Core в качестве зависимости. Дополнительные пакеты устанавливаются автоматически на этапе формирования шаблонов далее в этом руководстве.
+
+# <a name="visual-studio-code--visual-studio-for-mactabvisual-studio-codevisual-studio-mac"></a>[Visual Studio Code/Visual Studio для Mac](#tab/visual-studio-code+visual-studio-mac)
+
+Выполните следующие команды интерфейса командной строки .NET Core:
+
+```console
+dotnet tool install --global dotnet-ef --version 3.0.0-*
+dotnet add package Microsoft.EntityFrameworkCore.SQLite --version 3.0.0-*
+dotnet add package Microsoft.VisualStudio.Web.CodeGeneration.Design --version 3.0.0-*
+dotnet add package Microsoft.EntityFrameworkCore.Design --version 3.0.0-*
+dotnet add package Microsoft.EntityFrameworkCore.SqlServer --version 3.0.0-*
+```
+
+Приведенные выше команды добавляют следующие компоненты:
+
+* средства Entity Framework Core для интерфейса командной строки .NET;
+* поставщик EF Core для SQLite, который устанавливает пакет EF Core в качестве зависимости;
+* Пакеты, необходимые для формирования шаблонов: `Microsoft.VisualStudio.Web.CodeGeneration.Design` и `Microsoft.EntityFrameworkCore.SqlServer`.
+
+---
+
+<a name="dc"></a>
+
+## <a name="create-a-database-context-class"></a>Создание класса контекста для базы данных
+
+Класс контекста базы данных необходим в целях координации функциональных возможностей EF Core (создание, чтение, обновление, удаление) для модели `Movie`. Контекст базы данных наследуется от [Microsoft.EntityFrameworkCore.DbContext](/dotnet/api/microsoft.entityframeworkcore.dbcontext) и определяет сущности, которые необходимо включить в модель данных.
+
+Создайте папку *Data*.
+
+Добавьте файл *Data/MvcMovieContext.cs* со следующим кодом: 
+
+[!code-csharp[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie3/zDocOnly/MvcMovieContext.cs?name=snippet)]
+
+Представленный выше код создает свойство [DbSet\<Movie>](/dotnet/api/microsoft.entityframeworkcore.dbset-1) для набора сущностей. В терминологии Entity Framework набор сущностей обычно соответствует таблице базы данных. Сущность соответствует строке в таблице.
+
+<a name="reg"></a>
+
+## <a name="register-the-database-context"></a>Регистрация контекста базы данных
+
+ASP.NET Core поддерживает [внедрение зависимостей](xref:fundamentals/dependency-injection). Службы (например, контекст базы данных EF Core) должны регистрироваться с помощью внедрения зависимостей во время запуска приложения. Затем компоненты, которые используют эти службы (например, Razor Pages), обращаются к ним через параметры конструктора. Код конструктора, который получает экземпляр контекста базы данных, приведен далее в этом руководстве. В этом разделе контекст базы данных регистрируется в контейнере внедрения зависимостей.
+
+Добавьте следующие инструкции `using` в начало файла *Startup.cs*.
+
+```csharp
+using MvcMovie.Data;
+using Microsoft.EntityFrameworkCore;
+```
+
+Добавьте выделенный ниже код в `Startup.ConfigureServices`:
+
+# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
+
+[!code-csharp[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie3/Startup.cs?name=snippet_ConfigureServices&highlight=6-7)]
+
+# <a name="visual-studio-code--visual-studio-for-mactabvisual-studio-codevisual-studio-mac"></a>[Visual Studio Code/Visual Studio для Mac](#tab/visual-studio-code+visual-studio-mac)
+
+[!code-csharp[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie3/Startup.cs?name=snippet_UseSqlite&highlight=6-7)]
+
+---
+
+Имя строки подключения передается в контекст путем вызова метода для объекта [DbContextOptions](/dotnet/api/microsoft.entityframeworkcore.dbcontextoptions). При локальной разработке [система конфигурации ASP.NET Core](xref:fundamentals/configuration/index) считывает строку подключения из файла *appsettings.json*.
+
+<a name="cs"></a>
+
+## <a name="add-a-database-connection-string"></a>Добавление строки подключения базы данных
+
+Добавьте строку подключения в файл *appsettings.json*:
+
+# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
+
+[!code-json[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie3/appsettings.json?highlight=10-12)]
+
+# <a name="visual-studio-code--visual-studio-for-mactabvisual-studio-codevisual-studio-mac"></a>[Visual Studio Code/Visual Studio для Mac](#tab/visual-studio-code+visual-studio-mac)
+
+[!code-json[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie3/appsettings_SQLite.json?highlight=10-12)]
+
+---
+
+Выполните сборку проекта, чтобы проверить его на ошибки компиляции.
+
+## <a name="scaffold-movie-pages"></a>Формирования шаблона страниц фильмов
+
+Используйте средство формирования шаблонов, чтобы создать страницы для операций создания, чтения, обновления и удаления (CRUD) для модели фильма.
+
+# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
+
+В **Обозревателе решений** щелкните правой кнопкой мыши папку *Контроллеры* и выберите **Добавить > Создать шаблонный элемент**.
+
+![представление указанного выше шага](adding-model/_static/add_controller21.png)
+
+В диалоговом окне **Добавление шаблона** выберите **Контроллер MVC с представлениями, использующий Entity Framework > Добавить**.
+
+![Диалоговое окно "Добавление шаблона"](adding-model/_static/add_scaffold21.png)
+
+Выполните необходимые действия в диалоговом окне **Добавление контроллера**:
+
+* **Класс модели:** *Movie (MvcMovie.Models)*
+* **Класс контекста данных:** *MvcMovieContext (MvcMovie.Data)*
+
+![Добавление контекста данных](adding-model/_static/dc3.png)
+
+* **Представления:** оставьте флажки, установленные по умолчанию
+* **Имя контроллера:** оставьте имя по умолчанию (*MoviesController*)
+* Нажмите **Добавить**
+
+Visual Studio создаст следующие компоненты:
+
+* контроллер фильмов (*Controllers/MoviesController.cs*);
+* файлы представления Razor для страниц Create, Delete, Details, Edit и Index (*Views/Movies/\*.cshtml*).
+
+Автоматическое создание этих файлов называется *формированием шаблонов*.
+
+### <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code.](#tab/visual-studio-code) 
+
+* Откройте окно командной строки в папке проекта (папке, где находятся файлы *Program.cs*, *Startup.cs* и *.csproj* файлов).
+
+* В Linux экспортируйте путь к средству формирования шаблонов:
+
+  ```console
+    export PATH=$HOME/.dotnet/tools:$PATH
+  ```
+
+* Выполните следующую команду:
+
+  ```console
+     dotnet aspnet-codegenerator controller -name MoviesController -m Movie -dc MvcMovieContext --relativeFolderPath Controllers --useDefaultLayout --referenceScriptLibraries
+  ```
+
+  [!INCLUDE [explains scaffold generated params](~/includes/mvc-intro/model4.md)]
+
+### <a name="visual-studio-for-mactabvisual-studio-mac"></a>[Visual Studio для Mac](#tab/visual-studio-mac)
+
+* Откройте окно командной строки в папке проекта (папке, где находятся файлы *Program.cs*, *Startup.cs* и *.csproj* файлов).
+
+* Выполните следующую команду:
+
+  ```console
+     dotnet aspnet-codegenerator controller -name MoviesController -m Movie -dc MvcMovieContext --relativeFolderPath Controllers --useDefaultLayout --referenceScriptLibraries
+  ```
+
+  [!INCLUDE [explains scaffold generated params](~/includes/mvc-intro/model4.md)]
+
+---
+
+<!-- End of tabs                  -->
+
+Сформированные страницы пока использовать нельзя, так как база данных не существует. Если запустить приложение и щелкнуть ссылку **Movie App**, появится сообщение об ошибке *Невозможно открыть базу данных* или *отсутствует таблица: Movie*.
+
+<a name="migration"></a>
+
+## <a name="initial-migration"></a>Первоначальная миграция
+
+Создайте базу данных с помощью функции [миграций](xref:data/ef-mvc/migrations) EF Core. Миграции — это набор средств, позволяющих создавать и обновлять базы данных в соответствии с моделью данных.
+
+# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
+
+В меню **Сервис** последовательно выберите пункты **Диспетчер пакетов NuGet** > **Консоль диспетчера пакетов** (PMC).
+
+В PMC введите следующие команды:
+
+```console
+Add-Migration InitialCreate
+Update-Database
+```
+
+* `Add-Migration InitialCreate`: Создает файл миграции *Migrations/{метка_времени}_InitialCreate.cs*. Аргумент `InitialCreate` — это имя миграции. Можно использовать любое имя, но по соглашению выбирается имя, которое описывает миграцию. Так как это первая миграция, созданный класс содержит код для создания схемы базы данных. Схема базы данных создается на основе модели, указанной в классе `MvcMovieContext`.
+
+* `Update-Database`: Обновляет базу данных до последней миграции, созданной предыдущей командой. Эта команда выполняет метод `Up` в файле *Migrations/{метка_времени}_InitialCreate.cs*, который создает базу данных.
+
+  Команда обновления базы данных выдает следующее предупреждающее сообщение: 
+
+  > "Для десятичного столбца Price в типе сущности Movie не указан тип. Это приведет к тому, что значения будут усекаться без вмешательства пользователя, если они не помещаются в значения точности и масштаба по умолчанию. С помощью метода HasColumnType() явно укажите тип столбца SQL Server, который может вместить все значения".
+
+  Это предупреждение можно игнорировать. Оно будет устранено в следующем руководстве.
+
+[!INCLUDE [more information on the PMC tools for EF Core](~/includes/ef-pmc.md)]
+
+# <a name="visual-studio-code--visual-studio-for-mactabvisual-studio-codevisual-studio-mac"></a>[Visual Studio Code/Visual Studio для Mac](#tab/visual-studio-code+visual-studio-mac)
+
+Выполните следующие команды интерфейса командной строки .NET Core:
+
+```console
+dotnet ef migrations add InitialCreate
+dotnet ef database update
+```
+
+* `ef migrations add InitialCreate`: Создает файл миграции *Migrations/{метка_времени}_InitialCreate.cs*. Аргумент `InitialCreate` — это имя миграции. Можно использовать любое имя, но по соглашению выбирается имя, которое описывает миграцию. Так как это первая миграция, созданный класс содержит код для создания схемы базы данных. Схема базы данных создается на основе модели, указанной в классе `MvcMovieContext` (в файле *Data/MvcMovieContext.cs*).
+
+* `ef database update`: Обновляет базу данных до последней миграции, созданной предыдущей командой. Эта команда выполняет метод `Up` в файле *Migrations/{метка_времени}_InitialCreate.cs*, который создает базу данных.
+
+[!INCLUDE [ more information on the CLI tools for EF Core](~/includes/ef-cli.md)]
+
+---
+
+### <a name="the-initialcreate-class"></a>Класс InitialCreate
+
+Изучите файл миграции *Migrations/{метка_времени}_InitialCreate.cs*.
+
+[!code-csharp[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie3/Migrations/20190805165915_InitialCreate.cs?name=snippet)]
+
+ Метод `Up` создает таблицу Movie и настраивает `Id` в качестве первичного ключа. Метод `Down` отменяет изменения схемы, внесенные миграцией `Up`.
+
+<a name="test"></a>
+
+## <a name="test-the-app"></a>Тестирование приложения
+
+* Запустите приложение и щелкните ссылку **Movie App**.
+
+  Если возникнет исключение наподобие следующего:
+
+# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
+
+  ```console
+  SqlException: Cannot open database "MvcMovieContext-1" requested by the login. The login failed.
+  ```
+
+# <a name="visual-studio-code--visual-studio-for-mactabvisual-studio-codevisual-studio-mac"></a>[Visual Studio Code/Visual Studio для Mac](#tab/visual-studio-code+visual-studio-mac)
+
+  ```console
+  SqliteException: SQLite Error 1: 'no such table: Movie'.
+  ```
+
+---
+  возможно, вы пропустили [шаг миграции](#migration).
+
+* Протестируйте страницу **создания**. Введите и отправьте данные.
+
+  > [!NOTE]
+  > В поле `Price` нельзя вводить десятичные запятые. Чтобы обеспечить поддержку [проверки jQuery](https://jqueryvalidation.org/) для других языков, кроме английского, используйте вместо десятичной точки запятую (,), а для отображения данных в форматах для других языков, кроме английского, выполните глобализацию приложения. Инструкции по глобализации см. на [сайте GitHub](https://github.com/aspnet/AspNetCore.Docs/issues/4076#issuecomment-326590420).
+
+* Протестируйте страницы **редактирования**, **сведений** и **удаления**.
+
+## <a name="dependency-injection-in-the-controller"></a>Внедрение зависимостей в контроллере
+
+Откройте файл *Controllers/MoviesController.cs* и изучите его конструктор:
+
+<!-- l.. Make copy of Movies controller (or use the old one as I did in the 3.0 upgrade) because we comment out the initial index method and update it later  -->
+
+[!code-csharp[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie22/Controllers/MC1.cs?name=snippet_1)]
+
+Этот конструктор применяет [внедрение зависимостей](xref:fundamentals/dependency-injection) для внедрения контекста базы данных (`MvcMovieContext`) в контроллер. Контекст базы данных используется в каждом методе [создания, чтения, обновления и удаления](https://wikipedia.org/wiki/Create,_read,_update_and_delete) в контроллере.
+
+<a name="strongly-typed-models-keyword-label"></a>
+<a name="strongly-typed-models-and-the--keyword"></a>
+
+## <a name="strongly-typed-models-and-the-model-keyword"></a>Строго типизированные модели и ключевое слово @model
+
+Ранее в этом руководстве вы ознакомились с передачей данных или объектов из контроллера в представление с использованием словаря `ViewData`. Словарь `ViewData` представляет собой динамический объект, который реализует удобный механизм позднего связывания для передачи информации в представление.
+
+Модель MVC также поддерживает передачу строго типизированных объектов модели в представление. Такой подход обеспечивает проверку кода во время компиляции. В этом подходе используется механизм формирования шаблонов (то есть передачи строго типизированной модели) с представлениями и классом `MoviesController`.
+
+Изучите созданный метод `Details` в файле *Controllers/MoviesController.cs*:
+
+[!code-csharp[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie22/Controllers/MC1.cs?name=snippet_details)]
+
+Параметр `id` обычно передается в качестве данных маршрута. Например, `https://localhost:5001/movies/details/1` задает:
+
+* Контроллер `movies` (первый сегмент URL-адреса).
+* Действие `details` (второй сегмент URL-адреса).
+* Идентификатор 1 (последний сегмент URL-адреса).
+
+Также можно передать `id` с помощью строки запроса следующим образом:
+
+`https://localhost:5001/movies/details?id=1`
+
+Параметр `id` определяется как [тип, допускающий значение NULL](/dotnet/csharp/programming-guide/nullable-types/index) (`int?`), в случае, если не указано значение идентификатора.
+
+[Лямбда-выражение](/dotnet/articles/csharp/programming-guide/statements-expressions-operators/lambda-expressions) передается в `FirstOrDefaultAsync` для выбора записей фильмов, которые соответствуют данным маршрута или значению строки запроса.
+
+```csharp
+var movie = await _context.Movie
+    .FirstOrDefaultAsync(m => m.Id == id);
+```
+
+Если фильм найден, экземпляр модели `Movie` передается в представление `Details`:
+
+```csharp
+return View(movie);
+   ```
+
+Изучите содержимое файла *Views/Movies/Details.cshtml*:
+
+[!code-html[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie22/Views/Movies/DetailsOriginal.cshtml)]
+
+Оператор `@model` в начале файла представления задает тип объекта, который будет ожидаться представлением. При создании контроллера movie был включен следующий оператор `@model`:
+
+```HTML
+@model MvcMovie.Models.Movie
+   ```
+
+Эта директива `@model` обеспечивает доступ к фильму, который контроллер передал в представление. Объект `Model` является строго типизированным. Например, в представлении *Details.cshtml* код передает каждое поле фильма во вспомогательные функции HTML `DisplayNameFor` и `DisplayFor` со строго типизированным объектом `Model`. Методы `Create` и `Edit` и представления также передают объект модели `Movie`.
+
+Изучите представление *Index.cshtml* и метод `Index` в контроллере Movies. Обратите внимание на то, как в коде создается объект `List` при вызове метода `View`. Код передает список `Movies` из метода действия `Index` в представление:
+
+[!code-csharp[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie22/Controllers/MC1.cs?name=snippet_index)]
+
+При создании контроллера movies механизм формирования шаблонов включил следующий оператор `@model` в начало файла *Index.cshtml*:
+
+<!-- Copy Index.cshtml to IndexOriginal.cshtml -->
+
+[!code-html[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie22/Views/Movies/IndexOriginal.cshtml?range=1)]
+
+Эта директива `@model` обеспечивает доступ к списку фильмов, который контроллер передал в представление с использованием строго типизированного объекта `Model`. Например, в представлении *Index.cshtml* код циклически перебирает фильмы с использованием оператора `foreach` для строго типизированного объекта `Model`:
+
+[!code-html[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie22/Views/Movies/IndexOriginal.cshtml?highlight=1,31,34,37,40,43,46-48)]
+
+Поскольку объект `Model` является строго типизированным (как и объект `IEnumerable<Movie>`), каждый элемент в цикле получает тип `Movie`. Помимо прочих преимуществ, это означает, что выполняется проверка кода во время компиляции.
+
+## <a name="additional-resources"></a>Дополнительные ресурсы
+
+* [Вспомогательные функции тегов](xref:mvc/views/tag-helpers/intro)
+* [Глобализация и локализация](xref:fundamentals/localization)
+
+> [!div class="step-by-step"]
+> [Назад: добавление представления](adding-view.md)
+> [Далее: работа с SQL](working-with-sql.md)
+
+::: moniker-end
+
+::: moniker range="< aspnetcore-3.0"
 
 ## <a name="add-a-data-model-class"></a>Добавление класса модели данных
 
@@ -88,6 +451,12 @@ Visual Studio создаст следующие компоненты:
    dotnet tool install --global dotnet-aspnet-codegenerator
    ```
 
+* В Linux экспортируйте путь к средству формирования шаблонов:
+
+  ```console
+    export PATH=$HOME/.dotnet/tools:$PATH
+  ```
+
 * Выполните следующую команду:
 
   ```console
@@ -113,13 +482,15 @@ Visual Studio создаст следующие компоненты:
      dotnet aspnet-codegenerator controller -name MoviesController -m Movie -dc MvcMovieContext --relativeFolderPath Controllers --useDefaultLayout --referenceScriptLibraries
   ```
 
-[!INCLUDE [explains scaffold gen params](~/includes/RP/model4.md)]
+[!INCLUDE [explains scaffold generated params](~/includes/mvc-intro/model4.md)]
 
 ---
 
 <!-- End of VS tabs                  -->
 
 Если запустить приложение и щелкнуть ссылку **Mvc Movie**, возникает ошибка наподобие следующей:
+
+# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 ``` error
 An unhandled exception occurred while processing the request.
@@ -129,6 +500,17 @@ Login failed for user 'Rick'.
 
 System.Data.SqlClient.SqlInternalConnectionTds..ctor(DbConnectionPoolIdentity identity, SqlConnectionString
 ```
+
+# <a name="visual-studio-code--visual-studio-for-mactabvisual-studio-codevisual-studio-mac"></a>[Visual Studio Code/Visual Studio для Mac](#tab/visual-studio-code+visual-studio-mac)
+
+``` error
+An unhandled exception occurred while processing the request.
+SqliteException: SQLite Error 1: 'no such table: Movie'.
+Microsoft.Data.Sqlite.SqliteException.ThrowExceptionForRC(int rc, sqlite3 db)
+
+```
+
+---
 
 Вам необходимо создать базу данных. Для этого вы используете функцию [миграций](xref:data/ef-mvc/migrations) EF Core. С помощью миграций можно создать базу данных, соответствующую модели данных, и обновлять схему базы данных при изменении модели.
 
@@ -156,7 +538,7 @@ System.Data.SqlClient.SqlInternalConnectionTds..ctor(DbConnectionPoolIdentity id
 
    Команда `Add-Migration` формирует код для создания схемы исходной базы данных.
 
-   Схема базы данных создается на основе модели, указанной в классе `MvcMovieContext`. Аргумент `Initial` — это имя миграции. Можно использовать любое имя, но по соглашению используется имя, которое описывает миграцию. Для получения дополнительной информации см. <xref:data/ef-mvc/migrations>.
+   Схема базы данных создается на основе модели, указанной в классе `MvcMovieContext`. Аргумент `Initial` — это имя миграции. Можно использовать любое имя, но по соглашению используется имя, которое описывает миграцию. Дополнительные сведения можно найти по адресу: <xref:data/ef-mvc/migrations>.
 
    Команда `Update-Database` выполняет метод `Up` в файле *Migrations/{time-stamp}_InitialCreate.cs*, который создает базу данных.
 
@@ -184,7 +566,7 @@ ASP.NET Core поддерживает [внедрение зависимосте
 
 `MvcMovieContext` координирует функции EF Core (Create, Read, Update, Delete и т. д.) для модели `Movie`. Контекст данных (`MvcMovieContext`) получен из [Microsoft.EntityFrameworkCore.DbContext](/dotnet/api/microsoft.entityframeworkcore.dbcontext). Контекст данных указывает сущности, которые включаются в модель данных:
 
-[!code-csharp[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie22/Data/MvcMovieContext.cs)]
+[!code-csharp[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie3/Data/MvcMovieContext.cs)]
 
 Представленный выше код создает свойство [DbSet\<Movie>](/dotnet/api/microsoft.entityframeworkcore.dbset-1) для набора сущностей. В терминологии Entity Framework набор сущностей обычно соответствует таблице базы данных. Сущность соответствует строке в таблице.
 
@@ -309,3 +691,5 @@ return View(movie);
 > [!div class="step-by-step"]
 > [Назад: добавление представления](adding-view.md)
 > [Далее: работа с SQL](working-with-sql.md)
+
+::: moniker-end
