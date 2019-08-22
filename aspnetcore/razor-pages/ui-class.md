@@ -4,15 +4,15 @@ author: Rick-Anderson
 description: В этой статье описывается создание многократно используемых Razor пользовательского интерфейса, использование частичных представлений в библиотеку классов, в ASP.NET Core.
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
-ms.date: 06/28/2019
+ms.date: 08/20/2019
 ms.custom: mvc, seodec18
 uid: razor-pages/ui-class
-ms.openlocfilehash: 77c7d4a318610fcd424da0485abd41d11e3fad6a
-ms.sourcegitcommit: fbc66827e319d28bebed678ea5fd42f582fe3c34
+ms.openlocfilehash: 468d961c291810ca4dfbe615acd972cfd6e7572a
+ms.sourcegitcommit: 41f2c1a6b316e6e368a4fd27a8b18d157cef91e1
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68493567"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69886393"
 ---
 # <a name="create-reusable-ui-using-the-razor-class-library-project-in-aspnet-core"></a>Создание повторно используемого пользовательского интерфейса с помощью проекта библиотеки классов Razor в ASP.NET Core
 
@@ -236,13 +236,49 @@ dotnet run
 
 Чтобы включить сопутствующие активы в состав РКЛ, создайте папку *wwwroot* в библиотеке классов и включите в нее все необходимые файлы.
 
-При упаковке РКЛ все сопутствующие ресурсы в папке *wwwroot* автоматически включаются в пакет и становятся доступными для приложений, ссылающихся на пакет.
+При упаковке РКЛ все сопутствующие ресурсы в папке *wwwroot* автоматически включаются в пакет.
 
 ### <a name="consume-content-from-a-referenced-rcl"></a>Использовать содержимое из РКЛ, на которое указывает ссылка
 
 Файлы, содержащиеся в папке *wwwroot* РКЛ, предоставляются приложению, использующему префикс `_content/{LIBRARY NAME}/`. Например, Библиотека с именем *Razor. class. lib* приводит к получению пути к статическому содержимому `_content/Razor.Class.Lib/`в.
 
-Используемое приложение ссылается на статические ресурсы `<script>` `<img>`, предоставляемые библиотекой `<style>`, с помощью,, и других HTML-тегов. Для использования в приложении должна быть включена [Поддержка статических файлов](xref:fundamentals/static-files) .
+Используемое приложение ссылается на статические ресурсы `<script>` `<img>`, предоставляемые библиотекой `<style>`, с помощью,, и других HTML-тегов. В используемом приложении должна быть включена [Поддержка статических файлов](xref:fundamentals/static-files) в `Startup.Configure`:
+
+```csharp
+public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+{
+    ...
+
+    app.UseStaticFiles();
+
+    ...
+}
+```
+
+При запуске приложения, использующего выход из сборки (`dotnet run`), статические веб-ресурсы по умолчанию включены в среде разработки. Чтобы обеспечить поддержку ресурсов в других средах при выполнении из выходных данных `UseStaticWebAssets` сборки, вызовите метод в построителе узлов в *Program.CS*:
+
+```csharp
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.Extensions.Hosting;
+
+public class Program
+{
+    public static void Main(string[] args)
+    {
+        CreateHostBuilder(args).Build().Run();
+    }
+
+    public static IHostBuilder CreateHostBuilder(string[] args) =>
+        Host.CreateDefaultBuilder(args)
+            .ConfigureWebHostDefaults(webBuilder =>
+            {
+                webBuilder.UseStaticWebAssets();
+                webBuilder.UseStartup<Startup>();
+            });
+}
+```
+
+Вызов `UseStaticWebAssets` не требуется при запуске приложения из опубликованных выходных данных`dotnet publish`().
 
 ### <a name="multi-project-development-flow"></a>Последовательность разработки нескольких проектов
 
