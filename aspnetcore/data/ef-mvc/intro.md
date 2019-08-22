@@ -1,18 +1,18 @@
 ---
 title: Учебник. Начало работы с EF Core в веб-приложении MVC ASP.NET
 description: Это первый учебник из серии, в котором с самого начала описывается построение примера приложения для университета Contoso.
-author: rick-anderson
+author: tdykstra
 ms.author: tdykstra
 ms.custom: mvc
 ms.date: 02/06/2019
 ms.topic: tutorial
 uid: data/ef-mvc/intro
-ms.openlocfilehash: a93d5af314f1ff679a8df636297a0d5849ebdb8d
-ms.sourcegitcommit: 6afe57fb8d9055f88fedb92b16470398c4b9b24a
+ms.openlocfilehash: 1b68c20ba206a5afe36f307525879f91d03d95d1
+ms.sourcegitcommit: 257cc3fe8c1d61341aa3b07e5bc0fa3d1c1c1d1c
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65610209"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69583345"
 ---
 # <a name="tutorial-get-started-with-ef-core-in-an-aspnet-mvc-web-app"></a>Учебник. Начало работы с EF Core в веб-приложении MVC ASP.NET
 
@@ -75,7 +75,7 @@ ms.locfileid: "65610209"
 
 * Дождитесь появления диалогового окна **Создание веб-приложения ASP.NET Core**.
 
-* Выберите **.NET Core**, **ASP.NET Core 2.2** и шаблон **Веб-приложение (модель — представление — контроллер)**.
+* Выберите **.NET Core**, **ASP.NET Core 2.2** и шаблон **Веб-приложение (модель — представление — контроллер)** .
 
 * Убедитесь, что для параметра **Проверка подлинности** задано значение **Без проверки подлинности**.
 
@@ -305,7 +305,7 @@ ASP.NET Core по умолчанию реализует технологию [в
 
 ![Таблица Student в SSOX](intro/_static/ssox-student-table.png)
 
-Файлы базы данных с расширениями *.mdf* и *.ldf* находятся в папке *C:\Users\\\<имя_пользователя>*.
+Файлы базы данных с расширениями *.mdf* и *.ldf* находятся в папке *C:\Users\\\<имя_пользователя>* .
 
 Поскольку вы вызываете метод `EnsureCreated` в методе инициализатора, который выполняется при запуске приложения, теперь вы можете внести изменения в класс `Student`, удалить базу данных и снова запустить приложение. После этого база данных будет создана повторно в соответствии с внесенными изменениями. Например, при добавлении свойства `EmailAddress` в класс `Student` во вновь созданной таблице появится столбец `EmailAddress`.
 

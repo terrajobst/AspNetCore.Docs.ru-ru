@@ -1,18 +1,18 @@
 ---
 title: Учебник. Использование ASP.NET Core MVC с EF Core. Обработка параллелизма
 description: Это руководство описывает, как обрабатывать конфликты, когда несколько пользователей одновременно изменяют одну сущность.
-author: rick-anderson
+author: tdykstra
 ms.author: tdykstra
 ms.custom: mvc
 ms.date: 03/27/2019
 ms.topic: tutorial
 uid: data/ef-mvc/concurrency
-ms.openlocfilehash: bfe417a6153f74cf0ca2d9bcde4db1bba8453b3b
-ms.sourcegitcommit: 4ef0362ef8b6e5426fc5af18f22734158fe587e1
+ms.openlocfilehash: d4b83bd269b067ab6fa9e8666109bacc602589bd
+ms.sourcegitcommit: 257cc3fe8c1d61341aa3b07e5bc0fa3d1c1c1d1c
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "67152883"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69583252"
 ---
 # <a name="tutorial-handle-concurrency---aspnet-mvc-with-ef-core"></a>Учебник. Использование ASP.NET Core MVC с EF Core. Обработка параллелизма
 

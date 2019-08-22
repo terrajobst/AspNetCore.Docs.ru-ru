@@ -1,18 +1,18 @@
 ---
 title: Учебник. Использование ASP.NET MVC с EF Core. Функции миграций
 description: В этом руководстве вы начинаете использовать функцию миграций EF Core для управления изменениями модели данных в приложении ASP.NET Core MVC.
-author: rick-anderson
+author: tdykstra
 ms.author: tdykstra
 ms.custom: mvc
 ms.date: 03/27/2019
 ms.topic: tutorial
 uid: data/ef-mvc/migrations
-ms.openlocfilehash: 35569a4d75abf1c18a3750d9785c3cf55a35ea69
-ms.sourcegitcommit: 8516b586541e6ba402e57228e356639b85dfb2b9
+ms.openlocfilehash: 7ee383ff5fcd9dd79503321aaa188fd85ef18d7a
+ms.sourcegitcommit: 257cc3fe8c1d61341aa3b07e5bc0fa3d1c1c1d1c
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67813771"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69583463"
 ---
 # <a name="tutorial-using-the-migrations-feature---aspnet-mvc-with-ef-core"></a>Учебник. Использование ASP.NET MVC с EF Core. Функции миграций
 

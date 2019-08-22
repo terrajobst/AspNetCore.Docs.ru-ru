@@ -1,18 +1,18 @@
 ---
 title: Учебник. Использование ASP.NET MVC с EF Core. Реализация функциональности CRUD
 description: В рамках этого учебника вы сможете ознакомиться с кодом операций CRUD (создание, чтение, обновление, удаление), который автоматически создается технологией формирования шаблонов MVC в контроллерах и представлениях, а также настроить этот код.
-author: rick-anderson
+author: tdykstra
 ms.author: tdykstra
 ms.custom: mvc
 ms.date: 02/04/2019
 ms.topic: tutorial
 uid: data/ef-mvc/crud
-ms.openlocfilehash: 442570cdc79fe7c496392ffbcbc527cf841aefa9
-ms.sourcegitcommit: e7e04a45195d4e0527af6f7cf1807defb56dc3c3
+ms.openlocfilehash: 975738200f9ea621c38b395be123b1d05c78298e
+ms.sourcegitcommit: 41f2c1a6b316e6e368a4fd27a8b18d157cef91e1
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 06/06/2019
-ms.locfileid: "66750082"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69886307"
 ---
 # <a name="tutorial-implement-crud-functionality---aspnet-mvc-with-ef-core"></a>Учебник. Использование ASP.NET MVC с EF Core. Реализация функциональности CRUD
 
@@ -58,7 +58,7 @@ ms.locfileid: "66750082"
 http://localhost:1230/Instructor/Index/1?courseID=2021
 ```
 
-Последняя часть URL-адреса ("?courseID=2021") представляет значение строки запроса. Связыватель модели также будет передавать значение идентификатора в метод `Details` в параметр `id`, если вы передаете его в качестве значения строки запроса:
+Последняя часть URL-адреса ("?courseID=2021") представляет значение строки запроса. Связыватель модели также будет передавать значение идентификатора в метод `Index` в параметр `id`, если вы передаете его в качестве значения строки запроса:
 
 ```
 http://localhost:1230/Instructor/Index?id=1&CourseID=2021
