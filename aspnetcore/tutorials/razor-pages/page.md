@@ -3,14 +3,14 @@ title: Сформированные страницы Razor Pages в ASP.NET Core
 author: rick-anderson
 description: Описание страниц Razor Pages, созданных путем формирования шаблонов.
 ms.author: riande
-ms.date: 07/22/2019
+ms.date: 08/17/2019
 uid: tutorials/razor-pages/page
-ms.openlocfilehash: 741ee4291cacbb1de0f8341673c8fd6ef0c9a462
-ms.sourcegitcommit: 849af69ee3c94cdb9fd8fa1f1bb8f5a5dda7b9eb
+ms.openlocfilehash: 00a8458b9bee4d30c5774a980ff5c23fb8872737
+ms.sourcegitcommit: 38cac2552029fc19428722bb204ff9e16eb94225
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68371861"
+ms.lasthandoff: 08/18/2019
+ms.locfileid: "69573141"
 ---
 # <a name="scaffolded-razor-pages-in-aspnet-core"></a>Сформированные страницы Razor Pages в ASP.NET Core
 
@@ -54,7 +54,7 @@ Razor может выполнять переход с HTML на C# или на �
 
 <a name="md"></a>
 
-### <a name="the-model-directive"></a>директиву @model 
+### <a name="the-model-directive"></a>директиву @model
 
 [!code-cshtml[](razor-pages-start/snapshot_sample3/RazorPagesMovie30/Pages/Movies/Index.cshtml?range=1-2&highlight=2)]
 
@@ -245,7 +245,7 @@ Razor может выполнять переход с HTML на C# или на �
 
 <a name="md"></a>
 
-### <a name="the-model-directive"></a>директиву @model 
+### <a name="the-model-directive"></a>директиву @model
 
 [!code-cshtml[](razor-pages-start/snapshot_sample/RazorPagesMovie/Pages/Movies/Index.cshtml?range=1-2&highlight=2)]
 

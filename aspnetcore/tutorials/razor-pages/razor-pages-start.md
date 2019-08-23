@@ -5,12 +5,12 @@ description: В этой серии руководств объясняется,
 ms.author: riande
 ms.date: 07/25/2019
 uid: tutorials/razor-pages/razor-pages-start
-ms.openlocfilehash: 57a10895c718c539ece280afcb27cb4033c7fb45
-ms.sourcegitcommit: 979dbfc5e9ce09b9470789989cddfcfb57079d94
+ms.openlocfilehash: 67a5fcee0a37861fd39a018443edbc0b9e513213
+ms.sourcegitcommit: 7a46973998623aead757ad386fe33602b1658793
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68682795"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69487668"
 ---
 # <a name="tutorial-get-started-with-razor-pages-in-aspnet-core"></a>Учебник. Начало работы с Razor Pages в ASP.NET Core
 
@@ -92,15 +92,22 @@ ms.locfileid: "68682795"
 
 # <a name="visual-studio-for-mactabvisual-studio-mac"></a>[Visual Studio для Mac](#tab/visual-studio-mac)
 
-В терминале выполните следующую команду:
+* Выберите **Файл** > **Новое решение**.
 
-<!-- TODO: update these instruction once mac support 2.2 projects -->
+![Новое решение macOS](../first-mvc-app/start-mvc/_static/new_project_vsmac.png)
 
-```console
-dotnet new webapp -o RazorPagesMovie
-```
+* Выберите **.NET Core** > **Приложение** > **Веб-приложение** > **Далее**.
 
-Указанные выше команды используют [интерфейс командной строки .NET Core](/dotnet/core/tools/dotnet) для создания проекта Razor Pages.
+  ![Диалоговое окно "Новый проект" в macOS](razor-pages-start/_static/webapp.png)
+
+* В диалоговом окне **Настройка нового веб-API ASP.NET Core** установите для параметра **Целевая платформа** значение **.NET Core 3.0**.
+
+  ![Выбор .NET Core 3.0 для macOS](razor-pages-start/_static/targetframework3.png)
+
+* Присвойте проекту имя **RazorPagesMovie** и нажмите кнопку **Создать**.
+
+  ![nameproj](razor-pages-start/_static/RazorPagesMovie.png)
+
 
 ## <a name="open-the-project"></a>Открытие проекта
 

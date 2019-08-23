@@ -3,14 +3,14 @@ title: Области в ASP.NET Core
 author: rick-anderson
 description: Сведения о том, что области — это возможность ASP.NET MVC, которая служит для объединения связанных функций в группу в виде отдельного пространства имен (для маршрутизации) и структуры папок (для представлений).
 ms.author: riande
-ms.date: 08/07/2019
+ms.date: 08/16/2019
 uid: mvc/controllers/areas
-ms.openlocfilehash: e44c726c47caa3dd0c8c92e3a2502a590bee82d1
-ms.sourcegitcommit: 2719c70cd15a430479ab4007ff3e197fbf5dfee0
+ms.openlocfilehash: d0af3092776ee09469c879fffd3047c50b1a59b4
+ms.sourcegitcommit: 4cb0c7e74355f2e87c60e2a196f842b937247a99
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68862798"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69545805"
 ---
 # <a name="areas-in-aspnet-core"></a>Области в ASP.NET Core
 
@@ -136,7 +136,7 @@ ms.locfileid: "68862798"
 
 ## <a name="areas-with-razor-pages"></a>Области c Razor Pages
 
-Для создания областей с Razor Pages необходима папка *Areas/&lt;имя_области&gt;/Pages* в корневом каталоге приложения. В [этом примере](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/controllers/areas/samples) используется следующая структура папок.
+Для создания областей с Razor Pages необходима папка *Areas/<area name>/Pages* в корневом каталоге приложения. В [этом примере приложения](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/controllers/areas/samples) используется следующая структура папок:
 
 * Имя проекта
   * Области
