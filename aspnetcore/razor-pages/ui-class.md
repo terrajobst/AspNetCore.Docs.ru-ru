@@ -4,15 +4,15 @@ author: Rick-Anderson
 description: В этой статье описывается создание многократно используемых Razor пользовательского интерфейса, использование частичных представлений в библиотеку классов, в ASP.NET Core.
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
-ms.date: 08/20/2019
+ms.date: 08/22/2019
 ms.custom: mvc, seodec18
 uid: razor-pages/ui-class
-ms.openlocfilehash: 468d961c291810ca4dfbe615acd972cfd6e7572a
-ms.sourcegitcommit: 41f2c1a6b316e6e368a4fd27a8b18d157cef91e1
+ms.openlocfilehash: 5b83cb44302a5900ec7b2ccc049790b4c1ca57e5
+ms.sourcegitcommit: 6189b0ced9c115248c6ede02efcd0b29d31f2115
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69886393"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69985388"
 ---
 # <a name="create-reusable-ui-using-the-razor-class-library-project-in-aspnet-core"></a>Создание повторно используемого пользовательского интерфейса с помощью проекта библиотеки классов Razor в ASP.NET Core
 
@@ -237,6 +237,39 @@ dotnet run
 Чтобы включить сопутствующие активы в состав РКЛ, создайте папку *wwwroot* в библиотеке классов и включите в нее все необходимые файлы.
 
 При упаковке РКЛ все сопутствующие ресурсы в папке *wwwroot* автоматически включаются в пакет.
+
+### <a name="exclude-static-assets"></a>Исключить статические активы
+
+Чтобы исключить статические ресурсы, добавьте нужный путь исключения в `$(DefaultItemExcludes)` группу свойств в файле проекта. Разделяйте записи точкой с`;`запятой ().
+
+В следующем примере таблица " *библиотека lib. CSS* " в папке *wwwroot* не считается статическим ресурсом и не включается в опубликованные РКЛ:
+
+```xml
+<PropertyGroup>
+  <DefaultItemExcludes>$(DefaultItemExcludes);wwwroot\lib.css</DefaultItemExcludes>
+</PropertyGroup>
+```
+
+### <a name="typescript-integration"></a>Интеграция с typescript
+
+Включение файлов TypeScript в РКЛ:
+
+1. Поместите файлы TypeScript ( *. TS*) за пределы папки *wwwroot* . Например, поместите файлы в клиентскую папку .
+
+1. Настройте выходные данные сборки TypeScript для папки *wwwroot* . Задайте свойство внутри `PropertyGroup` в файле проекта: `TypescriptOutDir`
+
+   ```xml
+   <TypescriptOutDir>wwwroot</TypescriptOutDir>
+   ```
+
+1. Включите целевой объект TypeScript в качестве зависимости `ResolveCurrentProjectStaticWebAssets` целевого объекта, добавив следующий объект `PropertyGroup` в в файле проекта:
+
+   ```xml
+   <ResolveCurrentProjectStaticWebAssetsInputsDependsOn>
+     TypeScriptCompile;
+     $(ResolveCurrentProjectStaticWebAssetsInputs)
+   </ResolveCurrentProjectStaticWebAssetsInputsDependsOn>
+   ```
 
 ### <a name="consume-content-from-a-referenced-rcl"></a>Использовать содержимое из РКЛ, на которое указывает ссылка
 

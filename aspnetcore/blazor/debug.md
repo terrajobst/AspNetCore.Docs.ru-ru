@@ -5,14 +5,14 @@ description: Узнайте, как выполнять отладку прило
 monikerRange: '>= aspnetcore-3.0'
 ms.author: riande
 ms.custom: mvc
-ms.date: 07/31/2019
+ms.date: 08/22/2019
 uid: blazor/debug
-ms.openlocfilehash: 37c6009727a4f62b61793adca0d83cdd53be4b9a
-ms.sourcegitcommit: 3204bc89ae6354b61ee0a9b2770ebe5214b7790c
+ms.openlocfilehash: c3188a1fe1b699b787f7a95630f3918d295d0f68
+ms.sourcegitcommit: 8835b6777682da6fb3becf9f9121c03f89dc7614
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68948374"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69974900"
 ---
 # <a name="debug-aspnet-core-blazor"></a>Отладка ASP.NET Core Блазор
 
@@ -51,6 +51,10 @@ ms.locfileid: "68948374"
 1. Доступ к приложению в браузере.
 1. Поместите фокус клавиатуры на приложение, а не на панель инструментов разработчика. Панель средств разработчика можно закрыть при инициации отладки.
 1. Выберите следующее сочетание клавиш, определяемое Блазор:
+   * `Shift+Alt+D`в Windows и Linux
+   * `Shift+Cmd+D`на macOS
+1. Выполните действия, перечисленные на экране, чтобы перезапустить браузер с включенной удаленной отладкой.
+1. Чтобы запустить сеанс отладки, снова выберите сочетание клавиш, определенное Блазор.
    * `Shift+Alt+D`в Windows и Linux
    * `Shift+Cmd+D`на macOS
 

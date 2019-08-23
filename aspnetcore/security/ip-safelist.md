@@ -2,16 +2,16 @@
 title: Адрес списка надежных IP-адресов клиента для ASP.NET Core
 author: damienbod
 description: Узнайте, как создавать по промежуточного слоя или фильтры действий для проверки удаленных IP-адресов по списку утвержденных IP-адресов.
-ms.author: tdykstra
+ms.author: riande
 ms.custom: mvc
 ms.date: 08/31/2018
 uid: security/ip-safelist
-ms.openlocfilehash: ca05989efabea3a71c6912e98055a6746e0f5966
-ms.sourcegitcommit: 1bf80f4acd62151ff8cce517f03f6fa891136409
+ms.openlocfilehash: 02e44135ab1742d44691cfda8c4167f21d6efa4e
+ms.sourcegitcommit: 8835b6777682da6fb3becf9f9121c03f89dc7614
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "68223937"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69975650"
 ---
 # <a name="client-ip-safelist-for-aspnet-core"></a>Адрес списка надежных IP-адресов клиента для ASP.NET Core
 
