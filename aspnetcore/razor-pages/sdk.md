@@ -5,14 +5,14 @@ description: Сведения о применении в ASP.NET Core функц
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc, seodec18
-ms.date: 06/18/2019
+ms.date: 08/23/2019
 uid: razor-pages/sdk
-ms.openlocfilehash: 1dc001c7c5fe320629835e06fe6db7fadabff94d
-ms.sourcegitcommit: 6189b0ced9c115248c6ede02efcd0b29d31f2115
+ms.openlocfilehash: 81025c14ba68971ca5d3cfc9387c2f50dd247654
+ms.sourcegitcommit: 983b31449fe398e6e922eb13e9eb6f4287ec91e8
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69985395"
+ms.lasthandoff: 08/24/2019
+ms.locfileid: "70017396"
 ---
 # <a name="aspnet-core-razor-sdk"></a>Пакет SDK для Razor в ASP.NET Core
 
@@ -22,26 +22,21 @@ ms.locfileid: "69985395"
 
 [!INCLUDE[](~/includes/2.1-SDK.md)] Включает в себя `Microsoft.NET.Sdk.Razor` MSBuild SDK (Razor SDK). Пакет SDK для Razor:
 
-::: moniker range=">= aspnetcore-2.1 <= aspnetcore-2.2"
+::: moniker range=">= aspnetcore-3.0"
+
+* Требуется для сборки, упаковки и публикации проектов, содержащих файлы [Razor](xref:mvc/views/razor) , для ASP.NET Core проектов на основе MVC или [блазор](xref:blazor/index) .
+* Включает набор предопределенных целевых объектов, свойств и элементов, позволяющих настраивать компиляцию файлов Razor ( *. cshtml* или *. Razor*).
+
+Пакет SDK для Razor `Content` включает элементы `Include` с атрибутами, `**\*.cshtml` заданными шаблонами и `**\*.razor` глобализации. Публикуются соответствующие файлы.
+
+::: moniker-end
+
+::: moniker range="< aspnetcore-3.0"
+
 * Стандартизирует процесс создания, упаковки и публикации проектов, содержащих файлы [Razor](xref:mvc/views/razor), для проектов на основе MVC ASP.NET.
 * Включает набор предопределенных целевых объектов, свойств и элементов, которые позволяют настраивать параметры компиляции файлов Razor.
-::: moniker-end
 
-::: moniker range=">= aspnetcore-3.0"
-* требуется для сборки, упаковки и публикации проектов, содержащих файлы [Razor](xref:mvc/views/razor) для ASP.NET Core проектов на основе MVC или проектов [блазор](xref:blazor/index)
-* Включает набор предопределенных целевых объектов, свойств и элементов, позволяющих настраивать компиляцию файлов Razor (. cshtml или. Razor).
-::: moniker-end
-
-
-::: moniker range=">= aspnetcore-2.1 <= aspnetcore-2.2"
-
-Пакет SDK для Razor включает `<Content>` элемент `Include` с атрибутом, `**\*.cshtml` установленным в шаблон глобализации. Публикуются соответствующие файлы.
-
-::: moniker-end
-
-::: moniker range=">= aspnetcore-3.0"
-
-Пакет SDK для Razor `<Content>` включает элементы `Include` с атрибутами, `**\*.cshtml` заданными шаблонами и `**\*.razor` глобализации. Публикуются соответствующие файлы.
+Пакет SDK для Razor включает `Content` элемент `Include` с атрибутом, `**\*.cshtml` установленным в шаблон глобализации. Публикуются соответствующие файлы.
 
 ::: moniker-end
 
@@ -53,7 +48,14 @@ ms.locfileid: "69985395"
 
 Большинство веб-приложений не требуется явно ссылаться на пакет SDK Razor.
 
-::: moniker range=">= aspnetcore-2.1 <= aspnetcore-2.2"
+::: moniker range=">= aspnetcore-3.0"
+
+Чтобы использовать пакет SDK для Razor для построения библиотек классов, содержащих представления Razor или Razor Pages, мы рекомендуем начать с шаблона проекта РКЛ для библиотеки классов Razor. Для РКЛ, который используется для создания файлов Блазор ( *. Razor*), минимально требуется ссылка на пакет [Microsoft. AspNetCore. Components](https://www.nuget.org/packages/Microsoft.AspNetCore.Components) . РКЛ, который используется для построения представлений Razor или страниц ( *. cshtml* ), минимально требует нацеливание `netcoreapp3.0` или `FrameworkReference` более поздней версии и имеет в файле проекта [Microsoft. AspNetCore. app метапакет](xref:fundamentals/metapackage-app) .
+
+::: moniker-end
+
+::: moniker range="< aspnetcore-3.0"
+
 Использование пакета SDK для Razor для создания библиотеки классов с представлениями Razor или страницами Razor:
 
 * Используйте `Microsoft.NET.Sdk.Razor` вместо `Microsoft.NET.Sdk`:
@@ -78,11 +80,6 @@ ms.locfileid: "69985395"
   
 ::: moniker-end
 
-::: moniker range=">= aspnetcore-3.0"
-Чтобы использовать пакет SDK для Razor для построения библиотек классов, содержащих представления Razor или Razor Pages мы рекомендуем начать с шаблона проекта библиотеки классов Razor. В библиотеке классов Razor, используемой для сборки файлов блазор (. Razor), по меньшей мере требуется ссылка на `Microsoft.AspNetCore.Components` пакет. Библиотека классов Razor, которая используется для построения представлений Razor или страниц (CSHTML-файлов), требует выбора целевой платформы `netcoreapp3.0` или более поздней версии и `FrameworkReference` иметь `Microsoft.AspNetCore.App`в.
-
-::: moniker-end
-
 ::: moniker range="= aspnetcore-2.1"
 
 > [!WARNING]
@@ -100,15 +97,16 @@ ms.locfileid: "69985395"
 Свойства и элементы в следующей таблице используются для настройки входных и выходных данных в пакет SDK для Razor.
 
 ::: moniker range=">= aspnetcore-3.0"
-> [!WARNING]
-Начиная с ASP.NET Core 3,0, представления MVC или Razor Pages не будут обслуживаться по умолчанию `RazorCompileOnBuild` , `RazorCompileOnPublish` если или отключены. Приложения должны добавить явную ссылку на `Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation` пакет, чтобы добавить поддержку компиляции среды выполнения, если они используют компиляцию времени выполнения для обработки файлов CSHTML.
-::: moniker-end
 
+> [!WARNING]
+> Начиная с ASP.NET Core 3,0, представления MVC или Razor Pages не обслуживаются по умолчанию `RazorCompileOnBuild` , `RazorCompileOnPublish` если свойства MSBuild в файле проекта отключены. Приложения должны добавить явную ссылку на пакет [Microsoft. AspNetCore. MVC. Razor. рунтимекомпилатион](https://www.nuget.org/packages/Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation) , если приложение использует компиляцию с помощью среды выполнения для обработки *CSHTML* файлов.
+
+::: moniker-end
 
 | Элементы | Описание |
 | ----- | ----------- |
 | `RazorGenerate` | Элементы Item (*CSHTML* -файлы), которые являются входными данными для создания кода. |
-| `RazorComponent` | Элементы элементов (*Razor* -файлы), которые являются входными данными для создания кода компонента.
+| `RazorComponent` | Элементы элементов (*Razor* -файлы), которые являются входными данными для создания кода компонента Razor. |
 | `RazorCompile` | Элементы Item (*CS* -файлы), входные в целевые объекты компиляции Razor. Используйте этот `ItemGroup` параметр, чтобы указать дополнительные файлы для компиляции в сборку Razor. |
 | `RazorTargetAssemblyAttribute` | Элементы, используемые для создания атрибутов для сборки Razor. Пример:  <br>`RazorAssemblyAttribute`<br>`Include="System.Reflection.AssemblyMetadataAttribute"`<br>`_Parameter1="BuildSource" _Parameter2="https://docs.microsoft.com/">` |
 | `RazorEmbeddedResource` | Элемент элементы добавляются в виде внедренных ресурсов на созданную сборку Razor. |
@@ -135,9 +133,9 @@ ms.locfileid: "69985395"
 
 Пакет SDK для Razor определяет два основных целевых объекта:
 
-* `RazorGenerate` &ndash; Код создает *.cs* файлов из `RazorGenerate` элементы item. Используйте свойство `RazorGenerateDependsOn`, чтобы указать дополнительные целевые объекты, которые могут выполняться до или после этого целевого объекта.
-* `RazorCompile` &ndash; Компилирует созданный *.cs* файлы в сборку Razor. Используйте `RazorCompileDependsOn`, чтобы указать дополнительные целевые объекты, которые могут выполняться до или после этого целевого объекта.
-* `RazorComponentGenerate`Код создает файлы *. CS* для `RazorComponent` элементов Item. &ndash; Используйте свойство `RazorComponentGenerateDependsOn`, чтобы указать дополнительные целевые объекты, которые могут выполняться до или после этого целевого объекта.
+* `RazorGenerate` &ndash; Код создает *.cs* файлов из `RazorGenerate` элементы item. `RazorGenerateDependsOn` Используйте свойство, чтобы указать дополнительные целевые объекты, которые могут выполняться до или после этого целевого объекта.
+* `RazorCompile` &ndash; Компилирует созданный *.cs* файлы в сборку Razor. `RazorCompileDependsOn` Используйте для указания дополнительных целевых объектов, которые могут выполняться до или после этого целевого объекта.
+* `RazorComponentGenerate`Код создает файлы *. CS* для `RazorComponent` элементов Item. &ndash; `RazorComponentGenerateDependsOn` Используйте свойство, чтобы указать дополнительные целевые объекты, которые могут выполняться до или после этого целевого объекта.
 
 ### <a name="runtime-compilation-of-razor-views"></a>Компиляция среды выполнения представлений Razor
 
