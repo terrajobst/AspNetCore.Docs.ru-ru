@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 8/22/2019
 uid: performance/caching/memory
-ms.openlocfilehash: 3005adec9ffe41859d05a3f61c7c45b8e7bfeefc
-ms.sourcegitcommit: bdaee0e8c657fe7546fd6b7990db9c03c2af04df
+ms.openlocfilehash: 1519abbca6430063f037372a4927f5818f160457
+ms.sourcegitcommit: 776598f71da0d1e4c9e923b3b395d3c3b5825796
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69908376"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70024790"
 ---
 # <a name="cache-in-memory-in-aspnet-core"></a>Кэширование в памяти в ASP.NET Core
 
@@ -85,15 +85,15 @@ ASP.NET Core поддерживает несколько разных кэшей
 
 [!code-csharp[](memory/3.0sample/WebCacheSample/Controllers/HomeController.cs?name=snippet99)]
 
-Кэшированный набор элементов с скользящей истечением срока действия имеет риск только до устаревания, так как не привязан к сроку его действия. Используйте Абсолютный срок действия с скользящей истечением срока, чтобы гарантировать, что кэшированный элемент не станет более устаревшим, чем абсолютный срок действия. Если абсолютный срок действия сочетается с скользящей, абсолютный срок действия задает верхнюю границу того, насколько долго элемент может быть кэширован. В отличие от времени абсолютного срока действия, если элемент не запрашивается из кэша в течение скользящего интервала действия, элемент удаляется из кэша. Если указан абсолютный и скользящий срок действия, истечение срока действия логически ORed.
+Набор кэшированных элементов с скользящим сроком действия может быть только устаревшим. Если доступ к нему осуществляется чаще, чем скользящий интервал срока действия, срок действия элемента никогда не истечет. Объедините скользящий срок действия с абсолютным сроком действия, чтобы гарантировать, что срок действия элемента истекает по истечении его абсолютного срока действия. Абсолютный срок действия задает верхнюю границу того, как долго элемент может быть кэширован, в то же время допуская окончания срока действия элемента, если он не запрашивался в течение скользящего интервала истечения. Если указан как абсолютный, так и скользящий срок действия, истечение срока действия логически ORed. Если либо скользящий интервал истечения срока действия, *либо* период абсолютного окончания срока действия, элемент удаляется из кэша.
 
-Следующий код возвращает или создает кэшированный элемент с скользящим и абсолютным сроком действия:
+Следующий код возвращает или создает кэшированный элемент со скользящим *и* абсолютным сроком действия:
 
 [!code-csharp[](memory/3.0sample/WebCacheSample/Controllers/HomeController.cs?name=snippet9)]
 
 Приведенный выше код гарантирует, что данные не будут кэшироваться дольше, чем абсолютное время.
 
-<xref:Microsoft.Extensions.Caching.Memory.CacheExtensions.GetOrCreate*>методы <xref:Microsoft.Extensions.Caching.Memory.CacheExtensions.GetOrCreateAsync*>, и <xref:Microsoft.Extensions.Caching.Memory.CacheExtensions.Get*> являются частью <xref:Microsoft.Extensions.Caching.Memory.CacheExtensions> класса, который расширяет возможности <xref:Microsoft.Extensions.Caching.Memory.IMemoryCache>. Описание других методов кэширования см. в разделе [методы IMemoryCache](/dotnet/api/microsoft.extensions.caching.memory.imemorycache) и [методы качикстенсионс](/dotnet/api/microsoft.extensions.caching.memory.cacheextensions) .
+<xref:Microsoft.Extensions.Caching.Memory.CacheExtensions.GetOrCreate*>методы <xref:Microsoft.Extensions.Caching.Memory.CacheExtensions.GetOrCreateAsync*>, и <xref:Microsoft.Extensions.Caching.Memory.CacheExtensions.Get*> являются<xref:Microsoft.Extensions.Caching.Memory.CacheExtensions> методами расширения в классе. Эти методы расширяют возможности <xref:Microsoft.Extensions.Caching.Memory.IMemoryCache>.
 
 ## <a name="memorycacheentryoptions"></a>меморикачинтрйоптионс
 
