@@ -105,7 +105,7 @@ dotnet new react -o <output_directory_name> -au Individual
 
 ### <a name="oidcconfigurationcontroller"></a>OIDCConfigurationController
 
-В файле *контроллерс\оидкконфигуратионконтроллер.КС* Обратите внимание на конечную точку, подготовленную для обслуживания параметров OIDC, которые необходимо использовать клиенту.
+В файле *Controllers\OidcConfigurationController.cs* обратите внимание на конечную точку, подготовленную для выдачи параметров OIDC, которые необходимо использовать клиенту.
 
 ### <a name="appsettingsjson"></a>appsettings.json
 
@@ -135,7 +135,7 @@ dotnet new react -o <output_directory_name> -au Individual
 
 ## <a name="general-description-of-the-angular-app"></a>Общее описание приложения Angular
 
-Поддержка проверки подлинности и авторизации API в угловом шаблоне находится в своем собственном вспомогательном модуле в каталоге *клиентапп\срк\апи-аусоризатион* . Модуль состоит из следующих элементов:
+Поддержка проверки подлинности и API авторизации в шаблоне Angular реализуется в собственном модуле Angular в каталоге *ClientApp\src\api-authorization*. Модуль состоит из следующих элементов: Модуль состоит из следующих элементов:
 
 * 3 компонента:
   * *имя входа. Component. TS*: Обрабатывает поток входа в приложение.
