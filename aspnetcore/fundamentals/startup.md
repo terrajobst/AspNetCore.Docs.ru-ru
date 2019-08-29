@@ -1,17 +1,17 @@
 ---
 title: Запуск приложения в ASP.NET Core
-author: tdykstra
+author: rick-anderson
 description: Сведения о том, как класс Startup в ASP.NET Core настраивает службы и конвейер запросов приложения.
-ms.author: tdykstra
+ms.author: riande
 ms.custom: mvc
 ms.date: 8/7/2019
 uid: fundamentals/startup
-ms.openlocfilehash: 2ce4f2093c11066370160c62949888837065f129
-ms.sourcegitcommit: 2fa0ffe82a47c7317efc9ea908365881cbcb8ed7
+ms.openlocfilehash: 8866ee9210a91754d8050d0b91ff52c3d3fe0836
+ms.sourcegitcommit: 8835b6777682da6fb3becf9f9121c03f89dc7614
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/17/2019
-ms.locfileid: "69572832"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69975436"
 ---
 # <a name="app-startup-in-aspnet-core"></a>Запуск приложения в ASP.NET Core
 

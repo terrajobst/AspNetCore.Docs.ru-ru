@@ -2,17 +2,17 @@
 title: Учебник. Использование ASP.NET MVC с EF  Core. Создание сложной модели данных
 description: В этом руководстве вы добавите дополнительные сущности и связи, а также настроите модель данных, указав правила форматирования, проверки и сопоставления.
 author: tdykstra
-ms.author: tdykstra
+ms.author: riande
 ms.custom: mvc
 ms.date: 03/27/2019
 ms.topic: tutorial
 uid: data/ef-mvc/complex-data-model
-ms.openlocfilehash: 3563bf279f2ed9c9d79b5a9da2709e18511620d2
-ms.sourcegitcommit: 257cc3fe8c1d61341aa3b07e5bc0fa3d1c1c1d1c
+ms.openlocfilehash: a69f1fdd38fec35dec6bb8125bf29859a437a891
+ms.sourcegitcommit: 8835b6777682da6fb3becf9f9121c03f89dc7614
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69583276"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69975082"
 ---
 # <a name="tutorial-create-a-complex-data-model---aspnet-mvc-with-ef-core"></a>Учебник. Использование ASP.NET MVC с EF  Core. Создание сложной модели данных
 
