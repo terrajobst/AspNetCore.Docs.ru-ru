@@ -2,16 +2,16 @@
 title: Учебник. Использование ASP.NET MVC с EF Core. Чтение связанных данных
 description: Из этого руководства вы узнаете, как читать и отображать связанные данные — данные, которые Entity Framework загружает в свойства навигации.
 author: tdykstra
-ms.author: tdykstra
+ms.author: riande
 ms.date: 03/27/2019
 ms.topic: tutorial
 uid: data/ef-mvc/read-related-data
-ms.openlocfilehash: 43d05d0a5f938e60cdb54a0025d8bc277059c2e3
-ms.sourcegitcommit: 257cc3fe8c1d61341aa3b07e5bc0fa3d1c1c1d1c
+ms.openlocfilehash: 2bf556dae5d30819c54ecc3f0dadfbd3316db1cc
+ms.sourcegitcommit: 0774a61a3a6c1412a7da0e7d932dc60c506441fc
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69583431"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70059111"
 ---
 # <a name="tutorial-read-related-data---aspnet-mvc-with-ef-core"></a>Учебник. Использование ASP.NET MVC с EF Core. Чтение связанных данных
 
@@ -239,7 +239,7 @@ ms.locfileid: "69583431"
 
 [!code-csharp[](intro/samples/cu/Controllers/InstructorsController.cs?name=snippet_ExplicitLoading&highlight=23-29)]
 
-В новом коде из блока, который получает сущности преподавателей, удален вызов метода *ThenInclude*. Если выбраны преподаватели и курс, выделенный код получает сущности Enrollment выбранного курса и сущности Student для каждой сущности Enrollment.
+В новом коде из блока, который получает сущности преподавателей, удален вызов метода *ThenInclude*. Также удаляется и `AsNoTracking`.  Если выбраны преподаватели и курс, выделенный код получает сущности Enrollment выбранного курса и сущности Student для каждой сущности Enrollment.
 
 Запустите приложение, перейдите на страницу Instructors Index, и вы не увидите никаких изменений, несмотря на то, что мы изменили способ получения данных.
 

@@ -4,14 +4,14 @@ author: zuckerthoben
 description: Дополнительные сведения о добавлении Swashbuckle в проект веб-API ASP.NET Core для интеграции пользовательского интерфейса Swagger.
 ms.author: scaddie
 ms.custom: mvc
-ms.date: 06/21/2019
+ms.date: 08/21/2019
 uid: tutorials/get-started-with-swashbuckle
-ms.openlocfilehash: 606be317318eafa170d926aaace1f752d3a25510
-ms.sourcegitcommit: 89fcc6cb3e12790dca2b8b62f86609bed6335be9
+ms.openlocfilehash: 989d10d0423075fb4812c79cd69b3e362e54e802
+ms.sourcegitcommit: 6189b0ced9c115248c6ede02efcd0b29d31f2115
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68994289"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69985443"
 ---
 # <a name="get-started-with-swashbuckle-and-aspnet-core"></a>Начало работы с Swashbuckle и ASP.NET Core
 
@@ -89,15 +89,31 @@ dotnet add TodoApi.csproj package Swashbuckle.AspNetCore -v 5.0.0-rc2
 
 ::: moniker-end
 
-::: moniker range=">= aspnetcore-2.1"
+::: moniker range=">= aspnetcore-2.1 <= aspnetcore-2.2"
 
 [!code-csharp[](../tutorials/web-api-help-pages-using-swagger/samples/2.1/TodoApi.Swashbuckle/Startup2.cs?name=snippet_ConfigureServices&highlight=9-12)]
 
 ::: moniker-end
 
+::: moniker range=">= aspnetcore-3.0"
+
+[!code-csharp[](../tutorials/web-api-help-pages-using-swagger/samples/3.0/TodoApi.Swashbuckle/Startup2.cs?name=snippet_ConfigureServices&highlight=8-11)]
+
+::: moniker-end
+
 В методе `Startup.Configure` включите ПО промежуточного слоя для обслуживания созданного документа JSON и пользовательского интерфейса Swagger:
 
+::: moniker range=">= aspnetcore-2.1 <= aspnetcore-2.2"
+
 [!code-csharp[](../tutorials/web-api-help-pages-using-swagger/samples/2.0/TodoApi.Swashbuckle/Startup2.cs?name=snippet_Configure&highlight=4,8-11)]
+
+::: moniker-end
+
+::: moniker range=">= aspnetcore-3.0"
+
+[!code-csharp[](../tutorials/web-api-help-pages-using-swagger/samples/3.0/TodoApi.Swashbuckle/Startup2.cs?name=snippet_Configure&highlight=4,8-11)]
+
+::: moniker-end
 
 Предыдущий вызов метода `UseSwaggerUI` включает [ПО промежуточного слоя для статических файлов](xref:fundamentals/static-files). Если код предназначен для .NET Framework или NET Core 1.x, добавьте в проект пакет NuGet [Microsoft.AspNetCore.StaticFiles](https://www.nuget.org/packages/Microsoft.AspNetCore.StaticFiles/).
 
@@ -116,7 +132,13 @@ dotnet add TodoApi.csproj package Swashbuckle.AspNetCore -v 5.0.0-rc2
 
 Swagger предоставляет параметры для документирования объектной модели и настройки пользовательского интерфейса в соответствии с вашим фирменным стилем.
 
-В классе добавьте следующие пространства имен: [!code-csharp[](~/tutorials/web-api-help-pages-using-swagger/samples/2.0/TodoApi.Swashbuckle/Startup2.cs?name=snippet_PreReqNamespaces)]
+В классе `Startup` добавьте следующие пространства имен:
+
+```csharp
+using System;
+using System.Reflection;
+using System.IO;
+```
 
 ### <a name="api-info-and-description"></a>Данные и описание API
 
@@ -244,7 +266,13 @@ namespace TodoApi
 
 Настройте Swagger на использование XML-файла, который создается с помощью приведенных выше инструкций. В Linux и других операционных системах, отличных от Windows, имена и пути файлов могут быть чувствительны к регистру. Например, файл *ToDoApi.XML* допустим в Windows, но не в CentOS.
 
-::: moniker range=">= aspnetcore-2.1"
+::: moniker range=">= aspnetcore-3.0"
+
+[!code-csharp[](../tutorials/web-api-help-pages-using-swagger/samples/3.0/TodoApi.Swashbuckle/Startup.cs?name=snippet_ConfigureServices&highlight=30-32)]
+
+::: moniker-end
+
+::: moniker range=">= aspnetcore-2.1 <= aspnetcore-2.2"
 
 [!code-csharp[](../tutorials/web-api-help-pages-using-swagger/samples/2.1/TodoApi.Swashbuckle/Startup.cs?name=snippet_ConfigureServices&highlight=31-33)]
 
@@ -309,9 +337,15 @@ namespace TodoApi
 
 ::: moniker-end
 
-::: moniker range=">= aspnetcore-2.1"
+::: moniker range=">= aspnetcore-2.1 <= aspnetcore-2.2"
 
 [!code-csharp[](../tutorials/web-api-help-pages-using-swagger/samples/2.1/TodoApi.Swashbuckle/Controllers/TodoController.cs?name=snippet_Create&highlight=4-14)]
+
+::: moniker-end
+
+::: moniker range=">= aspnetcore-3.0"
+
+[!code-csharp[](../tutorials/web-api-help-pages-using-swagger/samples/3.0/TodoApi.Swashbuckle/Controllers/TodoController.cs?name=snippet_Create&highlight=4-14)]
 
 ::: moniker-end
 
@@ -361,9 +395,15 @@ namespace TodoApi
 
 ::: moniker-end
 
-::: moniker range=">= aspnetcore-2.1"
+::: moniker range=">= aspnetcore-2.1 <= aspnetcore-2.2"
 
 [!code-csharp[](../tutorials/web-api-help-pages-using-swagger/samples/2.1/TodoApi.Swashbuckle/Controllers/TodoController.cs?name=snippet_TodoController&highlight=1)]
+
+::: moniker-end
+
+::: moniker range=">= aspnetcore-3.0"
+
+[!code-csharp[](../tutorials/web-api-help-pages-using-swagger/samples/3.0/TodoApi.Swashbuckle/Controllers/TodoController.cs?name=snippet_TodoController&highlight=1)]
 
 ::: moniker-end
 
@@ -385,9 +425,15 @@ namespace TodoApi
 
 ::: moniker-end
 
-::: moniker range=">= aspnetcore-2.1"
+::: moniker range=">= aspnetcore-2.1 <= aspnetcore-2.2"
 
 [!code-csharp[](../tutorials/web-api-help-pages-using-swagger/samples/2.1/TodoApi.Swashbuckle/Controllers/TodoController.cs?name=snippet_Create&highlight=17,18,20,21)]
+
+::: moniker-end
+
+::: moniker range=">= aspnetcore-3.0"
+
+[!code-csharp[](../tutorials/web-api-help-pages-using-swagger/samples/3.0/TodoApi.Swashbuckle/Controllers/TodoController.cs?name=snippet_Create&highlight=17,18,20,21)]
 
 ::: moniker-end
 
@@ -415,7 +461,17 @@ namespace TodoApi
 
 Включите ПО промежуточного слоя для статических файлов:
 
-[!code-csharp[](../tutorials/web-api-help-pages-using-swagger/samples/2.0/TodoApi.Swashbuckle/Startup.cs?name=snippet_Configure&highlight=3)]
+::: moniker range=">= aspnetcore-2.1 <= aspnetcore-2.2"
+
+[!code-csharp[](../tutorials/web-api-help-pages-using-swagger/samples/2.1/TodoApi.Swashbuckle/Startup.cs?name=snippet_Configure&highlight=3)]
+
+::: moniker-end
+
+::: moniker range=">= aspnetcore-3.0"
+
+[!code-csharp[](../tutorials/web-api-help-pages-using-swagger/samples/3.0/TodoApi.Swashbuckle/Startup.cs?name=snippet_Configure&highlight=3)]
+
+::: moniker-end
 
 Получите содержимое папки *dist* из [репозитория GitHub пользовательского интерфейса Swagger](https://github.com/swagger-api/swagger-ui/tree/master/dist). Эта папка содержит ресурсы, необходимые для страниц пользовательского интерфейса Swagger.
 

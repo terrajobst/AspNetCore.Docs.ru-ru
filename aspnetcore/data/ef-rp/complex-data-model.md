@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 07/22/2019
 uid: data/ef-rp/complex-data-model
-ms.openlocfilehash: 8a1c0759453b02f4ce1c45471a8f93da626f8261
-ms.sourcegitcommit: 257cc3fe8c1d61341aa3b07e5bc0fa3d1c1c1d1c
+ms.openlocfilehash: 34b977f70f3e7e58e4ab6fcf3d8f69800896a65d
+ms.sourcegitcommit: 0774a61a3a6c1412a7da0e7d932dc60c506441fc
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69583282"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70059122"
 ---
 # <a name="razor-pages-with-ef-core-in-aspnet-core---data-model---5-of-8"></a>Razor Pages с EF Core в ASP.NET Core — модель данных— 5 из 8
 
@@ -134,13 +134,16 @@ public string FirstMidName { get; set; }
 
 Атрибут `Required` делает свойства имен обязательными полями. Атрибут `Required` не нужен для типов, не допускающих значения NULL, например для типов значений (таких как `DateTime`, `int` и `double`). Типы, которые не могут принимать значение null, автоматически обрабатываются как обязательные поля.
 
-Атрибут `Required` можно заменить параметром минимальной длины в атрибуте `StringLength`:
+Для применения `MinimumLength` нужно использовать атрибут `Required` с `MinimumLength`.
 
 ```csharp
 [Display(Name = "Last Name")]
-[StringLength(50, MinimumLength=1)]
+[Required]
+[StringLength(50, MinimumLength=2)]
 public string LastName { get; set; }
 ```
+
+`MinimumLength` и `Required` разрешают использовать пробелы при проверке. Используйте атрибут `RegularExpression` для полного контроля над строкой.
 
 ### <a name="the-display-attribute"></a>Атрибут Display
 
@@ -1353,7 +1356,7 @@ dotnet ef database update
 
 Добавьте выделенный ниже код. Новый код идет после блока `.CreateTable( name: "Department"`.
 
- [!code-csharp[](intro/samples/cu/Migrations/20171027005808_ComplexDataModel.cs?name=snippet_CreateDefaultValue&highlight=22-32)]
+[!code-csharp[](intro/samples/cu/Migrations/20171027005808_ComplexDataModel.cs?name=snippet_CreateDefaultValue&highlight=22-32)]
 
 После внесения описанных выше изменений существующие строки `Course` будут связаны с кафедрой "Temp" после выполнения метода `ComplexDataModel` `Up`.
 
@@ -1368,8 +1371,6 @@ dotnet ef database update
 
 * [Версия руководства на YouTube (часть 1)](https://www.youtube.com/watch?v=0n2f0ObgCoA)
 * [Версия руководства на YouTube (часть 2)](https://www.youtube.com/watch?v=Je0Z5K1TNmY)
-
-
 
 > [!div class="step-by-step"]
 > [Назад](xref:data/ef-rp/migrations)

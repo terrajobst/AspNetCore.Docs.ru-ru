@@ -2,19 +2,27 @@
 title: Учебник. Начало работы с EF Core в веб-приложении MVC ASP.NET
 description: Это первый учебник из серии, в котором с самого начала описывается построение примера приложения для университета Contoso.
 author: tdykstra
-ms.author: tdykstra
+ms.author: riande
 ms.custom: mvc
 ms.date: 02/06/2019
 ms.topic: tutorial
 uid: data/ef-mvc/intro
-ms.openlocfilehash: 1b68c20ba206a5afe36f307525879f91d03d95d1
-ms.sourcegitcommit: 257cc3fe8c1d61341aa3b07e5bc0fa3d1c1c1d1c
+ms.openlocfilehash: 3450ac5b46e2a03b5d58c8760b78a52065343992
+ms.sourcegitcommit: 6189b0ced9c115248c6ede02efcd0b29d31f2115
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69583345"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69985368"
 ---
 # <a name="tutorial-get-started-with-ef-core-in-an-aspnet-mvc-web-app"></a>Учебник. Начало работы с EF Core в веб-приложении MVC ASP.NET
+
+::: moniker range=">= aspnetcore-3.0"
+
+Это руководстве **не было** обновлено для использования с версией ASP.NET Core 3.0. [Версия Razor Pages](xref:data/ef-rp/intro) была обновлена. См. сведения о возможном обновлении в этой [проблеме GitHub](https://github.com/aspnet/AspNetCore.Docs/issues/13920).
+
+::: moniker-end
+
+::: moniker range="< aspnetcore-3.0"
 
 [!INCLUDE [RP better than MVC](~/includes/RP-EF/rp-over-mvc.md)]
 
@@ -378,3 +386,5 @@ ASP.NET Core по умолчанию реализует технологию [в
 
 > [!div class="nextstepaction"]
 > [Реализация базовых функций CRUD](crud.md)
+
+::: moniker-end

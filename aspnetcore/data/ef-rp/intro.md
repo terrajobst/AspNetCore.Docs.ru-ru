@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc, seodec18
 ms.date: 07/22/2019
 uid: data/ef-rp/intro
-ms.openlocfilehash: 5e81b58ebec2d9a50784facd5425f0e7c3524e10
-ms.sourcegitcommit: 257cc3fe8c1d61341aa3b07e5bc0fa3d1c1c1d1c
+ms.openlocfilehash: c5347049151aed90f453f0ead2fc06649d9cf949
+ms.sourcegitcommit: bdaee0e8c657fe7546fd6b7990db9c03c2af04df
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69583441"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69908404"
 ---
 # <a name="razor-pages-with-entity-framework-core-in-aspnet-core---tutorial-1-of-8"></a>Razor Pages с Entity Framework Core в ASP.NET Core: учебник 1 из 8
 
@@ -378,7 +378,11 @@ ASP.NET Core поддерживает [внедрение зависимосте
 
 # <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-* Запустите приложение, удалите все созданные ранее записи учащихся и остановите приложение.
+Завершите работу приложения, если оно запущено, и выполните следующую команду в **консоли диспетчера пакетов** (PMC):
+
+```powershell
+Drop-Database
+```
 
 # <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code.](#tab/visual-studio-code)
 
@@ -700,7 +704,19 @@ EF Core создает пустую базу данных. В этом разд�
 
 [!code-csharp[](intro/samples/cu21/Program.cs?name=snippet2&highlight=14-15)]
 
-Удалите все записи учащихся и перезапустите приложение. Если инициализация базы данных не была выполнена, добавьте точку останова в метод `Initialize` для диагностики проблем.
+# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
+
+Завершите работу приложения, если оно запущено, и выполните следующую команду в **консоли диспетчера пакетов** (PMC):
+
+```powershell
+Drop-Database
+```
+
+# <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code.](#tab/visual-studio-code)
+
+* Остановите приложение, если оно выполняется, и удалите файл *CU.db*.
+
+---
 
 ## <a name="view-the-db"></a>Просмотр базы данных
 

@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 07/22/2019
 uid: data/ef-rp/concurrency
-ms.openlocfilehash: df3cc9eb3d0c1748ca9cd194ee58e4614bba24d5
-ms.sourcegitcommit: 257cc3fe8c1d61341aa3b07e5bc0fa3d1c1c1d1c
+ms.openlocfilehash: da57633c345ec087b1a4f24ddc7771e7a2d04720
+ms.sourcegitcommit: 0774a61a3a6c1412a7da0e7d932dc60c506441fc
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69583406"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70059080"
 ---
 # <a name="razor-pages-with-ef-core-in-aspnet-core---concurrency---8-of-8"></a>Razor Pages с EF Core в ASP.NET Core — параллелизм — 8 из 8
 
@@ -234,7 +234,7 @@ modelBuilder.Entity<Department>()
 
 Средство формирования шаблонов создало столбец `RowVersion` для страницы индекса, однако это поле не будет отображаться в рабочем приложении. В этом учебнике отображается последний байт `RowVersion` для демонстрации работы параллелизма. Этот последний байт необязательно является уникальным.
 
-Обновите страницу индекса:
+Обновите страницу *Pages\Departments\Index.cshtml*:
 
 * Замените Index на Departments.
 * Измените код, содержащий `RowVersion`, чтобы отображался только последний байт массива байтов.

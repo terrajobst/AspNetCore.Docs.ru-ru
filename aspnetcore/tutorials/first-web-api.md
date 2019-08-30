@@ -4,14 +4,14 @@ author: rick-anderson
 description: Узнайте, как создать веб-API с помощью ASP.NET Core.
 ms.author: riande
 ms.custom: mvc
-ms.date: 08/14/2019
+ms.date: 08/27/2019
 uid: tutorials/first-web-api
-ms.openlocfilehash: 99985e9fb1134c2ba808434f8d24c4a768773268
-ms.sourcegitcommit: 476ea5ad86a680b7b017c6f32098acd3414c0f6c
+ms.openlocfilehash: 25bfccb136d875b454034bd011828c9f3b6cd3d8
+ms.sourcegitcommit: de17150e5ec7507d7114dde0e5dbc2e45a66ef53
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/14/2019
-ms.locfileid: "69022597"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70113287"
 ---
 # <a name="tutorial-create-a-web-api-with-aspnet-core"></a>Учебник. Создание веб-API с помощью ASP.NET Core
 
@@ -462,9 +462,9 @@ dotnet aspnet-codegenerator controller -name TodoItemsController -async -api -m 
 * Укажите URI удаляемого объекта, например `https://localhost:5001/api/TodoItems/1`
 * Нажмите кнопку **Отправить**
 
-## <a name="call-the-api-from-jquery"></a>Вызов API из jQuery
+## <a name="call-the-web-api-with-javascript"></a>Вызов веб-API с помощью JavaScript
 
-Пошаговые инструкции см. в [руководстве Вызов веб-API ASP.NET Core с помощью jQuery](xref:tutorials/web-api-jquery).
+Пошаговые инструкции см. в [руководстве Вызовите веб-API ASP.NET Core с помощью JavaScript](xref:tutorials/web-api-javascript).
 
 ::: moniker-end
 
@@ -480,9 +480,10 @@ dotnet aspnet-codegenerator controller -name TodoItemsController -async -api -m 
 > * Настройка маршрутизации и путей URL.
 > * Указание возвращаемых значений.
 > * Вызов веб-API с помощью Postman.
-> * Вызов веб-API с помощью jQuery.
+> * Вызовите веб-API с помощью JavaScript.
 
 В конечном итоге вы получите веб-API, обеспечивающий управление элементами списка дел, хранящимися в реляционной базе данных.
+
 ## <a name="overview"></a>Обзор
 
 В этом руководстве создается следующий API-интерфейс:
@@ -737,7 +738,6 @@ dotnet aspnet-codegenerator controller -name TodoItemsController -async -api -m 
 * Если запрошенному идентификатору не соответствует ни один элемент, метод возвращает ошибку 404 ([Не найдено](/dotnet/api/microsoft.aspnetcore.mvc.controllerbase.notfound)).
 * В противном случае метод возвращает код 200 с телом ответа JSON. При возвращении `item` возвращается ответ HTTP 200.
 
-
 ## <a name="test-the-gettodoitems-method"></a>Тестирование метода GetTodoItems
 
 В этом учебнике для тестирования веб-API используется Postman.
@@ -863,9 +863,9 @@ dotnet aspnet-codegenerator controller -name TodoItemsController -async -api -m 
 
 В этом примере приложения вы можете удалить все элементы. Однако в случае удаления последнего элемента в момент следующего вызова API конструктор класса модели создаст новый элемент.
 
-## <a name="call-the-api-with-jquery"></a>Вызов API с помощью jQuery
+## <a name="call-the-web-api-with-javascript"></a>Вызов веб-API с помощью JavaScript
 
-В этом разделе добавляется HTML-страница, которая использует jQuery для вызова веб-API. jQuery запускает запрос и вносит на страницу подробные сведения из ответа API.
+В этом разделе описано, как добавить HTML-страницу, которая использует JavaScript для вызова веб-API. Fetch API инициирует запрос. JavaScript изменяет страницу, используя сведения из ответа API.
 
 Настройте приложение для [обслуживания статических файлов](/dotnet/api/microsoft.aspnetcore.builder.staticfileextensions.usestaticfiles#Microsoft_AspNetCore_Builder_StaticFileExtensions_UseStaticFiles_Microsoft_AspNetCore_Builder_IApplicationBuilder_) и [включения сопоставления файлов по умолчанию](/dotnet/api/microsoft.aspnetcore.builder.defaultfilesextensions.usedefaultfiles#Microsoft_AspNetCore_Builder_DefaultFilesExtensions_UseDefaultFiles_Microsoft_AspNetCore_Builder_IApplicationBuilder_), обновив *Startup.cs* следующим выделенным кодом:
 
@@ -886,19 +886,17 @@ dotnet aspnet-codegenerator controller -name TodoItemsController -async -api -m 
 * Откройте файл *Properties\launchSettings.json*.
 * Удалите свойство `launchUrl`, чтобы приложение открылось через *index.html* &mdash; файл проекта по умолчанию.
 
-Для получения jQuery можно использовать следующие способы. В предыдущем фрагменте кода библиотека загружается из CDN.
-
-В этом примере вызываются все методы CRUD в API. Ниже приводится пояснение вызовов API.
+В этом примере вызываются все методы CRUD в веб-API. Ниже приводится пояснение вызовов API.
 
 ### <a name="get-a-list-of-to-do-items"></a>Получение списка элементов задач
 
-Функция jQuery [ajax](https://api.jquery.com/jquery.ajax/) отправляет запрос `GET` к API, который возвращает JSON, представляющий массив элементов списка дел. В случае успешного запроса используется функция обратного вызова `success`. При обратном вызове в модель DOM вносятся данные о задачах.
+Fetch отправляет запрос HTTP GET к веб-API, который возвращает ответ JSON, представляющий массив элементов списка дел. В случае успешного запроса используется функция обратного вызова `success`. При обратном вызове в модель DOM вносятся данные о задачах.
 
 [!code-javascript[](first-web-api/samples/2.2/TodoApi/wwwroot/site.js?name=snippet_GetData)]
 
 ### <a name="add-a-to-do-item"></a>Добавление элемента задачи
 
-Функция [ajax](https://api.jquery.com/jquery.ajax/) отправляет запрос `POST` с элементом списка дел в теле запроса. Для параметров `accepts` и `contentType` указывается `application/json`, чтобы указать тип носителя при получении и отправке. Элемент списка дел преобразуется в JSON с помощью [JSON.stringify](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/JSON/stringify). Если интерфейс API возвращает код состояния успешного выполнения, вызывается функция `getData` для обновления HTML-таблицы.
+Fetch отправляет запрос HTTP POST с элементом списка дел в тексте запроса. Для параметров `accepts` и `contentType` указывается `application/json`, чтобы указать тип носителя при получении и отправке. Элемент списка дел преобразуется в JSON с помощью [JSON.stringify](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/JSON/stringify). Если интерфейс API возвращает код состояния успешного выполнения, вызывается функция `getData` для обновления HTML-таблицы.
 
 [!code-javascript[](first-web-api/samples/2.2/TodoApi/wwwroot/site.js?name=snippet_AddItem)]
 
