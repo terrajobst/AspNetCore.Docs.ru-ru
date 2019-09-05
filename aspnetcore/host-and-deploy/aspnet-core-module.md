@@ -8,10 +8,10 @@ ms.custom: mvc
 ms.date: 07/01/2019
 uid: host-and-deploy/aspnet-core-module
 ms.openlocfilehash: 4a360023cc7fab2f066d490f7f368fc35815703a
-ms.sourcegitcommit: eb3e51d58dd713eefc242148f45bd9486be3a78a
+ms.sourcegitcommit: 4b00e77f9984ce76356e829cfe7f75f0f61a7a8f
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/02/2019
+ms.lasthandoff: 09/02/2019
 ms.locfileid: "67500454"
 ---
 # <a name="aspnet-core-module"></a>Модуль ASP.NET Core
@@ -382,7 +382,7 @@ public void Configure(IApplicationBuilder app)
 > [!WARNING]
 > Установите только переменную среды `ASPNETCORE_ENVIRONMENT` для `Development` на серверах промежуточных процессов и тестирования, которые недоступны для ненадежных сетей, таких как Интернет.
 
-## <a name="appofflinehtm"></a>App_offline.htm
+## <a name="app_offlinehtm"></a>App_offline.htm
 
 Если в корневом каталоге приложения обнаружен файл с именем *app_offline.htm*, модуль ASP.NET Core пытается корректно закрыть приложение и прекратить обработку входящих запросов. Если приложение по-прежнему выполняется через количество секунд, определенное атрибутом `shutdownTimeLimit`, модуль ASP.NET Core завершает выполняющийся процесс.
 

@@ -5,12 +5,12 @@ description: Узнайте, как использовать общие маке
 ms.author: riande
 ms.date: 07/30/2019
 uid: mvc/views/layout
-ms.openlocfilehash: 6bd9dfc65c026ee524277aaaa21333d299c8981e
-ms.sourcegitcommit: 7001657c00358b082734ba4273693b9b3ed35d2a
+ms.openlocfilehash: 9a7b8003b24329f6e9cbd349ee47f6844b7c5f6d
+ms.sourcegitcommit: e6bd2bbe5683e9a7dbbc2f2eab644986e6dc8a87
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68670021"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70238029"
 ---
 # <a name="layout-in-aspnet-core"></a>Макет в ASP.NET Core
 
@@ -62,7 +62,7 @@ ms.locfileid: "68670021"
 По умолчанию каждый макет должен вызывать метод `RenderBody`. При каждом вызове `RenderBody` содержимое представления будет преобразовываться для просмотра.
 
 <a name="layout-sections-label"></a>
-
+<!-- https://stackoverflow.com/questions/23327578 -->
 ### <a name="sections"></a>Разделы
 
 Макет может при необходимости ссылаться на один или несколько *разделов*, вызывая метод `RenderSection`. Разделы — это средство для упорядочения размещения определенных элементов на странице. В каждом вызове `RenderSection` можно указывать, является ли раздел обязательным или необязательным:
