@@ -5,14 +5,14 @@ description: Узнайте, как совместно использовать 
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 08/14/2019
+ms.date: 09/05/2019
 uid: security/cookie-sharing
-ms.openlocfilehash: 1650afce5c371d0830bb207618b9c1495f0ce587
-ms.sourcegitcommit: 476ea5ad86a680b7b017c6f32098acd3414c0f6c
+ms.openlocfilehash: 9b5bee9fb588ef04efd50aa4a5afc3e53da1b123
+ms.sourcegitcommit: 116bfaeab72122fa7d586cdb2e5b8f456a2dc92a
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/14/2019
-ms.locfileid: "69022392"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70384760"
 ---
 # <a name="share-authentication-cookies-among-aspnet-apps"></a>Совместное использование файлов cookie проверки подлинности между приложениями ASP.NET
 
@@ -31,10 +31,10 @@ ms.locfileid: "69022392"
   * В .NET Framework приложениях по промежуточного слоя для <xref:Microsoft.AspNetCore.DataProtection.DataProtectionProvider>проверки подлинности файлов использует реализацию. `DataProtectionProvider`предоставляет службы защиты данных для шифрования и расшифровки полезных данных cookie проверки подлинности. `DataProtectionProvider` Экземпляр изолирован от системы защиты данных, используемой другими частями приложения. [Датапротектионпровидер. Create (System. IO. DirectoryInfo, Action\<идатапротектионбуилдер >)](xref:Microsoft.AspNetCore.DataProtection.DataProtectionProvider.Create*) принимает, <xref:System.IO.DirectoryInfo> чтобы указать расположение для хранилища ключей защиты данных.
 * `DataProtectionProvider`требуется пакет NuGet [Microsoft. AspNetCore. MDAC. Extensions](https://www.nuget.org/packages/Microsoft.AspNetCore.DataProtection.Extensions/) :
   * В ASP.NET Core приложения 2. x сослаться на [Microsoft. AspNetCore. app метапакет](xref:fundamentals/metapackage-app).
-  * В .NET Framework приложения добавьте ссылку на пакет в [Microsoft. AspNetCore. "Защита](https://www.nuget.org/packages/Microsoft.AspNetCore.DataProtection.Extensions/). Extensions.
+  * В .NET Framework приложения добавьте ссылку на пакет в [Microsoft. AspNetCore. "Защита. Extensions](https://www.nuget.org/packages/Microsoft.AspNetCore.DataProtection.Extensions/).
 * <xref:Microsoft.AspNetCore.DataProtection.DataProtectionBuilderExtensions.SetApplicationName*>Задает общее имя приложения.
 
-## <a name="share-authentication-cookies-among-aspnet-core-apps"></a>Совместное использование файлов cookie проверки подлинности в приложениях ASP.NET Core
+## <a name="share-authentication-cookies-with-aspnet-core-identity"></a>Совместное использование файлов cookie проверки подлинности с удостоверением ASP.NET Core
 
 При использовании удостоверения ASP.NET Core:
 
@@ -46,7 +46,7 @@ ms.locfileid: "69022392"
 
 ```csharp
 services.AddDataProtection()
-    .PersistKeysToFileSystem({PATH TO COMMON KEY RING FOLDER})
+    .PersistKeysToFileSystem("{PATH TO COMMON KEY RING FOLDER}")
     .SetApplicationName("SharedCookieApp");
 
 services.ConfigureApplicationCookie(options => {
@@ -54,11 +54,13 @@ services.ConfigureApplicationCookie(options => {
 });
 ```
 
+## <a name="share-authentication-cookies-without-aspnet-core-identity"></a>Совместное использование файлов cookie проверки подлинности без удостоверения ASP.NET Core
+
 При использовании файлов cookie напрямую без ASP.NET Core удостоверения настройте защиту данных и проверку подлинности в `Startup.ConfigureServices`. В следующем примере тип проверки подлинности имеет значение `Identity.Application`:
 
 ```csharp
 services.AddDataProtection()
-    .PersistKeysToFileSystem({PATH TO COMMON KEY RING FOLDER})
+    .PersistKeysToFileSystem("{PATH TO COMMON KEY RING FOLDER}")
     .SetApplicationName("SharedCookieApp");
 
 services.AddAuthentication("Identity.Application")
@@ -67,6 +69,23 @@ services.AddAuthentication("Identity.Application")
         options.Cookie.Name = ".AspNet.SharedCookie";
     });
 ```
+
+## <a name="share-cookies-across-different-base-paths"></a>Совместное использование файлов cookie в разных базовых путях
+
+Файл cookie для проверки подлинности использует [HttpRequest. пасбасе](xref:Microsoft.AspNetCore.Http.HttpRequest.PathBase) в качестве [файла cookie. Path](xref:Microsoft.AspNetCore.Http.CookieBuilder.Path)по умолчанию. Если файл cookie приложения должен совместно использоваться в разных базовых путях, `Path` необходимо переопределить:
+
+```csharp
+services.AddDataProtection()
+    .PersistKeysToFileSystem("{PATH TO COMMON KEY RING FOLDER}")
+    .SetApplicationName("SharedCookieApp");
+
+services.ConfigureApplicationCookie(options => {
+    options.Cookie.Name = ".AspNet.SharedCookie";
+    options.Cookie.Path = "/";
+});
+```
+
+## <a name="share-cookies-across-subdomains"></a>Совместное использование файлов cookie в поддоменах
 
 При размещении приложений, которые совместно используют файлы cookie в поддоменах, укажите общий домен в свойстве [cookie. domain](xref:Microsoft.AspNetCore.Http.CookieBuilder.Domain) . Для совместного использования файлов cookie `contoso.com`в приложениях в `first_subdomain.contoso.com` , `second_subdomain.contoso.com`например `.contoso.com`и, `Cookie.Domain` укажите:
 
@@ -91,7 +110,7 @@ services.AddDataProtection()
 
 Приложение ASP.NET 4. x должно быть предназначено для .NET Framework 4.5.1 или более поздней версии. В противном случае не удается установить необходимые пакеты NuGet.
 
-Чтобы предоставить общий доступ к файлам cookie проверки подлинности между приложением ASP.NET 4. x и ASP.NET Core приложением, настройте ASP.NET Core приложение, как указано в разделе [общий доступ к файлам cookie проверки подлинности между приложениями ASP.NET Core](#share-authentication-cookies-among-aspnet-core-apps) , а затем настройте приложение ASP.NET 4. x следующим образом.
+Чтобы предоставить общий доступ к файлам cookie проверки подлинности между приложением ASP.NET 4. x и ASP.NET Core приложением, настройте ASP.NET Core приложение, как указано в разделе [общий доступ к файлам cookie проверки подлинности между приложениями ASP.NET Core](#share-authentication-cookies-with-aspnet-core-identity) , а затем настройте приложение ASP.NET 4. x следующим образом.
 
 Убедитесь, что пакеты приложения обновлены до последних выпусков. Установите пакет [Microsoft. Owin. Security. Interop](https://www.nuget.org/packages/Microsoft.Owin.Security.Interop/) в каждое приложение ASP.NET 4. x.
 
@@ -123,7 +142,7 @@ app.UseCookieAuthentication(new CookieAuthenticationOptions
     },
     TicketDataFormat = new AspNetTicketDataFormat(
         new DataProtectorShim(
-            DataProtectionProvider.Create({PATH TO COMMON KEY RING FOLDER},
+            DataProtectionProvider.Create("{PATH TO COMMON KEY RING FOLDER}",
                 (builder) => { builder.SetApplicationName("SharedCookieApp"); })
             .CreateProtector(
                 "Microsoft.AspNetCore.Authentication.Cookies." +
