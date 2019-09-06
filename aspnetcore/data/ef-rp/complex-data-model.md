@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 07/22/2019
 uid: data/ef-rp/complex-data-model
-ms.openlocfilehash: 34b977f70f3e7e58e4ab6fcf3d8f69800896a65d
-ms.sourcegitcommit: 0774a61a3a6c1412a7da0e7d932dc60c506441fc
+ms.openlocfilehash: ab29cf687c80551d275cae69f28b7576016bfff6
+ms.sourcegitcommit: e6bd2bbe5683e9a7dbbc2f2eab644986e6dc8a87
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70059122"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70238119"
 ---
 # <a name="razor-pages-with-ef-core-in-aspnet-core---data-model---5-of-8"></a>Razor Pages с EF Core в ASP.NET Core — модель данных— 5 из 8
 
@@ -390,7 +390,7 @@ public ICollection<Course> Courses { get; set; }
 
 По соглашению EF Core разрешает каскадное удаление для внешних ключей, не допускающих значение null, и связей "многие ко многим". Это поведение по умолчанию может привести к циклическим правилам каскадного удаления. Такие правила вызывают исключение при добавлении миграции.
 
-Например, если свойство `Department.InstructorID` было определено как не допускающее значения NULL, EF Core настроит правило каскадного удаления. В этом случае кафедра будет удалена, если будет удален преподаватель, назначенный ее администратором. В такой ситуации правило ограничения будет более целесообразным. Приведенный ниже текучий API задает правило ограничения и отключает правило каскадного удаления.
+Например, если свойство `Department.InstructorID` было определено как не допускающее значения NULL, EF Core настроит правило каскадного удаления. В этом случае кафедра будет удалена, если будет удален преподаватель, назначенный ее администратором. В такой ситуации правило ограничения будет более целесообразным. Приведенный ниже [текучий API](#fluent-api-alternative-to-attributes) задает правило ограничения и отключает правило каскадного удаления.
 
   ```csharp
   modelBuilder.Entity<Department>()
@@ -1091,7 +1091,7 @@ public ICollection<Course> Courses { get; set; }
 
 * EF Core настраивает правило каскадного удаления для удаления кафедры при удалении преподавателя.
 * Удаление кафедры при удалении преподавателя не является запланированным поведением.
-* Следующий текучий API будет задать правило ограничения вместо каскада.
+* Следующий [текучий API](#fluent-api-alternative-to-attributes) будет задавать правило ограничения вместо каскада.
 
    ```csharp
    modelBuilder.Entity<Department>()

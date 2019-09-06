@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 8/7/2019
 uid: fundamentals/startup
-ms.openlocfilehash: 8866ee9210a91754d8050d0b91ff52c3d3fe0836
-ms.sourcegitcommit: 8835b6777682da6fb3becf9f9121c03f89dc7614
+ms.openlocfilehash: 9407de4ee91ba43b2c95fa98f0cf479bf8539cab
+ms.sourcegitcommit: 8b36f75b8931ae3f656e2a8e63572080adc78513
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69975436"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70310500"
 ---
 # <a name="app-startup-in-aspnet-core"></a>Запуск приложения в ASP.NET Core
 
@@ -80,15 +80,11 @@ ms.locfileid: "69975436"
 
 [!code-csharp[](startup/sample_snapshot/Startup2.cs?highlight=7-8)]
 
-::: moniker-end
-Альтернативой внедрению `IWebHostEnvironment` является использование подхода на основе соглашений.
-::: moniker range=">= aspnetcore-3.0"
+Большинство служб недоступны, пока не будет вызван метод `Configure`.
 
 ::: moniker-end
 
-::: moniker range="< aspnetcore-3.0"
-Альтернативой внедрению `IHostingEnvironment` является использование подхода на основе соглашений.
-::: moniker-end
+### <a name="multiple-startup"></a>Несколько запусков
 
 Когда приложение определяет отдельные классы `Startup` для различных сред (например, `StartupDevelopment`), подходящий класс `Startup` выбирается во время выполнения. Класс, у которого суффикс имени соответствует текущей среде, получает приоритет. Если приложение выполняется в среде разработки и включает в себя оба класса — `Startup` и `StartupDevelopment`, используется класс `StartupDevelopment`. Дополнительные сведения см. в статье [Использование нескольких сред](xref:fundamentals/environments#environment-based-startup-class-and-methods).
 
