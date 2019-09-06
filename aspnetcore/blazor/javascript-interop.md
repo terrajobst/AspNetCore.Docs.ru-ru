@@ -7,12 +7,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 08/13/2019
 uid: blazor/javascript-interop
-ms.openlocfilehash: 00ea14ca95c328b5f8779785a92aa0720a96eb05
-ms.sourcegitcommit: 7a46973998623aead757ad386fe33602b1658793
+ms.openlocfilehash: e578a8ad1484a2ef93bdc7470985937c4f28b7ed
+ms.sourcegitcommit: 8b36f75b8931ae3f656e2a8e63572080adc78513
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69487564"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70310458"
 ---
 # <a name="aspnet-core-blazor-javascript-interop"></a>ASP.NET Core взаимодействие JavaScript Блазор
 
@@ -36,7 +36,7 @@ ms.locfileid: "69487564"
 
 Следующий пример основан на [текстдекодер](https://developer.mozilla.org/docs/Web/API/TextDecoder), экспериментальном декодере на основе JavaScript. В примере показано, как вызвать функцию JavaScript из C# метода. Функция JavaScript принимает массив байтов из C# метода, декодирует массив и возвращает текст компоненту для вывода.
 
-Внутри элемента wwwroot/index.HTML ( блазор на стороне клиента) или Pages */_Host. cshtml* (блазор на стороне сервера) Укажите функцию, которая использует `TextDecoder` для декодирования переданного массива: `<head>`
+Внутри элемента wwwroot/index.HTML (блазор на стороне клиента) или *pages/_Host. cshtml* (блазор на стороне сервера) Укажите функцию, которая использует `TextDecoder` для декодирования переданного массива: `<head>`
 
 [!code-html[](javascript-interop/samples_snapshot/index-script.html)]
 
@@ -125,12 +125,11 @@ ms.locfileid: "69487564"
 
 * `@ref` Добавьте атрибут к элементу HTML.
 * Определите поле типа `ElementReference` , имя которого соответствует значению `@ref` атрибута.
-* `@ref:suppressField` Укажите параметр, который подавляет создание резервных полей. Дополнительные сведения см. [в разделе Удаление поддержки автоматического резервного поля @ref для в 3.0.0-preview9](https://github.com/aspnet/Announcements/issues/381).
 
 В следующем примере показана запись ссылки на `username` `<input>` элемент:
 
 ```cshtml
-<input @ref="username" @ref:suppressField ... />
+<input @ref="username" ... />
 
 @code {
     ElementReference username;
@@ -156,22 +155,7 @@ window.exampleJsFunctions = {
 
 Используйте `IJSRuntime.InvokeAsync<T>` и вызовите `exampleJsFunctions.focusElement` с `ElementReference` помощью, чтобы сосредоточиться на элементе:
 
-```cshtml
-@inject IJSRuntime JSRuntime
-
-<input @ref="username" @ref:suppressField />
-<button @onclick="SetFocus">Set focus on username</button>
-
-@code {
-    private ElementReference username;
-
-    public async void SetFocus()
-    {
-        await JSRuntime.InvokeAsync<object>(
-                "exampleJsFunctions.focusElement", username);
-    }
-}
-```
+[!code-cshtml[](javascript-interop/samples_snapshot/component1.razor?highlight=1,3,11-12)]
 
 Чтобы использовать метод расширения для фокусировки элемента, создайте статический метод расширения, который получает `IJSRuntime` экземпляр:
 
@@ -185,71 +169,10 @@ public static Task Focus(this ElementReference elementRef, IJSRuntime jsRuntime)
 
 Метод вызывается непосредственно для объекта. В следующем примере предполагается, что `Focus` статический метод доступен `JsInteropClasses` из пространства имен:
 
-```cshtml
-@inject IJSRuntime JSRuntime
-@using JsInteropClasses
-
-<input @ref="username" @ref:suppressField />
-<button @onclick="SetFocus">Set focus on username</button>
-
-@code {
-    private ElementReference username;
-
-    public async Task SetFocus()
-    {
-        await username.Focus(JSRuntime);
-    }
-}
-```
+[!code-cshtml[](javascript-interop/samples_snapshot/component2.razor?highlight=1,4,12)]
 
 > [!IMPORTANT]
 > `username` Переменная заполняется только после подготовки компонента к просмотру. Если незаполненный `ElementReference` объект передается в код JavaScript, код JavaScript получает `null`значение. Для управления ссылками на элементы после завершения отрисовки компонента (для установки начального фокуса на элемент) используйте `OnAfterRenderAsync` [методы жизненного цикла компонента](xref:blazor/components#lifecycle-methods)или. `OnAfterRender`
-
-<!-- HOLD https://github.com/aspnet/AspNetCore.Docs/pull/13818
-Capture a reference to an HTML element in a component by adding an `@ref` attribute to the HTML element. The following example shows capturing a reference to the `username` `<input>` element:
-
-```cshtml
-<input @ref="username" ... />
-```
-
-> [!NOTE]
-> Do **not** use captured element references as a way of populating or manipulating the DOM when Blazor interacts with the elements referenced. Doing so may interfere with the declarative rendering model.
-
-As far as .NET code is concerned, an `ElementReference` is an opaque handle. The *only* thing you can do with `ElementReference` is pass it through to JavaScript code via JavaScript interop. When you do so, the JavaScript-side code receives an `HTMLElement` instance, which it can use with normal DOM APIs.
-
-For example, the following code defines a .NET extension method that enables setting the focus on an element:
-
-*exampleJsInterop.js*:
-
-```javascript
-window.exampleJsFunctions = {
-  focusElement : function (element) {
-    element.focus();
-  }
-}
-```
-
-Use `IJSRuntime.InvokeAsync<T>` and call `exampleJsFunctions.focusElement` with an `ElementReference` to focus an element:
-
-[!code-cshtml[](javascript-interop/samples_snapshot/component1.razor?highlight=1,3,9-10)]
-
-To use an extension method to focus an element, create a static extension method that receives the `IJSRuntime` instance:
-
-```csharp
-public static Task Focus(this ElementReference elementRef, IJSRuntime jsRuntime)
-{
-    return jsRuntime.InvokeAsync<object>(
-        "exampleJsFunctions.focusElement", elementRef);
-}
-```
-
-The method is called directly on the object. The following example assumes that the static `Focus` method is available from the `JsInteropClasses` namespace:
-
-[!code-cshtml[](javascript-interop/samples_snapshot/component2.razor?highlight=1,4,10)]
-
-> [!IMPORTANT]
-> The `username` variable is only populated after the component is rendered. If an unpopulated `ElementReference` is passed to JavaScript code, the JavaScript code receives a value of `null`. To manipulate element references after the component has finished rendering (to set the initial focus on an element) use the `OnAfterRenderAsync` or `OnAfterRender` [component lifecycle methods](xref:blazor/components#lifecycle-methods).
--->
 
 ## <a name="invoke-net-methods-from-javascript-functions"></a>Вызов методов .NET из функций JavaScript
 
@@ -283,7 +206,7 @@ Array(4) [ 1, 2, 3, 4 ]
 
 Кроме того, можно вызывать методы экземпляра .NET из JavaScript. Вызов метода экземпляра .NET из JavaScript:
 
-* Передайте экземпляр .NET в JavaScript, заключив его в `DotNetObjectRef` экземпляр. Экземпляр .NET передается по ссылке на JavaScript.
+* Передайте экземпляр .NET в JavaScript, заключив его в `DotNetObjectReference` экземпляр. Экземпляр .NET передается по ссылке на JavaScript.
 * Вызов методов экземпляра .NET для экземпляра с помощью `invokeMethod` функций или. `invokeMethodAsync` Экземпляр .NET можно также передать в качестве аргумента при вызове других методов .NET из JavaScript.
 
 > [!NOTE]

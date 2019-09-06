@@ -5,14 +5,14 @@ description: Узнайте, как создавать и использоват
 monikerRange: '>= aspnetcore-3.0'
 ms.author: riande
 ms.custom: mvc
-ms.date: 08/13/2019
+ms.date: 09/04/2019
 uid: blazor/components
-ms.openlocfilehash: 07e9153ccfdc78d1da57b815d33220f7fa597cc7
-ms.sourcegitcommit: 4b00e77f9984ce76356e829cfe7f75f0f61a7a8f
+ms.openlocfilehash: ce9da14bbe19cbee960d215f6167a0e760bd607a
+ms.sourcegitcommit: 8b36f75b8931ae3f656e2a8e63572080adc78513
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70145726"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70310364"
 ---
 # <a name="create-and-use-aspnet-core-razor-components"></a>Создание и использование компонентов ASP.NET Core Razor
 
@@ -72,8 +72,8 @@ ms.locfileid: "70145726"
 Чтобы отобразить компонент из страницы или представления, используйте `RenderComponentAsync<TComponent>` вспомогательный метод HTML:
 
 ```cshtml
-<div id="Counter">
-    @(await Html.RenderComponentAsync<Counter>(new { IncrementAmount = 10 }))
+<div id="MyComponent">
+    @(await Html.RenderComponentAsync<MyComponent>(RenderMode.ServerPrerendered))
 </div>
 ```
 
@@ -420,23 +420,23 @@ ms.locfileid: "70145726"
 
 Для некоторых событий разрешены типы аргументов событий. Если доступ к одному из этих типов событий не нужен, в вызове метода это не требуется.
 
-Поддерживаемые [уиевентаргс](https://github.com/aspnet/AspNetCore/blob/release/3.0-preview8/src/Components/Components/src/UIEventArgs.cs) показаны в следующей таблице.
+Поддерживаемые [EventArgs](https://github.com/aspnet/AspNetCore/tree/release/3.0-preview9/src/Components/Web/src/Web) показаны в следующей таблице.
 
 | событие | Класс |
 | ----- | ----- |
-| буфер обмена | `UIClipboardEventArgs` |
-| Переместить  | `UIDragEventArgs`используется для хранения перетаскиваемых данных во время операции перетаскивания и может содержать один или несколько `UIDataTransferItem`. &ndash; `DataTransfer` `UIDataTransferItem`представляет один элемент данных перетаскивания. |
-| Error | `UIErrorEventArgs` |
-| Фокус | `UIFocusEventArgs`Не включает поддержку для `relatedTarget`. &ndash; |
-| Изменение`<input>` | `UIChangeEventArgs` |
-| Клавиатура | `UIKeyboardEventArgs` |
-| Мышь | `UIMouseEventArgs` |
-| Указатель мыши | `UIPointerEventArgs` |
-| Колесо мыши | `UIWheelEventArgs` |
-| Ход выполнения | `UIProgressEventArgs` |
-| Сенсорные технологии | `UITouchEventArgs`&ndash; представляетоднуточкуконтактанаустройствес`UITouchPoint` сенсорным вводом. |
+| буфер обмена        | `ClipboardEventArgs` |
+| Переместить             | `DragEventArgs`&ndash; и`DataTransferItem`содержат перетаскиваемые данные элемента. `DataTransfer` |
+| Error            | `ErrorEventArgs` |
+| Фокус            | `FocusEventArgs`Не включает поддержку для `relatedTarget`. &ndash; |
+| Изменение`<input>` | `ChangeEventArgs` |
+| Клавиатура         | `KeyboardEventArgs` |
+| Мышь            | `MouseEventArgs` |
+| Указатель мыши    | `PointerEventArgs` |
+| Колесо мыши      | `WheelEventArgs` |
+| Ход выполнения         | `ProgressEventArgs` |
+| Сенсорные технологии            | `TouchEventArgs`&ndash; представляетоднуточкуконтактанаустройствес`TouchPoint` сенсорным вводом. |
 
-Сведения о свойствах и поведении событий, посвященных событиям в предыдущей таблице, см. в разделе [классы EventArgs в эталонном источнике (ASPNET/AspNetCore Release/3.0-preview9 branch)](https://github.com/aspnet/AspNetCore/tree/release/3.0-preview9/src/Components/Web/src).
+Сведения о свойствах и поведении событий, посвященных событиям в предыдущей таблице, см. в разделе [классы EventArgs в эталонном источнике (ASPNET/AspNetCore Release/3.0-preview9 branch)](https://github.com/aspnet/AspNetCore/tree/release/3.0-preview9/src/Components/Web/src/Web).
 
 ### <a name="lambda-expressions"></a>Лямбда-выражения
 
@@ -523,10 +523,9 @@ await callback.InvokeAsync(arg);
 
 * [@ref](xref:mvc/views/razor#ref) Добавьте атрибут к дочернему компоненту.
 * Определите поле с тем же типом, что и у дочернего компонента.
-* `@ref:suppressField` Укажите параметр, который подавляет создание резервных полей. Дополнительные сведения см. [в разделе Удаление поддержки автоматического резервного поля @ref для в 3.0.0-preview9](https://github.com/aspnet/Announcements/issues/381).
 
 ```cshtml
-<MyLoginDialog @ref="loginDialog" @ref:suppressField ... />
+<MyLoginDialog @ref="loginDialog" ... />
 
 @code {
     private MyLoginDialog loginDialog;
@@ -543,34 +542,67 @@ await callback.InvokeAsync(arg);
 > [!IMPORTANT]
 > Переменная заполняется только после подготовки компонента, и ее выходные данные `MyLoginDialog` включают элемент. `loginDialog` До этого момента нет никаких ссылок на. Чтобы управлять ссылками на компоненты после завершения подготовки компонента к просмотру `OnAfterRenderAsync` , `OnAfterRender` используйте методы или.
 
-<!-- HOLD https://github.com/aspnet/AspNetCore.Docs/pull/13818
-Component references provide a way to reference a component instance so that you can issue commands to that instance, such as `Show` or `Reset`.
-
-The Razor compiler automatically generates a backing field for element and component references when using [@ref](xref:mvc/views/razor#ref). In the following example, there's no need to create a `myLoginDialog` field for the `LoginDialog` component:
-
-```cshtml
-<LoginDialog @ref="myLoginDialog" ... />
-
-@code {
-    private void OnSomething()
-    {
-        myLoginDialog.Show();
-    }
-}
-```
-
-When the component is rendered, the generated `myLoginDialog` field is populated with the `LoginDialog` component instance. You can then invoke .NET methods on the component instance.
-
-In some cases, a backing field is required. For example, declare a backing field when referencing generic components. To suppress backing field generation, specify the `@ref:suppressField` parameter.
-
-> [!IMPORTANT]
-> The generated `myLoginDialog` variable is only populated after the component is rendered and its output includes the `LoginDialog` element. Until that point, there's nothing to reference. To manipulate components references after the component has finished rendering, use the `OnAfterRenderAsync` or `OnAfterRender` methods.
--->
-
 При захвате ссылок на компоненты используется аналогичный синтаксис для [записи ссылок на элементы](xref:blazor/javascript-interop#capture-references-to-elements), но это не функция [взаимодействия JavaScript](xref:blazor/javascript-interop) . Ссылки на компоненты не передаются&mdash;в код JavaScript, они используются только в коде .NET.
 
 > [!NOTE]
 > **Не** используйте ссылки на компоненты для изменения состояния дочерних компонентов. Вместо этого используйте обычные декларативные параметры для передачи данных дочерним компонентам. Использование обычных декларативных параметров приводит к тому, что дочерние компоненты автоматически визуализируются в нужное время.
+
+## <a name="invoke-component-methods-externally-to-update-state"></a>Вызывать методы компонента извне для обновления состояния
+
+Блазор использует `SynchronizationContext` для принудительного применения одного логического потока выполнения. В этом `SynchronizationContext`случае выполняются методы жизненного цикла компонента и любые обратные вызовы событий, вызванные блазор. В случае, если компонент должен быть обновлен на основе внешнего события, такого как таймер или другие уведомления, используйте `InvokeAsync` метод, который будет отправляться в `SynchronizationContext`блазор.
+
+Например, рассмотрим *службу уведомления* , которая может уведомлять любой компонент, выполняющий прослушивание, в обновленном состоянии:
+
+```csharp
+public class NotifierService
+{
+    // Can be called from anywhere
+    public async Task Update(string key, int value)
+    {
+        if (Notify != null)
+        {
+            await Notify.Invoke(key, value);
+        }
+    }
+
+    public event Action<string, int, Task> Notify;
+}
+```
+
+`NotifierService` Использование для обновления компонента:
+
+```cshtml
+@page "/"
+@inject NotifierService Notifier
+@implements IDisposable
+
+<p>Last update: @lastNotification.key = @lastNotification.value</p>
+
+@code {
+    private (string key, int value) lastNotification;
+
+    protected override void OnInitialized()
+    {
+        Notifier.Notify += OnNotify;
+    }
+
+    public async Task OnNotify(string key, int value)
+    {
+        await InvokeAsync(() =>
+        {
+            lastNotification = (key, value);
+            StateHasChanged();
+        });
+    }
+
+    public void Dispose()
+    {
+        Notifier.Notify -= OnNotify;
+    }
+}
+```
+
+В предыдущем примере `NotifierService` вызывает `OnNotify` метод компонента за пределами блазор. `SynchronizationContext` `InvokeAsync`используется для переключения на правильный контекст и постановка в очередь визуализации.
 
 ## <a name="use-key-to-control-the-preservation-of-elements-and-components"></a>Использование \@ключа для управления сохранением элементов и компонентов
 
@@ -1006,18 +1038,7 @@ public class ThemeInfo
 }
 ```
 
-Чтобы использовать каскадные значения, компоненты объявляют каскадные параметры с помощью `[CascadingParameter]` атрибута или на основе значения имени строки:
-
-```cshtml
-<CascadingValue Value=@PermInfo Name="UserPermissions">...</CascadingValue>
-
-[CascadingParameter(Name = "UserPermissions")]
-private PermInfo Permissions { get; set; }
-```
-
-Привязка со значением имени строки уместна, если имеется несколько каскадных значений одного типа и необходимо отличать их друг от друга в одном поддереве.
-
-Каскадные значения привязываются к каскадным параметрам по типу.
+Чтобы использовать каскадные значения, компоненты объявляют каскадные параметры с помощью `[CascadingParameter]` атрибута. Каскадные значения привязываются к каскадным параметрам по типу.
 
 В примере приложения `CascadingValuesParametersTheme` компонент привязывает `ThemeInfo` каскадное значение к каскадному параметру. Параметр используется для задания класса CSS для одной из кнопок, отображаемых компонентом.
 
@@ -1057,13 +1078,46 @@ private PermInfo Permissions { get; set; }
 }
 ```
 
+Чтобы вычислить несколько значений одного типа в одном поддереве, укажите уникальную `Name` строку для каждого `CascadingValue` компонента и соответствующий `CascadingParameter`ему объект. В следующем примере два `CascadingValue` компонента разворачивают разные `MyCascadingType` экземпляры по имени:
+
+```cshtml
+<CascadingValue Value=@ParentCascadeParameter1 Name="CascadeParam1">
+    <CascadingValue Value=@ParentCascadeParameter2 Name="CascadeParam2">
+        ...
+    </CascadingValue>
+</CascadingValue>
+
+@code {
+    private MyCascadingType ParentCascadeParameter1;
+
+    [Parameter]
+    public MyCascadingType ParentCascadeParameter2 { get; set; }
+
+    ...
+}
+```
+
+В компоненте-потомках каскадные параметры получают значения из соответствующих каскадных значений в компоненте-предке по имени:
+
+```cshtml
+...
+
+@code {
+    [CascadingParameter(Name = "CascadeParam1")]
+    protected MyCascadingType ChildCascadeParameter1 { get; set; }
+    
+    [CascadingParameter(Name = "CascadeParam2")]
+    protected MyCascadingType ChildCascadeParameter2 { get; set; }
+}
+```
+
 ### <a name="tabset-example"></a>Пример Табсет
 
 Каскадные параметры также позволяют компонентам работать в иерархии компонентов. Например, рассмотрим следующий пример *табсет* в примере приложения.
 
 Пример приложения имеет интерфейс, `ITab` который реализуется с помощью вкладок:
 
-[!code-cs[](common/samples/3.x/BlazorSample/UIInterfaces/ITab.cs)]
+[!code-csharp[](common/samples/3.x/BlazorSample/UIInterfaces/ITab.cs)]
 
 Компонент использует компонент, который содержит несколько `Tab` компонентов: `TabSet` `CascadingValuesParametersTabSet`
 
@@ -1250,7 +1304,7 @@ builder.AddContent(seq++, "Second");
 * Измените значение первого текстового узла на `Second`.
 * Удалите второй текстовый узел.
 
-При формировании порядковых номеров теряются все полезные сведения о том `if/else` , где находятся ветви и циклы в исходном коде. Это приводит к удвоению в **два раза больше** , чем раньше.
+При формировании порядковых номеров теряются все полезные сведения о том `if/else` , где находятся ветви и циклы в исходном коде. Это приводит к **удвоению в два раза больше** , чем раньше.
 
 Это тривиальный пример. В более реалистичных случаях со сложными и глубокими вложенными структурами, особенно с циклами, затраты на производительность более серьезны. Вместо того, чтобы сразу определять, какие блоки или ветви цикла были вставлены или удалены, алгоритм diff должен рекурсивно пребираться в деревьях отрисовки и, как правило, создает гораздо более длительные операции редактирования, так как он сообщает о том, как старую и новую структуры связь друг с другом.
 
@@ -1340,7 +1394,7 @@ public class CultureController : Controller
 В следующем компоненте показан пример выполнения начального перенаправления, когда пользователь выбирает язык и региональные параметры:
 
 ```cshtml
-@inject IUriHelper UriHelper
+@inject NavigationManager NavigationManager
 
 <h3>Select your language</h3>
 
@@ -1356,12 +1410,12 @@ public class CultureController : Controller
     private void OnSelected(UIChangeEventArgs e)
     {
         var culture = (string)e.Value;
-        var uri = new Uri(UriHelper.GetAbsoluteUri())
+        var uri = new Uri(NavigationManager.Uri())
             .GetComponents(UriComponents.PathAndQuery, UriFormat.Unescaped);
         var query = $"?culture={Uri.EscapeDataString(culture)}&" +
             $"redirectUri={Uri.EscapeDataString(uri)}";
 
-        UriHelper.NavigateTo("/Culture/SetCulture" + query, forceLoad: true);
+        NavigationManager.NavigateTo("/Culture/SetCulture" + query, forceLoad: true);
     }
 }
 ```
@@ -1381,3 +1435,21 @@ public class CultureController : Controller
 * `IHtmlLocalizer<>`, `IViewLocalizer<>`и локализация заметок к данным ASP.NET Core сценариев MVC и **не поддерживается** в приложениях блазор.
 
 Дополнительные сведения см. в разделе <xref:fundamentals/localization>.
+
+## <a name="scalable-vector-graphics-svg-images"></a>Масштабируемые изображения векторной графики (SVG)
+
+Поскольку блазор визуализирует HTML-файлы, поддерживаемые браузером изображения, включая масштабируемые векторные графики (SVG *),* поддерживаются с `<img>` помощью тега:
+
+```html
+<img alt="Example image" src="some-image.svg" />
+```
+
+Аналогичным образом SVG-изображения поддерживаются в правилах CSS файла стилей ( *. CSS*):
+
+```css
+.my-element {
+    background-image: url("some-image.svg");
+}
+```
+
+Однако встроенная разметка SVG не поддерживается во всех сценариях. Если `<svg>` тег размещается непосредственно в файле компонента ( *. Razor*), то поддерживается базовая визуализация изображений, но многие расширенные сценарии пока не поддерживаются. Например, `<use>` в настоящее время теги не учитываются и `@bind` не могут использоваться с некоторыми тегами SVG. В будущем выпуске мы планируем устранить эти ограничения.

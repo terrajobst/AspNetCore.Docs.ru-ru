@@ -7,12 +7,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 08/23/2019
 uid: blazor/routing
-ms.openlocfilehash: 067dad657c1e89a31fac45fdfa095cce4b10798d
-ms.sourcegitcommit: e6bd2bbe5683e9a7dbbc2f2eab644986e6dc8a87
+ms.openlocfilehash: ae3d7ab01185dd6f2e8e0f59b78c2e693fe464b0
+ms.sourcegitcommit: 8b36f75b8931ae3f656e2a8e63572080adc78513
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70238061"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70310351"
 ---
 # <a name="aspnet-core-blazor-routing"></a>ASP.NET Core маршрутизация Блазор
 
@@ -30,16 +30,17 @@ ms.locfileid: "70238061"
 
 `Router` Компонент включает маршрутизацию, и для каждого доступного компонента предоставляется шаблон маршрута. Компонент отображается в файле *app. Razor:* `Router`
 
-В приложении Блазор на стороне сервера:
+В приложении Блазор на стороне сервера или на стороне клиента:
 
 ```cshtml
-<Router AppAssembly="typeof(Startup).Assembly" />
-```
-
-В клиентском приложении Блазор:
-
-```cshtml
-<Router AppAssembly="typeof(Program).Assembly" />
+<Router AppAssembly="typeof(Startup).Assembly">
+    <Found Context="routeData">
+        <RouteView RouteData="@routeData" DefaultLayout="@typeof(MainLayout)" />
+    </Found>
+    <NotFound>
+        <p>Sorry, there's nothing at this address.</p>
+    </NotFound>
+</Router>
 ```
 
 При компиляции файла *. Razor* с `@page` директивой создается <xref:Microsoft.AspNetCore.Mvc.RouteAttribute> класс, в котором указан шаблон маршрута. Во время выполнения маршрутизатор ищет классы компонентов с `RouteAttribute` помощью и отображает компонент с помощью шаблона маршрута, соответствующего запрошенному URL-адресу.
@@ -49,24 +50,27 @@ ms.locfileid: "70238061"
 [!code-cshtml[](common/samples/3.x/BlazorSample/Pages/BlazorRoute.razor?name=snippet_BlazorRoute)]
 
 > [!IMPORTANT]
-> Для правильной генерации маршрутов приложение `<base>` должно включать тег в файл *wwwroot/index.HTML* (на стороне клиента блазор) или *pages/_Host. cshtml* (блазор на стороне сервера) с базовым путем к `href` приложению, указанным в атрибуте ( `<base href="/">`). Дополнительные сведения см. в разделе <xref:host-and-deploy/blazor/client-side#app-base-path>.
+> Для правильного разрешения URL-адресов приложение `<base>` должно включать тег в файл *wwwroot/index.HTML* (на стороне клиента блазор) или *pages/_Host. cshtml* (блазор на стороне сервера) с базовым путем к `href` приложению, указанным в атрибуте ( `<base href="/">`). Дополнительные сведения см. в разделе <xref:host-and-deploy/blazor/client-side#app-base-path>.
 
 ## <a name="provide-custom-content-when-content-isnt-found"></a>Указать пользовательское содержимое, когда содержимое не найдено
 
 `Router` Компонент позволяет приложению указать пользовательское содержимое, если содержимое для запрошенного маршрута не найдено.
 
-В файле *app. Razor* задайте пользовательское содержимое в `<NotFoundContent>` элементе `Router` компонента:
+В файле *app. Razor* задайте пользовательское содержимое в `<NotFound>` параметре `Router` шаблона компонента:
 
 ```cshtml
 <Router AppAssembly="typeof(Startup).Assembly">
-    <NotFoundContent>
+    <Found Context="routeData">
+        <RouteView RouteData="@routeData" DefaultLayout="@typeof(MainLayout)" />
+    </Found>
+    <NotFound>
         <h1>Sorry</h1>
         <p>Sorry, there's nothing at this address.</p> b
-    </NotFoundContent>
+    </NotFound>
 </Router>
 ```
 
-Содержимое `<NotFoundContent>` может включать произвольные элементы, например другие интерактивные компоненты.
+Содержимое `<NotFound>` может включать произвольные элементы, например другие интерактивные компоненты.
 
 ## <a name="route-parameters"></a>Параметры маршрута
 
@@ -147,14 +151,14 @@ ms.locfileid: "70238061"
 
 ## <a name="uri-and-navigation-state-helpers"></a>URI и вспомогательные функции состояния навигации
 
-Используется `Microsoft.AspNetCore.Components.IUriHelper` для работы с URI и навигацией C# в коде. `IUriHelper`предоставляет события и методы, приведенные в следующей таблице.
+Используется `Microsoft.AspNetCore.Components.NavigationManager` для работы с URI и навигацией C# в коде. `NavigationManager`предоставляет события и методы, приведенные в следующей таблице.
 
 | Член | Описание |
 | ------ | ----------- |
-| `GetAbsoluteUri` | Возвращает текущий абсолютный URI. |
-| `GetBaseUri` | Получает базовый URI (с завершающей косой чертой), который можно добавить в начало относительных путей URI для получения абсолютного URI. Как правило `GetBaseUri` , соответствует `href`атрибуту элемента документа в wwwroot/index.HTML (на стороне клиента блазор) или *pages/_Host. cshtml* (блазор на стороне сервера). `<base>` |
+| `Uri` | Возвращает текущий абсолютный URI. |
+| `BaseUri` | Получает базовый URI (с завершающей косой чертой), который можно добавить в начало относительных путей URI для получения абсолютного URI. Как правило `BaseUri` , соответствует `href`атрибуту элемента документа в wwwroot/index.HTML (на стороне клиента блазор) или *pages/_Host. cshtml* (блазор на стороне сервера). `<base>` |
 | `NavigateTo` | Переходит по указанному универсальному коду ресурса (URI). Если `forceLoad` имеет `true`значение:<ul><li>Маршрутизация на стороне клиента обходится.</li><li>Браузер вынужден загрузить новую страницу с сервера, независимо от того, обрабатывается ли универсальный код ресурса клиентским маршрутизатором.</li></ul> |
-| `OnLocationChanged` | Событие, возникающее при изменении расположения навигации. |
+| `LocationChanged` | Событие, возникающее при изменении расположения навигации. |
 | `ToAbsoluteUri` | Преобразует относительный URI в абсолютный URI. |
 | `ToBaseRelativePath` | Учитывая базовый URI (например, URI, ранее возвращенный `GetBaseUri`), преобразует абсолютный URI в универсальный код ресурса (URI) по отношению к базовому префиксу URI. |
 
@@ -162,8 +166,7 @@ ms.locfileid: "70238061"
 
 ```cshtml
 @page "/navigate"
-@using Microsoft.AspNetCore.Components
-@inject IUriHelper UriHelper
+@inject NavigationManager NavigationManager
 
 <h1>Navigate in Code Example</h1>
 
@@ -174,7 +177,7 @@ ms.locfileid: "70238061"
 @code {
     private void NavigateToCounterComponent()
     {
-        UriHelper.NavigateTo("counter");
+        NavigationManager.NavigateTo("counter");
     }
 }
 ```
