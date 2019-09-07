@@ -1,144 +1,208 @@
 ---
-title: Принудительное использование HTTPS в ASP.NET Core
+title: Принудительное применение HTTPS в ASP.NET Core
 author: rick-anderson
-description: Узнайте, как требовать HTTPS/TLS в веб-приложения ASP.NET Core.
+description: Узнайте, как требовать использования HTTPS/TLS в ASP.NET Core веб-приложении.
 ms.author: riande
 ms.custom: mvc
-ms.date: 12/01/2018
+ms.date: 09/06/2019
 uid: security/enforcing-ssl
-ms.openlocfilehash: 08ce50775d1b5348cb0528a1724cec2e5c72dae2
-ms.sourcegitcommit: 4ef0362ef8b6e5426fc5af18f22734158fe587e1
+ms.openlocfilehash: 654b083a0dade2fc8df5cccf9fa434f30627794b
+ms.sourcegitcommit: f65d8765e4b7c894481db9b37aa6969abc625a48
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "67152905"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70773963"
 ---
-# <a name="enforce-https-in-aspnet-core"></a>Принудительное использование HTTPS в ASP.NET Core
+# <a name="enforce-https-in-aspnet-core"></a>Принудительное применение HTTPS в ASP.NET Core
 
 Автор: [Рик Андерсон](https://twitter.com/RickAndMSFT) (Rick Anderson)
 
 В этом документе показано, как:
 
-* Требование HTTPS для всех запросов.
-* Перенаправлять все запросы HTTP на HTTPS.
+* Требовать протокол HTTPS для всех запросов.
+* Перенаправляет все запросы HTTP на HTTPS.
 
-Интерфейс API может препятствовать передачи конфиденциальных данных при первом запросе клиента.
-
-::: moniker range="< aspnetcore-3.0"
-
-> [!WARNING]
-> ## <a name="api-projects"></a>Проекты API
->
-> Сделать **не** использовать [RequireHttpsAttribute](/dotnet/api/microsoft.aspnetcore.mvc.requirehttpsattribute) на веб-API, получения конфиденциальной информации. `RequireHttpsAttribute` использует коды состояния HTTP для перенаправления браузеров с HTTP на HTTPS. Клиенты API не может понять и подчиняются перенаправление с HTTP на HTTPS. Такие клиенты могут отправлять данные по протоколу HTTP. Веб-API должен:
->
-> * Прослушивает HTTP.
-> * Закрыть соединение с кодом состояния 400 (неправильный запрос) и не обработать запрос.
-::: moniker-end
+Ни один API не может предотвратить отправку конфиденциальных данных клиентом при первом запросе.
 
 ::: moniker range=">= aspnetcore-3.0"
 
 > [!WARNING]
 > ## <a name="api-projects"></a>Проекты API
 >
-> Сделать **не** использовать [RequireHttpsAttribute](/dotnet/api/microsoft.aspnetcore.mvc.requirehttpsattribute) на веб-API, получения конфиденциальной информации. `RequireHttpsAttribute` использует коды состояния HTTP для перенаправления браузеров с HTTP на HTTPS. Клиенты API не может понять и подчиняются перенаправление с HTTP на HTTPS. Такие клиенты могут отправлять данные по протоколу HTTP. Веб-API должен:
+> **Не** используйте [Рекуирехттпсаттрибуте](/dotnet/api/microsoft.aspnetcore.mvc.requirehttpsattribute) в веб-API, которые получают конфиденциальную информацию. `RequireHttpsAttribute`использует коды состояния HTTP для перенаправления браузеров из HTTP в HTTPS. Клиенты API могут не распознать или соблюдать перенаправления от HTTP к HTTPS. Такие клиенты могут передавать данные по протоколу HTTP. Веб-API должны быть:
 >
-> * Прослушивает HTTP.
-> * Закрыть соединение с кодом состояния 400 (неправильный запрос) и не обработать запрос.
+> * Не прослушивать по протоколу HTTP.
+> * Закройте подключение с кодом состояния 400 (недопустимый запрос) и не обслуживает запрос.
 >
 > ## <a name="hsts-and-api-projects"></a>Проекты HSTS и API
 >
-> Проекты API по умолчанию не включают [HSTS](#hsts) так, как HSTS обычно является единственной инструкцией в браузере. Прочие вызывающие программы, например телефон или классических приложений, сделать **не** подчиняются инструкцию. Даже в обозревателях прошедшего проверку подлинности один вызов API по протоколу HTTP имеет риски на небезопасной сети. Безопасный подход — настроить проекты API только прослушивать и отвечать по протоколу HTTPS.
+> Проекты API по умолчанию не включают [HSTS](#hsts) , так как HSTS обычно является инструкцией только браузера. Другие вызывающие объекты, такие как приложения для телефонов или настольных систем, **не** подчиняются инструкции. Даже в обозревателях, один вызов API через HTTP, прошедший проверку подлинности, имеет риски в незащищенных сетях. Безопасный подход заключается в настройке проектов API для прослушивания и реагирования по протоколу HTTPS.
+
+::: moniker-end
+
+::: moniker range="<= aspnetcore-2.2"
+
+> [!WARNING]
+> ## <a name="api-projects"></a>Проекты API
+>
+> **Не** используйте [Рекуирехттпсаттрибуте](/dotnet/api/microsoft.aspnetcore.mvc.requirehttpsattribute) в веб-API, которые получают конфиденциальную информацию. `RequireHttpsAttribute`использует коды состояния HTTP для перенаправления браузеров из HTTP в HTTPS. Клиенты API могут не распознать или соблюдать перенаправления от HTTP к HTTPS. Такие клиенты могут передавать данные по протоколу HTTP. Веб-API должны быть:
+>
+> * Не прослушивать по протоколу HTTP.
+> * Закройте подключение с кодом состояния 400 (недопустимый запрос) и не обслуживает запрос.
 
 ::: moniker-end
 
 ## <a name="require-https"></a>Требование к использованию протокола HTTPS
 
-::: moniker range=">= aspnetcore-2.1"
+В рабочей ASP.NET Core веб-приложений рекомендуется использовать:
 
-Мы рекомендуем производственные ASP.NET Core, веб-приложений вызова:
-
-* По промежуточного слоя переадресации HTTPS (<xref:Microsoft.AspNetCore.Builder.HttpsPolicyBuilderExtensions.UseHttpsRedirection*>) для перенаправления запросов HTTP на HTTPS.
-* По промежуточного слоя HSTS ([UseHsts](#http-strict-transport-security-protocol-hsts)) для отправки заголовков HTTP Strict транспорта безопасности протокола (HSTS) клиентам.
+* По промежуточного слоя перенаправления<xref:Microsoft.AspNetCore.Builder.HttpsPolicyBuilderExtensions.UseHttpsRedirection*>HTTPS () для перенаправления HTTP-запросов к HTTPS.
+* HSTS по промежуточного слоя ([усехстс](#http-strict-transport-security-protocol-hsts)) для отправки клиентам заголовков протокола безопасности транспорта HTTP (HSTS).
 
 > [!NOTE]
-> Приложения, развернутые в конфигурации обратного прокси-сервера разрешить прокси-сервер для обработки безопасность подключения (HTTPS). Если прокси-сервер также обрабатывает перенаправления HTTPS, нет необходимости использовать по промежуточного слоя переадресации HTTPS. Если прокси-сервера также обрабатывает операции записи HSTS заголовков (например, [собственного HSTS поддержки в IIS 10.0 (1709) или более поздней версии](/iis/get-started/whats-new-in-iis-10-version-1709/iis-10-version-1709-hsts#iis-100-version-1709-native-hsts-support)), по промежуточного слоя HSTS не требуется приложением. Дополнительные сведения см. в разделе [выхода из HTTPS/HSTS при создании проекта](#opt-out-of-httpshsts-on-project-creation).
+> Приложения, развернутые в конфигурации обратных прокси-серверов, позволяют прокси-серверу управлять безопасностью подключения (HTTPS). Если прокси-сервер также обрабатывает перенаправление HTTPS, нет необходимости использовать по промежуточного слоя перенаправления HTTPS. Если прокси-сервер также обрабатывает запись заголовков HSTS (например, [поддержка собственного HSTS в IIS 10,0 (1709) или более поздней версии](/iis/get-started/whats-new-in-iis-10-version-1709/iis-10-version-1709-hsts#iis-100-version-1709-native-hsts-support)), по промежуточного слоя HSTS не требуется для приложения. Дополнительные сведения см. [в разделе отказ от HTTPS/HSTS при создании проекта](#opt-out-of-httpshsts-on-project-creation).
 
-### <a name="usehttpsredirection"></a>UseHttpsRedirection
+### <a name="usehttpsredirection"></a>усехттпсредиректион
 
-Следующий код вызывает `UseHttpsRedirection` в `Startup` класса:
+Следующий код вызывает `UseHttpsRedirection` `Startup` в классе:
 
-[!code-csharp[](enforcing-ssl/sample/Startup.cs?name=snippet1&highlight=13)]
+::: moniker range=">= aspnetcore-3.0"
 
-Выделенный выше код:
+[!code-csharp[](enforcing-ssl/sample-snapshot/3.x/Startup.cs?name=snippet1&highlight=14)]
 
-* Использует значение по умолчанию [HttpsRedirectionOptions.RedirectStatusCode](/dotnet/api/microsoft.aspnetcore.httpspolicy.httpsredirectionoptions.redirectstatuscode) ([Status307TemporaryRedirect](/dotnet/api/microsoft.aspnetcore.http.statuscodes.status307temporaryredirect)).
-* Использует значение по умолчанию [HttpsRedirectionOptions.HttpsPort](/dotnet/api/microsoft.aspnetcore.httpspolicy.httpsredirectionoptions.httpsport) (null), если не переопределено `ASPNETCORE_HTTPS_PORT` переменной среды или [IServerAddressesFeature](/dotnet/api/microsoft.aspnetcore.hosting.server.features.iserveraddressesfeature).
+::: moniker-end
 
-Мы рекомендуем использовать временный перенаправления, а не постоянной переадресации. Кэширование ссылок может привести к нестабильной работе поведению в средах разработки. Если вы хотите отправить код состояния постоянное перенаправление, во время работы приложения в среде не разработки, см. в разделе [Настройка постоянной переадресации в рабочей среде](#configure-permanent-redirects-in-production) раздел. Мы рекомендуем использовать [HSTS](#http-strict-transport-security-protocol-hsts) сигнал для клиентов, которые только защитить ресурс запросы следует отправлять в приложение (только в рабочей среде).
+::: moniker range="<= aspnetcore-2.2"
+
+[!code-csharp[](enforcing-ssl/sample-snapshot/2.x/Startup.cs?name=snippet1&highlight=13)]
+
+::: moniker-end
+
+Предыдущий выделенный код:
+
+* Использует значение по умолчанию [хттпсредиректионоптионс. редиректстатускоде](/dotnet/api/microsoft.aspnetcore.httpspolicy.httpsredirectionoptions.redirectstatuscode) ([Status307TemporaryRedirect](/dotnet/api/microsoft.aspnetcore.http.statuscodes.status307temporaryredirect)).
+* Использует значение по умолчанию [хттпсредиректионоптионс. HttpsPort](/dotnet/api/microsoft.aspnetcore.httpspolicy.httpsredirectionoptions.httpsport) (null), если оно `ASPNETCORE_HTTPS_PORT` не переопределено переменной среды или [исервераддрессесфеатуре](/dotnet/api/microsoft.aspnetcore.hosting.server.features.iserveraddressesfeature).
+
+Рекомендуется использовать временные перенаправления, а не постоянные перенаправления. Кэширование ссылок может привести к нестабильной работе в средах разработки. Если вы предпочитаете отправить код состояния с постоянным перенаправлением, когда приложение находится в среде, не являющейся средой разработки, см. раздел [Настройка постоянных перенаправлений в производстве](#configure-permanent-redirects-in-production) . Мы рекомендуем использовать [HSTS](#http-strict-transport-security-protocol-hsts) для передачи клиентам, что только защищенные запросы ресурсов должны отправляться в приложение (только в рабочей среде).
 
 ### <a name="port-configuration"></a>Конфигурация порта
 
-Порт должен быть доступен для по промежуточного слоя для перенаправления небезопасный запрос HTTPS. Если порт не доступен:
+Порт должен быть доступен для промежуточного слоя, чтобы перенаправить незащищенный запрос на HTTPS. Если порт недоступен:
 
-* Не произойдет перенаправление на HTTPS.
-* По промежуточного слоя записывает предупреждение «Не удалось определить https-порт для перенаправления.»
+* Перенаправление на HTTPS не выполняется.
+* По промежуточного слоя регистрируется предупреждение "не удалось определить HTTPS порт для перенаправления".
 
-Укажите порт HTTPS, с помощью любого из следующих подходов:
+Укажите HTTPS порт, используя любой из следующих подходов:
 
-* Задайте [HttpsRedirectionOptions.HttpsPort](#options).
-* Задайте `ASPNETCORE_HTTPS_PORT` переменной среды или [параметр конфигурации веб-узел https_port](xref:fundamentals/host/web-host#https-port):
+* Задайте [хттпсредиректионоптионс. HttpsPort](#options).
 
-  **Ключ**: `https_port`  
-  **Тип**: *string*  
-  **По умолчанию**: значение по умолчанию не задано.  
-  **Задается с помощью**: `UseSetting`  
-  **Переменная среды**: `<PREFIX_>HTTPS_PORT` (Используется префикс `ASPNETCORE_` при использовании [веб-узел](xref:fundamentals/host/web-host).)
+::: moniker range=">= aspnetcore-3.0"
 
-  При настройке <xref:Microsoft.AspNetCore.Hosting.IWebHostBuilder> в `Program`:
+* Задайте параметр [узла:](/aspnet/core/fundamentals/host/generic-host?view=aspnetcore-3.0#https_port) `https_port`
 
-  [!code-csharp[](enforcing-ssl/sample-snapshot/Program.cs?name=snippet_Program&highlight=10)]
-* Указать порт с безопасной схемы с помощью `ASPNETCORE_URLS` переменной среды. Переменная среды настраивает сервер. По промежуточного слоя косвенно обнаруживает HTTPS-порт, через <xref:Microsoft.AspNetCore.Hosting.Server.Features.IServerAddressesFeature>. Этот подход не работает в развертываниях обратного прокси-сервера.
-* В разработке, задать URL-адрес HTTPS в *launchsettings.json*. Включите протокол HTTPS, если используется IIS Express.
-* Настроить конечную точку HTTPS URL-адрес для развертывания общедоступных edge [Kestrel](xref:fundamentals/servers/kestrel) сервера или [HTTP.sys](xref:fundamentals/servers/httpsys) сервера. Только **один порт HTTPS** используется приложением. По промежуточного слоя обнаруживает порт с помощью <xref:Microsoft.AspNetCore.Hosting.Server.Features.IServerAddressesFeature>.
+  * В конфигурации узла.
+  * Путем задания `ASPNETCORE_HTTPS_PORT` переменной среды.
+  * Путем добавления записи верхнего уровня в *appSettings. JSON*:
+
+    [!code-json[](enforcing-ssl/sample-snapshot/3.x/appsettings.json?highlight=2)]
+
+* Укажите порт с защитой схемы с помощью [переменной среды ASPNETCORE_URLS](/aspnet/core/fundamentals/host/generic-host?view=aspnetcore-3.0#urls). Переменная среды настраивает сервер. По промежуточного слоя косвенно обнаруживает HTTPS порт с <xref:Microsoft.AspNetCore.Hosting.Server.Features.IServerAddressesFeature>помощью. Этот подход не работает в обратных развертываниях прокси-сервера.
+
+::: moniker-end
+
+::: moniker range="<= aspnetcore-2.2"
+
+* Задайте параметр [узла:](xref:fundamentals/host/web-host#https-port) `https_port`
+
+  * В конфигурации узла.
+  * Путем задания `ASPNETCORE_HTTPS_PORT` переменной среды.
+  * Путем добавления записи верхнего уровня в *appSettings. JSON*:
+
+    [!code-json[](enforcing-ssl/sample-snapshot/2.x/appsettings.json?highlight=2)]
+
+* Укажите порт с защитой схемы с помощью [переменной среды ASPNETCORE_URLS](xref:fundamentals/host/web-host#server-urls). Переменная среды настраивает сервер. По промежуточного слоя косвенно обнаруживает HTTPS порт с <xref:Microsoft.AspNetCore.Hosting.Server.Features.IServerAddressesFeature>помощью. Этот подход не работает в обратных развертываниях прокси-сервера.
+
+::: moniker-end
+
+* В среде разработки задайте URL-адрес HTTPS в *launchsettings. JSON*. При использовании IIS Express включите протокол HTTPS.
+
+* Настройте конечную точку HTTPS URL-адреса для общедоступного пограничной развертывания сервера [Kestrel](xref:fundamentals/servers/kestrel) или [http. sys](xref:fundamentals/servers/httpsys) . Приложение использует только **один HTTPS-порт** . По промежуточного слоя обнаруживает порт через <xref:Microsoft.AspNetCore.Hosting.Server.Features.IServerAddressesFeature>.
 
 > [!NOTE]
-> Когда приложение выполняется в конфигурации обратного прокси-сервера, <xref:Microsoft.AspNetCore.Hosting.Server.Features.IServerAddressesFeature> недоступна. Задайте номер порта, с помощью одного из других подходов, описанных в этом разделе.
+> Если приложение запускается в конфигурации обратного прокси-сервера, <xref:Microsoft.AspNetCore.Hosting.Server.Features.IServerAddressesFeature> оно недоступно. Задайте порт с помощью одного из других подходов, описанных в этом разделе.
 
-Если Kestrel и HTTP.sys используется в качестве общедоступных пограничного сервера, Kestrel и HTTP.sys должны быть настроены на прослушивание оба:
+### <a name="edge-deployments"></a>Развертывания пограничных устройств 
 
-* Безопасного порта, где перенаправляется клиент (как правило, 443 в рабочей среде и 5001 в разработке).
-* Небезопасный порт (как правило, 80 в рабочей среде) до 5000 при разработке.
+Если Kestrel или HTTP. sys используется в качестве общедоступного пограничной сервера, то Kestrel или HTTP. sys должны быть настроены на прослушивание обоих типов:
 
-Небезопасный порт должен быть доступны клиенту в порядке для приложения для получения небезопасный запрос и перенаправления клиента для безопасного порта.
+* Безопасный порт, на который перенаправляется клиент (как правило, 443 в рабочей среде и 5001 в разработке).
+* Небезопасный порт (как правило, 80 в рабочей среде и 5000 в разработке).
 
-Дополнительные сведения см. в разделе [конфигурации конечной точки Kestrel](xref:fundamentals/servers/kestrel#endpoint-configuration) или <xref:fundamentals/servers/httpsys>.
+Клиент должен получить доступ к незащищенному порту, чтобы приложение получило незащищенный запрос и перенаправлять клиент на безопасный порт.
+
+Дополнительные сведения см. в разделе [Kestrel Endpoint Configuration](xref:fundamentals/servers/kestrel#endpoint-configuration) или <xref:fundamentals/servers/httpsys>.
 
 ### <a name="deployment-scenarios"></a>Сценарии развертывания
 
-Любой брандмауэра между клиентом и сервером также должны быть открыты для трафика порты связи.
+Все брандмауэры между клиентом и сервером также должны иметь открытые порты связи для трафика.
 
-Если запросы перенаправляются в конфигурации обратного прокси-сервера, используйте [пересылаемые по промежуточного слоя заголовки](xref:host-and-deploy/proxy-load-balancer) перед вызовом по промежуточного слоя переадресации HTTPS. Пересылаемые обновлений по промежуточного слоя заголовки `Request.Scheme`, с использованием `X-Forwarded-Proto` заголовка. По промежуточного слоя позволяет перенаправлять URI и других политик безопасности, для правильной работы. При пересылаемые по промежуточного слоя заголовки не используется, во внутреннее приложение может не получать правильные схему и цикл перенаправления. Сообщение об ошибке распространенных конечного пользователя — в том, что произошло слишком много перенаправлений.
+Если запросы перенаправляются в конфигурации обратных прокси-серверов, используйте [промежуточный слой перенаправленных заголовков](xref:host-and-deploy/proxy-load-balancer) перед вызовом по промежуточного слоя перенаправления HTTPS. По промежуточного слоя перенаправленных заголовков обновляет `Request.Scheme`, `X-Forwarded-Proto` используя заголовок. По промежуточного слоя позволяет правильно работать с URI перенаправления и другими политиками безопасности. Если по промежуточного слоя перенаправленных заголовков не используется, серверное приложение может не получить правильную схему и завершить цикл перенаправления. Обычное сообщение об ошибке конечного пользователя состоит в том, что произошло слишком много перенаправлений.
 
-При развертывании в службе приложений Azure, следуйте указаниям в [руководства: Привязывание существующего настраиваемого SSL-сертификата к веб-приложениям Azure](/azure/app-service/app-service-web-tutorial-custom-ssl).
+При развертывании в службе приложений Azure следуйте указаниям в [учебнике: Привязывание существующего настраиваемого SSL-сертификата к веб-приложениям Azure](/azure/app-service/app-service-web-tutorial-custom-ssl).
 
 ### <a name="options"></a>Параметры
 
-Следующий выделенный код вызывает метод [AddHttpsRedirection](/dotnet/api/microsoft.aspnetcore.builder.httpsredirectionservicesextensions.addhttpsredirection) настроить параметры по промежуточного слоя:
+Следующий выделенный код вызывает [аддхттпсредиректион](/dotnet/api/microsoft.aspnetcore.builder.httpsredirectionservicesextensions.addhttpsredirection) для настройки параметров промежуточного слоя:
 
-[!code-csharp[](enforcing-ssl/sample/Startup.cs?name=snippet2&highlight=14-99)]
 
-Вызов `AddHttpsRedirection` необходимо изменить значения `HttpsPort` или `RedirectStatusCode`.
+::: moniker range=">= aspnetcore-3.0"
 
-Выделенный выше код:
+[!code-csharp[](enforcing-ssl/sample-snapshot/3.x/Startup.cs?name=snippet2&highlight=14-18)]
 
-* Наборы [HttpsRedirectionOptions.RedirectStatusCode](xref:Microsoft.AspNetCore.HttpsPolicy.HttpsRedirectionOptions.RedirectStatusCode*) для <xref:Microsoft.AspNetCore.Http.StatusCodes.Status307TemporaryRedirect>, который является значением по умолчанию. Используйте поля <xref:Microsoft.AspNetCore.Http.StatusCodes> класс для назначений `RedirectStatusCode`.
-* Задать HTTPS-порт на 5001. Значение по умолчанию — 443.
+::: moniker-end
 
-#### <a name="configure-permanent-redirects-in-production"></a>Настройка постоянной переадресации в рабочей среде
+::: moniker range="<= aspnetcore-2.2"
 
-По умолчанию по промежуточного слоя на отправку [Status307TemporaryRedirect](/dotnet/api/microsoft.aspnetcore.http.statuscodes.status307temporaryredirect) с все операции перенаправления. Если вы хотите отправить код состояния постоянное перенаправление, во время работы приложения в среде не разработки, поместите параметры конфигурации по промежуточного слоя в условную проверку на среду не разработки.
+[!code-csharp[](enforcing-ssl/sample-snapshot/2.x/Startup.cs?name=snippet2&highlight=14-18)]
 
-При настройке `IWebHostBuilder` в *Startup.cs*:
+::: moniker-end
+
+
+Вызов `AddHttpsRedirection` необходим только для изменения `HttpsPort` значений или `RedirectStatusCode`.
+
+Предыдущий выделенный код:
+
+* Устанавливает [хттпсредиректионоптионс. редиректстатускоде](xref:Microsoft.AspNetCore.HttpsPolicy.HttpsRedirectionOptions.RedirectStatusCode*) в <xref:Microsoft.AspNetCore.Http.StatusCodes.Status307TemporaryRedirect>значение, которое является значением по умолчанию. Используйте поля <xref:Microsoft.AspNetCore.Http.StatusCodes> класса для назначений в `RedirectStatusCode`.
+* Устанавливает HTTPS порт 5001. Значение по умолчанию — 443.
+
+#### <a name="configure-permanent-redirects-in-production"></a>Настройка постоянных перенаправлений в рабочей среде
+
+По промежуточного слоя по умолчанию отправляется [Status307TemporaryRedirect](/dotnet/api/microsoft.aspnetcore.http.statuscodes.status307temporaryredirect) со всеми перенаправлениями. Если вы предпочитаете отправить код состояния с постоянным перенаправлением, когда приложение находится в среде, не являющейся средой разработки, заключите конфигурацию параметров по промежуточного слоя в условную проверку для среды без разработки.
+
+::: moniker range=">= aspnetcore-3.0"
+
+При настройке служб в *Startup.CS*:
+
+```csharp
+public void ConfigureServices(IServiceCollection services)
+{
+    // IWebHostEnvironment (stored in _env) is injected into the Startup class.
+    if (!_env.IsDevelopment())
+    {
+        services.AddHttpsRedirection(options =>
+        {
+            options.RedirectStatusCode = StatusCodes.Status308PermanentRedirect;
+            options.HttpsPort = 443;
+        });
+    }
+}
+```
+
+::: moniker-end
+
+::: moniker range="<= aspnetcore-2.2"
+
+При настройке служб в *Startup.CS*:
 
 ```csharp
 public void ConfigureServices(IServiceCollection services)
@@ -155,85 +219,97 @@ public void ConfigureServices(IServiceCollection services)
 }
 ```
 
-## <a name="https-redirection-middleware-alternative-approach"></a>Альтернативный подход по промежуточного слоя переадресации HTTPS
-
-Альтернативой использованию по промежуточного слоя переадресации HTTPS (`UseHttpsRedirection`) является использование по промежуточного слоя для переопределения URL-адрес (`AddRedirectToHttps`). `AddRedirectToHttps` Можно также задать код состояния и порт при выполнении перенаправления. Дополнительные сведения см. в разделе [по промежуточного слоя для переопределения URL-адрес](xref:fundamentals/url-rewriting).
-
-При перенаправлении HTTPS без необходимости для перенаправления дополнительных правил, мы рекомендуем использовать по промежуточного слоя переадресации HTTPS (`UseHttpsRedirection`) описано в этом разделе.
-
 ::: moniker-end
 
-::: moniker range="< aspnetcore-2.1"
 
-[RequireHttpsAttribute](/dotnet/api/microsoft.aspnetcore.mvc.requirehttpsattribute) используется для обязательного использования протокола HTTPS. `[RequireHttpsAttribute]` можно снабдить контроллеров или методы, или могут применяться глобально. Чтобы применить атрибут глобально, добавьте следующий код, чтобы `ConfigureServices` в `Startup`:
+## <a name="https-redirection-middleware-alternative-approach"></a>Альтернативный подход по промежуточного слоя перенаправления HTTPS
 
-[!code-csharp[](~/security/authentication/accconfirm/sample/WebApp1/Startup.cs?name=snippet2&highlight=4-999)]
+Альтернативой по промежуточного слоя перенаправления HTTPS (`UseHttpsRedirection`) является использование по промежуточного слоя переписывания`AddRedirectToHttps`URL-адресов (). `AddRedirectToHttps`также может задавать код состояния и порт при выполнении перенаправления. Дополнительные сведения см. в разделе по [промежуточного слоя перезаписи URL-адресов](xref:fundamentals/url-rewriting).
 
-Выделенный выше код требует использовать все запросы `HTTPS`; таким образом, HTTP-запросы учитываются. Следующий выделенный код перенаправляет все запросы HTTP на HTTPS:
-
-[!code-csharp[](authentication/accconfirm/sample/WebApp1/Startup.cs?name=snippet_AddRedirectToHttps&highlight=7-999)]
-
-Дополнительные сведения см. в разделе [по промежуточного слоя для переопределения URL-адрес](xref:fundamentals/url-rewriting). По промежуточного слоя также позволяет приложению задать код состояния или код состояния и номер порта, если выполняется перенаправление.
-
-Требования HTTPS глобально (`options.Filters.Add(new RequireHttpsAttribute());`) — это рекомендации по безопасности. Применение `[RequireHttps]` атрибута ко всем страницам контроллеров/Razor не считается так безопасен, как требования HTTPS глобально. Не может гарантировать `[RequireHttps]` атрибут применяется, когда добавляются новые контроллеры и Razor Pages.
-
-::: moniker-end
-
-::: moniker range=">= aspnetcore-2.1"
+При перенаправлении по протоколу HTTPS без требования дополнительных правил перенаправления рекомендуется использовать по промежуточного слоя перенаправления HTTPS (`UseHttpsRedirection`), описанные в этом разделе.
 
 <a name="hsts"></a>
 
-## <a name="http-strict-transport-security-protocol-hsts"></a>Безопасность строгой транспортный протокол HTTP (HSTS)
+## <a name="http-strict-transport-security-protocol-hsts"></a>Протокол HTTPS протокола безопасности транспорта HTTP (HSTS)
 
-На [OWASP](https://www.owasp.org/index.php/About_The_Open_Web_Application_Security_Project), [HTTP строгой безопасности транспорта (HSTS)](https://www.owasp.org/index.php/HTTP_Strict_Transport_Security_Cheat_Sheet) представляет собой улучшение центра безопасности, который задается параметром веб-приложения при помощи заголовка ответа. Когда [браузера, поддерживающего HSTS](https://www.owasp.org/index.php/HTTP_Strict_Transport_Security_Cheat_Sheet#Browser_Support) получения этого заголовка:
+В [OWASP](https://www.owasp.org/index.php/About_The_Open_Web_Application_Security_Project), [обеспечение безопасности транспорта по протоколу HTTP (HSTS)](https://www.owasp.org/index.php/HTTP_Strict_Transport_Security_Cheat_Sheet) является расширением безопасности, которое определяется веб-приложением с помощью заголовка ответа. Когда [браузер, поддерживающий HSTS,](https://www.owasp.org/index.php/HTTP_Strict_Transport_Security_Cheat_Sheet#Browser_Support) получает этот заголовок:
 
-* Браузер хранит конфигурацию для домена, который предотвращает отправку любые данные, передаваемые по протоколу HTTP. Браузер заставляет весь обмен данными по протоколу HTTPS.
-* Браузер запрещает пользователю с помощью недействителен или сертификаты. Браузер отключает подсказок, которые позволяют пользователю временно доверять такой сертификат.
+* В браузере хранится конфигурация домена, которая предотвращает отправку обмена данными по протоколу HTTP. Браузер принудительно выполняет все связи по протоколу HTTPS.
+* Браузер не разрешает пользователю использовать недоверенные или недопустимые сертификаты. Браузер отключает запросы, позволяющие пользователю временно доверять такому сертификату.
 
-Поскольку HSTS обеспечивается с помощью клиента он имеет некоторые ограничения:
+Так как HSTS обеспечивается клиентом, он имеет некоторые ограничения:
 
 * Клиент должен поддерживать HSTS.
-* HSTS требуется по крайней мере один успешный запрос HTTPS для задания политики HSTS.
-* Приложение должно проверить каждый HTTP-запрос и перенаправления или отклонить запрос HTTP.
+* HSTS требует по крайней мере одного успешного запроса HTTPS для установки политики HSTS.
+* Приложение должно проверять каждый HTTP-запрос и перенаправлять или отклонять HTTP-запрос.
 
-ASP.NET Core 2.1 или более поздних версий реализует HSTS с `UseHsts` метода расширения. Следующий код вызывает `UseHsts` когда приложение не [режим разработки](xref:fundamentals/environments):
+ASP.NET Core 2,1 и более поздних версий реализует `UseHsts` HSTS с помощью метода расширения. Следующий код вызывает `UseHsts` , когда приложение не находится в [режиме разработки](xref:fundamentals/environments):
 
-[!code-csharp[](enforcing-ssl/sample/Startup.cs?name=snippet1&highlight=10)]
+::: moniker range=">= aspnetcore-3.0"
 
-`UseHsts` не рекомендуется в разработке, так как параметры HSTS высокой кэшируемых обозревателями. По умолчанию `UseHsts` исключает локальный петлевой адрес.
-
-Для рабочих сред реализации HTTPS в первый раз установить начального [HstsOptions.MaxAge](xref:Microsoft.AspNetCore.HttpsPolicy.HstsOptions.MaxAge*) на малое значение, с помощью одного из <xref:System.TimeSpan> методы. Задайте значение от часов не больше, чем в один день в случае необходимости использования инфраструктуры HTTPS-HTTP. После вы уверены в устойчивости конфигурации HTTPS, увеличьте значение max-age HSTS; часто используемые значение — один год.
-
-В приведенном ниже коде
-
-[!code-csharp[](enforcing-ssl/sample/Startup.cs?name=snippet2&highlight=5-12)]
-
-* Задает параметр предварительной загрузки заголовок Strict-Transport-Security. Предварительной загрузки не входит в состав [спецификации RFC HSTS](https://tools.ietf.org/html/rfc6797), но поддерживается веб-браузеры для предварительной загрузки HSTS узлов на установку обновления. Дополнительные сведения см. в разделе [https://hstspreload.org/](https://hstspreload.org/).
-* Позволяет [includeSubDomain](https://tools.ietf.org/html/rfc6797#section-6.1.2), который применяет политику HSTS для размещения таких поддоменов.
-* Явно задает параметр max-age заголовок Strict-Transport-Security 60 дней. Если не установлено значение по умолчанию — 30 дней. См. в разделе [директива максимального](https://tools.ietf.org/html/rfc6797#section-6.1.1) Дополнительные сведения.
-* Добавляет `example.com` в список узлов для исключения.
-
-`UseHsts` исключает следующими узлами замыкания на себя:
-
-* `localhost`: IPv4-адрес замыкания на себя.
-* `127.0.0.1`: IPv4-адрес замыкания на себя.
-* `[::1]`: Петлевой адрес IPv6.
+[!code-csharp[](enforcing-ssl/sample-snapshot/3.x/Startup.cs?name=snippet1&highlight=11)]
 
 ::: moniker-end
 
-::: moniker range=">= aspnetcore-2.1"
+::: moniker range="<= aspnetcore-2.2"
 
-## <a name="opt-out-of-httpshsts-on-project-creation"></a>Отказаться от HTTPS/HSTS при создании проекта
+[!code-csharp[](enforcing-ssl/sample-snapshot/2.x/Startup.cs?name=snippet1&highlight=10)]
 
-В некоторых сценариях службы серверной части, где безопасность подключения обрабатывается на границе общедоступные сети Настройка безопасности подключения на каждом узле не требуется. Веб-приложений, созданных из шаблонов в Visual Studio или из [команды dotnet new](/dotnet/core/tools/dotnet-new) команду enable [перенаправления HTTPS](#require-https) и [HSTS](#http-strict-transport-security-protocol-hsts). Для развертываний, которые не требуют этих сценариев вы можете отказаться от HTTPS/HSTS создания приложения на основе шаблона.
+::: moniker-end
+
+`UseHsts`не рекомендуется в разработке, так как параметры HSTS очень кэшируются браузерами. По умолчанию `UseHsts` исключает локальный петлевой адрес.
+
+Для рабочих сред, которые реализуют протокол HTTPS в первый раз, задайте для свойства Initial [хстсоптионс. MaxAge](xref:Microsoft.AspNetCore.HttpsPolicy.HstsOptions.MaxAge*) небольшое значение с помощью одного из <xref:System.TimeSpan> методов. Задайте в качестве значения в часах не более одного дня на случай, если необходимо вернуть инфраструктуру HTTPS к протоколу HTTP. Убедившись в устойчивости конфигурации HTTPS, увеличьте значение HSTS max-age. часто используемое значение — один год.
+
+В приведенном ниже коде
+
+
+::: moniker range=">= aspnetcore-3.0"
+
+[!code-csharp[](enforcing-ssl/sample-snapshot/3.x/Startup.cs?name=snippet2&highlight=5-12)]
+
+::: moniker-end
+
+::: moniker range="<= aspnetcore-2.2"
+
+[!code-csharp[](enforcing-ssl/sample-snapshot/2.x/Startup.cs?name=snippet2&highlight=5-12)]
+
+::: moniker-end
+
+
+* Задает параметр предварительной загрузки для заголовка с уровнем безопасности "Долгосрочный транспорт — Безопасность". Предварительная загрузка не является частью [спецификации RFC HSTS](https://tools.ietf.org/html/rfc6797), но поддерживается веб-браузерами для предварительной загрузки HSTS сайтов при новой установке. Дополнительные сведения см. в разделе [https://hstspreload.org/](https://hstspreload.org/).
+* Включает [инклудесубдомаин](https://tools.ietf.org/html/rfc6797#section-6.1.2), который применяет политику HSTS для размещения поддоменов.
+* Явно задает параметр max-age для заголовка с ограничением транспорта-безопасности до 60 дней. Если значение не задано, по умолчанию используется значение 30 дней. Дополнительные сведения см. в [директиве max-age](https://tools.ietf.org/html/rfc6797#section-6.1.1) .
+* Добавляет `example.com` в список узлов для исключения.
+
+`UseHsts`исключает следующие узлы замыкания на себя:
+
+* `localhost`: Адрес замыкания на себя IPv4.
+* `127.0.0.1`: Адрес замыкания на себя IPv4.
+* `[::1]`: IPv6-адрес замыкания на себя.
+
+## <a name="opt-out-of-httpshsts-on-project-creation"></a>Отказ от HTTPS/HSTS при создании проекта
+
+В некоторых сценариях серверной службы, где безопасность подключения обрабатывается на общедоступной границе сети, Настройка безопасности подключения на каждом узле не требуется. Веб-приложения, созданные на основе шаблонов в Visual Studio или команды [DotNet New](/dotnet/core/tools/dotnet-new) , включают [Перенаправление HTTPS](#require-https) и [HSTS](#http-strict-transport-security-protocol-hsts). Для развертываний, которые не нуждаются в этих сценариях, можно отказаться от HTTPS/HSTS при создании приложения из шаблона.
 
 Чтобы отказаться от HTTPS/HSTS:
 
 # <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio) 
 
-Снимите флажок **настроить для использования протокола HTTPS** "флажок".
+Снимите флажок **настроить для HTTPS** .
 
-![Новое диалоговое окно веб-приложение ASP.NET Core, показывающий настройки для HTTPS флажок снят.](enforcing-ssl/_static/out.png)
+::: moniker range=">= aspnetcore-3.0"
+
+![Диалоговое окно нового ASP.NET Core веб-приложения с снятым флажком настроить для HTTPS.](enforcing-ssl/_static/out-vs2019.png)
+
+::: moniker-end
+
+::: moniker range="<= aspnetcore-2.2"
+
+![Диалоговое окно нового ASP.NET Core веб-приложения с снятым флажком настроить для HTTPS.](enforcing-ssl/_static/out.png)
+
+::: moniker-end
+
 
 # <a name="net-core-clitabnetcore-cli"></a>[Интерфейс командной строки .NET Core](#tab/netcore-cli) 
 
@@ -245,15 +321,11 @@ dotnet new webapp --no-https
 
 ---
 
-::: moniker-end
-
-::: moniker range=">= aspnetcore-2.1"
-
 <a name="trust"></a>
 
 ## <a name="trust-the-aspnet-core-https-development-certificate-on-windows-and-macos"></a>Доверять сертификату разработки ASP.NET Core HTTPS в Windows и macOS
 
-Пакет SDK для .NET core включает в себя HTTPS-сертификат разработки. Сертификат установлен как часть при первом запуске. Например `dotnet --info` выходные данные выглядят примерно следующим:
+Пакет SDK для .NET Core включает сертификат разработки HTTPS. Сертификат устанавливается в рамках первого запуска. Например, выводит результат, `dotnet --info` аналогичный приведенному ниже:
 
 ```text
 ASP.NET Core
@@ -264,7 +336,7 @@ For establishing trust on other platforms refer to the platform specific documen
 For more information on configuring HTTPS see https://go.microsoft.com/fwlink/?linkid=848054.
 ```
 
-При установке пакета SDK для .NET Core в локальное хранилище сертификатов пользователя устанавливается сертификат разработки HTTPS ASP.NET Core. Сертификат был установлен, но он не является доверенным. Доверие сертификата выполнить однократное действие для выполнения dotnet `dev-certs` средство:
+При установке пакета SDK для .NET Core в локальное хранилище сертификатов пользователя устанавливается сертификат разработки HTTPS ASP.NET Core. Сертификат установлен, но не является доверенным. Чтобы сделать сертификат доверенным, выполните однократный шаг для запуска средства DotNet `dev-certs` :
 
 ```console
 dotnet dev-certs https --trust
@@ -276,27 +348,25 @@ dotnet dev-certs https --trust
 dotnet dev-certs https --help
 ```
 
-## <a name="how-to-set-up-a-developer-certificate-for-docker"></a>Как настроить сертификат разработчика для Docker
+## <a name="how-to-set-up-a-developer-certificate-for-docker"></a>Как настроить сертификат разработчика для DOCKER
 
-См. в разделе [проблема GitHub](https://github.com/aspnet/AspNetCore.Docs/issues/6199).
-
-::: moniker-end
+Также см. [эту проблему в GitHub](https://github.com/aspnet/AspNetCore.Docs/issues/6199).
 
 <a name="wsl"></a>
 
-## <a name="trust-https-certificate-from-windows-subsystem-for-linux"></a>Доверять сертификату HTTPS из подсистемы Windows для Linux
+## <a name="trust-https-certificate-from-windows-subsystem-for-linux"></a>Доверенный HTTPS сертификат из подсистемы Windows для Linux
 
-Подсистема Windows для Linux (WSL) создает самозаверяющий сертификат HTTPS. Чтобы настроить хранилище сертификатов Windows, чтобы доверять сертификату WSL:
+Подсистема Windows для Linux (WSL) создает самозаверяющий сертификат HTTPS. Чтобы настроить хранилище сертификатов Windows для доверия к сертификату WSL, сделайте следующее:
 
-* Выполните следующую команду, чтобы экспортировать сертификат создан WSL: `dotnet dev-certs https -ep %USERPROFILE%\.aspnet\https\aspnetapp.pfx -p <cryptic-password>`
-* В окне WSL выполните следующую команду: `ASPNETCORE_Kestrel__Certificates__Default__Password="<cryptic-password>" ASPNETCORE_Kestrel__Certificates__Default__Path=/mnt/c/Users/user-name/.aspnet/https/aspnetapp.pfx dotnet watch run`
+* Выполните следующую команду, чтобы экспортировать созданный сертификат WSL:`dotnet dev-certs https -ep %USERPROFILE%\.aspnet\https\aspnetapp.pfx -p <cryptic-password>`
+* В окне WSL выполните следующую команду:`ASPNETCORE_Kestrel__Certificates__Default__Password="<cryptic-password>" ASPNETCORE_Kestrel__Certificates__Default__Path=/mnt/c/Users/user-name/.aspnet/https/aspnetapp.pfx dotnet watch run`
 
-  Приведенная выше команда устанавливает переменные среды, поэтому Linux использует доверенных сертификатов Windows.
+  Приведенная выше команда задает переменные среды, чтобы в Linux использовался доверенный сертификат Windows.
 
 ## <a name="additional-information"></a>Дополнительные сведения
 
 * <xref:host-and-deploy/proxy-load-balancer>
-* [Размещение ASP.NET Core в Linux с использованием Apache: Конфигурация HTTPS](xref:host-and-deploy/linux-apache#https-configuration)
-* [Размещение ASP.NET Core в Linux с Nginx: Конфигурация HTTPS](xref:host-and-deploy/linux-nginx#https-configuration)
-* [Настройка SSL в IIS](/iis/manage/configuring-security/how-to-set-up-ssl-on-iis)
-* [Поддержка браузеров OWASP HSTS](https://www.owasp.org/index.php/HTTP_Strict_Transport_Security_Cheat_Sheet#Browser_Support)
+* [ASP.NET Core узла в Linux с помощью Apache: Конфигурация HTTPS](xref:host-and-deploy/linux-apache#https-configuration)
+* [ASP.NET Core узла в Linux с помощью nginx: Конфигурация HTTPS](xref:host-and-deploy/linux-nginx#https-configuration)
+* [Настройка SSL в службах IIS](/iis/manage/configuring-security/how-to-set-up-ssl-on-iis)
+* [Поддержка браузера OWASP HSTS](https://www.owasp.org/index.php/HTTP_Strict_Transport_Security_Cheat_Sheet#Browser_Support)

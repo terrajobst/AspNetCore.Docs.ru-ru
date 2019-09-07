@@ -5,14 +5,14 @@ description: Узнайте, как создавать и использоват
 monikerRange: '>= aspnetcore-3.0'
 ms.author: riande
 ms.custom: mvc
-ms.date: 09/04/2019
+ms.date: 09/06/2019
 uid: blazor/components
-ms.openlocfilehash: ce9da14bbe19cbee960d215f6167a0e760bd607a
-ms.sourcegitcommit: 8b36f75b8931ae3f656e2a8e63572080adc78513
+ms.openlocfilehash: e877abfb568f71046c3603cac5e888e99ffc8d15
+ms.sourcegitcommit: 43c6335b5859282f64d66a7696c5935a2bcdf966
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/05/2019
-ms.locfileid: "70310364"
+ms.lasthandoff: 09/07/2019
+ms.locfileid: "70800420"
 ---
 # <a name="create-and-use-aspnet-core-razor-components"></a>Создание и использование компонентов ASP.NET Core Razor
 
@@ -426,7 +426,7 @@ ms.locfileid: "70310364"
 | ----- | ----- |
 | буфер обмена        | `ClipboardEventArgs` |
 | Переместить             | `DragEventArgs`&ndash; и`DataTransferItem`содержат перетаскиваемые данные элемента. `DataTransfer` |
-| Error            | `ErrorEventArgs` |
+| Ошибка            | `ErrorEventArgs` |
 | Фокус            | `FocusEventArgs`Не включает поддержку для `relatedTarget`. &ndash; |
 | Изменение`<input>` | `ChangeEventArgs` |
 | Клавиатура         | `KeyboardEventArgs` |
@@ -716,17 +716,30 @@ protected override void OnParametersSet()
 
 `OnAfterRenderAsync`и `OnAfterRender` вызываются после завершения подготовки компонента к просмотру. В этот момент заполнены ссылки на элементы и компоненты. Используйте этот этап для выполнения дополнительных шагов инициализации с помощью готового к просмотру содержимого, например для активации сторонних библиотек JavaScript, которые работают с визуализированными элементами DOM.
 
+`OnAfterRender`*не вызывается при предварительной отрисовке на сервере.*
+
+Параметр для `OnAfterRenderAsync` и`OnAfterRender`имеетзначение. `firstRender`
+
+* Устанавливается в `true` первый раз, когда вызывается экземпляр компонента.
+* Гарантирует, что работа по инициализации выполняется только один раз.
+
 ```csharp
-protected override async Task OnAfterRenderAsync()
+protected override async Task OnAfterRenderAsync(bool firstRender)
 {
-    await ...
+    if (firstRender)
+    {
+        await ...
+    }
 }
 ```
 
 ```csharp
-protected override void OnAfterRender()
+protected override void OnAfterRender(bool firstRender)
 {
-    ...
+    if (firstRender)
+    {
+        ...
+    }
 }
 ```
 

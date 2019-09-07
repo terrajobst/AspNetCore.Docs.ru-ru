@@ -5,14 +5,14 @@ description: Узнайте, как приложения Блазор могут
 monikerRange: '>= aspnetcore-3.0'
 ms.author: riande
 ms.custom: mvc
-ms.date: 07/02/2019
+ms.date: 09/06/2019
 uid: blazor/dependency-injection
-ms.openlocfilehash: a2bfa0cbe951e817ed6264f1a151d5a716cd795c
-ms.sourcegitcommit: 8b36f75b8931ae3f656e2a8e63572080adc78513
+ms.openlocfilehash: 0b48cd0cbe14d2b07627f56ab78611bbd3209fa1
+ms.sourcegitcommit: 43c6335b5859282f64d66a7696c5935a2bcdf966
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/05/2019
-ms.locfileid: "70310359"
+ms.lasthandoff: 09/07/2019
+ms.locfileid: "70800397"
 ---
 # <a name="aspnet-core-blazor-dependency-injection"></a>ASP.NET Core внедрения зависимостей Блазор
 
@@ -61,7 +61,7 @@ public void ConfigureServices(IServiceCollection services)
 
 | Время существования | Описание |
 | -------- | ----------- |
-| <xref:Microsoft.Extensions.DependencyInjection.ServiceDescriptor.Scoped*> | Блазор на стороне клиента в настоящее время не имеет концепции областей DI. `Scoped`— зарегистрированные службы ведут `Singleton` себя как службы. Однако модель размещения на стороне сервера поддерживает `Scoped` время существования. В компоненте Razor регистрация службы с заданной областью ограничивается соединением. По этой причине использование служб с заданной областью предпочтительно для служб, которые должны быть ограничены текущим пользователем, даже если текущим намерением является запуск на стороне клиента в браузере. |
+| <xref:Microsoft.Extensions.DependencyInjection.ServiceDescriptor.Scoped*> | В настоящее время приложения веб-сборки блазор не имеют концепции областей DI. `Scoped`— зарегистрированные службы ведут `Singleton` себя как службы. Однако модель размещения на стороне сервера поддерживает `Scoped` время существования. В приложениях Блазор Server регистрация службы с заданной областью ограничивается *соединением*. По этой причине использование служб с заданной областью предпочтительно для служб, которые должны быть ограничены текущим пользователем, даже если текущим намерением является запуск на стороне клиента в браузере. |
 | <xref:Microsoft.Extensions.DependencyInjection.ServiceDescriptor.Singleton*> | DI создает *один экземпляр* службы. Все компоненты, которым `Singleton` необходима служба, получают экземпляр той же службы. |
 | <xref:Microsoft.Extensions.DependencyInjection.ServiceDescriptor.Transient*> | Каждый раз, когда компонент получает экземпляр `Transient` службы из контейнера службы, он получает *новый экземпляр* службы. |
 
@@ -124,6 +124,29 @@ public class DataAccess : IDataAccess
 * Должен существовать один конструктор, аргументы которого могут быть выполнены методом DI. Дополнительные параметры, не охваченные DI, разрешены, если они указывают значения по умолчанию.
 * Применимый конструктор должен быть *открытым*.
 * Должен существовать один подходящий конструктор. В случае неоднозначности DI выдает исключение.
+
+## <a name="utility-base-component-classes-to-manage-a-di-scope"></a>Классы базовых компонентов служебной программы для управления областью DI
+
+В ASP.NET Core приложениях службы с областью действия обычно ограничены текущим запросом. По завершении запроса все неограниченные или временные службы удаляются системой DI. В приложениях Блазор Server область запроса длится на время клиентского соединения, что может привести к тому, что временные и ограниченные службы будут работать намного дольше, чем ожидалось.
+
+Чтобы ограничить время существования компонента службами, можно использовать `OwningComponentBase` базовые классы и. `OwningComponentBase<TService>` Эти базовые классы предоставляют `ScopedServices` свойство типа `IServiceProvider` , разрешающее службы, областью действия которых является время существования компонента. Чтобы создать компонент, наследующий от базового класса в Razor, используйте `@inherits` директиву.
+
+```cshtml
+@page "/users"
+@attribute [Authorize]
+@inherits OwningComponentBase<Data.ApplicationDbContext>
+
+<h1>Users (@Service.Users.Count())</h1>
+<ul>
+    @foreach (var user in Service.Users)
+    {
+        <li>@user.UserName</li>
+    }
+</ul>
+```
+
+> [!NOTE]
+> Службы, внедренные в компонент с `@inject` помощью или `InjectAttribute` , не создаются в области компонента и привязаны к области запроса.
 
 ## <a name="additional-resources"></a>Дополнительные ресурсы
 

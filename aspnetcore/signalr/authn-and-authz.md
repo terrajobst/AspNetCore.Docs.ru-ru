@@ -7,12 +7,12 @@ ms.author: bradyg
 ms.custom: mvc
 ms.date: 07/15/2019
 uid: signalr/authn-and-authz
-ms.openlocfilehash: e7e7a9fd537ba89b64c15594652a290357a00038
-ms.sourcegitcommit: f30b18442ed12831c7e86b0db249183ccd749f59
+ms.openlocfilehash: da226f4e192be8e34a0b2cec1493a1353c995279
+ms.sourcegitcommit: 387cf29f5d5addef2cbc70670a11d612806b36b2
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68412541"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70746534"
 ---
 # <a name="authentication-and-authorization-in-aspnet-core-signalr"></a>Проверка подлинности и авторизация в ASP.NET Core SignalR
 
@@ -22,9 +22,11 @@ ms.locfileid: "68412541"
 
 ## <a name="authenticate-users-connecting-to-a-signalr-hub"></a>Проверка подлинности пользователей, подключающихся к концентратору SignalR
 
-SignalR можно использовать с проверкой [подлинности ASP.NET Core](xref:security/authentication/identity) , чтобы связать пользователя с каждым подключением. В центре данные проверки подлинности можно получить из [`HubConnectionContext.User`](/dotnet/api/microsoft.aspnetcore.signalr.hubconnectioncontext.user) свойства. Проверка подлинности позволяет концентратору вызывать методы для всех подключений, связанных с пользователем (Дополнительные сведения см. [в разделе Управление пользователями и группами в SignalR](xref:signalr/groups) ). Несколько подключений могут быть связаны с одним пользователем.
+SignalR можно использовать с [проверкой подлинности ASP.NET Core](xref:security/authentication/identity) , чтобы связать пользователя с каждым подключением. В центре данные проверки подлинности можно получить из [`HubConnectionContext.User`](/dotnet/api/microsoft.aspnetcore.signalr.hubconnectioncontext.user) свойства. Проверка подлинности позволяет концентратору вызывать методы для всех подключений, связанных с пользователем (Дополнительные сведения см. [в разделе Управление пользователями и группами в SignalR](xref:signalr/groups) ). Несколько подключений могут быть связаны с одним пользователем.
 
 Ниже приведен пример `Startup.Configure` использования SignalR и ASP.NET Core проверки подлинности.
+
+::: moniker range=">= aspnetcore-3.0"
 
 ```csharp
 public void Configure(IApplicationBuilder app)
@@ -32,7 +34,31 @@ public void Configure(IApplicationBuilder app)
     ...
 
     app.UseStaticFiles();
-    
+
+    app.UseRouting();
+
+    app.UseAuthentication();
+    app.UseAuthorization();
+
+    app.UseEndpoints(endpoints =>
+    {
+        endpoints.MapHub<ChatHub>("/chat");
+        endpoints.MapControllerRoute("default", "{controller=Home}/{action=Index}/{id?}");
+    });
+}
+```
+
+::: moniker-end
+
+::: moniker range="<= aspnetcore-2.2"
+
+```csharp
+public void Configure(IApplicationBuilder app)
+{
+    ...
+
+    app.UseStaticFiles();
+
     app.UseAuthentication();
 
     app.UseSignalR(hubs =>
@@ -49,6 +75,8 @@ public void Configure(IApplicationBuilder app)
 
 > [!NOTE]
 > Порядок регистрации SignalR и ASP.NET Core по промежуточного слоя проверки подлинности имеет значение. Всегда вызывайте `UseSignalR` метод `UseAuthentication` перед тем, чтобы `HttpContext`у SignalR был пользователь.
+
+::: moniker-end
 
 ### <a name="cookie-authentication"></a>Проверка подлинности файлов cookie
 
@@ -153,7 +181,7 @@ services.AddSingleton<IUserIdProvider, EmailBasedUserIdProvider>();
 
 [!code-csharp[Restrict a hub to only authorized users](authn-and-authz/sample/Hubs/ChatHub.cs?range=8-10,32)]
 
-Можно использовать аргументы конструктора и свойства `[Authorize]` атрибута, чтобы ограничить доступ только тем пользователям, которые соответствуют определенным политикам [авторизации](xref:security/authorization/policies). Например, при наличии пользовательской политики `MyAuthorizationPolicy` авторизации можно убедиться, что только пользователи, соответствующие этой политике, могут получить доступ к концентратору с помощью следующего кода:
+Можно использовать аргументы конструктора и свойства `[Authorize]` атрибута, чтобы ограничить доступ только тем пользователям, которые соответствуют определенным [политикам авторизации](xref:security/authorization/policies). Например, при наличии пользовательской политики `MyAuthorizationPolicy` авторизации можно убедиться, что только пользователи, соответствующие этой политике, могут получить доступ к концентратору с помощью следующего кода:
 
 ```csharp
 [Authorize("MyAuthorizationPolicy")]

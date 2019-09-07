@@ -5,14 +5,14 @@ description: Узнайте, как сохранить состояние в п�
 monikerRange: '>= aspnetcore-3.0'
 ms.author: riande
 ms.custom: mvc
-ms.date: 08/13/2019
+ms.date: 09/05/2019
 uid: blazor/state-management
-ms.openlocfilehash: 01f32130e43b7235cb438ad71321256882f53573
-ms.sourcegitcommit: 8b36f75b8931ae3f656e2a8e63572080adc78513
+ms.openlocfilehash: 000736dde53670d1df76f41cc7cf4f95ef48800a
+ms.sourcegitcommit: 43c6335b5859282f64d66a7696c5935a2bcdf966
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/05/2019
-ms.locfileid: "70310306"
+ms.lasthandoff: 09/07/2019
+ms.locfileid: "70800354"
 ---
 # <a name="aspnet-core-blazor-state-management"></a>Управление состоянием ASP.NET Core Блазор
 
@@ -268,12 +268,12 @@ else
         }
     }
 
-    protected override async Task OnAfterRenderAsync()
+    protected override async Task OnAfterRenderAsync(bool firstRender)
     {
         // By this stage, the client has connected back to the server, and
         // browser services are available. If the app didn't load the data earlier,
         // the app should do so now and then trigger a new render.
-        if (isWaitingForConnection)
+        if (firstRender && isWaitingForConnection)
         {
             isWaitingForConnection = false;
             await LoadStateAsync();
