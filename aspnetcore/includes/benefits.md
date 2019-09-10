@@ -10,6 +10,6 @@ ASP.NET Core предоставляет следующие преимущест�
 * Облачная [система конфигурации](xref:fundamentals/configuration/index) на основе среды.
 * Встроенное [введение зависимостей](xref:fundamentals/dependency-injection).
 * Упрощенный [высокопроизводительный](https://github.com/aspnet/benchmarks) модульный конвейер HTTP-запросов.
-* Возможность размещения в [IIS](xref:host-and-deploy/iis/index), [Nginx](xref:host-and-deploy/linux-nginx), [Apache](xref:host-and-deploy/linux-apache), [Docker](xref:host-and-deploy/docker/index) или в собственном процессе.
-* Параллельное управление версиями приложения, ориентированное на [.NET Core](/dotnet/articles/standard/choosing-core-framework-server).
+* Возможность размещения в [Kestrel](xref:fundamentals/servers/kestrel), ([IIS](xref:host-and-deploy/iis/index), [Nginx](xref:host-and-deploy/linux-nginx), [Apache](xref:host-and-deploy/linux-apache), [Docker](xref:host-and-deploy/docker/index) или в собственном процессе.
+* [Управление параллельными версиями](/dotnet/standard/choosing-core-framework-server#a-need-for-side-by-side-of-net-versions-per-application-level).
 * Инструментарий, упрощающий процесс современной веб-разработки.

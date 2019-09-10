@@ -5,14 +5,14 @@ description: Познакомьтесь с основными принципам
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 05/11/2019
+ms.date: 09/02/2019
 uid: fundamentals/index
-ms.openlocfilehash: a6c848987c97103864fd5410922346e85a68c353
-ms.sourcegitcommit: 7a40c56bf6a6aaa63a7ee83a2cac9b3a1d77555e
+ms.openlocfilehash: 7e2901919c8b0165d0f169abf74fe5bc0edd8be4
+ms.sourcegitcommit: f65d8765e4b7c894481db9b37aa6969abc625a48
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67856237"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70773746"
 ---
 # <a name="aspnet-core-fundamentals"></a>Основы ASP.NET Core
 
@@ -269,6 +269,18 @@ ASP.NET Core включает реализацию интерфейса `IHttpC
 ## <a name="web-root"></a>Корневой веб-узел
 
 Корневой каталог документов (*webroot*) — это базовый путь к общедоступным статическим ресурсам, включая CSS, JavaScript и файлы изображений. По умолчанию ПО промежуточного слоя статических файлов обслуживает только файлы из корневого каталога документов и его подкаталогов. По умолчанию используется путь *{корневой каталог содержимого}/wwwroot*. Альтернативное расположение можно задать при [создании узла](#host).
+
+::: moniker range=">= aspnetcore-3.0"
+
+Дополнительные сведения см. в разделе [ContentRootPath](/aspnet/core/fundamentals/host/generic-host?view=aspnetcore-3.0#contentrootpath).
+
+::: moniker-end
+
+::: moniker range="< aspnetcore-3.0"
+
+Дополнительные сведения см. в разделе [Корневой веб-каталог](/aspnet/core/fundamentals/host/web-host#webroot).
+
+::: moniker-end
 
 Для указания на корневой каталог файлов Razor (*CSHTML*) используется символ тильды и косой черты `~/`. Пути, начинающиеся с `~/`, называются виртуальными путями.
 

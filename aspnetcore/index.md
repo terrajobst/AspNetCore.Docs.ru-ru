@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 04/07/2019
 uid: index
-ms.openlocfilehash: ec2b5b72eeff21d183397284b0d538681282d45b
-ms.sourcegitcommit: 47cc13ab90913af9a2887cef0896bb4e9aba4dd5
+ms.openlocfilehash: c9b33b16de354c8bac804e8fd5e8e3ce3af688fc
+ms.sourcegitcommit: f65d8765e4b7c894481db9b37aa6969abc625a48
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 06/26/2019
-ms.locfileid: "67399163"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70773709"
 ---
 # <a name="introduction-to-aspnet-core"></a>Введение в ASP.NET Core
 
@@ -63,7 +63,7 @@ ASP.NET Core версии 3.0 и более поздних будут выпол
 
 * Кроссплатформенность. Выполняется на macOS, Linux и Windows.
 * Повышение производительности
-* Управление параллельными версиями
+* [Управление параллельными версиями](/dotnet/standard/choosing-core-framework-server#a-need-for-side-by-side-of-net-versions-per-application-level)
 * Новые интерфейсы API
 * Открытый исходный код
 
