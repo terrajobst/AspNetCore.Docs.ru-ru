@@ -5,14 +5,14 @@ description: Узнайте, как устранить угрозы безопа
 monikerRange: '>= aspnetcore-3.0'
 ms.author: riande
 ms.custom: mvc
-ms.date: 09/05/2019
+ms.date: 09/07/2019
 uid: security/blazor/server-side
-ms.openlocfilehash: 13bb4475b4beac78cf489d83fb59a3e0d6d8f2d9
-ms.sourcegitcommit: 43c6335b5859282f64d66a7696c5935a2bcdf966
+ms.openlocfilehash: d30f19bfbbcdb6c142f03a6e0cc6e1fc154c2091
+ms.sourcegitcommit: e7c56e8da5419bbc20b437c2dd531dedf9b0dc6b
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/07/2019
-ms.locfileid: "70800494"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70878527"
 ---
 # <a name="secure-aspnet-core-blazor-server-side-apps"></a>Безопасные ASP.NET Core Блазор приложения на стороне сервера
 
@@ -115,7 +115,7 @@ ms.locfileid: "70800494"
 Для вызовов из методов .NET к JavaScript:
 
 * Все вызовы имеют настраиваемое время ожидания, по истечении которых они завершаются <xref:System.OperationCanceledException> сбоем, возвращая в вызывающий объект.
-  * По умолчанию время ожидания вызовов (`CircuitOptions.JSInteropDefaultCallTimeout`) равно одной минуте.
+  * По умолчанию время ожидания вызовов (`CircuitOptions.JSInteropDefaultCallTimeout`) равно одной минуте. Чтобы настроить это ограничение, см <xref:blazor/javascript-interop#harden-js-interop-calls>. раздел.
   * Для управления отменой на основе каждого вызова можно предоставить токен отмены. Полагаться на время ожидания вызова по умолчанию, когда это возможно, и с ограниченным временем любым вызовом клиента, если предоставлен токен отмены.
 * Результат вызова JavaScript не может быть доверенным. Клиент приложения Блазор, запущенный в браузере, выполняет поиск вызываемой функции JavaScript. Вызывается функция и создается либо результат, либо ошибка. Вредоносный клиент может попытаться:
   * Вызывает проблемы в приложении, возвращая ошибку из функции JavaScript.
@@ -200,6 +200,72 @@ ms.locfileid: "70800494"
 ```
 
 Если добавить `if (count < 3) { ... }` проверку внутри обработчика, решение приращения `count` будет основано на текущем состоянии приложения. Решение не зависит от состояния пользовательского интерфейса, которое было в предыдущем примере, что может быть временно устаревшим.
+
+### <a name="guard-against-multiple-dispatches"></a>Защита от нескольких отправок
+
+Если обратный вызов события вызывает длительную операцию, например получение данных из внешней службы или базы данных, рекомендуется использовать условие. Это условие может препятствовать постановке пользователем в очередь нескольких операций во время выполнения операции с визуальным отзывом. Следующий код компонента задает `isLoading` значение, чтобы `GetForecastAsync` `true` при получении данных с сервера. Пока `isLoading` имеет `true`значение, кнопка отключена в пользовательском интерфейсе:
+
+```cshtml
+@page "/fetchdata"
+@using BlazorServerSample.Data
+@inject WeatherForecastService ForecastService
+
+<button disabled="@isLoading" @onclick="UpdateForecasts">Update</button>
+
+@code {
+    private bool isLoading;
+    private WeatherForecast[] forecasts;
+
+    private async Task UpdateForecasts()
+    {
+        if (!isLoading)
+        {
+            isLoading = true;
+            forecasts = await ForecastService.GetForecastAsync(DateTime.Now);
+            isLoading = false;
+        }
+    }
+}
+```
+
+### <a name="cancel-early-and-avoid-use-after-dispose"></a>Отмена в начале и избежание использования-After-Dispose
+
+Помимо использования защиты, как описано в разделе [Защита от нескольких исправлений](#guard-against-multiple-dispatches) , рекомендуется использовать <xref:System.Threading.CancellationToken> для отмены длительных операций при удалении компонента. Этот подход обладает дополнительными преимуществами для предотвращения *использования после удаления* в компонентах:
+
+```cshtml
+@implements IDisposable
+
+...
+
+@code {
+    private readonly CancellationTokenSource TokenSource = 
+        new CancellationTokenSource();
+
+    private async Task UpdateForecasts()
+    {
+        ...
+
+        forecasts = await ForecastService.GetForecastAsync(DateTime.Now, 
+            TokenSource.Token);
+
+        if (TokenSource.Token.IsCancellationRequested)
+        {
+           return;
+        }
+
+        ...
+    }
+
+    public void Dispose()
+    {
+        CancellationTokenSource.Cancel();
+    }
+}
+```
+
+### <a name="avoid-events-that-produce-large-amounts-of-data"></a>Избегайте событий, создающих большие объемы данных
+
+Некоторые события DOM, такие как `oninput` или `onscroll`, могут создавать большой объем данных. Избегайте использования этих событий в приложениях Блазор Server.
 
 ## <a name="additional-security-guidance"></a>Дополнительные рекомендации по безопасности
 
@@ -330,6 +396,9 @@ ms.locfileid: "70800494"
 * Запретить клиенту выделение непривязанного объема памяти.
   * Данные в компоненте.
   * `DotNetObject`ссылки, возвращаемые клиенту.
+* Защита от нескольких диспетчеризации.
+* Отмена длительных операций при удалении компонента.
+* Избегайте событий, создающих большие объемы данных.
 * Избегайте использования вводимых пользователем данных в рамках вызовов `NavigationManager.Navigate` и проверки вводимых пользователем данных для URL-адресов с набором разрешенных источников сначала, если это не так.
 * Не следует принимать решения об авторизации на основе состояния пользовательского интерфейса, но только из состояния компонента.
 * Рассмотрите возможность использования [политики безопасности содержимого (CSP)](https://developer.mozilla.org/docs/Web/HTTP/CSP) для защиты от атак XSS.

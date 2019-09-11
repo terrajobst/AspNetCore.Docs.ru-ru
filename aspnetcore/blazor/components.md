@@ -7,12 +7,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 09/06/2019
 uid: blazor/components
-ms.openlocfilehash: e877abfb568f71046c3603cac5e888e99ffc8d15
-ms.sourcegitcommit: 43c6335b5859282f64d66a7696c5935a2bcdf966
+ms.openlocfilehash: dbd0879d200061151e8307346adef784967bf123
+ms.sourcegitcommit: e7c56e8da5419bbc20b437c2dd531dedf9b0dc6b
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/07/2019
-ms.locfileid: "70800420"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70878398"
 ---
 # <a name="create-and-use-aspnet-core-razor-components"></a>Создание и использование компонентов ASP.NET Core Razor
 
@@ -1466,3 +1466,7 @@ public class CultureController : Controller
 ```
 
 Однако встроенная разметка SVG не поддерживается во всех сценариях. Если `<svg>` тег размещается непосредственно в файле компонента ( *. Razor*), то поддерживается базовая визуализация изображений, но многие расширенные сценарии пока не поддерживаются. Например, `<use>` в настоящее время теги не учитываются и `@bind` не могут использоваться с некоторыми тегами SVG. В будущем выпуске мы планируем устранить эти ограничения.
+
+## <a name="additional-resources"></a>Дополнительные ресурсы
+
+* <xref:security/blazor/server-side>&ndash; Содержит рекомендации по созданию приложений блазор на стороне сервера, которые должны конкурировать с нехваткой ресурсов.
