@@ -7,12 +7,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 09/05/2019
 uid: blazor/get-started
-ms.openlocfilehash: 7bff1d38de77adfa1835ee37f4e5f8912ba629cc
-ms.sourcegitcommit: 43c6335b5859282f64d66a7696c5935a2bcdf966
+ms.openlocfilehash: e33ca421676caa20c823faf635442eda2a40ba65
+ms.sourcegitcommit: 092061c4f6ef46ed2165fa84de6273d3786fb97e
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/07/2019
-ms.locfileid: "70800309"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70964016"
 ---
 # <a name="get-started-with-aspnet-core-blazor"></a>Начало работы с ASP.NET Core Блазор
 
@@ -40,7 +40,7 @@ ms.locfileid: "70800309"
 
    4 \. В поле **Имя проекта** укажите имя проекта или оставьте имя по умолчанию. Убедитесь, что запись **расположения** указана правильно, или укажите расположение для проекта. Нажмите кнопку **Создать**.
 
-   5 \. Для интерфейса Блазор на стороне клиента выберите шаблон **приложения блазор для сборки** . Для интерфейса Блазор на стороне сервера выберите шаблон **серверное приложение блазор** . Нажмите кнопку **Создать**. Сведения о двух моделях размещения Блазор: на стороне сервера и на клиенте см. в разделе <xref:blazor/hosting-models>.
+   5 \. Для интерфейса Блазор можно выбрать шаблон **приложения блазор для сборки** . Для удобства работы с сервером Блазор выберите шаблон **серверное приложение блазор** . Нажмите кнопку **Создать**. Сведения о двух Блазор моделях размещения, *Блазор Server* и *блазор Assembly*см. в разделе <xref:blazor/hosting-models>.
 
    6 \. Нажмите клавишу **F5** для запуска приложения.
 
@@ -53,25 +53,25 @@ ms.locfileid: "70800309"
 
    2 \. Установите последнюю версию [ C# для расширения Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp).
 
-   3 \. Для интерфейса Блазор на стороне клиента выполните следующую команду в командной оболочке:
+   3 \. Для работы с Блазор-сборками выполните следующую команду в командной оболочке:
 
       ```console
       dotnet new blazorwasm -o WebApplication1
       ```
 
-      Для интерфейса Блазор на стороне сервера выполните следующую команду в командной оболочке:
+      Для работы с сервером Блазор выполните следующую команду в командной оболочке:
 
       ```console
       dotnet new blazorserver -o WebApplication1
       ```
 
-      Сведения о двух моделях размещения Блазор: на стороне сервера и на клиенте см. в разделе <xref:blazor/hosting-models>.
+      Сведения о двух Блазор моделях размещения, *Блазор Server* и *блазор Assembly*см. в разделе <xref:blazor/hosting-models>.
 
    4 \. Откройте папку *WebApplication1* в Visual Studio Code.
 
-   5 \. Для проекта на стороне сервера Блазор среда IDE запрашивает добавление ресурсов для сборки и отладки проекта. Выберите ответ **Да**.
+   5 \. Для проекта сервера Блазор среда IDE запрашивает добавление ресурсов для сборки и отладки проекта. Выберите ответ **Да**.
 
-   6 \. При использовании приложения Блазор на стороне сервера запустите приложение с помощью отладчика Visual Studio Code. Если используется клиентское приложение блазор, выполните `dotnet run` из папки проекта приложения.
+   6 \. При использовании серверного приложения Блазор запустите приложение с помощью отладчика Visual Studio Code. Если используется блазор приложение сборки, выполните `dotnet run` из папки проекта приложения.
 
    7 \. В браузере перейдите на адрес `https://localhost:5001`.
 
@@ -85,7 +85,7 @@ ms.locfileid: "70800309"
 
    3\. In the sidebar, select **.NET Core** > **App**.
 
-   4\. For a Blazor server-side experience, select the **Blazor Server App** template. For a Blazor client-side experience, select the **Blazor WebAssembly App** template. Select **Next**. For information on the two Blazor hosting models, server-side and client-side, see <xref:blazor/hosting-models>.
+   4\. For a Blazor Server experience, select the **Blazor Server App** template. For a Blazor WebAssembly experience, select the **Blazor WebAssembly App** template. Select **Next**. For information on the two Blazor hosting models, *Blazor Server* and *Blazor WebAssembly*, see <xref:blazor/hosting-models>.
 
    5\. The **Target Framework** defaults to **.NET Core 3.0**. Select **Next**.
 
@@ -97,7 +97,7 @@ ms.locfileid: "70800309"
 
    # <a name="net-core-clitabnetcore-cli"></a>[Интерфейс командной строки .NET Core](#tab/netcore-cli/)
 
-   Для интерфейса Блазор на стороне клиента выполните следующие команды в командной оболочке:
+   Для работы с Блазор-сборками выполните следующие команды в командной оболочке:
 
    ```console
    dotnet new blazorwasm -o WebApplication1
@@ -105,7 +105,7 @@ ms.locfileid: "70800309"
    dotnet run
    ```
 
-   Для интерфейса Блазор на стороне сервера выполните следующие команды в командной оболочке:
+   Для работы с сервером Блазор выполните следующие команды в командной оболочке:
 
    ```console
    dotnet new blazorserver -o WebApplication1
@@ -113,7 +113,7 @@ ms.locfileid: "70800309"
    dotnet run
    ```
 
-   Сведения о двух моделях размещения Блазор: на стороне сервера и на клиенте см. в разделе <xref:blazor/hosting-models>.
+   Сведения о двух Блазор моделях размещения, *Блазор Server* и *блазор Assembly*см. в разделе <xref:blazor/hosting-models>.
 
    В браузере перейдите на адрес `https://localhost:5001`.
 

@@ -7,18 +7,18 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 08/22/2019
 uid: blazor/debug
-ms.openlocfilehash: c3188a1fe1b699b787f7a95630f3918d295d0f68
-ms.sourcegitcommit: 8835b6777682da6fb3becf9f9121c03f89dc7614
+ms.openlocfilehash: e9477e504d32fd1dd5d6c87392386d1131f46e9f
+ms.sourcegitcommit: 092061c4f6ef46ed2165fa84de6273d3786fb97e
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69974900"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70963996"
 ---
 # <a name="debug-aspnet-core-blazor"></a>Отладка ASP.NET Core Блазор
 
 [Даниэль Roth)](https://github.com/danroth27)
 
-Для отладки клиентских приложений Блазор, выполняющихся на веб-сборке в Chrome, существует *ранняя* поддержка.
+Для отладки Блазор приложений веб сборки, выполняющихся на веб – сборке в Chrome, существует *ранняя* поддержка.
 
 Возможности отладчика ограничены. Доступные сценарии включают в себя:
 
@@ -47,7 +47,7 @@ ms.locfileid: "69974900"
 
 ## <a name="procedure"></a>Процедура
 
-1. Запустите приложение блазор на стороне клиента в `Debug` конфигурации. Передайте `dotnet run --configuration Debug`параметр в команду [DotNet Run:.](/dotnet/core/tools/dotnet-run) `--configuration Debug`
+1. Запустите приложение блазор сборки в `Debug` конфигурации. Передайте `dotnet run --configuration Debug`параметр в команду [DotNet Run:.](/dotnet/core/tools/dotnet-run) `--configuration Debug`
 1. Доступ к приложению в браузере.
 1. Поместите фокус клавиатуры на приложение, а не на панель инструментов разработчика. Панель средств разработчика можно закрыть при инициации отладки.
 1. Выберите следующее сочетание клавиш, определяемое Блазор:

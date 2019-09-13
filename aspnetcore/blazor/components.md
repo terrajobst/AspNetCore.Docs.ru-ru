@@ -7,12 +7,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 09/06/2019
 uid: blazor/components
-ms.openlocfilehash: dbd0879d200061151e8307346adef784967bf123
-ms.sourcegitcommit: e7c56e8da5419bbc20b437c2dd531dedf9b0dc6b
+ms.openlocfilehash: bc9fa06e5acccb773717fe87bf4aabb971b8dee5
+ms.sourcegitcommit: 092061c4f6ef46ed2165fa84de6273d3786fb97e
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70878398"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70963783"
 ---
 # <a name="create-and-use-aspnet-core-razor-components"></a>Создание и использование компонентов ASP.NET Core Razor
 
@@ -79,7 +79,7 @@ ms.locfileid: "70878398"
 
 Хотя страницы и представления могут использовать компоненты, наоборот это не так. Компоненты не могут использовать сценарии представления и страницы, такие как частичные представления и разделы. Чтобы использовать логику из частичного представления в компоненте, разнесите логику частичного представления в компонент.
 
-Дополнительные сведения о подготовке компонентов к просмотру и управлении состоянием компонентов в приложениях блазор на стороне сервера см. в <xref:blazor/hosting-models> статье.
+Дополнительные сведения о подготовке компонентов к просмотру и управлении состоянием компонентов в приложениях блазор Server см. в <xref:blazor/hosting-models> статье.
 
 ## <a name="use-components"></a>Использование компонентов
 
@@ -217,7 +217,7 @@ ms.locfileid: "70878398"
 
 ```cshtml
 <input value="@CurrentValue"
-    @onchange="@((UIChangeEventArgs __e) => CurrentValue = __e.Value)" />
+    @onchange="@((ChangeEventArgs __e) => CurrentValue = __e.Value)" />
 ```
 
 При подготовке компонента к `value` просмотру элемент входного элемента берется `CurrentValue` из свойства. Когда пользователь вводит текст в текстовое поле, `onchange` создается событие, `CurrentValue` а свойству присваивается измененное значение. На практике создание кода немного сложнее, так как `@bind` обрабатывает несколько случаев, когда выполняются преобразования типов. В принципе, `@bind` связывает текущее значение выражения `value` с атрибутом и обрабатывает изменения с помощью зарегистрированного обработчика.
@@ -379,7 +379,7 @@ ms.locfileid: "70878398"
 </button>
 
 @code {
-    private void UpdateHeading(UIMouseEventArgs e)
+    private void UpdateHeading(MouseEventArgs e)
     {
         ...
     }
@@ -409,7 +409,7 @@ ms.locfileid: "70878398"
 </button>
 
 @code {
-    private async Task UpdateHeading(UIMouseEventArgs e)
+    private async Task UpdateHeading(MouseEventArgs e)
     {
         ...
     }
@@ -446,7 +446,7 @@ ms.locfileid: "70878398"
 <button @onclick="@(e => Console.WriteLine("Hello, world!"))">Say hello</button>
 ```
 
-Часто бывает удобно закрывать дополнительные значения, например при переборе набора элементов. В следующем примере создаются три кнопки, каждый из которых вызывает `UpdateHeading` передачу аргумента события (`UIMouseEventArgs`) и номер кнопки (`buttonNumber`) при выборе в пользовательском интерфейсе:
+Часто бывает удобно закрывать дополнительные значения, например при переборе набора элементов. В следующем примере создаются три кнопки, каждый из которых вызывает `UpdateHeading` передачу аргумента события (`MouseEventArgs`) и номер кнопки (`buttonNumber`) при выборе в пользовательском интерфейсе:
 
 ```cshtml
 <h2>@message</h2>
@@ -464,7 +464,7 @@ ms.locfileid: "70878398"
 @code {
     private string message = "Select a button to learn its position.";
 
-    private void UpdateHeading(UIMouseEventArgs e, int buttonNumber)
+    private void UpdateHeading(MouseEventArgs e, int buttonNumber)
     {
         message = $"You selected Button #{buttonNumber} at " +
             $"mouse position: {e.ClientX} X {e.ClientY}.";
@@ -479,7 +479,7 @@ ms.locfileid: "70878398"
 
 Распространенным сценарием с вложенными компонентами является желание запускать метод родительского компонента при возникновении&mdash;события дочернего компонента, например `onclick` при возникновении события в дочернем элементе. Чтобы предоставить события для компонентов, используйте `EventCallback`. Родительский компонент может назначить метод обратного вызова для дочернего `EventCallback`компонента.
 
-В примере приложения `EventCallback` демонстрируется настройка `onclick` обработчика кнопки на получение делегата из примера `ParentComponent`. `ChildComponent` Вводится с помощью `UIMouseEventArgs` ,`onclick` что подходит для события с периферийного устройства. `EventCallback`
+В примере приложения `EventCallback` демонстрируется настройка `onclick` обработчика кнопки на получение делегата из примера `ParentComponent`. `ChildComponent` Вводится с помощью `MouseEventArgs` ,`onclick` что подходит для события с периферийного устройства. `EventCallback`
 
 [!code-cshtml[](common/samples/3.x/BlazorSample/Components/ChildComponent.razor?highlight=5-7,17-18)]
 
@@ -516,6 +516,126 @@ await callback.InvokeAsync(arg);
 Используйте `EventCallback` и`EventCallback<T>` для обработки событий и параметров компонента привязки.
 
 Предпочитать строго типизированный `EventCallback<T>`. `EventCallback` `EventCallback<T>`обеспечивает лучшую реакцию на ошибки для пользователей компонента. Как и в случае с другими обработчиками событий пользовательского интерфейса, указание параметра события является необязательным. Используется `EventCallback` при отсутствии значения, переданного обратному вызову.
+
+## <a name="chained-bind"></a>Привязка к цепочке
+
+Распространенным сценарием является привязка привязанного к данным параметра к элементу страницы в выходных данных компонента. Этот сценарий называется *связанной* привязкой, так как несколько уровней привязки происходят одновременно.
+
+Невозможно реализовать цепочку привязки с `@bind` синтаксисом в элементе страницы. Обработчик событий и значение должны быть указаны отдельно. Однако родительский компонент может использовать `@bind` синтаксис с параметром компонента.
+
+Следующий `PasswordField` компонент (*пассвордфиелд. Razor*):
+
+* Задает значение `Password` элемента для свойства. `<input>`
+* Предоставляет изменения `Password` свойства в родительский компонент с помощью [вложенный EventCallback](#eventcallback).
+
+```cshtml
+Password: 
+
+<input @oninput="OnPasswordChanged" 
+       required 
+       type="@(showPassword ? "text" : "password")" 
+       value="@Password" />
+
+<button class="btn btn-primary" @onclick="ToggleShowPassword">
+    Show password
+</button>
+
+@code {
+    private bool showPassword;
+
+    [Parameter]
+    public string Password { get; set; }
+
+    [Parameter]
+    public EventCallback<string> PasswordChanged { get; set; }
+
+    private Task OnPasswordChanged(ChangeEventArgs e)
+    {
+        Password = e.Value.ToString();
+
+        return PasswordChanged.InvokeAsync(Password);
+    }
+
+    private void ToggleShowPassword()
+    {
+        showPassword = !showPassword;
+    }
+}
+```
+
+`PasswordField` Компонент используется в другом компоненте:
+
+```cshtml
+<PasswordField @bind-Password="password" />
+
+@code {
+    private string password;
+}
+```
+
+Для выполнения проверок или перехвата ошибок в пароле в предыдущем примере:
+
+* Создайте резервное поле для `Password` (`password` в следующем примере кода).
+* Выполнение проверок или перехвата ошибок в `Password` методе задания.
+
+В следующем примере представлена немедленная реакция пользователя, если в значении пароля используется пробел:
+
+```cshtml
+Password: 
+
+<input @oninput="OnPasswordChanged" 
+       required 
+       type="@(showPassword ? "text" : "password")" 
+       value="@Password" />
+
+<button class="btn btn-primary" @onclick="ToggleShowPassword">
+    Show password
+</button>
+
+<span class="text-danger">@validationMessage</span>
+
+@code {
+    private bool showPassword;
+    private string password;
+    private string validationMessage;
+
+    [Parameter]
+    public string Password
+    {
+        get { return password ?? string.Empty; }
+        set
+        {
+            if (password != value)
+            {
+                if (value.Contains(' '))
+                {
+                    validationMessage = "Spaces not allowed!";
+                }
+                else
+                {
+                    password = value;
+                    validationMessage = string.Empty;
+                }
+            }
+        }
+    }
+
+    [Parameter]
+    public EventCallback<string> PasswordChanged { get; set; }
+
+    private Task OnPasswordChanged(ChangeEventArgs e)
+    {
+        Password = e.Value.ToString();
+
+        return PasswordChanged.InvokeAsync(Password);
+    }
+
+    private void ToggleShowPassword()
+    {
+        showPassword = !showPassword;
+    }
+}
+```
 
 ## <a name="capture-references-to-components"></a>Запись ссылок на компоненты
 
@@ -565,7 +685,7 @@ public class NotifierService
         }
     }
 
-    public event Action<string, int, Task> Notify;
+    public event Func<string, int, Task> Notify;
 }
 ```
 
@@ -613,7 +733,7 @@ public class NotifierService
 ```csharp
 @foreach (var person in People)
 {
-    <DetailsEditor Details="@person.Details" />
+    <DetailsEditor Details="person.Details" />
 }
 
 @code {
@@ -629,7 +749,7 @@ public class NotifierService
 ```csharp
 @foreach (var person in People)
 {
-    <DetailsEditor @key="@person" Details="@person.Details" />
+    <DetailsEditor @key="person" Details="person.Details" />
 }
 
 @code {
@@ -656,8 +776,8 @@ public class NotifierService
 Кроме того, можно `@key` использовать, чтобы предотвратить блазор с сохранением поддерева элемента или компонента при изменении объекта:
 
 ```cshtml
-<div @key="@currentPerson">
-    ... content that depends on @currentPerson ...
+<div @key="currentPerson">
+    ... content that depends on currentPerson ...
 </div>
 ```
 
@@ -934,7 +1054,7 @@ This is the Index page.
 При использовании компонента шаблона можно указать параметры шаблона с помощью дочерних элементов, совпадающих с именами параметров (`TableHeader` и `RowTemplate` в следующем примере):
 
 ```cshtml
-<TableTemplate Items="@pets">
+<TableTemplate Items="pets">
     <TableHeader>
         <th>ID</th>
         <th>Name</th>
@@ -951,7 +1071,7 @@ This is the Index page.
 Аргументы компонента типа `RenderFragment<T>` , переданные как элементы, имеют неявный параметр с именем `context` (например, из предыдущего `@context.PetId`примера кода,), но можно изменить имя параметра с `Context` помощью атрибута дочернего элемента дерев. В следующем примере `RowTemplate` `Context` атрибут элемента задает `pet` параметр:
 
 ```cshtml
-<TableTemplate Items="@pets">
+<TableTemplate Items="pets">
     <TableHeader>
         <th>ID</th>
         <th>Name</th>
@@ -966,7 +1086,7 @@ This is the Index page.
 Кроме того, можно указать `Context` атрибут для элемента Component. Указанный `Context` атрибут применяется ко всем указанным параметрам шаблона. Это может быть полезно, если необходимо указать имя параметра содержимого для неявного дочернего содержимого (без обертывания дочернего элемента). В следующем примере `Context` атрибут отображается `TableTemplate` в элементе и применяется ко всем параметрам шаблона:
 
 ```cshtml
-<TableTemplate Items="@pets" Context="pet">
+<TableTemplate Items="pets" Context="pet">
     <TableHeader>
         <th>ID</th>
         <th>Name</th>
@@ -987,7 +1107,7 @@ This is the Index page.
 При использовании компонентов универсальной типизации параметр типа выводится, если это возможно:
 
 ```cshtml
-<ListViewTemplate Items="@pets">
+<ListViewTemplate Items="pets">
     <ItemTemplate Context="pet">
         <li>@pet.Name</li>
     </ItemTemplate>
@@ -997,7 +1117,7 @@ This is the Index page.
 В противном случае параметр типа необходимо явно указать с помощью атрибута, совпадающего с именем параметра типа. В следующем примере `TItem="Pet"` указывает тип:
 
 ```cshtml
-<ListViewTemplate Items="@pets" TItem="Pet">
+<ListViewTemplate Items="pets" TItem="Pet">
     <ItemTemplate Context="pet">
         <li>@pet.Name</li>
     </ItemTemplate>
@@ -1037,7 +1157,7 @@ public class ThemeInfo
             <NavMenu />
         </div>
         <div class="col-sm-9">
-            <CascadingValue Value="@theme">
+            <CascadingValue Value="theme">
                 <div class="content px-4">
                     @Body
                 </div>
@@ -1331,7 +1451,7 @@ builder.AddContent(seq++, "Second");
 
 ## <a name="localization"></a>Локализация
 
-Блазор приложения на стороне сервера локализованы с использованием по [промежуточного слоя локализации](xref:fundamentals/localization#localization-middleware). По промежуточного слоя выбирает соответствующие языки и региональные параметры для пользователей, запрашивающих ресурсы из приложения.
+Блазор серверные приложения локализованы по [промежуточного слоя локализации](xref:fundamentals/localization#localization-middleware). По промежуточного слоя выбирает соответствующие языки и региональные параметры для пользователей, запрашивающих ресурсы из приложения.
 
 Язык и региональные параметры можно задать с помощью одного из следующих подходов:
 
@@ -1348,7 +1468,7 @@ builder.AddContent(seq++, "Second");
 
 Любой метод можно использовать для назначения языка и региональных параметров, если язык и региональные параметры сохраняются в файле cookie локализации. Если у приложения уже есть установленная схема локализации для ASP.NET Core на стороне сервера, продолжайте использовать существующую инфраструктуру локализации приложения и задавайте файл cookie культуры локализации в схеме приложения.
 
-В следующем примере показано, как задать текущий язык и региональные параметры в файле cookie, который может быть прочитан по промежуточного слоя локализации. Создайте файл *pages/Host. cshtml. CS* со следующим содержимым в приложении блазор на стороне сервера:
+В следующем примере показано, как задать текущий язык и региональные параметры в файле cookie, который может быть прочитан по промежуточного слоя локализации. Создайте файл *pages/Host. cshtml. CS* со следующим содержимым в приложении блазор Server:
 
 ```csharp
 public class HostModel : PageModel
@@ -1370,9 +1490,9 @@ public class HostModel : PageModel
 1. Браузер отправляет в приложение исходный HTTP-запрос.
 1. Язык и региональные параметры назначаются по промежуточного слоя локализации.
 1. Метод в *_Host. cshtml. CS* сохраняет язык и региональные параметры в файле cookie как часть ответа. `OnGet`
-1. Браузер открывает подключение WebSocket для создания интерактивного сеанса Блазор на стороне сервера.
+1. Браузер открывает соединение WebSocket для создания интерактивного сеанса Блазор Server.
 1. По промежуточного слоя для локализации считывает файл cookie и назначает язык и региональные параметры.
-1. Сеанс на стороне сервера Блазор начинается с правильного языка и региональных параметров.
+1. Сеанс сервера Блазор начинается с правильного языка и региональных параметров.
 
 ## <a name="provide-ui-to-choose-the-culture"></a>Предоставление пользовательского интерфейса для выбора языка и региональных параметров
 
@@ -1420,7 +1540,7 @@ public class CultureController : Controller
 @code {
     private double textNumber;
 
-    private void OnSelected(UIChangeEventArgs e)
+    private void OnSelected(ChangeEventArgs e)
     {
         var culture = (string)e.Value;
         var uri = new Uri(NavigationManager.Uri())
@@ -1469,4 +1589,4 @@ public class CultureController : Controller
 
 ## <a name="additional-resources"></a>Дополнительные ресурсы
 
-* <xref:security/blazor/server-side>&ndash; Содержит рекомендации по созданию приложений блазор на стороне сервера, которые должны конкурировать с нехваткой ресурсов.
+* <xref:security/blazor/server>&ndash; Содержит рекомендации по созданию приложений блазор Server, которые должны конкурировать с нехваткой ресурсов.

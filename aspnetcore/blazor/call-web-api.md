@@ -7,31 +7,31 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 08/13/2019
 uid: blazor/call-web-api
-ms.openlocfilehash: 60ebd01bc07da22cd1dcd0b16297ee54c97867fc
-ms.sourcegitcommit: f5f0ff65d4e2a961939762fb00e654491a2c772a
+ms.openlocfilehash: 152a2d5ac9a4325592ca414e9ea5e70c947d079f
+ms.sourcegitcommit: 092061c4f6ef46ed2165fa84de6273d3786fb97e
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69030382"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70963697"
 ---
 # <a name="call-a-web-api-from-aspnet-core-blazor"></a>Вызов веб-API из ASP.NET Core Блазор
 
 [Люк ЛаСаМ](https://github.com/guardrex) и [Даниэль Roth)](https://github.com/danroth27)
 
-Блазор клиентские приложения вызывают веб-API с помощью предварительно настроенной `HttpClient` службы. Запросы на создание, которые могут включать параметры [API-интерфейса получения](https://developer.mozilla.org/docs/Web/API/Fetch_API) JavaScript, с помощью вспомогательных <xref:System.Net.Http.HttpRequestMessage>функций JSON блазор или с.
+Блазорные приложения вызывают веб-API с помощью предварительно настроенной `HttpClient` службы. Запросы на создание, которые могут включать параметры [API-интерфейса получения](https://developer.mozilla.org/docs/Web/API/Fetch_API) JavaScript, с помощью вспомогательных <xref:System.Net.Http.HttpRequestMessage>функций JSON блазор или с.
 
-Блазор приложения на стороне сервера вызывают веб-API <xref:System.Net.Http.HttpClient> с помощью экземпляров, <xref:System.Net.Http.IHttpClientFactory>обычно созданных с помощью. Дополнительные сведения см. в разделе <xref:fundamentals/http-requests>.
+Серверные приложения блазор вызывают веб- <xref:System.Net.Http.HttpClient> API с помощью экземпляров <xref:System.Net.Http.IHttpClientFactory>, обычно созданных с помощью. Дополнительные сведения см. в разделе <xref:fundamentals/http-requests>.
 
 [Просмотреть или скачать образец кода](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/blazor/common/samples/) ([как скачивать](xref:index#how-to-download-a-sample))
 
-Примеры для Блазор на стороне клиента см. в следующих компонентах примера приложения:
+Примеры Блазор см. в следующих компонентах примера приложения:
 
 * Вызов веб-API (*pages/каллвебапи. Razor*)
 * Тестер HTTP-запросов (*Components/хттпрекуесттестер. Razor*)
 
 ## <a name="httpclient-and-json-helpers"></a>HttpClient и вспомогательные методы JSON
 
-В клиентских приложениях Блазор [HttpClient](xref:fundamentals/http-requests) доступна в качестве предварительно настроенной службы для выполнения запросов к серверу-источнику. Чтобы использовать `HttpClient` вспомогательные методы JSON, добавьте ссылку на пакет в `Microsoft.AspNetCore.Blazor.HttpClient`. `HttpClient`Кроме того, вспомогательные методы JSON также используются для вызова конечных точек веб-API сторонних производителей. `HttpClient`реализуется с помощью [API выборки](https://developer.mozilla.org/docs/Web/API/Fetch_API) в браузере и подчиняется его ограничениям, включая принудительное применение той же политики происхождения.
+В приложениях Блазор веб-сборки [HttpClient](xref:fundamentals/http-requests) доступна в виде предварительно настроенной службы для выполнения запросов к серверу-источнику. Чтобы использовать `HttpClient` вспомогательные методы JSON, добавьте ссылку на пакет в `Microsoft.AspNetCore.Blazor.HttpClient`. `HttpClient`Кроме того, вспомогательные методы JSON также используются для вызова конечных точек веб-API сторонних производителей. `HttpClient`реализуется с помощью [API выборки](https://developer.mozilla.org/docs/Web/API/Fetch_API) в браузере и подчиняется его ограничениям, включая принудительное применение той же политики происхождения.
 
 Базовый адрес клиента устанавливается в адрес исходного сервера. `HttpClient` Вставьте экземпляр `@inject` с помощью директивы:
 
@@ -151,7 +151,7 @@ private class TodoItem
 
 ## <a name="httpclient-and-httprequestmessage-with-fetch-api-request-options"></a>HttpClient и HttpRequestMessage с параметрами запроса API FETCH
 
-При запуске в блазор клиентской части приложения используйте [HttpClient](xref:fundamentals/http-requests) и <xref:System.Net.Http.HttpRequestMessage> для настройки запросов. Например, можно указать URI запроса, метод HTTP и все нужные заголовки запроса.
+При выполнении для сборки в блазор приложении [HttpClient](xref:fundamentals/http-requests) <xref:System.Net.Http.HttpRequestMessage> используйте для настройки запросов. Например, можно указать URI запроса, метод HTTP и все нужные заголовки запроса.
 
 Укажите параметры запроса для базового [API выборки](https://developer.mozilla.org/docs/Web/API/Fetch_API) JavaScript, `WebAssemblyHttpMessageHandler.FetchArgs` используя свойство в запросе. Как показано в следующем примере, `credentials` свойству присвоено любое из следующих значений:
 

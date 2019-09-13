@@ -7,12 +7,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 09/06/2019
 uid: blazor/dependency-injection
-ms.openlocfilehash: 0b48cd0cbe14d2b07627f56ab78611bbd3209fa1
-ms.sourcegitcommit: 43c6335b5859282f64d66a7696c5935a2bcdf966
+ms.openlocfilehash: 6c01fdc390cc9150cf81673c717b73c4b10c31f1
+ms.sourcegitcommit: 092061c4f6ef46ed2165fa84de6273d3786fb97e
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/07/2019
-ms.locfileid: "70800397"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70963969"
 ---
 # <a name="aspnet-core-blazor-dependency-injection"></a>ASP.NET Core внедрения зависимостей Блазор
 
@@ -61,7 +61,7 @@ public void ConfigureServices(IServiceCollection services)
 
 | Время существования | Описание |
 | -------- | ----------- |
-| <xref:Microsoft.Extensions.DependencyInjection.ServiceDescriptor.Scoped*> | В настоящее время приложения веб-сборки блазор не имеют концепции областей DI. `Scoped`— зарегистрированные службы ведут `Singleton` себя как службы. Однако модель размещения на стороне сервера поддерживает `Scoped` время существования. В приложениях Блазор Server регистрация службы с заданной областью ограничивается *соединением*. По этой причине использование служб с заданной областью предпочтительно для служб, которые должны быть ограничены текущим пользователем, даже если текущим намерением является запуск на стороне клиента в браузере. |
+| <xref:Microsoft.Extensions.DependencyInjection.ServiceDescriptor.Scoped*> | В настоящее время приложения веб-сборки блазор не имеют концепции областей DI. `Scoped`— зарегистрированные службы ведут `Singleton` себя как службы. Однако модель размещения сервера блазор поддерживает `Scoped` время существования. В приложениях Блазор Server регистрация службы с заданной областью ограничивается *соединением*. По этой причине использование служб с заданной областью предпочтительно для служб, которые должны быть ограничены текущим пользователем, даже если текущим намерением является запуск на стороне клиента в браузере. |
 | <xref:Microsoft.Extensions.DependencyInjection.ServiceDescriptor.Singleton*> | DI создает *один экземпляр* службы. Все компоненты, которым `Singleton` необходима служба, получают экземпляр той же службы. |
 | <xref:Microsoft.Extensions.DependencyInjection.ServiceDescriptor.Transient*> | Каждый раз, когда компонент получает экземпляр `Transient` службы из контейнера службы, он получает *новый экземпляр* службы. |
 
