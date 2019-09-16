@@ -4,14 +4,14 @@ author: rick-anderson
 description: Узнайте, как требовать использования HTTPS/TLS в ASP.NET Core веб-приложении.
 ms.author: riande
 ms.custom: mvc
-ms.date: 09/06/2019
+ms.date: 09/14/2019
 uid: security/enforcing-ssl
-ms.openlocfilehash: 654b083a0dade2fc8df5cccf9fa434f30627794b
-ms.sourcegitcommit: f65d8765e4b7c894481db9b37aa6969abc625a48
+ms.openlocfilehash: 8474b8f12d3e08e47a4cc9b20543d2a9e6e91998
+ms.sourcegitcommit: dc5b293e08336dc236de66ed1834f7ef78359531
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70773963"
+ms.lasthandoff: 09/16/2019
+ms.locfileid: "71011077"
 ---
 # <a name="enforce-https-in-aspnet-core"></a>Принудительное применение HTTPS в ASP.NET Core
 
@@ -232,7 +232,7 @@ public void ConfigureServices(IServiceCollection services)
 
 ## <a name="http-strict-transport-security-protocol-hsts"></a>Протокол HTTPS протокола безопасности транспорта HTTP (HSTS)
 
-В [OWASP](https://www.owasp.org/index.php/About_The_Open_Web_Application_Security_Project), [обеспечение безопасности транспорта по протоколу HTTP (HSTS)](https://www.owasp.org/index.php/HTTP_Strict_Transport_Security_Cheat_Sheet) является расширением безопасности, которое определяется веб-приложением с помощью заголовка ответа. Когда [браузер, поддерживающий HSTS,](https://www.owasp.org/index.php/HTTP_Strict_Transport_Security_Cheat_Sheet#Browser_Support) получает этот заголовок:
+В [OWASP](https://www.owasp.org/index.php/About_The_Open_Web_Application_Security_Project), [обеспечение безопасности транспорта по протоколу HTTP (HSTS)](https://cheatsheetseries.owasp.org/cheatsheets/HTTP_Strict_Transport_Security_Cheat_Sheet.html) является расширением безопасности, которое определяется веб-приложением с помощью заголовка ответа. Когда [браузер, поддерживающий HSTS,](https://cheatsheetseries.owasp.org/cheatsheets/Transport_Layer_Protection_Cheat_Sheet.html#browser-support) получает этот заголовок:
 
 * В браузере хранится конфигурация домена, которая предотвращает отправку обмена данными по протоколу HTTP. Браузер принудительно выполняет все связи по протоколу HTTPS.
 * Браузер не разрешает пользователю использовать недоверенные или недопустимые сертификаты. Браузер отключает запросы, позволяющие пользователю временно доверять такому сертификату.
