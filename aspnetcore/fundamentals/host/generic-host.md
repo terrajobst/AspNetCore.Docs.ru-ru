@@ -7,12 +7,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 07/01/2019
 uid: fundamentals/host/generic-host
-ms.openlocfilehash: 9f5ecc7840fc7ffd9432a3bb67d0418efb7e8fd6
-ms.sourcegitcommit: 8835b6777682da6fb3becf9f9121c03f89dc7614
+ms.openlocfilehash: 261abae499a0d5f807a14aebd224949881067bc7
+ms.sourcegitcommit: f65d8765e4b7c894481db9b37aa6969abc625a48
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69975618"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70773815"
 ---
 # <a name="net-generic-host"></a>Универсальный узел .NET
 
@@ -170,6 +170,8 @@ public static IHostBuilder CreateHostBuilder(string[] args) =>
 
 В этом разделе перечислены параметры узла, которые применяются к рабочим нагрузкам HTTP и остальным. По умолчанию переменные среды, используемые для настройки этих параметров, могут иметь префикс `DOTNET_` или `ASPNETCORE_`.
 
+<!-- In the following sections, two spaces at end of line are used to force line breaks in the rendered page. -->
+
 ### <a name="applicationname"></a>ApplicationName
 
 Свойство [IHostEnvironment.ApplicationName](xref:Microsoft.Extensions.Hosting.IHostEnvironment.ApplicationName*) задается в конфигурации узла во время создания узла.
@@ -312,8 +314,9 @@ webBuilder.UseSetting(WebHostDefaults.HostingStartupExcludeAssembliesKey, "assem
 
 Порт перенаправления HTTPS. Используется при [принудительном применении HTTPS](xref:security/enforcing-ssl).
 
-**Ключ**: https_port **Тип**: *string*
-**По умолчанию**: значение по умолчанию не задано.
+**Ключ**: https_port  
+**Тип**: *string*  
+**По умолчанию**: значение по умолчанию не задано.  
 **Переменная среды**: `<PREFIX_>HTTPS_PORT`
 
 Чтобы задать это значение, используйте конфигурацию или вызов `UseSetting`:
@@ -356,7 +359,8 @@ webBuilder.UseSetting(WebHostDefaults.PreventHostingStartupKey, "true");
 
 Сборка, в которой необходимо искать класс `Startup`.
 
-**Ключ**: startupAssembly **Тип**: *string*  
+**Ключ**: startupAssembly  
+**Тип**: *string*  
 **По умолчанию**: сборка приложения  
 **Переменная среды**: `<PREFIX_>STARTUPASSEMBLY`
 
@@ -376,7 +380,7 @@ webBuilder.UseStartup<Startup>();
 
 **Ключ**: urls  
 **Тип**: *string*  
-**По умолчанию**: `http://localhost:5000` и `https://localhost:5001`
+**Значения по умолчанию**: `http://localhost:5000` и `https://localhost:5001`  
 **Переменная среды**: `<PREFIX_>URLS`
 
 Чтобы задать это значение, используйте переменную среды или вызов `UseUrls`:

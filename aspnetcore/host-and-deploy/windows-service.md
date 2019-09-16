@@ -5,14 +5,14 @@ description: Узнайте, как разместить приложение AS
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 06/03/2019
+ms.date: 09/09/2019
 uid: host-and-deploy/windows-service
-ms.openlocfilehash: 308a8bd10371cc70c431b8858ef7d82c1bb624da
-ms.sourcegitcommit: 8835b6777682da6fb3becf9f9121c03f89dc7614
+ms.openlocfilehash: c2a2941f2a4e27218c90cf47453c69149da8e766
+ms.sourcegitcommit: 2d4c1732c4866ed26b83da35f7bc2ad021a9c701
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69975414"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70815702"
 ---
 # <a name="host-aspnet-core-in-a-windows-service"></a>Размещение ASP.NET Core в службе Windows
 
@@ -312,15 +312,17 @@ Remove-Service -Name {NAME}
 
 Для служб, которые взаимодействуют с запросами из Интернета или корпоративной сети и размещаются за прокси-сервером или подсистемой балансировки нагрузки, может потребоваться дополнительная настройка. Дополнительные сведения можно найти по адресу: <xref:host-and-deploy/proxy-load-balancer>.
 
-## <a name="configure-https"></a>Настройка HTTPS
+## <a name="configure-endpoints"></a>Настройка конечных точек
 
-Чтобы настроить службу с защищенной конечной точкой, сделайте следующее:
+По умолчанию платформа ASP.NET Core привязана к `http://localhost:5000`. Настройте URL-адрес и порт, задав переменную среды `ASPNETCORE_URLS`.
 
-1. Создайте сертификат X.509 для системы размещения с помощью механизмов получения и развертывания сертификата вашей платформы.
+См. дополнительные способы настройки URL-адресов и портов, включая поддержку конечных точек HTTPS:
 
-1. Укажите [конфигурацию конечной точки HTTPS для сервера Kestrel](xref:fundamentals/servers/kestrel#endpoint-configuration), чтобы использовать сертификат.
+* <xref:fundamentals/servers/kestrel#endpoint-configuration> (Kestrel)
+* <xref:fundamentals/servers/httpsys#configure-windows-server> (HTTP.sys)
 
-Использование сертификата разработки ASP.NET Core HTTPS для защиты конечной точки службы не поддерживается.
+> [!NOTE]
+> Использование сертификата разработки ASP.NET Core HTTPS для защиты конечной точки службы не поддерживается.
 
 ## <a name="current-directory-and-content-root"></a>Текущий каталог и корневой каталог содержимого
 

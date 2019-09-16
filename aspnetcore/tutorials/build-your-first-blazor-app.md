@@ -7,12 +7,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 08/23/2019
 uid: tutorials/first-blazor-app
-ms.openlocfilehash: 2f0410eb75a6ef3f3d361c75bce7e79ae6d42a61
-ms.sourcegitcommit: 983b31449fe398e6e922eb13e9eb6f4287ec91e8
+ms.openlocfilehash: ea1111f43b6b8b4f47061056e8ad8d505f92dba6
+ms.sourcegitcommit: 43c6335b5859282f64d66a7696c5935a2bcdf966
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/24/2019
-ms.locfileid: "70017507"
+ms.lasthandoff: 09/07/2019
+ms.locfileid: "70800487"
 ---
 # <a name="build-your-first-blazor-app"></a>Создание приложения Blazor
 
@@ -71,7 +71,7 @@ ms.locfileid: "70017507"
 
 1. Обновите код C# для `@code` в компоненте:
 
-   * Добавьте свойство `IncrementAmount` с атрибутом `[Parameter]`.
+   * Добавьте открытое свойство `IncrementAmount` с атрибутом `[Parameter]`.
    * Изменение метод `IncrementCount`, чтобы он использовал `IncrementAmount` при увеличении значения `currentCount`.
 
    *Pages/Counter.razor*:

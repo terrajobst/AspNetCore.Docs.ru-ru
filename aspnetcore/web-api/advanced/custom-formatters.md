@@ -5,24 +5,28 @@ description: Узнайте, как создавать и использоват
 ms.author: riande
 ms.date: 02/08/2017
 uid: web-api/advanced/custom-formatters
-ms.openlocfilehash: 6fb7e192bf3e943eb9018b08fb87a833d3643208
-ms.sourcegitcommit: 8835b6777682da6fb3becf9f9121c03f89dc7614
+ms.openlocfilehash: 122edfd4ccd06ed62e071691f421d2aeef8002b4
+ms.sourcegitcommit: 488cc779fc71377d9371e7a14356113e9c7eff17
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69975673"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70913513"
 ---
 # <a name="custom-formatters-in-aspnet-core-web-api"></a>Пользовательские модули форматирования для веб-API в ASP.NET Core
 
 Автор: [Том Дикстра](https://github.com/tdykstra) (Tom Dykstra)
 
-В ASP.NET Core MVC имеется встроенная поддержка обмена данными в веб-интерфейсах API с помощью форматов JSON или XML. В этой статье показано, как добавить поддержку дополнительных форматов, создав пользовательские модули форматирования.
+ASP.NET Core MVC поддерживает обмен данными в веб-API с помощью форматировщиков ввода и вывода. Форматировщики ввода используются [привязкой модели](xref:mvc/models/model-binding). Форматировщики вывода используются для [форматирования откликов](xref:web-api/advanced/formatting).
+
+Платформа предоставляет встроенные форматировщики ввода и вывода для JSON и XML. Доступен только встроенный форматировщик вывода для обычного текста, но не форматировщик ввода для обычного текста.
+
+В этой статье показано, как добавить поддержку дополнительных форматов, создав пользовательские модули форматирования. Пример пользовательского форматировщика ввода для обычного текста см. в описании [TextPlainInputFormatter](https://github.com/aspnet/Entropy/blob/master/samples/Mvc.Formatters/TextPlainInputFormatter.cs) на GitHub.
 
 [Просмотреть или скачать образец кода](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/web-api/advanced/custom-formatters/sample) ([как скачивать](xref:index#how-to-download-a-sample))
 
 ## <a name="when-to-use-custom-formatters"></a>Когда следует использовать пользовательские модули форматирования
 
-Используйте пользовательский модуль форматирования, если необходимо, чтобы процесс [согласования содержимого](xref:web-api/advanced/formatting#content-negotiation) поддерживал тип содержимого, который не поддерживается встроенными форматировщиками (JSON и XML).
+Используйте пользовательский форматировщик, если необходимо, чтобы процесс [согласования содержимого](xref:web-api/advanced/formatting#content-negotiation) поддерживал тип содержимого, который не поддерживается встроенными форматировщиками.
 
 Например, если некоторые из клиентов вашего веб-интерфейса API могут работать с форматом [Protobuf](https://github.com/google/protobuf), для обмена данными с ними может быть желательно использовать этот формат, так как он более эффективен. Вам может также потребоваться реализовать отправку имен и адресов веб-интерфейсом API в формате [vCard](https://wikipedia.org/wiki/VCard), распространенном формате для передачи контактных данных. В образце приложения, представленном в этой статье, реализуется простой модуль форматирования vCard.
 
@@ -104,7 +108,6 @@ ms.locfileid: "69975673"
 
 ## <a name="next-steps"></a>Следующие шаги
 
-* [Пример кода форматировщика обычного текста на GitHub.](https://github.com/aspnet/Entropy/tree/master/samples/Mvc.Formatters)
 * [Пример приложения для этого документа](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/web-api/advanced/custom-formatters/sample), в котором реализуются простые форматировщики входных и выходных данных в формате vCard. Это приложение считывает и записывает карточки vCard, которые выглядят следующим образом:
 
 ```

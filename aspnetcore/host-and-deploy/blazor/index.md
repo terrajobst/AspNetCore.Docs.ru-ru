@@ -7,12 +7,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 09/05/2019
 uid: host-and-deploy/blazor/index
-ms.openlocfilehash: 5a56bbda5bb7727c7dbeaed7f2a91d0dcb6e7e71
-ms.sourcegitcommit: f65d8765e4b7c894481db9b37aa6969abc625a48
+ms.openlocfilehash: 26c8fcf56ab8ca68aeca93560785fc6c1144ab86
+ms.sourcegitcommit: 092061c4f6ef46ed2165fa84de6273d3786fb97e
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70773589"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70963691"
 ---
 # <a name="host-and-deploy-aspnet-core-blazor"></a>Размещение и развертывание ASP.NET Core Blazor
 
@@ -24,7 +24,7 @@ ms.locfileid: "70773589"
 
 # <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-1. На панели навигации выберите **Сборка** > **Опубликовать {приложение}**.
+1. На панели навигации выберите **Сборка** > **Опубликовать {приложение}** .
 1. Выберите *целевой объект публикации*. Чтобы опубликовать объект в локальной среде, выберите **папку**.
 1. Оставьте расположение по умолчанию в поле **выбора папки** или укажите другое расположение. Нажмите кнопку **Опубликовать**.
 
@@ -40,13 +40,13 @@ dotnet publish -c Release
 
 Публикация приложения активирует [восстановление](/dotnet/core/tools/dotnet-restore) зависимостей проекта и выполняет [сборку](/dotnet/core/tools/dotnet-build) проекта, прежде чем создавать ресурсы для развертывания. В ходе процесса построения удаляются неиспользуемые методы и сборки, чтобы уменьшить размер скачиваемого приложения и время загрузки.
 
-Приложения Blazor на стороне клиента публикуются в папке */bin/Release/{целевая_платформа}publish/{имя_сборки}/dist*. Приложения Blazor на стороне сервера публикуются в папке */bin/Release/{целевая_платформа}/publish*.
+Приложения Blazor WebAssembly публикуются в папке */bin/Release/{целевая_платформа}publish/{имя_сборки}/dist*. Серверные приложения Blazor публикуются в папке */bin/Release/{целевая_платформа}/publish*.
 
 Ресурсы из папки развертываются на веб-сервере. Развертывание может проводиться вручную или автоматизированно в зависимости от используемых средств разработки.
 
 ## <a name="app-base-path"></a>Базовый путь приложения
 
-*Базовый путь приложения * — это корневой URL-путь приложения. Рассмотрим приведенные далее основное приложение и приложение Blazor.
+*Базовый путь приложения*  — это корневой URL-путь приложения. Рассмотрим приведенные далее основное приложение и приложение Blazor.
 
 * Основному приложению задано имя `MyApp`:
   * физическое расположение приложения — *d:\\MyApp*;
@@ -87,5 +87,5 @@ dotnet run --pathbase=/CoolApp
 
 Инструкции по развертыванию см. в следующих разделах:
 
-* <xref:host-and-deploy/blazor/client-side>
-* <xref:host-and-deploy/blazor/server-side>
+* <xref:host-and-deploy/blazor/webassembly>
+* <xref:host-and-deploy/blazor/server>

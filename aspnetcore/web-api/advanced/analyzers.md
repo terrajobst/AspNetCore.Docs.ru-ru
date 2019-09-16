@@ -1,30 +1,53 @@
 ---
 title: Использование анализаторов веб-API
 author: pranavkm
-description: Сведения об анализаторах веб-API в Microsoft.AspNetCore.Mvc.Api.Analyzers.
+description: См. сведения о пакете анализаторов веб-API MVC ASP.NET Core.
 monikerRange: '>= aspnetcore-2.2'
 ms.author: prkrishn
 ms.custom: mvc
-ms.date: 12/14/2018
+ms.date: 09/05/2019
 uid: web-api/advanced/analyzers
-ms.openlocfilehash: 2aaef738ab2a64f85cb85708f63d2375c04cacb5
-ms.sourcegitcommit: 0b9e767a09beaaaa4301915cdda9ef69daaf3ff2
+ms.openlocfilehash: 1568eb0304a58758caa5f82249dc42872f5c36b9
+ms.sourcegitcommit: 116bfaeab72122fa7d586cdb2e5b8f456a2dc92a
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/03/2019
-ms.locfileid: "67538565"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70384871"
 ---
 # <a name="use-web-api-analyzers"></a>Использование анализаторов веб-API
 
-В ASP.NET Core 2.2 и более поздних версий представлен пакет NuGet [Microsoft.AspNetCore.Mvc.Api.Analyzers](https://www.nuget.org/packages/Microsoft.AspNetCore.Mvc.Api.Analyzers), содержащий анализаторы для веб-API. Анализаторы работают с контроллерами, которые аннотированы <xref:Microsoft.AspNetCore.Mvc.ApiControllerAttribute>. Кроме того, к ним применяются [соглашения об использовании API](xref:web-api/advanced/conventions).
+ASP.NET Core 2.2 и более поздних версий предоставляет пакет анализаторов MVC, предназначенный для использования с проектами веб-API. Анализаторы работают с контроллерами, которые помечены с помощью <xref:Microsoft.AspNetCore.Mvc.ApiControllerAttribute>. Кроме того, к ним применяются [соглашения об использовании веб-API](xref:web-api/advanced/conventions).
+
+Пакет анализаторов уведомляет вас о любом действии контроллера, которое:
+
+* возвращает необъявленный код состояния;
+* возвращает необъявленный успешный результат;
+* документирует код состояния, который не был получен;
+* включает проверку явной модели.
+
+::: moniker range=">= aspnetcore-3.0"
+
+## <a name="reference-the-analyzer-package"></a>Создание ссылки на пакет анализатора
+
+В ASP.NET Core 3.0 или более поздней версии анализаторы включены в пакет SDK для .NET Core. Чтобы включить анализатор в проекте, включите свойство `IncludeOpenAPIAnalyzers` в файл проекта:
+
+```xml
+<PropertyGroup>
+ <IncludeOpenAPIAnalyzers>true</IncludeOpenAPIAnalyzers>
+</PropertyGroup>
+```
+
+::: moniker-end
+
+::: moniker range="= aspnetcore-2.2"
 
 ## <a name="package-installation"></a>Установка пакета
 
-`Microsoft.AspNetCore.Mvc.Api.Analyzers` можно добавить одним из описанных ниже способов.
+Установите пакет [Microsoft.AspNetCore.Mvc.Api.Analyzers](https://www.nuget.org/packages/Microsoft.AspNetCore.Mvc.Api.Analyzers) NuGet с помощью одного из следующих методов:
 
 ### <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-* В окне **Консоль диспетчера пакетов**
+В окне **Консоль диспетчера пакетов**
   * Перейдите в раздел **Представление** > **Другие окна** > **Консоль диспетчера пакетов**.
   * Перейдите в каталог, в котором находится файл *ApiConventions.csproj*
   * Выполните следующую команду:
@@ -33,15 +56,9 @@ ms.locfileid: "67538565"
     Install-Package Microsoft.AspNetCore.Mvc.Api.Analyzers
     ```
 
-* В диалоговом окне **Управление пакетами NuGet**
-  * Щелкните правой кнопкой мыши проект в **обозревателе решений** > **Управление пакетами NuGet**.
-  * В качестве **источника пакета** выберите "nuget.org".
-  * В поле поиска введите "Microsoft.AspNetCore.Mvc.Api.Analyzers".
-  * Выберите пакет "Microsoft.AspNetCore.Mvc.Api.Analyzers" на вкладке **Обзор** и нажмите кнопку **Установить**.
-
 ### <a name="visual-studio-for-mactabvisual-studio-mac"></a>[Visual Studio для Mac](#tab/visual-studio-mac)
 
-* Щелкните правой кнопкой мыши папку *Пакеты* на **панели решения** > **Добавление пакетов…** .
+* Щелкните правой кнопкой мыши папку *Пакеты* на **Панели решения** > **Добавить пакеты**.
 * В раскрывающемся списке **Источник** в окне **Добавление пакетов** выберите вариант "nuget.org".
 * В поле поиска введите "Microsoft.AspNetCore.Mvc.Api.Analyzers".
 * В области результатов выберите пакет "Microsoft.AspNetCore.Mvc.Api.Analyzers", а затем нажмите кнопку **Добавить пакет**.
@@ -64,13 +81,15 @@ dotnet add ApiConventions.csproj package Microsoft.AspNetCore.Mvc.Api.Analyzers
 
 ---
 
-## <a name="analyzers-for-api-conventions"></a>Анализаторы для соглашений API
+::: moniker-end
 
-Документы OpenAPI содержат коды состояний и типы ответов, которые может возвращать действие. В ASP.NET Core MVC атрибуты, такие как <xref:Microsoft.AspNetCore.Mvc.ProducesResponseTypeAttribute> и <xref:Microsoft.AspNetCore.Mvc.ProducesAttribute>, используются для документирования действия. <xref:tutorials/web-api-help-pages-using-swagger> позволяет более подробно документировать API.
+## <a name="analyzers-for-web-api-conventions"></a>Анализаторы для соглашений об использовании веб-API
+
+Документы OpenAPI содержат коды состояний и типы ответов, которые может возвращать действие. В ASP.NET Core MVC атрибуты, такие как <xref:Microsoft.AspNetCore.Mvc.ProducesResponseTypeAttribute> и <xref:Microsoft.AspNetCore.Mvc.ProducesAttribute>, используются для документирования действия. <xref:tutorials/web-api-help-pages-using-swagger> позволяет более подробно документировать веб-API.
 
 Один из анализаторов в пакете проверяет контроллеры, которые аннотированы <xref:Microsoft.AspNetCore.Mvc.ApiControllerAttribute>, и определяет действия, которые не полностью документируют их ответы. Рассмотрим следующий пример.
 
-[!code-csharp[](conventions/sample/Controllers/ContactsController.cs?name=missing404docs&highlight=9)]
+[!code-csharp[](conventions/sample/Controllers/ContactsController.cs?name=missing404docs&highlight=10)]
 
 Предыдущее действие документирует тип возврата "Успех HTTP 200", но не документирует код состояния "Ошибка HTTP 404". Анализатор сообщает об отсутствующем документировании для кода состояния HTTP 404 в виде предупреждения. Эту проблему можно устранить.
 

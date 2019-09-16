@@ -7,12 +7,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 03/12/2019
 uid: fundamentals/app-state
-ms.openlocfilehash: 4b02a9b5867559da493054bb128aabed4d920ace
-ms.sourcegitcommit: 8516b586541e6ba402e57228e356639b85dfb2b9
+ms.openlocfilehash: 578be568b58dc630e8aabf8cb355266766741b9e
+ms.sourcegitcommit: 116bfaeab72122fa7d586cdb2e5b8f456a2dc92a
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67813620"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70384740"
 ---
 # <a name="session-and-app-state-in-aspnet-core"></a>Состояние сеанса и приложения в ASP.NET Core
 
@@ -163,7 +163,29 @@ Name: @HttpContext.Session.GetString(IndexModel.SessionKeyName)
 
 ## <a name="tempdata"></a>TempData
 
-ASP.NET Core предоставляет [свойство TempData модели страницы Razor Pages](/dotnet/api/microsoft.aspnetcore.mvc.razorpages.pagemodel.tempdata) или [TempData контроллера MVC](/dotnet/api/microsoft.aspnetcore.mvc.controller.tempdata). Это свойство хранит данные до тех пор, пока они не будут прочитаны. Для проверки данных без удаления можно использовать методы [Keep](/dotnet/api/microsoft.aspnetcore.mvc.viewfeatures.itempdatadictionary.keep) и [Peek](/dotnet/api/microsoft.aspnetcore.mvc.viewfeatures.itempdatadictionary.peek). TempData особенно удобно использовать для перенаправления, когда данные требуются больше чем для одного запроса. TempData реализуется поставщиками TempData, например с помощью файлов cookie или состояния сеанса.
+ASP.NET Core предоставляет [TempData](xref:Microsoft.AspNetCore.Mvc.RazorPages.PageModel.TempData) Razor Pages или <xref:Microsoft.AspNetCore.Mvc.Controller.TempData> контроллера. Это свойство хранит данные до тех пор, пока они не будут прочитаны в другом запросе. Для проверки данных без удаления можно использовать методы [Keep(String)](xref:Microsoft.AspNetCore.Mvc.ViewFeatures.ITempDataDictionary.Keep*) и [Peek(String)](xref:Microsoft.AspNetCore.Mvc.ViewFeatures.ITempDataDictionary.Peek*) в конце запроса. [Keep()](xref:Microsoft.AspNetCore.Mvc.ViewFeatures.ITempDataDictionary.Keep*) помечает все элементы в словаре для хранения. `TempData` особенно удобно использовать для перенаправления, когда данные требуются для нескольких запросов. `TempData` реализуется поставщиками `TempData`, например, с помощью файлов cookie или состояния сеанса.
+
+## <a name="tempdata-samples"></a>Примеры TempData
+
+Рассмотрим следующую страницу, которая создает клиент:
+
+[!code-csharp[](app-state/3.0samples/RazorPagesContacts/Pages/Customers/Create.cshtml.cs?name=snippet&highlight=15-16,30)]
+
+На следующей странице отображается `TempData["Message"]`:
+
+[!code-cshtml[](app-state/3.0samples/RazorPagesContacts/Pages/Customers/IndexPeek.cshtml?range=1-14)]
+
+В предыдущей разметке в конце запроса `TempData["Message"]` **не** удаляется, так как используется `Peek`. На обновляемой странице отображается `TempData["Message"]`.
+
+Следующая разметка похожа на приведенный выше код, но в ней используется `Keep` для сохранения данных в конце запроса:
+
+[!code-cshtml[](app-state/3.0samples/RazorPagesContacts/Pages/Customers/IndexKeep.cshtml?range=1-14)]
+
+При переходе между страницами *IndexPeek* и *IndexKeep* `TempData["Message"]` не удаляется.
+
+Следующий код отображает `TempData["Message"]`, но в конце запроса `TempData["Message"]` удаляется:
+
+[!code-cshtml[](app-state/3.0samples/RazorPagesContacts/Pages/Customers/Index.cshtml?range=1-14)]
 
 ### <a name="tempdata-providers"></a>Поставщики TempData
 
