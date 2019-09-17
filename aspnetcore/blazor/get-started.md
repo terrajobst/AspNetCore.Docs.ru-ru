@@ -7,73 +7,73 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 09/05/2019
 uid: blazor/get-started
-ms.openlocfilehash: e33ca421676caa20c823faf635442eda2a40ba65
-ms.sourcegitcommit: 092061c4f6ef46ed2165fa84de6273d3786fb97e
+ms.openlocfilehash: cce91b6332295f77c639f881fe342b625fee7fca
+ms.sourcegitcommit: 92c901c7f32ee9efb335d99ec4c3add2cc9f3142
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70964016"
+ms.lasthandoff: 09/16/2019
+ms.locfileid: "71025520"
 ---
-# <a name="get-started-with-aspnet-core-blazor"></a><span data-ttu-id="abaf0-103">Начало работы с ASP.NET Core Блазор</span><span class="sxs-lookup"><span data-stu-id="abaf0-103">Get started with ASP.NET Core Blazor</span></span>
+# <a name="get-started-with-aspnet-core-blazor"></a><span data-ttu-id="202de-103">Начало работы с ASP.NET Core Блазор</span><span class="sxs-lookup"><span data-stu-id="202de-103">Get started with ASP.NET Core Blazor</span></span>
 
-<span data-ttu-id="abaf0-104">Авторы: [Дэниэл Рот (Daniel Roth)](https://github.com/danroth27) и [Люк Лэтем (Luke Latham)](https://github.com/guardrex)</span><span class="sxs-lookup"><span data-stu-id="abaf0-104">By [Daniel Roth](https://github.com/danroth27) and [Luke Latham](https://github.com/guardrex)</span></span>
+<span data-ttu-id="202de-104">Авторы: [Дэниэл Рот (Daniel Roth)](https://github.com/danroth27) и [Люк Лэтем (Luke Latham)](https://github.com/guardrex)</span><span class="sxs-lookup"><span data-stu-id="202de-104">By [Daniel Roth](https://github.com/danroth27) and [Luke Latham](https://github.com/guardrex)</span></span>
 
-<span data-ttu-id="abaf0-105">Начало работы с Блазор:</span><span class="sxs-lookup"><span data-stu-id="abaf0-105">Get started with Blazor:</span></span>
+<span data-ttu-id="202de-105">Начало работы с Блазор:</span><span class="sxs-lookup"><span data-stu-id="202de-105">Get started with Blazor:</span></span>
 
-1. <span data-ttu-id="abaf0-106">Установите последнюю версию [пакета SDK для предварительной версии .NET Core 3,0](https://dotnet.microsoft.com/download/dotnet-core/3.0) .</span><span class="sxs-lookup"><span data-stu-id="abaf0-106">Install the latest [.NET Core 3.0 Preview SDK](https://dotnet.microsoft.com/download/dotnet-core/3.0) release.</span></span>
+1. <span data-ttu-id="202de-106">Установите последнюю версию [пакета SDK для предварительной версии .NET Core 3,0](https://dotnet.microsoft.com/download/dotnet-core/3.0) .</span><span class="sxs-lookup"><span data-stu-id="202de-106">Install the latest [.NET Core 3.0 Preview SDK](https://dotnet.microsoft.com/download/dotnet-core/3.0) release.</span></span>
 
-1. <span data-ttu-id="abaf0-107">Установите шаблоны Блазор, выполнив следующую команду в командной оболочке:</span><span class="sxs-lookup"><span data-stu-id="abaf0-107">Install the Blazor templates by running the following command in a command shell:</span></span>
+1. <span data-ttu-id="202de-107">Установите шаблоны Блазор, выполнив следующую команду в командной оболочке:</span><span class="sxs-lookup"><span data-stu-id="202de-107">Install the Blazor templates by running the following command in a command shell:</span></span>
 
    ```console
-   dotnet new -i Microsoft.AspNetCore.Blazor.Templates::3.0.0-preview9.19424.4
+   dotnet new -i Microsoft.AspNetCore.Blazor.Templates::3.0.0-preview9.19457.4
    ```
 
-1. <span data-ttu-id="abaf0-108">Следуйте указаниям по выбору инструментов:</span><span class="sxs-lookup"><span data-stu-id="abaf0-108">Follow the guidance for your choice of tooling:</span></span>
+1. <span data-ttu-id="202de-108">Следуйте указаниям по выбору инструментов:</span><span class="sxs-lookup"><span data-stu-id="202de-108">Follow the guidance for your choice of tooling:</span></span>
 
-   # <a name="visual-studiotabvisual-studio"></a>[<span data-ttu-id="abaf0-109">Visual Studio</span><span class="sxs-lookup"><span data-stu-id="abaf0-109">Visual Studio</span></span>](#tab/visual-studio)
+   # <a name="visual-studiotabvisual-studio"></a>[<span data-ttu-id="202de-109">Visual Studio</span><span class="sxs-lookup"><span data-stu-id="202de-109">Visual Studio</span></span>](#tab/visual-studio)
 
-   <span data-ttu-id="abaf0-110">1 \.</span><span class="sxs-lookup"><span data-stu-id="abaf0-110">1\.</span></span> <span data-ttu-id="abaf0-111">Установите последнюю [предварительную версию Visual Studio](https://visualstudio.com/vs/preview) с рабочей нагрузкой **ASP.NET и веб-разработка** .</span><span class="sxs-lookup"><span data-stu-id="abaf0-111">Install the latest [Visual Studio preview](https://visualstudio.com/vs/preview) with the **ASP.NET and web development** workload.</span></span>
+   <span data-ttu-id="202de-110">1 \.</span><span class="sxs-lookup"><span data-stu-id="202de-110">1\.</span></span> <span data-ttu-id="202de-111">Установите последнюю [предварительную версию Visual Studio](https://visualstudio.com/vs/preview) с рабочей нагрузкой **ASP.NET и веб-разработка** .</span><span class="sxs-lookup"><span data-stu-id="202de-111">Install the latest [Visual Studio preview](https://visualstudio.com/vs/preview) with the **ASP.NET and web development** workload.</span></span>
 
-   <span data-ttu-id="abaf0-112">2 \.</span><span class="sxs-lookup"><span data-stu-id="abaf0-112">2\.</span></span> <span data-ttu-id="abaf0-113">Создайте новый проект.</span><span class="sxs-lookup"><span data-stu-id="abaf0-113">Create a new project.</span></span>
+   <span data-ttu-id="202de-112">2 \.</span><span class="sxs-lookup"><span data-stu-id="202de-112">2\.</span></span> <span data-ttu-id="202de-113">Создайте новый проект.</span><span class="sxs-lookup"><span data-stu-id="202de-113">Create a new project.</span></span>
 
-   <span data-ttu-id="abaf0-114">3 \.</span><span class="sxs-lookup"><span data-stu-id="abaf0-114">3\.</span></span> <span data-ttu-id="abaf0-115">Выберите **приложение блазор**.</span><span class="sxs-lookup"><span data-stu-id="abaf0-115">Select **Blazor App**.</span></span> <span data-ttu-id="abaf0-116">Щелкните **Далее**.</span><span class="sxs-lookup"><span data-stu-id="abaf0-116">Select **Next**.</span></span>
+   <span data-ttu-id="202de-114">3 \.</span><span class="sxs-lookup"><span data-stu-id="202de-114">3\.</span></span> <span data-ttu-id="202de-115">Выберите **приложение блазор**.</span><span class="sxs-lookup"><span data-stu-id="202de-115">Select **Blazor App**.</span></span> <span data-ttu-id="202de-116">Щелкните **Далее**.</span><span class="sxs-lookup"><span data-stu-id="202de-116">Select **Next**.</span></span>
 
-   <span data-ttu-id="abaf0-117">4 \.</span><span class="sxs-lookup"><span data-stu-id="abaf0-117">4\.</span></span> <span data-ttu-id="abaf0-118">В поле **Имя проекта** укажите имя проекта или оставьте имя по умолчанию.</span><span class="sxs-lookup"><span data-stu-id="abaf0-118">Provide a project name in the **Project name** field or accept the default project name.</span></span> <span data-ttu-id="abaf0-119">Убедитесь, что запись **расположения** указана правильно, или укажите расположение для проекта.</span><span class="sxs-lookup"><span data-stu-id="abaf0-119">Confirm the **Location** entry is correct or provide a location for the project.</span></span> <span data-ttu-id="abaf0-120">Нажмите кнопку **Создать**.</span><span class="sxs-lookup"><span data-stu-id="abaf0-120">Select **Create**.</span></span>
+   <span data-ttu-id="202de-117">4 \.</span><span class="sxs-lookup"><span data-stu-id="202de-117">4\.</span></span> <span data-ttu-id="202de-118">В поле **Имя проекта** укажите имя проекта или оставьте имя по умолчанию.</span><span class="sxs-lookup"><span data-stu-id="202de-118">Provide a project name in the **Project name** field or accept the default project name.</span></span> <span data-ttu-id="202de-119">Убедитесь, что запись **расположения** указана правильно, или укажите расположение для проекта.</span><span class="sxs-lookup"><span data-stu-id="202de-119">Confirm the **Location** entry is correct or provide a location for the project.</span></span> <span data-ttu-id="202de-120">Нажмите кнопку **Создать**.</span><span class="sxs-lookup"><span data-stu-id="202de-120">Select **Create**.</span></span>
 
-   <span data-ttu-id="abaf0-121">5 \.</span><span class="sxs-lookup"><span data-stu-id="abaf0-121">5\.</span></span> <span data-ttu-id="abaf0-122">Для интерфейса Блазор можно выбрать шаблон **приложения блазор для сборки** .</span><span class="sxs-lookup"><span data-stu-id="abaf0-122">For a Blazor WebAssembly experience, choose the **Blazor WebAssembly App** template.</span></span> <span data-ttu-id="abaf0-123">Для удобства работы с сервером Блазор выберите шаблон **серверное приложение блазор** .</span><span class="sxs-lookup"><span data-stu-id="abaf0-123">For a Blazor Server experience, choose the **Blazor Server App** template.</span></span> <span data-ttu-id="abaf0-124">Нажмите кнопку **Создать**.</span><span class="sxs-lookup"><span data-stu-id="abaf0-124">Select **Create**.</span></span> <span data-ttu-id="abaf0-125">Сведения о двух Блазор моделях размещения, *Блазор Server* и *блазор Assembly*см. в разделе <xref:blazor/hosting-models>.</span><span class="sxs-lookup"><span data-stu-id="abaf0-125">For information on the two Blazor hosting models, *Blazor Server* and *Blazor WebAssembly*, see <xref:blazor/hosting-models>.</span></span>
+   <span data-ttu-id="202de-121">5 \.</span><span class="sxs-lookup"><span data-stu-id="202de-121">5\.</span></span> <span data-ttu-id="202de-122">Для интерфейса Блазор можно выбрать шаблон **приложения блазор для сборки** .</span><span class="sxs-lookup"><span data-stu-id="202de-122">For a Blazor WebAssembly experience, choose the **Blazor WebAssembly App** template.</span></span> <span data-ttu-id="202de-123">Для удобства работы с сервером Блазор выберите шаблон **серверное приложение блазор** .</span><span class="sxs-lookup"><span data-stu-id="202de-123">For a Blazor Server experience, choose the **Blazor Server App** template.</span></span> <span data-ttu-id="202de-124">Нажмите кнопку **Создать**.</span><span class="sxs-lookup"><span data-stu-id="202de-124">Select **Create**.</span></span> <span data-ttu-id="202de-125">Сведения о двух Блазор моделях размещения, *Блазор Server* и *блазор Assembly*см. в разделе <xref:blazor/hosting-models>.</span><span class="sxs-lookup"><span data-stu-id="202de-125">For information on the two Blazor hosting models, *Blazor Server* and *Blazor WebAssembly*, see <xref:blazor/hosting-models>.</span></span>
 
-   <span data-ttu-id="abaf0-126">6 \.</span><span class="sxs-lookup"><span data-stu-id="abaf0-126">6\.</span></span> <span data-ttu-id="abaf0-127">Нажмите клавишу **F5** для запуска приложения.</span><span class="sxs-lookup"><span data-stu-id="abaf0-127">Press **F5** to run the app.</span></span>
+   <span data-ttu-id="202de-126">6 \.</span><span class="sxs-lookup"><span data-stu-id="202de-126">6\.</span></span> <span data-ttu-id="202de-127">Нажмите клавишу **F5** для запуска приложения.</span><span class="sxs-lookup"><span data-stu-id="202de-127">Press **F5** to run the app.</span></span>
 
    > [!NOTE]
-   > <span data-ttu-id="abaf0-128">Если вы установили расширение Visual Studio Блазор для предыдущей предварительной версии ASP.NET Core Блазор (Предварительная версия 6 или более ранняя версия), вы можете удалить расширение.</span><span class="sxs-lookup"><span data-stu-id="abaf0-128">If you installed the Blazor Visual Studio extension for a prior preview release of ASP.NET Core Blazor (Preview 6 or earlier), you can uninstall the extension.</span></span> <span data-ttu-id="abaf0-129">Установка шаблонов Блазор в командной оболочке теперь достаточно для отображения шаблонов в Visual Studio.</span><span class="sxs-lookup"><span data-stu-id="abaf0-129">Installing the Blazor templates in a command shell is now sufficient to surface the templates in Visual Studio.</span></span>
+   > <span data-ttu-id="202de-128">Если вы установили расширение Visual Studio Блазор для предыдущей предварительной версии ASP.NET Core Блазор (Предварительная версия 6 или более ранняя версия), вы можете удалить расширение.</span><span class="sxs-lookup"><span data-stu-id="202de-128">If you installed the Blazor Visual Studio extension for a prior preview release of ASP.NET Core Blazor (Preview 6 or earlier), you can uninstall the extension.</span></span> <span data-ttu-id="202de-129">Установка шаблонов Блазор в командной оболочке теперь достаточно для отображения шаблонов в Visual Studio.</span><span class="sxs-lookup"><span data-stu-id="202de-129">Installing the Blazor templates in a command shell is now sufficient to surface the templates in Visual Studio.</span></span>
 
-   # <a name="visual-studio-codetabvisual-studio-code"></a>[<span data-ttu-id="abaf0-130">Visual Studio Code</span><span class="sxs-lookup"><span data-stu-id="abaf0-130">Visual Studio Code</span></span>](#tab/visual-studio-code)
+   # <a name="visual-studio-codetabvisual-studio-code"></a>[<span data-ttu-id="202de-130">Visual Studio Code</span><span class="sxs-lookup"><span data-stu-id="202de-130">Visual Studio Code</span></span>](#tab/visual-studio-code)
 
-   <span data-ttu-id="abaf0-131">1 \.</span><span class="sxs-lookup"><span data-stu-id="abaf0-131">1\.</span></span> <span data-ttu-id="abaf0-132">Установите [Visual Studio Code](https://code.visualstudio.com/).</span><span class="sxs-lookup"><span data-stu-id="abaf0-132">Install [Visual Studio Code](https://code.visualstudio.com/).</span></span>
+   <span data-ttu-id="202de-131">1 \.</span><span class="sxs-lookup"><span data-stu-id="202de-131">1\.</span></span> <span data-ttu-id="202de-132">Установите [Visual Studio Code](https://code.visualstudio.com/).</span><span class="sxs-lookup"><span data-stu-id="202de-132">Install [Visual Studio Code](https://code.visualstudio.com/).</span></span>
 
-   <span data-ttu-id="abaf0-133">2 \.</span><span class="sxs-lookup"><span data-stu-id="abaf0-133">2\.</span></span> <span data-ttu-id="abaf0-134">Установите последнюю версию [ C# для расширения Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp).</span><span class="sxs-lookup"><span data-stu-id="abaf0-134">Install the latest [C# for Visual Studio Code extension](https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp).</span></span>
+   <span data-ttu-id="202de-133">2 \.</span><span class="sxs-lookup"><span data-stu-id="202de-133">2\.</span></span> <span data-ttu-id="202de-134">Установите последнюю версию [ C# для расширения Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp).</span><span class="sxs-lookup"><span data-stu-id="202de-134">Install the latest [C# for Visual Studio Code extension](https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp).</span></span>
 
-   <span data-ttu-id="abaf0-135">3 \.</span><span class="sxs-lookup"><span data-stu-id="abaf0-135">3\.</span></span> <span data-ttu-id="abaf0-136">Для работы с Блазор-сборками выполните следующую команду в командной оболочке:</span><span class="sxs-lookup"><span data-stu-id="abaf0-136">For a Blazor WebAssembly experience, execute the following command in a command shell:</span></span>
+   <span data-ttu-id="202de-135">3 \.</span><span class="sxs-lookup"><span data-stu-id="202de-135">3\.</span></span> <span data-ttu-id="202de-136">Для работы с Блазор-сборками выполните следующую команду в командной оболочке:</span><span class="sxs-lookup"><span data-stu-id="202de-136">For a Blazor WebAssembly experience, execute the following command in a command shell:</span></span>
 
       ```console
       dotnet new blazorwasm -o WebApplication1
       ```
 
-      <span data-ttu-id="abaf0-137">Для работы с сервером Блазор выполните следующую команду в командной оболочке:</span><span class="sxs-lookup"><span data-stu-id="abaf0-137">For a Blazor Server experience, execute the following command in a command shell:</span></span>
+      <span data-ttu-id="202de-137">Для работы с сервером Блазор выполните следующую команду в командной оболочке:</span><span class="sxs-lookup"><span data-stu-id="202de-137">For a Blazor Server experience, execute the following command in a command shell:</span></span>
 
       ```console
       dotnet new blazorserver -o WebApplication1
       ```
 
-      <span data-ttu-id="abaf0-138">Сведения о двух Блазор моделях размещения, *Блазор Server* и *блазор Assembly*см. в разделе <xref:blazor/hosting-models>.</span><span class="sxs-lookup"><span data-stu-id="abaf0-138">For information on the two Blazor hosting models, *Blazor Server* and *Blazor WebAssembly*, see <xref:blazor/hosting-models>.</span></span>
+      <span data-ttu-id="202de-138">Сведения о двух Блазор моделях размещения, *Блазор Server* и *блазор Assembly*см. в разделе <xref:blazor/hosting-models>.</span><span class="sxs-lookup"><span data-stu-id="202de-138">For information on the two Blazor hosting models, *Blazor Server* and *Blazor WebAssembly*, see <xref:blazor/hosting-models>.</span></span>
 
-   <span data-ttu-id="abaf0-139">4 \.</span><span class="sxs-lookup"><span data-stu-id="abaf0-139">4\.</span></span> <span data-ttu-id="abaf0-140">Откройте папку *WebApplication1* в Visual Studio Code.</span><span class="sxs-lookup"><span data-stu-id="abaf0-140">Open the *WebApplication1* folder in Visual Studio Code.</span></span>
+   <span data-ttu-id="202de-139">4 \.</span><span class="sxs-lookup"><span data-stu-id="202de-139">4\.</span></span> <span data-ttu-id="202de-140">Откройте папку *WebApplication1* в Visual Studio Code.</span><span class="sxs-lookup"><span data-stu-id="202de-140">Open the *WebApplication1* folder in Visual Studio Code.</span></span>
 
-   <span data-ttu-id="abaf0-141">5 \.</span><span class="sxs-lookup"><span data-stu-id="abaf0-141">5\.</span></span> <span data-ttu-id="abaf0-142">Для проекта сервера Блазор среда IDE запрашивает добавление ресурсов для сборки и отладки проекта.</span><span class="sxs-lookup"><span data-stu-id="abaf0-142">For a Blazor Server project, the IDE requests that you add assets to build and debug the project.</span></span> <span data-ttu-id="abaf0-143">Выберите ответ **Да**.</span><span class="sxs-lookup"><span data-stu-id="abaf0-143">Select **Yes**.</span></span>
+   <span data-ttu-id="202de-141">5 \.</span><span class="sxs-lookup"><span data-stu-id="202de-141">5\.</span></span> <span data-ttu-id="202de-142">Для проекта сервера Блазор среда IDE запрашивает добавление ресурсов для сборки и отладки проекта.</span><span class="sxs-lookup"><span data-stu-id="202de-142">For a Blazor Server project, the IDE requests that you add assets to build and debug the project.</span></span> <span data-ttu-id="202de-143">Выберите ответ **Да**.</span><span class="sxs-lookup"><span data-stu-id="202de-143">Select **Yes**.</span></span>
 
-   <span data-ttu-id="abaf0-144">6 \.</span><span class="sxs-lookup"><span data-stu-id="abaf0-144">6\.</span></span> <span data-ttu-id="abaf0-145">При использовании серверного приложения Блазор запустите приложение с помощью отладчика Visual Studio Code.</span><span class="sxs-lookup"><span data-stu-id="abaf0-145">If using a Blazor Server app, run the app using the Visual Studio Code debugger.</span></span> <span data-ttu-id="abaf0-146">Если используется блазор приложение сборки, выполните `dotnet run` из папки проекта приложения.</span><span class="sxs-lookup"><span data-stu-id="abaf0-146">If using a Blazor WebAssembly app, execute `dotnet run` from the app's project folder.</span></span>
+   <span data-ttu-id="202de-144">6 \.</span><span class="sxs-lookup"><span data-stu-id="202de-144">6\.</span></span> <span data-ttu-id="202de-145">При использовании серверного приложения Блазор запустите приложение с помощью отладчика Visual Studio Code.</span><span class="sxs-lookup"><span data-stu-id="202de-145">If using a Blazor Server app, run the app using the Visual Studio Code debugger.</span></span> <span data-ttu-id="202de-146">Если используется блазор приложение сборки, выполните `dotnet run` из папки проекта приложения.</span><span class="sxs-lookup"><span data-stu-id="202de-146">If using a Blazor WebAssembly app, execute `dotnet run` from the app's project folder.</span></span>
 
-   <span data-ttu-id="abaf0-147">7 \.</span><span class="sxs-lookup"><span data-stu-id="abaf0-147">7\.</span></span> <span data-ttu-id="abaf0-148">В браузере перейдите на адрес `https://localhost:5001`.</span><span class="sxs-lookup"><span data-stu-id="abaf0-148">In a browser, navigate to `https://localhost:5001`.</span></span>
+   <span data-ttu-id="202de-147">7 \.</span><span class="sxs-lookup"><span data-stu-id="202de-147">7\.</span></span> <span data-ttu-id="202de-148">В браузере перейдите на адрес `https://localhost:5001`.</span><span class="sxs-lookup"><span data-stu-id="202de-148">In a browser, navigate to `https://localhost:5001`.</span></span>
 
    <!--
 
@@ -95,9 +95,9 @@ ms.locfileid: "70964016"
 
    -->
 
-   # <a name="net-core-clitabnetcore-cli"></a>[<span data-ttu-id="abaf0-149">Интерфейс командной строки .NET Core</span><span class="sxs-lookup"><span data-stu-id="abaf0-149">.NET Core CLI</span></span>](#tab/netcore-cli/)
+   # <a name="net-core-clitabnetcore-cli"></a>[<span data-ttu-id="202de-149">Интерфейс командной строки .NET Core</span><span class="sxs-lookup"><span data-stu-id="202de-149">.NET Core CLI</span></span>](#tab/netcore-cli/)
 
-   <span data-ttu-id="abaf0-150">Для работы с Блазор-сборками выполните следующие команды в командной оболочке:</span><span class="sxs-lookup"><span data-stu-id="abaf0-150">For a Blazor WebAssembly experience, execute the following commands in a command shell:</span></span>
+   <span data-ttu-id="202de-150">Для работы с Блазор-сборками выполните следующие команды в командной оболочке:</span><span class="sxs-lookup"><span data-stu-id="202de-150">For a Blazor WebAssembly experience, execute the following commands in a command shell:</span></span>
 
    ```console
    dotnet new blazorwasm -o WebApplication1
@@ -105,7 +105,7 @@ ms.locfileid: "70964016"
    dotnet run
    ```
 
-   <span data-ttu-id="abaf0-151">Для работы с сервером Блазор выполните следующие команды в командной оболочке:</span><span class="sxs-lookup"><span data-stu-id="abaf0-151">For a Blazor Server experience, execute the following commands in a command shell:</span></span>
+   <span data-ttu-id="202de-151">Для работы с сервером Блазор выполните следующие команды в командной оболочке:</span><span class="sxs-lookup"><span data-stu-id="202de-151">For a Blazor Server experience, execute the following commands in a command shell:</span></span>
 
    ```console
    dotnet new blazorserver -o WebApplication1
@@ -113,64 +113,64 @@ ms.locfileid: "70964016"
    dotnet run
    ```
 
-   <span data-ttu-id="abaf0-152">Сведения о двух Блазор моделях размещения, *Блазор Server* и *блазор Assembly*см. в разделе <xref:blazor/hosting-models>.</span><span class="sxs-lookup"><span data-stu-id="abaf0-152">For information on the two Blazor hosting models, *Blazor Server* and *Blazor WebAssembly*, see <xref:blazor/hosting-models>.</span></span>
+   <span data-ttu-id="202de-152">Сведения о двух Блазор моделях размещения, *Блазор Server* и *блазор Assembly*см. в разделе <xref:blazor/hosting-models>.</span><span class="sxs-lookup"><span data-stu-id="202de-152">For information on the two Blazor hosting models, *Blazor Server* and *Blazor WebAssembly*, see <xref:blazor/hosting-models>.</span></span>
 
-   <span data-ttu-id="abaf0-153">В браузере перейдите на адрес `https://localhost:5001`.</span><span class="sxs-lookup"><span data-stu-id="abaf0-153">In a browser, navigate to `https://localhost:5001`.</span></span>
+   <span data-ttu-id="202de-153">В браузере перейдите на адрес `https://localhost:5001`.</span><span class="sxs-lookup"><span data-stu-id="202de-153">In a browser, navigate to `https://localhost:5001`.</span></span>
 
    ---
 
-<span data-ttu-id="abaf0-154">Из вкладок боковой панели доступны несколько страниц:</span><span class="sxs-lookup"><span data-stu-id="abaf0-154">Multiple pages are available from tabs in the sidebar:</span></span>
+<span data-ttu-id="202de-154">Из вкладок боковой панели доступны несколько страниц:</span><span class="sxs-lookup"><span data-stu-id="202de-154">Multiple pages are available from tabs in the sidebar:</span></span>
 
-* <span data-ttu-id="abaf0-155">Корневая</span><span class="sxs-lookup"><span data-stu-id="abaf0-155">Home</span></span>
-* <span data-ttu-id="abaf0-156">Счетчик</span><span class="sxs-lookup"><span data-stu-id="abaf0-156">Counter</span></span>
-* <span data-ttu-id="abaf0-157">Выборка данных</span><span class="sxs-lookup"><span data-stu-id="abaf0-157">Fetch data</span></span>
+* <span data-ttu-id="202de-155">Корневая</span><span class="sxs-lookup"><span data-stu-id="202de-155">Home</span></span>
+* <span data-ttu-id="202de-156">Счетчик</span><span class="sxs-lookup"><span data-stu-id="202de-156">Counter</span></span>
+* <span data-ttu-id="202de-157">Выборка данных</span><span class="sxs-lookup"><span data-stu-id="202de-157">Fetch data</span></span>
 
-<span data-ttu-id="abaf0-158">На странице Counter нажмите кнопку **Click me** (Щелкните здесь), чтобы увеличить значение счетчика без обновления страницы.</span><span class="sxs-lookup"><span data-stu-id="abaf0-158">On the Counter page, select the **Click me** button to increment the counter without a page refresh.</span></span> <span data-ttu-id="abaf0-159">Увеличение счетчика на веб-странице обычно требует написания JavaScript, но компоненты Razor предоставляют более эффективный подход с помощью C#.</span><span class="sxs-lookup"><span data-stu-id="abaf0-159">Incrementing a counter in a webpage normally requires writing JavaScript, but Razor components provide a better approach using C#.</span></span>
+<span data-ttu-id="202de-158">На странице Counter нажмите кнопку **Click me** (Щелкните здесь), чтобы увеличить значение счетчика без обновления страницы.</span><span class="sxs-lookup"><span data-stu-id="202de-158">On the Counter page, select the **Click me** button to increment the counter without a page refresh.</span></span> <span data-ttu-id="202de-159">Увеличение счетчика на веб-странице обычно требует написания JavaScript, но компоненты Razor предоставляют более эффективный подход с помощью C#.</span><span class="sxs-lookup"><span data-stu-id="202de-159">Incrementing a counter in a webpage normally requires writing JavaScript, but Razor components provide a better approach using C#.</span></span>
 
-<span data-ttu-id="abaf0-160">*Pages/Counter.razor*:</span><span class="sxs-lookup"><span data-stu-id="abaf0-160">*Pages/Counter.razor*:</span></span>
+<span data-ttu-id="202de-160">*Pages/Counter.razor*:</span><span class="sxs-lookup"><span data-stu-id="202de-160">*Pages/Counter.razor*:</span></span>
 
 [!code-cshtml[](get-started/samples_snapshot/3.x/Counter1.razor?highlight=7,12-15)]
 
-<span data-ttu-id="abaf0-161">Запрос `/counter` в браузере, как указано `@page` в директиве вверху, приводит к тому, что `Counter` компонент визуализирует свое содержимое.</span><span class="sxs-lookup"><span data-stu-id="abaf0-161">A request for `/counter` in the browser, as specified by the `@page` directive at the top, causes the `Counter` component to render its content.</span></span> <span data-ttu-id="abaf0-162">Компоненты подготавливаются к просмотру в памяти представления дерева подготовки, которое затем может использоваться для обновления пользовательского интерфейса в гибком и удобном виде.</span><span class="sxs-lookup"><span data-stu-id="abaf0-162">Components render into an in-memory representation of the render tree that can then be used to update the UI in a flexible and efficient way.</span></span>
+<span data-ttu-id="202de-161">Запрос `/counter` в браузере, как указано `@page` в директиве вверху, приводит к тому, что `Counter` компонент визуализирует свое содержимое.</span><span class="sxs-lookup"><span data-stu-id="202de-161">A request for `/counter` in the browser, as specified by the `@page` directive at the top, causes the `Counter` component to render its content.</span></span> <span data-ttu-id="202de-162">Компоненты подготавливаются к просмотру в памяти представления дерева подготовки, которое затем может использоваться для обновления пользовательского интерфейса в гибком и удобном виде.</span><span class="sxs-lookup"><span data-stu-id="202de-162">Components render into an in-memory representation of the render tree that can then be used to update the UI in a flexible and efficient way.</span></span>
 
-<span data-ttu-id="abaf0-163">При каждом выборе кнопки « **Click Me** »:</span><span class="sxs-lookup"><span data-stu-id="abaf0-163">Each time the **Click me** button is selected:</span></span>
+<span data-ttu-id="202de-163">При каждом выборе кнопки « **Click Me** »:</span><span class="sxs-lookup"><span data-stu-id="202de-163">Each time the **Click me** button is selected:</span></span>
 
-* <span data-ttu-id="abaf0-164">`onclick` Событие срабатывает.</span><span class="sxs-lookup"><span data-stu-id="abaf0-164">The `onclick` event is fired.</span></span>
-* <span data-ttu-id="abaf0-165">вызывается метод `IncrementCount` .</span><span class="sxs-lookup"><span data-stu-id="abaf0-165">The `IncrementCount` method is called.</span></span>
-* <span data-ttu-id="abaf0-166">`currentCount` Значение увеличивается.</span><span class="sxs-lookup"><span data-stu-id="abaf0-166">The `currentCount` is incremented.</span></span>
-* <span data-ttu-id="abaf0-167">Компонент снова готовится к просмотру.</span><span class="sxs-lookup"><span data-stu-id="abaf0-167">The component is rendered again.</span></span>
+* <span data-ttu-id="202de-164">`onclick` Событие срабатывает.</span><span class="sxs-lookup"><span data-stu-id="202de-164">The `onclick` event is fired.</span></span>
+* <span data-ttu-id="202de-165">вызывается метод `IncrementCount` .</span><span class="sxs-lookup"><span data-stu-id="202de-165">The `IncrementCount` method is called.</span></span>
+* <span data-ttu-id="202de-166">`currentCount` Значение увеличивается.</span><span class="sxs-lookup"><span data-stu-id="202de-166">The `currentCount` is incremented.</span></span>
+* <span data-ttu-id="202de-167">Компонент снова готовится к просмотру.</span><span class="sxs-lookup"><span data-stu-id="202de-167">The component is rendered again.</span></span>
 
-<span data-ttu-id="abaf0-168">Среда выполнения сравнивает новое содержимое с предыдущим содержимым и применяет только измененное содержимое к модель DOM (DOM).</span><span class="sxs-lookup"><span data-stu-id="abaf0-168">The runtime compares the new content to the previous content and only applies the changed content to the Document Object Model (DOM).</span></span>
+<span data-ttu-id="202de-168">Среда выполнения сравнивает новое содержимое с предыдущим содержимым и применяет только измененное содержимое к модель DOM (DOM).</span><span class="sxs-lookup"><span data-stu-id="202de-168">The runtime compares the new content to the previous content and only applies the changed content to the Document Object Model (DOM).</span></span>
 
-<span data-ttu-id="abaf0-169">Добавьте компонент в другой компонент с помощью синтаксиса HTML.</span><span class="sxs-lookup"><span data-stu-id="abaf0-169">Add a component to another component using HTML syntax.</span></span> <span data-ttu-id="abaf0-170">Например, добавьте `Counter` компонент в домашнюю страницу приложения, `<Counter />` добавив элемент в `Index` компонент.</span><span class="sxs-lookup"><span data-stu-id="abaf0-170">For example, add the `Counter` component to the app's homepage by adding a `<Counter />` element to the `Index` component.</span></span>
+<span data-ttu-id="202de-169">Добавьте компонент в другой компонент с помощью синтаксиса HTML.</span><span class="sxs-lookup"><span data-stu-id="202de-169">Add a component to another component using HTML syntax.</span></span> <span data-ttu-id="202de-170">Например, добавьте `Counter` компонент в домашнюю страницу приложения, `<Counter />` добавив элемент в `Index` компонент.</span><span class="sxs-lookup"><span data-stu-id="202de-170">For example, add the `Counter` component to the app's homepage by adding a `<Counter />` element to the `Index` component.</span></span>
 
-<span data-ttu-id="abaf0-171">*Pages/Index.razor*:</span><span class="sxs-lookup"><span data-stu-id="abaf0-171">*Pages/Index.razor*:</span></span>
+<span data-ttu-id="202de-171">*Pages/Index.razor*:</span><span class="sxs-lookup"><span data-stu-id="202de-171">*Pages/Index.razor*:</span></span>
 
 [!code-cshtml[](get-started/samples_snapshot/3.x/Index1.razor?highlight=7)]
 
-<span data-ttu-id="abaf0-172">Запустите приложение.</span><span class="sxs-lookup"><span data-stu-id="abaf0-172">Run the app.</span></span> <span data-ttu-id="abaf0-173">Домашняя страница имеет собственный счетчик, `Counter` предоставляемый компонентом.</span><span class="sxs-lookup"><span data-stu-id="abaf0-173">The homepage has its own counter provided by the `Counter` component.</span></span>
+<span data-ttu-id="202de-172">Запустите приложение.</span><span class="sxs-lookup"><span data-stu-id="202de-172">Run the app.</span></span> <span data-ttu-id="202de-173">Домашняя страница имеет собственный счетчик, `Counter` предоставляемый компонентом.</span><span class="sxs-lookup"><span data-stu-id="202de-173">The homepage has its own counter provided by the `Counter` component.</span></span>
 
-<span data-ttu-id="abaf0-174">Параметры компонента указываются с помощью атрибутов или [дочернего содержимого](xref:blazor/components#child-content), которые позволяют задавать свойства дочернего компонента.</span><span class="sxs-lookup"><span data-stu-id="abaf0-174">Component parameters are specified using attributes or [child content](xref:blazor/components#child-content), which allow you to set properties on the child component.</span></span> <span data-ttu-id="abaf0-175">Чтобы добавить параметр в `Counter` компонент, обновите `@code` блок компонента:</span><span class="sxs-lookup"><span data-stu-id="abaf0-175">To add a parameter to the `Counter` component, update the component's `@code` block:</span></span>
+<span data-ttu-id="202de-174">Параметры компонента указываются с помощью атрибутов или [дочернего содержимого](xref:blazor/components#child-content), которые позволяют задавать свойства дочернего компонента.</span><span class="sxs-lookup"><span data-stu-id="202de-174">Component parameters are specified using attributes or [child content](xref:blazor/components#child-content), which allow you to set properties on the child component.</span></span> <span data-ttu-id="202de-175">Чтобы добавить параметр в `Counter` компонент, обновите `@code` блок компонента:</span><span class="sxs-lookup"><span data-stu-id="202de-175">To add a parameter to the `Counter` component, update the component's `@code` block:</span></span>
 
-* <span data-ttu-id="abaf0-176">Добавьте открытое свойство для `IncrementAmount` `[Parameter]` с атрибутом.</span><span class="sxs-lookup"><span data-stu-id="abaf0-176">Add a public property for `IncrementAmount` with a `[Parameter]` attribute.</span></span>
-* <span data-ttu-id="abaf0-177">Изменение метод `IncrementCount`, чтобы он использовал `IncrementAmount` при увеличении значения `currentCount`.</span><span class="sxs-lookup"><span data-stu-id="abaf0-177">Change the `IncrementCount` method to use the `IncrementAmount` when increasing the value of `currentCount`.</span></span>
+* <span data-ttu-id="202de-176">Добавьте открытое свойство для `IncrementAmount` `[Parameter]` с атрибутом.</span><span class="sxs-lookup"><span data-stu-id="202de-176">Add a public property for `IncrementAmount` with a `[Parameter]` attribute.</span></span>
+* <span data-ttu-id="202de-177">Изменение метод `IncrementCount`, чтобы он использовал `IncrementAmount` при увеличении значения `currentCount`.</span><span class="sxs-lookup"><span data-stu-id="202de-177">Change the `IncrementCount` method to use the `IncrementAmount` when increasing the value of `currentCount`.</span></span>
 
-<span data-ttu-id="abaf0-178">*Pages/Counter.razor*:</span><span class="sxs-lookup"><span data-stu-id="abaf0-178">*Pages/Counter.razor*:</span></span>
+<span data-ttu-id="202de-178">*Pages/Counter.razor*:</span><span class="sxs-lookup"><span data-stu-id="202de-178">*Pages/Counter.razor*:</span></span>
 
 [!code-cshtml[](get-started/samples_snapshot/3.x/Counter2.razor?highlight=12-13,17)]
 
-<span data-ttu-id="abaf0-179">`IncrementAmount` Укажите вэлементе`<Counter>`компонента,используяатрибут. `Index`</span><span class="sxs-lookup"><span data-stu-id="abaf0-179">Specify the `IncrementAmount` in the `Index` component's `<Counter>` element using an attribute.</span></span>
+<span data-ttu-id="202de-179">`IncrementAmount` Укажите вэлементе`<Counter>`компонента,используяатрибут. `Index`</span><span class="sxs-lookup"><span data-stu-id="202de-179">Specify the `IncrementAmount` in the `Index` component's `<Counter>` element using an attribute.</span></span>
 
-<span data-ttu-id="abaf0-180">*Pages/Index.razor*:</span><span class="sxs-lookup"><span data-stu-id="abaf0-180">*Pages/Index.razor*:</span></span>
+<span data-ttu-id="202de-180">*Pages/Index.razor*:</span><span class="sxs-lookup"><span data-stu-id="202de-180">*Pages/Index.razor*:</span></span>
 
 [!code-cshtml[](get-started/samples_snapshot/3.x/Index2.razor?highlight=7)]
 
-<span data-ttu-id="abaf0-181">Запустите приложение.</span><span class="sxs-lookup"><span data-stu-id="abaf0-181">Run the app.</span></span> <span data-ttu-id="abaf0-182">Компонент имеет собственный счетчик, увеличивающийся на десять при каждом нажатии кнопки « **Click Me** ». `Index`</span><span class="sxs-lookup"><span data-stu-id="abaf0-182">The `Index` component has its own counter that increments by ten each time the **Click me** button is selected.</span></span> <span data-ttu-id="abaf0-183">Компонент `Counter` (*Counter. Razor*) по- `/counter` своему по-в то же время увеличивается на единицу.</span><span class="sxs-lookup"><span data-stu-id="abaf0-183">The `Counter` component (*Counter.razor*) at `/counter` continues to increment by one.</span></span>
+<span data-ttu-id="202de-181">Запустите приложение.</span><span class="sxs-lookup"><span data-stu-id="202de-181">Run the app.</span></span> <span data-ttu-id="202de-182">Компонент имеет собственный счетчик, увеличивающийся на десять при каждом нажатии кнопки « **Click Me** ». `Index`</span><span class="sxs-lookup"><span data-stu-id="202de-182">The `Index` component has its own counter that increments by ten each time the **Click me** button is selected.</span></span> <span data-ttu-id="202de-183">Компонент `Counter` (*Counter. Razor*) по- `/counter` своему по-в то же время увеличивается на единицу.</span><span class="sxs-lookup"><span data-stu-id="202de-183">The `Counter` component (*Counter.razor*) at `/counter` continues to increment by one.</span></span>
 
-## <a name="next-steps"></a><span data-ttu-id="abaf0-184">Следующие шаги</span><span class="sxs-lookup"><span data-stu-id="abaf0-184">Next steps</span></span>
+## <a name="next-steps"></a><span data-ttu-id="202de-184">Следующие шаги</span><span class="sxs-lookup"><span data-stu-id="202de-184">Next steps</span></span>
 
 <xref:tutorials/first-blazor-app>
 
-## <a name="additional-resources"></a><span data-ttu-id="abaf0-185">Дополнительные ресурсы</span><span class="sxs-lookup"><span data-stu-id="abaf0-185">Additional resources</span></span>
+## <a name="additional-resources"></a><span data-ttu-id="202de-185">Дополнительные ресурсы</span><span class="sxs-lookup"><span data-stu-id="202de-185">Additional resources</span></span>
 
 * <xref:signalr/introduction>
