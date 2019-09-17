@@ -6,14 +6,14 @@ monikerRange: '>= aspnetcore-3.0'
 ms.author: bdorrans
 ms.date: 08/19/2019
 uid: security/authentication/certauth
-ms.openlocfilehash: ce7bcdbfb8ce0f1febf34b49786e92c917be139c
-ms.sourcegitcommit: 116bfaeab72122fa7d586cdb2e5b8f456a2dc92a
+ms.openlocfilehash: bb375cf380175daf2399f3b56f543819ee5692b8
+ms.sourcegitcommit: 07cd66e367d080acb201c7296809541599c947d1
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/05/2019
-ms.locfileid: "70384836"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71039240"
 ---
-# <a name="overview"></a>Обзор
+# <a name="configure-certificate-authentication-in-aspnet-core"></a>Настройка проверки подлинности сертификата в ASP.NET Core
 
 `Microsoft.AspNetCore.Authentication.Certificate`содержит реализацию, похожую на [проверку подлинности с помощью сертификата](https://tools.ietf.org/html/rfc5246#section-7.4.4) для ASP.NET Core. Проверка подлинности сертификата выполняется на уровне TLS, прежде чем он когда-либо получит ASP.NET Core. Точнее, это обработчик проверки подлинности, который проверяет сертификат, а затем предоставляет событие, в котором можно разрешить этот сертификат в `ClaimsPrincipal`. 
 
@@ -36,7 +36,7 @@ ms.locfileid: "70384836"
 
 Если проверка подлинности завершается неудачно, `401 (Unauthorized)`этот обработчик возвращает `403 (Forbidden)` ответ, а не, как вы можете ожидать. Причина заключается в том, что проверка подлинности должна выполняться во время первоначального TLS-подключения. К моменту, когда он достигает обработчика, он слишком поздно. Невозможно обновить подключение между анонимным подключением и сертификатом.
 
-Кроме того `app.UseAuthentication();` , `Startup.Configure` добавьте в метод. В противном случае HttpContext. User не будет настроен на `ClaimsPrincipal` создание из сертификата. Пример:
+Кроме того `app.UseAuthentication();` , `Startup.Configure` добавьте в метод. В противном случае HttpContext. User не будет настроен на `ClaimsPrincipal` создание из сертификата. Например:
 
 ```csharp
 public void ConfigureServices(IServiceCollection services)
