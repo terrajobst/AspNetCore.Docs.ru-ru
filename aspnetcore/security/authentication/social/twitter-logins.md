@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 05/11/2019
 uid: security/authentication/twitter-logins
-ms.openlocfilehash: 6b6fa3e50f602a92fec9112ac3ba43583de33a70
-ms.sourcegitcommit: 89fcc6cb3e12790dca2b8b62f86609bed6335be9
+ms.openlocfilehash: 5182f1647acb664bf35f086fcddbe909559a62f7
+ms.sourcegitcommit: 215954a638d24124f791024c66fd4fb9109fd380
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68994284"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71082303"
 ---
 # <a name="twitter-external-sign-in-setup-with-aspnet-core"></a>Настройка внешнего входа в Twitter с помощью ASP.NET Core
 
@@ -25,7 +25,7 @@ ms.locfileid: "68994284"
 
 * Коснитесь элемента **создать новое приложение** и введите URI **имени**приложения, **описания** и общедоступного **веб-сайта** (это может быть временным, пока не будет зарегистрировано доменное имя):
 
-* Введите URI разработки с `/signin-twitter` добавлением в допустимое поле URI перенаправления **OAuth** (например: `https://webapp128.azurewebsites.net/signin-twitter`). Схема проверки подлинности Twitter, настроенная далее в этом примере, `/signin-twitter` автоматически обрабатывает запросы по маршруту для реализации потока OAuth.
+* Введите URI разработки с `/signin-twitter` добавлением в **допустимое поле URI перенаправления OAuth** (например: `https://webapp128.azurewebsites.net/signin-twitter`). Схема проверки подлинности Twitter, настроенная далее в этом примере, `/signin-twitter` автоматически обрабатывает запросы по маршруту для реализации потока OAuth.
 
   > [!NOTE]
   > Сегмент `/signin-twitter` URI задается в качестве обратного вызова по умолчанию для поставщика проверки подлинности Twitter. URI обратного вызова по умолчанию можно изменить при настройке по промежуточного слоя проверки подлинности Twitter с помощью унаследованного свойства [ремотеаусентикатионоптионс. каллбаккпас](/dotnet/api/microsoft.aspnetcore.authentication.remoteauthenticationoptions.callbackpath) класса [твиттероптионс](/dotnet/api/microsoft.aspnetcore.authentication.twitter.twitteroptions) .
@@ -36,7 +36,7 @@ ms.locfileid: "68994284"
 
 Выполните следующие команды для безопасного хранения `ClientId` и `ClientSecret` использования [диспетчера секретов](xref:security/app-secrets):
 
-```console
+```dotnetcli
 dotnet user-secrets set Authentication:Twitter:ConsumerAPIKey <Key>
 dotnet user-secrets set Authentication:Twitter:ConsumerSecret <Secret>
 ```

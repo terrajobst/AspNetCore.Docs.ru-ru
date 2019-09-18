@@ -7,12 +7,12 @@ ms.author: riande
 ms.date: 08/22/2019
 ms.custom: mvc, seodec18
 uid: razor-pages/ui-class
-ms.openlocfilehash: 5b83cb44302a5900ec7b2ccc049790b4c1ca57e5
-ms.sourcegitcommit: 6189b0ced9c115248c6ede02efcd0b29d31f2115
+ms.openlocfilehash: 92c04c1ac4c70c6245accf272753bc914aaab860
+ms.sourcegitcommit: 215954a638d24124f791024c66fd4fb9109fd380
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69985388"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71081874"
 ---
 # <a name="create-reusable-ui-using-the-razor-class-library-project-in-aspnet-core"></a>Создание повторно используемого пользовательского интерфейса с помощью проекта библиотеки классов Razor в ASP.NET Core
 
@@ -42,7 +42,7 @@ ms.locfileid: "69985388"
 
 Выполните из командной строки команду `dotnet new razorclasslib`. Пример:
 
-```console
+```dotnetcli
 dotnet new razorclasslib -o RazorUIClassLib
 ```
 
@@ -77,13 +77,13 @@ dotnet new razorclasslib -o RazorUIClassLib
 
 В командной строке в каталоге *cli* создайте RCL и веб-приложение.
 
-```console
+```dotnetcli
 dotnet build
 ```
 
 Перейдите в каталог *WebApp1* и запустите приложение:
 
-```console
+```dotnetcli
 dotnet run
 ```
 
@@ -110,7 +110,7 @@ dotnet run
 
 Выполните следующую команду в командной строке:
 
-```console
+```dotnetcli
 dotnet new razorclasslib -o RazorUIClassLib
 dotnet new page -n _Message -np -o RazorUIClassLib/Areas/MyFeature/Pages/Shared
 dotnet new viewstart -o RazorUIClassLib/Areas/MyFeature/Pages
@@ -138,7 +138,7 @@ dotnet new viewstart -o RazorUIClassLib/Areas/MyFeature/Pages
 
 `@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers` требуется для использования частичного представления (`<partial name="_Message" />`). Вместо включения директивы `@addTagHelper` можно добавить файл *_ViewImports.cshtml*. Пример:
 
-```console
+```dotnetcli
 dotnet new viewimports -o RazorUIClassLib/Areas/MyFeature/Pages
 ```
 
@@ -146,7 +146,7 @@ dotnet new viewimports -o RazorUIClassLib/Areas/MyFeature/Pages
 
 * Создайте библиотеку классов, чтобы убедиться в отсутствии ошибок компилятора:
 
-```console
+```dotnetcli
 dotnet build RazorUIClassLib
 ```
 
@@ -176,7 +176,7 @@ dotnet build RazorUIClassLib
 
 Создайте Razor Pages веб-приложение и файл решения, содержащий приложение Razor Pages и РКЛ:
 
-```console
+```dotnetcli
 dotnet new webapp -o WebApp1
 dotnet new sln
 dotnet sln add WebApp1
@@ -186,7 +186,7 @@ dotnet add WebApp1 reference RazorUIClassLib
 
 Выполните сборку и запустите приложения:
 
-```console
+```dotnetcli
 cd WebApp1
 dotnet run
 ```
@@ -254,7 +254,7 @@ dotnet run
 
 Включение файлов TypeScript в РКЛ:
 
-1. Поместите файлы TypeScript ( *. TS*) за пределы папки *wwwroot* . Например, поместите файлы в клиентскую папку .
+1. Поместите файлы TypeScript ( *. TS*) за пределы папки *wwwroot* . Например, поместите файлы в *клиентскую* папку.
 
 1. Настройте выходные данные сборки TypeScript для папки *wwwroot* . Задайте свойство внутри `PropertyGroup` в файле проекта: `TypescriptOutDir`
 

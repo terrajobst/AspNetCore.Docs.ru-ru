@@ -7,12 +7,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 07/18/2019
 uid: test/troubleshoot-azure-iis
-ms.openlocfilehash: deae568a6ba88c9a8365b9d7f2df629899bc64a1
-ms.sourcegitcommit: 16502797ea749e2690feaa5e652a65b89c007c89
+ms.openlocfilehash: 384ae6645ce083fba76a430dfc3bec3a59d3870e
+ms.sourcegitcommit: 215954a638d24124f791024c66fd4fb9109fd380
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68483309"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71081536"
 ---
 # <a name="troubleshoot-aspnet-core-on-azure-app-service-and-iis"></a>Устранение неполадок ASP.NET Core в службе приложений Azure и службах IIS
 
@@ -74,7 +74,7 @@ The Web server is configured to not list the contents of this directory.
 
 Дополнительные сведения о макете опубликованного ASP.NET Core приложения см. в разделе <xref:host-and-deploy/directory-structure>. Дополнительные сведения о файле *Web. config* см. в разделе <xref:host-and-deploy/aspnet-core-module#configuration-with-webconfig>.
 
-### <a name="500-internal-server-error"></a>500 Internal Server Error (внутренняя ошибка сервера)
+### <a name="500-internal-server-error"></a>500 — Внутренняя ошибка сервера
 
 Приложение запускается, но ошибка не позволяет серверу выполнить запрос.
 
@@ -265,7 +265,7 @@ Failed to start application '/LM/W3SVC/6/ROOT/', ErrorCode '0x800700c1'.
 1. Запустите приложение:
    * Если развертываемое приложение [зависит от платформы](/dotnet/core/deploying/#framework-dependent-deployments-fdd), сделайте следующее:
 
-     ```console
+     ```dotnetcli
      dotnet .\{ASSEMBLY NAME}.dll
      ```
 

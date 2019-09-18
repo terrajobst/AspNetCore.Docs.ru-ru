@@ -7,12 +7,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 08/14/2019
 uid: test/razor-pages-tests
-ms.openlocfilehash: 35feb5dd95fa79ceca7ff03523cef30d29ccbdd3
-ms.sourcegitcommit: 476ea5ad86a680b7b017c6f32098acd3414c0f6c
+ms.openlocfilehash: afac97d686ef190ebb92d20a55a15dd774b0d1de
+ms.sourcegitcommit: 215954a638d24124f791024c66fd4fb9109fd380
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/14/2019
-ms.locfileid: "69022575"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71081425"
 ---
 # <a name="razor-pages-unit-tests-in-aspnet-core"></a>Razor Pages модульных тестов в ASP.NET Core
 
@@ -44,7 +44,7 @@ ASP.NET Core поддерживает модульные тесты Razor Pages 
 
 Тесты можно выполнять с помощью встроенных функций тестирования интегрированной среды разработки, таких как [Visual Studio](/visualstudio/test/unit-test-your-code) или [Visual Studio для Mac](/dotnet/core/tutorials/using-on-mac-vs-full-solution). При использовании [Visual Studio Code](https://code.visualstudio.com/) или командной строки выполните следующую команду в командной строке в папке *Tests/разорпажестестсампле. Tests* :
 
-```console
+```dotnetcli
 dotnet test
 ```
 
@@ -52,7 +52,7 @@ dotnet test
 
 Приложение для обмена сообщениями — это Razor Pages система сообщений со следующими характеристиками:
 
-* Страница индекса приложения (*pages/index. cshtml* и Pages */index. cshtml. CS*) предоставляет методы пользовательского интерфейса и модели страницы для управления добавлением, удалением и анализом сообщений (поиск среднего числа слов на сообщение).
+* Страница индекса приложения (*pages/index. cshtml* и *pages/index. cshtml. CS*) предоставляет методы пользовательского интерфейса и модели страницы для управления добавлением, удалением и анализом сообщений (поиск среднего числа слов на сообщение).
 * Сообщение описывается `Message` классом (*Data/Message. CS*) с двумя свойствами: `Id` (Key) и `Text` (Message). `Text` Свойство является обязательным и ограничено 200 символами.
 * Сообщения хранятся с&#8224;помощью [Entity Framework базы данных в памяти](/ef/core/providers/in-memory/).
 * Приложение содержит слой DAL в своем классе `AppDbContext` контекста базы данных (*Data/аппдбконтекст. CS*). Методы DAL помечены `virtual`, что позволяет макетирование методы для использования в тестах.
@@ -156,7 +156,7 @@ using (var db = new AppDbContext(Utilities.TestDbContextOptions()))
 | `OnPostDeleteMessageAsync` | Выполняет, чтобы удалить сообщение `Id` с указанным. `DeleteMessageAsync` |
 | `OnPostAnalyzeMessagesAsync` | Если одно или несколько сообщений находятся в базе данных, вычисляет среднее количество слов на сообщение. |
 
-Методы модели страницы тестируются с помощью семи тестов в `IndexPageTests` классе (Tests */разорпажестестсампле. Tests/UnitTests/индекспажетестс. CS*). В тестах используется привычный шаблон "упорядочение-утверждение-действие". Эти тесты сосредоточены на:
+Методы модели страницы тестируются с помощью семи тестов в `IndexPageTests` классе (*Tests/разорпажестестсампле. Tests/UnitTests/индекспажетестс. CS*). В тестах используется привычный шаблон "упорядочение-утверждение-действие". Эти тесты сосредоточены на:
 
 * Определение правильности поведения методов, если [ModelState](xref:Microsoft.AspNetCore.Mvc.ModelBinding.ModelStateDictionary) является недопустимым.
 * Подтверждение того, что методы возвращают правильное <xref:Microsoft.AspNetCore.Mvc.IActionResult>значение.
@@ -228,7 +228,7 @@ ASP.NET Core поддерживает модульные тесты Razor Pages 
 
 Тесты можно выполнять с помощью встроенных функций тестирования интегрированной среды разработки, таких как [Visual Studio](/visualstudio/test/unit-test-your-code) или [Visual Studio для Mac](/dotnet/core/tutorials/using-on-mac-vs-full-solution). При использовании [Visual Studio Code](https://code.visualstudio.com/) или командной строки выполните следующую команду в командной строке в папке *Tests/разорпажестестсампле. Tests* :
 
-```console
+```dotnetcli
 dotnet test
 ```
 
@@ -236,7 +236,7 @@ dotnet test
 
 Приложение для обмена сообщениями — это Razor Pages система сообщений со следующими характеристиками:
 
-* Страница индекса приложения (*pages/index. cshtml* и Pages */index. cshtml. CS*) предоставляет методы пользовательского интерфейса и модели страницы для управления добавлением, удалением и анализом сообщений (поиск среднего числа слов на сообщение).
+* Страница индекса приложения (*pages/index. cshtml* и *pages/index. cshtml. CS*) предоставляет методы пользовательского интерфейса и модели страницы для управления добавлением, удалением и анализом сообщений (поиск среднего числа слов на сообщение).
 * Сообщение описывается `Message` классом (*Data/Message. CS*) с двумя свойствами: `Id` (Key) и `Text` (Message). `Text` Свойство является обязательным и ограничено 200 символами.
 * Сообщения хранятся с&#8224;помощью [Entity Framework базы данных в памяти](/ef/core/providers/in-memory/).
 * Приложение содержит слой DAL в своем классе `AppDbContext` контекста базы данных (*Data/аппдбконтекст. CS*). Методы DAL помечены `virtual`, что позволяет макетирование методы для использования в тестах.
@@ -340,7 +340,7 @@ using (var db = new AppDbContext(Utilities.TestDbContextOptions()))
 | `OnPostDeleteMessageAsync` | Выполняет, чтобы удалить сообщение `Id` с указанным. `DeleteMessageAsync` |
 | `OnPostAnalyzeMessagesAsync` | Если одно или несколько сообщений находятся в базе данных, вычисляет среднее количество слов на сообщение. |
 
-Методы модели страницы тестируются с помощью семи тестов в `IndexPageTests` классе (Tests */разорпажестестсампле. Tests/UnitTests/индекспажетестс. CS*). В тестах используется привычный шаблон "упорядочение-утверждение-действие". Эти тесты сосредоточены на:
+Методы модели страницы тестируются с помощью семи тестов в `IndexPageTests` классе (*Tests/разорпажестестсампле. Tests/UnitTests/индекспажетестс. CS*). В тестах используется привычный шаблон "упорядочение-утверждение-действие". Эти тесты сосредоточены на:
 
 * Определение правильности поведения методов, если [ModelState](xref:Microsoft.AspNetCore.Mvc.ModelBinding.ModelStateDictionary) является недопустимым.
 * Подтверждение того, что методы возвращают правильное <xref:Microsoft.AspNetCore.Mvc.IActionResult>значение.

@@ -6,12 +6,12 @@ ms.author: riande
 ms.date: 12/18/2018
 ms.custom: mvc, seodec18
 uid: security/authorization/secure-data
-ms.openlocfilehash: d95f44394d6ecc3c3896b45c5bebc73fa2d92445
-ms.sourcegitcommit: dc5b293e08336dc236de66ed1834f7ef78359531
+ms.openlocfilehash: d827f6f839c9e42e6d3d7b04fe8b24a1c9732aee
+ms.sourcegitcommit: 215954a638d24124f791024c66fd4fb9109fd380
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/16/2019
-ms.locfileid: "71011187"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71082442"
 ---
 # <a name="create-an-aspnet-core-app-with-user-data-protected-by-authorization"></a>Создание приложения ASP.NET Core с помощью данных пользователя с помощью авторизации
 
@@ -103,7 +103,7 @@ ms.locfileid: "71011187"
 
 Создание новой миграции и обновления базы данных:
 
-```console
+```dotnetcli
 dotnet ef migrations add userID_Status
 dotnet ef database update
 ```
@@ -130,7 +130,7 @@ dotnet ef database update
 
 `SeedData` Класс создает две учетные записи: администратора и диспетчера. Используйте [средство Secret Manager](xref:security/app-secrets) Установка пароля для этих учетных записей. Задайте пароль из каталога проекта (каталог, содержащий *Program.cs*):
 
-```console
+```dotnetcli
 dotnet user-secrets set SeedUserPW <PW>
 ```
 
@@ -279,7 +279,7 @@ dotnet user-secrets set SeedUserPW <PW>
 * Выберите надежный пароль: Используйте восемь и более символов и по крайней мере одну прописную букву, цифру и символ. Например `Passw0rd!` требованиям надежный пароль.
 * Выполните следующую команду из папки проекта, где `<PW>` пароль:
 
-  ```console
+  ```dotnetcli
   dotnet user-secrets set SeedUserPW <PW>
   ```
 
@@ -310,7 +310,7 @@ dotnet user-secrets set SeedUserPW <PW>
   * Назовите его «ContactManager», пространство имен соответствует пространству имен, используемые в образце.
   * `-uld` Указывает LocalDB вместо SQLite
 
-  ```console
+  ```dotnetcli
   dotnet new webapp -o ContactManager -au Individual -uld
   ```
 
@@ -321,14 +321,14 @@ dotnet user-secrets set SeedUserPW <PW>
 * Каркас `Contact` модели.
 * Создание первоначальной миграции и обновления базы данных:
 
-```console
+```dotnetcli
 dotnet add package Microsoft.VisualStudio.Web.CodeGeneration.Design
 dotnet tool install -g dotnet-aspnet-codegenerator
 dotnet aspnet-codegenerator razorpage -m Contact -udl -dc ApplicationDbContext -outDir Pages\Contacts --referenceScriptLibraries
 dotnet ef database drop -f
 dotnet ef migrations add initial
 dotnet ef database update
-  ```
+```
 
 Если при выполнении `dotnet aspnet-codegenerator razorpage` команды возникла ошибка, см. [эту ошибку в GitHub](https://github.com/aspnet/Scaffolding/issues/984).
 
@@ -426,7 +426,7 @@ dotnet ef database update
 
 Создание новой миграции и обновления базы данных:
 
-```console
+```dotnetcli
 dotnet ef migrations add userID_Status
 dotnet ef database update
 ```
@@ -453,7 +453,7 @@ dotnet ef database update
 
 `SeedData` Класс создает две учетные записи: администратора и диспетчера. Используйте [средство Secret Manager](xref:security/app-secrets) Установка пароля для этих учетных записей. Задайте пароль из каталога проекта (каталог, содержащий *Program.cs*):
 
-```console
+```dotnetcli
 dotnet user-secrets set SeedUserPW <PW>
 ```
 
@@ -602,16 +602,16 @@ dotnet user-secrets set SeedUserPW <PW>
 * Выберите надежный пароль: Используйте восемь и более символов и по крайней мере одну прописную букву, цифру и символ. Например `Passw0rd!` требованиям надежный пароль.
 * Выполните следующую команду из папки проекта, где `<PW>` пароль:
 
-  ```console
+  ```dotnetcli
   dotnet user-secrets set SeedUserPW <PW>
   ```
 
 * Удаление и обновление базы данных
 
-    ```console
-     dotnet ef database drop -f
-     dotnet ef database update  
-     ```
+  ```dotnetcli
+  dotnet ef database drop -f
+  dotnet ef database update  
+  ```
 
 * Перезапустите приложение, чтобы заполнить базу данных.
 
@@ -637,7 +637,7 @@ dotnet user-secrets set SeedUserPW <PW>
   * Назовите его «ContactManager», пространство имен соответствует пространству имен, используемые в образце.
   * `-uld` Указывает LocalDB вместо SQLite
 
-  ```console
+  ```dotnetcli
   dotnet new webapp -o ContactManager -au Individual -uld
   ```
 
@@ -648,7 +648,7 @@ dotnet user-secrets set SeedUserPW <PW>
 * Каркас `Contact` модели.
 * Создание первоначальной миграции и обновления базы данных:
 
-  ```console
+  ```dotnetcli
   dotnet aspnet-codegenerator razorpage -m Contact -udl -dc ApplicationDbContext -outDir Pages\Contacts --referenceScriptLibraries
   dotnet ef database drop -f
   dotnet ef migrations add initial

@@ -6,12 +6,12 @@ ms.author: riande
 ms.date: 06/18/2019
 ms.custom: mvc, seodec18
 uid: security/authentication/add-user-data
-ms.openlocfilehash: c219500b7595fd8d200e4e5e742b1e1fda836ba3
-ms.sourcegitcommit: a1283d486ac1dcedfc7ea302e1cc882833e2c515
+ms.openlocfilehash: f5a47ffd2e068414268ed9037d4376bfd21ba1bb
+ms.sourcegitcommit: 215954a638d24124f791024c66fd4fb9109fd380
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67207740"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71080801"
 ---
 # <a name="add-download-and-delete-custom-user-data-to-identity-in-an-aspnet-core-project"></a>Добавление, скачивание и удаление пользовательских данных для удостоверений в проекте ASP.NET Core
 
@@ -20,7 +20,7 @@ ms.locfileid: "67207740"
 В этой статье показано, как:
 
 * Добавьте пользовательские данные веб-приложение ASP.NET Core.
-* Украшение модели пользовательских данных с <xref:Microsoft.AspNetCore.Identity.PersonalDataAttribute> атрибут, чтобы оно автоматически доступно для загрузки и удаления. Возможность загрузки и удаления данных помогает обеспечить соответствие [GDPR](xref:security/gdpr) требования.
+* Снабдите пользовательскую модель <xref:Microsoft.AspNetCore.Identity.PersonalDataAttribute> данных атрибутом, чтобы она автоматически была доступна для скачивания и удаления. Возможность загрузки и удаления данных помогает обеспечить соответствие [GDPR](xref:security/gdpr) требования.
 
 В примере проекта создается на основе веб-приложения Razor Pages, но инструкции одинаковы для веб-приложения ASP.NET Core MVC.
 
@@ -36,13 +36,13 @@ ms.locfileid: "67207740"
 
 * В меню **Файл** Visual Studio откройте меню **Создать** > **Проект**. Назовите проект **WebApp1** Если вы хотите его совпадать с пространством имен [загрузить образец](https://github.com/aspnet/AspNetCore.Docs/tree/live/aspnetcore/security/authentication/add-user-data) кода.
 * Выберите **веб-приложение ASP.NET Core** > **ОК**
-* Выберите **ASP.NET Core 2.2** в раскрывающемся списке
+* Выберите **ASP.NET Core 2,2** в раскрывающемся списке.
 * Выберите **веб-приложение**  > **ОК**
 * Постройте и запустите проект.
 
 # <a name="net-core-clitabnetcore-cli"></a>[Интерфейс командной строки .NET Core](#tab/netcore-cli)
 
-```cli
+```dotnetcli
 dotnet new webapp -o WebApp1
 ```
 
@@ -67,26 +67,26 @@ dotnet new webapp -o WebApp1
 
 Если вы еще не установлен шаблон ASP.NET Core, установите его:
 
-```cli
+```dotnetcli
 dotnet tool install -g dotnet-aspnet-codegenerator
 ```
 
 Добавьте ссылку на пакет [Microsoft.VisualStudio.Web.CodeGeneration.Design](https://www.nuget.org/packages/Microsoft.VisualStudio.Web.CodeGeneration.Design/) в файл проекта (csproj). Выполните следующую команду в каталоге проекта:
 
-```cli
+```dotnetcli
 dotnet add package Microsoft.VisualStudio.Web.CodeGeneration.Design
 dotnet restore
 ```
 
 Выполните следующую команду, чтобы получить список вариантов шаблон удостоверений:
 
-```cli
+```dotnetcli
 dotnet aspnet-codegenerator identity -h
 ```
 
 В папке проекта запустите шаблон удостоверений:
 
-```cli
+```dotnetcli
 dotnet aspnet-codegenerator identity -u WebApp1User -fi Account.Register;Account.Manage.Index
 ```
 
@@ -143,14 +143,14 @@ dotnet aspnet-codegenerator identity -u WebApp1User -fi Account.Register;Account
 
 В Visual Studio **консоль диспетчера пакетов**:
 
-```PMC
+```powershell
 Add-Migration CustomUserData
 Update-Database
 ```
 
 # <a name="net-core-clitabnetcore-cli"></a>[Интерфейс командной строки .NET Core](#tab/netcore-cli)
 
-```cli
+```dotnetcli
 dotnet ef migrations add CustomUserData
 dotnet ef database update
 ```

@@ -7,12 +7,12 @@ ms.author: scaddie
 ms.custom: H1Hack27Feb2017
 ms.date: 09/06/2019
 uid: client-side/spa-services
-ms.openlocfilehash: 16c9eb1d79bca792062d292795763c54dd02bd37
-ms.sourcegitcommit: f65d8765e4b7c894481db9b37aa6969abc625a48
+ms.openlocfilehash: 7aff46f739239246191763e0590046b2d9995922
+ms.sourcegitcommit: 215954a638d24124f791024c66fd4fb9109fd380
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70773420"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71080512"
 ---
 # <a name="use-javascript-services-to-create-single-page-applications-in-aspnet-core"></a>Использование служб JavaScript для создания одностраничных приложений в ASP.NET Core
 
@@ -219,7 +219,7 @@ npm i -S @angular/router
 
 Эти шаблоны можно установить с помощью интерфейса командной строки .NET Core, выполнив следующую команду:
 
-```console
+```dotnetcli
 dotnet new --install Microsoft.AspNetCore.SpaTemplates::*
 ```
 
@@ -233,7 +233,7 @@ dotnet new --install Microsoft.AspNetCore.SpaTemplates::*
 
 Чтобы создать новый проект с помощью одного из шаблонов одностраничных ПРИЛОЖЕНИЙ, включают **короткое имя** шаблона в [команды dotnet new](/dotnet/core/tools/dotnet-new) команды. Следующая команда создает Angular приложения с ASP.NET Core MVC, который настроен на стороне сервера:
 
-```console
+```dotnetcli
 dotnet new angular
 ```
 
@@ -254,13 +254,13 @@ ASP.NET Core использует переменную среды с имене�
 
 Восстановление NuGet требуется и пакеты npm, выполнив следующую команду в корневом каталоге проекта:
 
-```console
+```dotnetcli
 dotnet restore && npm i
 ```
 
 Построение и запуск приложения.
 
-```console
+```dotnetcli
 dotnet run
 ```
 
@@ -303,7 +303,7 @@ npm test
 
 Целевой объект MSBuild вызывается при запуске:
 
-```console
+```dotnetcli
 dotnet publish -c Release
 ```
 

@@ -3,7 +3,7 @@
 # <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 * Из **обозревателе решений**, правой кнопкой мыши проект > **добавить** > **создать шаблонный элемент**.
-* В левой области диалогового окна **Добавление шаблона** выберите удостоверение  > **Добавить**.
+* В левой области диалогового окна **Добавление шаблона** выберите удостоверение > **Добавить**.
 * В диалоговом окне **Добавление удостоверения** выберите нужные параметры.
   * Выберите существующую страницу макета, или файл макета будет перезаписан с неверной разметкой. При выборе существующего  *\_файла Layout. cshtml* он **не** перезаписывается.
 
@@ -21,32 +21,32 @@
 
 Если вы еще не установлен шаблон ASP.NET Core, установите его:
 
-```console
+```dotnetcli
 dotnet tool install -g dotnet-aspnet-codegenerator
 ```
 
 Добавьте ссылку на пакет в [Microsoft. VisualStudio. Web. стратегию. Design](https://www.nuget.org/packages/Microsoft.VisualStudio.Web.CodeGeneration.Design/) в файл проекта (\*с расширением CSPROJ). Выполните следующую команду в каталоге проекта:
 
-```console
+```dotnetcli
 dotnet add package Microsoft.VisualStudio.Web.CodeGeneration.Design
 dotnet restore
 ```
 
 Выполните следующую команду, чтобы получить список вариантов шаблон удостоверений:
 
-```console
+```dotnetcli
 dotnet aspnet-codegenerator identity -h
 ```
 
 В папке проекта запустите механизм формирования удостоверений с нужными параметрами. Например, чтобы настроить удостоверение с пользовательским интерфейсом по умолчанию и минимальным числом файлов, выполните следующую команду. Используйте правильное полное имя для контекста базы данных:
 
-```console
+```dotnetcli
 dotnet aspnet-codegenerator identity -dc MyWeb.Data.ApplicationDbContext --files Account.Register
 ```
 
 В PowerShell используется точка с запятой в качестве разделителя команд. При использовании PowerShell заключите точку с запятой в список файлов или вставьте список файлов в двойные кавычки. Например:
 
-```console
+```dotnetcli
 dotnet aspnet-codegenerator identity -dc MyWeb.Data.ApplicationDbContext --files "Account.Register;Account.Login;Account.Logout"
 ```
 

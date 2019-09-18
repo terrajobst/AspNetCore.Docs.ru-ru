@@ -7,12 +7,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 08/01/2019
 uid: security/key-vault-configuration
-ms.openlocfilehash: 0d0b6e20a1901d4a2630ce263b5fd0cd7bcca8fe
-ms.sourcegitcommit: 4fe3ae892f54dc540859bff78741a28c2daa9a38
+ms.openlocfilehash: fe6cdca1f7180f9da26fe2838e529becb26ccd45
+ms.sourcegitcommit: 215954a638d24124f791024c66fd4fb9109fd380
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/04/2019
-ms.locfileid: "68776654"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71081101"
 ---
 # <a name="azure-key-vault-configuration-provider-in-aspnet-core"></a>Поставщик конфигурации Azure Key Vault в ASP.NET Core
 
@@ -61,13 +61,13 @@ ms.locfileid: "68776654"
 
 Диспетчер секретов используется из командной оболочки, открытой в корне содержимого проекта, где `{SECRET NAME}` — это имя, а `{SECRET VALUE}` — значение.
 
-```console
+```dotnetcli
 dotnet user-secrets set "{SECRET NAME}" "{SECRET VALUE}"
 ```
 
 Выполните следующие команды в командной оболочке из корневого каталога содержимого проекта, чтобы задать секреты для примера приложения:
 
-```console
+```dotnetcli
 dotnet user-secrets set "SecretName" "secret_value_1_dev"
 dotnet user-secrets set "Section:SecretName" "secret_value_2_dev"
 ```
@@ -134,9 +134,9 @@ dotnet user-secrets set "Section:SecretName" "secret_value_2_dev"
 1. Выберите **политики доступа**.
 1. Выберите **Добавить новый**.
 1. Щелкните **выбрать субъект** и выберите зарегистрированное приложение по имени. Нажмите кнопку **выбрать** .
-1. Откройте **разрешения** для секрета и предоставьте приложению разрешения **Get** и **List** .
+1. Откройте **разрешения для секрета** и предоставьте приложению разрешения **Get** и **List** .
 1. Нажмите кнопку **ОК**.
-1. Нажмите кнопку **Сохранить**.
+1. Щелкните **Сохранить**.
 1. Разверните приложение.
 
 Пример приложения получает значения конфигурации из `IConfigurationRoot` с тем же именем, что и имя секрета: `Certificate`
@@ -172,7 +172,7 @@ dotnet user-secrets set "Section:SecretName" "secret_value_2_dev"
 
 Разверните пример приложения в службе приложений Azure.
 
-Приложение, развернутое в службе приложений Azure, автоматически регистрируется в Azure AD при создании службы. Получите идентификатор объекта из развертывания для использования в следующей команде. Идентификатор объекта отображается в портал Azure на панели удостоверений службы приложений.
+Приложение, развернутое в службе приложений Azure, автоматически регистрируется в Azure AD при создании службы. Получите идентификатор объекта из развертывания для использования в следующей команде. Идентификатор объекта отображается в портал Azure на панели **удостоверений** службы приложений.
 
 Используя Azure CLI и идентификатор объекта приложения, укажите приложение с `list` разрешениями и `get` для доступа к хранилищу ключей:
 
@@ -233,7 +233,7 @@ az keyvault set-policy --name '{KEY VAULT NAME}' --object-id {OBJECT ID} --secre
 
    Сохраните следующие секреты локально с помощью [средства диспетчера секретов](xref:security/app-secrets):
 
-   ```console
+   ```dotnetcli
    dotnet user-secrets set "5000-AppSecret" "5.0.0.0_secret_value_dev"
    dotnet user-secrets set "5100-AppSecret" "5.1.0.0_secret_value_dev"
    ```
@@ -327,5 +327,5 @@ Configuration.Reload();
 * [Microsoft Azure: Документация по Key Vault](/azure/key-vault/)
 * [Создание и перенос ключей, защищенных АППАРАТным модулем безопасности, для Azure Key Vault](/azure/key-vault/key-vault-hsm-protected-keys)
 * [Класс KeyVaultClient](/dotnet/api/microsoft.azure.keyvault.keyvaultclient)
-* [Краткое руководство. Установка и получение секрета из Azure Key Vault с помощью веб-приложения .NET](/azure/key-vault/quick-create-net)
+* [Краткое руководство Установка и получение секрета из Azure Key Vault с помощью веб-приложения .NET](/azure/key-vault/quick-create-net)
 * [Учебник. Использование Azure Key Vault с виртуальной машиной Azure Windows в .NET](/azure/key-vault/tutorial-net-windows-virtual-machine)
