@@ -7,12 +7,12 @@ ms.custom: mvc
 ms.date: 03/27/2019
 ms.topic: tutorial
 uid: data/ef-mvc/complex-data-model
-ms.openlocfilehash: a69f1fdd38fec35dec6bb8125bf29859a437a891
-ms.sourcegitcommit: 8835b6777682da6fb3becf9f9121c03f89dc7614
+ms.openlocfilehash: 85a11ba082fc8f6b364019f6cefcd5b1fe5a9215
+ms.sourcegitcommit: 215954a638d24124f791024c66fd4fb9109fd380
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69975082"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71080463"
 ---
 # <a name="tutorial-create-a-complex-data-model---aspnet-mvc-with-ef-core"></a>Учебник. Использование ASP.NET MVC с EF  Core. Создание сложной модели данных
 
@@ -98,11 +98,11 @@ ms.locfileid: "69975082"
 
 Сохраните изменения и выполните сборку проекта. Затем откройте командное окно в папке проекта и введите следующие команды:
 
-```console
+```dotnetcli
 dotnet ef migrations add MaxLengthOnNames
 ```
 
-```console
+```dotnetcli
 dotnet ef database update
 ```
 
@@ -126,11 +126,11 @@ dotnet ef database update
 
 Сохраните изменения и выполните сборку проекта. Затем откройте командное окно в папке проекта и введите следующие команды, чтобы создать другую миграцию:
 
-```console
+```dotnetcli
 dotnet ef migrations add ColumnFirstName
 ```
 
-```console
+```dotnetcli
 dotnet ef database update
 ```
 
@@ -434,7 +434,7 @@ protected override void OnModelCreating(ModelBuilder modelBuilder)
 
 Сохраните изменения и выполните сборку проекта. Затем откройте командное окно в папке проекта и введите команду `migrations add` (команду update-database пока не выполняйте):
 
-```console
+```dotnetcli
 dotnet ef migrations add ComplexDataModel
 ```
 
@@ -483,7 +483,7 @@ Done. To undo this action, use 'ef migrations remove'
 > [!NOTE]
 > Вместо изменения имени базы данных можно удалить ее. Воспользуйтесь **обозревателем объектов SQL Server** (SSOX) или командой интерфейса командной строки `database drop`:
 >
-> ```console
+> ```dotnetcli
 > dotnet ef database drop
 > ```
 
@@ -491,7 +491,7 @@ Done. To undo this action, use 'ef migrations remove'
 
 После изменения имени базы данных или ее удаления запустите команду `database update` в командном окне, чтобы выполнить миграции.
 
-```console
+```dotnetcli
 dotnet ef database update
 ```
 

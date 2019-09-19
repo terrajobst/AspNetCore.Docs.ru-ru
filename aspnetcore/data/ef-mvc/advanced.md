@@ -7,12 +7,12 @@ ms.custom: mvc
 ms.date: 03/27/2019
 ms.topic: tutorial
 uid: data/ef-mvc/advanced
-ms.openlocfilehash: 913511948def86cb2065459a3fcf5f16362a92d5
-ms.sourcegitcommit: 8835b6777682da6fb3becf9f9121c03f89dc7614
+ms.openlocfilehash: 7a67efad187f29773c1cac7a5a2457d02080114b
+ms.sourcegitcommit: 215954a638d24124f791024c66fd4fb9109fd380
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69975033"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71080548"
 ---
 # <a name="tutorial-learn-about-advanced-scenarios---aspnet-mvc-with-ef-core"></a>Учебник. Сведения о сложных сценариях для ASP.NET MVC с EF Core
 
@@ -235,7 +235,7 @@ _context.ChangeTracker.AutoDetectChangesEnabled = false;
 
 Чтобы удалить базу данных с помощью интерфейса командной строки, выполните команду `database drop`:
 
-```console
+```dotnetcli
 dotnet ef database drop
 ```
 

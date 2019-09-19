@@ -10,7 +10,7 @@
 
 Чтобы получить справку по команде `aspnet-codegenerator razorpage`, используйте коммутатор `h`.
 
-```console
+```dotnetcli
 dotnet aspnet-codegenerator razorpage -h
 ```
 

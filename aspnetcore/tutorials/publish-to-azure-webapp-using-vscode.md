@@ -6,12 +6,12 @@ ms.author: riserrad
 ms.custom: mvc
 ms.date: 07/10/2019
 uid: tutorials/publish-to-azure-webapp-using-vscode
-ms.openlocfilehash: 97e8fcb1e5470245c80fad0875abb5fdace7853c
-ms.sourcegitcommit: b40613c603d6f0cc71f3232c16df61550907f550
+ms.openlocfilehash: a5d92775d6245494c34bfe691d7ade663b2078d5
+ms.sourcegitcommit: 215954a638d24124f791024c66fd4fb9109fd380
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68308316"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71082406"
 ---
 # <a name="publish-an-aspnet-core-app-to-azure-with-visual-studio-code"></a>Публикация приложения ASP.NET Core в Azure с помощью Visual Studio Code
 
@@ -37,8 +37,8 @@ ms.locfileid: "68308316"
 
 Используя терминал, перейдите в папку для создания проекта и используйте следующую команду:
 
-```cmd
-> dotnet new mvc
+```dotnetcli
+dotnet new mvc
 ```
 
 Вы получите структуру папок, аналогичную следующей:

@@ -5,12 +5,12 @@ description: В этом руководстве показано, как уст�
 ms.author: riande
 ms.date: 05/31/2018
 uid: tutorials/dotnet-watch
-ms.openlocfilehash: 03b4f7f4ade5268915482a659890c7edc2d9a852
-ms.sourcegitcommit: 5b0eca8c21550f95de3bb21096bd4fd4d9098026
+ms.openlocfilehash: 5462f89a3b5a257ed0a6a8439efb077653fb14f6
+ms.sourcegitcommit: 215954a638d24124f791024c66fd4fb9109fd380
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 04/27/2019
-ms.locfileid: "64889879"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71082249"
 ---
 # <a name="develop-aspnet-core-apps-using-a-file-watcher"></a>Разработка приложений ASP.NET Core с использованием наблюдателя файлов
 
@@ -24,7 +24,7 @@ ms.locfileid: "64889879"
 
 В командной оболочке перейдите в папку *WebApp*. Выполните следующую команду:
 
-```console
+```dotnetcli
 dotnet run
 ```
 
@@ -61,7 +61,7 @@ Application started. Press Ctrl+C to shut down.
 
 1. Установите пакет `Microsoft.DotNet.Watcher.Tools`, запустив следующую команду:
 
-    ```console
+    ```dotnetcli
     dotnet restore
     ```
 
@@ -177,7 +177,7 @@ public static int Product(int a, int b)
 
 Чтобы запустить наблюдение за файлами для обоих проектов, внесите изменения в папку *test*. Выполните следующую команду:
 
-```console
+```dotnetcli
 dotnet watch msbuild /t:Test
 ```
 

@@ -6,12 +6,12 @@ ms.author: bradyg
 ms.custom: mvc
 ms.date: 07/08/2019
 uid: tutorials/signalr
-ms.openlocfilehash: 53d3763a93cc72b6bcf85b64a706500299b3597f
-ms.sourcegitcommit: 040aedca220ed24ee1726e6886daf6906f95a028
+ms.openlocfilehash: 2dfa994b9763a0139cb70cbf9847ac3b02b568e4
+ms.sourcegitcommit: 215954a638d24124f791024c66fd4fb9109fd380
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67893767"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71081969"
 ---
 # <a name="tutorial-get-started-with-aspnet-core-signalr"></a>Учебник. Начало работы с SignalR ASP.NET Core
 
@@ -68,7 +68,7 @@ ms.locfileid: "67893767"
 
 * Выполните следующие команды:
 
-   ```console
+   ```dotnetcli
    dotnet new webapp -o SignalRChat
    code -r SignalRChat
    ```
@@ -110,7 +110,7 @@ ms.locfileid: "67893767"
 
 * В интегрированном терминале выполните следующую команду, чтобы установить LibMan.
 
-  ```console
+  ```dotnetcli
   dotnet tool install -g Microsoft.Web.LibraryManager.Cli
   ```
 
@@ -137,7 +137,7 @@ ms.locfileid: "67893767"
 
 * В **терминале** выполните следующую команду, чтобы установить LibMan.
 
-  ```console
+  ```dotnetcli
   dotnet tool install -g Microsoft.Web.LibraryManager.Cli
   ```
 
@@ -220,7 +220,7 @@ ms.locfileid: "67893767"
 
 * В интегрированном терминале выполните следующую команду:
 
-  ```console
+  ```dotnetcli
   dotnet run -p SignalRChat.csproj
   ```
 
@@ -242,7 +242,8 @@ ms.locfileid: "67893767"
 > * Если приложение не работает, откройте средства разработчика для браузера (F12) и перейдите в консоль. Вы можете увидеть ошибки, связанные с вашим кодом HTML и JavaScript. Предположим, вы поместили *signalr.js* не в ту папку, которую указали. В этом случае ссылка на этот файл не будет работать, и вы увидите сообщение об ошибке 404 в консоли.
 >   ![ошибка: signalr.js не найден](signalr/_static/3.x/f12-console.png)
 > * Если возникает ошибка ERR_SPDY_INADEQUATE_TRANSPORT_SECURITY в Chrome или ошибка NS_ERROR_NET_INADEQUATE_SECURITY в Firefox, выполните эти команды, чтобы обновить сертификат разработки:
->   ```
+>
+>   ```dotnetcli
 >   dotnet dev-certs https --clean
 >   dotnet dev-certs https --trust
 >   ```
@@ -309,7 +310,7 @@ ms.locfileid: "67893767"
 
 * Выполните следующие команды:
 
-   ```console
+   ```dotnetcli
    dotnet new webapp -o SignalRChat
    code -r SignalRChat
    ```
@@ -352,7 +353,7 @@ ms.locfileid: "67893767"
 
 * В интегрированном терминале выполните следующую команду, чтобы установить LibMan.
 
-  ```console
+  ```dotnetcli
   dotnet tool install -g Microsoft.Web.LibraryManager.Cli
   ```
 
@@ -379,7 +380,7 @@ ms.locfileid: "67893767"
 
 * В **терминале** выполните следующую команду, чтобы установить LibMan.
 
-  ```console
+  ```dotnetcli
   dotnet tool install -g Microsoft.Web.LibraryManager.Cli
   ```
 
@@ -462,7 +463,7 @@ ms.locfileid: "67893767"
 
 * В интегрированном терминале выполните следующую команду:
 
-  ```console
+  ```dotnetcli
   dotnet run -p SignalRChat.csproj
   ```
 

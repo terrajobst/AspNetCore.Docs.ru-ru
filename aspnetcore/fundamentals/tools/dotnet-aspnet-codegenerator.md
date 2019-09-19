@@ -6,12 +6,12 @@ monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.date: 07/04/2019
 uid: fundamentals/tools/dotnet-aspnet-codegenerator
-ms.openlocfilehash: c2c815735ad1b4dcec761b26ea3992a4effebe62
-ms.sourcegitcommit: 979dbfc5e9ce09b9470789989cddfcfb57079d94
+ms.openlocfilehash: 1043a578f66d5bb57f4a81e9fe21afa5e3c37cb8
+ms.sourcegitcommit: 215954a638d24124f791024c66fd4fb9109fd380
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68682694"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71081511"
 ---
 # <a name="dotnet-aspnet-codegenerator"></a>dotnet aspnet-codegenerator
 
@@ -25,13 +25,13 @@ ms.locfileid: "68682694"
 
 `dotnet-aspnet-codegenerator` — [глобальное средство](/dotnet/core/tools/global-tools), которое нужно установить. Следующая команда позволяет установить последнюю стабильную версию средства `dotnet-aspnet-codegenerator`:
 
-```console
+```dotnetcli
 dotnet tool install -g dotnet-aspnet-codegenerator
 ```
 
 Приведенная ниже команда позволяет обновить `dotnet-aspnet-codegenerator` до последней стабильной версии, доступной из установленных пакетов SDK для .NET Core.
 
-```console
+```dotnetcli
 dotnet tool update -g dotnet-aspnet-codegenerator
 ```
 
@@ -56,7 +56,7 @@ dotnet aspnet-codegenerator [-h|--help]
 | ----------------- | ------------ | 
 | площадь      | [Формирует шаблон области](/aspnet/core/mvc/controllers/areas) |
   контроллер| [Формирует шаблон контроллера](/aspnet/core/tutorials/first-mvc-app/adding-model) |
-  identity  | [Формирует шаблон удостоверения](/aspnet/core/security/authentication/scaffold-identity) |
+  удостоверение  | [Формирует шаблон удостоверения](/aspnet/core/security/authentication/scaffold-identity) |
   razorpage | [Формирует шаблоны страниц Razor Pages](/aspnet/core/tutorials/razor-pages/model) |
   view      | [Формирует шаблон представления](/aspnet/core/mvc/views/overview) |
 
@@ -137,7 +137,7 @@ dotnet aspnet-codegenerator [-h|--help]
 
 Чтобы получить справку по команде `aspnet-codegenerator controller`, используйте параметр `-h`.
 
-```console
+```dotnetcli
 dotnet aspnet-codegenerator controller -h
 ```
 
@@ -158,7 +158,7 @@ dotnet aspnet-codegenerator controller -h
 
 Например, в следующей команде используется шаблон Edit для создания *MyEdit.cshtml* и *MyEdit.cshtml.cs*:
 
-```console
+```dotnetcli
 dotnet aspnet-codegenerator razorpage MyEdit Edit -m Movie -dc RazorPagesMovieContext -outDir Pages/Movies
 ```
 
@@ -184,7 +184,7 @@ dotnet aspnet-codegenerator razorpage MyEdit Edit -m Movie -dc RazorPagesMovieCo
 
 Чтобы получить справку по команде `aspnet-codegenerator razorpage`, используйте параметр `-h`.
 
-```console
+```dotnetcli
 dotnet aspnet-codegenerator razorpage -h
 ```
 

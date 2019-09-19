@@ -22,7 +22,7 @@
 
 Откройте терминал для проекта RazorPagesMovie.  Щелкните правой кнопкой мыши имя проекта в строке проектирования или макета и выберите **Сервис > Открыть** в терминале. Выполните следующие команды интерфейса командной строки .NET Core в терминале:
 
-```console
+```dotnetcli
 dotnet tool install --global dotnet-ef --version 3.0.0-*
 dotnet add package Microsoft.EntityFrameworkCore.SQLite --version 3.0.0-*
 dotnet add package Microsoft.VisualStudio.Web.CodeGeneration.Design --version 3.0.0-*
@@ -57,11 +57,10 @@ using Microsoft.EntityFrameworkCore;
 
 Выполните следующую команду .NET Core CLI, чтобы добавить в проект SQLite и CodeGeneration.Design:
 
-```console
+```dotnetcli
 dotnet add package Microsoft.EntityFrameworkCore.SQLite
 dotnet add package Microsoft.VisualStudio.Web.CodeGeneration.Design
 dotnet add package Microsoft.EntityFrameworkCore.Design
-
 ```
 
 Пакет `Microsoft.VisualStudio.Web.CodeGeneration.Design` необходим для формирования шаблонов.

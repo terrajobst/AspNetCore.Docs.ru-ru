@@ -11,7 +11,7 @@
 
 Чтобы получить справку по команде `aspnet-codegenerator controller`, используйте коммутатор `h`.
 
-```console
+```dotnetcli
 dotnet aspnet-codegenerator controller -h
 ```
 

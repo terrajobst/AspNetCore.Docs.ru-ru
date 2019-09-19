@@ -1,6 +1,6 @@
 * Настройте доверие сертификату разработки HTTPS с помощью следующей команды:
 
-    ```console
+    ```dotnetcli
     dotnet dev-certs https --trust
     ```
 
