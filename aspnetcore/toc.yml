@@ -545,6 +545,10 @@
   items:
     - name: Введение в службы gRPC
       uid: grpc/index
+    - name: Учебники
+      items:
+        - name: "Начало работы со службой\_gRPC"
+          uid: tutorials/grpc/grpc-start
     - name: 'Службы gRPC на языке C#'
       uid: grpc/basics
     - name: Службы gRPC в ASP.NET Core
@@ -563,6 +567,8 @@
       uid: grpc/migration
     - name: 'Сравнение служб gRPC, с API HTTP'
       uid: grpc/comparison
+    - name: Примеры
+      href: 'https://github.com/grpc/grpc-dotnet/tree/master/examples'
     - name: Устранение неполадок
       uid: grpc/troubleshoot
 - name: 'Тестирование, отладка и устранение неполадок'
@@ -999,7 +1005,7 @@
     - name: Список надежных IP-адресов
       uid: security/ip-safelist
     - name: "Безопасность приложений\_— OWASP"
-      href: 'https://github.com/OWASP/CheatSheetSeries/blob/master/cheatsheets/DotNet_Security_Cheat_Sheet.md'
+      href: 'https://cheatsheetseries.owasp.org/cheatsheets/DotNet_Security_Cheat_Sheet.html'
     - name: Blazor
       items:
         - name: Обзор
