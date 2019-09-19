@@ -1,10 +1,10 @@
-* <span data-ttu-id="e4e48-101">Настройте доверие сертификату разработки HTTPS с помощью следующей команды:</span><span class="sxs-lookup"><span data-stu-id="e4e48-101">Trust the HTTPS development certificate by running the following command:</span></span>
+* <span data-ttu-id="347a8-101">Настройте доверие сертификату разработки HTTPS с помощью следующей команды:</span><span class="sxs-lookup"><span data-stu-id="347a8-101">Trust the HTTPS development certificate by running the following command:</span></span>
 
-    ```console
+    ```dotnetcli
     dotnet dev-certs https --trust
     ```
 
-* <span data-ttu-id="e4e48-102">Приведенная выше команда отображает следующие выходные данные:</span><span class="sxs-lookup"><span data-stu-id="e4e48-102">The preceding command displays the following output:</span></span>
+* <span data-ttu-id="347a8-102">Приведенная выше команда отображает следующие выходные данные:</span><span class="sxs-lookup"><span data-stu-id="347a8-102">The preceding command displays the following output:</span></span>
 
     ```console
     Trusting the HTTPS development certificate was requested. If the certificate 
@@ -16,6 +16,6 @@
     The HTTPS developer certificate was generated successfully.
     ```
 
-* <span data-ttu-id="e4e48-103">При появлении соответствующего запроса введите имя пользователя и пароль администратора.</span><span class="sxs-lookup"><span data-stu-id="e4e48-103">Enter the admin username and password if prompted.</span></span>  <span data-ttu-id="e4e48-104">Установленный сертификат будет считаться доверенным.</span><span class="sxs-lookup"><span data-stu-id="e4e48-104">The certificate will now be installed and trusted.</span></span>
+* <span data-ttu-id="347a8-103">При появлении соответствующего запроса введите имя пользователя и пароль администратора.</span><span class="sxs-lookup"><span data-stu-id="347a8-103">Enter the admin username and password if prompted.</span></span>  <span data-ttu-id="347a8-104">Установленный сертификат будет считаться доверенным.</span><span class="sxs-lookup"><span data-stu-id="347a8-104">The certificate will now be installed and trusted.</span></span>
 
-    <span data-ttu-id="e4e48-105">Дополнительные сведения см. в разделе [Настройка доверия к сертификату разработки HTTPS ASP.NET Core](xref:security/enforcing-ssl#trust-the-aspnet-core-https-development-certificate-on-windows-and-macos).</span><span class="sxs-lookup"><span data-stu-id="e4e48-105">See [Trust the ASP.NET Core HTTPS development certificate](xref:security/enforcing-ssl#trust-the-aspnet-core-https-development-certificate-on-windows-and-macos) for more information.</span></span>
+    <span data-ttu-id="347a8-105">Дополнительные сведения см. в разделе [Настройка доверия к сертификату разработки HTTPS ASP.NET Core](xref:security/enforcing-ssl#trust-the-aspnet-core-https-development-certificate-on-windows-and-macos).</span><span class="sxs-lookup"><span data-stu-id="347a8-105">See [Trust the ASP.NET Core HTTPS development certificate](xref:security/enforcing-ssl#trust-the-aspnet-core-https-development-certificate-on-windows-and-macos) for more information.</span></span>
