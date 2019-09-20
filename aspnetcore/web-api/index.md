@@ -7,12 +7,12 @@ ms.author: scaddie
 ms.custom: mvc
 ms.date: 09/12/2019
 uid: web-api/index
-ms.openlocfilehash: 6e1868690a2c384307a23c89467505d3ed8916db
-ms.sourcegitcommit: 805f625d16d74e77f02f5f37326e5aceafcb78e3
+ms.openlocfilehash: aab9b848eb6e69055b019c9253c716898e9847e2
+ms.sourcegitcommit: a11f09c10ef3d4eeab7ae9ce993e7f30427741c1
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70985461"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71149340"
 ---
 # <a name="create-web-apis-with-aspnet-core"></a>Создание веб-API с помощью ASP.NET Core
 
@@ -159,7 +159,7 @@ namespace WebApiSample
 
 ::: moniker-end
 
-## <a name="automatic-http-400-responses"></a>Автоматические отклики HTTP 400
+### <a name="automatic-http-400-responses"></a>Автоматические отклики HTTP 400
 
 Благодаря атрибуту `[ApiController]` ошибки проверки модели автоматически активируют отклик HTTP 400. В результате следующий код ненужен в методе действия:
 
@@ -172,7 +172,7 @@ if (!ModelState.IsValid)
 
 Для выполнения предыдущей проверки ASP.NET Core MVC использует фильтр действий <xref:Microsoft.AspNetCore.Mvc.Infrastructure.ModelStateInvalidFilter>.
 
-### <a name="default-badrequest-response"></a>Отклик BadRequest по умолчанию 
+### <a name="default-badrequest-response"></a>Отклик BadRequest по умолчанию
 
 Если задана версия совместимости 2.1, для ответов HTTP 400 по умолчанию возвращается тип отклика <xref:Microsoft.AspNetCore.Mvc.SerializableError>. Следующий текст запроса является примером сериализованного типа:
 
@@ -206,36 +206,6 @@ if (!ModelState.IsValid)
 
 * предоставляет распознаваемый компьютером формат для указания ошибок в откликах веб-API;
 * соответствует [спецификации RFC 7807](https://tools.ietf.org/html/rfc7807).
-
-Чтобы изменить тип отклика по умолчанию на `SerializableError`, примените выделенные изменения в `Startup.ConfigureServices`:
-
-::: moniker-end
-
-::: moniker range=">= aspnetcore-3.0"
-
-[!code-csharp[](index/samples/3.x/Startup.cs?name=snippet_DisableProblemDetailsInvalidModelStateResponseFactory&highlight=4-13)]
-
-::: moniker-end
-
-::: moniker range="= aspnetcore-2.2"
-
-[!code-csharp[](index/samples/2.x/Startup.cs?name=snippet_DisableProblemDetailsInvalidModelStateResponseFactory&highlight=5-14)]
-
-::: moniker-end
-
-### <a name="customize-badrequest-response"></a>Настройка отклика BadRequest
-
-Чтобы настроить ответ, полученный в результате ошибки проверки, используйте <xref:Microsoft.AspNetCore.Mvc.ApiBehaviorOptions.InvalidModelStateResponseFactory>. Например:
-
-::: moniker range=">= aspnetcore-3.0"
-
-[!code-csharp[](index/samples/3.x/Startup.cs?name=snippet_ConfigureBadRequestResponse&highlight=4-20)]
-
-::: moniker-end
-
-::: moniker range="<= aspnetcore-2.2"
-
-[!code-csharp[](index/samples/2.x/Startup.cs?name=snippet_ConfigureBadRequestResponse&highlight=5-21)]
 
 ::: moniker-end
 
@@ -283,7 +253,7 @@ if (!ModelState.IsValid)
 
 Атрибут `[ApiController]` применяет правила зависимости к источникам данных по умолчанию для параметров действий. Эти правила избавляют от необходимости вручную определять источники привязки путем применения атрибутов к параметрам действий. Правила зависимости источника привязки работают следующим образом:
 
-* `[FromBody]` выводится для параметров сложного типа. Исключением из правила зависимости `[FromBody]` является любой сложный встроенный тип со специальным значением, такой как <xref:Microsoft.AspNetCore.Http.IFormCollection> и <xref:System.Threading.CancellationToken>. Код определения источника привязки игнорирует эти особые типы. 
+* `[FromBody]` выводится для параметров сложного типа. Исключением из правила зависимости `[FromBody]` является любой сложный встроенный тип со специальным значением, такой как <xref:Microsoft.AspNetCore.Http.IFormCollection> и <xref:System.Threading.CancellationToken>. Код определения источника привязки игнорирует эти особые типы.
 * `[FromForm]` выводится для параметров действия с типом <xref:Microsoft.AspNetCore.Http.IFormFile> и <xref:Microsoft.AspNetCore.Http.IFormFileCollection>. Он не выводится ни для каких простых или определяемых пользователем типов.
 * `[FromRoute]` выводится для любого имени параметра действия, соответствующего параметру в шаблоне маршрута. Если параметру действия соответствуют несколько маршрутов, любое значение маршрута рассматривается как `[FromRoute]`.
 * `[FromQuery]` выводится для любых других параметров действия.
@@ -375,22 +345,6 @@ if (!ModelState.IsValid)
 }
 ```
 
-### <a name="customize-problemdetails-response"></a>Настройка ответа ProblemDetails
-
-Используйте свойство <xref:Microsoft.AspNetCore.Mvc.ApiBehaviorOptions.ClientErrorMapping*>, чтобы настроить содержимое ответа `ProblemDetails`. Например, в следующем коде показано обновление свойства `type` для откликов 404:
-
-::: moniker range=">= aspnetcore-3.0"
-
-[!code-csharp[](index/samples/3.x/Startup.cs?name=snippet_ConfigureApiBehaviorOptions&highlight=8-9)]
-
-::: moniker-end
-
-::: moniker range="<= aspnetcore-2.2"
-
-[!code-csharp[](index/samples/2.x/Startup.cs?name=snippet_ConfigureApiBehaviorOptions&highlight=9-10)]
-
-::: moniker-end
-
 ### <a name="disable-problemdetails-response"></a>Отключение ответа ProblemDetails
 
 Отключить автоматическое создание экземпляра `ProblemDetails` можно, задав свойству <xref:Microsoft.AspNetCore.Mvc.ApiBehaviorOptions.SuppressMapClientErrors*> значение `true`. Добавьте следующий код в `Startup.ConfigureServices`:
@@ -407,9 +361,10 @@ if (!ModelState.IsValid)
 
 ::: moniker-end
 
-## <a name="additional-resources"></a>Дополнительные ресурсы 
+## <a name="additional-resources"></a>Дополнительные ресурсы
 
 * <xref:web-api/action-return-types>
+* <xref:web-api/handle-errors>
 * <xref:web-api/advanced/custom-formatters>
 * <xref:web-api/advanced/formatting>
 * <xref:tutorials/web-api-help-pages-using-swagger>
