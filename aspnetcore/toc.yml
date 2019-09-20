@@ -448,6 +448,8 @@
       uid: web-api/advanced/analyzers
     - name: Соглашения
       uid: web-api/advanced/conventions
+    - name: Обработка ошибок
+      uid: web-api/handle-errors
     - name: Тестирование API-интерфейсов с HTTP REPL
       uid: web-api/http-repl
 - name: Приложения в режиме реального времени
