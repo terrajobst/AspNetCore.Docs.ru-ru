@@ -7,12 +7,12 @@ ms.author: riande
 ms.custom: mvc, seoapril2019
 ms.date: 09/05/2019
 uid: blazor/index
-ms.openlocfilehash: 767ec8f106bebb92cf13a10eb63fab4905715d3d
-ms.sourcegitcommit: 092061c4f6ef46ed2165fa84de6273d3786fb97e
+ms.openlocfilehash: 378892efafa6b979d7f92a5e559b2dc8bb12295d
+ms.sourcegitcommit: e5a74f882c14eaa0e5639ff082355e130559ba83
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70964110"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71168253"
 ---
 # <a name="introduction-to-blazor"></a>Введение в Blazor
 
@@ -102,6 +102,8 @@ Welcome to your new app.
 Компоненты преобразуются в хранящееся в памяти представление модели DOM для браузера, которое называется *деревом отображения*, позволяя гибко и эффективно обновлять пользовательский интерфейс.
 
 ## <a name="blazor-webassembly"></a>Blazor WebAssembly
+
+[!INCLUDE[](~/includes/blazorwasm-preview-notice.md)]
 
 Blazor WebAssembly — это платформа для одностраничных приложений, которая позволяет создавать интерактивные клиентские веб-приложения с помощью .NET. Blazor WebAssembly использует открытые веб-стандарты без подключаемых модулей или транскомпиляции кода. Эта платформа работает во всех современных веб-браузерах, в том числе на мобильных устройствах.
 

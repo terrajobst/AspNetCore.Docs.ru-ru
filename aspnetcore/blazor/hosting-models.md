@@ -7,22 +7,24 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 09/07/2019
 uid: blazor/hosting-models
-ms.openlocfilehash: 6e225e490e54e44877fa27573ff9b513c8dcd9a3
-ms.sourcegitcommit: 092061c4f6ef46ed2165fa84de6273d3786fb97e
+ms.openlocfilehash: 47c546a086588919e4458d6aeeb39453cbc754e0
+ms.sourcegitcommit: e5a74f882c14eaa0e5639ff082355e130559ba83
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70964038"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71168136"
 ---
 # <a name="aspnet-core-blazor-hosting-models"></a>ASP.NET Core моделей размещения Блазор
 
 По [Даниэль Roth)](https://github.com/danroth27)
 
+[!INCLUDE[](~/includes/blazorwasm-preview-notice.md)]
+
 Блазор — это веб-платформа, предназначенная для запуска на стороне клиента в браузере в среде выполнения .NET на основе [сборки](https://webassembly.org/)(*блазор*) или на стороне сервера в ASP.NET Core (*блазор Server*). Независимо от модели размещения, модели приложения и компонента *одинаковы*.
 
 Сведения о создании проекта для моделей размещения, описанных в этой статье, <xref:blazor/get-started>см. в разделе.
 
-## <a name="blazor-webassembly"></a>Блазор, сборка
+## <a name="blazor-webassembly"></a>Blazor WebAssembly
 
 Основная модель размещения для Блазор работает на стороне клиента в браузере на веб-сборке. Приложение Blazor, его зависимости и среда выполнения .NET скачиваются в браузере. Приложение выполняется непосредственно в потоке пользовательского интерфейса браузера. Обновления пользовательского интерфейса и обработка событий выполняются в рамках одного процесса. Ресурсы приложения развертываются как статические файлы на веб-сервере или в службе, способной обслуживать статические содержимое клиентам.
 
@@ -51,7 +53,7 @@ ms.locfileid: "70964038"
 * Размер скачивания больше, и приложения загружаются дольше.
 * Поддержка среды выполнения .NET и инструментария менее зрела. Например, существуют ограничения на поддержку и отладку [.NET Standard](/dotnet/standard/net-standard) .
 
-## <a name="blazor-server"></a>Сервер блазор
+## <a name="blazor-server"></a>Blazor Server
 
 При использовании модели размещения сервера Блазор приложение выполняется на сервере в приложении ASP.NET Core. Обновление элементов пользовательского интерфейса, обработка событий и вызовы JavaScript обрабатываются через подключение [SignalR](xref:signalr/introduction).
 

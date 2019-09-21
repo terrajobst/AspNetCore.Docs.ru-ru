@@ -7,22 +7,24 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 07/01/2019
 uid: blazor/supported-platforms
-ms.openlocfilehash: 042fbb1b2c7f92b7dc6443319f3f195a12a55adc
-ms.sourcegitcommit: 092061c4f6ef46ed2165fa84de6273d3786fb97e
+ms.openlocfilehash: 8730417f772c84ebcccc449a5826126aa5c64abb
+ms.sourcegitcommit: e5a74f882c14eaa0e5639ff082355e130559ba83
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70963883"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71168166"
 ---
 # <a name="aspnet-core-blazor-supported-platforms"></a>Поддерживаемые платформы ASP.NET Core Блазор
 
 Автор [Люк Латэм](https://github.com/guardrex) (Luke Latham)
 
+[!INCLUDE[](~/includes/blazorwasm-preview-notice.md)]
+
 ## <a name="browser-requirements"></a>Требования к браузеру
 
-### <a name="blazor-webassembly"></a>Блазор, сборка
+### <a name="blazor-webassembly"></a>Blazor WebAssembly
 
-| Browser                          | Version               |
+| Браузер                          | Версия               |
 | -------------------------------- | :-------------------: |
 | Microsoft Edge                   | Текущие               |
 | Mozilla Firefox                  | Текущие               |
@@ -32,9 +34,9 @@ ms.locfileid: "70963883"
 
 &dagger;Microsoft Internet Explorer не поддерживает [сборку](https://webassembly.org).
 
-### <a name="blazor-server"></a>Сервер блазор
+### <a name="blazor-server"></a>Blazor Server
 
-| Browser                          | Version    |
+| Браузер                          | Версия    |
 | -------------------------------- | :--------: |
 | Microsoft Edge                   | Текущие    |
 | Mozilla Firefox                  | Текущие    |
