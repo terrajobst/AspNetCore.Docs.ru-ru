@@ -7,21 +7,18 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 09/15/2019
 uid: blazor/forms-validation
-ms.openlocfilehash: 2fd76db90a53e328cd2ac8f452fba58365db0384
-ms.sourcegitcommit: dc5b293e08336dc236de66ed1834f7ef78359531
+ms.openlocfilehash: c68ebf7f7bf07b6c243ab16307716cea13870446
+ms.sourcegitcommit: 04ce94b3c1b01d167f30eed60c1c95446dfe759d
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/16/2019
-ms.locfileid: "71011063"
+ms.lasthandoff: 09/21/2019
+ms.locfileid: "71176343"
 ---
 # <a name="aspnet-core-blazor-forms-and-validation"></a>ASP.NET Core Блазор Forms и проверка
 
 Авторы: [Дэниэл Рот (Daniel Roth)](https://github.com/danroth27) и [Люк Лэтем (Luke Latham)](https://github.com/guardrex)
 
 Формы и проверка поддерживаются в Блазор с помощью [заметок к данным](xref:mvc/models/validation).
-
-> [!NOTE]
-> С каждым предварительным выпуском, как правило, изменяются формы и сценарии проверки.
 
 Следующий `ExampleModel` тип определяет логику проверки с помощью заметок к данным:
 

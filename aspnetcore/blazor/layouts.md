@@ -5,14 +5,14 @@ description: Узнайте, как создавать многократно и
 monikerRange: '>= aspnetcore-3.0'
 ms.author: riande
 ms.custom: mvc
-ms.date: 09/06/2019
+ms.date: 09/21/2019
 uid: blazor/layouts
-ms.openlocfilehash: 05a38c10e18407d50422192ab1ddf3ff4b0f3a5b
-ms.sourcegitcommit: 43c6335b5859282f64d66a7696c5935a2bcdf966
+ms.openlocfilehash: 6ae795f720cd2cc1010ebec46bcee877b31d20c6
+ms.sourcegitcommit: 04ce94b3c1b01d167f30eed60c1c95446dfe759d
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/07/2019
-ms.locfileid: "70800365"
+ms.lasthandoff: 09/21/2019
+ms.locfileid: "71176422"
 ---
 # <a name="aspnet-core-blazor-layouts"></a>ASP.NET Core макеты Блазор
 
@@ -45,6 +45,8 @@ ms.locfileid: "70800365"
 
 Дополнительные сведения `Router` о компоненте см. в <xref:blazor/routing>разделе.
 
+Выбор макета в качестве макета по умолчанию в маршрутизаторе является полезной практикой, так как он может быть переопределен отдельно для каждого компонента или папки. Предпочитать использование маршрутизатора для настройки макета приложения по умолчанию, так как это наиболее общий способ.
+
 ## <a name="specify-a-layout-in-a-component"></a>Указание макета в компоненте
 
 Используйте директиву `@layout` Razor, чтобы применить макет к компоненту. Компилятор преобразует `@layout` `LayoutAttribute`в, который применяется к классу Component.
@@ -52,6 +54,8 @@ ms.locfileid: "70800365"
 Содержимое следующего `MasterList` компонента вставляется в в `MasterLayout` позиции `@Body`:
 
 [!code-cshtml[](layouts/sample_snapshot/3.x/MasterList.razor?highlight=1)]
+
+Указание макета непосредственно в компоненте переопределяет набор *макетов по умолчанию* в маршрутизаторе `@layout` или директиву, импортированную из *_Imports. Razor*.
 
 ## <a name="centralized-layout-selection"></a>Выбор централизованного макета
 
@@ -66,6 +70,8 @@ ms.locfileid: "70800365"
 [!code-cshtml[](layouts/sample_snapshot/3.x/_Imports.razor)]
 
 Файл *_Imports. Razor* аналогичен [файлу _ViewImports. cshtml для представлений и страниц Razor,](xref:mvc/views/layout#importing-shared-directives) но применяется специально к файлам компонентов Razor.
+
+Указание макета в *_Imports. Razor* переопределяет макет, указанный в качестве макета маршрутизатора *по умолчанию*.
 
 ## <a name="nested-layouts"></a>Вложенные макеты
 

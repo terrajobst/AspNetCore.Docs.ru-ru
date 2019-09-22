@@ -32,7 +32,6 @@
 @page "/prerendered-interop"
 @using Microsoft.AspNetCore.Components
 @using Microsoft.JSInterop
-@inject IComponentContext ComponentContext
 @inject IJSRuntime JSRuntime
 
 <p>
@@ -59,32 +58,5 @@
             StateHasChanged();
         }
     }
-}
-```
-
-Для условного отображения другого содержимого в зависимости от того, является ли приложение предварительно отображаемым содержимым `IsConnected` , используйте свойство `IComponentContext` в службе. Для серверных приложений блазор `IsConnected` возвращает `true` , только если имеется активное соединение с клиентом. Он всегда возвращается `true` в приложениях блазор веб – сборки.
-
-```cshtml
-@page "/isconnected-example"
-@using Microsoft.AspNetCore.Components.Services
-@inject IComponentContext ComponentContext
-
-<h1>IsConnected Example</h1>
-
-<p>
-    Current state:
-    <strong id="connected-state">
-        @(ComponentContext.IsConnected ? "connected" : "not connected")
-    </strong>
-</p>
-
-<p>
-    Clicks:
-    <strong id="count">@count</strong>
-    <button id="increment-count" @onclick="@(() => count++)">Click me</button>
-</p>
-
-@code {
-    private int count;
 }
 ```

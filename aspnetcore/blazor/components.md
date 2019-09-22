@@ -5,14 +5,14 @@ description: Узнайте, как создавать и использоват
 monikerRange: '>= aspnetcore-3.0'
 ms.author: riande
 ms.custom: mvc
-ms.date: 09/19/2019
+ms.date: 09/21/2019
 uid: blazor/components
-ms.openlocfilehash: 55b40bc640715bf4052fa99ed68f63250b67e8d1
-ms.sourcegitcommit: e5a74f882c14eaa0e5639ff082355e130559ba83
+ms.openlocfilehash: cf12be950043095b7e3e5eab897dd626021cb982
+ms.sourcegitcommit: 04ce94b3c1b01d167f30eed60c1c95446dfe759d
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71168219"
+ms.lasthandoff: 09/21/2019
+ms.locfileid: "71176392"
 ---
 # <a name="create-and-use-aspnet-core-razor-components"></a>Создание и использование компонентов ASP.NET Core Razor
 
@@ -27,14 +27,6 @@ ms.locfileid: "71168219"
 Компоненты реализуются в файлах компонентов [Razor](xref:mvc/views/razor) ( *. Razor*) с помощью комбинации C# и HTML-разметки. Компонент в Блазор формально называется *компонентом Razor*.
 
 Имя компонента должно начинаться с символа верхнего регистра. Например, *микулкомпонент. Razor* является допустимым, а *микулкомпонент. Razor* является недопустимым.
-
-Компоненты можно создавать с помощью расширения файла *. cshtml* , если файлы определены как файлы компонентов Razor с помощью `_RazorComponentInclude` свойства MSBuild. Например, приложение, которое указывает, что все файлы *. cshtml* в папке *pages* должны рассматриваться как файлы компонентов Razor:
-
-```xml
-<PropertyGroup>
-  <_RazorComponentInclude>Pages\**\*.cshtml</_RazorComponentInclude>
-</PropertyGroup>
-```
 
 Пользовательский интерфейс для компонента определяется с помощью HTML. Логика динамического отображения (например выражения, циклы и условные выражения) добавляется с помощью встроенного синтаксиса C# под названием [Razor](xref:mvc/views/razor). При компиляции приложения логика разметки и C# отрисовки HTML преобразуется в класс компонента. Имя созданного класса соответствует имени файла.
 
@@ -1046,6 +1038,9 @@ This is the Index page.
 
 Дополнительные сведения см. в разделе <xref:mvc/views/razor>.
 
+> [!WARNING]
+> Некоторые атрибуты HTML, такие как [ARIA-Pressed](https://developer.mozilla.org/docs/Web/Accessibility/ARIA/Roles/button_role#Toggle_buttons), не работают должным образом, если типом `bool`.NET является. В таких случаях используйте `string` тип вместо. `bool`
+
 ## <a name="raw-html"></a>Необработанный HTML
 
 Строки обычно подготавливаются с помощью текстовых узлов DOM, что означает, что любая разметка, которую они могут содержать, игнорируется и обрабатывается как литеральный текст. Для отрисовки необработанного HTML-кода заключите `MarkupString` содержимое HTML в значение. Значение анализируется как HTML или SVG и вставляется в модель DOM.
@@ -1333,7 +1328,7 @@ public class ThemeInfo
 
 ## <a name="manual-rendertreebuilder-logic"></a>Логика Рендертрибуилдер вручную
 
-`Microsoft.AspNetCore.Components.RenderTree`предоставляет методы для управления компонентами и элементами, включая создание компонентов вручную в C# коде.
+`Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder`предоставляет методы для управления компонентами и элементами, включая создание компонентов вручную в C# коде.
 
 > [!NOTE]
 > `RenderTreeBuilder` Использование для создания компонентов является расширенным сценарием. Неправильно сформированный компонент (например, незакрытый тег разметки) может привести к неопределенному поведению.
@@ -1386,6 +1381,8 @@ public class ThemeInfo
     }
 }
 ```
+
+> ! ! Типы в `Microsoft.AspNetCore.Components.RenderTree` позволяют обрабатывать *результаты* операций отрисовки. Это внутренние сведения о реализации Блазор Framework. Эти типы следует считать *нестабильными* и могут быть изменены в будущих выпусках.
 
 ### <a name="sequence-numbers-relate-to-code-line-numbers-and-not-execution-order"></a>Порядковые номера связаны с номерами строк кода, а не с порядком выполнения
 
