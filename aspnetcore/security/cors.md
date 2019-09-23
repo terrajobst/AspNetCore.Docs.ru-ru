@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 04/07/2019
 uid: security/cors
-ms.openlocfilehash: a34b77ad799a00707048c923b82b48774ce91682
-ms.sourcegitcommit: b1e480e1736b0fe0e4d8dce4a4cf5c8e47fc2101
+ms.openlocfilehash: a02b3497684979c1a9e792437f9f1a4c467600f0
+ms.sourcegitcommit: d34b2627a69bc8940b76a949de830335db9701d3
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71108077"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71187252"
 ---
 # <a name="enable-cross-origin-requests-cors-in-aspnet-core"></a>Включение запросов между источниками (CORS) в ASP.NET Core
 
@@ -217,13 +217,13 @@ app.UseEndpoints(endpoints =>
 
 <xref:Microsoft.AspNetCore.Cors.Infrastructure.CorsPolicyBuilder.SetIsOriginAllowedToAllowWildcardSubdomains*>&ndash; Задает свойство политики как функцию, которая позволяет источникам соответствовать настроенному домену с подстановочными знаками при оценке того, разрешен ли источник. <xref:Microsoft.AspNetCore.Cors.Infrastructure.CorsPolicy.IsOriginAllowed*>
 
-[!code-csharp[](cors/sample/CorsExample4/Startup.cs?range=100-104&highlight=4)]
+[!code-csharp[](cors/sample/CorsExample4/Startup.cs?range=100-105&highlight=4-5)]
 
 ::: moniker-end
 
 ### <a name="set-the-allowed-http-methods"></a>Задание допустимых методов HTTP
 
-<xref:Microsoft.AspNetCore.Cors.Infrastructure.CorsPolicyBuilder.AllowAnyMethod*>:
+<xref:Microsoft.AspNetCore.Cors.Infrastructure.CorsPolicyBuilder.AllowAnyMethod*>.
 
 * Разрешает любой метод HTTP:
 * Влияет на предпечатные запросы `Access-Control-Allow-Methods` и заголовок. Дополнительные сведения см. в разделе [предпечатные запросы](#preflight-requests) .
@@ -374,8 +374,8 @@ Content-Length: 0
 
 Запрос перед рейсом использует метод HTTP OPTIONS. Он включает два специальных заголовка:
 
-* `Access-Control-Request-Method`: Метод HTTP, который будет использоваться для фактического запроса.
-* `Access-Control-Request-Headers`: Список заголовков запросов, которые приложение устанавливает на фактическом запросе. Как упоминалось ранее, в него не входят заголовки, заданных браузером `User-Agent`, например.
+* `Access-Control-Request-Method`. Метод HTTP, который будет использоваться для фактического запроса.
+* `Access-Control-Request-Headers`. Список заголовков запросов, которые приложение устанавливает на фактическом запросе. Как упоминалось ранее, в него не входят заголовки, заданных браузером `User-Agent`, например.
 
 Предпечатный запрос CORS может включать `Access-Control-Request-Headers` заголовок, указывающий серверу на заголовки, отправляемые с фактическим запросом.
 
