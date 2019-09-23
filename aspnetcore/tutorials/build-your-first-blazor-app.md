@@ -5,14 +5,14 @@ description: Пошаговое создание приложения Blazor.
 monikerRange: '>= aspnetcore-3.0'
 ms.author: riande
 ms.custom: mvc
-ms.date: 08/23/2019
+ms.date: 09/15/2019
 uid: tutorials/first-blazor-app
-ms.openlocfilehash: ea1111f43b6b8b4f47061056e8ad8d505f92dba6
-ms.sourcegitcommit: 43c6335b5859282f64d66a7696c5935a2bcdf966
+ms.openlocfilehash: b433d793ae615bc4ece7c63bebd72d349adf43ee
+ms.sourcegitcommit: 215954a638d24124f791024c66fd4fb9109fd380
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/07/2019
-ms.locfileid: "70800487"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71081255"
 ---
 # <a name="build-your-first-blazor-app"></a>Создание приложения Blazor
 
@@ -57,7 +57,7 @@ ms.locfileid: "70800487"
 
 1. Добавьте компонент `Counter` в компонент `Index` приложения, разместив элемент `<Counter />` внутри компонента `Index` (*Index.razor*).
 
-   Если вы выполняете эту задачу с помощью клиентской части Blazor, это значит, что компонент `Index` использует компонент `SurveyPrompt`. Замените элемент `<SurveyPrompt>` элементом `<Counter />`. Если вы используете для этой задачи серверное приложение Blazor, добавьте к компоненту `Index` элемент `<Counter />`:
+   Если вы выполняете эту задачу с помощью Blazor WebAssembly, это значит, что компонент `Index` использует компонент `SurveyPrompt`. Замените элемент `<SurveyPrompt>` элементом `<Counter />`. Если вы используете для этой задачи серверное приложение Blazor, добавьте к компоненту `Index` элемент `<Counter />`:
 
    *Pages/Index.razor*:
 
@@ -97,11 +97,11 @@ ms.locfileid: "70800487"
 
 ## <a name="dependency-injection"></a>Внедрение зависимостей
 
-Службы, зарегистрированные в контейнере служб приложения, доступны компонентам через [внедрение зависимостей](xref:fundamentals/dependency-injection). Внедрите службы в компонент с помощью директивы `@inject`.
+Если вы используете серверное приложение Blazor, служба `WeatherForecastService` зарегистрирована как [отдельная](xref:fundamentals/dependency-injection#service-lifetimes) в `Startup.ConfigureServices`. Экземпляр этой службы предоставляется для всего приложения посредством [внедрения зависимостей (DI)](xref:fundamentals/dependency-injection):
 
-Изучите директивы компонента `FetchData`.
+[!code-csharp[](build-your-first-blazor-app/samples_snapshot/3.x/Startup.cs?highlight=5)]
 
-Если вы используете серверное приложение Razor, служба `WeatherForecastService` зарегистрирована как [отдельная](xref:fundamentals/dependency-injection#service-lifetimes), то есть для всего приложения предоставляется один экземпляр этой службы. Директива `@inject` используется для внедрения экземпляра службы `WeatherForecastService` в компонент.
+Директива `@inject` используется для внедрения экземпляра службы `WeatherForecastService` в компонент `FetchData`.
 
 *Pages/FetchData.razor*:
 
@@ -111,7 +111,7 @@ ms.locfileid: "70800487"
 
 [!code-cshtml[](build-your-first-blazor-app/samples_snapshot/3.x/FetchData2.razor?highlight=6)]
 
-Если вы работаете с приложением Blazor на стороне клиента, внедряется `HttpClient` для получения данных прогноза погоды из файла *weather.json*, расположенного в папке *wwwroot/sample-data*.
+Если вы работаете с приложением Blazor WebAssembly, внедряется `HttpClient` для получения данных прогноза погоды из файла *weather.json*, расположенного в папке *wwwroot/sample-data*.
 
 *Pages/FetchData.razor*:
 
@@ -120,7 +120,6 @@ ms.locfileid: "70800487"
 Цикл [\@foreach](/dotnet/csharp/language-reference/keywords/foreach-in) используется для отображения каждого экземпляра прогноза в отдельной строке в таблице погоды.
 
 [!code-cshtml[](build-your-first-blazor-app/samples_snapshot/3.x/FetchData3.razor?highlight=11-19)]
-
 
 ## <a name="build-a-todo-list"></a>Создание списка дел
 

@@ -6,12 +6,12 @@ monikerRange: '>= aspnetcore-3.0'
 ms.author: johluo
 ms.date: 8/26/2019
 uid: tutorials/grpc/grpc-start
-ms.openlocfilehash: 7f80ead06f00037ae51b35d40dff9bc7f99bc5d8
-ms.sourcegitcommit: 8b36f75b8931ae3f656e2a8e63572080adc78513
+ms.openlocfilehash: 924aa3880fc7f2aa777d4ab2e5ea3bed38e227d4
+ms.sourcegitcommit: 215954a638d24124f791024c66fd4fb9109fd380
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/05/2019
-ms.locfileid: "70310569"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71081184"
 ---
 # <a name="tutorial-create-a-grpc-client-and-server-in-aspnet-core"></a>Учебник. Создание клиента и сервера gRPC в ASP.NET Core
 
@@ -51,7 +51,7 @@ ms.locfileid: "70310569"
 # <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 * Запустите Visual Studio и щелкните **Создать проект** или в меню **Файл** в Visual Studio выберите **Создать** > **Проект**.
-* В диалоговом окне **Создание проекта** выберите **gPRC Service** (Служба gPRC) и щелкните **Далее**:
+* В диалоговом окне **Создание проекта** выберите **Служба gRPC** и нажмите кнопку **Далее**:
 
   ![Диалоговое окно создания проекта](~/tutorials/grpc/grpc-start/static/cnp.png)
 
@@ -67,7 +67,7 @@ ms.locfileid: "70310569"
 * Смените каталог (`cd`) на папку, в которой будет содержаться проект.
 * Выполните следующие команды:
 
-  ```console
+  ```dotnetcli
   dotnet new grpc -o GrpcGreeter
   code -r GrpcGreeter
   ```
@@ -82,9 +82,9 @@ ms.locfileid: "70310569"
 
 Из терминала выполните следующие команды:
 
-```console
-  dotnet new grpc -o GrpcGreeter
-  cd GrpcGreeter
+```dotnetcli
+dotnet new grpc -o GrpcGreeter
+cd GrpcGreeter
 ```
 
 Эти команды позволяют создать службу gRPC с помощью [.NET Core CLI](/dotnet/core/tools/dotnet).
@@ -153,7 +153,7 @@ info: Microsoft.Hosting.Lifetime[0]
 * Смените каталог (`cd`) на папку, в которой будет содержаться проект.
 * Выполните следующие команды:
 
-  ```console
+  ```dotnetcli
   dotnet new console -o GrpcGreeterClient
   code -r GrpcGreeterClient
   ```
@@ -200,7 +200,7 @@ info: Microsoft.Hosting.Lifetime[0]
 
 Во **встроенном терминале** выполните следующие команды:
 
-```console
+```dotnetcli
 dotnet add GrpcGreeterClient.csproj package Grpc.Net.Client
 dotnet add GrpcGreeterClient.csproj package Google.Protobuf
 dotnet add GrpcGreeterClient.csproj package Grpc.Tools

@@ -7,12 +7,12 @@ ms.author: jukotali
 ms.custom: mvc
 ms.date: 08/29/2019
 uid: fundamentals/middleware/request-response
-ms.openlocfilehash: e992401da2d194b178afbe51a293d103def0f940
-ms.sourcegitcommit: e6bd2bbe5683e9a7dbbc2f2eab644986e6dc8a87
+ms.openlocfilehash: 5e531c0ce0ed48097054fd81ddc3655a66cc7c5f
+ms.sourcegitcommit: 215954a638d24124f791024c66fd4fb9109fd380
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70238151"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71081673"
 ---
 # <a name="request-and-response-operations-in-aspnet-core"></a>Операции запросов и ответов в ASP.NET Core
 
@@ -20,7 +20,7 @@ ms.locfileid: "70238151"
 
 В этой статье объясняется, как читать текст запроса и писать текст ответа. Возможно, вам потребуется написать код для этих операций при создании ПО промежуточного слоя. В других случаях писать такой код обычно не нужно, так как эти операции обрабатываются MVC и Razor Pages.
 
-Существует две абстракции для текста запросов и ответов: <xref:System.IO.Stream> и <xref:System.IO.Pipelines.Pipe>. При чтении запроса [HttpRequest.Body](xref:Microsoft.AspNetCore.Http.HttpRequest.Body) — это <xref:System.IO.Stream>, а `HttpRequest.BodyReader` — это <xref:System.IO.Pipelines.PipeReader>. При записи ответа [HttpResponse.Body](xref:Microsoft.AspNetCore.Http.HttpResponse.Body) — это `HttpResponse.BodyWriter` и <xref:System.IO.Pipelines.PipeWriter>.
+Существует две абстракции для текста запросов и ответов: <xref:System.IO.Stream> и <xref:System.IO.Pipelines.Pipe>. При чтении запроса [HttpRequest.Body](xref:Microsoft.AspNetCore.Http.HttpRequest.Body) — это <xref:System.IO.Stream>, а `HttpRequest.BodyReader` — это <xref:System.IO.Pipelines.PipeReader>. При записи ответа [HttpResponse.Body](xref:Microsoft.AspNetCore.Http.HttpResponse.Body) — это <xref:System.IO.Stream>, а `HttpResponse.BodyWriter` — это <xref:System.IO.Pipelines.PipeWriter>.
 
 Рекомендуется использовать конвейеры, а не потоки. Потоки удобнее использовать для некоторых простых операций, но производительность конвейеров выше и с ними проще работать в большинстве сценариев. Начиная с ASP.NET Core преимущество отдается внутреннему использованию конвейеров вместо потоков. Примеры:
 

@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 06/18/2019
 uid: host-and-deploy/docker/building-net-docker-images
-ms.openlocfilehash: 38bdad7110a45538be01cf432aab773c4205980e
-ms.sourcegitcommit: 8835b6777682da6fb3becf9f9121c03f89dc7614
+ms.openlocfilehash: 24462b53525a38eb1bac82e8498d2d073b06a10f
+ms.sourcegitcommit: 215954a638d24124f791024c66fd4fb9109fd380
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69975429"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71081746"
 ---
 # <a name="docker-images-for-aspnet-core"></a>Образы Docker для ASP.NET Core
 
@@ -70,7 +70,7 @@ ms.locfileid: "69975429"
 
 * Выполните следующую команду, чтобы собрать и запустить приложение локально:
 
-  ```console
+  ```dotnetcli
   dotnet run
   ```
 
@@ -142,7 +142,7 @@ ms.locfileid: "69975429"
 
 * Выполните команду [dotnet publish](/dotnet/core/tools/dotnet-publish).
 
-  ```console
+  ```dotnetcli
   dotnet publish -c Release -o published
   ```
 
@@ -154,13 +154,13 @@ ms.locfileid: "69975429"
 
   * Windows:
 
-    ```console
+    ```dotnetcli
     dotnet published\aspnetapp.dll
     ```
 
   * Linux:
 
-    ```bash
+    ```dotnetcli
     dotnet published/aspnetapp.dll
     ```
 
@@ -177,9 +177,9 @@ ENTRYPOINT ["dotnet", "aspnetapp.dll"]
 
 ### <a name="the-dockerfile"></a>Файл Dockerfile
 
-Представленный здесь файл Dockerfile используется в команде `docker build`, которую вы выполняли ранее.  Она использует `dotnet publish` для создания и развертывания так же, как показано в этом разделе.  
+Представленный здесь файл *Dockerfile* используется в команде `docker build`, которую вы выполняли ранее.  Она использует `dotnet publish` для создания и развертывания так же, как показано в этом разделе.  
 
-```console
+```dockerfile
 FROM mcr.microsoft.com/dotnet/core/sdk:2.2 AS build
 WORKDIR /app
 
