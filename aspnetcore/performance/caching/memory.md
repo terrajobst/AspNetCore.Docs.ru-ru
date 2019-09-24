@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 8/22/2019
 uid: performance/caching/memory
-ms.openlocfilehash: 1519abbca6430063f037372a4927f5818f160457
-ms.sourcegitcommit: 776598f71da0d1e4c9e923b3b395d3c3b5825796
+ms.openlocfilehash: 0479df14dd5d757710e361fce43782a8137588cb
+ms.sourcegitcommit: 0365af91518004c4a44a30dc3a8ac324558a399b
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70024790"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71198904"
 ---
 # <a name="cache-in-memory-in-aspnet-core"></a>Кэширование в памяти в ASP.NET Core
 
@@ -49,7 +49,7 @@ ASP.NET Core поддерживает несколько разных кэшей
 * Кэш использует неограниченный ресурс, память. Ограничение роста кэша:
   * **Не** используйте внешние входные данные в качестве ключей кэша.
   * Используйте срок действия, чтобы ограничить рост кэша.
-  * [Используйте SetSize, Size и сизелимит для ограничения размера кэша](#use-setsize-size-and-sizelimit-to-limit-cache-size). Среда выполнения ASP.NET Core не ограничивает размер кэша на основе нехватки памяти. Разработчик может ограничить размер кэша.
+  * [Используйте SetSize, Size и сизелимит для ограничения размера кэша](#use-setsize-size-and-sizelimit-to-limit-cache-size). Среда выполнения ASP.NET Core не **ограничивает размер** кэша на основе нехватки памяти. Разработчик может ограничить размер кэша.
 
 ## <a name="use-imemorycache"></a>Использование IMemoryCache
 
@@ -63,7 +63,7 @@ ASP.NET Core поддерживает несколько разных кэшей
 
 В следующем коде используется [TryGetValue](/dotnet/api/microsoft.extensions.caching.memory.imemorycache.trygetvalue?view=aspnetcore-2.0#Microsoft_Extensions_Caching_Memory_IMemoryCache_TryGetValue_System_Object_System_Object__) для проверки, находится ли время в кэше. Если время не кэшировано, создается новая запись и добавляется в кэш с помощью [Set](/dotnet/api/microsoft.extensions.caching.memory.cacheextensions.set?view=aspnetcore-2.0#Microsoft_Extensions_Caching_Memory_CacheExtensions_Set__1_Microsoft_Extensions_Caching_Memory_IMemoryCache_System_Object___0_Microsoft_Extensions_Caching_Memory_MemoryCacheEntryOptions_). `CacheKeys` Класс является частью примера загрузки.
 
-[! code-CSharp [] (пример памяти/3.0 Sample/Вебкачесампле/Качекэйс. cs) [](memory/3.0sample/WebCacheSample/CacheKeys.cs)]
+[!code-csharp[](memory/3.0sample/WebCacheSample/CacheKeys.cs)]
 
 [!code-csharp[](memory/3.0sample/WebCacheSample/Controllers/HomeController.cs?name=snippet1)]
 
@@ -119,7 +119,7 @@ ASP.NET Core поддерживает несколько разных кэшей
 * Ограничение роста кэша.
 * Вызов <xref:Microsoft.Extensions.Caching.Memory.MemoryCache.Compact*> или<xref:Microsoft.Extensions.Caching.Memory.MemoryCache.Remove*> если доступная память ограничена:
 
-В следующем коде создается фиксированный размер <xref:Microsoft.Extensions.Caching.Memory.MemoryCache> независимого от единицы, доступный при внедрении [зависимостей](xref:fundamentals/dependency-injection):
+В следующем коде создается фиксированный размер <xref:Microsoft.Extensions.Caching.Memory.MemoryCache> независимого от единицы, доступный при [внедрении зависимостей](xref:fundamentals/dependency-injection):
 
 [!code-csharp[](memory/sample/RPcache/Services/MyMemoryCache.cs?name=snippet)]
 
@@ -288,7 +288,7 @@ ASP.NET Core поддерживает несколько разных кэшей
 * Ограничение роста кэша.
 * Вызов <xref:Microsoft.Extensions.Caching.Memory.MemoryCache.Compact*> или<xref:Microsoft.Extensions.Caching.Memory.MemoryCache.Remove*> если доступная память ограничена:
 
-В следующем коде создается фиксированный размер <xref:Microsoft.Extensions.Caching.Memory.MemoryCache> независимого от единицы, доступный при внедрении [зависимостей](xref:fundamentals/dependency-injection):
+В следующем коде создается фиксированный размер <xref:Microsoft.Extensions.Caching.Memory.MemoryCache> независимого от единицы, доступный при [внедрении зависимостей](xref:fundamentals/dependency-injection):
 
 [!code-csharp[](memory/sample/RPcache/Services/MyMemoryCache.cs?name=snippet)]
 
