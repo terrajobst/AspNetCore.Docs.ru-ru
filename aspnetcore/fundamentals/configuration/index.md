@@ -7,12 +7,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 08/12/2019
 uid: fundamentals/configuration/index
-ms.openlocfilehash: 0de2222e8072523ff0e5d261a9fe5ef8eb9a7606
-ms.sourcegitcommit: 215954a638d24124f791024c66fd4fb9109fd380
+ms.openlocfilehash: 357a3d89648086f0329cd16bc9d72863df9bdcd6
+ms.sourcegitcommit: 8a36be1bfee02eba3b07b7a86085ec25c38bae6b
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71081823"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71217784"
 ---
 # <a name="configuration-in-aspnet-core"></a>Конфигурация в .NET Core
 
@@ -226,7 +226,7 @@ public class IndexModel : PageModel
 ```csharp
 public static IHostBuilder CreateHostBuilder(string[] args) =>
     Host.CreateDefaultBuilder(args)
-        .ConfigureHostConfiguration((hostingContext, config) =>
+        .ConfigureHostConfiguration(config =>
         {
             var dict = new Dictionary<string, string>
             {
@@ -621,7 +621,7 @@ key=value
 | -------------------------- | :---------------: | :--------------: |
 | Logging:LogLevel:System    | Сведения       | Сведения      |
 | Logging:LogLevel:Microsoft | Сведения       | Сведения      |
-| Logging:LogLevel:Default   | Отладка             | Error            |
+| Logging:LogLevel:Default   | Отладка             | Ошибка            |
 | AllowedHosts               | *                 | *                |
 
 ### <a name="xml-configuration-provider"></a>Поставщик конфигурации XML

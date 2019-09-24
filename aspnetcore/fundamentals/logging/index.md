@@ -7,12 +7,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 07/11/2019
 uid: fundamentals/logging/index
-ms.openlocfilehash: 03734addcc0e063c2c216b26b59762d27d35d47c
-ms.sourcegitcommit: 215954a638d24124f791024c66fd4fb9109fd380
+ms.openlocfilehash: 90b439603dd51ff02e40045b9420876d7200bef1
+ms.sourcegitcommit: 8a36be1bfee02eba3b07b7a86085ec25c38bae6b
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71081160"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71219159"
 ---
 # <a name="logging-in-net-core-and-aspnet-core"></a>Ведение журнала в .NET Core и ASP.NET Core
 
@@ -374,7 +374,7 @@ Microsoft.AspNetCore.Hosting.Internal.WebHost:Information: Request finished in 3
 
 * Отладка = 1
 
-  Для получения сведений, которые полезны при разработке и отладке. Пример `Entering method Configure with flag set to true.` Включайте уровни ведения журналов `Debug` в рабочей среде только при устранении неполадок, так как такие журналы занимают много места.
+  Для получения сведений, которые полезны при разработке и отладке. Пример: `Entering method Configure with flag set to true.` Включайте уровни ведения журналов `Debug` в рабочей среде только при устранении неполадок, так как такие журналы занимают много места.
 
 * Информация = 2
 
@@ -529,7 +529,7 @@ warn: TodoApi.Controllers.TodoController[4000]
 ```csharp
 string p1 = "parm1";
 string p2 = "parm2";
-_logger.LogInformation("Parameter values: {p2}, {p1}", p1, p2);
+_logger.LogInformation("Parameter values: {p1}, {p2}", p1, p2);
 ```
 
 Этот код создает сообщение журнала со значениями параметров в определенном порядке:
@@ -541,7 +541,7 @@ Parameter values: parm1, parm2
 Платформа ведения журналов поддерживает такое поведение, чтобы поставщики ведения журнала могли реализовывать [семантическое ведение журналов, также известное как структурированное ведение журналов](https://softwareengineering.stackexchange.com/questions/312197/benefits-of-structured-logging-vs-basic-logging). Сами аргументы передаются в систему ведения журналов, а не только в отформатированный шаблон сообщения. Эта информация позволяет поставщикам ведения журналов хранить значения параметров как поля. Предположим, например, что вызовы метода средства ведения журналов выглядят так:
 
 ```csharp
-_logger.LogInformation("Getting item {ID} at {RequestTime}", id, DateTime.Now);
+_logger.LogInformation("Getting item {Id} at {RequestTime}", id, DateTime.Now);
 ```
 
 Если вы отправляете журналы в Хранилище таблиц Azure, каждая сущность таблицы Azure может иметь свойства `ID` и `RequestTime`, что упрощает выполнение запросов к данным журналов. Запрос может находить все журналы в пределах определенного диапазона `RequestTime`, не анализируя время ожидания текстового сообщения.
@@ -624,7 +624,7 @@ System.Exception: Item not found exception.
 | 1      | Отладка         | Все категории                          | Сведения       |
 | 2      | Консоль       | Microsoft.AspNetCore.Mvc.Razor.Internal | Предупреждение           |
 | 3      | Консоль       | Microsoft.AspNetCore.Mvc.Razor.Razor    | Отладка             |
-| 4      | Консоль       | Microsoft.AspNetCore.Mvc.Razor          | Error             |
+| 4      | Консоль       | Microsoft.AspNetCore.Mvc.Razor          | Ошибка             |
 | 5      | Консоль       | Все категории                          | Сведения       |
 | 6      | Все поставщики | Все категории                          | Отладка             |
 | 7      | Все поставщики | Система                                  | Отладка             |
@@ -878,8 +878,8 @@ logging.AddAzureWebAppDiagnostics();
 
 При развертывании в приложение Службы приложений ваше приложение использует параметры в разделе [Журналы Службы приложений](/azure/app-service/web-sites-enable-diagnostic-log/#enablediag) на странице **Служба приложений** на портале Azure. При обновлении следующих параметров изменения вступают в силу немедленно без перезапуска или повторного развертывания приложения:
 
-* **Ведение журнала приложения (файловая система)** ;
-* **Ведение журнала приложения (BLOB-объект)** .
+* **Ведение журнала приложения (файловая система)**;
+* **Ведение журнала приложения (BLOB-объект)**.
 
 По умолчанию файлы журнала находятся в папке *D:\\home\\LogFiles\\Application*, а имя файла по умолчанию — *diagnostics-yyyymmdd.txt*. Максимальный размер файла по умолчанию составляет 10 МБ, а максимальное количество сохраняемых по умолчанию файлов равно 2. Имя BLOB-объекта по умолчанию — *{имя_приложения}{метка_времени}/yyyy/mm/dd/hh/{guid}-applicationLog.txt*.
 
@@ -896,7 +896,7 @@ logging.AddAzureWebAppDiagnostics();
 Настройка потоковой передачи журналов Azure
 
 * Со страницы портала приложения перейдите на страницу **Журналы Службы приложений**.
-* **Включите** параметр **Ведение журнала приложения (файловая система)** .
+* **Включите** параметр **Ведение журнала приложения (файловая система)**.
 * Выберите **уровень** ведения журнала.
 
 Перейдите на страницу **Поток журналов**, чтобы просмотреть сообщения приложения. Они записываются в журнал приложением через интерфейс `ILogger`.
