@@ -5,14 +5,14 @@ description: Узнайте, как устранить угрозы безопа
 monikerRange: '>= aspnetcore-3.0'
 ms.author: riande
 ms.custom: mvc
-ms.date: 09/07/2019
+ms.date: 09/23/2019
 uid: security/blazor/server
-ms.openlocfilehash: 72788980ff7c7bd56f55e4e84d820a3684f7275e
-ms.sourcegitcommit: 092061c4f6ef46ed2165fa84de6273d3786fb97e
+ms.openlocfilehash: 706f504738d9c6e5af3c368c382424f2e206bcbf
+ms.sourcegitcommit: 79eeb17604b536e8f34641d1e6b697fb9a2ee21f
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70964242"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71211710"
 ---
 # <a name="secure-aspnet-core-blazor-server-apps"></a>Безопасные ASP.NET Core серверные приложения Блазор
 
@@ -33,7 +33,7 @@ ms.locfileid: "70964242"
 
 Нехватка ресурсов может произойти, когда клиент взаимодействует с сервером и заставляет сервер потреблять чрезмерные ресурсы. Чрезмерное потребление ресурсов в основном влияет на:
 
-* [CPU](#cpu)
+* [ЦП](#cpu)
 * [Память](#memory)
 * [Клиентские подключения](#client-connections)
 

@@ -5,14 +5,14 @@ description: Узнайте, как вызывать веб-API из прило�
 monikerRange: '>= aspnetcore-3.0'
 ms.author: riande
 ms.custom: mvc
-ms.date: 08/13/2019
+ms.date: 09/23/2019
 uid: blazor/call-web-api
-ms.openlocfilehash: 23131ac0357b722e7f229fcfe5dab8590cf34739
-ms.sourcegitcommit: e5a74f882c14eaa0e5639ff082355e130559ba83
+ms.openlocfilehash: 2e79c81dc2371ef5b00f9251be47433a141c8ab7
+ms.sourcegitcommit: 79eeb17604b536e8f34641d1e6b697fb9a2ee21f
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71168045"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71207137"
 ---
 # <a name="call-a-web-api-from-aspnet-core-blazor"></a>Вызов веб-API из ASP.NET Core Блазор
 

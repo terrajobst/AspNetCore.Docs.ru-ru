@@ -5,14 +5,14 @@ description: Узнайте, как компоненты можно включа
 monikerRange: '>= aspnetcore-3.0'
 ms.author: riande
 ms.custom: mvc
-ms.date: 08/13/2019
+ms.date: 09/23/2019
 uid: blazor/class-libraries
-ms.openlocfilehash: 91c4ffb29649c162fc15e5cb70dc60144b53afea
-ms.sourcegitcommit: 215954a638d24124f791024c66fd4fb9109fd380
+ms.openlocfilehash: d9ef276357e95d97b7d89427c5e237aceea7a0d3
+ms.sourcegitcommit: 79eeb17604b536e8f34641d1e6b697fb9a2ee21f
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71080666"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71207103"
 ---
 # <a name="aspnet-core-razor-components-class-libraries"></a>Библиотеки классов компонентов Razor ASP.NET Core
 
@@ -33,9 +33,9 @@ ms.locfileid: "71080666"
 # <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 1. Создайте новый проект.
-1. Выберите пункт **Библиотека классов Razor**. Щелкните **Далее**.
+1. Выберите пункт **Библиотека классов Razor**. Выберите **Далее**.
 1. В диалоговом окне **Создание новой библиотеки классов Razor** выберите **создать**.
-1. В поле **Имя проекта** укажите имя проекта или оставьте имя по умолчанию. В примерах этого раздела используется имя `MyComponentLib1`проекта. Нажмите кнопку **Создать**.
+1. В поле **Имя проекта** укажите имя проекта или оставьте имя по умолчанию. В примерах этого раздела используется имя `MyComponentLib1`проекта. Выберите **Создать**.
 1. Добавьте РКЛ в решение:
    1. Щелкните решение правой кнопкой мыши. Выберите **Добавить** > **существующий проект**.
    1. Перейдите к файлу проекта РКЛ.

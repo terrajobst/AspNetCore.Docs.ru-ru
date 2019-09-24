@@ -5,14 +5,14 @@ description: Узнайте, как сохранить состояние в п�
 monikerRange: '>= aspnetcore-3.0'
 ms.author: riande
 ms.custom: mvc
-ms.date: 09/21/2019
+ms.date: 09/23/2019
 uid: blazor/state-management
-ms.openlocfilehash: 79676f606d31c435b54bdd8adb1c85c9e5c49bef
-ms.sourcegitcommit: 04ce94b3c1b01d167f30eed60c1c95446dfe759d
+ms.openlocfilehash: 9d42fa64181bc175cfba97fd149528d5b7cf4ff8
+ms.sourcegitcommit: 79eeb17604b536e8f34641d1e6b697fb9a2ee21f
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/21/2019
-ms.locfileid: "71176408"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71211633"
 ---
 # <a name="aspnet-core-blazor-state-management"></a>Управление состоянием ASP.NET Core Блазор
 
