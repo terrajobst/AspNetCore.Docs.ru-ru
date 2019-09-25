@@ -6,12 +6,12 @@ monikerRange: '>= aspnetcore-2.0'
 ms.author: riande
 ms.date: 09/19/2019
 uid: razor-pages/index
-ms.openlocfilehash: 284fb0fa64b26cf51f822b9ef42fe9bb7247e421
-ms.sourcegitcommit: e7dc89620fa02c2ff80bee1e3f77297f97616968
+ms.openlocfilehash: 7e27bbc84816bd282b2b8de936772eb5c597d74f
+ms.sourcegitcommit: 79eeb17604b536e8f34641d1e6b697fb9a2ee21f
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71151152"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71207372"
 ---
 # <a name="introduction-to-razor-pages-in-aspnet-core"></a>Введение в Razor Pages в ASP.NET Core
 
@@ -31,7 +31,7 @@ Razor Pages делает создание кодов сценариев для �
 
 [!INCLUDE[](~/includes/net-core-prereqs-vs-3.0.md)]
 
-# <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code.](#tab/visual-studio-code)
+# <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
 [!INCLUDE[](~/includes/net-core-prereqs-vsc-3.0.md)]
 
@@ -49,7 +49,7 @@ Razor Pages делает создание кодов сценариев для �
 
 Подробные инструкции по созданию проекта Razor Pages см. в статье [Начало работы с Razor Pages](xref:tutorials/razor-pages/razor-pages-start).
 
-# <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code.](#tab/visual-studio-code)
+# <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
 Из командной строки выполните команду `dotnet new webapp`.
 
@@ -163,7 +163,7 @@ Razor Pages делает создание кодов сценариев для �
 
 * С допустимыми данными:
 
-  * Метод обработчика `OnPostAsync` вызывает вспомогательный метод <xref:Microsoft.AspNetCore.Mvc.RazorPages.PageModel.RedirectToPage*>. `RedirectToPage` возвращает экземпляр <xref:Microsoft.AspNetCore.Mvc.RedirectToPageResult>. `RedirectToPage`:
+  * Метод обработчика `OnPostAsync` вызывает вспомогательный метод <xref:Microsoft.AspNetCore.Mvc.RazorPages.PageModel.RedirectToPage*>. `RedirectToPage` возвращает экземпляр <xref:Microsoft.AspNetCore.Mvc.RedirectToPageResult>. `RedirectToPage`.
 
     * Является результатом действия.
     * Аналогичен `RedirectToAction` или `RedirectToRoute` (используется в контроллерах и представлениях).
@@ -283,7 +283,7 @@ Razor Pages делает создание кодов сценариев для �
 
 * Генерирует следующий HTML: [!code-cshtml[](index/3.0sample/RazorPagesContacts/Pages/Customers/Create5.html)]
 
-При публикации формы создания без значения имени в форме отображается сообщение об ошибке: "Поле имени является обязательным".   Если на клиенте включен JavaScript, браузер отображает ошибку без отправки на сервер.
+При публикации формы создания без значения имени в форме отображается сообщение об ошибке: "Поле имени является обязательным". в форме. Если на клиенте включен JavaScript, браузер отображает ошибку без отправки на сервер.
 
 Атрибут `[StringLength(10)]` создает `data-val-length-max="10"` в отображаемом HTML-коде. `data-val-length-max` не дает браузерам ввести больше заданной максимальной длины. Если для изменения и воспроизведения записи используется средство, например [Fiddler](https://www.telerik.com/fiddler), выполните следующие действия:
 
@@ -414,7 +414,7 @@ Pages работает со всеми функциями подсистемы �
 
 На представленной выше странице `Create` используется `RedirectToPage`:
 
-[!code-cs[](index/3.0sample/RazorPagesContacts/Pages/Customers/Create.cshtml.cs?name=snippet_PageModel&highlight=15-16)]
+[!code-cs[](index/3.0sample/RazorPagesContacts/Pages/Customers/Create.cshtml.cs?name=snippet_PageModel&highlight=28)]
 
 Это приложение имеет следующую структуру файлов и папок:
 
@@ -428,13 +428,13 @@ Pages работает со всеми функциями подсистемы �
     * *Edit.cshtml*
     * *Index.cshtml*
 
-После успешного выполнения страницы *Pages/Customers/Create.cshtml* и *Pages/Customers/Edit.cshtml* перенаправляются на страницу *Pages/Customers/Index.cshtml*. Строка `./Index` составляет часть URL-адреса для доступа к указанной выше странице. Строка `./Index` позволяет создавать URL-адреса для страницы *Pages/Customers/Index.cshtml*. Например:
+После успешного выполнения страницы *Pages/Customers/Create.cshtml* и *Pages/Customers/Edit.cshtml* перенаправляются на страницу *Pages/Customers/Index.cshtml*. Строка `./Index` — это относительное имя страницы, используемое для доступа к предыдущей странице. Эта строка позволяет создавать URL-адреса для страницы *Pages/Customers/Index.cshtml*. Например:
 
 * `Url.Page("./Index", ...)`
-* `<a asp-page="/Customers/Index">Customers Index Page</a>`
+* `<a asp-page="./Index">Customers Index Page</a>`
 * `RedirectToPage("./Index")`
 
-Строка `/Index` позволяет создавать URL-адреса для страницы *Pages/Index.cshtml*. Например:
+С помощью абсолютного имени страницы `/Index` создаются URL-адреса страницы *Pages/Index.cshtml*. Например:
 
 * `Url.Page("/Index", ...)`
 * `<a asp-page="/Index">Home Index Page</a>`
@@ -620,7 +620,7 @@ Razor Pages — это новый аспект платформы MVC ASP.NET�
 
 [!INCLUDE[](~/includes/net-core-prereqs-vs2019-2.2.md)]
 
-# <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code.](#tab/visual-studio-code)
+# <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
 [!INCLUDE[](~/includes/net-core-prereqs-vsc-2.2.md)]
 
@@ -644,7 +644,7 @@ Razor Pages — это новый аспект платформы MVC ASP.NET�
 
 Откройте созданный файл *.csproj* в Visual Studio для Mac.
 
-# <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code.](#tab/visual-studio-code)
+# <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
 Из командной строки выполните команду `dotnet new webapp`.
 

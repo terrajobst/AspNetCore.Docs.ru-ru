@@ -5,14 +5,14 @@ description: Эта статья содержит ссылки на ресурс
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 09/07/2019
+ms.date: 07/28/2019
 uid: host-and-deploy/azure-apps/index
-ms.openlocfilehash: 7736888c43aafd2f64e3d7b079f2099fe548a825
-ms.sourcegitcommit: 215954a638d24124f791024c66fd4fb9109fd380
+ms.openlocfilehash: 4dc150ff4534e42e1995a185f650cea9df70ccc4
+ms.sourcegitcommit: d34b2627a69bc8940b76a949de830335db9701d3
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71081073"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71187046"
 ---
 # <a name="deploy-aspnet-core-apps-to-azure-app-service"></a>Развертывание приложений ASP.NET Core в Службе приложений Azure
 
@@ -47,7 +47,7 @@ ms.locfileid: "71081073"
 
 ## <a name="application-configuration"></a>Настройка приложения
 
-### <a name="platform"></a>Platform
+### <a name="platform"></a>Платформа
 
 ::: moniker range=">= aspnetcore-2.2"
 
@@ -97,7 +97,17 @@ ms.locfileid: "71081073"
 
 ## <a name="monitoring-and-logging"></a>Мониторинг и ведение журналов
 
-Служба приложений Azure предлагает **расширения ведения журнала ASP.NET Core**, которые обеспечивают интеграцию с ведением журнала для приложений ASP.NET Core. Чтобы автоматически добавить расширение в Службу приложений, используйте процесс **публикации** Visual Studio с профилем публикации **Службы приложений**. Если вы не используете Visual Studio для развертывания приложения, вручную установите расширение на портале Azure в диалоговом окне **"Средства разработки"**  >  **"Расширения"** Службы приложений.
+::: moniker range=">= aspnetcore-3.0"
+
+Приложения ASP.NET Core, развернутые в Службе приложений, автоматически получают расширение Службы приложений для **интеграции ведения журналов ASP.NET Core**. Это расширение обеспечивает интеграцию ведения журналов для приложений ASP.NET Core, развернутых в Службе приложений Azure.
+
+::: moniker-end
+
+::: moniker range="< aspnetcore-3.0"
+
+Приложения ASP.NET Core, развернутые в Службе приложений автоматически, получают расширение службы приложений и расширения для **ведения журналов ASP.NET Core**. Это расширение обеспечивает интеграцию ведения журналов для приложений ASP.NET Core, развернутых в Службе приложений Azure.
+
+::: moniker-end
 
 Сведения о мониторинге, ведении журналов, а также поиске и устранении неполадок см. в следующих статьях.
 
@@ -128,10 +138,21 @@ ms.locfileid: "71081073"
 * Кэш Redis.
 
 Дополнительные сведения можно найти по адресу: <xref:security/data-protection/implementation/key-storage-providers>.
+<a name="deploy-aspnet-core-preview-release-to-azure-app-service"></a>
+<!-- revert this after 3.0 supported
+## Deploy ASP.NET Core preview release to Azure App Service
 
-## <a name="deploy-aspnet-core-preview-release-to-azure-app-service"></a>Развертывание предварительной версии ASP.NET Core в службе приложений Azure
+Use one of the following approaches if the app relies on a preview release of .NET Core:
 
-Если приложение предназначено для предварительной версии .NET Core, воспользуйтесь одним из приведенных ниже подходов.
+* [Install the preview site extension](#install-the-preview-site-extension).
+* [Deploy a self-contained preview app](#deploy-a-self-contained-preview-app).
+* [Use Docker with Web Apps for containers](#use-docker-with-web-apps-for-containers).
+-->
+## <a name="deploy-aspnet-core-30-to-azure-app-service"></a>Развертывание ASP.NET Core 3.0 в Службе приложений Azure
+
+Мы ожидаем, что в ближайшее время решение ASP.NET Core 3.0 будет доступно в Службе приложений Azure.
+
+Если приложение предназначено для .NET Core 3.0, воспользуйтесь одним из описанных ниже подходов:
 
 * [Установка расширения сайта предварительной версии](#install-the-preview-site-extension).
 * [Развертывание автономного приложения для предварительной версии](#deploy-a-self-contained-preview-app).
@@ -230,7 +251,7 @@ ms.locfileid: "71081073"
 
 1. Из командной оболочки опубликуйте приложение в конфигурации выпуска, выполнив команду [dotnet publish](/dotnet/core/tools/dotnet-publish). В следующем примере приложение публикуется как зависимое от платформы:
 
-   ```dotnetcli
+   ```console
    dotnet publish --configuration Release
    ```
 
@@ -268,7 +289,7 @@ ms.locfileid: "71081073"
 
 1. Из командной оболочки опубликуйте приложение в конфигурации выпуска для среды выполнения узла, выполнив команду [dotnet publish](/dotnet/core/tools/dotnet-publish). В следующем примере публикуется приложение с RID `win-x86`. Предоставленный в параметре `--runtime` RID должены быть указан в свойстве `<RuntimeIdentifier>` (или `<RuntimeIdentifiers>`) в файле проекта.
 
-   ```dotnetcli
+   ```console
    dotnet publish --configuration Release --runtime win-x86
    ```
 
