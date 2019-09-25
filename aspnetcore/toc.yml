@@ -12,6 +12,8 @@
   uid: getting-started
 - name: Новые возможности
   items:
+    - name: Новые возможности версии 3.0
+      uid: aspnetcore-3.0
     - name: "Новые возможности версии\_2.2"
       uid: aspnetcore-2.2
     - name: "Новые возможности версии\_2.1"
@@ -327,6 +329,8 @@
               uid: host-and-deploy/blazor/server
             - name: Настройка компоновщика
               uid: host-and-deploy/blazor/configure-linker
+        - name: Примеры
+          href: 'https://github.com/aspnet/samples/tree/master/samples/aspnetcore/blazor'
     - name: Клиентская разработка
       items:
         - name: Одностраничные приложения
@@ -436,6 +440,8 @@
           uid: tutorials/get-started-with-swashbuckle
         - name: "Начало работы с\_NSwag"
           uid: tutorials/get-started-with-nswag
+        - name: Средства OpenAPI
+          uid: web-api/Microsoft.dotnet-openapi
     - name: Типы возвращаемых значений действий
       uid: web-api/action-return-types
     - name: Обработка Patch-запросов JSON
@@ -487,6 +493,9 @@
     - name: Клиенты
       displayName: signalr
       items:
+        - name: Функции клиентов SignalR
+          uid: signalr/client-features
+          displayName: signalr
         - name: Клиент .NET
           uid: signalr/dotnet-client
           displayName: signalr
@@ -563,6 +572,8 @@
       uid: grpc/configuration
     - name: Аутентификация и авторизация
       uid: grpc/authn-and-authz
+    - name: Ведение журнала и диагностика
+      uid: grpc/diagnostics
     - name: Замечания по безопасности
       uid: grpc/security
     - name: Перенос служб gRPC из C Core
