@@ -6,12 +6,12 @@ monikerRange: '>= aspnetcore-3.0'
 ms.author: johluo
 ms.date: 09/03/2019
 uid: grpc/aspnetcore
-ms.openlocfilehash: 28e6b8589bbe0b6a3723b64736c723c883302571
-ms.sourcegitcommit: e6bd2bbe5683e9a7dbbc2f2eab644986e6dc8a87
+ms.openlocfilehash: 18a6dd2ddd4f3c3c4466e3b96dd1748fd0972e39
+ms.sourcegitcommit: fae6f0e253f9d62d8f39de5884d2ba2b4b2a6050
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70238160"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71250803"
 ---
 # <a name="grpc-services-with-aspnet-core"></a>Службы gRPC в ASP.NET Core
 
@@ -67,7 +67,7 @@ ASP.NET Core по промежуточного слоя и компоненты 
 Конечные точки gRPC Kestrel:
 
 * Требовать HTTP/2.
-* Должен быть защищен с помощью протокола HTTPS.
+* Следует защищать с помощью [протокола TLS](https://tools.ietf.org/html/rfc5246).
 
 #### <a name="http2"></a>HTTP/2
 
@@ -75,58 +75,28 @@ ASP.NET Core по промежуточного слоя и компоненты 
 
 Kestrel [поддерживает HTTP/2](xref:fundamentals/servers/kestrel#http2-support) в большинстве современных операционных систем. Конечные точки Kestrel настроены для поддержки подключений HTTP/1.1 и HTTP/2 по умолчанию.
 
-#### <a name="https"></a>HTTPS
+#### <a name="tls"></a>TLS
 
-Конечные точки Kestrel, используемые для gRPC, должны быть защищены с помощью протокола HTTPS. В процессе разработки конечная точка HTTPS создается `https://localhost:5001` автоматически при наличии сертификата разработки ASP.NET Core. Настройка не требуется.
+Конечные точки Kestrel, используемые для gRPC, должны быть защищены с помощью TLS. В разработке конечная точка, защищенная с помощью TLS, `https://localhost:5001` автоматически создается при наличии сертификата разработки ASP.NET Core. Настройка не требуется. `https` Префикс проверяет, что конечная точка Kestrel использует TLS.
 
-В рабочей среде необходимо явно настроить HTTPS. В следующем примере *appSettings. JSON* предоставляется точка HTTP/2, защищенная с помощью HTTPS:
+В рабочей среде протокол TLS должен быть настроен явным образом. В следующем примере *appSettings. JSON* предоставляется точка HTTP/2, защищенная с помощью TLS:
 
-```json
-{
-  "Kestrel": {
-    "Endpoints": {
-      "HttpsDefaultCert": {
-        "Url": "https://localhost:5001",
-        "Protocols": "Http2"
-      }
-    },
-    "Certificates": {
-      "Default": {
-        "Path": "<path to .pfx file>",
-        "Password": "<certificate password>"
-      }
-    }
-  }
-}
-```
+[!code-json[](~/grpc/aspnetcore/sample/appsettings.json?highlight=4)]
 
 Кроме того, конечные точки Kestrel можно настроить в *Program.CS*:
 
-```csharp
-public static IHostBuilder CreateHostBuilder(string[] args) =>
-    Host.CreateDefaultBuilder(args)
-        .ConfigureWebHostDefaults(webBuilder =>
-        {
-            webBuilder.ConfigureKestrel(options =>
-            {
-                // This endpoint will use HTTP/2 and HTTPS on port 5001.
-                options.Listen(IPAddress.Any, 5001, listenOptions =>
-                {
-                    listenOptions.Protocols = HttpProtocols.Http2;
-                    listenOptions.UseHttps("<path to .pfx file>", 
-                        "<certificate password>");
-                });
-            });
-            webBuilder.UseStartup<Startup>();
-        });
-```
+[!code-csharp[](~/grpc/aspnetcore/sample/Program.cs?highlight=7&name=snippet)]
 
-Если конечная точка HTTP/2 настроена без HTTPS, для `HttpProtocols.Http2` [листеноптионс. Protocols](xref:fundamentals/servers/kestrel#listenoptionsprotocols) должно быть установлено значение. `HttpProtocols.Http1AndHttp2`не может использоваться, так как для согласования HTTP/2 требуется протокол HTTPS. Без протокола HTTPS все соединения с конечной точкой по умолчанию HTTP/1.1, а вызовы gRPC завершаются ошибкой.
+#### <a name="protocol-negotiation"></a>Согласование протокола
 
-Дополнительные сведения о включении HTTP/2 и HTTPS с помощью Kestrel см. в разделе [Конфигурация конечной точки Kestrel](xref:fundamentals/servers/kestrel#endpoint-configuration).
+Протокол TLS используется не только для защиты обмена данными. Подтверждение [согласования протокола приложения TLS (алпн)](https://tools.ietf.org/html/rfc7301#section-3) используется для согласования протокола подключения между клиентом и сервером, если конечная точка поддерживает несколько протоколов. Это согласование определяет, использует ли соединение HTTP/1.1 или HTTP/2.
+
+Если конечная точка HTTP/2 настроена без TLS, [листеноптионс. Protocols](xref:fundamentals/servers/kestrel#listenoptionsprotocols) должна иметь значение `HttpProtocols.Http2`. Конечная точка с несколькими протоколами (например `HttpProtocols.Http1AndHttp2`,) не может использоваться без TLS, так как отсутствует согласование. Все подключения к незащищенной конечной точке по умолчанию заключаются в HTTP/1.1, а вызовы gRPC завершаются ошибкой.
+
+Дополнительные сведения о включении HTTP/2 и TLS с помощью Kestrel см. в разделе [Конфигурация конечной точки Kestrel](xref:fundamentals/servers/kestrel#endpoint-configuration).
 
 > [!NOTE]
-> macOS не поддерживает ASP.NET Core gRPC с [протоколом TLS](https://tools.ietf.org/html/rfc5246). Для успешного запуска служб gRPC в macOS требуется дополнительная настройка. Дополнительные сведения см. в статье [Не удается запустить приложение ASP.NET Core gRPC в macOS](xref:grpc/troubleshoot#unable-to-start-aspnet-core-grpc-app-on-macos).
+> macOS не поддерживает ASP.NET Core gRPC с TLS. Для успешного запуска служб gRPC в macOS требуется дополнительная настройка. Дополнительные сведения см. в статье [Не удается запустить приложение ASP.NET Core gRPC в macOS](xref:grpc/troubleshoot#unable-to-start-aspnet-core-grpc-app-on-macos).
 
 ## <a name="integration-with-aspnet-core-apis"></a>Интеграция с ASP.NET Core API
 

@@ -6,12 +6,12 @@ monikerRange: '>= aspnetcore-3.0'
 ms.author: jamesnk
 ms.date: 09/23/2019
 uid: grpc/diagnostics
-ms.openlocfilehash: ce6ad96d9e26c9cd3844093536745f8f9bea4a76
-ms.sourcegitcommit: 0365af91518004c4a44a30dc3a8ac324558a399b
+ms.openlocfilehash: 7194e91b40a08c4a7ee619b8f207900af2683aa1
+ms.sourcegitcommit: fae6f0e253f9d62d8f39de5884d2ba2b4b2a6050
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71204327"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71250740"
 ---
 # <a name="logging-and-diagnostics-in-grpc-on-net"></a>Ведение журналов и диагностика в gRPC на .NET
 
@@ -28,11 +28,11 @@ ms.locfileid: "71204327"
 
 gRPC добавляет журналы в `Grpc` категорию. Чтобы включить `Grpc` подробные журналы из gRPC, настройте префиксы `Debug` для уровня в файле *appSettings. JSON* `LogLevel` , добавив следующие элементы в подраздел в `Logging`:
 
-[!code-json[](diagnostics/logging-config.json?highlight=7)]
+[!code-json[](diagnostics/sample/logging-config.json?highlight=7)]
 
 Это также можно настроить в *Startup.CS* с помощью `ConfigureLogging`:
 
-[!code-csharp[](diagnostics/logging-config-code.cs?highlight=5)]
+[!code-csharp[](diagnostics/sample/logging-config-code.cs?highlight=5)]
 
 Если конфигурация на основе JSON не используется, установите следующее значение конфигурации в системе конфигурации:
 
@@ -46,7 +46,7 @@ gRPC добавляет журналы в `Grpc` категорию. Чтобы 
 
 Ниже приведен пример вывода на консоль на `Debug` уровне службы gRPC:
 
-```
+```console
 info: Microsoft.AspNetCore.Hosting.Diagnostics[1]
       Request starting HTTP/2 POST https://localhost:5001/Greet.Greeter/SayHello application/grpc
 info: Microsoft.AspNetCore.Routing.EndpointMiddleware[0]
@@ -82,19 +82,19 @@ info: Microsoft.AspNetCore.Hosting.Diagnostics[2]
 
 Чтобы получить журналы из клиента .NET, можно задать `GrpcChannelOptions.LoggerFactory` свойство при создании канала клиента. Если вы вызываете службу gRPC из приложения ASP.NET Core, фабрика журнала может быть разрешена путем внедрения зависимостей (DI):
 
-[!code-csharp[](diagnostics/net-client-dependency-injection.cs?highlight=7,16)]
+[!code-csharp[](diagnostics/sample/net-client-dependency-injection.cs?highlight=7,16)]
 
 Альтернативный способ включения ведения журнала клиента — использование [фабрики клиента gRPC](xref:grpc/clientfactory) для создания клиента. Клиент gRPC, зарегистрированный в фабрике клиента и разрешенный из DI, автоматически будет использовать настроенное для приложения ведение журнала.
 
 Если приложение не использует di, можно создать новый `ILoggerFactory` экземпляр с помощью [LoggerFactory. Create](xref:Microsoft.Extensions.Logging.LoggerFactory.Create*). Чтобы получить доступ к этому методу, добавьте в приложение пакет [Microsoft. Extensions. Logging](https://www.nuget.org/packages/microsoft.extensions.logging/) .
 
-[!code-csharp[](diagnostics/net-client-loggerfactory-create.cs?highlight=1,8)]
+[!code-csharp[](diagnostics/sample/net-client-loggerfactory-create.cs?highlight=1,8)]
 
 ### <a name="sample-logging-output"></a>Пример выходных данных ведения журнала
 
 Ниже приведен пример вывода на консоль на `Debug` уровне клиента gRPC.
 
-```
+```console
 dbug: Grpc.Net.Client.Internal.GrpcCall[1]
       Starting gRPC call. Method type: 'Unary', URI: 'https://localhost:5001/Greet.Greeter/SayHello'.
 dbug: Grpc.Net.Client.Internal.GrpcCall[6]
