@@ -5,14 +5,14 @@ description: Приступите к работе с Блазор, создав 
 monikerRange: '>= aspnetcore-3.0'
 ms.author: riande
 ms.custom: mvc
-ms.date: 09/23/2019
+ms.date: 09/25/2019
 uid: blazor/get-started
-ms.openlocfilehash: 4c2a8f62b7f6a60815d131756d1e551904d918ad
-ms.sourcegitcommit: 79eeb17604b536e8f34641d1e6b697fb9a2ee21f
+ms.openlocfilehash: 5aec91eff7de0732a47fec1aafa5e094c89c37a4
+ms.sourcegitcommit: 14b25156e34c82ed0495b4aff5776ac5b1950b5e
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71207220"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71295435"
 ---
 # <a name="get-started-with-aspnet-core-blazor"></a>Начало работы с ASP.NET Core Блазор
 
@@ -24,7 +24,7 @@ ms.locfileid: "71207220"
 
 1. Установите последнюю версию [пакета SDK для .NET Core 3,0](https://dotnet.microsoft.com/download/dotnet-core/3.0) .
 
-1. Установите шаблоны Блазор, выполнив следующую команду в командной оболочке:
+1. Установите шаблон [блазор-Assembly](xref:blazor/hosting-models#blazor-webassembly) , выполнив следующую команду в командной оболочке:
 
    ```dotnetcli
    dotnet new -i Microsoft.AspNetCore.Blazor.Templates::3.0.0-preview9.19465.2
