@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 09/14/2019
 uid: security/enforcing-ssl
-ms.openlocfilehash: eafb06d181ca3f085cccb314749c8d4deba074fa
-ms.sourcegitcommit: 215954a638d24124f791024c66fd4fb9109fd380
+ms.openlocfilehash: aa42b1c7199e951714be809de9c9c5f857473485
+ms.sourcegitcommit: 994da92edb0abf856b1655c18880028b15a28897
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71082563"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71278756"
 ---
 # <a name="enforce-https-in-aspnet-core"></a>Принудительное применение HTTPS в ASP.NET Core
 
@@ -85,7 +85,7 @@ ms.locfileid: "71082563"
 
 Рекомендуется использовать временные перенаправления, а не постоянные перенаправления. Кэширование ссылок может привести к нестабильной работе в средах разработки. Если вы предпочитаете отправить код состояния с постоянным перенаправлением, когда приложение находится в среде, не являющейся средой разработки, см. раздел [Настройка постоянных перенаправлений в производстве](#configure-permanent-redirects-in-production) . Мы рекомендуем использовать [HSTS](#http-strict-transport-security-protocol-hsts) для передачи клиентам, что только защищенные запросы ресурсов должны отправляться в приложение (только в рабочей среде).
 
-### <a name="port-configuration"></a>Конфигурация порта
+### <a name="port-configuration"></a>Настройка порта
 
 Порт должен быть доступен для промежуточного слоя, чтобы перенаправить незащищенный запрос на HTTPS. Если порт недоступен:
 
@@ -362,6 +362,58 @@ dotnet dev-certs https --help
 * В окне WSL выполните следующую команду:`ASPNETCORE_Kestrel__Certificates__Default__Password="<cryptic-password>" ASPNETCORE_Kestrel__Certificates__Default__Path=/mnt/c/Users/user-name/.aspnet/https/aspnetapp.pfx dotnet watch run`
 
   Приведенная выше команда задает переменные среды, чтобы в Linux использовался доверенный сертификат Windows.
+
+## <a name="troubleshoot-certificate-problems"></a>Устранение неполадок с сертификатами
+
+В этом разделе содержатся сведения о том, когда сертификат разработки ASP.NET Core HTTPS [установлен и является доверенным](#trust), но по-прежнему имеются предупреждения браузера о том, что сертификат не является доверенным.
+
+### <a name="all-platforms---certificate-not-trusted"></a>Все платформы — сертификат не является доверенным
+
+Выполните следующие команды:
+
+```dotnetcli
+dotnet devcerts https --clean
+dotnet devcerts https --trust
+```
+
+Закройте все открытые экземпляры браузера. Откройте новое окно браузера для приложения. Доверие сертификатов кэшируется браузерами.
+
+Предыдущие команды решают большинство проблем с доверием к браузеру. Если браузер все еще не доверяет сертификату, следуйте приведенным ниже рекомендациям для платформы.
+
+### <a name="docker---certificate-not-trusted"></a>DOCKER — сертификат не является доверенным
+
+* Удалите папку *\аппдата\роаминг\асп.нет\хттпс\{C:\Users User}* .
+* Очистите решение. Удалите папки *bin* и *obj*.
+* Перезапустите средство разработки. Например, Visual Studio, Visual Studio Code или Visual Studio для Mac.
+
+### <a name="windows---certificate-not-trusted"></a>Windows — сертификат не является доверенным
+
+* Проверьте сертификаты в хранилище сертификатов. Должен быть `localhost` сертификат `ASP.NET Core HTTPS development certificate` с понятным именем в `Current User > Personal > Certificates` и`Current User > Trusted root certification authorities > Certificates`
+* Удалите все найденные сертификаты из личных и доверенных корневых центров сертификации. **Не** удаляйте сертификат IIS Express localhost.
+* Выполните следующие команды:
+
+```dotnetcli
+dotnet devcerts https --clean
+dotnet devcerts https --trust
+```
+
+Закройте все открытые экземпляры браузера. Откройте новое окно браузера для приложения.
+
+### <a name="os-x---certificate-not-trusted"></a>OS X — сертификат не является доверенным
+
+* Откройте доступ к цепочке ключей.
+* Выберите цепочку ключей системы.
+* Проверьте наличие сертификата localhost.
+* Убедитесь, что он содержит `+` символ на значке, чтобы указать, что он является доверенным для всех пользователей.
+* Удалите сертификат из цепочки ключей системы.
+* Выполните следующие команды:
+
+```dotnetcli
+dotnet devcerts https --clean
+dotnet devcerts https --trust
+```
+
+Закройте все открытые экземпляры браузера. Откройте новое окно браузера для приложения.
 
 ## <a name="additional-information"></a>Дополнительные сведения
 

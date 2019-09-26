@@ -4,14 +4,14 @@ author: juntaoluo
 description: Узнайте, как переместить существующее приложение gRPC на основе C-Core для выполнения на вершине стека ASP.NET Core.
 monikerRange: '>= aspnetcore-3.0'
 ms.author: johluo
-ms.date: 03/31/2019
+ms.date: 09/25/2019
 uid: grpc/migration
-ms.openlocfilehash: 39aa711a1a47cf11ec5b08903b4130c7caa1501c
-ms.sourcegitcommit: 476ea5ad86a680b7b017c6f32098acd3414c0f6c
+ms.openlocfilehash: 8f0d9dd980fa3281f30dc29d329d10ccd352ae72
+ms.sourcegitcommit: 994da92edb0abf856b1655c18880028b15a28897
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/14/2019
-ms.locfileid: "69022304"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71278703"
 ---
 # <a name="migrating-grpc-services-from-c-core-to-aspnet-core"></a>Миграция gRPC Services с C-Core на ASP.NET Core
 
@@ -21,7 +21,7 @@ ms.locfileid: "69022304"
 
 ## <a name="grpc-service-implementation-lifetime"></a>время существования реализации службы gRPC
 
-В стеке ASP.NET Core службы gRPC по умолчанию создаются с временем существования с [областью действия](xref:fundamentals/dependency-injection#service-lifetimes). В отличие от этого, gRPC C-Core по умолчанию привязывается к службе с одноэлементным [жизненным циклом](xref:fundamentals/dependency-injection#service-lifetimes).
+В стеке ASP.NET Core службы gRPC по умолчанию создаются с [временем существования с областью действия](xref:fundamentals/dependency-injection#service-lifetimes). В отличие от этого, gRPC C-Core по умолчанию привязывается к службе с [одноэлементным жизненным циклом](xref:fundamentals/dependency-injection#service-lifetimes).
 
 Время существования с заданной областью позволяет реализации службы разрешать другие службы с ограниченным временем существования. Например, время существования с областью действия также `DbContext` можно разрешить из контейнера di посредством внедрения конструктора. Использование ограниченного времени существования:
 
@@ -49,14 +49,14 @@ public void ConfigureServices(IServiceCollection services)
 
 В приложениях на основе C-Core параметры, такие как `grpc.max_receive_message_length` и `grpc.max_send_message_length` , настраиваются `ChannelOption` с помощью при [создании экземпляра сервера](https://grpc.io/grpc/csharp/api/Grpc.Core.Server.html#Grpc_Core_Server__ctor_System_Collections_Generic_IEnumerable_Grpc_Core_ChannelOption__).
 
-В ASP.NET Core gRPC предоставляет конфигурацию с помощью `GrpcServiceOptions` типа. Например, максимальный размер входящего сообщения службы gRPC можно настроить с помощью `AddGrpc`:
+В ASP.NET Core gRPC предоставляет конфигурацию с помощью `GrpcServiceOptions` типа. Например, максимальный размер входящего сообщения службы gRPC можно настроить с помощью `AddGrpc`. В следующем примере по умолчанию `ReceiveMaxMessageSize` изменяется 4 МБ на 16 МБ:
 
 ```csharp
 public void ConfigureServices(IServiceCollection services)
 {
     services.AddGrpc(options =>
     {
-        options.ReceiveMaxMessageSize = 16384; // 16 MB
+        options.ReceiveMaxMessageSize = 16 * 1024 * 1024; // 16 MB
     });
 }
 ```
