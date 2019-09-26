@@ -6,12 +6,12 @@ monikerRange: '>= aspnetcore-3.0'
 ms.author: johluo
 ms.date: 8/26/2019
 uid: tutorials/grpc/grpc-start
-ms.openlocfilehash: 924aa3880fc7f2aa777d4ab2e5ea3bed38e227d4
-ms.sourcegitcommit: 215954a638d24124f791024c66fd4fb9109fd380
+ms.openlocfilehash: 8c0f57e69d4cdee5b5f5510d7db04991ed6df475
+ms.sourcegitcommit: fae6f0e253f9d62d8f39de5884d2ba2b4b2a6050
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71081184"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71250828"
 ---
 # <a name="tutorial-create-a-grpc-client-and-server-in-aspnet-core"></a>Учебник. Создание клиента и сервера gRPC в ASP.NET Core
 
@@ -36,7 +36,7 @@ ms.locfileid: "71081184"
 
 [!INCLUDE[](~/includes/net-core-prereqs-vs-3.0.md)]
 
-# <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code.](#tab/visual-studio-code)
+# <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
 [!INCLUDE[](~/includes/net-core-prereqs-vsc-3.0.md)]
 
@@ -61,7 +61,7 @@ ms.locfileid: "71081184"
   * Шаблон **gRPC Service** выбран.
   * Выберите **Создать**.
 
-# <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code.](#tab/visual-studio-code)
+# <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
 * Откройте [Интегрированный терминал](https://code.visualstudio.com/docs/editor/integrated-terminal).
 * Смените каталог (`cd`) на папку, в которой будет содержаться проект.
@@ -103,7 +103,7 @@ cd GrpcGreeter
 
   Служба запустится в командной строке Visual Studio.
 
-# <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code.](#tab/visual-studio-code)
+# <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
 * Выполните команду `dotnet run` в командной строке, чтобы запустить проект gRPC Greeter с именем *GrpcGreeter*.
 
@@ -147,7 +147,7 @@ info: Microsoft.Hosting.Lifetime[0]
 * В диалоговом окне **Создание проекта** выберите **Консольное приложение (.NET Core)** и щелкните **Далее**.
 * В текстовое поле **Имя** введите **GrpcGreeterClient** и щелкните **Создать**.
 
-# <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code.](#tab/visual-studio-code)
+# <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
 * Откройте [Интегрированный терминал](https://code.visualstudio.com/docs/editor/integrated-terminal).
 * Смените каталог (`cd`) на папку, в которой будет содержаться проект.
@@ -183,9 +183,9 @@ info: Microsoft.Hosting.Lifetime[0]
 * Выполните следующие команды:
 
   ```powershell
-  Install-Package Grpc.Net.Client -prerelease
-  Install-Package Google.Protobuf -prerelease
-  Install-Package Grpc.Tools -prerelease
+  Install-Package Grpc.Net.Client
+  Install-Package Google.Protobuf
+  Install-Package Grpc.Tools
   ```
 
 #### <a name="manage-nuget-packages-option-to-install-packages"></a>Установка пакетов с помощью раздела управления пакетами NuGet
@@ -196,7 +196,7 @@ info: Microsoft.Hosting.Lifetime[0]
 * Выберите пакет **Grpc.Net.Client** на вкладке **Обзор** и нажмите кнопку **Установить**.
 * Повторите все шаги для `Google.Protobuf` и `Grpc.Tools`.
 
-# <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code.](#tab/visual-studio-code)
+# <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
 Во **встроенном терминале** выполните следующие команды:
 
@@ -225,7 +225,7 @@ dotnet add GrpcGreeterClient.csproj package Grpc.Tools
 
   Щелкните проект правой кнопкой мыши и выберите **Изменить файл проекта**.
 
-  # <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code.](#tab/visual-studio-code)
+  # <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
   Выберите файл *GrpcGreeterClient.csproj*.
 
@@ -271,7 +271,7 @@ dotnet add GrpcGreeterClient.csproj package Grpc.Tools
 * В службе Greeter нажмите `Ctrl+F5` для запуска сервера без отладчика.
 * В проекте `GrpcGreeterClient` нажмите `Ctrl+F5` для запуска клиента без отладчика.
 
-# <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code.](#tab/visual-studio-code)
+# <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
 * Запустите службу Greeter.
 * Запустите клиент.

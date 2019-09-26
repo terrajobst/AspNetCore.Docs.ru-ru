@@ -5,18 +5,20 @@ description: Узнайте, как размещать и развертыват
 monikerRange: '>= aspnetcore-3.0'
 ms.author: riande
 ms.custom: mvc
-ms.date: 09/05/2019
+ms.date: 09/23/2019
 uid: host-and-deploy/blazor/webassembly
-ms.openlocfilehash: f6c143cc17d08e0cada67ec831e090661c4fed56
-ms.sourcegitcommit: 215954a638d24124f791024c66fd4fb9109fd380
+ms.openlocfilehash: cdb424137d80b280873347c1352fc43d23b4aec3
+ms.sourcegitcommit: 79eeb17604b536e8f34641d1e6b697fb9a2ee21f
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71081447"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71211622"
 ---
 # <a name="host-and-deploy-aspnet-core-blazor-webassembly"></a>Размещение и развертывание Blazor WebAssembly с помощью ASP.NET Core
 
 Авторы: [Люк Лэтем](https://github.com/guardrex), [Рэйнер Стропек](https://www.timecockpit.com) и [Дэниэл Рот](https://github.com/danroth27)
+
+[!INCLUDE[](~/includes/blazorwasm-preview-notice.md)]
 
 С [моделью размещения Blazor WebAssembly](xref:blazor/hosting-models#blazor-webassembly):
 

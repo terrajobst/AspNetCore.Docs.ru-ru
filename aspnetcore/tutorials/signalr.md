@@ -4,14 +4,14 @@ author: bradygaster
 description: В этом руководстве создается приложение чата, которое использует SignalR для ASP.NET Core.
 ms.author: bradyg
 ms.custom: mvc
-ms.date: 07/08/2019
+ms.date: 09/24/2019
 uid: tutorials/signalr
-ms.openlocfilehash: 2dfa994b9763a0139cb70cbf9847ac3b02b568e4
-ms.sourcegitcommit: 215954a638d24124f791024c66fd4fb9109fd380
+ms.openlocfilehash: 7a6574bd3c463f0890f5dc076944f1ab0f0c919a
+ms.sourcegitcommit: e54672f5c493258dc449fac5b98faf47eb123b28
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71081969"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71248398"
 ---
 # <a name="tutorial-get-started-with-aspnet-core-signalr"></a>Учебник. Начало работы с SignalR ASP.NET Core
 
@@ -36,7 +36,7 @@ ms.locfileid: "71081969"
 
 [!INCLUDE[](~/includes/net-core-prereqs-vs-3.0.md)]
 
-# <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code.](#tab/visual-studio-code)
+# <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
 [!INCLUDE[](~/includes/net-core-prereqs-vsc-3.0.md)]
 
@@ -62,7 +62,7 @@ ms.locfileid: "71081969"
 
   ![Диалоговое окно создания проекта в Visual Studio](signalr/_static/3.x/signalr-new-project-dialog.png)
 
-# <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code.](#tab/visual-studio-code/)
+# <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code/)
 
 * Откройте [интегрированный терминал](https://code.visualstudio.com/docs/editor/integrated-terminal) и перейдите в папку, в которой будет создаваться папка нового проекта.
 
@@ -106,7 +106,7 @@ ms.locfileid: "71081969"
 
   LibMan создает папку *wwwroot/lib/signalr* и копирует в нее выбранные файлы.
 
-# <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code.](#tab/visual-studio-code/)
+# <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code/)
 
 * В интегрированном терминале выполните следующую команду, чтобы установить LibMan.
 
@@ -216,7 +216,7 @@ ms.locfileid: "71081969"
 
 * Нажмите клавиши **CTRL+F5**, чтобы запустить приложение без отладки.
 
-# <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code.](#tab/visual-studio-code)
+# <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
 * В интегрированном терминале выполните следующую команду:
 
@@ -278,7 +278,7 @@ ms.locfileid: "71081969"
 
 [!INCLUDE[](~/includes/net-core-prereqs-vs2017-2.2.md)]
 
-# <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code.](#tab/visual-studio-code)
+# <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
 [!INCLUDE[](~/includes/net-core-prereqs-vsc-2.2.md)]
 
@@ -304,7 +304,7 @@ ms.locfileid: "71081969"
 
   ![Диалоговое окно создания проекта в Visual Studio](signalr/_static/2.x/signalr-new-project-choose-type.png)
 
-# <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code.](#tab/visual-studio-code/)
+# <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code/)
 
 * Откройте [интегрированный терминал](https://code.visualstudio.com/docs/editor/integrated-terminal) и перейдите в папку, в которой будет создаваться папка нового проекта.
 
@@ -349,7 +349,7 @@ ms.locfileid: "71081969"
 
   LibMan создает папку *wwwroot/lib/signalr* и копирует в нее выбранные файлы.
 
-# <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code.](#tab/visual-studio-code/)
+# <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code/)
 
 * В интегрированном терминале выполните следующую команду, чтобы установить LibMan.
 
@@ -459,7 +459,7 @@ ms.locfileid: "71081969"
 
 * Нажмите клавиши **CTRL+F5**, чтобы запустить приложение без отладки.
 
-# <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code.](#tab/visual-studio-code)
+# <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
 * В интегрированном терминале выполните следующую команду:
 
@@ -484,6 +484,10 @@ ms.locfileid: "71081969"
 > [!TIP]
 > Если приложение не работает, откройте средства разработчика для браузера (F12) и перейдите в консоль. Вы можете увидеть ошибки, связанные с вашим кодом HTML и JavaScript. Предположим, вы поместили *signalr.js* не в ту папку, которую указали. В этом случае ссылка на этот файл не будет работать, и вы увидите сообщение об ошибке 404 в консоли.
 > ![ошибка: signalr.js не найден](signalr/_static/2.x/f12-console.png)
+
+## <a name="additional-resources"></a>Дополнительные ресурсы
+
+* [Версия руководства на YouTube](https://www.youtube.com/watch?v=iKlVmu-r0JQ)
 
 ## <a name="next-steps"></a>Следующие шаги
 

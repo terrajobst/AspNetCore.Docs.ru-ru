@@ -20,17 +20,7 @@
 
 ### <a name="add-nuget-packages-and-ef-tools"></a>Добавление пакетов NuGet и средств EF
 
-Откройте терминал для проекта RazorPagesMovie.  Щелкните правой кнопкой мыши имя проекта в строке проектирования или макета и выберите **Сервис > Открыть** в терминале. Выполните следующие команды интерфейса командной строки .NET Core в терминале:
-
-```dotnetcli
-dotnet tool install --global dotnet-ef --version 3.0.0-*
-dotnet add package Microsoft.EntityFrameworkCore.SQLite --version 3.0.0-*
-dotnet add package Microsoft.VisualStudio.Web.CodeGeneration.Design --version 3.0.0-*
-dotnet add package Microsoft.EntityFrameworkCore.Design --version 3.0.0-*
-dotnet add package Microsoft.EntityFrameworkCore.SqlServer --version 3.0.0-*
-```
-
-Приведенные выше команды добавляют в проект средства Entity Framework Core для .NET CLI и несколько пакетов. Пакет `Microsoft.VisualStudio.Web.CodeGeneration.Design` необходим для формирования шаблонов.
+[!INCLUDE[](~/includes/add-EF-NuGet-SQLite-CLI.md)]
 
 <a name="reg"></a>
 
