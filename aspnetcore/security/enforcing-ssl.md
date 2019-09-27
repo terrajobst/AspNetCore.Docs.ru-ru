@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 09/14/2019
 uid: security/enforcing-ssl
-ms.openlocfilehash: aa42b1c7199e951714be809de9c9c5f857473485
-ms.sourcegitcommit: 994da92edb0abf856b1655c18880028b15a28897
+ms.openlocfilehash: 1d1bba6a1f1da2af959bc69b31f79bac53bf48b9
+ms.sourcegitcommit: fe3e556bf438fc4136fcf0bac61cf96e3e91caf5
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71278756"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71341473"
 ---
 # <a name="enforce-https-in-aspnet-core"></a>Принудительное применение HTTPS в ASP.NET Core
 
@@ -284,9 +284,9 @@ ASP.NET Core 2,1 и более поздних версий реализует `U
 
 `UseHsts`исключает следующие узлы замыкания на себя:
 
-* `localhost`: Адрес замыкания на себя IPv4.
-* `127.0.0.1`: Адрес замыкания на себя IPv4.
-* `[::1]`: IPv6-адрес замыкания на себя.
+* `localhost` : Адрес замыкания на себя IPv4.
+* `127.0.0.1` : Адрес замыкания на себя IPv4.
+* `[::1]` : IPv6-адрес замыкания на себя.
 
 ## <a name="opt-out-of-httpshsts-on-project-creation"></a>Отказ от HTTPS/HSTS при создании проекта
 
@@ -393,8 +393,8 @@ dotnet devcerts https --trust
 * Выполните следующие команды:
 
 ```dotnetcli
-dotnet devcerts https --clean
-dotnet devcerts https --trust
+dotnet dev-certs https --clean
+dotnet dev-certs https --trust
 ```
 
 Закройте все открытые экземпляры браузера. Откройте новое окно браузера для приложения.
