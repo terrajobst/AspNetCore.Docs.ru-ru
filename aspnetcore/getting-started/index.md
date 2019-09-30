@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 09/22/2019
 uid: getting-started
-ms.openlocfilehash: 0f05ab120d64832a4bc2fd70921efc7238ee9eac
-ms.sourcegitcommit: d34b2627a69bc8940b76a949de830335db9701d3
+ms.openlocfilehash: c9cd5e05f52c8bdefa931adc654087dac91e2f05
+ms.sourcegitcommit: e644258c95dd50a82284f107b9bf3becbc43b2b2
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71187059"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71317766"
 ---
 # <a name="tutorial-get-started-with-aspnet-core"></a>Учебник. Начало работы с ASP.NET Core
 
@@ -90,18 +90,18 @@ dotnet dev-certs https --trust
 
 ```dotnetcli
 cd aspnetcoreapp
-dotnet run
+dotnet watch run
 ```
 
 Когда интерпретатор команд покажет, что приложение запущено, откройте страницу [https://localhost:5001](https://localhost:5001). Щелкните **Принять**, чтобы принять политику конфиденциальности и использования файлов cookie. Это приложение не хранит персональные данные.
 
 ## <a name="edit-a-razor-page"></a>Редактирование страницы Razor
 
-Откройте *Pages/Index.cshtml* и измените страницу, добавив выделенное исправление.
+Откройте *Pages/Index.cshtml*, а затем измените и сохраните страницу, добавив выделенное исправление:
 
 [!code-cshtml[](sample/index.cshtml?highlight=9)]
 
-Перейдите к [https://localhost:5001](https://localhost:5001) и проверьте, отобразились ли изменения.
+Перейдите к [https://localhost:5001](https://localhost:5001), обновите страницу и проверьте, отобразились ли изменения.
 
 ## <a name="next-steps"></a>Следующие шаги
 
