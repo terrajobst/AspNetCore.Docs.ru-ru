@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 08/27/2019
 uid: tutorials/first-web-api
-ms.openlocfilehash: 1cc4fffc50978a3a958a96e1eb250cb85a8d2879
-ms.sourcegitcommit: 215954a638d24124f791024c66fd4fb9109fd380
+ms.openlocfilehash: 5e5215f246c6c7a805a4c99f485d51a2fb3c712d
+ms.sourcegitcommit: cf9ffcce4fe0b69fe795aae9ae06e99fdb18bdfc
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71082070"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71306665"
 ---
 # <a name="tutorial-create-a-web-api-with-aspnet-core"></a>Учебник. Создание веб-API с помощью ASP.NET Core
 
@@ -54,7 +54,7 @@ ms.locfileid: "71082070"
 
 [!INCLUDE[](~/includes/net-core-prereqs-vs-3.0.md)]
 
-# <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code.](#tab/visual-studio-code)
+# <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
 [!INCLUDE[](~/includes/net-core-prereqs-vsc-3.0.md)]
 
@@ -71,11 +71,11 @@ ms.locfileid: "71082070"
 * В меню **Файл** выберите **Создать** > **Проект**.
 * Выберите шаблон **Веб-приложение ASP.NET Core** и нажмите **Далее**.
 * Назовите проект *TodoApi* и нажмите **Создать**.
-* В диалоговом окне **Создание веб-приложения ASP.NET Core** убедитесь в том, что выбраны платформы **.NET Core** и **ASP.NET Core 3.0**. Выберите шаблон **API** и нажмите кнопку **Создать**. **Не** выбирайте **Включение поддержки Docker**.
+* В диалоговом окне **Создание веб-приложения ASP.NET Core** убедитесь в том, что выбраны платформы **.NET Core** и **ASP.NET Core 3.0**. Выберите шаблон **API** и нажмите кнопку **Создать**.
 
 ![Диалоговое окно создания проекта VS](first-web-api/_static/vs3.png)
 
-# <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code.](#tab/visual-studio-code)
+# <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
 * Откройте [Интегрированный терминал](https://code.visualstudio.com/docs/editor/integrated-terminal).
 * Смените каталог (`cd`) на папку, в которой будет содержаться папка проекта.
@@ -84,8 +84,8 @@ ms.locfileid: "71082070"
    ```dotnetcli
    dotnet new webapi -o TodoApi
    cd TodoAPI
-   dotnet add package Microsoft.EntityFrameworkCore.SqlServer --version 3.0.0-*
-   dotnet add package Microsoft.EntityFrameworkCore.InMemory --version 3.0.0-*
+   dotnet add package Microsoft.EntityFrameworkCore.SqlServer
+   dotnet add package Microsoft.EntityFrameworkCore.InMemory
    code -r ../TodoApi
    ```
 
@@ -117,8 +117,8 @@ ms.locfileid: "71082070"
 Откройте командный терминал в папке проекта и выполните следующие команды:
 
    ```dotnetcli
-   dotnet add package Microsoft.EntityFrameworkCore.SqlServer --version 3.0.0-*
-   dotnet add package Microsoft.EntityFrameworkCore.InMemory --version 3.0.0-*
+   dotnet add package Microsoft.EntityFrameworkCore.SqlServer
+   dotnet add package Microsoft.EntityFrameworkCore.InMemory
    ```
 
 ---
@@ -133,7 +133,7 @@ ms.locfileid: "71082070"
 
 Если появится диалоговое окно с запросом о необходимости доверять сертификату IIS Express, выберите **Да**. В появляющемся следом диалоговом окне **Предупреждение системы безопасности** выберите **Да**.
 
-# <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code.](#tab/visual-studio-code)
+# <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
 Нажмите клавиши CTRL+F5, чтобы запустить приложение. В браузере перейдите по следующему URL-адресу: [https://localhost:5001/WeatherForecast](https://localhost:5001/WeatherForecast).
 
@@ -192,7 +192,7 @@ ms.locfileid: "71082070"
 
 * Замените код шаблона следующим кодом:
 
-# <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code.](#tab/visual-studio-code)
+# <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
 * Добавьте папку с именем *Models*.
 
@@ -227,9 +227,8 @@ ms.locfileid: "71082070"
 ### <a name="add-microsoftentityframeworkcoresqlserver"></a>Добавление Microsoft.EntityFrameworkCore.SqlServer
 
 * В меню **Сервис** выберите **Диспетчер пакетов NuGet > Управление пакетами NuGet для решения**.
-* Установите флажок **Включить предварительные выпуски**.
 * Перейдите на вкладку **Обзор** и введите **Microsoft.EntityFrameworkCore.SqlServer** в поле поиска.
-* В панели слева выберите **Microsoft.EntityFrameworkCore.SqlServer V3.0.0-preview**.
+* На панели слева выберите **Microsoft.EntityFrameworkCore.SqlServer**.
 * Установите флажок **Проект** на правой панели и выберите **Установить**.
 * Добавьте пакет NuGet `Microsoft.EntityFrameworkCore.InMemory` согласно инструкциям выше.
 
@@ -281,8 +280,8 @@ ms.locfileid: "71082070"
 Выполните следующие команды:
 
 ```dotnetcli
-dotnet add package Microsoft.VisualStudio.Web.CodeGeneration.Design --version 3.0.0-*
-dotnet add package Microsoft.EntityFrameworkCore.Design --version 3.0.0-*
+dotnet add package Microsoft.VisualStudio.Web.CodeGeneration.Design
+dotnet add package Microsoft.EntityFrameworkCore.Design
 dotnet tool install --global dotnet-aspnet-codegenerator
 dotnet aspnet-codegenerator controller -name TodoItemsController -async -api -m TodoItem -dc TodoContext  -outDir Controllers
 ```
@@ -506,7 +505,7 @@ dotnet aspnet-codegenerator controller -name TodoItemsController -async -api -m 
 
 [!INCLUDE[](~/includes/net-core-prereqs-vs2019-2.2.md)]
 
-# <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code.](#tab/visual-studio-code)
+# <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
 [!INCLUDE[](~/includes/net-core-prereqs-vsc-2.2.md)]
 
@@ -527,7 +526,7 @@ dotnet aspnet-codegenerator controller -name TodoItemsController -async -api -m 
 
 ![Диалоговое окно создания проекта VS](first-web-api/_static/vs.png)
 
-# <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code.](#tab/visual-studio-code)
+# <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
 * Откройте [Интегрированный терминал](https://code.visualstudio.com/docs/editor/integrated-terminal).
 * Смените каталог (`cd`) на папку, в которой будет содержаться папка проекта.
@@ -570,7 +569,7 @@ dotnet aspnet-codegenerator controller -name TodoItemsController -async -api -m 
 
 Если появится диалоговое окно с запросом о необходимости доверять сертификату IIS Express, выберите **Да**. В появляющемся следом диалоговом окне **Предупреждение системы безопасности** выберите **Да**.
 
-# <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code.](#tab/visual-studio-code)
+# <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
 Нажмите клавиши CTRL+F5, чтобы запустить приложение. В браузере перейдите по следующему URL-адресу: [https://localhost:5001/api/values](https://localhost:5001/api/values).
 
@@ -598,7 +597,7 @@ dotnet aspnet-codegenerator controller -name TodoItemsController -async -api -m 
 
 * Замените код шаблона следующим кодом:
 
-# <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code.](#tab/visual-studio-code)
+# <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
 * Добавьте папку с именем *Models*.
 
@@ -913,6 +912,12 @@ Fetch отправляет запрос HTTP POST с элементом спис
 [!code-javascript[](first-web-api/samples/2.2/TodoApi/wwwroot/site.js?name=snippet_AjaxDelete)]
 
 ::: moniker-end
+
+<a name="auth"></a>
+
+## <a name="add-authentication-support-to-a-web-api"></a>Добавление поддержки аутентификации в веб-API
+
+Обратитесь к учебнику по [IdentityServer4](https://identityserver4.readthedocs.io/en/latest/quickstarts/0_overview.html).
 
 ## <a name="additional-resources"></a>Дополнительные ресурсы
 

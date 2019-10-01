@@ -7,12 +7,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 03/12/2019
 uid: fundamentals/app-state
-ms.openlocfilehash: 578be568b58dc630e8aabf8cb355266766741b9e
-ms.sourcegitcommit: 116bfaeab72122fa7d586cdb2e5b8f456a2dc92a
+ms.openlocfilehash: ccb37a422d972ab9113bb4115473d054282dac87
+ms.sourcegitcommit: 994da92edb0abf856b1655c18880028b15a28897
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/05/2019
-ms.locfileid: "70384740"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71278695"
 ---
 # <a name="session-and-app-state-in-aspnet-core"></a>Состояние сеанса и приложения в ASP.NET Core
 
@@ -315,6 +315,10 @@ app.Run(async (context) =>
   Например, пользователь сохраняет корзину для покупок в сеансе. Он добавляет товар в корзину, но фиксация завершается сбоем. Приложению неизвестно о сбое, поэтому оно сообщает пользователю, что товар добавлен в корзину, хотя это не так.
 
   Для проверки на наличие таких ошибок рекомендуется вызывать `await feature.Session.CommitAsync();` из кода приложения по окончании записи в сеанс. `CommitAsync` создает исключение, если резервное хранилище недоступно. Если `CommitAsync` завершается ошибкой, приложение может обработать исключение. Исключение `LoadAsync` возникает в таких же условиях, когда хранилище данных недоступно.
+  
+## <a name="signalr-and-session-state"></a>SignalR и состояние сеанса
+
+Приложения SignalR не должны использовать состояние сеанса для хранения информации. Эти приложения могут хранить состояние каждого подключения в элементе `Context.Items` в концентраторе. <!-- https://github.com/aspnet/SignalR/issues/2139 -->
 
 ## <a name="additional-resources"></a>Дополнительные ресурсы
 

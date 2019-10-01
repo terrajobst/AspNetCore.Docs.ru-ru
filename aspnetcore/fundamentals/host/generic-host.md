@@ -7,12 +7,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 07/01/2019
 uid: fundamentals/host/generic-host
-ms.openlocfilehash: 261abae499a0d5f807a14aebd224949881067bc7
-ms.sourcegitcommit: f65d8765e4b7c894481db9b37aa6969abc625a48
+ms.openlocfilehash: 75af6dc58d31aaad888b14640268bf05c193272d
+ms.sourcegitcommit: e54672f5c493258dc449fac5b98faf47eb123b28
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70773815"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71248278"
 ---
 # <a name="net-generic-host"></a>Универсальный узел .NET
 
@@ -113,7 +113,7 @@ public static IHostBuilder CreateHostBuilder(string[] args) =>
 * [IHostLifetime](#ihostlifetime)
 * [IHostEnvironment / IWebHostEnvironment](#ihostenvironment)
 
-Список всех служб, предоставленных платформой, см. в разделе <xref:fundamentals/dependency-injection#framework-provided-services>.
+Дополнительные сведения о службах, предоставляемых платформой, см. в разделе <xref:fundamentals/dependency-injection#framework-provided-services>.
 
 ## <a name="ihostapplicationlifetime"></a>IHostApplicationLifetime
 
@@ -127,7 +127,7 @@ public static IHostBuilder CreateHostBuilder(string[] args) =>
 
 Реализация <xref:Microsoft.Extensions.Hosting.IHostLifetime> контролирует, когда узел запускается и останавливается. Используется последняя зарегистрированная реализация.
 
-<xref:Microsoft.Extensions.Hosting.Internal.ConsoleLifetime> — это реализация `IHostLifetime` по умолчанию. `ConsoleLifetime`:
+<xref:Microsoft.Extensions.Hosting.Internal.ConsoleLifetime> — это реализация `IHostLifetime` по умолчанию. `ConsoleLifetime`.
 
 * прослушивает сигналы CTRL + C/SIGINT или SIGTERM и вызывает метод <xref:Microsoft.Extensions.Hosting.IApplicationLifetime.StopApplication*> для запуска процесса завершения работы.
 * разблокирует расширения, такие как [RunAsync](#runasync) и [WaitForShutdownAsync](#waitforshutdownasync).

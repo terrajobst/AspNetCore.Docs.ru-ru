@@ -5,14 +5,14 @@ description: Узнайте, как настроить проверки рабо
 monikerRange: '>= aspnetcore-2.2'
 ms.author: riande
 ms.custom: mvc
-ms.date: 09/10/2019
+ms.date: 09/23/2019
 uid: host-and-deploy/health-checks
-ms.openlocfilehash: 8fdb1332882fd25bd61f5403a3b1f10e8a0bc7f7
-ms.sourcegitcommit: 215954a638d24124f791024c66fd4fb9109fd380
+ms.openlocfilehash: d8be6c8eb45cde162693621e63bf40d48d04c324
+ms.sourcegitcommit: 0365af91518004c4a44a30dc3a8ac324558a399b
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71081516"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71199003"
 ---
 # <a name="health-checks-in-aspnet-core"></a>Проверки работоспособности в ASP.NET Core
 
@@ -727,9 +727,12 @@ Task PublishAsync(HealthReport report, CancellationToken cancellationToken);
 * <xref:Microsoft.Extensions.Diagnostics.HealthChecks.HealthCheckPublisherOptions.Predicate> — если <xref:Microsoft.Extensions.Diagnostics.HealthChecks.HealthCheckPublisherOptions.Predicate> имеет значение `null` (по умолчанию), служба издателя проверки работоспособности выполняет все зарегистрированные проверки работоспособности. Чтобы выполнить ряд проверок работоспособности, укажите функцию, которая отфильтровывает нужный набор. Предикат вычисляется в каждом периоде.
 * <xref:Microsoft.Extensions.Diagnostics.HealthChecks.HealthCheckPublisherOptions.Timeout> — время ожидания до выполнения проверок работоспособности для всех экземпляров <xref:Microsoft.Extensions.Diagnostics.HealthChecks.IHealthCheckPublisher>. Используйте <xref:System.Threading.Timeout.InfiniteTimeSpan>, чтобы выполнить проверки без задержки. Значение по умолчанию - 30 секунды.
 
-В примере приложения `ReadinessPublisher` является реализацией <xref:Microsoft.Extensions.Diagnostics.HealthChecks.IHealthCheckPublisher>. Состояния проверки работоспособности записывается в `Entries` и в журнал для каждой проверки:
+В примере приложения `ReadinessPublisher` является реализацией <xref:Microsoft.Extensions.Diagnostics.HealthChecks.IHealthCheckPublisher>. Состояние проверки работоспособности записывается для каждой проверки на таком уровне журнала:
 
-[!code-csharp[](health-checks/samples/3.x/HealthChecksSample/ReadinessPublisher.cs?name=snippet_ReadinessPublisher&highlight=20,22-23)]
+* на уровне сведений (<xref:Microsoft.Extensions.Logging.LoggerExtensions.LogInformation*>), если состояние проверки работоспособности — <xref:Microsoft.Extensions.Diagnostics.HealthChecks.HealthStatus.Healthy>;
+* на уровне ошибки (<xref:Microsoft.Extensions.Logging.LoggerExtensions.LogError*>), если состояние соответствует <xref:Microsoft.Extensions.Diagnostics.HealthChecks.HealthStatus.Degraded> или <xref:Microsoft.Extensions.Diagnostics.HealthChecks.HealthStatus.Unhealthy>.
+
+[!code-csharp[](health-checks/samples/3.x/HealthChecksSample/ReadinessPublisher.cs?name=snippet_ReadinessPublisher&highlight=18-27)]
 
 В примере приложения `LivenessProbeStartup` проверка готовности `StartupHostedService` использует задержку запуска в две секунды и выполняет проверку каждые 30 секунд. Чтобы активировать реализацию <xref:Microsoft.Extensions.Diagnostics.HealthChecks.IHealthCheckPublisher>, этот пример регистрирует `ReadinessPublisher` как отдельную службу в контейнере [внедрения зависимостей](xref:fundamentals/dependency-injection).
 
@@ -1402,9 +1405,12 @@ Task PublishAsync(HealthReport report, CancellationToken cancellationToken);
 > [!WARNING]
 > В выпуске ASP.NET Core 2.2 значение <xref:Microsoft.Extensions.Diagnostics.HealthChecks.HealthCheckPublisherOptions.Period> не поддерживается в реализации <xref:Microsoft.Extensions.Diagnostics.HealthChecks.IHealthCheckPublisher>. Здесь задается значение <xref:Microsoft.Extensions.Diagnostics.HealthChecks.HealthCheckPublisherOptions.Delay>. Эта проблема была устранена в ASP.NET Core 3.0.
 
-В примере приложения `ReadinessPublisher` является реализацией <xref:Microsoft.Extensions.Diagnostics.HealthChecks.IHealthCheckPublisher>. Состояния проверки работоспособности записывается в `Entries` и в журнал для каждой проверки:
+В примере приложения `ReadinessPublisher` является реализацией <xref:Microsoft.Extensions.Diagnostics.HealthChecks.IHealthCheckPublisher>. Состояние проверки работоспособности записывается для каждой проверки на одном из таких уровней журнала:
 
-[!code-csharp[](health-checks/samples/2.x/HealthChecksSample/ReadinessPublisher.cs?name=snippet_ReadinessPublisher&highlight=20,22-23)]
+* на уровне сведений (<xref:Microsoft.Extensions.Logging.LoggerExtensions.LogInformation*>), если состояние проверки работоспособности — <xref:Microsoft.Extensions.Diagnostics.HealthChecks.HealthStatus.Healthy>;
+* на уровне ошибки (<xref:Microsoft.Extensions.Logging.LoggerExtensions.LogError*>), если состояние соответствует <xref:Microsoft.Extensions.Diagnostics.HealthChecks.HealthStatus.Degraded> или <xref:Microsoft.Extensions.Diagnostics.HealthChecks.HealthStatus.Unhealthy>.
+
+[!code-csharp[](health-checks/samples/2.x/HealthChecksSample/ReadinessPublisher.cs?name=snippet_ReadinessPublisher&highlight=18-27)]
 
 В примере приложения `LivenessProbeStartup` проверка готовности `StartupHostedService` использует задержку запуска в две секунды и выполняет проверку каждые 30 секунд. Чтобы активировать реализацию <xref:Microsoft.Extensions.Diagnostics.HealthChecks.IHealthCheckPublisher>, этот пример регистрирует `ReadinessPublisher` как отдельную службу в контейнере [внедрения зависимостей](xref:fundamentals/dependency-injection).
 

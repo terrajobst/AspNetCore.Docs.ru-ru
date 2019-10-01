@@ -1,111 +1,129 @@
 ---
 title: Части приложения в ASP.NET Core
-author: ardalis
-description: Сведения о том, как использовать части приложения, которые являются абстракциями по отношению к ресурсам приложения, для обнаружения или запрета загрузки компонентов из сборки.
+author: rick-anderson
+description: Совместное использование контроллеров, представлений, Razor Pages и других ресурсов с помощью частей приложений в ASP.NET Core
 ms.author: riande
-ms.date: 01/04/2017
+ms.date: 05/14/2019
 uid: mvc/extensibility/app-parts
-ms.openlocfilehash: 4900ccf5589500db076f8cecd9da198c6a7ceea4
-ms.sourcegitcommit: 41f2c1a6b316e6e368a4fd27a8b18d157cef91e1
+ms.openlocfilehash: 4b4c8c554a7045a180b56cf9998ab1a8496cde1b
+ms.sourcegitcommit: 79eeb17604b536e8f34641d1e6b697fb9a2ee21f
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69886462"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71207350"
 ---
-<!-- DO NOT MAKE CHANGES BEFORE https://github.com/aspnet/AspNetCore.Docs/pull/12376 Merges -->
+# <a name="share-controllers-views-razor-pages-and-more-with-application-parts-in-aspnet-core"></a>Совместное использование контроллеров, представлений, Razor Pages и других ресурсов с помощью частей приложений в ASP.NET Core
 
-# <a name="application-parts-in-aspnet-core"></a>Части приложения в ASP.NET Core
+Автор: [Рик Андерсон](https://twitter.com/RickAndMSFT) (Rick Anderson)
 
-[Просмотреть или скачать образец кода](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/advanced/app-parts/sample) ([как скачивать](xref:index#how-to-download-a-sample))
+[Просмотреть или скачать образец кода](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/advanced/app-parts) ([как скачивать](xref:index#how-to-download-a-sample))
 
-*Часть приложения* — это абстракция по отношению к ресурсам приложения, из которой могут быть обнаружены такие элементы MVC, как контроллеры, компоненты представлений или вспомогательные функции тегов. Одним из примеров части приложения является AssemblyPart, который содержит ссылку на сборку и предоставляет типы и ссылки на компиляцию. *Поставщики компонентов* работают с частями приложения для заполнения компонентов приложения ASP.NET Core MVC. Основной вариант использования частей приложения заключается в настройке приложения для обнаружения (или запрета загрузки) компонентов MVC из сборки.
+*Часть приложения* — это абстракция для ресурсов приложения. Части приложений позволяют ASP.NET Core обнаруживать контроллеры, компоненты представлений, вспомогательные функции тегов, Razor Pages, источники компиляции Razor и другие ресурсы. [AssemblyPart](/dotnet/api/microsoft.aspnetcore.mvc.applicationparts.assemblypart#Microsoft_AspNetCore_Mvc_ApplicationParts_AssemblyPart) — это часть приложения. `AssemblyPart` инкапсулирует ссылку на сборку и предоставляет типы и ссылки на компиляцию.
 
-## <a name="introducing-application-parts"></a>Общие сведения о частях приложения
+*Поставщики компонентов* работают с частями приложения для заполнения компонентов приложения ASP.NET Core. Основной вариант использования частей приложения заключается в настройке приложения для обнаружения (или запрета загрузки) компонентов ASP.NET Core из сборки. Например, может потребоваться совместное использование общих функциональных возможностей несколькими приложениями. С помощью частей приложения можно совместно использовать сборку (библиотека DLL), содержащую контроллеры, представления, Razor Pages, источники компиляции Razor, вспомогательные функции тегов и другие ресурсы, с несколькими приложениями. Желательно предоставить общий доступ к сборке для дублирования кода в нескольких проектах.
 
-Приложения MVC загружают свои компоненты из [частей приложения](/dotnet/api/microsoft.aspnetcore.mvc.applicationparts.applicationpart). В частности, класс [AssemblyPart](/dotnet/api/microsoft.aspnetcore.mvc.applicationparts.assemblypart) представляет часть приложения, поддерживаемую сборкой. Эти классы можно использовать для обнаружения и загрузки компонентов MVC, таких как контроллеры, компоненты представлений, вспомогательные функции тегов и источники компиляции Razor. [ApplicationPartManager](/dotnet/api/microsoft.aspnetcore.mvc.applicationparts.applicationpartmanager) отвечает за отслеживание частей приложения и поставщиков компонентов, доступных для приложения MVC. При настройке MVC можно взаимодействовать с классом `ApplicationPartManager` в `Startup`:
+Приложения ASP.NET Core загружают компоненты из <xref:System.Web.WebPages.ApplicationPart>. Класс <xref:Microsoft.AspNetCore.Mvc.ApplicationParts.AssemblyPart> представляет часть приложения, поддерживаемую сборкой.
 
-```csharp
-// create an assembly part from a class's assembly
-var assembly = typeof(Startup).GetTypeInfo().Assembly;
-services.AddMvc()
-    .AddApplicationPart(assembly);
+## <a name="load-aspnet-core-features"></a>Загрузка компонентов ASP.NET Core
 
-// OR
-var assembly = typeof(Startup).GetTypeInfo().Assembly;
-var part = new AssemblyPart(assembly);
-services.AddMvc()
-    .ConfigureApplicationPartManager(apm => apm.ApplicationParts.Add(part));
-```
+Используйте классы `ApplicationPart` и `AssemblyPart` для обнаружения и загрузки компонентов ASP.NET Core (контроллеры, компоненты представления и т. д.). <xref:Microsoft.AspNetCore.Mvc.ApplicationParts.ApplicationPartManager> отслеживает доступные части приложения и поставщики компонентов. Функция `ApplicationPartManager` настраивается в `Startup.ConfigureServices`.
 
-По умолчанию MVC выполняет поиск в дереве зависимостей и находит контроллеры (даже в других сборках). Часть приложения можно использовать для загрузки произвольной сборки (например, из подключаемого модуля, который не указывается во время компиляции).
+[!code-csharp[](./app-parts/sample1/WebAppParts/Startup.cs?name=snippet)]
 
-С помощью частей приложения можно *запретить* поиск контроллеров в конкретной сборке или расположении. Чтобы контролировать части (или сборки), доступные для приложения, следует изменить коллекцию `ApplicationParts` класса `ApplicationPartManager`. Порядок записей в коллекции `ApplicationParts` не имеет значения. Очень важно полностью настроить класс `ApplicationPartManager` перед его использованием для конфигурации служб в контейнере. Например, необходимо полностью настроить класс `ApplicationPartManager` перед вызовом метода `AddControllersAsServices`. В противном случае контроллеры в частях приложения, добавленные после вызова этого метода, не будут затронуты (не будут зарегистрированы как службы), что может привести к неправильной работе приложения.
+Следующий код предоставляет альтернативный подход к настройке `ApplicationPartManager` с использованием `AssemblyPart`:
 
-Если у вас есть сборка, содержащая контроллеры, которые не требуется использовать, удалите ее из `ApplicationPartManager`:
+[!code-csharp[](./app-parts/sample1/WebAppParts/Startup2.cs?name=snippet)]
 
-```csharp
-services.AddMvc()
-    .ConfigureApplicationPartManager(apm =>
-    {
-        var dependentLibrary = apm.ApplicationParts
-            .FirstOrDefault(part => part.Name == "DependentLibrary");
+Предыдущие два примера кода загружают `SharedController` из сборки. `SharedController` не находится в проекте приложения. См. пример [решения WebAppParts](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/advanced/app-parts/sample1/WebAppParts) для загрузки.
 
-        if (dependentLibrary != null)
-        {
-           apm.ApplicationParts.Remove(dependentLibrary);
-        }
-    })
-```
+### <a name="include-views"></a>Включение представлений
 
-Помимо сборки проекта и зависимых сборок, `ApplicationPartManager` будет содержать части для `Microsoft.AspNetCore.Mvc.TagHelpers` и `Microsoft.AspNetCore.Mvc.Razor` по умолчанию.
+Чтобы включить представления в сборку, выполните следующие действия.
+
+* Добавьте следующую разметку в файл общего проекта:
+
+  ```csproj
+  <ItemGroup>
+      <EmbeddedResource Include="Views\**\*.cshtml" />
+  </ItemGroup>
+  ```
+
+* Добавьте <xref:Microsoft.Extensions.FileProviders.EmbeddedFileProvider> в <xref:Microsoft.AspNetCore.Mvc.Razor.RazorViewEngine>:
+
+  [!code-csharp[](./app-parts/sample1/WebAppParts/StartupViews.cs?name=snippet&highlight=3-7)]
+
+### <a name="prevent-loading-resources"></a>Запрет загрузки ресурсов
+
+Части приложения можно использовать для *запрета* загрузки ресурсов в определенной сборке или расположении. Добавьте или удалите элементы коллекции <xref:Microsoft.AspNetCore.Mvc.ApplicationParts>, чтобы скрыть ресурсы или сделать их доступными. Порядок записей в коллекции `ApplicationParts` не имеет значения. Настройте класс `ApplicationPartManager` перед его использованием для конфигурации служб в контейнере. Например, настройте класс `ApplicationPartManager` перед вызовом метода `AddControllersAsServices`. Вызовите метод `Remove` в коллекции `ApplicationParts`, чтобы удалить ресурс.
+
+В следующем коде для удаления `MyDependentLibrary` из приложения используется <xref:Microsoft.AspNetCore.Mvc.ApplicationParts>: [!code-csharp[](./app-parts/sample1/WebAppParts/StartupRm.cs?name=snippet)]
+
+`ApplicationPartManager` содержит части для:
+
+* сборки приложения и зависимых сборок;
+* `Microsoft.AspNetCore.Mvc.TagHelpers`.
+* `Microsoft.AspNetCore.Mvc.Razor`.
 
 ## <a name="application-feature-providers"></a>Поставщики компонентов приложений
 
-Поставщики компонентов приложений проверяют части приложения и предоставляют для них компоненты. Доступны встроенные поставщики компонентов для следующих компонентов MVC:
+Поставщики компонентов приложений проверяют части приложения и предоставляют для них компоненты. Доступны встроенные поставщики компонентов для следующих компонентов ASP.NET Core:
 
 * [Контроллеры](/dotnet/api/microsoft.aspnetcore.mvc.controllers.controllerfeatureprovider)
-* [Ссылка на метаданные](/dotnet/api/microsoft.aspnetcore.mvc.razor.compilation.metadatareferencefeatureprovider)
 * [Вспомогательные функции тегов](/dotnet/api/microsoft.aspnetcore.mvc.razor.taghelpers.taghelperfeatureprovider)
 * [Компоненты представлений](/dotnet/api/microsoft.aspnetcore.mvc.viewcomponents.viewcomponentfeatureprovider)
 
-Поставщики компонентов наследуют от `IApplicationFeatureProvider<T>`, где `T` является типом компонента. Для всех перечисленных выше типов компонентов MVC можно реализовать собственные поставщики. Порядок поставщиков компонентов в коллекции `ApplicationPartManager.FeatureProviders` имеет важное значение, поскольку поставщики более поздних версий способны реагировать на действия поставщиков предыдущих версий.
+Поставщики компонентов наследуют от <xref:Microsoft.AspNetCore.Mvc.ApplicationParts.IApplicationFeatureProvider`1>, где `T` является типом компонента. Поставщики компонентов можно реализовать для любого из перечисленных выше типов компонентов. Порядок поставщиков компонентов в `ApplicationPartManager.FeatureProviders` может повлиять на поведение во время выполнения. Поставщики, добавленные позднее, могут реагировать на действия, выполняемые ранее добавленными поставщиками.
 
-### <a name="sample-generic-controller-feature"></a>Пример: компонент универсального контроллера
+### <a name="generic-controller-feature"></a>компонент универсального контроллера
 
-По умолчанию ASP.NET Core MVC игнорирует универсальные контроллеры (например, `SomeController<T>`). В этом примере используется поставщик компонентов контроллера, который запускается после поставщика по умолчанию и добавляет экземпляры универсального контроллера для указанного списка типов (определенного в `EntityTypes.Types`):
+ASP.NET Core игнорирует [универсальные контроллеры](/dotnet/csharp/programming-guide/generics/generic-classes). Универсальный контроллер содержит параметр типа (например, `MyController<T>`). В следующем примере добавляются экземпляры универсального контроллера для указанного списка типов:
 
-[!code-csharp[](./app-parts/sample/AppPartsSample/GenericControllerFeatureProvider.cs?highlight=13&range=18-36)]
+[!code-csharp[](./app-parts/sample2/AppPartsSample/GenericControllerFeatureProvider.cs?name=snippet)]
 
-Типы сущностей:
+Типы определены в файле `EntityTypes.Types`.
 
-[!code-csharp[](./app-parts/sample/AppPartsSample/Model/EntityTypes.cs?range=6-16)]
+[!code-csharp[](./app-parts/sample2/AppPartsSample/Models/EntityTypes.cs?name=snippet)]
 
 Поставщик компонентов добавляется в `Startup`:
 
-```csharp
-services.AddMvc()
-    .ConfigureApplicationPartManager(apm => 
-        apm.FeatureProviders.Add(new GenericControllerFeatureProvider()));
-```
+[!code-csharp[](./app-parts/sample2/AppPartsSample/Startup.cs?name=snippet)]
 
-По умолчанию имена универсальных контроллеров, используемых для маршрутизации, будут иметь вид *GenericController`1[Widget]* вместо *Widget*. Для изменения имени в соответствии с универсальным типом, используемым контроллером, применяется следующий атрибут:
+Имена универсальных контроллеров, используемых для маршрутизации, будут иметь вид *GenericController`1[Widget]* вместо *Widget*. Для изменения имени в соответствии с универсальным типом, используемым контроллером, применяется следующий атрибут:
 
-[!code-csharp[](./app-parts/sample/AppPartsSample/GenericControllerNameConvention.cs)]
+[!code-csharp[](./app-parts/sample2/AppPartsSample/GenericControllerNameConvention.cs)]
 
 Класс `GenericController`:
 
-[!code-csharp[](./app-parts/sample/AppPartsSample/GenericController.cs?highlight=5-6)]
+[!code-csharp[](./app-parts/sample2/AppPartsSample/GenericController.cs)]
 
-При запросе совпадающего маршрута выводится следующий результат:
+Например, запрос URL-адреса `https://localhost:5001/Sprocket` приводит к следующему ответу:
 
-![Пример выходных данных из примера приложения: "Hello from a generic Sproket controller".](app-parts/_static/generic-controller.png)
+```text
+Hello from a generic Sprocket controller.
+```
 
-### <a name="sample-display-available-features"></a>Пример: отображение доступных компонентов
+### <a name="display-available-features"></a>отображение доступных компонентов
 
-Для итерации по заполненным компонентам, доступным для приложения, можно запросить класс `ApplicationPartManager` через [внедрение зависимостей](../../fundamentals/dependency-injection.md) и использовать его для заполнения экземпляров соответствующих компонентов:
+Компоненты, доступные для приложения, можно перечислить путем запроса `ApplicationPartManager` с помощью [внедрения зависимостей](../../fundamentals/dependency-injection.md):
 
-[!code-csharp[](./app-parts/sample/AppPartsSample/Controllers/FeaturesController.cs?highlight=16,25-27)]
+[!code-csharp[](./app-parts/sample2/AppPartsSample/Controllers/FeaturesController.cs?highlight=16,25-27)]
 
-Пример выходных данных:
+В [примере для скачивания](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/advanced/app-parts/sample2) используется приведенный выше код для отображения компонентов приложения:
 
-![Пример выходных данных из примера приложения](app-parts/_static/available-features.png)
+```text
+Controllers:
+    - FeaturesController
+    - HomeController
+    - HelloController
+    - GenericController`1
+    - GenericController`1
+Tag Helpers:
+    - PrerenderTagHelper
+    - AnchorTagHelper
+    - CacheTagHelper
+    - DistributedCacheTagHelper
+    - EnvironmentTagHelper
+    - Additional Tag Helpers omitted for brevity.
+View Components:
+    - SampleViewComponent
+```

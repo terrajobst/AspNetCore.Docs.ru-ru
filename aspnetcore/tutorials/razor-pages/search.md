@@ -5,12 +5,12 @@ description: Инструкции по добавлению поиска на с
 ms.author: riande
 ms.date: 7/23/2019
 uid: tutorials/razor-pages/search
-ms.openlocfilehash: d1aa3f914ebcab4d095b6fca1dac3cf44855d516
-ms.sourcegitcommit: 16502797ea749e2690feaa5e652a65b89c007c89
+ms.openlocfilehash: fde99d8fab00265294bccb2ecdb380d02a8f3673
+ms.sourcegitcommit: a7813a776809a5029c94aa503ee71994f156231f
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68483285"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71267756"
 ---
 # <a name="add-search-to-aspnet-core-razor-pages"></a>Добавление поиска на страницы Razor ASP.NET Core
 
@@ -209,6 +209,7 @@ var movies = from m in _context.Movie
 [!code-cshtml[](razor-pages-start/sample/RazorPagesMovie22/Pages/Movies/IndexFormGenreNoRating.cshtml?highlight=16-18&range=1-26)]
 
 Проверьте работу приложения, выполнив поиск по жанру, по названию фильма и по обоим этим параметрам.
+В приведенном выше коде используется [вспомогательные функции тега Select](xref:mvc/views/working-with-forms#the-select-tag-helper) и Option.
 
 ## <a name="additional-resources"></a>Дополнительные ресурсы
 
