@@ -1,111 +1,129 @@
 ---
 title: Части приложения в ASP.NET Core
-author: ardalis
-description: Сведения о том, как использовать части приложения, которые являются абстракциями по отношению к ресурсам приложения, для обнаружения или запрета загрузки компонентов из сборки.
+author: rick-anderson
+description: Совместное использование контроллеров, представлений, Razor Pages и других ресурсов с помощью частей приложений в ASP.NET Core
 ms.author: riande
-ms.date: 01/04/2017
+ms.date: 05/14/2019
 uid: mvc/extensibility/app-parts
-ms.openlocfilehash: 4900ccf5589500db076f8cecd9da198c6a7ceea4
-ms.sourcegitcommit: 41f2c1a6b316e6e368a4fd27a8b18d157cef91e1
+ms.openlocfilehash: 4b4c8c554a7045a180b56cf9998ab1a8496cde1b
+ms.sourcegitcommit: 79eeb17604b536e8f34641d1e6b697fb9a2ee21f
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69886462"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71207350"
 ---
-<!-- DO NOT MAKE CHANGES BEFORE https://github.com/aspnet/AspNetCore.Docs/pull/12376 Merges -->
+# <a name="share-controllers-views-razor-pages-and-more-with-application-parts-in-aspnet-core"></a><span data-ttu-id="cf4c3-103">Совместное использование контроллеров, представлений, Razor Pages и других ресурсов с помощью частей приложений в ASP.NET Core</span><span class="sxs-lookup"><span data-stu-id="cf4c3-103">Share controllers, views, Razor Pages and more with Application Parts in ASP.NET Core</span></span>
 
-# <a name="application-parts-in-aspnet-core"></a><span data-ttu-id="1200f-103">Части приложения в ASP.NET Core</span><span class="sxs-lookup"><span data-stu-id="1200f-103">Application Parts in ASP.NET Core</span></span>
+<span data-ttu-id="cf4c3-104">Автор: [Рик Андерсон](https://twitter.com/RickAndMSFT) (Rick Anderson)</span><span class="sxs-lookup"><span data-stu-id="cf4c3-104">By [Rick Anderson](https://twitter.com/RickAndMSFT)</span></span>
 
-<span data-ttu-id="1200f-104">[Просмотреть или скачать образец кода](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/advanced/app-parts/sample) ([как скачивать](xref:index#how-to-download-a-sample))</span><span class="sxs-lookup"><span data-stu-id="1200f-104">[View or download sample code](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/advanced/app-parts/sample) ([how to download](xref:index#how-to-download-a-sample))</span></span>
+<span data-ttu-id="cf4c3-105">[Просмотреть или скачать образец кода](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/advanced/app-parts) ([как скачивать](xref:index#how-to-download-a-sample))</span><span class="sxs-lookup"><span data-stu-id="cf4c3-105">[View or download sample code](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/advanced/app-parts) ([how to download](xref:index#how-to-download-a-sample))</span></span>
 
-<span data-ttu-id="1200f-105">*Часть приложения* — это абстракция по отношению к ресурсам приложения, из которой могут быть обнаружены такие элементы MVC, как контроллеры, компоненты представлений или вспомогательные функции тегов.</span><span class="sxs-lookup"><span data-stu-id="1200f-105">An *Application Part* is an abstraction over the resources of an application, from which MVC features like controllers, view components, or tag helpers may be discovered.</span></span> <span data-ttu-id="1200f-106">Одним из примеров части приложения является AssemblyPart, который содержит ссылку на сборку и предоставляет типы и ссылки на компиляцию.</span><span class="sxs-lookup"><span data-stu-id="1200f-106">One example of an application part is an AssemblyPart, which encapsulates an assembly reference and exposes types and compilation references.</span></span> <span data-ttu-id="1200f-107">*Поставщики компонентов* работают с частями приложения для заполнения компонентов приложения ASP.NET Core MVC.</span><span class="sxs-lookup"><span data-stu-id="1200f-107">*Feature providers* work with application parts to populate the features of an ASP.NET Core MVC app.</span></span> <span data-ttu-id="1200f-108">Основной вариант использования частей приложения заключается в настройке приложения для обнаружения (или запрета загрузки) компонентов MVC из сборки.</span><span class="sxs-lookup"><span data-stu-id="1200f-108">The main use case for application parts is to allow you to configure your app to discover (or avoid loading) MVC features from an assembly.</span></span>
+<span data-ttu-id="cf4c3-106">*Часть приложения* — это абстракция для ресурсов приложения.</span><span class="sxs-lookup"><span data-stu-id="cf4c3-106">An *Application Part* is an abstraction over the resources of an app.</span></span> <span data-ttu-id="cf4c3-107">Части приложений позволяют ASP.NET Core обнаруживать контроллеры, компоненты представлений, вспомогательные функции тегов, Razor Pages, источники компиляции Razor и другие ресурсы.</span><span class="sxs-lookup"><span data-stu-id="cf4c3-107">Application Parts allow ASP.NET Core to discover controllers, view components, tag helpers, Razor Pages, razor compilation sources, and more.</span></span> <span data-ttu-id="cf4c3-108">[AssemblyPart](/dotnet/api/microsoft.aspnetcore.mvc.applicationparts.assemblypart#Microsoft_AspNetCore_Mvc_ApplicationParts_AssemblyPart) — это часть приложения.</span><span class="sxs-lookup"><span data-stu-id="cf4c3-108">[AssemblyPart](/dotnet/api/microsoft.aspnetcore.mvc.applicationparts.assemblypart#Microsoft_AspNetCore_Mvc_ApplicationParts_AssemblyPart) is an Application part.</span></span> <span data-ttu-id="cf4c3-109">`AssemblyPart` инкапсулирует ссылку на сборку и предоставляет типы и ссылки на компиляцию.</span><span class="sxs-lookup"><span data-stu-id="cf4c3-109">`AssemblyPart` encapsulates an assembly reference and exposes types and compilation references.</span></span>
 
-## <a name="introducing-application-parts"></a><span data-ttu-id="1200f-109">Общие сведения о частях приложения</span><span class="sxs-lookup"><span data-stu-id="1200f-109">Introducing Application Parts</span></span>
+<span data-ttu-id="cf4c3-110">*Поставщики компонентов* работают с частями приложения для заполнения компонентов приложения ASP.NET Core.</span><span class="sxs-lookup"><span data-stu-id="cf4c3-110">*Feature providers* work with application parts to populate the features of an ASP.NET Core app.</span></span> <span data-ttu-id="cf4c3-111">Основной вариант использования частей приложения заключается в настройке приложения для обнаружения (или запрета загрузки) компонентов ASP.NET Core из сборки.</span><span class="sxs-lookup"><span data-stu-id="cf4c3-111">The main use case for application parts is to configure an app to discover (or avoid loading) ASP.NET Core features from an assembly.</span></span> <span data-ttu-id="cf4c3-112">Например, может потребоваться совместное использование общих функциональных возможностей несколькими приложениями.</span><span class="sxs-lookup"><span data-stu-id="cf4c3-112">For example, you might want to share common functionality between multiple apps.</span></span> <span data-ttu-id="cf4c3-113">С помощью частей приложения можно совместно использовать сборку (библиотека DLL), содержащую контроллеры, представления, Razor Pages, источники компиляции Razor, вспомогательные функции тегов и другие ресурсы, с несколькими приложениями.</span><span class="sxs-lookup"><span data-stu-id="cf4c3-113">Using Application Parts, you can share an assembly (DLL) containing controllers, views, Razor Pages, razor compilation sources, Tag Helpers, and more with multiple apps.</span></span> <span data-ttu-id="cf4c3-114">Желательно предоставить общий доступ к сборке для дублирования кода в нескольких проектах.</span><span class="sxs-lookup"><span data-stu-id="cf4c3-114">Sharing an assembly is preferred to duplicating code in multiple projects.</span></span>
 
-<span data-ttu-id="1200f-110">Приложения MVC загружают свои компоненты из [частей приложения](/dotnet/api/microsoft.aspnetcore.mvc.applicationparts.applicationpart).</span><span class="sxs-lookup"><span data-stu-id="1200f-110">MVC apps load their features from [application parts](/dotnet/api/microsoft.aspnetcore.mvc.applicationparts.applicationpart).</span></span> <span data-ttu-id="1200f-111">В частности, класс [AssemblyPart](/dotnet/api/microsoft.aspnetcore.mvc.applicationparts.assemblypart) представляет часть приложения, поддерживаемую сборкой.</span><span class="sxs-lookup"><span data-stu-id="1200f-111">In particular, the [AssemblyPart](/dotnet/api/microsoft.aspnetcore.mvc.applicationparts.assemblypart) class represents an application part that's backed by an assembly.</span></span> <span data-ttu-id="1200f-112">Эти классы можно использовать для обнаружения и загрузки компонентов MVC, таких как контроллеры, компоненты представлений, вспомогательные функции тегов и источники компиляции Razor.</span><span class="sxs-lookup"><span data-stu-id="1200f-112">You can use these classes to discover and load MVC features, such as controllers, view components, tag helpers, and razor compilation sources.</span></span> <span data-ttu-id="1200f-113">[ApplicationPartManager](/dotnet/api/microsoft.aspnetcore.mvc.applicationparts.applicationpartmanager) отвечает за отслеживание частей приложения и поставщиков компонентов, доступных для приложения MVC.</span><span class="sxs-lookup"><span data-stu-id="1200f-113">The [ApplicationPartManager](/dotnet/api/microsoft.aspnetcore.mvc.applicationparts.applicationpartmanager) is responsible for tracking the application parts and feature providers available to the MVC app.</span></span> <span data-ttu-id="1200f-114">При настройке MVC можно взаимодействовать с классом `ApplicationPartManager` в `Startup`:</span><span class="sxs-lookup"><span data-stu-id="1200f-114">You can interact with the `ApplicationPartManager` in `Startup` when you configure MVC:</span></span>
+<span data-ttu-id="cf4c3-115">Приложения ASP.NET Core загружают компоненты из <xref:System.Web.WebPages.ApplicationPart>.</span><span class="sxs-lookup"><span data-stu-id="cf4c3-115">ASP.NET Core apps load features from <xref:System.Web.WebPages.ApplicationPart>.</span></span> <span data-ttu-id="cf4c3-116">Класс <xref:Microsoft.AspNetCore.Mvc.ApplicationParts.AssemblyPart> представляет часть приложения, поддерживаемую сборкой.</span><span class="sxs-lookup"><span data-stu-id="cf4c3-116">The <xref:Microsoft.AspNetCore.Mvc.ApplicationParts.AssemblyPart> class represents an application part that's backed by an assembly.</span></span>
 
-```csharp
-// create an assembly part from a class's assembly
-var assembly = typeof(Startup).GetTypeInfo().Assembly;
-services.AddMvc()
-    .AddApplicationPart(assembly);
+## <a name="load-aspnet-core-features"></a><span data-ttu-id="cf4c3-117">Загрузка компонентов ASP.NET Core</span><span class="sxs-lookup"><span data-stu-id="cf4c3-117">Load ASP.NET Core features</span></span>
 
-// OR
-var assembly = typeof(Startup).GetTypeInfo().Assembly;
-var part = new AssemblyPart(assembly);
-services.AddMvc()
-    .ConfigureApplicationPartManager(apm => apm.ApplicationParts.Add(part));
+<span data-ttu-id="cf4c3-118">Используйте классы `ApplicationPart` и `AssemblyPart` для обнаружения и загрузки компонентов ASP.NET Core (контроллеры, компоненты представления и т. д.).</span><span class="sxs-lookup"><span data-stu-id="cf4c3-118">Use the `ApplicationPart` and `AssemblyPart` classes to discover and load ASP.NET Core features (controllers, view components, etc.).</span></span> <span data-ttu-id="cf4c3-119"><xref:Microsoft.AspNetCore.Mvc.ApplicationParts.ApplicationPartManager> отслеживает доступные части приложения и поставщики компонентов.</span><span class="sxs-lookup"><span data-stu-id="cf4c3-119">The <xref:Microsoft.AspNetCore.Mvc.ApplicationParts.ApplicationPartManager> tracks the application parts and feature providers available.</span></span> <span data-ttu-id="cf4c3-120">Функция `ApplicationPartManager` настраивается в `Startup.ConfigureServices`.</span><span class="sxs-lookup"><span data-stu-id="cf4c3-120">`ApplicationPartManager` is configured in `Startup.ConfigureServices`:</span></span>
+
+[!code-csharp[](./app-parts/sample1/WebAppParts/Startup.cs?name=snippet)]
+
+<span data-ttu-id="cf4c3-121">Следующий код предоставляет альтернативный подход к настройке `ApplicationPartManager` с использованием `AssemblyPart`:</span><span class="sxs-lookup"><span data-stu-id="cf4c3-121">The following code provides an alternative approach to configuring `ApplicationPartManager` using `AssemblyPart`:</span></span>
+
+[!code-csharp[](./app-parts/sample1/WebAppParts/Startup2.cs?name=snippet)]
+
+<span data-ttu-id="cf4c3-122">Предыдущие два примера кода загружают `SharedController` из сборки.</span><span class="sxs-lookup"><span data-stu-id="cf4c3-122">The preceding two code samples load the `SharedController` from an assembly.</span></span> <span data-ttu-id="cf4c3-123">`SharedController` не находится в проекте приложения.</span><span class="sxs-lookup"><span data-stu-id="cf4c3-123">The `SharedController` is not in the application's project.</span></span> <span data-ttu-id="cf4c3-124">См. пример [решения WebAppParts](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/advanced/app-parts/sample1/WebAppParts) для загрузки.</span><span class="sxs-lookup"><span data-stu-id="cf4c3-124">See the [WebAppParts solution](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/advanced/app-parts/sample1/WebAppParts) sample download.</span></span>
+
+### <a name="include-views"></a><span data-ttu-id="cf4c3-125">Включение представлений</span><span class="sxs-lookup"><span data-stu-id="cf4c3-125">Include views</span></span>
+
+<span data-ttu-id="cf4c3-126">Чтобы включить представления в сборку, выполните следующие действия.</span><span class="sxs-lookup"><span data-stu-id="cf4c3-126">To include views in the assembly:</span></span>
+
+* <span data-ttu-id="cf4c3-127">Добавьте следующую разметку в файл общего проекта:</span><span class="sxs-lookup"><span data-stu-id="cf4c3-127">Add the following markup to the shared project file:</span></span>
+
+  ```csproj
+  <ItemGroup>
+      <EmbeddedResource Include="Views\**\*.cshtml" />
+  </ItemGroup>
+  ```
+
+* <span data-ttu-id="cf4c3-128">Добавьте <xref:Microsoft.Extensions.FileProviders.EmbeddedFileProvider> в <xref:Microsoft.AspNetCore.Mvc.Razor.RazorViewEngine>:</span><span class="sxs-lookup"><span data-stu-id="cf4c3-128">Add the <xref:Microsoft.Extensions.FileProviders.EmbeddedFileProvider> to the <xref:Microsoft.AspNetCore.Mvc.Razor.RazorViewEngine>:</span></span>
+
+  [!code-csharp[](./app-parts/sample1/WebAppParts/StartupViews.cs?name=snippet&highlight=3-7)]
+
+### <a name="prevent-loading-resources"></a><span data-ttu-id="cf4c3-129">Запрет загрузки ресурсов</span><span class="sxs-lookup"><span data-stu-id="cf4c3-129">Prevent loading resources</span></span>
+
+<span data-ttu-id="cf4c3-130">Части приложения можно использовать для *запрета* загрузки ресурсов в определенной сборке или расположении.</span><span class="sxs-lookup"><span data-stu-id="cf4c3-130">Application parts can be used to *avoid* loading resources in a particular assembly or location.</span></span> <span data-ttu-id="cf4c3-131">Добавьте или удалите элементы коллекции <xref:Microsoft.AspNetCore.Mvc.ApplicationParts>, чтобы скрыть ресурсы или сделать их доступными.</span><span class="sxs-lookup"><span data-stu-id="cf4c3-131">Add or remove members of the  <xref:Microsoft.AspNetCore.Mvc.ApplicationParts> collection to hide or make available resources.</span></span> <span data-ttu-id="cf4c3-132">Порядок записей в коллекции `ApplicationParts` не имеет значения.</span><span class="sxs-lookup"><span data-stu-id="cf4c3-132">The order of the entries in the `ApplicationParts` collection isn't important.</span></span> <span data-ttu-id="cf4c3-133">Настройте класс `ApplicationPartManager` перед его использованием для конфигурации служб в контейнере.</span><span class="sxs-lookup"><span data-stu-id="cf4c3-133">Configure the `ApplicationPartManager` before using it to configure services in the container.</span></span> <span data-ttu-id="cf4c3-134">Например, настройте класс `ApplicationPartManager` перед вызовом метода `AddControllersAsServices`.</span><span class="sxs-lookup"><span data-stu-id="cf4c3-134">For example, configure the `ApplicationPartManager` before invoking `AddControllersAsServices`.</span></span> <span data-ttu-id="cf4c3-135">Вызовите метод `Remove` в коллекции `ApplicationParts`, чтобы удалить ресурс.</span><span class="sxs-lookup"><span data-stu-id="cf4c3-135">Call `Remove` on the `ApplicationParts` collection to remove a resource.</span></span>
+
+<span data-ttu-id="cf4c3-136">В следующем коде для удаления `MyDependentLibrary` из приложения используется <xref:Microsoft.AspNetCore.Mvc.ApplicationParts>: [!code-csharp[](./app-parts/sample1/WebAppParts/StartupRm.cs?name=snippet)]</span><span class="sxs-lookup"><span data-stu-id="cf4c3-136">The following code uses <xref:Microsoft.AspNetCore.Mvc.ApplicationParts> to remove `MyDependentLibrary` from the app: [!code-csharp[](./app-parts/sample1/WebAppParts/StartupRm.cs?name=snippet)]</span></span>
+
+<span data-ttu-id="cf4c3-137">`ApplicationPartManager` содержит части для:</span><span class="sxs-lookup"><span data-stu-id="cf4c3-137">The `ApplicationPartManager` includes parts for:</span></span>
+
+* <span data-ttu-id="cf4c3-138">сборки приложения и зависимых сборок;</span><span class="sxs-lookup"><span data-stu-id="cf4c3-138">The app's assembly and dependent assemblies.</span></span>
+* <span data-ttu-id="cf4c3-139">`Microsoft.AspNetCore.Mvc.TagHelpers`.</span><span class="sxs-lookup"><span data-stu-id="cf4c3-139">`Microsoft.AspNetCore.Mvc.TagHelpers`.</span></span>
+* <span data-ttu-id="cf4c3-140">`Microsoft.AspNetCore.Mvc.Razor`.</span><span class="sxs-lookup"><span data-stu-id="cf4c3-140">`Microsoft.AspNetCore.Mvc.Razor`.</span></span>
+
+## <a name="application-feature-providers"></a><span data-ttu-id="cf4c3-141">Поставщики компонентов приложений</span><span class="sxs-lookup"><span data-stu-id="cf4c3-141">Application feature providers</span></span>
+
+<span data-ttu-id="cf4c3-142">Поставщики компонентов приложений проверяют части приложения и предоставляют для них компоненты.</span><span class="sxs-lookup"><span data-stu-id="cf4c3-142">Application feature providers examine application parts and provide features for those parts.</span></span> <span data-ttu-id="cf4c3-143">Доступны встроенные поставщики компонентов для следующих компонентов ASP.NET Core:</span><span class="sxs-lookup"><span data-stu-id="cf4c3-143">There are built-in feature providers for the following ASP.NET Core features:</span></span>
+
+* [<span data-ttu-id="cf4c3-144">Контроллеры</span><span class="sxs-lookup"><span data-stu-id="cf4c3-144">Controllers</span></span>](/dotnet/api/microsoft.aspnetcore.mvc.controllers.controllerfeatureprovider)
+* [<span data-ttu-id="cf4c3-145">Вспомогательные функции тегов</span><span class="sxs-lookup"><span data-stu-id="cf4c3-145">Tag Helpers</span></span>](/dotnet/api/microsoft.aspnetcore.mvc.razor.taghelpers.taghelperfeatureprovider)
+* [<span data-ttu-id="cf4c3-146">Компоненты представлений</span><span class="sxs-lookup"><span data-stu-id="cf4c3-146">View Components</span></span>](/dotnet/api/microsoft.aspnetcore.mvc.viewcomponents.viewcomponentfeatureprovider)
+
+<span data-ttu-id="cf4c3-147">Поставщики компонентов наследуют от <xref:Microsoft.AspNetCore.Mvc.ApplicationParts.IApplicationFeatureProvider`1>, где `T` является типом компонента.</span><span class="sxs-lookup"><span data-stu-id="cf4c3-147">Feature providers inherit from <xref:Microsoft.AspNetCore.Mvc.ApplicationParts.IApplicationFeatureProvider`1>, where `T` is the type of the feature.</span></span> <span data-ttu-id="cf4c3-148">Поставщики компонентов можно реализовать для любого из перечисленных выше типов компонентов.</span><span class="sxs-lookup"><span data-stu-id="cf4c3-148">Feature providers can be implemented for any of the previously listed feature types.</span></span> <span data-ttu-id="cf4c3-149">Порядок поставщиков компонентов в `ApplicationPartManager.FeatureProviders` может повлиять на поведение во время выполнения.</span><span class="sxs-lookup"><span data-stu-id="cf4c3-149">The order of feature providers in the `ApplicationPartManager.FeatureProviders` can impact run time behavior.</span></span> <span data-ttu-id="cf4c3-150">Поставщики, добавленные позднее, могут реагировать на действия, выполняемые ранее добавленными поставщиками.</span><span class="sxs-lookup"><span data-stu-id="cf4c3-150">Later added providers can react to actions taken by earlier added providers.</span></span>
+
+### <a name="generic-controller-feature"></a><span data-ttu-id="cf4c3-151">компонент универсального контроллера</span><span class="sxs-lookup"><span data-stu-id="cf4c3-151">Generic controller feature</span></span>
+
+<span data-ttu-id="cf4c3-152">ASP.NET Core игнорирует [универсальные контроллеры](/dotnet/csharp/programming-guide/generics/generic-classes).</span><span class="sxs-lookup"><span data-stu-id="cf4c3-152">ASP.NET Core ignores [generic controllers](/dotnet/csharp/programming-guide/generics/generic-classes).</span></span> <span data-ttu-id="cf4c3-153">Универсальный контроллер содержит параметр типа (например, `MyController<T>`).</span><span class="sxs-lookup"><span data-stu-id="cf4c3-153">A generic controller has a type parameter (for example, `MyController<T>`).</span></span> <span data-ttu-id="cf4c3-154">В следующем примере добавляются экземпляры универсального контроллера для указанного списка типов:</span><span class="sxs-lookup"><span data-stu-id="cf4c3-154">The following sample adds generic controller instances for a specified list of types:</span></span>
+
+[!code-csharp[](./app-parts/sample2/AppPartsSample/GenericControllerFeatureProvider.cs?name=snippet)]
+
+<span data-ttu-id="cf4c3-155">Типы определены в файле `EntityTypes.Types`.</span><span class="sxs-lookup"><span data-stu-id="cf4c3-155">The types are defined in `EntityTypes.Types`:</span></span>
+
+[!code-csharp[](./app-parts/sample2/AppPartsSample/Models/EntityTypes.cs?name=snippet)]
+
+<span data-ttu-id="cf4c3-156">Поставщик компонентов добавляется в `Startup`:</span><span class="sxs-lookup"><span data-stu-id="cf4c3-156">The feature provider is added in `Startup`:</span></span>
+
+[!code-csharp[](./app-parts/sample2/AppPartsSample/Startup.cs?name=snippet)]
+
+<span data-ttu-id="cf4c3-157">Имена универсальных контроллеров, используемых для маршрутизации, будут иметь вид *GenericController\`1[Widget]* вместо *Widget*.</span><span class="sxs-lookup"><span data-stu-id="cf4c3-157">Generic controller names used for routing are of the form *GenericController\`1[Widget]* rather than *Widget*.</span></span> <span data-ttu-id="cf4c3-158">Для изменения имени в соответствии с универсальным типом, используемым контроллером, применяется следующий атрибут:</span><span class="sxs-lookup"><span data-stu-id="cf4c3-158">The following attribute modifies the name to correspond to the generic type used by the controller:</span></span>
+
+[!code-csharp[](./app-parts/sample2/AppPartsSample/GenericControllerNameConvention.cs)]
+
+<span data-ttu-id="cf4c3-159">Класс `GenericController`:</span><span class="sxs-lookup"><span data-stu-id="cf4c3-159">The `GenericController` class:</span></span>
+
+[!code-csharp[](./app-parts/sample2/AppPartsSample/GenericController.cs)]
+
+<span data-ttu-id="cf4c3-160">Например, запрос URL-адреса `https://localhost:5001/Sprocket` приводит к следующему ответу:</span><span class="sxs-lookup"><span data-stu-id="cf4c3-160">For example, requesting a URL of `https://localhost:5001/Sprocket` results in the following response:</span></span>
+
+```text
+Hello from a generic Sprocket controller.
 ```
 
-<span data-ttu-id="1200f-115">По умолчанию MVC выполняет поиск в дереве зависимостей и находит контроллеры (даже в других сборках).</span><span class="sxs-lookup"><span data-stu-id="1200f-115">By default MVC will search the dependency tree and find controllers (even in other assemblies).</span></span> <span data-ttu-id="1200f-116">Часть приложения можно использовать для загрузки произвольной сборки (например, из подключаемого модуля, который не указывается во время компиляции).</span><span class="sxs-lookup"><span data-stu-id="1200f-116">To load an arbitrary assembly (for instance, from a plugin that isn't referenced at compile time), you can use an application part.</span></span>
+### <a name="display-available-features"></a><span data-ttu-id="cf4c3-161">отображение доступных компонентов</span><span class="sxs-lookup"><span data-stu-id="cf4c3-161">Display available features</span></span>
 
-<span data-ttu-id="1200f-117">С помощью частей приложения можно *запретить* поиск контроллеров в конкретной сборке или расположении.</span><span class="sxs-lookup"><span data-stu-id="1200f-117">You can use application parts to *avoid* looking for controllers in a particular assembly or location.</span></span> <span data-ttu-id="1200f-118">Чтобы контролировать части (или сборки), доступные для приложения, следует изменить коллекцию `ApplicationParts` класса `ApplicationPartManager`.</span><span class="sxs-lookup"><span data-stu-id="1200f-118">You can control which parts (or assemblies) are available to the app by modifying the `ApplicationParts` collection of the `ApplicationPartManager`.</span></span> <span data-ttu-id="1200f-119">Порядок записей в коллекции `ApplicationParts` не имеет значения.</span><span class="sxs-lookup"><span data-stu-id="1200f-119">The order of the entries in the `ApplicationParts` collection isn't important.</span></span> <span data-ttu-id="1200f-120">Очень важно полностью настроить класс `ApplicationPartManager` перед его использованием для конфигурации служб в контейнере.</span><span class="sxs-lookup"><span data-stu-id="1200f-120">It's important to fully configure the `ApplicationPartManager` before using it to configure services in the container.</span></span> <span data-ttu-id="1200f-121">Например, необходимо полностью настроить класс `ApplicationPartManager` перед вызовом метода `AddControllersAsServices`.</span><span class="sxs-lookup"><span data-stu-id="1200f-121">For example, you should fully configure the `ApplicationPartManager` before invoking `AddControllersAsServices`.</span></span> <span data-ttu-id="1200f-122">В противном случае контроллеры в частях приложения, добавленные после вызова этого метода, не будут затронуты (не будут зарегистрированы как службы), что может привести к неправильной работе приложения.</span><span class="sxs-lookup"><span data-stu-id="1200f-122">Failing to do so, will mean that controllers in application parts added after that method call won't be affected (won't get registered as services) which might result in incorrect behavior of your application.</span></span>
+<span data-ttu-id="cf4c3-162">Компоненты, доступные для приложения, можно перечислить путем запроса `ApplicationPartManager` с помощью [внедрения зависимостей](../../fundamentals/dependency-injection.md):</span><span class="sxs-lookup"><span data-stu-id="cf4c3-162">The features available to an app can be enumerated by requesting an `ApplicationPartManager` through [dependency injection](../../fundamentals/dependency-injection.md):</span></span>
 
-<span data-ttu-id="1200f-123">Если у вас есть сборка, содержащая контроллеры, которые не требуется использовать, удалите ее из `ApplicationPartManager`:</span><span class="sxs-lookup"><span data-stu-id="1200f-123">If you have an assembly that contains controllers you don't want to be used, remove it from the `ApplicationPartManager`:</span></span>
+[!code-csharp[](./app-parts/sample2/AppPartsSample/Controllers/FeaturesController.cs?highlight=16,25-27)]
 
-```csharp
-services.AddMvc()
-    .ConfigureApplicationPartManager(apm =>
-    {
-        var dependentLibrary = apm.ApplicationParts
-            .FirstOrDefault(part => part.Name == "DependentLibrary");
+<span data-ttu-id="cf4c3-163">В [примере для скачивания](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/advanced/app-parts/sample2) используется приведенный выше код для отображения компонентов приложения:</span><span class="sxs-lookup"><span data-stu-id="cf4c3-163">The [download sample](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/advanced/app-parts/sample2) uses the preceding code to display the app features:</span></span>
 
-        if (dependentLibrary != null)
-        {
-           apm.ApplicationParts.Remove(dependentLibrary);
-        }
-    })
+```text
+Controllers:
+    - FeaturesController
+    - HomeController
+    - HelloController
+    - GenericController`1
+    - GenericController`1
+Tag Helpers:
+    - PrerenderTagHelper
+    - AnchorTagHelper
+    - CacheTagHelper
+    - DistributedCacheTagHelper
+    - EnvironmentTagHelper
+    - Additional Tag Helpers omitted for brevity.
+View Components:
+    - SampleViewComponent
 ```
-
-<span data-ttu-id="1200f-124">Помимо сборки проекта и зависимых сборок, `ApplicationPartManager` будет содержать части для `Microsoft.AspNetCore.Mvc.TagHelpers` и `Microsoft.AspNetCore.Mvc.Razor` по умолчанию.</span><span class="sxs-lookup"><span data-stu-id="1200f-124">In addition to your project's assembly and its dependent assemblies, the `ApplicationPartManager` will include parts for `Microsoft.AspNetCore.Mvc.TagHelpers` and `Microsoft.AspNetCore.Mvc.Razor` by default.</span></span>
-
-## <a name="application-feature-providers"></a><span data-ttu-id="1200f-125">Поставщики компонентов приложений</span><span class="sxs-lookup"><span data-stu-id="1200f-125">Application Feature Providers</span></span>
-
-<span data-ttu-id="1200f-126">Поставщики компонентов приложений проверяют части приложения и предоставляют для них компоненты.</span><span class="sxs-lookup"><span data-stu-id="1200f-126">Application Feature Providers examine application parts and provide features for those parts.</span></span> <span data-ttu-id="1200f-127">Доступны встроенные поставщики компонентов для следующих компонентов MVC:</span><span class="sxs-lookup"><span data-stu-id="1200f-127">There are built-in feature providers for the following MVC features:</span></span>
-
-* [<span data-ttu-id="1200f-128">Контроллеры</span><span class="sxs-lookup"><span data-stu-id="1200f-128">Controllers</span></span>](/dotnet/api/microsoft.aspnetcore.mvc.controllers.controllerfeatureprovider)
-* [<span data-ttu-id="1200f-129">Ссылка на метаданные</span><span class="sxs-lookup"><span data-stu-id="1200f-129">Metadata Reference</span></span>](/dotnet/api/microsoft.aspnetcore.mvc.razor.compilation.metadatareferencefeatureprovider)
-* [<span data-ttu-id="1200f-130">Вспомогательные функции тегов</span><span class="sxs-lookup"><span data-stu-id="1200f-130">Tag Helpers</span></span>](/dotnet/api/microsoft.aspnetcore.mvc.razor.taghelpers.taghelperfeatureprovider)
-* [<span data-ttu-id="1200f-131">Компоненты представлений</span><span class="sxs-lookup"><span data-stu-id="1200f-131">View Components</span></span>](/dotnet/api/microsoft.aspnetcore.mvc.viewcomponents.viewcomponentfeatureprovider)
-
-<span data-ttu-id="1200f-132">Поставщики компонентов наследуют от `IApplicationFeatureProvider<T>`, где `T` является типом компонента.</span><span class="sxs-lookup"><span data-stu-id="1200f-132">Feature providers inherit from `IApplicationFeatureProvider<T>`, where `T` is the type of the feature.</span></span> <span data-ttu-id="1200f-133">Для всех перечисленных выше типов компонентов MVC можно реализовать собственные поставщики.</span><span class="sxs-lookup"><span data-stu-id="1200f-133">You can implement your own feature providers for any of MVC's feature types listed above.</span></span> <span data-ttu-id="1200f-134">Порядок поставщиков компонентов в коллекции `ApplicationPartManager.FeatureProviders` имеет важное значение, поскольку поставщики более поздних версий способны реагировать на действия поставщиков предыдущих версий.</span><span class="sxs-lookup"><span data-stu-id="1200f-134">The order of feature providers in the `ApplicationPartManager.FeatureProviders` collection can be important, since later providers can react to actions taken by previous providers.</span></span>
-
-### <a name="sample-generic-controller-feature"></a><span data-ttu-id="1200f-135">Пример: компонент универсального контроллера</span><span class="sxs-lookup"><span data-stu-id="1200f-135">Sample: Generic controller feature</span></span>
-
-<span data-ttu-id="1200f-136">По умолчанию ASP.NET Core MVC игнорирует универсальные контроллеры (например, `SomeController<T>`).</span><span class="sxs-lookup"><span data-stu-id="1200f-136">By default, ASP.NET Core MVC ignores generic controllers (for example, `SomeController<T>`).</span></span> <span data-ttu-id="1200f-137">В этом примере используется поставщик компонентов контроллера, который запускается после поставщика по умолчанию и добавляет экземпляры универсального контроллера для указанного списка типов (определенного в `EntityTypes.Types`):</span><span class="sxs-lookup"><span data-stu-id="1200f-137">This sample uses a controller feature provider that runs after the default provider and adds generic controller instances for a specified list of types (defined in `EntityTypes.Types`):</span></span>
-
-[!code-csharp[](./app-parts/sample/AppPartsSample/GenericControllerFeatureProvider.cs?highlight=13&range=18-36)]
-
-<span data-ttu-id="1200f-138">Типы сущностей:</span><span class="sxs-lookup"><span data-stu-id="1200f-138">The entity types:</span></span>
-
-[!code-csharp[](./app-parts/sample/AppPartsSample/Model/EntityTypes.cs?range=6-16)]
-
-<span data-ttu-id="1200f-139">Поставщик компонентов добавляется в `Startup`:</span><span class="sxs-lookup"><span data-stu-id="1200f-139">The feature provider is added in `Startup`:</span></span>
-
-```csharp
-services.AddMvc()
-    .ConfigureApplicationPartManager(apm => 
-        apm.FeatureProviders.Add(new GenericControllerFeatureProvider()));
-```
-
-<span data-ttu-id="1200f-140">По умолчанию имена универсальных контроллеров, используемых для маршрутизации, будут иметь вид *GenericController\`1[Widget]* вместо *Widget*.</span><span class="sxs-lookup"><span data-stu-id="1200f-140">By default, the generic controller names used for routing would be of the form *GenericController\`1[Widget]* instead of *Widget*.</span></span> <span data-ttu-id="1200f-141">Для изменения имени в соответствии с универсальным типом, используемым контроллером, применяется следующий атрибут:</span><span class="sxs-lookup"><span data-stu-id="1200f-141">The following attribute is used to modify the name to correspond to the generic type used by the controller:</span></span>
-
-[!code-csharp[](./app-parts/sample/AppPartsSample/GenericControllerNameConvention.cs)]
-
-<span data-ttu-id="1200f-142">Класс `GenericController`:</span><span class="sxs-lookup"><span data-stu-id="1200f-142">The `GenericController` class:</span></span>
-
-[!code-csharp[](./app-parts/sample/AppPartsSample/GenericController.cs?highlight=5-6)]
-
-<span data-ttu-id="1200f-143">При запросе совпадающего маршрута выводится следующий результат:</span><span class="sxs-lookup"><span data-stu-id="1200f-143">The result, when a matching route is requested:</span></span>
-
-![Пример выходных данных из примера приложения: "Hello from a generic Sproket controller".](app-parts/_static/generic-controller.png)
-
-### <a name="sample-display-available-features"></a><span data-ttu-id="1200f-145">Пример: отображение доступных компонентов</span><span class="sxs-lookup"><span data-stu-id="1200f-145">Sample: Display available features</span></span>
-
-<span data-ttu-id="1200f-146">Для итерации по заполненным компонентам, доступным для приложения, можно запросить класс `ApplicationPartManager` через [внедрение зависимостей](../../fundamentals/dependency-injection.md) и использовать его для заполнения экземпляров соответствующих компонентов:</span><span class="sxs-lookup"><span data-stu-id="1200f-146">You can iterate through the populated features available to your app by requesting an `ApplicationPartManager` through [dependency injection](../../fundamentals/dependency-injection.md) and using it to populate instances of the appropriate features:</span></span>
-
-[!code-csharp[](./app-parts/sample/AppPartsSample/Controllers/FeaturesController.cs?highlight=16,25-27)]
-
-<span data-ttu-id="1200f-147">Пример выходных данных:</span><span class="sxs-lookup"><span data-stu-id="1200f-147">Example output:</span></span>
-
-![Пример выходных данных из примера приложения](app-parts/_static/available-features.png)
