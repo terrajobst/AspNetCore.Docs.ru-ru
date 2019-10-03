@@ -7,12 +7,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 09/09/2019
 uid: host-and-deploy/windows-service
-ms.openlocfilehash: 995fdd2bbba30ff983bc2055fcb97c14541e2ac6
-ms.sourcegitcommit: 215954a638d24124f791024c66fd4fb9109fd380
+ms.openlocfilehash: 544037a2a1f836e51b4f10551316312ef55c68da
+ms.sourcegitcommit: fe88748b762525cb490f7e39089a4760f6a73a24
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71081481"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71688087"
 ---
 # <a name="host-aspnet-core-in-a-windows-service"></a>Размещение ASP.NET Core в службе Windows
 
@@ -36,21 +36,7 @@ ms.locfileid: "71081481"
 1. Создайте приложение службы рабочей роли на основе шаблона .NET Core.
 1. Согласно указаниям в разделе [Конфигурация приложения](#app-configuration) измените приложение службы рабочей роли так, чтобы оно могло выполняться как служба Windows.
 
-# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
-
-1. Создайте новый проект.
-1. Выберите **Новое веб-приложение ASP.NET Core**. Выберите **Далее**.
-1. В поле **Имя проекта** укажите имя проекта или оставьте имя по умолчанию. Выберите **Создать**.
-1. В диалоговом окне **Создание веб-приложения ASP.NET Core** убедитесь в том, что выбраны платформы **.NET Core** и **ASP.NET Core 3.0**.
-1. Выберите шаблон **Служба рабочей роли**. Выберите **Создать**.
-
-# <a name="net-core-clitabnetcore-cli"></a>[Интерфейс командной строки .NET Core](#tab/netcore-cli)
-
-Используйте шаблон службы рабочей роли (`worker`) с командой [dotnet new](/dotnet/core/tools/dotnet-new) из командной оболочки. В приведенном ниже примере создается приложение службы рабочей роли с именем `ContosoWorkerService`. Папка для приложения `ContosoWorkerService` создается автоматически при выполнении команды.
-
-```dotnetcli
-dotnet new worker -o ContosoWorkerService
-```
+[!INCLUDE[](~/includes/worker-template-instructions.md)]
 
 ---
 

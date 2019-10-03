@@ -6,12 +6,12 @@ ms.author: scaddie
 ms.custom: mvc
 ms.date: 06/21/2019
 uid: tutorials/get-started-with-nswag
-ms.openlocfilehash: cdaa5aff3007030c70bc959bbf07903bdf39e736
-ms.sourcegitcommit: 215954a638d24124f791024c66fd4fb9109fd380
+ms.openlocfilehash: 5e62a8cc50947969d42981350b65a24781929d62
+ms.sourcegitcommit: fe88748b762525cb490f7e39089a4760f6a73a24
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71082433"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71691186"
 ---
 # <a name="get-started-with-nswag-and-aspnet-core"></a>Начало работы с NSwag и ASP.NET Core
 
@@ -104,7 +104,7 @@ dotnet add TodoApi.csproj package NSwag.AspNetCore
 * [NSwagStudio](https://github.com/RicoSuter/NSwag/wiki/NSwagStudio) — это классическое приложение Windows для создания клиентского кода API на C# или TypeScript.
 * Пакеты NuGet [NSwag.CodeGeneration.CSharp](https://www.nuget.org/packages/NSwag.CodeGeneration.CSharp/) или [NSwag.CodeGeneration.TypeScript](https://www.nuget.org/packages/NSwag.CodeGeneration.TypeScript/) для создания кода внутри проекта.
 * NSwag из [командной строки](https://github.com/RicoSuter/NSwag/wiki/CommandLine).
-* Пакет NuGet [NSwag.MSBuild](https://github.com/RicoSuter/NSwag/wiki/MSBuild).
+* Пакет NuGet [NSwag.MSBuild](https://github.com/RicoSuter/NSwag/wiki/NSwag.MSBuild).
 * [Подключенная служба Unchase OpenAPI (Swagger)](https://marketplace.visualstudio.com/items?itemName=Unchase.unchaseopenapiconnectedservice) &ndash; — это подключенная служба Visual Studio для создания клиентского кода API на C# или TypeScript. Она также создает контроллеры C# для служб OpenAPI с NSwag.
 
 ### <a name="generate-code-with-nswagstudio"></a>Создание кода с помощью NSwagStudio
