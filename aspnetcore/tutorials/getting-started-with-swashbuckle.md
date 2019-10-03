@@ -6,12 +6,12 @@ ms.author: scaddie
 ms.custom: mvc
 ms.date: 08/21/2019
 uid: tutorials/get-started-with-swashbuckle
-ms.openlocfilehash: f538b06d2245400e234dadc2fd93c8aef94743ff
-ms.sourcegitcommit: 215954a638d24124f791024c66fd4fb9109fd380
+ms.openlocfilehash: b96d15e732b78fd834e16347739b5a3a2ba2e98d
+ms.sourcegitcommit: e644258c95dd50a82284f107b9bf3becbc43b2b2
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71081212"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71317785"
 ---
 # <a name="get-started-with-swashbuckle-and-aspnet-core"></a>Начало работы с Swashbuckle и ASP.NET Core
 
@@ -39,7 +39,7 @@ Swashbuckle можно добавить одним из описанных ни�
   * Выполните следующую команду:
 
     ```powershell
-    Install-Package Swashbuckle.AspNetCore -Version 5.0.0-rc2
+    Install-Package Swashbuckle.AspNetCore -Version 5.0.0-rc3
     ```
 
 * В диалоговом окне **Управление пакетами NuGet**
@@ -57,12 +57,12 @@ Swashbuckle можно добавить одним из описанных ни�
 * В поле поиска введите "Swashbuckle.AspNetCore".
 * В области результатов выберите последний пакет Swashbuckle.AspNetCore и нажмите кнопку **Добавить пакет**.
 
-### <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code.](#tab/visual-studio-code)
+### <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
 Во **встроенном терминале** выполните следующую команду.
 
 ```dotnetcli
-dotnet add TodoApi.csproj package Swashbuckle.AspNetCore -v 5.0.0-rc2
+dotnet add TodoApi.csproj package Swashbuckle.AspNetCore -v 5.0.0-rc3
 ```
 
 ### <a name="net-core-clitabnetcore-cli"></a>[Интерфейс командной строки .NET Core](#tab/netcore-cli)
@@ -70,7 +70,7 @@ dotnet add TodoApi.csproj package Swashbuckle.AspNetCore -v 5.0.0-rc2
 Выполните следующую команду:
 
 ```dotnetcli
-dotnet add TodoApi.csproj package Swashbuckle.AspNetCore -v 5.0.0-rc2
+dotnet add TodoApi.csproj package Swashbuckle.AspNetCore -v 5.0.0-rc3
 ```
 
 ---
@@ -190,7 +190,7 @@ XML-комментарии можно включить следующим обр
 
 ::: moniker-end
 
-#### <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code.](#tab/visual-studio-code)
+#### <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
 Вручную добавьте выделенные строки в файл *.csproj*:
 
