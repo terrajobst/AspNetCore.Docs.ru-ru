@@ -5,14 +5,14 @@ description: Узнайте, как реализовать фоновые зад
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 09/18/2019
+ms.date: 09/26/2019
 uid: fundamentals/host/hosted-services
-ms.openlocfilehash: 8df86b10d7ba853edb3265df0e02eabbf8a2c058
-ms.sourcegitcommit: fa61d882be9d0c48bd681f2efcb97e05522051d0
+ms.openlocfilehash: 0eaa3a62370c1e413840bb65f597dc664adafc38
+ms.sourcegitcommit: fe88748b762525cb490f7e39089a4760f6a73a24
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71205715"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71688100"
 ---
 # <a name="background-tasks-with-hosted-services-in-aspnet-core"></a>Фоновые задачи с размещенными службами в ASP.NET Core
 
@@ -37,29 +37,7 @@ ms.locfileid: "71205715"
 
 Шаблон службы рабочей роли ASP.NET Core может служить отправной точкой для написания длительно выполняющихся приложений служб. Чтобы использовать шаблон в качестве основы для приложения размещенных служб, выполните указанные ниже действия.
 
-# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
-
-1. Создайте новый проект.
-1. Выберите **Новое веб-приложение ASP.NET Core**. Выберите **Далее**.
-1. В поле **Имя проекта** укажите имя проекта или оставьте имя по умолчанию. Выберите **Создать**.
-1. В диалоговом окне **Создание веб-приложения ASP.NET Core** убедитесь в том, что выбраны платформы **.NET Core** и **ASP.NET Core 3.0**.
-1. Выберите шаблон **Служба рабочей роли**. Выберите **Создать**.
-
-# <a name="visual-studio-for-mactabvisual-studio-mac"></a>[Visual Studio для Mac](#tab/visual-studio-mac)
-
-1. Создайте новый проект.
-1. В разделе **.NET Core** на боковой панели выберите **Приложение**.
-1. В разделе **ASP.NET Core** выберите **Рабочая роль**. Выберите **Далее**.
-1. Для параметра **Требуемая версия .NET Framework** выберите **.NET Core 3.0**. Выберите **Далее**.
-1. Введите имя в поле **Имя проекта**. Выберите **Создать**.
-
-# <a name="net-core-clitabnetcore-cli"></a>[Интерфейс командной строки .NET Core](#tab/netcore-cli)
-
-Используйте шаблон службы рабочей роли (`worker`) с командой [dotnet new](/dotnet/core/tools/dotnet-new) из командной оболочки. В приведенном ниже примере создается приложение службы рабочей роли с именем `ContosoWorker`. Папка для приложения `ContosoWorker` создается автоматически при выполнении команды.
-
-```dotnetcli
-dotnet new worker -o ContosoWorker
-```
+[!INCLUDE[](~/includes/worker-template-instructions.md)]
 
 ---
 
@@ -123,10 +101,12 @@ dotnet new worker -o ContosoWorker
 
 ## <a name="backgroundservice"></a>BackgroundService
 
-`BackgroundService` — это базовый класс для реализации долго выполняющегося интерфейса <xref:Microsoft.Extensions.Hosting.IHostedService>. `BackgroundService` определяет два метода для фоновых операций:
+`BackgroundService` — это базовый класс для реализации долго выполняющегося интерфейса <xref:Microsoft.Extensions.Hosting.IHostedService>. `BackgroundService` предоставляет абстрактный метод `ExecuteAsync(CancellationToken stoppingToken)` для хранения логики службы. `stoppingToken` активируется при вызове [IHostedService.StopAsync](xref:Microsoft.Extensions.Hosting.IHostedService.StopAsync*). Реализация этого метода возвращает значение `Task`, представляющее все время существования фоновой службы.
 
-* При запуске <xref:Microsoft.Extensions.Hosting.IHostedService> вызывается `ExecuteAsync(CancellationToken stoppingToken)` &ndash; `ExecuteAsync`. Реализация должна возвращать значение `Task`, представляющее время существования длительно выполняемых операций. `stoppingToken` активируется при вызове [IHostedService.StopAsync](xref:Microsoft.Extensions.Hosting.IHostedService.StopAsync*).
-* `StopAsync(CancellationToken stoppingToken)` &ndash; `StopAsync` запускается, когда происходит нормальное завершение работы узла приложения. `stoppingToken` указывает, что процесс завершения работы больше не должен быть корректным.
+Кроме того, *в необязательном порядке* переопределяет методы, определенные в `IHostedService`, чтобы запустить код запуска и завершения работы службы:
+
+* `StopAsync(CancellationToken cancellationToken)` &ndash; `StopAsync` вызывается, когда происходит нормальное завершение работы узла приложения. `cancellationToken` возвращается, когда узел решает принудительно завершить работу службы. Если этот метод переопределен, вы **должны** вызвать (и `await`) метод базового класса, чтобы обеспечить правильное завершение работы службы.
+* `StartAsync(CancellationToken cancellationToken)` &ndash; `StartAsync` вызывается для запуска фоновой службы. `cancellationToken` возвращается, если процесс запуска прерван. Реализация возвращает значение `Task`, представляющее процесс запуска службы. Никакие другие службы не запускаются до завершения этого `Task`. Если этот метод переопределен, вы **должны** вызвать (и `await`) метод базового класса, чтобы обеспечить правильный запуск службы.
 
 ## <a name="timed-background-tasks"></a>Фоновые задачи с заданным временем
 

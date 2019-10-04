@@ -4,14 +4,14 @@ author: tdykstra
 description: Из этого руководства вы узнаете, как читать и отображать связанные данные — данные, которые Entity Framework загружает в свойства навигации.
 ms.author: riande
 ms.custom: mvc
-ms.date: 07/22/2019
+ms.date: 09/28/2019
 uid: data/ef-rp/read-related-data
-ms.openlocfilehash: f53f8edef7fe8690d0e414bc094d81dc99ad198a
-ms.sourcegitcommit: 215954a638d24124f791024c66fd4fb9109fd380
+ms.openlocfilehash: 02b52dee0b661ad26cd6fa9fea08fcea3d7dd9bd
+ms.sourcegitcommit: f62014bb558ff6f8fdaef2e96cb05986e216aacd
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71082088"
+ms.lasthandoff: 09/28/2019
+ms.locfileid: "71592298"
 ---
 # <a name="razor-pages-with-ef-core-in-aspnet-core---read-related-data---6-of-8"></a>Razor Pages с EF Core в ASP.NET Core — чтение связанных данных — 6 из 8
 
@@ -77,7 +77,7 @@ ms.locfileid: "71082088"
   * Используйте класс модели `Course`.
   * Используйте существующий класс контекста вместо создания нового.
 
-# <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code.](#tab/visual-studio-code)
+# <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
 * Создайте папку *Pages/Courses*.
 
@@ -174,7 +174,7 @@ ms.locfileid: "71082088"
   * Используйте класс модели `Instructor`.
   * Используйте существующий класс контекста вместо создания нового.
 
-# <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code.](#tab/visual-studio-code)
+# <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
 * Создайте папку *Pages/Instructors*.
 
@@ -258,7 +258,7 @@ ms.locfileid: "71082088"
   }
   ```
 
-* Добавляет столбец **Courses**, содержащий курсы, которые ведет конкретный преподаватель. Подробные сведения об использовании синтаксиса Razor см. в разделе [Явные строки перехода с `@:` ](xref:mvc/views/razor#explicit-line-transition-with-).
+* Добавляет столбец **Courses**, содержащий курсы, которые ведет конкретный преподаватель. Подробные сведения об использовании синтаксиса Razor см. в разделе [Явный перенос строки](xref:mvc/views/razor#explicit-line-transition).
 
 * Добавляет код, который динамически добавляет `class="success"` к элементу `tr` выбранного преподавателя и курса. Этот параметр задает цвет фона для выделенных строк c помощью класса Bootstrap.
 
@@ -386,7 +386,7 @@ ms.locfileid: "71082088"
 
 Следуйте инструкциям в разделе [Формирование шаблона для модели Student](xref:data/ef-rp/intro#scaffold-the-student-model) и используйте `Course` для класса модели.
 
-# <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code.](#tab/visual-studio-code)
+# <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
  Выполните следующую команду:
 
@@ -473,7 +473,7 @@ ms.locfileid: "71082088"
 
 Следуйте инструкциям в разделе [Формирование шаблона для модели Student](xref:data/ef-rp/intro#scaffold-the-student-model) и используйте `Instructor` для класса модели.
 
-# <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code.](#tab/visual-studio-code)
+# <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
  Выполните следующую команду:
 
@@ -498,8 +498,8 @@ ms.locfileid: "71082088"
 
 Запрос имеет две операции включения:
 
-* `OfficeAssignment`: отображается в [представлении преподавателей](#IP).
-* `CourseAssignments`: вызывает проводимые курсы.
+* `OfficeAssignment`. отображается в [представлении преподавателей](#IP).
+* `CourseAssignments`. вызывает проводимые курсы.
 
 ### <a name="update-the-instructors-index-page"></a>Изменение страницы индекса преподавателей
 
@@ -527,7 +527,7 @@ ms.locfileid: "71082088"
   }
   ```
 
-* Добавили столбец **Courses**, отображающий курсы, которые ведет конкретный преподаватель. Подробные сведения об использовании синтаксиса Razor см. в разделе [Явный перенос строки с помощью `@:`](xref:mvc/views/razor#explicit-line-transition-with-).
+* Добавили столбец **Courses**, отображающий курсы, которые ведет конкретный преподаватель. Подробные сведения об использовании синтаксиса Razor см. в разделе [Явный перенос строки](xref:mvc/views/razor#explicit-line-transition).
 
 * Добавили код, который динамически добавляет `class="success"` к элементу `tr` выбранного преподавателя. Этот параметр задает цвет фона для выделенных строк c помощью класса Bootstrap.
 

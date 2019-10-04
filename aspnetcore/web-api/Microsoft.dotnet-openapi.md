@@ -3,31 +3,29 @@ title: Разработка приложений ASP.NET Core с использ�
 author: ryanbrandenburg
 description: Здесь демонстрируется, как добавить ссылки в файлы OpenAPI с использованием средства Microsoft.dotnet-openapi.
 ms.author: rybrande
-ms.date: 08/26/2019
+ms.date: 09/26/2019
 monikerRange: '>= aspnetcore-3.0'
 uid: web-api/Microsoft.dotnet-openapi
-ms.openlocfilehash: a9b38bb7e69744d72867bf69cecf1fa92d7c15b3
-ms.sourcegitcommit: d34b2627a69bc8940b76a949de830335db9701d3
+ms.openlocfilehash: f5eae9e871bc8efc30d500769adb845ff244a90c
+ms.sourcegitcommit: e644258c95dd50a82284f107b9bf3becbc43b2b2
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71187368"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71317778"
 ---
 # <a name="develop-aspnet-core-apps-using-openapi-tools"></a>Разработка приложений ASP.NET Core с использованием средств OpenAPI
 
 Автор: Райан Бранденбург (Ryan Brandenburg)
 
-`Microsoft.dotnet-openapi` — это глобальное средство .NET Core для управления ссылками [OpenAPI](https://github.com/OAI/OpenAPI-Specification) в рамках проекта.
+[Microsoft.dotnet-openapi](https://www.nuget.org/packages/Microsoft.dotnet-openapi) — это [глобальное средство .NET Core](/dotnet/core/tools/global-tools) для управления ссылками [OpenAPI](https://github.com/OAI/OpenAPI-Specification) в рамках проекта.
 
 ## <a name="installation"></a>Установка
 
 Чтобы установить `Microsoft.dotnet-openapi`, выполните следующую команду:
 
-```console
+```dotnetcli
 dotnet tool install -g Microsoft.dotnet-openapi
 ```
-
-`Microsoft.dotnet-openapi` — это [глобальное средство .NET Core](/dotnet/core/tools/global-tools).
 
 ## <a name="add"></a>Add
 

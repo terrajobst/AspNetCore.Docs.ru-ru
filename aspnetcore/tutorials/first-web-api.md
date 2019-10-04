@@ -4,14 +4,14 @@ author: rick-anderson
 description: Узнайте, как создать веб-API с помощью ASP.NET Core.
 ms.author: riande
 ms.custom: mvc
-ms.date: 08/27/2019
+ms.date: 09/29/2019
 uid: tutorials/first-web-api
-ms.openlocfilehash: 5e5215f246c6c7a805a4c99f485d51a2fb3c712d
-ms.sourcegitcommit: cf9ffcce4fe0b69fe795aae9ae06e99fdb18bdfc
+ms.openlocfilehash: 7bb98fe5befa8eea80885d246da31ad87d5cfc2d
+ms.sourcegitcommit: fe88748b762525cb490f7e39089a4760f6a73a24
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71306665"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71691214"
 ---
 # <a name="tutorial-create-a-web-api-with-aspnet-core"></a>Учебник. Создание веб-API с помощью ASP.NET Core
 
@@ -83,7 +83,7 @@ ms.locfileid: "71306665"
 
    ```dotnetcli
    dotnet new webapi -o TodoApi
-   cd TodoAPI
+   cd TodoApi
    dotnet add package Microsoft.EntityFrameworkCore.SqlServer
    dotnet add package Microsoft.EntityFrameworkCore.InMemory
    code -r ../TodoApi
@@ -271,9 +271,9 @@ ms.locfileid: "71306665"
 * Выберите **Контроллер API с действиями, использующий Entity Framework**, а затем выберите **Добавить**.
 * В диалоговом окне **Контроллер API с действиями, использующий Entity Framework** сделайте следующее:
 
-  * Выберите **TodoItem (TodoAPI.Models)** в поле **Класс модели**.
-  * Выберите **TodoContext (TodoAPI.Models)** в поле **Класс контекста данных**.
-  * Нажмите **Добавить**
+  * Выберите **TodoItem (TodoApi.Models)** в поле **Класс модели**.
+  * Выберите **TodoContext (TodoApi.Models)** в поле **Класс контекста данных**.
+  * Нажмите **Добавить**.
 
 # <a name="visual-studio-code--visual-studio-for-mactabvisual-studio-codevisual-studio-mac"></a>[Visual Studio Code/Visual Studio для Mac](#tab/visual-studio-code+visual-studio-mac)
 
@@ -283,7 +283,7 @@ ms.locfileid: "71306665"
 dotnet add package Microsoft.VisualStudio.Web.CodeGeneration.Design
 dotnet add package Microsoft.EntityFrameworkCore.Design
 dotnet tool install --global dotnet-aspnet-codegenerator
-dotnet aspnet-codegenerator controller -name TodoItemsController -async -api -m TodoItem -dc TodoContext  -outDir Controllers
+dotnet aspnet-codegenerator controller -name TodoItemsController -async -api -m TodoItem -dc TodoContext -outDir Controllers
 ```
 
 Предыдущие команды:
@@ -322,7 +322,7 @@ dotnet aspnet-codegenerator controller -name TodoItemsController -async -api -m 
 * Запустите веб-приложение.
 * Запустите Postman.
 * Отключение параметра **Проверка SSL-сертификата**
-* В меню **Файл > Параметры** (вкладка **Общие*) отключите параметр **Проверка SSL-сертификата**.
+* В меню **Файл** > **Параметры** (вкладка **Общие**) отключите параметр **Проверка SSL-сертификата**.
     > [!WARNING]
     > После тестирования контроллера снова включите проверку SSL-сертификата.
 
@@ -356,7 +356,7 @@ dotnet aspnet-codegenerator controller -name TodoItemsController -async -api -m 
   ![Вкладка "Заголовки" в консоли Postman](first-web-api/_static/3/create.png)
 
 * Укажите метод GET.
-* Вставьте URI (например, `https://localhost:5001/api/TodoItems/1`)
+* Вставьте URI (например, `https://localhost:5001/api/TodoItems/1`).
 * Нажмите кнопку **Отправить**.
 
 ## <a name="examine-the-get-methods"></a>Знакомство с методами GET
@@ -458,8 +458,8 @@ dotnet aspnet-codegenerator controller -name TodoItemsController -async -api -m 
 Удалите элемент списка дел с помощью Postman:
 
 * Укажите метод `DELETE`.
-* Укажите URI удаляемого объекта, например `https://localhost:5001/api/TodoItems/1`
-* Нажмите кнопку **Отправить**
+* Укажите URI удаляемого объекта (например, `https://localhost:5001/api/TodoItems/1`).
+* Нажмите кнопку **Отправить**.
 
 ## <a name="call-the-web-api-with-javascript"></a>Вызов веб-API с помощью JavaScript
 
@@ -741,10 +741,10 @@ dotnet aspnet-codegenerator controller -name TodoItemsController -async -api -m 
 
 В этом учебнике для тестирования веб-API используется Postman.
 
-* Установка [Postman](https://www.getpostman.com/downloads/)
+* Установите [Postman](https://www.getpostman.com/downloads/).
 * Запустите веб-приложение.
 * Запустите Postman.
-* Отключение параметра **Проверка SSL-сертификата**
+* Отключите параметр **Проверка SSL-сертификата**.
 
 # <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
 
@@ -813,7 +813,7 @@ dotnet aspnet-codegenerator controller -name TodoItemsController -async -api -m 
   ![Вкладка "Заголовки" в консоли Postman](first-web-api/_static/pmc2.png)
 
 * Укажите метод GET.
-* Вставьте URI (например, `https://localhost:5001/api/Todo/2`)
+* Вставьте URI (например, `https://localhost:5001/api/Todo/2`).
 * Нажмите кнопку **Отправить**.
 
 ## <a name="add-a-puttodoitem-method"></a>Добавление метода PutTodoItem
@@ -857,8 +857,8 @@ dotnet aspnet-codegenerator controller -name TodoItemsController -async -api -m 
 Удалите элемент списка дел с помощью Postman:
 
 * Укажите метод `DELETE`.
-* Укажите URI удаляемого объекта, например `https://localhost:5001/api/todo/1`
-* Нажмите кнопку **Отправить**
+* Укажите URI удаляемого объекта (например, `https://localhost:5001/api/todo/1`).
+* Нажмите кнопку **Отправить**.
 
 В этом примере приложения вы можете удалить все элементы. Однако в случае удаления последнего элемента в момент следующего вызова API конструктор класса модели создаст новый элемент.
 

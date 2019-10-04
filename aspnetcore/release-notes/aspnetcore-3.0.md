@@ -4,14 +4,14 @@ author: rick-anderson
 description: Сведения о новых возможностях в ASP.NET Core 3.0.
 ms.author: riande
 ms.custom: mvc
-ms.date: 09/23/2019
+ms.date: 09/26/2019
 uid: aspnetcore-3.0
-ms.openlocfilehash: 490d00da7282e2efe28fcc52e593dd71d7324d3f
-ms.sourcegitcommit: 0365af91518004c4a44a30dc3a8ac324558a399b
+ms.openlocfilehash: ec3de5b35883752b7b3dbefceccec55da3986f39
+ms.sourcegitcommit: dc96d76f6b231de59586fcbb989a7fb5106d26a8
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71198992"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71703683"
 ---
 # <a name="whats-new-in-aspnet-core-30"></a>Новые возможности в ASP.NET Core 3.0
 
@@ -319,6 +319,17 @@ ASP.NET Core 3.0 теперь по умолчанию использует <xre
 * [@attribute](xref:mvc/views/razor#attribute) &ndash; директива `@attribute` добавляет данный атрибут к классу созданной страницы или представления. Например, `@attribute [Authorize]`.
 * [@implements](xref:mvc/views/razor#implements) &ndash; директива `@implements` реализует интерфейс для созданного класса. Например, `@implements IDisposable`.
 
+## <a name="identityserver4-supports-authentication-and-authorization-for-web-apis-and-spas"></a>IdentityServer4 поддерживает проверку подлинности и авторизацию для веб-API и одностраничных приложений
+
+[IdentityServer4](https://identityserver.io) — это платформа OpenID Connect и OAuth 2.0 для ASP.NET Core 3.0. IdentityServer4 включает следующие функции безопасности:
+
+* Проверка подлинности как услуга (AaaS)
+* Единый вход (SSO) для нескольких типов приложений
+* Контроль доступа для API
+* Шлюз федерации
+
+Дополнительные сведения см. в разделе [Добро пожаловать в IdentityServer4](http://docs.identityserver.io/en/latest/index.html).
+
 ## <a name="certificate-and-kerberos-authentication"></a>Проверка подлинности Kerberos и проверка подлинности с помощью сертификата
 
 Для проверки подлинности с помощью сертификата требуется:
@@ -412,7 +423,7 @@ public void Configure(IApplicationBuilder app, IHostingEnvironment env)
 * Адаптеры подключений удалены из Kestrel и заменены на ПО промежуточного слоя подключения, которое похоже на ПО промежуточного слоя HTTP в конвейере ASP.NET Core, но для подключений более низкого уровня.
 * Транспортный уровень Kestrel предоставляется как открытый интерфейс в `Connections.Abstractions`.
 * Неоднозначность заголовков и конечных строк устранена путем перемещения конечных заголовков в новую коллекцию.
-* Из-за таких интерфейсов API с синхронными операциями ввода-вывода, как `HttpReqeuest.Body.Read`, часто возникает нехватка потоков, что приводит к сбоям приложений. В 3.0 `AllowSynchronousIO` отключен по умолчанию.
+* Из-за таких интерфейсов API с синхронными операциями ввода-вывода, как `HttpRequest.Body.Read`, часто возникает нехватка потоков, что приводит к сбоям приложений. В 3.0 `AllowSynchronousIO` отключен по умолчанию.
 
 Дополнительные сведения можно найти по адресу: <xref:migration/22-to-30#kestrel>.
 
@@ -420,9 +431,9 @@ public void Configure(IApplicationBuilder app, IHostingEnvironment env)
 
 В Kestrel для конечных точек HTTPS по умолчанию включено HTTP/2. Поддержка HTTP/2 для IIS или HTTP.sys включена, если поддерживается операционной системой.
 
-## <a name="request-counters"></a>Счетчики запросов
+## <a name="eventcounters-on-request"></a>EventCounters по запросу
 
-Объект EventSource размещения (Microsoft.AspNetCore.Hosting) выдает следующие объекты EventCounters, связанные с входящими запросами:
+EventSource размещения, `Microsoft.AspNetCore.Hosting`, выдает следующие новые типы <xref:System.Diagnostics.Tracing.EventCounter>, связанные с входящими запросами:
 
 * `requests-per-second`
 * `total-requests`

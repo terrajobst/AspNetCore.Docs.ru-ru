@@ -5,14 +5,14 @@ description: Узнайте, как настроить проверки рабо
 monikerRange: '>= aspnetcore-2.2'
 ms.author: riande
 ms.custom: mvc
-ms.date: 09/23/2019
+ms.date: 09/27/2019
 uid: host-and-deploy/health-checks
-ms.openlocfilehash: d8be6c8eb45cde162693621e63bf40d48d04c324
-ms.sourcegitcommit: 0365af91518004c4a44a30dc3a8ac324558a399b
+ms.openlocfilehash: e4b2a577815335078f7e0c9128144a514e42a6c3
+ms.sourcegitcommit: 5d25a7f22c50ca6fdd0f8ecd8e525822e1b35b7a
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71199003"
+ms.lasthandoff: 09/28/2019
+ms.locfileid: "71482055"
 ---
 # <a name="health-checks-in-aspnet-core"></a>Проверки работоспособности в ASP.NET Core
 
@@ -46,7 +46,7 @@ ASP.NET Core предоставляет ПО промежуточного сло
   * [Microsoft.Extensions.Diagnostics.HealthChecks.EntityFrameworkCore](https://www.nuget.org/packages/Microsoft.Extensions.Diagnostics.HealthChecks.EntityFrameworkCore/)
 
 > [!NOTE]
-> [AspNetCore.Diagnostics.HealthChecks](https://github.com/Xabaril/AspNetCore.Diagnostics.HealthChecks) — это порт [BeatPulse](https://github.com/xabaril/beatpulse), и он не поддерживается корпорацией Майкрософт.
+> [AspNetCore.Diagnostics.HealthChecks](https://github.com/Xabaril/AspNetCore.Diagnostics.HealthChecks) не поддерживается корпорацией Майкрософт.
 
 В другом сценарии проверки работоспособности демонстрируется способ фильтрации проверок работоспособности по порту управления. Пример приложения требует создать файл *Properties/launchSettings.json*, который включает в себя URL-адрес управления и порт управления. Дополнительные сведения см. в разделе [Фильтр по портам](#filter-by-port).
 
@@ -337,7 +337,7 @@ dotnet run --scenario db
 ```
 
 > [!NOTE]
-> [AspNetCore.Diagnostics.HealthChecks](https://github.com/Xabaril/AspNetCore.Diagnostics.HealthChecks) — это порт [BeatPulse](https://github.com/xabaril/beatpulse), и он не поддерживается корпорацией Майкрософт.
+> [AspNetCore.Diagnostics.HealthChecks](https://github.com/Xabaril/AspNetCore.Diagnostics.HealthChecks) не поддерживается корпорацией Майкрософт.
 
 ## <a name="entity-framework-core-dbcontext-probe"></a>Проверка DbContext в Entity Framework Core
 
@@ -526,7 +526,7 @@ dotnet run --scenario writer
 > [!NOTE]
 > [AspNetCore.Diagnostics.HealthChecks](https://github.com/Xabaril/AspNetCore.Diagnostics.HealthChecks) содержит сценарии для проверки работоспособности на основе метрик, включая проверки жизнеспособности для дискового хранилища и максимальных значений.
 >
-> [AspNetCore.Diagnostics.HealthChecks](https://github.com/Xabaril/AspNetCore.Diagnostics.HealthChecks) — это порт [BeatPulse](https://github.com/xabaril/beatpulse), и он не поддерживается корпорацией Майкрософт.
+> [AspNetCore.Diagnostics.HealthChecks](https://github.com/Xabaril/AspNetCore.Diagnostics.HealthChecks) не поддерживается корпорацией Майкрософт.
 
 ## <a name="filter-by-port"></a>Фильтр по портам
 
@@ -741,7 +741,7 @@ Task PublishAsync(HealthReport report, CancellationToken cancellationToken);
 > [!NOTE]
 > [AspNetCore.Diagnostics.HealthChecks](https://github.com/Xabaril/AspNetCore.Diagnostics.HealthChecks) содержит издатели для нескольких систем, в том числе [Application Insights](/azure/application-insights/app-insights-overview).
 >
-> [AspNetCore.Diagnostics.HealthChecks](https://github.com/Xabaril/AspNetCore.Diagnostics.HealthChecks) — это порт [BeatPulse](https://github.com/xabaril/beatpulse), и он не поддерживается корпорацией Майкрософт.
+> [AspNetCore.Diagnostics.HealthChecks](https://github.com/Xabaril/AspNetCore.Diagnostics.HealthChecks) не поддерживается корпорацией Майкрософт.
 
 ## <a name="restrict-health-checks-with-mapwhen"></a>Ограничение проверок работоспособности с помощью MapWhen
 
@@ -793,7 +793,7 @@ ASP.NET Core предоставляет ПО промежуточного сло
   * [Microsoft.Extensions.Diagnostics.HealthChecks.EntityFrameworkCore](https://www.nuget.org/packages/Microsoft.Extensions.Diagnostics.HealthChecks.EntityFrameworkCore/)
 
 > [!NOTE]
-> [AspNetCore.Diagnostics.HealthChecks](https://github.com/Xabaril/AspNetCore.Diagnostics.HealthChecks) — это порт [BeatPulse](https://github.com/xabaril/beatpulse), и он не поддерживается корпорацией Майкрософт.
+> [AspNetCore.Diagnostics.HealthChecks](https://github.com/Xabaril/AspNetCore.Diagnostics.HealthChecks) не поддерживается корпорацией Майкрософт.
 
 В другом сценарии проверки работоспособности демонстрируется способ фильтрации проверок работоспособности по порту управления. Пример приложения требует создать файл *Properties/launchSettings.json*, который включает в себя URL-адрес управления и порт управления. Дополнительные сведения см. в разделе [Фильтр по портам](#filter-by-port).
 
@@ -1055,7 +1055,7 @@ dotnet run --scenario db
 ```
 
 > [!NOTE]
-> [AspNetCore.Diagnostics.HealthChecks](https://github.com/Xabaril/AspNetCore.Diagnostics.HealthChecks) — это порт [BeatPulse](https://github.com/xabaril/beatpulse), и он не поддерживается корпорацией Майкрософт.
+> [AspNetCore.Diagnostics.HealthChecks](https://github.com/Xabaril/AspNetCore.Diagnostics.HealthChecks) не поддерживается корпорацией Майкрософт.
 
 ## <a name="entity-framework-core-dbcontext-probe"></a>Проверка DbContext в Entity Framework Core
 
@@ -1231,7 +1231,7 @@ dotnet run --scenario writer
 > [!NOTE]
 > [AspNetCore.Diagnostics.HealthChecks](https://github.com/Xabaril/AspNetCore.Diagnostics.HealthChecks) содержит сценарии для проверки работоспособности на основе метрик, включая проверки жизнеспособности для дискового хранилища и максимальных значений.
 >
-> [AspNetCore.Diagnostics.HealthChecks](https://github.com/Xabaril/AspNetCore.Diagnostics.HealthChecks) — это порт [BeatPulse](https://github.com/xabaril/beatpulse), и он не поддерживается корпорацией Майкрософт.
+> [AspNetCore.Diagnostics.HealthChecks](https://github.com/Xabaril/AspNetCore.Diagnostics.HealthChecks) не поддерживается корпорацией Майкрософт.
 
 ## <a name="filter-by-port"></a>Фильтр по портам
 
@@ -1432,7 +1432,7 @@ Task PublishAsync(HealthReport report, CancellationToken cancellationToken);
 > [!NOTE]
 > [AspNetCore.Diagnostics.HealthChecks](https://github.com/Xabaril/AspNetCore.Diagnostics.HealthChecks) содержит издатели для нескольких систем, в том числе [Application Insights](/azure/application-insights/app-insights-overview).
 >
-> [AspNetCore.Diagnostics.HealthChecks](https://github.com/Xabaril/AspNetCore.Diagnostics.HealthChecks) — это порт [BeatPulse](https://github.com/xabaril/beatpulse), и он не поддерживается корпорацией Майкрософт.
+> [AspNetCore.Diagnostics.HealthChecks](https://github.com/Xabaril/AspNetCore.Diagnostics.HealthChecks) не поддерживается корпорацией Майкрософт.
 
 ## <a name="restrict-health-checks-with-mapwhen"></a>Ограничение проверок работоспособности с помощью MapWhen
 

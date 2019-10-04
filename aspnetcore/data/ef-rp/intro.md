@@ -4,14 +4,14 @@ author: tdykstra
 description: Сведения о том, как создать приложение Razor Pages с помощью Entity Framework Core
 ms.author: riande
 ms.custom: mvc, seodec18
-ms.date: 07/22/2019
+ms.date: 09/26/2019
 uid: data/ef-rp/intro
-ms.openlocfilehash: 6b7d2ca1cea23efd195f1ae0e0a749c6d2d9b622
-ms.sourcegitcommit: d34b2627a69bc8940b76a949de830335db9701d3
+ms.openlocfilehash: e261ccd30dc9ef0929e74fa44a5ed752d515b707
+ms.sourcegitcommit: e644258c95dd50a82284f107b9bf3becbc43b2b2
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71186956"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71317684"
 ---
 # <a name="razor-pages-with-entity-framework-core-in-aspnet-core---tutorial-1-of-8"></a>Razor Pages с Entity Framework Core в ASP.NET Core: учебник 1 из 8
 
@@ -19,7 +19,7 @@ ms.locfileid: "71186956"
 
 ::: moniker range=">= aspnetcore-3.0"
 
-Это первый учебник из серии, посвященной использованию Entity Framework (EF) Core в приложении Razor Pages на основе ASP.NET Core. В учебниках создается веб-сайт для вымышленного университета Contoso. На сайте предусмотрены различные функции, в том числе прием учащихся, создание курсов и назначение преподавателей.
+Это первый учебник из серии, посвященной использованию Entity Framework (EF) Core в приложении [Razor Pages на основе ASP.NET Core](xref:razor-pages/index). В учебниках создается веб-сайт для вымышленного университета Contoso. На сайте предусмотрены различные функции, в том числе прием учащихся, создание курсов и назначение преподавателей.
 
 [Скачайте или ознакомьтесь с готовым приложением.](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/data/ef-rp/intro/samples) [Указания по скачиванию](xref:index#how-to-download-a-sample).
 
