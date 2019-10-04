@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 09/22/2019
 uid: getting-started
-ms.openlocfilehash: c9cd5e05f52c8bdefa931adc654087dac91e2f05
-ms.sourcegitcommit: e644258c95dd50a82284f107b9bf3becbc43b2b2
+ms.openlocfilehash: 798f1ee87c05d886d8991e3f0230c8ebc6341ba8
+ms.sourcegitcommit: 73e255e846e414821b8cc20ffa3aec946735cd4e
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71317766"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71925101"
 ---
 # <a name="tutorial-get-started-with-aspnet-core"></a>Учебник. Начало работы с ASP.NET Core
 
@@ -44,7 +44,7 @@ dotnet new webapp -o aspnetcoreapp
 Предыдущая команда позволяет:
 
 * создать веб-сайт;  
-* с помощью параметра `-o` создать каталог *aspnetcoreapp* с исходными файлами приложения.
+* с помощью параметра `-o aspnetcoreapp` создать каталог *aspnetcoreapp* с исходными файлами приложения.
 
 ### <a name="trust-the-development-certificate"></a>Установка доверия к сертификату разработки
 
@@ -93,7 +93,7 @@ cd aspnetcoreapp
 dotnet watch run
 ```
 
-Когда интерпретатор команд покажет, что приложение запущено, откройте страницу [https://localhost:5001](https://localhost:5001). Щелкните **Принять**, чтобы принять политику конфиденциальности и использования файлов cookie. Это приложение не хранит персональные данные.
+Когда интерпретатор команд покажет, что приложение запущено, откройте страницу [https://localhost:5001](https://localhost:5001).
 
 ## <a name="edit-a-razor-page"></a>Редактирование страницы Razor
 
