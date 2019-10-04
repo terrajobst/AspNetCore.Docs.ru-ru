@@ -7,12 +7,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 09/23/2019
 uid: blazor/javascript-interop
-ms.openlocfilehash: 2b5d1433fce6e09adf3caa58e55e678b00ad98ee
-ms.sourcegitcommit: 79eeb17604b536e8f34641d1e6b697fb9a2ee21f
+ms.openlocfilehash: b30bce6ef3ebf1cd2f4f3fe8d046e1db9b6929d5
+ms.sourcegitcommit: 73e255e846e414821b8cc20ffa3aec946735cd4e
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71211642"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71924645"
 ---
 # <a name="aspnet-core-blazor-javascript-interop"></a>ASP.NET Core взаимодействие JavaScript Блазор
 
@@ -38,7 +38,7 @@ ms.locfileid: "71211642"
 
 Следующий пример основан на [текстдекодер](https://developer.mozilla.org/docs/Web/API/TextDecoder), экспериментальном декодере на основе JavaScript. В примере показано, как вызвать функцию JavaScript из C# метода. Функция JavaScript принимает массив байтов из C# метода, декодирует массив и возвращает текст компоненту для вывода.
 
-Внутри элемента wwwroot/index.HTML (блазор Assembly) или *pages/_Host. cshtml* (блазор Server) Укажите функцию, которая использует `TextDecoder` для декодирования переданного массива: `<head>`
+В элементе `<head>` элемента *wwwroot/index.HTML* (блазор Assembly) или *pages/_Host. cshtml* (блазор Server) Укажите функцию, которая использует `TextDecoder` для декодирования переданного массива:
 
 [!code-html[](javascript-interop/samples_snapshot/index-script.html)]
 
@@ -81,13 +81,13 @@ ms.locfileid: "71211642"
 
 [!code-javascript[](./common/samples/3.x/BlazorSample/wwwroot/exampleJsInterop.js?highlight=2-7)]
 
-Поместите тег, который ссылается на файл JavaScript, в файл *wwwroot/index.HTML* (блазор) или *pages/_Host. cshtml* (блазор Server). `<script>`
+Поместите тег `<script>`, который ссылается на файл JavaScript, в файл *wwwroot/index.HTML* (блазор) или *pages/_Host. cshtml* (блазор Server).
 
 *wwwroot/index.HTML* (Блазорная сборка):
 
 [!code-html[](./common/samples/3.x/BlazorSample/wwwroot/index.html?highlight=15)]
 
-*Pages/_Host. cshtml* (Блазор сервер):
+*Pages/_Host. cshtml* (сервер блазор):
 
 [!code-cshtml[](javascript-interop/samples_snapshot/_Host.cshtml?highlight=29)]
 
@@ -139,7 +139,7 @@ ms.locfileid: "71211642"
 ```
 
 > [!NOTE]
-> **Не** используйте захваченные ссылки на элементы в качестве способа заполнения или управления моделью DOM, когда блазор взаимодействует с элементами, на которые имеются ссылки. Это может повлиять на модель декларативной отрисовки.
+> **Не** используйте захваченные ссылки на элементы в качестве способа заполнения модели DOM. Это может повлиять на модель декларативной отрисовки.
 
 Что касается кода .NET, `ElementReference` то является непрозрачным маркером. *Единственное* , что можно сделать с помощью `ElementReference` , — передать его в код JavaScript через взаимодействие JavaScript. При этом код на стороне JavaScript получает `HTMLElement` экземпляр, который можно использовать с обычными API DOM.
 

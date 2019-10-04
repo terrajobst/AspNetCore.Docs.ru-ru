@@ -7,12 +7,12 @@ ms.author: jamesnk
 ms.custom: mvc
 ms.date: 09/21/2019
 uid: grpc/troubleshoot
-ms.openlocfilehash: 15377ba4b31ce9319df300b23e5a95c67bca7db4
-ms.sourcegitcommit: 04ce94b3c1b01d167f30eed60c1c95446dfe759d
+ms.openlocfilehash: c31f499b008cdec9d759e804b18965156ca99f30
+ms.sourcegitcommit: d8b12cc1716ee329d7bd2300e201b61e15d506ac
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/21/2019
-ms.locfileid: "71176506"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71942891"
 ---
 # <a name="troubleshoot-grpc-on-net-core"></a>Устранение неполадок gRPC в .NET Core
 
@@ -151,3 +151,21 @@ public static IHostBuilder CreateHostBuilder(string[] args) =>
   <Protobuf Include="Protos\greet.proto" GrpcServices="Client" />
 </ItemGroup>
 ```
+
+## <a name="wpf-projects-unable-to-generated-grpc-c-assets-from-proto-files"></a>Проекты WPF не могут создавать ресурсы C# gRPC из файлов *\*..*
+
+Проекты WPF имеют [известную ошибку](https://github.com/dotnet/wpf/issues/810) , препятствующую правильной работе создания кода gRPC. Любые типы gRPC, созданные в проекте WPF с помощью ссылок на файлы `Grpc.Tools` и *...* , будут создавать ошибки компиляции при использовании:
+
+> ошибка CS0246: Не удалось найти тип или имя пространства имен "Мигрпксервицес" (возможно, отсутствует директива using или ссылка на сборку).
+
+Эту проблему можно решить, выполнив следующие действия.
+
+1. Создайте новый проект библиотеки классов .NET Core.
+2. В новом проекте добавьте ссылки, чтобы включить [ C# создание кода из файлов *@no__t -3.* с:
+    * Добавьте ссылку на пакет [Grpc.Tools](https://www.nuget.org/packages/Grpc.Tools/).
+    * Добавьте *@no__t -1.* \ Files в группу элементов `<Protobuf>`.
+3. В приложении WPF добавьте ссылку на новый проект.
+
+Приложение WPF может использовать созданные типы gRPC из нового проекта библиотеки классов.
+
+[!INCLUDE[](~/includes/gRPCazure.md)]

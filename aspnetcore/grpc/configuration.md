@@ -7,12 +7,12 @@ ms.author: jamesnk
 ms.custom: mvc
 ms.date: 09/05/2019
 uid: grpc/configuration
-ms.openlocfilehash: 42574b43b4751efc37ff3a827716df4cb8130842
-ms.sourcegitcommit: 0365af91518004c4a44a30dc3a8ac324558a399b
+ms.openlocfilehash: 3ef92f10d914ef9fa3e13a7bdd5c863bab297f57
+ms.sourcegitcommit: 73e255e846e414821b8cc20ffa3aec946735cd4e
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71199079"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71925210"
 ---
 # <a name="grpc-for-net-configuration"></a>Конфигурация gRPC для .NET
 
@@ -20,7 +20,7 @@ ms.locfileid: "71199079"
 
 службы gRPC настраиваются с `AddGrpc` помощью в *Startup.CS*. В следующей таблице описаны параметры для настройки служб gRPC Services.
 
-| Параметр | Значение по умолчанию | Описание |
+| Параметр | Default Value | Описание |
 | ------ | ------------- | ----------- |
 | `MaxSendMessageSize` | `null` | Максимальный размер сообщения в байтах, которое может быть отправлено с сервера. Попытка отправить сообщение, превышающее заданный максимальный размер сообщения, приведет к исключению. |
 | `MaxReceiveMessageSize` | 4 МБ | Максимальный размер сообщения в байтах, которое может быть получено сервером. Если сервер получает сообщение, размер которого превышает это ограничение, вызывается исключение. Увеличение этого значения позволяет серверу принимать большие сообщения, но может негативно сказаться на потреблении памяти. |
@@ -41,7 +41,7 @@ ms.locfileid: "71199079"
 
 Конфигурация клиента gRPC установлена на `GrpcChannelOptions`. В следующей таблице описаны параметры для настройки каналов gRPC.
 
-| Параметр | Значение по умолчанию | Описание |
+| Параметр | Default Value | Описание |
 | ------ | ------------- | ----------- |
 | `HttpClient` | Новый экземпляр | Объект `HttpClient` , используемый для выполнения вызовов gRPC. Клиент может быть настроен для настройки пользовательского `HttpClientHandler`или добавления дополнительных обработчиков в конвейер HTTP для вызовов gRPC. Если значение `HttpClient` не указано, для канала создается `HttpClient` новый экземпляр. Он будет автоматически удален. |
 | `DisposeHttpClient` | `false` | Если `true`задано значение `HttpClient` и указано, `HttpClient` то `GrpcChannel` экземпляр будет удален при удалении. |
@@ -57,6 +57,8 @@ ms.locfileid: "71199079"
 * Создает клиент.
 
 [!code-csharp[](~/grpc/configuration/sample/Program.cs?name=snippet&highlight=3-8)]
+
+[!INCLUDE[](~/includes/gRPCazure.md)]
 
 ## <a name="additional-resources"></a>Дополнительные ресурсы
 
