@@ -7,12 +7,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 07/31/2019
 uid: host-and-deploy/iis/index
-ms.openlocfilehash: df4d74a2800ef586091347289561a03b31e33f44
-ms.sourcegitcommit: 776367717e990bdd600cb3c9148ffb905d56862d
+ms.openlocfilehash: 4cc25cba95b476f1d14aad87564f9777a0530f86
+ms.sourcegitcommit: 4649814d1ae32248419da4e8f8242850fd8679a5
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68913945"
+ms.lasthandoff: 10/05/2019
+ms.locfileid: "71975668"
 ---
 # <a name="host-aspnet-core-on-windows-with-iis"></a>Размещение ASP.NET Core в Windows со службами IIS
 
@@ -297,7 +297,7 @@ services.Configure<IISOptions>(options =>
 
 ## <a name="install-the-net-core-hosting-bundle"></a>Установка пакета размещения .NET Core
 
-Установите *пакет размещения .NET Core* в размещающей системе. В составе пакета устанавливаются среда выполнения .NET Core, библиотека .NET Core и [модуль ASP.NET Core](xref:host-and-deploy/aspnet-core-module). Модуль позволяет запускать приложения ASP.NET Core под управлением IIS. Если система не подключена к Интернету, перед установкой пакета размещения .NET Core получите и установите [Распространяемый компонент Microsoft Visual C++ 2015](https://www.microsoft.com/download/details.aspx?id=53840).
+Установите *пакет размещения .NET Core* в размещающей системе. В составе пакета устанавливаются среда выполнения .NET Core, библиотека .NET Core и [модуль ASP.NET Core](xref:host-and-deploy/aspnet-core-module). Модуль позволяет запускать приложения ASP.NET Core под управлением IIS.
 
 > [!IMPORTANT]
 > Если пакет размещения устанавливается до установки служб IIS, его нужно восстановить. После установки служб IIS запустите установщик пакета размещения еще раз.

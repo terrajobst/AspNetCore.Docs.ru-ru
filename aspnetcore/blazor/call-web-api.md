@@ -7,22 +7,22 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 09/23/2019
 uid: blazor/call-web-api
-ms.openlocfilehash: 2e79c81dc2371ef5b00f9251be47433a141c8ab7
-ms.sourcegitcommit: 79eeb17604b536e8f34641d1e6b697fb9a2ee21f
+ms.openlocfilehash: ea819da57c382b724098c55f2f799d7deea363f2
+ms.sourcegitcommit: 4649814d1ae32248419da4e8f8242850fd8679a5
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71207137"
+ms.lasthandoff: 10/05/2019
+ms.locfileid: "71975637"
 ---
 # <a name="call-a-web-api-from-aspnet-core-blazor"></a>Вызов веб-API из ASP.NET Core Блазор
 
-[Люк ЛаСаМ](https://github.com/guardrex) и [Даниэль Roth)](https://github.com/danroth27)
+[Люк ЛаСаМ](https://github.com/guardrex), [Даниэль Roth)](https://github.com/danroth27)и самое [Нела Круз](https://github.com/juandelacruz23)
 
 [!INCLUDE[](~/includes/blazorwasm-preview-notice.md)]
 
-Блазорные приложения вызывают веб-API с помощью предварительно настроенной `HttpClient` службы. Запросы на создание, которые могут включать параметры [API-интерфейса получения](https://developer.mozilla.org/docs/Web/API/Fetch_API) JavaScript, с помощью вспомогательных <xref:System.Net.Http.HttpRequestMessage>функций JSON блазор или с.
+Приложения блазор WebService вызывают веб-API с помощью предварительно настроенной службы `HttpClient`. Запросы составления, которые могут включать параметры [API-интерфейса получения](https://developer.mozilla.org/docs/Web/API/Fetch_API) JavaScript, с помощью вспомогательных функций JSON блазор или с <xref:System.Net.Http.HttpRequestMessage>.
 
-Серверные приложения блазор вызывают веб- <xref:System.Net.Http.HttpClient> API с помощью экземпляров <xref:System.Net.Http.IHttpClientFactory>, обычно созданных с помощью. Дополнительные сведения см. в разделе <xref:fundamentals/http-requests>.
+Серверные приложения блазор вызывают веб-API, используя экземпляры <xref:System.Net.Http.HttpClient>, обычно созданные с помощью <xref:System.Net.Http.IHttpClientFactory>. Дополнительные сведения см. в разделе <xref:fundamentals/http-requests>.
 
 [Просмотреть или скачать образец кода](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/blazor/common/samples/) ([как скачивать](xref:index#how-to-download-a-sample))
 
@@ -33,20 +33,20 @@ ms.locfileid: "71207137"
 
 ## <a name="httpclient-and-json-helpers"></a>HttpClient и вспомогательные методы JSON
 
-В приложениях Блазор веб-сборки [HttpClient](xref:fundamentals/http-requests) доступна в виде предварительно настроенной службы для выполнения запросов к серверу-источнику. Чтобы использовать `HttpClient` вспомогательные методы JSON, добавьте ссылку на пакет в `Microsoft.AspNetCore.Blazor.HttpClient`. `HttpClient`Кроме того, вспомогательные методы JSON также используются для вызова конечных точек веб-API сторонних производителей. `HttpClient`реализуется с помощью [API выборки](https://developer.mozilla.org/docs/Web/API/Fetch_API) в браузере и подчиняется его ограничениям, включая принудительное применение той же политики происхождения.
+В приложениях Блазор веб-сборки [HttpClient](xref:fundamentals/http-requests) доступна в виде предварительно настроенной службы для выполнения запросов к серверу-источнику. Чтобы использовать вспомогательные методы JSON `HttpClient`, добавьте ссылку на пакет в `Microsoft.AspNetCore.Blazor.HttpClient`. `HttpClient` и вспомогательные методы JSON также используются для вызова конечных точек веб-API сторонних производителей. `HttpClient` реализуется с помощью [API выборки](https://developer.mozilla.org/docs/Web/API/Fetch_API) в браузере и подчиняется его ограничениям, включая принудительное применение той же политики происхождения.
 
-Базовый адрес клиента устанавливается в адрес исходного сервера. `HttpClient` Вставьте экземпляр `@inject` с помощью директивы:
+Базовый адрес клиента устанавливается в адрес исходного сервера. Внедрить экземпляр `HttpClient` с помощью директивы `@inject`:
 
 ```cshtml
 @using System.Net.Http
 @inject HttpClient Http
 ```
 
-В следующих примерах веб-API TODO обрабатывает операции создания, чтения, обновления и удаления (CRUD). Примеры основаны на `TodoItem` классе, который хранит:
+В следующих примерах веб-API TODO обрабатывает операции создания, чтения, обновления и удаления (CRUD). Примеры основаны на классе `TodoItem`, в котором хранится:
 
-* Идентификатор (`Id`, `long`) &ndash; уникальный идентификатор элемента.
-* Имя (`Name`, `string`) &ndash; имя элемента.
-* Состояние (`IsComplete`, `bool`) &ndash; указывает, что элемент TODO завершен.
+* ID (`Id`, `long`) &ndash; уникальный идентификатор элемента.
+* Name (`Name`, `string`) &ndash; имя элемента.
+* Состояние (`IsComplete`, `bool`) указывает на &ndash;, если элемент TODO завершен.
 
 ```csharp
 private class TodoItem
@@ -59,9 +59,9 @@ private class TodoItem
 
 Вспомогательные методы JSON отправляют запросы в URI (веб-API в следующих примерах) и обрабатывают ответ:
 
-* `GetJsonAsync`&ndash; Отправляет запрос HTTP GET и анализирует текст ответа JSON для создания объекта.
+* `GetJsonAsync` &ndash; отправляет запрос HTTP GET и анализирует текст ответа JSON для создания объекта.
 
-  В следующем коде `_todoItems` компонент отображается с помощью компонента. Метод активируется при завершении подготовки компонента к просмотру ([онинитиализедасинк).](xref:blazor/components#lifecycle-methods) `GetTodoItems` Полный пример см. в примере приложения.
+  В следующем коде компонентом `_todoItems` отображаются. Метод `GetTodoItems` активируется при завершении подготовки компонента к просмотру ([онинитиализедасинк](xref:blazor/components#lifecycle-methods)). Полный пример см. в примере приложения.
 
   ```cshtml
   @using System.Net.Http
@@ -71,13 +71,13 @@ private class TodoItem
       private TodoItem[] _todoItems;
 
       protected override async Task OnInitializedAsync() => 
-          _todoItems = await Http.GetJsonAsync<TodoItem[]>("api/todo");
+          _todoItems = await Http.GetJsonAsync<TodoItem[]>("api/TodoItems");
   }
   ```
 
-* `PostJsonAsync`&ndash; Отправляет запрос HTTP POST, включая содержимое в кодировке JSON, и анализирует текст ответа JSON для создания объекта.
+* `PostJsonAsync` &ndash; отправляет запрос HTTP POST, включая содержимое в кодировке JSON, и анализирует текст ответа JSON для создания объекта.
 
-  В приведенном ниже коде `_newItemName` предоставляется привязанным элементом компонента. Метод активируется путем `<button>` выбора элемента. `AddItem` Полный пример см. в примере приложения.
+  В следующем коде `_newItemName` предоставляется связанным элементом компонента. Метод `AddItem` активируется путем выбора элемента `<button>`. Полный пример см. в примере приложения.
 
   ```cshtml
   @using System.Net.Http
@@ -92,14 +92,14 @@ private class TodoItem
       private async Task AddItem()
       {
           var addItem = new TodoItem { Name = _newItemName, IsComplete = false };
-          await Http.PostJsonAsync("api/todo", addItem);
+          await Http.PostJsonAsync("api/TodoItems", addItem);
       }
   }
   ```
 
-* `PutJsonAsync`&ndash; Отправляет запрос HTTP-размещения, включая содержимое в кодировке JSON.
+* `PutJsonAsync` &ndash; отправляет запрос HTTP-размещения, включая содержимое в кодировке JSON.
 
-  В следующем коде `_editItem` значения для `Name` и `IsCompleted` предоставляются связанными элементами компонента. Элемент `Id` задается, когда элемент выбирается в другой части пользовательского интерфейса и `EditItem` вызывается. Метод активируется путем выбора элемента Save `<button>`. `SaveItem` Полный пример см. в примере приложения.
+  В следующем коде значения `_editItem` для `Name` и `IsCompleted` предоставляются связанными элементами компонента. Элемент `Id` задается, когда элемент выбирается в другой части пользовательского интерфейса, и вызывается `EditItem`. Метод `SaveItem` активируется путем выбора элемента Save `<button>`. Полный пример см. в примере приложения.
 
   ```cshtml
   @using System.Net.Http
@@ -120,13 +120,13 @@ private class TodoItem
       }
 
       private async Task SaveItem() =>
-          await Http.PutJsonAsync($"api/todo/{_editItem.Id}, _editItem);
+          await Http.PutJsonAsync($"api/TodoItems/{_editItem.Id}, _editItem);
   }
   ```
 
-<xref:System.Net.Http>включает дополнительные методы расширения для отправки HTTP-запросов и получения HTTP-ответов. [HttpClient. DeleteAsync](xref:System.Net.Http.HttpClient.DeleteAsync*) используется для отправки запроса HTTP DELETE в веб-интерфейс API.
+<xref:System.Net.Http> включает дополнительные методы расширения для отправки HTTP-запросов и получения HTTP-ответов. [HttpClient. DeleteAsync](xref:System.Net.Http.HttpClient.DeleteAsync*) используется для отправки запроса HTTP DELETE в веб-интерфейс API.
 
-В следующем коде элемент Delete `<button>` `DeleteItem` вызывает метод. Связанный `<input>` элемент`id` предоставляет удаляемый элемент. Полный пример см. в примере приложения.
+В следующем коде элемент Delete `<button>` вызывает метод `DeleteItem`. Связанный элемент `<input>` предоставляет `id` элемента для удаления. Полный пример см. в примере приложения.
 
 ```cshtml
 @using System.Net.Http
@@ -139,7 +139,7 @@ private class TodoItem
     private long _id;
 
     private async Task DeleteItem() =>
-        await Http.DeleteAsync($"api/todo/{_id}");
+        await Http.DeleteAsync($"api/TodoItems/{_id}");
 }
 ```
 
@@ -149,17 +149,17 @@ private class TodoItem
 
 Пример приложения демонстрирует использование CORS в компоненте Call Web API (*pages/каллвебапи. Razor*).
 
-Сведения о том, как разрешить другим сайтам выполнять запросы общего доступа к ресурсам на основе источника (CORS <xref:security/cors>) в приложение, см. в разделе.
+Сведения о том, как разрешить другим сайтам выполнять запросы общего доступа к ресурсам на основе источника (CORS) в приложение, см. в разделе <xref:security/cors>.
 
 ## <a name="httpclient-and-httprequestmessage-with-fetch-api-request-options"></a>HttpClient и HttpRequestMessage с параметрами запроса API FETCH
 
-При выполнении для сборки в блазор приложении [HttpClient](xref:fundamentals/http-requests) <xref:System.Net.Http.HttpRequestMessage> используйте для настройки запросов. Например, можно указать URI запроса, метод HTTP и все нужные заголовки запроса.
+При выполнении для сборки в Блазор приложении [HttpClient](xref:fundamentals/http-requests) используйте для настройки запросов параметры, за<xref:System.Net.Http.HttpRequestMessage>. Например, можно указать URI запроса, метод HTTP и все нужные заголовки запроса.
 
-Укажите параметры запроса для базового [API выборки](https://developer.mozilla.org/docs/Web/API/Fetch_API) JavaScript, `WebAssemblyHttpMessageHandler.FetchArgs` используя свойство в запросе. Как показано в следующем примере, `credentials` свойству присвоено любое из следующих значений:
+Укажите параметры запроса для базового [API выборки](https://developer.mozilla.org/docs/Web/API/Fetch_API) JavaScript, используя свойство `WebAssemblyHttpMessageHandler.FetchArgs` для запроса. Как показано в следующем примере, свойству `credentials` присвоено любое из следующих значений:
 
-* `FetchCredentialsOption.Include`("include") &ndash; Сообщает браузеру о необходимости отправки учетных данных (например, файлов cookie или заголовков проверки подлинности HTTP) даже для запросов между источниками. Допускается, только если политика CORS настроена для разрешения учетных данных.
-* `FetchCredentialsOption.Omit`("пропустить") &ndash; Рекомендует браузеру никогда не передавать учетные данные (например, файлы cookie или заголовки проверки подлинности HTTP).
-* `FetchCredentialsOption.SameOrigin`("один источник") &ndash; Рекомендует браузеру передавать учетные данные (например, файлы cookie или заголовки проверки подлинности HTTP) только в том случае, если целевой URL-адрес находится в том же источнике, что и вызывающее приложение.
+* `FetchCredentialsOption.Include` ("include") &ndash; рекомендует браузеру передавать учетные данные (например, файлы cookie или заголовки проверки подлинности HTTP) даже для запросов между источниками. Допускается, только если политика CORS настроена для разрешения учетных данных.
+* `FetchCredentialsOption.Omit` ("пропустить") &ndash; рекомендует браузеру не передавать учетные данные (например, файлы cookie или заголовки проверки подлинности HTTP).
+* `FetchCredentialsOption.SameOrigin` ("тот же источник") &ndash; рекомендует браузеру отправить учетные данные (например, файлы cookie или заголовки проверки подлинности HTTP) только в том случае, если целевой URL-адрес находится в том же источнике, что и вызывающее приложение.
 
 ```cshtml
 @using System.Net.Http
@@ -175,7 +175,7 @@ private class TodoItem
         var requestMessage = new HttpRequestMessage()
         {
             Method = new HttpMethod("POST"),
-            RequestUri = new Uri("https://localhost:10000/api/todo"),
+            RequestUri = new Uri("https://localhost:10000/api/TodoItems"),
             Content = 
                 new StringContent(
                     @"{""name"":""A New Todo Item"",""isComplete"":false}")
@@ -200,16 +200,16 @@ private class TodoItem
 }
 ```
 
-Дополнительные сведения о параметрах API FETCH см. [в разделе веб-документы MDN: Виндоворворкерглобалскопе. fetch ():P араметерс](https://developer.mozilla.org/docs/Web/API/WindowOrWorkerGlobalScope/fetch#Parameters).
+Дополнительные сведения о параметрах API FETCH см. в разделе веб-документы @no__t 0MDN: Виндоворворкерглобалскопе. fetch ():P араметерс @ no__t-0.
 
-При отправке учетных данных (файлов cookie или заголовков авторизации `Authorization` ) в запросах CORS этот заголовок должен быть разрешен политикой CORS.
+При отправке учетных данных (файлов cookie или заголовков авторизации) в запросах CORS в политике CORS должен быть разрешен заголовок `Authorization`.
 
 Следующая политика включает в себя настройку для:
 
 * Источники запроса (`http://localhost:5000`, `https://localhost:5001`).
 * Любой метод (глагол).
-* `Content-Type`и `Authorization` заголовки. Чтобы разрешить пользовательский заголовок (например, `x-custom-header`), выведите список заголовков при вызове метода. <xref:Microsoft.AspNetCore.Cors.Infrastructure.CorsPolicyBuilder.WithHeaders*>
-* Учетные данные, которые`credentials` `include`задаются кодом JavaScript на стороне клиента (свойство имеет значение).
+* заголовки `Content-Type` и `Authorization`. Чтобы разрешить пользовательский заголовок (например, `x-custom-header`), выведите список заголовков при вызове <xref:Microsoft.AspNetCore.Cors.Infrastructure.CorsPolicyBuilder.WithHeaders*>.
+* Учетные данные, установленные кодом JavaScript на стороне клиента (для свойства `credentials` задано значение `include`).
 
 ```csharp
 app.UseCors(policy => 
@@ -219,9 +219,11 @@ app.UseCors(policy =>
     .AllowCredentials());
 ```
 
-Дополнительные сведения см. в <xref:security/cors> разделе и компоненте тестера HTTP-запросов примера приложения (*Components/хттпрекуесттестер. Razor*).
+Дополнительные сведения см. в разделе <xref:security/cors> и компоненте "Тестер HTTP-запросов" (*Components/хттпрекуесттестер. Razor*) примера приложения.
 
 ## <a name="additional-resources"></a>Дополнительные ресурсы
 
 * <xref:fundamentals/http-requests>
+* <xref:security/enforcing-ssl>
+* [Конфигурация конечной точки HTTPS Kestrel](xref:fundamentals/servers/kestrel#endpoint-configuration)
 * [Общий доступ к ресурсам в разных источниках (CORS) в консорциуме W3C](https://www.w3.org/TR/cors/)

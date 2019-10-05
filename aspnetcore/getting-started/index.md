@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 09/22/2019
 uid: getting-started
-ms.openlocfilehash: 798f1ee87c05d886d8991e3f0230c8ebc6341ba8
-ms.sourcegitcommit: 73e255e846e414821b8cc20ffa3aec946735cd4e
+ms.openlocfilehash: 116a22bce80257948bfcc02c03a74a4b5568b8b5
+ms.sourcegitcommit: 4649814d1ae32248419da4e8f8242850fd8679a5
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/03/2019
-ms.locfileid: "71925101"
+ms.lasthandoff: 10/05/2019
+ms.locfileid: "71975693"
 ---
 # <a name="tutorial-get-started-with-aspnet-core"></a>Учебник. Начало работы с ASP.NET Core
 
@@ -75,8 +75,6 @@ dotnet dev-certs https --trust
 Эта команда может запросить пароль для установки сертификата в системной цепочке ключей. Введите пароль, если согласны доверять сертификату разработки.
 
 # <a name="linuxtablinux"></a>[Linux](#tab/linux)
-
-Дополнительные сведения о подсистеме Windows для Linux см. в разделе [Trust HTTPS certificate from Windows Subsystem for Linux](xref:security/enforcing-ssl#wsl) (Установка доверия к сертификату HTTPS из подсистемы Windows для Linux).
 
 Просмотрите документацию по дистрибутиву Linux, чтобы узнать, как установить отношение доверия к сертификату разработки HTTPS.
 
