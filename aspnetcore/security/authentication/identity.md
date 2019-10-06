@@ -5,12 +5,12 @@ description: Используйте удостоверение с приложе
 ms.author: riande
 ms.date: 03/26/2019
 uid: security/authentication/identity
-ms.openlocfilehash: 979681cfc196aca9fb5097583d99a086e1c597ba
-ms.sourcegitcommit: 215954a638d24124f791024c66fd4fb9109fd380
+ms.openlocfilehash: 6701eb0ac1b1abb8699a5a529bcc29f295e5c7c9
+ms.sourcegitcommit: 4115bf0e850c13d4e655beb5ab5e8ff431173cb6
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71082452"
+ms.lasthandoff: 10/06/2019
+ms.locfileid: "71981914"
 ---
 # <a name="introduction-to-identity-on-aspnet-core"></a>Введение в удостоверение на ASP.NET Core
 
@@ -20,7 +20,7 @@ ASP.NET Core удостоверение — это система членств
 
 Идентификацию можно настроить с помощью SQL Server базы данных для хранения имен пользователей, паролей и данных профилей. Кроме того, можно использовать еще одно постоянное хранилище, например хранилище таблиц Azure.
 
-[Просмотр или скачивание примера кода](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/security/authentication/identity/sample/src/ASPNETCore-IdentityDemoComplete/) ([как загрузить)](xref:index#how-to-download-a-sample).
+[Просмотр или скачивание образца кода](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/security/authentication/identity/sample/src/ASPNETCore-IdentityDemoComplete/) ([Загрузка)](xref:index#how-to-download-a-sample).
 
 В этом разделе вы узнаете, как использовать удостоверение для регистрации, входа и выхода пользователя. Более подробные инструкции по созданию приложений, использующих удостоверение, см. в разделе дальнейшие действия в конце этой статьи.
 
@@ -36,7 +36,7 @@ ASP.NET Core удостоверение — это система членств
 * [адддефаултуи](/dotnet/api/microsoft.aspnetcore.identity.identitybuilderuiextensions.adddefaultui?view=aspnetcore-2.1#Microsoft_AspNetCore_Identity_IdentityBuilderUIExtensions_AddDefaultUI_Microsoft_AspNetCore_Identity_IdentityBuilder_)
 * [адддефаулттокенпровидерс](/dotnet/api/microsoft.aspnetcore.identity.identitybuilderextensions.adddefaulttokenproviders?view=aspnetcore-2.1#Microsoft_AspNetCore_Identity_IdentityBuilderExtensions_AddDefaultTokenProviders_Microsoft_AspNetCore_Identity_IdentityBuilder_)
 
-Дополнительные сведения см. в разделе [адддефаултидентити Source](https://github.com/aspnet/AspNetCore/blob/release/2.2/src/Identity/UI/src/IdentityServiceCollectionUIExtensions.cs#L47-L63) .
+Дополнительные сведения см. в разделе [адддефаултидентити Source](https://github.com/aspnet/AspNetCore/blob/release/3.0/src/Identity/UI/src/IdentityServiceCollectionUIExtensions.cs#L47-L63) .
 
 ::: moniker-end
 
@@ -59,7 +59,7 @@ dotnet new webapp --auth Individual -o WebApp1
 
 ---
 
-Созданный проект предоставляет [ASP.NET Core удостоверение](xref:security/authentication/identity) в виде [библиотеки классов Razor](xref:razor-pages/ui-class). Библиотека классов Razor Identity предоставляет конечные точки с `Identity` областью. Например:
+Созданный проект предоставляет [ASP.NET Core удостоверение](xref:security/authentication/identity) в виде [библиотеки классов Razor](xref:razor-pages/ui-class). Библиотека классов Razor Identity предоставляет конечные точки с областью `Identity`. Пример:
 
 * /идентити/аккаунт/логин
 * /идентити/аккаунт/логаут
@@ -101,7 +101,7 @@ dotnet ef database update
 
 Приведенный выше код настраивает удостоверение с использованием значений параметров по умолчанию. Доступ к службам предоставляется приложению посредством [внедрения зависимостей](xref:fundamentals/dependency-injection).
 
-   Удостоверение включается путем вызова [усеаусентикатион](/dotnet/api/microsoft.aspnetcore.builder.authappbuilderextensions.useauthentication#Microsoft_AspNetCore_Builder_AuthAppBuilderExtensions_UseAuthentication_Microsoft_AspNetCore_Builder_IApplicationBuilder_). `UseAuthentication`добавляет по [промежуточного слоя](xref:fundamentals/middleware/index) проверки подлинности в конвейер запросов.
+   Удостоверение включается путем вызова [усеаусентикатион](/dotnet/api/microsoft.aspnetcore.builder.authappbuilderextensions.useauthentication#Microsoft_AspNetCore_Builder_AuthAppBuilderExtensions_UseAuthentication_Microsoft_AspNetCore_Builder_IApplicationBuilder_). `UseAuthentication` добавляет по [промежуточного слоя](xref:fundamentals/middleware/index) проверки подлинности в конвейер запросов.
 
    [!code-csharp[](identity/sample/WebApp1/Startup.cs?name=snippet_configure&highlight=18)]
 
@@ -113,7 +113,7 @@ dotnet ef database update
 
    Доступ к службам предоставляется приложению посредством [внедрения зависимостей](xref:fundamentals/dependency-injection).
 
-   Удостоверение включается для приложения путем вызова `UseAuthentication` `Configure` метода в методе. `UseAuthentication`добавляет по [промежуточного слоя](xref:fundamentals/middleware/index) проверки подлинности в конвейер запросов.
+   Удостоверение включается для приложения путем вызова `UseAuthentication` в методе `Configure`. `UseAuthentication` добавляет по [промежуточного слоя](xref:fundamentals/middleware/index) проверки подлинности в конвейер запросов.
 
    [!code-csharp[](identity/sample/src/ASPNETv2-IdentityDemo/Startup.cs?name=snippet_configure&highlight=17)]
 
@@ -125,7 +125,7 @@ dotnet ef database update
 
    Эти службы становятся доступными для приложения посредством [внедрения зависимостей](xref:fundamentals/dependency-injection).
 
-   Удостоверение включается для приложения путем вызова `UseIdentity` `Configure` метода в методе. `UseIdentity`добавляет по [промежуточного слоя](xref:fundamentals/middleware/index) проверки подлинности на основе файлов cookie в конвейер запросов.
+   Удостоверение включается для приложения путем вызова `UseIdentity` в методе `Configure`. `UseIdentity` добавляет по [промежуточного слоя](xref:fundamentals/middleware/index) проверки подлинности на основе файлов cookie в конвейер запросов.
 
    [!code-csharp[](identity/sample/src/ASPNET-IdentityDemo/Startup.cs?name=snippet_configure&highlight=21)]
 
@@ -143,7 +143,7 @@ dotnet ef database update
 
 # <a name="net-core-clitabnetcore-cli"></a>[Интерфейс командной строки .NET Core](#tab/netcore-cli)
 
-Если вы создали проект с именем " **APP1**", выполните следующие команды. В противном случае используйте правильное пространство имен `ApplicationDbContext`для:
+Если вы создали проект с именем " **APP1**", выполните следующие команды. В противном случае используйте правильное пространство имен для `ApplicationDbContext`:
 
 ```dotnetcli
 dotnet add package Microsoft.VisualStudio.Web.CodeGeneration.Design
@@ -158,7 +158,7 @@ dotnet aspnet-codegenerator identity -dc WebApp1.Data.ApplicationDbContext --fil
 
 ::: moniker range=">= aspnetcore-2.1"
 
-   Когда пользователь щелкает ссылку **Register** , `RegisterModel.OnPostAsync` вызывается действие. Пользователь создается с помощью [CreateAsync](/dotnet/api/microsoft.aspnetcore.identity.usermanager-1.createasync#Microsoft_AspNetCore_Identity_UserManager_1_CreateAsync__0_System_String_) для `_userManager` объекта. `_userManager`предоставляется путем внедрения зависимостей):
+   Когда пользователь щелкает ссылку **Register** , вызывается действие `RegisterModel.OnPostAsync`. Пользователь создается с помощью [CreateAsync](/dotnet/api/microsoft.aspnetcore.identity.usermanager-1.createasync#Microsoft_AspNetCore_Identity_UserManager_1_CreateAsync__0_System_String_) на объекте `_userManager`. `_userManager` предоставляется путем внедрения зависимостей):
 
    [!code-csharp[](identity/sample/WebApp1/Areas/Identity/Pages/Account/Register.cshtml.cs?name=snippet&highlight=7,22)]
 
@@ -166,7 +166,7 @@ dotnet aspnet-codegenerator identity -dc WebApp1.Data.ApplicationDbContext --fil
 
 ::: moniker range="= aspnetcore-2.0"
 
-   Когда пользователь щелкает ссылку **Register** , `Register` действие вызывается в `AccountController`. Действие `Register` создает пользователя путем вызова метода `CreateAsync` объекта`_userManager` (обеспечивается в `AccountController` путем внедрения зависимостей):
+   Когда пользователь щелкает ссылку **Register** , действие `Register` вызывается в `AccountController`. Действие `Register` создает пользователя путем вызова метода `CreateAsync` объекта`_userManager` (обеспечивается в `AccountController` путем внедрения зависимостей):
 
    [!code-csharp[](identity/sample/src/ASPNET-IdentityDemo/Controllers/AccountController.cs?name=snippet_register&highlight=11)]
 
@@ -185,23 +185,23 @@ dotnet aspnet-codegenerator identity -dc WebApp1.Data.ApplicationDbContext --fil
 * Выбрана ссылка для **входа** .
 * Пользователь пытается получить доступ к странице с ограниченным доступом, которая не авторизована для доступа, **или** если система не прошла проверку подлинности.
 
-При отправке `OnPostAsync` формы на странице входа вызывается действие. `PasswordSignInAsync`вызывается для `_signInManager` объекта (предоставляется путем внедрения зависимостей).
+При отправке формы на странице входа вызывается действие `OnPostAsync`. `PasswordSignInAsync` вызывается для объекта `_signInManager` (предоставляется путем внедрения зависимостей).
 
    [!code-csharp[](identity/sample/WebApp1/Areas/Identity/Pages/Account/Login.cshtml.cs?name=snippet&highlight=10-11)]
 
-   Базовый `Controller` класс`User` предоставляет свойство, доступ к которому можно получить из методов контроллера. Например, можно перечислять `User.Claims` и принимать решения об авторизации. Дополнительные сведения см. в разделе <xref:security/authorization/introduction>.
+   Базовый класс `Controller` предоставляет свойство `User`, доступ к которому можно получить из методов контроллера. Например, можно перечислить `User.Claims` и принимать решения об авторизации. Дополнительные сведения см. в разделе <xref:security/authorization/introduction>.
 
 ::: moniker-end
 
 ::: moniker range="= aspnetcore-2.0"
 
-Форма входа отображается, когда пользователь выбирает ссылку для **входа** или перенаправляется при обращении к странице, требующей проверки подлинности. Когда пользователь отправляет форму на страницу входа, `AccountController` `Login` вызывается действие.
+Форма входа отображается, когда пользователь выбирает ссылку для **входа** или перенаправляется при обращении к странице, требующей проверки подлинности. Когда пользователь отправляет форму на страницу входа, вызывается действие `AccountController` `Login`.
 
-Действие вызывает `PasswordSignInAsync` объект(`AccountController` предоставляется путем внедрения зависимостей). `_signInManager` `Login`
+Действие `Login` вызывает `PasswordSignInAsync` для объекта `_signInManager` (предоставляется в `AccountController` путем внедрения зависимостей).
 
 [!code-csharp[](identity/sample/src/ASPNET-IdentityDemo/Controllers/AccountController.cs?name=snippet_login&highlight=13-14)]
 
-Базовый класс (`Controller` или `PageModel`) предоставляет `User` свойство. Например, можно `User.Claims` перечислить, чтобы принимать решения об авторизации.
+Базовый класс (`Controller` или `PageModel`) предоставляет свойство `User`. Например, `User.Claims` можно перечислить, чтобы принимать решения об авторизации.
 
 ::: moniker-end
 
@@ -209,7 +209,7 @@ dotnet aspnet-codegenerator identity -dc WebApp1.Data.ApplicationDbContext --fil
 
 ::: moniker range=">= aspnetcore-2.1"
 
-Ссылка **выхода** вызывает `LogoutModel.OnPost` действие. 
+Ссылка **выхода** вызывает действие `LogoutModel.OnPost`. 
 
 [!code-csharp[](identity/sample/WebApp1/Areas/Identity/Pages/Account/Logout.cshtml.cs)]
 
@@ -223,17 +223,17 @@ POST указывается в параметре *pages/Shared/_LoginPartial. c
 
 ::: moniker range="= aspnetcore-2.0"
 
-   Щелкнув ссылку **выход** , вы вызываете `LogOut` действие.
+   Щелкнув ссылку **выхода** , вы вызываете действие `LogOut`.
 
    [!code-csharp[](identity/sample/src/ASPNET-IdentityDemo/Controllers/AccountController.cs?name=snippet_logout&highlight=7)]
 
-   Приведенный выше код вызывает `_signInManager.SignOutAsync` метод. `SignOutAsync` Метод очищает утверждения пользователя, хранящиеся в файле cookie.
+   Приведенный выше код вызывает метод `_signInManager.SignOutAsync`. Метод `SignOutAsync` очищает утверждения пользователя, хранящиеся в файле cookie.
 
 ::: moniker-end
 
 ## <a name="test-identity"></a>Проверить удостоверение
 
-Шаблоны веб-проектов по умолчанию разрешают анонимный доступ к домашним страницам. Чтобы проверить удостоверение, [`[Authorize]`](/dotnet/api/microsoft.aspnetcore.authorization.authorizeattribute) добавьте на страницу конфиденциальность.
+Шаблоны веб-проектов по умолчанию разрешают анонимный доступ к домашним страницам. Чтобы проверить удостоверение, добавьте [`[Authorize]`](/dotnet/api/microsoft.aspnetcore.authorization.authorizeattribute) на страницу конфиденциальности.
 
 [!code-csharp[](identity/sample/WebApp1/Pages/Privacy.cshtml.cs?highlight=6)]
 
@@ -258,7 +258,7 @@ POST указывается в параметре *pages/Shared/_LoginPartial. c
 
 ::: moniker-end
 
-Основным пакетом для удостоверения является [Microsoft. AspNetCore. Identity](https://www.nuget.org/packages/Microsoft.AspNetCore.Identity/). Этот пакет содержит основной набор интерфейсов для ASP.NET Core удостоверения и включается `Microsoft.AspNetCore.Identity.EntityFrameworkCore`в.
+Основным пакетом для удостоверения является [Microsoft. AspNetCore. Identity](https://www.nuget.org/packages/Microsoft.AspNetCore.Identity/). Этот пакет содержит основной набор интерфейсов для ASP.NET Core удостоверения и включается `Microsoft.AspNetCore.Identity.EntityFrameworkCore`.
 
 ## <a name="migrating-to-aspnet-core-identity"></a>Миграция на ASP.NET Core удостоверение
 
