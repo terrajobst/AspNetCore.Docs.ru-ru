@@ -6,12 +6,12 @@ monikerRange: '>= aspnetcore-3.0'
 ms.author: johluo
 ms.date: 09/20/2019
 uid: grpc/index
-ms.openlocfilehash: 88ceeba329ff2c7d764b7a5eabd5413da6ace765
-ms.sourcegitcommit: 8a36be1bfee02eba3b07b7a86085ec25c38bae6b
+ms.openlocfilehash: 2f32bf6e8df2c5b3574c337682cdc2845991630c
+ms.sourcegitcommit: 73e255e846e414821b8cc20ffa3aec946735cd4e
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71219119"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71925175"
 ---
 # <a name="introduction-to-grpc-on-net-core"></a>Общие сведения об использовании gRPC на платформе .NET Core
 
@@ -120,6 +120,8 @@ Console.WriteLine(response.Message);
 Клиент gRPC создается с помощью канала, который представляет длительное подключение к службе gRPC. Канал можно создать с помощью `GrpcChannel.ForAddress`.
 
 Дополнительные сведения о создании клиентов и вызове различных методов службы см. в статье <xref:grpc/client>.
+
+[!INCLUDE[](~/includes/gRPCazure.md)]
 
 ## <a name="additional-resources"></a>Дополнительные ресурсы
 
