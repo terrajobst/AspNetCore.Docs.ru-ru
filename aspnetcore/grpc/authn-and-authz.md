@@ -6,24 +6,24 @@ monikerRange: '>= aspnetcore-3.0'
 ms.author: jamesnk
 ms.date: 08/13/2019
 uid: grpc/authn-and-authz
-ms.openlocfilehash: 19018c4ffae1228055a4858b496f135d015625b4
-ms.sourcegitcommit: 89fcc6cb3e12790dca2b8b62f86609bed6335be9
+ms.openlocfilehash: e8dd384ec43a66e56891925dcaa529085fa200c7
+ms.sourcegitcommit: 6d26ab647ede4f8e57465e29b03be5cb130fc872
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68993289"
+ms.lasthandoff: 10/07/2019
+ms.locfileid: "71999858"
 ---
 # <a name="authentication-and-authorization-in-grpc-for-aspnet-core"></a>Проверка подлинности и авторизация в gRPC для ASP.NET Core
 
 [Джеймс Ньютона-короля](https://twitter.com/jamesnk)
 
-[Просмотр или скачивание образца кода](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/grpc/authn-and-authz/sample/) [(как скачать)](xref:index#how-to-download-a-sample)
+[Просмотр или скачивание образца кода](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/grpc/authn-and-authz/sample/) [(Загрузка)](xref:index#how-to-download-a-sample)
 
 ## <a name="authenticate-users-calling-a-grpc-service"></a>Проверка подлинности пользователей, вызывающих службу gRPC
 
-gRPC можно использовать с проверкой подлинности [ASP.NET Core](xref:security/authentication/identity) , чтобы связать пользователя с каждым вызовом.
+gRPC можно использовать с [проверкой подлинности ASP.NET Core](xref:security/authentication/identity) , чтобы связать пользователя с каждым вызовом.
 
-Ниже приведен пример `Startup.Configure` использования проверки подлинности gRPC и ASP.NET Core.
+Ниже приведен пример `Startup.Configure`, в котором используется проверка подлинности gRPC и ASP.NET Core.
 
 ```csharp
 public void Configure(IApplicationBuilder app)
@@ -41,11 +41,11 @@ public void Configure(IApplicationBuilder app)
 ```
 
 > [!NOTE]
-> Порядок, в котором регистрируется ASP.NET Core по промежуточного слоя проверки подлинности. Всегда `UseAuthentication` вызывайте `UseAuthorization` и `UseRouting` After и `UseEndpoints`before.
+> Порядок, в котором регистрируется ASP.NET Core по промежуточного слоя проверки подлинности. Всегда вызывайте `UseAuthentication` и `UseAuthorization` после `UseRouting` и до `UseEndpoints`.
 
-Механизм проверки подлинности, используемый приложением во время вызова, необходимо настроить. Конфигурация проверки подлинности `Startup.ConfigureServices` добавляется в и будет отличаться в зависимости от используемого в приложении механизма проверки подлинности. Примеры защиты приложений ASP.NET Core см. в статье [примеры проверки](xref:security/authentication/samples)подлинности.
+Механизм проверки подлинности, используемый приложением во время вызова, необходимо настроить. Конфигурация проверки подлинности добавляется в `Startup.ConfigureServices` и будет отличаться в зависимости от используемого в приложении механизма проверки подлинности. Примеры защиты приложений ASP.NET Core см. в статье [примеры проверки подлинности](xref:security/authentication/samples).
 
-После настройки проверки подлинности доступ к пользователю можно получить в методах службы gRPC через `ServerCallContext`.
+После настройки проверки подлинности пользователь может получить доступ к gRPC методам службы через `ServerCallContext`.
 
 ```csharp
 public override Task<BuyTicketsResponse> BuyTickets(
@@ -80,6 +80,32 @@ public bool DoAuthenticatedCall(
 }
 ```
 
+Настройка `ChannelCredentials` в канале — альтернативный способ отправки маркера службе с вызовами gRPC. Учетные данные запускаются каждый раз при вызове gRPC, что позволяет избежать необходимости писать код в нескольких местах для самостоятельного передачи маркера.
+
+Учетные данные в следующем примере настраивают канал для отправки маркера при каждом вызове gRPC:
+
+```csharp
+private static GrpcChannel CreateAuthenticatedChannel(string address)
+{
+    var credentials = CallCredentials.FromInterceptor((context, metadata) =>
+    {
+        if (!string.IsNullOrEmpty(_token))
+        {
+            metadata.Add("Authorization", $"Bearer {_token}");
+        }
+        return Task.CompletedTask;
+    });
+
+    // SslCredentials is used here because this channel is using TLS.
+    // Channels that aren't using TLS should use ChannelCredentials.Insecure instead.
+    var channel = GrpcChannel.ForAddress(address, new GrpcChannelOptions
+    {
+        Credentials = ChannelCredentials.Create(new SslCredentials(), credentials)
+    });
+    return channel;
+}
+```
+
 ### <a name="client-certificate-authentication"></a>Проверка подлинности сертификата клиента
 
 Клиент может также предоставить сертификат клиента для проверки подлинности. [Проверка подлинности сертификата](https://tools.ietf.org/html/rfc5246#section-7.4.4) выполняется на уровне TLS, прежде чем он когда-либо получит ASP.NET Core. Когда запрос переходит ASP.NET Core, [пакет проверки подлинности сертификата клиента](xref:security/authentication/certauth) позволяет разрешить сертификат в `ClaimsPrincipal`.
@@ -87,7 +113,7 @@ public bool DoAuthenticatedCall(
 > [!NOTE]
 > Узел должен быть настроен для приема сертификатов клиентов. Сведения о принятии сертификатов клиентов в Kestrel, IIS и Azure см. в статье [Настройка узла для запроса сертификатов](xref:security/authentication/certauth#configure-your-host-to-require-certificates) .
 
-В клиенте .NET gRPC сертификат клиента добавляется `HttpClientHandler` в, который затем используется для создания клиента gRPC:
+В клиенте .NET gRPC сертификат клиента добавляется в `HttpClientHandler`, который затем используется для создания клиента gRPC:
 
 ```csharp
 public Ticketer.TicketerClient CreateClientWithCert(
@@ -98,11 +124,13 @@ public Ticketer.TicketerClient CreateClientWithCert(
     var handler = new HttpClientHandler();
     handler.ClientCertificates.Add(certificate);
 
-    // Create the gRPC client
-    var httpClient = new HttpClient(handler);
-    httpClient.BaseAddress = new Uri(baseAddress);
+    // Create the gRPC channel
+    var channel = GrpcChannel.ForAddress(baseAddress, new GrpcChannelOptions
+    {
+        HttpClient = new HttpClient(handler)
+    });
 
-    return GrpcClient.Create<Ticketer.TicketerClient>(httpClient);
+    return new Ticketer.TicketerClient(channel);
 }
 ```
 
@@ -122,8 +150,8 @@ public Ticketer.TicketerClient CreateClientWithCert(
 
 Настройка клиента gRPC для использования проверки подлинности будет зависеть от используемого механизма проверки подлинности. В предыдущем примере маркера носителя и сертификата клиента показаны несколько способов настройки клиента gRPC для отправки метаданных проверки подлинности с помощью вызовов gRPC:
 
-* Строго типизированные клиенты gRPC `HttpClient` используют внутреннее. Проверку подлинности можно [`HttpClientHandler`](/dotnet/api/system.net.http.httpclienthandler)настроить для или путем добавления [`HttpMessageHandler`](/dotnet/api/system.net.http.httpmessagehandler) пользовательских экземпляров `HttpClient`в.
-* Каждый вызов gRPC имеет необязательный `CallOptions` аргумент. Пользовательские заголовки можно отправлять с помощью коллекции заголовков параметра.
+* Строго типизированные клиенты gRPC используют `HttpClient` внутренне. Проверку подлинности можно настроить для [`HttpClientHandler`](/dotnet/api/system.net.http.httpclienthandler)или путем добавления пользовательских экземпляров [`HttpMessageHandler`](/dotnet/api/system.net.http.httpmessagehandler) в `HttpClient`.
+* Каждый вызов gRPC имеет необязательный аргумент `CallOptions`. Пользовательские заголовки можно отправлять с помощью коллекции заголовков параметра.
 
 > [!NOTE]
 > Проверка подлинности Windows (NTLM/Kerberos/Negotiate) не может использоваться с gRPC. для gRPC требуется HTTP/2, а HTTP/2 не поддерживает проверку подлинности Windows.
@@ -139,7 +167,7 @@ public class TicketerService : Ticketer.TicketerBase
 }
 ```
 
-Можно использовать аргументы конструктора и свойства `[Authorize]` атрибута, чтобы ограничить доступ только тем пользователям, которые соответствуют определенным политикам [авторизации](xref:security/authorization/policies). Например, если имеется пользовательская политика `MyAuthorizationPolicy`авторизации, убедитесь, что только пользователи, соответствующие этой политике, могут получить доступ к службе, используя следующий код:
+Можно использовать аргументы конструктора и свойства атрибута `[Authorize]`, чтобы ограничить доступ только пользователями, соответствующими определенным [политикам авторизации](xref:security/authorization/policies). Например, если имеется пользовательская политика авторизации с именем `MyAuthorizationPolicy`, убедитесь, что только пользователи, соответствующие этой политике, имеют доступ к службе, используя следующий код:
 
 ```csharp
 [Authorize("MyAuthorizationPolicy")]
@@ -148,7 +176,7 @@ public class TicketerService : Ticketer.TicketerBase
 }
 ```
 
-К отдельным методам службы также `[Authorize]` может применяться атрибут. Если текущий пользователь не соответствует политикам, примененным **как** к методу, так и к классу, вызывающему объекту будет возвращена ошибка:
+Для отдельных методов службы также можно применить атрибут `[Authorize]`. Если текущий пользователь не соответствует политикам, примененным **как** к методу, так и к классу, вызывающему объекту будет возвращена ошибка:
 
 ```csharp
 [Authorize]

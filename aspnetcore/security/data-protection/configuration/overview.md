@@ -1,37 +1,37 @@
 ---
-title: Настройка защиты данных в ASP.NET Core
+title: Настройка защиты данных ASP.NET Core
 author: rick-anderson
 description: Узнайте, как настроить защиту данных в ASP.NET Core.
 ms.author: riande
 ms.custom: mvc
-ms.date: 04/11/2019
+ms.date: 10/07/2019
 uid: security/data-protection/configuration/overview
-ms.openlocfilehash: 65a927b6288ca6cc41ee1bedd1080e52ffe0d3e1
-ms.sourcegitcommit: 335a88c1b6e7f0caa8a3a27db57c56664d676d34
+ms.openlocfilehash: 380293f650c9548c286f98c0447c7ed08b918f2a
+ms.sourcegitcommit: 3d082bd46e9e00a3297ea0314582b1ed2abfa830
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 06/12/2019
-ms.locfileid: "67034924"
+ms.lasthandoff: 10/07/2019
+ms.locfileid: "72007379"
 ---
-# <a name="configure-aspnet-core-data-protection"></a>Настройка защиты данных в ASP.NET Core
+# <a name="configure-aspnet-core-data-protection"></a>Настройка защиты данных ASP.NET Core
 
-При инициализации системы защиты данных, оно применяется [параметры по умолчанию](xref:security/data-protection/configuration/default-settings) зависимости от рабочей среды. Эти параметры обычно подходят для приложений, выполняющихся на одном компьютере. Бывают случаи, где разработчик может потребоваться изменить параметры по умолчанию:
+При инициализации системы защиты данных применяются [параметры по умолчанию](xref:security/data-protection/configuration/default-settings) , основанные на рабочей среде. Эти параметры обычно подходят для приложений, выполняющихся на одном компьютере. Существуют случаи, когда разработчику может потребоваться изменить параметры по умолчанию.
 
-* Приложения распределены между несколькими компьютерами.
-* Для обеспечения соответствия.
+* Приложение распределено между несколькими компьютерами.
+* По соображениям соответствия.
 
-В таких случаях системы защиты данных предлагает широкие возможности настройки API.
+В этих сценариях система защиты данных предоставляет богатый API настройки.
 
 > [!WARNING]
-> Как и файлы конфигурации, набора ключей защиты данных должны быть защищены с помощью соответствующих разрешений. Можно выбрать для шифрования ключей при хранении, но это не предотвращает злоумышленники созданием новых ключей. Следовательно это повлияет на безопасность приложения. Место хранения, настроен с защитой данных должны иметь его доступ возможен только из самого, аналогично тому, как бы Защита файлов конфигурации приложения. Например если вы решили хранить на диске вашего набора ключей, используйте разрешения файловой системы. Убедитесь, удостоверение, под которой запущено приложение чтения, записи и доступа к этому каталогу. Если вы используете хранилище BLOB-объектов, веб-приложения должны иметь возможность читать, записывать и создавать новые записи в хранилище больших двоичных объектов и т. д.
+> Как и файлы конфигурации, кольцо ключа защиты данных следует защищать с помощью соответствующих разрешений. Вы можете выбрать шифрование неактивных ключей, но это не помешает злоумышленникам создавать новые ключи. Таким образом, безопасность приложения затронута. Доступ к расположению хранилища, настроенному с помощью защиты данных, должен иметь только само приложение, аналогично тому, как вы защищаете файлы конфигурации. Например, если вы решили сохранить ключ на диске, используйте разрешения файловой системы. Убедитесь, что только удостоверение, под которым выполняется веб-приложение, имеет доступ на чтение, запись и создание этого каталога. При использовании хранилища больших двоичных объектов Azure только веб-приложение должно иметь возможность чтения, записи или создания новых записей в хранилище больших двоичных объектов и т. д.
 >
-> Метод расширения [AddDataProtection](/dotnet/api/microsoft.extensions.dependencyinjection.dataprotectionservicecollectionextensions.adddataprotection) возвращает [IDataProtectionBuilder](/dotnet/api/microsoft.aspnetcore.dataprotection.idataprotectionbuilder). `IDataProtectionBuilder` Предоставляет методы расширения, что вы можете связать вместе, чтобы настроить защиту данных.
+> Метод расширения [адддатапротектион](/dotnet/api/microsoft.extensions.dependencyinjection.dataprotectionservicecollectionextensions.adddataprotection) возвращает [идатапротектионбуилдер](/dotnet/api/microsoft.aspnetcore.dataprotection.idataprotectionbuilder). `IDataProtectionBuilder` предоставляет методы расширения, которые можно объединить в цепочку для настройки параметров защиты данных.
 
 ::: moniker range=">= aspnetcore-2.1"
 
-## <a name="protectkeyswithazurekeyvault"></a>ProtectKeysWithAzureKeyVault
+## <a name="protectkeyswithazurekeyvault"></a>протекткэйсвисазурекэйваулт
 
-Для хранения ключей в [Azure Key Vault](https://azure.microsoft.com/services/key-vault/), настройки системы с [ProtectKeysWithAzureKeyVault](/dotnet/api/microsoft.aspnetcore.dataprotection.azuredataprotectionbuilderextensions.protectkeyswithazurekeyvault) в `Startup` класса:
+Чтобы сохранить ключи в [Azure Key Vault](https://azure.microsoft.com/services/key-vault/), настройте систему с помощью [протекткэйсвисазурекэйваулт](/dotnet/api/microsoft.aspnetcore.dataprotection.azuredataprotectionbuilderextensions.protectkeyswithazurekeyvault) в классе `Startup`:
 
 ```csharp
 public void ConfigureServices(IServiceCollection services)
@@ -42,21 +42,21 @@ public void ConfigureServices(IServiceCollection services)
 }
 ```
 
-Задать место хранения набора ключей (например, [PersistKeysToAzureBlobStorage](/dotnet/api/microsoft.aspnetcore.dataprotection.azuredataprotectionbuilderextensions.persistkeystoazureblobstorage)). Необходимо задать расположение, так как вызов `ProtectKeysWithAzureKeyVault` реализует [IXmlEncryptor](/dotnet/api/microsoft.aspnetcore.dataprotection.xmlencryption.ixmlencryptor) , отключает параметры защиты автоматические данные, включая место хранения набора ключей. Предыдущий пример использует хранилище BLOB-объектов для хранения набора ключей. Дополнительные сведения см. в разделе [поставщики хранилища ключей: службы хранилища Azure](xref:security/data-protection/implementation/key-storage-providers#azure-storage). Также можно сохранить локально с помощью набора ключей [PersistKeysToFileSystem](xref:security/data-protection/implementation/key-storage-providers#file-system).
+Задайте место хранения ключевых звонков (например, [персисткэйстоазуреблобстораже](/dotnet/api/microsoft.aspnetcore.dataprotection.azuredataprotectionbuilderextensions.persistkeystoazureblobstorage)). Расположение должно быть задано, поскольку вызов `ProtectKeysWithAzureKeyVault` реализует [иксмленкриптор](/dotnet/api/microsoft.aspnetcore.dataprotection.xmlencryption.ixmlencryptor) , который отключает автоматические параметры защиты данных, включая место хранения ключевых звонков. В предыдущем примере для сохранения ключа используется хранилище BLOB-объектов Azure. Дополнительные сведения см. в разделе поставщики хранилища [Key: службы хранилища Azure](xref:security/data-protection/implementation/key-storage-providers#azure-storage). Вы также можете сохранить ключ в локальной системе с помощью [персисткэйстофилесистем](xref:security/data-protection/implementation/key-storage-providers#file-system).
 
-`keyIdentifier` Является идентификатор ключа хранилища ключей, используемый для шифрования ключа. Например, ключ, созданный в хранилище ключей с именем `dataprotection` в `contosokeyvault` имеет идентификатор ключа `https://contosokeyvault.vault.azure.net/keys/dataprotection/`. Укажите приложение с **распаковку ключа** и **Wrap Key** разрешений в хранилище ключей.
+@No__t-0 — это идентификатор ключа хранилища ключей, используемый для шифрования ключей. Например, ключ, созданный в хранилище ключей с именем `dataprotection` в `contosokeyvault`, имеет идентификатор ключа `https://contosokeyvault.vault.azure.net/keys/dataprotection/`. Укажите приложение с **ключом** **распаковки** и разрешениями на ключ для хранилища ключей.
 
-`ProtectKeysWithAzureKeyVault` перегрузки:
+`ProtectKeysWithAzureKeyVault` перегрузок:
 
-* [ProtectKeysWithAzureKeyVault (IDataProtectionBuilder KeyVaultClient, String)](/dotnet/api/microsoft.aspnetcore.dataprotection.azuredataprotectionbuilderextensions.protectkeyswithazurekeyvault#Microsoft_AspNetCore_DataProtection_AzureDataProtectionBuilderExtensions_ProtectKeysWithAzureKeyVault_Microsoft_AspNetCore_DataProtection_IDataProtectionBuilder_Microsoft_Azure_KeyVault_KeyVaultClient_System_String_) позволяет использовать [KeyVaultClient](/dotnet/api/microsoft.azure.keyvault.keyvaultclient) системы защиты данных для использования хранилища ключей.
-* [ProtectKeysWithAzureKeyVault (IDataProtectionBuilder, строка, строка, X509Certificate2)](/dotnet/api/microsoft.aspnetcore.dataprotection.azuredataprotectionbuilderextensions.protectkeyswithazurekeyvault#Microsoft_AspNetCore_DataProtection_AzureDataProtectionBuilderExtensions_ProtectKeysWithAzureKeyVault_Microsoft_AspNetCore_DataProtection_IDataProtectionBuilder_System_String_System_String_System_Security_Cryptography_X509Certificates_X509Certificate2_) позволяет использовать `ClientId` и [X509Certificate](/dotnet/api/system.security.cryptography.x509certificates.x509certificate2) системы защиты данных для использования хранилища ключей.
-* [ProtectKeysWithAzureKeyVault (IDataProtectionBuilder, строки, String, String)](/dotnet/api/microsoft.aspnetcore.dataprotection.azuredataprotectionbuilderextensions.protectkeyswithazurekeyvault#Microsoft_AspNetCore_DataProtection_AzureDataProtectionBuilderExtensions_ProtectKeysWithAzureKeyVault_Microsoft_AspNetCore_DataProtection_IDataProtectionBuilder_System_String_System_String_System_String_) позволяет использовать `ClientId` и `ClientSecret` для включения система защиты данных для использования хранилища ключей.
+* [Протекткэйсвисазурекэйваулт (идатапротектионбуилдер, KeyVaultClient, String)](/dotnet/api/microsoft.aspnetcore.dataprotection.azuredataprotectionbuilderextensions.protectkeyswithazurekeyvault#Microsoft_AspNetCore_DataProtection_AzureDataProtectionBuilderExtensions_ProtectKeysWithAzureKeyVault_Microsoft_AspNetCore_DataProtection_IDataProtectionBuilder_Microsoft_Azure_KeyVault_KeyVaultClient_System_String_) позволяет использовать [KeyVaultClient](/dotnet/api/microsoft.azure.keyvault.keyvaultclient) для обеспечения возможности использования хранилища ключей системой защиты данных.
+* [Протекткэйсвисазурекэйваулт (идатапротектионбуилдер, String, String, X509Certificate2)](/dotnet/api/microsoft.aspnetcore.dataprotection.azuredataprotectionbuilderextensions.protectkeyswithazurekeyvault#Microsoft_AspNetCore_DataProtection_AzureDataProtectionBuilderExtensions_ProtectKeysWithAzureKeyVault_Microsoft_AspNetCore_DataProtection_IDataProtectionBuilder_System_String_System_String_System_Security_Cryptography_X509Certificates_X509Certificate2_) позволяет использовать `ClientId` и [сертификат X509Certificate](/dotnet/api/system.security.cryptography.x509certificates.x509certificate2) , чтобы система защиты данных использовала хранилище ключей.
+* [Протекткэйсвисазурекэйваулт (идатапротектионбуилдер, строка, строка, строка)](/dotnet/api/microsoft.aspnetcore.dataprotection.azuredataprotectionbuilderextensions.protectkeyswithazurekeyvault#Microsoft_AspNetCore_DataProtection_AzureDataProtectionBuilderExtensions_ProtectKeysWithAzureKeyVault_Microsoft_AspNetCore_DataProtection_IDataProtectionBuilder_System_String_System_String_System_String_) позволяет использовать `ClientId` и `ClientSecret`, чтобы система защиты данных использовала хранилище ключей.
 
 ::: moniker-end
 
-## <a name="persistkeystofilesystem"></a>PersistKeysToFileSystem
+## <a name="persistkeystofilesystem"></a>персисткэйстофилесистем
 
-Для хранения ключей UNC-ресурсе, а не в *% LOCALAPPDATA %* расположение по умолчанию, настроить систему с [PersistKeysToFileSystem](/dotnet/api/microsoft.aspnetcore.dataprotection.dataprotectionbuilderextensions.persistkeystofilesystem):
+Чтобы хранить ключи в общем UNC-ресурсе, а не в расположении *% LocalAppData%* по умолчанию, настройте систему с помощью [персисткэйстофилесистем](/dotnet/api/microsoft.aspnetcore.dataprotection.dataprotectionbuilderextensions.persistkeystofilesystem):
 
 ```csharp
 public void ConfigureServices(IServiceCollection services)
@@ -67,11 +67,11 @@ public void ConfigureServices(IServiceCollection services)
 ```
 
 > [!WARNING]
-> При изменении ключа постоянном расположении, система шифрует больше не будет автоматически ключей при хранении, так как он не знает, является ли DPAPI соответствующего механизма шифрования.
+> Если изменить расположение сохраняемости ключей, система больше не шифрует неактивных ключей автоматически, так как не знает, является ли DPAPI подходящим механизмом шифрования.
 
-## <a name="protectkeyswith"></a>ProtectKeysWith\*
+## <a name="protectkeyswith"></a>Протекткэйсвис @ no__t-0
 
-Можно настроить систему для защиты неактивных ключей можно вызвать любую из [ProtectKeysWith\* ](/dotnet/api/microsoft.aspnetcore.dataprotection.dataprotectionbuilderextensions) интерфейсов API настройки. Рассмотрим пример ниже, в котором хранятся ключи на общем ресурсе UNC и шифрует эти ключи хранятся с конкретным сертификатом X.509:
+Можно настроить систему для защиты неактивных ключей, вызвав любой из API настройки [протекткэйсвис @ no__t-1](/dotnet/api/microsoft.aspnetcore.dataprotection.dataprotectionbuilderextensions) . Рассмотрим приведенный ниже пример, в котором ключи хранятся в общем UNC-ресурсе и шифруются с помощью определенного сертификата X. 509:
 
 ```csharp
 public void ConfigureServices(IServiceCollection services)
@@ -84,7 +84,7 @@ public void ConfigureServices(IServiceCollection services)
 
 ::: moniker range=">= aspnetcore-2.1"
 
-В ASP.NET Core 2.1 или более поздней версии, вы можете предоставить [X509Certificate2](/dotnet/api/system.security.cryptography.x509certificates.x509certificate2) для [ProtectKeysWithCertificate](/dotnet/api/microsoft.aspnetcore.dataprotection.dataprotectionbuilderextensions.protectkeyswithcertificate), такие как сертификат, загруженная из файла:
+В ASP.NET Core 2,1 или более поздней версии можно предоставить [X509Certificate2](/dotnet/api/system.security.cryptography.x509certificates.x509certificate2) [протекткэйсвисцертификате](/dotnet/api/microsoft.aspnetcore.dataprotection.dataprotectionbuilderextensions.protectkeyswithcertificate), например сертификат, загруженный из файла:
 
 ```csharp
 public void ConfigureServices(IServiceCollection services)
@@ -98,13 +98,13 @@ public void ConfigureServices(IServiceCollection services)
 
 ::: moniker-end
 
-См. в разделе [ключ шифрования неактивных](xref:security/data-protection/implementation/key-encryption-at-rest) Дополнительные примеры и обсуждения на механизмы встроенного ключа шифрования.
+Дополнительные примеры и обсуждение встроенных механизмов шифрования ключей см. в разделе [неактивных ключей шифрования](xref:security/data-protection/implementation/key-encryption-at-rest) .
 
 ::: moniker range=">= aspnetcore-2.1"
 
-## <a name="unprotectkeyswithanycertificate"></a>UnprotectKeysWithAnyCertificate
+## <a name="unprotectkeyswithanycertificate"></a>унпротекткэйсвисаницертификате
 
-В ASP.NET Core 2.1 или более поздней версии, могут обеспечивать циркуляцию сертификатов и расшифровки ключей при хранении, используя массив [X509Certificate2](/dotnet/api/system.security.cryptography.x509certificates.x509certificate2) сертификаты с [UnprotectKeysWithAnyCertificate](/dotnet/api/microsoft.aspnetcore.dataprotection.dataprotectionbuilderextensions.unprotectkeyswithanycertificate):
+В ASP.NET Core 2,1 или более поздней версии можно поворачивать сертификаты и расшифровывать ключи в неактивном виде, используя массив сертификатов [X509Certificate2](/dotnet/api/system.security.cryptography.x509certificates.x509certificate2) с [унпротекткэйсвисаницертификате](/dotnet/api/microsoft.aspnetcore.dataprotection.dataprotectionbuilderextensions.unprotectkeyswithanycertificate):
 
 ```csharp
 public void ConfigureServices(IServiceCollection services)
@@ -121,9 +121,9 @@ public void ConfigureServices(IServiceCollection services)
 
 ::: moniker-end
 
-## <a name="setdefaultkeylifetime"></a>SetDefaultKeyLifetime
+## <a name="setdefaultkeylifetime"></a>сетдефаулткэйлифетиме
 
-Чтобы настроить систему для использования ключа времени существования 14 дней вместо значения по умолчанию 90 дней, используйте [SetDefaultKeyLifetime](/dotnet/api/microsoft.aspnetcore.dataprotection.dataprotectionbuilderextensions.setdefaultkeylifetime):
+Чтобы настроить систему на использование времени жизни ключа, равного 14 дням, вместо 90 дней по умолчанию, используйте [сетдефаулткэйлифетиме](/dotnet/api/microsoft.aspnetcore.dataprotection.dataprotectionbuilderextensions.setdefaultkeylifetime):
 
 ```csharp
 public void ConfigureServices(IServiceCollection services)
@@ -135,14 +135,14 @@ public void ConfigureServices(IServiceCollection services)
 
 ## <a name="setapplicationname"></a>SetApplicationName
 
-По умолчанию система защиты данных изолирует приложений друг от друга в зависимости от их содержимого корневого пути, даже если они совместно используют тот же репозиторий физического ключа. Это предотвращает основные сведения о других защищенных полезных данных приложения.
+По умолчанию система защиты данных изолирует приложения друг от друга на основе их [корневых путей к содержимому](xref:fundamentals/index#content-root) , даже если они совместно используют один и тот же физический репозиторий ключей. Это предотвращает понимание приложениями защищенных полезных данных друг друга.
 
-Совместное использование защищенных полезных данных между приложениями:
+Для совместного использования защищенных полезных данных между приложениями:
 
-* Настройка <xref:Microsoft.AspNetCore.DataProtection.DataProtectionBuilderExtensions.SetApplicationName*> в каждом приложении, с тем же значением.
-* Используют ту же версию API защиты данных стека между этими приложениями. Выполните **либо** из следующих в файлах проектов приложений:
-  * Ссылаться на той же версии общей платформы, с помощью [метапакет Microsoft.AspNetCore.App](xref:fundamentals/metapackage-app).
-  * Ссылаются на тот же [защиты данных пакета](xref:security/data-protection/introduction#package-layout) версии.
+* Настройте <xref:Microsoft.AspNetCore.DataProtection.DataProtectionBuilderExtensions.SetApplicationName*> в каждом приложении с тем же значением.
+* Используйте одну и ту же версию стека API для защиты данных в приложениях. Выполните **одно** из следующих действий в файлах проекта приложений:
+  * Сослаться на ту же версию общей платформы через [метапакет Microsoft. AspNetCore. app](xref:fundamentals/metapackage-app).
+  * Сослаться на ту же версию [пакета защиты данных](xref:security/data-protection/introduction#package-layout) .
 
 ```csharp
 public void ConfigureServices(IServiceCollection services)
@@ -152,9 +152,9 @@ public void ConfigureServices(IServiceCollection services)
 }
 ```
 
-## <a name="disableautomatickeygeneration"></a>DisableAutomaticKeyGeneration
+## <a name="disableautomatickeygeneration"></a>дисаблеаутоматиккэйженератион
 
-Возможно, сценарий, где вы не хотите приложению автоматически менять ключи, (создание новых ключей), так как они подходят истечения срока действия. Примером этого может быть приложения, в связи первичного и вторичного, где только основное приложение отвечает за управление ключами задач и дополнительный приложения просто доступное только для чтения представление набора ключей. Вторичный приложения можно настроить необходимо рассматривать набора ключей только для чтения, настройки системы с <xref:Microsoft.AspNetCore.DataProtection.DataProtectionBuilderExtensions.DisableAutomaticKeyGeneration*>:
+У вас может быть сценарий, в котором приложение не должно автоматически выполнять откат ключей (создание новых ключей) по мере их истечения. Одним из примеров могут быть приложения, настроенные в связи «первичная/вторичная», в которой только основное приложение отвечает на вопросы управления ключами, а дополнительные приложения просто имеют доступное только для чтения представление круга ключей. Вторичные приложения можно настроить так, чтобы они обрабатывали ключевое кольцо как доступное только для чтения, настроив систему с <xref:Microsoft.AspNetCore.DataProtection.DataProtectionBuilderExtensions.DisableAutomaticKeyGeneration*>:
 
 ```csharp
 public void ConfigureServices(IServiceCollection services)
@@ -164,24 +164,24 @@ public void ConfigureServices(IServiceCollection services)
 }
 ```
 
-## <a name="per-application-isolation"></a>Изоляция на уровне приложения
+## <a name="per-application-isolation"></a>Изоляция отдельных приложений
 
-Когда система защиты данных предоставляется узлом ASP.NET Core, она автоматически изолирует приложений друг от друга, даже если эти приложения выполняются под одной учетной записи рабочего процесса и при использовании же материала главного ключа. Это отчасти напоминает модификатора IsolateApps из System.Web `<machineKey>` элемент.
+Когда система защиты данных предоставляется узлом ASP.NET Core, она автоматически изолирует приложения друг от друга, даже если эти приложения выполняются в той же учетной записи рабочего процесса и используют один и тот же материал основного ключа. Это в некоторой степени аналогично модификатору IsolateApps из элемента System. Web `<machineKey>`.
 
-Механизм изоляции работает путем оценки каждого приложения на локальном компьютере как уникальный клиент, таким образом <xref:Microsoft.AspNetCore.DataProtection.IDataProtector> административного доступа для любого приложения автоматически включает в себя идентификатор приложения в качестве дискриминатора. Уникальный идентификатор приложения — это физический путь приложения:
+Механизм изоляции работает путем рассмотрения каждого приложения на локальном компьютере в качестве уникального клиента, поэтому <xref:Microsoft.AspNetCore.DataProtection.IDataProtector> с корнем для любого конкретного приложения автоматически включает идентификатор приложения в качестве дискриминатора. Уникальный идентификатор приложения — это физический путь приложения:
 
-* Для приложений, размещенных в IIS уникальный идентификатор — это физический путь приложения IIS. Если приложение развертывается в среде веб-фермы, это значение стабильна, при условии, что в средах службы IIS настраиваются сходным образом на всех компьютерах веб-фермы.
-* Для резидентных приложений, запущенных в [сервер Kestrel](xref:fundamentals/servers/index#kestrel), уникальный идентификатор — это физический путь к приложению на диске.
+* Для приложений, размещенных в службах IIS, уникальный идентификатор — это физический путь IIS приложения. Если приложение развернуто в среде веб-фермы, это значение является стабильным при условии, что среды IIS настроены одинаково на всех компьютерах в веб-ферме.
+* Для автономных приложений, работающих на [сервере Kestrel](xref:fundamentals/servers/index#kestrel), уникальный идентификатор — это физический путь к приложению на диске.
 
-Уникальный идентификатор позволяет избежать простоев в случае сброса&mdash;как отдельные приложения и самой виртуальной машине.
+Уникальный идентификатор предназначен для того, чтобы выдерживать сброс @ no__t-0both отдельного приложения и самого компьютера.
 
-Этот механизм изоляции предполагается, что приложения не являются вредоносными. Вредоносные приложения всегда может повлиять на любое другое приложение, под одной учетной записи рабочего процесса. В общей среде размещения, когда приложения являются взаимно без доверия поставщика услуг размещения принять меры для обеспечения изоляции на уровне операционной системы между приложениями, включая Отделение приложений основного ключа хранилища.
+Этот механизм изоляции предполагает, что приложения не являются вредоносными. Вредоносное приложение всегда может повлиять на любое другое приложение, выполняемое в той же учетной записи рабочего процесса. В общей среде размещения, в которой приложения взаимно не считаются доверенными, поставщик услуг размещения должен принять меры по обеспечению изоляции на уровне ОС между приложениями, включая разделение базовых хранилищ ключей приложений.
 
-Если система защиты данных не предоставляется для узла ASP.NET Core (например, в том случае, если необходимо создать его с помощью `DataProtectionProvider` конкретный тип) изоляция приложений отключена по умолчанию. При отключении изоляции приложений, все приложения, с тем же материала ключа, могут использовать полезные данные до тех пор, пока они предоставляют соответствующие [целей](xref:security/data-protection/consumer-apis/purpose-strings). Чтобы обеспечить изоляцию приложения в этой среде, вызовите [SetApplicationName](#setapplicationname) метод конфигурации объекта и введите уникальное имя для каждого приложения.
+Если система защиты данных не предоставляется узлом ASP.NET Core (например, если создать экземпляр с помощью изоляции приложения `DataProtectionProvider`) по умолчанию отключена. Если изоляция приложений отключена, все приложения, которые поддерживаются одним и тем же материалом для ключа, могут совместно использовать полезные данные, если они предоставляют соответствующие [цели](xref:security/data-protection/consumer-apis/purpose-strings). Чтобы обеспечить изоляцию приложений в этой среде, вызовите метод [SetApplicationName](#setapplicationname) объекта конфигурации и укажите уникальное имя для каждого приложения.
 
-## <a name="changing-algorithms-with-usecryptographicalgorithms"></a>Изменение алгоритмов с UseCryptographicAlgorithms
+## <a name="changing-algorithms-with-usecryptographicalgorithms"></a>Изменение алгоритмов с помощью Усекриптографикалгорисмс
 
-В стеке защиты данных можно изменить алгоритм по умолчанию, используемые вновь созданные ключи. Самый простой способ сделать это является вызов [UseCryptographicAlgorithms](/dotnet/api/microsoft.aspnetcore.dataprotection.dataprotectionbuilderextensions.usecryptographicalgorithms) из обратного вызова конфигурации:
+Стек защиты данных позволяет изменить алгоритм по умолчанию, используемый созданными новыми ключами. Самый простой способ сделать это — вызвать [усекриптографикалгорисмс](/dotnet/api/microsoft.aspnetcore.dataprotection.dataprotectionbuilderextensions.usecryptographicalgorithms) из обратного вызова конфигурации:
 
 ::: moniker range=">= aspnetcore-2.0"
 
@@ -211,20 +211,20 @@ services.AddDataProtection()
 
 ::: moniker-end
 
-По умолчанию EncryptionAlgorithm AES-256-CBC, а значение по умолчанию ValidationAlgorithm — HMACSHA256. Политика по умолчанию можно задать с системным администратором через [политики на уровне компьютера](xref:security/data-protection/configuration/machine-wide-policy), но явный вызов `UseCryptographicAlgorithms` переопределяет политику по умолчанию.
+По умолчанию EncryptionAlgorithm имеет значение AES-256-CBC, а Валидатионалгорисм по умолчанию — HMACSHA256. Политика по умолчанию может быть задана системным администратором с помощью [политики на уровне компьютера](xref:security/data-protection/configuration/machine-wide-policy), но явный вызов `UseCryptographicAlgorithms` переопределяет политику по умолчанию.
 
-Вызов `UseCryptographicAlgorithms` можно указать нужный алгоритм из предопределенного списка встроенных. Не нужно беспокоиться о реализации этого алгоритма. В сценарии выше система защиты данных пытается использовать реализацию CNG алгоритма AES, если под управлением Windows. В противном случае она возвращается к управляемой [System.Security.Cryptography.Aes](/dotnet/api/system.security.cryptography.aes) класса.
+Вызов `UseCryptographicAlgorithms` позволяет указать нужный алгоритм из предопределенного встроенного списка. Не нужно беспокоиться о реализации алгоритма. В приведенном выше сценарии система защиты данных пытается использовать реализацию CNG AES при запуске в Windows. В противном случае он возвращается к управляемому классу [System. Security. Cryptography. AES](/dotnet/api/system.security.cryptography.aes) .
 
-Можно вручную указать реализацию через вызов [UseCustomCryptographicAlgorithms](/dotnet/api/microsoft.aspnetcore.dataprotection.dataprotectionbuilderextensions.usecustomcryptographicalgorithms).
+Реализацию можно указать вручную с помощью вызова [усекустомкриптографикалгорисмс](/dotnet/api/microsoft.aspnetcore.dataprotection.dataprotectionbuilderextensions.usecustomcryptographicalgorithms).
 
 > [!TIP]
-> Изменение алгоритмов не влияет на существующие ключи в связку ключей. Он влияет только на вновь созданные ключи.
+> Изменение алгоритмов не влияет на существующие ключи в кольце ключа. Он влияет только на вновь созданные ключи.
 
 ### <a name="specifying-custom-managed-algorithms"></a>Указание пользовательских управляемых алгоритмов
 
 ::: moniker range=">= aspnetcore-2.0"
 
-Чтобы указать пользовательские управляемые алгоритмы, создайте [ManagedAuthenticatedEncryptorConfiguration](/dotnet/api/microsoft.aspnetcore.dataprotection.authenticatedencryption.configurationmodel.managedauthenticatedencryptorconfiguration) экземпляр, который указывает типы реализации:
+Чтобы указать пользовательские управляемые алгоритмы, создайте экземпляр [манажедаусентикатеденкрипторконфигуратион](/dotnet/api/microsoft.aspnetcore.dataprotection.authenticatedencryption.configurationmodel.managedauthenticatedencryptorconfiguration) , указывающий на типы реализации:
 
 ```csharp
 serviceCollection.AddDataProtection()
@@ -246,7 +246,7 @@ serviceCollection.AddDataProtection()
 
 ::: moniker range="< aspnetcore-2.0"
 
-Чтобы указать пользовательские управляемые алгоритмы, создайте [ManagedAuthenticatedEncryptionSettings](/dotnet/api/microsoft.aspnetcore.dataprotection.authenticatedencryption.managedauthenticatedencryptionsettings) экземпляр, который указывает типы реализации:
+Чтобы указать пользовательские управляемые алгоритмы, создайте экземпляр [манажедаусентикатеденкриптионсеттингс](/dotnet/api/microsoft.aspnetcore.dataprotection.authenticatedencryption.managedauthenticatedencryptionsettings) , указывающий на типы реализации:
 
 ```csharp
 serviceCollection.AddDataProtection()
@@ -266,16 +266,16 @@ serviceCollection.AddDataProtection()
 
 ::: moniker-end
 
-Обычно \*тип свойства должен указывать на конкретный, допускающий создание экземпляров (через открытый конструктор без параметров) реализации [SymmetricAlgorithm](/dotnet/api/system.security.cryptography.symmetricalgorithm) и [KeyedHashAlgorithm](/dotnet/api/system.security.cryptography.keyedhashalgorithm), хотя Специальные случаи системы некоторые значения, такие как `typeof(Aes)` для удобства.
+Как правило, свойства \*Type должны указывать на конкретные, допускающие создание экземпляров (с помощью общедоступного конструктора без параметров) [SymmetricAlgorithm](/dotnet/api/system.security.cryptography.symmetricalgorithm) и [KeyedHashAlgorithm](/dotnet/api/system.security.cryptography.keyedhashalgorithm), несмотря на то, что системные специальные параметры, например `typeof(Aes)` для удобным.
 
 > [!NOTE]
-> SymmetricAlgorithm должен иметь длину ключа 128 бит ≥ и размер блока в ≥ 64 бита, и он должен поддерживать шифрование CBC режим заполнения PKCS #7. KeyedHashAlgorithm должен иметь размер хэш-кода > = 128 бит, и он должен поддерживать ключи равна длине дайджест хэш-алгоритма и длины. KeyedHashAlgorithm не строго обязательно должны быть HMAC.
+> SymmetricAlgorithm должен иметь длину ключа ≥ 128 бит и размер блока ≥ 64 бит, и он должен поддерживать шифрование в режиме CBC с заполнением PKCS #7. KeyedHashAlgorithm должен иметь размер дайджеста > = 128 бит и должен поддерживать ключи длиной, равную длине дайджеста хэш-алгоритма. KeyedHashAlgorithm строго не обязательно должен быть HMAC.
 
-### <a name="specifying-custom-windows-cng-algorithms"></a>Указание пользовательские алгоритмы Windows CNG
+### <a name="specifying-custom-windows-cng-algorithms"></a>Указание пользовательских алгоритмов CNG Windows
 
 ::: moniker range=">= aspnetcore-2.0"
 
-Чтобы задать пользовательский алгоритм Windows CNG с помощью шифрования в режиме CBC с проверкой HMAC, создайте [CngCbcAuthenticatedEncryptorConfiguration](/dotnet/api/microsoft.aspnetcore.dataprotection.authenticatedencryption.configurationmodel.cngcbcauthenticatedencryptorconfiguration) экземпляр, содержащий данные алгоритма:
+Чтобы указать пользовательский алгоритм CNG Windows с помощью шифрования в режиме CBC с проверкой HMAC, создайте экземпляр [кнгкбкаусентикатеденкрипторконфигуратион](/dotnet/api/microsoft.aspnetcore.dataprotection.authenticatedencryption.configurationmodel.cngcbcauthenticatedencryptorconfiguration) , содержащий алгоритмную информацию:
 
 ```csharp
 services.AddDataProtection()
@@ -299,7 +299,7 @@ services.AddDataProtection()
 
 ::: moniker range="< aspnetcore-2.0"
 
-Чтобы задать пользовательский алгоритм Windows CNG с помощью шифрования в режиме CBC с проверкой HMAC, создайте [CngCbcAuthenticatedEncryptionSettings](/dotnet/api/microsoft.aspnetcore.dataprotection.authenticatedencryption.cngcbcauthenticatedencryptionsettings) экземпляр, содержащий данные алгоритма:
+Чтобы указать пользовательский алгоритм CNG Windows с помощью шифрования в режиме CBC с проверкой HMAC, создайте экземпляр [кнгкбкаусентикатеденкриптионсеттингс](/dotnet/api/microsoft.aspnetcore.dataprotection.authenticatedencryption.cngcbcauthenticatedencryptionsettings) , содержащий алгоритмную информацию:
 
 ```csharp
 services.AddDataProtection()
@@ -322,11 +322,11 @@ services.AddDataProtection()
 ::: moniker-end
 
 > [!NOTE]
-> Алгоритм симметричного блочного шифрования должен иметь длину ключа > = 128 бит, размер блока > = 64 бита, и он должен поддерживать шифрование CBC режим заполнения PKCS #7. Хэш-алгоритм, должен иметь размер хэш-кода из > 128 бит и должен поддерживать, открытого в BCRYPT\_ALG\_ОБРАБАТЫВАТЬ\_HMAC\_флаг ФЛАГ. \*Поставщика свойства можно задать значение null, чтобы использовать поставщика по умолчанию для указанного алгоритма. См. в разделе [BCryptOpenAlgorithmProvider](https://msdn.microsoft.com/library/windows/desktop/aa375479(v=vs.85).aspx) Дополнительные сведения см.
+> Алгоритм блочного блочного шифра должен иметь длину ключа > = 128 бит, размер блока > = 64 бит и должен поддерживать шифрование в режиме CBC с использованием дополнений PKCS #7. Хэш-алгоритм должен иметь размер дайджеста > = 128 бит и должен поддерживать открытие с флагом BCRYPT @ no__t-0ALG @ no__t-1HANDLE @ no__t-2HMAC @ no__t-3FLAG. Свойства \*Provider могут иметь значение null, чтобы использовать поставщик по умолчанию для указанного алгоритма. Дополнительные сведения см. в документации по [BCryptOpenAlgorithmProvider](https://msdn.microsoft.com/library/windows/desktop/aa375479(v=vs.85).aspx) .
 
 ::: moniker range=">= aspnetcore-2.0"
 
-Чтобы задать пользовательский алгоритм Windows CNG с помощью счетчиков Galois режим шифрования с помощью проверки, создайте [CngGcmAuthenticatedEncryptorConfiguration](/dotnet/api/microsoft.aspnetcore.dataprotection.authenticatedencryption.configurationmodel.cnggcmauthenticatedencryptorconfiguration) экземпляр, содержащий данные алгоритма:
+Чтобы указать пользовательский алгоритм CNG Windows, используя Галоис/шифрование в режиме счетчика с проверкой, создайте экземпляр [кнггкмаусентикатеденкрипторконфигуратион](/dotnet/api/microsoft.aspnetcore.dataprotection.authenticatedencryption.configurationmodel.cnggcmauthenticatedencryptorconfiguration) , содержащий алгоритмную информацию:
 
 ```csharp
 services.AddDataProtection()
@@ -346,7 +346,7 @@ services.AddDataProtection()
 
 ::: moniker range="< aspnetcore-2.0"
 
-Чтобы задать пользовательский алгоритм Windows CNG с помощью счетчиков Galois режим шифрования с помощью проверки, создайте [CngGcmAuthenticatedEncryptionSettings](/dotnet/api/microsoft.aspnetcore.dataprotection.authenticatedencryption.cnggcmauthenticatedencryptionsettings) экземпляр, содержащий данные алгоритма:
+Чтобы указать пользовательский алгоритм CNG Windows, используя Галоис/шифрование в режиме счетчика с проверкой, создайте экземпляр [кнггкмаусентикатеденкриптионсеттингс](/dotnet/api/microsoft.aspnetcore.dataprotection.authenticatedencryption.cnggcmauthenticatedencryptionsettings) , содержащий алгоритмную информацию:
 
 ```csharp
 services.AddDataProtection()
@@ -365,18 +365,22 @@ services.AddDataProtection()
 ::: moniker-end
 
 > [!NOTE]
-> Алгоритм симметричного блочного шифрования должен иметь длину ключа > = 128 бит, размер блока в точности 128 бит, и он должен поддерживать шифрование GCM. Можно задать [EncryptionAlgorithmProvider](/dotnet/api/microsoft.aspnetcore.dataprotection.authenticatedencryption.configurationmodel.cngcbcauthenticatedencryptorconfiguration.encryptionalgorithmprovider) свойство значение null, чтобы использовать поставщика по умолчанию для указанного алгоритма. См. в разделе [BCryptOpenAlgorithmProvider](https://msdn.microsoft.com/library/windows/desktop/aa375479(v=vs.85).aspx) Дополнительные сведения см.
+> Алгоритм симметричного блочного шифра должен иметь длину ключа > = 128 бит, размер блока ровно 128 бит и должен поддерживать шифрование GCM. Чтобы использовать поставщик по умолчанию для указанного алгоритма, можно задать для свойства [енкриптионалгорисмпровидер](/dotnet/api/microsoft.aspnetcore.dataprotection.authenticatedencryption.configurationmodel.cngcbcauthenticatedencryptorconfiguration.encryptionalgorithmprovider) значение null. Дополнительные сведения см. в документации по [BCryptOpenAlgorithmProvider](https://msdn.microsoft.com/library/windows/desktop/aa375479(v=vs.85).aspx) .
 
-### <a name="specifying-other-custom-algorithms"></a>Указание другие пользовательские алгоритмы
+### <a name="specifying-other-custom-algorithms"></a>Указание других пользовательских алгоритмов
 
-Хотя не представлен как первоклассную API, система защиты данных достаточно расширяемым для того, чтобы обеспечить возможность указания практически любой тип алгоритма. Например можно сохранить все ключи, содержащиеся в модуле оборудования безопасности (HSM) и предоставить пользовательскую реализацию основные процедуры шифрования и расшифровки. См. в разделе [IAuthenticatedEncryptor](/dotnet/api/microsoft.aspnetcore.dataprotection.authenticatedencryption.iauthenticatedencryptor) в [основы расширяемости шифрования](xref:security/data-protection/extensibility/core-crypto) Дополнительные сведения.
+Несмотря на то, что не предоставляется в качестве API первого класса, система защиты данных достаточно расширяема, чтобы можно было указать практически любой тип алгоритма. Например, можно хранить все ключи, содержащиеся в аппаратном модуле безопасности (HSM), и обеспечивать пользовательскую реализацию подпрограмм шифрования и расшифровки. Дополнительные сведения см. в статье [иаусентикатеденкриптор](/dotnet/api/microsoft.aspnetcore.dataprotection.authenticatedencryption.iauthenticatedencryptor) в разделе [расширение криптографии Core](xref:security/data-protection/extensibility/core-crypto) .
 
-## <a name="persisting-keys-when-hosting-in-a-docker-container"></a>Сохранение ключей при размещении в контейнере Docker
+## <a name="persisting-keys-when-hosting-in-a-docker-container"></a>Сохранение ключей при размещении в контейнере DOCKER
 
-При размещении в [Docker](/dotnet/standard/microservices-architecture/container-docker-introduction/) контейнера, ключи следует хранить в одном:
+При размещении в контейнере [DOCKER](/dotnet/standard/microservices-architecture/container-docker-introduction/) ключи должны поддерживаться в одном из следующих:
 
-* Папка, — это том Docker, который сохраняется вне пределов продолжительности контейнера, например общего тома или узла подключенного тома.
-* Внешнего поставщика, таких как [Azure Key Vault](https://azure.microsoft.com/services/key-vault/) или [Redis](https://redis.io/).
+* Папка, которая является томом DOCKER, который сохраняется за пределами времени существования контейнера, например общего тома или тома, подключенного к узлу.
+* Внешний поставщик, например [Azure Key Vault](https://azure.microsoft.com/services/key-vault/) или [Redis](https://redis.io/).
+
+## <a name="persisting-keys-with-redis"></a>Сохранение ключей с помощью Redis
+
+Для хранения ключей следует использовать только версии Redis, поддерживающие [сохраняемость данных Redis](/azure/azure-cache-for-redis/cache-how-to-premium-persistence) . [Хранилище BLOB-объектов Azure](/azure/storage/blobs/storage-blobs-introduction) является постоянным и может использоваться для хранения ключей. Дополнительные сведения см. в разделе [проблема GitHub](https://github.com/aspnet/AspNetCore/issues/13476).
 
 ## <a name="additional-resources"></a>Дополнительные ресурсы
 
