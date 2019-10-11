@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 06/18/2019
 uid: host-and-deploy/docker/building-net-docker-images
-ms.openlocfilehash: 12665fb2e7a9c75747f5c83129a617aea6adfbbf
-ms.sourcegitcommit: e644258c95dd50a82284f107b9bf3becbc43b2b2
+ms.openlocfilehash: 64503ed55438b24f2d3d87092107408ddcb515d7
+ms.sourcegitcommit: fcdf9aaa6c45c1a926bd870ed8f893bdb4935152
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71317693"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72165267"
 ---
 # <a name="docker-images-for-aspnet-core"></a>Образы Docker для ASP.NET Core
 
@@ -19,7 +19,7 @@ ms.locfileid: "71317693"
 
 В этом учебнике рассмотрены следующие задачи.
 > [!div class="checklist"]
-> * узнаете о создании образов Docker для Microsoft .NET Core; 
+> * узнаете о создании образов Docker для Microsoft .NET Core;
 > * скачивание примера приложения ASP.NET Core;
 > * локальное выполнение примера приложения;
 > * выполнение примера приложения в контейнерах Linux;
@@ -36,13 +36,21 @@ ms.locfileid: "71317693"
 
   Этот образ используется в этом примере для создания приложения. Образ содержит пакет SDK для .NET Core, который включает программы командной строки (CLI). Он оптимизирован для локальной разработки, отладки и модульного тестирования. Установленные средства разработки и компиляции делают этот образ относительно большим. 
 
-* `dotnet/core/aspnet` 
+* `dotnet/core/aspnet`
 
    Этот образ используется в этом примере для выполнения приложения. Этот образ содержит среду выполнения и библиотеки ASP.NET Core и оптимизирован для запуска приложений в рабочей среде. Образ нацелен на высокую скорость развертывания и запуска приложений, поэтому он сравнительно невелик, что позволяет оптимизировать производительность сети между реестром Docker и узлом Docker. В контейнер копируются только двоичные файлы и содержимое, необходимые для запуска приложений. Все содержимое готово к запуску, что гарантирует самый короткий срок от запуска `Docker run` до запуска приложения. В модели Docker динамическая компиляция кода не требуется.
 
 ## <a name="prerequisites"></a>Предварительные требования
+::: moniker range="< aspnetcore-3.0"
+
+* [Пакет SDK для .NET Core 2.2](https://www.microsoft.com/net/core)
+::: moniker-end
+
+::: moniker range=">= aspnetcore-3.0"
 
 * [Пакет SDK для .NET Core 3.0](https://dotnet.microsoft.com/download)
+
+::: moniker-end
 
 * Клиент Docker 18.03 или более поздней версии
 
@@ -168,6 +176,8 @@ ms.locfileid: "71317693"
 
 Чтобы использовать приложение, опубликованное вручную в контейнере Docker, создайте новый Dockerfile и выполните команду `docker build .`, чтобы создать контейнер.
 
+::: moniker range="< aspnetcore-3.0"
+
 ```console
 FROM mcr.microsoft.com/dotnet/core/aspnet:2.2 AS runtime
 WORKDIR /app
@@ -200,6 +210,51 @@ COPY --from=build /app/aspnetapp/out ./
 ENTRYPOINT ["dotnet", "aspnetapp.dll"]
 ```
 
+::: moniker-end
+
+::: moniker range=">= aspnetcore-3.0"
+
+```console
+FROM mcr.microsoft.com/dotnet/core/aspnet:3.0 AS runtime
+WORKDIR /app
+COPY published/aspnetapp.dll ./
+ENTRYPOINT ["dotnet", "aspnetapp.dll"]
+```
+
+### <a name="the-dockerfile"></a>Файл Dockerfile
+
+Представленный здесь файл *Dockerfile* используется в команде `docker build`, которую вы выполняли ранее.  Она использует `dotnet publish` для создания и развертывания так же, как показано в этом разделе.  
+
+```dockerfile
+FROM mcr.microsoft.com/dotnet/core/sdk:3.0 AS build
+WORKDIR /app
+
+# copy csproj and restore as distinct layers
+COPY *.sln .
+COPY aspnetapp/*.csproj ./aspnetapp/
+RUN dotnet restore
+
+# copy everything else and build app
+COPY aspnetapp/. ./aspnetapp/
+WORKDIR /app/aspnetapp
+RUN dotnet publish -c Release -o out
+
+
+FROM mcr.microsoft.com/dotnet/core/aspnet:3.0 AS runtime
+WORKDIR /app
+COPY --from=build /app/aspnetapp/out ./
+ENTRYPOINT ["dotnet", "aspnetapp.dll"]
+```
+
+::: moniker-end
+
+```console
+FROM mcr.microsoft.com/dotnet/core/aspnet:3.0 AS runtime
+WORKDIR /app
+COPY published/aspnetapp.dll ./
+ENTRYPOINT ["dotnet", "aspnetapp.dll"]
+```
+
 ## <a name="additional-resources"></a>Дополнительные ресурсы
 
 * [Команда Docker build](https://docs.docker.com/engine/reference/commandline/build)
@@ -210,15 +265,6 @@ ENTRYPOINT ["dotnet", "aspnetapp.dll"]
 * [Отладка с помощью Visual Studio Code](https://code.visualstudio.com/docs/nodejs/debugging-recipes#_debug-nodejs-in-docker-containers) 
 
 ## <a name="next-steps"></a>Следующие шаги
-
-В этом учебнике рассмотрены следующие задачи.
-> [!div class="checklist"]
-> * узнали о создании образов Docker для Microsoft .NET Core; 
-> * скачивание примера приложения ASP.NET Core;
-> * локальное выполнение примера приложения;
-> * выполнение примера приложения в контейнерах Linux;
-> * выполнение примера приложения в контейнерах Windows;
-> * сборка и развертывание вручную.
 
 Репозиторий Git помимо примера приложения содержит и документацию. Обзор ресурсов, доступных в этом репозитории, см. [в файле README](https://github.com/dotnet/dotnet-docker/blob/master/samples/aspnetapp/README.md). Особый интерес представляют сведения о реализации протокола HTTPS:
 

@@ -5,14 +5,14 @@ description: Узнайте, как разместить приложение AS
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 08/08/2019
+ms.date: 10/03/2019
 uid: tutorials/publish-to-iis
-ms.openlocfilehash: 4ac7b3a2f738e443263dd888f556e0aff7c8099b
-ms.sourcegitcommit: 215954a638d24124f791024c66fd4fb9109fd380
+ms.openlocfilehash: 820527cc15f883c906d2fdf1c073d443a5b3b40e
+ms.sourcegitcommit: d8b12cc1716ee329d7bd2300e201b61e15d506ac
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71082383"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71942885"
 ---
 # <a name="publish-an-aspnet-core-app-to-iis"></a>Публикация приложения ASP.NET Core в службах IIS
 
@@ -43,7 +43,7 @@ ms.locfileid: "71082383"
 
 ## <a name="install-the-net-core-hosting-bundle"></a>Установка пакета размещения .NET Core
 
-Установите *пакет размещения .NET Core* на сервере служб IIS. В составе пакета устанавливаются среда выполнения .NET Core, библиотека .NET Core и [модуль ASP.NET Core](xref:host-and-deploy/aspnet-core-module). Модуль позволяет запускать приложения ASP.NET Core под управлением IIS. Если система не подключена к Интернету, перед установкой пакета размещения .NET Core получите и установите [Распространяемый компонент Microsoft Visual C++ 2015](https://www.microsoft.com/download/details.aspx?id=53840).
+Установите *пакет размещения .NET Core* на сервере служб IIS. В составе пакета устанавливаются среда выполнения .NET Core, библиотека .NET Core и [модуль ASP.NET Core](xref:host-and-deploy/aspnet-core-module). Модуль позволяет запускать приложения ASP.NET Core под управлением IIS.
 
 Скачайте установщик по следующей ссылке:
 

@@ -4,15 +4,15 @@ author: Rick-Anderson
 description: В этой статье описывается создание многократно используемых Razor пользовательского интерфейса, использование частичных представлений в библиотеку классов, в ASP.NET Core.
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
-ms.date: 09/21/2019
+ms.date: 10/08/2019
 ms.custom: mvc, seodec18
 uid: razor-pages/ui-class
-ms.openlocfilehash: 1b544e208be049f02d01e35daa6eb3bfba94265a
-ms.sourcegitcommit: 04ce94b3c1b01d167f30eed60c1c95446dfe759d
-ms.translationtype: MT
+ms.openlocfilehash: d656e924033f1b217cdd8c86f7d00411c5d71beb
+ms.sourcegitcommit: 73a451e9a58ac7102f90b608d661d8c23dd9bbaf
+ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/21/2019
-ms.locfileid: "71176477"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72037583"
 ---
 # <a name="create-reusable-ui-using-the-razor-class-library-project-in-aspnet-core"></a>Создание повторно используемого пользовательского интерфейса с помощью проекта библиотеки классов Razor в ASP.NET Core
 
@@ -32,19 +32,19 @@ ms.locfileid: "71176477"
 * Выберите **Новое веб-приложение ASP.NET Core**.
 * Назовите библиотеку (например, "RazorClassLib") > **OK**. Чтобы избежать конфликта имени файла с созданной библиотекой представлений, проверьте, что имя библиотеки не заканчивается на `.Views`.
 * Убедитесь, что выбран параметр **ASP.NET Core 3,0** или более поздней версии.
-* Выберите **Razor класс библиотека** > классов **ОК**.
+* Выберите **Razor Class Library** > **ОК**.
 
-По умолчанию шаблон библиотеки классов Razor (РКЛ) по умолчанию разрабатывает компоненты Razor. Параметр шаблона в Visual Studio обеспечивает поддержку шаблонов для страниц и представлений.
+По умолчанию для шаблона библиотеки классов Razor (RCL) используется разработка компонентов Razor. Параметр шаблона в Visual Studio обеспечивает поддержку шаблонов для страниц и представлений.
 
 # <a name="net-core-clitabnetcore-cli"></a>[Интерфейс командной строки .NET Core](#tab/netcore-cli)
 
-Выполните из командной строки команду `dotnet new razorclasslib`. Например:
+Выполните из командной строки команду `dotnet new razorclasslib`. Пример:
 
 ```dotnetcli
 dotnet new razorclasslib -o RazorUIClassLib
 ```
 
-По умолчанию шаблон библиотеки классов Razor (РКЛ) по умолчанию разрабатывает компоненты Razor. Передайте`dotnet new razorclasslib -support-pages-and-views`параметр (), чтобы обеспечить поддержку страниц и представлений. `-support-pages-and-views`
+По умолчанию для шаблона библиотеки классов Razor (RCL) используется разработка компонентов Razor. Передайте параметр `--support-pages-and-views` (`dotnet new razorclasslib --support-pages-and-views`), чтобы обеспечить поддержку страниц и представлений.
 
 Дополнительные сведения см. в разделе [dotnet new](/dotnet/core/tools/dotnet-new). Чтобы избежать конфликта имени файла с созданной библиотекой представлений, проверьте, что имя библиотеки не заканчивается на `.Views`.
 
@@ -52,7 +52,7 @@ dotnet new razorclasslib -o RazorUIClassLib
 
 Добавление файлов Razor в RCL.
 
-Шаблоны ASP.NET Core считает содержимое RCL *областей* папки. Чтобы создать РКЛ, который предоставляет содержимое в, а не `~/Areas/Pages`в `~/Pages` , см. раздел [РКЛ Pages Layout](#rcl-pages-layout) .
+Шаблоны ASP.NET Core считает содержимое RCL *областей* папки. Чтобы создать РКЛ, который предоставляет содержимое `~/Pages`, а не `~/Areas/Pages`, см. раздел [макет страниц РКЛ](#rcl-pages-layout) .
 
 ## <a name="reference-rcl-content"></a>Справочные материалы по РКЛ
 
@@ -96,7 +96,7 @@ dotnet new razorclasslib -o RazorUIClassLib
 
 ### <a name="exclude-static-assets"></a>Исключить статические активы
 
-Чтобы исключить статические ресурсы, добавьте нужный путь исключения в `$(DefaultItemExcludes)` группу свойств в файле проекта. Разделяйте записи точкой с`;`запятой ().
+Чтобы исключить статические ресурсы, добавьте нужный путь исключения в группу свойств `$(DefaultItemExcludes)` в файле проекта. Разделяйте записи точкой с запятой (`;`).
 
 В следующем примере таблица " *библиотека lib. CSS* " в папке *wwwroot* не считается статическим ресурсом и не включается в опубликованные РКЛ:
 
@@ -112,13 +112,13 @@ dotnet new razorclasslib -o RazorUIClassLib
 
 1. Поместите файлы TypeScript ( *. TS*) за пределы папки *wwwroot* . Например, поместите файлы в *клиентскую* папку.
 
-1. Настройте выходные данные сборки TypeScript для папки *wwwroot* . Задайте свойство внутри `PropertyGroup` в файле проекта: `TypescriptOutDir`
+1. Настройте выходные данные сборки TypeScript для папки *wwwroot* . Задайте свойство `TypescriptOutDir` в `PropertyGroup` в файле проекта:
 
    ```xml
    <TypescriptOutDir>wwwroot</TypescriptOutDir>
    ```
 
-1. Включите целевой объект TypeScript в качестве зависимости `ResolveCurrentProjectStaticWebAssets` целевого объекта, добавив следующий объект `PropertyGroup` в в файле проекта:
+1. Включите целевой объект TypeScript в качестве зависимости от целевого объекта `ResolveCurrentProjectStaticWebAssets`, добавив следующий целевой объект в `PropertyGroup` в файле проекта:
 
    ```xml
    <ResolveCurrentProjectStaticWebAssetsInputsDependsOn>
@@ -129,9 +129,9 @@ dotnet new razorclasslib -o RazorUIClassLib
 
 ### <a name="consume-content-from-a-referenced-rcl"></a>Использовать содержимое из РКЛ, на которое указывает ссылка
 
-Файлы, содержащиеся в папке *wwwroot* РКЛ, предоставляются приложению, использующему префикс `_content/{LIBRARY NAME}/`. Например, Библиотека с именем *Razor. class. lib* приводит к получению пути к статическому содержимому `_content/Razor.Class.Lib/`в.
+Файлы, входящие в папку *wwwroot* РКЛ, становятся доступными для приложения с префиксом `_content/{LIBRARY NAME}/`. Например, Библиотека с именем *Razor. class. lib* приводит к получению пути к статическому содержимому в `_content/Razor.Class.Lib/`.
 
-Используемое приложение ссылается на статические ресурсы `<script>` `<img>`, предоставляемые библиотекой `<style>`, с помощью,, и других HTML-тегов. В используемом приложении должна быть включена [Поддержка статических файлов](xref:fundamentals/static-files) в `Startup.Configure`:
+Использующее приложение ссылается на статические ресурсы, предоставляемые библиотекой, с `<script>`, `<style>`, `<img>` и другими тегами HTML. В приложении, использующем приложение, должна быть включена [Поддержка статических файлов](xref:fundamentals/static-files) в `Startup.Configure`:
 
 ```csharp
 public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -144,7 +144,7 @@ public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
 }
 ```
 
-При запуске приложения, использующего выход из сборки (`dotnet run`), статические веб-ресурсы по умолчанию включены в среде разработки. Чтобы обеспечить поддержку ресурсов в других средах при выполнении из выходных данных `UseStaticWebAssets` сборки, вызовите метод в построителе узлов в *Program.CS*:
+При запуске приложения из выходных данных сборки (`dotnet run`) статические веб-ресурсы по умолчанию включены в среде разработки. Для поддержки ресурсов в других средах при выполнении из выходных данных сборки вызовите `UseStaticWebAssets` в построителе узлов в *Program.CS*:
 
 ```csharp
 using Microsoft.AspNetCore.Hosting;
@@ -167,7 +167,7 @@ public class Program
 }
 ```
 
-Вызов `UseStaticWebAssets` не требуется при запуске приложения из опубликованных выходных данных`dotnet publish`().
+Вызов `UseStaticWebAssets` не требуется при запуске приложения из опубликованных выходных данных (`dotnet publish`).
 
 ### <a name="multi-project-development-flow"></a>Последовательность разработки нескольких проектов
 
@@ -198,7 +198,7 @@ public class Program
 * Выберите **Новое веб-приложение ASP.NET Core**.
 * Назовите библиотеку (например, "RazorClassLib") > **OK**. Чтобы избежать конфликта имени файла с созданной библиотекой представлений, проверьте, что имя библиотеки не заканчивается на `.Views`.
 * Убедитесь, что выбрано **ASP.NET Core 2.1** или более поздней версии.
-* Выберите **Razor класс библиотека** > классов **ОК**.
+* Выберите **Razor Class Library** > **ОК**.
 
 РКЛ имеет следующий файл проекта:
 
@@ -218,7 +218,7 @@ dotnet new razorclasslib -o RazorUIClassLib
 
 Добавление файлов Razor в RCL.
 
-Шаблоны ASP.NET Core считает содержимое RCL *областей* папки. Чтобы создать РКЛ, который предоставляет содержимое в, а не `~/Areas/Pages`в `~/Pages` , см. раздел [РКЛ Pages Layout](#rcl-pages-layout) .
+Шаблоны ASP.NET Core считает содержимое RCL *областей* папки. Чтобы создать РКЛ, который предоставляет содержимое `~/Pages`, а не `~/Areas/Pages`, см. раздел [макет страниц РКЛ](#rcl-pages-layout) .
 
 ## <a name="reference-rcl-content"></a>Справочные материалы по РКЛ
 
@@ -269,7 +269,7 @@ dotnet run
 * Выберите **Новое веб-приложение ASP.NET Core**.
 * Назовите приложение **разоруикласслиб** > **ОК**.
 * Убедитесь, что выбрано **ASP.NET Core 2.1** или более поздней версии.
-* Выберите **Razor класс библиотека** > классов **ОК**.
+* Выберите **Razor Class Library** > **ОК**.
 * Добавьте файл частичного представления Razor с именем *RazorUIClassLib/Areas/MyFeature/Pages/Shared/_Message.cshtml*.
 
 # <a name="net-core-clitabnetcore-cli"></a>[Интерфейс командной строки .NET Core](#tab/netcore-cli)
@@ -284,7 +284,7 @@ dotnet new viewstart -o RazorUIClassLib/Areas/MyFeature/Pages
 
 Предыдущие команды:
 
-* `RazorUIClassLib` Создает РКЛ.
+* Создает `RazorUIClassLib` РКЛ.
 * Создает страницу Razor _Message и добавляет ее в RCL. Параметр `-np` создает страницу без `PageModel`.
 * Создает [_ViewStart.cshtml](xref:mvc/views/layout#running-code-before-each-view) файл и добавляет его к RCL.
 
@@ -324,16 +324,16 @@ dotnet new viewstart -o RazorUIClassLib/Areas/MyFeature/Pages
 
 Создание веб-приложения Razor Pages:
 
-* В **Обозреватель решений**щелкните правой кнопкой мыши решение > **Добавить** > **Новый проект**.
+* В **Обозреватель решений**щелкните правой кнопкой мыши решение > **Добавить** >  **Новый проект**.
 * Выберите **Новое веб-приложение ASP.NET Core**.
 * Назовите приложение **WebApp1**.
 * Убедитесь, что выбрано **ASP.NET Core 2.1** или более поздней версии.
 * Выберите **веб-приложение** > **ОК**.
 
 * В **обозревателе решений** щелкните правой кнопкой мыши **WebApp1** и выберите **Назначить запускаемым проектом**.
-* В **Обозреватель решений**щелкните правой кнопкой мыши элемент **APP1** и > выберите пункт зависимости **проекта**зависимости сборки.
+* В **Обозреватель решений**щелкните правой кнопкой мыши элемент **APP1** и выберите **зависимости сборки** > **зависимости проекта**.
 * Отметьте **RazorUIClassLib** как зависимость от **WebApp1**.
-* В **Обозреватель решений**щелкните правой кнопкой мыши элемент **APP1** и выберите команду **добавить** > **ссылку**.
+* В **Обозреватель решений**щелкните правой кнопкой мыши элемент **APP1** и выберите пункт **добавить** > **ссылку**.
 * В диалоговом окне **Диспетчер ссылок** проверьте **разоруикласслиб** > **ОК**.
 
 Запустите приложение.
@@ -361,7 +361,7 @@ dotnet run
 
 ### <a name="test-webapp1"></a>Тестирование WebApp1
 
-Перейдите к `/MyFeature/Page1` , чтобы убедиться в том, что библиотека классов пользовательского интерфейса Razor используется.
+Перейдите в `/MyFeature/Page1`, чтобы убедиться в том, что библиотека классов пользовательского интерфейса Razor используется.
 
 ## <a name="override-views-partial-views-and-pages"></a>Переопределение представлений, частичных представлений и страниц
 

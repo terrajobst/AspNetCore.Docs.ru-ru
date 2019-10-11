@@ -4,14 +4,14 @@ author: ssougnez
 description: В рамках этого учебника вы настроите средство Webpack для создания пакета и сборки веб-приложения ASP.NET Core SignalR, клиент которого написан на языке TypeScript.
 ms.author: bradyg
 ms.custom: mvc
-ms.date: 04/23/2019
+ms.date: 10/04/2019
 uid: tutorials/signalr-typescript-webpack
-ms.openlocfilehash: 99628b4f52980e6d32c70d11bb0d8a770dac7f86
-ms.sourcegitcommit: 215954a638d24124f791024c66fd4fb9109fd380
+ms.openlocfilehash: 630e8cb5efe9c313479960626d3d864c4923cbd1
+ms.sourcegitcommit: 3ffcd8cbff8b49128733842f72270bc58279de70
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71081573"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71955931"
 ---
 # <a name="use-aspnet-core-signalr-with-typescript-and-webpack"></a>Использование ASP.NET Core SignalR с TypeScript и Webpack
 
@@ -40,9 +40,9 @@ ms.locfileid: "71081573"
 * [Пакет SDK для .NET Core 3.0 или более поздней версии](https://www.microsoft.com/net/download/all)
 * [Node.js](https://nodejs.org/) с [npm](https://www.npmjs.com/)
 
-# <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code.](#tab/visual-studio-code)
+# <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
-* [Visual Studio Code.](https://code.visualstudio.com/download)
+* [Visual Studio Code](https://code.visualstudio.com/download)
 * [Пакет SDK для .NET Core 3.0 или более поздней версии](https://www.microsoft.com/net/download/all)
 * [C# для Visual Studio Code версии 1.17.1 или более поздней](https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp).
 * [Node.js](https://nodejs.org/) с [npm](https://www.npmjs.com/)
@@ -66,7 +66,7 @@ ms.locfileid: "71081573"
 1. Присвойте проекту имя *SignalRWebPack* и щелкните **Создать**.
 1. Выберите *.NET Core* в раскрывающемся списке целевых платформ и *ASP.NET Core 3.0* в раскрывающемся списке версий платформ. Выберите шаблон **Пустой** и щелкните **Создать**.
 
-# <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code.](#tab/visual-studio-code)
+# <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
 Во **встроенном терминале** выполните следующую команду:
 
@@ -119,9 +119,9 @@ dotnet new web -o SignalRWebPack
 
     Некоторые пояснения к скриптам:
 
-    * `build`: создает пакет ваших ресурсов на стороне клиента в режиме разработки и отслеживает изменения. Наблюдатель за файлами выполняет повторное создание пакета при каждом изменении файла проекта. Параметр `mode` позволяет отключить оптимизации в рабочей среде, такие как встряхивание дерева и минификация. В среде разработки следует использовать только `build`.
-    * `release`: создает пакет ресурсов на стороне клиента в рабочем режиме.
-    * `publish`: запускает скрипт `release` для создания пакета ресурсов на стороне клиента в рабочем режиме. Этот скрипт вызывает команду [publish](/dotnet/core/tools/dotnet-publish) интерфейса командной строки .NET Core для публикации приложения.
+    * `build`. создает пакет ваших ресурсов на стороне клиента в режиме разработки и отслеживает изменения. Наблюдатель за файлами выполняет повторное создание пакета при каждом изменении файла проекта. Параметр `mode` позволяет отключить оптимизации в рабочей среде, такие как встряхивание дерева и минификация. В среде разработки следует использовать только `build`.
+    * `release`. создает пакет ресурсов на стороне клиента в рабочем режиме.
+    * `publish`. запускает скрипт `release` для создания пакета ресурсов на стороне клиента в рабочем режиме. Этот скрипт вызывает команду [publish](/dotnet/core/tools/dotnet-publish) интерфейса командной строки .NET Core для публикации приложения.
 
 1. Создайте в корневом элементе проекта файл *webpack.config.js* со следующим содержимым:
 
@@ -160,8 +160,8 @@ dotnet new web -o SignalRWebPack
 
     Приведенный выше код TypeScript извлекает ссылки на элементы модели DOM и присоединяет два обработчика событий:
 
-    * `keyup`: это событие возникает в том случае, если пользователь вводит какой-либо текст в поле, идентифицированное как `tbMessage`. Функция `send` вызывается, когда пользователь нажимает клавишу **ВВОД**.
-    * `click`: это событие возникает, когда пользователь нажимает кнопку **Отправить**. Вызывается функция `send`.
+    * `keyup`. это событие возникает в том случае, если пользователь вводит какой-либо текст в поле, идентифицированное как `tbMessage`. Функция `send` вызывается, когда пользователь нажимает клавишу **ВВОД**.
+    * `click`. это событие возникает, когда пользователь нажимает кнопку **Отправить**. Вызывается функция `send`.
 
 ## <a name="configure-the-aspnet-core-app"></a>Настройка приложения ASP.NET Core
 
@@ -241,7 +241,7 @@ dotnet new web -o SignalRWebPack
 
 1. Выберите любой браузер, введите произвольный текст в поле **Сообщение** и нажмите кнопку **Отправить**. На обеих страницах мгновенно отображаются имя пользователя и сообщение.
 
-# <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code.](#tab/visual-studio-code)
+# <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
 1. Запустите средство Webpack в режиме *release*, выполнив следующую команду в корневом элементе проекта:
 
@@ -267,7 +267,7 @@ dotnet new web -o SignalRWebPack
 
 ::: moniker-end
 
-::: moniker range="<= aspnetcore-2.2"
+::: moniker range="< aspnetcore-3.0"
 
 # <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
 
@@ -275,9 +275,9 @@ dotnet new web -o SignalRWebPack
 * [Пакет SDK для .NET Core 2.2 или более поздней версии](https://www.microsoft.com/net/download/all)
 * [Node.js](https://nodejs.org/) с [npm](https://www.npmjs.com/)
 
-# <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code.](#tab/visual-studio-code)
+# <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
-* [Visual Studio Code.](https://code.visualstudio.com/download)
+* [Visual Studio Code](https://code.visualstudio.com/download)
 * [Пакет SDK для .NET Core 2.2 или более поздней версии](https://www.microsoft.com/net/download/all)
 * [C# для Visual Studio Code версии 1.17.1 или более поздней](https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp).
 * [Node.js](https://nodejs.org/) с [npm](https://www.npmjs.com/)
@@ -301,7 +301,7 @@ dotnet new web -o SignalRWebPack
 1. Присвойте проекту имя *SignalRWebPack* и щелкните **Создать**.
 1. Выберите *.NET Core* в раскрывающемся списке целевых платформ и выберите *ASP.NET Core 2.2* в раскрывающемся списке средства выбора платформы. Выберите шаблон **Пустой** и щелкните **Создать**.
 
-# <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code.](#tab/visual-studio-code)
+# <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
 Во **встроенном терминале** выполните следующую команду:
 
@@ -354,9 +354,9 @@ dotnet new web -o SignalRWebPack
 
     Некоторые пояснения к скриптам:
 
-    * `build`: создает пакет ваших ресурсов на стороне клиента в режиме разработки и отслеживает изменения. Наблюдатель за файлами выполняет повторное создание пакета при каждом изменении файла проекта. Параметр `mode` позволяет отключить оптимизации в рабочей среде, такие как встряхивание дерева и минификация. В среде разработки следует использовать только `build`.
-    * `release`: создает пакет ресурсов на стороне клиента в рабочем режиме.
-    * `publish`: запускает скрипт `release` для создания пакета ресурсов на стороне клиента в рабочем режиме. Этот скрипт вызывает команду [publish](/dotnet/core/tools/dotnet-publish) интерфейса командной строки .NET Core для публикации приложения.
+    * `build`. создает пакет ваших ресурсов на стороне клиента в режиме разработки и отслеживает изменения. Наблюдатель за файлами выполняет повторное создание пакета при каждом изменении файла проекта. Параметр `mode` позволяет отключить оптимизации в рабочей среде, такие как встряхивание дерева и минификация. В среде разработки следует использовать только `build`.
+    * `release`. создает пакет ресурсов на стороне клиента в рабочем режиме.
+    * `publish`. запускает скрипт `release` для создания пакета ресурсов на стороне клиента в рабочем режиме. Этот скрипт вызывает команду [publish](/dotnet/core/tools/dotnet-publish) интерфейса командной строки .NET Core для публикации приложения.
 
 1. Создайте в корневом элементе проекта файл *webpack.config.js* со следующим содержимым:
 
@@ -395,8 +395,8 @@ dotnet new web -o SignalRWebPack
 
     Приведенный выше код TypeScript извлекает ссылки на элементы модели DOM и присоединяет два обработчика событий:
 
-    * `keyup`: это событие возникает в том случае, если пользователь вводит какой-либо текст в поле, идентифицированное как `tbMessage`. Функция `send` вызывается, когда пользователь нажимает клавишу **ВВОД**.
-    * `click`: это событие возникает, когда пользователь нажимает кнопку **Отправить**. Вызывается функция `send`.
+    * `keyup`. это событие возникает в том случае, если пользователь вводит какой-либо текст в поле, идентифицированное как `tbMessage`. Функция `send` вызывается, когда пользователь нажимает клавишу **ВВОД**.
+    * `click`. это событие возникает, когда пользователь нажимает кнопку **Отправить**. Вызывается функция `send`.
 
 ## <a name="configure-the-aspnet-core-app"></a>Настройка приложения ASP.NET Core
 
@@ -413,8 +413,6 @@ dotnet new web -o SignalRWebPack
 1. Сопоставьте маршрут */hub* с концентратором `ChatHub`. Добавьте следующие строки в конец метода `Startup.Configure`:
 
     [!code-csharp[Startup](signalr-typescript-webpack/sample/2.x/Startup.cs?name=snippet_UseSignalR)]
-
-::: moniker-end
 
 1. Создайте новый каталог *Hubs* в корневом элементе проекта. Этот каталог служит для хранения концентратора SignalR, созданного на предыдущем шаге.
 
@@ -476,7 +474,7 @@ dotnet new web -o SignalRWebPack
 
 1. Выберите любой браузер, введите произвольный текст в поле **Сообщение** и нажмите кнопку **Отправить**. На обеих страницах мгновенно отображаются имя пользователя и сообщение.
 
-# <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code.](#tab/visual-studio-code)
+# <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
 1. Запустите средство Webpack в режиме *release*, выполнив следующую команду в корневом элементе проекта:
 

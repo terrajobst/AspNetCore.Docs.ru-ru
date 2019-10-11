@@ -5,14 +5,14 @@ description: Сведения об аутентификации и автори�
 monikerRange: '>= aspnetcore-3.0'
 ms.author: riande
 ms.custom: mvc
-ms.date: 09/23/2019
+ms.date: 10/05/2019
 uid: security/blazor/index
-ms.openlocfilehash: b0536b4290cd39397ceb440e0508b75d0373bc88
-ms.sourcegitcommit: 79eeb17604b536e8f34641d1e6b697fb9a2ee21f
+ms.openlocfilehash: 1fcd54e954d09e66b8bb1c9a51ef56193f3acf93
+ms.sourcegitcommit: 3d082bd46e9e00a3297ea0314582b1ed2abfa830
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71211724"
+ms.lasthandoff: 10/07/2019
+ms.locfileid: "72007436"
 ---
 # <a name="aspnet-core-blazor-authentication-and-authorization"></a>Аутентификация и авторизация в ASP.NET Core Blazor
 
@@ -117,6 +117,8 @@ The command creates a folder named with the value provided for the `{APP NAME}` 
 
 В приложениях Blazor WebAssembly аутентификацию можно обойти, так как пользователь может изменять весь код на стороне клиента. Это же справедливо для всех технологий на стороне клиента, включая платформы одностраничного приложения JavaScript или собственных приложений для любой операционной системы.
 
+Добавьте ссылку пакета для [Microsoft.AspNetCore.Components.Authorization](https://www.nuget.org/packages/Microsoft.AspNetCore.Components.Authorization/) в файл проекта приложения.
+
 Реализация пользовательской службы `AuthenticationStateProvider` для приложений Blazor WebAssembly рассматривается в следующих разделах.
 
 ## <a name="authenticationstateprovider-service"></a>Служба AuthenticationStateProvider
@@ -131,6 +133,7 @@ The command creates a folder named with the value provided for the `{APP NAME}` 
 
 ```cshtml
 @page "/"
+@using Microsoft.AspNetCore.Components.Authorization
 @inject AuthenticationStateProvider AuthenticationStateProvider
 
 <button @onclick="@LogUsername">Write user info to console</button>
@@ -162,18 +165,25 @@ The command creates a folder named with the value provided for the `{APP NAME}` 
 Если вы создаете приложение Blazor WebAssembly или спецификация приложения предусматривает строгое требование включить пользовательский поставщик, создайте реализацию этого поставщика и переопределите `GetAuthenticationStateAsync` следующим образом:
 
 ```csharp
-class CustomAuthStateProvider : AuthenticationStateProvider
+using System.Security.Claims;
+using System.Threading.Tasks;
+using Microsoft.AspNetCore.Components.Authorization;
+
+namespace BlazorSample.Services
 {
-    public override Task<AuthenticationState> GetAuthenticationStateAsync()
+    public class CustomAuthStateProvider : AuthenticationStateProvider
     {
-        var identity = new ClaimsIdentity(new[]
+        public override Task<AuthenticationState> GetAuthenticationStateAsync()
         {
-            new Claim(ClaimTypes.Name, "mrfibuli"),
-        }, "Fake authentication type");
+            var identity = new ClaimsIdentity(new[]
+            {
+                new Claim(ClaimTypes.Name, "mrfibuli"),
+            }, "Fake authentication type");
 
-        var user = new ClaimsPrincipal(identity);
+            var user = new ClaimsPrincipal(identity);
 
-        return Task.FromResult(new AuthenticationState(user));
+            return Task.FromResult(new AuthenticationState(user));
+        }
     }
 }
 ```
@@ -181,10 +191,10 @@ class CustomAuthStateProvider : AuthenticationStateProvider
 Служба `CustomAuthStateProvider` регистрируется в `Startup.ConfigureServices`:
 
 ```csharp
-public void ConfigureServices(IServiceCollection services)
-{
-    services.AddScoped<AuthenticationStateProvider, CustomAuthStateProvider>();
-}
+// using Microsoft.AspNetCore.Components.Authorization;
+// using BlazorSample.Services;
+
+services.AddScoped<AuthenticationStateProvider, CustomAuthStateProvider>();
 ```
 
 С помощью `CustomAuthStateProvider`, все пользователи проходят аутентификацию с использованием имени пользователя `mrfibuli`.
@@ -218,6 +228,9 @@ public void ConfigureServices(IServiceCollection services)
     }
 }
 ```
+
+> [!NOTE]
+> В компоненте приложения Blazor WebAssembly добавьте пространство имен `Microsoft.AspNetCore.Components.Authorization` (`@using Microsoft.AspNetCore.Components.Authorization`).
 
 Если `user.Identity.IsAuthenticated` имеет значение `true`, можно перечислить утверждения и оценить членство в ролях.
 
@@ -339,7 +352,7 @@ Blazor позволяет *асинхронно* определять состо
 
 ## <a name="authorize-attribute"></a>Атрибут [Authorize]
 
-Так же, как и `[Authorize]` с контроллером MVC или страницей Razor, приложение может использовать `[Authorize]` с компонентами Razor:
+Атрибут `[Authorize]` можно использовать в компонентах Razor:
 
 ```cshtml
 @page "/"
@@ -348,10 +361,11 @@ Blazor позволяет *асинхронно* определять состо
 You can only see this if you're signed in.
 ```
 
+> [!NOTE]
+> В компоненте приложения Blazor WebAssembly добавьте пространство имен `Microsoft.AspNetCore.Authorization` (`@using Microsoft.AspNetCore.Authorization`) к примерам в этом разделе.
+
 > [!IMPORTANT]
 > Используйте `[Authorize]` только для компонентов `@page`, полученных через маршрутизатор Blazor. Авторизация выполняется только как аспект маршрутизации и *не* для дочерних компонентов, которые отображаются на странице. Чтобы разрешить отображение конкретных частей на странице, используйте вместо этого `AuthorizeView`.
-
-Возможно, потребуется добавить `@using Microsoft.AspNetCore.Authorization` в сам компонент или в файл *_Imports.razor*, чтобы компиляция компонента выполнялась нормально.
 
 Атрибут `[Authorize]` также поддерживает авторизацию на основе ролей или политик. Для авторизации на основе ролей примените параметр `Roles`:
 
@@ -460,6 +474,14 @@ Not authorized.
     }
 }
 ```
+
+> [!NOTE]
+> В компоненте приложения Blazor WebAssembly добавьте пространство имен `Microsoft.AspNetCore.Authorization` и `Microsoft.AspNetCore.Components.Authorization`:
+>
+> ```cshtml
+> @using Microsoft.AspNetCore.Authorization
+> @using Microsoft.AspNetCore.Components.Authorization
+> ```
 
 ## <a name="authorization-in-blazor-webassembly-apps"></a>Авторизация в приложениях Blazor WebAssembly
 

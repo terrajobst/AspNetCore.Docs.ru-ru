@@ -5,14 +5,14 @@ description: Узнайте, как маршрутизировать запро�
 monikerRange: '>= aspnetcore-3.0'
 ms.author: riande
 ms.custom: mvc
-ms.date: 09/23/2019
+ms.date: 10/09/2019
 uid: blazor/routing
-ms.openlocfilehash: 76266aedd4655161f1f50a8beb0936660d452912
-ms.sourcegitcommit: 6d26ab647ede4f8e57465e29b03be5cb130fc872
+ms.openlocfilehash: 8f48112237e6dd3fed88404c53b8d7d9137ef6ff
+ms.sourcegitcommit: 0b8a7571bf7acf85bf16118acb2435001cbe4b5d
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/07/2019
-ms.locfileid: "71999815"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72236532"
 ---
 # <a name="aspnet-core-blazor-routing"></a>ASP.NET Core маршрутизация Блазор
 
@@ -85,7 +85,13 @@ ms.locfileid: "71999815"
 
 Используйте параметр `AdditionalAssemblies`, чтобы указать дополнительные сборки для компонента `Router`, который следует учитывать при поиске маршрутизируемых компонентов. Указанные сборки рассматриваются в дополнение к @no__t сборке, указанной в -0. В следующем примере `Component1` — это маршрутизируемый компонент, определенный в упоминаемой библиотеке классов. Следующий пример `AdditionalAssemblies` приводит к поддержке маршрутизации для `Component1`:
 
-< маршрутизатор Аппассембли = "typeof (Program)". Сборка "Аддитионалассемблиес =" New [] {typeof (Component1). Сборка} >... </Router>
+```cshtml
+<Router
+    AppAssembly="typeof(Program).Assembly"
+    AdditionalAssemblies="new[] { typeof(Component1).Assembly }>
+    ...
+</Router>
+```
 
 ## <a name="route-parameters"></a>Параметры маршрута
 

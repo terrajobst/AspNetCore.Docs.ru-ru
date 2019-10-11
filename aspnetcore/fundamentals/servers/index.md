@@ -1,18 +1,18 @@
 ---
 title: Реализации веб-сервера в ASP.NET Core
-author: tdykstra
+author: rick-anderson
 description: Откройте возможности веб-серверов Kestrel и HTTP.sys для ASP.NET Core. Рекомендации по выбору сервера и сведения о сценариях использования обратного прокси-сервера.
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
 ms.date: 08/10/2019
 uid: fundamentals/servers/index
-ms.openlocfilehash: cfea559725a644f167aa3afdf88c78bace4b5950
-ms.sourcegitcommit: dc5b293e08336dc236de66ed1834f7ef78359531
+ms.openlocfilehash: 3bdc2bf776946b8fae8886a37ecd3ed5e3f860fe
+ms.sourcegitcommit: 7d3c6565dda6241eb13f9a8e1e1fd89b1cfe4d18
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/16/2019
-ms.locfileid: "71011154"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72259823"
 ---
 # <a name="web-server-implementations-in-aspnet-core"></a>Реализации веб-сервера в ASP.NET Core
 

@@ -4,14 +4,14 @@ author: rick-anderson
 description: Сведения о новых возможностях в ASP.NET Core 3.0.
 ms.author: riande
 ms.custom: mvc
-ms.date: 09/26/2019
+ms.date: 10/08/2019
 uid: aspnetcore-3.0
-ms.openlocfilehash: ec3de5b35883752b7b3dbefceccec55da3986f39
-ms.sourcegitcommit: dc96d76f6b231de59586fcbb989a7fb5106d26a8
+ms.openlocfilehash: 90433773bec2efc5a2bc39d71ce7ae324b922046
+ms.sourcegitcommit: fcdf9aaa6c45c1a926bd870ed8f893bdb4935152
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71703683"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72165360"
 ---
 # <a name="whats-new-in-aspnet-core-30"></a>Новые возможности в ASP.NET Core 3.0
 
@@ -302,7 +302,7 @@ subject.complete();
 
 С помощью кода, подобного двум предыдущим фрагментам, можно создать потоковую передачу в реальном времени.
 
-### <a name="new-json-serialization"></a>Новая сериализация JSON
+## <a name="new-json-serialization"></a>Новая сериализация JSON
 
 ASP.NET Core 3.0 теперь по умолчанию использует <xref:System.Text.Json> для сериализации JSON:
 
@@ -397,7 +397,7 @@ public void Configure(IApplicationBuilder app, IHostingEnvironment env)
 
 Шаблон Angular обновлен для использования Angular 8.
 
-По умолчанию для шаблона библиотеки классов Razor (RCL) используется разработка компонентов Razor. Новый параметр шаблона в Visual Studio обеспечивает поддержку шаблонов для страниц и представлений. При создании RCL на основе шаблона в командной оболочке передайте параметр `-support-pages-and-views` (`dotnet new razorclasslib -support-pages-and-views`).
+По умолчанию для шаблона библиотеки классов Razor (RCL) используется разработка компонентов Razor. Новый параметр шаблона в Visual Studio обеспечивает поддержку шаблонов для страниц и представлений. При создании RCL на основе шаблона в командной оболочке передайте параметр `--support-pages-and-views` (`dotnet new razorclasslib --support-pages-and-views`).
 
 ## <a name="generic-host"></a>Универсальный узел
 
@@ -487,7 +487,7 @@ app.UseEndpoints(endpoints =>
 
 В .NET Core 3.0 появился новый шаблон приложения службы рабочих ролей. Этот шаблон может служить отправной точкой для написания длительных приложений служб в .NET Core.
 
-Дополнительные сведения:
+Дополнительные сведения можно найти в разделе
 
 * [.NET Core Workers as Windows Services](https://devblogs.microsoft.com/aspnet/net-core-workers-as-windows-services/) (Рабочие роли .NET Core в качестве служб Windows)
 * <xref:fundamentals/host/hosted-services>
