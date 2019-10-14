@@ -667,7 +667,7 @@
     - name: Обзор
       displayName: 'azure, deploy, publish'
       uid: host-and-deploy/index
-    - name: Размещение в службе приложений Azure
+    - name: Служба приложений Azure
       displayName: 'deploy, publish'
       items:
         - name: Обзор
@@ -717,7 +717,7 @@
         - name: Следующие шаги
           displayName: 'azure, deploy, publish'
           uid: azure/devops/next-steps
-    - name: Размещение в Windows с помощью IIS
+    - name: IIS
       displayName: 'deploy, publish'
       items:
         - name: Обзор
@@ -749,16 +749,16 @@
     - name: HTTP.sys
       displayName: 'deploy, publish, server'
       uid: fundamentals/servers/httpsys
-    - name: Размещение в службе Windows
+    - name: Служба Windows
       displayName: 'deploy, publish'
       uid: host-and-deploy/windows-service
-    - name: Размещение в Linux с использованием Nginx
+    - name: Linux с Nginx
       displayName: 'deploy, publish'
       uid: host-and-deploy/linux-nginx
-    - name: Размещение в Linux с использованием Apache
+    - name: Linux c Apache
       displayName: 'deploy, publish'
       uid: host-and-deploy/linux-apache
-    - name: Размещение в Docker
+    - name: Docker
       displayName: 'deploy, publish'
       items:
         - name: Обзор
@@ -779,7 +779,7 @@
     - name: Конфигурация подсистемы балансировки нагрузки и прокси-сервера
       displayName: 'deploy, publish'
       uid: host-and-deploy/proxy-load-balancer
-    - name: Размещение в веб-ферме
+    - name: Веб-ферма
       displayName: 'deploy, publish'
       uid: host-and-deploy/web-farm
     - name: Профили публикации Visual Studio
