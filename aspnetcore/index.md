@@ -4,14 +4,14 @@ author: rick-anderson
 description: Введение в ASP.NET Core — кроссплатформенную высокопроизводительную платформу с открытым исходным кодом для создания современных облачных интернет-приложений.
 ms.author: riande
 ms.custom: mvc
-ms.date: 04/07/2019
+ms.date: 10/10/2019
 uid: index
-ms.openlocfilehash: c9b33b16de354c8bac804e8fd5e8e3ce3af688fc
-ms.sourcegitcommit: f65d8765e4b7c894481db9b37aa6969abc625a48
+ms.openlocfilehash: 1ccc1f5d095833e89fc20127ee23b8fa3dc4c79f
+ms.sourcegitcommit: 020c3760492efed71b19e476f25392dda5dd7388
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70773709"
+ms.lasthandoff: 10/12/2019
+ms.locfileid: "72289063"
 ---
 # <a name="introduction-to-aspnet-core"></a>Введение в ASP.NET Core
 
@@ -77,10 +77,12 @@ ASP.NET Core версии 3.0 и более поздних будут выпол
 
    |Тип приложения  |Сценарий  |Учебник  |
    |----------|----------|----------|
-   |Веб-приложение       | Разработка нового приложения        |[Начало работы с Razor Pages](xref:tutorials/razor-pages/razor-pages-start) |
-   |Веб-приложение       | Обслуживание приложения MVC |[Начало работы с MVC](xref:tutorials/first-mvc-app/start-mvc)|
-   |Веб-интерфейс API       |                            |[Создание веб-API](xref:tutorials/first-web-api)\*  |
-   |Приложение режима реального времени |                            |[Начало работы с SignalR](xref:tutorials/signalr) |
+   |Веб-приложение                   | Разработка нового приложения        |[Начало работы с Razor Pages](xref:tutorials/razor-pages/razor-pages-start) |
+   |Веб-приложение                   | Обслуживание приложения MVC |[Начало работы с MVC](xref:tutorials/first-mvc-app/start-mvc)|
+   |Веб-интерфейс API                   |                            |[Создание веб-API](xref:tutorials/first-web-api)\*  |
+   |Приложение режима реального времени             |                            |[Начало работы с SignalR](xref:tutorials/signalr) |
+   |Приложение Blazor                |                            |[Начало работы с Blazor](xref:blazor/get-started) |
+   |Приложение удаленного вызова процедур |                            |[Начало работы со службой gRPC](xref:tutorials/grpc/grpc-start) |
 
 1. Пройдите учебник, посвященный основам доступа к данным:
 
@@ -107,7 +109,7 @@ ASP.NET Core версии 3.0 и более поздних будут выпол
 
 ### <a name="preprocessor-directives-in-sample-code"></a>Директивы препроцессора в примере кода
 
-Для демонстрации нескольких сценариев в примерах приложений используются инструкции C# `#define` и `#if-#else/#elif-#endif`, выборочно компилирующие и запускающие разные фрагменты примеров кода. В примерах, где применяется этот подход, задайте в начале файлов C# инструкцию `#define` для символа, связанного со сценарием, который нужно запустить. Для запуска сценария в некоторых примерах потребуется задать символ в начале нескольких файлов.
+Для демонстрации нескольких сценариев в примерах приложений используются директивы препроцессора `#define` и `#if-#else/#elif-#endif`, выборочно компилирующие и запускающие разные фрагменты примеров кода. В примерах, где применяется этот подход, задайте в начале файлов C# директиву `#define` для определения символа, связанного со сценарием, который нужно запустить. Для запуска сценария в некоторых примерах потребуется определить символ в начале нескольких файлов.
 
 Например, в следующем списке символов `#define` видно, что доступно четыре сценария (один сценарий на символ). В текущем примере конфигурации запускается сценарий `TemplateCode`:
 
@@ -125,28 +127,27 @@ ASP.NET Core версии 3.0 и более поздних будут выпол
 
 ### <a name="regions-in-sample-code"></a>Регионы в примере кода
 
-Некоторые примеры приложений содержат фрагменты кода внутри инструкций C# [#region](/dotnet/csharp/language-reference/preprocessor-directives/preprocessor-region) и [#endregion](/dotnet/csharp/language-reference/preprocessor-directives/preprocessor-endregion). Система сборки документации вставляет эти регионы в обработанные разделы документации.  
+Некоторые примеры приложений содержат фрагменты кода внутри директив C# [#region](/dotnet/csharp/language-reference/preprocessor-directives/preprocessor-region) и [#endregion](/dotnet/csharp/language-reference/preprocessor-directives/preprocessor-endregion). Система сборки документации вставляет эти регионы в обработанные разделы документации.  
 
-Названия регионов обычно содержат слово "фрагмент". В следующем примере показан регион с именем `snippet_FilterInCode`:
+Названия регионов обычно содержат слово "фрагмент". В следующем примере показан регион с именем `snippet_WebHostDefaults`:
 
 ```csharp
-#region snippet_FilterInCode
-WebHost.CreateDefaultBuilder(args)
-    .UseStartup<Startup>()
-    .ConfigureLogging(logging =>
-        logging.AddFilter("System", LogLevel.Debug)
-            .AddFilter<DebugLoggerProvider>("Microsoft", LogLevel.Trace))
-            .Build();
+#region snippet_WebHostDefaults
+Host.CreateDefaultBuilder(args)
+    .ConfigureWebHostDefaults(webBuilder =>
+    {
+        webBuilder.UseStartup<Startup>();
+    });
 #endregion
 ```
 
 На предыдущий фрагмент кода C# указывает ссылка в следующей строке в файле Markdown раздела:
 
 ```md
-[!code-csharp[](sample/SampleApp/Program.cs?name=snippet_FilterInCode)]
+[!code-csharp[](sample/SampleApp/Program.cs?name=snippet_WebHostDefaults)]
 ```
 
-Вы можете спокойно проигнорировать или удалить инструкции `#region` и `#endregion` вокруг кода. Не изменяйте код внутри этих инструкций, если планируете запустить примеры сценариев, описанные в разделе. Вы можете изменить код, экспериментируя с другими сценариями.
+Вы можете спокойно проигнорировать или удалить директивы `#region` и `#endregion` вокруг кода. Не изменяйте код внутри этих директив, если планируете запустить примеры сценариев, описанные в разделе. Вы можете изменить код, экспериментируя с другими сценариями.
 
 Дополнительные сведения см. в разделе[Участие в написании документации ASP.NET: Фрагменты кода](https://github.com/aspnet/AspNetCore.Docs/blob/master/CONTRIBUTING.md#code-snippets).
 
