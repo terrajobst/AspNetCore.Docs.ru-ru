@@ -5,14 +5,14 @@ description: Узнайте, как обрабатывать ошибки в п�
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 07/10/2019
+ms.date: 10/08/2019
 uid: fundamentals/error-handling
-ms.openlocfilehash: 652a97a6b7fbe4c8cc678b86a92eea59937e809c
-ms.sourcegitcommit: 8835b6777682da6fb3becf9f9121c03f89dc7614
+ms.openlocfilehash: a5bdbc3ce75f5897c9cd67fe18897281bf2fb57b
+ms.sourcegitcommit: 73a451e9a58ac7102f90b608d661d8c23dd9bbaf
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69975583"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72037569"
 ---
 # <a name="handle-errors-in-aspnet-core"></a>Обработка ошибок в ASP.NET Core
 
@@ -208,7 +208,7 @@ if (statusCodePagesFeature != null)
 
 ## <a name="database-error-page"></a>Страница ошибок базы данных
 
-ПО промежуточного слоя для отображения [страницы ошибок базы данных](<xref:Microsoft.AspNetCore.Builder.DatabaseErrorPageExtensions.UseDatabaseErrorPage*>) перехватывает исключения, относящиеся к базе данных, которые могут быть устранены при помощи миграций Entity Framework. При возникновении этих исключений формируется HTML-ответ с подробными сведениями о возможных действиях для устранения проблемы. Эту страницу следует включать только в среде разработки. Включите страницу, добавив код в `Startup.Configure`.
+ПО промежуточного слоя для отображения страницы ошибок базы данных перехватывает исключения, относящиеся к базе данных, которые могут быть устранены при помощи миграций Entity Framework. При возникновении этих исключений формируется HTML-ответ с подробными сведениями о возможных действиях для устранения проблемы. Эту страницу следует включать только в среде разработки. Включите страницу, добавив код в `Startup.Configure`.
 
 ```csharp
 if (env.IsDevelopment())
@@ -216,6 +216,8 @@ if (env.IsDevelopment())
     app.UseDatabaseErrorPage();
 }
 ```
+
+<!-- FUTURE UPDATE: On the next topic overhaul/release update, add API crosslink to this section for xref:Microsoft.AspNetCore.Builder.DatabaseErrorPageExtensions.UseDatabaseErrorPage* when available via the API docs. -->
 
 ## <a name="exception-filters"></a>Фильтры исключений
 

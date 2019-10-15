@@ -1,122 +1,158 @@
 ---
 title: Распределенное кэширование в ASP.NET Core
 author: guardrex
-description: Сведения об использовании ASP.NET Core распределенного кэша для повышения производительности приложения и масштабируемости, особенно в среде фермы облаком и сервером.
+description: Узнайте, как использовать распределенный кэш ASP.NET Core для повышения производительности и масштабируемости приложений, особенно в среде облака или фермы серверов.
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 03/30/2019
+ms.date: 08/27/2019
 uid: performance/caching/distributed
-ms.openlocfilehash: 871e27c068de3a465cedb517418a35a87f992300
-ms.sourcegitcommit: dd9c73db7853d87b566eef136d2162f648a43b85
+ms.openlocfilehash: dbcdfcd07877fabfe6d18cd4d840b5597afa1afd
+ms.sourcegitcommit: 215954a638d24124f791024c66fd4fb9109fd380
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65085827"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71081551"
 ---
 # <a name="distributed-caching-in-aspnet-core"></a>Распределенное кэширование в ASP.NET Core
 
-По [Люк Лэтем](https://github.com/guardrex) и [Стив Смит](https://ardalis.com/)
+[Люк ЛаСаМ](https://github.com/guardrex) и [Стив Смит](https://ardalis.com/)
 
-Распределенный кэш — это кэш, который совместно используется несколькими серверами приложений, обычно поддерживаются как внешняя служба на серверы приложений, обращающихся к ней. Распределенный кэш может повысить производительность и масштабируемость приложения ASP.NET Core, особенно в том случае, если приложение будет размещено в облачную службу или ферме серверов.
+Распределенный кэш — это кэш, совместно используемый несколькими серверами приложений, обычно поддерживаемый как внешняя служба для серверов приложений, обращающихся к ней. Распределенный кэш может повысить производительность и масштабируемость приложения ASP.NET Core, особенно если приложение размещено в облачной службе или ферме серверов.
 
-Распределенный кэш имеет ряд преимуществ по сравнению с другими кэширования сценариев, где кэшированные данные хранятся на серверах отдельных приложений.
+Распределенный кэш имеет несколько преимуществ по сравнению с другими сценариями кэширования, в которых кэшированные данные хранятся на отдельных серверах приложений.
 
-Когда кэшированные данные распределяются, эти данные:
+При распределении кэшированных данных данные:
 
-* — *Согласовано* (согласованный) между запросами на несколько серверов.
-* Сохранять работоспособность после перезагрузки сервера и развертывания приложений.
+* — Согласованность между запросами к нескольким серверам.
+* Выдерживает перезапуски сервера и развертывание приложений.
 * Не использует локальную память.
 
-Конфигурация распределенного кэша зависит от реализации. В этой статье описывается, как настроить SQL Server и распределенные кэши Redis. Реализации сторонних также доступны, такие как [NCache](http://www.alachisoft.com/ncache/aspnet-core-idistributedcache-ncache.html) ([NCache на сайте GitHub](https://github.com/Alachisoft/NCache)). Независимо от того, какую реализацию установлен, приложение взаимодействует с кэша, используя <xref:Microsoft.Extensions.Caching.Distributed.IDistributedCache> интерфейс.
+Конфигурация распределенного кэша зависит от конкретной реализации. В этой статье описывается настройка распределенных кэшей SQL Server и Redis. Также доступны реализации сторонних производителей, например [NCache](http://www.alachisoft.com/ncache/aspnet-core-idistributedcache-ncache.html) ([NCache на GitHub](https://github.com/Alachisoft/NCache)). Независимо от выбранной реализации приложение взаимодействует с кэшем с помощью <xref:Microsoft.Extensions.Caching.Distributed.IDistributedCache> интерфейса.
 
 [Просмотреть или скачать образец кода](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/performance/caching/distributed/samples/) ([как скачивать](xref:index#how-to-download-a-sample))
 
 ## <a name="prerequisites"></a>Предварительные требования
 
-::: moniker range=">= aspnetcore-2.2"
+::: moniker range=">= aspnetcore-3.0"
 
-Использование SQL Server распределенный кеш, справочник по [метапакет Microsoft.AspNetCore.App](xref:fundamentals/metapackage-app) или добавьте ссылку на пакет [Microsoft.Extensions.Caching.SqlServer](https://www.nuget.org/packages/Microsoft.Extensions.Caching.SqlServer) пакета.
+Чтобы использовать SQL Server распределенный кэш, добавьте ссылку на пакет в пакет [Microsoft. Extensions. Caching. SqlServer](https://www.nuget.org/packages/Microsoft.Extensions.Caching.SqlServer) .
 
-Для использования Redis распределенный кеш, справочник по [метапакет Microsoft.AspNetCore.App](xref:fundamentals/metapackage-app) и добавьте ссылку на пакет [Microsoft.Extensions.Caching.StackExchangeRedis](https://www.nuget.org/packages/Microsoft.Extensions.Caching.StackExchangeRedis) пакета. Пакет Redis не включен в `Microsoft.AspNetCore.App` пакета, поэтому необходимо сослаться на пакет, Redis отдельно в файле проекта.
+Чтобы использовать распределенный кэш Redis, добавьте ссылку на пакет в пакет [Microsoft. Extensions. Caching. стаккексчанжередис](https://www.nuget.org/packages/Microsoft.Extensions.Caching.StackExchangeRedis) .
+
+::: moniker-end
+
+::: moniker range="= aspnetcore-2.2"
+
+Чтобы использовать SQL Server распределенный кэш, укажите ссылку на [Microsoft. AspNetCore. app метапакет](xref:fundamentals/metapackage-app) или добавьте ссылку на пакет [Microsoft. Extensions. Caching. SqlServer](https://www.nuget.org/packages/Microsoft.Extensions.Caching.SqlServer) .
+
+Чтобы использовать распределенный кэш Redis, укажите ссылку на [Microsoft. AspNetCore. app метапакет](xref:fundamentals/metapackage-app) и добавьте ссылку на пакет [Microsoft. Extensions. Caching. стаккексчанжередис](https://www.nuget.org/packages/Microsoft.Extensions.Caching.StackExchangeRedis) . Пакет Redis не входит в `Microsoft.AspNetCore.App` пакет, поэтому необходимо отдельно ссылаться на пакет Redis в файле проекта.
 
 ::: moniker-end
 
 ::: moniker range="< aspnetcore-2.2"
 
-Использование SQL Server распределенный кеш, справочник по [метапакет Microsoft.AspNetCore.App](xref:fundamentals/metapackage-app) или добавьте ссылку на пакет [Microsoft.Extensions.Caching.SqlServer](https://www.nuget.org/packages/Microsoft.Extensions.Caching.SqlServer) пакета.
+Чтобы использовать SQL Server распределенный кэш, укажите ссылку на [Microsoft. AspNetCore. app метапакет](xref:fundamentals/metapackage-app) или добавьте ссылку на пакет [Microsoft. Extensions. Caching. SqlServer](https://www.nuget.org/packages/Microsoft.Extensions.Caching.SqlServer) .
 
-Для использования Redis распределенный кеш, справочник по [метапакет Microsoft.AspNetCore.App](xref:fundamentals/metapackage-app) и добавьте ссылку на пакет [Microsoft.Extensions.Caching.Redis](https://www.nuget.org/packages/Microsoft.Extensions.Caching.Redis) пакета. Пакет Redis не включен в `Microsoft.AspNetCore.App` пакета, поэтому необходимо сослаться на пакет, Redis отдельно в файле проекта.
+Чтобы использовать распределенный кэш Redis, укажите ссылку на [Microsoft. AspNetCore. app метапакет](xref:fundamentals/metapackage-app) и добавьте ссылку на пакет [Microsoft. Extensions. Caching. Redis](https://www.nuget.org/packages/Microsoft.Extensions.Caching.Redis) . Пакет Redis не входит в `Microsoft.AspNetCore.App` пакет, поэтому необходимо отдельно ссылаться на пакет Redis в файле проекта.
 
 ::: moniker-end
 
 ## <a name="idistributedcache-interface"></a>Интерфейс IDistributedCache
 
-<xref:Microsoft.Extensions.Caching.Distributed.IDistributedCache> Интерфейс предоставляет следующие методы для работы с элементами в реализации распределенного кэша:
+<xref:Microsoft.Extensions.Caching.Distributed.IDistributedCache> Интерфейс предоставляет следующие методы для управления элементами в реализации распределенного кэша:
 
-* <xref:Microsoft.Extensions.Caching.Distributed.IDistributedCache.Get*>, <xref:Microsoft.Extensions.Caching.Distributed.IDistributedCache.GetAsync*> &ndash; Принимает ключ строкового типа и извлекает кэшированного элемента как `byte[]` массив Если найдена в кэше.
-* <xref:Microsoft.Extensions.Caching.Distributed.IDistributedCache.Set*>, <xref:Microsoft.Extensions.Caching.Distributed.IDistributedCache.SetAsync*> &ndash; Добавляет элемент (как `byte[]` массива) в кэш, с помощью строкового ключа.
-* <xref:Microsoft.Extensions.Caching.Distributed.IDistributedCache.Refresh*>, <xref:Microsoft.Extensions.Caching.Distributed.IDistributedCache.RefreshAsync*> &ndash; Обновляет объект в кэше, по его ключу, сброс его скользящее время ожидания (если таковые имеются).
-* <xref:Microsoft.Extensions.Caching.Distributed.IDistributedCache.Remove*>, <xref:Microsoft.Extensions.Caching.Distributed.IDistributedCache.RemoveAsync*> &ndash; Удаляет элемент кэша на основе его строку ключа.
+* <xref:Microsoft.Extensions.Caching.Distributed.IDistributedCache.Get*>, <xref:Microsoft.Extensions.Caching.Distributed.IDistributedCache.GetAsync*> `byte[]` Принимает строковый ключ и получает кэшированный элемент в виде массива, если он найден в кэше. &ndash;
+* <xref:Microsoft.Extensions.Caching.Distributed.IDistributedCache.Set*>`byte[]` , <xref:Microsoft.Extensions.Caching.Distributed.IDistributedCache.SetAsync*> Добавляет&ndash; элемент (в виде массива) в кэш с помощью строкового ключа.
+* <xref:Microsoft.Extensions.Caching.Distributed.IDistributedCache.Refresh*><xref:Microsoft.Extensions.Caching.Distributed.IDistributedCache.RefreshAsync*> Обновляетэлементвкэшенаосновеегоключа,переустанавливаяскользящийтайм-аутистечениясрокадействия(&ndash; если он есть).
+* <xref:Microsoft.Extensions.Caching.Distributed.IDistributedCache.Remove*><xref:Microsoft.Extensions.Caching.Distributed.IDistributedCache.RemoveAsync*> ,&ndash; Удаляет элемент кэша на основе его строкового ключа.
 
-## <a name="establish-distributed-caching-services"></a>Установить службы распределенного кэширования
+## <a name="establish-distributed-caching-services"></a>Установка служб распределенного кэширования
 
-Зарегистрируйте реализацию <xref:Microsoft.Extensions.Caching.Distributed.IDistributedCache> в `Startup.ConfigureServices`. Предоставляемые платформой реализации, описанных в этом разделе включают:
+Зарегистрируйте реализацию <xref:Microsoft.Extensions.Caching.Distributed.IDistributedCache> в `Startup.ConfigureServices`. Реализации, предоставляемые платформой, описанные в этом разделе, включают:
 
-* [Распределенные памяти кэша](#distributed-memory-cache)
+* [Кэш распределенной памяти](#distributed-memory-cache)
 * [Распределенный кэш SQL Server](#distributed-sql-server-cache)
 * [Распределенный кэш Redis](#distributed-redis-cache)
 
-### <a name="distributed-memory-cache"></a>Распределенные памяти кэша
+### <a name="distributed-memory-cache"></a>Кэш распределенной памяти
 
-Распределенного кэша в памяти (<xref:Microsoft.Extensions.DependencyInjection.MemoryCacheServiceCollectionExtensions.AddDistributedMemoryCache*>) — это реализация предоставляемые платформой <xref:Microsoft.Extensions.Caching.Distributed.IDistributedCache> , сохраняет элементы в памяти. Распределенный кеш памяти не фактический распределенного кэша. Кэшированные элементы хранятся в экземпляре приложения на сервере, где выполняется приложение.
+Кэш распределенной памяти (<xref:Microsoft.Extensions.DependencyInjection.MemoryCacheServiceCollectionExtensions.AddDistributedMemoryCache*>) — это предоставляемая платформой <xref:Microsoft.Extensions.Caching.Distributed.IDistributedCache> реализация, которая хранит элементы в памяти. Кэш распределенной памяти не является фактическим распределенным кэшем. Кэшированные элементы хранятся в экземпляре приложения на сервере, где выполняется приложение.
 
-Распределенным кэшем памяти — это полезные реализация:
+Кэш распределенной памяти — это полезная реализация:
 
 * В сценариях разработки и тестирования.
-* При использовании одного сервера в рабочей среде и потребление памяти не является проблемой. Реализация краткие описания распределенным кэшем памяти в кэше хранилища данных. Он позволяет реализовать настоящую распределенного кэширования решения в будущем в случае нескольких узлов или привести к необходимости устойчивость к сбоям.
+* Если в рабочей среде используется один сервер, а использование памяти не является проблемой. Реализация кэша распределенной памяти абстрагирует хранилище кэшированных данных. Она позволяет реализовать истинное решение распределенного кэширования в будущем, если потребуется несколько узлов или отказоустойчивость.
 
-Пример приложения использует распределенного кэша в памяти при запуске приложения в среде разработки в `Startup.ConfigureServices`:
+Пример приложения использует распределенный кэш памяти при запуске приложения в среде разработки в `Startup.ConfigureServices`:
+
+::: moniker range=">= aspnetcore-3.0"
+
+[!code-csharp[](distributed/samples/3.x/DistCacheSample/Startup.cs?name=snippet_AddDistributedMemoryCache)]
+
+::: moniker-end
+
+::: moniker range="< aspnetcore-3.0"
 
 [!code-csharp[](distributed/samples/2.x/DistCacheSample/Startup.cs?name=snippet_AddDistributedMemoryCache)]
 
-### <a name="distributed-sql-server-cache"></a>Кэш распределенных SQL Server
+::: moniker-end
 
-Реализация распределенного кэша SQL Server (<xref:Microsoft.Extensions.DependencyInjection.SqlServerCachingServicesExtensions.AddDistributedSqlServerCache*>) позволяет распределенного кэша использовать базу данных SQL Server в качестве резервного хранилища. Чтобы создать таблицу SQL Server кэшированного элемента в экземпляр SQL Server, можно использовать `sql-cache` средство. Средство создает таблицу с именем и схемой, указанной вами.
+### <a name="distributed-sql-server-cache"></a>Распределенный кэш SQL Server
 
-Создать таблицу в SQL Server, выполнив `sql-cache create` команды. Укажите экземпляр SQL Server (`Data Source`), базы данных (`Initial Catalog`), схемы (например, `dbo`) и имя таблицы (например, `TestCache`):
+Реализация кэша распределенного SQL Server (<xref:Microsoft.Extensions.DependencyInjection.SqlServerCachingServicesExtensions.AddDistributedSqlServerCache*>) позволяет распределенному кэшу использовать базу данных SQL Server в качестве резервного хранилища. Чтобы создать SQL Server таблицу кэшированных элементов в экземпляре SQL Server, можно использовать `sql-cache` средство. Средство создает таблицу с указанными именем и схемой.
 
-```console
+Создайте таблицу в SQL Server, выполнив `sql-cache create` команду. Укажите`Data Source`SQL Server экземпляр (), базу данных (`Initial Catalog`), схему (например, `dbo`) и имя таблицы (например, `TestCache`):
+
+```dotnetcli
 dotnet sql-cache create "Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=DistCache;Integrated Security=True;" dbo TestCache
 ```
 
-Чтобы указать, что средство успешно записывается сообщение:
+В журнал заносится сообщение, указывающее, что средство прошло успешно:
 
 ```console
 Table and index were created successfully.
 ```
 
-Таблицу, созданную `sql-cache` средство имеет следующую схему:
+Таблица, созданная `sql-cache` средством, имеет следующую схему:
 
-![Таблицы кэша SqlServer](distributed/_static/SqlServerCacheTable.png)
+![Таблица кэша SqlServer](distributed/_static/SqlServerCacheTable.png)
 
 > [!NOTE]
-> Приложение следует управлять значения кэша, используя экземпляр <xref:Microsoft.Extensions.Caching.Distributed.IDistributedCache>, а не <xref:Microsoft.Extensions.Caching.SqlServer.SqlServerCache>.
+> Приложение должно манипулировать значениями кэша с помощью экземпляра <xref:Microsoft.Extensions.Caching.Distributed.IDistributedCache>, а <xref:Microsoft.Extensions.Caching.SqlServer.SqlServerCache>не.
 
-Пример приложения реализует <xref:Microsoft.Extensions.Caching.SqlServer.SqlServerCache> в среде не разработки в `Startup.ConfigureServices`:
+Пример приложения реализует <xref:Microsoft.Extensions.Caching.SqlServer.SqlServerCache> в среде, не являющейся средой разработки `Startup.ConfigureServices`, в:
+
+::: moniker range=">= aspnetcore-3.0"
+
+[!code-csharp[](distributed/samples/3.x/DistCacheSample/Startup.cs?name=snippet_AddDistributedSqlServerCache)]
+
+::: moniker-end
+
+::: moniker range="< aspnetcore-3.0"
 
 [!code-csharp[](distributed/samples/2.x/DistCacheSample/Startup.cs?name=snippet_AddDistributedSqlServerCache)]
 
+::: moniker-end
+
 > [!NOTE]
-> Объект <xref:Microsoft.Extensions.Caching.SqlServer.SqlServerCacheOptions.ConnectionString*> (и при необходимости <xref:Microsoft.Extensions.Caching.SqlServer.SqlServerCacheOptions.SchemaName*> и <xref:Microsoft.Extensions.Caching.SqlServer.SqlServerCacheOptions.TableName*>) обычно хранятся вне системы управления версиями (например, хранимая с [Secret Manager](xref:security/app-secrets) или в *appsettings.json* / *appsettings. {СРЕДА} .json* файлов). Строка подключения может содержать учетные данные, которые должны храниться вне системы управления версиями.
+> <xref:Microsoft.Extensions.Caching.SqlServer.SqlServerCacheOptions.ConnectionString*> (И, при необходимости, <xref:Microsoft.Extensions.Caching.SqlServer.SqlServerCacheOptions.SchemaName*> и <xref:Microsoft.Extensions.Caching.SqlServer.SqlServerCacheOptions.TableName*>) обычно хранятся вне системы управления версиями (например, хранится в [диспетчере секретов](xref:security/app-secrets) или в *appsettings.json*/*appsettings. {Файлы среды}. JSON* ). Строка подключения может содержать учетные данные, которые должны содержаться в системе управления версиями.
 
-### <a name="distributed-redis-cache"></a>Кэш Redis для распределенных
+### <a name="distributed-redis-cache"></a>Распределенный кэш Redis
 
-[Redis](https://redis.io/) -это хранилище данных в памяти с открытым исходным кодом, которое часто используется в качестве распределенного кэша. Redis можно использовать локально, и можно настроить [кэша Redis для Azure](https://azure.microsoft.com/services/cache/) для приложения ASP.NET Core, размещенных в Azure.
+[Redis](https://redis.io/) -это хранилище данных в памяти с открытым исходным кодом, которое часто используется в качестве распределенного кэша. Вы можете использовать Redis локально, и вы можете настроить [кэш Redis для Azure](https://azure.microsoft.com/services/cache/) для приложения ASP.NET Core, размещенного в Azure.
 
-::: moniker range=">= aspnetcore-2.2"
+::: moniker range=">= aspnetcore-3.0"
 
-Приложения настраивает реализации кэша с помощью <xref:Microsoft.Extensions.Caching.StackExchangeRedis.RedisCache> экземпляра (<xref:Microsoft.Extensions.DependencyInjection.StackExchangeRedisCacheServiceCollectionExtensions.AddStackExchangeRedisCache*>) в среде не разработки в `Startup.ConfigureServices`:
+Приложение настраивает реализацию кэша с помощью <xref:Microsoft.Extensions.Caching.StackExchangeRedis.RedisCache> экземпляра (<xref:Microsoft.Extensions.DependencyInjection.StackExchangeRedisCacheServiceCollectionExtensions.AddStackExchangeRedisCache*>) в среде, не являющейся средой разработки, `Startup.ConfigureServices`в:
+
+[!code-csharp[](distributed/samples/3.x/DistCacheSample/Startup.cs?name=snippet_AddStackExchangeRedisCache)]
+
+::: moniker-end
+
+::: moniker range="= aspnetcore-2.2"
+
+Приложение настраивает реализацию кэша с помощью <xref:Microsoft.Extensions.Caching.StackExchangeRedis.RedisCache> экземпляра (<xref:Microsoft.Extensions.DependencyInjection.StackExchangeRedisCacheServiceCollectionExtensions.AddStackExchangeRedisCache*>) в среде, не являющейся средой разработки, `Startup.ConfigureServices`в:
 
 [!code-csharp[](distributed/samples/2.x/DistCacheSample/Startup.cs?name=snippet_AddStackExchangeRedisCache)]
 
@@ -124,7 +160,7 @@ Table and index were created successfully.
 
 ::: moniker range="< aspnetcore-2.2"
 
-Приложения настраивает реализации кэша с помощью <xref:Microsoft.Extensions.Caching.Redis.RedisCache> экземпляра (<xref:Microsoft.Extensions.DependencyInjection.RedisCacheServiceCollectionExtensions.AddDistributedRedisCache*>):
+Приложение настраивает реализацию кэша с помощью <xref:Microsoft.Extensions.Caching.Redis.RedisCache> экземпляра (<xref:Microsoft.Extensions.DependencyInjection.RedisCacheServiceCollectionExtensions.AddDistributedRedisCache*>):
 
 ```csharp
 services.AddDistributedRedisCache(options =>
@@ -136,52 +172,74 @@ services.AddDistributedRedisCache(options =>
 
 ::: moniker-end
 
-Чтобы установить Redis на локальном компьютере:
+Чтобы установить Redis на локальном компьютере, выполните следующие действия.
 
-* Установка [Chocolatey Redis пакета](https://chocolatey.org/packages/redis-64/).
+* Установите [пакет шоколадного Redis](https://chocolatey.org/packages/redis-64/).
 * Запустите `redis-server` из командной строки.
 
 ## <a name="use-the-distributed-cache"></a>Использование распределенного кэша
 
-Чтобы использовать <xref:Microsoft.Extensions.Caching.Distributed.IDistributedCache> интерфейсом, запросить экземпляр <xref:Microsoft.Extensions.Caching.Distributed.IDistributedCache> из любого конструктора в приложении. Экземпляр предоставляется [внедрения зависимостей (DI)](xref:fundamentals/dependency-injection).
+Чтобы использовать <xref:Microsoft.Extensions.Caching.Distributed.IDistributedCache> интерфейс, запросите <xref:Microsoft.Extensions.Caching.Distributed.IDistributedCache> экземпляр из любого конструктора в приложении. Экземпляр предоставляется путем [внедрения зависимостей (DI)](xref:fundamentals/dependency-injection).
 
-При запуске приложения, <xref:Microsoft.Extensions.Caching.Distributed.IDistributedCache> внедряется в `Startup.Configure`. Текущее время кэшируется с помощью <xref:Microsoft.AspNetCore.Hosting.IApplicationLifetime> (Дополнительные сведения см. в разделе [веб-узел: Интерфейс IApplicationLifetime](xref:fundamentals/host/web-host#iapplicationlifetime-interface)):
+::: moniker range=">= aspnetcore-3.0"
+
+При запуске <xref:Microsoft.Extensions.Caching.Distributed.IDistributedCache> примера приложения внедряется в `Startup.Configure`. Текущее время кэшируется с помощью <xref:Microsoft.Extensions.Hosting.IHostApplicationLifetime> (Дополнительные сведения см. в [разделе универсальный узел: Ихостаппликатионлифетиме](xref:fundamentals/host/generic-host#ihostapplicationlifetime)):
+
+[!code-csharp[](distributed/samples/3.x/DistCacheSample/Startup.cs?name=snippet_Configure&highlight=10)]
+
+::: moniker-end
+
+::: moniker range="< aspnetcore-3.0"
+
+При запуске <xref:Microsoft.Extensions.Caching.Distributed.IDistributedCache> примера приложения внедряется в `Startup.Configure`. Текущее время кэшируется с помощью <xref:Microsoft.AspNetCore.Hosting.IApplicationLifetime> (Дополнительные сведения см. в [разделе веб-узел: Интерфейс](xref:fundamentals/host/web-host#iapplicationlifetime-interface)иаппликатионлифетиме):
 
 [!code-csharp[](distributed/samples/2.x/DistCacheSample/Startup.cs?name=snippet_Configure&highlight=10)]
 
-Пример приложения внедряет <xref:Microsoft.Extensions.Caching.Distributed.IDistributedCache> в `IndexModel` для использования на странице индекса.
+::: moniker-end
 
-Каждый раз при загрузке страницы индекса кэша проверяется на время кэширования в `OnGetAsync`. Если время кэширования еще не истек, отображается время. Если 20 секунд, истекших с момента последнего обращения к время кэширования (последний раз страница была загружена), на странице отображается *кэшированных Time Expired*.
+Пример приложения внедряет <xref:Microsoft.Extensions.Caching.Distributed.IDistributedCache> в объект `IndexModel` для использования на странице индекса.
 
-Немедленно обновить кэшированные время на текущий момент времени, выбрав **сбросить время кэширования** кнопки. Триггеры кнопку `OnPostResetCachedTime` метод обработчика.
+При каждой загрузке страницы индекса кэш проверяется на наличие кэшированного времени в `OnGetAsync`. Если время кэширования не истекло, отображается время. Если прошло 20 секунд с момента последнего обращения к кэшированному времени (время последней загрузки этой страницы), на странице отображается *время ожидания кэширования*.
+
+Немедленно обновите кэшированное время на текущее время, нажав кнопку **сбросить кэшированное** время. Кнопка запускает `OnPostResetCachedTime` метод обработчика.
+
+::: moniker range=">= aspnetcore-3.0"
+
+[!code-csharp[](distributed/samples/3.x/DistCacheSample/Pages/Index.cshtml.cs?name=snippet_IndexModel&highlight=7,14-20,25-29)]
+
+::: moniker-end
+
+::: moniker range="< aspnetcore-3.0"
 
 [!code-csharp[](distributed/samples/2.x/DistCacheSample/Pages/Index.cshtml.cs?name=snippet_IndexModel&highlight=7,14-20,25-29)]
+
+::: moniker-end
 
 > [!NOTE]
 > Время жизни экземпляров <xref:Microsoft.Extensions.Caching.Distributed.IDistributedCache> (по крайней мере, для встроенных реализаций) не обязательно должно быть ограничено одним объектом или блоком.
 >
-> Вы также можете создать <xref:Microsoft.Extensions.Caching.Distributed.IDistributedCache> экземпляра везде, где это может потребоваться, а не с помощью внедрения Зависимостей, но создание экземпляра в коде может сделать код труднее тестировать и нарушает [принципу явных зависимостей](/dotnet/standard/modern-web-apps-azure-architecture/architectural-principles#explicit-dependencies).
+> Кроме того, <xref:Microsoft.Extensions.Caching.Distributed.IDistributedCache> экземпляр можно создать везде, где вам может понадобиться, а не использовать di, но создание экземпляра в коде может усложнить тестирование и нарушает [принцип явных зависимостей](/dotnet/standard/modern-web-apps-azure-architecture/architectural-principles#explicit-dependencies).
 
 ## <a name="recommendations"></a>Рекомендации
 
-При принятии решения о реализации <xref:Microsoft.Extensions.Caching.Distributed.IDistributedCache> лучше всего подходит для вашего приложения, необходимо учитывать следующее:
+При принятии решения о том, <xref:Microsoft.Extensions.Caching.Distributed.IDistributedCache> какая реализация лучше подходит для вашего приложения, учитывайте следующее.
 
-* Существующую инфраструктуру
+* Существующая инфраструктура
 * Требования к производительности
 * Стоимость
-* Опыт рабочей группы
+* Опыт работы в группе
 
-Решения кэширования обычно используют хранилище в памяти для предоставления быстрого получения кэшированных данных, но память является ограниченным ресурсом и дорогостоящей развернуть. Только хранилище часто использовать данные в кэше.
+Для обеспечения быстрого извлечения кэшированных данных решения кэширования обычно используют хранилище в памяти, но память является ограниченным ресурсом и может быть расширена. Хранение часто используемых данных в кэше.
 
-Как правило кэш Redis обеспечивает высокую пропускную способность и меньшую задержку, чем при использовании кэша SQL Server. Тем не менее тестирование производительности обычно требуется, чтобы определить характеристики производительности стратегии кэширования.
+Как правило, кэш Redis обеспечивает более высокую пропускную способность и меньшую задержку, чем кэш SQL Server. Однако для определения характеристик производительности стратегий кэширования обычно требуется тестирование производительности.
 
-Когда SQL Server используется в качестве резервного хранилища распределенного кэша, использовать ту же базу данных для кэша и хранения обычных данных приложения и извлечения может отрицательно повлиять на их производительность. Мы рекомендуем использовать выделенный экземпляр SQL Server для распределенного кэша, резервным хранилищем.
+Если SQL Server используется в качестве резервного хранилища распределенного кэша, использование той же базы данных для кэша и обычного хранилища данных и извлечения приложения может негативно сказаться на производительности обоих. Рекомендуется использовать выделенный экземпляр SQL Server для резервного хранилища распределенного кэша.
 
 ## <a name="additional-resources"></a>Дополнительные ресурсы
 
-* [Кэш в Azure redis](/azure/azure-cache-for-redis/)
+* [Кэш Redis в Azure](/azure/azure-cache-for-redis/)
 * [База данных SQL в Azure](/azure/sql-database/)
-* [Поставщик IDistributedCache для NCache в веб-ферм с ASP.NET Core](http://www.alachisoft.com/ncache/aspnet-core-idistributedcache-ncache.html) ([NCache на сайте GitHub](https://github.com/Alachisoft/NCache))
+* [Поставщик ASP.NET Core IDistributedCache для NCache в веб-фермах](http://www.alachisoft.com/ncache/aspnet-core-idistributedcache-ncache.html) ([NCache на GitHub](https://github.com/Alachisoft/NCache))
 * <xref:performance/caching/memory>
 * <xref:fundamentals/change-tokens>
 * <xref:performance/caching/response>

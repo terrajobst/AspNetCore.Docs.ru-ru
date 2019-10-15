@@ -1,21 +1,20 @@
 ---
 title: Веб-узел ASP.NET Core
-author: guardrex
+author: rick-anderson
 description: Сведения о веб-узле в ASP.NET Core, который отвечает за запуск приложений и управление временем существования.
+monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 06/14/2019
+ms.date: 10/07/2019
 uid: fundamentals/host/web-host
-ms.openlocfilehash: d387098662cc832cc0e49b6a1636f0ebcc7308de
-ms.sourcegitcommit: 215954a638d24124f791024c66fd4fb9109fd380
+ms.openlocfilehash: bc18b5490d232758b796d33a62cd8d1a7dd7289f
+ms.sourcegitcommit: 3d082bd46e9e00a3297ea0314582b1ed2abfa830
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71081692"
+ms.lasthandoff: 10/07/2019
+ms.locfileid: "72007105"
 ---
 # <a name="aspnet-core-web-host"></a>Веб-узел ASP.NET Core
-
-Автор [Люк Латэм](https://github.com/guardrex) (Luke Latham)
 
 Приложения ASP.NET Core настраивают и запускают *узел*. Узел отвечает за запуск приложения и управление временем существования. Узел настраивает как минимум сервер и конвейер обработки запросов. Узел также может настроить ведение журнала, внедрение зависимостей и конфигурацию.
 
@@ -25,7 +24,7 @@ ms.locfileid: "71081692"
 
 ::: moniker-end
 
-::: moniker range="<= aspnetcore-2.2"
+::: moniker range="< aspnetcore-3.0"
 
 В этой статье описывается веб-узел, который предназначен для размещения веб-приложений. Для приложений других типов используйте [универсальный узел](xref:fundamentals/host/generic-host).
 
@@ -56,7 +55,7 @@ public class Program
 Метод `CreateDefaultBuilder` выполняет указанные ниже задачи.
 
 * Настраивает сервер [Kestrel](xref:fundamentals/servers/kestrel) в качестве веб-сервера с помощью поставщиков конфигурации размещения приложения. Параметры сервера Kestrel по умолчанию см. в разделе <xref:fundamentals/servers/kestrel#kestrel-options>.
-* В качестве корня содержимого задает путь, возвращенный методом [Directory.GetCurrentDirectory](/dotnet/api/system.io.directory.getcurrentdirectory).
+* В качестве [корневого каталога содержимого](xref:fundamentals/index#content-root) задает путь, возвращенный методом [Directory.GetCurrentDirectory](/dotnet/api/system.io.directory.getcurrentdirectory).
 * Загружает [конфигурацию узла](#host-configuration-values) из:
   * Переменные среды с префиксом `ASPNETCORE_` (например, `ASPNETCORE_ENVIRONMENT`).
   * аргументы командной строки.
@@ -122,7 +121,7 @@ public class Program
 
 ::: moniker-end
 
-*Корень содержимого* определяет, где узел ищет файлы содержимого, например файлы представлений MVC. При запуске приложения из корневой папки проекта эта папка используется в качестве корня содержимого. Такое поведение по умолчанию принято в [Visual Studio](https://visualstudio.microsoft.com) и [шаблонах dotnet new](/dotnet/core/tools/dotnet-new).
+[Корень содержимого](xref:fundamentals/index#content-root) определяет, где узел ищет файлы содержимого, например файлы представлений MVC. При запуске приложения из корневой папки проекта эта папка используется в качестве корня содержимого. Такое поведение по умолчанию принято в [Visual Studio](https://visualstudio.microsoft.com) и [шаблонах dotnet new](/dotnet/core/tools/dotnet-new).
 
 Дополнительные сведения о конфигурации приложения см. в разделе <xref:fundamentals/configuration/index>.
 
@@ -143,7 +142,17 @@ public class Program
 
 ### <a name="application-key-name"></a>Ключ приложения (имя)
 
+::: moniker range=">= aspnetcore-3.0"
+
+Свойство `IWebHostEnvironment.ApplicationName` задается автоматически при вызове [UseStartup](/dotnet/api/microsoft.aspnetcore.hosting.webhostbuilderextensions.usestartup) или [Configure](/dotnet/api/microsoft.aspnetcore.hosting.istartup.configure) во время создания узла. Значение присваивается имени сборки, содержащей точку входа приложения. Чтобы явно задать значение, используйте [WebHostDefaults.ApplicationKey](/dotnet/api/microsoft.aspnetcore.hosting.webhostdefaults.applicationkey).
+
+::: moniker-end
+
+::: moniker range="< aspnetcore-3.0"
+
 Свойство [IHostingEnvironment.ApplicationName](/dotnet/api/microsoft.extensions.hosting.ihostingenvironment.applicationname) задается автоматически при вызове [UseStartup](/dotnet/api/microsoft.aspnetcore.hosting.webhostbuilderextensions.usestartup) или [Configure](/dotnet/api/microsoft.aspnetcore.hosting.istartup.configure) во время создания узла. Значение присваивается имени сборки, содержащей точку входа приложения. Чтобы явно задать значение, используйте [WebHostDefaults.ApplicationKey](/dotnet/api/microsoft.aspnetcore.hosting.webhostdefaults.applicationkey).
+
+::: moniker-end
 
 **Ключ**: applicationName  
 **Тип**: *string*  
@@ -173,9 +182,9 @@ WebHost.CreateDefaultBuilder(args)
     .CaptureStartupErrors(true)
 ```
 
-### <a name="content-root"></a>Корень содержимого
+### <a name="content-root"></a>Корневой каталог содержимого
 
-Этот параметр определяет то, где ASP.NET Core начинает искать файлы содержимого, например представления MVC. 
+Этот параметр определяет то, где ASP.NET Core начинает искать файлы содержимого.
 
 **Ключ**: contentRoot  
 **Тип**: *string*  
@@ -183,12 +192,17 @@ WebHost.CreateDefaultBuilder(args)
 **Задается с помощью**: `UseContentRoot`  
 **Переменная среды**: `ASPNETCORE_CONTENTROOT`
 
-Корень содержимого также используется в качестве базового пути для [корневого каталога документов](#web-root). Если путь не существует, узел не запускается.
+Корневой каталог содержимого также используется в качестве базового пути для [корневого каталога документов](xref:fundamentals/index#web-root). Если путь к корневому каталогу содержимого не существует, узел не запускается.
 
 ```csharp
 WebHost.CreateDefaultBuilder(args)
     .UseContentRoot("c:\\<content-root>")
 ```
+
+Дополнительные сведения можно найти в разделе
+
+* [Корневой каталог содержимого](xref:fundamentals/index#content-root)
+* [Корневой каталог документов](#web-root)
 
 ### <a name="detailed-errors"></a>Подробные сообщения об ошибках
 
@@ -367,13 +381,13 @@ WebHost.CreateDefaultBuilder(args)
     .UseStartup<TStartup>()
 ```
 
-### <a name="web-root"></a>Корневой каталог документов
+### <a name="web-root"></a>Корневой веб-узел
 
 Задает относительный путь к статическим ресурсам приложения.
 
 **Ключ**: webroot  
 **Тип**: *string*  
-**По умолчанию**: если значение не задано, по умолчанию используется путь "(Корень содержимого)/wwwroot" при его наличии. Если этот путь не существует, используется фиктивный поставщик файлов.  
+**По умолчанию**: Значение по умолчанию — `wwwroot`. Наличие пути *{корневой_каталог_содержимого}/wwwroot* обязательно. Если этот путь не существует, используется фиктивный поставщик файлов.  
 **Задается с помощью**: `UseWebRoot`  
 **Переменная среды**: `ASPNETCORE_WEBROOT`
 
@@ -381,6 +395,11 @@ WebHost.CreateDefaultBuilder(args)
 WebHost.CreateDefaultBuilder(args)
     .UseWebRoot("public")
 ```
+
+Дополнительные сведения можно найти в разделе
+
+* [Корневой каталог документов](xref:fundamentals/index#web-root)
+* [Корневой каталог содержимого](#content-root)
 
 ## <a name="override-configuration"></a>Переопределение конфигурации
 
@@ -507,7 +526,7 @@ using (var host = WebHost.Start("http://localhost:8080", app => app.Response.Wri
 
 Результат будет тем же, что и при использовании **Start(RequestDelegate app)** , но приложение отвечает по адресу `http://localhost:8080`.
 
-**Start(Action&lt;IRouteBuilder&gt; routeBuilder)**
+**Start(Action\<IRouteBuilder> routeBuilder)**
 
 Используйте экземпляр `IRouteBuilder` ([Microsoft.AspNetCore.Routing](https://www.nuget.org/packages/Microsoft.AspNetCore.Routing/)) для применения ПО промежуточного слоя маршрутизации:
 
@@ -541,7 +560,7 @@ using (var host = WebHost.Start(router => router
 
 `WaitForShutdown` блокируется, пока не будет создано прерывание (Ctrl-C/SIGINT или SIGTERM). Приложение выводит сообщение `Console.WriteLine` и ожидает нажатия клавиши, после чего завершает работу.
 
-**Start(string url, Action&lt;IRouteBuilder&gt; routeBuilder)**
+**Start(string url, Action\<IRouteBuilder> routeBuilder)**
 
 Используйте URL-адрес и экземпляр `IRouteBuilder`:
 
@@ -562,9 +581,9 @@ using (var host = WebHost.Start("http://localhost:8080", router => router
 }
 ```
 
-Результат будет тем же, что и при использовании **Start(Action&lt;IRouteBuilder&gt; routeBuilder)** , но приложение будет отвечать по адресу `http://localhost:8080`.
+Результат будет тем же, что и при использовании **Start(Action\<IRouteBuilder> routeBuilder)** , но приложение будет отвечать по адресу `http://localhost:8080`.
 
-**StartWith(Action&lt;IApplicationBuilder&gt; app)**
+**StartWith(Action\<IApplicationBuilder> app)**
 
 Предоставьте делегат для настройки `IApplicationBuilder`:
 
@@ -585,7 +604,7 @@ using (var host = WebHost.StartWith(app =>
 
 В браузере выполните запрос по адресу `http://localhost:5000`, чтобы получить ответ "Hello World!" `WaitForShutdown` блокируется, пока не будет создано прерывание (Ctrl-C/SIGINT или SIGTERM). Приложение выводит сообщение `Console.WriteLine` и ожидает нажатия клавиши, после чего завершает работу.
 
-**StartWith(string url, Action&lt;IApplicationBuilder&gt; app)**
+**StartWith(string url, Action\<IApplicationBuilder> app)**
 
 Предоставьте URL-адрес и делегат для настройки `IApplicationBuilder`:
 
@@ -604,7 +623,104 @@ using (var host = WebHost.StartWith("http://localhost:8080", app =>
 }
 ```
 
-Результат будет тем же, что и при использовании **StartWith(Action&lt;IApplicationBuilder&gt; app)** , но приложение будет отвечать по адресу `http://localhost:8080`.
+Результат будет тем же, что и при использовании **StartWith(Action\<IApplicationBuilder> app)** , но приложение будет отвечать по адресу `http://localhost:8080`.
+
+::: moniker range=">= aspnetcore-3.0"
+
+## <a name="iwebhostenvironment-interface"></a>Интерфейс IWebHostEnvironment
+
+Интерфейс `IWebHostEnvironment` предоставляет сведения о среде веб-размещения приложения. Чтобы получить интерфейс `IWebHostEnvironment` для использования его свойств и методов расширения, воспользуйтесь [внедрением конструктора](xref:fundamentals/dependency-injection):
+
+```csharp
+public class CustomFileReader
+{
+    private readonly IWebHostEnvironment _env;
+
+    public CustomFileReader(IWebHostEnvironment env)
+    {
+        _env = env;
+    }
+
+    public string ReadFile(string filePath)
+    {
+        var fileProvider = _env.WebRootFileProvider;
+        // Process the file here
+    }
+}
+```
+
+Для настройки приложения при запуске в соответствии со средой можно применять [подход на основе соглашения](xref:fundamentals/environments#environment-based-startup-class-and-methods). Кроме того, можно внедрить интерфейс `IWebHostEnvironment` в конструктор `Startup` для использования в `ConfigureServices`:
+
+```csharp
+public class Startup
+{
+    public Startup(IWebHostEnvironment env)
+    {
+        HostingEnvironment = env;
+    }
+
+    public IWebHostEnvironment HostingEnvironment { get; }
+
+    public void ConfigureServices(IServiceCollection services)
+    {
+        if (HostingEnvironment.IsDevelopment())
+        {
+            // Development configuration
+        }
+        else
+        {
+            // Staging/Production configuration
+        }
+
+        var contentRootPath = HostingEnvironment.ContentRootPath;
+    }
+}
+```
+
+> [!NOTE]
+> Помимо метода расширения `IsDevelopment`, интерфейс `IWebHostEnvironment` предоставляет методы `IsStaging`, `IsProduction` и `IsEnvironment(string environmentName)`. Дополнительные сведения можно найти по адресу: <xref:fundamentals/environments>.
+
+Службу `IWebHostEnvironment` также можно внедрять непосредственно в метод `Configure` для настройки конвейера обработки:
+
+```csharp
+public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+{
+    if (env.IsDevelopment())
+    {
+        // In Development, use the Developer Exception Page
+        app.UseDeveloperExceptionPage();
+    }
+    else
+    {
+        // In Staging/Production, route exceptions to /error
+        app.UseExceptionHandler("/error");
+    }
+
+    var contentRootPath = env.ContentRootPath;
+}
+```
+
+`IWebHostEnvironment` можно внедрить в метод `Invoke` при создании пользовательского [ПО промежуточного слоя](xref:fundamentals/middleware/write):
+
+```csharp
+public async Task Invoke(HttpContext context, IWebHostEnvironment env)
+{
+    if (env.IsDevelopment())
+    {
+        // Configure middleware for Development
+    }
+    else
+    {
+        // Configure middleware for Staging/Production
+    }
+
+    var contentRootPath = env.ContentRootPath;
+}
+```
+
+::: moniker-end
+
+::: moniker range="< aspnetcore-3.0"
 
 ## <a name="ihostingenvironment-interface"></a>Интерфейс IHostingEnvironment
 
@@ -697,6 +813,77 @@ public async Task Invoke(HttpContext context, IHostingEnvironment env)
 }
 ```
 
+::: moniker-end
+
+::: moniker range=">= aspnetcore-3.0"
+
+## <a name="ihostapplicationlifetime-interface"></a>Интерфейс IHostApplicationLifetime
+
+Интерфейс `IHostApplicationLifetime` позволяет выполнять действия после запуска и завершения работы. Три свойства этого интерфейса представляют собой токены отмены, которые служат для регистрации методов `Action`, определяющих события запуска и завершения работы.
+
+| Токен отмены    | Условие инициации&#8230; |
+| --------------------- | --------------------- |
+| `ApplicationStarted`  | Узел полностью запущен. |
+| `ApplicationStopped`  | Заканчивается нормальное завершение работы узла. Все запросы должны быть обработаны. Завершение работы блокируется до тех пор, пока это событие не завершится. |
+| `ApplicationStopping` | Происходит нормальное завершение работы узла. Запросы могут все еще обрабатываться. Завершение работы блокируется до тех пор, пока это событие не завершится. |
+
+```csharp
+public class Startup
+{
+    public void Configure(IApplicationBuilder app, IHostApplicationLifetime appLifetime)
+    {
+        appLifetime.ApplicationStarted.Register(OnStarted);
+        appLifetime.ApplicationStopping.Register(OnStopping);
+        appLifetime.ApplicationStopped.Register(OnStopped);
+
+        Console.CancelKeyPress += (sender, eventArgs) =>
+        {
+            appLifetime.StopApplication();
+            // Don't terminate the process immediately, wait for the Main thread to exit gracefully.
+            eventArgs.Cancel = true;
+        };
+    }
+
+    private void OnStarted()
+    {
+        // Perform post-startup activities here
+    }
+
+    private void OnStopping()
+    {
+        // Perform on-stopping activities here
+    }
+
+    private void OnStopped()
+    {
+        // Perform post-stopped activities here
+    }
+}
+```
+
+Метод `StopApplication` запрашивает остановку приложения. Следующий класс использует `StopApplication` для корректного завершения работы приложения при вызове метода класса `Shutdown`:
+
+```csharp
+public class MyClass
+{
+    private readonly IHostApplicationLifetime _appLifetime;
+
+    public MyClass(IHostApplicationLifetime appLifetime)
+    {
+        _appLifetime = appLifetime;
+    }
+
+    public void Shutdown()
+    {
+        _appLifetime.StopApplication();
+    }
+}
+```
+
+::: moniker-end
+
+::: moniker range="< aspnetcore-3.0"
+
 ## <a name="iapplicationlifetime-interface"></a>Интерфейс IApplicationLifetime
 
 [Интерфейс IApplicationLifetime](/dotnet/api/microsoft.aspnetcore.hosting.iapplicationlifetime) позволяет выполнять действия после запуска и завершения работы. Три свойства этого интерфейса представляют собой токены отмены, которые служат для регистрации методов `Action`, определяющих события запуска и завершения работы.
@@ -759,6 +946,8 @@ public class MyClass
     }
 }
 ```
+
+::: moniker-end
 
 ## <a name="scope-validation"></a>Проверка области
 

@@ -5,14 +5,14 @@ description: Узнайте, как использовать глобально�
 monikerRange: '>= aspnetcore-2.1'
 ms.author: scaddie
 ms.custom: mvc
-ms.date: 08/29/2019
+ms.date: 10/07/2019
 uid: web-api/http-repl
-ms.openlocfilehash: 086ac141a04ab4a560f2c26fb049ef8a5493dc97
-ms.sourcegitcommit: d34b2627a69bc8940b76a949de830335db9701d3
+ms.openlocfilehash: bb3757f51487a307ebfb97452b80995f84e95e4b
+ms.sourcegitcommit: 73a451e9a58ac7102f90b608d661d8c23dd9bbaf
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71187242"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72037709"
 ---
 # <a name="test-web-apis-with-the-http-repl"></a>Тестирование веб-API с помощью HTTP REPL
 
@@ -790,25 +790,107 @@ options <PARAMETER> [-F|--no-formatting] [-h|--header] [--response] [--response:
 
 Задать заголовок HTTP-запроса можно одним из следующих способов.
 
-1. Внутри HTTP-запроса. Например:
+* Внутри HTTP-запроса. Например:
 
-  ```console
-  https://localhost:5001/people~ post -h Content-Type=application/json
-  ```
+    ```console
+    https://localhost:5001/people~ post -h Content-Type=application/json
+    ```
+    
+    При таком подходе для каждого заголовка HTTP-запроса требуется собственный параметр `-h`.
 
-  При таком подходе для каждого заголовка HTTP-запроса требуется собственный параметр `-h`.
+* Перед отправкой HTTP-запроса. Например:
 
-1. Перед отправкой HTTP-запроса. Например:
+    ```console
+    https://localhost:5001/people~ set header Content-Type application/json
+    ```
+    
+    Если заголовок задается перед отправкой запроса, он продолжает действовать на протяжении всего сеанса командной оболочки. Чтобы очистить заголовок, укажите пустое значение. Например:
+    
+    ```console
+    https://localhost:5001/people~ set header Content-Type
+    ```
 
-  ```console
-  https://localhost:5001/people~ set header Content-Type application/json
-  ```
+## <a name="test-secured-endpoints"></a>Проверка защищенных конечных точек
 
-  Если заголовок задается перед отправкой запроса, он продолжает действовать на протяжении всего сеанса командной оболочки. Чтобы очистить заголовок, укажите пустое значение. Например:
+HTTP REPL поддерживает проверку защищенных конечных точек путем использования заголовков HTTP-запросов. Примеры поддерживаемых схем проверки подлинности и авторизации включают в себя обычную проверку подлинности, токены носителя JWT и дайджест-аутентификацию. Например, можно отправить токен носителя в конечную точку с помощью следующей команды:
 
-  ```console
-  https://localhost:5001/people~ set header Content-Type
-  ```
+```console
+set header Authorization "bearer <TOKEN VALUE>"
+```
+
+Для доступа к конечной точке, размещенной в Azure, или для использования [Azure REST API](/rest/api/azure/) необходим токен носителя. Выполните следующие действия, чтобы получить токен носителя для подписки Azure с помощью [Azure CLI](/cli/azure/). HTTP REPL задает токен носителя в заголовке HTTP-запроса и получает список веб-приложений Службы приложений Azure.
+
+1. Войдите в Azure:
+
+    ```azcli
+    az login
+    ```
+
+1. Получите идентификатор подписки с помощью следующей команды:
+
+    ```azcli
+    az account show --query id
+    ```
+
+1. Скопируйте идентификатор подписки и выполните следующую команду:
+
+    ```azcli
+    az account set --subscription "<SUBSCRIPTION ID>"
+    ```
+
+1. Получите токен носителя с помощью следующей команды:
+
+    ```azcli
+    az account get-access-token --query accessToken
+    ```
+
+1. Подключитесь к Azure REST API с помощью HTTP REPL:
+
+    ```console
+    httprepl https://management.azure.com
+    ```
+
+1. Задайте заголовок запроса HTTP `Authorization`:
+
+    ```console
+    https://management.azure.com/> set header Authorization "bearer <ACCESS TOKEN>"
+    ```
+
+1. Перейдите к подписке:
+
+    ```console
+    https://management.azure.com/> cd subscriptions/<SUBSCRIPTION ID>
+    ```
+
+1. Получите список веб-приложений Службы приложений Azure для вашей подписки:
+
+    ```console
+    https://management.azure.com/subscriptions/{SUBSCRIPTION ID}> get providers/Microsoft.Web/sites?api-version=2016-08-01
+    ```
+
+    Появится следующий ответ:
+
+    ```console
+    HTTP/1.1 200 OK
+    Cache-Control: no-cache
+    Content-Length: 35948
+    Content-Type: application/json; charset=utf-8
+    Date: Thu, 19 Sep 2019 23:04:03 GMT
+    Expires: -1
+    Pragma: no-cache
+    Strict-Transport-Security: max-age=31536000; includeSubDomains
+    X-Content-Type-Options: nosniff
+    x-ms-correlation-request-id: <em>xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx</em>
+    x-ms-original-request-ids: <em>xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx;xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx</em>
+    x-ms-ratelimit-remaining-subscription-reads: 11999
+    x-ms-request-id: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
+    x-ms-routing-request-id: WESTUS:xxxxxxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxx
+    {
+      "value": [
+        <AZURE RESOURCES LIST>
+      ]
+    }
+    ```
 
 ## <a name="toggle-http-request-display"></a>Включение и отключение отображения HTTP-запроса
 

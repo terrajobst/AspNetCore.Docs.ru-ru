@@ -4,14 +4,14 @@ author: ardalis
 description: Из этой статьи вы узнаете, как работают фильтры и как их использовать в ASP.NET Core.
 ms.author: riande
 ms.custom: mvc
-ms.date: 05/08/2019
+ms.date: 09/28/2019
 uid: mvc/controllers/filters
-ms.openlocfilehash: 50b199744f32ad19335080da406db69665ec1ae9
-ms.sourcegitcommit: 7a40c56bf6a6aaa63a7ee83a2cac9b3a1d77555e
+ms.openlocfilehash: ed48c2074360768b8d8c5af7057b353b00592394
+ms.sourcegitcommit: 73a451e9a58ac7102f90b608d661d8c23dd9bbaf
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67856161"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72037696"
 ---
 # <a name="filters-in-aspnet-core"></a>Фильтры в ASP.NET Core
 
@@ -437,9 +437,12 @@ FiltersSample.Filters.LogConstantFilter:Information: Method 'Hi' called
 
 [!code-csharp[](./filters/sample/FiltersSample/Filters/LoggingAddHeaderFilter.cs?name=snippet_ResultFilter)]
 
-Тип выполняемого результата зависит от соответствующего действия. Действие, возвращающее представление, будет включать всю обработку Razor в рамках выполняемого объекта <xref:Microsoft.AspNetCore.Mvc.ViewResult>. В процессе выполнения результата метод API может производить сериализацию. Дополнительные сведения о [результатах действий](xref:mvc/controllers/actions)
+Тип выполняемого результата зависит от соответствующего действия. Действие, возвращающее представление, будет включать всю обработку Razor в рамках выполняемого объекта <xref:Microsoft.AspNetCore.Mvc.ViewResult>. В процессе выполнения результата метод API может производить сериализацию. Дополнительные сведения о [результатах действий](xref:mvc/controllers/actions).
 
-Фильтры результатов выполняются только в случае успешных результатов — когда действие или фильтры действий предоставляют результат действия. Фильтры результатов не выполняются, когда фильтры исключений обрабатывают исключение.
+Фильтры результатов выполняются только в том случае, когда действие или фильтры действий предоставляют результат действия. Фильтры результатов не выполняются в следующих случаях:
+
+* Фильтр авторизации или ресурсов выполняет сокращение конвейера.
+* Фильтр исключений обрабатывает исключение и выдает результат действия.
 
 Метод <xref:Microsoft.AspNetCore.Mvc.Filters.IResultFilter.OnResultExecuting*?displayProperty=fullName> может сокращать выполнение результата действия и последующих фильтров результатов, присваивая свойству <xref:Microsoft.AspNetCore.Mvc.Filters.ResultExecutingContext.Cancel?displayProperty=fullName> значение `true`. При сокращении выполнения выполните запись в объект ответа, чтобы избежать формирования пустого ответа. Вызов исключения в `IResultFilter.OnResultExecuting`:
 
@@ -471,12 +474,10 @@ If an exception was thrown **IN THE RESULT FILTER**, the response body is not se
 
 ### <a name="ialwaysrunresultfilter-and-iasyncalwaysrunresultfilter"></a>IAlwaysRunResultFilter и IAsyncAlwaysRunResultFilter
 
-Интерфейсы <xref:Microsoft.AspNetCore.Mvc.Filters.IAlwaysRunResultFilter> и <xref:Microsoft.AspNetCore.Mvc.Filters.IAsyncAlwaysRunResultFilter> объявляют реализацию <xref:Microsoft.AspNetCore.Mvc.Filters.IResultFilter>, которая выполняется для всех результатов действий. Фильтр применяется для всех результатов действий, если:
+Интерфейсы <xref:Microsoft.AspNetCore.Mvc.Filters.IAlwaysRunResultFilter> и <xref:Microsoft.AspNetCore.Mvc.Filters.IAsyncAlwaysRunResultFilter> объявляют реализацию <xref:Microsoft.AspNetCore.Mvc.Filters.IResultFilter>, которая выполняется для всех результатов действий. Сюда включены результаты действий, созданные:
 
-* <xref:Microsoft.AspNetCore.Mvc.Filters.IExceptionFilter> или <xref:Microsoft.AspNetCore.Mvc.Filters.IAuthorizationFilter> применяется и сокращает ответ.
-* Фильтр исключений обрабатывает исключение и выдает результат действия.
-
-Фильтры, отличающиеся от `IExceptionFilter` и `IAuthorizationFilter`, не сокращают `IAlwaysRunResultFilter` и `IAsyncAlwaysRunResultFilter`.
+* фильтрами авторизации и фильтрами ресурсов, которые сокращают ответ;
+* фильтрами исключений.
 
 Например, следующий фильтр всегда выполняется, задавая результат действия (<xref:Microsoft.AspNetCore.Mvc.ObjectResult>) с кодом состояния *422 Unprocessable Entity* при сбое согласования содержимого:
 

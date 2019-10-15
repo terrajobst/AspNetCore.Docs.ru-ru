@@ -5,14 +5,14 @@ description: Узнайте, как преобразовать файл web.conf
 monikerRange: '>= aspnetcore-2.2'
 ms.author: riande
 ms.custom: mvc
-ms.date: 02/07/2019
+ms.date: 10/07/2019
 uid: host-and-deploy/iis/transform-webconfig
-ms.openlocfilehash: 32e66007d527f7f7b7cfd88d3bebc9b808251941
-ms.sourcegitcommit: 215954a638d24124f791024c66fd4fb9109fd380
+ms.openlocfilehash: d28c362a200ad433e316bc1af710231a169a30a4
+ms.sourcegitcommit: 3d082bd46e9e00a3297ea0314582b1ed2abfa830
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71081451"
+ms.lasthandoff: 10/07/2019
+ms.locfileid: "72007314"
 ---
 # <a name="transform-webconfig"></a>Преобразование web.config
 
@@ -28,9 +28,9 @@ ms.locfileid: "71081451"
 Такие преобразования выполняются в любом из следующих сценариев создания *web.config*:
 
 * Автоматическое создание в пакете SDK `Microsoft.NET.Sdk.Web`.
-* Размещение разработчиком в корневом каталоге содержимого приложения.
+* Размещение разработчиком в [корневом каталоге содержимого](xref:fundamentals/index#content-root) приложения.
 
-## <a name="build-configuration"></a>Конфигурация сборки
+## <a name="build-configuration"></a>Конфигурация построения
 
 Первыми выполняются преобразования конфигурации сборки.
 

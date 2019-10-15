@@ -1,201 +1,1447 @@
 ---
 title: Передача файлов в ASP.NET Core
-author: ardalis
+author: guardrex
 description: Сведения об использовании привязки модели и потоковой передачи для передачи файлов в ASP.NET Core MVC.
+monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 04/06/2019
+ms.date: 10/02/2019
 uid: mvc/models/file-uploads
-ms.openlocfilehash: 3db2e08acc1552957f28c7015f9a75af4a57fdcd
-ms.sourcegitcommit: dd9c73db7853d87b566eef136d2162f648a43b85
+ms.openlocfilehash: de8bfee22e39dfc5a6ed254cf0555887891d4590
+ms.sourcegitcommit: d81912782a8b0bd164f30a516ad80f8defb5d020
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65084865"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72179310"
 ---
-# <a name="file-uploads-in-aspnet-core"></a>Передача файлов в ASP.NET Core
+# <a name="upload-files-in-aspnet-core"></a>Передача файлов в ASP.NET Core
 
-Автор: [Стив Смит](https://ardalis.com/) (Steve Smith)
+Авторы: [Люк Латэм](https://github.com/guardrex) (Luke Latham), [Стив Смит](https://ardalis.com/) (Steve Smith) и [Рутгер Сторм](https://github.com/rutix) (Rutger Storm)
 
-Действия ASP.NET MVC поддерживают передачу одного или нескольких файлов с помощью простой привязки модели для небольших файлов или потоковой передачи для более крупных файлов.
+::: moniker range=">= aspnetcore-3.0"
 
-[Просмотреть или скачать образец с GitHub](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/models/file-uploads/sample/FileUploadSample)
+Действия ASP.NET Core поддерживают передачу одного или нескольких файлов с помощью привязки модели с буферизацией для небольших файлов или потоковой передачи без буферизации для более крупных файлов.
 
-## <a name="uploading-small-files-with-model-binding"></a>Передача небольших файлов с помощью привязки модели
+[Просмотреть или скачать образец кода](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/models/file-uploads/samples/) ([как скачивать](xref:index#how-to-download-a-sample))
 
-Для передачи небольших файлов можно применить составную HTML-форму или сформировать запрос POST на языке JavaScript. Примеры формы, использующей синтаксис Razor и поддерживающей передачу нескольких файлов, приведен ниже.
+## <a name="security-considerations"></a>Замечания по безопасности
 
-```html
-<form method="post" enctype="multipart/form-data" asp-controller="UploadFiles" asp-action="Index">
-    <div class="form-group">
-        <div class="col-md-10">
-            <p>Upload one or more files using this form:</p>
-            <input type="file" name="files" multiple>
-        </div>
-    </div>
-    <div class="form-group">
-        <div class="col-md-10">
-            <input type="submit" value="Upload">
-        </div>
-    </div>
+Необходимо соблюдать осторожность при предоставлении пользователям возможности отправки файлов на сервер. Злоумышленники могут попытаться:
+
+* Выполнить атаку типа [отказ в обслуживании](/windows-hardware/drivers/ifs/denial-of-service).
+* Передать вирусы и вредоносные программы.
+* Нарушить безопасность сетей и серверов другими способами.
+
+Ниже приведены некоторые действия по обеспечению безопасности, которые снижают вероятность успешных атак.
+
+* Передавайте файлы в выделенную область для отправки файлов в системе, желательно не на системный диск. Использование выделенного расположения упрощает применение мер безопасности к отправленным файлам. Отключите разрешения на выполнение для расположения отправки файла.&dagger;
+* Никогда не сохраняйте переданные файлы в дереве каталогов, где находится приложение.&dagger;
+* Используйте безопасное имя файла, определяемое приложением. Не используйте имя файла, предоставленное пользователем, или ненадежное имя переданного файла.&dagger; Для вывода ненадежного имени файла в пользовательском интерфейсе или в сообщении журнала закодируйте значение в HTML.
+* Разрешите только определенный набор одобренных расширений файлов.&dagger;
+* Проверьте подпись формата файла, чтобы запретить пользователю отправку подменяющего файла.&dagger; Например, запретите пользователю отправлять *EXE*-файл с расширением *TXT*.
+* Убедитесь, что на сервере выполняются проверки на стороне клиента.&dagger; Проверки на стороне клиента можно легко обойти.
+* Проверяйте размер отправляемых файлов и запретите выполнять отправку файлов большего размера.&dagger;
+* Если файлы не должны перезаписываться переданным файлом с тем же именем, перед отправкой файла проверьте его имя в базе данных или физическом хранилище.
+* **Запустите сканер для проверки отправляемого содержимого на наличие вирусов и вредоносных программ, прежде чем сохранять файл.**
+
+&dagger;Пример приложения демонстрирует подход, который соответствует критериям.
+
+> [!WARNING]
+> Отправка в систему вредоносного кода часто является первым шагом перед выполнением кода, который может:
+>
+> * полностью получить контроль над системой;
+> * перезагрузить систему так, что она окажется в неработоспособном состоянии;
+> * скомпрометировать пользовательские или системные данные;
+> * применить граффити к открытому интерфейсу.
+>
+> Сведения об уменьшении контактной зоны атаки во время приема файлов от пользователей см. в следующих ресурсах:
+>
+> * [Неограниченная отправка файлов](https://www.owasp.org/index.php/Unrestricted_File_Upload)
+> * [Безопасность в Azure. Убедитесь, что при приеме файлов от пользователей обеспечиваются соответствующие меры безопасности](/azure/security/azure-security-threat-modeling-tool-input-validation#controls-users).
+
+Дополнительные сведения о реализации мер безопасности, включая примеры из примера приложения, см. в статье [Передача файлов в ASP.NET Core](#validation).
+
+## <a name="storage-scenarios"></a>Сценарии использования хранилища
+
+К общим вариантам хранилища файлов относятся следующие:
+
+* База данных
+
+  * В случае отправки небольших файлов база данных часто работает быстрее, чем физическое хранилище (файловая система или сетевая папка).
+  * База данных часто более удобна по сравнению с вариантами физического хранилища, так как получение записи из базы пользовательских данных может одновременно предоставить содержимое файла (например, изображение аватара).
+  * Эксплуатация базы данных потенциально дешевле, чем использование службы хранилища данных.
+
+* Физическое хранилище (файловая система или сетевая папка).
+
+  * Обработка передачи больших файлов:
+    * Ограничения базы данных могут ограничивать размер передачи.
+    * Физическое хранилище часто менее экономически выгодно, чем хранилище в базе данных.
+  * Эксплуатация физического хранилища потенциально дешевле, чем использование службы хранилища данных.
+  * Процесс приложения должен иметь разрешения на чтение и запись для места хранения. **Никогда не предоставляйте разрешение на выполнение.**
+
+* Служба хранилища данных (например, хранилище [BLOB-объектов Azure](https://azure.microsoft.com/services/storage/blobs/)).
+
+  * Обычно службы обеспечивают улучшенную масштабируемость и устойчивость по сравнению с локальными решениями, которые обычно подвержены единым точкам отказа.
+  * Затраты на использование служб обычно ниже в сценариях с крупномасштабной инфраструктурой хранения.
+
+  Дополнительные сведения см. в разделе [Краткое руководство. Использование .NET для создания большого двоичного объекта в хранилище объектов](/azure/storage/blobs/storage-quickstart-blobs-dotnet). В этом разделе показан метод <xref:Microsoft.Azure.Storage.File.CloudFile.UploadFromFileAsync*>, но метод <xref:Microsoft.Azure.Storage.File.CloudFile.UploadFromStreamAsync*> можно использовать для сохранения <xref:System.IO.FileStream> в хранилище BLOB-объектов при работе с <xref:System.IO.Stream>.
+
+## <a name="file-upload-scenarios"></a>Сценарии передачи файлов
+
+Есть два распространенных подхода к передаче файлов — буферизация и потоковая передача.
+
+**Буферизация**
+
+Весь файл считывается в <xref:Microsoft.AspNetCore.Http.IFormFile> (представление файла на C#, используемого для обработки или сохранения файла).
+
+Потребление ресурсов (диска, памяти) при передаче файлов зависит от количества и размера одновременно передаваемых файлов. При попытке приложения поместить в буфер слишком много файлов может произойти аварийное завершение работы сайта из-за нехватки памяти или места на диске. Если размер или частота отправки файлов исчерпывают ресурсы приложения, используйте потоковую передачу.
+
+> [!NOTE]
+> Один буферизованный файл размером свыше 64 КБ перемещается из памяти во временный файл на диске.
+
+Буферизация небольших файлов описана в следующих разделах этой статьи:
+
+* [Физическое хранилище](#upload-small-files-with-buffered-model-binding-to-physical-storage)
+* [База данных](#upload-small-files-with-buffered-model-binding-to-a-database)
+
+**Потоковая передача**
+
+Файл можно получить с помощью составного запроса. Затем он обрабатывается или сохраняется приложением напрямую. Потоковая передача повышает производительность не значительно. При отправке файлов потоковая передача снижает нагрузку на память или на место на диске.
+
+Потоковая передача больших файлов рассматривается в разделе [Передача больших файлов с помощью потоковой передачи](#upload-large-files-with-streaming).
+
+### <a name="upload-small-files-with-buffered-model-binding-to-physical-storage"></a>Передача небольших файлов с привязкой буферизованной модели к физическому хранилищу
+
+Для передачи небольших файлов можно применить составную форму или сформировать запрос POST на языке JavaScript.
+
+В следующем примере демонстрируется использование формы Razor Pages для передачи одного файла (*Pages/BufferedSingleFileUploadPhysical.cshtml* в примере приложения):
+
+```cshtml
+<form enctype="multipart/form-data" method="post">
+    <dl>
+        <dt>
+            <label asp-for="FileUpload.FormFile"></label>
+        </dt>
+        <dd>
+            <input asp-for="FileUpload.FormFile" type="file">
+            <span asp-validation-for="FileUpload.FormFile"></span>
+        </dd>
+    </dl>
+    <input asp-page-handler="Upload" class="btn" type="submit" value="Upload" />
 </form>
 ```
 
-Для поддержки передачи файлов в HTML-формах должен указываться атрибут `enctype` со значением `multipart/form-data`. Показанный выше элемент ввода `files` поддерживает передачу нескольких файлов. Чтобы разрешить передачу только одного файла, пропустите атрибут `multiple` в этом элементе. Приведенная выше разметка отрисовывается в браузере следующим образом:
+Следующий пример аналогичен предыдущему примеру, за исключением следующего:
 
-![Форма для отправки файла](file-uploads/_static/upload-form.png)
+* JavaScript ([Fetch API](https://developer.mozilla.org/docs/Web/API/Fetch_API)) используется для отправки данных формы.
+* Проверка не выполняется.
 
-Доступ к отдельным файлам, переданным на сервер, можно получать посредством [привязки модели](xref:mvc/models/model-binding) с помощью интерфейса [IFormFile](/dotnet/api/microsoft.aspnetcore.http.iformfile). `IFormFile` имеет следующую структуру:
+```cshtml
+<form action="BufferedSingleFileUploadPhysical/?handler=Upload" 
+      enctype="multipart/form-data" onsubmit="AJAXSubmit(this);return false;" 
+      method="post">
+    <dl>
+        <dt>
+            <label for="FileUpload_FormFile">File</label>
+        </dt>
+        <dd>
+            <input id="FileUpload_FormFile" type="file" 
+                name="FileUpload.FormFile" />
+        </dd>
+    </dl>
 
-```csharp
-public interface IFormFile
-{
-    string ContentType { get; }
-    string ContentDisposition { get; }
-    IHeaderDictionary Headers { get; }
-    long Length { get; }
-    string Name { get; }
-    string FileName { get; }
-    Stream OpenReadStream();
-    void CopyTo(Stream target);
-    Task CopyToAsync(Stream target, CancellationToken cancellationToken = null);
-}
+    <input class="btn" type="submit" value="Upload" />
+
+    <div style="margin-top:15px">
+        <output name="result"></output>
+    </div>
+</form>
+
+<script>
+  async function AJAXSubmit (oFormElement) {
+    var resultElement = oFormElement.elements.namedItem("result");
+    const formData = new FormData(oFormElement);
+
+    try {
+    const response = await fetch(oFormElement.action, {
+      method: 'POST',
+      body: formData
+    });
+
+    if (response.ok) {
+      window.location.href = '/';
+    }
+
+    resultElement.value = 'Result: ' + response.status + ' ' + 
+      response.statusText;
+    } catch (error) {
+      console.error('Error:', error);
+    }
+  }
+</script>
 ```
+
+Для выполнения отправки формы в JavaScript для клиентов, которые [не поддерживают Fetch API](https://caniuse.com/#feat=fetch), используйте один из следующих подходов:
+
+* Используйте функцию Fetch Polyfill (например, [window.fetch polyfill (github/fetch)](https://github.com/github/fetch)).
+* Используйте ключевое слово `XMLHttpRequest`. Например:
+
+  ```javascript
+  <script>
+    "use strict";
+
+    function AJAXSubmit (oFormElement) {
+      var oReq = new XMLHttpRequest();
+      oReq.onload = function(e) { 
+      oFormElement.elements.namedItem("result").value = 
+        'Result: ' + this.status + ' ' + this.statusText;
+      };
+      oReq.open("post", oFormElement.action);
+      oReq.send(new FormData(oFormElement));
+    }
+  </script>
+  ```
+
+Для поддержки передачи файлов в HTML-формах должен указываться тип кодировки `enctype` со значением `multipart/form-data`.
+
+Для элемента ввода `files`, поддерживающего отправку нескольких файлов, в элементе `<input>` необходимо указать атрибут `multiple`:
+
+```cshtml
+<input asp-for="FileUpload.FormFiles" type="file" multiple>
+```
+
+Доступ к отдельным файлам, переданным на сервер, можно получать посредством [привязки модели](xref:mvc/models/model-binding) с помощью интерфейса <xref:Microsoft.AspNetCore.Http.IFormFile>. В примере приложения показано несколько отправок буферизованных файлов для баз данных и физических хранилищ.
 
 > [!WARNING]
-> Свойство `FileName` требует обязательной проверки. Свойство `FileName` следует использовать только в целях отображения данных.
+> Свойство `FileName` параметра <xref:Microsoft.AspNetCore.Http.IFormFile> требует обязательной проверки. Свойство `FileName` следует использовать только в целях вывода и только после HTML-кодирования значения.
+>
+> В приведенных выше примерах не учитываются вопросы безопасности. Дополнительные сведения приведены в следующих разделах и в [примере приложения](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/models/file-uploads/samples/).
+>
+> * [Вопросы безопасности](#security-considerations)
+> * [Проверка](#validation)
 
-При передаче файлов с помощью привязки модели и интерфейса `IFormFile` метод действия может принимать либо одиночный интерфейс `IFormFile`, либо интерфейс `IEnumerable<IFormFile>` (или `List<IFormFile>`), представляющий несколько файлов. В приведенном ниже примере осуществляется перебор одного или нескольких переданных файлов, после чего они сохраняются в локальной файловой системе, и возвращается количество и общий размер переданных файлов.
+При отправке файлов с помощью привязки модели и <xref:Microsoft.AspNetCore.Http.IFormFile> метод действия может принимать следующие файлы:
 
-[!INCLUDE [GetTempFileName](../../includes/GetTempFileName.md)]
-
-[!code-csharp[](file-uploads/sample/FileUploadSample/Controllers/UploadFilesController.cs?name=snippet1)]
-
-Файлы, передаваемые с помощью интерфейса `IFormFile`, буферизуются в памяти или на диске на веб-сервере перед обработкой. Внутри метода действия содержимое `IFormFile` доступно в виде потока. Помимо локальной файловой системы, файлы могут передаваться в потоковом режиме в [хранилище BLOB-объектов Azure](/azure/visual-studio/vs-storage-aspnet5-getting-started-blobs) или в [Entity Framework](/ef/core/index).
-
-Для сохранения данных двоичных файлов в базе данных с помощью Entity Framework определите для сущности свойство типа `byte[]`:
-
-```csharp
-public class ApplicationUser : IdentityUser
-{
-    public byte[] AvatarImage { get; set; }
-}
-```
-
-Определите свойство viewmodel типа `IFormFile`:
-
-```csharp
-public class RegisterViewModel
-{
-    // other properties omitted
-
-    public IFormFile AvatarImage { get; set; }
-}
-```
+* Один файл <xref:Microsoft.AspNetCore.Http.IFormFile>.
+* Любая из следующих коллекций, представляющих несколько файлов:
+  * <xref:Microsoft.AspNetCore.Http.IFormFileCollection>
+  * <xref:System.Collections.IEnumerable>\<<xref:Microsoft.AspNetCore.Http.IFormFile>>
+  * [List](xref:System.Collections.Generic.List`1)\<<xref:Microsoft.AspNetCore.Http.IFormFile>>.
 
 > [!NOTE]
-> `IFormFile` можно использовать непосредственно как параметр метода действия или как свойство viewmodel, как показано выше.
+> Привязка сопоставляет файлы форм по имени. Например, значение HTML `name` в `<input type="file" name="formFile">` должно соответствовать привязанному к C# параметру или свойству (`FormFile`). Дополнительные сведения см. в разделе [Сопоставление значения атрибута имени и имени параметра метода POST](#match-name-attribute-value-to-parameter-name-of-post-method).
 
-Скопируйте экземпляр `IFormFile` в поток и сохраните его в байтовом массиве:
+В следующем примере происходит следующее:
+
+* Циклично отправляет один или несколько передаваемых файлов.
+* Использует метод [Path.GetTempFileName](xref:System.IO.Path.GetTempFileName*), чтобы вернуть полный путь к файлу, включая его имя. 
+* Сохраняет файлы в локальную файловую систему, используя имя файла, созданное приложением.
+* Возвращает общее число и размер отправленных файлов.
 
 ```csharp
-// POST: /Account/Register
-[HttpPost]
-[AllowAnonymous]
-[ValidateAntiForgeryToken]
-public async Task<IActionResult> Register(RegisterViewModel model)
+public async Task<IActionResult> OnPostUploadAsync(List<IFormFile> files)
 {
-    ViewData["ReturnUrl"] = returnUrl;
-    if  (ModelState.IsValid)
+    long size = files.Sum(f => f.Length);
+
+    foreach (var formFile in files)
     {
-        var user = new ApplicationUser 
+        if (formFile.Length > 0)
         {
-            UserName = model.Email,
-            Email = model.Email
-        };
-        using (var memoryStream = new MemoryStream())
-        {
-            await model.AvatarImage.CopyToAsync(memoryStream);
-            user.AvatarImage = memoryStream.ToArray();
-        }
-    // additional logic omitted
+            var filePath = Path.GetTempFileName();
 
-    // Don't rely on or trust the model.AvatarImage.FileName property 
-    // without validation.
+            using (var stream = System.IO.File.Create(filePath))
+            {
+                await formFile.CopyToAsync(stream);
+            }
+        }
+    }
+
+    // Process uploaded files
+    // Don't rely on or trust the FileName property without validation.
+
+    return Ok(new { count = files.Count, size, filePath });
 }
 ```
 
-> [!NOTE]
-> При сохранении двоичных данных в реляционных базах данных следует соблюдать осторожность, так как это может отрицательно сказаться на производительности.
-
-## <a name="uploading-large-files-with-streaming"></a>Передача больших файлов с помощью потоковой передачи
-
-Если из-за размера передаваемых файлов или частоты их передачи в приложении возникают проблемы с ресурсами, рекомендуется применять потоковую передачу вместо буферизации файлов целиком, как в случае с описанным выше подходом на основе привязки модели. Использовать интерфейс `IFormFile` и привязку модели гораздо проще, в то время как для правильной реализации потоковой передачи требуется ряд действий.
-
-> [!NOTE]
-> Если размер отдельного буферизуемого файла превышает 64 КБ, он перемещается из оперативной памяти во временный файл на диске на сервере. Потребление ресурсов (диска, ОЗУ) при передаче файлов зависит от количества и размера одновременно передаваемых файлов. Потоковая передача призвана в первую очередь не повысить производительность, а обеспечить масштабирование. При попытке поместить в буфер слишком много файлов может произойти аварийное завершение работы сайта из-за нехватки памяти или места на диске.
-
-В приведенном ниже примере демонстрируется использование JavaScript и Angular для потоковой передачи в действие контроллера. Токен против подделки файла создается с помощью пользовательского атрибута фильтра и передается в заголовках HTTP, а не в теле запроса. Так как метод действия обрабатывает передаваемые данные напрямую, привязка модели отключается другим фильтром. Внутри действия содержимое формы считывается с помощью объекта `MultipartReader`, который считывает каждый объект `MultipartSection` по отдельности, обрабатывая файл или сохраняя содержимое. После считывания всех разделов действие выполняет собственную привязку модели.
-
-Начальное действие загружает форму и сохраняет токен против подделки в файле cookie (с помощью атрибута `GenerateAntiforgeryTokenCookieForAjax`).
+Чтобы создать имя файла без пути, используйте `Path.GetRandomFileName`. В следующем примере путь получен из конфигурации:
 
 ```csharp
-[HttpGet]
-[GenerateAntiforgeryTokenCookieForAjax]
-public IActionResult Index()
+foreach (var formFile in files)
 {
-    return View();
+    if (formFile.Length > 0)
+    {
+        var filePath = Path.Combine(_config["StoredFilesPath"], 
+            Path.GetRandomFileName());
+
+        using (var stream = System.IO.File.Create(filePath))
+        {
+            await formFile.CopyToAsync(stream);
+        }
+    }
 }
 ```
 
-Атрибут использует встроенную поддержку [защиты от подделки](xref:security/anti-request-forgery) в ASP.NET Core, чтобы задать файл cookie с токеном запроса.
+Передаваемый в <xref:System.IO.FileStream> путь *должен* содержать имя файла. Если имя файла не указано, в среде выполнения возникает исключение <xref:System.UnauthorizedAccessException>.
 
-[!code-csharp[](file-uploads/sample/FileUploadSample/Filters/GenerateAntiforgeryTokenCookieForAjaxAttribute.cs?name=snippet1)]
+Файлы, передаваемые с помощью интерфейса <xref:Microsoft.AspNetCore.Http.IFormFile>, буферизуются в памяти или на диске на сервере перед обработкой. Внутри метода действия содержимое <xref:Microsoft.AspNetCore.Http.IFormFile> доступно в виде <xref:System.IO.Stream>. Помимо локальной файловой системы, файлы можно сохранять в сетевой папке или в службе хранилища файлов, например в хранилище [BLOB-объектов Azure](/azure/visual-studio/vs-storage-aspnet5-getting-started-blobs).
 
-Angular автоматически передает токен от подделки в заголовке запроса с именем `X-XSRF-TOKEN`. Приложение ASP.NET Core MVC настроено так, что оно ссылается на этот заголовок в конфигурации в файле *Startup.cs*:
+Еще один пример, который перебирает несколько файлов для отправки и использует надежные имена файлов, см. в файле *Pages/BufferedMultipleFileUploadPhysical.cshtml.cs* в примере приложения.
 
-[!code-csharp[](file-uploads/sample/FileUploadSample/Startup.cs?name=snippet1)]
+> [!WARNING]
+> Метод [Path.GetTempFileName](xref:System.IO.Path.GetTempFileName*) вызывает исключение <xref:System.IO.IOException> в случае создания более чем 65 535 файлов без удаления предыдущих временных файлов. Ограничение в 65 535 файлов предусмотрено для каждого сервера. Дополнительные сведения об этом ограничении в ОС Windows см. в примечаниях в следующих разделах:
+>
+> * [Функция GetTempFileNameA](/windows/desktop/api/fileapi/nf-fileapi-gettempfilenamea#remarks);
+> * <xref:System.IO.Path.GetTempFileName*>
 
-Показанный ниже атрибут `DisableFormValueModelBinding` предназначен для отключения привязки модели для метода действия `Upload`.
+### <a name="upload-small-files-with-buffered-model-binding-to-a-database"></a>Передача небольших файлов с привязкой буферизованной модели к базе данных
 
-[!code-csharp[](file-uploads/sample/FileUploadSample/Filters/DisableFormValueModelBindingAttribute.cs?name=snippet1)]
+Для сохранения данных двоичных файлов в базе данных с помощью [Entity Framework](/ef/core/index) определите для сущности свойство массива <xref:System.Byte>:
 
-Так как привязка модели отключена, метод действия `Upload` не принимает параметров. Он работает напрямую со свойством `Request` объекта `ControllerBase`. Для считывания каждого раздела служит объект `MultipartReader`. Файл сохраняется с именем GUID, а данные типа "ключ — значение" сохраняются в `KeyValueAccumulator`. После считывания всех разделов содержимое `KeyValueAccumulator` используется для привязки данных формы к типу модели.
-
-Ниже представлен полный код метода `Upload`.
-
-[!INCLUDE [GetTempFileName](../../includes/GetTempFileName.md)]
-
-[!code-csharp[](file-uploads/sample/FileUploadSample/Controllers/StreamingController.cs?name=snippet1)]
-
-## <a name="troubleshooting"></a>Устранение неполадок
-
-Ниже описываются некоторые распространенные проблемы, которые возникают при передаче файлов, и возможные способы их решения.
-
-### <a name="unexpected-not-found-error-with-iis"></a>Непредвиденная ошибка "Не найдено" в службах IIS
-
-Следующая ошибка свидетельствует о том, что размер передаваемых файлов превышает настроенное на сервере значение `maxAllowedContentLength`:
-
-```
-HTTP 404.13 - Not Found
-The request filtering module is configured to deny a request that exceeds the request content length.
+```csharp
+public class AppFile
+{
+    public int Id { get; set; }
+    public byte[] Content { get; set; }
+}
 ```
 
-Значение по умолчанию составляет `30000000`, что приблизительно равно 28,6 МБ. Это значение можно настроить, внеся изменение в файл *web.config*:
+Укажите свойство модели страницы для класса, который содержит <xref:Microsoft.AspNetCore.Http.IFormFile>:
+
+```csharp
+public class BufferedSingleFileUploadDbModel : PageModel
+{
+    ...
+
+    [BindProperty]
+    public BufferedSingleFileUploadDb FileUpload { get; set; }
+
+    ...
+}
+
+public class BufferedSingleFileUploadDb
+{
+    [Required]
+    [Display(Name="File")]
+    public IFormFile FormFile { get; set; }
+}
+```
+
+> [!NOTE]
+> <xref:Microsoft.AspNetCore.Http.IFormFile> можно использовать непосредственно как параметр метода действия или свойство модели привязки. В предыдущем примере используется свойство модели привязки.
+
+В форме Razor Pages используется `FileUpload`:
+
+```cshtml
+<form enctype="multipart/form-data" method="post">
+    <dl>
+        <dt>
+            <label asp-for="FileUpload.FormFile"></label>
+        </dt>
+        <dd>
+            <input asp-for="FileUpload.FormFile" type="file">
+        </dd>
+    </dl>
+    <input asp-page-handler="Upload" class="btn" type="submit" value="Upload">
+</form>
+```
+
+При публикации формы на сервере скопируйте <xref:Microsoft.AspNetCore.Http.IFormFile> в поток и сохраните его в базе данных в виде массива байтов. В следующем примере `_dbContext` сохраняет контекст базы данных приложения:
+
+```csharp
+public async Task<IActionResult> OnPostUploadAsync()
+{
+    using (var memoryStream = new MemoryStream())
+    {
+        await FileUpload.FormFile.CopyToAsync(memoryStream);
+
+        // Upload the file if less than 2 MB
+        if (memoryStream.Length < 2097152)
+        {
+            var file = new AppFile()
+            {
+                Content = memoryStream.ToArray()
+            };
+
+            _dbContext.File.Add(file);
+
+            await _dbContext.SaveChangesAsync();
+        }
+        else
+        {
+            ModelState.AddModelError("File", "The file is too large.");
+        }
+    }
+
+    return Page();
+}
+```
+
+Предыдущий пример похож на сценарий, продемонстрированный в примере приложения:
+
+* *Pages/BufferedSingleFileUploadDb.cshtml*;
+* *Pages/BufferedSingleFileUploadDb.cshtml.cs*.
+
+> [!WARNING]
+> При сохранении двоичных данных в реляционных базах данных следует соблюдать осторожность, так как это может отрицательно сказаться на производительности.
+>
+> Свойство `FileName` параметра <xref:Microsoft.AspNetCore.Http.IFormFile> требует обязательной проверки. Свойство `FileName` следует использовать только в целях вывода и только после HTML-кодирования.
+>
+> В приведенных выше примерах не учитываются вопросы безопасности. Дополнительные сведения приведены в следующих разделах и в [примере приложения](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/models/file-uploads/samples/).
+>
+> * [Вопросы безопасности](#security-considerations)
+> * [Проверка](#validation)
+
+### <a name="upload-large-files-with-streaming"></a>Передача больших файлов с помощью потоковой передачи
+
+В приведенном ниже примере демонстрируется использование JavaScript для потоковой передачи файла в действие контроллера. Токен против подделки файла создается с помощью пользовательского атрибута фильтра и передается в заголовках HTTP клиента, а не в теле запроса. Так как метод действия обрабатывает передаваемые данные напрямую, привязка модели формы отключается другим пользовательским фильтром. Внутри действия содержимое формы считывается с помощью объекта `MultipartReader`, который считывает каждый объект `MultipartSection` по отдельности, обрабатывая файл или сохраняя содержимое. После считывания составных разделов действие выполняет собственную привязку модели.
+
+Вначале страница загружает форму и сохраняет токен против подделки в файле cookie (с помощью атрибута `GenerateAntiforgeryTokenCookieAttribute`). Атрибут использует встроенную поддержку [защиты от подделки](xref:security/anti-request-forgery) в ASP.NET Core, чтобы задать файл cookie с токеном запроса.
+
+[!code-csharp[](file-uploads/samples/3.x/SampleApp/Filters/Antiforgery.cs?name=snippet_GenerateAntiforgeryTokenCookieAttribute)]
+
+Для отключения привязки модели используется `DisableFormValueModelBindingAttribute`:
+
+[!code-csharp[](file-uploads/samples/3.x/SampleApp/Filters/ModelBinding.cs?name=snippet_DisableFormValueModelBindingAttribute)]
+
+В примере приложения `GenerateAntiforgeryTokenCookieAttribute` и `DisableFormValueModelBindingAttribute` применяются в качестве фильтров к моделям приложений на странице `/StreamedSingleFileUploadDb` и `/StreamedSingleFileUploadPhysical` в `Startup.ConfigureServices` с использованием [соглашений Razor Pages](xref:razor-pages/razor-pages-conventions).
+
+[!code-csharp[](file-uploads/samples/3.x/SampleApp/Startup.cs?name=snippet_AddRazorPages&highlight=8-11,17-20)]
+
+Так как привязка модели не считывает форму, параметры, привязанные из формы, не привязываются (запросы, маршруты и заголовки продолжают работать). Метод действия работает напрямую со свойством `Request`. Для считывания каждого раздела служит объект `MultipartReader`. Данные "ключ — значение" хранятся в `KeyValueAccumulator`. После считывания составных разделов содержимое `KeyValueAccumulator` используется для привязки данных формы к типу модели.
+
+Полный метод `StreamingController.UploadDatabase` для потоковой передачи в базу данных с EF Core:
+
+[!code-csharp[](file-uploads/samples/3.x/SampleApp/Controllers/StreamingController.cs?name=snippet_UploadDatabase)]
+
+`MultipartRequestHelper` (*Utilities/MultipartRequestHelper.cs*):
+
+[!code-csharp[](file-uploads/samples/3.x/SampleApp/Utilities/MultipartRequestHelper.cs)]
+
+Полный метод `StreamingController.UploadPhysical` для потоковой передачи в физическое расположение:
+
+[!code-csharp[](file-uploads/samples/3.x/SampleApp/Controllers/StreamingController.cs?name=snippet_UploadPhysical)]
+
+В примере приложения проверки обрабатываются с помощью `FileHelpers.ProcessStreamedFile`.
+
+## <a name="validation"></a>Проверка
+
+В классе `FileHelpers` примера приложения демонстрируется несколько проверок буферизованного файла <xref:Microsoft.AspNetCore.Http.IFormFile> и потоковой передачи файлов. Сведения об обработке буферизованных файлов <xref:Microsoft.AspNetCore.Http.IFormFile> в примере приложения см. в описании метода `ProcessFormFile` в файле *Utilities/FileHelpers.cs*. Сведения об обработке потоковых файлов см. в описании метода `ProcessStreamedFile` в том же файле.
+
+> [!WARNING]
+> Методы обработки проверки, показанные в примере приложения, не проверяют содержимое отправленных файлов. В большинстве рабочих сценариев в файле применяется API сканирования на наличие вирусов и вредоносных программ, прежде чем сделать файл доступным для пользователей или других систем.
+>
+> Хотя пример в разделе содержит рабочий пример методов проверки, не следует реализовывать класс `FileHelpers` в рабочем приложении, кроме таких случаев:
+>
+> * Вы полностью разбираетесь в реализации.
+> * Вы изменяете реализацию соответствующим образом для среды и спецификаций приложения.
+>
+> **Никогда не реализуйте код безопасности в приложении, не выполнив эти требования.**
+
+### <a name="content-validation"></a>Проверка содержимого
+
+**Используйте сторонний API сканирования на наличие вирусов и вредоносных программ для отправленного содержимого.**
+
+Сканирование файлов требует использования ресурсов сервера в сценариях с большими объемами данных. Если производительность обработки запросов снижается из-за сканирования файлов, рассмотрите возможность разгрузки сканирования путем использования [фоновой службы](xref:fundamentals/host/hosted-services), возможно, службы, которая работает на сервере, отличном от сервера приложения. Как правило, передаваемые файлы хранятся в карантинной области до тех пор, пока фоновый сканер не проверит их на наличие вирусов. При передаче файл перемещается в нормальное место хранения файлов. Эти действия обычно выполняются вместе с записью базы данных, которая указывает состояние сканирования файла. Благодаря такому подходу приложение и сервер приложений остаются в режиме реагирования на запросы.
+
+### <a name="file-extension-validation"></a>Проверка расширения файла
+
+Расширение переданного файла должно проверяться в соответствии со списком разрешенных расширений. Например:
+
+```csharp
+private string[] permittedExtensions = { ".txt", ".pdf" };
+
+var ext = Path.GetExtension(uploadedFileName).ToLowerInvariant();
+
+if (string.IsNullOrEmpty(ext) || !permittedExtensions.Contains(ext))
+{
+    // The extension is invalid ... discontinue processing the file
+}
+```
+
+### <a name="file-signature-validation"></a>Проверка подписи файла
+
+Подпись файла определяется по первым нескольким байтам в начале файла. Эти байты можно использовать, чтобы указать, совпадает ли расширение с содержимым файла. Пример приложения проверяет подписи файлов на соответствие нескольким распространенным типам файлов. В следующем примере проверяется подпись файла для изображения JPEG:
+
+```csharp
+private static readonly Dictionary<string, List<byte[]>> _fileSignature = 
+    new Dictionary<string, List<byte[]>>
+{
+    { ".jpeg", new List<byte[]>
+        {
+            new byte[] { 0xFF, 0xD8, 0xFF, 0xE0 },
+            new byte[] { 0xFF, 0xD8, 0xFF, 0xE2 },
+            new byte[] { 0xFF, 0xD8, 0xFF, 0xE3 },
+        }
+    },
+};
+
+using (var reader = new BinaryReader(uploadedFileData))
+{
+    var signatures = _fileSignature[ext];
+    var headerBytes = reader.ReadBytes(signatures.Max(m => m.Length));
+    
+    return signatures.Any(signature => 
+        headerBytes.Take(signature.Length).SequenceEqual(signature));
+}
+```
+
+Дополнительные сведения о получении дополнительных подписей файлов см. [по этой ссылке](https://www.filesignatures.net/) и в официальных спецификациях файла.
+
+### <a name="file-name-security"></a>Безопасность имени файла
+
+Никогда не используйте для хранения файла в физическом хранилище имя, предоставляемое клиентом. Создайте надежное имя файла с помощью [Path.GetRandomFileName](xref:System.IO.Path.GetRandomFileName*) или [Path.GetTempFileName](xref:System.IO.Path.GetTempFileName*), чтобы получить полный путь (включая имя файла) для временного хранилища.
+
+Razor автоматически кодирует в HTML значения свойств для вывода. Ниже приведен безопасный код, который можно использовать.
+
+```cshtml
+@foreach (var file in Model.DatabaseFiles) {
+    <tr>
+        <td>
+            @file.UntrustedName
+        </td>
+    </tr>
+}
+```
+
+Вне Razor содержимое имени файла из запроса пользователя всегда кодируется в <xref:System.Net.WebUtility.HtmlEncode*>.
+
+Во многих реализациях следует включать проверку существования файла. В противном случае файл перезаписывается файлом с тем же именем. Предоставьте дополнительную логику для соответствия спецификациям приложения.
+
+### <a name="size-validation"></a>Проверка размера
+
+Ограничьте размер передаваемых файлов.
+
+В примере приложения размер файла ограничен 2 МБ (указывается в байтах). Ограничение предоставляется с помощью [конфигурации](xref:fundamentals/configuration/index) из файла *appsettings.json*.
+
+```json
+{
+  "FileSizeLimit": 2097152
+}
+```
+
+В классы `PageModel` внедряется `FileSizeLimit`.
+
+```csharp
+public class BufferedSingleFileUploadPhysicalModel : PageModel
+{
+    private readonly long _fileSizeLimit;
+
+    public BufferedSingleFileUploadPhysicalModel(IConfiguration config)
+    {
+        _fileSizeLimit = config.GetValue<long>("FileSizeLimit");
+    }
+
+    ...
+}
+```
+
+Если размер файла превышает ограничение, файл отклоняется:
+
+```csharp
+if (formFile.Length > _fileSizeLimit)
+{
+    // The file is too large ... discontinue processing the file
+}
+```
+
+### <a name="match-name-attribute-value-to-parameter-name-of-post-method"></a>Сопоставление значения атрибута имени и имени параметра метода POST
+
+В формах, не относящихся к Razor, которые передают данные формы или используют `FormData` JavaScript напрямую, имя, указанное в элементе формы или `FormData`, должно соответствовать имени параметра в действии контроллера.
+
+В следующем примере:
+
+* При использовании элемента `<input>` атрибуту `name` присваивается значение `battlePlans`:
+
+  ```html
+  <input type="file" name="battlePlans" multiple>
+  ```
+
+* При использовании `FormData` в JavaScript для имени задается значение `battlePlans`:
+
+  ```javascript
+  var formData = new FormData();
+
+  for (var file in files) {
+    formData.append("battlePlans", file, file.name);
+  }
+  ```
+
+Используйте соответствующее имя для параметра метода C# (`battlePlans`):
+
+* Для метода обработчика страницы Razor Pages с именем `Upload`:
+
+  ```csharp
+  public async Task<IActionResult> OnPostUploadAsync(List<IFormFile> battlePlans)
+  ```
+
+* Для метода действия контроллера POST приложения MVC:
+
+  ```csharp
+  public async Task<IActionResult> Post(List<IFormFile> battlePlans)
+  ```
+
+## <a name="server-and-app-configuration"></a>Конфигурация сервера и приложения
+
+### <a name="multipart-body-length-limit"></a>Ограничение длины составного текста
+
+<xref:Microsoft.AspNetCore.Http.Features.FormOptions.MultipartBodyLengthLimit> устанавливает ограничение длины каждого составного текста. Разделы формы, превышающие это ограничение, вызовут <xref:System.IO.InvalidDataException> при синтаксическом анализе. Значение по умолчанию — 134 217 728 байт (128 МБ). Настройте ограничение с помощью параметра <xref:Microsoft.AspNetCore.Http.Features.FormOptions.MultipartBodyLengthLimit> в `Startup.ConfigureServices`:
+
+```csharp
+public void ConfigureServices(IServiceCollection services)
+{
+    services.Configure<FormOptions>(options =>
+    {
+        // Set the limit to 256 MB
+        options.MultipartBodyLengthLimit = 268435456;
+    });
+}
+```
+
+<xref:Microsoft.AspNetCore.Mvc.RequestFormLimitsAttribute> используется для настройки <xref:Microsoft.AspNetCore.Http.Features.FormOptions.MultipartBodyLengthLimit> для одной страницы или действия.
+
+В приложении Razor Pages примените фильтр с [соглашением](xref:razor-pages/razor-pages-conventions) в `Startup.ConfigureServices`:
+
+```csharp
+services.AddRazorPages()
+    .AddRazorPagesOptions(options =>
+    {
+        options.Conventions
+            .AddPageApplicationModelConvention("/FileUploadPage",
+                model.Filters.Add(
+                    new RequestFormLimitsAttribute()
+                    {
+                        // Set the limit to 256 MB
+                        MultipartBodyLengthLimit = 268435456
+                    });
+    });
+```
+
+В приложении Razor Pages или MVC примените фильтр к модели страницы или методу действия:
+
+```csharp
+// Set the limit to 256 MB
+[RequestFormLimits(MultipartBodyLengthLimit = 268435456)]
+public class BufferedSingleFileUploadPhysicalModel : PageModel
+{
+    ...
+}
+```
+
+### <a name="kestrel-maximum-request-body-size"></a>Максимальный размер текста запроса Kestrel
+
+Для приложений, размещенных в Kestrel, по умолчанию максимальный размер текста запроса составляет 30 000 000 байт, что примерно соответствует 28,6 МБ. Настройте ограничение с помощью параметра сервера Kestrel [MaxRequestBodySize](xref:fundamentals/servers/kestrel#maximum-request-body-size):
+
+```csharp
+public static IHostBuilder CreateHostBuilder(string[] args) =>
+    Host.CreateDefaultBuilder(args)
+        .ConfigureKestrel((context, options) =>
+        {
+            // Handle requests up to 50 MB
+            options.Limits.MaxRequestBodySize = 52428800;
+        })
+        .ConfigureWebHostDefaults(webBuilder =>
+        {
+            webBuilder.UseStartup<Startup>();
+        });
+```
+
+<xref:Microsoft.AspNetCore.Mvc.RequestSizeLimitAttribute> используется для настройки [MaxRequestBodySize](xref:fundamentals/servers/kestrel#maximum-request-body-size) для одной страницы или действия.
+
+В приложении Razor Pages примените фильтр с [соглашением](xref:razor-pages/razor-pages-conventions) в `Startup.ConfigureServices`:
+
+```csharp
+services.AddRazorPages()
+    .AddRazorPagesOptions(options =>
+    {
+        options.Conventions
+            .AddPageApplicationModelConvention("/FileUploadPage",
+                model =>
+                {
+                    // Handle requests up to 50 MB
+                    model.Filters.Add(
+                        new RequestSizeLimitAttribute(52428800));
+                });
+    });
+```
+
+В приложении Razor Pages или MVC примените фильтр к классу обработчика страницы или методу действия:
+
+```csharp
+// Handle requests up to 50 MB
+[RequestSizeLimit(52428800)]
+public class BufferedSingleFileUploadPhysicalModel : PageModel
+{
+    ...
+}
+```
+
+`RequestSizeLimitAttribute` можно также применить с помощью директивы Razor [@attribute](xref:mvc/views/razor#attribute).
+
+```cshtml
+@attribute [RequestSizeLimitAttribute(52428800)]
+```
+
+### <a name="other-kestrel-limits"></a>Другие ограничения Kestrel
+
+Другие ограничения Kestrel могут применяться для приложений, размещенных в Kestrel:
+
+* [Максимальное число клиентских подключений](xref:fundamentals/servers/kestrel#maximum-client-connections)
+* [Скорость передачи данных запросов и ответов](xref:fundamentals/servers/kestrel#minimum-request-body-data-rate)
+
+### <a name="iis-content-length-limit"></a>Ограничение длины содержимого IIS
+
+По умолчанию ограничение запроса (`maxAllowedContentLength`) составляет 30 000 000 байт, что примерно соответствует 28,6 МБ. Ограничение можно настроить в файле *web.config*:
 
 ```xml
 <system.webServer>
   <security>
     <requestFiltering>
-      <!-- This will handle requests up to 50MB -->
+      <!-- Handle requests up to 50 MB -->
       <requestLimits maxAllowedContentLength="52428800" />
     </requestFiltering>
   </security>
 </system.webServer>
 ```
 
-Этот параметр применим только к службам IIS. При размещении в Kestrel такой проблемы возникать не должно. Дополнительные сведения см. в статье [Ограничения запроса \<requestLimits\>](/iis/configuration/system.webServer/security/requestFiltering/requestLimits/).
+Этот параметр применим только к службам IIS. При размещении в Kestrel такой проблемы возникать не должно. Дополнительные сведения см. в статье [Request Limits \<requestLimits>](/iis/configuration/system.webServer/security/requestFiltering/requestLimits/) (Ограничения запроса <requestLimits>).
+
+Ограничения в модуле ASP.NET Core или наличие модуля фильтрации запросов IIS могут ограничить передачу до 2 или 4 ГБ. Дополнительные сведения см. в [этой ветке форума](https://github.com/aspnet/AspNetCore/issues/2711).
+
+## <a name="troubleshoot"></a>Устранение неполадок
+
+Ниже описываются некоторые распространенные проблемы, которые возникают при передаче файлов, и возможные способы их решения.
+
+### <a name="not-found-error-when-deployed-to-an-iis-server"></a>Ошибка "Не найдено" при развертывании на сервере IIS
+
+Следующая ошибка свидетельствует о том, что размер передаваемых файлов превышает настроенное на сервере ограничение длины содержимого:
+
+```
+HTTP 404.13 - Not Found
+The request filtering module is configured to deny a request that exceeds the request content length.
+```
+
+Дополнительные сведения об увеличении предела см. в разделе [Ограничение длины содержимого IIS](#iis-content-length-limit).
+
+### <a name="connection-failure"></a>Сбой подключения
+
+Ошибка соединения и сброс соединения с сервером, скорее всего, означают, что размер отправленного файла превышает максимальную длину текста запроса Kestrel. Дополнительные сведения см. в разделе [Максимальный размер текста запроса Kestrel](#kestrel-maximum-request-body-size). Может также потребоваться настроить ограничения подключений клиентов Kestrel.
 
 ### <a name="null-reference-exception-with-iformfile"></a>Исключение, связанное с пустой ссылкой в IFormFile
 
-Если контроллер принимает передаваемые файлы с помощью `IFormFile`, но значение всегда равно NULL, проверьте, указан ли в HTML-форме атрибут `enctype` со значением `multipart/form-data`. Если этот атрибут не задан для элемента `<form>`, передача файлов происходить не будет и все связанные аргументы `IFormFile` будут иметь значение NULL.
+Если контроллер принимает передаваемые файлы с помощью <xref:Microsoft.AspNetCore.Http.IFormFile>, но значение равно `null`, проверьте, указан ли в HTML-форме атрибут `enctype` со значением `multipart/form-data`. Если этот атрибут не задан для элемента `<form>`, передача файлов происходить не будет и все связанные аргументы <xref:Microsoft.AspNetCore.Http.IFormFile> будут иметь значение `null`. Убедитесь также, что [именование передачи в данных формы совпадает с именованием приложения](#match-name-attribute-value-to-parameter-name-of-post-method).
+
+::: moniker-end
+
+::: moniker range="< aspnetcore-3.0"
+
+Действия ASP.NET Core поддерживают передачу одного или нескольких файлов с помощью привязки модели с буферизацией для небольших файлов или потоковой передачи без буферизации для более крупных файлов.
+
+[Просмотреть или скачать образец кода](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/models/file-uploads/samples/) ([как скачивать](xref:index#how-to-download-a-sample))
+
+## <a name="security-considerations"></a>Замечания по безопасности
+
+Необходимо соблюдать осторожность при предоставлении пользователям возможности отправки файлов на сервер. Злоумышленники могут попытаться:
+
+* Выполнить атаку типа [отказ в обслуживании](/windows-hardware/drivers/ifs/denial-of-service).
+* Передать вирусы и вредоносные программы.
+* Нарушить безопасность сетей и серверов другими способами.
+
+Ниже приведены некоторые действия по обеспечению безопасности, которые снижают вероятность успешных атак.
+
+* Передавайте файлы в выделенную область для отправки файлов в системе, желательно не на системный диск. Использование выделенного расположения упрощает применение мер безопасности к отправленным файлам. Отключите разрешения на выполнение для расположения отправки файла.&dagger;
+* Никогда не сохраняйте переданные файлы в дереве каталогов, где находится приложение.&dagger;
+* Используйте безопасное имя файла, определяемое приложением. Не используйте имя файла, предоставленное пользователем, или ненадежное имя переданного файла.&dagger; Для вывода ненадежного имени файла в пользовательском интерфейсе или в сообщении журнала закодируйте значение в HTML.
+* Разрешите только определенный набор одобренных расширений файлов.&dagger;
+* Проверьте подпись формата файла, чтобы запретить пользователю отправку подменяющего файла.&dagger; Например, запретите пользователю отправлять *EXE*-файл с расширением *TXT*.
+* Убедитесь, что на сервере выполняются проверки на стороне клиента.&dagger; Проверки на стороне клиента можно легко обойти.
+* Проверяйте размер отправляемых файлов и запретите выполнять отправку файлов большего размера.&dagger;
+* Если файлы не должны перезаписываться переданным файлом с тем же именем, перед отправкой файла проверьте его имя в базе данных или физическом хранилище.
+* **Запустите сканер для проверки отправляемого содержимого на наличие вирусов и вредоносных программ, прежде чем сохранять файл.**
+
+&dagger;Пример приложения демонстрирует подход, который соответствует критериям.
+
+> [!WARNING]
+> Отправка в систему вредоносного кода часто является первым шагом перед выполнением кода, который может:
+>
+> * полностью получить контроль над системой;
+> * перезагрузить систему так, что она окажется в неработоспособном состоянии;
+> * скомпрометировать пользовательские или системные данные;
+> * применить граффити к открытому интерфейсу.
+>
+> Сведения об уменьшении контактной зоны атаки во время приема файлов от пользователей см. в следующих ресурсах:
+>
+> * [Неограниченная отправка файлов](https://www.owasp.org/index.php/Unrestricted_File_Upload)
+> * [Безопасность в Azure. Убедитесь, что при приеме файлов от пользователей обеспечиваются соответствующие меры безопасности](/azure/security/azure-security-threat-modeling-tool-input-validation#controls-users).
+
+Дополнительные сведения о реализации мер безопасности, включая примеры из примера приложения, см. в статье [Передача файлов в ASP.NET Core](#validation).
+
+## <a name="storage-scenarios"></a>Сценарии использования хранилища
+
+К общим вариантам хранилища файлов относятся следующие:
+
+* База данных
+
+  * В случае отправки небольших файлов база данных часто работает быстрее, чем физическое хранилище (файловая система или сетевая папка).
+  * База данных часто более удобна по сравнению с вариантами физического хранилища, так как получение записи из базы пользовательских данных может одновременно предоставить содержимое файла (например, изображение аватара).
+  * Эксплуатация базы данных потенциально дешевле, чем использование службы хранилища данных.
+
+* Физическое хранилище (файловая система или сетевая папка).
+
+  * Обработка передачи больших файлов:
+    * Ограничения базы данных могут ограничивать размер передачи.
+    * Физическое хранилище часто менее экономически выгодно, чем хранилище в базе данных.
+  * Эксплуатация физического хранилища потенциально дешевле, чем использование службы хранилища данных.
+  * Процесс приложения должен иметь разрешения на чтение и запись для места хранения. **Никогда не предоставляйте разрешение на выполнение.**
+
+* Служба хранилища данных (например, хранилище [BLOB-объектов Azure](https://azure.microsoft.com/services/storage/blobs/)).
+
+  * Обычно службы обеспечивают улучшенную масштабируемость и устойчивость по сравнению с локальными решениями, которые обычно подвержены единым точкам отказа.
+  * Затраты на использование служб обычно ниже в сценариях с крупномасштабной инфраструктурой хранения.
+
+  Дополнительные сведения см. в разделе [Краткое руководство. Использование .NET для создания большого двоичного объекта в хранилище объектов](/azure/storage/blobs/storage-quickstart-blobs-dotnet). В этом разделе показан метод <xref:Microsoft.Azure.Storage.File.CloudFile.UploadFromFileAsync*>, но метод <xref:Microsoft.Azure.Storage.File.CloudFile.UploadFromStreamAsync*> можно использовать для сохранения <xref:System.IO.FileStream> в хранилище BLOB-объектов при работе с <xref:System.IO.Stream>.
+
+## <a name="file-upload-scenarios"></a>Сценарии передачи файлов
+
+Есть два распространенных подхода к передаче файлов — буферизация и потоковая передача.
+
+**Буферизация**
+
+Весь файл считывается в <xref:Microsoft.AspNetCore.Http.IFormFile> (представление файла на C#, используемого для обработки или сохранения файла).
+
+Потребление ресурсов (диска, памяти) при передаче файлов зависит от количества и размера одновременно передаваемых файлов. При попытке приложения поместить в буфер слишком много файлов может произойти аварийное завершение работы сайта из-за нехватки памяти или места на диске. Если размер или частота отправки файлов исчерпывают ресурсы приложения, используйте потоковую передачу.
+
+> [!NOTE]
+> Один буферизованный файл размером свыше 64 КБ перемещается из памяти во временный файл на диске.
+
+Буферизация небольших файлов описана в следующих разделах этой статьи:
+
+* [Физическое хранилище](#upload-small-files-with-buffered-model-binding-to-physical-storage)
+* [База данных](#upload-small-files-with-buffered-model-binding-to-a-database)
+
+**Потоковая передача**
+
+Файл можно получить с помощью составного запроса. Затем он обрабатывается или сохраняется приложением напрямую. Потоковая передача повышает производительность не значительно. При отправке файлов потоковая передача снижает нагрузку на память или на место на диске.
+
+Потоковая передача больших файлов рассматривается в разделе [Передача больших файлов с помощью потоковой передачи](#upload-large-files-with-streaming).
+
+### <a name="upload-small-files-with-buffered-model-binding-to-physical-storage"></a>Передача небольших файлов с привязкой буферизованной модели к физическому хранилищу
+
+Для передачи небольших файлов можно применить составную форму или сформировать запрос POST на языке JavaScript.
+
+В следующем примере демонстрируется использование формы Razor Pages для передачи одного файла (*Pages/BufferedSingleFileUploadPhysical.cshtml* в примере приложения):
+
+```cshtml
+<form enctype="multipart/form-data" method="post">
+    <dl>
+        <dt>
+            <label asp-for="FileUpload.FormFile"></label>
+        </dt>
+        <dd>
+            <input asp-for="FileUpload.FormFile" type="file">
+            <span asp-validation-for="FileUpload.FormFile"></span>
+        </dd>
+    </dl>
+    <input asp-page-handler="Upload" class="btn" type="submit" value="Upload" />
+</form>
+```
+
+Следующий пример аналогичен предыдущему примеру, за исключением следующего:
+
+* JavaScript ([Fetch API](https://developer.mozilla.org/docs/Web/API/Fetch_API)) используется для отправки данных формы.
+* Проверка не выполняется.
+
+```cshtml
+<form action="BufferedSingleFileUploadPhysical/?handler=Upload" 
+      enctype="multipart/form-data" onsubmit="AJAXSubmit(this);return false;" 
+      method="post">
+    <dl>
+        <dt>
+            <label for="FileUpload_FormFile">File</label>
+        </dt>
+        <dd>
+            <input id="FileUpload_FormFile" type="file" 
+                name="FileUpload.FormFile" />
+        </dd>
+    </dl>
+
+    <input class="btn" type="submit" value="Upload" />
+
+    <div style="margin-top:15px">
+        <output name="result"></output>
+    </div>
+</form>
+
+<script>
+  async function AJAXSubmit (oFormElement) {
+    var resultElement = oFormElement.elements.namedItem("result");
+    const formData = new FormData(oFormElement);
+
+    try {
+    const response = await fetch(oFormElement.action, {
+      method: 'POST',
+      body: formData
+    });
+
+    if (response.ok) {
+      window.location.href = '/';
+    }
+
+    resultElement.value = 'Result: ' + response.status + ' ' + 
+      response.statusText;
+    } catch (error) {
+      console.error('Error:', error);
+    }
+  }
+</script>
+```
+
+Для выполнения отправки формы в JavaScript для клиентов, которые [не поддерживают Fetch API](https://caniuse.com/#feat=fetch), используйте один из следующих подходов:
+
+* Используйте функцию Fetch Polyfill (например, [window.fetch polyfill (github/fetch)](https://github.com/github/fetch)).
+* Используйте ключевое слово `XMLHttpRequest`. Например:
+
+  ```javascript
+  <script>
+    "use strict";
+
+    function AJAXSubmit (oFormElement) {
+      var oReq = new XMLHttpRequest();
+      oReq.onload = function(e) { 
+      oFormElement.elements.namedItem("result").value = 
+        'Result: ' + this.status + ' ' + this.statusText;
+      };
+      oReq.open("post", oFormElement.action);
+      oReq.send(new FormData(oFormElement));
+    }
+  </script>
+  ```
+
+Для поддержки передачи файлов в HTML-формах должен указываться тип кодировки `enctype` со значением `multipart/form-data`.
+
+Для элемента ввода `files`, поддерживающего отправку нескольких файлов, в элементе `<input>` необходимо указать атрибут `multiple`:
+
+```cshtml
+<input asp-for="FileUpload.FormFiles" type="file" multiple>
+```
+
+Доступ к отдельным файлам, переданным на сервер, можно получать посредством [привязки модели](xref:mvc/models/model-binding) с помощью интерфейса <xref:Microsoft.AspNetCore.Http.IFormFile>. В примере приложения показано несколько отправок буферизованных файлов для баз данных и физических хранилищ.
+
+> [!WARNING]
+> Свойство `FileName` параметра <xref:Microsoft.AspNetCore.Http.IFormFile> требует обязательной проверки. Свойство `FileName` следует использовать только в целях вывода и только после HTML-кодирования значения.
+>
+> В приведенных выше примерах не учитываются вопросы безопасности. Дополнительные сведения приведены в следующих разделах и в [примере приложения](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/models/file-uploads/samples/).
+>
+> * [Вопросы безопасности](#security-considerations)
+> * [Проверка](#validation)
+
+При отправке файлов с помощью привязки модели и <xref:Microsoft.AspNetCore.Http.IFormFile> метод действия может принимать следующие файлы:
+
+* Один файл <xref:Microsoft.AspNetCore.Http.IFormFile>.
+* Любая из следующих коллекций, представляющих несколько файлов:
+  * <xref:Microsoft.AspNetCore.Http.IFormFileCollection>
+  * <xref:System.Collections.IEnumerable>\<<xref:Microsoft.AspNetCore.Http.IFormFile>>
+  * [List](xref:System.Collections.Generic.List`1)\<<xref:Microsoft.AspNetCore.Http.IFormFile>>.
+
+> [!NOTE]
+> Привязка сопоставляет файлы форм по имени. Например, значение HTML `name` в `<input type="file" name="formFile">` должно соответствовать привязанному к C# параметру или свойству (`FormFile`). Дополнительные сведения см. в разделе [Сопоставление значения атрибута имени и имени параметра метода POST](#match-name-attribute-value-to-parameter-name-of-post-method).
+
+В следующем примере происходит следующее:
+
+* Циклично отправляет один или несколько передаваемых файлов.
+* Использует метод [Path.GetTempFileName](xref:System.IO.Path.GetTempFileName*), чтобы вернуть полный путь к файлу, включая его имя. 
+* Сохраняет файлы в локальную файловую систему, используя имя файла, созданное приложением.
+* Возвращает общее число и размер отправленных файлов.
+
+```csharp
+public async Task<IActionResult> OnPostUploadAsync(List<IFormFile> files)
+{
+    long size = files.Sum(f => f.Length);
+
+    foreach (var formFile in files)
+    {
+        if (formFile.Length > 0)
+        {
+            var filePath = Path.GetTempFileName();
+
+            using (var stream = System.IO.File.Create(filePath))
+            {
+                await formFile.CopyToAsync(stream);
+            }
+        }
+    }
+
+    // Process uploaded files
+    // Don't rely on or trust the FileName property without validation.
+
+    return Ok(new { count = files.Count, size, filePath });
+}
+```
+
+Чтобы создать имя файла без пути, используйте `Path.GetRandomFileName`. В следующем примере путь получен из конфигурации:
+
+```csharp
+foreach (var formFile in files)
+{
+    if (formFile.Length > 0)
+    {
+        var filePath = Path.Combine(_config["StoredFilesPath"], 
+            Path.GetRandomFileName());
+
+        using (var stream = System.IO.File.Create(filePath))
+        {
+            await formFile.CopyToAsync(stream);
+        }
+    }
+}
+```
+
+Передаваемый в <xref:System.IO.FileStream> путь *должен* содержать имя файла. Если имя файла не указано, в среде выполнения возникает исключение <xref:System.UnauthorizedAccessException>.
+
+Файлы, передаваемые с помощью интерфейса <xref:Microsoft.AspNetCore.Http.IFormFile>, буферизуются в памяти или на диске на сервере перед обработкой. Внутри метода действия содержимое <xref:Microsoft.AspNetCore.Http.IFormFile> доступно в виде <xref:System.IO.Stream>. Помимо локальной файловой системы, файлы можно сохранять в сетевой папке или в службе хранилища файлов, например в хранилище [BLOB-объектов Azure](/azure/visual-studio/vs-storage-aspnet5-getting-started-blobs).
+
+Еще один пример, который перебирает несколько файлов для отправки и использует надежные имена файлов, см. в файле *Pages/BufferedMultipleFileUploadPhysical.cshtml.cs* в примере приложения.
+
+> [!WARNING]
+> Метод [Path.GetTempFileName](xref:System.IO.Path.GetTempFileName*) вызывает исключение <xref:System.IO.IOException> в случае создания более чем 65 535 файлов без удаления предыдущих временных файлов. Ограничение в 65 535 файлов предусмотрено для каждого сервера. Дополнительные сведения об этом ограничении в ОС Windows см. в примечаниях в следующих разделах:
+>
+> * [Функция GetTempFileNameA](/windows/desktop/api/fileapi/nf-fileapi-gettempfilenamea#remarks);
+> * <xref:System.IO.Path.GetTempFileName*>
+
+### <a name="upload-small-files-with-buffered-model-binding-to-a-database"></a>Передача небольших файлов с привязкой буферизованной модели к базе данных
+
+Для сохранения данных двоичных файлов в базе данных с помощью [Entity Framework](/ef/core/index) определите для сущности свойство массива <xref:System.Byte>:
+
+```csharp
+public class AppFile
+{
+    public int Id { get; set; }
+    public byte[] Content { get; set; }
+}
+```
+
+Укажите свойство модели страницы для класса, который содержит <xref:Microsoft.AspNetCore.Http.IFormFile>:
+
+```csharp
+public class BufferedSingleFileUploadDbModel : PageModel
+{
+    ...
+
+    [BindProperty]
+    public BufferedSingleFileUploadDb FileUpload { get; set; }
+
+    ...
+}
+
+public class BufferedSingleFileUploadDb
+{
+    [Required]
+    [Display(Name="File")]
+    public IFormFile FormFile { get; set; }
+}
+```
+
+> [!NOTE]
+> <xref:Microsoft.AspNetCore.Http.IFormFile> можно использовать непосредственно как параметр метода действия или свойство модели привязки. В предыдущем примере используется свойство модели привязки.
+
+В форме Razor Pages используется `FileUpload`:
+
+```cshtml
+<form enctype="multipart/form-data" method="post">
+    <dl>
+        <dt>
+            <label asp-for="FileUpload.FormFile"></label>
+        </dt>
+        <dd>
+            <input asp-for="FileUpload.FormFile" type="file">
+        </dd>
+    </dl>
+    <input asp-page-handler="Upload" class="btn" type="submit" value="Upload">
+</form>
+```
+
+При публикации формы на сервере скопируйте <xref:Microsoft.AspNetCore.Http.IFormFile> в поток и сохраните его в базе данных в виде массива байтов. В следующем примере `_dbContext` сохраняет контекст базы данных приложения:
+
+```csharp
+public async Task<IActionResult> OnPostUploadAsync()
+{
+    using (var memoryStream = new MemoryStream())
+    {
+        await FileUpload.FormFile.CopyToAsync(memoryStream);
+
+        // Upload the file if less than 2 MB
+        if (memoryStream.Length < 2097152)
+        {
+            var file = new AppFile()
+            {
+                Content = memoryStream.ToArray()
+            };
+
+            _dbContext.File.Add(file);
+
+            await _dbContext.SaveChangesAsync();
+        }
+        else
+        {
+            ModelState.AddModelError("File", "The file is too large.");
+        }
+    }
+
+    return Page();
+}
+```
+
+Предыдущий пример похож на сценарий, продемонстрированный в примере приложения:
+
+* *Pages/BufferedSingleFileUploadDb.cshtml*;
+* *Pages/BufferedSingleFileUploadDb.cshtml.cs*.
+
+> [!WARNING]
+> При сохранении двоичных данных в реляционных базах данных следует соблюдать осторожность, так как это может отрицательно сказаться на производительности.
+>
+> Свойство `FileName` параметра <xref:Microsoft.AspNetCore.Http.IFormFile> требует обязательной проверки. Свойство `FileName` следует использовать только в целях вывода и только после HTML-кодирования.
+>
+> В приведенных выше примерах не учитываются вопросы безопасности. Дополнительные сведения приведены в следующих разделах и в [примере приложения](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/models/file-uploads/samples/).
+>
+> * [Вопросы безопасности](#security-considerations)
+> * [Проверка](#validation)
+
+### <a name="upload-large-files-with-streaming"></a>Передача больших файлов с помощью потоковой передачи
+
+В приведенном ниже примере демонстрируется использование JavaScript для потоковой передачи файла в действие контроллера. Токен против подделки файла создается с помощью пользовательского атрибута фильтра и передается в заголовках HTTP клиента, а не в теле запроса. Так как метод действия обрабатывает передаваемые данные напрямую, привязка модели формы отключается другим пользовательским фильтром. Внутри действия содержимое формы считывается с помощью объекта `MultipartReader`, который считывает каждый объект `MultipartSection` по отдельности, обрабатывая файл или сохраняя содержимое. После считывания составных разделов действие выполняет собственную привязку модели.
+
+Вначале страница загружает форму и сохраняет токен против подделки в файле cookie (с помощью атрибута `GenerateAntiforgeryTokenCookieAttribute`). Атрибут использует встроенную поддержку [защиты от подделки](xref:security/anti-request-forgery) в ASP.NET Core, чтобы задать файл cookie с токеном запроса.
+
+[!code-csharp[](file-uploads/samples/2.x/SampleApp/Filters/Antiforgery.cs?name=snippet_GenerateAntiforgeryTokenCookieAttribute)]
+
+Для отключения привязки модели используется `DisableFormValueModelBindingAttribute`:
+
+[!code-csharp[](file-uploads/samples/2.x/SampleApp/Filters/ModelBinding.cs?name=snippet_DisableFormValueModelBindingAttribute)]
+
+В примере приложения `GenerateAntiforgeryTokenCookieAttribute` и `DisableFormValueModelBindingAttribute` применяются в качестве фильтров к моделям приложений на странице `/StreamedSingleFileUploadDb` и `/StreamedSingleFileUploadPhysical` в `Startup.ConfigureServices` с использованием [соглашений Razor Pages](xref:razor-pages/razor-pages-conventions).
+
+[!code-csharp[](file-uploads/samples/2.x/SampleApp/Startup.cs?name=snippet_AddMvc&highlight=8-11,17-20)]
+
+Так как привязка модели не считывает форму, параметры, привязанные из формы, не привязываются (запросы, маршруты и заголовки продолжают работать). Метод действия работает напрямую со свойством `Request`. Для считывания каждого раздела служит объект `MultipartReader`. Данные "ключ — значение" хранятся в `KeyValueAccumulator`. После считывания составных разделов содержимое `KeyValueAccumulator` используется для привязки данных формы к типу модели.
+
+Полный метод `StreamingController.UploadDatabase` для потоковой передачи в базу данных с EF Core:
+
+[!code-csharp[](file-uploads/samples/2.x/SampleApp/Controllers/StreamingController.cs?name=snippet_UploadDatabase)]
+
+`MultipartRequestHelper` (*Utilities/MultipartRequestHelper.cs*):
+
+[!code-csharp[](file-uploads/samples/2.x/SampleApp/Utilities/MultipartRequestHelper.cs)]
+
+Полный метод `StreamingController.UploadPhysical` для потоковой передачи в физическое расположение:
+
+[!code-csharp[](file-uploads/samples/2.x/SampleApp/Controllers/StreamingController.cs?name=snippet_UploadPhysical)]
+
+В примере приложения проверки обрабатываются с помощью `FileHelpers.ProcessStreamedFile`.
+
+## <a name="validation"></a>Проверка
+
+В классе `FileHelpers` примера приложения демонстрируется несколько проверок буферизованного файла <xref:Microsoft.AspNetCore.Http.IFormFile> и потоковой передачи файлов. Сведения об обработке буферизованных файлов <xref:Microsoft.AspNetCore.Http.IFormFile> в примере приложения см. в описании метода `ProcessFormFile` в файле *Utilities/FileHelpers.cs*. Сведения об обработке потоковых файлов см. в описании метода `ProcessStreamedFile` в том же файле.
+
+> [!WARNING]
+> Методы обработки проверки, показанные в примере приложения, не проверяют содержимое отправленных файлов. В большинстве рабочих сценариев в файле применяется API сканирования на наличие вирусов и вредоносных программ, прежде чем сделать файл доступным для пользователей или других систем.
+>
+> Хотя пример в разделе содержит рабочий пример методов проверки, не следует реализовывать класс `FileHelpers` в рабочем приложении, кроме таких случаев:
+>
+> * Вы полностью разбираетесь в реализации.
+> * Вы изменяете реализацию соответствующим образом для среды и спецификаций приложения.
+>
+> **Никогда не реализуйте код безопасности в приложении, не выполнив эти требования.**
+
+### <a name="content-validation"></a>Проверка содержимого
+
+**Используйте сторонний API сканирования на наличие вирусов и вредоносных программ для отправленного содержимого.**
+
+Сканирование файлов требует использования ресурсов сервера в сценариях с большими объемами данных. Если производительность обработки запросов снижается из-за сканирования файлов, рассмотрите возможность разгрузки сканирования путем использования [фоновой службы](xref:fundamentals/host/hosted-services), возможно, службы, которая работает на сервере, отличном от сервера приложения. Как правило, передаваемые файлы хранятся в карантинной области до тех пор, пока фоновый сканер не проверит их на наличие вирусов. При передаче файл перемещается в нормальное место хранения файлов. Эти действия обычно выполняются вместе с записью базы данных, которая указывает состояние сканирования файла. Благодаря такому подходу приложение и сервер приложений остаются в режиме реагирования на запросы.
+
+### <a name="file-extension-validation"></a>Проверка расширения файла
+
+Расширение переданного файла должно проверяться в соответствии со списком разрешенных расширений. Например:
+
+```csharp
+private string[] permittedExtensions = { ".txt", ".pdf" };
+
+var ext = Path.GetExtension(uploadedFileName).ToLowerInvariant();
+
+if (string.IsNullOrEmpty(ext) || !permittedExtensions.Contains(ext))
+{
+    // The extension is invalid ... discontinue processing the file
+}
+```
+
+### <a name="file-signature-validation"></a>Проверка подписи файла
+
+Подпись файла определяется по первым нескольким байтам в начале файла. Эти байты можно использовать, чтобы указать, совпадает ли расширение с содержимым файла. Пример приложения проверяет подписи файлов на соответствие нескольким распространенным типам файлов. В следующем примере проверяется подпись файла для изображения JPEG:
+
+```csharp
+private static readonly Dictionary<string, List<byte[]>> _fileSignature = 
+    new Dictionary<string, List<byte[]>>
+{
+    { ".jpeg", new List<byte[]>
+        {
+            new byte[] { 0xFF, 0xD8, 0xFF, 0xE0 },
+            new byte[] { 0xFF, 0xD8, 0xFF, 0xE2 },
+            new byte[] { 0xFF, 0xD8, 0xFF, 0xE3 },
+        }
+    },
+};
+
+using (var reader = new BinaryReader(uploadedFileData))
+{
+    var signatures = _fileSignature[ext];
+    var headerBytes = reader.ReadBytes(signatures.Max(m => m.Length));
+    
+    return signatures.Any(signature => 
+        headerBytes.Take(signature.Length).SequenceEqual(signature));
+}
+```
+
+Дополнительные сведения о получении дополнительных подписей файлов см. [по этой ссылке](https://www.filesignatures.net/) и в официальных спецификациях файла.
+
+### <a name="file-name-security"></a>Безопасность имени файла
+
+Никогда не используйте для хранения файла в физическом хранилище имя, предоставляемое клиентом. Создайте надежное имя файла с помощью [Path.GetRandomFileName](xref:System.IO.Path.GetRandomFileName*) или [Path.GetTempFileName](xref:System.IO.Path.GetTempFileName*), чтобы получить полный путь (включая имя файла) для временного хранилища.
+
+Razor автоматически кодирует в HTML значения свойств для вывода. Ниже приведен безопасный код, который можно использовать.
+
+```cshtml
+@foreach (var file in Model.DatabaseFiles) {
+    <tr>
+        <td>
+            @file.UntrustedName
+        </td>
+    </tr>
+}
+```
+
+Вне Razor содержимое имени файла из запроса пользователя всегда кодируется в <xref:System.Net.WebUtility.HtmlEncode*>.
+
+Во многих реализациях следует включать проверку существования файла. В противном случае файл перезаписывается файлом с тем же именем. Предоставьте дополнительную логику для соответствия спецификациям приложения.
+
+### <a name="size-validation"></a>Проверка размера
+
+Ограничьте размер передаваемых файлов.
+
+В примере приложения размер файла ограничен 2 МБ (указывается в байтах). Ограничение предоставляется с помощью [конфигурации](xref:fundamentals/configuration/index) из файла *appsettings.json*.
+
+```json
+{
+  "FileSizeLimit": 2097152
+}
+```
+
+В классы `PageModel` внедряется `FileSizeLimit`.
+
+```csharp
+public class BufferedSingleFileUploadPhysicalModel : PageModel
+{
+    private readonly long _fileSizeLimit;
+
+    public BufferedSingleFileUploadPhysicalModel(IConfiguration config)
+    {
+        _fileSizeLimit = config.GetValue<long>("FileSizeLimit");
+    }
+
+    ...
+}
+```
+
+Если размер файла превышает ограничение, файл отклоняется:
+
+```csharp
+if (formFile.Length > _fileSizeLimit)
+{
+    // The file is too large ... discontinue processing the file
+}
+```
+
+### <a name="match-name-attribute-value-to-parameter-name-of-post-method"></a>Сопоставление значения атрибута имени и имени параметра метода POST
+
+В формах, не относящихся к Razor, которые передают данные формы или используют `FormData` JavaScript напрямую, имя, указанное в элементе формы или `FormData`, должно соответствовать имени параметра в действии контроллера.
+
+В следующем примере:
+
+* При использовании элемента `<input>` атрибуту `name` присваивается значение `battlePlans`:
+
+  ```html
+  <input type="file" name="battlePlans" multiple>
+  ```
+
+* При использовании `FormData` в JavaScript для имени задается значение `battlePlans`:
+
+  ```javascript
+  var formData = new FormData();
+
+  for (var file in files) {
+    formData.append("battlePlans", file, file.name);
+  }
+  ```
+
+Используйте соответствующее имя для параметра метода C# (`battlePlans`):
+
+* Для метода обработчика страницы Razor Pages с именем `Upload`:
+
+  ```csharp
+  public async Task<IActionResult> OnPostUploadAsync(List<IFormFile> battlePlans)
+  ```
+
+* Для метода действия контроллера POST приложения MVC:
+
+  ```csharp
+  public async Task<IActionResult> Post(List<IFormFile> battlePlans)
+  ```
+
+## <a name="server-and-app-configuration"></a>Конфигурация сервера и приложения
+
+### <a name="multipart-body-length-limit"></a>Ограничение длины составного текста
+
+<xref:Microsoft.AspNetCore.Http.Features.FormOptions.MultipartBodyLengthLimit> устанавливает ограничение длины каждого составного текста. Разделы формы, превышающие это ограничение, вызовут <xref:System.IO.InvalidDataException> при синтаксическом анализе. Значение по умолчанию — 134 217 728 байт (128 МБ). Настройте ограничение с помощью параметра <xref:Microsoft.AspNetCore.Http.Features.FormOptions.MultipartBodyLengthLimit> в `Startup.ConfigureServices`:
+
+```csharp
+public void ConfigureServices(IServiceCollection services)
+{
+    services.Configure<FormOptions>(options =>
+    {
+        // Set the limit to 256 MB
+        options.MultipartBodyLengthLimit = 268435456;
+    });
+}
+```
+
+<xref:Microsoft.AspNetCore.Mvc.RequestFormLimitsAttribute> используется для настройки <xref:Microsoft.AspNetCore.Http.Features.FormOptions.MultipartBodyLengthLimit> для одной страницы или действия.
+
+В приложении Razor Pages примените фильтр с [соглашением](xref:razor-pages/razor-pages-conventions) в `Startup.ConfigureServices`:
+
+```csharp
+services.AddMvc()
+    .AddRazorPagesOptions(options =>
+    {
+        options.Conventions
+            .AddPageApplicationModelConvention("/FileUploadPage",
+                model.Filters.Add(
+                    new RequestFormLimitsAttribute()
+                    {
+                        // Set the limit to 256 MB
+                        MultipartBodyLengthLimit = 268435456
+                    });
+    })
+    .SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+```
+
+В приложении Razor Pages или MVC примените фильтр к модели страницы или методу действия:
+
+```csharp
+// Set the limit to 256 MB
+[RequestFormLimits(MultipartBodyLengthLimit = 268435456)]
+public class BufferedSingleFileUploadPhysicalModel : PageModel
+{
+    ...
+}
+```
+
+### <a name="kestrel-maximum-request-body-size"></a>Максимальный размер текста запроса Kestrel
+
+Для приложений, размещенных в Kestrel, по умолчанию максимальный размер текста запроса составляет 30 000 000 байт, что примерно соответствует 28,6 МБ. Настройте ограничение с помощью параметра сервера Kestrel [MaxRequestBodySize](xref:fundamentals/servers/kestrel#maximum-request-body-size):
+
+```csharp
+public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
+    WebHost.CreateDefaultBuilder(args)
+        .UseStartup<Startup>()
+        .ConfigureKestrel((context, options) =>
+        {
+            // Handle requests up to 50 MB
+            options.Limits.MaxRequestBodySize = 52428800;
+        });
+```
+
+<xref:Microsoft.AspNetCore.Mvc.RequestSizeLimitAttribute> используется для настройки [MaxRequestBodySize](xref:fundamentals/servers/kestrel#maximum-request-body-size) для одной страницы или действия.
+
+В приложении Razor Pages примените фильтр с [соглашением](xref:razor-pages/razor-pages-conventions) в `Startup.ConfigureServices`:
+
+```csharp
+services.AddMvc()
+    .AddRazorPagesOptions(options =>
+    {
+        options.Conventions
+            .AddPageApplicationModelConvention("/FileUploadPage",
+                model =>
+                {
+                    // Handle requests up to 50 MB
+                    model.Filters.Add(
+                        new RequestSizeLimitAttribute(52428800));
+                });
+    })
+    .SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+```
+
+В приложении Razor Pages или MVC примените фильтр к классу обработчика страницы или методу действия:
+
+```csharp
+// Handle requests up to 50 MB
+[RequestSizeLimit(52428800)]
+public class BufferedSingleFileUploadPhysicalModel : PageModel
+{
+    ...
+}
+```
+
+### <a name="other-kestrel-limits"></a>Другие ограничения Kestrel
+
+Другие ограничения Kestrel могут применяться для приложений, размещенных в Kestrel:
+
+* [Максимальное число клиентских подключений](xref:fundamentals/servers/kestrel#maximum-client-connections)
+* [Скорость передачи данных запросов и ответов](xref:fundamentals/servers/kestrel#minimum-request-body-data-rate)
+
+### <a name="iis-content-length-limit"></a>Ограничение длины содержимого IIS
+
+По умолчанию ограничение запроса (`maxAllowedContentLength`) составляет 30 000 000 байт, что примерно соответствует 28,6 МБ. Ограничение можно настроить в файле *web.config*:
+
+```xml
+<system.webServer>
+  <security>
+    <requestFiltering>
+      <!-- Handle requests up to 50 MB -->
+      <requestLimits maxAllowedContentLength="52428800" />
+    </requestFiltering>
+  </security>
+</system.webServer>
+```
+
+Этот параметр применим только к службам IIS. При размещении в Kestrel такой проблемы возникать не должно. Дополнительные сведения см. в статье [Request Limits \<requestLimits>](/iis/configuration/system.webServer/security/requestFiltering/requestLimits/) (Ограничения запроса <requestLimits>).
+
+Ограничения в модуле ASP.NET Core или наличие модуля фильтрации запросов IIS могут ограничить передачу до 2 или 4 ГБ. Дополнительные сведения см. в [этой ветке форума](https://github.com/aspnet/AspNetCore/issues/2711).
+
+## <a name="troubleshoot"></a>Устранение неполадок
+
+Ниже описываются некоторые распространенные проблемы, которые возникают при передаче файлов, и возможные способы их решения.
+
+### <a name="not-found-error-when-deployed-to-an-iis-server"></a>Ошибка "Не найдено" при развертывании на сервере IIS
+
+Следующая ошибка свидетельствует о том, что размер передаваемых файлов превышает настроенное на сервере ограничение длины содержимого:
+
+```
+HTTP 404.13 - Not Found
+The request filtering module is configured to deny a request that exceeds the request content length.
+```
+
+Дополнительные сведения об увеличении предела см. в разделе [Ограничение длины содержимого IIS](#iis-content-length-limit).
+
+### <a name="connection-failure"></a>Сбой подключения
+
+Ошибка соединения и сброс соединения с сервером, скорее всего, означают, что размер отправленного файла превышает максимальную длину текста запроса Kestrel. Дополнительные сведения см. в разделе [Максимальный размер текста запроса Kestrel](#kestrel-maximum-request-body-size). Может также потребоваться настроить ограничения подключений клиентов Kestrel.
+
+### <a name="null-reference-exception-with-iformfile"></a>Исключение, связанное с пустой ссылкой в IFormFile
+
+Если контроллер принимает передаваемые файлы с помощью <xref:Microsoft.AspNetCore.Http.IFormFile>, но значение равно `null`, проверьте, указан ли в HTML-форме атрибут `enctype` со значением `multipart/form-data`. Если этот атрибут не задан для элемента `<form>`, передача файлов происходить не будет и все связанные аргументы <xref:Microsoft.AspNetCore.Http.IFormFile> будут иметь значение `null`. Убедитесь также, что [именование передачи в данных формы совпадает с именованием приложения](#match-name-attribute-value-to-parameter-name-of-post-method).
+
+::: moniker-end
+
+
+## <a name="additional-resources"></a>Дополнительные ресурсы
+
+* [Неограниченная отправка файлов](https://www.owasp.org/index.php/Unrestricted_File_Upload)
+* [Безопасность в Azure. Механизм безопасности. Проверки входных данных | Снижение риска](/azure/security/azure-security-threat-modeling-tool-input-validation)
+* [Конструктивные шаблоны облачных решений Azure. Шаблон ключа камердинера](/azure/architecture/patterns/valet-key)

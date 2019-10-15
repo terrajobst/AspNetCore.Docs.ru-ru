@@ -4,14 +4,14 @@ author: rick-anderson
 description: Узнайте, как в веб-приложениях ASP.NET Core обслуживать и защищать статические файлы, а также как настраивать ПО промежуточного слоя по размещению статических файлов.
 ms.author: riande
 ms.custom: mvc
-ms.date: 07/8/2019
+ms.date: 10/07/2019
 uid: fundamentals/static-files
-ms.openlocfilehash: 1c665d1206e984fe41e9f57bb5356839c354dde2
-ms.sourcegitcommit: b40613c603d6f0cc71f3232c16df61550907f550
+ms.openlocfilehash: 2f153551a86860616469200862723528e4a8cc1c
+ms.sourcegitcommit: 3d082bd46e9e00a3297ea0314582b1ed2abfa830
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68308184"
+ms.lasthandoff: 10/07/2019
+ms.locfileid: "72007327"
 ---
 # <a name="static-files-in-aspnet-core"></a>Статические файлы в ASP.NET Core
 
@@ -23,7 +23,7 @@ ms.locfileid: "68308184"
 
 ## <a name="serve-static-files"></a>Обслуживание статических файлов
 
-Статические файлы хранятся в корневом веб-каталоге проекта. Каталог по умолчанию — *\<корневой_каталог_содержимого>/wwwroot*, но его можно изменить через метод [UseWebRoot](/dotnet/api/microsoft.aspnetcore.hosting.hostingabstractionswebhostbuilderextensions.usewebroot#Microsoft_AspNetCore_Hosting_HostingAbstractionsWebHostBuilderExtensions_UseWebRoot_Microsoft_AspNetCore_Hosting_IWebHostBuilder_System_String_). Дополнительные сведения см. в разделах [Корневой каталог содержимого](xref:fundamentals/index#content-root) и [Корневой веб-каталог](xref:fundamentals/index#web-root).
+Статические файлы хранятся в [корневом каталоге документов](xref:fundamentals/index#web-root) проекта. Каталог по умолчанию — *{корневой_каталог_содержимого}/wwwroot*, но его можно изменить через метод [UseWebRoot](/dotnet/api/microsoft.aspnetcore.hosting.hostingabstractionswebhostbuilderextensions.usewebroot#Microsoft_AspNetCore_Hosting_HostingAbstractionsWebHostBuilderExtensions_UseWebRoot_Microsoft_AspNetCore_Hosting_IWebHostBuilder_System_String_). Дополнительные сведения см. в разделах [Корневой каталог содержимого](xref:fundamentals/index#content-root) и [Корневой веб-каталог](xref:fundamentals/index#web-root).
 
 Веб-узел приложения должен знать о расположении корневого каталога содержимого.
 
@@ -43,7 +43,7 @@ ms.locfileid: "68308184"
 
 ::: moniker-end
 
-Статические файлы доступны по относительному пути от корневого веб-каталога. Например, шаблон проекта **Web Application** содержит несколько папок в папке *wwwroot*:
+Статические файлы доступны по относительному пути от [корневого каталога документов](xref:fundamentals/index#web-root). Например, шаблон проекта **Web Application** содержит несколько папок в папке *wwwroot*:
 
 * **wwwroot**
   * **css**
@@ -78,15 +78,15 @@ ms.locfileid: "68308184"
 
 [!code-csharp[](static-files/samples/1x/StartupStaticFiles.cs?name=snippet_ConfigureMethod&highlight=3)]
 
-Эта перегрузка метода `UseStaticFiles` не принимает параметров, она помечает файлы в корневой веб-каталог как обслуживаемые. Следующая разметка ссылается на *wwwroot/images/banner1.svg*:
+Эта перегрузка метода `UseStaticFiles` не принимает параметров, она помечает файлы в [корневом каталоге документов](xref:fundamentals/index#web-root) как обслуживаемые. Следующая разметка ссылается на *wwwroot/images/banner1.svg*:
 
 [!code-cshtml[](static-files/samples/1x/Views/Home/Index.cshtml?name=snippet_static_file_wwwroot)]
 
-В приведенном выше коде знак тильды `~/` указывает на корневой веб-каталог. Дополнительные сведения см. в разделе [Корневой веб-каталог](xref:fundamentals/index#web-root).
+В приведенном выше коде знак тильды `~/` указывает на [корневой каталог документов](xref:fundamentals/index#web-root).
 
 ### <a name="serve-files-outside-of-web-root"></a>Обслуживание файлов вне корневого веб-каталога
 
-Пусть имеется иерархия каталогов, в которой статические файлы обслуживаются вне корневого веб-каталога:
+Пусть имеется иерархия каталогов, в которой статические файлы обслуживаются вне [корневого каталога документов](xref:fundamentals/index#web-root):
 
 * **wwwroot**
   * **css**
@@ -108,7 +108,7 @@ ms.locfileid: "68308184"
 
 ### <a name="set-http-response-headers"></a>Установка заголовков HTTP-ответов
 
-Для установки заголовков HTTP-ответов можно использовать объект [StaticFileOptions](/dotnet/api/microsoft.aspnetcore.builder.staticfileoptions). Кроме настройки обслуживания статических файлов в корне веб-каталога, следующий код также устанавливает заголовок `Cache-Control`:
+Для установки заголовков HTTP-ответов можно использовать объект [StaticFileOptions](/dotnet/api/microsoft.aspnetcore.builder.staticfileoptions). Кроме настройки обслуживания статических файлов в [корневом каталоге документов](xref:fundamentals/index#web-root), следующий код также устанавливает заголовок `Cache-Control`:
 
 [!code-csharp[](static-files/samples/1x/StartupAddHeader.cs?name=snippet_ConfigureMethod)]
 
@@ -256,7 +256,7 @@ app.UseFileServer(enableDirectoryBrowsing: true);
 > [!WARNING]
 > Если обработчик статических файлов IIS включен **и** модуль ASP.NET Core настроен неправильно, то статические файлы будут обслуживаться. Это может случиться, если, например, не был развернут файл *web.config*.
 
-* Размещайте файлы с кодом (включая *.cs* и *.cshtml*) за пределами корневого веб-каталога проекта приложения. Таким образом, в приложении создается логическое разделение между клиентским содержимым и серверным кодом. Это предотвращает утечку серверного кода.
+* Размещайте файлы с кодом (включая *CS* и *CSHTML*) за пределами [корневого каталога документов](xref:fundamentals/index#web-root) проекта приложения. Таким образом, в приложении создается логическое разделение между клиентским содержимым и серверным кодом. Это предотвращает утечку серверного кода.
 
 ## <a name="additional-resources"></a>Дополнительные ресурсы
 

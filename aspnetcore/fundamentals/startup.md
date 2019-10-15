@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 8/7/2019
 uid: fundamentals/startup
-ms.openlocfilehash: 47194f786b2d32fb343e8f1078a4400d6db37293
-ms.sourcegitcommit: e54672f5c493258dc449fac5b98faf47eb123b28
+ms.openlocfilehash: 0ea3965f73f4b0334810bc9ec2910b0c9364a7ba
+ms.sourcegitcommit: d8b12cc1716ee329d7bd2300e201b61e15d506ac
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71248336"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71942871"
 ---
 # <a name="app-startup-in-aspnet-core"></a>Запуск приложения в ASP.NET Core
 
@@ -192,7 +192,10 @@ ms.locfileid: "71248336"
 
 ## <a name="extend-startup-with-startup-filters"></a>Расширение класса Startup с использованием фильтров запуска
 
-Используйте <xref:Microsoft.AspNetCore.Hosting.IStartupFilter> для настройки ПО промежуточного слоя в начале или конце конвейера ПО промежуточного слоя [Configure](#the-configure-method) приложения. `IStartupFilter` используется для создания конвейера методов `Configure`. [IStartupFilter.Configure](xref:Microsoft.AspNetCore.Hosting.IStartupFilter.Configure*) может обеспечивать запуск ПО промежуточного слоя до или после ПО промежуточного слоя, добавляемого библиотеками.
+Используйте <xref:Microsoft.AspNetCore.Hosting.IStartupFilter> в следующих случаях:
+
+* Для настройки ПО промежуточного слоя в начале или конце конвейера ПО промежуточного слоя [Configure](#the-configure-method) приложения без явного вызова `Use{Middleware}`. ASP.NET Core использует `IStartupFilter` для добавления значений по умолчанию в начало конвейера, исключая необходимость явной регистрации ПО промежуточного слоя по умолчанию автором приложения. `IStartupFilter` разрешает другим компонентам вызывать `Use{Middleware}` от имени автора приложения.
+* Для создания конвейера методов `Configure`. [IStartupFilter.Configure](xref:Microsoft.AspNetCore.Hosting.IStartupFilter.Configure*) может обеспечивать запуск ПО промежуточного слоя до или после ПО промежуточного слоя, добавляемого библиотеками.
 
 `IStartupFilter` реализует метод <xref:Microsoft.AspNetCore.Hosting.StartupBase.Configure*>, который принимает и возвращает `Action<IApplicationBuilder>`. <xref:Microsoft.AspNetCore.Builder.IApplicationBuilder> определяет класс для настройки конвейера запросов приложения. Дополнительные сведения см. в разделе [Создание конвейера ПО промежуточного слоя с помощью IApplicationBuilder](xref:fundamentals/middleware/index#create-a-middleware-pipeline-with-iapplicationbuilder).
 

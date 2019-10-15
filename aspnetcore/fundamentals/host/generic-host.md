@@ -5,14 +5,14 @@ description: Сведения об универсальном узле .NET Core
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 07/01/2019
+ms.date: 10/07/2019
 uid: fundamentals/host/generic-host
-ms.openlocfilehash: 75af6dc58d31aaad888b14640268bf05c193272d
-ms.sourcegitcommit: e54672f5c493258dc449fac5b98faf47eb123b28
+ms.openlocfilehash: 1582955cd18e6739111af05c9a892cd5cb4e270d
+ms.sourcegitcommit: 3d082bd46e9e00a3297ea0314582b1ed2abfa830
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71248278"
+ms.lasthandoff: 10/07/2019
+ms.locfileid: "72007237"
 ---
 # <a name="net-generic-host"></a>Универсальный узел .NET
 
@@ -78,7 +78,7 @@ public static IHostBuilder CreateHostBuilder(string[] args) =>
 
 Метод <xref:Microsoft.Extensions.Hosting.Host.CreateDefaultBuilder*>:
 
-* В качестве корня содержимого задает путь, возвращенный методом <xref:System.IO.Directory.GetCurrentDirectory*>.
+* В качестве [корневого каталога содержимого](xref:fundamentals/index#content-root) задает путь, возвращенный методом <xref:System.IO.Directory.GetCurrentDirectory*>.
 * Загружает конфигурацию узла из:
   * Переменные среды с префиксом "DOTNET_".
   * аргументы командной строки.
@@ -119,7 +119,7 @@ public static IHostBuilder CreateHostBuilder(string[] args) =>
 
 Внедрите <xref:Microsoft.Extensions.Hosting.IHostApplicationLifetime> (прежнее название — `IApplicationLifetime`) в любой класс для выполнения задач после запуска и корректного завершения работы. Три свойства этого интерфейса представляют собой токены отмены, которые служат для регистрации методов обработчика событий запуска и завершения работы приложения. Этот интерфейс также включает метод `StopApplication`.
 
-Ниже приведен пример реализации `IHostedService`, которая регистрирует события `IApplicationLifetime`:
+Ниже приведен пример реализации `IHostedService`, которая регистрирует события `IHostApplicationLifetime`:
 
 [!code-csharp[](generic-host/samples-snapshot/3.x/LifetimeEventsHostedService.cs?name=snippet_LifetimeEvents)]
 
@@ -199,6 +199,11 @@ Host.CreateDefaultBuilder(args)
     .UseContentRoot("c:\\content-root")
     //...
 ```
+
+Дополнительные сведения можно найти в разделе
+
+* [Корневой каталог содержимого](xref:fundamentals/index#content-root)
+* [Корневой каталог документов](#webroot)
 
 ### <a name="environmentname"></a>EnvironmentName
 
@@ -397,7 +402,7 @@ Kestrel имеет собственный интерфейс API настрой�
 
 **Ключ**: webroot  
 **Тип**: *string*  
-**По умолчанию**: *(Корень содержимого)/wwwroot*, если путь существует. Если этот путь не существует, используется фиктивный поставщик файлов.  
+**По умолчанию**: Значение по умолчанию — `wwwroot`. Наличие пути *{корневой_каталог_содержимого}/wwwroot* обязательно. Если этот путь не существует, используется фиктивный поставщик файлов.  
 **Переменная среды**: `<PREFIX_>WEBROOT`
 
 Чтобы задать это значение, используйте переменную среды или вызов `UseWebRoot`:
@@ -405,6 +410,11 @@ Kestrel имеет собственный интерфейс API настрой�
 ```csharp
 webBuilder.UseWebRoot("public");
 ```
+
+Дополнительные сведения можно найти в разделе
+
+* [Корневой каталог документов](xref:fundamentals/index#web-root)
+* [ContentRootPath](#contentrootpath)
 
 ## <a name="manage-the-host-lifetime"></a>Управление временем существования узла
 
@@ -422,7 +432,7 @@ webBuilder.UseWebRoot("public");
 
 Метод <xref:Microsoft.Extensions.Hosting.HostingHostBuilderExtensions.RunConsoleAsync*> включает поддержку консоли, собирает и запускает узел и ожидает сигналы CTRL + C/SIGINT или SIGTERM для завершения работы.
 
-### <a name="start"></a>Запуск
+### <a name="start"></a>Начало
 
 Метод <xref:Microsoft.Extensions.Hosting.HostingAbstractionsHostExtensions.Start*> запускает узел синхронно.
 
@@ -574,6 +584,8 @@ var host = new HostBuilder()
 Если путь не существует, узел не запускается.
 
 [!code-csharp[](generic-host/samples-snapshot/2.x/GenericHostSample/Program.cs?name=snippet_UseContentRoot)]
+
+Дополнительные сведения можно найти в разделе [Корневой каталог содержимого](xref:fundamentals/index#content-root).
 
 ### <a name="environment"></a>Среда
 

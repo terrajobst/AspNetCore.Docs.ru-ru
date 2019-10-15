@@ -5,14 +5,14 @@ description: Узнайте, как размещать и развертыват
 monikerRange: '>= aspnetcore-3.0'
 ms.author: riande
 ms.custom: mvc
-ms.date: 09/23/2019
+ms.date: 10/07/2019
 uid: host-and-deploy/blazor/webassembly
-ms.openlocfilehash: cdb424137d80b280873347c1352fc43d23b4aec3
-ms.sourcegitcommit: 79eeb17604b536e8f34641d1e6b697fb9a2ee21f
+ms.openlocfilehash: a0a11f3aed9035000e79844fbec7cdd17b73fdaa
+ms.sourcegitcommit: 3d082bd46e9e00a3297ea0314582b1ed2abfa830
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71211622"
+ms.lasthandoff: 10/07/2019
+ms.locfileid: "72007335"
 ---
 # <a name="host-and-deploy-aspnet-core-blazor-webassembly"></a>Размещение и развертывание Blazor WebAssembly с помощью ASP.NET Core
 
@@ -196,9 +196,9 @@ COPY nginx.conf /etc/nginx/nginx.conf
 
 [Приложения Blazor WebAssembly](xref:blazor/hosting-models#blazor-webassembly) могут принимать следующие значения конфигурации узла в качестве аргументов командной строки во время выполнения в среде разработки.
 
-### <a name="content-root"></a>Корень содержимого
+### <a name="content-root"></a>Корневой каталог содержимого
 
-Аргумент `--contentroot` задает абсолютный путь к каталогу, где находятся файлы содержимого приложения. В следующих примерах `/content-root-path` — это путь к корневому каталогу содержимого приложения.
+Аргумент `--contentroot` задает абсолютный путь к каталогу, где находятся файлы содержимого приложения ([корневой каталог содержимого](xref:fundamentals/index#content-root)). В следующих примерах `/content-root-path` — это путь к корневому каталогу содержимого приложения.
 
 * Передайте этот аргумент при локальном запуске приложения в командной строке. Перейдите в каталог приложения и выполните следующую команду:
 

@@ -5,14 +5,14 @@ description: Сведения о конфигурации приложений, 
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 07/12/2019
+ms.date: 10/07/2019
 uid: host-and-deploy/proxy-load-balancer
-ms.openlocfilehash: 3243f5d3254e6585ff9ca48900a3326aa9b6f502
-ms.sourcegitcommit: 8a36be1bfee02eba3b07b7a86085ec25c38bae6b
+ms.openlocfilehash: 5eb69c2a253d1b8c42edd39b64b595898e6fb948
+ms.sourcegitcommit: 3d082bd46e9e00a3297ea0314582b1ed2abfa830
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71219179"
+ms.lasthandoff: 10/07/2019
+ms.locfileid: "72007290"
 ---
 # <a name="configure-aspnet-core-to-work-with-proxy-servers-and-load-balancers"></a>Настройка ASP.NET Core для работы с прокси-серверами и подсистемами балансировки нагрузки
 
@@ -252,6 +252,60 @@ if (string.Equals(
 }
 ```
 
+::: moniker range=">= aspnetcore-3.0"
+
+## <a name="certificate-forwarding"></a>Переадресация сертификатов 
+
+### <a name="azure"></a>Azure
+
+Сведения о настройке Службы приложений Azure для переадресации сертификатов см. в статье [Configure TLS mutual authentication for Azure App Service](/azure/app-service/app-service-web-configure-tls-mutual-auth) (Настройка взаимной проверки подлинности TLS для Службы приложений Azure). Приведенные ниже инструкции применимы к настройке приложения ASP.NET Core.
+
+В `Startup.Configure` добавьте указанный ниже код перед вызовом `app.UseAuthentication();`:
+
+```csharp
+app.UseCertificateForwarding();
+```
+
+
+Настройте ПО промежуточного слоя переадресации сертификатов, чтобы указать имя заголовка, который использует Azure. В `Startup.ConfigureServices` добавьте указанный ниже код, чтобы настроить заголовок, из которого ПО промежуточного слоя создает сертификат:
+
+```csharp
+services.AddCertificateForwarding(options =>
+    options.CertificateHeader = "X-ARR-ClientCert");
+```
+
+### <a name="other-web-proxies"></a>Другие веб-прокси
+
+Если вы используете прокси-сервер не IIS или маршрутизацию запросов приложений (ARR) Службы приложений Azure, настройте прокси-сервер для переадресации сертификата, полученного в заголовке HTTP. В `Startup.Configure` добавьте указанный ниже код перед вызовом `app.UseAuthentication();`:
+
+```csharp
+app.UseCertificateForwarding();
+```
+
+Настройте ПО промежуточного слоя переадресации сертификатов, чтобы указать имя заголовка. В `Startup.ConfigureServices` добавьте указанный ниже код, чтобы настроить заголовок, из которого ПО промежуточного слоя создает сертификат:
+
+```csharp
+services.AddCertificateForwarding(options =>
+    options.CertificateHeader = "YOUR_CERTIFICATE_HEADER_NAME");
+```
+
+Если прокси-сервер не выполняет шифрование сертификата в кодировке base64 (как в случае с Nginx), задайте параметр `HeaderConverter`. Рассмотрим следующий пример в `Startup.ConfigureServices`:
+
+```csharp
+services.AddCertificateForwarding(options =>
+{
+    options.CertificateHeader = "YOUR_CUSTOM_HEADER_NAME";
+    options.HeaderConverter = (headerValue) => 
+    {
+        var clientCertificate = 
+           /* some conversion logic to create an X509Certificate2 */
+        return clientCertificate;
+    }
+});
+```
+
+::: moniker-end
+
 ## <a name="troubleshoot"></a>Устранение неполадок
 
 Если заголовки перенаправляются не так, как ожидалось, включите [ведение журнала](xref:fundamentals/logging/index). Если журналы не содержат достаточно информации для устранения неполадок, просмотрите список заголовков в запросе, полученном сервером. Используйте встроенное ПО промежуточного слоя для записи заголовков запроса в ответ приложения или для сохранения заголовков в журнал. 
@@ -336,53 +390,6 @@ services.Configure<ForwardedHeadersOptions>(options =>
 
 > [!IMPORTANT]
 > Переадресацию заголовков следует разрешить только доверенным прокси-серверам и сетям. В противном случае будут возможны атаки [подмены IP-адресов](https://www.iplocation.net/ip-spoofing).
-
-## <a name="certificate-forwarding"></a>Переадресация сертификатов 
-
-### <a name="on-azure"></a>В Azure
-
-См. [документацию Azure](/azure/app-service/app-service-web-configure-tls-mutual-auth) для настройки веб-приложений Azure. В методе `Startup.Configure` приложения добавьте следующий код перед вызовом `app.UseAuthentication();`:
-
-```csharp
-app.UseCertificateForwarding();
-```
-
-Необходимо также настроить ПО промежуточного слоя переадресации сертификатов, чтобы указать имя заголовка, который использует Azure. В методе `Startup.ConfigureServices` приложения добавьте следующий код, чтобы настроить заголовок, из которого ПО промежуточного слоя создает сертификат:
-
-```csharp
-services.AddCertificateForwarding(options =>
-    options.CertificateHeader = "X-ARR-ClientCert");
-```
-
-### <a name="with-other-web-proxies"></a>С другими веб-прокси
-
-Если вы используете прокси-сервер не IIS или маршрутизацию запросов веб-приложений Azure, настройте прокси-сервер для переадресации сертификата, полученного в заголовке HTTP. В методе `Startup.Configure` приложения добавьте следующий код перед вызовом `app.UseAuthentication();`:
-
-```csharp
-app.UseCertificateForwarding();
-```
-
-Необходимо также настроить ПО промежуточного слоя переадресации сертификатов, чтобы указать имя заголовка. В методе `Startup.ConfigureServices` приложения добавьте следующий код, чтобы настроить заголовок, из которого ПО промежуточного слоя создает сертификат:
-
-```csharp
-services.AddCertificateForwarding(options =>
-    options.CertificateHeader = "YOUR_CERTIFICATE_HEADER_NAME");
-```
-
-Наконец, если прокси-сервер выполняет другие действия, кроме шифрования сертификата в кодировке base64 (как в случае с Nginx), задайте параметр `HeaderConverter`. Рассмотрим следующий пример в `Startup.ConfigureServices`:
-
-```csharp
-services.AddCertificateForwarding(options =>
-{
-    options.CertificateHeader = "YOUR_CUSTOM_HEADER_NAME";
-    options.HeaderConverter = (headerValue) => 
-    {
-        var clientCertificate = 
-           /* some conversion logic to create an X509Certificate2 */
-        return clientCertificate;
-    }
-});
-```
 
 ## <a name="additional-resources"></a>Дополнительные ресурсы
 

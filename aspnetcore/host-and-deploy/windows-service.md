@@ -5,14 +5,14 @@ description: Узнайте, как разместить приложение AS
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 09/09/2019
+ms.date: 10/07/2019
 uid: host-and-deploy/windows-service
-ms.openlocfilehash: 544037a2a1f836e51b4f10551316312ef55c68da
-ms.sourcegitcommit: fe88748b762525cb490f7e39089a4760f6a73a24
+ms.openlocfilehash: 32226c06ba005b4a61c473d6584b2b762733dcbd
+ms.sourcegitcommit: 3d082bd46e9e00a3297ea0314582b1ed2abfa830
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71688087"
+ms.lasthandoff: 10/07/2019
+ms.locfileid: "72007301"
 ---
 # <a name="host-aspnet-core-in-a-windows-service"></a>Размещение ASP.NET Core в службе Windows
 
@@ -49,7 +49,7 @@ ms.locfileid: "71688087"
 `IHostBuilder.UseWindowsService` в составе пакета [Microsoft.Extensions.Hosting.WindowsServices](https://www.nuget.org/packages/Microsoft.Extensions.Hosting.WindowsServices) вызывается при создании узла. Если приложение выполняется как служба Windows, метод отвечает за следующие действия:
 
 * Задает для узла время существования `WindowsServiceLifetime`.
-* Задает корневой каталог содержимого.
+* Задает [корневой каталог содержимого](xref:fundamentals/index#content-root).
 * Включает ведение журнала событий с именем приложения в качестве имени источника по умолчанию.
   * Уровень ведения журнала можно задать с помощью ключа `Logging:LogLevel:Default` в файле *appsettings.Production.json*.
   * Только администраторы могут создавать источники событий. Если источник событий создать нельзя, используя имя приложения, для источника *Приложение* регистрируется предупреждение и журналы событий отключаются.
@@ -326,7 +326,7 @@ Remove-Service -Name {NAME}
 
 ### <a name="set-the-content-root-path-to-the-apps-folder"></a>Указание папки приложения в качестве пути корневого каталога содержимого
 
-<xref:Microsoft.Extensions.Hosting.IHostingEnvironment.ContentRootPath*> — это тот же путь, который предоставляется аргументу `binPath` при создании службы. Чтобы не вызывать метод `GetCurrentDirectory` для создания путей к файлам параметров, вызовите <xref:System.IO.Directory.SetCurrentDirectory*> с указанным путем к корневому каталогу содержимого приложения.
+<xref:Microsoft.Extensions.Hosting.IHostingEnvironment.ContentRootPath*> — это тот же путь, который предоставляется аргументу `binPath` при создании службы. Чтобы не вызывать метод `GetCurrentDirectory` для создания путей к файлам параметров, вызовите <xref:System.IO.Directory.SetCurrentDirectory*> с указанным путем к [корневому каталогу содержимого](xref:fundamentals/index#content-root) приложения.
 
 В `Program.Main` определите путь к папке с исполняемым файлом службы и используйте этот путь, чтобы создать корневой каталог содержимого приложения.
 
