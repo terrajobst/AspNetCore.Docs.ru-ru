@@ -59,7 +59,7 @@ ms.locfileid: "72391196"
 [!code-cshtml[](common/samples/3.x/BlazorSample/Pages/BlazorRoute.razor?name=snippet_BlazorRoute)]
 
 > [!IMPORTANT]
-> Для правильного разрешения URL-адресов приложение должно включать тег `<base>` в файл *wwwroot/index.HTML* (блазор) или *pages/_Host. cshtml* (блазор Server) с базовым путем к приложению, указанным в атрибуте `href` (`<base href="/">`). Для получения дополнительной информации см. <xref:host-and-deploy/blazor/index#app-base-path>.
+> Для правильного разрешения URL-адресов приложение должно включать тег `<base>` в файл *wwwroot/index.HTML* (блазор) или *pages/_Host. cshtml* (блазор Server) с базовым путем к приложению, указанным в атрибуте `href` (`<base href="/">`). Дополнительные сведения см. в разделе <xref:host-and-deploy/blazor/index#app-base-path>.
 
 ## <a name="provide-custom-content-when-content-isnt-found"></a>Указать пользовательское содержимое, когда содержимое не найдено
 
@@ -141,7 +141,7 @@ ms.locfileid: "72391196"
 * Двойное звездочка *-все* синтаксис (`**`) для захвата пути по нескольким папкам без кодирования косой черты (`/`).
 * Имя параметра маршрута `path`.
 
-Для получения дополнительной информации см. <xref:fundamentals/routing>.
+Дополнительные сведения см. в разделе <xref:fundamentals/routing>.
 
 ## <a name="navlink-component"></a>Компонент Навлинк
 
