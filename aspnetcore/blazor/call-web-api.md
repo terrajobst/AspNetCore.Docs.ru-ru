@@ -5,14 +5,14 @@ description: Узнайте, как вызывать веб-API из прило�
 monikerRange: '>= aspnetcore-3.0'
 ms.author: riande
 ms.custom: mvc
-ms.date: 10/05/2019
+ms.date: 10/15/2019
 uid: blazor/call-web-api
-ms.openlocfilehash: 3d70af2226eb29870458a5fd3c2bbbc3ee5c14ce
-ms.sourcegitcommit: 73a451e9a58ac7102f90b608d661d8c23dd9bbaf
+ms.openlocfilehash: b08fdf5c2f9a523314b1744a33087eb64fa4c14a
+ms.sourcegitcommit: 35a86ce48041caaf6396b1e88b0472578ba24483
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72037439"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72390836"
 ---
 # <a name="call-a-web-api-from-aspnet-core-blazor"></a>Вызов веб-API из ASP.NET Core Блазор
 
@@ -22,7 +22,7 @@ ms.locfileid: "72037439"
 
 Приложения блазор WebService вызывают веб-API с помощью предварительно настроенной службы `HttpClient`. Запросы составления, которые могут включать параметры [API-интерфейса получения](https://developer.mozilla.org/docs/Web/API/Fetch_API) JavaScript, с помощью вспомогательных функций JSON блазор или с <xref:System.Net.Http.HttpRequestMessage>.
 
-Серверные приложения блазор вызывают веб-API, используя экземпляры <xref:System.Net.Http.HttpClient>, обычно созданные с помощью <xref:System.Net.Http.IHttpClientFactory>. Дополнительные сведения см. в разделе <xref:fundamentals/http-requests>.
+Серверные приложения блазор вызывают веб-API, используя экземпляры <xref:System.Net.Http.HttpClient>, обычно созданные с помощью <xref:System.Net.Http.IHttpClientFactory>. Для получения дополнительной информации см. <xref:fundamentals/http-requests>.
 
 [Просмотреть или скачать образец кода](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/blazor/common/samples/) ([как скачивать](xref:index#how-to-download-a-sample))
 
@@ -200,7 +200,7 @@ private class TodoItem
 }
 ```
 
-Дополнительные сведения о параметрах API FETCH см. в разделе веб-документы @no__t 0MDN: Виндоворворкерглобалскопе. fetch ():P араметерс @ no__t-0.
+Дополнительные сведения о возможностях API-получения см. в разделе [MDN Web документация: виндоворворкерглобалскопе. fetch ():P араметерс](https://developer.mozilla.org/docs/Web/API/WindowOrWorkerGlobalScope/fetch#Parameters).
 
 При отправке учетных данных (файлов cookie или заголовков авторизации) в запросах CORS в политике CORS должен быть разрешен заголовок `Authorization`.
 

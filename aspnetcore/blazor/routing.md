@@ -5,14 +5,14 @@ description: Узнайте, как маршрутизировать запро�
 monikerRange: '>= aspnetcore-3.0'
 ms.author: riande
 ms.custom: mvc
-ms.date: 10/09/2019
+ms.date: 10/15/2019
 uid: blazor/routing
-ms.openlocfilehash: 8f48112237e6dd3fed88404c53b8d7d9137ef6ff
-ms.sourcegitcommit: 0b8a7571bf7acf85bf16118acb2435001cbe4b5d
+ms.openlocfilehash: a71709d6b87d8182e90f827d952090aa1e38d701
+ms.sourcegitcommit: 35a86ce48041caaf6396b1e88b0472578ba24483
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72236532"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72391196"
 ---
 # <a name="aspnet-core-blazor-routing"></a>ASP.NET Core маршрутизация Блазор
 
@@ -59,7 +59,7 @@ ms.locfileid: "72236532"
 [!code-cshtml[](common/samples/3.x/BlazorSample/Pages/BlazorRoute.razor?name=snippet_BlazorRoute)]
 
 > [!IMPORTANT]
-> Для правильного разрешения URL-адресов приложение должно включать тег `<base>` в файл *wwwroot/index.HTML* (блазор) или *pages/_Host. cshtml* (блазор Server) с базовым путем к приложению, указанным в атрибуте `href` (`<base href="/">`). Дополнительные сведения см. в разделе <xref:host-and-deploy/blazor/index#app-base-path>.
+> Для правильного разрешения URL-адресов приложение должно включать тег `<base>` в файл *wwwroot/index.HTML* (блазор) или *pages/_Host. cshtml* (блазор Server) с базовым путем к приложению, указанным в атрибуте `href` (`<base href="/">`). Для получения дополнительной информации см. <xref:host-and-deploy/blazor/index#app-base-path>.
 
 ## <a name="provide-custom-content-when-content-isnt-found"></a>Указать пользовательское содержимое, когда содержимое не найдено
 
@@ -88,7 +88,7 @@ ms.locfileid: "72236532"
 ```cshtml
 <Router
     AppAssembly="typeof(Program).Assembly"
-    AdditionalAssemblies="new[] { typeof(Component1).Assembly }>
+    AdditionalAssemblies="new[] { typeof(Component1).Assembly }">
     ...
 </Router>
 ```
@@ -141,7 +141,7 @@ ms.locfileid: "72236532"
 * Двойное звездочка *-все* синтаксис (`**`) для захвата пути по нескольким папкам без кодирования косой черты (`/`).
 * Имя параметра маршрута `path`.
 
-Дополнительные сведения см. в разделе <xref:fundamentals/routing>.
+Для получения дополнительной информации см. <xref:fundamentals/routing>.
 
 ## <a name="navlink-component"></a>Компонент Навлинк
 

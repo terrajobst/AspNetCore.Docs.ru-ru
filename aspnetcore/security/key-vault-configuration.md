@@ -5,14 +5,14 @@ description: Узнайте, как использовать поставщик 
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 10/07/2019
+ms.date: 10/14/2019
 uid: security/key-vault-configuration
-ms.openlocfilehash: cc3894df4df169d941f54ef3dfad5d3e6f798aad
-ms.sourcegitcommit: 3d082bd46e9e00a3297ea0314582b1ed2abfa830
+ms.openlocfilehash: c8e76068dbcf2a59a15fa75a1fc5aa0032e6acc5
+ms.sourcegitcommit: 07d98ada57f2a5f6d809d44bdad7a15013109549
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/07/2019
-ms.locfileid: "72007405"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72334202"
 ---
 # <a name="azure-key-vault-configuration-provider-in-aspnet-core"></a>Поставщик конфигурации Azure Key Vault в ASP.NET Core
 
@@ -27,7 +27,7 @@ ms.locfileid: "72007405"
 
 [Просмотреть или скачать образец кода](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/security/key-vault-configuration/sample) ([как скачивать](xref:index#how-to-download-a-sample))
 
-## <a name="packages"></a>Пакеты
+## <a name="packages"></a>пакеты,
 
 Чтобы использовать поставщик конфигурации Azure Key Vault, добавьте ссылку на пакет в пакет [Microsoft. Extensions. Configuration. AzureKeyVault](https://www.nuget.org/packages/Microsoft.Extensions.Configuration.AzureKeyVault/) .
 
@@ -76,7 +76,7 @@ dotnet user-secrets set "Section:SecretName" "secret_value_2_dev"
 
 ## <a name="secret-storage-in-the-production-environment-with-azure-key-vault"></a>Секретное хранилище в рабочей среде с Azure Key Vault
 
-Инструкции, предоставленные @no__t 0Quickstart: Для создания Azure Key Vault и хранения секретов, используемых примером приложения, можно задать и получить секрет из Azure Key Vault с помощью Azure CLI @ no__t-0. Дополнительные сведения см. в разделе.
+Инструкции, приведенные в [кратком руководстве по установке и извлечению секретов из Azure Key Vault с помощью Azure CLI](/azure/key-vault/quick-create-cli) разделе, приведены здесь для создания Azure Key Vault и хранения секретов, используемых в примере приложения. Дополнительные сведения см. в разделе.
 
 1. Откройте Azure Cloud Shell одним из следующих способов в [портал Azure](https://portal.azure.com/):
 
@@ -141,8 +141,8 @@ dotnet user-secrets set "Section:SecretName" "secret_value_2_dev"
 
 Пример приложения `Certificate` получает значения конфигурации из `IConfigurationRoot` с тем же именем, что и имя секрета:
 
-* Значения, отличные от иерархических: Значение для `SecretName` получено с `config["SecretName"]`.
-* Иерархические значения (разделы): Используйте нотацию `:` (двоеточие) или метод расширения `GetSection`. Используйте любой из этих подходов для получения значения конфигурации:
+* Неиерархические значения: значение для `SecretName` получено с `config["SecretName"]`.
+* Иерархические значения (разделы): используйте нотацию `:` (двоеточие) или метод расширения `GetSection`. Используйте любой из этих подходов для получения значения конфигурации:
   * `config["Section:SecretName"]`
   * `config.GetSection("Section")["SecretName"]`
 
@@ -189,6 +189,16 @@ az keyvault set-policy --name '{KEY VAULT NAME}' --object-id {OBJECT ID} --secre
 * Экземпляр `KeyVaultClient` используется с реализацией по умолчанию `IKeyVaultSecretManager`, которая загружает все значения секрета и заменяет двойные тире (`--`) двоеточием (`:`) в именах ключей.
 
 [!code-csharp[](key-vault-configuration/sample/Program.cs?name=snippet2&highlight=13-21)]
+
+Пример значения имени хранилища ключей: `contosovault`
+    
+*appsettings.json*:
+
+```json
+{
+  "KeyVaultName": "Key Vault Name"
+}
+```
 
 При запуске приложения на веб-странице отображаются загруженные значения секрета. В среде разработки значения секрета имеют суффикс `_dev`, так как они предоставляются секретами пользователя. В рабочей среде значения загружаются с суффиксом `_prod`, так как они предоставляются Azure Key Vault.
 
@@ -258,7 +268,7 @@ az keyvault set-policy --name '{KEY VAULT NAME}' --object-id {OBJECT ID} --secre
 
 Поставщик может считывать значения конфигурации в массив для привязки к массиву POCO.
 
-При чтении из источника конфигурации, в котором ключи содержат разделители с двоеточием (`:`), используется числовой сегмент, который позволяет отличать ключи, составляющие массив (`:0:`, `:1:`,... `:{n}:`). Дополнительные сведения см. в разделе [Configuration: Привяжите массив к классу @ no__t-0.
+При чтении из источника конфигурации, в котором ключи содержат разделители с двоеточием (`:`), используется числовой сегмент, который позволяет отличать ключи, составляющие массив (`:0:`, `:1:`,... `:{n}:`). Дополнительные сведения см. в разделе [Configuration: привязка массива к классу](xref:fundamentals/configuration/index#bind-an-array-to-a-class).
 
 Ключи Azure Key Vault не могут использовать двоеточие в качестве разделителя. Описанный в этом разделе подход использует двойные тире (`--`) в качестве разделителя для иерархических значений (разделов). Ключи массивов хранятся в Azure Key Vault с двойными тире и числовыми сегментами ключей (`--0--`, `--1--`, &hellip; `--{n}--`).
 
@@ -287,7 +297,7 @@ az keyvault set-policy --name '{KEY VAULT NAME}' --object-id {OBJECT ID} --secre
 
 Конфигурация, показанная в предыдущем JSON-файле, хранится в Azure Key Vault с использованием нотации типа Double (`--`) и числовых сегментов.
 
-| Ключ | Значение |
+| Раздел | значения |
 | --- | ----- |
 | `Serilog--WriteTo--0--Name` | `AzureTableStorage` |
 | `Serilog--WriteTo--0--Args--storageTableName` | `logs` |
@@ -323,9 +333,9 @@ Configuration.Reload();
 ## <a name="additional-resources"></a>Дополнительные ресурсы
 
 * <xref:fundamentals/configuration/index>
-* @no__t 0Microsoft Azure: Key Vault @ no__t-0
-* @no__t 0Microsoft Azure: Key Vault документация @ no__t-0
+* [Microsoft Azure: Key Vault](https://azure.microsoft.com/services/key-vault/)
+* [Microsoft Azure: Документация по Key Vault](/azure/key-vault/)
 * [Создание и перенос ключей, защищенных АППАРАТным модулем безопасности, для Azure Key Vault](/azure/key-vault/key-vault-hsm-protected-keys)
 * [Класс KeyVaultClient](/dotnet/api/microsoft.azure.keyvault.keyvaultclient)
-* [Краткое руководство. Установка и получение секрета из Azure Key Vault с помощью веб-приложения .NET @ no__t-0
-* [Учебник. Использование Azure Key Vault с виртуальной машиной Azure Windows в. NET @ no__t-0
+* [Краткое руководство. Установка и получение секрета из Azure Key Vault с помощью веб-приложения .NET](/azure/key-vault/quick-create-net)
+* [Руководство. Использование Azure Key Vault с виртуальной машиной Azure Windows в .NET](/azure/key-vault/tutorial-net-windows-virtual-machine)

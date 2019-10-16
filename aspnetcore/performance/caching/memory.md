@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 8/22/2019
 uid: performance/caching/memory
-ms.openlocfilehash: 4725d54b14c5c1ba497863f8be901db7abb2bbae
-ms.sourcegitcommit: fae6f0e253f9d62d8f39de5884d2ba2b4b2a6050
+ms.openlocfilehash: aa39503f034cf46fa4317a1f3cbb8d130afd1b8c
+ms.sourcegitcommit: 07d98ada57f2a5f6d809d44bdad7a15013109549
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71256150"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72333741"
 ---
 # <a name="cache-in-memory-in-aspnet-core"></a>Кэширование в памяти в ASP.NET Core
 
@@ -25,7 +25,7 @@ ms.locfileid: "71256150"
 
 Кэширование может значительно повысить производительность и масштабируемость приложения, уменьшая объем работы, необходимый для создания содержимого. Кэширование лучше всего работает с данными, которые изменяются редко **и** требуют больших затрат. Кэширование создает копию данных, которая может быть возвращена гораздо быстрее, чем из источника. Приложения должны быть написаны и протестированы, чтобы **никогда не** зависеть от кэшированных данных.
 
-ASP.NET Core поддерживает несколько разных кэшей. Простейший кэш основан на [IMemoryCache](/dotnet/api/microsoft.extensions.caching.memory.imemorycache). `IMemoryCache`Представляет кэш, хранящийся в памяти веб-сервера. Приложения, работающие на ферме серверов (несколько серверов), должны обеспечивать работу сеансов при использовании кэша в памяти. Закрепленные сеансы гарантируют, что последующие запросы от клиента отправляются на один и тот же сервер. Например, веб-приложения Azure используют [маршрутизацию запросов приложений](https://www.iis.net/learn/extensions/planning-for-arr) (ARR) для маршрутизации всех последующих запросов к тому же серверу.
+ASP.NET Core поддерживает несколько разных кэшей. Простейший кэш основан на [IMemoryCache](/dotnet/api/microsoft.extensions.caching.memory.imemorycache). `IMemoryCache` представляет кэш, хранящийся в памяти веб-сервера. Приложения, работающие на ферме серверов (несколько серверов), должны обеспечивать работу сеансов при использовании кэша в памяти. Закрепленные сеансы гарантируют, что последующие запросы от клиента отправляются на один и тот же сервер. Например, веб-приложения Azure используют [маршрутизацию запросов приложений](https://www.iis.net/learn/extensions/planning-for-arr) (ARR) для маршрутизации всех последующих запросов к тому же серверу.
 
 Для неприкрепленных сеансов в веб-ферме требуется [распределенный кэш](distributed.md) , чтобы избежать проблем с согласованностью кэша. Для некоторых приложений распределенный кэш может поддерживать более высокие возможности масштабирования, чем кэш в памяти. Использование распределенного кэша разгружает кэш-память во внешний процесс.
 
@@ -33,15 +33,15 @@ ASP.NET Core поддерживает несколько разных кэшей
 
 ## <a name="systemruntimecachingmemorycache"></a>System. Runtime. Caching/MemoryCache
 
-<xref:System.Runtime.Caching>/<xref:System.Runtime.Caching.MemoryCache>([Пакет NuGet](https://www.nuget.org/packages/System.Runtime.Caching/)) можно использовать с:
+<xref:System.Runtime.Caching> @ no__t-1 @ no__t-2 ([пакет NuGet](https://www.nuget.org/packages/System.Runtime.Caching/)) можно использовать с:
 
 * .NET Standard 2,0 или более поздней версии.
 * Любая [реализация .NET](/dotnet/standard/net-standard#net-implementation-support) , предназначенная для .NET Standard 2,0 или более поздней версии. Например, ASP.NET Core 2,0 или более поздней версии.
 * .NET Framework 4,5 или более поздней версии.
 
-[Microsoft. Extensions. Caching. Memory](https://www.nuget.org/packages/Microsoft.Extensions.Caching.Memory/) / `IMemoryCache` (описывается в `System.Runtime.Caching` / `MemoryCache` этой статье) рекомендуется использовать, так как он лучше интегрирован в ASP.NET Core. Например, `IMemoryCache` работает изначально с [внедрением зависимостей](xref:fundamentals/dependency-injection)ASP.NET Core.
+[Microsoft. Extensions. Caching. Memory](https://www.nuget.org/packages/Microsoft.Extensions.Caching.Memory/)/ @ no__t-2 (описывается в этой статье) рекомендуется для `System.Runtime.Caching` @ no__t-4 @ no__t-5, так как он лучше интегрирован в ASP.NET Core. Например, `IMemoryCache` работает в собственном режиме с [внедрением зависимостей](xref:fundamentals/dependency-injection)ASP.NET Core.
 
-Используйте `System.Runtime.Caching` вкачествемоста`MemoryCache` совместимости при переносе кода из ASP.NET 4. x в ASP.NET Core. /
+Используйте `System.Runtime.Caching` @ no__t-1 @ no__t-2 в качестве моста совместимости при переносе кода из ASP.NET 4. x в ASP.NET Core.
 
 ## <a name="cache-guidelines"></a>Рекомендации по кэшированию
 
@@ -54,14 +54,14 @@ ASP.NET Core поддерживает несколько разных кэшей
 ## <a name="use-imemorycache"></a>Использование IMemoryCache
 
 > [!WARNING]
-> Использование кэша *общей* памяти из [внедрения зависимостей](xref:fundamentals/dependency-injection) и вызова `SetSize`, `Size`или `SizeLimit` для ограничения размера кэша может привести к сбою приложения. Если для кэша задано ограничение размера, все записи должны указывать размер при добавлении. Это может привести к проблемам, так как разработчики могут не иметь полного контроля над тем, что использует общий кэш. Например, Entity Framework Core использует общий кэш и не задает размер. Если приложение устанавливает ограничение размера кэша и использует EF Core, приложение создает исключение `InvalidOperationException`.
-> При использовании `SetSize`, `Size`или `SizeLimit` для ограничения кэша создайте одноэлементный кэш для кэширования. Дополнительные сведения и пример см. в статьях [Использование SetSize, Size и сизелимит для ограничения размера кэша](#use-setsize-size-and-sizelimit-to-limit-cache-size).
+> Использование кэша *общей* памяти из [внедрения зависимостей](xref:fundamentals/dependency-injection) и вызова `SetSize`, `Size` или `SizeLimit` для ограничения размера кэша может привести к сбою приложения. Если для кэша задано ограничение размера, все записи должны указывать размер при добавлении. Это может привести к проблемам, так как разработчики могут не иметь полного контроля над тем, что использует общий кэш. Например, Entity Framework Core использует общий кэш и не задает размер. Если приложение устанавливает ограничение размера кэша и использует EF Core, приложение создает исключение `InvalidOperationException`.
+> При использовании `SetSize`, `Size` или `SizeLimit` для ограничения кэша создайте одноэлементный кэш для кэширования. Дополнительные сведения и пример см. в статьях [Использование SetSize, Size и сизелимит для ограничения размера кэша](#use-setsize-size-and-sizelimit-to-limit-cache-size).
 
-Кэширование в памяти — это *Служба* , на которую ссылается приложение, использующее [внедрение зависимостей](xref:fundamentals/dependency-injection). Запросите `IMemoryCache` экземпляр в конструкторе:
+Кэширование в памяти — это *Служба* , на которую ссылается приложение, использующее [внедрение зависимостей](xref:fundamentals/dependency-injection). Запросите экземпляр `IMemoryCache` в конструкторе:
 
 [!code-csharp[](memory/3.0sample/WebCacheSample/Controllers/HomeController.cs?name=snippet_ctor)]
 
-В следующем коде используется [TryGetValue](/dotnet/api/microsoft.extensions.caching.memory.imemorycache.trygetvalue?view=aspnetcore-2.0#Microsoft_Extensions_Caching_Memory_IMemoryCache_TryGetValue_System_Object_System_Object__) для проверки, находится ли время в кэше. Если время не кэшировано, создается новая запись и добавляется в кэш с помощью [Set](/dotnet/api/microsoft.extensions.caching.memory.cacheextensions.set?view=aspnetcore-2.0#Microsoft_Extensions_Caching_Memory_CacheExtensions_Set__1_Microsoft_Extensions_Caching_Memory_IMemoryCache_System_Object___0_Microsoft_Extensions_Caching_Memory_MemoryCacheEntryOptions_). `CacheKeys` Класс является частью примера загрузки.
+В следующем коде используется [TryGetValue](/dotnet/api/microsoft.extensions.caching.memory.imemorycache.trygetvalue?view=aspnetcore-2.0#Microsoft_Extensions_Caching_Memory_IMemoryCache_TryGetValue_System_Object_System_Object__) для проверки, находится ли время в кэше. Если время не кэшировано, создается новая запись и добавляется в кэш с помощью [Set](/dotnet/api/microsoft.extensions.caching.memory.cacheextensions.set?view=aspnetcore-2.0#Microsoft_Extensions_Caching_Memory_CacheExtensions_Set__1_Microsoft_Extensions_Caching_Memory_IMemoryCache_System_Object___0_Microsoft_Extensions_Caching_Memory_MemoryCacheEntryOptions_). Класс `CacheKeys` является частью примера загрузки.
 
 [!code-csharp[](memory/3.0sample/WebCacheSample/CacheKeys.cs)]
 
@@ -71,7 +71,7 @@ ASP.NET Core поддерживает несколько разных кэшей
 
 [!code-cshtml[](memory/3.0sample/WebCacheSample/Views/Home/Cache.cshtml)]
 
-Кэшированное `DateTime` значение остается в кэше во время выполнения запросов в течение периода ожидания.
+Кэшированное значение `DateTime` остается в кэше во время выполнения запросов в течение периода ожидания.
 
 В следующем коде для кэширования данных используются [жеторкреате](/dotnet/api/microsoft.extensions.caching.memory.cacheextensions.getorcreate#Microsoft_Extensions_Caching_Memory_CacheExtensions_GetOrCreate__1_Microsoft_Extensions_Caching_Memory_IMemoryCache_System_Object_System_Func_Microsoft_Extensions_Caching_Memory_ICacheEntry___0__) и [жеторкреатеасинк](/dotnet/api/microsoft.extensions.caching.memory.cacheextensions.getorcreateasync#Microsoft_Extensions_Caching_Memory_CacheExtensions_GetOrCreateAsync__1_Microsoft_Extensions_Caching_Memory_IMemoryCache_System_Object_System_Func_Microsoft_Extensions_Caching_Memory_ICacheEntry_System_Threading_Tasks_Task___0___) .
 
@@ -93,7 +93,7 @@ ASP.NET Core поддерживает несколько разных кэшей
 
 Приведенный выше код гарантирует, что данные не будут кэшироваться дольше, чем абсолютное время.
 
-<xref:Microsoft.Extensions.Caching.Memory.CacheExtensions.GetOrCreate*>методы <xref:Microsoft.Extensions.Caching.Memory.CacheExtensions.GetOrCreateAsync*>, и <xref:Microsoft.Extensions.Caching.Memory.CacheExtensions.Get*> являются<xref:Microsoft.Extensions.Caching.Memory.CacheExtensions> методами расширения в классе. Эти методы расширяют возможности <xref:Microsoft.Extensions.Caching.Memory.IMemoryCache>.
+<xref:Microsoft.Extensions.Caching.Memory.CacheExtensions.GetOrCreate*>, <xref:Microsoft.Extensions.Caching.Memory.CacheExtensions.GetOrCreateAsync*> и <xref:Microsoft.Extensions.Caching.Memory.CacheExtensions.Get*> являются методами расширения в классе <xref:Microsoft.Extensions.Caching.Memory.CacheExtensions>. Эти методы расширяют возможности <xref:Microsoft.Extensions.Caching.Memory.IMemoryCache>.
 
 ## <a name="memorycacheentryoptions"></a>меморикачинтрйоптионс
 
@@ -107,41 +107,41 @@ ASP.NET Core поддерживает несколько разных кэшей
 
 ## <a name="use-setsize-size-and-sizelimit-to-limit-cache-size"></a>Использование SetSize, Size и Сизелимит для ограничения размера кэша
 
-`MemoryCache` Экземпляр может дополнительно задавать и применять ограничение размера. Ограничение на размер памяти не имеет определенной единицы измерения, так как кэш не имеет механизма для измерения размера записей. Если установлен предел объема памяти кэша, все записи должны указывать size. Среда выполнения ASP.NET Core не ограничивает размер кэша на основе нехватки памяти. Разработчик может ограничить размер кэша. Указанный размер находится в единицах, которые выбирает разработчик.
+Экземпляр `MemoryCache` может дополнительно указать и применить ограничение размера. Ограничение размера кэша не имеет определенной единицы измерения, так как кэш не имеет механизма для измерения размера записей. Если установлен предел размера кэша, то для всех записей должен быть указан размер. Среда выполнения ASP.NET Core не ограничивает размер кэша на основе нехватки памяти. Разработчик может ограничить размер кэша. Указанный размер находится в единицах, которые выбирает разработчик.
 
-Например:
+Пример:
 
 * Если веб-приложение в основном кэширует строки, каждый размер записи кэша может быть длиной строки.
 * Приложение может указать размер всех записей как 1, а максимальный размер — число записей.
 
-Если <xref:Microsoft.Extensions.Caching.Memory.MemoryCacheOptions.SizeLimit> параметр не установлен, кэш растет без привязки. При нехватке системной памяти среда выполнения ASP.NET Core не усекает кэш. Разработка приложений в значительной степени составляет:
+Если значение <xref:Microsoft.Extensions.Caching.Memory.MemoryCacheOptions.SizeLimit> не задано, кэш растет без привязки. При нехватке системной памяти среда выполнения ASP.NET Core не усекает кэш. Разработка приложений в значительной степени составляет:
 
 * Ограничение роста кэша.
-* Вызов <xref:Microsoft.Extensions.Caching.Memory.MemoryCache.Compact*> или<xref:Microsoft.Extensions.Caching.Memory.MemoryCache.Remove*> если доступная память ограничена:
+* Вызовите <xref:Microsoft.Extensions.Caching.Memory.MemoryCache.Compact*> или <xref:Microsoft.Extensions.Caching.Memory.MemoryCache.Remove*>, если доступная память ограничена:
 
-В следующем коде создается фиксированный размер <xref:Microsoft.Extensions.Caching.Memory.MemoryCache> независимого от единицы, доступный при [внедрении зависимостей](xref:fundamentals/dependency-injection):
+В следующем коде создается фиксированный размер с независимыми единицами <xref:Microsoft.Extensions.Caching.Memory.MemoryCache>, доступный при [внедрении зависимостей](xref:fundamentals/dependency-injection):
 
 [!code-csharp[](memory/sample/RPcache/Services/MyMemoryCache.cs?name=snippet)]
 
-`SizeLimit`не имеет единиц. Кэшированные записи должны указывать размер в любых единицах, которые они считаются наиболее подходящими, если размер кэша памяти был установлен. Все пользователи экземпляра кэша должны использовать одну и ту же систему единиц измерения. Запись не будет кэшироваться, если сумма кэшированных размеров записей превышает значение, заданное параметром `SizeLimit`. Если ограничение размера кэша не задано, размер кэша, заданный для записи, будет проигнорирован.
+`SizeLimit` не имеет единиц. Кэшированные записи должны указывать размер в любых единицах, которые они считаются наиболее подходящими, если установлен предел размера кэша. Все пользователи экземпляра кэша должны использовать одну и ту же систему единиц измерения. Запись не будет кэшироваться, если сумма кэшированных размеров записей превышает значение, заданное `SizeLimit`. Если ограничение размера кэша не задано, размер кэша, заданный для записи, будет проигнорирован.
 
-Следующий код регистрируется `MyMemoryCache` в контейнере [внедрения зависимостей](xref:fundamentals/dependency-injection) .
+Следующий код регистрирует `MyMemoryCache` с контейнером [внедрения зависимостей](xref:fundamentals/dependency-injection) .
 
 [!code-csharp[](memory/3.0sample/RPcache/Startup.cs?name=snippet)]
 
-`MyMemoryCache`создается как независимый кэш памяти для компонентов, которые знают об этом ограниченном размере кэша и знают, как задать размер записи кэша соответствующим образом.
+`MyMemoryCache` создается как независимый кэш памяти для компонентов, которые знают об этом ограниченном размере кэша и знают, как задать размер записи кэша соответствующим образом.
 
 В следующем коде используется `MyMemoryCache`:
 
 [!code-csharp[](memory/3.0sample/RPcache/Pages/SetSize.cshtml.cs?name=snippet)]
 
-Размер записи кэша может быть задан <xref:Microsoft.Extensions.Caching.Memory.MemoryCacheEntryOptions.Size> <xref:Microsoft.Extensions.Caching.Memory.MemoryCacheEntryExtensions.SetSize*> или методами расширения:
+Размер записи кэша можно задать с помощью <xref:Microsoft.Extensions.Caching.Memory.MemoryCacheEntryOptions.Size> или методов расширения <xref:Microsoft.Extensions.Caching.Memory.MemoryCacheEntryExtensions.SetSize*>:
 
 [!code-csharp[](memory/3.0sample/RPcache/Pages/SetSize.cshtml.cs?name=snippet2&highlight=9,10,14,15)]
 
 ### <a name="memorycachecompact"></a>MemoryCache. Compact
 
-`MemoryCache.Compact`пытается удалить указанный процент кэша в следующем порядке:
+`MemoryCache.Compact` пытается удалить указанный процент кэша в следующем порядке:
 
 * Все элементы с истекшим сроком действия.
 * Элементы по приоритету. Первыми удаляются элементы с наименьшим приоритетом.
@@ -149,7 +149,7 @@ ASP.NET Core поддерживает несколько разных кэшей
 * Элементы с самым ранним абсолютным сроком действия.
 * Элементы с самой ранней скользящей истечением срока действия.
 
-Закрепленные элементы с <xref:Microsoft.Extensions.Caching.Memory.CacheItemPriority.NeverRemove> приоритетом никогда не удаляются. Следующий код удаляет элемент кэша и вызывает `Compact`:
+Закрепленные элементы с приоритетом <xref:Microsoft.Extensions.Caching.Memory.CacheItemPriority.NeverRemove> никогда не удаляются. Следующий код удаляет элемент кэша и вызывает `Compact`:
 
 [!code-csharp[](memory/3.0sample/RPcache/Pages/TestCache.cshtml.cs?name=snippet3)]
 
@@ -157,15 +157,15 @@ ASP.NET Core поддерживает несколько разных кэшей
 
 ## <a name="cache-dependencies"></a>Зависимости кэша
 
-В следующем примере показано, как истечет срок действия записи кэша, если истечет срок действия зависимой записи. `CancellationChangeToken` Добавляется к кэшированному элементу. Если `Cancel` метод вызывается `CancellationTokenSource`для, то обе записи кэша будут вытеснены.
+В следующем примере показано, как истечет срок действия записи кэша, если истечет срок действия зависимой записи. В кэшированный элемент добавляется `CancellationChangeToken`. Если для `CancellationTokenSource` вызывается `Cancel`, то обе записи кэша будут вытеснены.
 
 [!code-csharp[](memory/3.0sample/WebCacheSample/Controllers/HomeController.cs?name=snippet_ed)]
 
-`CancellationTokenSource` Использование позволяет удалять несколько записей кэша как группу. Используя шаблон в приведенном выше коде, записи кэша, созданные `using` внутри блока, будут наследовать параметры триггеров и срока действия. `using`
+Использование `CancellationTokenSource` позволяет удалять несколько записей кэша как группу. Используя шаблон `using` в приведенном выше коде, записи кэша, созданные в блоке `using`, будут наследовать параметры триггеров и срока действия.
 
 ## <a name="additional-notes"></a>Дополнительные сведения
 
-* Истечение срока действия не происходит в фоновом режиме. Нет таймера, который активно проверяет кэш на наличие просроченных элементов. Любое действие в кэше (`Get`, `Set`, `Remove`) может активировать фоновое сканирование для элементов с истекшим сроком действия. Таймер на `CancellationTokenSource` (`CancelAfter`) также удаляет запись и запускает проверку для элементов с истекшим сроком действия. Например, вместо `SetAbsoluteExpiration(TimeSpan.FromHours(1))`использования используйте `CancellationTokenSource.CancelAfter(TimeSpan.FromHours(1))` для зарегистрированного маркера. Когда этот маркер срабатывает, он немедленно удаляет запись и вызывает обратные вызовы вытеснения. Дополнительные сведения см. в разделе [проблема GitHub](https://github.com/aspnet/Caching/issues/248).
+* Истечение срока действия не происходит в фоновом режиме. Нет таймера, который активно проверяет кэш на наличие просроченных элементов. Любое действие в кэше (`Get`, `Set`, `Remove`) может активировать фоновое сканирование элементов с истекшим сроком действия. Таймер на `CancellationTokenSource` (`CancelAfter`) также удаляет запись и запускает проверку для элементов с истекшим сроком действия. Например, вместо `SetAbsoluteExpiration(TimeSpan.FromHours(1))` используйте `CancellationTokenSource.CancelAfter(TimeSpan.FromHours(1))` для зарегистрированного маркера. Когда этот маркер срабатывает, он немедленно удаляет запись и вызывает обратные вызовы вытеснения. Дополнительные сведения см. в [этой статье об ошибке на GitHub](https://github.com/aspnet/Caching/issues/248).
 * При использовании обратного вызова для повторного заполнения элемента кэша:
 
   * Несколько запросов могут найти значение кэшированного ключа пустым, так как обратный вызов не завершен.
@@ -173,8 +173,8 @@ ASP.NET Core поддерживает несколько разных кэшей
 
 * Если одна запись кэша используется для создания другой, дочерняя запись копирует маркеры истечения срока действия родительской записи и параметры срока действия, основанные на времени. Срок действия дочернего элемента не истек, удаление или обновление родительской записи вручную.
 
-* Используется <xref:Microsoft.Extensions.Caching.Memory.ICacheEntry.PostEvictionCallbacks> для установки обратных вызовов, которые будут срабатывать после удаления записи кэша из кэша.
-* Для большинства приложений `IMemoryCache` включен. Например, вызов метода `AddMvc` `AddControllersWithViews` `Add{Service}` `ConfigureServices` `IMemoryCache`, `AddRazorPages` ,`AddMvcCore().AddRazorViewEngine`, и многих других методов в включает. Для приложений, которые не вызывают один из вышеперечисленных `Add{Service}` методов, может потребоваться вызвать <xref:Microsoft.Extensions.DependencyInjection.MemoryCacheServiceCollectionExtensions.AddMemoryCache*> в `ConfigureServices`.
+* Используйте <xref:Microsoft.Extensions.Caching.Memory.ICacheEntry.PostEvictionCallbacks>, чтобы задать обратные вызовы, которые будут срабатывать после удаления записи кэша из кэша.
+* Для большинства приложений включен параметр `IMemoryCache`. Например, вызов `AddMvc`, `AddControllersWithViews`, `AddRazorPages`, `AddMvcCore().AddRazorViewEngine` и многие другие методы `Add{Service}` в `ConfigureServices`, включает `IMemoryCache`. Для приложений, которые не вызывают один из предыдущих методов `Add{Service}`, может потребоваться вызвать <xref:Microsoft.Extensions.DependencyInjection.MemoryCacheServiceCollectionExtensions.AddMemoryCache*> в `ConfigureServices`.
 
 ## <a name="additional-resources"></a>Дополнительные ресурсы
 
@@ -206,15 +206,15 @@ ASP.NET Core поддерживает несколько разных кэшей
 
 ## <a name="systemruntimecachingmemorycache"></a>System. Runtime. Caching/MemoryCache
 
-<xref:System.Runtime.Caching>/<xref:System.Runtime.Caching.MemoryCache>([Пакет NuGet](https://www.nuget.org/packages/System.Runtime.Caching/)) можно использовать с:
+<xref:System.Runtime.Caching> @ no__t-1 @ no__t-2 ([пакет NuGet](https://www.nuget.org/packages/System.Runtime.Caching/)) можно использовать с:
 
 * .NET Standard 2,0 или более поздней версии.
 * Любая [реализация .NET](/dotnet/standard/net-standard#net-implementation-support) , предназначенная для .NET Standard 2,0 или более поздней версии. Например, ASP.NET Core 2,0 или более поздней версии.
 * .NET Framework 4,5 или более поздней версии.
 
-[Microsoft. Extensions. Caching. Memory](https://www.nuget.org/packages/Microsoft.Extensions.Caching.Memory/) / `IMemoryCache` (описывается в `System.Runtime.Caching` / `MemoryCache` этой статье) рекомендуется использовать, так как он лучше интегрирован в ASP.NET Core. Например, `IMemoryCache` работает изначально с [внедрением зависимостей](xref:fundamentals/dependency-injection)ASP.NET Core.
+[Microsoft. Extensions. Caching. Memory](https://www.nuget.org/packages/Microsoft.Extensions.Caching.Memory/)/ @ no__t-2 (описывается в этой статье) рекомендуется для `System.Runtime.Caching` @ no__t-4 @ no__t-5, так как он лучше интегрирован в ASP.NET Core. Например, `IMemoryCache` работает в собственном режиме с [внедрением зависимостей](xref:fundamentals/dependency-injection)ASP.NET Core.
 
-Используйте `System.Runtime.Caching` вкачествемоста`MemoryCache` совместимости при переносе кода из ASP.NET 4. x в ASP.NET Core. /
+Используйте `System.Runtime.Caching` @ no__t-1 @ no__t-2 в качестве моста совместимости при переносе кода из ASP.NET 4. x в ASP.NET Core.
 
 ## <a name="cache-guidelines"></a>Рекомендации по кэшированию
 
@@ -227,18 +227,18 @@ ASP.NET Core поддерживает несколько разных кэшей
 ## <a name="using-imemorycache"></a>Использование IMemoryCache
 
 > [!WARNING]
-> Использование кэша *общей* памяти из [внедрения зависимостей](xref:fundamentals/dependency-injection) и вызова `SetSize`, `Size`или `SizeLimit` для ограничения размера кэша может привести к сбою приложения. Если для кэша задано ограничение размера, все записи должны указывать размер при добавлении. Это может привести к проблемам, так как разработчики могут не иметь полного контроля над тем, что использует общий кэш. Например, Entity Framework Core использует общий кэш и не задает размер. Если приложение устанавливает ограничение размера кэша и использует EF Core, приложение создает исключение `InvalidOperationException`.
-> При использовании `SetSize`, `Size`или `SizeLimit` для ограничения кэша создайте одноэлементный кэш для кэширования. Дополнительные сведения и пример см. в статьях [Использование SetSize, Size и сизелимит для ограничения размера кэша](#use-setsize-size-and-sizelimit-to-limit-cache-size).
+> Использование кэша *общей* памяти из [внедрения зависимостей](xref:fundamentals/dependency-injection) и вызова `SetSize`, `Size` или `SizeLimit` для ограничения размера кэша может привести к сбою приложения. Если для кэша задано ограничение размера, все записи должны указывать размер при добавлении. Это может привести к проблемам, так как разработчики могут не иметь полного контроля над тем, что использует общий кэш. Например, Entity Framework Core использует общий кэш и не задает размер. Если приложение устанавливает ограничение размера кэша и использует EF Core, приложение создает исключение `InvalidOperationException`.
+> При использовании `SetSize`, `Size` или `SizeLimit` для ограничения кэша создайте одноэлементный кэш для кэширования. Дополнительные сведения и пример см. в статьях [Использование SetSize, Size и сизелимит для ограничения размера кэша](#use-setsize-size-and-sizelimit-to-limit-cache-size).
 
-Кэширование в памяти — это *Служба* , на которую можно ссылаться из приложения с помощью [внедрения зависимостей](../../fundamentals/dependency-injection.md). Вызов `AddMemoryCache` в `ConfigureServices`:
+Кэширование в памяти — это *Служба* , на которую можно ссылаться из приложения с помощью [внедрения зависимостей](../../fundamentals/dependency-injection.md). Вызовите `AddMemoryCache` в `ConfigureServices`:
 
 [!code-csharp[](memory/sample/WebCache/Startup.cs?highlight=9)]
 
-Запросите `IMemoryCache` экземпляр в конструкторе:
+Запросите экземпляр `IMemoryCache` в конструкторе:
 
 [!code-csharp[](memory/sample/WebCache/Controllers/HomeController.cs?name=snippet_ctor)]
 
-`IMemoryCache`требуется пакет NuGet [Microsoft. Extensions. Caching. Memory](https://www.nuget.org/packages/Microsoft.Extensions.Caching.Memory/), доступный в [Microsoft. AspNetCore. app метапакет](xref:fundamentals/metapackage-app).
+для `IMemoryCache` требуется пакет NuGet [Microsoft. Extensions. Caching. Memory](https://www.nuget.org/packages/Microsoft.Extensions.Caching.Memory/), доступный в [Microsoft. AspNetCore. app метапакет](xref:fundamentals/metapackage-app).
 
 В следующем коде используется [TryGetValue](/dotnet/api/microsoft.extensions.caching.memory.imemorycache.trygetvalue?view=aspnetcore-2.0#Microsoft_Extensions_Caching_Memory_IMemoryCache_TryGetValue_System_Object_System_Object__) для проверки, находится ли время в кэше. Если время не кэшировано, создается новая запись и добавляется в кэш с помощью [Set](/dotnet/api/microsoft.extensions.caching.memory.cacheextensions.set?view=aspnetcore-2.0#Microsoft_Extensions_Caching_Memory_CacheExtensions_Set__1_Microsoft_Extensions_Caching_Memory_IMemoryCache_System_Object___0_Microsoft_Extensions_Caching_Memory_MemoryCacheEntryOptions_).
 
@@ -250,7 +250,7 @@ ASP.NET Core поддерживает несколько разных кэшей
 
 [!code-cshtml[](memory/sample/WebCache/Views/Home/Cache.cshtml)]
 
-Кэшированное `DateTime` значение остается в кэше во время выполнения запросов в течение периода ожидания. На следующем рисунке показано текущее время и старое время, полученное из кэша:
+Кэшированное значение `DateTime` остается в кэше во время выполнения запросов в течение периода ожидания. На следующем рисунке показано текущее время и старое время, полученное из кэша:
 
 ![Представление индекса с двумя различно отображаемым временем](memory/_static/time.png)
 
@@ -262,43 +262,43 @@ ASP.NET Core поддерживает несколько разных кэшей
 
 [!code-csharp[](memory/sample/WebCache/Controllers/HomeController.cs?name=snippet_gct)]
 
-<xref:Microsoft.Extensions.Caching.Memory.CacheExtensions.GetOrCreate*>методы <xref:Microsoft.Extensions.Caching.Memory.CacheExtensions.GetOrCreateAsync*>, и [Get](/dotnet/api/microsoft.extensions.caching.memory.cacheextensions.get#Microsoft_Extensions_Caching_Memory_CacheExtensions_Get__1_Microsoft_Extensions_Caching_Memory_IMemoryCache_System_Object_) являются методами расширения в <xref:Microsoft.Extensions.Caching.Memory.IMemoryCache>классе [качикстенсионс](/dotnet/api/microsoft.extensions.caching.memory.cacheextensions) , который расширяет возможности. Описание других методов кэширования см. в разделе [методы IMemoryCache](/dotnet/api/microsoft.extensions.caching.memory.imemorycache) и [методы качикстенсионс](/dotnet/api/microsoft.extensions.caching.memory.cacheextensions) .
+<xref:Microsoft.Extensions.Caching.Memory.CacheExtensions.GetOrCreate*>, <xref:Microsoft.Extensions.Caching.Memory.CacheExtensions.GetOrCreateAsync*> и [Get](/dotnet/api/microsoft.extensions.caching.memory.cacheextensions.get#Microsoft_Extensions_Caching_Memory_CacheExtensions_Get__1_Microsoft_Extensions_Caching_Memory_IMemoryCache_System_Object_) — это методы расширения, входящие в состав класса [качикстенсионс](/dotnet/api/microsoft.extensions.caching.memory.cacheextensions) , который расширяет возможности <xref:Microsoft.Extensions.Caching.Memory.IMemoryCache>. Описание других методов кэширования см. в разделе [методы IMemoryCache](/dotnet/api/microsoft.extensions.caching.memory.imemorycache) и [методы качикстенсионс](/dotnet/api/microsoft.extensions.caching.memory.cacheextensions) .
 
 ## <a name="memorycacheentryoptions"></a>меморикачинтрйоптионс
 
 Следующий пример:
 
 * Задает скользящий срок действия. Запросы, обращающиеся к этому кэшированному элементу, будут сбрасывать скользящий срок действия.
-* Устанавливает для приоритета кэша `CacheItemPriority.NeverRemove`значение.
+* Задает приоритет кэша равным `CacheItemPriority.NeverRemove`.
 * Задает [постевиктионделегате](/dotnet/api/microsoft.extensions.caching.memory.postevictiondelegate) , который будет вызываться после удаления записи из кэша. Обратный вызов выполняется в другом потоке из кода, который удаляет элемент из кэша.
 
 [!code-csharp[](memory/sample/WebCache/Controllers/HomeController.cs?name=snippet_et&highlight=14-21)]
 
 ## <a name="use-setsize-size-and-sizelimit-to-limit-cache-size"></a>Использование SetSize, Size и Сизелимит для ограничения размера кэша
 
-`MemoryCache` Экземпляр может дополнительно задавать и применять ограничение размера. Ограничение на размер памяти не имеет определенной единицы измерения, так как кэш не имеет механизма для измерения размера записей. Если установлен предел объема памяти кэша, все записи должны указывать size. Среда выполнения ASP.NET Core не ограничивает размер кэша на основе нехватки памяти. Разработчик может ограничить размер кэша. Указанный размер находится в единицах, которые выбирает разработчик.
+Экземпляр `MemoryCache` может дополнительно указать и применить ограничение размера. Ограничение размера кэша не имеет определенной единицы измерения, так как кэш не имеет механизма для измерения размера записей. Если установлен предел размера кэша, то для всех записей должен быть указан размер. Среда выполнения ASP.NET Core не ограничивает размер кэша на основе нехватки памяти. Разработчик может ограничить размер кэша. Указанный размер находится в единицах, которые выбирает разработчик.
 
-Например:
+Пример:
 
 * Если веб-приложение в основном кэширует строки, каждый размер записи кэша может быть длиной строки.
 * Приложение может указать размер всех записей как 1, а максимальный размер — число записей.
 
-Если <xref:Microsoft.Extensions.Caching.Memory.MemoryCacheOptions.SizeLimit> параметр не установлен, кэш растет без привязки. При нехватке системной памяти среда выполнения ASP.NET Core не усекает кэш. Разработка приложений в значительной степени составляет:
+Если значение <xref:Microsoft.Extensions.Caching.Memory.MemoryCacheOptions.SizeLimit> не задано, кэш растет без привязки. При нехватке системной памяти среда выполнения ASP.NET Core не усекает кэш. Разработка приложений в значительной степени составляет:
 
 * Ограничение роста кэша.
-* Вызов <xref:Microsoft.Extensions.Caching.Memory.MemoryCache.Compact*> или<xref:Microsoft.Extensions.Caching.Memory.MemoryCache.Remove*> если доступная память ограничена:
+* Вызовите <xref:Microsoft.Extensions.Caching.Memory.MemoryCache.Compact*> или <xref:Microsoft.Extensions.Caching.Memory.MemoryCache.Remove*>, если доступная память ограничена:
 
-В следующем коде создается фиксированный размер <xref:Microsoft.Extensions.Caching.Memory.MemoryCache> независимого от единицы, доступный при [внедрении зависимостей](xref:fundamentals/dependency-injection):
+В следующем коде создается фиксированный размер с независимыми единицами <xref:Microsoft.Extensions.Caching.Memory.MemoryCache>, доступный при [внедрении зависимостей](xref:fundamentals/dependency-injection):
 
 [!code-csharp[](memory/sample/RPcache/Services/MyMemoryCache.cs?name=snippet)]
 
-`SizeLimit`не имеет единиц. Кэшированные записи должны указывать размер в любых единицах, которые они считаются наиболее подходящими, если размер кэша памяти был установлен. Все пользователи экземпляра кэша должны использовать одну и ту же систему единиц измерения. Запись не будет кэшироваться, если сумма кэшированных размеров записей превышает значение, заданное параметром `SizeLimit`. Если ограничение размера кэша не задано, размер кэша, заданный для записи, будет проигнорирован.
+`SizeLimit` не имеет единиц. Кэшированные записи должны указывать размер в любых единицах, которые они считаются наиболее подходящими, если установлен предел размера кэша. Все пользователи экземпляра кэша должны использовать одну и ту же систему единиц измерения. Запись не будет кэшироваться, если сумма кэшированных размеров записей превышает значение, заданное `SizeLimit`. Если ограничение размера кэша не задано, размер кэша, заданный для записи, будет проигнорирован.
 
-Следующий код регистрируется `MyMemoryCache` в контейнере [внедрения зависимостей](xref:fundamentals/dependency-injection) .
+Следующий код регистрирует `MyMemoryCache` с контейнером [внедрения зависимостей](xref:fundamentals/dependency-injection) .
 
 [!code-csharp[](memory/sample/RPcache/Startup.cs?name=snippet&highlight=5)]
 
-`MyMemoryCache`создается как независимый кэш памяти для компонентов, которые знают об этом ограниченном размере кэша и знают, как задать размер записи кэша соответствующим образом.
+`MyMemoryCache` создается как независимый кэш памяти для компонентов, которые знают об этом ограниченном размере кэша и знают, как задать размер записи кэша соответствующим образом.
 
 В следующем коде используется `MyMemoryCache`:
 
@@ -310,7 +310,7 @@ ASP.NET Core поддерживает несколько разных кэшей
 
 ### <a name="memorycachecompact"></a>MemoryCache. Compact
 
-`MemoryCache.Compact`пытается удалить указанный процент кэша в следующем порядке:
+`MemoryCache.Compact` пытается удалить указанный процент кэша в следующем порядке:
 
 * Все элементы с истекшим сроком действия.
 * Элементы по приоритету. Первыми удаляются элементы с наименьшим приоритетом.
@@ -318,7 +318,7 @@ ASP.NET Core поддерживает несколько разных кэшей
 * Элементы с самым ранним абсолютным сроком действия.
 * Элементы с самой ранней скользящей истечением срока действия.
 
-Закрепленные элементы с <xref:Microsoft.Extensions.Caching.Memory.CacheItemPriority.NeverRemove> приоритетом никогда не удаляются.
+Закрепленные элементы с приоритетом <xref:Microsoft.Extensions.Caching.Memory.CacheItemPriority.NeverRemove> никогда не удаляются.
 
 [!code-csharp[](memory/3.0sample/RPcache/Pages/TestCache.cshtml.cs?name=snippet3)]
 
@@ -326,11 +326,11 @@ ASP.NET Core поддерживает несколько разных кэшей
 
 ## <a name="cache-dependencies"></a>Зависимости кэша
 
-В следующем примере показано, как истечет срок действия записи кэша, если истечет срок действия зависимой записи. `CancellationChangeToken` Добавляется к кэшированному элементу. Если `Cancel` метод вызывается `CancellationTokenSource`для, то обе записи кэша будут вытеснены.
+В следующем примере показано, как истечет срок действия записи кэша, если истечет срок действия зависимой записи. В кэшированный элемент добавляется `CancellationChangeToken`. Если для `CancellationTokenSource` вызывается `Cancel`, то обе записи кэша будут вытеснены.
 
 [!code-csharp[](memory/sample/WebCache/Controllers/HomeController.cs?name=snippet_ed)]
 
-`CancellationTokenSource` Использование позволяет удалять несколько записей кэша как группу. Используя шаблон в приведенном выше коде, записи кэша, созданные `using` внутри блока, будут наследовать параметры триггеров и срока действия. `using`
+Использование `CancellationTokenSource` позволяет удалять несколько записей кэша как группу. Используя шаблон `using` в приведенном выше коде, записи кэша, созданные в блоке `using`, будут наследовать параметры триггеров и срока действия.
 
 ## <a name="additional-notes"></a>Дополнительные сведения
 

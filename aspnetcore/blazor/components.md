@@ -7,12 +7,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 10/05/2019
 uid: blazor/components
-ms.openlocfilehash: 3e0966bf978c99fc00db7682bea3292306cbb03c
-ms.sourcegitcommit: d81912782a8b0bd164f30a516ad80f8defb5d020
+ms.openlocfilehash: a71bbf3921417cbd23aeb14d0d78ad8354d6e93a
+ms.sourcegitcommit: dd026eceee79e943bd6b4a37b144803b50617583
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72179028"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72378688"
 ---
 # <a name="create-and-use-aspnet-core-razor-components"></a>Создание и использование компонентов ASP.NET Core Razor
 
@@ -192,7 +192,7 @@ ms.locfileid: "72179028"
 
 Свойство `CaptureUnmatchedValues` в `[Parameter]` позволяет параметру сопоставлять все атрибуты, не соответствующие какому-либо другому параметру. Компонент может определять только один параметр с `CaptureUnmatchedValues`. Тип свойства, используемый с `CaptureUnmatchedValues`, должен быть назначен из `Dictionary<string, object>` со строковыми ключами. в этом сценарии также используются параметры `IEnumerable<KeyValuePair<string, object>>` или `IReadOnlyDictionary<string, object>`.
 
-## <a name="data-binding"></a>Привязка данных
+## <a name="data-binding"></a>привязка данных,
 
 Привязка данных как к компонентам, так и к элементам DOM осуществляется с помощью атрибута [@bind](xref:mvc/views/razor#bind) . В следующем примере свойство `CurrentValue` привязывается к значению текстового поля:
 
@@ -287,7 +287,7 @@ ms.locfileid: "72179028"
 
 `@bind` поддерживает параметр `@bind:culture`, чтобы предоставить <xref:System.Globalization.CultureInfo?displayProperty=fullName> для синтаксического анализа и форматирования значения. Указание языка и региональных параметров не рекомендуется при использовании типов полей `date` и `number`. `date` и `number` имеют встроенную поддержку Блазор, которая предоставляет требуемый язык и региональные параметры.
 
-Сведения о том, как задать язык и региональные параметры пользователя, см. в разделе [локализация](#localization).
+Сведения о том, как задать язык и региональные параметры пользователя, см. в разделе [Локализация](#localization) .
 
 **Строки формата**
 
@@ -454,11 +454,11 @@ ms.locfileid: "72179028"
 
 Поддерживаемые `EventArgs` приведены в следующей таблице.
 
-| событие | Класс |
+| событие | Class |
 | ----- | ----- |
 | буфер обмена        | `ClipboardEventArgs` |
 | Переместить             | `DragEventArgs` &ndash; `DataTransfer` и `DataTransferItem` содержат перетаскиваемые данные элемента. |
-| Ошибка            | `ErrorEventArgs` |
+| Error            | `ErrorEventArgs` |
 | Фокус            | `FocusEventArgs` &ndash; не включает поддержку `relatedTarget`. |
 | Изменение`<input>` | `ChangeEventArgs` |
 | Клавиатура         | `KeyboardEventArgs` |
@@ -692,7 +692,7 @@ Password:
 При подготовке компонента к просмотру поле `loginDialog` заполняется экземпляром дочернего компонента `MyLoginDialog`. Затем можно вызывать методы .NET в экземпляре компонента.
 
 > [!IMPORTANT]
-> Переменная `loginDialog` заполняется только после подготовки компонента, а ее выходные данные включают элемент `MyLoginDialog`. До этого момента нет никаких ссылок на. Чтобы управлять ссылками на компоненты после завершения подготовки компонента к просмотру, используйте методы `OnAfterRenderAsync` или `OnAfterRender`.
+> Переменная `loginDialog` заполняется только после подготовки компонента, а ее выходные данные включают элемент `MyLoginDialog`. До этого момента нет никаких ссылок на. Чтобы управлять ссылками на компоненты после завершения подготовки компонента к просмотру, используйте [методы онафтеррендерасинк или онафтеррендер](#lifecycle-methods).
 
 При захвате ссылок на компоненты используется аналогичный синтаксис для [записи ссылок на элементы](xref:blazor/javascript-interop#capture-references-to-elements), но это не функция [взаимодействия JavaScript](xref:blazor/javascript-interop) . Ссылки на компоненты не передаются в код JavaScript @ no__t-0they're используются только в коде .NET.
 
@@ -841,6 +841,9 @@ protected override async Task OnInitializedAsync()
 }
 ```
 
+> [!NOTE]
+> Асинхронная работа во время инициализации компонента должна происходить во время события жизненного цикла `OnInitializedAsync`.
+
 Для синхронной операции используйте `OnInitialized`:
 
 ```csharp
@@ -858,6 +861,9 @@ protected override async Task OnParametersSetAsync()
     await ...
 }
 ```
+
+> [!NOTE]
+> Асинхронная работа при применении параметров и значений свойств должна происходить во время события жизненного цикла `OnParametersSetAsync`.
 
 ```csharp
 protected override void OnParametersSet()
@@ -884,6 +890,9 @@ protected override async Task OnAfterRenderAsync(bool firstRender)
     }
 }
 ```
+
+> [!NOTE]
+> Асинхронная работа сразу после отрисовки должна произойти во время события жизненного цикла `OnAfterRenderAsync`.
 
 ```csharp
 protected override void OnAfterRender(bool firstRender)
@@ -1051,7 +1060,7 @@ This is the Index page.
 <input type="checkbox" />
 ```
 
-Дополнительные сведения см. в разделе <xref:mvc/views/razor>.
+Для получения дополнительной информации см. <xref:mvc/views/razor>.
 
 > [!WARNING]
 > Некоторые атрибуты HTML, такие как [ARIA-Pressed](https://developer.mozilla.org/docs/Web/Accessibility/ARIA/Roles/button_role#Toggle_buttons), не работают должным образом, если тип .net — `bool`. В этих случаях используйте тип `string` вместо `bool`.
@@ -1294,7 +1303,7 @@ public class ThemeInfo
 
 [!code-cshtml[](common/samples/3.x/BlazorSample/Pages/CascadingValuesParametersTabSet.razor?name=snippet_TabSet)]
 
-Дочерние компоненты `Tab` не передаются в качестве параметров в `TabSet`. Вместо этого дочерние компоненты `Tab` являются частью дочернего содержимого `TabSet`. Однако `TabSet` по-прежнему необходимо узнать о каждом компоненте `Tab`, чтобы он мог отобразить заголовки и активную вкладку. Чтобы обеспечить эту координацию, не требуя дополнительного кода, компонент `TabSet` *может предоставить себя как каскадное значение* , которое затем выбирается дочерними компонентами `Tab`.
+Дочерние компоненты `Tab` не передаются в качестве параметров в `TabSet`. Вместо этого дочерние компоненты `Tab` являются частью дочернего содержимого `TabSet`. Однако `TabSet` по-прежнему необходимо узнать о каждом компоненте `Tab`, чтобы он мог отобразить заголовки и активную вкладку. Чтобы обеспечить эту координацию, не требуя дополнительного кода, компонент `TabSet` *может предоставить себя как каскадное значение* , которое затем будет использоваться дочерними компонентами `Tab`.
 
 компонент `TabSet`:
 
@@ -1431,14 +1440,14 @@ builder.AddContent(1, "Second");
 
 | Sequence | Type      | Data   |
 | :------: | --------- | :----: |
-| 0        | Текстовый узел | Первая  |
-| 1        | Текстовый узел | Вторая |
+| 0        | Текстовый узел | First  |
+| 1        | Текстовый узел | Second |
 
 Представьте, что `someFlag` становится `false`, а разметка снова готовится к просмотру. На этот раз построитель получит:
 
 | Sequence | Type       | Data   |
 | :------: | ---------- | :----: |
-| 1        | Текстовый узел  | Вторая |
+| 1        | Текстовый узел  | Second |
 
 Когда среда выполнения выполняет различие, она видит, что элемент в последовательности `0` был удален, поэтому он создает следующий тривиальный *сценарий редактирования*:
 
@@ -1463,14 +1472,14 @@ builder.AddContent(seq++, "Second");
 
 | Sequence | Type      | Data   |
 | :------: | --------- | :----: |
-| 0        | Текстовый узел | Первая  |
-| 1        | Текстовый узел | Вторая |
+| 0        | Текстовый узел | First  |
+| 1        | Текстовый узел | Second |
 
 Этот результат идентичен предыдущему случаю, поэтому отрицательные проблемы не возникают. `someFlag` `false` при второй отрисовке, а выходные данные:
 
 | Sequence | Type      | Data   |
 | :------: | --------- | ------ |
-| 0        | Текстовый узел | Вторая |
+| 0        | Текстовый узел | Second |
 
 На этот раз алгоритм diff видит, что были внесены *два* изменения, и алгоритм создает следующий сценарий редактирования:
 
@@ -1495,7 +1504,7 @@ builder.AddContent(seq++, "Second");
 
 Язык и региональные параметры можно задать с помощью одного из следующих подходов:
 
-* [Файлы "cookie"](#cookies)
+* [Файлы cookie](#cookies)
 * [Предоставление пользовательского интерфейса для выбора языка и региональных параметров](#provide-ui-to-choose-the-culture)
 
 Дополнительные сведения и примеры см. в разделе <xref:fundamentals/localization>.
@@ -1562,7 +1571,7 @@ public class CultureController : Controller
 ```
 
 > [!WARNING]
-> Используйте результат действия `LocalRedirect`, чтобы предотвратить атаки с открытым перенаправлением. Дополнительные сведения см. в разделе <xref:security/preventing-open-redirects>.
+> Используйте результат действия `LocalRedirect`, чтобы предотвратить атаки с открытым перенаправлением. Для получения дополнительной информации см. <xref:security/preventing-open-redirects>.
 
 В следующем компоненте показан пример выполнения начального перенаправления, когда пользователь выбирает язык и региональные параметры:
 
@@ -1607,7 +1616,7 @@ public class CultureController : Controller
 * `IStringLocalizer<>` *поддерживается* в приложениях блазор.
 * `IHtmlLocalizer<>`, `IViewLocalizer<>` и локализация заметок к данным — ASP.NET Core сценарии MVC и **не поддерживаются** в приложениях блазор.
 
-Дополнительные сведения см. в разделе <xref:fundamentals/localization>.
+Для получения дополнительной информации см. <xref:fundamentals/localization>.
 
 ## <a name="scalable-vector-graphics-svg-images"></a>Масштабируемые изображения векторной графики (SVG)
 
