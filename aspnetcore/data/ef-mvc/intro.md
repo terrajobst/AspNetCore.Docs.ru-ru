@@ -1,18 +1,18 @@
 ---
 title: Учебник. Начало работы с EF Core в веб-приложении MVC ASP.NET
 description: Это первый учебник из серии, в котором с самого начала описывается построение примера приложения для университета Contoso.
-author: tdykstra
+author: rick-anderson
 ms.author: riande
 ms.custom: mvc
 ms.date: 02/06/2019
 ms.topic: tutorial
 uid: data/ef-mvc/intro
-ms.openlocfilehash: 3450ac5b46e2a03b5d58c8760b78a52065343992
-ms.sourcegitcommit: 6189b0ced9c115248c6ede02efcd0b29d31f2115
+ms.openlocfilehash: a8909d391ae1a35e9c8155df767ab157701c8a51
+ms.sourcegitcommit: 7d3c6565dda6241eb13f9a8e1e1fd89b1cfe4d18
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69985368"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72259450"
 ---
 # <a name="tutorial-get-started-with-ef-core-in-an-aspnet-mvc-web-app"></a>Учебник. Начало работы с EF Core в веб-приложении MVC ASP.NET
 
@@ -361,7 +361,7 @@ ASP.NET Core по умолчанию реализует технологию [в
 
 Дополнительные сведения об асинхронных методах программирования в .NET см. в разделе [Обзор асинхронной модели](/dotnet/articles/standard/async).
 
-## <a name="get-the-code"></a>Получение кода
+## <a name="get-the-code"></a>Получите код
 
 [Скачайте или ознакомьтесь с готовым приложением.](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/data/ef-mvc/intro/samples/cu-final)
 

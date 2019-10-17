@@ -1,18 +1,18 @@
 ---
 title: Учебник. Использование ASP.NET MVC с EF Core. Обновление связанных данных
 description: В этом руководстве описано обновление связанных данных путем обновления полей внешнего ключа и свойств навигации.
-author: tdykstra
+author: rick-anderson
 ms.author: riande
 ms.custom: mvc
 ms.date: 03/27/2019
 ms.topic: tutorial
 uid: data/ef-mvc/update-related-data
-ms.openlocfilehash: 85849cfbb6f453103c4013ce49be4afbf506d7b5
-ms.sourcegitcommit: 8835b6777682da6fb3becf9f9121c03f89dc7614
+ms.openlocfilehash: 98f9f780c5814c0bd6e33052ee812b01a2bce306
+ms.sourcegitcommit: 7d3c6565dda6241eb13f9a8e1e1fd89b1cfe4d18
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69975152"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72259359"
 ---
 # <a name="tutorial-update-related-data---aspnet-mvc-with-ef-core"></a>Учебник. Использование ASP.NET MVC с EF Core. Обновление связанных данных
 
@@ -299,7 +299,7 @@ public ICollection<CourseAssignment> CourseAssignments
 
 Как описано в [руководстве по CRUD](crud.md), платформа Entity Framework реализует транзакции неявно. Если вам требуется дополнительный контроль, например в сценариях с операциями, выполняемыми в транзакции вне платформы Entity Framework, ознакомьтесь с разделом [Транзакции](/ef/core/saving/transactions).
 
-## <a name="get-the-code"></a>Получение кода
+## <a name="get-the-code"></a>Получите код
 
 [Скачайте или ознакомьтесь с готовым приложением.](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/data/ef-mvc/intro/samples/cu-final)
 

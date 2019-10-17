@@ -4,28 +4,20 @@ author: rick-anderson
 description: Узнайте, как вызывать веб-API ASP.NET Core с помощью JavaScript.
 ms.author: riande
 ms.custom: mvc
-ms.date: 08/27/2019
+ms.date: 10/15/2019
 uid: tutorials/web-api-javascript
-ms.openlocfilehash: 0070816149d64fc1d71d453eb0f135050c78597a
-ms.sourcegitcommit: de17150e5ec7507d7114dde0e5dbc2e45a66ef53
+ms.openlocfilehash: bbe261307f6f68af002cb98cc4895888ade7f61c
+ms.sourcegitcommit: dd026eceee79e943bd6b4a37b144803b50617583
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70116643"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72378706"
 ---
 # <a name="tutorial-call-an-aspnet-core-web-api-with-javascript"></a>Учебник. Вызов веб-API ASP.NET Core с помощью JavaScript
 
 Автор: [Рик Андерсон](https://twitter.com/RickAndMSFT) (Rick Anderson)
 
 В этом руководстве описано, как вызвать веб-API ASP.NET Core с помощью JavaScript и [Fetch API](https://developer.mozilla.org/docs/Web/API/Fetch_API).
-
-::: moniker range="< aspnetcore-3.0"
-
-Если вы используете ASP.NET Core 2.2, см. соответствующий раздел руководства по [вызову веб-API с помощью JavaScript](xref:tutorials/first-web-api#call-the-web-api-with-javascript).
-
-::: moniker-end
-
-::: moniker range=">= aspnetcore-3.0"
 
 ## <a name="prerequisites"></a>Предварительные требования
 
@@ -75,9 +67,9 @@ ms.locfileid: "70116643"
 
 * Переменная `item` объявляется для создания представления объектного литерала элемента списка задач.
 * Для запроса Fetch настраиваются следующие параметры:
-    * `method` определяет команду действия HTTP POST.
-    * `body` определяет представление JSON текста запроса. JSON создается путем передачи литерала объекта, хранящегося в `item`, в функцию [JSON.stringify](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/JSON/stringify).
-    * `headers` определяет заголовки `Accept` и `Content-Type` запросов HTTP. Для обеих параметров устанавливается значение `application/json`, чтобы классифицировать тип носителя при получении и отправке соответственно.
+  * `method` определяет команду действия HTTP POST.
+  * `body` определяет представление JSON текста запроса. JSON создается путем передачи литерала объекта, хранящегося в `item`, в функцию [JSON.stringify](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/JSON/stringify).
+  * `headers` определяет заголовки `Accept` и `Content-Type` запросов HTTP. Для обеих параметров устанавливается значение `application/json`, чтобы классифицировать тип носителя при получении и отправке соответственно.
 * HTTP-запрос POST направляется по пути *api/TodoItems*.
 
 [!code-javascript[](first-web-api/samples/3.0/TodoApi/wwwroot/js/site.js?name=snippet_AddItem)]
@@ -103,5 +95,3 @@ ms.locfileid: "70116643"
 
 > [!div class="nextstepaction"]
 > <xref:tutorials/get-started-with-swashbuckle>
-
-::: moniker-end

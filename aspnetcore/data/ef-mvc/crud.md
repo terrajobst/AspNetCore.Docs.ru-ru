@@ -1,18 +1,18 @@
 ---
 title: Учебник. Использование ASP.NET MVC с EF Core. Реализация функциональности CRUD
 description: В рамках этого учебника вы сможете ознакомиться с кодом операций CRUD (создание, чтение, обновление, удаление), который автоматически создается технологией формирования шаблонов MVC в контроллерах и представлениях, а также настроить этот код.
-author: tdykstra
+author: rick-anderson
 ms.author: riande
 ms.custom: mvc
 ms.date: 02/04/2019
 ms.topic: tutorial
 uid: data/ef-mvc/crud
-ms.openlocfilehash: 843ac3523f3ab4bd43f8970ff8e8e2f997fec4d2
-ms.sourcegitcommit: 8835b6777682da6fb3becf9f9121c03f89dc7614
+ms.openlocfilehash: f0c5bcff4c4b0808f9b4703e1429c3a6d1a7a2d7
+ms.sourcegitcommit: 7d3c6565dda6241eb13f9a8e1e1fd89b1cfe4d18
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69975078"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72259719"
 ---
 # <a name="tutorial-implement-crud-functionality---aspnet-mvc-with-ef-core"></a>Учебник. Использование ASP.NET MVC с EF Core. Реализация функциональности CRUD
 
@@ -291,7 +291,7 @@ public class Student
 
 Дополнительные сведения см. в разделе [Работа с отслеживанием и и без него](/ef/core/querying/tracking).
 
-## <a name="get-the-code"></a>Получение кода
+## <a name="get-the-code"></a>Получите код
 
 [Скачайте или ознакомьтесь с готовым приложением.](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/data/ef-mvc/intro/samples/cu-final)
 

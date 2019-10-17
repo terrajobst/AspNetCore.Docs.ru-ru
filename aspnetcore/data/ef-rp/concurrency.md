@@ -1,17 +1,17 @@
 ---
 title: Razor Pages с EF Core в ASP.NET Core — параллелизм — 8 из 8
-author: tdykstra
+author: rick-anderson
 description: Это руководство описывает, как обрабатывать конфликты, когда несколько пользователей одновременно изменяют одну сущность.
 ms.author: riande
 ms.custom: mvc
 ms.date: 07/22/2019
 uid: data/ef-rp/concurrency
-ms.openlocfilehash: c9cbf8fd3ed85f32b3c166bf2df702fd26df4fc3
-ms.sourcegitcommit: 215954a638d24124f791024c66fd4fb9109fd380
+ms.openlocfilehash: 944e746624bf5fe7c586a521059fa4eb34b0f1e7
+ms.sourcegitcommit: 7d3c6565dda6241eb13f9a8e1e1fd89b1cfe4d18
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71080988"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72259381"
 ---
 # <a name="razor-pages-with-ef-core-in-aspnet-core---concurrency---8-of-8"></a>Razor Pages с EF Core в ASP.NET Core — параллелизм — 8 из 8
 
@@ -123,7 +123,7 @@ modelBuilder.Entity<Department>()
 
 [@@ROWCOUNT](/sql/t-sql/functions/rowcount-transact-sql) возвращает число строк, затронутых при выполнении последнего оператора. Если строки не обновляются, EF Core создает исключение `DbUpdateConcurrencyException`.
 
-# <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code.](#tab/visual-studio-code)
+# <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
 Для базы данных SQLite атрибут `[Timestamp]` свойства сущности, определенного как массив байтов, делает следующее:
 
@@ -152,7 +152,7 @@ modelBuilder.Entity<Department>()
   Add-Migration RowVersion
   ```
 
-# <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code.](#tab/visual-studio-code)
+# <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
 * В терминале выполните следующую команду:
 
@@ -177,7 +177,7 @@ modelBuilder.Entity<Department>()
   Update-Database
   ```
 
-# <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code.](#tab/visual-studio-code)
+# <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
 * Откройте файл `Migrations/<timestamp>_RowVersion.cs` и добавьте в него выделенный код.
 
@@ -208,7 +208,7 @@ modelBuilder.Entity<Department>()
 * Используйте класс модели `Department`.
   * Используйте существующий класс контекста вместо создания нового.
 
-# <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code.](#tab/visual-studio-code)
+# <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
 * Создайте папку *Pages/Departments*.
 
@@ -516,7 +516,7 @@ dotnet ef database update
 
 Следуйте инструкциям в разделе [Формирование шаблона для модели Student](xref:data/ef-rp/intro#scaffold-student-pages) и используйте `Department` для класса модели.
 
-# <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code.](#tab/visual-studio-code)
+# <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
  Выполните следующую команду:
 

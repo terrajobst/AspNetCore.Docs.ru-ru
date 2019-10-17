@@ -1,17 +1,17 @@
 ---
 title: Razor Pages с EF Core в ASP.NET Core — модель данных— 5 из 8
-author: tdykstra
+author: rick-anderson
 description: В этом руководстве вы добавите дополнительные сущности и связи, а также настроите модель данных, указав правила форматирования, проверки и сопоставления.
 ms.author: riande
 ms.custom: mvc
 ms.date: 07/22/2019
 uid: data/ef-rp/complex-data-model
-ms.openlocfilehash: 78ff36b291b3215460d9ae8e560f49871862d19f
-ms.sourcegitcommit: 215954a638d24124f791024c66fd4fb9109fd380
+ms.openlocfilehash: 2461bc398cd237dac04f4eb8832c70290663ff56
+ms.sourcegitcommit: 7d3c6565dda6241eb13f9a8e1e1fd89b1cfe4d18
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71080972"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72259486"
 ---
 # <a name="razor-pages-with-ef-core-in-aspnet-core---data-model---5-of-8"></a>Razor Pages с EF Core в ASP.NET Core — модель данных— 5 из 8
 
@@ -107,7 +107,7 @@ ms.locfileid: "71080972"
 
 На предыдущем изображении показана схемы для таблицы `Student`. Поля имен имеют тип `nvarchar(MAX)`. Когда далее в этом учебнике будет создана и применена миграция, поля имен станут `nvarchar(50)` из-за атрибутов длины строки.
 
-# <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code.](#tab/visual-studio-code)
+# <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
 В средстве SQLite изучите определения столбцов для таблицы `Student`. Поля имен имеют тип `Text`. Обратите внимание, что первое поле имени называется `FirstMidName`. В следующем разделе вы измените имя этого столбца на `FirstName`.
 
@@ -187,7 +187,7 @@ SqlException: Invalid column name 'FirstName'.
 
   До применения миграции столбцы имен имели тип [nvarchar(MAX)](/sql/t-sql/data-types/nchar-and-nvarchar-transact-sql). Теперь столбцы имен имеют тип `nvarchar(50)`. Имя столбца изменилось с `FirstMidName` на `FirstName`.
 
-# <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code.](#tab/visual-studio-code)
+# <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
 Сообщение об ошибке подобно приведенному ниже.
 
@@ -561,7 +561,7 @@ database "ContosoUniversity", table "dbo.Department", column 'DepartmentID'.
 
 В следующем разделе вы узнаете, что делать с этой ошибкой.
 
-# <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code.](#tab/visual-studio-code)
+# <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
 Если добавить миграцию и выполнить команду `database update`, произойдет следующая ошибка:
 
@@ -606,7 +606,7 @@ For more information, see http://go.microsoft.com/fwlink/?LinkId=723262.
   Update-Database
   ```
 
-# <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code.](#tab/visual-studio-code)
+# <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
 * Откройте командное окно и перейдите в папку проекта. Папка проекта содержит файл *ContosoUniversity.csproj*.
 
@@ -643,7 +643,7 @@ For more information, see http://go.microsoft.com/fwlink/?LinkId=723262.
 
   ![Данные CourseAssignment в SSOX](complex-data-model/_static/ssox-ci-data.png)
 
-# <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code.](#tab/visual-studio-code)
+# <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
 Используйте средство SQLite для просмотра базы данных:
 
@@ -701,7 +701,7 @@ For more information, see http://go.microsoft.com/fwlink/?LinkId=723262.
 
 Так как метод `DbInitializer.Initialize` предназначен для работы только с пустой базой данных, используйте SSOX для удаления всех строк в таблицах Student и Course. (К таблице Enrollment будет применено каскадное удаление.)
 
-# <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code.](#tab/visual-studio-code)
+# <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
 * Если вы используете SQL Server LocalDB с Visual Studio Code, выполните следующую команду:
 
@@ -837,7 +837,7 @@ Add-Migration ColumnFirstName
 Update-Database
 ```
 
-# <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code.](#tab/visual-studio-code)
+# <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
 ```dotnetcli
 dotnet ef migrations add ColumnFirstName
@@ -1250,7 +1250,7 @@ protected override void OnModelCreating(ModelBuilder modelBuilder)
 Add-Migration ComplexDataModel
 ```
 
-# <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code.](#tab/visual-studio-code)
+# <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
 ```dotnetcli
 dotnet ef migrations add ComplexDataModel
@@ -1297,7 +1297,7 @@ Update-Database
 
 Чтобы просмотреть справочную информацию, выполните команду `Get-Help about_EntityFrameworkCore` в PMC.
 
-# <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code.](#tab/visual-studio-code)
+# <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
 Откройте командное окно и перейдите в папку проекта. Папка проекта содержит файл *Startup.cs*.
 
