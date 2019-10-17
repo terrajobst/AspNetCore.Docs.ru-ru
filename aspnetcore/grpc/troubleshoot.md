@@ -5,14 +5,14 @@ description: Устранение ошибок при использовании
 monikerRange: '>= aspnetcore-3.0'
 ms.author: jamesnk
 ms.custom: mvc
-ms.date: 09/21/2019
+ms.date: 10/16/2019
 uid: grpc/troubleshoot
-ms.openlocfilehash: c31f499b008cdec9d759e804b18965156ca99f30
-ms.sourcegitcommit: d8b12cc1716ee329d7bd2300e201b61e15d506ac
+ms.openlocfilehash: c501cda14f3bac9297695ece59cbc4634e4b7895
+ms.sourcegitcommit: e71b6a85b0e94a600af607107e298f932924c849
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71942891"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72519050"
 ---
 # <a name="troubleshoot-grpc-on-net-core"></a>Устранение неполадок gRPC в .NET Core
 
@@ -46,14 +46,14 @@ static async Task Main(string[] args)
 }
 ```
 
-Все реализации клиента gRPC поддерживают протокол TLS. для клиентов gRPC из других языков обычно требуется канал, настроенный с помощью `SslCredentials`. `SslCredentials`Указывает сертификат, который будет использоваться клиентом, и его необходимо использовать вместо незащищенных учетных данных. Примеры настройки различных реализаций клиента gRPC для использования TLS см. в разделе [Проверка подлинности gRPC](https://www.grpc.io/docs/guides/auth/).
+Все реализации клиента gRPC поддерживают протокол TLS. для клиентов gRPC из других языков обычно требуется, чтобы канал был настроен с `SslCredentials`. `SslCredentials` указывает сертификат, который будет использовать клиент, и его необходимо использовать вместо незащищенных учетных данных. Примеры настройки различных реализаций клиента gRPC для использования TLS см. в разделе [Проверка подлинности gRPC](https://www.grpc.io/docs/guides/auth/).
 
 ## <a name="call-a-grpc-service-with-an-untrustedinvalid-certificate"></a>Вызов службы gRPC с недоверенным или недопустимым сертификатом
 
 Для клиента .NET gRPC служба должна иметь доверенный сертификат. При вызове службы gRPC без доверенного сертификата возвращается следующее сообщение об ошибке:
 
-> Необработанное исключение. System .NET. http. HttpRequestException: Не удалось установить SSL-соединение, см. внутреннее исключение.
-> ---> System. Security. Authentication. исключение: В соответствии с процедурой проверки удаленный сертификат является недопустимым.
+> Необработанное исключение. System .NET. http. HttpRequestException: не удалось установить SSL-подключение, см. внутреннее исключение.
+> ---> System. Security. Authentication. исключение: удаленный сертификат является недопустимым согласно процедуре проверки.
 
 Эта ошибка может появиться, если вы тестируете приложение локально, а ASP.NET Core сертификат разработки HTTPS не является доверенным. См. сведения об устранении этой проблемы в руководстве по [настройке доверия к сертификату разработки HTTPS ASP.NET Core в Windows и macOS](xref:security/enforcing-ssl#trust-the-aspnet-core-https-development-certificate-on-windows-and-macos).
 
@@ -76,7 +76,7 @@ var client = new Greet.GreeterClient(channel);
 
 ## <a name="call-insecure-grpc-services-with-net-core-client"></a>Вызов незащищенных служб gRPC Services с помощью клиента .NET Core
 
-Для вызова незащищенных служб gRPC с клиентом .NET Core требуется дополнительная настройка. Клиент gRPC должен задать `System.Net.Http.SocketsHttpHandler.Http2UnencryptedSupport` для `true` параметра значение и использовать `http` в адресе сервера:
+Для вызова незащищенных служб gRPC с клиентом .NET Core требуется дополнительная настройка. Клиент gRPC должен задать для параметра `System.Net.Http.SocketsHttpHandler.Http2UnencryptedSupport` значение `true` и использовать `http` в адресе сервера:
 
 ```csharp
 // This switch must be set before creating the GrpcChannel/HttpClient.
@@ -92,7 +92,7 @@ var client = new Greet.GreeterClient(channel);
 
 Kestrel не поддерживает HTTP/2 с TLS в macOS и более ранних версиях Windows, таких как Windows 7. Шаблон ASP.NET Core gRPC и примеры по умолчанию используют протокол TLS. При попытке запустить сервер gRPC появится следующее сообщение об ошибке:
 
-> Не удалось выполнить привязку к https://localhost:5001 интерфейсу замыкания на себя IPv4: "HTTP/2 через TLS не поддерживается в macOS из-за отсутствия поддержки АЛПН".
+> Не удалось выполнить привязку к https://localhost:5001 в интерфейсе замыкания на себя IPv4: "HTTP/2 over TLS" не поддерживается в macOS из-за отсутствия поддержки АЛПН. ".
 
 Чтобы обойти эту ошибку, настройте Kestrel и клиент gRPC для использования HTTP/2 *без* TLS. Это следует делать только во время разработки. Отсутствие использования TLS приведет к тому, что сообщения gRPC будут отправляться без шифрования.
 
@@ -113,25 +113,25 @@ public static IHostBuilder CreateHostBuilder(string[] args) =>
         });
 ```
 
-Если конечная точка HTTP/2 настроена без TLS, [листеноптионс. Protocols](xref:fundamentals/servers/kestrel#listenoptionsprotocols) должна иметь значение `HttpProtocols.Http2`. `HttpProtocols.Http1AndHttp2`не может использоваться, так как протокол TLS требуется для согласования HTTP/2. Без TLS все соединения с конечной точкой по умолчанию заключаются в HTTP/1.1, а вызовы gRPC завершаются ошибкой.
+Если конечная точка HTTP/2 настроена без TLS, [листеноптионс. Protocols](xref:fundamentals/servers/kestrel#listenoptionsprotocols) должна иметь значение `HttpProtocols.Http2`. `HttpProtocols.Http1AndHttp2` нельзя использовать, так как протокол TLS требуется для согласования HTTP/2. Без TLS все соединения с конечной точкой по умолчанию заключаются в HTTP/1.1, а вызовы gRPC завершаются ошибкой.
 
 Кроме того, клиент gRPC должен быть настроен так, чтобы не использовал TLS. Дополнительные сведения см. в статье [вызов незащищенных служб gRPC Services с помощью клиента .NET Core](#call-insecure-grpc-services-with-net-core-client).
 
 > [!WARNING]
 > HTTP/2 без TLS следует использовать только во время разработки приложений. В рабочих приложениях всегда следует использовать безопасность транспорта. Дополнительные сведения см. [в разделе вопросы безопасности в gRPC for ASP.NET Core](xref:grpc/security#transport-security).
 
-## <a name="grpc-c-assets-are-not-code-generated-from-proto-files"></a>ресурсы C# gRPC не являются кодом, созданным из файлов с  *\*.*
+## <a name="grpc-c-assets-are-not-code-generated-from-proto-files"></a>ресурсы C# gRPC не являются кодом, созданным из файлов с.
 
 Создание кода gRPC для конкретных клиентов и базовых классов служб требует наличия в проекте ссылок на файлы и инструментарий protobuf. Необходимо включить:
 
-* *.* укажите файлы, которые необходимо использовать в `<Protobuf>` группе элементов. Проект должен ссылаться на [импортированные файлы ](https://developers.google.com/protocol-buffers/docs/proto3#importing-definitions) с указанными файлами.
+* *.* укажите файлы, которые вы хотите использовать в группе элементов `<Protobuf>`. Проект должен ссылаться на [импортированные файлы ](https://developers.google.com/protocol-buffers/docs/proto3#importing-definitions) с указанными файлами.
 * Ссылка на пакет для пакета инструментов gRPC [gRPC. Tools](https://www.nuget.org/packages/Grpc.Tools/).
 
-Дополнительные сведения о создании ресурсов gRPC C# см. в <xref:grpc/basics>разделе.
+Дополнительные сведения о создании gRPC C# ресурсов см. в разделе <xref:grpc/basics>.
 
-По умолчанию `<Protobuf>` ссылка создает конкретный клиент и базовый класс службы. `GrpcServices` Атрибут элемента Reference можно использовать для ограничения C# создания ресурсов. Допустимые `GrpcServices` параметры:
+По умолчанию ссылка `<Protobuf>` создает конкретный клиент и базовый класс службы. Атрибут `GrpcServices` элемента Reference можно использовать для ограничения C# создания ресурсов. Допустимые параметры `GrpcServices`:
 
-* `Both`(по умолчанию, если отсутствует)
+* `Both` (по умолчанию, если отсутствует)
 * `Server`
 * `Client`
 * `None`
@@ -152,18 +152,18 @@ public static IHostBuilder CreateHostBuilder(string[] args) =>
 </ItemGroup>
 ```
 
-## <a name="wpf-projects-unable-to-generated-grpc-c-assets-from-proto-files"></a>Проекты WPF не могут создавать ресурсы C# gRPC из файлов *\*..*
+## <a name="wpf-projects-unable-to-generate-grpc-c-assets-from-proto-files"></a>Проекты WPF не могут создавать ресурсы C# gRPC из файлов с.
 
 Проекты WPF имеют [известную ошибку](https://github.com/dotnet/wpf/issues/810) , препятствующую правильной работе создания кода gRPC. Любые типы gRPC, созданные в проекте WPF с помощью ссылок на файлы `Grpc.Tools` и *...* , будут создавать ошибки компиляции при использовании:
 
-> ошибка CS0246: Не удалось найти тип или имя пространства имен "Мигрпксервицес" (возможно, отсутствует директива using или ссылка на сборку).
+> ошибка CS0246: не удалось найти тип или имя пространства имен "Мигрпксервицес" (возможно, отсутствует директива using или ссылка на сборку?)
 
 Эту проблему можно решить, выполнив следующие действия.
 
 1. Создайте новый проект библиотеки классов .NET Core.
-2. В новом проекте добавьте ссылки, чтобы включить [ C# создание кода из файлов *@no__t -3.* с:
+2. В новом проекте добавьте ссылки, чтобы включить [ C# создание кода из файлов *@no__t -3.* ](xref:grpc/basics#generated-c-assets)с:
     * Добавьте ссылку на пакет [Grpc.Tools](https://www.nuget.org/packages/Grpc.Tools/).
-    * Добавьте *@no__t -1.* \ Files в группу элементов `<Protobuf>`.
+    * Добавьте файлы *\*.proto* в группу элементов `<Protobuf>`.
 3. В приложении WPF добавьте ссылку на новый проект.
 
 Приложение WPF может использовать созданные типы gRPC из нового проекта библиотеки классов.

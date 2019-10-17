@@ -1,23 +1,23 @@
 ---
-title: Управление ссылками protobuf с помощью DotNet-GRPC
+title: Управление ссылками protobuf с помощью .NET gRPC
 author: juntaoluo
 description: Сведения о добавлении, обновлении, удалении и перечислении ссылок protobuf с помощью глобального инструмента DotNet-GRPC.
 monikerRange: '>= aspnetcore-3.0'
 ms.author: johluo
-ms.date: 09/24/2019
+ms.date: 10/17/2019
 uid: grpc/dotnet-grpc
-ms.openlocfilehash: ebd57419be24f7f4ed9765e36cf14189be8438b1
-ms.sourcegitcommit: 020c3760492efed71b19e476f25392dda5dd7388
+ms.openlocfilehash: 994597c854a95bb33de1686ab025cb3744cf6845
+ms.sourcegitcommit: e71b6a85b0e94a600af607107e298f932924c849
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/12/2019
-ms.locfileid: "72290049"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72519035"
 ---
-# <a name="manage-protobuf-references-with-dotnet-grpc"></a>Управление ссылками protobuf с помощью DotNet-GRPC
+# <a name="manage-protobuf-references-with-dotnet-grpc"></a>Управление ссылками protobuf с помощью .NET gRPC
 
 Автор: [John Luo](https://github.com/juntaoluo) (Джон Луо)
 
-`dotnet-grpc` — это глобальное средство .NET Core для управления ссылками protobuf в проекте .NET gRPC. Это средство можно использовать для добавления, обновления, удаления и перечисления ссылок protobuf.
+`dotnet-grpc` — это глобальное средство .NET Core для управления ссылками [protobuf ( *.* \)](xref:grpc/basics#proto-file) в проекте .NET gRPC. Это средство можно использовать для добавления, обновления, удаления и перечисления ссылок protobuf.
 
 ## <a name="installation"></a>Установка
 
@@ -32,10 +32,10 @@ dotnet tool install -g dotnet-grpc
 `dotnet-grpc` можно использовать для добавления ссылок protobuf в виде `<Protobuf />` элементов в файл *. csproj* :
 
 ```xml
-<Protobuf Include="..\Proto\count.proto" GrpcServices="Server" Link="Protos\count.proto" />
+<Protobuf Include="Protos\greet.proto" GrpcServices="Server" />
 ```
 
-Ссылки protobuf используются для создания ресурсов C# клиента и/или сервера. @No__t 0tool может:
+Ссылки protobuf используются для создания ресурсов C# клиента и/или сервера. Средство `dotnet-grpc` может:
 
 * Создайте ссылку на protobuf из локальных файлов на диске.
 * Создание ссылки protobuf из удаленного файла, указанного с помощью URL-адреса.
@@ -62,7 +62,7 @@ dotnet grpc add-file [options] <files>...
 
 | Аргумент | Описание |
 |-|-|
-| files | Ссылка на файл protobuf. Это может быть путь к стандартная маска для локальных файлов protobuf. |
+| файлы | Ссылка на файл protobuf. Это может быть путь к стандартная маска для локальных файлов protobuf. |
 
 #### <a name="options"></a>Параметры
 
@@ -99,7 +99,7 @@ dotnet-grpc add-url [options] <url>
 | -i | --reimports-dirs | Дополнительные каталоги, которые будут использоваться при разрешении импортов для файлов protobuf. Это список путей, разделенных точкой с запятой.
 | | --доступ | Модификатор доступа, используемый для создаваемых C# классов. Значение по умолчанию — `Public`. Допустимые значения: `Internal` и `Public`.
 
-## <a name="remove"></a>Удалить
+## <a name="remove"></a>Remove
 
 Команда `remove` используется для удаления ссылок protobuf из *CSPROJ* -файла. Команда принимает аргументы пути и URL-адреса источника в качестве аргументов. Средство:
 
@@ -152,7 +152,7 @@ dotnet-grpc refresh [options] [<references>...]
 | -p | --проект | Путь к файлу проекта для обработки. Если файл не указан, команда ищет его в текущем каталоге.
 | | --пробное выполнение | Выводит список файлов, которые будут обновлены без скачивания нового содержимого.
 
-## <a name="list"></a>List
+## <a name="list"></a>Списка
 
 Команда `list` используется для вывода всех ссылок на protobuf в файле проекта. Если все значения столбца являются значениями по умолчанию, столбец можно опустить.
 
