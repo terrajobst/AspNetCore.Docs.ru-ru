@@ -7,12 +7,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 10/15/2019
 uid: blazor/routing
-ms.openlocfilehash: a71709d6b87d8182e90f827d952090aa1e38d701
-ms.sourcegitcommit: 35a86ce48041caaf6396b1e88b0472578ba24483
+ms.openlocfilehash: d9f81c8aa2cf07f8bfaede65efcb7328088f55b9
+ms.sourcegitcommit: ce2bfb01f2cc7dd83f8a97da0689d232c71bcdc4
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72391196"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72531149"
 ---
 # <a name="aspnet-core-blazor-routing"></a>ASP.NET Core маршрутизация Блазор
 
@@ -56,10 +56,10 @@ ms.locfileid: "72391196"
 
 К компоненту можно применить несколько шаблонов маршрутов. Следующий компонент отвечает на запросы для `/BlazorRoute` и `/DifferentBlazorRoute`:
 
-[!code-cshtml[](common/samples/3.x/BlazorSample/Pages/BlazorRoute.razor?name=snippet_BlazorRoute)]
+[!code-cshtml[](common/samples/3.x/BlazorWebAssemblySample/Pages/BlazorRoute.razor?name=snippet_BlazorRoute)]
 
 > [!IMPORTANT]
-> Для правильного разрешения URL-адресов приложение должно включать тег `<base>` в файл *wwwroot/index.HTML* (блазор) или *pages/_Host. cshtml* (блазор Server) с базовым путем к приложению, указанным в атрибуте `href` (`<base href="/">`). Дополнительные сведения см. в разделе <xref:host-and-deploy/blazor/index#app-base-path>.
+> Для правильного разрешения URL-адресов приложение должно включать тег `<base>` в файл *wwwroot/index.HTML* (блазор) или *pages/_Host. cshtml* (блазор Server) с базовым путем к приложению, указанным в атрибуте `href` (`<base href="/">`). Для получения дополнительной информации см. <xref:host-and-deploy/blazor/index#app-base-path>.
 
 ## <a name="provide-custom-content-when-content-isnt-found"></a>Указать пользовательское содержимое, когда содержимое не найдено
 
@@ -97,7 +97,7 @@ ms.locfileid: "72391196"
 
 Маршрутизатор использует параметры маршрута для заполнения соответствующих параметров компонента с тем же именем (без учета регистра):
 
-[!code-cshtml[](common/samples/3.x/BlazorSample/Pages/RouteParameter.razor?name=snippet_RouteParameter&highlight=2,7-8)]
+[!code-cshtml[](common/samples/3.x/BlazorWebAssemblySample/Pages/RouteParameter.razor?name=snippet_RouteParameter&highlight=2,7-8)]
 
 Необязательные параметры не поддерживаются для приложений Блазор в ASP.NET Core 3,0. В предыдущем примере применяются две директивы `@page`. Первый позволяет переходить к компоненту без параметра. Вторая директива `@page` принимает параметр маршрута `{text}` и присваивает значение свойству `Text`.
 
@@ -141,7 +141,7 @@ ms.locfileid: "72391196"
 * Двойное звездочка *-все* синтаксис (`**`) для захвата пути по нескольким папкам без кодирования косой черты (`/`).
 * Имя параметра маршрута `path`.
 
-Дополнительные сведения см. в разделе <xref:fundamentals/routing>.
+Для получения дополнительной информации см. <xref:fundamentals/routing>.
 
 ## <a name="navlink-component"></a>Компонент Навлинк
 
@@ -177,7 +177,7 @@ ms.locfileid: "72391196"
 | Член | Описание |
 | ------ | ----------- |
 | `Uri` | Возвращает текущий абсолютный URI. |
-| `BaseUri` | Получает базовый URI (с завершающей косой чертой), который можно добавить в начало относительных путей URI для получения абсолютного URI. Как правило, `BaseUri` соответствует атрибуту `href` в элементе `<base>` документа в *wwwroot/index.HTML* (блазор) или *pages/_Host. cshtml* (блазор Server). |
+| `BaseUri` | Получает базовый URI (с завершающей косой чертой), который можно добавить в начало относительных путей URI для получения абсолютного URI. Как правило, `BaseUri` соответствует атрибуту `href` элемента `<base>` документа в *wwwroot/index.HTML* (блазор) или *pages/_Host. cshtml* (блазор Server). |
 | `NavigateTo` | Переходит по указанному универсальному коду ресурса (URI). Если `forceLoad` равно `true`:<ul><li>Маршрутизация на стороне клиента обходится.</li><li>Браузер вынужден загрузить новую страницу с сервера, независимо от того, обрабатывается ли универсальный код ресурса клиентским маршрутизатором.</li></ul> |
 | `LocationChanged` | Событие, возникающее при изменении расположения навигации. |
 | `ToAbsoluteUri` | Преобразует относительный URI в абсолютный URI. |

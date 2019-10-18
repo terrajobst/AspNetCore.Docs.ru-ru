@@ -7,12 +7,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 10/15/2019
 uid: blazor/javascript-interop
-ms.openlocfilehash: b4776a20c6da6c722d2c057d19863c570f530a21
-ms.sourcegitcommit: 35a86ce48041caaf6396b1e88b0472578ba24483
+ms.openlocfilehash: a8c3a0951761faab1c11507834aeef2507388d71
+ms.sourcegitcommit: ce2bfb01f2cc7dd83f8a97da0689d232c71bcdc4
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72391068"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72531127"
 ---
 # <a name="aspnet-core-blazor-javascript-interop"></a>ASP.NET Core взаимодействие JavaScript Блазор
 
@@ -38,11 +38,11 @@ ms.locfileid: "72391068"
 
 Следующий пример основан на [текстдекодер](https://developer.mozilla.org/docs/Web/API/TextDecoder), экспериментальном декодере на основе JavaScript. В примере показано, как вызвать функцию JavaScript из C# метода. Функция JavaScript принимает массив байтов из C# метода, декодирует массив и возвращает текст компоненту для вывода.
 
-В элементе `<head>` элемента *wwwroot/index.HTML* (блазор Assembly) или *pages/_Host. cshtml* (блазор Server) Укажите функцию, которая использует `TextDecoder` для декодирования переданного массива:
+В элементе `<head>` *wwwroot/index.HTML* (блазор Assembly) или *pages/_Host. cshtml* (блазор Server) Укажите функцию, которая использует `TextDecoder` для декодирования переданного массива:
 
 [!code-html[](javascript-interop/samples_snapshot/index-script.html)]
 
-Код JavaScript, например код, показанный в предыдущем примере, можно также загрузить из файла JavaScript (*. js*) со ссылкой на файл скрипта:
+Код JavaScript, например код, показанный в предыдущем примере, можно также загрузить из файла JavaScript ( *. js*) со ссылкой на файл скрипта:
 
 ```html
 <script src="exampleJsInterop.js"></script>
@@ -57,7 +57,7 @@ ms.locfileid: "72391068"
 
 Чтобы использовать абстракцию `IJSRuntime`, следует принять любой из следующих подходов:
 
-* Вставьте абстракцию `IJSRuntime` в компонент Razor (*. Razor*):
+* Вставьте абстракцию `IJSRuntime` в компонент Razor ( *. Razor*):
 
   [!code-cshtml[](javascript-interop/samples_snapshot/inject-abstraction.razor?highlight=1)]
 
@@ -65,7 +65,7 @@ ms.locfileid: "72391068"
 
   [!code-csharp[](javascript-interop/samples_snapshot/inject-abstraction-class.cs?highlight=5)]
 
-* Для создания динамического содержимого с помощью [буилдрендертри](xref:blazor/components#manual-rendertreebuilder-logic)используйте атрибут `[Inject]`:
+* Для динамического создания содержимого с помощью [буилдрендертри](xref:blazor/components#manual-rendertreebuilder-logic)используйте атрибут `[Inject]`:
 
   ```csharp
   [Inject]
@@ -79,17 +79,17 @@ ms.locfileid: "72391068"
 
 *wwwroot/ексамплежсинтероп. js*:
 
-[!code-javascript[](./common/samples/3.x/BlazorSample/wwwroot/exampleJsInterop.js?highlight=2-7)]
+[!code-javascript[](./common/samples/3.x/BlazorWebAssemblySample/wwwroot/exampleJsInterop.js?highlight=2-7)]
 
 Поместите тег `<script>`, который ссылается на файл JavaScript, в файл *wwwroot/index.HTML* (блазор) или *pages/_Host. cshtml* (блазор Server).
 
 *wwwroot/index.HTML* (Блазор-сборка):
 
-[!code-html[](./common/samples/3.x/BlazorSample/wwwroot/index.html?highlight=15)]
+[!code-html[](./common/samples/3.x/BlazorWebAssemblySample/wwwroot/index.html?highlight=15)]
 
 *Pages/_Host. cshtml* (сервер блазор):
 
-[!code-cshtml[](javascript-interop/samples_snapshot/_Host.cshtml?highlight=29)]
+[!code-cshtml[](./common/samples/3.x/BlazorServerSample/Pages/_Host.cshtml?highlight=21)]
 
 Не размещайте тег `<script>` в файле компонента, так как тег `<script>` не может быть обновлен динамически.
 
@@ -105,7 +105,7 @@ ms.locfileid: "72391068"
 
 *Pages/жсинтероп. Razor*:
 
-[!code-cshtml[](./common/samples/3.x/BlazorSample/Pages/JsInterop.razor?name=snippet_JSInterop1&highlight=3,19-21,23-25)]
+[!code-cshtml[](./common/samples/3.x/BlazorWebAssemblySample/Pages/JsInterop.razor?name=snippet_JSInterop1&highlight=3,19-21,23-25)]
 
 1. При выполнении `TriggerJsPrompt` путем выбора кнопки **запроса JavaScript триггера** компонента вызывается функция JavaScript `showPrompt`, предоставленная в файле *wwwroot/ексамплежсинтероп. js* .
 1. Функция `showPrompt` принимает ввод пользователя (имя пользователя), который кодируется в формате HTML и возвращается компоненту. Компонент сохраняет имя пользователя в локальной переменной `name`.
@@ -186,13 +186,13 @@ public static Task Focus(this ElementReference elementRef, IJSRuntime jsRuntime)
 
 *Pages/жсинтероп. Razor*:
 
-[!code-cshtml[](./common/samples/3.x/BlazorSample/Pages/JsInterop.razor?name=snippet_JSInterop2&highlight=7-11)]
+[!code-cshtml[](./common/samples/3.x/BlazorWebAssemblySample/Pages/JsInterop.razor?name=snippet_JSInterop2&highlight=7-11)]
 
 JavaScript, предоставляемый клиенту, вызывает метод C# .NET.
 
 *wwwroot/ексамплежсинтероп. js*:
 
-[!code-javascript[](./common/samples/3.x/BlazorSample/wwwroot/exampleJsInterop.js?highlight=8-14)]
+[!code-javascript[](./common/samples/3.x/BlazorWebAssemblySample/wwwroot/exampleJsInterop.js?highlight=8-14)]
 
 При выборе переключателя **статический метод ретурнаррайасинк .NET** изучите выходные данные консоли в средствах веб-разработчика браузера.
 
@@ -218,23 +218,23 @@ Array(4) [ 1, 2, 3, 4 ]
 
 *Pages/жсинтероп. Razor*:
 
-[!code-cshtml[](./common/samples/3.x/BlazorSample/Pages/JsInterop.razor?name=snippet_JSInterop3&highlight=8-9)]
+[!code-cshtml[](./common/samples/3.x/BlazorWebAssemblySample/Pages/JsInterop.razor?name=snippet_JSInterop3&highlight=8-9)]
 
 `CallHelloHelperSayHello` вызывает функцию JavaScript `sayHello` с новым экземпляром `HelloHelper`.
 
 *Жсинтеропклассес/ексамплежсинтероп. CS*:
 
-[!code-csharp[](./common/samples/3.x/BlazorSample/JsInteropClasses/ExampleJsInterop.cs?name=snippet1&highlight=10-16)]
+[!code-csharp[](./common/samples/3.x/BlazorWebAssemblySample/JsInteropClasses/ExampleJsInterop.cs?name=snippet1&highlight=10-16)]
 
 *wwwroot/ексамплежсинтероп. js*:
 
-[!code-javascript[](./common/samples/3.x/BlazorSample/wwwroot/exampleJsInterop.js?highlight=15-18)]
+[!code-javascript[](./common/samples/3.x/BlazorWebAssemblySample/wwwroot/exampleJsInterop.js?highlight=15-18)]
 
 Имя передается в конструктор `HelloHelper`, который задает свойство `HelloHelper.Name`. При выполнении функции JavaScript `sayHello` `HelloHelper.SayHello` возвращает сообщение `Hello, {Name}!`, которое записывается в консоль функцией JavaScript.
 
 *Жсинтеропклассес/хеллохелпер. CS*:
 
-[!code-csharp[](./common/samples/3.x/BlazorSample/JsInteropClasses/HelloHelper.cs?name=snippet1&highlight=5,10-11)]
+[!code-csharp[](./common/samples/3.x/BlazorWebAssemblySample/JsInteropClasses/HelloHelper.cs?name=snippet1&highlight=5,10-11)]
 
 Выходные данные консоли в средствах веб-разработчика браузера:
 

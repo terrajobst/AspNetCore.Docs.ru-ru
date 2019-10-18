@@ -7,12 +7,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 10/05/2019
 uid: blazor/components
-ms.openlocfilehash: a71bbf3921417cbd23aeb14d0d78ad8354d6e93a
-ms.sourcegitcommit: dd026eceee79e943bd6b4a37b144803b50617583
+ms.openlocfilehash: cd48111e8d601fc67e8a938fcdd686759a9ddeca
+ms.sourcegitcommit: ce2bfb01f2cc7dd83f8a97da0689d232c71bcdc4
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72378688"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72531119"
 ---
 # <a name="create-and-use-aspnet-core-razor-components"></a>Создание и использование компонентов ASP.NET Core Razor
 
@@ -37,8 +37,8 @@ ms.locfileid: "72378688"
 
 Члены компонента можно использовать как часть логики визуализации компонента с помощью C# выражений, начинающихся с `@`. Например, C# поле отображается путем добавления префикса `@` к имени поля. В следующем примере вычисляется и выводится следующее:
 
-* `_headingFontStyle` в значение свойства CSS для `font-style`.
-* `_headingText` на содержимое элемента `<h1>`.
+* `_headingFontStyle` значение свойства CSS для `font-style`.
+* `_headingText` содержимое элемента `<h1>`.
 
 ```cshtml
 <h1 style="font-style:@_headingFontStyle">@_headingText</h1>
@@ -81,11 +81,11 @@ ms.locfileid: "72378688"
 
 Следующая разметка в *index. Razor* визуализирует экземпляр `HeadingComponent`:
 
-[!code-cshtml[](common/samples/3.x/BlazorSample/Pages/Index.razor?name=snippet_HeadingComponent)]
+[!code-cshtml[](common/samples/3.x/BlazorWebAssemblySample/Pages/Index.razor?name=snippet_HeadingComponent)]
 
 *Components/хеадингкомпонент. Razor*:
 
-[!code-cshtml[](common/samples/3.x/BlazorSample/Components/HeadingComponent.razor)]
+[!code-cshtml[](common/samples/3.x/BlazorWebAssemblySample/Components/HeadingComponent.razor)]
 
 Если компонент содержит HTML-элемент с первой буквой в верхнем регистре, который не соответствует имени компонента, выдается предупреждение, указывающее, что элемент имеет непредвиденное имя. Добавление оператора `@using` для пространства имен компонента делает компонент доступным, что приводит к удалению предупреждения.
 
@@ -95,13 +95,13 @@ ms.locfileid: "72378688"
 
 *Components/чилдкомпонент. Razor*:
 
-[!code-cshtml[](common/samples/3.x/BlazorSample/Components/ChildComponent.razor?highlight=11-12)]
+[!code-cshtml[](common/samples/3.x/BlazorWebAssemblySample/Components/ChildComponent.razor?highlight=11-12)]
 
 В следующем примере `ParentComponent` задает значение свойства `Title` для `ChildComponent`.
 
 *Pages/паренткомпонент. Razor*:
 
-[!code-cshtml[](common/samples/3.x/BlazorSample/Pages/ParentComponent.razor?name=snippet_ParentComponent&highlight=5-6)]
+[!code-cshtml[](common/samples/3.x/BlazorWebAssemblySample/Pages/ParentComponent.razor?name=snippet_ParentComponent&highlight=5-6)]
 
 ## <a name="child-content"></a>Дочернее содержимое
 
@@ -111,7 +111,7 @@ ms.locfileid: "72378688"
 
 *Components/чилдкомпонент. Razor*:
 
-[!code-cshtml[](common/samples/3.x/BlazorSample/Components/ChildComponent.razor?highlight=3,14-15)]
+[!code-cshtml[](common/samples/3.x/BlazorWebAssemblySample/Components/ChildComponent.razor?highlight=3,14-15)]
 
 > [!NOTE]
 > Свойство, получающее содержимое `RenderFragment`, должно иметь имя `ChildContent` по соглашению.
@@ -120,7 +120,7 @@ ms.locfileid: "72378688"
 
 *Pages/паренткомпонент. Razor*:
 
-[!code-cshtml[](common/samples/3.x/BlazorSample/Pages/ParentComponent.razor?name=snippet_ParentComponent&highlight=7-8)]
+[!code-cshtml[](common/samples/3.x/BlazorWebAssemblySample/Pages/ParentComponent.razor?name=snippet_ParentComponent&highlight=7-8)]
 
 ## <a name="attribute-splatting-and-arbitrary-parameters"></a>Атрибуты Сплаттинг и произвольные параметры
 
@@ -181,7 +181,7 @@ ms.locfileid: "72378688"
        size="50">
 ```
 
-Чтобы принять произвольные атрибуты, определите параметр компонента с помощью атрибута `[Parameter]` со свойством `CaptureUnmatchedValues`, установленным в значение `true`:
+Чтобы принять произвольные атрибуты, определите параметр компонента с помощью атрибута `[Parameter]` со свойством `CaptureUnmatchedValues`, для которого задано значение `true`.
 
 ```cshtml
 @code {
@@ -190,7 +190,7 @@ ms.locfileid: "72378688"
 }
 ```
 
-Свойство `CaptureUnmatchedValues` в `[Parameter]` позволяет параметру сопоставлять все атрибуты, не соответствующие какому-либо другому параметру. Компонент может определять только один параметр с `CaptureUnmatchedValues`. Тип свойства, используемый с `CaptureUnmatchedValues`, должен быть назначен из `Dictionary<string, object>` со строковыми ключами. в этом сценарии также используются параметры `IEnumerable<KeyValuePair<string, object>>` или `IReadOnlyDictionary<string, object>`.
+Свойство `CaptureUnmatchedValues` в `[Parameter]` позволяет параметру сопоставлять все атрибуты, не соответствующие ни одному другому параметру. Компонент может определять только один параметр с `CaptureUnmatchedValues`. Тип свойства, используемый с `CaptureUnmatchedValues`, должен быть назначен из `Dictionary<string, object>` со строковыми ключами. в этом сценарии также используются параметры `IEnumerable<KeyValuePair<string, object>>` или `IReadOnlyDictionary<string, object>`.
 
 ## <a name="data-binding"></a>привязка данных,
 
@@ -513,11 +513,11 @@ ms.locfileid: "72378688"
 
 @No__t-0 в примере приложения демонстрирует настройку обработчика `onclick` кнопки на получение делегата `EventCallback` из примера `ParentComponent`. @No__t-0 вводится `MouseEventArgs`, что подходит для события `onclick` на периферийном устройстве:
 
-[!code-cshtml[](common/samples/3.x/BlazorSample/Components/ChildComponent.razor?highlight=5-7,17-18)]
+[!code-cshtml[](common/samples/3.x/BlazorWebAssemblySample/Components/ChildComponent.razor?highlight=5-7,17-18)]
 
 @No__t-0 устанавливает `EventCallback<T>` дочернего элемента в метод `ShowMessage`:
 
-[!code-cshtml[](common/samples/3.x/BlazorSample/Pages/ParentComponent.razor?name=snippet_ParentComponent&highlight=6,16-19)]
+[!code-cshtml[](common/samples/3.x/BlazorWebAssemblySample/Pages/ParentComponent.razor?name=snippet_ParentComponent&highlight=6,16-19)]
 
 При выборе кнопки в `ChildComponent`:
 
@@ -968,7 +968,7 @@ protected override bool ShouldRender()
 
 К компоненту можно применить несколько шаблонов маршрутов. Следующий компонент отвечает на запросы для `/BlazorRoute` и `/DifferentBlazorRoute`:
 
-[!code-cshtml[](common/samples/3.x/BlazorSample/Pages/BlazorRoute.razor?name=snippet_BlazorRoute)]
+[!code-cshtml[](common/samples/3.x/BlazorWebAssemblySample/Pages/BlazorRoute.razor?name=snippet_BlazorRoute)]
 
 ## <a name="route-parameters"></a>Параметры маршрута
 
@@ -976,7 +976,7 @@ protected override bool ShouldRender()
 
 *Компонент параметра маршрута*:
 
-[!code-cshtml[](common/samples/3.x/BlazorSample/Pages/RouteParameter.razor?name=snippet_RouteParameter)]
+[!code-cshtml[](common/samples/3.x/BlazorWebAssemblySample/Pages/RouteParameter.razor?name=snippet_RouteParameter)]
 
 Необязательные параметры не поддерживаются, поэтому в приведенном выше примере применяются две директивы `@page`. Первый позволяет переходить к компоненту без параметра. Вторая директива `@page` принимает параметр маршрута `{text}` и присваивает значение свойству `Text`.
 
@@ -988,11 +988,11 @@ protected override bool ShouldRender()
 
 *Pages/блазорроккс. Razor*:
 
-[!code-cshtml[](common/samples/3.x/BlazorSample/Pages/BlazorRocks.razor?name=snippet_BlazorRocks)]
+[!code-cshtml[](common/samples/3.x/BlazorWebAssemblySample/Pages/BlazorRocks.razor?name=snippet_BlazorRocks)]
 
 *BlazorRocksBase.CS*:
 
-[!code-csharp[](common/samples/3.x/BlazorSample/Pages/BlazorRocksBase.cs)]
+[!code-csharp[](common/samples/3.x/BlazorWebAssemblySample/Pages/BlazorRocksBase.cs)]
 
 Базовый класс должен быть производным от `ComponentBase`.
 
@@ -1096,7 +1096,7 @@ This is the Index page.
 
 компонент `TableTemplate`:
 
-[!code-cshtml[](common/samples/3.x/BlazorSample/Components/TableTemplate.razor)]
+[!code-cshtml[](common/samples/3.x/BlazorWebAssemblySample/Components/TableTemplate.razor)]
 
 При использовании компонент-шаблона можно указать параметры шаблона с помощью дочерних элементов, совпадающих с именами параметров (`TableHeader` и `RowTemplate` в следующем примере):
 
@@ -1149,7 +1149,7 @@ This is the Index page.
 
 Шаблонные компоненты часто вводятся в универсальном виде. Например, универсальный компонент `ListViewTemplate` можно использовать для отображения значений `IEnumerable<T>`. Чтобы определить универсальный компонент, используйте директиву [@typeparam](xref:mvc/views/razor#typeparam) для указания параметров типа:
 
-[!code-cshtml[](common/samples/3.x/BlazorSample/Components/ListViewTemplate.razor)]
+[!code-cshtml[](common/samples/3.x/BlazorWebAssemblySample/Components/ListViewTemplate.razor)]
 
 При использовании компонентов универсальной типизации параметр типа выводится, если это возможно:
 
@@ -1297,23 +1297,23 @@ public class ThemeInfo
 
 В примере приложения имеется интерфейс `ITab`, который реализуется вкладками:
 
-[!code-csharp[](common/samples/3.x/BlazorSample/UIInterfaces/ITab.cs)]
+[!code-csharp[](common/samples/3.x/BlazorWebAssemblySample/UIInterfaces/ITab.cs)]
 
 Компонент `CascadingValuesParametersTabSet` использует компонент `TabSet`, который содержит несколько компонентов `Tab`:
 
-[!code-cshtml[](common/samples/3.x/BlazorSample/Pages/CascadingValuesParametersTabSet.razor?name=snippet_TabSet)]
+[!code-cshtml[](common/samples/3.x/BlazorWebAssemblySample/Pages/CascadingValuesParametersTabSet.razor?name=snippet_TabSet)]
 
 Дочерние компоненты `Tab` не передаются в качестве параметров в `TabSet`. Вместо этого дочерние компоненты `Tab` являются частью дочернего содержимого `TabSet`. Однако `TabSet` по-прежнему необходимо узнать о каждом компоненте `Tab`, чтобы он мог отобразить заголовки и активную вкладку. Чтобы обеспечить эту координацию, не требуя дополнительного кода, компонент `TabSet` *может предоставить себя как каскадное значение* , которое затем будет использоваться дочерними компонентами `Tab`.
 
 компонент `TabSet`:
 
-[!code-cshtml[](common/samples/3.x/BlazorSample/Components/TabSet.razor)]
+[!code-cshtml[](common/samples/3.x/BlazorWebAssemblySample/Components/TabSet.razor)]
 
 Дочерние компоненты `Tab` захватывают содержащий `TabSet` как каскадный параметр, поэтому компоненты `Tab` добавляют себя в `TabSet` и координирует, какая вкладка активна.
 
 компонент `Tab`:
 
-[!code-cshtml[](common/samples/3.x/BlazorSample/Components/Tab.razor)]
+[!code-cshtml[](common/samples/3.x/BlazorWebAssemblySample/Components/Tab.razor)]
 
 ## <a name="razor-templates"></a>Шаблоны Razor
 
