@@ -5,14 +5,14 @@ description: Узнайте, как использовать API конфигу�
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 08/12/2019
+ms.date: 10/18/2019
 uid: fundamentals/configuration/index
-ms.openlocfilehash: 357a3d89648086f0329cd16bc9d72863df9bdcd6
-ms.sourcegitcommit: 8a36be1bfee02eba3b07b7a86085ec25c38bae6b
+ms.openlocfilehash: 0a9b1a1a08617ef4ca8a36295cec8910ec111acd
+ms.sourcegitcommit: a166291c6708f5949c417874108332856b53b6a9
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71217784"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72589907"
 ---
 # <a name="configuration-in-aspnet-core"></a>Конфигурация в .NET Core
 
@@ -773,7 +773,7 @@ public static readonly Dictionary<string, string> _dict =
 
 ## <a name="getvalue"></a>GetValue
 
-[ConfigurationBinder.GetValue\<T>](xref:Microsoft.Extensions.Configuration.ConfigurationBinder.GetValue*) извлекает значение из конфигурации с указанным ключом и преобразует его в указанный тип. Если ключ не найден, перегрузка позволяет предоставлять значение по умолчанию.
+[ConfigurationBinder.GetValue\<T>](xref:Microsoft.Extensions.Configuration.ConfigurationBinder.GetValue*) извлекает одно значение из конфигурации с указанным ключом и преобразует его в указанный тип, не являющийся коллекцией. Перегрузка принимает значение по умолчанию.
 
 В следующем примере происходит следующее:
 
