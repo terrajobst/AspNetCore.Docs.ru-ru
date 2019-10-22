@@ -6,12 +6,12 @@ monikerRange: '>= aspnetcore-3.0'
 ms.author: johluo
 ms.date: 09/25/2019
 uid: grpc/migration
-ms.openlocfilehash: 8f0d9dd980fa3281f30dc29d329d10ccd352ae72
-ms.sourcegitcommit: 994da92edb0abf856b1655c18880028b15a28897
+ms.openlocfilehash: 596eca0f510387a18472eb353672980e0a8e0d24
+ms.sourcegitcommit: eb4fcdeb2f9e8413117624de42841a4997d1d82d
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71278703"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72698000"
 ---
 # <a name="migrating-grpc-services-from-c-core-to-aspnet-core"></a>Миграция gRPC Services с C-Core на ASP.NET Core
 
@@ -23,13 +23,13 @@ ms.locfileid: "71278703"
 
 В стеке ASP.NET Core службы gRPC по умолчанию создаются с [временем существования с областью действия](xref:fundamentals/dependency-injection#service-lifetimes). В отличие от этого, gRPC C-Core по умолчанию привязывается к службе с [одноэлементным жизненным циклом](xref:fundamentals/dependency-injection#service-lifetimes).
 
-Время существования с заданной областью позволяет реализации службы разрешать другие службы с ограниченным временем существования. Например, время существования с областью действия также `DbContext` можно разрешить из контейнера di посредством внедрения конструктора. Использование ограниченного времени существования:
+Время существования с заданной областью позволяет реализации службы разрешать другие службы с ограниченным временем существования. Например, время существования в области может также разрешать `DbContext` из контейнера DI посредством внедрения конструктора. Использование ограниченного времени существования:
 
 * Новый экземпляр реализации службы создается для каждого запроса.
 * Невозможно совместно использовать состояние между запросами через члены экземпляра в типе реализации.
 * Ожидание заключается в хранении общих состояний в одноэлементной службе в контейнере внедрения. Хранимые общие состояния разрешаются в конструкторе реализации службы gRPC.
 
-Дополнительные сведения о времени существования службы см. <xref:fundamentals/dependency-injection#service-lifetimes>в разделе.
+Дополнительные сведения о времени существования службы см. в разделе <xref:fundamentals/dependency-injection#service-lifetimes>.
 
 ### <a name="add-a-singleton-service"></a>Добавление одноэлементной службы
 
@@ -47,21 +47,21 @@ public void ConfigureServices(IServiceCollection services)
 
 ## <a name="configure-grpc-services-options"></a>Настройка параметров служб gRPC Services
 
-В приложениях на основе C-Core параметры, такие как `grpc.max_receive_message_length` и `grpc.max_send_message_length` , настраиваются `ChannelOption` с помощью при [создании экземпляра сервера](https://grpc.io/grpc/csharp/api/Grpc.Core.Server.html#Grpc_Core_Server__ctor_System_Collections_Generic_IEnumerable_Grpc_Core_ChannelOption__).
+В приложениях на основе C-Core такие параметры, как `grpc.max_receive_message_length` и `grpc.max_send_message_length`, настраиваются с помощью `ChannelOption` при [создании экземпляра сервера](https://grpc.io/grpc/csharp/api/Grpc.Core.Server.html#Grpc_Core_Server__ctor_System_Collections_Generic_IEnumerable_Grpc_Core_ChannelOption__).
 
-В ASP.NET Core gRPC предоставляет конфигурацию с помощью `GrpcServiceOptions` типа. Например, максимальный размер входящего сообщения службы gRPC можно настроить с помощью `AddGrpc`. В следующем примере по умолчанию `ReceiveMaxMessageSize` изменяется 4 МБ на 16 МБ:
+В ASP.NET Core gRPC предоставляет конфигурацию с помощью `GrpcServiceOptions` типа. Например, максимальный размер входящего сообщения службы gRPC можно настроить с помощью `AddGrpc`. В следующем примере `MaxReceiveMessageSize` по умолчанию для 4 МБ изменяется на 16 МБ:
 
 ```csharp
 public void ConfigureServices(IServiceCollection services)
 {
     services.AddGrpc(options =>
     {
-        options.ReceiveMaxMessageSize = 16 * 1024 * 1024; // 16 MB
+        options.MaxReceiveMessageSize = 16 * 1024 * 1024; // 16 MB
     });
 }
 ```
 
-Дополнительные сведения о конфигурации см. в <xref:grpc/configuration>разделе.
+Дополнительные сведения о конфигурации см. в разделе <xref:grpc/configuration>.
 
 ## <a name="logging"></a>Ведение журнала
 
