@@ -61,25 +61,25 @@ public void Configure(IApplicationBuilder app, IHostingEnvironment env)
 
 `CertificateAuthenticationOptions` Обработчик содержит некоторые встроенные проверки, которые являются минимальными проверками, которые следует выполнить с сертификатом. Каждый из этих параметров включен по умолчанию.
 
-### <a name="allowedcertificatetypes--chained-selfsigned-or-all-chained--selfsigned"></a>Алловедцертификатетипес = цепочка, Селфсигнед или все (цепочка | Селфсигнед)
+### <a name="allowedcertificatetypes--chained-selfsigned-or-all-chained--selfsigned"></a>AllowedCertificateTypes = Chained, SelfSigned или All (Chained | SelfSigned)
 
 Эта проверка подтверждает, что разрешен только соответствующий тип сертификата.
 
-### <a name="validatecertificateuse"></a>валидатецертификатеусе
+### <a name="validatecertificateuse"></a>ValidateCertificateUse
 
 Эта проверка проверяет, что сертификат, предоставленный клиентом, имеет расширенное использование ключа проверки подлинности клиента (EKU) или вообще не содержит EKU. Как говорится в спецификации, если EKU не указано, все EKU считаются допустимыми.
 
-### <a name="validatevalidityperiod"></a>валидатевалидитипериод
+### <a name="validatevalidityperiod"></a>ValidateValidityPeriod
 
 Эта проверка проверяет, что сертификат находится в пределах срока действия. В каждом запросе обработчик гарантирует, что сертификат, который был действителен, когда он был предоставлен, не истечет в течение текущего сеанса.
 
-### <a name="revocationflag"></a>ревокатионфлаг
+### <a name="revocationflag"></a>RevocationFlag
 
 Флаг, указывающий, какие сертификаты в цепочке проверяются на отзыв.
 
 Проверки отзыва выполняются только в том случае, если сертификат связан с корневым сертификатом.
 
-### <a name="revocationmode"></a>ревокатионмоде
+### <a name="revocationmode"></a>RevocationMode
 
 Флаг, указывающий, как выполняются проверки отзыва.
 
