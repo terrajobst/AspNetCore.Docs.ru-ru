@@ -4,14 +4,14 @@ author: coderandhiker
 description: Сведения о получении доступа к HttpContext в ASP.NET Core.
 ms.author: riande
 ms.custom: mvc
-ms.date: 07/27/2018
+ms.date: 10/11/2018
 uid: fundamentals/httpcontext
-ms.openlocfilehash: 373c036e0839ce51259e23f8503fbe4691b48751
-ms.sourcegitcommit: 5b0eca8c21550f95de3bb21096bd4fd4d9098026
+ms.openlocfilehash: 888adf6d61e6968127385952e65f942e86b7eb63
+ms.sourcegitcommit: 020c3760492efed71b19e476f25392dda5dd7388
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 04/27/2019
-ms.locfileid: "64886519"
+ms.lasthandoff: 10/12/2019
+ms.locfileid: "72288977"
 ---
 # <a name="access-httpcontext-in-aspnet-core"></a>Доступ к HttpContext в ASP.NET Core
 
@@ -137,7 +137,7 @@ public class UserRepository : IUserRepository
 `HttpContext` не является потокобезопасным. Чтение или запись свойств `HttpContext` за пределами обработки запроса может привести к `NullReferenceException`.
 
 > [!NOTE]
-> Использование `HttpContext` за пределами обработки запроса часто приводит к `NullReferenceException`. Если приложение генерирует случайные `NullReferenceException`, просмотрите части кода, которые запускают фоновую обработку или продолжают обработку после выполнения запроса. Ищите ошибки, например определение метода контроллера в качестве `async void`.
+> Использование `HttpContext` за пределами обработки запроса часто приводит к `NullReferenceException`. Если приложение генерирует случайные `NullReferenceException`, просмотрите части кода, которые запускают фоновую обработку или продолжают обработку после выполнения запроса. Ищите ошибки, например, как определение метода контроллера в качестве `async void`.
 
 Для безопасного выполнения фоновой работы с данными `HttpContext` сделайте следующее.
 

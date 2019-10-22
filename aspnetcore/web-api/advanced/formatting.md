@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: H1Hack27Feb2017
 ms.date: 8/22/2019
 uid: web-api/advanced/formatting
-ms.openlocfilehash: e503df3d81efbb2800503c0cb4ff5ae093b6e1ac
-ms.sourcegitcommit: 023495344053dc59115c80538f0ece935e7490a2
+ms.openlocfilehash: 78fe620ea8fdd681a276253f77939bcb2a56ebb9
+ms.sourcegitcommit: 35a86ce48041caaf6396b1e88b0472578ba24483
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/28/2019
-ms.locfileid: "71592355"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72391280"
 ---
 # <a name="format-response-data-in-aspnet-core-web-api"></a>Форматирование данных отклика в веб-API ASP.NET Core
 
@@ -57,9 +57,7 @@ ms.locfileid: "71592355"
 
 [!code-csharp[](./formatting/sample/Controllers/AuthorsController.cs?name=snippet_search)]
 
-Если только не был запрошен иной формат и сервер способен возвратить данные в нем, возвращается ответ в формате JSON. Средства, такие как [Fiddler](https://www.telerik.com/fiddler) или [Postman](https://www.getpostman.com/tools), могут установить заголовок `Accept`, чтобы указать формат возвращаемого значения. Когда `Accept` содержит тип, который поддерживается сервером, возвращается этот тип.
-
-По умолчанию ASP.NET Core поддерживает только JSON. Для приложений, которые не изменяют значения по умолчанию, ответы в формате JSON всегда возвращаются независимо от запроса клиента. Сведения о добавлении дополнительных форматировщиков приведены в следующем разделе.
+По умолчанию ASP.NET Core поддерживает типы мультимедиа `application/json`, `text/json` и `text/plain`. Средства, такие как [Fiddler](https://www.telerik.com/fiddler) или [Postman](https://www.getpostman.com/tools), могут установить заголовок запроса `Accept`, чтобы указать формат возвращаемого значения. Если заголовок `Accept` содержит тип, который поддерживается сервером, возвращается этот тип. Сведения о добавлении дополнительных форматировщиков приведены в следующем разделе.
 
 Действия контроллера могут возвращать POCO (простые объекты CLR). При возвращении POCO среда выполнения автоматически создает `ObjectResult`, который генерирует оболочку объекта. Клиент получает отформатированный сериализованный объект. Если возвращаемый объект имеет значение `null`, возвращается ответ `204 No Content`.
 
@@ -221,16 +219,16 @@ public IActionResult Get()
 
 ### <a name="special-case-formatters"></a>Специальные форматировщики
 
-Встроенные модули форматирования реализуют некоторые специальные возможности. По умолчанию типы возвращаемых значений `string` форматируются как *text/plain* (*text/html*, если того требует заголовок `Accept`). Это поведение можно отключить, удалив <xref:Microsoft.AspNetCore.Mvc.Formatters.TextOutputFormatter>. Форматировщики удаляются в методе `Configure`. Действия, у которых типом возвращаемого объекта является модель, возвращают ответ `204 No Content` при возврате значения `null`. Это поведение можно отключить, удалив <xref:Microsoft.AspNetCore.Mvc.Formatters.HttpNoContentOutputFormatter>. Приведенный ниже код удаляет `TextOutputFormatter` и `HttpNoContentOutputFormatter`.
+Встроенные модули форматирования реализуют некоторые специальные возможности. По умолчанию типы возвращаемых значений `string` форматируются как *text/plain* (*text/html*, если того требует заголовок `Accept`). Это поведение можно отключить, удалив <xref:Microsoft.AspNetCore.Mvc.Formatters.StringOutputFormatter>. Форматировщики удаляются в методе `ConfigureServices`. Действия, у которых типом возвращаемого объекта является модель, возвращают ответ `204 No Content` при возврате значения `null`. Это поведение можно отключить, удалив <xref:Microsoft.AspNetCore.Mvc.Formatters.HttpNoContentOutputFormatter>. Приведенный ниже код удаляет `StringOutputFormatter` и `HttpNoContentOutputFormatter`.
 
 ::: moniker range=">= aspnetcore-3.0"
-[!code-csharp[](./formatting/3.0sample/StartupTextOutputFormatter.cs?name=snippet)]
+[!code-csharp[](./formatting/3.0sample/StartupStringOutputFormatter.cs?name=snippet)]
 ::: moniker-end
 ::: moniker range="< aspnetcore-3.0"
-[!code-csharp[](./formatting/sample/StartupTextOutputFormatter.cs?name=snippet)]
+[!code-csharp[](./formatting/sample/StartupStringOutputFormatter.cs?name=snippet)]
 ::: moniker-end
 
-При отсутствии `TextOutputFormatter` `string` возвращаемые типы возвращают `406 Not Acceptable`. Если форматировщик XML существует, он форматирует типы возвращаемых значений `string`, когда `TextOutputFormatter` удален.
+Без `StringOutputFormatter`, встроенный модуль форматирования JSON форматирует типы возвращаемого значения `string`. Если встроенный модуль форматирования JSON удален и доступен модуль форматирования XML, то типы возвращаемого значения `string` форматирует модуль форматирования XML. В противном случае, `string` типы возвращаемого значения возвращают `406 Not Acceptable`.
 
 Без `HttpNoContentOutputFormatter` объекты со значением null форматируются с помощью настроенного модуля форматирования. Например:
 

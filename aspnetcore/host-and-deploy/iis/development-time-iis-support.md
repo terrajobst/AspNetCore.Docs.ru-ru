@@ -5,14 +5,14 @@ description: Узнайте о поддерживаемых возможност
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 04/08/2019
+ms.date: 10/10/2019
 uid: host-and-deploy/iis/development-time-iis-support
-ms.openlocfilehash: f2d5dbbdc80eec035616ddea234ee5d3343eeae8
-ms.sourcegitcommit: 8516b586541e6ba402e57228e356639b85dfb2b9
+ms.openlocfilehash: e5da4f7202bf31e65c366d6f7de54212f5b0fed7
+ms.sourcegitcommit: 7d3c6565dda6241eb13f9a8e1e1fd89b1cfe4d18
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67815179"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72259796"
 ---
 # <a name="development-time-iis-support-in-visual-studio-for-aspnet-core"></a>Поддержка служб IIS во время разработки в Visual Studio для ASP.NET Core
 
@@ -140,7 +140,7 @@ ms.locfileid: "67815179"
 Запустите Visual Studio от имени администратора.
 
 * Убедитесь, что для раскрывающегося списка с конфигурацией сборки построения выбрано значение **Отладка**.
-* Выберите для кнопки "Выполнить" профиль **IIS** и нажмите ее запуска приложения:
+* Настройте кнопку [Начать отладку](/visualstudio/debugger/debugger-feature-tour) на профиль **IIS** и нажмите ее для запуска приложения.
 
 Если вы вошли в Visual Studio без прав администратора, возможно, потребуется перезапуск. Перезапустите Visual Studio при появлении соответствующего запроса.
 

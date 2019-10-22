@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 09/28/2019
 uid: mvc/controllers/filters
-ms.openlocfilehash: ed48c2074360768b8d8c5af7057b353b00592394
-ms.sourcegitcommit: 73a451e9a58ac7102f90b608d661d8c23dd9bbaf
+ms.openlocfilehash: 0c3597f24e02af40517e12a86127b140ed4fb550
+ms.sourcegitcommit: 07d98ada57f2a5f6d809d44bdad7a15013109549
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72037696"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72333934"
 ---
 # <a name="filters-in-aspnet-core"></a>Фильтры в ASP.NET Core
 
@@ -158,7 +158,7 @@ ASP.NET Core включает встроенные фильтры на осно�
 
 `TestController`:
 
-* Применяет `SampleActionFilterAttribute` (`[SampleActionFilter]`) для действия `FilterTest2`:
+* Применяет `SampleActionFilterAttribute` (`[SampleActionFilter]`) для действия `FilterTest2`.
 * Переопределяет `OnActionExecuting` и `OnActionExecuted`.
 
 [!code-csharp[](./filters/sample/FiltersSample/Controllers/TestController.cs?name=snippet)]
@@ -449,18 +449,7 @@ FiltersSample.Filters.LogConstantFilter:Information: Method 'Hi' called
 * Предотвращает выполнение результата действия и последующих фильтров.
 * Рассматривается как сбой, а не успешный результат.
 
-При выполнении метода <xref:Microsoft.AspNetCore.Mvc.Filters.IResultFilter.OnResultExecuted*?displayProperty=fullName>:
-
-* Ответ, скорее всего, был отправлен клиенту и его нельзя изменить.
-* Если возникло исключение, текст ответа не отправляется.
-
-<!-- Review preceding "If an exception was thrown: Original 
-When the OnResultExecuted method runs, the response has likely been sent to the client and cannot be changed further (unless an exception was thrown).
-
-SHould that be , 
-If an exception was thrown **IN THE RESULT FILTER**, the response body is not sent.
-
- -->
+Если запускается метод <xref:Microsoft.AspNetCore.Mvc.Filters.IResultFilter.OnResultExecuted*?displayProperty=fullName>, ответ, скорее всего, уже был отправлен клиенту. Если ответ уже был отправлен клиенту его больше нельзя изменить.
 
 `ResultExecutedContext.Canceled` будет иметь значение `true`, если выполнение результата действия было сокращено другим фильтром.
 
@@ -494,7 +483,7 @@ If an exception was thrown **IN THE RESULT FILTER**, the response body is not se
 Приведенный выше код можно проверить, выполнив [скачиваемый пример](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/controllers/filters/sample):
 
 * Вызовите средства для разработчика (F12).
-* Перейдите к папке `https://localhost:5001/Sample/HeaderWithFactory`.
+* Перейдите к `https://localhost:5001/Sample/HeaderWithFactory`.
 
 В средствах для разработчика (F12) отобразятся следующие заголовки ответа, добавленные примером кода:
 
@@ -532,7 +521,7 @@ What's a non-named attribute?
 
 Чтобы использовать ПО промежуточного слоя в качестве фильтра, создайте тип с методом `Configure`, определяющим ПО промежуточного слоя, которое нужно внедрить в конвейер фильтров. В примере ниже ПО промежуточного слоя локализации применяется для определения текущих языка и региональных параметров для запроса:
 
-[!code-csharp[](./filters/sample/FiltersSample/Filters/LocalizationPipeline.cs?name=snippet_MiddlewareFilter&highlight=3,21)]
+[!code-csharp[](./filters/sample/FiltersSample/Filters/LocalizationPipeline.cs?name=snippet_MiddlewareFilter&highlight=3,22)]
 
 Используйте <xref:Microsoft.AspNetCore.Mvc.MiddlewareFilterAttribute> для выполнения ПО промежуточного слоя:
 

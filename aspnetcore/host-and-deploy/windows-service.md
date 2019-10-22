@@ -5,14 +5,14 @@ description: Узнайте, как разместить приложение AS
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 10/07/2019
+ms.date: 10/10/2019
 uid: host-and-deploy/windows-service
-ms.openlocfilehash: 32226c06ba005b4a61c473d6584b2b762733dcbd
-ms.sourcegitcommit: 3d082bd46e9e00a3297ea0314582b1ed2abfa830
+ms.openlocfilehash: b02e627af875f15a81d68b0d625a2eccf25c0657
+ms.sourcegitcommit: 07d98ada57f2a5f6d809d44bdad7a15013109549
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/07/2019
-ms.locfileid: "72007301"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72333806"
 ---
 # <a name="host-aspnet-core-in-a-windows-service"></a>Размещение ASP.NET Core в службе Windows
 
@@ -302,10 +302,12 @@ Remove-Service -Name {NAME}
 
 По умолчанию платформа ASP.NET Core привязана к `http://localhost:5000`. Настройте URL-адрес и порт, задав переменную среды `ASPNETCORE_URLS`.
 
-См. дополнительные способы настройки URL-адресов и портов, включая поддержку конечных точек HTTPS:
+Дополнительные сведения о подходах к настройке URL-адресов и портов см. в соответствующей статье сервера:
 
-* <xref:fundamentals/servers/kestrel#endpoint-configuration> (Kestrel)
-* <xref:fundamentals/servers/httpsys#configure-windows-server> (HTTP.sys)
+* <xref:fundamentals/servers/kestrel#endpoint-configuration>
+* <xref:fundamentals/servers/httpsys#configure-windows-server>
+
+В предыдущем руководстве рассматривается поддержка конечных точек HTTPS. Например, настройте приложение для HTTPS, если проверка подлинности используется со службой Windows.
 
 > [!NOTE]
 > Использование сертификата разработки ASP.NET Core HTTPS для защиты конечной точки службы не поддерживается.

@@ -5,12 +5,12 @@ description: Добавление представления в простое �
 ms.author: riande
 ms.date: 8/04/2019
 uid: tutorials/first-mvc-app/adding-view
-ms.openlocfilehash: 1c29b59f9306774316ff37eeb57cc441fe5c7370
-ms.sourcegitcommit: 2eb605f4f20ac4dd9de6c3b3e3453e108a357a21
+ms.openlocfilehash: de75c3b0651c0cda6629af786d7db9dc83bc4fef
+ms.sourcegitcommit: 020c3760492efed71b19e476f25392dda5dd7388
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68820077"
+ms.lasthandoff: 10/12/2019
+ms.locfileid: "72288820"
 ---
 # <a name="add-a-view-to-an-aspnet-core-mvc-app"></a>Добавление представления в приложение MVC ASP.NET Core
 
@@ -48,7 +48,7 @@ ms.locfileid: "68820077"
 
 ![Диалоговое окно ''Добавление нового элемента''](adding-view/_static/add_view.png)
 
-# <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code.](#tab/visual-studio-code)
+# <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
 Добавьте представление `Index` для `HelloWorldController`.
 
@@ -86,7 +86,7 @@ ms.locfileid: "68820077"
 
 ## <a name="change-the-title-footer-and-menu-link-in-the-layout-file"></a>Изменение заголовка, нижнего колонтитула и ссылки меню в файле макета
 
-Замените содержимое файла *Views\Shared\_Layout.cshtml* следующей разметкой. Изменения выделены:
+Замените содержимое файла *Views/Shared/_Layout.cshtml* следующей разметкой. Изменения выделены:
 
 [!code-html[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie3/Views/Shared/_Layout.cshtml?highlight=6,14,40)]
 
@@ -205,7 +205,7 @@ ms.locfileid: "68820077"
 
 ![Диалоговое окно ''Добавление нового элемента''](adding-view/_static/add_view.png)
 
-# <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code.](#tab/visual-studio-code)
+# <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
 Добавьте представление `Index` для `HelloWorldController`.
 

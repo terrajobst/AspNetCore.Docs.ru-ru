@@ -5,18 +5,16 @@ description: Сведения о службах и ПО промежуточно
 ms.author: riande
 ms.date: 01/14/2017
 uid: fundamentals/localization
-ms.openlocfilehash: 6dfbeae201a3586dfea6620917083130c4985b22
-ms.sourcegitcommit: dc96d76f6b231de59586fcbb989a7fb5106d26a8
+ms.openlocfilehash: 9ed133c93a9ec95c63869b710d120eca9fda1b6e
+ms.sourcegitcommit: 07d98ada57f2a5f6d809d44bdad7a15013109549
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71703809"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72333706"
 ---
 # <a name="globalization-and-localization-in-aspnet-core"></a>Глобализация и локализация в ASP.NET Core
 
 Авторы: [Рик Андерсон](https://twitter.com/RickAndMSFT) (Rick Anderson), [Дэмиен Боуден](https://twitter.com/damien_bod) (Damien Bowden), [Барт Каликсто](https://twitter.com/bartmax) (Bart Calixto), [Надим Афана](https://afana.me/) (Nadeem Afana) и [Хишам Бин Атея](https://twitter.com/hishambinateya) (Hisham Bin Ateya)
-
-Пока этот документ не обновлен для ASP.NET Core 3.0, читайте блог Хишама [Новые возможности локализации в ASP.NET Core 3.0](http://hishambinateya.com/what-is-new-in-localization-in-asp.net-core-3.0).
 
 Создание многоязычного веб-сайта на основе ASP.NET Core позволит расширить аудиторию. ASP.NET Core предоставляет службы и ПО промежуточного слоя для локализации на разные языки и для разных региональных параметров.
 
@@ -275,10 +273,36 @@ using Microsoft.Extensions.Localization;
 
 6. Выберите язык, а затем нажмите кнопку **Вверх**.
 
+::: moniker range=">= aspnetcore-3.0"
+### <a name="the-content-language-http-header"></a>Заголовок HTTP Content-Language
+
+Заголовок сущности [Content-Language](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Language):
+
+ - Используется для описания языков, предназначенных для аудитории.
+ - Позволяет пользователю различать в соответствии с предпочтительным языком пользователя.
+
+Заголовки сущностей используются как в HTTP-запросах, так и в ответах.
+
+В ASP.NET Core 3,0 заголовок `Content-Language` можно добавить, задав свойство `ApplyCurrentCultureToResponseHeaders`.
+
+Добавление заголовка `Content-Language`:
+
+ - Позволяет RequestLocalizationMiddleware задать заголовок `Content-Language` с `CurrentUICulture`.
+ - Устраняет необходимость явной установки заголовка ответа `Content-Language`.
+
+```csharp
+app.UseRequestLocalization(new RequestLocalizationOptions
+{
+    ApplyCurrentCultureToResponseHeaders = true
+});
+```
+::: moniker-end
+
 ### <a name="use-a-custom-provider"></a>Использование пользовательского поставщика
 
 Предположим, необходимо, чтобы ваши клиенты могли сохранять информацию о своем языке и региональных параметрах в ваших базах данных. Можно написать поставщик, который будет искать эти значения для пользователя. В следующем примере кода показано, как добавить пользовательский поставщик:
 
+::: moniker range="< aspnetcore-3.0"
 ```csharp
 private const string enUSCulture = "en-US";
 
@@ -301,6 +325,32 @@ services.Configure<RequestLocalizationOptions>(options =>
     }));
 });
 ```
+::: moniker-end
+
+::: moniker range=">= aspnetcore-3.0"
+```csharp
+private const string enUSCulture = "en-US";
+
+services.Configure<RequestLocalizationOptions>(options =>
+{
+    var supportedCultures = new[]
+    {
+        new CultureInfo(enUSCulture),
+        new CultureInfo("fr")
+    };
+
+    options.DefaultRequestCulture = new RequestCulture(culture: enUSCulture, uiCulture: enUSCulture);
+    options.SupportedCultures = supportedCultures;
+    options.SupportedUICultures = supportedCultures;
+
+    options.AddInitialRequestCultureProvider(new CustomRequestCultureProvider(async context =>
+    {
+        // My custom request culture logic
+        return new ProviderCultureResult("en");
+    }));
+});
+```
+::: moniker-end
 
 Для добавления или удаления поставщиков локализации используйте объект `RequestLocalizationOptions`.
 
@@ -341,7 +391,11 @@ services.Configure<RequestLocalizationOptions>(options =>
 * Родительский язык и региональные параметры: нейтральные язык и региональные параметры, содержащие конкретные язык и региональные параметры. (например, "en" — это родительские язык и региональные параметры для "en-US" и "en-GB").
 * Языковой стандарт: тот же, что и язык и региональные параметры.
 
-[!INCLUDE[](~/includes/currency.md)]
+[!INCLUDE[](~/includes/localization/currency.md)]
+
+::: moniker range=">= aspnetcore-3.0"
+[!INCLUDE[](~/includes/localization/unsupported-culture-log-level.md)]
+::: moniker-end
 
 ## <a name="additional-resources"></a>Дополнительные ресурсы
 
@@ -351,3 +405,4 @@ services.Configure<RequestLocalizationOptions>(options =>
 * [Ресурсы в RESX-файлах](/dotnet/framework/resources/working-with-resx-files-programmatically)
 * [Набор средств многоязычных приложений Майкрософт](https://marketplace.visualstudio.com/items?itemName=MultilingualAppToolkit.MultilingualAppToolkit-18308)
 * [Локализация и универсальные шаблоны](https://github.com/hishamco/hishambinateya.com/blob/master/Posts/localization-and-generics.md)
+* [Новые возможности локализации в ASP.NET Core 3,0](http://hishambinateya.com/what-is-new-in-localization-in-asp.net-core-3.0)

@@ -6,21 +6,33 @@
 @using Microsoft.JSInterop
 @inject IJSRuntime JSRuntime
 
-<input @ref="myInput" value="Value set during render" />
+<div @ref="divElement">Text during render</div>
 
 @code {
-    private ElementReference myInput;
+    private ElementReference divElement;
 
-    protected override void OnAfterRender(bool firstRender)
+    protected override async Task OnAfterRenderAsync(bool firstRender)
     {
         if (firstRender)
         {
-            JSRuntime.InvokeVoidAsync(
-                "setElementValue", myInput, "Value set after render");
+            await JSRuntime.InvokeVoidAsync(
+                "setElementText", divElement, "Text after render");
         }
     }
 }
 ```
+
+В предыдущем примере кода укажите `setElementText` функцию JavaScript в элементе `<head>` *wwwroot/index.HTML* (блазор Assembly) или *pages/_Host. cshtml* (блазор Server). Функция вызывается с `IJSRuntime.InvokeVoidAsync` и не возвращает значение:
+
+```html
+<!--  -->
+<script>
+  window.setElementText = (element, text) => element.innerText = text;
+</script>
+```
+
+> [!WARNING]
+> В предыдущем примере модель DOM (модель DOM) изменяется непосредственно только в демонстрационных целях. Непосредственное изменение модели DOM с помощью JavaScript не рекомендуется в большинстве сценариев, поскольку JavaScript может мешать отслеживанию изменений Блазор.
 
 В следующем компоненте показано, как использовать взаимодействие JavaScript как часть логики инициализации компонента способом, совместимым с предварительной отрисовкой. Компонент показывает, что можно активировать обновление отрисовки из `OnAfterRenderAsync`. В этом сценарии разработчику следует избегать создания бесконечного цикла.
 
@@ -39,24 +51,36 @@
     <strong id="val-get-by-interop">@(infoFromJs ?? "No value yet")</strong>
 </p>
 
-<p>
-    Set value via JS interop call:
-    <input id="val-set-by-interop" @ref="myElem" />
-</p>
+Set value via JS interop call:
+<div id="val-set-by-interop" @ref="divElement"></div>
 
 @code {
     private string infoFromJs;
-    private ElementReference myElem;
+    private ElementReference divElement;
 
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {
         if (firstRender && infoFromJs == null)
         {
             infoFromJs = await JSRuntime.InvokeAsync<string>(
-                "setElementValue", myElem, "Hello from interop call");
+                "setElementText", divElement, "Hello from interop call!");
 
             StateHasChanged();
         }
     }
 }
 ```
+
+В предыдущем примере кода укажите `setElementText` функцию JavaScript в элементе `<head>` *wwwroot/index.HTML* (блазор Assembly) или *pages/_Host. cshtml* (блазор Server). Функция вызывается с `IJSRuntime.InvokeAsync` и возвращает значение:
+
+```html
+<script>
+  window.setElementText = (element, text) => {
+    element.innerText = text;
+    return text;
+  };
+</script>
+```
+
+> [!WARNING]
+> В предыдущем примере модель DOM (модель DOM) изменяется непосредственно только в демонстрационных целях. Непосредственное изменение модели DOM с помощью JavaScript не рекомендуется в большинстве сценариев, поскольку JavaScript может мешать отслеживанию изменений Блазор.

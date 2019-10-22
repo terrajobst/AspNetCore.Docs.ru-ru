@@ -7,16 +7,16 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 09/26/2019
 uid: fundamentals/host/hosted-services
-ms.openlocfilehash: 0eaa3a62370c1e413840bb65f597dc664adafc38
-ms.sourcegitcommit: fe88748b762525cb490f7e39089a4760f6a73a24
+ms.openlocfilehash: c1fbb5ae8ffc4ee506f42df6a4cbbe845b2b903d
+ms.sourcegitcommit: 07d98ada57f2a5f6d809d44bdad7a15013109549
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71688100"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72333657"
 ---
 # <a name="background-tasks-with-hosted-services-in-aspnet-core"></a>Фоновые задачи с размещенными службами в ASP.NET Core
 
-Автор [Люк Латэм](https://github.com/guardrex) (Luke Latham)
+Авторы: [Luke Latham](https://github.com/guardrex) (Люк Латэм) и [Jeow Li Huan](https://github.com/huan086) (Чжоу Ли Хуан)
 
 ::: moniker range=">= aspnetcore-3.0"
 
@@ -147,13 +147,17 @@ ms.locfileid: "71688100"
 
 * Метод `BackgroundProcessing` возвращает объект `Task`, ожидаемый в `ExecuteAsync`:
 * Фоновые задачи в очереди выводятся из очереди и выполняются в `BackgroundProcessing`:
+* Рабочие элементы ожидают остановки службы через `StopAsync`.
 
-[!code-csharp[](hosted-services/samples/3.x/BackgroundTasksSample/Services/QueuedHostedService.cs?name=snippet1&highlight=28,39-40,44)]
+[!code-csharp[](hosted-services/samples/3.x/BackgroundTasksSample/Services/QueuedHostedService.cs?name=snippet1&highlight=28-29,33)]
 
 Служба `MonitorLoop` обрабатывает задачи постановки в очередь для размещенной службы при выборе на устройстве ввода ключа `w`:
 
 * В службу `MonitorLoop` внедряется `IBackgroundTaskQueue`.
 * `IBackgroundTaskQueue.QueueBackgroundWorkItem` вызывается для постановки рабочего элемента в очередь:
+* Рабочий элемент имитирует долго выполняющуюся фоновую задачу:
+  * Выполняется три 5-секундных задержки (`Task.Delay`).
+  * Оператор `try-catch` перехватывается <xref:System.OperationCanceledException>, если задача отменена.
 
 [!code-csharp[](hosted-services/samples/3.x/BackgroundTasksSample/Services/MonitorLoop.cs?name=snippet_Monitor&highlight=7,33)]
 
@@ -234,7 +238,7 @@ ms.locfileid: "71688100"
 
 ## <a name="queued-background-tasks"></a>Фоновые задачи в очереди
 
-Очередь фоновых задач основывается на методе <xref:System.Web.Hosting.HostingEnvironment.QueueBackgroundWorkItem*> в .NET 4.x ([предварительно запланировано встроить в ASP.NET Core](https://github.com/aspnet/Hosting/issues/1280)):
+Очередь фоновых задач основывается на методе <xref:System.Web.Hosting.HostingEnvironment.QueueBackgroundWorkItem*> в .NET Framework 4.x ([предварительно запланировано встроить в ASP.NET Core](https://github.com/aspnet/Hosting/issues/1280)):
 
 [!code-csharp[](hosted-services/samples/2.x/BackgroundTasksSample/Services/BackgroundTaskQueue.cs?name=snippet1)]
 
