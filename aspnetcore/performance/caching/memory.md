@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 8/22/2019
 uid: performance/caching/memory
-ms.openlocfilehash: aa39503f034cf46fa4317a1f3cbb8d130afd1b8c
-ms.sourcegitcommit: 07d98ada57f2a5f6d809d44bdad7a15013109549
+ms.openlocfilehash: d6b2aa363c552fdbda7f6e9ec5d476768c17d8a5
+ms.sourcegitcommit: 810d5831169770ee240d03207d6671dabea2486e
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72333741"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72779193"
 ---
 # <a name="cache-in-memory-in-aspnet-core"></a>Кэширование в памяти в ASP.NET Core
 
@@ -33,15 +33,15 @@ ASP.NET Core поддерживает несколько разных кэшей
 
 ## <a name="systemruntimecachingmemorycache"></a>System. Runtime. Caching/MemoryCache
 
-<xref:System.Runtime.Caching> @ no__t-1 @ no__t-2 ([пакет NuGet](https://www.nuget.org/packages/System.Runtime.Caching/)) можно использовать с:
+<xref:System.Runtime.Caching>/<xref:System.Runtime.Caching.MemoryCache> ([пакет NuGet](https://www.nuget.org/packages/System.Runtime.Caching/)) можно использовать с:
 
 * .NET Standard 2,0 или более поздней версии.
 * Любая [реализация .NET](/dotnet/standard/net-standard#net-implementation-support) , предназначенная для .NET Standard 2,0 или более поздней версии. Например, ASP.NET Core 2,0 или более поздней версии.
 * .NET Framework 4,5 или более поздней версии.
 
-[Microsoft. Extensions. Caching. Memory](https://www.nuget.org/packages/Microsoft.Extensions.Caching.Memory/)/ @ no__t-2 (описывается в этой статье) рекомендуется для `System.Runtime.Caching` @ no__t-4 @ no__t-5, так как он лучше интегрирован в ASP.NET Core. Например, `IMemoryCache` работает в собственном режиме с [внедрением зависимостей](xref:fundamentals/dependency-injection)ASP.NET Core.
+[Microsoft. Extensions. Caching. Memory](https://www.nuget.org/packages/Microsoft.Extensions.Caching.Memory/)/`IMemoryCache` (описанные в этой статье) рекомендуется для `System.Runtime.Caching`/`MemoryCache`, так как он лучше интегрирован в ASP.NET Core. Например, `IMemoryCache` работает в собственном режиме с [внедрением зависимостей](xref:fundamentals/dependency-injection)ASP.NET Core.
 
-Используйте `System.Runtime.Caching` @ no__t-1 @ no__t-2 в качестве моста совместимости при переносе кода из ASP.NET 4. x в ASP.NET Core.
+Используйте `System.Runtime.Caching`/`MemoryCache` в качестве моста совместимости при переносе кода из ASP.NET 4. x в ASP.NET Core.
 
 ## <a name="cache-guidelines"></a>Рекомендации по кэшированию
 
@@ -56,6 +56,7 @@ ASP.NET Core поддерживает несколько разных кэшей
 > [!WARNING]
 > Использование кэша *общей* памяти из [внедрения зависимостей](xref:fundamentals/dependency-injection) и вызова `SetSize`, `Size` или `SizeLimit` для ограничения размера кэша может привести к сбою приложения. Если для кэша задано ограничение размера, все записи должны указывать размер при добавлении. Это может привести к проблемам, так как разработчики могут не иметь полного контроля над тем, что использует общий кэш. Например, Entity Framework Core использует общий кэш и не задает размер. Если приложение устанавливает ограничение размера кэша и использует EF Core, приложение создает исключение `InvalidOperationException`.
 > При использовании `SetSize`, `Size` или `SizeLimit` для ограничения кэша создайте одноэлементный кэш для кэширования. Дополнительные сведения и пример см. в статьях [Использование SetSize, Size и сизелимит для ограничения размера кэша](#use-setsize-size-and-sizelimit-to-limit-cache-size).
+> Общий кэш является общим для других платформ или библиотек. Например, EF Core использует общий кэш и не задает размер. 
 
 Кэширование в памяти — это *Служба* , на которую ссылается приложение, использующее [внедрение зависимостей](xref:fundamentals/dependency-injection). Запросите экземпляр `IMemoryCache` в конструкторе:
 
@@ -206,15 +207,15 @@ ASP.NET Core поддерживает несколько разных кэшей
 
 ## <a name="systemruntimecachingmemorycache"></a>System. Runtime. Caching/MemoryCache
 
-<xref:System.Runtime.Caching> @ no__t-1 @ no__t-2 ([пакет NuGet](https://www.nuget.org/packages/System.Runtime.Caching/)) можно использовать с:
+<xref:System.Runtime.Caching>/<xref:System.Runtime.Caching.MemoryCache> ([пакет NuGet](https://www.nuget.org/packages/System.Runtime.Caching/)) можно использовать с:
 
 * .NET Standard 2,0 или более поздней версии.
 * Любая [реализация .NET](/dotnet/standard/net-standard#net-implementation-support) , предназначенная для .NET Standard 2,0 или более поздней версии. Например, ASP.NET Core 2,0 или более поздней версии.
 * .NET Framework 4,5 или более поздней версии.
 
-[Microsoft. Extensions. Caching. Memory](https://www.nuget.org/packages/Microsoft.Extensions.Caching.Memory/)/ @ no__t-2 (описывается в этой статье) рекомендуется для `System.Runtime.Caching` @ no__t-4 @ no__t-5, так как он лучше интегрирован в ASP.NET Core. Например, `IMemoryCache` работает в собственном режиме с [внедрением зависимостей](xref:fundamentals/dependency-injection)ASP.NET Core.
+[Microsoft. Extensions. Caching. Memory](https://www.nuget.org/packages/Microsoft.Extensions.Caching.Memory/)/`IMemoryCache` (описанные в этой статье) рекомендуется для `System.Runtime.Caching`/`MemoryCache`, так как он лучше интегрирован в ASP.NET Core. Например, `IMemoryCache` работает в собственном режиме с [внедрением зависимостей](xref:fundamentals/dependency-injection)ASP.NET Core.
 
-Используйте `System.Runtime.Caching` @ no__t-1 @ no__t-2 в качестве моста совместимости при переносе кода из ASP.NET 4. x в ASP.NET Core.
+Используйте `System.Runtime.Caching`/`MemoryCache` в качестве моста совместимости при переносе кода из ASP.NET 4. x в ASP.NET Core.
 
 ## <a name="cache-guidelines"></a>Рекомендации по кэшированию
 

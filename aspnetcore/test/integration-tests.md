@@ -7,12 +7,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 10/14/2019
 uid: test/integration-tests
-ms.openlocfilehash: 863b95230d376d050c34a9ed585b7696e649cb05
-ms.sourcegitcommit: dd026eceee79e943bd6b4a37b144803b50617583
+ms.openlocfilehash: c0fede8f9f46d1b10502055d8e1fe7caa48cf351
+ms.sourcegitcommit: 810d5831169770ee240d03207d6671dabea2486e
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72378717"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72779231"
 ---
 # <a name="integration-tests-in-aspnet-core"></a>Интеграционные тесты в ASP.NET Core
 
@@ -126,13 +126,13 @@ Entity Framework Core также используется в тестах. Сс�
 
 ## <a name="basic-tests-with-the-default-webapplicationfactory"></a>Базовые тесты с Вебаппликатионфактори по умолчанию
 
-[Вебаппликатионфактори @ no__t-1TEntryPoint >](/dotnet/api/microsoft.aspnetcore.mvc.testing.webapplicationfactory-1) используется для создания [TestServer](/dotnet/api/microsoft.aspnetcore.testhost.testserver) для интеграционных тестов. `TEntryPoint` является классом точки входа сут, обычно классом `Startup`.
+[Вебаппликатионфактори\<тентрипоинт >](/dotnet/api/microsoft.aspnetcore.mvc.testing.webapplicationfactory-1) используется для создания [TestServer](/dotnet/api/microsoft.aspnetcore.testhost.testserver) для тестов интеграции. `TEntryPoint` является классом точки входа сут, обычно классом `Startup`.
 
 Тестовые классы реализуют интерфейс *основы класса* ([иклассфикстуре](https://xunit.github.io/docs/shared-context#class-fixture)), чтобы указать, что класс содержит тесты, и предоставить экземпляры общего объекта между тестами в классе.
 
 ### <a name="basic-test-of-app-endpoints"></a>Базовое тестирование конечных точек приложения
 
-В следующем тестовом классе, `BasicTests`, используется `WebApplicationFactory` для начальной загрузки сут и предоставления [HttpClient](/dotnet/api/system.net.http.httpclient) методу теста, `Get_EndpointsReturnSuccessAndCorrectContentType`. Метод проверяет успешность кода состояния отклика (коды состояний в диапазоне 200-299), а заголовок `Content-Type` — `text/html; charset=utf-8` для нескольких страниц приложений.
+В следующем тестовом классе `BasicTests`используется `WebApplicationFactory` для начальной загрузки сут и предоставления [HttpClient](/dotnet/api/system.net.http.httpclient) методу теста, `Get_EndpointsReturnSuccessAndCorrectContentType`. Метод проверяет успешность кода состояния отклика (коды состояний в диапазоне 200-299), а заголовок `Content-Type` — `text/html; charset=utf-8` для нескольких страниц приложений.
 
 [Креатеклиент](/dotnet/api/microsoft.aspnetcore.mvc.testing.webapplicationfactory-1.createclient) создает экземпляр `HttpClient`, который автоматически следует за перенаправляет и обрабатывает файлы cookie.
 
@@ -148,7 +148,7 @@ Entity Framework Core также используется в тестах. Сс�
 
 [!code-csharp[](integration-tests/samples/3.x/IntegrationTestsSample/src/RazorPagesProject/Startup.cs?name=snippet1)]
 
-В тесте `Get_SecurePageRequiresAnAuthenticatedUser` параметр [вебаппликатионфакториклиентоптионс](/dotnet/api/microsoft.aspnetcore.mvc.testing.webapplicationfactoryclientoptions) имеет значение запретить перенаправления, установив [алловауторедирект](/dotnet/api/microsoft.aspnetcore.mvc.testing.webapplicationfactoryclientoptions.allowautoredirect) в значение `false`:
+В `Get_SecurePageRequiresAnAuthenticatedUser`ном тесте параметр [вебаппликатионфакториклиентоптионс](/dotnet/api/microsoft.aspnetcore.mvc.testing.webapplicationfactoryclientoptions) имеет значение запретить перенаправления, установив для [алловауторедирект](/dotnet/api/microsoft.aspnetcore.mvc.testing.webapplicationfactoryclientoptions.allowautoredirect) значение `false`.
 
 [!code-csharp[](integration-tests/samples/3.x/IntegrationTestsSample/tests/RazorPagesProject.Tests/IntegrationTests/BasicTests.cs?name=snippet2)]
 
@@ -175,7 +175,7 @@ Entity Framework Core также используется в тестах. Сс�
 
    Чтобы подключиться к базе данных, отличной от базы данных в памяти, измените вызов `UseInMemoryDatabase`, чтобы подключить контекст к другой базе данных. Чтобы использовать SQL Server тестовую базу данных, выполните следующие действия.
 
-   * Сослаться на пакет NuGet [Microsoft. EntityFrameworkCore. SqlServer] https://www.nuget.org/packages/Microsoft.EntityFrameworkCore.SqlServer/) в файле проекта.
+   * Сослаться на пакет NuGet [Microsoft. EntityFrameworkCore. SqlServer](https://www.nuget.org/packages/Microsoft.EntityFrameworkCore.SqlServer/) в файле проекта.
    * Вызовите `UseSqlServer` со строкой подключения к базе данных.
 
    ```csharp
@@ -217,9 +217,9 @@ Entity Framework Core также используется в тестах. Сс�
 
 Если в методе теста требуется дополнительная настройка, [висвебхостбуилдер](/dotnet/api/microsoft.aspnetcore.mvc.testing.webapplicationfactory-1.withwebhostbuilder) создает новый `WebApplicationFactory` с [ивебхостбуилдер](/dotnet/api/microsoft.aspnetcore.hosting.iwebhostbuilder) , который еще настраивается конфигурацией.
 
-Метод теста `Post_DeleteMessageHandler_ReturnsRedirectToRoot` [примера приложения](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/test/integration-tests/samples) демонстрирует использование `WithWebHostBuilder`. Этот тест выполняет запись удаления в базе данных, активируя отправку формы в сут.
+Метод `Post_DeleteMessageHandler_ReturnsRedirectToRoot` теста в [примере приложения](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/test/integration-tests/samples) демонстрирует использование `WithWebHostBuilder`. Этот тест выполняет запись удаления в базе данных, активируя отправку формы в сут.
 
-Поскольку другой тест в классе `IndexPageTests` выполняет операцию, которая удаляет все записи в базе данных и может выполняться перед методом `Post_DeleteMessageHandler_ReturnsRedirectToRoot`, база данных повторно заполняется в этом методе теста, чтобы обеспечить наличие записи для удаления сут. Выбор первой кнопки удаления формы `messages` в сут имитируется в запросе к сут:
+Поскольку другой тест в классе `IndexPageTests` выполняет операцию, которая удаляет все записи в базе данных и может выполняться до `Post_DeleteMessageHandler_ReturnsRedirectToRoot` метода, база данных повторно заполняется в этом методе теста, чтобы обеспечить наличие записи для удаления сут. Выбор первой кнопки удаления формы `messages` в сут имитируется в запросе к сут:
 
 [!code-csharp[](integration-tests/samples/3.x/IntegrationTestsSample/tests/RazorPagesProject.Tests/IntegrationTests/IndexPageTests.cs?name=snippet3)]
 
@@ -280,7 +280,7 @@ _client = _factory.CreateClient(clientOptions);
     London, and we&#x27;re already 30,000 years late.">
 ```
 
-Чтобы протестировать службу и внедрение цитат в интеграционный тест, служба макетирования будет внедрена в сут тестом. Макет службы заменяет @no__t (0) приложения на службу, предоставляемую тестовым приложением, с именем `TestQuoteService`:
+Чтобы протестировать службу и внедрение цитат в интеграционный тест, служба макетирования будет внедрена в сут тестом. Служба макетирования заменяет `QuoteService` приложения службой, предоставляемой тестовым приложением, с именем `TestQuoteService`:
 
 *IntegrationTests.IndexPageTests.CS*:
 
@@ -473,13 +473,13 @@ dotnet test
 
 ## <a name="basic-tests-with-the-default-webapplicationfactory"></a>Базовые тесты с Вебаппликатионфактори по умолчанию
 
-[Вебаппликатионфактори @ no__t-1TEntryPoint >](/dotnet/api/microsoft.aspnetcore.mvc.testing.webapplicationfactory-1) используется для создания [TestServer](/dotnet/api/microsoft.aspnetcore.testhost.testserver) для интеграционных тестов. `TEntryPoint` является классом точки входа сут, обычно классом `Startup`.
+[Вебаппликатионфактори\<тентрипоинт >](/dotnet/api/microsoft.aspnetcore.mvc.testing.webapplicationfactory-1) используется для создания [TestServer](/dotnet/api/microsoft.aspnetcore.testhost.testserver) для тестов интеграции. `TEntryPoint` является классом точки входа сут, обычно классом `Startup`.
 
 Тестовые классы реализуют интерфейс *основы класса* ([иклассфикстуре](https://xunit.github.io/docs/shared-context#class-fixture)), чтобы указать, что класс содержит тесты, и предоставить экземпляры общего объекта между тестами в классе.
 
 ### <a name="basic-test-of-app-endpoints"></a>Базовое тестирование конечных точек приложения
 
-В следующем тестовом классе, `BasicTests`, используется `WebApplicationFactory` для начальной загрузки сут и предоставления [HttpClient](/dotnet/api/system.net.http.httpclient) методу теста, `Get_EndpointsReturnSuccessAndCorrectContentType`. Метод проверяет успешность кода состояния отклика (коды состояний в диапазоне 200-299), а заголовок `Content-Type` — `text/html; charset=utf-8` для нескольких страниц приложений.
+В следующем тестовом классе `BasicTests`используется `WebApplicationFactory` для начальной загрузки сут и предоставления [HttpClient](/dotnet/api/system.net.http.httpclient) методу теста, `Get_EndpointsReturnSuccessAndCorrectContentType`. Метод проверяет успешность кода состояния отклика (коды состояний в диапазоне 200-299), а заголовок `Content-Type` — `text/html; charset=utf-8` для нескольких страниц приложений.
 
 [Креатеклиент](/dotnet/api/microsoft.aspnetcore.mvc.testing.webapplicationfactory-1.createclient) создает экземпляр `HttpClient`, который автоматически следует за перенаправляет и обрабатывает файлы cookie.
 
@@ -495,7 +495,7 @@ dotnet test
 
 [!code-csharp[](integration-tests/samples/2.x/IntegrationTestsSample/src/RazorPagesProject/Startup.cs?name=snippet1)]
 
-В тесте `Get_SecurePageRequiresAnAuthenticatedUser` параметр [вебаппликатионфакториклиентоптионс](/dotnet/api/microsoft.aspnetcore.mvc.testing.webapplicationfactoryclientoptions) имеет значение запретить перенаправления, установив [алловауторедирект](/dotnet/api/microsoft.aspnetcore.mvc.testing.webapplicationfactoryclientoptions.allowautoredirect) в значение `false`:
+В `Get_SecurePageRequiresAnAuthenticatedUser`ном тесте параметр [вебаппликатионфакториклиентоптионс](/dotnet/api/microsoft.aspnetcore.mvc.testing.webapplicationfactoryclientoptions) имеет значение запретить перенаправления, установив для [алловауторедирект](/dotnet/api/microsoft.aspnetcore.mvc.testing.webapplicationfactoryclientoptions.allowautoredirect) значение `false`.
 
 [!code-csharp[](integration-tests/samples/2.x/IntegrationTestsSample/tests/RazorPagesProject.Tests/IntegrationTests/BasicTests.cs?name=snippet2)]
 
@@ -547,9 +547,9 @@ dotnet test
 
 Если в методе теста требуется дополнительная настройка, [висвебхостбуилдер](/dotnet/api/microsoft.aspnetcore.mvc.testing.webapplicationfactory-1.withwebhostbuilder) создает новый `WebApplicationFactory` с [ивебхостбуилдер](/dotnet/api/microsoft.aspnetcore.hosting.iwebhostbuilder) , который еще настраивается конфигурацией.
 
-Метод теста `Post_DeleteMessageHandler_ReturnsRedirectToRoot` [примера приложения](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/test/integration-tests/samples) демонстрирует использование `WithWebHostBuilder`. Этот тест выполняет запись удаления в базе данных, активируя отправку формы в сут.
+Метод `Post_DeleteMessageHandler_ReturnsRedirectToRoot` теста в [примере приложения](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/test/integration-tests/samples) демонстрирует использование `WithWebHostBuilder`. Этот тест выполняет запись удаления в базе данных, активируя отправку формы в сут.
 
-Поскольку другой тест в классе `IndexPageTests` выполняет операцию, которая удаляет все записи в базе данных и может выполняться перед методом `Post_DeleteMessageHandler_ReturnsRedirectToRoot`, база данных повторно заполняется в этом методе теста, чтобы обеспечить наличие записи для удаления сут. Выбор первой кнопки удаления формы `messages` в сут имитируется в запросе к сут:
+Поскольку другой тест в классе `IndexPageTests` выполняет операцию, которая удаляет все записи в базе данных и может выполняться до `Post_DeleteMessageHandler_ReturnsRedirectToRoot` метода, база данных повторно заполняется в этом методе теста, чтобы обеспечить наличие записи для удаления сут. Выбор первой кнопки удаления формы `messages` в сут имитируется в запросе к сут:
 
 [!code-csharp[](integration-tests/samples/2.x/IntegrationTestsSample/tests/RazorPagesProject.Tests/IntegrationTests/IndexPageTests.cs?name=snippet3)]
 
@@ -610,7 +610,7 @@ _client = _factory.CreateClient(clientOptions);
     London, and we&#x27;re already 30,000 years late.">
 ```
 
-Чтобы протестировать службу и внедрение цитат в интеграционный тест, служба макетирования будет внедрена в сут тестом. Макет службы заменяет @no__t (0) приложения на службу, предоставляемую тестовым приложением, с именем `TestQuoteService`:
+Чтобы протестировать службу и внедрение цитат в интеграционный тест, служба макетирования будет внедрена в сут тестом. Служба макетирования заменяет `QuoteService` приложения службой, предоставляемой тестовым приложением, с именем `TestQuoteService`:
 
 *IntegrationTests.IndexPageTests.CS*:
 
