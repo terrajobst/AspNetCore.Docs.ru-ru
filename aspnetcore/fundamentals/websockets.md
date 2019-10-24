@@ -7,12 +7,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 05/10/2019
 uid: fundamentals/websockets
-ms.openlocfilehash: 5d4d9b02bd45e6650aa56448a3663cad06b3b45e
-ms.sourcegitcommit: 8835b6777682da6fb3becf9f9121c03f89dc7614
+ms.openlocfilehash: 098e6826d6f7114baceb9578dc6d9883eb83f0aa
+ms.sourcegitcommit: a166291c6708f5949c417874108332856b53b6a9
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69975446"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72589707"
 ---
 # <a name="websockets-support-in-aspnet-core"></a>Поддержка WebSockets в ASP.NET Core
 
@@ -78,7 +78,7 @@ ms.locfileid: "69975446"
 Можно настроить следующие параметры:
 
 * `KeepAliveInterval` — как часто нужно отправлять клиенту кадры проверки связи, чтобы прокси-серверы удерживали соединение открытым. Значение по умолчанию — две минуты.
-* `ReceiveBufferSize` — размер буфера, используемого для получения данных. Опытные пользователи могут изменить этот параметр для настройки производительности с учетом размера данных. Значение по умолчанию — 4 КБ.
+* <xref:Microsoft.AspNetCore.Builder.WebSocketOptions.ReceiveBufferSize> — размер буфера, используемого для получения данных. Опытные пользователи могут изменить этот параметр для настройки производительности с учетом размера данных. Значение по умолчанию — 4 КБ.
 * `AllowedOrigins` — список допустимых значений заголовка Origin для запросов WebSocket. По умолчанию разрешены все источники. Дополнительные сведения см. в разделе "Ограничения для источников WebSocket" ниже.
 
 ::: moniker-end
