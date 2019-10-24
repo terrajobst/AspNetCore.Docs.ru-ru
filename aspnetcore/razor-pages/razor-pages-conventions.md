@@ -5,14 +5,14 @@ description: Узнайте, как использовать соглашени�
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 08/08/2019
+ms.date: 10/22/2019
 uid: razor-pages/razor-pages-conventions
-ms.openlocfilehash: c93f169c422d260f738faba4812861521f383e51
-ms.sourcegitcommit: 776367717e990bdd600cb3c9148ffb905d56862d
+ms.openlocfilehash: a0a1eda69da34d1865fd11ef464c3697bcd01eff
+ms.sourcegitcommit: 810d5831169770ee240d03207d6671dabea2486e
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68914973"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72779215"
 ---
 # <a name="razor-pages-route-and-app-conventions-in-aspnet-core"></a>Соглашения для маршрутов и приложений Razor Pages в ASP.NET Core
 
@@ -22,9 +22,9 @@ ms.locfileid: "68914973"
 
 Когда вам необходимо настроить уникальные маршруты для отдельных страниц, используйте [соглашение AddPageRoute](#configure-a-page-route), описанное далее в этом разделе.
 
-Чтобы указать маршрут страницы, добавить сегменты маршрута или добавить параметры в маршрут, используйте `@page` директиву страницы. Дополнительные сведения см. в разделе [Custom Routes](xref:razor-pages/index#custom-routes).
+Чтобы указать маршрут страницы, добавить сегменты маршрута или добавить параметры в маршрут, используйте директиву `@page` страницы. Дополнительные сведения см. в разделе [Custom Routes](xref:razor-pages/index#custom-routes).
 
-Существуют зарезервированные слова, которые нельзя использовать в качестве сегментов маршрутов или имен параметров. Дополнительные сведения см. в [разделе Маршрутизация: Зарезервированные](xref:fundamentals/routing#reserved-routing-names)имена маршрутов.
+Существуют зарезервированные слова, которые нельзя использовать в качестве сегментов маршрутов или имен параметров. Дополнительные сведения см. в разделе [Маршрутизация: зарезервированные имена маршрутов](xref:fundamentals/routing#reserved-routing-names).
 
 [Просмотреть или скачать образец кода](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/razor-pages/razor-pages-conventions/samples/) ([как скачивать](xref:index#how-to-download-a-sample))
 
@@ -34,30 +34,61 @@ ms.locfileid: "68914973"
 | [Соглашения для действий с маршрутами страниц](#page-route-action-conventions)<ul><li>AddFolderRouteModelConvention</li><li>AddPageRouteModelConvention</li><li>AddPageRoute</li></ul> | Добавление шаблона маршрута к страницам в папке и к одной странице. |
 | [Соглашения для действий модели страниц](#page-model-action-conventions)<ul><li>AddFolderApplicationModelConvention</li><li>AddPageApplicationModelConvention</li><li>ConfigureFilter (класс фильтра, лямбда-выражение или фабрика фильтров)</li></ul> | Добавление заголовка к страницам в папке, добавление заголовка к одной странице и настройка [фабрики фильтров](xref:mvc/controllers/filters#ifilterfactory) для добавления заголовка к страницам приложения. |
 
-Razor Pages соглашения добавляются и настраиваются с <xref:Microsoft.Extensions.DependencyInjection.MvcRazorPagesMvcBuilderExtensions.AddRazorPagesOptions*> помощью <xref:Microsoft.Extensions.DependencyInjection.MvcServiceCollectionExtensions.AddMvc*> метода расширения в коллекции служб в `Startup` классе. Следующие примеры соглашений описаны далее в этом разделе:
+Razor Pages соглашения добавляются и настраиваются с помощью метода расширения <xref:Microsoft.Extensions.DependencyInjection.MvcRazorPagesMvcBuilderExtensions.AddRazorPagesOptions*> для <xref:Microsoft.Extensions.DependencyInjection.MvcServiceCollectionExtensions.AddMvc*> коллекции служб в классе `Startup`. Следующие примеры соглашений описаны далее в этом разделе:
+
+::: moniker range=">= aspnetcore-3.0"
+
+```csharp
+public void ConfigureServices(IServiceCollection services)
+{
+    services.AddRazorPages()
+        .AddRazorPagesOptions(options =>
+        {
+            options.Conventions.Add( ... );
+            options.Conventions.AddFolderRouteModelConvention(
+                "/OtherPages", model => { ... });
+            options.Conventions.AddPageRouteModelConvention(
+                "/About", model => { ... });
+            options.Conventions.AddPageRoute(
+                "/Contact", "TheContactPage/{text?}");
+            options.Conventions.AddFolderApplicationModelConvention(
+                "/OtherPages", model => { ... });
+            options.Conventions.AddPageApplicationModelConvention(
+                "/About", model => { ... });
+            options.Conventions.ConfigureFilter(model => { ... });
+            options.Conventions.ConfigureFilter( ... );
+        });
+}
+```
+
+::: moniker-end
+
+::: moniker range="< aspnetcore-3.0"
 
 ```csharp
 public void ConfigureServices(IServiceCollection services)
 {
     services.AddMvc()
         .AddRazorPagesOptions(options =>
-            {
-                options.Conventions.Add( ... );
-                options.Conventions.AddFolderRouteModelConvention(
-                    "/OtherPages", model => { ... });
-                options.Conventions.AddPageRouteModelConvention(
-                    "/About", model => { ... });
-                options.Conventions.AddPageRoute(
-                    "/Contact", "TheContactPage/{text?}");
-                options.Conventions.AddFolderApplicationModelConvention(
-                    "/OtherPages", model => { ... });
-                options.Conventions.AddPageApplicationModelConvention(
-                    "/About", model => { ... });
-                options.Conventions.ConfigureFilter(model => { ... });
-                options.Conventions.ConfigureFilter( ... );
-            });
+        {
+            options.Conventions.Add( ... );
+            options.Conventions.AddFolderRouteModelConvention(
+                "/OtherPages", model => { ... });
+            options.Conventions.AddPageRouteModelConvention(
+                "/About", model => { ... });
+            options.Conventions.AddPageRoute(
+                "/Contact", "TheContactPage/{text?}");
+            options.Conventions.AddFolderApplicationModelConvention(
+                "/OtherPages", model => { ... });
+            options.Conventions.AddPageApplicationModelConvention(
+                "/About", model => { ... });
+            options.Conventions.ConfigureFilter(model => { ... });
+            options.Conventions.ConfigureFilter( ... );
+        });
 }
 ```
+
+::: moniker-end
 
 ## <a name="route-order"></a>Порядок маршрутов
 
@@ -66,26 +97,26 @@ public void ConfigureServices(IServiceCollection services)
 | Номер            | Поведение |
 | :--------------: | -------- |
 | -1               | Маршрут обрабатывается до обработки других маршрутов. |
-| 0                | Порядок не указан (значение по умолчанию). Не назначение `Order` (`Order = null`) по умолчанию присваивает `Order` маршруту значение 0 (нуль) для обработки. |
+| 0                | Порядок не указан (значение по умолчанию). Не назначайте `Order` (`Order = null`) по умолчанию маршрут `Order` значение 0 (ноль) для обработки. |
 | 1, 2, &hellip; n | Указывает порядок обработки маршрутов. |
 
 Обработка маршрутов устанавливается по соглашению:
 
-* Маршруты обрабатываются в последовательном порядке (-1, 0, 1 &hellip; , 2, n).
-* Если маршруты `Order`совпадают, сначала сопоставляются наиболее конкретный маршрут, за которым следуют менее конкретные маршруты.
-* Если маршруты с `Order` одинаковым и одинаковым числом параметров соответствуют URL-адресу запроса, маршруты обрабатываются в том порядке, в котором <xref:Microsoft.AspNetCore.Mvc.ApplicationModels.PageConventionCollection>они добавляются в.
+* Маршруты обрабатываются в последовательном порядке (-1, 0, 1, 2, &hellip; n).
+* Если маршруты имеют одинаковые `Order`, сначала сопоставляются наиболее конкретный маршрут, за которым следуют менее определенные маршруты.
+* Если маршруты с одинаковым `Order` и количеством параметров совпадают с URL-адресом запроса, маршруты обрабатываются в том порядке, в котором они добавляются в <xref:Microsoft.AspNetCore.Mvc.ApplicationModels.PageConventionCollection>.
 
-По возможности старайтесь не зависеть от установленного порядка обработки маршрутов. Как правило, маршрутизация выбирает правильный маршрут с сопоставлением URL-адресов. Если необходимо задать свойства маршрута `Order` для правильной маршрутизации запросов, схема маршрутизации приложения, скорее всего, выпутать клиентов и не будет поддерживать поддержку. Поиск упрощает схему маршрутизации приложения. Для примера приложения требуется явный порядок обработки маршрута, чтобы продемонстрировать несколько сценариев маршрутизации, использующих одно приложение. Однако следует попытаться избежать практической ситуации при настройке маршрута `Order` в рабочих приложениях.
+По возможности старайтесь не зависеть от установленного порядка обработки маршрутов. Как правило, маршрутизация выбирает правильный маршрут с сопоставлением URL-адресов. Если для правильной маршрутизации запросов необходимо задать свойства маршрута `Order`, схема маршрутизации приложения, скорее всего, запутать клиентов и не будет поддерживаться. Поиск упрощает схему маршрутизации приложения. Для примера приложения требуется явный порядок обработки маршрута, чтобы продемонстрировать несколько сценариев маршрутизации, использующих одно приложение. Тем не менее, следует попытаться избежать появления рекомендаций по настройке `Order` маршрутов в рабочих приложениях.
 
-Средства маршрутизации в Razor Pages и контроллере MVC имеют общую реализацию. Сведения о порядке маршрутов см. в разделе [маршрутизация к действиям контроллера: Упорядочивание маршрутов](xref:mvc/controllers/routing#ordering-attribute-routes)атрибутов.
+Средства маршрутизации в Razor Pages и контроллере MVC имеют общую реализацию. Сведения о порядке маршрутов см. в разделе [Маршрутизация к действиям контроллера: упорядочение маршрутов атрибутов](xref:mvc/controllers/routing#ordering-attribute-routes).
 
 ## <a name="model-conventions"></a>Соглашения для моделей
 
-Добавьте делегат для <xref:Microsoft.AspNetCore.Mvc.ApplicationModels.IPageConvention> , чтобы добавить [соглашения модели](xref:mvc/controllers/application-model#conventions) , применяемые к Razor Pages.
+Добавьте делегат для <xref:Microsoft.AspNetCore.Mvc.ApplicationModels.IPageConvention>, чтобы добавить [соглашения модели](xref:mvc/controllers/application-model#conventions) , применяемые к Razor Pages.
 
 ### <a name="add-a-route-model-convention-to-all-pages"></a>Добавление соглашения о модели маршрута ко всем страницам
 
-Используйте <xref:Microsoft.AspNetCore.Mvc.RazorPages.RazorPagesOptions.Conventions> для создания и <xref:Microsoft.AspNetCore.Mvc.ApplicationModels.IPageRouteModelConvention> добавления в коллекцию <xref:Microsoft.AspNetCore.Mvc.ApplicationModels.IPageConvention> экземпляров, которые применяются во время построения модели маршрутизации страниц.
+Используйте <xref:Microsoft.AspNetCore.Mvc.RazorPages.RazorPagesOptions.Conventions> для создания и добавления <xref:Microsoft.AspNetCore.Mvc.ApplicationModels.IPageRouteModelConvention> в коллекцию экземпляров <xref:Microsoft.AspNetCore.Mvc.ApplicationModels.IPageConvention>, которые применяются во время построения модели маршрутизации страниц.
 
 В примере приложения шаблон маршрута `{globalTemplate?}` добавляется ко всем страницам приложения:
 
@@ -103,13 +134,13 @@ public void ConfigureServices(IServiceCollection services)
 
 Свойству <xref:Microsoft.AspNetCore.Mvc.ApplicationModels.AttributeRouteModel.Order*> для <xref:Microsoft.AspNetCore.Mvc.ApplicationModels.AttributeRouteModel> задано значение `1`. Это обеспечивает следующее поведение сопоставления маршрутов в примере приложения:
 
-* Шаблон маршрута для `TheContactPage/{text?}` добавляется далее в разделе. Маршрут страницы контакта имеет порядок `null` по умолчанию (`Order = 0`), `{globalTemplate?}` поэтому он соответствует шаблону маршрута.
-* Шаблон `{aboutTemplate?}` маршрута добавляется далее в разделе. Шаблону `{aboutTemplate?}` задано свойство `Order`, равное `2`. При запросе страницы About по адресу `/About/RouteDataValue` значение RouteDataValue загружается в `RouteData.Values["globalTemplate"]` (`Order = 1`), а не в `RouteData.Values["aboutTemplate"]` (`Order = 2`). Это происходит из-за значения свойства `Order`.
-* Шаблон `{otherPagesTemplate?}` маршрута добавляется далее в разделе. Шаблону `{otherPagesTemplate?}` задано свойство `Order`, равное `2`. Когда любая страница в папке *pages/OtherPages* запрашивается с помощью параметра Route (например, `/OtherPages/Page1/RouteDataValue`), "RouteDataValue" загружается `RouteData.Values["globalTemplate"]` в`Order = 1`() и `RouteData.Values["otherPagesTemplate"]` не`Order = 2`() из-за установки свойства `Order` свойство.
+* Шаблон маршрута для `TheContactPage/{text?}` добавляется далее в разделе. Маршрут страницы контакта по умолчанию имеет порядок `null` (`Order = 0`), поэтому он соответствует шаблону `{globalTemplate?}` маршрута.
+* Шаблон `{aboutTemplate?}`ного маршрута добавляется далее в разделе. Шаблону `{aboutTemplate?}` задано свойство `Order`, равное `2`. При запросе страницы About по адресу `/About/RouteDataValue` значение RouteDataValue загружается в `RouteData.Values["globalTemplate"]` (`Order = 1`), а не в `RouteData.Values["aboutTemplate"]` (`Order = 2`). Это происходит из-за значения свойства `Order`.
+* Шаблон `{otherPagesTemplate?}`ного маршрута добавляется далее в разделе. Шаблону `{otherPagesTemplate?}` задано свойство `Order`, равное `2`. Если любая страница в папке *pages/OtherPages* запрашивается с помощью параметра Route (например, `/OtherPages/Page1/RouteDataValue`), то "RouteDataValue" загружается в `RouteData.Values["globalTemplate"]` (`Order = 1`), а не `RouteData.Values["otherPagesTemplate"]` (`Order = 2`) из-за задания свойства `Order`.
 
-Везде, где это возможно, `Order`не устанавливайте, `Order = 0`что приводит к. Чтобы выбрать правильный маршрут, используйте маршрутизацию.
+Везде, где это возможно, не следует задавать `Order`, что приводит к `Order = 0`. Чтобы выбрать правильный маршрут, используйте маршрутизацию.
 
-Параметры Razor Pages, такие как добавление <xref:Microsoft.AspNetCore.Mvc.RazorPages.RazorPagesOptions.Conventions>, добавляются при добавлении MVC в коллекцию служб в. `Startup.ConfigureServices` Пример см. в [образце приложения](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/razor-pages/razor-pages-conventions/samples/).
+Razor Pages параметры, такие как добавление <xref:Microsoft.AspNetCore.Mvc.RazorPages.RazorPagesOptions.Conventions>, добавляются при добавлении MVC в коллекцию служб в `Startup.ConfigureServices`. Пример см. в [образце приложения](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/razor-pages/razor-pages-conventions/samples/).
 
 ::: moniker range=">= aspnetcore-3.0"
 
@@ -129,7 +160,7 @@ public void ConfigureServices(IServiceCollection services)
 
 ### <a name="add-an-app-model-convention-to-all-pages"></a>Добавление соглашения о модели приложений ко всем страницам
 
-Используйте <xref:Microsoft.AspNetCore.Mvc.RazorPages.RazorPagesOptions.Conventions> для создания и <xref:Microsoft.AspNetCore.Mvc.ApplicationModels.IPageApplicationModelConvention> добавления в коллекцию <xref:Microsoft.AspNetCore.Mvc.ApplicationModels.IPageConvention> экземпляров, которые применяются во время построения модели приложения страницы.
+Используйте <xref:Microsoft.AspNetCore.Mvc.RazorPages.RazorPagesOptions.Conventions> для создания и добавления <xref:Microsoft.AspNetCore.Mvc.ApplicationModels.IPageApplicationModelConvention> в коллекцию экземпляров <xref:Microsoft.AspNetCore.Mvc.ApplicationModels.IPageConvention>, которые применяются во время построения модели приложения страницы.
 
 Для демонстрации этих и других соглашений далее в этом разделе в пример приложения включен класс `AddHeaderAttribute`. Конструктор класса принимает строку `name` и массив строк `values`. Эти значения используются в его методе `OnResultExecuting` для задания заголовка ответа. Класс показан полностью в разделе [Соглашения для действий модели страниц](#page-model-action-conventions) далее.
 
@@ -167,7 +198,7 @@ public void ConfigureServices(IServiceCollection services)
 
 ### <a name="add-a-handler-model-convention-to-all-pages"></a>Добавление соглашения модели обработчиков ко всем страницам
 
-Используйте <xref:Microsoft.AspNetCore.Mvc.RazorPages.RazorPagesOptions.Conventions> для создания и <xref:Microsoft.AspNetCore.Mvc.ApplicationModels.IPageHandlerModelConvention> добавления в коллекцию <xref:Microsoft.AspNetCore.Mvc.ApplicationModels.IPageConvention> экземпляров, которые применяются во время построения модели обработчика страницы.
+Используйте <xref:Microsoft.AspNetCore.Mvc.RazorPages.RazorPagesOptions.Conventions> для создания и добавления <xref:Microsoft.AspNetCore.Mvc.ApplicationModels.IPageHandlerModelConvention> в коллекцию экземпляров <xref:Microsoft.AspNetCore.Mvc.ApplicationModels.IPageConvention>, которые применяются во время построения модели обработчика страницы.
 
 ::: moniker range=">= aspnetcore-3.0"
 
@@ -197,11 +228,11 @@ public void ConfigureServices(IServiceCollection services)
 
 ## <a name="page-route-action-conventions"></a>Соглашения для действий с маршрутами страниц
 
-Поставщик модели маршрута по умолчанию, производный <xref:Microsoft.AspNetCore.Mvc.ApplicationModels.IPageRouteModelProvider> от, вызывает соглашения, которые предназначены для предоставления точек расширения для настройки маршрутов страниц.
+Поставщик модели маршрута по умолчанию, производный от <xref:Microsoft.AspNetCore.Mvc.ApplicationModels.IPageRouteModelProvider>, вызывает соглашения, которые предназначены для предоставления точек расширения для настройки маршрутов страниц.
 
 ### <a name="folder-route-model-convention"></a>Соглашение о модели маршрута папки
 
-Используйте <xref:Microsoft.AspNetCore.Mvc.ApplicationModels.PageConventionCollection.AddFolderRouteModelConvention*> для создания и добавления объекта <xref:Microsoft.AspNetCore.Mvc.ApplicationModels.IPageRouteModelConvention> , который вызывает действие <xref:Microsoft.AspNetCore.Mvc.ApplicationModels.PageRouteModel> для всех страниц в указанной папке.
+Используйте <xref:Microsoft.AspNetCore.Mvc.ApplicationModels.PageConventionCollection.AddFolderRouteModelConvention*>, чтобы создать и добавить <xref:Microsoft.AspNetCore.Mvc.ApplicationModels.IPageRouteModelConvention>, который вызывает действие в <xref:Microsoft.AspNetCore.Mvc.ApplicationModels.PageRouteModel> для всех страниц в указанной папке.
 
 Пример приложения использует <xref:Microsoft.AspNetCore.Mvc.ApplicationModels.PageConventionCollection.AddFolderRouteModelConvention*> для добавления шаблона маршрута `{otherPagesTemplate?}` к страницам в папке *OtherPages*:
 
@@ -217,9 +248,9 @@ public void ConfigureServices(IServiceCollection services)
 
 ::: moniker-end
 
-Свойству <xref:Microsoft.AspNetCore.Mvc.ApplicationModels.AttributeRouteModel.Order*> для <xref:Microsoft.AspNetCore.Mvc.ApplicationModels.AttributeRouteModel> задано значение `2`. Это гарантирует, что шаблону `{globalTemplate?}` (установленному ранее в `1`разделе) присваивается приоритет для первой координаты значения данных маршрута, если указано одно значение маршрута. Если страница в папке *pages/OtherPages* запрашивается с помощью значения параметра маршрута (например `/OtherPages/Page1/RouteDataValue`,), то "RouteDataValue" загружается в`Order = 1` `RouteData.Values["globalTemplate"]` () и `RouteData.Values["otherPagesTemplate"]` не`Order = 2`() из-за установки свойства `Order` свойство.
+Свойству <xref:Microsoft.AspNetCore.Mvc.ApplicationModels.AttributeRouteModel.Order*> для <xref:Microsoft.AspNetCore.Mvc.ApplicationModels.AttributeRouteModel> задано значение `2`. Это гарантирует, что шаблон для `{globalTemplate?}` (заданный ранее в разделе `1`) получает приоритет для первой координаты значения данных маршрута, если указано одно значение маршрута. Если страница в папке *pages/OtherPages* запрашивается с помощью значения параметра маршрута (например, `/OtherPages/Page1/RouteDataValue`), то "RouteDataValue" загружается в `RouteData.Values["globalTemplate"]` (`Order = 1`), а не `RouteData.Values["otherPagesTemplate"]` (`Order = 2`) из-за задания свойства `Order`.
 
-Везде, где это возможно, `Order`не устанавливайте, `Order = 0`что приводит к. Чтобы выбрать правильный маршрут, используйте маршрутизацию.
+Везде, где это возможно, не следует задавать `Order`, что приводит к `Order = 0`. Чтобы выбрать правильный маршрут, используйте маршрутизацию.
 
 Запросите страницу Page1 по адресу `localhost:5000/OtherPages/Page1/GlobalRouteValue/OtherPagesRouteValue` из примера и проверьте результат:
 
@@ -227,7 +258,7 @@ public void ConfigureServices(IServiceCollection services)
 
 ### <a name="page-route-model-convention"></a>Соглашение о модели маршрута страницы
 
-Используйте <xref:Microsoft.AspNetCore.Mvc.ApplicationModels.PageConventionCollection.AddPageRouteModelConvention*> для создания и добавления объекта <xref:Microsoft.AspNetCore.Mvc.ApplicationModels.IPageRouteModelConvention> , который вызывает действие <xref:Microsoft.AspNetCore.Mvc.ApplicationModels.PageRouteModel> в для страницы с указанным именем.
+Используйте <xref:Microsoft.AspNetCore.Mvc.ApplicationModels.PageConventionCollection.AddPageRouteModelConvention*>, чтобы создать и добавить <xref:Microsoft.AspNetCore.Mvc.ApplicationModels.IPageRouteModelConvention>, который вызывает действие в <xref:Microsoft.AspNetCore.Mvc.ApplicationModels.PageRouteModel> для страницы с указанным именем.
 
 Пример приложения использует `AddPageRouteModelConvention` для добавления шаблона маршрута `{aboutTemplate?}` к странице About:
 
@@ -243,9 +274,9 @@ public void ConfigureServices(IServiceCollection services)
 
 ::: moniker-end
 
-Свойству <xref:Microsoft.AspNetCore.Mvc.ApplicationModels.AttributeRouteModel.Order*> для <xref:Microsoft.AspNetCore.Mvc.ApplicationModels.AttributeRouteModel> задано значение `2`. Это гарантирует, что шаблону `{globalTemplate?}` (установленному ранее в `1`разделе) присваивается приоритет для первой координаты значения данных маршрута, если указано одно значение маршрута. Если страница `/About/RouteDataValue`about запрашивается со значением параметра маршрута, то "RouteDataValue" загружается в `RouteData.Values["globalTemplate"]` (`Order = 1`) `Order` и не `RouteData.Values["aboutTemplate"]` (`Order = 2`) из-за задания свойства.
+Свойству <xref:Microsoft.AspNetCore.Mvc.ApplicationModels.AttributeRouteModel.Order*> для <xref:Microsoft.AspNetCore.Mvc.ApplicationModels.AttributeRouteModel> задано значение `2`. Это гарантирует, что шаблон для `{globalTemplate?}` (заданный ранее в разделе `1`) получает приоритет для первой координаты значения данных маршрута, если указано одно значение маршрута. Если страница about запрашивается со значением параметра маршрута в `/About/RouteDataValue`, то "RouteDataValue" загружается в `RouteData.Values["globalTemplate"]` (`Order = 1`), а не `RouteData.Values["aboutTemplate"]` (`Order = 2`) из-за задания свойства `Order`.
 
-Везде, где это возможно, `Order`не устанавливайте, `Order = 0`что приводит к. Чтобы выбрать правильный маршрут, используйте маршрутизацию.
+Везде, где это возможно, не следует задавать `Order`, что приводит к `Order = 0`. Чтобы выбрать правильный маршрут, используйте маршрутизацию.
 
 Запросите страницу About по адресу `localhost:5000/About/GlobalRouteValue/AboutRouteValue` из примера и проверьте результат:
 
@@ -257,22 +288,54 @@ public void ConfigureServices(IServiceCollection services)
 
 Маршруты страниц, созданные ASP.NET Core, можно настроить с помощью преобразователя параметров. Преобразователь параметров реализует `IOutboundParameterTransformer` и преобразует значения параметров. Например, пользовательский преобразователь параметра `SlugifyParameterTransformer` изменяет значение маршрута `SubscriptionManagement` на `subscription-management`.
 
-Соглашение о модели маршрута страницыприменяетпреобразовательпараметровкименампапокиименфайловавтоматическисоздаваемыхмаршрутовстраницвприложении.`PageRouteTransformerConvention` Например, файл Razor Pages в */Пажес/субскриптионманажемент/виевалл.кштмл* будет иметь перезапись маршрута из `/SubscriptionManagement/ViewAll` в. `/subscription-management/view-all`
+В соответствии с соглашением о модели `PageRouteTransformerConvention` страниц преобразователь параметров применяется к сегментам папок и имен файлов автоматически создаваемых маршрутов страниц в приложении. Например, файл Razor Pages в */Пажес/субскриптионманажемент/виевалл.кштмл* будет иметь перезапись маршрута из `/SubscriptionManagement/ViewAll` в `/subscription-management/view-all`.
 
-`PageRouteTransformerConvention`преобразует только автоматически создаваемые сегменты маршрута страницы, полученные из папки Razor Pages и имени файла. Он не преобразует сегменты маршрута, добавленные `@page` с помощью директивы. Это соглашение также не преобразует маршруты, <xref:Microsoft.Extensions.DependencyInjection.PageConventionCollectionExtensions.AddPageRoute*>добавленные.
+`PageRouteTransformerConvention` преобразует автоматически создаваемые сегменты маршрута страницы, полученные из папки Razor Pages и имени файла. Он не преобразует сегменты маршрута, добавленные с помощью директивы `@page`. Это соглашение также не преобразует маршруты, добавленные <xref:Microsoft.Extensions.DependencyInjection.PageConventionCollectionExtensions.AddPageRoute*>.
 
-Регистрируется в качестве параметра в `Startup.ConfigureServices`: `PageRouteTransformerConvention`
+@No__t_0 регистрируется как вариант в `Startup.ConfigureServices`:
+
+::: moniker-end
+
+::: moniker range=">= aspnetcore-3.0"
+
+```csharp
+public void ConfigureServices(IServiceCollection services)
+{
+    services.AddRazorPages()
+        .AddRazorPagesOptions(options =>
+        {
+            options.Conventions.Add(
+                new PageRouteTransformerConvention(
+                    new SlugifyParameterTransformer()));
+        });
+}
+
+public class SlugifyParameterTransformer : IOutboundParameterTransformer
+{
+    public string TransformOutbound(object value)
+    {
+        if (value == null) { return null; }
+
+        // Slugify value
+        return Regex.Replace(value.ToString(), "([a-z])([A-Z])", "$1-$2").ToLower();
+    }
+}
+```
+
+::: moniker-end
+
+::: moniker range="= aspnetcore-2.2"
 
 ```csharp
 public void ConfigureServices(IServiceCollection services)
 {
     services.AddMvc()
         .AddRazorPagesOptions(options =>
-            {
-                options.Conventions.Add(
-                    new PageRouteTransformerConvention(
-                        new SlugifyParameterTransformer()));
-            });
+        {
+            options.Conventions.Add(
+                new PageRouteTransformerConvention(
+                    new SlugifyParameterTransformer()));
+        });
 }
 
 public class SlugifyParameterTransformer : IOutboundParameterTransformer
@@ -291,7 +354,7 @@ public class SlugifyParameterTransformer : IOutboundParameterTransformer
 
 ## <a name="configure-a-page-route"></a>Настройка маршрута страницы
 
-Используется <xref:Microsoft.Extensions.DependencyInjection.PageConventionCollectionExtensions.AddPageRoute*> для настройки маршрута к странице по указанному пути страницы. Созданные ссылки на страницу будут использовать заданный вами маршрут. Для установления маршрута метод `AddPageRoute` использует `AddPageRouteModelConvention`.
+Используйте <xref:Microsoft.Extensions.DependencyInjection.PageConventionCollectionExtensions.AddPageRoute*>, чтобы настроить маршрут к странице по указанному пути к странице. Созданные ссылки на страницу будут использовать заданный вами маршрут. Для установления маршрута метод `AddPageRoute` использует `AddPageRouteModelConvention`.
 
 Пример приложения создает маршрут к `/TheContactPage` для файла *Contact.cshtml*:
 
@@ -335,9 +398,9 @@ public class SlugifyParameterTransformer : IOutboundParameterTransformer
 
 ## <a name="page-model-action-conventions"></a>Соглашения для действий модели страниц
 
-Поставщик модели страницы по умолчанию, <xref:Microsoft.AspNetCore.Mvc.ApplicationModels.IPageApplicationModelProvider> реализующий соглашения о вызовах, которые предназначены для предоставления точек расширения для настройки моделей страниц. Эти соглашения полезны при создании и изменении для обнаружения и обработки страниц.
+Поставщик модели страницы по умолчанию, реализующий <xref:Microsoft.AspNetCore.Mvc.ApplicationModels.IPageApplicationModelProvider>, вызывает соглашения, которые предназначены для предоставления точек расширения для настройки моделей страниц. Эти соглашения полезны при создании и изменении для обнаружения и обработки страниц.
 
-В примерах, приведенных в этом разделе, в примере `AddHeaderAttribute` приложения используется класс <xref:Microsoft.AspNetCore.Mvc.Filters.ResultFilterAttribute>, который применяет заголовок ответа:
+В примерах этого раздела Пример приложения использует класс `AddHeaderAttribute`, который является <xref:Microsoft.AspNetCore.Mvc.Filters.ResultFilterAttribute>, который применяет заголовок ответа:
 
 ::: moniker range=">= aspnetcore-3.0"
 
@@ -355,7 +418,7 @@ public class SlugifyParameterTransformer : IOutboundParameterTransformer
 
 **Соглашение для модели приложений папки**
 
-Используйте <xref:Microsoft.AspNetCore.Mvc.ApplicationModels.PageConventionCollection.AddFolderApplicationModelConvention*> для создания и добавления объекта <xref:Microsoft.AspNetCore.Mvc.ApplicationModels.IPageApplicationModelConvention> , который <xref:Microsoft.AspNetCore.Mvc.ApplicationModels.PageApplicationModel> вызывает действие для экземпляров для всех страниц в указанной папке.
+Используйте <xref:Microsoft.AspNetCore.Mvc.ApplicationModels.PageConventionCollection.AddFolderApplicationModelConvention*>, чтобы создать и добавить <xref:Microsoft.AspNetCore.Mvc.ApplicationModels.IPageApplicationModelConvention>, который вызывает действие в экземплярах <xref:Microsoft.AspNetCore.Mvc.ApplicationModels.PageApplicationModel> для всех страниц в указанной папке.
 
 Пример демонстрирует использование `AddFolderApplicationModelConvention` путем добавления заголовка `OtherPagesHeader` к страницам в папке *OtherPages* приложения:
 
@@ -377,7 +440,7 @@ public class SlugifyParameterTransformer : IOutboundParameterTransformer
 
 **Соглашение для модели приложений страницы**
 
-Используйте <xref:Microsoft.AspNetCore.Mvc.ApplicationModels.PageConventionCollection.AddPageApplicationModelConvention*> для создания и добавления объекта <xref:Microsoft.AspNetCore.Mvc.ApplicationModels.IPageApplicationModelConvention> , который вызывает действие <xref:Microsoft.AspNetCore.Mvc.ApplicationModels.PageApplicationModel> в для страницы с указанным именем.
+Используйте <xref:Microsoft.AspNetCore.Mvc.ApplicationModels.PageConventionCollection.AddPageApplicationModelConvention*>, чтобы создать и добавить <xref:Microsoft.AspNetCore.Mvc.ApplicationModels.IPageApplicationModelConvention>, который вызывает действие в <xref:Microsoft.AspNetCore.Mvc.ApplicationModels.PageApplicationModel> для страницы с указанным именем.
 
 Пример демонстрирует использование `AddPageApplicationModelConvention` путем добавления заголовка `AboutHeader` на страницу About:
 
@@ -399,7 +462,7 @@ public class SlugifyParameterTransformer : IOutboundParameterTransformer
 
 **Настройка фильтра**
 
-<xref:Microsoft.Extensions.DependencyInjection.PageConventionCollectionExtensions.ConfigureFilter*>настраивает указанный фильтр для применения. Вы можете создать класс фильтра, но пример приложения показывает реализацию фильтра в лямбда-выражении, которое реализовано "за кулисами" в качестве фабрики, возвращающей фильтр:
+<xref:Microsoft.Extensions.DependencyInjection.PageConventionCollectionExtensions.ConfigureFilter*> настраивает указанный фильтр для применения. Вы можете создать класс фильтра, но пример приложения показывает реализацию фильтра в лямбда-выражении, которое реализовано "за кулисами" в качестве фабрики, возвращающей фильтр:
 
 ::: moniker range=">= aspnetcore-3.0"
 
@@ -415,7 +478,7 @@ public class SlugifyParameterTransformer : IOutboundParameterTransformer
 
 Модель приложений страницы используется для проверки относительного пути на наличие сегментов, ведущих к странице Page2 в папке *OtherPages*. Если условие выполняется, добавляется заголовок. Если нет, применяется `EmptyFilter`.
 
-`EmptyFilter` является [фильтром действий](xref:mvc/controllers/filters#action-filters). Так как фильтры действий игнорируются Razor Pages, параметр `EmptyFilter` не действует так, как предполагалось, если `OtherPages/Page2`путь не содержит.
+`EmptyFilter` является [фильтром действий](xref:mvc/controllers/filters#action-filters). Так как фильтры действий игнорируются Razor Pages, `EmptyFilter` не действует, как предполагалось, если путь не содержит `OtherPages/Page2`.
 
 Запросите страницу Page2 по адресу `localhost:5000/OtherPages/Page2` из примера и посмотрите заголовки, чтобы проверить результат:
 
@@ -423,7 +486,7 @@ public class SlugifyParameterTransformer : IOutboundParameterTransformer
 
 **Настройка фабрики фильтров**
 
-<xref:Microsoft.Extensions.DependencyInjection.PageConventionCollectionExtensions.ConfigureFilter*>настраивает указанную фабрику для применения [фильтров](xref:mvc/controllers/filters) ко всем Razor Pages.
+<xref:Microsoft.Extensions.DependencyInjection.PageConventionCollectionExtensions.ConfigureFilter*> настраивает указанную фабрику для применения [фильтров](xref:mvc/controllers/filters) ко всем Razor Pages.
 
 В примере приложения приведен образец использования [фабрики фильтров](xref:mvc/controllers/filters#ifilterfactory) путем добавления на страницы приложения заголовка `FilterFactoryHeader` с двумя значениями:
 
@@ -459,7 +522,7 @@ public class SlugifyParameterTransformer : IOutboundParameterTransformer
 
 ## <a name="mvc-filters-and-the-page-filter-ipagefilter"></a>Фильтры MVC и фильтр страниц (IPageFilter)
 
-[Фильтры действий](xref:mvc/controllers/filters#action-filters) MVC игнорируются в Razor Pages, так как Razor Pages использует методы обработчиков. Другие типы фильтров MVC доступны для использования: [Авторизация](xref:mvc/controllers/filters#authorization-filters), [исключение](xref:mvc/controllers/filters#exception-filters), [ресурс](xref:mvc/controllers/filters#resource-filters)и [результат](xref:mvc/controllers/filters#result-filters). Дополнительные сведения см. в разделе [Фильтры](xref:mvc/controllers/filters).
+[Фильтры действий](xref:mvc/controllers/filters#action-filters) MVC игнорируются в Razor Pages, так как Razor Pages использует методы обработчиков. Доступны для использования другие типы фильтров MVC: фильтры [авторизации](xref:mvc/controllers/filters#authorization-filters), [исключений](xref:mvc/controllers/filters#exception-filters), [ресурсов](xref:mvc/controllers/filters#resource-filters) и [результатов](xref:mvc/controllers/filters#result-filters). Дополнительные сведения см. в разделе [Фильтры](xref:mvc/controllers/filters).
 
 Фильтр страницы (<xref:Microsoft.AspNetCore.Mvc.Filters.IPageFilter>) — это фильтр, который применяется к Razor Pages. Дополнительные сведения см. в разделе [Методы фильтрации для Razor Pages](xref:razor-pages/filter).
 
