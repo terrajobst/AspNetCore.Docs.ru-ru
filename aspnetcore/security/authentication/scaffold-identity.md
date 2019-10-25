@@ -7,16 +7,16 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 10/24/2018
 uid: security/authentication/scaffold-identity
-ms.openlocfilehash: f3ae089d344d95ed84c9720ab4ba2c697400901e
-ms.sourcegitcommit: dc96d76f6b231de59586fcbb989a7fb5106d26a8
+ms.openlocfilehash: ca2046563281efc3c1cd8f4fec73fe4f8d3fbdda
+ms.sourcegitcommit: 383017d7060a6d58f6a79cf4d7335d5b4b6c5659
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71703762"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72816107"
 ---
 # <a name="scaffold-identity-in-aspnet-core-projects"></a>Удостоверение шаблона в ASP.NET Core проектах
 
-Автор: [Рик Андерсон](https://twitter.com/RickAndMSFT) (Rick Anderson)
+Автор: [Рик Андерсон](https://twitter.com/RickAndMSFT)
 
 ASP.NET Core 2,1 и более поздних версий предоставляет [ASP.NET Core удостоверение](xref:security/authentication/identity) как [библиотеку классов Razor](xref:razor-pages/ui-class). Приложения, включающие удостоверение, могут применять шаблон для выборочного добавления исходного кода, содержащегося в библиотеке классов Razor класса Identity (РКЛ). Вы можете создать исходный код, чтобы изменить код и тем самым изменить поведение. Например, вы можете указать шаблону создать код, используемый при регистрации. Созданный код имеет приоритет над тем же кодом в RCL для идентификаторов. Чтобы получить полный контроль над пользовательским интерфейсом и не использовать РКЛ по умолчанию, см. раздел [Создание полного идентификатора пользовательского интерфейса идентификации](#full).
 
@@ -84,7 +84,7 @@ dotnet ef database update
 
 ### <a name="layout-changes"></a>Изменения макета
 
-Необязательные: Добавьте имя входа partial (`_LoginPartial`) в файл макета:
+Необязательно: Добавьте часть имени для входа partial (`_LoginPartial`) в файл макета:
 
 [!code-html[Main](scaffold-identity/sample/_Layout.cshtml?highlight=37)]
 
@@ -98,8 +98,7 @@ uld option: Use Local DB, not SQLite
 dotnet new webapp -au Individual -uld -o RPauth
 cd RPauth
 dotnet add package Microsoft.VisualStudio.Web.CodeGeneration.Design
-dotnet restore
-dotnet aspnet-codegenerator identity -dc RPauth.Data.ApplicationDbContext --files Account.Register
+dotnet aspnet-codegenerator identity -dc RPauth.Data.ApplicationDbContext --files "Account.Register;Account.Register"
 -->
 
 [!INCLUDE[](~/includes/scaffold-identity/id-scaffold-dlg-auth.md)]
@@ -123,7 +122,7 @@ dotnet ef database update
 
 [!INCLUDE[](~/includes/scaffold-identity/id-scaffold-dlg.md)]
 
-Необязательные: Добавьте имя входа partial (`_LoginPartial`) в файл *views/Shared/_layout. cshtml* :
+Необязательно: Добавьте часть имени для входа partial (`_LoginPartial`) в файл *views/Shared/_layout. cshtml* :
 
 [!code-html[](scaffold-identity/sample/_LayoutMvc.cshtml?highlight=37)]
 
@@ -146,7 +145,7 @@ dotnet new mvc -au Individual -o MvcAuth
 cd MvcAuth
 dotnet add package Microsoft.VisualStudio.Web.CodeGeneration.Design
 dotnet restore
-dotnet aspnet-codegenerator identity -dc MvcAuth.Data.ApplicationDbContext --files Account.Register
+dotnet aspnet-codegenerator identity -dc MvcAuth.Data.ApplicationDbContext  --files "Account.Login;Account.Register"
 -->
 
 [!INCLUDE[](~/includes/scaffold-identity/id-scaffold-dlg-auth.md)]
@@ -176,6 +175,80 @@ dotnet aspnet-codegenerator identity -dc MvcAuth.Data.ApplicationDbContext --fil
 [!code-csharp[](scaffold-identity/sample/StartupFull.cs?name=snippet4)]
 
 [!code-csharp[](scaffold-identity/sample/StartupFull.cs?name=snippet)]
+
+<!--
+uld option: Use Local DB, not SQLite
+
+dotnet new webapp -au Individual -uld -o RPauth
+cd RPauth
+dotnet add package Microsoft.VisualStudio.Web.CodeGeneration.Design
+dotnet aspnet-codegenerator identity -dc RPauth.Data.ApplicationDbContext --files "Account.Register;Account.Login;Account.RegisterConfirmation"
+-->
+## <a name="disable-register-page"></a>Отключить страницу регистрации
+
+Чтобы отключить регистрацию пользователей, выполните следующие действия.
+
+* Удостоверение шаблона. Включить учетную запись. регистрация, учетная запись. Login и Account. Регистерконфирматион. Пример:
+
+  ```dotnetcli
+   dotnet aspnet-codegenerator identity -dc RPauth.Data.ApplicationDbContext --files "Account.Register;Account.Login;Account.RegisterConfirmation"
+  ```
+
+* Обновите *области/идентификаторы/страницы/учетная запись/Register. cshtml. CS* , чтобы пользователи не могли зарегистрироваться из этой конечной точки:
+
+  [!code-csharp[](scaffold-identity/sample/Register.cshtml.cs?name=snippet)]
+
+* Обновите *области, идентификаторы, страницы, учетную запись или Register. cshtml* , чтобы они были совместимы с предыдущими изменениями:
+
+  [!code-cshtml[](scaffold-identity/sample/Register.cshtml)]
+
+* Закомментируйте или удалите ссылку регистрации из *областей, удостоверений, страниц, учетной записи или имени входа. cshtml*
+
+```cshtml
+@*
+<p>
+    <a asp-page="./Register" asp-route-returnUrl="@Model.ReturnUrl">Register as a new user</a>
+</p>
+*@
+```
+
+* Обновите страницу *области, удостоверение, страницы/учетная запись или регистерконфирматион* .
+
+  * Удалите код и ссылки из файла CSHTML.
+  * Удалите код подтверждения из `PageModel`:
+
+  ```csharp
+   [AllowAnonymous]
+    public class RegisterConfirmationModel : PageModel
+    {
+        public IActionResult OnGet()
+        {  
+            return Page();
+        }
+    }
+  ```
+  
+### <a name="use-another-app-to-add-users"></a>Использование другого приложения для добавления пользователей
+
+Предоставьте механизм для добавления пользователей за пределами веб-приложения. Ниже перечислены параметры для добавления пользователей.
+
+* Выделенное административное веб-приложение.
+* Консольное приложение.
+
+В следующем примере кода один из подходов к добавлению пользователей:
+
+* Список пользователей считывается в память.
+* Для каждого пользователя создается надежный уникальный пароль.
+* Пользователь будет добавлен в базу данных удостоверений.
+* Пользователь получает уведомления и сообщил об изменении пароля.
+
+[!code-csharp[](scaffold-identity/consoleAddUser/Program.cs?name=snippet)]
+
+В следующем коде показано, как добавить пользователя:
+
+[!code-csharp[](scaffold-identity/consoleAddUser/Data/SeedData.cs?name=snippet)]
+
+Подобный подход можно выполнить для рабочих сценариев.
 
 ## <a name="additional-resources"></a>Дополнительные ресурсы
 
