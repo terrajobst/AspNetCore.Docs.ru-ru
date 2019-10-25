@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 09/29/2019
 uid: tutorials/first-web-api
-ms.openlocfilehash: 7bb98fe5befa8eea80885d246da31ad87d5cfc2d
-ms.sourcegitcommit: fe88748b762525cb490f7e39089a4760f6a73a24
+ms.openlocfilehash: 6f2d62600da828261ecfc3a1df688ce914eccf33
+ms.sourcegitcommit: a166291c6708f5949c417874108332856b53b6a9
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71691214"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72590013"
 ---
 # <a name="tutorial-create-a-web-api-with-aspnet-core"></a>Учебник. Создание веб-API с помощью ASP.NET Core
 
@@ -429,7 +429,7 @@ dotnet aspnet-codegenerator controller -name TodoItemsController -async -api -m 
 
 ### <a name="test-the-puttodoitem-method"></a>Тестирование метода PutTodoItem
 
-Этот пример использует базу данных в памяти, которая должна быть инициирована при каждом запуске приложения. При выполнении вызова PUT в базе данных уже должен существовать какой-либо элемент. Для этого перед вызовом PUT выполните вызов GET, чтобы убедиться в наличии такого элемента в базе данных.
+В этом примере используется база данных в памяти, которая должна быть инициирована при каждом запуске приложения. При выполнении вызова PUT в базе данных уже должен существовать какой-либо элемент. Для этого перед вызовом PUT выполните вызов GET, чтобы убедиться в наличии такого элемента в базе данных.
 
 Обновите элемент списка дел с идентификатором 1 и присвойте ему имя "feed fish":
 
@@ -828,7 +828,7 @@ dotnet aspnet-codegenerator controller -name TodoItemsController -async -api -m 
 
 ### <a name="test-the-puttodoitem-method"></a>Тестирование метода PutTodoItem
 
-Этот пример использует базу данных в памяти, которая должна быть инициирована при каждом запуске приложения. При выполнении вызова PUT в базе данных уже должен существовать какой-либо элемент. Для этого перед вызовом PUT выполните вызов GET, чтобы убедиться в наличии такого элемента в базе данных.
+В этом примере используется база данных в памяти, которая должна быть инициирована при каждом запуске приложения. При выполнении вызова PUT в базе данных уже должен существовать какой-либо элемент. Для этого перед вызовом PUT выполните вызов GET, чтобы убедиться в наличии такого элемента в базе данных.
 
 Обновите элемент списка дел с идентификатором = 1 и присвойте ему имя "feed fish":
 
@@ -864,7 +864,7 @@ dotnet aspnet-codegenerator controller -name TodoItemsController -async -api -m 
 
 ## <a name="call-the-web-api-with-javascript"></a>Вызов веб-API с помощью JavaScript
 
-В этом разделе описано, как добавить HTML-страницу, которая использует JavaScript для вызова веб-API. Fetch API инициирует запрос. JavaScript изменяет страницу, используя сведения из ответа API.
+В этом разделе описано, как добавить HTML-страницу, которая использует JavaScript для вызова веб-API. jQuery инициирует запрос. JavaScript изменяет страницу, используя сведения из ответа API.
 
 Настройте приложение для [обслуживания статических файлов](/dotnet/api/microsoft.aspnetcore.builder.staticfileextensions.usestaticfiles#Microsoft_AspNetCore_Builder_StaticFileExtensions_UseStaticFiles_Microsoft_AspNetCore_Builder_IApplicationBuilder_) и [включения сопоставления файлов по умолчанию](/dotnet/api/microsoft.aspnetcore.builder.defaultfilesextensions.usedefaultfiles#Microsoft_AspNetCore_Builder_DefaultFilesExtensions_UseDefaultFiles_Microsoft_AspNetCore_Builder_IApplicationBuilder_), обновив *Startup.cs* следующим выделенным кодом:
 
@@ -889,13 +889,13 @@ dotnet aspnet-codegenerator controller -name TodoItemsController -async -api -m 
 
 ### <a name="get-a-list-of-to-do-items"></a>Получение списка элементов задач
 
-Fetch отправляет запрос HTTP GET к веб-API, который возвращает ответ JSON, представляющий массив элементов списка дел. В случае успешного запроса используется функция обратного вызова `success`. При обратном вызове в модель DOM вносятся данные о задачах.
+jQuery отправляет запрос HTTP GET к веб-API, который возвращает ответ JSON, представляющий массив элементов списка дел. В случае успешного запроса используется функция обратного вызова `success`. При обратном вызове в модель DOM вносятся данные о задачах.
 
 [!code-javascript[](first-web-api/samples/2.2/TodoApi/wwwroot/site.js?name=snippet_GetData)]
 
 ### <a name="add-a-to-do-item"></a>Добавление элемента задачи
 
-Fetch отправляет запрос HTTP POST с элементом списка дел в тексте запроса. Для параметров `accepts` и `contentType` указывается `application/json`, чтобы указать тип носителя при получении и отправке. Элемент списка дел преобразуется в JSON с помощью [JSON.stringify](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/JSON/stringify). Если интерфейс API возвращает код состояния успешного выполнения, вызывается функция `getData` для обновления HTML-таблицы.
+jQuery отправляет запрос HTTP POST с элементом списка дел в тексте запроса. Для параметров `accepts` и `contentType` указывается `application/json`, чтобы указать тип носителя при получении и отправке. Элемент списка дел преобразуется в JSON с помощью [JSON.stringify](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/JSON/stringify). Если интерфейс API возвращает код состояния успешного выполнения, вызывается функция `getData` для обновления HTML-таблицы.
 
 [!code-javascript[](first-web-api/samples/2.2/TodoApi/wwwroot/site.js?name=snippet_AddItem)]
 
