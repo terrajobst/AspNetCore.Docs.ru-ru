@@ -6,12 +6,12 @@ monikerRange: '>= aspnetcore-2.0'
 ms.author: riande
 ms.date: 10/07/2019
 uid: razor-pages/index
-ms.openlocfilehash: d12cf7f4f45c98c292b0d035c99e051d9b779e9a
-ms.sourcegitcommit: 383017d7060a6d58f6a79cf4d7335d5b4b6c5659
+ms.openlocfilehash: 61e15b9b9b8f84de36621c301ecb9d33b21dff88
+ms.sourcegitcommit: 16cf016035f0c9acf3ff0ad874c56f82e013d415
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72816121"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73034277"
 ---
 # <a name="introduction-to-razor-pages-in-aspnet-core"></a>Введение в Razor Pages в ASP.NET Core
 
@@ -157,7 +157,7 @@ Razor Pages делает создание кодов сценариев для �
 
 Преобразованный HTML из *Pages/Create.cshtml*:
 
-[!code-cshtml[](index/3.0sample/RazorPagesContacts/Pages/Customers/Create4.html)]
+[!code-html[](index/3.0sample/RazorPagesContacts/Pages/Customers/Create4.html)]
 
 В приведенном выше коде, разместив форму:
 
@@ -283,7 +283,7 @@ Razor Pages делает создание кодов сценариев для �
 
 * Генерирует следующий HTML:
 
-  [!code-cshtml[](index/3.0sample/RazorPagesContacts/Pages/Customers/Create5.html)]
+  [!code-html[](index/3.0sample/RazorPagesContacts/Pages/Customers/Create5.html)]
 
 При публикации формы создания без значения имени в форме отображается сообщение об ошибке: "Поле имени является обязательным". в форме. Если на клиенте включен JavaScript, браузер отображает ошибку без отправки на сервер.
 
