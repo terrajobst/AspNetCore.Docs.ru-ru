@@ -1,31 +1,30 @@
 ---
 title: Параметры проверки подлинности OSS сообщества для ASP.NET Core
 author: rick-anderson
-description: Ознакомьтесь с возможностями проверки подлинности с открытым исходным кодом ASP.NET Core.
+description: Обнаружение параметров проверки подлинности с открытым исходным кодом для ASP.NET Core.
 ms.author: riande
-ms.date: 02/15/2019
+ms.date: 10/28/2019
 uid: security/authentication/community
-ms.openlocfilehash: e25df794bdff8f904382e7a299755ae4c23b892e
-ms.sourcegitcommit: 5b0eca8c21550f95de3bb21096bd4fd4d9098026
+ms.openlocfilehash: 68c32515b7d789db86f60cd011632da5c1244c1f
+ms.sourcegitcommit: 16cf016035f0c9acf3ff0ad874c56f82e013d415
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 04/27/2019
-ms.locfileid: "64891751"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73034247"
 ---
 # <a name="community-oss-authentication-options-for-aspnet-core"></a>Параметры проверки подлинности OSS сообщества для ASP.NET Core
 
-Эта страница содержит параметры проверки подлинности предоставляемых системой сообщества открытым исходным кодом для ASP.NET Core. Эта страница периодически обновляется как новые поставщики, становятся доступными.
+На этой странице содержатся предоставленные сообществом параметры проверки подлинности с открытым исходным кодом для ASP.NET Core. Эта страница периодически обновляется по мере доступности новых поставщиков.
 
 ## <a name="oss-authentication-providers"></a>Поставщики проверки подлинности OSS
 
-В списке ниже отсортированы по алфавиту.
+Список ниже сортируется в алфавитном порядке.
 
-| name | Описание |
+| Название | Описание |
 | ---- | ----------- |
-| [AspNet.Security.OpenIdConnect.Server (ASOS)](https://github.com/aspnet-contrib/AspNet.Security.OpenIdConnect.Server) | ASOS — это низкого уровня, основанная на протокол OpenID Connect server платформа для ASP.NET Core и OWIN и Katana. |
-| [Cierge](https://github.com/pwdless/Cierge) | Cierge — это сервер, OpenID Connect, который обрабатывает регистрации пользователя, имя входа, профили, управления и входа в социальные сети. |
-| [Gluu сервера](https://gluu.org/) | Предприятия все будет готово, с открытым кодом для удостоверения, управления доступом (IAM), а единый вход (SSO). Дополнительные сведения см. в разделе [документации по продукту Gluu](https://gluu.org/docs/). |
-| [IdentityServer](https://identityserver.io/) | Сервер — это платформа OpenID Connect и OAuth 2.0, для ASP.NET Core, официально сертифицирована Фондом OpenID и под контроль для .NET Foundation. Дополнительные сведения см. в разделе [приветствует IdentityServer4 (документация)](https://identityserver4.readthedocs.io/en/latest/). |
-| [OpenIddict](https://github.com/openiddict/openiddict-core) | OpenIddict — это простой в использовании сервер OpenID Connect для ASP.NET Core. |
+| [AspNet. Security. OpenIdConnect. Server (ASOS)](https://github.com/aspnet-contrib/AspNet.Security.OpenIdConnect.Server) | ASOS — Это высокоуровневая платформа OpenID Connect Connect Server для ASP.NET Core и OWIN/Katana. |
+| [Сервер глуу](https://gluu.org/) | Готовность предприятия, программное обеспечение с открытым кодом для идентификации, управления доступом (IAM) и единого входа (SSO). Дополнительные сведения см. в [документации по продукту глуу](https://gluu.org/docs/). |
+| [IdentityServer](https://identityserver.io/) | IdentityServer — это OpenID Connect Connect и OAuth 2,0 Framework для ASP.NET Core, официально сертифицированная OpenID Connect Foundation и под управлением .NET Foundation. Дополнительные сведения см. [в разделе Добро пожаловать в IdentityServer4 (документация)](https://identityserver4.readthedocs.io/en/latest/). |
+| [опениддикт](https://github.com/openiddict/openiddict-core) | Опениддикт — это простой в использовании сервер OpenID Connect Connect для ASP.NET Core. |
 
-Для добавления поставщика, [редактировать эту страницу](https://github.com/login?return_to=https%3A%2F%2Fgithub.com%2Faspnet%2FDocs%2Fedit%2Fmaster%2Faspnetcore%2Fsecurity%2Fauthentication%2Fcommunity.md).
+Чтобы добавить поставщик, [измените эту страницу](https://github.com/login?return_to=https%3A%2F%2Fgithub.com%2Faspnet%2FDocs%2Fedit%2Fmaster%2Faspnetcore%2Fsecurity%2Fauthentication%2Fcommunity.md).

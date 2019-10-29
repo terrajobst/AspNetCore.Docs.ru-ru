@@ -5,14 +5,14 @@ description: Узнайте, как создавать и использоват
 monikerRange: '>= aspnetcore-3.0'
 ms.author: riande
 ms.custom: mvc
-ms.date: 10/20/2019
+ms.date: 10/21/2019
 uid: blazor/components
-ms.openlocfilehash: 065a3a078c56f813ed38f85d7414f22061217dff
-ms.sourcegitcommit: eb4fcdeb2f9e8413117624de42841a4997d1d82d
+ms.openlocfilehash: 8c228b168cdbd58928ef3f57ff26bc86e8dfc1ba
+ms.sourcegitcommit: 16cf016035f0c9acf3ff0ad874c56f82e013d415
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72697963"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73033981"
 ---
 # <a name="create-and-use-aspnet-core-razor-components"></a>Создание и использование компонентов ASP.NET Core Razor
 
@@ -191,6 +191,52 @@ ms.locfileid: "72697963"
 ```
 
 Свойство `CaptureUnmatchedValues` в `[Parameter]` позволяет параметру сопоставлять все атрибуты, не соответствующие ни одному другому параметру. Компонент может определять только один параметр с `CaptureUnmatchedValues`. Тип свойства, используемый с `CaptureUnmatchedValues`, должен быть назначен из `Dictionary<string, object>` со строковыми ключами. в этом сценарии также используются параметры `IEnumerable<KeyValuePair<string, object>>` или `IReadOnlyDictionary<string, object>`.
+
+Расположение `@attributes` относительно положения атрибутов элемента важно. Когда `@attributes` сплаттед для элемента, атрибуты обрабатываются справа налево (последний — первый). Рассмотрим следующий пример компонента, использующего компонент `Child`:
+
+*Паренткомпонент. Razor*:
+
+```cshtml
+<ChildComponent extra="10" />
+```
+
+*Чилдкомпонент. Razor*:
+
+```cshtml
+<div @attributes="AdditionalAttributes" extra="5" />
+
+[Parameter(CaptureUnmatchedValues = true)]
+public IDictionary<string, object> AdditionalAttributes { get; set; }
+```
+
+Атрибут `extra` `Child` компонента установлен справа от `@attributes`. `<div>`, отображаемый компонентом `Parent`, содержит `extra="5"` при передаче через дополнительный атрибут, так как атрибуты обрабатываются справа налево (последний — первый):
+
+```html
+<div extra="5" />
+```
+
+В следующем примере порядок `extra` и `@attributes` отменяется в `<div>`е `Child` компонента:
+
+*Паренткомпонент. Razor*:
+
+```cshtml
+<ChildComponent extra="10" />
+```
+
+*Чилдкомпонент. Razor*:
+
+```cshtml
+<div extra="5" @attributes="AdditionalAttributes" />
+
+[Parameter(CaptureUnmatchedValues = true)]
+public IDictionary<string, object> AdditionalAttributes { get; set; }
+```
+
+Отображаемые `<div>` в компоненте `Parent` содержат `extra="10"` при передаче через дополнительный атрибут:
+
+```html
+<div extra="10" />
+```
 
 ## <a name="data-binding"></a>привязка данных,
 
@@ -511,11 +557,11 @@ ms.locfileid: "72697963"
 
 Распространенным сценарием с вложенными компонентами является желание запускать метод родительского компонента при возникновении события дочернего компонента &mdash;for примере, когда событие `onclick` возникает в дочернем элементе. Чтобы обеспечить доступ к событиям по компонентам, используйте `EventCallback`. Родительский компонент может назначить метод обратного вызова `EventCallback` дочернего компонента.
 
-@No__t_0 в примере приложения демонстрирует настройку обработчика `onclick`а кнопки на получение делегата `EventCallback` из `ParentComponent` образца. @No__t_0 вводится `MouseEventArgs`, который подходит для события `onclick` на периферийном устройстве.
+`ChildComponent` в примере приложения демонстрирует настройку обработчика `onclick`а кнопки на получение делегата `EventCallback` из `ParentComponent`образца. `EventCallback` вводится `MouseEventArgs`, который подходит для события `onclick` на периферийном устройстве.
 
 [!code-cshtml[](common/samples/3.x/BlazorWebAssemblySample/Components/ChildComponent.razor?highlight=5-7,17-18)]
 
-@No__t_0 устанавливает `EventCallback<T>` дочернего элемента в метод `ShowMessage`:
+`ParentComponent` устанавливает `EventCallback<T>` дочернего элемента в метод `ShowMessage`:
 
 [!code-cshtml[](common/samples/3.x/BlazorWebAssemblySample/Pages/ParentComponent.razor?name=snippet_ParentComponent&highlight=6,16-19)]
 
@@ -1015,7 +1061,7 @@ protected override bool ShouldRender()
 }
 ```
 
-@No__t_0 компонент можно также создать с помощью файла кода программной части с разделяемым классом:
+`Counter` компонент можно также создать с помощью файла кода программной части с разделяемым классом:
 
 *Counter. Razor*:
 
@@ -1089,7 +1135,7 @@ namespace BlazorSample
 Пространство имен компонента, созданного с помощью Razor, основано на (в порядке приоритета):
 
 * [@namespace](xref:mvc/views/razor#namespace) обозначение в разметке файла Razor ( *. Razor*) (`@namespace BlazorSample.MyNamespace`).
-* @No__t_0 проекта в файле проекта (`<RootNamespace>BlazorSample</RootNamespace>`).
+* `RootNamespace` проекта в файле проекта (`<RootNamespace>BlazorSample</RootNamespace>`).
 * Имя проекта, полученное из имени файла проекта (*CSPROJ*), и путь из корневого каталога проекта к компоненту. Например, платформа разрешает *{root проекта}/Пажес/индекс.Разор* (*блазорсампле. csproj*) к пространству имен `BlazorSample.Pages`. Компоненты следуют C# правилам привязки имен. Для компонента `Index` в этом примере компоненты в области являются всеми компонентами:
   * В той же папке *страницы*.
   * Компоненты в корне проекта, которые не задают явно другое пространство имен.
