@@ -5,14 +5,14 @@ description: Сведения о размещении приложений ASP.N
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 10/13/2019
+ms.date: 10/26/2019
 uid: host-and-deploy/iis/index
-ms.openlocfilehash: bf535134277a08103ba8ce55eeed540a9fce8260
-ms.sourcegitcommit: 07d98ada57f2a5f6d809d44bdad7a15013109549
+ms.openlocfilehash: 179ab4c97426c9d3cb8ed069d2059d767d755533
+ms.sourcegitcommit: 16cf016035f0c9acf3ff0ad874c56f82e013d415
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72333882"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73034270"
 ---
 # <a name="host-aspnet-core-on-windows-with-iis"></a>Размещение ASP.NET Core в Windows со службами IIS
 
@@ -129,8 +129,6 @@ ASP.NET Core поставляется с [сервером Kestrel](xref:fundame
 
 Вызовы `UseUrls` или API `Listen` Kestrel при работе с этим модулем не требуются. При вызове `UseUrls` или `Listen` Kestrel ожидает передачи данных на порт, указанный только при выполнении приложения без IIS.
 
-Дополнительные сведения о моделях внутри- и внепроцессного размещения см. в разделах [Модуль ASP.NET Core](xref:host-and-deploy/aspnet-core-module) и [Справочник по конфигурации модуля ASP.NET Core](xref:host-and-deploy/aspnet-core-module).
-
 ::: moniker-end
 
 Инструкции по настройке модуля ASP.NET Core см. в статье <xref:host-and-deploy/aspnet-core-module>.
@@ -221,13 +219,13 @@ services.Configure<IISOptions>(options =>
 <Project Sdk="Microsoft.NET.Sdk.Web">
 ```
 
-Если в проекте нет файла *web.config*, он создается с соответствующими аргументами *processPath* и *arguments* для настройки [модуля ASP.NET Core](xref:host-and-deploy/aspnet-core-module) и переносится в [опубликованные выходные данные](xref:host-and-deploy/directory-structure).
+Если в проекте нет файла *web.config*, он создается с соответствующими аргументами *processPath* и *arguments* для настройки модуля ASP.NET Core и переносится в [опубликованные выходные данные](xref:host-and-deploy/directory-structure).
 
 Если в проекте есть файл *web.config*, он преобразуется с соответствующими аргументами *processPath* и *arguments* для настройки модуля ASP.NET Core и переносится в опубликованные выходные данные. Преобразование не изменяет параметры конфигурации служб IIS, включенные в файл.
 
 Файл *web.config* может содержать дополнительные параметры конфигурации IIS, управляющие активными модулями IIS. Сведения о модулях IIS, которые могут обрабатывать запросы к приложениям ASP.NET Core, см. в статье [Модули IIS](xref:host-and-deploy/iis/modules).
 
-Чтобы пакет SDK не преобразовывал файл *web.config*, добавьте в файл проекта свойство **\<IsTransformWebConfigDisabled>**.
+Чтобы пакет SDK не преобразовывал файл *web.config*, добавьте в файл проекта свойство **\<IsTransformWebConfigDisabled>** .
 
 ```xml
 <PropertyGroup>
@@ -235,7 +233,7 @@ services.Configure<IISOptions>(options =>
 </PropertyGroup>
 ```
 
-Если пакет SDK не преобразует файл, аргументы *processPath* и *arguments* нужно задать вручную. Дополнительные сведения см. в разделе [Справочник по конфигурации модуля ASP.NET Core](xref:host-and-deploy/aspnet-core-module).
+Если пакет SDK не преобразует файл, аргументы *processPath* и *arguments* нужно задать вручную. Дополнительные сведения можно найти по адресу: <xref:host-and-deploy/aspnet-core-module>.
 
 ### <a name="webconfig-file-location"></a>Расположение файла web.config
 
@@ -255,7 +253,7 @@ services.Configure<IISOptions>(options =>
 
 Включите роль сервера **Веб-сервер (IIS)** и настройте службы роли.
 
-1. В меню **Управление** запустите мастер **Добавить роли и компоненты** или в окне **Диспетчер серверов** щелкните соответствующую ссылку. На этапе **Роли сервера** установите флажок **Веб-сервер (IIS)**.
+1. В меню **Управление** запустите мастер **Добавить роли и компоненты** или в окне **Диспетчер серверов** щелкните соответствующую ссылку. На этапе **Роли сервера** установите флажок **Веб-сервер (IIS)** .
 
    ![Роль "Веб-сервер (IIS)" выбрана на странице "Выбор ролей сервера".](index/_static/server-roles-ws2016.png)
 
@@ -332,6 +330,10 @@ services.Configure<IISOptions>(options =>
    * `OPT_NO_X86=1` — пропуск установки 32-разрядных сред выполнения. Этот параметр следует использовать, если вы наверняка не будете размещать 32-разрядные приложения. Если есть хоть малейшая возможность, что в будущем придется размещать и 32-разрядные, и 64-разрядные приложения, не указывайте этот параметр и установите обе среды выполнения.
    * `OPT_NO_SHARED_CONFIG_CHECK=1` &ndash; — отключение проверки использования общей конфигурации IIS, если файл общей конфигурации (*applicationHost.config*) находится на том же компьютере, что и установка IIS. *Доступен только для пакетных установщиков размещения ASP.NET Core 2.2 или более поздней версии.* Дополнительные сведения можно найти по адресу: <xref:host-and-deploy/aspnet-core-module#aspnet-core-module-with-an-iis-shared-configuration>.
 1. Перезагрузите систему или в командой оболочке выполните команду **net stop was /y**, а затем — **net start w3svc**. Перезапуск служб IIS позволит обнаружить внесенные установщиком изменения в системном пути, который является переменной среды.
+
+При установке пакета размещения останавливать отдельные сайты служб IIS вручную не нужно. При перезапуске служб IIS осуществляется перезапуск размещенных приложений (сайтов IIS). Приложения запускаются снова при получении первого запроса, в частности от [модуля инициализации приложений](#application-initialization-module-and-idle-timeout).
+
+ASP.NET Core наследует поведение наката для выпусков исправлений пакетов общей платформы. Когда приложения, размещенные в службах IIS, перезапускаются вместе с IIS, они загружаются с последними выпусками исправлений связанных пакетов при получении первого запроса. Если службы IIS не перезапускаются, приложения перезапускаются и демонстрируют поведение наката, когда их рабочие процессы перезапускается и они получают первый запрос.
 
 > [!NOTE]
 > Сведения об общей конфигурации IIS см. в разделе [Модуль ASP.NET Core с общей конфигурацией IIS](xref:host-and-deploy/aspnet-core-module#aspnet-core-module-with-an-iis-shared-configuration).
@@ -528,13 +530,19 @@ services.Configure<IISOptions>(options =>
 
 Назначение отдельного пула приложений вложенному приложению является обязательным при использовании модели внутрипроцессного размещения.
 
-Дополнительные сведения о внутрипроцессной модели размещения и настройке модуля ASP.NET Core см. в статьях <xref:host-and-deploy/aspnet-core-module> и <xref:host-and-deploy/aspnet-core-module>.
+Дополнительные сведения о внутрипроцессной модели размещения и настройке модуля ASP.NET Core см. в статье <xref:host-and-deploy/aspnet-core-module>.
 
 ## <a name="configuration-of-iis-with-webconfig"></a>Настройка служб IIS с помощью файла web.config
 
 Конфигурация IIS зависит от `<system.webServer>` раздела *web.config* для сценариев IIS, предназначенных для работы приложений ASP.NET Core с помощью модуля ASP.NET Core. Например, конфигурация IIS работает для динамического сжатия. Если в службах IIS на уровне сервера настроено динамическое сжатие, элемент `<urlCompression>` в файле *web.config* приложения может отключить это сжатие для приложения ASP.NET Core.
 
-Дополнительные сведения см. в [справочнике по настройке \<system.webServer>](/iis/configuration/system.webServer/), [справочнике по настройке модуля ASP.NET Core](xref:host-and-deploy/aspnet-core-module) и статье [Модули IIS с ASP.NET Core](xref:host-and-deploy/iis/modules). Сведения о настройке переменных среды для отдельных приложений, выполняющихся в изолированных пулах приложений (такая возможность поддерживается в службах IIS начиная с версии 10.0), см. в справочной документации по службам IIS, в частности в разделе *AppCmd.exe* статьи [Environment Variables \<environmentVariables>](/iis/configuration/system.applicationHost/applicationPools/add/environmentVariables/#appcmdexe) (Переменные среды <environmentVariables>).
+Дополнительные сведения см. в следующих разделах:
+
+* [Справочник по настройке для \<system.webServer>](/iis/configuration/system.webServer/)
+* <xref:host-and-deploy/aspnet-core-module>
+* <xref:host-and-deploy/iis/modules>
+
+Сведения о настройке переменных среды для отдельных приложений, выполняющихся в изолированных пулах приложений (такая возможность поддерживается в службах IIS начиная с версии 10.0), см. в справочной документации по службам IIS, в частности в разделе *AppCmd.exe* статьи [Environment Variables \<environmentVariables>](/iis/configuration/system.applicationHost/applicationPools/add/environmentVariables/#appcmdexe) (Переменные среды <environmentVariables>).
 
 ## <a name="configuration-sections-of-webconfig"></a>Разделы конфигурации файла web.config
 
@@ -584,7 +592,7 @@ services.Configure<IISOptions>(options =>
 
 1. Нажмите кнопку **Размещение** и выберите систему.
 
-1. В поле **Введите имена выбираемых объектов** введите **IIS AppPool\\<имя_пула_приложений>**. Нажмите кнопку **Проверить имена**. В случае с *DefaultAppPool* проверьте имена с помощью **IIS AppPool\DefaultAppPool**. После нажатия кнопки **Проверить имена** в области имен объектов отобразится значение **DefaultAppPool**. Вручную ввести имя пула приложений в области имен объектов нельзя. При поиске имени объекта используйте формат **IIS AppPool\\<имя_пула_приложений>**.
+1. В поле **Введите имена выбираемых объектов** введите **IIS AppPool\\<имя_пула_приложений>** . Нажмите кнопку **Проверить имена**. В случае с *DefaultAppPool* проверьте имена с помощью **IIS AppPool\DefaultAppPool**. После нажатия кнопки **Проверить имена** в области имен объектов отобразится значение **DefaultAppPool**. Вручную ввести имя пула приложений в области имен объектов нельзя. При поиске имени объекта используйте формат **IIS AppPool\\<имя_пула_приложений>** .
 
    ![Диалоговое окно "Выбор пользователей или групп" для папки приложения. До нажатия кнопки "Проверить имена" в области имен объектов к строке IIS AppPool\" добавилось имя пула приложений, DefaultAppPool.](index/_static/select-users-or-groups-1.png)
 
@@ -728,11 +736,8 @@ ICACLS C:\sites\MyWebApp /grant "IIS AppPool\DefaultAppPool":F
 Дополнительные сведения о моделях развертывания приложения .NET Core.  
 [Развертывание приложений .NET Core](/dotnet/core/deploying/)
 
-Сведения о том, как модуль ASP.NET Core позволяет веб-серверу Kestrel использовать IIS или IIS Express в качестве обратного прокси-сервера.  
-[Модуль ASP.NET Core](xref:host-and-deploy/aspnet-core-module)
-
-Сведения о настройке модуля ASP.NET Core для размещения приложений ASP.NET Core.  
-[Справочник по конфигурации модуля ASP.NET Core](xref:host-and-deploy/aspnet-core-module)
+Ознакомьтесь со сведениями о модуле ASP.NET Core, включая инструкции по настройке.  
+<xref:host-and-deploy/aspnet-core-module>
 
 Сведения о структуре каталогов опубликованных приложений ASP.NET Core.  
 [Структура каталогов](xref:host-and-deploy/directory-structure)

@@ -1,31 +1,30 @@
 ---
 title: Проверка подлинности Facebook, Google и внешних поставщиков в ASP.NET Core
 author: rick-anderson
-description: В этом руководстве демонстрируется построение приложения ASP.NET Core 2.x с использованием OAuth 2.0 с внешними поставщиками проверки подлинности.
+description: В этом учебнике демонстрируется создание приложения ASP.NET Core с использованием OAuth 2.0 с внешними поставщиками проверки подлинности.
 ms.author: riande
 ms.custom: mvc
-ms.date: 05/10/2019
+ms.date: 10/21/2019
 uid: security/authentication/social/index
-ms.openlocfilehash: edaf9eeaf02879b2f7816bab0eb373a7de640c05
-ms.sourcegitcommit: 215954a638d24124f791024c66fd4fb9109fd380
+ms.openlocfilehash: 627ca483d60514d85e38c0e346ff5aef64ad9fee
+ms.sourcegitcommit: 16cf016035f0c9acf3ff0ad874c56f82e013d415
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71082503"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73034305"
 ---
 # <a name="facebook-google-and-external-provider-authentication-in-aspnet-core"></a>Проверка подлинности Facebook, Google и внешних поставщиков в ASP.NET Core
 
 Авторы: [Валерий Новицкий](https://github.com/01binary) (Valeriy Novytskyy) и [Рик Андерсон](https://twitter.com/RickAndMSFT) (Rick Anderson)
 
-В этом руководстве показано создание приложения ASP.NET Core 2.2, позволяющего пользователям выполнять вход с помощью OAuth 2.0 и учетных данных от внешних поставщиков проверки подлинности.
+В этом учебнике показано создание приложения ASP.NET Core 3.0, позволяющего пользователям выполнять вход с помощью OAuth 2.0 и учетных данных от внешних поставщиков проверки подлинности.
 
-В следующих разделах рассматриваются такие поставщики, как [Facebook](xref:security/authentication/facebook-logins), [Twitter](xref:security/authentication/twitter-logins), [Google](xref:security/authentication/google-logins), и [Microsoft](xref:security/authentication/microsoft-logins). В сторонних пакетах также доступны другие поставщики, такие как [AspNet.Security.OAuth.Providers](https://github.com/aspnet-contrib/AspNet.Security.OAuth.Providers) и [AspNet.Security.OpenId.Providers](https://github.com/aspnet-contrib/AspNet.Security.OpenId.Providers).
-
-![Значки социальных сетей для Facebook, Twitter, Google+ и Windows](index/_static/social.png)
+В следующих разделах рассматриваются такие поставщики, как [Facebook](xref:security/authentication/facebook-logins), [Twitter](xref:security/authentication/twitter-logins), [Google](xref:security/authentication/google-logins) и [Майкрософт](xref:security/authentication/microsoft-logins), использующие созданный в рамках этой статьи начальный проект. В сторонних пакетах также доступны другие поставщики, такие как [AspNet.Security.OAuth.Providers](https://github.com/aspnet-contrib/AspNet.Security.OAuth.Providers) и [AspNet.Security.OpenId.Providers](https://github.com/aspnet-contrib/AspNet.Security.OpenId.Providers).
 
 Позволяет пользователям входить в систему с имеющимися учетными данными:
+
 * Удобно для пользователей.
-* Многие задачи, связанные с управлением процессом входа, передаются сторонним производителям. 
+* Многие задачи, связанные с управлением процессом входа, передаются сторонним производителям.
 
 Демонстрацию того, как вход с использованием учетных данных социальных сетей помогает повысить трафик и количество конверсий, см. в примерах для [Facebook](https://www.facebook.com/unsupportedbrowser) и [Twitter](https://dev.twitter.com/resources/case-studies).
 
@@ -36,36 +35,32 @@ ms.locfileid: "71082503"
 * Создайте новый проект.
 * Выберите **Веб-приложение ASP.NET Core** и нажмите **Далее**.
 * Укажите **Имя проекта** и подтвердите либо измените **Расположение**. Выберите **Создать**.
-* В раскрывающемся списке выберите **ASP.NET Core 2.2**. В списке шаблонов выберите **Веб-приложение**.
+* Выберите в раскрывающемся списке **ASP.NET Core 3.0**, а затем **Веб-приложение**.
 * В разделе **Проверка подлинности** выберите **Изменить** и в качестве типа проверки подлинности задайте **Индивидуальные учетные записи пользователей**. Нажмите кнопку **ОК**.
 * В окне **Создать веб-приложение ASP.NET Core** выберите **Создать**.
 
-# <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code.](#tab/visual-studio-code)
+# <a name="visual-studio-code--visual-studio-for-mactabvisual-studio-codevisual-studio-mac"></a>[Visual Studio Code/Visual Studio для Mac](#tab/visual-studio-code+visual-studio-mac)
 
-* Откройте [Интегрированный терминал](https://code.visualstudio.com/docs/editor/integrated-terminal).
+* Откройте терминал.  Для Visual Studio Code можно открыть [интегрированный терминал](https://code.visualstudio.com/docs/editor/integrated-terminal).
 
 * Смените каталог (`cd`) на папку, в которой будет содержаться проект.
 
-* Выполните следующие команды:
+* В ОС Windows выполните следующую команду:
 
   ```dotnetcli
   dotnet new webapp -o WebApp1 -au Individual -uld
-  code -r WebApp1
+  ```
+
+  Для MacOS и Linux выполните следующую команду:
+
+  ```dotnetcli
+  dotnet new webapp -o WebApp1 -au Individual
   ```
 
   * Команда `dotnet new` создает новый проект Razor Pages в папке *WebApp1*.
-  * `-uld` использует LocalDB вместо SQLite. Не указывайте `-uld`, чтобы использовать SQLite.
   * `-au Individual` создает код для отдельной проверки подлинности.
+  * `-uld` использует LocalDB, упрощенную версию SQL Server Express для Windows. Не указывайте `-uld`, чтобы использовать SQLite.
   * Команда `code` открывает папку *WebApp1* в новом экземпляре Visual Studio Code.
-
-* Появится диалоговое окно с предупреждением **В WebApp1 отсутствуют необходимые ресурсы для сборки и отладки. Добавить их?** Выберите ответ **Да**.
-
-# <a name="visual-studio-for-mactabvisual-studio-mac"></a>[Visual Studio для Mac](#tab/visual-studio-mac)
-
-* Выберите **Файл** > **Новое решение**.
-* Выберите **.NET Core** > **Приложение** на боковой панели. Выберите шаблон **Веб-приложение**. Выберите **Далее**.
-* В раскрывающемся списке **Целевая платформа** выберите **.NET Core 2.2**. Выберите **Далее**.
-* Укажите **Имя проекта**. Подтвердите или измените **Расположение**. Выберите **Создать**.
 
 ---
 
