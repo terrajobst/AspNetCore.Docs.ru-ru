@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 07/22/2019
 uid: data/ef-rp/complex-data-model
-ms.openlocfilehash: 2461bc398cd237dac04f4eb8832c70290663ff56
-ms.sourcegitcommit: 7d3c6565dda6241eb13f9a8e1e1fd89b1cfe4d18
+ms.openlocfilehash: 1244b2e23a842538ff2fca01a513317a690afe7c
+ms.sourcegitcommit: 16cf016035f0c9acf3ff0ad874c56f82e013d415
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72259486"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73034036"
 ---
 # <a name="razor-pages-with-ef-core-in-aspnet-core---data-model---5-of-8"></a>Razor Pages с EF Core в ASP.NET Core — модель данных— 5 из 8
 
@@ -682,7 +682,7 @@ For more information, see http://go.microsoft.com/fwlink/?LinkId=723262.
 
 Добавьте выделенный ниже код. Новый код идет после блока `.CreateTable( name: "Department"`.
 
-[!code-csharp[](intro/samples/cu30snapshots/5-complex/Migrations/ ComplexDataModel.cs?name=snippet_CreateDefaultValue&highlight=23-31)]
+[!code-csharp[](intro/samples/cu30snapshots/5-complex/Migrations/ComplexDataModel.cs?name=snippet_CreateDefaultValue&highlight=23-31)]
 
 После внесения описанных выше изменений существующие строки `Course` будут связаны с кафедрой "Temp" после выполнения метода `ComplexDataModel.Up`.
 

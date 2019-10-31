@@ -6,12 +6,12 @@ ms.assetid: 0be164aa-1d72-4192-bd6b-192c9c301164
 ms.author: riande
 ms.date: 05/31/2019
 uid: mvc/models/model-binding
-ms.openlocfilehash: 298e305cf918117ec2d313060a7420a1e721a365
-ms.sourcegitcommit: 8835b6777682da6fb3becf9f9121c03f89dc7614
+ms.openlocfilehash: aeb2da7e11df1eab5a17e2ae0a3971420c9383b4
+ms.sourcegitcommit: 032113208bb55ecfb2faeb6d3e9ea44eea827950
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69975292"
+ms.lasthandoff: 10/31/2019
+ms.locfileid: "73190597"
 ---
 # <a name="model-binding-in-aspnet-core"></a>Привязка модели в ASP.NET Core
 
@@ -394,7 +394,7 @@ ASP.NET Core выбирает форматировщики входных дан
   public ActionResult<Pet> Create(Pet pet)
   ```
 
-  Дополнительные сведения см. в разделе [Введение в сериализацию XML](https://docs.microsoft.com/en-us/dotnet/standard/serialization/introducing-xml-serialization).
+  Дополнительные сведения см. в разделе [Введение в сериализацию XML](/dotnet/standard/serialization/introducing-xml-serialization).
 
 ## <a name="exclude-specified-types-from-model-binding"></a>Исключение указанных типов из привязки модели
 
