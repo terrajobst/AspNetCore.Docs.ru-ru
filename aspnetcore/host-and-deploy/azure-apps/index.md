@@ -1,18 +1,18 @@
 ---
 title: Развертывание приложений ASP.NET Core в Службе приложений Azure
-author: guardrex
+author: bradygaster
 description: Эта статья содержит ссылки на ресурсы по размещению и развертыванию в Azure.
 monikerRange: '>= aspnetcore-2.1'
-ms.author: riande
+ms.author: bradyg
 ms.custom: mvc
-ms.date: 10/02/2019
+ms.date: 10/11/2019
 uid: host-and-deploy/azure-apps/index
-ms.openlocfilehash: bda4923adb0f9769f883ef64f7902c8650308222
-ms.sourcegitcommit: 73e255e846e414821b8cc20ffa3aec946735cd4e
+ms.openlocfilehash: 392868b4fc9105279f8f3b10436a9915123e7070
+ms.sourcegitcommit: 032113208bb55ecfb2faeb6d3e9ea44eea827950
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/03/2019
-ms.locfileid: "71924892"
+ms.lasthandoff: 10/31/2019
+ms.locfileid: "73190658"
 ---
 # <a name="deploy-aspnet-core-apps-to-azure-app-service"></a>Развертывание приложений ASP.NET Core в Службе приложений Azure
 
@@ -29,6 +29,8 @@ ms.locfileid: "71924892"
 Создайте веб-приложение ASP.NET Core и разверните его в службе приложений Azure на базе Linux с помощью командной строки.
 
 Версию ASP.NET Core, доступную в службе приложений, см. в разделе [ASP.NET Core на панели мониторинга службы приложений](https://aspnetcoreon.azurewebsites.net/).
+
+Подпишитесь на репозиторий [объявлений о Службе приложений](https://github.com/Azure/app-service-announcements/) и следите за объявлениями о проблемах. Команда Службы приложений регулярно публикует объявления и сценарии, которые готовятся к выпуску в Службе приложений.
 
 Следующие статьи входят в документацию по ASP.NET Core.
 
@@ -141,24 +143,48 @@ ms.locfileid: "71924892"
 
 Дополнительные сведения можно найти по адресу: <xref:security/data-protection/implementation/key-storage-providers>.
 <a name="deploy-aspnet-core-preview-release-to-azure-app-service"></a>
-<!-- revert this after 3.0 supported
-## Deploy ASP.NET Core preview release to Azure App Service
 
-Use one of the following approaches if the app relies on a preview release of .NET Core:
-
-* [Install the preview site extension](#install-the-preview-site-extension).
-* [Deploy a self-contained preview app](#deploy-a-self-contained-preview-app).
-* [Use Docker with Web Apps for containers](#use-docker-with-web-apps-for-containers).
--->
 ## <a name="deploy-aspnet-core-30-to-azure-app-service"></a>Развертывание ASP.NET Core 3.0 в Службе приложений Azure
 
-Мы ожидаем, что в ближайшее время решение ASP.NET Core 3.0 будет доступно в Службе приложений Azure.
+Служба приложений Azure поддерживает ASP.NET Core 3.0. Чтобы развернуть предварительный выпуск версии .NET Core более поздней, чем .NET Core 3.0, используйте один из следующих способов. Эти способы также используются в случаях, когда среда выполнения доступна, но пакет SDK не установлен в Службе приложений Azure.
 
-Если приложение предназначено для .NET Core 3.0, воспользуйтесь одним из описанных ниже подходов:
-
-* [Установка расширения сайта предварительной версии](#install-the-preview-site-extension).
+* [Указание версии пакета SDK для .NET Core с помощью Azure Pipelines](#specify-the-net-core-sdk-version-using-azure-pipelines).
 * [Развертывание автономного приложения для предварительной версии](#deploy-a-self-contained-preview-app).
 * [Использование Docker с веб-приложениями для контейнеров](#use-docker-with-web-apps-for-containers).
+* [Установка расширения сайта предварительной версии](#install-the-preview-site-extension).
+
+### <a name="specify-the-net-core-sdk-version-using-azure-pipelines"></a>Указание версии пакета SDK для .NET Core с помощью Azure Pipelines
+
+Используйте [сценарии CI/CD Службы приложений Azure](/azure/app-service/deploy-continuous-deployment), чтобы настроить сборку с непрерывной интеграцией с помощью Azure DevOps. Создав сборку Azure DevOps, при необходимости настройте ее для использования определенной версии пакета SDK. 
+
+#### <a name="specify-the-net-core-sdk-version"></a>Указание версии пакета SDK для .NET Core
+
+Если используется центр развертывания Службы приложений для создания сборки Azure DevOps, конвейер сборки по умолчанию включает шаги для `Restore`, `Build`, `Test` и `Publish`. Чтобы указать версию пакета SDK, нажмите кнопку **Добавить (+)** в списке заданий агента для добавления нового шага. Найдите **пакет SDK для .NET Core**, используя строку поиска. 
+
+![Добавление шага для использования пакета SDK .NET Core](index/add-sdk-step.png)
+
+Переместите шаг на первое место в конвейере сборки, чтобы в следующих шагах использовалась указанная версия пакета SDK для .NET Core. Укажите версию пакета SDK для .NET Core. В этом примере для пакета SDK мы укажем версию `3.0.100`.
+
+![Завершенный этап настройки пакета SDK](index/sdk-step-first-place.png)
+
+Чтобы опубликовать [автономное развертывание (SCD)](/dotnet/core/deploying/#self-contained-deployments-scd), настройте SCD на шаге `Publish` и укажите [идентификатор среды выполнения (RID)](/dotnet/core/rid-catalog).
+
+![Автономная публикация](index/self-contained.png)
+
+### <a name="deploy-a-self-contained-preview-app"></a>Развертывание автономного приложения для предварительной версии
+
+Объект [автономного развертывания (SCD)](/dotnet/core/deploying/#self-contained-deployments-scd), который предназначен для предварительной версии среды выполнения, включает в развертывание среду выполнения предварительной версии.
+
+При развертывании автономного приложения:
+
+* Сайт в Службе приложений Azure не требует [предварительной версии расширения сайта](#install-the-preview-site-extension).
+* Для публикации приложений следует использовать другой подход, нежели при публикации [зависящего от платформы развертывания (FDD)](/dotnet/core/deploying#framework-dependent-deployments-fdd).
+
+Следуйте указаниям в разделе [Развертывание автономного приложения](#deploy-the-app-self-contained).
+
+### <a name="use-docker-with-web-apps-for-containers"></a>Использование Docker с веб-приложениями для контейнеров
+
+[Центр Docker](https://hub.docker.com/r/microsoft/aspnetcore/) содержит образы Docker из последней предварительной версии. Их можно использовать в качестве базового образа. Использование образа и развертывание в веб-приложениях для контейнеров выполняется как обычно.
 
 ### <a name="install-the-preview-site-extension"></a>Установка расширения сайта предварительной версии
 
@@ -205,21 +231,6 @@ Use one of the following approaches if the app relies on a preview release of .N
 Если вы используете шаблон ARM для создания и развертывания приложений, можно использовать тип ресурса `siteextensions`, чтобы добавить расширение сайта в веб-приложение. Например:
 
 [!code-json[](index/sample/arm.json?highlight=2)]
-
-### <a name="deploy-a-self-contained-preview-app"></a>Развертывание автономного приложения для предварительной версии
-
-Объект [автономного развертывания (SCD)](/dotnet/core/deploying/#self-contained-deployments-scd), который предназначен для предварительной версии среды выполнения, включает в развертывание среду выполнения предварительной версии.
-
-При развертывании автономного приложения:
-
-* Сайт в Службе приложений Azure не требует [предварительной версии расширения сайта](#install-the-preview-site-extension).
-* Для публикации приложений следует использовать другой подход, нежели при публикации [зависящего от платформы развертывания (FDD)](/dotnet/core/deploying#framework-dependent-deployments-fdd).
-
-Следуйте указаниям в разделе [Развертывание автономного приложения](#deploy-the-app-self-contained).
-
-### <a name="use-docker-with-web-apps-for-containers"></a>Использование Docker с веб-приложениями для контейнеров
-
-[Центр Docker](https://hub.docker.com/r/microsoft/aspnetcore/) содержит образы Docker из последней предварительной версии. Их можно использовать в качестве базового образа. Использование образа и развертывание в веб-приложениях для контейнеров выполняется как обычно.
 
 ## <a name="publish-and-deploy-the-app"></a>Публикация и развертывание приложения
 
