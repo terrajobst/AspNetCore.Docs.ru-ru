@@ -4,14 +4,14 @@ author: rick-anderson
 description: Узнайте, как кэшировать данные в памяти в ASP.NET Core.
 ms.author: riande
 ms.custom: mvc
-ms.date: 8/22/2019
+ms.date: 11/2/2019
 uid: performance/caching/memory
-ms.openlocfilehash: d6b2aa363c552fdbda7f6e9ec5d476768c17d8a5
-ms.sourcegitcommit: 810d5831169770ee240d03207d6671dabea2486e
+ms.openlocfilehash: 1114d154ed1af09958df63ae718712177bbf6db0
+ms.sourcegitcommit: 09f4a5ded39cc8204576fe801d760bd8b611f3aa
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72779193"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73611446"
 ---
 # <a name="cache-in-memory-in-aspnet-core"></a>Кэширование в памяти в ASP.NET Core
 
@@ -158,15 +158,18 @@ ASP.NET Core поддерживает несколько разных кэшей
 
 ## <a name="cache-dependencies"></a>Зависимости кэша
 
-В следующем примере показано, как истечет срок действия записи кэша, если истечет срок действия зависимой записи. В кэшированный элемент добавляется `CancellationChangeToken`. Если для `CancellationTokenSource` вызывается `Cancel`, то обе записи кэша будут вытеснены.
+В следующем примере показано, как истечет срок действия записи кэша, если истечет срок действия зависимой записи. В кэшированный элемент добавляется <xref:Microsoft.Extensions.Primitives.CancellationChangeToken>. Если для `CancellationTokenSource` вызывается `Cancel`, то обе записи кэша будут вытеснены.
 
 [!code-csharp[](memory/3.0sample/WebCacheSample/Controllers/HomeController.cs?name=snippet_ed)]
 
-Использование `CancellationTokenSource` позволяет удалять несколько записей кэша как группу. Используя шаблон `using` в приведенном выше коде, записи кэша, созданные в блоке `using`, будут наследовать параметры триггеров и срока действия.
+Использование <xref:System.Threading.CancellationTokenSource> позволяет удалять несколько записей кэша в виде группы. Используя шаблон `using` в приведенном выше коде, записи кэша, созданные в блоке `using`, будут наследовать параметры триггеров и срока действия.
 
 ## <a name="additional-notes"></a>Дополнительные сведения
 
-* Истечение срока действия не происходит в фоновом режиме. Нет таймера, который активно проверяет кэш на наличие просроченных элементов. Любое действие в кэше (`Get`, `Set`, `Remove`) может активировать фоновое сканирование элементов с истекшим сроком действия. Таймер на `CancellationTokenSource` (`CancelAfter`) также удаляет запись и запускает проверку для элементов с истекшим сроком действия. Например, вместо `SetAbsoluteExpiration(TimeSpan.FromHours(1))` используйте `CancellationTokenSource.CancelAfter(TimeSpan.FromHours(1))` для зарегистрированного маркера. Когда этот маркер срабатывает, он немедленно удаляет запись и вызывает обратные вызовы вытеснения. Дополнительные сведения см. в [этой статье об ошибке на GitHub](https://github.com/aspnet/Caching/issues/248).
+* Истечение срока действия не происходит в фоновом режиме. Нет таймера, который активно проверяет кэш на наличие просроченных элементов. Любое действие в кэше (`Get`, `Set`, `Remove`) может активировать фоновое сканирование элементов с истекшим сроком действия. Таймер на `CancellationTokenSource` (<xref:System.Threading.CancellationTokenSource.CancelAfter*>) также удаляет запись и запускает проверку для элементов с истекшим сроком действия. В следующем примере для зарегистрированного маркера используется [CancellationTokenSource (TimeSpan)](/dotnet/api/system.threading.cancellationtokensource.-ctor) . Когда этот маркер срабатывает, он немедленно удаляет запись и вызывает обратные вызовы вытеснения:
+
+[!code-csharp[](memory/3.0sample/WebCacheSample/Controllers/HomeController.cs?name=snippet_ae)]
+
 * При использовании обратного вызова для повторного заполнения элемента кэша:
 
   * Несколько запросов могут найти значение кэшированного ключа пустым, так как обратный вызов не завершен.
@@ -327,7 +330,7 @@ ASP.NET Core поддерживает несколько разных кэшей
 
 ## <a name="cache-dependencies"></a>Зависимости кэша
 
-В следующем примере показано, как истечет срок действия записи кэша, если истечет срок действия зависимой записи. В кэшированный элемент добавляется `CancellationChangeToken`. Если для `CancellationTokenSource` вызывается `Cancel`, то обе записи кэша будут вытеснены.
+В следующем примере показано, как истечет срок действия записи кэша, если истечет срок действия зависимой записи. В кэшированный элемент добавляется <xref:Microsoft.Extensions.Primitives.CancellationChangeToken>. Если для `CancellationTokenSource` вызывается `Cancel`, то обе записи кэша будут вытеснены.
 
 [!code-csharp[](memory/sample/WebCache/Controllers/HomeController.cs?name=snippet_ed)]
 

@@ -4,14 +4,14 @@ author: rick-anderson
 description: Узнайте, как использовать кэширование ответов, чтобы снизить требования к пропускной способности и повысить производительность приложений ASP.NET Core.
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
-ms.date: 10/15/2019
+ms.date: 11/04/2019
 uid: performance/caching/response
-ms.openlocfilehash: 4ebac97689347245d25e0954b33729d78dd1b516
-ms.sourcegitcommit: dd026eceee79e943bd6b4a37b144803b50617583
+ms.openlocfilehash: a456e97053fea7c9ee9ec634ae9b7bbd52febe7f
+ms.sourcegitcommit: 09f4a5ded39cc8204576fe801d760bd8b611f3aa
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72378837"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73611473"
 ---
 # <a name="response-caching-in-aspnet-core"></a>Кэширование ответов в ASP.NET Core
 
@@ -21,7 +21,9 @@ ms.locfileid: "72378837"
 
 Кэширование ответов сокращает количество запросов к веб-серверу, которые клиент или прокси выполняет. Кэширование ответов также сокращает объем работы, выполняемой веб-сервером для создания ответа. Кэширование ответов управляется заголовками, которые определяют, как клиент, прокси-сервер и промежуточное по должны кэшировать ответы.
 
-[Атрибут респонсекаче](#responsecache-attribute) участвует в задании заголовков кэширования ответа, которые клиенты могут учитывать при кэшировании ответов. По [промежуточного слоя кэширования ответа](xref:performance/caching/middleware) можно использовать для кэширования ответов на сервере. По промежуточного слоя может использовать свойства <xref:Microsoft.AspNetCore.Mvc.ResponseCacheAttribute>, чтобы повлиять на поведение кэширования на стороне сервера.
+[Атрибут респонсекаче](#responsecache-attribute) участвует в установках заголовков кэширования ответа. Клиенты и промежуточные прокси-серверы должны учитывать заголовки для кэширования ответов в [спецификации кэширования HTTP 1,1](https://tools.ietf.org/html/rfc7234).
+
+Для кэширования на стороне сервера, которое следует за спецификацией кэширования HTTP 1,1, используйте по [промежуточного слоя кэширование ответа](xref:performance/caching/middleware). По промежуточного слоя может использовать свойства <xref:Microsoft.AspNetCore.Mvc.ResponseCacheAttribute>, чтобы повлиять на поведение кэширования на стороне сервера.
 
 ## <a name="http-based-response-caching"></a>Кэширование ответов на основе HTTP
 
@@ -82,7 +84,7 @@ ms.locfileid: "72378837"
 
 ## <a name="responsecache-attribute"></a>Атрибут Респонсекаче
 
-@No__t-0 указывает параметры, необходимые для настройки соответствующих заголовков в кэшировании ответов.
+<xref:Microsoft.AspNetCore.Mvc.ResponseCacheAttribute> указывает параметры, необходимые для настройки соответствующих заголовков в кэшировании ответов.
 
 > [!WARNING]
 > Отключите кэширование для содержимого, содержащего сведения для клиентов, прошедших проверку подлинности. Кэширование следует включать только для содержимого, которое не изменяется в зависимости от удостоверения пользователя или от того, вошел ли пользователь в систему.
@@ -99,7 +101,7 @@ ms.locfileid: "72378837"
 
 Первый запрос возвращается сервером и кэшируется по промежуточного слоя. Второй запрос возвращается по промежуточного слоя, так как строка запроса совпадает с предыдущим запросом. Третий запрос не находится в кэше по промежуточного слоя, так как значение строки запроса не соответствует предыдущему запросу.
 
-@No__t-0 используется для настройки и создания (с помощью <xref:Microsoft.AspNetCore.Mvc.Filters.IFilterFactory>) a `Microsoft.AspNetCore.Mvc.Internal.ResponseCacheFilter`. @No__t-0 выполняет работу по обновлению соответствующих заголовков и компонентов HTTP ответа. Фильтр:
+<xref:Microsoft.AspNetCore.Mvc.ResponseCacheAttribute> используется для настройки и создания (с помощью <xref:Microsoft.AspNetCore.Mvc.Filters.IFilterFactory>) `Microsoft.AspNetCore.Mvc.Internal.ResponseCacheFilter`. `ResponseCacheFilter` выполняет обновление соответствующих HTTP-заголовков и функций ответа. Фильтр:
 
 * Удаляет все существующие заголовки для `Vary`, `Cache-Control` и `Pragma`.
 * Записывает соответствующие заголовки на основе свойств, заданных в <xref:Microsoft.AspNetCore.Mvc.ResponseCacheAttribute>.
@@ -140,10 +142,15 @@ Pragma: no-cache
 
 ### <a name="location-and-duration"></a>Расположение и длительность
 
-Чтобы включить кэширование, значение <xref:Microsoft.AspNetCore.Mvc.CacheProfile.Duration> должно быть положительным, а <xref:Microsoft.AspNetCore.Mvc.CacheProfile.Location> должно быть либо `Any` (значение по умолчанию), либо `Client`. В этом случае в заголовке `Cache-Control` задается значение Location, за которым следует `max-age` ответа.
+Чтобы включить кэширование, значение <xref:Microsoft.AspNetCore.Mvc.CacheProfile.Duration> должно быть положительным, а <xref:Microsoft.AspNetCore.Mvc.CacheProfile.Location> должно быть либо `Any` (значение по умолчанию), либо `Client`. Платформа задает для заголовка `Cache-Control` значение Location, за которым следует `max-age` ответа.
 
-> [!NOTE]
-> Параметры <xref:Microsoft.AspNetCore.Mvc.CacheProfile.Location> для `Any` и `Client` транслируются в значения заголовков `Cache-Control` `public` и `private` соответственно. Как отмечалось ранее, при установке <xref:Microsoft.AspNetCore.Mvc.CacheProfile.Location> в `None` заголовков `Cache-Control` и `Pragma` задаются `no-cache`.
+Параметры <xref:Microsoft.AspNetCore.Mvc.CacheProfile.Location> для `Any` и `Client` транслируются в значения заголовков `Cache-Control` `public` и `private` соответственно. Как отмечалось в разделе "не [Store" и "Location. None](#nostore-and-locationnone) ", при установке <xref:Microsoft.AspNetCore.Mvc.CacheProfile.Location> в `None` задает для `Cache-Control` и `Pragma` заголовки `no-cache`.
+
+`Location.Any` (`Cache-Control` задано значение `public`) указывает, что *клиент или любой промежуточный прокси-сервер* может кэшировать это значение, включая по [промежуточного слоя кэширования ответа](xref:performance/caching/middleware).
+
+`Location.Client` (`Cache-Control` значение `private`) указывает, что *только клиент* может кэшировать значение. Ни один промежуточный кэш не должен кэшировать значение, включая по [промежуточного слоя кэширования ответа](xref:performance/caching/middleware).
+
+Заголовки управления кэшем просто предоставляют рекомендации клиентам и промежуточным прокси-серверам, когда и как кэшировать ответы. Нет никакой гарантии, что клиенты и прокси-серверы будут учитывать [спецификацию кэширования HTTP 1,1](https://tools.ietf.org/html/rfc7234). [Промежуточное расположение кэширования ответов](xref:performance/caching/middleware) всегда соответствует правилам кэширования, указанным в спецификации.
 
 В следующем примере показана модель страницы Cache3 из примера приложения и заголовки, созданные с помощью параметра <xref:Microsoft.AspNetCore.Mvc.CacheProfile.Duration>, и остается значение по умолчанию <xref:Microsoft.AspNetCore.Mvc.CacheProfile.Location>:
 
@@ -167,7 +174,7 @@ Cache-Control: public,max-age=10
 
 [!code-csharp[](response/samples/2.x/ResponseCacheSample/Pages/Cache4.cshtml.cs?name=snippet)]
 
-@No__t-0 может быть применен к:
+<xref:Microsoft.AspNetCore.Mvc.ResponseCacheAttribute> можно применить к:
 
 * Обработчики страниц Razor (классы) атрибуты &ndash; не могут быть применены к методам обработчика.
 * Контроллеры MVC (классы).
