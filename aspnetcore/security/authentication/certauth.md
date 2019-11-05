@@ -6,16 +6,16 @@ monikerRange: '>= aspnetcore-3.0'
 ms.author: bdorrans
 ms.date: 08/19/2019
 uid: security/authentication/certauth
-ms.openlocfilehash: bb375cf380175daf2399f3b56f543819ee5692b8
-ms.sourcegitcommit: 07cd66e367d080acb201c7296809541599c947d1
+ms.openlocfilehash: 1e646aabb4e384e6906575e7beaa680e91f968a0
+ms.sourcegitcommit: e5d4768aaf85703effb4557a520d681af8284e26
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71039240"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73616582"
 ---
 # <a name="configure-certificate-authentication-in-aspnet-core"></a>Настройка проверки подлинности сертификата в ASP.NET Core
 
-`Microsoft.AspNetCore.Authentication.Certificate`содержит реализацию, похожую на [проверку подлинности с помощью сертификата](https://tools.ietf.org/html/rfc5246#section-7.4.4) для ASP.NET Core. Проверка подлинности сертификата выполняется на уровне TLS, прежде чем он когда-либо получит ASP.NET Core. Точнее, это обработчик проверки подлинности, который проверяет сертификат, а затем предоставляет событие, в котором можно разрешить этот сертификат в `ClaimsPrincipal`. 
+`Microsoft.AspNetCore.Authentication.Certificate` содержит реализацию, похожую на [проверку подлинности с помощью сертификата](https://tools.ietf.org/html/rfc5246#section-7.4.4) для ASP.NET Core. Проверка подлинности сертификата выполняется на уровне TLS, прежде чем он когда-либо получит ASP.NET Core. Точнее, это обработчик проверки подлинности, который проверяет сертификат, а затем предоставляет событие, в котором можно разрешить этот сертификат в `ClaimsPrincipal`. 
 
 [Настройте узел](#configure-your-host-to-require-certificates) для проверки подлинности на основе сертификата, как IIS, Kestrel, веб-приложения Azure или любое другое приложение, которое вы используете.
 
@@ -32,11 +32,11 @@ ms.locfileid: "71039240"
 
 Получите HTTPS сертификат, примените его и [Настройте узел](#configure-your-host-to-require-certificates) так, чтобы он затребовал сертификаты.
 
-В веб-приложении добавьте ссылку на `Microsoft.AspNetCore.Authentication.Certificate` пакет. Затем в `Startup.Configure` методе вызовите `app.AddAuthentication(CertificateAuthenticationDefaults.AuthenticationScheme).UseCertificateAuthentication(...);` с вашими параметрами, предоставив делегат для `OnCertificateValidated` , чтобы выполнить дополнительную проверку сертификата клиента, отправляемого с запросами. Включите эту информацию в `ClaimsPrincipal` и установите ее `context.Principal` в свойстве.
+В веб-приложении добавьте ссылку на пакет `Microsoft.AspNetCore.Authentication.Certificate`. Затем в методе `Startup.ConfigureServices` вызовите `services.AddAuthentication(CertificateAuthenticationDefaults.AuthenticationScheme).UseCertificateAuthentication(...);` с вашими параметрами, предоставляя делегат для `OnCertificateValidated` выполнить любую дополнительную проверку сертификата клиента, отправляемого с запросами. Включите эту информацию в `ClaimsPrincipal` и установите ее в свойстве `context.Principal`.
 
-Если проверка подлинности завершается неудачно, `401 (Unauthorized)`этот обработчик возвращает `403 (Forbidden)` ответ, а не, как вы можете ожидать. Причина заключается в том, что проверка подлинности должна выполняться во время первоначального TLS-подключения. К моменту, когда он достигает обработчика, он слишком поздно. Невозможно обновить подключение между анонимным подключением и сертификатом.
+Если проверка подлинности завершается неудачно, этот обработчик возвращает `403 (Forbidden)`ный ответ, а не `401 (Unauthorized)`, как можно было бы ожидать. Причина заключается в том, что проверка подлинности должна выполняться во время первоначального TLS-подключения. К моменту, когда он достигает обработчика, он слишком поздно. Невозможно обновить подключение между анонимным подключением и сертификатом.
 
-Кроме того `app.UseAuthentication();` , `Startup.Configure` добавьте в метод. В противном случае HttpContext. User не будет настроен на `ClaimsPrincipal` создание из сертификата. Например:
+Также добавьте `app.UseAuthentication();` в метод `Startup.Configure`. В противном случае HttpContext. User не будет настроен на `ClaimsPrincipal`, созданный из сертификата. Пример:
 
 ```csharp
 public void ConfigureServices(IServiceCollection services)
@@ -59,27 +59,27 @@ public void Configure(IApplicationBuilder app, IHostingEnvironment env)
 
 ## <a name="configure-certificate-validation"></a>Настройка проверки сертификата
 
-`CertificateAuthenticationOptions` Обработчик содержит некоторые встроенные проверки, которые являются минимальными проверками, которые следует выполнить с сертификатом. Каждый из этих параметров включен по умолчанию.
+Обработчик `CertificateAuthenticationOptions` имеет некоторые встроенные проверки, которые являются минимальными проверками, которые следует выполнить с сертификатом. Каждый из этих параметров включен по умолчанию.
 
-### <a name="allowedcertificatetypes--chained-selfsigned-or-all-chained--selfsigned"></a>AllowedCertificateTypes = Chained, SelfSigned или All (Chained | SelfSigned)
+### <a name="allowedcertificatetypes--chained-selfsigned-or-all-chained--selfsigned"></a>Алловедцертификатетипес = цепочка, Селфсигнед или все (цепочка | Селфсигнед)
 
 Эта проверка подтверждает, что разрешен только соответствующий тип сертификата.
 
-### <a name="validatecertificateuse"></a>ValidateCertificateUse
+### <a name="validatecertificateuse"></a>валидатецертификатеусе
 
 Эта проверка проверяет, что сертификат, предоставленный клиентом, имеет расширенное использование ключа проверки подлинности клиента (EKU) или вообще не содержит EKU. Как говорится в спецификации, если EKU не указано, все EKU считаются допустимыми.
 
-### <a name="validatevalidityperiod"></a>ValidateValidityPeriod
+### <a name="validatevalidityperiod"></a>валидатевалидитипериод
 
 Эта проверка проверяет, что сертификат находится в пределах срока действия. В каждом запросе обработчик гарантирует, что сертификат, который был действителен, когда он был предоставлен, не истечет в течение текущего сеанса.
 
-### <a name="revocationflag"></a>RevocationFlag
+### <a name="revocationflag"></a>ревокатионфлаг
 
 Флаг, указывающий, какие сертификаты в цепочке проверяются на отзыв.
 
 Проверки отзыва выполняются только в том случае, если сертификат связан с корневым сертификатом.
 
-### <a name="revocationmode"></a>RevocationMode
+### <a name="revocationmode"></a>ревокатионмоде
 
 Флаг, указывающий, как выполняются проверки отзыва.
 
@@ -95,8 +95,8 @@ public void Configure(IApplicationBuilder app, IHostingEnvironment env)
 
 Обработчик имеет два события:
 
-* `OnAuthenticationFailed`&ndash; Вызывается, если исключение происходит во время проверки подлинности и позволяет реагировать.
-* `OnCertificateValidated`&ndash; Вызывается после проверки сертификата, прошли проверку и был создан участник по умолчанию. Это событие позволяет выполнять собственную проверку и дополнять или заменять субъект. Ниже приведены примеры.
+* `OnAuthenticationFailed` &ndash; вызывается при возникновении исключения во время проверки подлинности и позволяет реагировать на них.
+* `OnCertificateValidated` &ndash; вызывается после проверки сертификата, прошел проверку и создается участник по умолчанию. Это событие позволяет выполнять собственную проверку и дополнять или заменять субъект. Ниже приведены примеры.
   * Определение, известен ли сертификат службам.
   * Создание собственного участника. Рассмотрим следующий пример в `Startup.ConfigureServices`:
 
@@ -132,7 +132,7 @@ services.AddAuthentication(
     });
 ```
 
-Если входящий сертификат не соответствует дополнительной проверке, позвоните `context.Fail("failure reason")` по причине сбоя.
+Если входящий сертификат не соответствует дополнительной проверке, вызовите `context.Fail("failure reason")` с причиной сбоя.
 
 Для реальной функциональности вам, вероятно, потребуется вызвать службу, зарегистрированную в внедрении зависимостей, которая подключается к базе данных или другому хранилищу пользователей. Получите доступ к службе с помощью контекста, переданного в делегат. Рассмотрим следующий пример в `Startup.ConfigureServices`:
 
@@ -177,7 +177,7 @@ services.AddAuthentication(
     });
 ```
 
-По сути, проверка сертификата является проблемой авторизации. Добавление проверки, например, издателя или отпечатка в политике авторизации, а не внутри `OnCertificateValidated`, вполне приемлемо.
+По сути, проверка сертификата является проблемой авторизации. Добавление проверки, например, издателя или отпечатка в политике авторизации, а не в `OnCertificateValidated`, вполне приемлемо.
 
 ## <a name="configure-your-host-to-require-certificates"></a>Настройка узла для использования сертификатов
 
