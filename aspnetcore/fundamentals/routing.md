@@ -7,12 +7,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 09/24/2019
 uid: fundamentals/routing
-ms.openlocfilehash: c8037d79c79c5b7eb3b99d9724aa3e5361f92b8c
-ms.sourcegitcommit: 5d25a7f22c50ca6fdd0f8ecd8e525822e1b35b7a
+ms.openlocfilehash: 8b4da4e1e262ec82225413d0338b3492d0b5e152
+ms.sourcegitcommit: 032113208bb55ecfb2faeb6d3e9ea44eea827950
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/28/2019
-ms.locfileid: "71482045"
+ms.lasthandoff: 10/31/2019
+ms.locfileid: "73190502"
 ---
 # <a name="routing-in-aspnet-core"></a>Маршрутизация в ASP.NET Core
 
@@ -485,7 +485,7 @@ public User GetUserById(int id) { }
 
 Регулярные выражения, используемые при маршрутизации, часто начинаются с символа карета (`^`) и соответствуют начальной позиции строки. Выражения часто заканчиваются знаком доллара (`$`) и соответствуют концу строки. Благодаря символам `^` и `$` регулярное выражение сопоставляется со всем значением параметра маршрута. Если символы `^` и `$` отсутствуют, регулярное выражение сопоставляется с любой подстрокой внутри строки, что обычно нежелательно. В следующей таблице представлен ряд примеров и объясняются причины соответствия или несоответствия.
 
-| Выражение   | Строковое    | Соответствие | Комментарий               |
+| Выражение   | Строка    | Соответствие | Добавление примечаний               |
 | ------------ | --------- | :---: |  -------------------- |
 | `[a-z]{2}`   | hello     | Yes   | Соответствие подстроки     |
 | `[a-z]{2}`   | 123abc456 | Yes   | Соответствие подстроки     |
@@ -591,6 +591,81 @@ routes.MapRoute("blog_route", "blog/{*slug}",
 Сложные сегменты (например, `[Route("/x{token}y")]`) обрабатываются путем "нежадного" сопоставления литералов справа налево. Подробные сведения о сопоставлении сложных сегментов см. в [этом коде](https://github.com/aspnet/AspNetCore/blob/release/2.2/src/Http/Routing/src/Patterns/RoutePatternMatcher.cs#L293). [Пример кода](https://github.com/aspnet/AspNetCore/blob/release/2.2/src/Http/Routing/src/Patterns/RoutePatternMatcher.cs#L293) не используется в ASP.NET Core, но он предоставляет подробное объяснение сложных сегментов.
 <!-- While that code is no longer used by ASP.NET Core for complex segment matching, it provides a good match to the current algorithm. The [current code](https://github.com/aspnet/AspNetCore/blob/91514c9af7e0f4c44029b51f05a01c6fe4c96e4c/src/Http/Routing/src/Matching/DfaMatcherBuilder.cs#L227-L244) is too abstracted from matching to be useful for understanding complex segment matching.
 -->
+
+## <a name="configuring-endpoint-metadata"></a>Настройка метаданных конечной точки
+
+Сведения о настройке метаданных конечной точки см. на следующих веб-страницах:
+
+* [Включение CORS с маршрутизацией конечных точек](xref:security/cors#enable-cors-with-endpoint-routing)
+* [Пример IAuthorizationPolicyProvider](https://github.com/aspnet/AspNetCore/tree/release/3.0/src/Security/samples/CustomPolicyProvider) с использованием настраиваемого атрибута `[MinimumAgeAuthorize]`
+* [Тестирование проверки подлинности с использованием атрибута [Authorize]](xref:security/authentication/identity#test-identity)
+* <xref:Microsoft.AspNetCore.Builder.AuthorizationEndpointConventionBuilderExtensions.RequireAuthorization*>
+* [Выбор схемы с использованием атрибута [Authorize]](xref:security/authorization/limitingidentitybyscheme#selecting-the-scheme-with-the-authorize-attribute)
+* [применение политик с использованием атрибута [Authorize]](xref:security/authorization/policies#applying-policies-to-mvc-controllers)
+* <xref:security/authorization/roles>
+
+<a name="hostmatch"></a>
+
+## <a name="host-matching-in-routes-with-requirehost"></a>Сопоставление узлов в маршрутах с помощью RequireHost
+
+`RequireHost` применяет к ограничение маршруту, которому требуется указанный узел. Параметр `RequireHost` или `[Host]` может иметь следующее значение:
+
+* Узел: `www.domain.com` (соответствует `www.domain.com` с любым портом)
+* Узел с подстановочным знаком: `*.domain.com` (соответствует `www.domain.com`, `subdomain.domain.com` или `www.subdomain.domain.com` для любого порта)
+* Порт: `*:5000` (соответствует порту 5000 с любым узлом)
+* Узел и порт: `www.domain.com:5000`, `*.domain.com:5000` (соответствует узлу и порту)
+
+С помощью `RequireHost` или `[Host]` можно указать несколько параметров. Ограничение будет соответствовать узлам, допустимым для любого из параметров. Например, `[Host("domain.com", "*.domain.com")]` будет соответствовать `domain.com`, `www.domain.com` или `subdomain.domain.com`.
+
+Следующий код использует `RequireHost`, чтобы запрашивать указанный узел в маршруте:
+
+```csharp
+public void Configure(IApplicationBuilder app)
+{
+    app.UseRouting();
+
+    app.UseEndpoints(endpoints =>
+    {
+        endpoints.MapGet("/", context => context.Response.WriteAsync("Hi Contoso!"))
+            .RequireHost("contoso.com");
+        endpoints.MapGet("/", context => context.Response.WriteAsync("Hi AdventureWorks!"))
+            .RequireHost("adventure-works.com");
+        endpoints.MapHealthChecks("/healthz").RequireHost("*:8080");
+    });
+}
+```
+
+Следующий код использует атрибут `[Host]`, чтобы запрашивать указанный узел в контроллере:
+
+```csharp
+[Host("contoso.com", "adventure-works.com")]
+public class HomeController : Controller
+{
+    private readonly ILogger<HomeController> _logger;
+
+    public HomeController(ILogger<HomeController> logger)
+    {
+        _logger = logger;
+    }
+
+    public IActionResult Index()
+    {
+        return View();
+    }
+
+    [Host("example.com:8080")]
+    public IActionResult Privacy()
+    {
+        return View();
+    }
+
+}
+```
+
+Если атрибут `[Host]` применяется как к контроллеру, так и к методу действия, выполняется следующее.
+
+* Используется атрибут действия.
+* Атрибут контроллера не учитывается.
 
 ::: moniker-end
 
@@ -1071,7 +1146,7 @@ public User GetUserById(int id) { }
 
 Регулярные выражения, используемые при маршрутизации, часто начинаются с символа карета (`^`) и соответствуют начальной позиции строки. Выражения часто заканчиваются знаком доллара (`$`) и соответствуют концу строки. Благодаря символам `^` и `$` регулярное выражение сопоставляется со всем значением параметра маршрута. Если символы `^` и `$` отсутствуют, регулярное выражение сопоставляется с любой подстрокой внутри строки, что обычно нежелательно. В следующей таблице представлен ряд примеров и объясняются причины соответствия или несоответствия.
 
-| Выражение   | String    | Соответствие | Комментарий               |
+| Выражение   | Строка    | Соответствие | Добавление примечаний               |
 | ------------ | --------- | :---: |  -------------------- |
 | `[a-z]{2}`   | hello     | Yes   | Соответствие подстроки     |
 | `[a-z]{2}`   | 123abc456 | Yes   | Соответствие подстроки     |
@@ -1525,7 +1600,7 @@ public User GetUserById(int id) { }
 
 Регулярные выражения, используемые при маршрутизации, часто начинаются с символа карета (`^`) и соответствуют начальной позиции строки. Выражения часто заканчиваются знаком доллара (`$`) и соответствуют концу строки. Благодаря символам `^` и `$` регулярное выражение сопоставляется со всем значением параметра маршрута. Если символы `^` и `$` отсутствуют, регулярное выражение сопоставляется с любой подстрокой внутри строки, что обычно нежелательно. В следующей таблице представлен ряд примеров и объясняются причины соответствия или несоответствия.
 
-| Выражение   | Строковое    | Соответствие | Комментарий               |
+| Выражение   | Строка    | Соответствие | Добавление примечаний               |
 | ------------ | --------- | :---: |  -------------------- |
 | `[a-z]{2}`   | hello     | Yes   | Соответствие подстроки     |
 | `[a-z]{2}`   | 123abc456 | Yes   | Соответствие подстроки     |

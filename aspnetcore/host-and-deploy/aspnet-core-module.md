@@ -5,14 +5,14 @@ description: Сведения о настройке модуля ASP.NET Core д
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 10/13/2019
+ms.date: 10/24/2019
 uid: host-and-deploy/aspnet-core-module
-ms.openlocfilehash: 917ee462a8f9592120685b53d059a661cb4a7452
-ms.sourcegitcommit: 07d98ada57f2a5f6d809d44bdad7a15013109549
+ms.openlocfilehash: 42ff4438738931fde70e123031412bcfc8a83efb
+ms.sourcegitcommit: 16cf016035f0c9acf3ff0ad874c56f82e013d415
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72333894"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73034215"
 ---
 # <a name="aspnet-core-module"></a>Модуль ASP.NET Core
 
@@ -91,6 +91,8 @@ ms.locfileid: "72333894"
 
 Для внутрипроцессного размещения указано значение `InProcess`, которое является значением по умолчанию.
 
+Значение `<AspNetCoreHostingModel>` не учитывает регистр, поэтому `inprocess` и `outofprocess` являются допустимыми значениями.
+
 Сервер [Kestrel](xref:fundamentals/servers/kestrel) используется вместо HTTP-сервера IIS (`IISHttpServer`).
 
 Для внепроцессной обработки [CreateDefaultBuilder](xref:fundamentals/host/generic-host#default-builder-settings) вызывает <xref:Microsoft.AspNetCore.Hosting.WebHostBuilderIISExtensions.UseIISIntegration*> для выполнения следующих действий:
@@ -138,7 +140,7 @@ ms.locfileid: "72333894"
                   arguments=".\MyApp.dll"
                   stdoutLogEnabled="false"
                   stdoutLogFile=".\logs\stdout"
-                  hostingModel="InProcess" />
+                  hostingModel="inprocess" />
     </system.webServer>
   </location>
 </configuration>
@@ -157,7 +159,7 @@ ms.locfileid: "72333894"
       <aspNetCore processPath=".\MyApp.exe"
                   stdoutLogEnabled="false"
                   stdoutLogFile=".\logs\stdout"
-                  hostingModel="InProcess" />
+                  hostingModel="inprocess" />
     </system.webServer>
   </location>
 </configuration>
@@ -176,7 +178,7 @@ ms.locfileid: "72333894"
 | `arguments` | <p>Необязательный строковый атрибут.</p><p>Аргументы для исполняемого файла, указанного в атрибуте **processPath**.</p> | |
 | `disableStartUpErrorPage` | <p>Дополнительный логический атрибут.</p><p>Если значение равно true, страница **502.5 — ошибка процесса** подавляется и страница в файле *web.config* с кодом состояния 502 имеет более высокий приоритет.</p> | `false` |
 | `forwardWindowsAuthToken` | <p>Дополнительный логический атрибут.</p><p>Если значение равно true, маркер безопасности отправляется дочернему процессу, прослушивающему порт %ASPNETCORE_PORT% как заголовок "MS-ASPNETCORE-WINAUTHTOKEN" каждого запроса. Этот процесс вызывает CloseHandle по этому маркеру безопасности каждого запроса.</p> | `true` |
-| `hostingModel` | <p>Необязательный строковый атрибут.</p><p>Указывает модель размещения — внутри процесса (`InProcess`) или вне процесса (`OutOfProcess`).</p> | `InProcess` |
+| `hostingModel` | <p>Необязательный строковый атрибут.</p><p>Указывает модель размещения — внутри процесса (`InProcess`/`inprocess`) или вне процесса (`OutOfProcess`/`outofprocess`).</p> | `InProcess`<br>`inprocess` |
 | `processesPerApplication` | <p>Необязательный целочисленный атрибут.</p><p>Указывает число экземпляров процесса, заданное в параметре **processPath**, которое может появиться для каждого приложения.</p><p>&dagger;Для внутрипроцессного размещения существует ограничение: `1`.</p><p>Параметр `processesPerApplication` не рекомендуется. Этот атрибут будет удален в будущем выпуске.</p> | По умолчанию: `1`<br>Минимум: `1`<br>Максимум: `100`&dagger; |
 | `processPath` | <p>Обязательный строковый атрибут.</p><p>Путь к исполняемому файлу, который запускает процесс прослушивания HTTP-запросов. Поддерживаются относительные пути. Если путь начинается с `.`, то начало пути считается относительно корневого каталога веб-сайта.</p> | |
 | `rapidFailsPerMinute` | <p>Необязательный целочисленный атрибут.</p><p>Указывает количество сбоев за минуту, которыми может завершиться процесс, указанный в **processPath**. Если этот предел превышен, модуль останавливает запуск процесса на оставшуюся часть минуты.</p><p>Не поддерживается для внутрипроцессного размещения.</p> | По умолчанию: `10`<br>Минимум: `0`<br>Максимум: `100` |
@@ -196,8 +198,8 @@ ms.locfileid: "72333894"
 <aspNetCore processPath="dotnet"
       arguments=".\MyApp.dll"
       stdoutLogEnabled="false"
-      stdoutLogFile="\\?\%home%\LogFiles\stdout"
-      hostingModel="InProcess">
+      stdoutLogFile=".\logs\stdout"
+      hostingModel="inprocess">
   <environmentVariables>
     <environmentVariable name="ASPNETCORE_ENVIRONMENT" value="Development" />
     <environmentVariable name="CONFIG_DIR" value="f:\application_config" />
@@ -243,22 +245,30 @@ ms.locfileid: "72333894"
 
 Журналы не выполняют циклический сдвиг, пока не произойдет процесс перезапуска или перезагрузки. Администратор несет ответственность за ограничение дискового пространства, которое потребляют журналы.
 
-Использование журнала stdout рекомендуется только для устранения неполадок при запуске приложений. Не используйте журнал stdout для ведения общего журнала приложений. Для обычного входа в приложение ASP.NET Core используйте библиотеку ведения журналов, которая ограничивает размер файла журнала и выполняет циклический сдвиг журналов. Дополнительные сведения см. в разделе [Сторонние поставщики ведения журналов](xref:fundamentals/logging/index#third-party-logging-providers).
+Журнал stdout рекомендуется использовать только для устранения проблем с запуском приложений при размещении в IIS или при использовании [поддержки во время разработки для служб IIS в Visual Studio](xref:host-and-deploy/iis/development-time-iis-support), а не при локальной отладке и выполнении приложения с использованием IIS Express.
+
+Не используйте журнал stdout для ведения общего журнала приложений. Для обычного входа в приложение ASP.NET Core используйте библиотеку ведения журналов, которая ограничивает размер файла журнала и выполняет циклический сдвиг журналов. Дополнительные сведения см. в разделе [Сторонние поставщики ведения журналов](xref:fundamentals/logging/index#third-party-logging-providers).
 
 При создании файла журнала автоматически добавляются отметка времени и расширение файла. Имя файла журнала составляется путем добавления метки времени, идентификатора процесса и расширения файла ( *.log*) к последнему сегменту атрибута пути `stdoutLogFile` (обычно *stdout*) с символами подчеркивания в качестве разделителей. Если атрибут пути `stdoutLogFile` заканчивается элементом *stdout*, журнал приложения с идентификатором 1934, созданный 5 февраля 2018 г. в 19:42:32, будет иметь имя *stdout_20180205194132_1934.log*.
 
 Если `stdoutLogEnabled` имеет значение false, возникающие при запуске приложения ошибки записываются и передаются в журнал событий (макс. 30 КБ). После запуска все дополнительные журналы удаляются.
 
-В следующем примере элемент `aspNetCore` в файле *web.config* настраивает ведение журнала stdout для приложения, размещенного в Службе приложений Azure. Для локального ведения журнала допустим локальный или общий сетевой путь. Убедитесь, что идентификатор пользователя AppPool имеет разрешение на запись по указанному пути.
+В следующем примере элемент `aspNetCore` настраивает ведение журнала stdout по относительному пути `.\log\`. Убедитесь, что идентификатор пользователя AppPool имеет разрешение на запись по указанному пути.
 
 ```xml
 <aspNetCore processPath="dotnet"
     arguments=".\MyApp.dll"
     stdoutLogEnabled="true"
-    stdoutLogFile="\\?\%home%\LogFiles\stdout"
-    hostingModel="InProcess">
+    stdoutLogFile=".\logs\stdout"
+    hostingModel="inprocess">
 </aspNetCore>
 ```
+
+При публикации приложения для развертывания Службы приложений Azure веб-пакет SDK задает для `stdoutLogFile` значение `\\?\%home%\LogFiles\stdout`. Переменная среды `%home` предопределена для приложений, размещенных в Службе приложений Azure.
+
+Сведения о создании правил фильтрации журналов см. в разделах [Конфигурация](xref:fundamentals/logging/index#log-filtering) и [Фильтрация журналов](xref:fundamentals/logging/index#log-filtering) в документации по ведению журнала ASP.NET Core.
+
+Дополнительные сведения о форматах путей см. в разделе [Форматы путей к файлам в системах Windows](/dotnet/standard/io/file-path-formats).
 
 ## <a name="enhanced-diagnostic-logs"></a>Расширенные журналы диагностики
 
@@ -269,7 +279,7 @@ ms.locfileid: "72333894"
     arguments=".\MyApp.dll"
     stdoutLogEnabled="false"
     stdoutLogFile="\\?\%home%\LogFiles\stdout"
-    hostingModel="InProcess">
+    hostingModel="inprocess">
   <handlerSettings>
     <handlerSetting name="debugFile" value=".\logs\aspnetcore-debug.log" />
     <handlerSetting name="debugLevel" value="FILE,TRACE" />
@@ -315,7 +325,7 @@ ms.locfileid: "72333894"
     arguments=".\MyApp.dll"
     stdoutLogEnabled="false"
     stdoutLogFile="\\?\%home%\LogFiles\stdout"
-    hostingModel="InProcess">
+    hostingModel="inprocess">
   <handlerSettings>
     <handlerSetting name="stackSize" value="2097152" />
   </handlerSettings>
@@ -442,6 +452,8 @@ dotnet-hosting-{VERSION}.exe OPT_NO_SHARED_CONFIG_CHECK=1
 
 Модель внутрипроцессного размещения не поддерживается для приложений ASP.NET Core, предназначенных для .NET Framework.
 
+Значение `<AspNetCoreHostingModel>` не учитывает регистр, поэтому `inprocess` и `outofprocess` являются допустимыми значениями.
+
 Если свойство `<AspNetCoreHostingModel>` отсутствует в файле, значение по умолчанию — `OutOfProcess`.
 
 При внутрипроцессном размещении применимы следующие характеристики:
@@ -494,6 +506,8 @@ dotnet-hosting-{VERSION}.exe OPT_NO_SHARED_CONFIG_CHECK=1
 </PropertyGroup>
 ```
 
+Это значение не учитывает регистр, поэтому `inprocess` и `outofprocess` являются допустимыми значениями.
+
 Сервер [Kestrel](xref:fundamentals/servers/kestrel) используется вместо HTTP-сервера IIS (`IISHttpServer`).
 
 Для внепроцессной обработки [CreateDefaultBuilder](xref:fundamentals/host/web-host#set-up-a-host) вызывает <xref:Microsoft.AspNetCore.Hosting.WebHostBuilderIISExtensions.UseIISIntegration*> для выполнения следующих действий:
@@ -541,7 +555,7 @@ dotnet-hosting-{VERSION}.exe OPT_NO_SHARED_CONFIG_CHECK=1
                   arguments=".\MyApp.dll"
                   stdoutLogEnabled="false"
                   stdoutLogFile=".\logs\stdout"
-                  hostingModel="InProcess" />
+                  hostingModel="inprocess" />
     </system.webServer>
   </location>
 </configuration>
@@ -560,7 +574,7 @@ dotnet-hosting-{VERSION}.exe OPT_NO_SHARED_CONFIG_CHECK=1
       <aspNetCore processPath=".\MyApp.exe"
                   stdoutLogEnabled="false"
                   stdoutLogFile=".\logs\stdout"
-                  hostingModel="InProcess" />
+                  hostingModel="inprocess" />
     </system.webServer>
   </location>
 </configuration>
@@ -579,7 +593,7 @@ dotnet-hosting-{VERSION}.exe OPT_NO_SHARED_CONFIG_CHECK=1
 | `arguments` | <p>Необязательный строковый атрибут.</p><p>Аргументы для исполняемого файла, указанного в атрибуте **processPath**.</p> | |
 | `disableStartUpErrorPage` | <p>Дополнительный логический атрибут.</p><p>Если значение равно true, страница **502.5 — ошибка процесса** подавляется и страница в файле *web.config* с кодом состояния 502 имеет более высокий приоритет.</p> | `false` |
 | `forwardWindowsAuthToken` | <p>Дополнительный логический атрибут.</p><p>Если значение равно true, маркер безопасности отправляется дочернему процессу, прослушивающему порт %ASPNETCORE_PORT% как заголовок "MS-ASPNETCORE-WINAUTHTOKEN" каждого запроса. Этот процесс вызывает CloseHandle по этому маркеру безопасности каждого запроса.</p> | `true` |
-| `hostingModel` | <p>Необязательный строковый атрибут.</p><p>Указывает модель размещения — внутри процесса (`InProcess`) или вне процесса (`OutOfProcess`).</p> | `OutOfProcess` |
+| `hostingModel` | <p>Необязательный строковый атрибут.</p><p>Указывает модель размещения — внутри процесса (`InProcess`/`inprocess`) или вне процесса (`OutOfProcess`/`outofprocess`).</p> | `OutOfProcess`<br>`outofprocess` |
 | `processesPerApplication` | <p>Необязательный целочисленный атрибут.</p><p>Указывает число экземпляров процесса, заданное в параметре **processPath**, которое может появиться для каждого приложения.</p><p>&dagger;Для внутрипроцессного размещения существует ограничение: `1`.</p><p>Параметр `processesPerApplication` не рекомендуется. Этот атрибут будет удален в будущем выпуске.</p> | По умолчанию: `1`<br>Минимум: `1`<br>Максимум: `100`&dagger; |
 | `processPath` | <p>Обязательный строковый атрибут.</p><p>Путь к исполняемому файлу, который запускает процесс прослушивания HTTP-запросов. Поддерживаются относительные пути. Если путь начинается с `.`, то начало пути считается относительно корневого каталога веб-сайта.</p> | |
 | `rapidFailsPerMinute` | <p>Необязательный целочисленный атрибут.</p><p>Указывает количество сбоев за минуту, которыми может завершиться процесс, указанный в **processPath**. Если этот предел превышен, модуль останавливает запуск процесса на оставшуюся часть минуты.</p><p>Не поддерживается для внутрипроцессного размещения.</p> | По умолчанию: `10`<br>Минимум: `0`<br>Максимум: `100` |
@@ -599,8 +613,8 @@ dotnet-hosting-{VERSION}.exe OPT_NO_SHARED_CONFIG_CHECK=1
 <aspNetCore processPath="dotnet"
       arguments=".\MyApp.dll"
       stdoutLogEnabled="false"
-      stdoutLogFile="\\?\%home%\LogFiles\stdout"
-      hostingModel="InProcess">
+      stdoutLogFile=".\logs\stdout"
+      hostingModel="inprocess">
   <environmentVariables>
     <environmentVariable name="ASPNETCORE_ENVIRONMENT" value="Development" />
     <environmentVariable name="CONFIG_DIR" value="f:\application_config" />
@@ -646,22 +660,28 @@ dotnet-hosting-{VERSION}.exe OPT_NO_SHARED_CONFIG_CHECK=1
 
 Журналы не выполняют циклический сдвиг, пока не произойдет процесс перезапуска или перезагрузки. Администратор несет ответственность за ограничение дискового пространства, которое потребляют журналы.
 
-Использование журнала stdout рекомендуется только для устранения неполадок при запуске приложений. Не используйте журнал stdout для ведения общего журнала приложений. Для обычного входа в приложение ASP.NET Core используйте библиотеку ведения журналов, которая ограничивает размер файла журнала и выполняет циклический сдвиг журналов. Дополнительные сведения см. в разделе [Сторонние поставщики ведения журналов](xref:fundamentals/logging/index#third-party-logging-providers).
+Журнал stdout рекомендуется использовать только для устранения проблем с запуском приложений при размещении в IIS или при использовании [поддержки во время разработки для служб IIS в Visual Studio](xref:host-and-deploy/iis/development-time-iis-support), а не при локальной отладке и выполнении приложения с использованием IIS Express.
+
+Не используйте журнал stdout для ведения общего журнала приложений. Для обычного входа в приложение ASP.NET Core используйте библиотеку ведения журналов, которая ограничивает размер файла журнала и выполняет циклический сдвиг журналов. Дополнительные сведения см. в разделе [Сторонние поставщики ведения журналов](xref:fundamentals/logging/index#third-party-logging-providers).
 
 При создании файла журнала автоматически добавляются отметка времени и расширение файла. Имя файла журнала составляется путем добавления метки времени, идентификатора процесса и расширения файла ( *.log*) к последнему сегменту атрибута пути `stdoutLogFile` (обычно *stdout*) с символами подчеркивания в качестве разделителей. Если атрибут пути `stdoutLogFile` заканчивается элементом *stdout*, журнал приложения с идентификатором 1934, созданный 5 февраля 2018 г. в 19:42:32, будет иметь имя *stdout_20180205194132_1934.log*.
 
 Если `stdoutLogEnabled` имеет значение false, возникающие при запуске приложения ошибки записываются и передаются в журнал событий (макс. 30 КБ). После запуска все дополнительные журналы удаляются.
 
-В следующем примере элемент `aspNetCore` настраивает ведение журнала stdout для приложения, размещенного в службе приложений Azure. Для локального ведения журнала допустим локальный или общий сетевой путь. Убедитесь, что идентификатор пользователя AppPool имеет разрешение на запись по указанному пути.
+В следующем примере элемент `aspNetCore` настраивает ведение журнала stdout по относительному пути `.\log\`. Убедитесь, что идентификатор пользователя AppPool имеет разрешение на запись по указанному пути.
 
 ```xml
 <aspNetCore processPath="dotnet"
     arguments=".\MyApp.dll"
     stdoutLogEnabled="true"
-    stdoutLogFile="\\?\%home%\LogFiles\stdout"
-    hostingModel="InProcess">
+    stdoutLogFile=".\logs\stdout"
+    hostingModel="inprocess">
 </aspNetCore>
 ```
+
+При публикации приложения для развертывания Службы приложений Azure веб-пакет SDK задает для `stdoutLogFile` значение `\\?\%home%\LogFiles\stdout`. Переменная среды `%home` предопределена для приложений, размещенных в Службе приложений Azure.
+
+Дополнительные сведения о форматах путей см. в разделе [Форматы путей к файлам в системах Windows](/dotnet/standard/io/file-path-formats).
 
 ## <a name="enhanced-diagnostic-logs"></a>Расширенные журналы диагностики
 
@@ -672,7 +692,7 @@ dotnet-hosting-{VERSION}.exe OPT_NO_SHARED_CONFIG_CHECK=1
     arguments=".\MyApp.dll"
     stdoutLogEnabled="false"
     stdoutLogFile="\\?\%home%\LogFiles\stdout"
-    hostingModel="InProcess">
+    hostingModel="inprocess">
   <handlerSettings>
     <handlerSetting name="debugFile" value=".\logs\aspnetcore-debug.log" />
     <handlerSetting name="debugLevel" value="FILE,TRACE" />
@@ -931,23 +951,27 @@ dotnet-hosting-{VERSION}.exe OPT_NO_SHARED_CONFIG_CHECK=1
 
 Журналы не выполняют циклический сдвиг, пока не произойдет процесс перезапуска или перезагрузки. Администратор несет ответственность за ограничение дискового пространства, которое потребляют журналы.
 
-Использование журнала stdout рекомендуется только для устранения неполадок при запуске приложений. Не используйте журнал stdout для ведения общего журнала приложений. Для обычного входа в приложение ASP.NET Core используйте библиотеку ведения журналов, которая ограничивает размер файла журнала и выполняет циклический сдвиг журналов. Дополнительные сведения см. в разделе [Сторонние поставщики ведения журналов](xref:fundamentals/logging/index#third-party-logging-providers).
+Журнал stdout рекомендуется использовать только для устранения проблем с запуском приложений при размещении в IIS или при использовании [поддержки во время разработки для служб IIS в Visual Studio](xref:host-and-deploy/iis/development-time-iis-support), а не при локальной отладке и выполнении приложения с использованием IIS Express.
+
+Не используйте журнал stdout для ведения общего журнала приложений. Для обычного входа в приложение ASP.NET Core используйте библиотеку ведения журналов, которая ограничивает размер файла журнала и выполняет циклический сдвиг журналов. Дополнительные сведения см. в разделе [Сторонние поставщики ведения журналов](xref:fundamentals/logging/index#third-party-logging-providers).
 
 При создании файла журнала автоматически добавляются отметка времени и расширение файла. Имя файла журнала составляется путем добавления метки времени, идентификатора процесса и расширения файла ( *.log*) к последнему сегменту атрибута пути `stdoutLogFile` (обычно *stdout*) с символами подчеркивания в качестве разделителей. Если атрибут пути `stdoutLogFile` заканчивается элементом *stdout*, журнал приложения с идентификатором 1934, созданный 5 февраля 2018 г. в 19:42:32, будет иметь имя *stdout_20180205194132_1934.log*.
 
-В следующем примере элемент `aspNetCore` настраивает ведение журнала stdout для приложения, размещенного в службе приложений Azure. Для локального ведения журнала допустим локальный или общий сетевой путь. Убедитесь, что идентификатор пользователя AppPool имеет разрешение на запись по указанному пути.
+В следующем примере элемент `aspNetCore` настраивает ведение журнала stdout по относительному пути `.\log\`. Убедитесь, что идентификатор пользователя AppPool имеет разрешение на запись по указанному пути.
 
 ```xml
 <aspNetCore processPath="dotnet"
     arguments=".\MyApp.dll"
     stdoutLogEnabled="true"
-    stdoutLogFile="\\?\%home%\LogFiles\stdout">
+    stdoutLogFile=".\logs\stdout">
 </aspNetCore>
 ```
 
-Папки, указанные в пути к значению `<handlerSetting>` (*logs* в приведенном выше примере), не создаются модулем автоматически и должны заранее существовать в развертывании. Пул приложений должен иметь доступ на запись в папку, где записываются журналы (используйте атрибут `IIS AppPool\<app_pool_name>` для предоставления разрешения на запись).
+При публикации приложения для развертывания Службы приложений Azure веб-пакет SDK задает для `stdoutLogFile` значение `\\?\%home%\LogFiles\stdout`. Переменная среды `%home` предопределена для приложений, размещенных в Службе приложений Azure.
 
-См. пример элемента `aspNetCore` в файле *web.config* в разделе [Конфигурация с помощью файла web.config](#configuration-with-webconfig).
+Сведения о создании правил фильтрации журналов см. в разделах [Конфигурация](xref:fundamentals/logging/index#log-filtering) и [Фильтрация журналов](xref:fundamentals/logging/index#log-filtering) в документации по ведению журнала ASP.NET Core.
+
+Дополнительные сведения о форматах путей см. в разделе [Форматы путей к файлам в системах Windows](/dotnet/standard/io/file-path-formats).
 
 ## <a name="proxy-configuration-uses-http-protocol-and-a-pairing-token"></a>Конфигурация прокси-сервера использует протокол HTTP и токен связывания
 

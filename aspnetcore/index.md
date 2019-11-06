@@ -4,14 +4,14 @@ author: rick-anderson
 description: Введение в ASP.NET Core — кроссплатформенную высокопроизводительную платформу с открытым исходным кодом для создания современных облачных интернет-приложений.
 ms.author: riande
 ms.custom: mvc
-ms.date: 10/10/2019
+ms.date: 11/03/2019
 uid: index
-ms.openlocfilehash: 1ccc1f5d095833e89fc20127ee23b8fa3dc4c79f
-ms.sourcegitcommit: 020c3760492efed71b19e476f25392dda5dd7388
+ms.openlocfilehash: edbdce19656af64d7c2c0ee554bc5213a0d0c50e
+ms.sourcegitcommit: 09f4a5ded39cc8204576fe801d760bd8b611f3aa
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/12/2019
-ms.locfileid: "72289063"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73611410"
 ---
 # <a name="introduction-to-aspnet-core"></a>Введение в ASP.NET Core
 
@@ -98,6 +98,10 @@ ASP.NET Core версии 3.0 и более поздних будут выпол
 1. Просмотрите содержание, чтобы найти другие интересующие вас темы.
 
 \* Доступен новый [учебник по веб-API с прохождением в браузере](https://docs.microsoft.com/learn/modules/build-web-api-net-core), не требующий установки локальной интегрированной среды разработки.  Код выполняется в [Azure Cloud Shell](https://azure.microsoft.com/features/cloud-shell/), а для тестирования используется [curl](https://curl.haxx.se/).
+
+## <a name="migration-from-the-net-framework"></a>Миграция с .NET Framework
+
+Справочное руководство по миграции приложений ASP.NET на ASP.NET Core см. в статье <migration/proper-to-2x/index>.
 
 ## <a name="how-to-download-a-sample"></a>Загрузка примера
 
