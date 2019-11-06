@@ -6,12 +6,12 @@ monikerRange: '>= aspnetcore-3.0'
 ms.author: johluo
 ms.date: 09/25/2019
 uid: grpc/migration
-ms.openlocfilehash: 596eca0f510387a18472eb353672980e0a8e0d24
-ms.sourcegitcommit: eb4fcdeb2f9e8413117624de42841a4997d1d82d
+ms.openlocfilehash: c4c07808540c9af370bfa253e8154a8a19f0f3de
+ms.sourcegitcommit: 897d4abff58505dae86b2947c5fe3d1b80d927f3
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72698000"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73634070"
 ---
 # <a name="migrating-grpc-services-from-c-core-to-aspnet-core"></a>Миграция gRPC Services с C-Core на ASP.NET Core
 
@@ -80,9 +80,27 @@ public class GreeterService : Greeter.GreeterBase
 
 Приложения на основе C-Core настраивают HTTPS через [свойство Server. Ports](https://grpc.io/grpc/csharp/api/Grpc.Core.Server.html#Grpc_Core_Server_Ports). Аналогичная концепция используется для настройки серверов в ASP.NET Core. Например, Kestrel использует [конфигурацию конечной точки](xref:fundamentals/servers/kestrel#endpoint-configuration) для этой функции.
 
-## <a name="interceptors-and-middleware"></a>Перехватчики и по промежуточного слоя
+## <a name="grpc-interceptors-vs-middleware"></a>gRPC перехватчики VS по промежуточного слоя
 
-ASP.NET Core по [промежуточного слоя](xref:fundamentals/middleware/index) предлагает аналогичные функциональные возможности по сравнению с перехватчиками в приложениях gRPC на основе C-Core. По промежуточного слоя и перехватчиков концептуально совпадают и используются для создания конвейера, обрабатывающего запрос gRPC. Они позволяют выполнять работу до или после следующего компонента в конвейере. Однако ASP.NET Core по промежуточного слоя работает с базовыми сообщениями HTTP/2, тогда как перехватчики работают с уровнем абстракции gRPC с помощью [серверкаллконтекст](https://grpc.io/grpc/csharp/api/Grpc.Core.ServerCallContext.html).
+ASP.NET Core по [промежуточного слоя](xref:fundamentals/middleware/index) предлагает аналогичные функциональные возможности по сравнению с перехватчиками в приложениях gRPC на основе C-Core. ASP.NET Core по промежуточного слоя и перехватчики концептуально похожи. Как
+
+* Используются для создания конвейера, обрабатывающего запрос gRPC.
+* Разрешить выполнение работы до или после следующего компонента в конвейере.
+* Предоставление доступа к `HttpContext`:
+  * В промежуточном слое `HttpContext` является параметром.
+  * В перехватчиках доступ к `HttpContext` можно получить с помощью параметра `ServerCallContext` с помощью метода расширения `ServerCallContext.GetHttpContext`. Обратите внимание, что эта функция относится к перехватчикам, выполняемым в ASP.NET Core.
+
+отличия gRPC от по промежуточного слоя ASP.NET Core:
+
+* Перехватчики
+  * Работа с уровнем абстракции gRPC с помощью [серверкаллконтекст](https://grpc.io/grpc/csharp/api/Grpc.Core.ServerCallContext.html).
+  * Предоставить доступ к:
+    * Десериализованное сообщение, отправленное в вызов.
+    * Сообщение, возвращаемое из вызова перед его сериализацией.
+* По промежуточного слоя
+  * Выполняется перед перехватчиками gRPC.
+  * Работает с базовыми сообщениями HTTP/2.
+  * Может получать доступ только к байтам из потоков запросов и ответов.
 
 ## <a name="additional-resources"></a>Дополнительные ресурсы
 

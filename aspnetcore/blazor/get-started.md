@@ -7,12 +7,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 10/21/2019
 uid: blazor/get-started
-ms.openlocfilehash: 80ff7b42a44e722dd27bc4fde53a066863448e10
-ms.sourcegitcommit: 810d5831169770ee240d03207d6671dabea2486e
+ms.openlocfilehash: 48d7ff4bf23273daf43128831aa46cfab3d982fe
+ms.sourcegitcommit: 897d4abff58505dae86b2947c5fe3d1b80d927f3
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72779130"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73634032"
 ---
 # <a name="get-started-with-aspnet-core-blazor"></a>Начало работы с ASP.NET Core Блазор
 
@@ -29,7 +29,7 @@ ms.locfileid: "72779130"
 1. Установите шаблон [блазор-Assembly](xref:blazor/hosting-models#blazor-webassembly) , выполнив следующую команду в командной оболочке. Пакет [Microsoft. AspNetCore. блазор. templates](https://www.nuget.org/packages/Microsoft.AspNetCore.Blazor.Templates/) имеет предварительную версию, а блазор уже находится в предварительной версии.
 
    ```dotnetcli
-   dotnet new -i Microsoft.AspNetCore.Blazor.Templates::3.1.0-preview1.19508.20
+   dotnet new -i Microsoft.AspNetCore.Blazor.Templates::3.1.0-preview2.19528.8
    ```
 
 1. Следуйте указаниям по выбору инструментов:
