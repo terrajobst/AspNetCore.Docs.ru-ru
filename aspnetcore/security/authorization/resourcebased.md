@@ -6,12 +6,12 @@ ms.author: scaddie
 ms.custom: mvc
 ms.date: 11/15/2018
 uid: security/authorization/resourcebased
-ms.openlocfilehash: 835592521c714e270595e1448ae6e0aed1707b77
-ms.sourcegitcommit: a166291c6708f5949c417874108332856b53b6a9
+ms.openlocfilehash: acc931da1be0940fac72b0aabe07ab17ca7e63bd
+ms.sourcegitcommit: 6628cd23793b66e4ce88788db641a5bbf470c3c1
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72590006"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73660002"
 ---
 # <a name="resource-based-authorization-in-aspnet-core"></a>Авторизация на основе ресурсов в ASP.NET Core
 
@@ -19,7 +19,17 @@ ms.locfileid: "72590006"
 
 Оценка атрибутов выполняется перед привязкой данных и перед выполнением обработчика страницы или действия, которое загружает документ. По этим причинам декларативная авторизация с помощью атрибута `[Authorize]` недостаточна. Вместо этого можно вызвать пользовательский метод авторизации &mdash;a стилем, называемым *императивной авторизацией*.
 
-[Просмотреть или скачать пример кода](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/security/authorization/resourcebased/samples) ([описание скачивания](xref:index#how-to-download-a-sample)).
+::: moniker range=">= aspnetcore-3.0"
+[Просмотреть или скачать пример кода](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/security/authorization/resourcebased/samples/3_0) ([описание скачивания](xref:index#how-to-download-a-sample)).
+::: moniker-end
+
+ ::: moniker range=">= aspnetcore-2.0 < aspnetcore-3.0"
+[Просмотреть или скачать пример кода](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/security/authorization/resourcebased/samples/2_2) ([описание скачивания](xref:index#how-to-download-a-sample)).
+::: moniker-end
+
+::: moniker range="<= aspnetcore-1.1"
+[Просмотреть или скачать пример кода](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/security/authorization/resourcebased/samples/1_1) ([описание скачивания](xref:index#how-to-download-a-sample)).
+::: moniker-end
 
 [Создание приложения ASP.NET Core с данными пользователя, защищенными с помощью авторизации,](xref:security/authorization/secure-data) содержит пример приложения, использующего авторизацию на основе ресурсов.
 
@@ -27,7 +37,7 @@ ms.locfileid: "72590006"
 
 Авторизация реализуется как служба [IAuthorizationService](/dotnet/api/microsoft.aspnetcore.authorization.iauthorizationservice) и регистрируется в коллекции служб в классе `Startup`. Служба становится доступной посредством [внедрения зависимостей](xref:fundamentals/dependency-injection) в обработчики страниц или действия.
 
-[!code-csharp[](resourcebased/samples/ResourceBasedAuthApp2/Controllers/DocumentController.cs?name=snippet_IAuthServiceDI&highlight=6)]
+[!code-csharp[](resourcebased/samples/3_0/ResourceBasedAuthApp2/Controllers/DocumentController.cs?name=snippet_IAuthServiceDI&highlight=6)]
 
 в `IAuthorizationService` есть две перегрузки метода `AuthorizeAsync`: один принимает ресурс и имя политики, а другой принимает ресурс и список требований для вычисления.
 
@@ -66,13 +76,13 @@ Task<bool> AuthorizeAsync(ClaimsPrincipal user,
 
 ::: moniker range=">= aspnetcore-2.0"
 
-[!code-csharp[](resourcebased/samples/ResourceBasedAuthApp2/Pages/Document/Edit.cshtml.cs?name=snippet_DocumentEditHandler)]
+[!code-csharp[](resourcebased/samples/3_0/ResourceBasedAuthApp2/Pages/Document/Edit.cshtml.cs?name=snippet_DocumentEditHandler)]
 
 ::: moniker-end
 
 ::: moniker range="<= aspnetcore-1.1"
 
-[!code-csharp[](resourcebased/samples/ResourceBasedAuthApp1/Controllers/DocumentController.cs?name=snippet_DocumentEditAction)]
+[!code-csharp[](resourcebased/samples/1_1/ResourceBasedAuthApp1/Controllers/DocumentController.cs?name=snippet_DocumentEditAction)]
 
 ::: moniker-end
 
@@ -84,13 +94,13 @@ Task<bool> AuthorizeAsync(ClaimsPrincipal user,
 
 ::: moniker range=">= aspnetcore-2.0"
 
-[!code-csharp[](resourcebased/samples/ResourceBasedAuthApp2/Services/DocumentAuthorizationHandler.cs?name=snippet_HandlerAndRequirement)]
+[!code-csharp[](resourcebased/samples/3_0/ResourceBasedAuthApp2/Services/DocumentAuthorizationHandler.cs?name=snippet_HandlerAndRequirement)]
 
 ::: moniker-end
 
 ::: moniker range="<= aspnetcore-1.1"
 
-[!code-csharp[](resourcebased/samples/ResourceBasedAuthApp1/Services/DocumentAuthorizationHandler.cs?name=snippet_HandlerAndRequirement)]
+[!code-csharp[](resourcebased/samples/1_1/ResourceBasedAuthApp1/Services/DocumentAuthorizationHandler.cs?name=snippet_HandlerAndRequirement)]
 
 ::: moniker-end
 
@@ -98,25 +108,34 @@ Task<bool> AuthorizeAsync(ClaimsPrincipal user,
 
 Зарегистрируйте требование и обработчик в `Startup.ConfigureServices`:
 
-[!code-csharp[](resourcebased/samples/ResourceBasedAuthApp2/Startup.cs?name=snippet_ConfigureServicesSample&highlight=3-7,9)]
+::: moniker range=">= aspnetcore-3.0"
+[!code-csharp[](resourcebased/samples/3_0/ResourceBasedAuthApp2/Startup.cs?name=snippet_ConfigureServicesSample&highlight=4-8,10)]
+::: moniker-end
+
+ ::: moniker range=">= aspnetcore-2.0 < aspnetcore-3.0"
+[!code-csharp[](resourcebased/samples/2_2/ResourceBasedAuthApp2/Startup.cs?name=snippet_ConfigureServicesSample&highlight=3-7,9)]
+::: moniker-end
+
+::: moniker range="<= aspnetcore-1.1"
+[!code-csharp[](resourcebased/samples/1_1/ResourceBasedAuthApp1/Startup.cs?name=snippet_ConfigureServicesSample&highlight=3-7,9)]
+::: moniker-end
 
 ### <a name="operational-requirements"></a>Требования к эксплуатации
 
 Если вы принимаете решения на основе результатов операций CRUD (создание, чтение, обновление, удаление), используйте вспомогательный класс [оператионаусоризатионрекуиремент](/dotnet/api/microsoft.aspnetcore.authorization.infrastructure.operationauthorizationrequirement) . Этот класс позволяет написать отдельный обработчик, а не отдельный класс для каждого типа операции. Чтобы использовать его, укажите некоторые имена операций:
 
-[!code-csharp[](resourcebased/samples/ResourceBasedAuthApp2/Services/DocumentAuthorizationCrudHandler.cs?name=snippet_OperationsClass)]
+[!code-csharp[](resourcebased/samples/3_0/ResourceBasedAuthApp2/Services/DocumentAuthorizationCrudHandler.cs?name=snippet_OperationsClass)]
 
 Обработчик реализуется следующим образом: с помощью `OperationAuthorizationRequirement` требования и `Document` ресурса.
 
-::: moniker range=">= aspnetcore-2.0"
-
-[!code-csharp[](resourcebased/samples/ResourceBasedAuthApp2/Services/DocumentAuthorizationCrudHandler.cs?name=snippet_Handler)]
+ ::: moniker range=">= aspnetcore-2.0"
+[!code-csharp[](resourcebased/samples/3_0/ResourceBasedAuthApp2/Services/DocumentAuthorizationCrudHandler.cs?name=snippet_Handler)]
 
 ::: moniker-end
 
 ::: moniker range="<= aspnetcore-1.1"
 
-[!code-csharp[](resourcebased/samples/ResourceBasedAuthApp1/Services/DocumentAuthorizationCrudHandler.cs?name=snippet_Handler)]
+[!code-csharp[](resourcebased/samples/1_1/ResourceBasedAuthApp1/Services/DocumentAuthorizationCrudHandler.cs?name=snippet_Handler)]
 
 ::: moniker-end
 
@@ -133,7 +152,7 @@ Task<bool> AuthorizeAsync(ClaimsPrincipal user,
 
 ::: moniker range=">= aspnetcore-2.0"
 
-[!code-csharp[](resourcebased/samples/ResourceBasedAuthApp2/Pages/Document/View.cshtml.cs?name=snippet_DocumentViewHandler&highlight=10-11)]
+[!code-csharp[](resourcebased/samples/3_0/ResourceBasedAuthApp2/Pages/Document/View.cshtml.cs?name=snippet_DocumentViewHandler&highlight=10-11)]
 
 Если авторизация выполнена, возвращается страница для просмотра документа. Если авторизация не выполняется, но пользователь прошел проверку подлинности, возвращает `ForbidResult` уведомляет любое промежуточное по проверки подлинности об ошибке авторизации. Если необходимо выполнить проверку подлинности, возвращается `ChallengeResult`. Для интерактивных клиентов браузера может быть целесообразно перенаправить пользователя на страницу входа.
 
@@ -141,7 +160,7 @@ Task<bool> AuthorizeAsync(ClaimsPrincipal user,
 
 ::: moniker range="<= aspnetcore-1.1"
 
-[!code-csharp[](resourcebased/samples/ResourceBasedAuthApp1/Controllers/DocumentController.cs?name=snippet_DocumentViewAction&highlight=11-12)]
+[!code-csharp[](resourcebased/samples/1_1/ResourceBasedAuthApp1/Controllers/DocumentController.cs?name=snippet_DocumentViewAction&highlight=11-12)]
 
 Если авторизация выполнена, возвращается представление документа. Если авторизация завершается неудачно, возвращается `ChallengeResult` уведомляет по промежуточного слоя проверки подлинности, что ошибка авторизации, и по промежуточного слоя может принять соответствующий ответ. Соответствующий ответ может возвращать код состояния 401 или 403. Для интерактивных клиентов браузера это может означать перенаправление пользователя на страницу входа.
 

@@ -1,28 +1,28 @@
 ---
-title: Ролевая авторизация в ASP.NET Core
+title: Авторизация на основе ролей в ASP.NET Core
 author: rick-anderson
-description: Узнайте, как ограничить доступ контроллера и действия в ASP.NET Core, передав атрибут Authorize ролей.
+description: Узнайте, как ограничить доступ к ASP.NET Core контроллеру и действиям, передав роли атрибуту авторизации.
 ms.author: riande
 ms.date: 10/14/2016
 uid: security/authorization/roles
-ms.openlocfilehash: 0e01e1976e2721ca64720a67c6341661f646395c
-ms.sourcegitcommit: 5b0eca8c21550f95de3bb21096bd4fd4d9098026
+ms.openlocfilehash: 28aa3df6aa661d0b762df78fe611cd827af43f75
+ms.sourcegitcommit: 6628cd23793b66e4ce88788db641a5bbf470c3c1
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 04/27/2019
-ms.locfileid: "64894121"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73660053"
 ---
-# <a name="role-based-authorization-in-aspnet-core"></a>Ролевая авторизация в ASP.NET Core
+# <a name="role-based-authorization-in-aspnet-core"></a>Авторизация на основе ролей в ASP.NET Core
 
 <a name="security-authorization-role-based"></a>
 
-При создании удостоверения может принадлежать одной или нескольких ролей. Например Трейси может принадлежать к роли администратора и пользователя, пока Скотт может принадлежать только к роли пользователя. Как эти роли создаются и управляются зависит от хранилище процесса авторизации. Роли имеют доступ к деятельность разработчика [IsInRole](/dotnet/api/system.security.principal.genericprincipal.isinrole) метод [ClaimsPrincipal](/dotnet/api/system.security.claims.claimsprincipal) класса.
+Созданное удостоверение может принадлежать одной или нескольким ролям. Например, Траци может принадлежать администратору и ролям пользователей, пока Скотт может принадлежать только к роли пользователя. Создание и управление этими ролями зависит от резервного хранилища процесса авторизации. Роли предоставляются разработчику через метод [IsInRole](/dotnet/api/system.security.principal.genericprincipal.isinrole) в классе [ClaimsPrincipal](/dotnet/api/system.security.claims.claimsprincipal) .
 
-## <a name="adding-role-checks"></a>Добавление проверки роли
+## <a name="adding-role-checks"></a>Добавление проверок ролей
 
-Проверки авторизации на основе ролей являются декларативными&mdash;разработчик внедряет их в свой код от контроллера или действия в контроллере, определения ролей, которые текущий пользователь должен быть членом для доступа к запрошенному ресурсу.
+Проверки авторизации на основе ролей являются декларативными&mdash;разработчик внедряет их в код для контроллера или действия в пределах контроллера, указывая роли, членом которых должен являться текущий пользователь для доступа к запрошенному ресурсу.
 
-Например, следующий код ограничивает доступ ко всем действиям на `AdministrationController` пользователям, являются членами `Administrator` роли:
+Например, следующий код ограничивает доступ к любым действиям в `AdministrationController` для пользователей, являющихся членами роли `Administrator`:
 
 ```csharp
 [Authorize(Roles = "Administrator")]
@@ -40,9 +40,9 @@ public class SalaryController : Controller
 }
 ```
 
-Этот контроллер не превысит доступными пользователям, которые являются членами объекта `HRManager` роли или `Finance` роли.
+Этот контроллер будет доступен только пользователям, являющимся членами роли `HRManager` или роли `Finance`.
 
-Если применить несколько атрибутов доступ к пользователю необходимо быть членом всех ролей, указанных; Следующий пример требует, что пользователь должен быть одновременно членом групп `PowerUser` и `ControlPanelUser` роли.
+При применении нескольких атрибутов пользователь, обращающийся к, должен быть членом всех указанных ролей. в следующем примере необходимо, чтобы пользователь был членом роли `PowerUser` и `ControlPanelUser`.
 
 ```csharp
 [Authorize(Roles = "PowerUser")]
@@ -52,7 +52,7 @@ public class ControlPanelController : Controller
 }
 ```
 
-Ограничить доступ, применив атрибуты авторизации дополнительных ролей на уровне действия:
+Можно дополнительно ограничить доступ, применив дополнительные атрибуты авторизации роли на уровне действия.
 
 ```csharp
 [Authorize(Roles = "Administrator, PowerUser")]
@@ -69,9 +69,9 @@ public class ControlPanelController : Controller
 }
 ```
 
-В предыдущем коде фрагмент кода членах `Administrator` роли или `PowerUser` роли контроллера и `SetTime` действие, но только члены `Administrator` роли `ShutDown` действие.
+В предыдущем фрагменте кода члены роли `Administrator` или роли `PowerUser` могут получить доступ к контроллеру и действию `SetTime`, но только члены роли `Administrator` могут получить доступ к действию `ShutDown`.
 
-Можно также заблокировать контроллера, но Разрешить анонимные, не прошедшие проверку подлинности доступа к отдельным действиям.
+Можно также заблокировать контроллер, но разрешить доступ к отдельным действиям с анонимным доступом без проверки подлинности.
 
 ```csharp
 [Authorize]
@@ -90,10 +90,10 @@ public class ControlPanelController : Controller
 
 ::: moniker range=">= aspnetcore-2.0"
 
-Для страниц Razor `AuthorizeAttribute` можно применить, либо:
+Для Razor Pages `AuthorizeAttribute` может применяться одним из следующих:
 
-* С помощью [соглашение](xref:razor-pages/razor-pages-conventions#page-model-action-conventions), или
-* Применение `AuthorizeAttribute` для `PageModel` экземпляр:
+* С помощью [соглашения](xref:razor-pages/razor-pages-conventions#page-model-action-conventions)или
+* Применение `AuthorizeAttribute` к экземпляру `PageModel`:
 
 ```csharp
 [Authorize(Policy = "RequireAdministratorRole")]
@@ -106,15 +106,32 @@ public class UpdateModel : PageModel
 ```
 
 > [!IMPORTANT]
-> Фильтрация атрибутов, включая `AuthorizeAttribute`, может применяться только к модели страницы и не может применяться к определенной странице методы обработчика.
+> Атрибуты фильтра, включая `AuthorizeAttribute`, могут применяться только к PageModel и не могут применяться к конкретным методам обработчика страницы.
 ::: moniker-end
 
 <a name="security-authorization-role-policy"></a>
 
-## <a name="policy-based-role-checks"></a>Проверок роли на основе политик
+## <a name="policy-based-role-checks"></a>Проверки ролей на основе политик
 
-Требования к роли могут также выражаться с помощью нового синтаксиса политики, где разработчик регистрирует политику при запуске как часть конфигурации службы авторизации. Это обычно происходит в `ConfigureServices()` в вашей *Startup.cs* файла.
+Требования к ролям также можно выразить с помощью нового синтаксиса политики, при котором разработчик регистрирует политику при запуске как часть конфигурации службы авторизации. Обычно это происходит в `ConfigureServices()` файле *Startup.CS* .
 
+::: moniker range=">= aspnetcore-3.0"
+```csharp
+public void ConfigureServices(IServiceCollection services)
+{
+    services.AddControllersWithViews();
+    services.AddRazorPages();
+
+    services.AddAuthorization(options =>
+    {
+        options.AddPolicy("RequireAdministratorRole",
+             policy => policy.RequireRole("Administrator"));
+    });
+}
+```
+::: moniker-end
+
+::: moniker range="< aspnetcore-3.0"
 ```csharp
 public void ConfigureServices(IServiceCollection services)
 {
@@ -127,8 +144,9 @@ public void ConfigureServices(IServiceCollection services)
     });
 }
 ```
+::: moniker-end
 
-Политики применяются с помощью `Policy` свойство `AuthorizeAttribute` атрибута:
+Политики применяются с помощью свойства `Policy` атрибута `AuthorizeAttribute`.
 
 ```csharp
 [Authorize(Policy = "RequireAdministratorRole")]
@@ -138,17 +156,24 @@ public IActionResult Shutdown()
 }
 ```
 
-Если вы хотите указать несколько ролей, разрешенных в требования, а затем их можно указать в качестве параметров для `RequireRole` метод:
+Если необходимо указать несколько допустимых ролей в требовании, то их можно указать в качестве параметров метода `RequireRole`:
 
 ```csharp
 options.AddPolicy("ElevatedRights", policy =>
                   policy.RequireRole("Administrator", "PowerUser", "BackupAdministrator"));
 ```
 
-В этом примере разрешает пользователям, принадлежащим к `Administrator`, `PowerUser` или `BackupAdministrator` ролей.
+В этом примере разрешаются пользователи, принадлежащие к ролям `Administrator`, `PowerUser` или `BackupAdministrator`.
 
-### <a name="add-role-services-to-identity"></a>Добавление служб роли удостоверению
+### <a name="add-role-services-to-identity"></a>Добавление служб ролей в удостоверение
 
-Добавление [AddRoles](/dotnet/api/microsoft.aspnetcore.identity.identitybuilder.addroles#Microsoft_AspNetCore_Identity_IdentityBuilder_AddRoles__1) для добавления служб ролей:
+Добавление [аддролес](/dotnet/api/microsoft.aspnetcore.identity.identitybuilder.addroles#Microsoft_AspNetCore_Identity_IdentityBuilder_AddRoles__1) для добавления служб ролей:
 
-[!code-csharp[](roles/samples/Startup.cs?name=snippet&highlight=7)]
+::: moniker range=">= aspnetcore-3.0"
+[!code-csharp[](roles/samples/3_0/Startup.cs?name=snippet&highlight=7)]
+::: moniker-end
+
+::: moniker range="< aspnetcore-3.0"
+[!code-csharp[](roles/samples/2_2/Startup.cs?name=snippet&highlight=7)]
+::: moniker-end
+
