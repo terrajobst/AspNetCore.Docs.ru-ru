@@ -7,12 +7,12 @@ ms.author: scaddie
 ms.custom: mvc, seodec18
 ms.date: 08/17/2019
 uid: tutorials/first-mongo-app
-ms.openlocfilehash: acf2ded8b92a8f77678af7b772ac2a69264a642c
-ms.sourcegitcommit: 215954a638d24124f791024c66fd4fb9109fd380
+ms.openlocfilehash: 42c0efcd914eaa54134827cdf3bd6bd599d512b2
+ms.sourcegitcommit: 77c8be22d5e88dd710f42c739748869f198865dd
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71082373"
+ms.lasthandoff: 11/01/2019
+ms.locfileid: "73427012"
 ---
 # <a name="create-a-web-api-with-aspnet-core-and-mongodb"></a>Создание веб-API с помощью ASP.NET Core и MongoDB
 
@@ -41,10 +41,10 @@ ms.locfileid: "71082373"
 * [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/?utm_medium=microsoft&utm_source=docs.microsoft.com&utm_campaign=inline+link&utm_content=download+vs2019) с рабочей нагрузкой **ASP.NET и веб-разработка**
 * [MongoDB](https://docs.mongodb.com/manual/tutorial/install-mongodb-on-windows/)
 
-# <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code.](#tab/visual-studio-code)
+# <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
 * [Пакет SDK для .NET Core 3.0 или более поздней версии](https://www.microsoft.com/net/download/all)
-* [Visual Studio Code.](https://code.visualstudio.com/download)
+* [Visual Studio Code](https://code.visualstudio.com/download)
 * [C# для Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp)
 * [MongoDB](https://docs.mongodb.com/manual/administration/install-community/)
 
@@ -391,10 +391,10 @@ ms.locfileid: "71082373"
 * [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/?utm_medium=microsoft&utm_source=docs.microsoft.com&utm_campaign=inline+link&utm_content=download+vs2019) с рабочей нагрузкой **ASP.NET и веб-разработка**
 * [MongoDB](https://docs.mongodb.com/manual/tutorial/install-mongodb-on-windows/)
 
-# <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code.](#tab/visual-studio-code)
+# <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
 * [Пакет SDK для .NET Core 2.2](https://www.microsoft.com/net/download/all)
-* [Visual Studio Code.](https://code.visualstudio.com/download)
+* [Visual Studio Code](https://code.visualstudio.com/download)
 * [C# для Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp)
 * [MongoDB](https://docs.mongodb.com/manual/administration/install-community/)
 
@@ -715,6 +715,10 @@ ms.locfileid: "71082373"
 1. Повторите действия, описанные в разделе [Тестирование веб-API](#test-the-web-api). Обратите внимание на различие в именах свойств JSON.
 
 ::: moniker-end
+
+## <a name="add-authentication-support-to-a-web-api"></a>Добавление поддержки аутентификации в веб-API
+
+[!INCLUDE[](~/includes/IdentityServer4.md)]
 
 ## <a name="next-steps"></a>Следующие шаги
 

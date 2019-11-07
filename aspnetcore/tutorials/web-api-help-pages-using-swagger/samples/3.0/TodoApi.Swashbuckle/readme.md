@@ -10,12 +10,12 @@ products:
 - vs-code
 - vs-mac
 urlFragment: getstarted-swashbuckle-aspnetcore
-ms.openlocfilehash: 2b1da1d524eb18f1048314c544c64f82c22761e9
-ms.sourcegitcommit: 6189b0ced9c115248c6ede02efcd0b29d31f2115
+ms.openlocfilehash: c3c11f8b8f93cf7256a787c09dec7a2fb1f4e8b7
+ms.sourcegitcommit: eb2fe5ad2e82fab86ca952463af8d017ba659b25
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69988970"
+ms.lasthandoff: 11/01/2019
+ms.locfileid: "73416185"
 ---
 # <a name="get-started-with-swashbuckle-and-aspnet-core"></a>Начало работы с Swashbuckle и ASP.NET Core
 
@@ -154,7 +154,7 @@ XML-комментарии можно включить следующим обр
 </PropertyGroup>
 ```
 
-#### <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code.](#tab/visual-studio-code)
+#### <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
 Вручную добавьте выделенные строки в файл *.csproj*:
 
@@ -318,8 +318,8 @@ public IActionResult Delete(long id)
 /// <response code="201">Returns the newly created item</response>
 /// <response code="400">If the item is null</response>            
 [HttpPost]
-[ProducesResponseType(201)]
-[ProducesResponseType(400)]
+[ProducesResponseType(StatusCodes.Status201Created)]
+[ProducesResponseType(StatusCodes.Status400BadRequest)]
 public ActionResult<TodoItem> Create(TodoItem item)
 {
     _context.TodoItems.Add(item);
@@ -410,8 +410,8 @@ public class TodoController : ControllerBase
 /// <response code="201">Returns the newly created item</response>
 /// <response code="400">If the item is null</response>            
 [HttpPost]
-[ProducesResponseType(201)]
-[ProducesResponseType(400)]
+[ProducesResponseType(StatusCodes.Status201Created)]
+[ProducesResponseType(StatusCodes.Status400BadRequest)]
 public ActionResult<TodoItem> Create(TodoItem item)
 ```
 

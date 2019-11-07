@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 09/29/2019
 uid: tutorials/first-web-api
-ms.openlocfilehash: 6f2d62600da828261ecfc3a1df688ce914eccf33
-ms.sourcegitcommit: a166291c6708f5949c417874108332856b53b6a9
+ms.openlocfilehash: abb55ea12583374639f28945037cb6aa41a5a32d
+ms.sourcegitcommit: 77c8be22d5e88dd710f42c739748869f198865dd
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72590013"
+ms.lasthandoff: 11/01/2019
+ms.locfileid: "73427040"
 ---
 # <a name="tutorial-create-a-web-api-with-aspnet-core"></a>Учебник. Создание веб-API с помощью ASP.NET Core
 
@@ -917,7 +917,7 @@ jQuery отправляет запрос HTTP POST с элементом спи�
 
 ## <a name="add-authentication-support-to-a-web-api"></a>Добавление поддержки аутентификации в веб-API
 
-Обратитесь к учебнику по [IdentityServer4](https://identityserver4.readthedocs.io/en/latest/quickstarts/0_overview.html).
+[!INCLUDE[](~/includes/IdentityServer4.md)]
 
 ## <a name="additional-resources"></a>Дополнительные ресурсы
 
