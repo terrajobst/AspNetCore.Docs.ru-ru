@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 07/23/2019
 uid: security/authentication/identity-custom-storage-providers
-ms.openlocfilehash: 500824807307840a9279dd00c2fe632835737c2d
-ms.sourcegitcommit: 215954a638d24124f791024c66fd4fb9109fd380
+ms.openlocfilehash: 6d0d9b5467d9d27b936a17fa86f73e7d8123b75b
+ms.sourcegitcommit: 6628cd23793b66e4ce88788db641a5bbf470c3c1
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71080797"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73760970"
 ---
 # <a name="custom-storage-providers-for-aspnet-core-identity"></a>Пользовательские поставщики хранилища для удостоверения ASP.NET Core
 
@@ -23,7 +23,7 @@ ASP.NET Core Identity — это расширяемая система, кото
 
 ## <a name="introduction"></a>Вступление
 
-По умолчанию система удостоверений ASP.NET Core сохраняет сведения о пользователях в базе данных SQL Server с помощью Entity Framework Core. Для многих приложений этот подход хорошо работает. Однако можно использовать другой механизм сохраняемости или схему данных. Например:
+По умолчанию система удостоверений ASP.NET Core сохраняет сведения о пользователях в базе данных SQL Server с помощью Entity Framework Core. Для многих приложений этот подход хорошо работает. Однако можно использовать другой механизм сохраняемости или схему данных. Пример:
 
 * Вы используете [хранилище таблиц Azure](/azure/storage/) или другое хранилище данных.
 * Таблицы базы данных имеют различную структуру. 
@@ -49,13 +49,13 @@ ASP.NET Core удостоверение состоит из классов, им
 
 Чтобы создать пользовательский поставщик хранилища, создайте источник данных, уровень доступа к данным и классы хранилища, взаимодействующие с этим уровнем доступа к данным (зеленые и серые поля на схеме выше). Вам не нужно настраивать руководителей или код приложения, который взаимодействует с ними (синие ячейки выше).
 
-При создании нового экземпляра `UserManager` или `RoleManager` укажите тип класса User и передайте экземпляр класса Store в качестве аргумента. Такой подход позволяет подключать пользовательские классы к ASP.NET Core. 
+При создании нового экземпляра `UserManager` или `RoleManager` указать тип класса пользователя и передать экземпляр класса Store в качестве аргумента. Такой подход позволяет подключать пользовательские классы к ASP.NET Core. 
 
-[Перенастроить приложение для использования нового поставщика хранилища](#reconfigure-app-to-use-a-new-storage-provider) показывает `UserManager` , как создавать экземпляры и `RoleManager` с настроенным хранилищем.
+[Перенастроить приложение для использования нового поставщика хранилища](#reconfigure-app-to-use-a-new-storage-provider) показывает, как создать экземпляр `UserManager` и `RoleManager` с настроенным хранилищем.
 
 ## <a name="aspnet-core-identity-stores-data-types"></a>Типы данных хранилища ASP.NET Core
 
-[ASP.NET Core](https://github.com/aspnet/identity) типы данных удостоверений подробно описаны в следующих разделах:
+[ASP.NET Core типы данных удостоверений](https://github.com/aspnet/identity) подробно описаны в следующих разделах:
 
 ### <a name="users"></a>Users
 
@@ -105,25 +105,25 @@ ASP.NET Core удостоверение состоит из классов, им
 
 Сохраняет и извлекает роли, назначенные пользователям. [Пример](/dotnet/api/microsoft.aspnet.identity.corecompat.userstore-1)
 
-**СОВЕТЫ** Реализуйте только те классы, которые планируется использовать в приложении.
+**Совет.** Реализуйте только те классы, которые планируется использовать в приложении.
 
 В классах доступа к данным укажите код для выполнения операций с данными в механизме сохраняемости. Например, в настраиваемом поставщике может быть создан следующий код для создания пользователя в классе *Store* :
 
 [!code-csharp[](identity-custom-storage-providers/sample/CustomIdentityProviderSample/CustomProvider/CustomUserStore.cs?name=createuser&highlight=7)]
 
-Логика реализации для создания пользователя находится в `_usersTable.CreateAsync` методе, показанном ниже.
+Логика реализации для создания пользователя находится в методе `_usersTable.CreateAsync`, показанном ниже.
 
 ## <a name="customize-the-user-class"></a>Настройка класса User
 
 При реализации поставщика хранилища создайте класс пользователя, эквивалентный [классу идентитюсер](/dotnet/api/microsoft.aspnet.identity.corecompat.identityuser).
 
-Как минимум, класс пользователя должен включать `Id` `UserName` свойство и.
+Класс пользователя должен содержать как минимум `Id` и свойство `UserName`.
 
-Класс определяет свойства `UserManager` , которые вызываются при выполнении запрошенных операций. `IdentityUser` По умолчанию `Id` свойство имеет тип String, но можно наследовать от `IdentityUser<TKey, TUserClaim, TUserRole, TUserLogin, TUserToken>` и указать другой тип. Платформа должна обеспечивать реализацию хранилища для преобразования типов данных.
+Класс `IdentityUser` определяет свойства, которые `UserManager` вызывает при выполнении запрошенных операций. По умолчанию типом свойства `Id` является строка, но можно наследовать от `IdentityUser<TKey, TUserClaim, TUserRole, TUserLogin, TUserToken>` и указать другой тип. Платформа должна обеспечивать реализацию хранилища для преобразования типов данных.
 
 ## <a name="customize-the-user-store"></a>Настройка хранилища пользователей
 
-`UserStore` Создайте класс, предоставляющий методы для всех операций с данными пользователя. Этот класс эквивалентен классу [Тусер&lt;&gt; UserStore](/dotnet/api/microsoft.aspnetcore.identity.entityframeworkcore.userstore-1) . В классе реализуйте `IUserStore<TUser>` и необходимые дополнительные интерфейсы. `UserStore` Выбор дополнительных интерфейсов для реализации зависит от функциональности, предоставляемой в приложении.
+Создайте класс `UserStore`, предоставляющий методы для всех операций с данными пользователя. Этот класс эквивалентен классу [UserStore&lt;тусер&gt;](/dotnet/api/microsoft.aspnetcore.identity.entityframeworkcore.userstore-1) . В классе `UserStore` реализуйте `IUserStore<TUser>` и необходимые дополнительные интерфейсы. Выбор дополнительных интерфейсов для реализации зависит от функциональности, предоставляемой в приложении.
 
 ### <a name="optional-interfaces"></a>Необязательные интерфейсы
 
@@ -138,38 +138,38 @@ ASP.NET Core удостоверение состоит из классов, им
 * [IUserTwoFactorStore](/dotnet/api/microsoft.aspnetcore.identity.iusertwofactorstore-1)
 * [иусерлоккаутсторе](/dotnet/api/microsoft.aspnetcore.identity.iuserlockoutstore-1)
 
-Необязательные интерфейсы наследуются от `IUserStore<TUser>`. В [примере приложения](https://github.com/aspnet/AspNetCore.Docs/blob/master/aspnetcore/security/authentication/identity-custom-storage-providers/sample/CustomIdentityProviderSample/CustomProvider/CustomUserStore.cs)можно увидеть частично реализованное хранилище пользователей с примером.
+Необязательные интерфейсы наследуют от `IUserStore<TUser>`. В [примере приложения](https://github.com/aspnet/AspNetCore.Docs/blob/master/aspnetcore/security/authentication/identity-custom-storage-providers/sample/CustomIdentityProviderSample/CustomProvider/CustomUserStore.cs)можно увидеть частично реализованное хранилище пользователей с примером.
 
-В рамках `UserStore` класса используются классы доступа к данным, созданные для выполнения операций. Они передаются при помощи внедрения зависимостей. Например, в SQL Server с реализацией `UserStore` Dapper класс `CreateAsync` содержит метод, `DapperUsersTable` который использует экземпляр для вставки новой записи:
+В классе `UserStore` используются классы доступа к данным, созданные для выполнения операций. Они передаются при помощи внедрения зависимостей. Например, в SQL Server с реализацией Dapper класс `UserStore` имеет метод `CreateAsync`, который использует экземпляр `DapperUsersTable` для вставки новой записи:
 
 [!code-csharp[](identity-custom-storage-providers/sample/CustomIdentityProviderSample/CustomProvider/DapperUsersTable.cs?name=createuser&highlight=7)]
 
 ### <a name="interfaces-to-implement-when-customizing-user-store"></a>Интерфейсы, реализуемые при настройке хранилища пользователей
 
 * **IUserStore**  
- Интерфейс [IUserStore&lt;Тусер&gt; ](/dotnet/api/microsoft.aspnetcore.identity.iuserstore-1) является единственным интерфейсом, который необходимо реализовать в хранилище пользователя. Он определяет методы для создания, обновления, удаления и получения пользователей.
+ Интерфейс [IUserStore&lt;тусер&gt;](/dotnet/api/microsoft.aspnetcore.identity.iuserstore-1) является единственным интерфейсом, который необходимо реализовать в хранилище пользователя. Он определяет методы для создания, обновления, удаления и получения пользователей.
 * **IUserClaimStore**  
- Интерфейс [IUserClaimStore&lt;Тусер&gt; ](/dotnet/api/microsoft.aspnetcore.identity.iuserclaimstore-1) определяет методы, которые реализуются для включения заявок пользователя. Он содержит методы для добавления, удаления и получения утверждений пользователей.
+ Интерфейс [&gt;IUserClaimStore&lt;Тусер](/dotnet/api/microsoft.aspnetcore.identity.iuserclaimstore-1) определяет методы, которые реализуются для включения заявок пользователя. Он содержит методы для добавления, удаления и получения утверждений пользователей.
 * **иусерлогинсторе**  
- [Иусерлогинсторе&lt;Тусер&gt; ](/dotnet/api/microsoft.aspnetcore.identity.iuserloginstore-1) определяет методы, которые реализуются для включения внешних поставщиков проверки подлинности. Он содержит методы для добавления, удаления и получения имен входа пользователей, а также метод для получения пользователя на основе сведений об имени входа.
+ [&gt;иусерлогинсторе&lt;Тусер](/dotnet/api/microsoft.aspnetcore.identity.iuserloginstore-1) определяет методы, которые реализуются для включения внешних поставщиков проверки подлинности. Он содержит методы для добавления, удаления и получения имен входа пользователей, а также метод для получения пользователя на основе сведений об имени входа.
 * **IUserRoleStore**  
- Интерфейс [IUserRoleStore&lt;Тусер&gt; ](/dotnet/api/microsoft.aspnetcore.identity.iuserrolestore-1) определяет методы, которые реализуются для соотнесения пользователя с ролью. Он содержит методы для добавления, удаления и получения ролей пользователя, а также метод для проверки того, назначен ли пользователю роль.
+ Интерфейс [&gt;IUserRoleStore&lt;Тусер](/dotnet/api/microsoft.aspnetcore.identity.iuserrolestore-1) определяет методы, которые реализуются при сопоставлении пользователя с ролью. Он содержит методы для добавления, удаления и получения ролей пользователя, а также метод для проверки того, назначен ли пользователю роль.
 * **IUserPasswordStore**  
- Интерфейс [IUserPasswordStore&lt;Тусер&gt; ](/dotnet/api/microsoft.aspnetcore.identity.iuserpasswordstore-1) определяет методы, которые реализуются для сохранения хэшированных паролей. Он содержит методы для получения и установки хэшированного пароля, а также метод, который указывает, установил ли пользователь пароль.
+ Интерфейс [&gt;IUserPasswordStore&lt;Тусер](/dotnet/api/microsoft.aspnetcore.identity.iuserpasswordstore-1) определяет методы, которые реализуются для сохранения хэшированных паролей. Он содержит методы для получения и установки хэшированного пароля, а также метод, который указывает, установил ли пользователь пароль.
 * **иусерсекуритистампсторе**  
- Интерфейс [иусерсекуритистампсторе&lt;Тусер&gt; ](/dotnet/api/microsoft.aspnetcore.identity.iusersecuritystampstore-1) определяет методы, которые вы реализуете для использования метки безопасности для указания, изменились ли сведения об учетной записи пользователя. Эта метка обновляется, когда пользователь изменяет пароль или добавляет или удаляет имена входа. Он содержит методы для получения и установки метки безопасности.
+ Интерфейс [&gt;иусерсекуритистампсторе&lt;Тусер](/dotnet/api/microsoft.aspnetcore.identity.iusersecuritystampstore-1) определяет методы, которые вы реализуете для использования метки безопасности для указания, изменились ли сведения об учетной записи пользователя. Эта метка обновляется, когда пользователь изменяет пароль или добавляет или удаляет имена входа. Он содержит методы для получения и установки метки безопасности.
 * **IUserTwoFactorStore**  
- Интерфейс [IUserTwoFactorStore&lt;Тусер&gt; ](/dotnet/api/microsoft.aspnetcore.identity.iusertwofactorstore-1) определяет методы, которые реализуются для поддержки двухфакторной проверки подлинности. Он содержит методы для получения и настройки проверки подлинности, включенной для пользователя.
+ Интерфейс [&gt;IUserTwoFactorStore&lt;Тусер](/dotnet/api/microsoft.aspnetcore.identity.iusertwofactorstore-1) определяет методы, которые реализуются для поддержки двухфакторной проверки подлинности. Он содержит методы для получения и настройки проверки подлинности, включенной для пользователя.
 * **иусерфоненумберсторе**  
- Интерфейс [иусерфоненумберсторе&lt;Тусер&gt; ](/dotnet/api/microsoft.aspnetcore.identity.iuserphonenumberstore-1) определяет методы, которые вы реализуете для хранения телефонных номеров пользователей. Он содержит методы для получения и установки номера телефона, а также сведения о подтверждении номера телефона.
+ Интерфейс [&gt;иусерфоненумберсторе&lt;Тусер](/dotnet/api/microsoft.aspnetcore.identity.iuserphonenumberstore-1) определяет методы, которые вы реализуете для хранения телефонных номеров пользователей. Он содержит методы для получения и установки номера телефона, а также сведения о подтверждении номера телефона.
 * **иусеремаилсторе**  
- Интерфейс [иусеремаилсторе&lt;Тусер&gt; ](/dotnet/api/microsoft.aspnetcore.identity.iuseremailstore-1) определяет методы, которые вы реализуете для хранения адресов электронной почты пользователей. Он содержит методы для получения и установки адреса электронной почты, а также сведения о том, подтверждено ли сообщение электронной почты.
+ Интерфейс [&gt;иусеремаилсторе&lt;Тусер](/dotnet/api/microsoft.aspnetcore.identity.iuseremailstore-1) определяет методы, которые вы реализуете для хранения адресов электронной почты пользователей. Он содержит методы для получения и установки адреса электронной почты, а также сведения о том, подтверждено ли сообщение электронной почты.
 * **иусерлоккаутсторе**  
- Интерфейс [иусерлоккаутсторе&lt;Тусер&gt; ](/dotnet/api/microsoft.aspnetcore.identity.iuserlockoutstore-1) определяет методы, которые вы реализуете для хранения сведений о блокировке учетной записи. Он содержит методы для отслеживания неудачных попыток доступа и блокировки.
+ Интерфейс [&gt;иусерлоккаутсторе&lt;Тусер](/dotnet/api/microsoft.aspnetcore.identity.iuserlockoutstore-1) определяет методы, которые вы реализуете для хранения сведений о блокировке учетной записи. Он содержит методы для отслеживания неудачных попыток доступа и блокировки.
 * **IQueryableUserStore**  
- Интерфейс [IQueryableUserStore&lt;Тусер&gt; ](/dotnet/api/microsoft.aspnetcore.identity.iqueryableuserstore-1) определяет элементы, которые вы реализуете для предоставления запрашиваемого хранилища пользователя.
+ Интерфейс [&gt;IQueryableUserStore&lt;Тусер](/dotnet/api/microsoft.aspnetcore.identity.iqueryableuserstore-1) определяет члены, которые вы реализуете для предоставления запрашиваемого хранилища пользователя.
 
-Вы реализуете только те интерфейсы, которые необходимы в приложении. Например:
+Вы реализуете только те интерфейсы, которые необходимы в приложении. Пример:
 
 ```csharp
 public class UserStore : IUserStore<IdentityUser>,
@@ -185,11 +185,11 @@ public class UserStore : IUserStore<IdentityUser>,
 
 ### <a name="identityuserclaim-identityuserlogin-and-identityuserrole"></a>Идентитюсерклаим, Идентитюсерлогин и Идентитюсерроле
 
-Пространство имен содержит реализации классов [идентитюсерклаим](/dotnet/api/microsoft.aspnetcore.identity.entityframeworkcore.identityuserclaim-1), [идентитюсерлогин](/dotnet/api/microsoft.aspnet.identity.corecompat.identityuserlogin)и [идентитюсерроле.](/dotnet/api/microsoft.aspnetcore.identity.entityframeworkcore.identityuserrole-1) `Microsoft.AspNet.Identity.EntityFramework` При использовании этих функций может потребоваться создать собственные версии этих классов и определить свойства приложения. Однако иногда эффективнее не загружать эти сущности в память при выполнении основных операций (например, при добавлении или удалении утверждения пользователя). Вместо этого классы хранилища серверной части могут выполнять эти операции непосредственно в источнике данных. Например, `UserStore.GetClaimsAsync` метод может `userClaimTable.FindByUserId(user.Id)` вызвать метод, чтобы выполнить запрос к этой таблице напрямую и вернуть список заявок.
+Пространство имен `Microsoft.AspNet.Identity.EntityFramework` содержит реализации классов [идентитюсерклаим](/dotnet/api/microsoft.aspnetcore.identity.entityframeworkcore.identityuserclaim-1), [идентитюсерлогин](/dotnet/api/microsoft.aspnet.identity.corecompat.identityuserlogin)и [идентитюсерроле](/dotnet/api/microsoft.aspnetcore.identity.entityframeworkcore.identityuserrole-1) . При использовании этих функций может потребоваться создать собственные версии этих классов и определить свойства приложения. Однако иногда эффективнее не загружать эти сущности в память при выполнении основных операций (например, при добавлении или удалении утверждения пользователя). Вместо этого классы хранилища серверной части могут выполнять эти операции непосредственно в источнике данных. Например, метод `UserStore.GetClaimsAsync` может вызвать метод `userClaimTable.FindByUserId(user.Id)`, чтобы выполнить запрос к этой таблице напрямую и вернуть список заявок.
 
 ## <a name="customize-the-role-class"></a>Настройка класса Role
 
-При реализации поставщика хранилища ролей можно создать пользовательский тип роли. Он не должен реализовывать определенный интерфейс, но у него должна быть `Id` и, как правило `Name` , свойство.
+При реализации поставщика хранилища ролей можно создать пользовательский тип роли. Не требуется реализовывать определенный интерфейс, но он должен иметь `Id` и, как правило, имеет свойство `Name`.
 
 Ниже приведен пример класса role:
 
@@ -197,22 +197,22 @@ public class UserStore : IUserStore<IdentityUser>,
 
 ## <a name="customize-the-role-store"></a>Настройка хранилища ролей
 
-Можно создать `RoleStore` класс, предоставляющий методы для всех операций с данными в ролях. Этот класс эквивалентен классу [троле&lt;&gt; ролесторе](/dotnet/api/microsoft.aspnetcore.identity.entityframeworkcore.rolestore-1) . В классе реализуется и, при необходимости, `IQueryableRoleStore<TRole>` интерфейс. `IRoleStore<TRole>` `RoleStore`
+Можно создать класс `RoleStore`, предоставляющий методы для всех операций с данными в ролях. Этот класс эквивалентен классу [ролесторе&lt;троле&gt;](/dotnet/api/microsoft.aspnetcore.identity.entityframeworkcore.rolestore-1) . В классе `RoleStore` реализуется `IRoleStore<TRole>` и, при необходимости, интерфейс `IQueryableRoleStore<TRole>`.
 
 * **Иролесторе&lt;троле&gt;**  
- Интерфейс [иролесторе&lt;троле&gt; ](/dotnet/api/microsoft.aspnetcore.identity.irolestore-1) определяет методы для реализации в классе хранилища ролей. Он содержит методы для создания, обновления, удаления и получения ролей.
+ Интерфейс [&gt;иролесторе&lt;троле](/dotnet/api/microsoft.aspnetcore.identity.irolestore-1) определяет методы для реализации в классе хранилища ролей. Он содержит методы для создания, обновления, удаления и получения ролей.
 * **Ролесторе&lt;троле&gt;**  
- Чтобы настроить `RoleStore`, создайте класс, `IRoleStore<TRole>` реализующий интерфейс. 
+ Чтобы настроить `RoleStore`, создайте класс, реализующий интерфейс `IRoleStore<TRole>`. 
 
 ## <a name="reconfigure-app-to-use-a-new-storage-provider"></a>Перенастройте приложение для использования нового поставщика хранилища
 
 После реализации поставщика хранилища вы настраиваете приложение для его использования. Если приложение использовало поставщика по умолчанию, замените его пользовательским поставщиком.
 
-1. Удалите пакет `Microsoft.AspNetCore.EntityFramework.Identity` NuGet.
+1. Удалите `Microsoft.AspNetCore.EntityFramework.Identity` пакет NuGet.
 1. Если поставщик хранилища находится в отдельном проекте или пакете, добавьте ссылку на него.
-1. Замените все ссылки на `Microsoft.AspNetCore.EntityFramework.Identity` оператор using для пространства имен поставщика хранилища.
-1. В методе `AddIdentity` измените метод, чтобы использовать пользовательские типы. `ConfigureServices` Для этой цели можно создать собственные методы расширения. Пример см. в разделе [идентитисервицеколлектионекстенсионс](https://github.com/aspnet/Identity/blob/rel/1.1.0/src/Microsoft.AspNetCore.Identity/IdentityServiceCollectionExtensions.cs) .
-1. Если вы используете роли, обновите, `RoleManager` чтобы использовать свой `RoleStore` класс.
+1. Замените все ссылки на `Microsoft.AspNetCore.EntityFramework.Identity` с помощью оператора using для пространства имен поставщика хранилища.
+1. В методе `ConfigureServices` измените метод `AddIdentity`, чтобы использовать пользовательские типы. Для этой цели можно создать собственные методы расширения. Пример см. в разделе [идентитисервицеколлектионекстенсионс](https://github.com/aspnet/Identity/blob/rel/1.1.0/src/Microsoft.AspNetCore.Identity/IdentityServiceCollectionExtensions.cs) .
+1. Если вы используете роли, обновите `RoleManager`, чтобы использовать класс `RoleStore`.
 1. Обновите строку подключения и учетные данные в конфигурации приложения.
 
 Пример
@@ -238,4 +238,4 @@ public void ConfigureServices(IServiceCollection services)
 ## <a name="references"></a>Ссылки
 
 * [Пользовательские поставщики хранилища для удостоверения ASP.NET 4. x](/aspnet/identity/overview/extensibility/overview-of-custom-storage-providers-for-aspnet-identity)
-* [Удостоверение ASP.NET Core](https://github.com/aspnet/identity) &ndash; Этот репозиторий содержит ссылки на поставщики хранилищ, поддерживаемые сообществом.
+* [ASP.NET Core Identity](https://github.com/aspnet/AspNetCore/tree/master/src/Identity) &ndash; этот репозиторий содержит ссылки на поставщиков хранилищ, поддерживаемых сообществом.
