@@ -7,12 +7,12 @@ ms.author: scaddie
 ms.custom: mvc
 ms.date: 09/12/2019
 uid: web-api/index
-ms.openlocfilehash: aab9b848eb6e69055b019c9253c716898e9847e2
-ms.sourcegitcommit: a11f09c10ef3d4eeab7ae9ce993e7f30427741c1
+ms.openlocfilehash: 122de0a225668a7523eec900e2ad8fdac56d7886
+ms.sourcegitcommit: 4818385c3cfe0805e15138a2c1785b62deeaab90
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71149340"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73897012"
 ---
 # <a name="create-web-apis-with-aspnet-core"></a>Создание веб-API с помощью ASP.NET Core
 
@@ -159,7 +159,7 @@ namespace WebApiSample
 
 ::: moniker-end
 
-### <a name="automatic-http-400-responses"></a>Автоматические отклики HTTP 400
+## <a name="automatic-http-400-responses"></a>Автоматические отклики HTTP 400
 
 Благодаря атрибуту `[ApiController]` ошибки проверки модели автоматически активируют отклик HTTP 400. В результате следующий код ненужен в методе действия:
 

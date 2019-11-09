@@ -5,14 +5,14 @@ description: Используйте удостоверение с одностр
 monikerRange: '>= aspnetcore-3.0'
 ms.author: scaddie
 ms.custom: mvc
-ms.date: 10/29/2019
+ms.date: 11/08/2019
 uid: security/authentication/identity/spa
-ms.openlocfilehash: 5ed5fb61e5989b291523332c6a2ec332f9ca0f6b
-ms.sourcegitcommit: e5d4768aaf85703effb4557a520d681af8284e26
+ms.openlocfilehash: f58d92634ce1ef6110533d56c40b7520dda90514
+ms.sourcegitcommit: 4818385c3cfe0805e15138a2c1785b62deeaab90
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73616618"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73897040"
 ---
 # <a name="authentication-and-authorization-for-spas"></a>Проверка подлинности и авторизация для одностраничные приложения
 
@@ -182,6 +182,30 @@ services.Configure<JwtBearerOptions>(
         ...
     });
 ```
+
+Обработчик JWT API создает события, которые обеспечивают контроль над процессом проверки подлинности с помощью `JwtBearerEvents`. Чтобы обеспечить поддержку авторизации API, `AddIdentityServerJwt` регистрирует собственные обработчики событий.
+
+Чтобы настроить обработку события, заключите существующий обработчик событий в требуемую дополнительную логику. Пример:
+
+```csharp
+services.Configure<JwtBearerOptions>(
+    IdentityServerJwtConstants.IdentityServerJwtBearerScheme,
+    options =>
+    {
+        var onTokenValidated = options.Events.OnTokenValidated;       
+        
+        options.Events.OnTokenValidated = async context =>
+        {
+            await onTokenValidated(context);
+            ...
+        }
+    });
+```
+
+В приведенном выше коде обработчик событий `OnTokenValidated` заменяется пользовательской реализацией. Эта реализация:
+
+1. Вызывает исходную реализацию, предоставляемую службой поддержки авторизации API.
+1. Запустите собственную пользовательскую логику.
 
 ## <a name="protect-a-client-side-route-angular"></a>Защита маршрута на стороне клиента (угловой)
 
