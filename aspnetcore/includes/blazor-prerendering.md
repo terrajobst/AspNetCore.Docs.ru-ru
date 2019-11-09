@@ -25,7 +25,6 @@
 В предыдущем примере кода укажите `setElementText` функцию JavaScript в элементе `<head>` *wwwroot/index.HTML* (блазор Assembly) или *pages/_Host. cshtml* (блазор Server). Функция вызывается с `IJSRuntime.InvokeVoidAsync` и не возвращает значение:
 
 ```html
-<!--  -->
 <script>
   window.setElementText = (element, text) => element.innerText = text;
 </script>
