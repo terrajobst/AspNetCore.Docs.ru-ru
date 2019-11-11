@@ -5,51 +5,69 @@ description: Сведения об управлении поведением п�
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 04/10/2019
+ms.date: 11/05/2019
 uid: fundamentals/environments
-ms.openlocfilehash: a0e6d62f352a886a9bc051813a21d94c1605a1ce
-ms.sourcegitcommit: dd9c73db7853d87b566eef136d2162f648a43b85
+ms.openlocfilehash: 91fa2a78e62dff65704a3dda826f45f27bad6064
+ms.sourcegitcommit: 897d4abff58505dae86b2947c5fe3d1b80d927f3
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65087033"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73634095"
 ---
-# <a name="use-multiple-environments-in-aspnet-core"></a><span data-ttu-id="d4e98-103">Использование нескольких сред в ASP.NET Core</span><span class="sxs-lookup"><span data-stu-id="d4e98-103">Use multiple environments in ASP.NET Core</span></span>
+# <a name="use-multiple-environments-in-aspnet-core"></a><span data-ttu-id="6e656-103">Использование нескольких сред в ASP.NET Core</span><span class="sxs-lookup"><span data-stu-id="6e656-103">Use multiple environments in ASP.NET Core</span></span>
 
-<span data-ttu-id="d4e98-104">Автор: [Рик Андерсон](https://twitter.com/RickAndMSFT) (Rick Anderson)</span><span class="sxs-lookup"><span data-stu-id="d4e98-104">By [Rick Anderson](https://twitter.com/RickAndMSFT)</span></span>
+<span data-ttu-id="6e656-104">Автор: [Рик Андерсон](https://twitter.com/RickAndMSFT) (Rick Anderson)</span><span class="sxs-lookup"><span data-stu-id="6e656-104">By [Rick Anderson](https://twitter.com/RickAndMSFT)</span></span>
 
-<span data-ttu-id="d4e98-105">ASP.NET Core настраивает поведение приложения в зависимости от среды выполнения с помощью переменной среды.</span><span class="sxs-lookup"><span data-stu-id="d4e98-105">ASP.NET Core configures app behavior based on the runtime environment using an environment variable.</span></span>
+<span data-ttu-id="6e656-105">ASP.NET Core настраивает поведение приложения в зависимости от среды выполнения с помощью переменной среды.</span><span class="sxs-lookup"><span data-stu-id="6e656-105">ASP.NET Core configures app behavior based on the runtime environment using an environment variable.</span></span>
 
-<span data-ttu-id="d4e98-106">[Просмотреть или скачать образец кода](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/environments/sample) ([как скачивать](xref:index#how-to-download-a-sample))</span><span class="sxs-lookup"><span data-stu-id="d4e98-106">[View or download sample code](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/environments/sample) ([how to download](xref:index#how-to-download-a-sample))</span></span>
+<span data-ttu-id="6e656-106">[Просмотреть или скачать образец кода](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/environments/sample) ([как скачивать](xref:index#how-to-download-a-sample))</span><span class="sxs-lookup"><span data-stu-id="6e656-106">[View or download sample code](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/environments/sample) ([how to download](xref:index#how-to-download-a-sample))</span></span>
 
-## <a name="environments"></a><span data-ttu-id="d4e98-107">Среды</span><span class="sxs-lookup"><span data-stu-id="d4e98-107">Environments</span></span>
+## <a name="environments"></a><span data-ttu-id="6e656-107">Среды</span><span class="sxs-lookup"><span data-stu-id="6e656-107">Environments</span></span>
 
-<span data-ttu-id="d4e98-108">ASP.NET Core считывает переменную среды `ASPNETCORE_ENVIRONMENT` при запуске приложения и сохраняет ее значение в свойстве [IHostingEnvironment.EnvironmentName](/dotnet/api/microsoft.aspnetcore.hosting.ihostingenvironment.environmentname).</span><span class="sxs-lookup"><span data-stu-id="d4e98-108">ASP.NET Core reads the environment variable `ASPNETCORE_ENVIRONMENT` at app startup and stores the value in [IHostingEnvironment.EnvironmentName](/dotnet/api/microsoft.aspnetcore.hosting.ihostingenvironment.environmentname).</span></span> <span data-ttu-id="d4e98-109">Переменной `ASPNETCORE_ENVIRONMENT` можно присвоить любое значение, но платформа поддерживает [три значения](/dotnet/api/microsoft.aspnetcore.hosting.environmentname): [Development](/dotnet/api/microsoft.aspnetcore.hosting.environmentname.development), [Staging](/dotnet/api/microsoft.aspnetcore.hosting.environmentname.staging) и [Production](/dotnet/api/microsoft.aspnetcore.hosting.environmentname.production).</span><span class="sxs-lookup"><span data-stu-id="d4e98-109">You can set `ASPNETCORE_ENVIRONMENT` to any value, but [three values](/dotnet/api/microsoft.aspnetcore.hosting.environmentname) are supported by the framework: [Development](/dotnet/api/microsoft.aspnetcore.hosting.environmentname.development), [Staging](/dotnet/api/microsoft.aspnetcore.hosting.environmentname.staging), and [Production](/dotnet/api/microsoft.aspnetcore.hosting.environmentname.production).</span></span> <span data-ttu-id="d4e98-110">Если переменная `ASPNETCORE_ENVIRONMENT` не указана, используется значение по умолчанию `Production`.</span><span class="sxs-lookup"><span data-stu-id="d4e98-110">If `ASPNETCORE_ENVIRONMENT` isn't set, it defaults to `Production`.</span></span>
+::: moniker range=">= aspnetcore-3.0"
+
+<span data-ttu-id="6e656-108">ASP.NET Core считывает переменную среды `ASPNETCORE_ENVIRONMENT` при запуске приложения и сохраняет ее значение в свойстве [IWebHostEnvironment.EnvironmentName](xref:Microsoft.Extensions.Hosting.IHostEnvironment.EnvironmentName).</span><span class="sxs-lookup"><span data-stu-id="6e656-108">ASP.NET Core reads the environment variable `ASPNETCORE_ENVIRONMENT` at app startup and stores the value in [IWebHostEnvironment.EnvironmentName](xref:Microsoft.Extensions.Hosting.IHostEnvironment.EnvironmentName).</span></span> <span data-ttu-id="6e656-109">Переменной `ASPNETCORE_ENVIRONMENT` можно присвоить любое значение, но платформа предоставляет три значения:</span><span class="sxs-lookup"><span data-stu-id="6e656-109">`ASPNETCORE_ENVIRONMENT` can be set to any value, but three values are provided by the framework:</span></span>
+
+* <xref:Microsoft.Extensions.Hosting.Environments.Development>
+* <xref:Microsoft.Extensions.Hosting.Environments.Staging>
+* <span data-ttu-id="6e656-110"><xref:Microsoft.Extensions.Hosting.Environments.Production> (по умолчанию)</span><span class="sxs-lookup"><span data-stu-id="6e656-110"><xref:Microsoft.Extensions.Hosting.Environments.Production> (default)</span></span>
+
+::: moniker-end
+
+::: moniker range="< aspnetcore-3.0"
+
+<span data-ttu-id="6e656-111">ASP.NET Core считывает переменную среды `ASPNETCORE_ENVIRONMENT` при запуске приложения и сохраняет ее значение в свойстве [IHostingEnvironment.EnvironmentName](xref:Microsoft.AspNetCore.Hosting.IHostingEnvironment.EnvironmentName).</span><span class="sxs-lookup"><span data-stu-id="6e656-111">ASP.NET Core reads the environment variable `ASPNETCORE_ENVIRONMENT` at app startup and stores the value in [IHostingEnvironment.EnvironmentName](xref:Microsoft.AspNetCore.Hosting.IHostingEnvironment.EnvironmentName).</span></span> <span data-ttu-id="6e656-112">Переменной `ASPNETCORE_ENVIRONMENT` можно присвоить любое значение, но платформа предоставляет три значения:</span><span class="sxs-lookup"><span data-stu-id="6e656-112">`ASPNETCORE_ENVIRONMENT` can be set to any value, but three values are provided by the framework:</span></span>
+
+* <xref:Microsoft.AspNetCore.Hosting.EnvironmentName.Development>
+* <xref:Microsoft.AspNetCore.Hosting.EnvironmentName.Staging>
+* <span data-ttu-id="6e656-113"><xref:Microsoft.AspNetCore.Hosting.EnvironmentName.Production> (по умолчанию)</span><span class="sxs-lookup"><span data-stu-id="6e656-113"><xref:Microsoft.AspNetCore.Hosting.EnvironmentName.Production> (default)</span></span>
+
+::: moniker-end
 
 [!code-csharp[](environments/sample/EnvironmentsSample/Startup.cs?name=snippet)]
 
-<span data-ttu-id="d4e98-111">Предыдущий код:</span><span class="sxs-lookup"><span data-stu-id="d4e98-111">The preceding code:</span></span>
+<span data-ttu-id="6e656-114">Предыдущий код:</span><span class="sxs-lookup"><span data-stu-id="6e656-114">The preceding code:</span></span>
 
-* <span data-ttu-id="d4e98-112">Вызывает [UseDeveloperExceptionPage](/dotnet/api/microsoft.aspnetcore.builder.developerexceptionpageextensions.usedeveloperexceptionpage), если `ASPNETCORE_ENVIRONMENT` имеет значение `Development`.</span><span class="sxs-lookup"><span data-stu-id="d4e98-112">Calls [UseDeveloperExceptionPage](/dotnet/api/microsoft.aspnetcore.builder.developerexceptionpageextensions.usedeveloperexceptionpage) when `ASPNETCORE_ENVIRONMENT` is set to `Development`.</span></span>
-* <span data-ttu-id="d4e98-113">Вызывает [UseExceptionHandler](/dotnet/api/microsoft.aspnetcore.builder.exceptionhandlerextensions.useexceptionhandler), если переменная `ASPNETCORE_ENVIRONMENT` имеет одно из следующих значений:</span><span class="sxs-lookup"><span data-stu-id="d4e98-113">Calls [UseExceptionHandler](/dotnet/api/microsoft.aspnetcore.builder.exceptionhandlerextensions.useexceptionhandler) when the value of `ASPNETCORE_ENVIRONMENT` is set one of the following:</span></span>
+* <span data-ttu-id="6e656-115">Вызывает [UseDeveloperExceptionPage](/dotnet/api/microsoft.aspnetcore.builder.developerexceptionpageextensions.usedeveloperexceptionpage), если `ASPNETCORE_ENVIRONMENT` имеет значение `Development`.</span><span class="sxs-lookup"><span data-stu-id="6e656-115">Calls [UseDeveloperExceptionPage](/dotnet/api/microsoft.aspnetcore.builder.developerexceptionpageextensions.usedeveloperexceptionpage) when `ASPNETCORE_ENVIRONMENT` is set to `Development`.</span></span>
+* <span data-ttu-id="6e656-116">Вызывает [UseExceptionHandler](/dotnet/api/microsoft.aspnetcore.builder.exceptionhandlerextensions.useexceptionhandler), если переменная `ASPNETCORE_ENVIRONMENT` имеет одно из следующих значений:</span><span class="sxs-lookup"><span data-stu-id="6e656-116">Calls [UseExceptionHandler](/dotnet/api/microsoft.aspnetcore.builder.exceptionhandlerextensions.useexceptionhandler) when the value of `ASPNETCORE_ENVIRONMENT` is set one of the following:</span></span>
 
   * `Staging`
   * `Production`
   * `Staging_2`
 
-<span data-ttu-id="d4e98-114">[Вспомогательная функция тега среды](xref:mvc/views/tag-helpers/builtin-th/environment-tag-helper) использует значение `IHostingEnvironment.EnvironmentName` для включения или исключения разметки в элементе:</span><span class="sxs-lookup"><span data-stu-id="d4e98-114">The [Environment Tag Helper](xref:mvc/views/tag-helpers/builtin-th/environment-tag-helper) uses the value of `IHostingEnvironment.EnvironmentName` to include or exclude markup in the element:</span></span>
+<span data-ttu-id="6e656-117">[Вспомогательная функция тега среды](xref:mvc/views/tag-helpers/builtin-th/environment-tag-helper) использует значение `IHostingEnvironment.EnvironmentName` для включения или исключения разметки в элементе:</span><span class="sxs-lookup"><span data-stu-id="6e656-117">The [Environment Tag Helper](xref:mvc/views/tag-helpers/builtin-th/environment-tag-helper) uses the value of `IHostingEnvironment.EnvironmentName` to include or exclude markup in the element:</span></span>
 
 [!code-cshtml[](environments/sample-snapshot/EnvironmentsSample/Pages/About.cshtml)]
 
-<span data-ttu-id="d4e98-115">В ОС Windows и macOS регистр символов в переменных среды и их значениях не учитывается.</span><span class="sxs-lookup"><span data-stu-id="d4e98-115">On Windows and macOS, environment variables and values aren't case sensitive.</span></span> <span data-ttu-id="d4e98-116">В ОС Linux в переменных среды и их значениях **регистр символов по умолчанию учитывается**.</span><span class="sxs-lookup"><span data-stu-id="d4e98-116">Linux environment variables and values are **case sensitive** by default.</span></span>
+<span data-ttu-id="6e656-118">В ОС Windows и macOS регистр символов в переменных среды и их значениях не учитывается.</span><span class="sxs-lookup"><span data-stu-id="6e656-118">On Windows and macOS, environment variables and values aren't case sensitive.</span></span> <span data-ttu-id="6e656-119">В ОС Linux в переменных среды и их значениях **регистр символов по умолчанию учитывается**.</span><span class="sxs-lookup"><span data-stu-id="6e656-119">Linux environment variables and values are **case sensitive** by default.</span></span>
 
-### <a name="development"></a><span data-ttu-id="d4e98-117">Разработка</span><span class="sxs-lookup"><span data-stu-id="d4e98-117">Development</span></span>
+### <a name="development"></a><span data-ttu-id="6e656-120">Разработка</span><span class="sxs-lookup"><span data-stu-id="6e656-120">Development</span></span>
 
-<span data-ttu-id="d4e98-118">В среде разработки могут быть включены функции, которые не должны быть доступны в рабочей среде.</span><span class="sxs-lookup"><span data-stu-id="d4e98-118">The development environment can enable features that shouldn't be exposed in production.</span></span> <span data-ttu-id="d4e98-119">Например, шаблоны ASP.NET Core включают в среде разработки [страницу со сведениями об исключении для разработчика](xref:fundamentals/error-handling#developer-exception-page).</span><span class="sxs-lookup"><span data-stu-id="d4e98-119">For example, the ASP.NET Core templates enable the [Developer Exception Page](xref:fundamentals/error-handling#developer-exception-page) in the development environment.</span></span>
+<span data-ttu-id="6e656-121">В среде разработки могут быть включены функции, которые не должны быть доступны в рабочей среде.</span><span class="sxs-lookup"><span data-stu-id="6e656-121">The development environment can enable features that shouldn't be exposed in production.</span></span> <span data-ttu-id="6e656-122">Например, шаблоны ASP.NET Core включают в среде разработки [страницу со сведениями об исключении для разработчика](xref:fundamentals/error-handling#developer-exception-page).</span><span class="sxs-lookup"><span data-stu-id="6e656-122">For example, the ASP.NET Core templates enable the [Developer Exception Page](xref:fundamentals/error-handling#developer-exception-page) in the development environment.</span></span>
 
-<span data-ttu-id="d4e98-120">Среду для локального компьютера разработки можно задать в файле *Properties\launchSettings.json* проекта.</span><span class="sxs-lookup"><span data-stu-id="d4e98-120">The environment for local machine development can be set in the *Properties\launchSettings.json* file of the project.</span></span> <span data-ttu-id="d4e98-121">Значения среды, заданные в файле *launchSettings.json*, переопределяют значения, заданные в системной среде.</span><span class="sxs-lookup"><span data-stu-id="d4e98-121">Environment values set in *launchSettings.json* override values set in the system environment.</span></span>
+<span data-ttu-id="6e656-123">Среду для локального компьютера разработки можно задать в файле *Properties\launchSettings.json* проекта.</span><span class="sxs-lookup"><span data-stu-id="6e656-123">The environment for local machine development can be set in the *Properties\launchSettings.json* file of the project.</span></span> <span data-ttu-id="6e656-124">Значения среды, заданные в файле *launchSettings.json*, переопределяют значения, заданные в системной среде.</span><span class="sxs-lookup"><span data-stu-id="6e656-124">Environment values set in *launchSettings.json* override values set in the system environment.</span></span>
 
-<span data-ttu-id="d4e98-122">В следующем коде JSON показаны три профиля из файла *launchSettings.json*:</span><span class="sxs-lookup"><span data-stu-id="d4e98-122">The following JSON shows three profiles from a *launchSettings.json* file:</span></span>
+<span data-ttu-id="6e656-125">В следующем коде JSON показаны три профиля из файла *launchSettings.json*:</span><span class="sxs-lookup"><span data-stu-id="6e656-125">The following JSON shows three profiles from a *launchSettings.json* file:</span></span>
 
 ```json
 {
@@ -94,7 +112,7 @@ ms.locfileid: "65087033"
 ```
 
 > [!NOTE]
-> <span data-ttu-id="d4e98-123">Свойство `applicationUrl` в *launchSettings.json* может задать список URL-адресов сервера.</span><span class="sxs-lookup"><span data-stu-id="d4e98-123">The `applicationUrl` property in *launchSettings.json* can specify a list of server URLs.</span></span> <span data-ttu-id="d4e98-124">Для разделения URL-адресов в списке используется точка с запятой:</span><span class="sxs-lookup"><span data-stu-id="d4e98-124">Use a semicolon between the URLs in the list:</span></span>
+> <span data-ttu-id="6e656-126">Свойство `applicationUrl` в *launchSettings.json* может задать список URL-адресов сервера.</span><span class="sxs-lookup"><span data-stu-id="6e656-126">The `applicationUrl` property in *launchSettings.json* can specify a list of server URLs.</span></span> <span data-ttu-id="6e656-127">Для разделения URL-адресов в списке используется точка с запятой:</span><span class="sxs-lookup"><span data-stu-id="6e656-127">Use a semicolon between the URLs in the list:</span></span>
 >
 > ```json
 > "EnvironmentsSample": {
@@ -107,18 +125,18 @@ ms.locfileid: "65087033"
 > }
 > ```
 
-<span data-ttu-id="d4e98-125">Когда приложение запускается с помощью команды [dotnet run](/dotnet/core/tools/dotnet-run), используется первый профиль с атрибутом `"commandName": "Project"`.</span><span class="sxs-lookup"><span data-stu-id="d4e98-125">When the app is launched with [dotnet run](/dotnet/core/tools/dotnet-run), the first profile with `"commandName": "Project"` is used.</span></span> <span data-ttu-id="d4e98-126">Значение `commandName` определяет запускаемый веб-сервер.</span><span class="sxs-lookup"><span data-stu-id="d4e98-126">The value of `commandName` specifies the web server to launch.</span></span> <span data-ttu-id="d4e98-127">`commandName` может иметь одно из следующих значений:</span><span class="sxs-lookup"><span data-stu-id="d4e98-127">`commandName` can be any one of the following:</span></span>
+<span data-ttu-id="6e656-128">Когда приложение запускается с помощью команды [dotnet run](/dotnet/core/tools/dotnet-run), используется первый профиль с атрибутом `"commandName": "Project"`.</span><span class="sxs-lookup"><span data-stu-id="6e656-128">When the app is launched with [dotnet run](/dotnet/core/tools/dotnet-run), the first profile with `"commandName": "Project"` is used.</span></span> <span data-ttu-id="6e656-129">Значение `commandName` определяет запускаемый веб-сервер.</span><span class="sxs-lookup"><span data-stu-id="6e656-129">The value of `commandName` specifies the web server to launch.</span></span> <span data-ttu-id="6e656-130">`commandName` может иметь одно из следующих значений:</span><span class="sxs-lookup"><span data-stu-id="6e656-130">`commandName` can be any one of the following:</span></span>
 
 * `IISExpress`
 * `IIS`
-* <span data-ttu-id="d4e98-128">`Project` (запускается Kestrel)</span><span class="sxs-lookup"><span data-stu-id="d4e98-128">`Project` (which launches Kestrel)</span></span>
+* <span data-ttu-id="6e656-131">`Project` (запускается Kestrel)</span><span class="sxs-lookup"><span data-stu-id="6e656-131">`Project` (which launches Kestrel)</span></span>
 
-<span data-ttu-id="d4e98-129">Когда приложение запускается с помощью команды [dotnet run](/dotnet/core/tools/dotnet-run), выполняются указанные ниже действия:</span><span class="sxs-lookup"><span data-stu-id="d4e98-129">When an app is launched with [dotnet run](/dotnet/core/tools/dotnet-run):</span></span>
+<span data-ttu-id="6e656-132">Когда приложение запускается с помощью команды [dotnet run](/dotnet/core/tools/dotnet-run), выполняются указанные ниже действия:</span><span class="sxs-lookup"><span data-stu-id="6e656-132">When an app is launched with [dotnet run](/dotnet/core/tools/dotnet-run):</span></span>
 
-* <span data-ttu-id="d4e98-130">Считывается файл *launchSettings.json*, если он доступен.</span><span class="sxs-lookup"><span data-stu-id="d4e98-130">*launchSettings.json* is read if available.</span></span> <span data-ttu-id="d4e98-131">Параметры `environmentVariables` в файле *launchSettings.json* переопределяют переменные среды.</span><span class="sxs-lookup"><span data-stu-id="d4e98-131">`environmentVariables` settings in *launchSettings.json* override environment variables.</span></span>
-* <span data-ttu-id="d4e98-132">Отображается среда размещения.</span><span class="sxs-lookup"><span data-stu-id="d4e98-132">The hosting environment is displayed.</span></span>
+* <span data-ttu-id="6e656-133">Считывается файл *launchSettings.json*, если он доступен.</span><span class="sxs-lookup"><span data-stu-id="6e656-133">*launchSettings.json* is read if available.</span></span> <span data-ttu-id="6e656-134">Параметры `environmentVariables` в файле *launchSettings.json* переопределяют переменные среды.</span><span class="sxs-lookup"><span data-stu-id="6e656-134">`environmentVariables` settings in *launchSettings.json* override environment variables.</span></span>
+* <span data-ttu-id="6e656-135">Отображается среда размещения.</span><span class="sxs-lookup"><span data-stu-id="6e656-135">The hosting environment is displayed.</span></span>
 
-<span data-ttu-id="d4e98-133">Ниже представлены выходные данные приложения, запущенного с помощью команды [dotnet run](/dotnet/core/tools/dotnet-run):</span><span class="sxs-lookup"><span data-stu-id="d4e98-133">The following output shows an app started with [dotnet run](/dotnet/core/tools/dotnet-run):</span></span>
+<span data-ttu-id="6e656-136">Ниже представлены выходные данные приложения, запущенного с помощью команды [dotnet run](/dotnet/core/tools/dotnet-run):</span><span class="sxs-lookup"><span data-stu-id="6e656-136">The following output shows an app started with [dotnet run](/dotnet/core/tools/dotnet-run):</span></span>
 
 ```bash
 PS C:\Websites\EnvironmentsSample> dotnet run
@@ -129,16 +147,16 @@ Now listening on: http://localhost:54340
 Application started. Press Ctrl+C to shut down.
 ```
 
-<span data-ttu-id="d4e98-134">Вкладка **Отладка** в свойствах проекта Visual Studio предоставляет графический пользовательский интерфейс для изменения файла *launchSettings.json*.</span><span class="sxs-lookup"><span data-stu-id="d4e98-134">The Visual Studio project properties **Debug** tab provides a GUI to edit the *launchSettings.json* file:</span></span>
+<span data-ttu-id="6e656-137">Вкладка **Отладка** в свойствах проекта Visual Studio предоставляет графический пользовательский интерфейс для изменения файла *launchSettings.json*.</span><span class="sxs-lookup"><span data-stu-id="6e656-137">The Visual Studio project properties **Debug** tab provides a GUI to edit the *launchSettings.json* file:</span></span>
 
 ![Задание переменных среды в свойствах проекта](environments/_static/project-properties-debug.png)
 
-<span data-ttu-id="d4e98-136">Для вступления в силу изменений, внесенных в профили проекта, может потребоваться перезапуск веб-сервера.</span><span class="sxs-lookup"><span data-stu-id="d4e98-136">Changes made to project profiles may not take effect until the web server is restarted.</span></span> <span data-ttu-id="d4e98-137">Чтобы сервер Kestrel обнаружил изменения, внесенные в среду, его необходимо перезапустить.</span><span class="sxs-lookup"><span data-stu-id="d4e98-137">Kestrel must be restarted before it can detect changes made to its environment.</span></span>
+<span data-ttu-id="6e656-139">Для вступления в силу изменений, внесенных в профили проекта, может потребоваться перезапуск веб-сервера.</span><span class="sxs-lookup"><span data-stu-id="6e656-139">Changes made to project profiles may not take effect until the web server is restarted.</span></span> <span data-ttu-id="6e656-140">Чтобы сервер Kestrel обнаружил изменения, внесенные в среду, его необходимо перезапустить.</span><span class="sxs-lookup"><span data-stu-id="6e656-140">Kestrel must be restarted before it can detect changes made to its environment.</span></span>
 
 > [!WARNING]
-> <span data-ttu-id="d4e98-138">В файле *launchSettings.json* не должны храниться секреты.</span><span class="sxs-lookup"><span data-stu-id="d4e98-138">*launchSettings.json* shouldn't store secrets.</span></span> <span data-ttu-id="d4e98-139">Для хранения секретов во время разработки в локальной среде можно использовать [средство Secret Manager](xref:security/app-secrets).</span><span class="sxs-lookup"><span data-stu-id="d4e98-139">The [Secret Manager tool](xref:security/app-secrets) can be used to store secrets for local development.</span></span>
+> <span data-ttu-id="6e656-141">В файле *launchSettings.json* не должны храниться секреты.</span><span class="sxs-lookup"><span data-stu-id="6e656-141">*launchSettings.json* shouldn't store secrets.</span></span> <span data-ttu-id="6e656-142">Для хранения секретов во время разработки в локальной среде можно использовать [средство Secret Manager](xref:security/app-secrets).</span><span class="sxs-lookup"><span data-stu-id="6e656-142">The [Secret Manager tool](xref:security/app-secrets) can be used to store secrets for local development.</span></span>
 
-<span data-ttu-id="d4e98-140">При использовании [Visual Studio Code](https://code.visualstudio.com/) переменные среды можно задавать в файле *.vscode/launch.json*.</span><span class="sxs-lookup"><span data-stu-id="d4e98-140">When using [Visual Studio Code](https://code.visualstudio.com/), environment variables can be set in the *.vscode/launch.json* file.</span></span> <span data-ttu-id="d4e98-141">В следующем примере показано, как присвоить среде значение `Development`:</span><span class="sxs-lookup"><span data-stu-id="d4e98-141">The following example sets the environment to `Development`:</span></span>
+<span data-ttu-id="6e656-143">При использовании [Visual Studio Code](https://code.visualstudio.com/) переменные среды можно задавать в файле *.vscode/launch.json*.</span><span class="sxs-lookup"><span data-stu-id="6e656-143">When using [Visual Studio Code](https://code.visualstudio.com/), environment variables can be set in the *.vscode/launch.json* file.</span></span> <span data-ttu-id="6e656-144">В следующем примере показано, как присвоить среде значение `Development`:</span><span class="sxs-lookup"><span data-stu-id="6e656-144">The following example sets the environment to `Development`:</span></span>
 
 ```json
 {
@@ -157,90 +175,94 @@ Application started. Press Ctrl+C to shut down.
 }
 ```
 
-<span data-ttu-id="d4e98-142">Файл *.vscode/launch.json* в проекте не читается при запуске приложения с помощью команды `dotnet run` так же, как файл *Properties/launchSettings.json*.</span><span class="sxs-lookup"><span data-stu-id="d4e98-142">A *.vscode/launch.json* file in the project isn't read when starting the app with `dotnet run` in the same way as *Properties/launchSettings.json*.</span></span> <span data-ttu-id="d4e98-143">При запуске приложения в среде разработки без файла *launchSettings.json* укажите среду с помощью переменной среды или задайте аргумент командной строки как команду `dotnet run`.</span><span class="sxs-lookup"><span data-stu-id="d4e98-143">When launching an app in development that doesn't have a *launchSettings.json* file, either set the environment with an environment variable or a command-line argument to the `dotnet run` command.</span></span>
+<span data-ttu-id="6e656-145">Файл *.vscode/launch.json* в проекте не читается при запуске приложения с помощью команды `dotnet run` так же, как файл *Properties/launchSettings.json*.</span><span class="sxs-lookup"><span data-stu-id="6e656-145">A *.vscode/launch.json* file in the project isn't read when starting the app with `dotnet run` in the same way as *Properties/launchSettings.json*.</span></span> <span data-ttu-id="6e656-146">При запуске приложения в среде разработки без файла *launchSettings.json* укажите среду с помощью переменной среды или задайте аргумент командной строки как команду `dotnet run`.</span><span class="sxs-lookup"><span data-stu-id="6e656-146">When launching an app in development that doesn't have a *launchSettings.json* file, either set the environment with an environment variable or a command-line argument to the `dotnet run` command.</span></span>
 
-### <a name="production"></a><span data-ttu-id="d4e98-144">Рабочие</span><span class="sxs-lookup"><span data-stu-id="d4e98-144">Production</span></span>
+### <a name="production"></a><span data-ttu-id="6e656-147">Рабочие</span><span class="sxs-lookup"><span data-stu-id="6e656-147">Production</span></span>
 
-<span data-ttu-id="d4e98-145">Конфигурация рабочей среды должна обеспечивать максимальный уровень безопасности, производительности и надежности приложений.</span><span class="sxs-lookup"><span data-stu-id="d4e98-145">The production environment should be configured to maximize security, performance, and app robustness.</span></span> <span data-ttu-id="d4e98-146">Некоторые общие параметры, отличные от разработки:</span><span class="sxs-lookup"><span data-stu-id="d4e98-146">Some common settings that differ from development include:</span></span>
+<span data-ttu-id="6e656-148">Конфигурация рабочей среды должна обеспечивать максимальный уровень безопасности, производительности и надежности приложений.</span><span class="sxs-lookup"><span data-stu-id="6e656-148">The production environment should be configured to maximize security, performance, and app robustness.</span></span> <span data-ttu-id="6e656-149">Некоторые общие параметры, отличные от разработки:</span><span class="sxs-lookup"><span data-stu-id="6e656-149">Some common settings that differ from development include:</span></span>
 
-* <span data-ttu-id="d4e98-147">кэширование;</span><span class="sxs-lookup"><span data-stu-id="d4e98-147">Caching.</span></span>
-* <span data-ttu-id="d4e98-148">ресурсы на стороне клиента объединяются в пакеты, уплотняются и могут предоставляться из сети CDN;</span><span class="sxs-lookup"><span data-stu-id="d4e98-148">Client-side resources are bundled, minified, and potentially served from a CDN.</span></span>
-* <span data-ttu-id="d4e98-149">страницы с сообщениями об ошибках диагностики отключены;</span><span class="sxs-lookup"><span data-stu-id="d4e98-149">Diagnostic error pages disabled.</span></span>
-* <span data-ttu-id="d4e98-150">включены страницы с понятными пользователям сообщениями об ошибках;</span><span class="sxs-lookup"><span data-stu-id="d4e98-150">Friendly error pages enabled.</span></span>
-* <span data-ttu-id="d4e98-151">включены средства ведения журналов и мониторинга в рабочей среде,</span><span class="sxs-lookup"><span data-stu-id="d4e98-151">Production logging and monitoring enabled.</span></span> <span data-ttu-id="d4e98-152">например [Application Insights](/azure/application-insights/app-insights-asp-net-core).</span><span class="sxs-lookup"><span data-stu-id="d4e98-152">For example, [Application Insights](/azure/application-insights/app-insights-asp-net-core).</span></span>
+* <span data-ttu-id="6e656-150">кэширование;</span><span class="sxs-lookup"><span data-stu-id="6e656-150">Caching.</span></span>
+* <span data-ttu-id="6e656-151">ресурсы на стороне клиента объединяются в пакеты, уплотняются и могут предоставляться из сети CDN;</span><span class="sxs-lookup"><span data-stu-id="6e656-151">Client-side resources are bundled, minified, and potentially served from a CDN.</span></span>
+* <span data-ttu-id="6e656-152">страницы с сообщениями об ошибках диагностики отключены;</span><span class="sxs-lookup"><span data-stu-id="6e656-152">Diagnostic error pages disabled.</span></span>
+* <span data-ttu-id="6e656-153">включены страницы с понятными пользователям сообщениями об ошибках;</span><span class="sxs-lookup"><span data-stu-id="6e656-153">Friendly error pages enabled.</span></span>
+* <span data-ttu-id="6e656-154">включены средства ведения журналов и мониторинга в рабочей среде,</span><span class="sxs-lookup"><span data-stu-id="6e656-154">Production logging and monitoring enabled.</span></span> <span data-ttu-id="6e656-155">например [Application Insights](/azure/application-insights/app-insights-asp-net-core).</span><span class="sxs-lookup"><span data-stu-id="6e656-155">For example, [Application Insights](/azure/application-insights/app-insights-asp-net-core).</span></span>
 
-## <a name="set-the-environment"></a><span data-ttu-id="d4e98-153">Указание среды</span><span class="sxs-lookup"><span data-stu-id="d4e98-153">Set the environment</span></span>
+## <a name="set-the-environment"></a><span data-ttu-id="6e656-156">Указание среды</span><span class="sxs-lookup"><span data-stu-id="6e656-156">Set the environment</span></span>
 
-<span data-ttu-id="d4e98-154">Часто бывает полезным указать определенную среду для тестирования.</span><span class="sxs-lookup"><span data-stu-id="d4e98-154">It's often useful to set a specific environment for testing.</span></span> <span data-ttu-id="d4e98-155">Если среда не указана, по умолчанию используется среда `Production`, в которой большинство функций отладки отключено.</span><span class="sxs-lookup"><span data-stu-id="d4e98-155">If the environment isn't set, it defaults to `Production`, which disables most debugging features.</span></span> <span data-ttu-id="d4e98-156">Способ указания среды зависит от операционной системы.</span><span class="sxs-lookup"><span data-stu-id="d4e98-156">The method for setting the environment depends on the operating system.</span></span>
+<span data-ttu-id="6e656-157">Часто бывает полезным указать определенную среду для тестирования с переменной среды или параметром платформы.</span><span class="sxs-lookup"><span data-stu-id="6e656-157">It's often useful to set a specific environment for testing with an environment variable or platform setting.</span></span> <span data-ttu-id="6e656-158">Если среда не указана, по умолчанию используется среда `Production`, в которой большинство функций отладки отключено.</span><span class="sxs-lookup"><span data-stu-id="6e656-158">If the environment isn't set, it defaults to `Production`, which disables most debugging features.</span></span> <span data-ttu-id="6e656-159">Способ указания среды зависит от операционной системы.</span><span class="sxs-lookup"><span data-stu-id="6e656-159">The method for setting the environment depends on the operating system.</span></span>
 
-### <a name="azure-app-service"></a><span data-ttu-id="d4e98-157">Служба приложений Azure</span><span class="sxs-lookup"><span data-stu-id="d4e98-157">Azure App Service</span></span>
+<span data-ttu-id="6e656-160">При создании узла среду приложения определяет последний параметр среды, считанный приложением.</span><span class="sxs-lookup"><span data-stu-id="6e656-160">When the host is built, the last environment setting read by the app determines the app's environment.</span></span> <span data-ttu-id="6e656-161">Среду приложения невозможно изменить во время его выполнения.</span><span class="sxs-lookup"><span data-stu-id="6e656-161">The app's environment can't be changed while the app is running.</span></span>
 
-<span data-ttu-id="d4e98-158">Чтобы установить среду в [службе приложений Azure](https://azure.microsoft.com/services/app-service/), выполните следующие действия:</span><span class="sxs-lookup"><span data-stu-id="d4e98-158">To set the environment in [Azure App Service](https://azure.microsoft.com/services/app-service/), perform the following steps:</span></span>
+### <a name="environment-variable-or-platform-setting"></a><span data-ttu-id="6e656-162">Переменная среды или параметр платформы</span><span class="sxs-lookup"><span data-stu-id="6e656-162">Environment variable or platform setting</span></span>
 
-1. <span data-ttu-id="d4e98-159">Выберите приложение из колонки **Службы приложений**.</span><span class="sxs-lookup"><span data-stu-id="d4e98-159">Select the app from the **App Services** blade.</span></span>
-1. <span data-ttu-id="d4e98-160">В группе **ПАРАМЕТРЫ** выберите колонку **Параметры приложения**.</span><span class="sxs-lookup"><span data-stu-id="d4e98-160">In the **SETTINGS** group, select the **Application settings** blade.</span></span>
-1. <span data-ttu-id="d4e98-161">В области **Параметры приложения** выберите **Добавить новый параметр**.</span><span class="sxs-lookup"><span data-stu-id="d4e98-161">In the **Application settings** area, select **Add new setting**.</span></span>
-1. <span data-ttu-id="d4e98-162">В поле **Введите имя** укажите `ASPNETCORE_ENVIRONMENT`.</span><span class="sxs-lookup"><span data-stu-id="d4e98-162">For **Enter a name**, provide `ASPNETCORE_ENVIRONMENT`.</span></span> <span data-ttu-id="d4e98-163">В поле **Введите значение** укажите среду (например, `Staging`).</span><span class="sxs-lookup"><span data-stu-id="d4e98-163">For **Enter a value**, provide the environment (for example, `Staging`).</span></span>
-1. <span data-ttu-id="d4e98-164">Установите флажок **Параметр слота**, если нужно, чтобы параметр среды оставался в текущем слоте при замене слота развертывания.</span><span class="sxs-lookup"><span data-stu-id="d4e98-164">Select the **Slot Setting** check box if you wish the environment setting to remain with the current slot when deployment slots are swapped.</span></span> <span data-ttu-id="d4e98-165">Дополнительные сведения см. в разделе о [переносимых параметрах](/azure/app-service/web-sites-staged-publishing) документации по Azure.</span><span class="sxs-lookup"><span data-stu-id="d4e98-165">For more information, see [Azure Documentation: Which settings are swapped?](/azure/app-service/web-sites-staged-publishing).</span></span>
-1. <span data-ttu-id="d4e98-166">Нажмите **Сохранить** в верхней части колонки.</span><span class="sxs-lookup"><span data-stu-id="d4e98-166">Select **Save** at the top of the blade.</span></span>
+#### <a name="azure-app-service"></a><span data-ttu-id="6e656-163">Служба приложений Azure</span><span class="sxs-lookup"><span data-stu-id="6e656-163">Azure App Service</span></span>
 
-<span data-ttu-id="d4e98-167">Служба приложений Azure автоматически перезапускает приложение после добавления, изменения или удаления параметра приложения (переменной среды) на портале Azure.</span><span class="sxs-lookup"><span data-stu-id="d4e98-167">Azure App Service automatically restarts the app after an app setting (environment variable) is added, changed, or deleted in the Azure portal.</span></span>
+<span data-ttu-id="6e656-164">Чтобы установить среду в [службе приложений Azure](https://azure.microsoft.com/services/app-service/), выполните следующие действия:</span><span class="sxs-lookup"><span data-stu-id="6e656-164">To set the environment in [Azure App Service](https://azure.microsoft.com/services/app-service/), perform the following steps:</span></span>
 
-### <a name="windows"></a><span data-ttu-id="d4e98-168">Windows</span><span class="sxs-lookup"><span data-stu-id="d4e98-168">Windows</span></span>
+1. <span data-ttu-id="6e656-165">Выберите приложение из колонки **Службы приложений**.</span><span class="sxs-lookup"><span data-stu-id="6e656-165">Select the app from the **App Services** blade.</span></span>
+1. <span data-ttu-id="6e656-166">В группе **ПАРАМЕТРЫ** выберите колонку **Параметры приложения**.</span><span class="sxs-lookup"><span data-stu-id="6e656-166">In the **SETTINGS** group, select the **Application settings** blade.</span></span>
+1. <span data-ttu-id="6e656-167">В области **Параметры приложения** выберите **Добавить новый параметр**.</span><span class="sxs-lookup"><span data-stu-id="6e656-167">In the **Application settings** area, select **Add new setting**.</span></span>
+1. <span data-ttu-id="6e656-168">В поле **Введите имя** укажите `ASPNETCORE_ENVIRONMENT`.</span><span class="sxs-lookup"><span data-stu-id="6e656-168">For **Enter a name**, provide `ASPNETCORE_ENVIRONMENT`.</span></span> <span data-ttu-id="6e656-169">В поле **Введите значение** укажите среду (например, `Staging`).</span><span class="sxs-lookup"><span data-stu-id="6e656-169">For **Enter a value**, provide the environment (for example, `Staging`).</span></span>
+1. <span data-ttu-id="6e656-170">Установите флажок **Параметр слота**, если нужно, чтобы параметр среды оставался в текущем слоте при замене слота развертывания.</span><span class="sxs-lookup"><span data-stu-id="6e656-170">Select the **Slot Setting** check box if you wish the environment setting to remain with the current slot when deployment slots are swapped.</span></span> <span data-ttu-id="6e656-171">Дополнительные сведения см. в разделе о [переносимых параметрах](/azure/app-service/web-sites-staged-publishing) документации по Azure.</span><span class="sxs-lookup"><span data-stu-id="6e656-171">For more information, see [Azure Documentation: Which settings are swapped?](/azure/app-service/web-sites-staged-publishing).</span></span>
+1. <span data-ttu-id="6e656-172">Нажмите **Сохранить** в верхней части колонки.</span><span class="sxs-lookup"><span data-stu-id="6e656-172">Select **Save** at the top of the blade.</span></span>
 
-<span data-ttu-id="d4e98-169">Если приложение запускается с помощью команды [dotnet run](/dotnet/core/tools/dotnet-run), то, чтобы задать переменную `ASPNETCORE_ENVIRONMENT` для текущего сеанса, используйте следующие команды:</span><span class="sxs-lookup"><span data-stu-id="d4e98-169">To set the `ASPNETCORE_ENVIRONMENT` for the current session when the app is started using [dotnet run](/dotnet/core/tools/dotnet-run), the following commands are used:</span></span>
+<span data-ttu-id="6e656-173">Служба приложений Azure автоматически перезапускает приложение после добавления, изменения или удаления параметра приложения (переменной среды) на портале Azure.</span><span class="sxs-lookup"><span data-stu-id="6e656-173">Azure App Service automatically restarts the app after an app setting (environment variable) is added, changed, or deleted in the Azure portal.</span></span>
 
-<span data-ttu-id="d4e98-170">**Командная строка**</span><span class="sxs-lookup"><span data-stu-id="d4e98-170">**Command prompt**</span></span>
+#### <a name="windows"></a><span data-ttu-id="6e656-174">Windows</span><span class="sxs-lookup"><span data-stu-id="6e656-174">Windows</span></span>
+
+<span data-ttu-id="6e656-175">Если приложение запускается с помощью команды [dotnet run](/dotnet/core/tools/dotnet-run), то, чтобы задать переменную `ASPNETCORE_ENVIRONMENT` для текущего сеанса, используйте следующие команды:</span><span class="sxs-lookup"><span data-stu-id="6e656-175">To set the `ASPNETCORE_ENVIRONMENT` for the current session when the app is started using [dotnet run](/dotnet/core/tools/dotnet-run), the following commands are used:</span></span>
+
+<span data-ttu-id="6e656-176">**Командная строка**</span><span class="sxs-lookup"><span data-stu-id="6e656-176">**Command prompt**</span></span>
 
 ```console
 set ASPNETCORE_ENVIRONMENT=Development
 ```
 
-<span data-ttu-id="d4e98-171">**PowerShell**</span><span class="sxs-lookup"><span data-stu-id="d4e98-171">**PowerShell**</span></span>
+<span data-ttu-id="6e656-177">**PowerShell**</span><span class="sxs-lookup"><span data-stu-id="6e656-177">**PowerShell**</span></span>
 
 ```powershell
 $Env:ASPNETCORE_ENVIRONMENT = "Development"
 ```
 
-<span data-ttu-id="d4e98-172">Эти команды действуют только для текущего окна.</span><span class="sxs-lookup"><span data-stu-id="d4e98-172">These commands only take effect for the current window.</span></span> <span data-ttu-id="d4e98-173">Когда окно закрывается, для параметра `ASPNETCORE_ENVIRONMENT` восстанавливается значение по умолчанию или значение, заданное на компьютере.</span><span class="sxs-lookup"><span data-stu-id="d4e98-173">When the window is closed, the `ASPNETCORE_ENVIRONMENT` setting reverts to the default setting or machine value.</span></span>
+<span data-ttu-id="6e656-178">Эти команды действуют только для текущего окна.</span><span class="sxs-lookup"><span data-stu-id="6e656-178">These commands only take effect for the current window.</span></span> <span data-ttu-id="6e656-179">Когда окно закрывается, для параметра `ASPNETCORE_ENVIRONMENT` восстанавливается значение по умолчанию или значение, заданное на компьютере.</span><span class="sxs-lookup"><span data-stu-id="6e656-179">When the window is closed, the `ASPNETCORE_ENVIRONMENT` setting reverts to the default setting or machine value.</span></span>
 
-<span data-ttu-id="d4e98-174">Чтобы задать это значение в Windows на глобальном уровне, используйте один из следующих подходов.</span><span class="sxs-lookup"><span data-stu-id="d4e98-174">To set the value globally in Windows, use either of the following approaches:</span></span>
+<span data-ttu-id="6e656-180">Чтобы задать это значение в Windows на глобальном уровне, используйте один из следующих подходов.</span><span class="sxs-lookup"><span data-stu-id="6e656-180">To set the value globally in Windows, use either of the following approaches:</span></span>
 
-* <span data-ttu-id="d4e98-175">Откройте **Панель управления** > **Система** > **Дополнительные параметры системы** и добавьте или измените значение `ASPNETCORE_ENVIRONMENT`:</span><span class="sxs-lookup"><span data-stu-id="d4e98-175">Open the **Control Panel** > **System** > **Advanced system settings** and add or edit the `ASPNETCORE_ENVIRONMENT` value:</span></span>
+* <span data-ttu-id="6e656-181">Откройте **Панель управления** > **Система** > **Дополнительные параметры системы** и добавьте или измените значение `ASPNETCORE_ENVIRONMENT`:</span><span class="sxs-lookup"><span data-stu-id="6e656-181">Open the **Control Panel** > **System** > **Advanced system settings** and add or edit the `ASPNETCORE_ENVIRONMENT` value:</span></span>
 
   ![Дополнительные параметры системы](environments/_static/systemsetting_environment.png)
 
   ![Переменная среды ASPNET Core](environments/_static/windows_aspnetcore_environment.png)
 
-* <span data-ttu-id="d4e98-178">Откройте командную строку администратора и выполните команду `setx` либо откройте командную строку администратора PowerShell и используйте `[Environment]::SetEnvironmentVariable`:</span><span class="sxs-lookup"><span data-stu-id="d4e98-178">Open an administrative command prompt and use the `setx` command or open an administrative PowerShell command prompt and use `[Environment]::SetEnvironmentVariable`:</span></span>
+* <span data-ttu-id="6e656-184">Откройте командную строку администратора и выполните команду `setx` либо откройте командную строку администратора PowerShell и используйте `[Environment]::SetEnvironmentVariable`:</span><span class="sxs-lookup"><span data-stu-id="6e656-184">Open an administrative command prompt and use the `setx` command or open an administrative PowerShell command prompt and use `[Environment]::SetEnvironmentVariable`:</span></span>
 
-  <span data-ttu-id="d4e98-179">**Командная строка**</span><span class="sxs-lookup"><span data-stu-id="d4e98-179">**Command prompt**</span></span>
+  <span data-ttu-id="6e656-185">**Командная строка**</span><span class="sxs-lookup"><span data-stu-id="6e656-185">**Command prompt**</span></span>
 
   ```console
   setx ASPNETCORE_ENVIRONMENT Development /M
   ```
 
-  <span data-ttu-id="d4e98-180">Параметр `/M` указывает на установку переменной среды на уровне системы.</span><span class="sxs-lookup"><span data-stu-id="d4e98-180">The `/M` switch indicates to set the environment variable at the system level.</span></span> <span data-ttu-id="d4e98-181">Если параметр `/M` не используется, переменная среды задается для учетной записи пользователя.</span><span class="sxs-lookup"><span data-stu-id="d4e98-181">If the `/M` switch isn't used, the environment variable is set for the user account.</span></span>
+  <span data-ttu-id="6e656-186">Параметр `/M` указывает на установку переменной среды на уровне системы.</span><span class="sxs-lookup"><span data-stu-id="6e656-186">The `/M` switch indicates to set the environment variable at the system level.</span></span> <span data-ttu-id="6e656-187">Если параметр `/M` не используется, переменная среды задается для учетной записи пользователя.</span><span class="sxs-lookup"><span data-stu-id="6e656-187">If the `/M` switch isn't used, the environment variable is set for the user account.</span></span>
 
-  <span data-ttu-id="d4e98-182">**PowerShell**</span><span class="sxs-lookup"><span data-stu-id="d4e98-182">**PowerShell**</span></span>
+  <span data-ttu-id="6e656-188">**PowerShell**</span><span class="sxs-lookup"><span data-stu-id="6e656-188">**PowerShell**</span></span>
 
   ```powershell
   [Environment]::SetEnvironmentVariable("ASPNETCORE_ENVIRONMENT", "Development", "Machine")
   ```
 
-  <span data-ttu-id="d4e98-183">Значение параметра `Machine` указывает на установку переменной среды на уровне системы.</span><span class="sxs-lookup"><span data-stu-id="d4e98-183">The `Machine` option value indicates to set the environment variable at the system level.</span></span> <span data-ttu-id="d4e98-184">При изменении значения параметра на `User` переменная среды задается для учетной записи пользователя.</span><span class="sxs-lookup"><span data-stu-id="d4e98-184">If the option value is changed to `User`, the environment variable is set for the user account.</span></span>
+  <span data-ttu-id="6e656-189">Значение параметра `Machine` указывает на установку переменной среды на уровне системы.</span><span class="sxs-lookup"><span data-stu-id="6e656-189">The `Machine` option value indicates to set the environment variable at the system level.</span></span> <span data-ttu-id="6e656-190">При изменении значения параметра на `User` переменная среды задается для учетной записи пользователя.</span><span class="sxs-lookup"><span data-stu-id="6e656-190">If the option value is changed to `User`, the environment variable is set for the user account.</span></span>
 
-<span data-ttu-id="d4e98-185">Если переменная среды `ASPNETCORE_ENVIRONMENT` задана глобально, она действует для `dotnet run` в любом окне командной строки, открываемом после установки значения.</span><span class="sxs-lookup"><span data-stu-id="d4e98-185">When the `ASPNETCORE_ENVIRONMENT` environment variable is set globally, it takes effect for `dotnet run` in any command window opened after the value is set.</span></span>
+<span data-ttu-id="6e656-191">Если переменная среды `ASPNETCORE_ENVIRONMENT` задана глобально, она действует для `dotnet run` в любом окне командной строки, открываемом после установки значения.</span><span class="sxs-lookup"><span data-stu-id="6e656-191">When the `ASPNETCORE_ENVIRONMENT` environment variable is set globally, it takes effect for `dotnet run` in any command window opened after the value is set.</span></span>
 
-<span data-ttu-id="d4e98-186">**web.config**</span><span class="sxs-lookup"><span data-stu-id="d4e98-186">**web.config**</span></span>
+<span data-ttu-id="6e656-192">**web.config**</span><span class="sxs-lookup"><span data-stu-id="6e656-192">**web.config**</span></span>
 
-<span data-ttu-id="d4e98-187">Сведения об установке переменной среды `ASPNETCORE_ENVIRONMENT` в файле *web.config* см. в разделе *Настройка переменной среды* в <xref:host-and-deploy/aspnet-core-module#setting-environment-variables>.</span><span class="sxs-lookup"><span data-stu-id="d4e98-187">To set the `ASPNETCORE_ENVIRONMENT` environment variable with *web.config*, see the *Setting environment variables* section of <xref:host-and-deploy/aspnet-core-module#setting-environment-variables>.</span></span>
+<span data-ttu-id="6e656-193">Сведения об установке переменной среды `ASPNETCORE_ENVIRONMENT` в файле *web.config* см. в разделе *Настройка переменной среды* в <xref:host-and-deploy/aspnet-core-module#setting-environment-variables>.</span><span class="sxs-lookup"><span data-stu-id="6e656-193">To set the `ASPNETCORE_ENVIRONMENT` environment variable with *web.config*, see the *Setting environment variables* section of <xref:host-and-deploy/aspnet-core-module#setting-environment-variables>.</span></span>
 
 ::: moniker range=">= aspnetcore-2.2"
 
-<span data-ttu-id="d4e98-188">**Файл проекта или профиль публикации**</span><span class="sxs-lookup"><span data-stu-id="d4e98-188">**Project file or publish profile**</span></span>
+<span data-ttu-id="6e656-194">**Файл проекта или профиль публикации**</span><span class="sxs-lookup"><span data-stu-id="6e656-194">**Project file or publish profile**</span></span>
 
-<span data-ttu-id="d4e98-189">**Для развертываний Windows IIS:** Включите свойство `<EnvironmentName>` в профиле публикации (*PUBXML*) или файле проекта.</span><span class="sxs-lookup"><span data-stu-id="d4e98-189">**For Windows IIS deployments:** Include the `<EnvironmentName>` property in the publish profile (*.pubxml*) or project file.</span></span> <span data-ttu-id="d4e98-190">При этом подходе во время публикации проекта среда задается в файле *web.config*:</span><span class="sxs-lookup"><span data-stu-id="d4e98-190">This approach sets the environment in *web.config* when the project is published:</span></span>
+<span data-ttu-id="6e656-195">**Для развертываний Windows IIS:** Включите свойство `<EnvironmentName>` в профиле публикации (*PUBXML*) или файле проекта.</span><span class="sxs-lookup"><span data-stu-id="6e656-195">**For Windows IIS deployments:** Include the `<EnvironmentName>` property in the publish profile (*.pubxml*) or project file.</span></span> <span data-ttu-id="6e656-196">При этом подходе во время публикации проекта среда задается в файле *web.config*:</span><span class="sxs-lookup"><span data-stu-id="6e656-196">This approach sets the environment in *web.config* when the project is published:</span></span>
 
 ```xml
 <PropertyGroup>
@@ -250,55 +272,223 @@ $Env:ASPNETCORE_ENVIRONMENT = "Development"
 
 ::: moniker-end
 
-<span data-ttu-id="d4e98-191">**Пул приложений IIS**</span><span class="sxs-lookup"><span data-stu-id="d4e98-191">**Per IIS Application Pool**</span></span>
+<span data-ttu-id="6e656-197">**Пул приложений IIS**</span><span class="sxs-lookup"><span data-stu-id="6e656-197">**Per IIS Application Pool**</span></span>
 
-<span data-ttu-id="d4e98-192">Чтобы задать переменную среды `ASPNETCORE_ENVIRONMENT` для приложения, выполняющегося в изолированном пуле приложений (такая возможность поддерживается в службах IIS 10.0 и более поздних версий), см. подраздел, посвященный команде *AppCmd.exe*, в разделе [Переменные среды &lt;environmentVariables&gt;](/iis/configuration/system.applicationHost/applicationPools/add/environmentVariables/#appcmdexe).</span><span class="sxs-lookup"><span data-stu-id="d4e98-192">To set the `ASPNETCORE_ENVIRONMENT` environment variable for an app running in an isolated Application Pool (supported on IIS 10.0 or later), see the *AppCmd.exe command* section of the [Environment Variables &lt;environmentVariables&gt;](/iis/configuration/system.applicationHost/applicationPools/add/environmentVariables/#appcmdexe) topic.</span></span> <span data-ttu-id="d4e98-193">Если переменная среды `ASPNETCORE_ENVIRONMENT` задана для пула приложений, ее значение переопределяет значение на уровне системы.</span><span class="sxs-lookup"><span data-stu-id="d4e98-193">When the `ASPNETCORE_ENVIRONMENT` environment variable is set for an app pool, its value overrides a setting at the system level.</span></span>
+<span data-ttu-id="6e656-198">Чтобы задать переменную среды `ASPNETCORE_ENVIRONMENT` для приложения, выполняющегося в изолированном пуле приложений (такая возможность поддерживается в службах IIS 10.0 и более поздних версий), см. подраздел, посвященный команде *AppCmd.exe*, в разделе [Переменные среды &lt;environmentVariables&gt;](/iis/configuration/system.applicationHost/applicationPools/add/environmentVariables/#appcmdexe).</span><span class="sxs-lookup"><span data-stu-id="6e656-198">To set the `ASPNETCORE_ENVIRONMENT` environment variable for an app running in an isolated Application Pool (supported on IIS 10.0 or later), see the *AppCmd.exe command* section of the [Environment Variables &lt;environmentVariables&gt;](/iis/configuration/system.applicationHost/applicationPools/add/environmentVariables/#appcmdexe) topic.</span></span> <span data-ttu-id="6e656-199">Если переменная среды `ASPNETCORE_ENVIRONMENT` задана для пула приложений, ее значение переопределяет значение на уровне системы.</span><span class="sxs-lookup"><span data-stu-id="6e656-199">When the `ASPNETCORE_ENVIRONMENT` environment variable is set for an app pool, its value overrides a setting at the system level.</span></span>
 
 > [!IMPORTANT]
-> <span data-ttu-id="d4e98-194">При размещении приложения в службах IIS и добавлении или изменении переменной среды `ASPNETCORE_ENVIRONMENT` используйте один из следующих подходов по применению нового значения в приложении.</span><span class="sxs-lookup"><span data-stu-id="d4e98-194">When hosting an app in IIS and adding or changing the `ASPNETCORE_ENVIRONMENT` environment variable, use any one of the following approaches to have the new value picked up by apps:</span></span>
+> <span data-ttu-id="6e656-200">При размещении приложения в службах IIS и добавлении или изменении переменной среды `ASPNETCORE_ENVIRONMENT` используйте один из следующих подходов по применению нового значения в приложении.</span><span class="sxs-lookup"><span data-stu-id="6e656-200">When hosting an app in IIS and adding or changing the `ASPNETCORE_ENVIRONMENT` environment variable, use any one of the following approaches to have the new value picked up by apps:</span></span>
 >
-> * <span data-ttu-id="d4e98-195">Из командной строки выполните команду `net stop was /y`, за которой следует `net start w3svc`.</span><span class="sxs-lookup"><span data-stu-id="d4e98-195">Execute `net stop was /y` followed by `net start w3svc` from a command prompt.</span></span>
-> * <span data-ttu-id="d4e98-196">Перезапустите сервер.</span><span class="sxs-lookup"><span data-stu-id="d4e98-196">Restart the server.</span></span>
+> * <span data-ttu-id="6e656-201">Из командной строки выполните команду `net stop was /y`, за которой следует `net start w3svc`.</span><span class="sxs-lookup"><span data-stu-id="6e656-201">Execute `net stop was /y` followed by `net start w3svc` from a command prompt.</span></span>
+> * <span data-ttu-id="6e656-202">Перезапустите сервер.</span><span class="sxs-lookup"><span data-stu-id="6e656-202">Restart the server.</span></span>
 
-### <a name="macos"></a><span data-ttu-id="d4e98-197">macOS</span><span class="sxs-lookup"><span data-stu-id="d4e98-197">macOS</span></span>
+#### <a name="macos"></a><span data-ttu-id="6e656-203">macOS</span><span class="sxs-lookup"><span data-stu-id="6e656-203">macOS</span></span>
 
-<span data-ttu-id="d4e98-198">Задать текущую среду в macOS можно в командной строке при запуске приложения:</span><span class="sxs-lookup"><span data-stu-id="d4e98-198">Setting the current environment for macOS can be performed in-line when running the app:</span></span>
+<span data-ttu-id="6e656-204">Задать текущую среду в macOS можно в командной строке при запуске приложения:</span><span class="sxs-lookup"><span data-stu-id="6e656-204">Setting the current environment for macOS can be performed in-line when running the app:</span></span>
 
 ```bash
 ASPNETCORE_ENVIRONMENT=Development dotnet run
 ```
 
-<span data-ttu-id="d4e98-199">Также можно задать среду с помощью команды `export` до запуска приложения:</span><span class="sxs-lookup"><span data-stu-id="d4e98-199">Alternatively, set the environment with `export` prior to running the app:</span></span>
+<span data-ttu-id="6e656-205">Также можно задать среду с помощью команды `export` до запуска приложения:</span><span class="sxs-lookup"><span data-stu-id="6e656-205">Alternatively, set the environment with `export` prior to running the app:</span></span>
 
 ```bash
 export ASPNETCORE_ENVIRONMENT=Development
 ```
 
-<span data-ttu-id="d4e98-200">Переменные среды на уровне компьютера задаются в файле *BASHRC* или *BASH_PROFILE*.</span><span class="sxs-lookup"><span data-stu-id="d4e98-200">Machine-level environment variables are set in the *.bashrc* or *.bash_profile* file.</span></span> <span data-ttu-id="d4e98-201">Измените файл в любом текстовом редакторе.</span><span class="sxs-lookup"><span data-stu-id="d4e98-201">Edit the file using any text editor.</span></span> <span data-ttu-id="d4e98-202">Добавьте следующий оператор:</span><span class="sxs-lookup"><span data-stu-id="d4e98-202">Add the following statement:</span></span>
+<span data-ttu-id="6e656-206">Переменные среды на уровне компьютера задаются в файле *BASHRC* или *BASH_PROFILE*.</span><span class="sxs-lookup"><span data-stu-id="6e656-206">Machine-level environment variables are set in the *.bashrc* or *.bash_profile* file.</span></span> <span data-ttu-id="6e656-207">Измените файл в любом текстовом редакторе.</span><span class="sxs-lookup"><span data-stu-id="6e656-207">Edit the file using any text editor.</span></span> <span data-ttu-id="6e656-208">Добавьте следующий оператор:</span><span class="sxs-lookup"><span data-stu-id="6e656-208">Add the following statement:</span></span>
 
 ```bash
 export ASPNETCORE_ENVIRONMENT=Development
 ```
 
-### <a name="linux"></a><span data-ttu-id="d4e98-203">Linux</span><span class="sxs-lookup"><span data-stu-id="d4e98-203">Linux</span></span>
+#### <a name="linux"></a><span data-ttu-id="6e656-209">Linux</span><span class="sxs-lookup"><span data-stu-id="6e656-209">Linux</span></span>
 
-<span data-ttu-id="d4e98-204">В дистрибутивах Linux используйте команду `export` в командной строке для значений переменных на уровне сеанса или в файле *BASH_PROFILE* для значений среды на уровне компьютера.</span><span class="sxs-lookup"><span data-stu-id="d4e98-204">For Linux distros, use the `export` command at a command prompt for session-based variable settings and *bash_profile* file for machine-level environment settings.</span></span>
+<span data-ttu-id="6e656-210">В дистрибутивах Linux используйте команду `export` в командной строке для значений переменных на уровне сеанса или в файле *BASH_PROFILE* для значений среды на уровне компьютера.</span><span class="sxs-lookup"><span data-stu-id="6e656-210">For Linux distros, use the `export` command at a command prompt for session-based variable settings and *bash_profile* file for machine-level environment settings.</span></span>
 
-### <a name="configuration-by-environment"></a><span data-ttu-id="d4e98-205">Конфигурация для разных сред</span><span class="sxs-lookup"><span data-stu-id="d4e98-205">Configuration by environment</span></span>
+### <a name="set-the-environment-in-code"></a><span data-ttu-id="6e656-211">Указание среды в коде</span><span class="sxs-lookup"><span data-stu-id="6e656-211">Set the environment in code</span></span>
 
-<span data-ttu-id="d4e98-206">Для загрузки конфигурации среды мы рекомендуем:</span><span class="sxs-lookup"><span data-stu-id="d4e98-206">To load configuration by environment, we recommend:</span></span>
+::: moniker range=">= aspnetcore-3.0"
 
-* <span data-ttu-id="d4e98-207">Файлы *appsettings* (*appsettings.\<Environment>.json*).</span><span class="sxs-lookup"><span data-stu-id="d4e98-207">*appsettings* files (*appsettings.\<Environment>.json*).</span></span> <span data-ttu-id="d4e98-208">См. разделы [Поставщик пользовательской конфигурации](xref:fundamentals/configuration/index#file-configuration-provider).</span><span class="sxs-lookup"><span data-stu-id="d4e98-208">See [Configuration: File configuration provider](xref:fundamentals/configuration/index#file-configuration-provider).</span></span>
-* <span data-ttu-id="d4e98-209">Переменные среды (заданные в каждой системе, где размещено приложение).</span><span class="sxs-lookup"><span data-stu-id="d4e98-209">environment variables (set on each system where the app is hosted).</span></span> <span data-ttu-id="d4e98-210">См. разделы [Поставщик пользовательской конфигурации](xref:fundamentals/configuration/index#file-configuration-provider) и [Переменные среды](xref:security/app-secrets#environment-variables).</span><span class="sxs-lookup"><span data-stu-id="d4e98-210">See [Configuration: File configuration provider](xref:fundamentals/configuration/index#file-configuration-provider) and [Safe storage of app secrets in development: Environment variables](xref:security/app-secrets#environment-variables).</span></span>
-* <span data-ttu-id="d4e98-211">Менеджер секретов (только в среде разработки).</span><span class="sxs-lookup"><span data-stu-id="d4e98-211">Secret Manager (in the Development environment only).</span></span> <span data-ttu-id="d4e98-212">См. раздел <xref:security/app-secrets>.</span><span class="sxs-lookup"><span data-stu-id="d4e98-212">See <xref:security/app-secrets>.</span></span>
+<span data-ttu-id="6e656-212">Вызовите <xref:Microsoft.Extensions.Hosting.HostingHostBuilderExtensions.UseEnvironment*> при создании узла.</span><span class="sxs-lookup"><span data-stu-id="6e656-212">Call <xref:Microsoft.Extensions.Hosting.HostingHostBuilderExtensions.UseEnvironment*> when building the host.</span></span> <span data-ttu-id="6e656-213">См. раздел <xref:fundamentals/host/generic-host#environmentname>.</span><span class="sxs-lookup"><span data-stu-id="6e656-213">See <xref:fundamentals/host/generic-host#environmentname>.</span></span>
 
-## <a name="environment-based-startup-class-and-methods"></a><span data-ttu-id="d4e98-213">Класс Startup и его методы для разных сред</span><span class="sxs-lookup"><span data-stu-id="d4e98-213">Environment-based Startup class and methods</span></span>
+::: moniker-end
 
-### <a name="startup-class-conventions"></a><span data-ttu-id="d4e98-214">Соглашения о классе Startup</span><span class="sxs-lookup"><span data-stu-id="d4e98-214">Startup class conventions</span></span>
+::: moniker range="< aspnetcore-3.0"
 
-<span data-ttu-id="d4e98-215">При запуске приложения ASP.NET Core [класс Startup](xref:fundamentals/startup) выполняет его начальную загрузку.</span><span class="sxs-lookup"><span data-stu-id="d4e98-215">When an ASP.NET Core app starts, the [Startup class](xref:fundamentals/startup) bootstraps the app.</span></span> <span data-ttu-id="d4e98-216">Приложение может определять отдельные классы `Startup` для различных сред (например, `StartupDevelopment`), при этом подходящий класс `Startup` выбирается во время выполнения.</span><span class="sxs-lookup"><span data-stu-id="d4e98-216">The app can define separate `Startup` classes for different environments (for example, `StartupDevelopment`), and the appropriate `Startup` class is selected at runtime.</span></span> <span data-ttu-id="d4e98-217">Класс, у которого суффикс имени соответствует текущей среде, получает приоритет.</span><span class="sxs-lookup"><span data-stu-id="d4e98-217">The class whose name suffix matches the current environment is prioritized.</span></span> <span data-ttu-id="d4e98-218">Если соответствующий класс `Startup{EnvironmentName}` не найден, используется класс `Startup`.</span><span class="sxs-lookup"><span data-stu-id="d4e98-218">If a matching `Startup{EnvironmentName}` class isn't found, the `Startup` class is used.</span></span>
+<span data-ttu-id="6e656-214">Вызовите <xref:Microsoft.AspNetCore.Hosting.HostingAbstractionsWebHostBuilderExtensions.UseEnvironment*> при создании узла.</span><span class="sxs-lookup"><span data-stu-id="6e656-214">Call <xref:Microsoft.AspNetCore.Hosting.HostingAbstractionsWebHostBuilderExtensions.UseEnvironment*> when building the host.</span></span> <span data-ttu-id="6e656-215">См. раздел <xref:fundamentals/host/web-host#environment>.</span><span class="sxs-lookup"><span data-stu-id="6e656-215">See <xref:fundamentals/host/web-host#environment>.</span></span>
 
-<span data-ttu-id="d4e98-219">Чтобы реализовать классы `Startup` на основе среды, создайте класс `Startup{EnvironmentName}` для каждой используемой среды и резервный класс `Startup`:</span><span class="sxs-lookup"><span data-stu-id="d4e98-219">To implement environment-based `Startup` classes, create a `Startup{EnvironmentName}` class for each environment in use and a fallback `Startup` class:</span></span>
+::: moniker-end
+
+### <a name="configuration-by-environment"></a><span data-ttu-id="6e656-216">Конфигурация для разных сред</span><span class="sxs-lookup"><span data-stu-id="6e656-216">Configuration by environment</span></span>
+
+<span data-ttu-id="6e656-217">Для загрузки конфигурации среды мы рекомендуем:</span><span class="sxs-lookup"><span data-stu-id="6e656-217">To load configuration by environment, we recommend:</span></span>
+
+::: moniker range=">= aspnetcore-3.0"
+
+* <span data-ttu-id="6e656-218">Файлы *appsettings* (*appsettings.{Environment}.json*).</span><span class="sxs-lookup"><span data-stu-id="6e656-218">*appsettings* files (*appsettings.{Environment}.json*).</span></span> <span data-ttu-id="6e656-219">См. раздел <xref:fundamentals/configuration/index#json-configuration-provider>.</span><span class="sxs-lookup"><span data-stu-id="6e656-219">See <xref:fundamentals/configuration/index#json-configuration-provider>.</span></span>
+* <span data-ttu-id="6e656-220">Переменные среды (заданные в каждой системе, где размещено приложение).</span><span class="sxs-lookup"><span data-stu-id="6e656-220">Environment variables (set on each system where the app is hosted).</span></span> <span data-ttu-id="6e656-221">См. разделы <xref:fundamentals/host/generic-host#environmentname> и <xref:security/app-secrets#environment-variables>.</span><span class="sxs-lookup"><span data-stu-id="6e656-221">See <xref:fundamentals/host/generic-host#environmentname> and <xref:security/app-secrets#environment-variables>.</span></span>
+* <span data-ttu-id="6e656-222">Менеджер секретов (только в среде разработки).</span><span class="sxs-lookup"><span data-stu-id="6e656-222">Secret Manager (in the Development environment only).</span></span> <span data-ttu-id="6e656-223">См. раздел <xref:security/app-secrets>.</span><span class="sxs-lookup"><span data-stu-id="6e656-223">See <xref:security/app-secrets>.</span></span>
+
+::: moniker-end
+
+::: moniker range="< aspnetcore-3.0"
+
+* <span data-ttu-id="6e656-224">Файлы *appsettings* (*appsettings.{Environment}.json*).</span><span class="sxs-lookup"><span data-stu-id="6e656-224">*appsettings* files (*appsettings.{Environment}.json*).</span></span> <span data-ttu-id="6e656-225">См. раздел <xref:fundamentals/configuration/index#json-configuration-provider>.</span><span class="sxs-lookup"><span data-stu-id="6e656-225">See <xref:fundamentals/configuration/index#json-configuration-provider>.</span></span>
+* <span data-ttu-id="6e656-226">Переменные среды (заданные в каждой системе, где размещено приложение).</span><span class="sxs-lookup"><span data-stu-id="6e656-226">Environment variables (set on each system where the app is hosted).</span></span> <span data-ttu-id="6e656-227">См. разделы <xref:fundamentals/host/web-host#environment> и <xref:security/app-secrets#environment-variables>.</span><span class="sxs-lookup"><span data-stu-id="6e656-227">See <xref:fundamentals/host/web-host#environment> and <xref:security/app-secrets#environment-variables>.</span></span>
+* <span data-ttu-id="6e656-228">Менеджер секретов (только в среде разработки).</span><span class="sxs-lookup"><span data-stu-id="6e656-228">Secret Manager (in the Development environment only).</span></span> <span data-ttu-id="6e656-229">См. раздел <xref:security/app-secrets>.</span><span class="sxs-lookup"><span data-stu-id="6e656-229">See <xref:security/app-secrets>.</span></span>
+
+::: moniker-end
+
+## <a name="environment-based-startup-class-and-methods"></a><span data-ttu-id="6e656-230">Класс Startup и его методы для разных сред</span><span class="sxs-lookup"><span data-stu-id="6e656-230">Environment-based Startup class and methods</span></span>
+
+::: moniker range=">= aspnetcore-3.0"
+
+### <a name="inject-iwebhostenvironment-into-startupconfigure"></a><span data-ttu-id="6e656-231">Внедрение IWebHostEnvironment в Startup.Configure</span><span class="sxs-lookup"><span data-stu-id="6e656-231">Inject IWebHostEnvironment into Startup.Configure</span></span>
+
+<span data-ttu-id="6e656-232">Внедрите <xref:Microsoft.AspNetCore.Hosting.IWebHostEnvironment> в `Startup.Configure`.</span><span class="sxs-lookup"><span data-stu-id="6e656-232">Inject <xref:Microsoft.AspNetCore.Hosting.IWebHostEnvironment> into `Startup.Configure`.</span></span> <span data-ttu-id="6e656-233">Этот подход удобен, когда для приложения требуется просто скорректировать `Startup.Configure` для нескольких сред с минимальными различиями в коде для каждой среды.</span><span class="sxs-lookup"><span data-stu-id="6e656-233">This approach is useful when the app only requires adjusting `Startup.Configure` for a few environments with minimal code differences per environment.</span></span>
+
+```csharp
+public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+{
+    if (env.IsDevelopment())
+    {
+        // Development environment code
+    }
+    else
+    {
+        // Code for all other environments
+    }
+}
+```
+
+### <a name="inject-iwebhostenvironment-into-the-startup-class"></a><span data-ttu-id="6e656-234">Внедрение IWebHostEnvironment в класс Startup</span><span class="sxs-lookup"><span data-stu-id="6e656-234">Inject IWebHostEnvironment into the Startup class</span></span>
+
+<span data-ttu-id="6e656-235">Внедрите <xref:Microsoft.AspNetCore.Hosting.IWebHostEnvironment> в конструктор `Startup`.</span><span class="sxs-lookup"><span data-stu-id="6e656-235">Inject <xref:Microsoft.AspNetCore.Hosting.IWebHostEnvironment> into the `Startup` constructor.</span></span> <span data-ttu-id="6e656-236">Этот подход удобен, когда для приложения требуется настроить `Startup` всего для нескольких сред с минимальными различиями в коде для каждой среды.</span><span class="sxs-lookup"><span data-stu-id="6e656-236">This approach is useful when the app requires configuring `Startup` for only a few environments with minimal code differences per environment.</span></span>
+
+<span data-ttu-id="6e656-237">В следующем примере:</span><span class="sxs-lookup"><span data-stu-id="6e656-237">In the following example:</span></span>
+
+* <span data-ttu-id="6e656-238">Среда хранится в поле `_env`.</span><span class="sxs-lookup"><span data-stu-id="6e656-238">The environment is held in the `_env` field.</span></span>
+* <span data-ttu-id="6e656-239">`_env` используется в `ConfigureServices` и `Configure` для применения конфигурации запуска на основе среды приложения.</span><span class="sxs-lookup"><span data-stu-id="6e656-239">`_env` is used in `ConfigureServices` and `Configure` to apply startup configuration based on the app's environment.</span></span>
+
+```csharp
+public class Startup
+{
+    private readonly IWebHostEnvironment _env;
+
+    public Startup(IWebHostEnvironment env)
+    {
+        _env = env;
+    }
+
+    public void ConfigureServices(IServiceCollection services)
+    {
+        if (_env.IsDevelopment())
+        {
+            // Development environment code
+        }
+        else if (_env.IsStaging())
+        {
+            // Staging environment code
+        }
+        else
+        {
+            // Code for all other environments
+        }
+    }
+
+    public void Configure(IApplicationBuilder app)
+    {
+        if (_env.IsDevelopment())
+        {
+            // Development environment code
+        }
+        else
+        {
+            // Code for all other environments
+        }
+    }
+}
+```
+
+::: moniker-end
+
+::: moniker range="< aspnetcore-3.0"
+
+### <a name="inject-ihostingenvironment-into-startupconfigure"></a><span data-ttu-id="6e656-240">Внедрение IHostingEnvironment в Startup.Configure</span><span class="sxs-lookup"><span data-stu-id="6e656-240">Inject IHostingEnvironment into Startup.Configure</span></span>
+
+<span data-ttu-id="6e656-241">Внедрите <xref:Microsoft.AspNetCore.Hosting.IHostingEnvironment> в `Startup.Configure`.</span><span class="sxs-lookup"><span data-stu-id="6e656-241">Inject <xref:Microsoft.AspNetCore.Hosting.IHostingEnvironment> into `Startup.Configure`.</span></span> <span data-ttu-id="6e656-242">Этот подход удобен, когда для приложения требуется просто настроить `Startup.Configure` всего для нескольких сред с минимальными различиями в коде для каждой среды.</span><span class="sxs-lookup"><span data-stu-id="6e656-242">This approach is useful when the app only requires configuring `Startup.Configure` for only a few environments with minimal code differences per environment.</span></span>
+
+```csharp
+public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+{
+    if (env.IsDevelopment())
+    {
+        // Development environment code
+    }
+    else
+    {
+        // Code for all other environments
+    }
+}
+```
+
+### <a name="inject-ihostingenvironment-into-the-startup-class"></a><span data-ttu-id="6e656-243">Внедрение IHostingEnvironment в класс Startup</span><span class="sxs-lookup"><span data-stu-id="6e656-243">Inject IHostingEnvironment into the Startup class</span></span>
+
+<span data-ttu-id="6e656-244">Внедрите <xref:Microsoft.AspNetCore.Hosting.IHostingEnvironment> в конструктор `Startup` и назначьте службу полю для использования в рамках всего класса `Startup`.</span><span class="sxs-lookup"><span data-stu-id="6e656-244">Inject <xref:Microsoft.AspNetCore.Hosting.IHostingEnvironment> into the `Startup` constructor and assign the service to a field for use throughout the `Startup` class.</span></span> <span data-ttu-id="6e656-245">Этот подход удобен, когда для приложения требуется настроить запуск всего для нескольких сред с минимальными различиями в коде для каждой среды.</span><span class="sxs-lookup"><span data-stu-id="6e656-245">This approach is useful when the app requires configuring startup for only a few environments with minimal code differences per environment.</span></span>
+
+<span data-ttu-id="6e656-246">В следующем примере:</span><span class="sxs-lookup"><span data-stu-id="6e656-246">In the following example:</span></span>
+
+* <span data-ttu-id="6e656-247">Среда хранится в поле `_env`.</span><span class="sxs-lookup"><span data-stu-id="6e656-247">The environment is held in the `_env` field.</span></span>
+* <span data-ttu-id="6e656-248">`_env` используется в `ConfigureServices` и `Configure` для применения конфигурации запуска на основе среды приложения.</span><span class="sxs-lookup"><span data-stu-id="6e656-248">`_env` is used in `ConfigureServices` and `Configure` to apply startup configuration based on the app's environment.</span></span>
+
+```csharp
+public class Startup
+{
+    private readonly IHostingEnvironment _env;
+
+    public Startup(IHostingEnvironment env)
+    {
+        _env = env;
+    }
+
+    public void ConfigureServices(IServiceCollection services)
+    {
+        if (_env.IsDevelopment())
+        {
+            // Development environment code
+        }
+        else if (_env.IsStaging())
+        {
+            // Staging environment code
+        }
+        else
+        {
+            // Code for all other environments
+        }
+    }
+
+    public void Configure(IApplicationBuilder app)
+    {
+        if (_env.IsDevelopment())
+        {
+            // Development environment code
+        }
+        else
+        {
+            // Code for all other environments
+        }
+    }
+}
+```
+
+::: moniker-end
+
+### <a name="startup-class-conventions"></a><span data-ttu-id="6e656-249">Соглашения о классе Startup</span><span class="sxs-lookup"><span data-stu-id="6e656-249">Startup class conventions</span></span>
+
+<span data-ttu-id="6e656-250">При запуске приложения ASP.NET Core [класс Startup](xref:fundamentals/startup) выполняет его начальную загрузку.</span><span class="sxs-lookup"><span data-stu-id="6e656-250">When an ASP.NET Core app starts, the [Startup class](xref:fundamentals/startup) bootstraps the app.</span></span> <span data-ttu-id="6e656-251">Приложение может определять отдельные классы `Startup` для различных сред (например, `StartupDevelopment`).</span><span class="sxs-lookup"><span data-stu-id="6e656-251">The app can define separate `Startup` classes for different environments (for example, `StartupDevelopment`).</span></span> <span data-ttu-id="6e656-252">Подходящий класс `Startup` выбирается во время выполнения.</span><span class="sxs-lookup"><span data-stu-id="6e656-252">The appropriate `Startup` class is selected at runtime.</span></span> <span data-ttu-id="6e656-253">Класс, у которого суффикс имени соответствует текущей среде, получает приоритет.</span><span class="sxs-lookup"><span data-stu-id="6e656-253">The class whose name suffix matches the current environment is prioritized.</span></span> <span data-ttu-id="6e656-254">Если соответствующий класс `Startup{EnvironmentName}` не найден, используется класс `Startup`.</span><span class="sxs-lookup"><span data-stu-id="6e656-254">If a matching `Startup{EnvironmentName}` class isn't found, the `Startup` class is used.</span></span> <span data-ttu-id="6e656-255">Этот подход удобен, когда для приложения требуется настроить запуск для нескольких сред с многочисленными различиями в коде для каждой среды.</span><span class="sxs-lookup"><span data-stu-id="6e656-255">This approach is useful when the app requires configuring startup for several environments with many code differences per environment.</span></span>
+
+<span data-ttu-id="6e656-256">Чтобы реализовать классы `Startup` на основе среды, создайте класс `Startup{EnvironmentName}` для каждой используемой среды и резервный класс `Startup`:</span><span class="sxs-lookup"><span data-stu-id="6e656-256">To implement environment-based `Startup` classes, create a `Startup{EnvironmentName}` class for each environment in use and a fallback `Startup` class:</span></span>
 
 ```csharp
 // Startup class to use in the Development environment
@@ -306,12 +496,10 @@ public class StartupDevelopment
 {
     public void ConfigureServices(IServiceCollection services)
     {
-        ...
     }
 
     public void Configure(IApplicationBuilder app, IHostingEnvironment env)
     {
-        ...
     }
 }
 
@@ -320,12 +508,10 @@ public class StartupProduction
 {
     public void ConfigureServices(IServiceCollection services)
     {
-        ...
     }
 
     public void Configure(IApplicationBuilder app, IHostingEnvironment env)
     {
-        ...
     }
 }
 
@@ -335,17 +521,15 @@ public class Startup
 {
     public void ConfigureServices(IServiceCollection services)
     {
-        ...
     }
 
     public void Configure(IApplicationBuilder app, IHostingEnvironment env)
     {
-        ...
     }
 }
 ```
 
-<span data-ttu-id="d4e98-220">Используйте перегрузку [UseStartup(IWebHostBuilder, String)](/dotnet/api/microsoft.aspnetcore.hosting.hostingabstractionswebhostbuilderextensions.usestartup), которая принимает имя сборки:</span><span class="sxs-lookup"><span data-stu-id="d4e98-220">Use the [UseStartup(IWebHostBuilder, String)](/dotnet/api/microsoft.aspnetcore.hosting.hostingabstractionswebhostbuilderextensions.usestartup) overload that accepts an assembly name:</span></span>
+<span data-ttu-id="6e656-257">Используйте перегрузку [UseStartup(IWebHostBuilder, String)](/dotnet/api/microsoft.aspnetcore.hosting.hostingabstractionswebhostbuilderextensions.usestartup), которая принимает имя сборки:</span><span class="sxs-lookup"><span data-stu-id="6e656-257">Use the [UseStartup(IWebHostBuilder, String)](/dotnet/api/microsoft.aspnetcore.hosting.hostingabstractionswebhostbuilderextensions.usestartup) overload that accepts an assembly name:</span></span>
 
 ```csharp
 public static void Main(string[] args)
@@ -362,14 +546,13 @@ public static IWebHostBuilder CreateWebHostBuilder(string[] args)
 }
 ```
 
-### <a name="startup-method-conventions"></a><span data-ttu-id="d4e98-221">Соглашения о методах Startup</span><span class="sxs-lookup"><span data-stu-id="d4e98-221">Startup method conventions</span></span>
+### <a name="startup-method-conventions"></a><span data-ttu-id="6e656-258">Соглашения о методах Startup</span><span class="sxs-lookup"><span data-stu-id="6e656-258">Startup method conventions</span></span>
 
-<span data-ttu-id="d4e98-222">Методы [Configure](/dotnet/api/microsoft.aspnetcore.hosting.startupbase.configure) и [ConfigureServices](/dotnet/api/microsoft.aspnetcore.hosting.startupbase.configureservices) поддерживают версии для конкретных сред в формате `Configure<EnvironmentName>` и `Configure<EnvironmentName>Services`:</span><span class="sxs-lookup"><span data-stu-id="d4e98-222">[Configure](/dotnet/api/microsoft.aspnetcore.hosting.startupbase.configure) and [ConfigureServices](/dotnet/api/microsoft.aspnetcore.hosting.startupbase.configureservices) support environment-specific versions of the form `Configure<EnvironmentName>` and `Configure<EnvironmentName>Services`:</span></span>
+<span data-ttu-id="6e656-259">Методы [Configure](/dotnet/api/microsoft.aspnetcore.hosting.startupbase.configure) и [ConfigureServices](/dotnet/api/microsoft.aspnetcore.hosting.startupbase.configureservices) поддерживают версии для конкретных сред в формате `Configure<EnvironmentName>` и `Configure<EnvironmentName>Services`.</span><span class="sxs-lookup"><span data-stu-id="6e656-259">[Configure](/dotnet/api/microsoft.aspnetcore.hosting.startupbase.configure) and [ConfigureServices](/dotnet/api/microsoft.aspnetcore.hosting.startupbase.configureservices) support environment-specific versions of the form `Configure<EnvironmentName>` and `Configure<EnvironmentName>Services`.</span></span> <span data-ttu-id="6e656-260">Этот подход удобен, когда для приложения требуется настроить запуск для нескольких сред с многочисленными различиями в коде для каждой среды.</span><span class="sxs-lookup"><span data-stu-id="6e656-260">This approach is useful when the app requires configuring startup for several environments with many code differences per environment.</span></span>
 
 [!code-csharp[](environments/sample/EnvironmentsSample/Startup.cs?name=snippet_all&highlight=15,42)]
 
-## <a name="additional-resources"></a><span data-ttu-id="d4e98-223">Дополнительные ресурсы</span><span class="sxs-lookup"><span data-stu-id="d4e98-223">Additional resources</span></span>
+## <a name="additional-resources"></a><span data-ttu-id="6e656-261">Дополнительные ресурсы</span><span class="sxs-lookup"><span data-stu-id="6e656-261">Additional resources</span></span>
 
 * <xref:fundamentals/startup>
 * <xref:fundamentals/configuration/index>
-* [<span data-ttu-id="d4e98-224">IHostingEnvironment.EnvironmentName</span><span class="sxs-lookup"><span data-stu-id="d4e98-224">IHostingEnvironment.EnvironmentName</span></span>](/dotnet/api/microsoft.aspnetcore.hosting.ihostingenvironment.environmentname)
