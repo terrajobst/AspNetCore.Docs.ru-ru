@@ -5,14 +5,14 @@ description: Сведения о том, как ASP.NET Core реализует 
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 10/12/2019
+ms.date: 11/05/2019
 uid: fundamentals/dependency-injection
-ms.openlocfilehash: b07ed6d1c23454c95778a5942de615684b70bc36
-ms.sourcegitcommit: a166291c6708f5949c417874108332856b53b6a9
+ms.openlocfilehash: c46e7322e86c2836a15bd0720995a8634bb185be
+ms.sourcegitcommit: 897d4abff58505dae86b2947c5fe3d1b80d927f3
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72589891"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73634013"
 ---
 # <a name="dependency-injection-in-aspnet-core"></a>Внедрение зависимостей в ASP.NET Core
 
@@ -274,9 +274,9 @@ public void ConfigureServices(IServiceCollection services)
 
 | Метод | Автоматический<br>object<br>удаление | Несколько<br>реализации | Передача аргументов |
 | ------ | :-----------------------------: | :-------------------------: | :-------: |
-| `Add{LIFETIME}<{SERVICE}, {IMPLEMENTATION}>()`<br>Пример<br>`services.AddSingleton<IMyDep, MyDep>();` | Yes | Да | Нет |
+| `Add{LIFETIME}<{SERVICE}, {IMPLEMENTATION}>()`<br>Пример.<br>`services.AddSingleton<IMyDep, MyDep>();` | Yes | Да | Нет |
 | `Add{LIFETIME}<{SERVICE}>(sp => new {IMPLEMENTATION})`<br>Примеры<br>`services.AddSingleton<IMyDep>(sp => new MyDep());`<br>`services.AddSingleton<IMyDep>(sp => new MyDep("A string!"));` | Yes | Да | Yes |
-| `Add{LIFETIME}<{IMPLEMENTATION}>()`<br>Пример<br>`services.AddSingleton<MyDep>();` | Yes | Нет | Нет |
+| `Add{LIFETIME}<{IMPLEMENTATION}>()`<br>Пример.<br>`services.AddSingleton<MyDep>();` | Yes | Нет | Нет |
 | `AddSingleton<{SERVICE}>(new {IMPLEMENTATION})`<br>Примеры<br>`services.AddSingleton<IMyDep>(new MyDep());`<br>`services.AddSingleton<IMyDep>(new MyDep("A string!"));` | Нет | Да | Yes |
 | `AddSingleton(new {IMPLEMENTATION})`<br>Примеры<br>`services.AddSingleton(new MyDep());`<br>`services.AddSingleton(new MyDep("A string!"));` | Нет | Нет | Yes |
 
@@ -571,7 +571,7 @@ public class Program
 Придерживайтесь следующих рекомендаций:
 
 * Проектируйте службы так, чтобы для получения зависимостей они использовали внедрение зависимостей.
-* Избегайте вызовов статических методов с отслеживанием состояния.
+* Избегайте статических классов и членов с отслеживанием состояния. Вместо этого следует проектировать приложения для использования отдельных служб, что позволяет избежать создания глобального состояния.
 * Избегайте прямого создания экземпляров зависимых классов внутри служб. Прямое создание экземпляров обязывает использовать в коде определенную реализацию.
 * Сделайте классы приложения небольшими, хорошо организованными и удобными в тестировании.
 

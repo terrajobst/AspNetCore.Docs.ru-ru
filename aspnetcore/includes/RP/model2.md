@@ -71,4 +71,5 @@ using Microsoft.EntityFrameworkCore;
 [!code-csharp[](~/tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie22/Startup.cs?name=snippet_UseSqlite&highlight=11-12)]
 
 Соберите проект как проверку на ошибки.
+
 ::: moniker-end

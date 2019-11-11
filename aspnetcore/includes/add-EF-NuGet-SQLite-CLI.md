@@ -14,3 +14,5 @@ dotnet add package Microsoft.EntityFrameworkCore.SqlServer
 * средства Entity Framework Core для .NET Core CLI;
 * поставщик EF Core для SQLite, который устанавливает пакет EF Core в качестве зависимости;
 * Пакеты, необходимые для формирования шаблонов: `Microsoft.VisualStudio.Web.CodeGeneration.Design` и `Microsoft.EntityFrameworkCore.SqlServer`.
+
+Рекомендации по настройке нескольких сред, позволяющей приложению настраивать свои контексты баз данных в среде, см. в разделе <xref:fundamentals/environments#environment-based-startup-class-and-methods>.

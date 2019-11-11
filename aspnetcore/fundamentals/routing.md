@@ -7,12 +7,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 09/24/2019
 uid: fundamentals/routing
-ms.openlocfilehash: 8b4da4e1e262ec82225413d0338b3492d0b5e152
-ms.sourcegitcommit: 032113208bb55ecfb2faeb6d3e9ea44eea827950
+ms.openlocfilehash: be4493cc927bd5437a2c9dab00b6a555756195bb
+ms.sourcegitcommit: eb2fe5ad2e82fab86ca952463af8d017ba659b25
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/31/2019
-ms.locfileid: "73190502"
+ms.lasthandoff: 11/01/2019
+ms.locfileid: "73416135"
 ---
 # <a name="routing-in-aspnet-core"></a>Маршрутизация в ASP.NET Core
 
@@ -127,7 +127,7 @@ ms.locfileid: "73190502"
 >
 > * Используйте <xref:Microsoft.AspNetCore.Routing.LinkGenerator> с осторожностью в ПО промежуточного слоя в сочетании с `Map` или `MapWhen`. `Map*` изменяет базовый путь выполняющегося запроса, что влияет на выходные данные создания ссылки. Все API <xref:Microsoft.AspNetCore.Routing.LinkGenerator> разрешают указание базового пути. Всегда указывайте пустой базовый путь для отмены влияния `Map*` на создание ссылок.
 
-## <a name="differences-from-earlier-versions-of-routing"></a>Отличия от более ранних версий маршрутизации
+## <a name="endpoint-routing-differences-from-earlier-versions-of-routing"></a>Отличия маршрутизации конечных точек от более ранних версий маршрутизации
 
 Существует несколько различий между маршрутизацией по конечным точкам и более ранними версиями маршрутизации, чем в ASP.NET Core 2.2:
 

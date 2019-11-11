@@ -5,14 +5,14 @@ description: Общие сведения о Kestrel — кроссплатфо�
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 10/29/2019
+ms.date: 10/31/2019
 uid: fundamentals/servers/kestrel
-ms.openlocfilehash: beaf6ac49359adfdc2dc24221eab04cc853646a9
-ms.sourcegitcommit: de0fc77487a4d342bcc30965ec5c142d10d22c03
+ms.openlocfilehash: bab751bc1453481a11114a7a8c0787fa5576e500
+ms.sourcegitcommit: 77c8be22d5e88dd710f42c739748869f198865dd
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73143443"
+ms.lasthandoff: 11/01/2019
+ms.locfileid: "73427068"
 ---
 # <a name="kestrel-web-server-implementation-in-aspnet-core"></a>Реализации веб-сервера Kestrel в ASP.NET Core
 
@@ -83,13 +83,13 @@ Kestrel, используемый в качестве пограничного �
 
 ## <a name="how-to-use-kestrel-in-aspnet-core-apps"></a>Условия использования Kestrel в приложениях ASP.NET Core
 
-Шаблоны проектов ASP.NET Core используют Kestrel по умолчанию. В файле *Program.cs* код шаблона вызывает метод <xref:Microsoft.Extensions.Hosting.Host.CreateDefaultBuilder*>, который в фоновом режиме вызывает <xref:Microsoft.AspNetCore.Hosting.WebHostBuilderKestrelExtensions.UseKestrel*>.
+Шаблоны проектов ASP.NET Core используют Kestrel по умолчанию. В файле *Program.cs* приложение вызывает метод `ConfigureWebHostDefaults`, который в фоновом режиме вызывает <xref:Microsoft.AspNetCore.Hosting.WebHostBuilderKestrelExtensions.UseKestrel*>.
 
-[!code-csharp[](kestrel/samples/3.x/KestrelSample/Program.cs?name=snippet_DefaultBuilder&highlight=7)]
+[!code-csharp[](kestrel/samples/3.x/KestrelSample/Program.cs?name=snippet_DefaultBuilder&highlight=8)]
 
-Дополнительные сведения о `CreateDefaultBuilder` и построении узла см. в разделе *Настройка узла* и *Параметры построителя по умолчанию* разделы <xref:fundamentals/host/generic-host#set-up-a-host>.
+Дополнительные сведения о создании узла см. в разделах *Настройка узла* и *Параметры построителя по умолчанию* статьи <xref:fundamentals/host/generic-host#set-up-a-host>.
 
-Чтобы задать дополнительную конфигурацию после вызова `CreateDefaultBuilder` и `ConfigureWebHostDefaults`, используйте `ConfigureKestrel`:
+Чтобы задать дополнительную конфигурацию после вызова `ConfigureWebHostDefaults`, используйте `ConfigureKestrel`:
 
 ```csharp
 public static IHostBuilder CreateHostBuilder(string[] args) =>
@@ -102,28 +102,6 @@ public static IHostBuilder CreateHostBuilder(string[] args) =>
             })
             .UseStartup<Startup>();
         });
-```
-
-Если приложение не вызывает `CreateDefaultBuilder`, чтобы настроить узел, вызовите <xref:Microsoft.AspNetCore.Hosting.WebHostBuilderKestrelExtensions.UseKestrel*> **перед** вызовом `ConfigureKestrel`:
-
-```csharp
-public static void Main(string[] args)
-{
-    var host = new HostBuilder()
-        .UseContentRoot(Directory.GetCurrentDirectory())
-        .ConfigureWebHostDefaults(webBuilder =>
-        {
-            webBuilder.UseKestrel(serverOptions =>
-            {
-                // Set properties and call methods on options
-            })
-            .UseIISIntegration()
-            .UseStartup<Startup>();
-        })
-        .Build();
-
-    host.Run();
-}
 ```
 
 ## <a name="kestrel-options"></a>Параметры Kestrel

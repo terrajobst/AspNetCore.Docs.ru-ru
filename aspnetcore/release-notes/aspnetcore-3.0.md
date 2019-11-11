@@ -4,14 +4,14 @@ author: rick-anderson
 description: Сведения о новых возможностях в ASP.NET Core 3.0.
 ms.author: riande
 ms.custom: mvc
-ms.date: 10/08/2019
+ms.date: 10/31/2019
 uid: aspnetcore-3.0
-ms.openlocfilehash: 90433773bec2efc5a2bc39d71ce7ae324b922046
-ms.sourcegitcommit: fcdf9aaa6c45c1a926bd870ed8f893bdb4935152
+ms.openlocfilehash: 8c53d8a9fa222ca40f26dc713ec3b70ddde76539
+ms.sourcegitcommit: eb2fe5ad2e82fab86ca952463af8d017ba659b25
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72165360"
+ms.lasthandoff: 11/01/2019
+ms.locfileid: "73416123"
 ---
 # <a name="whats-new-in-aspnet-core-30"></a>Новые возможности в ASP.NET Core 3.0
 
@@ -321,14 +321,16 @@ ASP.NET Core 3.0 теперь по умолчанию использует <xre
 
 ## <a name="identityserver4-supports-authentication-and-authorization-for-web-apis-and-spas"></a>IdentityServer4 поддерживает проверку подлинности и авторизацию для веб-API и одностраничных приложений
 
-[IdentityServer4](https://identityserver.io) — это платформа OpenID Connect и OAuth 2.0 для ASP.NET Core 3.0. IdentityServer4 включает следующие функции безопасности:
+ASP.NET Core 3.0 обеспечивает проверку подлинности в одностраничных приложениях с помощью поддержки авторизации веб-API. Удостоверение ASP.NET Core для проверки подлинности и хранения пользователей объединяется с [IdentityServer4](https://identityserver.io/) для реализации Open ID Connect.
+
+IdentityServer4 — это платформа OpenID Connect и OAuth 2.0 для ASP.NET Core 3.0. Она обеспечивает следующие функции безопасности:
 
 * Проверка подлинности как услуга (AaaS)
 * Единый вход (SSO) для нескольких типов приложений
 * Контроль доступа для API
 * Шлюз федерации
 
-Дополнительные сведения см. в разделе [Добро пожаловать в IdentityServer4](http://docs.identityserver.io/en/latest/index.html).
+Дополнительные сведения см. в [документации по IdentityServer4](http://docs.identityserver.io/en/latest/index.html) или статье [Проверка подлинности и авторизация для одностраничных приложений](xref:security/authentication/identity/spa).
 
 ## <a name="certificate-and-kerberos-authentication"></a>Проверка подлинности Kerberos и проверка подлинности с помощью сертификата
 
@@ -407,7 +409,7 @@ public void Configure(IApplicationBuilder app, IHostingEnvironment env)
 
 До выхода ASP.NET Core 3.0 переменные среды с префиксом `ASPNETCORE_` были загружены для конфигурации веб-узла. В 3.0 `AddEnvironmentVariables` используется для загрузки переменных среды с префиксом `DOTNET_` для конфигурации узла с помощью `CreateDefaultBuilder`.
 
-### <a name="changes-to-startup-contructor-injection"></a>Изменения во внедрении через конструктор Startup
+### <a name="changes-to-startup-constructor-injection"></a>Изменения во внедрении через конструктор Startup
 
 Универсальный узел поддерживает только следующие типы для внедрения через конструктор `Startup`:
 
@@ -512,7 +514,7 @@ app.UseEndpoints(endpoints =>
 
 ## <a name="aspnet-core-30-only-runs-on-net-core-30"></a>ASP.NET Core 3.0 работает только в .NET Core 3.0
 
-Начиная с ASP.NET Core 3.0, .NET Framework больше не является поддерживаемой целевой платформой. Проекты, предназначенные для .NET Framework, можно полноценно использовать с помощью [выпуска LTS .NET Core 2.1](https://www.microsoft.com/net/download/dotnet-core/2.1). Большинство пакетов, связанных с ASP.NET Core 2.1.x, будут поддерживаться неограниченно после истечения 3-летнего периода LTS для .NET Core 2.1.
+Начиная с ASP.NET Core 3.0, .NET Framework больше не является поддерживаемой целевой платформой. Проекты, предназначенные для .NET Framework, можно полноценно использовать с помощью [выпуска LTS .NET Core 2.1](https://www.microsoft.com/net/download/dotnet-core/2.1). Большинство пакетов, связанных с ASP.NET Core 2.1.x, будут поддерживаться неограниченно после истечения трехлетнего периода LTS для .NET Core 2.1.
 
 Сведения о миграции см. в статье [Перенос кода в .NET Core из .NET Framework](/dotnet/core/porting/).
 

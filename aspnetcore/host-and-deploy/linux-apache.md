@@ -5,14 +5,14 @@ description: Процедура настройки Apache в качестве о
 monikerRange: '>= aspnetcore-2.1'
 ms.author: shboyer
 ms.custom: mvc
-ms.date: 03/31/2019
+ms.date: 11/05/2019
 uid: host-and-deploy/linux-apache
-ms.openlocfilehash: ec14bce5d8ada9a56ccc44d1159373dc73a09c1b
-ms.sourcegitcommit: 215954a638d24124f791024c66fd4fb9109fd380
+ms.openlocfilehash: fce91db736908e433ba6803319aa8984bb68a554
+ms.sourcegitcommit: 6628cd23793b66e4ce88788db641a5bbf470c3c1
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71081882"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73659886"
 ---
 # <a name="host-aspnet-core-on-linux-with-apache"></a>Размещение ASP.NET Core в операционной системе Linux с Apache
 
@@ -484,7 +484,7 @@ sudo nano /etc/httpd/conf.d/ratelimit.conf
 
 ### <a name="long-request-header-fields"></a>Длинные поля заголовка запроса
 
-Если приложение требует поля заголовка запроса длиннее, чем разрешено параметром по умолчанию прокси-сервера (обычно 8190 байт). измените значение директивы [LimitRequestFieldSize](https://httpd.apache.org/docs/2.4/mod/core.html#LimitRequestFieldSize). Применяемое значение зависит от условий. Дополнительные сведения см. в документации сервера.
+Параметры прокси-сервера по умолчанию обычно ограничивают длину полей заголовка запроса значением 8190 байт. Приложению могут потребоваться более длинные поля (например, приложениям, использующим [Azure Active Directory](https://azure.microsoft.com/services/active-directory/)). В этом случае требуется скорректировать директиву [LimitRequestFieldSize](https://httpd.apache.org/docs/2.4/mod/core.html#LimitRequestFieldSize) для прокси-сервера. Применяемое значение зависит от конкретного сценария. Дополнительные сведения см. в документации сервера.
 
 > [!WARNING]
 > Не увеличивайте значение `LimitRequestFieldSize` по умолчанию, если это не требуется. Увеличение значения повышает риск переполнения буфера и атак типа "отказ в обслуживании" (DoS) со стороны злоумышленников.

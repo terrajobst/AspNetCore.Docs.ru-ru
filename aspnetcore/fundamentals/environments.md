@@ -5,14 +5,14 @@ description: Сведения об управлении поведением п�
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 04/10/2019
+ms.date: 11/05/2019
 uid: fundamentals/environments
-ms.openlocfilehash: a0e6d62f352a886a9bc051813a21d94c1605a1ce
-ms.sourcegitcommit: dd9c73db7853d87b566eef136d2162f648a43b85
+ms.openlocfilehash: 91fa2a78e62dff65704a3dda826f45f27bad6064
+ms.sourcegitcommit: 897d4abff58505dae86b2947c5fe3d1b80d927f3
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65087033"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73634095"
 ---
 # <a name="use-multiple-environments-in-aspnet-core"></a>Использование нескольких сред в ASP.NET Core
 
@@ -24,7 +24,25 @@ ASP.NET Core настраивает поведение приложения в �
 
 ## <a name="environments"></a>Среды
 
-ASP.NET Core считывает переменную среды `ASPNETCORE_ENVIRONMENT` при запуске приложения и сохраняет ее значение в свойстве [IHostingEnvironment.EnvironmentName](/dotnet/api/microsoft.aspnetcore.hosting.ihostingenvironment.environmentname). Переменной `ASPNETCORE_ENVIRONMENT` можно присвоить любое значение, но платформа поддерживает [три значения](/dotnet/api/microsoft.aspnetcore.hosting.environmentname): [Development](/dotnet/api/microsoft.aspnetcore.hosting.environmentname.development), [Staging](/dotnet/api/microsoft.aspnetcore.hosting.environmentname.staging) и [Production](/dotnet/api/microsoft.aspnetcore.hosting.environmentname.production). Если переменная `ASPNETCORE_ENVIRONMENT` не указана, используется значение по умолчанию `Production`.
+::: moniker range=">= aspnetcore-3.0"
+
+ASP.NET Core считывает переменную среды `ASPNETCORE_ENVIRONMENT` при запуске приложения и сохраняет ее значение в свойстве [IWebHostEnvironment.EnvironmentName](xref:Microsoft.Extensions.Hosting.IHostEnvironment.EnvironmentName). Переменной `ASPNETCORE_ENVIRONMENT` можно присвоить любое значение, но платформа предоставляет три значения:
+
+* <xref:Microsoft.Extensions.Hosting.Environments.Development>
+* <xref:Microsoft.Extensions.Hosting.Environments.Staging>
+* <xref:Microsoft.Extensions.Hosting.Environments.Production> (по умолчанию)
+
+::: moniker-end
+
+::: moniker range="< aspnetcore-3.0"
+
+ASP.NET Core считывает переменную среды `ASPNETCORE_ENVIRONMENT` при запуске приложения и сохраняет ее значение в свойстве [IHostingEnvironment.EnvironmentName](xref:Microsoft.AspNetCore.Hosting.IHostingEnvironment.EnvironmentName). Переменной `ASPNETCORE_ENVIRONMENT` можно присвоить любое значение, но платформа предоставляет три значения:
+
+* <xref:Microsoft.AspNetCore.Hosting.EnvironmentName.Development>
+* <xref:Microsoft.AspNetCore.Hosting.EnvironmentName.Staging>
+* <xref:Microsoft.AspNetCore.Hosting.EnvironmentName.Production> (по умолчанию)
+
+::: moniker-end
 
 [!code-csharp[](environments/sample/EnvironmentsSample/Startup.cs?name=snippet)]
 
@@ -171,9 +189,13 @@ Application started. Press Ctrl+C to shut down.
 
 ## <a name="set-the-environment"></a>Указание среды
 
-Часто бывает полезным указать определенную среду для тестирования. Если среда не указана, по умолчанию используется среда `Production`, в которой большинство функций отладки отключено. Способ указания среды зависит от операционной системы.
+Часто бывает полезным указать определенную среду для тестирования с переменной среды или параметром платформы. Если среда не указана, по умолчанию используется среда `Production`, в которой большинство функций отладки отключено. Способ указания среды зависит от операционной системы.
 
-### <a name="azure-app-service"></a>Служба приложений Azure
+При создании узла среду приложения определяет последний параметр среды, считанный приложением. Среду приложения невозможно изменить во время его выполнения.
+
+### <a name="environment-variable-or-platform-setting"></a>Переменная среды или параметр платформы
+
+#### <a name="azure-app-service"></a>Служба приложений Azure
 
 Чтобы установить среду в [службе приложений Azure](https://azure.microsoft.com/services/app-service/), выполните следующие действия:
 
@@ -186,7 +208,7 @@ Application started. Press Ctrl+C to shut down.
 
 Служба приложений Azure автоматически перезапускает приложение после добавления, изменения или удаления параметра приложения (переменной среды) на портале Azure.
 
-### <a name="windows"></a>Windows
+#### <a name="windows"></a>Windows
 
 Если приложение запускается с помощью команды [dotnet run](/dotnet/core/tools/dotnet-run), то, чтобы задать переменную `ASPNETCORE_ENVIRONMENT` для текущего сеанса, используйте следующие команды:
 
@@ -260,7 +282,7 @@ $Env:ASPNETCORE_ENVIRONMENT = "Development"
 > * Из командной строки выполните команду `net stop was /y`, за которой следует `net start w3svc`.
 > * Перезапустите сервер.
 
-### <a name="macos"></a>macOS
+#### <a name="macos"></a>macOS
 
 Задать текущую среду в macOS можно в командной строке при запуске приложения:
 
@@ -280,23 +302,191 @@ export ASPNETCORE_ENVIRONMENT=Development
 export ASPNETCORE_ENVIRONMENT=Development
 ```
 
-### <a name="linux"></a>Linux
+#### <a name="linux"></a>Linux
 
 В дистрибутивах Linux используйте команду `export` в командной строке для значений переменных на уровне сеанса или в файле *BASH_PROFILE* для значений среды на уровне компьютера.
+
+### <a name="set-the-environment-in-code"></a>Указание среды в коде
+
+::: moniker range=">= aspnetcore-3.0"
+
+Вызовите <xref:Microsoft.Extensions.Hosting.HostingHostBuilderExtensions.UseEnvironment*> при создании узла. См. раздел <xref:fundamentals/host/generic-host#environmentname>.
+
+::: moniker-end
+
+::: moniker range="< aspnetcore-3.0"
+
+Вызовите <xref:Microsoft.AspNetCore.Hosting.HostingAbstractionsWebHostBuilderExtensions.UseEnvironment*> при создании узла. См. раздел <xref:fundamentals/host/web-host#environment>.
+
+::: moniker-end
 
 ### <a name="configuration-by-environment"></a>Конфигурация для разных сред
 
 Для загрузки конфигурации среды мы рекомендуем:
 
-* Файлы *appsettings* (*appsettings.\<Environment>.json*). См. разделы [Поставщик пользовательской конфигурации](xref:fundamentals/configuration/index#file-configuration-provider).
-* Переменные среды (заданные в каждой системе, где размещено приложение). См. разделы [Поставщик пользовательской конфигурации](xref:fundamentals/configuration/index#file-configuration-provider) и [Переменные среды](xref:security/app-secrets#environment-variables).
+::: moniker range=">= aspnetcore-3.0"
+
+* Файлы *appsettings* (*appsettings.{Environment}.json*). См. раздел <xref:fundamentals/configuration/index#json-configuration-provider>.
+* Переменные среды (заданные в каждой системе, где размещено приложение). См. разделы <xref:fundamentals/host/generic-host#environmentname> и <xref:security/app-secrets#environment-variables>.
 * Менеджер секретов (только в среде разработки). См. раздел <xref:security/app-secrets>.
+
+::: moniker-end
+
+::: moniker range="< aspnetcore-3.0"
+
+* Файлы *appsettings* (*appsettings.{Environment}.json*). См. раздел <xref:fundamentals/configuration/index#json-configuration-provider>.
+* Переменные среды (заданные в каждой системе, где размещено приложение). См. разделы <xref:fundamentals/host/web-host#environment> и <xref:security/app-secrets#environment-variables>.
+* Менеджер секретов (только в среде разработки). См. раздел <xref:security/app-secrets>.
+
+::: moniker-end
 
 ## <a name="environment-based-startup-class-and-methods"></a>Класс Startup и его методы для разных сред
 
+::: moniker range=">= aspnetcore-3.0"
+
+### <a name="inject-iwebhostenvironment-into-startupconfigure"></a>Внедрение IWebHostEnvironment в Startup.Configure
+
+Внедрите <xref:Microsoft.AspNetCore.Hosting.IWebHostEnvironment> в `Startup.Configure`. Этот подход удобен, когда для приложения требуется просто скорректировать `Startup.Configure` для нескольких сред с минимальными различиями в коде для каждой среды.
+
+```csharp
+public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+{
+    if (env.IsDevelopment())
+    {
+        // Development environment code
+    }
+    else
+    {
+        // Code for all other environments
+    }
+}
+```
+
+### <a name="inject-iwebhostenvironment-into-the-startup-class"></a>Внедрение IWebHostEnvironment в класс Startup
+
+Внедрите <xref:Microsoft.AspNetCore.Hosting.IWebHostEnvironment> в конструктор `Startup`. Этот подход удобен, когда для приложения требуется настроить `Startup` всего для нескольких сред с минимальными различиями в коде для каждой среды.
+
+В следующем примере:
+
+* Среда хранится в поле `_env`.
+* `_env` используется в `ConfigureServices` и `Configure` для применения конфигурации запуска на основе среды приложения.
+
+```csharp
+public class Startup
+{
+    private readonly IWebHostEnvironment _env;
+
+    public Startup(IWebHostEnvironment env)
+    {
+        _env = env;
+    }
+
+    public void ConfigureServices(IServiceCollection services)
+    {
+        if (_env.IsDevelopment())
+        {
+            // Development environment code
+        }
+        else if (_env.IsStaging())
+        {
+            // Staging environment code
+        }
+        else
+        {
+            // Code for all other environments
+        }
+    }
+
+    public void Configure(IApplicationBuilder app)
+    {
+        if (_env.IsDevelopment())
+        {
+            // Development environment code
+        }
+        else
+        {
+            // Code for all other environments
+        }
+    }
+}
+```
+
+::: moniker-end
+
+::: moniker range="< aspnetcore-3.0"
+
+### <a name="inject-ihostingenvironment-into-startupconfigure"></a>Внедрение IHostingEnvironment в Startup.Configure
+
+Внедрите <xref:Microsoft.AspNetCore.Hosting.IHostingEnvironment> в `Startup.Configure`. Этот подход удобен, когда для приложения требуется просто настроить `Startup.Configure` всего для нескольких сред с минимальными различиями в коде для каждой среды.
+
+```csharp
+public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+{
+    if (env.IsDevelopment())
+    {
+        // Development environment code
+    }
+    else
+    {
+        // Code for all other environments
+    }
+}
+```
+
+### <a name="inject-ihostingenvironment-into-the-startup-class"></a>Внедрение IHostingEnvironment в класс Startup
+
+Внедрите <xref:Microsoft.AspNetCore.Hosting.IHostingEnvironment> в конструктор `Startup` и назначьте службу полю для использования в рамках всего класса `Startup`. Этот подход удобен, когда для приложения требуется настроить запуск всего для нескольких сред с минимальными различиями в коде для каждой среды.
+
+В следующем примере:
+
+* Среда хранится в поле `_env`.
+* `_env` используется в `ConfigureServices` и `Configure` для применения конфигурации запуска на основе среды приложения.
+
+```csharp
+public class Startup
+{
+    private readonly IHostingEnvironment _env;
+
+    public Startup(IHostingEnvironment env)
+    {
+        _env = env;
+    }
+
+    public void ConfigureServices(IServiceCollection services)
+    {
+        if (_env.IsDevelopment())
+        {
+            // Development environment code
+        }
+        else if (_env.IsStaging())
+        {
+            // Staging environment code
+        }
+        else
+        {
+            // Code for all other environments
+        }
+    }
+
+    public void Configure(IApplicationBuilder app)
+    {
+        if (_env.IsDevelopment())
+        {
+            // Development environment code
+        }
+        else
+        {
+            // Code for all other environments
+        }
+    }
+}
+```
+
+::: moniker-end
+
 ### <a name="startup-class-conventions"></a>Соглашения о классе Startup
 
-При запуске приложения ASP.NET Core [класс Startup](xref:fundamentals/startup) выполняет его начальную загрузку. Приложение может определять отдельные классы `Startup` для различных сред (например, `StartupDevelopment`), при этом подходящий класс `Startup` выбирается во время выполнения. Класс, у которого суффикс имени соответствует текущей среде, получает приоритет. Если соответствующий класс `Startup{EnvironmentName}` не найден, используется класс `Startup`.
+При запуске приложения ASP.NET Core [класс Startup](xref:fundamentals/startup) выполняет его начальную загрузку. Приложение может определять отдельные классы `Startup` для различных сред (например, `StartupDevelopment`). Подходящий класс `Startup` выбирается во время выполнения. Класс, у которого суффикс имени соответствует текущей среде, получает приоритет. Если соответствующий класс `Startup{EnvironmentName}` не найден, используется класс `Startup`. Этот подход удобен, когда для приложения требуется настроить запуск для нескольких сред с многочисленными различиями в коде для каждой среды.
 
 Чтобы реализовать классы `Startup` на основе среды, создайте класс `Startup{EnvironmentName}` для каждой используемой среды и резервный класс `Startup`:
 
@@ -306,12 +496,10 @@ public class StartupDevelopment
 {
     public void ConfigureServices(IServiceCollection services)
     {
-        ...
     }
 
     public void Configure(IApplicationBuilder app, IHostingEnvironment env)
     {
-        ...
     }
 }
 
@@ -320,12 +508,10 @@ public class StartupProduction
 {
     public void ConfigureServices(IServiceCollection services)
     {
-        ...
     }
 
     public void Configure(IApplicationBuilder app, IHostingEnvironment env)
     {
-        ...
     }
 }
 
@@ -335,12 +521,10 @@ public class Startup
 {
     public void ConfigureServices(IServiceCollection services)
     {
-        ...
     }
 
     public void Configure(IApplicationBuilder app, IHostingEnvironment env)
     {
-        ...
     }
 }
 ```
@@ -364,7 +548,7 @@ public static IWebHostBuilder CreateWebHostBuilder(string[] args)
 
 ### <a name="startup-method-conventions"></a>Соглашения о методах Startup
 
-Методы [Configure](/dotnet/api/microsoft.aspnetcore.hosting.startupbase.configure) и [ConfigureServices](/dotnet/api/microsoft.aspnetcore.hosting.startupbase.configureservices) поддерживают версии для конкретных сред в формате `Configure<EnvironmentName>` и `Configure<EnvironmentName>Services`:
+Методы [Configure](/dotnet/api/microsoft.aspnetcore.hosting.startupbase.configure) и [ConfigureServices](/dotnet/api/microsoft.aspnetcore.hosting.startupbase.configureservices) поддерживают версии для конкретных сред в формате `Configure<EnvironmentName>` и `Configure<EnvironmentName>Services`. Этот подход удобен, когда для приложения требуется настроить запуск для нескольких сред с многочисленными различиями в коде для каждой среды.
 
 [!code-csharp[](environments/sample/EnvironmentsSample/Startup.cs?name=snippet_all&highlight=15,42)]
 
@@ -372,4 +556,3 @@ public static IWebHostBuilder CreateWebHostBuilder(string[] args)
 
 * <xref:fundamentals/startup>
 * <xref:fundamentals/configuration/index>
-* [IHostingEnvironment.EnvironmentName](/dotnet/api/microsoft.aspnetcore.hosting.ihostingenvironment.environmentname)

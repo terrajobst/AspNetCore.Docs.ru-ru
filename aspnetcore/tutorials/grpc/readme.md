@@ -8,12 +8,12 @@ products:
 - aspnet-core
 - vs
 urlFragment: create-grpc-client
-ms.openlocfilehash: a281adc3b1fe90eeb32c1185750f911af683af83
-ms.sourcegitcommit: 476ea5ad86a680b7b017c6f32098acd3414c0f6c
+ms.openlocfilehash: b9feb9eed62177358fffc0d7da582f625a431e32
+ms.sourcegitcommit: 9e85c2562df5e108d7933635c830297f484bb775
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/14/2019
-ms.locfileid: "69029017"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73463044"
 ---
 # <a name="create-a-grpc-client-and-server-in-aspnet-core-30-using-visual-studio"></a>Создание клиента и сервера gRPC в ASP.NET Core 3.0 с помощью Visual Studio
 
@@ -146,10 +146,9 @@ namespace GrpcGreeterClient
     {
         static async Task Main(string[] args)
         {
-            var httpClient = new HttpClient();
             // The port number(5001) must match the port of the gRPC server.
-            httpClient.BaseAddress = new Uri("https://localhost:5001");
-            var client = GrpcClient.Create<Greeter.GreeterClient>(httpClient);
+            var channel = GrpcChannel.ForAddress("https://localhost:5001");
+            var client = new Greeter.GreeterClient(channel);
             var reply = await client.SayHelloAsync(
                               new HelloRequest { Name = "GreeterClient" });
             Console.WriteLine("Greeting: " + reply.Message);
@@ -164,40 +163,8 @@ namespace GrpcGreeterClient
 
 Клиент Greeter создается следующим образом:
 
-* Создание экземпляра `HttpClient` со сведениями для создания подключения к службе gRPC.
-* Использование `HttpClient` для создания клиента Greeter:
-
-```csharp
-static async Task Main(string[] args)
-{
-    var httpClient = new HttpClient();
-    // The port number(5001) must match the port of the gRPC server.
-    httpClient.BaseAddress = new Uri("https://localhost:5001");
-    var client = GrpcClient.Create<Greeter.GreeterClient>(httpClient);
-    var reply = await client.SayHelloAsync(
-                      new HelloRequest { Name = "GreeterClient" });
-    Console.WriteLine("Greeting: " + reply.Message);
-    Console.WriteLine("Press any key to exit...");
-    Console.ReadKey();
-}
-```
-
-Клиент Greeter вызывает асинхронный метод `SayHello`. Отображается результат вызова `SayHello`:
-
-```csharp
-static async Task Main(string[] args)
-{
-    var httpClient = new HttpClient();
-    // The port number(5001) must match the port of the gRPC server.
-    httpClient.BaseAddress = new Uri("https://localhost:5001");
-    var client = GrpcClient.Create<Greeter.GreeterClient>(httpClient);
-    var reply = await client.SayHelloAsync(
-                      new HelloRequest { Name = "GreeterClient" });
-    Console.WriteLine("Greeting: " + reply.Message);
-    Console.WriteLine("Press any key to exit...");
-    Console.ReadKey();
-}
-```
+* Создание экземпляра `GrpcChannel` со сведениями для создания подключения к службе gRPC.
+* Использование `GrpcChannel` для создания клиента Greeter.
 
 ## <a name="test-the-grpc-client-with-the-grpc-greeter-service"></a>Тестирование клиента gRPC с помощью службы Greeter gRPC
 

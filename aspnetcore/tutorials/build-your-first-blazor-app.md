@@ -5,14 +5,14 @@ description: Пошаговое создание приложения Blazor.
 monikerRange: '>= aspnetcore-3.0'
 ms.author: riande
 ms.custom: mvc
-ms.date: 10/15/2019
+ms.date: 10/31/2019
 uid: tutorials/first-blazor-app
-ms.openlocfilehash: c357b324905ee3a4c9f4bd167dbbcacaf7e1bc76
-ms.sourcegitcommit: 35a86ce48041caaf6396b1e88b0472578ba24483
+ms.openlocfilehash: cc7caa1ee01e0282024895ab35c5b9933b1504d0
+ms.sourcegitcommit: eb2fe5ad2e82fab86ca952463af8d017ba659b25
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72391208"
+ms.lasthandoff: 11/01/2019
+ms.locfileid: "73416179"
 ---
 # <a name="build-your-first-blazor-app"></a>Создание приложения Blazor
 
@@ -28,7 +28,7 @@ ms.locfileid: "72391208"
 
 1. Перейдите на каждую из трех страниц, размещенных в папке *Pages*: домашнюю, счетчика и получения данных. Эти страницы реализованы в виде файлов компонентов Razor *Index.razor*, *Counter.razor* и *FetchData.razor*.
 
-1. На странице Counter нажмите кнопку **Click me** (Щелкните здесь), чтобы увеличить значение счетчика без обновления страницы. Обычно для увеличения значений счетчика на веб-странице требуется код JavaScript, но Blazor реализует более правильный подход с использованием C#.
+1. На странице Counter нажмите кнопку **Click me** (Щелкните здесь), чтобы увеличить значение счетчика без обновления страницы. Обычно для увеличения значений счетчика на веб-странице требуется код JavaScript. Благодаря Blazor можно использовать вместо него C#.
 
 1. Изучите реализацию компонента `Counter` в файле *Counter.razor*.
 
