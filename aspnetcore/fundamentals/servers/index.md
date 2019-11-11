@@ -5,14 +5,14 @@ description: Откройте возможности веб-серверов Kes
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 08/10/2019
+ms.date: 11/07/2019
 uid: fundamentals/servers/index
-ms.openlocfilehash: 3bdc2bf776946b8fae8886a37ecd3ed5e3f860fe
-ms.sourcegitcommit: 7d3c6565dda6241eb13f9a8e1e1fd89b1cfe4d18
+ms.openlocfilehash: e542dd4506eb77f949c0c87bea3044397bbb1b8f
+ms.sourcegitcommit: 67116718dc33a7a01696d41af38590fdbb58e014
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72259823"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73799395"
 ---
 # <a name="web-server-implementations-in-aspnet-core"></a>Реализации веб-сервера в ASP.NET Core
 
@@ -156,7 +156,9 @@ HTTP.sys можно также использовать для приложен�
 * [Visual Studio Code](https://code.visualstudio.com/) — приложение и сервер запускаются решением [Omnisharp](https://github.com/OmniSharp/omnisharp-vscode), которое активирует отладчик CoreCLR.
 * [Visual Studio для Mac](https://visualstudio.microsoft.com/vs/mac/) — приложение и сервер запускаются отладчиком [Mono Soft Debugger](https://www.mono-project.com/docs/advanced/runtime/docs/soft-debugger/).
 
-При запуске приложения из командной строки в папке проекта [dotnet run](/dotnet/core/tools/dotnet-run) запускает приложение и сервер (только Kestrel и HTTP.sys). Конфигурация определяется параметром `-c|--configuration`, который может принимать значение `Debug` (по умолчанию) или `Release`. Если профили запуска указаны в файле *launchSettings.json*, используйте параметр `--launch-profile <NAME>`, чтобы настроить профиль запуска (например, `Development` или `Production`). Дополнительные сведения см. в статьях [dotnet run](/dotnet/core/tools/dotnet-run) и [Упаковка дистрибутивов .NET Core](/dotnet/core/build/distribution-packaging).
+При запуске приложения из командной строки в папке проекта [dotnet run](/dotnet/core/tools/dotnet-run) запускает приложение и сервер (только Kestrel и HTTP.sys). Конфигурация определяется параметром `-c|--configuration`, который может принимать значение `Debug` (по умолчанию) или `Release`.
+
+Файл *launchSettings.json* предоставляет конфигурацию при запуске приложения с помощью `dotnet run` или с помощью отладчика, встроенного в инструментарий, например Visual Studio. Если профили запуска указаны в файле *launchSettings.json*, используйте параметр `--launch-profile {PROFILE NAME}` с командой`dotnet run` или выберите профиль в Visual Studio. Дополнительные сведения см. в статьях [dotnet run](/dotnet/core/tools/dotnet-run) и [Упаковка дистрибутивов .NET Core](/dotnet/core/build/distribution-packaging).
 
 ## <a name="http2-support"></a>Поддержка HTTP/2
 

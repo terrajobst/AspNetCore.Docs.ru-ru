@@ -5,14 +5,14 @@ description: Познакомьтесь с основными принципам
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 10/07/2019
+ms.date: 11/07/2019
 uid: fundamentals/index
-ms.openlocfilehash: a70d6aa05a2c92d19076b8d6e4ea24d7554368b6
-ms.sourcegitcommit: 3d082bd46e9e00a3297ea0314582b1ed2abfa830
+ms.openlocfilehash: 7173a732a04bf3e598adef298fa9120c15dd52fb
+ms.sourcegitcommit: 67116718dc33a7a01696d41af38590fdbb58e014
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/07/2019
-ms.locfileid: "72007115"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73799372"
 ---
 # <a name="aspnet-core-fundamentals"></a>Основы ASP.NET Core
 
@@ -302,6 +302,14 @@ ASP.NET Core включает реализацию интерфейса `IHttpC
 По умолчанию используется путь *{корневой каталог содержимого}/wwwroot*. Альтернативное расположение можно задать при [создании узла](#host). Дополнительные сведения см. в разделе [Корневой веб-каталог](xref:fundamentals/host/web-host#web-root).
 
 ::: moniker-end
+
+Запретите публикацию файлов в *wwwroot* с помощью [\<элемента проекта Content>](/visualstudio/msbuild/common-msbuild-project-items#content) в файле проекта. В следующем примере запрещается публикация содержимого в каталоге *wwwroot/local* и подкаталогах:
+
+```xml
+<ItemGroup>
+  <Content Update="wwwroot\local\**\*.*" CopyToPublishDirectory="Never" />
+</ItemGroup>
+```
 
 Для указания на корневой каталог файлов Razor (*CSHTML*) используется символ тильды и косой черты `~/`. Путь, начинающийся с `~/`, называется *виртуальным путем*.
 
