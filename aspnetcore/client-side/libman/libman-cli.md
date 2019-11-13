@@ -4,14 +4,16 @@ author: scottaddie
 description: Узнайте, как использовать интерфейс командной строки Либман (CLI) в проекте ASP.NET Core.
 ms.author: scaddie
 ms.custom: mvc
-ms.date: 08/30/2018
+ms.date: 11/12/2019
+no-loc:
+- SignalR
 uid: client-side/libman/libman-cli
-ms.openlocfilehash: cf61bab2f0c3fc33d293968b8ac380cb56958d29
-ms.sourcegitcommit: 215954a638d24124f791024c66fd4fb9109fd380
+ms.openlocfilehash: 8b2b1e45ab4685482554ac439b0276e0cf381609
+ms.sourcegitcommit: 3fc3020961e1289ee5bf5f3c365ce8304d8ebf19
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71080618"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73962804"
 ---
 # <a name="use-the-libman-command-line-interface-cli-with-aspnet-core"></a>Использование интерфейса командной строки (CLI) Либман с ASP.NET Core
 
@@ -19,7 +21,7 @@ ms.locfileid: "71080618"
 
 [Либман](xref:client-side/libman/index) CLI — это кросс-платформенный инструмент, поддерживаемый везде, где поддерживается .NET Core.
 
-## <a name="prerequisites"></a>Предварительные требования
+## <a name="prerequisites"></a>Необходимые компоненты
 
 * [!INCLUDE [2.1-SDK](../../includes/2.1-SDK.md)]
 
@@ -92,7 +94,7 @@ Use "libman [command] --help" for more information about a command.
 
 ## <a name="initialize-libman-in-the-project"></a>Инициализация Либман в проекте
 
-Команда создает файл *Либман. JSON* , если он не существует. `libman init` Файл создается с содержимым шаблона элемента по умолчанию.
+Команда `libman init` создает файл *Либман. JSON* , если он не существует. Файл создается с содержимым шаблона элемента по умолчанию.
 
 ### <a name="synopsis"></a>Краткий обзор
 
@@ -107,11 +109,11 @@ libman init [-h|--help]
 
 * `-d|--default-destination <PATH>`
 
-  Путь относительно текущей папки. Файлы библиотеки устанавливаются в этом расположении, `destination` если для библиотеки в *Либман. JSON*не определено ни одного свойства. Значение записывается `defaultDestination` в свойство *Либман. JSON.* `<PATH>`
+  Путь относительно текущей папки. Файлы библиотеки устанавливаются в этом расположении, если для библиотеки в *Либман. JSON*не определено свойство `destination`. Значение `<PATH>` записывается в свойство `defaultDestination` *Либман. JSON*.
 
 * `-p|--default-provider <PROVIDER>`
 
-  Поставщик, используемый, если для данной библиотеки не определен поставщик. Значение записывается `defaultProvider` в свойство *Либман. JSON.* `<PROVIDER>` Замените `<PROVIDER>` на одно из следующих значений:
+  Поставщик, используемый, если для данной библиотеки не определен поставщик. Значение `<PROVIDER>` записывается в свойство `defaultProvider` *Либман. JSON*. Замените `<PROVIDER>` одним из следующих значений:
 
   [!INCLUDE [LibMan provider names](../../includes/libman-cli/provider-names.md)]
 
@@ -128,7 +130,7 @@ libman init [-h|--help]
   libman init
   ```
 
-* Введите имя поставщика по умолчанию или нажмите `Enter` , чтобы использовать поставщик CDNJS по умолчанию. Допустимы следующие значения:
+* Введите имя поставщика по умолчанию или нажмите `Enter`, чтобы использовать поставщик CDNJS по умолчанию. Допустимы следующие значения:
 
   [!INCLUDE [LibMan provider names](../../includes/libman-cli/provider-names.md)]
 
@@ -146,7 +148,7 @@ libman init [-h|--help]
 
 ## <a name="add-library-files"></a>Добавление файлов библиотеки
 
-`libman install` Команда скачивает и устанавливает файлы библиотеки в проект. Файл *Либман. JSON* добавляется, если он не существует. Файл *Либман. JSON* изменяется для хранения сведений о конфигурации для файлов библиотеки.
+Команда `libman install` скачивает и устанавливает файлы библиотеки в проект. Файл *Либман. JSON* добавляется, если он не существует. Файл *Либман. JSON* изменяется для хранения сведений о конфигурации для файлов библиотеки.
 
 ### <a name="synopsis"></a>Краткий обзор
 
@@ -167,19 +169,19 @@ libman install [-h|--help]
 
 * `-d|--destination <PATH>`
 
-  Расположение для установки библиотеки. Если значение не указано, используется расположение по умолчанию. Если в `defaultDestination` *Либман. JSON*не указано свойство, этот параметр является обязательным.
+  Расположение для установки библиотеки. Если значение не указано, используется расположение по умолчанию. Если в *Либман. JSON*не указано свойство `defaultDestination`, этот параметр является обязательным.
 
 * `--files <FILE>`
 
-  Укажите имя файла для установки из библиотеки. Если этот параметр не указан, устанавливаются все файлы из библиотеки. Укажите один `--files` вариант для каждого устанавливаемого файла. Относительные пути также поддерживаются. Например, `--files dist/browser/signalr.js`.
+  Укажите имя файла для установки из библиотеки. Если этот параметр не указан, устанавливаются все файлы из библиотеки. Укажите один параметр `--files` для каждого файла, который необходимо установить. Относительные пути также поддерживаются. Пример: `--files dist/browser/signalr.js`.
 
 * `-p|--provider <PROVIDER>`
 
-  Имя поставщика, используемого для получения библиотеки. Замените `<PROVIDER>` на одно из следующих значений:
+  Имя поставщика, используемого для получения библиотеки. Замените `<PROVIDER>` одним из следующих значений:
   
   [!INCLUDE [LibMan provider names](../../includes/libman-cli/provider-names.md)]
 
-  Если значение не указано, `defaultProvider` используется свойство в *Либман. JSON* . Если в `defaultProvider` *Либман. JSON*не указано свойство, этот параметр является обязательным.
+  Если значение не указано, используется свойство `defaultProvider` в *Либман. JSON* . Если в *Либман. JSON*не указано свойство `defaultProvider`, этот параметр является обязательным.
 
 [!INCLUDE [standard-cli-options](../../includes/libman-cli/standard-cli-options.md)]
 
@@ -219,7 +221,7 @@ libman install jquery@3.2.1 --provider cdnjs --destination wwwroot/scripts/jquer
 }
 ```
 
-Чтобы установить файлы *Calendar. js* и *Calendar. CSS* из *C:\\\\Temp контосокалендар\\*  с помощью поставщика файловой системы:
+Чтобы установить файлы *Calendar. js* и *Calendar. CSS* с *диска C:\\Temp\\контосокалендар\\* с помощью поставщика файловой системы:
 
   ```console
   libman install C:\temp\contosoCalendar\ --provider filesystem --files calendar.js --files calendar.css
@@ -227,8 +229,8 @@ libman install jquery@3.2.1 --provider cdnjs --destination wwwroot/scripts/jquer
 
 Следующий запрос появляется по двум причинам:
 
-* Файл *Либман. JSON* не содержит `defaultDestination` свойство.
-* `libman install` Команда не`-d|--destination` содержит параметр.
+* Файл *Либман. JSON* не содержит свойство `defaultDestination`.
+* Команда `libman install` не содержит параметр `-d|--destination`.
 
 ![Команда установки Либман](_static/libman-install-destination.png)
 
@@ -261,11 +263,11 @@ libman install jquery@3.2.1 --provider cdnjs --destination wwwroot/scripts/jquer
 
 ## <a name="restore-library-files"></a>Восстановление файлов библиотеки
 
-Команда устанавливает файлы библиотеки, определенные в *Либман. JSON.* `libman restore` Действуют следующие правила.
+Команда `libman restore` устанавливает файлы библиотеки, определенные в *Либман. JSON*. Действуют следующие правила.
 
 * Если в корне проекта не существует файла *Либман. JSON* , возвращается ошибка.
-* Если библиотека указывает поставщик, `defaultProvider` свойство в *Либман. JSON* игнорируется.
-* Если в библиотеке указано назначение, `defaultDestination` свойство в *Либман. JSON* игнорируется.
+* Если в библиотеке указан поставщик, свойство `defaultProvider` в *Либман. JSON* игнорируется.
+* Если в библиотеке указано назначение, свойство `defaultDestination` в *Либман. JSON* игнорируется.
 
 ### <a name="synopsis"></a>Краткий обзор
 
@@ -290,7 +292,7 @@ libman restore
 
 ## <a name="delete-library-files"></a>Удаление файлов библиотеки
 
-`libman clean` Команда удаляет файлы библиотеки, восстановленные ранее с помощью Либман. Папки, которые становятся пустыми после удаления этой операции. Конфигурации файлов библиотек, связанные с файлами библиотеки `libraries` в свойстве файла *Либман. JSON* , не удаляются.
+Команда `libman clean` удаляет файлы библиотеки, восстановленные ранее с помощью Либман. Папки, которые становятся пустыми после удаления этой операции. Конфигурации, связанные с файлами библиотеки, в свойстве `libraries` *Либман. JSON* не удаляются.
 
 ### <a name="synopsis"></a>Краткий обзор
 
@@ -315,7 +317,7 @@ libman clean
 
 ## <a name="uninstall-library-files"></a>Удаление файлов библиотеки
 
-`libman uninstall` Команда:
+Команда `libman uninstall`:
 
 * Удаляет все файлы, связанные с указанной библиотекой, из места назначения в *Либман. JSON*.
 * Удаляет связанную конфигурацию библиотеки из *Либман. JSON*.
@@ -362,7 +364,7 @@ libman uninstall [-h|--help]
   libman uninstall jquery@3.3.1
   ```
 
-* Чтобы удалить файлы лодаш, установленные с помощью `filesystem` поставщика, выполните следующие действия.
+* Чтобы удалить файлы Лодаш, установленные с помощью поставщика `filesystem`, выполните следующие действия.
 
   ```console
   libman uninstall C:\temp\lodash\
@@ -370,7 +372,7 @@ libman uninstall [-h|--help]
 
 ## <a name="update-library-version"></a>Обновление версии библиотеки
 
-`libman update` Команда обновляет библиотеку, установленную с помощью Либман, до указанной версии.
+Команда `libman update` обновляет библиотеку, установленную с помощью Либман, до указанной версии.
 
 Ошибка возникает в следующих случаях:
 
@@ -428,7 +430,7 @@ libman update [-h|--help]
 
 ## <a name="manage-library-cache"></a>Управление кэшем библиотеки
 
-`libman cache` Команда управляет кэшем библиотеки Либман. `filesystem` Поставщик не использует кэш библиотеки.
+Команда `libman cache` управляет кэшем библиотеки Либман. Поставщик `filesystem` не использует кэш библиотеки.
 
 ### <a name="synopsis"></a>Краткий обзор
 
@@ -442,7 +444,7 @@ libman cache [-h|--help]
 
 `PROVIDER`
 
-Используется только с `clean` командой. Указывает кэш поставщика для очистки. Допустимы следующие значения:
+Используется только с командой `clean`. Указывает кэш поставщика для очистки. Допустимы следующие значения:
 
 [!INCLUDE [LibMan provider names](../../includes/libman-cli/provider-names.md)]
 
@@ -546,7 +548,7 @@ libman cache [-h|--help]
   libman cache clean cdnjs
   ```
 
-  После очистки кэша `libman cache list` поставщика CDNJS команда выводит следующее:
+  После очистки кэша поставщика CDNJS команда `libman cache list` выводит следующее:
 
   ```console
   Cache contents:
@@ -565,7 +567,7 @@ libman cache [-h|--help]
   libman cache clean
   ```
 
-  После очистки всех кэшей `libman cache list` поставщика команда выводит следующее:
+  После очистки всех кэшей поставщика команда `libman cache list` выводит следующее:
 
   ```console
   Cache contents:

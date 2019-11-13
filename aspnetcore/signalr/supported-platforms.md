@@ -1,20 +1,22 @@
 ---
-title: Платформы, поддерживаемые SignalR ASP.NET Core
+title: Поддерживаемые платформы ASP.NET Core SignalR
 author: bradygaster
 description: Сведения о поддерживаемых платформах для ASP.NET Core SignalR.
 monikerRange: '>= aspnetcore-2.1'
 ms.author: bradyg
 ms.custom: mvc
-ms.date: 11/01/2019
+ms.date: 11/12/2019
+no-loc:
+- SignalR
 uid: signalr/supported-platforms
-ms.openlocfilehash: 1be7a307710e6e522c0088fd1ca01da11a13eda1
-ms.sourcegitcommit: 77c8be22d5e88dd710f42c739748869f198865dd
+ms.openlocfilehash: 86ba5b1aec230d78c1a0e1709187e129df6cb4cc
+ms.sourcegitcommit: 3fc3020961e1289ee5bf5f3c365ce8304d8ebf19
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/01/2019
-ms.locfileid: "73426981"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73963731"
 ---
-# <a name="aspnet-core-signalr-supported-platforms"></a>Платформы, поддерживаемые SignalR ASP.NET Core
+# <a name="aspnet-core-opno-locsignalr-supported-platforms"></a>Поддерживаемые платформы ASP.NET Core SignalR
 
 ## <a name="server-system-requirements"></a>Требования к системе сервера
 

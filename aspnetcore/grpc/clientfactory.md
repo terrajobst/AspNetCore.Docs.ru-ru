@@ -4,14 +4,16 @@ author: jamesnk
 description: Узнайте, как создавать клиенты gRPC с помощью фабрики клиента.
 monikerRange: '>= aspnetcore-3.0'
 ms.author: jamesnk
-ms.date: 08/21/2019
+ms.date: 11/12/2019
+no-loc:
+- SignalR
 uid: grpc/clientfactory
-ms.openlocfilehash: 5d719893e96ae017e2de0ee1744003d2d67a49c9
-ms.sourcegitcommit: f65d8765e4b7c894481db9b37aa6969abc625a48
+ms.openlocfilehash: 3042bb61367f8b9a9f3142217ad329270ab2cca5
+ms.sourcegitcommit: 3fc3020961e1289ee5bf5f3c365ce8304d8ebf19
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70773668"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73963683"
 ---
 # <a name="grpc-client-factory-integration-in-net-core"></a>Интеграция фабрики клиента gRPC в .NET Core
 
@@ -20,12 +22,12 @@ ms.locfileid: "70773668"
 Фабрика предоставляет следующие преимущества:
 
 * Предоставляет центральное расположение для настройки экземпляров клиентов логических gRPC
-* Управляет временем существования базового`HttpClientMessageHandler`
+* Управляет временем существования базового `HttpClientMessageHandler`
 * Автоматическое распространение крайнего срока и отмены в службе ASP.NET Core gRPC
 
 ## <a name="register-grpc-clients"></a>Регистрация клиентов gRPC
 
-Чтобы зарегистрировать клиент gRPC, можно использовать универсальный `AddGrpcClient` метод расширения в `Startup.ConfigureServices`, указав gRPC типизированный клиентский класс и адрес службы:
+Чтобы зарегистрировать клиент gRPC, можно использовать универсальный метод расширения `AddGrpcClient` в `Startup.ConfigureServices`, указав типизированный класс клиента и адрес службы gRPC:
 
 ```csharp
 services.AddGrpcClient<Greeter.GreeterClient>(o =>
@@ -34,7 +36,7 @@ services.AddGrpcClient<Greeter.GreeterClient>(o =>
 });
 ```
 
-Тип клиента gRPC регистрируется как временный с внедрением зависимостей (DI). Теперь клиент может внедряться и потребляться непосредственно в типах, созданных с помощью DI. ASP.NET Core контроллеры MVC, концентраторы SignalR и службы gRPC — это места, где можно автоматически внедрять клиенты gRPC:
+Тип клиента gRPC регистрируется как временный с внедрением зависимостей (DI). Теперь клиент может внедряться и потребляться непосредственно в типах, созданных с помощью DI. ASP.NET Core контроллерах MVC SignalR концентраторы и службы gRPC — это места, где клиенты gRPC могут быть автоматически добавлены:
 
 ```csharp
 public class AggregatorService : Aggregator.AggregatorBase
@@ -63,7 +65,7 @@ public class AggregatorService : Aggregator.AggregatorBase
 
 ## <a name="configure-httpclient"></a>Настройка HttpClient
 
-`HttpClientFactory`Создает объект `HttpClient` , используемый клиентом gRPC. Стандартные `HttpClientFactory` методы можно использовать для добавления по промежуточного слоя исходящего запроса или для `HttpClientHandler` настройки базового `HttpClient`компонента.
+`HttpClientFactory` создает `HttpClient`, используемый клиентом gRPC. Стандартные методы `HttpClientFactory` можно использовать для добавления по промежуточного слоя исходящего запроса или для настройки базового `HttpClientHandler` `HttpClient`:
 
 ```csharp
 services
@@ -86,7 +88,7 @@ services
 методы, относящиеся к gRPC, доступны для:
 
 * Настройка базового канала клиента gRPC.
-* Добавьте `Interceptor` экземпляры, которые будут использоваться клиентом при выполнении вызовов gRPC.
+* Добавьте `Interceptor` экземпляры, которые клиент будет использовать при выполнении вызовов gRPC.
 
 ```csharp
 services
@@ -103,7 +105,7 @@ services
 
 ## <a name="deadline-and-cancellation-propagation"></a>Распространение крайнего срока и отмены
 
-Клиенты gRPC, созданные фабрикой в службе gRPC, могут быть настроены `EnableCallContextPropagation()` на автоматическое распространение крайнего срока и токена отмены в дочерние вызовы. Метод расширения доступен в пакете NuGet [GRPC. AspNetCore. Server. клиентфактори.](https://www.nuget.org/packages/Grpc.AspNetCore.Server.ClientFactory) `EnableCallContextPropagation()`
+Клиенты gRPC, созданные фабрикой в службе gRPC, можно настроить с помощью `EnableCallContextPropagation()`, чтобы автоматически распространить крайний срок и токен отмены в дочерние вызовы. Метод расширения `EnableCallContextPropagation()` доступен в пакете NuGet [GRPC. AspNetCore. Server. клиентфактори](https://www.nuget.org/packages/Grpc.AspNetCore.Server.ClientFactory) .
 
 Распространение контекста вызова выполняется путем считывания крайнего срока и токена отмены из текущего контекста запроса gRPC и автоматического распространения их на исходящие вызовы, выполненные клиентом gRPC. Распространение контекста вызова — это отличный способ гарантировать, что сложные, вложенные сценарии gRPC всегда распространяют крайний срок и отмену.
 

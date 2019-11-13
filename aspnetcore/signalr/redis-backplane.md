@@ -1,43 +1,45 @@
 ---
-title: Redis объединительной платы для горизонтального масштабирования ASP.NET Core SignalR
+title: Redis Объединительная плата для ASP.NET Core SignalR горизонтальное масштабирование
 author: bradygaster
-description: Узнайте, как настройка Redis объединительной платы для обеспечения горизонтального масштабирования для приложения ASP.NET Core SignalR.
+description: Узнайте, как настроить объединительную Redis, чтобы включить горизонтальное масштабирование для приложения ASP.NET Core SignalR.
 monikerRange: '>= aspnetcore-2.1'
 ms.author: bradyg
 ms.custom: mvc
-ms.date: 11/28/2018
+ms.date: 11/12/2019
+no-loc:
+- SignalR
 uid: signalr/redis-backplane
-ms.openlocfilehash: adf9bbce1353fd811a4044e173533f76bc4193de
-ms.sourcegitcommit: 4ef0362ef8b6e5426fc5af18f22734158fe587e1
+ms.openlocfilehash: 379d46fcaabb8eb0d04e521a5ad698229f947b7c
+ms.sourcegitcommit: 3fc3020961e1289ee5bf5f3c365ce8304d8ebf19
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "67152917"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73963922"
 ---
-# <a name="set-up-a-redis-backplane-for-aspnet-core-signalr-scale-out"></a>Настройка Redis объединительной платы для горизонтального масштабирования ASP.NET Core SignalR
+# <a name="set-up-a-redis-backplane-for-aspnet-core-opno-locsignalr-scale-out"></a>Настройка объединительной платы Redis для ASP.NET Core SignalR горизонтальное масштабирование
 
-По [Andrew Stanton медсестра](https://twitter.com/anurse), [Brady Gaster](https://twitter.com/bradygaster), и [том Дайкстра](https://github.com/tdykstra),
+[Эндрю Стантон-медперсонала](https://twitter.com/anurse), [Брейди Гастер](https://twitter.com/bradygaster)и [Tom Dykstra)](https://github.com/tdykstra),
 
-В этой статье объясняется SignalR особенности настройки [Redis](https://redis.io/) сервер для масштабирования приложения ASP.NET Core SignalR.
+В этой статье описываются SignalRособенности настройки сервера [Redis](https://redis.io/) для масштабирования приложения ASP.NET Core SignalR.
 
-## <a name="set-up-a-redis-backplane"></a>Настройка Redis объединительной платы
+## <a name="set-up-a-redis-backplane"></a>Настройка объединительной платы Redis
 
-* Развертывание сервера Redis.
+* Разверните сервер Redis.
 
   > [!IMPORTANT] 
-  > Для использования в рабочей среде объединительной Redis рекомендуется только в том случае, когда оно работает в одном центре обработки данных, что и приложение SignalR. В противном случае задержки в сети снижает производительность. Если ваше приложение SignalR работает в облаке Azure, мы рекомендуем служба Azure SignalR вместо объединительной Redis. Можно использовать службу кэша Redis Azure для разработки и тестовые среды.
+  > Для использования в рабочей среде Redisная Объединительная плата рекомендуется только в том случае, если она выполняется в том же центре обработки данных, что и SignalRое приложение. В противном случае задержка сети снижает производительность. Если приложение SignalR выполняется в облаке Azure, мы рекомендуем использовать службу SignalR Azure вместо объединительной платы Redis. Службу кэша Redis для Azure можно использовать для сред разработки и тестирования.
 
   Дополнительные сведения см. в следующих ресурсах:
 
   * <xref:signalr/scale>
-  * [Документация по redis](https://redis.io/)
-  * [Документация по кэш Redis для Azure](https://docs.microsoft.com/azure/redis-cache/)
+  * [Документация по Redis](https://redis.io/)
+  * [Документация по кэшу Redis для Azure](https://docs.microsoft.com/azure/redis-cache/)
 
 ::: moniker range="= aspnetcore-2.1"
 
-* В приложении SignalR, установить `Microsoft.AspNetCore.SignalR.Redis` пакет NuGet. (Также `Microsoft.AspNetCore.SignalR.StackExchangeRedis` пакета, но, чтобы одно находилось в ASP.NET Core 2.2 и более поздних версий.)
+* В приложении SignalR установите `Microsoft.AspNetCore.SignalR.Redis` пакет NuGet. (Также существует пакет `Microsoft.AspNetCore.SignalR.StackExchangeRedis`, но он предназначен для ASP.NET Core 2,2 и более поздних версий).
 
-* В `Startup.ConfigureServices` мы вызываем метод `AddRedis` после `AddSignalR`:
+* В методе `Startup.ConfigureServices` вызовите `AddRedis` после `AddSignalR`:
 
   ```csharp
   services.AddSignalR().AddRedis("<your_Redis_connection_string>");
@@ -45,9 +47,9 @@ ms.locfileid: "67152917"
 
 * При необходимости настройте параметры:
  
-  Большинство параметров можно задать в строке подключения или в [ConfigurationOptions](https://stackexchange.github.io/StackExchange.Redis/Configuration#configuration-options) объекта. Параметры, указанные в `ConfigurationOptions` переопределяют значения в строке подключения.
+  Большинство параметров можно задать в строке соединения или в объекте [ConfigurationOptions](https://stackexchange.github.io/StackExchange.Redis/Configuration#configuration-options) . Параметры, указанные в `ConfigurationOptions` переопределяют наборы, заданные в строке подключения.
 
-  Приведенный ниже показано, как настроить параметры в `ConfigurationOptions` объекта. Этот пример добавляет префикс канала, чтобы несколько приложений могут совместно использовать тот же экземпляр Redis, как описано в следующем шаге.
+  В следующем примере показано, как задать параметры в объекте `ConfigurationOptions`. В этом примере добавляется префикс канала, чтобы несколько приложений могли совместно использовать один и тот же экземпляр Redis, как описано в следующем шаге.
 
   ```csharp
   services.AddSignalR()
@@ -56,18 +58,18 @@ ms.locfileid: "67152917"
     });
   ```
 
-  В приведенном выше коде `options.Configuration` инициализируется с помощью все, что было указано в строке подключения.
+  В приведенном выше коде `options.Configuration` инициализируется с помощью любого, указанного в строке подключения.
 
 ::: moniker-end
 
 ::: moniker range="> aspnetcore-2.1"
 
-* В приложении SignalR установите одно из следующих пакетов NuGet.
+* В приложении SignalR установите один из следующих пакетов NuGet:
 
-  * `Microsoft.AspNetCore.SignalR.StackExchangeRedis` -Зависит от StackExchange.Redis 2.X.X. Это рекомендуемый пакет для ASP.NET Core 2.2 и более поздних версий.
-  * `Microsoft.AspNetCore.SignalR.Redis` -Зависит от StackExchange.Redis 1.X.X. Этот пакет не будет публиковаться в ASP.NET Core 3.0.
+  * `Microsoft.AspNetCore.SignalR.StackExchangeRedis` — зависит от StackExchange. Redis 2. X.X. Это рекомендуемый пакет для ASP.NET Core 2,2 и более поздних версий.
+  * `Microsoft.AspNetCore.SignalR.Redis` — зависит от StackExchange. Redis 1. X.X. Этот пакет не будет поставляться в ASP.NET Core 3,0.
 
-* В `Startup.ConfigureServices` мы вызываем метод `AddStackExchangeRedis` после `AddSignalR`:
+* В методе `Startup.ConfigureServices` вызовите `AddStackExchangeRedis` после `AddSignalR`:
 
   ```csharp
   services.AddSignalR().AddStackExchangeRedis("<your_Redis_connection_string>");
@@ -75,9 +77,9 @@ ms.locfileid: "67152917"
 
 * При необходимости настройте параметры:
  
-  Большинство параметров можно задать в строке подключения или в [ConfigurationOptions](https://stackexchange.github.io/StackExchange.Redis/Configuration#configuration-options) объекта. Параметры, указанные в `ConfigurationOptions` переопределяют значения в строке подключения.
+  Большинство параметров можно задать в строке соединения или в объекте [ConfigurationOptions](https://stackexchange.github.io/StackExchange.Redis/Configuration#configuration-options) . Параметры, указанные в `ConfigurationOptions` переопределяют наборы, заданные в строке подключения.
 
-  Приведенный ниже показано, как настроить параметры в `ConfigurationOptions` объекта. Этот пример добавляет префикс канала, чтобы несколько приложений могут совместно использовать тот же экземпляр Redis, как описано в следующем шаге.
+  В следующем примере показано, как задать параметры в объекте `ConfigurationOptions`. В этом примере добавляется префикс канала, чтобы несколько приложений могли совместно использовать один и тот же экземпляр Redis, как описано в следующем шаге.
 
   ```csharp
   services.AddSignalR()
@@ -86,38 +88,38 @@ ms.locfileid: "67152917"
     });
   ```
 
-  В приведенном выше коде `options.Configuration` инициализируется с помощью все, что было указано в строке подключения.
+  В приведенном выше коде `options.Configuration` инициализируется с помощью любого, указанного в строке подключения.
 
-  Сведения о параметрах Redis см. в разделе [StackExchange Redis документации](https://stackexchange.github.io/StackExchange.Redis/Configuration.html).
+  Сведения о параметрах Redis см. в [документации по StackExchange Redis](https://stackexchange.github.io/StackExchange.Redis/Configuration.html).
 
 ::: moniker-end
 
-* Если вы используете один сервер Redis для нескольких приложений SignalR, используйте префикс другой канал для каждого приложения SignalR.
+* Если вы используете один сервер Redis для нескольких SignalR приложений, используйте разные префиксы канала для каждого приложения SignalR.
 
-  Задание префикса канала изолирует одно приложение SignalR от других пользователей, использующих разных канала префиксы. Если вы не назначены разные префиксы, сообщение, отправленное из одного приложения на все свои собственные клиентские компьютеры перейдет ко всем клиентам всех приложений, использующих сервер Redis в качестве объединительной платы.
+  Установка префикса канала изолирует одно SignalRное приложение от других, использующих разные префиксы каналов. Если не назначить разные префиксы, сообщение, отправленное из одного приложения всем своим клиентам, будет передаваться всем клиентам всех приложений, использующих сервер Redis в качестве объединительной платы.
 
-* Настройка вашего сервера фермы балансировки нагрузки программного обеспечения для прикрепленных сеансов. Ниже приведены некоторые примеры документации о том, как это сделать.
+* Настройте программное обеспечение балансировки нагрузки фермы серверов для закрепленных сеансов. Ниже приведены некоторые примеры документации.
 
   * [Службы IIS](/iis/extensions/configuring-application-request-routing-arr/http-load-balancing-using-application-request-routing)
   * [HAProxy](https://www.haproxy.com/blog/load-balancing-affinity-persistence-sticky-sessions-what-you-need-to-know/)
   * [Nginx](https://docs.nginx.com/nginx/admin-guide/load-balancer/http-load-balancer/#sticky)
-  * [pfSense](https://www.netgate.com/docs/pfsense/loadbalancing/inbound-load-balancing.html#sticky-connections)
+  * [пфсенсе](https://www.netgate.com/docs/pfsense/loadbalancing/inbound-load-balancing.html#sticky-connections)
 
-## <a name="redis-server-errors"></a>Ошибки сервера redis
+## <a name="redis-server-errors"></a>Ошибки сервера Redis
 
-Если сервер Redis выходит из строя, SignalR вызывает исключения, указывающие, что не удалось доставить сообщения. Некоторые типичные исключение сообщения:
+Когда сервер Redis выйдет из строя, SignalR создает исключения, указывающие, что сообщения не будут доставлены. Некоторые типичные сообщения об исключениях:
 
-* *Сбой записи сообщения*
-* *Не удалось вызвать метод концентратора «Имя_метода»*
-* *Не удалось подключиться к Redis*
+* *Не удалось записать сообщение*
+* *Не удалось вызвать метод концентратора "имя_метода"*
+* *Сбой подключения к Redis*
 
-SignalR не буфера сообщения для отправки их, когда сервер возобновляет работу. Теряются все сообщения, отправленные хотя сервер Redis не работает.
+SignalR не помещает сообщения в буфер, чтобы отправить их при резервном копировании сервера. Все сообщения, отправленные во время работы сервера Redis, теряются.
 
-SignalR автоматически повторно подключается когда сервер Redis снова станет доступным.
+SignalR автоматически повторно подключается, когда сервер Redis снова становится доступным.
 
-### <a name="custom-behavior-for-connection-failures"></a>Пользовательское поведение для сбоев подключения
+### <a name="custom-behavior-for-connection-failures"></a>Настраиваемое поведение для сбоев подключения
 
-Ниже приведен пример, в котором демонстрируется обработка события сбоев подключения Redis.
+Ниже приведен пример, демонстрирующий обработку событий сбоя подключения Redis.
 
 ::: moniker range="= aspnetcore-2.1"
 
@@ -184,15 +186,15 @@ services.AddSignalR()
 
 ::: moniker-end
 
-## <a name="redis-clustering"></a>Кластеризацию redis
+## <a name="redis-clustering"></a>Кластеризация Redis
 
-[Кластеризация redis](https://redis.io/topics/cluster-spec) — это метод, для достижения высокого уровня доступности с помощью нескольких серверов Redis. Кластеризация не поддерживается официально, но она может работать.
+[Кластеризация Redis](https://redis.io/topics/cluster-spec) — это метод достижения высокого уровня доступности с помощью нескольких серверов Redis. Кластеризация официально не поддерживается, но может работать.
 
 ## <a name="next-steps"></a>Следующие шаги
 
 Дополнительные сведения см. в следующих ресурсах:
 
 * <xref:signalr/scale>
-* [Документация по redis](https://redis.io/documentation)
+* [Документация по Redis](https://redis.io/documentation)
 * [Документация по StackExchange Redis](https://stackexchange.github.io/StackExchange.Redis/)
-* [Документация по кэш Redis для Azure](https://docs.microsoft.com/azure/redis-cache/)
+* [Документация по кэшу Redis для Azure](https://docs.microsoft.com/azure/redis-cache/)

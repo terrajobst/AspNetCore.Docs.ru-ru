@@ -1,20 +1,22 @@
 ---
 title: Использование протокола концентратора MessagePack в SignalR для ASP.NET Core
 author: bradygaster
-description: Добавьте протокол концентратора MessagePack в ASP.NET Core SignalR.
+description: Добавьте протокол концентратора MessagePack в SignalRASP.NET Core.
 monikerRange: '>= aspnetcore-2.1'
 ms.author: bradyg
 ms.custom: mvc
-ms.date: 10/08/2019
+ms.date: 11/12/2019
+no-loc:
+- SignalR
 uid: signalr/messagepackhubprotocol
-ms.openlocfilehash: fe09b646eba5ae15cbd9e568b276aaf7763e4b1b
-ms.sourcegitcommit: fcdf9aaa6c45c1a926bd870ed8f893bdb4935152
+ms.openlocfilehash: cd052a97db1e20d6c7aa00f47cf6a7d01a9bc305
+ms.sourcegitcommit: 3fc3020961e1289ee5bf5f3c365ce8304d8ebf19
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72165395"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73963754"
 ---
-# <a name="use-messagepack-hub-protocol-in-signalr-for-aspnet-core"></a>Использование протокола концентратора MessagePack в SignalR для ASP.NET Core
+# <a name="use-messagepack-hub-protocol-in-opno-locsignalr-for-aspnet-core"></a>Использование протокола концентратора MessagePack в SignalR для ASP.NET Core
 
 По [Бреннан Конрой](https://github.com/BrennanConroy)
 
@@ -26,7 +28,7 @@ ms.locfileid: "72165395"
 
 ## <a name="configure-messagepack-on-the-server"></a>Настройка MessagePack на сервере
 
-Чтобы включить протокол концентратора MessagePack на сервере, установите в приложении пакет `Microsoft.AspNetCore.SignalR.Protocols.MessagePack`. В файле Startup.cs добавьте `AddMessagePackProtocol` в вызов `AddSignalR`, чтобы включить поддержку MessagePack на сервере.
+Чтобы включить протокол концентратора MessagePack на сервере, установите пакет `Microsoft.AspNetCore.SignalR.Protocols.MessagePack` в приложении. В файле Startup.cs добавьте `AddMessagePackProtocol` в вызов `AddSignalR`, чтобы включить поддержку MessagePack на сервере.
 
 > [!NOTE]
 > JSON включен по умолчанию. Добавление MessagePack обеспечивает поддержку для клиентов JSON и MessagePack.
@@ -56,7 +58,7 @@ services.AddSignalR()
 
 ### <a name="net-client"></a>Клиент .NET
 
-Чтобы включить MessagePack в клиенте .NET, установите пакет `Microsoft.AspNetCore.SignalR.Protocols.MessagePack` и вызовите `AddMessagePackProtocol` в `HubConnectionBuilder`.
+Чтобы включить MessagePack в клиенте .NET, установите пакет `Microsoft.AspNetCore.SignalR.Protocols.MessagePack` и вызовите `AddMessagePackProtocol` на `HubConnectionBuilder`.
 
 ```csharp
 var hubConnection = new HubConnectionBuilder()
@@ -66,7 +68,7 @@ var hubConnection = new HubConnectionBuilder()
 ```
 
 > [!NOTE]
-> Этот вызов `AddMessagePackProtocol` принимает делегат для настройки параметров так же, как и сервер.
+> Этот `AddMessagePackProtocol` вызов принимает делегат для настройки параметров так же, как и сервер.
 
 ### <a name="javascript-client"></a>Клиент JavaScript
 
@@ -94,20 +96,20 @@ npm install @aspnet/signalr-protocol-msgpack
 
 ::: moniker range=">= aspnetcore-3.0"
 
-*node_modules @ no__t-1 @ no__t-2* 
+*node_modules\\@microsoft\signalr-protocol-msgpack\dist\browser\signalr-protocol-msgpack.js* 
 
 ::: moniker-end
 
 ::: moniker range="< aspnetcore-3.0"
 
-*node_modules @ no__t-1 @ no__t-2* 
+*node_modules\\@aspnet\signalr-protocol-msgpack\dist\browser\signalr-protocol-msgpack.js* 
 
 ::: moniker-end
 
-В браузере также необходимо ссылаться на библиотеку `msgpack5`. Чтобы создать ссылку, используйте тег `<script>`. Библиотеку можно найти по адресу *node_modules\msgpack5\dist\msgpack5.js*.
+В браузере также необходимо ссылаться на библиотеку `msgpack5`. Чтобы создать ссылку, используйте тег `<script>`. Библиотеку можно найти по адресу *node_modules \msgpack5\dist\msgpack5.js*.
 
 > [!NOTE]
-> При использовании элемента `<script>` порядок важен. Если перед *msgpack5. js*указана ссылка на *сигналр-протокол-мсгпакк. js* , возникает ошибка при попытке подключения с помощью MessagePack. *SignalR. js* также требуется перед *сигналр-протокол-мсгпакк. js*.
+> При использовании элемента `<script>` важен порядок. Если перед *msgpack5. js*указана ссылка на *сигналр-протокол-мсгпакк. js* , возникает ошибка при попытке подключения с помощью MessagePack. *SignalR. js* также требуется перед *сигналр-протокол-мсгпакк. js*.
 
 ```html
 <script src="~/lib/signalr/signalr.js"></script>
@@ -115,7 +117,7 @@ npm install @aspnet/signalr-protocol-msgpack
 <script src="~/lib/signalr/signalr-protocol-msgpack.js"></script>
 ```
 
-Добавление `.withHubProtocol(new signalR.protocols.msgpack.MessagePackHubProtocol())` в `HubConnectionBuilder` приведет к настройке клиента для использования протокола MessagePack при подключении к серверу.
+Добавление `.withHubProtocol(new signalR.protocols.msgpack.MessagePackHubProtocol())` в `HubConnectionBuilder` настраивает клиент для использования протокола MessagePack при соединении с сервером.
 
 ```javascript
 const connection = new signalR.HubConnectionBuilder()
@@ -143,31 +145,31 @@ public class ChatMessage
 }
 ```
 
-При отправке из клиента JavaScript необходимо использовать имена свойств `PascalCased`, поскольку регистр должен точно совпадать с C# классом. Пример:
+При отправке из клиента JavaScript необходимо использовать `PascalCased` имена свойств, поскольку регистр должен точно совпадать с C# классом. Пример:
 
 ```javascript
 connection.invoke("SomeMethod", { Sender: "Sally", Message: "Hello!" });
 ```
 
-Использование имен `camelCased` не будет правильно привязано C# к классу. Это можно обойти, используя атрибут `Key`, чтобы указать другое имя для свойства MessagePack. Дополнительные сведения см. [в документации по MessagePack-CSharp](https://github.com/neuecc/MessagePack-CSharp#object-serialization).
+Использование `camelCased` имен не будет правильно привязано C# к классу. Это можно обойти, используя атрибут `Key`, чтобы указать другое имя для свойства MessagePack. Дополнительные сведения см. [в документации по MessagePack-CSharp](https://github.com/neuecc/MessagePack-CSharp#object-serialization).
 
 ### <a name="datetimekind-is-not-preserved-when-serializingdeserializing"></a>DateTime. Kind не сохраняется при сериализации или десериализации
 
-Протокол MessagePack не предоставляет способ кодирования значения `Kind` `DateTime`. В результате при десериализации даты протокол концентратора MessagePack предполагает, что входящая Дата находится в формате UTC. Если вы работаете со значениями `DateTime` в местном времени, перед отправкой рекомендуется преобразовать в формат UTC. Преобразуйте их из времени в формате UTC в местное время при их получении.
+Протокол MessagePack не предоставляет способ кодирования `Kind` значения `DateTime`. В результате при десериализации даты протокол концентратора MessagePack предполагает, что входящая Дата находится в формате UTC. Если вы работаете со `DateTime` значениями в местном времени, перед их отправкой рекомендуется преобразовать в формат UTC. Преобразуйте их из времени в формате UTC в местное время при их получении.
 
-Дополнительные сведения об этом ограничении см. в разделе Проблема с GitHub [ASPNET/SignalR # 2632](https://github.com/aspnet/SignalR/issues/2632).
+Дополнительные сведения об этом ограничении см. в разделе Проблема с GitHub [ASPNET/SignalR#2632](https://github.com/aspnet/SignalR/issues/2632).
 
 ### <a name="datetimeminvalue-is-not-supported-by-messagepack-in-javascript"></a>DateTime. MinValue не поддерживается в MessagePack в JavaScript
 
-Библиотека [msgpack5](https://github.com/mcollina/msgpack5) , используемая клиентом JavaScript SignalR, не поддерживает тип `timestamp96` в MessagePack. Этот тип используется для кодирования очень больших значений даты (на ранних этапах прошлого или слишком далеко в будущем). Значение `DateTime.MinValue` равно `January 1, 0001`, которое должно быть закодировано в `timestamp96`. По этой причине отправка `DateTime.MinValue` в клиент JavaScript не поддерживается. Когда клиент JavaScript получает `DateTime.MinValue`, выдается следующая ошибка:
+Библиотека [msgpack5](https://github.com/mcollina/msgpack5) , используемая клиентом SignalR JavaScript, не поддерживает тип `timestamp96` в MessagePack. Этот тип используется для кодирования очень больших значений даты (на ранних этапах прошлого или слишком далеко в будущем). Значение `DateTime.MinValue` `January 1, 0001`, которое должно быть закодировано в `timestamp96` значение. По этой причине отправка `DateTime.MinValue` клиенту JavaScript не поддерживается. Когда клиент JavaScript получает `DateTime.MinValue`, выдается следующая ошибка:
 
 ```
 Uncaught Error: unable to find ext type 255 at decoder.js:427
 ```
 
-Обычно `DateTime.MinValue` используется для кодирования значения "Missing" или `null`. Если необходимо закодировать это значение в MessagePack, используйте значение NULL `DateTime` (`DateTime?`) или закодировать отдельное значение `bool`, указывающее, существует ли дата.
+Обычно `DateTime.MinValue` используется для кодирования "отсутствующего" или `null` значения. Если необходимо закодировать это значение в MessagePack, используйте значение NULL `DateTime` значения (`DateTime?`) или закодировать отдельное значение `bool`, указывающее, существует ли дата.
 
-Дополнительные сведения об этом ограничении см. в разделе Проблема с GitHub [ASPNET/SignalR # 2228](https://github.com/aspnet/SignalR/issues/2228).
+Дополнительные сведения об этом ограничении см. в разделе Проблема с GitHub [ASPNET/SignalR#2228](https://github.com/aspnet/SignalR/issues/2228).
 
 ### <a name="messagepack-support-in-ahead-of-time-compilation-environment"></a>Поддержка MessagePack в среде предварительной компиляции "до времени"
 
@@ -193,7 +195,7 @@ services.AddSignalR()
 InvalidDataException: Error binding arguments. Make sure that the types of the provided values match the types of the hub method being invoked.
 ```
 
-Дополнительные сведения об этом ограничении см. в разделе Проблема с GitHub [ASPNET/SignalR # 2937](https://github.com/aspnet/SignalR/issues/2937).
+Дополнительные сведения об этом ограничении см. в разделе Проблема с GitHub [ASPNET/SignalR#2937](https://github.com/aspnet/SignalR/issues/2937).
 
 ## <a name="related-resources"></a>Связанные ресурсы
 

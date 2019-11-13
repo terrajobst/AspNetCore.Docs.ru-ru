@@ -1,20 +1,22 @@
 ---
-title: Ведущие ASP.NET Core SignalR в фоновых службах
+title: SignalR ASP.NET Core узла в фоновых службах
 author: bradygaster
-description: Узнайте, как отправить сообщения клиентам SignalR из классов .NET Core BackgroundService.
+description: Узнайте, как отправить сообщения SignalR клиентам из классов .NET Core BackgroundService.
 monikerRange: '>= aspnetcore-2.2'
 ms.author: bradyg
 ms.custom: mvc
-ms.date: 02/04/2019
+ms.date: 11/12/2019
+no-loc:
+- SignalR
 uid: signalr/background-services
-ms.openlocfilehash: 23a53f33a03ce3b76cf6846c3f214a6cad055209
-ms.sourcegitcommit: f65d8765e4b7c894481db9b37aa6969abc625a48
+ms.openlocfilehash: 000732115153eeafed3948c2a07acf77ffc34218
+ms.sourcegitcommit: 3fc3020961e1289ee5bf5f3c365ce8304d8ebf19
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70773938"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73964045"
 ---
-# <a name="host-aspnet-core-signalr-in-background-services"></a>Ведущие ASP.NET Core SignalR в фоновых службах
+# <a name="host-aspnet-core-opno-locsignalr-in-background-services"></a>SignalR ASP.NET Core узла в фоновых службах
 
 По [Брейди Гастер](https://twitter.com/bradygaster)
 
@@ -23,13 +25,13 @@ ms.locfileid: "70773938"
 * Размещение концентраторов SignalR с помощью фонового рабочего процесса, размещенного в ASP.NET Core.
 * Отправка сообщений на подключенные клиенты из [BackgroundService](xref:Microsoft.Extensions.Hosting.BackgroundService).NET Core.
 
-[Просмотр или скачивание образца кода](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/signalr/background-service/sample/) [(как скачать)](xref:index#how-to-download-a-sample)
+[Просмотр или скачивание образца кода](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/signalr/background-service/sample/) [(Загрузка)](xref:index#how-to-download-a-sample)
 
-## <a name="wire-up-signalr-during-startup"></a>Подсоединить SignalR во время запуска
+## <a name="wire-up-opno-locsignalr-during-startup"></a>Подсоединить SignalR во время запуска
 
 ::: moniker range=">= aspnetcore-3.0"
 
-Размещение концентраторов SignalR ASP.NET Core в контексте фонового рабочего процесса идентично размещению центра в веб-приложении ASP.NET Core. В методе вызов `services.AddSignalR` добавляет необходимые службы к слою ASP.NET Core внедрения зависимостей (DI) для поддержки SignalR. `Startup.ConfigureServices` В `Startup.Configure` методвызывается`MapHub` в обратномвызове,чтобыподключитьконечныеточкиконцентраторавконвейерезапросовASP.NETCore.`UseEndpoints`
+Размещение ASP.NET Core SignalR концентраторов в контексте фонового рабочего процесса идентично размещению концентратора в ASP.NET Core веб-приложении. В методе `Startup.ConfigureServices` вызов `services.AddSignalR` добавляет необходимые службы к слою ASP.NET Core внедрения зависимостей (DI) для поддержки SignalR. В `Startup.Configure`метод `MapHub` вызывается в обратном вызове `UseEndpoints`, чтобы подключить конечные точки концентратора в конвейере запросов ASP.NET Core.
 
 ```csharp
 public class Startup
@@ -60,44 +62,44 @@ public class Startup
 
 ::: moniker range="<= aspnetcore-2.2"
 
-Размещение концентраторов SignalR ASP.NET Core в контексте фонового рабочего процесса идентично размещению центра в веб-приложении ASP.NET Core. В методе вызов `services.AddSignalR` добавляет необходимые службы к слою ASP.NET Core внедрения зависимостей (DI) для поддержки SignalR. `Startup.ConfigureServices` В `Startup.Configure` `UseSignalR` метод вызывается, чтобы подключить конечные точки концентратора в конвейере запросов ASP.NET Core.
+Размещение ASP.NET Core SignalR концентраторов в контексте фонового рабочего процесса идентично размещению концентратора в ASP.NET Core веб-приложении. В методе `Startup.ConfigureServices` вызов `services.AddSignalR` добавляет необходимые службы к слою ASP.NET Core внедрения зависимостей (DI) для поддержки SignalR. В `Startup.Configure`вызывается метод `UseSignalR`, который позволяет подключить конечные точки концентратора в конвейере запросов ASP.NET Core.
 
 [!code-csharp[Startup](background-service/sample/Server/Startup.cs?name=Startup)]
 
 ::: moniker-end
 
-В предыдущем примере `ClockHub` класс `Hub<T>` реализует класс для создания строго типизированного концентратора. Объект `ClockHub` настроен `/hubs/clock`в классе для реагирования на запросы в конечной точке. `Startup`
+В предыдущем примере класс `ClockHub` реализует класс `Hub<T>` для создания строго типизированного концентратора. `ClockHub` был настроен в классе `Startup` для реагирования на запросы на конечной точке `/hubs/clock`.
 
-Дополнительные сведения о строго типизированных концентраторах см. в статье [Использование концентраторов в SignalR для ASP.NET Core](xref:signalr/hubs#strongly-typed-hubs).
+Дополнительные сведения о строго типизированных концентраторах см. [в статье Использование концентраторов в SignalR для ASP.NET Core](xref:signalr/hubs#strongly-typed-hubs).
 
 > [!NOTE]
-> Эта функция не ограничена классом [> концентратора\<](xref:Microsoft.AspNetCore.SignalR.Hub`1) . Любой класс, наследующий от [концентратора](xref:Microsoft.AspNetCore.SignalR.Hub), например [динамичуб](xref:Microsoft.AspNetCore.SignalR.DynamicHub), также будет работать.
+> Эта функциональность не ограничена классом [\<](xref:Microsoft.AspNetCore.SignalR.Hub`1) . Любой класс, наследующий от [концентратора](xref:Microsoft.AspNetCore.SignalR.Hub), например [динамичуб](xref:Microsoft.AspNetCore.SignalR.DynamicHub), также будет работать.
 
 [!code-csharp[Startup](background-service/sample/Server/ClockHub.cs?name=ClockHub)]
 
-Интерфейс, используемый строго типизированным `ClockHub` объектом, `IClock` является интерфейсом.
+Интерфейс, используемый строго типизированным `ClockHub`, является интерфейсом `IClock`.
 
 [!code-csharp[Startup](background-service/sample/HubServiceInterfaces/IClock.cs?name=IClock)]
 
-## <a name="call-a-signalr-hub-from-a-background-service"></a>Вызов концентратора SignalR из фоновой службы
+## <a name="call-a-opno-locsignalr-hub-from-a-background-service"></a>Вызов центра SignalR из фоновой службы
 
-Во время запуска `Worker` класс `BackgroundService`() поддается с помощью `AddHostedService`.
+Во время запуска класс `Worker`, `BackgroundService`, подстраивается с помощью `AddHostedService`.
 
 ```csharp
 services.AddHostedService<Worker>();
 ```
 
-Так как SignalR также `Startup` работает на этапе, в котором каждый концентратор подключен к отдельной конечной точке в конвейере HTTP-запросов ASP.NET Core, каждый концентратор `IHubContext<T>` представляется на сервере. Используя функции внедрения ASP.NET Core, другие классы, созданные на уровне размещения, такие как `BackgroundService` классы, классы контроллеров MVC или модели страниц Razor, могут получать ссылки на серверные концентраторы, принимая `IHubContext<ClockHub, IClock>` экземпляры во время создания.
+Так как SignalR также работает на этапе `Startup`, в котором каждый концентратор подключен к отдельной конечной точке в конвейере HTTP-запросов ASP.NET Core, каждый концентратор представляется `IHubContext<T>` на сервере. Используя функции DI ASP.NET Core, другие классы, созданные на уровне размещения, такие как классы `BackgroundService`, классы контроллеров MVC или модели страниц Razor, могут получать ссылки на серверные концентраторы, принимая экземпляры `IHubContext<ClockHub, IClock>` во время создания.
 
 [!code-csharp[Startup](background-service/sample/Server/Worker.cs?name=Worker)]
 
-Так как `ClockHub`метод вызывается итеративно в фоновой службе, текущая дата и время сервера отправляются подключенным клиентам с помощью. `ExecuteAsync`
+Так как метод `ExecuteAsync` вызывается итеративно в фоновой службе, текущая дата и время сервера отправляются подключенным клиентам с помощью `ClockHub`.
 
-## <a name="react-to-signalr-events-with-background-services"></a>Реагирование на события SignalR с помощью фоновых служб
+## <a name="react-to-opno-locsignalr-events-with-background-services"></a>Реагирование на события SignalR с помощью фоновых служб
 
-Как и приложение с одним страничным приложением, использующее клиент JavaScript для SignalR или классическое приложение .NET, может использовать <xref:signalr/dotnet-client>с помощью `BackgroundService` , `IHostedService` а также для подключения к концентраторам SignalR и реагирования на события.
+Как и в одностраничном приложении, использующем клиент JavaScript для SignalR или классического приложения .NET, может выполнять с помощью <xref:signalr/dotnet-client>, `BackgroundService` или `IHostedService` можно также использовать для подключения к концентраторам SignalR и реагирования на события.
 
-Класс реализует `IClock` интерфейс и`IHostedService` интерфейс. `ClockHubClient` Таким образом, она может быть подключена `Startup` во время непрерывного выполнения и реагировать на события концентратора с сервера.
+Класс `ClockHubClient` реализует интерфейс `IClock` и интерфейс `IHostedService`. Таким образом, она может быть привязана во время `Startup` для непрерывного выполнения и реагирования на события концентратора с сервера.
 
 ```csharp
 public partial class ClockHubClient : IClock, IHostedService
@@ -105,15 +107,15 @@ public partial class ClockHubClient : IClock, IHostedService
 }
 ```
 
-Во время инициализации объект `ClockHubClient` создает экземпляр `HubConnection` класса и подсоединяет `IClock.ShowTime` `ShowTime` метод к нему в качестве обработчика для события концентратора.
+Во время инициализации `ClockHubClient` создает экземпляр `HubConnection` и подсоединяет метод `IClock.ShowTime` в качестве обработчика для события `ShowTime` концентратора.
 
 [!code-csharp[The ClockHubClient constructor](background-service/sample/Clients.ConsoleTwo/ClockHubClient.cs?name=ClockHubClientCtor)]
 
-`IHostedService.StartAsync` В реализации `HubConnection` запускается асинхронно.
+В реализации `IHostedService.StartAsync` `HubConnection` запускается асинхронно.
 
 [!code-csharp[StartAsync method](background-service/sample/Clients.ConsoleTwo/ClockHubClient.cs?name=StartAsync)]
 
-Во время выполнения `HubConnection`методаобъект уничтожается асинхронно. `IHostedService.StopAsync`
+Во время выполнения метода `IHostedService.StopAsync` `HubConnection` удаляется асинхронно.
 
 [!code-csharp[StopAsync method](background-service/sample/Clients.ConsoleTwo/ClockHubClient.cs?name=StopAsync)]
 
