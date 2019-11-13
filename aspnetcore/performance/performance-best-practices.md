@@ -4,14 +4,16 @@ author: mjrousos
 description: Советы по повышению производительности ASP.NET Core приложений и устранению распространенных проблем с производительностью.
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
-ms.date: 09/26/2019
+ms.date: 11/12/2019
+no-loc:
+- SignalR
 uid: performance/performance-best-practices
-ms.openlocfilehash: 1cd4ca6fccfee674f46e87ba051e049f7daa5b66
-ms.sourcegitcommit: 67116718dc33a7a01696d41af38590fdbb58e014
+ms.openlocfilehash: 279bf352580e5e45fc005e800ee536871210409b
+ms.sourcegitcommit: 3fc3020961e1289ee5bf5f3c365ce8304d8ebf19
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73799512"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73963245"
 ---
 # <a name="aspnet-core-performance-best-practices"></a>Рекомендации по повышению производительности ASP.NET Core
 
@@ -117,7 +119,7 @@ ASP.NET Core приложения предназначены для одновр
 
 * **Не** дожидаться завершения длительных задач в рамках обычной обработки HTTP-запросов.
 * **Рассмотрите возможность** обработки долго выполняющихся запросов с помощью [фоновых служб](xref:fundamentals/host/hosted-services) или вне процесса с помощью [функции Azure](/azure/azure-functions/). Завершение работы вне процесса особенно полезно для ресурсоемких задач.
-* **Используйте параметры** связи в режиме реального времени, такие как [SignalR](xref:signalr/introduction), для асинхронной связи с клиентами.
+* Для асинхронной связи с **клиентами используйте параметры** связи в режиме реального времени, например [SignalR](xref:signalr/introduction).
 
 ## <a name="minify-client-assets"></a>Ресурсы клиента уменьшение
 

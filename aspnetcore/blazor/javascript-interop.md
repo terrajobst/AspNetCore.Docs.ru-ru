@@ -1,26 +1,28 @@
 ---
-title: ASP.NET Core взаимодействие JavaScript Блазор
+title: ASP.NET Core Blazor взаимодействия JavaScript
 author: guardrex
-description: Узнайте, как вызывать функции JavaScript из методов .NET и .NET из JavaScript в приложениях Блазор.
+description: Узнайте, как вызывать функции JavaScript из методов .NET и .NET из JavaScript в Blazor приложениях.
 monikerRange: '>= aspnetcore-3.0'
 ms.author: riande
 ms.custom: mvc
 ms.date: 10/16/2019
+no-loc:
+- Blazor
 uid: blazor/javascript-interop
-ms.openlocfilehash: b157e16918975cd522318a02f21824d9a0198b11
-ms.sourcegitcommit: eb4fcdeb2f9e8413117624de42841a4997d1d82d
+ms.openlocfilehash: 76437ef00e00f5de1b995b4f0b1a09e5876dff8f
+ms.sourcegitcommit: 3fc3020961e1289ee5bf5f3c365ce8304d8ebf19
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72697927"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73962841"
 ---
-# <a name="aspnet-core-blazor-javascript-interop"></a>ASP.NET Core взаимодействие JavaScript Блазор
+# <a name="aspnet-core-opno-locblazor-javascript-interop"></a>ASP.NET Core Blazor взаимодействия JavaScript
 
 [Хавьер Калварро Воронков](https://github.com/javiercn), [Даниэль Roth)](https://github.com/danroth27)и [Люк ЛаСаМ](https://github.com/guardrex)
 
 [!INCLUDE[](~/includes/blazorwasm-preview-notice.md)]
 
-Приложение Блазор может вызывать функции JavaScript из кода JavaScript в методах .NET и .NET.
+Blazor приложение может вызывать функции JavaScript из кода JavaScript в методах .NET и .NET.
 
 [Просмотреть или скачать образец кода](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/blazor/common/samples/) ([как скачивать](xref:index#how-to-download-a-sample))
 
@@ -30,15 +32,15 @@ ms.locfileid: "72697927"
 
 Чтобы вызвать JavaScript из .NET, используйте абстракцию `IJSRuntime`. Метод `InvokeAsync<T>` принимает идентификатор для функции JavaScript, которую нужно вызвать вместе с любым числом аргументов, сериализуемых в формат JSON. Идентификатор функции является относительным к глобальной области (`window`). Если вы хотите вызвать `window.someScope.someFunction`, идентификатор будет `someScope.someFunction`. Нет необходимости регистрировать функцию перед ее вызовом. Возвращаемый тип `T` также должен быть сериализуемым в формат JSON.
 
-Для серверных приложений Блазор:
+Для приложений Blazor Server:
 
-* Приложение Блазор Server обрабатывает несколько запросов пользователей. Не вызывайте `JSRuntime.Current` в компоненте для вызова функций JavaScript.
+* Приложение Blazor Server обрабатывает несколько запросов пользователей. Не вызывайте `JSRuntime.Current` в компоненте для вызова функций JavaScript.
 * Вставьте абстракцию `IJSRuntime` и используйте внедренный объект для выдаче вызовов взаимодействия JavaScript.
-* Во время предварительной отрисовки приложения Блазор вызов JavaScript невозможен, поскольку не было установлено соединение с браузером. Дополнительные сведения см. в разделе [Обнаружение времени подготовки приложения блазор](#detect-when-a-blazor-app-is-prerendering) .
+* При предварительном отображении Blazor приложения вызов JavaScript невозможен, поскольку не было установлено соединение с браузером. Дополнительные сведения см. в разделе [Обнаружение времени подготовки Blazor приложения](#detect-when-a-blazor-app-is-prerendering) .
 
 Следующий пример основан на [текстдекодер](https://developer.mozilla.org/docs/Web/API/TextDecoder), экспериментальном декодере на основе JavaScript. В примере показано, как вызвать функцию JavaScript из C# метода. Функция JavaScript принимает массив байтов из C# метода, декодирует массив и возвращает текст компоненту для вывода.
 
-В элементе `<head>` *wwwroot/index.HTML* (блазор Assembly) или *pages/_Host. cshtml* (блазор Server) Укажите функцию JavaScript, которая использует `TextDecoder` для декодирования переданного массива и возврата декодированного значения:
+В `<head>` элементе *wwwroot/index.HTML* (Blazor Assembly) или *pages/_Host. cshtml* (Blazor Server) Укажите функцию JavaScript, которая использует `TextDecoder` для декодирования переданного массива и возврата декодированного значения:
 
 [!code-html[](javascript-interop/samples_snapshot/index-script-convertarray.html)]
 
@@ -63,7 +65,7 @@ ms.locfileid: "72697927"
 
   [!code-cshtml[](javascript-interop/samples_snapshot/inject-abstraction.razor?highlight=1)]
 
-  В элементе `<head>` *wwwroot/index.HTML* (блазор Assembly) или *pages/_Host. cshtml* (блазор Server) укажите `handleTickerChanged` функцию JavaScript. Функция вызывается с `IJSRuntime.InvokeVoidAsync` и не возвращает значение:
+  В элементе `<head>` *wwwroot/index.HTML* (Blazor сборки) или *pages/_Host. cshtml* (Blazor Server) укажите `handleTickerChanged` функцию JavaScript. Функция вызывается с `IJSRuntime.InvokeVoidAsync` и не возвращает значение:
 
   [!code-html[](javascript-interop/samples_snapshot/index-script-handleTickerChanged1.html)]
 
@@ -71,7 +73,7 @@ ms.locfileid: "72697927"
 
   [!code-csharp[](javascript-interop/samples_snapshot/inject-abstraction-class.cs?highlight=5)]
 
-  В элементе `<head>` *wwwroot/index.HTML* (блазор Assembly) или *pages/_Host. cshtml* (блазор Server) укажите `handleTickerChanged` функцию JavaScript. Функция вызывается с `JSRuntime.InvokeAsync` и возвращает значение:
+  В элементе `<head>` *wwwroot/index.HTML* (Blazor сборки) или *pages/_Host. cshtml* (Blazor Server) укажите `handleTickerChanged` функцию JavaScript. Функция вызывается с `JSRuntime.InvokeAsync` и возвращает значение:
 
   [!code-html[](javascript-interop/samples_snapshot/index-script-handleTickerChanged2.html)]
 
@@ -91,13 +93,13 @@ ms.locfileid: "72697927"
 
 [!code-javascript[](./common/samples/3.x/BlazorWebAssemblySample/wwwroot/exampleJsInterop.js?highlight=2-7)]
 
-Поместите тег `<script>`, который ссылается на файл JavaScript, в файл *wwwroot/index.HTML* (блазор) или *pages/_Host. cshtml* (блазор Server).
+Поместите тег `<script>`, который ссылается на файл JavaScript, в файл *wwwroot/index.HTML* (Blazor сборки) или *pages/_Host. cshtml* (Blazor Server).
 
-*wwwroot/index.HTML* (Блазор-сборка):
+*wwwroot/index.HTML* (Blazorная сборка):
 
 [!code-html[](./common/samples/3.x/BlazorWebAssemblySample/wwwroot/index.html?highlight=15)]
 
-*Pages/_Host. cshtml* (сервер блазор):
+*Pages/_Host. cshtml* (Blazor Server):
 
 [!code-cshtml[](./common/samples/3.x/BlazorServerSample/Pages/_Host.cshtml?highlight=21)]
 
@@ -105,7 +107,7 @@ ms.locfileid: "72697927"
 
 Методы .NET взаимодействует с функциями JavaScript в файле *ексамплежсинтероп. js* путем вызова `IJSRuntime.InvokeAsync<T>`.
 
-Абстракция `IJSRuntime` является асинхронной, чтобы разрешить сценарии Блазор Server. Если приложение является Блазор приложением для сборки и требуется вызвать функцию JavaScript синхронно, произведение производных от `IJSInProcessRuntime` и вызов `Invoke<T>`. Рекомендуется, чтобы большинство библиотек взаимодействия JavaScript использовали асинхронные интерфейсы API, чтобы обеспечить доступность библиотек во всех сценариях.
+Абстракция `IJSRuntime` является асинхронной, что позволяет выполнять сценарии с Blazor Server. Если приложение является Blazor приложением сборки и необходимо синхронно вызвать функцию JavaScript, произведение производных `IJSInProcessRuntime` и вызвать `Invoke<T>`. Рекомендуется, чтобы большинство библиотек взаимодействия JavaScript использовали асинхронные интерфейсы API, чтобы обеспечить доступность библиотек во всех сценариях.
 
 Пример приложения содержит компонент для демонстрации взаимодействия JavaScript. Компонент:
 
@@ -125,7 +127,7 @@ ms.locfileid: "72697927"
 
 Функции JavaScript, возвращающие [значение void (0)/воид 0](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Operators/void) или [undefine](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/undefined) , вызываются с `IJSRuntime.InvokeVoidAsync`.
 
-## <a name="detect-when-a-blazor-app-is-prerendering"></a>Обнаружение времени предварительной отрисовки приложения Блазор
+## <a name="detect-when-a-opno-locblazor-app-is-prerendering"></a>Обнаружение времени предварительной отрисовки Blazor приложения
  
 [!INCLUDE[](~/includes/blazor-prerendering.md)]
 
@@ -190,7 +192,7 @@ public static Task Focus(this ElementReference elementRef, IJSRuntime jsRuntime)
 
 ### <a name="static-net-method-call"></a>Статический вызов метода .NET
 
-Чтобы вызвать статический метод .NET из JavaScript, используйте функции `DotNet.invokeMethod` или `DotNet.invokeMethodAsync`. Передайте идентификатор статического метода, который необходимо вызвать, имя сборки, содержащей функцию, и любые аргументы. Асинхронная версия является предпочтительной для поддержки сценариев сервера Блазор. Чтобы вызвать метод .NET из JavaScript, метод .NET должен быть открытым, статическим и иметь атрибут `[JSInvokable]`. По умолчанию идентификатором метода является имя метода, но можно указать другой идентификатор с помощью конструктора `JSInvokableAttribute`. Вызов открытых универсальных методов в настоящее время не поддерживается.
+Чтобы вызвать статический метод .NET из JavaScript, используйте функции `DotNet.invokeMethod` или `DotNet.invokeMethodAsync`. Передайте идентификатор статического метода, который необходимо вызвать, имя сборки, содержащей функцию, и любые аргументы. Асинхронная версия является предпочтительной для поддержки сценариев Blazor Server. Чтобы вызвать метод .NET из JavaScript, метод .NET должен быть открытым, статическим и иметь атрибут `[JSInvokable]`. По умолчанию идентификатором метода является имя метода, но можно указать другой идентификатор с помощью конструктора `JSInvokableAttribute`. Вызов открытых универсальных методов в настоящее время не поддерживается.
 
 Пример приложения включает C# метод, возвращающий массив `int`S. К методу применяется атрибут `JSInvokable`.
 
@@ -224,7 +226,7 @@ Array(4) [ 1, 2, 3, 4 ]
 > [!NOTE]
 > Пример приложения записывает сообщения в консоль на стороне клиента. В следующих примерах, продемонстрированных в примере приложения, изучите выходные данные консоли браузера в средствах разработчика браузера.
 
-Когда выбран **метод триггера экземпляра .NET хеллохелпер. SayHello** , вызывается `ExampleJsInterop.CallHelloHelperSayHello` и в метод передается имя, `Blazor`.
+Когда выбран **метод триггера экземпляра .NET хеллохелпер. SayHello** , `ExampleJsInterop.CallHelloHelperSayHello` вызывается и передает имя, `Blazor`, в метод.
 
 *Pages/жсинтероп. Razor*:
 
@@ -264,7 +266,7 @@ Hello, Blazor!
 
 ## <a name="harden-js-interop-calls"></a>Вызовы взаимодействия с зафиксированным JS
 
-Взаимодействие с JS может завершиться сбоем из-за ошибок сети и должно рассматриваться как ненадежное. По умолчанию серверное приложение Блазор время ожидания вызовов взаимодействия JS на сервере через одну минуту. Если приложение может допускать более агрессивное время ожидания, например 10 секунд, задайте время ожидания одним из следующих способов.
+Взаимодействие с JS может завершиться сбоем из-за ошибок сети и должно рассматриваться как ненадежное. По умолчанию серверное приложение Blazor истекает из JS-вызовов взаимодействия на сервере через одну минуту. Если приложение может допускать более агрессивное время ожидания, например 10 секунд, задайте время ожидания одним из следующих способов.
 
 * Глобально в `Startup.ConfigureServices` укажите время ожидания:
 

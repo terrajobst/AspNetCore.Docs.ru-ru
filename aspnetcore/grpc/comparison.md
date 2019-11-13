@@ -4,14 +4,16 @@ author: jamesnk
 description: Узнайте, как gRPC сравнивается с API-интерфейсами HTTP и их рекомендуемыми сценариями.
 monikerRange: '>= aspnetcore-3.0'
 ms.author: jamesnk
-ms.date: 09/25/2019
+ms.date: 11/12/2019
+no-loc:
+- SignalR
 uid: grpc/comparison
-ms.openlocfilehash: 52b057876481bd9be4f83d93b1f05081ed19660f
-ms.sourcegitcommit: a166291c6708f5949c417874108332856b53b6a9
+ms.openlocfilehash: ceb24d656827548492a6fa326681922297fc481b
+ms.sourcegitcommit: 3fc3020961e1289ee5bf5f3c365ce8304d8ebf19
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72589972"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73963657"
 ---
 # <a name="compare-grpc-services-with-http-apis"></a>Сравнение служб gRPC с API-интерфейсами HTTP
 

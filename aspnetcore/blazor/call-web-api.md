@@ -1,39 +1,41 @@
 ---
-title: Вызов веб-API из ASP.NET Core Блазор
+title: Вызов веб-API из ASP.NET Core Blazor
 author: guardrex
-description: Узнайте, как вызывать веб-API из приложения Блазор с помощью вспомогательных функций JSON, включая создание запросов на общий доступ к ресурсам в разных источниках (CORS).
+description: Узнайте, как вызывать веб-API из Blazor приложения с помощью вспомогательных средств JSON, включая создание запросов на общий доступ к ресурсам в разных источниках (CORS).
 monikerRange: '>= aspnetcore-3.0'
 ms.author: riande
 ms.custom: mvc
 ms.date: 10/15/2019
+no-loc:
+- Blazor
 uid: blazor/call-web-api
-ms.openlocfilehash: b08fdf5c2f9a523314b1744a33087eb64fa4c14a
-ms.sourcegitcommit: 35a86ce48041caaf6396b1e88b0472578ba24483
+ms.openlocfilehash: b5c57317005d0072410542bad322458b1cb3f5ee
+ms.sourcegitcommit: 3fc3020961e1289ee5bf5f3c365ce8304d8ebf19
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72390836"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73962715"
 ---
-# <a name="call-a-web-api-from-aspnet-core-blazor"></a>Вызов веб-API из ASP.NET Core Блазор
+# <a name="call-a-web-api-from-aspnet-core-opno-locblazor"></a>Вызов веб-API из ASP.NET Core Blazor
 
 [Люк ЛаСаМ](https://github.com/guardrex), [Даниэль Roth)](https://github.com/danroth27)и самое [Нела Круз](https://github.com/juandelacruz23)
 
 [!INCLUDE[](~/includes/blazorwasm-preview-notice.md)]
 
-Приложения блазор WebService вызывают веб-API с помощью предварительно настроенной службы `HttpClient`. Запросы составления, которые могут включать параметры [API-интерфейса получения](https://developer.mozilla.org/docs/Web/API/Fetch_API) JavaScript, с помощью вспомогательных функций JSON блазор или с <xref:System.Net.Http.HttpRequestMessage>.
+Blazor приложения сборки вызывают веб-API с помощью предварительно настроенной службы `HttpClient`. Запросы на создание, которые могут включать параметры [API-интерфейса получения](https://developer.mozilla.org/docs/Web/API/Fetch_API) JavaScript, с помощью Blazor вспомогательных функций JSON или <xref:System.Net.Http.HttpRequestMessage>.
 
-Серверные приложения блазор вызывают веб-API, используя экземпляры <xref:System.Net.Http.HttpClient>, обычно созданные с помощью <xref:System.Net.Http.IHttpClientFactory>. Для получения дополнительной информации см. <xref:fundamentals/http-requests>.
+Blazor серверные приложения вызывают веб-API с помощью экземпляров <xref:System.Net.Http.HttpClient>, обычно созданных с помощью <xref:System.Net.Http.IHttpClientFactory>. Для получения дополнительной информации см. <xref:fundamentals/http-requests>.
 
 [Просмотреть или скачать образец кода](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/blazor/common/samples/) ([как скачивать](xref:index#how-to-download-a-sample))
 
-Примеры Блазор см. в следующих компонентах примера приложения:
+Примеры для Blazor сборки см. в следующих компонентах примера приложения:
 
 * Вызов веб-API (*pages/каллвебапи. Razor*)
 * Тестер HTTP-запросов (*Components/хттпрекуесттестер. Razor*)
 
 ## <a name="httpclient-and-json-helpers"></a>HttpClient и вспомогательные методы JSON
 
-В приложениях Блазор веб-сборки [HttpClient](xref:fundamentals/http-requests) доступна в виде предварительно настроенной службы для выполнения запросов к серверу-источнику. Чтобы использовать вспомогательные методы JSON `HttpClient`, добавьте ссылку на пакет в `Microsoft.AspNetCore.Blazor.HttpClient`. `HttpClient` и вспомогательные методы JSON также используются для вызова конечных точек веб-API сторонних производителей. `HttpClient` реализуется с помощью [API выборки](https://developer.mozilla.org/docs/Web/API/Fetch_API) в браузере и подчиняется его ограничениям, включая принудительное применение той же политики происхождения.
+В Blazor приложениях [HttpClient](xref:fundamentals/http-requests) доступна как предварительно настроенная служба для выполнения запросов к серверу-источнику. Чтобы использовать `HttpClient` вспомогательных функций JSON, добавьте ссылку на пакет для `Microsoft.AspNetCore.Blazor.HttpClient`. `HttpClient` и вспомогательные методы JSON также используются для вызова конечных точек веб-API сторонних производителей. `HttpClient` реализуется с помощью [API выборки](https://developer.mozilla.org/docs/Web/API/Fetch_API) в браузере и подчиняется его ограничениям, включая принудительное применение той же политики происхождения.
 
 Базовый адрес клиента устанавливается в адрес исходного сервера. Внедрить экземпляр `HttpClient` с помощью директивы `@inject`:
 
@@ -61,7 +63,7 @@ private class TodoItem
 
 * `GetJsonAsync` &ndash; отправляет запрос HTTP GET и анализирует текст ответа JSON для создания объекта.
 
-  В следующем коде компонентом `_todoItems` отображаются. Метод `GetTodoItems` активируется при завершении подготовки компонента к просмотру ([онинитиализедасинк](xref:blazor/components#lifecycle-methods)). Полный пример см. в примере приложения.
+  В следующем коде `_todoItems` отображаются компонентом. Метод `GetTodoItems` активируется при завершении подготовки компонента к просмотру ([онинитиализедасинк](xref:blazor/components#lifecycle-methods)). Полный пример см. в примере приложения.
 
   ```cshtml
   @using System.Net.Http
@@ -99,7 +101,7 @@ private class TodoItem
 
 * `PutJsonAsync` &ndash; отправляет запрос HTTP-размещения, включая содержимое в кодировке JSON.
 
-  В следующем коде значения `_editItem` для `Name` и `IsCompleted` предоставляются связанными элементами компонента. Элемент `Id` задается, когда элемент выбирается в другой части пользовательского интерфейса, и вызывается `EditItem`. Метод `SaveItem` активируется путем выбора элемента Save `<button>`. Полный пример см. в примере приложения.
+  В следующем коде `_editItem` значения для `Name` и `IsCompleted` предоставляются связанными элементами компонента. Элемент `Id` задается, когда элемент выбирается в другой части пользовательского интерфейса, и вызывается `EditItem`. Метод `SaveItem` активируется путем выбора элемента Save `<button>`. Полный пример см. в примере приложения.
 
   ```cshtml
   @using System.Net.Http
@@ -153,7 +155,7 @@ private class TodoItem
 
 ## <a name="httpclient-and-httprequestmessage-with-fetch-api-request-options"></a>HttpClient и HttpRequestMessage с параметрами запроса API FETCH
 
-При выполнении для сборки в Блазор приложении [HttpClient](xref:fundamentals/http-requests) используйте для настройки запросов параметры, за<xref:System.Net.Http.HttpRequestMessage>. Например, можно указать URI запроса, метод HTTP и все нужные заголовки запроса.
+При запуске в сборке в Blazor приложении сборки используйте [HttpClient](xref:fundamentals/http-requests) и <xref:System.Net.Http.HttpRequestMessage> для настройки запросов. Например, можно указать URI запроса, метод HTTP и все нужные заголовки запроса.
 
 Укажите параметры запроса для базового [API выборки](https://developer.mozilla.org/docs/Web/API/Fetch_API) JavaScript, используя свойство `WebAssemblyHttpMessageHandler.FetchArgs` для запроса. Как показано в следующем примере, свойству `credentials` присвоено любое из следующих значений:
 

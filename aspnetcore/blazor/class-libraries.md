@@ -1,18 +1,20 @@
 ---
 title: Библиотеки классов компонентов Razor ASP.NET Core
 author: guardrex
-description: Узнайте, как компоненты можно включать в приложения Блазор из библиотеки внешних компонентов.
+description: Узнайте, как компоненты можно включать в Blazor приложения из библиотеки внешних компонентов.
 monikerRange: '>= aspnetcore-3.0'
 ms.author: riande
 ms.custom: mvc
 ms.date: 09/23/2019
+no-loc:
+- Blazor
 uid: blazor/class-libraries
-ms.openlocfilehash: 2e042b43c6db24e0ecac727be100575fe1275e17
-ms.sourcegitcommit: 6d26ab647ede4f8e57465e29b03be5cb130fc872
+ms.openlocfilehash: d4cc4124c9dc28ed6da0923b919919df4965f89f
+ms.sourcegitcommit: 3fc3020961e1289ee5bf5f3c365ce8304d8ebf19
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/07/2019
-ms.locfileid: "71999777"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73962712"
 ---
 # <a name="aspnet-core-razor-components-class-libraries"></a>Библиотеки классов компонентов Razor ASP.NET Core
 
@@ -28,7 +30,7 @@ ms.locfileid: "71999777"
 
 ## <a name="create-an-rcl"></a>Создание РКЛ
 
-Следуйте указаниям в статье <xref:blazor/get-started>, чтобы настроить среду для Блазор.
+Следуйте указаниям в статье <xref:blazor/get-started>, чтобы настроить среду для Blazor.
 
 # <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
 
@@ -65,7 +67,7 @@ ms.locfileid: "71999777"
 Для использования компонентов, определенных в библиотеке в другом проекте, используйте один из следующих подходов:
 
 * Используйте полное имя типа с пространством имен.
-* Используйте директиву [\@Using](xref:mvc/views/razor#using) Razor. Отдельные компоненты можно добавлять по имени.
+* Используйте директиву [\@Razor в](xref:mvc/views/razor#using) синтаксисе. Отдельные компоненты можно добавлять по имени.
 
 В следующих примерах `MyComponentLib1` — это библиотека компонентов, содержащая компонент `SalesReport`.
 
@@ -79,7 +81,7 @@ Welcome to your new app.
 <MyComponentLib1.SalesReport />
 ```
 
-На компонент также можно ссылаться, если библиотека входит в область с директивой `@using`:
+На этот компонент также можно ссылаться, если библиотека входит в область с директивой `@using`:
 
 ```cshtml
 @using MyComponentLib1
@@ -91,7 +93,7 @@ Welcome to your new app.
 <SalesReport />
 ```
 
-Включите директиву `@using MyComponentLib1` в файл *_Import. Razor* верхнего уровня, чтобы сделать компоненты библиотеки доступными для всего проекта. Добавьте директиву в файл *_Import. Razor* на любом уровне, чтобы применить пространство имен к одной странице или набору страниц в папке.
+Включите директиву `@using MyComponentLib1` в файл верхнего уровня *_Import. Razor* , чтобы сделать компоненты библиотеки доступными для всего проекта. Добавьте директиву в файл *_Import. Razor* на любом уровне, чтобы применить пространство имен к одной странице или набору страниц в папке.
 
 ## <a name="build-pack-and-ship-to-nuget"></a>Сборка, Упаковка и доставка в NuGet
 
@@ -105,7 +107,7 @@ dotnet pack
 
 ## <a name="create-a-razor-components-class-library-with-static-assets"></a>Создание библиотеки классов компонентов Razor со статическими ресурсами
 
-РКЛ может включать статические ресурсы. Статические ресурсы доступны для любого приложения, использующего библиотеку. Дополнительные сведения см. в разделе <xref:razor-pages/ui-class#create-an-rcl-with-static-assets>.
+РКЛ может включать статические ресурсы. Статические ресурсы доступны для любого приложения, использующего библиотеку. Для получения дополнительной информации см. <xref:razor-pages/ui-class#create-an-rcl-with-static-assets>.
 
 ## <a name="additional-resources"></a>Дополнительные ресурсы
 
