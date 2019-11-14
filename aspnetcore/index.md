@@ -4,14 +4,17 @@ author: rick-anderson
 description: Введение в ASP.NET Core — кроссплатформенную высокопроизводительную платформу с открытым исходным кодом для создания современных облачных интернет-приложений.
 ms.author: riande
 ms.custom: mvc
-ms.date: 11/03/2019
+ms.date: 11/12/2019
+no-loc:
+- Blazor
+- SignalR
 uid: index
-ms.openlocfilehash: edbdce19656af64d7c2c0ee554bc5213a0d0c50e
-ms.sourcegitcommit: 09f4a5ded39cc8204576fe801d760bd8b611f3aa
+ms.openlocfilehash: dc1acd9e31fdc4f626c9dee2f378252c802491b6
+ms.sourcegitcommit: 3fc3020961e1289ee5bf5f3c365ce8304d8ebf19
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73611410"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73963645"
 ---
 # <a name="introduction-to-aspnet-core"></a>Введение в ASP.NET Core
 
@@ -44,7 +47,7 @@ ASP.NET Core MVC предоставляет функции, которые по�
 
 ## <a name="client-side-development"></a>Клиентская разработка
 
-ASP.NET Core легко интегрируется с популярными клиентскими платформами и библиотеками, включая [Blazor](xref:blazor/index), [Angular](xref:spa/angular), [React](xref:spa/react) и [Bootstrap](https://getbootstrap.com/). Подробнее см. <xref:blazor/index> и связанные материалы о *разработке на стороне клиента*.
+ASP.NET Core легко интегрируется с распространенными клиентскими платформами и библиотеками, в том числе [Blazor](xref:blazor/index), [Angular](xref:spa/angular), [React](xref:spa/react) и [Bootstrap](https://getbootstrap.com/). Подробнее см. <xref:blazor/index> и связанные материалы о *разработке на стороне клиента*.
 
 <a name="target-framework"></a>
 
@@ -80,7 +83,7 @@ ASP.NET Core версии 3.0 и более поздних будут выпол
    |Веб-приложение                   | Разработка нового приложения        |[Начало работы с Razor Pages](xref:tutorials/razor-pages/razor-pages-start) |
    |Веб-приложение                   | Обслуживание приложения MVC |[Начало работы с MVC](xref:tutorials/first-mvc-app/start-mvc)|
    |Веб-интерфейс API                   |                            |[Создание веб-API](xref:tutorials/first-web-api)\*  |
-   |Приложение режима реального времени             |                            |[Начало работы с SignalR](xref:tutorials/signalr) |
+   |Приложение режима реального времени             |                            |[Начало работы с SignalR](xref:tutorials/signalr) |
    |Приложение Blazor                |                            |[Начало работы с Blazor](xref:blazor/get-started) |
    |Приложение удаленного вызова процедур |                            |[Начало работы со службой gRPC](xref:tutorials/grpc/grpc-start) |
 

@@ -1,20 +1,23 @@
 ---
-title: Общие сведения о Blazor для ASP.NET Core
+title: Введение в ASP.NET Core Blazor
 author: guardrex
-description: Узнайте больше об использовании Blazor в ASP.NET Core для создания интерактивного клиентского веб-интерфейса с помощью .NET в приложении ASP.NET Core.
+description: Узнайте больше об использовании ASP.NET Core Blazor для создания интерактивного клиентского веб-интерфейса с помощью .NET в приложении ASP.NET Core.
 monikerRange: '>= aspnetcore-3.0'
 ms.author: riande
 ms.custom: mvc, seoapril2019
-ms.date: 10/31/2019
+ms.date: 11/12/2019
+no-loc:
+- Blazor
+- SignalR
 uid: blazor/index
-ms.openlocfilehash: c2574c1250cf94e89dd5476b6174620d83546236
-ms.sourcegitcommit: 77c8be22d5e88dd710f42c739748869f198865dd
+ms.openlocfilehash: 8b656a7461c78475432722540ad628258cfe19c4
+ms.sourcegitcommit: 3fc3020961e1289ee5bf5f3c365ce8304d8ebf19
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/01/2019
-ms.locfileid: "73427033"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73962914"
 ---
-# <a name="introduction-to-aspnet-core-blazor"></a>Общие сведения о Blazor для ASP.NET Core
+# <a name="introduction-to-aspnet-core-opno-locblazor"></a>Введение в ASP.NET Core Blazor
 
 Авторы: [Дэниэл Рот (Daniel Roth)](https://github.com/danroth27) и [Люк Лэтем (Luke Latham)](https://github.com/guardrex)
 
@@ -101,7 +104,7 @@ Welcome to your new app.
 
 Компоненты преобразуются в хранящееся в памяти представление модели DOM для браузера, которое называется *деревом отображения*, позволяя гибко и эффективно обновлять пользовательский интерфейс.
 
-## <a name="blazor-webassembly"></a>Blazor WebAssembly
+## <a name="opno-locblazor-webassembly"></a>Blazor WebAssembly
 
 [!INCLUDE[](~/includes/blazorwasm-preview-notice.md)]
 
@@ -125,7 +128,7 @@ Blazor WebAssembly — это платформа для одностранич�
 * HTTP-ответы сжимаются;
 * среда выполнения и сборки .NET кэшируются в браузере.
 
-## <a name="blazor-server"></a>Blazor Server
+## <a name="opno-locblazor-server"></a>Blazor Server
 
 Blazor отделяет логику отображения компонентов от того, как применяются обновления пользовательского интерфейса. Blazor Server предоставляет поддержку размещения компонентов Razor на сервере в приложении ASP.NET Core. Обновления пользовательского интерфейса передаются через подключение [SignalR](xref:signalr/introduction).
 
