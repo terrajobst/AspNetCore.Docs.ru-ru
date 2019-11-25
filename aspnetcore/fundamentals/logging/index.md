@@ -5,14 +5,14 @@ description: Узнайте, как использовать платформу 
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 11/05/2019
+ms.date: 11/19/2019
 uid: fundamentals/logging/index
-ms.openlocfilehash: 2cb19d251ad69ebd7d18480c14857e948c69b747
-ms.sourcegitcommit: 6628cd23793b66e4ce88788db641a5bbf470c3c1
+ms.openlocfilehash: b23e64077290f0f613e904651e4bb640fcbba95d
+ms.sourcegitcommit: f40c9311058c9b1add4ec043ddc5629384af6c56
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73659973"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74289089"
 ---
 # <a name="logging-in-net-core-and-aspnet-core"></a>Ведение журнала в .NET Core и ASP.NET Core
 
@@ -311,8 +311,6 @@ public class Program
 
 Например, конфигурацию ведения журналов обычно предоставляет раздел `Logging` в файле параметров приложения. В следующем примере показано содержимое типичного файла *appsettings.Development.json*.
 
-::: moniker range=">= aspnetcore-2.1"
-
 ```json
 {
   "Logging": {
@@ -337,7 +335,7 @@ public class Program
 
 Если уровни указаны в `Logging.{providername}.LogLevel`, они не переопределяют ничего из того, что задано в `Logging.LogLevel`.
 
-::: moniker-end
+API ведения журнала не включает сценарий для изменения уровней журнала во время работы приложения. Однако некоторые поставщики конфигурации могут перезагружать конфигурацию, что немедленно влияет на конфигурацию ведения журнала. Например, [Поставщик конфигурации файлов](xref:fundamentals/configuration/index#file-configuration-provider), который добавляется `CreateDefaultBuilder` для чтения файлов параметров, по умолчанию перезагружает конфигурацию ведения журнала. Если конфигурация изменяется в коде во время выполнения приложения, приложение может вызвать [IConfigurationRoot.Reload](xref:Microsoft.Extensions.Configuration.IConfigurationRoot.Reload*), чтобы обновить конфигурацию ведения журнала приложения.
 
 Сведения о реализации поставщиков конфигураций см. в статье <xref:fundamentals/configuration/index>.
 
@@ -706,7 +704,7 @@ System.Exception: Item not found exception.
 
 ### <a name="create-filter-rules-in-configuration"></a>Создание правил фильтрации в конфигурации
 
-Код шаблона проектов вызывает `CreateDefaultBuilder` для настройки ведения журналов для поставщиков Console и Debug. Метод `CreateDefaultBuilder` настраивает ведение журнала для просмотра конфигурации в разделе `Logging`, как было описано [ранее в этой статье](#configuration).
+Код шаблона проектов вызывает `CreateDefaultBuilder` для настройки ведения журналов для поставщиков Console, Debug и EventSource (ASP.NET Core 2.2 или более поздняя версия). Метод `CreateDefaultBuilder` настраивает ведение журнала для просмотра конфигурации в разделе `Logging`, как было описано [ранее в этой статье](#configuration).
 
 Данные конфигурации указывают минимальные уровни ведения журнала для каждого поставщика и категории, как показано в следующем примере:
 
@@ -892,7 +890,7 @@ warn: TodoApiSample.Controllers.TodoController[4000]
 
 * [Консоль](#console-provider)
 * [Отладка](#debug-provider)
-* [EventSource](#eventsource-provider)
+* [EventSource](#event-source-provider)
 * [EventLog](#windows-eventlog-provider)
 * [TraceSource](#tracesource-provider)
 * [AzureAppServicesFile](#azure-app-service-provider)
@@ -925,13 +923,119 @@ dotnet run
 logging.AddDebug();
 ```
 
-### <a name="eventsource-provider"></a>Поставщик EventSource
+### <a name="event-source-provider"></a>Поставщик источника событий
 
-Для приложений, предназначенных для ASP.NET Core 1.1.0 или более поздней версии, реализовывать события трассировки можно с помощью пакета поставщика [Microsoft.Extensions.Logging.EventSource](https://www.nuget.org/packages/Microsoft.Extensions.Logging.EventSource). В Windows используется [трассировка событий Windows](https://msdn.microsoft.com/library/windows/desktop/bb968803). Поставщик является кроссплатформенным, но для Linux и macOS инструменты сбора событий и отображений пока отсутствуют.
+Пакет поставщика [Microsoft.Extensions.Logging.EventSource](https://www.nuget.org/packages/Microsoft.Extensions.Logging.EventSource) записывает данные в источник событий на кросс-платформенный сервер с именем `Microsoft-Extensions-Logging`. В Windows поставщик использует [ETW](https://msdn.microsoft.com/library/windows/desktop/bb968803).
 
 ```csharp
 logging.AddEventSourceLogger();
 ```
+
+Поставщик источника событий добавляется автоматически при вызове `CreateDefaultBuilder` для сборки узла.
+
+::: moniker range=">= aspnetcore-3.0"
+
+#### <a name="dotnet-trace-tooling"></a>Средства трассировки dotnet
+
+Средство [dotnet-trace](/dotnet/core/diagnostics/dotnet-trace) — это универсальное кроссплатформенное средство командной строки, которое выполняет сбор трассировок .NET Core для запущенного процесса. Средство собирает данные поставщика <xref:Microsoft.Extensions.Logging.EventSource> с помощью <xref:Microsoft.Extensions.Logging.EventSource.LoggingEventSource>.
+
+Установите средства трассировки dotnet с помощью следующей команды:
+
+```dotnetcli
+dotnet tool install --global dotnet-trace
+```
+
+Используйте средства трассировки dotnet, чтобы получить трассировку из приложения:
+
+1. Если приложение не создает узел с `CreateDefaultBuilder`, добавьте [Поставщика источника событий](#event-source-provider) в конфигурацию ведения журнала приложения.
+
+1. Запустите приложение с помощью команды `dotnet run`.
+
+1. Определите идентификатор процесса (PID) приложения .NET Core:
+
+   * В Windows воспользуйтесь одним из перечисленных ниже подходов:
+     * Диспетчер задач (CTRL+ALT+DEL)
+     * [Команда tasklist](/windows-server/administration/windows-commands/tasklist)
+     * [Команда Powershell Get-Process](/powershell/module/microsoft.powershell.management/get-process)
+   * В Linux используйте [команду pidof](https://refspecs.linuxfoundation.org/LSB_5.0.0/LSB-Core-generic/LSB-Core-generic/pidof.html).
+
+   Найдите идентификатор процесса, имя которого совпадает с именем сборки приложения.
+
+1. Выполните команду `dotnet trace`.
+
+   Общий синтаксис команды:
+
+   ```dotnetcli
+   dotnet trace collect -p {PID} 
+       --providers Microsoft-Extensions-Logging:{Keyword}:{Event Level}
+           :FilterSpecs=\"
+               {Logger Category 1}:{Event Level 1};
+               {Logger Category 2}:{Event Level 2};
+               ...
+               {Logger Category N}:{Event Level N}\"
+   ```
+
+   При использовании командной оболочки PowerShell заключите значение `--providers` в одинарные кавычки (`'`):
+
+   ```dotnetcli
+   dotnet trace collect -p {PID} 
+       --providers 'Microsoft-Extensions-Logging:{Keyword}:{Event Level}
+           :FilterSpecs=\"
+               {Logger Category 1}:{Event Level 1};
+               {Logger Category 2}:{Event Level 2};
+               ...
+               {Logger Category N}:{Event Level N}\"'
+   ```
+
+   На платформах, отличных от Windows, добавьте параметр `-f speedscope`, чтобы изменить формат выходного файла трассировки на `speedscope`.
+
+   | Ключевое слово | ОПИСАНИЕ |
+   | :-----: | ----------- |
+   | 1       | Занесите в журнал метасобытия о `LoggingEventSource`. Не заносит в журнал события из `ILogger`). |
+   | 2       | Включает событие `Message` при вызове `ILogger.Log()`. Предоставляет сведения в исходном виде (без форматирования). |
+   | 4       | Включает событие `FormatMessage` при вызове `ILogger.Log()`. Предоставляет сведения в виде отформатированной строки. |
+   | 8       | Включает событие `MessageJson` при вызове `ILogger.Log()`. Предоставляет представление аргументов в формате JSON. |
+
+   | Уровень события | ОПИСАНИЕ     |
+   | :---------: | --------------- |
+   | 0           | `LogAlways`     |
+   | 1           | `Critical`      |
+   | 2           | `Error`         |
+   | 3           | `Warning`       |
+   | 4           | `Informational` |
+   | 5           | `Verbose`       |
+
+   Записи `FilterSpecs` для `{Logger Category}` и `{Event Level}` представляют дополнительные условия фильтрации журналов. Отдельные записи `FilterSpecs` разделяются точкой с запятой (`;`).
+
+   Пример использования командной оболочки Windows (**не** одинарные кавычки вокруг значения `--providers`):
+
+   ```dotnetcli
+   dotnet trace collect -p {PID} --providers Microsoft-Extensions-Logging:4:2:FilterSpecs=\"Microsoft.AspNetCore.Hosting*:4\"
+   ```
+
+   Предыдущая команда активирует:
+
+   * Средство ведения журнала источника событий для создания форматированных строк (`4`) для ошибок (`2`).
+   * Ведение журнала `Microsoft.AspNetCore.Hosting` на уровне ведения журнала `Informational` (`4`).
+
+1. Остановите средства трассировки dotnet, нажав клавишу ENTER или CTRL+C.
+
+   Трассировка сохраняется с именем *trace.nettrace* в папке, в которой выполняется команда `dotnet trace`.
+
+1. Откройте трассировку с помощью [Perfview](#perfview). Откройте файл *trace.nettrace* и изучите события трассировки.
+
+Дополнительные сведения можно найти в разделе
+
+* [Трассировка для программы анализа производительности (dotnet-trace)](/dotnet/core/diagnostics/dotnet-trace) (документация по .NET Core)
+* [Трассировка для программы анализа производительности (dotnet-trace)](https://github.com/dotnet/diagnostics/blob/master/documentation/dotnet-trace-instructions.md) (документация по репозиторию GitHub dotnet/diagnostics)
+* [Класс LoggingEventSource](xref:Microsoft.Extensions.Logging.EventSource.LoggingEventSource) (обозреватель API .NET)
+* <xref:System.Diagnostics.Tracing.EventLevel>
+* [Источник ссылки LoggingEventSource (3.0)](https://github.com/aspnet/Extensions/blob/release/3.0/src/Logging/Logging.EventSource/src/LoggingEventSource.cs) &ndash; Чтобы получить источник ссылки для другой версии, измените ветку на `release/{Version}`, где `{Version}` — это нужная версия ASP.NET Core.
+* [Perfview](#perfview) &ndash; полезный инструмент для просмотра трассировок источника событий.
+
+#### <a name="perfview"></a>Perfview
+
+::: moniker-end
 
 Для сбора и просмотра данных журналов рекомендуется использовать [программу PerfView](https://github.com/Microsoft/perfview). Существуют и другие средства для просмотра журналов трассировки событий Windows, но PerfView обеспечивает максимальное удобство работы с событиями трассировки событий Windows, создаваемыми ASP.NET Core.
 
@@ -975,7 +1079,7 @@ logging.AddAzureWebAppDiagnostics();
 
 ::: moniker-end
 
-::: moniker range=">= aspnetcore-2.1 <= aspnetcore-2.2"
+::: moniker range="< aspnetcore-3.0"
 
 Этот пакет не входит в состав [метапакета Microsoft.AspNetCore.App](xref:fundamentals/metapackage-app). Если планируется использовать .NET Framework или будет указана ссылка на метапакет `Microsoft.AspNetCore.App`, добавьте пакет поставщика в проект. 
 
@@ -1024,7 +1128,7 @@ logging.AddAzureWebAppDiagnostics();
 
 * Со страницы портала приложения перейдите на страницу **Журналы Службы приложений**.
 * **Включите** параметр **Ведение журнала приложения (файловая система)** .
-* Выберите **уровень** ведения журнала.
+* Выберите **уровень** ведения журнала. Этот параметр применяется только к потоковой передаче журналов Azure, а не к другим поставщикам ведения журнала в приложении.
 
 Перейдите на страницу **Поток журналов**, чтобы просмотреть сообщения приложения. Они записываются в журнал приложением через интерфейс `ILogger`.
 
