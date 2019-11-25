@@ -6,16 +6,16 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 09/14/2019
 uid: security/enforcing-ssl
-ms.openlocfilehash: 044e9d594fa037214d80898e3ecc420d80a6f869
-ms.sourcegitcommit: 73a451e9a58ac7102f90b608d661d8c23dd9bbaf
+ms.openlocfilehash: 82cd2e52f3bd929682b9eae24611ad04fd9f8682
+ms.sourcegitcommit: 3e503ef510008e77be6dd82ee79213c9f7b97607
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72037619"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74317371"
 ---
 # <a name="enforce-https-in-aspnet-core"></a>Принудительное применение HTTPS в ASP.NET Core
 
-Автор: [Рик Андерсон](https://twitter.com/RickAndMSFT) (Rick Anderson)
+Автор: [Рик Андерсон](https://twitter.com/RickAndMSFT)
 
 В этом документе показано, как:
 
@@ -98,29 +98,29 @@ ms.locfileid: "72037619"
 
 ::: moniker range=">= aspnetcore-3.0"
 
-* Задайте [параметр узла](/aspnet/core/fundamentals/host/generic-host?view=aspnetcore-3.0#https_port)`https_port`:
+* Задайте [параметр узла](/aspnet/core/fundamentals/host/generic-host?view=aspnetcore-3.0#https_port)`https_port`.
 
   * В конфигурации узла.
-  * Путем установки переменной среды `ASPNETCORE_HTTPS_PORT`.
+  * Путем задания переменной среды `ASPNETCORE_HTTPS_PORT`.
   * Путем добавления записи верхнего уровня в *appSettings. JSON*:
 
     [!code-json[](enforcing-ssl/sample-snapshot/3.x/appsettings.json?highlight=2)]
 
-* Укажите порт с защитой схемы с помощью [переменной среды ASPNETCORE_URLS](/aspnet/core/fundamentals/host/generic-host?view=aspnetcore-3.0#urls). Переменная среды настраивает сервер. По промежуточного слоя косвенно обнаруживает HTTPS-порт через @no__t – 0. Этот подход не работает в обратных развертываниях прокси-сервера.
+* Укажите порт с защитой схемы, используя [переменную среды ASPNETCORE_URLS](/aspnet/core/fundamentals/host/generic-host?view=aspnetcore-3.0#urls). Переменная среды настраивает сервер. По промежуточного слоя косвенно обнаруживает HTTPS порт с помощью <xref:Microsoft.AspNetCore.Hosting.Server.Features.IServerAddressesFeature>. Этот подход не работает в обратных развертываниях прокси-сервера.
 
 ::: moniker-end
 
 ::: moniker range="<= aspnetcore-2.2"
 
-* Задайте [параметр узла](xref:fundamentals/host/web-host#https-port)`https_port`:
+* Задайте [параметр узла](xref:fundamentals/host/web-host#https-port)`https_port`.
 
   * В конфигурации узла.
-  * Путем установки переменной среды `ASPNETCORE_HTTPS_PORT`.
+  * Путем задания переменной среды `ASPNETCORE_HTTPS_PORT`.
   * Путем добавления записи верхнего уровня в *appSettings. JSON*:
 
     [!code-json[](enforcing-ssl/sample-snapshot/2.x/appsettings.json?highlight=2)]
 
-* Укажите порт с защитой схемы с помощью [переменной среды ASPNETCORE_URLS](xref:fundamentals/host/web-host#server-urls). Переменная среды настраивает сервер. По промежуточного слоя косвенно обнаруживает HTTPS-порт через @no__t – 0. Этот подход не работает в обратных развертываниях прокси-сервера.
+* Укажите порт с защитой схемы, используя [переменную среды ASPNETCORE_URLS](xref:fundamentals/host/web-host#server-urls). Переменная среды настраивает сервер. По промежуточного слоя косвенно обнаруживает HTTPS порт с помощью <xref:Microsoft.AspNetCore.Hosting.Server.Features.IServerAddressesFeature>. Этот подход не работает в обратных развертываниях прокси-сервера.
 
 ::: moniker-end
 
@@ -129,7 +129,7 @@ ms.locfileid: "72037619"
 * Настройте конечную точку HTTPS URL-адреса для общедоступного пограничной развертывания сервера [Kestrel](xref:fundamentals/servers/kestrel) или [http. sys](xref:fundamentals/servers/httpsys) . Приложение использует только **один HTTPS-порт** . По промежуточного слоя обнаруживает порт с помощью <xref:Microsoft.AspNetCore.Hosting.Server.Features.IServerAddressesFeature>.
 
 > [!NOTE]
-> Когда приложение запускается в конфигурации обратного прокси-сервера, <xref:Microsoft.AspNetCore.Hosting.Server.Features.IServerAddressesFeature> недоступно. Задайте порт с помощью одного из других подходов, описанных в этом разделе.
+> При запуске приложения в конфигурации обратного прокси-сервера <xref:Microsoft.AspNetCore.Hosting.Server.Features.IServerAddressesFeature> недоступен. Задайте порт с помощью одного из других подходов, описанных в этом разделе.
 
 ### <a name="edge-deployments"></a>Развертывания пограничных устройств 
 
@@ -146,9 +146,9 @@ ms.locfileid: "72037619"
 
 Все брандмауэры между клиентом и сервером также должны иметь открытые порты связи для трафика.
 
-Если запросы перенаправляются в конфигурации обратных прокси-серверов, используйте [промежуточный слой перенаправленных заголовков](xref:host-and-deploy/proxy-load-balancer) перед вызовом по промежуточного слоя перенаправления HTTPS. По промежуточного слоя перенаправленных заголовков обновляет `Request.Scheme`, используя заголовок `X-Forwarded-Proto`. По промежуточного слоя позволяет правильно работать с URI перенаправления и другими политиками безопасности. Если по промежуточного слоя перенаправленных заголовков не используется, серверное приложение может не получить правильную схему и завершить цикл перенаправления. Обычное сообщение об ошибке конечного пользователя состоит в том, что произошло слишком много перенаправлений.
+Если запросы перенаправляются в конфигурации обратных прокси-серверов, используйте [промежуточный слой перенаправленных заголовков](xref:host-and-deploy/proxy-load-balancer) перед вызовом по промежуточного слоя перенаправления HTTPS. По промежуточного слоя перенаправленных заголовков обновляет `Request.Scheme`с помощью заголовка `X-Forwarded-Proto`. По промежуточного слоя позволяет правильно работать с URI перенаправления и другими политиками безопасности. Если по промежуточного слоя перенаправленных заголовков не используется, серверное приложение может не получить правильную схему и завершить цикл перенаправления. Обычное сообщение об ошибке конечного пользователя состоит в том, что произошло слишком много перенаправлений.
 
-При развертывании в службе приложений Azure следуйте указаниям в [Tutorial: Привязывание существующего настраиваемого SSL-сертификата к веб-приложениям Azure](/azure/app-service/app-service-web-tutorial-custom-ssl).
+При развертывании в службе приложений Azure следуйте указаниям в [руководстве по связыванию существующего настраиваемого SSL-сертификата с Azure Web Apps](/azure/app-service/app-service-web-tutorial-custom-ssl).
 
 ### <a name="options"></a>Параметры
 
@@ -224,7 +224,7 @@ public void ConfigureServices(IServiceCollection services)
 
 ## <a name="https-redirection-middleware-alternative-approach"></a>Альтернативный подход по промежуточного слоя перенаправления HTTPS
 
-Альтернативой по промежуточного слоя перенаправления HTTPS (`UseHttpsRedirection`) является использование по промежуточного слоя переписывания URL-адресов (`AddRedirectToHttps`). `AddRedirectToHttps` может также задавать код состояния и порт при выполнении перенаправления. Дополнительные сведения см. в разделе по [промежуточного слоя перезаписи URL-адресов](xref:fundamentals/url-rewriting).
+Альтернативой по промежуточного слоя перенаправления HTTPS (`UseHttpsRedirection`) является использование по промежуточного слоя переписывания URL-адресов (`AddRedirectToHttps`). `AddRedirectToHttps` также может задавать код состояния и порт при выполнении перенаправления. Дополнительные сведения см. в разделе по [промежуточного слоя перезаписи URL-адресов](xref:fundamentals/url-rewriting).
 
 При перенаправлении по протоколу HTTPS без требования дополнительных правил перенаправления рекомендуется использовать по промежуточного слоя перенаправления HTTPS (`UseHttpsRedirection`), описанные в этом разделе.
 
@@ -243,7 +243,7 @@ public void ConfigureServices(IServiceCollection services)
 * HSTS требует по крайней мере одного успешного запроса HTTPS для установки политики HSTS.
 * Приложение должно проверять каждый HTTP-запрос и перенаправлять или отклонять HTTP-запрос.
 
-ASP.NET Core 2,1 и более поздних версий реализуют HSTS с методом расширения `UseHsts`. Следующий код вызывает `UseHsts`, если приложение не находится в [режиме разработки](xref:fundamentals/environments):
+ASP.NET Core 2,1 и более поздних версий реализуют HSTS с помощью метода расширения `UseHsts`. Следующий код вызывает `UseHsts`, если приложение не находится в [режиме разработки](xref:fundamentals/environments):
 
 ::: moniker range=">= aspnetcore-3.0"
 
@@ -259,7 +259,7 @@ ASP.NET Core 2,1 и более поздних версий реализуют HS
 
 `UseHsts` не рекомендуется в разработке, так как параметры HSTS очень кэшируются браузерами. По умолчанию `UseHsts` исключает локальный петлевой адрес.
 
-Для рабочих сред, которые реализуют HTTPS в первый раз, задайте для начального значения [хстсоптионс. MaxAge](xref:Microsoft.AspNetCore.HttpsPolicy.HstsOptions.MaxAge*) небольшое значение, используя один из методов <xref:System.TimeSpan>. Задайте в качестве значения в часах не более одного дня на случай, если необходимо вернуть инфраструктуру HTTPS к протоколу HTTP. Убедившись в устойчивости конфигурации HTTPS, увеличьте значение HSTS max-age. часто используемое значение — один год.
+Для рабочих сред, которые реализуют протокол HTTPS в первый раз, задайте для свойства Initial [хстсоптионс. MaxAge](xref:Microsoft.AspNetCore.HttpsPolicy.HstsOptions.MaxAge*) небольшое значение, используя один из методов <xref:System.TimeSpan>. Задайте в качестве значения в часах не более одного дня на случай, если необходимо вернуть инфраструктуру HTTPS к протоколу HTTP. Убедившись в устойчивости конфигурации HTTPS, увеличьте значение HSTS max-age. часто используемое значение — один год.
 
 В приведенном ниже коде
 
@@ -284,9 +284,9 @@ ASP.NET Core 2,1 и более поздних версий реализуют HS
 
 `UseHsts` исключает следующие узлы замыкания на себя:
 
-* `localhost` : Адрес замыкания на себя IPv4.
-* `127.0.0.1` : Адрес замыкания на себя IPv4.
-* `[::1]` : IPv6-адрес замыкания на себя.
+* `localhost`: адрес замыкания на себя IPv4.
+* `127.0.0.1`: адрес замыкания на себя IPv4.
+* `[::1]`: IPv6-адрес замыкания на себя.
 
 ## <a name="opt-out-of-httpshsts-on-project-creation"></a>Отказ от HTTPS/HSTS при создании проекта
 
@@ -325,7 +325,7 @@ dotnet new webapp --no-https
 
 ## <a name="trust-the-aspnet-core-https-development-certificate-on-windows-and-macos"></a>Доверять сертификату разработки ASP.NET Core HTTPS в Windows и macOS
 
-Пакет SDK для .NET Core включает сертификат разработки HTTPS. Сертификат устанавливается в рамках первого запуска. Например, `dotnet --info` возвращает результат, аналогичный приведенному ниже:
+Пакет SDK для .NET Core включает сертификат разработки HTTPS. Сертификат устанавливается в рамках первого запуска. Например, `dotnet --info` выдает результат, аналогичный приведенному ниже:
 
 ```text
 ASP.NET Core
@@ -336,7 +336,7 @@ For establishing trust on other platforms refer to the platform specific documen
 For more information on configuring HTTPS see https://go.microsoft.com/fwlink/?linkid=848054.
 ```
 
-При установке пакета SDK для .NET Core в локальное хранилище сертификатов пользователя устанавливается сертификат разработки HTTPS ASP.NET Core. Сертификат установлен, но не является доверенным. Чтобы сделать сертификат доверенным, выполните однократный шаг для запуска средства DotNet `dev-certs`:
+При установке пакета SDK для .NET Core в локальное хранилище сертификатов пользователя устанавливается сертификат разработки HTTPS ASP.NET Core. Сертификат установлен, но не является доверенным. Чтобы сделать сертификат доверенным, выполните однократный шаг, чтобы запустить средство DotNet `dev-certs`.
 
 ```dotnetcli
 dotnet dev-certs https --trust
@@ -359,13 +359,13 @@ dotnet dev-certs https --help
 Подсистема Windows для Linux (WSL) создает самозаверяющий сертификат HTTPS. Чтобы настроить хранилище сертификатов Windows для доверия к сертификату WSL, сделайте следующее:
 
 * Выполните следующую команду, чтобы экспортировать созданный сертификат WSL: `dotnet dev-certs https -ep %USERPROFILE%\.aspnet\https\aspnetapp.pfx -p <cryptic-password>`
-* В окне WSL выполните следующую команду: `ASPNETCORE_Kestrel__Certificates__Default__Password="<cryptic-password>" ASPNETCORE_Kestrel__Certificates__Default__Path=/mnt/c/Users/user-name/.aspnet/https/aspnetapp.pfx dotnet watch run`.
+* В окне WSL выполните следующую команду: `ASPNETCORE_Kestrel__Certificates__Default__Password="<cryptic-password>" ASPNETCORE_Kestrel__Certificates__Default__Path=/mnt/c/Users/user-name/.aspnet/https/aspnetapp.pfx dotnet watch run`
 
   Приведенная выше команда задает переменные среды, чтобы в Linux использовался доверенный сертификат Windows.
 
 ## <a name="troubleshoot-certificate-problems"></a>Устранение неполадок с сертификатами
 
-В этом разделе содержатся сведения о том, когда сертификат разработки ASP.NET Core HTTPS [установлен и является доверенным](#trust), но по-прежнему имеются предупреждения браузера о том, что сертификат не является доверенным.
+В этом разделе содержатся сведения о том, когда сертификат разработки ASP.NET Core HTTPS [установлен и является доверенным](#trust), но по-прежнему имеются предупреждения браузера о том, что сертификат не является доверенным. Сертификат разработки ASP.NET Core HTTPS используется [Kestrel](xref:fundamentals/servers/kestrel).
 
 ### <a name="all-platforms---certificate-not-trusted"></a>Все платформы — сертификат не является доверенным
 
@@ -382,13 +382,13 @@ dotnet dev-certs https --trust
 
 ### <a name="docker---certificate-not-trusted"></a>DOCKER — сертификат не является доверенным
 
-* Удалите папку *C:\Users @ no__t-1USER} \аппдата\роаминг\асп.нет\хттпс* .
+* Удалите папку *C:\Users\{User} \аппдата\роаминг\асп.нет\хттпс* .
 * Очистите решение. Удалите папки *bin* и *obj*.
 * Перезапустите средство разработки. Например, Visual Studio, Visual Studio Code или Visual Studio для Mac.
 
 ### <a name="windows---certificate-not-trusted"></a>Windows — сертификат не является доверенным
 
-* Проверьте сертификаты в хранилище сертификатов. Должен существовать сертификат `localhost` с понятным именем `ASP.NET Core HTTPS development certificate` в разделе `Current User > Personal > Certificates` и `Current User > Trusted root certification authorities > Certificates`.
+* Проверьте сертификаты в хранилище сертификатов. В разделе `Current User > Personal > Certificates` и `Current User > Trusted root certification authorities > Certificates` должен быть сертификат `localhost` с понятным именем `ASP.NET Core HTTPS development certificate`
 * Удалите все найденные сертификаты из личных и доверенных корневых центров сертификации. **Не** удаляйте сертификат IIS Express localhost.
 * Выполните следующие команды:
 
@@ -415,10 +415,16 @@ dotnet dev-certs https --trust
 
 Закройте все открытые экземпляры браузера. Откройте новое окно браузера для приложения.
 
+Устранение неполадок с сертификатами в Visual Studio см. [в статье об ошибке HTTPS с помощью IIS Express (ASPNET/AspNetCore #16892)](https://github.com/aspnet/AspNetCore/issues/16892) .
+
+### <a name="iis-express-ssl-certificate-used-with-visual-studio"></a>IIS Express SSL-сертификат, используемый в Visual Studio
+
+Чтобы устранить проблемы с сертификатом IIS Express, выберите **восстановить** в Visual Studio Installer.
+
 ## <a name="additional-information"></a>Дополнительные сведения
 
 * <xref:host-and-deploy/proxy-load-balancer>
-* [Host ASP.NET Core в Linux с помощью Apache: Конфигурация HTTPS @ no__t-0
-* @no__t 0Host ASP.NET Core в Linux с nginx: Конфигурация HTTPS @ no__t-0
+* [Размещение ASP.NET Core в Linux с помощью Apache: Конфигурация HTTPS](xref:host-and-deploy/linux-apache#https-configuration)
+* [Размещение ASP.NET Core в Linux с помощью nginx: Конфигурация HTTPS](xref:host-and-deploy/linux-nginx#https-configuration)
 * [Настройка SSL в службах IIS](/iis/manage/configuring-security/how-to-set-up-ssl-on-iis)
 * [Поддержка браузера OWASP HSTS](https://www.owasp.org/index.php/HTTP_Strict_Transport_Security_Cheat_Sheet#Browser_Support)

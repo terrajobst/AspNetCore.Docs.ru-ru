@@ -1,28 +1,30 @@
 ---
-title: Создание приложения Blazor
+title: Создание первого приложения Blazor
 author: guardrex
-description: Пошаговое создание приложения Blazor.
+description: Узнайте, как создать приложение Blazor по шагам.
 monikerRange: '>= aspnetcore-3.0'
 ms.author: riande
 ms.custom: mvc
 ms.date: 10/31/2019
+no-loc:
+- Blazor
 uid: tutorials/first-blazor-app
-ms.openlocfilehash: cc7caa1ee01e0282024895ab35c5b9933b1504d0
-ms.sourcegitcommit: eb2fe5ad2e82fab86ca952463af8d017ba659b25
+ms.openlocfilehash: 646e14060b88fc2a0fefc2f7a5ebb1c15ac39b79
+ms.sourcegitcommit: 3fc3020961e1289ee5bf5f3c365ce8304d8ebf19
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/01/2019
-ms.locfileid: "73416179"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73963710"
 ---
-# <a name="build-your-first-blazor-app"></a>Создание приложения Blazor
+# <a name="build-your-first-opno-locblazor-app"></a>Создание первого приложения Blazor
 
 Авторы: [Дэниэл Рот (Daniel Roth)](https://github.com/danroth27) и [Люк Лэтем (Luke Latham)](https://github.com/guardrex)
 
 [!INCLUDE[](~/includes/blazorwasm-preview-notice.md)]
 
-В этом руководстве показано, как создать и изменить приложение Blazor.
+В этом учебнике показано, как создать и изменить приложение Blazor.
 
-Следуйте указаниям из статьи <xref:blazor/get-started>, чтобы создать проект Blazor для этого руководства. Назовите проект *ToDoList*.
+Следуйте указаниям из статьи <xref:blazor/get-started>, чтобы создать проект Blazor для этого учебника. Назовите проект *ToDoList*.
 
 ## <a name="build-components"></a>Сборка компонентов
 
@@ -59,7 +61,7 @@ ms.locfileid: "73416179"
 
 1. Добавьте компонент `Counter` в компонент `Index` приложения, разместив элемент `<Counter />` внутри компонента `Index` (*Index.razor*).
 
-   Если вы выполняете эту задачу с помощью Blazor WebAssembly, это значит, что компонент `Index` использует компонент `SurveyPrompt`. Замените элемент `<SurveyPrompt>` элементом `<Counter />`. Если вы используете для этой задачи серверное приложение Blazor, добавьте к компоненту `Index` элемент `<Counter />`:
+   Если вы выполняете эту задачу с помощью WebAssembly Blazor, это значит, что компонент `SurveyPrompt` использует компонент `Index`. Замените элемент `<SurveyPrompt>` элементом `<Counter />`. Если вы используете для этой задачи серверное приложение Blazor, добавьте к компоненту `Index` элемент `<Counter />`:
 
    *Pages/Index.razor*:
 
@@ -99,7 +101,7 @@ ms.locfileid: "73416179"
 
 ## <a name="dependency-injection"></a>Внедрение зависимостей
 
-### <a name="blazor-server-experience"></a>Взаимодействие с сервером Blazor
+### <a name="opno-locblazor-server-experience"></a>Взаимодействие с сервером Blazor
 
 Если вы используете серверное приложение Blazor, служба `WeatherForecastService` зарегистрирована как [отдельная](xref:fundamentals/dependency-injection#service-lifetimes) в `Startup.ConfigureServices`. Экземпляр этой службы предоставляется для всего приложения посредством [внедрения зависимостей (DI)](xref:fundamentals/dependency-injection):
 
@@ -115,9 +117,9 @@ ms.locfileid: "73416179"
 
 [!code-cshtml[](build-your-first-blazor-app/samples_snapshot/3.x/FetchData2.razor?highlight=6)]
 
-### <a name="blazor-webassembly-experience"></a>Взаимодействие с WebAssembly Blazor
+### <a name="opno-locblazor-webassembly-experience"></a>Взаимодействие с WebAssembly Blazor
 
-Если вы работаете с приложением Blazor WebAssembly, внедряется `HttpClient` для получения данных прогноза погоды из файла *weather.json*, расположенного в папке *wwwroot/sample-data*.
+Если вы работаете с приложением WebAssembly Blazor, внедряется `HttpClient` для получения данных прогноза погоды из файла *weather.json*, расположенного в папке *wwwroot/sample-data*.
 
 *Pages/FetchData.razor*:
 

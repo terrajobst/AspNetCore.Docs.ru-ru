@@ -7,12 +7,12 @@ ms.custom: mvc
 ms.date: 03/27/2019
 ms.topic: tutorial
 uid: data/ef-mvc/complex-data-model
-ms.openlocfilehash: 313d951ccdd45ae1209ffd9612d24738822fbed8
-ms.sourcegitcommit: 7d3c6565dda6241eb13f9a8e1e1fd89b1cfe4d18
+ms.openlocfilehash: b8b1ade4c8c29d34200bf8c0944cff6adec0bb95
+ms.sourcegitcommit: f40c9311058c9b1add4ec043ddc5629384af6c56
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72259606"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74288953"
 ---
 # <a name="tutorial-create-a-complex-data-model---aspnet-mvc-with-ef-core"></a>Учебник. Использование ASP.NET MVC с EF  Core. Создание сложной модели данных
 
@@ -155,11 +155,12 @@ dotnet ef database update
 
 Атрибут `Required` делает свойства имен обязательными полями. Атрибут `Required` не нужен для типов, не допускающих значения null, например для типов значений (DateTime, int, double, float и т. д.). Типы, которые не могут принимать значение null, автоматически обрабатываются как обязательные поля.
 
-Атрибут `Required` можно удалить и заменить параметром минимальной длины для атрибута `StringLength`:
+Для применения `MinimumLength` нужно использовать атрибут `Required` с `MinimumLength`.
 
 ```csharp
 [Display(Name = "Last Name")]
-[StringLength(50, MinimumLength=1)]
+[Required]
+[StringLength(50, MinimumLength=2)]
 public string LastName { get; set; }
 ```
 

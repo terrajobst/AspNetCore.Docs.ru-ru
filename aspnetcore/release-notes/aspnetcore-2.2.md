@@ -4,14 +4,16 @@ author: rick-anderson
 description: Сведения о новых возможностях ASP.NET Core 2.2.
 ms.author: riande
 ms.custom: mvc
-ms.date: 12/18/2018
+ms.date: 11/12/2019
+no-loc:
+- SignalR
 uid: aspnetcore-2.2
-ms.openlocfilehash: 88a202d85c4d4ed7a395dba78feea29ef4637732
-ms.sourcegitcommit: 8835b6777682da6fb3becf9f9121c03f89dc7614
+ms.openlocfilehash: fca653158c95e7c1a11f25f4076830fe3e7e93ae
+ms.sourcegitcommit: 3fc3020961e1289ee5bf5f3c365ce8304d8ebf19
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69975714"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73963125"
 ---
 # <a name="whats-new-in-aspnet-core-22"></a>Новые возможности ASP.NET Core 2.2
 
@@ -74,11 +76,11 @@ HTTP/2 является основной редакцией HTTP-протоко�
 
 Дополнительные сведения см. в статье [Внутрипроцессное размещение для служб IIS](xref:host-and-deploy/aspnet-core-module?view=aspnetcore-2.2#in-process-hosting-model).
 
-## <a name="signalr-java-client"></a>Клиент Java для SignalR
+## <a name="opno-locsignalr-java-client"></a>Клиент Java SignalR
 
 В ASP.NET Core 2.2 представлен клиент Java для SignalR. Этот клиент поддерживает подключение к серверу SignalR ASP.NET Core из кода Java, в том числе из приложений Android.
 
-Дополнительные сведения см. в статье [Клиент Java для SignalR ASP.NET Core](https://docs.microsoft.com/aspnet/core/signalr/java-client?view=aspnetcore-2.2).
+Дополнительные сведения см. в статье о [клиенте Java для SignalR ASP.NET Core](https://docs.microsoft.com/aspnet/core/signalr/java-client?view=aspnetcore-2.2).
 
 ## <a name="cors-improvements"></a>Усовершенствования CORS
 

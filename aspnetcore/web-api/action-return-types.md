@@ -6,12 +6,12 @@ ms.author: scaddie
 ms.custom: mvc
 ms.date: 09/09/2019
 uid: web-api/action-return-types
-ms.openlocfilehash: 991265810324d6339ebf346ff9aa14c479112af9
-ms.sourcegitcommit: fa61d882be9d0c48bd681f2efcb97e05522051d0
+ms.openlocfilehash: c409170a24225e160c1c53e7294590589e114f7f
+ms.sourcegitcommit: 231780c8d7848943e5e9fd55e93f437f7e5a371d
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71205766"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74116082"
 ---
 # <a name="controller-action-return-types-in-aspnet-core-web-api"></a>Типы возвращаемых значений действий контроллера в веб-API ASP.NET Core
 
@@ -50,7 +50,7 @@ ASP.NET Core предоставляет следующие параметры д
 
 ### <a name="return-ienumerablet-or-iasyncenumerablet"></a>Получение IEnumerable\<T> или IAsyncEnumerable\<T>
 
-В ASP.NET Core 2.2 и более ранних версиях получение интерфейса <xref:System.Collections.Generic.IAsyncEnumerable%601> из действия приводит к тому, что сериализатор выполняет синхронную итерацию операции сбора. В результате вызовы блокируются, что может стать причиной перегрузки пула потоков. Представьте, что Entity Framework (EF) Core используется веб-API для доступа к данным. Во время сериализации выполняется синхронное перечисление для типа возвращаемого значения следующего действия:
+В ASP.NET Core 2.2 и более ранних версиях получение интерфейса <xref:System.Collections.Generic.IEnumerable%601> из действия приводит к тому, что сериализатор выполняет синхронную итерацию операции сбора. В результате вызовы блокируются, что может стать причиной перегрузки пула потоков. Представьте, что Entity Framework (EF) Core используется веб-API для доступа к данным. Во время сериализации выполняется синхронное перечисление для типа возвращаемого значения следующего действия:
 
 ```csharp
 public IEnumerable<Product> GetOnSaleProducts() =>

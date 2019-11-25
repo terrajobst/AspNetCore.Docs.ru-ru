@@ -5,12 +5,12 @@ description: Узнайте, как использовать общие маке
 ms.author: riande
 ms.date: 07/30/2019
 uid: mvc/views/layout
-ms.openlocfilehash: 9a7b8003b24329f6e9cbd349ee47f6844b7c5f6d
-ms.sourcegitcommit: e6bd2bbe5683e9a7dbbc2f2eab644986e6dc8a87
+ms.openlocfilehash: 3ba2f459ca2b04a3001e261acab26880b6582500
+ms.sourcegitcommit: f40c9311058c9b1add4ec043ddc5629384af6c56
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70238029"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74288999"
 ---
 # <a name="layout-in-aspnet-core"></a>Макет в ASP.NET Core
 
@@ -68,9 +68,9 @@ ms.locfileid: "70238029"
 Макет может при необходимости ссылаться на один или несколько *разделов*, вызывая метод `RenderSection`. Разделы — это средство для упорядочения размещения определенных элементов на странице. В каждом вызове `RenderSection` можно указывать, является ли раздел обязательным или необязательным:
 
 ```html
-@section Scripts {
-    @RenderSection("Scripts", required: false)
-}
+<script type="text/javascript" src="~/scripts/global.js"></script>
+
+@RenderSection("Scripts", required: false)
 ```
 
 Если обязательный раздел не найден, создается исключение. В отдельных представлениях содержимое раздела, которое необходимо преобразовать для просмотра, указывается с помощью синтаксиса Razor `@section`. Если на странице или в представлении определяется раздел, он должен быть преобразован для просмотра (в противном случае произойдет ошибка).
@@ -79,7 +79,7 @@ ms.locfileid: "70238029"
 
 ```html
 @section Scripts {
-     <script type="text/javascript" src="/scripts/main.js"></script>
+     <script type="text/javascript" src="~/scripts/main.js"></script>
 }
 ```
 

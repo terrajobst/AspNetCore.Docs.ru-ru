@@ -8,8 +8,6 @@
 
 **[Вспомогательная функция тега среды](xref:mvc/views/tag-helpers/builtin-th/environment-tag-helper)**
 
-**[Вспомогательная функция тега действий формы](xref:mvc/views/working-with-forms#the-form-action-tag-helper)**
-
 **[Вспомогательная функция тега форм](xref:mvc/views/working-with-forms#the-form-tag-helper)**
 
 **[Вспомогательный объект для тегов действий формы](xref:mvc/views/working-with-forms#the-form-action-tag-helper)**
@@ -20,13 +18,11 @@
 
 **[Вспомогательная функция тега метки](xref:mvc/views/working-with-forms#the-label-tag-helper)**
 
-**[LinkTagHelper](xref:mvc/views/tag-helpers/builtin-th/link-tag-helper)**
-
-[comment]: **[OptionTagHelper](xref:mvc/views/tag-helpers/builtin-th/option-tag-helper)**
-
-**[ScriptTagHelper](xref:mvc/views/tag-helpers/builtin-th/script-tag-helper)**
+**[Вспомогательная функция тега ссылки](xref:mvc/views/tag-helpers/builtin-th/link-tag-helper)**
 
 **[Вспомогательная функция тега частичного представления](xref:mvc/views/tag-helpers/builtin-th/partial-tag-helper)**
+
+**[Вспомогательная функция тега сценария](xref:mvc/views/tag-helpers/builtin-th/script-tag-helper)**
 
 **[Вспомогательная функция тега Select](xref:mvc/views/working-with-forms#the-select-tag-helper)**
 

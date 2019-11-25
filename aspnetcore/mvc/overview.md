@@ -3,14 +3,14 @@ title: Общие сведения ASP.NET Core MVC
 author: ardalis
 description: Узнайте, почему ASP.NET MVC является многофункциональной платформой для создания веб-приложений и API-интерфейсов с помощью структуры проектирования Model-View-Controller.
 ms.author: riande
-ms.date: 08/01/2019
+ms.date: 11/07/2019
 uid: mvc/overview
-ms.openlocfilehash: 7f09751850cbfa7bb3dc79656d4530445a9767b1
-ms.sourcegitcommit: 3204bc89ae6354b61ee0a9b2770ebe5214b7790c
+ms.openlocfilehash: 4f4ea3da8563cabaaa6183c6835c2f1eb8c387b4
+ms.sourcegitcommit: 67116718dc33a7a01696d41af38590fdbb58e014
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68707811"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73799492"
 ---
 # <a name="overview-of-aspnet-core-mvc"></a>Общие сведения ASP.NET Core MVC
 
@@ -254,3 +254,8 @@ public class AccountController : Controller
 Метод <xref:Microsoft.Extensions.DependencyInjection.MvcCoreMvcBuilderExtensions.SetCompatibilityVersion*> позволяет приложению принимать или отклонять потенциально критические изменения в поведении, появившиеся в ASP.NET Core MVC 2.1 или более поздних версий.
 
 Дополнительные сведения можно найти по адресу: <xref:mvc/compatibility-version>.
+
+## <a name="additional-resources"></a>Дополнительные ресурсы
+
+* [MyTested.AspNetCore.Mvc — текучая библиотека тестирования для MVC ASP.NET Core](https://github.com/ivaylokenov/MyTested.AspNetCore.Mvc); строго типизированная библиотека модульного тестирования с текучим интерфейсом для тестирования приложений MVC и веб-API. (*Не поддерживается и не обслуживается Майкрософт.* )
+

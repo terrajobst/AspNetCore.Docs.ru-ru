@@ -1,20 +1,20 @@
 ---
-title: Профили публикации Visual Studio для развертывания приложений ASP.NET Core
+title: Профили публикации Visual Studio (.pubxml) для развертывания приложений ASP.NET Core
 author: rick-anderson
 description: Узнайте, как создавать профили публикации в Visual Studio и применять их для управления развертыванием приложений ASP.NET Core в разных целевых объектах.
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 10/12/2019
+ms.date: 11/07/2019
 uid: host-and-deploy/visual-studio-publish-profiles
-ms.openlocfilehash: a3d6cc450e42d7eb6b694cd4985828ce52fa7519
-ms.sourcegitcommit: 07d98ada57f2a5f6d809d44bdad7a15013109549
+ms.openlocfilehash: 274dd2cd528d3766aa07f69aac3470a131c79ffe
+ms.sourcegitcommit: 67116718dc33a7a01696d41af38590fdbb58e014
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72333765"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73799348"
 ---
-# <a name="visual-studio-publish-profiles-for-aspnet-core-app-deployment"></a>Профили публикации Visual Studio для развертывания приложений ASP.NET Core
+# <a name="visual-studio-publish-profiles-pubxml-for-aspnet-core-app-deployment"></a>Профили публикации Visual Studio (.pubxml) для развертывания приложений ASP.NET Core
 
 Авторы: [Саид Ибрагим Хашими](https://github.com/sayedihashimi) (Sayed Ibrahim Hashimi) и [Рик Андерсон](https://twitter.com/RickAndMSFT)
 

@@ -5,14 +5,14 @@ description: Сведения о настройке модуля ASP.NET Core д
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 10/24/2019
+ms.date: 11/07/2019
 uid: host-and-deploy/aspnet-core-module
-ms.openlocfilehash: 42ff4438738931fde70e123031412bcfc8a83efb
-ms.sourcegitcommit: 16cf016035f0c9acf3ff0ad874c56f82e013d415
+ms.openlocfilehash: c9bbd36b8a55b837f6d78abf99215c5496895a39
+ms.sourcegitcommit: 67116718dc33a7a01696d41af38590fdbb58e014
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73034215"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73799411"
 ---
 # <a name="aspnet-core-module"></a>Модуль ASP.NET Core
 
@@ -208,7 +208,7 @@ ms.locfileid: "73034215"
 ```
 
 > [!NOTE]
-> Вместо задания среды напрямую в *web.config* включите свойство `<EnvironmentName>` в профиль публикации ( *.pubxml*) или файл проекта. При этом подходе во время публикации проекта среда задается в файле *web.config*:
+> Вместо установки среды напрямую в *web.config* включите свойство `<EnvironmentName>` в профиль публикации ([.pubxml](xref:host-and-deploy/visual-studio-publish-profiles)) или файл проекта. При этом подходе во время публикации проекта среда задается в файле *web.config*:
 >
 > ```xml
 > <PropertyGroup>
@@ -623,7 +623,7 @@ dotnet-hosting-{VERSION}.exe OPT_NO_SHARED_CONFIG_CHECK=1
 ```
 
 > [!NOTE]
-> Вместо задания среды напрямую в *web.config* включите свойство `<EnvironmentName>` в профиль публикации ( *.pubxml*) или файл проекта. При этом подходе во время публикации проекта среда задается в файле *web.config*:
+> Вместо установки среды напрямую в *web.config* включите свойство `<EnvironmentName>` в профиль публикации ([.pubxml](xref:host-and-deploy/visual-studio-publish-profiles)) или файл проекта. При этом подходе во время публикации проекта среда задается в файле *web.config*:
 >
 > ```xml
 > <PropertyGroup>

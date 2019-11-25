@@ -5,14 +5,16 @@ description: Сведения о начале работы с WebSocket в ASP.N
 monikerRange: '>= aspnetcore-1.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 05/10/2019
+ms.date: 11/12/2019
+no-loc:
+- SignalR
 uid: fundamentals/websockets
-ms.openlocfilehash: 098e6826d6f7114baceb9578dc6d9883eb83f0aa
-ms.sourcegitcommit: a166291c6708f5949c417874108332856b53b6a9
+ms.openlocfilehash: fc07d572116f8eea2b30ea6cf80324e5c66f994c
+ms.sourcegitcommit: 3fc3020961e1289ee5bf5f3c365ce8304d8ebf19
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72589707"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73963174"
 ---
 # <a name="websockets-support-in-aspnet-core"></a>Поддержка WebSockets в ASP.NET Core
 
@@ -22,9 +24,9 @@ ms.locfileid: "72589707"
 
 [Просмотреть или скачать пример кода](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/websockets/samples) ([описание скачивания](xref:index#how-to-download-a-sample)). [Процедура выполнения](#sample-app).
 
-## <a name="signalr"></a>SignalR
+## SignalR
 
-[ASP.NET Core SignalR](xref:signalr/introduction) — это библиотека, которая упрощает добавление веб-функций в приложения в режиме реального времени. Она использует WebSocket, когда это возможно.
+[ASP.NET Core SignalR](xref:signalr/introduction) — это библиотека, которая упрощает добавление веб-функций в режиме реального времени в приложения. Она использует WebSocket, когда это возможно.
 
 Для большинства приложений рекомендуется использовать SignalR вместо прямых соединений WebSocket. Служба SignalR обеспечивает резервный транспорт для сред, в которых соединения WebSocket недоступны. Она также предоставляет простую модель приложений на основе удаленного вызова процедур. В большинстве сценариев SignalR по производительности не уступает прямым соединениям WebSocket.
 

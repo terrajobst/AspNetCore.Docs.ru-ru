@@ -9,12 +9,12 @@ ms.date: 11/12/2019
 no-loc:
 - SignalR
 uid: signalr/redis-backplane
-ms.openlocfilehash: 379d46fcaabb8eb0d04e521a5ad698229f947b7c
-ms.sourcegitcommit: 3fc3020961e1289ee5bf5f3c365ce8304d8ebf19
+ms.openlocfilehash: 0461fc6a212ba78111bc2054cca74951721c5820
+ms.sourcegitcommit: f40c9311058c9b1add4ec043ddc5629384af6c56
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73963922"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74289039"
 ---
 # <a name="set-up-a-redis-backplane-for-aspnet-core-opno-locsignalr-scale-out"></a>Настройка объединительной платы Redis для ASP.NET Core SignalR горизонтальное масштабирование
 
@@ -37,8 +37,7 @@ ms.locfileid: "73963922"
 
 ::: moniker range="= aspnetcore-2.1"
 
-* В приложении SignalR установите `Microsoft.AspNetCore.SignalR.Redis` пакет NuGet. (Также существует пакет `Microsoft.AspNetCore.SignalR.StackExchangeRedis`, но он предназначен для ASP.NET Core 2,2 и более поздних версий).
-
+* В приложении SignalR установите `Microsoft.AspNetCore.SignalR.Redis` пакет NuGet.
 * В методе `Startup.ConfigureServices` вызовите `AddRedis` после `AddSignalR`:
 
   ```csharp
@@ -62,19 +61,54 @@ ms.locfileid: "73963922"
 
 ::: moniker-end
 
-::: moniker range="> aspnetcore-2.1"
+::: moniker range="= aspnetcore-2.2"
 
 * В приложении SignalR установите один из следующих пакетов NuGet:
 
   * `Microsoft.AspNetCore.SignalR.StackExchangeRedis` — зависит от StackExchange. Redis 2. X.X. Это рекомендуемый пакет для ASP.NET Core 2,2 и более поздних версий.
-  * `Microsoft.AspNetCore.SignalR.Redis` — зависит от StackExchange. Redis 1. X.X. Этот пакет не будет поставляться в ASP.NET Core 3,0.
+  * `Microsoft.AspNetCore.SignalR.Redis` — зависит от StackExchange. Redis 1. X.X. Этот пакет не входит в ASP.NET Core 3,0 и более поздних версий.
 
-* В методе `Startup.ConfigureServices` вызовите `AddStackExchangeRedis` после `AddSignalR`:
+* В методе `Startup.ConfigureServices` вызовите <xref:Microsoft.Extensions.DependencyInjection.StackExchangeRedisDependencyInjectionExtensions.AddStackExchangeRedis*>:
 
   ```csharp
   services.AddSignalR().AddStackExchangeRedis("<your_Redis_connection_string>");
   ```
 
+ При использовании `Microsoft.AspNetCore.SignalR.Redis`вызовите <xref:Microsoft.Extensions.DependencyInjection.RedisDependencyInjectionExtensions.AddRedis*>.
+
+* При необходимости настройте параметры:
+ 
+  Большинство параметров можно задать в строке соединения или в объекте [ConfigurationOptions](https://stackexchange.github.io/StackExchange.Redis/Configuration#configuration-options) . Параметры, указанные в `ConfigurationOptions` переопределяют наборы, заданные в строке подключения.
+
+  В следующем примере показано, как задать параметры в объекте `ConfigurationOptions`. В этом примере добавляется префикс канала, чтобы несколько приложений могли совместно использовать один и тот же экземпляр Redis, как описано в следующем шаге.
+
+  ```csharp
+  services.AddSignalR()
+    .AddStackExchangeRedis(connectionString, options => {
+        options.Configuration.ChannelPrefix = "MyApp";
+    });
+  ```
+
+ При использовании `Microsoft.AspNetCore.SignalR.Redis`вызовите <xref:Microsoft.Extensions.DependencyInjection.RedisDependencyInjectionExtensions.AddRedis*>.
+
+  В приведенном выше коде `options.Configuration` инициализируется с помощью любого, указанного в строке подключения.
+
+  Сведения о параметрах Redis см. в [документации по StackExchange Redis](https://stackexchange.github.io/StackExchange.Redis/Configuration.html).
+
+::: moniker-end
+
+::: moniker range=">= aspnetcore-3.0"
+
+* В приложении SignalR установите следующий пакет NuGet:
+
+  * `Microsoft.AspNetCore.SignalR.StackExchangeRedis`
+  
+* В методе `Startup.ConfigureServices` вызовите <xref:Microsoft.Extensions.DependencyInjection.StackExchangeRedisDependencyInjectionExtensions.AddStackExchangeRedis*>:
+
+  ```csharp
+  services.AddSignalR().AddStackExchangeRedis("<your_Redis_connection_string>");
+  ```
+  
 * При необходимости настройте параметры:
  
   Большинство параметров можно задать в строке соединения или в объекте [ConfigurationOptions](https://stackexchange.github.io/StackExchange.Redis/Configuration#configuration-options) . Параметры, указанные в `ConfigurationOptions` переопределяют наборы, заданные в строке подключения.

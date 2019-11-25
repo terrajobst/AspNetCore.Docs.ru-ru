@@ -5,12 +5,12 @@ description: Сведения о диагностике проблем лока�
 ms.author: riande
 ms.date: 01/24/2019
 uid: fundamentals/troubleshoot-aspnet-core-localization
-ms.openlocfilehash: 98e06a92af0b6c045095ac803196bf4b1f25e5c5
-ms.sourcegitcommit: 020c3760492efed71b19e476f25392dda5dd7388
+ms.openlocfilehash: 229e274a22e170d984a16d3b1ee64ebc38c4ef77
+ms.sourcegitcommit: 3fc3020961e1289ee5bf5f3c365ce8304d8ebf19
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/12/2019
-ms.locfileid: "72289011"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73963338"
 ---
 # <a name="troubleshoot-aspnet-core-localization"></a>Устранение неполадок локализации в ASP.NET Core
 
@@ -100,6 +100,9 @@ options.AddInitialRequestCultureProvider(new CustomRequestCultureProvider(async 
 ## <a name="root-namespace-issues"></a>Проблемы с корневым пространством имен
 
 Если корневое пространство имен сборки отличается от имени сборки, локализация не работает по умолчанию. Чтобы избежать этой проблемы, используйте свойство [RootNamespace](/dotnet/api/microsoft.extensions.localization.rootnamespaceattribute?view=aspnetcore-2.1), которое подробно описано [здесь](xref:fundamentals/localization?view=aspnetcore-2.2#resource-file-naming).
+
+> [!WARNING]
+> Это может произойти, если имя проекта — недопустимый идентификатор .NET. Например, `my-project-name.csproj` будет использовать корневое пространство имен `my_project_name` и имя сборки `my-project-name`, что повлечет эту ошибку. 
 
 ## <a name="resources--build-action"></a>Ресурсы и действие при сборке
 
