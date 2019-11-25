@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: H1Hack27Feb2017
 ms.date: 03/18/2019
 uid: mvc/views/tag-helpers/intro
-ms.openlocfilehash: 870ce2eb28f384b380cc1178842325dc28199f09
-ms.sourcegitcommit: 8516b586541e6ba402e57228e356639b85dfb2b9
+ms.openlocfilehash: 15f94fd1c619e9f69c5783f664eafc9ca28f86f9
+ms.sourcegitcommit: 8157e5a351f49aeef3769f7d38b787b4386aad5f
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67814993"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74239857"
 ---
 # <a name="tag-helpers-in-aspnet-core"></a>Вспомогательные функции тегов в ASP.NET Core
 
@@ -97,7 +97,7 @@ public class Movie
 
 У директивы `@removeTagHelper` есть те же два параметра, что и у директивы `@addTagHelper`, и она удаляет ранее добавленную вспомогательную функцию тега. Например, если применить директиву `@removeTagHelper` к определенному представлению, она удалит из него указанную вспомогательную функцию тега. Использование директивы `@removeTagHelper` в файле *Views/Folder/_ViewImports.cshtml* приводит к удалению указанной вспомогательной функции тега из всех представлений в *папке*.
 
-### <a name="controlling-tag-helper-scope-with-the-viewimportscshtml-file"></a>Контроль области действия вспомогательной функции тега с помощью файла *_ViewImports.cshtml*
+### <a name="controlling-tag-helper-scope-with-the-_viewimportscshtml-file"></a>Контроль области действия вспомогательной функции тега с помощью файла *_ViewImports.cshtml*
 
 Можно добавить файл *_ViewImports.cshtml* в любую папку представления, и подсистема представлений применит директивы из этого файла и файла *Views/_ViewImports.cshtml*. Если вы добавили пустой файл *Views/Home/_ViewImports.cshtml* для представлений *Home*, ничего не изменится, поскольку файл *_ViewImports.cshtml* является дополнительным. Любая директива `@addTagHelper`, добавляемая в файл *Views/Home/_ViewImports.cshtml* (и не входящая в файл по умолчанию *Views/_ViewImports.cshtml*), будет предоставлять эти вспомогательные функции тегов для представлений только в папке *Home*.
 
@@ -132,6 +132,22 @@ public class Movie
 ## <a name="self-closing-tag-helpers"></a>Самозакрывающиеся вспомогательные функции тегов
 
 Многие вспомогательные функции тегов нельзя использовать как самозакрывающиеся теги. Некоторые вспомогательные функции тегов созданы как самозакрывающиеся теги. При использовании вспомогательной функции тегов, которая не создана как самозакрывающаяся, подавляются выводимые данные. При самостоятельном закрывании вспомогательной функции тегов в выводимых данных появляется самозакрывающийся тег. Дополнительные сведения см. в [этом примечании](xref:mvc/views/tag-helpers/authoring#self-closing) в статье [Создание вспомогательных функций тегов](xref:mvc/views/tag-helpers/authoring).
+
+## <a name="c-in-tag-helpers-attributedeclaration"></a>C# в атрибуте или объявлении вспомогательных функций тегов 
+
+Вспомогательные функции тегов не разрешают применять C# в области объявления атрибута или тега элемента. Например, приведенный ниже код недопустим:
+
+```cshtml
+<input asp-for="LastName"  
+       @(Model?.LicenseId == null ? "disabled" : string.Empty) />
+```
+
+Приведенный выше код можно написать следующим образом:
+
+```cshtml
+<input asp-for="LastName" 
+       disabled="@(Model?.LicenseId == null)" />
+```
 
 ## <a name="intellisense-support-for-tag-helpers"></a>Поддержка Intellisense для вспомогательных функций тегов
 

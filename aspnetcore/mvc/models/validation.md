@@ -4,44 +4,46 @@ author: rick-anderson
 description: Сведения о проверке модели в ASP.NET Core MVC и Razor Pages.
 ms.author: riande
 ms.custom: mvc
-ms.date: 11/11/2019
+ms.date: 11/19/2019
 uid: mvc/models/validation
-ms.openlocfilehash: 8e9e588c8665962b2fe285b0feab977b16938154
-ms.sourcegitcommit: 99cdd60a26ff0970880bb43c558d78b1ef17c237
+ms.openlocfilehash: 1277cac231bab6b56657793ed78dbc4cfb7d9704
+ms.sourcegitcommit: 8157e5a351f49aeef3769f7d38b787b4386aad5f
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/11/2019
-ms.locfileid: "73915523"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74239871"
 ---
 # <a name="model-validation-in-aspnet-core-mvc-and-razor-pages"></a>Проверка модели в ASP.NET Core MVC и Razor Pages
 
 ::: moniker range=">= aspnetcore-3.0"
 
+Автор: [Кирк Ларкин (Kirk Larkin)](https://github.com/serpent5)
+
 В этой статье объясняется, как осуществлять проверки вводимых пользователем данных в приложении ASP.NET Core MVC или Razor Pages.
 
-[Просмотреть или скачать пример кода](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/models/validation/sample) ([описание скачивания](xref:index#how-to-download-a-sample)).
+[Просмотреть или скачать пример кода](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/models/validation/samples) ([описание скачивания](xref:index#how-to-download-a-sample)).
 
 ## <a name="model-state"></a>Состояние модели
 
-Состояние модели представляет ошибки, создаваемые двумя подсистемами: привязкой модели и проверкой модели. Ошибки, поступающие из [привязки модели](model-binding.md), чаще всего представляют собой ошибки преобразования данных (например, x вводится в поле, которое ожидает целое число). Проверка модели проводится после привязки модели и сообщает об ошибках, при которых данные не соответствуют бизнес-правилам (например, 0 вводится в поле, которое ожидает оценку от 1 до 5).
+Состояние модели представляет ошибки, создаваемые двумя подсистемами: привязкой модели и проверкой модели. Ошибки [привязки модели](model-binding.md) обычно являются ошибками преобразования данных. Например, в целочисленном поле указывается "x". Проверка модели происходит после ее привязки. В процессе сообщается об ошибках несоответствия данных бизнес-правилам. Например, в поле, которое ожидает оценку от 1 до 5, указывается 0.
 
-Привязка модели и проверка модели происходят перед выполнением действия контроллера или метода обработчика Razor Pages. Веб-приложение отвечает за проверку `ModelState.IsValid` и реагирует соответствующим образом. Веб-приложения обычно повторно отображают страницы с сообщением об ошибке.
+Привязка и проверка модели происходят перед выполнением действия контроллера или метода обработчика Razor Pages. Веб-приложение отвечает за проверку `ModelState.IsValid` и реагирует соответствующим образом. Веб-приложения обычно повторно отображают страницы с сообщением об ошибке.
 
-[!code-csharp[](validation/sample_snapshot/Create.cshtml.cs?name=snippet&highlight=3-6)]
+[!code-csharp[](validation/samples/3.x/ValidationSample/Pages/Movies/Create.cshtml.cs?name=snippet_OnPostAsync&highlight=3-6)]
 
-Контроллерам веб-API не нужно проверять `ModelState.IsValid` при наличии атрибута `[ApiController]`. В этом случае автоматически возвращается ответ HTTP 400, содержащий сведения о проблеме, если состояние модели недопустимо. Дополнительные сведения см. в разделе [Автоматические отклики HTTP 400](xref:web-api/index#automatic-http-400-responses).
+Контроллерам веб-API не нужно проверять `ModelState.IsValid` при наличии атрибута `[ApiController]`. В этом случае автоматически возвращается ответ HTTP 400, содержащий сведения об ошибке, если состояние модели недопустимо. Дополнительные сведения см. в разделе [Автоматические отклики HTTP 400](xref:web-api/index#automatic-http-400-responses).
 
 ## <a name="rerun-validation"></a>Перезапуск проверки
 
 Проверка выполняется автоматически, однако может потребоваться повторить ее вручную. Например, можно вычислить значение свойства и повторно выполнить проверку после установки свойства в вычисляемое значение. Для повторной проверки вызовите метод `TryValidateModel`, как показано ниже.
 
-[!code-csharp[](validation/sample/Controllers/MoviesController.cs?name=snippet_TryValidateModel&highlight=11)]
+[!code-csharp[](validation/samples/3.x/ValidationSample/Pages/Movies/Create.cshtml.cs?name=snippet_TryValidate&highlight=3-6)]
 
 ## <a name="validation-attributes"></a>Атрибуты проверки
 
-Атрибуты проверки позволяют задать правила проверки для свойств модели. В следующем примере из [примера приложения](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/models/validation/sample) показан класс модели, который помечается с помощью атрибутов проверки. `[ClassicMovie]` является настраиваемым атрибутом проверки; остальные являются встроенными. (Не показан `[ClassicMovie2]`, который демонстрирует альтернативный способ реализации настраиваемого атрибута.)
+Атрибуты проверки позволяют задать правила проверки для свойств модели. В следующем примере из примера приложения показан класс модели, который помечается с помощью атрибутов проверки. `[ClassicMovie]` является настраиваемым атрибутом проверки; остальные являются встроенными. Не показан `[ClassicMovieWithClientValidator]`. `[ClassicMovieWithClientValidator]` демонстрирует альтернативный способ реализации настраиваемого атрибута.
 
-[!code-csharp[](validation/sample/Models/Movie.cs?name=snippet_ModelClass)]
+[!code-csharp[](validation/samples/3.x/ValidationSample/Models/Movie.cs?name=snippet_Class)]
 
 ## <a name="built-in-attributes"></a>Встроенные атрибуты
 
@@ -84,14 +86,14 @@ ms.locfileid: "73915523"
 
 ### <a name="required-validation-on-the-server"></a>Проверка [Required] на сервере
 
-На сервере обязательное значение считается отсутствующим, если свойство имеет значение NULL. Поле, не допускающее значения NULL, всегда является допустимым, и сообщение об ошибке атрибута [Required] никогда не выводится.
+На сервере обязательное значение считается отсутствующим, если свойство имеет значение NULL. Поле, не допускающее значения NULL, всегда является допустимым, и сообщение об ошибке атрибута `[Required]` никогда не выводится.
 
 Тем не менее привязка модели для ненулевого свойства может завершиться ошибкой, приводящей к сообщению об ошибке, например `The value '' is invalid`. Чтобы задать настраиваемое сообщение об ошибке во время проверки не допускающих значения NULL типов на стороне сервера, у вас есть следующие варианты.
 
 * Сделать поле допускающим значение NULL (например, `decimal?` вместо `decimal`). Типы значений [Nullable\<T>](/dotnet/csharp/programming-guide/nullable-types/) обрабатываются как стандартные типы, допускающие значение NULL.
 * Указать сообщение об ошибке по умолчанию для использования в привязке модели, как показано в следующем примере.
 
-  [!code-csharp[](validation/sample/Startup.cs?name=snippet_MaxModelValidationErrors&highlight=4-5)]
+  [!code-csharp[](validation/samples/3.x/ValidationSample/Startup.cs?name=snippet_Configuration&highlight=5-6)]
 
   Дополнительные сведения об ошибках привязки модели, у которых можно задать сообщение по умолчанию, см. в разделе <xref:Microsoft.AspNetCore.Mvc.ModelBinding.Metadata.DefaultModelBindingMessageProvider#methods>.
 
@@ -112,29 +114,29 @@ ms.locfileid: "73915523"
 
 1. Создайте для вызова из JavaScript метод действия.  Метод проверки jQuery [remote](https://jqueryvalidation.org/remote-method/) ожидает ответ JSON.
 
-   * `"true"` означает, что входные данные допустимы.
-   * `"false"`, `undefined` или `null` означают, что входные данные недопустимы.  Вывод стандартного сообщения об ошибке
+   * `true` означает, что входные данные допустимы.
+   * `false`, `undefined` или `null` означают, что входные данные недопустимы. Вывод стандартного сообщения об ошибке
    * Все прочие значения означают, что входные данные недопустимы. Вывод строки как настраиваемого сообщения об ошибке.
 
    Ниже приведен пример метода действия, который возвращает настраиваемое сообщение об ошибке.
 
-   [!code-csharp[](validation/sample/Controllers/UsersController.cs?name=snippet_VerifyEmail)]
+   [!code-csharp[](validation/samples/3.x/ValidationSample/Controllers/UsersController.cs?name=snippet_VerifyEmail)]
 
 1. В классе модели пометьте свойство атрибутом `[Remote]`, указывающим метод действия проверки, как показано в следующем примере.
 
-   [!code-csharp[](validation/sample/Models/User.cs?name=snippet_UserEmailProperty)]
+   [!code-csharp[](validation/samples/3.x/ValidationSample/Models/User.cs?name=snippet_Email)]
  
-   Атрибут `[Remote]` находится в пространстве имен `Microsoft.AspNetCore.Mvc`. Установите пакет NuGet [Microsoft.AspNetCore.Mvc.ViewFeatures](https://www.nuget.org/packages/Microsoft.AspNetCore.Mvc.ViewFeatures), если вы не используете метапакет `Microsoft.AspNetCore.App` или `Microsoft.AspNetCore.All`.
+   Атрибут `[Remote]` находится в пространстве имен `Microsoft.AspNetCore.Mvc`.
    
 ### <a name="additional-fields"></a>Дополнительные поля
 
 Свойство `AdditionalFields` атрибута `[Remote]` позволяет проверять сочетания полей с данными на сервере. Например, если бы в модели `User` были свойства `FirstName` и `LastName`, могла бы возникнуть необходимость проверить, нет ли уже пользователя с такой парой имен. В следующем примере показано использование `AdditionalFields`.
 
-[!code-csharp[](validation/sample/Models/User.cs?name=snippet_UserNameProperties)]
+[!code-csharp[](validation/samples/3.x/ValidationSample/Models/User.cs?name=snippet_Name&highlight=1,5)]
 
-Свойству `AdditionalFields` можно было бы явным образом присвоить строки `"FirstName"` и `"LastName"`, однако применение оператора [`nameof`](/dotnet/csharp/language-reference/keywords/nameof) упрощает дальнейший рефакторинг. Методу действия для этой проверки необходимо принимать аргументы для имени и фамилии.
+Свойству `AdditionalFields` можно было бы явным образом присвоить строки `"FirstName"` и `"LastName"`, однако применение оператора [`nameof`](/dotnet/csharp/language-reference/keywords/nameof) упрощает дальнейший рефакторинг. Методу действия для этой проверки необходимо принимать аргументы `firstName` и `lastName`
 
-[!code-csharp[](validation/sample/Controllers/UsersController.cs?name=snippet_VerifyName)]
+[!code-csharp[](validation/samples/3.x/ValidationSample/Controllers/UsersController.cs?name=snippet_VerifyName)]
 
 Когда пользователь вводит имя или фамилию, JavaScript выполняет удаленный вызов, чтобы увидеть, будет ли эта пара принята.
 
@@ -160,17 +162,20 @@ public string MiddleName { get; set; }
 
 Метод `IsValid` принимает объект с именем *value*, который является входными данными для проверки. Перегрузка также принимает объект `ValidationContext`, который предоставляет дополнительные сведения, такие как экземпляр модели, созданный с помощью привязки модели.
 
-В следующем примере проверяется, что дата выпуска фильмов в *классическом* жанре задана не позднее указанного года. Атрибут `[ClassicMovie2]` сначала проверяет жанр и продолжает проверку, только если он *классический*. У фильмов, попавших в классику, система проверяет даты выпуска, чтобы убедиться в том, что она не является более поздней, чем ограничение, переданное в конструктор атрибута.
+В следующем примере проверяется, что дата выпуска фильмов в *классическом* жанре задана не позднее указанного года. Атрибут `[ClassicMovie]`:
 
-[!code-csharp[](validation/sample/Attributes/ClassicMovieAttribute.cs?name=snippet_ClassicMovieAttribute)]
+* выполняется только на сервере.
+* Для классических фильмов проверяет дату выпуска:
 
-Приведенная выше переменная `movie` представляет объект `Movie`, который содержит данные из переданной формы. Метод `IsValid` проверяет дату и жанр. После успешной проверки `IsValid` возвращает код `ValidationResult.Success`. Если проверка завершается неудачно, возвращается `ValidationResult` с сообщением об ошибке.
+[!code-csharp[](validation/samples/3.x/ValidationSample/Validation/ClassicMovieAttribute.cs?name=snippet_Class)]
+
+Приведенная выше переменная `movie` представляет объект `Movie`, который содержит данные из переданной формы. Если проверка завершается неудачно, возвращается `ValidationResult` с сообщением об ошибке.
 
 ## <a name="ivalidatableobject"></a>IValidatableObject
 
 Предыдущий пример работает только с типами `Movie`. Другой вариант для проверки на уровне класса — реализация `IValidatableObject` в классе модели, как показано в следующем примере.
 
-[!code-csharp[](validation/sample/Models/MovieIValidatable.cs?name=snippet&highlight=1,26-34)]
+[!code-csharp[](validation/samples/3.x/ValidationSample/Models/ValidatableMovie.cs?name=snippet_Class&highlight=1,26-34)]
 
 ## <a name="top-level-node-validation"></a>Проверка узлов верхнего уровня
 
@@ -183,31 +188,27 @@ public string MiddleName { get; set; }
 
 Проверка привязанных к модели узлов верхнего уровня осуществляется наряду с проверкой свойств модели. В следующем примере, взятом из примера приложения, метод `VerifyPhone` использует класс <xref:System.ComponentModel.DataAnnotations.RegularExpressionAttribute> для проверки параметра действия `phone`.
 
-[!code-csharp[](validation/sample/Controllers/UsersController.cs?name=snippet_VerifyPhone)]
+[!code-csharp[](validation/samples/3.x/ValidationSample/Controllers/UsersController.cs?name=snippet_VerifyPhone)]
 
 Узлы верхнего уровня могут применять класс <xref:Microsoft.AspNetCore.Mvc.ModelBinding.BindRequiredAttribute> с атрибутами проверки. В следующем примере, взятом из примера приложения, метод `CheckAge` указывает, что при отправке формы параметр `age` должен быть привязан из строки запроса.
 
-[!code-csharp[](validation/sample/Controllers/UsersController.cs?name=snippet_CheckAge)]
+[!code-csharp[](validation/samples/3.x/ValidationSample/Controllers/UsersController.cs?name=snippet_CheckAgeSignature)]
 
-На странице "Check Age" (Проверка возраста) (*CheckAge.cshtml*) находятся две формы. Первая форма отправляет значение `Age`, равное `99`, в виде строки запроса: `https://localhost:5001/Users/CheckAge?Age=99`.
+На странице "Check Age" (Проверка возраста) (*CheckAge.cshtml*) находятся две формы. Первая форма отправляет значение `Age`, равное `99`, в виде параметра строки запроса: `https://localhost:5001/Users/CheckAge?Age=99`.
 
 Если из строки запроса отправлен параметр `age` в правильном формате, форма проходит проверку.
 
 Вторая форма на странице "Check Age" (Проверка возраста) отправляет значение `Age` в теле запроса, и проверка завершается сбоем. Ошибка привязки связана с тем, что параметр `age` должен поступать из строки запроса.
 
-При работе с `CompatibilityVersion.Version_2_1` или более поздней версией проверка узла верхнего уровня по умолчанию включена. В противном случае проверка узла верхнего уровня отключена. Параметр по умолчанию можно переопределить, задав свойство <xref:Microsoft.AspNetCore.Mvc.MvcOptions.AllowValidatingTopLevelNodes*> в (`Startup.ConfigureServices`), как показано ниже.
-
-[!code-csharp[](validation/sample_snapshot/Startup.cs?name=snippet_AddMvc&highlight=4)]
-
 ## <a name="maximum-errors"></a>Максимальное количество ошибок
 
 При достижении максимального количества ошибок (по умолчанию 200) проверка прекращается. Это число можно изменить с помощью следующего кода в `Startup.ConfigureServices`:
 
-[!code-csharp[](validation/sample/Startup.cs?name=snippet_MaxModelValidationErrors&highlight=3)]
+[!code-csharp[](validation/samples/3.x/ValidationSample/Startup.cs?name=snippet_Configuration&highlight=4)]
 
 ## <a name="maximum-recursion"></a>Максимальная рекурсия
 
-<xref:Microsoft.AspNetCore.Mvc.ModelBinding.Validation.ValidationVisitor> проходит через граф объектов в проверяемой модели. У моделей, которые очень глубоки или содержат бесконечную рекурсию, в ходе проверки может произойти переполнение стека. [MvcOptions.MaxValidationDepth](xref:Microsoft.AspNetCore.Mvc.MvcOptions.MaxValidationDepth) предоставляет способ остановить проверку до превышения настроенной глубины рекурсии обхода. Значение `MvcOptions.MaxValidationDepth` по умолчанию — 200 при работе в `CompatibilityVersion.Version_2_2` или более поздней версии. Для более ранних версий значение равно NULL; это означает отсутствие ограничения глубины.
+<xref:Microsoft.AspNetCore.Mvc.ModelBinding.Validation.ValidationVisitor> проходит через граф объектов в проверяемой модели. У глубоких моделей, содержащих бесконечную рекурсию, в ходе проверки может произойти переполнение стека. [MvcOptions.MaxValidationDepth](xref:Microsoft.AspNetCore.Mvc.MvcOptions.MaxValidationDepth) предоставляет способ остановить проверку до превышения настроенной глубины рекурсии обхода. Значение `MvcOptions.MaxValidationDepth` по умолчанию — 200.
 
 ## <a name="automatic-short-circuit"></a>Автоматическое сокращение
 
@@ -219,11 +220,11 @@ public string MiddleName { get; set; }
 
 1. Создайте реализацию интерфейса `IObjectModelValidator`, которая не помечает поля как недопустимые.
 
-   [!code-csharp[](validation/sample/Attributes/NullObjectModelValidator.cs?name=snippet_DisableValidation)]
+   [!code-csharp[](validation/samples/3.x/ValidationSample/Validation/NullObjectModelValidator.cs?name=snippet_Class)]
 
 1. Добавьте следующий код в `Startup.ConfigureServices` для замены реализации `IObjectModelValidator` по умолчанию в контейнере внедрения зависимостей.
 
-   [!code-csharp[](validation/sample/Startup.cs?name=snippet_DisableValidation)]
+   [!code-csharp[](validation/samples/3.x/ValidationSample/Startup.cs?name=snippet_DisableValidation)]
 
 По-прежнему могут отображаться ошибки состояния модели, которые идут из привязки модели.
 
@@ -233,36 +234,28 @@ public string MiddleName { get; set; }
 
 Проверка на стороне клиента позволяет избежать ненужного кругового захода на сервер при наличии ошибки ввода в форме. Ссылки на следующий скрипт в *_Layout.cshtml* и *_ValidationScriptsPartial.cshtml* поддерживают проверку на стороне клиента.
 
-[!code-cshtml[](validation/sample/Views/Shared/_Layout.cshtml?name=snippet_ScriptTag)]
+[!code-cshtml[](validation/samples/3.x/ValidationSample/Views/Shared/_Layout.cshtml?name=snippet_Scripts)]
 
-[!code-cshtml[](validation/sample/Views/Shared/_ValidationScriptsPartial.cshtml?name=snippet_ScriptTags)]
+[!code-cshtml[](validation/samples/3.x/ValidationSample/Views/Shared/_ValidationScriptsPartial.cshtml?name=snippet_Scripts)]
 
 Скрипт [ненавязчивой проверки jQuery](https://github.com/aspnet/jquery-validation-unobtrusive) — это настраиваемая интерфейсная библиотека Майкрософт, которая основана на популярном подключаемом модуле [jQuery Validate](https://jqueryvalidation.org/). Без скрипта ненавязчивой проверки jQuery одну и ту же логику проверки приходилось бы реализовывать в двух местах: в атрибутах проверки для свойств модели на стороне сервера, а затем еще раз в скриптах на стороне клиента. Вместо этого [вспомогательные функции тегов](xref:mvc/views/tag-helpers/intro) и [вспомогательные функции HTML](xref:mvc/views/overview) могут использовать атрибуты проверки и метаданные типов из свойств модели для обработки атрибутов `data-` HTML 5 в элементах форм, требующих проверки. Скрипт ненавязчивой проверки jQuery анализирует эти атрибуты `data-` и передает логику в подключаемый модуль jQuery Validate, по сути копируя логику проверки на стороне сервера в клиент. Ошибки проверки могут выводиться в клиенте с помощью вспомогательных функций тегов, как показано ниже.
 
-[!code-cshtml[](validation/sample/Views/Movies/Create.cshtml?name=snippet_ReleaseDate&highlight=4-5)]
+[!code-cshtml[](validation/samples/3.x/ValidationSample/Pages/Movies/Create.cshtml?name=snippet_ReleaseDate&highlight=3-4)]
 
-Приведенные выше вспомогательные функции тегов отрисовывают следующий код HTML.
+Приведенные выше вспомогательные функции тегов отрисовывают следующий код HTML:
 
 ```html
-<form action="/Movies/Create" method="post">
-    <div class="form-horizontal">
-        <h4>Movie</h4>
-        <div class="text-danger"></div>
-        <div class="form-group">
-            <label class="col-md-2 control-label" for="ReleaseDate">ReleaseDate</label>
-            <div class="col-md-10">
-                <input class="form-control" type="datetime"
-                data-val="true" data-val-required="The ReleaseDate field is required."
-                id="ReleaseDate" name="ReleaseDate" value="">
-                <span class="text-danger field-validation-valid"
-                data-valmsg-for="ReleaseDate" data-valmsg-replace="true"></span>
-            </div>
-        </div>
-    </div>
-</form>
+<div class="form-group">
+    <label class="control-label" for="Movie_ReleaseDate">Release Date</label>
+    <input class="form-control" type="date" data-val="true"
+        data-val-required="The Release Date field is required."
+        id="Movie_ReleaseDate" name="Movie.ReleaseDate" value="">
+    <span class="text-danger field-validation-valid"
+        data-valmsg-for="Movie.ReleaseDate" data-valmsg-replace="true"></span>
+</div>
 ```
 
-Обратите внимание на то, что атрибуты `data-` в выходных данных HTML соответствуют атрибутам проверки для свойства `ReleaseDate`. Атрибут `data-val-required` содержит сообщение об ошибке, которое выводится, если пользователь не заполнил поле даты выхода. Скрипт ненавязчивой проверки jQuery передает это значение в метод [`required()`](https://jqueryvalidation.org/required-method/) подключаемого модуля jQuery Validate, который затем выводит это сообщение в соответствующем элементе **\<span>** .
+Обратите внимание на то, что атрибуты `data-` в выходных данных HTML соответствуют атрибутам проверки для свойства `Movie.ReleaseDate`. Атрибут `data-val-required` содержит сообщение об ошибке, которое выводится, если пользователь не заполнил поле даты выхода. Скрипт ненавязчивой проверки jQuery передает это значение в метод [`required()`](https://jqueryvalidation.org/required-method/) подключаемого модуля jQuery Validate, который затем выводит это сообщение в соответствующем элементе **\<span>** .
 
 Проверка типа данных основана на типе свойства в .NET, если его не переопределяет атрибут `[DataType]`. Браузеры имеют свои сообщения об по умолчанию, но пакет ненавязчивой проверки jQuery может переопределять эти сообщения. Атрибуты и подклассы `[DataType]`, такие как `[EmailAddress]`, позволяют указать сообщение об ошибке.
 
@@ -312,9 +305,9 @@ $.get({
 
 ## <a name="custom-client-side-validation"></a>Настраиваемая проверка на стороне клиента
 
-Настраиваемая проверка на стороне клиента выполняется путем создания атрибутов HTML `data-`, которые работают с настраиваемым адаптером проверки jQuery. В следующем примере кода адаптера используются атрибуты `ClassicMovie` и `ClassicMovie2`, которые были введены ранее в этой статье.
+Настраиваемая проверка на стороне клиента выполняется путем создания атрибутов HTML `data-`, которые работают с настраиваемым адаптером проверки jQuery. В следующем примере кода адаптера используются атрибуты `[ClassicMovie]` и `[ClassicMovieWithClientValidator]`, которые были введены ранее в этой статье.
 
-[!code-javascript[](validation/sample/wwwroot/js/classicMovieValidator.js?name=snippet_UnobtrusiveValidation)]
+[!code-javascript[](validation/samples/3.x/ValidationSample/wwwroot/js/classicMovieValidator.js)]
 
 Сведения о способах создания адаптеров см. в [документации по проверкам jQuery](https://jqueryvalidation.org/documentation/).
 
@@ -322,17 +315,17 @@ $.get({
 
 * помечают поле как проходящее проверку (`data-val="true"`);
 * указывают имя правила проверки и текст сообщения об ошибке (например, `data-val-rulename="Error message."`);
-* указывают любые дополнительные параметры, в которых нуждается проверяющий элемент управления (например, `data-val-rulename-parm1="value"`).
+* указывают любые дополнительные параметры, в которых нуждается проверяющий элемент управления (например, `data-val-rulename-param1="value"`).
 
 В следующем примере показаны атрибуты `data-` для нашего атрибута `ClassicMovie` из примера приложения.
 
 ```html
-<input class="form-control" type="datetime"
+<input class="form-control" type="date"
     data-val="true"
-    data-val-classicmovie1="Classic movies must have a release year earlier than 1960."
-    data-val-classicmovie1-year="1960"
-    data-val-required="The ReleaseDate field is required."
-    id="ReleaseDate" name="ReleaseDate" value="">
+    data-val-classicmovie="Classic movies must have a release year no later than 1960."
+    data-val-classicmovie-year="1960"
+    data-val-required="The Release Date field is required."
+    id="Movie_ReleaseDate" name="Movie.ReleaseDate" value="">
 ```
 
 Как отмечалось ранее, [вспомогательные функции тегов](xref:mvc/views/tag-helpers/intro) и [вспомогательные методы HTML](xref:mvc/views/overview) используют сведения из атрибутов проверки для подготовки к отрисовке атрибутов `data-`. Существует два варианта для написания кода, который приводит к созданию настраиваемых атрибутов HTML `data-`.
@@ -346,35 +339,36 @@ $.get({
 
 1. Создайте класс адаптера атрибута для настраиваемого атрибута проверки. Наследуйте класс от [AttributeAdapterBase\<T>](/dotnet/api/microsoft.aspnetcore.mvc.dataannotations.attributeadapterbase-1?view=aspnetcore-2.2). Создайте метод `AddValidation`, который добавляет атрибуты `data-` для выводимых данных, как показано в следующем примере.
 
-   [!code-csharp[](validation/sample/Attributes/ClassicMovieAttributeAdapter.cs?name=snippet_ClassicMovieAttributeAdapter)]
+   [!code-csharp[](validation/samples/3.x/ValidationSample/Validation/ClassicMovieAttributeAdapter.cs?name=snippet_Class)]
 
 1. Создайте класс поставщика адаптера, который реализует <xref:Microsoft.AspNetCore.Mvc.DataAnnotations.IValidationAttributeAdapterProvider>. В методе `GetAttributeAdapter` передайте настраиваемый атрибут в конструктор адаптера, как показано в следующем примере.
 
-   [!code-csharp[](validation/sample/Attributes/CustomValidationAttributeAdapterProvider.cs?name=snippet_CustomValidationAttributeAdapterProvider)]
+   [!code-csharp[](validation/samples/3.x/ValidationSample/Validation/CustomValidationAttributeAdapterProvider.cs?name=snippet_Class)]
 
 1. Зарегистрируйте поставщик адаптера для внедрения зависимостей в `Startup.ConfigureServices`.
 
-   [!code-csharp[](validation/sample/Startup.cs?name=snippet_MaxModelValidationErrors&highlight=8-10)]
+   [!code-csharp[](validation/samples/3.x/ValidationSample/Startup.cs?name=snippet_Configuration&highlight=9-10)]
 
 ### <a name="iclientmodelvalidator-for-client-side-validation"></a>IClientModelValidator для проверки на стороне клиента
 
-Этот метод отрисовки атрибутов `data-` в формате HTML используется атрибутом `ClassicMovie2` в примере приложения. Чтобы добавить клиентскую проверку с помощью этого метода, сделайте следующее.
+Этот метод отрисовки атрибутов `data-` в формате HTML используется атрибутом `ClassicMovieWithClientValidator` в примере приложения. Чтобы добавить клиентскую проверку с помощью этого метода, сделайте следующее.
 
 * В настраиваемом атрибуте проверки реализуйте интерфейс `IClientModelValidator` и создайте метод `AddValidation`. В метод `AddValidation` добавьте атрибуты `data-` для проверки, как показано в следующем примере.
 
-  [!code-csharp[](validation/sample/Attributes/ClassicMovie2Attribute.cs?name=snippet_ClassicMovie2Attribute)]
+  [!code-csharp[](validation/samples/3.x/ValidationSample/Validation/ClassicMovieWithClientValidatorAttribute.cs?name=snippet_Class)]
 
 ## <a name="disable-client-side-validation"></a>Отключение проверки на стороне клиента
 
-Следующий код отключает клиентскую проверку в представлениях MVC.
+Следующий код отключает клиентскую проверку в Razor Pages:
 
-[!code-csharp[](validation/sample_snapshot/Startup2.cs?name=snippet_DisableClientValidation)]
+[!code-csharp[](validation/samples/3.x/ValidationSample/Startup.cs?name=snippet_DisableClientValidation&highlight=2-5)]
 
-В Razor Pages:
+Другие параметры отключения проверки на стороне клиента:
 
-[!code-csharp[](validation/sample_snapshot/Startup3.cs?name=snippet_DisableClientValidation)]
+* Закомментируйте ссылку на `_ValidationScriptsPartial` во всех файлах с расширением *CSHTML*.
+* Удалите содержимое файла *Pages\Shared\_ValidationScriptsPartial.cshtml*.
 
-Еще один вариант отключения клиентской проверки клиента — закомментировать ссылку на `_ValidationScriptsPartial` в вашем файле *.cshtml*.
+Предыдущий подход не помешает проверке на стороне клиента библиотеки классов Razor для ASP.NET Core Identity. Дополнительные сведения можно найти по адресу: <xref:security/authentication/scaffold-identity>.
 
 ## <a name="additional-resources"></a>Дополнительные ресурсы
 
@@ -395,28 +389,28 @@ $.get({
 
 Привязка модели и проверка модели происходят перед выполнением действия контроллера или метода обработчика Razor Pages. Веб-приложение отвечает за проверку `ModelState.IsValid` и реагирует соответствующим образом. Веб-приложения обычно повторно отображают страницы с сообщением об ошибке.
 
-[!code-csharp[](validation/sample_snapshot/Create.cshtml.cs?name=snippet&highlight=3-6)]
+[!code-csharp[](validation/samples_snapshot/2.x/Create.cshtml.cs?name=snippet&highlight=3-6)]
 
-Контроллерам веб-API не нужно проверять `ModelState.IsValid` при наличии атрибута `[ApiController]`. В этом случае автоматически возвращается ответ HTTP 400, содержащий сведения о проблеме, если состояние модели недопустимо. Дополнительные сведения см. в разделе [Автоматические отклики HTTP 400](xref:web-api/index#automatic-http-400-responses).
+Контроллерам веб-API не нужно проверять `ModelState.IsValid` при наличии атрибута `[ApiController]`. В этом случае автоматически возвращается ответ HTTP 400, содержащий сведения об ошибке, если состояние модели недопустимо. Дополнительные сведения см. в разделе [Автоматические отклики HTTP 400](xref:web-api/index#automatic-http-400-responses).
 
 ## <a name="rerun-validation"></a>Перезапуск проверки
 
 Проверка выполняется автоматически, однако может потребоваться повторить ее вручную. Например, можно вычислить значение свойства и повторно выполнить проверку после установки свойства в вычисляемое значение. Для повторной проверки вызовите метод `TryValidateModel`, как показано ниже.
 
-[!code-csharp[](validation/sample/Controllers/MoviesController.cs?name=snippet_TryValidateModel&highlight=11)]
+[!code-csharp[](validation/samples/2.x/ValidationSample/Controllers/MoviesController.cs?name=snippet_TryValidateModel&highlight=11)]
 
 ## <a name="validation-attributes"></a>Атрибуты проверки
 
-Атрибуты проверки позволяют задать правила проверки для свойств модели. В следующем примере из [примера приложения](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/models/validation/sample) показан класс модели, который помечается с помощью атрибутов проверки. `[ClassicMovie]` является настраиваемым атрибутом проверки; остальные являются встроенными. (Не показан `[ClassicMovie2]`, который демонстрирует альтернативный способ реализации настраиваемого атрибута.)
+Атрибуты проверки позволяют задать правила проверки для свойств модели. В следующем примере из [примера приложения](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/models/validation/sample) показан класс модели, который помечается с помощью атрибутов проверки. `[ClassicMovie]` является настраиваемым атрибутом проверки; остальные являются встроенными. Не показан `[ClassicMovie2]`, который демонстрирует альтернативный способ реализации настраиваемого атрибута.
 
-[!code-csharp[](validation/sample/Models/Movie.cs?name=snippet_ModelClass)]
+[!code-csharp[](validation/samples/2.x/ValidationSample/Models/Movie.cs?name=snippet_ModelClass)]
 
 ## <a name="built-in-attributes"></a>Встроенные атрибуты
 
-Ниже приведены некоторые из встроенных атрибутов проверки.
+К встроенным атрибутам проверки относятся:
 
 * `[CreditCard]`. проверяет, имеет ли свойство формат кредитной карты.
-* `[Compare]`. проверяет, совпадают ли два свойства модели.
+* `[Compare]`. проверяет, совпадают ли два свойства модели. Например, файл *Register.cshtml.cs* использует `[Compare]` для проверки совпадений двух введенных паролей. [Удостоверение шаблона](xref:security/authentication/scaffold-identity) для просмотра кода регистрации.
 * `[EmailAddress]`. проверяет, имеет ли свойство формат адреса электронной почты.
 * `[Phone]`. проверяет, имеет ли свойство формат номера телефона.
 * `[Range]`. проверяет, находится ли значение свойства в указанном диапазоне.
@@ -459,7 +453,7 @@ $.get({
 * Сделать поле допускающим значение NULL (например, `decimal?` вместо `decimal`). Типы значений [Nullable\<T>](/dotnet/csharp/programming-guide/nullable-types/) обрабатываются как стандартные типы, допускающие значение NULL.
 * Указать сообщение об ошибке по умолчанию для использования в привязке модели, как показано в следующем примере.
 
-  [!code-csharp[](validation/sample/Startup.cs?name=snippet_MaxModelValidationErrors&highlight=4-5)]
+  [!code-csharp[](validation/samples/2.x/ValidationSample/Startup.cs?name=snippet_MaxModelValidationErrors&highlight=4-5)]
 
   Дополнительные сведения об ошибках привязки модели, у которых можно задать сообщение по умолчанию, см. в разделе <xref:Microsoft.AspNetCore.Mvc.ModelBinding.Metadata.DefaultModelBindingMessageProvider#methods>.
 
@@ -486,11 +480,11 @@ $.get({
 
    Ниже приведен пример метода действия, который возвращает настраиваемое сообщение об ошибке.
 
-   [!code-csharp[](validation/sample/Controllers/UsersController.cs?name=snippet_VerifyEmail)]
+   [!code-csharp[](validation/samples/2.x/ValidationSample/Controllers/UsersController.cs?name=snippet_VerifyEmail)]
 
 1. В классе модели пометьте свойство атрибутом `[Remote]`, указывающим метод действия проверки, как показано в следующем примере.
 
-   [!code-csharp[](validation/sample/Models/User.cs?name=snippet_UserEmailProperty)]
+   [!code-csharp[](validation/samples/2.x/ValidationSample/Models/User.cs?name=snippet_UserEmailProperty)]
  
    Атрибут `[Remote]` находится в пространстве имен `Microsoft.AspNetCore.Mvc`. Установите пакет NuGet [Microsoft.AspNetCore.Mvc.ViewFeatures](https://www.nuget.org/packages/Microsoft.AspNetCore.Mvc.ViewFeatures), если вы не используете метапакет `Microsoft.AspNetCore.App` или `Microsoft.AspNetCore.All`.
    
@@ -498,11 +492,11 @@ $.get({
 
 Свойство `AdditionalFields` атрибута `[Remote]` позволяет проверять сочетания полей с данными на сервере. Например, если бы в модели `User` были свойства `FirstName` и `LastName`, могла бы возникнуть необходимость проверить, нет ли уже пользователя с такой парой имен. В следующем примере показано использование `AdditionalFields`.
 
-[!code-csharp[](validation/sample/Models/User.cs?name=snippet_UserNameProperties)]
+[!code-csharp[](validation/samples/2.x/ValidationSample/Models/User.cs?name=snippet_UserNameProperties)]
 
 Свойству `AdditionalFields` можно было бы явным образом присвоить строки `"FirstName"` и `"LastName"`, однако применение оператора [`nameof`](/dotnet/csharp/language-reference/keywords/nameof) упрощает дальнейший рефакторинг. Методу действия для этой проверки необходимо принимать аргументы для имени и фамилии.
 
-[!code-csharp[](validation/sample/Controllers/UsersController.cs?name=snippet_VerifyName)]
+[!code-csharp[](validation/samples/2.x/ValidationSample/Controllers/UsersController.cs?name=snippet_VerifyName)]
 
 Когда пользователь вводит имя или фамилию, JavaScript выполняет удаленный вызов, чтобы увидеть, будет ли эта пара принята.
 
@@ -530,7 +524,7 @@ public string MiddleName { get; set; }
 
 В следующем примере проверяется, что дата выпуска фильмов в *классическом* жанре задана не позднее указанного года. Атрибут `[ClassicMovie2]` сначала проверяет жанр и продолжает проверку, только если он *классический*. У фильмов, попавших в классику, система проверяет даты выпуска, чтобы убедиться в том, что она не является более поздней, чем ограничение, переданное в конструктор атрибута.
 
-[!code-csharp[](validation/sample/Attributes/ClassicMovieAttribute.cs?name=snippet_ClassicMovieAttribute)]
+[!code-csharp[](validation/samples/2.x/ValidationSample/Attributes/ClassicMovieAttribute.cs?name=snippet_ClassicMovieAttribute)]
 
 Приведенная выше переменная `movie` представляет объект `Movie`, который содержит данные из переданной формы. Метод `IsValid` проверяет дату и жанр. После успешной проверки `IsValid` возвращает код `ValidationResult.Success`. Если проверка завершается неудачно, возвращается `ValidationResult` с сообщением об ошибке.
 
@@ -538,7 +532,7 @@ public string MiddleName { get; set; }
 
 Предыдущий пример работает только с типами `Movie`. Другой вариант для проверки на уровне класса — реализация `IValidatableObject` в классе модели, как показано в следующем примере.
 
-[!code-csharp[](validation/sample/Models/MovieIValidatable.cs?name=snippet&highlight=1,26-34)]
+[!code-csharp[](validation/samples/2.x/ValidationSample/Models/MovieIValidatable.cs?name=snippet&highlight=1,26-34)]
 
 ## <a name="top-level-node-validation"></a>Проверка узлов верхнего уровня
 
@@ -551,11 +545,11 @@ public string MiddleName { get; set; }
 
 Проверка привязанных к модели узлов верхнего уровня осуществляется наряду с проверкой свойств модели. В следующем примере, взятом из примера приложения, метод `VerifyPhone` использует класс <xref:System.ComponentModel.DataAnnotations.RegularExpressionAttribute> для проверки параметра действия `phone`.
 
-[!code-csharp[](validation/sample/Controllers/UsersController.cs?name=snippet_VerifyPhone)]
+[!code-csharp[](validation/samples/2.x/ValidationSample/Controllers/UsersController.cs?name=snippet_VerifyPhone)]
 
 Узлы верхнего уровня могут применять класс <xref:Microsoft.AspNetCore.Mvc.ModelBinding.BindRequiredAttribute> с атрибутами проверки. В следующем примере, взятом из примера приложения, метод `CheckAge` указывает, что при отправке формы параметр `age` должен быть привязан из строки запроса.
 
-[!code-csharp[](validation/sample/Controllers/UsersController.cs?name=snippet_CheckAge)]
+[!code-csharp[](validation/samples/2.x/ValidationSample/Controllers/UsersController.cs?name=snippet_CheckAge)]
 
 На странице "Check Age" (Проверка возраста) (*CheckAge.cshtml*) находятся две формы. Первая форма отправляет значение `Age`, равное `99`, в виде строки запроса: `https://localhost:5001/Users/CheckAge?Age=99`.
 
@@ -565,13 +559,13 @@ public string MiddleName { get; set; }
 
 При работе с `CompatibilityVersion.Version_2_1` или более поздней версией проверка узла верхнего уровня по умолчанию включена. В противном случае проверка узла верхнего уровня отключена. Параметр по умолчанию можно переопределить, задав свойство <xref:Microsoft.AspNetCore.Mvc.MvcOptions.AllowValidatingTopLevelNodes*> в (`Startup.ConfigureServices`), как показано ниже.
 
-[!code-csharp[](validation/sample_snapshot/Startup.cs?name=snippet_AddMvc&highlight=4)]
+[!code-csharp[](validation/samples_snapshot/2.x/Startup.cs?name=snippet_AddMvc&highlight=4)]
 
 ## <a name="maximum-errors"></a>Максимальное количество ошибок
 
 При достижении максимального количества ошибок (по умолчанию 200) проверка прекращается. Это число можно изменить с помощью следующего кода в `Startup.ConfigureServices`:
 
-[!code-csharp[](validation/sample/Startup.cs?name=snippet_MaxModelValidationErrors&highlight=3)]
+[!code-csharp[](validation/samples/2.x/ValidationSample/Startup.cs?name=snippet_MaxModelValidationErrors&highlight=3)]
 
 ## <a name="maximum-recursion"></a>Максимальная рекурсия
 
@@ -587,11 +581,11 @@ public string MiddleName { get; set; }
 
 1. Создайте реализацию интерфейса `IObjectModelValidator`, которая не помечает поля как недопустимые.
 
-   [!code-csharp[](validation/sample/Attributes/NullObjectModelValidator.cs?name=snippet_DisableValidation)]
+   [!code-csharp[](validation/samples/2.x/ValidationSample/Attributes/NullObjectModelValidator.cs?name=snippet_DisableValidation)]
 
 1. Добавьте следующий код в `Startup.ConfigureServices` для замены реализации `IObjectModelValidator` по умолчанию в контейнере внедрения зависимостей.
 
-   [!code-csharp[](validation/sample/Startup.cs?name=snippet_DisableValidation)]
+   [!code-csharp[](validation/samples/2.x/ValidationSample/Startup.cs?name=snippet_DisableValidation)]
 
 По-прежнему могут отображаться ошибки состояния модели, которые идут из привязки модели.
 
@@ -601,13 +595,13 @@ public string MiddleName { get; set; }
 
 Проверка на стороне клиента позволяет избежать ненужного кругового захода на сервер при наличии ошибки ввода в форме. Ссылки на следующий скрипт в *_Layout.cshtml* и *_ValidationScriptsPartial.cshtml* поддерживают проверку на стороне клиента.
 
-[!code-cshtml[](validation/sample/Views/Shared/_Layout.cshtml?name=snippet_ScriptTag)]
+[!code-cshtml[](validation/samples/2.x/ValidationSample/Views/Shared/_Layout.cshtml?name=snippet_ScriptTag)]
 
-[!code-cshtml[](validation/sample/Views/Shared/_ValidationScriptsPartial.cshtml?name=snippet_ScriptTags)]
+[!code-cshtml[](validation/samples/2.x/ValidationSample/Views/Shared/_ValidationScriptsPartial.cshtml?name=snippet_ScriptTags)]
 
 Скрипт [ненавязчивой проверки jQuery](https://github.com/aspnet/jquery-validation-unobtrusive) — это настраиваемая интерфейсная библиотека Майкрософт, которая основана на популярном подключаемом модуле [jQuery Validate](https://jqueryvalidation.org/). Без скрипта ненавязчивой проверки jQuery одну и ту же логику проверки приходилось бы реализовывать в двух местах: в атрибутах проверки для свойств модели на стороне сервера, а затем еще раз в скриптах на стороне клиента. Вместо этого [вспомогательные функции тегов](xref:mvc/views/tag-helpers/intro) и [вспомогательные функции HTML](xref:mvc/views/overview) могут использовать атрибуты проверки и метаданные типов из свойств модели для обработки атрибутов `data-` HTML 5 в элементах форм, требующих проверки. Скрипт ненавязчивой проверки jQuery анализирует эти атрибуты `data-` и передает логику в подключаемый модуль jQuery Validate, по сути копируя логику проверки на стороне сервера в клиент. Ошибки проверки могут выводиться в клиенте с помощью вспомогательных функций тегов, как показано ниже.
 
-[!code-cshtml[](validation/sample/Views/Movies/Create.cshtml?name=snippet_ReleaseDate&highlight=4-5)]
+[!code-cshtml[](validation/samples/2.x/ValidationSample/Views/Movies/Create.cshtml?name=snippet_ReleaseDate&highlight=4-5)]
 
 Приведенные выше вспомогательные функции тегов отрисовывают следующий код HTML.
 
@@ -682,7 +676,7 @@ $.get({
 
 Настраиваемая проверка на стороне клиента выполняется путем создания атрибутов HTML `data-`, которые работают с настраиваемым адаптером проверки jQuery. В следующем примере кода адаптера используются атрибуты `ClassicMovie` и `ClassicMovie2`, которые были введены ранее в этой статье.
 
-[!code-javascript[](validation/sample/wwwroot/js/classicMovieValidator.js?name=snippet_UnobtrusiveValidation)]
+[!code-javascript[](validation/samples/2.x/ValidationSample/wwwroot/js/classicMovieValidator.js?name=snippet_UnobtrusiveValidation)]
 
 Сведения о способах создания адаптеров см. в [документации по проверкам jQuery](https://jqueryvalidation.org/documentation/).
 
@@ -714,15 +708,15 @@ $.get({
 
 1. Создайте класс адаптера атрибута для настраиваемого атрибута проверки. Наследуйте класс от [AttributeAdapterBase\<T>](/dotnet/api/microsoft.aspnetcore.mvc.dataannotations.attributeadapterbase-1?view=aspnetcore-2.2). Создайте метод `AddValidation`, который добавляет атрибуты `data-` для выводимых данных, как показано в следующем примере.
 
-   [!code-csharp[](validation/sample/Attributes/ClassicMovieAttributeAdapter.cs?name=snippet_ClassicMovieAttributeAdapter)]
+   [!code-csharp[](validation/samples/2.x/ValidationSample/Attributes/ClassicMovieAttributeAdapter.cs?name=snippet_ClassicMovieAttributeAdapter)]
 
 1. Создайте класс поставщика адаптера, который реализует <xref:Microsoft.AspNetCore.Mvc.DataAnnotations.IValidationAttributeAdapterProvider>. В методе `GetAttributeAdapter` передайте настраиваемый атрибут в конструктор адаптера, как показано в следующем примере.
 
-   [!code-csharp[](validation/sample/Attributes/CustomValidationAttributeAdapterProvider.cs?name=snippet_CustomValidationAttributeAdapterProvider)]
+   [!code-csharp[](validation/samples/2.x/ValidationSample/Attributes/CustomValidationAttributeAdapterProvider.cs?name=snippet_CustomValidationAttributeAdapterProvider)]
 
 1. Зарегистрируйте поставщик адаптера для внедрения зависимостей в `Startup.ConfigureServices`.
 
-   [!code-csharp[](validation/sample/Startup.cs?name=snippet_MaxModelValidationErrors&highlight=8-10)]
+   [!code-csharp[](validation/samples/2.x/ValidationSample/Startup.cs?name=snippet_MaxModelValidationErrors&highlight=8-10)]
 
 ### <a name="iclientmodelvalidator-for-client-side-validation"></a>IClientModelValidator для проверки на стороне клиента
 
@@ -730,17 +724,17 @@ $.get({
 
 * В настраиваемом атрибуте проверки реализуйте интерфейс `IClientModelValidator` и создайте метод `AddValidation`. В метод `AddValidation` добавьте атрибуты `data-` для проверки, как показано в следующем примере.
 
-  [!code-csharp[](validation/sample/Attributes/ClassicMovie2Attribute.cs?name=snippet_ClassicMovie2Attribute)]
+  [!code-csharp[](validation/samples/2.x/ValidationSample/Attributes/ClassicMovie2Attribute.cs?name=snippet_ClassicMovie2Attribute)]
 
 ## <a name="disable-client-side-validation"></a>Отключение проверки на стороне клиента
 
 Следующий код отключает клиентскую проверку в представлениях MVC.
 
-[!code-csharp[](validation/sample_snapshot/Startup2.cs?name=snippet_DisableClientValidation)]
+[!code-csharp[](validation/samples_snapshot/2.x/Startup2.cs?name=snippet_DisableClientValidation)]
 
 В Razor Pages:
 
-[!code-csharp[](validation/sample_snapshot/Startup3.cs?name=snippet_DisableClientValidation)]
+[!code-csharp[](validation/samples_snapshot/2.x/Startup3.cs?name=snippet_DisableClientValidation)]
 
 Еще один вариант отключения клиентской проверки клиента — закомментировать ссылку на `_ValidationScriptsPartial` в вашем файле *.cshtml*.
 

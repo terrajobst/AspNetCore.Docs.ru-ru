@@ -5,14 +5,14 @@ description: Узнайте, как реализовать фоновые зад
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 09/26/2019
+ms.date: 11/19/2019
 uid: fundamentals/host/hosted-services
-ms.openlocfilehash: c1fbb5ae8ffc4ee506f42df6a4cbbe845b2b903d
-ms.sourcegitcommit: 07d98ada57f2a5f6d809d44bdad7a15013109549
+ms.openlocfilehash: da3c2679005714a3d82de94cf3bc3c809aa3500d
+ms.sourcegitcommit: 8157e5a351f49aeef3769f7d38b787b4386aad5f
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72333657"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74239723"
 ---
 # <a name="background-tasks-with-hosted-services-in-aspnet-core"></a>Фоновые задачи с размещенными службами в ASP.NET Core
 
@@ -28,22 +28,23 @@ ms.locfileid: "72333657"
 
 [Просмотреть или скачать образец кода](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/host/hosted-services/samples/) ([как скачивать](xref:index#how-to-download-a-sample))
 
-Пример приложения предоставляется в двух версиях:
-
-* Веб-узел &ndash; удобно использовать для размещения веб-приложений. Пример кода, приведенный в этой статье, относится к этой версии примера приложения. Дополнительные сведения см. в статье о [веб-узле](xref:fundamentals/host/web-host).
-* Универсальный узел &ndash; — новая возможность в ASP.NET Core 2.1. Дополнительные сведения см. в статье об [универсальном узле](xref:fundamentals/host/generic-host).
-
 ## <a name="worker-service-template"></a>Шаблон службы рабочей роли
 
-Шаблон службы рабочей роли ASP.NET Core может служить отправной точкой для написания длительно выполняющихся приложений служб. Чтобы использовать шаблон в качестве основы для приложения размещенных служб, выполните указанные ниже действия.
+Шаблон службы рабочей роли ASP.NET Core может служить отправной точкой для написания длительно выполняющихся приложений служб. Приложение, созданное из шаблона рабочей службы, указывает рабочий пакет SDK в файле проекта:
+
+```xml
+<Project Sdk="Microsoft.NET.Sdk.Worker">
+```
+
+Чтобы использовать шаблон в качестве основы для приложения размещенных служб, выполните указанные ниже действия.
 
 [!INCLUDE[](~/includes/worker-template-instructions.md)]
 
----
-
 ## <a name="package"></a>Пакет
 
-Ссылка на пакет [Microsoft.Extensions.Hosting](https://www.nuget.org/packages/Microsoft.Extensions.Hosting) добавляется неявно для приложений ASP.NET Core.
+Приложение, основанное на шаблоне рабочей службы, использует пакет SDK для `Microsoft.NET.Sdk.Worker` и имеет явную ссылку на пакет [Microsoft.Extensions.Hosting](https://www.nuget.org/packages/Microsoft.Extensions.Hosting). Например, ознакомьтесь с файлом проекта в примере приложения (*BackgroundTasksSample csproj*).
+
+Для веб-приложений, использующих пакет SDK `Microsoft.NET.Sdk.Web`, ссылка на пакет [Microsoft. Extensions. Hosting](https://www.nuget.org/packages/Microsoft.Extensions.Hosting) указывается неявным образом из общей платформы. Явная ссылка на пакет в файле проекта приложения не требуется.
 
 ## <a name="ihostedservice-interface"></a>Интерфейс IHostedService
 
@@ -99,14 +100,13 @@ ms.locfileid: "72333657"
 
 Размещенная служба активируется при запуске приложения и нормально завершает работу при завершении работы приложения. Если во время выполнения задачи в фоновом режиме возникает ошибка, необходимо вызвать `Dispose`, даже если `StopAsync` не вызывается.
 
-## <a name="backgroundservice"></a>BackgroundService
+## <a name="backgroundservice-base-class"></a>Базовый класс BackgroundService
 
-`BackgroundService` — это базовый класс для реализации долго выполняющегося интерфейса <xref:Microsoft.Extensions.Hosting.IHostedService>. `BackgroundService` предоставляет абстрактный метод `ExecuteAsync(CancellationToken stoppingToken)` для хранения логики службы. `stoppingToken` активируется при вызове [IHostedService.StopAsync](xref:Microsoft.Extensions.Hosting.IHostedService.StopAsync*). Реализация этого метода возвращает значение `Task`, представляющее все время существования фоновой службы.
+<xref:Microsoft.Extensions.Hosting.BackgroundService> — это базовый класс для реализации долго выполняющегося интерфейса <xref:Microsoft.Extensions.Hosting.IHostedService>.
 
-Кроме того, *в необязательном порядке* переопределяет методы, определенные в `IHostedService`, чтобы запустить код запуска и завершения работы службы:
+[ExecuteAsync(CancellationToken)](xref:Microsoft.Extensions.Hosting.BackgroundService.ExecuteAsync*) вызывается для запуска фоновой службы. Реализация возвращает значение <xref:System.Threading.Tasks.Task>, представляющее все время существования фоновой службы. Дальнейшие службы не запустятся до тех пор, пока [ExecuteAsync не станет асинхронной](https://github.com/aspnet/Extensions/issues/2149), например, путем вызова `await`. Старайтесь не выполнять функцию в течение длительного времени, так как инициализация в `ExecuteAsync` будет заблокирована. Блоки узлов в [StopAsync(CancellationToken)](xref:Microsoft.Extensions.Hosting.BackgroundService.StopAsync*) ожидают завершения `ExecuteAsync`.
 
-* `StopAsync(CancellationToken cancellationToken)` &ndash; `StopAsync` вызывается, когда происходит нормальное завершение работы узла приложения. `cancellationToken` возвращается, когда узел решает принудительно завершить работу службы. Если этот метод переопределен, вы **должны** вызвать (и `await`) метод базового класса, чтобы обеспечить правильное завершение работы службы.
-* `StartAsync(CancellationToken cancellationToken)` &ndash; `StartAsync` вызывается для запуска фоновой службы. `cancellationToken` возвращается, если процесс запуска прерван. Реализация возвращает значение `Task`, представляющее процесс запуска службы. Никакие другие службы не запускаются до завершения этого `Task`. Если этот метод переопределен, вы **должны** вызвать (и `await`) метод базового класса, чтобы обеспечить правильный запуск службы.
+Токен отмены активируется при вызове [IHostedService.StopAsync](xref:Microsoft.Extensions.Hosting.IHostedService.StopAsync*). При выдаче токена отмены реализация `ExecuteAsync` должна быстро завершиться для корректного завершения работы службы. В противном случае служба некорректно завершает работу при истечении времени ожидания завершения работы. Дополнительные сведения см. в разделе об [интерфейсе IHostedService](#ihostedservice-interface).
 
 ## <a name="timed-background-tasks"></a>Фоновые задачи с заданным временем
 
@@ -120,7 +120,7 @@ ms.locfileid: "72333657"
 
 ## <a name="consuming-a-scoped-service-in-a-background-task"></a>Использование службы с заданной областью в фоновой задаче
 
-Чтобы использовать [службы с заданной областью](xref:fundamentals/dependency-injection#service-lifetimes) в `BackgroundService`, создайте область. Для размещенной службы по умолчанию не создается область.
+Чтобы использовать [службы с заданной областью](xref:fundamentals/dependency-injection#service-lifetimes) в [BackgroundService](#backgroundservice-base-class), создайте область. Для размещенной службы по умолчанию не создается область.
 
 Служба фоновой задачи с заданной областью содержит логику фоновой задачи. В следующем примере:
 
@@ -176,11 +176,6 @@ ms.locfileid: "72333657"
 * Очередь фоновых задач, которые выполняются последовательно.
 
 [Просмотреть или скачать образец кода](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/host/hosted-services/samples/) ([как скачивать](xref:index#how-to-download-a-sample))
-
-Пример приложения предоставляется в двух версиях:
-
-* Веб-узел &ndash; удобно использовать для размещения веб-приложений. Пример кода, приведенный в этой статье, относится к этой версии примера приложения. Дополнительные сведения см. в статье о [веб-узле](xref:fundamentals/host/web-host).
-* Универсальный узел &ndash; — новая возможность в ASP.NET Core 2.1. Дополнительные сведения см. в статье об [универсальном узле](xref:fundamentals/host/generic-host).
 
 ## <a name="package"></a>Пакет
 
@@ -242,7 +237,7 @@ ms.locfileid: "72333657"
 
 [!code-csharp[](hosted-services/samples/2.x/BackgroundTasksSample/Services/BackgroundTaskQueue.cs?name=snippet1)]
 
-В `QueueHostedService` фоновые задачи в очереди из очереди выводятся из очереди и выполняются в качестве <xref:Microsoft.Extensions.Hosting.BackgroundService> — базового класса для реализации длительного выполнения `IHostedService`:
+В `QueueHostedService` фоновые задачи в очереди из очереди выводятся из очереди и выполняются в качестве [BackgroundService](#backgroundservice-base-class) — базового класса для реализации длительного выполнения `IHostedService`:
 
 [!code-csharp[](hosted-services/samples/2.x/BackgroundTasksSample/Services/QueuedHostedService.cs?name=snippet1&highlight=21,25)]
 
