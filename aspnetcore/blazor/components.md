@@ -329,7 +329,7 @@ public IDictionary<string, object> AdditionalAttributes { get; set; }
 
 Когда пользователь предоставляет неинтерпретируемое значение для элемента с привязкой к данным, неанализируемое значение автоматически возвращается к предыдущему значению при срабатывании события привязки.
 
-Рассмотрим следующий сценарий.
+Рассмотрим следующий сценарий:
 
 * Элемент `<input>` привязан к типу `int` с начальным значением `123`:
 
@@ -378,7 +378,7 @@ public IDictionary<string, object> AdditionalAttributes { get; set; }
 
 `@bind` поддерживает параметр `@bind:culture`, чтобы предоставить <xref:System.Globalization.CultureInfo?displayProperty=fullName> для синтаксического анализа и форматирования значения. Указание языка и региональных параметров не рекомендуется при использовании типов полей `date` и `number`. `date` и `number` имеют встроенную поддержку Blazor, которая предоставляет требуемый язык и региональные параметры.
 
-Сведения о том, как задать язык и региональные параметры пользователя, см. в разделе [локализация](#localization).
+Сведения о том, как задать язык и региональные параметры пользователя, см. в разделе [Локализация](#localization) .
 
 **Строки формата**
 
@@ -545,12 +545,12 @@ public IDictionary<string, object> AdditionalAttributes { get; set; }
 
 Поддерживаемые `EventArgs` приведены в следующей таблице.
 
-| событие            | Class                | События DOM и заметки |
+| Событие            | Class                | События DOM и заметки |
 | ---------------- | -------------------- | -------------------- |
-| буфер обмена        | `ClipboardEventArgs` | `oncut`, `oncopy`, `onpaste` |
+| Буфер обмена        | `ClipboardEventArgs` | `oncut`, `oncopy`, `onpaste` |
 | Переместить             | `DragEventArgs`      | `ondrag`, `ondragstart`, `ondragenter`, `ondragleave`, `ondragover`, `ondrop`, `ondragend`<br><br>`DataTransfer` и `DataTransferItem` содержать перетаскиваемые данные элемента. |
 | Ошибка            | `ErrorEventArgs`     | `onerror` |
-| событие            | `EventArgs`          | *Общие*<br>`onactivate`, `onbeforeactivate`, `onbeforedeactivate`, `ondeactivate`, `onended`, `onfullscreenchange`, `onfullscreenerror`, `onloadeddata`, `onloadedmetadata`, `onpointerlockchange`, `onpointerlockerror`, `onreadystatechange`, `onscroll`<br><br>*Буфер обмена*<br>`onbeforecut`, `onbeforecopy`, `onbeforepaste`<br><br>*Ввод*<br>`oninvalid`, `onreset`, `onselect`, `onselectionchange`, `onselectstart`, `onsubmit`<br><br>*Носител*<br>`oncanplay`, `oncanplaythrough`, `oncuechange`, `ondurationchange`, `onemptied`, `onpause`, `onplay`, `onplaying`, `onratechange`, `onseeked`, `onseeking`, `onstalled`, `onstop`, `onsuspend`, `ontimeupdate`, `onvolumechange`, `onwaiting` |
+| Событие            | `EventArgs`          | *Общие*<br>`onactivate`, `onbeforeactivate`, `onbeforedeactivate`, `ondeactivate`, `onended`, `onfullscreenchange`, `onfullscreenerror`, `onloadeddata`, `onloadedmetadata`, `onpointerlockchange`, `onpointerlockerror`, `onreadystatechange`, `onscroll`<br><br>*Буфер обмена*<br>`onbeforecut`, `onbeforecopy`, `onbeforepaste`<br><br>*Ввод*<br>`oninvalid`, `onreset`, `onselect`, `onselectionchange`, `onselectstart`, `onsubmit`<br><br>*Носител*<br>`oncanplay`, `oncanplaythrough`, `oncuechange`, `ondurationchange`, `onemptied`, `onpause`, `onplay`, `onplaying`, `onratechange`, `onseeked`, `onseeking`, `onstalled`, `onstop`, `onsuspend`, `ontimeupdate`, `onvolumechange`, `onwaiting` |
 | Фокус            | `FocusEventArgs`     | `onfocus`, `onblur`, `onfocusin`, `onfocusout`<br><br>Не включает поддержку для `relatedTarget`. |
 | Ввод            | `ChangeEventArgs`    | `onchange`, `oninput` |
 | Клавиатура         | `KeyboardEventArgs`  | `onkeydown`, `onkeypress`, `onkeyup` |
@@ -1310,7 +1310,7 @@ This is the Index page.
 <input type="checkbox" />
 ```
 
-Для получения дополнительной информации см. <xref:mvc/views/razor>.
+Дополнительные сведения см. в разделе <xref:mvc/views/razor>.
 
 > [!WARNING]
 > Некоторые атрибуты HTML, такие как [ARIA-Pressed](https://developer.mozilla.org/docs/Web/Accessibility/ARIA/Roles/button_role#Toggle_buttons), не работают должным образом, если тип .net является `bool`ом. В этих случаях используйте `string` тип вместо `bool`.
@@ -1688,16 +1688,16 @@ builder.AddContent(1, "Second");
 
 Когда код выполняется в первый раз, если `someFlag` `true`, построитель получит следующее:
 
-| Sequence | Введите      | Данные   |
+| Sequence | Тип      | Данные   |
 | :------: | --------- | :----: |
-| 0        | Текстовый узел | First  |
-| 1        | Текстовый узел | Second |
+| 0        | Узел Text | First  |
+| 1        | Узел Text | Second |
 
 Представьте, что `someFlag` становится `false`, и разметка снова готовится к просмотру. На этот раз построитель получит:
 
-| Sequence | Введите       | Данные   |
+| Sequence | Тип       | Данные   |
 | :------: | ---------- | :----: |
-| 1        | Текстовый узел  | Second |
+| 1        | Узел Text  | Second |
 
 Когда среда выполнения выполняет поиск различий, она видит, что элемент в последовательности `0` был удален, поэтому он создает следующий тривиальный *сценарий редактирования*:
 
@@ -1720,16 +1720,16 @@ builder.AddContent(seq++, "Second");
 
 Теперь первые выходные данные:
 
-| Sequence | Введите      | Данные   |
+| Sequence | Тип      | Данные   |
 | :------: | --------- | :----: |
-| 0        | Текстовый узел | First  |
-| 1        | Текстовый узел | Second |
+| 0        | Узел Text | First  |
+| 1        | Узел Text | Second |
 
 Этот результат идентичен предыдущему случаю, поэтому отрицательные проблемы не возникают. во второй отрисовке `someFlag` `false`, а выходные данные:
 
-| Sequence | Введите      | Данные   |
+| Sequence | Тип      | Данные   |
 | :------: | --------- | ------ |
-| 0        | Текстовый узел | Second |
+| 0        | Узел Text | Second |
 
 На этот раз алгоритм diff видит, что были внесены *два* изменения, и алгоритм создает следующий сценарий редактирования:
 
@@ -1825,7 +1825,7 @@ public class CultureController : Controller
 ```
 
 > [!WARNING]
-> Для предотвращения атак с открытым перенаправлением используйте результат действия `LocalRedirect`. Для получения дополнительной информации см. <xref:security/preventing-open-redirects>.
+> Для предотвращения атак с открытым перенаправлением используйте результат действия `LocalRedirect`. Дополнительные сведения см. в разделе <xref:security/preventing-open-redirects>.
 
 В следующем компоненте показан пример выполнения начального перенаправления, когда пользователь выбирает язык и региональные параметры:
 
@@ -1870,7 +1870,7 @@ public class CultureController : Controller
 * `IStringLocalizer<>` *поддерживается* в Blazor приложениях.
 * Локализация `IHtmlLocalizer<>`, `IViewLocalizer<>`и аннотаций данных ASP.NET Core сценариев MVC и **не поддерживается** в Blazor приложениях.
 
-Для получения дополнительной информации см. <xref:fundamentals/localization>.
+Дополнительные сведения см. в разделе <xref:fundamentals/localization>.
 
 ## <a name="scalable-vector-graphics-svg-images"></a>Масштабируемые изображения векторной графики (SVG)
 

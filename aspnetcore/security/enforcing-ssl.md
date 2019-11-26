@@ -52,7 +52,7 @@ ms.locfileid: "74317371"
 
 ::: moniker-end
 
-## <a name="require-https"></a>Требование к использованию протокола HTTPS
+## <a name="require-https"></a>Требовать HTTPS
 
 В рабочей ASP.NET Core веб-приложений рекомендуется использовать:
 
