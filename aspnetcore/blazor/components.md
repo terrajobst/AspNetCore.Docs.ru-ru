@@ -5,16 +5,16 @@ description: Узнайте, как создавать и использоват
 monikerRange: '>= aspnetcore-3.0'
 ms.author: riande
 ms.custom: mvc
-ms.date: 11/21/2019
+ms.date: 11/23/2019
 no-loc:
 - Blazor
 uid: blazor/components
-ms.openlocfilehash: 267a6f5aa96feeecc280238abbef86949750b07e
-ms.sourcegitcommit: 3e503ef510008e77be6dd82ee79213c9f7b97607
+ms.openlocfilehash: 89c92fbd5a3939cd2b4a34c39163767bcdf73bb8
+ms.sourcegitcommit: 918d7000b48a2892750264b852bad9e96a1165a7
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74317210"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74550310"
 ---
 # <a name="create-and-use-aspnet-core-razor-components"></a>Создание и использование компонентов ASP.NET Core Razor
 
@@ -545,15 +545,15 @@ public IDictionary<string, object> AdditionalAttributes { get; set; }
 
 Поддерживаемые `EventArgs` приведены в следующей таблице.
 
-| Событие            | Class                | События DOM и заметки |
+| Event            | Класс                | События DOM и заметки |
 | ---------------- | -------------------- | -------------------- |
-| Буфер обмена        | `ClipboardEventArgs` | `oncut`, `oncopy`, `onpaste` |
+| буфер обмена        | `ClipboardEventArgs` | `oncut`значение `oncopy`значение `onpaste` |
 | Переместить             | `DragEventArgs`      | `ondrag`, `ondragstart`, `ondragenter`, `ondragleave`, `ondragover`, `ondrop`, `ondragend`<br><br>`DataTransfer` и `DataTransferItem` содержать перетаскиваемые данные элемента. |
-| Ошибка            | `ErrorEventArgs`     | `onerror` |
-| Событие            | `EventArgs`          | *Общие*<br>`onactivate`, `onbeforeactivate`, `onbeforedeactivate`, `ondeactivate`, `onended`, `onfullscreenchange`, `onfullscreenerror`, `onloadeddata`, `onloadedmetadata`, `onpointerlockchange`, `onpointerlockerror`, `onreadystatechange`, `onscroll`<br><br>*Буфер обмена*<br>`onbeforecut`, `onbeforecopy`, `onbeforepaste`<br><br>*Ввод*<br>`oninvalid`, `onreset`, `onselect`, `onselectionchange`, `onselectstart`, `onsubmit`<br><br>*Носител*<br>`oncanplay`, `oncanplaythrough`, `oncuechange`, `ondurationchange`, `onemptied`, `onpause`, `onplay`, `onplaying`, `onratechange`, `onseeked`, `onseeking`, `onstalled`, `onstop`, `onsuspend`, `ontimeupdate`, `onvolumechange`, `onwaiting` |
+| Ошибка .            | `ErrorEventArgs`     | `onerror` |
+| Event            | `EventArgs`          | *Общие*<br>`onactivate`, `onbeforeactivate`, `onbeforedeactivate`, `ondeactivate`, `onended`, `onfullscreenchange`, `onfullscreenerror`, `onloadeddata`, `onloadedmetadata`, `onpointerlockchange`, `onpointerlockerror`, `onreadystatechange`, `onscroll`<br><br>*Буфер обмена*<br>`onbeforecut`значение `onbeforecopy`значение `onbeforepaste`<br><br>*Ввод*<br>`oninvalid`, `onreset`, `onselect`, `onselectionchange`, `onselectstart`, `onsubmit`<br><br>*Носител*<br>`oncanplay`, `oncanplaythrough`, `oncuechange`, `ondurationchange`, `onemptied`, `onpause`, `onplay`, `onplaying`, `onratechange`, `onseeked`, `onseeking`, `onstalled`, `onstop`, `onsuspend`, `ontimeupdate`, `onvolumechange`, `onwaiting` |
 | Фокус            | `FocusEventArgs`     | `onfocus`, `onblur`, `onfocusin`, `onfocusout`<br><br>Не включает поддержку для `relatedTarget`. |
-| Ввод            | `ChangeEventArgs`    | `onchange`, `oninput` |
-| Клавиатура         | `KeyboardEventArgs`  | `onkeydown`, `onkeypress`, `onkeyup` |
+| Input            | `ChangeEventArgs`    | `onchange`, `oninput` |
+| Клавиатура         | `KeyboardEventArgs`  | `onkeydown`значение `onkeypress`значение `onkeyup` |
 | Мышь            | `MouseEventArgs`     | `onclick`, `oncontextmenu`, `ondblclick`, `onmousedown`, `onmouseup`, `onmouseover`, `onmousemove`, `onmouseout` |
 | Указатель мыши    | `PointerEventArgs`   | `onpointerdown`, `onpointerup`, `onpointercancel`, `onpointermove`, `onpointerover`, `onpointerout`, `onpointerenter`, `onpointerleave`, `ongotpointercapture`, `onlostpointercapture` |
 | Колесо мыши      | `WheelEventArgs`     | `onwheel`, `onmousewheel` |
@@ -1145,6 +1145,8 @@ protected override bool ShouldRender()
 
 Необязательные параметры не поддерживаются, поэтому в приведенном выше примере применяются две директивы `@page`. Первый позволяет переходить к компоненту без параметра. Вторая директива `@page` принимает параметр `{text}` Route и присваивает значение свойству `Text`.
 
+Синтаксис параметра *Catch-All* (`*`/`**`), который захватывает путь для нескольких папок, **не** поддерживается в компонентах Razor ( *. Razor*).
+
 ::: moniker range=">= aspnetcore-3.1"
 
 ## <a name="partial-class-support"></a>Поддержка разделяемых классов
@@ -1310,7 +1312,7 @@ This is the Index page.
 <input type="checkbox" />
 ```
 
-Дополнительные сведения см. в разделе <xref:mvc/views/razor>.
+Для получения дополнительной информации см. <xref:mvc/views/razor>.
 
 > [!WARNING]
 > Некоторые атрибуты HTML, такие как [ARIA-Pressed](https://developer.mozilla.org/docs/Web/Accessibility/ARIA/Roles/button_role#Toggle_buttons), не работают должным образом, если тип .net является `bool`ом. В этих случаях используйте `string` тип вместо `bool`.
@@ -1688,14 +1690,14 @@ builder.AddContent(1, "Second");
 
 Когда код выполняется в первый раз, если `someFlag` `true`, построитель получит следующее:
 
-| Sequence | Тип      | Данные   |
+| Sequence | Тип      | Data   |
 | :------: | --------- | :----: |
 | 0        | Узел Text | First  |
 | 1        | Узел Text | Second |
 
 Представьте, что `someFlag` становится `false`, и разметка снова готовится к просмотру. На этот раз построитель получит:
 
-| Sequence | Тип       | Данные   |
+| Sequence | Тип       | Data   |
 | :------: | ---------- | :----: |
 | 1        | Узел Text  | Second |
 
@@ -1720,14 +1722,14 @@ builder.AddContent(seq++, "Second");
 
 Теперь первые выходные данные:
 
-| Sequence | Тип      | Данные   |
+| Sequence | Тип      | Data   |
 | :------: | --------- | :----: |
 | 0        | Узел Text | First  |
 | 1        | Узел Text | Second |
 
 Этот результат идентичен предыдущему случаю, поэтому отрицательные проблемы не возникают. во второй отрисовке `someFlag` `false`, а выходные данные:
 
-| Sequence | Тип      | Данные   |
+| Sequence | Тип      | Data   |
 | :------: | --------- | ------ |
 | 0        | Узел Text | Second |
 
@@ -1754,7 +1756,7 @@ Blazor серверные приложения локализованы по [п
 
 Язык и региональные параметры можно задать с помощью одного из следующих подходов:
 
-* [Файлы "cookie"](#cookies)
+* [Файлы cookie](#cookies)
 * [Предоставление пользовательского интерфейса для выбора языка и региональных параметров](#provide-ui-to-choose-the-culture)
 
 Дополнительные сведения и примеры см. в разделе <xref:fundamentals/localization>.
@@ -1825,7 +1827,7 @@ public class CultureController : Controller
 ```
 
 > [!WARNING]
-> Для предотвращения атак с открытым перенаправлением используйте результат действия `LocalRedirect`. Дополнительные сведения см. в разделе <xref:security/preventing-open-redirects>.
+> Для предотвращения атак с открытым перенаправлением используйте результат действия `LocalRedirect`. Для получения дополнительной информации см. <xref:security/preventing-open-redirects>.
 
 В следующем компоненте показан пример выполнения начального перенаправления, когда пользователь выбирает язык и региональные параметры:
 
@@ -1870,7 +1872,7 @@ public class CultureController : Controller
 * `IStringLocalizer<>` *поддерживается* в Blazor приложениях.
 * Локализация `IHtmlLocalizer<>`, `IViewLocalizer<>`и аннотаций данных ASP.NET Core сценариев MVC и **не поддерживается** в Blazor приложениях.
 
-Дополнительные сведения см. в разделе <xref:fundamentals/localization>.
+Для получения дополнительной информации см. <xref:fundamentals/localization>.
 
 ## <a name="scalable-vector-graphics-svg-images"></a>Масштабируемые изображения векторной графики (SVG)
 
