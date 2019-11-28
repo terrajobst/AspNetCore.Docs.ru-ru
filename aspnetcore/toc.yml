@@ -282,6 +282,8 @@
           uid: blazor/hosting-models
         - name: Создание первого приложения
           uid: tutorials/first-blazor-app
+        - name: Шаблоны
+          uid: blazor/templates
         - name: Компоненты
           uid: blazor/components
         - name: Формы и проверка
@@ -1100,6 +1102,9 @@
       uid: fundamentals/middleware/extensibility-third-party-container
 - name: Миграция
   items:
+    - name: "С версии\_3.0 на\_3.1"
+      displayName: 'migrate, migration'
+      uid: migration/30-to-31
     - name: "С версии\_2.2 на\_3.0"
       displayName: 'migrate, migration'
       uid: migration/22-to-30
