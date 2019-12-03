@@ -1,85 +1,82 @@
 ---
-title: Настройка внешней учетной записи Facebook в ASP.NET Core
+title: Настройка внешнего входа Facebook в ASP.NET Core
 author: rick-anderson
 description: Руководство с примерами кода, демонстрирующими интеграцию аутентификации пользователя с учетной записью Facebook с существующим ASP.NET Core приложением.
 ms.author: riande
 ms.custom: seoapril2019, mvc, seodec18
-ms.date: 03/04/2019
+ms.date: 12/02/2019
+monikerRange: '>= aspnetcore-3.0'
 uid: security/authentication/facebook-logins
-ms.openlocfilehash: f7b21de7e5fe9d77804588280c3d8be9df8afee5
-ms.sourcegitcommit: 215954a638d24124f791024c66fd4fb9109fd380
+ms.openlocfilehash: 2e4cc04c6e7ff8e5f5701cc7f9ede73dbc1b4685
+ms.sourcegitcommit: 3b6b0a54b20dc99b0c8c5978400c60adf431072f
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71082548"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74717140"
 ---
-# <a name="facebook-external-login-setup-in-aspnet-core"></a><span data-ttu-id="0a4f7-103">Настройка внешней учетной записи Facebook в ASP.NET Core</span><span class="sxs-lookup"><span data-stu-id="0a4f7-103">Facebook external login setup in ASP.NET Core</span></span>
+# <a name="facebook-external-login-setup-in-aspnet-core"></a><span data-ttu-id="7d808-103">Настройка внешнего входа Facebook в ASP.NET Core</span><span class="sxs-lookup"><span data-stu-id="7d808-103">Facebook external login setup in ASP.NET Core</span></span>
 
-<span data-ttu-id="0a4f7-104">Авторы: [Валерий Новицкий](https://github.com/01binary) (Valeriy Novytskyy) и [Рик Андерсон](https://twitter.com/RickAndMSFT) (Rick Anderson)</span><span class="sxs-lookup"><span data-stu-id="0a4f7-104">By [Valeriy Novytskyy](https://github.com/01binary) and [Rick Anderson](https://twitter.com/RickAndMSFT)</span></span>
+<span data-ttu-id="7d808-104">Авторы: [Валерий Новицкий](https://github.com/01binary) (Valeriy Novytskyy) и [Рик Андерсон](https://twitter.com/RickAndMSFT) (Rick Anderson)</span><span class="sxs-lookup"><span data-stu-id="7d808-104">By [Valeriy Novytskyy](https://github.com/01binary) and [Rick Anderson](https://twitter.com/RickAndMSFT)</span></span>
 
-<span data-ttu-id="0a4f7-105">В этом учебнике с примерами кода показано, как включить вход пользователей с помощью учетной записи Facebook, используя пример проекта ASP.NET Core 2,0, созданный на [предыдущей странице](xref:security/authentication/social/index).</span><span class="sxs-lookup"><span data-stu-id="0a4f7-105">This tutorial with code examples shows how to enable your users to sign in with their Facebook account using a sample ASP.NET Core 2.0 project created on the [previous page](xref:security/authentication/social/index).</span></span> <span data-ttu-id="0a4f7-106">Мы начнем с создания код приложения Facebook, следуя [официальный действия](https://developers.facebook.com).</span><span class="sxs-lookup"><span data-stu-id="0a4f7-106">We start by creating a Facebook App ID by following the [official steps](https://developers.facebook.com).</span></span>
+<span data-ttu-id="7d808-105">В этом учебнике с примерами кода показано, как включить вход пользователей с помощью учетной записи Facebook, используя пример проекта ASP.NET Core 3,0, созданный на [предыдущей странице](xref:security/authentication/social/index).</span><span class="sxs-lookup"><span data-stu-id="7d808-105">This tutorial with code examples shows how to enable your users to sign in with their Facebook account using a sample ASP.NET Core 3.0 project created on the [previous page](xref:security/authentication/social/index).</span></span> <span data-ttu-id="7d808-106">Начнем с создания идентификатора приложения Facebook, следуя [официальным действиям](https://developers.facebook.com).</span><span class="sxs-lookup"><span data-stu-id="7d808-106">We start by creating a Facebook App ID by following the [official steps](https://developers.facebook.com).</span></span>
 
-## <a name="create-the-app-in-facebook"></a><span data-ttu-id="0a4f7-107">Создать приложение в Facebook</span><span class="sxs-lookup"><span data-stu-id="0a4f7-107">Create the app in Facebook</span></span>
+## <a name="create-the-app-in-facebook"></a><span data-ttu-id="7d808-107">Создание приложения в Facebook</span><span class="sxs-lookup"><span data-stu-id="7d808-107">Create the app in Facebook</span></span>
 
-* <span data-ttu-id="0a4f7-108">Перейдите к [приложений разработчиков для Facebook](https://developers.facebook.com/apps/) странице и войдите в систему.</span><span class="sxs-lookup"><span data-stu-id="0a4f7-108">Navigate to the [Facebook Developers app](https://developers.facebook.com/apps/) page and sign in.</span></span> <span data-ttu-id="0a4f7-109">Если у вас нет учетной записи Facebook, используйте **зарегистрироваться для Facebook** ссылку на странице входа, чтобы создать его.</span><span class="sxs-lookup"><span data-stu-id="0a4f7-109">If you don't already have a Facebook account, use the **Sign up for Facebook** link on the login page to create one.</span></span>
+* <span data-ttu-id="7d808-108">Добавьте в проект пакет NuGet [Microsoft. AspNetCore. Authentication. Facebook](https://www.nuget.org/packages/Microsoft.AspNetCore.Authentication.Facebook) .</span><span class="sxs-lookup"><span data-stu-id="7d808-108">Add the [Microsoft.AspNetCore.Authentication.Facebook](https://www.nuget.org/packages/Microsoft.AspNetCore.Authentication.Facebook) NuGet package to the project.</span></span>
 
-* <span data-ttu-id="0a4f7-110">Коснитесь **добавить новое приложение** кнопки в правом верхнем углу, чтобы создать новый идентификатор приложения.</span><span class="sxs-lookup"><span data-stu-id="0a4f7-110">Tap the **Add a New App** button in the upper right corner to create a new App ID.</span></span>
+* <span data-ttu-id="7d808-109">Перейдите на страницу [приложения Facebook Developers](https://developers.facebook.com/apps/) и выполните вход.</span><span class="sxs-lookup"><span data-stu-id="7d808-109">Navigate to the [Facebook Developers app](https://developers.facebook.com/apps/) page and sign in.</span></span> <span data-ttu-id="7d808-110">Если у вас еще нет учетной записи Facebook, используйте ссылку **зарегистрироваться для Facebook** на странице входа, чтобы создать ее.</span><span class="sxs-lookup"><span data-stu-id="7d808-110">If you don't already have a Facebook account, use the **Sign up for Facebook** link on the login page to create one.</span></span>  <span data-ttu-id="7d808-111">После получения учетной записи Facebook следуйте инструкциям по регистрации в качестве разработчика Facebook.</span><span class="sxs-lookup"><span data-stu-id="7d808-111">Once you have a Facebook account, follow the instructions to register as a Facebook Developer.</span></span>
 
-   ![Facebook для портала разработчиков открыть в Microsoft Edge](index/_static/FBMyApps.png)
+* <span data-ttu-id="7d808-112">В меню **Мои приложения** выберите пункт **создать приложение** , чтобы создать новый идентификатор приложения.</span><span class="sxs-lookup"><span data-stu-id="7d808-112">From the **My Apps** menu select **Create App** to create a new App ID.</span></span>
 
-* <span data-ttu-id="0a4f7-112">Заполните форму и коснитесь **создать идентификатор приложения** кнопки.</span><span class="sxs-lookup"><span data-stu-id="0a4f7-112">Fill out the form and tap the **Create App ID** button.</span></span>
+   ![Портал Facebook для разработчиков открыт в Microsoft ребр](index/_static/FBMyApps.png)
 
-  ![Создание формы новый идентификатор приложения](index/_static/FBNewAppId.png)
+* <span data-ttu-id="7d808-114">Заполните форму и нажмите кнопку **CREATE App ID (создать идентификатор приложения** ).</span><span class="sxs-lookup"><span data-stu-id="7d808-114">Fill out the form and tap the **Create App ID** button.</span></span>
 
-* <span data-ttu-id="0a4f7-114">На **выбрать продукт** щелкните **Настройка** на **имени для входа Facebook** карты.</span><span class="sxs-lookup"><span data-stu-id="0a4f7-114">On the **Select a product** page, click **Set Up** on the **Facebook Login** card.</span></span>
+  ![Создание новой формы идентификатора приложения](index/_static/FBNewAppId.png)
 
-  ![Страница установки продукта](index/_static/FBProductSetup.png)
+* <span data-ttu-id="7d808-116">В карточке нового приложения выберите **Добавить продукт**.</span><span class="sxs-lookup"><span data-stu-id="7d808-116">On the new App card, select **Add a Product**.</span></span>  <span data-ttu-id="7d808-117">На карточке **входа Facebook** щелкните **настроить** .</span><span class="sxs-lookup"><span data-stu-id="7d808-117">On the **Facebook Login** card, click **Set Up**</span></span> 
 
-* <span data-ttu-id="0a4f7-116">**Быстрого запуска** будет запущен мастер с **выберите платформу** первая страница.</span><span class="sxs-lookup"><span data-stu-id="0a4f7-116">The **Quickstart** wizard will launch with **Choose a Platform** as the first page.</span></span> <span data-ttu-id="0a4f7-117">Сейчас пропустить мастера, нажав кнопку **параметры** ссылку в меню слева:</span><span class="sxs-lookup"><span data-stu-id="0a4f7-117">Bypass the wizard for now by clicking the **Settings** link in the menu on the left:</span></span>
+  ![Страница «Настройка продукта»](index/_static/FBProductSetup.png)
 
-  ![Пропустить быстрый запуск](index/_static/FBSkipQuickStart.png)
+* <span data-ttu-id="7d808-119">Мастер **быстрого** запуска запускается с параметром **выбрать платформу** в качестве первой страницы.</span><span class="sxs-lookup"><span data-stu-id="7d808-119">The **Quickstart** wizard launches with **Choose a Platform** as the first page.</span></span> <span data-ttu-id="7d808-120">Пропустите мастер, щелкнув ссылку **Параметры** **входа Facebook** в меню в левом нижнем углу экрана:</span><span class="sxs-lookup"><span data-stu-id="7d808-120">Bypass the wizard for now by clicking the **FaceBook Login** **Settings** link in the menu on the lower left:</span></span>
 
-* <span data-ttu-id="0a4f7-119">Появится **клиентские настройки OAuth** страницы:</span><span class="sxs-lookup"><span data-stu-id="0a4f7-119">You are presented with the **Client OAuth Settings** page:</span></span>
+  ![Пропустить Быстрое начало](index/_static/FBSkipQuickStart.png)
 
-  ![Параметры OAuth клиента](index/_static/FBOAuthSetup.png)
+* <span data-ttu-id="7d808-122">Отобразится страница **параметров OAuth клиента** :</span><span class="sxs-lookup"><span data-stu-id="7d808-122">You are presented with the **Client OAuth Settings** page:</span></span>
 
-* <span data-ttu-id="0a4f7-121">Введите URI разработки с */signin-facebook* добавляется в **допустимый URI перенаправления OAuth** поле (например: `https://localhost:44320/signin-facebook`).</span><span class="sxs-lookup"><span data-stu-id="0a4f7-121">Enter your development URI with */signin-facebook* appended into the **Valid OAuth Redirect URIs** field (for example: `https://localhost:44320/signin-facebook`).</span></span> <span data-ttu-id="0a4f7-122">Проверка подлинности Facebook, Настройка описывается далее в этом руководстве автоматически будет обрабатывать запросы на */signin-facebook* маршрут, чтобы реализовать поток OAuth.</span><span class="sxs-lookup"><span data-stu-id="0a4f7-122">The Facebook authentication configured later in this tutorial will automatically handle requests at */signin-facebook* route to implement the OAuth flow.</span></span>
+  ![Страница параметров OAuth клиента](index/_static/FBOAuthSetup.png)
+
+* <span data-ttu-id="7d808-124">Введите универсальный код ресурса (URI) для разработки с */сигнин-фацебук* , добавленным в **допустимое поле URI перенаправления OAuth** (например: `https://localhost:44320/signin-facebook`).</span><span class="sxs-lookup"><span data-stu-id="7d808-124">Enter your development URI with */signin-facebook* appended into the **Valid OAuth Redirect URIs** field (for example: `https://localhost:44320/signin-facebook`).</span></span> <span data-ttu-id="7d808-125">Проверка подлинности Facebook, настроенная далее в этом руководстве, автоматически обрабатывает запросы по маршруту */сигнин-фацебук* для реализации потока OAuth.</span><span class="sxs-lookup"><span data-stu-id="7d808-125">The Facebook authentication configured later in this tutorial will automatically handle requests at */signin-facebook* route to implement the OAuth flow.</span></span>
 
 > [!NOTE]
-> <span data-ttu-id="0a4f7-123">URI */signin-facebook* задан в качестве обратного вызова по умолчанию поставщика проверки подлинности Facebook.</span><span class="sxs-lookup"><span data-stu-id="0a4f7-123">The URI */signin-facebook* is set as the default callback of the Facebook authentication provider.</span></span> <span data-ttu-id="0a4f7-124">URI обратного вызова по умолчанию можно изменить при настройке по промежуточного слоя проверки подлинности Facebook с помощью наследуемого [RemoteAuthenticationOptions.CallbackPath](/dotnet/api/microsoft.aspnetcore.authentication.remoteauthenticationoptions.callbackpath) свойство [FacebookOptions](/dotnet/api/microsoft.aspnetcore.authentication.facebook.facebookoptions) класс.</span><span class="sxs-lookup"><span data-stu-id="0a4f7-124">You can change the default callback URI while configuring the Facebook authentication middleware via the inherited [RemoteAuthenticationOptions.CallbackPath](/dotnet/api/microsoft.aspnetcore.authentication.remoteauthenticationoptions.callbackpath) property of the [FacebookOptions](/dotnet/api/microsoft.aspnetcore.authentication.facebook.facebookoptions) class.</span></span>
+> <span data-ttu-id="7d808-126">URI */сигнин-фацебук* задается в качестве обратного вызова по умолчанию для поставщика проверки подлинности Facebook.</span><span class="sxs-lookup"><span data-stu-id="7d808-126">The URI */signin-facebook* is set as the default callback of the Facebook authentication provider.</span></span> <span data-ttu-id="7d808-127">URI обратного вызова по умолчанию можно изменить при настройке по промежуточного слоя проверки подлинности Facebook с помощью унаследованного свойства [ремотеаусентикатионоптионс. каллбаккпас](/dotnet/api/microsoft.aspnetcore.authentication.remoteauthenticationoptions.callbackpath) класса [фацебукоптионс](/dotnet/api/microsoft.aspnetcore.authentication.facebook.facebookoptions) .</span><span class="sxs-lookup"><span data-stu-id="7d808-127">You can change the default callback URI while configuring the Facebook authentication middleware via the inherited [RemoteAuthenticationOptions.CallbackPath](/dotnet/api/microsoft.aspnetcore.authentication.remoteauthenticationoptions.callbackpath) property of the [FacebookOptions](/dotnet/api/microsoft.aspnetcore.authentication.facebook.facebookoptions) class.</span></span>
 
-* <span data-ttu-id="0a4f7-125">Нажмите кнопку **сохранить изменения**.</span><span class="sxs-lookup"><span data-stu-id="0a4f7-125">Click **Save Changes**.</span></span>
+* <span data-ttu-id="7d808-128">Нажмите кнопку **сохранить изменения**.</span><span class="sxs-lookup"><span data-stu-id="7d808-128">Click **Save Changes**.</span></span>
 
-* <span data-ttu-id="0a4f7-126">Нажмите кнопку **параметры** > **основные** ссылку в левой области навигации.</span><span class="sxs-lookup"><span data-stu-id="0a4f7-126">Click **Settings** > **Basic** link in the left navigation.</span></span>
+* <span data-ttu-id="7d808-129">В левой области навигации щелкните **параметры** > **Обычная** ссылка.</span><span class="sxs-lookup"><span data-stu-id="7d808-129">Click **Settings** > **Basic** link in the left navigation.</span></span>
 
-  <span data-ttu-id="0a4f7-127">На этой странице, запомните или запишите вашей `App ID` и `App Secret`.</span><span class="sxs-lookup"><span data-stu-id="0a4f7-127">On this page, make a note of your `App ID` and your `App Secret`.</span></span> <span data-ttu-id="0a4f7-128">Оба сертификата в приложении ASP.NET Core будет добавлена в следующем разделе:</span><span class="sxs-lookup"><span data-stu-id="0a4f7-128">You will add both into your ASP.NET Core application in the next section:</span></span>
+  <span data-ttu-id="7d808-130">На этой странице запишите `App ID` и `App Secret`.</span><span class="sxs-lookup"><span data-stu-id="7d808-130">On this page, make a note of your `App ID` and your `App Secret`.</span></span> <span data-ttu-id="7d808-131">Вы добавите оба варианта в приложение ASP.NET Core в следующем разделе:</span><span class="sxs-lookup"><span data-stu-id="7d808-131">You will add both into your ASP.NET Core application in the next section:</span></span>
 
-* <span data-ttu-id="0a4f7-129">При развертывании на сайте необходимо пересмотреть **имени для входа Facebook** установки: страница и зарегистрировать новый открытый универсальный код Ресурса.</span><span class="sxs-lookup"><span data-stu-id="0a4f7-129">When deploying the site you need to revisit the **Facebook Login** setup page and register a new public URI.</span></span>
+* <span data-ttu-id="7d808-132">При развертывании сайта необходимо повторно посетить страницу настройки **имени входа Facebook** и зарегистрировать новый общедоступный URI.</span><span class="sxs-lookup"><span data-stu-id="7d808-132">When deploying the site you need to revisit the **Facebook Login** setup page and register a new public URI.</span></span>
 
-## <a name="store-facebook-app-id-and-app-secret"></a><span data-ttu-id="0a4f7-130">Идентификатор приложения Facebook Store и секрет приложения</span><span class="sxs-lookup"><span data-stu-id="0a4f7-130">Store Facebook App ID and App Secret</span></span>
+## <a name="store-facebook-app-id-and-app-secret"></a><span data-ttu-id="7d808-133">Хранение идентификатора приложения Facebook и секрета приложения</span><span class="sxs-lookup"><span data-stu-id="7d808-133">Store Facebook App ID and App Secret</span></span>
 
-<span data-ttu-id="0a4f7-131">Связать конфиденциальные параметры, такие как Facebook `App ID` и `App Secret` для конфигурации приложения с помощью [Secret Manager](xref:security/app-secrets).</span><span class="sxs-lookup"><span data-stu-id="0a4f7-131">Link sensitive settings like Facebook `App ID` and `App Secret` to your application configuration using the [Secret Manager](xref:security/app-secrets).</span></span> <span data-ttu-id="0a4f7-132">В целях этого учебника назовите токены `Authentication:Facebook:AppId` и `Authentication:Facebook:AppSecret`.</span><span class="sxs-lookup"><span data-stu-id="0a4f7-132">For the purposes of this tutorial, name the tokens `Authentication:Facebook:AppId` and `Authentication:Facebook:AppSecret`.</span></span>
+<span data-ttu-id="7d808-134">Свяжите конфиденциальные параметры, такие как Facebook `App ID` и `App Secret` в конфигурации приложения с помощью [диспетчера секретов](xref:security/app-secrets).</span><span class="sxs-lookup"><span data-stu-id="7d808-134">Link sensitive settings like Facebook `App ID` and `App Secret` to your application configuration using the [Secret Manager](xref:security/app-secrets).</span></span> <span data-ttu-id="7d808-135">В рамках этого руководства назовите маркеры `Authentication:Facebook:AppId` и `Authentication:Facebook:AppSecret`.</span><span class="sxs-lookup"><span data-stu-id="7d808-135">For the purposes of this tutorial, name the tokens `Authentication:Facebook:AppId` and `Authentication:Facebook:AppSecret`.</span></span>
 
 [!INCLUDE[](~/includes/environmentVarableColon.md)]
 
-<span data-ttu-id="0a4f7-133">Выполните следующие команды, чтобы обеспечить безопасное хранение `App ID` и `App Secret` с помощью диспетчера секретов:</span><span class="sxs-lookup"><span data-stu-id="0a4f7-133">Execute the following commands to securely store `App ID` and `App Secret` using Secret Manager:</span></span>
+<span data-ttu-id="7d808-136">Выполните следующие команды для безопасного хранения `App ID` и `App Secret` с помощью диспетчера секретов:</span><span class="sxs-lookup"><span data-stu-id="7d808-136">Execute the following commands to securely store `App ID` and `App Secret` using Secret Manager:</span></span>
 
 ```dotnetcli
 dotnet user-secrets set Authentication:Facebook:AppId <app-id>
 dotnet user-secrets set Authentication:Facebook:AppSecret <app-secret>
 ```
 
-## <a name="configure-facebook-authentication"></a><span data-ttu-id="0a4f7-134">Настройка проверки подлинности Facebook</span><span class="sxs-lookup"><span data-stu-id="0a4f7-134">Configure Facebook Authentication</span></span>
+## <a name="configure-facebook-authentication"></a><span data-ttu-id="7d808-137">Настройка проверки подлинности Facebook</span><span class="sxs-lookup"><span data-stu-id="7d808-137">Configure Facebook Authentication</span></span>
 
-::: moniker range=">= aspnetcore-2.0"
-
-<span data-ttu-id="0a4f7-135">Добавьте службу Facebook в `ConfigureServices` метод в *Startup.cs* файла:</span><span class="sxs-lookup"><span data-stu-id="0a4f7-135">Add the Facebook service in the `ConfigureServices` method in the *Startup.cs* file:</span></span>
+<span data-ttu-id="7d808-138">Добавьте службу Facebook в метод `ConfigureServices` в файле *Startup.CS* :</span><span class="sxs-lookup"><span data-stu-id="7d808-138">Add the Facebook service in the `ConfigureServices` method in the *Startup.cs* file:</span></span>
 
 ```csharp
-services.AddDefaultIdentity<IdentityUser>()
-        .AddDefaultUI(UIFramework.Bootstrap4)
-        .AddEntityFrameworkStores<ApplicationDbContext>();
-
 services.AddAuthentication().AddFacebook(facebookOptions =>
 {
     facebookOptions.AppId = Configuration["Authentication:Facebook:AppId"];
@@ -91,67 +88,42 @@ services.AddAuthentication().AddFacebook(facebookOptions =>
 
 [!INCLUDE[](includes/chain-auth-providers.md)]
 
-::: moniker-end
+<span data-ttu-id="7d808-139">Дополнительные сведения о параметрах конфигурации, поддерживаемых проверкой подлинности Facebook, см. в справочнике по API [фацебукоптионс](/dotnet/api/microsoft.aspnetcore.builder.facebookoptions) .</span><span class="sxs-lookup"><span data-stu-id="7d808-139">See the [FacebookOptions](/dotnet/api/microsoft.aspnetcore.builder.facebookoptions) API reference for more information on configuration options supported by Facebook authentication.</span></span> <span data-ttu-id="7d808-140">Параметры конфигурации можно использовать для:</span><span class="sxs-lookup"><span data-stu-id="7d808-140">Configuration options can be used to:</span></span>
 
-::: moniker range="< aspnetcore-2.0"
+* <span data-ttu-id="7d808-141">Запросите другие сведения о пользователе.</span><span class="sxs-lookup"><span data-stu-id="7d808-141">Request different information about the user.</span></span>
+* <span data-ttu-id="7d808-142">Добавьте аргументы строки запроса, чтобы настроить процедуру входа.</span><span class="sxs-lookup"><span data-stu-id="7d808-142">Add query string arguments to customize the login experience.</span></span>
 
-<span data-ttu-id="0a4f7-136">Установка [Microsoft.AspNetCore.Authentication.Facebook](https://www.nuget.org/packages/Microsoft.AspNetCore.Authentication.Facebook) пакета.</span><span class="sxs-lookup"><span data-stu-id="0a4f7-136">Install the [Microsoft.AspNetCore.Authentication.Facebook](https://www.nuget.org/packages/Microsoft.AspNetCore.Authentication.Facebook) package.</span></span>
+## <a name="sign-in-with-facebook"></a><span data-ttu-id="7d808-143">Вход с помощью Facebook</span><span class="sxs-lookup"><span data-stu-id="7d808-143">Sign in with Facebook</span></span>
 
-* <span data-ttu-id="0a4f7-137">Установить этот пакет с помощью Visual Studio 2017, щелкните правой кнопкой мыши проект и выберите **управление пакетами NuGet**.</span><span class="sxs-lookup"><span data-stu-id="0a4f7-137">To install this package with Visual Studio 2017, right-click on the project and select **Manage NuGet Packages**.</span></span>
-* <span data-ttu-id="0a4f7-138">Чтобы установить с помощью интерфейса командной строки .NET Core, выполните следующую команду в каталоге проекта:</span><span class="sxs-lookup"><span data-stu-id="0a4f7-138">To install with .NET Core CLI, execute the following in your project directory:</span></span>
+<span data-ttu-id="7d808-144">Запустите приложение и нажмите кнопку **войти**.</span><span class="sxs-lookup"><span data-stu-id="7d808-144">Run your application and click **Log in**.</span></span> <span data-ttu-id="7d808-145">Вы увидите параметр для входа с помощью Facebook.</span><span class="sxs-lookup"><span data-stu-id="7d808-145">You see an option to sign in with Facebook.</span></span>
 
-   `dotnet add package Microsoft.AspNetCore.Authentication.Facebook`
+![Веб-приложение: пользователь не прошел проверку подлинности](index/_static/DoneFacebook.png)
 
-<span data-ttu-id="0a4f7-139">Добавьте по промежуточного слоя Facebook в `Configure` метод в *Startup.cs* файла:</span><span class="sxs-lookup"><span data-stu-id="0a4f7-139">Add the Facebook middleware in the `Configure` method in *Startup.cs* file:</span></span>
-
-```csharp
-app.UseFacebookAuthentication(new FacebookOptions()
-{
-    AppId = Configuration["Authentication:Facebook:AppId"],
-    AppSecret = Configuration["Authentication:Facebook:AppSecret"]
-});
-```
-
-::: moniker-end
-
-<span data-ttu-id="0a4f7-140">См. в разделе [FacebookOptions](/dotnet/api/microsoft.aspnetcore.builder.facebookoptions) Справочник по API, Дополнительные сведения о параметрах конфигурации, поддерживаемых проверкой подлинности Facebook.</span><span class="sxs-lookup"><span data-stu-id="0a4f7-140">See the [FacebookOptions](/dotnet/api/microsoft.aspnetcore.builder.facebookoptions) API reference for more information on configuration options supported by Facebook authentication.</span></span> <span data-ttu-id="0a4f7-141">Параметры конфигурации может использоваться для:</span><span class="sxs-lookup"><span data-stu-id="0a4f7-141">Configuration options can be used to:</span></span>
-
-* <span data-ttu-id="0a4f7-142">Запросить различные сведения о пользователе.</span><span class="sxs-lookup"><span data-stu-id="0a4f7-142">Request different information about the user.</span></span>
-* <span data-ttu-id="0a4f7-143">Добавление аргументов строки запроса, настраивать параметры имени входа.</span><span class="sxs-lookup"><span data-stu-id="0a4f7-143">Add query string arguments to customize the login experience.</span></span>
-
-## <a name="sign-in-with-facebook"></a><span data-ttu-id="0a4f7-144">Вход с помощью Facebook</span><span class="sxs-lookup"><span data-stu-id="0a4f7-144">Sign in with Facebook</span></span>
-
-<span data-ttu-id="0a4f7-145">Запустите приложение и нажмите кнопку **вход**.</span><span class="sxs-lookup"><span data-stu-id="0a4f7-145">Run your application and click **Log in**.</span></span> <span data-ttu-id="0a4f7-146">Отображается параметр выполнить вход с использованием Facebook.</span><span class="sxs-lookup"><span data-stu-id="0a4f7-146">You see an option to sign in with Facebook.</span></span>
-
-![Веб-приложение: Пользователь не прошел проверку подлинности](index/_static/DoneFacebook.png)
-
-<span data-ttu-id="0a4f7-148">Когда вы щелкаете **Facebook**, вы будете перенаправлены на Facebook для проверки подлинности:</span><span class="sxs-lookup"><span data-stu-id="0a4f7-148">When you click on **Facebook**, you are redirected to Facebook for authentication:</span></span>
+<span data-ttu-id="7d808-147">Если щелкнуть **Facebook**, вы будете перенаправлены на Facebook для проверки подлинности:</span><span class="sxs-lookup"><span data-stu-id="7d808-147">When you click on **Facebook**, you are redirected to Facebook for authentication:</span></span>
 
 ![Страница проверки подлинности Facebook](index/_static/FBLogin.png)
 
-<span data-ttu-id="0a4f7-150">Проверка подлинности Facebook запрашивает открытый профиль и адрес электронной почты по умолчанию:</span><span class="sxs-lookup"><span data-stu-id="0a4f7-150">Facebook authentication requests public profile and email address by default:</span></span>
+<span data-ttu-id="7d808-149">По умолчанию запросы проверки подлинности Facebook запрашивают открытый профиль и адрес электронной почты:</span><span class="sxs-lookup"><span data-stu-id="7d808-149">Facebook authentication requests public profile and email address by default:</span></span>
 
-![Экран согласия страницу проверки подлинности Facebook](index/_static/FBLoginDone.png)
+![Экран согласия проверки подлинности страницы Facebook](index/_static/FBLoginDone.png)
 
-<span data-ttu-id="0a4f7-152">После ввода учетных данных Facebook вы будете перенаправлены обратно на сайт, где вы можете задать свой адрес электронной почты.</span><span class="sxs-lookup"><span data-stu-id="0a4f7-152">Once you enter your Facebook credentials you are redirected back to your site where you can set your email.</span></span>
+<span data-ttu-id="7d808-151">После ввода учетных данных Facebook вы перенаправляетесь обратно на сайт, где можно задать свой адрес электронной почты.</span><span class="sxs-lookup"><span data-stu-id="7d808-151">Once you enter your Facebook credentials you are redirected back to your site where you can set your email.</span></span>
 
-<span data-ttu-id="0a4f7-153">Теперь вы вошли с использованием учетных данных Facebook:</span><span class="sxs-lookup"><span data-stu-id="0a4f7-153">You are now logged in using your Facebook credentials:</span></span>
+<span data-ttu-id="7d808-152">Теперь вы выполнили вход с использованием учетных данных Facebook:</span><span class="sxs-lookup"><span data-stu-id="7d808-152">You are now logged in using your Facebook credentials:</span></span>
 
-![Веб-приложение: Пользователь прошел проверку подлинности](index/_static/Done.png)
+![Веб-приложение: проверка подлинности пользователя](index/_static/Done.png)
 
 [!INCLUDE[Forward request information when behind a proxy or load balancer section](includes/forwarded-headers-middleware.md)]
 
-## <a name="troubleshooting"></a><span data-ttu-id="0a4f7-155">Устранение неполадок</span><span class="sxs-lookup"><span data-stu-id="0a4f7-155">Troubleshooting</span></span>
+## <a name="troubleshooting"></a><span data-ttu-id="7d808-154">Диагностика</span><span class="sxs-lookup"><span data-stu-id="7d808-154">Troubleshooting</span></span>
 
-* <span data-ttu-id="0a4f7-156">**Только ASP.NET Core 2. x:** Если удостоверение не настроено `services.AddIdentity` с `ConfigureServices`помощью вызова в, попытка проверки подлинности приведет *к появлению исключения ArgumentException: Необходимо указать*параметр "сигнинсчеме".</span><span class="sxs-lookup"><span data-stu-id="0a4f7-156">**ASP.NET Core 2.x only:** If Identity isn't configured by calling `services.AddIdentity` in `ConfigureServices`, attempting to authenticate will result in *ArgumentException: The 'SignInScheme' option must be provided*.</span></span> <span data-ttu-id="0a4f7-157">Шаблон проекта, используемый в этом руководстве гарантирует, что это будет сделано.</span><span class="sxs-lookup"><span data-stu-id="0a4f7-157">The project template used in this tutorial ensures that this is done.</span></span>
-* <span data-ttu-id="0a4f7-158">Если база данных сайта не был создан путем применения первоначальной миграции, вы получаете *сбой операции из базы данных при обработке запроса* ошибки.</span><span class="sxs-lookup"><span data-stu-id="0a4f7-158">If the site database has not been created by applying the initial migration, you get *A database operation failed while processing the request* error.</span></span> <span data-ttu-id="0a4f7-159">Коснитесь **применить миграции** для создания базы данных и обновить, чтобы продолжить выполнение после ошибки.</span><span class="sxs-lookup"><span data-stu-id="0a4f7-159">Tap **Apply Migrations** to create the database and refresh to continue past the error.</span></span>
+* <span data-ttu-id="7d808-155">**Только ASP.NET Core 2. x:** Если удостоверение не настроено путем вызова `services.AddIdentity` в `ConfigureServices`, попытка проверки подлинности приведет к появлению *исключения ArgumentException: необходимо указать параметр "сигнинсчеме"* .</span><span class="sxs-lookup"><span data-stu-id="7d808-155">**ASP.NET Core 2.x only:** If Identity isn't configured by calling `services.AddIdentity` in `ConfigureServices`, attempting to authenticate will result in *ArgumentException: The 'SignInScheme' option must be provided*.</span></span> <span data-ttu-id="7d808-156">Шаблон проекта, используемый в этом руководстве, гарантирует, что это будет сделано.</span><span class="sxs-lookup"><span data-stu-id="7d808-156">The project template used in this tutorial ensures that this is done.</span></span>
+* <span data-ttu-id="7d808-157">Если база данных сайта не была создана путем применения первоначальной миграции, то при обработке ошибки запроса возникнет *Ошибка операции с базой данных* .</span><span class="sxs-lookup"><span data-stu-id="7d808-157">If the site database has not been created by applying the initial migration, you get *A database operation failed while processing the request* error.</span></span> <span data-ttu-id="7d808-158">Выберите **Применить миграции** , чтобы создать базу данных и обновить, чтобы продолжить выполнение после ошибки.</span><span class="sxs-lookup"><span data-stu-id="7d808-158">Tap **Apply Migrations** to create the database and refresh to continue past the error.</span></span>
 
-## <a name="next-steps"></a><span data-ttu-id="0a4f7-160">Следующие шаги</span><span class="sxs-lookup"><span data-stu-id="0a4f7-160">Next steps</span></span>
+## <a name="next-steps"></a><span data-ttu-id="7d808-159">Следующие шаги</span><span class="sxs-lookup"><span data-stu-id="7d808-159">Next steps</span></span>
 
-* <span data-ttu-id="0a4f7-161">Добавьте в проект пакет NuGet [Microsoft. AspNetCore. Authentication. Facebook](https://www.nuget.org/packages/Microsoft.AspNetCore.Authentication.Facebook) для расширенных сценариев проверки подлинности Facebook.</span><span class="sxs-lookup"><span data-stu-id="0a4f7-161">Add the [Microsoft.AspNetCore.Authentication.Facebook](https://www.nuget.org/packages/Microsoft.AspNetCore.Authentication.Facebook) NuGet package to your project for advanced Facebook authentication scenarios.</span></span> <span data-ttu-id="0a4f7-162">Этот пакет не требуется для интеграции функций внешнего входа Facebook с приложением.</span><span class="sxs-lookup"><span data-stu-id="0a4f7-162">This package isn't required to integrate Facebook external login functionality with your app.</span></span> 
+* <span data-ttu-id="7d808-160">В этой статье показано, как можно пройти проверку подлинности с помощью Facebook.</span><span class="sxs-lookup"><span data-stu-id="7d808-160">This article showed how you can authenticate with Facebook.</span></span> <span data-ttu-id="7d808-161">Аналогичный подход можно использовать для проверки подлинности с другими поставщиками, перечисленными на [предыдущей странице](xref:security/authentication/social/index).</span><span class="sxs-lookup"><span data-stu-id="7d808-161">You can follow a similar approach to authenticate with other providers listed on the [previous page](xref:security/authentication/social/index).</span></span>
 
-* <span data-ttu-id="0a4f7-163">В этой статье объясняется, как можно выполнить проверку подлинности с помощью Facebook.</span><span class="sxs-lookup"><span data-stu-id="0a4f7-163">This article showed how you can authenticate with Facebook.</span></span> <span data-ttu-id="0a4f7-164">Можно выполнить аналогичный подход для проверки подлинности с помощью других поставщиков, перечисленных на [предыдущую страницу](xref:security/authentication/social/index).</span><span class="sxs-lookup"><span data-stu-id="0a4f7-164">You can follow a similar approach to authenticate with other providers listed on the [previous page](xref:security/authentication/social/index).</span></span>
+* <span data-ttu-id="7d808-162">После публикации веб-сайта в веб-приложение Azure необходимо сбросить `AppSecret` на портале разработчика Facebook.</span><span class="sxs-lookup"><span data-stu-id="7d808-162">Once you publish your web site to Azure web app, you should reset the `AppSecret` in the Facebook developer portal.</span></span>
 
-* <span data-ttu-id="0a4f7-165">После публикации веб-сайт веб-приложение Azure, необходимо сбросить `AppSecret` на портале разработчика Facebook.</span><span class="sxs-lookup"><span data-stu-id="0a4f7-165">Once you publish your web site to Azure web app, you should reset the `AppSecret` in the Facebook developer portal.</span></span>
-
-* <span data-ttu-id="0a4f7-166">Задайте `Authentication:Facebook:AppId` и `Authentication:Facebook:AppSecret` как параметры приложения на портале Azure.</span><span class="sxs-lookup"><span data-stu-id="0a4f7-166">Set the `Authentication:Facebook:AppId` and `Authentication:Facebook:AppSecret` as application settings in the Azure portal.</span></span> <span data-ttu-id="0a4f7-167">Система конфигурации предназначена для чтения разделов из переменных среды.</span><span class="sxs-lookup"><span data-stu-id="0a4f7-167">The configuration system is set up to read keys from environment variables.</span></span>
+* <span data-ttu-id="7d808-163">Задайте `Authentication:Facebook:AppId` и `Authentication:Facebook:AppSecret` в качестве параметров приложения в портал Azure.</span><span class="sxs-lookup"><span data-stu-id="7d808-163">Set the `Authentication:Facebook:AppId` and `Authentication:Facebook:AppSecret` as application settings in the Azure portal.</span></span> <span data-ttu-id="7d808-164">Система конфигурации настроена на чтение ключей из переменных среды.</span><span class="sxs-lookup"><span data-stu-id="7d808-164">The configuration system is set up to read keys from environment variables.</span></span>
