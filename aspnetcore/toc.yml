@@ -286,6 +286,8 @@
           uid: blazor/templates
         - name: Компоненты
           uid: blazor/components
+        - name: Жизненный цикл
+          uid: blazor/lifecycle
         - name: Формы и проверка
           uid: blazor/forms-validation
         - name: Библиотеки компонентов
@@ -819,6 +821,8 @@
       uid: security/index
     - name: Проверка подлинности
       items:
+        - name: Обзор
+          uid: security/authentication/index
         - name: Общие сведения об Identity
           uid: security/authentication/identity
         - name: Удостоверение в SPA
