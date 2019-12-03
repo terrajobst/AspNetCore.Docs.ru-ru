@@ -1,22 +1,22 @@
 ---
-title: Общие сведения о ASP.NET Core SignalR
+title: Введение в ASP.NET Core SignalR
 author: bradygaster
 description: Узнайте, как библиотека ASP.NET Core SignalR упрощает добавление в приложения функций в режиме реального времени.
 monikerRange: '>= aspnetcore-2.1'
 ms.author: bradyg
 ms.custom: mvc
-ms.date: 11/12/2019
+ms.date: 11/27/2019
 no-loc:
 - SignalR
 uid: signalr/introduction
-ms.openlocfilehash: 7108d9f223db78937dd1203a1cb4b890006b20ec
-ms.sourcegitcommit: 3fc3020961e1289ee5bf5f3c365ce8304d8ebf19
+ms.openlocfilehash: e84dd0d086cbfc80a80bc10baa33979da9b5d137
+ms.sourcegitcommit: 3b6b0a54b20dc99b0c8c5978400c60adf431072f
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73963942"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74717238"
 ---
-# <a name="introduction-to-aspnet-core-opno-locsignalr"></a>Общие сведения о ASP.NET Core SignalR
+# <a name="introduction-to-aspnet-core-opno-locsignalr"></a>Введение в ASP.NET Core SignalR
 
 ## <a name="what-is-opno-locsignalr"></a>Что такое SignalR?
 
@@ -42,7 +42,7 @@ SignalR предоставляет API для создания [удаленны
 
 ## <a name="transports"></a>Транспорты
 
-SignalR поддерживает несколько методов обработки обмена данными в режиме реального времени:
+SignalR поддерживает следующие методы обработки обмена данными в режиме реального времени (в порядке правильного резерва):
 
 * [WebSockets](https://tools.ietf.org/html/rfc7118)
 * События, отправленные сервером

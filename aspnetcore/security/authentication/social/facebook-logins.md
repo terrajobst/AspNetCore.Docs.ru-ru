@@ -1,68 +1,71 @@
 ---
-title: Настройка внешней учетной записи Facebook в ASP.NET Core
+title: Настройка внешнего входа Facebook в ASP.NET Core
 author: rick-anderson
 description: Руководство с примерами кода, демонстрирующими интеграцию аутентификации пользователя с учетной записью Facebook с существующим ASP.NET Core приложением.
 ms.author: riande
 ms.custom: seoapril2019, mvc, seodec18
-ms.date: 03/04/2019
+ms.date: 12/02/2019
+monikerRange: '>= aspnetcore-3.0'
 uid: security/authentication/facebook-logins
-ms.openlocfilehash: f7b21de7e5fe9d77804588280c3d8be9df8afee5
-ms.sourcegitcommit: 215954a638d24124f791024c66fd4fb9109fd380
+ms.openlocfilehash: 2e4cc04c6e7ff8e5f5701cc7f9ede73dbc1b4685
+ms.sourcegitcommit: 3b6b0a54b20dc99b0c8c5978400c60adf431072f
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71082548"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74717140"
 ---
-# <a name="facebook-external-login-setup-in-aspnet-core"></a>Настройка внешней учетной записи Facebook в ASP.NET Core
+# <a name="facebook-external-login-setup-in-aspnet-core"></a>Настройка внешнего входа Facebook в ASP.NET Core
 
 Авторы: [Валерий Новицкий](https://github.com/01binary) (Valeriy Novytskyy) и [Рик Андерсон](https://twitter.com/RickAndMSFT) (Rick Anderson)
 
-В этом учебнике с примерами кода показано, как включить вход пользователей с помощью учетной записи Facebook, используя пример проекта ASP.NET Core 2,0, созданный на [предыдущей странице](xref:security/authentication/social/index). Мы начнем с создания код приложения Facebook, следуя [официальный действия](https://developers.facebook.com).
+В этом учебнике с примерами кода показано, как включить вход пользователей с помощью учетной записи Facebook, используя пример проекта ASP.NET Core 3,0, созданный на [предыдущей странице](xref:security/authentication/social/index). Начнем с создания идентификатора приложения Facebook, следуя [официальным действиям](https://developers.facebook.com).
 
-## <a name="create-the-app-in-facebook"></a>Создать приложение в Facebook
+## <a name="create-the-app-in-facebook"></a>Создание приложения в Facebook
 
-* Перейдите к [приложений разработчиков для Facebook](https://developers.facebook.com/apps/) странице и войдите в систему. Если у вас нет учетной записи Facebook, используйте **зарегистрироваться для Facebook** ссылку на странице входа, чтобы создать его.
+* Добавьте в проект пакет NuGet [Microsoft. AspNetCore. Authentication. Facebook](https://www.nuget.org/packages/Microsoft.AspNetCore.Authentication.Facebook) .
 
-* Коснитесь **добавить новое приложение** кнопки в правом верхнем углу, чтобы создать новый идентификатор приложения.
+* Перейдите на страницу [приложения Facebook Developers](https://developers.facebook.com/apps/) и выполните вход. Если у вас еще нет учетной записи Facebook, используйте ссылку **зарегистрироваться для Facebook** на странице входа, чтобы создать ее.  После получения учетной записи Facebook следуйте инструкциям по регистрации в качестве разработчика Facebook.
 
-   ![Facebook для портала разработчиков открыть в Microsoft Edge](index/_static/FBMyApps.png)
+* В меню **Мои приложения** выберите пункт **создать приложение** , чтобы создать новый идентификатор приложения.
 
-* Заполните форму и коснитесь **создать идентификатор приложения** кнопки.
+   ![Портал Facebook для разработчиков открыт в Microsoft ребр](index/_static/FBMyApps.png)
 
-  ![Создание формы новый идентификатор приложения](index/_static/FBNewAppId.png)
+* Заполните форму и нажмите кнопку **CREATE App ID (создать идентификатор приложения** ).
 
-* На **выбрать продукт** щелкните **Настройка** на **имени для входа Facebook** карты.
+  ![Создание новой формы идентификатора приложения](index/_static/FBNewAppId.png)
 
-  ![Страница установки продукта](index/_static/FBProductSetup.png)
+* В карточке нового приложения выберите **Добавить продукт**.  На карточке **входа Facebook** щелкните **настроить** . 
 
-* **Быстрого запуска** будет запущен мастер с **выберите платформу** первая страница. Сейчас пропустить мастера, нажав кнопку **параметры** ссылку в меню слева:
+  ![Страница «Настройка продукта»](index/_static/FBProductSetup.png)
 
-  ![Пропустить быстрый запуск](index/_static/FBSkipQuickStart.png)
+* Мастер **быстрого** запуска запускается с параметром **выбрать платформу** в качестве первой страницы. Пропустите мастер, щелкнув ссылку **Параметры** **входа Facebook** в меню в левом нижнем углу экрана:
 
-* Появится **клиентские настройки OAuth** страницы:
+  ![Пропустить Быстрое начало](index/_static/FBSkipQuickStart.png)
 
-  ![Параметры OAuth клиента](index/_static/FBOAuthSetup.png)
+* Отобразится страница **параметров OAuth клиента** :
 
-* Введите URI разработки с */signin-facebook* добавляется в **допустимый URI перенаправления OAuth** поле (например: `https://localhost:44320/signin-facebook`). Проверка подлинности Facebook, Настройка описывается далее в этом руководстве автоматически будет обрабатывать запросы на */signin-facebook* маршрут, чтобы реализовать поток OAuth.
+  ![Страница параметров OAuth клиента](index/_static/FBOAuthSetup.png)
+
+* Введите универсальный код ресурса (URI) для разработки с */сигнин-фацебук* , добавленным в **допустимое поле URI перенаправления OAuth** (например: `https://localhost:44320/signin-facebook`). Проверка подлинности Facebook, настроенная далее в этом руководстве, автоматически обрабатывает запросы по маршруту */сигнин-фацебук* для реализации потока OAuth.
 
 > [!NOTE]
-> URI */signin-facebook* задан в качестве обратного вызова по умолчанию поставщика проверки подлинности Facebook. URI обратного вызова по умолчанию можно изменить при настройке по промежуточного слоя проверки подлинности Facebook с помощью наследуемого [RemoteAuthenticationOptions.CallbackPath](/dotnet/api/microsoft.aspnetcore.authentication.remoteauthenticationoptions.callbackpath) свойство [FacebookOptions](/dotnet/api/microsoft.aspnetcore.authentication.facebook.facebookoptions) класс.
+> URI */сигнин-фацебук* задается в качестве обратного вызова по умолчанию для поставщика проверки подлинности Facebook. URI обратного вызова по умолчанию можно изменить при настройке по промежуточного слоя проверки подлинности Facebook с помощью унаследованного свойства [ремотеаусентикатионоптионс. каллбаккпас](/dotnet/api/microsoft.aspnetcore.authentication.remoteauthenticationoptions.callbackpath) класса [фацебукоптионс](/dotnet/api/microsoft.aspnetcore.authentication.facebook.facebookoptions) .
 
 * Нажмите кнопку **сохранить изменения**.
 
-* Нажмите кнопку **параметры** > **основные** ссылку в левой области навигации.
+* В левой области навигации щелкните **параметры** > **Обычная** ссылка.
 
-  На этой странице, запомните или запишите вашей `App ID` и `App Secret`. Оба сертификата в приложении ASP.NET Core будет добавлена в следующем разделе:
+  На этой странице запишите `App ID` и `App Secret`. Вы добавите оба варианта в приложение ASP.NET Core в следующем разделе:
 
-* При развертывании на сайте необходимо пересмотреть **имени для входа Facebook** установки: страница и зарегистрировать новый открытый универсальный код Ресурса.
+* При развертывании сайта необходимо повторно посетить страницу настройки **имени входа Facebook** и зарегистрировать новый общедоступный URI.
 
-## <a name="store-facebook-app-id-and-app-secret"></a>Идентификатор приложения Facebook Store и секрет приложения
+## <a name="store-facebook-app-id-and-app-secret"></a>Хранение идентификатора приложения Facebook и секрета приложения
 
-Связать конфиденциальные параметры, такие как Facebook `App ID` и `App Secret` для конфигурации приложения с помощью [Secret Manager](xref:security/app-secrets). В целях этого учебника назовите токены `Authentication:Facebook:AppId` и `Authentication:Facebook:AppSecret`.
+Свяжите конфиденциальные параметры, такие как Facebook `App ID` и `App Secret` в конфигурации приложения с помощью [диспетчера секретов](xref:security/app-secrets). В рамках этого руководства назовите маркеры `Authentication:Facebook:AppId` и `Authentication:Facebook:AppSecret`.
 
 [!INCLUDE[](~/includes/environmentVarableColon.md)]
 
-Выполните следующие команды, чтобы обеспечить безопасное хранение `App ID` и `App Secret` с помощью диспетчера секретов:
+Выполните следующие команды для безопасного хранения `App ID` и `App Secret` с помощью диспетчера секретов:
 
 ```dotnetcli
 dotnet user-secrets set Authentication:Facebook:AppId <app-id>
@@ -71,15 +74,9 @@ dotnet user-secrets set Authentication:Facebook:AppSecret <app-secret>
 
 ## <a name="configure-facebook-authentication"></a>Настройка проверки подлинности Facebook
 
-::: moniker range=">= aspnetcore-2.0"
-
-Добавьте службу Facebook в `ConfigureServices` метод в *Startup.cs* файла:
+Добавьте службу Facebook в метод `ConfigureServices` в файле *Startup.CS* :
 
 ```csharp
-services.AddDefaultIdentity<IdentityUser>()
-        .AddDefaultUI(UIFramework.Bootstrap4)
-        .AddEntityFrameworkStores<ApplicationDbContext>();
-
 services.AddAuthentication().AddFacebook(facebookOptions =>
 {
     facebookOptions.AppId = Configuration["Authentication:Facebook:AppId"];
@@ -91,67 +88,42 @@ services.AddAuthentication().AddFacebook(facebookOptions =>
 
 [!INCLUDE[](includes/chain-auth-providers.md)]
 
-::: moniker-end
+Дополнительные сведения о параметрах конфигурации, поддерживаемых проверкой подлинности Facebook, см. в справочнике по API [фацебукоптионс](/dotnet/api/microsoft.aspnetcore.builder.facebookoptions) . Параметры конфигурации можно использовать для:
 
-::: moniker range="< aspnetcore-2.0"
-
-Установка [Microsoft.AspNetCore.Authentication.Facebook](https://www.nuget.org/packages/Microsoft.AspNetCore.Authentication.Facebook) пакета.
-
-* Установить этот пакет с помощью Visual Studio 2017, щелкните правой кнопкой мыши проект и выберите **управление пакетами NuGet**.
-* Чтобы установить с помощью интерфейса командной строки .NET Core, выполните следующую команду в каталоге проекта:
-
-   `dotnet add package Microsoft.AspNetCore.Authentication.Facebook`
-
-Добавьте по промежуточного слоя Facebook в `Configure` метод в *Startup.cs* файла:
-
-```csharp
-app.UseFacebookAuthentication(new FacebookOptions()
-{
-    AppId = Configuration["Authentication:Facebook:AppId"],
-    AppSecret = Configuration["Authentication:Facebook:AppSecret"]
-});
-```
-
-::: moniker-end
-
-См. в разделе [FacebookOptions](/dotnet/api/microsoft.aspnetcore.builder.facebookoptions) Справочник по API, Дополнительные сведения о параметрах конфигурации, поддерживаемых проверкой подлинности Facebook. Параметры конфигурации может использоваться для:
-
-* Запросить различные сведения о пользователе.
-* Добавление аргументов строки запроса, настраивать параметры имени входа.
+* Запросите другие сведения о пользователе.
+* Добавьте аргументы строки запроса, чтобы настроить процедуру входа.
 
 ## <a name="sign-in-with-facebook"></a>Вход с помощью Facebook
 
-Запустите приложение и нажмите кнопку **вход**. Отображается параметр выполнить вход с использованием Facebook.
+Запустите приложение и нажмите кнопку **войти**. Вы увидите параметр для входа с помощью Facebook.
 
-![Веб-приложение: Пользователь не прошел проверку подлинности](index/_static/DoneFacebook.png)
+![Веб-приложение: пользователь не прошел проверку подлинности](index/_static/DoneFacebook.png)
 
-Когда вы щелкаете **Facebook**, вы будете перенаправлены на Facebook для проверки подлинности:
+Если щелкнуть **Facebook**, вы будете перенаправлены на Facebook для проверки подлинности:
 
 ![Страница проверки подлинности Facebook](index/_static/FBLogin.png)
 
-Проверка подлинности Facebook запрашивает открытый профиль и адрес электронной почты по умолчанию:
+По умолчанию запросы проверки подлинности Facebook запрашивают открытый профиль и адрес электронной почты:
 
-![Экран согласия страницу проверки подлинности Facebook](index/_static/FBLoginDone.png)
+![Экран согласия проверки подлинности страницы Facebook](index/_static/FBLoginDone.png)
 
-После ввода учетных данных Facebook вы будете перенаправлены обратно на сайт, где вы можете задать свой адрес электронной почты.
+После ввода учетных данных Facebook вы перенаправляетесь обратно на сайт, где можно задать свой адрес электронной почты.
 
-Теперь вы вошли с использованием учетных данных Facebook:
+Теперь вы выполнили вход с использованием учетных данных Facebook:
 
-![Веб-приложение: Пользователь прошел проверку подлинности](index/_static/Done.png)
+![Веб-приложение: проверка подлинности пользователя](index/_static/Done.png)
 
 [!INCLUDE[Forward request information when behind a proxy or load balancer section](includes/forwarded-headers-middleware.md)]
 
-## <a name="troubleshooting"></a>Устранение неполадок
+## <a name="troubleshooting"></a>Диагностика
 
-* **Только ASP.NET Core 2. x:** Если удостоверение не настроено `services.AddIdentity` с `ConfigureServices`помощью вызова в, попытка проверки подлинности приведет *к появлению исключения ArgumentException: Необходимо указать*параметр "сигнинсчеме". Шаблон проекта, используемый в этом руководстве гарантирует, что это будет сделано.
-* Если база данных сайта не был создан путем применения первоначальной миграции, вы получаете *сбой операции из базы данных при обработке запроса* ошибки. Коснитесь **применить миграции** для создания базы данных и обновить, чтобы продолжить выполнение после ошибки.
+* **Только ASP.NET Core 2. x:** Если удостоверение не настроено путем вызова `services.AddIdentity` в `ConfigureServices`, попытка проверки подлинности приведет к появлению *исключения ArgumentException: необходимо указать параметр "сигнинсчеме"* . Шаблон проекта, используемый в этом руководстве, гарантирует, что это будет сделано.
+* Если база данных сайта не была создана путем применения первоначальной миграции, то при обработке ошибки запроса возникнет *Ошибка операции с базой данных* . Выберите **Применить миграции** , чтобы создать базу данных и обновить, чтобы продолжить выполнение после ошибки.
 
 ## <a name="next-steps"></a>Следующие шаги
 
-* Добавьте в проект пакет NuGet [Microsoft. AspNetCore. Authentication. Facebook](https://www.nuget.org/packages/Microsoft.AspNetCore.Authentication.Facebook) для расширенных сценариев проверки подлинности Facebook. Этот пакет не требуется для интеграции функций внешнего входа Facebook с приложением. 
+* В этой статье показано, как можно пройти проверку подлинности с помощью Facebook. Аналогичный подход можно использовать для проверки подлинности с другими поставщиками, перечисленными на [предыдущей странице](xref:security/authentication/social/index).
 
-* В этой статье объясняется, как можно выполнить проверку подлинности с помощью Facebook. Можно выполнить аналогичный подход для проверки подлинности с помощью других поставщиков, перечисленных на [предыдущую страницу](xref:security/authentication/social/index).
+* После публикации веб-сайта в веб-приложение Azure необходимо сбросить `AppSecret` на портале разработчика Facebook.
 
-* После публикации веб-сайт веб-приложение Azure, необходимо сбросить `AppSecret` на портале разработчика Facebook.
-
-* Задайте `Authentication:Facebook:AppId` и `Authentication:Facebook:AppSecret` как параметры приложения на портале Azure. Система конфигурации предназначена для чтения разделов из переменных среды.
+* Задайте `Authentication:Facebook:AppId` и `Authentication:Facebook:AppSecret` в качестве параметров приложения в портал Azure. Система конфигурации настроена на чтение ключей из переменных среды.
