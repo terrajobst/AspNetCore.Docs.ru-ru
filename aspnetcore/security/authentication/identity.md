@@ -3,14 +3,14 @@ title: Введение в удостоверение на ASP.NET Core
 author: rick-anderson
 description: Используйте удостоверение с приложением ASP.NET Core. Узнайте, как устанавливать требования к паролю (Рекуиредигит, Рекуиредленгс, Рекуиредуникуечарс и др.).
 ms.author: riande
-ms.date: 10/15/2019
+ms.date: 12/7/2019
 uid: security/authentication/identity
-ms.openlocfilehash: 8da13ca5f74a9c829eb8137d33af0684ff88266d
-ms.sourcegitcommit: 07d98ada57f2a5f6d809d44bdad7a15013109549
+ms.openlocfilehash: 331ebe36eb4bb7fa694de8daa969bcabcab1c974
+ms.sourcegitcommit: b3e1e31e5d8bdd94096cf27444594d4a7b065525
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72333548"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74803400"
 ---
 # <a name="introduction-to-identity-on-aspnet-core"></a>Введение в удостоверение на ASP.NET Core
 
@@ -18,11 +18,23 @@ ms.locfileid: "72333548"
 
 Автор: [Рик Андерсон](https://twitter.com/RickAndMSFT)
 
-ASP.NET Core удостоверение — это система членства, которая поддерживает функции входа в пользовательский интерфейс. Пользователи могут создать учетную запись с данными для входа, хранящимися в удостоверении, или использовать внешнего поставщика входа. Поддерживаемые внешние поставщики входа включают [Facebook, Google, учетную запись Майкрософт и Twitter](xref:security/authentication/social/index).
+Удостоверение ASP.NET Core:
 
-Идентификацию можно настроить с помощью SQL Server базы данных для хранения имен пользователей, паролей и данных профилей. Кроме того, можно использовать еще одно постоянное хранилище, например хранилище таблиц Azure.
+* — Это API, поддерживающий функцию входа в пользовательский интерфейс.
+* Управляет пользователями, паролями, данными профилирования, ролями, утверждениями, маркерами, подтверждением электронной почты и т. д.
+
+Пользователи могут создать учетную запись с данными для входа, хранящимися в удостоверении, или использовать внешнего поставщика входа. Поддерживаемые внешние поставщики входа включают [Facebook, Google, учетную запись Майкрософт и Twitter](xref:security/authentication/social/index).
+
+[Исходный код удостоверения](https://github.com/aspnet/AspNetCore/tree/master/src/Identity) доступен на сайте GitHub. [Удостоверение формирования шаблонов](xref:security/authentication/scaffold-identity) и просмотр созданных файлов для проверки взаимодействия шаблона с удостоверением.
+
+Удостоверение обычно настраивается с помощью SQL Server базы данных для хранения имен пользователей, паролей и данных профилей. Кроме того, можно использовать еще одно постоянное хранилище, например хранилище таблиц Azure.
 
 В этом разделе вы узнаете, как использовать удостоверение для регистрации, входа и выхода пользователя. Более подробные инструкции по созданию приложений, использующих удостоверение, см. в разделе дальнейшие действия в конце этой статьи.
+
+[Платформа Microsoft Identity Platform](/azure/active-directory/develop/) :
+
+* Развитие платформы разработки Azure Active Directory (Azure AD).
+* Не связано с удостоверением ASP.NET Core.
 
 [!INCLUDE[](~/includes/IdentityServer4.md)]
 
@@ -36,7 +48,7 @@ ASP.NET Core удостоверение — это система членств
 
 # <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-* Выберите **файл** > **Новый** **проект**>.
+* Выберите **File** > **New** > **Project** ( Файл > Создать > Проект).
 * Выберите **Новое веб-приложение ASP.NET Core**. Присвойте проекту имя **APP1** , которое будет иметь то же пространство имен, что и загружаемый проект. Нажмите кнопку **ОК**.
 * Выберите ASP.NET Core **веб-приложение**, а затем щелкните **изменить проверку подлинности**.
 * Выберите **учетные записи отдельных пользователей** и нажмите кнопку **ОК**.
@@ -55,7 +67,7 @@ dotnet new webapp --auth Individual -uld -o WebApp1
 
 ---
 
-Созданный проект предоставляет [ASP.NET Core удостоверение](xref:security/authentication/identity) в виде [библиотеки классов Razor](xref:razor-pages/ui-class). Библиотека классов Razor Identity предоставляет конечные точки с областью `Identity`. Пример:
+Созданный проект предоставляет [ASP.NET Core удостоверение](xref:security/authentication/identity) в виде [библиотеки классов Razor](xref:razor-pages/ui-class). Библиотека классов Razor Identity предоставляет конечные точки с областью `Identity`. Например:
 
 * /идентити/аккаунт/логин
 * /идентити/аккаунт/логаут
@@ -101,9 +113,9 @@ dotnet ef database update
 
 [!code-csharp[](identity/sample/WebApp3/Startup.cs?name=snippet_configure&highlight=19)]
 
-Созданное шаблоном приложение не использует [авторизацию](xref:security/authorization/secure-data). `app.UseAuthorization` включается, чтобы гарантировать его добавление в правильном порядке, если приложение добавляет авторизацию. `UseRouting`, `UseAuthentication`, `UseAuthorization` и `UseEndpoints` должны вызываться в порядке, показанном в приведенном выше коде.
+Созданное шаблоном приложение не использует [авторизацию](xref:security/authorization/secure-data). `app.UseAuthorization` включен, чтобы убедиться, что он добавлен в правильном порядке, если приложение добавляет авторизацию. `UseRouting`, `UseAuthentication`, `UseAuthorization`и `UseEndpoints` должны вызываться в порядке, показанном в предыдущем коде.
 
-Дополнительные сведения о `IdentityOptions` и `Startup` см. в разделе <xref:Microsoft.AspNetCore.Identity.IdentityOptions> и [Запуск приложения](xref:fundamentals/startup).
+Дополнительные сведения о `IdentityOptions` и `Startup`см. в разделе <xref:Microsoft.AspNetCore.Identity.IdentityOptions> и [Запуск приложения](xref:fundamentals/startup).
 
 ## <a name="scaffold-register-login-and-logout"></a>Регистрация, вход и выход из шаблона формирования шаблонов
 
@@ -113,7 +125,7 @@ dotnet ef database update
 
 # <a name="net-core-clitabnetcore-cli"></a>[Интерфейс командной строки .NET Core](#tab/netcore-cli)
 
-Если вы создали проект с именем " **APP1**", выполните следующие команды. В противном случае используйте правильное пространство имен для `ApplicationDbContext`:
+Если вы создали проект с именем " **APP1**", выполните следующие команды. В противном случае используйте правильное пространство имен для `ApplicationDbContext`.
 
 ```dotnetcli
 dotnet add package Microsoft.VisualStudio.Web.CodeGeneration.Design
@@ -132,18 +144,18 @@ dotnet aspnet-codegenerator identity -dc WebApp1.Data.ApplicationDbContext --fil
 
 [!code-csharp[](identity/sample/WebApp3/Areas/Identity/Pages/Account/Register.cshtml.cs?name=snippet&highlight=9)]
 
-Если пользователь успешно создан, пользователь входит в систему с помощью вызова `_signInManager.SignInAsync`.
+Если пользователь создан, происходит вход пользователя путем вызова метода `_signInManager.SignInAsync`.
 
 Инструкции по предотвращению немедленного входа при регистрации см. в статье [Подтверждение учетной записи](xref:security/authentication/accconfirm#prevent-login-at-registration) .
 
-### <a name="log-in"></a>Войти
+### <a name="log-in"></a>Вход
 
 Форма входа отображается в следующих случаях:
 
 * Выбрана ссылка для **входа** .
 * Пользователь пытается получить доступ к странице с ограниченным доступом, которая не авторизована для доступа, **или** если система не прошла проверку подлинности.
 
-При отправке формы на странице входа вызывается действие `OnPostAsync`. `PasswordSignInAsync` вызывается для объекта `_signInManager` (предоставляется путем внедрения зависимостей).
+При отправке формы на странице входа вызывается действие `OnPostAsync`. `PasswordSignInAsync` вызывается для объекта `_signInManager` (предоставленного путем внедрения зависимостей).
 
 [!code-csharp[](identity/sample/WebApp3/Areas/Identity/Pages/Account/Login.cshtml.cs?name=snippet&highlight=10-11)]
 
@@ -159,7 +171,7 @@ dotnet aspnet-codegenerator identity -dc WebApp1.Data.ApplicationDbContext --fil
 
 [Сигнаутасинк](/dotnet/api/microsoft.aspnetcore.identity.signinmanager-1.signoutasync#Microsoft_AspNetCore_Identity_SignInManager_1_SignOutAsync) очищает утверждения пользователя, хранящиеся в файле cookie.
 
-POST указывается в параметре *pages/Shared/_LoginPartial. cshtml*:
+Параметр POST указан в *страницах Pages/Shared/_LoginPartial. cshtml*:
 
 [!code-csharp[](identity/sample/WebApp3/Pages/Shared/_LoginPartial.cshtml?highlight=15)]
 
@@ -169,7 +181,7 @@ POST указывается в параметре *pages/Shared/_LoginPartial. c
 
 [!code-csharp[](identity/sample/WebApp3/Pages/Privacy.cshtml.cs?highlight=7)]
 
-Если вы вошли в систему, выйдите из нее. Запустите приложение и щелкните ссылку **Конфиденциальность** . Вы будете перенаправлены на страницу входа.
+Если вы вошли в систему, выйдите из нее. Запустите приложение и щелкните ссылку **Конфиденциальность** . Вы перейдете на страницу входа.
 
 ### <a name="explore-identity"></a>Просмотр удостоверений
 
@@ -194,7 +206,7 @@ POST указывается в параметре *pages/Shared/_LoginPartial. c
 
 ## <a name="adddefaultidentity-and-addidentity"></a>Адддефаултидентити и Аддидентити
 
-<xref:Microsoft.Extensions.DependencyInjection.IdentityServiceCollectionUIExtensions.AddDefaultIdentity*> был введен в ASP.NET Core 2,1. Вызов `AddDefaultIdentity` аналогичен вызову следующего:
+<xref:Microsoft.Extensions.DependencyInjection.IdentityServiceCollectionUIExtensions.AddDefaultIdentity*> было введено в ASP.NET Core 2,1. Вызов `AddDefaultIdentity` аналогичен вызову следующего:
 
 * <xref:Microsoft.Extensions.DependencyInjection.IdentityServiceCollectionExtensions.AddIdentity*>
 * <xref:Microsoft.AspNetCore.Identity.IdentityBuilderUIExtensions.AddDefaultUI*>
@@ -202,7 +214,7 @@ POST указывается в параметре *pages/Shared/_LoginPartial. c
 
 Дополнительные сведения см. в разделе [адддефаултидентити Source](https://github.com/aspnet/AspNetCore/blob/release/3.0/src/Identity/UI/src/IdentityServiceCollectionUIExtensions.cs#L47-L63) .
 
-## <a name="next-steps"></a>Следующие шаги
+## <a name="next-steps"></a>Дальнейшие действия
 
 * [Настройка Identity](xref:security/authentication/identity-configuration)
 * <xref:security/authorization/secure-data>
@@ -231,7 +243,7 @@ ASP.NET Core удостоверение — это система членств
 
 ## <a name="adddefaultidentity-and-addidentity"></a>Адддефаултидентити и Аддидентити
 
-<xref:Microsoft.Extensions.DependencyInjection.IdentityServiceCollectionUIExtensions.AddDefaultIdentity*> был введен в ASP.NET Core 2,1. Вызов `AddDefaultIdentity` аналогичен вызову следующего:
+<xref:Microsoft.Extensions.DependencyInjection.IdentityServiceCollectionUIExtensions.AddDefaultIdentity*> было введено в ASP.NET Core 2,1. Вызов `AddDefaultIdentity` аналогичен вызову следующего:
 
 * <xref:Microsoft.Extensions.DependencyInjection.IdentityServiceCollectionExtensions.AddIdentity*>
 * <xref:Microsoft.AspNetCore.Identity.IdentityBuilderUIExtensions.AddDefaultUI*>
@@ -245,7 +257,7 @@ ASP.NET Core удостоверение — это система членств
 
 # <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-* Выберите **файл** > **Новый** **проект**>.
+* Выберите **File** > **New** > **Project** ( Файл > Создать > Проект).
 * Выберите **Новое веб-приложение ASP.NET Core**. Присвойте проекту имя **APP1** , которое будет иметь то же пространство имен, что и загружаемый проект. Нажмите кнопку **ОК**.
 * Выберите ASP.NET Core **веб-приложение**, а затем щелкните **изменить проверку подлинности**.
 * Выберите **учетные записи отдельных пользователей** и нажмите кнопку **ОК**.
@@ -258,7 +270,7 @@ dotnet new webapp --auth Individual -o WebApp1
 
 ---
 
-Созданный проект предоставляет [ASP.NET Core удостоверение](xref:security/authentication/identity) в виде [библиотеки классов Razor](xref:razor-pages/ui-class). Библиотека классов Razor Identity предоставляет конечные точки с областью `Identity`. Пример:
+Созданный проект предоставляет [ASP.NET Core удостоверение](xref:security/authentication/identity) в виде [библиотеки классов Razor](xref:razor-pages/ui-class). Библиотека классов Razor Identity предоставляет конечные точки с областью `Identity`. Например:
 
 * /идентити/аккаунт/логин
 * /идентити/аккаунт/логаут
@@ -314,7 +326,7 @@ dotnet ef database update
 
 # <a name="net-core-clitabnetcore-cli"></a>[Интерфейс командной строки .NET Core](#tab/netcore-cli)
 
-Если вы создали проект с именем " **APP1**", выполните следующие команды. В противном случае используйте правильное пространство имен для `ApplicationDbContext`:
+Если вы создали проект с именем " **APP1**", выполните следующие команды. В противном случае используйте правильное пространство имен для `ApplicationDbContext`.
 
 ```dotnetcli
 dotnet add package Microsoft.VisualStudio.Web.CodeGeneration.Design
@@ -331,18 +343,18 @@ dotnet aspnet-codegenerator identity -dc WebApp1.Data.ApplicationDbContext --fil
 
 [!code-csharp[](identity/sample/WebApp1/Areas/Identity/Pages/Account/Register.cshtml.cs?name=snippet&highlight=7)]
 
-Если пользователь успешно создан, пользователь входит в систему с помощью вызова `_signInManager.SignInAsync`.
+Если пользователь создан, происходит вход пользователя путем вызова метода `_signInManager.SignInAsync`.
 
-**Примечание.** Инструкции по предотвращению немедленного входа при регистрации см. в статье [Подтверждение учетной записи](xref:security/authentication/accconfirm#prevent-login-at-registration) .
+**Примечание.** Раздел [подтверждение учетной записи](xref:security/authentication/accconfirm#prevent-login-at-registration) описывает, как предотвратить автоматический вход пользователя при регистрации.
 
-### <a name="log-in"></a>Войти
+### <a name="log-in"></a>Вход
 
 Форма входа отображается в следующих случаях:
 
 * Выбрана ссылка для **входа** .
 * Пользователь пытается получить доступ к странице с ограниченным доступом, которая не авторизована для доступа, **или** если система не прошла проверку подлинности.
 
-При отправке формы на странице входа вызывается действие `OnPostAsync`. `PasswordSignInAsync` вызывается для объекта `_signInManager` (предоставляется путем внедрения зависимостей).
+При отправке формы на странице входа вызывается действие `OnPostAsync`. `PasswordSignInAsync` вызывается для объекта `_signInManager` (предоставленного путем внедрения зависимостей).
 
 [!code-csharp[](identity/sample/WebApp1/Areas/Identity/Pages/Account/Login.cshtml.cs?name=snippet&highlight=10-11)]
 
@@ -356,7 +368,7 @@ dotnet aspnet-codegenerator identity -dc WebApp1.Data.ApplicationDbContext --fil
 
 [Сигнаутасинк](/dotnet/api/microsoft.aspnetcore.identity.signinmanager-1.signoutasync#Microsoft_AspNetCore_Identity_SignInManager_1_SignOutAsync) очищает утверждения пользователя, хранящиеся в файле cookie.
 
-POST указывается в параметре *pages/Shared/_LoginPartial. cshtml*:
+Параметр POST указан в *страницах Pages/Shared/_LoginPartial. cshtml*:
 
 [!code-csharp[](identity/sample/WebApp1/Pages/Shared/_LoginPartial.cshtml?highlight=16)]
 
@@ -366,7 +378,7 @@ POST указывается в параметре *pages/Shared/_LoginPartial. c
 
 [!code-csharp[](identity/sample/WebApp1/Pages/Privacy.cshtml.cs?highlight=7)]
 
-Если вы вошли в систему, выйдите из нее. Запустите приложение и щелкните ссылку **Конфиденциальность** . Вы будете перенаправлены на страницу входа.
+Если вы вошли в систему, выйдите из нее. Запустите приложение и щелкните ссылку **Конфиденциальность** . Вы перейдете на страницу входа.
 
 ### <a name="explore-identity"></a>Просмотр удостоверений
 
@@ -389,7 +401,7 @@ POST указывается в параметре *pages/Shared/_LoginPartial. c
 
 См. раздел [Конфигурация](#pw) для примера, который устанавливает минимальные требования к паролю.
 
-## <a name="next-steps"></a>Следующие шаги
+## <a name="next-steps"></a>Дальнейшие действия
 
 * [Настройка Identity](xref:security/authentication/identity-configuration)
 * <xref:security/authorization/secure-data>
