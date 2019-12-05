@@ -12,6 +12,8 @@
   uid: getting-started
 - name: Новые возможности
   items:
+    - name: "Новые возможности версии\_3.1"
+      uid: aspnetcore-3.1
     - name: Новые возможности версии 3.0
       uid: aspnetcore-3.0
     - name: "Новые возможности версии\_2.2"
@@ -1016,6 +1018,8 @@
       uid: security/cors
     - name: Совместное использование приложениями файлов cookie
       uid: security/cookie-sharing
+    - name: Файлы cookie SameSite
+      uid: security/samesite
     - name: Список надежных IP-адресов
       uid: security/ip-safelist
     - name: "Безопасность приложений\_— OWASP"
