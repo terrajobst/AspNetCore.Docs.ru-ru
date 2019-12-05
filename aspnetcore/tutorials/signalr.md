@@ -1,28 +1,30 @@
 ---
-title: Начало работы с SignalR ASP.NET Core
+title: Начало работы с SignalR ASP.NET Core
 author: bradygaster
-description: В этом руководстве создается приложение чата, которое использует SignalR для ASP.NET Core.
+description: В этом учебнике рассказывается как создать приложение чата, которое использует SignalR для ASP.NET Core.
 ms.author: bradyg
 ms.custom: mvc
-ms.date: 10/03/2019
+ms.date: 11/21/2019
+no-loc:
+- SignalR
 uid: tutorials/signalr
-ms.openlocfilehash: 078f1875d22a90f90575826e6f212205cd4b3d5b
-ms.sourcegitcommit: e71b6a85b0e94a600af607107e298f932924c849
+ms.openlocfilehash: 55ebdbfa4556deca74a6cdf0638307425cd1a01a
+ms.sourcegitcommit: 3e503ef510008e77be6dd82ee79213c9f7b97607
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72519176"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74317491"
 ---
-# <a name="tutorial-get-started-with-aspnet-core-signalr"></a>Учебник. Начало работы с SignalR ASP.NET Core
+# <a name="tutorial-get-started-with-aspnet-core-opno-locsignalr"></a>Учебник. Начало работы с SignalR ASP.NET Core
 
 ::: moniker range=">= aspnetcore-3.0"
 
-В этом руководстве описаны основы создания приложения в режиме реального времени с помощью SignalR. Вы научитесь:
+В этом учебнике описаны основы создания приложения, работающего в режиме реального времени, с помощью SignalR. Вы научитесь:
 
 > [!div class="checklist"]
 > * Создайте веб-проект.
-> * добавлять клиентскую библиотеку SignalR;
-> * создавать концентратор SignalR;
+> * добавлять клиентскую библиотеку SignalR.
+> * создавать концентратор SignalR.
 > * настраивать проект для использования SignalR;
 > * Добавлять код для отправки сообщений из любого клиента всем подключенным клиентам.
 
@@ -85,9 +87,9 @@ ms.locfileid: "72519176"
 
 ---
 
-## <a name="add-the-signalr-client-library"></a>Добавление клиентской библиотеки SignalR
+## <a name="add-the-opno-locsignalr-client-library"></a>Добавление клиентской библиотеки SignalR
 
-Библиотека сервера SignalR входит в состав общей платформы ASP.NET Core 3.0. Клиентская библиотека JavaScript не добавляется в проект автоматически. В рамках этого руководства вы будете использовать диспетчер библиотек (LibMan), чтобы получить клиентскую библиотеку из *unpkg*. unpkg — это сеть доставки содержимого, которая позволяет доставить любое содержимое из npm (диспетчера пакетов Node.js).
+Серверная библиотека SignalR входит в состав общей платформы ASP.NET Core 3.0. Клиентская библиотека JavaScript не добавляется в проект автоматически. В рамках этого руководства вы будете использовать диспетчер библиотек (LibMan), чтобы получить клиентскую библиотеку из *unpkg*. unpkg — это сеть доставки содержимого, которая позволяет доставить любое содержимое из npm (диспетчера пакетов Node.js).
 
 # <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio/)
 
@@ -113,7 +115,7 @@ ms.locfileid: "72519176"
   dotnet tool install -g Microsoft.Web.LibraryManager.Cli
   ```
 
-* Выполните приведенную ниже команду, чтобы получить клиентскую библиотеку SignalR с помощью LibMan. Возможно, придется подождать несколько секунд, прежде чем появятся выходные данные.
+* Выполните команду ниже, чтобы получить клиентскую библиотеку SignalR, используя LibMan. Возможно, придется подождать несколько секунд, прежде чем появятся выходные данные.
 
   ```console
   libman install @microsoft/signalr@latest -p unpkg -d wwwroot/js/signalr --files dist/browser/signalr.js --files dist/browser/signalr.min.js
@@ -142,7 +144,7 @@ ms.locfileid: "72519176"
 
 * Перейдите в папку проекта (где расположен файл *SignalRChat.csproj*).
 
-* Выполните приведенную ниже команду, чтобы получить клиентскую библиотеку SignalR с помощью LibMan.
+* Выполните команду ниже, чтобы получить клиентскую библиотеку SignalR, используя LibMan.
 
   ```console
   libman install @microsoft/signalr@latest -p unpkg -d wwwroot/js/signalr --files dist/browser/signalr.js --files dist/browser/signalr.min.js
@@ -163,7 +165,7 @@ ms.locfileid: "72519176"
 
 ---
 
-## <a name="create-a-signalr-hub"></a>Создание концентратора SignalR
+## <a name="create-a-opno-locsignalr-hub"></a>Создание концентратора SignalR
 
 *hub* — это класс, который служит в качестве конвейера высокого уровня для обработки взаимодействия между клиентом и сервером.
 
@@ -173,13 +175,13 @@ ms.locfileid: "72519176"
 
   [!code-csharp[ChatHub](signalr/sample-snapshot/3.x/ChatHub.cs)]
 
-  Класс `ChatHub` наследует от класса `Hub` SignalR. Класс `Hub` управляет подключениями, группами и обменом сообщениями.
+  Класс `ChatHub` наследуется от класса SignalR `Hub`. Класс `Hub` управляет подключениями, группами и обменом сообщениями.
 
   Метод `SendMessage` может вызываться подключенным клиентом, чтобы отправить сообщение всем клиентам. Далее в этом учебника показан клиентский код JavaScript, который вызывает метод. Код SignalR является асинхронным, поэтому обеспечивает максимальную масштабируемость.
 
-## <a name="configure-signalr"></a>Настройка SignalR
+## <a name="configure-opno-locsignalr"></a>Настройка SignalR
 
-Сервер SignalR необходимо настроить таким образом, чтобы он передавал запросы SignalR в SignalR.
+Сервер SignalR должен быть настроен для передачи запросов SignalR к SignalR.
 
 * Добавьте следующий выделенный код в файл *Startup.cs*.
 
@@ -187,7 +189,7 @@ ms.locfileid: "72519176"
 
   В результате SignalR будет добавлен в системы внедрения зависимостей и маршрутизации ASP.NET Core.
 
-## <a name="add-signalr-client-code"></a>Добавление кода клиента SignalR
+## <a name="add-opno-locsignalr-client-code"></a>Добавление клиентского кода SignalR
 
 * Замените содержимое в файле *Pages\Index.cshtml* следующим кодом:
 
@@ -247,26 +249,19 @@ ms.locfileid: "72519176"
 >   dotnet dev-certs https --trust
 >   ```
 
-## <a name="next-steps"></a>Следующие шаги
-
-Дополнительные сведения о SignalR см. во введении:
-
-> [!div class="nextstepaction"]
-> [Введение в ASP.NET Core SignalR](xref:signalr/introduction)
-
 ::: moniker-end
 
 ::: moniker range="< aspnetcore-3.0"
 
-В этом руководстве описаны основы создания приложения в режиме реального времени с помощью SignalR. Вы научитесь:   
+В этом учебнике описаны основы создания приложения, работающего в режиме реального времени, с помощью SignalR. Вы научитесь: 
 
 > [!div class="checklist"]  
 > * Создайте веб-проект.   
-> * добавлять клиентскую библиотеку SignalR; 
-> * создавать концентратор SignalR;   
-> * настраивать проект для использования SignalR;   
+> * добавлять клиентскую библиотеку SignalR.   
+> * создавать концентратор SignalR. 
+> * настраивать проект для использования SignalR; 
 > * Добавлять код для отправки сообщений из любого клиента всем подключенным клиентам.  
-В итоге вы получите работающее приложение чата: ![Пример приложения SignalR](signalr/_static/2.x/signalr-get-started-finished.png) 
+В итоге вы получите приложение для работы с чатом: ![Пример приложения SignalR](signalr/_static/2.x/signalr-get-started-finished.png).   
 
 ## <a name="prerequisites"></a>Предварительные требования    
 
@@ -323,9 +318,9 @@ ms.locfileid: "72519176"
 
 --- 
 
-## <a name="add-the-signalr-client-library"></a>Добавление клиентской библиотеки SignalR   
+## <a name="add-the-opno-locsignalr-client-library"></a>Добавление клиентской библиотеки SignalR 
 
-Библиотека сервера SignalR входит в состав метапакета `Microsoft.AspNetCore.App`. Клиентская библиотека JavaScript не добавляется в проект автоматически. В рамках этого руководства вы будете использовать диспетчер библиотек (LibMan), чтобы получить клиентскую библиотеку из *unpkg*. unpkg — это сеть доставки содержимого, которая позволяет доставить любое содержимое из npm (диспетчера пакетов Node.js).    
+Библиотека сервера SignalR входит в состав метапакета `Microsoft.AspNetCore.App`. Клиентская библиотека JavaScript не добавляется в проект автоматически. В рамках этого руководства вы будете использовать диспетчер библиотек (LibMan), чтобы получить клиентскую библиотеку из *unpkg*. unpkg — это сеть доставки содержимого, которая позволяет доставить любое содержимое из npm (диспетчера пакетов Node.js).  
 
 # <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio/)  
 
@@ -333,7 +328,7 @@ ms.locfileid: "72519176"
 
 * В диалоговом окне **Add Client-Side Library** (Добавить клиентскую библиотеку) для параметра **Поставщик** выберите **unpkg**. 
 
-* В поле **Библиотека** введите `@aspnet/signalr@1` и выберите последнюю версию, но не предварительную. 
+* В поле **Библиотека** введите `@microsoft/signalr@3` и выберите последнюю версию, но не предварительную.  
 
   ![Диалоговое окно добавления клиентской библиотеки — выбор библиотеки](signalr/_static/2.x/libman1.png)   
 
@@ -353,10 +348,10 @@ ms.locfileid: "72519176"
   dotnet tool install -g Microsoft.Web.LibraryManager.Cli   
   ```   
 
-* Выполните приведенную ниже команду, чтобы получить клиентскую библиотеку SignalR с помощью LibMan. Возможно, придется подождать несколько секунд, прежде чем появятся выходные данные.   
+* Выполните команду ниже, чтобы получить клиентскую библиотеку SignalR, используя LibMan. Возможно, придется подождать несколько секунд, прежде чем появятся выходные данные. 
 
   ```console    
-  libman install @aspnet/signalr -p unpkg -d wwwroot/lib/signalr --files dist/browser/signalr.js --files dist/browser/signalr.min.js    
+  libman install @microsoft/signalr -p unpkg -d wwwroot/lib/signalr --files dist/browser/signalr.js --files dist/browser/signalr.min.js 
   ```   
 
   В параметрах указываются следующие свойства: 
@@ -369,7 +364,7 @@ ms.locfileid: "72519176"
   ```console    
   wwwroot/lib/signalr/dist/browser/signalr.js written to disk   
   wwwroot/lib/signalr/dist/browser/signalr.min.js written to disk   
-  Installed library "@aspnet/signalr@1.0.3" to "wwwroot/lib/signalr"    
+  Installed library "@microsoft/signalr@3.0.1" to "wwwroot/lib/signalr" 
   ```   
 
 # <a name="visual-studio-for-mactabvisual-studio-mac"></a>[Visual Studio для Mac](#tab/visual-studio-mac)   
@@ -382,10 +377,10 @@ ms.locfileid: "72519176"
 
 * Перейдите в папку проекта (где расположен файл *SignalRChat.csproj*). 
 
-* Выполните приведенную ниже команду, чтобы получить клиентскую библиотеку SignalR с помощью LibMan.  
+* Выполните команду ниже, чтобы получить клиентскую библиотеку SignalR, используя LibMan.    
 
   ```console    
-  libman install @aspnet/signalr -p unpkg -d wwwroot/lib/signalr --files dist/browser/signalr.js --files dist/browser/signalr.min.js    
+  libman install @microsoft/signalr -p unpkg -d wwwroot/lib/signalr --files dist/browser/signalr.js --files dist/browser/signalr.min.js 
   ```   
 
   В параметрах указываются следующие свойства: 
@@ -398,12 +393,12 @@ ms.locfileid: "72519176"
   ```console    
   wwwroot/lib/signalr/dist/browser/signalr.js written to disk   
   wwwroot/lib/signalr/dist/browser/signalr.min.js written to disk   
-  Installed library "@aspnet/signalr@1.0.3" to "wwwroot/lib/signalr"    
+  Installed library "@microsoft/signalr@3.x.x" to "wwwroot/lib/signalr" 
   ```   
 
 --- 
 
-## <a name="create-a-signalr-hub"></a>Создание концентратора SignalR 
+## <a name="create-a-opno-locsignalr-hub"></a>Создание концентратора SignalR   
 
 *hub* — это класс, который служит в качестве конвейера высокого уровня для обработки взаимодействия между клиентом и сервером.   
 
@@ -413,21 +408,21 @@ ms.locfileid: "72519176"
 
   [!code-csharp[Startup](signalr/sample-snapshot/2.x/ChatHub.cs)]   
 
-  Класс `ChatHub` наследует от класса `Hub` SignalR. Класс `Hub` управляет подключениями, группами и обменом сообщениями.    
+  Класс `ChatHub` наследуется от класса SignalR `Hub`. Класс `Hub` управляет подключениями, группами и обменом сообщениями.  
 
-  Метод `SendMessage` может вызываться подключенным клиентом, чтобы отправить сообщение всем клиентам. Далее в этом учебника показан клиентский код JavaScript, который вызывает метод. Код SignalR является асинхронным, поэтому обеспечивает максимальную масштабируемость.  
+  Метод `SendMessage` может вызываться подключенным клиентом, чтобы отправить сообщение всем клиентам. Далее в этом учебника показан клиентский код JavaScript, который вызывает метод. Код SignalR является асинхронным, поэтому обеспечивает максимальную масштабируемость.    
 
-## <a name="configure-signalr"></a>Настройка SignalR    
+## <a name="configure-opno-locsignalr"></a>Настройка SignalR  
 
-Сервер SignalR необходимо настроить таким образом, чтобы он передавал запросы SignalR в SignalR.  
+Сервер SignalR должен быть настроен для передачи запросов SignalR к SignalR.    
 
 * Добавьте следующий выделенный код в файл *Startup.cs*.  
 
   [!code-csharp[Startup](signalr/sample-snapshot/2.x/Startup.cs?highlight=7,33,52-55)]  
 
-  В результате SignalR будет добавлен в систему внедрения зависимостей ASP.NET Core и конвейер ПО промежуточного слоя.    
+  В результате SignalR будет добавлен в систему внедрения зависимостей ASP.NET Core и конвейер ПО промежуточного слоя.  
 
-## <a name="add-signalr-client-code"></a>Добавление кода клиента SignalR  
+## <a name="add-opno-locsignalr-client-code"></a>Добавление клиентского кода SignalR    
 
 * Замените содержимое в файле *Pages\Index.cshtml* следующим кодом:  
 
@@ -436,8 +431,8 @@ ms.locfileid: "72519176"
   Предыдущий код:   
 
   * Создает текстовые поля для имени и текста сообщения и кнопку отправки.  
-  * Создает список с `id="messagesList"` для отображения сообщений, полученных от концентратора SignalR. 
-  * Содержит ссылки на скрипты для SignalR и код приложения *chat.js*, который создается в следующем шаге.  
+  * Создает список с `id="messagesList"` для отображения сообщений, полученных от концентратора SignalR.   
+  * Содержит ссылки на скрипты для SignalR и код приложения *chat.js*, который создается в следующем шаге.    
 
 * В папке *wwwroot/js* создайте файл *chat.js* со следующим кодом:  
 
@@ -459,42 +454,28 @@ ms.locfileid: "72519176"
 
 * В интегрированном терминале выполните следующую команду:    
 
-  ```dotnetcli  
-  dotnet run -p SignalRChat.csproj  
-  ```   
+  ```dotnetcli
+  dotnet run -p SignalRChat.csproj
+  ```
 
-# <a name="visual-studio-for-mactabvisual-studio-mac"></a>[Visual Studio для Mac](#tab/visual-studio-mac)   
+# <a name="visual-studio-for-mactabvisual-studio-mac"></a>[Visual Studio для Mac](#tab/visual-studio-mac)
 
-* В меню выберите **Запуск > Запуск без отладки**.  
+* В меню выберите **Запуск > Запуск без отладки**.
 
---- 
+---
 
-* Скопируйте URL-адрес из адресной строки, откройте другой экземпляр или вкладку браузера и вставьте URL-адрес в адресную строку.    
+* Скопируйте URL-адрес из адресной строки, откройте другой экземпляр или вкладку браузера и вставьте URL-адрес в адресную строку.
 
 * Выберите любой браузер, введите имя и сообщение и нажмите кнопку **Отправить сообщение**.  
 
   Имя и сообщение отображаются на обеих страницах мгновенно.   
 
-  ![Пример приложения SignalR](signalr/_static/2.x/signalr-get-started-finished.png)   
+  ![Пример приложения SignalR](signalr/_static/2.x/signalr-get-started-finished.png) 
 
 > [!TIP]    
 > Если приложение не работает, откройте средства разработчика для браузера (F12) и перейдите в консоль. Вы можете увидеть ошибки, связанные с вашим кодом HTML и JavaScript. Предположим, вы поместили *signalr.js* не в ту папку, которую указали. В этом случае ссылка на этот файл не будет работать, и вы увидите сообщение об ошибке 404 в консоли.   
 > ![ошибка: signalr.js не найден](signalr/_static/2.x/f12-console.png)    
 ## <a name="additional-resources"></a>Дополнительные ресурсы 
-* [Версия руководства на YouTube](https://www.youtube.com/watch?v=iKlVmu-r0JQ)   
+* [Версия учебника на YouTube](https://www.youtube.com/watch?v=iKlVmu-r0JQ)   
 
-## <a name="next-steps"></a>Следующие шаги   
-
-В этом руководстве вы узнали, как:   
-
-> [!div class="checklist"]  
-> * создавать проект веб-приложения;   
-> * добавлять клиентскую библиотеку SignalR; 
-> * создавать концентратор SignalR;   
-> * настраивать проект для использования SignalR;   
-> * добавлять код, использующий концентратор для отправки сообщений из любого клиента всем подключенным клиентам.   
-Дополнительные сведения о SignalR см. во введении:  
-> [!div class="nextstepaction"] 
-> [Введение в ASP.NET Core SignalR](xref:signalr/introduction) 
 ::: moniker-end
-
