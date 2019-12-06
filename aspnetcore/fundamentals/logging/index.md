@@ -5,14 +5,14 @@ description: Узнайте, как использовать платформу 
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 11/19/2019
+ms.date: 12/04/2019
 uid: fundamentals/logging/index
-ms.openlocfilehash: 23ce2d09d2ce9f415ce71bcd7c21c29cb2a040fc
-ms.sourcegitcommit: 918d7000b48a2892750264b852bad9e96a1165a7
+ms.openlocfilehash: 49d598330948c5f4a137c534094e14ed5e01e27c
+ms.sourcegitcommit: f4cd3828e26e6d549ba8d0c36a17be35ad9e5a51
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74550359"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74825491"
 ---
 # <a name="logging-in-net-core-and-aspnet-core"></a>Ведение журнала в .NET Core и ASP.NET Core
 
@@ -48,10 +48,10 @@ ms.locfileid: "74550359"
 
 Шаблоны проектов ASP.NET Core по умолчанию вызывают метод <xref:Microsoft.Extensions.Hosting.Host.CreateDefaultBuilder%2A>, который добавляет следующие поставщики ведения журналов:
 
-* Консоль
-* Отладка
-* EventSource
-* Журнал событий (только при запуске в Windows)
+* [Консоль](#console-provider)
+* [Отладка](#debug-provider)
+* [EventSource](#event-source-provider)
+* [Журнал событий](#windows-eventlog-provider) (только при запуске в Windows)
 
 Поставщики по умолчанию можно заменить собственными поставщиками. Вызовите <xref:Microsoft.Extensions.Logging.LoggingBuilderExtensions.ClearProviders%2A> и добавьте требуемые поставщики.
 
@@ -129,7 +129,7 @@ ms.locfileid: "74550359"
 
 Для записи журналов в классе `Program` приложения ASP.NET Core получите экземпляр `ILogger` путем внедрения зависимостей после создания узла:
 
-[!code-csharp[](index/samples/3.x/TodoApiSample/Program.cs?name=snippet_LogFromMain&highlight=9,10)]
+[!code-csharp[](index/samples_snapshot/3.x/TodoApiSample/Program.cs?highlight=9,10)]
 
 Ведение журнала во время создания узла не поддерживается напрямую. Однако можно использовать отдельное средство ведения журнала. В следующем примере для входа в `CreateHostBuilder` используется средство ведения журнала [Serilog](https://serilog.net/). `AddSerilog` использует статическую конфигурацию, указанную в `Log.Logger`.
 
@@ -1051,7 +1051,11 @@ dotnet tool install --global dotnet-trace
 logging.AddEventLog();
 ```
 
-[Перегрузки AddEventLog](xref:Microsoft.Extensions.Logging.EventLoggerFactoryExtensions) позволяют передавать <xref:Microsoft.Extensions.Logging.EventLog.EventLogSettings>.
+[Перегрузки AddEventLog](xref:Microsoft.Extensions.Logging.EventLoggerFactoryExtensions) позволяют передавать <xref:Microsoft.Extensions.Logging.EventLog.EventLogSettings>. Если `null` или не указан, используются следующие параметры по умолчанию:
+
+* `LogName` &ndash; "Приложение"
+* `SourceName` &ndash; "Среда выполнения .NET"
+* `MachineName` &ndash; (локальный компьютер)
 
 ### <a name="tracesource-provider"></a>Поставщик TraceSource
 

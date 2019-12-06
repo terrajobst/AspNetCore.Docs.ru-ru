@@ -3,14 +3,14 @@ title: Миграция с ASP.NET на ASP.NET Core
 author: isaac2004
 description: Здесь вы найдете указания по миграции существующих приложений MVC ASP.NET или веб-API на ASP.NET Core.web
 ms.author: scaddie
-ms.date: 12/11/2018
+ms.date: 10/18/2019
 uid: migration/proper-to-2x/index
-ms.openlocfilehash: 9c97b9c0f13a265ab5c90225dcd5a581a1272701
-ms.sourcegitcommit: 8516b586541e6ba402e57228e356639b85dfb2b9
+ms.openlocfilehash: 1564b644b774939c3c242a41812851917e96d2b2
+ms.sourcegitcommit: a166291c6708f5949c417874108332856b53b6a9
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67815467"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "74803348"
 ---
 # <a name="migrate-from-aspnet-to-aspnet-core"></a>Миграция с ASP.NET на ASP.NET Core
 
@@ -154,6 +154,10 @@ services.Configure<AppConfiguration>(Configuration.GetSection("AppConfiguration"
 
 > [!NOTE]
 > Более подробное руководство по обработке статических файлов в ASP.NET Core см. в статье [Статические файлы](xref:fundamentals/static-files).
+
+## <a name="multi-value-cookies"></a>Файлы cookie с несколькими значениями
+
+[Файлы cookie с несколькими значениями](xref:System.Web.HttpCookie.Values) не поддерживаются в ASP.NET Core. Создайте один файл cookie для каждого значения.
 
 ## <a name="additional-resources"></a>Дополнительные ресурсы
 
