@@ -350,8 +350,6 @@
               uid: client-side/libman/libman-vs
         - name: Grunt
           uid: client-side/using-grunt
-        - name: Bower
-          uid: client-side/bower
         - name: Объединение и минификация
           uid: client-side/bundling-and-minification
         - name: Привязывание к браузеру
@@ -557,6 +555,13 @@
     - name: Ведение журнала и диагностика
       displayName: signalr
       uid: signalr/diagnostics
+    - name: Характеристики
+      displayName: 'signalr, specs'
+      items:
+        - name: Протокол концентратора
+          href: 'https://github.com/aspnet/AspNetCore/blob/master/src/SignalR/docs/specs/HubProtocol.md'
+        - name: Транспортные протоколы
+          href: 'https://github.com/aspnet/AspNetCore/blob/master/src/SignalR/docs/specs/TransportProtocols.md'
 - name: Приложения удаленного вызова процедур
   items:
     - name: Введение в службы gRPC
