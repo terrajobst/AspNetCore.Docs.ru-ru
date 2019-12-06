@@ -5,16 +5,16 @@ description: Узнайте, как использовать проверку п
 monikerRange: '>= aspnetcore-2.1'
 ms.author: bradyg
 ms.custom: mvc
-ms.date: 11/12/2019
+ms.date: 12/05/2019
 no-loc:
 - SignalR
 uid: signalr/authn-and-authz
-ms.openlocfilehash: 5a1e15ef46a3f89af3fbd3d505e7bd340c46e672
-ms.sourcegitcommit: 3fc3020961e1289ee5bf5f3c365ce8304d8ebf19
+ms.openlocfilehash: 091cc9b2adc1f6a8fac79519884695d1c1725d2a
+ms.sourcegitcommit: c0b72b344dadea835b0e7943c52463f13ab98dd1
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73963827"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74880421"
 ---
 # <a name="authentication-and-authorization-in-aspnet-core-opno-locsignalr"></a>Проверка подлинности и авторизация в ASP.NET Core SignalR
 
@@ -24,7 +24,7 @@ ms.locfileid: "73963827"
 
 ## <a name="authenticate-users-connecting-to-a-opno-locsignalr-hub"></a>Проверка подлинности пользователей, подключающихся к концентратору SignalR
 
-SignalR можно использовать с [проверкой подлинности ASP.NET Core](xref:security/authentication/identity) , чтобы связать пользователя с каждым соединением. В центре данные проверки подлинности можно получить из свойства [`HubConnectionContext.User`](/dotnet/api/microsoft.aspnetcore.signalr.hubconnectioncontext.user) . Проверка подлинности позволяет концентратору вызывать методы для всех соединений, связанных с пользователем. Дополнительные сведения см. [в разделе Управление пользователями и группами в SignalR](xref:signalr/groups). Несколько подключений могут быть связаны с одним пользователем.
+SignalR можно использовать с [проверкой подлинности ASP.NET Core](xref:security/authentication/identity) , чтобы связать пользователя с каждым соединением. В центре данные проверки подлинности можно получить из свойства [хубконнектионконтекст. User](/dotnet/api/microsoft.aspnetcore.signalr.hubconnectioncontext.user) . Проверка подлинности позволяет концентратору вызывать методы для всех соединений, связанных с пользователем. Дополнительные сведения см. [в разделе Управление пользователями и группами в SignalR](xref:signalr/groups). Несколько подключений могут быть связаны с одним пользователем.
 
 Ниже приведен пример `Startup.Configure`, в котором используется проверка подлинности SignalR и ASP.NET Core:
 
@@ -129,7 +129,7 @@ var connection = new HubConnectionBuilder()
 
 [!code-csharp[Name based provider](authn-and-authz/sample/nameuseridprovider.cs?name=NameUserIdProvider)]
 
-Вместо `ClaimTypes.Name` можно использовать любое значение из `User` (например, идентификатор SID Windows и т. д.).
+Вместо `ClaimTypes.Name`можно использовать любое значение из `User` (например, идентификатор SID Windows и т. д.).
 
 > [!NOTE]
 > Выбранное значение должно быть уникальным для всех пользователей в системе. В противном случае сообщение, предназначенное для одного пользователя, может завершить работу другого пользователя.
@@ -266,7 +266,7 @@ public class DomainRestrictedRequirement :
 }
 ```
 
-В `Startup.ConfigureServices` добавьте новую политику, предоставив настраиваемое требование к `DomainRestrictedRequirement` в качестве параметра для создания политики `DomainRestricted`.
+В `Startup.ConfigureServices`добавьте новую политику, предоставив настраиваемое требование к `DomainRestrictedRequirement` в качестве параметра для создания политики `DomainRestricted`.
 
 ```csharp
 public void ConfigureServices(IServiceCollection services)

@@ -5,16 +5,16 @@ description: Узнайте, как Blazor приложения могут вн�
 monikerRange: '>= aspnetcore-3.0'
 ms.author: riande
 ms.custom: mvc
-ms.date: 11/27/2019
+ms.date: 12/05/2019
 no-loc:
 - Blazor
 uid: blazor/dependency-injection
-ms.openlocfilehash: 165cfa7a98cdd523c25d5c4bfc8e2c9d0ef1ad22
-ms.sourcegitcommit: 169ea5116de729c803685725d96450a270bc55b7
+ms.openlocfilehash: 17dd0f927064ae7c2b1e3e439fd93e2cb220a5a4
+ms.sourcegitcommit: c0b72b344dadea835b0e7943c52463f13ab98dd1
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74733821"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74879780"
 ---
 # <a name="aspnet-core-opno-locblazor-dependency-injection"></a>ASP.NET Core внедрения зависимостей Blazor
 
@@ -86,7 +86,7 @@ public void ConfigureServices(IServiceCollection services)
 
 [!code-cshtml[](dependency-injection/samples_snapshot/3.x/CustomerList.razor?highlight=2-3,23)]
 
-На внутреннем уровне создаваемое свойство (`DataRepository`) дополнено атрибутом `InjectAttribute`. Как правило, этот атрибут не используется напрямую. Если базовый класс необходим для компонентов, а для базового класса также требуются обязательные свойства, добавьте `InjectAttribute`вручную:
+На внутреннем уровне создаваемое свойство (`DataRepository`) использует атрибут `InjectAttribute`. Как правило, этот атрибут не используется напрямую. Если базовый класс необходим для компонентов, а для базового класса также требуются обязательные свойства, добавьте `InjectAttribute`вручную:
 
 ```csharp
 public class ComponentBase : IComponent

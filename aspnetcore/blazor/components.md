@@ -9,12 +9,12 @@ ms.date: 11/27/2019
 no-loc:
 - Blazor
 uid: blazor/components
-ms.openlocfilehash: 19636b0f10e71133eddece918b1bb9e2bc25a226
-ms.sourcegitcommit: 169ea5116de729c803685725d96450a270bc55b7
+ms.openlocfilehash: 9cdbae0bde8f6c44dc8b680dccbf9c8f96043c7f
+ms.sourcegitcommit: c0b72b344dadea835b0e7943c52463f13ab98dd1
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74733847"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74879697"
 ---
 # <a name="create-and-use-aspnet-core-razor-components"></a>Создание и использование компонентов ASP.NET Core Razor
 
@@ -171,7 +171,7 @@ Blazor приложения создаются с помощью *компоне
 
 ## <a name="attribute-splatting-and-arbitrary-parameters"></a>Атрибуты Сплаттинг и произвольные параметры
 
-Компоненты могут записывать и отображать дополнительные атрибуты в дополнение к объявленным параметрам компонента. Дополнительные атрибуты можно записать в словарь, а затем *сплаттед* на элемент при подготовке компонента к просмотру с помощью директивы [@attributes](xref:mvc/views/razor#attributes) Razor. Этот сценарий полезен при определении компонента, который создает элемент разметки, поддерживающий разнообразные настройки. Например, может быть утомительно определять атрибуты отдельно для `<input>`, который поддерживает много параметров.
+Компоненты могут записывать и отображать дополнительные атрибуты в дополнение к объявленным параметрам компонента. Дополнительные атрибуты можно записать в словарь, а затем *сплаттед* на элемент при подготовке компонента к просмотру с помощью директивы [`@attributes`](xref:mvc/views/razor#attributes) Razor. Этот сценарий полезен при определении компонента, который создает элемент разметки, поддерживающий разнообразные настройки. Например, может быть утомительно определять атрибуты отдельно для `<input>`, который поддерживает много параметров.
 
 В следующем примере первый элемент `<input>` (`id="useIndividualParams"`) использует параметры отдельных компонентов, а второй элемент `<input>` (`id="useAttributesDict"`) использует атрибут Сплаттинг:
 
@@ -287,7 +287,7 @@ public IDictionary<string, object> AdditionalAttributes { get; set; }
 
 ## <a name="data-binding"></a>привязка данных,
 
-Привязка данных как к компонентам, так и к элементам DOM осуществляется с помощью атрибута [@bind](xref:mvc/views/razor#bind) . В следующем примере свойство `CurrentValue` привязывается к значению текстового поля:
+Привязка данных как к компонентам, так и к элементам DOM осуществляется с помощью атрибута [`@bind`](xref:mvc/views/razor#bind) . В следующем примере свойство `CurrentValue` привязывается к значению текстового поля:
 
 ```cshtml
 <input @bind="CurrentValue" />
@@ -315,7 +315,7 @@ public IDictionary<string, object> AdditionalAttributes { get; set; }
 
 При подготовке к просмотру компонента `value` входного элемента берется из свойства `CurrentValue`. Когда пользователь вводит данные в текстовое поле и изменяет фокус элемента, запускается событие `onchange`, а свойству `CurrentValue` присваивается измененное значение. На практике создание кода более сложно, так как `@bind` обрабатывает случаи, когда выполняются преобразования типов. В принципе `@bind` связывает текущее значение выражения с атрибутом `value` и обрабатывает изменения с помощью зарегистрированного обработчика.
 
-Помимо обработки `onchange`ных событий с помощью синтаксиса `@bind`, свойство или поле можно привязать с помощью других событий, указав атрибут [@bind-value](xref:mvc/views/razor#bind) с параметром `event` ([@bind-value:event](xref:mvc/views/razor#bind)). В следующем примере выполняется привязка свойства `CurrentValue` для события `oninput`.
+Помимо обработки `onchange`ных событий с помощью синтаксиса `@bind`, свойство или поле можно привязать с помощью других событий, указав атрибут [`@bind-value`](xref:mvc/views/razor#bind) с параметром `event` ([`@bind-value:event`](xref:mvc/views/razor#bind)). В следующем примере выполняется привязка свойства `CurrentValue` для события `oninput`.
 
 ```cshtml
 <input @bind-value="CurrentValue" @bind-value:event="oninput" />
@@ -380,11 +380,11 @@ public IDictionary<string, object> AdditionalAttributes { get; set; }
 
 `@bind` поддерживает параметр `@bind:culture`, чтобы предоставить <xref:System.Globalization.CultureInfo?displayProperty=fullName> для синтаксического анализа и форматирования значения. Указание языка и региональных параметров не рекомендуется при использовании типов полей `date` и `number`. `date` и `number` имеют встроенную поддержку Blazor, которая предоставляет требуемый язык и региональные параметры.
 
-Сведения о том, как задать язык и региональные параметры пользователя, см. в разделе [Локализация](#localization) .
+Сведения о том, как задать язык и региональные параметры пользователя, см. в разделе [локализация](#localization).
 
 **Строки формата**
 
-Привязка данных работает со строками формата <xref:System.DateTime> с помощью [@bind:format](xref:mvc/views/razor#bind). Другие выражения форматирования, такие как денежные или числовые форматы, в настоящее время недоступны.
+Привязка данных работает со строками формата <xref:System.DateTime> с помощью [`@bind:format`](xref:mvc/views/razor#bind). Другие выражения форматирования, такие как денежные или числовые форматы, в настоящее время недоступны.
 
 ```cshtml
 <input @bind="StartDate" @bind:format="yyyy-MM-dd" />
@@ -498,7 +498,7 @@ public IDictionary<string, object> AdditionalAttributes { get; set; }
 
 ## <a name="event-handling"></a>Обработка событий
 
-Компоненты Razor предоставляют функции обработки событий. Для атрибута HTML-элемента с именем `on{EVENT}` (например, `onclick` и `onsubmit`) со значением, вводимым с помощью делегата, компоненты Razor рассматривают значение атрибута как обработчик событий. Имя атрибута всегда отформатировано [@on{Event}](xref:mvc/views/razor#onevent).
+Компоненты Razor предоставляют функции обработки событий. Для атрибута HTML-элемента с именем `on{EVENT}` (например, `onclick` и `onsubmit`) со значением, вводимым с помощью делегата, компоненты Razor рассматривают значение атрибута как обработчик событий. Имя атрибута всегда имеет формат [`@on{EVENT}`](xref:mvc/views/razor#onevent).
 
 Следующий код вызывает метод `UpdateHeading`, когда кнопка выбрана в пользовательском интерфейсе:
 
@@ -554,15 +554,15 @@ public IDictionary<string, object> AdditionalAttributes { get; set; }
 | Event            | Класс                | События DOM и заметки |
 | ---------------- | -------------------- | -------------------- |
 | буфер обмена        | `ClipboardEventArgs` | `oncut`значение `oncopy`значение `onpaste` |
-| Переместить             | `DragEventArgs`      | `ondrag`, `ondragstart`, `ondragenter`, `ondragleave`, `ondragover`, `ondrop`, `ondragend`<br><br>`DataTransfer` и `DataTransferItem` содержать перетаскиваемые данные элемента. |
+| Перетаскивание             | `DragEventArgs`      | `ondrag`, `ondragstart`, `ondragenter`, `ondragleave`, `ondragover`, `ondrop`, `ondragend`<br><br>`DataTransfer` и `DataTransferItem` содержать перетаскиваемые данные элемента. |
 | Ошибка .            | `ErrorEventArgs`     | `onerror` |
-| Event            | `EventArgs`          | *Общие*<br>`onactivate`, `onbeforeactivate`, `onbeforedeactivate`, `ondeactivate`, `onended`, `onfullscreenchange`, `onfullscreenerror`, `onloadeddata`, `onloadedmetadata`, `onpointerlockchange`, `onpointerlockerror`, `onreadystatechange`, `onscroll`<br><br>*Буфер обмена*<br>`onbeforecut`значение `onbeforecopy`значение `onbeforepaste`<br><br>*Ввод*<br>`oninvalid`, `onreset`, `onselect`, `onselectionchange`, `onselectstart`, `onsubmit`<br><br>*Носител*<br>`oncanplay`, `oncanplaythrough`, `oncuechange`, `ondurationchange`, `onemptied`, `onpause`, `onplay`, `onplaying`, `onratechange`, `onseeked`, `onseeking`, `onstalled`, `onstop`, `onsuspend`, `ontimeupdate`, `onvolumechange`, `onwaiting` |
+| Event            | `EventArgs`          | *Общие*<br>`onactivate`, `onbeforeactivate`, `onbeforedeactivate`, `ondeactivate`, `onended`, `onfullscreenchange`, `onfullscreenerror`, `onloadeddata`, `onloadedmetadata`, `onpointerlockchange`, `onpointerlockerror`, `onreadystatechange`, `onscroll`<br><br>*Буфер обмена*<br>`onbeforecut`значение `onbeforecopy`значение `onbeforepaste`<br><br>*Ввод*<br>`oninvalid`, `onreset`, `onselect`, `onselectionchange`, `onselectstart`, `onsubmit`<br><br>*Носитель*<br>`oncanplay`, `oncanplaythrough`, `oncuechange`, `ondurationchange`, `onemptied`, `onpause`, `onplay`, `onplaying`, `onratechange`, `onseeked`, `onseeking`, `onstalled`, `onstop`, `onsuspend`, `ontimeupdate`, `onvolumechange`, `onwaiting` |
 | Фокус            | `FocusEventArgs`     | `onfocus`, `onblur`, `onfocusin`, `onfocusout`<br><br>Не включает поддержку для `relatedTarget`. |
 | Input            | `ChangeEventArgs`    | `onchange`, `oninput` |
 | Клавиатура         | `KeyboardEventArgs`  | `onkeydown`значение `onkeypress`значение `onkeyup` |
 | Мышь            | `MouseEventArgs`     | `onclick`, `oncontextmenu`, `ondblclick`, `onmousedown`, `onmouseup`, `onmouseover`, `onmousemove`, `onmouseout` |
 | Указатель мыши    | `PointerEventArgs`   | `onpointerdown`, `onpointerup`, `onpointercancel`, `onpointermove`, `onpointerover`, `onpointerout`, `onpointerenter`, `onpointerleave`, `ongotpointercapture`, `onlostpointercapture` |
-| Колесо мыши      | `WheelEventArgs`     | `onwheel`, `onmousewheel` |
+| Колесико мыши      | `WheelEventArgs`     | `onwheel`, `onmousewheel` |
 | Ход выполнения         | `ProgressEventArgs`  | `onabort`, `onload`, `onloadend`, `onloadstart`, `onprogress`, `ontimeout` |
 | Сенсорные технологии            | `TouchEventArgs`     | `ontouchstart`, `ontouchend`, `ontouchmove`, `ontouchenter`, `ontouchleave`, `ontouchcancel`<br><br>`TouchPoint` представляет одну точку контакта на устройстве с сенсорным вводом. |
 
@@ -651,7 +651,7 @@ await callback.InvokeAsync(arg);
 
 ### <a name="prevent-default-actions"></a>Запретить действия по умолчанию
 
-Используйте атрибут [@on{Event}:P ревентдефаулт](xref:mvc/views/razor#oneventpreventdefault) , чтобы предотвратить действие по умолчанию для события.
+Используйте атрибут директивы [`@on{EVENT}:preventDefault`](xref:mvc/views/razor#oneventpreventdefault) , чтобы предотвратить действие по умолчанию для события.
 
 Если ключ выбран на устройстве ввода, а элемент находится в текстовом поле, то в браузере обычно отображается символ ключа в текстовом поле. В следующем примере поведение по умолчанию запрещено путем указания атрибута директивы `@onkeypress:preventDefault`. Счетчик увеличивается, а ключ **+** не записывается в значение элемента `<input>`:
 
@@ -683,7 +683,7 @@ await callback.InvokeAsync(arg);
 
 ### <a name="stop-event-propagation"></a>Отключить распространение событий
 
-Используйте атрибут директивы [@on{Event}: stopPropagation](xref:mvc/views/razor#oneventstoppropagation) для отмены распространения событий.
+Используйте атрибут директивы [`@on{EVENT}:stopPropagation`](xref:mvc/views/razor#oneventstoppropagation) для отмены распространения событий.
 
 В следующем примере при установке флажка события Click из второго дочернего `<div>` не распространяются на родительский `<div>`:
 
@@ -841,7 +841,7 @@ Password:
 
 Ссылки на компоненты предоставляют способ ссылки на экземпляр компонента, чтобы можно было выполнять команды для этого экземпляра, например `Show` или `Reset`. Чтобы записать ссылку на компонент, сделайте следующее:
 
-* Добавьте атрибут [@ref](xref:mvc/views/razor#ref) в дочерний компонент.
+* Добавьте атрибут [`@ref`](xref:mvc/views/razor#ref) в дочерний компонент.
 * Определите поле с тем же типом, что и у дочернего компонента.
 
 ```cshtml
@@ -1026,7 +1026,7 @@ public class NotifierService
 
 Компоненты Razor создаются как разделяемые классы. Компоненты Razor создаются с помощью любого из следующих подходов:
 
-* C#код определяется в [@code](xref:mvc/views/razor#code) блоке с разметкой HTML и кодом Razor в одном файле. с помощью этого подхода шаблоны Blazor определяют свои компоненты Razor.
+* C#код определяется в [`@code`](xref:mvc/views/razor#code) блоке с разметкой HTML и кодом Razor в одном файле. с помощью этого подхода шаблоны Blazor определяют свои компоненты Razor.
 * C#код помещается в файл кода программной части, определенный как разделяемый класс.
 
 В следующем примере показан компонент `Counter` по умолчанию с блоком `@code` в приложении, созданном из шаблона Blazor. Разметка HTML, код Razor и C# код находятся в одном файле:
@@ -1125,13 +1125,13 @@ namespace BlazorSample
 
 Пространство имен компонента, созданного с помощью Razor, основано на (в порядке приоритета):
 
-* [@namespaceе](xref:mvc/views/razor#namespace) обозначение в разметке файла Razor ( *. Razor*) (`@namespace BlazorSample.MyNamespace`).
+* [`@namespace`е](xref:mvc/views/razor#namespace) обозначение в разметке файла Razor ( *. Razor*) (`@namespace BlazorSample.MyNamespace`).
 * `RootNamespace` проекта в файле проекта (`<RootNamespace>BlazorSample</RootNamespace>`).
 * Имя проекта, полученное из имени файла проекта (*CSPROJ*), и путь из корневого каталога проекта к компоненту. Например, платформа разрешает *{root Project}/Пажес/индекс.Разор* (*блазорсампле. csproj*) к пространству имен `BlazorSample.Pages`. Компоненты следуют C# правилам привязки имен. Для компонента `Index` в этом примере компоненты в области являются всеми компонентами:
   * В той же папке *страницы*.
   * Компоненты в корне проекта, которые не задают явно другое пространство имен.
 
-Компоненты, определенные в другом пространстве имен, помещаются в область с помощью директивы [@using](xref:mvc/views/razor#using) Razor.
+Компоненты, определенные в другом пространстве имен, помещаются в область с помощью директивы [`@using`](xref:mvc/views/razor#using) Razor.
 
 Если другой компонент, `NavMenu.razor`, существует в папке *блазорсампле/Shared/* Folder, компонент можно использовать в `Index.razor` со следующей инструкцией `@using`:
 
@@ -1143,7 +1143,7 @@ This is the Index page.
 <NavMenu></NavMenu>
 ```
 
-На компоненты также можно ссылаться с помощью полных имен, для которых не требуется директива [@using](xref:mvc/views/razor#using) :
+На компоненты также можно ссылаться с помощью полных имен, для которых не требуется директива [`@using`](xref:mvc/views/razor#using) :
 
 ```cshtml
 This is the Index page.
@@ -1272,7 +1272,7 @@ This is the Index page.
 
 ### <a name="generic-typed-components"></a>Универсальные типы компонентов
 
-Шаблонные компоненты часто вводятся в универсальном виде. Например, универсальный компонент `ListViewTemplate` можно использовать для отображения значений `IEnumerable<T>`. Чтобы определить универсальный компонент, используйте директиву [@typeparam](xref:mvc/views/razor#typeparam) для указания параметров типа:
+Шаблонные компоненты часто вводятся в универсальном виде. Например, универсальный компонент `ListViewTemplate` можно использовать для отображения значений `IEnumerable<T>`. Чтобы определить универсальный компонент, используйте директиву [`@typeparam`](xref:mvc/views/razor#typeparam) для указания параметров типа:
 
 [!code-cshtml[](common/samples/3.x/BlazorWebAssemblySample/Components/ListViewTemplate.razor)]
 

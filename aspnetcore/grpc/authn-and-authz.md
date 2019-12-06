@@ -4,14 +4,14 @@ author: jamesnk
 description: Узнайте, как использовать проверку подлинности и авторизацию в gRPC для ASP.NET Core.
 monikerRange: '>= aspnetcore-3.0'
 ms.author: jamesnk
-ms.date: 08/13/2019
+ms.date: 12/05/2019
 uid: grpc/authn-and-authz
-ms.openlocfilehash: 84903ee781588ff525d1dfce6a313e3867794762
-ms.sourcegitcommit: 76d7fff62014c3db02564191ab768acea00f1b26
+ms.openlocfilehash: 258b34113f3c3d9ef2031a43295ea5806b1e22ff
+ms.sourcegitcommit: c0b72b344dadea835b0e7943c52463f13ab98dd1
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74852705"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74880692"
 ---
 # <a name="authentication-and-authorization-in-grpc-for-aspnet-core"></a>Проверка подлинности и авторизация в gRPC для ASP.NET Core
 
@@ -150,7 +150,7 @@ public Ticketer.TicketerClient CreateClientWithCert(
 
 Настройка клиента gRPC для использования проверки подлинности будет зависеть от используемого механизма проверки подлинности. В предыдущем примере маркера носителя и сертификата клиента показаны несколько способов настройки клиента gRPC для отправки метаданных проверки подлинности с помощью вызовов gRPC:
 
-* Строго типизированные клиенты gRPC используют `HttpClient` внутренне. Проверку подлинности можно настроить на [`HttpClientHandler`](/dotnet/api/system.net.http.httpclienthandler)или путем добавления пользовательских экземпляров [`HttpMessageHandler`](/dotnet/api/system.net.http.httpmessagehandler) в `HttpClient`.
+* Строго типизированные клиенты gRPC используют `HttpClient` внутренне. Проверку подлинности можно настроить для [HttpClientHandler](/dotnet/api/system.net.http.httpclienthandler)или путем добавления пользовательских экземпляров [HttpMessageHandler](/dotnet/api/system.net.http.httpmessagehandler) в `HttpClient`.
 * Каждый вызов gRPC имеет необязательный аргумент `CallOptions`. Пользовательские заголовки можно отправлять с помощью коллекции заголовков параметра.
 
 > [!NOTE]
@@ -158,7 +158,7 @@ public Ticketer.TicketerClient CreateClientWithCert(
 
 ## <a name="authorize-users-to-access-services-and-service-methods"></a>Авторизация пользователей для доступа к службам и методам служб
 
-По умолчанию все методы в службе могут вызываться пользователями, не прошедшими проверку подлинности. Чтобы требовать проверку подлинности, примените к службе атрибут [[авторизовать]](xref:Microsoft.AspNetCore.Authorization.AuthorizeAttribute) :
+По умолчанию все методы в службе могут вызываться пользователями, не прошедшими проверку подлинности. Чтобы требовать проверку подлинности, примените к службе атрибут [`[Authorize]`](xref:Microsoft.AspNetCore.Authorization.AuthorizeAttribute) :
 
 ```csharp
 [Authorize]

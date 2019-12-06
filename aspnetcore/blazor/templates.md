@@ -10,12 +10,12 @@ no-loc:
 - Blazor
 - SignalR
 uid: blazor/templates
-ms.openlocfilehash: e82f28afdac8517f72538094d97f28bdcfe46102
-ms.sourcegitcommit: 918d7000b48a2892750264b852bad9e96a1165a7
+ms.openlocfilehash: bc0ea4a777e8684a7b0925377b8a19a45c2b531c
+ms.sourcegitcommit: c0b72b344dadea835b0e7943c52463f13ab98dd1
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74551537"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74879659"
 ---
 # <a name="aspnet-core-opno-locblazor-templates"></a>Шаблоны Blazor ASP.NET Core
 
@@ -61,7 +61,7 @@ ms.locfileid: "74551537"
 
 * *App. razor* &ndash; корневой компонент приложения, который настраивает маршрутизацию на стороне клиента с помощью компонента <xref:Microsoft.AspNetCore.Components.Routing.Router>. Компонент `Router` перехватывает навигацию браузера и отображает страницу, соответствующую запрошенному адресу.
 
-* Папка *страниц* &ndash; содержит маршрутизируемые компоненты и страницы ( *. Razor*), которые составляют приложение Blazor. Маршрут для каждой страницы указывается с помощью директивы [@page](xref:mvc/views/razor#page) . Шаблон включает следующие компоненты:
+* Папка *страниц* &ndash; содержит маршрутизируемые компоненты и страницы ( *. Razor*), которые составляют приложение Blazor. Маршрут для каждой страницы указывается с помощью директивы [`@page`](xref:mvc/views/razor#page) . Шаблон включает следующие компоненты:
   * `Index` (*index. Razor*) &ndash; реализует домашнюю страницу.
   * `Counter` (*Counter. Razor*) &ndash; реализует страницу счетчика.
   * `Error` (*ошибка. Razor*, только серверное приложение Blazor) &ndash; отображаться при возникновении необработанного исключения в приложении.
@@ -71,7 +71,7 @@ ms.locfileid: "74551537"
   * `MainLayout` (*маинлайаут. Razor*) &ndash; компонент макета приложения.
   * `NavMenu` (*навмену. Razor*) &ndash; реализует навигацию по боковой панели. Включает [компонент навлинк](xref:blazor/routing#navlink-component) (<xref:Microsoft.AspNetCore.Components.Routing.NavLink>), который визуализирует ссылки навигации на другие компоненты Razor. Компонент `NavLink` автоматически указывает выбранное состояние при загрузке компонента, что помогает пользователю понять, какой компонент в данный момент отображается.
 
-* *_Imports. razor* &ndash; содержит общие директивы Razor для включения в компоненты приложения ( *. Razor*), такие как директивы [@using](xref:mvc/views/razor#using) для пространств имен.
+* *_Imports. razor* &ndash; содержит общие директивы Razor для включения в компоненты приложения ( *. Razor*), такие как директивы [`@using`](xref:mvc/views/razor#using) для пространств имен.
 
 * Папка *данных* (Blazor Server) &ndash; содержит класс `WeatherForecast` и реализацию `WeatherForecastService`, которые предоставляют примеры данных о погоде в компонент `FetchData` приложения.
 

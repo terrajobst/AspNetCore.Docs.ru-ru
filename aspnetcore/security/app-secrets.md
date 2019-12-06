@@ -6,12 +6,12 @@ ms.author: scaddie
 ms.custom: mvc
 ms.date: 12/05/2019
 uid: security/app-secrets
-ms.openlocfilehash: 0bbd6af01ce3a29d3931faa2853a50dc895490cc
-ms.sourcegitcommit: fd2483f0a384b1c479c5b4af025ee46917db1919
+ms.openlocfilehash: ef5cb120c15d349be744c401bd518e026ddf11e9
+ms.sourcegitcommit: c0b72b344dadea835b0e7943c52463f13ab98dd1
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74868034"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74880774"
 ---
 # <a name="safe-storage-of-app-secrets-in-development-in-aspnet-core"></a>Надежное хранение секретов приложений в разработке в ASP.NET Core
 
@@ -231,11 +231,35 @@ dotnet user-secrets set "Movies:ServiceApiKey" "12345" --project "C:\apps\WebApp
 
 В ASP.NET Core 2,0 или более поздней версии источник конфигурации секреты пользователя автоматически добавляется в режим разработки, когда проект вызывает <xref:Microsoft.AspNetCore.WebHost.CreateDefaultBuilder%2A> для инициализации нового экземпляра узла с предварительно настроенными настройками по умолчанию. `CreateDefaultBuilder` вызывает <xref:Microsoft.Extensions.Configuration.UserSecretsConfigurationExtensions.AddUserSecrets%2A>, когда <xref:Microsoft.AspNetCore.Hosting.EnvironmentName.Development><xref:Microsoft.AspNetCore.Hosting.IHostingEnvironment.EnvironmentName>:
 
+::: moniker-end
+
+::: moniker range=">= aspnetcore-2.0 <= aspnetcore-2.2"
+
 [!code-csharp[](app-secrets/samples/2.x/UserSecrets/Program.cs?name=snippet_CreateWebHostBuilder&highlight=2)]
+
+::: moniker-end
+
+::: moniker range=">= aspnetcore-3.0"
+
+[!code-csharp[](app-secrets/samples/3.x/UserSecrets/Program.cs?name=snippet_CreateHostBuilder&highlight=2)]
+
+::: moniker-end
+
+::: moniker range=">= aspnetcore-2.0"
 
 Если `CreateDefaultBuilder` не вызывается, добавьте источник конфигурации секреты пользователя явным образом, вызвав <xref:Microsoft.Extensions.Configuration.UserSecretsConfigurationExtensions.AddUserSecrets%2A> в конструкторе `Startup`. Вызывайте `AddUserSecrets` только при запуске приложения в среде разработки, как показано в следующем примере:
 
+::: moniker-end
+
+::: moniker range=">= aspnetcore-2.0 <= aspnetcore-2.2"
+
 [!code-csharp[](app-secrets/samples/1.x/UserSecrets/Startup.cs?name=snippet_StartupConstructor&highlight=12)]
+
+::: moniker-end
+
+::: moniker range=">= aspnetcore-3.0"
+
+[!code-csharp[](app-secrets/samples/3.x/UserSecrets/Startup2.cs?name=snippet_StartupConstructor&highlight=12)]
 
 ::: moniker-end
 

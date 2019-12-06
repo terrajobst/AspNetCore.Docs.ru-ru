@@ -5,14 +5,14 @@ description: Узнайте, как настроить и использоват
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 11/04/2019
+ms.date: 12/05/2019
 uid: performance/caching/middleware
-ms.openlocfilehash: a8e656e1d59114e2e953323e98e0a2399efca98a
-ms.sourcegitcommit: 09f4a5ded39cc8204576fe801d760bd8b611f3aa
+ms.openlocfilehash: d034252f69f8efdc9a912a0d9c3ecde65196e7e3
+ms.sourcegitcommit: c0b72b344dadea835b0e7943c52463f13ab98dd1
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73611455"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74880935"
 ---
 # <a name="response-caching-middleware-in-aspnet-core"></a>Кэширование ответа по промежуточного слоя в ASP.NET Core
 
@@ -20,9 +20,9 @@ ms.locfileid: "73611455"
 
 [Просмотреть или скачать образец кода](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/performance/caching/middleware/samples) ([как скачивать](xref:index#how-to-download-a-sample))
 
-В этой статье объясняется, как настроить по промежуточного слоя кэширования ответов в приложении ASP.NET Core. По промежуточного слоя определяет, когда ответы кэшируются, сохраняет ответы и обслуживает ответы из кэша. Общие сведения о кэшировании HTTP и атрибуте [[респонсекаче]](xref:Microsoft.AspNetCore.Mvc.ResponseCacheAttribute) см. в разделе [кэширование ответов](xref:performance/caching/response).
+В этой статье объясняется, как настроить по промежуточного слоя кэширования ответов в приложении ASP.NET Core. По промежуточного слоя определяет, когда ответы кэшируются, сохраняет ответы и обслуживает ответы из кэша. Общие сведения о кэшировании HTTP и атрибуте [`[ResponseCache]`](xref:Microsoft.AspNetCore.Mvc.ResponseCacheAttribute) см. в разделе [кэширование ответов](xref:performance/caching/response).
 
-## <a name="configuration"></a>Параметр Configuration
+## <a name="configuration"></a>Конфигурация
 
 ::: moniker range=">= aspnetcore-3.0"
 
@@ -39,7 +39,7 @@ ms.locfileid: "73611455"
 Пример приложения добавляет заголовки для управления кэшированием последующих запросов:
 
 * Cache [-Control](https://tools.ietf.org/html/rfc7234#section-5.2) &ndash; кэширует ответы в кэше до 10 секунд.
-* [Vary](https://tools.ietf.org/html/rfc7231#section-7.1.4) &ndash; настраивает по промежуточного слоя для обработки кэшированного ответа только в том случае, если заголовок [`Accept-Encoding`](https://tools.ietf.org/html/rfc7231#section-5.3.4) последующих запросов совпадает с заголовком исходного запроса.
+* [Vary](https://tools.ietf.org/html/rfc7231#section-7.1.4) &ndash; настраивает по промежуточного слоя для обработки кэшированного ответа только в том случае, если заголовок [Accept-Encoding](https://tools.ietf.org/html/rfc7231#section-5.3.4) последующих запросов соответствует исходному запросу.
 
 [!code-csharp[](middleware/samples_snippets/3.x/AddHeaders.cs)]
 
@@ -65,7 +65,7 @@ ms.locfileid: "73611455"
 Пример приложения добавляет заголовки для управления кэшированием последующих запросов:
 
 * Cache [-Control](https://tools.ietf.org/html/rfc7234#section-5.2) &ndash; кэширует ответы в кэше до 10 секунд.
-* [Vary](https://tools.ietf.org/html/rfc7231#section-7.1.4) &ndash; настраивает по промежуточного слоя для обработки кэшированного ответа только в том случае, если заголовок [`Accept-Encoding`](https://tools.ietf.org/html/rfc7231#section-5.3.4) последующих запросов совпадает с заголовком исходного запроса.
+* [Vary](https://tools.ietf.org/html/rfc7231#section-7.1.4) &ndash; настраивает по промежуточного слоя для обработки кэшированного ответа только в том случае, если заголовок [Accept-Encoding](https://tools.ietf.org/html/rfc7231#section-5.3.4) последующих запросов соответствует исходному запросу.
 
 [!code-csharp[](middleware/samples_snippets/2.x/AddHeaders.cs)]
 
@@ -76,7 +76,7 @@ ms.locfileid: "73611455"
 
 ::: moniker-end
 
-## <a name="options"></a>Параметры
+## <a name="options"></a>Options
 
 Параметры кэширования ответов приведены в следующей таблице.
 
@@ -101,7 +101,7 @@ services.AddResponseCaching(options =>
 
 ## <a name="varybyquerykeys"></a>варибикуерикэйс
 
-При использовании контроллеров MVC, веб-API или Razor Pagesных моделей страниц атрибут [[респонсекаче]](xref:Microsoft.AspNetCore.Mvc.ResponseCacheAttribute) задает параметры, необходимые для установки соответствующих заголовков для кэширования ответов. Единственным параметром `[ResponseCache]` атрибута, который строго требует по промежуточного слоя, является <xref:Microsoft.AspNetCore.Mvc.ResponseCacheAttribute.VaryByQueryKeys>, который не соответствует фактическому заголовку HTTP. Для получения дополнительной информации см. <xref:performance/caching/response#responsecache-attribute>.
+При использовании контроллеров MVC, веб-API или моделей страниц Razor Pages, атрибут [`[ResponseCache]`](xref:Microsoft.AspNetCore.Mvc.ResponseCacheAttribute) задает параметры, необходимые для установки соответствующих заголовков для кэширования ответа. Единственным параметром `[ResponseCache]` атрибута, который строго требует по промежуточного слоя, является <xref:Microsoft.AspNetCore.Mvc.ResponseCacheAttribute.VaryByQueryKeys>, который не соответствует фактическому заголовку HTTP. Для получения дополнительной информации см. <xref:performance/caching/response#responsecache-attribute>.
 
 Если атрибут `[ResponseCache]` не используется, кэширование ответов можно изменять с помощью `VaryByQueryKeys`. Используйте <xref:Microsoft.AspNetCore.ResponseCaching.ResponseCachingFeature> непосредственно из [функции HttpContext. Features](xref:Microsoft.AspNetCore.Http.HttpContext.Features):
 
@@ -120,10 +120,10 @@ if (responseCachingFeature != null)
 
 В следующей таблице приведены сведения о заголовках HTTP, влияющих на кэширование ответов.
 
-| Header | Подробнее |
+| Header | Подробности |
 | ------ | ------- |
 | `Authorization` | Ответ не кэшируется, если заголовок существует. |
-| `Cache-Control` | По промежуточного слоя рассматривает только ответы кэширования, отмеченные директивой кэша `public`. Управление кэшированием со следующими параметрами:<ul><li>максимальный возраст</li><li>максимум — устаревший&#8224;</li><li>min-свежая</li><li>необходимо — повторно проверить</li><li>без кэша</li><li>без магазина</li><li>только в случае кэширования</li><li>private</li><li>public</li><li>s-maxage</li><li>прокси — повторная проверка&#8225;</li></ul>&#8224;Если для `max-stale`не указано ограничение, по промежуточного слоя не выполняет никаких действий.<br>&#8225;`proxy-revalidate` действует так же, как `must-revalidate`.<br><br>Дополнительные сведения см. в статье [RFC 7231: запрос директив управления Cache-Control](https://tools.ietf.org/html/rfc7234#section-5.2.1). |
+| `Cache-Control` | По промежуточного слоя рассматривает только ответы кэширования, отмеченные директивой кэша `public`. Управление кэшированием со следующими параметрами:<ul><li>максимальный возраст</li><li>максимум — устаревший&#8224;</li><li>min-свежая</li><li>must-revalidate</li><li>no-cache</li><li>без магазина</li><li>только в случае кэширования</li><li>private</li><li>public</li><li>s-maxage</li><li>прокси — повторная проверка&#8225;</li></ul>&#8224;Если для `max-stale`не указано ограничение, по промежуточного слоя не выполняет никаких действий.<br>&#8225;`proxy-revalidate` действует так же, как `must-revalidate`.<br><br>Дополнительные сведения см. в статье [RFC 7231: запрос директив управления Cache-Control](https://tools.ietf.org/html/rfc7234#section-5.2.1). |
 | `Pragma` | Заголовок `Pragma: no-cache` в запросе дает тот же результат, что и `Cache-Control: no-cache`. Этот заголовок переопределяется соответствующими директивами в заголовке `Cache-Control`, если он есть. Рассматривается для обеспечения обратной совместимости с HTTP/1.0. |
 | `Set-Cookie` | Ответ не кэшируется, если заголовок существует. Любое по промежуточного слоя в конвейере обработки запросов, которое задает один или несколько файлов cookie, предотвращает кэширование ответа по промежуточного слоя (например, [поставщик TempData на основе файлов cookie](xref:fundamentals/app-state#tempdata)).  |
 | `Vary` | Заголовок `Vary` используется для изменения кэшированного ответа другим заголовком. Например, ответы кэшируются по кодировке, включая заголовок `Vary: Accept-Encoding`, который кэширует ответы для запросов с заголовками `Accept-Encoding: gzip` и `Accept-Encoding: text/plain` отдельно. Ответ со значением заголовка `*` никогда не сохраняется. |
@@ -138,14 +138,14 @@ if (responseCachingFeature != null)
 
 По промежуточного слоя учитывает правила [спецификации кэширования HTTP 1,1](https://tools.ietf.org/html/rfc7234#section-5.2). Для правил требуется, чтобы кэш учитывал допустимый заголовок `Cache-Control`, отправленный клиентом. В соответствии со спецификацией клиент может выполнять запросы со значением заголовка `no-cache` и заставить сервер создавать новый ответ для каждого запроса. В настоящее время разработчик не управляет этим поведением кэширования при использовании по промежуточного слоя, поскольку по промежуточного слоя соответствует официальной спецификации кэширования.
 
-Чтобы получить более полный контроль над поведением кэширования, изучите другие функции кэширования ASP.NET Core. См. указанные ниже разделы.
+Чтобы получить более полный контроль над поведением кэширования, изучите другие функции кэширования ASP.NET Core. См. следующие разделы:
 
 * <xref:performance/caching/memory>
 * <xref:performance/caching/distributed>
 * <xref:mvc/views/tag-helpers/builtin-th/cache-tag-helper>
 * <xref:mvc/views/tag-helpers/builtin-th/distributed-cache-tag-helper>
 
-## <a name="troubleshooting"></a>Устранение неполадок
+## <a name="troubleshooting"></a>Диагностика
 
 Если поведение кэширования не так, как ожидалось, убедитесь, что ответы кэшируются и могут обрабатываться из кэша. Изучите Входящие заголовки запроса и исходящие заголовки ответа. Включите [ведение журнала](xref:fundamentals/logging/index) для помощи при отладке.
 

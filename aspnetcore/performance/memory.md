@@ -4,20 +4,20 @@ author: rick-anderson
 description: Узнайте, как осуществляется управление памятью в ASP.NET Core и как работает сборщик мусора (GC).
 ms.author: riande
 ms.custom: mvc
-ms.date: 11/05/2019
+ms.date: 12/05/2019
 uid: performance/memory
-ms.openlocfilehash: 4c25c069aa2a6088c0549d786ecdd487ab7b9ea5
-ms.sourcegitcommit: 4818385c3cfe0805e15138a2c1785b62deeaab90
+ms.openlocfilehash: 85e34c9faa31a1020a4200eb99003455ca435ec3
+ms.sourcegitcommit: c0b72b344dadea835b0e7943c52463f13ab98dd1
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73896937"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74880952"
 ---
 # <a name="memory-management-and-garbage-collection-gc-in-aspnet-core"></a>Управление памятью и сборка мусора (GC) в ASP.NET Core
 
 [Сéбастиен рос](https://github.com/sebastienros) и [Рик Андерсон (](https://twitter.com/RickAndMSFT)
 
-Управление памятью является сложной задачей даже в управляемой платформе, такой как .NET. Анализ и понимание проблем с памятью может быть непростой задачей. Эта статья:
+Управление памятью является сложной задачей даже в управляемой платформе, такой как .NET. Анализ и понимание проблем с памятью может быть непростой задачей. В этой статье:
 
 * Было вызвано многими *утечками памяти* и *отсутствием проблем в работе GC* . Большинство этих проблем было вызвано не пониманием того, как потребление памяти работает в .NET Core, или не понимание того, как оно измеряется.
 * Демонстрирует проблемное использование памяти и предлагает альтернативные подходы.
@@ -274,7 +274,7 @@ public int GetLOH1(int size)
 - [Респонсекачинг/Streams/Стреамутилитиес. CS](https://github.com/aspnet/AspNetCore/blob/v3.0.0/src/Middleware/ResponseCaching/src/Streams/StreamUtilities.cs#L16)
 - [Респонсекачинг/Мемориреспонсекаче. CS](https://github.com/aspnet/ResponseCaching/blob/c1cb7576a0b86e32aec990c22df29c780af29ca5/src/Microsoft.AspNetCore.ResponseCaching/Internal/MemoryResponseCache.cs#L55)
 
-Дополнительные сведения см. на странице
+Дополнительные сведения см. в следующих разделах.
 
 * [Обнаружена куча больших объектов](https://devblogs.microsoft.com/dotnet/large-object-heap-uncovered-from-an-old-msdn-article/)
 * [Куча больших объектов](/dotnet/standard/garbage-collection/large-object-heap)
@@ -373,7 +373,7 @@ public async Task<int> GetHttpClient2(string url)
 
 На приведенной выше диаграмме сборки поколения 0 происходят приблизительно в секунду.
 
-Приведенный выше код можно оптимизировать путем объединения `byte`ного буфера с помощью [`ArrayPool<T>`](xref:System.Buffers.ArrayPool`1). Статический экземпляр повторно используется в запросах.
+Предыдущий код можно оптимизировать путем объединения `byte`ного буфера в пул с помощью [аррайпул\<t >](xref:System.Buffers.ArrayPool`1). Статический экземпляр повторно используется в запросах.
 
 В отличие от этого подхода, объект poold возвращается из API. Это означает:
 

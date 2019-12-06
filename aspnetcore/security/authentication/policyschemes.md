@@ -1,38 +1,38 @@
 ---
-title: Политика схем в ASP.NET Core
+title: Схемы политики в ASP.NET Core
 author: rick-anderson
-description: Схемы политики проверки подлинности облегчают имеют схему проверки подлинности единого логического
+description: Схемы политики аутентификации упрощают создание одной логической схемы проверки подлинности
 ms.author: riande
-ms.date: 02/28/2019
+ms.date: 12/05/2019
 uid: security/authentication/policyschemes
-ms.openlocfilehash: be03f349455c673b0739935ad20e596325c8cb74
-ms.sourcegitcommit: 8516b586541e6ba402e57228e356639b85dfb2b9
+ms.openlocfilehash: f02d8e5cac20a9b60c5eddbd28253efacf682ea1
+ms.sourcegitcommit: c0b72b344dadea835b0e7943c52463f13ab98dd1
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67815288"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74880713"
 ---
-# <a name="policy-schemes-in-aspnet-core"></a>Политика схем в ASP.NET Core
+# <a name="policy-schemes-in-aspnet-core"></a>Схемы политики в ASP.NET Core
 
-Схемы проверки подлинности политики упрощают имеют схему проверки подлинности единого логического потенциально могут использовать несколько подходов. Например схему политики может использовать Google для проблем и файл cookie проверки подлинности для всего остального. Схемы политики проверки подлинности сделать.
+Схемы политики аутентификации упрощают создание одной логической схемы проверки подлинности, потенциально использующей несколько подходов. Например, схема политики может использовать проверку подлинности Google для решения проблем и проверку подлинности файлов cookie для всех остальных. Схемы политики проверки подлинности делают следующее:
 
-* Легко пересылать любое действие проверки подлинности в другую схему.
-* Вперед, динамически на основе запроса.
+* Простое перенаправление любого действия проверки подлинности в другую схему.
+* Пересылать динамически на основе запроса.
 
-Все схемы проверки подлинности, использование производных <xref:Microsoft.AspNetCore.Authentication.AuthenticationSchemeOptions> и связанным [ `AuthenticationHandler<TOptions>` ](/dotnet/api/microsoft.aspnetcore.authentication.authenticationhandler-1):
+Все схемы проверки подлинности, использующие производные <xref:Microsoft.AspNetCore.Authentication.AuthenticationSchemeOptions> и связанные с [аусентикатионхандлер\<TOptions >](/dotnet/api/microsoft.aspnetcore.authentication.authenticationhandler-1):
 
-* — Автоматически политики схемы в ASP.NET Core 2.1 и более поздних версий.
-* Можно включить, используя настройки параметров схемы.
+* Являются автоматическими схемами политик в ASP.NET Core 2,1 и более поздних версий.
+* Можно включить с помощью настройки параметров схемы.
 
 [!code-csharp[sample](policyschemes/samples/AuthenticationSchemeOptions.cs?name=snippet)]
 
 ## <a name="examples"></a>Примеры
 
-В следующем примере показано выше уровня схемы, сочетающий в себе нижнего уровня схемы. Для задач используется проверка подлинности Google, и файл cookie проверки подлинности используется для всего остального:
+В следующем примере показана схема более высокого уровня, которая сочетает схемы более низкого уровня. Проверка подлинности Google используется для решения проблем, а проверка подлинности файлов cookie используется для всех остальных элементов:
 
 [!code-csharp[sample](policyschemes/samples/Startup.cs?name=snippet1)]
 
-В следующем примере включается динамический выбор схем для каждого запроса. То есть как сочетать файлы cookie и API проверки подлинности:
+В следующем примере включается динамическое выделение схем на основе каждого запроса. То есть, как смешивать файлы cookie и проверку подлинности API:
 
  <!-- REVIEW, missing If set in public Func<HttpContext, string> ForwardDefaultSelector -->
 

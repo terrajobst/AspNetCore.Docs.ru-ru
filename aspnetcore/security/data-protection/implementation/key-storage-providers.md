@@ -1,27 +1,27 @@
 ---
 title: Поставщики хранилища ключей в ASP.NET Core
 author: rick-anderson
-description: Узнайте о поставщиках хранилища ключей в ASP.NET Core и о том, как настроить места хранения ключей.
+description: Дополнительные сведения о поставщиках хранилища ключей в ASP.NET Core и как настроить расположения хранилища ключей.
 ms.author: riande
-ms.date: 06/11/2019
+ms.date: 12/05/2019
 uid: security/data-protection/implementation/key-storage-providers
-ms.openlocfilehash: ec746f383c18ccc7b60c614c990f7577d2d52a20
-ms.sourcegitcommit: 3fc3020961e1289ee5bf5f3c365ce8304d8ebf19
+ms.openlocfilehash: 76f224fb7d322722c3875b734127da4da294a646
+ms.sourcegitcommit: c0b72b344dadea835b0e7943c52463f13ab98dd1
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74052848"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74881205"
 ---
 # <a name="key-storage-providers-in-aspnet-core"></a>Поставщики хранилища ключей в ASP.NET Core
 
-Система защиты данных [по умолчанию использует механизм обнаружения,](xref:security/data-protection/configuration/default-settings) чтобы определить, где должны храниться криптографические ключи. Разработчик может переопределить механизм обнаружения по умолчанию и указать расположение вручную.
+Система защиты данных [использует механизм обнаружения по умолчанию](xref:security/data-protection/configuration/default-settings) для определения, где должны сохраняться криптографических ключей. Разработчик может переопределить механизм обнаружения по умолчанию и вручную указать расположение.
 
 > [!WARNING]
-> Если указать явное расположение сохраняемости ключа, система защиты данных отменяет регистрацию шифрования ключа по умолчанию в механизме RESTful, поэтому ключи больше не шифруются. Рекомендуется дополнительно [указать явный механизм шифрования ключей](xref:security/data-protection/implementation/key-encryption-at-rest) для развертывания в рабочей среде.
+> При указании опции явные постоянство ключа, система защиты данных отменяет регистрацию ключа шифрования по умолчанию механизм rest, поэтому ключи не шифруются при хранении. Рекомендуется, вы Кроме того [укажите механизм явного ключа шифрования](xref:security/data-protection/implementation/key-encryption-at-rest) для развертывания в рабочей среде.
 
 ## <a name="file-system"></a>Файловая система
 
-Чтобы настроить репозиторий ключей на основе файловой системы, вызовите подпрограммы настройки [персисткэйстофилесистем](/dotnet/api/microsoft.aspnetcore.dataprotection.dataprotectionbuilderextensions.persistkeystofilesystem) , как показано ниже. Укажите [DirectoryInfo](/dotnet/api/system.io.directoryinfo) , указывающий на репозиторий, в котором должны храниться ключи:
+Чтобы настроить файл на основе системы ключа репозиторием, вызовите [PersistKeysToFileSystem](/dotnet/api/microsoft.aspnetcore.dataprotection.dataprotectionbuilderextensions.persistkeystofilesystem) конфигурации подпрограммы, как показано ниже. Укажите [DirectoryInfo](/dotnet/api/system.io.directoryinfo) указанием на репозиторий, где должны храниться ключи:
 
 ```csharp
 public void ConfigureServices(IServiceCollection services)
@@ -31,11 +31,11 @@ public void ConfigureServices(IServiceCollection services)
 }
 ```
 
-`DirectoryInfo` может указывать на каталог на локальном компьютере или на папку в общей сетевой папке. Если указывает на каталог на локальном компьютере (и сценарий заключается в том, что доступ к этому репозиторию требуется получить только для приложений на локальном компьютере), рассмотрите возможность использования [Windows DPAPI](xref:security/data-protection/implementation/key-encryption-at-rest) (в Windows) для шифрования неактивных ключей. В противном случае рассмотрите возможность использования [сертификата X. 509](xref:security/data-protection/implementation/key-encryption-at-rest) для шифрования неактивных ключей.
+`DirectoryInfo` Можно указать папку на локальном компьютере, или он может указывать на папку в общей сетевой папке. Если указывает на каталог на локальном компьютере (и в случае, является то, что только приложения на локальном компьютере требуется доступ, чтобы использовать этот репозиторий), рассмотрите возможность использования [Windows DPAPI](xref:security/data-protection/implementation/key-encryption-at-rest) (в Windows) для шифрования ключей при хранении. В противном случае рассмотрите возможность использования [сертификат X.509](xref:security/data-protection/implementation/key-encryption-at-rest) для шифрования ключей при хранении.
 
 ## <a name="azure-storage"></a>Служба хранилища Azure
 
-Пакет [Microsoft. AspNetCore. Data Protection. AzureStorage](https://www.nuget.org/packages/Microsoft.AspNetCore.DataProtection.AzureStorage/) позволяет хранить ключи защиты данных в хранилище BLOB-объектов Azure. Ключи можно совместно использовать в нескольких экземплярах веб-приложения. Приложения могут совместно использовать файлы cookie проверки подлинности или защиту CSRF на нескольких серверах.
+Пакет [Microsoft. AspNetCore. Data Protection. AzureStorage](https://www.nuget.org/packages/Microsoft.AspNetCore.DataProtection.AzureStorage/) позволяет хранить ключи защиты данных в хранилище BLOB-объектов Azure. Ключи могут совместно использоваться в нескольких экземплярах веб-приложения. Приложения могут совместно использовать файлы cookie проверки подлинности или CSRF защиты на нескольких серверах.
 
 Чтобы настроить поставщик хранилища BLOB-объектов Azure, вызовите одну из перегрузок [персисткэйстоазуреблобстораже](/dotnet/api/microsoft.aspnetcore.dataprotection.azuredataprotectionbuilderextensions.persistkeystoazureblobstorage) .
 
@@ -70,19 +70,19 @@ services.AddDataProtection()
 
 ::: moniker range=">= aspnetcore-2.2"
 
-Пакет [Microsoft. AspNetCore. Data Protection. стаккексчанжередис](https://www.nuget.org/packages/Microsoft.AspNetCore.DataProtection.StackExchangeRedis/) позволяет хранить ключи защиты данных в кэше Redis. Ключи можно совместно использовать в нескольких экземплярах веб-приложения. Приложения могут совместно использовать файлы cookie проверки подлинности или защиту CSRF на нескольких серверах.
+Пакет [Microsoft. AspNetCore. Data Protection. стаккексчанжередис](https://www.nuget.org/packages/Microsoft.AspNetCore.DataProtection.StackExchangeRedis/) позволяет хранить ключи защиты данных в кэше Redis. Ключи могут совместно использоваться в нескольких экземплярах веб-приложения. Приложения могут совместно использовать файлы cookie проверки подлинности или CSRF защиты на нескольких серверах.
 
 ::: moniker-end
 
 ::: moniker range="< aspnetcore-2.2"
 
-Пакет [Microsoft. AspNetCore. Data Protection. Redis](https://www.nuget.org/packages/Microsoft.AspNetCore.DataProtection.Redis/) позволяет хранить ключи защиты данных в кэше Redis. Ключи можно совместно использовать в нескольких экземплярах веб-приложения. Приложения могут совместно использовать файлы cookie проверки подлинности или защиту CSRF на нескольких серверах.
+Пакет [Microsoft. AspNetCore. Data Protection. Redis](https://www.nuget.org/packages/Microsoft.AspNetCore.DataProtection.Redis/) позволяет хранить ключи защиты данных в кэше Redis. Ключи могут совместно использоваться в нескольких экземплярах веб-приложения. Приложения могут совместно использовать файлы cookie проверки подлинности или CSRF защиты на нескольких серверах.
 
 ::: moniker-end
 
 ::: moniker range=">= aspnetcore-2.2"
 
-Чтобы настроить в Redis, вызовите одну из перегрузок [персисткэйстостаккексчанжередис](/dotnet/api/microsoft.aspnetcore.dataprotection.stackexchangeredisdataprotectionbuilderextensions.persistkeystostackexchangeredis) :
+Чтобы настроить на Redis, вызовите один из [PersistKeysToStackExchangeRedis](/dotnet/api/microsoft.aspnetcore.dataprotection.stackexchangeredisdataprotectionbuilderextensions.persistkeystostackexchangeredis) перегрузки:
 
 ```csharp
 public void ConfigureServices(IServiceCollection services)
@@ -97,7 +97,7 @@ public void ConfigureServices(IServiceCollection services)
 
 ::: moniker range="< aspnetcore-2.2"
 
-Чтобы настроить в Redis, вызовите одну из перегрузок [персисткэйсторедис](/dotnet/api/microsoft.aspnetcore.dataprotection.redisdataprotectionbuilderextensions.persistkeystoredis) :
+Чтобы настроить на Redis, вызовите один из [PersistKeysToRedis](/dotnet/api/microsoft.aspnetcore.dataprotection.redisdataprotectionbuilderextensions.persistkeystoredis) перегрузки:
 
 ```csharp
 public void ConfigureServices(IServiceCollection services)
@@ -112,15 +112,15 @@ public void ConfigureServices(IServiceCollection services)
 
 Дополнительные сведения см. в следующих разделах:
 
-* [StackExchange. Redis ConnectionMultiplexer](https://github.com/StackExchange/StackExchange.Redis/blob/master/docs/Basics.md)
+* [StackExchange.Redis ConnectionMultiplexer](https://github.com/StackExchange/StackExchange.Redis/blob/master/docs/Basics.md)
 * [Кэш Redis для Azure](/azure/redis-cache/cache-dotnet-how-to-use-azure-redis-cache#connect-to-the-cache)
-* [Примеры ASPNET/Protection](https://github.com/aspnet/AspNetCore/tree/2.2.0/src/DataProtection/samples)
+* [Примеры ASPNET/DataProtection](https://github.com/aspnet/AspNetCore/tree/2.2.0/src/DataProtection/samples)
 
 ## <a name="registry"></a>Реестр
 
-**Применяется только к развертываниям Windows.**
+**Применяется только для развертывания Windows.**
 
-Иногда приложение может не иметь доступа на запись в файловую систему. Рассмотрим ситуацию, когда приложение запускается как учетная запись виртуальной службы (например, удостоверение пула приложений *w3wp. exe*). В таких случаях администратор может предоставить раздел реестра, доступный для удостоверения учетной записи службы. Вызовите метод расширения [персисткэйсторегистри](/dotnet/api/microsoft.aspnetcore.dataprotection.dataprotectionbuilderextensions.persistkeystoregistry) , как показано ниже. Укажите [RegistryKey](/dotnet/api/microsoft.aspnetcore.dataprotection.repositories.registryxmlrepository.registrykey) , указывающий на расположение, в котором должны храниться криптографические ключи:
+Иногда приложение может не иметь доступ на запись в файловой системе. Рассмотрим ситуацию, где приложение выполняется как учетная запись виртуальной службы (такие как *w3wp.exe*удостоверение пула приложений). В этом случае администратор может подготовить раздел реестра, доступную учетную запись службы. Вызовите [PersistKeysToRegistry](/dotnet/api/microsoft.aspnetcore.dataprotection.dataprotectionbuilderextensions.persistkeystoregistry) метод расширения, как показано ниже. Укажите [RegistryKey](/dotnet/api/microsoft.aspnetcore.dataprotection.repositories.registryxmlrepository.registrykey) указывает на место хранения криптографических ключей:
 
 ```csharp
 public void ConfigureServices(IServiceCollection services)
@@ -131,17 +131,17 @@ public void ConfigureServices(IServiceCollection services)
 ```
 
 > [!IMPORTANT]
-> Мы рекомендуем использовать [Windows DPAPI](xref:security/data-protection/implementation/key-encryption-at-rest) для шифрования неактивных ключей.
+> Мы рекомендуем использовать [Windows DPAPI](xref:security/data-protection/implementation/key-encryption-at-rest) для шифрования ключей при хранении.
 
 ::: moniker range=">= aspnetcore-2.2"
 
 ## <a name="entity-framework-core"></a>Entity Framework Core
 
-Пакет [Microsoft. AspNetCore. Data Protection. EntityFrameworkCore](https://www.nuget.org/packages/Microsoft.AspNetCore.DataProtection.EntityFrameworkCore/) предоставляет механизм для хранения ключей защиты данных в базе данных с помощью Entity Framework Core. `Microsoft.AspNetCore.DataProtection.EntityFrameworkCore` пакет NuGet необходимо добавить в файл проекта, но он не входит в состав [Microsoft. AspNetCore. app метапакет](xref:fundamentals/metapackage-app).
+[Microsoft.AspNetCore.DataProtection.EntityFrameworkCore](https://www.nuget.org/packages/Microsoft.AspNetCore.DataProtection.EntityFrameworkCore/) пакет предоставляет механизм для хранения ключей защиты данных в базу данных с помощью Entity Framework Core. `Microsoft.AspNetCore.DataProtection.EntityFrameworkCore` Пакет NuGet должны добавляться в файл проекта не является частью [метапакет Microsoft.AspNetCore.App](xref:fundamentals/metapackage-app).
 
-Этот пакет позволяет совместно использовать ключи в нескольких экземплярах веб-приложения.
+При использовании этого пакета ключи могут совместно использоваться несколькими экземплярами веб-приложения.
 
-Чтобы настроить поставщик EF Core, вызовите метод [`PersistKeysToDbContext<TContext>`](/dotnet/api/microsoft.aspnetcore.dataprotection.entityframeworkcoredataprotectionextensions.persistkeystodbcontext) :
+Чтобы настроить поставщик EF Core, вызовите метод [персисткэйстодбконтекст\<тконтекст >](/dotnet/api/microsoft.aspnetcore.dataprotection.entityframeworkcoredataprotectionextensions.persistkeystodbcontext) .
 
 [!code-csharp[Main](key-storage-providers/sample/Startup.cs?name=snippet&highlight=13-20)]
 
@@ -183,6 +183,6 @@ dotnet ef database update --context MyKeysContext
 
 ::: moniker-end
 
-## <a name="custom-key-repository"></a>Пользовательский репозиторий ключей
+## <a name="custom-key-repository"></a>Пользовательский репозиторий ключа
 
-Если встроенные механизмы не подходят, разработчик может указать собственный механизм сохранения ключей, предоставив пользовательский [иксмлрепоситори](/dotnet/api/microsoft.aspnetcore.dataprotection.repositories.ixmlrepository).
+Если механизмы в поле не подходит, разработчик может указать собственный механизм сохраняемости ключа, предоставляя пользовательский [IXmlRepository](/dotnet/api/microsoft.aspnetcore.dataprotection.repositories.ixmlrepository).

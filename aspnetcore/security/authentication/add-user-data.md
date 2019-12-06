@@ -1,28 +1,28 @@
 ---
-title: Добавление, скачивание и удаление данных пользователя в удостоверении в проекте ASP.NET Core
+title: Добавить, загрузки и удаления данных пользователя для удостоверения в проекте ASP.NET Core
 author: rick-anderson
-description: Узнайте, как добавить пользовательские данные пользователя в удостоверение в проекте ASP.NET Core. Удаление данных на GDPR.
+description: Узнайте, как добавить пользовательские данные для удостоверения в проекте ASP.NET Core. Удаление данных в соответствии с GDPR.
 ms.author: riande
-ms.date: 06/18/2019
+ms.date: 12/05/2019
 ms.custom: mvc, seodec18
 uid: security/authentication/add-user-data
-ms.openlocfilehash: 6daca5776930f80eec8d81132b5a5c4d4d5c13ad
-ms.sourcegitcommit: 0dd224b2b7efca1fda0041b5c3f45080327033f6
+ms.openlocfilehash: f54df68834cd3e2493e558aaab9851f036f3f01b
+ms.sourcegitcommit: c0b72b344dadea835b0e7943c52463f13ab98dd1
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74681166"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74880755"
 ---
-# <a name="add-download-and-delete-custom-user-data-to-identity-in-an-aspnet-core-project"></a>Добавление, скачивание и удаление настраиваемых данных пользователя для идентификации в проекте ASP.NET Core
+# <a name="add-download-and-delete-custom-user-data-to-identity-in-an-aspnet-core-project"></a>Добавление, скачивание и удаление пользовательских данных для удостоверений в проекте ASP.NET Core
 
 Автор: [Рик Андерсон](https://twitter.com/RickAndMSFT)
 
 В этой статье показано, как:
 
-* Добавление настраиваемых пользовательских данных в веб-приложение ASP.NET Core.
-* Добавьте пользовательскую модель данных с атрибутом <xref:Microsoft.AspNetCore.Identity.PersonalDataAttribute>, чтобы он автоматически был доступен для скачивания и удаления. Обеспечение возможности загрузки и удаления данных помогает удовлетворить требования [GDPR](xref:security/gdpr) .
+* Добавьте пользовательские данные веб-приложение ASP.NET Core.
+* Пометьте пользовательскую модель данных атрибутом <xref:Microsoft.AspNetCore.Identity.PersonalDataAttribute>, чтобы она была автоматически доступна для скачивания и удаления. Возможность загрузки и удаления данных помогает обеспечить соответствие [GDPR](xref:security/gdpr) требования.
 
-Пример проекта создается на основе веб-приложения Razor Pages, но эти инструкции похожи на ASP.NET Core веб-приложения MVC.
+В примере проекта создается на основе веб-приложения Razor Pages, но инструкции одинаковы для веб-приложения ASP.NET Core MVC.
 
 [Просмотреть или скачать образец кода](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/security/authentication/add-user-data) ([как скачивать](xref:index#how-to-download-a-sample))
 
@@ -46,7 +46,7 @@ ms.locfileid: "74681166"
 
 ::: moniker range=">= aspnetcore-3.0"
 
-* В меню **Файл** Visual Studio откройте меню **Создать** > **Проект**. Присвойте проекту имя **APP1** , если вы хотите, чтобы оно соответствовало пространству имен примера кода для [скачивания](https://github.com/aspnet/AspNetCore.Docs/tree/live/aspnetcore/security/authentication/add-user-data) .
+* В меню **Файл** Visual Studio откройте меню **Создать** > **Проект**. Назовите проект **WebApp1** Если вы хотите его совпадать с пространством имен [загрузить образец](https://github.com/aspnet/AspNetCore.Docs/tree/live/aspnetcore/security/authentication/add-user-data) кода.
 * Выберите **ASP.NET Core веб-приложение** > **ОК** .
 * Выберите **ASP.NET Core 3,0** в раскрывающемся списке.
 * Выберите **веб-приложение** > **ОК** .
@@ -56,7 +56,7 @@ ms.locfileid: "74681166"
 
 ::: moniker range="< aspnetcore-3.0"
 
-* В меню **Файл** Visual Studio откройте меню **Создать** > **Проект**. Присвойте проекту имя **APP1** , если вы хотите, чтобы оно соответствовало пространству имен примера кода для [скачивания](https://github.com/aspnet/AspNetCore.Docs/tree/live/aspnetcore/security/authentication/add-user-data) .
+* В меню **Файл** Visual Studio откройте меню **Создать** > **Проект**. Назовите проект **WebApp1** Если вы хотите его совпадать с пространством имен [загрузить образец](https://github.com/aspnet/AspNetCore.Docs/tree/live/aspnetcore/security/authentication/add-user-data) кода.
 * Выберите **ASP.NET Core веб-приложение** > **ОК** .
 * Выберите **ASP.NET Core 2,2** в раскрывающемся списке.
 * Выберите **веб-приложение** > **ОК** .
@@ -73,43 +73,43 @@ dotnet new webapp -o WebApp1
 
 ---
 
-## <a name="run-the-identity-scaffolder"></a>Запуск шаблона удостоверений
+## <a name="run-the-identity-scaffolder"></a>Запустите шаблон удостоверений
 
 # <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-* В **Обозреватель решений**щелкните правой кнопкой мыши проект > **Добавить** > новый шаблонный **элемент**.
-* В левой области диалогового окна **Добавление шаблона** выберите **удостоверение** > **добавить**.
-* В диалоговом окне **Добавление удостоверения** выполните следующие действия.
-  * Выберите существующий файл макета *~/пажес/шаред/_layout. cshtml*
+* Из **обозревателе решений**, правой кнопкой мыши проект > **добавить** > **создать шаблонный элемент**.
+* В области слева от **Добавление шаблона** диалоговое окно, выберите **удостоверений** > **добавить**.
+* В **удостоверение ADD** диалоговом окне следующие параметры:
+  * Выберите существующий файл макета *~/Pages/Shared/_Layout.cshtml*
   * Выберите следующие файлы для переопределения:
-    * **Учетная запись или регистр**
-    * **Учетная запись/управление/индекс**
-  * Нажмите кнопку **+** , чтобы создать новый **класс контекста данных**. Примите тип ("имя_проекта **. Models. WebApp1Context** ", если проект называется " **APP1**").
-  * Нажмите кнопку **+** , чтобы создать новый **класс пользователя**. Примите тип (**WebApp1User** , если проект называется "имя_проекта **") >** **добавить**.
-* Нажмите кнопку **Добавить**.
+    * **Учетная запись: регистрация**
+    * **Учетная запись и управление/индексов**
+  * Выберите **+** кнопку, чтобы создать новый **класс контекста данных**. Выберите тип (**WebApp1.Models.WebApp1Context** Если проект называется **WebApp1**).
+  * Выберите **+** кнопку, чтобы создать новый **класс пользователя**. Выберите тип (**WebApp1User** Если проект называется **WebApp1**) > **добавить**.
+* Выберите **добавить**.
 
 # <a name="net-core-clitabnetcore-cli"></a>[Интерфейс командной строки .NET Core](#tab/netcore-cli)
 
-Если вы ранее не устанавливали шаблон ASP.NET Core, установите его сейчас:
+Если вы еще не установлен шаблон ASP.NET Core, установите его:
 
 ```dotnetcli
 dotnet tool install -g dotnet-aspnet-codegenerator
 ```
 
-Добавьте ссылку на пакет в [Microsoft. VisualStudio. Web. стратегию. Design](https://www.nuget.org/packages/Microsoft.VisualStudio.Web.CodeGeneration.Design/) в файл проекта (с расширением CSPROJ). Выполните следующую команду в каталоге проекта:
+Добавьте ссылку на пакет [Microsoft.VisualStudio.Web.CodeGeneration.Design](https://www.nuget.org/packages/Microsoft.VisualStudio.Web.CodeGeneration.Design/) в файл проекта (csproj). Выполните следующую команду в каталоге проекта:
 
 ```dotnetcli
 dotnet add package Microsoft.VisualStudio.Web.CodeGeneration.Design
 dotnet restore
 ```
 
-Выполните следующую команду, чтобы вывести список параметров шаблона удостоверений:
+Выполните следующую команду, чтобы получить список вариантов шаблон удостоверений:
 
 ```dotnetcli
 dotnet aspnet-codegenerator identity -h
 ```
 
-В папке проекта запустите механизм формирования идентификаторов:
+В папке проекта запустите шаблон удостоверений:
 
 ```dotnetcli
 dotnet aspnet-codegenerator identity -u WebApp1User -fi Account.Register;Account.Manage.Index
@@ -117,21 +117,21 @@ dotnet aspnet-codegenerator identity -u WebApp1User -fi Account.Register;Account
 
 ---
 
-Следуйте инструкциям в разделе [миграция, усеаусентикатион и макет](xref:security/authentication/scaffold-identity#efm) , чтобы выполнить следующие действия.
+Следуя инструкциям из [миграция, UseAuthentication и макет](xref:security/authentication/scaffold-identity#efm) для выполните следующие действия:
 
-* Создайте миграцию и обновите базу данных.
+* Создание миграции и обновления базы данных.
 * Добавьте `UseAuthentication` в `Startup.Configure`.
-* Добавьте `<partial name="_LoginPartial" />` в файл макета.
+* Добавление `<partial name="_LoginPartial" />` с файлами макетов.
 * Проверьте работу приложения:
   * Регистрация пользователя
-  * Выберите новое имя пользователя (рядом с ссылкой для **выхода** ). Может потребоваться развернуть окно или выбрать значок панели навигации, чтобы отобразить имя пользователя и другие ссылки.
-  * Перейдите на вкладку **личные данные** .
-  * Нажмите кнопку **скачать** и рассмотрели файл *персоналдата. JSON* .
-  * Протестируйте кнопку **Удалить** , которая удаляет пользователя, выполнившего вход в систему.
+  * Выберите новое имя пользователя (рядом с полем **выхода** ссылку). Может потребоваться развернуть окно или выберите значок панели навигации, чтобы отобразить имя пользователя и другие ссылки.
+  * Выберите **персональных данных** вкладки.
+  * Выберите **загрузить** кнопку и изучить *PersonalData.json* файла.
+  * Тест **удалить** кнопку, которая удаляет вошедшего пользователя.
 
-## <a name="add-custom-user-data-to-the-identity-db"></a>Добавление настраиваемых данных пользователя в базу данных удостоверений
+## <a name="add-custom-user-data-to-the-identity-db"></a>Добавить пользовательские данные в базу данных удостоверений
 
-Обновление производного класса `IdentityUser` с помощью пользовательских свойств. Если вы назвали имя проекта Project, файл будет называться *Areas/Identity/Data/WebApp1User. CS*. Обновите файл, используя следующий код:
+Обновление `IdentityUser` производного класса с пользовательскими свойствами. Если вы с именем проекта WebApp1, этот файл имеет имя *Areas/Identity/Data/WebApp1User.cs*. Обновление файла следующим кодом:
 
 ::: moniker range=">= aspnetcore-3.0"
 
@@ -145,20 +145,20 @@ dotnet aspnet-codegenerator identity -u WebApp1User -fi Account.Register;Account
 
 ::: moniker-end
 
-Свойства, отмеченные атрибутом [персоналдата](/dotnet/api/microsoft.aspnetcore.identity.personaldataattribute) :
+Свойства с атрибутом [персоналдата](/dotnet/api/microsoft.aspnetcore.identity.personaldataattribute) :
 
-* Удаляется, когда страница Razor *Areas/Identity/Pages/Account/Manage/делетеперсоналдата. cshtml* вызывает `UserManager.Delete`.
-* Включается в Скачанные данные на странице Razor *Areas/Identity/Pages/Account/Manage/довнлоадперсоналдата. cshtml* .
+* Удалено, когда *Areas/Identity/Pages/Account/Manage/DeletePersonalData.cshtml* страница Razor вызывает `UserManager.Delete`.
+* Включенные в загруженные данные по *Areas/Identity/Pages/Account/Manage/DownloadPersonalData.cshtml* страницу Razor.
 
-### <a name="update-the-accountmanageindexcshtml-page"></a>Обновление страницы "учетная запись/управление/индекс. cshtml"
+### <a name="update-the-accountmanageindexcshtml-page"></a>Обновление страницы Account/Manage/Index.cshtml
 
-Обновите `InputModel` в *области/удостоверение/страницы/учетная запись/управление/index. cshtml. CS* со следующим выделенным кодом:
+Обновление `InputModel` в *Areas/Identity/Pages/Account/Manage/Index.cshtml.cs* на следующий выделенный код:
 
 ::: moniker range=">= aspnetcore-3.0"
 
 [!code-csharp[](add-user-data/samples/3.x/SampleApp/Areas/Identity/Pages/Account/Manage/Index.cshtml.cs?name=snippet&highlight=24-32,48-49,96-104,106)]
 
-Обновите *области, идентификаторы, страницы, учетные записи, а также управление/index. cshtml* с помощью следующей выделенной разметки:
+Обновление *Areas/Identity/Pages/Account/Manage/Index.cshtml* с выделенную ниже разметку:
 
 [!code-cshtml[](add-user-data/samples/3.x/SampleApp/Areas/Identity/Pages/Account/Manage/Index.cshtml?highlight=18-25)]
 
@@ -168,21 +168,21 @@ dotnet aspnet-codegenerator identity -u WebApp1User -fi Account.Register;Account
 
 [!code-csharp[](add-user-data/samples/2.x/SampleApp/Areas/Identity/Pages/Account/Manage/Index.cshtml.cs?name=snippet&highlight=28-36,63-64,98-106,119)]
 
-Обновите *области, идентификаторы, страницы, учетные записи, а также управление/index. cshtml* с помощью следующей выделенной разметки:
+Обновление *Areas/Identity/Pages/Account/Manage/Index.cshtml* с выделенную ниже разметку:
 
 [!code-chtml[](add-user-data/samples/2.x/SampleApp/Areas/Identity/Pages/Account/Manage/Index.cshtml?highlight=35-42)]
 
 ::: moniker-end
 
-### <a name="update-the-accountregistercshtml-page"></a>Обновление страницы "учетная запись/регистрация. cshtml"
+### <a name="update-the-accountregistercshtml-page"></a>Обновление страницы Account/Register.cshtml
 
-Обновите `InputModel` в *области, Identity, Pages/Account/Register. cshtml. CS* со следующим выделенным кодом:
+Обновление `InputModel` в *Areas/Identity/Pages/Account/Register.cshtml.cs* на следующий выделенный код:
 
 ::: moniker range=">= aspnetcore-3.0"
 
 [!code-csharp[](add-user-data/samples/3.x/SampleApp/Areas/Identity/Pages/Account/Register.cshtml.cs?name=snippet&highlight=30-38,70-71)]
 
-Обновите *области, идентификаторы, страницы, учетную запись или Register. cshtml* со следующей выделенной разметкой:
+Обновление *Areas/Identity/Pages/Account/Register.cshtml* с выделенную ниже разметку:
 
 [!code-cshtml[](add-user-data/samples/3.x/SampleApp/Areas/Identity/Pages/Account/Register.cshtml?highlight=16-25)]
 
@@ -192,7 +192,7 @@ dotnet aspnet-codegenerator identity -u WebApp1User -fi Account.Register;Account
 
 [!code-csharp[](add-user-data/samples/2.x/SampleApp/Areas/Identity/Pages/Account/Register.cshtml.cs?name=snippet&highlight=28-36,67,66)]
 
-Обновите *области, идентификаторы, страницы, учетную запись или Register. cshtml* со следующей выделенной разметкой:
+Обновление *Areas/Identity/Pages/Account/Register.cshtml* с выделенную ниже разметку:
 
 [!code-chtml[](add-user-data/samples/2.x/SampleApp/Areas/Identity/Pages/Account/Register.cshtml?highlight=16-25)]
 
@@ -201,11 +201,11 @@ dotnet aspnet-codegenerator identity -u WebApp1User -fi Account.Register;Account
 
 Постройте проект.
 
-### <a name="add-a-migration-for-the-custom-user-data"></a>Добавление миграции для настраиваемых данных пользователя
+### <a name="add-a-migration-for-the-custom-user-data"></a>Добавьте миграцию для пользовательских данных
 
 # <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-В **консоли диспетчера пакетов**Visual Studio:
+В Visual Studio **консоль диспетчера пакетов**:
 
 ```powershell
 Add-Migration CustomUserData
@@ -221,10 +221,10 @@ dotnet ef database update
 
 ---
 
-## <a name="test-create-view-download-delete-custom-user-data"></a>Тестирование создания, просмотра, загрузки, удаления пользовательских данных пользователя
+## <a name="test-create-view-download-delete-custom-user-data"></a>Тест создание, просмотр, загрузка, удалить пользовательские данные
 
 Проверьте работу приложения:
 
 * Регистрация нового пользователя.
-* Просмотр настраиваемых данных пользователя на странице `/Identity/Account/Manage`.
-* Скачайте и просмотрите персональные данные пользователей на странице `/Identity/Account/Manage/PersonalData`.
+* Просмотр пользовательских данных на `/Identity/Account/Manage` страницы.
+* Скачать и просмотреть личные данные пользователей из `/Identity/Account/Manage/PersonalData` страницы.
