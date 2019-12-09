@@ -4,64 +4,51 @@ author: rick-anderson
 ms.author: riande
 description: Обнаруживайте атрибуты вспомогательной функции тега сценария ASP.NET Core и роль, которую играет каждый атрибут в расширении поведения тега сценария HTML.
 ms.custom: mvc
-ms.date: 12/18/2018
+ms.date: 12/02/2019
 uid: mvc/views/tag-helpers/builtin-th/script-tag-helper
-ms.openlocfilehash: 5f2fb8a45048804afa8aff2989cd53489e45a33b
-ms.sourcegitcommit: fae6f0e253f9d62d8f39de5884d2ba2b4b2a6050
+ms.openlocfilehash: 8a90eb5a74ff3f8178a47c59ad7ba1b6a389ab87
+ms.sourcegitcommit: 3b6b0a54b20dc99b0c8c5978400c60adf431072f
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71256468"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74717381"
 ---
-# <a name="script-tag-helper-in-aspnet-core"></a><span data-ttu-id="e7715-103">Вспомогательная функция тега сценария в ASP.NET Core</span><span class="sxs-lookup"><span data-stu-id="e7715-103">Script Tag Helper in ASP.NET Core</span></span>
+# <a name="script-tag-helper-in-aspnet-core"></a><span data-ttu-id="65751-103">Вспомогательная функция тега сценария в ASP.NET Core</span><span class="sxs-lookup"><span data-stu-id="65751-103">Script Tag Helper in ASP.NET Core</span></span>
 
-<span data-ttu-id="e7715-104">Автор: [Рик Андерсон](https://twitter.com/RickAndMSFT) (Rick Anderson)</span><span class="sxs-lookup"><span data-stu-id="e7715-104">By [Rick Anderson](https://twitter.com/RickAndMSFT)</span></span>
+<span data-ttu-id="65751-104">Автор: [Рик Андерсон](https://twitter.com/RickAndMSFT) (Rick Anderson)</span><span class="sxs-lookup"><span data-stu-id="65751-104">By [Rick Anderson](https://twitter.com/RickAndMSFT)</span></span>
 
-<span data-ttu-id="e7715-105">[Вспомогательная функция тега сценария](xref:Microsoft.AspNetCore.Mvc.TagHelpers.ScriptTagHelper) создает ссылку на первичный или резервный файл сценария.</span><span class="sxs-lookup"><span data-stu-id="e7715-105">The [Script Tag Helper](xref:Microsoft.AspNetCore.Mvc.TagHelpers.ScriptTagHelper) generates a link to a primary or fall back script file.</span></span> <span data-ttu-id="e7715-106">Обычно первичный файл сценария находится в [сети доставки содержимого](/office365/enterprise/content-delivery-networks#what-exactly-is-a-cdn) (CDN).</span><span class="sxs-lookup"><span data-stu-id="e7715-106">Typically the primary script file is on a [Content Delivery Network](/office365/enterprise/content-delivery-networks#what-exactly-is-a-cdn) (CDN).</span></span>
+<span data-ttu-id="65751-105">[Вспомогательная функция тега сценария](xref:Microsoft.AspNetCore.Mvc.TagHelpers.ScriptTagHelper) создает ссылку на первичный или резервный файл сценария.</span><span class="sxs-lookup"><span data-stu-id="65751-105">The [Script Tag Helper](xref:Microsoft.AspNetCore.Mvc.TagHelpers.ScriptTagHelper) generates a link to a primary or fall back script file.</span></span> <span data-ttu-id="65751-106">Обычно первичный файл сценария находится в [сети доставки содержимого](/office365/enterprise/content-delivery-networks#what-exactly-is-a-cdn) (CDN).</span><span class="sxs-lookup"><span data-stu-id="65751-106">Typically the primary script file is on a [Content Delivery Network](/office365/enterprise/content-delivery-networks#what-exactly-is-a-cdn) (CDN).</span></span>
 
 [!INCLUDE[](~/includes/cdn.md)]
 
-<span data-ttu-id="e7715-107">Вспомогательная функция тега сценария позволяет указать CDN для файла сценария и резервную копию, если CDN недоступен.</span><span class="sxs-lookup"><span data-stu-id="e7715-107">The Script Tag Helper allows you to specify a CDN for the script file and a fallback when the CDN is not available.</span></span> <span data-ttu-id="e7715-108">Вспомогательная функция тега сценария обеспечивает высокую производительность CDN с надежностью локального размещения.</span><span class="sxs-lookup"><span data-stu-id="e7715-108">The Script Tag Helper provides the performance advantage of a CDN with the robustness of local hosting.</span></span>
+<span data-ttu-id="65751-107">Вспомогательная функция тега сценария позволяет указать CDN для файла сценария и резервную копию, если CDN недоступен.</span><span class="sxs-lookup"><span data-stu-id="65751-107">The Script Tag Helper allows you to specify a CDN for the script file and a fallback when the CDN is not available.</span></span> <span data-ttu-id="65751-108">Вспомогательная функция тега сценария обеспечивает высокую производительность CDN с надежностью локального размещения.</span><span class="sxs-lookup"><span data-stu-id="65751-108">The Script Tag Helper provides the performance advantage of a CDN with the robustness of local hosting.</span></span>
 
-<span data-ttu-id="e7715-109">В следующей разметке Razor показан элемент `script` файла макета, созданного с помощью шаблона веб-приложения ASP.NET Core:</span><span class="sxs-lookup"><span data-stu-id="e7715-109">The following Razor markup shows the `script` element of a layout file created with the ASP.NET Core web app template:</span></span>
+<span data-ttu-id="65751-109">В следующей разметке Razor показан элемент `script` с резервной копией:</span><span class="sxs-lookup"><span data-stu-id="65751-109">The following Razor markup shows a `script` element with a fallback:</span></span>
 
-[!code-html[](link-tag-helper/sample/_Layout.cshtml?name=snippet2)]
+```HTML
+<script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-3.3.1.min.js"
+        asp-fallback-src="~/lib/jquery/dist/jquery.min.js"
+        asp-fallback-test="window.jQuery"
+        crossorigin="anonymous"
+        integrity="sha384-tsQFqpEReu7ZLhBV2VZlAu7zcOV+rXbYlF2cqB8txI/8aZajjp4Bqd+V6D5IgvKT">
+</script>
+```
 
-<span data-ttu-id="e7715-110">Следующий код похож на отображаемый HTML из предыдущего кода (в среде, не являющейся средой разработки):</span><span class="sxs-lookup"><span data-stu-id="e7715-110">The following is similar to the rendered HTML from the preceding code (in a non-Development environment):</span></span>
+<span data-ttu-id="65751-110">Не используйте атрибут [defer](https://developer.mozilla.org/docs/Web/HTML/Element/script) элемента `<script>`, чтобы отложить загрузку скрипта CDN.</span><span class="sxs-lookup"><span data-stu-id="65751-110">Don't use the `<script>` element's [defer](https://developer.mozilla.org/docs/Web/HTML/Element/script) attribute to defer loading the CDN script.</span></span> <span data-ttu-id="65751-111">Вспомогательная функция тега скрипта обрабатывает код JavaScript, который сразу же выполняет выражение [asp-fallback-test](#asp-fallback-test).</span><span class="sxs-lookup"><span data-stu-id="65751-111">The Script Tag Helper renders JavaScript that immediately executes the [asp-fallback-test](#asp-fallback-test) expression.</span></span> <span data-ttu-id="65751-112">Это выражение дает сбой, если загрузка скрипта CDN отложена.</span><span class="sxs-lookup"><span data-stu-id="65751-112">The expression fails if loading the CDN script is deferred.</span></span>
 
-[!code-csharp[](link-tag-helper/sample/HtmlPage2.html)]
+## <a name="commonly-used-script-tag-helper-attributes"></a><span data-ttu-id="65751-113">Часто используемые атрибуты вспомогательной функции тега сценария</span><span class="sxs-lookup"><span data-stu-id="65751-113">Commonly used Script Tag Helper attributes</span></span>
 
-<span data-ttu-id="e7715-111">В приведенном выше коде вспомогательная функция тега сценария создала второй элемент сценария (`<script>  (window.jQuery || document.write(`), который проверяет на наличие `window.jQuery`.</span><span class="sxs-lookup"><span data-stu-id="e7715-111">In the preceding code, the Script Tag Helper generated the second script ( `<script>  (window.jQuery || document.write(`) element, which tests for `window.jQuery`.</span></span> <span data-ttu-id="e7715-112">Если `window.jQuery` не найден, `document.write(` выполняется и создает сценарий.</span><span class="sxs-lookup"><span data-stu-id="e7715-112">If `window.jQuery` is not found, `document.write(` runs and creates a script</span></span> 
+<span data-ttu-id="65751-114">Все атрибуты, свойства и методы вспомогательной функции тега сценария см. в статье [ScriptTagHelper Class](xref:Microsoft.AspNetCore.Mvc.TagHelpers.ScriptTagHelper) (Класс ScriptTagHelper).</span><span class="sxs-lookup"><span data-stu-id="65751-114">See [Script Tag Helper](xref:Microsoft.AspNetCore.Mvc.TagHelpers.ScriptTagHelper) for all the Script Tag Helper attributes, properties, and methods.</span></span>
 
-## <a name="commonly-used-script-tag-helper-attributes"></a><span data-ttu-id="e7715-113">Часто используемые атрибуты вспомогательной функции тега сценария</span><span class="sxs-lookup"><span data-stu-id="e7715-113">Commonly used Script Tag Helper attributes</span></span>
+### <a name="asp-fallback-test"></a><span data-ttu-id="65751-115">asp-fallback-test</span><span class="sxs-lookup"><span data-stu-id="65751-115">asp-fallback-test</span></span>
 
-<span data-ttu-id="e7715-114">Все атрибуты, свойства и методы вспомогательной функции тега сценария см. в статье [ScriptTagHelper Class](xref:Microsoft.AspNetCore.Mvc.TagHelpers.ScriptTagHelper) (Класс ScriptTagHelper).</span><span class="sxs-lookup"><span data-stu-id="e7715-114">See [Script Tag Helper](xref:Microsoft.AspNetCore.Mvc.TagHelpers.ScriptTagHelper) for all the Script Tag Helper attributes, properties, and methods.</span></span>
+<span data-ttu-id="65751-116">Метод скрипта, определенный в основном скрипте, для использования в тесте резервного экземпляра.</span><span class="sxs-lookup"><span data-stu-id="65751-116">The script method defined in the primary script to use for the fallback test.</span></span> <span data-ttu-id="65751-117">Дополнительные сведения можно найти по адресу: <xref:Microsoft.AspNetCore.Mvc.TagHelpers.ScriptTagHelper.FallbackTestExpression>.</span><span class="sxs-lookup"><span data-stu-id="65751-117">For more information, see <xref:Microsoft.AspNetCore.Mvc.TagHelpers.ScriptTagHelper.FallbackTestExpression>.</span></span>
 
-### <a name="href"></a><span data-ttu-id="e7715-115">href</span><span class="sxs-lookup"><span data-stu-id="e7715-115">href</span></span>
+### <a name="asp-fallback-src"></a><span data-ttu-id="65751-118">asp-fallback-src</span><span class="sxs-lookup"><span data-stu-id="65751-118">asp-fallback-src</span></span>
 
-<span data-ttu-id="e7715-116">Предпочтительный адрес связанного ресурса.</span><span class="sxs-lookup"><span data-stu-id="e7715-116">Preferred address of the linked resource.</span></span> <span data-ttu-id="e7715-117">Адрес передается в созданный код HTML во всех случаях.</span><span class="sxs-lookup"><span data-stu-id="e7715-117">The address is passed thought to the generated HTML in all cases.</span></span>
+<span data-ttu-id="65751-119">URL-адрес тега Script, на который можно перейти в случае сбоя основного URL-адреса.</span><span class="sxs-lookup"><span data-stu-id="65751-119">The URL of a Script tag to fallback to in the case the primary one fails.</span></span> <span data-ttu-id="65751-120">Дополнительные сведения можно найти по адресу: <xref:Microsoft.AspNetCore.Mvc.TagHelpers.ScriptTagHelper.FallbackSrc>.</span><span class="sxs-lookup"><span data-stu-id="65751-120">For more information, see <xref:Microsoft.AspNetCore.Mvc.TagHelpers.ScriptTagHelper.FallbackSrc>.</span></span>
 
-### <a name="asp-fallback-href"></a><span data-ttu-id="e7715-118">asp-fallback-href</span><span class="sxs-lookup"><span data-stu-id="e7715-118">asp-fallback-href</span></span>
-
-<span data-ttu-id="e7715-119">URL-адрес таблицы стилей CSS, к которой можно перейти в случае сбоя основного URL-адреса.</span><span class="sxs-lookup"><span data-stu-id="e7715-119">The URL of a CSS stylesheet to fallback to in the case the primary URL fails.</span></span>
-
-### <a name="asp-fallback-test-class"></a><span data-ttu-id="e7715-120">asp-fallback-test-class</span><span class="sxs-lookup"><span data-stu-id="e7715-120">asp-fallback-test-class</span></span>
-
-<span data-ttu-id="e7715-121">Имя класса, определенное в таблице стилей для использования в качестве теста резервного экземпляра.</span><span class="sxs-lookup"><span data-stu-id="e7715-121">The class name defined in the stylesheet to use for the fallback test.</span></span> <span data-ttu-id="e7715-122">Дополнительные сведения можно найти по адресу: <xref:Microsoft.AspNetCore.Mvc.TagHelpers.LinkTagHelper.FallbackTestClass>.</span><span class="sxs-lookup"><span data-stu-id="e7715-122">For more information, see <xref:Microsoft.AspNetCore.Mvc.TagHelpers.LinkTagHelper.FallbackTestClass>.</span></span>
-
-### <a name="asp-fallback-test-property"></a><span data-ttu-id="e7715-123">asp-fallback-test-property</span><span class="sxs-lookup"><span data-stu-id="e7715-123">asp-fallback-test-property</span></span>
-
-<span data-ttu-id="e7715-124">Имя свойства CSS, используемое для теста резервного экземпляра.</span><span class="sxs-lookup"><span data-stu-id="e7715-124">The CSS property name to use for the fallback test.</span></span> <span data-ttu-id="e7715-125">Дополнительные сведения можно найти по адресу: <xref:Microsoft.AspNetCore.Mvc.TagHelpers.LinkTagHelper.FallbackTestProperty>.</span><span class="sxs-lookup"><span data-stu-id="e7715-125">For more information, see <xref:Microsoft.AspNetCore.Mvc.TagHelpers.LinkTagHelper.FallbackTestProperty>.</span></span>
-
-### <a name="asp-fallback-test-value"></a><span data-ttu-id="e7715-126">asp-fallback-test-value</span><span class="sxs-lookup"><span data-stu-id="e7715-126">asp-fallback-test-value</span></span>
-
-<span data-ttu-id="e7715-127">Значение свойства CSS, используемое для теста резервного экземпляра.</span><span class="sxs-lookup"><span data-stu-id="e7715-127">The CSS property value to use for the fallback test.</span></span> <span data-ttu-id="e7715-128">Дополнительные сведения можно найти по адресу: <xref:Microsoft.AspNetCore.Mvc.TagHelpers.LinkTagHelper.FallbackTestValue>.</span><span class="sxs-lookup"><span data-stu-id="e7715-128">For more information, see <xref:Microsoft.AspNetCore.Mvc.TagHelpers.LinkTagHelper.FallbackTestValue>.</span></span>
-
-### <a name="asp-fallback-test-value"></a><span data-ttu-id="e7715-129">asp-fallback-test-value</span><span class="sxs-lookup"><span data-stu-id="e7715-129">asp-fallback-test-value</span></span>
-
-<span data-ttu-id="e7715-130">Значение свойства CSS, используемое для теста резервного экземпляра.</span><span class="sxs-lookup"><span data-stu-id="e7715-130">The CSS property value to use for the fallback test.</span></span> <span data-ttu-id="e7715-131">Дополнительные сведения см. в разделе <xref:Microsoft.AspNetCore.Mvc.TagHelpers.LinkTagHelper.FallbackTestValue>.</span><span class="sxs-lookup"><span data-stu-id="e7715-131">For more information, see <xref:Microsoft.AspNetCore.Mvc.TagHelpers.LinkTagHelper.FallbackTestValue></span></span>
-
-## <a name="additional-resources"></a><span data-ttu-id="e7715-132">Дополнительные ресурсы</span><span class="sxs-lookup"><span data-stu-id="e7715-132">Additional resources</span></span>
+## <a name="additional-resources"></a><span data-ttu-id="65751-121">Дополнительные ресурсы</span><span class="sxs-lookup"><span data-stu-id="65751-121">Additional resources</span></span>
 
 * <xref:mvc/views/tag-helpers/intro>
 * <xref:mvc/controllers/areas>
