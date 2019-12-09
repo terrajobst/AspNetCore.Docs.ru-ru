@@ -7,32 +7,32 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 11/07/2019
 uid: mvc/controllers/testing
-ms.openlocfilehash: 7f4fcb1a5d6e9959c751ebe24e41b39ee05a5819
-ms.sourcegitcommit: 67116718dc33a7a01696d41af38590fdbb58e014
+ms.openlocfilehash: 449d8791962e4233d599f364b2e8c922f0975d2f
+ms.sourcegitcommit: 0dd224b2b7efca1fda0041b5c3f45080327033f6
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73799504"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74681101"
 ---
-# <a name="test-controller-logic-in-aspnet-core"></a>Тестирование логики контроллера в ASP.NET Core
+# <a name="unit-test-controller-logic-in-aspnet-core"></a>Модульное тестирование логики контроллера в ASP.NET Core
 
 Автор: [Стив Смит](https://ardalis.com/) (Steve Smith)
 
 ::: moniker range=">= aspnetcore-3.0"
 
-[Контроллеры](xref:mvc/controllers/actions) играют важнейшую роль в любом приложении MVC на ASP.NET Core. Это означает, что вы должны быть полностью уверены в правильности их работы. Автоматические тесты позволяют обнаружить ошибки до развертывания приложения в рабочей среде.
-
-[Просмотреть или скачать образец кода](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/controllers/testing/samples/) ([как скачивать](xref:index#how-to-download-a-sample))
-
-## <a name="unit-tests-of-controller-logic"></a>Модульное тестирование логики контроллера
-
 [Модульное тестирование](/dotnet/articles/core/testing/unit-testing-with-dotnet-test) предполагает тестирование части приложения изолированно от его инфраструктуры и зависимостей. При модульном тестировании логики контроллера тестируется только содержимое отдельного действия, но не поведение его зависимостей или самой платформы.
+
+## <a name="unit-testing-controllers"></a>Модульное тестирование контроллеров
 
 Настройте модульные тесты для действий контроллера, чтобы сосредоточиться на поведении контроллера. В модульных тестах контроллера не учитываются такие аспекты, как [фильтрация](xref:mvc/controllers/filters), [маршрутизация](xref:fundamentals/routing) и (или) [привязка модели](xref:mvc/models/model-binding). Тесты, учитывающие взаимодействие компонентов, участвующих в ответе на запрос, включены в *интеграционные тесты*. Дополнительные сведения об интеграционных тестах см. в статье <xref:test/integration-tests>.
 
 Если вы создаете пользовательские фильтры и маршруты, проводите для них модульное тестирование изолированно, но не в рамках тестирования определенного действия контроллера.
 
-Для демонстрации модульных тестов контроллера давайте рассмотрим контроллер в приведенном ниже примере приложения. Этот контроллер Home выводит список сеансов мозгового штурма и позволяет создавать новые сеансы с помощью запроса POST.
+Для демонстрации модульных тестов контроллера давайте рассмотрим контроллер в приведенном ниже примере приложения. 
+
+[Просмотреть или скачать образец кода](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/controllers/testing/samples/) ([как скачивать](xref:index#how-to-download-a-sample))
+
+Этот контроллер Home выводит список сеансов мозгового штурма и позволяет создавать новые сеансы с помощью запроса POST.
 
 [!code-csharp[](testing/samples/3.x/TestingControllersSample/src/TestingControllersSample/Controllers/HomeController.cs?name=snippet_HomeController&highlight=1,5,10,31-32)]
 

@@ -5,14 +5,14 @@ description: Процедура настройки Apache в качестве о
 monikerRange: '>= aspnetcore-2.1'
 ms.author: shboyer
 ms.custom: mvc
-ms.date: 11/05/2019
+ms.date: 12/02/2019
 uid: host-and-deploy/linux-apache
-ms.openlocfilehash: fce91db736908e433ba6803319aa8984bb68a554
-ms.sourcegitcommit: 6628cd23793b66e4ce88788db641a5bbf470c3c1
+ms.openlocfilehash: 730ed1847ec5728657d56db3ccf0f1f5fab6b5dd
+ms.sourcegitcommit: 3b6b0a54b20dc99b0c8c5978400c60adf431072f
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73659886"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74717368"
 ---
 # <a name="host-aspnet-core-on-linux-with-apache"></a>Размещение ASP.NET Core в операционной системе Linux с Apache
 
@@ -24,10 +24,13 @@ ms.locfileid: "73659886"
 
 * Сервер под управлением CentOS 7 и учетная запись обычного пользователя с правами sudo.
 * Установите среду выполнения .NET Core на сервере.
-   1. Перейдите на [страницу всех загрузок .NET Core](https://www.microsoft.com/net/download/all).
-   1. Выберите последнюю не предварительную версию среды выполнения из списка под заголовком **Среда выполнения**.
-   1. Сделайте выбор и следуйте инструкциям для CentOS/Oracle.
+   1. Перейдите на [страницу скачивания .NET Core](https://dotnet.microsoft.com/download/dotnet-core).
+   1. Выберите последнюю не предварительную версию .NET Core.
+   1. Скачайте последнюю не предварительную версию среды выполнения из таблицы под заголовком **Run apps — Runtime** (Выполнение приложений — среда выполнения).
+   1. Щелкните ссылку **Package manager instructions** (Инструкции диспетчера пакетов) для Linux и выполните инструкции для CentOS.
 * Существующее приложение ASP.NET Core.
+
+Перезапустить приложения ASP.NET Core, размещенные на сервере, можно в любой момент после обновления общей платформы.
 
 ## <a name="publish-and-copy-over-the-app"></a>Публикация и копирование приложения
 
@@ -380,6 +383,10 @@ sudo systemctl restart httpd
 ```
 
 ## <a name="additional-apache-suggestions"></a>Дополнительные предложения Apache
+
+### <a name="restart-apps-with-shared-framework-updates"></a>Перезапуск приложений после обновления общей платформы
+
+После обновления общей платформы на сервере перезапустите размещенные на нем приложения ASP.NET Core.
 
 ### <a name="additional-headers"></a>Дополнительные заголовки
 

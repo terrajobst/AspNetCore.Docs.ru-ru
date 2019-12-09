@@ -3,14 +3,14 @@ title: Справочник по синтаксису Razor для ASP.NET Core
 author: rick-anderson
 description: Сведения о синтаксисе разметки Razor для внедрения в веб-страницы серверного кода.
 ms.author: riande
-ms.date: 09/28/2019
+ms.date: 11/09/2019
 uid: mvc/views/razor
-ms.openlocfilehash: 6f8835419dbf4c271617f57484c3408e0af30617
-ms.sourcegitcommit: f62014bb558ff6f8fdaef2e96cb05986e216aacd
+ms.openlocfilehash: dea1cd8986757b0bafab9ba9e8aa358a57a6b5eb
+ms.sourcegitcommit: 3e503ef510008e77be6dd82ee79213c9f7b97607
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/28/2019
-ms.locfileid: "71592328"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74317409"
 ---
 # <a name="razor-syntax-reference-for-aspnet-core"></a>Справочник по синтаксису Razor для ASP.NET Core
 
@@ -676,7 +676,7 @@ public class _Views_Account_Login_cshtml : RazorPage<LoginViewModel>
 
 Директива `@page` имеет различные эффекты в зависимости от типа файла, в котором она используется. Директива:
 
-* В *.cshtml*-файле указывает, что файл является страницей Razor. Дополнительные сведения можно найти по адресу: <xref:razor-pages/index>.
+* В *.cshtml*-файле указывает, что файл является страницей Razor. Дополнительные сведения см. в разделе [Пользовательские маршруты](xref:razor-pages/index#custom-routes) и <xref:razor-pages/index>.
 * Указывает, что компонент Razor должен выполнять запросы напрямую. Дополнительные сведения можно найти по адресу: <xref:blazor/routing>.
 
 ::: moniker-end
@@ -721,11 +721,31 @@ public class _Views_Account_Login_cshtml : RazorPage<LoginViewModel>
 
 Привязка данных в компонентах выполняется с помощью атрибута `@bind`. Дополнительные сведения можно найти по адресу: <xref:blazor/components#data-binding>.
 
-### <a name="onevent"></a>\@on{event}
+### <a name="onevent"></a>\@on{СОБЫТИЕ}
 
 *Этот сценарий применяется только к компонентам Razor (.razor).*
 
 Razor предоставляет функции обработки событий для компонентов. Дополнительные сведения можно найти по адресу: <xref:blazor/components#event-handling>.
+
+::: moniker-end
+
+::: moniker range=">= aspnetcore-3.1"
+
+### <a name="oneventpreventdefault"></a>\@on{СОБЫТИЕ}:preventDefault
+
+*Этот сценарий применяется только к компонентам Razor (.razor).*
+
+Запрещает выполнение действия по умолчанию для события.
+
+### <a name="oneventstoppropagation"></a>\@on{СОБЫТИЕ}:stopPropagation
+
+*Этот сценарий применяется только к компонентам Razor (.razor).*
+
+Останавливает распространение события.
+
+::: moniker-end
+
+::: moniker range=">= aspnetcore-3.0"
 
 ### <a name="key"></a>\@key
 

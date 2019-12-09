@@ -4,14 +4,14 @@ author: rick-anderson
 description: Узнайте, как вызывать веб-API ASP.NET Core с помощью JavaScript.
 ms.author: riande
 ms.custom: mvc
-ms.date: 08/27/2019
+ms.date: 11/26/2019
 uid: tutorials/web-api-javascript
-ms.openlocfilehash: 0070816149d64fc1d71d453eb0f135050c78597a
-ms.sourcegitcommit: 3fc3020961e1289ee5bf5f3c365ce8304d8ebf19
+ms.openlocfilehash: 5a31aa2974eb41938db89f97c070c352a26290fd
+ms.sourcegitcommit: 0dd224b2b7efca1fda0041b5c3f45080327033f6
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "72378706"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74681179"
 ---
 # <a name="tutorial-call-an-aspnet-core-web-api-with-javascript"></a>Учебник. Вызов веб-API ASP.NET Core с помощью JavaScript
 
@@ -44,13 +44,15 @@ ms.locfileid: "72378706"
 
     [!code-csharp[](first-web-api/samples/3.0/TodoApi/StartupJavaScript.cs?highlight=8-9&name=snippet_configure)]
 
-1. Создайте каталог *wwwroot* в корневой папке проекта.
+1. Создайте папку *wwwroot* в корневом каталоге проекта.
 
-1. Добавьте HTML-файл *index.html* в каталог *wwwroot*. Замените его содержимое следующей разметкой:
+1. Создайте папку *js* в папке *wwwroot*.
+
+1. Добавьте HTML-файл *index.html* в папку *wwwroot*. Замените содержимое файла *index.html* следующей разметкой:
 
     [!code-html[](first-web-api/samples/3.0/TodoApi/wwwroot/index.html)]
 
-1. Добавьте файл JavaScript с именем *site.js* в каталог *wwwroot*. Замените его содержимое следующим кодом:
+1. Добавьте файл JavaScript с именем *site.js* в папку *wwwroot/js*. Замените содержимое файла *site.js* следующим кодом:
 
     [!code-javascript[](first-web-api/samples/3.0/TodoApi/wwwroot/js/site.js?name=snippet_SiteJs)]
 
@@ -75,9 +77,9 @@ ms.locfileid: "72378706"
 
 * Переменная `item` объявляется для создания представления объектного литерала элемента списка задач.
 * Для запроса Fetch настраиваются следующие параметры:
-    * `method` определяет команду действия HTTP POST.
-    * `body` определяет представление JSON текста запроса. JSON создается путем передачи литерала объекта, хранящегося в `item`, в функцию [JSON.stringify](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/JSON/stringify).
-    * `headers` определяет заголовки `Accept` и `Content-Type` запросов HTTP. Для обеих параметров устанавливается значение `application/json`, чтобы классифицировать тип носителя при получении и отправке соответственно.
+  * `method` определяет команду действия HTTP POST.
+  * `body` определяет представление JSON текста запроса. JSON создается путем передачи литерала объекта, хранящегося в `item`, в функцию [JSON.stringify](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/JSON/stringify).
+  * `headers` определяет заголовки `Accept` и `Content-Type` запросов HTTP. Для обеих параметров устанавливается значение `application/json`, чтобы классифицировать тип носителя при получении и отправке соответственно.
 * HTTP-запрос POST направляется по пути *api/TodoItems*.
 
 [!code-javascript[](first-web-api/samples/3.0/TodoApi/wwwroot/js/site.js?name=snippet_AddItem)]

@@ -4,14 +4,14 @@ author: stevejgordon
 description: Сведения об использовании интерфейса IHttpClientFactory для управления логическими экземплярами HttpClient в ASP.NET Core.
 ms.author: scaddie
 ms.custom: mvc
-ms.date: 10/27/2019
+ms.date: 11/27/2019
 uid: fundamentals/http-requests
-ms.openlocfilehash: a963833acfa12889c8ae3dac443962682e1cb931
-ms.sourcegitcommit: 032113208bb55ecfb2faeb6d3e9ea44eea827950
+ms.openlocfilehash: f33444b8fc08dc022da7700af53a218600290162
+ms.sourcegitcommit: 169ea5116de729c803685725d96450a270bc55b7
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/31/2019
-ms.locfileid: "73190581"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74733925"
 ---
 # <a name="make-http-requests-using-ihttpclientfactory-in-aspnet-core"></a>Выполнения HTTP-запросов с помощью IHttpClientFactory в ASP.NET Core
 
@@ -288,6 +288,35 @@ public class ValuesController : ControllerBase
 
 До появления `IHttpClientFactory` один экземпляр `HttpClient` часто сохраняли в активном состоянии в течение длительного времени. После перехода на `IHttpClientFactory` это уже не нужно.
 
+### <a name="alternatives-to-ihttpclientfactory"></a>Альтернативы интерфейсу IHttpClientFactory
+
+Использование `IHttpClientFactory` в приложении с внедрением зависимостей позволяет:
+
+* предотвращать проблемы нехватки ресурсов путем объединения экземпляров `HttpMessageHandler` в пулы;
+* предотвращать проблемы устаревания записей DNS путем регулярной утилизации экземпляров `HttpMessageHandler`.
+
+Существуют альтернативные способы решения указанных выше проблем с помощью долгосрочного экземпляра <xref:System.Net.Http.SocketsHttpHandler>.
+
+- Создайте экземпляр `SocketsHttpHandler` при запуске приложения и используйте его в течение всего жизненного цикла приложения.
+- Присвойте <xref:System.Net.Http.SocketsHttpHandler.PooledConnectionLifetime> соответствующее значение в соответствии со временем обновления записей DNS.
+- По мере необходимости создавайте экземпляры `HttpClient` с помощью `new HttpClient(handler, dispostHandler: false)`.
+
+Описанные выше подходы решают проблемы, связанные с управлением ресурсами, которые в `IHttpClientFactory` решаются сходным образом.
+
+- `SocketsHttpHandler` обеспечивает совместное использование подключений экземплярами `HttpClient`. Этот позволяет предотвратить нехватку сокетов.
+- `SocketsHttpHandler` уничтожает подключения в соответствии со значением `PooledConnectionLifetime`, чтобы предотвратить проблемы устаревания записей DNS.
+
+### <a name="cookies"></a>Файлы cookie
+
+Объединение экземпляров `HttpMessageHandler` в пул приводит к совместному использованию объектов `CookieContainer`. Непредвиденное совместное использование объектов `CookieContainer` часто приводит к ошибкам в коде. Для приложений, которым требуются файлы cookie, рекомендуется один из следующих подходов:
+
+ - отключите автоматическую обработку файлов cookie;
+ - не используйте `IHttpClientFactory`.
+
+Чтобы отключить автоматическую обработку файлов cookie, вызовите <xref:Microsoft.Extensions.DependencyInjection.HttpClientBuilderExtensions.ConfigurePrimaryHttpMessageHandler*>:
+
+[!code-csharp[](http-requests/samples/2.x/HttpClientFactorySample/Startup.cs?name=snippet13)]
+
 ## <a name="logging"></a>Ведение журнала
 
 Клиенты, созданные через `IHttpClientFactory`, записывают сообщения журнала для всех запросов. Установите соответствующий уровень информации в конфигурации ведения журнала, чтобы просматривать сообщения журнала по умолчанию. Дополнительное ведение журнала, например запись заголовков запросов, включено только на уровне трассировки.
@@ -559,6 +588,35 @@ public class ValuesController : ControllerBase
 Высвобождать клиент не требуется. Высвобождение отменяет исходящие запросы и гарантирует, что указанный экземпляр `HttpClient` не может использоваться после вызова <xref:System.IDisposable.Dispose*>. `IHttpClientFactory` отслеживает и высвобождает ресурсы, используемые экземплярами `HttpClient`. Экземпляры `HttpClient` обычно можно рассматривать как объекты .NET, не требующие высвобождения.
 
 До появления `IHttpClientFactory` один экземпляр `HttpClient` часто сохраняли в активном состоянии в течение длительного времени. После перехода на `IHttpClientFactory` это уже не нужно.
+
+### <a name="alternatives-to-ihttpclientfactory"></a>Альтернативы интерфейсу IHttpClientFactory
+
+Использование `IHttpClientFactory` в приложении с внедрением зависимостей позволяет:
+
+* предотвращать проблемы нехватки ресурсов путем объединения экземпляров `HttpMessageHandler` в пулы;
+* предотвращать проблемы устаревания записей DNS путем регулярной утилизации экземпляров `HttpMessageHandler`.
+
+Существуют альтернативные способы решения указанных выше проблем с помощью долгосрочного экземпляра <xref:System.Net.Http.SocketsHttpHandler>.
+
+- Создайте экземпляр `SocketsHttpHandler` при запуске приложения и используйте его в течение всего жизненного цикла приложения.
+- Присвойте <xref:System.Net.Http.SocketsHttpHandler.PooledConnectionLifetime> соответствующее значение в соответствии со временем обновления записей DNS.
+- По мере необходимости создавайте экземпляры `HttpClient` с помощью `new HttpClient(handler, dispostHandler: false)`.
+
+Описанные выше подходы решают проблемы, связанные с управлением ресурсами, которые в `IHttpClientFactory` решаются сходным образом.
+
+- `SocketsHttpHandler` обеспечивает совместное использование подключений экземплярами `HttpClient`. Этот позволяет предотвратить нехватку сокетов.
+- `SocketsHttpHandler` уничтожает подключения в соответствии со значением `PooledConnectionLifetime`, чтобы предотвратить проблемы устаревания записей DNS.
+
+### <a name="cookies"></a>Файлы cookie
+
+Объединение экземпляров `HttpMessageHandler` в пул приводит к совместному использованию объектов `CookieContainer`. Непредвиденное совместное использование объектов `CookieContainer` часто приводит к ошибкам в коде. Для приложений, которым требуются файлы cookie, рекомендуется один из следующих подходов:
+
+ - отключите автоматическую обработку файлов cookie;
+ - не используйте `IHttpClientFactory`.
+
+Чтобы отключить автоматическую обработку файлов cookie, вызовите <xref:Microsoft.Extensions.DependencyInjection.HttpClientBuilderExtensions.ConfigurePrimaryHttpMessageHandler*>:
+
+[!code-csharp[](http-requests/samples/2.x/HttpClientFactorySample/Startup.cs?name=snippet13)]
 
 ## <a name="logging"></a>Ведение журнала
 
@@ -838,6 +896,35 @@ public class ValuesController : ControllerBase
 Высвобождать клиент не требуется. Высвобождение отменяет исходящие запросы и гарантирует, что указанный экземпляр `HttpClient` не может использоваться после вызова <xref:System.IDisposable.Dispose*>. `IHttpClientFactory` отслеживает и высвобождает ресурсы, используемые экземплярами `HttpClient`. Экземпляры `HttpClient` обычно можно рассматривать как объекты .NET, не требующие высвобождения.
 
 До появления `IHttpClientFactory` один экземпляр `HttpClient` часто сохраняли в активном состоянии в течение длительного времени. После перехода на `IHttpClientFactory` это уже не нужно.
+
+### <a name="alternatives-to-ihttpclientfactory"></a>Альтернативы интерфейсу IHttpClientFactory
+
+Использование `IHttpClientFactory` в приложении с внедрением зависимостей позволяет:
+
+* предотвращать проблемы нехватки ресурсов путем объединения экземпляров `HttpMessageHandler` в пулы;
+* предотвращать проблемы устаревания записей DNS путем регулярной утилизации экземпляров `HttpMessageHandler`.
+
+Существуют альтернативные способы решения указанных выше проблем с помощью долгосрочного экземпляра <xref:System.Net.Http.SocketsHttpHandler>.
+
+- Создайте экземпляр `SocketsHttpHandler` при запуске приложения и используйте его в течение всего жизненного цикла приложения.
+- Присвойте <xref:System.Net.Http.SocketsHttpHandler.PooledConnectionLifetime> соответствующее значение в соответствии со временем обновления записей DNS.
+- По мере необходимости создавайте экземпляры `HttpClient` с помощью `new HttpClient(handler, dispostHandler: false)`.
+
+Описанные выше подходы решают проблемы, связанные с управлением ресурсами, которые в `IHttpClientFactory` решаются сходным образом.
+
+- `SocketsHttpHandler` обеспечивает совместное использование подключений экземплярами `HttpClient`. Этот позволяет предотвратить нехватку сокетов.
+- `SocketsHttpHandler` уничтожает подключения в соответствии со значением `PooledConnectionLifetime`, чтобы предотвратить проблемы устаревания записей DNS.
+
+### <a name="cookies"></a>Файлы cookie
+
+Объединение экземпляров `HttpMessageHandler` в пул приводит к совместному использованию объектов `CookieContainer`. Непредвиденное совместное использование объектов `CookieContainer` часто приводит к ошибкам в коде. Для приложений, которым требуются файлы cookie, рекомендуется один из следующих подходов:
+
+ - отключите автоматическую обработку файлов cookie;
+ - не используйте `IHttpClientFactory`.
+
+Чтобы отключить автоматическую обработку файлов cookie, вызовите <xref:Microsoft.Extensions.DependencyInjection.HttpClientBuilderExtensions.ConfigurePrimaryHttpMessageHandler*>:
+
+[!code-csharp[](http-requests/samples/2.x/HttpClientFactorySample/Startup.cs?name=snippet13)]
 
 ## <a name="logging"></a>Ведение журнала
 

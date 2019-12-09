@@ -4,14 +4,14 @@ author: rick-anderson
 description: Узнайте, как работает привязка модели в ASP.NET Core и как настроить ее поведение.
 ms.assetid: 0be164aa-1d72-4192-bd6b-192c9c301164
 ms.author: riande
-ms.date: 11/15/2019
+ms.date: 11/21/2019
 uid: mvc/models/model-binding
-ms.openlocfilehash: a025419a5b4d2c2e3e5c5a7850df281ddd3164ea
-ms.sourcegitcommit: f91d322f790123d41ec3271fa084ae20ed9f89a6
+ms.openlocfilehash: a49fec38a6d38bbd33e9461cbcceb39bfe810f5c
+ms.sourcegitcommit: 3b6b0a54b20dc99b0c8c5978400c60adf431072f
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/18/2019
-ms.locfileid: "74155037"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74717290"
 ---
 # <a name="model-binding-in-aspnet-core"></a>Привязка модели в ASP.NET Core
 
@@ -83,18 +83,18 @@ http://contoso.com/api/pets/2?DogsOnly=true
 
 По умолчанию привязка модели получает данные в виде пар "ключ-значение" из следующих источников в HTTP-запросе:
 
-1. Поля формы 
+1. Поля формы
 1. Текст запроса (для [контроллеров, имеющих атрибут [ApiController]](xref:web-api/index#binding-source-parameter-inference).)
 1. Данные маршрута
 1. Параметры строки запроса
-1. Отправленные файлы 
+1. Отправленные файлы
 
-Для каждого целевого параметра или свойства источники проверяются в порядке, указанном в этом списке. Существует несколько исключений:
+Для каждого целевого параметра или свойства источники проверяются в порядке, указанном в предыдущем списке. Существует несколько исключений:
 
 * Данные маршрутизации и значения строк запросов используются только для примитивных типов.
 * Отправленные файлы привязаны только к типам целевых объектов, которые реализуют `IFormFile` или `IEnumerable<IFormFile>`.
 
-Если поведение по умолчанию не дает правильные результаты, можно использовать один из следующих атрибутов для указания источника для любого заданного целевого объекта. 
+Если источник по умолчанию неверен, используйте один из следующих атрибутов, чтобы указать источник:
 
 * [[FromQuery]](xref:Microsoft.AspNetCore.Mvc.FromQueryAttribute): возвращает значения из строки запроса. 
 * [[FromRoute]](xref:Microsoft.AspNetCore.Mvc.FromRouteAttribute): возвращает значения из данных маршрута.
@@ -114,9 +114,34 @@ http://contoso.com/api/pets/2?DogsOnly=true
 
 ### <a name="frombody-attribute"></a>Атрибут [FromBody]
 
-Данные текста запроса анализируются с помощью форматировщиков входных данных для конкретного типа содержимого запроса. Форматировщики входных данных описываются [далее в этой статье](#input-formatters).
+Примените атрибут `[FromBody]` к параметру, чтобы заполнить его свойства из тела HTTP-запроса. Среда выполнения ASP.NET Core делегирует ответственность за считывание тела форматировщику входных данных. Форматировщики входных данных описываются [далее в этой статье](#input-formatters).
 
-Не применяют `[FromBody]` к нескольким параметрам в методе действия. Среда выполнения ASP.NET Core делегирует ответственность за считывание потока запроса форматировщику входных данных. После считывания потока запроса он больше не доступен для повторного чтения для привязки других параметров `[FromBody]`.
+При применении `[FromBody]` к параметру сложного типа все атрибуты источника привязки, применяемые к его свойствам, игнорируются. Например, следующее действие `Create` указывает, что параметр `pet` заполняется из тела:
+
+```csharp
+public ActionResult<Pet> Create([FromBody] Pet pet)
+```
+
+Класс `Pet` указывает, что свойство `Breed` заполняется из параметра строки запроса:
+
+```csharp
+public class Pet
+{
+    public string Name { get; set; }
+
+    [FromQuery] // Attribute is ignored.
+    public string Breed { get; set; }
+}
+```
+
+В предшествующем примере:
+
+* Атрибут `[FromQuery]` не учитывается.
+* Свойство `Breed` не заполняется из параметра строки запроса. 
+
+Форматировщики входных данных считывают только тело и не распознают атрибуты источника привязки. Если подходящее значение найдено в теле, оно используется для заполнения свойства `Breed`.
+
+Не применяют `[FromBody]` к нескольким параметрам в методе действия. После считывания потока запроса форматировщиком входных данных он больше не доступен для повторного чтения для привязки других параметров `[FromBody]`.
 
 ### <a name="additional-sources"></a>Дополнительные источники
 
@@ -355,6 +380,27 @@ public IActionResult OnPost([Bind("LastName,FirstMidName,HireDate")] Instructor 
 
   * selectedCourses["1050"]="Chemistry"
   * selectedCourses["2000"]="Economics"
+
+<a name="glob"></a>
+
+## <a name="globalization-behavior-of-model-binding-route-data-and-query-strings"></a>Поведение глобализации для данных маршрутов привязки модели и строк запросов
+
+Поставщик значений маршрутов и поставщик значений для строк запросов ASP.NET Core:
+
+* обрабатывают значения как имеющие инвариантные язык и региональные параметры.
+* Следует ожидать, что URL-адреса имеют инвариантные язык и региональные параметры.
+
+Напротив, значения, поступающие из данных форм, подвергаются преобразованию с учетом языка и региональных параметров. Это сделано намеренно, чтобы URL-адреса были общими в разных языковых стандартах.
+
+Чтобы поставщик значений маршрутов и поставщик значений для строк запросов ASP.NET Core производили преобразование с учетом языка и региональных параметров, выполните указанные ниже действия.
+
+* наследуют от <xref:Microsoft.AspNetCore.Mvc.ModelBinding.IValueProviderFactory>.
+* Скопируйте код из [QueryStringValueProviderFactory](https://github.com/aspnet/AspNetCore/blob/master/src/Mvc/Mvc.Core/src/ModelBinding/QueryStringValueProviderFactory.cs) или [RouteValueValueProviderFactory](https://github.com/aspnet/AspNetCore/blob/master/src/Mvc/Mvc.Core/src/ModelBinding/RouteValueProviderFactory.cs)
+* Замените [значение языка и региональных параметров](https://github.com/aspnet/AspNetCore/blob/e625fe29b049c60242e8048b4ea743cca65aa7b5/src/Mvc/Mvc.Core/src/ModelBinding/QueryStringValueProviderFactory.cs#L30), передаваемое в конструктор поставщика значений, на [CultureInfo.CurrentCulture](xref:System.Globalization.CultureInfo.CurrentCulture)
+* Замените метод производства поставщика значений по умолчанию в параметрах MVC на новый:
+
+[!code-csharp[](model-binding/samples/StartupMB.cs?name=snippet)]
+[!code-csharp[](model-binding/samples/StartupMB.cs?name=snippet1)]
 
 ## <a name="special-data-types"></a>Специальные типы данных
 

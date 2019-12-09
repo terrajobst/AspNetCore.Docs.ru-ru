@@ -3,14 +3,14 @@ title: Глобализация и локализация в ASP.NET Core
 author: rick-anderson
 description: Сведения о службах и ПО промежуточного слоя, предоставляемых ASP.NET Core для локализации содержимого на разные языки и для разных региональных параметров.
 ms.author: riande
-ms.date: 01/14/2017
+ms.date: 11/30/2019
 uid: fundamentals/localization
-ms.openlocfilehash: 36235e305037c0bbf20093327e2a0ff21b3de809
-ms.sourcegitcommit: 3fc3020961e1289ee5bf5f3c365ce8304d8ebf19
+ms.openlocfilehash: 645f680436336acbe1d5c2854a242527c9b4b9cb
+ms.sourcegitcommit: 3b6b0a54b20dc99b0c8c5978400c60adf431072f
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73963665"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74717407"
 ---
 # <a name="globalization-and-localization-in-aspnet-core"></a>Глобализация и локализация в ASP.NET Core
 
@@ -276,7 +276,7 @@ using Microsoft.Extensions.Localization;
 
 6. Выберите язык, а затем нажмите кнопку **Вверх**.
 
-::: moniker range=">= aspnetcore-3.0"
+::: moniker range=">= aspnetcore-3.1"
 ### <a name="the-content-language-http-header"></a>Заголовок HTTP Content-Language
 
 Заголовок сущности [Content-Language](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Language):
@@ -286,7 +286,7 @@ using Microsoft.Extensions.Localization;
 
 Заголовки сущностей используются как в HTTP-запросах, так и в ответах.
 
-В ASP.NET Core 3,0 заголовок `Content-Language` можно добавить, задав свойство `ApplyCurrentCultureToResponseHeaders`.
+Заголовок `Content-Language` можно добавить, задав свойство `ApplyCurrentCultureToResponseHeaders`.
 
 Добавление заголовка `Content-Language`:
 
@@ -373,6 +373,10 @@ services.Configure<RequestLocalizationOptions>(options =>
 
 Подключить файл *_SelectLanguagePartial.cshtml* к образцу кода этого проекта нельзя. В проекте **Localization.StarterWeb** в [GitHub](https://github.com/aspnet/entropy) есть код для передачи объекта `RequestLocalizationOptions` в частичное представление Razor посредством контейнера [внедрения зависимостей](dependency-injection.md).
 
+## <a name="model-binding-route-data-and-query-strings"></a>Данные маршрутов привязки модели и строки запросов
+
+См. раздел [Поведение глобализации для данных маршрутов привязки модели и строк запросов](xref:mvc/models/model-binding#glob).
+
 ## <a name="globalization-and-localization-terms"></a>Термины, относящиеся к глобализации и локализации
 
 Процесс локализации приложения требует базового понимания распространенных кодировок, часто используемых при разработке современного программного обеспечения, и связанных с ними проблем. Хотя на всех компьютерах текст сохраняется в виде цифр (кодов), в разных системах эти коды для одного и того же текста различаются. Под процессом локализации понимается перевод пользовательского интерфейса приложения для определенного языка и региональных параметров.
@@ -407,5 +411,4 @@ services.Configure<RequestLocalizationOptions>(options =>
 * [Глобализация и локализация приложений .NET](/dotnet/standard/globalization-localization/index)
 * [Ресурсы в RESX-файлах](/dotnet/framework/resources/working-with-resx-files-programmatically)
 * [Набор средств многоязычных приложений Майкрософт](https://marketplace.visualstudio.com/items?itemName=MultilingualAppToolkit.MultilingualAppToolkit-18308)
-* [Локализация и универсальные шаблоны](https://github.com/hishamco/hishambinateya.com/blob/master/Posts/localization-and-generics.md)
-* [Новые возможности локализации в ASP.NET Core 3,0](http://hishambinateya.com/what-is-new-in-localization-in-asp.net-core-3.0)
+* [Локализация и универсальные шаблоны](http://hishambinateya.com/localization-and-generics)

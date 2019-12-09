@@ -4,14 +4,14 @@ author: rick-anderson
 ms.author: riande
 description: Обнаруживайте атрибуты вспомогательной функции тега сценария ASP.NET Core и роль, которую играет каждый атрибут в расширении поведения тега сценария HTML.
 ms.custom: mvc
-ms.date: 12/18/2018
+ms.date: 12/02/2019
 uid: mvc/views/tag-helpers/builtin-th/script-tag-helper
-ms.openlocfilehash: 5f2fb8a45048804afa8aff2989cd53489e45a33b
-ms.sourcegitcommit: fae6f0e253f9d62d8f39de5884d2ba2b4b2a6050
+ms.openlocfilehash: 8a90eb5a74ff3f8178a47c59ad7ba1b6a389ab87
+ms.sourcegitcommit: 3b6b0a54b20dc99b0c8c5978400c60adf431072f
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71256468"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74717381"
 ---
 # <a name="script-tag-helper-in-aspnet-core"></a>Вспомогательная функция тега сценария в ASP.NET Core
 
@@ -23,43 +23,30 @@ ms.locfileid: "71256468"
 
 Вспомогательная функция тега сценария позволяет указать CDN для файла сценария и резервную копию, если CDN недоступен. Вспомогательная функция тега сценария обеспечивает высокую производительность CDN с надежностью локального размещения.
 
-В следующей разметке Razor показан элемент `script` файла макета, созданного с помощью шаблона веб-приложения ASP.NET Core:
+В следующей разметке Razor показан элемент `script` с резервной копией:
 
-[!code-html[](link-tag-helper/sample/_Layout.cshtml?name=snippet2)]
+```HTML
+<script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-3.3.1.min.js"
+        asp-fallback-src="~/lib/jquery/dist/jquery.min.js"
+        asp-fallback-test="window.jQuery"
+        crossorigin="anonymous"
+        integrity="sha384-tsQFqpEReu7ZLhBV2VZlAu7zcOV+rXbYlF2cqB8txI/8aZajjp4Bqd+V6D5IgvKT">
+</script>
+```
 
-Следующий код похож на отображаемый HTML из предыдущего кода (в среде, не являющейся средой разработки):
-
-[!code-csharp[](link-tag-helper/sample/HtmlPage2.html)]
-
-В приведенном выше коде вспомогательная функция тега сценария создала второй элемент сценария (`<script>  (window.jQuery || document.write(`), который проверяет на наличие `window.jQuery`. Если `window.jQuery` не найден, `document.write(` выполняется и создает сценарий. 
+Не используйте атрибут [defer](https://developer.mozilla.org/docs/Web/HTML/Element/script) элемента `<script>`, чтобы отложить загрузку скрипта CDN. Вспомогательная функция тега скрипта обрабатывает код JavaScript, который сразу же выполняет выражение [asp-fallback-test](#asp-fallback-test). Это выражение дает сбой, если загрузка скрипта CDN отложена.
 
 ## <a name="commonly-used-script-tag-helper-attributes"></a>Часто используемые атрибуты вспомогательной функции тега сценария
 
 Все атрибуты, свойства и методы вспомогательной функции тега сценария см. в статье [ScriptTagHelper Class](xref:Microsoft.AspNetCore.Mvc.TagHelpers.ScriptTagHelper) (Класс ScriptTagHelper).
 
-### <a name="href"></a>href
+### <a name="asp-fallback-test"></a>asp-fallback-test
 
-Предпочтительный адрес связанного ресурса. Адрес передается в созданный код HTML во всех случаях.
+Метод скрипта, определенный в основном скрипте, для использования в тесте резервного экземпляра. Дополнительные сведения можно найти по адресу: <xref:Microsoft.AspNetCore.Mvc.TagHelpers.ScriptTagHelper.FallbackTestExpression>.
 
-### <a name="asp-fallback-href"></a>asp-fallback-href
+### <a name="asp-fallback-src"></a>asp-fallback-src
 
-URL-адрес таблицы стилей CSS, к которой можно перейти в случае сбоя основного URL-адреса.
-
-### <a name="asp-fallback-test-class"></a>asp-fallback-test-class
-
-Имя класса, определенное в таблице стилей для использования в качестве теста резервного экземпляра. Дополнительные сведения можно найти по адресу: <xref:Microsoft.AspNetCore.Mvc.TagHelpers.LinkTagHelper.FallbackTestClass>.
-
-### <a name="asp-fallback-test-property"></a>asp-fallback-test-property
-
-Имя свойства CSS, используемое для теста резервного экземпляра. Дополнительные сведения можно найти по адресу: <xref:Microsoft.AspNetCore.Mvc.TagHelpers.LinkTagHelper.FallbackTestProperty>.
-
-### <a name="asp-fallback-test-value"></a>asp-fallback-test-value
-
-Значение свойства CSS, используемое для теста резервного экземпляра. Дополнительные сведения можно найти по адресу: <xref:Microsoft.AspNetCore.Mvc.TagHelpers.LinkTagHelper.FallbackTestValue>.
-
-### <a name="asp-fallback-test-value"></a>asp-fallback-test-value
-
-Значение свойства CSS, используемое для теста резервного экземпляра. Дополнительные сведения см. в разделе <xref:Microsoft.AspNetCore.Mvc.TagHelpers.LinkTagHelper.FallbackTestValue>.
+URL-адрес тега Script, на который можно перейти в случае сбоя основного URL-адреса. Дополнительные сведения можно найти по адресу: <xref:Microsoft.AspNetCore.Mvc.TagHelpers.ScriptTagHelper.FallbackSrc>.
 
 ## <a name="additional-resources"></a>Дополнительные ресурсы
 

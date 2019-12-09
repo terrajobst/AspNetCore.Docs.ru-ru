@@ -4,14 +4,14 @@ author: rick-anderson
 description: Сведения о проверке модели в ASP.NET Core MVC и Razor Pages.
 ms.author: riande
 ms.custom: mvc
-ms.date: 11/19/2019
+ms.date: 11/21/2019
 uid: mvc/models/validation
-ms.openlocfilehash: 1277cac231bab6b56657793ed78dbc4cfb7d9704
-ms.sourcegitcommit: 8157e5a351f49aeef3769f7d38b787b4386aad5f
+ms.openlocfilehash: 19f71799e958e2761832c91cec6762a6d391d2b5
+ms.sourcegitcommit: 3e503ef510008e77be6dd82ee79213c9f7b97607
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74239871"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74317428"
 ---
 # <a name="model-validation-in-aspnet-core-mvc-and-razor-pages"></a>Проверка модели в ASP.NET Core MVC и Razor Pages
 
@@ -208,7 +208,7 @@ public string MiddleName { get; set; }
 
 ## <a name="maximum-recursion"></a>Максимальная рекурсия
 
-<xref:Microsoft.AspNetCore.Mvc.ModelBinding.Validation.ValidationVisitor> проходит через граф объектов в проверяемой модели. У глубоких моделей, содержащих бесконечную рекурсию, в ходе проверки может произойти переполнение стека. [MvcOptions.MaxValidationDepth](xref:Microsoft.AspNetCore.Mvc.MvcOptions.MaxValidationDepth) предоставляет способ остановить проверку до превышения настроенной глубины рекурсии обхода. Значение `MvcOptions.MaxValidationDepth` по умолчанию — 200.
+<xref:Microsoft.AspNetCore.Mvc.ModelBinding.Validation.ValidationVisitor> проходит через граф объектов в проверяемой модели. У глубоких моделей, содержащих бесконечную рекурсию, в ходе проверки может произойти переполнение стека. [MvcOptions.MaxValidationDepth](xref:Microsoft.AspNetCore.Mvc.MvcOptions.MaxValidationDepth) предоставляет способ остановить проверку до превышения настроенной глубины рекурсии обхода. Значение `MvcOptions.MaxValidationDepth` по умолчанию —32.
 
 ## <a name="automatic-short-circuit"></a>Автоматическое сокращение
 
@@ -569,7 +569,7 @@ public string MiddleName { get; set; }
 
 ## <a name="maximum-recursion"></a>Максимальная рекурсия
 
-<xref:Microsoft.AspNetCore.Mvc.ModelBinding.Validation.ValidationVisitor> проходит через граф объектов в проверяемой модели. У моделей, которые очень глубоки или содержат бесконечную рекурсию, в ходе проверки может произойти переполнение стека. [MvcOptions.MaxValidationDepth](xref:Microsoft.AspNetCore.Mvc.MvcOptions.MaxValidationDepth) предоставляет способ остановить проверку до превышения настроенной глубины рекурсии обхода. Значение `MvcOptions.MaxValidationDepth` по умолчанию — 200 при работе в `CompatibilityVersion.Version_2_2` или более поздней версии. Для более ранних версий значение равно NULL; это означает отсутствие ограничения глубины.
+<xref:Microsoft.AspNetCore.Mvc.ModelBinding.Validation.ValidationVisitor> проходит через граф объектов в проверяемой модели. У моделей, которые очень глубоки или содержат бесконечную рекурсию, в ходе проверки может произойти переполнение стека. [MvcOptions.MaxValidationDepth](xref:Microsoft.AspNetCore.Mvc.MvcOptions.MaxValidationDepth) предоставляет способ остановить проверку до превышения настроенной глубины рекурсии обхода. Значение `MvcOptions.MaxValidationDepth` по умолчанию — 32 при работе в `CompatibilityVersion.Version_2_2` или более поздней версии. Для более ранних версий значение равно NULL; это означает отсутствие ограничения глубины.
 
 ## <a name="automatic-short-circuit"></a>Автоматическое сокращение
 
