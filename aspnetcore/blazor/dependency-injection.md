@@ -9,12 +9,12 @@ ms.date: 12/05/2019
 no-loc:
 - Blazor
 uid: blazor/dependency-injection
-ms.openlocfilehash: 17dd0f927064ae7c2b1e3e439fd93e2cb220a5a4
-ms.sourcegitcommit: c0b72b344dadea835b0e7943c52463f13ab98dd1
+ms.openlocfilehash: aad6cfee500b5cb502470f6a4a7cb5756df09dc4
+ms.sourcegitcommit: 851b921080fe8d719f54871770ccf6f78052584e
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74879780"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74943788"
 ---
 # <a name="aspnet-core-opno-locblazor-dependency-injection"></a>ASP.NET Core внедрения зависимостей Blazor
 
@@ -84,7 +84,7 @@ public void ConfigureServices(IServiceCollection services)
 
 В следующем примере показано, как использовать `@inject`. Служба, реализующая `Services.IDataAccess`, внедряется в `DataRepository`свойств компонента. Обратите внимание, что код использует только абстракцию `IDataAccess`:
 
-[!code-cshtml[](dependency-injection/samples_snapshot/3.x/CustomerList.razor?highlight=2-3,23)]
+[!code-razor[](dependency-injection/samples_snapshot/3.x/CustomerList.razor?highlight=2-3,23)]
 
 На внутреннем уровне создаваемое свойство (`DataRepository`) использует атрибут `InjectAttribute`. Как правило, этот атрибут не используется напрямую. Если базовый класс необходим для компонентов, а для базового класса также требуются обязательные свойства, добавьте `InjectAttribute`вручную:
 
@@ -100,7 +100,7 @@ public class ComponentBase : IComponent
 
 В компонентах, производных от базового класса, директива `@inject` не требуется. `InjectAttribute` базового класса достаточно:
 
-```cshtml
+```razor
 @page "/demo"
 @inherits ComponentBase
 
@@ -135,7 +135,7 @@ public class DataAccess : IDataAccess
 
 Чтобы ограничить время существования компонента службами, можно использовать базовые классы `OwningComponentBase` и `OwningComponentBase<TService>`. Эти базовые классы предоставляют `ScopedServices` свойство типа `IServiceProvider`, разрешающее службы, областью действия которых является компонент. Чтобы создать компонент, наследующий от базового класса в Razor, используйте директиву `@inherits`.
 
-```cshtml
+```razor
 @page "/users"
 @attribute [Authorize]
 @inherits OwningComponentBase<Data.ApplicationDbContext>

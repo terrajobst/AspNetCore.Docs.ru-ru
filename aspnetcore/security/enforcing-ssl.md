@@ -4,14 +4,14 @@ author: rick-anderson
 description: Узнайте, как требовать использования HTTPS/TLS в ASP.NET Core веб-приложении.
 ms.author: riande
 ms.custom: mvc
-ms.date: 09/14/2019
+ms.date: 12/06/2019
 uid: security/enforcing-ssl
-ms.openlocfilehash: 82cd2e52f3bd929682b9eae24611ad04fd9f8682
-ms.sourcegitcommit: 3e503ef510008e77be6dd82ee79213c9f7b97607
+ms.openlocfilehash: 032105c67e15ab94635ae6fadea103450c7eb0fb
+ms.sourcegitcommit: 851b921080fe8d719f54871770ccf6f78052584e
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74317371"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74944243"
 ---
 # <a name="enforce-https-in-aspnet-core"></a>Принудительное применение HTTPS в ASP.NET Core
 
@@ -85,7 +85,7 @@ ms.locfileid: "74317371"
 
 Рекомендуется использовать временные перенаправления, а не постоянные перенаправления. Кэширование ссылок может привести к нестабильной работе в средах разработки. Если вы предпочитаете отправить код состояния с постоянным перенаправлением, когда приложение находится в среде, не являющейся средой разработки, см. раздел [Настройка постоянных перенаправлений в производстве](#configure-permanent-redirects-in-production) . Мы рекомендуем использовать [HSTS](#http-strict-transport-security-protocol-hsts) для передачи клиентам, что только защищенные запросы ресурсов должны отправляться в приложение (только в рабочей среде).
 
-### <a name="port-configuration"></a>Настройка порта
+### <a name="port-configuration"></a>Конфигурация порта
 
 Порт должен быть доступен для промежуточного слоя, чтобы перенаправить незащищенный запрос на HTTPS. Если порт недоступен:
 
@@ -131,7 +131,7 @@ ms.locfileid: "74317371"
 > [!NOTE]
 > При запуске приложения в конфигурации обратного прокси-сервера <xref:Microsoft.AspNetCore.Hosting.Server.Features.IServerAddressesFeature> недоступен. Задайте порт с помощью одного из других подходов, описанных в этом разделе.
 
-### <a name="edge-deployments"></a>Развертывания пограничных устройств 
+### <a name="edge-deployments"></a>Развертывания Edge 
 
 Если Kestrel или HTTP. sys используется в качестве общедоступного пограничной сервера, то Kestrel или HTTP. sys должны быть настроены на прослушивание обоих типов:
 
@@ -150,7 +150,7 @@ ms.locfileid: "74317371"
 
 При развертывании в службе приложений Azure следуйте указаниям в [руководстве по связыванию существующего настраиваемого SSL-сертификата с Azure Web Apps](/azure/app-service/app-service-web-tutorial-custom-ssl).
 
-### <a name="options"></a>Параметры
+### <a name="options"></a>Options
 
 Следующий выделенный код вызывает [аддхттпсредиректион](/dotnet/api/microsoft.aspnetcore.builder.httpsredirectionservicesextensions.addhttpsredirection) для настройки параметров промежуточного слоя:
 
@@ -173,7 +173,7 @@ ms.locfileid: "74317371"
 Предыдущий выделенный код:
 
 * Задает для [хттпсредиректионоптионс. редиректстатускоде](xref:Microsoft.AspNetCore.HttpsPolicy.HttpsRedirectionOptions.RedirectStatusCode*) значение <xref:Microsoft.AspNetCore.Http.StatusCodes.Status307TemporaryRedirect>, которое является значением по умолчанию. Используйте поля класса <xref:Microsoft.AspNetCore.Http.StatusCodes> для назначений `RedirectStatusCode`.
-* Устанавливает HTTPS порт 5001. Значение по умолчанию — 443.
+* Устанавливает HTTPS порт 5001.
 
 #### <a name="configure-permanent-redirects-in-production"></a>Настройка постоянных перенаправлений в рабочей среде
 

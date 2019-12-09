@@ -5,16 +5,16 @@ description: Узнайте, как сохранить состояние в п�
 monikerRange: '>= aspnetcore-3.0'
 ms.author: riande
 ms.custom: mvc
-ms.date: 11/23/2019
+ms.date: 12/05/2019
 no-loc:
 - Blazor
 uid: blazor/state-management
-ms.openlocfilehash: ed203458126f3b4c97103c88a465e3eb5953a775
-ms.sourcegitcommit: c0b72b344dadea835b0e7943c52463f13ab98dd1
+ms.openlocfilehash: 7351ee2438c6adf675b8aa5e8ecdb1b2da7b4f23
+ms.sourcegitcommit: 851b921080fe8d719f54871770ccf6f78052584e
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74879717"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74943931"
 ---
 # <a name="aspnet-core-opno-locblazor-state-management"></a>Управление состоянием Blazor ASP.NET Core
 
@@ -164,7 +164,7 @@ Blazor Server — это платформа приложений с отслеж
 
 Выбор зависит от того, какое резервное хранилище вы хотите использовать. В следующем примере используется `sessionStorage`:
 
-```cshtml
+```razor
 @using Microsoft.AspNetCore.ProtectedBrowserStorage
 @inject ProtectedSessionStorage ProtectedSessionStore
 ```
@@ -215,7 +215,7 @@ private int? currentCount;
 
 Вместо безусловного отображения кнопки счетчика и **увеличения** выберите отображение этих элементов только в том случае, если данные загружены:
 
-```cshtml
+```razor
 @if (currentCount.HasValue)
 {
     <p>Current count: <strong>@currentCount</strong></p>
@@ -255,7 +255,7 @@ else
 
 Предварительная визуализация может быть полезной для других страниц, которые не используют `localStorage` или `sessionStorage`. Чтобы включить предварительную отрисовку, отложите операцию загрузки до тех пор, пока браузер не подключается к каналу. Ниже приведен пример хранения значения счетчика.
 
-```cshtml
+```razor
 @using Microsoft.AspNetCore.ProtectedBrowserStorage
 @inject ProtectedLocalStorage ProtectedLocalStore
 
@@ -296,7 +296,7 @@ else
 
 В следующем примере компонента `CounterStateProvider` данные счетчика сохраняются:
 
-```cshtml
+```razor
 @using Microsoft.AspNetCore.ProtectedBrowserStorage
 @inject ProtectedSessionStorage ProtectedSessionStore
 
@@ -336,7 +336,7 @@ else
 
 Чтобы использовать компонент `CounterStateProvider`, заключите экземпляр компонента в оболочку для любого другого компонента, который требует доступа к состоянию счетчика. Чтобы сделать состояние доступным для всех компонентов в приложении, заключите `CounterStateProvider` компонент вокруг `Router` в компоненте `App` (*app. Razor*):
 
-```cshtml
+```razor
 <CounterStateProvider>
     <Router AppAssembly="typeof(Startup).Assembly">
         ...
@@ -346,7 +346,7 @@ else
 
 Упакованные компоненты получают и могут изменять состояние сохраненного счетчика. Следующий компонент `Counter` реализует шаблон:
 
-```cshtml
+```razor
 @page "/counter"
 
 <p>Current count: <strong>@CounterStateProvider.CurrentCount</strong></p>

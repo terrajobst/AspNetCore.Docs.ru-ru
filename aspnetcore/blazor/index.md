@@ -5,17 +5,17 @@ description: Узнайте больше об использовании ASP.NET
 monikerRange: '>= aspnetcore-3.0'
 ms.author: riande
 ms.custom: mvc, seoapril2019
-ms.date: 11/12/2019
+ms.date: 12/05/2019
 no-loc:
 - Blazor
 - SignalR
 uid: blazor/index
-ms.openlocfilehash: 8b656a7461c78475432722540ad628258cfe19c4
-ms.sourcegitcommit: 3fc3020961e1289ee5bf5f3c365ce8304d8ebf19
+ms.openlocfilehash: 4ab6af649afe66d92fb2ea07d3abed057f321bce
+ms.sourcegitcommit: 851b921080fe8d719f54871770ccf6f78052584e
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73962914"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74943723"
 ---
 # <a name="introduction-to-aspnet-core-opno-locblazor"></a>Введение в ASP.NET Core Blazor
 
@@ -53,7 +53,7 @@ ms.locfileid: "73962914"
 
 Следующая разметка Razor определяет компонент *Dialog.razor*, который может быть вложен в другой компонент:
 
-```cshtml
+```razor
 <div>
     <h1>@Title</h1>
 
@@ -84,7 +84,7 @@ Blazor использует естественные теги HTML для ком
 
 *Index.razor*:
 
-```cshtml
+```razor
 @page "/"
 
 <h1>Hello, world!</h1>

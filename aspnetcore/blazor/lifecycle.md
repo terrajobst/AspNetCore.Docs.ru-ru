@@ -9,12 +9,12 @@ ms.date: 12/05/2019
 no-loc:
 - Blazor
 uid: blazor/lifecycle
-ms.openlocfilehash: 280ea832f492852e425e3e15c61cac54fd1e39d6
-ms.sourcegitcommit: c0b72b344dadea835b0e7943c52463f13ab98dd1
+ms.openlocfilehash: e600e7c7a6a8c646a655520bd5c127f2cd662753
+ms.sourcegitcommit: 851b921080fe8d719f54871770ccf6f78052584e
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74879674"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74944035"
 ---
 # <a name="aspnet-core-opno-locblazor-lifecycle"></a>Жизненный цикл Blazor ASP.NET Core
 
@@ -154,7 +154,7 @@ protected override bool ShouldRender()
 
 *Pages/FetchData. Razor* в шаблоне сервера Blazor:
 
-[!code-cshtml[](lifecycle/samples_snapshot/3.x/FetchData.razor?highlight=9,21,25)]
+[!code-razor[](lifecycle/samples_snapshot/3.x/FetchData.razor?highlight=9,21,25)]
 
 ## <a name="component-disposal-with-idisposable"></a>Освобождение компонентов с помощью IDisposable
 

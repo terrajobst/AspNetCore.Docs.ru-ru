@@ -5,16 +5,16 @@ description: Узнайте, как создавать многократно и
 monikerRange: '>= aspnetcore-3.0'
 ms.author: riande
 ms.custom: mvc
-ms.date: 09/23/2019
+ms.date: 12/05/2019
 no-loc:
 - Blazor
 uid: blazor/layouts
-ms.openlocfilehash: 3546259fc6b622a6137a6baa8f446c5f43af1cab
-ms.sourcegitcommit: 3fc3020961e1289ee5bf5f3c365ce8304d8ebf19
+ms.openlocfilehash: 90acfb0d4e9daadb12be79de6bd0c99fc545697a
+ms.sourcegitcommit: 851b921080fe8d719f54871770ccf6f78052584e
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73962811"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74944061"
 ---
 # <a name="aspnet-core-opno-locblazor-layouts"></a>ASP.NET Core макеты Blazor
 
@@ -31,7 +31,7 @@ ms.locfileid: "73962811"
 
 В следующем образце кода показан шаблон Razor компонента макета *маинлайаут. Razor*. Макет наследует `LayoutComponentBase` и задает `@Body` между панелью навигации и нижним колонтитулом:
 
-[!code-cshtml[](layouts/sample_snapshot/3.x/MainLayout.razor?highlight=1,13)]
+[!code-razor[](layouts/sample_snapshot/3.x/MainLayout.razor?highlight=1,13)]
 
 В приложении, основанном на одном из Blazor шаблонов приложений, компонент `MainLayout` (*маинлайаут. Razor*) находится в *общей* папке приложения.
 
@@ -39,11 +39,11 @@ ms.locfileid: "73962811"
 
 Укажите макет приложения по умолчанию в компоненте `Router` в файле *app. Razor* приложения. Следующий `Router` компонент, предоставляемый шаблонами Blazor по умолчанию, задает для макета по умолчанию компонент `MainLayout`:
 
-[!code-cshtml[](layouts/sample_snapshot/3.x/App1.razor?highlight=3)]
+[!code-razor[](layouts/sample_snapshot/3.x/App1.razor?highlight=3)]
 
 Чтобы предоставить макет по умолчанию для `NotFound` содержимого, укажите `LayoutView` для `NotFound` содержимого:
 
-[!code-cshtml[](layouts/sample_snapshot/3.x/App2.razor?highlight=6-9)]
+[!code-razor[](layouts/sample_snapshot/3.x/App2.razor?highlight=6-9)]
 
 Дополнительные сведения о компоненте `Router` см. в разделе <xref:blazor/routing>.
 
@@ -55,7 +55,7 @@ ms.locfileid: "73962811"
 
 Содержимое следующего `MasterList` компонента вставляется в `MasterLayout` в позиции `@Body`:
 
-[!code-cshtml[](layouts/sample_snapshot/3.x/MasterList.razor?highlight=1)]
+[!code-razor[](layouts/sample_snapshot/3.x/MasterList.razor?highlight=1)]
 
 Указание макета непосредственно в компоненте переопределяет набор *макетов по умолчанию* в маршрутизаторе или директиву `@layout`, импортированную из *_Imports. Razor*.
 
@@ -65,11 +65,11 @@ ms.locfileid: "73962811"
 
 Следующий файл *_Imports. Razor* импортирует:
 
-* `MyCoolLayout`
+* `MyCoolLayout`.
 * Все компоненты Razor в одной и той же папке и во всех вложенных папках.
 * Пространство имен `BlazorApp1.Data` .
  
-[!code-cshtml[](layouts/sample_snapshot/3.x/_Imports.razor)]
+[!code-razor[](layouts/sample_snapshot/3.x/_Imports.razor)]
 
 Файл *_Imports. Razor* аналогичен [файлу _ViewImports. cshtml для представлений и страниц Razor,](xref:mvc/views/layout#importing-shared-directives) но применяется специально к файлам компонентов Razor.
 
@@ -81,15 +81,15 @@ ms.locfileid: "73962811"
 
 В следующем примере показано, как использовать вложенные макеты. Файл *еписодескомпонент. Razor* — это компонент для вывода. Компонент ссылается на `MasterListLayout`:
 
-[!code-cshtml[](layouts/sample_snapshot/3.x/EpisodesComponent.razor?highlight=1)]
+[!code-razor[](layouts/sample_snapshot/3.x/EpisodesComponent.razor?highlight=1)]
 
 Файл *мастерлистлайаут. Razor* предоставляет `MasterListLayout`. Макет ссылается на другой макет, `MasterLayout`, где он готовится к просмотру. `EpisodesComponent` отображается, где отображается `@Body`:
 
-[!code-cshtml[](layouts/sample_snapshot/3.x/MasterListLayout.razor?highlight=1,9)]
+[!code-razor[](layouts/sample_snapshot/3.x/MasterListLayout.razor?highlight=1,9)]
 
 Наконец, `MasterLayout` в *мастерлайаут. Razor* содержит элементы макета верхнего уровня, такие как заголовок, главное меню и нижний колонтитул. `MasterListLayout` с `EpisodesComponent` отображается там, где `@Body` отображается:
 
-[!code-cshtml[](layouts/sample_snapshot/3.x/MasterLayout.razor?highlight=6)]
+[!code-razor[](layouts/sample_snapshot/3.x/MasterLayout.razor?highlight=6)]
 
 ## <a name="additional-resources"></a>Дополнительные ресурсы
 
