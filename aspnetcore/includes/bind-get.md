@@ -1,7 +1,7 @@
 > [!WARNING]
 > В целях безопасности вам следует задать привязку данных запроса `GET` к свойствам страничной модели. Проверьте введенные данные пользователя, прежде чем сопоставлять их со свойствами. Привязка `GET` полезна при обращении к сценариям, использующим строку запроса или значения маршрутов.
 >
-> Чтобы привязать свойство к запросам `GET`, задайте свойству `SupportsGet` атрибута [[BindProperty]](xref:Microsoft.AspNetCore.Mvc.BindPropertyAttribute) значение `true`:
+> Чтобы привязать свойство к запросам `GET`, задайте для свойства `SupportsGet` атрибута [`[BindProperty]`](xref:Microsoft.AspNetCore.Mvc.BindPropertyAttribute) значение `true`:
 >
 > ```csharp
 > [BindProperty(SupportsGet = true)]

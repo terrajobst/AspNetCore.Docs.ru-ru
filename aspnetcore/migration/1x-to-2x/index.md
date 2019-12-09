@@ -4,14 +4,14 @@ author: scottaddie
 description: В этой статье описываются предварительные требования и стандартные этапы миграции проекта ASP.NET Core 1.x в ASP.NET Core 2.0.
 ms.author: scaddie
 ms.custom: mvc
-ms.date: 10/24/2018
+ms.date: 12/05/2019
 uid: migration/1x-to-2x/index
-ms.openlocfilehash: 056930f3c586153d13555bbb6036f46587e2352d
-ms.sourcegitcommit: 8516b586541e6ba402e57228e356639b85dfb2b9
+ms.openlocfilehash: 1242ec9f71f4a26b07f9a56a2a960bf315b56ccf
+ms.sourcegitcommit: c0b72b344dadea835b0e7943c52463f13ab98dd1
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67815093"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74880017"
 ---
 # <a name="migrate-from-aspnet-core-1x-to-20"></a>Миграция с ASP.NET Core 1.x на 2.0
 
@@ -48,7 +48,7 @@ ms.locfileid: "67815093"
 
 ## <a name="update-net-core-sdk-version-in-globaljson"></a>Обновление версии пакета SDK для .NET Core в файле global.json
 
-Если ваше решение использует файл [*global.json*](/dotnet/core/tools/global-json) для указания целевой версии пакета SDK для .NET Core, измените значение свойства `version` так, чтобы использовалась версия 2.0, установленная на компьютере:
+Если ваше решение использует файл [global.json](/dotnet/core/tools/global-json) для указания целевой версии пакета SDK для .NET Core, измените значение свойства `version` так, чтобы использовалась версия 2.0, установленная на компьютере:
 
 [!code-json[](../1x-to-2x/samples/AspNetCoreDotNetCore2App/global.json?highlight=3)]
 

@@ -7,12 +7,12 @@ ms.author: scaddie
 ms.custom: mvc
 ms.date: 11/22/2019
 uid: web-api/index
-ms.openlocfilehash: 3f52e4ce2d26902324ab30e0bda7ed8a4942daa0
-ms.sourcegitcommit: ddc813f0f1fb293861a01597532919945b0e7fe5
+ms.openlocfilehash: 5ef8b4d012f4ed90339ffea191612e4dc365d958
+ms.sourcegitcommit: c0b72b344dadea835b0e7943c52463f13ab98dd1
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74412041"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74880530"
 ---
 # <a name="create-web-apis-with-aspnet-core"></a>Создание веб-API с помощью ASP.NET Core
 
@@ -66,17 +66,17 @@ ASP.NET Core поддерживает создание служб RESTful, та�
 
 |Атрибут|Примечания|
 |---------|-----|
-|[[Route]](<xref:Microsoft.AspNetCore.Mvc.RouteAttribute>)      |Определяет шаблон URL-адреса для контроллера или действия.|
-|[[Bind]](<xref:Microsoft.AspNetCore.Mvc.BindAttribute>)        |Задает префикс и свойства, которые добавляются для привязки модели.|
-|[[HttpGet]](<xref:Microsoft.AspNetCore.Mvc.HttpGetAttribute>)  |Определяет действие, которое поддерживает команду действия HTTP GET.|
-|[[Consumes]](<xref:Microsoft.AspNetCore.Mvc.ConsumesAttribute>)|Указывает типы данных, которые принимает действие.|
-|[[Produces]](<xref:Microsoft.AspNetCore.Mvc.ProducesAttribute>)|Указывает типы данных, которые возвращает действие.|
+|[`[Route]`](<xref:Microsoft.AspNetCore.Mvc.RouteAttribute>)      |Определяет шаблон URL-адреса для контроллера или действия.|
+|[`[Bind]`](<xref:Microsoft.AspNetCore.Mvc.BindAttribute>)        |Задает префикс и свойства, которые добавляются для привязки модели.|
+|[`[HttpGet]`](<xref:Microsoft.AspNetCore.Mvc.HttpGetAttribute>)  |Определяет действие, которое поддерживает команду действия HTTP GET.|
+|[`[Consumes]`](<xref:Microsoft.AspNetCore.Mvc.ConsumesAttribute>)|Указывает типы данных, которые принимает действие.|
+|[`[Produces]`](<xref:Microsoft.AspNetCore.Mvc.ProducesAttribute>)|Указывает типы данных, которые возвращает действие.|
 
 Список доступных атрибутов см. в пространстве имен <xref:Microsoft.AspNetCore.Mvc>.
 
 ## <a name="apicontroller-attribute"></a>Атрибут ApiController
 
-Атрибут [[ApiController]](xref:Microsoft.AspNetCore.Mvc.ApiControllerAttribute) можно применить к классу контроллера для включения следующих специализированных схем поведения API:
+Атрибут [`[ApiController]`](xref:Microsoft.AspNetCore.Mvc.ApiControllerAttribute) можно применить к классу контроллера для включения следующих специализированных схем поведения API:
 
 * [Обязательная маршрутизация атрибутов](#attribute-routing-requirement)
 * [Автоматические отклики HTTP 400](#automatic-http-400-responses)
@@ -241,12 +241,12 @@ if (!ModelState.IsValid)
 
 |Атрибут|Источник привязки |
 |---------|---------|
-|[[FromBody]](xref:Microsoft.AspNetCore.Mvc.FromBodyAttribute)     | Текст запроса |
-|[[FromForm]](xref:Microsoft.AspNetCore.Mvc.FromFormAttribute)     | Данные формы в тексте запроса |
-|[[FromHeader]](xref:Microsoft.AspNetCore.Mvc.FromHeaderAttribute) | Заголовок запроса |
-|[[FromQuery]](xref:Microsoft.AspNetCore.Mvc.FromQueryAttribute)   | Параметры строки запроса для запроса |
-|[[FromRoute]](xref:Microsoft.AspNetCore.Mvc.FromRouteAttribute)   | Данные маршрута из текущего запроса |
-|[[FromServices]](xref:mvc/controllers/dependency-injection#action-injection-with-fromservices) | Служба запросов, внедренная в качестве параметра действия |
+|[`[FromBody]`](xref:Microsoft.AspNetCore.Mvc.FromBodyAttribute)     | Текст запроса |
+|[`[FromForm]`](xref:Microsoft.AspNetCore.Mvc.FromFormAttribute)     | Данные формы в тексте запроса |
+|[`[FromHeader]`](xref:Microsoft.AspNetCore.Mvc.FromHeaderAttribute) | Заголовок запроса |
+|[`[FromQuery]`](xref:Microsoft.AspNetCore.Mvc.FromQueryAttribute)   | Параметры строки запроса для запроса |
+|[`[FromRoute]`](xref:Microsoft.AspNetCore.Mvc.FromRouteAttribute)   | Данные маршрута из текущего запроса |
+|[`[FromServices]`](xref:mvc/controllers/dependency-injection#action-injection-with-fromservices) | Служба запросов, внедренная в качестве параметра действия |
 
 > [!WARNING]
 > Не используйте `[FromRoute]`, если значения могут содержать `%2f` (то есть `/`). Для `%2f` не будет применяться отмена экранирования `/`. Используйте `[FromQuery]`, если значение может содержать `%2f`.
@@ -322,7 +322,7 @@ if (!ModelState.IsValid)
 
 ## <a name="multipartform-data-request-inference"></a>Вывод многокомпонентных запросов и запросов данных форм
 
-Атрибут `[ApiController]` применяет правило зависимости, когда параметр действия аннотирован атрибутом [[FromForm]](xref:Microsoft.AspNetCore.Mvc.FromFormAttribute). При этом выводится тип содержимого запроса `multipart/form-data`.
+Атрибут `[ApiController]` позволяет применить правило зависимости, когда параметр действия аннотирован атрибутом [`[FromForm]`](xref:Microsoft.AspNetCore.Mvc.FromFormAttribute). При этом выводится тип содержимого запроса `multipart/form-data`.
 
 Чтобы отключить поведение по умолчанию, задайте свойству <xref:Microsoft.AspNetCore.Mvc.ApiBehaviorOptions.SuppressConsumesConstraintForFormFileParameters> значение `true` в `Startup.ConfigureServices`:
 

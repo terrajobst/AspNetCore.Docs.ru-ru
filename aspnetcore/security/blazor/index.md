@@ -10,12 +10,12 @@ no-loc:
 - Blazor
 - SignalR
 uid: security/blazor/index
-ms.openlocfilehash: 2ebc4d72191dff33a7fb6170650be67c3836cdaa
-ms.sourcegitcommit: 3fc3020961e1289ee5bf5f3c365ce8304d8ebf19
+ms.openlocfilehash: 693ac1a5b5bcaf8a9bbf0ff9ab63fb41764e3888
+ms.sourcegitcommit: c0b72b344dadea835b0e7943c52463f13ab98dd1
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73964010"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74880459"
 ---
 # <a name="aspnet-core-opno-locblazor-authentication-and-authorization"></a>Проверка подлинности и авторизация в ASP.NET Core Blazor
 
@@ -398,7 +398,7 @@ You can only see this if you're signed in.
 Компонент `Router` вместе с компонентом `AuthorizeRouteView` позволяет приложению указать пользовательское содержимое для следующих ситуаций:
 
 * содержимое не найдено;
-* пользователь не удовлетворяет условию `[Authorize]`, которое применено к компоненту (атрибут `[Authorize]` описан в [этом разделе](#authorize-attribute));
+* пользователь не удовлетворяет условию `[Authorize]`, которое применено к компоненту (атрибут `[Authorize]` описан в разделе [Атрибут `[Authorize]`](#authorize-attribute));
 * выполняется асинхронная аутентификация.
 
 В стандартном шаблоне проекта Blazor Server есть файл *App.razor* с примером пользовательского содержимого:
