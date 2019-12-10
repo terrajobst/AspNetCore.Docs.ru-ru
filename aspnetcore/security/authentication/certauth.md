@@ -4,14 +4,14 @@ author: blowdart
 description: Узнайте, как настроить проверку подлинности сертификата в ASP.NET Core для IIS и HTTP. sys.
 monikerRange: '>= aspnetcore-3.0'
 ms.author: bdorrans
-ms.date: 11/14/2019
+ms.date: 12/09/2019
 uid: security/authentication/certauth
-ms.openlocfilehash: 2ed3e88adf3bdb7528f47492b6eb5792f99f20d8
-ms.sourcegitcommit: f91d322f790123d41ec3271fa084ae20ed9f89a6
+ms.openlocfilehash: 38ee8a6767191bb3eee4286e49b96162b14d9889
+ms.sourcegitcommit: 4e3edff24ba6e43a103fee1b126c9826241bb37b
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/18/2019
-ms.locfileid: "74155010"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74959064"
 ---
 # <a name="configure-certificate-authentication-in-aspnet-core"></a>Настройка проверки подлинности сертификата в ASP.NET Core
 
@@ -36,14 +36,14 @@ ms.locfileid: "74155010"
 
 Если проверка подлинности завершается неудачно, этот обработчик возвращает `403 (Forbidden)`ный ответ, а не `401 (Unauthorized)`, как можно было бы ожидать. Причина заключается в том, что проверка подлинности должна выполняться во время первоначального TLS-подключения. К моменту, когда он достигает обработчика, он слишком поздно. Невозможно обновить подключение между анонимным подключением и сертификатом.
 
-Также добавьте `app.UseAuthentication();` в метод `Startup.Configure`. В противном случае `HttpContext.User` не будет настроена для `ClaimsPrincipal`, созданного из сертификата. Пример:
+Также добавьте `app.UseAuthentication();` в метод `Startup.Configure`. В противном случае `HttpContext.User` не будет настроена для `ClaimsPrincipal`, созданного из сертификата. Например:
 
 ```csharp
 public void ConfigureServices(IServiceCollection services)
 {
     services.AddAuthentication(
         CertificateAuthenticationDefaults.AuthenticationScheme)
-            .AddCertificate();
+        .AddCertificate();
     // All the other service configuration.
 }
 
@@ -61,25 +61,25 @@ public void Configure(IApplicationBuilder app, IHostingEnvironment env)
 
 Обработчик `CertificateAuthenticationOptions` имеет некоторые встроенные проверки, которые являются минимальными проверками, которые следует выполнить с сертификатом. Каждый из этих параметров включен по умолчанию.
 
-### <a name="allowedcertificatetypes--chained-selfsigned-or-all-chained--selfsigned"></a>Алловедцертификатетипес = цепочка, Селфсигнед или все (цепочка | Селфсигнед)
+### <a name="allowedcertificatetypes--chained-selfsigned-or-all-chained--selfsigned"></a>AllowedCertificateTypes = Chained, SelfSigned или All (Chained | SelfSigned)
 
 Эта проверка подтверждает, что разрешен только соответствующий тип сертификата.
 
-### <a name="validatecertificateuse"></a>валидатецертификатеусе
+### <a name="validatecertificateuse"></a>ValidateCertificateUse
 
 Эта проверка проверяет, что сертификат, предоставленный клиентом, имеет расширенное использование ключа проверки подлинности клиента (EKU) или вообще не содержит EKU. Как говорится в спецификации, если EKU не указано, все EKU считаются допустимыми.
 
-### <a name="validatevalidityperiod"></a>валидатевалидитипериод
+### <a name="validatevalidityperiod"></a>ValidateValidityPeriod
 
 Эта проверка проверяет, что сертификат находится в пределах срока действия. В каждом запросе обработчик гарантирует, что сертификат, который был действителен, когда он был предоставлен, не истечет в течение текущего сеанса.
 
-### <a name="revocationflag"></a>ревокатионфлаг
+### <a name="revocationflag"></a>RevocationFlag
 
 Флаг, указывающий, какие сертификаты в цепочке проверяются на отзыв.
 
 Проверки отзыва выполняются только в том случае, если сертификат связан с корневым сертификатом.
 
-### <a name="revocationmode"></a>ревокатионмоде
+### <a name="revocationmode"></a>RevocationMode
 
 Флаг, указывающий, как выполняются проверки отзыва.
 
@@ -194,19 +194,21 @@ public static void Main(string[] args)
 public static IHostBuilder CreateHostBuilder(string[] args)
 {
     return Host.CreateDefaultBuilder(args)
-               .ConfigureWebHostDefaults(webBuilder =>
-                {
-                    webBuilder.UseStartup<Startup>();
-                    webBuilder.ConfigureKestrel(o =>
-                    {
-                        o.ConfigureHttpsDefaults(o => o.ClientCertificateMode = ClientCertificateMode.RequireCertificate);
-                    });
-                });
+        .ConfigureWebHostDefaults(webBuilder =>
+        {
+            webBuilder.UseStartup<Startup>();
+            webBuilder.ConfigureKestrel(o =>
+            {
+                o.ConfigureHttpsDefaults(o => 
+            o.ClientCertificateMode = 
+                ClientCertificateMode.RequireCertificate);
+            });
+        });
 }
 ```
 
 > [!NOTE]
-> Для конечных точек, созданных путем вызова <xref:Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServerOptions.Listen*> **до** вызова <xref:Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServerOptions.ConfigureHttpsDefaults*>, значения по умолчанию не применяются.
+> К конечным точкам, созданным путем вызова <xref:Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServerOptions.Listen*> **перед** <xref:Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServerOptions.ConfigureHttpsDefaults*>, не будут применяться значения по умолчанию.
 
 ### <a name="iis"></a>IIS
 
@@ -234,14 +236,13 @@ public static IHostBuilder CreateHostBuilder(string[] args)
 ```csharp
 public void ConfigureServices(IServiceCollection services)
 {
-    // ...
-    
     services.AddCertificateForwarding(options =>
     {
         options.CertificateHeader = "X-ARR-ClientCert";
         options.HeaderConverter = (headerValue) =>
         {
             X509Certificate2 clientCertificate = null;
+        
             if(!string.IsNullOrWhiteSpace(headerValue))
             {
                 byte[] bytes = StringToByteArray(headerValue);
@@ -257,8 +258,12 @@ private static byte[] StringToByteArray(string hex)
 {
     int NumberChars = hex.Length;
     byte[] bytes = new byte[NumberChars / 2];
+
     for (int i = 0; i < NumberChars; i += 2)
+    {
         bytes[i / 2] = Convert.ToByte(hex.Substring(i, 2), 16);
+    }
+
     return bytes;
 }
 ```
@@ -269,7 +274,7 @@ private static byte[] StringToByteArray(string hex)
 public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
 {
     ...
-    
+
     app.UseRouting();
 
     app.UseCertificateForwarding();
@@ -295,8 +300,11 @@ namespace AspNetCoreCertificateAuthApi
     {
         public bool ValidateCertificate(X509Certificate2 clientCertificate)
         {
-            // Do not hardcode passwords in production code, use thumbprint or key vault
-            var cert = new X509Certificate2(Path.Combine("sts_dev_cert.pfx"), "1234");
+            // Do not hardcode passwords in production code
+            // Use thumbprint or key vault
+            var cert = new X509Certificate2(
+                Path.Combine("sts_dev_cert.pfx"), "1234");
+
             if (clientCertificate.Thumbprint == cert.Thumbprint)
             {
                 return true;
@@ -317,11 +325,12 @@ private async Task<JsonDocument> GetApiDataAsync()
 {
     try
     {
-        // Do not hardcode passwords in production code, use thumbprint or key vault
-        var cert = new X509Certificate2(Path.Combine(_environment.ContentRootPath, "sts_dev_cert.pfx"), "1234");
-
+        // Do not hardcode passwords in production code
+        // Use thumbprint or key vault
+        var cert = new X509Certificate2(
+            Path.Combine(_environment.ContentRootPath, 
+                "sts_dev_cert.pfx"), "1234");
         var client = _clientFactory.CreateClient();
-
         var request = new HttpRequestMessage()
         {
             RequestUri = new Uri("https://localhost:44379/api/values"),
@@ -339,7 +348,9 @@ private async Task<JsonDocument> GetApiDataAsync()
             return data;
         }
 
-        throw new ApplicationException($"Status code: {response.StatusCode}, Error: {response.ReasonPhrase}");
+        throw new ApplicationException(
+            $"Status code: {response.StatusCode}, " +
+            $"Error: {response.ReasonPhrase}");
     }
     catch (Exception e)
     {
