@@ -5,17 +5,17 @@ description: Сведения о проверке подлинности и ав
 monikerRange: '>= aspnetcore-3.0'
 ms.author: riande
 ms.custom: mvc
-ms.date: 11/12/2019
+ms.date: 12/05/2019
 no-loc:
 - Blazor
 - SignalR
 uid: security/blazor/index
-ms.openlocfilehash: 693ac1a5b5bcaf8a9bbf0ff9ab63fb41764e3888
-ms.sourcegitcommit: c0b72b344dadea835b0e7943c52463f13ab98dd1
+ms.openlocfilehash: d3860a5e7f6ae5a3193d657b77fc593c9bd39131
+ms.sourcegitcommit: 851b921080fe8d719f54871770ccf6f78052584e
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74880459"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74944204"
 ---
 # <a name="aspnet-core-opno-locblazor-authentication-and-authorization"></a>Проверка подлинности и авторизация в ASP.NET Core Blazor
 
@@ -134,7 +134,7 @@ The command creates a folder named with the value provided for the `{APP NAME}` 
 
 Служба `AuthenticationStateProvider` может предоставить данные <xref:System.Security.Claims.ClaimsPrincipal> о текущем пользователе, как показано в следующем примере:
 
-```cshtml
+```razor
 @page "/"
 @using Microsoft.AspNetCore.Components.Authorization
 @inject AuthenticationStateProvider AuthenticationStateProvider
@@ -206,7 +206,7 @@ services.AddScoped<AuthenticationStateProvider, CustomAuthStateProvider>();
 
 Если процедурная логика требует данных о состоянии аутентификации, например при выполнении активируемых пользователем действий, для получения таких данных определите каскадный параметр типа `Task<AuthenticationState>`:
 
-```cshtml
+```razor
 @page "/"
 
 <button @onclick="@LogUsername">Log username</button>
@@ -237,9 +237,9 @@ services.AddScoped<AuthenticationStateProvider, CustomAuthStateProvider>();
 
 Если `user.Identity.IsAuthenticated` имеет значение `true`, можно перечислить утверждения и оценить членство в ролях.
 
-Настройте каскадный параметр `Task<AuthenticationState>` с помощью компонентов `AuthorizeRouteView` и `CascadingAuthenticationState`:
+Настройте каскадный параметр `Task<AuthenticationState>` с помощью компонентов `AuthorizeRouteView` и `CascadingAuthenticationState` в файле *App.razor*:
 
-```cshtml
+```razor
 <Router AppAssembly="@typeof(Program).Assembly">
     <Found Context="routeData">
         <AuthorizeRouteView RouteData="@routeData" DefaultLayout="@typeof(MainLayout)" />
@@ -273,7 +273,7 @@ services.AddScoped<AuthenticationStateProvider, CustomAuthStateProvider>();
 
 Этот компонент представляет переменную `context` типа `AuthenticationState`, которую можно использовать для доступа к сведениям о пользователе, выполнившем вход:
 
-```cshtml
+```razor
 <AuthorizeView>
     <h1>Hello, @context.User.Identity.Name!</h1>
     <p>You can only see this content if you're authenticated.</p>
@@ -282,7 +282,7 @@ services.AddScoped<AuthenticationStateProvider, CustomAuthStateProvider>();
 
 Также вы можете указать другое содержимое, которое будет отображаться, если пользователь не выполнил аутентификацию:
 
-```cshtml
+```razor
 <AuthorizeView>
     <Authorized>
         <h1>Hello, @context.User.Identity.Name!</h1>
@@ -310,7 +310,7 @@ services.AddScoped<AuthenticationStateProvider, CustomAuthStateProvider>();
 
 Для авторизации на основе ролей примените параметр `Roles`:
 
-```cshtml
+```razor
 <AuthorizeView Roles="admin, superuser">
     <p>You can only see this if you're an admin or superuser.</p>
 </AuthorizeView>
@@ -320,7 +320,7 @@ services.AddScoped<AuthenticationStateProvider, CustomAuthStateProvider>();
 
 Для авторизации на основе политик примените параметр `Policy`:
 
-```cshtml
+```razor
 <AuthorizeView Policy="content-editor">
     <p>You can only see this if you satisfy the "content-editor" policy.</p>
 </AuthorizeView>
@@ -338,7 +338,7 @@ Blazor позволяет *асинхронно* определять состо
 
 Пока аутентификация выполняется, `AuthorizeView` по умолчанию не отображает содержимое. Чтобы содержимое отображалось, используйте элемент `<Authorizing>`:
 
-```cshtml
+```razor
 <AuthorizeView>
     <Authorized>
         <h1>Hello, @context.User.Identity.Name!</h1>
@@ -357,7 +357,7 @@ Blazor позволяет *асинхронно* определять состо
 
 Атрибут `[Authorize]` можно использовать в компонентах Razor:
 
-```cshtml
+```razor
 @page "/"
 @attribute [Authorize]
 
@@ -372,7 +372,7 @@ You can only see this if you're signed in.
 
 Атрибут `[Authorize]` также поддерживает авторизацию на основе ролей или политик. Для авторизации на основе ролей примените параметр `Roles`:
 
-```cshtml
+```razor
 @page "/"
 @attribute [Authorize(Roles = "admin, superuser")]
 
@@ -381,7 +381,7 @@ You can only see this if you're signed in.
 
 Для авторизации на основе политик примените параметр `Policy`:
 
-```cshtml
+```razor
 @page "/"
 @attribute [Authorize(Policy = "content-editor")]
 
@@ -403,7 +403,7 @@ You can only see this if you're signed in.
 
 В стандартном шаблоне проекта Blazor Server есть файл *App.razor* с примером пользовательского содержимого:
 
-```cshtml
+```razor
 <Router AppAssembly="@typeof(Program).Assembly">
     <Found Context="routeData">
         <AuthorizeRouteView RouteData="@routeData" DefaultLayout="@typeof(MainLayout)">
@@ -445,7 +445,7 @@ Not authorized.
 
 Если приложению нужно проверять правила авторизации в составе процедурной логики, используйте каскадный параметр с типом `Task<AuthenticationState>`, чтобы получить <xref:System.Security.Claims.ClaimsPrincipal> пользователя. `Task<AuthenticationState>` можно комбинировать для оценки политик с другими службами, например `IAuthorizationService`.
 
-```cshtml
+```razor
 @inject IAuthorizationService AuthorizationService
 
 <button @onclick="@DoSomething">Do something important</button>
@@ -481,7 +481,7 @@ Not authorized.
 > [!NOTE]
 > В компоненте приложения Blazor WebAssembly добавьте пространства имен `Microsoft.AspNetCore.Authorization` и `Microsoft.AspNetCore.Components.Authorization`:
 >
-> ```cshtml
+> ```razor
 > @using Microsoft.AspNetCore.Authorization
 > @using Microsoft.AspNetCore.Components.Authorization
 > ```
@@ -502,7 +502,7 @@ Not authorized.
 
 Вполне вероятно, что проект не был создан на основе шаблона серверного приложения Blazor с включенной проверкой подлинности. Примените `<CascadingAuthenticationState>` в качестве оболочки некоторой части дерева пользовательского интерфейса, например в *App.razor*, следующим образом:
 
-```cshtml
+```razor
 <CascadingAuthenticationState>
     <Router AppAssembly="typeof(Startup).Assembly">
         ...
