@@ -3,20 +3,20 @@ title: Справочник по синтаксису Razor для ASP.NET Core
 author: rick-anderson
 description: Сведения о синтаксисе разметки Razor для внедрения в веб-страницы серверного кода.
 ms.author: riande
-ms.date: 11/09/2019
+ms.date: 12/05/2019
 uid: mvc/views/razor
-ms.openlocfilehash: dea1cd8986757b0bafab9ba9e8aa358a57a6b5eb
-ms.sourcegitcommit: 3e503ef510008e77be6dd82ee79213c9f7b97607
+ms.openlocfilehash: baac0ac38a0781cb9c16689cf3e29526b602d8da
+ms.sourcegitcommit: 851b921080fe8d719f54871770ccf6f78052584e
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74317409"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74944256"
 ---
 # <a name="razor-syntax-reference-for-aspnet-core"></a>Справочник по синтаксису Razor для ASP.NET Core
 
 Авторы: [Рик Андерсон (Rick Anderson)](https://twitter.com/RickAndMSFT), [Люк Лэтем (Luke Latham)](https://github.com/guardrex), [Тейлор Маллен (Taylor Mullen)](https://twitter.com/ntaylormullen) и [Дэн Викарел (Dan Vicarel)](https://github.com/Rabadash8820)
 
-Razor — это синтаксис разметки для внедрения в веб-страницы серверного кода. Синтаксис Razor состоит из разметки Razor, C# и HTML. Файлы, содержащие Razor, обычно имеют расширение *CSHTML*. Razor также находится в файлах [компонентов Razor](xref:blazor/components) ( *.razor*).
+Razor — это синтаксис разметки для внедрения в веб-страницы серверного кода. Синтаксис Razor состоит из разметки Razor, C# и HTML. Файлы, содержащие Razor, обычно имеют расширение *CSHTML*. Razor также находится в файлах [компонентов Razor](xref:blazor/components) (*.razor*).
 
 ## <a name="rendering-html"></a>Отрисовка HTML
 
@@ -461,13 +461,13 @@ public class _Views_Something_cshtml : RazorPage<dynamic>
 
 Блок `@code` позволяет [компоненту Razor](xref:blazor/components) добавлять в компонент элементы C# (поля, свойства и методы):
 
-```cshtml
+```razor
 @code {
     // C# members (fields, properties, and methods)
 }
 ```
 
-Для компонентов Razor `@code` является псевдонимом [@functions](#functions) и рекомендуется вместо `@functions`. Допускается более одного блока `@code`.
+Для компонентов Razor `@code` является псевдонимом [`@functions`](#functions) и рекомендуется вместо `@functions`. Допускается более одного блока `@code`.
 
 ::: moniker-end
 
@@ -874,9 +874,9 @@ public class Pet
 
 | Директива | Функция |
 | --------- | -------- |
-| [@addTagHelper](xref:mvc/views/tag-helpers/intro#add-helper-label) | Делает вспомогательные функции тегов доступными в представлении. |
-| [@removeTagHelper](xref:mvc/views/tag-helpers/intro#remove-razor-directives-label) | Удаляет из представления вспомогательные функции тегов, добавленные ранее. |
-| [@tagHelperPrefix](xref:mvc/views/tag-helpers/intro#prefix-razor-directives-label) | Задает префикс тега, который активирует поддержку вспомогательной функции тега и ее использования в явном виде. |
+| [`@addTagHelper`](xref:mvc/views/tag-helpers/intro#add-helper-label) | Делает вспомогательные функции тегов доступными в представлении. |
+| [`@removeTagHelper`](xref:mvc/views/tag-helpers/intro#remove-razor-directives-label) | Удаляет из представления вспомогательные функции тегов, добавленные ранее. |
+| [`@tagHelperPrefix`](xref:mvc/views/tag-helpers/intro#prefix-razor-directives-label) | Задает префикс тега, который активирует поддержку вспомогательной функции тега и ее использования в явном виде. |
 
 ## <a name="razor-reserved-keywords"></a>Зарезервированные ключевые слова Razor
 

@@ -4,7 +4,7 @@
 
 В проекте RazorPagesMovie создайте новую папку с именем *Data*. Добавьте следующий класс `RazorPagesMovieContext` в папку *Data*:
 
-[!code-csharp[](~/tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie22/Data/RazorPagesMovieContext.cs)]
+[!code-csharp[](~/tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie30/Data/RazorPagesMovieContext.cs)]
 
 Представленный выше код создает свойство `DbSet` для набора сущностей. В терминологии Entity Framework набор сущностей обычно соответствует таблице базы данных, а сущность — строке в этой таблице.
 
@@ -29,7 +29,7 @@
 Добавьте следующие инструкции `using` в начало файла *Startup.cs*.
 
 ```csharp
-using RazorPagesMovie.Models;
+using RazorPagesMovie.Data;
 using Microsoft.EntityFrameworkCore;
 ```
 

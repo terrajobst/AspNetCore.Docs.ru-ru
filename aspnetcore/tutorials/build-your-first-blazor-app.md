@@ -5,16 +5,16 @@ description: Узнайте, как создать приложение Blazor �
 monikerRange: '>= aspnetcore-3.0'
 ms.author: riande
 ms.custom: mvc
-ms.date: 11/27/2019
+ms.date: 12/05/2019
 no-loc:
 - Blazor
 uid: tutorials/first-blazor-app
-ms.openlocfilehash: 2a83761b598a339aeaf8bec6f8fd50d09e608f0c
-ms.sourcegitcommit: 0dd224b2b7efca1fda0041b5c3f45080327033f6
+ms.openlocfilehash: 11ff540a70ebdb8baa0c7adb98cb1dfe27d91e50
+ms.sourcegitcommit: 851b921080fe8d719f54871770ccf6f78052584e
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74681218"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74944191"
 ---
 # <a name="build-your-first-opno-locblazor-app"></a>Создание первого приложения Blazor
 
@@ -125,7 +125,7 @@ ms.locfileid: "74681218"
 
 [!code-razor[](build-your-first-blazor-app/samples_snapshot/3.x/FetchData1_client.razor?highlight=7-8)]
 
-Цикл [@foreach](/dotnet/csharp/language-reference/keywords/foreach-in) используется для отображения каждого экземпляра прогноза в отдельной строке в таблице погоды.
+Цикл [`@foreach`](/dotnet/csharp/language-reference/keywords/foreach-in) используется для отображения каждого экземпляра прогноза в отдельной строке в таблице погоды.
 
 [!code-razor[](build-your-first-blazor-app/samples_snapshot/3.x/FetchData3.razor?highlight=11-19)]
 
@@ -184,7 +184,7 @@ ms.locfileid: "74681218"
 
    [!code-razor[](build-your-first-blazor-app/samples_snapshot/3.x/ToDo7.razor?highlight=2)]
 
-   ```cshtml
+   ```razor
    <input placeholder="Something todo" @bind="newTodo" />
    ```
 

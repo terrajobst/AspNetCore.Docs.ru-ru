@@ -7,12 +7,12 @@ ms.author: scaddie
 ms.custom: mvc
 ms.date: 04/06/2019
 uid: mvc/views/tag-helpers/builtin-th/partial-tag-helper
-ms.openlocfilehash: 757c407bbae9c33c5b05a1edc01a37c2ced8dd36
-ms.sourcegitcommit: 5b0eca8c21550f95de3bb21096bd4fd4d9098026
+ms.openlocfilehash: 508f91cdcd93c149602223250520eecb73625b24
+ms.sourcegitcommit: c0b72b344dadea835b0e7943c52463f13ab98dd1
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 04/27/2019
-ms.locfileid: "64890289"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74880988"
 ---
 # <a name="partial-tag-helper-in-aspnet-core"></a>Вспомогательная функция тега частичного представления в ASP.NET Core
 
@@ -32,10 +32,10 @@ ms.locfileid: "64890289"
 
 Параметры вспомогательной функции HTML для отрисовки частичного представления:
 
-* [@await Html.PartialAsync](/dotnet/api/microsoft.aspnetcore.mvc.rendering.htmlhelperpartialextensions.partialasync)
-* [@await Html.RenderPartialAsync](/dotnet/api/microsoft.aspnetcore.mvc.rendering.htmlhelperpartialextensions.renderpartialasync)
-* [@Html.Partial](/dotnet/api/microsoft.aspnetcore.mvc.rendering.htmlhelperpartialextensions.partial)
-* [@Html.RenderPartial](/dotnet/api/microsoft.aspnetcore.mvc.rendering.htmlhelperpartialextensions.renderpartial)
+* [`@await Html.PartialAsync`](/dotnet/api/microsoft.aspnetcore.mvc.rendering.htmlhelperpartialextensions.partialasync)
+* [`@await Html.RenderPartialAsync`](/dotnet/api/microsoft.aspnetcore.mvc.rendering.htmlhelperpartialextensions.renderpartialasync)
+* [`@Html.Partial`](/dotnet/api/microsoft.aspnetcore.mvc.rendering.htmlhelperpartialextensions.partial)
+* [`@Html.RenderPartial`](/dotnet/api/microsoft.aspnetcore.mvc.rendering.htmlhelperpartialextensions.renderpartial)
 
 В примерах в этом документе используется модель *Product*:
 
@@ -43,7 +43,7 @@ ms.locfileid: "64890289"
 
 Далее следуют атрибуты вспомогательной функции тега частичного представления.
 
-## <a name="name"></a>имя
+## <a name="name"></a>name
 
 Атрибут `name` является обязательным. Она указывает имя или путь для отображения частичного представления, которое будет отрисовано. Если указано имя частичного представления, запускается процесс [обнаружения представления](xref:mvc/views/overview#view-discovery). Этот процесс пропускается, если предоставлен явный путь. Все допустимые значения `name` см. в разделе [Обнаружение частичного представления](xref:mvc/views/partial#partial-view-discovery).
 

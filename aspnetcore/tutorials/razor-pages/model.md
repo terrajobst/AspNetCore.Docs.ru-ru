@@ -3,14 +3,14 @@ title: Добавление модели в приложение Razor Pages в 
 author: rick-anderson
 description: Узнайте, как добавлять классы для управления фильмами в базе данных с использованием Entity Framework Core (EF Core).
 ms.author: riande
-ms.date: 11/05/2019
+ms.date: 12/05/2019
 uid: tutorials/razor-pages/model
-ms.openlocfilehash: f2c9c2fc8112ef8a1a5afdbe448de6319c43521d
-ms.sourcegitcommit: 6628cd23793b66e4ce88788db641a5bbf470c3c1
+ms.openlocfilehash: 95b6d3e016edcd2e13207c8e658cf0d2fb21f945
+ms.sourcegitcommit: 4e3edff24ba6e43a103fee1b126c9826241bb37b
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73761221"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74959088"
 ---
 # <a name="add-a-model-to-a-razor-pages-app-in-aspnet-core"></a>Добавление модели в приложение Razor Pages в ASP.NET Core
 
@@ -220,7 +220,7 @@ ASP.NET Core поддерживает [внедрение зависимосте
 
 [!code-csharp[](~/tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie22/Data/RazorPagesMovieContext.cs)]
 
-Представленный выше код создает свойство [`DbSet<Movie>`](/dotnet/api/microsoft.entityframeworkcore.dbset-1) для набора сущностей. В терминологии Entity Framework набор сущностей обычно соответствует таблице базы данных. Сущность соответствует строке в таблице.
+Представленный выше код создает свойство [DbSet\<Movie>](/dotnet/api/microsoft.entityframeworkcore.dbset-1) для набора сущностей. В терминологии Entity Framework набор сущностей обычно соответствует таблице базы данных. Сущность соответствует строке в таблице.
 
 Имя строки подключения передается в контекст путем вызова метода для объекта [DbContextOptions](/dotnet/api/microsoft.entityframeworkcore.dbcontextoptions). При локальной разработке [система конфигурации ASP.NET Core](xref:fundamentals/configuration/index) считывает строку подключения из файла *appsettings.json*.
 
@@ -353,11 +353,6 @@ to use Data, it should not use models. That will make the namespace the same for
 -->
 
 * Откройте окно командной строки в папке проекта (папке, где находятся файлы *Program.cs*, *Startup.cs* и *.csproj* файлов).
-* Установка средства формирования шаблонов:
-
-  ```dotnetcli
-   dotnet tool install --global dotnet-aspnet-codegenerator
-   ```
 
 * **Для Windows**: Выполните следующую команду:
 
@@ -376,12 +371,6 @@ to use Data, it should not use models. That will make the namespace the same for
 # <a name="visual-studio-for-mactabvisual-studio-mac"></a>[Visual Studio для Mac](#tab/visual-studio-mac)
 
 * Откройте окно командной строки в папке проекта (папке, где находятся файлы *Program.cs*, *Startup.cs* и *.csproj* файлов).
-* Установка средства формирования шаблонов:
-
-  ```dotnetcli
-   dotnet tool install --global dotnet-aspnet-codegenerator
-   ```
-
 * Выполните следующую команду:
 
   ```dotnetcli
@@ -459,7 +448,7 @@ ASP.NET Core поддерживает [внедрение зависимосте
 
 [!code-csharp[](~/tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie22/Data/RazorPagesMovieContext.cs)]
 
-Представленный выше код создает свойство [`DbSet<Movie>`](/dotnet/api/microsoft.entityframeworkcore.dbset-1) для набора сущностей. В терминологии Entity Framework набор сущностей обычно соответствует таблице базы данных. Сущность соответствует строке в таблице.
+Представленный выше код создает свойство [DbSet\<Movie>](/dotnet/api/microsoft.entityframeworkcore.dbset-1) для набора сущностей. В терминологии Entity Framework набор сущностей обычно соответствует таблице базы данных. Сущность соответствует строке в таблице.
 
 Имя строки подключения передается в контекст путем вызова метода для объекта [DbContextOptions](/dotnet/api/microsoft.entityframeworkcore.dbcontextoptions). При локальной разработке [система конфигурации ASP.NET Core](xref:fundamentals/configuration/index) считывает строку подключения из файла *appsettings.json*.
 
