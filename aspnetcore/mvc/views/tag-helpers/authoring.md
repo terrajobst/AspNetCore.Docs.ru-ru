@@ -4,14 +4,14 @@ author: rick-anderson
 description: Сведения о разработке вспомогательных функций тегов в ASP.NET Core.
 ms.author: riande
 ms.custom: mvc
-ms.date: 04/29/2019
+ms.date: 12/05/2019
 uid: mvc/views/tag-helpers/authoring
-ms.openlocfilehash: f0c7e114583b2ca2e681c507bef3487c863d8cd0
-ms.sourcegitcommit: a166291c6708f5949c417874108332856b53b6a9
+ms.openlocfilehash: e8b62d795f6444e6dd79e27ace687d5db4db86de
+ms.sourcegitcommit: c0b72b344dadea835b0e7943c52463f13ab98dd1
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72589874"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74881004"
 ---
 # <a name="author-tag-helpers-in-aspnet-core"></a>Создание вспомогательных функций тегов в ASP.NET Core
 
@@ -117,7 +117,7 @@ the following snippet uses TagHelpers3 and should use TagHelpers (not the 3)
 <a name="self-closing"></a>
 
    > [!NOTE]
-   > Если бы вам нужно было написать самозакрывающийся тег электронной почты (`<email mail-to="Rick" />`), выходной тег также был бы самозакрывающимся. Чтобы получить возможность создавать теги с помощью только открывающего тега (`<email mail-to="Rick">`), класс необходимо декорировать следующим образом:
+   > Если бы вам нужно было написать самозакрывающийся тег электронной почты (`<email mail-to="Rick" />`), выходной тег также был бы самозакрывающимся. Чтобы получить возможность создавать теги с помощью только открывающего тега (`<email mail-to="Rick">`), класс необходимо пометить следующим образом:
    >
    > [!code-csharp[](../../../mvc/views/tag-helpers/authoring/sample/AuthoringTagHelpers/src/AuthoringTagHelpers/TagHelpers/EmailTagHelperMailVoid.cs?highlight=1&range=6-10)]
 

@@ -5,14 +5,14 @@ description: Узнайте, как происходит компиляция ф
 monikerRange: '>= aspnetcore-1.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 10/31/2019
+ms.date: 12/05/2019
 uid: mvc/views/view-compilation
-ms.openlocfilehash: 95fa0d72ed9c088945707ac6b79c3fbde35a5a30
-ms.sourcegitcommit: eb2fe5ad2e82fab86ca952463af8d017ba659b25
+ms.openlocfilehash: 0a5770a00c5cb319b571628659a07e73e0de54f9
+ms.sourcegitcommit: fd2483f0a384b1c479c5b4af025ee46917db1919
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/01/2019
-ms.locfileid: "73416152"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74867982"
 ---
 # <a name="razor-file-compilation-in-aspnet-core"></a>Компиляция файлов Razor в ASP.NET Core
 
@@ -123,16 +123,57 @@ dotnet publish -c Release
 
 ::: moniker range=">= aspnetcore-3.0"
 
-Компиляция в среде выполнения включается с помощью пакета `Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation`. Чтобы включить компиляцию в среде выполнения, необходимо:
+Чтобы включить компиляцию в среде выполнения для всех сред и режимов конфигурации, сделайте следующее:
 
-* установить пакет NuGet [Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation](https://www.nuget.org/packages/Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation/).
-* Обновите метод `Startup.ConfigureServices` в проекте, чтобы включить в него вызов к `AddRazorRuntimeCompilation`:
+1. установить пакет NuGet [Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation](https://www.nuget.org/packages/Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation/).
 
-  ```csharp
-  services
-      .AddControllersWithViews()
-      .AddRazorRuntimeCompilation();
-  ```
+1. обновите метод `Startup.ConfigureServices` в проекте, чтобы включить вызов `AddRazorRuntimeCompilation`. Например:
+
+    ```csharp
+    public void ConfigureServices(IServiceCollection services)
+    {
+        services.AddRazorPages()
+            .AddRazorRuntimeCompilation();
+
+        // code omitted for brevity
+    }
+    ```
+
+### <a name="conditionally-enable-runtime-compilation"></a>Условное включение компиляции в среде выполнения
+
+Компиляцию в среде выполнения можно включить так, чтобы она была доступна только для локальной рабочей среды. Подобное условное включение гарантирует, что опубликованные выходные данные:
+
+* используют скомпилированные представления;
+* имеют меньший размер;
+* не включают наблюдатели файлов в рабочей среде.
+
+Чтобы включить компиляцию в среде выполнения для конкретной среды и конкретного режима конфигурации, сделайте следующее:
+
+1. Условно сошлитесь на пакет [Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation](https://www.nuget.org/packages/Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation/) с учетом активного значения `Configuration`:
+
+    ```xml
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation" Version="3.1.0" Condition="'$(Configuration)' == 'Debug'" />
+    ```
+
+1. обновите метод `Startup.ConfigureServices` в проекте, чтобы включить вызов `AddRazorRuntimeCompilation`. Условно выполните `AddRazorRuntimeCompilation`, чтобы он выполнялся только в режиме отладки, если для переменной `ASPNETCORE_ENVIRONMENT` задано значение `Development`:
+
+    ```csharp
+    public IWebHostEnvironment Env { get; set; }
+    
+    public void ConfigureServices(IServiceCollection services)
+    {
+        IMvcBuilder builder = services.AddRazorPages();
+    
+    #if DEBUG
+        if (Env.IsDevelopment())
+        {
+            builder.AddRazorRuntimeCompilation();
+        }
+    #endif
+
+        // code omitted for brevity
+    }
+    ```
 
 ::: moniker-end
 

@@ -6,12 +6,12 @@ ms.author: scaddie
 ms.custom: mvc
 ms.date: 09/09/2019
 uid: web-api/action-return-types
-ms.openlocfilehash: c409170a24225e160c1c53e7294590589e114f7f
-ms.sourcegitcommit: 231780c8d7848943e5e9fd55e93f437f7e5a371d
+ms.openlocfilehash: fe665026fdced22ccf4b4f1ba655e858a7acf016
+ms.sourcegitcommit: c0b72b344dadea835b0e7943c52463f13ab98dd1
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74116082"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74879742"
 ---
 # <a name="controller-action-return-types-in-aspnet-core-web-api"></a>Типы возвращаемых значений действий контроллера в веб-API ASP.NET Core
 
@@ -92,7 +92,7 @@ public IEnumerable<Product> GetOnSaleProducts() =>
 
 Тип возвращаемого значения <xref:Microsoft.AspNetCore.Mvc.IActionResult> можно использовать, если в действии допускаются несколько типов возвращаемого значения `ActionResult`. Типы `ActionResult` представляют различные коды состояния HTTP. Любой неабстрактный класс, унаследованный от квалификаторов `ActionResult` в виде допустимого типа возвращаемого значения. Некоторые распространенные типы возвращаемых значений в этой категории: <xref:Microsoft.AspNetCore.Mvc.BadRequestResult> (400), <xref:Microsoft.AspNetCore.Mvc.NotFoundResult> (404) и <xref:Microsoft.AspNetCore.Mvc.OkObjectResult> (200). Кроме того, удобные методы в классе <xref:Microsoft.AspNetCore.Mvc.ControllerBase> можно использовать для получения типов `ActionResult` из действия. Например, `return BadRequest();` — это сокращенная форма `return new BadRequestResult();`.
 
-Так как в типе действия есть несколько типов возвращаемого значения и путей, необходимо использовать атрибут [[ProducesResponseType]](xref:Microsoft.AspNetCore.Mvc.ProducesResponseTypeAttribute). Этот атрибут создает описательные сведения об ответе для страниц справки по веб-API, создаваемых с помощью таких инструментов, как [Swagger](xref:tutorials/web-api-help-pages-using-swagger). `[ProducesResponseType]` указывает известные типы и коды состояния HTTP, возвращаемые действием.
+Так как в типе действия есть несколько типов возвращаемого значения и путей, необходимо использовать атрибут [`[ProducesResponseType]`](xref:Microsoft.AspNetCore.Mvc.ProducesResponseTypeAttribute). Этот атрибут создает описательные сведения об ответе для страниц справки по веб-API, создаваемых с помощью таких инструментов, как [Swagger](xref:tutorials/web-api-help-pages-using-swagger). `[ProducesResponseType]` указывает известные типы и коды состояния HTTP, возвращаемые действием.
 
 ### <a name="synchronous-action"></a>Синхронное действие
 
@@ -142,13 +142,13 @@ public IEnumerable<Product> GetOnSaleProducts() =>
 
 ::: moniker range=">= aspnetcore-2.1"
 
-Если атрибут [[ApiController]](xref:Microsoft.AspNetCore.Mvc.ApiControllerAttribute) применяется в ASP.NET Core 2.1 и более поздних версиях, ошибки при проверке модели приводят к коду состояния 400. Дополнительные сведения см. в разделе [Автоматические отклики HTTP 400](xref:web-api/index#automatic-http-400-responses).
+Если атрибут [`[ApiController]`](xref:Microsoft.AspNetCore.Mvc.ApiControllerAttribute) применяется в ASP.NET Core 2.1 и более поздних версиях, ошибки при проверке модели приводят к коду состояния 400. Дополнительные сведения см. в разделе [Автоматические отклики HTTP 400](xref:web-api/index#automatic-http-400-responses).
 
 ## <a name="actionresultt-type"></a>Тип ActionResult\<T>
 
 ASP.NET Core 2.1 предоставляет тип возвращаемого значения [ActionResult\<T>](xref:Microsoft.AspNetCore.Mvc.ActionResult`1) для действий контроллера веб-API. Он позволяет возвращать тип, производный от <xref:Microsoft.AspNetCore.Mvc.ActionResult> или [определенный тип](#specific-type). `ActionResult<T>` имеет следующие преимущества по сравнению с [типом IActionResult](#iactionresult-type):
 
-* Свойство `Type` атрибута [[ProducesResponseType]](xref:Microsoft.AspNetCore.Mvc.ProducesResponseTypeAttribute) можно исключить. Например, `[ProducesResponseType(200, Type = typeof(Product))]` упрощается до `[ProducesResponseType(200)]`. Ожидаемый тип возвращаемого значения действия вместо этого выводится из `T` в `ActionResult<T>`.
+* Свойство `Type` атрибута [`[ProducesResponseType]`](xref:Microsoft.AspNetCore.Mvc.ProducesResponseTypeAttribute) можно исключить. Например, `[ProducesResponseType(200, Type = typeof(Product))]` упрощается до `[ProducesResponseType(200)]`. Ожидаемый тип возвращаемого значения действия вместо этого выводится из `T` в `ActionResult<T>`.
 * [Операторы неявного приведения](/dotnet/csharp/language-reference/keywords/implicit) поддерживают преобразование `T` и `ActionResult` в `ActionResult<T>`. `T` преобразуется в <xref:Microsoft.AspNetCore.Mvc.ObjectResult>, то есть `return new ObjectResult(T);` упрощается до `return T;`.
 
 C# не поддерживает операторы неявных приведений в интерфейсах. Следовательно, для преобразования в конкретный тип необходимо использовать `ActionResult<T>`. Например, использование `IEnumerable` не работает в следующем примере:
@@ -183,7 +183,7 @@ public ActionResult<IEnumerable<Product>> Get() =>
 В предшествующем действии:
 
 * Код состояния 400 (<xref:Microsoft.AspNetCore.Mvc.ControllerBase.BadRequest*>) возвращается средой выполнения ASP.NET Core, если:
-  * Атрибут [[ApiController]](xref:Microsoft.AspNetCore.Mvc.ApiControllerAttribute) был применен и проверка модели не пройдена.
+  * Атрибут [`[ApiController]`](xref:Microsoft.AspNetCore.Mvc.ApiControllerAttribute) был применен, и проверка модели не пройдена.
   * Описание продукта содержит XYZ Widget.
 * Код состояния 201 генерируется методом <xref:Microsoft.AspNetCore.Mvc.ControllerBase.CreatedAtAction*> при создании продукта. В этом пути к коду объект `Product` предоставляется в тексте ответа. Также предоставляется заголовок ответа `Location` с URL-адресом только что созданного продукта.
 

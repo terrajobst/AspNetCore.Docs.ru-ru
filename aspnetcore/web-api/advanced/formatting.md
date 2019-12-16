@@ -4,14 +4,14 @@ author: ardalis
 description: Сведения о форматировании данных отклика в веб-API ASP.NET Core.
 ms.author: riande
 ms.custom: H1Hack27Feb2017
-ms.date: 8/22/2019
+ms.date: 12/05/2019
 uid: web-api/advanced/formatting
-ms.openlocfilehash: 78fe620ea8fdd681a276253f77939bcb2a56ebb9
-ms.sourcegitcommit: 35a86ce48041caaf6396b1e88b0472578ba24483
+ms.openlocfilehash: cab383053751598b882f3716943d3d9392c56f4a
+ms.sourcegitcommit: 29ace642ca0e1f0b48a18d66de266d8811df2b83
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72391280"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74987954"
 ---
 # <a name="format-response-data-in-aspnet-core-web-api"></a>Форматирование данных отклика в веб-API ASP.NET Core
 
@@ -118,7 +118,7 @@ ms.locfileid: "72391280"
 
 Приведенный выше код сериализует результаты с помощью `XmlSerializer`.
 
-При использовании приведенного выше кода методы контроллера должны возвращать соответствующий формат на основе заголовка `Accept` запроса.
+При использовании приведенного выше кода методы контроллера возвращают соответствующий формат на основе заголовка `Accept` запроса.
 
 ### <a name="configure-systemtextjson-based-formatters"></a>Настройка форматировщиков на основе System.Text.Json
 

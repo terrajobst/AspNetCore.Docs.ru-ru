@@ -6,12 +6,12 @@ monikerRange: '>= aspnetcore-2.0'
 ms.author: scaddie
 ms.date: 06/12/2019
 uid: mvc/views/tag-helpers/th-components
-ms.openlocfilehash: de053dd0138224a9bece218010eaaedcf7e084cb
-ms.sourcegitcommit: 257cc3fe8c1d61341aa3b07e5bc0fa3d1c1c1d1c
+ms.openlocfilehash: 070cc3aae08664c13d8eb793a066766d0a5569ee
+ms.sourcegitcommit: c0b72b344dadea835b0e7943c52463f13ab98dd1
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69583536"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74880972"
 ---
 # <a name="tag-helper-components-in-aspnet-core"></a>Вспомогательные компоненты тегов в ASP.NET Core
 
@@ -111,8 +111,8 @@ ASP.NET Core включает в себя два встроенных вспом
 Чтобы создать пользовательский вспомогательный компонент тегов, выполните следующие действия:
 
 * Создайте открытый класс, который наследует от <xref:Microsoft.AspNetCore.Mvc.Razor.TagHelpers.TagHelperComponentTagHelper>.
-* Примените к этому классу атрибут [[HtmlTargetElement]](xref:Microsoft.AspNetCore.Razor.TagHelpers.HtmlTargetElementAttribute). Укажите имя целевого элемента HTML.
-* *Необязательно:* Примените к этому классу атрибут [[EditorBrowsable(EditorBrowsableState.Never)]](xref:System.ComponentModel.EditorBrowsableAttribute) для блокировки отображения типа в IntelliSense.
+* Примените атрибут [`[HtmlTargetElement]`](xref:Microsoft.AspNetCore.Razor.TagHelpers.HtmlTargetElementAttribute) к классу. Укажите имя целевого элемента HTML.
+* *Необязательно:* Примените к этому классу атрибут [`[EditorBrowsable(EditorBrowsableState.Never)]`](xref:System.ComponentModel.EditorBrowsableAttribute) для блокировки отображения типа в IntelliSense.
 
 Следующий код позволяет создать пользовательский вспомогательный компонент тегов, который работает с элементом HTML `<address>`:
 

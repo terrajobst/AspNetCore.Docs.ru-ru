@@ -4,14 +4,14 @@ author: rick-anderson
 description: Сведения о встроенных вспомогательных функциях тегов, используемых в формах.
 ms.author: riande
 ms.custom: mvc
-ms.date: 04/06/2019
+ms.date: 12/05/2019
 uid: mvc/views/working-with-forms
-ms.openlocfilehash: 43a1c408ff1a03468989e5bb0839ca2cd245082b
-ms.sourcegitcommit: b5e63714afc26e94be49a92619586df5189ed93a
+ms.openlocfilehash: 61b50a63bd026f917035f64785d8d3b1956958a6
+ms.sourcegitcommit: c0b72b344dadea835b0e7943c52463f13ab98dd1
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68739493"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74880966"
 ---
 # <a name="tag-helpers-in-forms-in-aspnet-core"></a>Вспомогательные функции тегов в формах в ASP.NET Core
 
@@ -199,7 +199,7 @@ Type expected
 |Тип .NET|Тип входных данных|
 |---|---|
 |Bool|type="checkbox"|
-|String|type="text"|
+|Строка|type="text"|
 |DateTime|type=["datetime-local"](https://developer.mozilla.org/docs/Web/HTML/Element/input/datetime-local)|
 |Byte|type="number"|
 |Int|type="number"|
@@ -457,7 +457,7 @@ public IActionResult Edit(int id, int colorIndex)
 
 ### <a name="sample"></a>Пример
 
-В следующем примере модель данных дополнена атрибутами `DataAnnotation`, в результате чего создаются сообщения об ошибках проверки для элемента `<input>`.  При возникновении ошибки проверки вспомогательная функция тега проверки отображает следующее сообщение об ошибке:
+В следующем примере модель данных имеет атрибуты `DataAnnotation`, в результате чего создаются сообщения об ошибках проверки для элемента `<input>`.  При возникновении ошибки проверки вспомогательная функция тега проверки отображает следующее сообщение об ошибке:
 
 [!code-csharp[](working-with-forms/sample/final/ViewModels/RegisterViewModel.cs)]
 
@@ -545,7 +545,7 @@ public IActionResult Edit(int id, int colorIndex)
 
 [!code-HTML[](../../mvc/views/working-with-forms/sample/final/Views/Home/IndexEnum.cshtml?highlight=5)]
 
-Список перечислителя можно дополнить атрибутом `Display` для формирования пользовательского интерфейса с более широкими функциональными возможностями:
+Список перечислителя можно пометить атрибутом `Display` для формирования пользовательского интерфейса с более широкими функциональными возможностями:
 
 [!code-csharp[](working-with-forms/sample/final/ViewModels/CountryEnum.cs?highlight=5,7)]
 

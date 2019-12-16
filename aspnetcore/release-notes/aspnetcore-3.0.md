@@ -4,17 +4,17 @@ author: rick-anderson
 description: Сведения о новых возможностях в ASP.NET Core 3.0.
 ms.author: riande
 ms.custom: mvc
-ms.date: 11/12/2019
+ms.date: 12/05/2019
 no-loc:
 - Blazor
 - SignalR
 uid: aspnetcore-3.0
-ms.openlocfilehash: c3dde383507ec919f82b5268ddbf23911c3d24f8
-ms.sourcegitcommit: 3fc3020961e1289ee5bf5f3c365ce8304d8ebf19
+ms.openlocfilehash: 4ade13c38880c9915ec590297f2a43548ca400a8
+ms.sourcegitcommit: c0b72b344dadea835b0e7943c52463f13ab98dd1
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73963111"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74880832"
 ---
 # <a name="whats-new-in-aspnet-core-30"></a>Новые возможности в ASP.NET Core 3.0
 
@@ -182,7 +182,7 @@ public class DomainRestrictedRequirement :
 * проверять контекст, в котором вызывается концентратор;
 * принимать решения о разрешении пользователю выполнять отдельные методы концентратора.
 
-Отдельные методы концентратора можно обозначить именем политики, которую проверяет код во время выполнения. Когда клиенты пытаются вызвать отдельные методы концентратора, обработчик `DomainRestrictedRequirement` запускается и управляет доступом к методам. В зависимости от того, как `DomainRestrictedRequirement` управляет доступом:
+Отдельные методы концентратора можно пометить именем политики, которую проверяет код во время выполнения. Когда клиенты пытаются вызвать отдельные методы концентратора, обработчик `DomainRestrictedRequirement` запускается и управляет доступом к методам. В зависимости от того, как `DomainRestrictedRequirement` управляет доступом:
 
 * все вошедшие в систему пользователи могут вызывать метод `SendMessage`;
 * просматривать журналы пользователей могут только пользователи, выполнившие вход с помощью адреса электронной почты `@jabbr.net`;
@@ -319,8 +319,8 @@ ASP.NET Core 3.0 теперь по умолчанию использует <xre
 
 Следующий список содержит новые директивы Razor:
 
-* [@attribute](xref:mvc/views/razor#attribute) &ndash; директива `@attribute` добавляет данный атрибут к классу созданной страницы или представления. Например, `@attribute [Authorize]`.
-* [@implements](xref:mvc/views/razor#implements) &ndash; директива `@implements` реализует интерфейс для созданного класса. Например, `@implements IDisposable`.
+* [`@attribute`](xref:mvc/views/razor#attribute) &ndash; директива `@attribute` добавляет данный атрибут к классу созданной страницы или представления. Например, `@attribute [Authorize]`.
+* [`@implements`](xref:mvc/views/razor#implements) &ndash; директива `@implements` реализует интерфейс для созданного класса. Например, `@implements IDisposable`.
 
 ## <a name="identityserver4-supports-authentication-and-authorization-for-web-apis-and-spas"></a>IdentityServer4 поддерживает проверку подлинности и авторизацию для веб-API и одностраничных приложений
 
@@ -492,7 +492,7 @@ app.UseEndpoints(endpoints =>
 
 В .NET Core 3.0 появился новый шаблон приложения службы рабочих ролей. Этот шаблон может служить отправной точкой для написания длительных приложений служб в .NET Core.
 
-Дополнительные сведения можно найти в разделе
+Дополнительные сведения можно найти в разделе 
 
 * [.NET Core Workers as Windows Services](https://devblogs.microsoft.com/aspnet/net-core-workers-as-windows-services/) (Рабочие роли .NET Core в качестве служб Windows)
 * <xref:fundamentals/host/hosted-services>

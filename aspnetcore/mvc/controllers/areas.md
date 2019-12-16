@@ -3,14 +3,14 @@ title: Области в ASP.NET Core
 author: rick-anderson
 description: Сведения о том, что области — это возможность ASP.NET MVC, которая служит для объединения связанных функций в группу в виде отдельного пространства имен (для маршрутизации) и структуры папок (для представлений).
 ms.author: riande
-ms.date: 08/16/2019
+ms.date: 12/05/2019
 uid: mvc/controllers/areas
-ms.openlocfilehash: 9065aa23a537add5a9376472e4f4478e9d4149bd
-ms.sourcegitcommit: 776598f71da0d1e4c9e923b3b395d3c3b5825796
+ms.openlocfilehash: 7e02a21361e0e2148b29a3ae0f1ba25e68239e13
+ms.sourcegitcommit: c0b72b344dadea835b0e7943c52463f13ab98dd1
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70024733"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74881119"
 ---
 # <a name="areas-in-aspnet-core"></a>Области в ASP.NET Core
 
@@ -34,7 +34,7 @@ ms.locfileid: "70024733"
 Типичное веб-приложение ASP.NET Core, использующее области, контроллеры и представления, содержит следующие элементы.
 
 * [Структура папки области](#area-folder-structure).
-* Контроллеры с атрибутом [&lbrack;Область&rbrack;](#attribute) для привязки контроллера к области:
+* Контроллеры с атрибутом [`[Area]`](#attribute) для привязки контроллера к области:
 
   [!code-csharp[](areas/samples/MVCareas/Areas/Products/Controllers/ManageController.cs?name=snippet2)]
 

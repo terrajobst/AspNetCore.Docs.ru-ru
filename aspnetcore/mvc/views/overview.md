@@ -3,14 +3,14 @@ title: Представления в ASP.NET Core MVC
 author: ardalis
 description: Узнайте, как представления обеспечивают отображение данных приложения и взаимодействие с пользователем в ASP.NET Core MVC.
 ms.author: riande
-ms.date: 04/03/2019
+ms.date: 12/05/2019
 uid: mvc/views/overview
-ms.openlocfilehash: 5e56c6bb18cb5d2389c11eb3e4aa9869228da47d
-ms.sourcegitcommit: 5b0eca8c21550f95de3bb21096bd4fd4d9098026
+ms.openlocfilehash: f636908ee36d0af6e92875876240cb8712dd2ccc
+ms.sourcegitcommit: c0b72b344dadea835b0e7943c52463f13ab98dd1
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 04/27/2019
-ms.locfileid: "64891349"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74881024"
 ---
 # <a name="views-in-aspnet-core-mvc"></a>Представления в ASP.NET Core MVC
 
@@ -192,7 +192,7 @@ namespace WebApplication1.ViewModels
 
 ### <a name="weakly-typed-data-viewdata-viewdata-attribute-and-viewbag"></a>Нестрого типизированные данные (ViewData, атрибут ViewData и ViewBag)
 
-`ViewBag`Свойство  *недоступно в Razor Pages.*
+`ViewBag`Свойство * недоступно в Razor Pages.*
 
 Помимо строго типизированных представлений, представления имеют доступ к *нестрого типизированной* (*слабо типизированной*) коллекции данных. В отличие от строгих типов, *нестрогие типы* (или *слабые типы*) предполагают, что тип используемых данных не объявляется явным образом. Коллекцию нестрого типизированных данных можно использовать для передачи небольших объемов данных в контроллеры и представления или из них.
 
@@ -252,9 +252,9 @@ public IActionResult SomeAction()
 
 **Атрибут ViewData**
 
-Другой подход, который использует [ViewDataDictionary](/dotnet/api/microsoft.aspnetcore.mvc.viewfeatures.viewdatadictionary), — [ViewDataAttribute](/dotnet/api/microsoft.aspnetcore.mvc.viewdataattribute). Свойства на контроллерах или моделях страниц Razor, отмеченные атрибутом `[ViewData]`, обладают своими собственными значениями, загружаемыми из словаря.
+Другой подход, который использует [ViewDataDictionary](/dotnet/api/microsoft.aspnetcore.mvc.viewfeatures.viewdatadictionary), — [ViewDataAttribute](/dotnet/api/microsoft.aspnetcore.mvc.viewdataattribute). Свойства в контроллерах или моделях страниц Razor, помеченные атрибутом `[ViewData]`, обладают собственными значениями, загружаемыми из словаря.
 
-В следующем примере контроллер Home содержит свойство `Title`, отмеченное атрибутом `[ViewData]`. Метод `About` задает заголовок для представления About:
+В следующем примере контроллер Home содержит свойство `Title`, помеченное атрибутом `[ViewData]`. Метод `About` задает заголовок для представления About:
 
 ```csharp
 public class HomeController : Controller
@@ -292,7 +292,7 @@ public class HomeController : Controller
 
 **ViewBag**
 
-`ViewBag`Свойство  *недоступно в Razor Pages.*
+`ViewBag`Свойство * недоступно в Razor Pages.*
 
 `ViewBag` — это объект [DynamicViewData](/dotnet/api/microsoft.aspnetcore.mvc.viewfeatures.internal.dynamicviewdata), который обеспечивает динамический доступ к объектам, хранящимся в `ViewData`. Работать со свойством `ViewBag` может быть удобнее, так как оно не требует приведения. В приведенном ниже примере демонстрируется использование свойства `ViewBag` с тем же результатом, что и свойства `ViewData` ранее.
 
@@ -325,7 +325,7 @@ public IActionResult SomeAction()
 
 **Одновременное использование ViewData и ViewBag**
 
-`ViewBag`Свойство  *недоступно в Razor Pages.*
+`ViewBag`Свойство * недоступно в Razor Pages.*
 
 Так как свойства `ViewData` и `ViewBag` ссылаются на одну и ту же базовую коллекцию `ViewData`, вы можете использовать `ViewData` и `ViewBag` вместе в различных сочетаниях при чтении и записи значений.
 

@@ -8,12 +8,12 @@ products:
 - aspnet-core
 - vs
 urlFragment: aspnetcore-webapi-mongodb
-ms.openlocfilehash: 402b25f3f7c1644a52832b5c8566269773932e95
-ms.sourcegitcommit: 41f2c1a6b316e6e368a4fd27a8b18d157cef91e1
+ms.openlocfilehash: 01f9cf237dcf2a9b95c181c2cb87ef9f59102244
+ms.sourcegitcommit: c0b72b344dadea835b0e7943c52463f13ab98dd1
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69886300"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74881173"
 ---
 # <a name="create-a-web-api-with-aspnet-core-and-mongodb"></a>Создание веб-API с помощью ASP.NET Core и MongoDB
 
@@ -166,10 +166,10 @@ ms.locfileid: "69886300"
     В классе выше свойство `Id`:
 
     * требуется для сопоставления объекта среды CLR с коллекцией MongoDB.
-    * Помечается с помощью [[BsonId]](https://api.mongodb.com/csharp/current/html/T_MongoDB_Bson_Serialization_Attributes_BsonIdAttribute.htm) для назначения этого свойства в качестве первичного ключа документа.
-    * Помечается с помощью [[BsonRepresentation(BsonType.ObjectId)]](https://api.mongodb.com/csharp/current/html/T_MongoDB_Bson_Serialization_Attributes_BsonRepresentationAttribute.htm), чтобы разрешить передачу параметра в качестве типа `string` вместо структуры [ObjectId](https://api.mongodb.com/csharp/current/html/T_MongoDB_Bson_ObjectId.htm). Mongo обрабатывает преобразование из `string` в `ObjectId`.
+    * Помечается с помощью [`[BsonId]`](https://api.mongodb.com/csharp/current/html/T_MongoDB_Bson_Serialization_Attributes_BsonIdAttribute.htm) для назначения этого свойства в качестве первичного ключа документа.
+    * Помечается с помощью [`[BsonRepresentation(BsonType.ObjectId)]`](https://api.mongodb.com/csharp/current/html/T_MongoDB_Bson_Serialization_Attributes_BsonRepresentationAttribute.htm), чтобы разрешить передачу параметра в качестве типа `string` вместо структуры [ObjectId](https://api.mongodb.com/csharp/current/html/T_MongoDB_Bson_ObjectId.htm). Mongo обрабатывает преобразование из `string` в `ObjectId`.
 
-    Свойство `BookName` помечено атрибутом [[BsonElement]](https://api.mongodb.com/csharp/current/html/T_MongoDB_Bson_Serialization_Attributes_BsonElementAttribute.htm). Значение атрибута `Name` представляет имя свойства в коллекции MongoDB.
+    Свойство `BookName` помечено атрибутом [`[BsonElement]`](https://api.mongodb.com/csharp/current/html/T_MongoDB_Bson_Serialization_Attributes_BsonElementAttribute.htm). Значение атрибута `Name` представляет имя свойства в коллекции MongoDB.
 
 ## <a name="add-a-configuration-model"></a>Добавление модели конфигурации
 
@@ -491,7 +491,7 @@ namespace BooksApi.Controllers
 
     После предыдущего изменения имена свойств в ответе сериализованного JSON веб-API соответствуют именам свойств в типе объекта CLR. Например, свойство `Author` класса `Book` сериализуется как `Author`.
 
-1. В *Models/Book.cs* добавьте к свойству `BookName` следующий атрибут [[JsonProperty]](https://www.newtonsoft.com/json/help/html/T_Newtonsoft_Json_JsonPropertyAttribute.htm):
+1. В *Models/Book.cs* добавьте к свойству `BookName` следующий атрибут [`[JsonProperty]`](https://www.newtonsoft.com/json/help/html/T_Newtonsoft_Json_JsonPropertyAttribute.htm):
 
     ```csharp
     [BsonElement("Name")]

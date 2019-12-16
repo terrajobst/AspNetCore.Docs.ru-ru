@@ -5,14 +5,14 @@ description: Сведения об обработке ошибок с помощ
 monikerRange: '>= aspnetcore-2.1'
 ms.author: prkrishn
 ms.custom: mvc
-ms.date: 09/27/2019
+ms.date: 12/10/2019
 uid: web-api/handle-errors
-ms.openlocfilehash: 457ad7449c608c3b1b0acd729626e07808f55897
-ms.sourcegitcommit: ddc813f0f1fb293861a01597532919945b0e7fe5
+ms.openlocfilehash: c2dbc47b4495b7187aefbc62eb6d2f0c9683c2da
+ms.sourcegitcommit: 29ace642ca0e1f0b48a18d66de266d8811df2b83
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74412104"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74987835"
 ---
 # <a name="handle-errors-in-aspnet-core-web-apis"></a>Обработка ошибок в веб-API ASP.NET Core
 
@@ -149,7 +149,7 @@ Date: Fri, 27 Sep 2019 16:55:37 GMT
 
     ::: moniker-end
 
-Предыдущее действие `Error` отправляет клиенту полезные данные, соответствующие [RFC7807](https://tools.ietf.org/html/rfc7807).
+Предыдущее действие `Error` отправляет клиенту полезные данные, соответствующие [RFC 7807](https://tools.ietf.org/html/rfc7807).
 
 ПО промежуточного слоя для обработки исключений также может предоставлять более подробные данные, согласованные с содержимым, в локальной среде разработки. Чтобы создать согласованный формат полезных данных в среде разработки и рабочей среде, сделайте следующее:
 
@@ -267,6 +267,13 @@ Date: Fri, 27 Sep 2019 16:55:37 GMT
 ## <a name="client-error-response"></a>Ответ при ошибке клиента
 
 *Результат ошибки* определяется как результат с кодом состояния HTTP 400 или выше. В контроллерах веб-API платформа MVC преобразует результат ошибки в результат с <xref:Microsoft.AspNetCore.Mvc.ProblemDetails>.
+
+::: moniker range="= aspnetcore-2.1"
+
+> [!IMPORTANT]
+> ASP.NET Core 2.1 выдает ответ со сведениями о проблеме, почти соответствующий RFC 7807. Если важно обеспечить полное соответствие требованиям, обновите проект до ASP.NET Core 2.2 или более поздней версии.
+
+::: moniker-end
 
 ::: moniker range=">= aspnetcore-3.0"
 

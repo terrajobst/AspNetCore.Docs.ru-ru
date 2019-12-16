@@ -3,14 +3,14 @@ title: Создание клиента и сервера gRPC .NET Core в ASP.N
 author: juntaoluo
 description: В этом учебнике объясняется, как создать службу и клиента gRPC в ASP.NET Core. Узнайте, как создать проект службы gRPC, изменить файл proto и добавить дуплексный режим потоковой передачи вызовов.
 ms.author: johluo
-ms.date: 11/12/2019
+ms.date: 12/05/2019
 uid: tutorials/grpc/grpc-start
-ms.openlocfilehash: e5373d9abb9a770132e756843dbd15534dbe3356
-ms.sourcegitcommit: 231780c8d7848943e5e9fd55e93f437f7e5a371d
+ms.openlocfilehash: c179dd31e6484246498c857aad797eb752f00bf5
+ms.sourcegitcommit: c0b72b344dadea835b0e7943c52463f13ab98dd1
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74116140"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74879646"
 ---
 # <a name="tutorial-create-a-grpc-client-and-server-in-aspnet-core"></a>Учебник. Создание клиента и сервера gRPC в ASP.NET Core
 

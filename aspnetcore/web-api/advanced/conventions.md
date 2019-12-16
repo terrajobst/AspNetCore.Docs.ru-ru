@@ -5,20 +5,20 @@ description: Сведения о соглашениях веб-API в ASP.NET Co
 monikerRange: '>= aspnetcore-2.2'
 ms.author: scaddie
 ms.custom: mvc
-ms.date: 12/13/2018
+ms.date: 12/05/2019
 uid: web-api/advanced/conventions
-ms.openlocfilehash: ae409158defe15ffaa7454039b302cf3c6437e54
-ms.sourcegitcommit: 6d9cf728465cdb0de1037633a8b7df9a8989cccb
+ms.openlocfilehash: 2c7e33da24322504fc5e1be83c0b814710186687
+ms.sourcegitcommit: c0b72b344dadea835b0e7943c52463f13ab98dd1
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67463278"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74881321"
 ---
 # <a name="use-web-api-conventions"></a>Использование соглашений веб-API
 
 Авторы: [Пранав Кришнамурти (Pranav Krishnamoorthy)](https://github.com/pranavkm) и [Скот Эдди (Scott Addie)](https://github.com/scottaddie)
 
-В ASP.NET Core 2.2 и более поздних версий добавлен способ извлечения распространенной [документации по API](xref:tutorials/web-api-help-pages-using-swagger) и ее применения к нескольким действиям, контроллерам или всем контроллерам в рамках сборки. Соглашения веб-API заменяют применение атрибута [[ProducesResponseType]](xref:Microsoft.AspNetCore.Mvc.ProducesResponseTypeAttribute) к отдельным действиям.
+В ASP.NET Core 2.2 и более поздних версий добавлен способ извлечения распространенной [документации по API](xref:tutorials/web-api-help-pages-using-swagger) и ее применения к нескольким действиям, контроллерам или всем контроллерам в рамках сборки. Соглашения веб-API заменяют применение атрибута [`[ProducesResponseType]`](xref:Microsoft.AspNetCore.Mvc.ProducesResponseTypeAttribute) к отдельным действиям.
 
 Соглашение позволяет следующее.
 

@@ -3,14 +3,14 @@ title: Пользовательская привязка модели в ASP.NET
 author: ardalis
 description: Узнайте, как привязка модели позволяет действиям контроллера работать непосредственно с типами модели в ASP.NET Core.
 ms.author: riande
-ms.date: 11/13/2018
+ms.date: 12/05/2019
 uid: mvc/advanced/custom-model-binding
-ms.openlocfilehash: b2fbe6a9f11315d1fb8863fbf62e8929c7ff3fc2
-ms.sourcegitcommit: d34b2627a69bc8940b76a949de830335db9701d3
+ms.openlocfilehash: 625cc6c9ca5a2c22d028ea25f8fc0d942b71f12d
+ms.sourcegitcommit: c0b72b344dadea835b0e7943c52463f13ab98dd1
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71186879"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74881131"
 ---
 # <a name="custom-model-binding-in-aspnet-core"></a>Пользовательская привязка модели в ASP.NET Core
 
@@ -124,7 +124,7 @@ public IModelBinder GetBinder(ModelBinderProviderContext context)
 
 На следующем рисунке показаны заданные по умолчанию связыватели моделей из отладчика.
 
-![связыватели моделей по умолчанию](custom-model-binding/images/default-model-binders.png "связыватели моделей по умолчанию")
+![связыватели модели по умолчанию](custom-model-binding/images/default-model-binders.png "связыватели модели по умолчанию")
 
 Добавление поставщика в конец коллекции может привести к вызову встроенного связывателя модели раньше, чем будет вызван ваш собственный настраиваемый связыватель. В этом примере настраиваемый поставщик добавляется в начало коллекции, чтобы использоваться для аргументов действия `Author`.
 
@@ -147,4 +147,4 @@ public IModelBinder GetBinder(ModelBinderProviderContext context)
 
 - Связыватели моделей не следует использовать для установки кодов состояния или возвращаемых результатов (например, "404 — не найдено"). При сбое привязки модели обрабатывать ошибку должен сам [фильтр действий](xref:mvc/controllers/filters) или логика в самом методе действия.
 - Связыватели наиболее полезны в сценариях исключения повторяющихся частей кода и решения взаимосвязанных проблем с методами действий.
-- Как правило, связыватели не следует использовать для преобразования строки в пользовательский тип. Лучшим вариантом обычно является [`TypeConverter`](/dotnet/api/system.componentmodel.typeconverter).
+- Как правило, связыватели не следует использовать для преобразования строки в пользовательский тип. Лучшим вариантом обычно является [TypeConverter](/dotnet/api/system.componentmodel.typeconverter).

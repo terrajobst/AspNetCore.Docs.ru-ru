@@ -4,14 +4,14 @@ author: rick-anderson
 description: Сведения о проверке модели в ASP.NET Core MVC и Razor Pages.
 ms.author: riande
 ms.custom: mvc
-ms.date: 11/21/2019
+ms.date: 12/05/2019
 uid: mvc/models/validation
-ms.openlocfilehash: 19f71799e958e2761832c91cec6762a6d391d2b5
-ms.sourcegitcommit: 3e503ef510008e77be6dd82ee79213c9f7b97607
+ms.openlocfilehash: 7a6017141eb1016128c4a135c187479717580bb5
+ms.sourcegitcommit: c0b72b344dadea835b0e7943c52463f13ab98dd1
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74317428"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74881043"
 ---
 # <a name="model-validation-in-aspnet-core-mvc-and-razor-pages"></a>Проверка модели в ASP.NET Core MVC и Razor Pages
 
@@ -55,10 +55,10 @@ ms.locfileid: "74317428"
 * `[Phone]`. проверяет, имеет ли свойство формат номера телефона.
 * `[Range]`. проверяет, находится ли значение свойства в указанном диапазоне.
 * `[RegularExpression]`. проверяет, соответствует ли значение свойства указанному регулярному выражению.
-* `[Required]`. проверяет, что поле не равно NULL. См. в разделе [Атрибут [Required]](#required-attribute) дополнительные сведения о поведении этого атрибута.
+* `[Required]`. проверяет, что поле не равно NULL. Дополнительные сведения о поведении этого атрибута см. в разделе [Атрибут `[Required]`](#required-attribute).
 * `[StringLength]`. проверяет, что значение свойства строки не превышает ограничение по указанной длине.
 * `[Url]`. проверяет, имеет ли свойство формат URL-адреса.
-* `[Remote]`. проверяет входные данные на клиенте путем вызова метода действия на сервере. См. в разделе [Атрибут [Remote]](#remote-attribute) дополнительные сведения о поведении этого атрибута.
+* `[Remote]`. проверяет входные данные на клиенте путем вызова метода действия на сервере. Дополнительные сведения о поведении этого атрибута см. в разделе `[`Атрибут [Remote]](#remote-attribute).
 
 Полный перечень атрибутов проверки можно найти в пространстве имен [System.ComponentModel.DataAnnotations](xref:System.ComponentModel.DataAnnotations).
 
@@ -134,7 +134,7 @@ ms.locfileid: "74317428"
 
 [!code-csharp[](validation/samples/3.x/ValidationSample/Models/User.cs?name=snippet_Name&highlight=1,5)]
 
-Свойству `AdditionalFields` можно было бы явным образом присвоить строки `"FirstName"` и `"LastName"`, однако применение оператора [`nameof`](/dotnet/csharp/language-reference/keywords/nameof) упрощает дальнейший рефакторинг. Методу действия для этой проверки необходимо принимать аргументы `firstName` и `lastName`
+`AdditionalFields` можно явно присвоить строкам "FirstName" и "LastName", но использование оператора [nameof](/dotnet/csharp/language-reference/keywords/nameof) упрощает дальнейший рефакторинг. Методу действия для этой проверки необходимо принимать аргументы `firstName` и `lastName`
 
 [!code-csharp[](validation/samples/3.x/ValidationSample/Controllers/UsersController.cs?name=snippet_VerifyName)]
 
@@ -255,9 +255,13 @@ public string MiddleName { get; set; }
 </div>
 ```
 
-Обратите внимание на то, что атрибуты `data-` в выходных данных HTML соответствуют атрибутам проверки для свойства `Movie.ReleaseDate`. Атрибут `data-val-required` содержит сообщение об ошибке, которое выводится, если пользователь не заполнил поле даты выхода. Скрипт ненавязчивой проверки jQuery передает это значение в метод [`required()`](https://jqueryvalidation.org/required-method/) подключаемого модуля jQuery Validate, который затем выводит это сообщение в соответствующем элементе **\<span>** .
+Обратите внимание на то, что атрибуты `data-` в выходных данных HTML соответствуют атрибутам проверки для свойства `Movie.ReleaseDate`. Атрибут `data-val-required` содержит сообщение об ошибке, которое выводится, если пользователь не заполнил поле даты выхода. Скрипт ненавязчивой проверки jQuery передает это значение в метод [required()](https://jqueryvalidation.org/required-method/) подключаемого модуля jQuery Validate, который затем выводит это сообщение в соответствующем элементе **\<span>** .
 
 Проверка типа данных основана на типе свойства в .NET, если его не переопределяет атрибут `[DataType]`. Браузеры имеют свои сообщения об по умолчанию, но пакет ненавязчивой проверки jQuery может переопределять эти сообщения. Атрибуты и подклассы `[DataType]`, такие как `[EmailAddress]`, позволяют указать сообщение об ошибке.
+
+## <a name="unobtrusive-validation"></a>Ненавязчивая проверка
+
+См. сведения о ненавязчивой проверке в этой [проблеме GitHub](https://github.com/aspnet/AspNetCore.Docs/issues/1111).
 
 ### <a name="add-validation-to-dynamic-forms"></a>Добавление проверки к динамическим формам
 
@@ -415,10 +419,10 @@ $.get({
 * `[Phone]`. проверяет, имеет ли свойство формат номера телефона.
 * `[Range]`. проверяет, находится ли значение свойства в указанном диапазоне.
 * `[RegularExpression]`. проверяет, соответствует ли значение свойства указанному регулярному выражению.
-* `[Required]`. проверяет, что поле не равно NULL. См. в разделе [Атрибут [Required]](#required-attribute) дополнительные сведения о поведении этого атрибута.
+* `[Required]`. проверяет, что поле не равно NULL. Дополнительные сведения о поведении этого атрибута см. в разделе [Атрибут `[Required]`](#required-attribute).
 * `[StringLength]`. проверяет, что значение свойства строки не превышает ограничение по указанной длине.
 * `[Url]`. проверяет, имеет ли свойство формат URL-адреса.
-* `[Remote]`. проверяет входные данные на клиенте путем вызова метода действия на сервере. См. в разделе [Атрибут [Remote]](#remote-attribute) дополнительные сведения о поведении этого атрибута.
+* `[Remote]`. проверяет входные данные на клиенте путем вызова метода действия на сервере. Дополнительные сведения о поведении этого атрибута см. в разделе [Атрибут `[Remote]`](#remote-attribute).
 
 Полный перечень атрибутов проверки можно найти в пространстве имен [System.ComponentModel.DataAnnotations](xref:System.ComponentModel.DataAnnotations).
 
@@ -494,7 +498,7 @@ $.get({
 
 [!code-csharp[](validation/samples/2.x/ValidationSample/Models/User.cs?name=snippet_UserNameProperties)]
 
-Свойству `AdditionalFields` можно было бы явным образом присвоить строки `"FirstName"` и `"LastName"`, однако применение оператора [`nameof`](/dotnet/csharp/language-reference/keywords/nameof) упрощает дальнейший рефакторинг. Методу действия для этой проверки необходимо принимать аргументы для имени и фамилии.
+`AdditionalFields` можно явно присвоить строкам `"FirstName"` и `"LastName"`, но использование оператора [nameof](/dotnet/csharp/language-reference/keywords/nameof) упрощает дальнейший рефакторинг. Методу действия для этой проверки необходимо принимать аргументы для имени и фамилии.
 
 [!code-csharp[](validation/samples/2.x/ValidationSample/Controllers/UsersController.cs?name=snippet_VerifyName)]
 
@@ -624,7 +628,7 @@ public string MiddleName { get; set; }
 </form>
 ```
 
-Обратите внимание на то, что атрибуты `data-` в выходных данных HTML соответствуют атрибутам проверки для свойства `ReleaseDate`. Атрибут `data-val-required` содержит сообщение об ошибке, которое выводится, если пользователь не заполнил поле даты выхода. Скрипт ненавязчивой проверки jQuery передает это значение в метод [`required()`](https://jqueryvalidation.org/required-method/) подключаемого модуля jQuery Validate, который затем выводит это сообщение в соответствующем элементе **\<span>** .
+Обратите внимание на то, что атрибуты `data-` в выходных данных HTML соответствуют атрибутам проверки для свойства `ReleaseDate`. Атрибут `data-val-required` содержит сообщение об ошибке, которое выводится, если пользователь не заполнил поле даты выхода. Скрипт ненавязчивой проверки jQuery передает это значение в метод [required()](https://jqueryvalidation.org/required-method/) подключаемого модуля jQuery Validate, который затем выводит это сообщение в соответствующем элементе **\<span>** .
 
 Проверка типа данных основана на типе свойства в .NET, если его не переопределяет атрибут `[DataType]`. Браузеры имеют свои сообщения об по умолчанию, но пакет ненавязчивой проверки jQuery может переопределять эти сообщения. Атрибуты и подклассы `[DataType]`, такие как `[EmailAddress]`, позволяют указать сообщение об ошибке.
 

@@ -4,14 +4,14 @@ author: rick-anderson
 description: Дополнительные сведения о новых возможностях ASP.NET Core 2.0.
 ms.author: riande
 ms.custom: mvc
-ms.date: 05/28/2019
+ms.date: 12/05/2019
 uid: aspnetcore-2.0
-ms.openlocfilehash: dac5a48042a71774cb884e30a166be68bee69691
-ms.sourcegitcommit: f5762967df3be8b8c868229e679301f2f7954679
+ms.openlocfilehash: 452ccd76eece55cb5cf38fe39781f2f64dd5d466
+ms.sourcegitcommit: c0b72b344dadea835b0e7943c52463f13ab98dd1
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67048111"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74880864"
 ---
 # <a name="whats-new-in-aspnet-core-20"></a>Новые возможности ASP.NET Core 2.0
 
@@ -104,7 +104,7 @@ var entityTag = new EntityTagHeaderValue("\"MyCalculatedEtagValue\"");
 return File(data, "text/plain", "downloadName.txt", lastModified: DateTime.UtcNow.AddSeconds(-5), entityTag: entityTag);
 ```
 
-Файл, возвращаемый вашим посетителям, будет оформлен соответствующими заголовками HTTP для значений `ETag` и `LastModified`.
+Файл, возвращаемый вашим посетителям, будет иметь соответствующие заголовки HTTP для значений `ETag` и `LastModified`.
 
 Если посетители вашего приложение запросят содержимое с заголовком типа "Запрос диапазона", ASP.NET Core распознает и обработает этот заголовок. Запрошенное содержимое может доставляться частично, в случае чего ASP.NET Core соответствующим образом пропустит и вернет только запрошенный набор байтов. При этом прописывать в методах специальные обработчики для адаптации или реализации этой функции не требуется, все будет сделано автоматически.
 

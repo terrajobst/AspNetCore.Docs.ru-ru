@@ -3,14 +3,14 @@ title: Добавление поиска на страницы Razor ASP.NET Cor
 author: rick-anderson
 description: Инструкции по добавлению поиска на страницы Razor ASP.NET Core
 ms.author: riande
-ms.date: 7/23/2019
+ms.date: 12/05/2019
 uid: tutorials/razor-pages/search
-ms.openlocfilehash: 1eeb3aa86f2a6928b6d0b368c90e4760a66a6c6e
-ms.sourcegitcommit: 07d98ada57f2a5f6d809d44bdad7a15013109549
+ms.openlocfilehash: 8228207b0f37a6923b29891ac3115dd0be115501
+ms.sourcegitcommit: c0b72b344dadea835b0e7943c52463f13ab98dd1
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72334063"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74881331"
 ---
 # <a name="add-search-to-aspnet-core-razor-pages"></a>Добавление поиска на страницы Razor ASP.NET Core
 
@@ -26,7 +26,7 @@ ms.locfileid: "72334063"
 
 [!code-csharp[](razor-pages-start/sample/RazorPagesMovie30/Pages/Movies/Index.cshtml.cs?name=snippet_newProps&highlight=11-999)]
 
-* `SearchString`: содержит текст, который пользователи вводят в поле поиска. `SearchString` декорируется атрибутом [`[BindProperty]`](/dotnet/api/microsoft.aspnetcore.mvc.bindpropertyattribute). `[BindProperty]` связывает значения из формы и строки запроса с тем же именем, что и у свойства. `(SupportsGet = true)` является обязательным для привязки в запросах GET.
+* `SearchString`: содержит текст, который пользователи вводят в поле поиска. `SearchString` также имеет атрибут [`[BindProperty]`](/dotnet/api/microsoft.aspnetcore.mvc.bindpropertyattribute). `[BindProperty]` связывает значения из формы и строки запроса с тем же именем, что и у свойства. `(SupportsGet = true)` является обязательным для привязки в запросах GET.
 * `Genres`: содержит список жанров. `Genres` дает пользователю возможность выбрать жанр в списке. Для `SelectList` требуется `using Microsoft.AspNetCore.Mvc.Rendering;`.
 * `MovieGenre`: содержит конкретный жанр, выбранный пользователем, например "Western" (Вестерн).
 * `Genres` и `MovieGenre` рассматриваются позднее в этом учебнике.
@@ -129,7 +129,7 @@ var movies = from m in _context.Movie
 
 [!code-csharp[](razor-pages-start/sample/RazorPagesMovie22/Pages/Movies/Index.cshtml.cs?name=snippet_newProps&highlight=11-999)]
 
-* `SearchString`: содержит текст, который пользователи вводят в поле поиска. `SearchString` декорируется атрибутом [`[BindProperty]`](/dotnet/api/microsoft.aspnetcore.mvc.bindpropertyattribute). `[BindProperty]` связывает значения из формы и строки запроса с тем же именем, что и у свойства. `(SupportsGet = true)` является обязательным для привязки в запросах GET.
+* `SearchString`: содержит текст, который пользователи вводят в поле поиска. `SearchString` также имеет атрибут [`[BindProperty]`](/dotnet/api/microsoft.aspnetcore.mvc.bindpropertyattribute). `[BindProperty]` связывает значения из формы и строки запроса с тем же именем, что и у свойства. `(SupportsGet = true)` является обязательным для привязки в запросах GET.
 * `Genres`: содержит список жанров. `Genres` дает пользователю возможность выбрать жанр в списке. Для `SelectList` требуется `using Microsoft.AspNetCore.Mvc.Rendering;`.
 * `MovieGenre`: содержит конкретный жанр, выбранный пользователем, например "Western" (Вестерн).
 * `Genres` и `MovieGenre` рассматриваются позднее в этом учебнике.

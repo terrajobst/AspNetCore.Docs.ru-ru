@@ -4,14 +4,14 @@ author: rick-anderson
 description: Узнайте, как создать веб-API с помощью ASP.NET Core.
 ms.author: riande
 ms.custom: mvc
-ms.date: 09/29/2019
+ms.date: 12/05/2019
 uid: tutorials/first-web-api
-ms.openlocfilehash: abb55ea12583374639f28945037cb6aa41a5a32d
-ms.sourcegitcommit: 77c8be22d5e88dd710f42c739748869f198865dd
+ms.openlocfilehash: 4377d7d1895b80b3c98a5b480c0f42820f11fbb8
+ms.sourcegitcommit: 4e3edff24ba6e43a103fee1b126c9826241bb37b
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/01/2019
-ms.locfileid: "73427040"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74959116"
 ---
 # <a name="tutorial-create-a-web-api-with-aspnet-core"></a>Учебник. Создание веб-API с помощью ASP.NET Core
 
@@ -52,15 +52,15 @@ ms.locfileid: "73427040"
 
 # <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-[!INCLUDE[](~/includes/net-core-prereqs-vs-3.0.md)]
+[!INCLUDE[](~/includes/net-core-prereqs-vs-3.1.md)]
 
 # <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
-[!INCLUDE[](~/includes/net-core-prereqs-vsc-3.0.md)]
+[!INCLUDE[](~/includes/net-core-prereqs-vsc-3.1.md)]
 
 # <a name="visual-studio-for-mactabvisual-studio-mac"></a>[Visual Studio для Mac](#tab/visual-studio-mac)
 
-[!INCLUDE[](~/includes/net-core-prereqs-mac-3.0.md)]
+[!INCLUDE[](~/includes/net-core-prereqs-mac-3.1.md)]
 
 ---
 
@@ -71,7 +71,7 @@ ms.locfileid: "73427040"
 * В меню **Файл** выберите **Создать** > **Проект**.
 * Выберите шаблон **Веб-приложение ASP.NET Core** и нажмите **Далее**.
 * Назовите проект *TodoApi* и нажмите **Создать**.
-* В диалоговом окне **Создание веб-приложения ASP.NET Core** убедитесь в том, что выбраны платформы **.NET Core** и **ASP.NET Core 3.0**. Выберите шаблон **API** и нажмите кнопку **Создать**.
+* В диалоговом окне **Создание веб-приложения ASP.NET Core** убедитесь в том, что выбраны платформы **.NET Core** и **ASP.NET Core 3.1**. Выберите шаблон **API** и нажмите кнопку **Создать**.
 
 ![Диалоговое окно создания проекта VS](first-web-api/_static/vs3.png)
 
@@ -106,7 +106,7 @@ ms.locfileid: "73427040"
 
   ![Диалоговое окно "Новый проект" в macOS](first-web-api-mac/_static/1.png)
   
-* В диалоговом окне **Настройка нового веб-API ASP.NET Core** в качестве **Целевой платформы** выберите * *.NET Core 3.0*.
+* В диалоговом окне **Настройка нового веб-API ASP.NET Core** в качестве **Целевой платформы** выберите **.NET Core 3.1*.
 
 * Введите *TodoApi* в поле **Имя проекта** и выберите команду **Создать**.
 
@@ -297,7 +297,7 @@ dotnet aspnet-codegenerator controller -name TodoItemsController -async -api -m 
 Сформированный код:
 
 * Определяет класс контроллера API без методов.
-* Добавляет в класс атрибут [[ApiController]](/dotnet/api/microsoft.aspnetcore.mvc.apicontrollerattribute). Этот атрибут указывает, что контроллер отвечает на запросы веб-API. Дополнительные сведения о поведении, которое реализует этот атрибут, см. в <xref:web-api/index>.
+* Пометьте этот класс атрибутом [`[ApiController]`](/dotnet/api/microsoft.aspnetcore.mvc.apicontrollerattribute). Этот атрибут указывает, что контроллер отвечает на запросы веб-API. Дополнительные сведения о поведении, которое реализует этот атрибут, см. в <xref:web-api/index>.
 * Использует внедрение зависимостей для внедрения контекста базы данных (`TodoContext`) в контроллер. Контекст базы данных используется в каждом методе [создания, чтения, обновления и удаления](https://wikipedia.org/wiki/Create,_read,_update_and_delete) в контроллере.
 
 ## <a name="examine-the-posttodoitem-create-method"></a>Знакомство с методом создания PostTodoItem
@@ -306,7 +306,7 @@ dotnet aspnet-codegenerator controller -name TodoItemsController -async -api -m 
 
 [!code-csharp[](first-web-api/samples/3.0/TodoApi/Controllers/TodoItemsController.cs?name=snippet_Create)]
 
-Предыдущий код является методом HTTP POST, как указывает атрибут [[HttpPost]](/dotnet/api/microsoft.aspnetcore.mvc.httppostattribute). Этот метод получает значение элемента списка дел из текста HTTP-запроса.
+Предыдущий код является методом HTTP POST, обозначенным атрибутом [`[HttpPost]`](/dotnet/api/microsoft.aspnetcore.mvc.httppostattribute). Этот метод получает значение элемента списка дел из текста HTTP-запроса.
 
 Метод <xref:Microsoft.AspNetCore.Mvc.ControllerBase.CreatedAtAction*>:
 
@@ -334,7 +334,7 @@ dotnet aspnet-codegenerator controller -name TodoItemsController -async -api -m 
 * Установите HTTP-метод `POST`.
 * Откройте вкладку **Тело**.
 * Установите переключатель **без обработки**.
-* Задайте тип **JSON (приложение/json)** .
+* Задайте тип **JSON (приложение/json)**.
 * В теле запроса введите код JSON для элемента списка дел:
 
     ```json
@@ -551,7 +551,7 @@ dotnet aspnet-codegenerator controller -name TodoItemsController -async -api -m 
 
   ![Диалоговое окно "Новый проект" в macOS](first-web-api-mac/_static/1.png)
   
-* В диалоговом окне **Настройка нового веб-API ASP.NET Core** оставьте установленное по умолчанию значение для параметра **Целевая платформа**, то есть * *.NET Core 2.2*.
+* В диалоговом окне **Настройка нового веб-API ASP.NET Core** оставьте установленное по умолчанию значение для параметра **Целевая платформа**, то есть **.NET Core 2.2*.
 
 * Введите *TodoApi* в поле **Имя проекта** и выберите команду **Создать**.
 
@@ -679,7 +679,7 @@ dotnet aspnet-codegenerator controller -name TodoItemsController -async -api -m 
 Предыдущий код:
 
 * Определяет класс контроллера API без методов.
-* Добавляет в класс атрибут [[ApiController]](/dotnet/api/microsoft.aspnetcore.mvc.apicontrollerattribute). Этот атрибут указывает, что контроллер отвечает на запросы веб-API. Дополнительные сведения о поведении, которое реализует этот атрибут, см. в <xref:web-api/index>.
+* Пометьте этот класс атрибутом [`[ApiController]`](/dotnet/api/microsoft.aspnetcore.mvc.apicontrollerattribute). Этот атрибут указывает, что контроллер отвечает на запросы веб-API. Дополнительные сведения о поведении, которое реализует этот атрибут, см. в <xref:web-api/index>.
 * Использует внедрение зависимостей для внедрения контекста базы данных (`TodoContext`) в контроллер. Контекст базы данных используется в каждом методе [создания, чтения, обновления и удаления](https://wikipedia.org/wiki/Create,_read,_update_and_delete) в контроллере.
 * Добавляет элемент `Item1` в базу данных, если она пуста. Этот код находится в конструкторе и выполняется каждый раз при обнаружении нового HTTP-запроса. Если вы удалите все элементы, конструктор создаст `Item1` при следующем вызове метода API. Поэтому может создаться впечатление, что удаление не было выполнено, хотя это не так.
 
@@ -773,7 +773,7 @@ dotnet aspnet-codegenerator controller -name TodoItemsController -async -api -m 
 
 [!code-csharp[](first-web-api/samples/2.2/TodoApi/Controllers/TodoController.cs?name=snippet_Create)]
 
-Предыдущий код является методом HTTP POST, как указывает атрибут [[HttpPost]](/dotnet/api/microsoft.aspnetcore.mvc.httppostattribute). Этот метод получает значение элемента списка дел из текста HTTP-запроса.
+Предыдущий код является методом HTTP POST, обозначенным атрибутом [`[HttpPost]`](/dotnet/api/microsoft.aspnetcore.mvc.httppostattribute). Этот метод получает значение элемента списка дел из текста HTTP-запроса.
 
 Метод `CreatedAtAction`:
 
@@ -789,7 +789,7 @@ dotnet aspnet-codegenerator controller -name TodoItemsController -async -api -m 
 * В Postman укажите метод HTTP `POST`.
 * Откройте вкладку **Тело**.
 * Установите переключатель **без обработки**.
-* Задайте тип **JSON (приложение/json)** .
+* Задайте тип **JSON (приложение/json)**.
 * В теле запроса введите код JSON для элемента списка дел:
 
     ```json

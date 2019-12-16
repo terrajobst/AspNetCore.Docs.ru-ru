@@ -5,12 +5,12 @@ description: В этой серии руководств объясняется,
 ms.author: riande
 ms.date: 11/12/2019
 uid: tutorials/razor-pages/razor-pages-start
-ms.openlocfilehash: a8381dee05f267077a29999f3d8bbe6327c2b863
-ms.sourcegitcommit: 231780c8d7848943e5e9fd55e93f437f7e5a371d
+ms.openlocfilehash: b651437b698d01310f90c5f14832616c1896e6c0
+ms.sourcegitcommit: 4e3edff24ba6e43a103fee1b126c9826241bb37b
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74116148"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74959103"
 ---
 # <a name="tutorial-get-started-with-razor-pages-in-aspnet-core"></a>Учебник. Начало работы с Razor Pages в ASP.NET Core
 
@@ -40,15 +40,15 @@ ms.locfileid: "74116148"
 
 # <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-[!INCLUDE[](~/includes/net-core-prereqs-vs-3.0.md)]
+[!INCLUDE[](~/includes/net-core-prereqs-vs-3.1.md)]
 
 # <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
-[!INCLUDE[](~/includes/net-core-prereqs-vsc-3.0.md)]
+[!INCLUDE[](~/includes/net-core-prereqs-vsc-3.1.md)]
 
 # <a name="visual-studio-for-mactabvisual-studio-mac"></a>[Visual Studio для Mac](#tab/visual-studio-mac)
 
-[!INCLUDE[](~/includes/net-core-prereqs-mac-3.0.md)]
+[!INCLUDE[](~/includes/net-core-prereqs-mac-3.1.md)]
 
 ---
 
@@ -62,7 +62,7 @@ ms.locfileid: "74116148"
 * Назовите проект **RazorPagesMovie**. Очень важно, чтобы проект имел имя *RazorPagesMovie*, так как пространства имен при копировании и вставке кода должны совпасть.
   ![Новое веб-приложение ASP.NET Core](razor-pages-start/_static/config.png)
 
-* Выберите в раскрывающемся списке пункт **ASP.NET Core 3.0**, затем — **Веб-приложение** и нажмите кнопку **Создать**.
+* Выберите в раскрывающемся списке пункт **ASP.NET Core 3.1**, затем — **Веб-приложение** и нажмите кнопку **Создать**.
 
 ![Новое веб-приложение ASP.NET Core](razor-pages-start/_static/3/npx.png)
 
@@ -100,7 +100,7 @@ ms.locfileid: "74116148"
 
   ![Диалоговое окно "Новый проект" в macOS](razor-pages-start/_static/webapp.png)
 
-* В диалоговом окне **Настройка нового веб-API ASP.NET Core** установите для параметра **Целевая платформа** значение **.NET Core 3.0**.
+* В диалоговом окне **Настройка нового веб-API ASP.NET Core** установите для параметра **Целевая платформа** значение **.NET Core 3.1**.
 
   ![Выбор .NET Core 3.0 для macOS](razor-pages-start/_static/targetframework3.png)
 

@@ -4,14 +4,14 @@ author: zuckerthoben
 description: Дополнительные сведения о добавлении Swashbuckle в проект веб-API ASP.NET Core для интеграции пользовательского интерфейса Swagger.
 ms.author: scaddie
 ms.custom: mvc
-ms.date: 08/21/2019
+ms.date: 12/05/2019
 uid: tutorials/get-started-with-swashbuckle
-ms.openlocfilehash: d3cef72de22e54f7e65ddf9f1446eb32256d0c71
-ms.sourcegitcommit: 73e255e846e414821b8cc20ffa3aec946735cd4e
+ms.openlocfilehash: dea8564a1ee94d6ff1d96e9aab68205292765178
+ms.sourcegitcommit: c0b72b344dadea835b0e7943c52463f13ab98dd1
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/03/2019
-ms.locfileid: "71924985"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74881252"
 ---
 # <a name="get-started-with-swashbuckle-and-aspnet-core"></a>Начало работы с Swashbuckle и ASP.NET Core
 
@@ -51,7 +51,7 @@ Swashbuckle можно добавить одним из описанных ни�
 
 ### <a name="visual-studio-for-mactabvisual-studio-mac"></a>[Visual Studio для Mac](#tab/visual-studio-mac)
 
-* Щелкните правой кнопкой мыши папку *Пакеты* на **панели решения** > **Добавление пакетов...** .
+* Щелкните правой кнопкой мыши папку *Пакеты* на **панели решения** > **Добавление пакетов...**.
 * В раскрывающемся списке **Источник** в окне **Добавление пакетов** выберите вариант "nuget.org".
 * Убедитесь, что параметр "Показывать пакеты предварительного выпуска" включен.
 * В поле поиска введите "Swashbuckle.AspNetCore".
@@ -355,7 +355,7 @@ namespace TodoApi
 
 ### <a name="data-annotations"></a>Заметки к данным
 
-Дополните модель атрибутами из пространства имен [System.ComponentModel.DataAnnotations](/dotnet/api/system.componentmodel.dataannotations), чтобы обеспечить компоненты пользовательского интерфейса Swagger.
+Пометьте модель атрибутами из пространства имен [System.ComponentModel.DataAnnotations](/dotnet/api/system.componentmodel.dataannotations), чтобы обеспечить компоненты пользовательского интерфейса Swagger.
 
 Добавьте атрибут `[Required]` к свойству `Name` класса `TodoItem`.
 

@@ -4,16 +4,16 @@ author: isaac2004
 description: Дополнительные сведения о новых возможностях ASP.NET Core 2.1.
 ms.author: riande
 ms.custom: mvc
-ms.date: 11/12/2019
+ms.date: 12/05/2019
 no-loc:
 - SignalR
 uid: aspnetcore-2.1
-ms.openlocfilehash: a45ba44fb7911a21927a4a996c0d6fa9eb776357
-ms.sourcegitcommit: 3fc3020961e1289ee5bf5f3c365ce8304d8ebf19
+ms.openlocfilehash: d969b4caab44e3e50b3a0202b25864921d6d01dc
+ms.sourcegitcommit: c0b72b344dadea835b0e7943c52463f13ab98dd1
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73963182"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74880858"
 ---
 # <a name="whats-new-in-aspnet-core-21"></a>Новые возможности ASP.NET Core 2.1
 
@@ -83,7 +83,7 @@ ASP.NET Core предоставляет API-интерфейсы и шаблон
 
 Добавлен новый пакет, который оптимизирует создание и выполнение тестов. Пакет [Microsoft.AspNetCore.Mvc.Testing](https://www.nuget.org/packages/Microsoft.AspNetCore.Mvc.Testing/) выполняет следующие задачи:
 
-* Копирует файл зависимостей ( *\*.deps*) из протестированного приложения в папку *bin* тестового проекта.
+* Копирует файл зависимостей (*\*.deps*) из протестированного приложения в папку *bin* тестового проекта.
 * Задает корневую папку содержимого в корневой папке проекта тестируемого приложения, чтобы можно было найти статические файлы и страницы или представления при выполнении тестов.
 * Предоставляет класс [WebApplicationFactory](/dotnet/api/microsoft.aspnetcore.mvc.testing.webapplicationfactory-1) для оптимизации начальной загрузки тестируемого приложения на [TestServer](/dotnet/api/microsoft.aspnetcore.testhost.testserver).
 
@@ -147,7 +147,7 @@ ASP.NET Core 2.1 содержит новую службу `IHttpClientFactory`, 
 
 Шаблон Angular основан на Angular CLI, а шаблоны React основаны на create-react-app.
 
-Дополнительные сведения можно найти в разделе
+Дополнительные сведения можно найти в разделе 
 
 * <xref:spa/angular>
 * <xref:spa/react>

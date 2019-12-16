@@ -4,17 +4,17 @@ author: rick-anderson
 description: Сведения о новых возможностях в ASP.NET Core 3.1.
 ms.author: riande
 ms.custom: mvc
-ms.date: 11/12/2019
+ms.date: 12/05/2019
 no-loc:
 - Blazor
 - SignalR
 uid: aspnetcore-3.1
-ms.openlocfilehash: 634c6937089a0a0fe1f862a83771aff65a1f8418
-ms.sourcegitcommit: 5974e3e66dab3398ecf2324fbb82a9c5636f70de
+ms.openlocfilehash: 89c676b96ef66f648544a8a884593bdafa3876de
+ms.sourcegitcommit: 851b921080fe8d719f54871770ccf6f78052584e
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74778847"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74944230"
 ---
 # <a name="whats-new-in-aspnet-core-31"></a>Новые возможности в ASP.NET Core 3.1
 
@@ -28,7 +28,7 @@ ms.locfileid: "74778847"
 
 В Blazor с ASP.NET Core 3.0 компоненты отрисовывались как страницы и представления с помощью вспомогательной функции HTML (`Html.RenderComponentAsync`). В ASP.NET Core 3.1 компонент отрисовывается из страницы или представления с помощью новой вспомогательной функции тега компонента:
 
-```razor
+```cshtml
 <component type="typeof(Counter)" render-mode="ServerPrerendered" />
 ```
 

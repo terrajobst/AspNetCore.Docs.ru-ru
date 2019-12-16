@@ -3,14 +3,14 @@ title: Работа с моделью приложения в ASP.NET Core
 author: ardalis
 description: Узнайте, как читать и обрабатывать модель приложения, чтобы изменить поведение элементов MVC в ASP.NET Core.
 ms.author: riande
-ms.date: 10/14/2016
+ms.date: 12/05/2019
 uid: mvc/controllers/application-model
-ms.openlocfilehash: 4e264dc7cc63955df42df0b9eeeb7b82ae286241
-ms.sourcegitcommit: 169ea5116de729c803685725d96450a270bc55b7
+ms.openlocfilehash: 4b6c978e5752eb320412a1c204df8e3d288fe4a1
+ms.sourcegitcommit: c0b72b344dadea835b0e7943c52463f13ab98dd1
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74733964"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74881096"
 ---
 # <a name="work-with-the-application-model-in-aspnet-core"></a>Работа с моделью приложения в ASP.NET Core
 
@@ -196,7 +196,7 @@ services.AddMvc().AddWebApiConventions();
 
 Атрибут `UseWebApiRoutesAttribute` контролирует применение соглашение контроллера `WebApiApplicationModelConvention`. Активированное соглашение используется для добавления поддержки для [областей](xref:mvc/controllers/areas) в маршрут.
 
-Помимо набора соглашений в пакет совместимости входит базовый класс `System.Web.Http.ApiController`, который заменяет класс, предоставляемый веб-API. В этом случае контроллеры, написанные для веб-API и наследующие от его `ApiController`, будут функционировать так, как предусмотрено, работая при этом в ASP.NET Core MVC. Этот базовый класс контроллера дополняется всеми приведенными выше атрибутами `UseWebApi*`. `ApiController` предоставляет свойства, методы и типы результатов, совместимые с их аналогами в веб-API.
+Помимо набора соглашений в пакет совместимости входит базовый класс `System.Web.Http.ApiController`, который заменяет класс, предоставляемый веб-API. В этом случае контроллеры, написанные для веб-API и наследующие от его `ApiController`, будут функционировать так, как предусмотрено, работая при этом в ASP.NET Core MVC. Все указанные ранее атрибуты `UseWebApi*` применяются к базовому классу контроллера. `ApiController` предоставляет свойства, методы и типы результатов, совместимые с их аналогами в веб-API.
 
 ## <a name="using-apiexplorer-to-document-your-app"></a>Использование ApiExplorer для документирования приложения
 
