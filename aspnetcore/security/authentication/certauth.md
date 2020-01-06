@@ -4,14 +4,14 @@ author: blowdart
 description: Узнайте, как настроить проверку подлинности сертификата в ASP.NET Core для IIS и HTTP. sys.
 monikerRange: '>= aspnetcore-3.0'
 ms.author: bdorrans
-ms.date: 12/09/2019
+ms.date: 01/02/2020
 uid: security/authentication/certauth
-ms.openlocfilehash: 38ee8a6767191bb3eee4286e49b96162b14d9889
-ms.sourcegitcommit: 4e3edff24ba6e43a103fee1b126c9826241bb37b
+ms.openlocfilehash: 9c175439c0313d62c75898f1af097774b06f353a
+ms.sourcegitcommit: e7d4fe6727d423f905faaeaa312f6c25ef844047
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74959064"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75608149"
 ---
 # <a name="configure-certificate-authentication-in-aspnet-core"></a>Настройка проверки подлинности сертификата в ASP.NET Core
 
@@ -28,7 +28,7 @@ ms.locfileid: "74959064"
 
 Альтернативой для проверки подлинности на сертификат в средах, где используются прокси-серверы и подсистемы балансировки нагрузки, являются Active Directory Федеративные службы (ADFS) с OpenID Connect Connect (OIDC).
 
-## <a name="get-started"></a>Начало работы
+## <a name="get-started"></a>Приступая к работе
 
 Получите HTTPS сертификат, примените его и [Настройте узел](#configure-your-host-to-require-certificates) так, чтобы он затребовал сертификаты.
 
@@ -63,23 +63,33 @@ public void Configure(IApplicationBuilder app, IHostingEnvironment env)
 
 ### <a name="allowedcertificatetypes--chained-selfsigned-or-all-chained--selfsigned"></a>AllowedCertificateTypes = Chained, SelfSigned или All (Chained | SelfSigned)
 
-Эта проверка подтверждает, что разрешен только соответствующий тип сертификата.
+Значение по умолчанию — `CertificateTypes.Chained`.
+
+Эта проверка подтверждает, что разрешен только соответствующий тип сертификата. Если приложение использует самозаверяющие сертификаты, для этого параметра необходимо задать значение `CertificateTypes.All` или `CertificateTypes.SelfSigned`.
 
 ### <a name="validatecertificateuse"></a>ValidateCertificateUse
+
+Значение по умолчанию — `true`.
 
 Эта проверка проверяет, что сертификат, предоставленный клиентом, имеет расширенное использование ключа проверки подлинности клиента (EKU) или вообще не содержит EKU. Как говорится в спецификации, если EKU не указано, все EKU считаются допустимыми.
 
 ### <a name="validatevalidityperiod"></a>ValidateValidityPeriod
 
+Значение по умолчанию — `true`.
+
 Эта проверка проверяет, что сертификат находится в пределах срока действия. В каждом запросе обработчик гарантирует, что сертификат, который был действителен, когда он был предоставлен, не истечет в течение текущего сеанса.
 
 ### <a name="revocationflag"></a>RevocationFlag
+
+Значение по умолчанию — `X509RevocationFlag.ExcludeRoot`.
 
 Флаг, указывающий, какие сертификаты в цепочке проверяются на отзыв.
 
 Проверки отзыва выполняются только в том случае, если сертификат связан с корневым сертификатом.
 
 ### <a name="revocationmode"></a>RevocationMode
+
+Значение по умолчанию — `X509RevocationMode.Online`.
 
 Флаг, указывающий, как выполняются проверки отзыва.
 
@@ -208,7 +218,7 @@ public static IHostBuilder CreateHostBuilder(string[] args)
 ```
 
 > [!NOTE]
-> К конечным точкам, созданным путем вызова <xref:Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServerOptions.Listen*> **перед** <xref:Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServerOptions.ConfigureHttpsDefaults*>, не будут применяться значения по умолчанию.
+> Для конечных точек, созданных путем вызова <xref:Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServerOptions.Listen*> **до** вызова <xref:Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServerOptions.ConfigureHttpsDefaults*>, значения по умолчанию не применяются.
 
 ### <a name="iis"></a>IIS
 
@@ -376,6 +386,9 @@ Get-ChildItem -Path cert:\localMachine\my\"The thumbprint..." | Export-PfxCertif
 
 Export-Certificate -Cert cert:\localMachine\my\"The thumbprint..." -FilePath root_ca_dev_damienbod.crt
 ```
+
+> [!NOTE]
+> Значение параметра `-DnsName` должно соответствовать целевому объекту развертывания приложения. Например, "localhost" для разработки.
 
 #### <a name="install-in-the-trusted-root"></a>Установить в доверенном корневом каталоге
 

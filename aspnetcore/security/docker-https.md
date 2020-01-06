@@ -6,13 +6,15 @@ monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
 ms.date: 07/05/2019
+no-loc:
+- Let's Encrypt
 uid: security/docker-https
-ms.openlocfilehash: c13ba02845eef5c53a939feec2be8a01bc4ca128
-ms.sourcegitcommit: 215954a638d24124f791024c66fd4fb9109fd380
+ms.openlocfilehash: 47027033c0b7130f2d38d22c02a54945b2cc31b3
+ms.sourcegitcommit: 2cb857f0de774df421e35289662ba92cfe56ffd1
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71082533"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75358917"
 ---
 # <a name="hosting-aspnet-core-images-with-docker-over-https"></a>Размещение образов ASP.NET Core с помощью DOCKER по протоколу HTTPS
 
@@ -26,22 +28,22 @@ ms.locfileid: "71082533"
 
 Для этого примера требуется [docker 17,06](https://docs.docker.com/release-notes/docker-ce) или более поздней версии [клиента DOCKER](https://www.docker.com/products/docker).
 
-## <a name="prerequisites"></a>Предварительные требования
+## <a name="prerequisites"></a>Prerequisites
 
 Для выполнения некоторых инструкций в этом документе требуется [пакет SDK для .NET Core 2,2](https://www.microsoft.com/net/download) или более поздней версии.
 
 ## <a name="certificates"></a>Сертификаты
 
-Сертификат из [центра](https://en.wikipedia.org/wiki/Certificate_authority) сертификации необходим для [размещения в рабочей среде](https://blogs.msdn.microsoft.com/webdev/2017/11/29/configuring-https-in-asp-net-core-across-different-platforms/) для домена.  [Шифрование](https://letsencrypt.org/) — это центр сертификации, предлагающий бесплатные сертификаты.
+Сертификат из [центра](https://wikipedia.org/wiki/Certificate_authority) сертификации необходим для [размещения в рабочей среде](https://blogs.msdn.microsoft.com/webdev/2017/11/29/configuring-https-in-asp-net-core-across-different-platforms/) для домена. [Let's Encrypt](https://letsencrypt.org/) является центром сертификации, предлагающим бесплатные сертификаты.
 
-В этом документе используются [самозаверяющие сертификаты разработки](https://en.wikipedia.org/wiki/Self-signed_certificate) для размещения предварительно созданных образов `localhost`. Инструкции аналогичны использованию рабочих сертификатов.
+В этом документе используются [самозаверяющие сертификаты разработки](https://en.wikipedia.org/wiki/Self-signed_certificate) для размещения предварительно созданных образов с `localhost`. Инструкции аналогичны использованию рабочих сертификатов.
 
 Для производственных сертификатов:
 
-* `dotnet dev-certs` Средство не требуется.
+* Средство `dotnet dev-certs` не является обязательным.
 * Сертификаты не обязательно хранить в расположении, используемом в инструкциях. Должно работать любое расположение, хотя не рекомендуется хранить сертификаты в каталоге сайта.
 
-Инструкции по подключению сертификатов к контейнерам. Сертификаты можно добавить в образы контейнеров с помощью `COPY` команды в Dockerfile. Копирование сертификатов в образ не рекомендуется:
+Инструкции по подключению сертификатов к контейнерам. Сертификаты можно добавить в образы контейнеров с помощью команды `COPY` в *Dockerfile*. Копирование сертификатов в образ не рекомендуется по следующим причинам:
 
 * Использование одного и того же образа для тестирования с помощью сертификатов разработчика затрудняется.
 * Использование одного и того же образа для размещения с производственными сертификатами затрудняется.
@@ -80,7 +82,7 @@ dotnet dev-certs https -ep ${HOME}/.aspnet/https/aspnetapp.pfx -p { password her
 dotnet dev-certs https --trust
 ```
 
-`dotnet dev-certs https --trust`поддерживается только в macOS и Windows. Необходимо доверять сертификатам в Linux так, как это поддерживается вашим дистрибутив. Вероятно, вам нужно доверять сертификату в браузере.
+`dotnet dev-certs https --trust` поддерживается только в macOS и Windows. Необходимо доверять сертификатам в Linux так, как это поддерживается вашим дистрибутив. Вероятно, вам нужно доверять сертификату в браузере.
 
 В предыдущих командах замените `{ password here }` паролем.
 

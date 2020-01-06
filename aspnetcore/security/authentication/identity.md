@@ -5,18 +5,18 @@ description: Используйте удостоверение с приложе
 ms.author: riande
 ms.date: 12/05/2019
 uid: security/authentication/identity
-ms.openlocfilehash: c867b73a96fd081f6e2ca17fef561ac539c0a129
-ms.sourcegitcommit: c0b72b344dadea835b0e7943c52463f13ab98dd1
+ms.openlocfilehash: 787d39dd7824f912128e6af849fa268c3e8eb908
+ms.sourcegitcommit: 2cb857f0de774df421e35289662ba92cfe56ffd1
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74880728"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75359203"
 ---
 # <a name="introduction-to-identity-on-aspnet-core"></a>Введение в удостоверение на ASP.NET Core
 
 ::: moniker range=">= aspnetcore-3.0"
 
-Автор: [Рик Андерсон](https://twitter.com/RickAndMSFT)
+Автор: [Рик Андерсон](https://twitter.com/RickAndMSFT) (Rick Anderson)
 
 Удостоверение ASP.NET Core:
 
@@ -48,7 +48,7 @@ ms.locfileid: "74880728"
 
 # <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-* Выберите **File** > **New** > **Project** ( Файл > Создать > Проект).
+* Выберите **файл** > **Новый** > **проект**.
 * Выберите **Новое веб-приложение ASP.NET Core**. Присвойте проекту имя **APP1** , которое будет иметь то же пространство имен, что и загружаемый проект. Нажмите кнопку **ОК**.
 * Выберите ASP.NET Core **веб-приложение**, а затем щелкните **изменить проверку подлинности**.
 * Выберите **учетные записи отдельных пользователей** и нажмите кнопку **ОК**.
@@ -216,6 +216,7 @@ dotnet aspnet-codegenerator identity -dc WebApp1.Data.ApplicationDbContext --fil
 
 ## <a name="next-steps"></a>Дальнейшие действия
 
+* Сведения о настройке удостоверений с помощью SQLite см. в [этой статье о проблемах GitHub](https://github.com/aspnet/AspNetCore.Docs/issues/5131) .
 * [Настройка Identity](xref:security/authentication/identity-configuration)
 * <xref:security/authorization/secure-data>
 * <xref:security/authentication/add-user-data>
@@ -229,7 +230,7 @@ dotnet aspnet-codegenerator identity -dc WebApp1.Data.ApplicationDbContext --fil
 
 ::: moniker range="< aspnetcore-3.0"
 
-Автор: [Рик Андерсон](https://twitter.com/RickAndMSFT)
+Автор: [Рик Андерсон](https://twitter.com/RickAndMSFT) (Rick Anderson)
 
 ASP.NET Core удостоверение — это система членства, которая добавляет функции входа в ASP.NET Core приложения. Пользователи могут создать учетную запись с данными для входа, хранящимися в удостоверении, или использовать внешнего поставщика входа. Поддерживаемые внешние поставщики входа включают [Facebook, Google, учетную запись Майкрософт и Twitter](xref:security/authentication/social/index).
 
@@ -257,7 +258,7 @@ ASP.NET Core удостоверение — это система членств
 
 # <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-* Выберите **File** > **New** > **Project** ( Файл > Создать > Проект).
+* Выберите **файл** > **Новый** > **проект**.
 * Выберите **Новое веб-приложение ASP.NET Core**. Присвойте проекту имя **APP1** , которое будет иметь то же пространство имен, что и загружаемый проект. Нажмите кнопку **ОК**.
 * Выберите ASP.NET Core **веб-приложение**, а затем щелкните **изменить проверку подлинности**.
 * Выберите **учетные записи отдельных пользователей** и нажмите кнопку **ОК**.
@@ -403,6 +404,7 @@ dotnet aspnet-codegenerator identity -dc WebApp1.Data.ApplicationDbContext --fil
 
 ## <a name="next-steps"></a>Дальнейшие действия
 
+* Сведения о настройке удостоверений с помощью SQLite см. в [этой статье о проблемах GitHub](https://github.com/aspnet/AspNetCore.Docs/issues/5131) .
 * [Настройка Identity](xref:security/authentication/identity-configuration)
 * <xref:security/authorization/secure-data>
 * <xref:security/authentication/add-user-data>

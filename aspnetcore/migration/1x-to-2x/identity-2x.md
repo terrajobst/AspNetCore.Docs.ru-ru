@@ -1,36 +1,36 @@
 ---
-title: Миграция проверки подлинности и удостоверения в ASP.NET Core 2.0
+title: Перенесите проверку подлинности и удостоверение в ASP.NET Core 2,0
 author: scottaddie
-description: В этой статье описаны наиболее распространенные действия при миграции проверка подлинности ASP.NET Core 1.x и удостоверение ASP.NET Core 2.0.
+description: В этой статье описаны наиболее распространенные действия по переносу проверки подлинности ASP.NET Core 1. x и идентификации в ASP.NET Core 2,0.
 ms.author: scaddie
 ms.date: 06/21/2019
 uid: migration/1x-to-2x/identity-2x
-ms.openlocfilehash: c83356e12fa5ae581b369265b9d857b08445ed51
-ms.sourcegitcommit: 9f11685382eb1f4dd0fb694dea797adacedf9e20
+ms.openlocfilehash: f3817fa1808c331f7e167618e3bb00d68ad08571
+ms.sourcegitcommit: 2cb857f0de774df421e35289662ba92cfe56ffd1
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 06/21/2019
-ms.locfileid: "67313747"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75355182"
 ---
-# <a name="migrate-authentication-and-identity-to-aspnet-core-20"></a>Миграция проверки подлинности и удостоверения в ASP.NET Core 2.0
+# <a name="migrate-authentication-and-identity-to-aspnet-core-20"></a>Перенесите проверку подлинности и удостоверение в ASP.NET Core 2,0
 
-По [Scott Addie](https://github.com/scottaddie) и [поздравить Хао](https://github.com/HaoK)
+[Скотт Эдди (](https://github.com/scottaddie) и [Хао кунг](https://github.com/HaoK)
 
-ASP.NET Core 2.0 реализована новая модель для проверки подлинности и [удостоверений](xref:security/authentication/identity) , упрощает настройку с помощью служб. Приложения ASP.NET Core 1.x, использующие проверку подлинности или удостоверение можно обновить для использования новой модели, как описано ниже.
+ASP.NET Core 2,0 имеет новую модель для проверки подлинности и [идентификации](xref:security/authentication/identity) , которая упрощает настройку с помощью служб. ASP.NET Core 1. x приложения, использующие проверку подлинности или удостоверение, можно обновить для использования новой модели, как описано ниже.
 
-## <a name="update-namespaces"></a>Обновление пространства имен
+## <a name="update-namespaces"></a>Обновить пространства имен
 
-В версии 1.x, классов, так `IdentityRole` и `IdentityUser` были найдены в `Microsoft.AspNetCore.Identity.EntityFrameworkCore` пространства имен.
+В 1. x такие классы, как `IdentityRole` и `IdentityUser`, обнаружены в пространстве имен `Microsoft.AspNetCore.Identity.EntityFrameworkCore`.
 
-В версии 2.0 <xref:Microsoft.AspNetCore.Identity> пространство имен стали новый дом для нескольких таких классов. С кодом удостоверений по умолчанию, затронутых классы включают `ApplicationUser` и `Startup`. Настройка вашей `using` инструкций для разрешения затронутых ссылок.
+В 2,0 пространство имен <xref:Microsoft.AspNetCore.Identity> стало новым доменом для нескольких таких классов. При использовании кода удостоверения по умолчанию затронутые классы включают `ApplicationUser` и `Startup`. Настройте инструкции `using` для разрешения затронутых ссылок.
 
 <a name="auth-middleware"></a>
 
-## <a name="authentication-middleware-and-services"></a>По промежуточного слоя проверки подлинности и службы
+## <a name="authentication-middleware-and-services"></a>Промежуточное по проверки подлинности и службы
 
-В проектах версии 1.x проверки подлинности настраивается с помощью по промежуточного слоя. Для каждой схемы проверки подлинности, которые требуется поддерживать вызывается метод по промежуточного слоя.
+В проектах 1. x Проверка подлинности настраивается через по промежуточного слоя. Для каждой схемы проверки подлинности, которую вы хотите поддерживать, вызывается метод по промежуточного слоя.
 
-В следующем примере 1.x настраивает проверку подлинности Facebook с использованием удостоверения *Startup.cs*:
+В следующем примере 1. x настраивается проверка подлинности Facebook с удостоверением в *Startup.CS*:
 
 ```csharp
 public void ConfigureServices(IServiceCollection services)
@@ -49,9 +49,9 @@ public void Configure(IApplicationBuilder app, ILoggerFactory loggerfactory)
 }
 ```
 
-В проектах 2.0 настроена проверка подлинности через службы. Каждая схема проверки подлинности регистрируется в `ConfigureServices` метод *Startup.cs*. `UseIdentity` Метод заменяется `UseAuthentication`.
+В проектах 2,0 проверка подлинности настраивается с помощью служб. Каждая схема проверки подлинности регистрируется в методе `ConfigureServices` *Startup.CS*. Метод `UseIdentity` заменяется `UseAuthentication`.
 
-Приведенный ниже 2.0 настраивает проверку подлинности Facebook с использованием удостоверения *Startup.cs*:
+Следующий пример 2,0 настраивает проверку подлинности Facebook с помощью Identity в *Startup.CS*:
 
 ```csharp
 public void ConfigureServices(IServiceCollection services)
@@ -74,23 +74,23 @@ public void Configure(IApplicationBuilder app, ILoggerFactory loggerfactory) {
 }
 ```
 
-`UseAuthentication` Метод добавляет компонент по промежуточного слоя проверки подлинности, который отвечает за автоматической проверки подлинности, а также обработка запросов удаленной проверки подлинности. Он заменяет все компоненты по промежуточного слоя для отдельных единого компонент по промежуточного слоя.
+Метод `UseAuthentication` добавляет один компонент промежуточного слоя проверки подлинности, отвечающий за автоматическую проверку подлинности и обработку запросов удаленной проверки подлинности. Он заменяет все отдельные компоненты по промежуточного слоя одним общим компонентом по промежуточного слоя.
 
-Ниже приведены 2.0 инструкции по миграции для каждой схемы основной проверки подлинности.
+Ниже приведены инструкции по миграции для каждой основной схемы проверки подлинности 2,0.
 
 ### <a name="cookie-based-authentication"></a>Проверка подлинности на основе файлов cookie
 
-Выберите один из приведенных ниже параметров и внесите необходимые изменения в *Startup.cs*:
+Выберите один из двух параметров ниже и внесите необходимые изменения в *Startup.CS*:
 
 1. Использование файлов cookie с удостоверением
-    - Замените `UseIdentity` с `UseAuthentication` в `Configure` метод:
+    - Замените `UseIdentity` `UseAuthentication` в методе `Configure`:
 
         ```csharp
         app.UseAuthentication();
         ```
 
-    - Вызвать `AddIdentity` метод в `ConfigureServices` метод для добавления службы проверки подлинности файла cookie.
-    - При необходимости вызывать `ConfigureApplicationCookie` или `ConfigureExternalCookie` метод в `ConfigureServices` метод, чтобы настроить параметры файла cookie удостоверений.
+    - Вызовите метод `AddIdentity` в методе `ConfigureServices`, чтобы добавить службы проверки подлинности файлов cookie.
+    - При необходимости вызовите метод `ConfigureApplicationCookie` или `ConfigureExternalCookie` в методе `ConfigureServices`, чтобы настроить параметры cookie для удостоверений.
 
         ```csharp
         services.AddIdentity<ApplicationUser, IdentityRole>()
@@ -100,14 +100,14 @@ public void Configure(IApplicationBuilder app, ILoggerFactory loggerfactory) {
         services.ConfigureApplicationCookie(options => options.LoginPath = "/Account/LogIn");
         ```
 
-2. Использование файлов cookie без Identity
-    - Замените `UseCookieAuthentication` вызов метода `Configure` метод с `UseAuthentication`:
+2. Использовать файлы cookie без удостоверений
+    - Замените вызов метода `UseCookieAuthentication` в методе `Configure` на `UseAuthentication`:
 
         ```csharp
         app.UseAuthentication();
         ```
 
-    - Вызвать `AddAuthentication` и `AddCookie` методы в `ConfigureServices` метод:
+    - Вызовите методы `AddAuthentication` и `AddCookie` в методе `ConfigureServices`:
 
         ```csharp
         // If you don't want the cookie to be automatically authenticated and assigned to HttpContext.User,
@@ -120,16 +120,16 @@ public void Configure(IApplicationBuilder app, ILoggerFactory loggerfactory) {
                 });
         ```
 
-### <a name="jwt-bearer-authentication"></a>Проверки подлинности носителя JWT
+### <a name="jwt-bearer-authentication"></a>Проверка подлинности носителя JWT
 
-Внесите следующие изменения в *Startup.cs*:
-- Замените `UseJwtBearerAuthentication` вызов метода `Configure` метод с `UseAuthentication`:
+Внесите следующие изменения в *Startup.CS*:
+- Замените вызов метода `UseJwtBearerAuthentication` в методе `Configure` на `UseAuthentication`:
 
     ```csharp
     app.UseAuthentication();
     ```
 
-- Вызвать `AddJwtBearer` метод в `ConfigureServices` метод:
+- Вызовите метод `AddJwtBearer` в методе `ConfigureServices`:
 
     ```csharp
     services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
@@ -140,19 +140,19 @@ public void Configure(IApplicationBuilder app, ILoggerFactory loggerfactory) {
             });
     ```
 
-    В этом фрагменте кода не использует удостоверение, поэтому схема по умолчанию задается путем передачи `JwtBearerDefaults.AuthenticationScheme` для `AddAuthentication` метод.
+    Этот фрагмент кода не использует удостоверение, поэтому схему по умолчанию следует задать, передав `JwtBearerDefaults.AuthenticationScheme` методу `AddAuthentication`.
 
-### <a name="openid-connect-oidc-authentication"></a>Проверки подлинности OpenID Connect (OIDC)
+### <a name="openid-connect-oidc-authentication"></a>Проверка подлинности OpenID Connect Connect (OIDC)
 
-Внесите следующие изменения в *Startup.cs*:
+Внесите следующие изменения в *Startup.CS*:
 
-- Замените `UseOpenIdConnectAuthentication` вызов метода `Configure` метод с `UseAuthentication`:
+- Замените вызов метода `UseOpenIdConnectAuthentication` в методе `Configure` на `UseAuthentication`:
 
     ```csharp
     app.UseAuthentication();
     ```
 
-- Вызвать `AddOpenIdConnect` метод в `ConfigureServices` метод:
+- Вызовите метод `AddOpenIdConnect` в методе `ConfigureServices`:
 
     ```csharp
     services.AddAuthentication(options =>
@@ -168,7 +168,7 @@ public void Configure(IApplicationBuilder app, ILoggerFactory loggerfactory) {
     });
     ```
 
-- Замените `PostLogoutRedirectUri` свойство в `OpenIdConnectOptions` действие с `SignedOutRedirectUri`:
+- Замените свойство `PostLogoutRedirectUri` в действии `OpenIdConnectOptions` на `SignedOutRedirectUri`:
 
     ```csharp
     .AddOpenIdConnect(options =>
@@ -179,14 +179,14 @@ public void Configure(IApplicationBuilder app, ILoggerFactory loggerfactory) {
     
 ### <a name="facebook-authentication"></a>Проверка подлинности Facebook
 
-Внесите следующие изменения в *Startup.cs*:
-- Замените `UseFacebookAuthentication` вызов метода `Configure` метод с `UseAuthentication`:
+Внесите следующие изменения в *Startup.CS*:
+- Замените вызов метода `UseFacebookAuthentication` в методе `Configure` на `UseAuthentication`:
 
     ```csharp
     app.UseAuthentication();
     ```
 
-- Вызвать `AddFacebook` метод в `ConfigureServices` метод:
+- Вызовите метод `AddFacebook` в методе `ConfigureServices`:
 
     ```csharp
     services.AddAuthentication()
@@ -199,14 +199,14 @@ public void Configure(IApplicationBuilder app, ILoggerFactory loggerfactory) {
 
 ### <a name="google-authentication"></a>Проверка подлинности Google
 
-Внесите следующие изменения в *Startup.cs*:
-- Замените `UseGoogleAuthentication` вызов метода `Configure` метод с `UseAuthentication`:
+Внесите следующие изменения в *Startup.CS*:
+- Замените вызов метода `UseGoogleAuthentication` в методе `Configure` на `UseAuthentication`:
 
     ```csharp
     app.UseAuthentication();
     ```
 
-- Вызвать `AddGoogle` метод в `ConfigureServices` метод:
+- Вызовите метод `AddGoogle` в методе `ConfigureServices`:
 
     ```csharp
     services.AddAuthentication()
@@ -219,14 +219,16 @@ public void Configure(IApplicationBuilder app, ILoggerFactory loggerfactory) {
 
 ### <a name="microsoft-account-authentication"></a>Проверка подлинности учетной записи Майкрософт
 
-Внесите следующие изменения в *Startup.cs*:
-- Замените `UseMicrosoftAccountAuthentication` вызов метода `Configure` метод с `UseAuthentication`:
+Дополнительные сведения о учетная запись Майкрософт проверки подлинности см. в [этой статье о проблемах в GitHub](https://github.com/aspnet/AspNetCore.Docs/issues/14455).
+
+Внесите следующие изменения в *Startup.CS*:
+- Замените вызов метода `UseMicrosoftAccountAuthentication` в методе `Configure` на `UseAuthentication`:
 
     ```csharp
     app.UseAuthentication();
     ```
 
-- Вызвать `AddMicrosoftAccount` метод в `ConfigureServices` метод:
+- Вызовите метод `AddMicrosoftAccount` в методе `ConfigureServices`:
 
     ```csharp
     services.AddAuthentication()
@@ -239,14 +241,14 @@ public void Configure(IApplicationBuilder app, ILoggerFactory loggerfactory) {
 
 ### <a name="twitter-authentication"></a>Проверка подлинности Twitter
 
-Внесите следующие изменения в *Startup.cs*:
-- Замените `UseTwitterAuthentication` вызов метода `Configure` метод с `UseAuthentication`:
+Внесите следующие изменения в *Startup.CS*:
+- Замените вызов метода `UseTwitterAuthentication` в методе `Configure` на `UseAuthentication`:
 
     ```csharp
     app.UseAuthentication();
     ```
 
-- Вызвать `AddTwitter` метод в `ConfigureServices` метод:
+- Вызовите метод `AddTwitter` в методе `ConfigureServices`:
 
     ```csharp
     services.AddAuthentication()
@@ -257,19 +259,19 @@ public void Configure(IApplicationBuilder app, ILoggerFactory loggerfactory) {
             });
     ```
 
-### <a name="setting-default-authentication-schemes"></a>Параметр схемы проверки подлинности по умолчанию
+### <a name="setting-default-authentication-schemes"></a>Настройка схем проверки подлинности по умолчанию
 
-В версии 1.x `AutomaticAuthenticate` и `AutomaticChallenge` свойства [AuthenticationOptions](/dotnet/api/Microsoft.AspNetCore.Builder.AuthenticationOptions?view=aspnetcore-1.1) базового класса должны устанавливаться на основе схемы проверки подлинности. Невозможно было хорошо это обеспечить.
+В 1. x свойства `AutomaticAuthenticate` и `AutomaticChallenge` базового класса [AuthenticationOptions](/dotnet/api/Microsoft.AspNetCore.Builder.AuthenticationOptions?view=aspnetcore-1.1) предназначены для установки в одной схеме проверки подлинности. Не существовало хорошего способа принудительного применения этого.
 
-В версии 2.0, эти свойства будут удалены как свойства в отдельных `AuthenticationOptions` экземпляра. Они могут быть настроены в `AddAuthentication` вызова метода внутри `ConfigureServices` метод *Startup.cs*:
+В 2,0 эти два свойства были удалены как свойства в отдельном экземпляре `AuthenticationOptions`. Их можно настроить в вызове метода `AddAuthentication` в методе `ConfigureServices` *Startup.CS*:
 
 ```csharp
 services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme);
 ```
 
-В предыдущем фрагменте кода, схемой по умолчанию имеет значение `CookieAuthenticationDefaults.AuthenticationScheme` («файлы cookie»).
+В предыдущем фрагменте кода схема по умолчанию имеет значение `CookieAuthenticationDefaults.AuthenticationScheme` ("cookies").
 
-Кроме того, используйте перегруженную версию `AddAuthentication` метод, чтобы задать более одного свойства. В следующем примере перегруженный метод, схемой по умолчанию имеет значение `CookieAuthenticationDefaults.AuthenticationScheme`. Схема проверки подлинности в качестве альтернативы можно составить в индивидуальную `[Authorize]` атрибутов или политик авторизации.
+Кроме того, можно использовать перегруженную версию метода `AddAuthentication`, чтобы задать более одного свойства. В следующем примере перегруженного метода схема по умолчанию имеет значение `CookieAuthenticationDefaults.AuthenticationScheme`. Схема проверки подлинности также может быть указана в индивидуальных `[Authorize]` атрибутов или политиках авторизации.
 
 ```csharp
 services.AddAuthentication(options =>
@@ -279,36 +281,36 @@ services.AddAuthentication(options =>
 });
 ```
 
-Определите схемой по умолчанию в версии 2.0, если выполняется одно из следующих условий:
-- Требуется, чтобы пользователь мог автоматически входить в
-- Использовании `[Authorize]` атрибута или авторизации политики без указания схемы
+Определите схему по умолчанию в 2,0, если выполняется одно из следующих условий.
+- Вы хотите, чтобы пользователь автоматически вошел в учетную запись
+- Использование атрибута `[Authorize]` или политик авторизации без указания схем
 
-Исключением из этого правила является `AddIdentity` метод. Этот метод добавляет файлы cookie для вас и наборы по умолчанию для проверки подлинности и бросьте схемы для файла cookie приложения `IdentityConstants.ApplicationScheme`. Кроме того, он задает схему по умолчанию вход внешний файл cookie `IdentityConstants.ExternalScheme`.
+Исключением из этого правила является метод `AddIdentity`. Этот метод добавляет файлы cookie для вас и задает схемы проверки подлинности и вызова по умолчанию для файла cookie приложения `IdentityConstants.ApplicationScheme`. Кроме того, он задает схему входа по умолчанию для внешнего файла cookie `IdentityConstants.ExternalScheme`.
 
 <a name="obsolete-interface"></a>
 
-## <a name="use-httpcontext-authentication-extensions"></a>Использовать модули проверки подлинности HttpContext
+## <a name="use-httpcontext-authentication-extensions"></a>Использование расширений проверки подлинности HttpContext
 
-`IAuthenticationManager` Интерфейс является главную точку входа в систему проверки подлинности 1.x. Он был заменен новым набором `HttpContext` методы расширения в `Microsoft.AspNetCore.Authentication` пространства имен.
+Интерфейс `IAuthenticationManager` является основной точкой входа в систему проверки подлинности 1. x. Он был заменен новым набором методов расширения `HttpContext` в пространстве имен `Microsoft.AspNetCore.Authentication`.
 
-Например, 1.x проекты ссылки `Authentication` свойство:
+Например, проекты 1. x ссылаются на свойство `Authentication`:
 
 [!code-csharp[](../1x-to-2x/samples/AspNetCoreDotNetCore1App/AspNetCoreDotNetCore1App/Controllers/AccountController.cs?name=snippet_AuthenticationProperty)]
 
-В проектах 2.0 импортировать `Microsoft.AspNetCore.Authentication` пространства имен и удалите `Authentication` ссылок на свойства:
+В проектах 2,0 импортируйте `Microsoft.AspNetCore.Authentication` пространство имен и удалите ссылки на свойства `Authentication`:
 
 [!code-csharp[](../1x-to-2x/samples/AspNetCoreDotNetCore2App/AspNetCoreDotNetCore2App/Controllers/AccountController.cs?name=snippet_AuthenticationProperty)]
 
 <a name="windows-auth-changes"></a>
 
-## <a name="windows-authentication-httpsys--iisintegration"></a>Проверка подлинности Windows (HTTP.sys / IISIntegration)
+## <a name="windows-authentication-httpsys--iisintegration"></a>Проверка подлинности Windows (HTTP. sys/IISIntegration)
 
-Существует два варианта проверки подлинности Windows.
+Существует два варианта проверки подлинности Windows:
 
-* Узел разрешает только пользователям, прошедшим проверку подлинности. Этот вариант не влияют изменения 2.0.
-* Узел позволяет использовать объекты анонимных и прошедшие проверку пользователи. Этот вариант зависит от изменения версии 2.0. Например, приложение должно позволять анонимных пользователей на [IIS](xref:host-and-deploy/iis/index) или [HTTP.sys](xref:fundamentals/servers/httpsys) слоя, но авторизация пользователей на уровне контроллера. В этом случае задайте схему по умолчанию `Startup.ConfigureServices` метод.
+* Узел допускает только пользователей, прошедших проверку подлинности. На этот вариант не влияют изменения 2,0.
+* Узел допускает анонимные и прошедшие проверку подлинности пользователи. На этот вариант влияют изменения 2,0. Например, приложение должно разрешать анонимных пользователей на уровне [IIS](xref:host-and-deploy/iis/index) или [http. sys](xref:fundamentals/servers/httpsys) , но авторизовать пользователей на уровнях контроллера. В этом сценарии задайте схему по умолчанию в методе `Startup.ConfigureServices`.
 
-  Для [Microsoft.AspNetCore.Server.IISIntegration](https://www.nuget.org/packages/Microsoft.AspNetCore.Server.IISIntegration/), значение схемы по умолчанию `IISDefaults.AuthenticationScheme`:
+  Для [Microsoft. AspNetCore. Server. IISIntegration](https://www.nuget.org/packages/Microsoft.AspNetCore.Server.IISIntegration/)задайте для схемы по умолчанию значение `IISDefaults.AuthenticationScheme`:
 
   ```csharp
   using Microsoft.AspNetCore.Server.IISIntegration;
@@ -316,7 +318,7 @@ services.AddAuthentication(options =>
   services.AddAuthentication(IISDefaults.AuthenticationScheme);
   ```
 
-  Для [Microsoft.AspNetCore.Server.HttpSys](https://www.nuget.org/packages/Microsoft.AspNetCore.Server.HttpSys/), значение схемы по умолчанию `HttpSysDefaults.AuthenticationScheme`:
+  Для [Microsoft. AspNetCore. Server. HttpSys](https://www.nuget.org/packages/Microsoft.AspNetCore.Server.HttpSys/)задайте для схемы по умолчанию значение `HttpSysDefaults.AuthenticationScheme`:
 
   ```csharp
   using Microsoft.AspNetCore.Server.HttpSys;
@@ -324,43 +326,43 @@ services.AddAuthentication(options =>
   services.AddAuthentication(HttpSysDefaults.AuthenticationScheme);
   ```
 
-  Не удалось установить схему по умолчанию не запроса authorize (запрос) может работать со следующим исключением:
+  Если не задать схему по умолчанию, запрос авторизации (запрос) не будет работать со следующим исключением:
 
-  > `System.InvalidOperationException`: Нет значение authenticationScheme указан и было DefaultChallengeScheme, не найден.
+  > `System.InvalidOperationException`: не указан Аусентикатионсчеме, и Дефаултчалленжесчеме не найден.
 
-Дополнительные сведения см. в разделе <xref:security/authentication/windowsauth>.
+Для получения дополнительной информации см. <xref:security/authentication/windowsauth>.
 
 <a name="identity-cookie-options"></a>
 
-## <a name="identitycookieoptions-instances"></a>Экземпляры IdentityCookieOptions
+## <a name="identitycookieoptions-instances"></a>Экземпляры Идентитикукиеоптионс
 
-Побочный эффект изменения 2.0 заключается в переходе на использование именованных параметров, а не к экземпляру параметры файла cookie. Возможность настраивать имена схем идентификации файл cookie удаляется.
+Побочным результатом изменений 2,0 является переключение на использование именованных параметров вместо экземпляров параметров файлов cookie. Возможность настройки имен для схемы cookie удостоверения удаляется.
 
-Например, 1.x проекты использующие [внедрение через конструктор](xref:mvc/controllers/dependency-injection#constructor-injection) для передачи `IdentityCookieOptions` параметр в *AccountController.cs* и *ManageController.cs*. Схема проверки подлинности внешних файлов cookie осуществляется из предоставленного экземпляра.
+Например, проекты 1. x используют [внедрение конструктора](xref:mvc/controllers/dependency-injection#constructor-injection) для передачи параметра `IdentityCookieOptions` в *AccountController.CS* и *ManageController.CS*. Доступ к схеме проверки подлинности внешних файлов cookie осуществляется из предоставленного экземпляра:
 
 [!code-csharp[](../1x-to-2x/samples/AspNetCoreDotNetCore1App/AspNetCoreDotNetCore1App/Controllers/AccountController.cs?name=snippet_AccountControllerConstructor&highlight=4,11)]
 
-Упомянутые выше конструктор injection становится ненужным в проектах 2.0 и `_externalCookieScheme` поле можно удалить:
+Вышеупомянутый внедренный конструктор не нужен в проектах 2,0, и поле `_externalCookieScheme` может быть удалено:
 
 [!code-csharp[](../1x-to-2x/samples/AspNetCoreDotNetCore2App/AspNetCoreDotNetCore2App/Controllers/AccountController.cs?name=snippet_AccountControllerConstructor)]
 
-в проектах 1.x, используемых `_externalCookieScheme` поля следующим образом:
+в проектах 1. x используется поле `_externalCookieScheme` следующим образом:
 
 [!code-csharp[](../1x-to-2x/samples/AspNetCoreDotNetCore1App/AspNetCoreDotNetCore1App/Controllers/AccountController.cs?name=snippet_AuthenticationProperty)]
 
-В проектах 2.0 замените предыдущий код следующим. `IdentityConstants.ExternalScheme` Константа может использоваться непосредственно.
+В проектах 2,0 замените приведенный выше код следующим. Константу `IdentityConstants.ExternalScheme` можно использовать напрямую.
 
 [!code-csharp[](../1x-to-2x/samples/AspNetCoreDotNetCore2App/AspNetCoreDotNetCore2App/Controllers/AccountController.cs?name=snippet_AuthenticationProperty)]
 
-Разрешить только что добавленного `SignOutAsync` вызовите путем импорта следующее пространство имен:
+Разрешите вновь добавленные `SignOutAsync` вызов, импортировав следующее пространство имен:
 
 [!code-csharp[](../1x-to-2x/samples/AspNetCoreDotNetCore2App/AspNetCoreDotNetCore2App/Controllers/AccountController.cs?name=snippet_AuthenticationImport)]
 
 <a name="navigation-properties"></a>
 
-## <a name="add-identityuser-poco-navigation-properties"></a>Добавление IdentityUser POCO свойства навигации
+## <a name="add-identityuser-poco-navigation-properties"></a>Добавление свойств навигации Идентитюсер POCO
 
-Свойства навигации Entity Framework (EF) Core базового `IdentityUser` POCO (обычные старые объекты среды CLR) будут удалены. При использовании этих свойств проекта 1.x вручную добавьте их к проекту для версии 2.0:
+Свойства навигации ядра Entity Framework (EF) базового `IdentityUser` POCO (простой старый объект CLR) были удалены. Если проект 1. x использовал эти свойства, вручную добавьте их обратно в проект 2,0:
 
 ```csharp
 /// <summary>
@@ -379,7 +381,7 @@ public virtual ICollection<IdentityUserClaim<int>> Claims { get; } = new List<Id
 public virtual ICollection<IdentityUserLogin<int>> Logins { get; } = new List<IdentityUserLogin<int>>();
 ```
 
-Чтобы избежать повторяющихся внешние ключи, при выполнении миграций EF Core, добавьте следующий код в вашей `IdentityDbContext` класса `OnModelCreating` метод (после `base.OnModelCreating();` вызов):
+Чтобы предотвратить дублирование внешних ключей при выполнении миграции EF Core, добавьте следующий объект в метод `OnModelCreating` класса `IdentityDbContext` (после вызова `base.OnModelCreating();`):
 
 ```csharp
 protected override void OnModelCreating(ModelBuilder builder)
@@ -414,33 +416,33 @@ protected override void OnModelCreating(ModelBuilder builder)
 
 <a name="synchronous-method-removal"></a>
 
-## <a name="replace-getexternalauthenticationschemes"></a>Замените GetExternalAuthenticationSchemes
+## <a name="replace-getexternalauthenticationschemes"></a>Заменить Жетекстерналаусентикатионсчемес
 
-Синхронный метод `GetExternalAuthenticationSchemes` был удален, а асинхронная версия. проекты 1.x имеется следующий код *Controllers/ManageController.cs*:
+Синхронный метод `GetExternalAuthenticationSchemes` был удален в пользу асинхронной версии. проекты 1. x имеют следующий код в *Controllers/манажеконтроллер. CS*:
 
 [!code-csharp[](../1x-to-2x/samples/AspNetCoreDotNetCore1App/AspNetCoreDotNetCore1App/Controllers/ManageController.cs?name=snippet_GetExternalAuthenticationSchemes)]
 
-Этот метод представлен в *Views/Account/Login.cshtml* слишком:
+Этот метод отображается в *представлениях, учетной записи или имени входа. cshtml* :
 
 [!code-cshtml[](../1x-to-2x/samples/AspNetCoreDotNetCore1App/AspNetCoreDotNetCore1App/Views/Account/Login.cshtml?name=snippet_GetExtAuthNSchemes&highlight=2)]
 
-В проектах 2.0 используйте <xref:Microsoft.AspNetCore.Identity.SignInManager`1.GetExternalAuthenticationSchemesAsync*> метод. Изменение *ManageController.cs* похожа на следующий код:
+В проектах 2,0 используйте метод <xref:Microsoft.AspNetCore.Identity.SignInManager`1.GetExternalAuthenticationSchemesAsync*>. Изменение в *ManageController.CS* напоминает следующий код:
 
 [!code-csharp[](../1x-to-2x/samples/AspNetCoreDotNetCore2App/AspNetCoreDotNetCore2App/Controllers/ManageController.cs?name=snippet_GetExternalAuthenticationSchemesAsync)]
 
-В *Login.cshtml*, `AuthenticationScheme` свойство с доступом в `foreach` примет цикл `Name`:
+В *Login. cshtml*свойство `AuthenticationScheme`, доступ к которому осуществляется в `foreach`ном цикле, изменяется на `Name`:
 
 [!code-cshtml[](../1x-to-2x/samples/AspNetCoreDotNetCore2App/AspNetCoreDotNetCore2App/Views/Account/Login.cshtml?name=snippet_GetExtAuthNSchemesAsync&highlight=2,19)]
 
 <a name="property-change"></a>
 
-## <a name="manageloginsviewmodel-property-change"></a>Изменение свойства ManageLoginsViewModel
+## <a name="manageloginsviewmodel-property-change"></a>Изменение свойства Манажелогинсвиевмодел
 
-Объект `ManageLoginsViewModel` объект используется в `ManageLogins` действие *ManageController.cs*. В проектах версии 1.x, объект элемента `OtherLogins` свойства возвращаемого типа `IList<AuthenticationDescription>`. Тип возвращаемого значения требует импорта `Microsoft.AspNetCore.Http.Authentication`:
+Объект `ManageLoginsViewModel` используется в `ManageLogins` действии *ManageController.CS*. В проектах 1. x возвращаемым типом свойства `OtherLogins` объекта является `IList<AuthenticationDescription>`. Этот тип возвращаемого значения требует импорта `Microsoft.AspNetCore.Http.Authentication`:
 
 [!code-csharp[](../1x-to-2x/samples/AspNetCoreDotNetCore1App/AspNetCoreDotNetCore1App/Models/ManageViewModels/ManageLoginsViewModel.cs?name=snippet_ManageLoginsViewModel&highlight=2,11)]
 
-В проектах 2.0, возвращаемый тип изменения в `IList<AuthenticationScheme>`. Этот новый тип возвращаемого значения требуется замена `Microsoft.AspNetCore.Http.Authentication` импорта с `Microsoft.AspNetCore.Authentication` импорта.
+В проектах 2,0 тип возвращаемого значения изменяется на `IList<AuthenticationScheme>`. Этот новый тип возвращаемого значения требует замены `Microsoft.AspNetCore.Http.Authentication` импорта `Microsoft.AspNetCore.Authentication` импорта.
 
 [!code-csharp[](../1x-to-2x/samples/AspNetCoreDotNetCore2App/AspNetCoreDotNetCore2App/Models/ManageViewModels/ManageLoginsViewModel.cs?name=snippet_ManageLoginsViewModel&highlight=2,11)]
 
@@ -448,4 +450,4 @@ protected override void OnModelCreating(ModelBuilder builder)
 
 ## <a name="additional-resources"></a>Дополнительные ресурсы
 
-Дополнительные сведения см. в разделе [обсуждение Auth 2.0](https://github.com/aspnet/Security/issues/1338) проблемы на сайте GitHub.
+Дополнительные сведения см. в [обсуждении проблемы с проверкой Подлинности 2,0](https://github.com/aspnet/Security/issues/1338) на сайте GitHub.

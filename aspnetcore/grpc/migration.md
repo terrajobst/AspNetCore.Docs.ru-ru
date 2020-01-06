@@ -6,12 +6,12 @@ monikerRange: '>= aspnetcore-3.0'
 ms.author: johluo
 ms.date: 09/25/2019
 uid: grpc/migration
-ms.openlocfilehash: c4c07808540c9af370bfa253e8154a8a19f0f3de
-ms.sourcegitcommit: 897d4abff58505dae86b2947c5fe3d1b80d927f3
+ms.openlocfilehash: 451171a041f7bbb3711babd73d2fa2e245aadd28
+ms.sourcegitcommit: 2cb857f0de774df421e35289662ba92cfe56ffd1
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73634070"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75355130"
 ---
 # <a name="migrating-grpc-services-from-c-core-to-aspnet-core"></a>Миграция gRPC Services с C-Core на ASP.NET Core
 
@@ -82,7 +82,7 @@ public class GreeterService : Greeter.GreeterBase
 
 ## <a name="grpc-interceptors-vs-middleware"></a>gRPC перехватчики VS по промежуточного слоя
 
-ASP.NET Core по [промежуточного слоя](xref:fundamentals/middleware/index) предлагает аналогичные функциональные возможности по сравнению с перехватчиками в приложениях gRPC на основе C-Core. ASP.NET Core по промежуточного слоя и перехватчики концептуально похожи. Как
+ASP.NET Core по [промежуточного слоя](xref:fundamentals/middleware/index) предлагает аналогичные функциональные возможности по сравнению с перехватчиками в приложениях gRPC на основе C-Core. ASP.NET Core по промежуточного слоя и перехватчики концептуально похожи. Оба.
 
 * Используются для создания конвейера, обрабатывающего запрос gRPC.
 * Разрешить выполнение работы до или после следующего компонента в конвейере.
@@ -97,6 +97,7 @@ ASP.NET Core по [промежуточного слоя](xref:fundamentals/midd
   * Предоставить доступ к:
     * Десериализованное сообщение, отправленное в вызов.
     * Сообщение, возвращаемое из вызова перед его сериализацией.
+  * Может перехватывать и справляться с исключениями, созданными из служб gRPC.
 * По промежуточного слоя
   * Выполняется перед перехватчиками gRPC.
   * Работает с базовыми сообщениями HTTP/2.

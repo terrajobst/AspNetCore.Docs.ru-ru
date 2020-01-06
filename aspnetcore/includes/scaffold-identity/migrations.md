@@ -5,6 +5,7 @@
 В Visual Studio **консоль диспетчера пакетов**:
 
 ```powershell
+Install-Package Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore
 Add-Migration CreateIdentitySchema
 Update-Database
 ```
@@ -18,4 +19,4 @@ dotnet ef database update
 
 ---
 
-Параметр имени "креатеидентитисчема" для `Add-Migration` команды является произвольным. `"CreateIdentitySchema"`Описывает миграцию.
+Параметр имени "Креатеидентитисчема" для команды `Add-Migration` является произвольным. `"CreateIdentitySchema"` описывает миграцию.

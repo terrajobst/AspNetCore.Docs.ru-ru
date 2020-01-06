@@ -3,14 +3,14 @@ title: Аутентификация Facebook, Google и внешнего пос�
 author: rick-anderson
 description: Объяснение использования проверки подлинности пользователей Facebook, Google, Twitter и т. д. без ASP.NET Core удостоверения.
 ms.author: riande
-ms.date: 11/19/2019
+ms.date: 12/10/2019
 uid: security/authentication/social/social-without-identity
-ms.openlocfilehash: 680ea091dcc5ed7f94879b5d277e8be7e5abeb7b
-ms.sourcegitcommit: f40c9311058c9b1add4ec043ddc5629384af6c56
+ms.openlocfilehash: 612964ec9ed4975cdc81780dda3bac6cce96037f
+ms.sourcegitcommit: 2cb857f0de774df421e35289662ba92cfe56ffd1
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74289116"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75359062"
 ---
 # <a name="use-social-sign-in-provider-authentication-without-aspnet-core-identity"></a>Использовать проверку подлинности поставщика социальных сетей без удостоверения ASP.NET Core
 
@@ -47,7 +47,7 @@ ms.locfileid: "74289116"
 
 [!code-csharp[](social-without-identity/samples_snapshot/3.x/Startup.cs?name=snippet2&highlight=3-4)]
 
-Дополнительные сведения о схемах проверки подлинности и проверке подлинности файлов cookie см. в разделе <xref:security/authentication/cookie>.
+Дополнительные сведения о схемах проверки подлинности см. в разделе [Основные понятия проверки подлинности](xref:security/authentication/index#authentication-concepts). Дополнительные сведения о проверке подлинности файлов cookie см. в разделе <xref:security/authentication/cookie>.
 
 ## <a name="apply-authorization"></a>Применить авторизацию
 
@@ -102,7 +102,7 @@ ms.locfileid: "74289116"
 
 [!code-csharp[](social-without-identity/samples_snapshot/2.x/Startup.cs?name=snippet2)]
 
-Дополнительные сведения о схемах проверки подлинности и проверке подлинности файлов cookie см. в разделе <xref:security/authentication/cookie>.
+Дополнительные сведения о схемах проверки подлинности см. в разделе [Основные понятия проверки подлинности](xref:security/authentication/index#authentication-concepts). Дополнительные сведения о проверке подлинности файлов cookie см. в разделе <xref:security/authentication/cookie>.
 
 ## <a name="apply-authorization"></a>Применить авторизацию
 

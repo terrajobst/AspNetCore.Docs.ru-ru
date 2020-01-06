@@ -5,14 +5,14 @@ description: Узнайте, как использовать поставщик 
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 11/14/2019
+ms.date: 12/16/2019
 uid: security/key-vault-configuration
-ms.openlocfilehash: e0e55d40734e0cb6e3e1afe1c708ec47c6f43054
-ms.sourcegitcommit: f91d322f790123d41ec3271fa084ae20ed9f89a6
+ms.openlocfilehash: 37ba756cc4170c145d2ab1f9f0a465057cc826c1
+ms.sourcegitcommit: 2cb857f0de774df421e35289662ba92cfe56ffd1
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/18/2019
-ms.locfileid: "74155165"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75358712"
 ---
 # <a name="azure-key-vault-configuration-provider-in-aspnet-core"></a>Поставщик конфигурации Azure Key Vault в ASP.NET Core
 
@@ -73,9 +73,9 @@ dotnet user-secrets set "Section:SecretName" "secret_value_2_dev"
 
 1. Откройте Azure Cloud Shell одним из следующих способов в [портал Azure](https://portal.azure.com/):
 
-   * Выберите **проверить** в правом верхнем углу блока кода. Используйте строку поиска "Azure CLI" в текстовом поле.
+   * Нажмите кнопку **Попробовать** в правом верхнем углу блока с кодом. Используйте строку поиска "Azure CLI" в текстовом поле.
    * Откройте Cloud Shell в браузере с помощью кнопки **запустить Cloud Shell** .
-   * Нажмите кнопку **Cloud Shell** в меню в правом верхнем углу портал Azure.
+   * Нажмите кнопку меню **Cloud Shell** в правом верхнем углу окна портала Azure.
 
    Дополнительные сведения см. в статьях [интерфейс командной строки Azure (CLI)](/cli/azure/) и [общие сведения о Azure Cloud Shell](/azure/cloud-shell/overview).
 
@@ -90,7 +90,7 @@ dotnet user-secrets set "Section:SecretName" "secret_value_2_dev"
 1. Создайте хранилище ключей в группе ресурсов с помощью следующей команды, где `{KEY VAULT NAME}` — это имя нового хранилища ключей, а `{LOCATION}` — регион Azure (центр обработки данных):
 
    ```azure-cli
-   az keyvault create --name "{KEY VAULT NAME}" --resource-group "{RESOURCE GROUP NAME}" --location {LOCATION}
+   az keyvault create --name {KEY VAULT NAME} --resource-group "{RESOURCE GROUP NAME}" --location {LOCATION}
    ```
 
 1. Создайте секреты в хранилище ключей в виде пар "имя-значение".
@@ -100,13 +100,13 @@ dotnet user-secrets set "Section:SecretName" "secret_value_2_dev"
    Следующие секреты предназначены для использования с примером приложения. Значения включают суффикс `_prod`, чтобы отличить их от `_dev`ных суффиксов, загруженных в среде разработки из секретов пользователя. Замените `{KEY VAULT NAME}` именем хранилища ключей, созданным на предыдущем шаге:
 
    ```azure-cli
-   az keyvault secret set --vault-name "{KEY VAULT NAME}" --name "SecretName" --value "secret_value_1_prod"
-   az keyvault secret set --vault-name "{KEY VAULT NAME}" --name "Section--SecretName" --value "secret_value_2_prod"
+   az keyvault secret set --vault-name {KEY VAULT NAME} --name "SecretName" --value "secret_value_1_prod"
+   az keyvault secret set --vault-name {KEY VAULT NAME} --name "Section--SecretName" --value "secret_value_2_prod"
    ```
 
 ## <a name="use-application-id-and-x509-certificate-for-non-azure-hosted-apps"></a>Использование идентификатора приложения и сертификата X. 509 для приложений, не размещенных в Azure
 
-Настройте Azure AD, Azure Key Vault и приложение для использования идентификатора Azure Active Directory приложения и сертификата X. 509 для проверки подлинности в хранилище ключей, **Если приложение размещено за пределами Azure**. Дополнительные сведения см. в статье [о ключах, секретах и сертификатах](/azure/key-vault/about-keys-secrets-and-certificates).
+Настройте Azure AD, Azure Key Vault и приложение для использования идентификатора Azure Active Directory приложения и сертификата X. 509 для проверки подлинности в хранилище ключей, **Если приложение размещено за пределами Azure**. См. дополнительные сведения о [ключах, секретах и сертификатах](/azure/key-vault/about-keys-secrets-and-certificates).
 
 > [!NOTE]
 > Хотя использование идентификатора приложения и сертификата X. 509 поддерживается для приложений, размещенных в Azure, мы рекомендуем использовать [управляемые удостоверения для ресурсов Azure](#use-managed-identities-for-azure-resources) при размещении приложения в Azure. Для управляемых удостоверений не требуется хранить сертификат в приложении или в среде разработки.
@@ -124,10 +124,10 @@ dotnet user-secrets set "Section:SecretName" "secret_value_2_dev"
 1. Сохраните имя хранилища ключей, идентификатор приложения и отпечаток сертификата в файле *appSettings. JSON* приложения.
 1. Перейдите к **разделу хранилища ключей** в портал Azure.
 1. Выберите хранилище ключей, созданное в [хранилище секретов в рабочей среде с помощью Azure Key Vault](#secret-storage-in-the-production-environment-with-azure-key-vault) разделе.
-1. Выберите **политики доступа**.
+1. Выберите **Политики доступа**.
 1. Выберите **Добавить политику доступа**.
 1. Откройте **разрешения для секрета** и предоставьте приложению разрешения **Get** и **List** .
-1. Щелкните **выбрать субъект** и выберите зарегистрированное приложение по имени. Нажмите кнопку **выбрать** .
+1. Щелкните **выбрать субъект** и выберите зарегистрированное приложение по имени. Нажмите кнопку **Выбрать**.
 1. Нажмите кнопку **ОК**.
 1. Нажмите кнопку **Сохранить**.
 1. Разверните приложение.
@@ -153,7 +153,7 @@ dotnet user-secrets set "Section:SecretName" "secret_value_2_dev"
 
 ::: moniker-end
 
-Примеры значений:
+Примеры значений
 
 * Имя хранилища ключей: `contosovault`
 * Идентификатор приложения: `627e911e-43cc-61d4-992e-12db9c81b413`
@@ -190,7 +190,7 @@ dotnet user-secrets set "Section:SecretName" "secret_value_2_dev"
 Используя Azure CLI и идентификатор объекта приложения, укажите приложение с разрешениями `list` и `get` для доступа к хранилищу ключей:
 
 ```azure-cli
-az keyvault set-policy --name '{KEY VAULT NAME}' --object-id {OBJECT ID} --secret-permissions get list
+az keyvault set-policy --name {KEY VAULT NAME} --object-id {OBJECT ID} --secret-permissions get list
 ```
 
 **Перезапустите приложение** с помощью Azure CLI, PowerShell или портал Azure.
@@ -243,7 +243,7 @@ config.AddAzureKeyVault(
     });
 ```
 
-| свойство;         | Описание |
+| Идентификаторы         | Описание |
 | ---------------- | ----------- |
 | `Client`         | <xref:Microsoft.Azure.KeyVault.KeyVaultClient>, используемый для получения значений. |
 | `Manager`        | <xref:Microsoft.Extensions.Configuration.AzureKeyVault.IKeyVaultSecretManager> экземпляр, используемый для управления загрузкой секрета. |
@@ -304,8 +304,8 @@ config.AddAzureKeyVault(
 1. Секреты сохраняются в Azure Key Vault с помощью следующих Azure CLI команд:
 
    ```azure-cli
-   az keyvault secret set --vault-name "{KEY VAULT NAME}" --name "5000-AppSecret" --value "5.0.0.0_secret_value_prod"
-   az keyvault secret set --vault-name "{KEY VAULT NAME}" --name "5100-AppSecret" --value "5.1.0.0_secret_value_prod"
+   az keyvault secret set --vault-name {KEY VAULT NAME} --name "5000-AppSecret" --value "5.0.0.0_secret_value_prod"
+   az keyvault secret set --vault-name {KEY VAULT NAME} --name "5100-AppSecret" --value "5.1.0.0_secret_value_prod"
    ```
 
 1. При запуске приложения загружаются секреты хранилища ключей. Строковый секрет для `5000-AppSecret` соответствует версии приложения, указанной в файле проекта приложения (`5.0.0.0`).
@@ -350,7 +350,7 @@ config.AddAzureKeyVault(
 
 Конфигурация, показанная в предыдущем JSON-файле, хранится в Azure Key Vault с использованием нотации двойного тире (`--`) и числовых сегментов.
 
-| Раздел | значения |
+| Key | {2&gt;Value&lt;2} |
 | --- | ----- |
 | `Serilog--WriteTo--0--Name` | `AzureTableStorage` |
 | `Serilog--WriteTo--0--Args--storageTableName` | `logs` |

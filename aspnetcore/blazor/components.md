@@ -5,16 +5,16 @@ description: Узнайте, как создавать и использоват
 monikerRange: '>= aspnetcore-3.0'
 ms.author: riande
 ms.custom: mvc
-ms.date: 12/05/2019
+ms.date: 12/28/2019
 no-loc:
 - Blazor
 uid: blazor/components
-ms.openlocfilehash: a79202565f45b4d26e280427892ea16b33f3f853
-ms.sourcegitcommit: 851b921080fe8d719f54871770ccf6f78052584e
+ms.openlocfilehash: 87f21d84c17e5bbd1247bb955acee81384b890e7
+ms.sourcegitcommit: 47d453f34b6fd0179119c572cb8be64c5365cbb6
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74943866"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75597906"
 ---
 # <a name="create-and-use-aspnet-core-razor-components"></a>Создание и использование компонентов ASP.NET Core Razor
 
@@ -582,7 +582,7 @@ public IDictionary<string, object> AdditionalAttributes { get; set; }
 | буфер обмена        | `ClipboardEventArgs` | `oncut`значение `oncopy`значение `onpaste` |
 | Перетаскивание             | `DragEventArgs`      | `ondrag`, `ondragstart`, `ondragenter`, `ondragleave`, `ondragover`, `ondrop`, `ondragend`<br><br>`DataTransfer` и `DataTransferItem` содержать перетаскиваемые данные элемента. |
 | Ошибка .            | `ErrorEventArgs`     | `onerror` |
-| Event            | `EventArgs`          | *Общие*<br>`onactivate`, `onbeforeactivate`, `onbeforedeactivate`, `ondeactivate`, `onended`, `onfullscreenchange`, `onfullscreenerror`, `onloadeddata`, `onloadedmetadata`, `onpointerlockchange`, `onpointerlockerror`, `onreadystatechange`, `onscroll`<br><br>*Буфер обмена*<br>`onbeforecut`значение `onbeforecopy`значение `onbeforepaste`<br><br>*Ввод*<br>`oninvalid`, `onreset`, `onselect`, `onselectionchange`, `onselectstart`, `onsubmit`<br><br>*Носитель*<br>`oncanplay`, `oncanplaythrough`, `oncuechange`, `ondurationchange`, `onemptied`, `onpause`, `onplay`, `onplaying`, `onratechange`, `onseeked`, `onseeking`, `onstalled`, `onstop`, `onsuspend`, `ontimeupdate`, `onvolumechange`, `onwaiting` |
+| Event            | `EventArgs`          | *Общие*<br>`onactivate`, `onbeforeactivate`, `onbeforedeactivate`, `ondeactivate`, `onended`, `onfullscreenchange`, `onfullscreenerror`, `onloadeddata`, `onloadedmetadata`, `onpointerlockchange`, `onpointerlockerror`, `onreadystatechange`, `onscroll`<br><br>*Буфер обмена*<br>`onbeforecut`значение `onbeforecopy`значение `onbeforepaste`<br><br>*Ввод*<br>`oninvalid`, `onreset`, `onselect`, `onselectionchange`, `onselectstart`, `onsubmit`<br><br>*Мультимедиа*<br>`oncanplay`, `oncanplaythrough`, `oncuechange`, `ondurationchange`, `onemptied`, `onpause`, `onplay`, `onplaying`, `onratechange`, `onseeked`, `onseeking`, `onstalled`, `onstop`, `onsuspend`, `ontimeupdate`, `onvolumechange`, `onwaiting` |
 | Фокус            | `FocusEventArgs`     | `onfocus`, `onblur`, `onfocusin`, `onfocusout`<br><br>Не включает поддержку для `relatedTarget`. |
 | Input            | `ChangeEventArgs`    | `onchange`, `oninput` |
 | Клавиатура         | `KeyboardEventArgs`  | `onkeydown`значение `onkeypress`значение `onkeyup` |
@@ -1624,7 +1624,8 @@ public class ThemeInfo
 }
 ```
 
-> ! ! Типы в `Microsoft.AspNetCore.Components.RenderTree` позволяют обрабатывать *результаты* операций отрисовки. Это внутренние сведения о реализации Blazor Framework. Эти типы следует считать *нестабильными* и могут быть изменены в будущих выпусках.
+> [!WARNING]
+> Типы в `Microsoft.AspNetCore.Components.RenderTree` позволяют обрабатывать *результаты* операций отрисовки. Это внутренние сведения о реализации Blazor Framework. Эти типы следует считать *нестабильными* и могут быть изменены в будущих выпусках.
 
 ### <a name="sequence-numbers-relate-to-code-line-numbers-and-not-execution-order"></a>Порядковые номера связаны с номерами строк кода, а не с порядком выполнения
 
@@ -1656,14 +1657,14 @@ builder.AddContent(1, "Second");
 
 Когда код выполняется в первый раз, если `someFlag` `true`, построитель получит следующее:
 
-| Sequence | Тип      | Data   |
+| Sequence | Тип      | Данные   |
 | :------: | --------- | :----: |
 | 0        | Узел Text | First  |
 | 1        | Узел Text | Second |
 
 Представьте, что `someFlag` становится `false`, и разметка снова готовится к просмотру. На этот раз построитель получит:
 
-| Sequence | Тип       | Data   |
+| Sequence | Тип       | Данные   |
 | :------: | ---------- | :----: |
 | 1        | Узел Text  | Second |
 
@@ -1688,14 +1689,14 @@ builder.AddContent(seq++, "Second");
 
 Теперь первые выходные данные:
 
-| Sequence | Тип      | Data   |
+| Sequence | Тип      | Данные   |
 | :------: | --------- | :----: |
 | 0        | Узел Text | First  |
 | 1        | Узел Text | Second |
 
 Этот результат идентичен предыдущему случаю, поэтому отрицательные проблемы не возникают. во второй отрисовке `someFlag` `false`, а выходные данные:
 
-| Sequence | Тип      | Data   |
+| Sequence | Тип      | Данные   |
 | :------: | --------- | ------ |
 | 0        | Узел Text | Second |
 
@@ -1729,7 +1730,7 @@ Blazor серверные приложения локализованы по [п
 
 ### <a name="configure-the-linker-for-internationalization-opno-locblazor-webassembly"></a>Настройка компоновщика для интернационализации (Blazorная сборка)
 
-По умолчанию конфигурация компоновщика Blazorдля Blazor приложений веб – сборки удаляет сведения о международной локализации, за исключением явно запрошенных языковых стандартов. Дополнительные сведения и рекомендации по управлению поведением компоновщика см. в разделе <xref:host-and-deploy/blazor/configure-linker#configure-the-linker-for-internationalization>.
+По умолчанию конфигурация компоновщика Blazor для приложений Blazor WebAssembly исключает сведения об интернационализации, кроме явно запрошенных языковых стандартов. Дополнительные сведения и рекомендации по управлению поведением компоновщика см. в разделе <xref:host-and-deploy/blazor/configure-linker#configure-the-linker-for-internationalization>.
 
 ### <a name="cookies"></a>Файлы cookie
 

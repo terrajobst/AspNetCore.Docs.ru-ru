@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 10/07/2019
 uid: security/data-protection/configuration/overview
-ms.openlocfilehash: 380293f650c9548c286f98c0447c7ed08b918f2a
-ms.sourcegitcommit: 3d082bd46e9e00a3297ea0314582b1ed2abfa830
+ms.openlocfilehash: cda510d0f8211641e3544b53ded79878d717cc58
+ms.sourcegitcommit: 2cb857f0de774df421e35289662ba92cfe56ffd1
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/07/2019
-ms.locfileid: "72007379"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75358414"
 ---
 # <a name="configure-aspnet-core-data-protection"></a>Настройка защиты данных ASP.NET Core
 
@@ -26,6 +26,15 @@ ms.locfileid: "72007379"
 > Как и файлы конфигурации, кольцо ключа защиты данных следует защищать с помощью соответствующих разрешений. Вы можете выбрать шифрование неактивных ключей, но это не помешает злоумышленникам создавать новые ключи. Таким образом, безопасность приложения затронута. Доступ к расположению хранилища, настроенному с помощью защиты данных, должен иметь только само приложение, аналогично тому, как вы защищаете файлы конфигурации. Например, если вы решили сохранить ключ на диске, используйте разрешения файловой системы. Убедитесь, что только удостоверение, под которым выполняется веб-приложение, имеет доступ на чтение, запись и создание этого каталога. При использовании хранилища больших двоичных объектов Azure только веб-приложение должно иметь возможность чтения, записи или создания новых записей в хранилище больших двоичных объектов и т. д.
 >
 > Метод расширения [адддатапротектион](/dotnet/api/microsoft.extensions.dependencyinjection.dataprotectionservicecollectionextensions.adddataprotection) возвращает [идатапротектионбуилдер](/dotnet/api/microsoft.aspnetcore.dataprotection.idataprotectionbuilder). `IDataProtectionBuilder` предоставляет методы расширения, которые можно объединить в цепочку для настройки параметров защиты данных.
+
+::: moniker range=">= aspnetcore-3.0"
+
+Для расширений защиты данных, используемых в этой статье, требуются следующие пакеты NuGet:
+
+* [Microsoft. AspNetCore. в отношении защиты. AzureStorage](https://www.nuget.org/packages/Microsoft.AspNetCore.DataProtection.AzureStorage/)
+* [Microsoft. AspNetCore. в отношении защиты. AzureKeyVault](https://www.nuget.org/packages/Microsoft.AspNetCore.DataProtection.AzureKeyVault/)
+
+::: moniker-end
 
 ::: moniker range=">= aspnetcore-2.1"
 

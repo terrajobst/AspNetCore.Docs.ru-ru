@@ -6,12 +6,12 @@ ms.author: scaddie
 ms.custom: mvc
 ms.date: 12/05/2019
 uid: security/app-secrets
-ms.openlocfilehash: ef5cb120c15d349be744c401bd518e026ddf11e9
-ms.sourcegitcommit: c0b72b344dadea835b0e7943c52463f13ab98dd1
+ms.openlocfilehash: 9b36ae64fbe277cd81ed22ba7b21b0a035082dbd
+ms.sourcegitcommit: c815a9465e7b1bab44ce1643ec345b33e6cf1598
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74880774"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75606796"
 ---
 # <a name="safe-storage-of-app-secrets-in-development-in-aspnet-core"></a>Надежное хранение секретов приложений в разработке в ASP.NET Core
 
@@ -19,7 +19,7 @@ ms.locfileid: "74880774"
 
 [Просмотреть или скачать образец кода](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/security/app-secrets/samples) ([как скачивать](xref:index#how-to-download-a-sample))
 
-В этом документе объясняются способы хранения и извлечения конфиденциальных данных во время разработки ASP.NET Core приложения. Никогда не храните пароли или другие конфиденциальные данные в исходном коде. Производственные секреты не должны использоваться для разработки или тестирования. Секреты не должны развертываться вместе с приложением. Вместо этого секреты должны быть доступны в рабочей среде с помощью контролируемых средств, таких как переменные среды, Azure Key Vault и т. д. Вы можете хранить и защищать тестовые и рабочие секреты Azure с помощью [поставщика конфигурации Azure Key Vault](xref:security/key-vault-configuration).
+В этом документе объясняются способы хранения и извлечения конфиденциальных данных во время разработки ASP.NET Core приложения на компьютере разработки. Никогда не храните пароли или другие конфиденциальные данные в исходном коде. Производственные секреты не должны использоваться для разработки или тестирования. Секреты не должны развертываться вместе с приложением. Вместо этого секреты должны быть доступны в рабочей среде с помощью контролируемых средств, таких как переменные среды, Azure Key Vault и т. д. Вы можете хранить и защищать тестовые и рабочие секреты Azure с помощью [поставщика конфигурации Azure Key Vault](xref:security/key-vault-configuration).
 
 ## <a name="environment-variables"></a>Переменные среды
 
@@ -410,5 +410,6 @@ No secrets configured for this application.
 
 ## <a name="additional-resources"></a>Дополнительные ресурсы
 
+* Сведения о доступе к диспетчеру секретов из IIS см. в [этой статье](https://github.com/aspnet/AspNetCore.Docs/issues/16328) .
 * <xref:fundamentals/configuration/index>
 * <xref:security/key-vault-configuration>

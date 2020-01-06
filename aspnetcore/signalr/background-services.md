@@ -9,12 +9,12 @@ ms.date: 11/12/2019
 no-loc:
 - SignalR
 uid: signalr/background-services
-ms.openlocfilehash: 000732115153eeafed3948c2a07acf77ffc34218
-ms.sourcegitcommit: 3fc3020961e1289ee5bf5f3c365ce8304d8ebf19
+ms.openlocfilehash: 324592759af79d1229eb147fb4551e97c678ef64
+ms.sourcegitcommit: 2cb857f0de774df421e35289662ba92cfe56ffd1
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73964045"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75358682"
 ---
 # <a name="host-aspnet-core-opno-locsignalr-in-background-services"></a>SignalR ASP.NET Core узла в фоновых службах
 
@@ -27,11 +27,11 @@ ms.locfileid: "73964045"
 
 [Просмотр или скачивание образца кода](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/signalr/background-service/sample/) [(Загрузка)](xref:index#how-to-download-a-sample)
 
-## <a name="wire-up-opno-locsignalr-during-startup"></a>Подсоединить SignalR во время запуска
+## <a name="enable-opno-locsignalr-in-startup"></a>Включение SignalR при запуске
 
 ::: moniker range=">= aspnetcore-3.0"
 
-Размещение ASP.NET Core SignalR концентраторов в контексте фонового рабочего процесса идентично размещению концентратора в ASP.NET Core веб-приложении. В методе `Startup.ConfigureServices` вызов `services.AddSignalR` добавляет необходимые службы к слою ASP.NET Core внедрения зависимостей (DI) для поддержки SignalR. В `Startup.Configure`метод `MapHub` вызывается в обратном вызове `UseEndpoints`, чтобы подключить конечные точки концентратора в конвейере запросов ASP.NET Core.
+Размещение ASP.NET Core SignalR концентраторов в контексте фонового рабочего процесса идентично размещению концентратора в ASP.NET Core веб-приложении. В методе `Startup.ConfigureServices` вызов `services.AddSignalR` добавляет необходимые службы к слою ASP.NET Core внедрения зависимостей (DI) для поддержки SignalR. В `Startup.Configure`метод `MapHub` вызывается в обратном вызове `UseEndpoints` для подключения конечных точек концентратора в конвейере запросов ASP.NET Core.
 
 ```csharp
 public class Startup
@@ -62,7 +62,7 @@ public class Startup
 
 ::: moniker range="<= aspnetcore-2.2"
 
-Размещение ASP.NET Core SignalR концентраторов в контексте фонового рабочего процесса идентично размещению концентратора в ASP.NET Core веб-приложении. В методе `Startup.ConfigureServices` вызов `services.AddSignalR` добавляет необходимые службы к слою ASP.NET Core внедрения зависимостей (DI) для поддержки SignalR. В `Startup.Configure`вызывается метод `UseSignalR`, который позволяет подключить конечные точки концентратора в конвейере запросов ASP.NET Core.
+Размещение ASP.NET Core SignalR концентраторов в контексте фонового рабочего процесса идентично размещению концентратора в ASP.NET Core веб-приложении. В методе `Startup.ConfigureServices` вызов `services.AddSignalR` добавляет необходимые службы к слою ASP.NET Core внедрения зависимостей (DI) для поддержки SignalR. В `Startup.Configure`вызывается метод `UseSignalR` для подключения конечных точек концентратора в конвейере запросов ASP.NET Core.
 
 [!code-csharp[Startup](background-service/sample/Server/Startup.cs?name=Startup)]
 
@@ -83,13 +83,13 @@ public class Startup
 
 ## <a name="call-a-opno-locsignalr-hub-from-a-background-service"></a>Вызов центра SignalR из фоновой службы
 
-Во время запуска класс `Worker`, `BackgroundService`, подстраивается с помощью `AddHostedService`.
+Во время запуска класс `Worker`, `BackgroundService`, включается с помощью `AddHostedService`.
 
 ```csharp
 services.AddHostedService<Worker>();
 ```
 
-Так как SignalR также работает на этапе `Startup`, в котором каждый концентратор подключен к отдельной конечной точке в конвейере HTTP-запросов ASP.NET Core, каждый концентратор представляется `IHubContext<T>` на сервере. Используя функции DI ASP.NET Core, другие классы, созданные на уровне размещения, такие как классы `BackgroundService`, классы контроллеров MVC или модели страниц Razor, могут получать ссылки на серверные концентраторы, принимая экземпляры `IHubContext<ClockHub, IClock>` во время создания.
+Так как SignalR также включена на этапе `Startup`, в котором каждый концентратор подключен к отдельной конечной точке в конвейере HTTP-запросов ASP.NET Core, каждый концентратор представляется `IHubContext<T>` на сервере. Используя функции DI ASP.NET Core, другие классы, созданные на уровне размещения, такие как классы `BackgroundService`, классы контроллеров MVC или модели страниц Razor, могут получать ссылки на серверные концентраторы, принимая экземпляры `IHubContext<ClockHub, IClock>` во время создания.
 
 [!code-csharp[Startup](background-service/sample/Server/Worker.cs?name=Worker)]
 
@@ -99,7 +99,7 @@ services.AddHostedService<Worker>();
 
 Как и в одностраничном приложении, использующем клиент JavaScript для SignalR или классического приложения .NET, может выполнять с помощью <xref:signalr/dotnet-client>, `BackgroundService` или `IHostedService` можно также использовать для подключения к концентраторам SignalR и реагирования на события.
 
-Класс `ClockHubClient` реализует интерфейс `IClock` и интерфейс `IHostedService`. Таким образом, она может быть привязана во время `Startup` для непрерывного выполнения и реагирования на события концентратора с сервера.
+Класс `ClockHubClient` реализует интерфейс `IClock` и интерфейс `IHostedService`. Таким образом, его можно включить во время `Startup` для непрерывного выполнения и реагирования на события концентратора с сервера.
 
 ```csharp
 public partial class ClockHubClient : IClock, IHostedService
@@ -107,7 +107,7 @@ public partial class ClockHubClient : IClock, IHostedService
 }
 ```
 
-Во время инициализации `ClockHubClient` создает экземпляр `HubConnection` и подсоединяет метод `IClock.ShowTime` в качестве обработчика для события `ShowTime` концентратора.
+Во время инициализации `ClockHubClient` создает экземпляр `HubConnection` и включает метод `IClock.ShowTime` в качестве обработчика для события `ShowTime` концентратора.
 
 [!code-csharp[The ClockHubClient constructor](background-service/sample/Clients.ConsoleTwo/ClockHubClient.cs?name=ClockHubClientCtor)]
 
