@@ -326,8 +326,6 @@
               uid: host-and-deploy/blazor/server
             - name: Настройка компоновщика
               uid: host-and-deploy/blazor/configure-linker
-        - name: Примеры
-          href: 'https://github.com/aspnet/samples/tree/master/samples/aspnetcore/blazor'
     - name: Клиентская разработка
       items:
         - name: Одностраничные приложения
@@ -612,7 +610,7 @@
       uid: test/integration-tests
     - name: Нагрузочное тестирование
       uid: test/loadtests
-    - name: Устранение неполадок
+    - name: Устранение неполадок и отладка
       uid: test/troubleshoot
     - name: Ведение журнала
       uid: fundamentals/logging/index
@@ -885,15 +883,15 @@
             - name: Обзор
               uid: security/authentication/azure-active-directory/index
             - name: Интеграция Azure AD в веб-приложение
-              href: 'https://azure.microsoft.com/documentation/samples/active-directory-dotnet-webapp-openidconnect-aspnetcore/'
+              href: 'https://github.com/Azure-Samples/ms-identity-aspnetcore-webapp-tutorial'
             - name: Интеграция Azure AD B2C в веб-приложение
               uid: security/authentication/azure-ad-b2c
             - name: Интеграция Azure AD B2C в веб-API
               uid: security/authentication/azure-ad-b2c-webapi
             - name: Вызов веб-API из WPF
-              href: 'https://azure.microsoft.com/documentation/samples/active-directory-dotnet-native-aspnetcore/'
+              href: 'https://github.com/Azure-Samples/active-directory-dotnet-native-aspnetcore'
             - name: "Вызов веб-API в веб-приложении с помощью Azure\_AD"
-              href: 'https://azure.microsoft.com/documentation/samples/active-directory-dotnet-webapp-webapi-openidconnect-aspnetcore/'
+              href: 'https://github.com/Azure-Samples/active-directory-dotnet-webapp-webapi-openidconnect-aspnetcore'
         - name: Защита приложений ASP.NET Core с помощью IdentityServer4
           href: 'https://identityserver4.readthedocs.io/'
         - name: Защита приложений ASP.NET Core с помощью проверки подлинности в Службе приложений Azure (Easy Auth)
@@ -1101,6 +1099,9 @@
       uid: fundamentals/host/hosted-services
     - name: Размещение начальных сборок
       uid: fundamentals/configuration/platform-specific-configuration
+    - name: ASP.NET Core в библиотеках классов
+      displayName: shared framework
+      uid: fundamentals/target-aspnetcore
     - name: Метапакет Microsoft.AspNetCore.App
       uid: fundamentals/metapackage-app
     - name: Метапакет Microsoft.AspNetCore.All

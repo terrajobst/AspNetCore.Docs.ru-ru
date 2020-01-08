@@ -5,12 +5,12 @@ description: Здесь вы найдете указания по миграци
 ms.author: scaddie
 ms.date: 10/18/2019
 uid: migration/proper-to-2x/index
-ms.openlocfilehash: 1564b644b774939c3c242a41812851917e96d2b2
-ms.sourcegitcommit: a166291c6708f5949c417874108332856b53b6a9
+ms.openlocfilehash: 19be7191792c44fb5414eb0a7b24772c45391253
+ms.sourcegitcommit: 2cb857f0de774df421e35289662ba92cfe56ffd1
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "74803348"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75359416"
 ---
 # <a name="migrate-from-aspnet-to-aspnet-core"></a>Миграция с ASP.NET на ASP.NET Core
 
@@ -158,6 +158,40 @@ services.Configure<AppConfiguration>(Configuration.GetSection("AppConfiguration"
 ## <a name="multi-value-cookies"></a>Файлы cookie с несколькими значениями
 
 [Файлы cookie с несколькими значениями](xref:System.Web.HttpCookie.Values) не поддерживаются в ASP.NET Core. Создайте один файл cookie для каждого значения.
+
+## <a name="partial-app-migration"></a>Частичная миграция приложений
+
+Один из способов выполнить частичную миграцию приложений предусматривает создание вспомогательного приложения IIS и перенос из ASP.NET 4.x в ASP.NET Core только некоторых маршрутов с сохранением структуры URL-адресов приложения. Рассмотрим структуру URL-адресов приложения из файла *applicationHost.config*:
+
+```xml
+<sites>
+    <site name="Default Web Site" id="1" serverAutoStart="true">
+        <application path="/">
+            <virtualDirectory path="/" physicalPath="D:\sites\MainSite\" />
+        </application>
+        <application path="/api" applicationPool="DefaultAppPool">
+            <virtualDirectory path="/" physicalPath="D:\sites\netcoreapi" />
+        </application>
+        <bindings>
+            <binding protocol="http" bindingInformation="*:80:" />
+            <binding protocol="https" bindingInformation="*:443:" sslFlags="0" />
+        </bindings>
+    </site>
+    ...
+</sites>
+```
+
+Структура каталогов:
+
+```
+.
+├── MainSite
+│   ├── ...
+│   └── Web.config
+└── NetCoreApi
+    ├── ...
+    └── web.config
+```
 
 ## <a name="additional-resources"></a>Дополнительные ресурсы
 

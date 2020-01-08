@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 10/21/2019
 uid: security/authentication/social/index
-ms.openlocfilehash: 627ca483d60514d85e38c0e346ff5aef64ad9fee
-ms.sourcegitcommit: 16cf016035f0c9acf3ff0ad874c56f82e013d415
+ms.openlocfilehash: 06ce9c72f43955345efb61afed2538158810005f
+ms.sourcegitcommit: 2cb857f0de774df421e35289662ba92cfe56ffd1
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73034305"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75358073"
 ---
 # <a name="facebook-google-and-external-provider-authentication-in-aspnet-core"></a>Проверка подлинности Facebook, Google и внешних поставщиков в ASP.NET Core
 
@@ -45,7 +45,7 @@ ms.locfileid: "73034305"
 
 * Смените каталог (`cd`) на папку, в которой будет содержаться проект.
 
-* В ОС Windows выполните следующую команду:
+* Выполните в Windows следующую команду:
 
   ```dotnetcli
   dotnet new webapp -o WebApp1 -au Individual -uld
@@ -111,8 +111,7 @@ ms.locfileid: "73034305"
 
 ## <a name="next-steps"></a>Следующие шаги
 
+* Дополнительные сведения о настройке кнопок входа см. в описании [этой проблемы](https://github.com/aspnet/AspNetCore.Docs/issues/10563) на сайте GitHub.
 * В этой статье описывается внешняя проверка подлинности и приводятся предварительные требования для добавления внешних поставщиков входа в приложение ASP.NET Core.
-
 * Инструкции по настройке учетных данных для входа, используемых вашим приложением, см. на соответствующих страницах поставщиков.
-
-* Вы можете сохранить дополнительные данные о пользователях и их маркерах доступа и обновления. Дополнительные сведения можно найти по адресу: <xref:security/authentication/social/additional-claims>.
+* Вы можете сохранить дополнительные данные о пользователях и их маркерах доступа и обновления. Для получения дополнительной информации см. <xref:security/authentication/social/additional-claims>.
