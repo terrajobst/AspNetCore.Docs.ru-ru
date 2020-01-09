@@ -9,12 +9,12 @@ no-loc:
 - Blazor
 - SignalR
 uid: aspnetcore-3.1
-ms.openlocfilehash: 89c676b96ef66f648544a8a884593bdafa3876de
-ms.sourcegitcommit: 851b921080fe8d719f54871770ccf6f78052584e
+ms.openlocfilehash: 06c1d2596bff34bbfe3b55e782ea2d24321dd839
+ms.sourcegitcommit: da2fb2d78ce70accdba903ccbfdcfffdd0112123
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74944230"
+ms.lasthandoff: 01/07/2020
+ms.locfileid: "75722756"
 ---
 # <a name="whats-new-in-aspnet-core-31"></a>Новые возможности в ASP.NET Core 3.1
 
@@ -38,7 +38,7 @@ ms.locfileid: "74944230"
 
 Например, компонент `Counter` может предварительно отрисовываться со значением приращения (`IncrementAmount`):
 
-```razor
+```cshtml
 <component type="typeof(Counter)" render-mode="ServerPrerendered" 
     param-IncrementAmount="10" />
 ```
@@ -53,7 +53,7 @@ ms.locfileid: "74944230"
 
 ## <a name="breaking-changes-for-samesite-cookies"></a>Критические изменения для файлов cookie SameSite
 
-Поведение файлов cookie SameSite изменилось в соответствии с предстоящими изменениями в браузерах. Это может повлиять на сценарии проверки подлинности, такие как AzureAd, OpenIdConnect или WsFederation. Дополнительные сведения можно найти по адресу: <xref:security/samesite>.
+Поведение файлов cookie SameSite изменилось в соответствии с предстоящими изменениями в браузерах. Это может повлиять на сценарии проверки подлинности, такие как AzureAd, OpenIdConnect или WsFederation. Для получения дополнительной информации см. <xref:security/samesite>.
 
 ## <a name="prevent-default-actions-for-events-in-opno-locblazor-apps"></a>Запрет выполнения действий по умолчанию для событий в приложениях Blazor
 
