@@ -8,16 +8,16 @@ ms.date: 12/05/2019
 no-loc:
 - SignalR
 uid: performance/performance-best-practices
-ms.openlocfilehash: bd30776d527b4ac9f44005e9f5d03fec7cfda2e6
-ms.sourcegitcommit: c0b72b344dadea835b0e7943c52463f13ab98dd1
+ms.openlocfilehash: c74adf7479d176c41dc26c7e77acfc3dc9cdcb88
+ms.sourcegitcommit: 79850db9e79b1705b89f466c6f2c961ff15485de
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74880922"
+ms.lasthandoff: 01/07/2020
+ms.locfileid: "75693964"
 ---
 # <a name="aspnet-core-performance-best-practices"></a>Рекомендации по повышению производительности ASP.NET Core
 
-По [Майк Роусос](https://github.com/mjrousos)
+Автор: [Майк Роусос (Mike Rousos)](https://github.com/mjrousos)
 
 В этой статье приводятся рекомендации по обеспечению оптимальной производительности с помощью ASP.NET Core.
 
@@ -44,7 +44,7 @@ ASP.NET Core приложения предназначены для одновр
 **Рекомендуется.**
 
 * Сделайте [неактивные пути к коду](#understand-hot-code-paths) асинхронными.
-* Асинхронно вызывайте доступ к данным и долгосрочные операции API, если доступен асинхронный API. Опять же, не используйте [Task. Run](/dotnet/api/system.threading.tasks.task.run) , чтобы сделать API синчронус асинхронным.
+* Асинхронно вызывайте API доступа к данным, ввода-вывода и длительные операции, если доступен асинхронный API. **Не** используйте [Task. Run](/dotnet/api/system.threading.tasks.task.run) , чтобы сделать API синчронус асинхронным.
 * Выполнение асинхронных действий контроллера/Razor Page. Весь стек вызовов является асинхронным, чтобы воспользоваться преимуществами шаблонов [async/await](/dotnet/csharp/programming-guide/concepts/async/) .
 
 Профилировщик, например [PerfView](https://github.com/Microsoft/perfview), можно использовать для поиска потоков, часто добавляемых в [пул потоков](/windows/desktop/procthread/thread-pools). Событие `Microsoft-Windows-DotNETRuntime/ThreadPoolWorkerThread/Start` указывает поток, добавленный в пул потоков. <!--  For more information, see [async guidance docs](TBD-Link_To_Davifowl_Doc)  -->
@@ -67,7 +67,7 @@ ASP.NET Core приложения предназначены для одновр
 
 Дополнительные сведения см. в разделе [сбор мусора и производительность](/dotnet/standard/garbage-collection/performance).
 
-## <a name="optimize-data-access"></a>Оптимизация доступа к данным
+## <a name="optimize-data-access-and-io"></a>Оптимизация доступа к данным и ввода-вывода
 
 Взаимодействие с хранилищем данных и другими удаленными службами часто является наиболее медленной частью ASP.NET Core приложения. Эффективное чтение и запись данных крайне важно для обеспечения высокой производительности.
 
@@ -77,7 +77,7 @@ ASP.NET Core приложения предназначены для одновр
 * **Не** извлекать больше данных, чем требуется. Напишите запросы, возвращающие только те данные, которые необходимы для текущего HTTP-запроса.
 * **Рассмотрите возможность** кэширования часто используемых данных, полученных из базы данных или удаленной службы, если это приемлемо для более неактуальных данных. В зависимости от сценария используйте [MemoryCache](xref:performance/caching/memory) или [DistributedCache](xref:performance/caching/distributed). Для получения дополнительной информации см. <xref:performance/caching/response>.
 * **Сократите** круговые обходов сети. Целью является получение необходимых данных в одном вызове, а не в нескольких вызовах.
-* **Используйте** [запросы без отслеживания](/ef/core/querying/tracking#no-tracking-queries) в Entity Framework Core при доступе к данным в целях только для чтения. EF Core может более эффективно возвращать результаты запросов без отслеживания.
+* **Не** используйте [запросы без отслеживания](/ef/core/querying/tracking#no-tracking-queries) в Entity Framework Core при доступе к данным в целях только для чтения. EF Core могут более эффективно возвращать результаты запросов без отслеживания.
 * **Выполните** фильтрацию и агрегирование запросов LINQ (например, с помощью `.Where`, `.Select`или инструкций `.Sum`), чтобы фильтрация выполнялась базой данных.
 * **Учтите,** что EF Core разрешает некоторые операторы запросов на клиенте, что может привести к неэффективному выполнению запроса. Дополнительные сведения см. в статье [проблемы с производительностью оценки клиента](/ef/core/querying/client-eval#client-evaluation-performance-issues).
 * **Не** Используйте проекции запросов к коллекциям, что может привести к выполнению запросов SQL N + 1. Дополнительные сведения см. в разделе [Оптимизация коррелированных вложенных запросов](/ef/core/what-is-new/ef-core-2.1#optimization-of-correlated-subqueries).
