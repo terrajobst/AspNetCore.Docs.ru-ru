@@ -5,14 +5,14 @@ description: Эта статья содержит ссылки на ресурс
 monikerRange: '>= aspnetcore-2.1'
 ms.author: bradyg
 ms.custom: mvc
-ms.date: 11/07/2019
+ms.date: 12/16/2019
 uid: host-and-deploy/azure-apps/index
-ms.openlocfilehash: f9fc6e706046165c142e19ca38d97ac21914dc9b
-ms.sourcegitcommit: a104ba258ae7c0b3ee7c6fa7eaea1ddeb8b6eb73
+ms.openlocfilehash: 51d82d1deadb3d2adbdccd39c8d949e3f9f812fd
+ms.sourcegitcommit: 79850db9e79b1705b89f466c6f2c961ff15485de
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74478759"
+ms.lasthandoff: 01/07/2020
+ms.locfileid: "75693847"
 ---
 # <a name="deploy-aspnet-core-apps-to-azure-app-service"></a>Развертывание приложений ASP.NET Core в Службе приложений Azure
 
@@ -87,13 +87,13 @@ ms.locfileid: "74478759"
 
 ::: moniker range=">= aspnetcore-3.0"
 
-Если приложение использует [универсальный узел](xref:fundamentals/host/generic-host), переменные среды не загружаются в конфигурацию приложения по умолчанию и поставщик конфигурации должен быть добавлен разработчиком. Разработчик определяет префикс переменной среды при добавлении поставщика конфигурации. Дополнительные сведения см. в разделах <xref:fundamentals/host/generic-host> и [Конфигурация для разных сред](xref:fundamentals/configuration/index#environment-variables-configuration-provider).
+Если приложение использует [универсальный узел](xref:fundamentals/host/generic-host), переменные среды загружаются в конфигурацию приложения, когда метод <xref:Microsoft.Extensions.Hosting.Host.CreateDefaultBuilder*> вызывается для создания узла. Дополнительные сведения см. в разделах <xref:fundamentals/host/generic-host> и [Конфигурация для разных сред](xref:fundamentals/configuration/index#environment-variables-configuration-provider).
 
 ::: moniker-end
 
 ::: moniker range="< aspnetcore-3.0"
 
-Если приложение создает узел с помощью [WebHost.CreateDefaultBuilder](/dotnet/api/microsoft.aspnetcore.webhost.createdefaultbuilder), переменные среды, которые настраивают узел, используют префикс `ASPNETCORE_`. Дополнительные сведения см. в разделах <xref:fundamentals/host/web-host> и [Конфигурация для разных сред](xref:fundamentals/configuration/index#environment-variables-configuration-provider).
+Если приложение использует [веб-узел](xref:fundamentals/host/web-host), переменные среды загружаются в конфигурацию приложения, когда метод <xref:Microsoft.AspNetCore.WebHost.CreateDefaultBuilder*> вызывается для создания узла. Дополнительные сведения см. в разделах <xref:fundamentals/host/web-host> и [Конфигурация для разных сред](xref:fundamentals/configuration/index#environment-variables-configuration-provider).
 
 ::: moniker-end
 
@@ -143,17 +143,19 @@ ms.locfileid: "74478759"
 * Хранилище SQL;
 * Кэш Redis.
 
-Дополнительные сведения можно найти по адресу: <xref:security/data-protection/implementation/key-storage-providers>.
+Для получения дополнительной информации см. <xref:security/data-protection/implementation/key-storage-providers>.
 <a name="deploy-aspnet-core-preview-release-to-azure-app-service"></a>
 
-## <a name="deploy-aspnet-core-30-to-azure-app-service"></a>Развертывание ASP.NET Core 3.0 в Службе приложений Azure
+## <a name="deploy-an-aspnet-core-app-that-uses-a-net-core-preview"></a>Развертывание приложения ASP.NET Core, использующего предварительную версию .NET Core
 
-Служба приложений Azure поддерживает ASP.NET Core 3.0. Чтобы развернуть предварительный выпуск версии .NET Core более поздней, чем .NET Core 3.0, используйте один из следующих способов. Эти способы также используются в случаях, когда среда выполнения доступна, но пакет SDK не установлен в Службе приложений Azure.
+Сведения о развертывании приложения, использующего предварительную версию .NET Core, см. в следующих ресурсах. Эти способы также используются в случаях, когда среда выполнения доступна, но пакет SDK не установлен в Службе приложений Azure.
 
 * [Указание версии пакета SDK для .NET Core с помощью Azure Pipelines](#specify-the-net-core-sdk-version-using-azure-pipelines).
-* [Развертывание автономного приложения для предварительной версии](#deploy-a-self-contained-preview-app).
-* [Использование Docker с веб-приложениями для контейнеров](#use-docker-with-web-apps-for-containers).
-* [Установка расширения сайта предварительной версии](#install-the-preview-site-extension).
+* [Развертывание автономного приложения для предварительной версии](#deploy-a-self-contained-preview-app)
+* [Использование Docker с веб-приложениями для контейнеров](#use-docker-with-web-apps-for-containers)
+* [Установка расширения сайта предварительной версии](#install-the-preview-site-extension)
+
+Версию ASP.NET Core, доступную в службе приложений, см. в разделе [ASP.NET Core на панели мониторинга службы приложений](https://aspnetcoreon.azurewebsites.net/).
 
 ### <a name="specify-the-net-core-sdk-version-using-azure-pipelines"></a>Указание версии пакета SDK для .NET Core с помощью Azure Pipelines
 
@@ -232,7 +234,7 @@ ms.locfileid: "74478759"
 
 **Использование расширения сайта предварительной версии с шаблоном ARM**
 
-Если вы используете шаблон ARM для создания и развертывания приложений, можно использовать тип ресурса `siteextensions`, чтобы добавить расширение сайта в веб-приложение. Например:
+Если вы используете шаблон ARM для создания и развертывания приложений, можно использовать тип ресурса `siteextensions`, чтобы добавить расширение сайта в веб-приложение. Пример:
 
 [!code-json[](index/sample/arm.json?highlight=2)]
 
@@ -288,7 +290,7 @@ ms.locfileid: "74478759"
 1. В диалоговом окне **Публикация**:
    * Убедитесь, что выбрана конфигурация **Выпуск**.
    * Откройте раскрывающийся список **Режим развертывания** и выберите вариант **Автономное**.
-   * Выберите целевую среду выполнения из раскрывающегося списка **Целевая среда выполнения**. Значение по умолчанию — `win-x86`.
+   * Выберите целевую среду выполнения из раскрывающегося списка **Целевая среда выполнения**. Значение по умолчанию — `win-x86`.
    * Если потребуется удалить дополнительные файлы после развертывания, откройте **Параметры публикации файлов** и установите флажок для удаления дополнительных файлов в месте назначения.
    * Нажмите кнопку **Сохранить**.
 1. Создайте новый сайт или обновите существующий, следуя остальным подсказкам мастера публикации.

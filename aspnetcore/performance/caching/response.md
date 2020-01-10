@@ -6,12 +6,12 @@ monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.date: 11/04/2019
 uid: performance/caching/response
-ms.openlocfilehash: a456e97053fea7c9ee9ec634ae9b7bbd52febe7f
-ms.sourcegitcommit: 09f4a5ded39cc8204576fe801d760bd8b611f3aa
+ms.openlocfilehash: 9246305e6979a6a7e006f567ee6bf9569029aef1
+ms.sourcegitcommit: 7dfe6cc8408ac6a4549c29ca57b0c67ec4baa8de
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73611473"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75828312"
 ---
 # <a name="response-caching-in-aspnet-core"></a>Кэширование ответов в ASP.NET Core
 
@@ -29,24 +29,24 @@ ms.locfileid: "73611473"
 
 [Спецификация кэширования HTTP 1,1](https://tools.ietf.org/html/rfc7234) описывает, как должны вести себя Интернет-кэши. Основной заголовок HTTP, используемый для кэширования, — это [Cache-Control](https://tools.ietf.org/html/rfc7234#section-5.2), который используется для указания *директив*кэша. Директивы управляют поведением кэширования в качестве запросов от клиентов к серверам, а также по мере того, как отклики от серверов возвращаются к клиентам. Запросы и ответы перемещаются через прокси-серверы, а прокси-серверы также должны соответствовать спецификации кэширования HTTP 1,1.
 
-В следующей таблице показаны распространенные директивы `Cache-Control`.
+В следующей таблице показаны общие директивы `Cache-Control`.
 
-| Директива                                                       | Действие |
+| Directive                                                       | Действие |
 | --------------------------------------------------------------- | ------ |
 | [public](https://tools.ietf.org/html/rfc7234#section-5.2.2.5)   | Ответ может храниться в кэше. |
 | [private](https://tools.ietf.org/html/rfc7234#section-5.2.2.6)  | Ответ не должен храниться в общем кэше. Частный кэш может хранить и повторно использовать ответ. |
 | [максимальный возраст](https://tools.ietf.org/html/rfc7234#section-5.2.1.1)  | Клиент не принимает ответ, возраст которого превышает указанное число секунд. Примеры: `max-age=60` (60 секунд), `max-age=2592000` (1 месяц) |
 | [без кэша](https://tools.ietf.org/html/rfc7234#section-5.2.1.4) | **В запросах**: кэш не должен использовать сохраненный ответ для удовлетворения запроса. Сервер источника повторно создает ответ для клиента, и по промежуточного слоя обновляет сохраненный ответ в своем кэше.<br><br>**В ответах**: ответ не должен использоваться для последующего запроса без проверки на сервере-источнике. |
-| [без магазина](https://tools.ietf.org/html/rfc7234#section-5.2.1.5) | **В запросах**: кэш не должен сохранять запрос.<br><br>**В**ответах: кэш не должен хранить какую-либо часть ответа. |
+| [no-store](https://tools.ietf.org/html/rfc7234#section-5.2.1.5) | **В запросах**: кэш не должен сохранять запрос.<br><br>**В**ответах: кэш не должен хранить какую-либо часть ответа. |
 
 Другие заголовки кэша, которые играют роль в кэшировании, показаны в следующей таблице.
 
 | Header                                                     | Функция |
 | ---------------------------------------------------------- | -------- |
-| [Интервал](https://tools.ietf.org/html/rfc7234#section-5.1)     | Оценка количества времени в секундах с момента создания или успешной проверки ответа на сервере источника. |
+| [Age](https://tools.ietf.org/html/rfc7234#section-5.1)     | Оценка количества времени в секундах с момента создания или успешной проверки ответа на сервере источника. |
 | [Истекает](https://tools.ietf.org/html/rfc7234#section-5.3) | Время, после которого ответ считается устаревшим. |
 | [Включают](https://tools.ietf.org/html/rfc7234#section-5.4)  | Существует для обеспечения обратной совместимости с кэшами HTTP/1.0 для настройки поведения `no-cache`. Если заголовок `Cache-Control` имеется, заголовок `Pragma` игнорируется. |
-| [Меняющие](https://tools.ietf.org/html/rfc7231#section-7.1.4)  | Указывает, что кэшированный ответ не должен отправляться, если все поля заголовков `Vary` не совпадают как в исходном запросе, так и в новом запросе кэшированного ответа. |
+| [Меняющие](https://tools.ietf.org/html/rfc7231#section-7.1.4)  | Указывает, что кэшированный ответ не должен отправляться, если все поля заголовка `Vary` не совпадают как в исходном запросе, так и в новом запросе кэшированного ответа. |
 
 ## <a name="http-based-caching-respects-request-cache-control-directives"></a>Директивы управления кэшем запросов для кэширования на основе HTTP
 
@@ -54,7 +54,7 @@ ms.locfileid: "73611473"
 
 Всегда учитывать клиентские `Cache-Control` заголовки запросов имеют смысл при рассмотрении цели кэширования HTTP. В официальной спецификации кэширование предназначено для уменьшения задержки и нагрузки на сети для удовлетворения запросов в сети клиентов, прокси и серверов. Это не обязательно способ управления нагрузкой на сервере-источнике.
 
-При использовании по [промежуточного слоя для кэширования ответа](xref:performance/caching/middleware) разработчик не управляет этим поведением кэширования, поскольку по промежуточного слоя соответствует официальной спецификации кэширования. [Запланированные улучшения по промежуточного слоя](https://github.com/aspnet/AspNetCore/issues/2612) позволяют настроить по промежуточного слоя для игнорирования заголовка `Cache-Control` запроса при принятии решения о выполнении кэшированного ответа. Запланированные улучшения дают возможность лучше управлять нагрузкой сервера.
+При использовании по [промежуточного слоя для кэширования ответа](xref:performance/caching/middleware) разработчик не управляет этим поведением кэширования, поскольку по промежуточного слоя соответствует официальной спецификации кэширования. [Запланированные улучшения по промежуточного слоя](https://github.com/dotnet/AspNetCore/issues/2612) позволяют настроить по промежуточного слоя, чтобы игнорировать заголовок `Cache-Control` запроса при принятии решения о выполнении кэшированного ответа. Запланированные улучшения дают возможность лучше управлять нагрузкой сервера.
 
 ## <a name="other-caching-technology-in-aspnet-core"></a>Другая технология кэширования в ASP.NET Core
 
@@ -89,7 +89,7 @@ ms.locfileid: "73611473"
 > [!WARNING]
 > Отключите кэширование для содержимого, содержащего сведения для клиентов, прошедших проверку подлинности. Кэширование следует включать только для содержимого, которое не изменяется в зависимости от удостоверения пользователя или от того, вошел ли пользователь в систему.
 
-<xref:Microsoft.AspNetCore.Mvc.CacheProfile.VaryByQueryKeys> изменяет сохраненный ответ на значения заданного списка ключей запроса. Если указано одно значение `*`, по промежуточного слоя различает все параметры строки запроса.
+<xref:Microsoft.AspNetCore.Mvc.CacheProfile.VaryByQueryKeys> изменяет сохраненный ответ на значения заданного списка ключей запроса. Если указано одно значение `*`, по промежуточного слоя изменяет ответы всеми параметрами строки запроса.
 
 Для установки свойства <xref:Microsoft.AspNetCore.Mvc.CacheProfile.VaryByQueryKeys> необходимо включить по [промежуточного слоя кэширования ответа](xref:performance/caching/middleware) . В противном случае выдается исключение времени выполнения. Отсутствует соответствующий заголовок HTTP для свойства <xref:Microsoft.AspNetCore.Mvc.CacheProfile.VaryByQueryKeys>. Свойство является компонентом HTTP, обрабатываемым по промежуточного слоя кэширования ответа. Чтобы по промежуточного слоя обслуживать кэшированный ответ, строка запроса и значение строки запроса должны соответствовать предыдущему запросу. Например, рассмотрим последовательность запросов и результатов, показанных в следующей таблице.
 
@@ -103,7 +103,7 @@ ms.locfileid: "73611473"
 
 <xref:Microsoft.AspNetCore.Mvc.ResponseCacheAttribute> используется для настройки и создания (с помощью <xref:Microsoft.AspNetCore.Mvc.Filters.IFilterFactory>) `Microsoft.AspNetCore.Mvc.Internal.ResponseCacheFilter`. `ResponseCacheFilter` выполняет обновление соответствующих HTTP-заголовков и функций ответа. Фильтр:
 
-* Удаляет все существующие заголовки для `Vary`, `Cache-Control` и `Pragma`.
+* Удаляет все существующие заголовки для `Vary`, `Cache-Control`и `Pragma`.
 * Записывает соответствующие заголовки на основе свойств, заданных в <xref:Microsoft.AspNetCore.Mvc.ResponseCacheAttribute>.
 * Обновляет компонент HTTP кэширования ответа, если задан параметр <xref:Microsoft.AspNetCore.Mvc.CacheProfile.VaryByQueryKeys>.
 
@@ -127,7 +127,7 @@ Vary: User-Agent
 * Параметру `Cache-Control` задается значение `no-store,no-cache`.
 * Параметру `Pragma` задается значение `no-cache`.
 
-Если <xref:Microsoft.AspNetCore.Mvc.CacheProfile.NoStore> равно `false`, а <xref:Microsoft.AspNetCore.Mvc.CacheProfile.Location> — `None`, `Cache-Control`, а `Pragma` — `no-cache`.
+Если <xref:Microsoft.AspNetCore.Mvc.CacheProfile.NoStore> имеет значение `false` а <xref:Microsoft.AspNetCore.Mvc.CacheProfile.Location> — `None`, `Cache-Control`и `Pragma` — `no-cache`.
 
 <xref:Microsoft.AspNetCore.Mvc.CacheProfile.NoStore> обычно имеет значение `true` для страниц ошибок. Страница Cache2 в примере приложения создает заголовки ответа, указывающие клиенту не сохранять ответ.
 
@@ -142,9 +142,9 @@ Pragma: no-cache
 
 ### <a name="location-and-duration"></a>Расположение и длительность
 
-Чтобы включить кэширование, значение <xref:Microsoft.AspNetCore.Mvc.CacheProfile.Duration> должно быть положительным, а <xref:Microsoft.AspNetCore.Mvc.CacheProfile.Location> должно быть либо `Any` (значение по умолчанию), либо `Client`. Платформа задает для заголовка `Cache-Control` значение Location, за которым следует `max-age` ответа.
+Чтобы включить кэширование, <xref:Microsoft.AspNetCore.Mvc.CacheProfile.Duration> должно быть задано положительное значение, а <xref:Microsoft.AspNetCore.Mvc.CacheProfile.Location> должно быть либо `Any` (по умолчанию), либо `Client`. Платформа задает для заголовка `Cache-Control` значение Location, за которым следует `max-age` ответа.
 
-Параметры <xref:Microsoft.AspNetCore.Mvc.CacheProfile.Location> для `Any` и `Client` транслируются в значения заголовков `Cache-Control` `public` и `private` соответственно. Как отмечалось в разделе "не [Store" и "Location. None](#nostore-and-locationnone) ", при установке <xref:Microsoft.AspNetCore.Mvc.CacheProfile.Location> в `None` задает для `Cache-Control` и `Pragma` заголовки `no-cache`.
+<xref:Microsoft.AspNetCore.Mvc.CacheProfile.Location>параметры `Any` и `Client` перевода `Cache-Control` значения заголовков `public` и `private`соответственно. Как отмечалось в разделе "не [Store" и "Location. None](#nostore-and-locationnone) ", при установке <xref:Microsoft.AspNetCore.Mvc.CacheProfile.Location> в `None` задает для `Cache-Control` и `Pragma` заголовки `no-cache`.
 
 `Location.Any` (`Cache-Control` задано значение `public`) указывает, что *клиент или любой промежуточный прокси-сервер* может кэшировать это значение, включая по [промежуточного слоя кэширования ответа](xref:performance/caching/middleware).
 
@@ -152,7 +152,7 @@ Pragma: no-cache
 
 Заголовки управления кэшем просто предоставляют рекомендации клиентам и промежуточным прокси-серверам, когда и как кэшировать ответы. Нет никакой гарантии, что клиенты и прокси-серверы будут учитывать [спецификацию кэширования HTTP 1,1](https://tools.ietf.org/html/rfc7234). [Промежуточное расположение кэширования ответов](xref:performance/caching/middleware) всегда соответствует правилам кэширования, указанным в спецификации.
 
-В следующем примере показана модель страницы Cache3 из примера приложения и заголовки, созданные с помощью параметра <xref:Microsoft.AspNetCore.Mvc.CacheProfile.Duration>, и остается значение по умолчанию <xref:Microsoft.AspNetCore.Mvc.CacheProfile.Location>:
+В следующем примере показана модель страницы Cache3 из примера приложения и заголовки, созданные с помощью параметра <xref:Microsoft.AspNetCore.Mvc.CacheProfile.Duration> и значения <xref:Microsoft.AspNetCore.Mvc.CacheProfile.Location> по умолчанию:
 
 [!code-csharp[](response/samples/2.x/ResponseCacheSample/Pages/Cache3.cshtml.cs?name=snippet)]
 
@@ -166,7 +166,7 @@ Cache-Control: public,max-age=10
 
 Вместо дублирования параметров кэша ответов во многих атрибутах действия контроллера можно настроить профили кэша в качестве параметров при настройке MVC/Razor Pages в `Startup.ConfigureServices`. Значения, найденные в указанном профиле кэша, используются по умолчанию <xref:Microsoft.AspNetCore.Mvc.ResponseCacheAttribute> и переопределяются любыми свойствами, заданными в атрибуте.
 
-Настройка профиля кэша. В следующем примере показан профиль кэширования в 30 секунд в примере приложения `Startup.ConfigureServices`:
+Настройка профиля кэша. В следующем примере показан 30-секундный профиль кэша в `Startup.ConfigureServices`примера приложения:
 
 [!code-csharp[](response/samples/2.x/ResponseCacheSample/Startup.cs?name=snippet1)]
 
@@ -176,11 +176,11 @@ Cache-Control: public,max-age=10
 
 <xref:Microsoft.AspNetCore.Mvc.ResponseCacheAttribute> можно применить к:
 
-* Обработчики страниц Razor (классы) атрибуты &ndash; не могут быть применены к методам обработчика.
+* Обработчики страниц Razor (классы) &ndash; атрибуты не могут быть применены к методам обработчика.
 * Контроллеры MVC (классы).
 * Действия MVC (методы) &ndash; атрибуты уровня метода переопределяют параметры, указанные в атрибутах уровня класса.
 
-Результирующий заголовок, примененный к ответу страницы Cache4 в профиле кэша `Default30`:
+Результирующий заголовок, применяемый к ответу страницы Cache4 в профиле кэша `Default30`:
 
 ```
 Cache-Control: public,max-age=30

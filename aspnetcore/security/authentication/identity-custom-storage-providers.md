@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 07/23/2019
 uid: security/authentication/identity-custom-storage-providers
-ms.openlocfilehash: 6d0d9b5467d9d27b936a17fa86f73e7d8123b75b
-ms.sourcegitcommit: 6628cd23793b66e4ce88788db641a5bbf470c3c1
+ms.openlocfilehash: 70951085474d88fd57f1b1496a41adcda520b91f
+ms.sourcegitcommit: 7dfe6cc8408ac6a4549c29ca57b0c67ec4baa8de
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73760970"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75829158"
 ---
 # <a name="custom-storage-providers-for-aspnet-core-identity"></a>Пользовательские поставщики хранилища для удостоверения ASP.NET Core
 
@@ -21,9 +21,9 @@ ASP.NET Core Identity — это расширяемая система, кото
 
 [Просмотреть или скачать образец с GitHub](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/security/authentication/identity/sample).
 
-## <a name="introduction"></a>Вступление
+## <a name="introduction"></a>Введение
 
-По умолчанию система удостоверений ASP.NET Core сохраняет сведения о пользователях в базе данных SQL Server с помощью Entity Framework Core. Для многих приложений этот подход хорошо работает. Однако можно использовать другой механизм сохраняемости или схему данных. Пример:
+По умолчанию система удостоверений ASP.NET Core сохраняет сведения о пользователях в базе данных SQL Server с помощью Entity Framework Core. Для многих приложений этот подход хорошо работает. Однако можно использовать другой механизм сохраняемости или схему данных. Например:
 
 * Вы используете [хранилище таблиц Azure](/azure/storage/) или другое хранилище данных.
 * Таблицы базы данных имеют различную структуру. 
@@ -57,7 +57,7 @@ ASP.NET Core удостоверение состоит из классов, им
 
 [ASP.NET Core типы данных удостоверений](https://github.com/aspnet/identity) подробно описаны в следующих разделах:
 
-### <a name="users"></a>Users
+### <a name="users"></a>Пользователи
 
 Зарегистрированные пользователи вашего веб-сайта. Тип [идентитюсер](/dotnet/api/microsoft.aspnet.identity.corecompat.identityuser) можно расширить или использовать в качестве примера для собственного пользовательского типа. Для реализации пользовательского решения для хранения удостоверений не нужно наследовать от определенного типа.
 
@@ -169,7 +169,7 @@ ASP.NET Core удостоверение состоит из классов, им
 * **IQueryableUserStore**  
  Интерфейс [&gt;IQueryableUserStore&lt;Тусер](/dotnet/api/microsoft.aspnetcore.identity.iqueryableuserstore-1) определяет члены, которые вы реализуете для предоставления запрашиваемого хранилища пользователя.
 
-Вы реализуете только те интерфейсы, которые необходимы в приложении. Пример:
+Вы реализуете только те интерфейсы, которые необходимы в приложении. Например:
 
 ```csharp
 public class UserStore : IUserStore<IdentityUser>,
@@ -215,7 +215,7 @@ public class UserStore : IUserStore<IdentityUser>,
 1. Если вы используете роли, обновите `RoleManager`, чтобы использовать класс `RoleStore`.
 1. Обновите строку подключения и учетные данные в конфигурации приложения.
 
-Пример
+Пример:
 
 ```csharp
 public void ConfigureServices(IServiceCollection services)
@@ -238,4 +238,4 @@ public void ConfigureServices(IServiceCollection services)
 ## <a name="references"></a>Ссылки
 
 * [Пользовательские поставщики хранилища для удостоверения ASP.NET 4. x](/aspnet/identity/overview/extensibility/overview-of-custom-storage-providers-for-aspnet-identity)
-* [ASP.NET Core Identity](https://github.com/aspnet/AspNetCore/tree/master/src/Identity) &ndash; этот репозиторий содержит ссылки на поставщиков хранилищ, поддерживаемых сообществом.
+* [ASP.NET Core Identity](https://github.com/dotnet/AspNetCore/tree/master/src/Identity) &ndash; этот репозиторий содержит ссылки на поставщиков хранилищ, поддерживаемых сообществом.

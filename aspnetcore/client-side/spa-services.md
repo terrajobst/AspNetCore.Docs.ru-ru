@@ -7,12 +7,12 @@ ms.author: scaddie
 ms.custom: H1Hack27Feb2017
 ms.date: 09/06/2019
 uid: client-side/spa-services
-ms.openlocfilehash: 52285999d7710cc3198836b9246596980cfc1666
-ms.sourcegitcommit: 2cb857f0de774df421e35289662ba92cfe56ffd1
+ms.openlocfilehash: caff1a735de3274b371f67e6e485dc42e579452c
+ms.sourcegitcommit: 7dfe6cc8408ac6a4549c29ca57b0c67ec4baa8de
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75355788"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75828221"
 ---
 # <a name="use-javascript-services-to-create-single-page-applications-in-aspnet-core"></a>Использование служб JavaScript для создания одностраничных приложений в ASP.NET Core
 
@@ -23,7 +23,7 @@ ms.locfileid: "75355788"
 ::: moniker range=">= aspnetcore-3.0"
 
 > [!WARNING]
-> Функции, описанные в этой статье, устарели по ASP.NET Core 3,0. В пакете NuGet [Microsoft. AspNetCore. спасервицес. Extensions](https://www.nuget.org/packages/Microsoft.AspNetCore.SpaServices.Extensions) доступен более простой механизм интеграции с алгоритмом Spa. Дополнительные сведения см. в разделе [[объявление] Обсолетинг Microsoft. AspNetCore. спасервицес и Microsoft. AspNetCore. нодесервицес](https://github.com/aspnet/AspNetCore/issues/12890).
+> Функции, описанные в этой статье, устарели по ASP.NET Core 3,0. В пакете NuGet [Microsoft. AspNetCore. спасервицес. Extensions](https://www.nuget.org/packages/Microsoft.AspNetCore.SpaServices.Extensions) доступен более простой механизм интеграции с алгоритмом Spa. Дополнительные сведения см. в разделе [[объявление] Обсолетинг Microsoft. AspNetCore. спасервицес и Microsoft. AspNetCore. нодесервицес](https://github.com/dotnet/AspNetCore/issues/12890).
 
 ::: moniker-end
 

@@ -4,28 +4,34 @@ author: ncarandini
 description: Объясняется, как связь с браузером является компонентом Visual Studio, который связывает среду разработки с одним или несколькими веб-браузерами.
 ms.author: riande
 ms.custom: H1Hack27Feb2017
-ms.date: 11/12/2019
+ms.date: 01/09/2020
 no-loc:
 - SignalR
 uid: client-side/using-browserlink
-ms.openlocfilehash: b21b698d49e72b559cd9cd3753c48a38c99db24d
-ms.sourcegitcommit: 3fc3020961e1289ee5bf5f3c365ce8304d8ebf19
+ms.openlocfilehash: 19cc3c2ed91bd9e05df3c036123c78ecbf81fcc0
+ms.sourcegitcommit: 7dfe6cc8408ac6a4549c29ca57b0c67ec4baa8de
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73962784"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75828274"
 ---
 # <a name="browser-link-in-aspnet-core"></a>Ссылка на браузер в ASP.NET Core
 
 [Николò карандини](https://github.com/ncarandini), [Mike Уоссон](https://github.com/MikeWasson)и [Tom Dykstra)](https://github.com/tdykstra)
 
-Связь с браузером — это функция Visual Studio, которая создает коммуникационный канал между средой разработки и одним или несколькими веб-браузерами. Можно использовать ссылку на браузер для обновления веб-приложения одновременно в нескольких браузерах, что полезно для тестирования в разных браузерах.
+Ссылка на браузер является компонентом Visual Studio. Он создает коммуникационный канал между средой разработки и одним или несколькими веб-браузерами. Можно использовать ссылку на браузер для обновления веб-приложения одновременно в нескольких браузерах, что полезно для тестирования в разных браузерах.
 
 ## <a name="browser-link-setup"></a>Настройка связи с браузером
 
-::: moniker range=">= aspnetcore-2.1"
+::: moniker range=">= aspnetcore-3.0"
 
-При преобразовании проекта ASP.NET Core 2,0 в ASP.NET Core 2,1 и переходе к [Microsoft. AspNetCore. app метапакет](xref:fundamentals/metapackage-app)установите пакет [Microsoft. VisualStudio. Web. BrowserLink](https://www.nuget.org/packages/Microsoft.VisualStudio.Web.BrowserLink/) для функций BrowserLink. Шаблоны проектов ASP.NET Core 2,1 по умолчанию используют `Microsoft.AspNetCore.App` метапакет.
+Добавьте в проект пакет [Microsoft. VisualStudio. Web. BrowserLink](https://www.nuget.org/packages/Microsoft.VisualStudio.Web.BrowserLink/) . Для ASP.NET Core проектов Razor Pages или MVC также включите компиляцию файлов Razor ( *. cshtml*) во время выполнения, как описано в разделе <xref:mvc/views/view-compilation>. Синтаксис Razor изменения применяются только при включенной компиляции среды выполнения.
+
+::: moniker-end
+
+::: moniker range=">= aspnetcore-2.1 <= aspnetcore-2.2"
+
+При преобразовании проекта ASP.NET Core 2,0 в ASP.NET Core 2,1 и переходе к [Microsoft. AspNetCore. app метапакет](xref:fundamentals/metapackage-app)установите пакет [Microsoft. VisualStudio. Web. BrowserLink](https://www.nuget.org/packages/Microsoft.VisualStudio.Web.BrowserLink/) для функции связи с браузером. Шаблоны проектов ASP.NET Core 2,1 по умолчанию используют `Microsoft.AspNetCore.App` метапакет.
 
 ::: moniker-end
 
@@ -37,33 +43,19 @@ ms.locfileid: "73962784"
 
 ::: moniker range="<= aspnetcore-1.1"
 
-Шаблон проекта **веб-приложения** ASP.NET Core 1. x содержит ссылку на пакет для пакета [Microsoft. VisualStudio. Web. BrowserLink](https://www.nuget.org/packages/Microsoft.VisualStudio.Web.BrowserLink/) . Для шаблонов **пустых** **веб-API** или проектов необходимо добавить ссылку на пакет `Microsoft.VisualStudio.Web.BrowserLink`.
-
-Поскольку это функция Visual Studio, самым простым способом добавления пакета в **пустой** проект или проекта шаблона **веб-API** является открытие **консоли диспетчера пакетов** (**просмотр** > другая **консоль диспетчера пакетов** **Windows** >) и выполнение следующей команды:
-
-```console
-install-package Microsoft.VisualStudio.Web.BrowserLink
-```
-
-Кроме того, можно использовать **Диспетчер пакетов NuGet**. Щелкните правой кнопкой мыши имя проекта в **Обозреватель решений** и выберите пункт **Управление пакетами NuGet**:
-
-![Открыть диспетчер пакетов NuGet](using-browserlink/_static/open-nuget-package-manager.png)
-
-Найдите и установите пакет:
-
-![Добавление пакета с помощью диспетчера пакетов NuGet](using-browserlink/_static/add-package-with-nuget-package-manager.png)
+Шаблон проекта **веб-приложения** ASP.NET Core 1. x содержит ссылку на пакет для пакета [Microsoft. VisualStudio. Web. BrowserLink](https://www.nuget.org/packages/Microsoft.VisualStudio.Web.BrowserLink/) . Для других типов проектов требуется добавить ссылку на пакет `Microsoft.VisualStudio.Web.BrowserLink`.
 
 ::: moniker-end
 
-### <a name="configuration"></a>Параметр Configuration
+### <a name="configuration"></a>Конфигурация
 
-В методе `Startup.Configure`:
+Вызовите `Startup.Configure` в методе `UseBrowserLink`:
 
 ```csharp
 app.UseBrowserLink();
 ```
 
-Обычно код находится внутри блока `if`, который включает в среде разработки связь только с браузером, как показано ниже:
+Вызов `UseBrowserLink` обычно размещается в блоке `if`, который разрешает только связь с браузером в среде разработки. Например:
 
 ```csharp
 if (env.IsDevelopment())
@@ -73,7 +65,7 @@ if (env.IsDevelopment())
 }
 ```
 
-Дополнительные сведения см. в статье [Использование нескольких сред](xref:fundamentals/environments).
+Для получения дополнительной информации см. <xref:fundamentals/environments>.
 
 ## <a name="how-to-use-browser-link"></a>Как использовать связь с браузером
 
@@ -85,11 +77,8 @@ if (env.IsDevelopment())
 
 * Одновременное обновление веб-приложения в нескольких браузерах.
 * Откройте **панель мониторинга связи с браузером**.
-* Включение или отключение **связи с браузером**. Примечание. ссылка на браузер отключена по умолчанию в Visual Studio 2017 (15,3).
+* Включение или отключение **связи с браузером**. Примечание. ссылка на браузер отключена по умолчанию в Visual Studio.
 * Включение или отключение [автоматической синхронизации CSS](#enable-or-disable-css-auto-sync).
-
-> [!NOTE]
-> Некоторые подключаемые модули Visual Studio, в первую очередь, *пакет веб-расширений 2015* и *Пакет расширений Web Extension 2017*, предлагают расширенные функции для связи с браузером, но некоторые дополнительные функции не работают с ASP.NET Core проектами.
 
 ## <a name="refresh-the-web-app-in-several-browsers-at-once"></a>Обновление веб-приложения в нескольких браузерах одновременно
 
@@ -97,11 +86,11 @@ if (env.IsDevelopment())
 
 ![Раскрывающееся меню F5](using-browserlink/_static/debug-target-dropdown-menu.png)
 
-Чтобы открыть сразу несколько браузеров, нажмите кнопку **Обзор с помощью...** в одном раскрывающемся списке. Удерживая нажатой клавишу CTRL, выберите нужные браузеры и нажмите кнопку **Обзор**:
+Чтобы открыть сразу несколько браузеров, нажмите кнопку **Обзор с помощью...** в одном раскрывающемся списке. Удерживая нажатой клавишу <kbd>CTRL</kbd> , выберите нужные браузеры и нажмите кнопку **Обзор**:
 
 ![Одновременное открытие нескольких браузеров](using-browserlink/_static/open-many-browsers-at-once.png)
 
-Ниже приведен снимок экрана, показывающий Visual Studio с открытым представлением индекса и двумя открытыми браузерами:
+На следующем снимке экрана показана Visual Studio с открытым представлением индекса и двумя открытыми браузерами:
 
 ![Пример синхронизации с двумя браузерами](using-browserlink/_static/sync-with-two-browsers-example.png)
 
@@ -117,11 +106,11 @@ if (env.IsDevelopment())
 
 ### <a name="the-browser-link-dashboard"></a>Панель мониторинга связи с браузером
 
-Откройте панель мониторинга связи с браузером в раскрывающемся меню ссылки браузера, чтобы управлять подключением с помощью открытых браузеров:
+Откройте окно **панели мониторинга связи с браузером** в раскрывающемся меню ссылки браузера, чтобы управлять подключением с помощью открытых браузеров:
 
 ![Open-бровсерслинк-Dashboard](using-browserlink/_static/open-browserlink-dashboard.png)
 
-Если ни один браузер не подключен, можно запустить сеанс без отладки, выбрав ссылку *Просмотреть в браузере* :
+Если ни один браузер не подключен, можно запустить сеанс без отладки, выбрав ссылку **Просмотреть в браузере** :
 
 ![browserlink-Dashboard-нет-подключения](using-browserlink/_static/browserlink-dashboard-no-connections.png)
 
@@ -129,7 +118,7 @@ if (env.IsDevelopment())
 
 ![browserlink-Dashboard-два подключения](using-browserlink/_static/browserlink-dashboard-two-connections.png)
 
-При желании можно щелкнуть имя указанного браузера, чтобы обновить этот обозреватель.
+Можно также щелкнуть имя отдельного браузера, чтобы обновить только этот браузер.
 
 ### <a name="enable-or-disable-browser-link"></a>Включение или отключение связи с браузером
 
@@ -139,9 +128,9 @@ if (env.IsDevelopment())
 
 При включении автоматической синхронизации CSS подключенные браузеры автоматически обновляются при внесении любых изменений в файлы CSS.
 
-## <a name="how-it-works"></a>Принцип работы
+## <a name="how-it-works"></a>Как это работает
 
-Ссылка на браузер использует SignalR для создания коммуникационного канала между Visual Studio и браузером. Если связь с браузером включена, Visual Studio выступает в качестве SignalR сервера, к которому могут подключаться несколько клиентов (браузеров). Связь с браузером также регистрирует компонент по промежуточного слоя в конвейере запросов ASP.NET Core. Этот компонент внедряет специальные ссылки `<script>` в каждый запрос страницы с сервера. Чтобы просмотреть ссылки на скрипты, выберите в браузере пункт **Просмотреть источник** и Прокрутите содержимое тега до конца `<body>`:
+Ссылка на браузер использует [SignalR](xref:signalr/introduction) для создания коммуникационного канала между Visual Studio и браузером. Если связь с браузером включена, Visual Studio выступает в качестве SignalR сервера, к которому могут подключаться несколько клиентов (браузеров). Связь с браузером также регистрирует компонент по промежуточного слоя в конвейере запросов ASP.NET Core. Этот компонент внедряет специальные ссылки `<script>` в каждый запрос страницы с сервера. Чтобы просмотреть ссылки на скрипты, выберите в браузере пункт **Просмотреть источник** и Прокрутите содержимое тега до конца `<body>`:
 
 ```html
     <!-- Visual Studio Browser Link -->

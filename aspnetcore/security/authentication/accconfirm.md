@@ -5,12 +5,12 @@ description: Узнайте, как создать приложение ASP.NET 
 ms.author: riande
 ms.date: 03/11/2019
 uid: security/authentication/accconfirm
-ms.openlocfilehash: a4ecc2d91fb72915703dfaa146260f0c1360bded
-ms.sourcegitcommit: c0b72b344dadea835b0e7943c52463f13ab98dd1
+ms.openlocfilehash: 49d3d214fd64edc5b17df2df929ddc3c2af47ede
+ms.sourcegitcommit: 7dfe6cc8408ac6a4549c29ca57b0c67ec4baa8de
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74880771"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75829274"
 ---
 # <a name="account-confirmation-and-password-recovery-in-aspnet-core"></a>Подтверждение учетной записи и восстановление пароля в ASP.NET Core
 
@@ -19,7 +19,7 @@ ms.locfileid: "74880771"
 В этом руководстве показано, как создать приложение ASP.NET Core с подтверждением электронной почты и сбросом пароля. Это руководство **не** является началом статьи. Вы должны быть знакомы с:
 
 * [ASP.NET Core](xref:tutorials/razor-pages/razor-pages-start)
-* [Authentication](xref:security/authentication/identity)
+* [Проверка подлинности](xref:security/authentication/identity)
 * [Entity Framework Core](xref:data/ef-mvc/intro)
 
 <!-- see C:/Dropbox/wrk/Code/SendGridConsole/Program.cs -->
@@ -32,7 +32,7 @@ ms.locfileid: "74880771"
 
 ::: moniker range="> aspnetcore-2.2"
 
-## <a name="prerequisites"></a>Необходимые компоненты
+## <a name="prerequisites"></a>Prerequisites
 
 [Пакет SDK для .NET Core 3.0 или более поздней версии](https://dotnet.microsoft.com/download/dotnet-core/3.0)
 
@@ -155,11 +155,11 @@ dotnet add package SendGrid
 
 [!code-csharp[](accconfirm/sample/WebPWrecover30/StartupAllTokens.cs?name=snippet1&highlight=11-12)]
 
-Встроенные маркеры пользователей удостоверений (см. [AspNetCore/src/Identity/Extensions. Core/src/токеноптионс. CS](https://github.com/aspnet/AspNetCore/blob/v2.2.2/src/Identity/Extensions.Core/src/TokenOptions.cs) ) имеют [время ожидания в один день](https://github.com/aspnet/AspNetCore/blob/v2.2.2/src/Identity/Core/src/DataProtectionTokenProviderOptions.cs).
+Встроенные маркеры пользователей удостоверений (см. [AspNetCore/src/Identity/Extensions. Core/src/токеноптионс. CS](https://github.com/dotnet/AspNetCore/blob/v2.2.2/src/Identity/Extensions.Core/src/TokenOptions.cs) ) имеют [время ожидания в один день](https://github.com/dotnet/AspNetCore/blob/v2.2.2/src/Identity/Core/src/DataProtectionTokenProviderOptions.cs).
 
 ### <a name="change-the-email-token-lifespan"></a>Изменение срока существования маркера электронной почты
 
-Срок существования токена [пользователя](https://github.com/aspnet/AspNetCore/blob/v2.2.2/src/Identity/Extensions.Core/src/TokenOptions.cs) по умолчанию — [один день](https://github.com/aspnet/AspNetCore/blob/v2.2.2/src/Identity/Core/src/DataProtectionTokenProviderOptions.cs). В этом разделе показано, как изменить срок существования маркера электронной почты.
+Срок существования токена [пользователя](https://github.com/dotnet/AspNetCore/blob/v2.2.2/src/Identity/Extensions.Core/src/TokenOptions.cs) по умолчанию — [один день](https://github.com/dotnet/AspNetCore/blob/v2.2.2/src/Identity/Core/src/DataProtectionTokenProviderOptions.cs). В этом разделе показано, как изменить срок существования маркера электронной почты.
 
 Добавьте настраиваемую [датапротектортокенпровидер\<тусер >](/dotnet/api/microsoft.aspnetcore.identity.dataprotectortokenprovider-1) и <xref:Microsoft.AspNetCore.Identity.DataProtectionTokenProviderOptions>:
 
@@ -171,7 +171,7 @@ dotnet add package SendGrid
 
 ### <a name="resend-email-confirmation"></a>Подтверждение повторной отправки электронной почты
 
-Также см. [эту проблему в GitHub](https://github.com/aspnet/AspNetCore/issues/5410).
+Также см. [эту проблему в GitHub](https://github.com/dotnet/AspNetCore/issues/5410).
 
 <a name="debug"></a>
 
@@ -217,7 +217,7 @@ dotnet add package SendGrid
 
 ::: moniker range="> aspnetcore-2.0 < aspnetcore-3.0"
 
-## <a name="prerequisites"></a>Необходимые компоненты
+## <a name="prerequisites"></a>Prerequisites
 
 [Пакет SDK для .NET Core 2,2 или более поздней версии](https://www.microsoft.com/net/download/all)
 
@@ -381,11 +381,11 @@ await _signInManager.SignInAsync(user, isPersistent: false);
 
 [!code-csharp[](accconfirm/sample/WebPWrecover22/StartupAllTokens.cs?name=snippet1&highlight=15-16)]
 
-Встроенные маркеры пользователей удостоверений (см. [AspNetCore/src/Identity/Extensions. Core/src/токеноптионс. CS](https://github.com/aspnet/AspNetCore/blob/v2.2.2/src/Identity/Extensions.Core/src/TokenOptions.cs) ) имеют [время ожидания в один день](https://github.com/aspnet/AspNetCore/blob/v2.2.2/src/Identity/Core/src/DataProtectionTokenProviderOptions.cs).
+Встроенные маркеры пользователей удостоверений (см. [AspNetCore/src/Identity/Extensions. Core/src/токеноптионс. CS](https://github.com/dotnet/AspNetCore/blob/v2.2.2/src/Identity/Extensions.Core/src/TokenOptions.cs) ) имеют [время ожидания в один день](https://github.com/dotnet/AspNetCore/blob/v2.2.2/src/Identity/Core/src/DataProtectionTokenProviderOptions.cs).
 
 ### <a name="change-the-email-token-lifespan"></a>Изменение срока существования маркера электронной почты
 
-Срок существования токена [пользователя](https://github.com/aspnet/AspNetCore/blob/v2.2.2/src/Identity/Extensions.Core/src/TokenOptions.cs) по умолчанию — [один день](https://github.com/aspnet/AspNetCore/blob/v2.2.2/src/Identity/Core/src/DataProtectionTokenProviderOptions.cs). В этом разделе показано, как изменить срок существования маркера электронной почты.
+Срок существования токена [пользователя](https://github.com/dotnet/AspNetCore/blob/v2.2.2/src/Identity/Extensions.Core/src/TokenOptions.cs) по умолчанию — [один день](https://github.com/dotnet/AspNetCore/blob/v2.2.2/src/Identity/Core/src/DataProtectionTokenProviderOptions.cs). В этом разделе показано, как изменить срок существования маркера электронной почты.
 
 Добавьте настраиваемую [датапротектортокенпровидер\<тусер >](/dotnet/api/microsoft.aspnetcore.identity.dataprotectortokenprovider-1) и <xref:Microsoft.AspNetCore.Identity.DataProtectionTokenProviderOptions>:
 
@@ -397,7 +397,7 @@ await _signInManager.SignInAsync(user, isPersistent: false);
 
 ### <a name="resend-email-confirmation"></a>Подтверждение повторной отправки электронной почты
 
-Также см. [эту проблему в GitHub](https://github.com/aspnet/AspNetCore/issues/5410).
+Также см. [эту проблему в GitHub](https://github.com/dotnet/AspNetCore/issues/5410).
 
 <a name="debug"></a>
 

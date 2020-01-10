@@ -6,16 +6,16 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 11/14/2019
 uid: security/authorization/iauthorizationpolicyprovider
-ms.openlocfilehash: fe07a113a29ed3e14679e3f3f2249b0810c17593
-ms.sourcegitcommit: c0b72b344dadea835b0e7943c52463f13ab98dd1
+ms.openlocfilehash: 9f0a0cd5337f7f8d2fc8a4b6902a63b98f6bd702
+ms.sourcegitcommit: 7dfe6cc8408ac6a4549c29ca57b0c67ec4baa8de
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74880696"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75828988"
 ---
 # <a name="custom-authorization-policy-providers-using-iauthorizationpolicyprovider-in-aspnet-core"></a>Пользовательские поставщики политики авторизации с использованием Иаусоризатионполиципровидер в ASP.NET Core 
 
-По [Майк Роусос](https://github.com/mjrousos)
+Автор: [Майк Роусос (Mike Rousos)](https://github.com/mjrousos)
 
 Обычно при использовании [авторизации на основе политики](xref:security/authorization/policies)политики регистрируются путем вызова `AuthorizationOptions.AddPolicy` как части конфигурации службы авторизации. В некоторых сценариях такой способ регистрации всех политик авторизации может быть невозможен (или желательно). В таких случаях можно использовать пользовательский `IAuthorizationPolicyProvider` для управления использованием политик авторизации.
 
@@ -25,7 +25,7 @@ ms.locfileid: "74880696"
 * Использование большого диапазона политик (например, для разных номеров мест или возраста), поэтому не имеет смысла добавлять каждую отдельную политику авторизации с помощью вызова `AuthorizationOptions.AddPolicy`.
 * Создание политик во время выполнения на основе информации во внешнем источнике данных (например, базы данных) или определение требований авторизации динамически с помощью другого механизма.
 
-[Просмотрите или Скачайте пример кода](https://github.com/aspnet/AspNetCore/tree/release/2.2/src/Security/samples/CustomPolicyProvider) из [репозитория AspNetCore GitHub](https://github.com/aspnet/AspNetCore). Скачайте ZIP-файл репозитория ASPNET/AspNetCore. Распакуйте файл. Перейдите в папку проекта *src/Security/Samples/кустомполиципровидер* .
+[Просмотрите или Скачайте пример кода](https://github.com/dotnet/AspNetCore/tree/release/2.2/src/Security/samples/CustomPolicyProvider) из [репозитория AspNetCore GitHub](https://github.com/dotnet/AspNetCore). Скачайте ZIP-файл репозитория DotNet/AspNetCore. Распакуйте файл. Перейдите в папку проекта *src/Security/Samples/кустомполиципровидер* .
 
 ## <a name="customize-policy-retrieval"></a>Настройка получения политики
 
@@ -183,4 +183,4 @@ public Task<AuthorizationPolicy> GetFallbackPolicyAsync() =>
 services.AddSingleton<IAuthorizationPolicyProvider, MinimumAgePolicyProvider>();
 ```
 
-Полный пример настраиваемого `IAuthorizationPolicyProvider` доступен в [репозитории GitHub ASPNET/ауссамплес](https://github.com/aspnet/AspNetCore/tree/release/2.2/src/Security/samples/CustomPolicyProvider).
+Полный пример настраиваемого `IAuthorizationPolicyProvider` доступен в [репозитории GitHub ASPNET/ауссамплес](https://github.com/dotnet/AspNetCore/tree/release/2.2/src/Security/samples/CustomPolicyProvider).

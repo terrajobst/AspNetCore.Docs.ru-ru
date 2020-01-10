@@ -9,12 +9,12 @@ ms.date: 12/28/2019
 no-loc:
 - Blazor
 uid: blazor/components
-ms.openlocfilehash: 87f21d84c17e5bbd1247bb955acee81384b890e7
-ms.sourcegitcommit: 47d453f34b6fd0179119c572cb8be64c5365cbb6
+ms.openlocfilehash: 9e796a23a0b24a9fee314051644703ef12bd7607
+ms.sourcegitcommit: 7dfe6cc8408ac6a4549c29ca57b0c67ec4baa8de
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75597906"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75828208"
 ---
 # <a name="create-and-use-aspnet-core-razor-components"></a>Создание и использование компонентов ASP.NET Core Razor
 
@@ -592,7 +592,7 @@ public IDictionary<string, object> AdditionalAttributes { get; set; }
 | Ход выполнения         | `ProgressEventArgs`  | `onabort`, `onload`, `onloadend`, `onloadstart`, `onprogress`, `ontimeout` |
 | Сенсорные технологии            | `TouchEventArgs`     | `ontouchstart`, `ontouchend`, `ontouchmove`, `ontouchenter`, `ontouchleave`, `ontouchcancel`<br><br>`TouchPoint` представляет одну точку контакта на устройстве с сенсорным вводом. |
 
-Сведения о свойствах и поведении событий, описанных в приведенной выше таблице, см. в разделе [классы EventArgs в источнике ссылки (ветвь ASPNET/AspNetCore Release/3.0)](https://github.com/aspnet/AspNetCore/tree/release/3.0/src/Components/Web/src/Web).
+Сведения о свойствах и поведении событий в приведенной выше таблице см. в разделе [классы EventArgs в исходном источнике (ветвь DotNet/AspNetCore Release/3.0)](https://github.com/dotnet/AspNetCore/tree/release/3.0/src/Components/Web/src/Web).
 
 ### <a name="lambda-expressions"></a>Лямбда-выражения
 

@@ -584,6 +584,8 @@
       uid: grpc/diagnostics
     - name: Замечания по безопасности
       uid: grpc/security
+    - name: Управление версиями gRPC Services
+      uid: grpc/versioning
     - name: Управление ссылками protobuf с помощью .NET gRPC
       uid: grpc/dotnet-grpc
     - name: Миграция служб gRPC с C-Core

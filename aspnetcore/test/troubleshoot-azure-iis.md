@@ -7,12 +7,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 11/20/2019
 uid: test/troubleshoot-azure-iis
-ms.openlocfilehash: 49a0f59fb6930235de10c726f3695f2a5352efb2
-ms.sourcegitcommit: 8157e5a351f49aeef3769f7d38b787b4386aad5f
+ms.openlocfilehash: b0f5d44f153a095a6108a12ee91f4cc46fe0a0de
+ms.sourcegitcommit: 7dfe6cc8408ac6a4549c29ca57b0c67ec4baa8de
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74251962"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75829014"
 ---
 # <a name="troubleshoot-aspnet-core-on-azure-app-service-and-iis"></a>Устранение неполадок ASP.NET Core в службе приложений Azure и службах IIS
 
@@ -63,7 +63,7 @@ The Web server is configured to not list the contents of this directory.
 * Процессу развертывания не удалось переместить все файлы и папки приложения в папку развертывания в системе размещения.
 * В развертывании отсутствует файл *Web. config* , или содержимое файла *Web. config* имеет неправильный формат.
 
-Выполните следующие действия.
+Выполните следующие шаги.
 
 1. Удалите все файлы и папки из папки развертывания в системе размещения.
 1. Повторно разверните содержимое папки *публикации* приложения в системе размещения с помощью обычного метода развертывания, например Visual Studio, PowerShell или ручного развертывания:
@@ -109,7 +109,7 @@ The Web server is configured to not list the contents of this directory.
 
 * Обратитесь в [службу поддержки Майкрософт](https://support.microsoft.com/oas/default.aspx?prid=15832) (выберите **Средства разработчика**, а затем — **ASP.NET Core**).
 * Задайте вопрос на сайте Stack Overflow.
-* Сообщите о проблеме в нашем [репозитории GitHub](https://github.com/aspnet/AspNetCore).
+* Сообщите о проблеме в нашем [репозитории GitHub](https://github.com/dotnet/AspNetCore).
 
 ### <a name="50030-in-process-startup-failure"></a>500.30 In-Process Startup Failure (ошибка внутрипроцессного запуска)
 
@@ -332,7 +332,7 @@ Failed to start application '/LM/W3SVC/6/ROOT/', ErrorCode '0x800700c1'.
 1. Задайте параметру **stdoutLogEnabled** значение `false`.
 1. Нажмите кнопку **Сохранить** для сохранения файла.
 
-Дополнительные сведения см. в разделе <xref:host-and-deploy/aspnet-core-module#log-creation-and-redirection>.
+Для получения дополнительной информации см. <xref:host-and-deploy/aspnet-core-module#log-creation-and-redirection>.
 
 > [!WARNING]
 > Если вы не отключите журнал stdout, это может привести к сбоям приложения или сервера. Ни размер файла журнала, ни количество создаваемых файлов журналов ничем не ограничены. Для устранения неполадок при запуске приложения используйте только журнал stdout.
@@ -347,7 +347,7 @@ Failed to start application '/LM/W3SVC/6/ROOT/', ErrorCode '0x800700c1'.
 
 1. Чтобы включить ведение расширенного журнала диагностики, выполните одно из следующих действий.
    * Следуйте инструкциям по настройке приложения для ведения расширенных журналов диагностики, приведенным в разделе [Расширенные журналы диагностики](xref:host-and-deploy/aspnet-core-module#enhanced-diagnostic-logs). Повторно разверните приложение.
-   * С помощью консоли Kudu добавьте раздел `<handlerSettings>` в файл [web.config](xref:host-and-deploy/aspnet-core-module#enhanced-diagnostic-logs) приложения, как показано в разделе *Расширенные журналы диагностики*.
+   * С помощью консоли Kudu добавьте раздел `<handlerSettings>` в файл *web.config* приложения, как показано в разделе [Расширенные журналы диагностики](xref:host-and-deploy/aspnet-core-module#enhanced-diagnostic-logs).
      1. В области **Средства разработки** откройте колонку **Дополнительные инструменты**. Нажмите кнопку **Перейти&rarr;** . Консоль Kudu открывается в новой вкладке или в окне браузера.
      1. С помощью панели навигации в верхней части страницы откройте **Консоль отладки** и выберите **CMD**.
      1. Откройте папки на пути **веб-сайт** > **wwwroot**. Нажмите кнопку с изображением карандаша и внесите изменения в файл *web.config*. Добавьте раздел `<handlerSettings>`, как описано в разделе [Расширенные журналы диагностики](xref:host-and-deploy/aspnet-core-module#enhanced-diagnostic-logs). Нажмите кнопку **Сохранить**.
@@ -363,7 +363,7 @@ Failed to start application '/LM/W3SVC/6/ROOT/', ErrorCode '0x800700c1'.
 * Удалите раздел `<handlerSettings>` из файла *web.config* локально и повторно разверните приложение.
 * С помощью консоли Kudu внесите изменения в файл *web.config* и удалите раздел `<handlerSettings>`. Сохраните файл.
 
-Дополнительные сведения см. в разделе <xref:host-and-deploy/aspnet-core-module#enhanced-diagnostic-logs>.
+Для получения дополнительной информации см. <xref:host-and-deploy/aspnet-core-module#enhanced-diagnostic-logs>.
 
 > [!WARNING]
 > Ошибка при отключении журнала отладки может привести к сбоям приложения или сервера. Ограничения на размер файла журнала отсутствуют. Для устранения неполадок при запуске приложения используйте только журнал отладки.
@@ -477,7 +477,7 @@ Failed to start application '/LM/W3SVC/6/ROOT/', ErrorCode '0x800700c1'.
 1. Задайте параметру **stdoutLogEnabled** значение `false`.
 1. Сохраните файл.
 
-Дополнительные сведения см. в разделе <xref:host-and-deploy/aspnet-core-module#log-creation-and-redirection>.
+Для получения дополнительной информации см. <xref:host-and-deploy/aspnet-core-module#log-creation-and-redirection>.
 
 > [!WARNING]
 > Если вы не отключите журнал stdout, это может привести к сбоям приложения или сервера. Ни размер файла журнала, ни количество создаваемых файлов журналов ничем не ограничены.
@@ -501,13 +501,13 @@ Failed to start application '/LM/W3SVC/6/ROOT/', ErrorCode '0x800700c1'.
 
 Убедитесь, что указанный для журнала путь существует и удостоверение пула приложений имеет разрешения на запись в это расположение.
 
-Дополнительные сведения см. в разделе <xref:host-and-deploy/aspnet-core-module#enhanced-diagnostic-logs>.
+Для получения дополнительной информации см. <xref:host-and-deploy/aspnet-core-module#enhanced-diagnostic-logs>.
 
 ::: moniker-end
 
 ### <a name="enable-the-developer-exception-page"></a>Включение страницы исключений для разработчика
 
-Можно добавить переменную среды `ASPNETCORE_ENVIRONMENT` [в файл web.config](xref:host-and-deploy/aspnet-core-module#setting-environment-variables), чтобы запустить приложение в среде разработки. Если среда не переопределяется при запуске приложения использованием `UseEnvironment` в конструкторе узла, эта переменная среды позволяет отображать [страницу исключения для разработчика](xref:fundamentals/error-handling) при запуске приложения.
+[Переменную среды `ASPNETCORE_ENVIRONMENT` можно добавить в файл Web. config](xref:host-and-deploy/aspnet-core-module#setting-environment-variables) для запуска приложения в среде разработки. Если среда не переопределяется при запуске приложения использованием `UseEnvironment` в конструкторе узла, эта переменная среды позволяет отображать [страницу исключения для разработчика](xref:fundamentals/error-handling) при запуске приложения.
 
 ::: moniker range=">= aspnetcore-2.2"
 

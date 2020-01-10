@@ -4,14 +4,14 @@ author: rick-anderson
 description: Краткий учебник, в котором с помощью ASP.NET Core создается и запускается простое приложение Hello World.
 ms.author: riande
 ms.custom: mvc
-ms.date: 09/22/2019
+ms.date: 01/07/2020
 uid: getting-started
-ms.openlocfilehash: 116a22bce80257948bfcc02c03a74a4b5568b8b5
-ms.sourcegitcommit: 4649814d1ae32248419da4e8f8242850fd8679a5
+ms.openlocfilehash: c806bd1e79dea9119f1c9e99d0a2b9742a10987a
+ms.sourcegitcommit: ef1720cb733908f36a54825d84c3461c5280bdbe
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/05/2019
-ms.locfileid: "71975693"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75737481"
 ---
 # <a name="tutorial-get-started-with-aspnet-core"></a>Учебник. Начало работы с ASP.NET Core
 
@@ -31,7 +31,7 @@ ms.locfileid: "71975693"
 
 ## <a name="prerequisites"></a>Предварительные требования
 
-[!INCLUDE[](~/includes/3.0-SDK.md)]
+[!INCLUDE[](~/includes/3.1-SDK.md)]
 
 ## <a name="create-a-web-app-project"></a>Создание проекта веб-приложения
 
@@ -70,7 +70,7 @@ dotnet dev-certs https --trust
 
 Приведенная выше команда отображает следующее сообщение.
 
-*Запрошено доверие к сертификату разработки HTTPS. Если сертификат не является доверенным, выполните следующую команду:* `'sudo security add-trusted-cert -d -r trustRoot -k /Library/Keychains/System.keychain <<certificate>>'`.
+*Запрошено доверие к сертификату разработки HTTPS. Если сертификат не является доверенным, выполните следующую команду:* `'sudo security add-trusted-cert -d -r trustRoot -k /Library/Keychains/System.keychain <<certificate>>'`
 
 Эта команда может запросить пароль для установки сертификата в системной цепочке ключей. Введите пароль, если согласны доверять сертификату разработки.
 

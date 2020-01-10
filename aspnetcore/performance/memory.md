@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 12/05/2019
 uid: performance/memory
-ms.openlocfilehash: dfc789d080beec09a4f0eb34c3809b9f2df0d4b5
-ms.sourcegitcommit: 2cb857f0de774df421e35289662ba92cfe56ffd1
+ms.openlocfilehash: 0ae367e954e21e2f696a3b292fa64f1d2dba98ec
+ms.sourcegitcommit: 7dfe6cc8408ac6a4549c29ca57b0c67ec4baa8de
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75357282"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75829027"
 ---
 # <a name="memory-management-and-garbage-collection-gc-in-aspnet-core"></a>Управление памятью и сборка мусора (GC) в ASP.NET Core
 
@@ -209,7 +209,7 @@ public void GetFileProvider()
 
 ![Предыдущая диаграмма](memory/_static/fileprovider.png)
 
-На предыдущей диаграмме показана очевидная проблема с реализацией этого класса, так как она обеспечивает увеличение использования памяти. Это известная проблема, которая отслеживается в [этой проблеме](https://github.com/aspnet/Home/issues/3110).
+На предыдущей диаграмме показана очевидная проблема с реализацией этого класса, так как она обеспечивает увеличение использования памяти. Это известная проблема, которая отслеживается в [этой проблеме](https://github.com/dotnet/aspnetcore/issues/3110).
 
 Такая же утечка может произойти в пользовательском коде одним из следующих:
 
@@ -271,8 +271,9 @@ public int GetLOH1(int size)
 Для максимальной производительности использование большого объекта должно быть минимальным. Если возможно, разделите большие объекты. Например, по промежуточного слоя [кэширования ответа](xref:performance/caching/response) в ASP.NET Core Разделите записи кэша на блоки менее 85 000 байт.
 
 Следующие ссылки показывают ASP.NET Core подходе к хранению объектов под пределами LOH:
-- [Респонсекачинг/Streams/Стреамутилитиес. CS](https://github.com/aspnet/AspNetCore/blob/v3.0.0/src/Middleware/ResponseCaching/src/Streams/StreamUtilities.cs#L16)
-- [Респонсекачинг/Мемориреспонсекаче. CS](https://github.com/aspnet/ResponseCaching/blob/c1cb7576a0b86e32aec990c22df29c780af29ca5/src/Microsoft.AspNetCore.ResponseCaching/Internal/MemoryResponseCache.cs#L55)
+
+* [Респонсекачинг/Streams/Стреамутилитиес. CS](https://github.com/dotnet/AspNetCore/blob/v3.0.0/src/Middleware/ResponseCaching/src/Streams/StreamUtilities.cs#L16)
+* [Респонсекачинг/Мемориреспонсекаче. CS](https://github.com/aspnet/ResponseCaching/blob/c1cb7576a0b86e32aec990c22df29c780af29ca5/src/Microsoft.AspNetCore.ResponseCaching/Internal/MemoryResponseCache.cs#L55)
 
 Дополнительные сведения см. в следующих разделах.
 
