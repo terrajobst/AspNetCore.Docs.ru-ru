@@ -5,14 +5,14 @@ description: Узнайте, как использовать платформу 
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 12/04/2019
+ms.date: 01/08/2020
 uid: fundamentals/logging/index
-ms.openlocfilehash: e1c50c4592b21d56ed813dac43204d63f1bfe46c
-ms.sourcegitcommit: 2cb857f0de774df421e35289662ba92cfe56ffd1
+ms.openlocfilehash: d9ef6694b6c0b0a88b13d60915be6e04ebdffb28
+ms.sourcegitcommit: 7dfe6cc8408ac6a4549c29ca57b0c67ec4baa8de
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75359352"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75829053"
 ---
 # <a name="logging-in-net-core-and-aspnet-core"></a>Ведение журнала в .NET Core и ASP.NET Core
 
@@ -22,7 +22,7 @@ ms.locfileid: "75359352"
 
 ::: moniker range=">= aspnetcore-3.0"
 
-Большинство примеров кода, приведенных в этой статье, взяты из приложений ASP.NET Core. Части этих фрагментов кода, относящиеся к ведению журнала, применимы ко всем приложениям .NET Core, использующим [универсальный узел](xref:fundamentals/host/generic-host). Сведения об использовании универсального узла в приложениях, не выполняющихся в веб-консоли, см. в разделе [Размещенные службы](xref:fundamentals/host/hosted-services).
+Большинство примеров кода, приведенных в этой статье, взяты из приложений ASP.NET Core. Части этих фрагментов кода, относящиеся к ведению журнала, применимы ко всем приложениям .NET Core, использующим [универсальный узел](xref:fundamentals/host/generic-host). Пример использования универсального узла в приложении, не являющемся веб-консолью, см. в файле *Program.cs* [примера приложения "Фоновые задачи"](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/host/hosted-services/samples) (<xref:fundamentals/host/hosted-services>).
 
 Код ведения журнала для приложений без универсального узла отличается тем, как [добавляются поставщики](#add-providers) и [создаются средства ведения журнала](#create-logs). Примеры кода, не связанные с размещением, приведены в соответствующих разделах статьи.
 
