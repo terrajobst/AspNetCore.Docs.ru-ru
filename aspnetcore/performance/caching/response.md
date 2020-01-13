@@ -6,12 +6,12 @@ monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.date: 11/04/2019
 uid: performance/caching/response
-ms.openlocfilehash: 9246305e6979a6a7e006f567ee6bf9569029aef1
-ms.sourcegitcommit: 7dfe6cc8408ac6a4549c29ca57b0c67ec4baa8de
+ms.openlocfilehash: e20c197c7ce3334d4f4f0b917d1fc94174e6c615
+ms.sourcegitcommit: 57b85708f4cded99b8f008a69830cb104cd8e879
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75828312"
+ms.lasthandoff: 01/13/2020
+ms.locfileid: "75914204"
 ---
 # <a name="response-caching-in-aspnet-core"></a>Кэширование ответов в ASP.NET Core
 
@@ -66,7 +66,7 @@ ms.locfileid: "75828312"
 
 ### <a name="distributed-cache"></a>Распределенный кэш
 
-Используйте распределенный кэш для хранения данных в памяти, когда приложение размещается в облаке или ферме серверов. Кэш является общим для серверов, обрабатывающих запросы. Клиент может отправить запрос, который обрабатывается любым сервером в группе, если доступны кэшированные данные для клиента. ASP.NET Core предлагает SQL Server и Redis распределенные кэши.
+Используйте распределенный кэш для хранения данных в памяти, когда приложение размещается в облаке или ферме серверов. Кэш является общим для серверов, обрабатывающих запросы. Клиент может отправить запрос, который обрабатывается любым сервером в группе, если доступны кэшированные данные для клиента. ASP.NET Core работает с распределенными кэшами SQL Server, [Redis](https://www.nuget.org/packages/Microsoft.Extensions.Caching.StackExchangeRedis)и [NCache](https://www.nuget.org/packages/Alachisoft.NCache.OpenSource.SDK/) .
 
 Для получения дополнительной информации см. <xref:performance/caching/distributed>.
 
@@ -78,7 +78,7 @@ ms.locfileid: "75828312"
 
 ### <a name="distributed-cache-tag-helper"></a>Вспомогательная функция тега распределенного кэша
 
-Кэширование содержимого из представления MVC или Razor в распределенном облаке или в сценариях веб-фермы с помощью вспомогательной функции тега распределенного кэша. Вспомогательная функция тега распределенного кэша использует SQL Server или Redis для хранения данных.
+Кэширование содержимого из представления MVC или Razor в распределенном облаке или в сценариях веб-фермы с помощью вспомогательной функции тега распределенного кэша. Вспомогательная функция тега распределенного кэша использует SQL Server, [Redis](https://www.nuget.org/packages/Microsoft.Extensions.Caching.StackExchangeRedis)или [NCache](https://www.nuget.org/packages/Alachisoft.NCache.OpenSource.SDK/) для хранения данных.
 
 Для получения дополнительной информации см. <xref:mvc/views/tag-helpers/builtin-th/distributed-cache-tag-helper>.
 
