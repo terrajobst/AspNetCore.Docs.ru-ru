@@ -9,12 +9,12 @@ ms.date: 12/09/2019
 no-loc:
 - Blazor
 uid: blazor/get-started
-ms.openlocfilehash: e368ecaf931d392de7e52ec2d5a2dfd171c2c86f
-ms.sourcegitcommit: 851b921080fe8d719f54871770ccf6f78052584e
+ms.openlocfilehash: 554f4daff92a0839ee7679287a4618e9b51e0fe5
+ms.sourcegitcommit: 925cdbd94613243f33bc7613a62ea34006219931
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74943771"
+ms.lasthandoff: 01/13/2020
+ms.locfileid: "75921305"
 ---
 # <a name="get-started-with-aspnet-core-opno-locblazor"></a>Начало работы с Blazor ASP.NET Core
 
@@ -30,7 +30,7 @@ ms.locfileid: "74943771"
 
 1. При необходимости установите шаблон [Blazor сборки](xref:blazor/hosting-models#blazor-webassembly) :
    * Установите [пакет SDK для .NET Core 3,1 или более поздней версии (Предварительная версия)](https://dotnet.microsoft.com/download/dotnet-core/3.1).
-   * Выполните следующую команду в командной оболочке. Объект [Microsoft. AspNetCore.Blazor. Пакет шаблонов](https://www.nuget.org/packages/Microsoft.AspNetCore.Blazor.Templates/) имеет предварительную версию, тогда как Blazor сборка доступна в предварительной версии.
+   * Выполните следующую команду в командной оболочке. Объект [Microsoft.AspNetCore.Blazor.Пакет шаблонов](https://www.nuget.org/packages/Microsoft.AspNetCore.Blazor.Templates/) имеет предварительную версию, тогда как Blazor сборка доступна в предварительной версии.
 
    ```dotnetcli
    dotnet new -i Microsoft.AspNetCore.Blazor.Templates::3.1.0-preview4.19579.2
@@ -55,7 +55,7 @@ ms.locfileid: "74943771"
    > [!NOTE]
    > Если вы установили расширение Blazor Visual Studio для предыдущей предварительной версии ASP.NET Core Blazor (Предварительная версия 6 или более ранней версии), вы можете удалить расширение. Установка шаблонов Blazor в командной оболочке теперь достаточно для отображения шаблонов в Visual Studio.
 
-   # <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
+   # <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code.](#tab/visual-studio-code)
 
    1 \. Установите [Visual Studio Code](https://code.visualstudio.com/).
 
@@ -85,7 +85,7 @@ ms.locfileid: "74943771"
 
    # <a name="visual-studio-for-mactabvisual-studio-mac"></a>[Visual Studio для Mac](#tab/visual-studio-mac)
 
-   1 \. Установите [Visual Studio для Mac](https://visualstudio.microsoft.com/vs/mac/). Переключите [канал обновления в режим предварительного просмотра](/visualstudio/mac/install-preview).
+   1 \. Установите [Visual Studio для Mac](https://visualstudio.microsoft.com/vs/mac/).
 
    2 \. Выберите **файл** > **создать решение** или создать **Новый проект**.
 
@@ -135,7 +135,7 @@ ms.locfileid: "74943771"
 
 1. При необходимости установите шаблон [Blazor сборки](xref:blazor/hosting-models#blazor-webassembly) :
    * Установите [пакет SDK для .NET Core 3,1 или более поздней версии (Предварительная версия)](https://dotnet.microsoft.com/download/dotnet-core/3.1).
-   * Выполните следующую команду в командной оболочке. Объект [Microsoft. AspNetCore.Blazor. Пакет шаблонов](https://www.nuget.org/packages/Microsoft.AspNetCore.Blazor.Templates/) имеет предварительную версию, тогда как Blazor сборка доступна в предварительной версии.
+   * Выполните следующую команду в командной оболочке. Объект [Microsoft.AspNetCore.Blazor.Пакет шаблонов](https://www.nuget.org/packages/Microsoft.AspNetCore.Blazor.Templates/) имеет предварительную версию, тогда как Blazor сборка доступна в предварительной версии.
 
    ```dotnetcli
    dotnet new -i Microsoft.AspNetCore.Blazor.Templates::3.1.0-preview4.19579.2
@@ -162,7 +162,7 @@ ms.locfileid: "74943771"
    > [!NOTE]
    > Если вы установили расширение Blazor Visual Studio для предыдущей предварительной версии ASP.NET Core Blazor (Предварительная версия 6 или более ранней версии), вы можете удалить расширение. Установка шаблонов Blazor в командной оболочке теперь достаточно для отображения шаблонов в Visual Studio.
 
-   # <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
+   # <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code.](#tab/visual-studio-code)
 
    1 \. Установите [Visual Studio Code](https://code.visualstudio.com/).
 
@@ -238,7 +238,7 @@ ms.locfileid: "74943771"
 
 Из вкладок боковой панели доступны несколько страниц:
 
-* Корневая
+* Домашняя страница
 * Счетчик
 * Выборка данных
 
@@ -253,7 +253,7 @@ ms.locfileid: "74943771"
 При каждом выборе кнопки « **Click Me** »:
 
 * Запускается событие `onclick`.
-* вызывается метод `IncrementCount` .
+* Вызывается метод `IncrementCount`.
 * `currentCount` увеличивается.
 * Компонент снова готовится к просмотру.
 
