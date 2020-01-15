@@ -6,12 +6,12 @@ ms.author: rybrande
 ms.date: 09/26/2019
 monikerRange: '>= aspnetcore-3.0'
 uid: web-api/Microsoft.dotnet-openapi
-ms.openlocfilehash: f5eae9e871bc8efc30d500769adb845ff244a90c
-ms.sourcegitcommit: e644258c95dd50a82284f107b9bf3becbc43b2b2
+ms.openlocfilehash: 4be2846f0348788102672978a0487e646da434a0
+ms.sourcegitcommit: 2cb857f0de774df421e35289662ba92cfe56ffd1
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71317778"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75354751"
 ---
 # <a name="develop-aspnet-core-apps-using-openapi-tools"></a>Разработка приложений ASP.NET Core с использованием средств OpenAPI
 
@@ -44,7 +44,6 @@ dotnet tool install -g Microsoft.dotnet-openapi
 
 | Short option | Long option | Description | Example |
 |-------|------|-------|---------|
-| -v|--verbose | Show verbose output. |dotnet openapi add project *-v* ../Ref/ProjRef.csproj |
 | -p|--project | The project to operate on. |dotnet openapi add project *--project .\Ref.csproj* ../Ref/ProjRef.csproj |
 
 #### Arguments
@@ -57,16 +56,15 @@ dotnet tool install -g Microsoft.dotnet-openapi
 
 #### <a name="options"></a>Параметры
 
-| Короткий параметр| Длинный параметр| ОПИСАНИЕ | Пример |
+| Короткий параметр| Длинный параметр| Описание | Пример |
 |-------|------|-------|---------|
-| -v|--verbose | Отображение подробных выходных данных. |dotnet openapi add file *-v* .\OpenAPI.json |
 | -p|--updateProject | Проект для выполнения операции. |dotnet openapi add file *--updateProject .\Ref.csproj* .\OpenAPI.json |
 | -c|--code-generator| Генератор кода, применяемый к ссылке. Возможные значения: `NSwagCSharp` и `NSwagTypeScript`. Если атрибут `--code-generator` не задан, по умолчанию для средств будет выбрано `NSwagCSharp`.|dotnet openapi add file .\OpenApi.json --code-generator
 | -h|--help|Отображение справочных сведений.|dotnet openapi add file --help|
 
 #### <a name="arguments"></a>Аргументы
 
-|  Аргумент  | ОПИСАНИЕ | Пример |
+|  Аргумент  | Описание | Пример |
 |-------------|-------------|---------|
 | source-file | Источник, из которого создается ссылка. Должен быть файлом OpenAPI. |dotnet openapi add file *.\OpenAPI.json* |
 
@@ -74,9 +72,8 @@ dotnet tool install -g Microsoft.dotnet-openapi
 
 #### <a name="options"></a>Параметры
 
-| Короткий параметр| Длинный параметр| ОПИСАНИЕ | Пример |
+| Короткий параметр| Длинный параметр| Описание | Пример |
 |-------|------|-------------|---------|
-| -v|--verbose | Отображение подробных выходных данных. |dotnet openapi add url *-v* `https://contoso.com/openapi.json` |
 | -p|--updateProject | Проект для выполнения операции. |dotnet openapi add url *--updateProject .\Ref.csproj* `https://contoso.com/openapi.json` |
 | -o|--output-file | Место размещения локальной копии файла OpenAPI. |dotnet openapi add url `https://contoso.com/openapi.json` *--output-file myclient.json* |
 | -c|--code-generator| Генератор кода, применяемый к ссылке. Возможные значения: `NSwagCSharp` и `NSwagTypeScript`. |dotnet openapi add file .\OpenApi.json --code-generator
@@ -84,7 +81,7 @@ dotnet tool install -g Microsoft.dotnet-openapi
 
 #### <a name="arguments"></a>Аргументы
 
-|  Аргумент  | ОПИСАНИЕ | Пример |
+|  Аргумент  | Описание | Пример |
 |-------------|-------------|---------|
 | source-URL | Источник, из которого создается ссылка. Должен быть URL-адресом. |dotnet openapi add url `https://contoso.com/openapi.json` |
 
@@ -94,15 +91,14 @@ dotnet tool install -g Microsoft.dotnet-openapi
 
 ### <a name="options"></a>Параметры
 
-| Короткий параметр| Длинный параметр| ОПИСАНИЕ| Пример |
+| Короткий параметр| Длинный параметр| Описание| Пример |
 |-------|------|------------|---------|
-| -v|--verbose | Отображение подробных выходных данных. |dotnet openapi remove *-v*|
 | -p|--updateProject | Проект для выполнения операции. |dotnet openapi remove *--updateProject .\Ref.csproj* .\OpenAPI.json |
 | -h|--help|Отображение справочных сведений.|dotnet openapi remove --help|
 
 ### <a name="arguments"></a>Аргументы
 
-|  Аргумент  | ОПИСАНИЕ| Пример |
+|  Аргумент  | Описание| Пример |
 | ------------|------------|---------|
 | source-file | Источник, ссылку на который необходимо удалить. |dotnet openapi remove *.\OpenAPI.json* |
 
@@ -112,14 +108,13 @@ dotnet tool install -g Microsoft.dotnet-openapi
 
 ### <a name="options"></a>Параметры
 
-| Короткий параметр| Длинный параметр| ОПИСАНИЕ | Пример |
+| Короткий параметр| Длинный параметр| Описание | Пример |
 |-------|------|-------------|---------|
-| -v|--verbose | Отображение подробных выходных данных. | dotnet openapi refresh *-v* `https://contoso.com/openapi.json` |
 | -p|--updateProject | Проект для выполнения операции. | dotnet openapi refresh *--updateProject .\Ref.csproj* `https://contoso.com/openapi.json` |
 | -h|--help|Отображение справочных сведений.|dotnet openapi refresh --help|
 
 ### <a name="arguments"></a>Аргументы
 
-|  Аргумент  | ОПИСАНИЕ | Пример |
+|  Аргумент  | Описание | Пример |
 | ------------|-------------|---------|
 | source-URL | URL-адрес, ссылку из которого необходимо обновить. | dotnet openapi refresh `https://contoso.com/openapi.json` |

@@ -5,12 +5,12 @@ description: В этой серии руководств объясняется,
 ms.author: riande
 ms.date: 11/12/2019
 uid: tutorials/razor-pages/razor-pages-start
-ms.openlocfilehash: b651437b698d01310f90c5f14832616c1896e6c0
-ms.sourcegitcommit: 4e3edff24ba6e43a103fee1b126c9826241bb37b
+ms.openlocfilehash: 6e1d58ccd83f7d7c1083dc2bf9ce7476650812a1
+ms.sourcegitcommit: da2fb2d78ce70accdba903ccbfdcfffdd0112123
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74959103"
+ms.lasthandoff: 01/07/2020
+ms.locfileid: "75723031"
 ---
 # <a name="tutorial-get-started-with-razor-pages-in-aspnet-core"></a>Учебник. Начало работы с Razor Pages в ASP.NET Core
 
@@ -56,7 +56,7 @@ ms.locfileid: "74959103"
 
 # <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-* В меню **Файл** Visual Studio откройте **Создать** > **Проект**.
+* В Visual Studio в меню **Файл** щелкните **Создать** > **Проект**.
 * Создайте веб-приложение ASP.NET Core и нажмите кнопку **Далее**.
   ![Новое веб-приложение ASP.NET Core](razor-pages-start/_static/np_2.1.png)
 * Назовите проект **RazorPagesMovie**. Очень важно, чтобы проект имел имя *RazorPagesMovie*, так как пространства имен при копировании и вставке кода должны совпасть.
@@ -92,26 +92,21 @@ ms.locfileid: "74959103"
 
 # <a name="visual-studio-for-mactabvisual-studio-mac"></a>[Visual Studio для Mac](#tab/visual-studio-mac)
 
-* Выберите **Файл** > **Новое решение**.
+* Щелкните **Файл** > **Новое решение**.
 
 ![Новое решение macOS](../first-mvc-app/start-mvc/_static/new_project_vsmac.png)
 
-* Выберите **.NET Core** > **Приложение** > **Веб-приложение** > **Далее**.
+* Щелкните **.NET Core** > **Приложение** > **Веб-приложение** > **Далее**.
 
   ![Диалоговое окно "Новый проект" в macOS](razor-pages-start/_static/webapp.png)
 
-* В диалоговом окне **Настройка нового веб-API ASP.NET Core** установите для параметра **Целевая платформа** значение **.NET Core 3.1**.
+* В диалоговом окне **Настройка нового веб-приложения** установите для параметра **Целевая платформа** значение **.NET Core 3.1**.
 
-  ![Выбор .NET Core 3.0 для macOS](razor-pages-start/_static/targetframework3.png)
+  ![Выбор .NET Core 3.1 для macOS](razor-pages-start/_static/targetframework3.png)
 
 * Присвойте проекту имя **RazorPagesMovie** и нажмите кнопку **Создать**.
 
   ![nameproj](razor-pages-start/_static/RazorPagesMovie.png)
-
-
-## <a name="open-the-project"></a>Открытие проекта
-
-В Visual Studio откройте меню **Файл > Открыть файл** и выберите файл *RazorPagesMovie.csproj*.
 
 <!-- End of VS tabs -->
 
@@ -132,23 +127,23 @@ ms.locfileid: "74959103"
 * Файл *.cshtml*, содержащий HTML-разметку с кодом C# и синтаксисом Razor.
 * Файл *. cshtml.cs*, содержащий код C#, который обрабатывает события страницы.
 
-Имена вспомогательных файлов начинаются с символа подчеркивания. Например, файл *_Layout.cshtml* настраивает элементы пользовательского интерфейса, общие для всех страниц. Этот файл настраивает меню навигации в верхней части страницы и уведомление об авторских правах в нижней части страницы. Дополнительные сведения можно найти по адресу: <xref:mvc/views/layout>.
+Имена вспомогательных файлов начинаются с символа подчеркивания. Например, файл *_Layout.cshtml* настраивает элементы пользовательского интерфейса, общие для всех страниц. Этот файл настраивает меню навигации в верхней части страницы и уведомление об авторских правах в нижней части страницы. Для получения дополнительной информации см. <xref:mvc/views/layout>.
 
 ### <a name="wwwroot-folder"></a>Папка wwwroot
 
-Содержит статические файлы, такие как HTML-файлы, файлы JavaScript и CSS-файлы. Дополнительные сведения можно найти по адресу: <xref:fundamentals/static-files>.
+Содержит статические файлы, такие как HTML-файлы, файлы JavaScript и CSS-файлы. Для получения дополнительной информации см. <xref:fundamentals/static-files>.
 
 ### <a name="appsettingsjson"></a>appSettings.json
 
-Содержит данные конфигурации, например строки подключения. Дополнительные сведения можно найти по адресу: <xref:fundamentals/configuration/index>.
+Содержит данные конфигурации, например строки подключения. Для получения дополнительной информации см. <xref:fundamentals/configuration/index>.
 
 ### <a name="programcs"></a>Program.cs
 
-Содержит точку входа для программы. Дополнительные сведения можно найти по адресу: <xref:fundamentals/host/generic-host>.
+Содержит точку входа для программы. Для получения дополнительной информации см. <xref:fundamentals/host/generic-host>.
 
 ### <a name="startupcs"></a>Startup.cs
 
-содержит код, задающий поведение приложения. Дополнительные сведения можно найти по адресу: <xref:fundamentals/startup>.
+содержит код, задающий поведение приложения. Для получения дополнительной информации см. <xref:fundamentals/startup>.
 
 ## <a name="next-steps"></a>Следующие шаги
 
@@ -202,7 +197,7 @@ ms.locfileid: "74959103"
 
 # <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-* В меню **Файл** Visual Studio откройте **Создать** > **Проект**.
+* В Visual Studio в меню **Файл** щелкните **Создать** > **Проект**.
 
 * Создайте веб-приложение ASP.NET Core и нажмите кнопку **Далее**.
 
@@ -242,19 +237,21 @@ ms.locfileid: "74959103"
 
 # <a name="visual-studio-for-mactabvisual-studio-mac"></a>[Visual Studio для Mac](#tab/visual-studio-mac)
 
-В терминале выполните следующую команду:
+* Щелкните **Файл** > **Новое решение**.
 
-<!-- TODO: update these instruction once mac support 2.2 projects -->
+![Новое решение macOS](../first-mvc-app/start-mvc/_static/new_project_vsmac.png)
 
-```dotnetcli
-dotnet new webapp -o RazorPagesMovie
-```
+* Щелкните **.NET Core** > **Приложение** > **Веб-приложение** > **Далее**.
 
-Указанные выше команды используют [интерфейс командной строки .NET Core](/dotnet/core/tools/dotnet) для создания проекта Razor Pages.
+  ![Диалоговое окно "Новый проект" в macOS](razor-pages-start/_static/webapp.png)
 
-## <a name="open-the-project"></a>Открытие проекта
+* В диалоговом окне **Настройка нового веб-API ASP.NET Core** установите для параметра **Целевая платформа** значение **.NET Core 3.1**.
 
-В Visual Studio откройте меню **Файл > Открыть файл** и выберите файл *RazorPagesMovie.csproj*.
+  ![Выбор .NET Core 3.0 для macOS](razor-pages-start/_static/targetframework3.png)
+
+* Присвойте проекту имя **RazorPagesMovie** и нажмите кнопку **Создать**.
+
+  ![nameproj](razor-pages-start/_static/RazorPagesMovie.png)
 
 <!-- End of VS tabs -->
 
@@ -331,23 +328,23 @@ dotnet new webapp -o RazorPagesMovie
 * Файл *.cshtml*, содержащий HTML-разметку с кодом C# и синтаксисом Razor.
 * Файл *. cshtml.cs*, содержащий код C#, который обрабатывает события страницы.
 
-Имена вспомогательных файлов начинаются с символа подчеркивания. Например, файл *_Layout.cshtml* настраивает элементы пользовательского интерфейса, общие для всех страниц. Этот файл настраивает меню навигации в верхней части страницы и уведомление об авторских правах в нижней части страницы. Дополнительные сведения можно найти по адресу: <xref:mvc/views/layout>.
+Имена вспомогательных файлов начинаются с символа подчеркивания. Например, файл *_Layout.cshtml* настраивает элементы пользовательского интерфейса, общие для всех страниц. Этот файл настраивает меню навигации в верхней части страницы и уведомление об авторских правах в нижней части страницы. Для получения дополнительной информации см. <xref:mvc/views/layout>.
 
 ### <a name="wwwroot-folder"></a>Папка wwwroot
 
-Содержит статические файлы, такие как HTML-файлы, файлы JavaScript и CSS-файлы. Дополнительные сведения можно найти по адресу: <xref:fundamentals/static-files>.
+Содержит статические файлы, такие как HTML-файлы, файлы JavaScript и CSS-файлы. Для получения дополнительной информации см. <xref:fundamentals/static-files>.
 
 ### <a name="appsettingsjson"></a>appSettings.json
 
-Содержит данные конфигурации, например строки подключения. Дополнительные сведения можно найти по адресу: <xref:fundamentals/configuration/index>.
+Содержит данные конфигурации, например строки подключения. Для получения дополнительной информации см. <xref:fundamentals/configuration/index>.
 
 ### <a name="programcs"></a>Program.cs
 
-Содержит точку входа для программы. Дополнительные сведения можно найти по адресу: <xref:fundamentals/host/generic-host>.
+Содержит точку входа для программы. Для получения дополнительной информации см. <xref:fundamentals/host/generic-host>.
 
 ### <a name="startupcs"></a>Startup.cs
 
-Содержит код, который настраивает поведение приложения, например, требуется ли согласие для файлов cookie. Дополнительные сведения можно найти по адресу: <xref:fundamentals/startup>.
+Содержит код, который настраивает поведение приложения, например, требуется ли согласие для файлов cookie. Для получения дополнительной информации см. <xref:fundamentals/startup>.
 
 ## <a name="additional-resources"></a>Дополнительные ресурсы
 

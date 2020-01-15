@@ -8,12 +8,12 @@ ms.date: 11/21/2019
 no-loc:
 - SignalR
 uid: tutorials/signalr-typescript-webpack
-ms.openlocfilehash: a7c99c9e79647995886aec5b3a91584fd2f24451
-ms.sourcegitcommit: 3e503ef510008e77be6dd82ee79213c9f7b97607
+ms.openlocfilehash: 9094a1d391c087a6f58aa9dd66e3697a79f4af86
+ms.sourcegitcommit: ef1720cb733908f36a54825d84c3461c5280bdbe
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74317483"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75737520"
 ---
 # <a name="use-aspnet-core-opno-locsignalr-with-typescript-and-webpack"></a>Использование ASP.NET Core SignalR с TypeScript и webpack
 
@@ -57,7 +57,7 @@ ms.locfileid: "74317483"
 
 Настройте Visual Studio на поиск npm в переменной среды *PATH*. По умолчанию Visual Studio использует версию npm, которая находится в его каталоге установки. В Visual Studio выполните следующие инструкции:
 
-1. Выберите **Сервис** > **Параметры** > **Проекты и решения** > **Управление веб-пакетами** > **Внешние веб-инструменты**.
+1. Щелкните **Сервис** > **Параметры** > **Проекты и решения** > **Управление веб-пакетами** > **Внешние веб-инструменты**.
 1. Выберите элемент *$(PATH)* в списке. Щелкните стрелку вверх, чтобы переместить этот элемент на вторую позицию в списке.
 
     ![Конфигурация Visual Studio](signalr-typescript-webpack/_static/signalr-configure-path-visual-studio.png)
@@ -271,6 +271,8 @@ dotnet new web -o SignalRWebPack
 
 ::: moniker range="< aspnetcore-3.0"
 
+## <a name="prerequisites"></a>Предварительные требования
+
 # <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 * [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/?utm_medium=microsoft&utm_source=docs.microsoft.com&utm_campaign=inline+link&utm_content=download+vs2019) с рабочей нагрузкой **ASP.NET и веб-разработка**
@@ -292,7 +294,7 @@ dotnet new web -o SignalRWebPack
 
 Настройте Visual Studio на поиск npm в переменной среды *PATH*. По умолчанию Visual Studio использует версию npm, которая находится в его каталоге установки. В Visual Studio выполните следующие инструкции:
 
-1. Выберите **Сервис** > **Параметры** > **Проекты и решения** > **Управление веб-пакетами** > **Внешние веб-инструменты**.
+1. Щелкните **Сервис** > **Параметры** > **Проекты и решения** > **Управление веб-пакетами** > **Внешние веб-инструменты**.
 1. Выберите элемент *$(PATH)* в списке. Щелкните стрелку вверх, чтобы переместить этот элемент на вторую позицию в списке.
 
     ![Конфигурация Visual Studio](signalr-typescript-webpack/_static/signalr-configure-path-visual-studio.png)
@@ -433,7 +435,7 @@ dotnet new web -o SignalRWebPack
 1. Выполните следующую команду в корневом элементе проекта:
 
     ```console
-    npm install @microsoft/signalr
+    npm install @aspnet/signalr
     ```
 
     Команда выше устанавливает [клиент TypeScript SignalR](https://www.npmjs.com/package/@microsoft/signalr), который позволяет клиенту отправлять сообщения на сервер.

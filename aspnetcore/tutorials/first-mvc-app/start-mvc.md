@@ -5,12 +5,12 @@ description: Сведения о начале работы с MVC ASP.NET Core.
 ms.author: riande
 ms.date: 10/16/2019
 uid: tutorials/first-mvc-app/start-mvc
-ms.openlocfilehash: 0c8c59a5c59c8a70985dc8463c80f9569a00621f
-ms.sourcegitcommit: 6628cd23793b66e4ce88788db641a5bbf470c3c1
+ms.openlocfilehash: 901257efdfbc7b36249233745175f5ed253da2c7
+ms.sourcegitcommit: da2fb2d78ce70accdba903ccbfdcfffdd0112123
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73761234"
+ms.lasthandoff: 01/07/2020
+ms.locfileid: "75722898"
 ---
 # <a name="get-started-with-aspnet-core-mvc"></a>Начало работы с MVC ASP.NET Core
 
@@ -38,15 +38,15 @@ ms.locfileid: "73761234"
 
 # <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-[!INCLUDE[](~/includes/net-core-prereqs-vs-3.0.md)]
+[!INCLUDE[](~/includes/net-core-prereqs-vs-3.1.md)]
 
 # <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
-[!INCLUDE[](~/includes/net-core-prereqs-vsc-3.0.md)]
+[!INCLUDE[](~/includes/net-core-prereqs-vsc-3.1.md)]
 
 # <a name="visual-studio-for-mactabvisual-studio-mac"></a>[Visual Studio для Mac](#tab/visual-studio-mac)
 
-[!INCLUDE[](~/includes/net-core-prereqs-mac-3.0.md)]
+[!INCLUDE[](~/includes/net-core-prereqs-mac-3.1.md)]
 
 ---
 
@@ -90,19 +90,17 @@ ms.locfileid: "73761234"
 
 # <a name="visual-studio-for-mactabvisual-studio-mac"></a>[Visual Studio для Mac](#tab/visual-studio-mac)
 
-* Выберите **Файл** > **Новое решение**.
+* Щелкните **Файл** > **Новое решение**.
 
   ![Новое решение macOS](./start-mvc/_static/new_project_vsmac.png)
 
-* Выберите **.NET Core** > **Приложение** > **Веб-приложение (модель — представление — контроллер)** > **Далее**.
+* Щелкните **.NET Core** > **Приложение** > **Веб-приложение (Модель — представление — контроллер)** > **Далее**.
 
   ![Диалоговое окно "Новый проект" в macOS](./start-mvc/_static/new_project_mvc_vsmac.png)
 
-* В диалоговом окне **Настройка нового веб-API ASP.NET Core** установите для параметра **Целевая платформа** значение **.NET Core 3.0**.
+* В диалоговом окне **Настройка нового веб-API ASP.NET Core** установите для параметра **Целевая платформа** значение **.NET Core 3.1**.
 
-<!-- 
-  ![macOS .NET Core 2.2 selection](./start-mvc/_static/new_project_22_vsmac.png)
--->
+  ![Выбор .NET Core 3.1 для macOS](./start-mvc/_static/new_project_31_vsmac.png)
 
 * Присвойте проекту имя **MvcMovie** и нажмите кнопку **Создать**.
 
@@ -240,11 +238,11 @@ ms.locfileid: "73761234"
 
 # <a name="visual-studio-for-mactabvisual-studio-mac"></a>[Visual Studio для Mac](#tab/visual-studio-mac)
 
-* Выберите **Файл** > **Новое решение**.
+* Щелкните **Файл** > **Новое решение**.
 
   ![Новое решение macOS](./start-mvc/_static/new_project_vsmac.png)
 
-* Выберите **.NET Core** > **Приложение** > **Веб-приложение (модель — представление — контроллер)** > **Далее**.
+* Щелкните **.NET Core** > **Приложение** > **Веб-приложение (Модель — представление — контроллер)** > **Далее**.
 
   ![Диалоговое окно "Новый проект" в macOS](./start-mvc/_static/new_project_mvc_vsmac.png)
 

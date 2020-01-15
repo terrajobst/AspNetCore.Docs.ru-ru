@@ -9,12 +9,12 @@ no-loc:
 - Blazor
 - SignalR
 uid: index
-ms.openlocfilehash: dc1acd9e31fdc4f626c9dee2f378252c802491b6
-ms.sourcegitcommit: 3fc3020961e1289ee5bf5f3c365ce8304d8ebf19
+ms.openlocfilehash: 3e41b329feb359c006258b8ed558496dfcbbf3b0
+ms.sourcegitcommit: 57b85708f4cded99b8f008a69830cb104cd8e879
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73963645"
+ms.lasthandoff: 01/13/2020
+ms.locfileid: "75914222"
 ---
 # <a name="introduction-to-aspnet-core"></a>Введение в ASP.NET Core
 
@@ -104,7 +104,7 @@ ASP.NET Core версии 3.0 и более поздних будут выпол
 
 ## <a name="migration-from-the-net-framework"></a>Миграция с .NET Framework
 
-Справочное руководство по миграции приложений ASP.NET на ASP.NET Core см. в статье <migration/proper-to-2x/index>.
+Справочное руководство по миграции приложений ASP.NET на ASP.NET Core см. в статье <xref:migration/proper-to-2x/index>.
 
 ## <a name="how-to-download-a-sample"></a>Загрузка примера
 

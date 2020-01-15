@@ -5,12 +5,12 @@ description: Дополнительные сведения о новых воз�
 ms.author: riande
 ms.date: 12/18/2018
 uid: aspnetcore-1.1
-ms.openlocfilehash: 167842a7376a6bb0a88e6f41159730f076bb2bdb
-ms.sourcegitcommit: 335a88c1b6e7f0caa8a3a27db57c56664d676d34
+ms.openlocfilehash: 0b1c4eb467dd13a7654229b3ed76dd14e984e94b
+ms.sourcegitcommit: 2cb857f0de774df421e35289662ba92cfe56ffd1
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 06/12/2019
-ms.locfileid: "67034718"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75355230"
 ---
 # <a name="whats-new-in-aspnet-core-11"></a>Новые возможности ASP.NET Core 1.1
 
@@ -29,7 +29,7 @@ ms.locfileid: "67034718"
 
 ## <a name="choosing-between-versions-10-and-11-of-aspnet-core"></a>Выбор между версиями ASP.NET Core 1.0 и 1.1
 
-ASP.NET Core 1.1 имеет более широкий набор возможностей, чем 1.0. Как правило, мы рекомендуем использовать последнюю версию.
+ASP.NET Core 1.1 имеет более широкий набор возможностей, чем ASP.NET Core 1.0. Как правило, мы рекомендуем использовать последнюю версию.
 
 ## <a name="additional-information"></a>Дополнительные сведения
 

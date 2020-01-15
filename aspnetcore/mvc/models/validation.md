@@ -4,14 +4,14 @@ author: rick-anderson
 description: Сведения о проверке модели в ASP.NET Core MVC и Razor Pages.
 ms.author: riande
 ms.custom: mvc
-ms.date: 12/05/2019
+ms.date: 12/15/2019
 uid: mvc/models/validation
-ms.openlocfilehash: 7a6017141eb1016128c4a135c187479717580bb5
-ms.sourcegitcommit: c0b72b344dadea835b0e7943c52463f13ab98dd1
+ms.openlocfilehash: 042a9933e561de4957f6332bdff3c4f09d2e119b
+ms.sourcegitcommit: 2cb857f0de774df421e35289662ba92cfe56ffd1
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74881043"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75355265"
 ---
 # <a name="model-validation-in-aspnet-core-mvc-and-razor-pages"></a>Проверка модели в ASP.NET Core MVC и Razor Pages
 
@@ -58,19 +58,19 @@ ms.locfileid: "74881043"
 * `[Required]`. проверяет, что поле не равно NULL. Дополнительные сведения о поведении этого атрибута см. в разделе [Атрибут `[Required]`](#required-attribute).
 * `[StringLength]`. проверяет, что значение свойства строки не превышает ограничение по указанной длине.
 * `[Url]`. проверяет, имеет ли свойство формат URL-адреса.
-* `[Remote]`. проверяет входные данные на клиенте путем вызова метода действия на сервере. Дополнительные сведения о поведении этого атрибута см. в разделе `[`Атрибут [Remote]](#remote-attribute).
+* `[Remote]`. проверяет входные данные на клиенте путем вызова метода действия на сервере. Дополнительные сведения о поведении этого атрибута см. в разделе [Атрибут `[Remote]`](#remote-attribute).
 
 Полный перечень атрибутов проверки можно найти в пространстве имен [System.ComponentModel.DataAnnotations](xref:System.ComponentModel.DataAnnotations).
 
 ### <a name="error-messages"></a>Сообщения об ошибках
 
-Атрибуты проверки позволяют указать сообщение об ошибке, которое будет отображаться, если входные данные недопустимы. Например:
+Атрибуты проверки позволяют указать сообщение об ошибке, которое будет отображаться, если входные данные недопустимы. Пример:
 
 ```csharp
 [StringLength(8, ErrorMessage = "Name length can't be more than 8.")]
 ```
 
-На внутреннем уровне атрибуты вызывают `String.Format` с заполнителем для имени поля и иногда дополнительным заполнителями. Например:
+На внутреннем уровне атрибуты вызывают `String.Format` с заполнителем для имени поля и иногда дополнительным заполнителями. Пример:
 
 ```csharp
 [StringLength(8, ErrorMessage = "{0} length must be between {2} and {1}.", MinimumLength = 6)]
@@ -372,7 +372,7 @@ $.get({
 * Закомментируйте ссылку на `_ValidationScriptsPartial` во всех файлах с расширением *CSHTML*.
 * Удалите содержимое файла *Pages\Shared\_ValidationScriptsPartial.cshtml*.
 
-Предыдущий подход не помешает проверке на стороне клиента библиотеки классов Razor для ASP.NET Core Identity. Дополнительные сведения можно найти по адресу: <xref:security/authentication/scaffold-identity>.
+Предыдущий подход не помешает проверке на стороне клиента библиотеки классов Razor для ASP.NET Core Identity. Для получения дополнительной информации см. <xref:security/authentication/scaffold-identity>.
 
 ## <a name="additional-resources"></a>Дополнительные ресурсы
 
@@ -424,17 +424,19 @@ $.get({
 * `[Url]`. проверяет, имеет ли свойство формат URL-адреса.
 * `[Remote]`. проверяет входные данные на клиенте путем вызова метода действия на сервере. Дополнительные сведения о поведении этого атрибута см. в разделе [Атрибут `[Remote]`](#remote-attribute).
 
+При использовании атрибута `[RegularExpression]` с проверкой на стороне клиента регулярное выражение выполняется в JavaScript в клиенте. Это означает, что будет использоваться поведение сопоставления [ECMAScript](/dotnet/standard/base-types/regular-expression-options#ecmascript-matching-behavior). Дополнительные сведения см. в [этой статье об ошибке на GitHub](https://github.com/dotnet/corefx/issues/42487).
+
 Полный перечень атрибутов проверки можно найти в пространстве имен [System.ComponentModel.DataAnnotations](xref:System.ComponentModel.DataAnnotations).
 
 ### <a name="error-messages"></a>Сообщения об ошибках
 
-Атрибуты проверки позволяют указать сообщение об ошибке, которое будет отображаться, если входные данные недопустимы. Например:
+Атрибуты проверки позволяют указать сообщение об ошибке, которое будет отображаться, если входные данные недопустимы. Пример:
 
 ```csharp
 [StringLength(8, ErrorMessage = "Name length can't be more than 8.")]
 ```
 
-На внутреннем уровне атрибуты вызывают `String.Format` с заполнителем для имени поля и иногда дополнительным заполнителями. Например:
+На внутреннем уровне атрибуты вызывают `String.Format` с заполнителем для имени поля и иногда дополнительным заполнителями. Пример:
 
 ```csharp
 [StringLength(8, ErrorMessage = "{0} length must be between {2} and {1}.", MinimumLength = 6)]

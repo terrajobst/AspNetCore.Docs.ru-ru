@@ -5,12 +5,12 @@ description: Добавление модели в простое приложе�
 ms.author: riande
 ms.date: 8/15/2019
 uid: tutorials/first-mvc-app/adding-model
-ms.openlocfilehash: 2fac37e7069fb2a464d4de1da8912197f7adf8a8
-ms.sourcegitcommit: 6628cd23793b66e4ce88788db641a5bbf470c3c1
+ms.openlocfilehash: 5d4251a2577111324aa2cfb715c41e3ecad5a9d1
+ms.sourcegitcommit: da2fb2d78ce70accdba903ccbfdcfffdd0112123
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73761091"
+ms.lasthandoff: 01/07/2020
+ms.locfileid: "75722805"
 ---
 # <a name="add-a-model-to-an-aspnet-core-mvc-app"></a>Добавление модели в приложение MVC ASP.NET Core
 
@@ -32,9 +32,13 @@ ms.locfileid: "73761091"
 
 Щелкните правой кнопкой мыши папку *Models* и выберите пункт **Добавить** > **Класс**. Назовите файл *Movie.cs*.
 
-# <a name="visual-studio-code--visual-studio-for-mactabvisual-studio-codevisual-studio-mac"></a>[Visual Studio Code/Visual Studio для Mac](#tab/visual-studio-code+visual-studio-mac)
+# <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
 Добавьте файл *Movie.cs* в папку *Models*.
+
+# <a name="visual-studio-for-mactabvisual-studio-mac"></a>[Visual Studio для Mac](#tab/visual-studio-mac)
+
+Щелкните правой кнопкой мыши папку *Models* и выберите пункты **Добавить** > **Новый класс** > **Пустой класс**. Назовите файл *Movie.cs*.
 
 ---
 
@@ -67,9 +71,26 @@ Install-Package Microsoft.EntityFrameworkCore.SqlServer
 
 Приведенная выше команда добавляет поставщик EF Core для SQL Server. Пакет поставщика устанавливает пакет EF Core в качестве зависимости. Дополнительные пакеты устанавливаются автоматически на этапе формирования шаблонов далее в этом руководстве.
 
-# <a name="visual-studio-code--visual-studio-for-mactabvisual-studio-codevisual-studio-mac"></a>[Visual Studio Code/Visual Studio для Mac](#tab/visual-studio-code+visual-studio-mac)
+# <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
 [!INCLUDE[](~/includes/add-EF-NuGet-SQLite-CLI.md)]
+
+# <a name="visual-studio-for-mactabvisual-studio-mac"></a>[Visual Studio для Mac](#tab/visual-studio-mac)
+
+В меню **Проект** выберите **Управление пакетами NuGet**.
+
+В поле **Поиск** в правом верхнем углу введите `Microsoft.EntityFrameworkCore.SQLite` и нажмите клавишу **возврата**. Выберите соответствующий пакет NuGet и нажмите кнопку **Добавить пакет**.
+
+![Добавление пакета NuGet Entity Framework Core](~/tutorials/first-mvc-app-mac/adding-model/_static/add-nuget-packages.png)
+
+Откроется диалоговое окно **Выбор проектов**, в котором будет выбран проект `MvcMovie`. Нажмите кнопку **ОК**.
+
+Появится диалоговое окно **Принятие условий лицензионного соглашения**. Просмотрите лицензии по своему усмотрению, а затем нажмите кнопку **Принять**.
+
+Повторите приведенные выше шаги, чтобы установить следующие пакеты NuGet:
+ * `Microsoft.VisualStudio.Web.CodeGeneration.Design`
+ * `Microsoft.EntityFrameworkCore.SqlServer`
+ * `Microsoft.EntityFrameworkCore.Design`
 
 ---
 
@@ -537,7 +558,7 @@ Microsoft.Data.Sqlite.SqliteException.ThrowExceptionForRC(int rc, sqlite3 db)
 
    Команда `Add-Migration` формирует код для создания схемы исходной базы данных.
 
-   Схема базы данных создается на основе модели, указанной в классе `MvcMovieContext`. Аргумент `Initial` — это имя миграции. Можно использовать любое имя, но по соглашению используется имя, которое описывает миграцию. Дополнительные сведения можно найти по адресу: <xref:data/ef-mvc/migrations>.
+   Схема базы данных создается на основе модели, указанной в классе `MvcMovieContext`. Аргумент `Initial` — это имя миграции. Можно использовать любое имя, но по соглашению используется имя, которое описывает миграцию. Для получения дополнительной информации см. <xref:data/ef-mvc/migrations>.
 
    Команда `Update-Database` выполняет метод `Up` в файле *Migrations/{time-stamp}_InitialCreate.cs*, который создает базу данных.
 
@@ -689,6 +710,6 @@ return View(movie);
 
 > [!div class="step-by-step"]
 > [Назад: добавление представления](adding-view.md)
-> [Далее: работа с SQL](working-with-sql.md)
+> [Далее: работа с базой данных](working-with-sql.md)
 
 ::: moniker-end

@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 12/05/2019
 uid: tutorials/first-web-api
-ms.openlocfilehash: 4377d7d1895b80b3c98a5b480c0f42820f11fbb8
-ms.sourcegitcommit: 4e3edff24ba6e43a103fee1b126c9826241bb37b
+ms.openlocfilehash: 3bf930d19684e84365f0ff0255fccd2939fb3f39
+ms.sourcegitcommit: 2cb857f0de774df421e35289662ba92cfe56ffd1
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74959116"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75354922"
 ---
 # <a name="tutorial-create-a-web-api-with-aspnet-core"></a>Учебник. Создание веб-API с помощью ASP.NET Core
 
@@ -36,13 +36,13 @@ ms.locfileid: "74959116"
 
 В этом руководстве создается следующий API-интерфейс:
 
-|API | ОПИСАНИЕ | Текст запроса | Текст ответа |
+|API | Описание | Текст запроса | Текст ответа |
 |--- | ---- | ---- | ---- |
-|GET /api/TodoItems | Получение всех элементов задач | Нет | Массив элементов задач|
-|GET /api/TodoItems/{id} | Получение объекта по идентификатору | Нет | Элемент задачи|
+|GET /api/TodoItems | Получение всех элементов задач | Отсутствуют | Массив элементов задач|
+|GET /api/TodoItems/{id} | Получение объекта по идентификатору | Отсутствуют | Элемент задачи|
 |POST /api/TodoItems | Добавление нового элемента | Элемент задачи | Элемент задачи |
-|PUT /api/TodoItems/{id} | Обновление существующего элемента &nbsp; | Элемент задачи | Нет |
-|DELETE /api/TodoItems/{id} &nbsp; &nbsp; | Удаление элемента &nbsp; &nbsp; | Нет | Нет|
+|PUT /api/TodoItems/{id} | Обновление существующего элемента &nbsp; | Элемент задачи | Отсутствуют |
+|DELETE /api/TodoItems/{id} &nbsp; &nbsp; | Удаление элемента &nbsp; &nbsp; | Отсутствуют | Отсутствуют|
 
 На следующем рисунке показана структура приложения.
 
@@ -68,7 +68,7 @@ ms.locfileid: "74959116"
 
 # <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-* В меню **Файл** выберите **Создать** > **Проект**.
+* В меню **Файл** выберите пункт **Создать** > **Проект**.
 * Выберите шаблон **Веб-приложение ASP.NET Core** и нажмите **Далее**.
 * Назовите проект *TodoApi* и нажмите **Создать**.
 * В диалоговом окне **Создание веб-приложения ASP.NET Core** убедитесь в том, что выбраны платформы **.NET Core** и **ASP.NET Core 3.1**. Выберите шаблон **API** и нажмите кнопку **Создать**.
@@ -98,15 +98,15 @@ ms.locfileid: "74959116"
 
 # <a name="visual-studio-for-mactabvisual-studio-mac"></a>[Visual Studio для Mac](#tab/visual-studio-mac)
 
-* Выберите **Файл** > **Новое решение**.
+* Щелкните **Файл** > **Новое решение**.
 
   ![Новое решение macOS](first-web-api-mac/_static/sln.png)
 
-* Выберите **.NET Core** > **Приложение** > **API** > **Далее**.
+* Щелкните **.NET Core** > **Приложение** > **API** > **Далее**.
 
   ![Диалоговое окно "Новый проект" в macOS](first-web-api-mac/_static/1.png)
   
-* В диалоговом окне **Настройка нового веб-API ASP.NET Core** в качестве **Целевой платформы** выберите **.NET Core 3.1*.
+* В диалоговом окне **Настройка нового веб-API ASP.NET Core** в качестве **Целевой платформы** выберите * *.NET Core 3.1*.
 
 * Введите *TodoApi* в поле **Имя проекта** и выберите команду **Создать**.
 
@@ -204,7 +204,7 @@ ms.locfileid: "74959116"
 
   ![Новая папка](first-web-api-mac/_static/folder.png)
 
-* Правой кнопкой мыши щелкните папку *Models* и выберите **Добавить** > **Новый файл** > **Общие** > **Пустой класс**.
+* Щелкните папку *Models* правой кнопкой мыши и выберите **Добавить** > **Создать файл** > **Общие** > **Пустой класс**.
 
 * Назовите класс *TodoItem* и нажмите **Создать**.
 
@@ -267,7 +267,7 @@ ms.locfileid: "74959116"
 # <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 * Щелкните папку *Controllers* правой кнопкой мыши.
-* Выберите **Добавить** > **Создать шаблонный элемент**.
+* Щелкните **Добавить** > **Создать шаблонный элемент**.
 * Выберите **Контроллер API с действиями, использующий Entity Framework**, а затем выберите **Добавить**.
 * В диалоговом окне **Контроллер API с действиями, использующий Entity Framework** сделайте следующее:
 
@@ -322,7 +322,7 @@ dotnet aspnet-codegenerator controller -name TodoItemsController -async -api -m 
 * Запустите веб-приложение.
 * Запустите Postman.
 * Отключение параметра **Проверка SSL-сертификата**
-* В меню **Файл** > **Параметры** (вкладка **Общие**) отключите параметр **Проверка SSL-сертификата**.
+* В меню **Файл** > **Параметры** (вкладка **Общие**), отключите параметр **Проверка SSL-сертификата**.
     > [!WARNING]
     > После тестирования контроллера снова включите проверку SSL-сертификата.
 
@@ -334,7 +334,7 @@ dotnet aspnet-codegenerator controller -name TodoItemsController -async -api -m 
 * Установите HTTP-метод `POST`.
 * Откройте вкладку **Тело**.
 * Установите переключатель **без обработки**.
-* Задайте тип **JSON (приложение/json)**.
+* Задайте тип **JSON (приложение/json)** .
 * В теле запроса введите код JSON для элемента списка дел:
 
     ```json
@@ -366,7 +366,7 @@ dotnet aspnet-codegenerator controller -name TodoItemsController -async -api -m 
 * `GET /api/TodoItems`
 * `GET /api/TodoItems/{id}`
 
-Протестируйте приложение, вызвав эти две конечные точки в браузере или в Postman. Например:
+Протестируйте приложение, вызвав эти две конечные точки в браузере или в Postman. Пример:
 
 * [https://localhost:5001/api/TodoItems](https://localhost:5001/api/TodoItems)
 * [https://localhost:5001/api/TodoItems/1](https://localhost:5001/api/TodoItems/1)
@@ -404,7 +404,7 @@ dotnet aspnet-codegenerator controller -name TodoItemsController -async -api -m 
 * Замените `[controller]` именем контроллера (по соглашению это имя класса контроллера без суффикса "Controller"). В этом примере класс контроллера имеет имя **TodoItems**, а сам контроллер, соответственно, — "TodoItems". В ASP.NET Core [маршрутизация](xref:mvc/controllers/routing) реализуется без учета регистра символов.
 * Если атрибут `[HttpGet]` имеет шаблон маршрута (например, `[HttpGet("products")]`), добавьте его к пути. В этом примере шаблон не используется. Дополнительные сведения см. в разделе [Маршрутизация атрибутов с помощью атрибутов Http[Verb]](xref:mvc/controllers/routing#attribute-routing-with-httpverb-attributes).
 
-В следующем методе `GetTodoItem` `"{id}"` — это переменная-заполнитель для уникального идентификатора элемента задачи. При вызове `GetTodoItem` параметру метода `id` присваивается значение `"{id}"` в URL-адресе.
+В следующем методе `GetTodoItem``"{id}"` — это переменная-заполнитель для уникального идентификатора элемента задачи. При вызове `GetTodoItem` параметру метода `id` присваивается значение `"{id}"` в URL-адресе.
 
 [!code-csharp[](first-web-api/samples/3.0/TodoApi/Controllers/TodoItemsController.cs?name=snippet_GetByID&highlight=1-2)]
 
@@ -451,8 +451,6 @@ dotnet aspnet-codegenerator controller -name TodoItemsController -async -api -m 
 
 [!code-csharp[](first-web-api/samples/3.0/TodoApi/Controllers/TodoItemsController.cs?name=snippet_Delete)]
 
-`DeleteTodoItem`Ответ[ — 204 (нет содержимого)](https://www.w3.org/Protocols/rfc2616/rfc2616-sec9.html).
-
 ### <a name="test-the-deletetodoitem-method"></a>Тестирование метода DeleteTodoItem
 
 Удалите элемент списка дел с помощью Postman:
@@ -463,7 +461,7 @@ dotnet aspnet-codegenerator controller -name TodoItemsController -async -api -m 
 
 ## <a name="call-the-web-api-with-javascript"></a>Вызов веб-API с помощью JavaScript
 
-Пошаговые инструкции см. в [руководстве Вызовите веб-API ASP.NET Core с помощью JavaScript](xref:tutorials/web-api-javascript).
+См. руководство по [: Вызовите веб-API ASP.NET Core с помощью JavaScript](xref:tutorials/web-api-javascript).
 
 ::: moniker-end
 
@@ -487,13 +485,13 @@ dotnet aspnet-codegenerator controller -name TodoItemsController -async -api -m 
 
 В этом руководстве создается следующий API-интерфейс:
 
-|API | ОПИСАНИЕ | Текст запроса | Текст ответа |
+|API | Описание | Текст запроса | Текст ответа |
 |--- | ---- | ---- | ---- |
-|GET /api/TodoItems | Получение всех элементов задач | Нет | Массив элементов задач|
-|GET /api/TodoItems/{id} | Получение объекта по идентификатору | Нет | Элемент задачи|
+|GET /api/TodoItems | Получение всех элементов задач | Отсутствуют | Массив элементов задач|
+|GET /api/TodoItems/{id} | Получение объекта по идентификатору | Отсутствуют | Элемент задачи|
 |POST /api/TodoItems | Добавление нового элемента | Элемент задачи | Элемент задачи |
-|PUT /api/TodoItems/{id} | Обновление существующего элемента &nbsp; | Элемент задачи | Нет |
-|DELETE /api/TodoItems/{id} &nbsp; &nbsp; | Удаление элемента &nbsp; &nbsp; | Нет | Нет|
+|PUT /api/TodoItems/{id} | Обновление существующего элемента &nbsp; | Элемент задачи | Отсутствуют |
+|DELETE /api/TodoItems/{id} &nbsp; &nbsp; | Удаление элемента &nbsp; &nbsp; | Отсутствуют | Отсутствуют|
 
 На следующем рисунке показана структура приложения.
 
@@ -519,7 +517,7 @@ dotnet aspnet-codegenerator controller -name TodoItemsController -async -api -m 
 
 # <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-* В меню **Файл** выберите **Создать** > **Проект**.
+* В меню **Файл** выберите пункт **Создать** > **Проект**.
 * Выберите шаблон **Веб-приложение ASP.NET Core** и нажмите **Далее**.
 * Назовите проект *TodoApi* и нажмите **Создать**.
 * В диалоговом окне **Создание веб-приложения ASP.NET Core** убедитесь в том, что выбраны платформы **.NET Core** и **ASP.NET Core 2.2**. Выберите шаблон **API** и нажмите кнопку **Создать**. **Не** выбирайте **Включение поддержки Docker**.
@@ -543,15 +541,15 @@ dotnet aspnet-codegenerator controller -name TodoItemsController -async -api -m 
 
 # <a name="visual-studio-for-mactabvisual-studio-mac"></a>[Visual Studio для Mac](#tab/visual-studio-mac)
 
-* Выберите **Файл** > **Новое решение**.
+* Щелкните **Файл** > **Новое решение**.
 
   ![Новое решение macOS](first-web-api-mac/_static/sln.png)
 
-* Выберите **.NET Core** > **Приложение** > **API** > **Далее**.
+* Щелкните **.NET Core** > **Приложение** > **API** > **Далее**.
 
   ![Диалоговое окно "Новый проект" в macOS](first-web-api-mac/_static/1.png)
   
-* В диалоговом окне **Настройка нового веб-API ASP.NET Core** оставьте установленное по умолчанию значение для параметра **Целевая платформа**, то есть **.NET Core 2.2*.
+* В диалоговом окне **Настройка нового веб-API ASP.NET Core** оставьте установленное по умолчанию значение для параметра **Целевая платформа**, то есть * *.NET Core 2.2*.
 
 * Введите *TodoApi* в поле **Имя проекта** и выберите команду **Создать**.
 
@@ -609,7 +607,7 @@ dotnet aspnet-codegenerator controller -name TodoItemsController -async -api -m 
 
   ![Новая папка](first-web-api-mac/_static/folder.png)
 
-* Правой кнопкой мыши щелкните папку *Models* и выберите **Добавить** > **Новый файл** > **Общие** > **Пустой класс**.
+* Щелкните папку *Models* правой кнопкой мыши и выберите **Добавить** > **Создать файл** > **Общие** > **Пустой класс**.
 
 * Назовите класс *TodoItem* и нажмите **Создать**.
 
@@ -660,7 +658,7 @@ dotnet aspnet-codegenerator controller -name TodoItemsController -async -api -m 
 # <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 * Щелкните папку *Controllers* правой кнопкой мыши.
-* Выберите **Добавить** > **Новый элемент**.
+* Щелкните **Добавить** > **Создать элемент**.
 * В диалоговом окне **Добавить новый элемент** выберите шаблон **Класс контроллера API**.
 * Присвойте классу имя *TodoController* и выберите **Добавить**.
 
@@ -696,7 +694,7 @@ dotnet aspnet-codegenerator controller -name TodoItemsController -async -api -m 
 
 Если приложение все еще выполняется, оно останавливается. Затем оно запускается снова с последними изменениями.
 
-Протестируйте приложение, вызвав эти две конечные точки в браузере. Например:
+Протестируйте приложение, вызвав эти две конечные точки в браузере. Пример:
 
 * `https://localhost:<port>/api/todo`
 * `https://localhost:<port>/api/todo/1`
@@ -724,7 +722,7 @@ dotnet aspnet-codegenerator controller -name TodoItemsController -async -api -m 
 * Замените `[controller]` именем контроллера (по соглашению это имя класса контроллера без суффикса "Controller"). В этом примере класс контроллера носит имя **Todo**, а сам контроллер, соответственно, — "todo". В ASP.NET Core [маршрутизация](xref:mvc/controllers/routing) реализуется без учета регистра символов.
 * Если атрибут `[HttpGet]` имеет шаблон маршрута (например, `[HttpGet("products")]`), добавьте его к пути. В этом примере шаблон не используется. Дополнительные сведения см. в разделе [Маршрутизация атрибутов с помощью атрибутов Http[Verb]](xref:mvc/controllers/routing#attribute-routing-with-httpverb-attributes).
 
-В следующем методе `GetTodoItem` `"{id}"` — это переменная-заполнитель для уникального идентификатора элемента задачи. При вызове `GetTodoItem` параметру метода `id` присваивается значение `"{id}"` в URL-адресе.
+В следующем методе `GetTodoItem``"{id}"` — это переменная-заполнитель для уникального идентификатора элемента задачи. При вызове `GetTodoItem` параметру метода `id` присваивается значение `"{id}"` в URL-адресе.
 
 [!code-csharp[](first-web-api/samples/2.2/TodoApi/Controllers/TodoController.cs?name=snippet_GetByID&highlight=1-2)]
 
@@ -748,11 +746,11 @@ dotnet aspnet-codegenerator controller -name TodoItemsController -async -api -m 
 
 # <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-* В меню **Файл** > **Параметры** (вкладка **Общие**) отключите параметр **Проверка SSL-сертификата**.
+* В меню **Файл** > **Параметры** (вкладка **Общие**), отключите параметр **Проверка SSL-сертификата**.
 
 # <a name="visual-studio-code--visual-studio-for-mactabvisual-studio-codevisual-studio-mac"></a>[Visual Studio Code/Visual Studio для Mac](#tab/visual-studio-code+visual-studio-mac)
 
-* В меню **Postman**  >  **Настройки** (вкладка **Общие**) отключите параметр **Проверка SSL-сертификата**. Кроме того, можно выбрать значок гаечного ключа и выбрать **Параметры**, а затем отключить проверку SSL-сертификата.
+* В меню **Postman** > **Настройки** (вкладка **Общие**) отключите параметр **Проверка SSL-сертификата**. Кроме того, можно выбрать значок гаечного ключа и выбрать **Параметры**, а затем отключить проверку SSL-сертификата.
 
 ---
   
@@ -789,7 +787,7 @@ dotnet aspnet-codegenerator controller -name TodoItemsController -async -api -m 
 * В Postman укажите метод HTTP `POST`.
 * Откройте вкладку **Тело**.
 * Установите переключатель **без обработки**.
-* Задайте тип **JSON (приложение/json)**.
+* Задайте тип **JSON (приложение/json)** .
 * В теле запроса введите код JSON для элемента списка дел:
 
     ```json
