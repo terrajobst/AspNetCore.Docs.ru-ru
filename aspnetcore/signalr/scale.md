@@ -9,12 +9,12 @@ ms.date: 11/28/2018
 no-loc:
 - SignalR
 uid: signalr/scale
-ms.openlocfilehash: 6506430202870ba9de2f8eb6f33d79c7c1fbbbd4
-ms.sourcegitcommit: e7d4fe6727d423f905faaeaa312f6c25ef844047
+ms.openlocfilehash: 8e7b7596fcfe2d6b7150fe1ab09a7ab1dc4a2e47
+ms.sourcegitcommit: 2388c2a7334ce66b6be3ffbab06dd7923df18f60
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75608071"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75952126"
 ---
 # <a name="aspnet-core-opno-locsignalr-hosting-and-scaling"></a>ASP.NET Core SignalR размещения и масштабирования
 
@@ -86,7 +86,7 @@ An attempt was made to access a socket in a way forbidden by its access permissi
 
 ![Redis Объединительная часть, сообщение, отправленное с одного сервера на все клиенты](scale/_static/redis-backplane.png)
 
-Объединительная плата Redis — это рекомендуемый подход к горизонтальному масштабированию для приложений, размещенных в собственной инфраструктуре. Служба SignalR Azure не является практичной возможностью для использования в рабочей среде с локальными приложениями из-за задержки подключения между центром обработки данных и центром обработки данных Azure.
+Объединительная плата Redis — это рекомендуемый подход к горизонтальному масштабированию для приложений, размещенных в собственной инфраструктуре. Если между центром обработки данных и центром обработки данных Azure возникает значительная задержка подключения, служба SignalR Azure может оказаться непрактичной для локальных приложений с низкой задержкой или требованиями высокой пропускной способности.
 
 Преимущества службы SignalR Azure, упомянутые ранее, являются недостатками для объединительной платы Redis:
 
