@@ -5,12 +5,12 @@ description: Дополнительные сведения о новых воз�
 ms.author: riande
 ms.date: 12/18/2018
 uid: aspnetcore-1.1
-ms.openlocfilehash: 0b1c4eb467dd13a7654229b3ed76dd14e984e94b
-ms.sourcegitcommit: 2cb857f0de774df421e35289662ba92cfe56ffd1
+ms.openlocfilehash: df9fd6bda00ac5f5516f40507001463fd7d0b92e
+ms.sourcegitcommit: 7dfe6cc8408ac6a4549c29ca57b0c67ec4baa8de
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75355230"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75828507"
 ---
 # <a name="whats-new-in-aspnet-core-11"></a>Новые возможности ASP.NET Core 1.1
 
@@ -33,5 +33,5 @@ ASP.NET Core 1.1 имеет более широкий набор возможн
 
 ## <a name="additional-information"></a>Дополнительные сведения
 
-- [Заметки о выпуске ASP.NET Core 1.1.0](https://github.com/aspnet/Home/releases/tag/1.1.0)
+- [Заметки о выпуске ASP.NET Core 1.1.0](https://github.com/dotnet/aspnetcore/releases/tag/1.1.0)
 - Чтобы отслеживать ход работы и планы команды разработчиков ASP.NET Core, смотрите выпуски [ASP.NET Community Standup](https://live.asp.net/).

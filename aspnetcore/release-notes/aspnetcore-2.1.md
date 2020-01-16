@@ -8,12 +8,12 @@ ms.date: 12/05/2019
 no-loc:
 - SignalR
 uid: aspnetcore-2.1
-ms.openlocfilehash: d969b4caab44e3e50b3a0202b25864921d6d01dc
-ms.sourcegitcommit: c0b72b344dadea835b0e7943c52463f13ab98dd1
+ms.openlocfilehash: 57fe6c4e32ad666987c782fac75ddb19e3d3b5c7
+ms.sourcegitcommit: 7dfe6cc8408ac6a4549c29ca57b0c67ec4baa8de
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74880858"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75829144"
 ---
 # <a name="whats-new-in-aspnet-core-21"></a>Новые возможности ASP.NET Core 2.1
 
@@ -83,7 +83,7 @@ ASP.NET Core предоставляет API-интерфейсы и шаблон
 
 Добавлен новый пакет, который оптимизирует создание и выполнение тестов. Пакет [Microsoft.AspNetCore.Mvc.Testing](https://www.nuget.org/packages/Microsoft.AspNetCore.Mvc.Testing/) выполняет следующие задачи:
 
-* Копирует файл зависимостей (*\*.deps*) из протестированного приложения в папку *bin* тестового проекта.
+* Копирует файл зависимостей ( *\*.deps*) из протестированного приложения в папку *bin* тестового проекта.
 * Задает корневую папку содержимого в корневой папке проекта тестируемого приложения, чтобы можно было найти статические файлы и страницы или представления при выполнении тестов.
 * Предоставляет класс [WebApplicationFactory](/dotnet/api/microsoft.aspnetcore.mvc.testing.webapplicationfactory-1) для оптимизации начальной загрузки тестируемого приложения на [TestServer](/dotnet/api/microsoft.aspnetcore.testhost.testserver).
 
@@ -147,7 +147,7 @@ ASP.NET Core 2.1 содержит новую службу `IHttpClientFactory`, 
 
 Шаблон Angular основан на Angular CLI, а шаблоны React основаны на create-react-app.
 
-Дополнительные сведения можно найти в разделе 
+Дополнительные сведения можно найти в разделе
 
 * <xref:spa/angular>
 * <xref:spa/react>
@@ -169,7 +169,7 @@ Razor Pages теперь поддерживает [области](xref:mvc/cont
 
 Метод <xref:Microsoft.Extensions.DependencyInjection.MvcCoreMvcBuilderExtensions.SetCompatibilityVersion*> позволяет приложению принимать или отклонять потенциально критические изменения в поведении, появившиеся в ASP.NET Core MVC 2.1 или более поздних версий.
 
-Дополнительные сведения можно найти по адресу: <xref:mvc/compatibility-version>.
+Для получения дополнительной информации см. <xref:mvc/compatibility-version>.
 
 ## <a name="migrate-from-20-to-21"></a>Миграция с 2.0 на 2.1
 
@@ -177,4 +177,4 @@ Razor Pages теперь поддерживает [области](xref:mvc/cont
 
 ## <a name="additional-information"></a>Дополнительные сведения
 
-Полный список изменений см. в статье [Заметки о выпуске ASP.NET Core 2.1](https://github.com/aspnet/Home/releases/tag/2.1.0).
+Полный список изменений см. в статье [Заметки о выпуске ASP.NET Core 2.1](https://github.com/dotnet/aspnetcore/releases/tag/2.1.0).

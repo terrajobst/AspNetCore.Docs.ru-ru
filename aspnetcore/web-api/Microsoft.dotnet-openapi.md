@@ -6,12 +6,12 @@ ms.author: rybrande
 ms.date: 09/26/2019
 monikerRange: '>= aspnetcore-3.0'
 uid: web-api/Microsoft.dotnet-openapi
-ms.openlocfilehash: 4be2846f0348788102672978a0487e646da434a0
-ms.sourcegitcommit: 2cb857f0de774df421e35289662ba92cfe56ffd1
+ms.openlocfilehash: 079e36511b63c186ffa7726bdb1e3c3bcbda9d34
+ms.sourcegitcommit: 7dfe6cc8408ac6a4549c29ca57b0c67ec4baa8de
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75354751"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75829261"
 ---
 # <a name="develop-aspnet-core-apps-using-openapi-tools"></a>Разработка приложений ASP.NET Core с использованием средств OpenAPI
 
@@ -37,7 +37,7 @@ dotnet tool install -g Microsoft.dotnet-openapi
 
 Для вызова созданного клиентского кода приложению требуется предыдущая ссылка.
 
-<!-- TODO: Restore after https://github.com/aspnet/AspNetCore/issues/12738
+<!-- TODO: Restore after https://github.com/dotnet/AspNetCore/issues/12738
 ### Add Project
 
 #### Options

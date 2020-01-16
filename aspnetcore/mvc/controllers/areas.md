@@ -5,12 +5,12 @@ description: Сведения о том, что области — это во�
 ms.author: riande
 ms.date: 12/05/2019
 uid: mvc/controllers/areas
-ms.openlocfilehash: 7e02a21361e0e2148b29a3ae0f1ba25e68239e13
-ms.sourcegitcommit: c0b72b344dadea835b0e7943c52463f13ab98dd1
+ms.openlocfilehash: 1066f4ce104e507abe63302fd3523a3a7a8dfde9
+ms.sourcegitcommit: 7dfe6cc8408ac6a4549c29ca57b0c67ec4baa8de
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74881119"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75828247"
 ---
 # <a name="areas-in-aspnet-core"></a>Области в ASP.NET Core
 
@@ -96,7 +96,7 @@ ms.locfileid: "74881119"
 
 [!code-csharp[](areas/samples/MVCareas/StartupMapAreaRoute.cs?name=snippet&highlight=18-27)]
 
-При использовании `MapAreaRoute` с ASP.NET Core 2.2 см. [эту задачу GitHub](https://github.com/aspnet/AspNetCore/issues/7772).
+При использовании `MapAreaRoute` с ASP.NET Core 2.2 см. [эту задачу GitHub](https://github.com/dotnet/AspNetCore/issues/7772).
 
 Дополнительные сведения см. в разделе [Маршрутизация области](xref:mvc/controllers/routing#areas).
 
@@ -120,7 +120,7 @@ ms.locfileid: "74881119"
 
 ### <a name="_viewimportscshtml"></a>_ViewImports.cshtml
 
-В стандартном расположении файл */Views/_ViewImports.cshtml* не применяется к областям. Чтобы использовать общие объекты [Tag Helpers](xref:mvc/views/tag-helpers/intro), `@using` или `@inject` в области, необходимо, чтобы соответствующий файл *_ViewImports.cshtml* [применялся к представлениям области](xref:mvc/views/layout#importing-shared-directives). Чтобы поведение во всех представлениях было одинаковым, переместите файл */Views/_ViewImports.cshtml* в корневую папку приложения.
+В стандартном расположении файл */Views/_ViewImports.cshtml* не применяется к областям. Чтобы использовать общие объекты [Tag Helpers](xref:mvc/views/tag-helpers/intro), `@using` или `@inject` в области, необходимо, чтобы соответствующий файл *_ViewImports.cshtml*[применялся к представлениям области](xref:mvc/views/layout#importing-shared-directives). Чтобы поведение во всех представлениях было одинаковым, переместите файл */Views/_ViewImports.cshtml* в корневую папку приложения.
 
 <a name="rename"></a>
 

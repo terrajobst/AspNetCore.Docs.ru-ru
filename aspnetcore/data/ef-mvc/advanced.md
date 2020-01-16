@@ -7,12 +7,12 @@ ms.custom: mvc
 ms.date: 03/27/2019
 ms.topic: tutorial
 uid: data/ef-mvc/advanced
-ms.openlocfilehash: d4a2aad6d93cc9a53c730323620de59fead6d5ab
-ms.sourcegitcommit: 7d3c6565dda6241eb13f9a8e1e1fd89b1cfe4d18
+ms.openlocfilehash: abea9b189861954533b24cb73650af41952d1a86
+ms.sourcegitcommit: 57b85708f4cded99b8f008a69830cb104cd8e879
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72259590"
+ms.lasthandoff: 01/13/2020
+ms.locfileid: "75914117"
 ---
 # <a name="tutorial-learn-about-advanced-scenarios---aspnet-mvc-with-ef-core"></a>Учебник. Сведения о сложных сценариях для ASP.NET MVC с EF Core
 
@@ -173,7 +173,7 @@ ORDER BY [t].[ID]
 
 * ChangeTracker.Entries
 
-Если вы отслеживаете большое число сущностей и многократно вызываете один из этих методов в цикле, вы сможете добиться заметного повышения производительности, отключив автоматическое обнаружение изменений с помощью свойства `ChangeTracker.AutoDetectChangesEnabled`. Например:
+Если вы отслеживаете большое число сущностей и многократно вызываете один из этих методов в цикле, вы сможете добиться заметного повышения производительности, отключив автоматическое обнаружение изменений с помощью свойства `ChangeTracker.AutoDetectChangesEnabled`. Пример:
 
 ```csharp
 _context.ChangeTracker.AutoDetectChangesEnabled = false;
@@ -181,7 +181,7 @@ _context.ChangeTracker.AutoDetectChangesEnabled = false;
 
 ## <a name="ef-core-source-code-and-development-plans"></a>Исходный код EF Core и планы разработки
 
-Источник Entity Framework Core расположен на странице [https://github.com/aspnet/EntityFrameworkCore](https://github.com/aspnet/EntityFrameworkCore). Репозиторий EF Core содержит ночные сборки, результаты отслеживания проблем, спецификации функций, протоколы совещаний по проекту, а также [стратегию дальнейшей разработки](https://github.com/aspnet/EntityFrameworkCore/wiki/Roadmap). Вы также можете сообщать об ошибках, находить сведения об обнаруженных проблемах и участвовать в работе сообщества.
+Источник Entity Framework Core расположен на странице [https://github.com/dotnet/efcore](https://github.com/dotnet/efcore). Репозиторий EF Core содержит ночные сборки, результаты отслеживания проблем, спецификации функций, протоколы совещаний по проекту, а также [стратегию дальнейшей разработки](https://github.com/dotnet/efcore/wiki/Roadmap). Вы также можете сообщать об ошибках, находить сведения об обнаруженных проблемах и участвовать в работе сообщества.
 
 Несмотря на открытый исходный код, платформа Entity Framework Core полностью поддерживается как продукт корпорации Майкрософт. Команда Microsoft Entity Framework контролирует предложения участников, принимает их и тестирует любые изменения кода, чтобы обеспечить максимальное качество каждого выпуска.
 
