@@ -5,16 +5,16 @@ description: Сведения о ASP.NET Core SignalR клиента .NET
 monikerRange: '>= aspnetcore-2.1'
 ms.author: bradyg
 ms.custom: mvc
-ms.date: 11/12/2019
+ms.date: 01/14/2020
 no-loc:
 - SignalR
 uid: signalr/dotnet-client
-ms.openlocfilehash: 28e8fcf808406cd0251ba94e2ef97ab04841fcd0
-ms.sourcegitcommit: 3fc3020961e1289ee5bf5f3c365ce8304d8ebf19
+ms.openlocfilehash: 39d9eccdb1e0457b177e75e6f94f3dd185b0093d
+ms.sourcegitcommit: cbd30479f42cbb3385000ef834d9c7d021fd218d
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73963971"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76146320"
 ---
 # <a name="aspnet-core-opno-locsignalr-net-client"></a>ASP.NET Core SignalR клиента .NET
 
@@ -26,7 +26,7 @@ ms.locfileid: "73963971"
 
 ## <a name="install-the-opno-locsignalr-net-client-package"></a>Установка клиентского пакета SignalR .NET
 
-Объект [Microsoft. AspNetCore.SignalR. ](https://www.nuget.org/packages/Microsoft.AspNetCore.SignalR.Client)Для подключения клиентов .NET к SignalRным концентраторам требуется клиентский пакет.
+Объект [Microsoft.AspNetCore.SignalR.](https://www.nuget.org/packages/Microsoft.AspNetCore.SignalR.Client)Для подключения клиентов .NET к SignalRным концентраторам требуется клиентский пакет.
 
 # <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
 
@@ -179,7 +179,7 @@ public class RandomRetryPolicy : IRetryPolicy
         // wait between 0 and 10 seconds before the next reconnect attempt.
         if (retryContext.ElapsedTime < TimeSpan.FromSeconds(60))
         {
-            return TimeSpan.FromSeconds(_random.Next() * 10);
+            return TimeSpan.FromSeconds(_random.NextDouble() * 10);
         }
         else
         {
