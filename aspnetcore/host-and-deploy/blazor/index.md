@@ -2,19 +2,20 @@
 title: Размещение и развертывание ASP.NET Core Blazor
 author: guardrex
 description: Узнайте, как размещать и развертывать приложения Blazor.
-monikerRange: '>= aspnetcore-3.0'
+monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 11/23/2019
+ms.date: 12/18/2019
 no-loc:
 - Blazor
+- SignalR
 uid: host-and-deploy/blazor/index
-ms.openlocfilehash: 5c37c3d9f424f4c4b814e1955880623fd95179f2
-ms.sourcegitcommit: 918d7000b48a2892750264b852bad9e96a1165a7
+ms.openlocfilehash: 238e7fc8f8d64c7847dc8847fb66e22442a3c8e0
+ms.sourcegitcommit: 9ee99300a48c810ca6fd4f7700cd95c3ccb85972
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74550375"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76160266"
 ---
 # <a name="host-and-deploy-aspnet-core-opno-locblazor"></a>Размещение и развертывание ASP.NET Core Blazor
 
@@ -61,7 +62,7 @@ dotnet publish -c Release
 
 Если для `CoolApp` не указана дополнительная конфигурация, дочернее приложение в этом сценарии не имеет сведений о своем местоположении на сервере. Например, приложение не может создавать правильные относительные URL-адреса к своим ресурсам, если ему неизвестно, что оно находится по относительному пути URL `/CoolApp/`.
 
-Чтобы указать конфигурацию для базового пути к приложению Blazor `https://www.contoso.com/CoolApp/`, в качестве значения атрибута `href` тега `<base>` задается относительный корневой путь в файле *Pages/_Host.cshtml* (сервер Blazor) или в файле *wwwroot/index.html* (Blazor WebAssembly):
+Чтобы указать конфигурацию для базового пути к приложению Blazor`https://www.contoso.com/CoolApp/`, в качестве значения атрибута `href` тега `<base>` задается относительный корневой путь в файле *Pages/_Host.cshtml* (сервер Blazor) или в файле *wwwroot/index.html* (Blazor WebAssembly):
 
 ```html
 <base href="/CoolApp/">

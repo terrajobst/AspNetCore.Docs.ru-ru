@@ -5,14 +5,14 @@ description: Узнайте, как сформировать удостовер�
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 10/24/2018
+ms.date: 01/15/2020
 uid: security/authentication/scaffold-identity
-ms.openlocfilehash: 2432d346d9678157848a38fa01d9057cdd7503ff
-ms.sourcegitcommit: 2cb857f0de774df421e35289662ba92cfe56ffd1
+ms.openlocfilehash: a0e9603cbca8c7f5771b0acf1a60839dffc89d4e
+ms.sourcegitcommit: cbd30479f42cbb3385000ef834d9c7d021fd218d
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75356259"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76146489"
 ---
 # <a name="scaffold-identity-in-aspnet-core-projects"></a>Удостоверение шаблона в ASP.NET Core проектах
 
@@ -256,6 +256,10 @@ dotnet aspnet-codegenerator identity -dc RPauth.Data.ApplicationDbContext --file
 [!code-csharp[](scaffold-identity/consoleAddUser/Data/SeedData.cs?name=snippet)]
 
 Подобный подход можно выполнить для рабочих сценариев.
+
+## <a name="prevent-publish-of-static-identity-assets"></a>Запретить публикацию ресурсов статических удостоверений
+
+Сведения о запрете публикации ресурсов статических удостоверений в веб-корне см. в разделе <xref:security/authentication/identity#prevent-publish-of-static-identity-assets>.
 
 ## <a name="additional-resources"></a>Дополнительные ресурсы
 

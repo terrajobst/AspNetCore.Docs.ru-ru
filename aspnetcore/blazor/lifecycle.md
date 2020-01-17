@@ -2,19 +2,20 @@
 title: Жизненный цикл Blazor ASP.NET Core
 author: guardrex
 description: Узнайте, как использовать методы жизненного цикла компонента Razor в ASP.NET Core Blazor приложениях.
-monikerRange: '>= aspnetcore-3.0'
+monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 12/05/2019
+ms.date: 12/18/2019
 no-loc:
 - Blazor
+- SignalR
 uid: blazor/lifecycle
-ms.openlocfilehash: e600e7c7a6a8c646a655520bd5c127f2cd662753
-ms.sourcegitcommit: 851b921080fe8d719f54871770ccf6f78052584e
+ms.openlocfilehash: df5bb676df59b538179a69978040521c4ee78ed1
+ms.sourcegitcommit: cbd30479f42cbb3385000ef834d9c7d021fd218d
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74944035"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76146372"
 ---
 # <a name="aspnet-core-opno-locblazor-lifecycle"></a>Жизненный цикл Blazor ASP.NET Core
 
@@ -26,26 +27,23 @@ ms.locfileid: "74944035"
 
 ### <a name="component-initialization-methods"></a>Методы инициализации компонентов
 
-<xref:Microsoft.AspNetCore.Components.ComponentBase.OnInitializedAsync*> и <xref:Microsoft.AspNetCore.Components.ComponentBase.OnInitialized*> выполнить код, который инициализирует компонент. Эти методы вызываются только один раз при первом создании экземпляра компонента.
+<xref:Microsoft.AspNetCore.Components.ComponentBase.OnInitializedAsync*> и <xref:Microsoft.AspNetCore.Components.ComponentBase.OnInitialized*> вызываются, когда компонент инициализируется после получения начальных параметров от родительского компонента. Используйте `OnInitializedAsync`, когда компонент выполняет асинхронную операцию и должен обновляться после завершения операции. Эти методы вызываются только один раз при первом создании экземпляра компонента.
 
-Для выполнения асинхронной операции используйте `OnInitializedAsync` и ключевое слово `await` в операции:
-
-```csharp
-protected override async Task OnInitializedAsync()
-{
-    await ...
-}
-```
-
-> [!NOTE]
-> Асинхронная работа во время инициализации компонента должна происходить во время события жизненного цикла `OnInitializedAsync`.
-
-Для синхронной операции используйте `OnInitialized`:
+Для синхронной операции Переопределите `OnInitialized`:
 
 ```csharp
 protected override void OnInitialized()
 {
     ...
+}
+```
+
+Чтобы выполнить асинхронную операцию, переопределите `OnInitializedAsync` и используйте в операции ключевое слово `await`:
+
+```csharp
+protected override async Task OnInitializedAsync()
+{
+    await ...
 }
 ```
 
@@ -70,7 +68,12 @@ public override async Task SetParametersAsync(ParameterView parameters)
 
 ### <a name="after-parameters-are-set"></a>После установки параметров
 
-<xref:Microsoft.AspNetCore.Components.ComponentBase.OnParametersSetAsync*> и <xref:Microsoft.AspNetCore.Components.ComponentBase.OnParametersSet*> вызываются, когда компонент получил параметры от родительского элемента, и значения присваиваются свойствам. Эти методы выполняются после инициализации компонента и каждый раз, когда задаются новые значения параметров:
+вызываются <xref:Microsoft.AspNetCore.Components.ComponentBase.OnParametersSetAsync*> и <xref:Microsoft.AspNetCore.Components.ComponentBase.OnParametersSet*>:
+
+* Когда компонент инициализирован и получил первый набор параметров от родительского компонента.
+* Когда родительский компонент повторно готовится к просмотру и предоставляет:
+  * Только известные примитивные неизменяемые типы, которые изменились по крайней мере с одним параметром.
+  * Любые параметры со сложной типизацией. Платформа не может определить, изменяются ли значения сложного типа, поэтому он рассматривает набор параметров как измененный.
 
 ```csharp
 protected override async Task OnParametersSetAsync()
@@ -160,7 +163,7 @@ protected override bool ShouldRender()
 
 Если компонент реализует <xref:System.IDisposable>, [метод Dispose](/dotnet/standard/garbage-collection/implementing-dispose) вызывается при удалении компонента из пользовательского интерфейса. Следующий компонент использует `@implements IDisposable` и метод `Dispose`:
 
-```csharp
+```razor
 @using System
 @implements IDisposable
 
