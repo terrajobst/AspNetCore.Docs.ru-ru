@@ -5,14 +5,14 @@ description: Сведения о настройке модуля ASP.NET Core д
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 11/07/2019
+ms.date: 01/13/2020
 uid: host-and-deploy/aspnet-core-module
-ms.openlocfilehash: c9bbd36b8a55b837f6d78abf99215c5496895a39
-ms.sourcegitcommit: 67116718dc33a7a01696d41af38590fdbb58e014
+ms.openlocfilehash: 75f4a158253dd3276ed37011d9aa73d82cad5b79
+ms.sourcegitcommit: 2388c2a7334ce66b6be3ffbab06dd7923df18f60
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73799411"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75952020"
 ---
 # <a name="aspnet-core-module"></a>Модуль ASP.NET Core
 
@@ -173,7 +173,7 @@ ms.locfileid: "73799411"
 
 ### <a name="attributes-of-the-aspnetcore-element"></a>Атрибуты элемента aspNetCore
 
-| Атрибут | ОПИСАНИЕ | Значение по умолчанию |
+| Атрибут | Описание | Значение по умолчанию |
 | --------- | ----------- | :-----: |
 | `arguments` | <p>Необязательный строковый атрибут.</p><p>Аргументы для исполняемого файла, указанного в атрибуте **processPath**.</p> | |
 | `disableStartUpErrorPage` | <p>Дополнительный логический атрибут.</p><p>Если значение равно true, страница **502.5 — ошибка процесса** подавляется и страница в файле *web.config* с кодом состояния 502 имеет более высокий приоритет.</p> | `false` |
@@ -588,7 +588,7 @@ dotnet-hosting-{VERSION}.exe OPT_NO_SHARED_CONFIG_CHECK=1
 
 ### <a name="attributes-of-the-aspnetcore-element"></a>Атрибуты элемента aspNetCore
 
-| Атрибут | ОПИСАНИЕ | Значение по умолчанию |
+| Атрибут | Описание | Значение по умолчанию |
 | --------- | ----------- | :-----: |
 | `arguments` | <p>Необязательный строковый атрибут.</p><p>Аргументы для исполняемого файла, указанного в атрибуте **processPath**.</p> | |
 | `disableStartUpErrorPage` | <p>Дополнительный логический атрибут.</p><p>Если значение равно true, страница **502.5 — ошибка процесса** подавляется и страница в файле *web.config* с кодом состояния 502 имеет более высокий приоритет.</p> | `false` |
@@ -895,7 +895,7 @@ dotnet-hosting-{VERSION}.exe OPT_NO_SHARED_CONFIG_CHECK=1
 
 ### <a name="attributes-of-the-aspnetcore-element"></a>Атрибуты элемента aspNetCore
 
-| Атрибут | ОПИСАНИЕ | Значение по умолчанию |
+| Атрибут | Описание | Значение по умолчанию |
 | --------- | ----------- | :-----: |
 | `arguments` | <p>Необязательный строковый атрибут.</p><p>Аргументы для исполняемого файла, указанного в атрибуте **processPath**.</p>| |
 | `disableStartUpErrorPage` | <p>Дополнительный логический атрибут.</p><p>Если значение равно true, страница **502.5 — ошибка процесса** подавляется и страница в файле *web.config* с кодом состояния 502 имеет более высокий приоритет.</p> | `false` |
@@ -1046,5 +1046,6 @@ dotnet-hosting-{VERSION}.exe OPT_NO_SHARED_CONFIG_CHECK=1
 ## <a name="additional-resources"></a>Дополнительные ресурсы
 
 * <xref:host-and-deploy/iis/index>
-* [Репозиторий GitHub для модуля ASP.NET Core (справочные материалы)](https://github.com/aspnet/AspNetCoreModule)
+* <xref:host-and-deploy/azure-apps/index>
+* [Справочные материалы по модулю ASP.NET Core (главная ветвь)](https://github.com/dotnet/aspnetcore/tree/master/src/Servers/IIS/AspNetCoreModuleV2). Используйте раскрывающийся список **Branch** (Ветвь), чтобы выбрать конкретный выпуск (например, `release/3.1`).
 * <xref:host-and-deploy/iis/modules>

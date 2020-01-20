@@ -2,20 +2,20 @@
 title: Проверка подлинности и авторизация в ASP.NET Core Blazor
 author: guardrex
 description: Сведения о проверке подлинности и авторизации в Blazor.
-monikerRange: '>= aspnetcore-3.0'
+monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 12/05/2019
+ms.date: 12/18/2019
 no-loc:
 - Blazor
 - SignalR
 uid: security/blazor/index
-ms.openlocfilehash: d3860a5e7f6ae5a3193d657b77fc593c9bd39131
-ms.sourcegitcommit: 851b921080fe8d719f54871770ccf6f78052584e
+ms.openlocfilehash: 2ce2cff8d3ab77f21181070b6f1e48c50561036c
+ms.sourcegitcommit: 9ee99300a48c810ca6fd4f7700cd95c3ccb85972
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74944204"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76160292"
 ---
 # <a name="aspnet-core-opno-locblazor-authentication-and-authorization"></a>Проверка подлинности и авторизация в ASP.NET Core Blazor
 
@@ -51,7 +51,7 @@ Blazor использует существующие механизмы пров
 Откроется диалоговое окно с тем же набором механизмов аутентификации, которые доступны для других проектов ASP.NET Core.
 
 * **Без аутентификации**.
-* **Учетные записи отдельных пользователей** &ndash; которые можно хранить следующим образом:
+* **Учетные записи отдельных пользователей**, которые можно хранить следующим образом:
   * в приложении с помощью системы [удостоверений](xref:security/authentication/identity) ASP.NET Core;
   * в [Azure AD B2C](xref:security/authentication/azure-ad-b2c);
 * **рабочие или учебные учетные записи**.
@@ -316,7 +316,7 @@ services.AddScoped<AuthenticationStateProvider, CustomAuthStateProvider>();
 </AuthorizeView>
 ```
 
-Дополнительные сведения можно найти по адресу: <xref:security/authorization/roles>.
+Для получения дополнительной информации см. <xref:security/authorization/roles>.
 
 Для авторизации на основе политик примените параметр `Policy`:
 
@@ -326,7 +326,7 @@ services.AddScoped<AuthenticationStateProvider, CustomAuthStateProvider>();
 </AuthorizeView>
 ```
 
-Авторизация на основе утверждений считается особым случаем авторизации на основе политик. Например, вы можете определить политику, которая требует наличия определенного утверждения у пользователя. Дополнительные сведения можно найти по адресу: <xref:security/authorization/policies>.
+Авторизация на основе утверждений считается особым случаем авторизации на основе политик. Например, вы можете определить политику, которая требует наличия определенного утверждения у пользователя. Для получения дополнительной информации см. <xref:security/authorization/policies>.
 
 Эти API могут использоваться в серверных приложениях Blazor и приложениях Blazor WebAssembly.
 

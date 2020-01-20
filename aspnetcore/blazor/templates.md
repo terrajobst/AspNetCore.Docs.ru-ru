@@ -2,20 +2,20 @@
 title: Шаблоны Blazor ASP.NET Core
 author: guardrex
 description: Сведения о ASP.NET Core Blazor шаблонах приложений и структуре проекта Blazor.
-monikerRange: '>= aspnetcore-3.0'
+monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 11/25/2019
+ms.date: 12/18/2019
 no-loc:
 - Blazor
 - SignalR
 uid: blazor/templates
-ms.openlocfilehash: bc0ea4a777e8684a7b0925377b8a19a45c2b531c
-ms.sourcegitcommit: c0b72b344dadea835b0e7943c52463f13ab98dd1
+ms.openlocfilehash: 2a95b986450471b474d93ead252255f2bd9d4918
+ms.sourcegitcommit: 9ee99300a48c810ca6fd4f7700cd95c3ccb85972
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74879659"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76160123"
 ---
 # <a name="aspnet-core-opno-locblazor-templates"></a>Шаблоны Blazor ASP.NET Core
 
@@ -43,20 +43,20 @@ ms.locfileid: "74879659"
   * `ConfigureServices` &ndash; настраивает службы [внедрения зависимостей (DI)](xref:fundamentals/dependency-injection) приложения. В Blazor серверных приложений службы добавляются путем вызова <xref:Microsoft.Extensions.DependencyInjection.ComponentServiceCollectionExtensions.AddServerSideBlazor*>, а `WeatherForecastService` добавляется в контейнер службы для использования в примере `FetchData` компонента.
   * `Configure` &ndash; настраивает конвейер обработки запросов приложения:
     * Blazor &ndash; добавляет компонент `App` (указанный в качестве элемента `app` DOM в метод `AddComponent`), который является корневым компонентом приложения.
-    * Сервер Blazor
+    * Blazor Server
       * <xref:Microsoft.AspNetCore.Builder.ComponentEndpointRouteBuilderExtensions.MapBlazorHub*> вызывается для настройки конечной точки для соединения в режиме реального времени с браузером. Соединение создается с помощью [SignalR](xref:signalr/introduction), которое является платформой для добавления веб-функций в режиме реального времени к приложениям.
       * [Мапфаллбакктопаже ("/_Host")](xref:Microsoft.AspNetCore.Builder.RazorPagesEndpointRouteBuilderExtensions.MapFallbackToPage*) вызывается для настройки корневой страницы приложения (*pages/_Host. cshtml*) и включения навигации.
 
 * *wwwroot/index.HTML* (Blazor веб-сборка) &ndash; корневая страница приложения, реализованная как HTML-страница:
   * При первом запросе любой страницы приложения Эта страница подготавливается к просмотру и возвращается в ответе.
   * На странице указывается, где отображается корневой компонент `App`. Компонент `App` (*app. Razor*) указан в качестве `app` элемента DOM для метода `AddComponent` в `Startup.Configure`.
-  * Загружается файл *_framework/Блазор.вебассембли.ЖС* JavaScript, который:
+  * Загружается файл `_framework/blazor.webassembly.js` JavaScript, который:
     * Скачивает среду выполнения .NET, приложение и зависимости приложения.
     * Инициализирует среду выполнения для запуска приложения.
 
 * *Pages/_Host. cshtml* (Blazor Server) &ndash; корневую страницу приложения, реализованного в виде страницы Razor:
   * При первом запросе любой страницы приложения Эта страница подготавливается к просмотру и возвращается в ответе.
-  * Загружается файл *_framework/Блазор.сервер.ЖС* JavaScript, который настраивает подключение SignalR в режиме реального времени между браузером и сервером.
+  * Загружается файл `_framework/blazor.server.js` JavaScript, который настраивает подключение SignalR в режиме реального времени между браузером и сервером.
   * На странице узла указывается, где отображается корневой компонент `App` (*app. Razor*).
 
 * *App. razor* &ndash; корневой компонент приложения, который настраивает маршрутизацию на стороне клиента с помощью компонента <xref:Microsoft.AspNetCore.Components.Routing.Router>. Компонент `Router` перехватывает навигацию браузера и отображает страницу, соответствующую запрошенному адресу.

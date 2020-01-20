@@ -7,12 +7,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 11/04/2019
 uid: mvc/models/file-uploads
-ms.openlocfilehash: 20e58660185a3055e06e92d9136e80e2394a470d
-ms.sourcegitcommit: c0b72b344dadea835b0e7943c52463f13ab98dd1
+ms.openlocfilehash: b5433576ff3e997e6d80201236be2d8463a52d07
+ms.sourcegitcommit: 7dfe6cc8408ac6a4549c29ca57b0c67ec4baa8de
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74881060"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75829235"
 ---
 # <a name="upload-files-in-aspnet-core"></a>Передача файлов в ASP.NET Core
 
@@ -83,7 +83,7 @@ ms.locfileid: "74881060"
   * Обычно службы обеспечивают улучшенную масштабируемость и устойчивость по сравнению с локальными решениями, которые обычно подвержены единым точкам отказа.
   * Затраты на использование служб обычно ниже в сценариях с крупномасштабной инфраструктурой хранения.
 
-  Дополнительные сведения см. в разделе [Краткое руководство. Использование .NET для создания большого двоичного объекта в хранилище объектов](/azure/storage/blobs/storage-quickstart-blobs-dotnet). В этом разделе показан метод <xref:Microsoft.Azure.Storage.File.CloudFile.UploadFromFileAsync*>, но метод <xref:Microsoft.Azure.Storage.File.CloudFile.UploadFromStreamAsync*> можно использовать для сохранения <xref:System.IO.FileStream> в хранилище BLOB-объектов при работе с <xref:System.IO.Stream>.
+  Дополнительные сведения см. в разделе [Краткое руководство. Использование библиотеки хранилища BLOB-объектов Azure версии 12 для .NET](/azure/storage/blobs/storage-quickstart-blobs-dotnet). В этом разделе показан метод <xref:Microsoft.Azure.Storage.File.CloudFile.UploadFromFileAsync*>, но метод <xref:Microsoft.Azure.Storage.File.CloudFile.UploadFromStreamAsync*> можно использовать для сохранения <xref:System.IO.FileStream> в хранилище BLOB-объектов при работе с <xref:System.IO.Stream>.
 
 ## <a name="file-upload-scenarios"></a>Сценарии передачи файлов
 
@@ -183,7 +183,7 @@ ms.locfileid: "74881060"
 Для выполнения отправки формы в JavaScript для клиентов, которые [не поддерживают Fetch API](https://caniuse.com/#feat=fetch), используйте один из следующих подходов:
 
 * Используйте функцию Fetch Polyfill (например, [window.fetch polyfill (github/fetch)](https://github.com/github/fetch)).
-* Используйте ключевое слово `XMLHttpRequest`. Например:
+* Используйте ключевое слово `XMLHttpRequest`. Пример:
 
   ```javascript
   <script>
@@ -456,7 +456,7 @@ public async Task<IActionResult> OnPostUploadAsync()
 
 ### <a name="file-extension-validation"></a>Проверка расширения файла
 
-Расширение переданного файла должно проверяться в соответствии со списком разрешенных расширений. Например:
+Расширение переданного файла должно проверяться в соответствии со списком разрешенных расширений. Пример:
 
 ```csharp
 private string[] permittedExtensions = { ".txt", ".pdf" };
@@ -716,7 +716,7 @@ public class BufferedSingleFileUploadPhysicalModel : PageModel
 
 Этот параметр применим только к службам IIS. При размещении в Kestrel такой проблемы возникать не должно. Дополнительные сведения см. в статье [Request Limits \<requestLimits>](/iis/configuration/system.webServer/security/requestFiltering/requestLimits/) (Ограничения запроса <requestLimits>).
 
-Ограничения в модуле ASP.NET Core или наличие модуля фильтрации запросов IIS могут ограничить передачу до 2 или 4 ГБ. Дополнительные сведения см. в [этой ветке форума](https://github.com/aspnet/AspNetCore/issues/2711).
+Ограничения в модуле ASP.NET Core или наличие модуля фильтрации запросов IIS могут ограничить передачу до 2 или 4 ГБ. Дополнительные сведения см. в статье форума (dotnet/AspNetCore #2711) [Unable to upload file greater than 2GB in size](https://github.com/dotnet/AspNetCore/issues/2711) (Не удалось отправить файл размером более 2 ГБ).
 
 ## <a name="troubleshoot"></a>Устранение неполадок
 
@@ -812,7 +812,7 @@ The request filtering module is configured to deny a request that exceeds the re
   * Обычно службы обеспечивают улучшенную масштабируемость и устойчивость по сравнению с локальными решениями, которые обычно подвержены единым точкам отказа.
   * Затраты на использование служб обычно ниже в сценариях с крупномасштабной инфраструктурой хранения.
 
-  Дополнительные сведения см. в разделе [Краткое руководство. Использование .NET для создания большого двоичного объекта в хранилище объектов](/azure/storage/blobs/storage-quickstart-blobs-dotnet). В этом разделе показан метод <xref:Microsoft.Azure.Storage.File.CloudFile.UploadFromFileAsync*>, но метод <xref:Microsoft.Azure.Storage.File.CloudFile.UploadFromStreamAsync*> можно использовать для сохранения <xref:System.IO.FileStream> в хранилище BLOB-объектов при работе с <xref:System.IO.Stream>.
+  Дополнительные сведения см. в разделе [Краткое руководство. Использование библиотеки хранилища BLOB-объектов Azure версии 12 для .NET](/azure/storage/blobs/storage-quickstart-blobs-dotnet). В этом разделе показан метод <xref:Microsoft.Azure.Storage.File.CloudFile.UploadFromFileAsync*>, но метод <xref:Microsoft.Azure.Storage.File.CloudFile.UploadFromStreamAsync*> можно использовать для сохранения <xref:System.IO.FileStream> в хранилище BLOB-объектов при работе с <xref:System.IO.Stream>.
 
 ## <a name="file-upload-scenarios"></a>Сценарии передачи файлов
 
@@ -912,7 +912,7 @@ The request filtering module is configured to deny a request that exceeds the re
 Для выполнения отправки формы в JavaScript для клиентов, которые [не поддерживают Fetch API](https://caniuse.com/#feat=fetch), используйте один из следующих подходов:
 
 * Используйте функцию Fetch Polyfill (например, [window.fetch polyfill (github/fetch)](https://github.com/github/fetch)).
-* Используйте ключевое слово `XMLHttpRequest`. Например:
+* Используйте ключевое слово `XMLHttpRequest`. Пример:
 
   ```javascript
   <script>
@@ -1185,7 +1185,7 @@ public async Task<IActionResult> OnPostUploadAsync()
 
 ### <a name="file-extension-validation"></a>Проверка расширения файла
 
-Расширение переданного файла должно проверяться в соответствии со списком разрешенных расширений. Например:
+Расширение переданного файла должно проверяться в соответствии со списком разрешенных расширений. Пример:
 
 ```csharp
 private string[] permittedExtensions = { ".txt", ".pdf" };
@@ -1438,7 +1438,7 @@ public class BufferedSingleFileUploadPhysicalModel : PageModel
 
 Этот параметр применим только к службам IIS. При размещении в Kestrel такой проблемы возникать не должно. Дополнительные сведения см. в статье [Request Limits \<requestLimits>](/iis/configuration/system.webServer/security/requestFiltering/requestLimits/) (Ограничения запроса <requestLimits>).
 
-Ограничения в модуле ASP.NET Core или наличие модуля фильтрации запросов IIS могут ограничить передачу до 2 или 4 ГБ. Дополнительные сведения см. в [этой ветке форума](https://github.com/aspnet/AspNetCore/issues/2711).
+Ограничения в модуле ASP.NET Core или наличие модуля фильтрации запросов IIS могут ограничить передачу до 2 или 4 ГБ. Дополнительные сведения см. в статье форума (dotnet/AspNetCore #2711) [Unable to upload file greater than 2GB in size](https://github.com/dotnet/AspNetCore/issues/2711) (Не удалось отправить файл размером более 2 ГБ).
 
 ## <a name="troubleshoot"></a>Устранение неполадок
 

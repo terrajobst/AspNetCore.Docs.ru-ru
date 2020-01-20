@@ -5,14 +5,14 @@ description: Узнайте, как разместить приложение AS
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 10/30/2019
+ms.date: 01/13/2020
 uid: host-and-deploy/windows-service
-ms.openlocfilehash: 014585cd1e170fc94f7f577e11ec19824e54572f
-ms.sourcegitcommit: 6628cd23793b66e4ce88788db641a5bbf470c3c1
+ms.openlocfilehash: 37fc0b7862db3280f9ade8d563feba28153ab79b
+ms.sourcegitcommit: 2388c2a7334ce66b6be3ffbab06dd7923df18f60
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73659852"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75951830"
 ---
 # <a name="host-aspnet-core-in-a-windows-service"></a>Размещение ASP.NET Core в службе Windows
 
@@ -49,7 +49,7 @@ ms.locfileid: "73659852"
 `IHostBuilder.UseWindowsService` вызывается при сборке узла. Если приложение выполняется как служба Windows, метод отвечает за следующие действия:
 
 * Задает для узла время существования `WindowsServiceLifetime`.
-* Задает [корневой каталог содержимого](xref:fundamentals/index#content-root).
+* Задает для [корневого каталога содержимого](xref:fundamentals/index#content-root) значение [AppContext.BaseDirectory](xref:System.AppContext.BaseDirectory). Дополнительные сведения см. в разделе [Текущий каталог и корневой каталог содержимого](#current-directory-and-content-root).
 * Включает ведение журнала событий с именем приложения в качестве имени источника по умолчанию.
   * Уровень ведения журнала можно задать с помощью ключа `Logging:LogLevel:Default` в файле *appsettings.Production.json*.
   * Только администраторы могут создавать источники событий. Если источник событий создать нельзя, используя имя приложения, для источника *Приложение* регистрируется предупреждение и журналы событий отключаются.
@@ -196,13 +196,13 @@ Host.CreateDefaultBuilder(args)
 Обновление Windows 10 за октябрь 2018 г. (версия 1809, сборка 10.0.17763) или более поздней версии:
 
 ```PowerShell
-New-LocalUser -Name {NAME}
+New-LocalUser -Name {SERVICE NAME}
 ```
 
 Версия Windows, предшествующая обновлению Windows 10 за октябрь 2018 г. (версия 1809, сборка 10.0.17763):
 
 ```console
-powershell -Command "New-LocalUser -Name {NAME}"
+powershell -Command "New-LocalUser -Name {SERVICE NAME}"
 ```
 
 Укажите [надежный пароль](/windows/security/threat-protection/security-policy-settings/password-must-meet-complexity-requirements) при появлении соответствующего запроса.
@@ -239,22 +239,22 @@ $accessRule = New-Object System.Security.AccessControl.FileSystemAccessRule($acl
 $acl.SetAccessRule($accessRule)
 $acl | Set-Acl "{EXE PATH}"
 
-New-Service -Name {NAME} -BinaryPathName {EXE FILE PATH} -Credential {DOMAIN OR COMPUTER NAME\USER} -Description "{DESCRIPTION}" -DisplayName "{DISPLAY NAME}" -StartupType Automatic
+New-Service -Name {SERVICE NAME} -BinaryPathName {EXE FILE PATH} -Credential {DOMAIN OR COMPUTER NAME\USER} -Description "{DESCRIPTION}" -DisplayName "{DISPLAY NAME}" -StartupType Automatic
 ```
 
-* `{EXE PATH}` — путь к папке приложения на узле (например, `d:\myservice`). Не включайте исполняемый файл приложения в путь. Завершающая косая черта не требуется.
-* `{DOMAIN OR COMPUTER NAME\USER}` —учетная запись пользователя службы (например, `Contoso\ServiceUser`).
-* `{NAME}` — имя службы (например, `MyService`).
-* `{EXE FILE PATH}` — путь к исполняемому файлу приложения (например, `d:\myservice\myservice.exe`). Включите имя исполняемого файла с расширением.
-* `{DESCRIPTION}` — описание службы (например, `My sample service`).
-* `{DISPLAY NAME}` — отображаемое имя службы (например, `My Service`).
+* `{EXE PATH}` &ndash; — путь к папке приложения на узле (например, `d:\myservice`). Не включайте исполняемый файл приложения в путь. Завершающая косая черта не требуется.
+* `{DOMAIN OR COMPUTER NAME\USER}` &ndash; —учетная запись пользователя службы (например, `Contoso\ServiceUser`).
+* `{SERVICE NAME}` &ndash; — имя службы (например, `MyService`).
+* `{EXE FILE PATH}` &ndash; — путь к исполняемому файлу приложения (например, `d:\myservice\myservice.exe`). Включите имя исполняемого файла с расширением.
+* `{DESCRIPTION}` &ndash; — описание службы (например, `My sample service`).
+* `{DISPLAY NAME}` &ndash; — отображаемое имя службы (например, `My Service`).
 
 ### <a name="start-a-service"></a>Запуск службы
 
 Запустите службу с помощью следующей команды PowerShell 6:
 
 ```powershell
-Start-Service -Name {NAME}
+Start-Service -Name {SERVICE NAME}
 ```
 
 Команде потребуется несколько секунд, чтобы запустить службу.
@@ -264,7 +264,7 @@ Start-Service -Name {NAME}
 Чтобы проверить состояние службы, используйте следующую команду PowerShell 6:
 
 ```powershell
-Get-Service -Name {NAME}
+Get-Service -Name {SERVICE NAME}
 ```
 
 Состояние отображается одним из следующих значений:
@@ -279,7 +279,7 @@ Get-Service -Name {NAME}
 Остановите службу с помощью следующей команды PowerShell 6:
 
 ```powershell
-Stop-Service -Name {NAME}
+Stop-Service -Name {SERVICE NAME}
 ```
 
 ### <a name="remove-a-service"></a>Удаление службы
@@ -287,7 +287,7 @@ Stop-Service -Name {NAME}
 После небольшой задержки для остановки службы удалите службу с помощью следующей команды Powershell 6:
 
 ```powershell
-Remove-Service -Name {NAME}
+Remove-Service -Name {SERVICE NAME}
 ```
 
 ::: moniker range="< aspnetcore-3.0"
@@ -316,7 +316,7 @@ Remove-Service -Name {NAME}
 
 ## <a name="proxy-server-and-load-balancer-scenarios"></a>Сценарии использования прокси-сервера и подсистемы балансировки нагрузки
 
-Для служб, которые взаимодействуют с запросами из Интернета или корпоративной сети и размещаются за прокси-сервером или подсистемой балансировки нагрузки, может потребоваться дополнительная настройка. Дополнительные сведения можно найти по адресу: <xref:host-and-deploy/proxy-load-balancer>.
+Для служб, которые взаимодействуют с запросами из Интернета или корпоративной сети и размещаются за прокси-сервером или подсистемой балансировки нагрузки, может потребоваться дополнительная настройка. Для получения дополнительной информации см. <xref:host-and-deploy/proxy-load-balancer>.
 
 ## <a name="configure-endpoints"></a>Настройка конечных точек
 
@@ -341,6 +341,16 @@ Remove-Service -Name {NAME}
 ### <a name="use-contentrootpath-or-contentrootfileprovider"></a>Использование ContentRootPath или ContentRootFileProvider
 
 Используйте [IHostEnvironment.ContentRootPath](xref:Microsoft.Extensions.Hosting.IHostEnvironment.ContentRootPath) или <xref:Microsoft.Extensions.Hosting.IHostEnvironment.ContentRootFileProvider> для поиска ресурсов приложения.
+
+Когда приложение запускается как служба, <xref:Microsoft.Extensions.Hosting.WindowsServiceLifetimeHostBuilderExtensions.UseWindowsService*> задает для свойства <xref:Microsoft.Extensions.Hosting.IHostEnvironment.ContentRootPath> значение [AppContext.BaseDirectory](xref:System.AppContext.BaseDirectory).
+
+Файлы стандартных параметров приложения *appsettings.json* и *appsettings.{среда}.json* загружаются из корневого каталога содержимого приложения путем вызова [CreateDefaultBuilder во время создания узла](xref:fundamentals/host/generic-host#set-up-a-host).
+
+Для других файлов параметров, загруженных с помощью кода разработчика в <xref:Microsoft.Extensions.Hosting.HostBuilder.ConfigureAppConfiguration*>, не нужно вызывать <xref:Microsoft.Extensions.Configuration.FileConfigurationExtensions.SetBasePath*>. В следующем примере файл *custom_settings. JSON* существует в корневом каталоге содержимого приложения и загружается без явного указания базового пути:
+
+[!code-csharp[](windows-service/samples_snapshot/CustomSettingsExample.cs?highlight=13)]
+
+Не пытайтесь использовать <xref:System.IO.Directory.GetCurrentDirectory*>, чтобы получить путь к ресурсу, так как приложение службы Windows возвращает папку *C:\\WINDOWS\\system32* в качестве текущего каталога.
 
 ::: moniker-end
 
@@ -367,6 +377,83 @@ CreateWebHostBuilder(args)
 ### <a name="store-a-services-files-in-a-suitable-location-on-disk"></a>Хранение файлов службы в подходящем расположении на диске
 
 Укажите абсолютный путь к папке, содержащей файлы, с помощью <xref:Microsoft.Extensions.Configuration.FileConfigurationExtensions.SetBasePath*> при использовании <xref:Microsoft.Extensions.Configuration.IConfigurationBuilder>.
+
+## <a name="troubleshoot"></a>Устранение неполадок
+
+Сведения об устранении неполадок в приложении службы Windows см. в статье <xref:test/troubleshoot>.
+
+### <a name="common-errors"></a>Распространенные ошибки
+
+* Используется старая или предварительная версия PowerShell.
+* Зарегистрированная служба не использует **опубликованные** выходные данные приложения, возвращенные командой [dotnet publish](/dotnet/core/tools/dotnet-publish). Выходные данные команды [dotnet build](/dotnet/core/tools/dotnet-build) не поддерживаются для развертывания приложений. В зависимости от типа развертывания опубликованные ресурсы находятся в одной из следующих папок:
+  * *bin/Release/{TARGET FRAMEWORK}/publish* (зависящее от платформы развертывание);
+  * *bin/Release/{TARGET FRAMEWORK}/{RUNTIME IDENTIFIER}/publish* (автономное развертывание).
+* Служба не находится в состоянии выполнения.
+* Пути к используемым приложением ресурсам (например, к сертификатам) неверные. Базовый путь к службе Windows — *c:\\Windows\\System32*.
+* У пользователя отсутствуют права для *входа в систему в качестве службы*.
+* Пароль был указан неверно или его срок действия истек при выполнении команды PowerShell `New-Service`.
+* Для приложения требуется выполнить проверку подлинности в ASP.NET Core, однако оно не настроено для безопасных подключений (HTTPS).
+* Порт URL-адреса запроса неверен или неправильно настроен в приложении.
+
+### <a name="system-and-application-event-logs"></a>Журналы событий системы и приложений
+
+Получите доступ к журналам событий системы и приложений:
+
+1. Откройте меню "Пуск", выполните поиск по фразе *Просмотр событий* и выберите приложение **Просмотр событий**.
+1. В **средстве просмотра событий** откройте узел **Журналы Windows**.
+1. Выберите **Система**, чтобы открыть журнал системных событий. Выберите **Приложение**, чтобы открыть журнал событий приложения.
+1. Проверьте здесь наличие ошибок, связанных с проблемным приложением.
+
+### <a name="run-the-app-at-a-command-prompt"></a>Запуск приложения в командной строке
+
+Многие ошибки запуска не создают полезные сведения в журналах событий. Для некоторых ошибок можно найти причину, запустив приложение в командной строке на компьютере размещения. Чтобы записать дополнительные сведения из приложения, снизьте [уровень ведения журнала](xref:fundamentals/logging/index#log-level) или запустите приложение в [среде разработки](xref:fundamentals/environments).
+
+### <a name="clear-package-caches"></a>Очистка кэшей пакетов
+
+Приложения-функции могут перестать работать сразу после обновления пакета SDK для .NET Core на компьютере разработки или обновления версии пакетов в самом приложении. В некоторых случаях в результате важного обновления несогласованные версии пакетов могут привести к нарушению работы приложения. Большинство этих проблем можно исправить следующим образом:
+
+1. Удалите папки *bin* и *obj*.
+1. Очистите кэши пакетов, выполнив команду [dotnet nuget locals all --clear](/dotnet/core/tools/dotnet-nuget-locals) из командной оболочки.
+
+   Очистку кэшей пакетов также можно выполнить с помощью средства [nuget.exe](https://www.nuget.org/downloads) или команды `nuget locals all -clear`. *NuGet.exe* не входит в пакет установки операционной системы Windows для настольных компьютеров и его нужно получить отдельно на [веб-сайте NuGet](https://www.nuget.org/downloads).
+
+1. Восстановите и перестройте проект.
+1. Удалите все файлы из папки развертывания на сервере, прежде чем повторно развернуть приложение.
+
+### <a name="slow-or-hanging-app"></a>Медленное или зависающее приложение
+
+*Аварийный дамп* — это моментальный снимок системной памяти, который может помочь определить причину аварийного завершения, сбоя запуска или медленной работы приложения.
+
+#### <a name="app-crashes-or-encounters-an-exception"></a>Аварийное завершение работы приложения или исключение
+
+Получите и проанализируйте дамп из [отчетов об ошибках Windows (WER)](/windows/desktop/wer/windows-error-reporting):
+
+1. Создайте папку для хранения файлов аварийного дампа в `c:\dumps`.
+1. Запустите [скрипт PowerShell EnableDumps](https://github.com/aspnet/AspNetCore.Docs/blob/master/aspnetcore/host-and-deploy/windows-service/scripts/EnableDumps.ps1) с именем исполняемого файла приложения:
+
+   ```console
+   .\EnableDumps {APPLICATION EXE} c:\dumps
+   ```
+
+1. Запустите приложение в условиях, вызывающих аварийное завершение.
+1. После аварийного завершения запустите [скрипт PowerShell DisableDumps](https://github.com/aspnet/AspNetCore.Docs/blob/master/aspnetcore/host-and-deploy/windows-service/scripts/DisableDumps.ps1):
+
+   ```console
+   .\DisableDumps {APPLICATION EXE}
+   ```
+
+Когда приложение аварийно завершит работу и сбор дампов будет выполнен, приложение сможет завершить работу обычным образом. Скрипт PowerShell настраивает отчеты об ошибках Windows для сбора до пяти дампов для приложения.
+
+> [!WARNING]
+> Аварийные дампы могут занимать много места на диске (до нескольких гигабайтов каждый).
+
+#### <a name="app-hangs-fails-during-startup-or-runs-normally"></a>Приложение перестает отвечать на запросы, не запускается или работает в обычном режиме
+
+Когда приложение *перестает отвечать на запросы* (но аварийное завершение не происходит), не запускается или работает в обычном режиме, см. раздел [Файлы дампа пользовательского режима: выбор лучшего инструмента](/windows-hardware/drivers/debugger/user-mode-dump-files#choosing-the-best-tool), чтобы выбрать подходящий инструмент для создания дампа.
+
+#### <a name="analyze-the-dump"></a>Анализ дампа
+
+Дамп можно проанализировать несколькими способами. Дополнительные сведения см. в разделе [Анализ файла дампа пользовательского режима](/windows-hardware/drivers/debugger/analyzing-a-user-mode-dump-file).
 
 ## <a name="additional-resources"></a>Дополнительные ресурсы
 

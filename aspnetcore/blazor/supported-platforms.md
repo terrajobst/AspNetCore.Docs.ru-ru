@@ -2,19 +2,20 @@
 title: Поддерживаемые платформы ASP.NET Core Blazor
 author: guardrex
 description: Сведения о поддерживаемых платформах для ASP.NET Core Blazor.
-monikerRange: '>= aspnetcore-3.0'
+monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 10/15/2019
+ms.date: 12/18/2019
 no-loc:
 - Blazor
+- SignalR
 uid: blazor/supported-platforms
-ms.openlocfilehash: de51296cc8785474e1c1406cfd5d4e5bd4050172
-ms.sourcegitcommit: 3fc3020961e1289ee5bf5f3c365ce8304d8ebf19
+ms.openlocfilehash: 505974280b5c96ec2bcae42c6e076ab67a15bb07
+ms.sourcegitcommit: 9ee99300a48c810ca6fd4f7700cd95c3ccb85972
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73962728"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76160136"
 ---
 # <a name="aspnet-core-opno-locblazor-supported-platforms"></a>Поддерживаемые платформы ASP.NET Core Blazor
 
@@ -24,29 +25,29 @@ ms.locfileid: "73962728"
 
 ## <a name="browser-requirements"></a>Требования к браузеру
 
-### <a name="opno-locblazor-webassembly"></a>Blazorная сборка
+### <a name="opno-locblazor-webassembly"></a>Blazor WebAssembly
 
-| Браузер                          | Version               |
+| Браузер                          | {2&gt;Version&lt;2}               |
 | -------------------------------- | :-------------------: |
-| Microsoft Edge                   | Текущие               |
-| Mozilla Firefox                  | Текущие               |
-| Google Chrome, включая Android | Текущие               |
-| Safari, включая iOS            | Текущие               |
+| Microsoft Edge                   | Current               |
+| Mozilla Firefox                  | Current               |
+| Google Chrome, включая Android | Current               |
+| Safari, включая iOS            | Current               |
 | Microsoft Internet Explorer      | Не поддерживается&dagger; |
 
 &dagger;Microsoft Internet Explorer не поддерживает [сборку](https://webassembly.org).
 
-### <a name="opno-locblazor-server"></a>Сервер Blazor
+### <a name="opno-locblazor-server"></a>Blazor Server
 
-| Браузер                          | Version    |
+| Браузер                          | {2&gt;Version&lt;2}    |
 | -------------------------------- | :--------: |
-| Microsoft Edge                   | Текущие    |
-| Mozilla Firefox                  | Текущие    |
-| Google Chrome, включая Android | Текущие    |
-| Safari, включая iOS            | Текущие    |
+| Microsoft Edge                   | Current    |
+| Mozilla Firefox                  | Current    |
+| Google Chrome, включая Android | Current    |
+| Safari, включая iOS            | Current    |
 | Microsoft Internet Explorer      | 11&dagger; |
 
-требуются &dagger;Additionalные заливки (например, обещания можно добавить через пакет [PolyFill.IO](https://polyfill.io/v3/) ).
+требуются &dagger;дополнительные заполнения (например, обещания можно добавить через пакет [PolyFill.IO](https://polyfill.io/v3/) ).
 
 ## <a name="additional-resources"></a>Дополнительные ресурсы
 

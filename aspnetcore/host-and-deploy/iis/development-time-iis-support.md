@@ -5,14 +5,14 @@ description: Узнайте о поддерживаемых возможност
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 10/26/2019
+ms.date: 01/13/2020
 uid: host-and-deploy/iis/development-time-iis-support
-ms.openlocfilehash: 2d2c8d8e4b39d18a3a727e2a2bdef3be566897c1
-ms.sourcegitcommit: 16cf016035f0c9acf3ff0ad874c56f82e013d415
+ms.openlocfilehash: 704a8dae9da904e4bbdfae0754a6fcdabee6dc82
+ms.sourcegitcommit: 2388c2a7334ce66b6be3ffbab06dd7923df18f60
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73034143"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75952036"
 ---
 # <a name="development-time-iis-support-in-visual-studio-for-aspnet-core"></a>Поддержка служб IIS во время разработки в Visual Studio для ASP.NET Core
 
@@ -58,7 +58,7 @@ ms.locfileid: "73034143"
 
 Если новому проекту требуется протокол HTTPS, установите флажок **Configure for HTTPS** (Настроить для HTTPS) в окне **Создать веб-приложение ASP.NET Core**. Установка флажка добавляет [ПО промежуточного слоя перенаправления HTTPS и HSTS](xref:security/enforcing-ssl) в приложение при его создании.
 
-Если существующему проекту требуется протокол HTTPS, используйте ПО промежуточного слоя перенаправления HTTPS и HSTS в `Startup.Configure`. Дополнительные сведения можно найти по адресу: <xref:security/enforcing-ssl>.
+Если существующему проекту требуется протокол HTTPS, используйте ПО промежуточного слоя перенаправления HTTPS и HSTS в `Startup.Configure`. Для получения дополнительной информации см. <xref:security/enforcing-ssl>.
 
 Для проекта, который использует протокол HTTP, поддержку [ПО промежуточного слоя перенаправления HTTPS и HSTS](xref:security/enforcing-ssl) задавать не нужно. Настройка приложения не требуется.
 
@@ -80,7 +80,7 @@ ms.locfileid: "73034143"
    Укажите имя приложения в конце URL-адреса.
 
    Например `https://localhost/WebApplication1` (HTTPS) или `http://localhost/WebApplication1` (HTTP) являются действительными URL-адресами конечной точки.
-1. В разделе **Переменные среды** нажмите кнопку **Добавить**. Для переменной среды задайте **имя** `ASPNETCORE_ENVIRONMENT` и **значение** `Development`.
+1. В разделе **Переменные среды** нажмите кнопку **Добавить**. Для переменной среды задайте **имя**`ASPNETCORE_ENVIRONMENT` и **значение**`Development`.
 1. В области **Параметры веб-сервера** в поле **URL-адрес приложения** задайте значение, соответствующее URL-адресу конечной точки в поле **Запуск браузера**.
 1. В Visual Studio 2019 и последующих версиях параметру **Модель размещения** задайте значение **По умолчанию**, чтобы использовать модель размещения проекта. Если для проекта задано свойство `<AspNetCoreHostingModel>` в файле проекта, используется значение свойства `InProcess` или `OutOfProcess`. Если свойство не задано, используется модель размещения приложения по умолчанию In Process. Если приложению требуется явно указать модель размещения, отличную от обычной модели размещения приложения, задайте параметру **Модель размещения** значение `In Process` или `Out Of Process` по необходимости.
 1. Сохраните профиль.
@@ -101,7 +101,7 @@ ms.locfileid: "73034143"
    Укажите имя приложения в конце URL-адреса.
 
    Например `https://localhost/WebApplication1` (HTTPS) или `http://localhost/WebApplication1` (HTTP) являются действительными URL-адресами конечной точки.
-1. В разделе **Переменные среды** нажмите кнопку **Добавить**. Для переменной среды задайте **имя** `ASPNETCORE_ENVIRONMENT` и **значение** `Development`.
+1. В разделе **Переменные среды** нажмите кнопку **Добавить**. Для переменной среды задайте **имя**`ASPNETCORE_ENVIRONMENT` и **значение**`Development`.
 1. В области **Параметры веб-сервера** в поле **URL-адрес приложения** задайте значение, соответствующее URL-адресу конечной точки в поле **Запуск браузера**.
 1. В Visual Studio 2019 и последующих версиях параметру **Модель размещения** задайте значение **По умолчанию**, чтобы использовать модель размещения проекта. Если для проекта задано свойство `<AspNetCoreHostingModel>` в файле проекта, используется значение свойства `InProcess` или `OutOfProcess`. Если свойство не задано, используется модель размещения приложения по умолчанию Out Of Process. Если приложению требуется явно указать модель размещения, отличную от обычной модели размещения приложения, задайте параметру **Модель размещения** значение `In Process` или `Out Of Process` по необходимости.
 1. Сохраните профиль.
@@ -152,6 +152,4 @@ ms.locfileid: "73034143"
 ## <a name="additional-resources"></a>Дополнительные ресурсы
 
 * [Начало работы с диспетчером IIS в IIS](/iis/get-started/getting-started-with-iis/getting-started-with-the-iis-manager-in-iis-7-and-iis-8)
-* <xref:host-and-deploy/iis/index>
-* <xref:host-and-deploy/aspnet-core-module>
 * <xref:security/enforcing-ssl>

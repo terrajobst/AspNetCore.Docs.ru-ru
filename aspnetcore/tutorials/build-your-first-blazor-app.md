@@ -5,16 +5,16 @@ description: Узнайте, как создать приложение Blazor �
 monikerRange: '>= aspnetcore-3.0'
 ms.author: riande
 ms.custom: mvc
-ms.date: 12/05/2019
+ms.date: 01/13/2020
 no-loc:
 - Blazor
 uid: tutorials/first-blazor-app
-ms.openlocfilehash: 11ff540a70ebdb8baa0c7adb98cb1dfe27d91e50
-ms.sourcegitcommit: 851b921080fe8d719f54871770ccf6f78052584e
+ms.openlocfilehash: 8830dcf26b58b5f5fdd36b60298e7b365f99bdd9
+ms.sourcegitcommit: 925cdbd94613243f33bc7613a62ea34006219931
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74944191"
+ms.lasthandoff: 01/13/2020
+ms.locfileid: "75921293"
 ---
 # <a name="build-your-first-opno-locblazor-app"></a>Создание первого приложения Blazor
 
@@ -73,19 +73,19 @@ ms.locfileid: "74944191"
 
 Компоненты также могут принимать параметры. Параметры для компонентов определяются с помощью открытых свойств в классе компонента с атрибутом `[Parameter]`. Используйте атрибуты, чтобы указать аргументы для компонента в разметке.
 
-1. Обновите код C# для `@code` в компоненте:
+1. Обновите код C# для `@code` в компоненте следующим образом:
 
    * Добавьте открытое свойство `IncrementAmount` с атрибутом `[Parameter]`.
-   * Изменение метод `IncrementCount`, чтобы он использовал `IncrementAmount` при увеличении значения `currentCount`.
+   * Изменение метод `IncrementCount`, чтобы он использовал свойство `IncrementAmount` при увеличении значения `currentCount`.
 
    *Pages/Counter.razor*:
 
    [!code-razor[](build-your-first-blazor-app/samples_snapshot/3.x/Counter.razor?highlight=13,17)]
 
-<!-- Add back when supported.
-   > [!NOTE]
-   > From Visual Studio, you can quickly add a component parameter by using the `para` snippet. Type `para` and press the `Tab` key twice.
--->
+   <!-- Add back when supported.
+       > [!NOTE]
+       > From Visual Studio, you can quickly add a component parameter by using the `para` snippet. Type `para` and press the `Tab` key twice.
+   -->
 
 1. Укажите параметр `IncrementAmount` в элементе `<Counter>` для компонента `Index`, используя атрибут. Установите приращение счетчика на десять.
 

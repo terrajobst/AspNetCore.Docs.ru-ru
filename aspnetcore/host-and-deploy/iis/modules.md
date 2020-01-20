@@ -5,14 +5,14 @@ description: Сведения об обнаружении активных и н
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 05/12/2019
+ms.date: 01/13/2020
 uid: host-and-deploy/iis/modules
-ms.openlocfilehash: eb6cedfc572b4ffea969b3583ea6ec44cae1f575
-ms.sourcegitcommit: b4ef2b00f3e1eb287138f8b43c811cb35a100d3e
+ms.openlocfilehash: ca6cf349aa05db97e145f1cd0cae97a107761fd8
+ms.sourcegitcommit: 2388c2a7334ce66b6be3ffbab06dd7923df18f60
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65970060"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75951811"
 ---
 # <a name="iis-modules-with-aspnet-core"></a>Модули IIS с ASP.NET Core
 
@@ -167,8 +167,7 @@ Appcmd.exe delete module MODULE_NAME /app.name:APPLICATION_NAME
 
 ## <a name="additional-resources"></a>Дополнительные ресурсы
 
-* <xref:host-and-deploy/iis/index>
 * [Введение в архитектуры служб IIS. Модули в службах IIS](/iis/get-started/introduction-to-iis/introduction-to-iis-architecture#modules-in-iis)
 * [Общие сведения о модулях IIS](/iis/get-started/introduction-to-iis/iis-modules-overview)
 * [Настройка ролей и модулей в IIS 7.0](https://technet.microsoft.com/library/cc627313.aspx)
-* [Службы IIS`<system.webServer>`](/iis/configuration/system.webServer/)
+* [Службы IIS \<system.webServer>](/iis/configuration/system.webServer/)

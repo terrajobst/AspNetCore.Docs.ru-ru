@@ -5,12 +5,12 @@ description: Узнайте, как добавлять классы для уп�
 ms.author: riande
 ms.date: 12/05/2019
 uid: tutorials/razor-pages/model
-ms.openlocfilehash: 0934c94236b507f2f57200ded4344a71c483d356
-ms.sourcegitcommit: 5fe17e54f7e4267a2fdecc6f9aa1d41166cecc34
+ms.openlocfilehash: fa5be8f3a222a7c186409faa2f48e43347df637a
+ms.sourcegitcommit: 7dfe6cc8408ac6a4549c29ca57b0c67ec4baa8de
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75737862"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75829300"
 ---
 # <a name="add-a-model-to-a-razor-pages-app-in-aspnet-core"></a>Добавление модели в приложение Razor Pages в ASP.NET Core
 
@@ -142,6 +142,16 @@ ms.locfileid: "75737862"
 ![Изображение из предыдущих инструкций.](model/_static/arpMac.png)
 
 Файл *appsettings.json* обновляется с указанием строки подключения, используемой для подключения к локальной базе данных.
+
+### <a name="add-ef-tools"></a>Добавление средств EF
+
+Выполните следующую команду .NET Core CLI:
+
+```dotnetcli
+dotnet tool install --global dotnet-ef
+```
+
+Приведенная выше команда добавляет средства Entity Framework Core для .NET Core CLI.
 
 ---
 
