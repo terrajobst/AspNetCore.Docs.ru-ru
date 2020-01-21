@@ -5,16 +5,16 @@ description: Узнайте, как избежать проблем с прои�
 monikerRange: '>= aspnetcore-2.1'
 ms.author: bradyg
 ms.custom: mvc
-ms.date: 11/28/2018
+ms.date: 01/17/2020
 no-loc:
 - SignalR
 uid: signalr/scale
-ms.openlocfilehash: 8e7b7596fcfe2d6b7150fe1ab09a7ab1dc4a2e47
-ms.sourcegitcommit: 2388c2a7334ce66b6be3ffbab06dd7923df18f60
+ms.openlocfilehash: 2ffafd452af46b635f4ebbdf74561ad043158808
+ms.sourcegitcommit: f259889044d1fc0f0c7e3882df0008157ced4915
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75952126"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76294737"
 ---
 # <a name="aspnet-core-opno-locsignalr-hosting-and-scaling"></a>ASP.NET Core SignalR размещения и масштабирования
 
@@ -108,6 +108,17 @@ Windows 10 и Windows 8. x являются клиентскими операц�
 
 * Избегайте IIS.
 * Используйте Kestrel или IIS Express в качестве целевых объектов развертывания.
+
+## <a name="linux-with-nginx"></a>Linux с Nginx
+
+Для SignalR WebSockets в качестве заголовков прокси-сервера и `Upgrade` укажите следующие `Connection`:
+
+```
+proxy_set_header Upgrade $http_upgrade;
+proxy_set_header Connection $connection_upgrade;
+```
+
+Дополнительные сведения см. в разделе [nginx как прокси-сервер WebSocket](https://www.nginx.com/blog/websocket-nginx/).
 
 ## <a name="next-steps"></a>Следующие шаги
 
