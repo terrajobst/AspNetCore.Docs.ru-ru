@@ -5,14 +5,14 @@ description: Сведения о сжатии откликов и способа
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 12/05/2019
+ms.date: 01/22/2020
 uid: performance/response-compression
-ms.openlocfilehash: 04b2ffd7047e8b127968adb5d40e0141365fb5fe
-ms.sourcegitcommit: c0b72b344dadea835b0e7943c52463f13ab98dd1
+ms.openlocfilehash: b8a84418a3258e9ac43b4eadd8564c0708590bce
+ms.sourcegitcommit: eca76bd065eb94386165a0269f1e95092f23fa58
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74880911"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76726962"
 ---
 # <a name="response-compression-in-aspnet-core"></a>Сжатие ответов в ASP.NET Core
 
@@ -139,7 +139,7 @@ public class Startup
 
 Примечания.
 
-* перед `app.UseMvc`необходимо вызвать `app.UseResponseCompression`.
+* `app.UseResponseCompression` должны вызываться до какого бы то ни было по промежуточного слоя, которое сжимает ответы. Для получения дополнительной информации см. <xref:fundamentals/middleware/index#middleware-order>.
 * Используйте такое средство, как [Fiddler](https://www.telerik.com/fiddler), [Firebug](https://getfirebug.com/)или [POST](https://www.getpostman.com/) , чтобы задать заголовок запроса `Accept-Encoding` и изучить заголовки, размер и текст ответа.
 
 Отправьте запрос в пример приложения без заголовка `Accept-Encoding` и убедитесь, что ответ не сжат. Заголовки `Content-Encoding` и `Vary` отсутствуют в ответе.
@@ -202,7 +202,7 @@ public void ConfigureServices(IServiceCollection services)
 
 Задайте уровень сжатия <xref:Microsoft.AspNetCore.ResponseCompression.BrotliCompressionProviderOptions>. Поставщик сжатия Brotli по умолчанию имеет самый быстрый уровень сжатия ([CompressionLevel. самый быстрый](xref:System.IO.Compression.CompressionLevel)), что может привести к неэффективному сжатию. Если требуется наиболее эффективное сжатие, настройте по промежуточного слоя для оптимального сжатия.
 
-| Compression Level | Описание |
+| Уровень сжатия | Описание |
 | ----------------- | ----------- |
 | [CompressionLevel. самый быстрый](xref:System.IO.Compression.CompressionLevel) | Сжатие должно завершаться как можно быстрее, даже если полученные выходные данные не будут оптимально сжаты. |
 | [CompressionLevel. уплотнение](xref:System.IO.Compression.CompressionLevel) | Сжатие выполнять не нужно. |
@@ -265,7 +265,7 @@ public void ConfigureServices(IServiceCollection services)
 
 Задайте уровень сжатия <xref:Microsoft.AspNetCore.ResponseCompression.GzipCompressionProviderOptions>. Поставщик сжатия Gzip по умолчанию имеет самый быстрый уровень сжатия ([CompressionLevel. самый быстрый](xref:System.IO.Compression.CompressionLevel)), что может не привести к максимально эффективному сжатию. Если требуется наиболее эффективное сжатие, настройте по промежуточного слоя для оптимального сжатия.
 
-| Compression Level | Описание |
+| Уровень сжатия | Описание |
 | ----------------- | ----------- |
 | [CompressionLevel. самый быстрый](xref:System.IO.Compression.CompressionLevel) | Сжатие должно завершаться как можно быстрее, даже если полученные выходные данные не будут оптимально сжаты. |
 | [CompressionLevel. уплотнение](xref:System.IO.Compression.CompressionLevel) | Сжатие выполнять не нужно. |

@@ -4,18 +4,18 @@ author: rick-anderson
 description: Узнайте, как использовать CORS в качестве стандарта для разрешения или отклонения запросов между источниками в ASP.NET Core приложении.
 ms.author: riande
 ms.custom: mvc
-ms.date: 10/13/2019
+ms.date: 01/23/2020
 uid: security/cors
-ms.openlocfilehash: 3a51d365626c858ad48298a1108e37eba9050fe7
-ms.sourcegitcommit: 35a86ce48041caaf6396b1e88b0472578ba24483
+ms.openlocfilehash: 57098be73164c71d1b0d1fe2f3aee7ec41a32346
+ms.sourcegitcommit: eca76bd065eb94386165a0269f1e95092f23fa58
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72391297"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76727314"
 ---
 # <a name="enable-cross-origin-requests-cors-in-aspnet-core"></a>Включение запросов между источниками (CORS) в ASP.NET Core
 
-Автор: [Рик Андерсон](https://twitter.com/RickAndMSFT)
+Автор: [Рик Андерсон](https://twitter.com/RickAndMSFT) (Rick Anderson)
 
 В этой статье показано, как включить CORS в приложении ASP.NET Core.
 
@@ -227,7 +227,7 @@ app.UseEndpoints(endpoints =>
 
 ### <a name="set-the-allowed-http-methods"></a>Задание допустимых методов HTTP
 
-<xref:Microsoft.AspNetCore.Cors.Infrastructure.CorsPolicyBuilder.AllowAnyMethod*>:
+<xref:Microsoft.AspNetCore.Cors.Infrastructure.CorsPolicyBuilder.AllowAnyMethod*>.
 
 * Разрешает любой метод HTTP:
 * Влияет на предпечатные запросы и заголовок `Access-Control-Allow-Methods`. Дополнительные сведения см. в разделе [предпечатные запросы](#preflight-requests) .
@@ -502,6 +502,11 @@ Test message
 * Для обработки запроса по промежуточного слоя CORS не требуется.
 * Заголовки CORS не возвращаются в ответе.
 
+## <a name="cors-in-iis"></a>CORS в IIS
+
+При развертывании в IIS CORS необходимо запустить перед проверкой подлинности Windows, если сервер не настроен на разрешение анонимного доступа. Для поддержки этого сценария необходимо установить и настроить [модуль IIS CORS](https://www.iis.net/downloads/microsoft/iis-cors-module) для приложения.
+
 ## <a name="additional-resources"></a>Дополнительные ресурсы
 
 * [Общий доступ к ресурсам между источниками (CORS)](https://developer.mozilla.org/docs/Web/HTTP/CORS)
+* [Приступая к работе с модулем IIS CORS](https://blogs.iis.net/iisteam/getting-started-with-the-iis-cors-module)

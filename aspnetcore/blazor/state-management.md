@@ -10,12 +10,12 @@ no-loc:
 - Blazor
 - SignalR
 uid: blazor/state-management
-ms.openlocfilehash: ffb32a4f274a30f2a5ceed9cbf193285e85bab4c
-ms.sourcegitcommit: 9ee99300a48c810ca6fd4f7700cd95c3ccb85972
+ms.openlocfilehash: 990d392b0e1658774256626eb277701e40287b79
+ms.sourcegitcommit: eca76bd065eb94386165a0269f1e95092f23fa58
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76160149"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76726909"
 ---
 # <a name="aspnet-core-opno-locblazor-state-management"></a>Управление состоянием Blazor ASP.NET Core
 
@@ -78,7 +78,7 @@ Blazor Server — это платформа приложений с отслеж
 Для постоянного сохранения данных или для любых данных, которые должны охватывать несколько пользователей или устройств, Независимая база данных на стороне сервера почти наверняка является лучшим выбором. Доступны следующие варианты.
 
 * Реляционная база данных SQL
-* Хранилище ключ-значение
+* Хранилище "ключ — значение"
 * Хранилище больших двоичных объектов
 * Хранилище таблиц
 
@@ -172,26 +172,26 @@ Blazor Server — это платформа приложений с отслеж
 
 Инструкцию `@using` можно поместить в файл *_Imports. Razor* , а не в компонент. Использование файла *_Imports. Razor* делает пространство имен доступным для больших сегментов приложения или всего приложения.
 
-Чтобы сохранить значение `currentCount` в `Counter` компоненте шаблона проекта, измените метод `IncrementCount` для использования `ProtectedSessionStore.SetAsync`:
+Чтобы сохранить значение `_currentCount` в `Counter` компоненте шаблона проекта, измените метод `IncrementCount` для использования `ProtectedSessionStore.SetAsync`:
 
 ```csharp
 private async Task IncrementCount()
 {
-    currentCount++;
-    await ProtectedSessionStore.SetAsync("count", currentCount);
+    _currentCount++;
+    await ProtectedSessionStore.SetAsync("count", _currentCount);
 }
 ```
 
 В больших и более реалистичных приложениях хранение отдельных полей является маловероятной ситуацией. Приложения, скорее всего, будут хранить все объекты модели, включающие сложное состояние. `ProtectedSessionStore` автоматически сериализует и десериализует данные JSON.
 
-В предыдущем примере кода `currentCount` данные хранятся в виде `sessionStorage['count']` в браузере пользователя. Данные не хранятся в виде обычного текста, а защищены с помощью [защиты данных](xref:security/data-protection/introduction)ASP.NET Core. Зашифрованные данные можно увидеть, если `sessionStorage['count']` вычисляется в консоли разработчика браузера.
+В предыдущем примере кода `_currentCount` данные хранятся в виде `sessionStorage['count']` в браузере пользователя. Данные не хранятся в виде обычного текста, а защищены с помощью [защиты данных](xref:security/data-protection/introduction)ASP.NET Core. Зашифрованные данные можно увидеть, если `sessionStorage['count']` вычисляется в консоли разработчика браузера.
 
-Чтобы восстановить данные `currentCount`, если пользователь снова возвращается в компонент `Counter` (в том числе если они находятся в совершенно новом канале), используйте `ProtectedSessionStore.GetAsync`:
+Чтобы восстановить данные `_currentCount`, если пользователь снова возвращается в компонент `Counter` (в том числе если они находятся в совершенно новом канале), используйте `ProtectedSessionStore.GetAsync`:
 
 ```csharp
 protected override async Task OnInitializedAsync()
 {
-    currentCount = await ProtectedSessionStore.GetAsync<int>("count");
+    _currentCount = await ProtectedSessionStore.GetAsync<int>("count");
 }
 ```
 
@@ -208,18 +208,18 @@ protected override async Task OnInitializedAsync()
 
 Так как хранилище браузера является асинхронным (доступное через сетевое подключение), всегда существует период времени, по истечении которого данные загружаются и доступны для использования компонентом. Для достижения лучших результатов перед отображением пустых или данных по умолчанию выводится сообщение о состоянии загрузки.
 
-Один из подходов состоит в том, чтобы определить, `null` ли данные (все еще загружаются). В компоненте `Counter` по умолчанию количество хранится в `int`. Внесите `currentCount` Nullable, добавив вопросительный знак (`?`) к типу (`int`):
+Один из подходов состоит в том, чтобы определить, `null` ли данные (все еще загружаются). В компоненте `Counter` по умолчанию количество хранится в `int`. Внесите `_currentCount` Nullable, добавив вопросительный знак (`?`) к типу (`int`):
 
 ```csharp
-private int? currentCount;
+private int? _currentCount;
 ```
 
 Вместо безусловного отображения кнопки счетчика и **увеличения** выберите отображение этих элементов только в том случае, если данные загружены:
 
 ```razor
-@if (currentCount.HasValue)
+@if (_currentCount.HasValue)
 {
-    <p>Current count: <strong>@currentCount</strong></p>
+    <p>Current count: <strong>@_currentCount</strong></p>
 
     <button @onclick="IncrementCount">Increment</button>
 }
@@ -253,8 +253,8 @@ else
 ... rendering code goes here ...
 
 @code {
-    private int? currentCount;
-    private bool isConnected = false;
+    private int? _currentCount;
+    private bool _isConnected = false;
 
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {
@@ -262,7 +262,7 @@ else
         {
             // When execution reaches this point, the first *interactive* render
             // is complete. The component has an active connection to the browser.
-            isConnected = true;
+            _isConnected = true;
             await LoadStateAsync();
             StateHasChanged();
         }
@@ -270,13 +270,13 @@ else
 
     private async Task LoadStateAsync()
     {
-        currentCount = await ProtectedLocalStore.GetAsync<int>("prerenderedCount");
+        _currentCount = await ProtectedLocalStore.GetAsync<int>("prerenderedCount");
     }
 
     private async Task IncrementCount()
     {
-        currentCount++;
-        await ProtectedSessionStore.SetAsync("count", currentCount);
+        _currentCount++;
+        await ProtectedSessionStore.SetAsync("count", _currentCount);
     }
 }
 ```
@@ -291,7 +291,7 @@ else
 @using Microsoft.AspNetCore.ProtectedBrowserStorage
 @inject ProtectedSessionStorage ProtectedSessionStore
 
-@if (hasLoaded)
+@if (_hasLoaded)
 {
     <CascadingValue Value="@this">
         @ChildContent
@@ -303,7 +303,7 @@ else
 }
 
 @code {
-    private bool hasLoaded;
+    private bool _hasLoaded;
 
     [Parameter]
     public RenderFragment ChildContent { get; set; }
@@ -313,7 +313,7 @@ else
     protected override async Task OnInitializedAsync()
     {
         CurrentCount = await ProtectedSessionStore.GetAsync<int>("count");
-        hasLoaded = true;
+        _hasLoaded = true;
     }
 
     public async Task SaveChangesAsync()

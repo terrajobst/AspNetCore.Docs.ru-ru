@@ -11,12 +11,12 @@ no-loc:
 - SignalR
 - blazor.webassembly.js
 uid: blazor/hosting-models
-ms.openlocfilehash: c9521acf40317c90d1197660bfa516710263cfc9
-ms.sourcegitcommit: 9ee99300a48c810ca6fd4f7700cd95c3ccb85972
+ms.openlocfilehash: 2c66bede9c1e31b22fd1612fead556176d6f192b
+ms.sourcegitcommit: eca76bd065eb94386165a0269f1e95092f23fa58
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76160045"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76726860"
 ---
 # <a name="aspnet-core-opno-locblazor-hosting-models"></a>Модели размещения Blazor ASP.NET Core
 
@@ -392,7 +392,7 @@ Blazor серверные приложения должны быть оптим�
 ```csharp
 public class WeatherForecastService
 {
-    private static readonly string[] Summaries = new[]
+    private static readonly string[] _summaries = new[]
     {
         "Freezing", "Bracing", "Chilly", "Cool", "Mild",
         "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
@@ -423,7 +423,7 @@ public class WeatherForecastService
             {
                 Date = startDate.AddDays(index),
                 TemperatureC = rng.Next(-20, 55),
-                Summary = Summaries[rng.Next(Summaries.Length)]
+                Summary = _summaries[rng.Next(_summaries.Length)]
             }).ToArray();
         });
     }
