@@ -4,14 +4,14 @@ author: rick-anderson
 description: В этом учебнике демонстрируется создание приложения ASP.NET Core с использованием OAuth 2.0 с внешними поставщиками проверки подлинности.
 ms.author: riande
 ms.custom: mvc
-ms.date: 10/21/2019
+ms.date: 01/23/2020
 uid: security/authentication/social/index
-ms.openlocfilehash: 06ce9c72f43955345efb61afed2538158810005f
-ms.sourcegitcommit: 2cb857f0de774df421e35289662ba92cfe56ffd1
+ms.openlocfilehash: 7d0f6647a6f5a4d41067b13acd3d294144027bb7
+ms.sourcegitcommit: eca76bd065eb94386165a0269f1e95092f23fa58
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75358073"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76727334"
 ---
 # <a name="facebook-google-and-external-provider-authentication-in-aspnet-core"></a>Проверка подлинности Facebook, Google и внешних поставщиков в ASP.NET Core
 
@@ -35,7 +35,7 @@ ms.locfileid: "75358073"
 * Создайте новый проект.
 * Выберите **Веб-приложение ASP.NET Core** и нажмите **Далее**.
 * Укажите **Имя проекта** и подтвердите либо измените **Расположение**. Выберите **Создать**.
-* Выберите в раскрывающемся списке **ASP.NET Core 3.0**, а затем **Веб-приложение**.
+* Выберите последнюю версию ASP.NET Core в раскрывающемся списке (**ASP.NET Core {X.Y}**), а затем выберите **Веб-приложение**.
 * В разделе **Проверка подлинности** выберите **Изменить** и в качестве типа проверки подлинности задайте **Индивидуальные учетные записи пользователей**. Нажмите кнопку **ОК**.
 * В окне **Создать веб-приложение ASP.NET Core** выберите **Создать**.
 
