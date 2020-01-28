@@ -1,5 +1,7 @@
 - name: Документация по ASP.NET Core
   href: '/aspnet/#pivot=core'
+- name: Новые возможности в документации по ASP.NET Core
+  href: whats-new/index.yml
 - name: Обзор
   items:
     - name: Сведения об ASP.NET Core
@@ -10,7 +12,7 @@
       href: /dotnet/standard/choosing-core-framework-server?toc=/aspnet/core/toc.json&bc=/aspnet/core/breadcrumb/toc.json
 - name: Начало работы
   uid: getting-started
-- name: Новые возможности
+- name: заметки о выпуске;
   items:
     - name: "Новые возможности версии\_3.1"
       uid: aspnetcore-3.1
@@ -885,15 +887,27 @@
             - name: Обзор
               uid: security/authentication/azure-active-directory/index
             - name: Интеграция Azure AD в веб-приложение
-              href: 'https://github.com/Azure-Samples/ms-identity-aspnetcore-webapp-tutorial'
-            - name: Интеграция Azure AD B2C в веб-приложение
-              uid: security/authentication/azure-ad-b2c
-            - name: Интеграция Azure AD B2C в веб-API
-              uid: security/authentication/azure-ad-b2c-webapi
-            - name: Вызов веб-API из WPF
-              href: 'https://github.com/Azure-Samples/active-directory-dotnet-native-aspnetcore'
-            - name: "Вызов веб-API в веб-приложении с помощью Azure\_AD"
-              href: 'https://github.com/Azure-Samples/active-directory-dotnet-webapp-webapi-openidconnect-aspnetcore'
+              href: /azure/active-directory/develop/quickstart-v2-aspnet-core-webapp
+            - name: Сценарии
+              items:
+                - name: 'Веб-приложение, которое реализует вход пользователей в систему'
+                  href: /azure/active-directory/develop/scenario-web-app-sign-user-overview?tabs=aspnetcore
+                - name: 'Веб-приложение, вызывающее веб-API'
+                  href: /azure/active-directory/develop/scenario-web-app-call-api-overview
+                - name: Защищенный веб-API
+                  href: /azure/active-directory/develop/scenario-protected-web-api-overview
+                - name: 'Веб-API, вызывающий другие веб-API'
+                  href: /azure/active-directory/develop/scenario-web-api-call-api-overview
+                - name: Интеграция Azure AD B2C в веб-приложение
+                  uid: security/authentication/azure-ad-b2c
+            - name: Примеры
+              items:
+                - name: Вход пользователей и вызов веб-API с помощью Azure AD v2
+                  href: /samples/azure-samples/active-directory-aspnetcore-webapp-openidconnect-v2/enable-webapp-signin/
+                - name: "Вызов веб-API\_ASP.NET\_Core\_2.0 из приложения WPF с помощью Azure\_AD\_V2"
+                  href: /samples/azure-samples/active-directory-dotnet-native-aspnetcore-v2/calling-an-aspnet-core-web-api-from-a-wpf-application-using-azure-ad-v2/
+                - name: Веб-API с Azure AD B2C
+                  href: 'https://azure.microsoft.com/resources/samples/active-directory-b2c-dotnetcore-webapi/'
         - name: Защита приложений ASP.NET Core с помощью IdentityServer4
           href: 'https://identityserver4.readthedocs.io/'
         - name: Защита приложений ASP.NET Core с помощью проверки подлинности в Службе приложений Azure (Easy Auth)
