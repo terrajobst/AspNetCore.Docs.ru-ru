@@ -230,8 +230,6 @@
           uid: razor-pages/filter
         - name: Соглашения для маршрутов и приложений
           uid: razor-pages/razor-pages-conventions
-        - name: Пакет SDK для Razor
-          uid: razor-pages/sdk
     - name: MVC
       items:
         - name: Обзор
@@ -409,21 +407,25 @@
               href: 'mvc/views/working-with-forms.md#the-validation-summary-tag-helper'
     - name: Дополнительно
       items:
+        - name: Части приложения
+          uid: mvc/extensibility/app-parts
+        - name: Модель приложения
+          uid: mvc/controllers/application-model
+        - name: Области
+          uid: mvc/controllers/areas
+        - name: Фильтры
+          uid: mvc/controllers/filters
+        - name: Пакет SDK для Razor
+          uid: razor-pages/sdk
         - name: Компоненты представлений
           uid: mvc/views/view-components
         - name: Компиляция представлений
           uid: mvc/views/view-compilation
-        - name: Модель приложения
-          uid: mvc/controllers/application-model
-        - name: Фильтры
-          uid: mvc/controllers/filters
-        - name: Области
-          uid: mvc/controllers/areas
         - name: Отправка файлов
           uid: mvc/models/file-uploads
-        - name: Части приложения
-          uid: mvc/extensibility/app-parts
-        - name: aspnet-codegenerator
+        - name: Веб-пакет SDK
+          uid: razor-pages/web-sdk
+        - name: aspnet-codegenerator (формирование шаблонов)
           uid: fundamentals/tools/dotnet-aspnet-codegenerator
 - name: API веб-приложений
   items:
@@ -578,6 +580,8 @@
       uid: grpc/client
     - name: Интеграция фабрики клиента gRPC
       uid: grpc/clientfactory
+    - name: Использование gRPC в приложениях на основе браузера
+      uid: grpc/browser
     - name: Параметр Configuration
       uid: grpc/configuration
     - name: Аутентификация и авторизация
