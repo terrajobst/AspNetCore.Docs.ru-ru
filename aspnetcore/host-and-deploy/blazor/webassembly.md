@@ -2,19 +2,20 @@
 title: Размещение и развертывание Blazor WebAssembly с помощью ASP.NET Core
 author: guardrex
 description: Узнайте, как размещать и развертывать приложение Blazor с помощью ASP.NET Core, сетей доставки содержимого (CDN), файловых серверов и страниц GitHub.
-monikerRange: '>= aspnetcore-3.0'
+monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 10/15/2019
+ms.date: 12/18/2019
 no-loc:
 - Blazor
+- SignalR
 uid: host-and-deploy/blazor/webassembly
-ms.openlocfilehash: 0fcefc3f1e51beb7cc29aef6dd4f4b8557e61965
-ms.sourcegitcommit: 3fc3020961e1289ee5bf5f3c365ce8304d8ebf19
+ms.openlocfilehash: 8ed95cdb96804e08c3f1273bbea8f64a8e4f173c
+ms.sourcegitcommit: 9ee99300a48c810ca6fd4f7700cd95c3ccb85972
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73963632"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76160253"
 ---
 # <a name="host-and-deploy-aspnet-core-opno-locblazor-webassembly"></a>Размещение и развертывание Blazor WebAssembly с помощью ASP.NET Core
 
@@ -36,8 +37,8 @@ ms.locfileid: "73963632"
 
 Маршрутизация запросов к компонентам страниц в приложении Blazor WebAssembly не настолько проста, как маршрутизация запросов к приложению, размещенному на сервере Blazor. Рассмотрим приложение Blazor WebAssembly с двумя компонентами:
 
-* *Main.razor* — загружается в корне приложения и содержит ссылку на компонент `About` (`href="About"`).
-* *About.razor* — компонент `About`.
+* *Main.razor* &ndash; — загружается в корне приложения и содержит ссылку на компонент `About` (`href="About"`).
+* *About.razor* &ndash; `About` — компонент.
 
 При запросе документа приложения по умолчанию в адресной строке браузера (например, `https://www.contoso.com/`):
 
@@ -317,4 +318,4 @@ COPY nginx.conf /etc/nginx/nginx.conf
 
 ## <a name="configure-the-linker"></a>Настройка компоновщика
 
-Blazor выполняет компоновку для промежуточного языка (IL) в каждой сборке, чтобы удалить ненужный код из выходных сборок. Связыванием сборки можно управлять в процессе сборки. Дополнительные сведения можно найти по адресу: <xref:host-and-deploy/blazor/configure-linker>.
+Blazor выполняет компоновку для промежуточного языка (IL) в каждой сборке, чтобы удалить ненужный код из выходных сборок. Связыванием сборки можно управлять в процессе сборки. Для получения дополнительной информации см. <xref:host-and-deploy/blazor/configure-linker>.

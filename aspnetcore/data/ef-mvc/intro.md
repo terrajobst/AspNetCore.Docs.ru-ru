@@ -7,22 +7,21 @@ ms.custom: mvc
 ms.date: 02/06/2019
 ms.topic: tutorial
 uid: data/ef-mvc/intro
-ms.openlocfilehash: a8909d391ae1a35e9c8155df767ab157701c8a51
-ms.sourcegitcommit: 7d3c6565dda6241eb13f9a8e1e1fd89b1cfe4d18
+ms.openlocfilehash: 04694f20c7142cc2917df25458e8e335ee933900
+ms.sourcegitcommit: f259889044d1fc0f0c7e3882df0008157ced4915
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72259450"
+ms.lasthandoff: 01/18/2020
+ms.locfileid: "76268772"
 ---
 # <a name="tutorial-get-started-with-ef-core-in-an-aspnet-mvc-web-app"></a>Учебник. Начало работы с EF Core в веб-приложении MVC ASP.NET
 
-::: moniker range=">= aspnetcore-3.0"
+Это руководстве **не было** обновлено для использования с версией ASP.NET Core 3.0. [Версия Razor Pages](xref:data/ef-rp/intro) была обновлена. Основная часть изменений в коде для версии этого руководства для ASP.NET Core 3.0 и более поздних версий:
 
-Это руководстве **не было** обновлено для использования с версией ASP.NET Core 3.0. [Версия Razor Pages](xref:data/ef-rp/intro) была обновлена. См. сведения о возможном обновлении в этой [проблеме GitHub](https://github.com/aspnet/AspNetCore.Docs/issues/13920).
+* Находится в файлах *Startup.cs* и *Program.cs*.
+* Находится в [версии для Razor Pages](xref:data/ef-rp/intro). 
 
-::: moniker-end
-
-::: moniker range="< aspnetcore-3.0"
+См. сведения о возможном обновлении в этой [проблеме GitHub](https://github.com/aspnet/AspNetCore.Docs/issues/13920).
 
 [!INCLUDE [RP better than MVC](~/includes/RP-EF/rp-over-mvc.md)]
 
@@ -387,4 +386,3 @@ ASP.NET Core по умолчанию реализует технологию [в
 > [!div class="nextstepaction"]
 > [Реализация базовых функций CRUD](crud.md)
 
-::: moniker-end

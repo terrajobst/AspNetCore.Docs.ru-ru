@@ -6,12 +6,12 @@ description: Обнаруживайте атрибуты вспомогател�
 ms.custom: mvc
 ms.date: 09/24/2019
 uid: mvc/views/tag-helpers/builtin-th/link-tag-helper
-ms.openlocfilehash: e1e2e58b4ab9087e1f9de5b5c03b587feb88f1b9
-ms.sourcegitcommit: fae6f0e253f9d62d8f39de5884d2ba2b4b2a6050
+ms.openlocfilehash: d7514433bee8a138cd7d75bfd15c9798d4fd31a3
+ms.sourcegitcommit: b5ceb0a46d0254cc3425578116e2290142eec0f0
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71256486"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76809111"
 ---
 # <a name="link-tag-helper-in-aspnet-core"></a>Вспомогательная функция тега ссылки в ASP.NET Core
 
@@ -47,15 +47,11 @@ URL-адрес таблицы стилей CSS, к которой можно п�
 
 ### <a name="asp-fallback-test-class"></a>asp-fallback-test-class
 
-Имя класса, определенное в таблице стилей для использования в качестве теста резервного экземпляра. Дополнительные сведения можно найти по адресу: <xref:Microsoft.AspNetCore.Mvc.TagHelpers.LinkTagHelper.FallbackTestClass>.
+Имя класса, определенное в таблице стилей для использования в качестве теста резервного экземпляра. Дополнительные сведения см. в разделе <xref:Microsoft.AspNetCore.Mvc.TagHelpers.LinkTagHelper.FallbackTestClass>.
 
 ### <a name="asp-fallback-test-property"></a>asp-fallback-test-property
 
-Имя свойства CSS, используемое для теста резервного экземпляра. Дополнительные сведения можно найти по адресу: <xref:Microsoft.AspNetCore.Mvc.TagHelpers.LinkTagHelper.FallbackTestProperty>.
-
-### <a name="asp-fallback-test-value"></a>asp-fallback-test-value
-
-Значение свойства CSS, используемое для теста резервного экземпляра. Дополнительные сведения можно найти по адресу: <xref:Microsoft.AspNetCore.Mvc.TagHelpers.LinkTagHelper.FallbackTestValue>.
+Имя свойства CSS, используемое для теста резервного экземпляра. Дополнительные сведения см. в разделе <xref:Microsoft.AspNetCore.Mvc.TagHelpers.LinkTagHelper.FallbackTestProperty>.
 
 ### <a name="asp-fallback-test-value"></a>asp-fallback-test-value
 
