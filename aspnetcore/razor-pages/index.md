@@ -4,14 +4,14 @@ author: Rick-Anderson
 description: Сведения о применении в ASP.NET Core функции Razor Pages, которая делает создание кодов сценариев для страниц проще и эффективнее по сравнению с MVC.
 monikerRange: '>= aspnetcore-2.0'
 ms.author: riande
-ms.date: 01/18/2020
+ms.date: 01/28/2020
 uid: razor-pages/index
-ms.openlocfilehash: 69c9f09aa0e3dbdbe78720c573b5e1fc63464571
-ms.sourcegitcommit: f259889044d1fc0f0c7e3882df0008157ced4915
+ms.openlocfilehash: da30908b38d553405fd3f959f09a19eff750ed17
+ms.sourcegitcommit: fe41cff0b99f3920b727286944e5b652ca301640
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76294656"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76870526"
 ---
 # <a name="introduction-to-razor-pages-in-aspnet-core"></a>Введение в Razor Pages в ASP.NET Core
 
@@ -290,7 +290,7 @@ Razor Pages делает создание кодов сценариев для �
 Атрибут `[StringLength(10)]` создает `data-val-length-max="10"` в отображаемом HTML-коде. `data-val-length-max` не дает браузерам ввести больше заданной максимальной длины. Если для изменения и воспроизведения записи используется средство, например [Fiddler](https://www.telerik.com/fiddler), выполните следующие действия:
 
 * С именем, превышающим 10.
-* Возвращается сообщение об ошибке: "Имя поля должно быть строкой с максимальной длиной 10".  
+* Возвращается сообщение об ошибке: "Имя поля должно быть строкой с максимальной длиной 10".  
 
 Рассмотрим следующую модель `Movie`:
 
@@ -603,6 +603,7 @@ public string Message { get; set; }
 * <xref:razor-pages/razor-pages-conventions>
 * <xref:test/razor-pages-tests>
 * <xref:mvc/views/partial>
+* [Интеграция компонентов в Razor Pages и приложения MVC](xref:blazor/hosting-models#integrate-razor-components-into-razor-pages-and-mvc-apps)
 
 ::: moniker-end
 

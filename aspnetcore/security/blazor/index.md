@@ -5,19 +5,19 @@ description: Сведения о проверке подлинности и ав
 monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 12/18/2019
+ms.date: 01/29/2020
 no-loc:
 - Blazor
 - SignalR
 uid: security/blazor/index
-ms.openlocfilehash: 2ce2cff8d3ab77f21181070b6f1e48c50561036c
-ms.sourcegitcommit: 9ee99300a48c810ca6fd4f7700cd95c3ccb85972
+ms.openlocfilehash: e9087c246f4805e5931180fa0869fc8a8d23a6c1
+ms.sourcegitcommit: c81ef12a1b6e6ac838e5e07042717cf492e6635b
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76160292"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76885594"
 ---
-# <a name="aspnet-core-opno-locblazor-authentication-and-authorization"></a>Проверка подлинности и авторизация в ASP.NET Core Blazor
+# <a name="aspnet-core-blazor-authentication-and-authorization"></a>Аутентификация и авторизация в ASP.NET Core Blazor
 
 Автор: [Стив Сандерсон](https://github.com/SteveSandersonMS) (Steve Sanderson)
 
@@ -34,17 +34,17 @@ ASP.NET Core поддерживает настройку и администри
 
 ## <a name="authentication"></a>Проверка подлинности
 
-Blazor использует существующие механизмы проверки подлинности ASP.NET Core для установления личности пользователя. Конкретный механизм зависит от того, как размещается приложение Blazor (серверное приложение Blazor или приложение Blazor WebAssembly).
+Blazor использует существующие механизмы аутентификации ASP.NET Core для установления личности пользователя. Конкретный механизм зависит от того, как размещается приложение Blazor (серверное приложение Blazor или приложение Blazor WebAssembly).
 
-### <a name="opno-locblazor-server-authentication"></a>Проверка подлинности Blazor Server
+### <a name="blazor-server-authentication"></a>Аутентификация в приложении Blazor Server
 
-Серверные приложения Blazor работают через подключение в реальном времени, созданное с помощью SignalR. [Проверка подлинности в приложениях на основе SignalR](xref:signalr/authn-and-authz) выполняется при установлении подключения. Аутентификация может выполняться на основе файлов cookie или других маркеров носителя.
+Серверные приложения Blazor работают через подключение в реальном времени, созданное с помощью SignalR. [Аутентификация в приложениях на основе SignalR](xref:signalr/authn-and-authz) выполняется при установлении подключения. Аутентификация может выполняться на основе файлов cookie или других маркеров носителя.
 
-Шаблон серверного проекта Blazor позволяет автоматически настроить проверку подлинности при создании проекта.
+Шаблон серверного проекта Blazor позволяет автоматически настроить аутентификацию при создании проекта.
 
 # <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-Следуйте указаниям по работе с Visual Studio (<xref:blazor/get-started>), чтобы создать проект Blazor Server с механизмом проверки подлинности.
+Следуйте указаниям по работе с Visual Studio (<xref:blazor/get-started>), чтобы создать проект Blazor на стороне сервера с механизмом аутентификации.
 
 Выбрав шаблон **Серверное приложение Blazor** в диалоговом окне **Создать веб-приложение ASP.NET Core**, щелкните **Изменить** в разделе **Проверка подлинности**.
 
@@ -59,7 +59,7 @@ Blazor использует существующие механизмы пров
 
 # <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
-Следуйте указаниям по работе с Visual Studio Code (<xref:blazor/get-started>), чтобы создать проект Blazor Server с механизмом проверки подлинности:
+Следуйте указаниям по работе с Visual Studio Code (<xref:blazor/get-started>), чтобы создать проект Blazor на стороне сервера с механизмом аутентификации.
 
 ```dotnetcli
 dotnet new blazorserver -o {APP NAME} -au {AUTHENTICATION}
@@ -191,13 +191,26 @@ namespace BlazorSample.Services
 }
 ```
 
-Служба `CustomAuthStateProvider` регистрируется в `Startup.ConfigureServices`:
+В приложении WebAssembly Blazor служба `CustomAuthStateProvider` регистрируется в `Main` в файле *Program.cs*:
 
 ```csharp
-// using Microsoft.AspNetCore.Components.Authorization;
-// using BlazorSample.Services;
+using Microsoft.AspNetCore.Blazor.Hosting;
+using Microsoft.AspNetCore.Components.Authorization;
+using Microsoft.Extensions.DependencyInjection;
+using BlazorSample.Services;
 
-services.AddScoped<AuthenticationStateProvider, CustomAuthStateProvider>();
+public class Program
+{
+    public static async Task Main(string[] args)
+    {
+        var builder = WebAssemblyHostBuilder.CreateDefault(args);
+        builder.Services.AddScoped<AuthenticationStateProvider, 
+            CustomAuthStateProvider>();
+        builder.RootComponents.Add<App>("app");
+
+        await builder.Build().RunAsync();
+    }
+}
 ```
 
 С помощью `CustomAuthStateProvider`, все пользователи проходят аутентификацию с использованием имени пользователя `mrfibuli`.

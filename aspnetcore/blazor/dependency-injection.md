@@ -5,17 +5,17 @@ description: Узнайте, как Blazor приложения могут вн�
 monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 01/08/2020
+ms.date: 01/29/2020
 no-loc:
 - Blazor
 - SignalR
 uid: blazor/dependency-injection
-ms.openlocfilehash: fa6762522c831c7fbe2742dbfe4e25a377988e1e
-ms.sourcegitcommit: fe41cff0b99f3920b727286944e5b652ca301640
-ms.translationtype: HT
+ms.openlocfilehash: 859fd484fc00104575f176fa7d3bf752895475a0
+ms.sourcegitcommit: c81ef12a1b6e6ac838e5e07042717cf492e6635b
+ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 01/29/2020
-ms.locfileid: "76869568"
+ms.locfileid: "76885503"
 ---
 # <a name="aspnet-core-blazor-dependency-injection"></a>ASP.NET Core внедрения зависимостей Блазор
 
@@ -44,6 +44,69 @@ DI — это методика доступа к службам, настрое�
 
 ## <a name="add-services-to-an-app"></a>Добавление служб в приложение
 
+### <a name="blazor-webassembly"></a>Blazor WebAssembly
+
+Настройте службы для коллекции служб приложения в методе `Main` *Program.CS*. В следующем примере `MyDependency`ная реализация зарегистрирована для `IMyDependency`:
+
+```csharp
+public class Program
+{
+    public static async Task Main(string[] args)
+    {
+        var builder = WebAssemblyHostBuilder.CreateDefault(args);
+        builder.Services.AddSingleton<IMyDependency, MyDependency>();
+        builder.RootComponents.Add<App>("app");
+
+        await builder.Build().RunAsync();
+    }
+}
+```
+
+После сборки узла доступ к службам можно получить из корневой области DI до подготовки к просмотру каких-либо компонентов. Это может быть полезно для запуска логики инициализации перед отрисовкой содержимого:
+
+```csharp
+public class Program
+{
+    public static async Task Main(string[] args)
+    {
+        var builder = WebAssemblyHostBuilder.CreateDefault(args);
+        builder.Services.AddSingleton<WeatherService>();
+        builder.RootComponents.Add<App>("app");
+
+        var host = builder.Build();
+
+        var weatherService = host.Services.GetRequiredService<WeatherService>();
+        await weatherService.InitializeWeatherAsync();
+
+        await host.RunAsync();
+    }
+}
+```
+
+Узел также предоставляет центральный экземпляр конфигурации для приложения. Основываясь на предыдущем примере, URL-адрес службы погоды передается из источника конфигурации по умолчанию (например, *appSettings. JSON*) в `InitializeWeatherAsync`:
+
+```csharp
+public class Program
+{
+    public static async Task Main(string[] args)
+    {
+        var builder = WebAssemblyHostBuilder.CreateDefault(args);
+        builder.Services.AddSingleton<WeatherService>();
+        builder.RootComponents.Add<App>("app");
+
+        var host = builder.Build();
+
+        var weatherService = host.Services.GetRequiredService<WeatherService>();
+        await weatherService.InitializeWeatherAsync(
+            host.Configuration["WeatherServiceUrl"]);
+
+        await host.RunAsync();
+    }
+}
+```
+
+### <a name="blazor-server"></a>Blazor Server
+
 После создания нового приложения изучите метод `Startup.ConfigureServices`:
 
 ```csharp
@@ -61,6 +124,8 @@ public void ConfigureServices(IServiceCollection services)
     services.AddSingleton<IDataAccess, DataAccess>();
 }
 ```
+
+### <a name="service-lifetime"></a>Время существования службы
 
 Службы можно настроить с учетом времени существования, приведенного в следующей таблице.
 

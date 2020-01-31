@@ -5,14 +5,14 @@ description: Узнайте, как создать веб-API в ASP.NET Core.
 monikerRange: '>= aspnetcore-2.1'
 ms.author: scaddie
 ms.custom: mvc
-ms.date: 11/22/2019
+ms.date: 01/27/2020
 uid: web-api/index
-ms.openlocfilehash: 5ef8b4d012f4ed90339ffea191612e4dc365d958
-ms.sourcegitcommit: c0b72b344dadea835b0e7943c52463f13ab98dd1
+ms.openlocfilehash: 8609e2095c202643cdc905cc610298195b654215
+ms.sourcegitcommit: fe41cff0b99f3920b727286944e5b652ca301640
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74880530"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76870021"
 ---
 # <a name="create-web-apis-with-aspnet-core"></a>Создание веб-API с помощью ASP.NET Core
 
@@ -78,13 +78,28 @@ ASP.NET Core поддерживает создание служб RESTful, та�
 
 Атрибут [`[ApiController]`](xref:Microsoft.AspNetCore.Mvc.ApiControllerAttribute) можно применить к классу контроллера для включения следующих специализированных схем поведения API:
 
+::: moniker range=">= aspnetcore-2.2"
+
 * [Обязательная маршрутизация атрибутов](#attribute-routing-requirement)
 * [Автоматические отклики HTTP 400](#automatic-http-400-responses)
 * [Вывод параметров источника привязки](#binding-source-parameter-inference)
 * [Вывод многокомпонентных запросов и запросов данных форм](#multipartform-data-request-inference)
 * [Сведения о проблемах для кодов состояния ошибки](#problem-details-for-error-status-codes)
 
+Для использования функции *Сведения о проблеме для кодов состояния ошибки* требуется [совместимая версия](xref:mvc/compatibility-version) 2.2 и выше. Для реализации других функций требуется совместимая версия 2.1 и выше.
+
+::: moniker-end
+
+::: moniker range="= aspnetcore-2.1"
+
+* [Обязательная маршрутизация атрибутов](#attribute-routing-requirement)
+* [Автоматические отклики HTTP 400](#automatic-http-400-responses)
+* [Вывод параметров источника привязки](#binding-source-parameter-inference)
+* [Вывод многокомпонентных запросов и запросов данных форм](#multipartform-data-request-inference)
+
 Для реализации этих функций необходима [версия совместимости](xref:mvc/compatibility-version), начиная с 2.1.
+
+::: moniker-end
 
 ### <a name="attribute-on-specific-controllers"></a>Атрибут в определенных контроллерах
 
@@ -141,7 +156,7 @@ namespace WebApiSample
 
 ## <a name="attribute-routing-requirement"></a>Обязательная маршрутизация атрибутов
 
-Атрибут `[ApiController]` требует обязательной маршрутизации атрибутов. Например:
+Атрибут `[ApiController]` требует обязательной маршрутизации атрибутов. Пример:
 
 ::: moniker range=">= aspnetcore-3.0"
 
@@ -354,7 +369,7 @@ if (!ModelState.IsValid)
 
 [!code-csharp[](index/samples/2.x/2.2/Controllers/PetsController.cs?name=snippet_ProblemDetailsStatusCode)]
 
-Метод `NotFound` создает код состояния HTTP 404 с текстом `ProblemDetails`. Например:
+Метод `NotFound` создает код состояния HTTP 404 с текстом `ProblemDetails`. Пример:
 
 ```json
 {
