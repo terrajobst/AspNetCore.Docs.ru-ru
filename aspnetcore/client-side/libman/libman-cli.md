@@ -1,27 +1,27 @@
 ---
-title: Использование интерфейса командной строки (CLI) Либман с ASP.NET Core
+title: Использование интерфейса командной строки Либман с ASP.NET Core
 author: scottaddie
-description: Узнайте, как использовать интерфейс командной строки Либман (CLI) в проекте ASP.NET Core.
+description: Узнайте, как использовать интерфейс командной строки Либман в проекте ASP.NET Core.
 ms.author: scaddie
 ms.custom: mvc
 ms.date: 11/12/2019
 no-loc:
 - SignalR
 uid: client-side/libman/libman-cli
-ms.openlocfilehash: 8b2b1e45ab4685482554ac439b0276e0cf381609
-ms.sourcegitcommit: 3fc3020961e1289ee5bf5f3c365ce8304d8ebf19
+ms.openlocfilehash: 02d88d09805bd23a86ef924766373245fec7ff52
+ms.sourcegitcommit: 0b0e485a8a6dfcc65a7a58b365622b3839f4d624
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73962804"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76928366"
 ---
-# <a name="use-the-libman-command-line-interface-cli-with-aspnet-core"></a>Использование интерфейса командной строки (CLI) Либман с ASP.NET Core
+# <a name="use-the-libman-cli-with-aspnet-core"></a>Использование интерфейса командной строки Либман с ASP.NET Core
 
 Автор: [Скотт Адди](https://twitter.com/Scott_Addie) (Scott Addie)
 
 [Либман](xref:client-side/libman/index) CLI — это кросс-платформенный инструмент, поддерживаемый везде, где поддерживается .NET Core.
 
-## <a name="prerequisites"></a>Необходимые компоненты
+## <a name="prerequisites"></a>Prerequisites
 
 * [!INCLUDE [2.1-SDK](../../includes/2.1-SDK.md)]
 
@@ -43,7 +43,7 @@ dotnet tool install -g Microsoft.Web.LibraryManager.Cli --version 1.0.94-g606058
 
 В предыдущем примере глобальный инструмент .NET Core устанавливается из файла *C:\Temp\Microsoft.Web.LibraryManager.CLI.1.0.94-g606058a278.nupkg* локального компьютера Windows.
 
-## <a name="usage"></a>Использование
+## <a name="usage"></a>Метрики
 
 После успешной установки интерфейса командной строки можно использовать следующую команду:
 
@@ -103,7 +103,7 @@ libman init [-d|--default-destination] [-p|--default-provider] [--verbosity]
 libman init [-h|--help]
 ```
 
-### <a name="options"></a>Параметры
+### <a name="options"></a>Options
 
 Для команды `libman init` доступны следующие параметры:
 
@@ -157,13 +157,13 @@ libman install <LIBRARY> [-d|--destination] [--files] [-p|--provider] [--verbosi
 libman install [-h|--help]
 ```
 
-### <a name="arguments"></a>Аргументы
+### <a name="arguments"></a>Arguments
 
 `LIBRARY`
 
 Имя устанавливаемой библиотеки. Это имя может включать нотацию номера версии (например, `@1.2.0`).
 
-### <a name="options"></a>Параметры
+### <a name="options"></a>Options
 
 Для команды `libman install` доступны следующие параметры:
 
@@ -173,7 +173,7 @@ libman install [-h|--help]
 
 * `--files <FILE>`
 
-  Укажите имя файла для установки из библиотеки. Если этот параметр не указан, устанавливаются все файлы из библиотеки. Укажите один параметр `--files` для каждого файла, который необходимо установить. Относительные пути также поддерживаются. Пример: `--files dist/browser/signalr.js`.
+  Укажите имя файла для установки из библиотеки. Если этот параметр не указан, устанавливаются все файлы из библиотеки. Укажите один параметр `--files` для каждого файла, который необходимо установить. Относительные пути также поддерживаются. Например, `--files dist/browser/signalr.js`.
 
 * `-p|--provider <PROVIDER>`
 
@@ -276,7 +276,7 @@ libman restore [--verbosity]
 libman restore [-h|--help]
 ```
 
-### <a name="options"></a>Параметры
+### <a name="options"></a>Options
 
 Для команды `libman restore` доступны следующие параметры:
 
@@ -301,7 +301,7 @@ libman clean [--verbosity]
 libman clean [-h|--help]
 ```
 
-### <a name="options"></a>Параметры
+### <a name="options"></a>Options
 
 Для команды `libman clean` доступны следующие параметры:
 
@@ -336,13 +336,13 @@ libman uninstall <LIBRARY> [--verbosity]
 libman uninstall [-h|--help]
 ```
 
-### <a name="arguments"></a>Аргументы
+### <a name="arguments"></a>Arguments
 
 `LIBRARY`
 
 Имя удаляемой библиотеки. Это имя может включать нотацию номера версии (например, `@1.2.0`).
 
-### <a name="options"></a>Параметры
+### <a name="options"></a>Options
 
 Для команды `libman uninstall` доступны следующие параметры:
 
@@ -388,13 +388,13 @@ libman update <LIBRARY> [-pre] [--to] [--verbosity]
 libman update [-h|--help]
 ```
 
-### <a name="arguments"></a>Аргументы
+### <a name="arguments"></a>Arguments
 
 `LIBRARY`
 
 Имя обновляемой библиотеки.
 
-### <a name="options"></a>Параметры
+### <a name="options"></a>Options
 
 Для команды `libman update` доступны следующие параметры:
 
@@ -440,7 +440,7 @@ libman cache list [--files] [--libraries] [--verbosity]
 libman cache [-h|--help]
 ```
 
-### <a name="arguments"></a>Аргументы
+### <a name="arguments"></a>Arguments
 
 `PROVIDER`
 
@@ -448,7 +448,7 @@ libman cache [-h|--help]
 
 [!INCLUDE [LibMan provider names](../../includes/libman-cli/provider-names.md)]
 
-### <a name="options"></a>Параметры
+### <a name="options"></a>Options
 
 Для команды `libman cache` доступны следующие параметры:
 

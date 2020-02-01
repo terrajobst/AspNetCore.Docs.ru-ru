@@ -7,12 +7,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 12/16/2019
 uid: security/key-vault-configuration
-ms.openlocfilehash: 37ba756cc4170c145d2ab1f9f0a465057cc826c1
-ms.sourcegitcommit: 2cb857f0de774df421e35289662ba92cfe56ffd1
+ms.openlocfilehash: cd31094884f53f34d55c0bceabae41ca2bacba4c
+ms.sourcegitcommit: 0b0e485a8a6dfcc65a7a58b365622b3839f4d624
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75358712"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76928542"
 ---
 # <a name="azure-key-vault-configuration-provider-in-aspnet-core"></a>Поставщик конфигурации Azure Key Vault в ASP.NET Core
 
@@ -73,11 +73,11 @@ dotnet user-secrets set "Section:SecretName" "secret_value_2_dev"
 
 1. Откройте Azure Cloud Shell одним из следующих способов в [портал Azure](https://portal.azure.com/):
 
-   * Нажмите кнопку **Попробовать** в правом верхнем углу блока с кодом. Используйте строку поиска "Azure CLI" в текстовом поле.
+   * Выберите **проверить** в правом верхнем углу блока кода. Используйте строку поиска "Azure CLI" в текстовом поле.
    * Откройте Cloud Shell в браузере с помощью кнопки **запустить Cloud Shell** .
-   * Нажмите кнопку меню **Cloud Shell** в правом верхнем углу окна портала Azure.
+   * Нажмите кнопку **Cloud Shell** в меню в правом верхнем углу портал Azure.
 
-   Дополнительные сведения см. в статьях [интерфейс командной строки Azure (CLI)](/cli/azure/) и [общие сведения о Azure Cloud Shell](/azure/cloud-shell/overview).
+   Дополнительные сведения см. в разделе [Azure CLI](/cli/azure/) и [Обзор Azure Cloud Shell](/azure/cloud-shell/overview).
 
 1. Если вы еще не прошли проверку подлинности, выполните вход с помощью команды `az login`.
 
@@ -106,7 +106,7 @@ dotnet user-secrets set "Section:SecretName" "secret_value_2_dev"
 
 ## <a name="use-application-id-and-x509-certificate-for-non-azure-hosted-apps"></a>Использование идентификатора приложения и сертификата X. 509 для приложений, не размещенных в Azure
 
-Настройте Azure AD, Azure Key Vault и приложение для использования идентификатора Azure Active Directory приложения и сертификата X. 509 для проверки подлинности в хранилище ключей, **Если приложение размещено за пределами Azure**. См. дополнительные сведения о [ключах, секретах и сертификатах](/azure/key-vault/about-keys-secrets-and-certificates).
+Настройте Azure AD, Azure Key Vault и приложение для использования идентификатора Azure Active Directory приложения и сертификата X. 509 для проверки подлинности в хранилище ключей, **Если приложение размещено за пределами Azure**. Дополнительные сведения см. в статье [о ключах, секретах и сертификатах](/azure/key-vault/about-keys-secrets-and-certificates).
 
 > [!NOTE]
 > Хотя использование идентификатора приложения и сертификата X. 509 поддерживается для приложений, размещенных в Azure, мы рекомендуем использовать [управляемые удостоверения для ресурсов Azure](#use-managed-identities-for-azure-resources) при размещении приложения в Azure. Для управляемых удостоверений не требуется хранить сертификат в приложении или в среде разработки.
@@ -124,10 +124,10 @@ dotnet user-secrets set "Section:SecretName" "secret_value_2_dev"
 1. Сохраните имя хранилища ключей, идентификатор приложения и отпечаток сертификата в файле *appSettings. JSON* приложения.
 1. Перейдите к **разделу хранилища ключей** в портал Azure.
 1. Выберите хранилище ключей, созданное в [хранилище секретов в рабочей среде с помощью Azure Key Vault](#secret-storage-in-the-production-environment-with-azure-key-vault) разделе.
-1. Выберите **Политики доступа**.
+1. Выберите **политики доступа**.
 1. Выберите **Добавить политику доступа**.
 1. Откройте **разрешения для секрета** и предоставьте приложению разрешения **Get** и **List** .
-1. Щелкните **выбрать субъект** и выберите зарегистрированное приложение по имени. Нажмите кнопку **Выбрать**.
+1. Щелкните **выбрать субъект** и выберите зарегистрированное приложение по имени. Нажмите кнопку **выбрать** .
 1. Нажмите кнопку **ОК**.
 1. Нажмите кнопку **Сохранить**.
 1. Разверните приложение.
@@ -153,7 +153,7 @@ dotnet user-secrets set "Section:SecretName" "secret_value_2_dev"
 
 ::: moniker-end
 
-Примеры значений
+Примеры значений:
 
 * Имя хранилища ключей: `contosovault`
 * Идентификатор приложения: `627e911e-43cc-61d4-992e-12db9c81b413`

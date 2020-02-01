@@ -9,12 +9,12 @@ ms.date: 11/12/2019
 no-loc:
 - SignalR
 uid: signalr/messagepackhubprotocol
-ms.openlocfilehash: 1b01357233a9b95a5da052d92e30232c94e78a78
-ms.sourcegitcommit: eca76bd065eb94386165a0269f1e95092f23fa58
+ms.openlocfilehash: 3c2a4285945d3fdc6bba195e3160da8b9dcbba44
+ms.sourcegitcommit: 0b0e485a8a6dfcc65a7a58b365622b3839f4d624
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76727224"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76928179"
 ---
 # <a name="use-messagepack-hub-protocol-in-opno-locsignalr-for-aspnet-core"></a>Использование протокола концентратора MessagePack в SignalR для ASP.NET Core
 
@@ -49,6 +49,18 @@ services.AddSignalR()
             MessagePack.Resolvers.StandardResolver.Instance
         };
     });
+```
+
+> [!WARNING]
+> Настоятельно рекомендуем ознакомиться с [CVE-2020-5234](https://github.com/neuecc/MessagePack-CSharp/security/advisories/GHSA-7q36-4xx7-xcxf) и применить Рекомендуемые исправления. Например, задание статического свойства `MessagePackSecurity.Active` `MessagePackSecurity.UntrustedData`. Для настройки `MessagePackSecurity.Active` требуется ручная установка [версии 1,9. x MessagePack](https://www.nuget.org/packages/MessagePack/1.9.3). При установке `MessagePack` 1,9. x обновляются версии, используемые SignalR. Если для `MessagePackSecurity.Active` не задано значение `MessagePackSecurity.UntrustedData`, вредоносный клиент может вызвать отказ в обслуживании. Задайте `MessagePackSecurity.Active` в `Program.Main`, как показано в следующем коде:
+
+```csharp
+public static void Main(string[] args)
+{
+  MessagePackSecurity.Active = MessagePackSecurity.UntrustedData;
+
+  CreateHostBuilder(args).Build().Run();
+}
 ```
 
 ## <a name="configure-messagepack-on-the-client"></a>Настройка MessagePack на клиенте
