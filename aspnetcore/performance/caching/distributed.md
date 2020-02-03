@@ -32,7 +32,7 @@ ms.locfileid: "76727241"
 
 [Просмотреть или скачать образец кода](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/performance/caching/distributed/samples/) ([как скачивать](xref:index#how-to-download-a-sample))
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>Необходимые компоненты
 
 ::: moniker range=">= aspnetcore-3.0"
 
@@ -143,7 +143,7 @@ Table and index were created successfully.
 ::: moniker-end
 
 > [!NOTE]
-> <xref:Microsoft.Extensions.Caching.SqlServer.SqlServerCacheOptions.ConnectionString*> (И, при необходимости, <xref:Microsoft.Extensions.Caching.SqlServer.SqlServerCacheOptions.SchemaName*> и <xref:Microsoft.Extensions.Caching.SqlServer.SqlServerCacheOptions.TableName*>) обычно хранятся вне системы управления версиями (например, хранится в [диспетчере секретов](xref:security/app-secrets) или в *appsettings.json*/*appsettings. {Файлы среды}. JSON* ). Строка подключения может содержать учетные данные, которые должны содержаться в системе управления версиями.
+> <xref:Microsoft.Extensions.Caching.SqlServer.SqlServerCacheOptions.ConnectionString*> (и, возможно, <xref:Microsoft.Extensions.Caching.SqlServer.SqlServerCacheOptions.SchemaName*> и <xref:Microsoft.Extensions.Caching.SqlServer.SqlServerCacheOptions.TableName*>) обычно хранятся вне системы управления версиями (например, хранится в [диспетчере секретов](xref:security/app-secrets) или в *appsettings. JSON*/*appSettings. { Файлы среды}. JSON* ). Строка подключения может содержать учетные данные, которые должны содержаться в системе управления версиями.
 
 ### <a name="distributed-redis-cache"></a>Распределенный кэш Redis
 

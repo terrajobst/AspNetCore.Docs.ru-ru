@@ -15,7 +15,7 @@ ms.locfileid: "76727314"
 ---
 # <a name="enable-cross-origin-requests-cors-in-aspnet-core"></a>Включение запросов между источниками (CORS) в ASP.NET Core
 
-Автор: [Рик Андерсон](https://twitter.com/RickAndMSFT) (Rick Anderson)
+Автор: [Рик Андерсон](https://twitter.com/RickAndMSFT)
 
 В этой статье показано, как включить CORS в приложении ASP.NET Core.
 
@@ -227,7 +227,7 @@ app.UseEndpoints(endpoints =>
 
 ### <a name="set-the-allowed-http-methods"></a>Задание допустимых методов HTTP
 
-<xref:Microsoft.AspNetCore.Cors.Infrastructure.CorsPolicyBuilder.AllowAnyMethod*>.
+<xref:Microsoft.AspNetCore.Cors.Infrastructure.CorsPolicyBuilder.AllowAnyMethod*>:
 
 * Разрешает любой метод HTTP:
 * Влияет на предпечатные запросы и заголовок `Access-Control-Allow-Methods`. Дополнительные сведения см. в разделе [предпечатные запросы](#preflight-requests) .
