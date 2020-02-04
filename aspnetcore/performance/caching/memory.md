@@ -4,14 +4,14 @@ author: rick-anderson
 description: Узнайте, как кэшировать данные в памяти в ASP.NET Core.
 ms.author: riande
 ms.custom: mvc
-ms.date: 11/2/2019
+ms.date: 02/02/2020
 uid: performance/caching/memory
-ms.openlocfilehash: eb40026bc9686357cc7cfb8a99f127a3b433cb70
-ms.sourcegitcommit: 7dfe6cc8408ac6a4549c29ca57b0c67ec4baa8de
+ms.openlocfilehash: 23acc17c861c203a87b1c113940e7bf42b51e810
+ms.sourcegitcommit: 990a4c2e623c202a27f60bdf3902f250359c13be
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75866037"
+ms.lasthandoff: 02/03/2020
+ms.locfileid: "76972020"
 ---
 # <a name="cache-in-memory-in-aspnet-core"></a>Кэширование в памяти в ASP.NET Core
 
@@ -37,7 +37,7 @@ ASP.NET Core поддерживает несколько разных кэшей
 
 * .NET Standard 2,0 или более поздней версии.
 * Любая [реализация .NET](/dotnet/standard/net-standard#net-implementation-support) , предназначенная для .NET Standard 2,0 или более поздней версии. Например, ASP.NET Core 2,0 или более поздней версии.
-* .NET Framework 4.5 или более поздней версии.
+* .NET Framework 4,5 или более поздней версии.
 
 [Microsoft. Extensions. Caching. Memory](https://www.nuget.org/packages/Microsoft.Extensions.Caching.Memory/)/`IMemoryCache` (описанные в этой статье) рекомендуется для `System.Runtime.Caching`/`MemoryCache`, так как он лучше интегрирован в ASP.NET Core. Например, `IMemoryCache` работает в собственном режиме с [внедрением зависимостей](xref:fundamentals/dependency-injection)ASP.NET Core.
 
@@ -115,7 +115,7 @@ ASP.NET Core поддерживает несколько разных кэшей
 * Если веб-приложение в основном кэширует строки, каждый размер записи кэша может быть длиной строки.
 * Приложение может указать размер всех записей как 1, а максимальный размер — число записей.
 
-Если параметр <xref:Microsoft.Extensions.Caching.Memory.MemoryCacheOptions.SizeLimit> не задан, кэш растет без привязки. При нехватке системной памяти среда выполнения ASP.NET Core не усекает кэш. Разработка приложений в значительной степени составляет:
+Если <xref:Microsoft.Extensions.Caching.Memory.MemoryCacheOptions.SizeLimit> не задано, кэш растет без привязки. Среда выполнения ASP.NET Core не обрезает кэш при нехватке системной памяти. Приложения должны быть спроектированы следующим образом:
 
 * Ограничение роста кэша.
 * Вызовите <xref:Microsoft.Extensions.Caching.Memory.MemoryCache.Compact*> или <xref:Microsoft.Extensions.Caching.Memory.MemoryCache.Remove*>, если доступная память ограничена:
@@ -214,7 +214,7 @@ ASP.NET Core поддерживает несколько разных кэшей
 
 * .NET Standard 2,0 или более поздней версии.
 * Любая [реализация .NET](/dotnet/standard/net-standard#net-implementation-support) , предназначенная для .NET Standard 2,0 или более поздней версии. Например, ASP.NET Core 2,0 или более поздней версии.
-* .NET Framework 4.5 или более поздней версии.
+* .NET Framework 4,5 или более поздней версии.
 
 [Microsoft. Extensions. Caching. Memory](https://www.nuget.org/packages/Microsoft.Extensions.Caching.Memory/)/`IMemoryCache` (описанные в этой статье) рекомендуется для `System.Runtime.Caching`/`MemoryCache`, так как он лучше интегрирован в ASP.NET Core. Например, `IMemoryCache` работает в собственном режиме с [внедрением зависимостей](xref:fundamentals/dependency-injection)ASP.NET Core.
 

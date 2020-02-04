@@ -7,12 +7,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 01/15/2020
 uid: security/authentication/scaffold-identity
-ms.openlocfilehash: a0e9603cbca8c7f5771b0acf1a60839dffc89d4e
-ms.sourcegitcommit: cbd30479f42cbb3385000ef834d9c7d021fd218d
+ms.openlocfilehash: b3e077aeac11e62d9e992884100476f7be35b59a
+ms.sourcegitcommit: 990a4c2e623c202a27f60bdf3902f250359c13be
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76146489"
+ms.lasthandoff: 02/03/2020
+ms.locfileid: "76972047"
 ---
 # <a name="scaffold-identity-in-aspnet-core-projects"></a>Удостоверение шаблона в ASP.NET Core проектах
 
@@ -30,7 +30,7 @@ ASP.NET Core предоставляет [ASP.NET Core удостоверение
 
 Службы необходимы при использовании [двухфакторной проверки подлинности](xref:security/authentication/identity-enable-qrcodes), [подтверждения учетной записи и восстановления пароля](xref:security/authentication/accconfirm), а также других функций безопасности с удостоверениями. Службы или заглушки служб не создаются при формировании удостоверений формирования шаблонов. Службы для включения этих функций необходимо добавить вручную. Например, см. статью [требование подтверждения по электронной почте](xref:security/authentication/accconfirm#require-email-confirmation).
 
-Этот документ содержит более полные инструкции, чем файл *скаффолдингреадме. txt* , который создается при запуске шаблона.
+Этот документ содержит более полные инструкции, чем файл *скаффолдингреадме. txt* , который создается при запуске механизма формирования шаблонов.
 
 ## <a name="scaffold-identity-into-an-empty-project"></a>Удостоверение шаблона в пустой проект
 
@@ -83,7 +83,7 @@ before dotnet ef database update
 
 <a name="useauthentication"></a>
 
-### <a name="enable-authentication"></a>Включение проверки подлинности
+### <a name="enable-authentication"></a>Включить проверку подлинности
 
 Обновите класс `Startup` с помощью следующего кода:
 
@@ -259,7 +259,7 @@ dotnet aspnet-codegenerator identity -dc RPauth.Data.ApplicationDbContext --file
 
 ## <a name="prevent-publish-of-static-identity-assets"></a>Запретить публикацию ресурсов статических удостоверений
 
-Сведения о запрете публикации ресурсов статических удостоверений в веб-корне см. в разделе <xref:security/authentication/identity#prevent-publish-of-static-identity-assets>.
+Сведения о запрете публикации ресурсов статических удостоверений в корневом веб-каталоге см. в разделе <xref:security/authentication/identity#prevent-publish-of-static-identity-assets>.
 
 ## <a name="additional-resources"></a>Дополнительные ресурсы
 
@@ -325,7 +325,7 @@ dotnet ef database update
 
 <a name="useauthentication"></a>
 
-### <a name="enable-authentication"></a>Включение проверки подлинности
+### <a name="enable-authentication"></a>Включить проверку подлинности
 
 В методе `Configure` класса `Startup` вызовите [усеаусентикатион](/dotnet/api/microsoft.aspnetcore.builder.authappbuilderextensions.useauthentication?view=aspnetcore-2.0#Microsoft_AspNetCore_Builder_AuthAppBuilderExtensions_UseAuthentication_Microsoft_AspNetCore_Builder_IApplicationBuilder_) после `UseStaticFiles`:
 
