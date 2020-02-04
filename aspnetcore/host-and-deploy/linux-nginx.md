@@ -7,12 +7,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 01/13/2020
 uid: host-and-deploy/linux-nginx
-ms.openlocfilehash: e718592127115e46df3154364957943a457b0b1b
-ms.sourcegitcommit: cbd30479f42cbb3385000ef834d9c7d021fd218d
+ms.openlocfilehash: 880d1762ebbea641c0b9c5a9f8bbca0b68a463c5
+ms.sourcegitcommit: eca76bd065eb94386165a0269f1e95092f23fa58
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76146333"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76726663"
 ---
 # <a name="host-aspnet-core-on-linux-with-nginx"></a>Среда размещения ASP.NET Core в операционной системе Linux с Nginx
 
@@ -144,6 +144,8 @@ server {
     }
 }
 ```
+
+Если приложение является серверным приложением Blazor, которое использует соединения WebSocket SignalR, см. сведения о том, как задать заголовок `Connection`, в разделе <xref:host-and-deploy/blazor/server#linux-with-nginx>.
 
 Если отсутствуют совпадения для `server_name`, Nginx использует сервер по умолчанию. Если сервер по умолчанию не определен, первый сервер в файле конфигурации является сервером по умолчанию. Рекомендуется добавить в качестве сервера по умолчанию определенный сервер, который возвращает код состояния 444 в файле конфигурации. Ниже приведен пример конфигурации сервера по умолчанию:
 
