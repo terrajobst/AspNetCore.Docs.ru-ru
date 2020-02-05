@@ -5,14 +5,14 @@ description: Сведения о ПО промежуточного слоя ASP.
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 12/19/2019
+ms.date: 02/02/2020
 uid: fundamentals/middleware/index
-ms.openlocfilehash: 63566c1642e17ad333bb65b122330d11c4472aff
-ms.sourcegitcommit: 2cb857f0de774df421e35289662ba92cfe56ffd1
+ms.openlocfilehash: 5c8e9e58ab222e482ef029f5099d0a8acd07d8a6
+ms.sourcegitcommit: 990a4c2e623c202a27f60bdf3902f250359c13be
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75355006"
+ms.lasthandoff: 02/03/2020
+ms.locfileid: "76972022"
 ---
 # <a name="aspnet-core-middleware"></a>ПО промежуточного слоя ASP.NET Core
 
@@ -226,6 +226,7 @@ ASP.NET Core содержит следующие компоненты проме
 | [Error Handling](xref:fundamentals/error-handling) | Отдельное ПО промежуточного слоя, которое обеспечивает обработку исключений, предоставляет страницу исключений для разработчика, страницы состояния кода, веб-страницу по умолчанию для новых приложений. | Ставится перед компонентами, выдающими ошибки. Является конечным для исключений или обслуживания веб-страницы по умолчанию для новых приложений. |
 | [Forwarded Headers](xref:host-and-deploy/proxy-load-balancer) | Пересылает заголовки, переданные через прокси-сервер, в текущий запрос. | Перед компонентами, использующими обновленные поля. Например: схема, узел, IP-адрес клиента, метод. |
 | [Проверка работоспособности](xref:host-and-deploy/health-checks) | Проверяет работоспособность приложения ASP.NET Core и его зависимостей, таких как проверка доступности базы данных. | Является конечным, если запрос соответствует конечной точке проверки работоспособности. |
+| [Распространение заголовков](xref:fundamentals/http-requests#header-propagation-middleware) | Распространяет заголовки HTTP из входящего запроса на исходящие запросы HTTP-клиентов. |
 | [HTTP Method Override](xref:Microsoft.AspNetCore.Builder.HttpMethodOverrideExtensions) | Разрешает входящий запрос POST для переопределения этого метода. | Ставится перед компонентами, использующими обновленный метод. |
 | [HTTPS Redirection](xref:security/enforcing-ssl#require-https) | Перенаправляет все запросы HTTP на HTTPS. | Ставится перед компонентами, использующими URL-адрес. |
 | [HTTP Strict Transport Security (HSTS)](xref:security/enforcing-ssl#http-strict-transport-security-protocol-hsts) | ПО промежуточного слоя для повышения безопасности, которое добавляет специальный заголовок ответа. | Перед отправкой ответов и после компонентов, изменяющих запросы. Примеры Forwarded Headers, URL Rewriting. |
