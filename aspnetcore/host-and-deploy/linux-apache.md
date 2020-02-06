@@ -5,14 +5,14 @@ description: Процедура настройки Apache в качестве о
 monikerRange: '>= aspnetcore-2.1'
 ms.author: shboyer
 ms.custom: mvc
-ms.date: 01/13/2020
+ms.date: 02/05/2020
 uid: host-and-deploy/linux-apache
-ms.openlocfilehash: 028f5112188e2b74f4f01409e25268aecdc761c0
-ms.sourcegitcommit: cbd30479f42cbb3385000ef834d9c7d021fd218d
+ms.openlocfilehash: f522c54fdc584845f18040bae1b2a2bda36d28fa
+ms.sourcegitcommit: bd896935e91236e03241f75e6534ad6debcecbbf
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76146294"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77044841"
 ---
 # <a name="host-aspnet-core-on-linux-with-apache"></a>Размещение ASP.NET Core в операционной системе Linux с Apache
 
@@ -67,6 +67,8 @@ dotnet publish --configuration Release
 Вызовите метод <xref:Microsoft.AspNetCore.Builder.ForwardedHeadersExtensions.UseForwardedHeaders*> в методе `Startup.Configure` перед вызовом <xref:Microsoft.AspNetCore.Builder.AuthAppBuilderExtensions.UseAuthentication*> или другого ПО промежуточного слоя, предназначенного для проверки подлинности. В ПО промежуточного слоя настройте перенаправление заголовков `X-Forwarded-For` и `X-Forwarded-Proto`:
 
 ```csharp
+// using Microsoft.AspNetCore.HttpOverrides;
+
 app.UseForwardedHeaders(new ForwardedHeadersOptions
 {
     ForwardedHeaders = ForwardedHeaders.XForwardedFor | ForwardedHeaders.XForwardedProto
@@ -80,6 +82,8 @@ app.UseAuthentication();
 Прокси-серверы под управлением адресов замыкания на себя (127.0.0.0/8, [:: 1]), включая стандартные адреса localhost (127.0.0.1), считаются доверенными по умолчанию. Если запросы между Интернетом и веб-сервером обрабатывают другие прокси-серверы или сети организации, добавьте их в список <xref:Microsoft.AspNetCore.Builder.ForwardedHeadersOptions.KnownProxies*> или <xref:Microsoft.AspNetCore.Builder.ForwardedHeadersOptions.KnownNetworks*> с помощью <xref:Microsoft.AspNetCore.Builder.ForwardedHeadersOptions>. Следующий пример добавляет доверенный прокси-сервер с IP-адресом 10.0.0.100 в ПО промежуточного слоя для перенаправления заголовков `KnownProxies` в `Startup.ConfigureServices`:
 
 ```csharp
+// using System.Net;
+
 services.Configure<ForwardedHeadersOptions>(options =>
 {
     options.KnownProxies.Add(IPAddress.Parse("10.0.0.100"));
@@ -319,7 +323,7 @@ rich rules:
 
 **Настройка приложения для безопасных (HTTPS) локальных подключений**
 
-Команда [dotnet run](/dotnet/core/tools/dotnet-run) использует файл приложения *Properties/launchSettings.json*, который настраивает приложение для прослушивания URL-адресов, заданных свойством `applicationUrl` (например, `https://localhost:5001;http://localhost:5000`).
+Команда [dotnet run](/dotnet/core/tools/dotnet-run) использует файл приложения *Properties/launchSettings.json*, который настраивает приложение для прослушивания URL-адресов, заданных свойством `applicationUrl` (например, `https://localhost:5001; http://localhost:5000`).
 
 Настройте приложение для использования при разработке сертификата для команды `dotnet run` или среды разработки (F5 или CTRL + F5 в Visual Studio Code), используя один из следующих подходов.
 
