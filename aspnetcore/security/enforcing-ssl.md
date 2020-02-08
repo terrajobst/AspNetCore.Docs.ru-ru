@@ -6,16 +6,16 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 12/06/2019
 uid: security/enforcing-ssl
-ms.openlocfilehash: d7d4eece935bd83b69a6a5d81898012b99d73193
-ms.sourcegitcommit: 7dfe6cc8408ac6a4549c29ca57b0c67ec4baa8de
+ms.openlocfilehash: 59883a8165040fa58edb2f6cf22d4d6b3abf6f3e
+ms.sourcegitcommit: 80286715afb93c4d13c931b008016d6086c0312b
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75828910"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77074553"
 ---
 # <a name="enforce-https-in-aspnet-core"></a>Принудительное применение HTTPS в ASP.NET Core
 
-Автор: [Рик Андерсон](https://twitter.com/RickAndMSFT) (Rick Anderson)
+Автор: [Рик Андерсон](https://twitter.com/RickAndMSFT)
 
 В этом документе показано, как:
 
@@ -52,7 +52,7 @@ ms.locfileid: "75828910"
 
 ::: moniker-end
 
-## <a name="require-https"></a>Требовать HTTPS
+## <a name="require-https"></a>Требование к использованию протокола HTTPS
 
 В рабочей ASP.NET Core веб-приложений рекомендуется использовать:
 
@@ -150,7 +150,7 @@ ms.locfileid: "75828910"
 
 При развертывании в службе приложений Azure следуйте указаниям в [руководстве по связыванию существующего настраиваемого SSL-сертификата с Azure Web Apps](/azure/app-service/app-service-web-tutorial-custom-ssl).
 
-### <a name="options"></a>Options
+### <a name="options"></a>Параметры
 
 Следующий выделенный код вызывает [аддхттпсредиректион](/dotnet/api/microsoft.aspnetcore.builder.httpsredirectionservicesextensions.addhttpsredirection) для настройки параметров промежуточного слоя:
 
@@ -261,7 +261,7 @@ ASP.NET Core 2,1 и более поздних версий реализуют HS
 
 Для рабочих сред, которые реализуют протокол HTTPS в первый раз, задайте для свойства Initial [хстсоптионс. MaxAge](xref:Microsoft.AspNetCore.HttpsPolicy.HstsOptions.MaxAge*) небольшое значение, используя один из методов <xref:System.TimeSpan>. Задайте в качестве значения в часах не более одного дня на случай, если необходимо вернуть инфраструктуру HTTPS к протоколу HTTP. Убедившись в устойчивости конфигурации HTTPS, увеличьте значение HSTS max-age. часто используемое значение — один год.
 
-В приведенном ниже коде
+Следующий код:
 
 
 ::: moniker range=">= aspnetcore-3.0"
@@ -277,7 +277,7 @@ ASP.NET Core 2,1 и более поздних версий реализуют HS
 ::: moniker-end
 
 
-* Задает параметр предварительной загрузки для заголовка с уровнем безопасности "Долгосрочный транспорт — Безопасность". Предварительная загрузка не является частью [спецификации RFC HSTS](https://tools.ietf.org/html/rfc6797), но поддерживается веб-браузерами для предварительной загрузки HSTS сайтов при новой установке. Дополнительные сведения см. в разделе [https://hstspreload.org/](https://hstspreload.org/).
+* Задает параметр предварительной загрузки для заголовка с уровнем безопасности "Долгосрочный транспорт — Безопасность". Предварительная загрузка не является частью [спецификации RFC HSTS](https://tools.ietf.org/html/rfc6797), но поддерживается веб-браузерами для предварительной загрузки HSTS сайтов при новой установке. Дополнительные сведения см. по ссылке [https://hstspreload.org/](https://hstspreload.org/).
 * Включает [инклудесубдомаин](https://tools.ietf.org/html/rfc6797#section-6.1.2), который применяет политику HSTS для размещения поддоменов.
 * Явно задает параметр max-age для заголовка с ограничением транспорта-безопасности до 60 дней. Если значение не задано, по умолчанию используется значение 30 дней. Дополнительные сведения см. в [директиве max-age](https://tools.ietf.org/html/rfc6797#section-6.1.1) .
 * Добавляет `example.com` в список узлов для исключения.
@@ -313,7 +313,7 @@ ASP.NET Core 2,1 и более поздних версий реализуют HS
 
 # <a name="net-core-clitabnetcore-cli"></a>[Интерфейс командной строки .NET Core](#tab/netcore-cli) 
 
-Использовать параметр `--no-https`. Пример
+Использовать параметр `--no-https`. Например.
 
 ```dotnetcli
 dotnet new webapp --no-https
@@ -419,7 +419,7 @@ dotnet dev-certs https --trust
 
 ### <a name="iis-express-ssl-certificate-used-with-visual-studio"></a>IIS Express SSL-сертификат, используемый в Visual Studio
 
-Чтобы устранить проблемы с сертификатом IIS Express, выберите **восстановить** в Visual Studio Installer.
+Чтобы устранить проблемы с сертификатом IIS Express, выберите **восстановить** в Visual Studio Installer. См. дополнительные сведения на [сайте GitHub](https://github.com/dotnet/aspnetcore/issues/16892).
 
 ## <a name="additional-information"></a>Дополнительные сведения
 
