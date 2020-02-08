@@ -7,12 +7,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 02/02/2020
 uid: fundamentals/middleware/index
-ms.openlocfilehash: 47f465c00138acf434c6ec59f757e37361ad97db
-ms.sourcegitcommit: 0e21d4f8111743bcb205a2ae0f8e57910c3e8c25
+ms.openlocfilehash: 6698e269e0a6480cd5a03c59f9a19da31e23bf69
+ms.sourcegitcommit: 235623b6e5a5d1841139c82a11ac2b4b3f31a7a9
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77034108"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77089153"
 ---
 # <a name="aspnet-core-middleware"></a>ПО промежуточного слоя ASP.NET Core
 
@@ -167,7 +167,7 @@ public void Configure(IApplicationBuilder app)
 * Чтобы разрешить остальным ПО промежуточного слоя отвечать на запросы сопоставления в первую очередь.
 * Чтобы разрешить одностраничным приложениям с маршрутизацией на стороне клиента выполняться для всех маршрутов, не распознаваемых серверным приложением.
 
-Дополнительные сведения об одностраничных приложениях см. в руководствах по шаблонам проектов [React](xref:spa/react) и [Angular](xref: client-side/spa/angular).
+Дополнительные сведения об одностраничных приложениях см. в руководствах по шаблонам проектов [React](xref:spa/react) и [Angular](xref:spa/angular).
 
 ## <a name="branch-the-middleware-pipeline"></a>Ветвление конвейера ПО промежуточного слоя
 
