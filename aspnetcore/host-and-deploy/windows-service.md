@@ -7,12 +7,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 01/13/2020
 uid: host-and-deploy/windows-service
-ms.openlocfilehash: 37fc0b7862db3280f9ade8d563feba28153ab79b
-ms.sourcegitcommit: 2388c2a7334ce66b6be3ffbab06dd7923df18f60
+ms.openlocfilehash: d4b540de50f4153f517f871f037521347fb5eb84
+ms.sourcegitcommit: 990a4c2e623c202a27f60bdf3902f250359c13be
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75951830"
+ms.lasthandoff: 02/03/2020
+ms.locfileid: "76972004"
 ---
 # <a name="host-aspnet-core-in-a-windows-service"></a>Размещение ASP.NET Core в службе Windows
 
@@ -393,7 +393,7 @@ CreateWebHostBuilder(args)
 * У пользователя отсутствуют права для *входа в систему в качестве службы*.
 * Пароль был указан неверно или его срок действия истек при выполнении команды PowerShell `New-Service`.
 * Для приложения требуется выполнить проверку подлинности в ASP.NET Core, однако оно не настроено для безопасных подключений (HTTPS).
-* Порт URL-адреса запроса неверен или неправильно настроен в приложении.
+* Порт URL-адреса запроса неправильно указан или настроен в приложении.
 
 ### <a name="system-and-application-event-logs"></a>Журналы событий системы и приложений
 

@@ -1,1 +1,1 @@
-Дополнительные сведения о средствах CLI для EF Core см. в [справочнике по средствам EF Core для .Net CLI](/ef/core/miscellaneous/cli/dotnet).
+Дополнительные сведения о CLI для EF Core см. в [справочнике по средствам EF Core для .Net CLI](/ef/core/miscellaneous/cli/dotnet).

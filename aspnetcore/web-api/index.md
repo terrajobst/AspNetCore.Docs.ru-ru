@@ -5,14 +5,14 @@ description: Узнайте, как создать веб-API в ASP.NET Core.
 monikerRange: '>= aspnetcore-2.1'
 ms.author: scaddie
 ms.custom: mvc
-ms.date: 01/27/2020
+ms.date: 02/02/2020
 uid: web-api/index
-ms.openlocfilehash: 8609e2095c202643cdc905cc610298195b654215
-ms.sourcegitcommit: fe41cff0b99f3920b727286944e5b652ca301640
+ms.openlocfilehash: 420fe89fe969c6df5c949f643fe018fff2bc77a5
+ms.sourcegitcommit: bd896935e91236e03241f75e6534ad6debcecbbf
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76870021"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77051463"
 ---
 # <a name="create-web-apis-with-aspnet-core"></a>Создание веб-API с помощью ASP.NET Core
 
@@ -397,6 +397,28 @@ if (!ModelState.IsValid)
 [!code-csharp[](index/samples/2.x/2.2/Startup.cs?name=snippet_ConfigureApiBehaviorOptions&highlight=3,8)]
 
 ::: moniker-end
+
+## <a name="define-supported-request-content-types-with-the-consumes-attribute"></a>Определение поддерживаемых типов содержимого запросов с помощью атрибута [Consumes]
+
+По умолчанию действие поддерживает все доступные типы содержимого запросов. Например, если в приложении включена поддержка [форматировщиков входных данных](xref:mvc/models/model-binding#input-formatters) JSON и XML, действие будет поддерживать несколько типов содержимого, включая `application/json` и `application/xml`.
+
+Атрибут [[Consumes]](<xref:Microsoft.AspNetCore.Mvc.ConsumesAttribute>) позволяет выполнять действие для ограничения поддерживаемых типов содержимого запросов. Примените атрибут `[Consumes]` к действию или контроллеру, указав один или несколько типов содержимого:
+
+```csharp
+[HttpPost]
+[Consumes("application/xml")]
+public IActionResult CreateProduct(Product product)
+```
+
+В приведенном выше коде действие `CreateProduct` указывает тип содержимого `application/xml`. Запросы, направляемые в это действие, должны определять заголовок `Content-Type` `application/xml`. Запросы, не определяющие заголовок `Content-Type` `application/xml`, возвращают ответ [415 Unsupported Media Type](https://developer.mozilla.org/docs/Web/HTTP/Status/415) (неподдерживаемый тип данных).
+
+Атрибут `[Consumes]` также позволяет действию влиять на выбор с учетом типа содержимого входящего запроса, применяя ограничение типа. Рассмотрим следующий пример.
+
+[!code-csharp[](index/samples/3.x/Controllers/ConsumesController.cs?name=snippet_Class)]
+
+В приведенном выше коде для `ConsumesController` включена поддержка обработки запросов, отправляемых на URL-адрес `https://localhost:5001/api/Consumes`. Оба действия контроллера (`PostJson` и `PostForm`) обрабатывают запросы POST с одним и тем же URL-адресом. Если в атрибуте `[Consumes]` не применяется ограничение типа, возникает исключение неоднозначного соответствия.
+
+Атрибут `[Consumes]` применяется к обоим действиям. Действие `PostJson` обрабатывает запросы, отправленные с заголовком `Content-Type` `application/json`. Действие `PostForm` обрабатывает запросы, отправленные с заголовком `Content-Type` `application/x-www-form-urlencoded`. 
 
 ## <a name="additional-resources"></a>Дополнительные ресурсы
 
