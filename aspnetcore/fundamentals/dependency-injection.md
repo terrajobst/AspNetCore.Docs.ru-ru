@@ -5,14 +5,14 @@ description: Сведения о том, как ASP.NET Core реализует 
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 01/30/2020
+ms.date: 02/05/2020
 uid: fundamentals/dependency-injection
-ms.openlocfilehash: a9d268489ebcef69d64c6fd65087bc38a3581821
-ms.sourcegitcommit: 0b0e485a8a6dfcc65a7a58b365622b3839f4d624
+ms.openlocfilehash: 7c0789dafcb7dfacd15ac448a39bad94649963c8
+ms.sourcegitcommit: bd896935e91236e03241f75e6534ad6debcecbbf
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76928408"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77044917"
 ---
 # <a name="dependency-injection-in-aspnet-core"></a>Внедрение зависимостей в ASP.NET Core
 
@@ -544,7 +544,17 @@ public class Program
 
 ## <a name="scope-validation"></a>Проверка области
 
-Когда приложение выполняется в среде разработки, поставщик службы по умолчанию проверяет следующее:
+::: moniker range=">= aspnetcore-3.0"
+
+Когда приложение выполняется в среде разработки и вызывает [CreateDefaultBuilder](xref:fundamentals/host/generic-host#default-builder-settings) для сборки узла, поставщик службы по умолчанию проверяет следующее:
+
+::: moniker-end
+
+::: moniker range="< aspnetcore-3.0"
+
+Когда приложение выполняется в среде разработки и вызывает [CreateDefaultBuilder](xref:fundamentals/host/web-host#set-up-a-host) для сборки узла, поставщик службы по умолчанию проверяет следующее:
+
+::: moniker-end
 
 * Службы с заданной областью не разрешаются из корневого поставщика службы, прямо или косвенно.
 * Службы с заданной областью не вводятся в одноэлементные объекты, прямо или косвенно.
