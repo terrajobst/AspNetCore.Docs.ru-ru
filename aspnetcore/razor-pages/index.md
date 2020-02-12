@@ -6,12 +6,12 @@ monikerRange: '>= aspnetcore-2.0'
 ms.author: riande
 ms.date: 01/28/2020
 uid: razor-pages/index
-ms.openlocfilehash: da30908b38d553405fd3f959f09a19eff750ed17
-ms.sourcegitcommit: fe41cff0b99f3920b727286944e5b652ca301640
+ms.openlocfilehash: 402e11d653cf0e7433c63844cb7e2802abc61679
+ms.sourcegitcommit: 85564ee396c74c7651ac47dd45082f3f1803f7a2
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76870526"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77172607"
 ---
 # <a name="introduction-to-razor-pages-in-aspnet-core"></a>Введение в Razor Pages в ASP.NET Core
 
@@ -220,7 +220,7 @@ Razor Pages делает создание кодов сценариев для �
 
 Отображаемый HTML:
 
-```HTML
+```html
 <button type="submit" formaction="/Customers?id=1&amp;handler=delete">delete</button>
 ```
 
@@ -290,7 +290,7 @@ Razor Pages делает создание кодов сценариев для �
 Атрибут `[StringLength(10)]` создает `data-val-length-max="10"` в отображаемом HTML-коде. `data-val-length-max` не дает браузерам ввести больше заданной максимальной длины. Если для изменения и воспроизведения записи используется средство, например [Fiddler](https://www.telerik.com/fiddler), выполните следующие действия:
 
 * С именем, превышающим 10.
-* Возвращается сообщение об ошибке: "Имя поля должно быть строкой с максимальной длиной 10".  
+* Возвращается сообщение об ошибке: "Имя поля должно быть строкой с максимальной длиной 10". .
 
 Рассмотрим следующую модель `Movie`:
 
@@ -522,7 +522,7 @@ ASP.NET Core предоставляет <xref:Microsoft.AspNetCore.Mvc.Controlle
 
 Модель страницы *Pages/Customers/Index.cshtml.cs* применяет атрибут `[TempData]` к свойству `Message`.
 
-```cs
+```csharp
 [TempData]
 public string Message { get; set; }
 ```
@@ -603,7 +603,7 @@ public string Message { get; set; }
 * <xref:razor-pages/razor-pages-conventions>
 * <xref:test/razor-pages-tests>
 * <xref:mvc/views/partial>
-* [Интеграция компонентов в Razor Pages и приложения MVC](xref:blazor/hosting-models#integrate-razor-components-into-razor-pages-and-mvc-apps)
+* [Интеграция компонентов в Razor Pages и приложения MVC](xref:blazor/hosting-model-configuration#integrate-razor-components-into-razor-pages-and-mvc-apps)
 
 ::: moniker-end
 
@@ -1026,7 +1026,7 @@ ASP.NET Core позволяет использовать свойство [TempD
 
 Модель страницы *Pages/Customers/Index.cshtml.cs* применяет атрибут `[TempData]` к свойству `Message`.
 
-```cs
+```csharp
 [TempData]
 public string Message { get; set; }
 ```
