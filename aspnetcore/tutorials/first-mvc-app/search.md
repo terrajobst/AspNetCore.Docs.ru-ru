@@ -5,12 +5,12 @@ description: Инструкции по добавлению поиска в пр
 ms.author: riande
 ms.date: 12/13/2018
 uid: tutorials/first-mvc-app/search
-ms.openlocfilehash: 97ee5f66c142780d54d28013c109da61241d967b
-ms.sourcegitcommit: 2719c70cd15a430479ab4007ff3e197fbf5dfee0
+ms.openlocfilehash: 89f1fa84783430f160ca0b840bf7ae9699520cb7
+ms.sourcegitcommit: 85564ee396c74c7651ac47dd45082f3f1803f7a2
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68862944"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77171635"
 ---
 # <a name="add-search-to-an-aspnet-core-mvc-app"></a>Добавление поиска в приложение MVC ASP.NET Core
 
@@ -101,9 +101,9 @@ var movies = from m in _context.Movie
 
 В следующем примере разметки показано изменение тега `form`:
 
-```html
+```cshtml
 <form asp-controller="Movies" asp-action="Index" method="get">
-   ```
+```
 
 ## <a name="add-search-by-genre"></a>Добавление поиска по жанру
 

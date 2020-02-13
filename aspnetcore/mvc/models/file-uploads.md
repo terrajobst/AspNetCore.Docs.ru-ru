@@ -5,14 +5,14 @@ description: Сведения об использовании привязки �
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 11/04/2019
+ms.date: 02/11/2020
 uid: mvc/models/file-uploads
-ms.openlocfilehash: b5433576ff3e997e6d80201236be2d8463a52d07
-ms.sourcegitcommit: 7dfe6cc8408ac6a4549c29ca57b0c67ec4baa8de
+ms.openlocfilehash: 56fd26c1864089558f5cd89f693dc86ea30c3331
+ms.sourcegitcommit: 85564ee396c74c7651ac47dd45082f3f1803f7a2
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75829235"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77172470"
 ---
 # <a name="upload-files-in-aspnet-core"></a>Передача файлов в ASP.NET Core
 
@@ -83,7 +83,7 @@ ms.locfileid: "75829235"
   * Обычно службы обеспечивают улучшенную масштабируемость и устойчивость по сравнению с локальными решениями, которые обычно подвержены единым точкам отказа.
   * Затраты на использование служб обычно ниже в сценариях с крупномасштабной инфраструктурой хранения.
 
-  Дополнительные сведения см. в разделе [Краткое руководство. Использование библиотеки хранилища BLOB-объектов Azure версии 12 для .NET](/azure/storage/blobs/storage-quickstart-blobs-dotnet). В этом разделе показан метод <xref:Microsoft.Azure.Storage.File.CloudFile.UploadFromFileAsync*>, но метод <xref:Microsoft.Azure.Storage.File.CloudFile.UploadFromStreamAsync*> можно использовать для сохранения <xref:System.IO.FileStream> в хранилище BLOB-объектов при работе с <xref:System.IO.Stream>.
+  Дополнительные сведения см. в разделе [Краткое руководство. Использование библиотеки хранилища BLOB-объектов Azure версии 12 для .NET](/azure/storage/blobs/storage-quickstart-blobs-dotnet).
 
 ## <a name="file-upload-scenarios"></a>Сценарии передачи файлов
 

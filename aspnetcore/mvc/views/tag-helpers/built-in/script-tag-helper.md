@@ -6,12 +6,12 @@ description: Обнаруживайте атрибуты вспомогател�
 ms.custom: mvc
 ms.date: 12/02/2019
 uid: mvc/views/tag-helpers/builtin-th/script-tag-helper
-ms.openlocfilehash: 8a90eb5a74ff3f8178a47c59ad7ba1b6a389ab87
-ms.sourcegitcommit: 3b6b0a54b20dc99b0c8c5978400c60adf431072f
+ms.openlocfilehash: a037abb6a454e6d06305e7d7f6ecad0c2a0ca717
+ms.sourcegitcommit: 85564ee396c74c7651ac47dd45082f3f1803f7a2
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74717381"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77171845"
 ---
 # <a name="script-tag-helper-in-aspnet-core"></a>Вспомогательная функция тега сценария в ASP.NET Core
 
@@ -25,7 +25,7 @@ ms.locfileid: "74717381"
 
 В следующей разметке Razor показан элемент `script` с резервной копией:
 
-```HTML
+```html
 <script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-3.3.1.min.js"
         asp-fallback-src="~/lib/jquery/dist/jquery.min.js"
         asp-fallback-test="window.jQuery"
@@ -42,11 +42,11 @@ ms.locfileid: "74717381"
 
 ### <a name="asp-fallback-test"></a>asp-fallback-test
 
-Метод скрипта, определенный в основном скрипте, для использования в тесте резервного экземпляра. Дополнительные сведения можно найти по адресу: <xref:Microsoft.AspNetCore.Mvc.TagHelpers.ScriptTagHelper.FallbackTestExpression>.
+Метод скрипта, определенный в основном скрипте, для использования в тесте резервного экземпляра. Для получения дополнительной информации см. <xref:Microsoft.AspNetCore.Mvc.TagHelpers.ScriptTagHelper.FallbackTestExpression>.
 
 ### <a name="asp-fallback-src"></a>asp-fallback-src
 
-URL-адрес тега Script, на который можно перейти в случае сбоя основного URL-адреса. Дополнительные сведения можно найти по адресу: <xref:Microsoft.AspNetCore.Mvc.TagHelpers.ScriptTagHelper.FallbackSrc>.
+URL-адрес тега Script, на который можно перейти в случае сбоя основного URL-адреса. Для получения дополнительной информации см. <xref:Microsoft.AspNetCore.Mvc.TagHelpers.ScriptTagHelper.FallbackSrc>.
 
 ## <a name="additional-resources"></a>Дополнительные ресурсы
 
