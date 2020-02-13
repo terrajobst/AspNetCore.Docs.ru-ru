@@ -5,18 +5,18 @@ description: Используйте удостоверение с приложе
 ms.author: riande
 ms.date: 01/15/2020
 uid: security/authentication/identity
-ms.openlocfilehash: 98fee261a741a20eed181ca5b9a4ebb693deeb63
-ms.sourcegitcommit: cbd30479f42cbb3385000ef834d9c7d021fd218d
+ms.openlocfilehash: 164ba10c1d1e2a73ebeb8240293a58f158055699
+ms.sourcegitcommit: 85564ee396c74c7651ac47dd45082f3f1803f7a2
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76146515"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77172533"
 ---
 # <a name="introduction-to-identity-on-aspnet-core"></a>Введение в удостоверение на ASP.NET Core
 
 ::: moniker range=">= aspnetcore-3.0"
 
-Автор: [Рик Андерсон](https://twitter.com/RickAndMSFT) (Rick Anderson)
+Автор: [Рик Андерсон](https://twitter.com/RickAndMSFT)
 
 Удостоверение ASP.NET Core:
 
@@ -49,7 +49,7 @@ ms.locfileid: "76146515"
 # <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 * Выберите **файл** > **Новый** > **проект**.
-* Выберите **Новое веб-приложение ASP.NET Core**. Присвойте проекту имя **APP1** , которое будет иметь то же пространство имен, что и загружаемый проект. Нажмите кнопку **ОК**.
+* Выберите **Веб-приложение ASP.NET Core**. Присвойте проекту имя **APP1** , которое будет иметь то же пространство имен, что и загружаемый проект. Нажмите кнопку **ОК**.
 * Выберите ASP.NET Core **веб-приложение**, а затем щелкните **изменить проверку подлинности**.
 * Выберите **учетные записи отдельных пользователей** и нажмите кнопку **ОК**.
 
@@ -67,7 +67,7 @@ dotnet new webapp --auth Individual -uld -o WebApp1
 
 ---
 
-Созданный проект предоставляет [ASP.NET Core удостоверение](xref:security/authentication/identity) в виде [библиотеки классов Razor](xref:razor-pages/ui-class). Библиотека классов Razor Identity предоставляет конечные точки с областью `Identity`. Например:
+Созданный проект предоставляет [ASP.NET Core удостоверение](xref:security/authentication/identity) в виде [библиотеки классов Razor](xref:razor-pages/ui-class). Библиотека классов Razor Identity предоставляет конечные точки с областью `Identity`. Пример:
 
 * /идентити/аккаунт/логин
 * /идентити/аккаунт/логаут
@@ -144,11 +144,11 @@ dotnet aspnet-codegenerator identity -dc WebApp1.Data.ApplicationDbContext --fil
 
 [!code-csharp[](identity/sample/WebApp3/Areas/Identity/Pages/Account/Register.cshtml.cs?name=snippet&highlight=9)]
 
-Если пользователь создан, происходит вход пользователя путем вызова метода `_signInManager.SignInAsync`.
+Если пользователь успешно создан, пользователь входит в систему с помощью вызова `_signInManager.SignInAsync`.
 
 Инструкции по предотвращению немедленного входа при регистрации см. в статье [Подтверждение учетной записи](xref:security/authentication/accconfirm#prevent-login-at-registration) .
 
-### <a name="log-in"></a>Вход
+### <a name="log-in"></a>Вход в систему
 
 Форма входа отображается в следующих случаях:
 
@@ -159,9 +159,9 @@ dotnet aspnet-codegenerator identity -dc WebApp1.Data.ApplicationDbContext --fil
 
 [!code-csharp[](identity/sample/WebApp3/Areas/Identity/Pages/Account/Login.cshtml.cs?name=snippet&highlight=10-11)]
 
-Базовый класс `Controller` предоставляет свойство `User`, доступ к которому можно получить из методов контроллера. Например, можно перечислить `User.Claims` и принимать решения об авторизации. Для получения дополнительной информации см. <xref:security/authorization/introduction>.
+Базовый класс `Controller` предоставляет свойство `User`, доступ к которому можно получить из методов контроллера. Например, можно перечислить `User.Claims` и принимать решения об авторизации. Дополнительные сведения см. в разделе <xref:security/authorization/introduction>.
 
-### <a name="log-out"></a>Выход
+### <a name="log-out"></a>выход из системы;
 
 Ссылка **выхода** вызывает действие `LogoutModel.OnPost`. 
 
@@ -230,7 +230,7 @@ dotnet aspnet-codegenerator identity -dc WebApp1.Data.ApplicationDbContext --fil
 </Target>
 ```
 
-## <a name="next-steps"></a>Дальнейшие действия
+## <a name="next-steps"></a>Next Steps
 
 * Сведения о настройке удостоверений с помощью SQLite см. в [этой статье о проблемах GitHub](https://github.com/aspnet/AspNetCore.Docs/issues/5131) .
 * [Настройка Identity](xref:security/authentication/identity-configuration)
@@ -246,7 +246,7 @@ dotnet aspnet-codegenerator identity -dc WebApp1.Data.ApplicationDbContext --fil
 
 ::: moniker range="< aspnetcore-3.0"
 
-Автор: [Рик Андерсон](https://twitter.com/RickAndMSFT) (Rick Anderson)
+Автор: [Рик Андерсон](https://twitter.com/RickAndMSFT)
 
 ASP.NET Core удостоверение — это система членства, которая добавляет функции входа в ASP.NET Core приложения. Пользователи могут создать учетную запись с данными для входа, хранящимися в удостоверении, или использовать внешнего поставщика входа. Поддерживаемые внешние поставщики входа включают [Facebook, Google, учетную запись Майкрософт и Twitter](xref:security/authentication/social/index).
 
@@ -275,7 +275,7 @@ ASP.NET Core удостоверение — это система членств
 # <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 * Выберите **файл** > **Новый** > **проект**.
-* Выберите **Новое веб-приложение ASP.NET Core**. Присвойте проекту имя **APP1** , которое будет иметь то же пространство имен, что и загружаемый проект. Нажмите кнопку **ОК**.
+* Выберите **Веб-приложение ASP.NET Core**. Присвойте проекту имя **APP1** , которое будет иметь то же пространство имен, что и загружаемый проект. Нажмите кнопку **ОК**.
 * Выберите ASP.NET Core **веб-приложение**, а затем щелкните **изменить проверку подлинности**.
 * Выберите **учетные записи отдельных пользователей** и нажмите кнопку **ОК**.
 
@@ -287,7 +287,7 @@ dotnet new webapp --auth Individual -o WebApp1
 
 ---
 
-Созданный проект предоставляет [ASP.NET Core удостоверение](xref:security/authentication/identity) в виде [библиотеки классов Razor](xref:razor-pages/ui-class). Библиотека классов Razor Identity предоставляет конечные точки с областью `Identity`. Например:
+Созданный проект предоставляет [ASP.NET Core удостоверение](xref:security/authentication/identity) в виде [библиотеки классов Razor](xref:razor-pages/ui-class). Библиотека классов Razor Identity предоставляет конечные точки с областью `Identity`. Пример:
 
 * /идентити/аккаунт/логин
 * /идентити/аккаунт/логаут
@@ -301,7 +301,9 @@ dotnet new webapp --auth Individual -o WebApp1
 
 Выполните следующую команду в консоли диспетчера пакетов (PMC):
 
-```PM> Update-Database```
+```powershell
+Update-Database
+```
 
 # <a name="net-core-clitabnetcore-cli"></a>[Интерфейс командной строки .NET Core](#tab/netcore-cli)
 
@@ -360,11 +362,11 @@ dotnet aspnet-codegenerator identity -dc WebApp1.Data.ApplicationDbContext --fil
 
 [!code-csharp[](identity/sample/WebApp1/Areas/Identity/Pages/Account/Register.cshtml.cs?name=snippet&highlight=7)]
 
-Если пользователь создан, происходит вход пользователя путем вызова метода `_signInManager.SignInAsync`.
+Если пользователь успешно создан, пользователь входит в систему с помощью вызова `_signInManager.SignInAsync`.
 
-**Примечание.** Раздел [подтверждение учетной записи](xref:security/authentication/accconfirm#prevent-login-at-registration) описывает, как предотвратить автоматический вход пользователя при регистрации.
+**Примечание.** Инструкции по предотвращению немедленного входа при регистрации см. в статье [Подтверждение учетной записи](xref:security/authentication/accconfirm#prevent-login-at-registration) .
 
-### <a name="log-in"></a>Вход
+### <a name="log-in"></a>Вход в систему
 
 Форма входа отображается в следующих случаях:
 
@@ -375,9 +377,9 @@ dotnet aspnet-codegenerator identity -dc WebApp1.Data.ApplicationDbContext --fil
 
 [!code-csharp[](identity/sample/WebApp1/Areas/Identity/Pages/Account/Login.cshtml.cs?name=snippet&highlight=10-11)]
 
-Базовый класс `Controller` предоставляет свойство `User`, доступ к которому можно получить из методов контроллера. Например, можно перечислить `User.Claims` и принимать решения об авторизации. Для получения дополнительной информации см. <xref:security/authorization/introduction>.
+Базовый класс `Controller` предоставляет свойство `User`, доступ к которому можно получить из методов контроллера. Например, можно перечислить `User.Claims` и принимать решения об авторизации. Дополнительные сведения см. в разделе <xref:security/authorization/introduction>.
 
-### <a name="log-out"></a>Выход
+### <a name="log-out"></a>выход из системы;
 
 Ссылка **выхода** вызывает действие `LogoutModel.OnPost`. 
 
@@ -418,7 +420,7 @@ dotnet aspnet-codegenerator identity -dc WebApp1.Data.ApplicationDbContext --fil
 
 См. раздел [Конфигурация](#pw) для примера, который устанавливает минимальные требования к паролю.
 
-## <a name="next-steps"></a>Дальнейшие действия
+## <a name="next-steps"></a>Next Steps
 
 * Сведения о настройке удостоверений с помощью SQLite см. в [этой статье о проблемах GitHub](https://github.com/aspnet/AspNetCore.Docs/issues/5131) .
 * [Настройка Identity](xref:security/authentication/identity-configuration)

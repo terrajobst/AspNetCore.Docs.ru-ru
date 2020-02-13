@@ -1,19 +1,19 @@
 ---
-title: gRPC в приложениях браузера
+title: Использование gRPC в приложениях на основе браузера
 author: jamesnk
 description: Узнайте, как настроить gRPC Services на ASP.NET Core для вызова из приложений браузера с помощью gRPC-Web.
 monikerRange: '>= aspnetcore-3.0'
 ms.author: jamesnk
-ms.date: 01/24/2020
+ms.date: 02/10/2020
 uid: grpc/browser
-ms.openlocfilehash: 6359c3b76b3cb1ba2b6d9f9a989f64cbf4c4379d
-ms.sourcegitcommit: b5ceb0a46d0254cc3425578116e2290142eec0f0
+ms.openlocfilehash: 333fc8c4277bbac47042d4904c276e963186914a
+ms.sourcegitcommit: 85564ee396c74c7651ac47dd45082f3f1803f7a2
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76830636"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77172276"
 ---
-# <a name="grpc-in-browser-apps"></a>gRPC в приложениях браузера
+# <a name="use-grpc-in-browser-apps"></a>Использование gRPC в приложениях на основе браузера
 
 [Джеймс Ньютона-короля](https://twitter.com/jamesnk)
 
@@ -38,7 +38,7 @@ ms.locfileid: "76830636"
 * Добавьте ссылку на пакет [GRPC. AspNetCore. Web](https://www.nuget.org/packages/Grpc.AspNetCore.Web) .
 * Настройте приложение для использования gRPC-Web, добавив `AddGrpcWeb` и `UseGrpcWeb` в *Startup.CS*:
 
-[!code-csharp[](~/grpc/browser/sample/Startup.cs?name=snippet_1&highlight=3,10,14)]
+[!code-csharp[](~/grpc/browser/sample/Startup.cs?name=snippet_1&highlight=10,14)]
 
 Предыдущий код:
 
@@ -47,7 +47,7 @@ ms.locfileid: "76830636"
 
 Кроме того, можно настроить все службы для поддержки gRPC-Web, добавив `services.AddGrpcWeb(o => o.GrpcWebEnabled = true);` в ConfigureServices.
 
-[!code-csharp[](~/grpc/browser/sample/AllServicesSupportExample_Startup.cs?name=snippet_1&highlight=5,12,16)]
+[!code-csharp[](~/grpc/browser/sample/AllServicesSupportExample_Startup.cs?name=snippet_1&highlight=6,13)]
 
 Для вызова gRPC-Web из браузера может потребоваться дополнительная настройка, например настройка ASP.NET Core для поддержки CORS. Дополнительные сведения см. в разделе [Поддержка CORS](xref:security/cors).
 
@@ -70,6 +70,7 @@ ms.locfileid: "76830636"
 Чтобы использовать gRPC-Web:
 
 * Добавьте ссылку на пакет [GRPC .NET. Client. Web](https://www.nuget.org/packages/Grpc.Net.Client.Web) .
+* Убедитесь, что ссылка на [GRPC .NET. Client](https://www.nuget.org/packages/Grpc.Net.Client) Package находится в 2.27.0 или более поздней версии.
 * Настройте канал для использования `GrpcWebHandler`:
 
 [!code-csharp[](~/grpc/browser/sample/Handler.cs?name=snippet_1)]
@@ -81,9 +82,14 @@ ms.locfileid: "76830636"
 
 При создании `GrpcWebHandler` имеет следующие параметры конфигурации:
 
-* **Иннерхандлер**: базовый <xref:System.Net.Http.HttpMessageHandler>, который выполняет HTTP-вызов, например `HttpClientHandler`.
-* **Mode**: `GrpcWebMode` Enum. `GrpcWebMode.GrpcWebText` настраивает содержимое в кодировке Base64, которое требуется для поддержки вызовов потоковой передачи сервера.
-* **Хттпверсион**: `Version`протокола HTTP. gRPC-Web не требует определенного протокола и не укажет его при выполнении запроса, если не настроено.
+* **Иннерхандлер**: базовый <xref:System.Net.Http.HttpMessageHandler>, который делает HTTP-запрос gRPC, например `HttpClientHandler`.
+* **Mode**: тип перечисления, указывающий, `Content-Type` ли запрос HTTP-запроса gRPC `application/grpc-web` или `application/grpc-web-text`.
+    * `GrpcWebMode.GrpcWeb` настраивает содержимое для отправки без кодирования. Значение по умолчанию.
+    * `GrpcWebMode.GrpcWebText` настраивает содержимое в кодировке Base64. Требуется для вызовов потоковой передачи сервера в браузерах.
+* **Хттпверсион**: протокол HTTP `Version` используется для задания [HttpRequestMessage. Version](xref:System.Net.Http.HttpRequestMessage.Version) в базовом HTTP-запросе gRPC. gRPC-Web не требует определенной версии и не переопределяет значение по умолчанию, если не указано иное.
+
+> [!IMPORTANT]
+> Созданные клиенты gRPC имеют синхронные и асинхронные методы для вызова унарных методов. Например, `SayHello` синхронизируется и `SayHelloAsync` является асинхронным. Вызов метода Sync в приложении Блазор сборки приведет к тому, что приложение перестанет отвечать на запросы. Асинхронные методы всегда должны использоваться в Блазор.
 
 ## <a name="additional-resources"></a>Дополнительные ресурсы
 

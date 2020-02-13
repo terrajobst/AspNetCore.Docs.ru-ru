@@ -1,17 +1,17 @@
 ---
 title: Миграция с ASP.NET на ASP.NET Core 2.0
 author: isaac2004
-description: Получают рекомендации для переноса существующих приложений ASP.NET MVC или веб-API в ASP.NET Core 2.0.
+description: Получите рекомендации по миграции существующих приложений ASP.NET MVC или веб-API на ASP.NET Core 2,0.
 ms.author: scaddie
 ms.custom: mvc
 ms.date: 10/24/2018
 uid: migration/mvc2
-ms.openlocfilehash: e9dffe8bce502e48a09af04ea0be9952a68aa46f
-ms.sourcegitcommit: 8516b586541e6ba402e57228e356639b85dfb2b9
+ms.openlocfilehash: 11bd3b948afaedc675ac4249099969382683f653
+ms.sourcegitcommit: 85564ee396c74c7651ac47dd45082f3f1803f7a2
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67815456"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77172439"
 ---
 # <a name="migrate-from-aspnet-to-aspnet-core-20"></a>Миграция с ASP.NET на ASP.NET Core 2.0
 
@@ -19,11 +19,11 @@ ms.locfileid: "67815456"
 
 Данная статья служит руководством по миграции приложений ASP.NET на ASP.NET Core 2.0.
 
-## <a name="prerequisites"></a>Предварительные требования
+## <a name="prerequisites"></a>предварительные требования
 
-Установка **один** из указанных ниже [загрузки .NET: Windows](https://www.microsoft.com/net/download/windows):
+Установите **одну** из следующих версий из центра [загрузки .NET: Windows](https://www.microsoft.com/net/download/windows):
 
-* Пакет SDK для .NET Core
+* Пакет SDK для .NET Core.
 * Visual Studio для Windows
   * Рабочая нагрузка **ASP.NET и веб-разработка**
   * Рабочая нагрузка **Кроссплатформенная разработка .NET Core**
@@ -42,7 +42,7 @@ ms.locfileid: "67815456"
 </ItemGroup>
 ```
 
-При использовании метапакета никакие указанные по ссылкам пакеты с приложением не развертываются. Все эти ресурсы входят в хранилище среды выполнения .NET Core и предварительно компилируются для повышения производительности. См. в разделе <xref:fundamentals/metapackage> для получения дополнительных сведений.
+При использовании метапакета никакие указанные по ссылкам пакеты с приложением не развертываются. Все эти ресурсы входят в хранилище среды выполнения .NET Core и предварительно компилируются для повышения производительности. Дополнительные сведения см. в разделе <xref:fundamentals/metapackage>.
 
 ## <a name="project-structure-differences"></a>Различия в структуре пакетов
 
@@ -76,13 +76,13 @@ ASP.NET Core использует аналогичный подход, но не
 * Страницы ошибок
 * Статические файлы
 * ASP.NET Core MVC
-* идентификации
+* Удостоверение
 
 [!code-csharp[](../../common/samples/WebApplication1/Startup.cs?highlight=8,9,10,14,17,19,21&start=58&end=84)]
 
 Сервер и приложение разделены, что позволит вам в будущем легко перейти на другую платформу.
 
-Более подробное руководство по запуску ASP.NET Core и по промежуточного слоя, см. в разделе <xref:fundamentals/startup>.
+Более подробные справочные сведения о ASP.NET Core запуске и по промежуточного слоя см. в разделе <xref:fundamentals/startup>.
 
 ## <a name="storing-configurations"></a>Конфигурации хранения
 
@@ -108,20 +108,20 @@ ASP.NET Core может сохранять данные конфигурации
 
 Существуют расширения, повышающие надежность этого подхода, например, [внедрение зависимостей](xref:fundamentals/dependency-injection) позволяет загружать эти значения в службу. Метод внедрения зависимостей предоставляет строго типизированный набор объектов конфигурации.
 
-````csharp
+```csharp
 // Assume AppConfiguration is a class representing a strongly-typed version of AppConfiguration section
 services.Configure<AppConfiguration>(Configuration.GetSection("AppConfiguration"));
-````
+```
 
-**Примечание.** Более подробное руководство по конфигурации ASP.NET Core, см. в разделе <xref:fundamentals/configuration/index>.
+**Примечание.** Более подробные справочные сведения о ASP.NET Core конфигурации см. в разделе <xref:fundamentals/configuration/index>.
 
 ## <a name="native-dependency-injection"></a>Собственные функции внедрения зависимостей
 
-При сборке больших, масштабируемых приложений важно обеспечить слабые взаимозависимости между компонентами и службами. [Внедрение зависимостей](xref:fundamentals/dependency-injection) — популярный способ решения этой задачи, и это собственный компонент ASP.NET Core.
+При сборке больших, масштабируемых приложений важно обеспечить слабые взаимозависимости между компонентами и службами. [Внедрение зависимостей](xref:fundamentals/dependency-injection) — это популярная методика для достижения этого, и это собственный компонент ASP.NET Core.
 
-В приложениях ASP.NET разработчики используют сторонние библиотеки для внедрения зависимостей. Одна из таких библиотек, [Unity](https://github.com/unitycontainer/unity), входит в шаблоны и рекомендации Майкрософт.
+В приложениях ASP.NET разработчики используют библиотеку сторонних производителей для реализации внедрения зависимостей. Одна из таких библиотек, [Unity](https://github.com/unitycontainer/unity), входит в шаблоны и рекомендации Майкрософт.
 
-Реализация примером внедрения зависимостей с помощью Unity `IDependencyResolver` , который служит оболочкой `UnityContainer`:
+Примером настройки внедрения зависимостей с помощью Unity является реализация `IDependencyResolver`, которая создает оболочку для `UnityContainer`:
 
 [!code-csharp[](samples/sample8.cs)]
 
@@ -133,7 +133,7 @@ services.Configure<AppConfiguration>(Configuration.GetSection("AppConfiguration"
 
 [!code-csharp[](samples/sample5.cs)]
 
-Так как внедрение зависимостей является частью ASP.NET Core, можно добавить службу в `Startup.ConfigureServices`:
+Поскольку внедрение зависимостей является частью ASP.NET Core, можно добавить службу в `Startup.ConfigureServices`:
 
 [!code-csharp[](samples/configure-services.cs)]
 
@@ -151,11 +151,11 @@ services.Configure<AppConfiguration>(Configuration.GetSection("AppConfiguration"
 
 [!code-csharp[](../../fundamentals/static-files/samples/1x/StartupStaticFiles.cs?highlight=3&name=snippet_ConfigureMethod)]
 
-**Примечание.** Для работы с .NET Framework установите пакет NuGet `Microsoft.AspNetCore.StaticFiles`.
+**Примечание**. Для работы с .NET Framework установите пакет NuGet `Microsoft.AspNetCore.StaticFiles`.
 
 Например, ресурс изображения в папке *wwwroot/images* доступен для браузера в расположении `http://<app>/images/<imageFileName>`.
 
-**Примечание.** Более подробное руководство по обработке статических файлов в ASP.NET Core, см. в разделе <xref:fundamentals/static-files>.
+**Примечание.** Более подробное руководство по обслуживанию статических файлов в ASP.NET Core см. в разделе <xref:fundamentals/static-files>.
 
 ## <a name="additional-resources"></a>Дополнительные ресурсы
 
