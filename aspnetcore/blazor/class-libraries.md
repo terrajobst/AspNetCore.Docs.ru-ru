@@ -5,57 +5,75 @@ description: Узнайте, как компоненты можно включа
 monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 12/18/2019
+ms.date: 01/23/2020
 no-loc:
 - Blazor
 - SignalR
 uid: blazor/class-libraries
-ms.openlocfilehash: f8e8688cdb3d1aef0d470e0e2d8c3857140ef65f
-ms.sourcegitcommit: 9ee99300a48c810ca6fd4f7700cd95c3ccb85972
+ms.openlocfilehash: 32088b43f91174596f6b9251d36782e806f966b9
+ms.sourcegitcommit: d2ba66023884f0dca115ff010bd98d5ed6459283
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76160032"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77213253"
 ---
-# <a name="aspnet-core-razor-components-class-libraries"></a><span data-ttu-id="cc646-103">Библиотеки классов компонентов Razor ASP.NET Core</span><span class="sxs-lookup"><span data-stu-id="cc646-103">ASP.NET Core Razor components class libraries</span></span>
+# <a name="aspnet-core-razor-components-class-libraries"></a><span data-ttu-id="1d34c-103">Библиотеки классов компонентов Razor ASP.NET Core</span><span class="sxs-lookup"><span data-stu-id="1d34c-103">ASP.NET Core Razor components class libraries</span></span>
 
-<span data-ttu-id="cc646-104">По [Simon Тиммс](https://github.com/stimms)</span><span class="sxs-lookup"><span data-stu-id="cc646-104">By [Simon Timms](https://github.com/stimms)</span></span>
+<span data-ttu-id="1d34c-104">По [Simon Тиммс](https://github.com/stimms)</span><span class="sxs-lookup"><span data-stu-id="1d34c-104">By [Simon Timms](https://github.com/stimms)</span></span>
 
-<span data-ttu-id="cc646-105">Компоненты можно совместно использовать в [библиотеке классов Razor (РКЛ)](xref:razor-pages/ui-class) в разных проектах.</span><span class="sxs-lookup"><span data-stu-id="cc646-105">Components can be shared in a [Razor class library (RCL)](xref:razor-pages/ui-class) across projects.</span></span> <span data-ttu-id="cc646-106">*Библиотеку классов компонентов Razor* можно включать в:</span><span class="sxs-lookup"><span data-stu-id="cc646-106">A *Razor components class library* can be included from:</span></span>
+<span data-ttu-id="1d34c-105">Компоненты можно совместно использовать в [библиотеке классов Razor (РКЛ)](xref:razor-pages/ui-class) в разных проектах.</span><span class="sxs-lookup"><span data-stu-id="1d34c-105">Components can be shared in a [Razor class library (RCL)](xref:razor-pages/ui-class) across projects.</span></span> <span data-ttu-id="1d34c-106">*Библиотеку классов компонентов Razor* можно включать в:</span><span class="sxs-lookup"><span data-stu-id="1d34c-106">A *Razor components class library* can be included from:</span></span>
 
-* <span data-ttu-id="cc646-107">Другой проект в решении.</span><span class="sxs-lookup"><span data-stu-id="cc646-107">Another project in the solution.</span></span>
-* <span data-ttu-id="cc646-108">Пакет NuGet.</span><span class="sxs-lookup"><span data-stu-id="cc646-108">A NuGet package.</span></span>
-* <span data-ttu-id="cc646-109">Упоминаемая библиотека .NET.</span><span class="sxs-lookup"><span data-stu-id="cc646-109">A referenced .NET library.</span></span>
+* <span data-ttu-id="1d34c-107">Другой проект в решении.</span><span class="sxs-lookup"><span data-stu-id="1d34c-107">Another project in the solution.</span></span>
+* <span data-ttu-id="1d34c-108">Пакет NuGet.</span><span class="sxs-lookup"><span data-stu-id="1d34c-108">A NuGet package.</span></span>
+* <span data-ttu-id="1d34c-109">Упоминаемая библиотека .NET.</span><span class="sxs-lookup"><span data-stu-id="1d34c-109">A referenced .NET library.</span></span>
 
-<span data-ttu-id="cc646-110">Так же как и компоненты — обычные типы .NET, компоненты, предоставляемые РКЛ, являются нормальными сборками .NET.</span><span class="sxs-lookup"><span data-stu-id="cc646-110">Just as components are regular .NET types, components provided by an RCL are normal .NET assemblies.</span></span>
+<span data-ttu-id="1d34c-110">Так же как и компоненты — обычные типы .NET, компоненты, предоставляемые РКЛ, являются нормальными сборками .NET.</span><span class="sxs-lookup"><span data-stu-id="1d34c-110">Just as components are regular .NET types, components provided by an RCL are normal .NET assemblies.</span></span>
 
-## <a name="create-an-rcl"></a><span data-ttu-id="cc646-111">Создание РКЛ</span><span class="sxs-lookup"><span data-stu-id="cc646-111">Create an RCL</span></span>
+## <a name="create-an-rcl"></a><span data-ttu-id="1d34c-111">Создание РКЛ</span><span class="sxs-lookup"><span data-stu-id="1d34c-111">Create an RCL</span></span>
 
-<span data-ttu-id="cc646-112">Следуйте указаниям в статье <xref:blazor/get-started>, чтобы настроить среду для Blazor.</span><span class="sxs-lookup"><span data-stu-id="cc646-112">Follow the guidance in the <xref:blazor/get-started> article to configure your environment for Blazor.</span></span>
+<span data-ttu-id="1d34c-112">Следуйте указаниям в статье <xref:blazor/get-started>, чтобы настроить среду для Блазор.</span><span class="sxs-lookup"><span data-stu-id="1d34c-112">Follow the guidance in the <xref:blazor/get-started> article to configure your environment for Blazor.</span></span>
 
-# <a name="visual-studiotabvisual-studio"></a>[<span data-ttu-id="cc646-113">Visual Studio</span><span class="sxs-lookup"><span data-stu-id="cc646-113">Visual Studio</span></span>](#tab/visual-studio)
+# <a name="visual-studiotabvisual-studio"></a>[<span data-ttu-id="1d34c-113">Visual Studio</span><span class="sxs-lookup"><span data-stu-id="1d34c-113">Visual Studio</span></span>](#tab/visual-studio)
 
-1. <span data-ttu-id="cc646-114">Создайте новый проект.</span><span class="sxs-lookup"><span data-stu-id="cc646-114">Create a new project.</span></span>
-1. <span data-ttu-id="cc646-115">Выберите пункт **Библиотека классов Razor**.</span><span class="sxs-lookup"><span data-stu-id="cc646-115">Select **Razor Class Library**.</span></span> <span data-ttu-id="cc646-116">Выберите **Далее**.</span><span class="sxs-lookup"><span data-stu-id="cc646-116">Select **Next**.</span></span>
-1. <span data-ttu-id="cc646-117">В диалоговом окне **Создание новой библиотеки классов Razor** выберите **создать**.</span><span class="sxs-lookup"><span data-stu-id="cc646-117">In the **Create a new Razor class library** dialog, select **Create**.</span></span>
-1. <span data-ttu-id="cc646-118">В поле **Имя проекта** укажите имя проекта или оставьте имя по умолчанию.</span><span class="sxs-lookup"><span data-stu-id="cc646-118">Provide a project name in the **Project name** field or accept the default project name.</span></span> <span data-ttu-id="cc646-119">В примерах этого раздела используется имя проекта `MyComponentLib1`.</span><span class="sxs-lookup"><span data-stu-id="cc646-119">The examples in this topic use the project name `MyComponentLib1`.</span></span> <span data-ttu-id="cc646-120">Выберите **Создать**.</span><span class="sxs-lookup"><span data-stu-id="cc646-120">Select **Create**.</span></span>
-1. <span data-ttu-id="cc646-121">Добавьте РКЛ в решение:</span><span class="sxs-lookup"><span data-stu-id="cc646-121">Add the RCL to a solution:</span></span>
-   1. <span data-ttu-id="cc646-122">Щелкните решение правой кнопкой мыши.</span><span class="sxs-lookup"><span data-stu-id="cc646-122">Right-click the solution.</span></span> <span data-ttu-id="cc646-123">Выберите **добавить** > **существующий проект**.</span><span class="sxs-lookup"><span data-stu-id="cc646-123">Select **Add** > **Existing Project**.</span></span>
-   1. <span data-ttu-id="cc646-124">Перейдите к файлу проекта РКЛ.</span><span class="sxs-lookup"><span data-stu-id="cc646-124">Navigate to the RCL's project file.</span></span>
-   1. <span data-ttu-id="cc646-125">Выберите файл проекта РКЛ ( *. csproj*).</span><span class="sxs-lookup"><span data-stu-id="cc646-125">Select the RCL's project file (*.csproj*).</span></span>
-1. <span data-ttu-id="cc646-126">Добавьте ссылку на РКЛ из приложения:</span><span class="sxs-lookup"><span data-stu-id="cc646-126">Add a reference the RCL from the app:</span></span>
-   1. <span data-ttu-id="cc646-127">Щелкните проект приложения правой кнопкой мыши.</span><span class="sxs-lookup"><span data-stu-id="cc646-127">Right-click the app project.</span></span> <span data-ttu-id="cc646-128">Выберите **добавить** > **ссылку**.</span><span class="sxs-lookup"><span data-stu-id="cc646-128">Select **Add** > **Reference**.</span></span>
-   1. <span data-ttu-id="cc646-129">Выберите проект РКЛ.</span><span class="sxs-lookup"><span data-stu-id="cc646-129">Select the RCL project.</span></span> <span data-ttu-id="cc646-130">Нажмите кнопку **ОК**.</span><span class="sxs-lookup"><span data-stu-id="cc646-130">Select **OK**.</span></span>
+1. <span data-ttu-id="1d34c-114">Создайте новый проект.</span><span class="sxs-lookup"><span data-stu-id="1d34c-114">Create a new project.</span></span>
+1. <span data-ttu-id="1d34c-115">Выберите пункт **Библиотека классов Razor**.</span><span class="sxs-lookup"><span data-stu-id="1d34c-115">Select **Razor Class Library**.</span></span> <span data-ttu-id="1d34c-116">Выберите **Далее**.</span><span class="sxs-lookup"><span data-stu-id="1d34c-116">Select **Next**.</span></span>
+1. <span data-ttu-id="1d34c-117">В диалоговом окне **Создание новой библиотеки классов Razor** выберите **создать**.</span><span class="sxs-lookup"><span data-stu-id="1d34c-117">In the **Create a new Razor class library** dialog, select **Create**.</span></span>
+1. <span data-ttu-id="1d34c-118">В поле **Имя проекта** укажите имя проекта или оставьте имя по умолчанию.</span><span class="sxs-lookup"><span data-stu-id="1d34c-118">Provide a project name in the **Project name** field or accept the default project name.</span></span> <span data-ttu-id="1d34c-119">В примерах этого раздела используется имя проекта `MyComponentLib1`.</span><span class="sxs-lookup"><span data-stu-id="1d34c-119">The examples in this topic use the project name `MyComponentLib1`.</span></span> <span data-ttu-id="1d34c-120">Нажмите кнопку **Создать**.</span><span class="sxs-lookup"><span data-stu-id="1d34c-120">Select **Create**.</span></span>
+1. <span data-ttu-id="1d34c-121">Добавьте РКЛ в решение:</span><span class="sxs-lookup"><span data-stu-id="1d34c-121">Add the RCL to a solution:</span></span>
+   1. <span data-ttu-id="1d34c-122">Щелкните решение правой кнопкой мыши.</span><span class="sxs-lookup"><span data-stu-id="1d34c-122">Right-click the solution.</span></span> <span data-ttu-id="1d34c-123">Выберите **добавить** > **существующий проект**.</span><span class="sxs-lookup"><span data-stu-id="1d34c-123">Select **Add** > **Existing Project**.</span></span>
+   1. <span data-ttu-id="1d34c-124">Перейдите к файлу проекта РКЛ.</span><span class="sxs-lookup"><span data-stu-id="1d34c-124">Navigate to the RCL's project file.</span></span>
+   1. <span data-ttu-id="1d34c-125">Выберите файл проекта РКЛ ( *. csproj*).</span><span class="sxs-lookup"><span data-stu-id="1d34c-125">Select the RCL's project file (*.csproj*).</span></span>
+1. <span data-ttu-id="1d34c-126">Добавьте ссылку на РКЛ из приложения:</span><span class="sxs-lookup"><span data-stu-id="1d34c-126">Add a reference the RCL from the app:</span></span>
+   1. <span data-ttu-id="1d34c-127">Щелкните проект приложения правой кнопкой мыши.</span><span class="sxs-lookup"><span data-stu-id="1d34c-127">Right-click the app project.</span></span> <span data-ttu-id="1d34c-128">Выберите **добавить** > **ссылку**.</span><span class="sxs-lookup"><span data-stu-id="1d34c-128">Select **Add** > **Reference**.</span></span>
+   1. <span data-ttu-id="1d34c-129">Выберите проект РКЛ.</span><span class="sxs-lookup"><span data-stu-id="1d34c-129">Select the RCL project.</span></span> <span data-ttu-id="1d34c-130">Нажмите кнопку **ОК**.</span><span class="sxs-lookup"><span data-stu-id="1d34c-130">Select **OK**.</span></span>
 
-# <a name="net-core-clitabnetcore-cli"></a>[<span data-ttu-id="cc646-131">Интерфейс командной строки .NET Core</span><span class="sxs-lookup"><span data-stu-id="cc646-131">.NET Core CLI</span></span>](#tab/netcore-cli)
+> [!NOTE]
+> <span data-ttu-id="1d34c-131">Если флажок " **страницы и представления поддержки** " установлен при создании РКЛ на основе шаблона, добавьте файл *_Imports. Razor* в корень созданного проекта со следующим содержимым, чтобы включить создание компонентов Razor:</span><span class="sxs-lookup"><span data-stu-id="1d34c-131">If the **Support pages and views** check box is selected when generating the RCL from the template, then also add an *_Imports.razor* file to root of the generated project with the following contents to enable Razor component authoring:</span></span>
+>
+> ```razor
+> @using Microsoft.AspNetCore.Components.Web
+> ```
+>
+> <span data-ttu-id="1d34c-132">Вручную добавьте файл в качестве корня созданного проекта.</span><span class="sxs-lookup"><span data-stu-id="1d34c-132">Manually add the file the root of the generated project.</span></span>
 
-1. <span data-ttu-id="cc646-132">Используйте шаблон **библиотеки классов Razor** (`razorclasslib`) с командой [DotNet New](/dotnet/core/tools/dotnet-new) в командной оболочке.</span><span class="sxs-lookup"><span data-stu-id="cc646-132">Use the **Razor Class Library** template (`razorclasslib`) with the [dotnet new](/dotnet/core/tools/dotnet-new) command in a command shell.</span></span> <span data-ttu-id="cc646-133">В следующем примере создается РКЛ с именем `MyComponentLib1`.</span><span class="sxs-lookup"><span data-stu-id="cc646-133">In the following example, an RCL is created named `MyComponentLib1`.</span></span> <span data-ttu-id="cc646-134">Папка, содержащая `MyComponentLib1`, создается автоматически при выполнении команды:</span><span class="sxs-lookup"><span data-stu-id="cc646-134">The folder that holds `MyComponentLib1` is created automatically when the command is executed:</span></span>
+# <a name="net-core-clitabnetcore-cli"></a>[<span data-ttu-id="1d34c-133">Интерфейс командной строки .NET Core</span><span class="sxs-lookup"><span data-stu-id="1d34c-133">.NET Core CLI</span></span>](#tab/netcore-cli)
+
+1. <span data-ttu-id="1d34c-134">Используйте шаблон **библиотеки классов Razor** (`razorclasslib`) с командой [DotNet New](/dotnet/core/tools/dotnet-new) в командной оболочке.</span><span class="sxs-lookup"><span data-stu-id="1d34c-134">Use the **Razor Class Library** template (`razorclasslib`) with the [dotnet new](/dotnet/core/tools/dotnet-new) command in a command shell.</span></span> <span data-ttu-id="1d34c-135">В следующем примере создается РКЛ с именем `MyComponentLib1`.</span><span class="sxs-lookup"><span data-stu-id="1d34c-135">In the following example, an RCL is created named `MyComponentLib1`.</span></span> <span data-ttu-id="1d34c-136">Папка, содержащая `MyComponentLib1`, создается автоматически при выполнении команды:</span><span class="sxs-lookup"><span data-stu-id="1d34c-136">The folder that holds `MyComponentLib1` is created automatically when the command is executed:</span></span>
 
    ```dotnetcli
    dotnet new razorclasslib -o MyComponentLib1
    ```
 
-1. <span data-ttu-id="cc646-135">Чтобы добавить библиотеку в существующий проект, используйте команду [DotNet Add Reference](/dotnet/core/tools/dotnet-add-reference) в командной оболочке.</span><span class="sxs-lookup"><span data-stu-id="cc646-135">To add the library to an existing project, use the [dotnet add reference](/dotnet/core/tools/dotnet-add-reference) command in a command shell.</span></span> <span data-ttu-id="cc646-136">В следующем примере РКЛ добавляется в приложение.</span><span class="sxs-lookup"><span data-stu-id="cc646-136">In the following example, the RCL is added to the app.</span></span> <span data-ttu-id="cc646-137">Выполните следующую команду из папки проекта приложения, указав путь к библиотеке:</span><span class="sxs-lookup"><span data-stu-id="cc646-137">Execute the following command from the app's project folder with the path to the library:</span></span>
+   > [!NOTE]
+   > <span data-ttu-id="1d34c-137">Если при создании РКЛ из шаблона используется параметр `-s|--support-pages-and-views`, добавьте файл *_Imports. Razor* в корень созданного проекта со следующим содержимым, чтобы включить создание компонентов Razor:</span><span class="sxs-lookup"><span data-stu-id="1d34c-137">If the `-s|--support-pages-and-views` switch is used when generating the RCL from the template, then also add an *_Imports.razor* file to root of the generated project with the following contents to enable Razor component authoring:</span></span>
+   >
+   > ```razor
+   > @using Microsoft.AspNetCore.Components.Web
+   > ```
+   >
+   > <span data-ttu-id="1d34c-138">Вручную добавьте файл в качестве корня созданного проекта.</span><span class="sxs-lookup"><span data-stu-id="1d34c-138">Manually add the file the root of the generated project.</span></span>
+
+1. <span data-ttu-id="1d34c-139">Чтобы добавить библиотеку в существующий проект, используйте команду [DotNet Add Reference](/dotnet/core/tools/dotnet-add-reference) в командной оболочке.</span><span class="sxs-lookup"><span data-stu-id="1d34c-139">To add the library to an existing project, use the [dotnet add reference](/dotnet/core/tools/dotnet-add-reference) command in a command shell.</span></span> <span data-ttu-id="1d34c-140">В следующем примере РКЛ добавляется в приложение.</span><span class="sxs-lookup"><span data-stu-id="1d34c-140">In the following example, the RCL is added to the app.</span></span> <span data-ttu-id="1d34c-141">Выполните следующую команду из папки проекта приложения, указав путь к библиотеке:</span><span class="sxs-lookup"><span data-stu-id="1d34c-141">Execute the following command from the app's project folder with the path to the library:</span></span>
 
    ```dotnetcli
    dotnet add reference {PATH TO LIBRARY}
@@ -63,16 +81,16 @@ ms.locfileid: "76160032"
 
 ---
 
-## <a name="consume-a-library-component"></a><span data-ttu-id="cc646-138">Использование компонента библиотеки</span><span class="sxs-lookup"><span data-stu-id="cc646-138">Consume a library component</span></span>
+## <a name="consume-a-library-component"></a><span data-ttu-id="1d34c-142">Использование компонента библиотеки</span><span class="sxs-lookup"><span data-stu-id="1d34c-142">Consume a library component</span></span>
 
-<span data-ttu-id="cc646-139">Для использования компонентов, определенных в библиотеке в другом проекте, используйте один из следующих подходов:</span><span class="sxs-lookup"><span data-stu-id="cc646-139">In order to consume components defined in a library in another project, use either of the following approaches:</span></span>
+<span data-ttu-id="1d34c-143">Для использования компонентов, определенных в библиотеке в другом проекте, используйте один из следующих подходов:</span><span class="sxs-lookup"><span data-stu-id="1d34c-143">In order to consume components defined in a library in another project, use either of the following approaches:</span></span>
 
-* <span data-ttu-id="cc646-140">Используйте полное имя типа с пространством имен.</span><span class="sxs-lookup"><span data-stu-id="cc646-140">Use the full type name with the namespace.</span></span>
-* <span data-ttu-id="cc646-141">Используйте директиву [\@Razor в](xref:mvc/views/razor#using) синтаксисе.</span><span class="sxs-lookup"><span data-stu-id="cc646-141">Use Razor's [\@using](xref:mvc/views/razor#using) directive.</span></span> <span data-ttu-id="cc646-142">Отдельные компоненты можно добавлять по имени.</span><span class="sxs-lookup"><span data-stu-id="cc646-142">Individual components can be added by name.</span></span>
+* <span data-ttu-id="1d34c-144">Используйте полное имя типа с пространством имен.</span><span class="sxs-lookup"><span data-stu-id="1d34c-144">Use the full type name with the namespace.</span></span>
+* <span data-ttu-id="1d34c-145">Используйте директиву [\@Razor в](xref:mvc/views/razor#using) синтаксисе.</span><span class="sxs-lookup"><span data-stu-id="1d34c-145">Use Razor's [\@using](xref:mvc/views/razor#using) directive.</span></span> <span data-ttu-id="1d34c-146">Отдельные компоненты можно добавлять по имени.</span><span class="sxs-lookup"><span data-stu-id="1d34c-146">Individual components can be added by name.</span></span>
 
-<span data-ttu-id="cc646-143">В следующих примерах `MyComponentLib1` — это библиотека компонентов, содержащая компонент `SalesReport`.</span><span class="sxs-lookup"><span data-stu-id="cc646-143">In the following examples, `MyComponentLib1` is a component library containing a `SalesReport` component.</span></span>
+<span data-ttu-id="1d34c-147">В следующих примерах `MyComponentLib1` — это библиотека компонентов, содержащая компонент `SalesReport`.</span><span class="sxs-lookup"><span data-stu-id="1d34c-147">In the following examples, `MyComponentLib1` is a component library containing a `SalesReport` component.</span></span>
 
-<span data-ttu-id="cc646-144">На компонент `SalesReport` можно ссылаться, используя полное имя типа с пространством имен:</span><span class="sxs-lookup"><span data-stu-id="cc646-144">The `SalesReport` component can be referenced using its full type name with namespace:</span></span>
+<span data-ttu-id="1d34c-148">На компонент `SalesReport` можно ссылаться, используя полное имя типа с пространством имен:</span><span class="sxs-lookup"><span data-stu-id="1d34c-148">The `SalesReport` component can be referenced using its full type name with namespace:</span></span>
 
 ```razor
 <h1>Hello, world!</h1>
@@ -82,7 +100,7 @@ Welcome to your new app.
 <MyComponentLib1.SalesReport />
 ```
 
-<span data-ttu-id="cc646-145">На этот компонент также можно ссылаться, если библиотека входит в область с директивой `@using`:</span><span class="sxs-lookup"><span data-stu-id="cc646-145">The component can also be referenced if the library is brought into scope with an `@using` directive:</span></span>
+<span data-ttu-id="1d34c-149">На этот компонент также можно ссылаться, если библиотека входит в область с директивой `@using`:</span><span class="sxs-lookup"><span data-stu-id="1d34c-149">The component can also be referenced if the library is brought into scope with an `@using` directive:</span></span>
 
 ```razor
 @using MyComponentLib1
@@ -94,22 +112,22 @@ Welcome to your new app.
 <SalesReport />
 ```
 
-<span data-ttu-id="cc646-146">Включите директиву `@using MyComponentLib1` в файл верхнего уровня *_Import. Razor* , чтобы сделать компоненты библиотеки доступными для всего проекта.</span><span class="sxs-lookup"><span data-stu-id="cc646-146">Include the `@using MyComponentLib1` directive in the top-level *_Import.razor* file to make the library's components available to an entire project.</span></span> <span data-ttu-id="cc646-147">Добавьте директиву в файл *_Import. Razor* на любом уровне, чтобы применить пространство имен к одной странице или набору страниц в папке.</span><span class="sxs-lookup"><span data-stu-id="cc646-147">Add the directive to an *_Import.razor* file at any level to apply the namespace to a single page or set of pages within a folder.</span></span>
+<span data-ttu-id="1d34c-150">Включите директиву `@using MyComponentLib1` в файл верхнего уровня *_Import. Razor* , чтобы сделать компоненты библиотеки доступными для всего проекта.</span><span class="sxs-lookup"><span data-stu-id="1d34c-150">Include the `@using MyComponentLib1` directive in the top-level *_Import.razor* file to make the library's components available to an entire project.</span></span> <span data-ttu-id="1d34c-151">Добавьте директиву в файл *_Import. Razor* на любом уровне, чтобы применить пространство имен к одной странице или набору страниц в папке.</span><span class="sxs-lookup"><span data-stu-id="1d34c-151">Add the directive to an *_Import.razor* file at any level to apply the namespace to a single page or set of pages within a folder.</span></span>
 
-## <a name="build-pack-and-ship-to-nuget"></a><span data-ttu-id="cc646-148">Сборка, Упаковка и доставка в NuGet</span><span class="sxs-lookup"><span data-stu-id="cc646-148">Build, pack, and ship to NuGet</span></span>
+## <a name="build-pack-and-ship-to-nuget"></a><span data-ttu-id="1d34c-152">Сборка, Упаковка и доставка в NuGet</span><span class="sxs-lookup"><span data-stu-id="1d34c-152">Build, pack, and ship to NuGet</span></span>
 
-<span data-ttu-id="cc646-149">Так как библиотеки компонентов являются стандартными библиотеками .NET, их упаковка и доставка в NuGet не отличается от упаковки и доставки любых библиотек в NuGet.</span><span class="sxs-lookup"><span data-stu-id="cc646-149">Because component libraries are standard .NET libraries, packaging and shipping them to NuGet is no different from packaging and shipping any library to NuGet.</span></span> <span data-ttu-id="cc646-150">Упаковка выполняется с помощью команды [DotNet Pack](/dotnet/core/tools/dotnet-pack) в командной оболочке:</span><span class="sxs-lookup"><span data-stu-id="cc646-150">Packaging is performed using the [dotnet pack](/dotnet/core/tools/dotnet-pack) command in a command shell:</span></span>
+<span data-ttu-id="1d34c-153">Так как библиотеки компонентов являются стандартными библиотеками .NET, их упаковка и доставка в NuGet не отличается от упаковки и доставки любых библиотек в NuGet.</span><span class="sxs-lookup"><span data-stu-id="1d34c-153">Because component libraries are standard .NET libraries, packaging and shipping them to NuGet is no different from packaging and shipping any library to NuGet.</span></span> <span data-ttu-id="1d34c-154">Упаковка выполняется с помощью команды [DotNet Pack](/dotnet/core/tools/dotnet-pack) в командной оболочке:</span><span class="sxs-lookup"><span data-stu-id="1d34c-154">Packaging is performed using the [dotnet pack](/dotnet/core/tools/dotnet-pack) command in a command shell:</span></span>
 
 ```dotnetcli
 dotnet pack
 ```
 
-<span data-ttu-id="cc646-151">Отправьте пакет в NuGet с помощью команды [DotNet NuGet Push](/dotnet/core/tools/dotnet-nuget-push) в командной оболочке.</span><span class="sxs-lookup"><span data-stu-id="cc646-151">Upload the package to NuGet using the [dotnet nuget push](/dotnet/core/tools/dotnet-nuget-push) command in a command shell.</span></span>
+<span data-ttu-id="1d34c-155">Отправьте пакет в NuGet с помощью команды [DotNet NuGet Push](/dotnet/core/tools/dotnet-nuget-push) в командной оболочке.</span><span class="sxs-lookup"><span data-stu-id="1d34c-155">Upload the package to NuGet using the [dotnet nuget push](/dotnet/core/tools/dotnet-nuget-push) command in a command shell.</span></span>
 
-## <a name="create-a-razor-components-class-library-with-static-assets"></a><span data-ttu-id="cc646-152">Создание библиотеки классов компонентов Razor со статическими ресурсами</span><span class="sxs-lookup"><span data-stu-id="cc646-152">Create a Razor components class library with static assets</span></span>
+## <a name="create-a-razor-components-class-library-with-static-assets"></a><span data-ttu-id="1d34c-156">Создание библиотеки классов компонентов Razor со статическими ресурсами</span><span class="sxs-lookup"><span data-stu-id="1d34c-156">Create a Razor components class library with static assets</span></span>
 
-<span data-ttu-id="cc646-153">РКЛ может включать статические ресурсы.</span><span class="sxs-lookup"><span data-stu-id="cc646-153">An RCL can include static assets.</span></span> <span data-ttu-id="cc646-154">Статические ресурсы доступны для любого приложения, использующего библиотеку.</span><span class="sxs-lookup"><span data-stu-id="cc646-154">The static assets are available to any app that consumes the library.</span></span> <span data-ttu-id="cc646-155">Для получения дополнительной информации см. <xref:razor-pages/ui-class#create-an-rcl-with-static-assets>.</span><span class="sxs-lookup"><span data-stu-id="cc646-155">For more information, see <xref:razor-pages/ui-class#create-an-rcl-with-static-assets>.</span></span>
+<span data-ttu-id="1d34c-157">РКЛ может включать статические ресурсы.</span><span class="sxs-lookup"><span data-stu-id="1d34c-157">An RCL can include static assets.</span></span> <span data-ttu-id="1d34c-158">Статические ресурсы доступны для любого приложения, использующего библиотеку.</span><span class="sxs-lookup"><span data-stu-id="1d34c-158">The static assets are available to any app that consumes the library.</span></span> <span data-ttu-id="1d34c-159">Дополнительные сведения см. в разделе <xref:razor-pages/ui-class#create-an-rcl-with-static-assets>.</span><span class="sxs-lookup"><span data-stu-id="1d34c-159">For more information, see <xref:razor-pages/ui-class#create-an-rcl-with-static-assets>.</span></span>
 
-## <a name="additional-resources"></a><span data-ttu-id="cc646-156">Дополнительные ресурсы</span><span class="sxs-lookup"><span data-stu-id="cc646-156">Additional resources</span></span>
+## <a name="additional-resources"></a><span data-ttu-id="1d34c-160">Дополнительные ресурсы</span><span class="sxs-lookup"><span data-stu-id="1d34c-160">Additional resources</span></span>
 
 * <xref:razor-pages/ui-class>
