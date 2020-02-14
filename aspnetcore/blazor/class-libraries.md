@@ -5,17 +5,17 @@ description: Узнайте, как компоненты можно включа
 monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 12/18/2019
+ms.date: 01/23/2020
 no-loc:
 - Blazor
 - SignalR
 uid: blazor/class-libraries
-ms.openlocfilehash: f8e8688cdb3d1aef0d470e0e2d8c3857140ef65f
-ms.sourcegitcommit: 9ee99300a48c810ca6fd4f7700cd95c3ccb85972
+ms.openlocfilehash: 32088b43f91174596f6b9251d36782e806f966b9
+ms.sourcegitcommit: d2ba66023884f0dca115ff010bd98d5ed6459283
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76160032"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77213253"
 ---
 # <a name="aspnet-core-razor-components-class-libraries"></a>Библиотеки классов компонентов Razor ASP.NET Core
 
@@ -31,14 +31,14 @@ ms.locfileid: "76160032"
 
 ## <a name="create-an-rcl"></a>Создание РКЛ
 
-Следуйте указаниям в статье <xref:blazor/get-started>, чтобы настроить среду для Blazor.
+Следуйте указаниям в статье <xref:blazor/get-started>, чтобы настроить среду для Блазор.
 
 # <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 1. Создайте новый проект.
 1. Выберите пункт **Библиотека классов Razor**. Выберите **Далее**.
 1. В диалоговом окне **Создание новой библиотеки классов Razor** выберите **создать**.
-1. В поле **Имя проекта** укажите имя проекта или оставьте имя по умолчанию. В примерах этого раздела используется имя проекта `MyComponentLib1`. Выберите **Создать**.
+1. В поле **Имя проекта** укажите имя проекта или оставьте имя по умолчанию. В примерах этого раздела используется имя проекта `MyComponentLib1`. Нажмите кнопку **Создать**.
 1. Добавьте РКЛ в решение:
    1. Щелкните решение правой кнопкой мыши. Выберите **добавить** > **существующий проект**.
    1. Перейдите к файлу проекта РКЛ.
@@ -47,6 +47,15 @@ ms.locfileid: "76160032"
    1. Щелкните проект приложения правой кнопкой мыши. Выберите **добавить** > **ссылку**.
    1. Выберите проект РКЛ. Нажмите кнопку **ОК**.
 
+> [!NOTE]
+> Если флажок " **страницы и представления поддержки** " установлен при создании РКЛ на основе шаблона, добавьте файл *_Imports. Razor* в корень созданного проекта со следующим содержимым, чтобы включить создание компонентов Razor:
+>
+> ```razor
+> @using Microsoft.AspNetCore.Components.Web
+> ```
+>
+> Вручную добавьте файл в качестве корня созданного проекта.
+
 # <a name="net-core-clitabnetcore-cli"></a>[Интерфейс командной строки .NET Core](#tab/netcore-cli)
 
 1. Используйте шаблон **библиотеки классов Razor** (`razorclasslib`) с командой [DotNet New](/dotnet/core/tools/dotnet-new) в командной оболочке. В следующем примере создается РКЛ с именем `MyComponentLib1`. Папка, содержащая `MyComponentLib1`, создается автоматически при выполнении команды:
@@ -54,6 +63,15 @@ ms.locfileid: "76160032"
    ```dotnetcli
    dotnet new razorclasslib -o MyComponentLib1
    ```
+
+   > [!NOTE]
+   > Если при создании РКЛ из шаблона используется параметр `-s|--support-pages-and-views`, добавьте файл *_Imports. Razor* в корень созданного проекта со следующим содержимым, чтобы включить создание компонентов Razor:
+   >
+   > ```razor
+   > @using Microsoft.AspNetCore.Components.Web
+   > ```
+   >
+   > Вручную добавьте файл в качестве корня созданного проекта.
 
 1. Чтобы добавить библиотеку в существующий проект, используйте команду [DotNet Add Reference](/dotnet/core/tools/dotnet-add-reference) в командной оболочке. В следующем примере РКЛ добавляется в приложение. Выполните следующую команду из папки проекта приложения, указав путь к библиотеке:
 
@@ -108,7 +126,7 @@ dotnet pack
 
 ## <a name="create-a-razor-components-class-library-with-static-assets"></a>Создание библиотеки классов компонентов Razor со статическими ресурсами
 
-РКЛ может включать статические ресурсы. Статические ресурсы доступны для любого приложения, использующего библиотеку. Для получения дополнительной информации см. <xref:razor-pages/ui-class#create-an-rcl-with-static-assets>.
+РКЛ может включать статические ресурсы. Статические ресурсы доступны для любого приложения, использующего библиотеку. Дополнительные сведения см. в разделе <xref:razor-pages/ui-class#create-an-rcl-with-static-assets>.
 
 ## <a name="additional-resources"></a>Дополнительные ресурсы
 

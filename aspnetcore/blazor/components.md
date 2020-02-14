@@ -5,17 +5,17 @@ description: Узнайте, как создавать и использоват
 monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 01/24/2020
+ms.date: 02/04/2020
 no-loc:
 - Blazor
 - SignalR
 uid: blazor/components
-ms.openlocfilehash: d6ba60b20d21636c7f780a80d8fbdb152505a3a3
-ms.sourcegitcommit: 0b0e485a8a6dfcc65a7a58b365622b3839f4d624
+ms.openlocfilehash: 0da0d83a4fde7b753a84bf05d3a9284776f2881f
+ms.sourcegitcommit: d2ba66023884f0dca115ff010bd98d5ed6459283
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76928259"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77213354"
 ---
 # <a name="create-and-use-aspnet-core-razor-components"></a>Создание и использование компонентов ASP.NET Core Razor
 
@@ -70,9 +70,9 @@ ms.locfileid: "76928259"
 
 Компоненты Razor можно интегрировать в Razor Pages и приложения MVC. При отображении страницы или представления компоненты можно предварительно отобразить в одно и то же время.
 
-Чтобы подготовить Razor Pages или MVC-приложение для размещения компонентов Razor, следуйте указаниям в разделе *Интеграция компонентов Razor в Razor Pages и приложения MVC* статьи <xref:blazor/hosting-models#integrate-razor-components-into-razor-pages-and-mvc-apps>.
+Чтобы подготовить Razor Pages или MVC-приложение для размещения компонентов Razor, следуйте указаниям в разделе *Интеграция компонентов Razor в Razor Pages и приложения MVC* статьи <xref:blazor/hosting-model-configuration#integrate-razor-components-into-razor-pages-and-mvc-apps>.
 
-При использовании пользовательской папки для хранения компонентов приложения добавьте пространство имен, представляющее папку, в страницу или представление либо в файл *_ViewImports. cshtml* . В следующем примере:
+При использовании пользовательской папки для хранения компонентов приложения добавьте пространство имен, представляющее папку, в страницу или представление либо в файл *_ViewImports. cshtml* . Рассмотрим следующий пример:
 
 * Замените `MyAppNamespace` пространством имен приложения.
 * Если папка с именем *Components* не используется для хранения компонентов, измените `Components` в папку, в которой находятся компоненты.
@@ -97,7 +97,7 @@ ms.locfileid: "76928259"
 * Предварительно отображается на странице.
 * Отображается как статический HTML на странице или включает необходимые сведения для начальной загрузки приложения Блазор из агента пользователя.
 
-| `RenderMode`        | Описание |
+| `RenderMode`        | Description |
 | ------------------- | ----------- |
 | `ServerPrerendered` | Преобразует компонент в статический HTML и включает маркер для серверного приложения Блазор. При запуске агента пользователя этот маркер используется для начальной загрузки приложения Блазор. |
 | `Server`            | Отображает маркер для серверного приложения Блазор. Выходные данные компонента не включаются. При запуске агента пользователя этот маркер используется для начальной загрузки приложения Блазор. |
@@ -107,7 +107,10 @@ ms.locfileid: "76928259"
 
 Отрисовка компонентов сервера из статической HTML-страницы не поддерживается.
 
-Дополнительные сведения о подготовке компонентов к просмотру, состоянии компонентов и вспомогательной функции тега `Component` см. в разделе <xref:blazor/hosting-models>.
+Дополнительные сведения о подготовке компонентов к просмотру, состоянии компонентов и вспомогательной функции тега `Component` см. в следующих статьях:
+
+* <xref:blazor/hosting-models>
+* <xref:blazor/hosting-model-configuration>
 
 ## <a name="tag-helpers-arent-used-in-components"></a>Вспомогательные функции тегов не используются в компонентах
 
@@ -149,7 +152,7 @@ ms.locfileid: "76928259"
 <h1>Parent-child example</h1>
 
 <ChildComponent Title="Panel Title from Parent"
-                OnClick="@ShowMessage">
+                OnClickCallback="@ShowMessage">
     Content of the child component is supplied
     by the parent component.
 </ChildComponent>
@@ -180,7 +183,7 @@ ms.locfileid: "76928259"
 <h1>Parent-child example</h1>
 
 <ChildComponent Title="Panel Title from Parent"
-                OnClick="@ShowMessage">
+                OnClickCallback="@ShowMessage">
     Content of the child component is supplied
     by the parent component.
 </ChildComponent>
@@ -351,11 +354,11 @@ public IDictionary<string, object> AdditionalAttributes { get; set; }
 * Указанное выражение (`CurrentValue`) в атрибут `value` элемента.
 * Делегат события Change для события, указанного `@bind-value:event`.
 
-**Неанализируемые значения**
+### <a name="unparsable-values"></a>Неанализируемые значения
 
 Когда пользователь предоставляет неинтерпретируемое значение для элемента с привязкой к данным, неанализируемое значение автоматически возвращается к предыдущему значению при срабатывании события привязки.
 
-Рассмотрим следующий сценарий:
+Рассмотрим следующий сценарий.
 
 * Элемент `<input>` привязан к типу `int` с начальным значением `123`:
 
@@ -379,7 +382,7 @@ public IDictionary<string, object> AdditionalAttributes { get; set; }
   * Разрешите пользователю указать недопустимые входные данные и получить ошибки проверки для связанного `EditContext`.
   * Отображает ошибки проверки в пользовательском интерфейсе, не мешая пользователю вводить дополнительные данные из формы.
 
-**Глобализация**
+### <a name="globalization"></a>Глобализация
 
 `@bind` значения форматируются для вывода и анализируются с использованием правил текущего языка и региональных параметров.
 
@@ -404,9 +407,9 @@ public IDictionary<string, object> AdditionalAttributes { get; set; }
 
 `@bind` поддерживает параметр `@bind:culture`, чтобы предоставить <xref:System.Globalization.CultureInfo?displayProperty=fullName> для синтаксического анализа и форматирования значения. Указание языка и региональных параметров не рекомендуется при использовании типов полей `date` и `number`. `date` и `number` имеют встроенную поддержку Блазор, которая предоставляет требуемый язык и региональные параметры.
 
-Сведения о том, как задать язык и региональные параметры пользователя, см. в разделе [локализация](#localization).
+Сведения о том, как задать язык и региональные параметры пользователя, см. в разделе [Локализация](#localization) .
 
-**Строки формата**
+### <a name="format-strings"></a>Строки формата
 
 Привязка данных работает со строками формата <xref:System.DateTime> с помощью [`@bind:format`](xref:mvc/views/razor#bind). Другие выражения форматирования, такие как денежные или числовые форматы, в настоящее время недоступны.
 
@@ -434,9 +437,9 @@ public IDictionary<string, object> AdditionalAttributes { get; set; }
 <input type="date" @bind="StartDate" @bind:format="yyyy-MM-dd">
 ```
 
-**Параметры компонента**
+### <a name="parent-to-child-binding-with-component-parameters"></a>Привязка "родители — потомки" с параметрами компонента
 
-Привязка распознает параметры компонента, где `@bind-{property}` может привязать значение свойства к разным компонентам.
+Привязка распознает параметры компонента, где `@bind-{property}` может привязать значение свойства из родительского компонента к дочернему компоненту. Привязка дочернего элемента к родительскому элементу рассматривается в [привязке дочерний к родительскому разделу с цепочкой привязки](#child-to-parent-binding-with-chained-bind) .
 
 Следующий дочерний компонент (`ChildComponent`) имеет параметр компонента `Year` и обратный вызов `YearChanged`:
 
@@ -456,7 +459,10 @@ public IDictionary<string, object> AdditionalAttributes { get; set; }
 
 `EventCallback<T>` описывается в разделе [вложенный EventCallback](#eventcallback) .
 
-Следующий родительский компонент использует `ChildComponent` и привязывает параметр `ParentYear` из родительского к параметру `Year` дочернего компонента:
+Следующий родительский компонент использует:
+
+* `ChildComponent` и привязывает параметр `ParentYear` из родительского элемента к параметру `Year` дочернего компонента.
+* Событие `onclick` используется для активации метода `ChangeTheYear`. Дополнительные сведения см. в разделе [Обработка событий](#event-handling) .
 
 ```razor
 @page "/ParentComponent"
@@ -520,7 +526,138 @@ public IDictionary<string, object> AdditionalAttributes { get; set; }
 <MyComponent @bind-MyProp="MyValue" @bind-MyProp:event="MyEventHandler" />
 ```
 
-**Переключатели**
+### <a name="child-to-parent-binding-with-chained-bind"></a>Привязка дочернего элемента в родитель с сцепленной привязкой
+
+Распространенным сценарием является привязка привязанного к данным параметра к элементу страницы в выходных данных компонента. Этот сценарий называется *связанной* привязкой, так как несколько уровней привязки происходят одновременно.
+
+Связанную с цепочкой привязку нельзя реализовать с помощью синтаксиса `@bind` в элементе страницы. Обработчик событий и значение должны быть указаны отдельно. Однако родительский компонент может использовать `@bind` синтаксис с параметром компонента.
+
+Следующий `PasswordField` компонент (*пассвордфиелд. Razor*):
+
+* Задает значение `<input>` элемента для свойства `Password`.
+* Предоставляет изменения свойства `Password` в родительский компонент с помощью [вложенный EventCallback](#eventcallback).
+* Используется событие `onclick` для активации метода `ToggleShowPassword`. Дополнительные сведения см. в разделе [Обработка событий](#event-handling) .
+
+```razor
+<h1>Child Component</h2>
+
+Password: 
+
+<input @oninput="OnPasswordChanged" 
+       required 
+       type="@(_showPassword ? "text" : "password")" 
+       value="@Password" />
+
+<button class="btn btn-primary" @onclick="ToggleShowPassword">
+    Show password
+</button>
+
+@code {
+    private bool _showPassword;
+
+    [Parameter]
+    public string Password { get; set; }
+
+    [Parameter]
+    public EventCallback<string> PasswordChanged { get; set; }
+
+    private Task OnPasswordChanged(ChangeEventArgs e)
+    {
+        Password = e.Value.ToString();
+
+        return PasswordChanged.InvokeAsync(Password);
+    }
+
+    private void ToggleShowPassword()
+    {
+        _showPassword = !_showPassword;
+    }
+}
+```
+
+Компонент `PasswordField` используется в другом компоненте:
+
+```razor
+@page "/ParentComponent"
+
+<h1>Parent Component</h1>
+
+<PasswordField @bind-Password="_password" />
+
+@code {
+    private string _password;
+}
+```
+
+Для выполнения проверок или перехвата ошибок в пароле в предыдущем примере:
+
+* Создайте резервное поле для `Password` (`_password` в следующем примере кода).
+* Выполните проверки или ошибки ловушек в методе задания `Password`.
+
+В следующем примере представлена немедленная реакция пользователя, если в значении пароля используется пробел:
+
+```razor
+@page "/ParentComponent"
+
+<h1>Parent Component</h1>
+
+Password: 
+
+<input @oninput="OnPasswordChanged" 
+       required 
+       type="@(_showPassword ? "text" : "password")" 
+       value="@Password" />
+
+<button class="btn btn-primary" @onclick="ToggleShowPassword">
+    Show password
+</button>
+
+<span class="text-danger">@_validationMessage</span>
+
+@code {
+    private bool _showPassword;
+    private string _password;
+    private string _validationMessage;
+
+    [Parameter]
+    public string Password
+    {
+        get { return _password ?? string.Empty; }
+        set
+        {
+            if (_password != value)
+            {
+                if (value.Contains(' '))
+                {
+                    _validationMessage = "Spaces not allowed!";
+                }
+                else
+                {
+                    _password = value;
+                    _validationMessage = string.Empty;
+                }
+            }
+        }
+    }
+
+    [Parameter]
+    public EventCallback<string> PasswordChanged { get; set; }
+
+    private Task OnPasswordChanged(ChangeEventArgs e)
+    {
+        Password = e.Value.ToString();
+
+        return PasswordChanged.InvokeAsync(Password);
+    }
+
+    private void ToggleShowPassword()
+    {
+        _showPassword = !_showPassword;
+    }
+}
+```
+
+### <a name="radio-buttons"></a>Переключатели
 
 Сведения о привязке к переключателям в форме см. в разделе <xref:blazor/forms-validation#work-with-radio-buttons>.
 
@@ -579,22 +716,25 @@ public IDictionary<string, object> AdditionalAttributes { get; set; }
 
 Поддерживаемые `EventArgs` приведены в следующей таблице.
 
-| Event            | Класс                | События DOM и заметки |
+| Событие            | Class                | События DOM и заметки |
 | ---------------- | -------------------- | -------------------- |
-| буфер обмена        | `ClipboardEventArgs` | `oncut`значение `oncopy`значение `onpaste` |
+| Буфер обмена        | `ClipboardEventArgs` | `oncut`, `oncopy`, `onpaste` |
 | Переместить             | `DragEventArgs`      | `ondrag`, `ondragstart`, `ondragenter`, `ondragleave`, `ondragover`, `ondrop`, `ondragend`<br><br>`DataTransfer` и `DataTransferItem` содержать перетаскиваемые данные элемента. |
-| Ошибка .            | `ErrorEventArgs`     | `onerror` |
-| Event            | `EventArgs`          | *Общие*<br>`onactivate`, `onbeforeactivate`, `onbeforedeactivate`, `ondeactivate`, `onended`, `onfullscreenchange`, `onfullscreenerror`, `onloadeddata`, `onloadedmetadata`, `onpointerlockchange`, `onpointerlockerror`, `onreadystatechange`, `onscroll`<br><br>*Буфер обмена*<br>`onbeforecut`значение `onbeforecopy`значение `onbeforepaste`<br><br>*Ввод*<br>`oninvalid`, `onreset`, `onselect`, `onselectionchange`, `onselectstart`, `onsubmit`<br><br>*Носител*<br>`oncanplay`, `oncanplaythrough`, `oncuechange`, `ondurationchange`, `onemptied`, `onpause`, `onplay`, `onplaying`, `onratechange`, `onseeked`, `onseeking`, `onstalled`, `onstop`, `onsuspend`, `ontimeupdate`, `onvolumechange`, `onwaiting` |
-| Фокус            | `FocusEventArgs`     | `onfocus`, `onblur`, `onfocusin`, `onfocusout`<br><br>Не включает поддержку для `relatedTarget`. |
-| Input            | `ChangeEventArgs`    | `onchange`, `oninput` |
-| Клавиатура         | `KeyboardEventArgs`  | `onkeydown`значение `onkeypress`значение `onkeyup` |
+| Ошибка            | `ErrorEventArgs`     | `onerror` |
+| Событие            | `EventArgs`          | *Общие сведения*<br>`onactivate`, `onbeforeactivate`, `onbeforedeactivate`, `ondeactivate`, `onended`, `onfullscreenchange`, `onfullscreenerror`, `onloadeddata`, `onloadedmetadata`, `onpointerlockchange`, `onpointerlockerror`, `onreadystatechange`, `onscroll`<br><br>*Буфер обмена*<br>`onbeforecut`, `onbeforecopy`, `onbeforepaste`<br><br>*Ввод*<br>`oninvalid`, `onreset`, `onselect`, `onselectionchange`, `onselectstart`, `onsubmit`<br><br>*Носитель*<br>`oncanplay`, `oncanplaythrough`, `oncuechange`, `ondurationchange`, `onemptied`, `onpause`, `onplay`, `onplaying`, `onratechange`, `onseeked`, `onseeking`, `onstalled`, `onstop`, `onsuspend`, `ontimeupdate`, `onvolumechange`, `onwaiting` |
+| Focus            | `FocusEventArgs`     | `onfocus`, `onblur`, `onfocusin`, `onfocusout`<br><br>Не включает поддержку для `relatedTarget`. |
+| Входные данные            | `ChangeEventArgs`    | `onchange`, `oninput` |
+| Клавиатура         | `KeyboardEventArgs`  | `onkeydown`, `onkeypress`, `onkeyup` |
 | Мышь            | `MouseEventArgs`     | `onclick`, `oncontextmenu`, `ondblclick`, `onmousedown`, `onmouseup`, `onmouseover`, `onmousemove`, `onmouseout` |
 | Указатель мыши    | `PointerEventArgs`   | `onpointerdown`, `onpointerup`, `onpointercancel`, `onpointermove`, `onpointerover`, `onpointerout`, `onpointerenter`, `onpointerleave`, `ongotpointercapture`, `onlostpointercapture` |
 | Колесо мыши      | `WheelEventArgs`     | `onwheel`, `onmousewheel` |
 | Ход выполнения         | `ProgressEventArgs`  | `onabort`, `onload`, `onloadend`, `onloadstart`, `onprogress`, `ontimeout` |
 | Сенсорные технологии            | `TouchEventArgs`     | `ontouchstart`, `ontouchend`, `ontouchmove`, `ontouchenter`, `ontouchleave`, `ontouchcancel`<br><br>`TouchPoint` представляет одну точку контакта на устройстве с сенсорным вводом. |
 
-Сведения о свойствах и поведении событий в приведенной выше таблице см. в разделе [классы EventArgs в источнике ссылки (ветвь DotNet/aspnetcore Release/3.1)](https://github.com/dotnet/aspnetcore/tree/release/3.1/src/Components/Web/src/Web).
+Для получения дополнительных сведений см. следующие ресурсы:
+
+* [Классы EventArgs в источнике ссылки на ASP.NET Core (ветвь DotNet/aspnetcore Release/3.1)](https://github.com/dotnet/aspnetcore/tree/release/3.1/src/Components/Web/src/Web).
+* [Веб-документы MDN: глобалевенсандлерс](https://developer.mozilla.org/docs/Web/API/GlobalEventHandlers) &ndash; содержит сведения о том, какие элементы HTML поддерживают каждое событие DOM.
 
 ### <a name="lambda-expressions"></a>Лямбда-выражения
 
@@ -641,7 +781,7 @@ public IDictionary<string, object> AdditionalAttributes { get; set; }
 
 [!code-razor[](common/samples/3.x/BlazorWebAssemblySample/Components/ChildComponent.razor?highlight=5-7,17-18)]
 
-`ParentComponent` задает для дочернего `EventCallback<T>` (`OnClick`) его метод `ShowMessage`.
+`ParentComponent` задает для дочернего `EventCallback<T>` (`OnClickCallback`) его метод `ShowMessage`.
 
 *Pages/паренткомпонент. Razor*:
 
@@ -651,7 +791,7 @@ public IDictionary<string, object> AdditionalAttributes { get; set; }
 <h1>Parent-child example</h1>
 
 <ChildComponent Title="Panel Title from Parent"
-                OnClick="@ShowMessage">
+                OnClickCallback="@ShowMessage">
     Content of the child component is supplied
     by the parent component.
 </ChildComponent>
@@ -677,7 +817,7 @@ public IDictionary<string, object> AdditionalAttributes { get; set; }
 
 ```razor
 <ChildComponent 
-    OnClick="@(async () => { await Task.Yield(); _messageText = "Blaze It!"; })" />
+    OnClickCallback="@(async () => { await Task.Yield(); _messageText = "Blaze It!"; })" />
 ```
 
 Вызов `EventCallback` или `EventCallback<T>` с `InvokeAsync` и ожидание <xref:System.Threading.Tasks.Task>:
@@ -756,126 +896,6 @@ await callback.InvokeAsync(arg);
 }
 ```
 
-## <a name="chained-bind"></a>Привязка к цепочке
-
-Распространенным сценарием является привязка привязанного к данным параметра к элементу страницы в выходных данных компонента. Этот сценарий называется *связанной* привязкой, так как несколько уровней привязки происходят одновременно.
-
-Связанную с цепочкой привязку нельзя реализовать с помощью синтаксиса `@bind` в элементе страницы. Обработчик событий и значение должны быть указаны отдельно. Однако родительский компонент может использовать `@bind` синтаксис с параметром компонента.
-
-Следующий `PasswordField` компонент (*пассвордфиелд. Razor*):
-
-* Задает значение `<input>` элемента для свойства `Password`.
-* Предоставляет изменения свойства `Password` в родительский компонент с помощью [вложенный EventCallback](#eventcallback).
-
-```razor
-Password: 
-
-<input @oninput="OnPasswordChanged" 
-       required 
-       type="@(_showPassword ? "text" : "password")" 
-       value="@Password" />
-
-<button class="btn btn-primary" @onclick="ToggleShowPassword">
-    Show password
-</button>
-
-@code {
-    private bool _showPassword;
-
-    [Parameter]
-    public string Password { get; set; }
-
-    [Parameter]
-    public EventCallback<string> PasswordChanged { get; set; }
-
-    private Task OnPasswordChanged(ChangeEventArgs e)
-    {
-        Password = e.Value.ToString();
-
-        return PasswordChanged.InvokeAsync(Password);
-    }
-
-    private void ToggleShowPassword()
-    {
-        _showPassword = !_showPassword;
-    }
-}
-```
-
-Компонент `PasswordField` используется в другом компоненте:
-
-```razor
-<PasswordField @bind-Password="_password" />
-
-@code {
-    private string _password;
-}
-```
-
-Для выполнения проверок или перехвата ошибок в пароле в предыдущем примере:
-
-* Создайте резервное поле для `Password` (`_password` в следующем примере кода).
-* Выполните проверки или ошибки ловушек в методе задания `Password`.
-
-В следующем примере представлена немедленная реакция пользователя, если в значении пароля используется пробел:
-
-```razor
-Password: 
-
-<input @oninput="OnPasswordChanged" 
-       required 
-       type="@(_showPassword ? "text" : "password")" 
-       value="@Password" />
-
-<button class="btn btn-primary" @onclick="ToggleShowPassword">
-    Show password
-</button>
-
-<span class="text-danger">@_validationMessage</span>
-
-@code {
-    private bool _showPassword;
-    private string _password;
-    private string _validationMessage;
-
-    [Parameter]
-    public string Password
-    {
-        get { return _password ?? string.Empty; }
-        set
-        {
-            if (_password != value)
-            {
-                if (value.Contains(' '))
-                {
-                    _validationMessage = "Spaces not allowed!";
-                }
-                else
-                {
-                    _password = value;
-                    _validationMessage = string.Empty;
-                }
-            }
-        }
-    }
-
-    [Parameter]
-    public EventCallback<string> PasswordChanged { get; set; }
-
-    private Task OnPasswordChanged(ChangeEventArgs e)
-    {
-        Password = e.Value.ToString();
-
-        return PasswordChanged.InvokeAsync(Password);
-    }
-
-    private void ToggleShowPassword()
-    {
-        _showPassword = !_showPassword;
-    }
-}
-```
-
 ## <a name="capture-references-to-components"></a>Запись ссылок на компоненты
 
 Ссылки на компоненты предоставляют способ ссылки на экземпляр компонента, чтобы можно было выполнять команды для этого экземпляра, например `Show` или `Reset`. Чтобы записать ссылку на компонент, сделайте следующее:
@@ -928,7 +948,21 @@ public class NotifierService
 }
 ```
 
-Использование `NotifierService` для обновления компонента:
+Зарегистрируйте `NotifierService` как синглетион:
+
+* В Блазор Assembly Зарегистрируйте службу в `Program.Main`:
+
+  ```csharp
+  builder.Services.AddSingleton<NotifierService>();
+  ```
+
+* В Блазор Server Зарегистрируйте службу в `Startup.ConfigureServices`:
+
+  ```csharp
+  services.AddSingleton<NotifierService>();
+  ```
+
+Используйте `NotifierService` для обновления компонента:
 
 ```razor
 @page "/"
@@ -967,7 +1001,7 @@ public class NotifierService
 
 При последующем изменении списка элементов или компонентов, а также элементов или компонентов алгоритм сравнения Блазор должен решить, какие из предыдущих элементов или компонентов могут быть сохранены и как объекты модели должны сопоставляться с ними. Обычно этот процесс выполняется автоматически и его можно игнорировать, но в некоторых случаях может потребоваться управление процессом.
 
-Рассмотрим следующий пример.
+Рассмотрим следующий пример:
 
 ```csharp
 @foreach (var person in People)
@@ -1254,7 +1288,7 @@ This is the Index page.
 <input type="checkbox" />
 ```
 
-Для получения дополнительной информации см. <xref:mvc/views/razor>.
+Дополнительные сведения см. в разделе <xref:mvc/views/razor>.
 
 > [!WARNING]
 > Некоторые атрибуты HTML, такие как [ARIA-Pressed](https://developer.mozilla.org/docs/Web/Accessibility/ARIA/Roles/button_role#Toggle_buttons), не работают должным образом, если тип .net является `bool`ом. В этих случаях используйте `string` тип вместо `bool`.
@@ -1654,16 +1688,16 @@ builder.AddContent(1, "Second");
 
 Когда код выполняется в первый раз, если `someFlag` `true`, построитель получит следующее:
 
-| Sequence | Тип      | Данные   |
+| Последовательность | Тип      | Данные   |
 | :------: | --------- | :----: |
-| 0        | Узел Text | First  |
-| 1        | Узел Text | Second |
+| 0        | Узел Text | Первый  |
+| 1        | Узел Text | Секунда |
 
 Представьте, что `someFlag` становится `false`, и разметка снова готовится к просмотру. На этот раз построитель получит:
 
-| Sequence | Тип       | Данные   |
+| Последовательность | Тип       | Данные   |
 | :------: | ---------- | :----: |
-| 1        | Узел Text  | Second |
+| 1        | Узел Text  | Секунда |
 
 Когда среда выполнения выполняет поиск различий, она видит, что элемент в последовательности `0` был удален, поэтому он создает следующий тривиальный *сценарий редактирования*:
 
@@ -1686,16 +1720,16 @@ builder.AddContent(seq++, "Second");
 
 Теперь первые выходные данные:
 
-| Sequence | Тип      | Данные   |
+| Последовательность | Тип      | Данные   |
 | :------: | --------- | :----: |
-| 0        | Узел Text | First  |
-| 1        | Узел Text | Second |
+| 0        | Узел Text | Первый  |
+| 1        | Узел Text | Секунда |
 
 Этот результат идентичен предыдущему случаю, поэтому отрицательные проблемы не возникают. во второй отрисовке `someFlag` `false`, а выходные данные:
 
-| Sequence | Тип      | Данные   |
+| Последовательность | Тип      | Данные   |
 | :------: | --------- | ------ |
-| 0        | Узел Text | Second |
+| 0        | Узел Text | Секунда |
 
 На этот раз алгоритм diff видит, что были внесены *два* изменения, и алгоритм создает следующий сценарий редактирования:
 
@@ -1720,10 +1754,10 @@ Blazor серверные приложения локализованы по [п
 
 Язык и региональные параметры можно задать с помощью одного из следующих подходов:
 
-* [Файлы cookie](#cookies)
+* [Файлы "cookie"](#cookies)
 * [Предоставление пользовательского интерфейса для выбора языка и региональных параметров](#provide-ui-to-choose-the-culture)
 
-Дополнительные сведения и примеры см. в разделе <xref:fundamentals/localization>.
+Дополнительные сведения и примеры см. на сайте <xref:fundamentals/localization>.
 
 ### <a name="configure-the-linker-for-internationalization-opno-locblazor-webassembly"></a>Настройка компоновщика для интернационализации (Blazorная сборка)
 
@@ -1791,7 +1825,7 @@ public class CultureController : Controller
 ```
 
 > [!WARNING]
-> Для предотвращения атак с открытым перенаправлением используйте результат действия `LocalRedirect`. Для получения дополнительной информации см. <xref:security/preventing-open-redirects>.
+> Для предотвращения атак с открытым перенаправлением используйте результат действия `LocalRedirect`. Дополнительные сведения см. в разделе <xref:security/preventing-open-redirects>.
 
 В следующем компоненте показан пример выполнения начального перенаправления, когда пользователь выбирает язык и региональные параметры:
 
@@ -1834,7 +1868,7 @@ public class CultureController : Controller
 * `IStringLocalizer<>` *поддерживается* в Blazor приложениях.
 * Локализация `IHtmlLocalizer<>`, `IViewLocalizer<>`и аннотаций данных ASP.NET Core сценариев MVC и **не поддерживается** в Blazor приложениях.
 
-Для получения дополнительной информации см. <xref:fundamentals/localization>.
+Дополнительные сведения см. в разделе <xref:fundamentals/localization>.
 
 ## <a name="scalable-vector-graphics-svg-images"></a>Масштабируемые изображения векторной графики (SVG)
 
