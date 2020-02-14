@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 11/26/2019
 uid: tutorials/web-api-javascript
-ms.openlocfilehash: 5a31aa2974eb41938db89f97c070c352a26290fd
-ms.sourcegitcommit: 0dd224b2b7efca1fda0041b5c3f45080327033f6
+ms.openlocfilehash: 2a19a7d16ca8b8f5d6ac8eb99ad919b89f1e368b
+ms.sourcegitcommit: 235623b6e5a5d1841139c82a11ac2b4b3f31a7a9
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74681179"
+ms.lasthandoff: 02/10/2020
+ms.locfileid: "77114657"
 ---
 # <a name="tutorial-call-an-aspnet-core-web-api-with-javascript"></a>Учебник. Вызов веб-API ASP.NET Core с помощью JavaScript
 
@@ -36,7 +36,7 @@ ms.locfileid: "74681179"
 
 В этом разделе описано, как добавить HTML-страницу, содержащую формы для создания и администрирования элементов списка задач. Обработчики событий присоединяются к элементам на странице. При использовании обработчиков событий создаются запросы HTTP к методам действия веб-API. Функция Fetch API `fetch` инициирует каждый такой запрос HTTP.
 
-Функция `fetch` возвращает объект `Promise`, который содержит ответ HTTP, представленный в виде объекта `Response`. Распространенным подходом является извлечение текста ответа JSON путем вызова функции `json` в объекте `Response`. JavaScript изменяет страницу, используя сведения из ответа API.
+Функция `fetch` возвращает объект [Promise](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise), который содержит ответ HTTP, представленный в виде объекта `Response`. Распространенным подходом является извлечение текста ответа JSON путем вызова функции `json` в объекте `Response`. JavaScript изменяет страницу, используя сведения из ответа API.
 
 Самый простой вызов `fetch` принимает один параметр, представляющий маршрут. Второй параметр (объект `init`) является необязательным. `init` используется для настройки запроса HTTP.
 

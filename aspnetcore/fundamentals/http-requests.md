@@ -5,14 +5,14 @@ description: Сведения об использовании интерфейс
 monikerRange: '>= aspnetcore-2.1'
 ms.author: scaddie
 ms.custom: mvc
-ms.date: 12/16/2019
+ms.date: 02/09/2020
 uid: fundamentals/http-requests
-ms.openlocfilehash: 9b9da82191a587be0603ee114562e9a964f05250
-ms.sourcegitcommit: fe41cff0b99f3920b727286944e5b652ca301640
+ms.openlocfilehash: 93b75525e8a3f10c4e0b655baaff83c0f6e8131b
+ms.sourcegitcommit: 85564ee396c74c7651ac47dd45082f3f1803f7a2
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76870402"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77171806"
 ---
 # <a name="make-http-requests-using-ihttpclientfactory-in-aspnet-core"></a>Выполнения HTTP-запросов с помощью IHttpClientFactory в ASP.NET Core
 
@@ -31,7 +31,7 @@ ms.locfileid: "76870402"
 
 Пример кода в этой версии раздела использует <xref:System.Text.Json> для десериализации содержимого JSON, возвращаемого в ответах HTTP. Для примеров, использующих `Json.NET` и `ReadAsAsync<T>`, воспользуйтесь средством выбора версии, чтобы выбрать версию 2.x этого раздела.
 
-## <a name="consumption-patterns"></a>Шаблоны потребления
+## <a name="consumption-patterns"></a>Принципы использования
 
 Существует несколько способов использования `IHttpClientFactory` в приложении:
 
@@ -109,7 +109,12 @@ ms.locfileid: "76870402"
 
 [!code-csharp[](http-requests/samples/3.x/HttpClientFactorySample/Startup.cs?name=snippet3)]
 
-Типизированный клиент регистрируется во внедрении зависимостей как временный. Типизированный клиент можно внедрить и использовать напрямую:
+Типизированный клиент регистрируется во внедрении зависимостей как временный. В приведенном выше коде `AddHttpClient` регистрирует `GitHubService` как временную службу. Эта регистрация использует фабричный метод для следующих задач:
+
+1. Создание экземпляра `HttpClient`.
+1. Создайте экземпляр `GitHubService`, передав его конструктору экземпляр `HttpClient`.
+
+Типизированный клиент можно внедрить и использовать напрямую:
 
 [!code-csharp[](http-requests/samples/3.x/HttpClientFactorySample/Pages/TypedClient.cshtml.cs?name=snippet1&highlight=11-14,20)]
 
@@ -180,7 +185,7 @@ public class ValuesController : ControllerBase
 
 ## <a name="outgoing-request-middleware"></a>ПО промежуточного слоя для исходящих запросов
 
-В `HttpClient` существует концепция делегирования обработчиков, которые можно связать друг с другом для исходящих HTTP-запросов. `IHttpClientFactory`:
+В `HttpClient` существует концепция делегирования обработчиков, которые можно связать друг с другом для исходящих HTTP-запросов. `IHttpClientFactory`.
 
 * Упрощает определение обработчиков для применения к каждому именованному клиенту.
 * Поддерживает регистрацию и объединение в цепочки нескольких обработчиков для создания конвейера ПО промежуточного слоя для исходящих запросов. Каждый из этих обработчиков может выполнять работу до и после исходящего запроса. Этот шаблон:
@@ -318,7 +323,7 @@ public class ValuesController : ControllerBase
 
 [!code-csharp[](http-requests/samples/2.x/HttpClientFactorySample/Startup.cs?name=snippet13)]
 
-## <a name="logging"></a>Logging
+## <a name="logging"></a>Ведение журнала
 
 Клиенты, созданные через `IHttpClientFactory`, записывают сообщения журнала для всех запросов. Установите соответствующий уровень информации в конфигурации ведения журнала, чтобы просматривать сообщения журнала по умолчанию. Дополнительное ведение журнала, например запись заголовков запросов, включено только на уровне трассировки.
 
@@ -345,7 +350,7 @@ public class ValuesController : ControllerBase
 * [Microsoft.Extensions.Hosting](https://www.nuget.org/packages/Microsoft.Extensions.Hosting)
 * [Microsoft.Extensions.Http](https://www.nuget.org/packages/Microsoft.Extensions.Http)
 
-Рассмотрим следующий пример:
+В следующем примере:
 
 * <xref:System.Net.Http.IHttpClientFactory> регистрируется в контейнере службы [универсального узла](xref:fundamentals/host/generic-host):
 * `MyService` создает экземпляр фабрики клиента из службы, который используется для создания `HttpClient`. `HttpClient` используется для получения веб-страницы.
@@ -364,7 +369,7 @@ Header propagation — это ПО промежуточного слоя ASP.NE
 
 * Клиент включает настроенные заголовки в исходящие запросы:
 
-  ```C#
+  ```csharp
   var client = clientFactory.CreateClient("MyForwardingClient");
   var response = client.GetAsync(...);
   ```
@@ -391,7 +396,7 @@ Header propagation — это ПО промежуточного слоя ASP.NE
 
 [Просмотреть или скачать образец кода](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/http-requests/samples) ([как скачивать](xref:index#how-to-download-a-sample))
 
-## <a name="consumption-patterns"></a>Шаблоны потребления
+## <a name="consumption-patterns"></a>Принципы использования
 
 Существует несколько способов использования `IHttpClientFactory` в приложении:
 
@@ -636,7 +641,7 @@ public class ValuesController : ControllerBase
 
 [!code-csharp[](http-requests/samples/2.x/HttpClientFactorySample/Startup.cs?name=snippet13)]
 
-## <a name="logging"></a>Logging
+## <a name="logging"></a>Ведение журнала
 
 Клиенты, созданные через `IHttpClientFactory`, записывают сообщения журнала для всех запросов. Установите соответствующий уровень информации в конфигурации ведения журнала, чтобы просматривать сообщения журнала по умолчанию. Дополнительное ведение журнала, например запись заголовков запросов, включено только на уровне трассировки.
 
@@ -663,7 +668,7 @@ public class ValuesController : ControllerBase
 * [Microsoft.Extensions.Hosting](https://www.nuget.org/packages/Microsoft.Extensions.Hosting)
 * [Microsoft.Extensions.Http](https://www.nuget.org/packages/Microsoft.Extensions.Http)
 
-Рассмотрим следующий пример:
+В следующем примере:
 
 * <xref:System.Net.Http.IHttpClientFactory> регистрируется в контейнере службы [универсального узла](xref:fundamentals/host/generic-host):
 * `MyService` создает экземпляр фабрики клиента из службы, который используется для создания `HttpClient`. `HttpClient` используется для получения веб-страницы.
@@ -696,7 +701,7 @@ public class ValuesController : ControllerBase
 
 Для проектов, предназначенных для .NET Framework, необходимо установить пакет NuGet [Microsoft.Extensions.Http](https://www.nuget.org/packages/Microsoft.Extensions.Http/). Пакет `Microsoft.Extensions.Http` уже включен в проекты, предназначенные для .NET Core и ссылающиеся на [метапакет Microsoft.AspNetCore.App](xref:fundamentals/metapackage-app).
 
-## <a name="consumption-patterns"></a>Шаблоны потребления
+## <a name="consumption-patterns"></a>Принципы использования
 
 Существует несколько способов использования `IHttpClientFactory` в приложении:
 
@@ -944,7 +949,7 @@ public class ValuesController : ControllerBase
 
 [!code-csharp[](http-requests/samples/2.x/HttpClientFactorySample/Startup.cs?name=snippet13)]
 
-## <a name="logging"></a>Logging
+## <a name="logging"></a>Ведение журнала
 
 Клиенты, созданные через `IHttpClientFactory`, записывают сообщения журнала для всех запросов. Установите соответствующий уровень информации в конфигурации ведения журнала, чтобы просматривать сообщения журнала по умолчанию. Дополнительное ведение журнала, например запись заголовков запросов, включено только на уровне трассировки.
 
@@ -971,7 +976,7 @@ public class ValuesController : ControllerBase
 * [Microsoft.Extensions.Hosting](https://www.nuget.org/packages/Microsoft.Extensions.Hosting)
 * [Microsoft.Extensions.Http](https://www.nuget.org/packages/Microsoft.Extensions.Http)
 
-Рассмотрим следующий пример:
+В следующем примере:
 
 * <xref:System.Net.Http.IHttpClientFactory> регистрируется в контейнере службы [универсального узла](xref:fundamentals/host/generic-host):
 * `MyService` создает экземпляр фабрики клиента из службы, который используется для создания `HttpClient`. `HttpClient` используется для получения веб-страницы.
@@ -991,7 +996,7 @@ Header propagation — это поддерживаемое сообщество
 
 * Клиент включает настроенные заголовки в исходящие запросы:
 
-  ```C#
+  ```csharp
   var client = clientFactory.CreateClient("MyForwardingClient");
   var response = client.GetAsync(...);
   ```
