@@ -297,18 +297,20 @@
           uid: blazor/components
         - name: Жизненный цикл
           uid: blazor/lifecycle
-        - name: Формы и проверка
-          uid: blazor/forms-validation
-        - name: Библиотеки компонентов
-          uid: blazor/class-libraries
         - name: Макеты
           uid: blazor/layouts
+        - name: Формы и проверка
+          uid: blazor/forms-validation
         - name: Внедрение зависимостей
           uid: blazor/dependency-injection
         - name: Маршрутизация
           uid: blazor/routing
         - name: Взаимодействие с JavaScript
           uid: blazor/javascript-interop
+        - name: Конфигурация модели размещения
+          uid: blazor/hosting-model-configuration
+        - name: Библиотеки компонентов
+          uid: blazor/class-libraries
         - name: Безопасность и удостоверения
           items:
             - name: Обзор
