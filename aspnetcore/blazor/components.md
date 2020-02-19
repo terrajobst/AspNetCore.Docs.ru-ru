@@ -5,17 +5,17 @@ description: Узнайте, как создавать и использоват
 monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 02/04/2020
+ms.date: 02/12/2020
 no-loc:
 - Blazor
 - SignalR
 uid: blazor/components
-ms.openlocfilehash: 0da0d83a4fde7b753a84bf05d3a9284776f2881f
-ms.sourcegitcommit: d2ba66023884f0dca115ff010bd98d5ed6459283
+ms.openlocfilehash: f9b4eab29fafe8113528062f57d28dadd0f57577
+ms.sourcegitcommit: 6645435fc8f5092fc7e923742e85592b56e37ada
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77213354"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77447104"
 ---
 # <a name="create-and-use-aspnet-core-razor-components"></a>Создание и использование компонентов ASP.NET Core Razor
 
@@ -23,11 +23,11 @@ ms.locfileid: "77213354"
 
 [Просмотреть или скачать образец кода](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/blazor/common/samples/) ([как скачивать](xref:index#how-to-download-a-sample))
 
-Приложения блазор создаются с помощью *компонентов*. Компонент — это автономный фрагмент пользовательского интерфейса, например страница, диалоговое окно или форма. Компонент включает разметку HTML и логику обработки, необходимую для вставки данных или реагирования на события пользовательского интерфейса. Компоненты являются гибкими и легковесными. Они могут быть вложенными, повторно использованы и совместно использоваться проектами.
+Blazor приложения создаются с помощью *компонентов*. Компонент — это автономный фрагмент пользовательского интерфейса, например страница, диалоговое окно или форма. Компонент включает разметку HTML и логику обработки, необходимую для вставки данных или реагирования на события пользовательского интерфейса. Компоненты являются гибкими и легковесными. Они могут быть вложенными, повторно использованы и совместно использоваться проектами.
 
 ## <a name="component-classes"></a>Классы компонентов
 
-Компоненты реализуются в файлах компонентов [Razor](xref:mvc/views/razor) ( *. Razor*) с помощью комбинации C# и HTML-разметки. Компонент в Блазор формально называется *компонентом Razor*.
+Компоненты реализуются в файлах компонентов [Razor](xref:mvc/views/razor) ( *. Razor*) с помощью комбинации C# и HTML-разметки. Компонент в Blazor формально называется *компонентом Razor*.
 
 Имя компонента должно начинаться с символа верхнего регистра. Например, *микулкомпонент. Razor* является допустимым, а *микулкомпонент. Razor* является недопустимым.
 
@@ -49,7 +49,7 @@ ms.locfileid: "77213354"
 }
 ```
 
-После первоначального отображения компонента Компонент повторно создает дерево рендеринга в ответ на события. Затем блазор сравнивает новое дерево отрисовки с предыдущим и применяет любые изменения к модель DOMу (DOM) браузера.
+После первоначального отображения компонента Компонент повторно создает дерево рендеринга в ответ на события. Blazor затем сравнивает новое дерево отрисовки с предыдущим и применяет любые изменения в модель DOM (DOM) браузера.
 
 Компоненты являются обычными C# классами и могут быть помещены в любое место внутри проекта. Компоненты, создающие веб-страницы, обычно находятся в папке *страниц* . Компоненты, не являющиеся страницами, часто помещаются в *общую* папку или пользовательскую папку, добавленную в проект.
 
@@ -66,55 +66,9 @@ ms.locfileid: "77213354"
 @using BlazorApp.Components
 ```
 
-## <a name="integrate-components-into-razor-pages-and-mvc-apps"></a>Интеграция компонентов в Razor Pages и приложения MVC
-
-Компоненты Razor можно интегрировать в Razor Pages и приложения MVC. При отображении страницы или представления компоненты можно предварительно отобразить в одно и то же время.
-
-Чтобы подготовить Razor Pages или MVC-приложение для размещения компонентов Razor, следуйте указаниям в разделе *Интеграция компонентов Razor в Razor Pages и приложения MVC* статьи <xref:blazor/hosting-model-configuration#integrate-razor-components-into-razor-pages-and-mvc-apps>.
-
-При использовании пользовательской папки для хранения компонентов приложения добавьте пространство имен, представляющее папку, в страницу или представление либо в файл *_ViewImports. cshtml* . Рассмотрим следующий пример:
-
-* Замените `MyAppNamespace` пространством имен приложения.
-* Если папка с именем *Components* не используется для хранения компонентов, измените `Components` в папку, в которой находятся компоненты.
-
-```csharp
-@using MyAppNamespace.Components
-```
-
-Файл *_ViewImports. cshtml* находится в папке *pages* приложения Razor Pages или в папке *views* приложения MVC.
-
-Чтобы отобразить компонент из страницы или представления, используйте вспомогательную функцию тега `Component`:
-
-```cshtml
-<component type="typeof(Counter)" render-mode="ServerPrerendered" 
-    param-IncrementAmount="10" />
-```
-
-Тип параметра должен быть сериализуемым JSON, что обычно означает, что тип должен иметь конструктор по умолчанию и устанавливаемые свойства. Например, можно указать значение для `IncrementAmount`, так как тип `IncrementAmount` является `int`, который является типом-примитивом, поддерживаемым сериализатором JSON.
-
-`RenderMode` настраивает, является ли компонент:
-
-* Предварительно отображается на странице.
-* Отображается как статический HTML на странице или включает необходимые сведения для начальной загрузки приложения Блазор из агента пользователя.
-
-| `RenderMode`        | Description |
-| ------------------- | ----------- |
-| `ServerPrerendered` | Преобразует компонент в статический HTML и включает маркер для серверного приложения Блазор. При запуске агента пользователя этот маркер используется для начальной загрузки приложения Блазор. |
-| `Server`            | Отображает маркер для серверного приложения Блазор. Выходные данные компонента не включаются. При запуске агента пользователя этот маркер используется для начальной загрузки приложения Блазор. |
-| `Static`            | Преобразует компонент в статический HTML. |
-
-Хотя страницы и представления могут использовать компоненты, наоборот это не так. Компоненты не могут использовать сценарии представления и страницы, такие как частичные представления и разделы. Чтобы использовать логику из частичного представления в компоненте, разнесите логику частичного представления в компонент.
-
-Отрисовка компонентов сервера из статической HTML-страницы не поддерживается.
-
-Дополнительные сведения о подготовке компонентов к просмотру, состоянии компонентов и вспомогательной функции тега `Component` см. в следующих статьях:
-
-* <xref:blazor/hosting-models>
-* <xref:blazor/hosting-model-configuration>
-
 ## <a name="tag-helpers-arent-used-in-components"></a>Вспомогательные функции тегов не используются в компонентах
 
-[Вспомогательные функции тегов](xref:mvc/views/tag-helpers/intro) не поддерживаются в компонентах Razor (файлы *. Razor* ). Чтобы обеспечить функциональные возможности тегов в Блазор, создайте компонент с теми же функциональными возможностями, что и вспомогательная функция тега, и используйте вместо него компонент.
+[Вспомогательные функции тегов](xref:mvc/views/tag-helpers/intro) не поддерживаются в компонентах Razor (файлы *. Razor* ). Чтобы обеспечить функциональные возможности тегов в Blazor, создайте компонент с теми же функциональными возможностями, что и вспомогательная функция тега, и используйте вместо него компонент.
 
 ## <a name="use-components"></a>Использование компонентов
 
@@ -132,33 +86,49 @@ ms.locfileid: "77213354"
 
 [!code-razor[](common/samples/3.x/BlazorWebAssemblySample/Components/HeadingComponent.razor)]
 
-Если компонент содержит HTML-элемент с первой буквой в верхнем регистре, который не соответствует имени компонента, выдается предупреждение, указывающее, что элемент имеет непредвиденное имя. Добавление оператора `@using` для пространства имен компонента делает компонент доступным, что приводит к удалению предупреждения.
+Если компонент содержит HTML-элемент с первой буквой в верхнем регистре, который не соответствует имени компонента, выдается предупреждение, указывающее, что элемент имеет непредвиденное имя. Добавление директивы `@using` для пространства имен компонента делает компонент доступным, что позволяет устранить это предупреждение.
 
-## <a name="component-parameters"></a>Параметры компонентов
+## <a name="routing"></a>Маршрутизация
+
+Маршрутизация в Blazor достигается путем предоставления шаблона маршрута для каждого доступного компонента в приложении.
+
+При компиляции файла Razor с директивой `@page` созданному классу присваивается <xref:Microsoft.AspNetCore.Mvc.RouteAttribute> с указанием шаблона маршрута. Во время выполнения маршрутизатор ищет классы компонентов с `RouteAttribute` и отображает, какой из компонентов имеет шаблон маршрута, соответствующий запрошенному URL-адресу.
+
+```razor
+@page "/ParentComponent"
+
+...
+```
+
+Дополнительные сведения см. в разделе <xref:blazor/routing>.
+
+## <a name="parameters"></a>Параметры
+
+### <a name="route-parameters"></a>Параметры маршрута
+
+Компоненты могут принимать параметры маршрута из шаблона маршрута, указанного в директиве `@page`. Маршрутизатор использует параметры маршрута для заполнения соответствующих параметров компонента.
+
+*Pages/раутепараметер. Razor*:
+
+[!code-razor[](components/samples_snapshot/RouteParameter.razor?highlight=2,7-8)]
+
+Необязательные параметры не поддерживаются, поэтому в предыдущем примере применяются две директивы `@page`. Первый позволяет переходить к компоненту без параметра. Вторая директива `@page` получает параметр `{text}` маршрута и присваивает значение свойству `Text`.
+
+Синтаксис параметра *Catch-All* (`*`/`**`), который захватывает путь для нескольких папок, **не** поддерживается в компонентах Razor ( *. Razor*).
+
+### <a name="component-parameters"></a>Параметры компонентов
 
 Компоненты могут иметь *Параметры компонента*, которые определяются с помощью общедоступных свойств класса Component с атрибутом `[Parameter]`. Используйте атрибуты, чтобы указать аргументы для компонента в разметке.
 
 *Components/чилдкомпонент. Razor*:
 
-[!code-razor[](common/samples/3.x/BlazorWebAssemblySample/Components/ChildComponent.razor?highlight=11-12)]
+[!code-razor[](common/samples/3.x/BlazorWebAssemblySample/Components/ChildComponent.razor?highlight=2,11-12)]
 
 В следующем примере из примера приложения `ParentComponent` задает значение свойства `Title` `ChildComponent`.
 
 *Pages/паренткомпонент. Razor*:
 
-```razor
-@page "/ParentComponent"
-
-<h1>Parent-child example</h1>
-
-<ChildComponent Title="Panel Title from Parent"
-                OnClickCallback="@ShowMessage">
-    Content of the child component is supplied
-    by the parent component.
-</ChildComponent>
-
-...
-```
+[!code-razor[](components/samples_snapshot/ParentComponent.razor?highlight=5-6)]
 
 ## <a name="child-content"></a>Дочернее содержимое
 
@@ -177,19 +147,7 @@ ms.locfileid: "77213354"
 
 *Pages/паренткомпонент. Razor*:
 
-```razor
-@page "/ParentComponent"
-
-<h1>Parent-child example</h1>
-
-<ChildComponent Title="Panel Title from Parent"
-                OnClickCallback="@ShowMessage">
-    Content of the child component is supplied
-    by the parent component.
-</ChildComponent>
-
-...
-```
+[!code-razor[](components/samples_snapshot/ParentComponent.razor?highlight=7-8)]
 
 ## <a name="attribute-splatting-and-arbitrary-parameters"></a>Атрибуты Сплаттинг и произвольные параметры
 
@@ -307,595 +265,6 @@ public IDictionary<string, object> AdditionalAttributes { get; set; }
 <div extra="10" />
 ```
 
-## <a name="data-binding"></a>привязка данных,
-
-Привязка данных как к компонентам, так и к элементам DOM осуществляется с помощью атрибута [`@bind`](xref:mvc/views/razor#bind) . В следующем примере свойство `CurrentValue` привязывается к значению текстового поля:
-
-```razor
-<input @bind="CurrentValue" />
-
-@code {
-    private string CurrentValue { get; set; }
-}
-```
-
-Когда текстовое поле теряет фокус, значение свойства обновляется.
-
-Текстовое поле обновляется в пользовательском интерфейсе только при подготовке компонента к просмотру, а не в ответ на изменение значения свойства. Поскольку компоненты отображаются после выполнения кода обработчика событий, обновления свойств *обычно* отражаются в пользовательском интерфейсе сразу после запуска обработчика событий.
-
-Использование `@bind` со свойством `CurrentValue` (`<input @bind="CurrentValue" />`) в основном эквивалентно следующему:
-
-```razor
-<input value="@CurrentValue"
-    @onchange="@((ChangeEventArgs __e) => CurrentValue = 
-        __e.Value.ToString())" />
-        
-@code {
-    private string CurrentValue { get; set; }
-}
-```
-
-При подготовке к просмотру компонента `value` входного элемента берется из свойства `CurrentValue`. Когда пользователь вводит данные в текстовое поле и изменяет фокус элемента, запускается событие `onchange`, а свойству `CurrentValue` присваивается измененное значение. На практике создание кода более сложно, так как `@bind` обрабатывает случаи, когда выполняются преобразования типов. В принципе `@bind` связывает текущее значение выражения с атрибутом `value` и обрабатывает изменения с помощью зарегистрированного обработчика.
-
-Помимо обработки `onchange`ных событий с помощью синтаксиса `@bind`, свойство или поле можно привязать с помощью других событий, указав атрибут [`@bind-value`](xref:mvc/views/razor#bind) с параметром `event` ([`@bind-value:event`](xref:mvc/views/razor#bind)). В следующем примере выполняется привязка свойства `CurrentValue` для события `oninput`.
-
-```razor
-<input @bind-value="CurrentValue" @bind-value:event="oninput" />
-
-@code {
-    private string CurrentValue { get; set; }
-}
-```
-
-В отличие от `onchange`, которая срабатывает при потере фокуса элементом, `oninput` срабатывает при изменении значения текстового поля.
-
-`@bind-value` в предыдущем примере выполняет привязку:
-
-* Указанное выражение (`CurrentValue`) в атрибут `value` элемента.
-* Делегат события Change для события, указанного `@bind-value:event`.
-
-### <a name="unparsable-values"></a>Неанализируемые значения
-
-Когда пользователь предоставляет неинтерпретируемое значение для элемента с привязкой к данным, неанализируемое значение автоматически возвращается к предыдущему значению при срабатывании события привязки.
-
-Рассмотрим следующий сценарий.
-
-* Элемент `<input>` привязан к типу `int` с начальным значением `123`:
-
-  ```razor
-  <input @bind="MyProperty" />
-
-  @code {
-      [Parameter]
-      public int MyProperty { get; set; } = 123;
-  }
-  ```
-* Пользователь обновляет значение элемента для `123.45` на странице и изменяет фокус элемента.
-
-В приведенном выше сценарии значение элемента возвращается к `123`. Если значение `123.45` отклоняется в пользу исходного значения `123`, пользователь понимает, что их значение не принято.
-
-По умолчанию привязка применяется к событию `onchange` элемента (`@bind="{PROPERTY OR FIELD}"`). Для задания другого события используйте `@bind-value="{PROPERTY OR FIELD}" @bind-value:event={EVENT}`. Для события `oninput` (`@bind-value:event="oninput"`) переверсия происходит после любого нажатия клавиши, которая вводит неинтерпретируемое значение. При нацеливании на событие `oninput` с типом, привязанным к `int`, пользователю запрещено вводить `.` символ. `.`ный символ немедленно удаляется, поэтому пользователь получает немедленный отзыв о том, что разрешены только целые числа. Существуют сценарии, в которых возвращение значения в событие `oninput` не является идеальным, например, когда пользователю разрешено очищать неинтерпретируемое `<input>` значение. К альтернативам относятся:
-
-* Не используйте событие `oninput`. Используйте событие `onchange` по умолчанию (`@bind="{PROPERTY OR FIELD}"`), где недопустимое значение не возвращается, пока элемент не теряет фокус.
-* Выполните привязку к типу, допускающему значение null, например `int?` или `string`, и предоставьте настраиваемую логику для обработки недопустимых записей.
-* Используйте [компонент проверки формы](xref:blazor/forms-validation), например `InputNumber` или `InputDate`. Компоненты проверки форм имеют встроенную поддержку для управления недопустимыми входными данными. Компоненты проверки формы:
-  * Разрешите пользователю указать недопустимые входные данные и получить ошибки проверки для связанного `EditContext`.
-  * Отображает ошибки проверки в пользовательском интерфейсе, не мешая пользователю вводить дополнительные данные из формы.
-
-### <a name="globalization"></a>Глобализация
-
-`@bind` значения форматируются для вывода и анализируются с использованием правил текущего языка и региональных параметров.
-
-Доступ к текущему языку и региональным параметрам можно получить из свойства <xref:System.Globalization.CultureInfo.CurrentCulture?displayProperty=fullName>.
-
-[CultureInfo. InvariantCulture](xref:System.Globalization.CultureInfo.InvariantCulture) используется для следующих типов полей (`<input type="{TYPE}" />`):
-
-* `date`
-* `number`
-
-Предыдущие типы полей:
-
-* Отображаются с использованием соответствующих правил форматирования на основе браузера.
-* Не может содержать текст в свободной форме.
-* Предоставление характеристик взаимодействия с пользователем в зависимости от реализации браузера.
-
-Следующие типы полей имеют особые требования к форматированию, которые в настоящее время не поддерживаются Блазор, так как они не поддерживаются всеми основными браузерами.
-
-* `datetime-local`
-* `month`
-* `week`
-
-`@bind` поддерживает параметр `@bind:culture`, чтобы предоставить <xref:System.Globalization.CultureInfo?displayProperty=fullName> для синтаксического анализа и форматирования значения. Указание языка и региональных параметров не рекомендуется при использовании типов полей `date` и `number`. `date` и `number` имеют встроенную поддержку Блазор, которая предоставляет требуемый язык и региональные параметры.
-
-Сведения о том, как задать язык и региональные параметры пользователя, см. в разделе [Локализация](#localization) .
-
-### <a name="format-strings"></a>Строки формата
-
-Привязка данных работает со строками формата <xref:System.DateTime> с помощью [`@bind:format`](xref:mvc/views/razor#bind). Другие выражения форматирования, такие как денежные или числовые форматы, в настоящее время недоступны.
-
-```razor
-<input @bind="StartDate" @bind:format="yyyy-MM-dd" />
-
-@code {
-    [Parameter]
-    public DateTime StartDate { get; set; } = new DateTime(2020, 1, 1);
-}
-```
-
-В приведенном выше коде тип поля `<input>` элемента (`type`) по умолчанию имеет значение `text`. `@bind:format` поддерживается для привязки следующих типов .NET:
-
-* <xref:System.DateTime?displayProperty=fullName>
-* <xref:System.DateTime?displayProperty=fullName>?
-* <xref:System.DateTimeOffset?displayProperty=fullName>
-* <xref:System.DateTimeOffset?displayProperty=fullName>?
-
-Атрибут `@bind:format` задает формат даты, применяемый к `value` элемента `<input>`. Формат также используется для анализа значения при возникновении `onchange` события.
-
-Указание формата для типа поля `date` не рекомендуется, так как Блазор имеет встроенную поддержку для форматирования дат. Несмотря на рекомендацию, используйте формат даты `yyyy-MM-dd` для правильной работы привязки только в том случае, если указан формат с типом поля `date`:
-
-```razor
-<input type="date" @bind="StartDate" @bind:format="yyyy-MM-dd">
-```
-
-### <a name="parent-to-child-binding-with-component-parameters"></a>Привязка "родители — потомки" с параметрами компонента
-
-Привязка распознает параметры компонента, где `@bind-{property}` может привязать значение свойства из родительского компонента к дочернему компоненту. Привязка дочернего элемента к родительскому элементу рассматривается в [привязке дочерний к родительскому разделу с цепочкой привязки](#child-to-parent-binding-with-chained-bind) .
-
-Следующий дочерний компонент (`ChildComponent`) имеет параметр компонента `Year` и обратный вызов `YearChanged`:
-
-```razor
-<h2>Child Component</h2>
-
-<p>Year: @Year</p>
-
-@code {
-    [Parameter]
-    public int Year { get; set; }
-
-    [Parameter]
-    public EventCallback<int> YearChanged { get; set; }
-}
-```
-
-`EventCallback<T>` описывается в разделе [вложенный EventCallback](#eventcallback) .
-
-Следующий родительский компонент использует:
-
-* `ChildComponent` и привязывает параметр `ParentYear` из родительского элемента к параметру `Year` дочернего компонента.
-* Событие `onclick` используется для активации метода `ChangeTheYear`. Дополнительные сведения см. в разделе [Обработка событий](#event-handling) .
-
-```razor
-@page "/ParentComponent"
-
-<h1>Parent Component</h1>
-
-<p>ParentYear: @ParentYear</p>
-
-<ChildComponent @bind-Year="ParentYear" />
-
-<button class="btn btn-primary" @onclick="ChangeTheYear">
-    Change Year to 1986
-</button>
-
-@code {
-    [Parameter]
-    public int ParentYear { get; set; } = 1978;
-
-    private void ChangeTheYear()
-    {
-        ParentYear = 1986;
-    }
-}
-```
-
-При загрузке `ParentComponent` создается следующая разметка:
-
-```html
-<h1>Parent Component</h1>
-
-<p>ParentYear: 1978</p>
-
-<h2>Child Component</h2>
-
-<p>Year: 1978</p>
-```
-
-Если значение свойства `ParentYear` изменяется путем нажатия кнопки в `ParentComponent`, свойство `Year` `ChildComponent` обновляется. Новое значение `Year` отображается в пользовательском интерфейсе при перевизуализации `ParentComponent`:
-
-```html
-<h1>Parent Component</h1>
-
-<p>ParentYear: 1986</p>
-
-<h2>Child Component</h2>
-
-<p>Year: 1986</p>
-```
-
-Параметр `Year` является связываемым, так как имеет сопутствующее `YearChanged` событие, соответствующее типу параметра `Year`.
-
-По соглашению `<ChildComponent @bind-Year="ParentYear" />`, по сути, эквивалентен написанию:
-
-```razor
-<ChildComponent @bind-Year="ParentYear" @bind-Year:event="YearChanged" />
-```
-
-Как правило, свойство может быть привязано к соответствующему обработчику событий с помощью атрибута `@bind-property:event`. Например, свойство `MyProp` можно привязать к `MyEventHandler`у с помощью следующих двух атрибутов:
-
-```razor
-<MyComponent @bind-MyProp="MyValue" @bind-MyProp:event="MyEventHandler" />
-```
-
-### <a name="child-to-parent-binding-with-chained-bind"></a>Привязка дочернего элемента в родитель с сцепленной привязкой
-
-Распространенным сценарием является привязка привязанного к данным параметра к элементу страницы в выходных данных компонента. Этот сценарий называется *связанной* привязкой, так как несколько уровней привязки происходят одновременно.
-
-Связанную с цепочкой привязку нельзя реализовать с помощью синтаксиса `@bind` в элементе страницы. Обработчик событий и значение должны быть указаны отдельно. Однако родительский компонент может использовать `@bind` синтаксис с параметром компонента.
-
-Следующий `PasswordField` компонент (*пассвордфиелд. Razor*):
-
-* Задает значение `<input>` элемента для свойства `Password`.
-* Предоставляет изменения свойства `Password` в родительский компонент с помощью [вложенный EventCallback](#eventcallback).
-* Используется событие `onclick` для активации метода `ToggleShowPassword`. Дополнительные сведения см. в разделе [Обработка событий](#event-handling) .
-
-```razor
-<h1>Child Component</h2>
-
-Password: 
-
-<input @oninput="OnPasswordChanged" 
-       required 
-       type="@(_showPassword ? "text" : "password")" 
-       value="@Password" />
-
-<button class="btn btn-primary" @onclick="ToggleShowPassword">
-    Show password
-</button>
-
-@code {
-    private bool _showPassword;
-
-    [Parameter]
-    public string Password { get; set; }
-
-    [Parameter]
-    public EventCallback<string> PasswordChanged { get; set; }
-
-    private Task OnPasswordChanged(ChangeEventArgs e)
-    {
-        Password = e.Value.ToString();
-
-        return PasswordChanged.InvokeAsync(Password);
-    }
-
-    private void ToggleShowPassword()
-    {
-        _showPassword = !_showPassword;
-    }
-}
-```
-
-Компонент `PasswordField` используется в другом компоненте:
-
-```razor
-@page "/ParentComponent"
-
-<h1>Parent Component</h1>
-
-<PasswordField @bind-Password="_password" />
-
-@code {
-    private string _password;
-}
-```
-
-Для выполнения проверок или перехвата ошибок в пароле в предыдущем примере:
-
-* Создайте резервное поле для `Password` (`_password` в следующем примере кода).
-* Выполните проверки или ошибки ловушек в методе задания `Password`.
-
-В следующем примере представлена немедленная реакция пользователя, если в значении пароля используется пробел:
-
-```razor
-@page "/ParentComponent"
-
-<h1>Parent Component</h1>
-
-Password: 
-
-<input @oninput="OnPasswordChanged" 
-       required 
-       type="@(_showPassword ? "text" : "password")" 
-       value="@Password" />
-
-<button class="btn btn-primary" @onclick="ToggleShowPassword">
-    Show password
-</button>
-
-<span class="text-danger">@_validationMessage</span>
-
-@code {
-    private bool _showPassword;
-    private string _password;
-    private string _validationMessage;
-
-    [Parameter]
-    public string Password
-    {
-        get { return _password ?? string.Empty; }
-        set
-        {
-            if (_password != value)
-            {
-                if (value.Contains(' '))
-                {
-                    _validationMessage = "Spaces not allowed!";
-                }
-                else
-                {
-                    _password = value;
-                    _validationMessage = string.Empty;
-                }
-            }
-        }
-    }
-
-    [Parameter]
-    public EventCallback<string> PasswordChanged { get; set; }
-
-    private Task OnPasswordChanged(ChangeEventArgs e)
-    {
-        Password = e.Value.ToString();
-
-        return PasswordChanged.InvokeAsync(Password);
-    }
-
-    private void ToggleShowPassword()
-    {
-        _showPassword = !_showPassword;
-    }
-}
-```
-
-### <a name="radio-buttons"></a>Переключатели
-
-Сведения о привязке к переключателям в форме см. в разделе <xref:blazor/forms-validation#work-with-radio-buttons>.
-
-## <a name="event-handling"></a>Обработка событий
-
-Компоненты Razor предоставляют функции обработки событий. Для атрибута HTML-элемента с именем `on{EVENT}` (например, `onclick` и `onsubmit`) со значением, вводимым с помощью делегата, компоненты Razor рассматривают значение атрибута как обработчик событий. Имя атрибута всегда имеет формат [`@on{EVENT}`](xref:mvc/views/razor#onevent).
-
-Следующий код вызывает метод `UpdateHeading`, когда кнопка выбрана в пользовательском интерфейсе:
-
-```razor
-<button class="btn btn-primary" @onclick="UpdateHeading">
-    Update heading
-</button>
-
-@code {
-    private void UpdateHeading(MouseEventArgs e)
-    {
-        ...
-    }
-}
-```
-
-Следующий код вызывает метод `CheckChanged` при изменении флажка в пользовательском интерфейсе:
-
-```razor
-<input type="checkbox" class="form-check-input" @onchange="CheckChanged" />
-
-@code {
-    private void CheckChanged()
-    {
-        ...
-    }
-}
-```
-
-Обработчики событий также могут быть асинхронными и возвращать <xref:System.Threading.Tasks.Task>. Нет необходимости вручную вызывать [статехасчанжед](xref:blazor/lifecycle#state-changes). Исключения регистрируются при их возникновении.
-
-В следующем примере `UpdateHeading` вызывается асинхронно при выборе кнопки:
-
-```razor
-<button class="btn btn-primary" @onclick="UpdateHeading">
-    Update heading
-</button>
-
-@code {
-    private async Task UpdateHeading(MouseEventArgs e)
-    {
-        ...
-    }
-}
-```
-
-### <a name="event-argument-types"></a>Типы аргументов событий
-
-Для некоторых событий разрешены типы аргументов событий. Если доступ к одному из этих типов событий не нужен, в вызове метода это не требуется.
-
-Поддерживаемые `EventArgs` приведены в следующей таблице.
-
-| Событие            | Class                | События DOM и заметки |
-| ---------------- | -------------------- | -------------------- |
-| Буфер обмена        | `ClipboardEventArgs` | `oncut`, `oncopy`, `onpaste` |
-| Переместить             | `DragEventArgs`      | `ondrag`, `ondragstart`, `ondragenter`, `ondragleave`, `ondragover`, `ondrop`, `ondragend`<br><br>`DataTransfer` и `DataTransferItem` содержать перетаскиваемые данные элемента. |
-| Ошибка            | `ErrorEventArgs`     | `onerror` |
-| Событие            | `EventArgs`          | *Общие сведения*<br>`onactivate`, `onbeforeactivate`, `onbeforedeactivate`, `ondeactivate`, `onended`, `onfullscreenchange`, `onfullscreenerror`, `onloadeddata`, `onloadedmetadata`, `onpointerlockchange`, `onpointerlockerror`, `onreadystatechange`, `onscroll`<br><br>*Буфер обмена*<br>`onbeforecut`, `onbeforecopy`, `onbeforepaste`<br><br>*Ввод*<br>`oninvalid`, `onreset`, `onselect`, `onselectionchange`, `onselectstart`, `onsubmit`<br><br>*Носитель*<br>`oncanplay`, `oncanplaythrough`, `oncuechange`, `ondurationchange`, `onemptied`, `onpause`, `onplay`, `onplaying`, `onratechange`, `onseeked`, `onseeking`, `onstalled`, `onstop`, `onsuspend`, `ontimeupdate`, `onvolumechange`, `onwaiting` |
-| Focus            | `FocusEventArgs`     | `onfocus`, `onblur`, `onfocusin`, `onfocusout`<br><br>Не включает поддержку для `relatedTarget`. |
-| Входные данные            | `ChangeEventArgs`    | `onchange`, `oninput` |
-| Клавиатура         | `KeyboardEventArgs`  | `onkeydown`, `onkeypress`, `onkeyup` |
-| Мышь            | `MouseEventArgs`     | `onclick`, `oncontextmenu`, `ondblclick`, `onmousedown`, `onmouseup`, `onmouseover`, `onmousemove`, `onmouseout` |
-| Указатель мыши    | `PointerEventArgs`   | `onpointerdown`, `onpointerup`, `onpointercancel`, `onpointermove`, `onpointerover`, `onpointerout`, `onpointerenter`, `onpointerleave`, `ongotpointercapture`, `onlostpointercapture` |
-| Колесо мыши      | `WheelEventArgs`     | `onwheel`, `onmousewheel` |
-| Ход выполнения         | `ProgressEventArgs`  | `onabort`, `onload`, `onloadend`, `onloadstart`, `onprogress`, `ontimeout` |
-| Сенсорные технологии            | `TouchEventArgs`     | `ontouchstart`, `ontouchend`, `ontouchmove`, `ontouchenter`, `ontouchleave`, `ontouchcancel`<br><br>`TouchPoint` представляет одну точку контакта на устройстве с сенсорным вводом. |
-
-Для получения дополнительных сведений см. следующие ресурсы:
-
-* [Классы EventArgs в источнике ссылки на ASP.NET Core (ветвь DotNet/aspnetcore Release/3.1)](https://github.com/dotnet/aspnetcore/tree/release/3.1/src/Components/Web/src/Web).
-* [Веб-документы MDN: глобалевенсандлерс](https://developer.mozilla.org/docs/Web/API/GlobalEventHandlers) &ndash; содержит сведения о том, какие элементы HTML поддерживают каждое событие DOM.
-
-### <a name="lambda-expressions"></a>Лямбда-выражения
-
-Лямбда-выражения также могут использоваться:
-
-```razor
-<button @onclick="@(e => Console.WriteLine("Hello, world!"))">Say hello</button>
-```
-
-Часто бывает удобно закрывать дополнительные значения, например при переборе набора элементов. В следующем примере создаются три кнопки, каждый из которых вызывает `UpdateHeading` передачи аргумента события (`MouseEventArgs`) и номера кнопки (`buttonNumber`) при выборе в пользовательском интерфейсе:
-
-```razor
-<h2>@_message</h2>
-
-@for (var i = 1; i < 4; i++)
-{
-    var buttonNumber = i;
-
-    <button class="btn btn-primary"
-            @onclick="@(e => UpdateHeading(e, buttonNumber))">
-        Button #@i
-    </button>
-}
-
-@code {
-    private string _message = "Select a button to learn its position.";
-
-    private void UpdateHeading(MouseEventArgs e, int buttonNumber)
-    {
-        _message = $"You selected Button #{buttonNumber} at " +
-            $"mouse position: {e.ClientX} X {e.ClientY}.";
-    }
-}
-```
-
-> [!NOTE]
-> **Не** используйте переменную цикла (`i`) в цикле `for` непосредственно в лямбда-выражении. В противном случае одна и та же переменная используется во всех лямбда-выражениях, в результате чего значение `i`будет одинаковым во всех лямбдаах. Всегда запишите свое значение в локальную переменную (`buttonNumber` в предыдущем примере), а затем используйте ее.
-
-### <a name="eventcallback"></a>Вложенный EventCallback
-
-Распространенным сценарием с вложенными компонентами является желание запускать метод родительского компонента при возникновении события дочернего компонента&mdash;например, когда в дочернем элементе возникает событие `onclick`. Чтобы обеспечить доступ к событиям по компонентам, используйте `EventCallback`. Родительский компонент может назначить метод обратного вызова `EventCallback`у дочернего компонента.
-
-`ChildComponent` в примере приложения (*Components/чилдкомпонент. Razor*) демонстрирует настройку обработчика `onclick`а кнопки на получение делегата `EventCallback` из `ParentComponent`в примере. `EventCallback` вводится `MouseEventArgs`, который подходит для события `onclick` на периферийном устройстве.
-
-[!code-razor[](common/samples/3.x/BlazorWebAssemblySample/Components/ChildComponent.razor?highlight=5-7,17-18)]
-
-`ParentComponent` задает для дочернего `EventCallback<T>` (`OnClickCallback`) его метод `ShowMessage`.
-
-*Pages/паренткомпонент. Razor*:
-
-```razor
-@page "/ParentComponent"
-
-<h1>Parent-child example</h1>
-
-<ChildComponent Title="Panel Title from Parent"
-                OnClickCallback="@ShowMessage">
-    Content of the child component is supplied
-    by the parent component.
-</ChildComponent>
-
-<p><b>@_messageText</b></p>
-
-@code {
-    private string _messageText;
-
-    private void ShowMessage(MouseEventArgs e)
-    {
-        _messageText = $"Blaze a new trail with Blazor! ({e.ScreenX}, {e.ScreenY})";
-    }
-}
-```
-
-При выборе кнопки в `ChildComponent`:
-
-* Вызывается метод `ShowMessage` `ParentComponent`. `_messageText` обновляется и отображается в `ParentComponent`.
-* Вызов [статехасчанжед](xref:blazor/lifecycle#state-changes) не требуется в методе обратного вызова (`ShowMessage`). `StateHasChanged` вызывается автоматически для реотрисовки `ParentComponent`, так же как и дочерние события. компонент активируется в обработчиках событий, которые выполняются внутри дочернего элемента.
-
-`EventCallback` и `EventCallback<T>` разрешается выполнять асинхронные делегаты. `EventCallback<T>` является строго типизированным и требует определенного типа аргумента. `EventCallback` слабо типизирован и допускает любой тип аргумента.
-
-```razor
-<ChildComponent 
-    OnClickCallback="@(async () => { await Task.Yield(); _messageText = "Blaze It!"; })" />
-```
-
-Вызов `EventCallback` или `EventCallback<T>` с `InvokeAsync` и ожидание <xref:System.Threading.Tasks.Task>:
-
-```csharp
-await callback.InvokeAsync(arg);
-```
-
-Используйте `EventCallback` и `EventCallback<T>` для обработки событий и параметров компонента привязки.
-
-Предпочитать строго типизированный `EventCallback<T>` поверх `EventCallback`. `EventCallback<T>` предоставляет более лучшую реакцию на ошибки для пользователей компонента. Как и в случае с другими обработчиками событий пользовательского интерфейса, указание параметра события является необязательным. Используйте `EventCallback`, если не передается значение обратного вызова.
-
-### <a name="prevent-default-actions"></a>Запретить действия по умолчанию
-
-Используйте атрибут директивы [`@on{EVENT}:preventDefault`](xref:mvc/views/razor#oneventpreventdefault) , чтобы предотвратить действие по умолчанию для события.
-
-Если ключ выбран на устройстве ввода, а элемент находится в текстовом поле, то в браузере обычно отображается символ ключа в текстовом поле. В следующем примере поведение по умолчанию запрещено путем указания атрибута директивы `@onkeypress:preventDefault`. Счетчик увеличивается, а ключ **+** не записывается в значение элемента `<input>`:
-
-```razor
-<input value="@_count" @onkeypress="KeyHandler" @onkeypress:preventDefault />
-
-@code {
-    private int _count = 0;
-
-    private void KeyHandler(KeyboardEventArgs e)
-    {
-        if (e.Key == "+")
-        {
-            _count++;
-        }
-    }
-}
-```
-
-Указание `@on{EVENT}:preventDefault` атрибута без значения эквивалентно `@on{EVENT}:preventDefault="true"`.
-
-Значение атрибута также может быть выражением. В следующем примере `_shouldPreventDefault` является полем `bool`, для которого задано значение `true` или `false`:
-
-```razor
-<input @onkeypress:preventDefault="_shouldPreventDefault" />
-```
-
-Для предотвращения действия по умолчанию не требуется обработчик событий. Обработчик событий и предотвращение сценариев действий по умолчанию можно использовать независимо друг от друга.
-
-### <a name="stop-event-propagation"></a>Отключить распространение событий
-
-Используйте атрибут директивы [`@on{EVENT}:stopPropagation`](xref:mvc/views/razor#oneventstoppropagation) для отмены распространения событий.
-
-В следующем примере при установке флажка события Click из второго дочернего `<div>` не распространяются на родительский `<div>`:
-
-```razor
-<label>
-    <input @bind="_stopPropagation" type="checkbox" />
-    Stop Propagation
-</label>
-
-<div @onclick="OnSelectParentDiv">
-    <h3>Parent div</h3>
-
-    <div @onclick="OnSelectChildDiv">
-        Child div that doesn't stop propagation when selected.
-    </div>
-
-    <div @onclick="OnSelectChildDiv" @onclick:stopPropagation="_stopPropagation">
-        Child div that stops propagation when selected.
-    </div>
-</div>
-
-@code {
-    private bool _stopPropagation = false;
-
-    private void OnSelectParentDiv() => 
-        Console.WriteLine($"The parent div was selected. {DateTime.Now}");
-    private void OnSelectChildDiv() => 
-        Console.WriteLine($"A child div was selected. {DateTime.Now}");
-}
-```
-
 ## <a name="capture-references-to-components"></a>Запись ссылок на компоненты
 
 Ссылки на компоненты предоставляют способ ссылки на экземпляр компонента, чтобы можно было выполнять команды для этого экземпляра, например `Show` или `Reset`. Чтобы записать ссылку на компонент, сделайте следующее:
@@ -928,7 +297,7 @@ await callback.InvokeAsync(arg);
 
 ## <a name="invoke-component-methods-externally-to-update-state"></a>Вызывать методы компонента извне для обновления состояния
 
-Блазор использует `SynchronizationContext` для принудительного применения одного логического потока выполнения. В этом `SynchronizationContext`выполняются [методы жизненного цикла](xref:blazor/lifecycle) компонента и любые обратные вызовы событий, вызванные блазор. В случае, если компонент должен быть обновлен на основе внешнего события, такого как таймер или другие уведомления, используйте метод `InvokeAsync`, который будет отправляться в `SynchronizationContext`Блазор.
+Blazor использует `SynchronizationContext` для принудительного применения одного логического потока выполнения. В этом `SynchronizationContext`выполняются [методы жизненного цикла](xref:blazor/lifecycle) компонента и любые обратные вызовы событий, вызванные Blazor. В случае, если компонент должен быть обновлен на основе внешнего события, такого как таймер или другие уведомления, используйте метод `InvokeAsync`, который будет отправляться в `SynchronizationContext`Blazor.
 
 Например, рассмотрим *службу уведомления* , которая может уведомлять любой компонент, выполняющий прослушивание, в обновленном состоянии:
 
@@ -950,13 +319,13 @@ public class NotifierService
 
 Зарегистрируйте `NotifierService` как синглетион:
 
-* В Блазор Assembly Зарегистрируйте службу в `Program.Main`:
+* В Blazor сборки Зарегистрируйте службу в `Program.Main`:
 
   ```csharp
   builder.Services.AddSingleton<NotifierService>();
   ```
 
-* В Блазор Server Зарегистрируйте службу в `Startup.ConfigureServices`:
+* В Blazor Server Зарегистрируйте службу в `Startup.ConfigureServices`:
 
   ```csharp
   services.AddSingleton<NotifierService>();
@@ -995,11 +364,11 @@ public class NotifierService
 }
 ```
 
-В предыдущем примере `NotifierService` вызывает метод `OnNotify` компонента за пределами `SynchronizationContext`Блазор. `InvokeAsync` используется для переключения на правильный контекст и постановка в очередь визуализации.
+В предыдущем примере `NotifierService` вызывает метод `OnNotify` компонента за пределами Blazor`SynchronizationContext`. `InvokeAsync` используется для переключения на правильный контекст и постановка в очередь визуализации.
 
 ## <a name="use-key-to-control-the-preservation-of-elements-and-components"></a>Использование ключа \@для управления сохранением элементов и компонентов
 
-При последующем изменении списка элементов или компонентов, а также элементов или компонентов алгоритм сравнения Блазор должен решить, какие из предыдущих элементов или компонентов могут быть сохранены и как объекты модели должны сопоставляться с ними. Обычно этот процесс выполняется автоматически и его можно игнорировать, но в некоторых случаях может потребоваться управление процессом.
+При последующем изменении списка элементов или компонентов, а также элементов или компонентов алгоритм сравнения Blazorдолжен решить, какие из предыдущих элементов или компонентов могут быть сохранены и как объекты модели должны сопоставляться с ними. Обычно этот процесс выполняется автоматически и его можно игнорировать, но в некоторых случаях может потребоваться управление процессом.
 
 Рассмотрим следующий пример:
 
@@ -1046,7 +415,7 @@ public class NotifierService
 
 Как правило, имеет смысл использовать `@key` всякий раз при подготовке списка (например, в блоке `@foreach`) и при наличии подходящего значения для определения `@key`.
 
-Можно также использовать `@key`, чтобы предотвратить сохранение Блазор элемента или поддерева компонента при изменении объекта.
+Можно также использовать `@key`, чтобы запретить Blazor сохранение поддерева элемента или компонента при изменении объекта.
 
 ```razor
 <div @key="currentPerson">
@@ -1054,13 +423,13 @@ public class NotifierService
 </div>
 ```
 
-Если `@currentPerson` меняется, директива `@key` Attribute заставляет Блазор отбросить всю `<div>` и ее потомков и перестроить поддерево в пользовательском интерфейсе с помощью новых элементов и компонентов. Это может быть полезно, если необходимо гарантировать, что при `@currentPerson` изменений состояние пользовательского интерфейса не сохраняется.
+Если `@currentPerson` меняется, директива атрибута `@key` заставляет Blazor отбросить все `<div>` и его потомков и перестроить поддерево в пользовательском интерфейсе с помощью новых элементов и компонентов. Это может быть полезно, если необходимо гарантировать, что при `@currentPerson` изменений состояние пользовательского интерфейса не сохраняется.
 
 ### <a name="when-not-to-use-key"></a>Когда не следует использовать ключ \@
 
 При использовании сравнения с `@key`ми возникают затраты на производительность. Затраты на производительность не слишком велики, но указываются только `@key` если управление правилами сохранения элементов или компонентов выгодно для приложения.
 
-Даже если `@key` не используется, Блазор сохраняет дочерние элементы и экземпляры компонентов насколько это возможно. Единственным преимуществом использования `@key` является управление *тем, как* экземпляры модели сопоставляются с сохраненными экземплярами компонента, а не алгоритмом сравнения, который выбирает сопоставление.
+Даже если `@key` не используется, Blazor сохраняет как можно больше экземпляров дочернего элемента и компонента. Единственным преимуществом использования `@key` является управление *тем, как* экземпляры модели сопоставляются с сохраненными экземплярами компонента, а не алгоритмом сравнения, который выбирает сопоставление.
 
 ### <a name="what-values-to-use-for-key"></a>Какие значения следует использовать для ключа \@
 
@@ -1069,60 +438,16 @@ public class NotifierService
 * Экземпляры объектов Model (например, экземпляр `Person`, как в предыдущем примере). Это гарантирует сохранение на основе равенства ссылок на объекты.
 * Уникальные идентификаторы (например, значения первичного ключа типа `int`, `string`или `Guid`).
 
-Убедитесь, что значения, используемые для `@key`, не конфликтуют. Если конфликтные значения обнаруживаются в одном родительском элементе, Блазор создает исключение, поскольку оно не может детерминированно сопоставлять старые элементы или компоненты с новыми элементами или компонентами. Используйте только уникальные значения, такие как экземпляры объекта или значения первичного ключа.
-
-## <a name="routing"></a>Маршрутизация
-
-Маршрутизация в Блазор достигается путем предоставления шаблона маршрута для каждого доступного компонента в приложении.
-
-При компиляции файла Razor с директивой `@page` созданному классу присваивается <xref:Microsoft.AspNetCore.Mvc.RouteAttribute> с указанием шаблона маршрута. Во время выполнения маршрутизатор ищет классы компонентов с `RouteAttribute` и отображает, какой из компонентов имеет шаблон маршрута, соответствующий запрошенному URL-адресу.
-
-К компоненту можно применить несколько шаблонов маршрутов. Следующий компонент отвечает на запросы для `/BlazorRoute` и `/DifferentBlazorRoute`.
-
-*Pages/блазоррауте. Razor*:
-
-```razor
-@page "/BlazorRoute"
-@page "/DifferentBlazorRoute"
-
-<h1>Blazor routing</h1>
-```
-
-## <a name="route-parameters"></a>Параметры маршрута
-
-Компоненты могут принимать параметры маршрута из шаблона маршрута, указанного в директиве `@page`. Маршрутизатор использует параметры маршрута для заполнения соответствующих параметров компонента.
-
-*Pages/раутепараметер. Razor*:
-
-```razor
-@page "/RouteParameter"
-@page "/RouteParameter/{text}"
-
-<h1>Blazor is @Text!</h1>
-
-@code {
-    [Parameter]
-    public string Text { get; set; }
-
-    protected override void OnInitialized()
-    {
-        Text = Text ?? "fantastic";
-    }
-}
-```
-
-Необязательные параметры не поддерживаются, поэтому в приведенном выше примере применяются две директивы `@page`. Первый позволяет переходить к компоненту без параметра. Вторая директива `@page` принимает параметр `{text}` Route и присваивает значение свойству `Text`.
-
-Синтаксис параметра *Catch-All* (`*`/`**`), который захватывает путь для нескольких папок, **не** поддерживается в компонентах Razor ( *. Razor*).
+Убедитесь, что значения, используемые для `@key`, не конфликтуют. Если конфликтные значения обнаруживаются в одном родительском элементе, Blazor создает исключение, поскольку оно не может детерминированно сопоставлять старые элементы или компоненты с новыми элементами или компонентами. Используйте только уникальные значения, такие как экземпляры объекта или значения первичного ключа.
 
 ## <a name="partial-class-support"></a>Поддержка разделяемых классов
 
 Компоненты Razor создаются как разделяемые классы. Компоненты Razor создаются с помощью любого из следующих подходов:
 
-* C#код определяется в [`@code`](xref:mvc/views/razor#code) блоке с разметкой HTML и кодом Razor в одном файле. Шаблоны блазор определяют свои компоненты Razor с помощью этого подхода.
+* C#код определяется в [`@code`](xref:mvc/views/razor#code) блоке с разметкой HTML и кодом Razor в одном файле. с помощью этого подхода шаблоны Blazor определяют свои компоненты Razor.
 * C#код помещается в файл кода программной части, определенный как разделяемый класс.
 
-В следующем примере показан компонент `Counter` по умолчанию с блоком `@code` в приложении, созданном из шаблона Блазор. Разметка HTML, код Razor и C# код находятся в одном файле:
+В следующем примере показан компонент `Counter` по умолчанию с блоком `@code` в приложении, созданном из шаблона Blazor. Разметка HTML, код Razor и C# код находятся в одном файле:
 
 *Counter. Razor*:
 
@@ -1311,94 +636,6 @@ This is the Index page.
 }
 ```
 
-## <a name="templated-components"></a>Шаблонные компоненты
-
-Шаблонные компоненты — это компоненты, принимающие один или несколько шаблонов пользовательского интерфейса в качестве параметров, которые затем можно использовать как часть логики отрисовки компонента. Шаблонные компоненты позволяют создавать более высокие компоненты более высокого уровня, чем обычные компоненты. Ниже приведены несколько примеров.
-
-* Компонент таблицы, позволяющий пользователю указывать шаблоны для заголовков, строк и нижних колонтитулов таблицы.
-* Компонент списка, позволяющий пользователю указать шаблон для отрисовки элементов в списке.
-
-### <a name="template-parameters"></a>Параметры шаблона
-
-Шаблонный компонент определяется путем указания одного или нескольких параметров компонента типа `RenderFragment` или `RenderFragment<T>`. Фрагмент отрисовки представляет сегмент пользовательского интерфейса для отрисовки. `RenderFragment<T>` принимает параметр типа, который может быть указан при вызове фрагмента прорисовки.
-
-`TableTemplate` компонент:
-
-[!code-razor[](common/samples/3.x/BlazorWebAssemblySample/Components/TableTemplate.razor)]
-
-При использовании компонент-шаблона можно указать параметры шаблона с помощью дочерних элементов, совпадающих с именами параметров (`TableHeader` и `RowTemplate` в следующем примере):
-
-```razor
-<TableTemplate Items="pets">
-    <TableHeader>
-        <th>ID</th>
-        <th>Name</th>
-    </TableHeader>
-    <RowTemplate>
-        <td>@context.PetId</td>
-        <td>@context.Name</td>
-    </RowTemplate>
-</TableTemplate>
-```
-
-### <a name="template-context-parameters"></a>Параметры контекста шаблона
-
-Аргументы компонента типа `RenderFragment<T>` передаются как элементы, имеют неявный параметр с именем `context` (например, из предыдущего примера кода, `@context.PetId`), но можно изменить имя параметра с помощью атрибута `Context` дочернего элемента. В следующем примере атрибут `Context` элемента `RowTemplate` указывает параметр `pet`:
-
-```razor
-<TableTemplate Items="pets">
-    <TableHeader>
-        <th>ID</th>
-        <th>Name</th>
-    </TableHeader>
-    <RowTemplate Context="pet">
-        <td>@pet.PetId</td>
-        <td>@pet.Name</td>
-    </RowTemplate>
-</TableTemplate>
-```
-
-Кроме того, можно указать атрибут `Context` в элементе Component. Указанный атрибут `Context` применяется ко всем указанным параметрам шаблона. Это может быть полезно, если необходимо указать имя параметра содержимого для неявного дочернего содержимого (без обертывания дочернего элемента). В следующем примере атрибут `Context` отображается в элементе `TableTemplate` и применяется ко всем параметрам шаблона:
-
-```razor
-<TableTemplate Items="pets" Context="pet">
-    <TableHeader>
-        <th>ID</th>
-        <th>Name</th>
-    </TableHeader>
-    <RowTemplate>
-        <td>@pet.PetId</td>
-        <td>@pet.Name</td>
-    </RowTemplate>
-</TableTemplate>
-```
-
-### <a name="generic-typed-components"></a>Универсальные типы компонентов
-
-Шаблонные компоненты часто вводятся в универсальном виде. Например, универсальный компонент `ListViewTemplate` можно использовать для отображения значений `IEnumerable<T>`. Чтобы определить универсальный компонент, используйте директиву [`@typeparam`](xref:mvc/views/razor#typeparam) для указания параметров типа:
-
-[!code-razor[](common/samples/3.x/BlazorWebAssemblySample/Components/ListViewTemplate.razor)]
-
-При использовании компонентов универсальной типизации параметр типа выводится, если это возможно:
-
-```razor
-<ListViewTemplate Items="pets">
-    <ItemTemplate Context="pet">
-        <li>@pet.Name</li>
-    </ItemTemplate>
-</ListViewTemplate>
-```
-
-В противном случае параметр типа необходимо явно указать с помощью атрибута, совпадающего с именем параметра типа. В следующем примере `TItem="Pet"` указывает тип:
-
-```razor
-<ListViewTemplate Items="pets" TItem="Pet">
-    <ItemTemplate Context="pet">
-        <li>@pet.Name</li>
-    </ItemTemplate>
-</ListViewTemplate>
-```
-
 ## <a name="cascading-values-and-parameters"></a>Каскадные значения и параметры
 
 В некоторых сценариях неудобно передавать данные из компонента-предка в дочерний компонент с помощью [параметров компонента](#component-parameters), особенно при наличии нескольких слоев компонентов. Каскадные значения и параметры позволяют решить эту проблему, предоставляя удобный способ, позволяющий компоненту-предку предоставить значение всем его дочерним компонентам. Каскадные значения и параметры также предоставляют подход для координации компонентов.
@@ -1573,7 +810,7 @@ public class ThemeInfo
 @<{HTML tag}>...</{HTML tag}>
 ```
 
-В следующем примере показано, как указать значения `RenderFragment` и `RenderFragment<T>` и визуализировать шаблоны непосредственно в компоненте. Фрагменты рендеринга также могут передаваться в качестве аргументов в [шаблонные компоненты](#templated-components).
+В следующем примере показано, как указать значения `RenderFragment` и `RenderFragment<T>` и визуализировать шаблоны непосредственно в компоненте. Фрагменты рендеринга также могут передаваться в качестве аргументов в [шаблонные компоненты](xref:blazor/templated-components).
 
 ```razor
 @_timeTemplate
@@ -1598,277 +835,6 @@ public class ThemeInfo
 
 <p>Pet: Rex</p>
 ```
-
-## <a name="manual-rendertreebuilder-logic"></a>Логика Рендертрибуилдер вручную
-
-`Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder` предоставляет методы для управления компонентами и элементами, включая создание компонентов вручную в C# коде.
-
-> [!NOTE]
-> Использование `RenderTreeBuilder` для создания компонентов является расширенным сценарием. Неправильно сформированный компонент (например, незакрытый тег разметки) может привести к неопределенному поведению.
-
-Рассмотрим следующий компонент `PetDetails`, который можно вручную встроить в другой компонент:
-
-```razor
-<h2>Pet Details Component</h2>
-
-<p>@PetDetailsQuote</p>
-
-@code
-{
-    [Parameter]
-    public string PetDetailsQuote { get; set; }
-}
-```
-
-В следующем примере цикл в методе `CreateComponent` создает три `PetDetails` компонентов. При вызове методов `RenderTreeBuilder` для создания компонентов (`OpenComponent` и `AddAttribute`) порядковые номера представляют собой номера строк исходного кода. Алгоритм разницы Блазор зависит от порядковых номеров, соответствующих разным строкам кода, а не отдельных вызовов вызова. При создании компонента с помощью методов `RenderTreeBuilder` жестко указывайте аргументы для порядковых номеров. **Использование вычисления или счетчика для формирования порядкового номера может привести к снижению производительности.** Дополнительные сведения см. в разделе [порядковые номера относятся к разделу номера строк кода и порядок выполнения](#sequence-numbers-relate-to-code-line-numbers-and-not-execution-order) .
-
-`BuiltContent` компонент:
-
-```razor
-@page "/BuiltContent"
-
-<h1>Build a component</h1>
-
-@CustomRender
-
-<button type="button" @onclick="RenderComponent">
-    Create three Pet Details components
-</button>
-
-@code {
-    private RenderFragment CustomRender { get; set; }
-    
-    private RenderFragment CreateComponent() => builder =>
-    {
-        for (var i = 0; i < 3; i++) 
-        {
-            builder.OpenComponent(0, typeof(PetDetails));
-            builder.AddAttribute(1, "PetDetailsQuote", "Someone's best friend!");
-            builder.CloseComponent();
-        }
-    };    
-    
-    private void RenderComponent()
-    {
-        CustomRender = CreateComponent();
-    }
-}
-```
-
-> [!WARNING]
-> Типы в `Microsoft.AspNetCore.Components.RenderTree` позволяют обрабатывать *результаты* операций отрисовки. Это внутренние сведения о реализации Блазор Framework. Эти типы следует считать *нестабильными* и могут быть изменены в будущих выпусках.
-
-### <a name="sequence-numbers-relate-to-code-line-numbers-and-not-execution-order"></a>Порядковые номера связаны с номерами строк кода, а не с порядком выполнения
-
-Файлы блазор `.razor` всегда компилируются. Это, вероятно, является отличным преимуществом для `.razor`, поскольку этап компиляции можно использовать для вставки сведений, повышающих производительность приложения во время выполнения.
-
-Ключевым примером этих улучшений являются *порядковые номера*. Порядковые номера указывают среде выполнения, какие выходные данные поступили из разных и упорядоченных строк кода. Среда выполнения использует эти сведения для создания эффективных различий дерева в линейное время, что является гораздо быстрее, чем обычно возможно для общего алгоритма различения дерева.
-
-Рассмотрим следующий файл компонента Razor ( *. Razor*):
-
-```razor
-@if (someFlag)
-{
-    <text>First</text>
-}
-
-Second
-```
-
-Предыдущий код компилируется примерно следующим образом:
-
-```csharp
-if (someFlag)
-{
-    builder.AddContent(0, "First");
-}
-
-builder.AddContent(1, "Second");
-```
-
-Когда код выполняется в первый раз, если `someFlag` `true`, построитель получит следующее:
-
-| Последовательность | Тип      | Данные   |
-| :------: | --------- | :----: |
-| 0        | Узел Text | Первый  |
-| 1        | Узел Text | Секунда |
-
-Представьте, что `someFlag` становится `false`, и разметка снова готовится к просмотру. На этот раз построитель получит:
-
-| Последовательность | Тип       | Данные   |
-| :------: | ---------- | :----: |
-| 1        | Узел Text  | Секунда |
-
-Когда среда выполнения выполняет поиск различий, она видит, что элемент в последовательности `0` был удален, поэтому он создает следующий тривиальный *сценарий редактирования*:
-
-* Удалите первый текстовый узел.
-
-#### <a name="what-goes-wrong-if-you-generate-sequence-numbers-programmatically"></a>Что становится неправильным, если вы создаете порядковые номера программным способом
-
-Вместо этого Представьте себе, что вы написали следующую логику конструктора деревьев визуализации:
-
-```csharp
-var seq = 0;
-
-if (someFlag)
-{
-    builder.AddContent(seq++, "First");
-}
-
-builder.AddContent(seq++, "Second");
-```
-
-Теперь первые выходные данные:
-
-| Последовательность | Тип      | Данные   |
-| :------: | --------- | :----: |
-| 0        | Узел Text | Первый  |
-| 1        | Узел Text | Секунда |
-
-Этот результат идентичен предыдущему случаю, поэтому отрицательные проблемы не возникают. во второй отрисовке `someFlag` `false`, а выходные данные:
-
-| Последовательность | Тип      | Данные   |
-| :------: | --------- | ------ |
-| 0        | Узел Text | Секунда |
-
-На этот раз алгоритм diff видит, что были внесены *два* изменения, и алгоритм создает следующий сценарий редактирования:
-
-* Измените значение первого текстового узла на `Second`.
-* Удалите второй текстовый узел.
-
-При формировании порядковых номеров теряются все полезные сведения о том, где в исходном коде находятся `if/else` ветви и циклы. Это приводит к **удвоению в два раза больше** , чем раньше.
-
-Это тривиальный пример. В более реалистичных случаях со сложными и глубокими вложенными структурами, особенно с циклами, затраты на производительность более серьезны. Вместо того, чтобы сразу определять, какие блоки или ветви цикла были вставлены или удалены, алгоритм diff должен рекурсивно пребираться в деревьях отрисовки и, как правило, создает гораздо более длительные операции редактирования, так как он сообщает о том, как старую и новую структуры связь друг с другом.
-
-#### <a name="guidance-and-conclusions"></a>Руководство и выводы
-
-* Производительность приложения снижается, если порядковые номера создаются динамически.
-* Платформа не может автоматически создавать собственные порядковые номера во время выполнения, поскольку необходимая информация не существует, если она не захвачена во время компиляции.
-* Не записывайте длинные блоки `RenderTreeBuilder` логики, реализуемой вручную. Предпочитать `.razor` файлы и позволяют компилятору обрабатывать порядковые номера. Если не удается избежать ручного `RenderTreeBuilder` логики, разделите длинные блоки кода на более мелкие части, заключенные в `OpenRegion`/`CloseRegion` вызовы. Каждый регион имеет собственное отдельное пространство порядковых номеров, поэтому вы можете перезапускаться от нуля (или любого другого произвольного числа) внутри каждого региона.
-* Если порядковые номера задаются жестко, то для алгоритма diff требуется, чтобы только порядковые номера увеличиваются в значении. Начальное значение и зазоры несущественны. Один из этих вариантов — использовать номер строки кода в качестве порядкового номера или начать с нуля и увеличить на единицу или сотни (или любой другой интервал). 
-* Blazor использует порядковые номера, в то время как другие платформы, использующие средства различения дерева, не используют их. Сравнение выполняется гораздо быстрее, если используются порядковые номера, и Blazor имеет преимущество этапа компиляции, который автоматически обрабатывает порядковые номера для разработчиков, занимающихся созданием файлов *Razor* .
-
-## <a name="localization"></a>Локализация
-
-Blazor серверные приложения локализованы по [промежуточного слоя локализации](xref:fundamentals/localization#localization-middleware). По промежуточного слоя выбирает соответствующие языки и региональные параметры для пользователей, запрашивающих ресурсы из приложения.
-
-Язык и региональные параметры можно задать с помощью одного из следующих подходов:
-
-* [Файлы "cookie"](#cookies)
-* [Предоставление пользовательского интерфейса для выбора языка и региональных параметров](#provide-ui-to-choose-the-culture)
-
-Дополнительные сведения и примеры см. на сайте <xref:fundamentals/localization>.
-
-### <a name="configure-the-linker-for-internationalization-opno-locblazor-webassembly"></a>Настройка компоновщика для интернационализации (Blazorная сборка)
-
-По умолчанию конфигурация компоновщика Blazor для приложений Blazor WebAssembly исключает сведения об интернационализации, кроме явно запрошенных языковых стандартов. Дополнительные сведения и рекомендации по управлению поведением компоновщика см. в разделе <xref:host-and-deploy/blazor/configure-linker#configure-the-linker-for-internationalization>.
-
-### <a name="cookies"></a>Файлы cookie
-
-Файл cookie культуры локализации может сохранять язык и региональные параметры пользователя. Файл cookie создается методом `OnGet` страницы узла приложения (*pages/Host. cshtml. CS*). По промежуточного слоя локализации считывает файл cookie при последующих запросах, чтобы задать язык и региональные параметры пользователя. 
-
-Использование файла cookie гарантирует, что соединение WebSocket сможет правильно распространить культуру. Если схемы локализации основаны на пути URL-адреса или строке запроса, схема может не поддерживать работу с WebSockets, поэтому она не сохраняет культуру. Поэтому рекомендуемым подходом является использование файла cookie языка и региональных параметров локализации.
-
-Любой метод можно использовать для назначения языка и региональных параметров, если язык и региональные параметры сохраняются в файле cookie локализации. Если у приложения уже есть установленная схема локализации для ASP.NET Core на стороне сервера, продолжайте использовать существующую инфраструктуру локализации приложения и задавайте файл cookie культуры локализации в схеме приложения.
-
-В следующем примере показано, как задать текущий язык и региональные параметры в файле cookie, который может быть прочитан по промежуточного слоя локализации. Создайте файл *pages/Host. cshtml. CS* со следующим содержимым в приложении Blazor Server:
-
-```csharp
-public class HostModel : PageModel
-{
-    public void OnGet()
-    {
-        HttpContext.Response.Cookies.Append(
-            CookieRequestCultureProvider.DefaultCookieName,
-            CookieRequestCultureProvider.MakeCookieValue(
-                new RequestCulture(
-                    CultureInfo.CurrentCulture,
-                    CultureInfo.CurrentUICulture)));
-    }
-}
-```
-
-Локализация обрабатывается в приложении:
-
-1. Браузер отправляет в приложение исходный HTTP-запрос.
-1. Язык и региональные параметры назначаются по промежуточного слоя локализации.
-1. Метод `OnGet` в *_Host. cshtml. CS* сохраняет язык и региональные параметры в файле cookie как часть ответа.
-1. Браузер открывает соединение WebSocket для создания интерактивного сеанса Blazor Server.
-1. По промежуточного слоя для локализации считывает файл cookie и назначает язык и региональные параметры.
-1. Сеанс Blazor Server начинается с правильного языка и региональных параметров.
-
-### <a name="provide-ui-to-choose-the-culture"></a>Предоставление пользовательского интерфейса для выбора языка и региональных параметров
-
-Для предоставления пользовательского интерфейса, позволяющего пользователю выбирать язык и региональные параметры, рекомендуется *подход на основе перенаправления* . Процесс аналогичен тому, что происходит в веб-приложении, когда пользователь пытается получить доступ к защищенному ресурсу,&mdash;пользователь перенаправляется на страницу входа, а затем перенаправляется обратно к исходному ресурсу. 
-
-Приложение сохраняет выбранный язык и региональные параметры пользователя с помощью перенаправления к контроллеру. Контроллер устанавливает выбранный язык и региональные параметры пользователя в файл cookie и перенаправляет пользователя обратно к исходному коду URI.
-
-Установите конечную точку HTTP на сервере, чтобы задать выбранный язык и региональные параметры пользователя в файле cookie, и выполните перенаправление обратно в исходный URI:
-
-```csharp
-[Route("[controller]/[action]")]
-public class CultureController : Controller
-{
-    public IActionResult SetCulture(string culture, string redirectUri)
-    {
-        if (culture != null)
-        {
-            HttpContext.Response.Cookies.Append(
-                CookieRequestCultureProvider.DefaultCookieName,
-                CookieRequestCultureProvider.MakeCookieValue(
-                    new RequestCulture(culture)));
-        }
-
-        return LocalRedirect(redirectUri);
-    }
-}
-```
-
-> [!WARNING]
-> Для предотвращения атак с открытым перенаправлением используйте результат действия `LocalRedirect`. Дополнительные сведения см. в разделе <xref:security/preventing-open-redirects>.
-
-В следующем компоненте показан пример выполнения начального перенаправления, когда пользователь выбирает язык и региональные параметры:
-
-```razor
-@inject NavigationManager NavigationManager
-
-<h3>Select your language</h3>
-
-<select @onchange="OnSelected">
-    <option>Select...</option>
-    <option value="en-US">English</option>
-    <option value="fr-FR">Français</option>
-</select>
-
-@code {
-    private void OnSelected(ChangeEventArgs e)
-    {
-        var culture = (string)e.Value;
-        var uri = new Uri(NavigationManager.Uri())
-            .GetComponents(UriComponents.PathAndQuery, UriFormat.Unescaped);
-        var query = $"?culture={Uri.EscapeDataString(culture)}&" +
-            $"redirectUri={Uri.EscapeDataString(uri)}";
-
-        NavigationManager.NavigateTo("/Culture/SetCulture" + query, forceLoad: true);
-    }
-}
-```
-
-### <a name="use-net-localization-scenarios-in-opno-locblazor-apps"></a>Использование сценариев локализации .NET в Blazor приложениях
-
-В Blazor приложениях доступны следующие сценарии локализации и глобализации .NET:
-
-* . Система ресурсов NET
-* Форматирование чисел и дат, зависящих от языка и региональных параметров
-
-функции `@bind` Blazorвыполняют глобализацию на основе текущего языка и региональных параметров пользователя. Дополнительные сведения см. в разделе [Привязка данных](#data-binding) .
-
-В настоящее время поддерживается ограниченный набор сценариев локализации ASP.NET Core:
-
-* `IStringLocalizer<>` *поддерживается* в Blazor приложениях.
-* Локализация `IHtmlLocalizer<>`, `IViewLocalizer<>`и аннотаций данных ASP.NET Core сценариев MVC и **не поддерживается** в Blazor приложениях.
-
-Дополнительные сведения см. в разделе <xref:fundamentals/localization>.
 
 ## <a name="scalable-vector-graphics-svg-images"></a>Масштабируемые изображения векторной графики (SVG)
 

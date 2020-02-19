@@ -5,17 +5,17 @@ description: Узнайте, как создавать многократно и
 monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 12/18/2019
+ms.date: 02/12/2020
 no-loc:
 - Blazor
 - SignalR
 uid: blazor/layouts
-ms.openlocfilehash: 8e7294f6b66d34781473522a71f929ed5f9c33f2
-ms.sourcegitcommit: d2ba66023884f0dca115ff010bd98d5ed6459283
+ms.openlocfilehash: 5b6e1c7ceb4a6e41230e31bbe379bde1bb0a8286
+ms.sourcegitcommit: 6645435fc8f5092fc7e923742e85592b56e37ada
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77213380"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77447143"
 ---
 # <a name="aspnet-core-opno-locblazor-layouts"></a>ASP.NET Core макеты Blazor
 
@@ -23,7 +23,7 @@ ms.locfileid: "77213380"
 
 Некоторые элементы приложения, такие как меню, сообщения об авторских правах и логотипы компании, обычно являются частью общего макета приложения и используются каждым компонентом в приложении. Копирование кода этих элементов во все компоненты приложения не является эффективным подходом&mdash;каждый раз, когда одному из элементов требуется обновление, каждый компонент должен быть обновлен. Такое дублирование сложно поддерживать и может привести к нестабильному содержимому с течением времени. *Разметки* решают эту проблему.
 
-Технически, макет — это просто другой компонент. Макет определяется в шаблоне Razor или в C# коде и может использовать [привязку данных](xref:blazor/components#data-binding), [внедрение зависимостей](xref:blazor/dependency-injection)и сценарии других компонентов.
+Технически, макет — это просто другой компонент. Макет определяется в шаблоне Razor или в C# коде и может использовать [привязку данных](xref:blazor/data-binding), [внедрение зависимостей](xref:blazor/dependency-injection)и сценарии других компонентов.
 
 Чтобы превратить *компонент* в *Макет*, компонент:
 
@@ -94,7 +94,7 @@ ms.locfileid: "77213380"
 
 ## <a name="share-a-razor-pages-layout-with-integrated-components"></a>Совместное использование макета Razor Pages с интегрированными компонентами
 
-Если маршрутизируемые компоненты интегрированы в приложение Razor Pages, общий макет приложения можно использовать с компонентами. Дополнительные сведения см. в разделе <xref:blazor/hosting-model-configuration#integrate-razor-components-into-razor-pages-and-mvc-apps>.
+Если маршрутизируемые компоненты интегрированы в приложение Razor Pages, общий макет приложения можно использовать с компонентами. Дополнительные сведения см. в разделе <xref:blazor/integrate-components>.
 
 ## <a name="additional-resources"></a>Дополнительные ресурсы
 

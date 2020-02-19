@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 12/06/2019
 uid: security/enforcing-ssl
-ms.openlocfilehash: 9efd49bb246a10c4eb49fb1bb0374ae9442d55a1
-ms.sourcegitcommit: 85564ee396c74c7651ac47dd45082f3f1803f7a2
+ms.openlocfilehash: 43f3abfa4bc311ed246f6f2585d522661e492039
+ms.sourcegitcommit: 6645435fc8f5092fc7e923742e85592b56e37ada
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77172624"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77447156"
 ---
 # <a name="enforce-https-in-aspnet-core"></a>Принудительное применение HTTPS в ASP.NET Core
 
@@ -52,7 +52,7 @@ ms.locfileid: "77172624"
 
 ::: moniker-end
 
-## <a name="require-https"></a>Требование к использованию протокола HTTPS
+## <a name="require-https"></a>Требовать HTTPS
 
 В рабочей ASP.NET Core веб-приложений рекомендуется использовать:
 
@@ -237,7 +237,7 @@ public void ConfigureServices(IServiceCollection services)
 * В браузере хранится конфигурация домена, которая предотвращает отправку обмена данными по протоколу HTTP. Браузер принудительно выполняет все связи по протоколу HTTPS.
 * Браузер не разрешает пользователю использовать недоверенные или недопустимые сертификаты. Браузер отключает запросы, позволяющие пользователю временно доверять такому сертификату.
 
-Так как HSTS обеспечивается клиентом, он имеет некоторые ограничения:
+Так как HSTS применяется клиентом, у него есть некоторые ограничения.
 
 * Клиент должен поддерживать HSTS.
 * HSTS требует по крайней мере одного успешного запроса HTTPS для установки политики HSTS.
@@ -259,7 +259,7 @@ ASP.NET Core 2,1 и более поздних версий реализуют HS
 
 `UseHsts` не рекомендуется в разработке, так как параметры HSTS очень кэшируются браузерами. По умолчанию `UseHsts` исключает локальный петлевой адрес.
 
-Для рабочих сред, которые реализуют протокол HTTPS в первый раз, задайте для свойства Initial [хстсоптионс. MaxAge](xref:Microsoft.AspNetCore.HttpsPolicy.HstsOptions.MaxAge*) небольшое значение, используя один из методов <xref:System.TimeSpan>. Задайте в качестве значения в часах не более одного дня на случай, если необходимо вернуть инфраструктуру HTTPS к протоколу HTTP. Убедившись в устойчивости конфигурации HTTPS, увеличьте значение HSTS max-age. часто используемое значение — один год.
+Для рабочих сред, которые реализуют протокол HTTPS в первый раз, задайте для свойства Initial [хстсоптионс. MaxAge](xref:Microsoft.AspNetCore.HttpsPolicy.HstsOptions.MaxAge*) небольшое значение, используя один из методов <xref:System.TimeSpan>. Задайте в качестве значения в часах не более одного дня на случай, если необходимо вернуть инфраструктуру HTTPS к протоколу HTTP. Убедившись в устойчивости конфигурации HTTPS, увеличьте значение HSTS `max-age`; часто используемое значение — один год.
 
 Следующий код:
 
@@ -277,9 +277,9 @@ ASP.NET Core 2,1 и более поздних версий реализуют HS
 ::: moniker-end
 
 
-* Задает параметр предварительной загрузки для заголовка с уровнем безопасности "Долгосрочный транспорт — Безопасность". Предварительная загрузка не является частью [спецификации RFC HSTS](https://tools.ietf.org/html/rfc6797), но поддерживается веб-браузерами для предварительной загрузки HSTS сайтов при новой установке. Дополнительные сведения см. по ссылке [https://hstspreload.org/](https://hstspreload.org/).
+* Задает параметр предварительной загрузки заголовка `Strict-Transport-Security`. Предварительная загрузка не является частью [спецификации RFC HSTS](https://tools.ietf.org/html/rfc6797), но поддерживается веб-браузерами для предварительной загрузки HSTS сайтов при новой установке. Дополнительные сведения см. в статье [https://hstspreload.org/](https://hstspreload.org/).
 * Включает [инклудесубдомаин](https://tools.ietf.org/html/rfc6797#section-6.1.2), который применяет политику HSTS для размещения поддоменов.
-* Явно задает параметр max-age для заголовка с ограничением транспорта-безопасности до 60 дней. Если значение не задано, по умолчанию используется значение 30 дней. Дополнительные сведения см. в [директиве max-age](https://tools.ietf.org/html/rfc6797#section-6.1.1) .
+* Явно задает для параметра `max-age` заголовка `Strict-Transport-Security` значение 60 дней. Если значение не задано, по умолчанию используется значение 30 дней. Дополнительные сведения см. в разделе [директива max-age](https://tools.ietf.org/html/rfc6797#section-6.1.1).
 * Добавляет `example.com` в список узлов для исключения.
 
 `UseHsts` исключает следующие узлы замыкания на себя:
@@ -294,7 +294,7 @@ ASP.NET Core 2,1 и более поздних версий реализуют HS
 
 Чтобы отказаться от HTTPS/HSTS:
 
-# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio) 
+# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio) 
 
 Снимите флажок **настроить для HTTPS** .
 
@@ -311,7 +311,7 @@ ASP.NET Core 2,1 и более поздних версий реализуют HS
 ::: moniker-end
 
 
-# <a name="net-core-clitabnetcore-cli"></a>[Интерфейс командной строки .NET Core](#tab/netcore-cli) 
+# <a name="net-core-cli"></a>[Интерфейс командной строки .NET Core](#tab/netcore-cli) 
 
 Использовать параметр `--no-https`. Например.
 
@@ -325,7 +325,7 @@ dotnet new webapp --no-https
 
 ## <a name="trust-the-aspnet-core-https-development-certificate-on-windows-and-macos"></a>Доверять сертификату разработки ASP.NET Core HTTPS в Windows и macOS
 
-Пакет SDK для .NET Core включает сертификат разработки HTTPS. Сертификат устанавливается в рамках первого запуска. Например, `dotnet --info` выдает результат, аналогичный приведенному ниже:
+Пакет SDK для .NET Core включает сертификат разработки HTTPS. Сертификат устанавливается в рамках первого запуска. Например, `dotnet --info` создает разновидность следующих выходных данных:
 
 ```
 ASP.NET Core
@@ -336,7 +336,7 @@ For establishing trust on other platforms refer to the platform specific documen
 For more information on configuring HTTPS see https://go.microsoft.com/fwlink/?linkid=848054.
 ```
 
-При установке пакета SDK для .NET Core в локальное хранилище сертификатов пользователя устанавливается сертификат разработки HTTPS ASP.NET Core. Сертификат установлен, но не является доверенным. Чтобы сделать сертификат доверенным, выполните однократный шаг, чтобы запустить средство DotNet `dev-certs`.
+При установке пакета SDK для .NET Core в локальное хранилище сертификатов пользователя устанавливается сертификат разработки HTTPS ASP.NET Core. Сертификат установлен, но не является доверенным. Чтобы доверять сертификату, выполните однократный шаг, чтобы запустить средство DotNet `dev-certs`.
 
 ```dotnetcli
 dotnet dev-certs https --trust
@@ -358,7 +358,7 @@ dotnet dev-certs https --help
 
 Подсистема Windows для Linux (WSL) создает самозаверяющий сертификат HTTPS. Чтобы настроить хранилище сертификатов Windows для доверия к сертификату WSL, сделайте следующее:
 
-* Выполните следующую команду, чтобы экспортировать созданный сертификат WSL: `dotnet dev-certs https -ep %USERPROFILE%\.aspnet\https\aspnetapp.pfx -p <cryptic-password>`
+* Выполните следующую команду, чтобы экспортировать созданный WSL сертификат: `dotnet dev-certs https -ep %USERPROFILE%\.aspnet\https\aspnetapp.pfx -p <cryptic-password>`
 * В окне WSL выполните следующую команду: `ASPNETCORE_Kestrel__Certificates__Default__Password="<cryptic-password>" ASPNETCORE_Kestrel__Certificates__Default__Path=/mnt/c/Users/user-name/.aspnet/https/aspnetapp.pfx dotnet watch run`
 
   Приведенная выше команда задает переменные среды, чтобы в Linux использовался доверенный сертификат Windows.
@@ -378,7 +378,7 @@ dotnet dev-certs https --trust
 
 Закройте все открытые экземпляры браузера. Откройте новое окно браузера для приложения. Доверие сертификатов кэшируется браузерами.
 
-Предыдущие команды решают большинство проблем с доверием к браузеру. Если браузер все еще не доверяет сертификату, следуйте приведенным ниже рекомендациям для платформы.
+Предыдущие команды решают большинство проблем с доверием к браузеру. Если браузер по-прежнему не доверяет сертификату, следуйте приведенным ниже рекомендациям для конкретной платформы.
 
 ### <a name="docker---certificate-not-trusted"></a>DOCKER — сертификат не является доверенным
 

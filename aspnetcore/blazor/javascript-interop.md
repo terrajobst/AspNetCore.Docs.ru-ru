@@ -5,17 +5,17 @@ description: Узнайте, как вызывать функции JavaScript �
 monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 01/23/2020
+ms.date: 02/12/2020
 no-loc:
 - Blazor
 - SignalR
 uid: blazor/javascript-interop
-ms.openlocfilehash: c4f2444b60fc2d3a8af893df379cf62636a7bdd5
-ms.sourcegitcommit: d2ba66023884f0dca115ff010bd98d5ed6459283
+ms.openlocfilehash: d681eea5a5e876912bd614fba8ea45a464844496
+ms.sourcegitcommit: 6645435fc8f5092fc7e923742e85592b56e37ada
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77213367"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77447169"
 ---
 # <a name="aspnet-core-opno-locblazor-javascript-interop"></a>ASP.NET Core Blazor взаимодействия JavaScript
 
@@ -74,7 +74,7 @@ Blazor приложение может вызывать функции JavaScrip
 
   [!code-html[](javascript-interop/samples_snapshot/index-script-handleTickerChanged2.html)]
 
-* Для динамического создания содержимого с помощью [буилдрендертри](xref:blazor/components#manual-rendertreebuilder-logic)используйте атрибут `[Inject]`:
+* Для динамического создания содержимого с помощью [буилдрендертри](xref:blazor/advanced-scenarios#manual-rendertreebuilder-logic)используйте атрибут `[Inject]`:
 
   ```razor
   [Inject]
@@ -512,7 +512,9 @@ returnArrayAsyncJs: function () {
 
 Кроме того, можно вызывать методы экземпляра .NET из JavaScript. Вызов метода экземпляра .NET из JavaScript:
 
-* Передайте экземпляр .NET в JavaScript, заключив его в экземпляр `DotNetObjectReference`. Экземпляр .NET передается по ссылке на JavaScript.
+* Передайте экземпляр .NET по ссылке на JavaScript:
+  * Выполните статический вызов `DotNetObjectReference.Create`.
+  * Заключите экземпляр в `DotNetObjectReference` экземпляр и вызовите `Create` в экземпляре `DotNetObjectReference`. Удаление объектов `DotNetObjectReference` (пример показан далее в этом разделе).
 * Вызывайте методы экземпляра .NET в экземпляре с помощью функций `invokeMethod` или `invokeMethodAsync`. Экземпляр .NET можно также передать в качестве аргумента при вызове других методов .NET из JavaScript.
 
 > [!NOTE]
@@ -556,6 +558,68 @@ returnArrayAsyncJs: function () {
 
 ```console
 Hello, Blazor!
+```
+
+Чтобы избежать утечки памяти и разрешить сборку мусора для компонента, который создает `DotNetObjectReference`, удалите объект в классе, который создал экземпляр `DotNetObjectReference`:
+
+```csharp
+public class ExampleJsInterop : IDisposable
+{
+    private readonly IJSRuntime _jsRuntime;
+    private DotNetObjectReference<HelloHelper> _objRef;
+
+    public ExampleJsInterop(IJSRuntime jsRuntime)
+    {
+        _jsRuntime = jsRuntime;
+    }
+
+    public ValueTask<string> CallHelloHelperSayHello(string name)
+    {
+        _objRef = DotNetObjectReference.Create(new HelloHelper(name));
+
+        return _jsRuntime.InvokeAsync<string>(
+            "exampleJsFunctions.sayHello",
+            _objRef);
+    }
+
+    public void Dispose()
+    {
+        _objRef?.Dispose();
+    }
+}
+```
+  
+Предыдущий шаблон, показанный в классе `ExampleJsInterop`, также можно реализовать в компоненте:
+  
+```razor
+@page "/JSInteropComponent"
+@using BlazorSample.JsInteropClasses
+@implements IDisposable
+@inject IJSRuntime JSRuntime
+
+<h1>JavaScript Interop</h1>
+
+<button type="button" class="btn btn-primary" @onclick="TriggerNetInstanceMethod">
+    Trigger .NET instance method HelloHelper.SayHello
+</button>
+
+@code {
+    private DotNetObjectReference<HelloHelper> _objRef;
+
+    public async Task TriggerNetInstanceMethod()
+    {
+        _objRef = DotNetObjectReference.Create(new HelloHelper("Blazor"));
+
+        await JSRuntime.InvokeAsync<string>(
+            "exampleJsFunctions.sayHello",
+            _objRef);
+    }
+
+    public void Dispose()
+    {
+        _objRef?.Dispose();
+    }
+}
 ```
 
 ## <a name="share-interop-code-in-a-class-library"></a>Совместное использование кода взаимодействия в библиотеке классов

@@ -4,20 +4,20 @@ author: Rick-Anderson
 description: Описание способов создания методов фильтрации Razor Pages в ASP.NET Core.
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
-ms.date: 12/28/2019
+ms.date: 2/18/2020
 uid: razor-pages/filter
-ms.openlocfilehash: 02771219454556b236080c2668243f788693b2c1
-ms.sourcegitcommit: 077b45eceae044475f04c1d7ef2d153d7c0515a8
+ms.openlocfilehash: a60b17685c6f836de7c0afcc5b89a9894fb8b28f
+ms.sourcegitcommit: 6645435fc8f5092fc7e923742e85592b56e37ada
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 12/29/2019
-ms.locfileid: "75542716"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77447235"
 ---
 # <a name="filter-methods-for-razor-pages-in-aspnet-core"></a>Методы фильтрации для Razor Pages в ASP.NET Core
 
 ::: moniker range=">= aspnetcore-3.0"
 
-Автор: [Рик Андерсон](https://twitter.com/RickAndMSFT) (Rick Anderson)
+Автор: [Рик Андерсон](https://twitter.com/RickAndMSFT)
 
 Фильтры Razor Pages [IPageFilter](/dotnet/api/microsoft.aspnetcore.mvc.filters.ipagefilter?view=aspnetcore-2.0) и [IAsyncPageFilter](/dotnet/api/microsoft.aspnetcore.mvc.filters.iasyncpagefilter?view=aspnetcore-2.0) разрешают Razor Pages выполнять код до и после запуска обработчика Razor Pages. Фильтры страницы Razor похожи на [фильтры действий MVC ASP.NET Core](xref:mvc/controllers/filters#action-filters), но их нельзя применять к методам обработчика отдельной страницы.
 
@@ -30,7 +30,7 @@ ms.locfileid: "75542716"
 * Не могут применяться к методам обработчика для конкретной страницы.
 * Может иметь зависимости конструктора, заполненные путем [внедрения зависимостей](xref:fundamentals/dependency-injection) (DI). Дополнительные сведения см. в разделе [сервицефилтераттрибуте](/aspnet/core/mvc/controllers/filters#servicefilterattribute) и [типефилтераттрибуте](/aspnet/core/mvc/controllers/filters#typefilterattribute).
 
-Код можно запустить перед выполнением метода обработчика с помощью конструктора страницы или по промежуточного слоя, но только фильтры страниц Razor имеют доступ к <xref:Microsoft.AspNetCore.Mvc.RazorPages.PageModel.HttpContext>. Фильтры имеют <xref:Microsoft.AspNetCore.Mvc.Filters.FilterContext> производный параметр, который обеспечивает доступ к `HttpContext`. Например, образец [Применение атрибута фильтра](#ifa) добавляет заголовок к ответу. Это невозможно сделать с помощью конструкторов или ПО промежуточного слоя.
+Хотя конструкторы страниц и по промежуточного слоя позволяют выполнять пользовательский код до выполнения метода обработчика, только фильтры страниц Razor обеспечивают доступ к <xref:Microsoft.AspNetCore.Mvc.RazorPages.PageModel.HttpContext> и странице. По промежуточного слоя имеет доступ к `HttpContext`, но не к "контексту страницы". Фильтры имеют <xref:Microsoft.AspNetCore.Mvc.Filters.FilterContext> производный параметр, который обеспечивает доступ к `HttpContext`. Например, образец [Применение атрибута фильтра](#ifa) добавляет заголовок к ответу. Это невозможно сделать с помощью конструкторов или ПО промежуточного слоя.
 
 [Просмотреть или скачать образец кода](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/razor-pages/filter/3.1sample) ([как скачивать](xref:index#how-to-download-a-sample))
 
@@ -91,7 +91,7 @@ ms.locfileid: "75542716"
 
 [!code-csharp[Main](filter/3.1sample/PageFilter/Pages/Movies/Test.cshtml.cs)]
 
-Для изучения заголовков используйте средство разработчика браузера. В разделе **заголовки ответа**отображается `author: Rick`.
+Для изучения заголовков используйте средство разработчика браузера. В **заголовке ответа** отображается `author: Rick`.
 
 Инструкции по переопределению порядка см. в разделе [Переопределение порядка по умолчанию](xref:mvc/controllers/filters#overriding-the-default-order).
 
@@ -109,7 +109,7 @@ ms.locfileid: "75542716"
 
 ::: moniker range="< aspnetcore-3.0"
 
-Автор: [Рик Андерсон](https://twitter.com/RickAndMSFT) (Rick Anderson)
+Автор: [Рик Андерсон](https://twitter.com/RickAndMSFT)
 
 Фильтры Razor Pages [IPageFilter](/dotnet/api/microsoft.aspnetcore.mvc.filters.ipagefilter?view=aspnetcore-2.0) и [IAsyncPageFilter](/dotnet/api/microsoft.aspnetcore.mvc.filters.iasyncpagefilter?view=aspnetcore-2.0) разрешают Razor Pages выполнять код до и после запуска обработчика Razor Pages. Фильтры страницы Razor похожи на [фильтры действий MVC ASP.NET Core](xref:mvc/controllers/filters#action-filters), но их нельзя применять к методам обработчика отдельной страницы.
 
