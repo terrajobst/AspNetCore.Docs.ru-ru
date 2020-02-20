@@ -3,14 +3,14 @@ title: Общие сведения ASP.NET Core MVC
 author: ardalis
 description: Узнайте, почему ASP.NET MVC является многофункциональной платформой для создания веб-приложений и API-интерфейсов с помощью структуры проектирования Model-View-Controller.
 ms.author: riande
-ms.date: 01/28/2020
+ms.date: 02/12/2020
 uid: mvc/overview
-ms.openlocfilehash: a0d1e364bf4cda4ad30c5070c9e61e6972759bb0
-ms.sourcegitcommit: 85564ee396c74c7651ac47dd45082f3f1803f7a2
+ms.openlocfilehash: 2911399f6ed4e14345171c908c4306b9c3e33805
+ms.sourcegitcommit: 6645435fc8f5092fc7e923742e85592b56e37ada
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77171816"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77447416"
 ---
 # <a name="overview-of-aspnet-core-mvc"></a>Общие сведения ASP.NET Core MVC
 
@@ -258,5 +258,4 @@ public class AccountController : Controller
 ## <a name="additional-resources"></a>Дополнительные ресурсы
 
 * [MyTested.AspNetCore.Mvc — текучая библиотека тестирования для MVC ASP.NET Core](https://github.com/ivaylokenov/MyTested.AspNetCore.Mvc) &ndash; строго типизированная библиотека модульного тестирования с текучим интерфейсом для тестирования приложений MVC и веб-API. (*Не поддерживается и не обслуживается Майкрософт.* )
-* [Интеграция компонентов в Razor Pages и приложения MVC](xref:blazor/hosting-model-configuration#integrate-razor-components-into-razor-pages-and-mvc-apps)
-
+* <xref:blazor/integrate-components>

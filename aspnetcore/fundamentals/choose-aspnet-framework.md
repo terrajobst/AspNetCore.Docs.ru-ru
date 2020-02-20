@@ -4,16 +4,16 @@ author: rick-anderson
 description: Что такое ASP.NET Core и ASP.NET 4.x и как выбрать между ними.
 ms.author: riande
 ms.custom: mvc, seodec18
-ms.date: 11/12/2019
+ms.date: 02/12/2020
 no-loc:
 - SignalR
 uid: fundamentals/choose-between-aspnet-and-aspnetcore
-ms.openlocfilehash: 8b1681476f96e8613f9461c507fbb7696f888cbc
-ms.sourcegitcommit: 3fc3020961e1289ee5bf5f3c365ce8304d8ebf19
+ms.openlocfilehash: a7280b59578ee1d96edeeccf9c9df0b0e4eb4eb8
+ms.sourcegitcommit: 6645435fc8f5092fc7e923742e85592b56e37ada
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73963630"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77447299"
 ---
 # <a name="choose-between-aspnet-4x-and-aspnet-core"></a>Выбор между ASP.NET 4.x и ASP.NET Core
 
@@ -48,7 +48,7 @@ ASP.NET 4.x — это развитая платформа, предостав�
 
 * [Веб-сайты](xref:tutorials/first-mvc-app/index)
 * [API-интерфейсы](xref:tutorials/first-web-api)
-* [Режим реального времени](xref:signalr/index)
+* [Режим реального времени](xref:signalr/introduction)
 * [Развертывание приложения ASP.NET Core в Azure](/azure/app-service/app-service-web-get-started-dotnet)
 
 ## <a name="aspnet-4x-scenarios"></a>Сценарии ASP.NET 4.x
