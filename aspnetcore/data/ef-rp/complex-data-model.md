@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 07/22/2019
 uid: data/ef-rp/complex-data-model
-ms.openlocfilehash: 1244b2e23a842538ff2fca01a513317a690afe7c
-ms.sourcegitcommit: 16cf016035f0c9acf3ff0ad874c56f82e013d415
+ms.openlocfilehash: 411c0874d2b2c6ecadd1da9aff7a093f1e8e525a
+ms.sourcegitcommit: d2ba66023884f0dca115ff010bd98d5ed6459283
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73034036"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77213432"
 ---
 # <a name="razor-pages-with-ef-core-in-aspnet-core---data-model---5-of-8"></a>Razor Pages с EF Core в ASP.NET Core — модель данных— 5 из 8
 
@@ -59,7 +59,7 @@ ms.locfileid: "73034036"
 
 Сейчас для дат зачисления учащихся на всех страницах отображаются время и дата, хотя важна только дата. Используя атрибуты заметок к данным, вы можете внести в код одно изменение, позволяющее исправить формат отображения на каждой странице, где отображаются эти данные. 
 
-Атрибут [DataType](/dotnet/api/system.componentmodel.dataannotations.datatypeattribute?view=netframework-4.7.1) указывает тип данных более точно по сравнению со встроенным типом базы данных. В этом случае следует отображать отобразить только дату, а не дату и время. В [перечислении DataType](/dotnet/api/system.componentmodel.dataannotations.datatype?view=netframework-4.7.1) представлено множество типов данных, таких как Date, Time, PhoneNumber, Currency, EmailAddress и других. Атрибут `DataType` также обеспечивает автоматическое предоставление функций для определенных типов в приложении. Например:
+Атрибут [DataType](/dotnet/api/system.componentmodel.dataannotations.datatypeattribute?view=netframework-4.7.1) указывает тип данных более точно по сравнению со встроенным типом базы данных. В этом случае следует отображать отобразить только дату, а не дату и время. В [перечислении DataType](/dotnet/api/system.componentmodel.dataannotations.datatype?view=netframework-4.7.1) представлено множество типов данных, таких как Date, Time, PhoneNumber, Currency, EmailAddress и других. Атрибут `DataType` также обеспечивает автоматическое предоставление функций для определенных типов в приложении. Пример:
 
 * Ссылка `mailto:` для `DataType.EmailAddress` создается автоматически.
 * Средство выбора даты предоставляется для `DataType.Date` в большинстве браузеров.
@@ -99,7 +99,7 @@ ms.locfileid: "73034036"
 [RegularExpression(@"^[A-Z]+[a-zA-Z""'\s-]*$")]
 ```
 
-# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
+# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 В **обозревателе объектов SQL Server** (SSOX) откройте конструктор таблиц учащихся, дважды щелкнув таблицу **Student** (Учащийся).
 
@@ -107,7 +107,7 @@ ms.locfileid: "73034036"
 
 На предыдущем изображении показана схемы для таблицы `Student`. Поля имен имеют тип `nvarchar(MAX)`. Когда далее в этом учебнике будет создана и применена миграция, поля имен станут `nvarchar(50)` из-за атрибутов длины строки.
 
-# <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
+# <a name="visual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
 В средстве SQLite изучите определения столбцов для таблицы `Student`. Поля имен имеют тип `Text`. Обратите внимание, что первое поле имени называется `FirstMidName`. В следующем разделе вы измените имя этого столбца на `FirstName`.
 
@@ -157,7 +157,7 @@ public string LastName { get; set; }
 
 Запустите приложение и перейдите на страницу Students. Возникает исключение. Атрибут `[Column]` приводит к тому, что EF ожидает столбец с именем `FirstName`, но имя столбца в базе данных по-прежнему `FirstMidName`.
 
-# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
+# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 Сообщение об ошибке подобно приведенному ниже.
 
@@ -187,7 +187,7 @@ SqlException: Invalid column name 'FirstName'.
 
   До применения миграции столбцы имен имели тип [nvarchar(MAX)](/sql/t-sql/data-types/nchar-and-nvarchar-transact-sql). Теперь столбцы имен имеют тип `nvarchar(50)`. Имя столбца изменилось с `FirstMidName` на `FirstName`.
 
-# <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
+# <a name="visual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
 Сообщение об ошибке подобно приведенному ниже.
 
@@ -301,7 +301,7 @@ public int InstructorID { get; set; }
 
 Сущность `Course` имеет свойство внешнего ключа (FK) `DepartmentID`. `DepartmentID` указывает на связанную сущность `Department`. Сущность `Course` имеет свойство навигации `Department`.
 
-EF Core не требует свойства внешнего ключа для модели данных, если она имеет свойство навигации для связанной сущности. EF Core автоматически создает внешние ключи в базе данных по мере необходимости. EF Core создает [теневые свойства](/ef/core/modeling/shadow-properties) для автоматически созданных внешних ключей. Однако явное включение внешнего ключа в модель данных позволяет сделать обновления проще и эффективнее. Например, рассмотрим модель, где свойство внешнего ключа `DepartmentID` *не* включено. При получении сущности курса для редактирования:
+EF Core не требует свойства внешнего ключа для модели данных, если она имеет свойство навигации для связанной сущности. EF Core автоматически создает внешние ключи в базе данных по мере необходимости. EF Core создает [теневые свойства](/ef/core/modeling/shadow-properties) для автоматически созданных внешних ключей. Однако явное включение внешнего ключа в модель данных позволяет сделать обновления проще и эффективнее. Например, рассмотрим модель, где свойство внешнего ключа `DepartmentID`*не* включено. При получении сущности курса для редактирования:
 
 * свойство `Department` имеет значение NULL, если оно не загружено явно;
 * для обновления сущности курса нужно сначала получить сущность `Department`.
@@ -536,7 +536,7 @@ protected override void OnModelCreating(ModelBuilder modelBuilder)
 
 Выполните построение проекта.
 
-# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
+# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 В PMC выполните следующую команду:
 
@@ -561,7 +561,7 @@ database "ContosoUniversity", table "dbo.Department", column 'DepartmentID'.
 
 В следующем разделе вы узнаете, что делать с этой ошибкой.
 
-# <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
+# <a name="visual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
 Если добавить миграцию и выполнить команду `database update`, произойдет следующая ошибка:
 
@@ -591,7 +591,7 @@ For more information, see http://go.microsoft.com/fwlink/?LinkId=723262.
 
 Чтобы в EF Core принудительно создать базу данных, удалить, а затем обновить ее, выполните указанные ниже действия.
 
-# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
+# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 * Выполните следующие команды в **консоли диспетчера пакетов** (PMC):
 
@@ -606,7 +606,7 @@ For more information, see http://go.microsoft.com/fwlink/?LinkId=723262.
   Update-Database
   ```
 
-# <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
+# <a name="visual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
 * Откройте командное окно и перейдите в папку проекта. Папка проекта содержит файл *ContosoUniversity.csproj*.
 
@@ -627,7 +627,7 @@ For more information, see http://go.microsoft.com/fwlink/?LinkId=723262.
 
 Запустите приложение. При запуске приложения выполняется метод `DbInitializer.Initialize`. `DbInitializer.Initialize` заполняет новую базу данных.
 
-# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
+# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 Откройте базу данных в SSOX.
 
@@ -643,7 +643,7 @@ For more information, see http://go.microsoft.com/fwlink/?LinkId=723262.
 
   ![Данные CourseAssignment в SSOX](complex-data-model/_static/ssox-ci-data.png)
 
-# <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
+# <a name="visual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
 Используйте средство SQLite для просмотра базы данных:
 
@@ -691,7 +691,7 @@ For more information, see http://go.microsoft.com/fwlink/?LinkId=723262.
 * включает код или сценарии, чтобы добавить строки `Department` и связанные строки `Course` к новым строкам `Department`;
 * не использует кафедру "Temp" или значение по умолчанию для `Course.DepartmentID`.
 
-# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
+# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 * Выполните следующие команды в **консоли диспетчера пакетов** (PMC):
 
@@ -701,7 +701,7 @@ For more information, see http://go.microsoft.com/fwlink/?LinkId=723262.
 
 Так как метод `DbInitializer.Initialize` предназначен для работы только с пустой базой данных, используйте SSOX для удаления всех строк в таблицах Student и Course. (К таблице Enrollment будет применено каскадное удаление.)
 
-# <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
+# <a name="visual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
 * Если вы используете SQL Server LocalDB с Visual Studio Code, выполните следующую команду:
 
@@ -749,7 +749,7 @@ https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/data/ef-rp/intr
 
 [!code-csharp[](intro/samples/cu21/Models/Student.cs?name=snippet_DataType&highlight=3,12-13)]
 
-Атрибут [DataType](/dotnet/api/system.componentmodel.dataannotations.datatypeattribute?view=netframework-4.7.1) указывает тип данных более точно по сравнению со встроенным типом базы данных. В этом случае следует отображать отобразить только дату, а не дату и время. В [перечислении DataType](/dotnet/api/system.componentmodel.dataannotations.datatype?view=netframework-4.7.1) представлено множество типов данных, таких как Date, Time, PhoneNumber, Currency, EmailAddress и других. Атрибут `DataType` также обеспечивает автоматическое предоставление функций для определенных типов в приложении. Например:
+Атрибут [DataType](/dotnet/api/system.componentmodel.dataannotations.datatypeattribute?view=netframework-4.7.1) указывает тип данных более точно по сравнению со встроенным типом базы данных. В этом случае следует отображать отобразить только дату, а не дату и время. В [перечислении DataType](/dotnet/api/system.componentmodel.dataannotations.datatype?view=netframework-4.7.1) представлено множество типов данных, таких как Date, Time, PhoneNumber, Currency, EmailAddress и других. Атрибут `DataType` также обеспечивает автоматическое предоставление функций для определенных типов в приложении. Пример:
 
 * Ссылка `mailto:` для `DataType.EmailAddress` создается автоматически.
 * Средство выбора даты предоставляется для `DataType.Date` в большинстве браузеров.
@@ -821,7 +821,7 @@ https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/data/ef-rp/intr
 
 Добавление атрибута `Column` изменяет модель для поддержки `SchoolContext`. Модель, поддерживающая `SchoolContext`, больше не соответствует базе данных. Если приложение запускается перед применением миграций, возникает следующее исключение:
 
-```SQL
+```
 SqlException: Invalid column name 'FirstName'.
 ```
 
@@ -830,14 +830,14 @@ SqlException: Invalid column name 'FirstName'.
 * Выполните построение проекта.
 * Откройте командное окно в папке проекта. Введите следующие команды для создания миграции и обновления базы данных:
 
-# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
+# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-```PMC
+```powershell
 Add-Migration ColumnFirstName
 Update-Database
 ```
 
-# <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
+# <a name="visual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
 ```dotnetcli
 dotnet ef migrations add ColumnFirstName
@@ -998,7 +998,7 @@ public Instructor Instructor { get; set; }
 
 EF Core не требует свойство внешнего ключа для модели данных, если она имеет свойство навигации для связанной сущности.
 
-EF Core автоматически создает внешние ключи в базе данных по мере необходимости. EF Core создает [теневые свойства](/ef/core/modeling/shadow-properties) для автоматически созданных внешних ключей. Наличие внешнего ключа в модели данных позволяет сделать обновления проще и эффективнее. Например, рассмотрим модель, где свойство внешнего ключа `DepartmentID` *не* включено. При получении сущности курса для редактирования:
+EF Core автоматически создает внешние ключи в базе данных по мере необходимости. EF Core создает [теневые свойства](/ef/core/modeling/shadow-properties) для автоматически созданных внешних ключей. Наличие внешнего ключа в модели данных позволяет сделать обновления проще и эффективнее. Например, рассмотрим модель, где свойство внешнего ключа `DepartmentID`*не* включено. При получении сущности курса для редактирования:
 
 * сущность `Department` имеет значение null, если она не загружена явно;
 * для обновления сущности курса нужно сначала получить сущность `Department`.
@@ -1244,13 +1244,13 @@ protected override void OnModelCreating(ModelBuilder modelBuilder)
 
 Выполните построение проекта.
 
-# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
+# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 ```powershell
 Add-Migration ComplexDataModel
 ```
 
-# <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
+# <a name="visual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
 ```dotnetcli
 dotnet ef migrations add ComplexDataModel
@@ -1286,18 +1286,18 @@ database "ContosoUniversity", table "dbo.Department", column 'DepartmentID'.
 
 Код в обновленном `DbInitializer` предоставляет начальные данные для новых сущностей. Чтобы выполнить в EF Core принудительное создание новой базы данных, удаление и обновление базы данных:
 
-# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
+# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 Выполните следующие команды в **консоли диспетчера пакетов** (PMC):
 
-```PMC
+```powershell
 Drop-Database
 Update-Database
 ```
 
 Чтобы просмотреть справочную информацию, выполните команду `Get-Help about_EntityFrameworkCore` в PMC.
 
-# <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
+# <a name="visual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
 Откройте командное окно и перейдите в папку проекта. Папка проекта содержит файл *Startup.cs*.
 
