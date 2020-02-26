@@ -389,7 +389,7 @@ deployment/additionalDeps/shared/Microsoft.AspNetCore.App/3.0.0/StartupDiagnosti
 
 Для выполнения образца:
 
-**Активация из пакета NuGet**
+**Активация из библиотеки классов**
 
 1. Скомпилируйте пакет *HostingStartupPackage* с помощью команды [dotnet pack](/dotnet/core/tools/dotnet-pack).
 1. Добавьте имя сборки пакета *HostingStartupPackage* в переменную среды `ASPNETCORE_HOSTINGSTARTUPASSEMBLIES`.
@@ -432,7 +432,7 @@ dotnet nuget locals all --clear
 1. В проекте *StartupDiagnostics* используется [PowerShell](/powershell/scripting/powershell-scripting) для изменения файла *StartupDiagnostics.deps.json*. PowerShell устанавливается по умолчанию в Windows начиная с Windows 7 с пакетом обновления 1 (SP1) и Windows Server 2008 R2 с пакетом обновления 1 (SP1). Для установки PowerShell на других платформах см. раздел [Установка Windows PowerShell](/powershell/scripting/setup/installing-powershell#powershell-core).
 1. Выполните сценарий *build.ps1*, находящийся в папке *RuntimeStore*. Скрипт выполняет следующее:
    * Генерирует пакет `StartupDiagnostics` в папке *obj\packages*.
-   * создает хранилище среды выполнения для `StartupDiagnostics` в папке для *хранения*. Для размещения при запуске, развернутом в Windows, команда `dotnet store` в сценарии использует [идентификатор среды выполнения (RID)](/dotnet/core/rid-catalog) `win7-x64`. При выполнении размещения при запуске для другой среды выполнения укажите соответствующий RID в строке 37 скрипта. Хранилище среды выполнения для `StartupDiagnostics` позже будет перемещено в хранилище среды выполнения пользователя или системы на компьютере, где будет израсходована сборка. Пользовательское место установки хранилища среды выполнения для сборки `StartupDiagnostics` — *.dotnet/store/x64/netcoreapp3.0/startupdiagnostics/1.0.0/lib/netcoreapp3.0/StartupDiagnostics.dll*.
+   * Создает хранилище среды выполнения для `StartupDiagnostics` в папке *store*. Для размещения при запуске, развернутом в Windows, команда `dotnet store` в сценарии использует [идентификатор среды выполнения (RID)](/dotnet/core/rid-catalog) `win7-x64`. При выполнении размещения при запуске для другой среды выполнения укажите соответствующий RID в строке 37 скрипта. Хранилище среды выполнения для `StartupDiagnostics` позже будет перемещено в хранилище среды выполнения пользователя или системы на компьютере, где будет израсходована сборка. Пользовательское место установки хранилища среды выполнения для сборки `StartupDiagnostics` — *.dotnet/store/x64/netcoreapp3.0/startupdiagnostics/1.0.0/lib/netcoreapp3.0/StartupDiagnostics.dll*.
    * Генерирует `additionalDeps` для `StartupDiagnostics` в папке *additionalDeps*. Дополнительные зависимости позднее будут перенесены в дополнительные зависимости пользователя или системы. Расположением установки дополнительных зависимостей пользователя `StartupDiagnostics` является *.dotnet/x64/additionalDeps/StartupDiagnostics/shared/Microsoft.NETCore.App/3.0.0/StartupDiagnostics.deps.json*.
    * Размещает файл *deploy.ps1* в папке для *развертывания*.
 1. Выполните сценарий *deploy.ps1*, находящийся в папке *deployment*. Скрипт присоединяет:
@@ -775,7 +775,7 @@ deployment/additionalDeps/shared/Microsoft.AspNetCore.App/2.1.0/StartupDiagnosti
 
 Для выполнения образца:
 
-**Активация из пакета NuGet**
+**Активация из библиотеки классов**
 
 1. Скомпилируйте пакет *HostingStartupPackage* с помощью команды [dotnet pack](/dotnet/core/tools/dotnet-pack).
 1. Добавьте имя сборки пакета *HostingStartupPackage* в переменную среды `ASPNETCORE_HOSTINGSTARTUPASSEMBLIES`.
@@ -818,7 +818,7 @@ dotnet nuget locals all --clear
 1. В проекте *StartupDiagnostics* используется [PowerShell](/powershell/scripting/powershell-scripting) для изменения файла *StartupDiagnostics.deps.json*. PowerShell устанавливается по умолчанию в Windows начиная с Windows 7 с пакетом обновления 1 (SP1) и Windows Server 2008 R2 с пакетом обновления 1 (SP1). Для установки PowerShell на других платформах см. раздел [Установка Windows PowerShell](/powershell/scripting/setup/installing-powershell#powershell-core).
 1. Выполните сценарий *build.ps1*, находящийся в папке *RuntimeStore*. Скрипт выполняет следующее:
    * Генерирует пакет `StartupDiagnostics` в папке *obj\packages*.
-   * создает хранилище среды выполнения для `StartupDiagnostics` в папке для *хранения*. Для размещения при запуске, развернутом в Windows, команда `dotnet store` в сценарии использует [идентификатор среды выполнения (RID)](/dotnet/core/rid-catalog) `win7-x64`. При выполнении размещения при запуске для другой среды выполнения укажите соответствующий RID в строке 37 скрипта. Хранилище среды выполнения для `StartupDiagnostics` позже будет перемещено в хранилище среды выполнения пользователя или системы на компьютере, где будет израсходована сборка. Пользовательское место установки хранилища среды выполнения для сборки `StartupDiagnostics` — *.dotnet/store/x64/netcoreapp2.2/startupdiagnostics/1.0.0/lib/netcoreapp2.2/StartupDiagnostics.dll*.
+   * Создает хранилище среды выполнения для `StartupDiagnostics` в папке *store*. Для размещения при запуске, развернутом в Windows, команда `dotnet store` в сценарии использует [идентификатор среды выполнения (RID)](/dotnet/core/rid-catalog) `win7-x64`. При выполнении размещения при запуске для другой среды выполнения укажите соответствующий RID в строке 37 скрипта. Хранилище среды выполнения для `StartupDiagnostics` позже будет перемещено в хранилище среды выполнения пользователя или системы на компьютере, где будет израсходована сборка. Пользовательское место установки хранилища среды выполнения для сборки `StartupDiagnostics` — *.dotnet/store/x64/netcoreapp2.2/startupdiagnostics/1.0.0/lib/netcoreapp2.2/StartupDiagnostics.dll*.
    * Генерирует `additionalDeps` для `StartupDiagnostics` в папке *additionalDeps*. Дополнительные зависимости позднее будут перенесены в дополнительные зависимости пользователя или системы. Расположением установки дополнительных зависимостей пользователя `StartupDiagnostics` является *.dotnet/x64/additionalDeps/StartupDiagnostics/shared/Microsoft.NETCore.App/2.2.0/StartupDiagnostics.deps.json*.
    * Размещает файл *deploy.ps1* в папке для *развертывания*.
 1. Выполните сценарий *deploy.ps1*, находящийся в папке *deployment*. Скрипт присоединяет:
