@@ -5,18 +5,18 @@ description: ''
 ms.author: riande
 ms.date: 03/27/2017
 uid: data/ef-mvc/index
-ms.openlocfilehash: 469b16cfe3cdd41abd133df59036baf92ff04e42
-ms.sourcegitcommit: 3fc3020961e1289ee5bf5f3c365ce8304d8ebf19
+ms.openlocfilehash: 9ff070022260aae597d71b2da8d342f41f0c976b
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73962647"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78644134"
 ---
 # <a name="aspnet-core-mvc-with-ef-core---tutorial-series"></a>Серия учебников по работе с ASP.NET Core MVC и EF Core
 
 ::: moniker range=">= aspnetcore-3.0"
 
-Это руководстве **не было** обновлено для использования с версией ASP.NET Core 3.0. [Версия Razor Pages](xref:data/ef-rp/intro) была обновлена. См. сведения о возможном обновлении в этой [проблеме GitHub](https://github.com/aspnet/AspNetCore.Docs/issues/13920).
+Это руководстве **не было** обновлено для использования с версией ASP.NET Core 3.0. [Версия Razor Pages](xref:data/ef-rp/intro) была обновлена. См. сведения о возможном обновлении в этой [проблеме GitHub](https://github.com/dotnet/AspNetCore.Docs/issues/13920).
 
 ::: moniker-end
 

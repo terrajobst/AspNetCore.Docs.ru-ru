@@ -8,11 +8,11 @@ ms.custom: mvc
 ms.date: 12/16/2019
 uid: host-and-deploy/azure-apps/index
 ms.openlocfilehash: ba9671f68a0faf99ff5232a6d5dd132d0a1d5ac5
-ms.sourcegitcommit: 0b0e485a8a6dfcc65a7a58b365622b3839f4d624
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76928421"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78644614"
 ---
 # <a name="deploy-aspnet-core-apps-to-azure-app-service"></a>Развертывание приложений ASP.NET Core в Службе приложений Azure
 
@@ -199,7 +199,7 @@ ms.locfileid: "76928421"
 1. В поле поиска введите "ex" для фильтрации расширений ("Extensions") или прокрутите вниз список инструментов управления.
 1. Выберите **Расширения**.
 1. Нажмите **Добавить**.
-1. Выберите в списке расширение **Среда выполнения ASP.NET Core {X.Y} ({x64|x86})**, где `{X.Y}` — это предварительная версия ASP.NET Core, а `{x64|x86}` — платформа.
+1. Выберите в списке расширение **Среда выполнения ASP.NET Core {X.Y} ({x64|x86})** , где `{X.Y}` — это предварительная версия ASP.NET Core, а `{x64|x86}` — платформа.
 1. Для принятия условий нажмите кнопку **ОК**.
 1. Нажмите **OK**, чтобы установить расширение.
 
@@ -251,7 +251,7 @@ ms.locfileid: "76928421"
 
 ### <a name="deploy-the-app-framework-dependent"></a>Развертывание приложения, зависимого от платформы
 
-# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
+# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 1. Выберите **Сборка** > **Опубликовать {имя_приложения}** на панели инструментов Visual Studio или щелкните правой кнопкой мыши проект в **обозревателе решений** и выберите пункт **Опубликовать**.
 1. В диалоговом оке **Выберите целевой объект публикации** убедитесь, что выбран вариант **Служба приложений**.
@@ -264,7 +264,7 @@ ms.locfileid: "76928421"
    * Нажмите кнопку **Сохранить**.
 1. Создайте новый сайт или обновите существующий, следуя остальным подсказкам мастера публикации.
 
-# <a name="net-core-clitabnetcore-cli"></a>[Интерфейс командной строки .NET Core](#tab/netcore-cli/)
+# <a name="net-core-cli"></a>[Интерфейс командной строки .NET Core](#tab/netcore-cli/)
 
 1. В файле проекта не указывайте [идентификатор среды выполнения (RID)](/dotnet/core/rid-catalog).
 
@@ -282,7 +282,7 @@ ms.locfileid: "76928421"
 
 Используйте Visual Studio или .NET Core CLI для [автономного развертывания (SCD)](/dotnet/core/deploying/#self-contained-deployments-scd).
 
-# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
+# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 1. Выберите **Сборка** > **Опубликовать {имя_приложения}** на панели инструментов Visual Studio или щелкните правой кнопкой мыши проект в **обозревателе решений** и выберите пункт **Опубликовать**.
 1. В диалоговом оке **Выберите целевой объект публикации** убедитесь, что выбран вариант **Служба приложений**.
@@ -295,7 +295,7 @@ ms.locfileid: "76928421"
    * Нажмите кнопку **Сохранить**.
 1. Создайте новый сайт или обновите существующий, следуя остальным подсказкам мастера публикации.
 
-# <a name="net-core-clitabnetcore-cli"></a>[Интерфейс командной строки .NET Core](#tab/netcore-cli/)
+# <a name="net-core-cli"></a>[Интерфейс командной строки .NET Core](#tab/netcore-cli/)
 
 1. В файле проекта укажите один или несколько [идентификаторов сред выполнения (RID)](/dotnet/core/rid-catalog). Используйте `<RuntimeIdentifier>` (в единственном числе) для одного RID или `<RuntimeIdentifiers>` (во множественном числе), чтобы предоставить разделенный точкой с запятой список идентификаторов RID. В следующем примере указан RID `win-x86`:
 

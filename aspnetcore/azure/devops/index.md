@@ -7,11 +7,11 @@ ms.date: 08/07/2018
 ms.custom: mvc, seodec18
 uid: azure/devops/index
 ms.openlocfilehash: f45bb2a5dd4b3d1a820085ede7ce3219045ed80b
-ms.sourcegitcommit: 5b0eca8c21550f95de3bb21096bd4fd4d9098026
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 04/27/2019
-ms.locfileid: "64881959"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78644248"
 ---
 # <a name="devops-with-aspnet-core-and-azure"></a>DevOps с ASP.NET Core и Azure
 
@@ -37,23 +37,23 @@ ms.locfileid: "64881959"
 
 ## <a name="whats-in-this-guide"></a>Содержание руководства
 
-### <a name="tools-and-downloadsxrefazuredevopstools-and-downloads"></a>[Инструменты и файлы для скачивания](xref:azure/devops/tools-and-downloads)
+### <a name="tools-and-downloads"></a>[Инструменты и файлы для скачивания](xref:azure/devops/tools-and-downloads)
 
 Вы узнаете, где получить инструменты, используемые в этом руководстве.
 
-### <a name="deploy-to-app-servicexrefazuredevopsdeploy-to-app-service"></a>[Развертывание в службу приложений](xref:azure/devops/deploy-to-app-service)
+### <a name="deploy-to-app-service"></a>[Развертывание в службу приложений](xref:azure/devops/deploy-to-app-service)
 
 Разные способы развертывания приложения ASP.NET Core в службе приложений Azure.
 
-### <a name="continuous-integration-and-deploymentxrefazuredevopscicd"></a>[Непрерывная интеграция и развертывание](xref:azure/devops/cicd)
+### <a name="continuous-integration-and-deployment"></a>[Непрерывная интеграция и развертывание](xref:azure/devops/cicd)
 
 Создание решения сквозной непрерывной интеграции и развертывания для приложения ASP.NET Core с помощью GitHub, Azure DevOps Services и Azure.
 
-### <a name="monitor-and-debugxrefazuredevopsmonitor"></a>[Мониторинг и отладка](xref:azure/devops/monitor)
+### <a name="monitor-and-debug"></a>[Мониторинг и отладка](xref:azure/devops/monitor)
 
 Мониторинг, устранение неполадок и настройка приложения с помощью инструментов Azure.
 
-### <a name="next-stepsxrefazuredevopsnext-steps"></a>[Следующие шаги](xref:azure/devops/next-steps)
+### <a name="next-steps"></a>[Следующие шаги](xref:azure/devops/next-steps)
 
 Другие способы изучения Azure для разработчиков ASP.NET Core.
 

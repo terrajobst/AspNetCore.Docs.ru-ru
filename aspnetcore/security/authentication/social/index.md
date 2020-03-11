@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 01/23/2020
 uid: security/authentication/social/index
-ms.openlocfilehash: 7d0f6647a6f5a4d41067b13acd3d294144027bb7
-ms.sourcegitcommit: eca76bd065eb94386165a0269f1e95092f23fa58
+ms.openlocfilehash: c698edbd85d665509366287b1dcad08e276e71cc
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76727334"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78644818"
 ---
 # <a name="facebook-google-and-external-provider-authentication-in-aspnet-core"></a>Проверка подлинности Facebook, Google и внешних поставщиков в ASP.NET Core
 
@@ -30,16 +30,16 @@ ms.locfileid: "76727334"
 
 ## <a name="create-a-new-aspnet-core-project"></a>Создание проекта ASP.NET Core
 
-# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
+# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 * Создайте новый проект.
 * Выберите **Веб-приложение ASP.NET Core** и нажмите **Далее**.
 * Укажите **Имя проекта** и подтвердите либо измените **Расположение**. Выберите **Создать**.
-* Выберите последнюю версию ASP.NET Core в раскрывающемся списке (**ASP.NET Core {X.Y}**), а затем выберите **Веб-приложение**.
+* Выберите последнюю версию ASP.NET Core в раскрывающемся списке (**ASP.NET Core {X.Y}** ), а затем выберите **Веб-приложение**.
 * В разделе **Проверка подлинности** выберите **Изменить** и в качестве типа проверки подлинности задайте **Индивидуальные учетные записи пользователей**. Нажмите кнопку **ОК**.
 * В окне **Создать веб-приложение ASP.NET Core** выберите **Создать**.
 
-# <a name="visual-studio-code--visual-studio-for-mactabvisual-studio-codevisual-studio-mac"></a>[Visual Studio Code/Visual Studio для Mac](#tab/visual-studio-code+visual-studio-mac)
+# <a name="visual-studio-code--visual-studio-for-mac"></a>[Visual Studio Code/Visual Studio для Mac](#tab/visual-studio-code+visual-studio-mac)
 
 * Откройте терминал.  Для Visual Studio Code можно открыть [интегрированный терминал](https://code.visualstudio.com/docs/editor/integrated-terminal).
 
@@ -111,7 +111,7 @@ ms.locfileid: "76727334"
 
 ## <a name="next-steps"></a>Следующие шаги
 
-* Дополнительные сведения о настройке кнопок входа см. в описании [этой проблемы](https://github.com/aspnet/AspNetCore.Docs/issues/10563) на сайте GitHub.
+* Дополнительные сведения о настройке кнопок входа см. в описании [этой проблемы](https://github.com/dotnet/AspNetCore.Docs/issues/10563) на сайте GitHub.
 * В этой статье описывается внешняя проверка подлинности и приводятся предварительные требования для добавления внешних поставщиков входа в приложение ASP.NET Core.
 * Инструкции по настройке учетных данных для входа, используемых вашим приложением, см. на соответствующих страницах поставщиков.
 * Вы можете сохранить дополнительные данные о пользователях и их маркерах доступа и обновления. Для получения дополнительной информации см. <xref:security/authentication/social/additional-claims>.
