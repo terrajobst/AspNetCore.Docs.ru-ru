@@ -10,12 +10,12 @@ no-loc:
 - Blazor
 - SignalR
 uid: blazor/index
-ms.openlocfilehash: 02c95c19ebfb5ea6ad722f9d49f4cddc7471f8e1
-ms.sourcegitcommit: 0e21d4f8111743bcb205a2ae0f8e57910c3e8c25
+ms.openlocfilehash: 038799564078c4d3e8a7aa3a9841c6303edf9d12
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77034091"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78644266"
 ---
 # <a name="introduction-to-aspnet-core-opno-locblazor"></a>Введение в ASP.NET Core Blazor
 
@@ -136,11 +136,14 @@ Blazor отделяет логику отображения компоненто
 
 Подключение, используемое Blazor Server для обмена данными с браузером, также применяется для обработки вызовов взаимодействия JavaScript.
 
-![Blazor Server выполняет код .NET на сервере и взаимодействует с моделью DOM на стороне клиента через подключение SignalR.](index/_static/blazor-server.png)
+![Blazor Server выполняет код .NET на сервере и взаимодействует с моделью DOM на стороне клиента через подключение SignalR](index/_static/blazor-server.png)
 
 ## <a name="javascript-interop"></a>Взаимодействие с JavaScript
 
-Для приложений, которым требуются сторонние библиотеки JavaScript и доступ к API браузера, компоненты взаимодействуют с JavaScript. Компоненты могут использовать любую библиотеку или API, которые может использовать JavaScript. Код C# может вызывать код JavaScript, а код JavaScript — код C#. Для получения дополнительной информации см. <xref:blazor/javascript-interop>.
+Для приложений, которым требуются сторонние библиотеки JavaScript и доступ к API браузера, компоненты взаимодействуют с JavaScript. Компоненты могут использовать любую библиотеку или API, которые может использовать JavaScript. Код C# может вызывать код JavaScript, а код JavaScript — код C#. Дополнительные сведения см. в следующих статьях:
+
+* <xref:blazor/call-javascript-from-dotnet>
+* <xref:blazor/call-dotnet-from-javascript>
 
 ## <a name="code-sharing-and-net-standard"></a>Совместное использование кода и .NET Standard
 

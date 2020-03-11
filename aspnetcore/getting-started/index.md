@@ -6,16 +6,16 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 01/07/2020
 uid: getting-started
-ms.openlocfilehash: 4f7e67e1e422afe3f7e2970e0c40380f065390ac
-ms.sourcegitcommit: 0b0e485a8a6dfcc65a7a58b365622b3839f4d624
+ms.openlocfilehash: 047fd7a74d3d53f68a730d67b63c65fe6bda529f
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76928316"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78644308"
 ---
 # <a name="tutorial-get-started-with-aspnet-core"></a>Учебник. Начало работы с ASP.NET Core
 
-В этом руководстве показано, как использовать .NET Core CLI для создания и запуска веб-приложения ASP.NET Core.
+В этом руководстве показано, как с помощью .NET Core CLI создать и запустить веб-приложение ASP.NET Core.
 
 Вы научитесь:
 
@@ -50,7 +50,7 @@ dotnet new webapp -o aspnetcoreapp
 
 Установите доверие к сертификату разработки HTTPS.
 
-# <a name="windowstabwindows"></a>[Windows](#tab/windows)
+# <a name="windows"></a>[Windows](#tab/windows)
 
 ```dotnetcli
 dotnet dev-certs https --trust
@@ -62,7 +62,7 @@ dotnet dev-certs https --trust
 
 Выберите **Да**, если согласны доверять сертификату разработки.
 
-# <a name="macostabmacos"></a>[macOS](#tab/macos)
+# <a name="macos"></a>[macOS](#tab/macos)
 
 ```dotnetcli
 dotnet dev-certs https --trust
@@ -74,7 +74,7 @@ dotnet dev-certs https --trust
 
 Эта команда может запросить пароль для установки сертификата в системной цепочке ключей. Введите пароль, если согласны доверять сертификату разработки.
 
-# <a name="linuxtablinux"></a>[Linux](#tab/linux)
+# <a name="linux"></a>[Linux](#tab/linux)
 
 Просмотрите документацию по дистрибутиву Linux, чтобы узнать, как установить отношение доверия к сертификату разработки HTTPS.
 

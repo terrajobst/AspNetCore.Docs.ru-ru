@@ -7,12 +7,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 02/02/2020
 uid: fundamentals/middleware/index
-ms.openlocfilehash: 6698e269e0a6480cd5a03c59f9a19da31e23bf69
-ms.sourcegitcommit: 235623b6e5a5d1841139c82a11ac2b4b3f31a7a9
+ms.openlocfilehash: afa71b2c2b75be2c000fadd9545ac3fb4587825a
+ms.sourcegitcommit: 51c86c003ab5436598dbc42f26ea4a83a795fd6e
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 02/08/2020
-ms.locfileid: "77089153"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "78964464"
 ---
 # <a name="aspnet-core-middleware"></a>ПО промежуточного слоя ASP.NET Core
 
@@ -60,6 +60,7 @@ ms.locfileid: "77089153"
 Делегаты <xref:Microsoft.AspNetCore.Builder.RunExtensions.Run*> не получают параметр `next`. Первый делегат `Run` всегда является конечным и завершает конвейер. `Run` является соглашение. Некоторые компоненты промежуточного слоя могут предоставлять методы `Run[Middleware]`, которые выполняются в конце конвейера:
 
 [!code-csharp[](index/snapshot/Chain/Startup.cs?highlight=12-15)]
+[!INCLUDE[about the series](~/includes/code-comments-loc.md)]
 
 В предыдущем примере делегат `Run` записывает `"Hello from 2nd delegate."` в ответ и завершает конвейер. Если добавить другой делегат `Use` или `Run` после делегата `Run`, он не будет вызван.
 
@@ -214,9 +215,9 @@ app.Map("/level1", level1App => {
 | localhost:1234                | Hello from non-Map delegate. |
 | localhost:1234/?branch=master | Branch used = master         |
 
-<xref:Microsoft.AspNetCore.Builder.UseWhenExtensions.UseWhen*> также осуществляет ветвление конвейера запросов на основе результата заданного предиката. В отличие от `MapWhen`, эта ветвь снова объединяется с основным конвейером, если она выполняется по сокращенной схеме или содержит конечное ПО промежуточного слоя:
+<xref:Microsoft.AspNetCore.Builder.UseWhenExtensions.UseWhen*> также осуществляет ветвление конвейера запросов на основе результата заданного предиката. В отличие от `MapWhen`, эта ветвь снова объединяется с основным конвейером, если она не выполняется по сокращенной схеме или не содержит конечное ПО промежуточного слоя:
 
-[!code-csharp[](index/snapshot/Chain/StartupUseWhen.cs?highlight=23-24)]
+[!code-csharp[](index/snapshot/Chain/StartupUseWhen.cs?highlight=25-26)]
 
 В предыдущем примере ответ "Hello from main pipeline." записывается для всех запросов. Если запрос включает переменную строки запроса `branch`, ее значение регистрируется до того, как будет выполнено повторное объединение с основным конвейером.
 

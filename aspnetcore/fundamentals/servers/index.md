@@ -8,11 +8,11 @@ ms.custom: mvc
 ms.date: 11/07/2019
 uid: fundamentals/servers/index
 ms.openlocfilehash: d46793ef54c99fe609b5983c5a658fb7b20032fa
-ms.sourcegitcommit: f40c9311058c9b1add4ec043ddc5629384af6c56
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74289067"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78644698"
 ---
 # <a name="web-server-implementations-in-aspnet-core"></a>Реализации веб-сервера в ASP.NET Core
 
@@ -40,7 +40,7 @@ Kestrel используется в следующих сценариях:
 
 ::: moniker range=">= aspnetcore-2.2"
 
-# <a name="windowstabwindows"></a>[Windows](#tab/windows)
+# <a name="windows"></a>[Windows](#tab/windows)
 
 В состав ASP.NET Core входит следующее:
 
@@ -53,7 +53,7 @@ Kestrel используется в следующих сценариях:
 * В том же процессе, что и рабочий процесс IIS ([модель внутрипроцессного размещения](#hosting-models)), с использованием HTTP-сервера IIS. *Внутрипроцессное размещение* является рекомендуемой конфигурацией.
 * В процессе отдельно от рабочего процесса IIS ([модель внепроцессного размещения](#hosting-models)) с использованием [сервера Kestrel](#kestrel).
 
-[Модуль ASP.NET Core](xref:host-and-deploy/aspnet-core-module) — это собственный модуль IIS, который обрабатывает собственные запросы IIS между службами IIS и HTTP-сервером IIS (внутрипроцессно) или сервером Kestrel. Дополнительные сведения можно найти по адресу: <xref:host-and-deploy/aspnet-core-module>.
+[Модуль ASP.NET Core](xref:host-and-deploy/aspnet-core-module) — это собственный модуль IIS, который обрабатывает собственные запросы IIS между службами IIS и HTTP-сервером IIS (внутрипроцессно) или сервером Kestrel. Для получения дополнительной информации см. <xref:host-and-deploy/aspnet-core-module>.
 
 ## <a name="hosting-models"></a>Модели размещения
 
@@ -66,11 +66,11 @@ Kestrel используется в следующих сценариях:
 * <xref:host-and-deploy/iis/index>
 * <xref:host-and-deploy/aspnet-core-module>
 
-# <a name="macostabmacos"></a>[macOS](#tab/macos)
+# <a name="macos"></a>[macOS](#tab/macos)
 
 ASP.NET Core поставляется с [сервером Kestrel](xref:fundamentals/servers/kestrel), который является кроссплатформенным HTTP-сервером по умолчанию.
 
-# <a name="linuxtablinux"></a>[Linux](#tab/linux)
+# <a name="linux"></a>[Linux](#tab/linux)
 
 ASP.NET Core поставляется с [сервером Kestrel](xref:fundamentals/servers/kestrel), который является кроссплатформенным HTTP-сервером по умолчанию.
 
@@ -80,7 +80,7 @@ ASP.NET Core поставляется с [сервером Kestrel](xref:fundame
 
 ::: moniker range="< aspnetcore-2.2"
 
-# <a name="windowstabwindows"></a>[Windows](#tab/windows)
+# <a name="windows"></a>[Windows](#tab/windows)
 
 В состав ASP.NET Core входит следующее:
 
@@ -106,11 +106,11 @@ ASP.NET Core поставляется с [сервером Kestrel](xref:fundame
 * <xref:host-and-deploy/iis/index>
 * <xref:host-and-deploy/aspnet-core-module>
 
-# <a name="macostabmacos"></a>[macOS](#tab/macos)
+# <a name="macos"></a>[macOS](#tab/macos)
 
 ASP.NET Core поставляется с [сервером Kestrel](xref:fundamentals/servers/kestrel), который является кроссплатформенным HTTP-сервером по умолчанию.
 
-# <a name="linuxtablinux"></a>[Linux](#tab/linux)
+# <a name="linux"></a>[Linux](#tab/linux)
 
 ASP.NET Core поставляется с [сервером Kestrel](xref:fundamentals/servers/kestrel), который является кроссплатформенным HTTP-сервером по умолчанию.
 
@@ -128,7 +128,7 @@ ASP.NET Core поставляется с [сервером Kestrel](xref:fundame
 
 ## <a name="httpsys"></a>HTTP.sys
 
-Если приложение ASP.NET Core запускается в Windows, вместо Kestrel можно использовать HTTP.sys. Как правило, для оптимальной производительности рекомендуется Kestrel. HTTP.sys можно использовать в сценариях, где приложение имеет доступ к Интернету и необходимые возможности поддерживаются HTTP.sys, но не Kestrel. Дополнительные сведения можно найти по адресу: <xref:fundamentals/servers/httpsys>.
+Если приложение ASP.NET Core запускается в Windows, вместо Kestrel можно использовать HTTP.sys. Как правило, для оптимальной производительности рекомендуется Kestrel. HTTP.sys можно использовать в сценариях, где приложение имеет доступ к Интернету и необходимые возможности поддерживаются HTTP.sys, но не Kestrel. Для получения дополнительной информации см. <xref:fundamentals/servers/httpsys>.
 
 ![HTTP.sys взаимодействует с Интернетом напрямую](httpsys/_static/httpsys-to-internet.png)
 
