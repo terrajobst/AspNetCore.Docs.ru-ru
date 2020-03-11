@@ -6,12 +6,12 @@ ms.author: scaddie
 ms.custom: mvc
 ms.date: 10/13/2019
 uid: mvc/views/tag-helpers/builtin-th/anchor-tag-helper
-ms.openlocfilehash: 3ff8a52361b4911a5bb3163a8ea6ae90e504e4ef
-ms.sourcegitcommit: 07d98ada57f2a5f6d809d44bdad7a15013109549
-ms.translationtype: HT
+ms.openlocfilehash: 6bfbad39115c7823b5677d3c52ca64cfb0683037
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
+ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72333937"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78653782"
 ---
 # <a name="anchor-tag-helper-in-aspnet-core"></a>Вспомогательная функция тега привязки в ASP.NET Core MVC
 
@@ -19,9 +19,9 @@ ms.locfileid: "72333937"
 
 [Вспомогательная функция тега привязки](xref:Microsoft.AspNetCore.Mvc.TagHelpers.AnchorTagHelper) повышает эффективность стандартного тега привязки HTML (`<a ... ></a>`) путем добавления новых атрибутов. Как правило, все имена атрибутов начинаются с `asp-`. Отображаемое значение атрибута `href` элемента привязки определяется значениями атрибутов `asp-`.
 
-Общие сведения о вспомогательных функциях тегов см. здесь: <xref:mvc/views/tag-helpers/intro>.
+Общие сведения о вспомогательных функциях тегов см. в разделе <xref:mvc/views/tag-helpers/intro>.
 
-[Просмотреть или скачать образец кода](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/views/tag-helpers/built-in/samples) ([как скачивать](xref:index#how-to-download-a-sample))
+[Просмотреть или скачать образец кода](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/views/tag-helpers/built-in/samples) ([как скачивать](xref:index#how-to-download-a-sample))
 
 В примерах в этом документе используется *SpeakerController*
 
@@ -133,7 +133,7 @@ ms.locfileid: "72333937"
 <a href="/Speaker/Evaluations">Speaker Evaluations</a>
 ```
 
-Если наряду с атрибутом `asp-route` указаны атрибут `asp-controller` или `asp-action`, созданный маршрут может отличаться от ожидаемого. Во избежание конфликта маршрута `asp-route` нельзя использовать вместе с атрибутами `asp-controller` или `asp-action`.
+Если наряду с атрибутом `asp-controller` указаны атрибут `asp-action` или `asp-route`, созданный маршрут может отличаться от ожидаемого. Во избежание конфликта маршрута `asp-route` нельзя использовать вместе с атрибутами `asp-controller` или `asp-action`.
 
 ### <a name="asp-all-route-data"></a>asp-all-route-data
 
@@ -183,11 +183,11 @@ ms.locfileid: "72333937"
   * **wwwroot**
   * **Области**
     * **Сеансы**
-      * **Pages**
+      * **Страницы**
         * *\_ViewStart.cshtml*
         * *Index.cshtml*
         * *Index.cshtml.cs*
-  * **Pages**
+  * **Страницы**
 
 Исправление для ссылки на *индекс* области *Сеансы* в Razor Page:
 
@@ -218,7 +218,7 @@ ms.locfileid: "72333937"
       * **Контроллеры**
         * *HomeController.cs*
       * **Представления**
-        * **Корневая папка**
+        * **Главная**
           * *AboutBlog.cshtml*
           * *Index.cshtml*
         * *\_ViewStart.cshtml*
@@ -241,7 +241,7 @@ ms.locfileid: "72333937"
 
 ### <a name="asp-protocol"></a>asp-protocol
 
-Атрибут [asp-protocol](xref:Microsoft.AspNetCore.Mvc.TagHelpers.AnchorTagHelper.Protocol*) предназначен для указания протокола (например, `https`) в URL-адресе. Например:
+Атрибут [asp-protocol](xref:Microsoft.AspNetCore.Mvc.TagHelpers.AnchorTagHelper.Protocol*) предназначен для указания протокола (например, `https`) в URL-адресе. Пример:
 
 [!code-cshtml[](samples/TagHelpersBuiltIn/Views/Home/Index.cshtml?name=snippet_AspProtocol)]
 
@@ -255,7 +255,7 @@ ms.locfileid: "72333937"
 
 ### <a name="asp-host"></a>asp-host
 
-Атрибут [asp-host](xref:Microsoft.AspNetCore.Mvc.TagHelpers.AnchorTagHelper.Host*) предназначен для определения имени узла в URL-адресе. Например:
+Атрибут [asp-host](xref:Microsoft.AspNetCore.Mvc.TagHelpers.AnchorTagHelper.Host*) предназначен для определения имени узла в URL-адресе. Пример:
 
 [!code-cshtml[](samples/TagHelpersBuiltIn/Views/Home/Index.cshtml?name=snippet_AspHost)]
 

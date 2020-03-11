@@ -9,12 +9,12 @@ ms.date: 11/12/2019
 no-loc:
 - SignalR
 uid: signalr/streaming
-ms.openlocfilehash: 7825beba55cefb6236fd8d8e332d030a7e4fc6df
-ms.sourcegitcommit: 3fc3020961e1289ee5bf5f3c365ce8304d8ebf19
+ms.openlocfilehash: 21dd8180fe168f81ed68b01f02b81a6264d6e5a6
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73963888"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78654976"
 ---
 # <a name="use-streaming-in-aspnet-core-opno-locsignalr"></a>Использование потоковой передачи в ASP.NET Core SignalR
 
@@ -32,7 +32,7 @@ ASP.NET Core SignalR поддерживает потоковые возвращ�
 
 ::: moniker-end
 
-[Просмотреть или скачать образец кода](https://github.com/aspnet/AspNetCore.Docs/tree/live/aspnetcore/signalr/streaming/samples/) ([как скачивать](xref:index#how-to-download-a-sample))
+[Просмотреть или скачать образец кода](https://github.com/dotnet/AspNetCore.Docs/tree/live/aspnetcore/signalr/streaming/samples/) ([как скачивать](xref:index#how-to-download-a-sample))
 
 ## <a name="set-up-a-hub-for-streaming"></a>Настройка концентратора для потоковой передачи
 
@@ -317,5 +317,5 @@ hubConnection.stream(String.class, "ExampleStreamingHubMethod", "Arg1")
 
 * [Центры](xref:signalr/hubs)
 * [Клиент .NET](xref:signalr/dotnet-client)
-* [Клиент JavaScript](xref:signalr/javascript-client)
+* [Клиент на JavaScript](xref:signalr/javascript-client)
 * [Публикация в Azure](xref:signalr/publish-to-azure-web-app)

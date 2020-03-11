@@ -9,18 +9,18 @@ ms.date: 12/05/2019
 no-loc:
 - SignalR
 uid: signalr/authn-and-authz
-ms.openlocfilehash: 091cc9b2adc1f6a8fac79519884695d1c1725d2a
-ms.sourcegitcommit: c0b72b344dadea835b0e7943c52463f13ab98dd1
+ms.openlocfilehash: 3b7216bb064ba06a4c909016e1efd4242a64a7ad
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74880421"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78652018"
 ---
 # <a name="authentication-and-authorization-in-aspnet-core-opno-locsignalr"></a>Проверка подлинности и авторизация в ASP.NET Core SignalR
 
 [Эндрю Стантон-медперсонала](https://twitter.com/anurse)
 
-[Просмотр или скачивание образца кода](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/signalr/authn-and-authz/sample/) [(Загрузка)](xref:index#how-to-download-a-sample)
+[Просмотр или скачивание образца кода](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/signalr/authn-and-authz/sample/) [(Загрузка)](xref:index#how-to-download-a-sample)
 
 ## <a name="authenticate-users-connecting-to-a-opno-locsignalr-hub"></a>Проверка подлинности пользователей, подключающихся к концентратору SignalR
 
@@ -121,7 +121,7 @@ var connection = new HubConnectionBuilder()
 
 Файлы cookie относятся только к браузерам. Их отправка из других типов клиентов повышает сложность по сравнению с отправкой токенов носителя. Следовательно, проверка подлинности файлов cookie не рекомендуется, если приложению не требуется проверять подлинность пользователей только от клиента браузера. Проверка подлинности маркера носителя является рекомендуемым подходом при использовании клиентов, отличных от клиента браузера.
 
-### <a name="windows-authentication"></a>Аутентификация Windows
+### <a name="windows-authentication"></a>Проверка подлинности Windows
 
 Если в приложении настроена [Проверка подлинности Windows](xref:security/authentication/windowsauth) , SignalR может использовать это удостоверение для защиты концентраторов. Однако для отправки сообщений отдельным пользователям необходимо добавить настраиваемого поставщика ИДЕНТИФИКАТОРов пользователей. Система проверки подлинности Windows не предоставляет утверждение "идентификатор имени". SignalR использует утверждение для определения имени пользователя.
 

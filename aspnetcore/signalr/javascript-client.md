@@ -9,12 +9,12 @@ ms.date: 11/12/2019
 no-loc:
 - SignalR
 uid: signalr/javascript-client
-ms.openlocfilehash: eaf737642cdbd7ab2b1b5c16538b47a70cddd332
-ms.sourcegitcommit: 2cb857f0de774df421e35289662ba92cfe56ffd1
+ms.openlocfilehash: 3086b4aa532dfe992e19c193ef76f216f7835164
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75354700"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78651538"
 ---
 # <a name="aspnet-core-opno-locsignalr-javascript-client"></a>ASP.NET Core SignalR клиента JavaScript
 
@@ -22,7 +22,7 @@ ms.locfileid: "75354700"
 
 Клиентская библиотека ASP.NET Core SignalR JavaScript позволяет разработчикам вызывать код концентратора на стороне сервера.
 
-[Просмотреть или скачать образец кода](https://github.com/aspnet/AspNetCore.Docs/tree/live/aspnetcore/signalr/javascript-client/sample) ([как скачивать](xref:index#how-to-download-a-sample))
+[Просмотреть или скачать образец кода](https://github.com/dotnet/AspNetCore.Docs/tree/live/aspnetcore/signalr/javascript-client/sample) ([как скачивать](xref:index#how-to-download-a-sample))
 
 ## <a name="install-the-opno-locsignalr-client-package"></a>Установка пакета клиента SignalR
 
@@ -35,7 +35,7 @@ ms.locfileid: "75354700"
   npm install @microsoft/signalr
   ```
 
-npm устанавливает содержимое пакета в *node_modules\\@microsoft\signalr\dist\browser* папки. Создайте новую папку с именем *SignalR* в папке *wwwroot\\lib* . Скопируйте файл *SignalR. js* в папку *ввврут\либ\сигналр*
+NPM устанавливает содержимое пакета в папку *node_modules\\@microsoft\signalr\dist\browser* . Создайте новую папку с именем *SignalR* в папке *wwwroot\\lib* . Скопируйте файл *SignalR. js* в папку *ввврут\либ\сигналр*
 
 ::: moniker-end
 
@@ -46,7 +46,7 @@ npm устанавливает содержимое пакета в *node_module
   npm install @aspnet/signalr
   ```
 
-npm устанавливает содержимое пакета в *node_modules\\@aspnet\signalr\dist\browser* папки. Создайте новую папку с именем *SignalR* в папке *wwwroot\\lib* . Скопируйте файл *SignalR. js* в папку *ввврут\либ\сигналр*
+NPM устанавливает содержимое пакета в папку *node_modules\\@aspnet\signalr\dist\browser* . Создайте новую папку с именем *SignalR* в папке *wwwroot\\lib* . Скопируйте файл *SignalR. js* в папку *ввврут\либ\сигналр*
 
 ::: moniker-end
 
@@ -273,7 +273,7 @@ const connection = new signalR.HubConnectionBuilder()
 
 ## <a name="additional-resources"></a>Дополнительные ресурсы
 
-* [Справочник по API JavaScript](/javascript/api/?view=signalr-js-latest)
+* [Справочник по JavaScript API](/javascript/api/?view=signalr-js-latest)
 * [Учебник по JavaScript](xref:tutorials/signalr)
 * [Руководство по пакету и TypeScript](xref:tutorials/signalr-typescript-webpack)
 * [Центры](xref:signalr/hubs)

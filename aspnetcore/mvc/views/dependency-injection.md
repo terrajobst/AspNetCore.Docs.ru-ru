@@ -5,12 +5,12 @@ description: Узнайте, как ASP.NET Core поддерживает вн�
 ms.author: riande
 ms.date: 10/14/2016
 uid: mvc/views/dependency-injection
-ms.openlocfilehash: 63feea5ddf286dd3e659f3a622cfb0f7451b9bba
-ms.sourcegitcommit: 8516b586541e6ba402e57228e356639b85dfb2b9
-ms.translationtype: HT
+ms.openlocfilehash: 6241bb8e262f64e2e30721bc5fe6f8f1be84b60d
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
+ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67815336"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78651478"
 ---
 # <a name="dependency-injection-into-views-in-aspnet-core"></a>Внедрение зависимостей в представления в ASP.NET Core
 
@@ -18,7 +18,7 @@ ms.locfileid: "67815336"
 
 ASP.NET Core поддерживает [внедрение зависимостей](xref:fundamentals/dependency-injection) в представления. Это может быть полезно для связанных с представлениями служб (например, локализации) или данных, необходимых только для заполнения элементов представления. Старайтесь поддерживать [разделение ответственности](/dotnet/standard/modern-web-apps-azure-architecture/architectural-principles#separation-of-concerns) между контроллерами и представлениями. Большая часть данных, отображаемых представлениями, должна передаваться от контроллера.
 
-[Просмотреть или скачать образец кода](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/views/dependency-injection/sample) ([как скачивать](xref:index#how-to-download-a-sample))
+[Просмотреть или скачать образец кода](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/views/dependency-injection/sample) ([как скачивать](xref:index#how-to-download-a-sample))
 
 ## <a name="configuration-injection"></a>Внедрение конфигурации
 
@@ -104,6 +104,6 @@ HTML-форма, используемая для изменения этих с�
 
 При необходимости расширить существующие службы вы можете просто применять этот метод при наследовании от существующей реализации или использовании ее внутри вашей собственной.
 
-## <a name="see-also"></a>См. также
+## <a name="see-also"></a>См. также:
 
 * Блог Саймона Тиммса (Simon Timms): [Getting Lookup Data Into Your View](https://blog.simontimms.com/2015/06/09/getting-lookup-data-into-you-view/) (Внедрение данных подстановки в ваше представление)

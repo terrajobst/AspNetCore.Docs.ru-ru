@@ -1,14 +1,14 @@
-### <a name="view-the-identity-database"></a>Представление базы данных удостоверений
+### <a name="view-the-identity-database"></a>Просмотр базы данных удостоверений
 
-# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio) 
+# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio) 
 
-* Из **представление** меню, выберите **обозреватель объектов SQL Server** (SSOX).
-* Перейдите к **(localdb) (SQL Server 13) MSSQLLocalDB**. Щелкните правой кнопкой мыши **dbo. AspNetUsers** > **просмотра данных**:
+* В меню **вид** выберите **Обозреватель объектов SQL Server** (SSOX).
+* Перейдите к **(LocalDB) MSSQLLocalDB (SQL Server 13)** . Щелкните dbo правой кнопкой мыши **. AspNetUsers** > **Просмотр данных**:
 
-![Контекстные меню в таблице AspNetUsers в обозревателе объектов SQL Server](~/security/authentication/accconfirm/_static/ssox.png)
+![Контекстное меню в таблице AspNetUsers в обозреватель объектов SQL Server](~/security/authentication/accconfirm/_static/ssox.png)
 
-# <a name="net-core-clitabnetcore-cli"></a>[Интерфейс командной строки .NET Core](#tab/netcore-cli)
+# <a name="net-core-cli"></a>[Интерфейс командной строки .NET Core](#tab/netcore-cli)
 
-Существует много сторонних средств, можно загрузить для управления и просмотра базой данных SQLite, например [DB Browser для SQLite](https://sqlitebrowser.org/).
+Существует множество сторонних средств, которые можно скачать для управления и просмотра базы данных SQLite, например, [браузера базы для SQLite](https://sqlitebrowser.org/).
 
 ---

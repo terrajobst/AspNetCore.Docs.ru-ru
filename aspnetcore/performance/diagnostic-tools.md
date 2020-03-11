@@ -1,76 +1,76 @@
 ---
 title: Средства диагностики производительности
 author: mjrousos
-description: Полезные инструменты для диагностики проблем с производительностью в приложениях ASP.NET Core.
+description: Полезные средства для диагностики проблем с производительностью в ASP.NET Core приложениях.
 monikerRange: '>= aspnetcore-1.1'
 ms.author: riande
 ms.date: 04/11/2019
 uid: performance/diagnostic-tools
 ms.openlocfilehash: d273897b9ad26d57eb94b196b58f14019a96d07d
-ms.sourcegitcommit: 8516b586541e6ba402e57228e356639b85dfb2b9
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67815622"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78652474"
 ---
 # <a name="performance-diagnostic-tools"></a>Средства диагностики производительности
 
-По [Майк Роусос](https://github.com/mjrousos)
+Автор: [Майк Роусос (Mike Rousos)](https://github.com/mjrousos)
 
-В этой статье перечислены инструменты для выявления проблем с производительностью в ASP.NET Core.
+В этой статье перечислены средства для диагностики проблем с производительностью в ASP.NET Core.
 
-## <a name="visual-studio-diagnostic-tools"></a>Средства диагностики Visual Studio
+## <a name="visual-studio-diagnostic-tools"></a>Visual Studio Средства диагностики
 
-[Средства профилирования и диагностики](/visualstudio/profiling) интегрирован в Visual Studio — хорошее место для начала расследования проблем с производительностью. Эти средства являются мощным и удобным механизмом для использования в среде разработки Visual Studio. Инструментарий обеспечивает анализ использования ЦП, использование памяти и событий производительности в приложениях ASP.NET Core. Встроенные, делает легко профилирования во время разработки.
+[Средства профилирования и диагностики](/visualstudio/profiling) , встроенные в Visual Studio, являются хорошим местом для изучения проблем с производительностью. Эти средства являются мощными и удобными для использования в среде разработки Visual Studio. Инструментарий позволяет проводить анализ загрузки ЦП, использования памяти и событий производительности в ASP.NET Core приложениях. Встроенные средства упрощают профилирование во время разработки.
 
-Дополнительные сведения можно найти в [документация по Visual Studio](/visualstudio/profiling/profiling-overview).
+Дополнительные сведения см. в [документации по Visual Studio](/visualstudio/profiling/profiling-overview).
 
 ## <a name="application-insights"></a>Application Insights
 
-[Application Insights](/azure/application-insights/app-insights-overview) приводятся подробные данные производительности для вашего приложения. Application Insights автоматически собирает данные о скорость ответа, частота сбоев, время отклика зависимостей и многое другое. Application Insights поддерживает ведение журнала пользовательских событий и конкретных метрик для приложения.
+[Application Insights](/azure/application-insights/app-insights-overview) предоставляет подробные данные о производительности приложения. Application Insights автоматически собирает данные о скорости ответа, частоте сбоев, времени отклика зависимости и многом другое. Application Insights поддерживает ведение журнала пользовательских событий и метрик, относящихся к вашему приложению.
 
-Azure Application Insights предоставляет несколько способов предоставить insights на отслеживаемых приложений:
+Azure Application Insights предоставляет несколько способов получения аналитических сведений о наблюдаемых приложениях.
 
-- [Схема сопоставления приложений](/azure/application-insights/app-insights-app-map) — помогает выявлять узкие или сбоя горячих точек всех компонентов распределенных приложений.
-- [Обозреватель метрик Azure](/azure/azure-monitor/platform/metrics-getting-started) является компонентом портала Microsoft Azure, которое позволяет диаграммы, визуально коррелируемые тренды, и исследование пики и спады в значениях метрик.
-- [Колонку "производительность" на портале Application Insights](/azure/application-insights/app-insights-tutorial-performance):
+- [Схема приложений](/azure/application-insights/app-insights-app-map) — помогает выявить узкие места производительности или критические участки сбоя во всех компонентах распределенных приложений.
+- [Обозреватель метрик Azure](/azure/azure-monitor/platform/metrics-getting-started) — это компонент портал Microsoft Azure, который позволяет строить диаграммы, визуально сопоставлять тенденции и исследовать пиковые значения и DIP в метриках.
+- [Колонка "производительность" на портале Application Insights](/azure/application-insights/app-insights-tutorial-performance):
 
   - Показывает сведения о производительности для различных операций в отслеживаемом приложении.
-  - Позволяет детализации в единую операцию для проверки всех частей и зависимости, способствующих длительного времени.
-  - Profiler может вызываться из здесь, чтобы собирать производительности трассировки по запросу.
+  - Позволяет детализировать одну операцию, чтобы проверить все части или зависимости, которые повлияют на длительное время.
+  - Профилировщик можно вызвать здесь, чтобы получить трассировку производительности по требованию.
 
-- [Azure Application Insights Profiler](/azure/azure-monitor/app/profiler) позволяет обычных и по запросу профилирование приложений для .NET.  Azure на портале должна появиться записи трассировок производительности с помощью стеков вызовов и критических путей. Файлы трассировки можно также загрузить для более глубокого анализа с помощью PerfView.
+- [Azure Application Insights Profiler](/azure/azure-monitor/app/profiler) позволяет регулярно и по запросу выполнять профилирование приложений .NET.  Портал Azure показывает захваченные трассировки производительности с стеками вызовов и горячими путями. Файлы трассировки также можно скачать для более глубокого анализа с помощью PerfView.
 
 Application Insights можно использовать в различных средах:
 
-- Оптимизирована для работы в Azure.
-- Работает в рабочей среде, разработки и размещения.
+- Оптимизация для работы в Azure.
+- Работает в рабочей среде, разработке и промежуточном развертывании.
 - Работает локально из [Visual Studio](/azure/application-insights/app-insights-visual-studio) или в других средах размещения.
 
 Дополнительные сведения см. в статье [Application Insights для ASP.NET Core](/azure/application-insights/app-insights-asp-net-core).
 
 ## <a name="perfview"></a>PerfView
 
-[PerfView](https://github.com/Microsoft/perfview) представляет собой средство анализа производительности, созданные командой .NET, в частности, для диагностики проблем с производительностью .NET. PerfView обеспечивает анализ ЦП использования памяти и сборки Мусора поведение, событий производительности и время по часам.
+[PerfView](https://github.com/Microsoft/perfview) — это средство анализа производительности, создаваемое группой .NET специально для диагностики проблем производительности .NET. PerfView позволяет проводить анализ загрузки ЦП, поведения памяти и GC, событий производительности и времени стены.
 
-Дополнительные сведения о PerfView и как приступить к работе с [видео учебники по PerfView](https://channel9.msdn.com/Series/PerfView-Tutorial) или посредством считывания руководства пользователя, доступных в средстве или [на сайте GitHub](https://github.com/Microsoft/perfview).
+Вы можете узнать больше о PerfView и о том, как приступить к работе с видеоматериалами [PerfView](https://channel9.msdn.com/Series/PerfView-Tutorial) , либо прочитать руководство пользователя, доступное в средстве или [на сайте GitHub](https://github.com/Microsoft/perfview).
 
-## <a name="windows-performance-toolkit"></a>Windows Performance Toolkit
+## <a name="windows-performance-toolkit"></a>Набор средств производительности Windows
 
-[Windows Performance Toolkit](/windows-hardware/test/wpt/) (WPT) состоит из двух компонентов: Windows Performance Recorder (WPR) и Windows Performance Analyzer (WPA). Средства создают подробные производительности профили операционных систем Windows и приложений. WPT имеет более широкие способы визуализации данных, но сбор данных обладает меньшими возможностями, чем в PerfView.
+[Windows Performance Toolkit](/windows-hardware/test/wpt/) (WPT) состоит из двух компонентов: средство записи производительности Windows (ЗВЧ) и анализатор производительности Windows (WPA). Средства предоставляют подробные профили производительности операционных систем и приложений Windows. WPT предоставляет более широкие возможности визуализации данных, но их сбор данных менее мощный, чем PerfView.
 
-## <a name="perfcollect"></a>PerfCollect
+## <a name="perfcollect"></a>перфколлект
 
-Хотя PerfView представляет собой средство анализа производительности полезно для сценариев .NET, оно работает только в Windows, поэтому его нельзя использовать для сбора данных трассировки из приложений ASP.NET Core, запущенных в средах Linux.
+Хотя PerfView — это полезное средство анализа производительности для сценариев .NET, оно работает только в Windows, поэтому его нельзя использовать для получения трассировок из ASP.NET Core приложений, работающих в средах Linux.
 
-[PerfCollect](https://github.com/dotnet/coreclr/blob/master/Documentation/project-docs/linux-performance-tracing.md) — это сценарий bash, который использует собственный Linux, средства профилирования ([Perf](https://perf.wiki.kernel.org/index.php/Main_Page) и [LTTng](https://lttng.org/)) для сбора данных трассировки в Linux, можно анализировать по PerfView. PerfCollect полезно в тех случаях, когда проблемы с производительностью отображаются в средах Linux, где PerfView не может использоваться непосредственно. Вместо этого PerfCollect можно собирать трассировки из приложений .NET Core, которые затем анализируются на компьютере Windows с помощью PerfView.
+[Перфколлект](https://github.com/dotnet/coreclr/blob/master/Documentation/project-docs/linux-performance-tracing.md) — это скрипт Bash, использующий собственные средства профилирования Linux ([Perf](https://perf.wiki.kernel.org/index.php/Main_Page) и [LTTng](https://lttng.org/)) для получения трассировок в Linux, которые можно проанализировать с помощью PerfView. Перфколлект полезен в тех случаях, когда проблемы производительности отображаются в средах Linux, где PerfView нельзя использовать напрямую. Вместо этого Перфколлект может получать трассировки из приложений .NET Core, которые затем анализируются на компьютере Windows с помощью PerfView.
 
-Дополнительные сведения о том, как установить и приступить к работе с PerfCollect [на сайте GitHub](https://github.com/dotnet/coreclr/blob/master/Documentation/project-docs/linux-performance-tracing.md).
+Дополнительные сведения о том, как установить и приступить к работе с Перфколлект, можно найти [на сайте GitHub](https://github.com/dotnet/coreclr/blob/master/Documentation/project-docs/linux-performance-tracing.md).
 
-## <a name="other-third-party-performance-tools"></a>Другие средства сторонних производительности
+## <a name="other-third-party-performance-tools"></a>Другие сторонние средства обеспечения производительности
 
-Ниже перечислены некоторые средства повышения производительности независимых производителей, которые полезны в исследования производительности приложений .NET Core.
+Ниже перечислены некоторые сторонние средства обеспечения производительности, которые полезны при расследовании производительности приложений .NET Core.
 
 - [MiniProfiler](https://miniprofiler.com/)
-- dotTrace и dotMemory от компании JetBrains
-- VTune корпорации Intel
+- Доттраце и Дотмемори из JetBrains
+- VTune от Intel

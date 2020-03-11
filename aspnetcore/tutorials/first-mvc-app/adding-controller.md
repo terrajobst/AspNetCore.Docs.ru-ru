@@ -6,11 +6,11 @@ ms.author: riande
 ms.date: 08/05/2017
 uid: tutorials/first-mvc-app/adding-controller
 ms.openlocfilehash: fb670902b0dafa7dce2b3372e550095387844936
-ms.sourcegitcommit: 57b85708f4cded99b8f008a69830cb104cd8e879
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/13/2020
-ms.locfileid: "75914239"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78650776"
 ---
 # <a name="add-a-controller-to-an-aspnet-core-mvc-app"></a>Добавление контроллера в приложение MVC ASP.NET Core
 
@@ -32,7 +32,7 @@ ms.locfileid: "75914239"
 
 ## <a name="add-a-controller"></a>Добавление контроллера
 
-# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
+# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 * В **обозревателе решений** щелкните правой кнопкой мыши **Контроллеры > Добавить > Контроллер**
   ![Контекстное меню](adding-controller/_static/add_controller.png).
@@ -43,13 +43,13 @@ ms.locfileid: "75914239"
 
 * В **диалоговом окне "Добавить пустой контроллер MVC"** введите **HelloWorldController** и выберите **Добавить**.
 
-# <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
+# <a name="visual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
 Щелкните значок **обозревателя**, а затем правой кнопкой мыши щелкните **Контроллеры > Новый файл** и назовите новый файл *HelloWorldController.cs*.
 
   ![Контекстное меню](~/tutorials/first-mvc-app-xplat/adding-controller/_static/new_file.png)
 
-# <a name="visual-studio-for-mactabvisual-studio-mac"></a>[Visual Studio для Mac](#tab/visual-studio-mac)
+# <a name="visual-studio-for-mac"></a>[Visual Studio для Mac](#tab/visual-studio-mac)
 
 В **обозревателе решений** щелкните правой кнопкой мыши **Контроллеры > Добавить > Новый файл**.
 ![Контекстное меню](~/tutorials/first-mvc-app-mac/adding-controller/_static/add_controller.png)
@@ -108,7 +108,7 @@ MVC вызывает классы контроллера (и методы дей
 
 (Замените `{PORT}` на номер порта.) Вы можете попробовать различные значения `name` и `numtimes` в URL-адресе. Система [привязки модели](xref:mvc/models/model-binding) MVC автоматически сопоставляет именованные параметры из строк запроса в адресной строке с параметрами метода. Дополнительные сведения см. в разделе [Привязка модели](xref:mvc/models/model-binding).
 
-![Окно браузера, в котором отображается ответ Hello Rick; значение NumTimes равно \:4.](~/tutorials/first-mvc-app/adding-controller/_static/rick4.png)
+![Окно браузера, в котором отображается ответ Hello Rick; значение NumTimes равно 4.](~/tutorials/first-mvc-app/adding-controller/_static/rick4.png)
 
 На показанном выше изображении сегмент URL-адреса (`Parameters`) не используется, а параметры `name` и `numTimes` передаются в [строке запроса](https://wikipedia.org/wiki/Query_string). Вопросительный знак (`?`) в приведенном выше URL-адресе используется в качестве разделителя, после которого указывается строка запроса. Символом `&` отделяются пары "поле-значение".
 
@@ -146,7 +146,7 @@ MVC вызывает классы контроллера (и методы дей
 
 ## <a name="add-a-controller"></a>Добавление контроллера
 
-# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
+# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 * В **обозревателе решений** щелкните правой кнопкой мыши **Контроллеры > Добавить > Контроллер**
   ![Контекстное меню](adding-controller/_static/add_controller.png).
@@ -157,13 +157,13 @@ MVC вызывает классы контроллера (и методы дей
 
 * В **диалоговом окне "Добавить пустой контроллер MVC"** введите **HelloWorldController** и выберите **Добавить**.
 
-# <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
+# <a name="visual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
 Щелкните значок **обозревателя**, а затем правой кнопкой мыши щелкните **Контроллеры > Новый файл** и назовите новый файл *HelloWorldController.cs*.
 
   ![Контекстное меню](~/tutorials/first-mvc-app-xplat/adding-controller/_static/new_file.png)
 
-# <a name="visual-studio-for-mactabvisual-studio-mac"></a>[Visual Studio для Mac](#tab/visual-studio-mac)
+# <a name="visual-studio-for-mac"></a>[Visual Studio для Mac](#tab/visual-studio-mac)
 
 В **обозревателе решений** щелкните правой кнопкой мыши **Контроллеры > Добавить > Новый файл**.
 ![Контекстное меню](~/tutorials/first-mvc-app-mac/adding-controller/_static/add_controller.png)
@@ -227,7 +227,7 @@ Remove link for simplified tutorial.
 
 (Замените `{PORT}` на номер порта.) Вы можете попробовать различные значения `name` и `numtimes` в URL-адресе. Система [привязки модели](xref:mvc/models/model-binding) MVC автоматически сопоставляет именованные параметры из строк запроса в адресной строке с параметрами метода. Дополнительные сведения см. в разделе [Привязка модели](xref:mvc/models/model-binding).
 
-![Окно браузера, в котором отображается ответ Hello Rick; значение NumTimes равно\: 4.](~/tutorials/first-mvc-app/adding-controller/_static/rick4.png)
+![Окно браузера, в котором отображается ответ Hello Rick; значение NumTimes равно 4.](~/tutorials/first-mvc-app/adding-controller/_static/rick4.png)
 
 На показанном выше изображении сегмент URL-адреса (`Parameters`) не используется, а параметры `name` и `numTimes` передаются в [строке запроса](https://wikipedia.org/wiki/Query_string). Вопросительный знак (`?`) в приведенном выше URL-адресе используется в качестве разделителя, после которого указывается строка запроса. Символом `&` отделяются пары "поле-значение".
 

@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 02/04/2020
 uid: mvc/controllers/filters
-ms.openlocfilehash: c4bb9d5746e494106ead6ad5bbf972bbcc5a39f1
-ms.sourcegitcommit: 0e21d4f8111743bcb205a2ae0f8e57910c3e8c25
-ms.translationtype: HT
+ms.openlocfilehash: 03335811766ea3a1455901199863c6da0e35f7e4
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
+ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77034069"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78653344"
 ---
 # <a name="filters-in-aspnet-core"></a>Фильтры в ASP.NET Core
 
@@ -33,7 +33,7 @@ ms.locfileid: "77034069"
 * Компонент внедряется в страницу или представление.
 * Страница, контроллер или представление использует фильтр.
 
-[Просмотреть или скачать пример](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/controllers/filters/3.1sample) ([как скачивать](xref:index#how-to-download-a-sample)).
+[Просмотреть или скачать пример](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/controllers/filters/3.1sample) ([как скачивать](xref:index#how-to-download-a-sample)).
 
 ## <a name="how-filters-work"></a>Как работают фильтры
 
@@ -117,7 +117,7 @@ ASP.NET Core включает встроенные фильтры на осно�
 
 [!code-csharp[](filters/3.1sample/FiltersSample/appsettings.json)]
 
-В `StartUp.ConfigureServices`:
+На портале `StartUp.ConfigureServices`:
 
 * Класс `PositionOptions` добавляется в контейнер службы с помощью области конфигурации `"Position"`.
 * `MyActionFilterAttribute` добавляется в контейнер службы.
@@ -132,7 +132,7 @@ ASP.NET Core включает встроенные фильтры на осно�
 
 [!code-csharp[](./filters/3.1sample/FiltersSample/Controllers/SampleController.cs?name=snippet2&highlight=9)]
 
-В **заголовке ответа** при вызове конечной точки `Sample/Index2` отображается `author: Rick Anderson` и `Editor: Joe Smith`.
+В **заголовке ответа** при вызове конечной точки `author: Rick Anderson` отображается `Editor: Joe Smith` и `Sample/Index2`.
 
 В следующем коде применяется атрибут `MyActionFilterAttribute` и `AddHeaderAttribute` к Razor Page:
 
@@ -176,7 +176,7 @@ ASP.NET Core включает встроенные фильтры на осно�
   
 В следующем примере показан порядок вызова методов фильтров для синхронных фильтров действий.
 
-| Sequence | Область фильтра | Метод фильтра |
+| Последовательность | Область фильтра | Метод фильтрации |
 |:--------:|:------------:|:-------------:|
 | 1 | Global | `OnActionExecuting` |
 | 2 | Контроллер или Razor Page| `OnActionExecuting` |
@@ -197,7 +197,7 @@ ASP.NET Core включает встроенные фильтры на осно�
 
 Например, в скачиваемом примере `MySampleActionFilter` применяется глобально при запуске.
 
-`TestController`:
+`TestController`.
 
 * Применяет `SampleActionFilterAttribute` (`[SampleActionFilter]`) для действия `FilterTest2`.
 * Переопределяет `OnActionExecuting` и `OnActionExecuted`.
@@ -267,7 +267,7 @@ ASP.NET Core включает встроенные фильтры на осно�
 
 [!code-csharp[](./filters/3.1sample/FiltersSample/Filters/ShortCircuitingResourceFilterAttribute.cs?name=snippet)]
 
-В приведенном ниже коде как фильтр `ShortCircuitingResourceFilter`, так и фильтр `AddHeader` нацелены на метод действия `SomeResource`. `ShortCircuitingResourceFilter`:
+В приведенном ниже коде как фильтр `ShortCircuitingResourceFilter`, так и фильтр `AddHeader` нацелены на метод действия `SomeResource`. `ShortCircuitingResourceFilter`.
 
 * Выполняется первым, поскольку это фильтр ресурсов, а `AddHeader` — фильтр действий.
 * Замыкает оставшуюся часть конвейера.
@@ -352,7 +352,7 @@ VS debug window shows
 FiltersSample.Filters.LogConstantFilter:Information: Method 'Hi' called
 -->
 
-## <a name="authorization-filters"></a>Фильтры авторизации
+## <a name="authorization-filters"></a>фильтры авторизации;
 
 Фильтры авторизации:
 
@@ -392,7 +392,7 @@ FiltersSample.Filters.LogConstantFilter:Information: Method 'Hi' called
   * Предотвращает доступ привязки модели к данным формы.
   * Используется для загрузки больших файлов, если необходимо предотвратить считывание данных формы в память.
 
-## <a name="action-filters"></a>Фильтры действий
+## <a name="action-filters"></a>фильтры действий;
 
 Фильтры действий **неприменимы** к Razor Pages. Razor Pages поддерживает <xref:Microsoft.AspNetCore.Mvc.Filters.IPageFilter> и <xref:Microsoft.AspNetCore.Mvc.Filters.IAsyncPageFilter>. Дополнительные сведения см. в разделе [Методы фильтрации для Razor Pages](xref:razor-pages/filter).
 
@@ -451,7 +451,7 @@ FiltersSample.Filters.LogConstantFilter:Information: Method 'Hi' called
 
 [!code-csharp[](./filters/3.1sample/FiltersSample/Filters/ValidateModelAttribute.cs?name=snippet2&higlight=12-99)]
 
-## <a name="exception-filters"></a>Фильтры исключений
+## <a name="exception-filters"></a>фильтры исключений.
 
 Фильтры исключений:
 
@@ -487,8 +487,8 @@ FiltersSample.Filters.LogConstantFilter:Information: Method 'Hi' called
 Фильтры результатов:
 
 * Реализация интерфейса:
-  * <xref:Microsoft.AspNetCore.Mvc.Filters.IResultFilter> или <xref:Microsoft.AspNetCore.Mvc.Filters.IAsyncResultFilter>
-  * <xref:Microsoft.AspNetCore.Mvc.Filters.IAlwaysRunResultFilter> или <xref:Microsoft.AspNetCore.Mvc.Filters.IAsyncAlwaysRunResultFilter>
+  * <xref:Microsoft.AspNetCore.Mvc.Filters.IResultFilter> либо <xref:Microsoft.AspNetCore.Mvc.Filters.IAsyncResultFilter>
+  * <xref:Microsoft.AspNetCore.Mvc.Filters.IAlwaysRunResultFilter> либо <xref:Microsoft.AspNetCore.Mvc.Filters.IAsyncAlwaysRunResultFilter>
 * Их выполнение охватывает выполнение результатов действий.
 
 ### <a name="iresultfilter-and-iasyncresultfilter"></a>IResultFilter и IAsyncResultFilter
@@ -526,7 +526,7 @@ FiltersSample.Filters.LogConstantFilter:Information: Method 'Hi' called
 Интерфейсы <xref:Microsoft.AspNetCore.Mvc.Filters.IAlwaysRunResultFilter> и <xref:Microsoft.AspNetCore.Mvc.Filters.IAsyncAlwaysRunResultFilter> объявляют реализацию <xref:Microsoft.AspNetCore.Mvc.Filters.IResultFilter>, которая выполняется для всех результатов действий. Сюда включены результаты действий, созданные:
 
 * фильтрами авторизации и фильтрами ресурсов, которые сокращают ответ;
-* фильтрами исключений.
+* Фильтры исключений.
 
 Например, следующий фильтр всегда выполняется, задавая результат действия (<xref:Microsoft.AspNetCore.Mvc.ObjectResult>) с кодом состояния *422 Unprocessable Entity* при сбое согласования содержимого:
 
@@ -544,10 +544,10 @@ FiltersSample.Filters.LogConstantFilter:Information: Method 'Hi' called
 
 [!code-csharp[](./filters/3.1sample/FiltersSample/Controllers/SampleController.cs?name=snippet3&highlight=21)]
 
-Проверьте приведенный выше код, выполнив [скачиваемый пример](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/controllers/filters/3.1sample):
+Проверьте приведенный выше код, выполнив [скачиваемый пример](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/controllers/filters/3.1sample):
 
 * Вызовите средства для разработчика (F12).
-* Перейдите к `https://localhost:5001/Sample/HeaderWithFactory`.
+* Перейдите на страницу `https://localhost:5001/Sample/HeaderWithFactory`.
 
 В средствах для разработчика (F12) отобразятся следующие заголовки ответа, добавленные примером кода:
 
@@ -596,7 +596,7 @@ What's a non-named attribute?
 ## <a name="next-actions"></a>Дальнейшие действия
 
 * Дополнительные сведения см. в статье [Filter methods for Razor Pages in ASP.NET Core](xref:razor-pages/filter) (Методы фильтрации для Razor Pages в ASP.NET Core).
-* Чтобы поэкспериментировать с фильтрами, [скачайте, протестируйте и измените пример с GitHub](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/controllers/filters/3.1sample).
+* Чтобы поэкспериментировать с фильтрами, [скачайте, протестируйте и измените пример с GitHub](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/controllers/filters/3.1sample).
 
 ::: moniker-end
 
@@ -615,7 +615,7 @@ What's a non-named attribute?
 
 Этот документ применим к Razor Pages, контроллерам API и контроллерам с представлениями.
 
-[Просмотреть или скачать пример](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/controllers/filters/sample) ([как скачивать](xref:index#how-to-download-a-sample)).
+[Просмотреть или скачать пример](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/controllers/filters/sample) ([как скачивать](xref:index#how-to-download-a-sample)).
 
 ## <a name="how-filters-work"></a>Как работают фильтры
 
@@ -717,7 +717,7 @@ ASP.NET Core включает встроенные фильтры на осно�
   
 В следующем примере показан порядок вызова методов фильтров для синхронных фильтров действий.
 
-| Sequence | Область фильтра | Метод фильтра |
+| Последовательность | Область фильтра | Метод фильтрации |
 |:--------:|:------------:|:-------------:|
 | 1 | Global | `OnActionExecuting` |
 | 2 | Контроллер | `OnActionExecuting` |
@@ -743,7 +743,7 @@ ASP.NET Core включает встроенные фильтры на осно�
 
 Например, в скачиваемом примере `MySampleActionFilter` применяется глобально при запуске.
 
-`TestController`:
+`TestController`.
 
 * Применяет `SampleActionFilterAttribute` (`[SampleActionFilter]`) для действия `FilterTest2`.
 * Переопределяет `OnActionExecuting` и `OnActionExecuted`.
@@ -777,7 +777,7 @@ ASP.NET Core включает встроенные фильтры на осно�
 
 Рассмотрим три фильтра действий, показанные в предыдущем примере. Если свойство `Order` контроллера и глобальные фильтры имеют значения 1 и 2 соответственно, порядок выполнения инвертируется.
 
-| Sequence | Область фильтра | Свойство`Order` | Метод фильтра |
+| Последовательность | Область фильтра | Свойство `Order` | Метод фильтрации |
 |:--------:|:------------:|:-----------------:|:-------------:|
 | 1 | Метод | 0 | `OnActionExecuting` |
 | 2 | Контроллер | 1  | `OnActionExecuting` |
@@ -796,7 +796,7 @@ ASP.NET Core включает встроенные фильтры на осно�
 
 [!code-csharp[](./filters/sample/FiltersSample/Filters/ShortCircuitingResourceFilterAttribute.cs?name=snippet)]
 
-В приведенном ниже коде как фильтр `ShortCircuitingResourceFilter`, так и фильтр `AddHeader` нацелены на метод действия `SomeResource`. `ShortCircuitingResourceFilter`:
+В приведенном ниже коде как фильтр `ShortCircuitingResourceFilter`, так и фильтр `AddHeader` нацелены на метод действия `SomeResource`. `ShortCircuitingResourceFilter`.
 
 * Выполняется первым, поскольку это фильтр ресурсов, а `AddHeader` — фильтр действий.
 * Замыкает оставшуюся часть конвейера.
@@ -882,7 +882,7 @@ VS debug window shows
 FiltersSample.Filters.LogConstantFilter:Information: Method 'Hi' called
 -->
 
-## <a name="authorization-filters"></a>Фильтры авторизации
+## <a name="authorization-filters"></a>фильтры авторизации;
 
 Фильтры авторизации:
 
@@ -922,7 +922,7 @@ FiltersSample.Filters.LogConstantFilter:Information: Method 'Hi' called
   * Предотвращает доступ привязки модели к данным формы.
   * Используется для загрузки больших файлов, если необходимо предотвратить считывание данных формы в память.
 
-## <a name="action-filters"></a>Фильтры действий
+## <a name="action-filters"></a>фильтры действий;
 
 > [!IMPORTANT]
 > Фильтры действий **неприменимы** к Razor Pages. Razor Pages поддерживает <xref:Microsoft.AspNetCore.Mvc.Filters.IPageFilter> и <xref:Microsoft.AspNetCore.Mvc.Filters.IAsyncPageFilter>. Дополнительные сведения см. в разделе [Методы фильтрации для Razor Pages](xref:razor-pages/filter).
@@ -982,7 +982,7 @@ FiltersSample.Filters.LogConstantFilter:Information: Method 'Hi' called
 
 [!code-csharp[](./filters/sample/FiltersSample/Filters/ValidateModelAttribute.cs?name=snippet2&higlight=12-99)]
 
-## <a name="exception-filters"></a>Фильтры исключений
+## <a name="exception-filters"></a>фильтры исключений.
 
 Фильтры исключений:
 
@@ -1014,8 +1014,8 @@ FiltersSample.Filters.LogConstantFilter:Information: Method 'Hi' called
 Фильтры результатов:
 
 * Реализация интерфейса:
-  * <xref:Microsoft.AspNetCore.Mvc.Filters.IResultFilter> или <xref:Microsoft.AspNetCore.Mvc.Filters.IAsyncResultFilter>
-  * <xref:Microsoft.AspNetCore.Mvc.Filters.IAlwaysRunResultFilter> или <xref:Microsoft.AspNetCore.Mvc.Filters.IAsyncAlwaysRunResultFilter>
+  * <xref:Microsoft.AspNetCore.Mvc.Filters.IResultFilter> либо <xref:Microsoft.AspNetCore.Mvc.Filters.IAsyncResultFilter>
+  * <xref:Microsoft.AspNetCore.Mvc.Filters.IAlwaysRunResultFilter> либо <xref:Microsoft.AspNetCore.Mvc.Filters.IAsyncAlwaysRunResultFilter>
 * Их выполнение охватывает выполнение результатов действий.
 
 ### <a name="iresultfilter-and-iasyncresultfilter"></a>IResultFilter и IAsyncResultFilter
@@ -1053,7 +1053,7 @@ FiltersSample.Filters.LogConstantFilter:Information: Method 'Hi' called
 Интерфейсы <xref:Microsoft.AspNetCore.Mvc.Filters.IAlwaysRunResultFilter> и <xref:Microsoft.AspNetCore.Mvc.Filters.IAsyncAlwaysRunResultFilter> объявляют реализацию <xref:Microsoft.AspNetCore.Mvc.Filters.IResultFilter>, которая выполняется для всех результатов действий. Сюда включены результаты действий, созданные:
 
 * фильтрами авторизации и фильтрами ресурсов, которые сокращают ответ;
-* фильтрами исключений.
+* Фильтры исключений.
 
 Например, следующий фильтр всегда выполняется, задавая результат действия (<xref:Microsoft.AspNetCore.Mvc.ObjectResult>) с кодом состояния *422 Unprocessable Entity* при сбое согласования содержимого:
 
@@ -1067,10 +1067,10 @@ FiltersSample.Filters.LogConstantFilter:Information: Method 'Hi' called
 
 [!code-csharp[](./filters/sample/FiltersSample/Filters/AddHeaderWithFactoryAttribute.cs?name=snippet_IFilterFactory&highlight=1,4,5,6,7)]
 
-Приведенный выше код можно проверить, выполнив [скачиваемый пример](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/controllers/filters/sample):
+Приведенный выше код можно проверить, выполнив [скачиваемый пример](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/controllers/filters/sample):
 
 * Вызовите средства для разработчика (F12).
-* Перейдите к `https://localhost:5001/Sample/HeaderWithFactory`.
+* Перейдите на страницу `https://localhost:5001/Sample/HeaderWithFactory`.
 
 В средствах для разработчика (F12) отобразятся следующие заголовки ответа, добавленные примером кода:
 
@@ -1119,6 +1119,6 @@ What's a non-named attribute?
 ## <a name="next-actions"></a>Дальнейшие действия
 
 * Дополнительные сведения см. в статье [Filter methods for Razor Pages in ASP.NET Core](xref:razor-pages/filter) (Методы фильтрации для Razor Pages в ASP.NET Core).
-* Чтобы поэкспериментировать с фильтрами, [скачайте, протестируйте и измените пример с GitHub](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/controllers/filters/sample).
+* Чтобы поэкспериментировать с фильтрами, [скачайте, протестируйте и измените пример с GitHub](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/controllers/filters/sample).
 
 ::: moniker-end

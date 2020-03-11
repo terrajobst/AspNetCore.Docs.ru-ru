@@ -7,31 +7,31 @@ ms.author: riande
 ms.date: 09/22/2018
 ms.custom: mvc, seodec18
 uid: security/authentication/2fa
-ms.openlocfilehash: 68219579be9b7a7b25da6e348054e1ff2015cf5f
-ms.sourcegitcommit: e54672f5c493258dc449fac5b98faf47eb123b28
+ms.openlocfilehash: 424d21e446de02b39daa7685205a00931361b326
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71248384"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78652726"
 ---
 # <a name="two-factor-authentication-with-sms-in-aspnet-core"></a>Двухфакторная проверка подлинности с помощью SMS в ASP.NET Core
 
-По [Рик Андерсон](https://twitter.com/RickAndMSFT) и [разработчики Швейцария](https://github.com/Swiss-Devs)
+[Рик Андерсон (](https://twitter.com/RickAndMSFT) и [Швейцарский разработчики](https://github.com/Swiss-Devs)
 
 >[!WARNING]
-> Два фактора проверки подлинности (2FA) проверки подлинности приложения с помощью по времени одноразовый пароль алгоритм (TOTP), являются отрасли, рекомендуемый подход для 2FA. 2FA с помощью TOTP предпочтительнее SMS 2FA. Дополнительные сведения см. в разделе [создания включить QR-кода для приложений TOTP проверки подлинности в ASP.NET Core](xref:security/authentication/identity-enable-qrcodes) ASP.NET Core 2.0 и более поздних версий.
+> Два фактора проверки подлинности (2FA) проверки подлинности приложения с помощью по времени одноразовый пароль алгоритм (TOTP), являются отрасли, рекомендуемый подход для 2FA. 2FA с помощью TOTP предпочтительнее SMS 2FA. Дополнительные сведения см. [в статье Включение создания QR-кода для приложений TOTP Authenticator в ASP.NET Core](xref:security/authentication/identity-enable-qrcodes) для ASP.NET Core 2,0 и более поздних версий.
 
-Этом руководстве показано, как настроить двухфакторную проверку подлинности (2FA) с помощью SMS. Инструкции, приведенные для [twilio](https://www.twilio.com/) и [ASPSMS](https://www.aspsms.com/asp.net/identity/core/testcredits/), но вы можете использовать любой другой поставщик SMS. Мы рекомендуем вам выполнить [подтверждение учетной записи и восстановление пароля](xref:security/authentication/accconfirm) этим руководством.
+Этом руководстве показано, как настроить двухфакторную проверку подлинности (2FA) с помощью SMS. Инструкции предоставляются для [twilio](https://www.twilio.com/) и [аспсмс](https://www.aspsms.com/asp.net/identity/core/testcredits/), но можно использовать любой другой поставщик SMS. Перед началом работы с этим руководством мы рекомендуем завершить [Подтверждение учетной записи и восстановление пароля](xref:security/authentication/accconfirm) .
 
-[Просмотреть или скачать образец кода](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/security/authentication/2fa/sample/Web2FA). [Как скачать](xref:index#how-to-download-a-sample).
+[Просмотреть или скачать образец кода](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/security/authentication/2fa/sample/Web2FA). [Как скачать](xref:index#how-to-download-a-sample).
 
 ## <a name="create-a-new-aspnet-core-project"></a>Создание проекта ASP.NET Core
 
-Создание нового веб-приложения ASP.NET Core с именем `Web2FA` с учетными записями отдельных пользователей. Следуйте инструкциям в <xref:security/enforcing-ssl> , чтобы настроить и требовать протокол HTTPS.
+Создайте новое ASP.NET Core веб-приложение с именем `Web2FA` с учетными записями отдельных пользователей. Следуйте инструкциям в <xref:security/enforcing-ssl>, чтобы настроить и требовать протокол HTTPS.
 
 ### <a name="create-an-sms-account"></a>Создание учетной записи SMS
 
-Создание учетной записи SMS, например, из [twilio](https://www.twilio.com/) или [ASPSMS](https://www.aspsms.com/asp.net/identity/core/testcredits/). Запишите учетные данные для проверки подлинности (для twilio: accountSid и authToken, для АСПСМС: Userkey и Password).
+Создайте учетную запись SMS, например из [twilio](https://www.twilio.com/) или [аспсмс](https://www.aspsms.com/asp.net/identity/core/testcredits/). Запишите учетные данные проверки подлинности (для twilio: accountSid и authToken для ASPSMS: Userkey и пароль).
 
 #### <a name="figuring-out-sms-provider-credentials"></a>Выяснение учетные данные поставщика SMS
 
@@ -43,25 +43,25 @@ ms.locfileid: "71248384"
 
 В параметрах учетной записи перейдите по адресу **Userkey** и скопируйте его вместе с **паролем**.
 
-Позже мы сохраним эти значения с помощью диспетчера секретов, в ключи `SMSAccountIdentification` и `SMSAccountPassword`.
+Позже эти значения будут храниться в с помощью средства Secret-Manager в ключах `SMSAccountIdentification` и `SMSAccountPassword`.
 
 #### <a name="specifying-senderid--originator"></a>Указав идентификатор SenderID / инициатора
 
-**Twilio** На вкладке числа скопируйте **номер телефона**Twilio.
+**Twilio:** На вкладке числа скопируйте **номер телефона**Twilio.
 
-**АСПСМС:** В меню Источник разблокировки Разблокируйте один или несколько источник или выберите буквенно-цифровой инициатор (не поддерживается всеми сетями).
+**Аспсмс:** В меню Источник разблокировки Разблокируйте один или несколько источник или выберите буквенно-цифровой инициатор (не поддерживается всеми сетями).
 
-Позже мы Сохраним это значение с помощью диспетчера секретов, раздел `SMSAccountFrom`.
+Позже это значение будет храниться в средстве Secret-Manager в рамках ключа `SMSAccountFrom`.
 
 ### <a name="provide-credentials-for-the-sms-service"></a>Укажите учетные данные для службы SMS
 
-Мы будем использовать [шаблон параметров](xref:fundamentals/configuration/options) для доступа к параметрам и ключ учетной записи пользователя.
+Мы будем использовать [шаблон параметров](xref:fundamentals/configuration/options) для доступа к учетной записи пользователя и параметрам ключа.
 
-* Создание класса для извлечения ключа безопасности SMS. В этом примере `SMSoptions` класс создается в *Services/SMSoptions.cs* файла.
+* Создание класса для извлечения ключа безопасности SMS. В этом примере класс `SMSoptions` создается в файле *Services/смсоптионс. CS* .
 
 [!code-csharp[](2fa/sample/Web2FA/Services/SMSoptions.cs)]
 
-Задайте `SMSAccountIdentification`, `SMSAccountPassword` и `SMSAccountFrom` с [средство secret manager](xref:security/app-secrets). Пример:
+Задайте `SMSAccountIdentification`, `SMSAccountPassword` и `SMSAccountFrom` с помощью [средства Secret-Manager](xref:security/app-secrets). Пример:
 
 ```none
 C:/Web2FA/src/WebApp1>dotnet user-secrets set SMSAccountIdentification 12345
@@ -78,7 +78,7 @@ info: Successfully saved SMSAccountIdentification = 12345 to the secret store.
 
 `Install-Package ASPSMS`
 
-* Добавьте код в *Services/MessageServices.cs* файл, чтобы включить SMS. Использование Twilio или разделе ASPSMS:
+* Добавьте код в файл *Services/мессажесервицес. CS* , чтобы включить SMS. Использование Twilio или разделе ASPSMS:
 
 **Twilio**  
 [!code-csharp[](2fa/sample/Web2FA/Services/MessageServices_twilio.cs)]
@@ -88,7 +88,7 @@ info: Successfully saved SMSAccountIdentification = 12345 to the secret store.
 
 ### <a name="configure-startup-to-use-smsoptions"></a>Настройка запуска для использования `SMSoptions`
 
-Добавить `SMSoptions` в контейнер службы в `ConfigureServices` метод в *Startup.cs*:
+Добавьте `SMSoptions` в контейнер службы в методе `ConfigureServices` в *Startup.CS*:
 
 [!code-csharp[](2fa/sample/Web2FA/Startup.cs?name=snippet1&highlight=4)]
 
@@ -102,15 +102,15 @@ info: Successfully saved SMSAccountIdentification = 12345 to the secret store.
 
 ![Веб-приложение Register, откройте представление в Microsoft Edge](2fa/_static/login2fa1.png)
 
-* Выберите свое имя пользователя, который активирует `Index` метода действия в контроллере управление. Выберите номер телефона **добавить** ссылку.
+* Коснитесь имени пользователя, которое активирует метод действия `Index` в окне Управление контроллером. Затем коснитесь ссылки **Добавить** номер телефона.
 
 ![Управление представления – нажать ссылку «Добавить»](2fa/_static/login2fa2.png)
 
-* Добавить номер телефона, который будет получать код проверки и коснитесь **отправить проверочный код**.
+* Добавьте номер телефона, который будет получать код проверки, и нажмите кнопку **Отправить проверочный код**.
 
 ![Добавить страницу номер телефона](2fa/_static/login2fa3.png)
 
-* Вы получите текстовое сообщение с кодом проверки. Введите его и коснитесь **отправки**
+* Вы получите текстовое сообщение с кодом проверки. Введите его и нажмите кнопку **Отправить** .
 
 ![Проверить номер телефона страницу](2fa/_static/login2fa4.png)
 
@@ -120,7 +120,7 @@ info: Successfully saved SMSAccountIdentification = 12345 to the secret store.
 
 ![Управление представление — номер телефона успешно добавлен](2fa/_static/login2fa5.png)
 
-* Коснитесь **включить** включить двухфакторную проверку подлинности.
+* Коснитесь кнопки **включить** , чтобы включить двухфакторную проверку подлинности.
 
 ![Управления представлением — Включение двухфакторной проверки подлинности](2fa/_static/login2fa6.png)
 
@@ -128,25 +128,25 @@ info: Successfully saved SMSAccountIdentification = 12345 to the secret store.
 
 * Выйдите из системы.
 
-* Вход.
+* Войдите в систему.
 
-* Учетной записи пользователя включена двухфакторная проверка подлинности, поэтому вы должны предоставить второй фактор проверки подлинности. В этом руководстве вы включили Проверка номера телефона. Встроенные шаблоны позволяют настроить почту в качестве второго фактора. Можно настроить дополнительные факторы проверки подлинности, например QR-коды, второй. Коснитесь **отправить**.
+* Учетной записи пользователя включена двухфакторная проверка подлинности, поэтому вы должны предоставить второй фактор проверки подлинности. В этом руководстве вы включили Проверка номера телефона. Встроенные шаблоны позволяют настроить почту в качестве второго фактора. Можно настроить дополнительные факторы проверки подлинности, например QR-коды, второй. Нажмите кнопку **Отправить**.
 
 ![Отправить код проверки представления](2fa/_static/login2fa7.png)
 
 * Введите код, полученный в SMS-сообщения.
 
-* Щелкнув **запомнить браузер** флажок будет исключить от необходимости использовать 2FA для входа при использовании же устройства и браузера. Включение 2FA и щелкнув **запомнить браузер** предоставит вам строгого 2FA защиты от злоумышленников, пытается получить доступ к вашей учетной записи, до тех пор, пока они не имеют доступа к устройству. Это можно сделать на любом устройстве закрытого, которые регулярно использовать. Установив **запомнить браузер**, вы получаете дополнительную защиту 2FA с устройств, вы не используете регулярно, и вы получаете удобства на не нужно изучать через 2FA на собственных устройствах.
+* Если установить флажок **Запомнить этот браузер** , вам не нужно будет использовать 2FA для входа в систему при использовании того же устройства и браузера. Включение 2FA и нажатие кнопки " **Запомнить" Этот браузер** обеспечит надежную защиту 2FA от злоумышленников, пытающихся получить доступ к вашей учетной записи, если у них нет доступа к вашему устройству. Это можно сделать на любом устройстве закрытого, которые регулярно использовать. Установив флажок **Запомнить этот браузер**, вы получите дополнительную защиту 2FA от устройств, которые вы не используете регулярно, и вы получите удобный способ, чтобы не выполнять переход на 2FA на своих устройствах.
 
 ![Проверить представление](2fa/_static/login2fa8.png)
 
 ## <a name="account-lockout-for-protecting-against-brute-force-attacks"></a>Блокировка учетной записи, обеспечивающие защиту от атак методом подбора
 
-Блокировка учетной записи рекомендуется с 2FA. Когда пользователь войдет в приложение через локальную учетную запись или учетную запись социальной сети, каждая неудачная попытка 2FA хранится. Если достигнуто максимальное число неудачных попыток доступа, пользователь блокируется (по умолчанию: 5-минутная блокировка после 5 неудачных попыток доступа). Сбрасывает счетчик попыток неудачные попытки доступа успешной проверки подлинности и сбрасывает часы. Максимально неудачных попыток доступа и время блокировки может быть задано с помощью [MaxFailedAccessAttempts](/dotnet/api/microsoft.aspnetcore.identity.lockoutoptions.maxfailedaccessattempts) и [DefaultLockoutTimeSpan](/dotnet/api/microsoft.aspnetcore.identity.lockoutoptions.defaultlockouttimespan). Следующие настраивает блокировки учетных записей для 10 минут после десяти неудачных попыток доступа:
+Блокировка учетной записи рекомендуется с 2FA. Когда пользователь войдет в приложение через локальную учетную запись или учетную запись социальной сети, каждая неудачная попытка 2FA хранится. После достижения максимального неудачных попыток доступа пользователя блокируется (по умолчанию: 5-минутного блокировки после 5 неудачных попыток доступа). Сбрасывает счетчик попыток неудачные попытки доступа успешной проверки подлинности и сбрасывает часы. Максимальное количество неудачных попыток доступа и время блокировки можно задать с помощью [максфаиледакцессаттемптс](/dotnet/api/microsoft.aspnetcore.identity.lockoutoptions.maxfailedaccessattempts) и [дефаултлоккауттимеспан](/dotnet/api/microsoft.aspnetcore.identity.lockoutoptions.defaultlockouttimespan). Следующие настраивает блокировки учетных записей для 10 минут после десяти неудачных попыток доступа:
 
 [!code-csharp[](2fa/sample/Web2FA/Startup.cs?name=snippet2&highlight=13-17)]
 
-Убедитесь, что [PasswordSignInAsync](/dotnet/api/microsoft.aspnetcore.identity.signinmanager-1.passwordsigninasync) задает `lockoutOnFailure` для `true`:
+Убедитесь, что [пассвордсигнинасинк](/dotnet/api/microsoft.aspnetcore.identity.signinmanager-1.passwordsigninasync) задает `lockoutOnFailure` `true`:
 
 ```csharp
 var result = await _signInManager.PasswordSignInAsync(

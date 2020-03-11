@@ -8,15 +8,15 @@ ms.custom: mvc
 ms.date: 9/25/2019
 uid: mvc/compatibility-version
 ms.openlocfilehash: b29e2ee49aaf0f557f1acd0cf03e9e82d5ea0105
-ms.sourcegitcommit: 2cb857f0de774df421e35289662ba92cfe56ffd1
-ms.translationtype: HT
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
+ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75357735"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78654808"
 ---
 # <a name="compatibility-version-for-aspnet-core-mvc"></a>Совместимая версия для ASP.NET Core MVC
 
-Автор: [Рик Андерсон](https://twitter.com/RickAndMSFT) (Rick Anderson)
+Автор: [Рик Андерсон](https://twitter.com/RickAndMSFT)
 
 ::: moniker range=">= aspnetcore-3.0"
 
