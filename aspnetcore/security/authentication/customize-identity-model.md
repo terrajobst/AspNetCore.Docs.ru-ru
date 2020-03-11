@@ -1,78 +1,78 @@
 ---
-title: Настройка модели удостоверения в ASP.NET Core
+title: Настройка модели удостоверений в ASP.NET Core
 author: ajcvickers
-description: В этой статье описывается настройка базовой модели данных Entity Framework Core для ASP.NET Core Identity.
+description: В этой статье описывается, как настроить базовую модель данных Entity Framework Core для ASP.NET Core удостоверения.
 ms.author: avickers
 ms.date: 07/01/2019
 uid: security/authentication/customize_identity_model
 ms.openlocfilehash: f549fdff4a416b5fadcb2b1078b051bbab8e402e
-ms.sourcegitcommit: eb3e51d58dd713eefc242148f45bd9486be3a78a
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/02/2019
-ms.locfileid: "67500483"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78651460"
 ---
-# <a name="identity-model-customization-in-aspnet-core"></a>Настройка модели удостоверения в ASP.NET Core
+# <a name="identity-model-customization-in-aspnet-core"></a>Настройка модели удостоверений в ASP.NET Core
 
-По [Артур Vickers](https://github.com/ajcvickers)
+По [Артур Виккерс](https://github.com/ajcvickers)
 
-Удостоверение ASP.NET Core предоставляет платформу для управления и хранения учетных записей пользователей в приложениях ASP.NET Core. Удостоверение добавляется в проект при **учетные записи отдельных пользователей** выбран в качестве механизма проверки подлинности. По умолчанию удостоверение позволяет использовать из Entity Framework (EF) Core модели данных. В этой статье описывается настройка модели удостоверения.
+ASP.NET Core Identity предоставляет платформу для управления и хранения учетных записей пользователей в ASP.NET Core приложениях. Удостоверение добавляется в проект, если в качестве механизма проверки подлинности выбраны **отдельные учетные записи пользователей** . По умолчанию в удостоверении используется модель основных данных Entity Framework (EF). В этой статье описывается, как настроить модель удостоверений.
 
-## <a name="identity-and-ef-core-migrations"></a>Удостоверение и миграций EF Core
+## <a name="identity-and-ef-core-migrations"></a>Миграция удостоверений и EF Core
 
-Прежде чем изучать модель, это полезно для понимания принципов работы удостоверений с [миграций EF Core](/ef/core/managing-schemas/migrations/) для создания и обновления базы данных. На верхнем уровне выполняется:
+Перед изучением модели полезно понять, как удостоверение работает с [EF Core миграции](/ef/core/managing-schemas/migrations/) для создания и обновления базы данных. На верхнем уровне процесс:
 
 1. Определение или обновление [модели данных в коде](/ef/core/modeling/).
-1. Добавьте миграцию для преобразования этой модели в изменения, которые могут быть применены к базе данных.
-1. Проверьте, что миграция правильно представляет свои намерения.
-1. Применение миграции для обновления базы данных должны быть синхронизированы с моделью.
-1. Повторите шаги 1 – 4 для дополнительного уточнения модели и поддерживать синхронизацию базы данных.
+1. Добавьте миграцию, чтобы преобразовать эту модель в изменения, которые могут быть применены к базе данных.
+1. Убедитесь, что миграция правильно соответствует вашим намерения.
+1. Примените миграцию, чтобы обновить базу данных для синхронизации с моделью.
+1. Повторите шаги 1 – 4, чтобы уточнить модель и синхронизировать базу данных.
 
-Для добавления и применить миграции, используйте один из следующих подходов:
+Для добавления и применения миграций используйте один из следующих способов.
 
-* **Консоль диспетчера пакетов** окна (PMC), если с помощью Visual Studio. Дополнительные сведения см. в разделе [инструменты EF Core PMC](/ef/core/miscellaneous/cli/powershell).
-* .NET Core CLI при помощи командной строки. Дополнительные сведения см. в разделе [средства командной строки EF Core .NET](/ef/core/miscellaneous/cli/dotnet).
-* Щелкнув **применить миграции** кнопку на странице ошибки при запуске приложения.
+* Окно **консоли диспетчера пакетов** (PMC) при использовании Visual Studio. Дополнительные сведения см. в разделе [средства EF Core PMC](/ef/core/miscellaneous/cli/powershell).
+* .NET Core CLI, если используется Командная строка. Дополнительные сведения см. в разделе [EF Core средства командной строки .NET](/ef/core/miscellaneous/cli/dotnet).
+* При запуске приложения нажмите кнопку **Применить миграции** на странице ошибки.
 
-ASP.NET Core есть обработчик страницы ошибок во время разработки. Обработчик может применить миграции, при запуске приложения. Рабочих приложений обычно создавать скрипты SQL по миграции и развертывания изменений базы данных как часть управляемого приложения и развертывания базы данных.
+В ASP.NET Core имеется обработчик страницы ошибок времени разработки. Обработчик может применять миграции при запуске приложения. Рабочие приложения обычно создают скрипты SQL из миграции и развертывают изменения базы данных в рамках управляемого приложения и развертывания базы данных.
 
-Когда создается новое приложение с использованием удостоверения, шаги 1 и 2 выше уже были завершены. То есть начальную модель данных уже существует, и первоначальной миграции был добавлен в проект. Первоначальной миграции по-прежнему необходимо применить к базе данных. Первоначальной миграции могут применяться через одну из следующих подходов:
+При создании нового приложения, использующего удостоверение, шаги 1 и 2 уже выполнены. Это значит, что начальная модель данных уже существует, а первоначальная миграция была добавлена в проект. К базе данных все еще необходимо применить первоначальную миграцию. Начальную миграцию можно применить с помощью одного из следующих подходов:
 
 * Запустите `Update-Database` в PMC.
-* Запустите `dotnet ef database update` в командной строке.
-* Нажмите кнопку **применить миграции** кнопку на странице ошибки при запуске приложения.
+* Запустите `dotnet ef database update` в командной оболочке.
+* При запуске приложения нажмите кнопку **Применить миграции** на странице ошибки.
 
-Повторите предыдущие шаги, при внесении изменений в модель.
+Повторите предыдущие шаги по мере внесения изменений в модель.
 
-## <a name="the-identity-model"></a>Модель удостоверения
+## <a name="the-identity-model"></a>Модель удостоверений
 
 ### <a name="entity-types"></a>Типы сущностей
 
-Модель удостоверения состоит из следующих типов сущностей.
+Модель удостоверений состоит из следующих типов сущностей.
 
-|Тип сущности|Описание                                                  |
+|Тип сущности|Description                                                  |
 |-----------|-------------------------------------------------------------|
 |`User`     |Представляет пользователя.                                         |
 |`Role`     |Представляет роль.                                           |
-|`UserClaim`|Представляет утверждение, обладает пользователь.                    |
+|`UserClaim`|Представляет утверждение, которому владеет пользователь.                    |
 |`UserToken`|Представляет маркер проверки подлинности для пользователя.               |
 |`UserLogin`|Связывает пользователя с именем входа.                              |
-|`RoleClaim`|Представляет утверждение, эта роль присваивается всем пользователям в роли.|
-|`UserRole` |Сущность соединения, которая связывает пользователей и ролей.               |
+|`RoleClaim`|Представляет утверждение, которое предоставляется всем пользователям в роли.|
+|`UserRole` |Сущность JOIN, связывающая пользователей и роли.               |
 
-### <a name="entity-type-relationships"></a>Связи между типами сущностей
+### <a name="entity-type-relationships"></a>Отношения типов сущностей
 
-[Типы сущностей](#entity-types) связаны друг с другом, одним из следующих способов:
+[Типы сущностей](#entity-types) связаны друг с другом следующими способами.
 
-* Каждый `User` может иметь множество `UserClaims`.
-* Каждый `User` может иметь множество `UserLogins`.
-* Каждый `User` может иметь множество `UserTokens`.
-* Каждый `Role` может иметь несколько связанных `RoleClaims`.
-* Каждый `User` может иметь несколько связанных `Roles`и каждый `Role` можно связать со многими `Users`. Это отношение многие ко многим, нуждается в таблице соединения в базе данных. В таблице соединения, представленного `UserRole` сущности.
+* Каждый `User` может иметь много `UserClaims`.
+* Каждый `User` может иметь много `UserLogins`.
+* Каждый `User` может иметь много `UserTokens`.
+* Каждый `Role` может иметь много связанных `RoleClaims`.
+* Каждый `User` может иметь много связанных `Roles`, и каждый `Role` может быть связан с большим количеством `Users`. Это отношение "многие ко многим", для которого требуется таблица соединений в базе данных. Таблица Join представлена сущностью `UserRole`.
 
 ### <a name="default-model-configuration"></a>Конфигурация модели по умолчанию
 
-Определяет удостоверение, многие *классы контекста* , наследуемым от [DbContext](/dotnet/api/microsoft.entityframeworkcore.dbcontext) Настройка и использование модели. Эта настройка выполняется с помощью [EF Core Fluent API для Code First](/ef/core/modeling/) в [OnModelCreating](/dotnet/api/microsoft.entityframeworkcore.dbcontext.onmodelcreating) метод класса контекста. По умолчанию используется:
+Identity определяет множество *контекстных классов* , которые наследуют от [DbContext](/dotnet/api/microsoft.entityframeworkcore.dbcontext) для настройки и использования модели. Эта конфигурация выполняется с помощью [интерфейса API EF Core Code First Fluent](/ef/core/modeling/) в методе [OnModelCreating](/dotnet/api/microsoft.entityframeworkcore.dbcontext.onmodelcreating) класса Context. Конфигурация по умолчанию:
 
 ```csharp
 builder.Entity<TUser>(b =>
@@ -197,7 +197,7 @@ builder.Entity<TUserRole>(b =>
 
 ### <a name="model-generic-types"></a>Универсальные типы модели
 
-По умолчанию определяет удостоверение [среда CLR](/dotnet/standard/glossary#clr) типы (CLR) для каждого типа сущности в списке выше. Эти типы начинаются с *удостоверений*:
+Удостоверение определяет [типы среды CLR по умолчанию](/dotnet/standard/glossary#clr) для каждого из перечисленных выше типов сущностей. Все эти типы имеют префикс *Identity*:
 
 * `IdentityUser`
 * `IdentityRole`
@@ -207,9 +207,9 @@ builder.Entity<TUserRole>(b =>
 * `IdentityRoleClaim`
 * `IdentityUserRole`
 
-Вместо того чтобы непосредственно использовать эти типы, типы можно использовать как базовые классы для типов приложения. `DbContext` Классы, определенные по удостоверению универсальны, таким образом, можно использовать различные типы среды CLR для одного или нескольких типов сущностей в модели. Эти универсальные типы также позволяют `User` типа первичного ключа (PK) данных должен быть изменен.
+Вместо того чтобы использовать эти типы напрямую, эти типы можно использовать в качестве базовых классов для собственных типов приложения. `DbContext` классы, определенные с помощью Identity, являются универсальными, поэтому для одного или нескольких типов сущностей в модели можно использовать разные типы CLR. Эти универсальные типы также позволяют изменять тип данных `User` первичный ключ (PK).
 
-При использовании удостоверений с поддержкой для ролей, <xref:Microsoft.AspNetCore.Identity.EntityFrameworkCore.IdentityDbContext> должен использоваться класс. Пример:
+При использовании удостоверения с поддержкой ролей следует использовать класс <xref:Microsoft.AspNetCore.Identity.EntityFrameworkCore.IdentityDbContext>. Пример:
 
 ```csharp
 // Uses all the built-in Identity types
@@ -253,7 +253,7 @@ public abstract class IdentityDbContext<
          where TUserToken : IdentityUserToken<TKey>
 ```
 
-Можно также использовать удостоверение без ролей (только утверждения), в этом случае <xref:Microsoft.AspNetCore.Identity.EntityFrameworkCore.IdentityUserContext%601> должен использоваться класс:
+Также можно использовать удостоверение без ролей (только утверждения). в этом случае следует использовать класс <xref:Microsoft.AspNetCore.Identity.EntityFrameworkCore.IdentityUserContext%601>:
 
 ```csharp
 // Uses the built-in non-role Identity types except with a custom User type
@@ -289,16 +289,16 @@ public abstract class IdentityUserContext<
 
 ## <a name="customize-the-model"></a>Настройка модели
 
-Отправной точкой для настройки модели является производным от типа соответствующего контекста. См. в разделе [универсальных типов модели](#model-generic-types) раздел. Этот тип контекста обычно вызывается `ApplicationDbContext` и создается в шаблонах ASP.NET Core.
+Начальной точкой настройки модели является наследование от соответствующего типа контекста. См. раздел [универсальные типы модели](#model-generic-types) . Этот тип контекста обычно называется `ApplicationDbContext` и создается шаблонами ASP.NET Core.
 
-Контекст используется для настройки модели двумя способами:
+Контекст используется для настройки модели двумя способами.
 
-* Предоставление сущности и типы ключей для параметров универсального типа.
-* Переопределение `OnModelCreating` изменение сопоставления этих типов.
+* Предоставление типов сущностей и ключей для параметров универсального типа.
+* Переопределение `OnModelCreating` для изменения сопоставления этих типов.
 
-При переопределении метода `OnModelCreating`, `base.OnModelCreating` необходимо сначала вызвать; переопределения конфигурации должен быть вызван, далее. EF Core обычно имеет политику побеждает последний — один для конфигурации. Например если `ToTable` сначала вызывается метод для типа сущности с именем одной таблицы и затем снова позднее с помощью другое имя таблицы, имя таблицы во втором вызове будет использоваться.
+При переопределении `OnModelCreating`сначала необходимо вызвать `base.OnModelCreating`. переопределяющая конфигурация должна вызываться следующим. EF Core обычно имеет политику последнего применения WINS для настройки. Например, если метод `ToTable` для типа сущности вызывается сначала с одним именем таблицы, а затем снова с другим именем таблицы, то используется имя таблицы во втором вызове.
 
-### <a name="custom-user-data"></a>Пользовательские данные
+### <a name="custom-user-data"></a>Пользовательские данные пользователя
 
 <!--
 set projNam=WebApp1
@@ -310,7 +310,7 @@ dotnet ef migrations add CreateIdentitySchema
 dotnet ef database update
  -->
 
-[Пользовательские данные](xref:security/authentication/add-user-data) поддерживается путем наследования от `IdentityUser`. Имя этого типа обычно `ApplicationUser`:
+[Пользовательские данные пользователя](xref:security/authentication/add-user-data) поддерживаются путем наследования от `IdentityUser`. В качестве имени этого типа можно присвоить имя `ApplicationUser`:
 
 ```csharp
 public class ApplicationUser : IdentityUser
@@ -319,7 +319,7 @@ public class ApplicationUser : IdentityUser
 }
 ```
 
-Используйте `ApplicationUser` тип как универсальный аргумент для контекста:
+Используйте тип `ApplicationUser` в качестве универсального аргумента для контекста:
 
 ```csharp
 public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
@@ -336,9 +336,9 @@ public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
 }
 ```
 
-Нет необходимости в Переопределите `OnModelCreating` в `ApplicationDbContext` класса. Сопоставляет EF Core `CustomTag` свойство по соглашению. Тем не менее, требуется обновить, чтобы создать новую базу данных `CustomTag` столбца. Чтобы создать столбец, добавить миграцию и затем обновить базу данных, как описано в разделе [удостоверений и миграций EF Core](#identity-and-ef-core-migrations).
+Нет необходимости переопределять `OnModelCreating` в классе `ApplicationDbContext`. EF Core сопоставляет свойство `CustomTag` по соглашению. Однако базу данных необходимо обновить, чтобы создать новый столбец `CustomTag`. Чтобы создать столбец, добавьте миграцию, а затем обновите базу данных, как описано в статье о [миграции Identity and EF Core](#identity-and-ef-core-migrations).
 
-Обновление *Pages/Shared/_LoginPartial.cshtml* и замените `IdentityUser` с `ApplicationUser`:
+Обновите *pages/Shared/_LoginPartial. cshtml* и замените `IdentityUser` `ApplicationUser`:
 
 ```cshtml
 @using Microsoft.AspNetCore.Identity
@@ -347,7 +347,7 @@ public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
 @inject UserManager<ApplicationUser> UserManager
 ```
 
-Обновление *Areas/Identity/IdentityHostingStartup.cs* или `Startup.ConfigureServices` и замените `IdentityUser` с `ApplicationUser`.
+Обновите *области/Identity/идентитихостингстартуп. CS* или `Startup.ConfigureServices` и замените `IdentityUser` `ApplicationUser`.
 
 ```csharp
 services.AddDefaultIdentity<ApplicationUser>()
@@ -355,20 +355,20 @@ services.AddDefaultIdentity<ApplicationUser>()
         .AddDefaultUI();
 ```
 
-В ASP.NET Core 2.1 или более поздней версии удостоверение предоставляется как библиотека классов Razor. Дополнительные сведения см. в разделе <xref:security/authentication/scaffold-identity>. Следовательно, предыдущий код требует вызова <xref:Microsoft.AspNetCore.Identity.IdentityBuilderUIExtensions.AddDefaultUI*>. Если удостоверение шаблон был использован для добавления в проект файлы, удалите вызов `AddDefaultUI`. Дополнительные сведения:
+В ASP.NET Core 2,1 или более поздней версии удостоверение предоставляется в виде библиотеки классов Razor. Дополнительные сведения см. в разделе <xref:security/authentication/scaffold-identity>. Следовательно, приведенный выше код требует вызова <xref:Microsoft.AspNetCore.Identity.IdentityBuilderUIExtensions.AddDefaultUI*>. Если для добавления файлов удостоверений в проект использовался механизм идентификации удостоверений, удалите вызов `AddDefaultUI`. Дополнительные сведения см. в разделе:
 
 * [Удостоверение шаблона](xref:security/authentication/scaffold-identity)
-* [Добавление, скачивание и удаление пользовательские данные для удостоверения](xref:security/authentication/add-user-data)
+* [Добавление, скачивание и удаление настраиваемых данных пользователя в удостоверении](xref:security/authentication/add-user-data)
 
 ### <a name="change-the-primary-key-type"></a>Изменение типа первичного ключа
 
-Изменение типа данных столбца первичного ключа после создания базы данных является проблемой для многих систем баз данных. Изменение первичный ключ обычно включает в себя удаление и повторное создание таблицы. Таким образом типы ключей должны быть заданы в первоначальной миграции, при создании базы данных.
+Изменение типа данных столбца PK после создания базы данных является проблематичным для многих систем баз. Изменение ПЕРВИЧного ключа обычно подразумевает удаление и повторное создание таблицы. Поэтому при создании базы данных необходимо указать типы ключей в первоначальной миграции.
 
-Выполните следующие действия, чтобы изменить тип первичного ключа.
+Чтобы изменить тип ПЕРВИЧного ключа, выполните следующие действия.
 
-1. Если база данных была создана перед изменением первичного ключа, запустите `Drop-Database` (PMC) или `dotnet ef database drop` (CLI) .NET Core для его удаления.
-2. После подтверждения удаления базы данных, удалите первоначальной миграции с `Remove-Migration` (PMC) или `dotnet ef migrations remove` (.NET Core CLI).
-3. Обновление `ApplicationDbContext` класса для наследования от <xref:Microsoft.AspNetCore.Identity.EntityFrameworkCore.IdentityDbContext%603>. Укажите новый тип ключа для `TKey`. Например, чтобы использовать `Guid` тип ключа:
+1. Если база данных была создана до изменения PK, запустите `Drop-Database` (PMC) или `dotnet ef database drop` (.NET Core CLI), чтобы удалить ее.
+2. После подтверждения удаления базы данных удалите первоначальную миграцию с `Remove-Migration` (PMC) или `dotnet ef migrations remove` (.NET Core CLI).
+3. Обновите класс `ApplicationDbContext`, производный от <xref:Microsoft.AspNetCore.Identity.EntityFrameworkCore.IdentityDbContext%603>. Укажите новый тип ключа для `TKey`. Например, чтобы использовать `Guid` тип ключа:
 
     ```csharp
     public class ApplicationDbContext
@@ -383,17 +383,17 @@ services.AddDefaultIdentity<ApplicationUser>()
 
     ::: moniker range=">= aspnetcore-2.0"
 
-    В приведенном выше коде универсальные классы <xref:Microsoft.AspNetCore.Identity.IdentityUser%601> и <xref:Microsoft.AspNetCore.Identity.IdentityRole%601> должен быть указан для использования нового типа ключа.
+    В приведенном выше коде для использования нового типа ключа необходимо указать универсальные классы <xref:Microsoft.AspNetCore.Identity.IdentityUser%601> и <xref:Microsoft.AspNetCore.Identity.IdentityRole%601>.
 
     ::: moniker-end
 
     ::: moniker range="<= aspnetcore-1.1"
 
-    В приведенном выше коде универсальные классы <xref:Microsoft.AspNetCore.Identity.EntityFrameworkCore.IdentityUser%601> и <xref:Microsoft.AspNetCore.Identity.EntityFrameworkCore.IdentityRole%601> должен быть указан для использования нового типа ключа.
+    В приведенном выше коде для использования нового типа ключа необходимо указать универсальные классы <xref:Microsoft.AspNetCore.Identity.EntityFrameworkCore.IdentityUser%601> и <xref:Microsoft.AspNetCore.Identity.EntityFrameworkCore.IdentityRole%601>.
 
     ::: moniker-end
 
-    `Startup.ConfigureServices` должны быть обновлены для использования универсального пользователя:
+    `Startup.ConfigureServices` необходимо обновить для использования универсального пользователя:
 
     ::: moniker range=">= aspnetcore-2.1"
 
@@ -425,7 +425,7 @@ services.AddDefaultIdentity<ApplicationUser>()
 
     ::: moniker-end
 
-4. Если пользовательский `ApplicationUser` класс используется, обновите наследование от класса `IdentityUser`. Пример:
+4. Если используется пользовательский класс `ApplicationUser`, обновите класс, чтобы он наследовался от `IdentityUser`. Пример:
 
     ::: moniker range="<= aspnetcore-1.1"
 
@@ -439,7 +439,7 @@ services.AddDefaultIdentity<ApplicationUser>()
 
     ::: moniker-end
 
-    Обновление `ApplicationDbContext` для ссылки на пользовательский `ApplicationUser` класса:
+    Обновите `ApplicationDbContext`, чтобы сослаться на пользовательский класс `ApplicationUser`:
 
     ```csharp
     public class ApplicationDbContext
@@ -452,7 +452,7 @@ services.AddDefaultIdentity<ApplicationUser>()
     }
     ```
 
-    Зарегистрируйте класс контекста пользовательской базы данных, при добавлении службы удостоверений в `Startup.ConfigureServices`:
+    Зарегистрируйте класс контекста пользовательской базы данных при добавлении службы удостоверений в `Startup.ConfigureServices`:
 
     ::: moniker range=">= aspnetcore-2.1"
 
@@ -463,9 +463,9 @@ services.AddDefaultIdentity<ApplicationUser>()
             .AddDefaultTokenProviders();
     ```
 
-    Тип данных первичный ключ определяется путем анализа [DbContext](/dotnet/api/microsoft.entityframeworkcore.dbcontext) объекта.
+    Тип данных первичного ключа выводится путем анализа объекта [DbContext](/dotnet/api/microsoft.entityframeworkcore.dbcontext) .
 
-    В ASP.NET Core 2.1 или более поздней версии удостоверение предоставляется как библиотека классов Razor. Дополнительные сведения см. в разделе <xref:security/authentication/scaffold-identity>. Следовательно, предыдущий код требует вызова <xref:Microsoft.AspNetCore.Identity.IdentityBuilderUIExtensions.AddDefaultUI*>. Если удостоверение шаблон был использован для добавления в проект файлы, удалите вызов `AddDefaultUI`.
+    В ASP.NET Core 2,1 или более поздней версии удостоверение предоставляется в виде библиотеки классов Razor. Дополнительные сведения см. в разделе <xref:security/authentication/scaffold-identity>. Следовательно, приведенный выше код требует вызова <xref:Microsoft.AspNetCore.Identity.IdentityBuilderUIExtensions.AddDefaultUI*>. Если для добавления файлов удостоверений в проект использовался механизм идентификации удостоверений, удалите вызов `AddDefaultUI`.
 
     ::: moniker-end
 
@@ -477,7 +477,7 @@ services.AddDefaultIdentity<ApplicationUser>()
             .AddDefaultTokenProviders();
     ```
 
-    Тип данных первичный ключ определяется путем анализа [DbContext](/dotnet/api/microsoft.entityframeworkcore.dbcontext) объекта.
+    Тип данных первичного ключа выводится путем анализа объекта [DbContext](/dotnet/api/microsoft.entityframeworkcore.dbcontext) .
 
     ::: moniker-end
 
@@ -489,27 +489,27 @@ services.AddDefaultIdentity<ApplicationUser>()
             .AddDefaultTokenProviders();
     ```
 
-    <xref:Microsoft.Extensions.DependencyInjection.IdentityEntityFrameworkBuilderExtensions.AddEntityFrameworkStores*> Метод принимает `TKey` тип первичного ключа.
+    Метод <xref:Microsoft.Extensions.DependencyInjection.IdentityEntityFrameworkBuilderExtensions.AddEntityFrameworkStores*> принимает тип `TKey`, указывающий тип данных первичного ключа.
 
     ::: moniker-end
 
-5. Если пользовательский `ApplicationRole` класс используется, обновите наследование от класса `IdentityRole<TKey>`. Пример:
+5. Если используется пользовательский класс `ApplicationRole`, обновите класс, чтобы он наследовался от `IdentityRole<TKey>`. Пример:
 
     [!code-csharp[](customize-identity-model/samples/2.1/RazorPagesSampleApp/Data/ApplicationRole.cs?name=snippet_ApplicationRole&highlight=4)]
 
-    Обновление `ApplicationDbContext` для ссылки на пользовательский `ApplicationRole` класса. Например, следующий класс ссылается на пользовательский `ApplicationUser` и пользовательское `ApplicationRole`:
+    Обновите `ApplicationDbContext` для ссылки на пользовательский класс `ApplicationRole`. Например, следующий класс ссылается на пользовательский `ApplicationUser` и на пользовательский `ApplicationRole`:
 
     ::: moniker range=">= aspnetcore-2.1"
 
     [!code-csharp[](customize-identity-model/samples/2.1/RazorPagesSampleApp/Data/ApplicationDbContext.cs?name=snippet_ApplicationDbContext&highlight=5-6)]
 
-    Зарегистрируйте класс контекста пользовательской базы данных, при добавлении службы удостоверений в `Startup.ConfigureServices`:
+    Зарегистрируйте класс контекста пользовательской базы данных при добавлении службы удостоверений в `Startup.ConfigureServices`:
 
     [!code-csharp[](customize-identity-model/samples/2.1/RazorPagesSampleApp/Startup.cs?name=snippet_ConfigureServices&highlight=13-16)]
 
-    Тип данных первичный ключ определяется путем анализа [DbContext](/dotnet/api/microsoft.entityframeworkcore.dbcontext) объекта.
+    Тип данных первичного ключа выводится путем анализа объекта [DbContext](/dotnet/api/microsoft.entityframeworkcore.dbcontext) .
 
-    В ASP.NET Core 2.1 или более поздней версии удостоверение предоставляется как библиотека классов Razor. Дополнительные сведения см. в разделе <xref:security/authentication/scaffold-identity>. Следовательно, предыдущий код требует вызова <xref:Microsoft.AspNetCore.Identity.IdentityBuilderUIExtensions.AddDefaultUI*>. Если удостоверение шаблон был использован для добавления в проект файлы, удалите вызов `AddDefaultUI`.
+    В ASP.NET Core 2,1 или более поздней версии удостоверение предоставляется в виде библиотеки классов Razor. Дополнительные сведения см. в разделе <xref:security/authentication/scaffold-identity>. Следовательно, приведенный выше код требует вызова <xref:Microsoft.AspNetCore.Identity.IdentityBuilderUIExtensions.AddDefaultUI*>. Если для добавления файлов удостоверений в проект использовался механизм идентификации удостоверений, удалите вызов `AddDefaultUI`.
 
     ::: moniker-end
 
@@ -517,11 +517,11 @@ services.AddDefaultIdentity<ApplicationUser>()
 
     [!code-csharp[](customize-identity-model/samples/2.0/RazorPagesSampleApp/Data/ApplicationDbContext.cs?name=snippet_ApplicationDbContext&highlight=5-6)]
 
-    Зарегистрируйте класс контекста пользовательской базы данных, при добавлении службы удостоверений в `Startup.ConfigureServices`:
+    Зарегистрируйте класс контекста пользовательской базы данных при добавлении службы удостоверений в `Startup.ConfigureServices`:
 
     [!code-csharp[](customize-identity-model/samples/2.0/RazorPagesSampleApp/Startup.cs?name=snippet_ConfigureServices&highlight=7-9)]
 
-    Тип данных первичный ключ определяется путем анализа [DbContext](/dotnet/api/microsoft.entityframeworkcore.dbcontext) объекта.
+    Тип данных первичного ключа выводится путем анализа объекта [DbContext](/dotnet/api/microsoft.entityframeworkcore.dbcontext) .
 
     ::: moniker-end
 
@@ -529,17 +529,17 @@ services.AddDefaultIdentity<ApplicationUser>()
 
     [!code-csharp[](customize-identity-model/samples/1.1/MvcSampleApp/Data/ApplicationDbContext.cs?name=snippet_ApplicationDbContext&highlight=5-6)]
 
-    Зарегистрируйте класс контекста пользовательской базы данных, при добавлении службы удостоверений в `Startup.ConfigureServices`:
+    Зарегистрируйте класс контекста пользовательской базы данных при добавлении службы удостоверений в `Startup.ConfigureServices`:
 
     [!code-csharp[](customize-identity-model/samples/1.1/MvcSampleApp/Startup.cs?name=snippet_ConfigureServices&highlight=7-9)]
 
-    <xref:Microsoft.Extensions.DependencyInjection.IdentityEntityFrameworkBuilderExtensions.AddEntityFrameworkStores*> Метод принимает `TKey` тип первичного ключа.
+    Метод <xref:Microsoft.Extensions.DependencyInjection.IdentityEntityFrameworkBuilderExtensions.AddEntityFrameworkStores*> принимает тип `TKey`, указывающий тип данных первичного ключа.
 
     ::: moniker-end
 
-### <a name="add-navigation-properties"></a>Добавление свойства навигации
+### <a name="add-navigation-properties"></a>Добавление свойств навигации
 
-Изменение конфигурации модели для связи может оказаться сложнее, чем вносить другие изменения. Замените существующие связи, а не новые, создать дополнительные связи необходимо соблюдать осторожность. В частности измененные связи необходимо указать же свойства внешнего ключа (FK) как существующую связь. Например, связь между `Users` и `UserClaims` является, по умолчанию задан следующим образом:
+Изменение конфигурации модели для связей может быть более сложным, чем внесение других изменений. Необходимо соблюдать осторожность, чтобы заменить существующие связи, а не создавать новые, дополнительные связи. В частности, измененная связь должна указывать то же свойство внешнего ключа (FK), что и существующая связь. Например, отношение между `Users` и `UserClaims` по умолчанию имеет значение, заданное следующим образом:
 
 ```csharp
 builder.Entity<TUser>(b =>
@@ -552,9 +552,9 @@ builder.Entity<TUser>(b =>
 });
 ```
 
-Для этого отношения внешнего ключа указывается как `UserClaim.UserId` свойство. `HasMany` и `WithOne` можно вызвать без аргументов для создания связи без свойства навигации.
+FK для этой связи указывается как свойство `UserClaim.UserId`. `HasMany` и `WithOne` вызываются без аргументов для создания связи без свойств навигации.
 
-Добавьте свойство навигации, чтобы `ApplicationUser` , позволяющий связанные `UserClaims` ссылка от пользователя:
+Добавьте свойство навигации к `ApplicationUser`, которое позволяет ссылаться от пользователя на связанные `UserClaims`.
 
 ```csharp
 public class ApplicationUser : IdentityUser
@@ -563,9 +563,9 @@ public class ApplicationUser : IdentityUser
 }
 ```
 
-`TKey` Для `IdentityUserClaim<TKey>` — это тип, указанный для первичного ключа пользователей. В этом случае `TKey` является `string` так, как используются значения по умолчанию. Он имеет **не** тип первичного ключа для `UserClaim` типа сущности.
+`TKey` для `IdentityUserClaim<TKey>` — это тип, указанный для PK пользователей. В этом случае `TKey` `string`, так как используются значения по умолчанию. Это **не** тип PK для `UserClaim` типа сущности.
 
-Теперь, когда существует свойство навигации, должно быть настроено в `OnModelCreating`:
+Теперь, когда свойство навигации существует, оно должно быть настроено в `OnModelCreating`:
 
 ```csharp
 public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
@@ -591,13 +591,13 @@ public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
 }
 ```
 
-Обратите внимание на то, что связь настроен так же, как ранее, только с помощью свойства навигации, указанного в вызове `HasMany`.
+Обратите внимание, что связь настраивается точно так же, как и ранее, только со свойством навигации, указанным в вызове `HasMany`.
 
-Свойства навигации существуют только в модель EF, а не в базе данных. Так как для связи внешнего ключа не изменилось, такое изменение модели не требует обновления базы данных. Это можно проверить путем добавления миграции после внесения изменений. `Up` И `Down` методы являются пустыми.
+Свойства навигации существуют только в модели EF, а не в базе данных. Поскольку тип внешнего ключа для связи не изменился, изменение этой модели не требует обновления базы данных. Это можно проверить, добавив миграцию после внесения изменений. Методы `Up` и `Down` пусты.
 
 ### <a name="add-all-user-navigation-properties"></a>Добавить все свойства навигации пользователя
 
-Используя в качестве рекомендации в разделе выше, в следующем примере настраивается свойства односторонней навигации для всех отношений пользователя:
+С помощью приведенного выше раздела в качестве руководства в следующем примере настраивается однонаправленные свойства навигации для всех связей пользователя:
 
 ```csharp
 public class ApplicationUser : IdentityUser
@@ -651,9 +651,9 @@ public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
 }
 ```
 
-### <a name="add-user-and-role-navigation-properties"></a>Добавление свойства навигации пользователя и роли
+### <a name="add-user-and-role-navigation-properties"></a>Добавление свойств навигации для пользователей и ролей
 
-Используя в качестве рекомендации в разделе выше, в следующем примере настраивается свойства навигации для всех отношений на пользователя и роли:
+В приведенном выше разделе в качестве руководства в следующем примере настраиваются свойства навигации для всех связей пользователя и роли:
 
 ```csharp
 public class ApplicationUser : IdentityUser
@@ -734,13 +734,13 @@ public class ApplicationDbContext
 
 Примечания.
 
-* Этот пример также включает `UserRole` сущности, который необходим для перемещения по связи многие ко многим от пользователей к ролям соединения.
-* Не забудьте изменить типы свойства навигации, соответствующим образом `ApplicationXxx` вместо теперь используются типы `IdentityXxx` типов.
-* Не забывайте использовать `ApplicationXxx` в универсальном `ApplicationContext` определения.
+* Этот пример также включает сущность `UserRole` JOIN, необходимую для навигации по связям «многие ко многим» от пользователей к ролям.
+* Не забудьте изменить типы свойств навигации, чтобы они отражали, что `ApplicationXxx` типы теперь используются вместо типов `IdentityXxx`.
+* Не забудьте использовать `ApplicationXxx` в определении универсального `ApplicationContext`.
 
 ### <a name="add-all-navigation-properties"></a>Добавить все свойства навигации
 
-Используя в качестве рекомендации в разделе выше, в следующем примере настраивается свойства навигации для всех связей для всех типов сущностей:
+В приведенном выше разделе в качестве руководства в следующем примере настраиваются свойства навигации для всех связей на всех типах сущностей:
 
 ```csharp
 public class ApplicationUser : IdentityUser
@@ -845,13 +845,13 @@ public class ApplicationDbContext
 }
 ```
 
-### <a name="use-composite-keys"></a>Используйте составные ключи
+### <a name="use-composite-keys"></a>Использование составных ключей
 
-Предыдущих разделах демонстрируется изменение типа ключа, используемого в модели удостоверения. Изменение ключа модели удостоверения с помощью составных ключей не поддерживается и не рекомендуется. С помощью составного ключа с удостоверением включает в себя изменение, как код Identity manager взаимодействует с моделью. Такая настройка выходит за рамки настоящего документа.
+В предыдущих разделах было продемонстрировано изменение типа ключа, используемого в модели удостоверений. Изменение модели ключа удостоверения для использования составных ключей не поддерживается или не рекомендуется. Использование составного ключа с удостоверением включает изменение того, как код диспетчера удостоверений взаимодействует с моделью. Эта настройка выходит за рамки данного документа.
 
-### <a name="change-tablecolumn-names-and-facets"></a>Изменения имен таблицы или столбца и аспекты
+### <a name="change-tablecolumn-names-and-facets"></a>Изменение имен таблиц и столбцов и аспектов
 
-Чтобы изменить имена таблиц и столбцов, вызовите `base.OnModelCreating`. Затем добавьте конфигурацию, чтобы переопределить любые параметры по умолчанию. Например, для изменения имени всех таблиц удостоверений:
+Чтобы изменить имена таблиц и столбцов, вызовите `base.OnModelCreating`. Затем добавьте конфигурацию, чтобы переопределить любые значения по умолчанию. Например, чтобы изменить имена всех таблиц удостоверений:
 
 ```csharp
 protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -895,9 +895,9 @@ protected override void OnModelCreating(ModelBuilder modelBuilder)
 }
 ```
 
-Эти примеры используют типы удостоверений по умолчанию. При использовании типа приложения, такие как `ApplicationUser`, настройка этого типа вместо типа по умолчанию.
+В этих примерах используются типы удостоверений по умолчанию. Если используется тип приложения, например `ApplicationUser`, настройте этот тип вместо типа по умолчанию.
 
-В следующем примере изменяется некоторые имена столбцов:
+В следующем примере изменяются некоторые имена столбцов:
 
 ```csharp
 protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -917,7 +917,7 @@ protected override void OnModelCreating(ModelBuilder modelBuilder)
 }
 ```
 
-Некоторые типы столбцов базы данных можно настроить с определенными *аспекты* (например, максимально `string` допустимая длина). В следующем примере задается максимальная длина столбца для нескольких `string` свойства в модели:
+Некоторые типы столбцов базы данных можно настроить с помощью определенных *аспектов* (например, максимально допустимой длины `string`). В следующем примере задается максимальная длина столбца для нескольких `string` свойств в модели:
 
 ```csharp
 protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -940,9 +940,9 @@ protected override void OnModelCreating(ModelBuilder modelBuilder)
 }
 ```
 
-### <a name="map-to-a-different-schema"></a>Сопоставление в другую схему
+### <a name="map-to-a-different-schema"></a>Сопоставьте с другой схемой
 
-Схемы может вести себя по-разному для поставщиков базы данных. Для SQL Server по умолчанию является создание всех таблиц в *dbo* схемы. Таблицы могут создаваться в другой схеме. Пример:
+Схемы могут вести себя по-разному для поставщиков баз данных. Для SQL Server значение по умолчанию — создать все таблицы в схеме *dbo* . Таблицы могут быть созданы в другой схеме. Пример:
 
 ```csharp
 protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -957,15 +957,15 @@ protected override void OnModelCreating(ModelBuilder modelBuilder)
 
 ### <a name="lazy-loading"></a>Отложенная загрузка
 
-В этом разделе добавляется поддержка прокси отложенной загрузки в модель удостоверения. Lazy загрузка полезен в тех случаях, так как он позволяет использовать без убедитесь, что они при загрузке свойства навигации.
+В этом разделе добавляется поддержка прокси-серверов с отложенной загрузкой в модели удостоверений. Отложенная загрузка полезна, так как позволяет использовать свойства навигации без предварительного подтверждения их загрузки.
 
-Типы сущностей можно сделать для отложенной загрузки несколькими способами, как описано в разделе [документации по EF Core](/ef/core/querying/related-data#lazy-loading). Для простоты используйте прокси отложенной загрузки, которая требует:
+Типы сущностей можно сделать доступными для отложенной загрузки несколькими способами, как описано в документации по [EF Core](/ef/core/querying/related-data#lazy-loading). Для простоты используйте прокси-серверы с отложенной загрузкой, для которых требуется:
 
-* Установка [Microsoft.EntityFrameworkCore.Proxies](https://www.nuget.org/packages/Microsoft.EntityFrameworkCore.Proxies/) пакета.
-* Вызов <xref:Microsoft.EntityFrameworkCore.ProxiesExtensions.UseLazyLoadingProxies*> внутри [AddDbContext\<TContext >](/dotnet/api/microsoft.extensions.dependencyinjection.entityframeworkservicecollectionextensions.adddbcontext).
-* Типы общей сущности с `public virtual` свойства навигации.
+* Установка пакета [Microsoft. EntityFrameworkCore. прокси](https://www.nuget.org/packages/Microsoft.EntityFrameworkCore.Proxies/) .
+* Вызов <xref:Microsoft.EntityFrameworkCore.ProxiesExtensions.UseLazyLoadingProxies*> внутри [AddDbContext\<тконтекст >](/dotnet/api/microsoft.extensions.dependencyinjection.entityframeworkservicecollectionextensions.adddbcontext).
+* Открытые типы сущностей с `public virtual` свойствами навигации.
 
-В следующем примере показан вызов `UseLazyLoadingProxies` в `Startup.ConfigureServices`:
+В следующем примере демонстрируется вызов `UseLazyLoadingProxies` в `Startup.ConfigureServices`:
 
 ```csharp
 services
@@ -976,7 +976,7 @@ services
     .AddEntityFrameworkStores<ApplicationDbContext>();
 ```
 
-См. приведенные выше примеры, инструкции по добавлению свойств навигации в типы сущностей.
+Инструкции по добавлению свойств навигации в типы сущностей см. в предыдущих примерах.
 
 ## <a name="additional-resources"></a>Дополнительные ресурсы
 

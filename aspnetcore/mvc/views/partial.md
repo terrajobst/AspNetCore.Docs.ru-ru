@@ -6,16 +6,16 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 06/12/2019
 uid: mvc/views/partial
-ms.openlocfilehash: 50c4f41d5d3099184aa3992ed7e176b74c488d2a
-ms.sourcegitcommit: 805f625d16d74e77f02f5f37326e5aceafcb78e3
-ms.translationtype: HT
+ms.openlocfilehash: 04b6d6e620f34ac7154728b1b3048195e87c5860
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
+ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70985569"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78653464"
 ---
 # <a name="partial-views-in-aspnet-core"></a>Частичные представления в ASP.NET Core
 
-Авторы: [Стив Смит](https://ardalis.com/) (Steve Smith), [Люк Лэтэм](https://github.com/guardrex) (Luke Latham), [Махер Джендуби](https://twitter.com/maherjend) (Maher JENDOUBI), [Рик Андерсон](https://twitter.com/RickAndMSFT) (Rick Anderson) и [Скотт Собер](https://twitter.com/scottsauber) (Scott Sauber).
+Авторы: [Стив Смит](https://ardalis.com/) (Steve Smith), [Махер Джендуби](https://twitter.com/maherjend) (Maher JENDOUBI), [Рик Андерсон](https://twitter.com/RickAndMSFT) (Rick Anderson) и [Скотт Саубер](https://twitter.com/scottsauber) (Scott Sauber)
 
 Частичное представление — это файл разметки [Razor](xref:mvc/views/razor) ( *.cshtml*), отображающий выходные данные HTML *внутри* выходных данных другого файла разметки.
 
@@ -25,7 +25,7 @@ ms.locfileid: "70985569"
 
 ::: moniker-end
 
-[Просмотреть или скачать образец кода](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/views/partial/sample) ([как скачивать](xref:index#how-to-download-a-sample))
+[Просмотреть или скачать образец кода](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/views/partial/sample) ([как скачивать](xref:index#how-to-download-a-sample))
 
 ## <a name="when-to-use-partial-views"></a>Когда следует использовать частичные представления
 
@@ -144,7 +144,7 @@ public IActionResult OnGetPartial() =>
 <partial name="/Pages/Folder/_PartialName.cshtml" />
 ```
 
-**MVC**
+**MVC**;
 
 ```cshtml
 <partial name="~/Views/Folder/_PartialName.cshtml" />
@@ -157,7 +157,7 @@ public IActionResult OnGetPartial() =>
 <partial name="../Account/_PartialName.cshtml" />
 ```
 
-Дополнительные сведения можно найти по адресу: <xref:mvc/views/tag-helpers/builtin-th/partial-tag-helper>.
+Дополнительные сведения см. в разделе <xref:mvc/views/tag-helpers/builtin-th/partial-tag-helper>.
 
 ::: moniker-end
 
@@ -186,7 +186,7 @@ public IActionResult OnGetPartial() =>
 @await Html.PartialAsync("/Pages/Folder/_PartialName.cshtml")
 ```
 
-**MVC**
+**MVC**;
 
 ::: moniker-end
 
@@ -238,7 +238,7 @@ public IActionResult OnGetPartial() =>
 1. `/Pages/Shared`
 1. `/Views/Shared`
 
-**MVC**
+**MVC**;
 
 ::: moniker-end
 
@@ -266,7 +266,7 @@ public IActionResult OnGetPartial() =>
 * Частичные представления можно вызывать *по цепочке*&mdash;одно частичное представление можно вызвать другое частичное представление, если при этом не создается циклических ссылок. Относительные пути всегда указываются относительно расположения текущего файла, но не корневого или родительского каталога.
 
 > [!NOTE]
-> Объект [Razor](xref:mvc/views/razor) `section`, определенный в частичном представлении, невидим для родительских файлов разметки. Объект `section` видим только для частичного представления, в котором он определен.
+> `section` [Razor](xref:mvc/views/razor) , определенный в частичном представлении, невидима для родительских файлов разметки. Объект `section` видим только для частичного представления, в котором он определен.
 
 ## <a name="access-data-from-partial-views"></a>Доступ к данным из частичных представлений
 
@@ -300,7 +300,7 @@ public IActionResult OnGetPartial() =>
 
 [!code-cshtml[](partial/sample/PartialViewsSample/Pages/ArticlesRP/_ArticleSectionRP.cshtml)]
 
-**MVC**
+**MVC**;
 
 ::: moniker-end
 
@@ -325,15 +325,15 @@ public IActionResult OnGetPartial() =>
 
 Второе частичное представление отображает разделы статьи:
 
-> Указатель 1-го раздела: 0
+> Section One Index: 0
 >
 > Four score and seven years ago...
 >
-> Указатель 2-го раздела: 1
+> Section Two Index: 1
 >
 > Now we are engaged in a great civil war, testing...
 >
-> Указатель 3-го раздела: 2
+> Section Three Index: 2
 >
 > But, in a larger sense, we can not dedicate...
 

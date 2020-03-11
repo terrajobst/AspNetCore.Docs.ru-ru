@@ -7,15 +7,15 @@ ms.custom: mvc
 ms.date: 12/02/2019
 uid: mvc/views/tag-helpers/builtin-th/script-tag-helper
 ms.openlocfilehash: a037abb6a454e6d06305e7d7f6ecad0c2a0ca717
-ms.sourcegitcommit: 85564ee396c74c7651ac47dd45082f3f1803f7a2
-ms.translationtype: HT
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
+ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77171845"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78652096"
 ---
 # <a name="script-tag-helper-in-aspnet-core"></a>Вспомогательная функция тега сценария в ASP.NET Core
 
-Автор: [Рик Андерсон](https://twitter.com/RickAndMSFT) (Rick Anderson)
+Автор: [Рик Андерсон](https://twitter.com/RickAndMSFT)
 
 [Вспомогательная функция тега сценария](xref:Microsoft.AspNetCore.Mvc.TagHelpers.ScriptTagHelper) создает ссылку на первичный или резервный файл сценария. Обычно первичный файл сценария находится в [сети доставки содержимого](/office365/enterprise/content-delivery-networks#what-exactly-is-a-cdn) (CDN).
 
@@ -34,7 +34,7 @@ ms.locfileid: "77171845"
 </script>
 ```
 
-Не используйте атрибут [defer](https://developer.mozilla.org/docs/Web/HTML/Element/script) элемента `<script>`, чтобы отложить загрузку скрипта CDN. Вспомогательная функция тега скрипта обрабатывает код JavaScript, который сразу же выполняет выражение [asp-fallback-test](#asp-fallback-test). Это выражение дает сбой, если загрузка скрипта CDN отложена.
+Не используйте атрибут `<script>`defer[ элемента ](https://developer.mozilla.org/docs/Web/HTML/Element/script), чтобы отложить загрузку скрипта CDN. Вспомогательная функция тега скрипта обрабатывает код JavaScript, который сразу же выполняет выражение [asp-fallback-test](#asp-fallback-test). Это выражение дает сбой, если загрузка скрипта CDN отложена.
 
 ## <a name="commonly-used-script-tag-helper-attributes"></a>Часто используемые атрибуты вспомогательной функции тега сценария
 
@@ -42,11 +42,11 @@ ms.locfileid: "77171845"
 
 ### <a name="asp-fallback-test"></a>asp-fallback-test
 
-Метод скрипта, определенный в основном скрипте, для использования в тесте резервного экземпляра. Для получения дополнительной информации см. <xref:Microsoft.AspNetCore.Mvc.TagHelpers.ScriptTagHelper.FallbackTestExpression>.
+Метод скрипта, определенный в основном скрипте, для использования в тесте резервного экземпляра. Дополнительные сведения см. в разделе <xref:Microsoft.AspNetCore.Mvc.TagHelpers.ScriptTagHelper.FallbackTestExpression>.
 
 ### <a name="asp-fallback-src"></a>asp-fallback-src
 
-URL-адрес тега Script, на который можно перейти в случае сбоя основного URL-адреса. Для получения дополнительной информации см. <xref:Microsoft.AspNetCore.Mvc.TagHelpers.ScriptTagHelper.FallbackSrc>.
+URL-адрес тега Script, на который можно перейти в случае сбоя основного URL-адреса. Дополнительные сведения см. в разделе <xref:Microsoft.AspNetCore.Mvc.TagHelpers.ScriptTagHelper.FallbackSrc>.
 
 ## <a name="additional-resources"></a>Дополнительные ресурсы
 

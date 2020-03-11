@@ -5,12 +5,12 @@ description: Узнайте, как создавать и использоват
 ms.author: riande
 ms.date: 02/08/2017
 uid: web-api/advanced/custom-formatters
-ms.openlocfilehash: 122edfd4ccd06ed62e071691f421d2aeef8002b4
-ms.sourcegitcommit: 488cc779fc71377d9371e7a14356113e9c7eff17
-ms.translationtype: HT
+ms.openlocfilehash: dd25cda460ba758cd07de094eaadd1f2d8c28657
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
+ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70913513"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78654958"
 ---
 # <a name="custom-formatters-in-aspnet-core-web-api"></a>Пользовательские модули форматирования для веб-API в ASP.NET Core
 
@@ -22,7 +22,7 @@ ASP.NET Core MVC поддерживает обмен данными в веб-AP
 
 В этой статье показано, как добавить поддержку дополнительных форматов, создав пользовательские модули форматирования. Пример пользовательского форматировщика ввода для обычного текста см. в описании [TextPlainInputFormatter](https://github.com/aspnet/Entropy/blob/master/samples/Mvc.Formatters/TextPlainInputFormatter.cs) на GitHub.
 
-[Просмотреть или скачать образец кода](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/web-api/advanced/custom-formatters/sample) ([как скачивать](xref:index#how-to-download-a-sample))
+[Просмотреть или скачать образец кода](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/web-api/advanced/custom-formatters/sample) ([как скачивать](xref:index#how-to-download-a-sample))
 
 ## <a name="when-to-use-custom-formatters"></a>Когда следует использовать пользовательские модули форматирования
 
@@ -55,7 +55,7 @@ ASP.NET Core MVC поддерживает обмен данными в веб-AP
 
 [!code-csharp[](custom-formatters/sample/Formatters/VcardOutputFormatter.cs?name=classdef)]
 
-Пример форматировщика входных данных см. в [примере приложения](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/web-api/advanced/custom-formatters/sample).
+Пример форматировщика входных данных см. в [примере приложения](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/web-api/advanced/custom-formatters/sample).
 
 Для двоичных типов произведите наследование от базового класса [InputFormatter](/dotnet/api/microsoft.aspnetcore.mvc.formatters.inputformatter) или [OutputFormatter](/dotnet/api/microsoft.aspnetcore.mvc.formatters.outputformatter).
 
@@ -65,7 +65,7 @@ ASP.NET Core MVC поддерживает обмен данными в веб-AP
 
 [!code-csharp[](custom-formatters/sample/Formatters/VcardOutputFormatter.cs?name=ctor&highlight=3,5-6)]
 
-Пример форматировщика входных данных см. в [примере приложения](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/web-api/advanced/custom-formatters/sample).
+Пример форматировщика входных данных см. в [примере приложения](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/web-api/advanced/custom-formatters/sample).
 
 > [!NOTE]
 > Внедрение зависимостей конструктора в класс модуля форматирования невозможно. Например, невозможно получить средство ведения журнала, добавив соответствующий параметр в конструктор. Для доступа к службам необходимо использовать объект контекста, который передается в ваши методы. В приведенном [ниже](#read-write) примере кода показано, как это делается.
@@ -76,7 +76,7 @@ ASP.NET Core MVC поддерживает обмен данными в веб-AP
 
 [!code-csharp[](custom-formatters/sample/Formatters/VcardOutputFormatter.cs?name=canwritetype)]
 
-Пример форматировщика входных данных см. в [примере приложения](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/web-api/advanced/custom-formatters/sample).
+Пример форматировщика входных данных см. в [примере приложения](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/web-api/advanced/custom-formatters/sample).
 
 #### <a name="the-canwriteresult-method"></a>Метод CanWriteResult
 
@@ -86,7 +86,7 @@ ASP.NET Core MVC поддерживает обмен данными в веб-AP
 * Существуют производные классы, которые могут возвращаться во время выполнения.
 * Во время выполнения необходимо знать, какой производный класс был возвращен действием.
 
-Предположим, сигнатура метода действия возвращает тип `Person`, но может также возвращать типы `Student` и `Instructor`, производные от `Person`. Если модуль форматирования должен обрабатывать только объекты `Student`, проверьте тип свойства [Object](/dotnet/api/microsoft.aspnetcore.mvc.formatters.outputformattercanwritecontext.object#Microsoft_AspNetCore_Mvc_Formatters_OutputFormatterCanWriteContext_Object) в объекте контекста, предоставленном методу `CanWriteResult`. Обратите внимание на то, что если метод действия возвращает `IActionResult`, использовать `CanWriteResult` нет необходимости. В этом случае метод `CanWriteType` получает тип во время выполнения.
+Предположим, сигнатура метода действия возвращает тип `Person`, но может также возвращать типы `Student` и `Instructor`, производные от `Person`. Если модуль форматирования должен обрабатывать только объекты `Student`, проверьте тип свойства [Object](/dotnet/api/microsoft.aspnetcore.mvc.formatters.outputformattercanwritecontext.object#Microsoft_AspNetCore_Mvc_Formatters_OutputFormatterCanWriteContext_Object) в объекте контекста, предоставленном методу `CanWriteResult`. Обратите внимание на то, что если метод действия возвращает `CanWriteResult`, использовать `IActionResult` нет необходимости. В этом случае метод `CanWriteType` получает тип во время выполнения.
 
 <a id="read-write"></a>
 
@@ -96,7 +96,7 @@ ASP.NET Core MVC поддерживает обмен данными в веб-AP
 
 [!code-csharp[](custom-formatters/sample/Formatters/VcardOutputFormatter.cs?name=writeresponse&highlight=3-4)]
 
-Пример форматировщика входных данных см. в [примере приложения](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/web-api/advanced/custom-formatters/sample).
+Пример форматировщика входных данных см. в [примере приложения](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/web-api/advanced/custom-formatters/sample).
 
 ## <a name="how-to-configure-mvc-to-use-a-custom-formatter"></a>Настройка использования пользовательского модуля форматирования в MVC
 
@@ -106,9 +106,9 @@ ASP.NET Core MVC поддерживает обмен данными в веб-AP
 
 Модули форматирования обрабатываются в порядке добавления. Первый модуль имеет приоритет.
 
-## <a name="next-steps"></a>Следующие шаги
+## <a name="next-steps"></a>Дальнейшие действия
 
-* [Пример приложения для этого документа](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/web-api/advanced/custom-formatters/sample), в котором реализуются простые форматировщики входных и выходных данных в формате vCard. Это приложение считывает и записывает карточки vCard, которые выглядят следующим образом:
+* [Пример приложения для этого документа](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/web-api/advanced/custom-formatters/sample), в котором реализуются простые форматировщики входных и выходных данных в формате vCard. Это приложение считывает и записывает карточки vCard, которые выглядят следующим образом:
 
 ```
 BEGIN:VCARD

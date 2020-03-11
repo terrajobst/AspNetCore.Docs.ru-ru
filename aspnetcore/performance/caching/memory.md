@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 02/02/2020
 uid: performance/caching/memory
-ms.openlocfilehash: 23acc17c861c203a87b1c113940e7bf42b51e810
-ms.sourcegitcommit: 990a4c2e623c202a27f60bdf3902f250359c13be
+ms.openlocfilehash: e01e4a139893297a71aabb1af11b25cf0deb85a9
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 02/03/2020
-ms.locfileid: "76972020"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78653452"
 ---
 # <a name="cache-in-memory-in-aspnet-core"></a>Кэширование в памяти в ASP.NET Core
 
@@ -19,7 +19,7 @@ ms.locfileid: "76972020"
 
 [Рик Андерсон (](https://twitter.com/RickAndMSFT), [Джон Луо](https://github.com/JunTaoLuo)и [Стив Смит](https://ardalis.com/)
 
-[Просмотреть или скачать образец кода](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/performance/caching/memory/3.0sample) ([как скачивать](xref:index#how-to-download-a-sample))
+[Просмотреть или скачать образец кода](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/performance/caching/memory/3.0sample) ([как скачивать](xref:index#how-to-download-a-sample))
 
 ## <a name="caching-basics"></a>Основы кэширования
 
@@ -37,7 +37,7 @@ ASP.NET Core поддерживает несколько разных кэшей
 
 * .NET Standard 2,0 или более поздней версии.
 * Любая [реализация .NET](/dotnet/standard/net-standard#net-implementation-support) , предназначенная для .NET Standard 2,0 или более поздней версии. Например, ASP.NET Core 2,0 или более поздней версии.
-* .NET Framework 4,5 или более поздней версии.
+* .NET Framework 4.5 или более поздней версии.
 
 [Microsoft. Extensions. Caching. Memory](https://www.nuget.org/packages/Microsoft.Extensions.Caching.Memory/)/`IMemoryCache` (описанные в этой статье) рекомендуется для `System.Runtime.Caching`/`MemoryCache`, так как он лучше интегрирован в ASP.NET Core. Например, `IMemoryCache` работает в собственном режиме с [внедрением зависимостей](xref:fundamentals/dependency-injection)ASP.NET Core.
 
@@ -110,7 +110,7 @@ ASP.NET Core поддерживает несколько разных кэшей
 
 Экземпляр `MemoryCache` может дополнительно указать и применить ограничение размера. Ограничение размера кэша не имеет определенной единицы измерения, так как кэш не имеет механизма для измерения размера записей. Если установлен предел размера кэша, то для всех записей должен быть указан размер. Среда выполнения ASP.NET Core не ограничивает размер кэша на основе нехватки памяти. Разработчик может ограничить размер кэша. Указанный размер находится в единицах, которые выбирает разработчик.
 
-Например:
+Пример:
 
 * Если веб-приложение в основном кэширует строки, каждый размер записи кэша может быть длиной строки.
 * Приложение может указать размер всех записей как 1, а максимальный размер — число записей.
@@ -164,7 +164,7 @@ ASP.NET Core поддерживает несколько разных кэшей
 
 Использование <xref:System.Threading.CancellationTokenSource> позволяет удалять несколько записей кэша в виде группы. Используя шаблон `using` в приведенном выше коде, записи кэша, созданные в блоке `using`, будут наследовать параметры триггеров и срока действия.
 
-## <a name="additional-notes"></a>Дополнительные сведения
+## <a name="additional-notes"></a>Дополнительные замечания
 
 * Истечение срока действия не происходит в фоновом режиме. Нет таймера, который активно проверяет кэш на наличие просроченных элементов. Любое действие в кэше (`Get`, `Set`, `Remove`) может активировать фоновое сканирование элементов с истекшим сроком действия. Таймер на `CancellationTokenSource` (<xref:System.Threading.CancellationTokenSource.CancelAfter*>) также удаляет запись и запускает проверку для элементов с истекшим сроком действия. В следующем примере для зарегистрированного маркера используется [CancellationTokenSource (TimeSpan)](/dotnet/api/system.threading.cancellationtokensource.-ctor) . Когда этот маркер срабатывает, он немедленно удаляет запись и вызывает обратные вызовы вытеснения:
 
@@ -196,7 +196,7 @@ ASP.NET Core поддерживает несколько разных кэшей
 <!-- This is the 2.1 version -->
 [Рик Андерсон (](https://twitter.com/RickAndMSFT), [Джон Луо](https://github.com/JunTaoLuo)и [Стив Смит](https://ardalis.com/)
 
-[Просмотреть или скачать образец кода](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/performance/caching/memory/sample) ([как скачивать](xref:index#how-to-download-a-sample))
+[Просмотреть или скачать образец кода](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/performance/caching/memory/sample) ([как скачивать](xref:index#how-to-download-a-sample))
 
 ## <a name="caching-basics"></a>Основы кэширования
 
@@ -214,7 +214,7 @@ ASP.NET Core поддерживает несколько разных кэшей
 
 * .NET Standard 2,0 или более поздней версии.
 * Любая [реализация .NET](/dotnet/standard/net-standard#net-implementation-support) , предназначенная для .NET Standard 2,0 или более поздней версии. Например, ASP.NET Core 2,0 или более поздней версии.
-* .NET Framework 4,5 или более поздней версии.
+* .NET Framework 4.5 или более поздней версии.
 
 [Microsoft. Extensions. Caching. Memory](https://www.nuget.org/packages/Microsoft.Extensions.Caching.Memory/)/`IMemoryCache` (описанные в этой статье) рекомендуется для `System.Runtime.Caching`/`MemoryCache`, так как он лучше интегрирован в ASP.NET Core. Например, `IMemoryCache` работает в собственном режиме с [внедрением зависимостей](xref:fundamentals/dependency-injection)ASP.NET Core.
 
@@ -282,7 +282,7 @@ ASP.NET Core поддерживает несколько разных кэшей
 
 Экземпляр `MemoryCache` может дополнительно указать и применить ограничение размера. Ограничение размера кэша не имеет определенной единицы измерения, так как кэш не имеет механизма для измерения размера записей. Если установлен предел размера кэша, то для всех записей должен быть указан размер. Среда выполнения ASP.NET Core не ограничивает размер кэша на основе нехватки памяти. Разработчик может ограничить размер кэша. Указанный размер находится в единицах, которые выбирает разработчик.
 
-Например:
+Пример:
 
 * Если веб-приложение в основном кэширует строки, каждый размер записи кэша может быть длиной строки.
 * Приложение может указать размер всех записей как 1, а максимальный размер — число записей.
@@ -336,7 +336,7 @@ ASP.NET Core поддерживает несколько разных кэшей
 
 Использование `CancellationTokenSource` позволяет удалять несколько записей кэша в виде группы. Используя шаблон `using` в приведенном выше коде, записи кэша, созданные в блоке `using`, будут наследовать параметры триггеров и срока действия.
 
-## <a name="additional-notes"></a>Дополнительные сведения
+## <a name="additional-notes"></a>Дополнительные замечания
 
 * При использовании обратного вызова для повторного заполнения элемента кэша:
 

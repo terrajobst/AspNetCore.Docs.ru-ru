@@ -2,7 +2,7 @@
 
 Этот пример приложения демонстрирует концепции, описанные в статье [Передача файлов в ASP.NET Core](https://docs.microsoft.com/aspnet/core/mvc/models/file-uploads).
 
-## <a name="security-considerations"></a>Замечания по безопасности
+## <a name="security-considerations"></a>Вопросы безопасности
 
 Необходимо соблюдать осторожность при предоставлении пользователям возможности отправки файлов на сервер. Злоумышленники могут выполнять атаки типа [отказ в обслуживании](/windows-hardware/drivers/ifs/denial-of-service), пытаться передать вирусы или вредоносные программы или попытаться атаковать сети и серверы другими способами.
 
@@ -31,13 +31,13 @@
 > Сведения об уменьшении контактной зоны атаки во время приема файлов от пользователей см. в следующих ресурсах:
 >
 > * [Неограниченная отправка файлов](https://www.owasp.org/index.php/Unrestricted_File_Upload)
-> * [Безопасность в Azure. Убедитесь, что при приеме файлов от пользователей обеспечиваются соответствующие меры безопасности](/azure/security/azure-security-threat-modeling-tool-input-validation#controls-users).
+> * [Безопасность Azure: убедитесь в наличии надлежащих мер контроля при получении файлов от пользователей](/azure/security/azure-security-threat-modeling-tool-input-validation#controls-users)
 
 Дополнительные сведения см. в статье [Передача файлов в ASP.NET Core](https://docs.microsoft.com/aspnet/core/mvc/models/file-uploads).
 
 ## <a name="how-to-use-the-sample"></a>Как использовать этот пример
 
-В *файле appsettings.json*:
+В файле *appsettings.json*:
 
 1. Задайте путь к сохраненным файлам (`StoredFilesPath`).
 

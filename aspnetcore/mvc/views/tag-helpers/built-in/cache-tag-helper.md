@@ -6,16 +6,16 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 10/10/2018
 uid: mvc/views/tag-helpers/builtin-th/cache-tag-helper
-ms.openlocfilehash: 0273a9805dd5db5450f57dcf3fd4d952308df074
-ms.sourcegitcommit: 7a40c56bf6a6aaa63a7ee83a2cac9b3a1d77555e
-ms.translationtype: HT
+ms.openlocfilehash: db9e1a968588410f11e5f137dfdd4542df505ebc
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
+ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67856212"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78653308"
 ---
 # <a name="cache-tag-helper-in-aspnet-core-mvc"></a>Вспомогательная функция тегов кэша в MVC-моделях ASP.NET Core
 
-Авторы: [Питер Кельнер (Peter Kellner)](https://peterkellner.net) и [Люк Лэтэм (Luke Latham)](https://github.com/guardrex) 
+Автор: [Питер Кельнер (Peter Kellner)](https://peterkellner.net)
 
 Вспомогательная функция тегов кэша позволяет повысить производительность приложения ASP.NET Core за счет кэширования его содержимого во внутренний поставщик кэша ASP.NET Core.
 
@@ -31,11 +31,11 @@ ms.locfileid: "67856212"
 
 ## <a name="cache-tag-helper-attributes"></a>Атрибуты вспомогательной функции тегов кэша
 
-### <a name="enabled"></a>enabled
+### <a name="enabled"></a>Включено
 
-| Тип атрибута  | Примеры        | Значение по умолчанию |
+| Тип атрибута  | Примеры        | По умолчанию |
 | --------------- | --------------- | ------- |
-| Boolean         | `true`, `false` | `true`  |
+| Логическое         | `true`, `false` | `true`  |
 
 `enabled` определяет, кэшируется ли содержимое, охватываемое вспомогательной функцией тегов кэша. Значение по умолчанию — `true`. Если установлено значение `false`, выводимые данные **не** кэшируются.
 
@@ -65,7 +65,7 @@ ms.locfileid: "67856212"
 
 ### <a name="expires-after"></a>expires-after
 
-| Тип атрибута | Пример                      | Значение по умолчанию    |
+| Тип атрибута | Пример                      | По умолчанию    |
 | -------------- | ---------------------------- | ---------- |
 | `TimeSpan`     | `@TimeSpan.FromSeconds(120)` | 20 минут |
 
@@ -173,9 +173,9 @@ routes.MapRoute(
 
 ### <a name="vary-by-user"></a>vary-by-user
 
-| Тип атрибута  | Примеры        | Значение по умолчанию |
+| Тип атрибута  | Примеры        | По умолчанию |
 | --------------- | --------------- | ------- |
-| Boolean         | `true`, `false` | `true`  |
+| Логическое         | `true`, `false` | `true`  |
 
 `vary-by-user` указывает, следует ли сбрасывать кэш при изменении вошедшего в систему пользователя (или участника контекста). Текущий пользователь также называется участником контекста запроса и доступен для просмотра в представлении Razor с помощью ссылки на `@User.Identity.Name`.
 
@@ -222,7 +222,7 @@ public IActionResult Index(string myParam1, string myParam2, string myParam3)
 
 ### <a name="priority"></a>priority
 
-| Тип атрибута      | Примеры                               | Значение по умолчанию  |
+| Тип атрибута      | Примеры                               | По умолчанию  |
 | ------------------- | -------------------------------------- | -------- |
 | `CacheItemPriority` | `High`, `Low`, `NeverRemove`, `Normal` | `Normal` |
 

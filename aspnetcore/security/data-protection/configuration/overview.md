@@ -7,11 +7,11 @@ ms.custom: mvc
 ms.date: 10/07/2019
 uid: security/data-protection/configuration/overview
 ms.openlocfilehash: c0846aca4bb663b1d562ab0c877fefba02da460f
-ms.sourcegitcommit: 7dfe6cc8408ac6a4549c29ca57b0c67ec4baa8de
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75829040"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78654592"
 ---
 # <a name="configure-aspnet-core-data-protection"></a>Настройка защиты данных ASP.NET Core
 
@@ -389,7 +389,7 @@ services.AddDataProtection()
 
 ## <a name="persisting-keys-with-redis"></a>Сохранение ключей с помощью Redis
 
-Для хранения ключей следует использовать только версии Redis, поддерживающие [сохраняемость данных Redis](/azure/azure-cache-for-redis/cache-how-to-premium-persistence) . [Хранилище BLOB-объектов Azure](/azure/storage/blobs/storage-blobs-introduction) является постоянным и может использоваться для хранения ключей. Дополнительные сведения см. в [этой статье об ошибке на GitHub](https://github.com/dotnet/AspNetCore/issues/13476).
+Для хранения ключей следует использовать только версии Redis, поддерживающие [сохраняемость данных Redis](/azure/azure-cache-for-redis/cache-how-to-premium-persistence) . [Хранилище BLOB-объектов Azure](/azure/storage/blobs/storage-blobs-introduction) является постоянным и может использоваться для хранения ключей. См. дополнительные сведения на [сайте GitHub](https://github.com/dotnet/AspNetCore/issues/13476).
 
 ## <a name="additional-resources"></a>Дополнительные ресурсы
 

@@ -6,11 +6,11 @@ ms.author: riande
 ms.date: 12/05/2019
 uid: mvc/controllers/actions
 ms.openlocfilehash: 715a73863513870d1cbd522e75013d41830da1e7
-ms.sourcegitcommit: c0b72b344dadea835b0e7943c52463f13ab98dd1
-ms.translationtype: HT
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
+ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74881108"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78653350"
 ---
 # <a name="handle-requests-with-controllers-in-aspnet-core-mvc"></a>Обработка запросов с помощью контроллеров в ASP.NET Core MVC
 
@@ -55,7 +55,7 @@ ms.locfileid: "74881108"
 
 Контроллеры обычно наследуют от [Controller](/dotnet/api/microsoft.aspnetcore.mvc.controller), хотя это не является обязательным. Наследование от `Controller` предоставляет доступ к трем категориям вспомогательных методов:
 
-#### <a name="1-methods-resulting-in-an-empty-response-body"></a>1. Методы, дающие пустой основной текст отклика
+#### <a name="1-methods-resulting-in-an-empty-response-body"></a>1. методы, приводящие к пустому тексту ответа
 
 Заголовок HTTP-отклика `Content-Type` не включается, так как в тексте отклика нет содержимого для описания.
 
@@ -71,13 +71,13 @@ ms.locfileid: "74881108"
 
     Тип результатов перенаправления отличается от кода состояния HTTP, главным образом, добавлением заголовка HTTP-отклика `Location`.
 
-#### <a name="2-methods-resulting-in-a-non-empty-response-body-with-a-predefined-content-type"></a>2. Методы, дающие непустой основной текст отклика с предопределенным типом содержимого
+#### <a name="2-methods-resulting-in-a-non-empty-response-body-with-a-predefined-content-type"></a>2. методы, приводящие к непустому тексту ответа с предопределенным типом содержимого
 
 Большинство вспомогательных методов в этой категории имеют свойство `ContentType`, что позволяет задать заголовок отклика `Content-Type` для описания основного текста отклика.
 
-В этой категории есть два типа результатов: [представление](xref:mvc/views/overview) и [форматированный ответ](xref:web-api/advanced/formatting).
+В этой категории есть два типа результатов: [представление](xref:mvc/views/overview) и [форматированный отклик](xref:web-api/advanced/formatting).
 
-* **Вид**
+* **View** (Вид)
 
     Этот тип возвращает представление, использующее модель для отрисовки HTML. Например, `return View(customer);` передает модель в представление для привязки данных.
 
@@ -87,7 +87,7 @@ ms.locfileid: "74881108"
     
     Другими распространенными методами этого типа являются `File` и `PhysicalFile`. Например, `return PhysicalFile(customerFilePath, "text/xml");` возвращает [PhysicalFileResult](/dotnet/api/microsoft.aspnetcore.mvc.physicalfileresult).
 
-#### <a name="3-methods-resulting-in-a-non-empty-response-body-formatted-in-a-content-type-negotiated-with-the-client"></a>3. Методы, дающие непустой основной текст отклика и отформатированные с типом содержимого, согласованным с клиентом
+#### <a name="3-methods-resulting-in-a-non-empty-response-body-formatted-in-a-content-type-negotiated-with-the-client"></a>3. методы, приводящие к непустому тексту ответа, форматированному в типе содержимого, согласованном с клиентом
 
 Эта категория более известна как **согласование содержимого**. [Согласование содержимого](xref:web-api/advanced/formatting#content-negotiation) применяется, когда действие возвращает тип [ObjectResult](/dotnet/api/microsoft.aspnetcore.mvc.objectresult) или что-то отличное от реализации [IActionResult](/dotnet/api/microsoft.aspnetcore.mvc.iactionresult). Действие, которое возвращает значение, отличное от реализации `IActionResult` (например, `object`), также возвращает форматированный отклик.
 

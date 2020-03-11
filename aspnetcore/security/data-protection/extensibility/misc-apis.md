@@ -1,27 +1,27 @@
 ---
-title: Прочие ASP.NET Core интерфейсы API защиты данных
+title: Прочие ASP.NET Core API-интерфейсы защиты данных
 author: rick-anderson
-description: Дополнительные сведения об интерфейсе защиты данных ISecret для ASP.NET Core.
+description: Сведения об интерфейсе Исекрет защиты данных ASP.NET Core.
 ms.author: riande
 ms.date: 10/14/2016
 uid: security/data-protection/extensibility/misc-apis
 ms.openlocfilehash: 114cdd6209970e46b827e403fbe79b95692d0242
-ms.sourcegitcommit: 5b0eca8c21550f95de3bb21096bd4fd4d9098026
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 04/27/2019
-ms.locfileid: "64896621"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78654358"
 ---
-# <a name="miscellaneous-aspnet-core-data-protection-apis"></a>Прочие ASP.NET Core интерфейсы API защиты данных
+# <a name="miscellaneous-aspnet-core-data-protection-apis"></a>Прочие ASP.NET Core API-интерфейсы защиты данных
 
 <a name="data-protection-extensibility-mics-apis"></a>
 
 >[!WARNING]
 > Типы, реализующие любые из следующих интерфейсов должны быть потокобезопасными для нескольких клиентов.
 
-## <a name="isecret"></a>ISecret
+## <a name="isecret"></a>исекрет
 
-`ISecret` Интерфейс представляет значение секрета, например материал криптографического ключа. Он содержит следующие поверхность API:
+Интерфейс `ISecret` представляет секретное значение, например материал криптографического ключа. Он содержит следующую поверхность API:
 
 * `Length`: `int`
 
@@ -29,6 +29,6 @@ ms.locfileid: "64896621"
 
 * `WriteSecretIntoBuffer(ArraySegment<byte> buffer)`: `void`
 
-`WriteSecretIntoBuffer` Метод заполняет предоставленный буфер с необработанное значение секрета. Причина этого API принимает буфера в качестве параметра вместо возврата `byte[]` напрямую — это том, что это даёт вызывающий объект для закрепления объекта буфера, ограничивая секретный раскрытия в управляемых сборщика мусора.
+Метод `WriteSecretIntoBuffer` заполняет указанный буфер необработанным значением секрета. Причина, по которой этот API принимает буфер в качестве параметра, вместо того чтобы возвращать `byte[]` напрямую, это дает вызывающей стороне возможность закрепить объект буфера, ограничивая секретный код управляемому сборщику мусора.
 
-`Secret` Тип — это конкретная реализация `ISecret` где секретное значение хранится в памяти в процессе. На платформах Windows, секретное значение шифруется с помощью [CryptProtectMemory](https://msdn.microsoft.com/library/windows/desktop/aa380262(v=vs.85).aspx).
+Тип `Secret` является конкретной реализацией `ISecret`, где секретное значение хранится в памяти внутри процесса. На платформах Windows значение секрета шифруется через [криптпротектмемори](https://msdn.microsoft.com/library/windows/desktop/aa380262(v=vs.85).aspx).

@@ -6,12 +6,12 @@ ms.assetid: 0be164aa-1d72-4192-bd6b-192c9c301164
 ms.author: riande
 ms.date: 12/18/2019
 uid: mvc/models/model-binding
-ms.openlocfilehash: a389afe46636155e4703677d362d879a18ea5864
-ms.sourcegitcommit: 7dfe6cc8408ac6a4549c29ca57b0c67ec4baa8de
-ms.translationtype: HT
+ms.openlocfilehash: 19580768679f30131683717792252c03aade68f9
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
+ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75829209"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78654472"
 ---
 # <a name="model-binding-in-aspnet-core"></a>Привязка модели в ASP.NET Core
 
@@ -19,7 +19,7 @@ ms.locfileid: "75829209"
 
 В этой статье объясняется, что такое привязка модели, как это работает и как настроить ее поведение.
 
-[Просмотреть или скачать пример кода](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/models/model-binding/samples) ([описание скачивания](xref:index#how-to-download-a-sample)).
+[Просмотреть или скачать пример кода](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/models/model-binding/samples) ([описание скачивания](xref:index#how-to-download-a-sample)).
 
 ## <a name="what-is-model-binding"></a>Что такое привязка модели
 
@@ -55,7 +55,7 @@ http://contoso.com/api/pets/2?DogsOnly=true
 
 В приведенном выше примере целевые объекты привязки модели — это параметры методов, которые являются примитивными типами. Целевые объекты также могут быть свойствами сложного типа. После успешной привязки каждого свойства осуществляется [проверка модели](xref:mvc/models/validation) для этого свойства. Записи о данных, привязанных к модели, а также об ошибках привязки или проверки хранятся в [ControllerBase.ModelState](xref:Microsoft.AspNetCore.Mvc.ControllerBase.ModelState) или [PageModel.ModelState](xref:Microsoft.AspNetCore.Mvc.ControllerBase.ModelState). Чтобы узнать об успешном выполнении этого процесса, приложение проверяет наличие флага [ModelState.IsValid](xref:Microsoft.AspNetCore.Mvc.ModelBinding.ModelStateDictionary.IsValid).
 
-## <a name="targets"></a>Целевые объекты
+## <a name="targets"></a>Цели
 
 Привязка модели попытается найти значения для следующих типов целевых объектов:
 
@@ -87,7 +87,7 @@ http://contoso.com/api/pets/2?DogsOnly=true
 
 1. Поля формы
 1. Текст запроса (для [контроллеров, имеющих атрибут [ApiController]](xref:web-api/index#binding-source-parameter-inference).)
-1. Данные маршрута
+1. Отправка данных
 1. Параметры строки запроса
 1. Отправленные файлы
 
@@ -149,11 +149,11 @@ public class Pet
 
 Исходные данные предоставляются системой привязки модели *поставщиками значений*. Вы можете записать и зарегистрировать пользовательские поставщики значений, которые получают данные для привязки модели из других источников. Например, вам могут потребоваться данные из файлов cookie или состояния сеанса. Для получения данных из нового источника:
 
-* Создайте класс, реализующий `IValueProvider`.
-* Создайте класс, реализующий `IValueProviderFactory`.
+* Создайте класс, реализующий перехватчик `IValueProvider`.
+* Создайте класс, реализующий перехватчик `IValueProviderFactory`.
 * Зарегистрируйте класс фабрики в `Startup.ConfigureServices`.
 
-Пример приложения включает пример [поставщика значений](https://github.com/aspnet/AspNetCore.Docs/blob/master/aspnetcore/mvc/models/model-binding/samples/3.x/ModelBindingSample/CookieValueProvider.cs) и [фабрики](https://github.com/aspnet/AspNetCore.Docs/blob/master/aspnetcore/mvc/models/model-binding/samples/3.x/ModelBindingSample/CookieValueProviderFactory.cs), которая получает значения из файлов cookie. Ниже приведен код регистрации в `Startup.ConfigureServices`:
+Пример приложения включает пример [поставщика значений](https://github.com/dotnet/AspNetCore.Docs/blob/master/aspnetcore/mvc/models/model-binding/samples/3.x/ModelBindingSample/CookieValueProvider.cs) и [фабрики](https://github.com/dotnet/AspNetCore.Docs/blob/master/aspnetcore/mvc/models/model-binding/samples/3.x/ModelBindingSample/CookieValueProviderFactory.cs), которая получает значения из файлов cookie. Ниже приведен код регистрации в `Startup.ConfigureServices`:
 
 [!code-csharp[](model-binding/samples/3.x/ModelBindingSample/Startup.cs?name=snippet_ValueProvider&highlight=4)]
 
@@ -202,11 +202,11 @@ public class Pet
 * [Enum](xref:System.ComponentModel.EnumConverter)
 * [Guid](xref:System.ComponentModel.GuidConverter)
 * [Int16](xref:System.ComponentModel.Int16Converter), [Int32](xref:System.ComponentModel.Int32Converter), [Int64](xref:System.ComponentModel.Int64Converter)
-* [Single](xref:System.ComponentModel.SingleConverter)
+* [Один](xref:System.ComponentModel.SingleConverter)
 * [TimeSpan](xref:System.ComponentModel.TimeSpanConverter)
 * [UInt16](xref:System.ComponentModel.UInt16Converter), [UInt32](xref:System.ComponentModel.UInt32Converter), [UInt64](xref:System.ComponentModel.UInt64Converter)
-* [Uri](xref:System.UriTypeConverter)
-* [Version](xref:System.ComponentModel.VersionConverter)
+* [URI](xref:System.UriTypeConverter)
+* [Версия](xref:System.ComponentModel.VersionConverter)
 
 ## <a name="complex-types"></a>Сложные типы
 
@@ -505,7 +505,7 @@ ASP.NET Core выбирает форматировщики входных дан
 
 В этой статье объясняется, что такое привязка модели, как это работает и как настроить ее поведение.
 
-[Просмотреть или скачать пример кода](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/models/model-binding/samples) ([описание скачивания](xref:index#how-to-download-a-sample)).
+[Просмотреть или скачать пример кода](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/models/model-binding/samples) ([описание скачивания](xref:index#how-to-download-a-sample)).
 
 ## <a name="what-is-model-binding"></a>Что такое привязка модели
 
@@ -541,7 +541,7 @@ http://contoso.com/api/pets/2?DogsOnly=true
 
 В приведенном выше примере целевые объекты привязки модели — это параметры методов, которые являются примитивными типами. Целевые объекты также могут быть свойствами сложного типа. После успешной привязки каждого свойства осуществляется [проверка модели](xref:mvc/models/validation) для этого свойства. Записи о данных, привязанных к модели, а также об ошибках привязки или проверки хранятся в [ControllerBase.ModelState](xref:Microsoft.AspNetCore.Mvc.ControllerBase.ModelState) или [PageModel.ModelState](xref:Microsoft.AspNetCore.Mvc.ControllerBase.ModelState). Чтобы узнать об успешном выполнении этого процесса, приложение проверяет наличие флага [ModelState.IsValid](xref:Microsoft.AspNetCore.Mvc.ModelBinding.ModelStateDictionary.IsValid).
 
-## <a name="targets"></a>Целевые объекты
+## <a name="targets"></a>Цели
 
 Привязка модели попытается найти значения для следующих типов целевых объектов:
 
@@ -573,7 +573,7 @@ http://contoso.com/api/pets/2?DogsOnly=true
 
 1. Поля формы
 1. Текст запроса (для [контроллеров, имеющих атрибут [ApiController]](xref:web-api/index#binding-source-parameter-inference).)
-1. Данные маршрута
+1. Отправка данных
 1. Параметры строки запроса
 1. Отправленные файлы
 
@@ -635,11 +635,11 @@ public class Pet
 
 Исходные данные предоставляются системой привязки модели *поставщиками значений*. Вы можете записать и зарегистрировать пользовательские поставщики значений, которые получают данные для привязки модели из других источников. Например, вам могут потребоваться данные из файлов cookie или состояния сеанса. Для получения данных из нового источника:
 
-* Создайте класс, реализующий `IValueProvider`.
-* Создайте класс, реализующий `IValueProviderFactory`.
+* Создайте класс, реализующий перехватчик `IValueProvider`.
+* Создайте класс, реализующий перехватчик `IValueProviderFactory`.
 * Зарегистрируйте класс фабрики в `Startup.ConfigureServices`.
 
-Пример приложения включает пример [поставщика значений](https://github.com/aspnet/AspNetCore.Docs/blob/master/aspnetcore/mvc/models/model-binding/samples/2.x/ModelBindingSample/CookieValueProvider.cs) и [фабрики](https://github.com/aspnet/AspNetCore.Docs/blob/master/aspnetcore/mvc/models/model-binding/samples/2.x/ModelBindingSample/CookieValueProviderFactory.cs), которая получает значения из файлов cookie. Ниже приведен код регистрации в `Startup.ConfigureServices`:
+Пример приложения включает пример [поставщика значений](https://github.com/dotnet/AspNetCore.Docs/blob/master/aspnetcore/mvc/models/model-binding/samples/2.x/ModelBindingSample/CookieValueProvider.cs) и [фабрики](https://github.com/dotnet/AspNetCore.Docs/blob/master/aspnetcore/mvc/models/model-binding/samples/2.x/ModelBindingSample/CookieValueProviderFactory.cs), которая получает значения из файлов cookie. Ниже приведен код регистрации в `Startup.ConfigureServices`:
 
 [!code-csharp[](model-binding/samples/2.x/ModelBindingSample/Startup.cs?name=snippet_ValueProvider&highlight=3)]
 
@@ -688,11 +688,11 @@ public class Pet
 * [Enum](xref:System.ComponentModel.EnumConverter)
 * [Guid](xref:System.ComponentModel.GuidConverter)
 * [Int16](xref:System.ComponentModel.Int16Converter), [Int32](xref:System.ComponentModel.Int32Converter), [Int64](xref:System.ComponentModel.Int64Converter)
-* [Single](xref:System.ComponentModel.SingleConverter)
+* [Один](xref:System.ComponentModel.SingleConverter)
 * [TimeSpan](xref:System.ComponentModel.TimeSpanConverter)
 * [UInt16](xref:System.ComponentModel.UInt16Converter), [UInt32](xref:System.ComponentModel.UInt32Converter), [UInt64](xref:System.ComponentModel.UInt64Converter)
-* [Uri](xref:System.UriTypeConverter)
-* [Version](xref:System.ComponentModel.VersionConverter)
+* [URI](xref:System.UriTypeConverter)
+* [Версия](xref:System.ComponentModel.VersionConverter)
 
 ## <a name="complex-types"></a>Сложные типы
 

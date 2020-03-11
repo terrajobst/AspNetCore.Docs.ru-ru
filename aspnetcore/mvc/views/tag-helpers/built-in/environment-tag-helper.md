@@ -6,20 +6,20 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 10/10/2018
 uid: mvc/views/tag-helpers/builtin-th/environment-tag-helper
-ms.openlocfilehash: e2e038fe69da696b67f7aef61795e23dc8512fdf
-ms.sourcegitcommit: 7a40c56bf6a6aaa63a7ee83a2cac9b3a1d77555e
-ms.translationtype: HT
+ms.openlocfilehash: 308e7db47104ebd4d6bb8d08c64f14bbd118898b
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
+ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67856137"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78653770"
 ---
 # <a name="environment-tag-helper-in-aspnet-core"></a>Вспомогательная функция тега среды в ASP.NET Core
 
-Авторы: [Питер Кельнер (Peter Kellner)](https://peterkellner.net), [Хишам Бин Атейя (Hisham Bin Ateya)](https://twitter.com/hishambinateya) и [Люк Лэтэм (Luke Latham)](https://github.com/guardrex)
+Авторы: [Питер Кельнер (Peter Kellner)](https://peterkellner.net) и [Хишам Бин Атея](https://twitter.com/hishambinateya) (Hisham Bin Ateya)
 
 Вспомогательная функция тега среды условно отрисовывает заключенное в нее содержимое с учетом текущей [среды размещения](xref:fundamentals/environments). Единственный атрибут вспомогательной функции тега среды, `names`, — это разделенный запятыми список имен сред. Если одно из указанных имен среды соответствует текущей среде, включенное содержимое подготавливается к просмотру.
 
-Общие сведения о вспомогательных функциях тегов см. здесь: <xref:mvc/views/tag-helpers/intro>.
+Общие сведения о вспомогательных функциях тегов см. в разделе <xref:mvc/views/tag-helpers/intro>.
 
 ## <a name="environment-tag-helper-attributes"></a>Атрибуты вспомогательной функции тега среды
 
@@ -41,7 +41,7 @@ ms.locfileid: "67856137"
 
 ## <a name="include-and-exclude-attributes"></a>Атрибуты include и exclude
 
-Атрибуты `include` & `exclude` управляют отрисовкой включенного содержимого на основе имен включенных или исключенных сред размещения.
+`include` & `exclude` атрибуты элемент управления, который подготовит содержимое, на основе включенных или исключенных имен среды размещения.
 
 ### <a name="include"></a>include
 

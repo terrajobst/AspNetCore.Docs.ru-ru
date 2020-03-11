@@ -6,18 +6,18 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 08/31/2018
 uid: security/ip-safelist
-ms.openlocfilehash: ca5b0f8088773027f7403120247cbeca8900bcf5
-ms.sourcegitcommit: 16cf016035f0c9acf3ff0ad874c56f82e013d415
+ms.openlocfilehash: d25c375f7e659168ab8cc9d8e11753cb7dfde831
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73034347"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78652054"
 ---
 # <a name="client-ip-safelist-for-aspnet-core"></a>Адрес списка надежных IP-адресов клиента для ASP.NET Core
 
 [(Damien Бауден](https://twitter.com/damien_bod) и [Tom Dykstra)](https://github.com/tdykstra)
  
-В этой статье показано три способа реализации списка надежных IP-адресов (также известного как список разрешений) в приложении ASP.NET Core. Можно использовать:
+В этой статье показаны три способа реализации safelist IP-адрес (также известный как утвержденный список) в приложении ASP.NET Core. Вы можете использовать:
 
 * По промежуточного слоя для проверки удаленного IP-адреса каждого запроса.
 * Фильтры действий для проверки удаленного IP-адреса запросов для конкретных контроллеров или методов действий.
@@ -25,7 +25,7 @@ ms.locfileid: "73034347"
 
 В каждом случае строка, содержащая утвержденные IP-адреса клиентов, сохраняется в параметре приложения. По промежуточного слоя или фильтра анализирует строку в виде списка и проверяет, входит ли удаленный IP-адрес в список. В противном случае возвращается код состояния HTTP 403 запрещено.
 
-[Просмотреть или скачать образец кода](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/security/ip-safelist/samples/2.x/ClientIpAspNetCore) ([как скачивать](xref:index#how-to-download-a-sample))
+[Просмотреть или скачать образец кода](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/security/ip-safelist/samples/2.x/ClientIpAspNetCore) ([как скачивать](xref:index#how-to-download-a-sample))
 
 ## <a name="the-safelist"></a>Списка надежных отправителей
 
@@ -71,6 +71,6 @@ ms.locfileid: "73034347"
 
 При запуске приложения и запросе страницы Razor фильтр Razor Pages проверяет IP-адрес клиента.
 
-## <a name="next-steps"></a>Следующие шаги
+## <a name="next-steps"></a>Дальнейшие действия
 
 Дополнительные [сведения о ASP.NET Core по промежуточного слоя](xref:fundamentals/middleware/index).

@@ -6,18 +6,18 @@ ms.author: scaddie
 ms.custom: mvc
 ms.date: 12/05/2019
 uid: security/app-secrets
-ms.openlocfilehash: 9b36ae64fbe277cd81ed22ba7b21b0a035082dbd
-ms.sourcegitcommit: c815a9465e7b1bab44ce1643ec345b33e6cf1598
+ms.openlocfilehash: c3f165164f3c95e8c0aab773f3731429ae224bd9
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75606796"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78654694"
 ---
 # <a name="safe-storage-of-app-secrets-in-development-in-aspnet-core"></a>Надежное хранение секретов приложений в разработке в ASP.NET Core
 
 [Рик Андерсон (](https://twitter.com/RickAndMSFT), [Даниэль Roth)](https://github.com/danroth27)и [Скотт Эдди (](https://github.com/scottaddie)
 
-[Просмотреть или скачать образец кода](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/security/app-secrets/samples) ([как скачивать](xref:index#how-to-download-a-sample))
+[Просмотреть или скачать образец кода](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/security/app-secrets/samples) ([как скачивать](xref:index#how-to-download-a-sample))
 
 В этом документе объясняются способы хранения и извлечения конфиденциальных данных во время разработки ASP.NET Core приложения на компьютере разработки. Никогда не храните пароли или другие конфиденциальные данные в исходном коде. Производственные секреты не должны использоваться для разработки или тестирования. Секреты не должны развертываться вместе с приложением. Вместо этого секреты должны быть доступны в рабочей среде с помощью контролируемых средств, таких как переменные среды, Azure Key Vault и т. д. Вы можете хранить и защищать тестовые и рабочие секреты Azure с помощью [поставщика конфигурации Azure Key Vault](xref:security/key-vault-configuration).
 
@@ -51,13 +51,13 @@ ms.locfileid: "75606796"
 
 Диспетчер секретов абстрагирует детали реализации, например, где и как хранятся значения. Вы можете использовать это средство, не зная сведений о реализации. Значения хранятся в файле конфигурации JSON в папке профиля пользователя, защищенной системой, на локальном компьютере:
 
-# <a name="windowstabwindows"></a>[Windows](#tab/windows)
+# <a name="windows"></a>[Windows](#tab/windows)
 
 Путь к файловой системе:
 
 `%APPDATA%\Microsoft\UserSecrets\<user_secrets_id>\secrets.json`
 
-# <a name="linux--macostablinuxmacos"></a>[Linux и macOS](#tab/linux+macos)
+# <a name="linux--macos"></a>[Linux и macOS](#tab/linux+macos)
 
 Путь к файловой системе:
 
@@ -84,7 +84,7 @@ ms.locfileid: "75606796"
 The tool 'Microsoft.Extensions.SecretManager.Tools' is now included in the .NET Core SDK. Information on resolving this warning is available at (https://aka.ms/dotnetclitools-in-box).
 ```
 
-Установите пакет NuGet [Microsoft. Extensions. SecretManager. Tools](https://www.nuget.org/packages/Microsoft.Extensions.SecretManager.Tools/) в проекте ASP.NET Core. Например:
+Установите пакет NuGet [Microsoft. Extensions. SecretManager. Tools](https://www.nuget.org/packages/Microsoft.Extensions.SecretManager.Tools/) в проекте ASP.NET Core. Пример:
 
 [!code-xml[](app-secrets/samples/1.x/UserSecrets/UserSecrets.csproj?name=snippet_CsprojFile&highlight=15-16)]
 
@@ -168,7 +168,7 @@ dotnet user-secrets set "Movies:ServiceApiKey" "12345"
 
 В предыдущем примере двоеточие означает, что `Movies` является объектным литералом со свойством `ServiceApiKey`.
 
-Диспетчер секретов можно использовать и в других каталогах. Используйте параметр `--project`, чтобы указать путь к файловой системе, в которой существует файл *. csproj* . Например:
+Диспетчер секретов можно использовать и в других каталогах. Используйте параметр `--project`, чтобы указать путь к файловой системе, в которой существует файл *. csproj* . Пример:
 
 ```dotnetcli
 dotnet user-secrets set "Movies:ServiceApiKey" "12345" --project "C:\apps\WebApp1\src\WebApp1"
@@ -176,7 +176,7 @@ dotnet user-secrets set "Movies:ServiceApiKey" "12345" --project "C:\apps\WebApp
 
 ### <a name="json-structure-flattening-in-visual-studio"></a>Сведение структуры JSON в Visual Studio
 
-Жест **управления пользовательскими секретами** в Visual Studio открывает файл *секреты. JSON* в текстовом редакторе. Замените содержимое файла *секреты. JSON* хранимыми парами "ключ-значение". Например:
+Жест **управления пользовательскими секретами** в Visual Studio открывает файл *секреты. JSON* в текстовом редакторе. Замените содержимое файла *секреты. JSON* хранимыми парами "ключ-значение". Пример:
 
 ```json
 {
@@ -199,7 +199,7 @@ dotnet user-secrets set "Movies:ServiceApiKey" "12345" --project "C:\apps\WebApp
 
 Пакет секретов можно задать с помощью конвейера JSON в команду `set`. В следующем примере содержимое *входного файла JSON* передается команде `set`.
 
-# <a name="windowstabwindows"></a>[Windows](#tab/windows)
+# <a name="windows"></a>[Windows](#tab/windows)
 
 Откройте командную оболочку и выполните следующую команду:
 
@@ -207,7 +207,7 @@ dotnet user-secrets set "Movies:ServiceApiKey" "12345" --project "C:\apps\WebApp
   type .\input.json | dotnet user-secrets set
   ```
 
-# <a name="linux--macostablinuxmacos"></a>[Linux и macOS](#tab/linux+macos)
+# <a name="linux--macos"></a>[Linux и macOS](#tab/linux+macos)
 
 Откройте командную оболочку и выполните следующую команду:
 
@@ -317,13 +317,13 @@ dotnet user-secrets set "Movies:ServiceApiKey" "12345" --project "C:\apps\WebApp
 
 [!code-json[](app-secrets/samples/2.x/UserSecrets/appsettings-unsecure.json?highlight=3)]
 
-Более безопасный подход заключается в хранении пароля в качестве секрета. Например:
+Более безопасный подход заключается в хранении пароля в качестве секрета. Пример:
 
 ```dotnetcli
 dotnet user-secrets set "DbPassword" "pass123"
 ```
 
-Удалите `Password` пары "ключ-значение" из строки подключения в *appSettings. JSON*. Например:
+Удалите `Password` пары "ключ-значение" из строки подключения в *appSettings. JSON*. Пример:
 
 [!code-json[](app-secrets/samples/2.x/UserSecrets/appsettings.json?highlight=3)]
 
@@ -410,6 +410,6 @@ No secrets configured for this application.
 
 ## <a name="additional-resources"></a>Дополнительные ресурсы
 
-* Сведения о доступе к диспетчеру секретов из IIS см. в [этой статье](https://github.com/aspnet/AspNetCore.Docs/issues/16328) .
+* Сведения о доступе к диспетчеру секретов из IIS см. в [этой статье](https://github.com/dotnet/AspNetCore.Docs/issues/16328) .
 * <xref:fundamentals/configuration/index>
 * <xref:security/key-vault-configuration>

@@ -6,25 +6,25 @@ ms.author: riande
 ms.date: 10/14/2016
 uid: migration/identity
 ms.openlocfilehash: f821930dbd36de18db31104cddf34c563009a506
-ms.sourcegitcommit: 476ea5ad86a680b7b017c6f32098acd3414c0f6c
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/14/2019
-ms.locfileid: "69022271"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78653014"
 ---
 # <a name="migrate-authentication-and-identity-to-aspnet-core"></a>Перенесите проверку подлинности и удостоверение в ASP.NET Core
 
 Автор: [Стив Смит](https://ardalis.com/) (Steve Smith)
 
-В предыдущей статье мы перенесли [конфигурацию из проекта ASP.NET MVC в ASP.NET Core MVC](xref:migration/configuration). В этой статье мы переносим функции регистрации, входа и управления пользователями.
+В предыдущей статье мы [перенесли конфигурацию из проекта ASP.NET MVC в ASP.NET Core MVC](xref:migration/configuration). В этой статье мы переносим функции регистрации, входа и управления пользователями.
 
 ## <a name="configure-identity-and-membership"></a>Настройка удостоверений и членства
 
 В ASP.NET MVC функции проверки подлинности и идентификации настраиваются с помощью ASP.NET Identity в *Startup.auth.CS* и *IdentityConfig.CS*, расположенных в папке *App_Start* . В ASP.NET Core MVC эти функции настраиваются в *Startup.CS*.
 
-Установите пакеты NuGet `Microsoft.AspNetCore.Authentication.Cookies`и. `Microsoft.AspNetCore.Identity.EntityFrameworkCore`
+Установите `Microsoft.AspNetCore.Identity.EntityFrameworkCore` и `Microsoft.AspNetCore.Authentication.Cookies` пакеты NuGet.
 
-Затем откройте *Startup.CS* и обновите `Startup.ConfigureServices` метод, чтобы использовать Entity Framework и службы удостоверений:
+Затем откройте *Startup.CS* и обновите метод `Startup.ConfigureServices`, чтобы использовать Entity Framework и службы удостоверений:
 
 ```csharp
 public void ConfigureServices(IServiceCollection services)
@@ -41,7 +41,7 @@ public void ConfigureServices(IServiceCollection services)
 }
 ```
 
-На этом этапе существует два типа, упоминаемых в приведенном выше коде, которые еще не перенесены из проекта MVC ASP.NET `ApplicationDbContext` : `ApplicationUser`и. Создайте новую папку *Models* в проекте ASP.NET Core и добавьте в нее два класса, соответствующие этим типам. Версии ASP.NET MVC этих классов можно найти в */Моделс/идентитимоделс.КС*, но мы будем использовать по одному файлу для каждого класса в перенесенном проекте, так как это более ясно.
+На этом этапе существует два типа, упоминаемых в приведенном выше коде, которые еще не перенесены из проекта ASP.NET MVC: `ApplicationDbContext` и `ApplicationUser`. Создайте новую папку *Models* в проекте ASP.NET Core и добавьте в нее два класса, соответствующие этим типам. Версии ASP.NET MVC этих классов можно найти в */Моделс/идентитимоделс.КС*, но мы будем использовать по одному файлу для каждого класса в перенесенном проекте, так как это более ясно.
 
 *ApplicationUser.CS*:
 
@@ -82,9 +82,9 @@ namespace NewMvcProject.Models
 }
 ```
 
-ASP.NET Coreный веб-проект MVC не включает в `ApplicationDbContext`себя значительную настройку пользователей или. При переносе реального приложения необходимо также перенести все пользовательские свойства и методы пользователя и `DbContext` классов приложения, а также любые другие классы модели, используемые вашим приложением. Например, если `DbSet<Album>`у вас `DbContext` есть, необходимо перенести `Album` класс.
+ASP.NET Coreный веб-проект MVC не включает в себя значительную настройку пользователей или `ApplicationDbContext`. При переносе реального приложения необходимо также перенести все пользовательские свойства и методы класса "пользователь и `DbContext`" приложения, а также любые другие классы модели, используемые приложением. Например, если в `DbContext` есть `DbSet<Album>`, необходимо выполнить миграцию класса `Album`.
 
-Используя эти файлы, можно выполнить компиляцию файла *Startup.CS* , обновив `using` инструкции:
+Используя эти файлы, можно выполнить компиляцию файла *Startup.CS* , обновив инструкции `using`:
 
 ```csharp
 using Microsoft.AspNetCore.Builder;
@@ -113,7 +113,7 @@ using Microsoft.Extensions.DependencyInjection;
 
 Теперь добавьте новое представление Razor с именем *_LoginPartial* в папку *views/Shared* .
 
-Обновите *_LoginPartial. cshtml* с помощью следующего кода (замените все его содержимое):
+Обновите *_LoginPartial. cshtml* со следующим кодом (замените все его содержимое):
 
 ```cshtml
 @inject SignInManager<ApplicationUser> SignInManager

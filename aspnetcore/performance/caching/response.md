@@ -6,18 +6,18 @@ monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.date: 11/04/2019
 uid: performance/caching/response
-ms.openlocfilehash: ab5d1414ae72edade81ab55aef6b0fa5af30f0f4
-ms.sourcegitcommit: 990a4c2e623c202a27f60bdf3902f250359c13be
+ms.openlocfilehash: 91358e2553d09c5e7366ba7a2301a798ad921d69
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 02/03/2020
-ms.locfileid: "76971980"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78651400"
 ---
 # <a name="response-caching-in-aspnet-core"></a>Кэширование ответов в ASP.NET Core
 
-[Джон Луо](https://github.com/JunTaoLuo), [Рик Андерсон (](https://twitter.com/RickAndMSFT), [Стив Смит](https://ardalis.com/)и [Люк ЛаСаМ](https://github.com/guardrex)
+[Джон Луо](https://github.com/JunTaoLuo), [Рик Андерсон (](https://twitter.com/RickAndMSFT)и [Виктор Смит](https://ardalis.com/)
 
-[Просмотреть или скачать образец кода](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/performance/caching/response/samples) ([как скачивать](xref:index#how-to-download-a-sample))
+[Просмотреть или скачать образец кода](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/performance/caching/response/samples) ([как скачивать](xref:index#how-to-download-a-sample))
 
 Кэширование ответов сокращает количество запросов к веб-серверу, которые клиент или прокси выполняет. Кэширование ответов также сокращает объем работы, выполняемой веб-сервером для создания ответа. Кэширование ответов управляется заголовками, которые определяют, как клиент, прокси-сервер и промежуточное по должны кэшировать ответы.
 
@@ -31,19 +31,19 @@ ms.locfileid: "76971980"
 
 В следующей таблице показаны общие директивы `Cache-Control`.
 
-| Directive                                                       | Действие |
+| Директива                                                       | Действие |
 | --------------------------------------------------------------- | ------ |
 | [public](https://tools.ietf.org/html/rfc7234#section-5.2.2.5)   | Ответ может храниться в кэше. |
 | [private](https://tools.ietf.org/html/rfc7234#section-5.2.2.6)  | Ответ не должен храниться в общем кэше. Частный кэш может хранить и повторно использовать ответ. |
 | [максимальный возраст](https://tools.ietf.org/html/rfc7234#section-5.2.1.1)  | Клиент не принимает ответ, возраст которого превышает указанное число секунд. Примеры: `max-age=60` (60 секунд), `max-age=2592000` (1 месяц) |
 | [без кэша](https://tools.ietf.org/html/rfc7234#section-5.2.1.4) | **В запросах**: кэш не должен использовать сохраненный ответ для удовлетворения запроса. Сервер источника повторно создает ответ для клиента, и по промежуточного слоя обновляет сохраненный ответ в своем кэше.<br><br>**В ответах**: ответ не должен использоваться для последующего запроса без проверки на сервере-источнике. |
-| [no-store](https://tools.ietf.org/html/rfc7234#section-5.2.1.5) | **В запросах**: кэш не должен сохранять запрос.<br><br>**В**ответах: кэш не должен хранить какую-либо часть ответа. |
+| [без магазина](https://tools.ietf.org/html/rfc7234#section-5.2.1.5) | **В запросах**: кэш не должен сохранять запрос.<br><br>**В**ответах: кэш не должен хранить какую-либо часть ответа. |
 
 Другие заголовки кэша, которые играют роль в кэшировании, показаны в следующей таблице.
 
-| Header                                                     | Функция |
+| Заголовок                                                     | Компонент |
 | ---------------------------------------------------------- | -------- |
-| [Интервал](https://tools.ietf.org/html/rfc7234#section-5.1)     | Оценка количества времени в секундах с момента создания или успешной проверки ответа на сервере источника. |
+| [Age](https://tools.ietf.org/html/rfc7234#section-5.1)     | Оценка количества времени в секундах с момента создания или успешной проверки ответа на сервере источника. |
 | [Истекает](https://tools.ietf.org/html/rfc7234#section-5.3) | Время, после которого ответ считается устаревшим. |
 | [Включают](https://tools.ietf.org/html/rfc7234#section-5.4)  | Существует для обеспечения обратной совместимости с кэшами HTTP/1.0 для настройки поведения `no-cache`. Если заголовок `Cache-Control` имеется, заголовок `Pragma` игнорируется. |
 | [Меняющие](https://tools.ietf.org/html/rfc7231#section-7.1.4)  | Указывает, что кэшированный ответ не должен отправляться, если все поля заголовка `Vary` не совпадают как в исходном запросе, так и в новом запросе кэшированного ответа. |
@@ -62,25 +62,25 @@ ms.locfileid: "76971980"
 
 В процессе кэширования в памяти используется память сервера для хранения кэшированных данных. Этот тип кэширования подходит для одного сервера или нескольких серверов, использующих *закрепленные сеансы*. Прикрепленные сеансы означает, что запросы от клиента всегда направляются на один и тот же сервер для обработки.
 
-Для получения дополнительной информации см. <xref:performance/caching/memory>.
+Дополнительные сведения см. в разделе <xref:performance/caching/memory>.
 
 ### <a name="distributed-cache"></a>Распределенный кэш
 
 Используйте распределенный кэш для хранения данных в памяти, когда приложение размещается в облаке или ферме серверов. Кэш является общим для серверов, обрабатывающих запросы. Клиент может отправить запрос, который обрабатывается любым сервером в группе, если доступны кэшированные данные для клиента. ASP.NET Core работает с распределенными кэшами SQL Server, [Redis](https://www.nuget.org/packages/Microsoft.Extensions.Caching.StackExchangeRedis)и [NCache](https://www.nuget.org/packages/Alachisoft.NCache.OpenSource.SDK/) .
 
-Для получения дополнительной информации см. <xref:performance/caching/distributed>.
+Дополнительные сведения см. в разделе <xref:performance/caching/distributed>.
 
 ### <a name="cache-tag-helper"></a>Вспомогательная функция тега кэша
 
 Кэширование содержимого из представления MVC или страницы Razor с помощью вспомогательной функции тега кэша. Вспомогательная функция тега кэша использует кэширование в памяти для хранения данных.
 
-Для получения дополнительной информации см. <xref:mvc/views/tag-helpers/builtin-th/cache-tag-helper>.
+Дополнительные сведения см. в разделе <xref:mvc/views/tag-helpers/builtin-th/cache-tag-helper>.
 
 ### <a name="distributed-cache-tag-helper"></a>Вспомогательная функция тега распределенного кэша
 
 Кэширование содержимого из представления MVC или Razor в распределенном облаке или в сценариях веб-фермы с помощью вспомогательной функции тега распределенного кэша. Вспомогательная функция тега распределенного кэша использует SQL Server, [Redis](https://www.nuget.org/packages/Microsoft.Extensions.Caching.StackExchangeRedis)или [NCache](https://www.nuget.org/packages/Alachisoft.NCache.OpenSource.SDK/) для хранения данных.
 
-Для получения дополнительной информации см. <xref:mvc/views/tag-helpers/builtin-th/distributed-cache-tag-helper>.
+Дополнительные сведения см. в разделе <xref:mvc/views/tag-helpers/builtin-th/distributed-cache-tag-helper>.
 
 ## <a name="responsecache-attribute"></a>Атрибут Респонсекаче
 
@@ -124,8 +124,8 @@ Vary: User-Agent
 
 <xref:Microsoft.AspNetCore.Mvc.CacheProfile.NoStore> переопределяет большинство других свойств. Если это свойство имеет значение `true`, заголовок `Cache-Control` имеет значение `no-store`. Если <xref:Microsoft.AspNetCore.Mvc.CacheProfile.Location> имеет значение `None`:
 
-* Параметру `Cache-Control` задается значение `no-store,no-cache`.
-* Параметру `Pragma` задается значение `no-cache`.
+* `Cache-Control` задан как `no-store,no-cache`.
+* `Pragma` задан как `no-cache`.
 
 Если <xref:Microsoft.AspNetCore.Mvc.CacheProfile.NoStore> имеет значение `false` а <xref:Microsoft.AspNetCore.Mvc.CacheProfile.Location> — `None`, `Cache-Control`и `Pragma` — `no-cache`.
 
