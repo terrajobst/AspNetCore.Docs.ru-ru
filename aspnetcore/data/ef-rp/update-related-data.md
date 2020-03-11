@@ -1,16 +1,16 @@
 ---
 title: Razor Pages с EF Core в ASP.NET Core — обновление связанных данных — 7 из 8
-author: tdykstra
+author: rick-anderson
 description: В этом учебнике вы обновите связанные данные путем обновления полей внешнего ключа и свойств навигации.
 ms.author: riande
 ms.date: 07/22/2019
 uid: data/ef-rp/update-related-data
-ms.openlocfilehash: bc237cf928d852b92c5c1984527129404f88018d
-ms.sourcegitcommit: 257cc3fe8c1d61341aa3b07e5bc0fa3d1c1c1d1c
+ms.openlocfilehash: fdfdb14ff8414b8bf30f9b95be7ba0a6bcbd2995
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69583492"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78645460"
 ---
 # <a name="razor-pages-with-ef-core-in-aspnet-core---update-related-data---7-of-8"></a>Razor Pages с EF Core в ASP.NET Core — обновление связанных данных — 7 из 8
 
@@ -48,6 +48,8 @@ ms.locfileid: "69583492"
 Измените файл *Pages/Courses/Create.cshtml.cs*, используя следующий код:
 
 [!code-csharp[](intro/samples/cu30/Pages/Courses/Create.cshtml.cs?highlight=7,18,27-41)]
+
+[!INCLUDE[about the series](~/includes/code-comments-loc.md)]
 
 Предыдущий код:
 
@@ -235,7 +237,7 @@ ms.locfileid: "69583492"
 
 ::: moniker range="< aspnetcore-3.0"
 
-В этом учебнике демонстрируется обновление связанных данных. При возникновении проблем, которые вам не удается устранить, [скачайте или просмотрите готовое приложение.](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/data/ef-rp/intro/samples) [Указания по скачиванию](xref:index#how-to-download-a-sample).
+В этом учебнике демонстрируется обновление связанных данных. При возникновении проблем, которые вам не удается устранить, [скачайте или просмотрите готовое приложение.](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/data/ef-rp/intro/samples) [Указания по скачиванию](xref:index#how-to-download-a-sample).
 
 На следующих рисунках изображены некоторые готовые страницы.
 

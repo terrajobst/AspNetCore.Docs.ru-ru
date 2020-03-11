@@ -10,8 +10,8 @@
 
 Требуется базовое представление о [Git и GitHub.com](https://guides.github.com/activities/hello-world/).
 
-* Откройте [проблему](https://github.com/aspnet/Docs/issues/new), описывающую, что нужно сделать, например изменить существующую статью или создать новую. Мы часто запрашиваем краткое содержание предлагаемой статьи. Дождитесь от нас одобрения, прежде чем тратить время.
-* Создайте вилку репозитория [aspnet/Docs](https://github.com/aspnet/Docs/) и создайте ветвь для изменений.
+* Откройте [проблему](https://github.com/dotnet/AspNetCore.Docs/issues/new), описывающую, что нужно сделать, например изменить существующую статью или создать новую. Мы часто запрашиваем краткое содержание предлагаемой статьи. Дождитесь от нас одобрения, прежде чем тратить время.
+* Создайте вилку репозитория [aspnet/Docs](https://github.com/dotnet/AspNetCore.Docs/) и создайте ветвь для изменений.
 * Отправьте запрос на вытягивание в главную ветвь с вашими изменениями.
 * Если запрос на вытягивание имеет метку "cla-required", [примите лицензионное соглашение с участником (CLA)](https://cla.dotnetfoundation.org/).
 * Ответьте на обратную связь по запросу на вытягивание.
@@ -28,7 +28,7 @@
 
 ## <a name="folder-structure-conventions"></a>Соглашения о структуре папок
 
-Для каждого файла Markdown могут существовать папка для изображений и папка для примера кода. Если это статья в виде файла [fundamentals/configuration/index.md](https://github.com/aspnet/Docs/blob/master/aspnetcore/fundamentals/configuration/index.md), изображения находятся в папке [fundamentals/configuration/index/\_static](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/configuration/index/_static), а пример файлов проекта приложения — в папке [fundamentals/configuration/index/sample](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/configuration/index/sample). Изображение в файле *fundamentals/configuration/index.md* обрабатывается по следующим правилам Markdown:
+Для каждого файла Markdown могут существовать папка для изображений и папка для примера кода. Если это статья в виде файла [fundamentals/configuration/index.md](https://github.com/dotnet/AspNetCore.Docs/blob/master/aspnetcore/fundamentals/configuration/index.md), изображения находятся в папке [fundamentals/configuration/index/\_static](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/configuration/index/_static), а пример файлов проекта приложения — в папке [fundamentals/configuration/index/sample](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/configuration/index/sample). Изображение в файле *fundamentals/configuration/index.md* обрабатывается по следующим правилам Markdown:
 
 ```md
 ![description of image for alt attribute](configuration/index/_static/imagename.png)
@@ -157,4 +157,4 @@ DocFX требует:
 
 ## <a name="redirects"></a>Перенаправление
 
-Если вы удаляете статью, измените ее имя файла или переместите ее в другую папку, создайте перенаправление, чтобы пользователи, добавившие статью в закладки, не получали ошибку *404 Не найдено*. Добавьте перенаправление [в главный файл перенаправления](https://github.com/aspnet/Docs/blob/master/.openpublishing.redirection.json).
+Если вы удаляете статью, измените ее имя файла или переместите ее в другую папку, создайте перенаправление, чтобы пользователи, добавившие статью в закладки, не получали ошибку *404 Не найдено*. Добавьте перенаправление [в главный файл перенаправления](https://github.com/dotnet/AspNetCore.Docs/blob/master/.openpublishing.redirection.json).

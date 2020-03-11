@@ -9,11 +9,11 @@ products:
 - vs
 urlFragment: create-grpc-client
 ms.openlocfilehash: b9feb9eed62177358fffc0d7da582f625a431e32
-ms.sourcegitcommit: 9e85c2562df5e108d7933635c830297f484bb775
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73463044"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78648160"
 ---
 # <a name="create-a-grpc-client-and-server-in-aspnet-core-30-using-visual-studio"></a>Создание клиента и сервера gRPC в ASP.NET Core 3.0 с помощью Visual Studio
 
@@ -29,7 +29,7 @@ ms.locfileid: "73463044"
 
 ## <a name="create-a-grpc-service"></a>Создание службы gRPC
 
-* В меню **Файл** Visual Studio откройте меню **Создать** > **Проект**.
+* В меню **Файл** Visual Studio откройте **Создать** > **Проект**.
 * В диалоговом окне **Создать проект** выберите **Веб-приложение ASP.NET Core**.
 * Выберите **Далее**
 * Присвойте проекту имя **GrpcGreeter**. Для проекта необходимо установить имя *GrpcGreeter*, чтобы при копировании и вставке кода совпадали пространства имен.
@@ -68,8 +68,8 @@ info: Microsoft.Hosting.Lifetime[0]
 
 * *greet.proto*: Файл *Protos/greet.proto* определяет службу gRPC `Greeter` и используется для создания ресурсов сервера gRPC. Дополнительные сведения см. в разделе [Введение в gRPC](xref:grpc/index).
 * Папка *Services* содержит реализацию службы `Greeter`.
-* *appSettings.json*: содержит данные конфигурации, такие как протокол, используемый в Kestrel. Дополнительные сведения можно найти по адресу: <xref:fundamentals/configuration/index>.
-* *Program.cs*: содержит точку входа для службы gRPC. Дополнительные сведения можно найти по адресу: <xref:fundamentals/host/generic-host>.
+* *appSettings.json*: содержит данные конфигурации, такие как протокол, используемый в Kestrel. Для получения дополнительной информации см. <xref:fundamentals/configuration/index>.
+* *Program.cs*: содержит точку входа для службы gRPC. Для получения дополнительной информации см. <xref:fundamentals/host/generic-host>.
 * *Startup.cs*: содержит код, задающий поведение приложения. Дополнительные сведения: [Запуск приложения](xref:fundamentals/startup).
 
 ## <a name="create-the-grpc-client-in-a-net-console-app"></a>Создание клиента gRPC в консольном приложении .NET

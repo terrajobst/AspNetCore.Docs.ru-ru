@@ -10,12 +10,12 @@ no-loc:
 - Blazor
 - SignalR
 uid: tutorials/signalr-blazor-webassembly
-ms.openlocfilehash: d3605c0823e9ec3ce34fb781da66a7470aa00622
-ms.sourcegitcommit: 0e21d4f8111743bcb205a2ae0f8e57910c3e8c25
+ms.openlocfilehash: 765595863cb18c889c36b756392bc8163e73c591
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77034147"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78649762"
 ---
 # <a name="use-aspnet-core-signalr-with-blazor-webassembly"></a>Использование SignalR для ASP.NET Core с Blazor WebAssembly
 
@@ -34,23 +34,23 @@ ms.locfileid: "77034147"
 
 Когда вы выполните задачи из этого руководства, у вас будет работающее приложение чата.
 
-[Просмотреть или скачать образец кода](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/tutorials/signalr-blazor-webassembly/samples/) ([как скачивать](xref:index#how-to-download-a-sample))
+[Просмотреть или скачать образец кода](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/tutorials/signalr-blazor-webassembly/samples/) ([как скачивать](xref:index#how-to-download-a-sample))
 
 ## <a name="prerequisites"></a>Предварительные требования
 
-# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
+# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 [!INCLUDE[](~/includes/net-core-prereqs-vs-3.1.md)]
 
-# <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
+# <a name="visual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
 [!INCLUDE[](~/includes/net-core-prereqs-vsc-3.1.md)]
 
-# <a name="visual-studio-for-mactabvisual-studio-mac"></a>[Visual Studio для Mac](#tab/visual-studio-mac)
+# <a name="visual-studio-for-mac"></a>[Visual Studio для Mac](#tab/visual-studio-mac)
 
 [!INCLUDE[](~/includes/net-core-prereqs-mac-3.1.md)]
 
-# <a name="net-core-clitabnetcore-cli"></a>[Интерфейс командной строки .NET Core](#tab/netcore-cli/)
+# <a name="net-core-cli"></a>[Интерфейс командной строки .NET Core](#tab/netcore-cli/)
 
 [!INCLUDE[](~/includes/3.1-SDK.md)]
 
@@ -66,7 +66,7 @@ dotnet new -i Microsoft.AspNetCore.Blazor.Templates::3.2.0-preview1.20073.1
 
 Следуйте указаниям по выбору инструментов:
 
-# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
+# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 1. Создайте новый проект.
 
@@ -83,7 +83,7 @@ dotnet new -i Microsoft.AspNetCore.Blazor.Templates::3.2.0-preview1.20073.1
 > [!NOTE]
 > Если вы обновили или установили новую версию Visual Studio, а шаблон Blazor WebAssembly не отображается в пользовательском интерфейсе VS, переустановите шаблон с помощью команды `dotnet new` (см. выше).
 
-# <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
+# <a name="visual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
 1. В командной оболочке выполните следующую команду:
 
@@ -95,7 +95,7 @@ dotnet new -i Microsoft.AspNetCore.Blazor.Templates::3.2.0-preview1.20073.1
 
 1. Когда откроется диалоговое окно для добавления ресурсов создания и отладки приложения, выберите **Да**. Visual Studio Code автоматически добавит папку *.vscode* с файлами *launch.json* и *tasks.json*.
 
-# <a name="visual-studio-for-mactabvisual-studio-mac"></a>[Visual Studio для Mac](#tab/visual-studio-mac)
+# <a name="visual-studio-for-mac"></a>[Visual Studio для Mac](#tab/visual-studio-mac)
 
 1. В командной оболочке выполните следующую команду:
 
@@ -105,7 +105,7 @@ dotnet new -i Microsoft.AspNetCore.Blazor.Templates::3.2.0-preview1.20073.1
 
 1. В Visual Studio для Mac откройте проект. Для этого перейдите к его папке и откройте файл решения проекта ( *.sln*).
 
-# <a name="net-core-clitabnetcore-cli"></a>[Интерфейс командной строки .NET Core](#tab/netcore-cli/)
+# <a name="net-core-cli"></a>[Интерфейс командной строки .NET Core](#tab/netcore-cli/)
 
 В командной оболочке выполните следующую команду:
 
@@ -117,7 +117,7 @@ dotnet new blazorwasm --hosted --output BlazorSignalRApp
 
 ## <a name="add-the-signalr-client-library"></a>Добавление клиентской библиотеки SignalR
 
-# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio/)
+# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio/)
 
 1. В **обозревателе решений** щелкните правой кнопкой мыши проект **BlazorSignalRApp.Client** и выберите **Управление пакетами NuGet**.
 
@@ -131,7 +131,7 @@ dotnet new blazorwasm --hosted --output BlazorSignalRApp
 
 1. Если откроется диалоговое окно **Принятие условий лицензионного соглашения**, выберите **Я принимаю**, если принимаете условия.
 
-# <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code/)
+# <a name="visual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code/)
 
 Во **встроенном терминале** (**Просмотр** > **Терминал** на панели инструментов) выполните следующие команды:
 
@@ -139,7 +139,7 @@ dotnet new blazorwasm --hosted --output BlazorSignalRApp
 dotnet add Client package Microsoft.AspNetCore.SignalR.Client
 ```
 
-# <a name="visual-studio-for-mactabvisual-studio-mac"></a>[Visual Studio для Mac](#tab/visual-studio-mac)
+# <a name="visual-studio-for-mac"></a>[Visual Studio для Mac](#tab/visual-studio-mac)
 
 1. На боковой панели **Решение** щелкните правой кнопкой мыши проект **BlazorSignalRApp.Client** и выберите пункт **Управление пакетами NuGet**.
 
@@ -151,7 +151,7 @@ dotnet add Client package Microsoft.AspNetCore.SignalR.Client
 
 1. Если откроется диалоговое окно **Принятие условий лицензионного соглашения**, выберите **Принять**, чтобы принять условия.
 
-# <a name="net-core-clitabnetcore-cli"></a>[Интерфейс командной строки .NET Core](#tab/netcore-cli/)
+# <a name="net-core-cli"></a>[Интерфейс командной строки .NET Core](#tab/netcore-cli/)
 
 В командной оболочке выполните следующие команды:
 
@@ -200,7 +200,7 @@ dotnet add Client package Microsoft.AspNetCore.SignalR.Client
 
 1. Следуйте указаниям по выбору инструментов:
 
-# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
+# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 1. В **обозревателе решений** выберите проект **BlazorSignalRApp.Server**. Нажмите клавиши **CTRL+F5**, чтобы запустить приложение без отладки.
 
@@ -212,7 +212,7 @@ dotnet add Client package Microsoft.AspNetCore.SignalR.Client
 
    Цитаты: *Звездный путь VI. Неоткрытая страна* &copy;1991 [Paramount](https://www.paramountmovies.com/movies/star-trek-vi-the-undiscovered-country)
 
-# <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
+# <a name="visual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
 1. Выберите на панели инструментов **Отладка** > **Запустить без отладки**.
 
@@ -224,7 +224,7 @@ dotnet add Client package Microsoft.AspNetCore.SignalR.Client
 
    Цитаты: *Звездный путь VI. Неоткрытая страна* &copy;1991 [Paramount](https://www.paramountmovies.com/movies/star-trek-vi-the-undiscovered-country)
 
-# <a name="visual-studio-for-mactabvisual-studio-mac"></a>[Visual Studio для Mac](#tab/visual-studio-mac)
+# <a name="visual-studio-for-mac"></a>[Visual Studio для Mac](#tab/visual-studio-mac)
 
 1. На боковой панели **Решение** выберите проект **BlazorSignalRApp.Server**. В меню выберите **Запуск** > **Запустить без отладки**.
 
@@ -236,7 +236,7 @@ dotnet add Client package Microsoft.AspNetCore.SignalR.Client
 
    Цитаты: *Звездный путь VI. Неоткрытая страна* &copy;1991 [Paramount](https://www.paramountmovies.com/movies/star-trek-vi-the-undiscovered-country)
 
-# <a name="net-core-clitabnetcore-cli"></a>[Интерфейс командной строки .NET Core](#tab/netcore-cli/)
+# <a name="net-core-cli"></a>[Интерфейс командной строки .NET Core](#tab/netcore-cli/)
 
 1. В командной оболочке выполните следующие команды:
 

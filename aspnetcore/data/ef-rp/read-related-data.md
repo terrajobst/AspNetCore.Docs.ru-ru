@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 09/28/2019
 uid: data/ef-rp/read-related-data
-ms.openlocfilehash: 5feed175999bf021cadc7e18f14e00066b50db5b
-ms.sourcegitcommit: 7d3c6565dda6241eb13f9a8e1e1fd89b1cfe4d18
+ms.openlocfilehash: d244ce1527486466bcbc6557ec35869aa206bc4f
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72259678"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78645592"
 ---
 # <a name="razor-pages-with-ef-core-in-aspnet-core---read-related-data---6-of-8"></a>Razor Pages с EF Core в ASP.NET Core — чтение связанных данных — 6 из 8
 
@@ -48,7 +48,7 @@ ms.locfileid: "72259678"
 
   Примечание. EF Core автоматически исправляет свойства навигации для других сущностей, которые были ранее загружены в экземпляр контекста. Даже если данные для свойства навигации *не* включены явно, свойство все равно можно заполнить при условии, что ранее были загружены некоторые или все связанные сущности.
 
-* [Явная загрузка](/ef/core/querying/related-data#explicit-loading). При первом чтении сущности связанные данные не извлекаются. Нужно написать код, извлекающий связанные данные, когда они необходимы. Явная загрузка с отдельными запросами приводит к отправке нескольких запросов к базе данных. При явной загрузке код указывает, какие свойства навигации нужно загрузить. Для выполнения явной загрузки используется метод `Load`. Например:
+* [Явная загрузка](/ef/core/querying/related-data#explicit-loading). При первом чтении сущности связанные данные не извлекаются. Нужно написать код, извлекающий связанные данные, когда они необходимы. Явная загрузка с отдельными запросами приводит к отправке нескольких запросов к базе данных. При явной загрузке код указывает, какие свойства навигации нужно загрузить. Для выполнения явной загрузки используется метод `Load`. Пример:
 
   ![Пример явной загрузки](read-related-data/_static/explicit-loading.png)
 
@@ -69,7 +69,7 @@ ms.locfileid: "72259678"
 
 ### <a name="scaffold-course-pages"></a>Формирование шаблона для страниц курсов
 
-# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
+# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 * Следуйте инструкциям в разделе [Формирование шаблона для страниц Student](xref:data/ef-rp/intro#scaffold-student-pages), за исключением следующего:
 
@@ -77,7 +77,7 @@ ms.locfileid: "72259678"
   * Используйте класс модели `Course`.
   * Используйте существующий класс контекста вместо создания нового.
 
-# <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
+# <a name="visual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
 * Создайте папку *Pages/Courses*.
 
@@ -141,7 +141,7 @@ ms.locfileid: "72259678"
 
 [!code-csharp[](intro/samples/cu30snapshots/6-related/Models/SchoolViewModels/CourseViewModel.cs?name=snippet)]
 
-Полный пример см. в описании [IndexSelect.cshtml](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/data/ef-rp/intro/samples/cu30snapshots/6-related/Pages/Courses/IndexSelect.cshtml) и [IndexSelect.cshtml.cs](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/data/ef-rp/intro/samples/cu30snapshots/6-related/Pages/Courses/IndexSelect.cshtml.cs).
+Полный пример см. в описании [IndexSelect.cshtml](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/data/ef-rp/intro/samples/cu30snapshots/6-related/Pages/Courses/IndexSelect.cshtml) и [IndexSelect.cshtml.cs](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/data/ef-rp/intro/samples/cu30snapshots/6-related/Pages/Courses/IndexSelect.cshtml.cs).
 
 ## <a name="create-instructor-pages"></a>Создание страниц преподавателей
 
@@ -166,7 +166,7 @@ ms.locfileid: "72259678"
 
 ### <a name="scaffold-instructor-pages"></a>Формирование шаблона для страниц преподавателей
 
-# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
+# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 * Следуйте инструкциям в разделе [Формирование шаблона для страниц Student](xref:data/ef-rp/intro#scaffold-student-pages), за исключением следующего:
 
@@ -174,7 +174,7 @@ ms.locfileid: "72259678"
   * Используйте класс модели `Instructor`.
   * Используйте существующий класс контекста вместо создания нового.
 
-# <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
+# <a name="visual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
 * Создайте папку *Pages/Instructors*.
 
@@ -332,7 +332,7 @@ ms.locfileid: "72259678"
 
 В этом руководстве выполняется чтение и отображение связанных данных. Связанными называются данные, которые EF Core загружает в свойства навигации.
 
-При возникновении проблем, которые вам не удается устранить, [скачайте или просмотрите готовое приложение.](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/data/ef-rp/intro/samples) [Указания по скачиванию](xref:index#how-to-download-a-sample).
+При возникновении проблем, которые вам не удается устранить, [скачайте или просмотрите готовое приложение.](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/data/ef-rp/intro/samples) [Указания по скачиванию](xref:index#how-to-download-a-sample).
 
 На следующих рисунках изображены готовые страницы для этого руководства:
 
@@ -359,7 +359,7 @@ ms.locfileid: "72259678"
 
   Примечание. EF Core автоматически исправляет свойства навигации для других сущностей, которые были ранее загружены в экземпляр контекста. Даже если данные для свойства навигации *не* включены явно, свойство все равно можно заполнить при условии, что ранее были загружены некоторые или все связанные сущности.
 
-* [Явная загрузка](/ef/core/querying/related-data#explicit-loading). При первом чтении сущности связанные данные не извлекаются. Нужно написать код, извлекающий связанные данные, когда они необходимы. Явная загрузка с отдельными запросами приводит к отправке нескольких запросов к базе данных. При явной загрузке код указывает, какие свойства навигации нужно загрузить. Для выполнения явной загрузки используется метод `Load`. Например:
+* [Явная загрузка](/ef/core/querying/related-data#explicit-loading). При первом чтении сущности связанные данные не извлекаются. Нужно написать код, извлекающий связанные данные, когда они необходимы. Явная загрузка с отдельными запросами приводит к отправке нескольких запросов к базе данных. При явной загрузке код указывает, какие свойства навигации нужно загрузить. Для выполнения явной загрузки используется метод `Load`. Пример:
 
   ![Пример явной загрузки](read-related-data/_static/explicit-loading.png)
 
@@ -382,11 +382,11 @@ ms.locfileid: "72259678"
 
 ### <a name="scaffold-the-course-model"></a>Формирование шаблона для модели Course
 
-# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio) 
+# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio) 
 
 Следуйте инструкциям в разделе [Формирование шаблона для модели Student](xref:data/ef-rp/intro#scaffold-the-student-model) и используйте `Course` для класса модели.
 
-# <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
+# <a name="visual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
  Выполните следующую команду:
 
@@ -444,7 +444,7 @@ ms.locfileid: "72259678"
 
 [!code-csharp[](intro/samples/cu/Models/SchoolViewModels/CourseViewModel.cs?name=snippet)]
 
-Полный пример см. в описании [IndexSelect.cshtml](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/data/ef-rp/intro/samples/cu/Pages/Courses/IndexSelect.cshtml) и [IndexSelect.cshtml.cs](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/data/ef-rp/intro/samples/cu/Pages/Courses/IndexSelect.cshtml.cs).
+Полный пример см. в описании [IndexSelect.cshtml](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/data/ef-rp/intro/samples/cu/Pages/Courses/IndexSelect.cshtml) и [IndexSelect.cshtml.cs](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/data/ef-rp/intro/samples/cu/Pages/Courses/IndexSelect.cshtml.cs).
 
 ## <a name="create-an-instructors-page-that-shows-courses-and-enrollments"></a>Создание страницы "Instructors" (Преподаватели) с отображением курсов и дат зачисления
 
@@ -469,11 +469,11 @@ ms.locfileid: "72259678"
 
 ### <a name="scaffold-the-instructor-model"></a>Формирование шаблона для модели "Instructor" (Преподаватель)
 
-# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio) 
+# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio) 
 
 Следуйте инструкциям в разделе [Формирование шаблона для модели Student](xref:data/ef-rp/intro#scaffold-the-student-model) и используйте `Instructor` для класса модели.
 
-# <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
+# <a name="visual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
  Выполните следующую команду:
 

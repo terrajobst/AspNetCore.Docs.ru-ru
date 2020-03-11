@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 07/22/2019
 uid: data/ef-rp/concurrency
-ms.openlocfilehash: 944e746624bf5fe7c586a521059fa4eb34b0f1e7
-ms.sourcegitcommit: 7d3c6565dda6241eb13f9a8e1e1fd89b1cfe4d18
+ms.openlocfilehash: c4d43f26ba80e7922c3cbd37d9a5f8e1561b11ad
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72259381"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78645880"
 ---
 # <a name="razor-pages-with-ef-core-in-aspnet-core---concurrency---8-of-8"></a>Razor Pages с EF Core в ASP.NET Core — параллелизм — 8 из 8
 
@@ -98,7 +98,7 @@ modelBuilder.Entity<Department>()
   .IsRowVersion();
 ```
 
-# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
+# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 Для базы данных SQL Server атрибут `[Timestamp]` свойства сущности, определенного как массив байтов, делает следующее:
 
@@ -123,7 +123,7 @@ modelBuilder.Entity<Department>()
 
 [@@ROWCOUNT](/sql/t-sql/functions/rowcount-transact-sql) возвращает число строк, затронутых при выполнении последнего оператора. Если строки не обновляются, EF Core создает исключение `DbUpdateConcurrencyException`.
 
-# <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
+# <a name="visual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
 Для базы данных SQLite атрибут `[Timestamp]` свойства сущности, определенного как массив байтов, делает следующее:
 
@@ -144,7 +144,7 @@ modelBuilder.Entity<Department>()
 
 Выполните построение проекта. 
 
-# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
+# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 * Выполните следующую команду в PMC:
 
@@ -152,7 +152,7 @@ modelBuilder.Entity<Department>()
   Add-Migration RowVersion
   ```
 
-# <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
+# <a name="visual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
 * В терминале выполните следующую команду:
 
@@ -169,7 +169,7 @@ modelBuilder.Entity<Department>()
 
   [!code-csharp[](intro/samples/cu30/Migrations/SchoolContextModelSnapshot.cs?name=snippet_Department&highlight=15-17)]
 
-# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
+# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 * Выполните следующую команду в PMC:
 
@@ -177,7 +177,7 @@ modelBuilder.Entity<Department>()
   Update-Database
   ```
 
-# <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
+# <a name="visual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
 * Откройте файл `Migrations/<timestamp>_RowVersion.cs` и добавьте в него выделенный код.
 
@@ -200,7 +200,7 @@ modelBuilder.Entity<Department>()
 
 ## <a name="scaffold-department-pages"></a>Формирование шаблона страниц кафедр
 
-# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
+# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 * Следуйте инструкциям в разделе [Формирование шаблона для страниц Student](xref:data/ef-rp/intro#scaffold-student-pages), за исключением следующего:
 
@@ -208,7 +208,7 @@ modelBuilder.Entity<Department>()
 * Используйте класс модели `Department`.
   * Используйте существующий класс контекста вместо создания нового.
 
-# <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
+# <a name="visual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
 * Создайте папку *Pages/Departments*.
 
@@ -363,7 +363,7 @@ modelBuilder.Entity<Department>()
 
 * [Токены параллелизма в EF Core](/ef/core/modeling/concurrency)
 * [Обработка параллелизма в EF Core](/ef/core/saving/concurrency)
-* [Отладка источника ASP.NET Core 2.x](https://github.com/aspnet/AspNetCore.Docs/issues/4155)
+* [Отладка источника ASP.NET Core 2.x](https://github.com/dotnet/AspNetCore.Docs/issues/4155)
 
 ## <a name="next-steps"></a>Следующие шаги
 
@@ -376,7 +376,7 @@ modelBuilder.Entity<Department>()
 
 ::: moniker range="< aspnetcore-3.0"
 
-Это руководство описывает, как обрабатывать конфликты, когда несколько пользователей параллельно (одновременно) изменяют одну сущность. При возникновении проблем, которые вам не удается устранить, [скачайте или просмотрите готовое приложение.](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/data/ef-rp/intro/samples) [Указания по скачиванию](xref:index#how-to-download-a-sample).
+Это руководство описывает, как обрабатывать конфликты, когда несколько пользователей параллельно (одновременно) изменяют одну сущность. При возникновении проблем, которые вам не удается устранить, [скачайте или просмотрите готовое приложение.](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/data/ef-rp/intro/samples) [Указания по скачиванию](xref:index#how-to-download-a-sample).
 
 ## <a name="concurrency-conflicts"></a>Конфликты параллелизма
 
@@ -512,11 +512,11 @@ dotnet ef database update
 
 ## <a name="scaffold-the-departments-model"></a>Формирование шаблона для модели кафедр
 
-# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio) 
+# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio) 
 
 Следуйте инструкциям в разделе [Формирование шаблона для модели Student](xref:data/ef-rp/intro#scaffold-student-pages) и используйте `Department` для класса модели.
 
-# <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
+# <a name="visual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
  Выполните следующую команду:
 

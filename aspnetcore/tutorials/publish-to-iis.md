@@ -1,22 +1,20 @@
 ---
 title: Публикация приложения ASP.NET Core в службах IIS
-author: guardrex
+author: rick-anderson
 description: Узнайте, как разместить приложение ASP.NET Core на сервере служб IIS.
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
 ms.date: 10/03/2019
 uid: tutorials/publish-to-iis
-ms.openlocfilehash: 820527cc15f883c906d2fdf1c073d443a5b3b40e
-ms.sourcegitcommit: d8b12cc1716ee329d7bd2300e201b61e15d506ac
+ms.openlocfilehash: f3860ba6ca7b99e63000ba0066749751f80cdc23
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71942885"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78646624"
 ---
 # <a name="publish-an-aspnet-core-app-to-iis"></a>Публикация приложения ASP.NET Core в службах IIS
-
-Автор [Люк Латэм](https://github.com/guardrex) (Luke Latham)
 
 В этом руководстве описывается, как разместить приложение ASP.NET Core на сервере служб IIS.
 
@@ -72,7 +70,7 @@ ms.locfileid: "71942885"
 * Приложение публикуется в папке.
 * Содержимое папки перемещается в папку на сайте IIS (**физический путь** к сайту в диспетчере IIS).
 
-# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
+# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 1. В **обозревателе решений** щелкните правой кнопкой мыши проект и выберите **Опубликовать**.
 1. В диалоговом оке **Выберите целевой объект публикации** выберите вариант публикации **Папка**.
@@ -80,7 +78,7 @@ ms.locfileid: "71942885"
    * Если вы создали для сайта IIS папку, доступную на компьютере разработки в качестве сетевой папки, укажите путь к общей папке. Для публикации в общей папке текущий пользователь должен иметь доступ на запись.
    * Если выполнить развертывание непосредственно в папке сайта IIS на сервере IIS невозможно, опубликуйте приложение в папке на съемном носителе и физически переместите опубликованное приложение в папку сайта IIS на сервере, которая является **физическим путем** сайта в диспетчере IIS. Переместите содержимое папки *bin/Release/{ЦЕЛЕВАЯ ПЛАТФОРМА}/publish* в папку сайта IIS на сервере, которая является **физическим путем** сайта в диспетчере IIS.
 
-# <a name="net-core-clitabnetcore-cli"></a>[Интерфейс командной строки .NET Core](#tab/netcore-cli)
+# <a name="net-core-cli"></a>[Интерфейс командной строки .NET Core](#tab/netcore-cli)
 
 1. В командной оболочке опубликуйте приложение в конфигурации выпуска, выполнив команду [dotnet publish](/dotnet/core/tools/dotnet-publish):
 
@@ -90,7 +88,7 @@ ms.locfileid: "71942885"
 
 1. Переместите содержимое папки *bin/Release/{ЦЕЛЕВАЯ ПЛАТФОРМА}/publish* в папку сайта IIS на сервере, которая является **физическим путем** сайта в диспетчере IIS.
 
-# <a name="visual-studio-for-mactabvisual-studio-mac"></a>[Visual Studio для Mac](#tab/visual-studio-mac)
+# <a name="visual-studio-for-mac"></a>[Visual Studio для Mac](#tab/visual-studio-mac)
 
 1. В **обозревателе решений** щелкните правой кнопкой мыши проект и выберите пункты **Опубликовать** > **Опубликовать в папку**.
 1. Укажите путь в поле **Выберите папку**.

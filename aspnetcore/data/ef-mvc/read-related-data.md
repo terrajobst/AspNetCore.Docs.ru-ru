@@ -6,12 +6,12 @@ ms.author: riande
 ms.date: 09/28/2019
 ms.topic: tutorial
 uid: data/ef-mvc/read-related-data
-ms.openlocfilehash: 1a16f905669d0192d713cbba9bfc6e3e75008b5d
-ms.sourcegitcommit: 7d3c6565dda6241eb13f9a8e1e1fd89b1cfe4d18
+ms.openlocfilehash: a6e63723101ab09219db81ee9796c3938a612226
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72259422"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78646030"
 ---
 # <a name="tutorial-read-related-data---aspnet-mvc-with-ef-core"></a>Учебник. Использование ASP.NET MVC с EF Core. Чтение связанных данных
 
@@ -47,7 +47,7 @@ ms.locfileid: "72259422"
 
   ![Пример отдельных запросов](read-related-data/_static/separate-queries.png)
 
-* Явная загрузка. При первом чтении сущности связанные данные не извлекаются. Если требуется получение связанных данных, то пишется дополнительный код. Как и в случае безотложной загрузки с отдельными запросами, явная загрузка представляет собой несколько запросов к базе данных. Отличие заключается в том, что при явной загрузке в коде указывается, какие свойства навигации будут загружены. В Entity Framework Core 1.1 для выполнения явной загрузки можно использовать метод `Load`. Например:
+* Явная загрузка. При первом чтении сущности связанные данные не извлекаются. Если требуется получение связанных данных, то пишется дополнительный код. Как и в случае безотложной загрузки с отдельными запросами, явная загрузка представляет собой несколько запросов к базе данных. Отличие заключается в том, что при явной загрузке в коде указывается, какие свойства навигации будут загружены. В Entity Framework Core 1.1 для выполнения явной загрузки можно использовать метод `Load`. Пример:
 
   ![Пример явной загрузки](read-related-data/_static/explicit-loading.png)
 
@@ -245,7 +245,7 @@ ms.locfileid: "72259422"
 
 ## <a name="get-the-code"></a>Получите код
 
-[Скачайте или ознакомьтесь с готовым приложением.](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/data/ef-mvc/intro/samples/cu-final)
+[Скачайте или ознакомьтесь с готовым приложением.](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/data/ef-mvc/intro/samples/cu-final)
 
 ## <a name="next-steps"></a>Следующие шаги
 

@@ -8,12 +8,12 @@ ms.date: 12/05/2019
 no-loc:
 - SignalR
 uid: aspnetcore-2.1
-ms.openlocfilehash: 57fe6c4e32ad666987c782fac75ddb19e3d3b5c7
-ms.sourcegitcommit: 7dfe6cc8408ac6a4549c29ca57b0c67ec4baa8de
+ms.openlocfilehash: af5807b782d4acec8c7d40111dc508dfa6127057
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75829144"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78650974"
 ---
 # <a name="whats-new-in-aspnet-core-21"></a>Новые возможности ASP.NET Core 2.1
 
@@ -77,7 +77,7 @@ ASP.NET Core 2.1 предоставляет [идентификатор ASP.NET 
 
 ## <a name="gdpr"></a>Общий регламент по защите данных
 
-ASP.NET Core предоставляет API-интерфейсы и шаблоны, которые помогают соответствовать требованиям [Общего регламента по защите данных в ЕС](https://www.eugdpr.org/). Дополнительные сведения см. в разделе [Поддержка общего регламента по защите данных в ASP.NET Core](xref:security/gdpr). В [примере приложения](https://github.com/aspnet/AspNetCore.Docs/tree/live/aspnetcore/security/gdpr/sample) показано, как использовать и тестировать большинство точек расширения для общего регламента по защите данных и API-интерфейсов, добавленных в шаблоны ASP.NET Core 2.1.
+ASP.NET Core предоставляет API-интерфейсы и шаблоны, которые помогают соответствовать требованиям [Общего регламента по защите данных в ЕС](https://www.eugdpr.org/). Дополнительные сведения см. в разделе [Поддержка общего регламента по защите данных в ASP.NET Core](xref:security/gdpr). В [примере приложения](https://github.com/dotnet/AspNetCore.Docs/tree/live/aspnetcore/security/gdpr/sample) показано, как использовать и тестировать большинство точек расширения для общего регламента по защите данных и API-интерфейсов, добавленных в шаблоны ASP.NET Core 2.1.
 
 ## <a name="integration-tests"></a>Интеграционные тесты
 

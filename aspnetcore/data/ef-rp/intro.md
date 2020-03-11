@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc, seodec18
 ms.date: 09/26/2019
 uid: data/ef-rp/intro
-ms.openlocfilehash: 1a9d83be9180b1d32ab941932eb3cab8612dff01
-ms.sourcegitcommit: d2ba66023884f0dca115ff010bd98d5ed6459283
+ms.openlocfilehash: 94783aa9014aef4c5f775fc8f36a2c3a7715e4b6
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77213406"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78645802"
 ---
 # <a name="razor-pages-with-entity-framework-core-in-aspnet-core---tutorial-1-of-8"></a>Razor Pages с Entity Framework Core в ASP.NET Core: учебник 1 из 8
 
@@ -19,9 +19,9 @@ ms.locfileid: "77213406"
 
 ::: moniker range=">= aspnetcore-3.0"
 
-Это первый учебник из серии, посвященной использованию Entity Framework (EF) Core в приложении [Razor Pages на основе ASP.NET Core](xref:razor-pages/index). В учебниках создается веб-сайт для вымышленного университета Contoso. На сайте предусмотрены различные функции, в том числе прием учащихся, создание курсов и назначение преподавателей. В этом руководстве используется подход Code First. См. сведения о работе с этим руководством при использовании подхода Database First в [этой проблеме GitHub](https://github.com/aspnet/AspNetCore.Docs/issues/16897).
+Это первый учебник из серии, посвященной использованию Entity Framework (EF) Core в приложении [Razor Pages на основе ASP.NET Core](xref:razor-pages/index). В учебниках создается веб-сайт для вымышленного университета Contoso. На сайте предусмотрены различные функции, в том числе прием учащихся, создание курсов и назначение преподавателей. В этом руководстве используется подход Code First. См. сведения о работе с этим руководством при использовании подхода Database First в [этой проблеме GitHub](https://github.com/dotnet/AspNetCore.Docs/issues/16897).
 
-[Скачайте или ознакомьтесь с готовым приложением.](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/data/ef-rp/intro/samples) [Указания по скачиванию](xref:index#how-to-download-a-sample).
+[Скачайте или ознакомьтесь с готовым приложением.](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/data/ef-rp/intro/samples) [Указания по скачиванию](xref:index#how-to-download-a-sample).
 
 ## <a name="prerequisites"></a>Предварительные требования
 
@@ -47,7 +47,7 @@ ms.locfileid: "77213406"
 
 ## <a name="troubleshooting"></a>Устранение неполадок
 
-Если вы столкнулись с проблемой, которую не можете решить, сравните свой код с кодом [готового проекта](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/data/ef-rp/intro/samples). Чтобы получить помощь, вы можете опубликовать вопрос на веб-сайте StackOverflow.com, используя [тег ASP.NET Core](https://stackoverflow.com/questions/tagged/asp.net-core) или [тег EF Core](https://stackoverflow.com/questions/tagged/entity-framework-core).
+Если вы столкнулись с проблемой, которую не можете решить, сравните свой код с кодом [готового проекта](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/data/ef-rp/intro/samples). Чтобы получить помощь, вы можете опубликовать вопрос на веб-сайте StackOverflow.com, используя [тег ASP.NET Core](https://stackoverflow.com/questions/tagged/asp.net-core) или [тег EF Core](https://stackoverflow.com/questions/tagged/entity-framework-core).
 
 ## <a name="the-sample-app"></a>Пример приложения
 
@@ -458,7 +458,7 @@ public async Task OnGetAsync()
 
 В этом примере приложения реализуется веб-сайт вымышленного университета Contoso. На нем предусмотрены различные функции, в том числе прием учащихся, создание курсов и назначение преподавателей. Это первое руководство из серии, в котором описывается создание примера приложения для университета Contoso.
 
-[Скачайте или ознакомьтесь с готовым приложением.](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/data/ef-rp/intro/samples) [Указания по скачиванию](xref:index#how-to-download-a-sample).
+[Скачайте или ознакомьтесь с готовым приложением.](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/data/ef-rp/intro/samples) [Указания по скачиванию](xref:index#how-to-download-a-sample).
 
 ## <a name="prerequisites"></a>Предварительные требования
 
@@ -476,7 +476,7 @@ public async Task OnGetAsync()
 
 ## <a name="troubleshooting"></a>Устранение неполадок
 
-Если вы столкнулись с проблемами, для их решения можно попробовать сравнить свой код с кодом [готового проекта](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/data/ef-rp/intro/samples). Чтобы получить помощь, вы можете опубликовать вопрос на веб-сайте [StackOverflow.com](https://stackoverflow.com/questions/tagged/asp.net-core) в разделе, посвященном [ASP.NET Core](https://stackoverflow.com/questions/tagged/asp.net-core) или [EF Core](https://stackoverflow.com/questions/tagged/entity-framework-core).
+Если вы столкнулись с проблемами, для их решения можно попробовать сравнить свой код с кодом [готового проекта](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/data/ef-rp/intro/samples). Чтобы получить помощь, вы можете опубликовать вопрос на веб-сайте [StackOverflow.com](https://stackoverflow.com/questions/tagged/asp.net-core) в разделе, посвященном [ASP.NET Core](https://stackoverflow.com/questions/tagged/asp.net-core) или [EF Core](https://stackoverflow.com/questions/tagged/entity-framework-core).
 
 ## <a name="the-contoso-university-web-app"></a>Веб-приложение университета Contoso
 

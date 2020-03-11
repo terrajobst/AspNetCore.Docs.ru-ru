@@ -1,22 +1,20 @@
 ---
 title: Модули IIS с ASP.NET Core
-author: guardrex
+author: rick-anderson
 description: Сведения об обнаружении активных и неактивных модулей IIS для приложения ASP.NET Core и управлении модулями IIS.
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
 ms.date: 01/13/2020
 uid: host-and-deploy/iis/modules
-ms.openlocfilehash: ca6cf349aa05db97e145f1cd0cae97a107761fd8
-ms.sourcegitcommit: 2388c2a7334ce66b6be3ffbab06dd7923df18f60
+ms.openlocfilehash: 0f13ef3eb1da03960ef1fa54d33532b6ebbdc128
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75951811"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78646648"
 ---
 # <a name="iis-modules-with-aspnet-core"></a>Модули IIS с ASP.NET Core
-
-Автор [Люк Латэм](https://github.com/guardrex) (Luke Latham)
 
 Некоторые собственные модули IIS и все управляемые модули IIS не могут применяться для обработки запросов в приложениях ASP.NET Core. Во многих случаях сценарии, которые обрабатывают собственные и управляемые модули IIS, можно переложить на ASP.NET Core.
 

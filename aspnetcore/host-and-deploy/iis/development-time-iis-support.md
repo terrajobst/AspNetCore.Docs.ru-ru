@@ -1,22 +1,22 @@
 ---
 title: Поддержка служб IIS во время разработки в Visual Studio для ASP.NET Core
-author: guardrex
+author: rick-anderson
 description: Узнайте о поддерживаемых возможностях для отладки приложений ASP.NET Core, выполняемых в службах IIS в Windows Server.
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
 ms.date: 02/07/2020
 uid: host-and-deploy/iis/development-time-iis-support
-ms.openlocfilehash: f03ee94e5890c58addef4ba0d3ba7a4af6b659e7
-ms.sourcegitcommit: 85564ee396c74c7651ac47dd45082f3f1803f7a2
+ms.openlocfilehash: f87a1d8cf41248f14932908c0633f98a7198853f
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77172104"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78649306"
 ---
 # <a name="development-time-iis-support-in-visual-studio-for-aspnet-core"></a>Поддержка служб IIS во время разработки в Visual Studio для ASP.NET Core
 
-Авторы: [Сурабх Ширхатти](https://twitter.com/sshirhatti) (Sourabh Shirhatti) и [Люк Латэм](https://github.com/guardrex) (Luke Latham)
+Автор [Сурабх Ширхатти](https://twitter.com/sshirhatti)
 
 ::: moniker range=">= aspnetcore-3.0"
 

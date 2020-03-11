@@ -7,12 +7,12 @@ ms.custom: mvc
 ms.date: 02/06/2019
 ms.topic: tutorial
 uid: data/ef-mvc/intro
-ms.openlocfilehash: 04694f20c7142cc2917df25458e8e335ee933900
-ms.sourcegitcommit: f259889044d1fc0f0c7e3882df0008157ced4915
+ms.openlocfilehash: 8f6561616ccd0fde050276467920da8aa93677c6
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/18/2020
-ms.locfileid: "76268772"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78646150"
 ---
 # <a name="tutorial-get-started-with-ef-core-in-an-aspnet-mvc-web-app"></a>Учебник. Начало работы с EF Core в веб-приложении MVC ASP.NET
 
@@ -21,7 +21,7 @@ ms.locfileid: "76268772"
 * Находится в файлах *Startup.cs* и *Program.cs*.
 * Находится в [версии для Razor Pages](xref:data/ef-rp/intro). 
 
-См. сведения о возможном обновлении в этой [проблеме GitHub](https://github.com/aspnet/AspNetCore.Docs/issues/13920).
+См. сведения о возможном обновлении в этой [проблеме GitHub](https://github.com/dotnet/AspNetCore.Docs/issues/13920).
 
 [!INCLUDE [RP better than MVC](~/includes/RP-EF/rp-over-mvc.md)]
 
@@ -51,7 +51,7 @@ ms.locfileid: "76268772"
 
 ## <a name="troubleshooting"></a>Устранение неполадок
 
-Если вы столкнулись с проблемами, для их решения можно попробовать сравнить свой код с кодом [готового проекта](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/data/ef-mvc/intro/samples/cu-final). Список распространенных ошибок и способы их устранения см. в [разделе "Устранение неполадок" последнего руководства серии](advanced.md#common-errors). Если вам не удалось найти нужную информацию, вы можете задать вопрос на сайте StackOverflow.com в разделах, посвященных [ASP.NET Core](https://stackoverflow.com/questions/tagged/asp.net-core) или [EF Core](https://stackoverflow.com/questions/tagged/entity-framework-core).
+Если вы столкнулись с проблемами, для их решения можно попробовать сравнить свой код с кодом [готового проекта](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/data/ef-mvc/intro/samples/cu-final). Список распространенных ошибок и способы их устранения см. в [разделе "Устранение неполадок" последнего руководства серии](advanced.md#common-errors). Если вам не удалось найти нужную информацию, вы можете задать вопрос на сайте StackOverflow.com в разделах, посвященных [ASP.NET Core](https://stackoverflow.com/questions/tagged/asp.net-core) или [EF Core](https://stackoverflow.com/questions/tagged/entity-framework-core).
 
 > [!TIP]
 > Эта серия включает в себя 10 учебников, содержание каждого из которых базируется на предыдущих учебниках. После успешного завершения каждого руководства рекомендуется сохранять копию проекта. Таким образом, при возникновении проблем вы сможете вернуться к предыдущему учебнику, а не к началу серии.
@@ -362,7 +362,7 @@ ASP.NET Core по умолчанию реализует технологию [в
 
 ## <a name="get-the-code"></a>Получите код
 
-[Скачайте или ознакомьтесь с готовым приложением.](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/data/ef-mvc/intro/samples/cu-final)
+[Скачайте или ознакомьтесь с готовым приложением.](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/data/ef-mvc/intro/samples/cu-final)
 
 ## <a name="next-steps"></a>Следующие шаги
 

@@ -1,22 +1,22 @@
 ---
 title: Реализация веб-сервера HTTP.sys в ASP.NET Core
-author: guardrex
+author: rick-anderson
 description: Общие сведения о веб-сервере HTTP.sys для ASP.NET Core в Windows. Веб-сервер HTTP.sys на основе работающего в режиме ядра драйвера Http.Sys — это альтернатива Kestrel, которую можно использовать для прямого подключения к Интернету без служб IIS.
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
 ms.date: 02/07/2020
 uid: fundamentals/servers/httpsys
-ms.openlocfilehash: 8a315d859fa70d97501156ff3cf97d4c3a5c5bd4
-ms.sourcegitcommit: 85564ee396c74c7651ac47dd45082f3f1803f7a2
+ms.openlocfilehash: 3e858a974d6a5c008969c3c51a507880cc25a7ff
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77171766"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78650716"
 ---
 # <a name="httpsys-web-server-implementation-in-aspnet-core"></a>Реализация веб-сервера HTTP.sys в ASP.NET Core
 
-Авторы: [Том Дикстра](https://github.com/tdykstra) (Tom Dykstra), [Крис Росс](https://github.com/Tratcher) (Chris Ross) и [Люк Латам](https://github.com/guardrex) (Luke Latham)
+Авторы: [Том Дикстра](https://github.com/tdykstra) (Tom Dykstra) и [Крис Росс](https://github.com/Tratcher) (Chris Ross)
 
 ::: moniker range=">= aspnetcore-3.1"
 
@@ -40,7 +40,7 @@ HTTP.sys поддерживает следующие функции:
 * Windows 7 и более поздние версии
 * Windows Server 2008 R2 и более поздние версии
 
-[Просмотреть или скачать образец кода](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/servers/httpsys/samples) ([как скачивать](xref:index#how-to-download-a-sample))
+[Просмотреть или скачать образец кода](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/servers/httpsys/samples) ([как скачивать](xref:index#how-to-download-a-sample))
 
 ## <a name="when-to-use-httpsys"></a>Условия для применения HTTP.sys
 
@@ -133,7 +133,7 @@ public IActionResult MyActionMethod()
 
 1. При необходимости получите и установите сертификаты X.509.
 
-   В Windows создайте самозаверяющие сертификаты с помощью [командлета PowerShell New-SelfSignedCertificate](/powershell/module/pkiclient/new-selfsignedcertificate). Примеры, которые не поддерживаются, см. в разделе [UpdateIISExpressSSLForChrome.ps1](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/includes/make-x509-cert/UpdateIISExpressSSLForChrome.ps1).
+   В Windows создайте самозаверяющие сертификаты с помощью [командлета PowerShell New-SelfSignedCertificate](/powershell/module/pkiclient/new-selfsignedcertificate). Примеры, которые не поддерживаются, см. в разделе [UpdateIISExpressSSLForChrome.ps1](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/includes/make-x509-cert/UpdateIISExpressSSLForChrome.ps1).
 
    Установите самозаверяющие или подписанные центром сертификации сертификаты в хранилище сервера, выбрав **Локальный компьютер** > **Личный**.
 
@@ -293,7 +293,7 @@ HTTP.sys поддерживает следующие функции:
 * Windows 7 и более поздние версии
 * Windows Server 2008 R2 и более поздние версии
 
-[Просмотреть или скачать образец кода](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/servers/httpsys/samples) ([как скачивать](xref:index#how-to-download-a-sample))
+[Просмотреть или скачать образец кода](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/servers/httpsys/samples) ([как скачивать](xref:index#how-to-download-a-sample))
 
 ## <a name="when-to-use-httpsys"></a>Условия для применения HTTP.sys
 
@@ -384,7 +384,7 @@ public IActionResult MyActionMethod()
 
 1. При необходимости получите и установите сертификаты X.509.
 
-   В Windows создайте самозаверяющие сертификаты с помощью [командлета PowerShell New-SelfSignedCertificate](/powershell/module/pkiclient/new-selfsignedcertificate). Примеры, которые не поддерживаются, см. в разделе [UpdateIISExpressSSLForChrome.ps1](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/includes/make-x509-cert/UpdateIISExpressSSLForChrome.ps1).
+   В Windows создайте самозаверяющие сертификаты с помощью [командлета PowerShell New-SelfSignedCertificate](/powershell/module/pkiclient/new-selfsignedcertificate). Примеры, которые не поддерживаются, см. в разделе [UpdateIISExpressSSLForChrome.ps1](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/includes/make-x509-cert/UpdateIISExpressSSLForChrome.ps1).
 
    Установите самозаверяющие или подписанные центром сертификации сертификаты в хранилище сервера, выбрав **Локальный компьютер** > **Личный**.
 
@@ -544,7 +544,7 @@ HTTP.sys поддерживает следующие функции:
 * Windows 7 и более поздние версии
 * Windows Server 2008 R2 и более поздние версии
 
-[Просмотреть или скачать образец кода](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/servers/httpsys/samples) ([как скачивать](xref:index#how-to-download-a-sample))
+[Просмотреть или скачать образец кода](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/servers/httpsys/samples) ([как скачивать](xref:index#how-to-download-a-sample))
 
 ## <a name="when-to-use-httpsys"></a>Условия для применения HTTP.sys
 
@@ -637,7 +637,7 @@ public IActionResult MyActionMethod()
 
 1. При необходимости получите и установите сертификаты X.509.
 
-   В Windows создайте самозаверяющие сертификаты с помощью [командлета PowerShell New-SelfSignedCertificate](/powershell/module/pkiclient/new-selfsignedcertificate). Примеры, которые не поддерживаются, см. в разделе [UpdateIISExpressSSLForChrome.ps1](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/includes/make-x509-cert/UpdateIISExpressSSLForChrome.ps1).
+   В Windows создайте самозаверяющие сертификаты с помощью [командлета PowerShell New-SelfSignedCertificate](/powershell/module/pkiclient/new-selfsignedcertificate). Примеры, которые не поддерживаются, см. в разделе [UpdateIISExpressSSLForChrome.ps1](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/includes/make-x509-cert/UpdateIISExpressSSLForChrome.ps1).
 
    Установите самозаверяющие или подписанные центром сертификации сертификаты в хранилище сервера, выбрав **Локальный компьютер** > **Личный**.
 
@@ -797,7 +797,7 @@ HTTP.sys поддерживает следующие функции:
 * Windows 7 и более поздние версии
 * Windows Server 2008 R2 и более поздние версии
 
-[Просмотреть или скачать образец кода](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/servers/httpsys/samples) ([как скачивать](xref:index#how-to-download-a-sample))
+[Просмотреть или скачать образец кода](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/servers/httpsys/samples) ([как скачивать](xref:index#how-to-download-a-sample))
 
 ## <a name="when-to-use-httpsys"></a>Условия для применения HTTP.sys
 
@@ -890,7 +890,7 @@ public IActionResult MyActionMethod()
 
 1. При необходимости получите и установите сертификаты X.509.
 
-   В Windows создайте самозаверяющие сертификаты с помощью [командлета PowerShell New-SelfSignedCertificate](/powershell/module/pkiclient/new-selfsignedcertificate). Примеры, которые не поддерживаются, см. в разделе [UpdateIISExpressSSLForChrome.ps1](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/includes/make-x509-cert/UpdateIISExpressSSLForChrome.ps1).
+   В Windows создайте самозаверяющие сертификаты с помощью [командлета PowerShell New-SelfSignedCertificate](/powershell/module/pkiclient/new-selfsignedcertificate). Примеры, которые не поддерживаются, см. в разделе [UpdateIISExpressSSLForChrome.ps1](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/includes/make-x509-cert/UpdateIISExpressSSLForChrome.ps1).
 
    Установите самозаверяющие или подписанные центром сертификации сертификаты в хранилище сервера, выбрав **Локальный компьютер** > **Личный**.
 

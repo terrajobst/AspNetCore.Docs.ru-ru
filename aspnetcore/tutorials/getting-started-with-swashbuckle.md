@@ -6,18 +6,18 @@ ms.author: scaddie
 ms.custom: mvc
 ms.date: 01/17/2020
 uid: tutorials/get-started-with-swashbuckle
-ms.openlocfilehash: 16583cde2f4a6deaabc2fc965a5b9484ca94c2fd
-ms.sourcegitcommit: f259889044d1fc0f0c7e3882df0008157ced4915
+ms.openlocfilehash: da848ef9c5fa85f5186d1b6f0a6111d8c8d069c4
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/18/2020
-ms.locfileid: "76268725"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78648238"
 ---
 # <a name="get-started-with-swashbuckle-and-aspnet-core"></a>Начало работы с Swashbuckle и ASP.NET Core
 
 Авторы: [Шейн Бойер](https://twitter.com/spboyer) (Shayne Boyer) и [Скотт Эдди](https://twitter.com/Scott_Addie) (Scott Addie)
 
-[Просмотреть или скачать образец кода](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/tutorials/web-api-help-pages-using-swagger/samples/) ([как скачивать](xref:index#how-to-download-a-sample))
+[Просмотреть или скачать образец кода](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/tutorials/web-api-help-pages-using-swagger/samples/) ([как скачивать](xref:index#how-to-download-a-sample))
 
 Swashbuckle включает три основных компонента.
 
@@ -31,7 +31,7 @@ Swashbuckle включает три основных компонента.
 
 Swashbuckle можно добавить одним из описанных ниже способов.
 
-### <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
+### <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 * В окне **Консоль диспетчера пакетов**
   * Перейдите в раздел **Представление** > **Другие окна** > **Консоль диспетчера пакетов**
@@ -49,7 +49,7 @@ Swashbuckle можно добавить одним из описанных ни�
   * В поле поиска введите "Swashbuckle.AspNetCore".
   * Выберите последний пакет Swashbuckle.AspNetCore на вкладке **Обзор** и нажмите кнопку **Установить**.
 
-### <a name="visual-studio-for-mactabvisual-studio-mac"></a>[Visual Studio для Mac](#tab/visual-studio-mac)
+### <a name="visual-studio-for-mac"></a>[Visual Studio для Mac](#tab/visual-studio-mac)
 
 * Щелкните правой кнопкой мыши папку *Пакеты* на **панели решения** > **Добавление пакетов...** .
 * В раскрывающемся списке **Источник** в окне **Добавление пакетов** выберите вариант "nuget.org".
@@ -57,7 +57,7 @@ Swashbuckle можно добавить одним из описанных ни�
 * В поле поиска введите "Swashbuckle.AspNetCore".
 * В области результатов выберите последний пакет Swashbuckle.AspNetCore и нажмите кнопку **Добавить пакет**.
 
-### <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
+### <a name="visual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
 Во **встроенном терминале** выполните следующую команду.
 
@@ -65,7 +65,7 @@ Swashbuckle можно добавить одним из описанных ни�
 dotnet add TodoApi.csproj package Swashbuckle.AspNetCore -v 5.0.0
 ```
 
-### <a name="net-core-clitabnetcore-cli"></a>[Интерфейс командной строки .NET Core](#tab/netcore-cli)
+### <a name="net-core-cli"></a>[Интерфейс командной строки .NET Core](#tab/netcore-cli)
 
 Выполните следующую команду:
 
@@ -154,7 +154,7 @@ using System.IO;
 
 XML-комментарии можно включить следующим образом.
 
-#### <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
+#### <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 ::: moniker range=">= aspnetcore-2.0"
 
@@ -172,7 +172,7 @@ XML-комментарии можно включить следующим обр
 
 ::: moniker-end
 
-#### <a name="visual-studio-for-mactabvisual-studio-mac"></a>[Visual Studio для Mac](#tab/visual-studio-mac)
+#### <a name="visual-studio-for-mac"></a>[Visual Studio для Mac](#tab/visual-studio-mac)
 
 ::: moniker range=">= aspnetcore-2.0"
 
@@ -190,7 +190,7 @@ XML-комментарии можно включить следующим обр
 
 ::: moniker-end
 
-#### <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
+#### <a name="visual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
 Вручную добавьте выделенные строки в файл *.csproj*:
 
@@ -206,7 +206,7 @@ XML-комментарии можно включить следующим обр
 
 ::: moniker-end
 
-#### <a name="net-core-clitabnetcore-cli"></a>[Интерфейс командной строки .NET Core](#tab/netcore-cli)
+#### <a name="net-core-cli"></a>[Интерфейс командной строки .NET Core](#tab/netcore-cli)
 
 Вручную добавьте выделенные строки в файл *.csproj*:
 

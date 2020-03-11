@@ -7,20 +7,20 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 12/05/2019
 uid: fundamentals/error-handling
-ms.openlocfilehash: c20d8757eef80fdbb73b1b7a9933a3c0be9bb8ed
-ms.sourcegitcommit: 2cb857f0de774df421e35289662ba92cfe56ffd1
+ms.openlocfilehash: 28b463bccfb8aff4d10b95aa9a984455b4f4b976
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75358981"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78647074"
 ---
 # <a name="handle-errors-in-aspnet-core"></a>Обработка ошибок в ASP.NET Core
 
-Авторы: [Том Дикстра](https://github.com/tdykstra/) (Tom Dykstra), [Люк Лэтем](https://github.com/guardrex) (Luke Latham) и [Стив Смит](https://ardalis.com/) (Steve Smith)
+Авторы: [Том Дикстра](https://github.com/tdykstra/) (Tom Dykstra) и [Стив Смит](https://ardalis.com/) (Steve Smith)
 
 В этой статье рассматриваются основные методы обработки ошибок в веб-приложениях ASP.NET Core. Для веб-API см. раздел <xref:web-api/handle-errors>.
 
-[Просмотреть или скачать образец кода](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/error-handling/samples). См. раздел [Загрузка примера](xref:index#how-to-download-a-sample). В этой статье содержатся инструкции о том, как задать директивы препроцессора (`#if`, `#endif`, `#define`) в примере для выполнения различных сценариев.
+[Просмотреть или скачать образец кода](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/error-handling/samples). См. раздел [Загрузка примера](xref:index#how-to-download-a-sample). В этой статье содержатся инструкции о том, как задать директивы препроцессора (`#if`, `#endif`, `#define`) в примере для выполнения различных сценариев.
 
 ## <a name="developer-exception-page"></a>Страница со сведениями об исключении для разработчика
 
@@ -40,7 +40,7 @@ ms.locfileid: "75358981"
 * файлы cookie (при наличии);
 * Заголовки
 
-Чтобы просмотреть страницу исключений для разработчика в [примере приложения](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/error-handling/samples), используйте директиву препроцессора `DevEnvironment`, а на домашней странице выберите **Trigger an exception** (Вызывать исключение).
+Чтобы просмотреть страницу исключений для разработчика в [примере приложения](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/error-handling/samples), используйте директиву препроцессора `DevEnvironment`, а на домашней странице выберите **Trigger an exception** (Вызывать исключение).
 
 ## <a name="exception-handler-page"></a>Страница обработчика исключений
 
@@ -75,7 +75,7 @@ public IActionResult Error()
 > [!WARNING]
 > **Не** передавайте клиентам конфиденциальную информацию об ошибках. Сохранение ошибок создает риски для безопасности.
 
-Чтобы просмотреть страницу обработки ошибок в [примере приложения](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/error-handling/samples), используйте директивы препроцессора `ProdEnvironment` и `ErrorHandlerPage`, а на домашней странице выберите **Trigger an exception** (Вызывать исключение).
+Чтобы просмотреть страницу обработки ошибок в [примере приложения](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/error-handling/samples), используйте директивы препроцессора `ProdEnvironment` и `ErrorHandlerPage`, а на домашней странице выберите **Trigger an exception** (Вызывать исключение).
 
 ## <a name="exception-handler-lambda"></a>Лямбда-функция для обработчика исключений
 
@@ -85,12 +85,12 @@ public IActionResult Error()
 
 [!code-csharp[](error-handling/samples/2.x/ErrorHandlingSample/Startup.cs?name=snippet_HandlerPageLambda)]
 
-В приведенном выше коде добавляется `await context.Response.WriteAsync(new string(' ', 512));`, поэтому браузер Internet Explorer отображает сообщение об ошибке, а не сообщение об ошибке IE. Дополнительные сведения см. в [этой статье об ошибке на GitHub](https://github.com/aspnet/AspNetCore.Docs/issues/16144).
+В приведенном выше коде добавляется `await context.Response.WriteAsync(new string(' ', 512));`, поэтому браузер Internet Explorer отображает сообщение об ошибке, а не сообщение об ошибке IE. Дополнительные сведения см. в [этой статье об ошибке на GitHub](https://github.com/dotnet/AspNetCore.Docs/issues/16144).
 
 > [!WARNING]
 > **Не** передавайте клиентам конфиденциальную информацию об ошибках из <xref:Microsoft.AspNetCore.Diagnostics.IExceptionHandlerFeature> или <xref:Microsoft.AspNetCore.Diagnostics.IExceptionHandlerPathFeature>. Сохранение ошибок создает риски для безопасности.
 
-Чтобы просмотреть результат обработки ошибок лямбда-функцией в [примере приложения](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/error-handling/samples), используйте директивы препроцессора `ProdEnvironment` и `ErrorHandlerLambda`, а на домашней странице выберите **Trigger an exception** (Вызывать исключение).
+Чтобы просмотреть результат обработки ошибок лямбда-функцией в [примере приложения](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/error-handling/samples), используйте директивы препроцессора `ProdEnvironment` и `ErrorHandlerLambda`, а на домашней странице выберите **Trigger an exception** (Вызывать исключение).
 
 ## <a name="usestatuscodepages"></a>UseStatusCodePages
 
@@ -110,7 +110,7 @@ public IActionResult Error()
 Status Code: 404; Not Found
 ```
 
-Чтобы просмотреть различные форматы страницы кода состояния в [примере приложения](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/error-handling/samples), используйте одну из директив препроцессора, которые начинаются с `StatusCodePages`, а на домашней странице выберите **Trigger a 404** (Вызвать 404).
+Чтобы просмотреть различные форматы страницы кода состояния в [примере приложения](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/error-handling/samples), используйте одну из директив препроцессора, которые начинаются с `StatusCodePages`, а на домашней странице выберите **Trigger a 404** (Вызвать 404).
 
 ## <a name="usestatuscodepages-with-format-string"></a>UseStatusCodePages со строкой формата
 
@@ -133,7 +133,7 @@ Status Code: 404; Not Found
 
 [!code-csharp[](error-handling/samples/2.x/ErrorHandlingSample/Startup.cs?name=snippet_StatusCodePagesWithRedirect)]
 
-Шаблон URL-адреса может содержать заполнитель `{0}` для кода состояния, как показано в примере. Если шаблон URL-адреса начинается с тильды (~), она заменяется `PathBase` приложения. Если вы указываете на конечную точку в приложении, создайте представление MVC или страницу Razor для конечной точки. Пример Razor Pages доступен в [примере приложения](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/error-handling/samples) в файле *Pages/StatusCode.cshtml*.
+Шаблон URL-адреса может содержать заполнитель `{0}` для кода состояния, как показано в примере. Если шаблон URL-адреса начинается с тильды (~), она заменяется `PathBase` приложения. Если вы указываете на конечную точку в приложении, создайте представление MVC или страницу Razor для конечной точки. Пример Razor Pages доступен в [примере приложения](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/error-handling/samples) в файле *Pages/StatusCode.cshtml*.
 
 Этот метод обычно используется, если приложение:
 
@@ -149,7 +149,7 @@ Status Code: 404; Not Found
 
 [!code-csharp[](error-handling/samples/2.x/ErrorHandlingSample/Startup.cs?name=snippet_StatusCodePagesWithReExecute)]
 
-Если вы указываете на конечную точку в приложении, создайте представление MVC или страницу Razor для конечной точки. Пример Razor Pages доступен в [примере приложения](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/error-handling/samples) в файле *Pages/StatusCode.cshtml*.
+Если вы указываете на конечную точку в приложении, создайте представление MVC или страницу Razor для конечной точки. Пример Razor Pages доступен в [примере приложения](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/error-handling/samples) в файле *Pages/StatusCode.cshtml*.
 
 Этот метод обычно используется, если приложение:
 

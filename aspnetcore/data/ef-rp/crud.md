@@ -1,16 +1,16 @@
 ---
 title: Razor Pages с EF Core в ASP.NET Core — CRUD — 2 из 8
-author: tdykstra
+author: rick-anderson
 description: Описание операций создания, чтения, обновления и удаления в EF Core.
 ms.author: riande
 ms.date: 07/22/2019
 uid: data/ef-rp/crud
-ms.openlocfilehash: 57c4a1789d54c29a28ba7e67a1d15815415a461c
-ms.sourcegitcommit: 257cc3fe8c1d61341aa3b07e5bc0fa3d1c1c1d1c
+ms.openlocfilehash: 05519852fab22bd3ad5b77e3494b49191448286f
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69583114"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78650152"
 ---
 # <a name="razor-pages-with-ef-core-in-aspnet-core---crud---2-of-8"></a>Razor Pages с EF Core в ASP.NET Core — CRUD — 2 из 8
 
@@ -116,7 +116,7 @@ URL-адрес страницы сведений — `https://localhost:<port>/
 
 Метод [SetValues](/dotnet/api/microsoft.entityframeworkcore.changetracking.propertyvalues.setvalues#Microsoft_EntityFrameworkCore_ChangeTracking_PropertyValues_SetValues_System_Object_) устанавливает значения этого объекта, считывая значения из другого объекта [PropertyValues](/dotnet/api/microsoft.entityframeworkcore.changetracking.propertyvalues). `SetValues` использует сопоставление имен свойств. Тип модели представления может быть не связан с типом модели, однако они должны содержать совпадающие свойства.
 
-При использовании `StudentVM` необходимо обновить [Create.cshtml](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/data/ef-rp/intro/samples/cu30snapshots/2-crud/Pages/Students/CreateVM.cshtml), чтобы использовать `StudentVM` вместо `Student`.
+При использовании `StudentVM` необходимо обновить [Create.cshtml](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/data/ef-rp/intro/samples/cu30snapshots/2-crud/Pages/Students/CreateVM.cshtml), чтобы использовать `StudentVM` вместо `Student`.
 
 ## <a name="update-the-edit-page"></a>Обновление страницы редактирования
 
@@ -138,15 +138,15 @@ URL-адрес страницы сведений — `https://localhost:<port>/
 
 Возможны следующие [состояния сущности](/dotnet/api/microsoft.entityframeworkcore.entitystate):
 
-* `Added`: Сущность еще не существует в базе данных. Метод `SaveChanges` выполняет инструкцию INSERT.
+* `Added`. Сущность еще не существует в базе данных. Метод `SaveChanges` выполняет инструкцию INSERT.
 
-* `Unchanged`: изменения сущности не сохраняются. Сущность находится в этом состоянии при считывании из базы данных.
+* `Unchanged`. изменения сущности не сохраняются. Сущность находится в этом состоянии при считывании из базы данных.
 
-* `Modified`: Были изменены значения некоторых или всех свойств сущности. Метод `SaveChanges` выполняет инструкцию UPDATE.
+* `Modified`. Были изменены значения некоторых или всех свойств сущности. Метод `SaveChanges` выполняет инструкцию UPDATE.
 
-* `Deleted`: Сущность отмечена для удаления. Метод `SaveChanges` выполняет инструкцию DELETE.
+* `Deleted`. Сущность отмечена для удаления. Метод `SaveChanges` выполняет инструкцию DELETE.
 
-* `Detached`: Сущность не отслеживается контекстом базы данных.
+* `Detached`. Сущность не отслеживается контекстом базы данных.
 
 В классическом приложении изменения состояния обычно осуществляются автоматически. После считывания сущности и ее изменения ей автоматически присваивается состояние `Modified`. При вызове метода `SaveChanges` создается инструкция SQL UPDATE, которая обновляет только измененные свойства.
 
@@ -213,7 +213,7 @@ URL-адрес страницы сведений — `https://localhost:<port>/
 
 Чаще всего в шаблонном коде [FindAsync](/dotnet/api/microsoft.entityframeworkcore.dbcontext.findasync#Microsoft_EntityFrameworkCore_DbContext_FindAsync_System_Type_System_Object___) можно использовать вместо `FirstOrDefaultAsync`.
 
-`FindAsync`:
+`FindAsync`.
 
 * Находит сущность с первичным ключом. Если сущность с первичным ключом отслеживается контекстом, она возвращается без запроса к базе данных.
 * Является простым и быстрым.
@@ -322,7 +322,7 @@ URL-адрес страницы сведений — `https://localhost:<port>/
 
 Метод [SetValues](/dotnet/api/microsoft.entityframeworkcore.changetracking.propertyvalues.setvalues#Microsoft_EntityFrameworkCore_ChangeTracking_PropertyValues_SetValues_System_Object_) устанавливает значения этого объекта, считывая значения из другого объекта [PropertyValues](/dotnet/api/microsoft.entityframeworkcore.changetracking.propertyvalues). `SetValues` использует сопоставление имен свойств. Тип модели представления может быть не связан с типом модели, однако они должны содержать совпадающие свойства.
 
-При использовании `StudentVM` необходимо обновить [CreateVM.cshtml](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/data/ef-rp/intro/samples/cu21/Pages/Students/CreateVM.cshtml), чтобы использовать `StudentVM` вместо `Student`.
+При использовании `StudentVM` необходимо обновить [CreateVM.cshtml](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/data/ef-rp/intro/samples/cu21/Pages/Students/CreateVM.cshtml), чтобы использовать `StudentVM` вместо `Student`.
 
 В Razor Pages представление модели реализуется с помощью производного класса `PageModel`.
 
@@ -348,15 +348,15 @@ URL-адрес страницы сведений — `https://localhost:<port>/
 
 Возможны следующие [состояния сущности](/dotnet/api/microsoft.entityframeworkcore.entitystate):
 
-* `Added`: сущность еще не существует в базе данных. Метод `SaveChanges` выполняет инструкцию INSERT.
+* `Added`. сущность еще не существует в базе данных. Метод `SaveChanges` выполняет инструкцию INSERT.
 
-* `Unchanged`: изменения сущности не сохраняются. Сущность находится в этом состоянии при считывании из базы данных.
+* `Unchanged`. изменения сущности не сохраняются. Сущность находится в этом состоянии при считывании из базы данных.
 
-* `Modified`: Были изменены значения некоторых или всех свойств сущности. Метод `SaveChanges` выполняет инструкцию UPDATE.
+* `Modified`. Были изменены значения некоторых или всех свойств сущности. Метод `SaveChanges` выполняет инструкцию UPDATE.
 
-* `Deleted`: Сущность отмечена для удаления. Метод `SaveChanges` выполняет инструкцию DELETE.
+* `Deleted`. Сущность отмечена для удаления. Метод `SaveChanges` выполняет инструкцию DELETE.
 
-* `Detached`: сущность не отслеживается контекстом базы данных.
+* `Detached`. сущность не отслеживается контекстом базы данных.
 
 В классическом приложении изменения состояния обычно осуществляются автоматически. После считывания сущности и ее изменения ей автоматически присваивается состояние `Modified`. При вызове метода `SaveChanges` создается инструкция SQL UPDATE, которая обновляет только измененные свойства.
 

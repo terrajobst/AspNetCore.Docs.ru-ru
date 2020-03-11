@@ -1,22 +1,20 @@
 ---
 title: Шаблон параметров в ASP.NET Core
-author: guardrex
+author: rick-anderson
 description: Узнайте, как использовать шаблон параметров для представления групп связанных параметров в приложениях ASP.NET Core.
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
 ms.date: 02/12/2020
 uid: fundamentals/configuration/options
-ms.openlocfilehash: 1f3625380d816c7d4df5a7a24b0ac146500330de
-ms.sourcegitcommit: 6645435fc8f5092fc7e923742e85592b56e37ada
+ms.openlocfilehash: 756d3d57122642ab10ab671c9accb75975c3799d
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77447209"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78649990"
 ---
 # <a name="options-pattern-in-aspnet-core"></a>Шаблон параметров в ASP.NET Core
-
-Автор [Люк Латэм](https://github.com/guardrex) (Luke Latham)
 
 ::: moniker range=">= aspnetcore-3.0"
 
@@ -27,7 +25,7 @@ ms.locfileid: "77447209"
 
 В параметрах также предусмотрен механизм для проверки данных конфигурации. Дополнительные сведения см. в разделе [Проверка параметров](#options-validation).
 
-[Просмотреть или скачать образец кода](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/configuration/options/samples) ([как скачивать](xref:index#how-to-download-a-sample))
+[Просмотреть или скачать образец кода](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/configuration/options/samples) ([как скачивать](xref:index#how-to-download-a-sample))
 
 ## <a name="package"></a>Пакет
 
@@ -324,6 +322,8 @@ catch (OptionsValidationException e)
 }
 ```
 
+[!INCLUDE[about the series](~/includes/code-comments-loc.md)]
+
 В предыдущем примере для именованного экземпляра параметров задается `optionalOptionsName`. Экземпляр параметров по умолчанию — `Options.DefaultName`.
 
 Проверка выполняется при создании экземпляра параметров. Экземпляр параметров гарантированно проходит проверку при первом обращении.
@@ -451,7 +451,7 @@ public void Configure(IApplicationBuilder app,
 
 В параметрах также предусмотрен механизм для проверки данных конфигурации. Дополнительные сведения см. в разделе [Проверка параметров](#options-validation).
 
-[Просмотреть или скачать образец кода](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/configuration/options/samples) ([как скачивать](xref:index#how-to-download-a-sample))
+[Просмотреть или скачать образец кода](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/configuration/options/samples) ([как скачивать](xref:index#how-to-download-a-sample))
 
 ## <a name="prerequisites"></a>Предварительные требования
 
@@ -873,7 +873,7 @@ public void Configure(IApplicationBuilder app, IOptionsMonitor<MyOptions> option
 
 В параметрах также предусмотрен механизм для проверки данных конфигурации. Дополнительные сведения см. в разделе [Проверка параметров](#options-validation).
 
-[Просмотреть или скачать образец кода](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/configuration/options/samples) ([как скачивать](xref:index#how-to-download-a-sample))
+[Просмотреть или скачать образец кода](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/configuration/options/samples) ([как скачивать](xref:index#how-to-download-a-sample))
 
 ## <a name="prerequisites"></a>Предварительные требования
 
