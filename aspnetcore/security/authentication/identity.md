@@ -5,12 +5,12 @@ description: Используйте удостоверение с приложе
 ms.author: riande
 ms.date: 01/15/2020
 uid: security/authentication/identity
-ms.openlocfilehash: 164ba10c1d1e2a73ebeb8240293a58f158055699
-ms.sourcegitcommit: 85564ee396c74c7651ac47dd45082f3f1803f7a2
+ms.openlocfilehash: 2e0723d34a09109a034f3375c4e94aedab2a5427
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77172533"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78653158"
 ---
 # <a name="introduction-to-identity-on-aspnet-core"></a>Введение в удостоверение на ASP.NET Core
 
@@ -38,7 +38,7 @@ ms.locfileid: "77172533"
 
 [!INCLUDE[](~/includes/IdentityServer4.md)]
 
-[Просмотр или скачивание образца кода](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/security/authentication/identity/sample) ([Загрузка)](xref:index#how-to-download-a-sample).
+[Просмотр или скачивание образца кода](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/security/authentication/identity/sample) ([Загрузка)](xref:index#how-to-download-a-sample).
 
 <a name="adi"></a>
 
@@ -46,14 +46,14 @@ ms.locfileid: "77172533"
 
 Создание ASP.NET Core проекта веб-приложения с учетными записями отдельных пользователей.
 
-# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
+# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 * Выберите **файл** > **Новый** > **проект**.
 * Выберите **Веб-приложение ASP.NET Core**. Присвойте проекту имя **APP1** , которое будет иметь то же пространство имен, что и загружаемый проект. Нажмите кнопку **ОК**.
 * Выберите ASP.NET Core **веб-приложение**, а затем щелкните **изменить проверку подлинности**.
 * Выберите **учетные записи отдельных пользователей** и нажмите кнопку **ОК**.
 
-# <a name="net-core-clitabnetcore-cli"></a>[Интерфейс командной строки .NET Core](#tab/netcore-cli)
+# <a name="net-core-cli"></a>[Интерфейс командной строки .NET Core](#tab/netcore-cli)
 
 ```dotnetcli
 dotnet new webapp --auth Individual -o WebApp1
@@ -77,13 +77,13 @@ dotnet new webapp --auth Individual -uld -o WebApp1
 
 Примените миграции, чтобы инициализировать базу данных.
 
-# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
+# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 Выполните следующую команду в консоли диспетчера пакетов (PMC):
 
 `PM> Update-Database`
 
-# <a name="net-core-clitabnetcore-cli"></a>[Интерфейс командной строки .NET Core](#tab/netcore-cli)
+# <a name="net-core-cli"></a>[Интерфейс командной строки .NET Core](#tab/netcore-cli)
 
 Миграция не требуется на этом этапе при использовании SQLite. Для LocalDB выполните следующую команду:
 
@@ -119,11 +119,11 @@ dotnet ef database update
 
 ## <a name="scaffold-register-login-and-logout"></a>Регистрация, вход и выход из шаблона формирования шаблонов
 
-# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
+# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 Добавьте файлы Register, login и LogOut. Соблюдайте [идентификатор шаблона в проекте Razor с](xref:security/authentication/scaffold-identity#scaffold-identity-into-a-razor-project-with-authorization) инструкциями по авторизации для создания кода, приведенного в этом разделе.
 
-# <a name="net-core-clitabnetcore-cli"></a>[Интерфейс командной строки .NET Core](#tab/netcore-cli)
+# <a name="net-core-cli"></a>[Интерфейс командной строки .NET Core](#tab/netcore-cli)
 
 Если вы создали проект с именем " **APP1**", выполните следующие команды. В противном случае используйте правильное пространство имен для `ApplicationDbContext`.
 
@@ -232,7 +232,7 @@ dotnet aspnet-codegenerator identity -dc WebApp1.Data.ApplicationDbContext --fil
 
 ## <a name="next-steps"></a>Next Steps
 
-* Сведения о настройке удостоверений с помощью SQLite см. в [этой статье о проблемах GitHub](https://github.com/aspnet/AspNetCore.Docs/issues/5131) .
+* Сведения о настройке удостоверений с помощью SQLite см. в [этой статье о проблемах GitHub](https://github.com/dotnet/AspNetCore.Docs/issues/5131) .
 * [Настройка Identity](xref:security/authentication/identity-configuration)
 * <xref:security/authorization/secure-data>
 * <xref:security/authentication/add-user-data>
@@ -252,7 +252,7 @@ ASP.NET Core удостоверение — это система членств
 
 Идентификацию можно настроить с помощью SQL Server базы данных для хранения имен пользователей, паролей и данных профилей. Кроме того, можно использовать еще одно постоянное хранилище, например хранилище таблиц Azure.
 
-[Просмотр или скачивание образца кода](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/security/authentication/identity/sample/src/ASPNETCore-IdentityDemoComplete/) ([Загрузка)](xref:index#how-to-download-a-sample).
+[Просмотр или скачивание образца кода](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/security/authentication/identity/sample/src/ASPNETCore-IdentityDemoComplete/) ([Загрузка)](xref:index#how-to-download-a-sample).
 
 В этом разделе вы узнаете, как использовать удостоверение для регистрации, входа и выхода пользователя. Более подробные инструкции по созданию приложений, использующих удостоверение, см. в разделе дальнейшие действия в конце этой статьи.
 
@@ -272,14 +272,14 @@ ASP.NET Core удостоверение — это система членств
 
 Создание ASP.NET Core проекта веб-приложения с учетными записями отдельных пользователей.
 
-# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
+# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 * Выберите **файл** > **Новый** > **проект**.
 * Выберите **Веб-приложение ASP.NET Core**. Присвойте проекту имя **APP1** , которое будет иметь то же пространство имен, что и загружаемый проект. Нажмите кнопку **ОК**.
 * Выберите ASP.NET Core **веб-приложение**, а затем щелкните **изменить проверку подлинности**.
 * Выберите **учетные записи отдельных пользователей** и нажмите кнопку **ОК**.
 
-# <a name="net-core-clitabnetcore-cli"></a>[Интерфейс командной строки .NET Core](#tab/netcore-cli)
+# <a name="net-core-cli"></a>[Интерфейс командной строки .NET Core](#tab/netcore-cli)
 
 ```dotnetcli
 dotnet new webapp --auth Individual -o WebApp1
@@ -297,7 +297,7 @@ dotnet new webapp --auth Individual -o WebApp1
 
 Примените миграции, чтобы инициализировать базу данных.
 
-# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
+# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 Выполните следующую команду в консоли диспетчера пакетов (PMC):
 
@@ -305,7 +305,7 @@ dotnet new webapp --auth Individual -o WebApp1
 Update-Database
 ```
 
-# <a name="net-core-clitabnetcore-cli"></a>[Интерфейс командной строки .NET Core](#tab/netcore-cli)
+# <a name="net-core-cli"></a>[Интерфейс командной строки .NET Core](#tab/netcore-cli)
 
 ```dotnetcli
 dotnet ef database update
@@ -339,11 +339,11 @@ dotnet ef database update
 
 Соблюдайте [идентификатор шаблона в проекте Razor с](xref:security/authentication/scaffold-identity#scaffold-identity-into-a-razor-project-with-authorization) инструкциями по авторизации для создания кода, приведенного в этом разделе.
 
-# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
+# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 Добавьте файлы Register, login и LogOut.
 
-# <a name="net-core-clitabnetcore-cli"></a>[Интерфейс командной строки .NET Core](#tab/netcore-cli)
+# <a name="net-core-cli"></a>[Интерфейс командной строки .NET Core](#tab/netcore-cli)
 
 Если вы создали проект с именем " **APP1**", выполните следующие команды. В противном случае используйте правильное пространство имен для `ApplicationDbContext`.
 
@@ -422,7 +422,7 @@ dotnet aspnet-codegenerator identity -dc WebApp1.Data.ApplicationDbContext --fil
 
 ## <a name="next-steps"></a>Next Steps
 
-* Сведения о настройке удостоверений с помощью SQLite см. в [этой статье о проблемах GitHub](https://github.com/aspnet/AspNetCore.Docs/issues/5131) .
+* Сведения о настройке удостоверений с помощью SQLite см. в [этой статье о проблемах GitHub](https://github.com/dotnet/AspNetCore.Docs/issues/5131) .
 * [Настройка Identity](xref:security/authentication/identity-configuration)
 * <xref:security/authorization/secure-data>
 * <xref:security/authentication/add-user-data>

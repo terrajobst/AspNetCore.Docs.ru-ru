@@ -6,18 +6,18 @@ ms.author: scaddie
 ms.custom: mvc
 ms.date: 02/03/2020
 uid: web-api/action-return-types
-ms.openlocfilehash: aeea005abfcfd45a6fc94dfddfd65e60ffb15df8
-ms.sourcegitcommit: 235623b6e5a5d1841139c82a11ac2b4b3f31a7a9
-ms.translationtype: HT
+ms.openlocfilehash: 17e290d3aba4f724fcbd1693af371017c4d3f03a
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
+ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 02/08/2020
-ms.locfileid: "77089192"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78651238"
 ---
 # <a name="controller-action-return-types-in-aspnet-core-web-api"></a>Типы возвращаемых значений действий контроллера в веб-API ASP.NET Core
 
 Автор: [Скотт Адди](https://github.com/scottaddie) (Scott Addie)
 
-[Просмотреть или скачать образец кода](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/web-api/action-return-types/samples) ([как скачивать](xref:index#how-to-download-a-sample))
+[Просмотреть или скачать образец кода](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/web-api/action-return-types/samples) ([как скачивать](xref:index#how-to-download-a-sample))
 
 ASP.NET Core предоставляет следующие параметры для типов возвращаемых значений действий контроллера веб-API:
 
@@ -113,7 +113,7 @@ public IEnumerable<Product> GetOnSaleProducts() =>
 В предшествующем действии:
 
 * возвращается код состояния 404, если продукт, представленный `id`, не существует в базовом хранилище данных; вызывается удобный метод <xref:Microsoft.AspNetCore.Mvc.ControllerBase.NotFound*> в качестве сокращения `return new NotFoundResult();`.
-* Код состояния 200 возвращается с объектом `Product`, если продукт не существует. Удобный метод <xref:Microsoft.AspNetCore.Mvc.ControllerBase.Ok*> вызывается как сокращение для `return new OkObjectResult(product);`.
+* Код состояния 200 возвращается с объектом `Product`, если продукт не существует. вызывается удобный метод <xref:Microsoft.AspNetCore.Mvc.ControllerBase.Ok*> в качестве сокращения `return new OkObjectResult(product);`.
 
 ### <a name="asynchronous-action"></a>Асинхронное действие
 
@@ -133,7 +133,7 @@ public IEnumerable<Product> GetOnSaleProducts() =>
 
 В предшествующем действии:
 
-* Код состояния 400 возвращается, если описание продукта содержит строку XYZ Widget. Удобный метод <xref:Microsoft.AspNetCore.Mvc.ControllerBase.BadRequest*> вызывается как сокращение для `return new BadRequestResult();`.
+* Код состояния 400 возвращается, если описание продукта содержит строку XYZ Widget. вызывается удобный метод <xref:Microsoft.AspNetCore.Mvc.ControllerBase.BadRequest*> в качестве сокращения `return new BadRequestResult();`.
 * Код состояния 201 генерируется удобным методом <xref:Microsoft.AspNetCore.Mvc.ControllerBase.CreatedAtAction*> при создании продукта. В качестве альтернативы вызову `CreatedAtAction` можно использовать `return new CreatedAtActionResult(nameof(GetById), "Products", new { id = product.Id }, product);`. В этом пути к коду объект `Product` предоставляется в тексте ответа. Также предоставляется заголовок ответа `Location` с URL-адресом только что созданного продукта.
 
 Например, следующая модель указывает на то, что запросы должны включать свойства `Name` и `Description`. Если `Name` и `Description` не были указаны в запросе, происходит сбой проверки модели.
@@ -148,7 +148,7 @@ public IEnumerable<Product> GetOnSaleProducts() =>
 
 ASP.NET Core 2.1 предоставляет тип возвращаемого значения [ActionResult\<T>](xref:Microsoft.AspNetCore.Mvc.ActionResult`1) для действий контроллера веб-API. Он позволяет возвращать тип, производный от <xref:Microsoft.AspNetCore.Mvc.ActionResult> или [определенный тип](#specific-type). `ActionResult<T>` имеет следующие преимущества по сравнению с [типом IActionResult](#iactionresult-type):
 
-* Свойство `Type` атрибута [`[ProducesResponseType]`](xref:Microsoft.AspNetCore.Mvc.ProducesResponseTypeAttribute) можно исключить. Например, `[ProducesResponseType(200, Type = typeof(Product))]` упрощается до `[ProducesResponseType(200)]`. Ожидаемый тип возвращаемого значения действия вместо этого выводится из `T` в `ActionResult<T>`.
+* Свойство [ атрибута `[ProducesResponseType]`](xref:Microsoft.AspNetCore.Mvc.ProducesResponseTypeAttribute)`Type` можно исключить. Например, `[ProducesResponseType(200, Type = typeof(Product))]` упрощается до `[ProducesResponseType(200)]`. Ожидаемый тип возвращаемого значения действия вместо этого выводится из `T` в `ActionResult<T>`.
 * [Операторы неявного приведения](/dotnet/csharp/language-reference/keywords/implicit) поддерживают преобразование `T` и `ActionResult` в `ActionResult<T>`. `T` преобразуется в <xref:Microsoft.AspNetCore.Mvc.ObjectResult>, то есть `return new ObjectResult(T);` упрощается до `return T;`.
 
 C# не поддерживает операторы неявных приведений в интерфейсах. Следовательно, для преобразования в конкретный тип необходимо использовать `ActionResult<T>`. Например, использование `IEnumerable` не работает в следующем примере:

@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 12/05/2019
 uid: security/anti-request-forgery
-ms.openlocfilehash: 54e153af55f28d9a89bbf16bce1c17f876567b59
-ms.sourcegitcommit: c0b72b344dadea835b0e7943c52463f13ab98dd1
+ms.openlocfilehash: 3da73b8fe3e3d73d5d7754e0642e55feeb785de3
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74880809"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78651778"
 ---
 # <a name="prevent-cross-site-request-forgery-xsrfcsrf-attacks-in-aspnet-core"></a>Предотвращение атак с подделкой межсайтовых запросов (XSRF/CSRF) в ASP.NET Core
 
@@ -79,7 +79,7 @@ CSRF атаки могут использоваться для веб-прило
 
 ### <a name="token-based-authentication"></a>Проверка подлинности на основе токенов
 
-Когда пользователь проходит проверку подлинности, ему выдается маркер (а не маркер подделки). Маркер содержит сведения о пользователе в виде [утверждений](/dotnet/framework/security/claims-based-identity-model) или маркер ссылки, который указывает приложению на обслуживание пользовательского состояния в приложении. Когда пользователь пытается получить доступ к ресурсу, который требует проверки подлинности, маркер отправляется в приложение с дополнительным заголовком авторизации в виде токена носителя. Это делает приложение без отслеживания состояния. В каждом последующем запросе маркер передается в запросе на проверку на стороне сервера. Этот токен не *зашифрован*; Он *кодируется*. На сервере маркер декодирован для доступа к его данным. Чтобы отправить маркер при последующих запросах, сохраните маркер в локальном хранилище браузера. Не стоит беспокоиться об уязвимости CSRF, если маркер хранится в локальном хранилище браузера. CSRF является проблемой, когда маркер хранится в файле cookie. Дополнительные сведения см. в [примере кода "проблемное соглашение GitHub" добавляет два cookie](https://github.com/aspnet/AspNetCore.Docs/issues/13369).
+Когда пользователь проходит проверку подлинности, ему выдается маркер (а не маркер подделки). Маркер содержит сведения о пользователе в виде [утверждений](/dotnet/framework/security/claims-based-identity-model) или маркер ссылки, который указывает приложению на обслуживание пользовательского состояния в приложении. Когда пользователь пытается получить доступ к ресурсу, который требует проверки подлинности, маркер отправляется в приложение с дополнительным заголовком авторизации в виде токена носителя. Это делает приложение без отслеживания состояния. В каждом последующем запросе маркер передается в запросе на проверку на стороне сервера. Этот токен не *зашифрован*; Он *кодируется*. На сервере маркер декодирован для доступа к его данным. Чтобы отправить маркер при последующих запросах, сохраните маркер в локальном хранилище браузера. Не стоит беспокоиться об уязвимости CSRF, если маркер хранится в локальном хранилище браузера. CSRF является проблемой, когда маркер хранится в файле cookie. Дополнительные сведения см. в [примере кода "проблемное соглашение GitHub" добавляет два cookie](https://github.com/dotnet/AspNetCore.Docs/issues/13369).
 
 ### <a name="multiple-apps-hosted-at-one-domain"></a>Несколько приложений, размещенных в одном домене
 
@@ -210,12 +210,12 @@ services.AddAntiforgery(options =>
 
 &dagger;настроить подделку `Cookie` свойства, используя свойства класса [кукиебуилдер](/dotnet/api/microsoft.aspnetcore.http.cookiebuilder) .
 
-| Параметр | Описание |
+| Параметр | Description |
 | ------ | ----------- |
 | [Файл cookie](/dotnet/api/microsoft.aspnetcore.antiforgery.antiforgeryoptions.cookie) | Определяет параметры, используемые для создания файлов cookie подделки. |
 | [формфиелднаме](/dotnet/api/microsoft.aspnetcore.antiforgery.antiforgeryoptions.formfieldname) | Имя скрытого поля формы, используемое системой защиты от подделки для отображения маркеров подделки в представлениях. |
 | [хеадернаме](/dotnet/api/microsoft.aspnetcore.antiforgery.antiforgeryoptions.headername) | Имя заголовка, используемого системой защиты от подделки. Если `null`, система рассматривает только данные формы. |
-| [суппрессксфрамеоптионшеадер](/dotnet/api/microsoft.aspnetcore.antiforgery.antiforgeryoptions.suppressxframeoptionsheader) | Указывает, следует ли подавлять Создание заголовка `X-Frame-Options`. По умолчанию заголовок создается со значением «САМЕОРИГИН». По умолчанию — `false`. |
+| [суппрессксфрамеоптионшеадер](/dotnet/api/microsoft.aspnetcore.antiforgery.antiforgeryoptions.suppressxframeoptionsheader) | Указывает, следует ли подавлять Создание заголовка `X-Frame-Options`. По умолчанию заголовок создается со значением «САМЕОРИГИН». По умолчанию равен `false`. |
 
 ::: moniker-end
 
@@ -234,16 +234,16 @@ services.AddAntiforgery(options =>
 });
 ```
 
-| Параметр | Описание |
+| Параметр | Description |
 | ------ | ----------- |
 | [Файл cookie](/dotnet/api/microsoft.aspnetcore.antiforgery.antiforgeryoptions.cookie) | Определяет параметры, используемые для создания файлов cookie подделки. |
-| [CookieDomain](/dotnet/api/microsoft.aspnetcore.antiforgery.antiforgeryoptions.cookiedomain) | Домен cookie. По умолчанию — `null`. Это свойство устарело и будет удалено в следующей версии. Взамен рекомендуется использовать файл cookie. domain. |
+| [CookieDomain](/dotnet/api/microsoft.aspnetcore.antiforgery.antiforgeryoptions.cookiedomain) | Домен cookie. По умолчанию равен `null`. Это свойство устарело и будет удалено в следующей версии. Взамен рекомендуется использовать файл cookie. domain. |
 | [CookieName](/dotnet/api/microsoft.aspnetcore.antiforgery.antiforgeryoptions.cookiename) | Имя cookie. Если значение не задано, система создает уникальное имя, начинающееся с [дефаулткукиепрефикс](/dotnet/api/microsoft.aspnetcore.antiforgery.antiforgeryoptions.defaultcookieprefix) (". AspNetCore. подделка. "). Это свойство устарело и будет удалено в следующей версии. Рекомендуемой альтернативой является Cookie.Name. |
 | [CookiePath](/dotnet/api/microsoft.aspnetcore.antiforgery.antiforgeryoptions.cookiepath) | Путь, заданный для файла cookie. Это свойство устарело и будет удалено в следующей версии. Взамен рекомендуется использовать файл cookie. Path. |
 | [формфиелднаме](/dotnet/api/microsoft.aspnetcore.antiforgery.antiforgeryoptions.formfieldname) | Имя скрытого поля формы, используемое системой защиты от подделки для отображения маркеров подделки в представлениях. |
 | [хеадернаме](/dotnet/api/microsoft.aspnetcore.antiforgery.antiforgeryoptions.headername) | Имя заголовка, используемого системой защиты от подделки. Если `null`, система рассматривает только данные формы. |
-| [RequireSsl](/dotnet/api/microsoft.aspnetcore.antiforgery.antiforgeryoptions.requiressl) | Указывает, требуется ли протокол HTTPS в системе защиты от подделки. Если `true`, то запросы, не относящиеся к HTTPS, завершаются сбоем. По умолчанию — `false`. Это свойство устарело и будет удалено в следующей версии. Рекомендуемым альтернативным вариантом является установка файла cookie. Секуреполици. |
-| [суппрессксфрамеоптионшеадер](/dotnet/api/microsoft.aspnetcore.antiforgery.antiforgeryoptions.suppressxframeoptionsheader) | Указывает, следует ли подавлять Создание заголовка `X-Frame-Options`. По умолчанию заголовок создается со значением «САМЕОРИГИН». По умолчанию — `false`. |
+| [RequireSsl](/dotnet/api/microsoft.aspnetcore.antiforgery.antiforgeryoptions.requiressl) | Указывает, требуется ли протокол HTTPS в системе защиты от подделки. Если `true`, то запросы, не относящиеся к HTTPS, завершаются сбоем. По умолчанию равен `false`. Это свойство устарело и будет удалено в следующей версии. Рекомендуемым альтернативным вариантом является установка файла cookie. Секуреполици. |
+| [суппрессксфрамеоптионшеадер](/dotnet/api/microsoft.aspnetcore.antiforgery.antiforgeryoptions.suppressxframeoptionsheader) | Указывает, следует ли подавлять Создание заголовка `X-Frame-Options`. По умолчанию заголовок создается со значением «САМЕОРИГИН». По умолчанию равен `false`. |
 
 ::: moniker-end
 
@@ -315,9 +315,9 @@ public async Task<IActionResult> RemoveLogin(RemoveLoginViewModel account)
 ASP.NET Core приложения не создают маркеры для защиты от подделки для безопасного метода HTTP (получение, HEAD, параметры и ТРАССИРОВКа). Вместо широкого применения атрибута `ValidateAntiForgeryToken` и последующего его переопределения с `IgnoreAntiforgeryToken` атрибутами можно использовать атрибут [аутовалидатеантифоржеритокен](/dotnet/api/microsoft.aspnetcore.mvc.autovalidateantiforgerytokenattribute) . Этот атрибут работает идентично атрибуту `ValidateAntiForgeryToken`, за исключением того, что для запросов, выполняемых с помощью следующих методов HTTP, не требуются маркеры:
 
 * GET
-* HEAD,
+* HEAD
 * OPTIONS
-* TRACE
+* трассировка
 
 Рекомендуется использовать `AutoValidateAntiforgeryToken` широко для сценариев, не относящихся к API. Это гарантирует, что действия POST по умолчанию защищаются. Альтернативой является игнорирование маркеров подделки по умолчанию, если только `ValidateAntiForgeryToken` не применяются к отдельным методам действий. Более вероятно, что в этом случае метод действия POST остается незащищенным по ошибке, что оставляет приложение уязвимым для атак CSRF. Все записи должны отправить токен защиты от подделки.
 
@@ -334,10 +334,20 @@ public class ManageController : Controller
 
 Глобальный пример:
 
+::: moniker range="< aspnetcore-3.0"
+
+Обслуживание. AddMvc (Options = Параметры >. Filters. Add (New Аутовалидатеантифоржеритокенаттрибуте ()));
+
+::: moniker-end
+
+::: moniker range=">= aspnetcore-3.0"
+
 ```csharp
-services.AddMvc(options => 
+services.AddControllersWithViews(options =>
     options.Filters.Add(new AutoValidateAntiforgeryTokenAttribute()));
 ```
+
+::: moniker-end
 
 ### <a name="override-global-or-controller-antiforgery-attributes"></a>Переопределение атрибутов или подделки глобальных или контроллеров
 
@@ -465,7 +475,7 @@ public void ConfigureServices(IServiceCollection services)
 }
 ```
 
-[Просмотреть или скачать образец кода](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/security/anti-request-forgery/sample/AngularSample) ([как скачивать](xref:index#how-to-download-a-sample))
+[Просмотреть или скачать образец кода](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/security/anti-request-forgery/sample/AngularSample) ([как скачивать](xref:index#how-to-download-a-sample))
 
 ## <a name="extend-antiforgery"></a>Расширение защиты от подделки
 

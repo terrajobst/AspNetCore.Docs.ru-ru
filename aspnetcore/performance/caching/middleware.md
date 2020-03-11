@@ -1,28 +1,28 @@
 ---
 title: Кэширование ответа по промежуточного слоя в ASP.NET Core
-author: guardrex
+author: rick-anderson
 description: Узнайте, как настроить и использовать ПО промежуточного слоя для кэширование ответов в ASP.NET Core.
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
 ms.date: 02/07/2020
 uid: performance/caching/middleware
-ms.openlocfilehash: 61fa42161560ce2b512a73f1d7e32d11cd9bcb2c
-ms.sourcegitcommit: 235623b6e5a5d1841139c82a11ac2b4b3f31a7a9
+ms.openlocfilehash: 4deac15538d4607bd611c4e072daae39447681c1
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 02/10/2020
-ms.locfileid: "77114800"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78651406"
 ---
 # <a name="response-caching-middleware-in-aspnet-core"></a>Кэширование ответа по промежуточного слоя в ASP.NET Core
 
-[Люк ЛаСаМ](https://github.com/guardrex) и [Джон Луо](https://github.com/JunTaoLuo)
+Автор: [John Luo](https://github.com/JunTaoLuo) (Джон Луо)
 
 ::: moniker range=">= aspnetcore-3.0"
 
 В этой статье объясняется, как настроить по промежуточного слоя кэширования ответов в приложении ASP.NET Core. По промежуточного слоя определяет, когда ответы кэшируются, сохраняет ответы и обслуживает ответы из кэша. Общие сведения о кэшировании HTTP и атрибуте [`[ResponseCache]`](xref:Microsoft.AspNetCore.Mvc.ResponseCacheAttribute) см. в разделе [кэширование ответов](xref:performance/caching/response).
 
-[Просмотреть или скачать образец кода](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/performance/caching/middleware/samples) ([как скачивать](xref:index#how-to-download-a-sample))
+[Просмотреть или скачать образец кода](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/performance/caching/middleware/samples) ([как скачивать](xref:index#how-to-download-a-sample))
 
 ## <a name="configuration"></a>Конфигурация
 
@@ -162,7 +162,7 @@ if (responseCachingFeature != null)
 
 В этой статье объясняется, как настроить по промежуточного слоя кэширования ответов в приложении ASP.NET Core. По промежуточного слоя определяет, когда ответы кэшируются, сохраняет ответы и обслуживает ответы из кэша. Общие сведения о кэшировании HTTP и атрибуте [`[ResponseCache]`](xref:Microsoft.AspNetCore.Mvc.ResponseCacheAttribute) см. в разделе [кэширование ответов](xref:performance/caching/response).
 
-[Просмотреть или скачать образец кода](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/performance/caching/middleware/samples) ([как скачивать](xref:index#how-to-download-a-sample))
+[Просмотреть или скачать образец кода](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/performance/caching/middleware/samples) ([как скачивать](xref:index#how-to-download-a-sample))
 
 ## <a name="configuration"></a>Конфигурация
 

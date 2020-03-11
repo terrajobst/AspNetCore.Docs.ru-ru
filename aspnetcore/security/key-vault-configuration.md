@@ -1,22 +1,22 @@
 ---
 title: Поставщик конфигурации Azure Key Vault в ASP.NET Core
-author: guardrex
+author: rick-anderson
 description: Узнайте, как использовать поставщик конфигурации Azure Key Vault для настройки приложения с помощью пар "имя-значение", загружаемых во время выполнения.
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
 ms.date: 02/07/2020
 uid: security/key-vault-configuration
-ms.openlocfilehash: 7eb8cf5dcd6b9f112a2ef30e694b6223a7d1f2fe
-ms.sourcegitcommit: 235623b6e5a5d1841139c82a11ac2b4b3f31a7a9
+ms.openlocfilehash: d617627154e3125a6a59d082fd401fc69c25fcb3
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 02/10/2020
-ms.locfileid: "77114878"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78652180"
 ---
 # <a name="azure-key-vault-configuration-provider-in-aspnet-core"></a>Поставщик конфигурации Azure Key Vault в ASP.NET Core
 
-[Люк ЛаСаМ](https://github.com/guardrex) и [Эндрю Стантон-медперсонала](https://github.com/anurse)
+[Эндрю Стантон-медперсонала](https://github.com/anurse)
 
 ::: moniker range=">= aspnetcore-3.0"
 
@@ -25,7 +25,7 @@ ms.locfileid: "77114878"
 * Управление доступом к конфиденциальным данным конфигурации.
 * Соблюдайте требования для FIPS 140-2 уровня 2 проверенных аппаратных модулей безопасности (HSM) при хранении данных конфигурации.
 
-[Просмотреть или скачать образец кода](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/security/key-vault-configuration/samples) ([как скачивать](xref:index#how-to-download-a-sample))
+[Просмотреть или скачать образец кода](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/security/key-vault-configuration/samples) ([как скачивать](xref:index#how-to-download-a-sample))
 
 ## <a name="packages"></a>Пакеты
 
@@ -289,7 +289,7 @@ config.AddAzureKeyVault(
 
 Поставщик может считывать значения конфигурации в массив для привязки к массиву POCO.
 
-При чтении из источника конфигурации, позволяющего ключам содержать разделители с двоеточием (`:`), используется числовой сегмент ключа для различения ключей, составляющих массив (`:0:`, `:1:`,... `:{n}:`). Дополнительные сведения см. в разделе [Configuration: привязка массива к классу](xref:fundamentals/configuration/index#bind-an-array-to-a-class).
+При чтении из источника конфигурации, позволяющего ключам содержать разделители с двоеточием (`:`), используется числовой сегмент ключа для различения ключей, составляющих массив (`:0:`, `:1:`, &hellip; `:{n}:`). Дополнительные сведения см. в разделе [Configuration: привязка массива к классу](xref:fundamentals/configuration/index#bind-an-array-to-a-class).
 
 Ключи Azure Key Vault не могут использовать двоеточие в качестве разделителя. Описанный в этом разделе подход использует двойные тире (`--`) в качестве разделителя иерархических значений (разделов). Ключи массивов хранятся в Azure Key Vault с двойными тире и числовыми сегментами ключей (`--0--`, `--1--`, &hellip; `--{n}--`).
 
@@ -371,7 +371,7 @@ Configuration.Reload();
 * Управление доступом к конфиденциальным данным конфигурации.
 * Соблюдайте требования для FIPS 140-2 уровня 2 проверенных аппаратных модулей безопасности (HSM) при хранении данных конфигурации.
 
-[Просмотреть или скачать образец кода](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/security/key-vault-configuration/samples) ([как скачивать](xref:index#how-to-download-a-sample))
+[Просмотреть или скачать образец кода](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/security/key-vault-configuration/samples) ([как скачивать](xref:index#how-to-download-a-sample))
 
 ## <a name="packages"></a>Пакеты
 
@@ -616,7 +616,7 @@ az keyvault set-policy --name {KEY VAULT NAME} --object-id {OBJECT ID} --secret-
 
 Поставщик может считывать значения конфигурации в массив для привязки к массиву POCO.
 
-При чтении из источника конфигурации, позволяющего ключам содержать разделители с двоеточием (`:`), используется числовой сегмент ключа для различения ключей, составляющих массив (`:0:`, `:1:`,... `:{n}:`). Дополнительные сведения см. в разделе [Configuration: привязка массива к классу](xref:fundamentals/configuration/index#bind-an-array-to-a-class).
+При чтении из источника конфигурации, позволяющего ключам содержать разделители с двоеточием (`:`), используется числовой сегмент ключа для различения ключей, составляющих массив (`:0:`, `:1:`, &hellip; `:{n}:`). Дополнительные сведения см. в разделе [Configuration: привязка массива к классу](xref:fundamentals/configuration/index#bind-an-array-to-a-class).
 
 Ключи Azure Key Vault не могут использовать двоеточие в качестве разделителя. Описанный в этом разделе подход использует двойные тире (`--`) в качестве разделителя иерархических значений (разделов). Ключи массивов хранятся в Azure Key Vault с двойными тире и числовыми сегментами ключей (`--0--`, `--1--`, &hellip; `--{n}--`).
 

@@ -6,18 +6,18 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 12/18/2019
 uid: mvc/views/view-components
-ms.openlocfilehash: 8df070b580b6125db6616b33a81f3ffebad69f3a
-ms.sourcegitcommit: 7dfe6cc8408ac6a4549c29ca57b0c67ec4baa8de
-ms.translationtype: HT
+ms.openlocfilehash: 910fffbf360ed0f62f7fe20bc8bfdf5be8198876
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
+ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75828923"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78652318"
 ---
 # <a name="view-components-in-aspnet-core"></a>Просмотр компонентов в ASP.NET Core
 
-Автор: [Рик Андерсон](https://twitter.com/RickAndMSFT) (Rick Anderson)
+Автор: [Рик Андерсон](https://twitter.com/RickAndMSFT)
 
-[Просмотреть или скачать образец кода](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/views/view-components/sample) ([как скачивать](xref:index#how-to-download-a-sample))
+[Просмотреть или скачать образец кода](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/views/view-components/sample) ([как скачивать](xref:index#how-to-download-a-sample))
 
 ## <a name="view-components"></a>Компоненты представлений
 
@@ -42,7 +42,7 @@ ms.locfileid: "75828923"
 
 Компонент представления состоит из двух частей: класса (обычно производного от [ViewComponent](/dotnet/api/microsoft.aspnetcore.mvc.viewcomponent)) и возвращаемого результата (обычно это представление). Как и контроллеры, компонент представления может быть объектом POCO, но большинству разработчиков потребуются преимущества методов и свойств, доступные при наследовании от `ViewComponent`.
 
-При оценке компонентов представлений на соответствие требованиям приложения попробуйте вместо этого использовать компоненты Razor. Компоненты Razor также объединяют разметку с кодом C# для создания многоразовых единиц пользовательского интерфейса. Компоненты Razor предназначены для повышения производительности разработчика при разработке логики и структуры пользовательского интерфейса на стороне клиента. Для получения дополнительной информации см. <xref:blazor/components>.
+При оценке компонентов представлений на соответствие требованиям приложения попробуйте вместо этого использовать компоненты Razor. Компоненты Razor также объединяют разметку с кодом C# для создания многоразовых единиц пользовательского интерфейса. Компоненты Razor предназначены для повышения производительности разработчика при разработке логики и структуры пользовательского интерфейса на стороне клиента. Дополнительные сведения см. в разделе <xref:blazor/components>.
 
 ## <a name="creating-a-view-component"></a>Создание компонента представления
 
@@ -155,7 +155,7 @@ ms.locfileid: "75828923"
 
 ## <a name="walkthrough-creating-a-simple-view-component"></a>Пошаговое руководство. Создание простого компонента представления
 
-[Скачайте](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/views/view-components/sample) начальный код и выполните его сборку и тестирование. Это простой проект с контроллером `ToDo`, который отображает список элементов *дел*.
+[Скачайте](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/views/view-components/sample) начальный код и выполните его сборку и тестирование. Это простой проект с контроллером `ToDo`, который отображает список элементов *дел*.
 
 ![Список дел](view-components/_static/2dos.png)
 
@@ -202,7 +202,7 @@ ms.locfileid: "75828923"
 
 `@await Component.InvokeAsync` в разметке показывает синтаксис для вызова компонентов представлений. Первым аргументом является имя компонента, который требуется вызвать. Последующие параметры передаются в компонент. `InvokeAsync` может занять произвольное число аргументов.
 
-Проверьте работу приложения. Следующий рисунок показывает список дел и элементы с приоритетом:
+Тестирование приложения. Следующий рисунок показывает список дел и элементы с приоритетом:
 
 ![список дел и элементы с приоритетом](view-components/_static/pi.png)
 

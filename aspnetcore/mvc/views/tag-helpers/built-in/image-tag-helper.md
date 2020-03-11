@@ -7,11 +7,11 @@ ms.custom: mvc
 ms.date: 04/06/2019
 uid: mvc/views/tag-helpers/builtin-th/image-tag-helper
 ms.openlocfilehash: 964072ad276f7e3e411ee41cb03a2efb9d05c585
-ms.sourcegitcommit: 7a40c56bf6a6aaa63a7ee83a2cac9b3a1d77555e
-ms.translationtype: HT
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
+ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67856119"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78653776"
 ---
 # <a name="image-tag-helper-in-aspnet-core"></a>Вспомогательная функция тега изображения в ASP.NET Core
 
@@ -26,7 +26,7 @@ ms.locfileid: "67856119"
 * Уникальная строка отключения кэширования добавляется в качестве параметра запроса к источнику изображения.
 * При изменении файла на веб-сервере узла создается уникальный URL-адрес запроса, включающий в себя обновленный параметр запроса.
 
-Общие сведения о вспомогательных функциях тегов см. здесь: <xref:mvc/views/tag-helpers/intro>.
+Общие сведения о вспомогательных функциях тегов см. в разделе <xref:mvc/views/tag-helpers/intro>.
 
 ## <a name="image-tag-helper-attributes"></a>Атрибуты вспомогательной функции тега изображения
 

@@ -7,12 +7,12 @@ ms.author: scaddie
 ms.custom: mvc
 ms.date: 12/11/2019
 uid: web-api/http-repl
-ms.openlocfilehash: 15899917826fb6559244998766d99d00f56e0521
-ms.sourcegitcommit: f259889044d1fc0f0c7e3882df0008157ced4915
-ms.translationtype: HT
+ms.openlocfilehash: d9beae68cc869b665ff5d2b6cf34f120406098dc
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
+ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76294720"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78653032"
 ---
 # <a name="test-web-apis-with-the-http-repl"></a>Тестирование веб-API с помощью HTTP REPL
 
@@ -34,9 +34,9 @@ HTTP read-eval-print loop (REPL):
 * [POST](#test-http-post-requests)
 * [PUT](#test-http-put-requests)
 
-Для выполнения дальнейших инструкций [просмотрите или скачайте пример веб-API ASP.NET Core](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/web-api/http-repl/samples) ([как скачивать](xref:index#how-to-download-a-sample)).
+Для выполнения дальнейших инструкций [просмотрите или скачайте пример веб-API ASP.NET Core](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/web-api/http-repl/samples) ([как скачивать](xref:index#how-to-download-a-sample)).
 
-## <a name="prerequisites"></a>Предварительные требования
+## <a name="prerequisites"></a>предварительные требования
 
 * [!INCLUDE [2.1-SDK](~/includes/2.1-SDK.md)]
 
@@ -225,15 +225,15 @@ https://localhost:5001/people~
 
 [Цвета](#set-color-preferences), используемые в HTTP REPL по умолчанию, можно настроить. Кроме того, можно определить [текстовый редактор по умолчанию](#set-the-default-text-editor). Настройки HTTP REPL сохраняются на протяжении текущего сеанса и учитываются при открытии следующих сеансов. Измененные настройки хранятся в следующем файле:
 
-# <a name="linuxtablinux"></a>[Linux](#tab/linux)
+# <a name="linux"></a>[Linux](#tab/linux)
 
 *%HOME%/.httpreplprefs*
 
-# <a name="macostabmacos"></a>[macOS](#tab/macos)
+# <a name="macos"></a>[macOS](#tab/macos)
 
 *%HOME%/.httpreplprefs*
 
-# <a name="windowstabwindows"></a>[Windows](#tab/windows)
+# <a name="windows"></a>[Windows](#tab/windows)
 
 *%USERPROFILE%\\.httpreplprefs*
 
@@ -335,19 +335,19 @@ pref set editor.command.default "<EXECUTABLE>"
 
 В приведенной выше команде `<EXECUTABLE>` — это полный путь к исполняемому файлу текстового редактора. Например, чтобы задать Visual Studio Code как текстовый редактор по умолчанию, выполните следующую команду:
 
-# <a name="linuxtablinux"></a>[Linux](#tab/linux)
+# <a name="linux"></a>[Linux](#tab/linux)
 
 ```console
 pref set editor.command.default "/usr/bin/code"
 ```
 
-# <a name="macostabmacos"></a>[macOS](#tab/macos)
+# <a name="macos"></a>[macOS](#tab/macos)
 
 ```console
 pref set editor.command.default "/Applications/Visual Studio Code.app/Contents/Resources/app/bin/code"
 ```
 
-# <a name="windowstabwindows"></a>[Windows](#tab/windows)
+# <a name="windows"></a>[Windows](#tab/windows)
 
 ```console
 pref set editor.command.default "C:\Program Files\Microsoft VS Code\Code.exe"
@@ -554,7 +554,7 @@ put <PARAMETER> [-c|--content] [-f|--file] [-h|--header] [--no-body] [-F|--no-fo
 
 Чтобы отправить HTTP-запрос PUT, выполните указанные ниже действия.
 
-1. *Необязательно:* Чтобы просмотреть данные перед их изменением, выполните команду `get`:
+1. *Необязательно*: выполните команду `get`, чтобы просмотреть данные перед их изменением:
 
     ```console
     https://localhost:5001/fruits~ get
@@ -616,7 +616,7 @@ put <PARAMETER> [-c|--content] [-f|--file] [-h|--header] [--no-body] [-F|--no-fo
     Server: Kestrel
     ```
 
-1. *Необязательно:* Чтобы просмотреть изменения, выполните команду `get`. Например, если вы ввели "Cherry" в текстовом редакторе, команда `get` вернет следующие выходные данные:
+1. *Необязательно*. выполните команду `get`, чтобы просмотреть изменения. Например, если вы ввели "Cherry" в текстовом редакторе, команда `get` вернет следующие выходные данные:
 
     ```console
     https://localhost:5001/fruits~ get
@@ -667,7 +667,7 @@ delete <PARAMETER> [-F|--no-formatting] [-h|--header] [--response] [--response:b
 
 Чтобы отправить HTTP-запрос DELETE, выполните указанные ниже действия.
 
-1. *Необязательно:* Чтобы просмотреть данные перед их изменением, выполните команду `get`:
+1. *Необязательно*: выполните команду `get`, чтобы просмотреть данные перед их изменением:
 
     ```console
     https://localhost:5001/fruits~ get
@@ -707,7 +707,7 @@ delete <PARAMETER> [-F|--no-formatting] [-h|--header] [--response] [--response:b
     Server: Kestrel
     ```
 
-1. *Необязательно:* Чтобы просмотреть изменения, выполните команду `get`. В этом примере команда `get` возвращает следующие данные:
+1. *Необязательно*. выполните команду `get`, чтобы просмотреть изменения. В этом примере команда `get` возвращает следующие данные:
 
     ```console
     https://localhost:5001/fruits~ get

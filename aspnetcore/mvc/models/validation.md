@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 12/15/2019
 uid: mvc/models/validation
-ms.openlocfilehash: a39eeead10849d11349688c42fe814ede9e8a847
-ms.sourcegitcommit: 85564ee396c74c7651ac47dd45082f3f1803f7a2
-ms.translationtype: HT
+ms.openlocfilehash: cf6b77de78f2c5dda48ffcd8ac1f9ed2f8d28bd7
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
+ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77172490"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78652516"
 ---
 # <a name="model-validation-in-aspnet-core-mvc-and-razor-pages"></a>Проверка модели в ASP.NET Core MVC и Razor Pages
 
@@ -21,7 +21,7 @@ ms.locfileid: "77172490"
 
 В этой статье объясняется, как осуществлять проверки вводимых пользователем данных в приложении ASP.NET Core MVC или Razor Pages.
 
-[Просмотреть или скачать пример кода](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/models/validation/samples) ([описание скачивания](xref:index#how-to-download-a-sample)).
+[Просмотреть или скачать пример кода](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/models/validation/samples) ([описание скачивания](xref:index#how-to-download-a-sample)).
 
 ## <a name="model-state"></a>Состояние модели
 
@@ -49,16 +49,16 @@ ms.locfileid: "77172490"
 
 Ниже приведены некоторые из встроенных атрибутов проверки.
 
-* `[CreditCard]`. проверяет, имеет ли свойство формат кредитной карты.
-* `[Compare]`. проверяет, совпадают ли два свойства модели.
-* `[EmailAddress]`. проверяет, имеет ли свойство формат адреса электронной почты.
-* `[Phone]`. проверяет, имеет ли свойство формат номера телефона.
-* `[Range]`. проверяет, находится ли значение свойства в указанном диапазоне.
-* `[RegularExpression]`. проверяет, соответствует ли значение свойства указанному регулярному выражению.
-* `[Required]`. проверяет, что поле не равно NULL. Дополнительные сведения о поведении этого атрибута см. в разделе [Атрибут `[Required]`](#required-attribute).
-* `[StringLength]`. проверяет, что значение свойства строки не превышает ограничение по указанной длине.
-* `[Url]`. проверяет, имеет ли свойство формат URL-адреса.
-* `[Remote]`. проверяет входные данные на клиенте путем вызова метода действия на сервере. Дополнительные сведения о поведении этого атрибута см. в разделе [Атрибут `[Remote]`](#remote-attribute).
+* `[CreditCard]`: проверяет, что свойство имеет формат кредитной карты.
+* `[Compare]`: проверяет соответствие двух свойств в модели.
+* `[EmailAddress]`: проверяет, имеет у свойства Формат электронной почты.
+* `[Phone]`: проверяет, что свойство имеет формат номера телефона.
+* `[Range]`: проверяет, попадает значение свойства в указанный диапазон.
+* `[RegularExpression]`: проверяет соответствие значения свойства указанному регулярному выражению.
+* `[Required]`: проверяет, что поле не имеет значение null. Дополнительные сведения о поведении этого атрибута см. в разделе [Атрибут `[Required]`](#required-attribute).
+* `[StringLength]`: проверяет, что значение свойства строки не превышает заданное ограничение длины.
+* `[Url]`: проверяет, что свойство имеет формат URL-адреса.
+* `[Remote]`: проверяет входные данные на клиенте, вызывая метод действия на сервере. Дополнительные сведения о поведении этого атрибута см. в разделе [Атрибут `[Remote]`](#remote-attribute).
 
 Полный перечень атрибутов проверки можно найти в пространстве имен [System.ComponentModel.DataAnnotations](xref:System.ComponentModel.DataAnnotations).
 
@@ -265,7 +265,7 @@ public string MiddleName { get; set; }
 
 ## <a name="unobtrusive-validation"></a>Ненавязчивая проверка
 
-См. сведения о ненавязчивой проверке в этой [проблеме GitHub](https://github.com/aspnet/AspNetCore.Docs/issues/1111).
+См. сведения о ненавязчивой проверке в этой [проблеме GitHub](https://github.com/dotnet/AspNetCore.Docs/issues/1111).
 
 ### <a name="add-validation-to-dynamic-forms"></a>Добавление проверки к динамическим формам
 
@@ -376,7 +376,7 @@ $.get({
 * Закомментируйте ссылку на `_ValidationScriptsPartial` во всех файлах с расширением *CSHTML*.
 * Удалите содержимое файла *Pages\Shared\_ValidationScriptsPartial.cshtml*.
 
-Предыдущий подход не помешает проверке на стороне клиента библиотеки классов Razor для ASP.NET Core Identity. Для получения дополнительной информации см. <xref:security/authentication/scaffold-identity>.
+Предыдущий подход не помешает проверке на стороне клиента библиотеки классов Razor для ASP.NET Core Identity. Дополнительные сведения см. в разделе <xref:security/authentication/scaffold-identity>.
 
 ## <a name="additional-resources"></a>Дополнительные ресурсы
 
@@ -389,7 +389,7 @@ $.get({
 
 В этой статье объясняется, как осуществлять проверки вводимых пользователем данных в приложении ASP.NET Core MVC или Razor Pages.
 
-[Просмотреть или скачать пример кода](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/models/validation/sample) ([описание скачивания](xref:index#how-to-download-a-sample)).
+[Просмотреть или скачать пример кода](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/models/validation/sample) ([описание скачивания](xref:index#how-to-download-a-sample)).
 
 ## <a name="model-state"></a>Состояние модели
 
@@ -409,7 +409,7 @@ $.get({
 
 ## <a name="validation-attributes"></a>Атрибуты проверки
 
-Атрибуты проверки позволяют задать правила проверки для свойств модели. В следующем примере из [примера приложения](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/models/validation/sample) показан класс модели, который помечается с помощью атрибутов проверки. `[ClassicMovie]` является настраиваемым атрибутом проверки; остальные являются встроенными. Не показан `[ClassicMovie2]`, который демонстрирует альтернативный способ реализации настраиваемого атрибута.
+Атрибуты проверки позволяют задать правила проверки для свойств модели. В следующем примере из [примера приложения](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/models/validation/sample) показан класс модели, который помечается с помощью атрибутов проверки. `[ClassicMovie]` является настраиваемым атрибутом проверки; остальные являются встроенными. Не показан `[ClassicMovie2]`, который демонстрирует альтернативный способ реализации настраиваемого атрибута.
 
 [!code-csharp[](validation/samples/2.x/ValidationSample/Models/Movie.cs?name=snippet_ModelClass)]
 
@@ -417,18 +417,18 @@ $.get({
 
 К встроенным атрибутам проверки относятся:
 
-* `[CreditCard]`. проверяет, имеет ли свойство формат кредитной карты.
-* `[Compare]`. проверяет, совпадают ли два свойства модели. Например, файл *Register.cshtml.cs* использует `[Compare]` для проверки совпадений двух введенных паролей. [Удостоверение шаблона](xref:security/authentication/scaffold-identity) для просмотра кода регистрации.
-* `[EmailAddress]`. проверяет, имеет ли свойство формат адреса электронной почты.
-* `[Phone]`. проверяет, имеет ли свойство формат номера телефона.
-* `[Range]`. проверяет, находится ли значение свойства в указанном диапазоне.
-* `[RegularExpression]`. проверяет, соответствует ли значение свойства указанному регулярному выражению.
-* `[Required]`. проверяет, что поле не равно NULL. Дополнительные сведения о поведении этого атрибута см. в разделе [Атрибут `[Required]`](#required-attribute).
-* `[StringLength]`. проверяет, что значение свойства строки не превышает ограничение по указанной длине.
-* `[Url]`. проверяет, имеет ли свойство формат URL-адреса.
-* `[Remote]`. проверяет входные данные на клиенте путем вызова метода действия на сервере. Дополнительные сведения о поведении этого атрибута см. в разделе [Атрибут `[Remote]`](#remote-attribute).
+* `[CreditCard]`: проверяет, что свойство имеет формат кредитной карты.
+* `[Compare]`: проверяет соответствие двух свойств в модели. Например, файл *Register.cshtml.cs* использует `[Compare]` для проверки совпадений двух введенных паролей. [Удостоверение шаблона](xref:security/authentication/scaffold-identity) для просмотра кода регистрации.
+* `[EmailAddress]`: проверяет, имеет у свойства Формат электронной почты.
+* `[Phone]`: проверяет, что свойство имеет формат номера телефона.
+* `[Range]`: проверяет, попадает значение свойства в указанный диапазон.
+* `[RegularExpression]`: проверяет соответствие значения свойства указанному регулярному выражению.
+* `[Required]`: проверяет, что поле не имеет значение null. Дополнительные сведения о поведении этого атрибута см. в разделе [Атрибут `[Required]`](#required-attribute).
+* `[StringLength]`: проверяет, что значение свойства строки не превышает заданное ограничение длины.
+* `[Url]`: проверяет, что свойство имеет формат URL-адреса.
+* `[Remote]`: проверяет входные данные на клиенте, вызывая метод действия на сервере. Дополнительные сведения о поведении этого атрибута см. в разделе [Атрибут `[Remote]`](#remote-attribute).
 
-При использовании атрибута `[RegularExpression]` с проверкой на стороне клиента регулярное выражение выполняется в JavaScript в клиенте. Это означает, что будет использоваться поведение сопоставления [ECMAScript](/dotnet/standard/base-types/regular-expression-options#ecmascript-matching-behavior). Дополнительные сведения см. в [этой статье об ошибке на GitHub](https://github.com/dotnet/corefx/issues/42487).
+При использовании атрибута `[RegularExpression]` с проверкой на стороне клиента регулярное выражение выполняется в JavaScript в клиенте. Это означает, что будет использоваться поведение сопоставления [ECMAScript](/dotnet/standard/base-types/regular-expression-options#ecmascript-matching-behavior). См. дополнительные сведения на [сайте GitHub](https://github.com/dotnet/corefx/issues/42487).
 
 Полный перечень атрибутов проверки можно найти в пространстве имен [System.ComponentModel.DataAnnotations](xref:System.ComponentModel.DataAnnotations).
 

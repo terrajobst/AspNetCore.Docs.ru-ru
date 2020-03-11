@@ -6,12 +6,12 @@ ms.author: riande
 ms.date: 12/18/2018
 ms.custom: mvc, seodec18
 uid: security/authorization/secure-data
-ms.openlocfilehash: 65c72d4dd457f85451796c5713bedebafec7a7de
-ms.sourcegitcommit: 8157e5a351f49aeef3769f7d38b787b4386aad5f
+ms.openlocfilehash: 7710a8965771db02e601dafb7da752906bcd43e5
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74239838"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78651922"
 ---
 # <a name="create-an-aspnet-core-app-with-user-data-protected-by-authorization"></a>Создание приложения ASP.NET Core с помощью данных пользователя с помощью авторизации
 
@@ -19,7 +19,7 @@ ms.locfileid: "74239838"
 
 ::: moniker range="<= aspnetcore-1.1"
 
-См. [этот PDF-файл](https://webpifeed.blob.core.windows.net/webpifeed/Partners/asp.net_repo_pdf_1-16-18.pdf) для ASP.NET Core версии MVC. Версия ASP.NET Core 1,1 этого учебника находится в [этой](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/security/authorization/secure-data) папке. Образец 1,1 ASP.NET Core приведен [в примерах.](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/security/authorization/secure-data/samples/final2)
+См. [этот PDF-файл](https://webpifeed.blob.core.windows.net/webpifeed/Partners/asp.net_repo_pdf_1-16-18.pdf) для ASP.NET Core версии MVC. Версия ASP.NET Core 1,1 этого учебника находится в [этой](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/security/authorization/secure-data) папке. Образец 1,1 ASP.NET Core приведен [в примерах.](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/security/authorization/secure-data/samples/final2)
 
 ::: moniker-end
 
@@ -69,23 +69,23 @@ ms.locfileid: "74239838"
 * `ContactManagerAuthorizationHandler`: позволяет руководителям утверждать или отклонять контакты.
 * `ContactAdministratorsAuthorizationHandler`: позволяет администраторам утверждать или отклонять контакты, а также изменять или удалять контакты.
 
-## <a name="prerequisites"></a>Предварительные требования
+## <a name="prerequisites"></a>предварительные требования
 
 Этот учебник является дополнительным. Вы должны быть знакомы с:
 
 * [ASP.NET Core](xref:tutorials/first-mvc-app/start-mvc)
-* [Проверка подлинности](xref:security/authentication/identity)
+* [Аутентификация](xref:security/authentication/identity)
 * [Подтверждение учетной записи и восстановление пароля](xref:security/authentication/accconfirm)
 * [Авторизация](xref:security/authorization/introduction)
 * [Entity Framework Core](xref:data/ef-mvc/intro)
 
 ## <a name="the-starter-and-completed-app"></a>Начальный и завершенное приложение
 
-[Скачайте](xref:index#how-to-download-a-sample) [готовое](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/security/authorization/secure-data/samples) приложение. [Протестируйте](#test-the-completed-app) готовое приложение, чтобы ознакомиться с его функциями безопасности.
+[Скачайте](xref:index#how-to-download-a-sample) [готовое](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/security/authorization/secure-data/samples) приложение. [Протестируйте](#test-the-completed-app) готовое приложение, чтобы ознакомиться с его функциями безопасности.
 
 ### <a name="the-starter-app"></a>Приложение начального уровня
 
-[Скачайте](xref:index#how-to-download-a-sample) [Начальное](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/security/authorization/secure-data/samples/) приложение.
+[Скачайте](xref:index#how-to-download-a-sample) [Начальное](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/security/authorization/secure-data/samples/) приложение.
 
 Запустите приложение, коснитесь ссылки **ContactManager** и убедитесь, что вы можете создать, изменить и удалить контакт.
 
@@ -267,7 +267,7 @@ dotnet user-secrets set SeedUserPW <PW>
 
 ## <a name="add-or-remove-a-user-to-a-role"></a>Добавление или удаление пользователя к роли
 
-Сведения об [этой ошибке](https://github.com/aspnet/AspNetCore.Docs/issues/8502) см. в следующих статьях:
+Сведения об [этой ошибке](https://github.com/dotnet/AspNetCore.Docs/issues/8502) см. в следующих статьях:
 
 * Удаление привилегий пользователя. Например, отзвука пользователя в приложении разговора.
 * Добавление прав к пользователю.
@@ -308,9 +308,9 @@ dotnet user-secrets set SeedUserPW <PW>
 * Руководители могут утверждать или отклонять контактных данных. В представлении `Details` отображаются кнопки **утверждения** и **отклонения** .
 * Администраторы могут утверждать или отклонять и изменить или удалить все данные.
 
-| Пользовательская                | Заполняется данными в приложении | Параметры                                  |
+| Пользователь                | Заполняется данными в приложении | Параметры                                  |
 | ------------------- | :---------------: | ---------------------------------------- |
-| test@example.com    | Нет                | Изменить или удалить данные принадлежат.                |
+| test@example.com    | нет                | Изменить или удалить данные принадлежат.                |
 | manager@contoso.com | Да               | Утверждать или отклонять и изменить или удалить данные принадлежат. |
 | admin@contoso.com   | Да               | Утверждать или отклонять и изменить или удалить все данные. |
 
@@ -355,7 +355,7 @@ dotnet ef database update
 
 ### <a name="seed-the-database"></a>Заполнение базы данных
 
-Добавьте класс [сиддата](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/security/authorization/secure-data/samples/starter3/Data/SeedData.cs) в папку *Data* :
+Добавьте класс [сиддата](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/security/authorization/secure-data/samples/starter3/Data/SeedData.cs) в папку *Data* :
 
 [!code-csharp[](secure-data/samples/starter3/Data/SeedData.cs)]
 
@@ -405,23 +405,23 @@ dotnet ef database update
 * `ContactManagerAuthorizationHandler`: позволяет руководителям утверждать или отклонять контакты.
 * `ContactAdministratorsAuthorizationHandler`: позволяет администраторам утверждать или отклонять контакты, а также изменять или удалять контакты.
 
-## <a name="prerequisites"></a>Предварительные требования
+## <a name="prerequisites"></a>предварительные требования
 
 Этот учебник является дополнительным. Вы должны быть знакомы с:
 
 * [ASP.NET Core](xref:tutorials/first-mvc-app/start-mvc)
-* [Проверка подлинности](xref:security/authentication/identity)
+* [Аутентификация](xref:security/authentication/identity)
 * [Подтверждение учетной записи и восстановление пароля](xref:security/authentication/accconfirm)
 * [Авторизация](xref:security/authorization/introduction)
 * [Entity Framework Core](xref:data/ef-mvc/intro)
 
 ## <a name="the-starter-and-completed-app"></a>Начальный и завершенное приложение
 
-[Скачайте](xref:index#how-to-download-a-sample) [готовое](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/security/authorization/secure-data/samples) приложение. [Протестируйте](#test-the-completed-app) готовое приложение, чтобы ознакомиться с его функциями безопасности.
+[Скачайте](xref:index#how-to-download-a-sample) [готовое](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/security/authorization/secure-data/samples) приложение. [Протестируйте](#test-the-completed-app) готовое приложение, чтобы ознакомиться с его функциями безопасности.
 
 ### <a name="the-starter-app"></a>Приложение начального уровня
 
-[Скачайте](xref:index#how-to-download-a-sample) [Начальное](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/security/authorization/secure-data/samples/) приложение.
+[Скачайте](xref:index#how-to-download-a-sample) [Начальное](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/security/authorization/secure-data/samples/) приложение.
 
 Запустите приложение, коснитесь ссылки **ContactManager** и убедитесь, что вы можете создать, изменить и удалить контакт.
 
@@ -603,7 +603,7 @@ dotnet user-secrets set SeedUserPW <PW>
 
 ## <a name="add-or-remove-a-user-to-a-role"></a>Добавление или удаление пользователя к роли
 
-Сведения об [этой ошибке](https://github.com/aspnet/AspNetCore.Docs/issues/8502) см. в следующих статьях:
+Сведения об [этой ошибке](https://github.com/dotnet/AspNetCore.Docs/issues/8502) см. в следующих статьях:
 
 * Удаление привилегий пользователя. Например, отзвука пользователя в приложении разговора.
 * Добавление прав к пользователю.
@@ -635,9 +635,9 @@ dotnet user-secrets set SeedUserPW <PW>
 * Руководители могут утверждать или отклонять контактных данных. В представлении `Details` отображаются кнопки **утверждения** и **отклонения** .
 * Администраторы могут утверждать или отклонять и изменить или удалить все данные.
 
-| Пользовательская                | Заполняется данными в приложении | Параметры                                  |
+| Пользователь                | Заполняется данными в приложении | Параметры                                  |
 | ------------------- | :---------------: | ---------------------------------------- |
-| test@example.com    | Нет                | Изменить или удалить данные принадлежат.                |
+| test@example.com    | нет                | Изменить или удалить данные принадлежат.                |
 | manager@contoso.com | Да               | Утверждать или отклонять и изменить или удалить данные принадлежат. |
 | admin@contoso.com   | Да               | Утверждать или отклонять и изменить или удалить все данные. |
 
@@ -678,7 +678,7 @@ dotnet user-secrets set SeedUserPW <PW>
 
 ### <a name="seed-the-database"></a>Заполнение базы данных
 
-Добавьте класс [сиддата](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/security/authorization/secure-data/samples/starter2.1/Data/SeedData.cs) в папку *Data* .
+Добавьте класс [сиддата](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/security/authorization/secure-data/samples/starter2.1/Data/SeedData.cs) в папку *Data* .
 
 Вызовите `SeedData.Initialize` из `Main`:
 

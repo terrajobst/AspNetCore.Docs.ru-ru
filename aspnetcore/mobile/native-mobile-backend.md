@@ -5,12 +5,12 @@ description: Сведения о том, как создать внутренн�
 ms.author: riande
 ms.date: 12/05/2019
 uid: mobile/native-mobile-backend
-ms.openlocfilehash: 38ac69bfe9d99d6d61f96fde92d86fd752ebbb6b
-ms.sourcegitcommit: c0b72b344dadea835b0e7943c52463f13ab98dd1
-ms.translationtype: HT
+ms.openlocfilehash: dcd0a29af197ff0ca210c17bdff62b802219fb2d
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
+ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74881152"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78653950"
 ---
 # <a name="create-backend-services-for-native-mobile-apps-with-aspnet-core"></a>Создание внутренних служб для собственных мобильных приложений в ASP.NET Core
 
@@ -18,7 +18,7 @@ ms.locfileid: "74881152"
 
 Мобильные приложения могут взаимодействовать с внутренними службами ASP.NET Core. Инструкции по подключению локальных веб-служб из симуляторов iOS и эмуляторов Android см. в статье о [подключении к локальным веб-службам из симуляторов iOS и эмуляторов Android](/xamarin/cross-platform/deploy-test/connect-to-local-web-services).
 
-[Просмотреть или скачать пример кода внутренней службы](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/mobile/native-mobile-backend/sample)
+[Просмотреть или скачать пример кода внутренней службы](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/mobile/native-mobile-backend/sample)
 
 ## <a name="the-sample-native-mobile-app"></a>Пример собственного мобильного приложения
 
@@ -26,7 +26,7 @@ ms.locfileid: "74881152"
 
 ![Приложение To Do Rest, запущенное на смартфоне Android](native-mobile-backend/_static/todo-android.png)
 
-### <a name="features"></a>Функции
+### <a name="features"></a>Компоненты
 
 Приложение ToDoRest поддерживает перечисление, добавление, удаление и обновление элементов задач. Каждый элемент имеет идентификатор, имя, заметки и свойство, указывающее, выполнен ли он.
 
@@ -154,4 +154,4 @@ public static string RestUrl = "http://192.168.1.207:5000/api/todoitems/{0}";
 
 ## <a name="additional-resources"></a>Дополнительные ресурсы
 
-* [Проверка подлинности и авторизация](/xamarin/xamarin-forms/enterprise-application-patterns/authentication-and-authorization)
+* [Аутентификация и авторизация](/xamarin/xamarin-forms/enterprise-application-patterns/authentication-and-authorization)

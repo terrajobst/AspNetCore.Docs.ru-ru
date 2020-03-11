@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: H1Hack27Feb2017
 ms.date: 12/05/2019
 uid: web-api/advanced/formatting
-ms.openlocfilehash: cab383053751598b882f3716943d3d9392c56f4a
-ms.sourcegitcommit: 29ace642ca0e1f0b48a18d66de266d8811df2b83
-ms.translationtype: HT
+ms.openlocfilehash: 908016720ade67a02ebe30d1dcb7929ad7592270
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
+ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74987954"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78653044"
 ---
 # <a name="format-response-data-in-aspnet-core-web-api"></a>Форматирование данных отклика в веб-API ASP.NET Core
 
@@ -19,19 +19,19 @@ ms.locfileid: "74987954"
 
 Приложение MVC ASP.NET Core поддерживает форматирование данных ответа. Данные ответа могут возвращаться в определенных форматах или в формате, запрошенном клиентом.
 
-[Просмотреть или скачать образец кода](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/web-api/advanced/formatting) ([как скачивать](xref:index#how-to-download-a-sample))
+[Просмотреть или скачать образец кода](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/web-api/advanced/formatting) ([как скачивать](xref:index#how-to-download-a-sample))
 
 ## <a name="format-specific-action-results"></a>Результаты действий для конкретного формата
 
 Некоторые типы результатов действий характерны для определенного формата, например <xref:Microsoft.AspNetCore.Mvc.JsonResult> и <xref:Microsoft.AspNetCore.Mvc.ContentResult>. Действия могут возвращать результаты в определенном формате независимо от настроек клиента. Например, при возврате `JsonResult` возвращаются данные в формате JSON. При возврате `ContentResult` или строки возвращаются строковые данные в формате обычного текста.
 
-Действие не должно возвращать данные конкретного типа. ASP.NET Core поддерживает любое возвращаемое значение объекта.  Результаты из действий, возвращающих объекты, которые не являются типами <xref:Microsoft.AspNetCore.Mvc.IActionResult>, сериализуются с помощью соответствующей реализации <xref:Microsoft.AspNetCore.Mvc.Formatters.IOutputFormatter>. Дополнительные сведения можно найти по адресу: <xref:web-api/action-return-types>.
+Действие не должно возвращать данные конкретного типа. ASP.NET Core поддерживает любое возвращаемое значение объекта.  Результаты из действий, возвращающих объекты, которые не являются типами <xref:Microsoft.AspNetCore.Mvc.IActionResult>, сериализуются с помощью соответствующей реализации <xref:Microsoft.AspNetCore.Mvc.Formatters.IOutputFormatter>. Дополнительные сведения см. в разделе <xref:web-api/action-return-types>.
 
 Встроенный вспомогательный метод <xref:Microsoft.AspNetCore.Mvc.ControllerBase.Ok*> возвращает данные в формате JSON: [!code-csharp[](./formatting/sample/Controllers/AuthorsController.cs?name=snippet_get)]
 
 Скачанный пример возвращает список авторов. При использовании средств разработчика в браузере (F12) или [Postman](https://www.getpostman.com/tools) с предыдущим кодом:
 
-* Отобразится заголовок ответа, содержащий **content-type:** `application/json; charset=utf-8`.
+* Отобразится заголовок ответа, содержащий **Content-Type:** `application/json; charset=utf-8`.
 * Отобразятся заголовки запросов. Например, заголовок `Accept`. Приведенный выше код игнорирует заголовок `Accept`.
 
 Чтобы возвратить данные в формате обычного текста, используйте <xref:Microsoft.AspNetCore.Mvc.ContentResult.Content> и вспомогательный метод <xref:Microsoft.AspNetCore.Mvc.ContentResult.Content>:
@@ -67,7 +67,7 @@ ms.locfileid: "74987954"
 
 В приведенном выше коде запрос допустимого псевдонима автора получает ответ `200 OK` с данными об авторе. Запрос недопустимого псевдонима возвращает ответ `204 No Content`.
 
-### <a name="the-accept-header"></a>Заголовок Accept
+### <a name="the-accept-header"></a>Заголовок Accept.
 
 *Согласование* содержимого выполняется только при наличии в запросе заголовка `Accept`. Если запрос содержит заголовок Accept, ASP.NET Core:
 
@@ -135,7 +135,7 @@ services.AddControllers().AddJsonOptions(options =>
 });
 ```
 
-Параметры сериализации выходных данных для отдельных действий можно настроить с помощью `JsonResult`. Например:
+Параметры сериализации выходных данных для отдельных действий можно настроить с помощью `JsonResult`. Пример:
 
 ```csharp
 public IActionResult Get()
@@ -174,7 +174,7 @@ services.AddControllers().AddNewtonsoftJson(options =>
 });
 ```
 
-Параметры сериализации выходных данных для отдельных действий можно настроить с помощью `JsonResult`. Например:
+Параметры сериализации выходных данных для отдельных действий можно настроить с помощью `JsonResult`. Пример:
 
 ```csharp
 public IActionResult Get()
@@ -230,7 +230,7 @@ public IActionResult Get()
 
 Без `StringOutputFormatter`, встроенный модуль форматирования JSON форматирует типы возвращаемого значения `string`. Если встроенный модуль форматирования JSON удален и доступен модуль форматирования XML, то типы возвращаемого значения `string` форматирует модуль форматирования XML. В противном случае, `string` типы возвращаемого значения возвращают `406 Not Acceptable`.
 
-Без `HttpNoContentOutputFormatter` объекты со значением null форматируются с помощью настроенного модуля форматирования. Например:
+Без `HttpNoContentOutputFormatter` объекты со значением null форматируются с помощью настроенного модуля форматирования. Пример:
 
 * Форматировщик JSON возвращает ответ с текстом `null`.
 * Форматировщик XML возвращает пустой XML-элемент с атрибутом `xsi:nil="true"`.
@@ -242,7 +242,7 @@ public IActionResult Get()
 * В строке запроса или в части пути.
 * С использованием расширения файла конкретного формата, такого как XML или JSON.
 
-Сопоставление из пути запроса должно быть указано в маршруте, используемом API. Например:
+Сопоставление из пути запроса должно быть указано в маршруте, используемом API. Пример:
 
 [!code-csharp[](./formatting/sample/Controllers/ProductsController.cs?name=snippet)]
 

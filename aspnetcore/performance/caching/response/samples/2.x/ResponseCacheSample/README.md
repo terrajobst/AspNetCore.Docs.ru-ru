@@ -1,3 +1,3 @@
-# <a name="aspnet-core-response-cache-sample"></a>Пример кэширования ответа ASP.NET Core
+# <a name="aspnet-core-response-cache-sample"></a>Пример кэша ответов ASP.NET Core
 
-Этот пример иллюстрирует использование кэширования ответов в ASP.NET Core, сопровождающее [кэширование ответов в ASP.NET Core](https://docs.microsoft.com/aspnet/core/performance/caching/response).
+В этом примере показано использование кэширования ответов в ASP.NET Core для [кэширования ответов в ASP.NET Core](https://docs.microsoft.com/aspnet/core/performance/caching/response).

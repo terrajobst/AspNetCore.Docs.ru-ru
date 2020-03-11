@@ -6,20 +6,20 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 01/24/2020
 uid: mvc/views/tag-helpers/builtin-th/distributed-cache-tag-helper
-ms.openlocfilehash: e5100d7244600358186b653073990985f48434a7
-ms.sourcegitcommit: b5ceb0a46d0254cc3425578116e2290142eec0f0
-ms.translationtype: HT
+ms.openlocfilehash: f5957adf3cef8966812a1bf0cbc6b2627d19d026
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
+ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76809059"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78653794"
 ---
 # <a name="distributed-cache-tag-helper-in-aspnet-core"></a>Вспомогательная функция тега распределенного кэша в ASP.NET Core
 
-Авторы: [Питер Кельнер (Peter Kellner)](https://peterkellner.net) и [Люк Лэтэм (Luke Latham)](https://github.com/guardrex)
+Автор: [Питер Кельнер (Peter Kellner)](https://peterkellner.net)
 
 Вспомогательная функция тега распределенного кэша позволяет существенно повысить производительность приложения ASP.NET Core за счет кэширования его содержимого в источник распределенного кэша.
 
-Общие сведения о вспомогательных функциях тегов см. здесь: <xref:mvc/views/tag-helpers/intro>.
+Общие сведения о вспомогательных функциях тегов см. в разделе <xref:mvc/views/tag-helpers/intro>.
 
 Вспомогательная функция тега распределенного кэша наследуется от того же базового класса, что и вспомогательная функция тега кэша. Все атрибуты [вспомогательной функции тега кэша](xref:mvc/views/tag-helpers/builtin-th/cache-tag-helper) доступны вспомогательной функции тега распределенного кэша.
 

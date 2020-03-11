@@ -7,12 +7,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 11/07/2019
 uid: mvc/controllers/testing
-ms.openlocfilehash: 449d8791962e4233d599f364b2e8c922f0975d2f
-ms.sourcegitcommit: 0dd224b2b7efca1fda0041b5c3f45080327033f6
-ms.translationtype: HT
+ms.openlocfilehash: 597f1472bb30ae3b34fa98659c8c8bb464223e84
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
+ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74681101"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78654478"
 ---
 # <a name="unit-test-controller-logic-in-aspnet-core"></a>Модульное тестирование логики контроллера в ASP.NET Core
 
@@ -30,7 +30,7 @@ ms.locfileid: "74681101"
 
 Для демонстрации модульных тестов контроллера давайте рассмотрим контроллер в приведенном ниже примере приложения. 
 
-[Просмотреть или скачать образец кода](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/controllers/testing/samples/) ([как скачивать](xref:index#how-to-download-a-sample))
+[Просмотреть или скачать образец кода](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/controllers/testing/samples/) ([как скачивать](xref:index#how-to-download-a-sample))
 
 Этот контроллер Home выводит список сеансов мозгового штурма и позволяет создавать новые сеансы с помощью запроса POST.
 
@@ -57,7 +57,7 @@ ms.locfileid: "74681101"
 
 Метод `HTTP POST Index` в контроллере Home проверяет следующее:
 
-* Если [ModelState.IsValid](xref:Microsoft.AspNetCore.Mvc.ModelBinding.ModelStateDictionary.IsValid*) имеет значение `false`, метод действия возвращает результат <xref:Microsoft.AspNetCore.Mvc.ViewResult> *400 Неверный запрос* с соответствующими данными.
+* Если [ModelState. isvalid](xref:Microsoft.AspNetCore.Mvc.ModelBinding.ModelStateDictionary.IsValid*) `false`, метод действия возвращает *400 неверного запроса* <xref:Microsoft.AspNetCore.Mvc.ViewResult> с соответствующими данными.
 * Если `ModelState.IsValid` имеет значение `true`:
   * вызывается метод `Add` для репозитория;
   * возвращается <xref:Microsoft.AspNetCore.Mvc.RedirectToActionResult> с правильными аргументами.
@@ -78,7 +78,7 @@ ms.locfileid: "74681101"
 > [!NOTE]
 > Библиотека Moq, используемая в этом примере, позволяет сочетать проверяемые (строгие) и непроверяемые макеты (которые также называют нестрогими макетами или заглушками). Узнайте больше о [настройке поведения макетов с помощью Moq](https://github.com/Moq/moq4/wiki/Quickstart#customizing-mock-behavior).
 
-[SessionController](https://github.com/aspnet/AspNetCore.Docs/blob/master/aspnetcore/mvc/controllers/testing/samples/3.x/TestingControllersSample/src/TestingControllersSample/Controllers/SessionController.cs) в примере приложения выводит сведения, связанные с определенным сеансом мозгового штурма. Этот контроллер содержит логику для работы с недопустимыми значениями `id` (два сценария `return` в следующем примере посвящены этим сценариям). Конечная инструкция `return` возвращает новый `StormSessionViewModel` в представление (*Controllers/SessionController.cs*):
+[SessionController](https://github.com/dotnet/AspNetCore.Docs/blob/master/aspnetcore/mvc/controllers/testing/samples/3.x/TestingControllersSample/src/TestingControllersSample/Controllers/SessionController.cs) в примере приложения выводит сведения, связанные с определенным сеансом мозгового штурма. Этот контроллер содержит логику для работы с недопустимыми значениями `id` (два сценария `return` в следующем примере посвящены этим сценариям). Конечная инструкция `return` возвращает новый `StormSessionViewModel` в представление (*Controllers/SessionController.cs*):
 
 [!code-csharp[](testing/samples/3.x/TestingControllersSample/src/TestingControllersSample/Controllers/SessionController.cs?name=snippet_SessionController&highlight=12-16,18-22,31)]
 
@@ -133,7 +133,7 @@ ms.locfileid: "74681101"
 
 [!code-csharp[](testing/samples/3.x/TestingControllersSample/src/TestingControllersSample/Api/IdeasController.cs?name=snippet_ForSessionActionResult&highlight=10,21)]
 
-В `ApiIdeasControllerTests` включены два теста контроллера `ForSessionActionResult`.
+В `ForSessionActionResult` включены два теста контроллера `ApiIdeasControllerTests`.
 
 Первый из этих тестов проверяет, что контроллер возвращает `ActionResult`, но не возвращает несуществующий список идей для несуществующего сеанса `id`:
 
@@ -158,7 +158,7 @@ ms.locfileid: "74681101"
 
 [!code-csharp[](testing/samples/3.x/TestingControllersSample/src/TestingControllersSample/Api/IdeasController.cs?name=snippet_CreateActionResult&highlight=9,16,29)]
 
-В `ApiIdeasControllerTests` включены три теста `CreateActionResult`.
+В `CreateActionResult` включены три теста `ApiIdeasControllerTests`.
 
 Первый из этих тестов позволяет проверить, возвращается ли <xref:Microsoft.AspNetCore.Mvc.ControllerBase.BadRequest*> для недопустимой модели.
 
@@ -185,7 +185,7 @@ ms.locfileid: "74681101"
 
 [Контроллеры](xref:mvc/controllers/actions) играют важнейшую роль в любом приложении MVC на ASP.NET Core. Это означает, что вы должны быть полностью уверены в правильности их работы. Автоматические тесты позволяют обнаружить ошибки до развертывания приложения в рабочей среде.
 
-[Просмотреть или скачать образец кода](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/controllers/testing/samples/) ([как скачивать](xref:index#how-to-download-a-sample))
+[Просмотреть или скачать образец кода](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/controllers/testing/samples/) ([как скачивать](xref:index#how-to-download-a-sample))
 
 ## <a name="unit-tests-of-controller-logic"></a>Модульное тестирование логики контроллера
 
@@ -220,7 +220,7 @@ ms.locfileid: "74681101"
 
 Метод `HTTP POST Index` в контроллере Home проверяет следующее:
 
-* Если [ModelState.IsValid](xref:Microsoft.AspNetCore.Mvc.ModelBinding.ModelStateDictionary.IsValid*) имеет значение `false`, метод действия возвращает результат <xref:Microsoft.AspNetCore.Mvc.ViewResult> *400 Неверный запрос* с соответствующими данными.
+* Если [ModelState. isvalid](xref:Microsoft.AspNetCore.Mvc.ModelBinding.ModelStateDictionary.IsValid*) `false`, метод действия возвращает *400 неверного запроса* <xref:Microsoft.AspNetCore.Mvc.ViewResult> с соответствующими данными.
 * Если `ModelState.IsValid` имеет значение `true`:
   * вызывается метод `Add` для репозитория;
   * возвращается <xref:Microsoft.AspNetCore.Mvc.RedirectToActionResult> с правильными аргументами.
@@ -241,7 +241,7 @@ ms.locfileid: "74681101"
 > [!NOTE]
 > Библиотека Moq, используемая в этом примере, позволяет сочетать проверяемые (строгие) и непроверяемые макеты (которые также называют нестрогими макетами или заглушками). Узнайте больше о [настройке поведения макетов с помощью Moq](https://github.com/Moq/moq4/wiki/Quickstart#customizing-mock-behavior).
 
-[SessionController](https://github.com/aspnet/AspNetCore.Docs/blob/master/aspnetcore/mvc/controllers/testing/samples/2.x/TestingControllersSample/src/TestingControllersSample/Controllers/SessionController.cs) в примере приложения выводит сведения, связанные с определенным сеансом мозгового штурма. Этот контроллер содержит логику для работы с недопустимыми значениями `id` (два сценария `return` в следующем примере посвящены этим сценариям). Конечная инструкция `return` возвращает новый `StormSessionViewModel` в представление (*Controllers/SessionController.cs*):
+[SessionController](https://github.com/dotnet/AspNetCore.Docs/blob/master/aspnetcore/mvc/controllers/testing/samples/2.x/TestingControllersSample/src/TestingControllersSample/Controllers/SessionController.cs) в примере приложения выводит сведения, связанные с определенным сеансом мозгового штурма. Этот контроллер содержит логику для работы с недопустимыми значениями `id` (два сценария `return` в следующем примере посвящены этим сценариям). Конечная инструкция `return` возвращает новый `StormSessionViewModel` в представление (*Controllers/SessionController.cs*):
 
 [!code-csharp[](testing/samples/2.x/TestingControllersSample/src/TestingControllersSample/Controllers/SessionController.cs?name=snippet_SessionController&highlight=12-16,18-22,31)]
 
@@ -296,7 +296,7 @@ ms.locfileid: "74681101"
 
 [!code-csharp[](testing/samples/2.x/TestingControllersSample/src/TestingControllersSample/Api/IdeasController.cs?name=snippet_ForSessionActionResult&highlight=10,21)]
 
-В `ApiIdeasControllerTests` включены два теста контроллера `ForSessionActionResult`.
+В `ForSessionActionResult` включены два теста контроллера `ApiIdeasControllerTests`.
 
 Первый из этих тестов проверяет, что контроллер возвращает `ActionResult`, но не возвращает несуществующий список идей для несуществующего сеанса `id`:
 
@@ -321,7 +321,7 @@ ms.locfileid: "74681101"
 
 [!code-csharp[](testing/samples/2.x/TestingControllersSample/src/TestingControllersSample/Api/IdeasController.cs?name=snippet_CreateActionResult&highlight=9,16,29)]
 
-В `ApiIdeasControllerTests` включены три теста `CreateActionResult`.
+В `CreateActionResult` включены три теста `ApiIdeasControllerTests`.
 
 Первый из этих тестов позволяет проверить, возвращается ли <xref:Microsoft.AspNetCore.Mvc.ControllerBase.BadRequest*> для недопустимой модели.
 
@@ -348,5 +348,5 @@ ms.locfileid: "74681101"
 
 * <xref:test/integration-tests>
 * [Создание и выполнение модульных тестов с помощью Visual Studio](/visualstudio/test/unit-test-your-code)
-* [MyTested.AspNetCore.Mvc — текучая библиотека тестирования для MVC ASP.NET Core](https://github.com/ivaylokenov/MyTested.AspNetCore.Mvc); строго типизированная библиотека модульного тестирования с текучим интерфейсом для тестирования приложений MVC и веб-API. (*Не поддерживается и не обслуживается Майкрософт.* )
+* [MyTested.AspNetCore.Mvc — текучая библиотека тестирования для MVC ASP.NET Core](https://github.com/ivaylokenov/MyTested.AspNetCore.Mvc) &ndash; строго типизированная библиотека модульного тестирования с текучим интерфейсом для тестирования приложений MVC и веб-API. (*Не поддерживается и не обслуживается Майкрософт.* )
 

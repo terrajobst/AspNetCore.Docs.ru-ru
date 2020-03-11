@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 07/23/2019
 uid: security/authentication/identity-custom-storage-providers
-ms.openlocfilehash: 70951085474d88fd57f1b1496a41adcda520b91f
-ms.sourcegitcommit: 7dfe6cc8408ac6a4549c29ca57b0c67ec4baa8de
+ms.openlocfilehash: 574e66e4dedaf0bfd01d600c3ded4bfb5d1865cd
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75829158"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78653872"
 ---
 # <a name="custom-storage-providers-for-aspnet-core-identity"></a>Пользовательские поставщики хранилища для удостоверения ASP.NET Core
 
@@ -19,11 +19,11 @@ ms.locfileid: "75829158"
 
 ASP.NET Core Identity — это расширяемая система, которая позволяет создать пользовательский поставщик хранилища и подключить его к приложению. В этом разделе описывается создание настраиваемого поставщика хранилища для удостоверения ASP.NET Core. В нем рассматриваются важные понятия создания собственного поставщика хранилища, но не пошаговое пошаговое руководство.
 
-[Просмотреть или скачать образец с GitHub](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/security/authentication/identity/sample).
+[Просмотреть или скачать образец с GitHub](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/security/authentication/identity/sample).
 
 ## <a name="introduction"></a>Введение
 
-По умолчанию система удостоверений ASP.NET Core сохраняет сведения о пользователях в базе данных SQL Server с помощью Entity Framework Core. Для многих приложений этот подход хорошо работает. Однако можно использовать другой механизм сохраняемости или схему данных. Например:
+По умолчанию система удостоверений ASP.NET Core сохраняет сведения о пользователях в базе данных SQL Server с помощью Entity Framework Core. Для многих приложений этот подход хорошо работает. Однако можно использовать другой механизм сохраняемости или схему данных. Пример:
 
 * Вы используете [хранилище таблиц Azure](/azure/storage/) или другое хранилище данных.
 * Таблицы базы данных имеют различную структуру. 
@@ -138,7 +138,7 @@ ASP.NET Core удостоверение состоит из классов, им
 * [IUserTwoFactorStore](/dotnet/api/microsoft.aspnetcore.identity.iusertwofactorstore-1)
 * [иусерлоккаутсторе](/dotnet/api/microsoft.aspnetcore.identity.iuserlockoutstore-1)
 
-Необязательные интерфейсы наследуют от `IUserStore<TUser>`. В [примере приложения](https://github.com/aspnet/AspNetCore.Docs/blob/master/aspnetcore/security/authentication/identity-custom-storage-providers/sample/CustomIdentityProviderSample/CustomProvider/CustomUserStore.cs)можно увидеть частично реализованное хранилище пользователей с примером.
+Необязательные интерфейсы наследуют от `IUserStore<TUser>`. В [примере приложения](https://github.com/dotnet/AspNetCore.Docs/blob/master/aspnetcore/security/authentication/identity-custom-storage-providers/sample/CustomIdentityProviderSample/CustomProvider/CustomUserStore.cs)можно увидеть частично реализованное хранилище пользователей с примером.
 
 В классе `UserStore` используются классы доступа к данным, созданные для выполнения операций. Они передаются при помощи внедрения зависимостей. Например, в SQL Server с реализацией Dapper класс `UserStore` имеет метод `CreateAsync`, который использует экземпляр `DapperUsersTable` для вставки новой записи:
 
@@ -169,7 +169,7 @@ ASP.NET Core удостоверение состоит из классов, им
 * **IQueryableUserStore**  
  Интерфейс [&gt;IQueryableUserStore&lt;Тусер](/dotnet/api/microsoft.aspnetcore.identity.iqueryableuserstore-1) определяет члены, которые вы реализуете для предоставления запрашиваемого хранилища пользователя.
 
-Вы реализуете только те интерфейсы, которые необходимы в приложении. Например:
+Вы реализуете только те интерфейсы, которые необходимы в приложении. Пример:
 
 ```csharp
 public class UserStore : IUserStore<IdentityUser>,
@@ -215,7 +215,7 @@ public class UserStore : IUserStore<IdentityUser>,
 1. Если вы используете роли, обновите `RoleManager`, чтобы использовать класс `RoleStore`.
 1. Обновите строку подключения и учетные данные в конфигурации приложения.
 
-Пример:
+Пример
 
 ```csharp
 public void ConfigureServices(IServiceCollection services)

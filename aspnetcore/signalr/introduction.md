@@ -10,11 +10,11 @@ no-loc:
 - SignalR
 uid: signalr/introduction
 ms.openlocfilehash: 635431abf9263c2dff261aea47e6f8324061763f
-ms.sourcegitcommit: 7dfe6cc8408ac6a4549c29ca57b0c67ec4baa8de
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75829287"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78653368"
 ---
 # <a name="introduction-to-aspnet-core-opno-locsignalr"></a>Введение в ASP.NET Core SignalR
 
@@ -50,7 +50,7 @@ SignalR поддерживает следующие методы обработ�
 
 SignalR автоматически выбирает лучший транспортный метод, который находится в пределах возможностей сервера и клиента.
 
-## <a name="hubs"></a>Концентраторы
+## <a name="hubs"></a>Центры
 
 SignalR использует *концентраторы* для взаимодействия между клиентами и серверами.
 
@@ -63,4 +63,4 @@ SignalR использует *концентраторы* для взаимод�
 * [Начало работы с SignalR для ASP.NET Core](xref:tutorials/signalr)
 * [Поддерживаемые платформы](xref:signalr/supported-platforms)
 * [Центры](xref:signalr/hubs)
-* [Клиент JavaScript](xref:signalr/javascript-client)
+* [Клиент на JavaScript](xref:signalr/javascript-client)

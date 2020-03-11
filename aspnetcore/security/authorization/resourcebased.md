@@ -6,29 +6,29 @@ ms.author: scaddie
 ms.custom: mvc
 ms.date: 11/15/2018
 uid: security/authorization/resourcebased
-ms.openlocfilehash: acc931da1be0940fac72b0aabe07ab17ca7e63bd
-ms.sourcegitcommit: 6628cd23793b66e4ce88788db641a5bbf470c3c1
+ms.openlocfilehash: 2be611c754583d996db7107f341b1be03cef73cf
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73660002"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78654064"
 ---
 # <a name="resource-based-authorization-in-aspnet-core"></a>Авторизация на основе ресурсов в ASP.NET Core
 
 Стратегия авторизации зависит от ресурса, к которому осуществляется доступ. Рассмотрим документ со свойством Author. Обновление документа разрешено только автору. Следовательно, документ необходимо извлечь из хранилища данных, прежде чем может выполняться оценка авторизации.
 
-Оценка атрибутов выполняется перед привязкой данных и перед выполнением обработчика страницы или действия, которое загружает документ. По этим причинам декларативная авторизация с помощью атрибута `[Authorize]` недостаточна. Вместо этого можно вызвать пользовательский метод авторизации &mdash;a стилем, называемым *императивной авторизацией*.
+Оценка атрибутов выполняется перед привязкой данных и перед выполнением обработчика страницы или действия, которое загружает документ. По этим причинам декларативная авторизация с помощью атрибута `[Authorize]` недостаточна. Вместо этого можно вызвать пользовательский метод авторизации&mdash;стиль, известный как *императивная авторизация*.
 
 ::: moniker range=">= aspnetcore-3.0"
-[Просмотреть или скачать пример кода](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/security/authorization/resourcebased/samples/3_0) ([описание скачивания](xref:index#how-to-download-a-sample)).
+[Просмотреть или скачать пример кода](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/security/authorization/resourcebased/samples/3_0) ([описание скачивания](xref:index#how-to-download-a-sample)).
 ::: moniker-end
 
  ::: moniker range=">= aspnetcore-2.0 < aspnetcore-3.0"
-[Просмотреть или скачать пример кода](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/security/authorization/resourcebased/samples/2_2) ([описание скачивания](xref:index#how-to-download-a-sample)).
+[Просмотреть или скачать пример кода](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/security/authorization/resourcebased/samples/2_2) ([описание скачивания](xref:index#how-to-download-a-sample)).
 ::: moniker-end
 
 ::: moniker range="<= aspnetcore-1.1"
-[Просмотреть или скачать пример кода](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/security/authorization/resourcebased/samples/1_1) ([описание скачивания](xref:index#how-to-download-a-sample)).
+[Просмотреть или скачать пример кода](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/security/authorization/resourcebased/samples/1_1) ([описание скачивания](xref:index#how-to-download-a-sample)).
 ::: moniker-end
 
 [Создание приложения ASP.NET Core с данными пользователя, защищенными с помощью авторизации,](xref:security/authorization/secure-data) содержит пример приложения, использующего авторизацию на основе ресурсов.

@@ -5,12 +5,12 @@ description: Узнайте, как привязка модели позволя
 ms.author: riande
 ms.date: 01/06/2020
 uid: mvc/advanced/custom-model-binding
-ms.openlocfilehash: 92e7abbb9d9b4c29af429557a31e3ef403211976
-ms.sourcegitcommit: 79850db9e79b1705b89f466c6f2c961ff15485de
-ms.translationtype: HT
+ms.openlocfilehash: 511cf39bfedfc55d2f75842daf4445d2aaf4872d
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
+ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/07/2020
-ms.locfileid: "75693951"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78652120"
 ---
 # <a name="custom-model-binding-in-aspnet-core"></a>Пользовательская привязка модели в ASP.NET Core
 
@@ -20,7 +20,7 @@ ms.locfileid: "75693951"
 
 Привязка модели позволяет действиям контроллера работать непосредственно с типами моделей (передаваемыми в качестве аргументов метода), а не с HTTP-запросами. Сопоставление между данными входящего запроса и моделями приложений обрабатывается связывателями моделей. Разработчики могут расширить функциональность привязки встроенных модели путем реализации настраиваемых связывателей (хотя обычно создавать собственный поставщик не требуется).
 
-[Просмотреть или скачать образец кода](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/advanced/custom-model-binding/samples) ([как скачивать](xref:index#how-to-download-a-sample))
+[Просмотреть или скачать образец кода](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/advanced/custom-model-binding/samples) ([как скачивать](xref:index#how-to-download-a-sample))
 
 ## <a name="default-model-binder-limitations"></a>Ограничения для связывателя модели по умолчанию
 
@@ -34,7 +34,7 @@ ms.locfileid: "75693951"
 
 ### <a name="working-with-the-bytearraymodelbinder"></a>Работа с классом ByteArrayModelBinder
 
-Строки в кодировке Base64 можно использовать для представления двоичных данных. Например, изображение можно закодировать в виде строки. Пример содержит изображение в виде строки в кодировке Base64 в файле [Base64String.txt](https://github.com/aspnet/AspNetCore.Docs/blob/master/aspnetcore/mvc/advanced/custom-model-binding/samples/3.x/CustomModelBindingSample/Base64String.txt).
+Строки в кодировке Base64 можно использовать для представления двоичных данных. Например, изображение можно закодировать в виде строки. Пример содержит изображение в виде строки в кодировке Base64 в файле [Base64String.txt](https://github.com/dotnet/AspNetCore.Docs/blob/master/aspnetcore/mvc/advanced/custom-model-binding/samples/3.x/CustomModelBindingSample/Base64String.txt).
 
 ASP.NET Core MVC может принимать строки в кодировке Base64 и использовать `ByteArrayModelBinder` для их преобразования в массив байтов. Класс <xref:Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ByteArrayModelBinderProvider> сопоставляет аргументы `byte[]` с `ByteArrayModelBinder`:
 
@@ -61,6 +61,7 @@ public IModelBinder GetBinder(ModelBinderProviderContext context)
 В следующем примере показано, как использовать `ByteArrayModelBinder` для преобразования строки в кодировке Base64 в `byte[]` и сохранить результат в файл:
 
 [!code-csharp[](custom-model-binding/samples/3.x/CustomModelBindingSample/Controllers/ImageController.cs?name=snippet_Post)]
+[!INCLUDE[about the series](~/includes/code-comments-loc.md)]
 
 Строку в кодировке Base64 можно отправить (POST) в этот метод API с помощью такого средства, как [Postman](https://www.getpostman.com/):
 
@@ -143,7 +144,7 @@ public IModelBinder GetBinder(ModelBinderProviderContext context)
 
 Привязка модели позволяет действиям контроллера работать непосредственно с типами моделей (передаваемыми в качестве аргументов метода), а не с HTTP-запросами. Сопоставление между данными входящего запроса и моделями приложений обрабатывается связывателями моделей. Разработчики могут расширить функциональность привязки встроенных модели путем реализации настраиваемых связывателей (хотя обычно создавать собственный поставщик не требуется).
 
-[Просмотреть или скачать образец кода](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/advanced/custom-model-binding/samples) ([как скачивать](xref:index#how-to-download-a-sample))
+[Просмотреть или скачать образец кода](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/advanced/custom-model-binding/samples) ([как скачивать](xref:index#how-to-download-a-sample))
 
 ## <a name="default-model-binder-limitations"></a>Ограничения для связывателя модели по умолчанию
 
@@ -157,7 +158,7 @@ public IModelBinder GetBinder(ModelBinderProviderContext context)
 
 ### <a name="working-with-the-bytearraymodelbinder"></a>Работа с классом ByteArrayModelBinder
 
-Строки в кодировке Base64 можно использовать для представления двоичных данных. Например, изображение можно закодировать в виде строки. Пример содержит изображение в виде строки в кодировке Base64 в файле [Base64String.txt](https://github.com/aspnet/AspNetCore.Docs/blob/master/aspnetcore/mvc/advanced/custom-model-binding/samples/2.x/CustomModelBindingSample/Base64String.txt).
+Строки в кодировке Base64 можно использовать для представления двоичных данных. Например, изображение можно закодировать в виде строки. Пример содержит изображение в виде строки в кодировке Base64 в файле [Base64String.txt](https://github.com/dotnet/AspNetCore.Docs/blob/master/aspnetcore/mvc/advanced/custom-model-binding/samples/2.x/CustomModelBindingSample/Base64String.txt).
 
 ASP.NET Core MVC может принимать строки в кодировке Base64 и использовать `ByteArrayModelBinder` для их преобразования в массив байтов. Класс <xref:Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ByteArrayModelBinderProvider> сопоставляет аргументы `byte[]` с `ByteArrayModelBinder`:
 

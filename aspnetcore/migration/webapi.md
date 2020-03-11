@@ -6,12 +6,12 @@ ms.author: scaddie
 ms.custom: mvc
 ms.date: 12/05/2019
 uid: migration/webapi
-ms.openlocfilehash: c68cf83f427f53b110075168c6d5e4d021808782
-ms.sourcegitcommit: c0b72b344dadea835b0e7943c52463f13ab98dd1
+ms.openlocfilehash: 7f61b78c589fc9d01061b50554e5a639e372c3d8
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74881146"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78653008"
 ---
 # <a name="migrate-from-aspnet-web-api-to-aspnet-core"></a>Переход с веб-API ASP.NET на ASP.NET Core
 
@@ -19,9 +19,9 @@ ms.locfileid: "74881146"
 
 Веб-API ASP.NET 4. x — это служба HTTP, которая достигает широкого спектра клиентов, включая браузеры и мобильные устройства. ASP.NET Core объединяет модели приложений MVC и веб-API ASP.NET 4. x в более простую модель программирования, известную как ASP.NET Core MVC. В этой статье описываются шаги, необходимые для перехода с веб-API ASP.NET 4. x на ASP.NET Core MVC.
 
-[Просмотреть или скачать образец кода](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/migration/webapi/sample) ([как скачивать](xref:index#how-to-download-a-sample))
+[Просмотреть или скачать образец кода](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/migration/webapi/sample) ([как скачивать](xref:index#how-to-download-a-sample))
 
-## <a name="prerequisites"></a>Необходимые компоненты
+## <a name="prerequisites"></a>предварительные требования
 
 [!INCLUDE [prerequisites](../includes/net-core-prereqs-vs2019-2.2.md)]
 
@@ -61,7 +61,7 @@ ms.locfileid: "74881146"
 
 ## <a name="migrate-configuration"></a>Миграция конфигурации
 
-ASP.NET Core не использует папку *App_Start* или файл *Global. asax* , а файл *Web. config* добавляется во время публикации. *Startup.CS* является заменой для *Global. asax* и находится в корневом каталоге проекта. Класс `Startup` обрабатывает все задачи запуска приложения. Для получения дополнительной информации см. <xref:fundamentals/startup>.
+ASP.NET Core не использует папку *App_Start* или файл *Global. asax* , а файл *Web. config* добавляется во время публикации. *Startup.CS* является заменой для *Global. asax* и находится в корневом каталоге проекта. Класс `Startup` обрабатывает все задачи запуска приложения. Дополнительные сведения см. в разделе <xref:fundamentals/startup>.
 
 В ASP.NET Core MVC маршрутизация атрибутов включается по умолчанию при вызове <xref:Microsoft.AspNetCore.Builder.MvcApplicationBuilderExtensions.UseMvc*> в `Startup.Configure`. Следующий вызов `UseMvc` заменяет файл */вебапиконфиг.кс App_Start* проекта *продуктсапп* :
 
@@ -79,11 +79,11 @@ ASP.NET Core не использует папку *App_Start* или файл *G
 
 * Класс `ApiController`
 * Пространство имен `System.Web.Http`
-* Интерфейс `IHttpActionResult`
+* интерфейс `IHttpActionResult`
 
 Исправьте ошибки следующим образом:
 
-1. Изменение `ApiController` для <xref:Microsoft.AspNetCore.Mvc.ControllerBase>. Добавьте `using Microsoft.AspNetCore.Mvc;`, чтобы разрешить ссылку на `ControllerBase`.
+1. Измените `ApiController` на <xref:Microsoft.AspNetCore.Mvc.ControllerBase>. Добавьте `using Microsoft.AspNetCore.Mvc;`, чтобы разрешить ссылку на `ControllerBase`.
 1. Удалите `using System.Web.Http;`.
 1. Измените тип возвращаемого значения действия `GetProduct` с `IHttpActionResult` на `ActionResult<Product>`.
 

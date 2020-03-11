@@ -5,20 +5,20 @@ description: Совместное использование контролле�
 ms.author: riande
 ms.date: 11/11/2019
 uid: mvc/extensibility/app-parts
-ms.openlocfilehash: a95c344410db0651b9f8f1c1eb7551029f084c25
-ms.sourcegitcommit: 7dfe6cc8408ac6a4549c29ca57b0c67ec4baa8de
-ms.translationtype: HT
+ms.openlocfilehash: 0156c94bc6d0b83d0e14b8ef49468cfdf106d7e6
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
+ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75829079"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78654814"
 ---
 # <a name="share-controllers-views-razor-pages-and-more-with-application-parts"></a>Совместное использование контроллеров, представлений, Razor Pages и других ресурсов с помощью частей приложений
 
 ::: moniker range=">= aspnetcore-3.0"
 
-Автор: [Рик Андерсон](https://twitter.com/RickAndMSFT) (Rick Anderson)
+Автор: [Рик Андерсон](https://twitter.com/RickAndMSFT)
 
-[Просмотреть или скачать образец кода](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/advanced/app-parts) ([как скачивать](xref:index#how-to-download-a-sample))
+[Просмотреть или скачать образец кода](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/advanced/app-parts) ([как скачивать](xref:index#how-to-download-a-sample))
 
 *Часть приложения* — это абстракция для ресурсов приложения. Части приложений позволяют ASP.NET Core обнаруживать контроллеры, компоненты представлений, вспомогательные функции тегов, Razor Pages, источники компиляции Razor и другие ресурсы. <xref:Microsoft.AspNetCore.Mvc.ApplicationParts.AssemblyPart> является частью приложения. `AssemblyPart` инкапсулирует ссылку на сборку и предоставляет типы и ссылки на компиляцию.
 
@@ -36,7 +36,7 @@ ms.locfileid: "75829079"
 
 [!code-csharp[](./app-parts/3.0sample1/WebAppParts/Startup2.cs?name=snippet)]
 
-Предыдущие два примера кода загружают `SharedController` из сборки. `SharedController` не находится в проекте приложения. См. пример [решения WebAppParts](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/advanced/app-parts/3.0sample1/WebAppParts) для загрузки.
+Предыдущие два примера кода загружают `SharedController` из сборки. `SharedController` не находится в проекте приложения. См. пример [решения WebAppParts](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/advanced/app-parts/3.0sample1/WebAppParts) для загрузки.
 
 ### <a name="include-views"></a>Включение представлений
 
@@ -74,7 +74,7 @@ ms.locfileid: "75829079"
 
 [!code-csharp[](./app-parts/sample2/AppPartsSample/Controllers/FeaturesController.cs?highlight=16,25-27)]
 
-В [примере для скачивания](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/advanced/app-parts/sample2) используется приведенный выше код для отображения компонентов приложения:
+В [примере для скачивания](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/advanced/app-parts/sample2) используется приведенный выше код для отображения компонентов приложения:
 
 ```text
 Controllers:
@@ -106,9 +106,9 @@ View Components:
 
 ::: moniker range="< aspnetcore-3.0"
 
-Автор: [Рик Андерсон](https://twitter.com/RickAndMSFT) (Rick Anderson)
+Автор: [Рик Андерсон](https://twitter.com/RickAndMSFT)
 
-[Просмотреть или скачать образец кода](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/advanced/app-parts) ([как скачивать](xref:index#how-to-download-a-sample))
+[Просмотреть или скачать образец кода](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/advanced/app-parts) ([как скачивать](xref:index#how-to-download-a-sample))
 
 *Часть приложения* — это абстракция для ресурсов приложения. Части приложений позволяют ASP.NET Core обнаруживать контроллеры, компоненты представлений, вспомогательные функции тегов, Razor Pages, источники компиляции Razor и другие ресурсы. [AssemblyPart](/dotnet/api/microsoft.aspnetcore.mvc.applicationparts.assemblypart#Microsoft_AspNetCore_Mvc_ApplicationParts_AssemblyPart) — это часть приложения. `AssemblyPart` инкапсулирует ссылку на сборку и предоставляет типы и ссылки на компиляцию.
 
@@ -126,7 +126,7 @@ View Components:
 
 [!code-csharp[](./app-parts/sample1/WebAppParts/Startup2.cs?name=snippet)]
 
-Предыдущие два примера кода загружают `SharedController` из сборки. `SharedController` не находится в проекте приложения. См. пример [решения WebAppParts](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/advanced/app-parts/sample1/WebAppParts) для загрузки.
+Предыдущие два примера кода загружают `SharedController` из сборки. `SharedController` не находится в проекте приложения. См. пример [решения WebAppParts](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/advanced/app-parts/sample1/WebAppParts) для загрузки.
 
 ### <a name="include-views"></a>Включение представлений
 
@@ -136,7 +136,7 @@ View Components:
 
 Части приложения можно использовать для *запрета* загрузки ресурсов в определенной сборке или расположении. Добавьте или удалите элементы коллекции <xref:Microsoft.AspNetCore.Mvc.ApplicationParts>, чтобы скрыть ресурсы или сделать их доступными. Порядок записей в коллекции `ApplicationParts` не имеет значения. Настройте класс `ApplicationPartManager` перед его использованием для конфигурации служб в контейнере. Например, настройте класс `ApplicationPartManager` перед вызовом метода `AddControllersAsServices`. Вызовите метод `Remove` в коллекции `ApplicationParts`, чтобы удалить ресурс.
 
-В следующем коде для удаления `MyDependentLibrary` из приложения используется <xref:Microsoft.AspNetCore.Mvc.ApplicationParts>: [!code-csharp[](./app-parts/sample1/WebAppParts/StartupRm.cs?name=snippet)]
+В следующем коде для удаления <xref:Microsoft.AspNetCore.Mvc.ApplicationParts> из приложения используется `MyDependentLibrary`: [!code-csharp[](./app-parts/sample1/WebAppParts/StartupRm.cs?name=snippet)]
 
 `ApplicationPartManager` содержит части для:
 
@@ -160,7 +160,7 @@ View Components:
 
 [!code-csharp[](./app-parts/sample2/AppPartsSample/Controllers/FeaturesController.cs?highlight=16,25-27)]
 
-В [примере для скачивания](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/advanced/app-parts/sample2) используется приведенный выше код для отображения компонентов приложения:
+В [примере для скачивания](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/advanced/app-parts/sample2) используется приведенный выше код для отображения компонентов приложения:
 
 ```text
 Controllers:

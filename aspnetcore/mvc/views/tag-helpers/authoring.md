@@ -6,18 +6,18 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 12/05/2019
 uid: mvc/views/tag-helpers/authoring
-ms.openlocfilehash: e8b62d795f6444e6dd79e27ace687d5db4db86de
-ms.sourcegitcommit: c0b72b344dadea835b0e7943c52463f13ab98dd1
-ms.translationtype: HT
+ms.openlocfilehash: 43bd4eccfc06d27ade5de0e3387247a753609336
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
+ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74881004"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78653182"
 ---
 # <a name="author-tag-helpers-in-aspnet-core"></a>Создание вспомогательных функций тегов в ASP.NET Core
 
-Автор: [Рик Андерсон](https://twitter.com/RickAndMSFT) (Rick Anderson)
+Автор: [Рик Андерсон](https://twitter.com/RickAndMSFT)
 
-[Просмотреть или скачать образец кода](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/views/tag-helpers/authoring/sample) ([как скачивать](xref:index#how-to-download-a-sample))
+[Просмотреть или скачать образец кода](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/views/tag-helpers/authoring/sample) ([как скачивать](xref:index#how-to-download-a-sample))
 
 ## <a name="get-started-with-tag-helpers"></a>Начало работы с вспомогательными функциями тегов
 
@@ -31,7 +31,7 @@ ms.locfileid: "74881004"
 
 ## <a name="a-minimal-tag-helper"></a>Простейшая вспомогательная функция тега
 
-В этом разделе вы напишете вспомогательную функцию тега, которая обновляет тег электронной почты. Например:
+В этом разделе вы напишете вспомогательную функцию тега, которая обновляет тег электронной почты. Пример:
 
 ```html
 <email>Support</email>
@@ -69,7 +69,7 @@ ms.locfileid: "74881004"
 
    [!code-cshtml[](../../../mvc/views/tag-helpers/authoring/sample/AuthoringTagHelpers/src/AuthoringTagHelpers/Views/_ViewImportsCopyEmail.cshtml?highlight=2,3)]
 
-   В приведенном выше коде используется синтаксис с подстановочным знаком, который указывает, что будут доступны все вспомогательные функции тегов в сборке. Первая строка после `@addTagHelper` указывает на загружаемую вспомогательную функцию тега (символ "*" соответствует всем вспомогательным функциям тегов), а вторая строка ("AuthoringTagHelpers") указывает на сборку, в которой находится вспомогательная функция тега. Кроме того, обратите внимание на то, что во второй строке с помощью синтаксиса с подстановочным знаком добавляются вспомогательные функции тегов ASP.NET Core MVC (эти вспомогательные функции рассматриваются в статье [Общие сведения о вспомогательных функциях тегов](intro.md)). Вспомогательная функция тега становится доступной для представления Razor посредством директивы `@addTagHelper`. Вы также можете указать полное имя вспомогательной функции тега, как показано ниже.
+   В приведенном выше коде используется синтаксис с подстановочным знаком, который указывает, что будут доступны все вспомогательные функции тегов в сборке. Первая строка после `@addTagHelper` указывает на загружаемую вспомогательную функцию тега (символ "*" соответствует всем вспомогательным функциям тегов), а вторая строка ("AuthoringTagHelpers") указывает на сборку, в которой находится вспомогательная функция тега. Кроме того, обратите внимание, что вторая строка помещается в вспомогательные функции тегов ASP.NET Core MVC с помощью подстановочного знака (эти вспомогательные методы обсуждаются в разделе Общие сведения о [вспомогательных](intro.md)средствах тегов). Это директива `@addTagHelper`, которая делает вспомогательную функцию тега доступной для представления Razor. Вы также можете указать полное имя вспомогательной функции тега, как показано ниже.
 
 ```csharp
 @using AuthoringTagHelpers

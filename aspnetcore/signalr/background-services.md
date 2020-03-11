@@ -9,12 +9,12 @@ ms.date: 11/12/2019
 no-loc:
 - SignalR
 uid: signalr/background-services
-ms.openlocfilehash: 324592759af79d1229eb147fb4551e97c678ef64
-ms.sourcegitcommit: 2cb857f0de774df421e35289662ba92cfe56ffd1
+ms.openlocfilehash: 86319cc93febab18c29e2fb6366cef0d025943ba
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75358682"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78651586"
 ---
 # <a name="host-aspnet-core-opno-locsignalr-in-background-services"></a>SignalR ASP.NET Core узла в фоновых службах
 
@@ -25,7 +25,7 @@ ms.locfileid: "75358682"
 * Размещение концентраторов SignalR с помощью фонового рабочего процесса, размещенного в ASP.NET Core.
 * Отправка сообщений на подключенные клиенты из [BackgroundService](xref:Microsoft.Extensions.Hosting.BackgroundService).NET Core.
 
-[Просмотр или скачивание образца кода](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/signalr/background-service/sample/) [(Загрузка)](xref:index#how-to-download-a-sample)
+[Просмотр или скачивание образца кода](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/signalr/background-service/sample/) [(Загрузка)](xref:index#how-to-download-a-sample)
 
 ## <a name="enable-opno-locsignalr-in-startup"></a>Включение SignalR при запуске
 
@@ -73,7 +73,7 @@ public class Startup
 Дополнительные сведения о строго типизированных концентраторах см. [в статье Использование концентраторов в SignalR для ASP.NET Core](xref:signalr/hubs#strongly-typed-hubs).
 
 > [!NOTE]
-> Эта функциональность не ограничена классом [\<](xref:Microsoft.AspNetCore.SignalR.Hub`1) . Любой класс, наследующий от [концентратора](xref:Microsoft.AspNetCore.SignalR.Hub), например [динамичуб](xref:Microsoft.AspNetCore.SignalR.DynamicHub), также будет работать.
+> Эта функциональность не ограничена классом [\<>](xref:Microsoft.AspNetCore.SignalR.Hub`1) . Любой класс, наследующий от [концентратора](xref:Microsoft.AspNetCore.SignalR.Hub), например [динамичуб](xref:Microsoft.AspNetCore.SignalR.DynamicHub), также будет работать.
 
 [!code-csharp[Startup](background-service/sample/Server/ClockHub.cs?name=ClockHub)]
 

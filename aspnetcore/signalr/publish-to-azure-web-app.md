@@ -10,20 +10,20 @@ no-loc:
 - SignalR
 uid: signalr/publish-to-azure-web-app
 ms.openlocfilehash: d03a007ca883b3d0391b848e3e92c90469ee640a
-ms.sourcegitcommit: 3fc3020961e1289ee5bf5f3c365ce8304d8ebf19
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73963932"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78652654"
 ---
-# <a name="publish-an-aspnet-core-opno-locsignalr-app-to-azure-app-service"></a>Публикация приложения ASP.NET Core SignalR в службе приложений Azure
+# <a name="publish-an-aspnet-core-signalr-app-to-azure-app-service"></a>Публикация приложения ASP.NET Core SignalR в службе приложений Azure
 
 По [Брейди Гастер](https://twitter.com/bradygaster)
 
 [Служба приложений Azure](/azure/app-service/app-service-web-overview) — это служба платформы [облачных вычислений Майкрософт](https://azure.microsoft.com/) для размещения веб-приложений, включая ASP.NET Core.
 
 > [!NOTE]
-> В этой статье описывается публикация приложения ASP.NET Core SignalR из Visual Studio. Дополнительные сведения см. в статье [SignalR Service for Azure](https://azure.microsoft.com/services/signalr-service).
+> В этой статье описывается публикация приложения ASP.NET Core SignalR из Visual Studio. Дополнительные сведения см. в статье [Служба SignalR для Azure](https://azure.microsoft.com/services/signalr-service).
 
 ## <a name="publish-the-app"></a>Публикация приложения
 
@@ -37,16 +37,16 @@ ms.locfileid: "73963932"
 
    Введите сведения, описанные в следующей таблице в диалоговом окне **Создание службы приложений** , и выберите **создать**.
 
-   | Элемент               | Описание |
+   | Элемент               | Description |
    | ------------------ | ----------- |
-   | **Name**           | Уникальное имя приложения. |
-   | **Подписка**   | Подписка Azure, используемая приложением. |
+   | **Название**           | Уникальное имя приложения. |
+   | **подписка**   | Подписка Azure, используемая приложением. |
    | **Группа ресурсов** | Группа связанных ресурсов, к которым принадлежит приложение. |
    | **План размещения**   | Тарифный план для веб-приложения. |
 
 1. Выберите **службу SignalR Azure** в раскрывающемся списке **зависимости** > **добавить** :
 
-   ![Область зависимостей, отображающая выбор Azure [! Операцион. Служба NO-LOC (SignalR)] в раскрывающемся списке "Добавить"](publish-to-azure-web-app/_static/signalr-service-dependency.png)
+   область зависимости ![, в которой отображается Выбор службы SignalR Azure в раскрывающемся списке Добавить](publish-to-azure-web-app/_static/signalr-service-dependency.png)
 
 1. В диалоговом окне **службы SignalR Azure** выберите **создать новый экземпляр службы SignalR Azure**.
 

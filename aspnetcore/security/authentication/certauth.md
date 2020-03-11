@@ -7,11 +7,11 @@ ms.author: bdorrans
 ms.date: 01/02/2020
 uid: security/authentication/certauth
 ms.openlocfilehash: 280daa86510d4445c791b6952653122961f13aeb
-ms.sourcegitcommit: 6645435fc8f5092fc7e923742e85592b56e37ada
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77447286"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78654172"
 ---
 # <a name="configure-certificate-authentication-in-aspnet-core"></a>Настройка проверки подлинности сертификата в ASP.NET Core
 
@@ -36,7 +36,7 @@ ms.locfileid: "77447286"
 
 Если проверка подлинности завершается неудачно, этот обработчик возвращает `403 (Forbidden)`ный ответ, а не `401 (Unauthorized)`, как можно было бы ожидать. Причина заключается в том, что проверка подлинности должна выполняться во время первоначального TLS-подключения. К моменту, когда он достигает обработчика, он слишком поздно. Невозможно обновить подключение между анонимным подключением и сертификатом.
 
-Также добавьте `app.UseAuthentication();` в метод `Startup.Configure`. В противном случае `HttpContext.User` не будет настроена для `ClaimsPrincipal`, созданного из сертификата. Например:
+Также добавьте `app.UseAuthentication();` в метод `Startup.Configure`. В противном случае `HttpContext.User` не будет настроена для `ClaimsPrincipal`, созданного из сертификата. Пример:
 
 ```csharp
 public void ConfigureServices(IServiceCollection services)

@@ -6,12 +6,12 @@ monikerRange: '>= aspnetcore-2.0'
 ms.author: scaddie
 ms.date: 06/12/2019
 uid: mvc/views/tag-helpers/th-components
-ms.openlocfilehash: 070cc3aae08664c13d8eb793a066766d0a5569ee
-ms.sourcegitcommit: c0b72b344dadea835b0e7943c52463f13ab98dd1
-ms.translationtype: HT
+ms.openlocfilehash: 5e2eb2d4322068c5864fbe49acaa6d0859bd319a
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
+ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74880972"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78652372"
 ---
 # <a name="tag-helper-components-in-aspnet-core"></a>Вспомогательные компоненты тегов в ASP.NET Core
 
@@ -21,7 +21,7 @@ ms.locfileid: "74880972"
 
 ASP.NET Core включает в себя два встроенных вспомогательных компонента тегов: `head` и `body`. Они находятся в пространства имен <xref:Microsoft.AspNetCore.Mvc.Razor.TagHelpers> и могут использоваться в MVC и Razor Pages. Вспомогательные компоненты тегов не нужно регистрировать в *_ViewImports.cshtml*.
 
-[Просмотреть или скачать образец кода](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/views/tag-helpers/th-components/samples) ([как скачивать](xref:index#how-to-download-a-sample))
+[Просмотреть или скачать образец кода](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/views/tag-helpers/th-components/samples) ([как скачивать](xref:index#how-to-download-a-sample))
 
 ## <a name="use-cases"></a>Варианты использования
 
@@ -112,7 +112,7 @@ ASP.NET Core включает в себя два встроенных вспом
 
 * Создайте открытый класс, который наследует от <xref:Microsoft.AspNetCore.Mvc.Razor.TagHelpers.TagHelperComponentTagHelper>.
 * Примените атрибут [`[HtmlTargetElement]`](xref:Microsoft.AspNetCore.Razor.TagHelpers.HtmlTargetElementAttribute) к классу. Укажите имя целевого элемента HTML.
-* *Необязательно:* Примените к этому классу атрибут [`[EditorBrowsable(EditorBrowsableState.Never)]`](xref:System.ComponentModel.EditorBrowsableAttribute) для блокировки отображения типа в IntelliSense.
+* *Необязательно*. Примените к классу атрибут [`[EditorBrowsable(EditorBrowsableState.Never)]`](xref:System.ComponentModel.EditorBrowsableAttribute) , чтобы отключить отображение типа в IntelliSense.
 
 Следующий код позволяет создать пользовательский вспомогательный компонент тегов, который работает с элементом HTML `<address>`:
 

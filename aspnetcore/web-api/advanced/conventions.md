@@ -7,12 +7,12 @@ ms.author: scaddie
 ms.custom: mvc
 ms.date: 12/05/2019
 uid: web-api/advanced/conventions
-ms.openlocfilehash: 2c7e33da24322504fc5e1be83c0b814710186687
-ms.sourcegitcommit: c0b72b344dadea835b0e7943c52463f13ab98dd1
-ms.translationtype: HT
+ms.openlocfilehash: d49b51d11d3f14d0c3edbe1765d74fd63e3ac061
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
+ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74881321"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78651526"
 ---
 # <a name="use-web-api-conventions"></a>Использование соглашений веб-API
 
@@ -29,13 +29,13 @@ ASP.NET Core MVC 2.2 и более поздних версий включает 
 
 Во время выполнения <xref:Microsoft.AspNetCore.Mvc.ApiExplorer> понимает соглашения. `ApiExplorer` является абстракцией MVC для взаимодействия с генераторами документов [OpenAPI](https://www.openapis.org/) (также называется Swagger). Атрибуты из примененного соглашения связываются с действием и включаются в документацию OpenAPI для действия. [Анализаторы API](xref:web-api/advanced/analyzers) также понимают соглашения. Если ваше действие является нестандартным (например, возвращает код состояния, который не задокументирован примененным соглашением), выводится предупреждение, позволяющее задокументировать код состояния.
 
-[Просмотреть или скачать образец кода](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/web-api/advanced/conventions/sample) ([как скачивать](xref:index#how-to-download-a-sample))
+[Просмотреть или скачать образец кода](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/web-api/advanced/conventions/sample) ([как скачивать](xref:index#how-to-download-a-sample))
 
 ## <a name="apply-web-api-conventions"></a>Применение соглашений веб-API
 
 Соглашения не являются составными, каждое действие может быть связано только с одним соглашением. Более конкретные соглашения имеют приоритет над менее определенными. Если к действию применяются два или более соглашения с одинаковым приоритетом, выбор осуществляется недетерминированным образом. Существуют следующие варианты применения соглашения к действию (от наиболее конкретного до наименее конкретного):
 
-1. `Microsoft.AspNetCore.Mvc.ApiConventionMethodAttribute` &mdash; Применяется к отдельным действиям и указывает тип соглашения и применимый метод соглашения.
+1. `Microsoft.AspNetCore.Mvc.ApiConventionMethodAttribute` &mdash; применяется к отдельным действиям и определяет тип соглашения и применяемый метод соглашения.
 
     В следующем примере метод соглашения `Microsoft.AspNetCore.Mvc.DefaultApiConventions.Put` типа соглашения по умолчанию применяется к действию `Update`:
 
@@ -73,7 +73,7 @@ ASP.NET Core MVC 2.2 и более поздних версий включает 
 
 ### <a name="response-types"></a>Типы ответов
 
-Эти методы помечаются атрибутами `[ProducesResponseType]` или `[ProducesDefaultResponseType]`. Например:
+Эти методы помечаются атрибутами `[ProducesResponseType]` или `[ProducesDefaultResponseType]`. Пример:
 
 ```csharp
 public static class MyAppConventions
@@ -91,9 +91,9 @@ public static class MyAppConventions
 * Метод соглашение применяется к любому действию с именем `Find`.
 * Параметр с именем `id` присутствует для действия `Find`.
 
-### <a name="naming-requirements"></a>Требования к именованию
+### <a name="naming-requirements"></a>Требования к именам
 
-Атрибуты `[ApiConventionNameMatch]` и `[ApiConventionTypeMatch]` можно применить к методу соглашения, определяющему действия, к которым они применяются. Например:
+Атрибуты `[ApiConventionNameMatch]` и `[ApiConventionTypeMatch]` можно применить к методу соглашения, определяющему действия, к которым они применяются. Пример:
 
 ```csharp
 [ProducesResponseType(StatusCodes.Status200OK)]

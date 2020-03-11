@@ -2,7 +2,7 @@
 
 Запуск шаблона идентификации:
 
-# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
+# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 * В **Обозреватель решений**щелкните правой кнопкой мыши проект > **Добавить** > новый шаблонный **элемент**.
 * В левой области диалогового окна **Добавление шаблона** выберите **удостоверение** > **добавить**.
@@ -12,14 +12,14 @@
  Например: `~/Pages/Shared/_Layout.cshtml` для Razor Pages `~/Views/Shared/_Layout.cshtml` для проектов MVC
 * Чтобы использовать существующий контекст данных, выберите по меньшей мере один файл для переопределения. Необходимо выбрать по крайней мере один файл для добавления контекста данных.
   * Выберите класс контекста данных.
-  * Нажмите **Добавить**.
+  * Выберите **Добавить**.
 * Чтобы создать новый контекст пользователя и, возможно, создать настраиваемый класс пользователя для удостоверения:
-  * Выберите **+** кнопку, чтобы создать новый **класс контекста данных**.
-  * Нажмите **Добавить**.
+  * Нажмите кнопку **+** , чтобы создать новый **класс контекста данных**.
+  * Выберите **Добавить**.
 
 Примечание. Если вы создаете новый контекст пользователя, вам не нужно выбирать файл для переопределения.
 
-# <a name="net-core-clitabnetcore-cli"></a>[Интерфейс командной строки .NET Core](#tab/netcore-cli)
+# <a name="net-core-cli"></a>[Интерфейс командной строки .NET Core](#tab/netcore-cli)
 
 Если вы еще не установлен шаблон ASP.NET Core, установите его:
 
@@ -52,7 +52,7 @@ dotnet aspnet-codegenerator identity -h
 dotnet aspnet-codegenerator identity -dc MyWeb.Data.ApplicationDbContext --files "Account.Register;Account.Login"
 ```
 
-В PowerShell используется точка с запятой в качестве разделителя команд. При использовании PowerShell заключите точку с запятой в список файлов или вставьте список файлов в двойные кавычки. Например:
+В PowerShell используется точка с запятой в качестве разделителя команд. При использовании PowerShell заключите точку с запятой в список файлов или вставьте список файлов в двойные кавычки. Пример:
 
 ```dotnetcli
 dotnet aspnet-codegenerator identity -dc MyWeb.Data.ApplicationDbContext --files "Account.Register;Account.Login;Account.Logout"
@@ -68,7 +68,7 @@ dotnet aspnet-codegenerator identity -dc MyWeb.Data.ApplicationDbContext --files
 
 Запуск шаблона идентификации:
 
-# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
+# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 * В **Обозреватель решений**щелкните правой кнопкой мыши проект > **Добавить** > новый шаблонный **элемент**.
 * В левой области диалогового окна **Добавление шаблона** выберите **удостоверение** > **добавить**.
@@ -78,14 +78,14 @@ dotnet aspnet-codegenerator identity -dc MyWeb.Data.ApplicationDbContext --files
  Например: `~/Pages/Shared/_Layout.cshtml` для Razor Pages `~/Views/Shared/_Layout.cshtml` для проектов MVC
 * Чтобы использовать существующий контекст данных, выберите по меньшей мере один файл для переопределения. Необходимо выбрать по крайней мере один файл для добавления контекста данных.
   * Выберите класс контекста данных.
-  * Нажмите **Добавить**.
+  * Выберите **Добавить**.
 * Чтобы создать новый контекст пользователя и, возможно, создать настраиваемый класс пользователя для удостоверения:
-  * Выберите **+** кнопку, чтобы создать новый **класс контекста данных**.
-  * Нажмите **Добавить**.
+  * Нажмите кнопку **+** , чтобы создать новый **класс контекста данных**.
+  * Выберите **Добавить**.
 
 Примечание. Если вы создаете новый контекст пользователя, вам не нужно выбирать файл для переопределения.
 
-# <a name="net-core-clitabnetcore-cli"></a>[Интерфейс командной строки .NET Core](#tab/netcore-cli)
+# <a name="net-core-cli"></a>[Интерфейс командной строки .NET Core](#tab/netcore-cli)
 
 Если вы еще не установлен шаблон ASP.NET Core, установите его:
 
@@ -112,7 +112,7 @@ dotnet aspnet-codegenerator identity -h
 dotnet aspnet-codegenerator identity -dc MyWeb.Data.ApplicationDbContext --files "Account.Register;Account.Login"
 ```
 
-В PowerShell используется точка с запятой в качестве разделителя команд. При использовании PowerShell заключите точку с запятой в список файлов или вставьте список файлов в двойные кавычки. Например:
+В PowerShell используется точка с запятой в качестве разделителя команд. При использовании PowerShell заключите точку с запятой в список файлов или вставьте список файлов в двойные кавычки. Пример:
 
 ```dotnetcli
 dotnet aspnet-codegenerator identity -dc MyWeb.Data.ApplicationDbContext --files "Account.Register;Account.Login;Account.Logout"

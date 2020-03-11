@@ -6,11 +6,11 @@ ms.author: riande
 ms.date: 03/11/2019
 uid: security/authentication/accconfirm
 ms.openlocfilehash: 49d3d214fd64edc5b17df2df929ddc3c2af47ede
-ms.sourcegitcommit: 7dfe6cc8408ac6a4549c29ca57b0c67ec4baa8de
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75829274"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78654226"
 ---
 # <a name="account-confirmation-and-password-recovery-in-aspnet-core"></a>Подтверждение учетной записи и восстановление пароля в ASP.NET Core
 
@@ -19,7 +19,7 @@ ms.locfileid: "75829274"
 В этом руководстве показано, как создать приложение ASP.NET Core с подтверждением электронной почты и сбросом пароля. Это руководство **не** является началом статьи. Вы должны быть знакомы с:
 
 * [ASP.NET Core](xref:tutorials/razor-pages/razor-pages-start)
-* [Проверка подлинности](xref:security/authentication/identity)
+* [Аутентификация](xref:security/authentication/identity)
 * [Entity Framework Core](xref:data/ef-mvc/intro)
 
 <!-- see C:/Dropbox/wrk/Code/SendGridConsole/Program.cs -->
@@ -32,7 +32,7 @@ ms.locfileid: "75829274"
 
 ::: moniker range="> aspnetcore-2.2"
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>предварительные требования
 
 [Пакет SDK для .NET Core 3.0 или более поздней версии](https://dotnet.microsoft.com/download/dotnet-core/3.0)
 
@@ -63,7 +63,7 @@ dotnet run
 
 #### <a name="configure-sendgrid-user-secrets"></a>Настройка секретов пользователя SendGrid
 
-Задайте `SendGridUser` и `SendGridKey` с помощью [средства Secret-Manager](xref:security/app-secrets). Например:
+Задайте `SendGridUser` и `SendGridKey` с помощью [средства Secret-Manager](xref:security/app-secrets). Пример:
 
 ```dotnetcli
 dotnet user-secrets set SendGridUser RickAndMSFT
@@ -91,7 +91,7 @@ Successfully saved SendGridUser = RickAndMSFT to the secret store.
 
 Установите `SendGrid` пакет NuGet:
 
-# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
+# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 В консоли диспетчера пакетов введите следующую команду:
 
@@ -99,7 +99,7 @@ Successfully saved SendGridUser = RickAndMSFT to the secret store.
 Install-Package SendGrid
 ```
 
-# <a name="net-core-clitabnetcore-cli"></a>[Интерфейс командной строки .NET Core](#tab/netcore-cli)
+# <a name="net-core-cli"></a>[Интерфейс командной строки .NET Core](#tab/netcore-cli)
 
 В консоли введите следующую команду:
 
@@ -217,7 +217,7 @@ dotnet add package SendGrid
 
 ::: moniker range="> aspnetcore-2.0 < aspnetcore-3.0"
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>предварительные требования
 
 [Пакет SDK для .NET Core 2,2 или более поздней версии](https://www.microsoft.com/net/download/all)
 
@@ -271,7 +271,7 @@ dotnet run
 
 #### <a name="configure-sendgrid-user-secrets"></a>Настройка секретов пользователя SendGrid
 
-Задайте `SendGridUser` и `SendGridKey` с помощью [средства Secret-Manager](xref:security/app-secrets). Например:
+Задайте `SendGridUser` и `SendGridKey` с помощью [средства Secret-Manager](xref:security/app-secrets). Пример:
 
 ```console
 C:/WebAppl>dotnet user-secrets set SendGridUser RickAndMSFT
@@ -297,7 +297,7 @@ info: Successfully saved SendGridUser = RickAndMSFT to the secret store.
 
 Установите `SendGrid` пакет NuGet:
 
-# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
+# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 В консоли диспетчера пакетов введите следующую команду:
 
@@ -305,7 +305,7 @@ info: Successfully saved SendGridUser = RickAndMSFT to the secret store.
 Install-Package SendGrid
 ```
 
-# <a name="net-core-clitabnetcore-cli"></a>[Интерфейс командной строки .NET Core](#tab/netcore-cli)
+# <a name="net-core-cli"></a>[Интерфейс командной строки .NET Core](#tab/netcore-cli)
 
 В консоли введите следующую команду:
 

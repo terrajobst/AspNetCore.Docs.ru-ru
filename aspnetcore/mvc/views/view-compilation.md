@@ -8,15 +8,15 @@ ms.custom: mvc
 ms.date: 12/05/2019
 uid: mvc/views/view-compilation
 ms.openlocfilehash: cd096bba5eb580c0a606699a2bf7c36442fb56f7
-ms.sourcegitcommit: b5ceb0a46d0254cc3425578116e2290142eec0f0
-ms.translationtype: HT
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
+ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76809072"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78652498"
 ---
 # <a name="razor-file-compilation-in-aspnet-core"></a>Компиляция файлов Razor в ASP.NET Core
 
-Автор: [Рик Андерсон](https://twitter.com/RickAndMSFT) (Rick Anderson)
+Автор: [Рик Андерсон](https://twitter.com/RickAndMSFT)
 
 ::: moniker range="= aspnetcore-1.1"
 

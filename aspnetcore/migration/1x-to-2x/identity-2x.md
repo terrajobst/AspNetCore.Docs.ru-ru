@@ -5,12 +5,12 @@ description: В этой статье описаны наиболее распр
 ms.author: scaddie
 ms.date: 06/21/2019
 uid: migration/1x-to-2x/identity-2x
-ms.openlocfilehash: f3817fa1808c331f7e167618e3bb00d68ad08571
-ms.sourcegitcommit: 2cb857f0de774df421e35289662ba92cfe56ffd1
+ms.openlocfilehash: af905f1127d504839f66d9e0e1ca1dfc27e32772
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75355182"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78654946"
 ---
 # <a name="migrate-authentication-and-identity-to-aspnet-core-20"></a>Перенесите проверку подлинности и удостоверение в ASP.NET Core 2,0
 
@@ -177,7 +177,7 @@ public void Configure(IApplicationBuilder app, ILoggerFactory loggerfactory) {
     });
     ```
     
-### <a name="facebook-authentication"></a>Проверка подлинности Facebook
+### <a name="facebook-authentication"></a>Аутентификация Facebook
 
 Внесите следующие изменения в *Startup.CS*:
 - Замените вызов метода `UseFacebookAuthentication` в методе `Configure` на `UseAuthentication`:
@@ -197,7 +197,7 @@ public void Configure(IApplicationBuilder app, ILoggerFactory loggerfactory) {
             });
     ```
 
-### <a name="google-authentication"></a>Проверка подлинности Google
+### <a name="google-authentication"></a>Аутентификация Google
 
 Внесите следующие изменения в *Startup.CS*:
 - Замените вызов метода `UseGoogleAuthentication` в методе `Configure` на `UseAuthentication`:
@@ -217,9 +217,9 @@ public void Configure(IApplicationBuilder app, ILoggerFactory loggerfactory) {
             });
     ```
 
-### <a name="microsoft-account-authentication"></a>Проверка подлинности учетной записи Майкрософт
+### <a name="microsoft-account-authentication"></a>Аутентификация учетной записи Майкрософт
 
-Дополнительные сведения о учетная запись Майкрософт проверки подлинности см. в [этой статье о проблемах в GitHub](https://github.com/aspnet/AspNetCore.Docs/issues/14455).
+Дополнительные сведения о учетная запись Майкрософт проверки подлинности см. в [этой статье о проблемах в GitHub](https://github.com/dotnet/AspNetCore.Docs/issues/14455).
 
 Внесите следующие изменения в *Startup.CS*:
 - Замените вызов метода `UseMicrosoftAccountAuthentication` в методе `Configure` на `UseAuthentication`:
@@ -239,7 +239,7 @@ public void Configure(IApplicationBuilder app, ILoggerFactory loggerfactory) {
             });
     ```
 
-### <a name="twitter-authentication"></a>Проверка подлинности Twitter
+### <a name="twitter-authentication"></a>Аутентификация Twitter
 
 Внесите следующие изменения в *Startup.CS*:
 - Замените вызов метода `UseTwitterAuthentication` в методе `Configure` на `UseAuthentication`:
@@ -330,7 +330,7 @@ services.AddAuthentication(options =>
 
   > `System.InvalidOperationException`: не указан Аусентикатионсчеме, и Дефаултчалленжесчеме не найден.
 
-Для получения дополнительной информации см. <xref:security/authentication/windowsauth>.
+Дополнительные сведения см. в разделе <xref:security/authentication/windowsauth>.
 
 <a name="identity-cookie-options"></a>
 

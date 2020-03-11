@@ -10,11 +10,11 @@ no-loc:
 - SignalR
 uid: signalr/redis-backplane
 ms.openlocfilehash: 0461fc6a212ba78111bc2054cca74951721c5820
-ms.sourcegitcommit: f40c9311058c9b1add4ec043ddc5629384af6c56
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74289039"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78652666"
 ---
 # <a name="set-up-a-redis-backplane-for-aspnet-core-opno-locsignalr-scale-out"></a>Настройка объединительной платы Redis для ASP.NET Core SignalR горизонтальное масштабирование
 
@@ -29,11 +29,11 @@ ms.locfileid: "74289039"
   > [!IMPORTANT] 
   > Для использования в рабочей среде Redisная Объединительная плата рекомендуется только в том случае, если она выполняется в том же центре обработки данных, что и SignalRое приложение. В противном случае задержка сети снижает производительность. Если приложение SignalR выполняется в облаке Azure, мы рекомендуем использовать службу SignalR Azure вместо объединительной платы Redis. Службу кэша Redis для Azure можно использовать для сред разработки и тестирования.
 
-  Дополнительные сведения см. в следующих источниках.
+  Для получения дополнительных сведений см. следующие ресурсы:
 
   * <xref:signalr/scale>
   * [Документация по Redis](https://redis.io/)
-  * [Документация по кэшу Redis для Azure](https://docs.microsoft.com/azure/redis-cache/)
+  * [Документация по Кэшу Redis для Azure](https://docs.microsoft.com/azure/redis-cache/)
 
 ::: moniker range="= aspnetcore-2.1"
 
@@ -134,7 +134,7 @@ ms.locfileid: "74289039"
 
 * Настройте программное обеспечение балансировки нагрузки фермы серверов для закрепленных сеансов. Ниже приведены некоторые примеры документации.
 
-  * [Службы IIS](/iis/extensions/configuring-application-request-routing-arr/http-load-balancing-using-application-request-routing)
+  * [IIS](/iis/extensions/configuring-application-request-routing-arr/http-load-balancing-using-application-request-routing)
   * [HAProxy](https://www.haproxy.com/blog/load-balancing-affinity-persistence-sticky-sessions-what-you-need-to-know/)
   * [Nginx](https://docs.nginx.com/nginx/admin-guide/load-balancer/http-load-balancer/#sticky)
   * [пфсенсе](https://www.netgate.com/docs/pfsense/loadbalancing/inbound-load-balancing.html#sticky-connections)
@@ -224,11 +224,11 @@ services.AddSignalR()
 
 [Кластеризация Redis](https://redis.io/topics/cluster-spec) — это метод достижения высокого уровня доступности с помощью нескольких серверов Redis. Кластеризация официально не поддерживается, но может работать.
 
-## <a name="next-steps"></a>Следующие шаги
+## <a name="next-steps"></a>Дальнейшие действия
 
-Дополнительные сведения см. в следующих источниках.
+Для получения дополнительных сведений см. следующие ресурсы:
 
 * <xref:signalr/scale>
 * [Документация по Redis](https://redis.io/documentation)
 * [Документация по StackExchange Redis](https://stackexchange.github.io/StackExchange.Redis/)
-* [Документация по кэшу Redis для Azure](https://docs.microsoft.com/azure/redis-cache/)
+* [Документация по Кэшу Redis для Azure](https://docs.microsoft.com/azure/redis-cache/)

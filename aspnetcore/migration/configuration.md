@@ -5,12 +5,12 @@ description: Узнайте, как перенести конфигурацию 
 ms.author: riande
 ms.date: 10/14/2016
 uid: migration/configuration
-ms.openlocfilehash: 455e66b94dd69ee6aab88768b64c525d56b8bbcf
-ms.sourcegitcommit: 16cf016035f0c9acf3ff0ad874c56f82e013d415
+ms.openlocfilehash: 2c50ea768a42aa38d14c55d8c403fea4176b3650
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73033896"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78651886"
 ---
 # <a name="migrate-configuration-to-aspnet-core"></a>Перенос конфигурации в ASP.NET Core
 
@@ -18,9 +18,9 @@ ms.locfileid: "73033896"
 
 В предыдущей статье мы начали [Перенос проекта ASP.NET MVC на ASP.NET Core MVC](xref:migration/mvc). В этой статье мы выполним миграцию конфигурации.
 
-[Просмотреть или скачать образец кода](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/migration/configuration/samples) ([как скачивать](xref:index#how-to-download-a-sample))
+[Просмотреть или скачать образец кода](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/migration/configuration/samples) ([как скачивать](xref:index#how-to-download-a-sample))
 
-## <a name="setup-configuration"></a>Конфигурация установки
+## <a name="setup-configuration"></a>Настройка конфигурации
 
 ASP.NET Core больше не использует файлы *Global. asax* и *Web. config* , которые использовались в предыдущих версиях ASP.NET. В более ранних версиях ASP.NET логика запуска приложения была помещена в метод `Application_StartUp` в *Global. asax*. Позже в ASP.NET MVC файл *Startup.CS* был добавлен в корень проекта. и был вызван при запуске приложения. ASP.NET Core полностью приняла этот подход, поместив всю логику запуска в файл *Startup.CS* .
 

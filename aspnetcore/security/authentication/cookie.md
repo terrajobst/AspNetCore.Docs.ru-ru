@@ -6,22 +6,22 @@ monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.date: 02/11/2020
 uid: security/authentication/cookie
-ms.openlocfilehash: 62a3d247dade6c83156a8378407d5e3891713fd1
-ms.sourcegitcommit: 85564ee396c74c7651ac47dd45082f3f1803f7a2
+ms.openlocfilehash: 64f881441a7a7f9a5529cb6ee5ce81142ccd69e6
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77172119"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78653422"
 ---
 # <a name="use-cookie-authentication-without-aspnet-core-identity"></a>Использовать проверку подлинности файлов cookie без удостоверения ASP.NET Core
 
-[Рик Андерсон (](https://twitter.com/RickAndMSFT) и [Люк ЛаСаМ](https://github.com/guardrex)
+Автор: [Рик Андерсон](https://twitter.com/RickAndMSFT)
 
 ::: moniker range=">= aspnetcore-3.0"
 
 ASP.NET Core удостоверение — это полнофункциональный поставщик проверки подлинности для создания и обслуживания имен входа. Однако можно использовать поставщик проверки подлинности на основе файлов cookie без ASP.NET Core удостоверения. Дополнительные сведения см. в разделе <xref:security/authentication/identity>.
 
-[Просмотреть или скачать образец кода](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/security/authentication/cookie/samples) ([как скачивать](xref:index#how-to-download-a-sample))
+[Просмотреть или скачать образец кода](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/security/authentication/cookie/samples) ([как скачивать](xref:index#how-to-download-a-sample))
 
 В демонстрационных целях в примере приложения учетная запись пользователя для гипотетического пользователя, Мария Rodriguez, жестко закодирована в приложении. Используйте адрес **электронной почты** `maria.rodriguez@contoso.com` и любой пароль для входа пользователя. Пользователь прошел проверку подлинности в методе `AuthenticateUser` в файле *pages/Account/Login. cshtml. CS* . В реальном примере пользователь будет проходить проверку подлинности в базе данных.
 
@@ -238,7 +238,7 @@ await HttpContext.SignInAsync(
 
 ASP.NET Core удостоверение — это полнофункциональный поставщик проверки подлинности для создания и обслуживания имен входа. Однако можно использовать поставщик проверки подлинности на основе файлов cookie без ASP.NET Core удостоверения. Дополнительные сведения см. в разделе <xref:security/authentication/identity>.
 
-[Просмотреть или скачать образец кода](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/security/authentication/cookie/samples) ([как скачивать](xref:index#how-to-download-a-sample))
+[Просмотреть или скачать образец кода](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/security/authentication/cookie/samples) ([как скачивать](xref:index#how-to-download-a-sample))
 
 В демонстрационных целях в примере приложения учетная запись пользователя для гипотетического пользователя, Мария Rodriguez, жестко закодирована в приложении. Используйте адрес **электронной почты** `maria.rodriguez@contoso.com` и любой пароль для входа пользователя. Пользователь прошел проверку подлинности в методе `AuthenticateUser` в файле *pages/Account/Login. cshtml. CS* . В реальном примере пользователь будет проходить проверку подлинности в базе данных.
 

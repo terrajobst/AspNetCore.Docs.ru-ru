@@ -1,19 +1,19 @@
 ---
-title: Настройка внешнего входа Google в ASP.NET Core
+title: Настройка внешней учетной записи Google в ASP.NET Core
 author: rick-anderson
-description: В этом руководстве демонстрируется Интеграция проверки подлинности пользователя учетной записи Google с существующим ASP.NET Core приложением.
+description: В этом учебнике показано интеграцию Google учетной записи пользователя и проверки подлинности в существующее приложение ASP.NET Core.
 ms.author: riande
 ms.custom: mvc, seodec18
 ms.date: 10/30/2019
 uid: security/authentication/google-logins
 ms.openlocfilehash: 83f45143eca1be43410880bfd875a3fce1d2e9c9
-ms.sourcegitcommit: de0fc77487a4d342bcc30965ec5c142d10d22c03
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73143455"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78654922"
 ---
-# <a name="google-external-login-setup-in-aspnet-core"></a>Настройка внешнего входа Google в ASP.NET Core
+# <a name="google-external-login-setup-in-aspnet-core"></a>Настройка внешней учетной записи Google в ASP.NET Core
 
 Авторы: [Валерий Новицкий](https://github.com/01binary) (Valeriy Novytskyy) и [Рик Андерсон](https://twitter.com/RickAndMSFT) (Rick Anderson)
 
@@ -24,11 +24,11 @@ ms.locfileid: "73143455"
 * Установите [Microsoft. AspNetCore. Authentication. Google](https://www.nuget.org/packages/Microsoft.AspNetCore.Authentication.Google).
 * Перейдите к разделу [Интеграция Google-входа в веб-приложение](https://developers.google.com/identity/sign-in/web/devconsole-project) и выберите **Настройка проекта**.
 * В диалоговом окне **Настройка клиента OAuth** выберите **веб-сервер**.
-* В текстовом поле " **зарегистрированные URI перенаправления** " задайте URI перенаправления. Например: `https://localhost:44312/signin-google`
+* В текстовом поле " **зарегистрированные URI перенаправления** " задайте URI перенаправления. Например `https://localhost:44312/signin-google`.
 * Сохраните **идентификатор клиента** и **секрет клиента**.
 * При развертывании сайта зарегистрируйте новый общедоступный URL-адрес из **консоли Google**.
 
-## <a name="store-google-clientid-and-clientsecret"></a>Хранение Google ClientID и ClientSecret
+## <a name="store-google-clientid-and-clientsecret"></a>Store Google ClientID и ClientSecret
 
 Храните конфиденциальные параметры, такие как Google `Client ID` и `Client Secret` с [диспетчером секретов](xref:security/app-secrets). В рамках этого руководства назовите маркеры `Authentication:Google:ClientId` и `Authentication:Google:ClientSecret`:
 
@@ -49,7 +49,7 @@ dotnet user-secrets set "Authentication:Google:ClientSecret" "<client secret>"
 
 [!INCLUDE [default settings configuration](includes/default-settings2-2.md)]
 
-## <a name="sign-in-with-google"></a>Вход с помощью Google
+## <a name="sign-in-with-google"></a>Вход с учетными данными Google
 
 * Запустите приложение и нажмите кнопку **войти**. Появится возможность войти в систему с помощью Google.
 * Нажмите кнопку **Google** , которая перенаправляет на Google для проверки подлинности.
@@ -59,7 +59,7 @@ dotnet user-secrets set "Authentication:Google:ClientSecret" "<client secret>"
 
 [!INCLUDE[](includes/chain-auth-providers.md)]
 
-Дополнительные сведения о параметрах конфигурации, поддерживаемых проверкой подлинности Google, см. в справочнике по API <xref:Microsoft.AspNetCore.Authentication.Google.GoogleOptions>. Это можно использовать для запроса различных сведений о пользователе.
+Дополнительные сведения о параметрах конфигурации, поддерживаемых проверкой подлинности Google, см. в справочнике по API <xref:Microsoft.AspNetCore.Authentication.Google.GoogleOptions>. Это может использоваться для запроса различные сведения о пользователе.
 
 ## <a name="change-the-default-callback-uri"></a>Изменение URI обратного вызова по умолчанию
 
@@ -68,11 +68,11 @@ dotnet user-secrets set "Authentication:Google:ClientSecret" "<client secret>"
 ## <a name="troubleshooting"></a>Устранение неполадок
 
 * Если вход не работает и вы не получаете никаких ошибок, переключитесь в режим разработки, чтобы упростить отладку.
-* Если удостоверение не настроено путем вызова `services.AddIdentity` в `ConfigureServices`, попытка проверить подлинность результатов в *ArgumentException: необходимо указать параметр "сигнинсчеме"* . Шаблон проекта, используемый в этом руководстве, гарантирует, что это будет сделано.
+* Если удостоверение не настроено путем вызова `services.AddIdentity` в `ConfigureServices`, попытка проверить подлинность результатов в *ArgumentException: необходимо указать параметр "сигнинсчеме"* . Шаблон проекта, используемый в этом руководстве гарантирует, что это будет сделано.
 * Если база данных сайта не была создана путем применения первоначальной миграции, то при обработке ошибки запроса возникнет *Ошибка операции с базой данных* . Выберите **Применить миграции** , чтобы создать базу данных, и обновите страницу, чтобы продолжить работу после ошибки.
 
-## <a name="next-steps"></a>Следующие шаги
+## <a name="next-steps"></a>Дальнейшие действия
 
-* В этой статье показано, как можно пройти проверку подлинности в Google. Аналогичный подход можно использовать для проверки подлинности с другими поставщиками, перечисленными на [предыдущей странице](xref:security/authentication/social/index).
+* В этой статье объясняется, как можно выполнить проверку подлинности с помощью Google. Аналогичный подход можно использовать для проверки подлинности с другими поставщиками, перечисленными на [предыдущей странице](xref:security/authentication/social/index).
 * После публикации приложения в Azure сбросьте `ClientSecret` в консоли Google API.
-* Задайте `Authentication:Google:ClientId` и `Authentication:Google:ClientSecret` в качестве параметров приложения в портал Azure. Система конфигурации настроена на чтение ключей из переменных среды.
+* Задайте `Authentication:Google:ClientId` и `Authentication:Google:ClientSecret` в качестве параметров приложения в портал Azure. Система конфигурации предназначена для чтения разделов из переменных среды.

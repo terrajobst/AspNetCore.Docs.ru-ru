@@ -5,18 +5,18 @@ description: Узнайте, как использовать общие маке
 ms.author: riande
 ms.date: 07/30/2019
 uid: mvc/views/layout
-ms.openlocfilehash: 3ba2f459ca2b04a3001e261acab26880b6582500
-ms.sourcegitcommit: f40c9311058c9b1add4ec043ddc5629384af6c56
-ms.translationtype: HT
+ms.openlocfilehash: db8c6c30397593c1a8375ebc800c1c0e34d241cb
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
+ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74288999"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78655048"
 ---
 # <a name="layout-in-aspnet-core"></a>Макет в ASP.NET Core
 
 Авторы: [Стив Смит](https://ardalis.com/) (Steve Smith) и [Дейв Брок](https://twitter.com/daveabrock) (Dave Brock)
 
-На страницах и в представлениях часто есть общие визуальные и программные элементы. В этой статье демонстрируются следующие возможности.
+На страницах и в представлениях часто есть общие визуальные и программные элементы. В этой статье описывается следующее.
 
 * Использование общих макетов.
 * Совместное использование директив.
@@ -37,11 +37,11 @@ ms.locfileid: "74288999"
 
 В соответствии с соглашением макет по умолчанию для приложения ASP.NET Core имеет имя *_Layout.cshtml*. В новых проектах ASP.NET Core, созданных с применением шаблонов, используются следующие файлы макета.
 
-* Razor Pages: *Pages/Shared/_Layout.cshtml*
+* Razor Pages: папка страница *Pages/Shared/_Layout.cshtml*
 
   ![Папка Pages в обозревателе решений](layout/_static/rp-web-project-views.png)
 
-* Контроллер с представлениями: *Views/Shared/_Layout.cshtml*
+* Контроллер с представлениями: папка *Views/Shared/_Layout.cshtml*
 
   ![Папка Views в обозревателе решений](layout/_static/mvc-web-project-views.png)
 

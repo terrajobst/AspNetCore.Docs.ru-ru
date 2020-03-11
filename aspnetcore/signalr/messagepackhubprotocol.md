@@ -10,11 +10,11 @@ no-loc:
 - SignalR
 uid: signalr/messagepackhubprotocol
 ms.openlocfilehash: 3c2a4285945d3fdc6bba195e3160da8b9dcbba44
-ms.sourcegitcommit: 0b0e485a8a6dfcc65a7a58b365622b3839f4d624
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76928179"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78654568"
 ---
 # <a name="use-messagepack-hub-protocol-in-opno-locsignalr-for-aspnet-core"></a>Использование протокола концентратора MessagePack в SignalR для ASP.NET Core
 
@@ -157,7 +157,7 @@ public class ChatMessage
 }
 ```
 
-При отправке из клиента JavaScript необходимо использовать `PascalCased` имена свойств, поскольку регистр должен точно совпадать с C# классом. Например:
+При отправке из клиента JavaScript необходимо использовать `PascalCased` имена свойств, поскольку регистр должен точно совпадать с C# классом. Пример:
 
 ```javascript
 connection.invoke("SomeMethod", { Sender: "Sally", Message: "Hello!" });
@@ -213,4 +213,4 @@ InvalidDataException: Error binding arguments. Make sure that the types of the p
 
 * [Начало работы](xref:tutorials/signalr)
 * [Клиент .NET](xref:signalr/dotnet-client)
-* [Клиент JavaScript](xref:signalr/javascript-client)
+* [Клиент на JavaScript](xref:signalr/javascript-client)

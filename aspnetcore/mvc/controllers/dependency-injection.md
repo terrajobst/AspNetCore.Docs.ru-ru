@@ -5,12 +5,12 @@ description: Узнайте, как контроллеры MVC ASP.NET Core яв
 ms.author: riande
 ms.date: 02/24/2019
 uid: mvc/controllers/dependency-injection
-ms.openlocfilehash: 6b08c321f4cae1f4efd8ea40300eaf4dfc2f63a1
-ms.sourcegitcommit: 5b0eca8c21550f95de3bb21096bd4fd4d9098026
-ms.translationtype: HT
+ms.openlocfilehash: 202b62d4b30c5c61c407abdc8509a2a75e181cb6
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
+ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 04/27/2019
-ms.locfileid: "64890939"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78652156"
 ---
 # <a name="dependency-injection-into-controllers-in-aspnet-core"></a>Внедрение зависимостей в контроллеры в ASP.NET Core
 
@@ -20,7 +20,7 @@ ms.locfileid: "64890939"
 
 Контроллеры ASP.NET Core MVC запрашивают зависимости явно с помощью конструкторов. ASP.NET Core имеет встроенную поддержку [внедрения зависимостей (DI)](xref:fundamentals/dependency-injection). Внедрение зависимостей упрощает тестирование и поддержку приложений.
 
-[Просмотреть или скачать образец кода](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/controllers/dependency-injection/sample) ([как скачивать](xref:index#how-to-download-a-sample))
+[Просмотреть или скачать образец кода](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/controllers/dependency-injection/sample) ([как скачивать](xref:index#how-to-download-a-sample))
 
 ## <a name="constructor-injection"></a>Внедрение через конструктор
 
@@ -54,7 +54,7 @@ ms.locfileid: "64890939"
 
 Доступ к параметрам приложения или конфигурации из контроллера относится к типичным шаблонам. *Шаблон параметров*, описанный в разделе <xref:fundamentals/configuration/options>, является предпочтительным подходом для управления параметрами. Как правило, не следует напрямую внедрять <xref:Microsoft.Extensions.Configuration.IConfiguration> в контроллер.
 
-Создайте класс, представляющий параметры. Например:
+Создайте класс, представляющий параметры. Пример:
 
 [!code-csharp[](dependency-injection/sample/ControllerDI/Models/SampleWebSettings.cs?name=snippet)]
 

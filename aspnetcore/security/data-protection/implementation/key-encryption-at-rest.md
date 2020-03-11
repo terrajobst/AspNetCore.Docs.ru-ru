@@ -1,29 +1,29 @@
 ---
-title: Шифрование ключей при хранении в ASP.NET Core
+title: Шифрование неактивных ключей в ASP.NET Core
 author: rick-anderson
-description: Дополнительные сведения о реализации защиты данных в ASP.NET Core ключа шифрования неактивных данных.
+description: Сведения о реализации ASP.NET Core шифрования ключа защиты данных при хранении.
 ms.author: riande
 ms.date: 07/16/2018
 uid: security/data-protection/implementation/key-encryption-at-rest
 ms.openlocfilehash: 52c3137dbe467096364b42430c92aecc7c15e313
-ms.sourcegitcommit: 5b0eca8c21550f95de3bb21096bd4fd4d9098026
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 04/27/2019
-ms.locfileid: "64892311"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78651634"
 ---
-# <a name="key-encryption-at-rest-in-aspnet-core"></a>Шифрование ключей при хранении в ASP.NET Core
+# <a name="key-encryption-at-rest-in-aspnet-core"></a>Шифрование неактивных ключей в ASP.NET Core
 
-Система защиты данных [использует механизм обнаружения по умолчанию](xref:security/data-protection/configuration/default-settings) чтобы определить, как криптографические ключи должны быть зашифрованы при хранении. Разработчик может переопределить механизм обнаружения и вручную задать как ключи должны быть зашифрованы при хранении.
+Система защиты данных [по умолчанию использует механизм обнаружения,](xref:security/data-protection/configuration/default-settings) чтобы определить способ шифрования неактивных криптографических ключей. Разработчик может переопределить механизм обнаружения и вручную указать способ шифрования неактивных ключей.
 
 > [!WARNING]
-> Если указать явно [сохраняемости расположение ключа](xref:security/data-protection/implementation/key-storage-providers), система защиты данных, отменяет регистрацию ключа шифрования по умолчанию механизм rest. Следовательно ключи не шифруются в неактивном состоянии. Мы рекомендуем вам [укажите механизм явного ключа шифрования](xref:security/data-protection/implementation/key-encryption-at-rest) для развертывания в рабочей среде. Механизм шифрования при хранении параметры описаны в этом разделе.
+> Если указать явное [Расположение сохраняемости ключа](xref:security/data-protection/implementation/key-storage-providers), система защиты данных отменяет регистрацию шифрования ключа по умолчанию в механизме RESTful. Следовательно, ключи больше не шифруются. Рекомендуется [указать явный механизм шифрования ключей](xref:security/data-protection/implementation/key-encryption-at-rest) для рабочих развертываний. В этом разделе описаны варианты механизма шифрования с неактивных шифрованием.
 
 ::: moniker range=">= aspnetcore-2.1"
 
-## <a name="azure-key-vault"></a>Хранилище ключей Azure;
+## <a name="azure-key-vault"></a>Azure Key Vault
 
-Для хранения ключей в [Azure Key Vault](https://azure.microsoft.com/services/key-vault/), настройки системы с [ProtectKeysWithAzureKeyVault](/dotnet/api/microsoft.aspnetcore.dataprotection.azuredataprotectionbuilderextensions.protectkeyswithazurekeyvault) в `Startup` класса:
+Чтобы сохранить ключи в [Azure Key Vault](https://azure.microsoft.com/services/key-vault/), настройте систему с помощью [протекткэйсвисазурекэйваулт](/dotnet/api/microsoft.aspnetcore.dataprotection.azuredataprotectionbuilderextensions.protectkeyswithazurekeyvault) в классе `Startup`:
 
 ```csharp
 public void ConfigureServices(IServiceCollection services)
@@ -34,15 +34,15 @@ public void ConfigureServices(IServiceCollection services)
 }
 ```
 
-Дополнительные сведения см. в разделе [Настройка защиты данных в ASP.NET Core: ProtectKeysWithAzureKeyVault](xref:security/data-protection/configuration/overview#protectkeyswithazurekeyvault).
+Дополнительные сведения см. в статье [настройка ASP.NET Core Data Protection: протекткэйсвисазурекэйваулт](xref:security/data-protection/configuration/overview#protectkeyswithazurekeyvault).
 
 ::: moniker-end
 
 ## <a name="windows-dpapi"></a>Windows DPAPI
 
-**Применяется только для развертывания Windows.**
+**Применяется только к развертываниям Windows.**
 
-Если используется Windows DPAPI, материал ключа шифруется с использованием [CryptProtectData](/windows/desktop/api/dpapi/nf-dpapi-cryptprotectdata) перед сохранением в хранилище. DPAPI является соответствующего механизма шифрования для данных, не было прочитано за пределами текущего компьютера (хотя можно выполнить эти ключи до Active Directory; см. в разделе [перемещаемых профилей и DPAPI](https://support.microsoft.com/kb/309408/#6)). Чтобы настроить шифрование ключей при хранении DPAPI, вызовите один из [ProtectKeysWithDpapi](/dotnet/api/microsoft.aspnetcore.dataprotection.dataprotectionbuilderextensions.protectkeyswithdpapi) методы расширения:
+При использовании Windows DPAPI материал ключа шифруется с помощью [CryptProtectData](/windows/desktop/api/dpapi/nf-dpapi-cryptprotectdata) перед сохранением в хранилище. DPAPI — это подходящий механизм шифрования для данных, которые никогда не читаются за пределами текущего компьютера (хотя эти ключи можно переключать на Active Directory; см. раздел [DPAPI и перемещаемые профили](https://support.microsoft.com/kb/309408/#6)). Чтобы настроить шифрование неактивных ключей DPAPI, вызовите один из методов расширения [протекткэйсвисдпапи](/dotnet/api/microsoft.aspnetcore.dataprotection.dataprotectionbuilderextensions.protectkeyswithdpapi) :
 
 ```csharp
 public void ConfigureServices(IServiceCollection services)
@@ -53,7 +53,7 @@ public void ConfigureServices(IServiceCollection services)
 }
 ```
 
-Если `ProtectKeysWithDpapi` вызывается без параметров, только для текущей учетной записи пользователя Windows, может расшифровать сохраненного набора ключей. При необходимости можно указать, что любой учетной записи пользователя на компьютере (не только текущей учетной записи пользователя) иметь возможность расшифровать набора ключей:
+Если `ProtectKeysWithDpapi` вызывается без параметров, только текущая учетная запись пользователя Windows может расшифровать сохраненный кольцо ключа. При необходимости можно указать, что любая учетная запись пользователя на компьютере (а не только текущая учетная запись пользователя) сможет расшифровать ключевое кольцо:
 
 ```csharp
 public void ConfigureServices(IServiceCollection services)
@@ -68,7 +68,7 @@ public void ConfigureServices(IServiceCollection services)
 
 ## <a name="x509-certificate"></a>Сертификат X.509
 
-Если приложение распределены между несколькими компьютерами, то может оказаться удобнее для распределения между машинами сертификат X.509 с общим доступом и настройки размещенных приложений для использования сертификата для шифрования ключей при хранении:
+Если приложение распределено между несколькими компьютерами, может быть удобно распространять общий сертификат X. 509 на компьютерах и настраивать размещенные приложения для использования сертификата для шифрования неактивных ключей:
 
 ```csharp
 public void ConfigureServices(IServiceCollection services)
@@ -78,17 +78,17 @@ public void ConfigureServices(IServiceCollection services)
 }
 ```
 
-Из-за ограничений платформы .NET Framework поддерживаются только сертификаты с закрытыми ключами CAPI. См. в разделе содержимое ниже для возможных решений этих ограничений.
+Из-за ограничений .NET Framework поддерживаются только сертификаты с закрытыми ключами CAPI. Возможные решения для этих ограничений см. в приведенном ниже содержимом.
 
 ::: moniker-end
 
-## <a name="windows-dpapi-ng"></a>Windows DPAPI-NG
+## <a name="windows-dpapi-ng"></a>Windows DPAPI — NG
 
-**Этот механизм можно найти только в Windows 8 и Windows Server 2012 или более поздней версии.**
+**Этот механизм доступен только в Windows 8, Windows Server 2012 и более поздних версиях.**
 
-Начиная с Windows 8, ОС Windows поддерживает DPAPI-NG (также называемый CNG DPAPI). Дополнительные сведения см. в разделе [о DPAPI CNG](/windows/desktop/SecCNG/cng-dpapi).
+Начиная с Windows 8, ОС Windows поддерживает DPAPI-NG (также называется CNG DPAPI). Дополнительные сведения см. в разделе [About CNG DPAPI](/windows/desktop/SecCNG/cng-dpapi).
 
-Участник кодируется как дескриптор правила защиты. В следующем примере, который вызывает [ProtectKeysWithDpapiNG](/dotnet/api/microsoft.aspnetcore.dataprotection.dataprotectionbuilderextensions.protectkeyswithdpaping), только для пользователя, присоединенных к домену, с указанным SID может расшифровать набора ключей:
+Участник кодируется как правило дескриптора защиты. В следующем примере, который вызывает [протекткэйсвисдпапинг](/dotnet/api/microsoft.aspnetcore.dataprotection.dataprotectionbuilderextensions.protectkeyswithdpaping), только присоединенный к домену пользователь с указанным SID может расшифровать ключевое кольцо:
 
 ```csharp
 public void ConfigureServices(IServiceCollection services)
@@ -100,7 +100,7 @@ public void ConfigureServices(IServiceCollection services)
 }
 ```
 
-Имеется также перегрузку без параметров метода `ProtectKeysWithDpapiNG`. Используйте этот метод для указания правило «SID = {CURRENT_ACCOUNT_SID}», где *CURRENT_ACCOUNT_SID* является идентификатор безопасности учетной записи текущего пользователя Windows:
+Существует также перегрузка `ProtectKeysWithDpapiNG`без параметров. Используйте этот удобный метод, чтобы указать правило "SID = {CURRENT_ACCOUNT_SID}", где *CURRENT_ACCOUNT_SID* является идентификатором безопасности текущей учетной записи пользователя Windows:
 
 ```csharp
 public void ConfigureServices(IServiceCollection services)
@@ -111,11 +111,11 @@ public void ConfigureServices(IServiceCollection services)
 }
 ```
 
-В этом случае контроллер домена AD отвечает за распределение ключей шифрования, используемых в операциях DPAPI-NG. Целевого пользователя могут быть расшифрованы зашифрованных полезных данных с любого компьютера, присоединенного к домену (при условии, что процесс выполняется свои удостоверения).
+В этом сценарии контроллер домена AD отвечает за распространение ключей шифрования, используемых операциями DPAPI-NG. Целевой пользователь может расшифровать зашифрованные полезные данные с любого компьютера, присоединенного к домену (при условии, что процесс выполняется с удостоверением).
 
 ## <a name="certificate-based-encryption-with-windows-dpapi-ng"></a>Шифрование на основе сертификата с помощью Windows DPAPI-NG
 
-Если приложение выполняется в Windows 8.1 и Windows Server 2012 R2 или более поздней версии, можно использовать для выполнения шифрования на основе сертификата Windows DPAPI-NG. Использование строки дескриптора правило «СЕРТИФИКАТ = HashId:THUMBPRINT», где *ОТПЕЧАТОК* является шестнадцатеричной кодировке отпечаток SHA1 сертификата:
+Если приложение выполняется в Windows 8.1/Windows Server 2012 R2 или более поздней версии, можно использовать Windows DPAPI-NG для шифрования на основе сертификата. Используйте строку дескриптора правила "сертификат = Хашид: отпечаток", где *отпечаток* — это шестнадцатеричный отпечаток сертификата SHA1, закодированный в сертификате:
 
 ```csharp
 public void ConfigureServices(IServiceCollection services)
@@ -126,8 +126,8 @@ public void ConfigureServices(IServiceCollection services)
 }
 ```
 
-Любое приложение, на который указывает на этот репозиторий должен работать на Windows 8.1 и Windows Server 2012 R2 или более позднюю версию для расшифровки ключа.
+Любое приложение, указываемое в этом репозитории, должно выполняться на Windows 8.1/Windows Server 2012 R2 или более поздней версии для расшифровки ключей.
 
-## <a name="custom-key-encryption"></a>Пользовательский ключ шифрования
+## <a name="custom-key-encryption"></a>Шифрование с пользовательским ключом
 
-Если механизмы в поле не подходит, разработчик может указать собственный механизм шифрования ключей, предоставляя пользовательский [IXmlEncryptor](/dotnet/api/microsoft.aspnetcore.dataprotection.xmlencryption.ixmlencryptor).
+Если встроенные механизмы не подходят, разработчик может указать собственный механизм шифрования ключей, предоставив пользовательский [иксмленкриптор](/dotnet/api/microsoft.aspnetcore.dataprotection.xmlencryption.ixmlencryptor).

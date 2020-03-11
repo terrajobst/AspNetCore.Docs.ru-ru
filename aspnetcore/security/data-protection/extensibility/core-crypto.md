@@ -1,18 +1,18 @@
 ---
-title: Расширяемость базового шифрования в ASP.NET Core
+title: Расширяемость ядра криптографии в ASP.NET Core
 author: rick-anderson
-description: Дополнительные сведения о IAuthenticatedEncryptor, IAuthenticatedEncryptorDescriptor, IAuthenticatedEncryptorDescriptorDeserializer и фабрику верхнего уровня.
+description: Сведения о Иаусентикатеденкриптор, Иаусентикатеденкриптордескриптор, Иаусентикатеденкриптордескриптордесериализер и фабрике верхнего уровня.
 ms.author: riande
 ms.date: 08/11/2017
 uid: security/data-protection/extensibility/core-crypto
 ms.openlocfilehash: a5f651e3313cc579b995b45905826a5bffcc241c
-ms.sourcegitcommit: 8516b586541e6ba402e57228e356639b85dfb2b9
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67814693"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78653548"
 ---
-# <a name="core-cryptography-extensibility-in-aspnet-core"></a>Расширяемость базового шифрования в ASP.NET Core
+# <a name="core-cryptography-extensibility-in-aspnet-core"></a>Расширяемость ядра криптографии в ASP.NET Core
 
 <a name="data-protection-extensibility-core-crypto"></a>
 
@@ -21,33 +21,33 @@ ms.locfileid: "67814693"
 
 <a name="data-protection-extensibility-core-crypto-iauthenticatedencryptor"></a>
 
-## <a name="iauthenticatedencryptor"></a>IAuthenticatedEncryptor
+## <a name="iauthenticatedencryptor"></a>иаусентикатеденкриптор
 
-**IAuthenticatedEncryptor** интерфейс является основной строительный блок подсистема шифрования. Обычно имеется один IAuthenticatedEncryptor на ключ, и экземпляр IAuthenticatedEncryptor переносит все материал криптографического ключа и алгоритма сведения, необходимые для выполнения криптографических операций.
+Интерфейс **иаусентикатеденкриптор** является основным стандартным блоком криптографической подсистемы. Обычно по одному Иаусентикатеденкриптор на каждый ключ, а экземпляр Иаусентикатеденкриптор упаковывает все данные криптографического ключа и алгоритмы, необходимые для выполнения криптографических операций.
 
-Как предполагает имя, тип отвечает за предоставление прошедшим проверку подлинности служб шифрования и расшифровки. Он предоставляет следующие два API.
+Как видно из названия, тип отвечает за предоставление служб шифрования и расшифровки с проверкой подлинности. Он предоставляет следующие два API-интерфейса.
 
 * `Decrypt(ArraySegment<byte> ciphertext, ArraySegment<byte> additionalAuthenticatedData) : byte[]`
 
 * `Encrypt(ArraySegment<byte> plaintext, ArraySegment<byte> additionalAuthenticatedData) : byte[]`
 
-Метод Encrypt возвращает большой двоичный объект, содержащий зашифрованные открытым текстом и с тегом проверки подлинности. Тег проверки подлинности должен охватывать дополнительные данные прошедшего проверку подлинности (AAD), хотя сам AAD не требуется восстановить из окончательных полезных данных. Метод расшифровки проверяет тег проверки подлинности и возвращает deciphered полезных данных. Все сбои (за исключением ArgumentNullException и аналогичных) должен быть homogenized для CryptographicException.
+Метод Encrypt возвращает большой двоичный объект, который содержит открытый текст зашифрованные и тег проверки подлинности. Тег проверки подлинности должен охватывать дополнительные данные, прошедшие проверку подлинности (AAD), хотя сам AAD не должен быть восстановлен из окончательных полезных данных. Метод дешифровки проверяет тег проверки подлинности и возвращает расшифрованные полезные данные. Все ошибки (кроме ArgumentNullException и аналогичные) должны быть хоможенизеды в CryptographicException.
 
 > [!NOTE]
-> Сам экземпляр IAuthenticatedEncryptor фактически не должен содержать материал ключа. Например реализация может делегировать аппаратный модуль безопасности для всех операций.
+> Сам экземпляр Иаусентикатеденкриптор не должен содержать ключевой материал. Например, реализация может делегировать модуль HSM для всех операций.
 
 <a name="data-protection-extensibility-core-crypto-iauthenticatedencryptorfactory"></a>
 <a name="data-protection-extensibility-core-crypto-iauthenticatedencryptordescriptor"></a>
 
-## <a name="how-to-create-an-iauthenticatedencryptor"></a>Как создать IAuthenticatedEncryptor
+## <a name="how-to-create-an-iauthenticatedencryptor"></a>Создание Иаусентикатеденкриптор
 
-# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
+# <a name="aspnet-core-2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
 
-**IAuthenticatedEncryptorFactory** интерфейс представляет тип, который знает, как создать [IAuthenticatedEncryptor](xref:security/data-protection/extensibility/core-crypto#data-protection-extensibility-core-crypto-iauthenticatedencryptor) экземпляра. Ее API выглядит следующим образом.
+Интерфейс **иаусентикатеденкрипторфактори** представляет тип, который знает, как создать экземпляр [иаусентикатеденкриптор](xref:security/data-protection/extensibility/core-crypto#data-protection-extensibility-core-crypto-iauthenticatedencryptor) . Его API выглядит следующим образом.
 
-* CreateEncryptorInstance (ключ IKey): IAuthenticatedEncryptor
+* Креатинкрипторинстанце (ключ IKey): Иаусентикатеденкриптор
 
-Для любого заданного экземпляра IKey любого прошедшего проверку подлинности шифраторы, созданные методом его CreateEncryptorInstance следует учитывать эквивалент, как в следующем примере кода.
+Для любого заданного экземпляра IKey все прошедшие проверку подлинности средства шифрования, созданные его методом Креатинкрипторинстанце, должны считаться эквивалентными, как показано в примере кода ниже.
 
 ```csharp
 // we have an IAuthenticatedEncryptorFactory instance and an IKey instance
@@ -68,15 +68,15 @@ byte[] roundTripped = encryptor2.Decrypt(new ArraySegment<byte>(ciphertext), aad
 // the 'roundTripped' and 'plaintext' buffers should be equivalent
 ```
 
-# <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x)
+# <a name="aspnet-core-1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x)
 
-**IAuthenticatedEncryptorDescriptor** интерфейс представляет тип, который знает, как создать [IAuthenticatedEncryptor](xref:security/data-protection/extensibility/core-crypto#data-protection-extensibility-core-crypto-iauthenticatedencryptor) экземпляра. Ее API выглядит следующим образом.
+Интерфейс **иаусентикатеденкриптордескриптор** представляет тип, который знает, как создать экземпляр [иаусентикатеденкриптор](xref:security/data-protection/extensibility/core-crypto#data-protection-extensibility-core-crypto-iauthenticatedencryptor) . Его API выглядит следующим образом.
 
-* CreateEncryptorInstance() : IAuthenticatedEncryptor
+* Креатинкрипторинстанце (): Иаусентикатеденкриптор
 
-* ExportToXml() : XmlSerializedDescriptorInfo
+* Експорттоксмл (): Ксмлсериализеддескрипторинфо
 
-Как и IAuthenticatedEncryptor экземпляр IAuthenticatedEncryptorDescriptor считается программы-оболочки для одного конкретного ключа. Это означает, что для любого заданного экземпляра IAuthenticatedEncryptorDescriptor любого прошедшего проверку подлинности шифраторы, созданные методом его CreateEncryptorInstance следует учитывать эквивалент, как в следующем примере кода.
+Как и Иаусентикатеденкриптор, предполагается, что экземпляр Иаусентикатеденкриптордескриптор является оболочкой для одного конкретного ключа. Это означает, что для любого заданного экземпляра Иаусентикатеденкриптордескриптор все прошедшие проверку подлинности средства шифрования, созданные его методом Креатинкрипторинстанце, должны считаться эквивалентными, как показано в примере кода ниже.
 
 ```csharp
 // we have an IAuthenticatedEncryptorDescriptor instance
@@ -100,76 +100,76 @@ byte[] roundTripped = encryptor2.Decrypt(new ArraySegment<byte>(ciphertext), aad
 
 <a name="data-protection-extensibility-core-crypto-iauthenticatedencryptordescriptor"></a>
 
-## <a name="iauthenticatedencryptordescriptor-aspnet-core-2x-only"></a>IAuthenticatedEncryptorDescriptor (ASP.NET Core 2.x только)
+## <a name="iauthenticatedencryptordescriptor-aspnet-core-2x-only"></a>Иаусентикатеденкриптордескриптор (только ASP.NET Core 2. x)
 
-# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
+# <a name="aspnet-core-2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
 
-**IAuthenticatedEncryptorDescriptor** интерфейс представляет тип, который знает, как экспортировать сама себя в XML. Ее API выглядит следующим образом.
+Интерфейс **иаусентикатеденкриптордескриптор** представляет тип, который знает, как экспортировать себя в XML. Его API выглядит следующим образом.
 
-* ExportToXml() : XmlSerializedDescriptorInfo
+* Експорттоксмл (): Ксмлсериализеддескрипторинфо
 
-# <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x)
+# <a name="aspnet-core-1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x)
 
 ---
 
-## <a name="xml-serialization"></a>XML-сериализация
+## <a name="xml-serialization"></a>Сериализация XML
 
-Основное различие между IAuthenticatedEncryptor и IAuthenticatedEncryptorDescriptor является то, что дескриптор знает, как создать шифратор и задать в нем допустимые аргументы. Рассмотрите возможность IAuthenticatedEncryptor, реализация которой зависит от того, SymmetricAlgorithm и KeyedHashAlgorithm. Задание шифратора, – это использование этих типов, но он не обязательно знать эти типы происхождения, поэтому его нельзя записывать действительно правильное описание как воссоздать сам при повторном запуске приложения. Дескриптор действует как более высокий уровень поверх этого. Так как дескриптор знает, как создать экземпляр шифратор (например, он знает, как создать необходимые алгоритмы), он может сериализовать эти знания в формате XML, таким образом, чтобы экземпляр шифратора можно воссоздать после сброса приложения.
+Основное различие между Иаусентикатеденкриптор и Иаусентикатеденкриптордескриптор заключается в том, что дескриптор знает, как создать шифратор и предоставить его допустимым аргументам. Рассмотрим Иаусентикатеденкриптор, реализация которого основывается на SymmetricAlgorithm и KeyedHashAlgorithm. Задание шифратора заключается в использовании этих типов, но не обязательно знает, откуда поступили эти типы, поэтому не может действительно записать правильное описание способа повторного создания, если приложение перезапускается. Дескриптор действует как более высокий уровень поверх этого. Поскольку дескриптору известно, как создать экземпляр шифратора (например, он знает, как создать необходимые алгоритмы), он может сериализовать этот набор знаний в XML-форме, чтобы экземпляр шифратора можно было повторно создать после сброса приложения.
 
 <a name="data-protection-extensibility-core-crypto-exporttoxml"></a>
 
-Дескриптор может быть сериализован с помощью его ExportToXml подпрограммы. Эта процедура возвращает XmlSerializedDescriptorInfo, который содержит два свойства: это представление XElement дескриптор и тип, представляющий [IAuthenticatedEncryptorDescriptorDeserializer](xref:security/data-protection/extensibility/core-crypto#data-protection-extensibility-core-crypto-iauthenticatedencryptordescriptordeserializer) которого может быть используется, чтобы восстановить этот дескриптор, учитывая соответствующие XElement.
+Дескриптор можно сериализовать с помощью своей подпрограммы Експорттоксмл. Эта подпрограммы возвращает Ксмлсериализеддескрипторинфо, который содержит два свойства: представление XElement дескриптора и тип, который представляет [иаусентикатеденкриптордескриптордесериализер](xref:security/data-protection/extensibility/core-crypto#data-protection-extensibility-core-crypto-iauthenticatedencryptordescriptordeserializer) , который можно использовать для восвыполнения этого дескриптора, учитывая соответствующий элемент XElement.
 
-Сериализованный дескриптора могут содержать конфиденциальные сведения, такие как материал криптографического ключа. Система защиты данных имеется встроенная поддержка для шифрования данных, прежде чем он сохранен в хранилище. Чтобы воспользоваться преимуществами, дескриптор необходимо пометить элемент, который содержит конфиденциальные данные с именем атрибута «requiresEncryption» (xmlns "<http://schemas.asp.net/2015/03/dataProtection>«), значение «true».
+Сериализованный дескриптор может содержать конфиденциальные сведения, такие как материал криптографического ключа. Система защиты данных имеет встроенную поддержку шифрования данных перед их сохранением в хранилище. Чтобы воспользоваться этим преимуществом, дескриптор должен пометить элемент, содержащий конфиденциальную информацию, именем атрибута "Рекуиресенкриптион" (xmlns "<http://schemas.asp.net/2015/03/dataProtection>"), значением "true".
 
 >[!TIP]
-> Нет API модуля поддержки для установки этого атрибута. Вызовите метод расширения XElement.MarkAsRequiresEncryption(), расположенный в пространстве имен Microsoft.AspNetCore.DataProtection.AuthenticatedEncryption.ConfigurationModel.
+> Для установки этого атрибута существует вспомогательный API. Вызовите метод расширения XElement. Маркасрекуиресенкриптион (), расположенный в пространстве имен Microsoft. AspNetCore. Аусентикатеденкриптион. Конфигуратионмодел.
 
-Также можно случаев, где дескриптор сериализованный не содержит конфиденциальные сведения. Давайте снова рассмотрим случай криптографический ключ, хранящийся в HSM. Дескриптор нельзя записывать материал ключа, при сериализации самой, так как аппаратный модуль безопасности не будет предоставлять материал в виде открытого текста. Вместо этого дескриптора может записать ключ в программе-оболочке версии ключ (если аппаратный модуль безопасности позволяет выполнять экспорт таким образом) или аппаратным модулем безопасности собственный уникальный идентификатор для ключа.
+Возможны также случаи, когда сериализованный дескриптор не содержит конфиденциальных сведений. Снова рассмотрите возможность использования криптографического ключа, хранящегося в HSM. Дескриптор не может записать ключевой материал при сериализации, так как HSM не будет предоставлять материал в виде открытого текста. Вместо этого дескриптор может записать версию ключа, упакованную в ключ (если HSM поддерживает экспорт), или собственный уникальный идентификатор HSM для ключа.
 
 <a name="data-protection-extensibility-core-crypto-iauthenticatedencryptordescriptordeserializer"></a>
 
-## <a name="iauthenticatedencryptordescriptordeserializer"></a>IAuthenticatedEncryptorDescriptorDeserializer
+## <a name="iauthenticatedencryptordescriptordeserializer"></a>иаусентикатеденкриптордескриптордесериализер
 
-**IAuthenticatedEncryptorDescriptorDeserializer** интерфейс представляет тип, который знает, как для десериализации экземпляра IAuthenticatedEncryptorDescriptor из элемента XElement. Она предоставляет единственный метод:
+Интерфейс **иаусентикатеденкриптордескриптордесериализер** представляет тип, который знает, как десериализовать экземпляр Иаусентикатеденкриптордескриптор из XElement. Он предоставляет один метод:
 
-* ImportFromXml (элемент XElement): IAuthenticatedEncryptorDescriptor
+* Импортфромксмл (элемент XElement): Иаусентикатеденкриптордескриптор
 
-Метод ImportFromXml принимает XElement, который был возвращен [IAuthenticatedEncryptorDescriptor.ExportToXml](xref:security/data-protection/extensibility/core-crypto#data-protection-extensibility-core-crypto-exporttoxml) и создает эквивалент исходного IAuthenticatedEncryptorDescriptor.
+Метод Импортфромксмл принимает элемент XElement, возвращенный [иаусентикатеденкриптордескриптор. експорттоксмл](xref:security/data-protection/extensibility/core-crypto#data-protection-extensibility-core-crypto-exporttoxml) , и создает эквивалент исходного иаусентикатеденкриптордескриптор.
 
-Типы, реализующие IAuthenticatedEncryptorDescriptorDeserializer должны иметь одно из следующих двух открытые конструкторы:
+Типы, реализующие Иаусентикатеденкриптордескриптордесериализер, должны иметь один из следующих двух открытых конструкторов:
 
 * .ctor(IServiceProvider)
 
 * .ctor()
 
 > [!NOTE]
-> IServiceProvider, переданный в конструктор может иметь значение null.
+> Объект IServiceProvider, переданный в конструктор, может иметь значение null.
 
 ## <a name="the-top-level-factory"></a>Фабрика верхнего уровня
 
-# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
+# <a name="aspnet-core-2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
 
-**AlgorithmConfiguration** класс представляет тип, который знает, как создать [IAuthenticatedEncryptorDescriptor](xref:security/data-protection/extensibility/core-crypto#data-protection-extensibility-core-crypto-iauthenticatedencryptordescriptor) экземпляров. Он предоставляет единый интерфейс API.
+Класс **алгорисмконфигуратион** представляет тип, который знает, как создавать экземпляры [иаусентикатеденкриптордескриптор](xref:security/data-protection/extensibility/core-crypto#data-protection-extensibility-core-crypto-iauthenticatedencryptordescriptor) . Он предоставляет один API.
 
-* CreateNewDescriptor() : IAuthenticatedEncryptorDescriptor
+* Креатеневдескриптор (): Иаусентикатеденкриптордескриптор
 
-Считать AlgorithmConfiguration фабрики верхнего уровня. Конфигурация служит в качестве шаблона. Он обертывает алгоритмического сведения (например, эта конфигурация создает дескрипторы с главный ключ AES-128-GCM), но еще не связан с указанным ключом.
+Алгорисмконфигуратион в качестве фабрики верхнего уровня. Конфигурация служит шаблоном. Он создает оболочку для алгоритмной информации (например, эта конфигурация создает дескрипторы с помощью главного ключа AES-128-GCM), но еще не связана с конкретным ключом.
 
-При вызове CreateNewDescriptor, исключительно для этого вызова создается новый материал ключа и создается новый IAuthenticatedEncryptorDescriptor оболочку этот материал ключа и алгоритма сведения, необходимые для использования материала. Материал ключа можно создавать в программном обеспечении (и хранятся в памяти), можно создавать и хранящиеся в аппаратный модуль безопасности и т. д. Ключевым моментом является то, что любые два вызова CreateNewDescriptor никогда не следует создавать эквивалентные IAuthenticatedEncryptorDescriptor экземпляров.
+При вызове Креатеневдескриптор новый материал ключа создается исключительно для этого вызова, и создается новая Иаусентикатеденкриптордескриптор, которая упаковывает этот материал ключа и алгоритмную информацию, необходимую для использования материала. Материал ключа может быть создан в программном обеспечении (и храниться в памяти), его можно создать и удерживать в АППАРАТном модуле безопасности и т. д. Важным моментом является то, что любые два вызова Креатеневдескриптор никогда не должны создавать эквивалентные экземпляры Иаусентикатеденкриптордескриптор.
 
-Тип AlgorithmConfiguration служит в качестве точки входа для создания ключа подпрограммы например [автоматического ключа обновлением](xref:security/data-protection/implementation/key-management#key-expiration-and-rolling). Чтобы изменить реализацию для всех будущих ключей, задайте свойство AuthenticatedEncryptorConfiguration в KeyManagementOptions.
+Тип Алгорисмконфигуратион выступает в качестве точки входа для подпрограмм создания ключей, таких как [Автоматическое пошаговое выполнение ключей](xref:security/data-protection/implementation/key-management#key-expiration-and-rolling). Чтобы изменить реализацию для всех последующих ключей, установите свойство Аусентикатеденкрипторконфигуратион в Кэйманажементоптионс.
 
-# <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x)
+# <a name="aspnet-core-1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x)
 
-**IAuthenticatedEncryptorConfiguration** интерфейс представляет тип, который знает, как создать [IAuthenticatedEncryptorDescriptor](xref:security/data-protection/extensibility/core-crypto#data-protection-extensibility-core-crypto-iauthenticatedencryptordescriptor) экземпляров. Он предоставляет единый интерфейс API.
+Интерфейс **иаусентикатеденкрипторконфигуратион** представляет тип, который знает, как создавать экземпляры [иаусентикатеденкриптордескриптор](xref:security/data-protection/extensibility/core-crypto#data-protection-extensibility-core-crypto-iauthenticatedencryptordescriptor) . Он предоставляет один API.
 
-* CreateNewDescriptor() : IAuthenticatedEncryptorDescriptor
+* Креатеневдескриптор (): Иаусентикатеденкриптордескриптор
 
-Считать IAuthenticatedEncryptorConfiguration фабрики верхнего уровня. Конфигурация служит в качестве шаблона. Он обертывает алгоритмического сведения (например, эта конфигурация создает дескрипторы с главный ключ AES-128-GCM), но еще не связан с указанным ключом.
+Иаусентикатеденкрипторконфигуратион в качестве фабрики верхнего уровня. Конфигурация служит шаблоном. Он создает оболочку для алгоритмной информации (например, эта конфигурация создает дескрипторы с помощью главного ключа AES-128-GCM), но еще не связана с конкретным ключом.
 
-При вызове CreateNewDescriptor, исключительно для этого вызова создается новый материал ключа и создается новый IAuthenticatedEncryptorDescriptor оболочку этот материал ключа и алгоритма сведения, необходимые для использования материала. Материал ключа можно создавать в программном обеспечении (и хранятся в памяти), можно создавать и хранящиеся в аппаратный модуль безопасности и т. д. Ключевым моментом является то, что любые два вызова CreateNewDescriptor никогда не следует создавать эквивалентные IAuthenticatedEncryptorDescriptor экземпляров.
+При вызове Креатеневдескриптор новый материал ключа создается исключительно для этого вызова, и создается новая Иаусентикатеденкриптордескриптор, которая упаковывает этот материал ключа и алгоритмную информацию, необходимую для использования материала. Материал ключа может быть создан в программном обеспечении (и храниться в памяти), его можно создать и удерживать в АППАРАТном модуле безопасности и т. д. Важным моментом является то, что любые два вызова Креатеневдескриптор никогда не должны создавать эквивалентные экземпляры Иаусентикатеденкриптордескриптор.
 
-Тип IAuthenticatedEncryptorConfiguration служит в качестве точки входа для создания ключа подпрограммы например [автоматического ключа обновлением](xref:security/data-protection/implementation/key-management#key-expiration-and-rolling). Чтобы изменить реализацию для всех будущих ключей, зарегистрируйте одноэлементный IAuthenticatedEncryptorConfiguration в контейнере службы.
+Тип Иаусентикатеденкрипторконфигуратион выступает в качестве точки входа для подпрограмм создания ключей, таких как [Автоматическое пошаговое выполнение ключей](xref:security/data-protection/implementation/key-management#key-expiration-and-rolling). Чтобы изменить реализацию для всех последующих ключей, зарегистрируйте одноэлементную Иаусентикатеденкрипторконфигуратион в контейнере службы.
 
 ---

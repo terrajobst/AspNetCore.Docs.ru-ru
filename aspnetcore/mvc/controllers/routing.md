@@ -5,12 +5,12 @@ description: Узнайте, как в MVC ASP.NET Core используется
 ms.author: riande
 ms.date: 12/05/2019
 uid: mvc/controllers/routing
-ms.openlocfilehash: 8cf7e74df292a614f287eff8561a22187f6558ce
-ms.sourcegitcommit: 7dfe6cc8408ac6a4549c29ca57b0c67ec4baa8de
-ms.translationtype: HT
+ms.openlocfilehash: 1116cc699f749a137638b75095a7172ad0d4858a
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
+ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75866063"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78653674"
 ---
 # <a name="routing-to-controller-actions-in-aspnet-core"></a>Маршрутизация к действиям контроллера в ASP.NET Core
 
@@ -208,7 +208,7 @@ app.UseMvc(routes =>
 
 ## <a name="attribute-routing"></a>Маршрутизация с помощью атрибутов
 
-При маршрутизации с помощью атрибутов используется набор атрибутов для сопоставления действий непосредственно с шаблонами маршрутов. В приведенном ниже примере в методе `Configure` используется `app.UseMvc();`, и маршрут не передается. `HomeController` будет соответствовать набору URL-адресов, аналогичных тем, которым соответствует маршрут по умолчанию `{controller=Home}/{action=Index}/{id?}`:
+При маршрутизации с помощью атрибутов используется набор атрибутов для сопоставления действий непосредственно с шаблонами маршрутов. В приведенном ниже примере в методе `app.UseMvc();` используется `Configure`, и маршрут не передается. `HomeController` будет соответствовать набору URL-адресов, аналогичных тем, которым соответствует маршрут по умолчанию `{controller=Home}/{action=Index}/{id?}`:
 
 ```csharp
 public class HomeController : Controller
@@ -376,7 +376,7 @@ public class HomeController : Controller
 > [!TIP]
 > Старайтесь не использовать свойство `Order`. Если для правильной маршрутизации в пространстве URL-адресов требуются явно заданные значения порядка, скорее всего, это будет вызывать путаницу и в среде клиентов. Как правило, при маршрутизации с помощью атрибутов правильный маршрут выбирается посредством сопоставления URL-адресов. Если порядок по умолчанию для формирования URL-адресов не работает, использовать имя маршрута в качестве переопределения, как правило, проще, чем применять свойство `Order`.
 
-Средства маршрутизации в Razor Pages и контроллере MVC имеют общую реализацию. Сведения о порядке маршрутизации в Razor Pages см. в статье [Razor Pages route and app conventions in ASP.NET Core](xref:razor-pages/razor-pages-conventions#route-order) (Соглашения для маршрутизации и приложений Razor Pages в ASP.NET Core).
+Средства маршрутизации в Razor Pages и контроллере MVC имеют общую реализацию. Сведения о порядке маршрутизации в Razor Pages см. в статье [Razor Pages route and app conventions: Route order](xref:razor-pages/razor-pages-conventions#route-order) (Маршрутизация и соглашения в приложении Razor Pages: порядок маршрутизации).
 
 <a name="routing-token-replacement-templates-ref-label"></a>
 
@@ -548,7 +548,7 @@ public class MyApiControllerAttribute : Attribute, IRouteTemplateProvider
 
 <a name="routing-mixed-ref-label"></a>
 
-## <a name="mixed-routing-attribute-routing-vs-conventional-routing"></a>Смешанная маршрутизация с помощью атрибутов и маршрутизация на основе соглашений
+## <a name="mixed-routing-attribute-routing-vs-conventional-routing"></a>Смешанная маршрутизация с помощью атрибутов и на основе соглашений
 
 В приложениях MVC маршрутизация с помощью атрибутов и маршрутизация на основе соглашений могут использоваться вместе. Маршруты на основе соглашений часто применяются для контроллеров, предоставляющих HTML-страницы для браузеров, а маршруты на основе атрибутов — для контроллеров, предоставляющих интерфейсы REST API.
 
@@ -559,7 +559,7 @@ public class MyApiControllerAttribute : Attribute, IRouteTemplateProvider
 
 ## <a name="complex-segments"></a>Сложные сегменты
 
-Сложные сегменты (например, `[Route("/dog{token}cat")]`) обрабатываются путем "нежадного" сопоставления литералов справа налево. Описание см. в [исходном коде](https://github.com/aspnet/Routing/blob/9cea167cfac36cf034dbb780e3f783114ef94780/src/Microsoft.AspNetCore.Routing/Patterns/RoutePatternMatcher.cs#L296). Дополнительные сведения см. в [этой проблеме](https://github.com/aspnet/AspNetCore.Docs/issues/8197).
+Сложные сегменты (например, `[Route("/dog{token}cat")]`) обрабатываются путем "нежадного" сопоставления литералов справа налево. Описание см. в [исходном коде](https://github.com/aspnet/Routing/blob/9cea167cfac36cf034dbb780e3f783114ef94780/src/Microsoft.AspNetCore.Routing/Patterns/RoutePatternMatcher.cs#L296). Дополнительные сведения см. в [этой проблеме](https://github.com/dotnet/AspNetCore.Docs/issues/8197).
 
 <a name="routing-url-gen-ref-label"></a>
 
@@ -675,9 +675,9 @@ app.UseMvc(routes =>
 
 <a name="routing-areas-ref-label"></a>
 
-## <a name="areas"></a>Области
+## <a name="areas"></a>Зоны
 
-[Области](areas.md) — это возможность MVC, которая служит для объединения связанных функций в группу в виде отдельного пространства имен маршрутизации (для действий контроллеров) и структуры папок (для представлений). Благодаря областям приложение может иметь несколько контроллеров с одинаковыми именами, если у них будут разные *области*. При использовании областей создается иерархия в целях маршрутизации. Для этого к `controller` и `action` добавляется еще один параметр маршрута, `area`. В этом разделе рассматривается взаимодействие системы маршрутизации с областями. Подробные сведения об использовании областей с представлениями см. в статье [Области](areas.md).
+[Области](areas.md) — это возможность MVC, которая служит для объединения связанных функций в группу в виде отдельного пространства имен маршрутизации (для действий контроллеров) и структуры папок (для представлений). Благодаря областям приложение может иметь несколько контроллеров с одинаковыми именами, если у них будут разные *области*. При использовании областей создается иерархия в целях маршрутизации. Для этого к `area` и `controller` добавляется еще один параметр маршрута, `action`. В этом разделе рассматривается взаимодействие системы маршрутизации с областями. Подробные сведения об использовании областей с представлениями см. в статье [Области](areas.md).
 
 В следующем примере в MVC настраивается использование маршрута на основе соглашения по умолчанию и *маршрута области* для области с именем `Blog`:
 
