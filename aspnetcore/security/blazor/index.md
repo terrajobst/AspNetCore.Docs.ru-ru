@@ -10,12 +10,12 @@ no-loc:
 - Blazor
 - SignalR
 uid: security/blazor/index
-ms.openlocfilehash: c07ffdbd5df58d6b3d19a5d75ce224d830101eac
-ms.sourcegitcommit: 6645435fc8f5092fc7e923742e85592b56e37ada
+ms.openlocfilehash: ba00c0370094df4e0ae0479aeb23eceea6ef04f0
+ms.sourcegitcommit: 98bcf5fe210931e3eb70f82fd675d8679b33f5d6
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77447429"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79083347"
 ---
 # <a name="aspnet-core-blazor-authentication-and-authorization"></a>Аутентификация и авторизация в ASP.NET Core Blazor
 
@@ -194,7 +194,7 @@ namespace BlazorSample.Services
 В приложении WebAssembly Blazor служба `CustomAuthStateProvider` регистрируется в `Main` в файле *Program.cs*:
 
 ```csharp
-using Microsoft.AspNetCore.Blazor.Hosting;
+using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 using Microsoft.AspNetCore.Components.Authorization;
 using Microsoft.Extensions.DependencyInjection;
 using BlazorSample.Services;
@@ -513,6 +513,8 @@ Not authorized.
 В приложениях Blazor WebAssembly авторизацию можно обойти, так как пользователь может изменять весь код на стороне клиента. Это же справедливо для всех технологий на стороне клиента, включая платформы одностраничного приложения JavaScript или собственных приложений для любой операционной системы.
 
 **Всегда выполняйте проверки авторизации на стороне сервера в конечных точках API, к которым обращается клиентское приложение.**
+
+Дополнительные сведения см. в статьях в документе <xref:security/blazor/webassembly/index>.
 
 ## <a name="troubleshoot-errors"></a>Устранение неполадок
 

@@ -315,8 +315,10 @@
           uid: blazor/dependency-injection
         - name: Маршрутизация
           uid: blazor/routing
-        - name: Взаимодействие с JavaScript
-          uid: blazor/javascript-interop
+        - name: Вызов JavaScript из .NET
+          uid: blazor/call-javascript-from-dotnet
+        - name: Вызов .NET из JavaScript
+          uid: blazor/call-dotnet-from-javascript
         - name: Конфигурация модели размещения
           uid: blazor/hosting-model-configuration
         - name: Библиотеки компонентов
@@ -325,8 +327,30 @@
           items:
             - name: Обзор
               uid: security/blazor/index
+            - name: Blazor WebAssembly
+              items:
+                - name: Обзор
+                  uid: security/blazor/webassembly/index
+                - name: Автономное развертывание с помощью библиотеки проверки подлинности
+                  uid: security/blazor/webassembly/standalone-with-authentication-library
+                - name: Автономное развертывание с помощью учетных записей Майкрософт
+                  uid: security/blazor/webassembly/standalone-with-microsoft-accounts
+                - name: Автономное развертывание с помощью AAD
+                  uid: security/blazor/webassembly/standalone-with-azure-active-directory
+                - name: Автономное развертывание с помощью AAD B2C
+                  uid: security/blazor/webassembly/standalone-with-azure-active-directory-b2c
+                - name: Размещенное развертывание с помощью Identity Server
+                  uid: security/blazor/webassembly/hosted-with-identity-server
+                - name: Размещенное развертывание с помощью AAD
+                  uid: security/blazor/webassembly/hosted-with-azure-active-directory
+                - name: Размещенное развертывание с помощью AAD B2C
+                  uid: security/blazor/webassembly/hosted-with-azure-active-directory-b2c
+                - name: Дополнительные сценарии
+                  uid: security/blazor/webassembly/additional-scenarios
             - name: Blazor Server
               uid: security/blazor/server
+            - name: Политика безопасности содержимого
+              uid: security/blazor/content-security-policy
         - name: Управление состоянием
           uid: blazor/state-management
         - name: Обработка ошибок
@@ -335,6 +359,8 @@
           uid: blazor/debug
         - name: Вызов веб-API
           uid: blazor/call-web-api
+        - name: Прогрессивные веб-приложения
+          uid: blazor/progressive-web-app
         - name: Размещение и развертывание
           items:
             - name: Обзор
@@ -373,7 +399,7 @@
           uid: client-side/bundling-and-minification
         - name: Привязывание к браузеру
           uid: client-side/using-browserlink
-    - name: Состояние сеанса и приложения
+    - name: Управление сеансами и состояниями
       uid: fundamentals/app-state
     - name: Макет
       uid: mvc/views/layout
@@ -1066,6 +1092,14 @@
       uid: security/cookie-sharing
     - name: Файлы cookie SameSite
       uid: security/samesite
+    - name: Примеры SameSite
+      items:
+        - name: "Пример файла cookie SameSite для Razor Pages\_2.1"
+          uid: security/samesite/rp21
+        - name: "Пример файла cookie SameSite для Razor Pages\_3.1"
+          uid: security/samesite/rp31
+        - name: Пример файла cookie SameSite для MVC
+          uid: security/samesite/mvc21
     - name: Список надежных IP-адресов
       uid: security/ip-safelist
     - name: "Безопасность приложений\_— OWASP"
@@ -1074,8 +1108,30 @@
       items:
         - name: Обзор
           uid: security/blazor/index
+        - name: Blazor WebAssembly
+          items:
+            - name: Обзор
+              uid: security/blazor/webassembly/index
+            - name: Автономное развертывание с помощью библиотеки проверки подлинности
+              uid: security/blazor/webassembly/standalone-with-authentication-library
+            - name: Автономное развертывание с помощью учетных записей Майкрософт
+              uid: security/blazor/webassembly/standalone-with-microsoft-accounts
+            - name: Автономное развертывание с помощью AAD
+              uid: security/blazor/webassembly/standalone-with-azure-active-directory
+            - name: Автономное развертывание с помощью AAD B2C
+              uid: security/blazor/webassembly/standalone-with-azure-active-directory-b2c
+            - name: Размещенное развертывание с помощью Identity Server
+              uid: security/blazor/webassembly/hosted-with-identity-server
+            - name: Размещенное развертывание с помощью AAD
+              uid: security/blazor/webassembly/hosted-with-azure-active-directory
+            - name: Размещенное развертывание с помощью AAD B2C
+              uid: security/blazor/webassembly/hosted-with-azure-active-directory-b2c
+            - name: Дополнительные сценарии
+              uid: security/blazor/webassembly/additional-scenarios
         - name: Blazor Server
           uid: security/blazor/server
+        - name: Политика безопасности содержимого
+          uid: security/blazor/content-security-policy
 - name: Производительность
   items:
     - name: Обзор
@@ -1203,4 +1259,4 @@
 - name: Справочник по интерфейсам API
   href: /dotnet/api/?view=aspnetcore-2.2
 - name: Участие
-  href: 'https://github.com/aspnet/AspNetCore.Docs/blob/master/CONTRIBUTING.md'
+  href: 'https://github.com/dotnet/AspNetCore.Docs/blob/master/CONTRIBUTING.md'
