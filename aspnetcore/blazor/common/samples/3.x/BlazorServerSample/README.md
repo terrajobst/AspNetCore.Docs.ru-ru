@@ -1,3 +1,3 @@
-# <a name="blazor-server-sample-app"></a><span data-ttu-id="02151-101">Пример приложения блазор Server</span><span class="sxs-lookup"><span data-stu-id="02151-101">Blazor Server Sample App</span></span>
+# <a name="blazor-server-sample-app"></a><span data-ttu-id="07c13-101">Пример приложения Blazor Server</span><span class="sxs-lookup"><span data-stu-id="07c13-101">Blazor Server Sample App</span></span>
 
-<span data-ttu-id="02151-102">В этом примере показано использование сценариев Блазор, описанных в документации по Блазор.</span><span class="sxs-lookup"><span data-stu-id="02151-102">This sample illustrates the use of Blazor scenarios described in the Blazor documentation.</span></span>
+<span data-ttu-id="07c13-102">Этот пример показывает использование сценариев Blazor, описанных в документации по Blazor.</span><span class="sxs-lookup"><span data-stu-id="07c13-102">This sample illustrates the use of Blazor scenarios described in the Blazor documentation.</span></span>
