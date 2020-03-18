@@ -5,17 +5,17 @@ description: ''
 monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 03/09/2020
+ms.date: 03/16/2020
 no-loc:
 - Blazor
 - SignalR
 uid: security/blazor/webassembly/standalone-with-azure-active-directory-b2c
-ms.openlocfilehash: 0ea42943c908d8cf9d083c1cfc568c1835588ce9
-ms.sourcegitcommit: 98bcf5fe210931e3eb70f82fd675d8679b33f5d6
+ms.openlocfilehash: b4d32e91b4013cbea37baecb972a535d2874d3d1
+ms.sourcegitcommit: 5bdc54162d7dea8d9fa54ac3055678db23586af1
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 03/11/2020
-ms.locfileid: "79083659"
+ms.lasthandoff: 03/17/2020
+ms.locfileid: "79434464"
 ---
 # <a name="secure-an-aspnet-core-opno-locblazor-webassembly-standalone-app-with-azure-active-directory-b2c"></a>Защита ASP.NET Core автономного приложения Blazor сборки с помощью Azure Active Directory B2C
 
@@ -42,7 +42,9 @@ ms.locfileid: "79083659"
 
      Запишите идентификатор приложения (идентификатор клиента) (например, `11111111-1111-1111-1111-111111111111`).
 
-   * [Создание потоков пользователя](/azure/active-directory-b2c/tutorial-create-user-flows) & ndash; Создайте пользовательский поток регистрации и входа.
+   * [Создание потоков пользователя](/azure/active-directory-b2c/tutorial-create-user-flows) &ndash; создание потока пользователя регистрации и входа в систему.
+
+     Чтобы заполнить `context.User.Identity.Name` в компоненте `LoginDisplay` (*Shared/логиндисплай. Razor*), как минимум, выберите **Application Claims (заявка на приложение** ) > **Отображаемое имя** пользовательский атрибут.
 
      Запишите имя потока пользователя для регистрации и входа, созданное для приложения (например, `B2C_1_signupsignin`).
 
@@ -99,7 +101,7 @@ builder.Services.AddMsalAuthentication(options =>
 });
 ```
 
-## <a name="index-page"></a>Главная страница
+## <a name="index-page"></a>Страница индексации
 
 [!INCLUDE[](~/includes/blazor-security/index-page.md)]
 

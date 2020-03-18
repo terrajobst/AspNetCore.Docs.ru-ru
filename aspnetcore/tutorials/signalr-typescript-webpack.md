@@ -8,12 +8,12 @@ ms.date: 02/10/2020
 no-loc:
 - SignalR
 uid: tutorials/signalr-typescript-webpack
-ms.openlocfilehash: e1ab02077abc8f8b3315a52eb29a3d571af43fa0
-ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
+ms.openlocfilehash: e6dd200367278b1697ef232f5d79dfbd138bb82b
+ms.sourcegitcommit: 40dc9b00131985abcd99bd567647420d798e798a
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78647644"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78935496"
 ---
 # <a name="use-aspnet-core-signalr-with-typescript-and-webpack"></a>Использование ASP.NET Core SignalR с TypeScript и Webpack
 
@@ -46,7 +46,7 @@ ms.locfileid: "78647644"
 
 * [Visual Studio Code](https://code.visualstudio.com/download)
 * [Пакет SDK для .NET Core 3.0 или более поздней версии](https://www.microsoft.com/net/download/all)
-* [C# для Visual Studio Code версии 1.17.1 или более поздней](https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp).
+* [C# для Visual Studio Code версии 1.17.1 или более поздней](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp).
 * [Node.js](https://nodejs.org/) с [npm](https://www.npmjs.com/)
 
 ---
@@ -93,7 +93,7 @@ code -r SignalRWebPack
 dotnet add package Microsoft.TypeScript.MSBuild
 ```
 
-Предыдущая команда добавляет пакет (Microsoft. TypeScript. MSBuild)[https://www.nuget.org/packages/Microsoft.TypeScript.MSBuild/ ], разрешая компиляцию TypeScript в проекте.
+Предыдущая команда добавляет пакет [Microsoft.TypeScript.MSBuild](https://www.nuget.org/packages/Microsoft.TypeScript.MSBuild/), разрешая компиляцию TypeScript в проекте.
 
 ---
 
@@ -303,7 +303,7 @@ dotnet add package Microsoft.TypeScript.MSBuild
 
 * [Visual Studio Code](https://code.visualstudio.com/download)
 * [Пакет SDK для .NET Core 2.2 или более поздней версии](https://www.microsoft.com/net/download/all)
-* [C# для Visual Studio Code версии 1.17.1 или более поздней](https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp).
+* [C# для Visual Studio Code версии 1.17.1 или более поздней](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp).
 * [Node.js](https://nodejs.org/) с [npm](https://www.npmjs.com/)
 
 ---

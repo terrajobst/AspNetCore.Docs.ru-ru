@@ -5,17 +5,17 @@ description: ''
 monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 03/09/2020
+ms.date: 03/16/2020
 no-loc:
 - Blazor
 - SignalR
 uid: security/blazor/webassembly/hosted-with-azure-active-directory
-ms.openlocfilehash: 0803e436d66ef7df3c68739e674a8652fde11166
-ms.sourcegitcommit: 98bcf5fe210931e3eb70f82fd675d8679b33f5d6
+ms.openlocfilehash: 2ddbc9791ec9b31d55c9c6017d9d6d5be5c8dec8
+ms.sourcegitcommit: 5bdc54162d7dea8d9fa54ac3055678db23586af1
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 03/11/2020
-ms.locfileid: "79083665"
+ms.lasthandoff: 03/17/2020
+ms.locfileid: "79434490"
 ---
 # <a name="secure-an-aspnet-core-opno-locblazor-webassembly-hosted-app-with-azure-active-directory"></a>Обеспечение безопасности размещенного в ASP.NET Core Blazor приложения сборки Azure Active Directory
 
@@ -95,7 +95,7 @@ ms.locfileid: "79083665"
 
 Запишите идентификатор приложения *клиентского приложения* (идентификатор клиента) (например, `33333333-3333-3333-3333-333333333333`).
 
-### <a name="create-the-app"></a>Создание приложения
+### <a name="create-the-app"></a>Создайте приложение
 
 Замените заполнители в следующей команде на записанные ранее сведения и выполните команду в командной оболочке:
 
@@ -235,7 +235,7 @@ builder.Services.AddMsalAuthentication(options =>
 });
 ```
 
-### <a name="index-page"></a>Главная страница
+### <a name="index-page"></a>Страница индексации
 
 [!INCLUDE[](~/includes/blazor-security/index-page.md)]
 
@@ -258,6 +258,10 @@ builder.Services.AddMsalAuthentication(options =>
 ### <a name="fetchdata-component"></a>Компонент FetchData
 
 [!INCLUDE[](~/includes/blazor-security/fetchdata-component.md)]
+
+## <a name="run-the-app"></a>Запустите приложение
+
+Запустите приложение из серверного проекта. При использовании Visual Studio выберите серверный проект в **Обозреватель решений** и нажмите кнопку **выполнить** на панели инструментов или запустите приложение из меню **Отладка** .
 
 [!INCLUDE[](~/includes/blazor-security/troubleshoot.md)]
 
