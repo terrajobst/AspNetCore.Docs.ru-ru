@@ -11,19 +11,19 @@ no-loc:
 - SignalR
 uid: host-and-deploy/blazor/configure-linker
 ms.openlocfilehash: 263b85a3213c1da233e4c96095faaf39d0a8e13f
-ms.sourcegitcommit: eca76bd065eb94386165a0269f1e95092f23fa58
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76726773"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78648610"
 ---
-# <a name="configure-the-linker-for-aspnet-core-opno-locblazor"></a>Настройка компоновщика для ASP.NET Core [!OP.NO-LOC(Blazor)]
+# <a name="configure-the-linker-for-aspnet-core-blazor"></a>Настройка компоновщика для ASP.NET Core Blazor
 
 Автор [Люк Латэм](https://github.com/guardrex) (Luke Latham)
 
 [!INCLUDE[](~/includes/blazorwasm-preview-notice.md)]
 
-[!OP.NO-LOC(Blazor)] выполняет компоновку [промежуточного языка (IL)](/dotnet/standard/managed-code#intermediate-language--execution) во время сборки, чтобы затем удалить ненужные IL из выходных сборок приложения.
+Blazor выполняет компоновку [промежуточного языка (IL)](/dotnet/standard/managed-code#intermediate-language--execution) во время сборки, чтобы затем удалить ненужные IL из выходных сборок приложения.
 
 Управлять компоновкой сборок можно одним из следующих способов:
 
@@ -55,7 +55,7 @@ ms.locfileid: "76726773"
 ```xml
 <?xml version="1.0" encoding="UTF-8" ?>
 <!--
-  This file specifies which parts of the BCL or [!OP.NO-LOC(Blazor)] packages must not be
+  This file specifies which parts of the BCL or Blazor packages must not be
   stripped by the IL Linker even if they aren't referenced by user code.
 -->
 <linker>
@@ -86,7 +86,7 @@ ms.locfileid: "76726773"
 
 ### <a name="configure-the-linker-for-internationalization"></a>Настройка компоновщика для интернационализации
 
-По умолчанию конфигурация компоновщика [!OP.NO-LOC(Blazor)] для приложений [!OP.NO-LOC(Blazor)] WebAssembly исключает сведения об интернационализации, кроме явно запрошенных языковых стандартов. Удаление этих сборок уменьшает размер приложения.
+По умолчанию конфигурация компоновщика Blazor для приложений Blazor WebAssembly исключает сведения об интернационализации, кроме явно запрошенных языковых стандартов. Удаление этих сборок уменьшает размер приложения.
 
 Чтобы указать, какие сборки I18N необходимо оставить, задайте свойство MSBuild `<MonoLinkerI18NAssemblies>` в файле проекта:
 
@@ -101,7 +101,7 @@ ms.locfileid: "76726773"
 | `all`            | Включены все сборки |
 | `cjk`            | *I18N.CJK.dll*          |
 | `mideast`        | *I18N.MidEast.dll*      |
-| `none` (по умолчанию) | None                    |
+| `none` (по умолчанию) | Отсутствуют                    |
 | `other`          | *I18N.Other.dll*        |
 | `rare`           | *I18N.Rare.dll*         |
 | `west`           | *I18N.West.dll*         |

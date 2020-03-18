@@ -1,28 +1,28 @@
 ---
 title: Использование начальных сборок размещения в ASP.NET Core
-author: guardrex
+author: rick-anderson
 description: Узнайте, как улучшить приложение ASP.NET Core из внешней сборки, используя реализацию IHostingStartup.
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc, seodec18
 ms.date: 09/26/2019
 uid: fundamentals/configuration/platform-specific-configuration
-ms.openlocfilehash: c1ba742dda64296348898ec6a15ba725501dcb4f
-ms.sourcegitcommit: 35a86ce48041caaf6396b1e88b0472578ba24483
+ms.openlocfilehash: 71fd5cf1934b5374e0a393e055db23b98c03b62f
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72391017"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78647914"
 ---
 # <a name="use-hosting-startup-assemblies-in-aspnet-core"></a>Использование начальных сборок размещения в ASP.NET Core
 
-Авторы [Люк Латэм](https://github.com/guardrex) (Luke Latham) и [Павел Крымец](https://github.com/pakrym) (Pavel Krymets)
+Автор: [Павел Крымец](https://github.com/pakrym) (Pavel Krymets)
 
 ::: moniker range=">= aspnetcore-3.0"
 
 Реализация <xref:Microsoft.AspNetCore.Hosting.IHostingStartup> (размещение при запуске) позволяет добавлять в приложение улучшения из внешней сборки при запуске. Например, внешняя библиотека может использовать реализацию размещения при запуске, чтобы доставить дополнительные поставщики конфигурации или службы для приложения.
 
-[Просмотреть или скачать образец кода](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/host/platform-specific-configuration/samples/) ([как скачивать](xref:index#how-to-download-a-sample))
+[Просмотреть или скачать образец кода](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/host/platform-specific-configuration/samples/) ([как скачивать](xref:index#how-to-download-a-sample))
 
 ## <a name="hostingstartup-attribute"></a>Атрибут HostingStartup
 
@@ -94,7 +94,7 @@ ms.locfileid: "72391017"
 
 Расширение размещения при запуске можно указать в библиотеке классов. Библиотека содержит атрибут `HostingStartup`.
 
-[Пример кода](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/host/platform-specific-configuration/samples/) включает приложение Razor Pages *HostingStartupApp* и библиотеку классов *HostingStartupLibrary*. Библиотека классов:
+[Пример кода](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/host/platform-specific-configuration/samples/) включает приложение Razor Pages *HostingStartupApp* и библиотеку классов *HostingStartupLibrary*. Библиотека классов:
 
 * Содержит класс размещения при запуске `ServiceKeyInjection`, который реализует `IHostingStartup`. `ServiceKeyInjection` добавляет пару строк службы в конфигурацию приложения с помощью поставщика конфигурации, размещаемой в памяти ([AddInMemoryCollection](xref:Microsoft.Extensions.Configuration.MemoryConfigurationBuilderExtensions.AddInMemoryCollection*)).
 * Включает атрибут `HostingStartup`, определяющий пространство имен и класс размещения при запуске.
@@ -111,7 +111,7 @@ ms.locfileid: "72391017"
 
 [!code-csharp[](platform-specific-configuration/samples/3.x/HostingStartupApp/Pages/Index.cshtml.cs?name=snippet1&highlight=5-6,11-12)]
 
-[Пример кода](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/host/platform-specific-configuration/samples/) также включает проект пакета NuGet, предоставляющий отдельное размещение при запуске *HostingStartupPackage*. Характеристики пакета аналогичны характеристикам библиотеки классов, приведенным ранее. Пакет:
+[Пример кода](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/host/platform-specific-configuration/samples/) также включает проект пакета NuGet, предоставляющий отдельное размещение при запуске *HostingStartupPackage*. Характеристики пакета аналогичны характеристикам библиотеки классов, приведенным ранее. Пакет:
 
 * Содержит класс размещения при запуске `ServiceKeyInjection`, который реализует `IHostingStartup`. `ServiceKeyInjection` добавляет пару строк службы в конфигурацию приложения.
 * Включает атрибут `HostingStartup`.
@@ -323,7 +323,7 @@ dotnet store --manifest store.manifest.csproj --runtime win7-x64 --output ./depl
 {ADDITIONAL DEPENDENCIES PATH}/shared/{SHARED FRAMEWORK NAME}/{SHARED FRAMEWORK VERSION}/{ENHANCEMENT ASSEMBLY NAME}.deps.json
 ```
 
-* `{ADDITIONAL DEPENDENCIES PATH}` &ndash; расположение, добавленное к переменной среды `DOTNET_ADDITIONAL_DEPS`.
+* `{ADDITIONAL DEPENDENCIES PATH}` &ndash; расположение, добавляемое к переменной среды `DOTNET_ADDITIONAL_DEPS`.
 * `{SHARED FRAMEWORK NAME}` &ndash; общая платформа, требуемая для этого файла дополнительных зависимостей.
 * `{SHARED FRAMEWORK VERSION}` &ndash; минимальная версия общей платформы.
 * `{ENHANCEMENT ASSEMBLY NAME}` &ndash; имя сборки расширения.
@@ -375,7 +375,7 @@ deployment/additionalDeps/shared/Microsoft.AspNetCore.App/3.0.0/StartupDiagnosti
 
 ## <a name="sample-code"></a>Пример кода
 
-В [примере кода](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/host/platform-specific-configuration/samples/) ([инструкции по скачиванию примера](xref:index#how-to-download-a-sample)) показаны сценарии реализации размещения при запуске:
+В [примере кода](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/host/platform-specific-configuration/samples/) ([инструкции по скачиванию примера](xref:index#how-to-download-a-sample)) показаны сценарии реализации размещения при запуске:
 
 * В каждой из двух сборок начального размещения (библиотеки классов) устанавливаются две пары "ключ-значение", хранящиеся в памяти:
   * Пакет NuGet (*HostingStartupPackage*)
@@ -448,7 +448,7 @@ dotnet nuget locals all --clear
 
 Реализация <xref:Microsoft.AspNetCore.Hosting.IHostingStartup> (размещение при запуске) позволяет добавлять в приложение улучшения из внешней сборки при запуске. Например, внешняя библиотека может использовать реализацию размещения при запуске, чтобы доставить дополнительные поставщики конфигурации или службы для приложения.
 
-[Просмотреть или скачать образец кода](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/host/platform-specific-configuration/samples/) ([как скачивать](xref:index#how-to-download-a-sample))
+[Просмотреть или скачать образец кода](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/host/platform-specific-configuration/samples/) ([как скачивать](xref:index#how-to-download-a-sample))
 
 ## <a name="hostingstartup-attribute"></a>Атрибут HostingStartup
 
@@ -492,7 +492,7 @@ dotnet nuget locals all --clear
 
 Расширение размещения при запуске можно указать в библиотеке классов. Библиотека содержит атрибут `HostingStartup`.
 
-[Пример кода](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/host/platform-specific-configuration/samples/) включает приложение Razor Pages *HostingStartupApp* и библиотеку классов *HostingStartupLibrary*. Библиотека классов:
+[Пример кода](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/host/platform-specific-configuration/samples/) включает приложение Razor Pages *HostingStartupApp* и библиотеку классов *HostingStartupLibrary*. Библиотека классов:
 
 * Содержит класс размещения при запуске `ServiceKeyInjection`, который реализует `IHostingStartup`. `ServiceKeyInjection` добавляет пару строк службы в конфигурацию приложения с помощью поставщика конфигурации, размещаемой в памяти ([AddInMemoryCollection](xref:Microsoft.Extensions.Configuration.MemoryConfigurationBuilderExtensions.AddInMemoryCollection*)).
 * Включает атрибут `HostingStartup`, определяющий пространство имен и класс размещения при запуске.
@@ -509,7 +509,7 @@ dotnet nuget locals all --clear
 
 [!code-csharp[](platform-specific-configuration/samples/2.x/HostingStartupApp/Pages/Index.cshtml.cs?name=snippet1&highlight=5-6,11-12)]
 
-[Пример кода](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/host/platform-specific-configuration/samples/) также включает проект пакета NuGet, предоставляющий отдельное размещение при запуске *HostingStartupPackage*. Характеристики пакета аналогичны характеристикам библиотеки классов, приведенным ранее. Пакет:
+[Пример кода](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/host/platform-specific-configuration/samples/) также включает проект пакета NuGet, предоставляющий отдельное размещение при запуске *HostingStartupPackage*. Характеристики пакета аналогичны характеристикам библиотеки классов, приведенным ранее. Пакет:
 
 * Содержит класс размещения при запуске `ServiceKeyInjection`, который реализует `IHostingStartup`. `ServiceKeyInjection` добавляет пару строк службы в конфигурацию приложения.
 * Включает атрибут `HostingStartup`.
@@ -709,7 +709,7 @@ dotnet store --manifest store.manifest.csproj --runtime win7-x64 --output ./depl
 {ADDITIONAL DEPENDENCIES PATH}/shared/{SHARED FRAMEWORK NAME}/{SHARED FRAMEWORK VERSION}/{ENHANCEMENT ASSEMBLY NAME}.deps.json
 ```
 
-* `{ADDITIONAL DEPENDENCIES PATH}` &ndash; расположение, добавленное к переменной среды `DOTNET_ADDITIONAL_DEPS`.
+* `{ADDITIONAL DEPENDENCIES PATH}` &ndash; расположение, добавляемое к переменной среды `DOTNET_ADDITIONAL_DEPS`.
 * `{SHARED FRAMEWORK NAME}` &ndash; общая платформа, требуемая для этого файла дополнительных зависимостей.
 * `{SHARED FRAMEWORK VERSION}` &ndash; минимальная версия общей платформы.
 * `{ENHANCEMENT ASSEMBLY NAME}` &ndash; имя сборки расширения.
@@ -761,7 +761,7 @@ deployment/additionalDeps/shared/Microsoft.AspNetCore.App/2.1.0/StartupDiagnosti
 
 ## <a name="sample-code"></a>Пример кода
 
-В [примере кода](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/host/platform-specific-configuration/samples/) ([инструкции по скачиванию примера](xref:index#how-to-download-a-sample)) показаны сценарии реализации размещения при запуске:
+В [примере кода](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/host/platform-specific-configuration/samples/) ([инструкции по скачиванию примера](xref:index#how-to-download-a-sample)) показаны сценарии реализации размещения при запуске:
 
 * В каждой из двух сборок начального размещения (библиотеки классов) устанавливаются две пары "ключ-значение", хранящиеся в памяти:
   * Пакет NuGet (*HostingStartupPackage*)

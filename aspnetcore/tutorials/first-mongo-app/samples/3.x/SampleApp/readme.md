@@ -9,11 +9,11 @@ products:
 - vs
 urlFragment: aspnetcore-webapi-mongodb
 ms.openlocfilehash: 01f9cf237dcf2a9b95c181c2cb87ef9f59102244
-ms.sourcegitcommit: c0b72b344dadea835b0e7943c52463f13ab98dd1
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74881173"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78649144"
 ---
 # <a name="create-a-web-api-with-aspnet-core-and-mongodb"></a>Создание веб-API с помощью ASP.NET Core и MongoDB
 
@@ -124,7 +124,7 @@ ms.locfileid: "74881173"
 
 ## <a name="create-the-aspnet-core-web-api-project"></a>Создание проекта веб-API ASP.NET Core
 
-1. Откройте **Файл** > **Создать** > **Проект**.
+1. Выберите **Файл** > **Создать** > **Проект**.
 1. Выберите тип проекта **Веб-приложение ASP.NET Core** и нажмите кнопку **Далее**.
 1. Задайте для проекта имя *BooksApi* и нажмите кнопку **Создать**.
 1. Выберите целевую платформу **.NET Core** и **ASP.NET Core 3.0**. Выберите шаблон проекта **API** и нажмите кнопку **Создать**.
@@ -302,7 +302,7 @@ ms.locfileid: "74881173"
     }
     ```
 
-    В предыдущем коде класс `BookService` регистрируется в DI, чтобы обеспечить поддержку внедрения через конструктор в используемые классы. Время существования отдельной службы — наиболее подходящий вариант, так как `BookService` имеет прямую зависимость от `MongoClient`. В соответствии с официальными [правилами повторного использования клиента Mongo](https://mongodb.github.io/mongo-csharp-driver/2.8/reference/driver/connecting/#re-use) `MongoClient` следует регистрировать в DI с использованием времени существования отдельной службы.
+    В предыдущем коде класс `BookService` регистрируется в DI, чтобы обеспечить поддержку внедрения через конструктор в используемые классы. Время существования отдельной службы — наиболее подходящий вариант, так как `BookService` имеет прямую зависимость от `MongoClient`. В соответствии с официальными [правилами повторного использования клиента Mongo](https://mongodb.github.io/mongo-csharp-driver/2.8/reference/driver/connecting/#re-use)`MongoClient` следует регистрировать в DI с использованием времени существования отдельной службы.
 
 1. Добавьте следующий код в самое начало файла *Startup.cs*, чтобы разрешить ссылку `BookService`:
 

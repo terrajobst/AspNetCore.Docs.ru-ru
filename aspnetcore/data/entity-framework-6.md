@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 10/24/2018
 uid: data/entity-framework-6
-ms.openlocfilehash: ace937e72efa2343e50b11d52ebc0a2530505758
-ms.sourcegitcommit: 8835b6777682da6fb3becf9f9121c03f89dc7614
+ms.openlocfilehash: 85cf86dcb22ef94cfc87975abaab176e4f1227d3
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69975600"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78645430"
 ---
 # <a name="get-started-with-aspnet-core-and-entity-framework-6"></a>Начало работы с ASP.NET Core и Entity Framework 6
 
@@ -23,7 +23,7 @@ ms.locfileid: "69975600"
 
 Чтобы использовать платформу Entity Framework 6, проект необходимо компилировать на основе .NET Framework, поскольку Entity Framework 6 не поддерживает .NET Core. Если вам требуются какие-либо кроссплатформенные функции, необходимо выполнить обновление до [Entity Framework Core](/ef/).
 
-Рекомендуемый способ использования платформы Entity Framework 6 в приложении ASP.NET Core заключается в помещении контекста и классов модели EF6 в проект библиотеки классов, который предназначен для полной платформы. Добавьте ссылку на библиотеку классов из проекта ASP.NET Core. См. пример [решения Visual Studio с проектами EF6 и ASP.NET Core](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/data/entity-framework-6/sample/).
+Рекомендуемый способ использования платформы Entity Framework 6 в приложении ASP.NET Core заключается в помещении контекста и классов модели EF6 в проект библиотеки классов, который предназначен для .NET Framework. Добавьте ссылку на библиотеку классов из проекта ASP.NET Core. См. пример [решения Visual Studio с проектами EF6 и ASP.NET Core](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/data/entity-framework-6/sample/).
 
 Контекст EF6 нельзя поместить в проект ASP.NET Core, поскольку проекты .NET Core поддерживают не все функции, используемые командами EF6, например *Enable-Migrations*.
 
@@ -31,7 +31,7 @@ ms.locfileid: "69975600"
 
 ## <a name="reference-full-framework-and-ef6-in-the-aspnet-core-project"></a>Использование ссылок на полную платформу и EF6 в проекте ASP.NET Core
 
-В проекте ASP.NET Core необходимо использовать ссылки на платформу .NET Framework и EF6. Например, файл *CSPROJ* вашего проекта ASP.NET Core будет иметь вид, схожий с показанным в следующем примере (показаны только соответствующие части файла).
+Проект ASP.NET Core должен быть предназначен для платформы .NET Framework и ссылаться на EF6. Например, файл *CSPROJ* вашего проекта ASP.NET Core будет иметь вид, схожий с показанным в следующем примере (показаны только соответствующие части файла).
 
 [!code-xml[](entity-framework-6/sample/MVCCore/MVCCore.csproj?range=3-9&highlight=2)]
 
@@ -43,7 +43,7 @@ ms.locfileid: "69975600"
 
 [!code-csharp[](entity-framework-6/sample/EF6/SchoolContext.cs?name=snippet_Constructor)]
 
-Поскольку в контексте EF6 отсутствует конструктор без параметров, в проекте EF6 необходимо предоставить реализацию [IDbContextFactory](https://msdn.microsoft.com/library/hh506876). Средства командной строки EF6 будут находить и использовать эту реализацию для создания экземпляра контекста. Ниже приведен пример.
+Поскольку в контексте EF6 отсутствует конструктор без параметров, в проекте EF6 необходимо предоставить реализацию [IDbContextFactory](https://msdn.microsoft.com/library/hh506876). Средства командной строки EF6 будут находить и использовать эту реализацию для создания экземпляра контекста. Рассмотрим пример.
 
 [!code-csharp[](entity-framework-6/sample/EF6/SchoolContextFactory.cs?name=snippet_IDbContextFactory)]
 
@@ -61,7 +61,7 @@ ms.locfileid: "69975600"
 
 ## <a name="sample-application"></a>Пример приложения
 
-Рабочий пример приложения см. в разделе [пример решения Visual Studio](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/data/entity-framework-6/sample/), который прилагается к этой статье.
+Рабочий пример приложения см. в разделе [пример решения Visual Studio](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/data/entity-framework-6/sample/), который прилагается к этой статье.
 
 Этот пример можно создать с нуля, выполнив следующие действия в Visual Studio:
 

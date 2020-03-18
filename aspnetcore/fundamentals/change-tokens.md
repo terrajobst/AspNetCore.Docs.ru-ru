@@ -1,27 +1,25 @@
 ---
 title: Обнаружение изменений с помощью токенов изменений в ASP.NET Core
-author: guardrex
+author: rick-anderson
 description: Сведения об использовании токенов изменений для отслеживания изменений.
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.date: 10/07/2019
 uid: fundamentals/change-tokens
-ms.openlocfilehash: bb30d7a4c7dc82200821c60a49c314b246562111
-ms.sourcegitcommit: 3d082bd46e9e00a3297ea0314582b1ed2abfa830
+ms.openlocfilehash: 70451e219f1295b854e2f84aac55f0cfd1786b19
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/07/2019
-ms.locfileid: "72007206"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78645400"
 ---
 # <a name="detect-changes-with-change-tokens-in-aspnet-core"></a>Обнаружение изменений с помощью токенов изменений в ASP.NET Core
-
-Автор [Люк Латэм](https://github.com/guardrex) (Luke Latham)
 
 ::: moniker range=">= aspnetcore-3.0"
 
 *Токен изменений* — это низкоуровневый стандартный блок общего назначения, используемый для отслеживания изменений.
 
-[Просмотреть или скачать образец кода](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/change-tokens/samples/) ([как скачивать](xref:index#how-to-download-a-sample))
+[Просмотреть или скачать образец кода](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/change-tokens/samples/) ([как скачивать](xref:index#how-to-download-a-sample))
 
 ## <a name="ichangetoken-interface"></a>Интерфейс IChangeToken
 
@@ -115,8 +113,8 @@ config.AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
 
 `config.GetReloadToken()` предоставляет токен. `InvokeChanged` является методом обратного вызова. `state` в этом экземпляре является ссылкой на экземпляр `IConfigurationMonitor`, используемый для доступа к состоянию мониторинга. Используются два свойства:
 
-* `MonitoringEnabled` указывает, нужно ли обратному вызову выполнять свой пользовательский код.
-* `CurrentState` описывает текущее состояние отслеживания для использования в пользовательском интерфейсе.
+* `MonitoringEnabled` &ndash; указывает, нужно ли обратному вызову выполнять свой настраиваемый код.
+* `CurrentState` &ndash; описывает текущее состояние отслеживания для использования в пользовательском интерфейсе.
 
 Метод `InvokeChanged` похож на описанный ранее подход, за исключением того, что он:
 
@@ -219,7 +217,7 @@ var compositeChangeToken =
 
 *Токен изменений* — это низкоуровневый стандартный блок общего назначения, используемый для отслеживания изменений.
 
-[Просмотреть или скачать образец кода](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/change-tokens/samples/) ([как скачивать](xref:index#how-to-download-a-sample))
+[Просмотреть или скачать образец кода](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/change-tokens/samples/) ([как скачивать](xref:index#how-to-download-a-sample))
 
 ## <a name="ichangetoken-interface"></a>Интерфейс IChangeToken
 
@@ -313,8 +311,8 @@ config.AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
 
 `config.GetReloadToken()` предоставляет токен. `InvokeChanged` является методом обратного вызова. `state` в этом экземпляре является ссылкой на экземпляр `IConfigurationMonitor`, используемый для доступа к состоянию мониторинга. Используются два свойства:
 
-* `MonitoringEnabled` указывает, нужно ли обратному вызову выполнять свой пользовательский код.
-* `CurrentState` описывает текущее состояние отслеживания для использования в пользовательском интерфейсе.
+* `MonitoringEnabled` &ndash; указывает, нужно ли обратному вызову выполнять свой настраиваемый код.
+* `CurrentState` &ndash; описывает текущее состояние отслеживания для использования в пользовательском интерфейсе.
 
 Метод `InvokeChanged` похож на описанный ранее подход, за исключением того, что он:
 

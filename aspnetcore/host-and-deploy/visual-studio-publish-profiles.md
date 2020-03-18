@@ -8,11 +8,11 @@ ms.custom: mvc
 ms.date: 11/07/2019
 uid: host-and-deploy/visual-studio-publish-profiles
 ms.openlocfilehash: 274dd2cd528d3766aa07f69aac3470a131c79ffe
-ms.sourcegitcommit: 67116718dc33a7a01696d41af38590fdbb58e014
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73799348"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78647350"
 ---
 # <a name="visual-studio-publish-profiles-pubxml-for-aspnet-core-app-deployment"></a>Профили публикации Visual Studio (.pubxml) для развертывания приложений ASP.NET Core
 
@@ -42,7 +42,7 @@ ms.locfileid: "73799348"
 
 После загрузки проекта вычисляются [элементы (файлы) проекта MSBuild](/visualstudio/msbuild/common-msbuild-project-items). Порядок обработки файла определяется типом элемента. По умолчанию файлы с расширением *.cs* включаются в список элементов `Compile`. Файлы в списке элементов `Compile` компилируются.
 
-Список элементов `Content` содержит файлы, предназначенные для публикации, а также результаты сборки. По умолчанию в список элементов `Content` включаются файлы, соответствующие шаблонам `wwwroot\**`, `**\*.config` и `**\*.json`. Например, [Стандартная маска](https://gruntjs.com/configuring-tasks#globbing-patterns) `wwwroot\**` соответствует всем файлам в папке *wwwroot* и всех ее подпапках.
+Список элементов `Content` содержит файлы, предназначенные для публикации, а также результаты сборки. По умолчанию в список элементов `Content` включаются файлы, соответствующие шаблонам `wwwroot\**`, `**\*.config` и `**\*.json`. Например, [стандартная маска](https://gruntjs.com/configuring-tasks#globbing-patterns) `wwwroot\**` соответствует всем файлам в папке *wwwroot* и всех ее вложенных папках.
 
 ::: moniker range=">= aspnetcore-3.0"
 
@@ -70,7 +70,7 @@ ms.locfileid: "73799348"
 
 ## <a name="basic-command-line-publishing"></a>Простая публикация из командной строки
 
-Публикация из командной строки работает на всех платформах, поддерживаемых .NET Core, и не требует наличия Visual Studio. В приведенных ниже примерах команда .NET Core CLI [dotnet publish](/dotnet/core/tools/dotnet-publish) выполняется из папки проекта (где хранится *CSPROJ*-файл). Если папка проекта не является текущим рабочим каталогом, явным образом передайте путь к файлу проекта. Например:
+Публикация из командной строки работает на всех платформах, поддерживаемых .NET Core, и не требует наличия Visual Studio. В приведенных ниже примерах команда .NET Core CLI [dotnet publish](/dotnet/core/tools/dotnet-publish) выполняется из папки проекта (где хранится *CSPROJ*-файл). Если папка проекта не является текущим рабочим каталогом, явным образом передайте путь к файлу проекта. Пример:
 
 ```dotnetcli
 dotnet publish C:\Webs\Web1
@@ -465,7 +465,7 @@ Done Building Project "C:\Webs\Web1\Web1.csproj" (default targets).
 
 [!code-xml[](visual-studio-publish-profiles/samples/Web1.pubxml?highlight=18-23)]
 
-В предыдущем примере используется элемент `ResolvedFileToPublish`, поведение по умолчанию которого — всегда копировать файлы, предоставленные в атрибуте `Include` опубликованному сайту. Переопределите поведение по умолчанию, включив дочерний элемент `<CopyToPublishDirectory>` с внутренним текстом `Never` или `PreserveNewest`. Например:
+В предыдущем примере используется элемент `ResolvedFileToPublish`, поведение по умолчанию которого — всегда копировать файлы, предоставленные в атрибуте `Include` опубликованному сайту. Переопределите поведение по умолчанию, включив дочерний элемент `<CopyToPublishDirectory>` с внутренним текстом `Never` или `PreserveNewest`. Пример:
 
 ```xml
 <ResolvedFileToPublish Include="..\ReadMe2.md">
@@ -501,7 +501,7 @@ Done Building Project "C:\Webs\Web1\Web1.csproj" (default targets).
 
 ## <a name="the-kudu-service"></a>Служба Kudu
 
-Чтобы просмотреть файлы в развертывании веб-приложения службы приложений Azure, используйте [службу Kudu](https://github.com/projectkudu/kudu/wiki/Accessing-the-kudu-service). Добавьте к имени веб-приложения маркер `scm`. Например:
+Чтобы просмотреть файлы в развертывании веб-приложения службы приложений Azure, используйте [службу Kudu](https://github.com/projectkudu/kudu/wiki/Accessing-the-kudu-service). Добавьте к имени веб-приложения маркер `scm`. Пример:
 
 | URL-адрес                                    | Результат       |
 | -------------------------------------- | ------------ |

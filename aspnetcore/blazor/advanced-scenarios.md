@@ -1,32 +1,80 @@
 ---
-title: ASP.NET Core Blazor сложных сценариев
+title: Сложные сценарии ASP.NET Core Blazor
 author: guardrex
-description: Дополнительные сведения о сложных сценариях в Blazor, в том числе о том, как включить логику Рендертрибуилдер вручную в приложение.
+description: Дополнительные сведения о сложных сценариях в Blazor, в том числе о том, как включить выполняемую вручную логику RenderTreeBuilder в приложение.
 monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 02/12/2020
+ms.date: 02/18/2020
 no-loc:
 - Blazor
 - SignalR
 uid: blazor/advanced-scenarios
-ms.openlocfilehash: 5e0618faa7b1b5e4cc15e30d9c16afaf7ccabaf0
-ms.sourcegitcommit: 6645435fc8f5092fc7e923742e85592b56e37ada
-ms.translationtype: MT
+ms.openlocfilehash: 5edbbe36e8389bac0335594b1e4331aee1c02867
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
+ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77453184"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78647416"
 ---
-# <a name="aspnet-core-blazor-advanced-scenarios"></a>ASP.NET Core Блазор сложные сценарии
+# <a name="aspnet-core-blazor-advanced-scenarios"></a>Сложные сценарии ASP.NET Core Blazor
 
-[Люк ЛаСаМ](https://github.com/guardrex) и [Даниэль Roth)](https://github.com/danroth27)
+Авторы: [Люк Латэм](https://github.com/guardrex) (Luke Latham) и [Дэниэл Рот](https://github.com/danroth27) (Daniel Roth)
 
-## <a name="manual-rendertreebuilder-logic"></a>Логика Рендертрибуилдер вручную
+## <a name="blazor-server-circuit-handler"></a>Обработчик цепи Blazor Server
 
-`Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder` предоставляет методы для управления компонентами и элементами, включая создание компонентов вручную в C# коде.
+Blazor Server позволяет коду определить *обработчик канала*, чтобы выполнять код для изменений состояния цепи пользователя. Обработчик канала реализуется путем наследования от `CircuitHandler` и регистрации класса в контейнере службы приложения. В следующем примере обработчик канала отслеживает открытые соединения SignalR:
+
+```csharp
+using System.Collections.Generic;
+using System.Threading;
+using System.Threading.Tasks;
+using Microsoft.AspNetCore.Components.Server.Circuits;
+
+public class TrackingCircuitHandler : CircuitHandler
+{
+    private HashSet<Circuit> _circuits = new HashSet<Circuit>();
+
+    public override Task OnConnectionUpAsync(Circuit circuit, 
+        CancellationToken cancellationToken)
+    {
+        _circuits.Add(circuit);
+
+        return Task.CompletedTask;
+    }
+
+    public override Task OnConnectionDownAsync(Circuit circuit, 
+        CancellationToken cancellationToken)
+    {
+        _circuits.Remove(circuit);
+
+        return Task.CompletedTask;
+    }
+
+    public int ConnectedCircuits => _circuits.Count;
+}
+```
+
+Обработчики канала регистрируются с помощью DI. Экземпляры с заданной областью создаются для каждого экземпляра канала. С помощью `TrackingCircuitHandler` в предыдущем примере создается отдельная служба, поскольку необходимо отслеживать состояние всех каналов:
+
+```csharp
+public void ConfigureServices(IServiceCollection services)
+{
+    ...
+    services.AddSingleton<CircuitHandler, TrackingCircuitHandler>();
+}
+```
+
+Если методы пользовательского обработчика канала создают необработанное исключение, это исключение является неустранимым для канала Blazor Server. Чтобы допускать исключения в коде обработчика или вызываемых методах, заключите код в один или несколько операторов [try-catch](/dotnet/csharp/language-reference/keywords/try-catch) с обработкой ошибок и ведением журнала.
+
+Когда канал завершается из-за того, что пользователь отключился и платформа очищает состояние канала, платформа удаляет область DI канала. При удалении области удаляются все службы DI, ограниченные каналом и реализующие <xref:System.IDisposable?displayProperty=fullName>. Если любая служба DI вызывает необработанное исключение во время удаления, платформа регистрирует исключение.
+
+## <a name="manual-rendertreebuilder-logic"></a>Выполняемая вручную логика RenderTreeBuilder
+
+`Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder` предоставляет методы для управления компонентами и элементами, включая создание компонентов вручную в коде C#.
 
 > [!NOTE]
-> Использование `RenderTreeBuilder` для создания компонентов является расширенным сценарием. Неправильно сформированный компонент (например, незакрытый тег разметки) может привести к неопределенному поведению.
+> Использование `RenderTreeBuilder` для создания компонентов является сложным сценарием. Неправильно сформированный компонент (например, незакрытый тег разметки) может привести к неопределенному поведению.
 
 Рассмотрим следующий компонент `PetDetails`, который можно вручную встроить в другой компонент:
 
@@ -42,9 +90,9 @@ ms.locfileid: "77453184"
 }
 ```
 
-В следующем примере цикл в методе `CreateComponent` создает три `PetDetails` компонентов. При вызове методов `RenderTreeBuilder` для создания компонентов (`OpenComponent` и `AddAttribute`) порядковые номера представляют собой номера строк исходного кода. Алгоритм разницы Блазор зависит от порядковых номеров, соответствующих разным строкам кода, а не отдельных вызовов вызова. При создании компонента с помощью методов `RenderTreeBuilder` жестко указывайте аргументы для порядковых номеров. **Использование вычисления или счетчика для формирования порядкового номера может привести к снижению производительности.** Дополнительные сведения см. в разделе [порядковые номера относятся к разделу номера строк кода и порядок выполнения](#sequence-numbers-relate-to-code-line-numbers-and-not-execution-order) .
+В следующем примере цикл в методе `CreateComponent` создает три компонента `PetDetails`. При вызове методов `RenderTreeBuilder` для создания компонентов (`OpenComponent` и `AddAttribute`) порядковые номера представляют собой номера строк исходного кода. Алгоритм сравнения Blazor использует порядковые номера, соответствующие отдельным строкам кода, а не отдельным вызовам. При создании компонента с помощью методов `RenderTreeBuilder` жестко задавайте аргументы для порядковых номеров. **Использование вычисления или счетчика для формирования порядкового номера может привести к снижению производительности.** Дополнительные сведения см. в разделе [Порядковые номера относятся к номерам строк кода, а не порядку выполнения](#sequence-numbers-relate-to-code-line-numbers-and-not-execution-order).
 
-`BuiltContent` компонент:
+Компонент `BuiltContent`:
 
 ```razor
 @page "/BuiltContent"
@@ -78,15 +126,15 @@ ms.locfileid: "77453184"
 ```
 
 > [!WARNING]
-> Типы в `Microsoft.AspNetCore.Components.RenderTree` позволяют обрабатывать *результаты* операций отрисовки. Это внутренние сведения о реализации Блазор Framework. Эти типы следует считать *нестабильными* и могут быть изменены в будущих выпусках.
+> Типы в `Microsoft.AspNetCore.Components.RenderTree` позволяют обрабатывать *результаты* операций отрисовки. Это внутренние сведения реализации платформы Blazor. Эти типы следует считать *нестабильными*. Они могут измениться в будущих выпусках.
 
-### <a name="sequence-numbers-relate-to-code-line-numbers-and-not-execution-order"></a>Порядковые номера связаны с номерами строк кода, а не с порядком выполнения
+### <a name="sequence-numbers-relate-to-code-line-numbers-and-not-execution-order"></a>Порядковые номера относятся к номерам строк кода, а не порядку выполнения
 
-Файлы компонентов Razor ( *. Razor*) всегда компилируются. Компиляция — это потенциальное преимущество для интерпретации кода, поскольку шаг компиляции можно использовать для вставки сведений, повышающих производительность приложения во время выполнения.
+Файлы компонентов Razor (*RAZOR*) всегда компилируются. Компиляция потенциально лучше, чем интерпретация кода, поскольку шаг компиляции можно использовать для вставки сведений, повышающих производительность приложения во время выполнения.
 
-В качестве ключевого примера этих усовершенствований используются *порядковые номера*. Порядковые номера указывают среде выполнения, какие выходные данные поступили из разных и упорядоченных строк кода. Среда выполнения использует эти сведения для создания эффективных различий дерева в линейное время, что является гораздо быстрее, чем обычно возможно для общего алгоритма различения дерева.
+Ключевой пример этих усовершенствований связан с *порядковыми номерами*. Порядковые номера указывают среде выполнения, какие выходные данные поступили из отдельных и упорядоченных строк кода. Среда выполнения использует эти сведения для эффективного сравнения деревьев в линейном времени, а это гораздо быстрее, чем при использовании общего алгоритма сравнения деревьев.
 
-Рассмотрим следующий файл компонента Razor ( *. Razor*):
+Рассмотрим следующий файл компонента Razor (*RAZOR*):
 
 ```razor
 @if (someFlag)
@@ -108,26 +156,26 @@ if (someFlag)
 builder.AddContent(1, "Second");
 ```
 
-Когда код выполняется в первый раз, если `someFlag` `true`, построитель получит следующее:
+Когда код выполняется в первый раз, если `someFlag` имеет значение `true`, построитель получит следующее:
 
-| Последовательность | Тип      | Данные   |
+| Sequence | Type      | Данные   |
 | :------: | --------- | :----: |
-| 0        | Узел Text | Первый  |
-| 1        | Узел Text | Секунда |
+| 0        | Текстовый узел | First  |
+| 1        | Текстовый узел | Second |
 
-Представьте, что `someFlag` становится `false`, и разметка снова готовится к просмотру. На этот раз построитель получит:
+Представьте, что `someFlag` становится `false`, и разметка снова преобразуется для просмотра. На этот раз построитель получает:
 
-| Последовательность | Тип       | Данные   |
+| Sequence | Type       | Данные   |
 | :------: | ---------- | :----: |
-| 1        | Узел Text  | Секунда |
+| 1        | Текстовый узел  | Second |
 
-Когда среда выполнения выполняет поиск различий, она видит, что элемент в последовательности `0` был удален, поэтому он создает следующий тривиальный *сценарий редактирования*:
+Когда среда выполнения выполняет сравнение, она видит, что элемент в последовательности `0` был удален, поэтому создает следующий тривиальный *сценарий изменения*:
 
-* Удалите первый текстовый узел.
+* Удаление первого текстового узла.
 
 ### <a name="the-problem-with-generating-sequence-numbers-programmatically"></a>Проблема с созданием порядковых номеров программным способом
 
-Вместо этого Представьте себе, что вы написали следующую логику конструктора деревьев визуализации:
+Представьте себе, что вместо этого вы написали следующую логику отрисовки построителя деревьев:
 
 ```csharp
 var seq = 0;
@@ -140,32 +188,310 @@ if (someFlag)
 builder.AddContent(seq++, "Second");
 ```
 
-Теперь первые выходные данные:
+И теперь первыми выходными данными будет:
 
-| Последовательность | Тип      | Данные   |
+| Sequence | Type      | Данные   |
 | :------: | --------- | :----: |
-| 0        | Узел Text | Первый  |
-| 1        | Узел Text | Секунда |
+| 0        | Текстовый узел | First  |
+| 1        | Текстовый узел | Second |
 
-Этот результат идентичен предыдущему случаю, поэтому отрицательные проблемы не возникают. во второй отрисовке `someFlag` `false`, а выходные данные:
+Этот результат идентичен предыдущему случаю, поэтому проблемы не возникают. `someFlag` имеет значение `false` во второй отрисовке, а выходные данные следующие:
 
-| Последовательность | Тип      | Данные   |
+| Sequence | Type      | Данные   |
 | :------: | --------- | ------ |
-| 0        | Узел Text | Секунда |
+| 0        | Текстовый узел | Second |
 
-На этот раз алгоритм diff видит, что были внесены *два* изменения, и алгоритм создает следующий сценарий редактирования:
+На этот раз алгоритм сравнения видит, что произошло *два* изменения, и создает следующий скрипт редактирования:
 
-* Измените значение первого текстового узла на `Second`.
-* Удалите второй текстовый узел.
+* Изменение значения первого текстового узла на `Second`.
+* Удаление второго текстового узла.
 
-При формировании порядковых номеров теряются все полезные сведения о том, где в исходном коде находятся `if/else` ветви и циклы. Это приводит к **удвоению в два раза больше** , чем раньше.
+При формировании порядковых номеров теряются все полезные сведения о том, где в исходном коде находятся циклы и ветви `if/else`. Это приводит к тому, что сравнение становится **в два раза больше**.
 
-Это тривиальный пример. В более реалистичных случаях со сложными и глубокими вложенными структурами, особенно с циклами, затраты на производительность обычно выше. Вместо того, чтобы сразу определять, какие блоки или ветви цикла были вставлены или удалены, алгоритм diff должен выполнять рекурсивный глубокий переход к деревьям отрисовки. Это, как правило, приводит к более длительному изменению скриптов, поскольку алгоритм diff сообщает о том, как старые и новые структуры связаны друг с другом.
+Это упрощенный пример. В более реалистичных случаях со сложными и глубокими вложенными структурами, особенно с циклами, затраты на производительность обычно выше. Вместо того чтобы сразу определять, какие блоки или ветви цикла были вставлены или удалены, алгоритм сравнения должен выполнять рекурсивный глубокий переход к деревьям отрисовки. В результате, как правило, приходится создавать более длинные скрипты изменений, поскольку алгоритм сравнения не знает всей информации о том, как старые и новые структуры связаны друг с другом.
 
-### <a name="guidance-and-conclusions"></a>Руководство и выводы
+### <a name="guidance-and-conclusions"></a>Рекомендации и выводы
 
 * Производительность приложения снижается, если порядковые номера создаются динамически.
-* Платформа не может автоматически создавать собственные порядковые номера во время выполнения, поскольку необходимая информация не существует, если она не захвачена во время компиляции.
-* Не записывайте длинные блоки `RenderTreeBuilder` логики, реализуемой вручную. Предпочитать файлы *Razor* и позволяют компилятору работать с порядковыми номерами. Если не удается избежать ручного `RenderTreeBuilder` логики, разделите длинные блоки кода на более мелкие части, заключенные в `OpenRegion`/`CloseRegion` вызовы. Каждый регион имеет собственное отдельное пространство порядковых номеров, поэтому вы можете перезапускаться от нуля (или любого другого произвольного числа) внутри каждого региона.
-* Если порядковые номера задаются жестко, то для алгоритма diff требуется, чтобы только порядковые номера увеличиваются в значении. Начальное значение и зазоры несущественны. Один из этих вариантов — использовать номер строки кода в качестве порядкового номера или начать с нуля и увеличить на единицу или сотни (или любой другой интервал). 
-* Blazor использует порядковые номера, в то время как другие платформы, использующие средства различения дерева, не используют их. Сравнение выполняется гораздо быстрее, если используются порядковые номера, и Blazor имеет преимущество этапа компиляции, который автоматически обрабатывает порядковые номера для разработчиков, занимающихся созданием файлов *Razor* .
+* Платформа не может автоматически создавать собственные порядковые номера во время выполнения, поскольку необходимая информация не существует, если только она не получена во время компиляции.
+* Не записывайте длинные блоки логики `RenderTreeBuilder`, реализуемой вручную. Используйте файлы *RAZOR* и дайте компилятору обрабатывать порядковые номера. Если не удается избежать реализуемой вручную логики `RenderTreeBuilder`, разделите длинные блоки кода на более мелкие части, заключенные в вызовы `OpenRegion`/`CloseRegion`. Каждый регион имеет собственное отдельное пространство порядковых номеров, поэтому вы можете снова начинать с нуля (или любого другого произвольного числа) внутри каждого региона.
+* Если порядковые номера задаются жестко, то для алгоритма сравнения требуется только, чтобы порядковые номера увеличивались. Начальное значение и пропуски несущественны. Кроме того, можно использовать номер строки кода в качестве порядкового номера или начать с нуля и увеличивать значение на единицы или сотни (или выбрать любой другой интервал). 
+* Blazor использует порядковые номера, а другие платформы пользовательского интерфейса для сравнения деревьев не используют их. Сравнение выполняется гораздо быстрее, если используются порядковые номера, и Blazor имеет преимущество этапа компиляции, который автоматически обрабатывает порядковые номера для разработчиков, создающих файлы *RAZOR*.
+
+## <a name="perform-large-data-transfers-in-opno-locblazor-server-apps"></a>Выполнение передачи больших объемов данных в приложениях Blazor Server
+
+В некоторых сценариях необходимо передавать большие объемы данных между JavaScript и Blazor. Как правило, передача больших данных происходит в следующих случаях:
+
+* API-интерфейсы файловой системы браузера используются для отправки или загрузки файла.
+* Требуется взаимодействие со сторонней библиотекой.
+
+В Blazor Server есть ограничение, предотвращающее передачу единичных крупных сообщений, которые могут привести к проблемам с производительностью.
+
+При разработке кода, который передает данные между JavaScript и Blazor, учитывайте следующие рекомендации:
+
+* Разделите данные на небольшие части и отправляйте сегменты данных последовательно, пока все данные не будут получены сервером.
+* Не выделяйте большие объекты в коде C# и JavaScript.
+* Не блокируйте основной поток пользовательского интерфейса на длительные периоды при отправке или получении данных.
+* Освободите занятую память при завершении или отмене процесса.
+* Применяйте следующие дополнительные требования в целях безопасности:
+  * Объявите максимальный размер файла или данных, который может быть передан.
+  * Объявите минимальную скорость передачи от клиента к серверу.
+* После получения данных сервером данные могут быть:
+  * Временно сохранены в буфере памяти до тех пор, пока не будут собраны все сегменты.
+  * Использованы немедленно. Например, данные могут храниться сразу в базе данных или записываться на диск по мере получения каждого сегмента.
+
+Следующий класс отправителя файлов обрабатывает взаимодействие JS с клиентом. Класс отправителя использует взаимодействие JS, чтобы:
+
+* Опросить клиент для отправки сегмента данных.
+* Прервать транзакцию при истечении времени опроса.
+
+```csharp
+using System;
+using System.Buffers;
+using System.Collections.Generic;
+using System.IO;
+using System.Threading.Tasks;
+using Microsoft.JSInterop;
+
+public class FileUploader : IDisposable
+{
+    private readonly IJSRuntime _jsRuntime;
+    private readonly int _segmentSize = 6144;
+    private readonly int _maxBase64SegmentSize = 8192;
+    private readonly DotNetObjectReference<FileUploader> _thisReference;
+    private List<IMemoryOwner<byte>> _uploadedSegments = 
+        new List<IMemoryOwner<byte>>();
+
+    public FileUploader(IJSRuntime jsRuntime)
+    {
+        _jsRuntime = jsRuntime;
+    }
+
+    public async Task<Stream> ReceiveFile(string selector, int maxSize)
+    {
+        var fileSize = 
+            await _jsRuntime.InvokeAsync<int>("getFileSize", selector);
+
+        if (fileSize > maxSize)
+        {
+            return null;
+        }
+
+        var numberOfSegments = Math.Floor(fileSize / (double)_segmentSize) + 1;
+        var lastSegmentBytes = 0;
+        string base64EncodedSegment;
+
+        for (var i = 0; i < numberOfSegments; i++)
+        {
+            try
+            {
+                base64EncodedSegment = 
+                    await _jsRuntime.InvokeAsync<string>(
+                        "receiveSegment", i, selector);
+
+                if (base64EncodedSegment.Length < _maxBase64SegmentSize && 
+                    i < numberOfSegments - 1)
+                {
+                    return null;
+                }
+            }
+            catch
+            {
+                return null;
+            }
+
+          var current = MemoryPool<byte>.Shared.Rent(_segmentSize);
+
+          if (!Convert.TryFromBase64String(base64EncodedSegment, 
+              current.Memory.Slice(0, _segmentSize).Span, out lastSegmentBytes))
+          {
+              return null;
+          }
+
+          _uploadedSegments.Add(current);
+        }
+
+        var segments = _uploadedSegments;
+        _uploadedSegments = null;
+
+        return new SegmentedStream(segments, _segmentSize, lastSegmentBytes);
+    }
+
+    public void Dispose()
+    {
+        if (_uploadedSegments != null)
+        {
+            foreach (var segment in _uploadedSegments)
+            {
+                segment.Dispose();
+            }
+        }
+    }
+}
+```
+
+В предшествующем примере:
+
+* Для `_maxBase64SegmentSize` задано значение `8192`, которое вычисляется на основе `_maxBase64SegmentSize = _segmentSize * 4 / 3`.
+* Низкоуровневые API управления памятью .NET Core используются для хранения сегментов памяти на сервере в `_uploadedSegments`.
+* Для отправки через взаимодействие с JS используется метод `ReceiveFile`:
+  * Размер файла определяется в байтах с помощью взаимодействия JS с `_jsRuntime.InvokeAsync<FileInfo>('getFileSize', selector)`.
+  * Количество принимаемых сегментов вычисляется и сохраняется в `numberOfSegments`.
+  * Сегменты запрашиваются в цикле `for` через взаимодействие JS с `_jsRuntime.InvokeAsync<string>('receiveSegment', i, selector)`. Все сегменты, кроме последнего, должны иметь размер 8192 байт перед декодированием. Клиент должен отправлять данные эффективно.
+  * Для каждого полученного сегмента проверки выполняются перед декодированием с помощью <xref:System.Convert.TryFromBase64String*>.
+  * Поток с данными возвращается в виде нового <xref:System.IO.Stream> (`SegmentedStream`) после завершения передачи.
+
+Класс сегментированного потока предоставляет список сегментов как недоступный для поиска <xref:System.IO.Stream> только для чтения:
+
+```csharp
+using System;
+using System.Buffers;
+using System.Collections.Generic;
+using System.IO;
+
+public class SegmentedStream : Stream
+{
+    private readonly ReadOnlySequence<byte> _sequence;
+    private long _currentPosition = 0;
+
+    public SegmentedStream(IList<IMemoryOwner<byte>> segments, int segmentSize, 
+        int lastSegmentSize)
+    {
+        if (segments.Count == 1)
+        {
+            _sequence = new ReadOnlySequence<byte>(
+                segments[0].Memory.Slice(0, lastSegmentSize));
+            return;
+        }
+
+        var sequenceSegment = new BufferSegment<byte>(
+            segments[0].Memory.Slice(0, segmentSize));
+        var lastSegment = sequenceSegment;
+
+        for (int i = 1; i < segments.Count; i++)
+        {
+            var isLastSegment = i + 1 == segments.Count;
+            lastSegment = lastSegment.Append(segments[i].Memory.Slice(
+                0, isLastSegment ? lastSegmentSize : segmentSize));
+        }
+
+        _sequence = new ReadOnlySequence<byte>(
+            sequenceSegment, 0, lastSegment, lastSegmentSize);
+    }
+
+    public override long Position
+    {
+        get => throw new NotImplementedException();
+        set => throw new NotImplementedException();
+    }
+
+    public override int Read(byte[] buffer, int offset, int count)
+    {
+        var bytesToWrite = (int)(_currentPosition + count < _sequence.Length ? 
+            count : _sequence.Length - _currentPosition);
+        var data = _sequence.Slice(_currentPosition, bytesToWrite);
+        data.CopyTo(buffer.AsSpan(offset, bytesToWrite));
+        _currentPosition += bytesToWrite;
+
+        return bytesToWrite;
+    }
+
+    private class BufferSegment<T> : ReadOnlySequenceSegment<T>
+    {
+        public BufferSegment(ReadOnlyMemory<T> memory)
+        {
+            Memory = memory;
+        }
+
+        public BufferSegment<T> Append(ReadOnlyMemory<T> memory)
+        {
+            var segment = new BufferSegment<T>(memory)
+            {
+                RunningIndex = RunningIndex + Memory.Length
+            };
+
+            Next = segment;
+
+            return segment;
+        }
+    }
+
+    public override bool CanRead => true;
+
+    public override bool CanSeek => false;
+
+    public override bool CanWrite => false;
+
+    public override long Length => throw new NotImplementedException();
+
+    public override void Flush() => throw new NotImplementedException();
+
+    public override long Seek(long offset, SeekOrigin origin) => 
+        throw new NotImplementedException();
+
+    public override void SetLength(long value) => 
+        throw new NotImplementedException();
+
+    public override void Write(byte[] buffer, int offset, int count) => 
+        throw new NotImplementedException();
+}
+```
+
+Следующий код реализует функции JavaScript для получения данных:
+
+```javascript
+function getFileSize(selector) {
+  const file = getFile(selector);
+  return file.size;
+}
+
+async function receiveSegment(segmentNumber, selector) {
+  const file = getFile(selector);
+  var segments = getFileSegments(file);
+  var index = segmentNumber * 6144;
+  return await getNextChunk(file, index);
+}
+
+function getFile(selector) {
+  const element = document.querySelector(selector);
+  if (!element) {
+    throw new Error('Invalid selector');
+  }
+  const files = element.files;
+  if (!files || files.length === 0) {
+    throw new Error(`Element ${elementId} doesn't contain any files.`);
+  }
+  const file = files[0];
+  return file;
+}
+
+function getFileSegments(file) {
+  const segments = Math.floor(size % 6144 === 0 ? size / 6144 : 1 + size / 6144);
+  return segments;
+}
+
+async function getNextChunk(file, index) {
+  const length = file.size - index <= 6144 ? file.size - index : 6144;
+  const chunk = file.slice(index, index + length);
+  index += length;
+  const base64Chunk = await this.base64EncodeAsync(chunk);
+  return { base64Chunk, index };
+}
+
+async function base64EncodeAsync(chunk) {
+  const reader = new FileReader();
+  const result = new Promise((resolve, reject) => {
+    reader.addEventListener('load',
+      () => {
+        const base64Chunk = reader.result;
+        const cleanChunk = 
+          base64Chunk.replace('data:application/octet-stream;base64,', '');
+        resolve(cleanChunk);
+      },
+      false);
+    reader.addEventListener('error', reject);
+  });
+  reader.readAsDataURL(chunk);
+  return result;
+}
+```

@@ -1,22 +1,22 @@
 ---
 title: Фоновые задачи с размещенными службами в ASP.NET Core
-author: guardrex
+author: rick-anderson
 description: Узнайте, как реализовать фоновые задачи с размещенными службами в ASP.NET Core.
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
 ms.date: 02/10/2020
 uid: fundamentals/host/hosted-services
-ms.openlocfilehash: 9b7224c07df027c9466db34dcc23505410893f1f
-ms.sourcegitcommit: 85564ee396c74c7651ac47dd45082f3f1803f7a2
+ms.openlocfilehash: d3f409170eedd281fd7608c4b9835bf9443c49b0
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77171794"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78650416"
 ---
 # <a name="background-tasks-with-hosted-services-in-aspnet-core"></a>Фоновые задачи с размещенными службами в ASP.NET Core
 
-Авторы: [Luke Latham](https://github.com/guardrex) (Люк Латэм) и [Jeow Li Huan](https://github.com/huan086) (Чжоу Ли Хуан)
+Автор: [Джау Ли Хуань](https://github.com/huan086) (Jeow Li Huan)
 
 ::: moniker range=">= aspnetcore-3.0"
 
@@ -26,7 +26,7 @@ ms.locfileid: "77171794"
 * Размещенная служба, которая активирует [службу с заданной областью](xref:fundamentals/dependency-injection#service-lifetimes). Служба с заданной областью может использовать [внедрение зависимостей](xref:fundamentals/dependency-injection).
 * Очередь фоновых задач, которые выполняются последовательно.
 
-[Просмотреть или скачать образец кода](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/host/hosted-services/samples/) ([как скачивать](xref:index#how-to-download-a-sample))
+[Просмотреть или скачать образец кода](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/host/hosted-services/samples/) ([как скачивать](xref:index#how-to-download-a-sample))
 
 ## <a name="worker-service-template"></a>Шаблон службы рабочей роли
 
@@ -181,7 +181,7 @@ ms.locfileid: "77171794"
 * Размещенная служба, которая активирует [службу с заданной областью](xref:fundamentals/dependency-injection#service-lifetimes). Служба с заданной областью может использовать [внедрение зависимостей](xref:fundamentals/dependency-injection).
 * Очередь фоновых задач, которые выполняются последовательно.
 
-[Просмотреть или скачать образец кода](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/host/hosted-services/samples/) ([как скачивать](xref:index#how-to-download-a-sample))
+[Просмотреть или скачать образец кода](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/host/hosted-services/samples/) ([как скачивать](xref:index#how-to-download-a-sample))
 
 ## <a name="package"></a>Пакет
 

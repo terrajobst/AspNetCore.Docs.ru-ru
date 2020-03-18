@@ -5,12 +5,12 @@ description: Сведения о службах и ПО промежуточно
 ms.author: riande
 ms.date: 11/30/2019
 uid: fundamentals/localization
-ms.openlocfilehash: 645f680436336acbe1d5c2854a242527c9b4b9cb
-ms.sourcegitcommit: 3b6b0a54b20dc99b0c8c5978400c60adf431072f
+ms.openlocfilehash: b175354220a8a71c029e005f27443d5a72749a11
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74717407"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78648436"
 ---
 # <a name="globalization-and-localization-in-aspnet-core"></a>Глобализация и локализация в ASP.NET Core
 
@@ -30,7 +30,7 @@ ms.locfileid: "74717407"
 
 3. реализацию стратегии по выбору языка и региональных параметров для каждого запроса.
 
-[Просмотреть или скачать образец кода](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/localization/sample/Localization) ([как скачивать](xref:index#how-to-download-a-sample))
+[Просмотреть или скачать образец кода](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/localization/sample/Localization) ([как скачивать](xref:index#how-to-download-a-sample))
 
 ## <a name="make-the-apps-content-localizable"></a>Обеспечение возможности локализации для содержимого приложения
 
@@ -225,6 +225,7 @@ using Microsoft.Extensions.Localization;
 Текущий язык и региональные параметры в запросе задаются в [промежуточном слое](xref:fundamentals/middleware/index) локализации. Промежуточный слой локализации включается в методе `Startup.Configure`. Промежуточный слой локализации должен настраиваться перед другими промежуточными слоями, которые могут проверять язык и региональные параметры запроса (например, `app.UseMvcWithDefaultRoute()`).
 
 [!code-csharp[](localization/sample/Localization/Startup.cs?name=snippet2)]
+[!INCLUDE[about the series](~/includes/code-comments-loc.md)]
 
 `UseRequestLocalization` инициализирует объект `RequestLocalizationOptions`. При каждом запросе проверяется список поставщиков `RequestCultureProvider` в объекте `RequestLocalizationOptions` и используется первый поставщик, который может успешно определить язык и региональные параметры запроса. Поставщики по умолчанию берутся из класса `RequestLocalizationOptions`:
 
@@ -276,7 +277,7 @@ using Microsoft.Extensions.Localization;
 
 6. Выберите язык, а затем нажмите кнопку **Вверх**.
 
-::: moniker range=">= aspnetcore-3.1"
+::: moniker range="> aspnetcore-3.1"
 ### <a name="the-content-language-http-header"></a>Заголовок HTTP Content-Language
 
 Заголовок сущности [Content-Language](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Language):

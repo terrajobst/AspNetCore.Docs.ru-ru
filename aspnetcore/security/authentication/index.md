@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 03/03/2020
 uid: security/authentication/index
-ms.openlocfilehash: 24113fd4f090cf76746a7b077212fdab012f82c1
-ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
+ms.openlocfilehash: 404904ecfa30d1fe7e47f0daaa423ddd6f1b06e8
+ms.sourcegitcommit: 5bdc54162d7dea8d9fa54ac3055678db23586af1
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78644362"
+ms.lasthandoff: 03/17/2020
+ms.locfileid: "79434334"
 ---
 # <a name="overview-of-aspnet-core-authentication"></a>Общие сведения о проверке подлинности в ASP.NET Core
 
@@ -110,6 +110,18 @@ services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
 
 * [Проверочный запрос и запрет с помощью обработчика ресурсов операций](xref:security/authorization/resourcebased#challenge-and-forbid-with-an-operational-resource-handler).
 * [Различия между проверочным запросом и запретом](xref:security/authorization/secure-data#challenge).
+
+## <a name="authentication-providers-per-tenant"></a>Поставщики проверки подлинности для отдельного клиента
+
+Платформа ASP.NET Core не имеет встроенного решения для проверки подлинности в системе с несколькими клиентами.
+Конечно же, клиенты могут сами создать для себя такое решение на основе встроенных функций, но мы рекомендуем использовать для этой цели [Orchard Core](https://www.orchardcore.net/).
+
+Orchard Core — это:
+
+* модульная платформа с открытым исходным кодом и инфраструктура для приложений с несколькими клиентами, созданная на основе ASP.NET Core;
+* система управления содержимым (CMS), созданная на основе этой платформы приложений.
+
+[Этот пример кода для Orchard Core](https://github.com/OrchardCMS/OrchardCore) содержит реализацию поставщиков проверки подлинности отдельно для каждого клиента.
 
 ## <a name="additional-resources"></a>Дополнительные ресурсы
 

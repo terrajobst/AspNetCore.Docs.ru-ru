@@ -1,17 +1,17 @@
 ---
 title: Razor Pages с EF Core в ASP.NET Core — сортировка, фильтрация, разбиение на страницы — 3 из 8
-author: tdykstra
+author: rick-anderson
 description: Из этого учебника вы узнаете, как с помощью ASP.NET Core и Entity Framework Core добавить на страницу Razor функции сортировки, фильтрации и разбиения на страницы.
 ms.author: riande
 ms.custom: mvc
 ms.date: 07/22/2019
 uid: data/ef-rp/sort-filter-page
-ms.openlocfilehash: b4cef98f3ad4973878c5fa65a47c0b86cdfc8686
-ms.sourcegitcommit: 257cc3fe8c1d61341aa3b07e5bc0fa3d1c1c1d1c
+ms.openlocfilehash: 9563f3ef52ce429eb0a58b468acb8e9cd7b276e2
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69583518"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78645496"
 ---
 # <a name="razor-pages-with-ef-core-in-aspnet-core---sort-filter-paging---3-of-8"></a>Razor Pages с EF Core в ASP.NET Core — сортировка, фильтрация, разбиение на страницы — 3 из 8
 
@@ -49,7 +49,7 @@ ms.locfileid: "69583518"
 
 [!code-csharp[Main](intro/samples/cu30snapshots/3-sorting/Pages/Students/Index1.cshtml.cs?name=snippet_Ternary)]
 
-В коде используется условный оператор C# [?:](/dotnet/csharp/language-reference/operators/conditional-operator). Оператор `?:` является тернарным (принимает три операнда). Первая строка указывает, что когда `sortOrder` равен null или пуст, `NameSort` имеет значение "name_desc". Если `sortOrder` **не является** равным null или пустым, для `NameSort` задается пустая строка.
+В коде используется условный оператор C# [?:](/dotnet/csharp/language-reference/operators/conditional-operator). Оператор `?:` является тернарным (принимает три операнда). Первая строка указывает, что когда `sortOrder` равен null или пуст, `NameSort` имеет значение "name_desc". Если `sortOrder`**не является** равным null или пустым, для `NameSort` задается пустая строка.
 
 Следующие два оператора устанавливают гиперссылки в заголовках столбцов на странице следующим образом:
 
@@ -132,7 +132,7 @@ Where(s => s.LastName.ToUpper().Contains(searchString.ToUpper())`
 
 [!code-cshtml[Main](intro/samples/cu30snapshots/3-sorting/Pages/Students/Index2.cshtml?highlight=14-23)]
 
-Для добавления кнопки и поля поиска предыдущий код использует [вспомогательную функцию тегов](xref:mvc/views/tag-helpers/intro) `<form>`. По умолчанию вспомогательная функция тегов `<form>` отправляет данные формы с помощью POST. При этом параметры передаются в тексте сообщения HTTP, а не в URL-адресе. При использовании HTTP GET данные формы передаются в виде строк запроса в URL-адресе. Передача данных со строками запроса позволяет пользователям добавлять URL-адрес в закладки. [Руководства консорциума W3C](https://www.w3.org/2001/tag/doc/whenToUseGet.html) рекомендуют использовать GET, когда действие не приводит к обновлению.
+Для добавления кнопки и поля поиска предыдущий код использует `<form>` [вспомогательную функцию тегов](xref:mvc/views/tag-helpers/intro). По умолчанию вспомогательная функция тегов `<form>` отправляет данные формы с помощью POST. При этом параметры передаются в тексте сообщения HTTP, а не в URL-адресе. При использовании HTTP GET данные формы передаются в виде строк запроса в URL-адресе. Передача данных со строками запроса позволяет пользователям добавлять URL-адрес в закладки. [Руководства консорциума W3C](https://www.w3.org/2001/tag/doc/whenToUseGet.html) рекомендуют использовать GET, когда действие не приводит к обновлению.
 
 Проверьте работу приложения:
 
@@ -140,7 +140,7 @@ Where(s => s.LastName.ToUpper().Contains(searchString.ToUpper())`
 
 * Выберите **Search** (Поиск).
 
-Обратите внимание, что URL-адрес содержит строку поиска. Например:
+Обратите внимание, что URL-адрес содержит строку поиска. Пример:
 
 ```
 https://localhost:<port>/Students?SearchString=an
@@ -275,15 +275,15 @@ https://localhost:<port>/Students?SearchString=an
 
 ![Страница указателя учащихся](sort-filter-page/_static/paging.png)
 
-При возникновении проблем, которые вам не удается устранить, скачайте [готовое приложение](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/data/ef-rp/intro/samples).
+При возникновении проблем, которые вам не удается устранить, скачайте [готовое приложение](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/data/ef-rp/intro/samples).
 
 ## <a name="add-sorting-to-the-index-page"></a>Добавление сортировки на страницу индекса
 
-Добавьте строки в *Students/Index.cshtml.cs* `PageModel` для хранения параметров сортировки:
+Добавьте строки в файл *Students/Index.cshtml.cs* `PageModel` для хранения параметров сортировки:
 
 [!code-csharp[](intro/samples/cu21/Pages/Students/Index.cshtml.cs?name=snippet1&highlight=10-13)]
 
-Измените *Students/Index.cshtml.cs* `OnGetAsync`, используя следующий код:
+Измените файл *Students/Index.cshtml.cs* `OnGetAsync`, используя следующий код:
 
 [!code-csharp[](intro/samples/cu21/Pages/Students/Index.cshtml.cs?name=snippet_SortOnly)]
 
@@ -302,7 +302,7 @@ https://localhost:<port>/Students?SearchString=an
 
 [!code-csharp[](intro/samples/cu21/Pages/Students/Index.cshtml.cs?name=snippet_Ternary)]
 
-Первая строка указывает, что когда `sortOrder` равен null или пуст, `NameSort` имеет значение "name_desc". Если `sortOrder` **не является** равным null или пустым, для `NameSort` задается пустая строка.
+Первая строка указывает, что когда `sortOrder` равен null или пуст, `NameSort` имеет значение "name_desc". Если `sortOrder`**не является** равным null или пустым, для `NameSort` задается пустая строка.
 
 `?: operator` также называется тернарным оператором.
 
@@ -359,7 +359,7 @@ https://localhost:<port>/Students?SearchString=an
 
 ### <a name="add-filtering-functionality-to-the-index-method"></a>Добавление функций фильтрации в метод Index
 
-Измените *Students/Index.cshtml.cs* `OnGetAsync`, используя следующий код:
+Измените файл *Students/Index.cshtml.cs* `OnGetAsync`, используя следующий код:
 
 [!code-csharp[](intro/samples/cu21/Pages/Students/Index.cshtml.cs?name=snippet_SortFilter&highlight=1,5,9-13)]
 
@@ -387,7 +387,7 @@ https://localhost:<port>/Students?SearchString=an
 
 [!code-html[](intro/samples/cu21/Pages/Students/Index3.cshtml?highlight=14-23&range=1-25)]
 
-Для добавления кнопки и поля поиска предыдущий код использует [вспомогательную функцию тегов](xref:mvc/views/tag-helpers/intro) `<form>`. По умолчанию вспомогательная функция тегов `<form>` отправляет данные формы с помощью POST. При этом параметры передаются в тексте сообщения HTTP, а не в URL-адресе. При использовании HTTP GET данные формы передаются в виде строк запроса в URL-адресе. Передача данных со строками запроса позволяет пользователям добавлять URL-адрес в закладки. [Руководства консорциума W3C](https://www.w3.org/2001/tag/doc/whenToUseGet.html) рекомендуют использовать GET, когда действие не приводит к обновлению.
+Для добавления кнопки и поля поиска предыдущий код использует `<form>` [вспомогательную функцию тегов](xref:mvc/views/tag-helpers/intro). По умолчанию вспомогательная функция тегов `<form>` отправляет данные формы с помощью POST. При этом параметры передаются в тексте сообщения HTTP, а не в URL-адресе. При использовании HTTP GET данные формы передаются в виде строк запроса в URL-адресе. Передача данных со строками запроса позволяет пользователям добавлять URL-адрес в закладки. [Руководства консорциума W3C](https://www.w3.org/2001/tag/doc/whenToUseGet.html) рекомендуют использовать GET, когда действие не приводит к обновлению.
 
 Проверьте работу приложения:
 
@@ -424,7 +424,7 @@ http://localhost:5000/Students?SearchString=an
 
 [!code-csharp[](intro/samples/cu21/Pages/Students/Index.cshtml.cs?name=snippet_SortFilterPageType)]
 
-Измените *Students/Index.cshtml.cs* `OnGetAsync`, используя следующий код:
+Измените файл *Students/Index.cshtml.cs* `OnGetAsync`, используя следующий код:
 
 [!code-csharp[](intro/samples/cu21/Pages/Students/Index.cshtml.cs?name=snippet_SortFilterPage&highlight=1-4,7-14,41-999)]
 
@@ -521,13 +521,13 @@ http://localhost:5000/Students?SearchString=an
 
 Запустите приложение и перейдите на страницу "About" (О программе). Количество зачисленных студентов по дням отображается в таблице.
 
-При возникновении проблем, которые вам не удается устранить, скачайте [готовое приложение для этого этапа](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/data/ef-rp/intro/samples/StageSnapShots/cu-part3-sorting).
+При возникновении проблем, которые вам не удается устранить, скачайте [готовое приложение для этого этапа](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/data/ef-rp/intro/samples/StageSnapShots/cu-part3-sorting).
 
 ![Страница About](sort-filter-page/_static/about.png)
 
 ## <a name="additional-resources"></a>Дополнительные ресурсы
 
-* [Отладка источника ASP.NET Core 2.x](https://github.com/aspnet/AspNetCore.Docs/issues/4155)
+* [Отладка источника ASP.NET Core 2.x](https://github.com/dotnet/AspNetCore.Docs/issues/4155)
 * [Версия руководства на YouTube](https://www.youtube.com/watch?v=MDs7PFpoMqI)
 
 В следующем руководстве приложение использует миграции для обновления модели данных.

@@ -1,22 +1,20 @@
 ---
 title: Структура каталогов ASP.NET Core
-author: guardrex
+author: rick-anderson
 description: Сведения о структуре каталогов опубликованных приложений ASP.NET Core.
 monikerRange: '>= aspnetcore-2.2'
 ms.author: riande
 ms.custom: mvc
 ms.date: 02/07/2020
 uid: host-and-deploy/directory-structure
-ms.openlocfilehash: c3c05e6bc461ea4a3bfefa2c7a49d524562f7e5b
-ms.sourcegitcommit: 85564ee396c74c7651ac47dd45082f3f1803f7a2
+ms.openlocfilehash: f7d6feec9961b7f6720d30d457fae5dcb6b34d6c
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77172260"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78649354"
 ---
 # <a name="aspnet-core-directory-structure"></a>Структура каталогов ASP.NET Core
-
-Автор [Люк Латэм](https://github.com/guardrex) (Luke Latham)
 
 ::: moniker range=">= aspnetcore-3.0"
 
@@ -30,8 +28,8 @@ ms.locfileid: "77172260"
 
 | Тип приложения | Структура каталогов |
 | -------- | ------------------- |
-| [Исполняемый файл, зависящий от платформы (FDE)](/dotnet/core/deploying/#framework-dependent-executables-fde) | <ul><li>publish&dagger;<ul><li>Views&dagger; в приложениях MVC, если представления не компилируются заранее</li><li>Pages&dagger; в приложениях MVC или Razor Pages, если страницы не компилируются заранее</li><li>wwwroot&dagger;</li><li>*.dll files</li><li>{ASSEMBLY NAME}.deps.json</li><li>{ASSEMBLY NAME}.dll</li><li>{ASSEMBLY NAME}{.EXTENSION} (расширение *EXE* на Windows, без расширения на macOS или Linux)</li><li>{ASSEMBLY NAME}.pdb</li><li>{ASSEMBLY NAME}.Views.dll</li><li>{ASSEMBLY NAME}.Views.pdb</li><li>{ASSEMBLY NAME}.runtimeconfig.json</li><li>web.config (IIS deployments)</li><li>createdump ([служебная программа createdump на Linux](https://github.com/dotnet/coreclr/blob/master/Documentation/botr/xplat-minidump-generation.md#configurationpolicy))</li><li>* .so (общая библиотека объектов Linux)</li><li>*.a (архив macOS)</li><li>* .dylib (динамическая библиотека macOS)</li></ul></li></ul> |
-| [Автономное развертывание (SCD)](/dotnet/core/deploying/#self-contained-deployments-scd) | <ul><li>publish&dagger;<ul><li>Views&dagger; в приложениях MVC, если представления не компилируются заранее</li><li>Pages&dagger; в приложениях MVC или Razor Pages, если страницы не компилируются заранее</li><li>wwwroot&dagger;</li><li>DLL-файлы</li><li>{имя_сборки}.deps.json</li><li>{имя_сборки}.dll</li><li>{имя_сборки}.exe</li><li>{имя_сборки}.pdb</li><li>{имя_сборки}.Views.dll</li><li>{имя_сборки}.Views.pdb</li><li>{имя_сборки}.runtimeconfig.json</li><li>web.config (в развертываниях IIS)</li></ul></li></ul> |
+| [Исполняемый файл, зависящий от платформы (FDE)](/dotnet/core/deploying/#framework-dependent-executables-fde) | <ul><li>publish&dagger;<ul><li>Views&dagger; в приложениях MVC, если представления не компилируются заранее</li><li>Pages&dagger; в приложениях MVC или Razor Pages, если страницы не компилируются заранее</li><li>wwwroot&dagger;</li><li>\*DLL-файлы</li><li>{имя_сборки}.deps.json</li><li>{имя_сборки}.dll</li><li>{имя_сборки}{.расширение} (расширение *EXE* в Windows, без расширения в macOS или Linux)</li><li>{имя_сборки}.pdb</li><li>{имя_сборки}.Views.dll</li><li>{имя_сборки}.Views.pdb</li><li>{имя_сборки}.runtimeconfig.json</li><li>web.config (в развертываниях IIS)</li><li>createdump ([служебная программа createdump в Linux](https://github.com/dotnet/coreclr/blob/master/Documentation/botr/xplat-minidump-generation.md#configurationpolicy))</li><li>\*.so (общая библиотека объектов Linux)</li><li>\*.а (архив macOS)</li><li>\*.dylib (динамическая библиотека macOS)</li></ul></li></ul> |
+| [Автономное развертывание (SCD)](/dotnet/core/deploying/#self-contained-deployments-scd) | <ul><li>publish&dagger;<ul><li>Views&dagger; в приложениях MVC, если представления не компилируются заранее</li><li>Pages&dagger; в приложениях MVC или Razor Pages, если страницы не компилируются заранее</li><li>wwwroot&dagger;</li><li>\*DLL-файлы</li><li>{имя_сборки}.deps.json</li><li>{имя_сборки}.dll</li><li>{имя_сборки}.exe</li><li>{имя_сборки}.pdb</li><li>{имя_сборки}.Views.dll</li><li>{имя_сборки}.Views.pdb</li><li>{имя_сборки}.runtimeconfig.json</li><li>web.config (в развертываниях IIS)</li></ul></li></ul> |
 
 &dagger;Обозначает каталог
 

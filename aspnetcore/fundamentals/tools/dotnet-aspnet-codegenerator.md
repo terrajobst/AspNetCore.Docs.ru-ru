@@ -7,11 +7,11 @@ ms.author: riande
 ms.date: 07/04/2019
 uid: fundamentals/tools/dotnet-aspnet-codegenerator
 ms.openlocfilehash: 1043a578f66d5bb57f4a81e9fe21afa5e3c37cb8
-ms.sourcegitcommit: 215954a638d24124f791024c66fd4fb9109fd380
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71081511"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78649858"
 ---
 # <a name="dotnet-aspnet-codegenerator"></a>dotnet aspnet-codegenerator
 
@@ -42,7 +42,7 @@ dotnet aspnet-codegenerator [arguments] [-p|--project] [-n|--nuget-package-dir] 
 dotnet aspnet-codegenerator [-h|--help]
 ```
 
-## <a name="description"></a>ОПИСАНИЕ
+## <a name="description"></a>Описание
 
 Глобальная команда `dotnet aspnet-codegenerator` запускает генератор кода и подсистему формирования шаблонов ASP.NET Core.
 
@@ -121,13 +121,13 @@ dotnet aspnet-codegenerator [-h|--help]
 
 ### <a name="controller-options"></a>Параметры контроллера
 
-В таблице ниже перечислены параметры для `aspnet-codegenerator`, `controller` и `razorpage`.
+В таблице ниже перечислены параметры для `aspnet-codegenerator` `controller` и `razorpage`.
 
 [!INCLUDE [aspnet-codegenerator-args-md.md](~/includes/aspnet-codegenerator-args-md.md)]
 
 В таблице ниже перечислены параметры только для `aspnet-codegenerator controller`.
 
-| Параметр               | ОПИСАНИЕ|
+| Параметр               | Описание|
 | ----------------- | ------------ |
 | --controllerName или -name | Имя контроллера. |
 | --useAsyncActions или -async | Создание асинхронных действий контроллера. |
@@ -170,13 +170,13 @@ dotnet aspnet-codegenerator razorpage MyEdit Edit -m Movie -dc RazorPagesMovieCo
 * `Details`
 * `List`
 
-В таблице ниже перечислены параметры для `aspnet-codegenerator`, `razorpage` и `controller`.
+В таблице ниже перечислены параметры для `aspnet-codegenerator` `razorpage` и `controller`.
 
 [!INCLUDE [aspnet-codegenerator-args-md.md](~/includes/aspnet-codegenerator-args-md.md)]
 
 В таблице ниже перечислены параметры только для `aspnet-codegenerator razorpage`.
 
-| Параметр               | ОПИСАНИЕ|
+| Параметр               | Описание|
 | ----------------- | ------------ |
 |   --namespaceName или -namespace | Имя пространства имен, используемого для созданной модели PageModel. |
 | --partialView или -partial | Создание частичного представления. Если указан этот параметр, параметры макета -l и -udl игнорируются. |

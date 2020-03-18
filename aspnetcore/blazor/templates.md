@@ -1,7 +1,7 @@
 ---
-title: Шаблоны Blazor ASP.NET Core
+title: Шаблоны ASP.NET Core Blazor
 author: guardrex
-description: Сведения о ASP.NET Core Blazor шаблонах приложений и структуре проекта Blazor.
+description: Сведения о шаблонах приложений Blazor и структуре проекта Blazor в ASP.NET Core.
 monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
 ms.custom: mvc
@@ -11,74 +11,74 @@ no-loc:
 - SignalR
 uid: blazor/templates
 ms.openlocfilehash: acfa4b8a42cbd310c6fc6dc973573578e94ef999
-ms.sourcegitcommit: c81ef12a1b6e6ac838e5e07042717cf492e6635b
-ms.translationtype: MT
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
+ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76885506"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78649450"
 ---
-# <a name="aspnet-core-opno-locblazor-templates"></a>Шаблоны Blazor ASP.NET Core
+# <a name="aspnet-core-opno-locblazor-templates"></a>Шаблоны ASP.NET Core Blazor
 
 Авторы: [Дэниэл Рот (Daniel Roth)](https://github.com/danroth27) и [Люк Лэтем (Luke Latham)](https://github.com/guardrex)
 
 [!INCLUDE[](~/includes/blazorwasm-preview-notice.md)]
 
-Платформа Blazor предоставляет шаблоны для разработки приложений для каждой из моделей размещения Blazor.
+Платформа Blazor предоставляет шаблоны разработки приложений для каждой из моделей размещения Blazor:
 
-* Blazorая сборка (`blazorwasm`)
-* Сервер Blazor (`blazorserver`)
+* Blazor WebAssembly (`blazorwasm`)
+* Blazor Server (`blazorserver`)
 
-Дополнительные сведения о моделях размещения Blazorсм. в разделе <xref:blazor/hosting-models>.
+Дополнительные сведения о моделях размещения Blazor см. в статье <xref:blazor/hosting-models>.
 
-Пошаговые инструкции по созданию Blazor приложения из шаблона см. в разделе <xref:blazor/get-started>.
+Пошаговые инструкции по созданию приложения Blazor на основе шаблона см. в статье <xref:blazor/get-started>.
 
 ## <a name="opno-locblazor-project-structure"></a>Структура проекта Blazor
 
-Следующие файлы и папки составляют Blazor приложение, созданное на основе шаблона Blazor:
+Приложение Blazor, создаваемое на основе шаблона Blazor, состоит из следующих файлов и папок:
 
-* *Program.cs* &ndash; точку входа приложения, которая настраивает:
+* *Program.cs* &ndash; точка входа в приложение, которая служит для настройки следующих компонентов:
 
-  * [Узел](xref:fundamentals/host/generic-host) ASP.NET Core (Blazor Server)
-  * Узел веб-сборки (Blazor веб-сборка) &ndash; код в этом файле уникален для приложений, созданных из Blazor шаблона веб-сборки (`blazorwasm`).
-    * Компонент `App`, который является корневым компонентом приложения, указывается в качестве `app` элемента DOM для метода `Add`.
-    * Службы можно настроить с помощью метода `ConfigureServices` в построителе узлов (например, `builder.Services.AddSingleton<IMyDependency, MyDependency>();`).
-    * Конфигурацию можно указать с помощью построителя узлов (`builder.Configuration`).
+  * [узел](xref:fundamentals/host/generic-host) ASP.NET Core (Blazor Server);
+  * узел WebAssembly (Blazor WebAssembly) &ndash; код в этом файле уникален для приложений, создаваемых на основе шаблона Blazor WebAssembly (`blazorwasm`).
+    * Компонент `App`, который является корневым компонентом приложения, указывается как элемент `app` модели DOM в методе `Add`.
+    * Службы могут настраиваться с помощью метода `ConfigureServices` построителя узла (например, `builder.Services.AddSingleton<IMyDependency, MyDependency>();`).
+    * Конфигурацию можно предоставить посредством построителя узла (`builder.Configuration`).
 
-* *Startup.CS* (Blazor Server) &ndash; содержит логику запуска приложения. Класс `Startup` определяет два метода:
+* *Startup.cs* (Blazor Server) &ndash; содержит логику запуска приложения. В классе `Startup` определены два метода:
 
-  * `ConfigureServices` &ndash; настраивает службы [внедрения зависимостей (DI)](xref:fundamentals/dependency-injection) приложения. В Blazor серверных приложений службы добавляются путем вызова <xref:Microsoft.Extensions.DependencyInjection.ComponentServiceCollectionExtensions.AddServerSideBlazor*>, а `WeatherForecastService` добавляется в контейнер службы для использования в примере `FetchData` компонента.
-  * `Configure` &ndash; настраивает конвейер обработки запросов приложения:
-    * <xref:Microsoft.AspNetCore.Builder.ComponentEndpointRouteBuilderExtensions.MapBlazorHub*> вызывается для настройки конечной точки для соединения в режиме реального времени с браузером. Соединение создается с помощью [SignalR](xref:signalr/introduction), которое является платформой для добавления веб-функций в режиме реального времени к приложениям.
-    * [Мапфаллбакктопаже ("/_Host")](xref:Microsoft.AspNetCore.Builder.RazorPagesEndpointRouteBuilderExtensions.MapFallbackToPage*) вызывается для настройки корневой страницы приложения (*pages/_Host. cshtml*) и включения навигации.
+  * `ConfigureServices` &ndash; настраивает службы [внедрения зависимостей (DI)](xref:fundamentals/dependency-injection) для приложения. В приложениях Blazor Server службы добавляются путем вызова метода <xref:Microsoft.Extensions.DependencyInjection.ComponentServiceCollectionExtensions.AddServerSideBlazor*>. В контейнер службы добавляется служба `WeatherForecastService`, которая используется примером компонента `FetchData`.
+  * `Configure` &ndash; настраивает конвейер обработки запросов для приложения.
+    * <xref:Microsoft.AspNetCore.Builder.ComponentEndpointRouteBuilderExtensions.MapBlazorHub*> вызывается с целью настройки конечной точки для соединения в режиме реального времени с браузером. Соединение создается с помощью [SignalR](xref:signalr/introduction), платформы для добавления веб-функций реального времени в приложения.
+    * [MapFallbackToPage("/_Host")](xref:Microsoft.AspNetCore.Builder.RazorPagesEndpointRouteBuilderExtensions.MapFallbackToPage*) вызывается для настройки корневой страницы приложения (*Pages/_Host.cshtml*) и обеспечения навигации.
 
-* *wwwroot/index.HTML* (Blazor веб-сборка) &ndash; корневая страница приложения, реализованная как HTML-страница:
-  * При первом запросе любой страницы приложения Эта страница подготавливается к просмотру и возвращается в ответе.
-  * На странице указывается, где отображается корневой компонент `App`. Компонент `App` (*app. Razor*) указан в качестве `app` элемента DOM для метода `AddComponent` в `Startup.Configure`.
-  * Загружается файл `_framework/blazor.webassembly.js` JavaScript, который:
-    * Скачивает среду выполнения .NET, приложение и зависимости приложения.
-    * Инициализирует среду выполнения для запуска приложения.
+* *wwwroot/index.html* (Blazor WebAssembly) &ndash; корневая страница приложения, реализованная как HTML-страница.
+  * При первом запросе любой страницы приложения эта страница преобразовывается для просмотра и возвращается в ответе.
+  * На странице указывается место отрисовки корневого компонента `App`. Компонент `App` (*App.razor*) указывается как элемент `app` модели DOM в методе `AddComponent` в `Startup.Configure`.
+  * Загружается файл JavaScript `_framework/blazor.webassembly.js`, который выполняет следующие действия:
+    * скачивает среду выполнения .NET, приложение и его зависимости;
+    * инициализирует среду выполнения для запуска приложения.
 
-* *Pages/_Host. cshtml* (Blazor Server) &ndash; корневую страницу приложения, реализованного в виде страницы Razor:
-  * При первом запросе любой страницы приложения Эта страница подготавливается к просмотру и возвращается в ответе.
-  * Загружается файл `_framework/blazor.server.js` JavaScript, который настраивает подключение SignalR в режиме реального времени между браузером и сервером.
-  * На странице узла указывается, где отображается корневой компонент `App` (*app. Razor*).
+* *Pages/_Host.cshtml* (Blazor Server) &ndash; корневая страница приложения, реализованная как страница Razor.
+  * При первом запросе любой страницы приложения эта страница преобразовывается для просмотра и возвращается в ответе.
+  * Загружается файл JavaScript `_framework/blazor.server.js`, который настраивает соединение SignalR в режиме реального времени между браузером и сервером.
+  * На странице Host указывается место отрисовки корневого компонента `App` (*App.razor*).
 
-* *App. razor* &ndash; корневой компонент приложения, который настраивает маршрутизацию на стороне клиента с помощью компонента <xref:Microsoft.AspNetCore.Components.Routing.Router>. Компонент `Router` перехватывает навигацию браузера и отображает страницу, соответствующую запрошенному адресу.
+* *App.razor* &ndash; корневой компонент приложения, который настраивает маршрутизацию на стороне клиента с помощью компонента <xref:Microsoft.AspNetCore.Components.Routing.Router>. Компонент `Router` перехватывает навигацию в браузере и отображает страницу, соответствующую запрошенному адресу.
 
-* Папка *страниц* &ndash; содержит маршрутизируемые компоненты и страницы ( *. Razor*), которые составляют приложение Blazor. Маршрут для каждой страницы указывается с помощью директивы [`@page`](xref:mvc/views/razor#page) . Шаблон включает следующие компоненты:
-  * `Index` (*index. Razor*) &ndash; реализует домашнюю страницу.
-  * `Counter` (*Counter. Razor*) &ndash; реализует страницу счетчика.
-  * `Error` (*ошибка. Razor*, только серверное приложение Blazor) &ndash; отображаться при возникновении необработанного исключения в приложении.
-  * `FetchData` (*FetchData. Razor*) &ndash; реализует страницу Выбор данных.
+* Папка *Pages* &ndash; содержит маршрутизируемые компоненты и страницы ( *.razor*), составляющие приложение Blazor. Маршрут для каждой страницы указывается с помощью директивы [`@page`](xref:mvc/views/razor#page). Шаблон включает в себя следующие компоненты:
+  * `Index` (*Index.razor*) &ndash; реализует страницу Home;
+  * `Counter` (*Counter.razor*) &ndash; реализует страницу Counter;
+  * `Error` (*Error.razor*, только в приложении Blazor Server) &ndash; отрисовывается, когда в приложении возникает необработанное исключение;
+  * `FetchData` (*FetchData.razor*) &ndash; реализует страницу Fetch data.
 
-* *Общая* папка &ndash; содержит другие компоненты пользовательского интерфейса (*Razor*), используемые приложением:
-  * `MainLayout` (*маинлайаут. Razor*) &ndash; компонент макета приложения.
-  * `NavMenu` (*навмену. Razor*) &ndash; реализует навигацию по боковой панели. Включает [компонент навлинк](xref:blazor/routing#navlink-component) (<xref:Microsoft.AspNetCore.Components.Routing.NavLink>), который визуализирует ссылки навигации на другие компоненты Razor. Компонент `NavLink` автоматически указывает выбранное состояние при загрузке компонента, что помогает пользователю понять, какой компонент в данный момент отображается.
+* Папка *Shared* &ndash; содержит другие компоненты пользовательского интерфейса ( *.razor*), используемые приложением:
+  * `MainLayout` (*MainLayout.razor*) &ndash; компонент макета приложения;
+  * `NavMenu` (*NavMenu.razor*) &ndash; реализует боковую панель навигации. Включает в себя [компонент NavLink](xref:blazor/routing#navlink-component) (<xref:Microsoft.AspNetCore.Components.Routing.NavLink>), который служит для отрисовки навигационных ссылок на другие компоненты Razor. Компонент `NavLink` автоматически указывает выбранное состояние при загрузке компонента, что помогает пользователю понять, какой компонент отображается в настоящее время.
 
-* *_Imports. razor* &ndash; содержит общие директивы Razor для включения в компоненты приложения ( *. Razor*), такие как директивы [`@using`](xref:mvc/views/razor#using) для пространств имен.
+* *_Imports.razor* &ndash; содержит стандартные директивы Razor, включаемые в компонент приложения ( *.razor*), например директивы [`@using`](xref:mvc/views/razor#using) для пространств имен.
 
-* Папка *данных* (Blazor Server) &ndash; содержит класс `WeatherForecast` и реализацию `WeatherForecastService`, которые предоставляют примеры данных о погоде в компонент `FetchData` приложения.
+* Папка *Data* (Blazor Server) &ndash; содержит класс `WeatherForecast` и реализацию `WeatherForecastService`, которые предоставляют образец метеоданных для компонента `FetchData` приложения.
 
-* *wwwroot* &ndash; [корневую папку веб-узла](xref:fundamentals/index#web-root) для приложения, содержащего общие статические ресурсы приложения.
+* *wwwroot* &ndash; папка [корневого каталога документов](xref:fundamentals/index#web-root) для приложения, которая содержит его открытые статические ресурсы.
 
-* параметры конфигурации для приложения &ndash; *appSettings. JSON* (Blazor Server).
+* *appsettings.json* (Blazor Server) &ndash; параметры конфигурации приложения.

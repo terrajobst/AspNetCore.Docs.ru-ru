@@ -7,12 +7,12 @@ ms.author: scaddie
 ms.custom: mvc, seodec18
 ms.date: 08/17/2019
 uid: tutorials/first-mongo-app
-ms.openlocfilehash: 1425abbfc7bce6bdc445f4e41d9e004405c96e13
-ms.sourcegitcommit: c0b72b344dadea835b0e7943c52463f13ab98dd1
+ms.openlocfilehash: 0e7881aa93953866c7a90eb62de64c4c000a866c
+ms.sourcegitcommit: 40dc9b00131985abcd99bd567647420d798e798a
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74880332"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78935453"
 ---
 # <a name="create-a-web-api-with-aspnet-core-and-mongodb"></a>Создание веб-API с помощью ASP.NET Core и MongoDB
 
@@ -31,24 +31,24 @@ ms.locfileid: "74880332"
 > * выполнить операции CRUD MongoDB из веб-API.
 > * Настройка сериализации JSON
 
-[Просмотреть или скачать образец кода](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/tutorials/first-mongo-app/samples) ([как скачивать](xref:index#how-to-download-a-sample))
+[Просмотреть или скачать образец кода](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/tutorials/first-mongo-app/samples) ([как скачивать](xref:index#how-to-download-a-sample))
 
 ## <a name="prerequisites"></a>Предварительные требования
 
-# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
+# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 * [Пакет SDK для .NET Core 3.0 или более поздней версии](https://www.microsoft.com/net/download/all)
 * [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/?utm_medium=microsoft&utm_source=docs.microsoft.com&utm_campaign=inline+link&utm_content=download+vs2019) с рабочей нагрузкой **ASP.NET и веб-разработка**
 * [MongoDB](https://docs.mongodb.com/manual/tutorial/install-mongodb-on-windows/)
 
-# <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
+# <a name="visual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
 * [Пакет SDK для .NET Core 3.0 или более поздней версии](https://www.microsoft.com/net/download/all)
 * [Visual Studio Code](https://code.visualstudio.com/download)
-* [C# для Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp)
+* [C# для Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp)
 * [MongoDB](https://docs.mongodb.com/manual/administration/install-community/)
 
-# <a name="visual-studio-for-mactabvisual-studio-mac"></a>[Visual Studio для Mac](#tab/visual-studio-mac)
+# <a name="visual-studio-for-mac"></a>[Visual Studio для Mac](#tab/visual-studio-mac)
 
 * [Пакет SDK для .NET Core 3.0 или более поздней версии](https://www.microsoft.com/net/download/all)
 * [Visual Studio для Mac 7.7 или более поздней версии](https://visualstudio.microsoft.com/downloads/)
@@ -147,9 +147,9 @@ ms.locfileid: "74880332"
 
 ## <a name="create-the-aspnet-core-web-api-project"></a>Создание проекта веб-API ASP.NET Core
 
-# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
+# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-1. Выберите **Файл** > **Создать** > **Проект**.
+1. Перейдите в раздел **Файл** > **Создать** > **Проект**.
 1. Выберите тип проекта **Веб-приложение ASP.NET Core** и нажмите кнопку **Далее**.
 1. Задайте для проекта имя *BooksApi* и нажмите кнопку **Создать**.
 1. Выберите целевую платформу **.NET Core** и **ASP.NET Core 3.0**. Выберите шаблон проекта **API** и нажмите кнопку **Создать**.
@@ -159,7 +159,7 @@ ms.locfileid: "74880332"
    Install-Package MongoDB.Driver -Version {VERSION}
    ```
 
-# <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code.](#tab/visual-studio-code)
+# <a name="visual-studio-code"></a>[Visual Studio Code.](#tab/visual-studio-code)
 
 1. В командной оболочке выполните такие команды:
 
@@ -177,9 +177,9 @@ ms.locfileid: "74880332"
    dotnet add BooksApi.csproj package MongoDB.Driver -v {VERSION}
    ```
 
-# <a name="visual-studio-for-mactabvisual-studio-mac"></a>[Visual Studio для Mac](#tab/visual-studio-mac)
+# <a name="visual-studio-for-mac"></a>[Visual Studio для Mac](#tab/visual-studio-mac)
 
-1. Выберите **Файл** > **Новое решение** > **.NET Core** > **Приложение**.
+1. Перейдите в раздел **Файл** > **Создать решение** > **.NET Core** > **Приложение**.
 1. Выберите шаблон проекта **Веб-API ASP.NET Core** для C# и нажмите кнопку **Далее**.
 1. В раскрывающемся списке **Требуемая версия .NET Framework** выберите **.NET Core 3.0** и нажмите кнопку **Далее**.
 1. Введите *BooksApi* в поле **Имя проекта** и нажмите **Создать**.
@@ -240,7 +240,7 @@ ms.locfileid: "74880332"
 
 1. Добавьте выделенный ниже код в `Startup.ConfigureServices`:
 
-   [!code-csharp[](first-mongo-app/samples_snapshot/3.x/SampleApp/Startup.ConfigureServices.AddDbSettings.cs?highlight=3-7)]
+   [!code-csharp[](first-mongo-app/samples_snapshot/3.x/SampleApp/Startup.ConfigureServices.AddDbSettings.cs?highlight=3-8)]
 
    В приведенном выше коде:
 
@@ -264,7 +264,7 @@ ms.locfileid: "74880332"
 
    [!code-csharp[](first-mongo-app/samples_snapshot/3.x/SampleApp/Startup.ConfigureServices.AddSingletonService.cs?highlight=9)]
 
-   В предыдущем коде класс `BookService` регистрируется в DI, чтобы обеспечить поддержку внедрения через конструктор в используемые классы. Время существования отдельной службы — наиболее подходящий вариант, так как `BookService` имеет прямую зависимость от `MongoClient`. В соответствии с официальными [правилами повторного использования клиента Mongo](https://mongodb.github.io/mongo-csharp-driver/2.8/reference/driver/connecting/#re-use) `MongoClient` следует регистрировать в DI с использованием времени существования отдельной службы.
+   В предыдущем коде класс `BookService` регистрируется в DI, чтобы обеспечить поддержку внедрения через конструктор в используемые классы. Время существования отдельной службы — наиболее подходящий вариант, так как `BookService` имеет прямую зависимость от `MongoClient`. В соответствии с официальными [правилами повторного использования клиента Mongo](https://mongodb.github.io/mongo-csharp-driver/2.8/reference/driver/connecting/#re-use)`MongoClient` следует регистрировать в DI с использованием времени существования отдельной службы.
 
 1. Добавьте следующий код в самое начало файла *Startup.cs*, чтобы разрешить ссылку `BookService`:
 
@@ -348,7 +348,7 @@ ms.locfileid: "74880332"
 
 1. JSON.NET удален из общей платформы ASP.NET. Добавьте ссылку на пакет в [Microsoft.AspNetCore.Mvc.NewtonsoftJson](https://nuget.org/packages/Microsoft.AspNetCore.Mvc.NewtonsoftJson).
 
-1. В `Startup.ConfigureServices` вставьте следующий выделенный код в вызов метода `AddMvc`:
+1. В `Startup.ConfigureServices` вставьте следующий выделенный код в вызов метода `AddControllers`:
 
    [!code-csharp[](first-mongo-app/samples/3.x/SampleApp/Startup.cs?name=snippet_ConfigureServices&highlight=12)]
 
@@ -381,24 +381,24 @@ ms.locfileid: "74880332"
 > * выполнить операции CRUD MongoDB из веб-API.
 > * Настройка сериализации JSON
 
-[Просмотреть или скачать образец кода](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/tutorials/first-mongo-app/samples) ([как скачивать](xref:index#how-to-download-a-sample))
+[Просмотреть или скачать образец кода](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/tutorials/first-mongo-app/samples) ([как скачивать](xref:index#how-to-download-a-sample))
 
 ## <a name="prerequisites"></a>Предварительные требования
 
-# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
+# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 * [Пакет SDK для .NET Core 2.2](https://www.microsoft.com/net/download/all)
 * [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/?utm_medium=microsoft&utm_source=docs.microsoft.com&utm_campaign=inline+link&utm_content=download+vs2019) с рабочей нагрузкой **ASP.NET и веб-разработка**
 * [MongoDB](https://docs.mongodb.com/manual/tutorial/install-mongodb-on-windows/)
 
-# <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
+# <a name="visual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
 * [Пакет SDK для .NET Core 2.2](https://www.microsoft.com/net/download/all)
 * [Visual Studio Code](https://code.visualstudio.com/download)
-* [C# для Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp)
+* [C# для Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp)
 * [MongoDB](https://docs.mongodb.com/manual/administration/install-community/)
 
-# <a name="visual-studio-for-mactabvisual-studio-mac"></a>[Visual Studio для Mac](#tab/visual-studio-mac)
+# <a name="visual-studio-for-mac"></a>[Visual Studio для Mac](#tab/visual-studio-mac)
 
 * [Пакет SDK для .NET Core 2.2](https://www.microsoft.com/net/download/all)
 * [Visual Studio для Mac 7.7 или более поздней версии](https://visualstudio.microsoft.com/downloads/)
@@ -497,9 +497,9 @@ ms.locfileid: "74880332"
 
 ## <a name="create-the-aspnet-core-web-api-project"></a>Создание проекта веб-API ASP.NET Core
 
-# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
+# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-1. Выберите **Файл** > **Создать** > **Проект**.
+1. Перейдите в раздел **Файл** > **Создать** > **Проект**.
 1. Выберите тип проекта **Веб-приложение ASP.NET Core** и нажмите кнопку **Далее**.
 1. Задайте для проекта имя *BooksApi* и нажмите кнопку **Создать**.
 1. Выберите **.NET Core** требуемой версии .NET Framework и **ASP.NET Core 2.2**. Выберите шаблон проекта **API** и нажмите кнопку **Создать**.
@@ -509,7 +509,7 @@ ms.locfileid: "74880332"
    Install-Package MongoDB.Driver -Version {VERSION}
    ```
 
-# <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code.](#tab/visual-studio-code)
+# <a name="visual-studio-code"></a>[Visual Studio Code.](#tab/visual-studio-code)
 
 1. В командной оболочке выполните такие команды:
 
@@ -527,9 +527,9 @@ ms.locfileid: "74880332"
    dotnet add BooksApi.csproj package MongoDB.Driver -v {VERSION}
    ```
 
-# <a name="visual-studio-for-mactabvisual-studio-mac"></a>[Visual Studio для Mac](#tab/visual-studio-mac)
+# <a name="visual-studio-for-mac"></a>[Visual Studio для Mac](#tab/visual-studio-mac)
 
-1. Выберите **Файл** > **Новое решение** > **.NET Core** > **Приложение**.
+1. Перейдите в раздел **Файл** > **Создать решение** > **.NET Core** > **Приложение**.
 1. Выберите шаблон проекта **Веб-API ASP.NET Core** для C# и нажмите кнопку **Далее**.
 1. В раскрывающемся списке **Требуемая версия .NET Framework** выберите **.NET Core 2.2** и нажмите кнопку **Далее**.
 1. Введите *BooksApi* в поле **Имя проекта** и нажмите **Создать**.
@@ -614,7 +614,7 @@ ms.locfileid: "74880332"
 
    [!code-csharp[](first-mongo-app/samples_snapshot/2.x/SampleApp/Startup.ConfigureServices.AddSingletonService.cs?highlight=9)]
 
-   В предыдущем коде класс `BookService` регистрируется в DI, чтобы обеспечить поддержку внедрения через конструктор в используемые классы. Время существования отдельной службы — наиболее подходящий вариант, так как `BookService` имеет прямую зависимость от `MongoClient`. В соответствии с официальными [правилами повторного использования клиента Mongo](https://mongodb.github.io/mongo-csharp-driver/2.8/reference/driver/connecting/#re-use) `MongoClient` следует регистрировать в DI с использованием времени существования отдельной службы.
+   В предыдущем коде класс `BookService` регистрируется в DI, чтобы обеспечить поддержку внедрения через конструктор в используемые классы. Время существования отдельной службы — наиболее подходящий вариант, так как `BookService` имеет прямую зависимость от `MongoClient`. В соответствии с официальными [правилами повторного использования клиента Mongo](https://mongodb.github.io/mongo-csharp-driver/2.8/reference/driver/connecting/#re-use)`MongoClient` следует регистрировать в DI с использованием времени существования отдельной службы.
 
 1. Добавьте следующий код в самое начало файла *Startup.cs*, чтобы разрешить ссылку `BookService`:
 

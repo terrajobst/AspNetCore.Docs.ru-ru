@@ -1,22 +1,22 @@
 ---
 title: Размещение ASP.NET Core в веб-ферме
-author: guardrex
+author: rick-anderson
 description: Сведения о размещении нескольких экземпляров приложения ASP.NET Core с общими ресурсами в среде веб-фермы.
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
 ms.date: 01/13/2020
 uid: host-and-deploy/web-farm
-ms.openlocfilehash: 5c13e9bc4c514f9b42871d55a430265c8ec2da23
-ms.sourcegitcommit: 2388c2a7334ce66b6be3ffbab06dd7923df18f60
+ms.openlocfilehash: 316c87e5f49593c05991a94cbe5e55d175a49bb3
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75951818"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78647344"
 ---
 # <a name="host-aspnet-core-in-a-web-farm"></a>Размещение ASP.NET Core в веб-ферме
 
-Авторы: [Люк Латэм](https://github.com/guardrex) (Luke Latham) и [Крис Росс](https://github.com/Tratcher) (Chris Ross)
+Автор: [Крис Росс](https://github.com/Tratcher) (Chris Ross)
 
 *Веб-ферма* — это группа из двух или нескольких веб-серверов (или *узлов*), на которых размещается несколько экземпляров приложения. При поступлении запросов от пользователей на веб-ферму *подсистема балансировки нагрузки* распределяет эти запросы между узлами веб-фермы. Веб-фермы обеспечивают следующие улучшения:
 
@@ -62,8 +62,8 @@ ms.locfileid: "75951818"
 | -------- | ------------------- |
 | Проверка подлинности | Защита данных (см. раздел <xref:security/data-protection/configuration/overview>).<br><br>Дополнительные сведения см. в разделах <xref:security/authentication/cookie> и <xref:security/cookie-sharing>. |
 | идентификации | Проверка подлинности и конфигурация базы данных.<br><br>Для получения дополнительной информации см. <xref:security/authentication/identity>. |
-| Сеанс | Защита данных (зашифрованные файлы cookie) (см. раздел <xref:security/data-protection/configuration/overview>) и кэширование (см. раздел <xref:performance/caching/distributed>).<br><br>Дополнительные сведения см. в статье [Состояние сеанса и приложения в ASP.NET Core](xref:fundamentals/app-state#session-state). |
-| TempData | Защита данных (зашифрованные файлы cookie) (см. в <xref:security/data-protection/configuration/overview>) или в разделе "Сеанс" статьи [Состояние сеанса и приложения в ASP.NET Core](xref:fundamentals/app-state#session-state)).<br><br>Дополнительные сведения см. в статье [Состояние сеанса и приложения в ASP.NET Core](xref:fundamentals/app-state#tempdata). |
+| Сеанс | Защита данных (зашифрованные файлы cookie) (см. раздел <xref:security/data-protection/configuration/overview>) и кэширование (см. раздел <xref:performance/caching/distributed>).<br><br>Дополнительные сведения см. в статье [Управление сеансом и состоянием: ASP.NET Core](xref:fundamentals/app-state#session-state). |
+| TempData | Защита данных (зашифрованные файлы cookie) (см. в <xref:security/data-protection/configuration/overview>) или в разделе "Сеанс" статьи [Управление сеансом и состоянием: ASP.NET Core](xref:fundamentals/app-state#session-state)).<br><br>Дополнительные сведения см. в статье [Управление сеансом и состоянием: ASP.NET Core](xref:fundamentals/app-state#tempdata). |
 | Защита от подделки | Защита данных (см. раздел <xref:security/data-protection/configuration/overview>).<br><br>Для получения дополнительной информации см. <xref:security/anti-request-forgery>. |
 
 ## <a name="troubleshoot"></a>Устранение неполадок
@@ -93,3 +93,4 @@ ms.locfileid: "75951818"
 
 * [Расширение пользовательских скриптов для Windows](/azure/virtual-machines/extensions/custom-script-windows) скачивает и выполняет скрипты на виртуальных машинах Azure, что удобно для настройки после развертывания и установки программного обеспечения.
 * <xref:host-and-deploy/proxy-load-balancer>
+ 

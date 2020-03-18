@@ -9,11 +9,11 @@ no-loc:
 - Blazor
 uid: fundamentals/target-aspnetcore
 ms.openlocfilehash: 72096fc2f03033dfe8325b5129e074913a2fbd1f
-ms.sourcegitcommit: 2cb857f0de774df421e35289662ba92cfe56ffd1
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75463136"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78646690"
 ---
 # <a name="use-aspnet-core-apis-in-a-class-library"></a>Использование интерфейсов API ASP.NET Core в библиотеке классов
 
@@ -42,7 +42,7 @@ ASP.NET Core соответствует [политике поддержки .NE
 
 Такая ссылка на ASP.NET Core поддерживается только для проектов, предназначенных для .NET Core 3.x.
 
-## <a name="include-opno-locblazor-extensibility"></a>Включение расширяемости Blazor
+## <a name="include-blazor-extensibility"></a>Включение расширяемости Blazor
 
 Blazor поддерживает [модели размещения](xref:blazor/hosting-models) Server и WebAssembly (WASM). Если не требуется иное, то библиотека [компонентов Razor](xref:blazor/components) должна поддерживать обе модели размещения. Библиотека компонентов Razor должна использовать пакет SDK для [Microsoft.NET.SDK.Razor](xref:razor-pages/sdk).
 
@@ -50,11 +50,11 @@ Blazor поддерживает [модели размещения](xref:blazor/
 
 Для поддержки использования компонентов Razor из проектов [Blazor Server](xref:blazor/hosting-models#blazor-server) и [Blazor WASM](xref:blazor/hosting-models#blazor-webassembly) используйте следующие инструкции для редактора.
 
-# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
+# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 Используйте шаблон проекта **Библиотека классов Razor**. Снимите флажок **Support pages and views** (Представления и страницы поддержки).
 
-# <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
+# <a name="visual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
 Во встроенном терминале выполните следующую команду:
 
@@ -62,7 +62,7 @@ Blazor поддерживает [модели размещения](xref:blazor/
 dotnet new razorclasslib
 ```
 
-# <a name="visual-studio-for-mactabvisual-studio-mac"></a>[Visual Studio для Mac](#tab/visual-studio-mac)
+# <a name="visual-studio-for-mac"></a>[Visual Studio для Mac](#tab/visual-studio-mac)
 
 Используйте шаблон проекта **Библиотека классов Razor**.
 
@@ -114,11 +114,11 @@ dotnet new razorclasslib
 
 Шаблон проекта **Библиотека классов Razor** должен удовлетворять описанным выше требованиям для проектов, предназначенных для .NET Core 3.x. Для редактора следует использовать следующие инструкции.
 
-# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
+# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 Используйте шаблон проекта **Библиотека классов Razor**. Установите флажок **Support pages and views** (Представления и страницы поддержки).
 
-# <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
+# <a name="visual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
 Во встроенном терминале выполните следующую команду:
 
@@ -126,7 +126,7 @@ dotnet new razorclasslib
 dotnet new razorclasslib -s
 ```
 
-# <a name="visual-studio-for-mactabvisual-studio-mac"></a>[Visual Studio для Mac](#tab/visual-studio-mac)
+# <a name="visual-studio-for-mac"></a>[Visual Studio для Mac](#tab/visual-studio-mac)
 
 В настоящее время поддержка шаблона проекта отсутствует.
 

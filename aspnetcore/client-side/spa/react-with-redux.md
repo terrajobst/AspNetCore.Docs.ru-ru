@@ -8,11 +8,11 @@ ms.custom: mvc
 ms.date: 02/13/2019
 uid: spa/react-with-redux
 ms.openlocfilehash: ed2e9aea449ddb09fef049a391f40f57452786a8
-ms.sourcegitcommit: 5b0eca8c21550f95de3bb21096bd4fd4d9098026
-ms.translationtype: MT
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
+ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 04/27/2019
-ms.locfileid: "64893691"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78646468"
 ---
 # <a name="use-the-react-with-redux-project-template-with-aspnet-core"></a>Использование шаблона проекта React и Redux с ASP.NET Core
 
@@ -20,4 +20,4 @@ ms.locfileid: "64893691"
 
 За исключением команд создания проекта, все сведения о шаблоне React и Redux совпадают с данными о шаблоне React. Чтобы создать проект такого типа, выполните `dotnet new reactredux` вместо `dotnet new react`. Дополнительные сведения о функциональности обоих шаблонов на основе React вы найдете в [документации по шаблону React](xref:spa/react).
 
-Сведения о настройке React с Redux составные части приложения в IIS, см. в разделе [2.1 ReactRedux шаблона: Не удается использовать SPA в службах IIS (aspnet/Templating &num;555)](https://github.com/aspnet/Templating/issues/555).
+Сведения о настройке дочернего приложения React и Redux в IIS см. в статье [ReactRedux Template 2.1. Не удалось использовать SPA в службах IIS (aspnet/Templating &num;555)](https://github.com/aspnet/Templating/issues/555).

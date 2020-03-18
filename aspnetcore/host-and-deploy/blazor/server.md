@@ -5,17 +5,17 @@ description: Сведения о размещении и развертыван�
 monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 02/12/2020
+ms.date: 02/15/2020
 no-loc:
 - Blazor
 - SignalR
 uid: host-and-deploy/blazor/server
-ms.openlocfilehash: a051d51e734fec4315da73d3c4df57706df7f363
-ms.sourcegitcommit: 6645435fc8f5092fc7e923742e85592b56e37ada
+ms.openlocfilehash: 42321b8564524fec41104ccaf1ac47981d014c94
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77465827"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78647362"
 ---
 # <a name="host-and-deploy-opno-locblazor-server"></a>Размещение и развертывание серверного приложения Blazor
 
@@ -87,7 +87,10 @@ Blazor лучше всего работает с WebSocket в качестве �
 
 #### <a name="iis"></a>IIS
 
-При использовании служб IIS прикрепленные сеансы включаются с помощью маршрутизации запросов приложений. Дополнительные сведения см. в статье [Балансировка нагрузки HTTP с помощью маршрутизации запросов приложений](/iis/extensions/configuring-application-request-routing-arr/http-load-balancing-using-application-request-routing).
+При использовании IIS включите:
+
+* [WebSockets в IIS](xref:fundamentals/websockets#enabling-websockets-on-iis).
+* [Прикрепленные сеансы с маршрутизацией запросов приложений](/iis/extensions/configuring-application-request-routing-arr/http-load-balancing-using-application-request-routing).
 
 #### <a name="kubernetes"></a>Kubernetes
 
@@ -118,7 +121,7 @@ proxy_set_header Connection $connection_upgrade;
 
 ### <a name="measure-network-latency"></a>Измерение задержки сети
 
-Для оценки задержки сети можно использовать [средства взаимодействия JavaScript](xref:blazor/javascript-interop), как показано в следующем примере:
+Для оценки задержки сети можно использовать [средства взаимодействия JavaScript](xref:blazor/call-javascript-from-dotnet), как показано в следующем примере:
 
 ```razor
 @inject IJSRuntime JS

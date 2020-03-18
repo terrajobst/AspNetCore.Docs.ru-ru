@@ -1,29 +1,29 @@
 ---
-title: Веб-пакет SDK ASP.NET Core
+title: Веб-пакет SDK для ASP.NET Core
 author: Rick-Anderson
-description: Общие сведения о Microsoft. NET. SDK. Web.
+description: Общие сведения о пакете Microsoft.NET.Sdk.Web.
 ms.author: riande
 ms.date: 01/25/2020
 no-loc:
 - Blazor
 uid: razor-pages/web-sdk
 ms.openlocfilehash: 6a9d531efd2188aed525c949bb124914c31119db
-ms.sourcegitcommit: fe41cff0b99f3920b727286944e5b652ca301640
-ms.translationtype: MT
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
+ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76869770"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78648208"
 ---
-# <a name="aspnet-core-web-sdk"></a>Веб-пакет SDK ASP.NET Core
+# <a name="aspnet-core-web-sdk"></a>Веб-пакет SDK для ASP.NET Core
 
 ### <a name="overview"></a>Обзор
 
-`Microsoft.NET.Sdk.Web` — это [пакет SDK проекта MSBuild](https://docs.microsoft.com/visualstudio/msbuild/how-to-use-project-sdk) для создания приложений ASP.NET Core. Можно создать ASP.NET Core приложение без этого пакета SDK, однако веб-пакет SDK будет следующим:
+`Microsoft.NET.Sdk.Web` — это [пакет SDK проекта MSBuild](https://docs.microsoft.com/visualstudio/msbuild/how-to-use-project-sdk) для разработки приложений ASP.NET Core. Приложения ASP.NET Core можно создавать и без этого пакета SDK, однако веб-пакет SDK дает следующие преимущества:
 
-* Приспособлено к обеспечению первого класса.
-* Рекомендуемый целевой объект для большинства пользователей.
+* обеспечивает максимальное удобство разработки;
+* рекомендуется для большинства пользователей.
 
-Использование Web. SDK в проекте:
+Используйте Web.SDK в проекте:
 
   ```xml
   <Project Sdk="Microsoft.NET.Sdk.Web">
@@ -31,18 +31,18 @@ ms.locfileid: "76869770"
   </Project>
   ```
 
-Функции, доступные с помощью веб-пакета SDK:
+Возможности, обеспечиваемые веб-пакетом SDK:
 
-* Проекты, предназначенные для .NET Core 3,0 или более поздней версии, неявно ссылаются на:
+* Проекты, предназначенные для .NET Core 3.0 или более поздней версии, имеют неявные ссылки на следующие компоненты:
 
-  * [ASP.NET Core общая платформа](xref:fundamentals/metapackage-app).
-  * [Анализаторы](/visualstudio/extensibility/getting-started-with-roslyn-analyzers) , предназначенные для создания ASP.NET Core приложений.
-* Веб-пакет SDK импортирует целевые объекты MSBuild, которые позволяют использовать профили публикации и публикацию с помощью WebDeploy.
+  * [общая платформа ASP.NET Core](xref:fundamentals/metapackage-app);
+  * [анализаторы](/visualstudio/extensibility/getting-started-with-roslyn-analyzers), предназначенные для создания приложений ASP.NET Core.
+* Веб-пакет SDK импортирует целевые объекты MSBuild, которые позволяют использовать профили публикации и выполнять публикацию с помощью WebDeploy.
 
 ### <a name="properties"></a>Свойства
 
-| Идентификаторы | Описание |
+| Свойство. | Описание |
 | -------- | ----------- |
-| `DisableImplicitFrameworkReferences` | Отключает неявную ссылку на `Microsoft.AspNetCore.App` общую платформу. |
+| `DisableImplicitFrameworkReferences` | Отключает неявную ссылку на общую платформу `Microsoft.AspNetCore.App`. |
 | `DisableImplicitAspNetCoreAnalyzers` | Отключает неявную ссылку на анализаторы ASP.NET Core. |
-| `DisableImplicitComponentsAnalyzers` | Отключает неявную ссылку на анализаторы компонентов Razor при создании приложений Blazor (сервера). |
+| `DisableImplicitComponentsAnalyzers` | Отключает неявную ссылку на анализаторы компонентов Razor при сборке приложений Blazor (серверных). |

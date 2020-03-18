@@ -1,82 +1,82 @@
 ---
-title: Устранение неполадок ASP.NET Core в службе приложений Azure и службах IIS
-author: guardrex
-description: Узнайте, как диагностировать проблемы со службами приложений Azure и развертываниями службы IIS (IIS) ASP.NET Core приложений.
+title: Устранение неполадок ASP.NET Core в Службе приложений Azure и IIS
+author: rick-anderson
+description: Сведения о диагностике проблем с развертываниями приложений ASP.NET Core с помощью служб IIS и Службы приложений Azure.
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
 ms.date: 02/07/2020
 uid: test/troubleshoot-azure-iis
-ms.openlocfilehash: a5cd17e46126828c6bc8436ccaaca28edb2573d0
-ms.sourcegitcommit: 235623b6e5a5d1841139c82a11ac2b4b3f31a7a9
-ms.translationtype: MT
+ms.openlocfilehash: 671f68da2ea261cb8ae32a9d5ef875217859054d
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
+ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 02/10/2020
-ms.locfileid: "77114852"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78644884"
 ---
-# <a name="troubleshoot-aspnet-core-on-azure-app-service-and-iis"></a>Устранение неполадок ASP.NET Core в службе приложений Azure и службах IIS
+# <a name="troubleshoot-aspnet-core-on-azure-app-service-and-iis"></a>Устранение неполадок ASP.NET Core в Службе приложений Azure и IIS
 
-[Люк ЛаСаМ](https://github.com/guardrex) и [Джастин коталик](https://github.com/jkotalik)
+Автор [Джастин Коталик (Justin Kotalik)](https://github.com/jkotalik)
 
 ::: moniker range=">= aspnetcore-3.0"
 
-В этой статье содержатся сведения об общих ошибках запуска приложений и инструкции по диагностике ошибок при развертывании приложения в службе приложений Azure или службах IIS.
+В этой статье содержатся сведения об общих ошибках запуска приложений и инструкции по диагностике ошибок при развертывании приложения в Службе приложений Azure или службах IIS:
 
-[Ошибки запуска приложений](#app-startup-errors)  
+[Ошибки при запуске приложения](#app-startup-errors)  
 Описание распространенных сценариев кода состояния HTTP для запуска.
 
-[Устранение неполадок в службе приложений Azure](#troubleshoot-on-azure-app-service)  
-Рекомендации по устранению неполадок для приложений, развернутых в службе приложений Azure.
+[Устранение неполадок в Службе приложений Azure](#troubleshoot-on-azure-app-service)  
+Рекомендации по устранению неполадок для приложений, развернутых в Службе приложений Azure.
 
 [Устранение неполадок в IIS](#troubleshoot-on-iis)  
-Рекомендации по устранению неполадок приложений, развернутых в службах IIS или запущенных на IIS Express локально. Руководство относится к развертываниям Windows Server и Windows Desktop.
+Рекомендации по устранению неполадок для приложений, развернутых в службах IIS или запущенных на IIS Express локально. Руководство относится к развертываниям Windows Server и Windows Desktop.
 
-[Очистить кэши пакетов](#clear-package-caches)  
-Объясняет, что делать, когда несогласованные пакеты нарушают работу приложения при выполнении основных обновлений или изменении версий пакета.
+[Очистка кэшей пакетов](#clear-package-caches)  
+Рекомендации о том, что делать, когда несогласованные пакеты нарушают работу приложения при установке основных обновлений или изменении версий пакета.
 
 [Дополнительные ресурсы](#additional-resources)  
-Список дополнительных разделов по устранению неполадок.
+Дополнительные статьи по устранению неполадок.
 
 ## <a name="app-startup-errors"></a>Ошибки при запуске приложения
 
-В Visual Studio проект ASP.NET Core по умолчанию использует размещение в [IIS Express](/iis/extensions/introduction-to-iis-express/iis-express-overview) на период отладки. Ошибка в *502,5-процессе* или *500,30-запуск* , возникающая при локальной отладке для диагностики с помощью инструкции в этом разделе.
+В Visual Studio проект ASP.NET Core по умолчанию использует размещение в [IIS Express](/iis/extensions/introduction-to-iis-express/iis-express-overview) на период отладки. Рекомендации в этой статье позволяют диагностировать неполадки, проявляющиеся как *502.5 — ошибка процесса* или *500.30 — ошибка запуска* при локальной отладке.
 
-### <a name="40314-forbidden"></a>403,14 запрещено
+### <a name="40314-forbidden"></a>403.14 (Запрещено)
 
-Не удается запустить приложение. Регистрируется следующая ошибка:
+Приложение не запускается. В журнал записывается следующая ошибка:
 
 ```
 The Web server is configured to not list the contents of this directory.
 ```
 
-Эта ошибка обычно вызвана неработающей развертыванием в системе размещения, которая включает в себя любой из следующих сценариев:
+Эта ошибка обычно вызвана неработающим развертыванием в системе размещения в следующих сценариях:
 
 * Приложение развертывается в неверной папке в системе размещения.
 * Процессу развертывания не удалось переместить все файлы и папки приложения в папку развертывания в системе размещения.
-* В развертывании отсутствует файл *Web. config* , или содержимое файла *Web. config* имеет неправильный формат.
+* Файл *web.config* отсутствует в развертывании, или содержимое файла *web.config* имеет неправильную структуру.
 
 Выполните следующие действия:
 
 1. Удалите все файлы и папки из папки развертывания в системе размещения.
-1. Повторно разверните содержимое папки *публикации* приложения в системе размещения с помощью обычного метода развертывания, например Visual Studio, PowerShell или ручного развертывания:
-   * Убедитесь, что файл *Web. config* находится в развертывании и что его содержимое указано правильно.
-   * При размещении в службе приложений Azure убедитесь, что приложение развернуто в папке `D:\home\site\wwwroot`.
-   * Если приложение размещено в IIS, убедитесь, что приложение развернуто на **физический путь** IIS, показанный в **основных параметрах** **диспетчера IIS**.
-1. Убедитесь, что все файлы и папки приложения развернуты путем сравнения развертывания в системе размещения с содержимым папки *публикации* проекта.
+1. Повторно разверните содержимое папки *publish* приложения в системе размещения с помощью обычного метода развертывания, например Visual Studio, PowerShell или развертывание вручную:
+   * Убедитесь, что файл *web.config* находится в развертывании и имеет правильное содержимое.
+   * При размещении в Службе приложений Azure убедитесь, что приложение развернуто в папке `D:\home\site\wwwroot`.
+   * Если приложение размещено в IIS, убедитесь, что оно развернуто по **физическому пути** служб IIS, указанному в **базовых параметрах** в **диспетчере IIS**.
+1. Убедитесь, что все файлы и папки приложения развернуты путем сравнения развертывания в системе размещения с содержимым папки проекта *publish*.
 
-Дополнительные сведения о макете опубликованного ASP.NET Core приложения см. в разделе <xref:host-and-deploy/directory-structure>. Дополнительные сведения о файле *Web. config* см. в разделе <xref:host-and-deploy/aspnet-core-module#configuration-with-webconfig>.
+Дополнительные сведения о макете опубликованного приложения ASP.NET Core см. в разделе <xref:host-and-deploy/directory-structure>. Дополнительные сведения о файле *web.config* см. в разделе <xref:host-and-deploy/aspnet-core-module#configuration-with-webconfig>.
 
-### <a name="500-internal-server-error"></a>500 — Внутренняя ошибка сервера
+### <a name="500-internal-server-error"></a>500 Internal Server Error (внутренняя ошибка сервера)
 
 Приложение запускается, но ошибка не позволяет серверу выполнить запрос.
 
-Эта ошибка возникает в коде приложения при запуске или при создании ответа. Ответ может не иметь содержимого или ответ в браузере может выглядеть как *500 — внутренняя ошибка сервера*. Как правило, в журнале событий приложения указывается, что приложение запускается в обычном режиме. Сервер действует правильно. Приложение запустилось, но оно не может генерировать действительный ответ. Запустите приложение из командной строки на сервере или включите журнал ASP.NET Core модуля stdout, чтобы устранить проблему.
+Эта ошибка возникает в коде приложения при запуске или при создании ответа. Ответ может не иметь содержимого или ответ в браузере может выглядеть как *500 — внутренняя ошибка сервера*. Как правило, в журнале событий приложения указывается, что приложение запускается в обычном режиме. Сервер действует правильно. Приложение запустилось, но оно не может генерировать действительный ответ. Чтобы устранить проблему, запустите приложение в командной строке на сервере или включите журнал вывода stdout для модуля ASP.NET Core.
 
 ### <a name="5000-in-process-handler-load-failure"></a>500.0 In-Process Handler Load Failure (ошибка загрузки внутрипроцессного обработчика)
 
 Рабочий процесс завершается ошибкой. Приложение не запускается.
 
-При загрузке компонентов [модуля ASP.NET Core](xref:host-and-deploy/aspnet-core-module) произошла неизвестная ошибка. Выполните одно из следующих действий:
+При загрузке компонентов [модуля ASP.NET Core](xref:host-and-deploy/aspnet-core-module) произошла неизвестная ошибка. Выполните одно из указанных ниже действий.
 
 * Обратитесь в [службу поддержки Майкрософт](https://support.microsoft.com/oas/default.aspx?prid=15832) (выберите **Средства разработчика**, а затем — **ASP.NET Core**).
 * Задайте вопрос на сайте Stack Overflow.
@@ -86,18 +86,18 @@ The Web server is configured to not list the contents of this directory.
 
 Рабочий процесс завершается ошибкой. Приложение не запускается.
 
-[Модуль ASP.NET Core](xref:host-and-deploy/aspnet-core-module) пытается запустить среду CLR .NET Core в процессе, но не запускается. Причину сбоя запуска процесса обычно можно определить на основе записей в журнале событий приложений и в журнале stdout модуля ASP.NET Core.
+[Модуль ASP.NET Core](xref:host-and-deploy/aspnet-core-module) пытается запустить среду CLR .NET Core внутри процесса, но она не запускается. Обычно причину сбоя при запуске процесса можно определить по записям в журнале событий приложения и журнале вывода stdout модуля ASP.NET Core.
 
-Распространенные условия сбоя:
+Распространенные причины сбоя:
 
-* Приложение неправильно настроено из-за целевой версии ASP.NET Core общей платформы, которая отсутствует. Проверьте, какие версии общей платформы ASP.NET Core установлены на целевом компьютере.
-* При использовании Azure Key Vault не хватает разрешений на Key Vault. Проверьте политики доступа в целевой Key Vault, чтобы убедиться, что предоставлены правильные разрешения.
+* В приложении указана отсутствующая версия общей платформы ASP.NET Core. Проверьте, какие версии общей платформы ASP.NET Core установлены на целевом компьютере.
+* При использовании Azure Key Vault не хватает разрешений на Key Vault. Проверьте политики доступа в целевое хранилище Key Vault, чтобы убедиться, что предоставлены правильные разрешения.
 
 ### <a name="50031-ancm-failed-to-find-native-dependencies"></a>500.31 ANCM Failed to Find Native Dependencies (ANCM не удалось найти собственные зависимости)
 
 Рабочий процесс завершается ошибкой. Приложение не запускается.
 
-[Модуль ASP.NET Core](xref:host-and-deploy/aspnet-core-module) пытается запустить среду выполнения .NET Core в процессе, но не запускается. Наиболее распространенная причина этой ошибки в том, что среда выполнения `Microsoft.NETCore.App` или `Microsoft.AspNetCore.App` не установлена. Если целевой платформой развернутого приложения является ASP.NET Core 3.0, но эта версия отсутствует на компьютере, происходит данная ошибка. Пример сообщения об ошибке:
+[Модуль ASP.NET Core](xref:host-and-deploy/aspnet-core-module) пытается запустить среду выполнения .NET Core внутри процесса, но она не запускается. Наиболее распространенная причина этой ошибки в том, что среда выполнения `Microsoft.NETCore.App` или `Microsoft.AspNetCore.App` не установлена. Если целевой платформой развернутого приложения является ASP.NET Core 3.0, но эта версия отсутствует на компьютере, происходит данная ошибка. Пример сообщения об ошибке:
 
 ```
 The specified framework 'Microsoft.NETCore.App', version '3.0.0' was not found.
@@ -115,7 +115,7 @@ The specified framework 'Microsoft.NETCore.App', version '3.0.0' was not found.
 * Измените целевую версию .NET Core приложения на версию, имеющуюся на компьютере.
 * Опубликуйте приложение как [автономное развертывание](/dotnet/core/deploying/#self-contained-deployments-scd).
 
-При запуске в среде разработки (переменная среды `ASPNETCORE_ENVIRONMENT` имеет значение `Development`) ошибка записывается в ответ HTTP. Причина сбоя запуска процесса также находится в журнале событий приложений.
+При запуске в среде разработки (переменная среды `ASPNETCORE_ENVIRONMENT` имеет значение `Development`) ошибка записывается в ответ HTTP. Причину сбоя при запуске процесса можно также узнать в журнале событий приложения.
 
 ### <a name="50032-ancm-failed-to-load-dll"></a>500.32 ANCM Failed to Load dll (ANCM не удалось загрузить библиотеку DLL)
 
@@ -132,7 +132,7 @@ The specified framework 'Microsoft.NETCore.App', version '3.0.0' was not found.
 
 Рабочий процесс завершается ошибкой. Приложение не запускается.
 
-Приложение не ссылается на платформу `Microsoft.AspNetCore.App`. Только приложения, предназначенные для платформы `Microsoft.AspNetCore.App` Framework, могут размещаться в [модуле ASP.NET Core](xref:host-and-deploy/aspnet-core-module).
+Приложение не ссылается на платформу `Microsoft.AspNetCore.App`. В [модуле ASP.NET Core](xref:host-and-deploy/aspnet-core-module) могут размещаться только приложения, предназначенные для платформы `Microsoft.AspNetCore.App`.
 
 Для устранения этой ошибки убедитесь в том, что приложение предназначено для платформы `Microsoft.AspNetCore.App`. В файле `.runtimeconfig.json` проверьте, является ли эта платформа целевой для приложения.
 
@@ -144,13 +144,13 @@ The specified framework 'Microsoft.NETCore.App', version '3.0.0' was not found.
 
 ### <a name="50035-ancm-multiple-in-process-applications-in-same-process"></a>500.35 ANCM Multiple In-Process Applications in same Process (Несколько внутрипроцессных приложений ANCM в одном процессе)
 
-Рабочий процесс не может запускать несколько процессов внутри процесса в одном процессе.
+Рабочий процесс не может запускать несколько внутрипроцессных приложений в одном процессе.
 
 Для устранения этой ошибки запускайте приложения в отдельных пулах приложений IIS.
 
 ### <a name="50036-ancm-out-of-process-handler-load-failure"></a>500.36 ANCM Out-Of-Process Handler Load Failure (Ошибка загрузки внепроцессного обработчика ANCM)
 
-Рядом с файлом *aspnetcorev2.dll* нет внепроцессного обработчика запросов *aspnetcorev2_outofprocess.dll*. Это указывает на поврежденную установку [модуля ASP.NET Core](xref:host-and-deploy/aspnet-core-module).
+Рядом с файлом *aspnetcorev2.dll* нет внепроцессного обработчика запросов *aspnetcorev2_outofprocess.dll*. Это свидетельствует о поврежденной установке [модуля ASP.NET Core](xref:host-and-deploy/aspnet-core-module).
 
 Для устранения этой ошибки восстановите установку [пакета размещения .NET Core](xref:host-and-deploy/iis/index#install-the-net-core-hosting-bundle) (для служб IIS) или Visual Studio (для IIS Express).
 
@@ -164,7 +164,7 @@ The specified framework 'Microsoft.NETCore.App', version '3.0.0' was not found.
 
 Рабочий процесс завершается ошибкой. Приложение не запускается.
 
-[Модуль ASP.NET Core](xref:host-and-deploy/aspnet-core-module) пытается запустить рабочий процесс, но он не запускается. Причину сбоя запуска процесса обычно можно определить на основе записей в журнале событий приложений и в журнале stdout модуля ASP.NET Core.
+[Модуль ASP.NET Core](xref:host-and-deploy/aspnet-core-module) пытается запустить рабочий процесс, но он не запускается. Обычно причину сбоя при запуске процесса можно определить по записям в журнале событий приложения и журнале вывода stdout модуля ASP.NET Core.
 
 Распространенной причиной сбоя является неправильная настройка приложения с выбором отсутствующей версии общей платформы ASP.NET Core. Проверьте, какие версии общей платформы ASP.NET Core установлены на целевом компьютере. *Общая платформа* — это набор сборок (*DLLl*-файлы), которые установлены на компьютере и на которые ссылается метапакет, например `Microsoft.AspNetCore.App`. В ссылках метапакета может быть указана минимальная требуемая версия. Дополнительную информацию см. в этой публикации об [общей платформе](https://natemcmaster.com/blog/2018/08/29/netcore-primitives-2/).
 
@@ -198,13 +198,13 @@ Failed to start application '/LM/W3SVC/6/ROOT/', ErrorCode '0x800700c1'.
 
 ### <a name="default-startup-limits"></a>Ограничения по умолчанию при запуске
 
-Для [модуля ASP.NET Core](xref:host-and-deploy/aspnet-core-module) настроено значение по умолчанию *startupTimeLimit* , равное 120 секундам. Если оставить значение по умолчанию, то прежде чем журнал модуля зарегистрирует ошибку запуска приложения, может пройти до двух минут. Сведения о настройке модуля см. в разделе [Атрибуты элемента aspNetCore](xref:host-and-deploy/aspnet-core-module#attributes-of-the-aspnetcore-element).
+Для параметра *startupTimeLimit* [модуля ASP.NET Core](xref:host-and-deploy/aspnet-core-module) установлено значение по умолчанию 120 секунд. Если оставить значение по умолчанию, то прежде чем журнал модуля зарегистрирует ошибку запуска приложения, может пройти до двух минут. Сведения о настройке модуля см. в разделе [Атрибуты элемента aspNetCore](xref:host-and-deploy/aspnet-core-module#attributes-of-the-aspnetcore-element).
 
-## <a name="troubleshoot-on-azure-app-service"></a>Устранение неполадок в службе приложений Azure
+## <a name="troubleshoot-on-azure-app-service"></a>Устранение неполадок в Службе приложений Azure
 
 [!INCLUDE [Azure App Service Preview Notice](~/includes/azure-apps-preview-notice.md)]
 
-### <a name="application-event-log-azure-app-service"></a>Журнал событий приложений (служба приложений Azure)
+### <a name="application-event-log-azure-app-service"></a>Журнал событий приложений (Служба приложений Azure)
 
 Чтобы получить доступ к журналу событий приложения, используйте колонку **Диагностика и решение проблем** на портале Azure.
 
@@ -218,7 +218,7 @@ Failed to start application '/LM/W3SVC/6/ROOT/', ErrorCode '0x800700c1'.
 
 1. В области **Средства разработки** откройте колонку **Дополнительные инструменты**. Нажмите кнопку **Перейти&rarr;** . Консоль Kudu открывается в новой вкладке или в окне браузера.
 1. С помощью панели навигации в верхней части страницы откройте **Консоль отладки** и выберите **CMD**.
-1. Откройте папку **LogFiles** .
+1. Откройте папку **LogFiles**.
 1. Выберите значок с карандашом рядом с файлом *eventlog.xml*.
 1. Изучите журнал. Прокрутите список до нижней части журнала, чтобы просмотреть последние события.
 
@@ -249,7 +249,7 @@ Failed to start application '/LM/W3SVC/6/ROOT/', ErrorCode '0x800700c1'.
 
 Выходные данные из приложения, отображающие любые ошибки, будут выведены на консоль Kudu.
 
-**Развертывание, зависимое от платформы, выполняющееся в предварительной версии**
+**Зависимое от платформы развертывание, выполняющееся в предварительном выпуске**
 
 *Требует установки расширения сайта для среды выполнения ASP.NET Core {VERSION} (x86).*
 
@@ -271,7 +271,7 @@ Failed to start application '/LM/W3SVC/6/ROOT/', ErrorCode '0x800700c1'.
 
 Выходные данные из приложения, отображающие любые ошибки, будут выведены на консоль Kudu.
 
-**Развертывание, зависимое от платформы, выполняющееся в предварительной версии**
+**Зависимое от платформы развертывание, выполняющееся в предварительном выпуске**
 
 *Требует установки расширения сайта для среды выполнения ASP.NET Core {VERSION} (x64).*
 
@@ -280,13 +280,13 @@ Failed to start application '/LM/W3SVC/6/ROOT/', ErrorCode '0x800700c1'.
 
 Выходные данные из приложения, отображающие любые ошибки, будут выведены на консоль Kudu.
 
-### <a name="aspnet-core-module-stdout-log-azure-app-service"></a>Журнал ASP.NET Core модуля stdout (служба приложений Azure)
+### <a name="aspnet-core-module-stdout-log-azure-app-service"></a>Журнал вывода stdout модуля ASP.NET Core (Служба приложений Azure)
 
 В журнале stdout модуля ASP.NET Core часто записываются полезные сообщения, которые не удается найти в журнале событий приложения. Чтобы включить и просмотреть журналы stdout выполните следующие действия.
 
 1. Перейдите к колонке **Диагностика и решение проблем** на портале Azure.
 1. В разделе **Выберите категорию проблемы** нажмите кнопку **Веб-приложение не работает**.
-1. В разделе **Предлагаемые решения** > **включить перенаправление журнала stdout**нажмите кнопку, чтобы **открыть консоль KUDU для изменения файла Web. config**.
+1. В разделе **Предлагаемые решения** > **Включить перенаправление журнала stdout** нажмите кнопку **Открыть консоль Kudu для редактирования файла Web.Config**.
 1. В **консоли диагностики** Kudu откройте папки на пути **веб-сайт** > **wwwroot**. Прокрутите список вниз, чтобы в его нижней части показался файл *web.config*.
 1. Щелкните значок карандаша рядом с файлом *web.config*.
 1. Установите для параметра **stdoutLogEnabled** значение `true` и измените путь **stdoutLogFile** на `\\?\%home%\LogFiles\stdout`.
@@ -304,20 +304,20 @@ Failed to start application '/LM/W3SVC/6/ROOT/', ErrorCode '0x800700c1'.
 1. Задайте параметру **stdoutLogEnabled** значение `false`.
 1. Нажмите кнопку **Сохранить** для сохранения файла.
 
-Дополнительные сведения см. в разделе <xref:host-and-deploy/aspnet-core-module#log-creation-and-redirection>.
+Для получения дополнительной информации см. <xref:host-and-deploy/aspnet-core-module#log-creation-and-redirection>.
 
 > [!WARNING]
 > Ошибка при отключении журнала stdout может привести к сбоям приложения или сервера. Ни размер файла журнала, ни количество создаваемых файлов журналов ничем не ограничены. Для устранения неполадок при запуске приложения используйте только журнал stdout.
 >
 > После запуска в приложении ASP.NET Core для ведения общего журнала используйте библиотеку ведения журналов, которая ограничивает размер файла журнала и выполняет циклический сдвиг журналов. Дополнительные сведения см. в разделе [Сторонние поставщики ведения журналов](xref:fundamentals/logging/index#third-party-logging-providers).
 
-### <a name="aspnet-core-module-debug-log-azure-app-service"></a>Журнал отладки модуля ASP.NET Core (служба приложений Azure)
+### <a name="aspnet-core-module-debug-log-azure-app-service"></a>Журнал отладки модуля ASP.NET Core (Служба приложений Azure)
 
-В журнал отладки модуля ASP.NET записываются дополнительные и более подробные сообщения, относящиеся к модулю ASP.NET Core. Чтобы включить и просмотреть журналы stdout выполните следующие действия.
+В журнал отладки модуля ASP.NET записываются дополнительные и более подробные сообщения, относящиеся к модулю ASP.NET Core. Чтобы включить и просмотреть журналы stdout, сделайте следующее:
 
 1. Чтобы включить ведение расширенного журнала диагностики, выполните одно из следующих действий.
    * Следуйте инструкциям по настройке приложения для ведения расширенных журналов диагностики, приведенным в разделе [Расширенные журналы диагностики](xref:host-and-deploy/aspnet-core-module#enhanced-diagnostic-logs). Повторно разверните приложение.
-   * С помощью консоли Kudu добавьте раздел `<handlerSettings>` в файл [web.config](xref:host-and-deploy/aspnet-core-module#enhanced-diagnostic-logs) приложения, как показано в разделе *Расширенные журналы диагностики*.
+   * С помощью консоли Kudu добавьте раздел `<handlerSettings>` в файл *web.config* приложения, как показано в разделе [Расширенные журналы диагностики](xref:host-and-deploy/aspnet-core-module#enhanced-diagnostic-logs).
      1. В области **Средства разработки** откройте колонку **Дополнительные инструменты**. Нажмите кнопку **Перейти&rarr;** . Консоль Kudu открывается в новой вкладке или в окне браузера.
      1. С помощью панели навигации в верхней части страницы откройте **Консоль отладки** и выберите **CMD**.
      1. Откройте папки на пути **веб-сайт** > **wwwroot**. Нажмите кнопку с изображением карандаша и внесите изменения в файл *web.config*. Добавьте раздел `<handlerSettings>`, как описано в разделе [Расширенные журналы диагностики](xref:host-and-deploy/aspnet-core-module#enhanced-diagnostic-logs). Нажмите кнопку **Сохранить**.
@@ -333,18 +333,18 @@ Failed to start application '/LM/W3SVC/6/ROOT/', ErrorCode '0x800700c1'.
 * Удалите раздел `<handlerSettings>` из файла *web.config* локально и повторно разверните приложение.
 * С помощью консоли Kudu внесите изменения в файл *web.config* и удалите раздел `<handlerSettings>`. Сохраните файл.
 
-Дополнительные сведения см. в разделе <xref:host-and-deploy/aspnet-core-module#enhanced-diagnostic-logs>.
+Для получения дополнительной информации см. <xref:host-and-deploy/aspnet-core-module#enhanced-diagnostic-logs>.
 
 > [!WARNING]
 > Ошибка при отключении журнала отладки может привести к сбоям приложения или сервера. Ограничения на размер файла журнала отсутствуют. Для устранения неполадок при запуске приложения используйте только журнал отладки.
 >
 > После запуска в приложении ASP.NET Core для ведения общего журнала используйте библиотеку ведения журналов, которая ограничивает размер файла журнала и выполняет циклический сдвиг журналов. Дополнительные сведения см. в разделе [Сторонние поставщики ведения журналов](xref:fundamentals/logging/index#third-party-logging-providers).
 
-### <a name="slow-or-hanging-app-azure-app-service"></a>Приложение с задержкой или зависанием (служба приложений Azure)
+### <a name="slow-or-hanging-app-azure-app-service"></a>Медленное или зависающее приложение (Служба приложений Azure)
 
 Если приложение медленно реагирует на запрос или зависает при его обработке, см. следующие статьи:
 
-* [Устранение причин низкой производительности приложения в Службе приложений Azure](/azure/app-service/app-service-web-troubleshoot-performance-degradation)
+* [Устранение проблем с производительностью медленных веб приложений в службе приложений Azure](/azure/app-service/app-service-web-troubleshoot-performance-degradation)
 * [Use Crash Diagnoser Site Extension to Capture Dump for Intermittent Exception issues or performance issues on Azure Web App (Использование расширения сайта средства диагностики сбоев для записи дампа при периодических проблемах с исключением или проблемах с производительностью в веб-приложении Azure)](https://blogs.msdn.microsoft.com/asiatech/2015/12/28/use-crash-diagnoser-site-extension-to-capture-dump-for-intermittent-exception-issues-or-performance-issues-on-azure-web-app/).
 
 ### <a name="monitoring-blades"></a>Мониторинг колонок
@@ -365,7 +365,7 @@ Failed to start application '/LM/W3SVC/6/ROOT/', ErrorCode '0x800700c1'.
 
 1. На портале Azure выберите колонку **Дополнительные инструменты** в области **Средства разработки**. Нажмите кнопку **Перейти&rarr;** . Консоль Kudu открывается в новой вкладке или в окне браузера.
 1. С помощью панели навигации в верхней части страницы откройте **Консоль отладки** и выберите **CMD**.
-1. Откройте папки на **сайте** Path > **wwwroot** и прокрутите вниз, чтобы открыть файл *Web. config* в нижней части списка.
+1. Откройте папки на пути **сайт** > **wwwroot** и прокрутите список вниз, пока в нижней части не появится файл *web.config*.
 1. Щелкните значок карандаша рядом с файлом *web.config*.
 1. Установите для параметра **stdoutLogEnabled** значение `true` и измените путь **stdoutLogFile** на `\\?\%home%\LogFiles\stdout`.
 1. Выберите **Сохранить** для сохранения обновленного файла *web.config*.
@@ -386,16 +386,16 @@ Failed to start application '/LM/W3SVC/6/ROOT/', ErrorCode '0x800700c1'.
 1. Перейдите к колонке **Диагностика и решение проблем** на портале Azure.
 1. Выберите **Журналы трассировки неудачно завершенных запросов** из области боковой панели **Средства поддержки**.
 
-Для получения дополнительной информации см. [Раздел "Трассировка неудачно завершенных запросов" раздела "Включение ведения журналов диагностики для веб-приложений в службе приложений Azure"](/azure/app-service/web-sites-enable-diagnostic-log#failed-request-traces) и [Вопросы и ответы о производительности приложений для веб-приложений в Azure: как включить трассировку неудачно завершенных запросов?](/azure/app-service/app-service-web-availability-performance-application-issues-faq#how-do-i-turn-on-failed-request-tracing).
+Для получения дополнительной информации см. [Раздел "Трассировка неудачно завершенных запросов" раздела "Включение ведения журналов диагностики для веб-приложений в службе приложений Azure"](/azure/app-service/web-sites-enable-diagnostic-log#failed-request-traces) и ["Вопросы и ответы о производительности приложений для веб-приложений в Azure: как включить трассировку неудачно завершенных запросов?"](/azure/app-service/app-service-web-availability-performance-application-issues-faq#how-do-i-turn-on-failed-request-tracing)
 
 Дополнительные сведения см. в разделе [Включение функции ведения журналов диагностики для веб-приложений в службе приложений Azure](/azure/app-service/web-sites-enable-diagnostic-log).
 
 > [!WARNING]
 > Ошибка при отключении журнала stdout может привести к сбоям приложения или сервера. Ни размер файла журнала, ни количество создаваемых файлов журналов ничем не ограничены.
 >
-> Для обычного входа в приложение ASP.NET Core используйте библиотеку ведения журналов, которая ограничивает размер файла журнала и выполняет циклический сдвиг журналов. Дополнительные сведения см. в разделе [Сторонние поставщики ведения журналов](xref:fundamentals/logging/index#third-party-logging-providers).
+> Для обычного ведения журналов для приложения ASP.NET Core используйте библиотеку, которая ограничивает размер файла журнала и выполняет циклический сдвиг журналов. Дополнительные сведения см. в разделе [Сторонние поставщики ведения журналов](xref:fundamentals/logging/index#third-party-logging-providers).
 
-## <a name="troubleshoot-on-iis"></a>Устранение неполадок в службах IIS
+## <a name="troubleshoot-on-iis"></a>Устранение неполадок в IIS
 
 ### <a name="application-event-log-iis"></a>Журнал событий приложений (IIS)
 
@@ -426,9 +426,9 @@ Failed to start application '/LM/W3SVC/6/ROOT/', ErrorCode '0x800700c1'.
 1. Выходные данные приложения, в том числе любые ошибки, будут выведены в окно консоли.
 1. Если ошибки возникают при выполнении запроса к приложению, выполните запрос к узлу и порту, где Kestrel ожидает передачи данных. Создайте запрос к `http://localhost:5000/`, используя узел и порт по умолчанию. Если приложение отвечает на запросы по адресу конечной точки Kestrel как обычно, то проблема, вероятнее, связана с конфигурацией размещения, а не с самим приложением.
 
-### <a name="aspnet-core-module-stdout-log-iis"></a>Журнал stdout модуля ASP.NET Core (IIS)
+### <a name="aspnet-core-module-stdout-log-iis"></a>Журнал вывода stdout модуля ASP.NET Core (IIS)
 
-Чтобы включить и просмотреть журналы stdout выполните следующие действия.
+Чтобы включить и просмотреть журналы stdout, сделайте следующее:
 
 1. Перейдите в папку развертывания сайта на компьютере размещения.
 1. Если здесь нет папки *logs*, создайте ее. Сведения о том, как настроить в MSBuild автоматическое создание папки *logs* в развертывании, см. в статье [о структуре каталогов](xref:host-and-deploy/directory-structure).
@@ -445,16 +445,16 @@ Failed to start application '/LM/W3SVC/6/ROOT/', ErrorCode '0x800700c1'.
 1. Задайте параметру **stdoutLogEnabled** значение `false`.
 1. Сохраните файл.
 
-Дополнительные сведения см. в разделе <xref:host-and-deploy/aspnet-core-module#log-creation-and-redirection>.
+Для получения дополнительной информации см. <xref:host-and-deploy/aspnet-core-module#log-creation-and-redirection>.
 
 > [!WARNING]
 > Ошибка при отключении журнала stdout может привести к сбоям приложения или сервера. Ни размер файла журнала, ни количество создаваемых файлов журналов ничем не ограничены.
 >
-> Для обычного входа в приложение ASP.NET Core используйте библиотеку ведения журналов, которая ограничивает размер файла журнала и выполняет циклический сдвиг журналов. Дополнительные сведения см. в разделе [Сторонние поставщики ведения журналов](xref:fundamentals/logging/index#third-party-logging-providers).
+> Для обычного ведения журналов для приложения ASP.NET Core используйте библиотеку, которая ограничивает размер файла журнала и выполняет циклический сдвиг журналов. Дополнительные сведения см. в разделе [Сторонние поставщики ведения журналов](xref:fundamentals/logging/index#third-party-logging-providers).
 
 ### <a name="aspnet-core-module-debug-log-iis"></a>Журнал отладки модуля ASP.NET Core (IIS)
 
-Добавьте следующие параметры обработчика в файл *Web. config* приложения, чтобы включить ASP.NET Core журнал отладки модуля:
+Добавьте следующие параметры обработчика в файл *web.config* приложения, чтобы включить журнал отладки модулей ASP.NET Core:
 
 ```xml
 <aspNetCore ...>
@@ -467,11 +467,11 @@ Failed to start application '/LM/W3SVC/6/ROOT/', ErrorCode '0x800700c1'.
 
 Убедитесь, что указанный для журнала путь существует и удостоверение пула приложений имеет разрешения на запись в это расположение.
 
-Дополнительные сведения см. в разделе <xref:host-and-deploy/aspnet-core-module#enhanced-diagnostic-logs>.
+Для получения дополнительной информации см. <xref:host-and-deploy/aspnet-core-module#enhanced-diagnostic-logs>.
 
 ### <a name="enable-the-developer-exception-page"></a>Включение страницы исключений для разработчика
 
-[Переменную среды `ASPNETCORE_ENVIRONMENT` можно добавить в файл Web. config](xref:host-and-deploy/aspnet-core-module#setting-environment-variables) для запуска приложения в среде разработки. Если среда не переопределяется при запуске приложения использованием `UseEnvironment` в конструкторе узла, эта переменная среды позволяет отображать [страницу исключения для разработчика](xref:fundamentals/error-handling) при запуске приложения.
+Можно добавить переменную среды `ASPNETCORE_ENVIRONMENT` [в файл web.config](xref:host-and-deploy/aspnet-core-module#setting-environment-variables), чтобы запустить приложение в среде разработки. Если среда не переопределяется при запуске приложения использованием `UseEnvironment` в конструкторе узла, эта переменная среды позволяет отображать [страницу исключения для разработчика](xref:fundamentals/error-handling) при запуске приложения.
 
 ```xml
 <aspNetCore processPath="dotnet"
@@ -491,7 +491,7 @@ Failed to start application '/LM/W3SVC/6/ROOT/', ErrorCode '0x800700c1'.
 
 Если приложение способно отвечать на запросы, получите данные о запросе, подключении и дополнительные данные из приложений с помощью встроенного терминала ПО промежуточного слоя. Дополнительные сведения и примеры с кодом см. здесь: <xref:test/troubleshoot#obtain-data-from-an-app>.
 
-### <a name="slow-or-hanging-app-iis"></a>Низкое или зависание приложения (IIS)
+### <a name="slow-or-hanging-app-iis"></a>Медленное или зависающее приложение (IIS)
 
 *Аварийный дамп* — это моментальный снимок системной памяти, который может помочь определить причину аварийного завершения, сбоя запуска или медленной работы приложения.
 
@@ -500,7 +500,7 @@ Failed to start application '/LM/W3SVC/6/ROOT/', ErrorCode '0x800700c1'.
 Получите и проанализируйте дамп из [отчетов об ошибках Windows (WER)](/windows/desktop/wer/windows-error-reporting):
 
 1. Создайте папку для хранения файлов аварийного дампа в `c:\dumps`. Пул приложений должен иметь доступ на запись к папке.
-1. Запустите [скрипт PowerShell EnableDumps](https://github.com/aspnet/AspNetCore.Docs/blob/master/aspnetcore/test/troubleshoot-azure-iis/scripts/EnableDumps.ps1):
+1. Запустите [скрипт PowerShell EnableDumps](https://github.com/dotnet/AspNetCore.Docs/blob/master/aspnetcore/test/troubleshoot-azure-iis/scripts/EnableDumps.ps1):
    * Если приложение использует [модель размещения в процессе](xref:host-and-deploy/iis/index#in-process-hosting-model), выполните скрипт для *w3wp.exe*:
 
      ```console
@@ -514,7 +514,7 @@ Failed to start application '/LM/W3SVC/6/ROOT/', ErrorCode '0x800700c1'.
      ```
 
 1. Запустите приложение в условиях, вызывающих аварийное завершение.
-1. После аварийного завершения запустите [скрипт PowerShell DisableDumps](https://github.com/aspnet/AspNetCore.Docs/blob/master/aspnetcore/test/troubleshoot-azure-iis/scripts/DisableDumps.ps1):
+1. После аварийного завершения запустите [скрипт PowerShell DisableDumps](https://github.com/dotnet/AspNetCore.Docs/blob/master/aspnetcore/test/troubleshoot-azure-iis/scripts/DisableDumps.ps1):
    * Если приложение использует [модель размещения в процессе](xref:host-and-deploy/iis/index#in-process-hosting-model), выполните скрипт для *w3wp.exe*:
 
      ```console
@@ -534,7 +534,7 @@ Failed to start application '/LM/W3SVC/6/ROOT/', ErrorCode '0x800700c1'.
 
 #### <a name="app-hangs-fails-during-startup-or-runs-normally"></a>Приложение перестает отвечать на запросы, не запускается или работает в обычном режиме
 
-Если приложение *зависает* (перестает отвечать, но не работает), завершается ошибкой во время запуска или обычно выполняется, см. раздел [файлы дампа пользовательского режима: выбор оптимального средства](/windows-hardware/drivers/debugger/user-mode-dump-files#choosing-the-best-tool) для создания дампа.
+Когда приложение *перестает отвечать на запросы* (но аварийное завершение не происходит), не запускается или работает в обычном режиме, см. раздел [Файлы дампа пользовательского режима: выбор лучшего инструмента](/windows-hardware/drivers/debugger/user-mode-dump-files#choosing-the-best-tool), чтобы выбрать подходящий инструмент для создания дампа.
 
 #### <a name="analyze-the-dump"></a>Анализ дампа
 
@@ -562,19 +562,19 @@ Failed to start application '/LM/W3SVC/6/ROOT/', ErrorCode '0x800700c1'.
 ### <a name="azure-documentation"></a>Документация по Azure
 
 * [Application Insights для ASP.NET Core](/azure/application-insights/app-insights-asp-net-core)
-* [Раздел "Удаленная отладка веб-приложений" статьи Устранение неполадок веб-приложения в службе приложений Azure с помощью Visual Studio](/azure/app-service/web-sites-dotnet-troubleshoot-visual-studio#remotedebug)
+* [Раздел "Веб-приложения удаленной отладки" статьи "Устранение неполадок веб-приложения в Службе приложений Azure с помощью Visual Studio"](/azure/app-service/web-sites-dotnet-troubleshoot-visual-studio#remotedebug)
 * [Общие сведения о диагностике в службе приложений Azure](/azure/app-service/app-service-diagnostics)
-* [Мониторинг приложений в службе приложений Azure](/azure/app-service/web-sites-monitor)
+* [Практическое руководство. Мониторинг приложений в Службе приложений Azure](/azure/app-service/web-sites-monitor)
 * [Устранение неполадок веб-приложения в службе приложений Azure с помощью Visual Studio](/azure/app-service/web-sites-dotnet-troubleshoot-visual-studio)
 * [Устранение ошибок HTTP "502 — недопустимый шлюз" и "503 — служба недоступна" в веб-приложениях Azure](/azure/app-service/app-service-web-troubleshoot-http-502-http-503)
-* [Устранение причин низкой производительности приложения в Службе приложений Azure](/azure/app-service/app-service-web-troubleshoot-performance-degradation)
+* [Устранение проблем с производительностью медленных веб приложений в службе приложений Azure](/azure/app-service/app-service-web-troubleshoot-performance-degradation)
 * [Вопросы и ответы о производительности приложений для веб-приложений в Azure](/azure/app-service/app-service-web-availability-performance-application-issues-faq)
 * ["Песочница" веб-приложений Azure (ограничения работы среды выполнения службы приложений)](https://github.com/projectkudu/kudu/wiki/Azure-Web-App-sandbox)
-* [Azure, пятница: практики диагностики и устранения неполадок в службе приложений Azure (12-минутное видео)](https://channel9.msdn.com/Shows/Azure-Friday/Azure-App-Service-Diagnostic-and-Troubleshooting-Experience)
+* [Пятница с Azure. Практика диагностики и устранения неполадок в Службе приложений Azure (12-минутное видео)](https://channel9.msdn.com/Shows/Azure-Friday/Azure-App-Service-Diagnostic-and-Troubleshooting-Experience)
 
 ### <a name="visual-studio-documentation"></a>Документация по Visual Studio
 
-* [Удаленная отладка ASP.NET Core на IIS в Azure в Visual Studio 2017](/visualstudio/debugger/remote-debugging-azure)
+* [Удаленная отладка ASP.NET Core в IIS в Azure в Visual Studio 2017](/visualstudio/debugger/remote-debugging-azure)
 * [Удаленная отладка ASP.NET Core на удаленном компьютере IIS в Visual Studio 2017](/visualstudio/debugger/remote-debugging-aspnet-on-a-remote-iis-computer)
 * [Сведения об отладке с помощью Visual Studio](/visualstudio/debugger/getting-started-with-the-debugger)
 
@@ -586,63 +586,63 @@ Failed to start application '/LM/W3SVC/6/ROOT/', ErrorCode '0x800700c1'.
 
 ::: moniker range="= aspnetcore-2.2"
 
-В этой статье содержатся сведения об общих ошибках запуска приложений и инструкции по диагностике ошибок при развертывании приложения в службе приложений Azure или службах IIS.
+В этой статье содержатся сведения об общих ошибках запуска приложений и инструкции по диагностике ошибок при развертывании приложения в Службе приложений Azure или службах IIS:
 
-[Ошибки запуска приложений](#app-startup-errors)  
+[Ошибки при запуске приложения](#app-startup-errors)  
 Описание распространенных сценариев кода состояния HTTP для запуска.
 
-[Устранение неполадок в службе приложений Azure](#troubleshoot-on-azure-app-service)  
-Рекомендации по устранению неполадок для приложений, развернутых в службе приложений Azure.
+[Устранение неполадок в Службе приложений Azure](#troubleshoot-on-azure-app-service)  
+Рекомендации по устранению неполадок для приложений, развернутых в Службе приложений Azure.
 
 [Устранение неполадок в IIS](#troubleshoot-on-iis)  
-Рекомендации по устранению неполадок приложений, развернутых в службах IIS или запущенных на IIS Express локально. Руководство относится к развертываниям Windows Server и Windows Desktop.
+Рекомендации по устранению неполадок для приложений, развернутых в службах IIS или запущенных на IIS Express локально. Руководство относится к развертываниям Windows Server и Windows Desktop.
 
-[Очистить кэши пакетов](#clear-package-caches)  
-Объясняет, что делать, когда несогласованные пакеты нарушают работу приложения при выполнении основных обновлений или изменении версий пакета.
+[Очистка кэшей пакетов](#clear-package-caches)  
+Рекомендации о том, что делать, когда несогласованные пакеты нарушают работу приложения при установке основных обновлений или изменении версий пакета.
 
 [Дополнительные ресурсы](#additional-resources)  
-Список дополнительных разделов по устранению неполадок.
+Дополнительные статьи по устранению неполадок.
 
 ## <a name="app-startup-errors"></a>Ошибки при запуске приложения
 
-В Visual Studio проект ASP.NET Core по умолчанию использует размещение в [IIS Express](/iis/extensions/introduction-to-iis-express/iis-express-overview) на период отладки. Ошибка в *502,5-процессе* или *500,30-запуск* , возникающая при локальной отладке для диагностики с помощью инструкции в этом разделе.
+В Visual Studio проект ASP.NET Core по умолчанию использует размещение в [IIS Express](/iis/extensions/introduction-to-iis-express/iis-express-overview) на период отладки. Рекомендации в этой статье позволяют диагностировать неполадки, проявляющиеся как *502.5 — ошибка процесса* или *500.30 — ошибка запуска* при локальной отладке.
 
-### <a name="40314-forbidden"></a>403,14 запрещено
+### <a name="40314-forbidden"></a>403.14 (Запрещено)
 
-Не удается запустить приложение. Регистрируется следующая ошибка:
+Приложение не запускается. В журнал записывается следующая ошибка:
 
 ```
 The Web server is configured to not list the contents of this directory.
 ```
 
-Эта ошибка обычно вызвана неработающей развертыванием в системе размещения, которая включает в себя любой из следующих сценариев:
+Эта ошибка обычно вызвана неработающим развертыванием в системе размещения в следующих сценариях:
 
 * Приложение развертывается в неверной папке в системе размещения.
 * Процессу развертывания не удалось переместить все файлы и папки приложения в папку развертывания в системе размещения.
-* В развертывании отсутствует файл *Web. config* , или содержимое файла *Web. config* имеет неправильный формат.
+* Файл *web.config* отсутствует в развертывании, или содержимое файла *web.config* имеет неправильную структуру.
 
 Выполните следующие действия:
 
 1. Удалите все файлы и папки из папки развертывания в системе размещения.
-1. Повторно разверните содержимое папки *публикации* приложения в системе размещения с помощью обычного метода развертывания, например Visual Studio, PowerShell или ручного развертывания:
-   * Убедитесь, что файл *Web. config* находится в развертывании и что его содержимое указано правильно.
-   * При размещении в службе приложений Azure убедитесь, что приложение развернуто в папке `D:\home\site\wwwroot`.
-   * Если приложение размещено в IIS, убедитесь, что приложение развернуто на **физический путь** IIS, показанный в **основных параметрах** **диспетчера IIS**.
-1. Убедитесь, что все файлы и папки приложения развернуты путем сравнения развертывания в системе размещения с содержимым папки *публикации* проекта.
+1. Повторно разверните содержимое папки *publish* приложения в системе размещения с помощью обычного метода развертывания, например Visual Studio, PowerShell или развертывание вручную:
+   * Убедитесь, что файл *web.config* находится в развертывании и имеет правильное содержимое.
+   * При размещении в Службе приложений Azure убедитесь, что приложение развернуто в папке `D:\home\site\wwwroot`.
+   * Если приложение размещено в IIS, убедитесь, что оно развернуто по **физическому пути** служб IIS, указанному в **базовых параметрах** в **диспетчере IIS**.
+1. Убедитесь, что все файлы и папки приложения развернуты путем сравнения развертывания в системе размещения с содержимым папки проекта *publish*.
 
-Дополнительные сведения о макете опубликованного ASP.NET Core приложения см. в разделе <xref:host-and-deploy/directory-structure>. Дополнительные сведения о файле *Web. config* см. в разделе <xref:host-and-deploy/aspnet-core-module#configuration-with-webconfig>.
+Дополнительные сведения о макете опубликованного приложения ASP.NET Core см. в разделе <xref:host-and-deploy/directory-structure>. Дополнительные сведения о файле *web.config* см. в разделе <xref:host-and-deploy/aspnet-core-module#configuration-with-webconfig>.
 
-### <a name="500-internal-server-error"></a>500 — Внутренняя ошибка сервера
+### <a name="500-internal-server-error"></a>500 Internal Server Error (внутренняя ошибка сервера)
 
 Приложение запускается, но ошибка не позволяет серверу выполнить запрос.
 
-Эта ошибка возникает в коде приложения при запуске или при создании ответа. Ответ может не иметь содержимого или ответ в браузере может выглядеть как *500 — внутренняя ошибка сервера*. Как правило, в журнале событий приложения указывается, что приложение запускается в обычном режиме. Сервер действует правильно. Приложение запустилось, но оно не может генерировать действительный ответ. Запустите приложение из командной строки на сервере или включите журнал ASP.NET Core модуля stdout, чтобы устранить проблему.
+Эта ошибка возникает в коде приложения при запуске или при создании ответа. Ответ может не иметь содержимого или ответ в браузере может выглядеть как *500 — внутренняя ошибка сервера*. Как правило, в журнале событий приложения указывается, что приложение запускается в обычном режиме. Сервер действует правильно. Приложение запустилось, но оно не может генерировать действительный ответ. Чтобы устранить проблему, запустите приложение в командной строке на сервере или включите журнал вывода stdout для модуля ASP.NET Core.
 
 ### <a name="5000-in-process-handler-load-failure"></a>500.0 In-Process Handler Load Failure (ошибка загрузки внутрипроцессного обработчика)
 
 Рабочий процесс завершается ошибкой. Приложение не запускается.
 
-[Модулю ASP.NET Core](xref:host-and-deploy/aspnet-core-module) не удается найти среду CLR .NET Core и найти обработчик внутрипроцессного запроса (*aspnetcorev2_inprocess. dll*). Выполните следующие проверки:
+[Модулю ASP.NET Core](xref:host-and-deploy/aspnet-core-module) не удается найти среду CLR .NET Core и внутрипроцессный обработчик запросов (*aspnetcorev2_inprocess.dll*). Проверьте следующие моменты:
 
 * приложение предназначено для пакета NuGet [Microsoft.AspNetCore.Server.IIS](https://www.nuget.org/packages/Microsoft.AspNetCore.Server.IIS) или [метапакета Microsoft.AspNetCore.App](xref:fundamentals/metapackage-app);
 * версия общей платформы ASP.NET Core, для которой предназначено приложение, установлена на целевом компьютере.
@@ -651,13 +651,13 @@ The Web server is configured to not list the contents of this directory.
 
 Рабочий процесс завершается ошибкой. Приложение не запускается.
 
-[Модулю ASP.NET Core](xref:host-and-deploy/aspnet-core-module) не удается найти обработчик запросов внутрипроцессного размещения. Убедитесь, что *aspnetcorev2_outofprocess.dll* находится во вложенной папке рядом с *aspnetcorev2.dll*.
+[Модулю ASP.NET Core](xref:host-and-deploy/aspnet-core-module) не удается найти внепроцессный обработчик запросов. Убедитесь, что *aspnetcorev2_outofprocess.dll* находится во вложенной папке рядом с *aspnetcorev2.dll*.
 
 ### <a name="5025-process-failure"></a>502.5 Process Failure (ошибка процесса)
 
 Рабочий процесс завершается ошибкой. Приложение не запускается.
 
-[Модуль ASP.NET Core](xref:host-and-deploy/aspnet-core-module) пытается запустить рабочий процесс, но он не запускается. Причину сбоя запуска процесса обычно можно определить на основе записей в журнале событий приложений и в журнале stdout модуля ASP.NET Core.
+[Модуль ASP.NET Core](xref:host-and-deploy/aspnet-core-module) пытается запустить рабочий процесс, но он не запускается. Обычно причину сбоя при запуске процесса можно определить по записям в журнале событий приложения и журнале вывода stdout модуля ASP.NET Core.
 
 Распространенной причиной сбоя является неправильная настройка приложения с выбором отсутствующей версии общей платформы ASP.NET Core. Проверьте, какие версии общей платформы ASP.NET Core установлены на целевом компьютере. *Общая платформа* — это набор сборок (*DLLl*-файлы), которые установлены на компьютере и на которые ссылается метапакет, например `Microsoft.AspNetCore.App`. В ссылках метапакета может быть указана минимальная требуемая версия. Дополнительную информацию см. в этой публикации об [общей платформе](https://natemcmaster.com/blog/2018/08/29/netcore-primitives-2/).
 
@@ -691,13 +691,13 @@ Failed to start application '/LM/W3SVC/6/ROOT/', ErrorCode '0x800700c1'.
 
 ### <a name="default-startup-limits"></a>Ограничения по умолчанию при запуске
 
-Для [модуля ASP.NET Core](xref:host-and-deploy/aspnet-core-module) настроено значение по умолчанию *startupTimeLimit* , равное 120 секундам. Если оставить значение по умолчанию, то прежде чем журнал модуля зарегистрирует ошибку запуска приложения, может пройти до двух минут. Сведения о настройке модуля см. в разделе [Атрибуты элемента aspNetCore](xref:host-and-deploy/aspnet-core-module#attributes-of-the-aspnetcore-element).
+Для параметра *startupTimeLimit* [модуля ASP.NET Core](xref:host-and-deploy/aspnet-core-module) установлено значение по умолчанию 120 секунд. Если оставить значение по умолчанию, то прежде чем журнал модуля зарегистрирует ошибку запуска приложения, может пройти до двух минут. Сведения о настройке модуля см. в разделе [Атрибуты элемента aspNetCore](xref:host-and-deploy/aspnet-core-module#attributes-of-the-aspnetcore-element).
 
-## <a name="troubleshoot-on-azure-app-service"></a>Устранение неполадок в службе приложений Azure
+## <a name="troubleshoot-on-azure-app-service"></a>Устранение неполадок в Службе приложений Azure
 
 [!INCLUDE [Azure App Service Preview Notice](~/includes/azure-apps-preview-notice.md)]
 
-### <a name="application-event-log-azure-app-service"></a>Журнал событий приложений (служба приложений Azure)
+### <a name="application-event-log-azure-app-service"></a>Журнал событий приложений (Служба приложений Azure)
 
 Чтобы получить доступ к журналу событий приложения, используйте колонку **Диагностика и решение проблем** на портале Azure.
 
@@ -711,7 +711,7 @@ Failed to start application '/LM/W3SVC/6/ROOT/', ErrorCode '0x800700c1'.
 
 1. В области **Средства разработки** откройте колонку **Дополнительные инструменты**. Нажмите кнопку **Перейти&rarr;** . Консоль Kudu открывается в новой вкладке или в окне браузера.
 1. С помощью панели навигации в верхней части страницы откройте **Консоль отладки** и выберите **CMD**.
-1. Откройте папку **LogFiles** .
+1. Откройте папку **LogFiles**.
 1. Выберите значок с карандашом рядом с файлом *eventlog.xml*.
 1. Изучите журнал. Прокрутите список до нижней части журнала, чтобы просмотреть последние события.
 
@@ -742,7 +742,7 @@ Failed to start application '/LM/W3SVC/6/ROOT/', ErrorCode '0x800700c1'.
 
 Выходные данные из приложения, отображающие любые ошибки, будут выведены на консоль Kudu.
 
-**Развертывание, зависимое от платформы, выполняющееся в предварительной версии**
+**Зависимое от платформы развертывание, выполняющееся в предварительном выпуске**
 
 *Требует установки расширения сайта для среды выполнения ASP.NET Core {VERSION} (x86).*
 
@@ -764,7 +764,7 @@ Failed to start application '/LM/W3SVC/6/ROOT/', ErrorCode '0x800700c1'.
 
 Выходные данные из приложения, отображающие любые ошибки, будут выведены на консоль Kudu.
 
-**Развертывание, зависимое от платформы, выполняющееся в предварительной версии**
+**Зависимое от платформы развертывание, выполняющееся в предварительном выпуске**
 
 *Требует установки расширения сайта для среды выполнения ASP.NET Core {VERSION} (x64).*
 
@@ -773,13 +773,13 @@ Failed to start application '/LM/W3SVC/6/ROOT/', ErrorCode '0x800700c1'.
 
 Выходные данные из приложения, отображающие любые ошибки, будут выведены на консоль Kudu.
 
-### <a name="aspnet-core-module-stdout-log-azure-app-service"></a>Журнал ASP.NET Core модуля stdout (служба приложений Azure)
+### <a name="aspnet-core-module-stdout-log-azure-app-service"></a>Журнал вывода stdout модуля ASP.NET Core (Служба приложений Azure)
 
 В журнале stdout модуля ASP.NET Core часто записываются полезные сообщения, которые не удается найти в журнале событий приложения. Чтобы включить и просмотреть журналы stdout выполните следующие действия.
 
 1. Перейдите к колонке **Диагностика и решение проблем** на портале Azure.
 1. В разделе **Выберите категорию проблемы** нажмите кнопку **Веб-приложение не работает**.
-1. В разделе **Предлагаемые решения** > **включить перенаправление журнала stdout**нажмите кнопку, чтобы **открыть консоль KUDU для изменения файла Web. config**.
+1. В разделе **Предлагаемые решения** > **Включить перенаправление журнала stdout** нажмите кнопку **Открыть консоль Kudu для редактирования файла Web.Config**.
 1. В **консоли диагностики** Kudu откройте папки на пути **веб-сайт** > **wwwroot**. Прокрутите список вниз, чтобы в его нижней части показался файл *web.config*.
 1. Щелкните значок карандаша рядом с файлом *web.config*.
 1. Установите для параметра **stdoutLogEnabled** значение `true` и измените путь **stdoutLogFile** на `\\?\%home%\LogFiles\stdout`.
@@ -797,20 +797,20 @@ Failed to start application '/LM/W3SVC/6/ROOT/', ErrorCode '0x800700c1'.
 1. Задайте параметру **stdoutLogEnabled** значение `false`.
 1. Нажмите кнопку **Сохранить** для сохранения файла.
 
-Дополнительные сведения см. в разделе <xref:host-and-deploy/aspnet-core-module#log-creation-and-redirection>.
+Для получения дополнительной информации см. <xref:host-and-deploy/aspnet-core-module#log-creation-and-redirection>.
 
 > [!WARNING]
 > Ошибка при отключении журнала stdout может привести к сбоям приложения или сервера. Ни размер файла журнала, ни количество создаваемых файлов журналов ничем не ограничены. Для устранения неполадок при запуске приложения используйте только журнал stdout.
 >
 > После запуска в приложении ASP.NET Core для ведения общего журнала используйте библиотеку ведения журналов, которая ограничивает размер файла журнала и выполняет циклический сдвиг журналов. Дополнительные сведения см. в разделе [Сторонние поставщики ведения журналов](xref:fundamentals/logging/index#third-party-logging-providers).
 
-### <a name="aspnet-core-module-debug-log-azure-app-service"></a>Журнал отладки модуля ASP.NET Core (служба приложений Azure)
+### <a name="aspnet-core-module-debug-log-azure-app-service"></a>Журнал отладки модуля ASP.NET Core (Служба приложений Azure)
 
-В журнал отладки модуля ASP.NET записываются дополнительные и более подробные сообщения, относящиеся к модулю ASP.NET Core. Чтобы включить и просмотреть журналы stdout выполните следующие действия.
+В журнал отладки модуля ASP.NET записываются дополнительные и более подробные сообщения, относящиеся к модулю ASP.NET Core. Чтобы включить и просмотреть журналы stdout, сделайте следующее:
 
 1. Чтобы включить ведение расширенного журнала диагностики, выполните одно из следующих действий.
    * Следуйте инструкциям по настройке приложения для ведения расширенных журналов диагностики, приведенным в разделе [Расширенные журналы диагностики](xref:host-and-deploy/aspnet-core-module#enhanced-diagnostic-logs). Повторно разверните приложение.
-   * С помощью консоли Kudu добавьте раздел `<handlerSettings>` в файл [web.config](xref:host-and-deploy/aspnet-core-module#enhanced-diagnostic-logs) приложения, как показано в разделе *Расширенные журналы диагностики*.
+   * С помощью консоли Kudu добавьте раздел `<handlerSettings>` в файл *web.config* приложения, как показано в разделе [Расширенные журналы диагностики](xref:host-and-deploy/aspnet-core-module#enhanced-diagnostic-logs).
      1. В области **Средства разработки** откройте колонку **Дополнительные инструменты**. Нажмите кнопку **Перейти&rarr;** . Консоль Kudu открывается в новой вкладке или в окне браузера.
      1. С помощью панели навигации в верхней части страницы откройте **Консоль отладки** и выберите **CMD**.
      1. Откройте папки на пути **веб-сайт** > **wwwroot**. Нажмите кнопку с изображением карандаша и внесите изменения в файл *web.config*. Добавьте раздел `<handlerSettings>`, как описано в разделе [Расширенные журналы диагностики](xref:host-and-deploy/aspnet-core-module#enhanced-diagnostic-logs). Нажмите кнопку **Сохранить**.
@@ -826,18 +826,18 @@ Failed to start application '/LM/W3SVC/6/ROOT/', ErrorCode '0x800700c1'.
 * Удалите раздел `<handlerSettings>` из файла *web.config* локально и повторно разверните приложение.
 * С помощью консоли Kudu внесите изменения в файл *web.config* и удалите раздел `<handlerSettings>`. Сохраните файл.
 
-Дополнительные сведения см. в разделе <xref:host-and-deploy/aspnet-core-module#enhanced-diagnostic-logs>.
+Для получения дополнительной информации см. <xref:host-and-deploy/aspnet-core-module#enhanced-diagnostic-logs>.
 
 > [!WARNING]
 > Ошибка при отключении журнала отладки может привести к сбоям приложения или сервера. Ограничения на размер файла журнала отсутствуют. Для устранения неполадок при запуске приложения используйте только журнал отладки.
 >
 > После запуска в приложении ASP.NET Core для ведения общего журнала используйте библиотеку ведения журналов, которая ограничивает размер файла журнала и выполняет циклический сдвиг журналов. Дополнительные сведения см. в разделе [Сторонние поставщики ведения журналов](xref:fundamentals/logging/index#third-party-logging-providers).
 
-### <a name="slow-or-hanging-app-azure-app-service"></a>Приложение с задержкой или зависанием (служба приложений Azure)
+### <a name="slow-or-hanging-app-azure-app-service"></a>Медленное или зависающее приложение (Служба приложений Azure)
 
 Если приложение медленно реагирует на запрос или зависает при его обработке, см. следующие статьи:
 
-* [Устранение причин низкой производительности приложения в Службе приложений Azure](/azure/app-service/app-service-web-troubleshoot-performance-degradation)
+* [Устранение проблем с производительностью медленных веб приложений в службе приложений Azure](/azure/app-service/app-service-web-troubleshoot-performance-degradation)
 * [Use Crash Diagnoser Site Extension to Capture Dump for Intermittent Exception issues or performance issues on Azure Web App (Использование расширения сайта средства диагностики сбоев для записи дампа при периодических проблемах с исключением или проблемах с производительностью в веб-приложении Azure)](https://blogs.msdn.microsoft.com/asiatech/2015/12/28/use-crash-diagnoser-site-extension-to-capture-dump-for-intermittent-exception-issues-or-performance-issues-on-azure-web-app/).
 
 ### <a name="monitoring-blades"></a>Мониторинг колонок
@@ -858,7 +858,7 @@ Failed to start application '/LM/W3SVC/6/ROOT/', ErrorCode '0x800700c1'.
 
 1. На портале Azure выберите колонку **Дополнительные инструменты** в области **Средства разработки**. Нажмите кнопку **Перейти&rarr;** . Консоль Kudu открывается в новой вкладке или в окне браузера.
 1. С помощью панели навигации в верхней части страницы откройте **Консоль отладки** и выберите **CMD**.
-1. Откройте папки на **сайте** Path > **wwwroot** и прокрутите вниз, чтобы открыть файл *Web. config* в нижней части списка.
+1. Откройте папки на пути **сайт** > **wwwroot** и прокрутите список вниз, пока в нижней части не появится файл *web.config*.
 1. Щелкните значок карандаша рядом с файлом *web.config*.
 1. Установите для параметра **stdoutLogEnabled** значение `true` и измените путь **stdoutLogFile** на `\\?\%home%\LogFiles\stdout`.
 1. Выберите **Сохранить** для сохранения обновленного файла *web.config*.
@@ -879,16 +879,16 @@ Failed to start application '/LM/W3SVC/6/ROOT/', ErrorCode '0x800700c1'.
 1. Перейдите к колонке **Диагностика и решение проблем** на портале Azure.
 1. Выберите **Журналы трассировки неудачно завершенных запросов** из области боковой панели **Средства поддержки**.
 
-Для получения дополнительной информации см. [Раздел "Трассировка неудачно завершенных запросов" раздела "Включение ведения журналов диагностики для веб-приложений в службе приложений Azure"](/azure/app-service/web-sites-enable-diagnostic-log#failed-request-traces) и [Вопросы и ответы о производительности приложений для веб-приложений в Azure: как включить трассировку неудачно завершенных запросов?](/azure/app-service/app-service-web-availability-performance-application-issues-faq#how-do-i-turn-on-failed-request-tracing).
+Для получения дополнительной информации см. [Раздел "Трассировка неудачно завершенных запросов" раздела "Включение ведения журналов диагностики для веб-приложений в службе приложений Azure"](/azure/app-service/web-sites-enable-diagnostic-log#failed-request-traces) и ["Вопросы и ответы о производительности приложений для веб-приложений в Azure: как включить трассировку неудачно завершенных запросов?"](/azure/app-service/app-service-web-availability-performance-application-issues-faq#how-do-i-turn-on-failed-request-tracing)
 
 Дополнительные сведения см. в разделе [Включение функции ведения журналов диагностики для веб-приложений в службе приложений Azure](/azure/app-service/web-sites-enable-diagnostic-log).
 
 > [!WARNING]
 > Ошибка при отключении журнала stdout может привести к сбоям приложения или сервера. Ни размер файла журнала, ни количество создаваемых файлов журналов ничем не ограничены.
 >
-> Для обычного входа в приложение ASP.NET Core используйте библиотеку ведения журналов, которая ограничивает размер файла журнала и выполняет циклический сдвиг журналов. Дополнительные сведения см. в разделе [Сторонние поставщики ведения журналов](xref:fundamentals/logging/index#third-party-logging-providers).
+> Для обычного ведения журналов для приложения ASP.NET Core используйте библиотеку, которая ограничивает размер файла журнала и выполняет циклический сдвиг журналов. Дополнительные сведения см. в разделе [Сторонние поставщики ведения журналов](xref:fundamentals/logging/index#third-party-logging-providers).
 
-## <a name="troubleshoot-on-iis"></a>Устранение неполадок в службах IIS
+## <a name="troubleshoot-on-iis"></a>Устранение неполадок в IIS
 
 ### <a name="application-event-log-iis"></a>Журнал событий приложений (IIS)
 
@@ -919,9 +919,9 @@ Failed to start application '/LM/W3SVC/6/ROOT/', ErrorCode '0x800700c1'.
 1. Выходные данные приложения, в том числе любые ошибки, будут выведены в окно консоли.
 1. Если ошибки возникают при выполнении запроса к приложению, выполните запрос к узлу и порту, где Kestrel ожидает передачи данных. Создайте запрос к `http://localhost:5000/`, используя узел и порт по умолчанию. Если приложение отвечает на запросы по адресу конечной точки Kestrel как обычно, то проблема, вероятнее, связана с конфигурацией размещения, а не с самим приложением.
 
-### <a name="aspnet-core-module-stdout-log-iis"></a>Журнал stdout модуля ASP.NET Core (IIS)
+### <a name="aspnet-core-module-stdout-log-iis"></a>Журнал вывода stdout модуля ASP.NET Core (IIS)
 
-Чтобы включить и просмотреть журналы stdout выполните следующие действия.
+Чтобы включить и просмотреть журналы stdout, сделайте следующее:
 
 1. Перейдите в папку развертывания сайта на компьютере размещения.
 1. Если здесь нет папки *logs*, создайте ее. Сведения о том, как настроить в MSBuild автоматическое создание папки *logs* в развертывании, см. в статье [о структуре каталогов](xref:host-and-deploy/directory-structure).
@@ -938,16 +938,16 @@ Failed to start application '/LM/W3SVC/6/ROOT/', ErrorCode '0x800700c1'.
 1. Задайте параметру **stdoutLogEnabled** значение `false`.
 1. Сохраните файл.
 
-Дополнительные сведения см. в разделе <xref:host-and-deploy/aspnet-core-module#log-creation-and-redirection>.
+Для получения дополнительной информации см. <xref:host-and-deploy/aspnet-core-module#log-creation-and-redirection>.
 
 > [!WARNING]
 > Ошибка при отключении журнала stdout может привести к сбоям приложения или сервера. Ни размер файла журнала, ни количество создаваемых файлов журналов ничем не ограничены.
 >
-> Для обычного входа в приложение ASP.NET Core используйте библиотеку ведения журналов, которая ограничивает размер файла журнала и выполняет циклический сдвиг журналов. Дополнительные сведения см. в разделе [Сторонние поставщики ведения журналов](xref:fundamentals/logging/index#third-party-logging-providers).
+> Для обычного ведения журналов для приложения ASP.NET Core используйте библиотеку, которая ограничивает размер файла журнала и выполняет циклический сдвиг журналов. Дополнительные сведения см. в разделе [Сторонние поставщики ведения журналов](xref:fundamentals/logging/index#third-party-logging-providers).
 
 ### <a name="aspnet-core-module-debug-log-iis"></a>Журнал отладки модуля ASP.NET Core (IIS)
 
-Добавьте следующие параметры обработчика в файл *Web. config* приложения, чтобы включить ASP.NET Core журнал отладки модуля:
+Добавьте следующие параметры обработчика в файл *web.config* приложения, чтобы включить журнал отладки модулей ASP.NET Core:
 
 ```xml
 <aspNetCore ...>
@@ -960,11 +960,11 @@ Failed to start application '/LM/W3SVC/6/ROOT/', ErrorCode '0x800700c1'.
 
 Убедитесь, что указанный для журнала путь существует и удостоверение пула приложений имеет разрешения на запись в это расположение.
 
-Дополнительные сведения см. в разделе <xref:host-and-deploy/aspnet-core-module#enhanced-diagnostic-logs>.
+Для получения дополнительной информации см. <xref:host-and-deploy/aspnet-core-module#enhanced-diagnostic-logs>.
 
 ### <a name="enable-the-developer-exception-page"></a>Включение страницы исключений для разработчика
 
-[Переменную среды `ASPNETCORE_ENVIRONMENT` можно добавить в файл Web. config](xref:host-and-deploy/aspnet-core-module#setting-environment-variables) для запуска приложения в среде разработки. Если среда не переопределяется при запуске приложения использованием `UseEnvironment` в конструкторе узла, эта переменная среды позволяет отображать [страницу исключения для разработчика](xref:fundamentals/error-handling) при запуске приложения.
+Можно добавить переменную среды `ASPNETCORE_ENVIRONMENT` [в файл web.config](xref:host-and-deploy/aspnet-core-module#setting-environment-variables), чтобы запустить приложение в среде разработки. Если среда не переопределяется при запуске приложения использованием `UseEnvironment` в конструкторе узла, эта переменная среды позволяет отображать [страницу исключения для разработчика](xref:fundamentals/error-handling) при запуске приложения.
 
 ```xml
 <aspNetCore processPath="dotnet"
@@ -984,7 +984,7 @@ Failed to start application '/LM/W3SVC/6/ROOT/', ErrorCode '0x800700c1'.
 
 Если приложение способно отвечать на запросы, получите данные о запросе, подключении и дополнительные данные из приложений с помощью встроенного терминала ПО промежуточного слоя. Дополнительные сведения и примеры с кодом см. здесь: <xref:test/troubleshoot#obtain-data-from-an-app>.
 
-### <a name="slow-or-hanging-app-iis"></a>Низкое или зависание приложения (IIS)
+### <a name="slow-or-hanging-app-iis"></a>Медленное или зависающее приложение (IIS)
 
 *Аварийный дамп* — это моментальный снимок системной памяти, который может помочь определить причину аварийного завершения, сбоя запуска или медленной работы приложения.
 
@@ -993,7 +993,7 @@ Failed to start application '/LM/W3SVC/6/ROOT/', ErrorCode '0x800700c1'.
 Получите и проанализируйте дамп из [отчетов об ошибках Windows (WER)](/windows/desktop/wer/windows-error-reporting):
 
 1. Создайте папку для хранения файлов аварийного дампа в `c:\dumps`. Пул приложений должен иметь доступ на запись к папке.
-1. Запустите [скрипт PowerShell EnableDumps](https://github.com/aspnet/AspNetCore.Docs/blob/master/aspnetcore/test/troubleshoot-azure-iis/scripts/EnableDumps.ps1):
+1. Запустите [скрипт PowerShell EnableDumps](https://github.com/dotnet/AspNetCore.Docs/blob/master/aspnetcore/test/troubleshoot-azure-iis/scripts/EnableDumps.ps1):
    * Если приложение использует [модель размещения в процессе](xref:host-and-deploy/iis/index#in-process-hosting-model), выполните скрипт для *w3wp.exe*:
 
      ```console
@@ -1007,7 +1007,7 @@ Failed to start application '/LM/W3SVC/6/ROOT/', ErrorCode '0x800700c1'.
      ```
 
 1. Запустите приложение в условиях, вызывающих аварийное завершение.
-1. После аварийного завершения запустите [скрипт PowerShell DisableDumps](https://github.com/aspnet/AspNetCore.Docs/blob/master/aspnetcore/test/troubleshoot-azure-iis/scripts/DisableDumps.ps1):
+1. После аварийного завершения запустите [скрипт PowerShell DisableDumps](https://github.com/dotnet/AspNetCore.Docs/blob/master/aspnetcore/test/troubleshoot-azure-iis/scripts/DisableDumps.ps1):
    * Если приложение использует [модель размещения в процессе](xref:host-and-deploy/iis/index#in-process-hosting-model), выполните скрипт для *w3wp.exe*:
 
      ```console
@@ -1027,7 +1027,7 @@ Failed to start application '/LM/W3SVC/6/ROOT/', ErrorCode '0x800700c1'.
 
 #### <a name="app-hangs-fails-during-startup-or-runs-normally"></a>Приложение перестает отвечать на запросы, не запускается или работает в обычном режиме
 
-Если приложение *зависает* (перестает отвечать, но не работает), завершается ошибкой во время запуска или обычно выполняется, см. раздел [файлы дампа пользовательского режима: выбор оптимального средства](/windows-hardware/drivers/debugger/user-mode-dump-files#choosing-the-best-tool) для создания дампа.
+Когда приложение *перестает отвечать на запросы* (но аварийное завершение не происходит), не запускается или работает в обычном режиме, см. раздел [Файлы дампа пользовательского режима: выбор лучшего инструмента](/windows-hardware/drivers/debugger/user-mode-dump-files#choosing-the-best-tool), чтобы выбрать подходящий инструмент для создания дампа.
 
 #### <a name="analyze-the-dump"></a>Анализ дампа
 
@@ -1055,19 +1055,19 @@ Failed to start application '/LM/W3SVC/6/ROOT/', ErrorCode '0x800700c1'.
 ### <a name="azure-documentation"></a>Документация по Azure
 
 * [Application Insights для ASP.NET Core](/azure/application-insights/app-insights-asp-net-core)
-* [Раздел "Удаленная отладка веб-приложений" статьи Устранение неполадок веб-приложения в службе приложений Azure с помощью Visual Studio](/azure/app-service/web-sites-dotnet-troubleshoot-visual-studio#remotedebug)
+* [Раздел "Веб-приложения удаленной отладки" статьи "Устранение неполадок веб-приложения в Службе приложений Azure с помощью Visual Studio"](/azure/app-service/web-sites-dotnet-troubleshoot-visual-studio#remotedebug)
 * [Общие сведения о диагностике в службе приложений Azure](/azure/app-service/app-service-diagnostics)
-* [Мониторинг приложений в службе приложений Azure](/azure/app-service/web-sites-monitor)
+* [Практическое руководство. Мониторинг приложений в Службе приложений Azure](/azure/app-service/web-sites-monitor)
 * [Устранение неполадок веб-приложения в службе приложений Azure с помощью Visual Studio](/azure/app-service/web-sites-dotnet-troubleshoot-visual-studio)
 * [Устранение ошибок HTTP "502 — недопустимый шлюз" и "503 — служба недоступна" в веб-приложениях Azure](/azure/app-service/app-service-web-troubleshoot-http-502-http-503)
-* [Устранение причин низкой производительности приложения в Службе приложений Azure](/azure/app-service/app-service-web-troubleshoot-performance-degradation)
+* [Устранение проблем с производительностью медленных веб приложений в службе приложений Azure](/azure/app-service/app-service-web-troubleshoot-performance-degradation)
 * [Вопросы и ответы о производительности приложений для веб-приложений в Azure](/azure/app-service/app-service-web-availability-performance-application-issues-faq)
 * ["Песочница" веб-приложений Azure (ограничения работы среды выполнения службы приложений)](https://github.com/projectkudu/kudu/wiki/Azure-Web-App-sandbox)
-* [Azure, пятница: практики диагностики и устранения неполадок в службе приложений Azure (12-минутное видео)](https://channel9.msdn.com/Shows/Azure-Friday/Azure-App-Service-Diagnostic-and-Troubleshooting-Experience)
+* [Пятница с Azure. Практика диагностики и устранения неполадок в Службе приложений Azure (12-минутное видео)](https://channel9.msdn.com/Shows/Azure-Friday/Azure-App-Service-Diagnostic-and-Troubleshooting-Experience)
 
 ### <a name="visual-studio-documentation"></a>Документация по Visual Studio
 
-* [Удаленная отладка ASP.NET Core на IIS в Azure в Visual Studio 2017](/visualstudio/debugger/remote-debugging-azure)
+* [Удаленная отладка ASP.NET Core в IIS в Azure в Visual Studio 2017](/visualstudio/debugger/remote-debugging-azure)
 * [Удаленная отладка ASP.NET Core на удаленном компьютере IIS в Visual Studio 2017](/visualstudio/debugger/remote-debugging-aspnet-on-a-remote-iis-computer)
 * [Сведения об отладке с помощью Visual Studio](/visualstudio/debugger/getting-started-with-the-debugger)
 
@@ -1079,63 +1079,63 @@ Failed to start application '/LM/W3SVC/6/ROOT/', ErrorCode '0x800700c1'.
 
 ::: moniker range="< aspnetcore-2.2"
 
-В этой статье содержатся сведения об общих ошибках запуска приложений и инструкции по диагностике ошибок при развертывании приложения в службе приложений Azure или службах IIS.
+В этой статье содержатся сведения об общих ошибках запуска приложений и инструкции по диагностике ошибок при развертывании приложения в Службе приложений Azure или службах IIS:
 
-[Ошибки запуска приложений](#app-startup-errors)  
+[Ошибки при запуске приложения](#app-startup-errors)  
 Описание распространенных сценариев кода состояния HTTP для запуска.
 
-[Устранение неполадок в службе приложений Azure](#troubleshoot-on-azure-app-service)  
-Рекомендации по устранению неполадок для приложений, развернутых в службе приложений Azure.
+[Устранение неполадок в Службе приложений Azure](#troubleshoot-on-azure-app-service)  
+Рекомендации по устранению неполадок для приложений, развернутых в Службе приложений Azure.
 
 [Устранение неполадок в IIS](#troubleshoot-on-iis)  
-Рекомендации по устранению неполадок приложений, развернутых в службах IIS или запущенных на IIS Express локально. Руководство относится к развертываниям Windows Server и Windows Desktop.
+Рекомендации по устранению неполадок для приложений, развернутых в службах IIS или запущенных на IIS Express локально. Руководство относится к развертываниям Windows Server и Windows Desktop.
 
-[Очистить кэши пакетов](#clear-package-caches)  
-Объясняет, что делать, когда несогласованные пакеты нарушают работу приложения при выполнении основных обновлений или изменении версий пакета.
+[Очистка кэшей пакетов](#clear-package-caches)  
+Рекомендации о том, что делать, когда несогласованные пакеты нарушают работу приложения при установке основных обновлений или изменении версий пакета.
 
 [Дополнительные ресурсы](#additional-resources)  
-Список дополнительных разделов по устранению неполадок.
+Дополнительные статьи по устранению неполадок.
 
 ## <a name="app-startup-errors"></a>Ошибки при запуске приложения
 
-В Visual Studio проект ASP.NET Core по умолчанию использует размещение в [IIS Express](/iis/extensions/introduction-to-iis-express/iis-express-overview) на период отладки. *Ошибка процесса 502,5* , возникающая при локальной отладке, может быть выявлена с помощью Совета в этом разделе.
+В Visual Studio проект ASP.NET Core по умолчанию использует размещение в [IIS Express](/iis/extensions/introduction-to-iis-express/iis-express-overview) на период отладки. Рекомендации в этой статье позволяют диагностировать неполадки, проявляющиеся как *сбой процесса 502.5* при локальной отладке.
 
-### <a name="40314-forbidden"></a>403,14 запрещено
+### <a name="40314-forbidden"></a>403.14 (Запрещено)
 
-Не удается запустить приложение. Регистрируется следующая ошибка:
+Приложение не запускается. В журнал записывается следующая ошибка:
 
 ```
 The Web server is configured to not list the contents of this directory.
 ```
 
-Эта ошибка обычно вызвана неработающей развертыванием в системе размещения, которая включает в себя любой из следующих сценариев:
+Эта ошибка обычно вызвана неработающим развертыванием в системе размещения в следующих сценариях:
 
 * Приложение развертывается в неверной папке в системе размещения.
 * Процессу развертывания не удалось переместить все файлы и папки приложения в папку развертывания в системе размещения.
-* В развертывании отсутствует файл *Web. config* , или содержимое файла *Web. config* имеет неправильный формат.
+* Файл *web.config* отсутствует в развертывании, или содержимое файла *web.config* имеет неправильную структуру.
 
 Выполните следующие действия:
 
 1. Удалите все файлы и папки из папки развертывания в системе размещения.
-1. Повторно разверните содержимое папки *публикации* приложения в системе размещения с помощью обычного метода развертывания, например Visual Studio, PowerShell или ручного развертывания:
-   * Убедитесь, что файл *Web. config* находится в развертывании и что его содержимое указано правильно.
-   * При размещении в службе приложений Azure убедитесь, что приложение развернуто в папке `D:\home\site\wwwroot`.
-   * Если приложение размещено в IIS, убедитесь, что приложение развернуто на **физический путь** IIS, показанный в **основных параметрах** **диспетчера IIS**.
-1. Убедитесь, что все файлы и папки приложения развернуты путем сравнения развертывания в системе размещения с содержимым папки *публикации* проекта.
+1. Повторно разверните содержимое папки *publish* приложения в системе размещения с помощью обычного метода развертывания, например Visual Studio, PowerShell или развертывание вручную:
+   * Убедитесь, что файл *web.config* находится в развертывании и имеет правильное содержимое.
+   * При размещении в Службе приложений Azure убедитесь, что приложение развернуто в папке `D:\home\site\wwwroot`.
+   * Если приложение размещено в IIS, убедитесь, что оно развернуто по **физическому пути** служб IIS, указанному в **базовых параметрах** в **диспетчере IIS**.
+1. Убедитесь, что все файлы и папки приложения развернуты путем сравнения развертывания в системе размещения с содержимым папки проекта *publish*.
 
-Дополнительные сведения о макете опубликованного ASP.NET Core приложения см. в разделе <xref:host-and-deploy/directory-structure>. Дополнительные сведения о файле *Web. config* см. в разделе <xref:host-and-deploy/aspnet-core-module#configuration-with-webconfig>.
+Дополнительные сведения о макете опубликованного приложения ASP.NET Core см. в разделе <xref:host-and-deploy/directory-structure>. Дополнительные сведения о файле *web.config* см. в разделе <xref:host-and-deploy/aspnet-core-module#configuration-with-webconfig>.
 
-### <a name="500-internal-server-error"></a>500 — Внутренняя ошибка сервера
+### <a name="500-internal-server-error"></a>500 Internal Server Error (внутренняя ошибка сервера)
 
 Приложение запускается, но ошибка не позволяет серверу выполнить запрос.
 
-Эта ошибка возникает в коде приложения при запуске или при создании ответа. Ответ может не иметь содержимого или ответ в браузере может выглядеть как *500 — внутренняя ошибка сервера*. Как правило, в журнале событий приложения указывается, что приложение запускается в обычном режиме. Сервер действует правильно. Приложение запустилось, но оно не может генерировать действительный ответ. Запустите приложение из командной строки на сервере или включите журнал ASP.NET Core модуля stdout, чтобы устранить проблему.
+Эта ошибка возникает в коде приложения при запуске или при создании ответа. Ответ может не иметь содержимого или ответ в браузере может выглядеть как *500 — внутренняя ошибка сервера*. Как правило, в журнале событий приложения указывается, что приложение запускается в обычном режиме. Сервер действует правильно. Приложение запустилось, но оно не может генерировать действительный ответ. Чтобы устранить проблему, запустите приложение в командной строке на сервере или включите журнал вывода stdout для модуля ASP.NET Core.
 
 ### <a name="5025-process-failure"></a>502.5 Process Failure (ошибка процесса)
 
 Рабочий процесс завершается ошибкой. Приложение не запускается.
 
-[Модуль ASP.NET Core](xref:host-and-deploy/aspnet-core-module) пытается запустить рабочий процесс, но он не запускается. Причину сбоя запуска процесса обычно можно определить на основе записей в журнале событий приложений и в журнале stdout модуля ASP.NET Core.
+[Модуль ASP.NET Core](xref:host-and-deploy/aspnet-core-module) пытается запустить рабочий процесс, но он не запускается. Обычно причину сбоя при запуске процесса можно определить по записям в журнале событий приложения и журнале вывода stdout модуля ASP.NET Core.
 
 Распространенной причиной сбоя является неправильная настройка приложения с выбором отсутствующей версии общей платформы ASP.NET Core. Проверьте, какие версии общей платформы ASP.NET Core установлены на целевом компьютере. *Общая платформа* — это набор сборок (*DLLl*-файлы), которые установлены на компьютере и на которые ссылается метапакет, например `Microsoft.AspNetCore.App`. В ссылках метапакета может быть указана минимальная требуемая версия. Дополнительную информацию см. в этой публикации об [общей платформе](https://natemcmaster.com/blog/2018/08/29/netcore-primitives-2/).
 
@@ -1169,13 +1169,13 @@ Failed to start application '/LM/W3SVC/6/ROOT/', ErrorCode '0x800700c1'.
 
 ### <a name="default-startup-limits"></a>Ограничения по умолчанию при запуске
 
-Для [модуля ASP.NET Core](xref:host-and-deploy/aspnet-core-module) настроено значение по умолчанию *startupTimeLimit* , равное 120 секундам. Если оставить значение по умолчанию, то прежде чем журнал модуля зарегистрирует ошибку запуска приложения, может пройти до двух минут. Сведения о настройке модуля см. в разделе [Атрибуты элемента aspNetCore](xref:host-and-deploy/aspnet-core-module#attributes-of-the-aspnetcore-element).
+Для параметра *startupTimeLimit* [модуля ASP.NET Core](xref:host-and-deploy/aspnet-core-module) установлено значение по умолчанию 120 секунд. Если оставить значение по умолчанию, то прежде чем журнал модуля зарегистрирует ошибку запуска приложения, может пройти до двух минут. Сведения о настройке модуля см. в разделе [Атрибуты элемента aspNetCore](xref:host-and-deploy/aspnet-core-module#attributes-of-the-aspnetcore-element).
 
-## <a name="troubleshoot-on-azure-app-service"></a>Устранение неполадок в службе приложений Azure
+## <a name="troubleshoot-on-azure-app-service"></a>Устранение неполадок в Службе приложений Azure
 
 [!INCLUDE [Azure App Service Preview Notice](~/includes/azure-apps-preview-notice.md)]
 
-### <a name="application-event-log-azure-app-service"></a>Журнал событий приложений (служба приложений Azure)
+### <a name="application-event-log-azure-app-service"></a>Журнал событий приложений (Служба приложений Azure)
 
 Чтобы получить доступ к журналу событий приложения, используйте колонку **Диагностика и решение проблем** на портале Azure.
 
@@ -1189,7 +1189,7 @@ Failed to start application '/LM/W3SVC/6/ROOT/', ErrorCode '0x800700c1'.
 
 1. В области **Средства разработки** откройте колонку **Дополнительные инструменты**. Нажмите кнопку **Перейти&rarr;** . Консоль Kudu открывается в новой вкладке или в окне браузера.
 1. С помощью панели навигации в верхней части страницы откройте **Консоль отладки** и выберите **CMD**.
-1. Откройте папку **LogFiles** .
+1. Откройте папку **LogFiles**.
 1. Выберите значок с карандашом рядом с файлом *eventlog.xml*.
 1. Изучите журнал. Прокрутите список до нижней части журнала, чтобы просмотреть последние события.
 
@@ -1220,7 +1220,7 @@ Failed to start application '/LM/W3SVC/6/ROOT/', ErrorCode '0x800700c1'.
 
 Выходные данные из приложения, отображающие любые ошибки, будут выведены на консоль Kudu.
 
-**Развертывание, зависимое от платформы, выполняющееся в предварительной версии**
+**Зависимое от платформы развертывание, выполняющееся в предварительном выпуске**
 
 *Требует установки расширения сайта для среды выполнения ASP.NET Core {VERSION} (x86).*
 
@@ -1242,7 +1242,7 @@ Failed to start application '/LM/W3SVC/6/ROOT/', ErrorCode '0x800700c1'.
 
 Выходные данные из приложения, отображающие любые ошибки, будут выведены на консоль Kudu.
 
-**Развертывание, зависимое от платформы, выполняющееся в предварительной версии**
+**Зависимое от платформы развертывание, выполняющееся в предварительном выпуске**
 
 *Требует установки расширения сайта для среды выполнения ASP.NET Core {VERSION} (x64).*
 
@@ -1251,13 +1251,13 @@ Failed to start application '/LM/W3SVC/6/ROOT/', ErrorCode '0x800700c1'.
 
 Выходные данные из приложения, отображающие любые ошибки, будут выведены на консоль Kudu.
 
-### <a name="aspnet-core-module-stdout-log-azure-app-service"></a>Журнал ASP.NET Core модуля stdout (служба приложений Azure)
+### <a name="aspnet-core-module-stdout-log-azure-app-service"></a>Журнал вывода stdout модуля ASP.NET Core (Служба приложений Azure)
 
 В журнале stdout модуля ASP.NET Core часто записываются полезные сообщения, которые не удается найти в журнале событий приложения. Чтобы включить и просмотреть журналы stdout выполните следующие действия.
 
 1. Перейдите к колонке **Диагностика и решение проблем** на портале Azure.
 1. В разделе **Выберите категорию проблемы** нажмите кнопку **Веб-приложение не работает**.
-1. В разделе **Предлагаемые решения** > **включить перенаправление журнала stdout**нажмите кнопку, чтобы **открыть консоль KUDU для изменения файла Web. config**.
+1. В разделе **Предлагаемые решения** > **Включить перенаправление журнала stdout** нажмите кнопку **Открыть консоль Kudu для редактирования файла Web.Config**.
 1. В **консоли диагностики** Kudu откройте папки на пути **веб-сайт** > **wwwroot**. Прокрутите список вниз, чтобы в его нижней части показался файл *web.config*.
 1. Щелкните значок карандаша рядом с файлом *web.config*.
 1. Установите для параметра **stdoutLogEnabled** значение `true` и измените путь **stdoutLogFile** на `\\?\%home%\LogFiles\stdout`.
@@ -1275,18 +1275,18 @@ Failed to start application '/LM/W3SVC/6/ROOT/', ErrorCode '0x800700c1'.
 1. Задайте параметру **stdoutLogEnabled** значение `false`.
 1. Нажмите кнопку **Сохранить** для сохранения файла.
 
-Дополнительные сведения см. в разделе <xref:host-and-deploy/aspnet-core-module#log-creation-and-redirection>.
+Для получения дополнительной информации см. <xref:host-and-deploy/aspnet-core-module#log-creation-and-redirection>.
 
 > [!WARNING]
 > Ошибка при отключении журнала stdout может привести к сбоям приложения или сервера. Ни размер файла журнала, ни количество создаваемых файлов журналов ничем не ограничены. Для устранения неполадок при запуске приложения используйте только журнал stdout.
 >
 > После запуска в приложении ASP.NET Core для ведения общего журнала используйте библиотеку ведения журналов, которая ограничивает размер файла журнала и выполняет циклический сдвиг журналов. Дополнительные сведения см. в разделе [Сторонние поставщики ведения журналов](xref:fundamentals/logging/index#third-party-logging-providers).
 
-### <a name="slow-or-hanging-app-azure-app-service"></a>Приложение с задержкой или зависанием (служба приложений Azure)
+### <a name="slow-or-hanging-app-azure-app-service"></a>Медленное или зависающее приложение (Служба приложений Azure)
 
 Если приложение медленно реагирует на запрос или зависает при его обработке, см. следующие статьи:
 
-* [Устранение причин низкой производительности приложения в Службе приложений Azure](/azure/app-service/app-service-web-troubleshoot-performance-degradation)
+* [Устранение проблем с производительностью медленных веб приложений в службе приложений Azure](/azure/app-service/app-service-web-troubleshoot-performance-degradation)
 * [Use Crash Diagnoser Site Extension to Capture Dump for Intermittent Exception issues or performance issues on Azure Web App (Использование расширения сайта средства диагностики сбоев для записи дампа при периодических проблемах с исключением или проблемах с производительностью в веб-приложении Azure)](https://blogs.msdn.microsoft.com/asiatech/2015/12/28/use-crash-diagnoser-site-extension-to-capture-dump-for-intermittent-exception-issues-or-performance-issues-on-azure-web-app/).
 
 ### <a name="monitoring-blades"></a>Мониторинг колонок
@@ -1307,7 +1307,7 @@ Failed to start application '/LM/W3SVC/6/ROOT/', ErrorCode '0x800700c1'.
 
 1. На портале Azure выберите колонку **Дополнительные инструменты** в области **Средства разработки**. Нажмите кнопку **Перейти&rarr;** . Консоль Kudu открывается в новой вкладке или в окне браузера.
 1. С помощью панели навигации в верхней части страницы откройте **Консоль отладки** и выберите **CMD**.
-1. Откройте папки на **сайте** Path > **wwwroot** и прокрутите вниз, чтобы открыть файл *Web. config* в нижней части списка.
+1. Откройте папки на пути **сайт** > **wwwroot** и прокрутите список вниз, пока в нижней части не появится файл *web.config*.
 1. Щелкните значок карандаша рядом с файлом *web.config*.
 1. Установите для параметра **stdoutLogEnabled** значение `true` и измените путь **stdoutLogFile** на `\\?\%home%\LogFiles\stdout`.
 1. Выберите **Сохранить** для сохранения обновленного файла *web.config*.
@@ -1328,16 +1328,16 @@ Failed to start application '/LM/W3SVC/6/ROOT/', ErrorCode '0x800700c1'.
 1. Перейдите к колонке **Диагностика и решение проблем** на портале Azure.
 1. Выберите **Журналы трассировки неудачно завершенных запросов** из области боковой панели **Средства поддержки**.
 
-Для получения дополнительной информации см. [Раздел "Трассировка неудачно завершенных запросов" раздела "Включение ведения журналов диагностики для веб-приложений в службе приложений Azure"](/azure/app-service/web-sites-enable-diagnostic-log#failed-request-traces) и [Вопросы и ответы о производительности приложений для веб-приложений в Azure: как включить трассировку неудачно завершенных запросов?](/azure/app-service/app-service-web-availability-performance-application-issues-faq#how-do-i-turn-on-failed-request-tracing).
+Для получения дополнительной информации см. [Раздел "Трассировка неудачно завершенных запросов" раздела "Включение ведения журналов диагностики для веб-приложений в службе приложений Azure"](/azure/app-service/web-sites-enable-diagnostic-log#failed-request-traces) и ["Вопросы и ответы о производительности приложений для веб-приложений в Azure: как включить трассировку неудачно завершенных запросов?"](/azure/app-service/app-service-web-availability-performance-application-issues-faq#how-do-i-turn-on-failed-request-tracing)
 
 Дополнительные сведения см. в разделе [Включение функции ведения журналов диагностики для веб-приложений в службе приложений Azure](/azure/app-service/web-sites-enable-diagnostic-log).
 
 > [!WARNING]
 > Ошибка при отключении журнала stdout может привести к сбоям приложения или сервера. Ни размер файла журнала, ни количество создаваемых файлов журналов ничем не ограничены.
 >
-> Для обычного входа в приложение ASP.NET Core используйте библиотеку ведения журналов, которая ограничивает размер файла журнала и выполняет циклический сдвиг журналов. Дополнительные сведения см. в разделе [Сторонние поставщики ведения журналов](xref:fundamentals/logging/index#third-party-logging-providers).
+> Для обычного ведения журналов для приложения ASP.NET Core используйте библиотеку, которая ограничивает размер файла журнала и выполняет циклический сдвиг журналов. Дополнительные сведения см. в разделе [Сторонние поставщики ведения журналов](xref:fundamentals/logging/index#third-party-logging-providers).
 
-## <a name="troubleshoot-on-iis"></a>Устранение неполадок в службах IIS
+## <a name="troubleshoot-on-iis"></a>Устранение неполадок в IIS
 
 ### <a name="application-event-log-iis"></a>Журнал событий приложений (IIS)
 
@@ -1368,9 +1368,9 @@ Failed to start application '/LM/W3SVC/6/ROOT/', ErrorCode '0x800700c1'.
 1. Выходные данные приложения, в том числе любые ошибки, будут выведены в окно консоли.
 1. Если ошибки возникают при выполнении запроса к приложению, выполните запрос к узлу и порту, где Kestrel ожидает передачи данных. Создайте запрос к `http://localhost:5000/`, используя узел и порт по умолчанию. Если приложение отвечает на запросы по адресу конечной точки Kestrel как обычно, то проблема, вероятнее, связана с конфигурацией размещения, а не с самим приложением.
 
-### <a name="aspnet-core-module-stdout-log-iis"></a>Журнал stdout модуля ASP.NET Core (IIS)
+### <a name="aspnet-core-module-stdout-log-iis"></a>Журнал вывода stdout модуля ASP.NET Core (IIS)
 
-Чтобы включить и просмотреть журналы stdout выполните следующие действия.
+Чтобы включить и просмотреть журналы stdout, сделайте следующее:
 
 1. Перейдите в папку развертывания сайта на компьютере размещения.
 1. Если здесь нет папки *logs*, создайте ее. Сведения о том, как настроить в MSBuild автоматическое создание папки *logs* в развертывании, см. в статье [о структуре каталогов](xref:host-and-deploy/directory-structure).
@@ -1387,16 +1387,16 @@ Failed to start application '/LM/W3SVC/6/ROOT/', ErrorCode '0x800700c1'.
 1. Задайте параметру **stdoutLogEnabled** значение `false`.
 1. Сохраните файл.
 
-Дополнительные сведения см. в разделе <xref:host-and-deploy/aspnet-core-module#log-creation-and-redirection>.
+Для получения дополнительной информации см. <xref:host-and-deploy/aspnet-core-module#log-creation-and-redirection>.
 
 > [!WARNING]
 > Ошибка при отключении журнала stdout может привести к сбоям приложения или сервера. Ни размер файла журнала, ни количество создаваемых файлов журналов ничем не ограничены.
 >
-> Для обычного входа в приложение ASP.NET Core используйте библиотеку ведения журналов, которая ограничивает размер файла журнала и выполняет циклический сдвиг журналов. Дополнительные сведения см. в разделе [Сторонние поставщики ведения журналов](xref:fundamentals/logging/index#third-party-logging-providers).
+> Для обычного ведения журналов для приложения ASP.NET Core используйте библиотеку, которая ограничивает размер файла журнала и выполняет циклический сдвиг журналов. Дополнительные сведения см. в разделе [Сторонние поставщики ведения журналов](xref:fundamentals/logging/index#third-party-logging-providers).
 
 ### <a name="enable-the-developer-exception-page"></a>Включение страницы исключений для разработчика
 
-[Переменную среды `ASPNETCORE_ENVIRONMENT` можно добавить в файл Web. config](xref:host-and-deploy/aspnet-core-module#setting-environment-variables) для запуска приложения в среде разработки. Если среда не переопределяется при запуске приложения использованием `UseEnvironment` в конструкторе узла, эта переменная среды позволяет отображать [страницу исключения для разработчика](xref:fundamentals/error-handling) при запуске приложения.
+Можно добавить переменную среды `ASPNETCORE_ENVIRONMENT` [в файл web.config](xref:host-and-deploy/aspnet-core-module#setting-environment-variables), чтобы запустить приложение в среде разработки. Если среда не переопределяется при запуске приложения использованием `UseEnvironment` в конструкторе узла, эта переменная среды позволяет отображать [страницу исключения для разработчика](xref:fundamentals/error-handling) при запуске приложения.
 
 ```xml
 <aspNetCore processPath="dotnet"
@@ -1415,7 +1415,7 @@ Failed to start application '/LM/W3SVC/6/ROOT/', ErrorCode '0x800700c1'.
 
 Если приложение способно отвечать на запросы, получите данные о запросе, подключении и дополнительные данные из приложений с помощью встроенного терминала ПО промежуточного слоя. Дополнительные сведения и примеры с кодом см. здесь: <xref:test/troubleshoot#obtain-data-from-an-app>.
 
-### <a name="slow-or-hanging-app-iis"></a>Низкое или зависание приложения (IIS)
+### <a name="slow-or-hanging-app-iis"></a>Медленное или зависающее приложение (IIS)
 
 *Аварийный дамп* — это моментальный снимок системной памяти, который может помочь определить причину аварийного завершения, сбоя запуска или медленной работы приложения.
 
@@ -1424,7 +1424,7 @@ Failed to start application '/LM/W3SVC/6/ROOT/', ErrorCode '0x800700c1'.
 Получите и проанализируйте дамп из [отчетов об ошибках Windows (WER)](/windows/desktop/wer/windows-error-reporting):
 
 1. Создайте папку для хранения файлов аварийного дампа в `c:\dumps`. Пул приложений должен иметь доступ на запись к папке.
-1. Запустите [скрипт PowerShell EnableDumps](https://github.com/aspnet/AspNetCore.Docs/blob/master/aspnetcore/test/troubleshoot-azure-iis/scripts/EnableDumps.ps1):
+1. Запустите [скрипт PowerShell EnableDumps](https://github.com/dotnet/AspNetCore.Docs/blob/master/aspnetcore/test/troubleshoot-azure-iis/scripts/EnableDumps.ps1):
    * Если приложение использует [модель размещения в процессе](xref:host-and-deploy/iis/index#in-process-hosting-model), выполните скрипт для *w3wp.exe*:
 
      ```console
@@ -1438,7 +1438,7 @@ Failed to start application '/LM/W3SVC/6/ROOT/', ErrorCode '0x800700c1'.
      ```
 
 1. Запустите приложение в условиях, вызывающих аварийное завершение.
-1. После аварийного завершения запустите [скрипт PowerShell DisableDumps](https://github.com/aspnet/AspNetCore.Docs/blob/master/aspnetcore/test/troubleshoot-azure-iis/scripts/DisableDumps.ps1):
+1. После аварийного завершения запустите [скрипт PowerShell DisableDumps](https://github.com/dotnet/AspNetCore.Docs/blob/master/aspnetcore/test/troubleshoot-azure-iis/scripts/DisableDumps.ps1):
    * Если приложение использует [модель размещения в процессе](xref:host-and-deploy/iis/index#in-process-hosting-model), выполните скрипт для *w3wp.exe*:
 
      ```console
@@ -1458,7 +1458,7 @@ Failed to start application '/LM/W3SVC/6/ROOT/', ErrorCode '0x800700c1'.
 
 #### <a name="app-hangs-fails-during-startup-or-runs-normally"></a>Приложение перестает отвечать на запросы, не запускается или работает в обычном режиме
 
-Если приложение *зависает* (перестает отвечать, но не работает), завершается ошибкой во время запуска или обычно выполняется, см. раздел [файлы дампа пользовательского режима: выбор оптимального средства](/windows-hardware/drivers/debugger/user-mode-dump-files#choosing-the-best-tool) для создания дампа.
+Когда приложение *перестает отвечать на запросы* (но аварийное завершение не происходит), не запускается или работает в обычном режиме, см. раздел [Файлы дампа пользовательского режима: выбор лучшего инструмента](/windows-hardware/drivers/debugger/user-mode-dump-files#choosing-the-best-tool), чтобы выбрать подходящий инструмент для создания дампа.
 
 #### <a name="analyze-the-dump"></a>Анализ дампа
 
@@ -1486,19 +1486,19 @@ Failed to start application '/LM/W3SVC/6/ROOT/', ErrorCode '0x800700c1'.
 ### <a name="azure-documentation"></a>Документация по Azure
 
 * [Application Insights для ASP.NET Core](/azure/application-insights/app-insights-asp-net-core)
-* [Раздел "Удаленная отладка веб-приложений" статьи Устранение неполадок веб-приложения в службе приложений Azure с помощью Visual Studio](/azure/app-service/web-sites-dotnet-troubleshoot-visual-studio#remotedebug)
+* [Раздел "Веб-приложения удаленной отладки" статьи "Устранение неполадок веб-приложения в Службе приложений Azure с помощью Visual Studio"](/azure/app-service/web-sites-dotnet-troubleshoot-visual-studio#remotedebug)
 * [Общие сведения о диагностике в службе приложений Azure](/azure/app-service/app-service-diagnostics)
-* [Мониторинг приложений в службе приложений Azure](/azure/app-service/web-sites-monitor)
+* [Практическое руководство. Мониторинг приложений в Службе приложений Azure](/azure/app-service/web-sites-monitor)
 * [Устранение неполадок веб-приложения в службе приложений Azure с помощью Visual Studio](/azure/app-service/web-sites-dotnet-troubleshoot-visual-studio)
 * [Устранение ошибок HTTP "502 — недопустимый шлюз" и "503 — служба недоступна" в веб-приложениях Azure](/azure/app-service/app-service-web-troubleshoot-http-502-http-503)
-* [Устранение причин низкой производительности приложения в Службе приложений Azure](/azure/app-service/app-service-web-troubleshoot-performance-degradation)
+* [Устранение проблем с производительностью медленных веб приложений в службе приложений Azure](/azure/app-service/app-service-web-troubleshoot-performance-degradation)
 * [Вопросы и ответы о производительности приложений для веб-приложений в Azure](/azure/app-service/app-service-web-availability-performance-application-issues-faq)
 * ["Песочница" веб-приложений Azure (ограничения работы среды выполнения службы приложений)](https://github.com/projectkudu/kudu/wiki/Azure-Web-App-sandbox)
-* [Azure, пятница: практики диагностики и устранения неполадок в службе приложений Azure (12-минутное видео)](https://channel9.msdn.com/Shows/Azure-Friday/Azure-App-Service-Diagnostic-and-Troubleshooting-Experience)
+* [Пятница с Azure. Практика диагностики и устранения неполадок в Службе приложений Azure (12-минутное видео)](https://channel9.msdn.com/Shows/Azure-Friday/Azure-App-Service-Diagnostic-and-Troubleshooting-Experience)
 
 ### <a name="visual-studio-documentation"></a>Документация по Visual Studio
 
-* [Удаленная отладка ASP.NET Core на IIS в Azure в Visual Studio 2017](/visualstudio/debugger/remote-debugging-azure)
+* [Удаленная отладка ASP.NET Core в IIS в Azure в Visual Studio 2017](/visualstudio/debugger/remote-debugging-azure)
 * [Удаленная отладка ASP.NET Core на удаленном компьютере IIS в Visual Studio 2017](/visualstudio/debugger/remote-debugging-aspnet-on-a-remote-iis-computer)
 * [Сведения об отладке с помощью Visual Studio](/visualstudio/debugger/getting-started-with-the-debugger)
 

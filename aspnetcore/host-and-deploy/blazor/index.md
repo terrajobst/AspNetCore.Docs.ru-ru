@@ -5,17 +5,17 @@ description: Узнайте, как размещать и развертыват
 monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 12/18/2019
+ms.date: 03/11/2020
 no-loc:
 - Blazor
 - SignalR
 uid: host-and-deploy/blazor/index
-ms.openlocfilehash: 238e7fc8f8d64c7847dc8847fb66e22442a3c8e0
-ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
+ms.openlocfilehash: ddf70da29a82d462422c1bdf74ff45b92bb10b56
+ms.sourcegitcommit: 5bdc54162d7dea8d9fa54ac3055678db23586af1
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78644710"
+ms.lasthandoff: 03/17/2020
+ms.locfileid: "79434269"
 ---
 # <a name="host-and-deploy-aspnet-core-blazor"></a>Размещение и развертывание ASP.NET Core Blazor
 
@@ -45,7 +45,12 @@ dotnet publish -c Release
 
 Публикация приложения активирует [восстановление](/dotnet/core/tools/dotnet-restore) зависимостей проекта и выполняет [сборку](/dotnet/core/tools/dotnet-build) проекта, прежде чем создавать ресурсы для развертывания. В ходе процесса построения удаляются неиспользуемые методы и сборки, чтобы уменьшить размер скачиваемого приложения и время загрузки.
 
-Приложение Blazor WebAssembly публикуется в папке */bin/Release/{TARGET FRAMEWORK}/publish/{ASSEMBLY NAME}/dist*. Серверное приложение Blazor публикуется в папке */bin/Release/{TARGET FRAMEWORK}/publish*.
+Расположения публикации.
+
+* Blazor WebAssembly
+  * Изолированное. Приложение публикуется в папке */bin/Release/{целевая_платформа}/publish/wwwroot*. Чтобы развернуть приложение как статический сайт, скопируйте содержимое папки *wwwroot* на узел статического сайта.
+  * Размещенное. Приложение клиента Blazor WebAssembly публикуется в папке */bin/Release/{целевая_платформа}/publish/wwwroot* для серверного приложения вместе с другими статическими веб-ресурсами серверного приложения. Разверните содержимое папки *publish* на узле.
+* Сервер Blazor. Приложение публикуется в папке */bin/Release/{целевая_платформа}/publish*. Разверните содержимое папки *publish* на узле.
 
 Ресурсы из папки развертываются на веб-сервере. Развертывание может проводиться вручную или автоматизированно в зависимости от используемых средств разработки.
 

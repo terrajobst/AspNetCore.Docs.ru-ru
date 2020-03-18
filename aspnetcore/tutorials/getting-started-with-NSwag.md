@@ -6,12 +6,12 @@ ms.author: scaddie
 ms.custom: mvc
 ms.date: 12/05/2019
 uid: tutorials/get-started-with-nswag
-ms.openlocfilehash: bd68e134fb71fd396a30ec9c674111bc8536860d
-ms.sourcegitcommit: 851b921080fe8d719f54871770ccf6f78052584e
+ms.openlocfilehash: 3eae5d3c66204a10806a8036c8f114af6c501b2c
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74944178"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78650368"
 ---
 # <a name="get-started-with-nswag-and-aspnet-core"></a>Начало работы с NSwag и ASP.NET Core
 
@@ -19,13 +19,13 @@ ms.locfileid: "74944178"
 
 ::: moniker range=">= aspnetcore-2.1"
 
-[Просмотреть или скачать образец кода](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/tutorials/web-api-help-pages-using-swagger/samples/2.1/TodoApi.NSwag) ([как скачивать](xref:index#how-to-download-a-sample))
+[Просмотреть или скачать образец кода](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/tutorials/web-api-help-pages-using-swagger/samples/2.1/TodoApi.NSwag) ([как скачивать](xref:index#how-to-download-a-sample))
 
 ::: moniker-end
 
 ::: moniker range="<= aspnetcore-2.0"
 
-[Просмотреть или скачать образец кода](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/tutorials/web-api-help-pages-using-swagger/samples/2.0/TodoApi.NSwag) ([как скачивать](xref:index#how-to-download-a-sample))
+[Просмотреть или скачать образец кода](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/tutorials/web-api-help-pages-using-swagger/samples/2.0/TodoApi.NSwag) ([как скачивать](xref:index#how-to-download-a-sample))
 
 ::: moniker-end
 
@@ -47,7 +47,7 @@ NSwag обеспечивает следующие возможности:
 
 Чтобы установить пакет NuGet NSwag, воспользуйтесь одним из следующих способов.
 
-# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
+# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 * В окне **Консоль диспетчера пакетов**
   * Перейдите в раздел **Представление** > **Другие окна** > **Консоль диспетчера пакетов**
@@ -64,14 +64,14 @@ NSwag обеспечивает следующие возможности:
   * В поле поиска введите "NSwag.AspNetCore"
   * Выберите пакет "NSwag.AspNetCore" на вкладке **Обзор** и нажмите **Установить**
 
-# <a name="visual-studio-for-mactabvisual-studio-mac"></a>[Visual Studio для Mac](#tab/visual-studio-mac)
+# <a name="visual-studio-for-mac"></a>[Visual Studio для Mac](#tab/visual-studio-mac)
 
-* Щелкните правой кнопкой мыши папку *Пакеты* на **панели решения** > **Добавление пакетов...**.
+* Щелкните правой кнопкой мыши папку *Пакеты* на **панели решения** > **Добавление пакетов...** .
 * В раскрывающемся списке **Источник** в окне **Добавление пакетов** выберите вариант "nuget.org".
 * В поле поиска введите "NSwag.AspNetCore"
 * В области результатов выберите пакет "NSwag.AspNetCore" и нажмите **Добавить пакет**
 
-# <a name="net-core-clitabnetcore-cli"></a>[Интерфейс командной строки .NET Core](#tab/netcore-cli)
+# <a name="net-core-cli"></a>[Интерфейс командной строки .NET Core](#tab/netcore-cli)
 
 Выполните следующую команду:
 
@@ -101,7 +101,7 @@ dotnet add TodoApi.csproj package NSwag.AspNetCore
 
 Можно воспользоваться преимуществами создания кода в NSwag, выбрав один из следующих вариантов:
 
-* [NSwagStudio](https://github.com/RicoSuter/NSwag/wiki/NSwagStudio) — это классическое приложение Windows для создания клиентского кода API на C# или TypeScript.
+* [NSwagStudio](https://github.com/RicoSuter/NSwag/wiki/NSwagStudio) &ndash; — это классическое приложение Windows для создания клиентского кода API на C# или TypeScript.
 * Пакеты NuGet [NSwag.CodeGeneration.CSharp](https://www.nuget.org/packages/NSwag.CodeGeneration.CSharp/) или [NSwag.CodeGeneration.TypeScript](https://www.nuget.org/packages/NSwag.CodeGeneration.TypeScript/) для создания кода внутри проекта.
 * NSwag из [командной строки](https://github.com/RicoSuter/NSwag/wiki/CommandLine).
 * Пакет NuGet [NSwag.MSBuild](https://github.com/RicoSuter/NSwag/wiki/NSwag.MSBuild).
@@ -110,7 +110,7 @@ dotnet add TodoApi.csproj package NSwag.AspNetCore
 ### <a name="generate-code-with-nswagstudio"></a>Создание кода с помощью NSwagStudio
 
 * Установите NSwagStudio, следуя инструкциям из [репозитория NSwagStudio на веб-сайте GitHub](https://github.com/RicoSuter/NSwag/wiki/NSwagStudio). На странице выпуска NSwag можно скачать версию xcopy, которую можно запустить без установки и прав администратора.
-* Запустите NSwagStudio и введите URL-адрес файла *swagger.json* в текстовое поле **Swagger Specification URL** (URL-адрес спецификации Swagger). Например, *http://localhost:44354/swagger/v1/swagger.json*.
+* Запустите NSwagStudio и введите URL-адрес файла *swagger.json* в текстовое поле **Swagger Specification URL** (URL-адрес спецификации Swagger). Например, *http://localhost:44354/swagger/v1/swagger.json* .
 * Нажмите кнопку **Create local Copy** (Создать локальную копию), чтобы создать представление JSON своей спецификации Swagger.
 
   ![Создание локальной копии спецификация Swagger](web-api-help-pages-using-swagger/_static/CreateLocalCopy-NSwagStudio.PNG)
@@ -193,7 +193,7 @@ Swagger предоставляет параметры для документи�
 
 Чтобы включить комментарии XML, выполните следующие действия:
 
-# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
+# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 ::: moniker range=">= aspnetcore-2.0"
 
@@ -211,7 +211,7 @@ Swagger предоставляет параметры для документи�
 
 ::: moniker-end
 
-# <a name="visual-studio-for-mactabvisual-studio-mac"></a>[Visual Studio для Mac](#tab/visual-studio-mac)
+# <a name="visual-studio-for-mac"></a>[Visual Studio для Mac](#tab/visual-studio-mac)
 
 ::: moniker range=">= aspnetcore-2.0"
 
@@ -224,12 +224,12 @@ Swagger предоставляет параметры для документи�
 
 ::: moniker range="<= aspnetcore-1.1"
 
-* Откройте диалоговое окно **Параметры проекта** > **Сборка** > **Компилятор**
+* Откройте диалоговое окно **Параметры проекта** > **Сборка** > **Компилятор**.
 * Установите флажок **Сформировать XML-документацию** в разделе **Общие параметры**
 
 ::: moniker-end
 
-# <a name="net-core-clitabnetcore-cli"></a>[Интерфейс командной строки .NET Core](#tab/netcore-cli)
+# <a name="net-core-cli"></a>[Интерфейс командной строки .NET Core](#tab/netcore-cli)
 
 Вручную добавьте выделенные строки в файл *.csproj*:
 
@@ -275,7 +275,7 @@ Swagger предоставляет параметры для документи�
 
 [!code-csharp[](../tutorials/web-api-help-pages-using-swagger/samples/2.1/TodoApi.NSwag/Controllers/TodoController.cs?name=snippet_CreateActionAttributes)]
 
-В ASP.NET Core 2.2 или более поздней версии можно использовать соглашения вместо явного добавления `[ProducesResponseType]` к отдельным действиям. Дополнительные сведения можно найти по адресу: <xref:web-api/advanced/conventions>.
+В ASP.NET Core 2.2 или более поздней версии можно использовать соглашения вместо явного добавления `[ProducesResponseType]` к отдельным действиям. Для получения дополнительной информации см. <xref:web-api/advanced/conventions>.
 
 ::: moniker-end
 
