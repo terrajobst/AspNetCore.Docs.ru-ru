@@ -4,18 +4,18 @@ author: rick-anderson
 description: Узнайте, как создать веб-API с помощью ASP.NET Core.
 ms.author: riande
 ms.custom: mvc
-ms.date: 12/05/2019
+ms.date: 2/25/2020
 uid: tutorials/first-web-api
-ms.openlocfilehash: 73e547b014d78dcbcbf1c887ebec16e0743d10b9
-ms.sourcegitcommit: f259889044d1fc0f0c7e3882df0008157ced4915
+ms.openlocfilehash: 55dfc05b5c96f7fa060d537745bac969e92daa9b
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76294751"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78644968"
 ---
 # <a name="tutorial-create-a-web-api-with-aspnet-core"></a>Учебник. Создание веб-API с помощью ASP.NET Core
 
-Авторы: [Рик Андерсон](https://twitter.com/RickAndMSFT) и [Майк Уоссон](https://github.com/mikewasson)
+Авторы: [Рик Андерсон](https://twitter.com/RickAndMSFT) (Rick Anderson), [Кирк Ларкин](https://twitter.com/serpent5) (Kirk Larkin) и [Майк Уоссон](https://github.com/mikewasson) (Mike Wasson)
 
 В этом учебнике приводятся основные сведения о создании веб-API с помощью ASP.NET Core.
 
@@ -50,15 +50,15 @@ ms.locfileid: "76294751"
 
 ## <a name="prerequisites"></a>Предварительные требования
 
-# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
+# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 [!INCLUDE[](~/includes/net-core-prereqs-vs-3.1.md)]
 
-# <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
+# <a name="visual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
 [!INCLUDE[](~/includes/net-core-prereqs-vsc-3.1.md)]
 
-# <a name="visual-studio-for-mactabvisual-studio-mac"></a>[Visual Studio для Mac](#tab/visual-studio-mac)
+# <a name="visual-studio-for-mac"></a>[Visual Studio для Mac](#tab/visual-studio-mac)
 
 [!INCLUDE[](~/includes/net-core-prereqs-mac-3.1.md)]
 
@@ -66,7 +66,7 @@ ms.locfileid: "76294751"
 
 ## <a name="create-a-web-project"></a>Создайте веб-проект.
 
-# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
+# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 * В меню **Файл** выберите пункт **Создать** > **Проект**.
 * Выберите шаблон **Веб-приложение ASP.NET Core** и нажмите **Далее**.
@@ -75,7 +75,7 @@ ms.locfileid: "76294751"
 
 ![Диалоговое окно создания проекта VS](first-web-api/_static/vs3.png)
 
-# <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
+# <a name="visual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
 * Откройте [Интегрированный терминал](https://code.visualstudio.com/docs/editor/integrated-terminal).
 * Смените каталог (`cd`) на папку, в которой будет содержаться папка проекта.
@@ -96,7 +96,7 @@ ms.locfileid: "76294751"
   * Создает новый проект веб-API и открывает его в Visual Studio Code.
   * Добавляет пакеты NuGet, которые понадобятся в следующем разделе.
 
-# <a name="visual-studio-for-mactabvisual-studio-mac"></a>[Visual Studio для Mac](#tab/visual-studio-mac)
+# <a name="visual-studio-for-mac"></a>[Visual Studio для Mac](#tab/visual-studio-mac)
 
 * Щелкните **Файл** > **Новое решение**.
 
@@ -127,17 +127,17 @@ ms.locfileid: "76294751"
 
 Шаблон проекта создает API `WeatherForecast`. Вызовите метод `Get` из браузера для тестирования приложения.
 
-# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
+# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 Нажмите клавиши CTRL+F5, чтобы запустить приложение. Visual Studio запустит браузер и перейдет к `https://localhost:<port>/WeatherForecast`, где `<port>` — это номер порта, выбранный случайным образом.
 
 Если появится диалоговое окно с запросом о необходимости доверять сертификату IIS Express, выберите **Да**. В появляющемся следом диалоговом окне **Предупреждение системы безопасности** выберите **Да**.
 
-# <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
+# <a name="visual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
 Нажмите клавиши CTRL+F5, чтобы запустить приложение. В браузере перейдите по следующему URL-адресу: [https://localhost:5001/WeatherForecast](https://localhost:5001/WeatherForecast).
 
-# <a name="visual-studio-for-mactabvisual-studio-mac"></a>[Visual Studio для Mac](#tab/visual-studio-mac)
+# <a name="visual-studio-for-mac"></a>[Visual Studio для Mac](#tab/visual-studio-mac)
 
 Выберите **Выполнить** > **Начать отладку**, чтобы запустить приложение. Visual Studio для Mac запустит браузер и перейдет к `https://localhost:<port>`, где `<port>` — это номер порта, выбранный случайным образом. Появится ошибка HTTP 404 (Не найдено). Добавьте `/WeatherForecast` к URL-адресу (измените URL-адрес на `https://localhost:<port>/WeatherForecast`).
 
@@ -184,7 +184,7 @@ ms.locfileid: "76294751"
 
 *Модель* — это набор классов, представляющих данные, которыми управляет приложение. Модель этого приложения содержит единственный класс `TodoItem`.
 
-# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
+# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 * В **обозревателе решений** щелкните проект правой кнопкой мыши. Выберите **Добавить** > **Новая папка**. Присвойте папке имя *Models*.
 
@@ -192,13 +192,13 @@ ms.locfileid: "76294751"
 
 * Замените код шаблона следующим кодом:
 
-# <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
+# <a name="visual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
 * Добавьте папку с именем *Models*.
 
 * Добавьте класс `TodoItem` в папку *Models*, используя следующий код:
 
-# <a name="visual-studio-for-mactabvisual-studio-mac"></a>[Visual Studio для Mac](#tab/visual-studio-mac)
+# <a name="visual-studio-for-mac"></a>[Visual Studio для Mac](#tab/visual-studio-mac)
 
 * Щелкните проект правой кнопкой мыши. Выберите **Добавить** > **Новая папка**. Присвойте папке имя *Models*.
 
@@ -212,7 +212,7 @@ ms.locfileid: "76294751"
 
 ---
 
-  [!code-csharp[](first-web-api/samples/3.0/TodoApi/Models/TodoItem.cs)]
+  [!code-csharp[](first-web-api/samples/3.0/TodoApi/Models/TodoItem.cs?name=snippet)]
 
 Свойство `Id` выступает в качестве уникального ключа реляционной базы данных.
 
@@ -222,7 +222,7 @@ ms.locfileid: "76294751"
 
 *Контекст базы данных* —это основной класс, который координирует функциональные возможности Entity Framework для модели данных. Этот класс является производным от класса `Microsoft.EntityFrameworkCore.DbContext`.
 
-# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
+# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 ### <a name="add-microsoftentityframeworkcoresqlserver"></a>Добавление Microsoft.EntityFrameworkCore.SqlServer
 
@@ -238,7 +238,7 @@ ms.locfileid: "76294751"
 
 * Щелкните папку *Models* правой кнопкой мыши и выберите **Добавить** > **Класс**. Назовите класс *TodoContext* и нажмите **Добавить**.
 
-# <a name="visual-studio-code--visual-studio-for-mactabvisual-studio-codevisual-studio-mac"></a>[Visual Studio Code/Visual Studio для Mac](#tab/visual-studio-code+visual-studio-mac)
+# <a name="visual-studio-code--visual-studio-for-mac"></a>[Visual Studio Code/Visual Studio для Mac](#tab/visual-studio-code+visual-studio-mac)
 
 * Добавьте класс `TodoContext` в папку *Models*.
 
@@ -264,7 +264,7 @@ ms.locfileid: "76294751"
 
 ## <a name="scaffold-a-controller"></a>Формирование шаблонов контроллера
 
-# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
+# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 * Щелкните папку *Controllers* правой кнопкой мыши.
 * Щелкните **Добавить** > **Создать шаблонный элемент**.
@@ -275,7 +275,7 @@ ms.locfileid: "76294751"
   * Выберите **TodoContext (TodoApi.Models)** в поле **Класс контекста данных**.
   * Нажмите **Добавить**.
 
-# <a name="visual-studio-code--visual-studio-for-mactabvisual-studio-codevisual-studio-mac"></a>[Visual Studio Code/Visual Studio для Mac](#tab/visual-studio-code+visual-studio-mac)
+# <a name="visual-studio-code--visual-studio-for-mac"></a>[Visual Studio Code/Visual Studio для Mac](#tab/visual-studio-code+visual-studio-mac)
 
 Выполните следующие команды:
 
@@ -298,6 +298,13 @@ dotnet aspnet-codegenerator controller -name TodoItemsController -async -api -m 
 
 * Пометьте этот класс атрибутом [`[ApiController]`](/dotnet/api/microsoft.aspnetcore.mvc.apicontrollerattribute). Этот атрибут указывает, что контроллер отвечает на запросы веб-API. Дополнительные сведения о поведении, которое реализует этот атрибут, см. в <xref:web-api/index>.
 * Использует внедрение зависимостей для внедрения контекста базы данных (`TodoContext`) в контроллер. Контекст базы данных используется в каждом методе [создания, чтения, обновления и удаления](https://wikipedia.org/wiki/Create,_read,_update_and_delete) в контроллере.
+
+Шаблоны ASP.NET Core для:
+
+* Контроллеры с представлениями включают `[action]` в шаблоне маршрута.
+* Контроллеры API не включают `[action]` в шаблоне маршрута.
+
+Если токен `[action]` не находится в шаблоне маршрута, имя [действия](xref:mvc/controllers/routing#action) исключается из маршрута. То есть имя связанного метода действия не используется в соответствующем маршруте.
 
 ## <a name="examine-the-posttodoitem-create-method"></a>Знакомство с методом создания PostTodoItem
 
@@ -458,6 +465,37 @@ dotnet aspnet-codegenerator controller -name TodoItemsController -async -api -m 
 * Укажите URI удаляемого объекта (например, `https://localhost:5001/api/TodoItems/1`).
 * Нажмите кнопку **Отправить**.
 
+<a name="over-post"></a>
+
+## <a name="prevent-over-posting"></a>Предотвращение избыточной публикации
+
+В настоящее время пример приложения предоставляет весь объект `TodoItem`. Рабочие приложения обычно ограничивают вводимые данные и возвращают их с помощью подмножества модели. Это связано с несколькими причинами, и безопасность является основной. Подмножество модели обычно называется объектом передачи данных (DTO), моделью ввода или моделью представления. В этой статье используется **DTO**.
+
+DTO можно использовать для следующего:
+
+* Предотвращение избыточной публикации.
+* Скрытие свойств, которые не предназначены для просмотра клиентами.
+* Пропуск некоторых свойств, чтобы уменьшить размер полезной нагрузки.
+* Сведение графов объектов, содержащих вложенные объекты. Сведенные графы объектов могут быть удобнее для клиентов.
+
+Чтобы продемонстрировать подход с применением DTO, обновите класс `TodoItem`, включив в него поле секрета:
+
+[!code-csharp[](first-web-api/samples/3.0/TodoApiDTO/Models/TodoItem.cs?name=snippet&highlight=6)]
+
+Поле секрета должно быть скрыто в этом приложении, однако административное приложение может отобразить его.
+
+Убедитесь, что вы можете отправить и получить секретное поле.
+
+Создайте модель DTO:
+
+[!code-csharp[](first-web-api/samples/3.0/TodoApiDTO/Models/TodoItemDTO.cs?name=snippet)]
+
+Обновите `TodoItemsController` для использования `TodoItemDTO`:
+
+[!code-csharp[](first-web-api/samples/3.0/TodoApiDTO/Controllers/TodoItemsController.cs?name=snippet)]
+
+Убедитесь, что вы можете отправить или получить секретное поле.
+
 ## <a name="call-the-web-api-with-javascript"></a>Вызов веб-API с помощью JavaScript
 
 См. руководство по [: Вызовите веб-API ASP.NET Core с помощью JavaScript](xref:tutorials/web-api-javascript).
@@ -498,15 +536,15 @@ dotnet aspnet-codegenerator controller -name TodoItemsController -async -api -m 
 
 ## <a name="prerequisites"></a>Предварительные требования
 
-# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
+# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 [!INCLUDE[](~/includes/net-core-prereqs-vs2019-2.2.md)]
 
-# <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
+# <a name="visual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
 [!INCLUDE[](~/includes/net-core-prereqs-vsc-2.2.md)]
 
-# <a name="visual-studio-for-mactabvisual-studio-mac"></a>[Visual Studio для Mac](#tab/visual-studio-mac)
+# <a name="visual-studio-for-mac"></a>[Visual Studio для Mac](#tab/visual-studio-mac)
 
 [!INCLUDE[](~/includes/net-core-prereqs-mac-2.2.md)]
 
@@ -514,7 +552,7 @@ dotnet aspnet-codegenerator controller -name TodoItemsController -async -api -m 
 
 ## <a name="create-a-web-project"></a>Создайте веб-проект.
 
-# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
+# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 * В меню **Файл** выберите пункт **Создать** > **Проект**.
 * Выберите шаблон **Веб-приложение ASP.NET Core** и нажмите **Далее**.
@@ -523,7 +561,7 @@ dotnet aspnet-codegenerator controller -name TodoItemsController -async -api -m 
 
 ![Диалоговое окно создания проекта VS](first-web-api/_static/vs.png)
 
-# <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
+# <a name="visual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
 * Откройте [Интегрированный терминал](https://code.visualstudio.com/docs/editor/integrated-terminal).
 * Смените каталог (`cd`) на папку, в которой будет содержаться папка проекта.
@@ -538,7 +576,7 @@ dotnet aspnet-codegenerator controller -name TodoItemsController -async -api -m 
 
 * При появлении диалогового окна с запросом на добавление в проект необходимых ресурсов выберите **Да**.
 
-# <a name="visual-studio-for-mactabvisual-studio-mac"></a>[Visual Studio для Mac](#tab/visual-studio-mac)
+# <a name="visual-studio-for-mac"></a>[Visual Studio для Mac](#tab/visual-studio-mac)
 
 * Щелкните **Файл** > **Новое решение**.
 
@@ -560,17 +598,17 @@ dotnet aspnet-codegenerator controller -name TodoItemsController -async -api -m 
 
 Шаблон проекта создает API `values`. Вызовите метод `Get` из браузера для тестирования приложения.
 
-# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
+# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 Нажмите клавиши CTRL+F5, чтобы запустить приложение. Visual Studio запустит браузер и перейдет к `https://localhost:<port>/api/values`, где `<port>` — это номер порта, выбранный случайным образом.
 
 Если появится диалоговое окно с запросом о необходимости доверять сертификату IIS Express, выберите **Да**. В появляющемся следом диалоговом окне **Предупреждение системы безопасности** выберите **Да**.
 
-# <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
+# <a name="visual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
 Нажмите клавиши CTRL+F5, чтобы запустить приложение. В браузере перейдите по следующему URL-адресу: [https://localhost:5001/api/values](https://localhost:5001/api/values).
 
-# <a name="visual-studio-for-mactabvisual-studio-mac"></a>[Visual Studio для Mac](#tab/visual-studio-mac)
+# <a name="visual-studio-for-mac"></a>[Visual Studio для Mac](#tab/visual-studio-mac)
 
 Выберите **Выполнить** > **Начать отладку**, чтобы запустить приложение. Visual Studio для Mac запустит браузер и перейдет к `https://localhost:<port>`, где `<port>` — это номер порта, выбранный случайным образом. Появится ошибка HTTP 404 (Не найдено). Добавьте `/api/values` к URL-адресу (измените URL-адрес на `https://localhost:<port>/api/values`).
 
@@ -586,7 +624,7 @@ dotnet aspnet-codegenerator controller -name TodoItemsController -async -api -m 
 
 *Модель* — это набор классов, представляющих данные, которыми управляет приложение. Модель этого приложения содержит единственный класс `TodoItem`.
 
-# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
+# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 * В **обозревателе решений** щелкните проект правой кнопкой мыши. Выберите **Добавить** > **Новая папка**. Присвойте папке имя *Models*.
 
@@ -594,13 +632,13 @@ dotnet aspnet-codegenerator controller -name TodoItemsController -async -api -m 
 
 * Замените код шаблона следующим кодом:
 
-# <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
+# <a name="visual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
 * Добавьте папку с именем *Models*.
 
 * Добавьте класс `TodoItem` в папку *Models*, используя следующий код:
 
-# <a name="visual-studio-for-mactabvisual-studio-mac"></a>[Visual Studio для Mac](#tab/visual-studio-mac)
+# <a name="visual-studio-for-mac"></a>[Visual Studio для Mac](#tab/visual-studio-mac)
 
 * Щелкните проект правой кнопкой мыши. Выберите **Добавить** > **Новая папка**. Присвойте папке имя *Models*.
 
@@ -624,11 +662,11 @@ dotnet aspnet-codegenerator controller -name TodoItemsController -async -api -m 
 
 *Контекст базы данных* —это основной класс, который координирует функциональные возможности Entity Framework для модели данных. Этот класс является производным от класса `Microsoft.EntityFrameworkCore.DbContext`.
 
-# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
+# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 * Щелкните папку *Models* правой кнопкой мыши и выберите **Добавить** > **Класс**. Назовите класс *TodoContext* и нажмите **Добавить**.
 
-# <a name="visual-studio-code--visual-studio-for-mactabvisual-studio-codevisual-studio-mac"></a>[Visual Studio Code/Visual Studio для Mac](#tab/visual-studio-code+visual-studio-mac)
+# <a name="visual-studio-code--visual-studio-for-mac"></a>[Visual Studio Code/Visual Studio для Mac](#tab/visual-studio-code+visual-studio-mac)
 
 * Добавьте класс `TodoContext` в папку *Models*.
 
@@ -654,7 +692,7 @@ dotnet aspnet-codegenerator controller -name TodoItemsController -async -api -m 
 
 ## <a name="add-a-controller"></a>Добавление контроллера
 
-# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
+# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 * Щелкните папку *Controllers* правой кнопкой мыши.
 * Щелкните **Добавить** > **Создать элемент**.
@@ -663,7 +701,7 @@ dotnet aspnet-codegenerator controller -name TodoItemsController -async -api -m 
 
   ![Диалоговое окно добавления элемента с контроллером в поле поиска и выбранным контроллером веб-API](first-web-api/_static/new_controller.png)
 
-# <a name="visual-studio-code--visual-studio-for-mactabvisual-studio-codevisual-studio-mac"></a>[Visual Studio Code/Visual Studio для Mac](#tab/visual-studio-code+visual-studio-mac)
+# <a name="visual-studio-code--visual-studio-for-mac"></a>[Visual Studio Code/Visual Studio для Mac](#tab/visual-studio-code+visual-studio-mac)
 
 * В папке *Controllers* создайте класс с именем `TodoController`.
 
@@ -743,11 +781,11 @@ dotnet aspnet-codegenerator controller -name TodoItemsController -async -api -m 
 * Запустите Postman.
 * Отключите параметр **Проверка SSL-сертификата**.
 
-# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
+# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 * В меню **Файл** > **Параметры** (вкладка **Общие**), отключите параметр **Проверка SSL-сертификата**.
 
-# <a name="visual-studio-code--visual-studio-for-mactabvisual-studio-codevisual-studio-mac"></a>[Visual Studio Code/Visual Studio для Mac](#tab/visual-studio-code+visual-studio-mac)
+# <a name="visual-studio-code--visual-studio-for-mac"></a>[Visual Studio Code/Visual Studio для Mac](#tab/visual-studio-code+visual-studio-mac)
 
 * В меню **Postman** > **Настройки** (вкладка **Общие**) отключите параметр **Проверка SSL-сертификата**. Кроме того, можно выбрать значок гаечного ключа и выбрать **Параметры**, а затем отключить проверку SSL-сертификата.
 
@@ -918,7 +956,7 @@ jQuery отправляет запрос HTTP POST с элементом спи�
 
 ## <a name="additional-resources"></a>Дополнительные ресурсы
 
-[Просмотреть или скачать пример кода для этого учебника](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/tutorials/first-web-api/samples). См. раздел [Практическое руководство. Скачивание файла](xref:index#how-to-download-a-sample).
+[Просмотреть или скачать пример кода для этого учебника](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/tutorials/first-web-api/samples). См. раздел [Практическое руководство. Скачивание файла](xref:index#how-to-download-a-sample).
 
 Дополнительные сведения см. в следующих ресурсах:
 
