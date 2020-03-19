@@ -5,17 +5,17 @@ description: Приступите к работе с Blazor, создав при
 monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 01/28/2019
+ms.date: 03/10/2020
 no-loc:
 - Blazor
 - SignalR
 uid: blazor/get-started
-ms.openlocfilehash: bd33d874b3d6122f2ab820e9b147b0e62ba03a58
-ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
+ms.openlocfilehash: 89c7529d2b8ec97db731f7c7268e19937c398115
+ms.sourcegitcommit: 98bcf5fe210931e3eb70f82fd675d8679b33f5d6
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78648634"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79083239"
 ---
 # <a name="get-started-with-aspnet-core-blazor"></a>Начало работы с MVC ASP.NET Core Blazor
 
@@ -28,12 +28,15 @@ ms.locfileid: "78648634"
 1. Установите [пакет SDK для .NET Core 3.1](https://dotnet.microsoft.com/download/dotnet-core/3.1).
 
 1. Дополнительно установите шаблон [Blazor WebAssembly](xref:blazor/hosting-models#blazor-webassembly).
-   * Установите [пакет SDK для .NET Core 3.1 или более поздней версии (предварительная версия)](https://dotnet.microsoft.com/download/dotnet-core/3.1).
-   * В командной оболочке выполните следующую команду. В период действия предварительной версии Blazor WebAssembly будет использоваться предварительная версия пакета [Microsoft.AspNetCore.Blazor.Templates](https://www.nuget.org/packages/Microsoft.AspNetCore.Blazor.Templates/).
+   * Установите [пакет SDK для .NET Core 3.1.102 или более поздней версии (предварительная версия)](https://dotnet.microsoft.com/download/dotnet-core/3.1).
+   * В командной оболочке выполните следующую команду. В период действия предварительной версии Blazor WebAssembly будет использоваться предварительная версия пакета [Microsoft.AspNetCore.Components.WebAssembly.Templates](https://www.nuget.org/packages/Microsoft.AspNetCore.Components.WebAssembly.Templates/).
 
    ```dotnetcli
-   dotnet new -i Microsoft.AspNetCore.Blazor.Templates::3.2.0-preview1.20073.1
+   dotnet new -i Microsoft.AspNetCore.Components.WebAssembly.Templates::3.2.0-preview2.20160.5
    ```
+
+   > [!NOTE]
+   > Пакет SDK для .NET Core версии 3.1.102 или более поздней **обязательно** должен использовать шаблон Blazor WebAssembly 3.2, предварительная версия 2. Подтвердите установленную версию пакет SDK для .NET Core, запустив `dotnet --version` в командной оболочке.
 
 1. Следуйте указаниям по выбору инструментов:
 
@@ -47,7 +50,7 @@ ms.locfileid: "78648634"
 
    4\. В поле **Имя проекта** укажите имя проекта или оставьте имя по умолчанию. Убедитесь, что для проекта правильно указано существующее **расположение** или укажите новое. Выберите **Создать**.
 
-   5\. Для работы с Blazor WebAssembly выберите шаблон **Приложение WebAssembly Blazor**. Для работы с Blazor Server выберите шаблон **Серверное приложение Blazor**. Выберите **Создать**. Сведения о двух моделях размещения Blazor, *Blazor Server* и *Blazor WebAssembly*, см. в разделе <xref:blazor/hosting-models>.
+   5\. Для работы с Blazor WebAssembly выберите шаблон **Приложение WebAssembly Blazor**. Для работы с Blazor Server выберите шаблон **Серверное приложение Blazor**. Выберите **Создать**. Сведения о двух моделях размещения Blazor, *Blazor Server* и *Blazor WebAssembly*, см. в разделе <xref:blazor/hosting-models>. Если шаблон Blazor WebAssembly отсутствует, вернитесь к предыдущему шагу и переустановите шаблон.
 
    6\. Нажмите клавишу **Ctrl**+**F5** для запуска приложения.
 
@@ -58,7 +61,7 @@ ms.locfileid: "78648634"
 
    1\. Установите [Visual Studio Code](https://code.visualstudio.com/).
 
-   2\. Установите актуальную версию [расширения C# для Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp).
+   2\. Установите актуальную версию [расширения C# для Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp).
 
    3\. Для работы с Blazor WebAssembly выполните следующую команду в командной оболочке:
 

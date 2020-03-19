@@ -7,12 +7,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 02/07/2020
 uid: host-and-deploy/iis/index
-ms.openlocfilehash: c2ca867e3eebdc3fcf512cc5d457ff3c1967f9b1
-ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
+ms.openlocfilehash: e4da57001ad369a8df87c7e0887772e3d75c032d
+ms.sourcegitcommit: d64ef143c64ee4fdade8f9ea0b753b16752c5998
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78644200"
+ms.lasthandoff: 03/18/2020
+ms.locfileid: "79511227"
 ---
 # <a name="host-aspnet-core-on-windows-with-iis"></a>Размещение ASP.NET Core в Windows со службами IIS
 
@@ -243,14 +243,14 @@ services.Configure<IISOptions>(options =>
 
 Скачайте установщик по следующей ссылке:
 
-[Текущий установщик пакета размещения .NET Core (прямая загрузка)](https://www.microsoft.com/net/permalink/dotnetcore-current-windows-runtime-bundle-installer)
+[Текущий установщик пакета размещения .NET Core (прямая загрузка)](https://dotnet.microsoft.com/permalink/dotnetcore-current-windows-runtime-bundle-installer)
 
 ### <a name="earlier-versions-of-the-installer"></a>Более ранние версии установщика
 
 Получение более ранней версии установщика:
 
-1. Перейдите в [архивы загрузок .NET](https://www.microsoft.com/net/download/archives).
-1. В разделе **.NET Core** выберите версию .NET Core.
+1. Перейдите на страницу [загрузки .NET Core](https://dotnet.microsoft.com/download/dotnet-core).
+1. Щелкните нужную версию .NET Core.
 1. В столбце **Запуск приложений — среда выполнения** найдите строку, содержащую нужную версию среды выполнения .NET Core.
 1. Скачайте установщик по ссылке **Среда выполнения и пакет размещения**.
 
@@ -850,14 +850,14 @@ services.Configure<IISOptions>(options =>
 
 Скачайте установщик по следующей ссылке:
 
-[Текущий установщик пакета размещения .NET Core (прямая загрузка)](https://www.microsoft.com/net/permalink/dotnetcore-current-windows-runtime-bundle-installer)
+[Текущий установщик пакета размещения .NET Core (прямая загрузка)](https://dotnet.microsoft.com/permalink/dotnetcore-current-windows-runtime-bundle-installer)
 
 ### <a name="earlier-versions-of-the-installer"></a>Более ранние версии установщика
 
 Получение более ранней версии установщика:
 
-1. Перейдите в [архивы загрузок .NET](https://www.microsoft.com/net/download/archives).
-1. В разделе **.NET Core** выберите версию .NET Core.
+1. Перейдите на страницу [загрузки .NET Core](https://dotnet.microsoft.com/download/dotnet-core).
+1. Щелкните нужную версию .NET Core.
 1. В столбце **Запуск приложений — среда выполнения** найдите строку, содержащую нужную версию среды выполнения .NET Core.
 1. Скачайте установщик по ссылке **Среда выполнения и пакет размещения**.
 
@@ -1426,14 +1426,14 @@ services.Configure<IISOptions>(options =>
 
 Скачайте установщик по следующей ссылке:
 
-[Текущий установщик пакета размещения .NET Core (прямая загрузка)](https://www.microsoft.com/net/permalink/dotnetcore-current-windows-runtime-bundle-installer)
+[Текущий установщик пакета размещения .NET Core (прямая загрузка)](https://dotnet.microsoft.com/permalink/dotnetcore-current-windows-runtime-bundle-installer)
 
 ### <a name="earlier-versions-of-the-installer"></a>Более ранние версии установщика
 
 Получение более ранней версии установщика:
 
-1. Перейдите в [архивы загрузок .NET](https://www.microsoft.com/net/download/archives).
-1. В разделе **.NET Core** выберите версию .NET Core.
+1. Перейдите на страницу [загрузки .NET Core](https://dotnet.microsoft.com/download/dotnet-core).
+1. Щелкните нужную версию .NET Core.
 1. В столбце **Запуск приложений — среда выполнения** найдите строку, содержащую нужную версию среды выполнения .NET Core.
 1. Скачайте установщик по ссылке **Среда выполнения и пакет размещения**.
 

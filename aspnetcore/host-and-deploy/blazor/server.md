@@ -5,17 +5,17 @@ description: Сведения о размещении и развертыван�
 monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 02/15/2020
+ms.date: 03/03/2020
 no-loc:
 - Blazor
 - SignalR
 uid: host-and-deploy/blazor/server
-ms.openlocfilehash: 42321b8564524fec41104ccaf1ac47981d014c94
-ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
+ms.openlocfilehash: 866bb348180c872d8ab20787283cfb7217183a8d
+ms.sourcegitcommit: 3ca4a2235a8129def9e480d0a6ad54cc856920ec
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78647362"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79025426"
 ---
 # <a name="host-and-deploy-opno-locblazor-server"></a>Размещение и развертывание серверного приложения Blazor
 
@@ -110,14 +110,40 @@ metadata:
 
 #### <a name="linux-with-nginx"></a>Linux с Nginx
 
-Для правильной работы подключений WebSocket SignalR задайте следующие заголовки `Upgrade` и `Connection` прокси-сервера:
+Для правильной работы WebSockets SignalR убедитесь, что для заголовков `Upgrade` и `Connection` прокси-сервера заданы следующие значения и `$connection_upgrade` сопоставлен с одним из следующих элементов:
+
+* Значение заголовка обновления по умолчанию.
+* `close`, если заголовок обновления отсутствует или пуст.
 
 ```
-proxy_set_header Upgrade $http_upgrade;
-proxy_set_header Connection $connection_upgrade;
+http {
+    map $http_upgrade $connection_upgrade {
+        default Upgrade;
+        ''      close;
+    }
+
+    server {
+        listen      80;
+        server_name example.com *.example.com
+        location / {
+            proxy_pass         http://localhost:5000;
+            proxy_http_version 1.1;
+            proxy_set_header   Upgrade $http_upgrade;
+            proxy_set_header   Connection $connection_upgrade;
+            proxy_set_header   Host $host;
+            proxy_cache_bypass $http_upgrade;
+            proxy_set_header   X-Forwarded-For $proxy_add_x_forwarded_for;
+            proxy_set_header   X-Forwarded-Proto $scheme;
+        }
+    }
+}
 ```
 
-Дополнительные сведения см. в статье об [использовании NGINX в качестве прокси-сервера WebSocket](https://www.nginx.com/blog/websocket-nginx/).
+Дополнительные сведения см. в следующих статьях:
+
+* [NGINX как прокси-сервер WebSocket](https://www.nginx.com/blog/websocket-nginx/)
+* [Использование прокси-сервера для WebSocket](http://nginx.org/docs/http/websocket.html)
+* <xref:host-and-deploy/linux-nginx>
 
 ### <a name="measure-network-latency"></a>Измерение задержки сети
 
