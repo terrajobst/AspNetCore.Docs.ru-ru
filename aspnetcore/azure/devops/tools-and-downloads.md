@@ -6,12 +6,12 @@ ms.author: casoper
 ms.custom: mvc, seodec18
 ms.date: 10/24/2018
 uid: azure/devops/tools-and-downloads
-ms.openlocfilehash: 25ce311373b0aaddfa3bc2728c39e503acbca69d
-ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
+ms.openlocfilehash: 9c1042dd48b9167209b46e97a09e011b80e2609c
+ms.sourcegitcommit: d64ef143c64ee4fdade8f9ea0b753b16752c5998
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78647446"
+ms.lasthandoff: 03/18/2020
+ms.locfileid: "79511149"
 ---
 # <a name="tools-and-downloads"></a>Инструменты и файлы для скачивания
 
@@ -28,7 +28,7 @@ ms.locfileid: "78647446"
 Требуются следующие средства:
 
 * [Git](https://git-scm.com/downloads) &mdash; для использования данного руководства рекомендуется понимание основных принципов Git. Изучите [документацию по Git](https://git-scm.com/doc), в частности [git remote](https://git-scm.com/docs/git-remote) и [git push](https://git-scm.com/docs/git-push).
-* [Пакет SDK для .NET Core](https://www.microsoft.com/net/download/) &mdash; для создания и запуска примера приложения требуется версия 2.1.300 или более поздняя. Если Visual Studio был установлен вместе с рабочей нагрузкой **.NET Core для разработки кроссплатформенных приложений**, то пакет SDK для .NET Core уже установлен.
+* [Пакет SDK для .NET Core](https://dotnet.microsoft.com/download/) &mdash; для создания и запуска примера приложения требуется версия 2.1.300 или более поздняя. Если Visual Studio был установлен вместе с рабочей нагрузкой **.NET Core для разработки кроссплатформенных приложений**, то пакет SDK для .NET Core уже установлен.
 
     Проверьте установку пакета SDK для .NET Core. Откройте окно командной оболочки и выполните следующую команду:
 

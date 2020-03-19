@@ -7,12 +7,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 10/25/2018
 uid: fundamentals/metapackage
-ms.openlocfilehash: e47f583d0fa75bdeb26b669303747a70619117c1
-ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
+ms.openlocfilehash: cc00c075909da5c17a4aa2fd252c9e662e5a0fc9
+ms.sourcegitcommit: d64ef143c64ee4fdade8f9ea0b753b16752c5998
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78648964"
+ms.lasthandoff: 03/18/2020
+ms.locfileid: "79511071"
 ---
 # <a name="microsoftaspnetcoreall-metapackage-for-aspnet-core-20"></a>Метапакет Microsoft.AspNetCore.All для ASP.NET Core 2.0
 
@@ -94,6 +94,6 @@ ms.locfileid: "78648964"
 
 Мы рекомендуем перейти к использованию метапакета `Microsoft.AspNetCore.App` для 2.1 и более поздних версий. Чтобы продолжить использование метапакета `Microsoft.AspNetCore.All` и обеспечить развертывание версии с последними исправлениями, сделайте следующее:
 
-* На компьютерах разработки и серверах сборки выполните следующее: Установите [пакет SDK для .NET Core](https://www.microsoft.com/net/download) последней версии.
-* На серверах развертывания выполните следующее: Установите [среду выполнения .NET Core](https://www.microsoft.com/net/download) последней версии.
+* На компьютерах разработки и серверах сборки выполните следующее: Установите [пакет SDK для .NET Core](https://dotnet.microsoft.com/download) последней версии.
+* На серверах развертывания выполните следующее: Установите [среду выполнения .NET Core](https://dotnet.microsoft.com/download) последней версии.
  Ваше приложение обновится до последней установленной версии при перезапуске.

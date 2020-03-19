@@ -5,6 +5,6 @@
 
 ::: moniker range=">= aspnetcore-2.1"
 
-[Пакет SDK для .NET Core 2.1 или более поздней версии](https://www.microsoft.com/net/download/windows)
+[Пакет SDK для .NET Core 2.1 или более поздней версии](https://dotnet.microsoft.com/download)
 
 ::: moniker-end

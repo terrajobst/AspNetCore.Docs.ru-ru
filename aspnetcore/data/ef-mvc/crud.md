@@ -7,12 +7,12 @@ ms.custom: mvc
 ms.date: 02/04/2019
 ms.topic: tutorial
 uid: data/ef-mvc/crud
-ms.openlocfilehash: f0c5bcff4c4b0808f9b4703e1429c3a6d1a7a2d7
-ms.sourcegitcommit: 7d3c6565dda6241eb13f9a8e1e1fd89b1cfe4d18
+ms.openlocfilehash: 2aa4ef48509b9a34f3b25eb657b1ecac51c1374b
+ms.sourcegitcommit: 98bcf5fe210931e3eb70f82fd675d8679b33f5d6
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72259719"
+ms.lasthandoff: 03/16/2020
+ms.locfileid: "79416164"
 ---
 # <a name="tutorial-implement-crud-functionality---aspnet-mvc-with-ef-core"></a>Учебник. Использование ASP.NET MVC с EF Core. Реализация функциональности CRUD
 
@@ -293,7 +293,7 @@ public class Student
 
 ## <a name="get-the-code"></a>Получите код
 
-[Скачайте или ознакомьтесь с готовым приложением.](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/data/ef-mvc/intro/samples/cu-final)
+[Скачайте или ознакомьтесь с готовым приложением.](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/data/ef-mvc/intro/samples/cu-final)
 
 ## <a name="next-steps"></a>Следующие шаги
 

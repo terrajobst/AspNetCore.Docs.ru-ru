@@ -7,12 +7,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 02/07/2020
 uid: host-and-deploy/azure-iis-errors-reference
-ms.openlocfilehash: dd74b451e396ae1dec61b6ccc9136218db39b949
-ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
+ms.openlocfilehash: 635c4cf6f12e62ca7e795b3b3b47e9445b945551
+ms.sourcegitcommit: d64ef143c64ee4fdade8f9ea0b753b16752c5998
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78648616"
+ms.lasthandoff: 03/18/2020
+ms.locfileid: "79511604"
 ---
 # <a name="common-errors-reference-for-azure-app-service-and-iis-with-aspnet-core"></a>Справочник по общим ошибкам в Службе приложений Azure и службах IIS с ASP.NET Core
 
@@ -161,7 +161,7 @@ ms.locfileid: "78648616"
 
 * Откройте окно **Программы и компоненты** или **Приложения и возможности** и убедитесь, что установлено ПО **Windows Server Hosting**. Если **Windows Server Hosting** отсутствует в списке установленных программ, скачайте и установите пакет размещения .NET Core.
 
-  [Текущий установщик пакета размещения .NET Core (прямая загрузка)](https://www.microsoft.com/net/permalink/dotnetcore-current-windows-runtime-bundle-installer)
+  [Текущий установщик пакета размещения .NET Core (прямая загрузка)](https://dotnet.microsoft.com/permalink/dotnetcore-current-windows-runtime-bundle-installer)
 
   См. дополнительные сведения об [установке пакета размещения .NET Core](xref:host-and-deploy/iis/index#install-the-net-core-hosting-bundle).
 
@@ -199,7 +199,7 @@ ms.locfileid: "78648616"
 
 * Возможно, зависимое от платформы развертывание было развернуто без установки среды выполнения .NET Core в размещающей системе. Если среда выполнения .NET Core не была установлена, запустите в целевой системе **установщик пакета размещения .NET Core**.
 
-  [Текущий установщик пакета размещения .NET Core (прямая загрузка)](https://www.microsoft.com/net/permalink/dotnetcore-current-windows-runtime-bundle-installer)
+  [Текущий установщик пакета размещения .NET Core (прямая загрузка)](https://dotnet.microsoft.com/permalink/dotnetcore-current-windows-runtime-bundle-installer)
 
   См. дополнительные сведения об [установке пакета размещения .NET Core](xref:host-and-deploy/iis/index#install-the-net-core-hosting-bundle).
 
@@ -439,7 +439,7 @@ ms.locfileid: "78648616"
 
 * Откройте окно **Программы и компоненты** или **Приложения и возможности** и убедитесь, что установлено ПО **Windows Server Hosting**. Если **Windows Server Hosting** отсутствует в списке установленных программ, скачайте и установите пакет размещения .NET Core.
 
-  [Текущий установщик пакета размещения .NET Core (прямая загрузка)](https://www.microsoft.com/net/permalink/dotnetcore-current-windows-runtime-bundle-installer)
+  [Текущий установщик пакета размещения .NET Core (прямая загрузка)](https://dotnet.microsoft.com/permalink/dotnetcore-current-windows-runtime-bundle-installer)
 
   См. дополнительные сведения об [установке пакета размещения .NET Core](xref:host-and-deploy/iis/index#install-the-net-core-hosting-bundle).
 
@@ -475,7 +475,7 @@ ms.locfileid: "78648616"
 
 * Возможно, зависимое от платформы развертывание было развернуто без установки среды выполнения .NET Core в размещающей системе. Если среда выполнения .NET Core не была установлена, запустите в целевой системе **установщик пакета размещения .NET Core**.
 
-  [Текущий установщик пакета размещения .NET Core (прямая загрузка)](https://www.microsoft.com/net/permalink/dotnetcore-current-windows-runtime-bundle-installer)
+  [Текущий установщик пакета размещения .NET Core (прямая загрузка)](https://dotnet.microsoft.com/permalink/dotnetcore-current-windows-runtime-bundle-installer)
 
   См. дополнительные сведения об [установке пакета размещения .NET Core](xref:host-and-deploy/iis/index#install-the-net-core-hosting-bundle).
 

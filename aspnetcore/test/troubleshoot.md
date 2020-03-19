@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 07/10/2019
 uid: test/troubleshoot
-ms.openlocfilehash: 042e1c84a7226cb4bf56bcc0ff4e576b67e68e1b
-ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
+ms.openlocfilehash: 345967f08cf99ef5f18d0c9bcd59ab29c74454f1
+ms.sourcegitcommit: d64ef143c64ee4fdade8f9ea0b753b16752c5998
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78644860"
+ms.lasthandoff: 03/18/2020
+ms.locfileid: "79511513"
 ---
 # <a name="troubleshoot-and-debug-aspnet-core-projects"></a>Устранение неполадок и отладка проектов ASP.NET Core
 
@@ -32,7 +32,7 @@ ms.locfileid: "78644860"
 
 > Установлены как 32-разрядная, так и 64-разрядная версии пакета SDK для .NET Core. Отображаются только шаблоны 64-разрядных версий, установленных в папке "C:\\Program Files\\dotnet\\sdk\\".
 
-Это предупреждение появляется при одновременной установке 32-разрядной (x86) и 64-разрядной (x64) версий [пакета SDK для .NET Core](https://www.microsoft.com/net/download/all). Ниже перечислены распространенные причины, по которым могут быть установлены обе версии:
+Это предупреждение появляется при одновременной установке 32-разрядной (x86) и 64-разрядной (x64) версий [пакета SDK для .NET Core](https://dotnet.microsoft.com/download/dotnet-core). Ниже перечислены распространенные причины, по которым могут быть установлены обе версии:
 
 * вы первоначально загрузили установщик пакета SDK для .NET Core на 32-разрядном компьютере, а затем скопировали его и установили на 64-разрядном компьютере;
 * 32-разрядная версия пакета SDK для .NET Core была установлена другим приложением;
