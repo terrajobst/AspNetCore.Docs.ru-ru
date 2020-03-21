@@ -4,15 +4,15 @@ author: rick-anderson
 description: Руководство с примерами кода, демонстрирующими интеграцию аутентификации пользователя с учетной записью Facebook с существующим ASP.NET Core приложением.
 ms.author: riande
 ms.custom: seoapril2019, mvc, seodec18
-ms.date: 12/02/2019
+ms.date: 03/19/2020
 monikerRange: '>= aspnetcore-3.0'
 uid: security/authentication/facebook-logins
-ms.openlocfilehash: 2e4cc04c6e7ff8e5f5701cc7f9ede73dbc1b4685
-ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
+ms.openlocfilehash: bb26a27f026e744c7d4925aa2281bf0625fff8a2
+ms.sourcegitcommit: 9b6e7f421c243963d5e419bdcfc5c4bde71499aa
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78654886"
+ms.lasthandoff: 03/21/2020
+ms.locfileid: "79989784"
 ---
 # <a name="facebook-external-login-setup-in-aspnet-core"></a>Настройка внешней учетной записи Facebook в ASP.NET Core
 
@@ -51,7 +51,7 @@ ms.locfileid: "78654886"
 > [!NOTE]
 > URI */сигнин-фацебук* задается в качестве обратного вызова по умолчанию для поставщика проверки подлинности Facebook. URI обратного вызова по умолчанию можно изменить при настройке по промежуточного слоя проверки подлинности Facebook с помощью унаследованного свойства [ремотеаусентикатионоптионс. каллбаккпас](/dotnet/api/microsoft.aspnetcore.authentication.remoteauthenticationoptions.callbackpath) класса [фацебукоптионс](/dotnet/api/microsoft.aspnetcore.authentication.facebook.facebookoptions) .
 
-* Щелкните **Сохранить изменения**.
+* Нажмите кнопку **Сохранить изменения**.
 
 * В левой области навигации щелкните **параметры** > **Обычная** ссылка.
 
@@ -59,18 +59,19 @@ ms.locfileid: "78654886"
 
 * При развертывании сайта необходимо повторно посетить страницу настройки **имени входа Facebook** и зарегистрировать новый общедоступный URI.
 
-## <a name="store-facebook-app-id-and-app-secret"></a>Идентификатор приложения Facebook Store и секрет приложения
+## <a name="store-the-facebook-app-id-and-secret"></a>Хранение идентификатора и секрета приложения Facebook
 
-Свяжите конфиденциальные параметры, такие как Facebook `App ID` и `App Secret` в конфигурации приложения с помощью [диспетчера секретов](xref:security/app-secrets). В рамках этого руководства назовите маркеры `Authentication:Facebook:AppId` и `Authentication:Facebook:AppSecret`.
+Храните конфиденциальные параметры, такие как идентификатор приложения Facebook и значения секрета, с помощью [диспетчера секретов](xref:security/app-secrets). Для этого примера выполните следующие действия.
+
+1. Инициализируйте проект для хранения секретных данных согласно инструкциям в разделе [Включение секретного хранилища](xref:security/app-secrets#enable-secret-storage).
+1. Храните конфиденциальные параметры в локальном хранилище секретов с секретными ключами `Authentication:Facebook:AppId` и `Authentication:Facebook:AppSecret`:
+
+    ```dotnetcli
+    dotnet user-secrets set "Authentication:Facebook:AppId" "<app-id>"
+    dotnet user-secrets set "Authentication:Facebook:AppSecret" "<app-secret>"
+    ```
 
 [!INCLUDE[](~/includes/environmentVarableColon.md)]
-
-Выполните следующие команды для безопасного хранения `App ID` и `App Secret` с помощью диспетчера секретов:
-
-```dotnetcli
-dotnet user-secrets set Authentication:Facebook:AppId <app-id>
-dotnet user-secrets set Authentication:Facebook:AppSecret <app-secret>
-```
 
 ## <a name="configure-facebook-authentication"></a>Настройка проверки подлинности Facebook
 
@@ -115,12 +116,12 @@ services.AddAuthentication().AddFacebook(facebookOptions =>
 
 [!INCLUDE[Forward request information when behind a proxy or load balancer section](includes/forwarded-headers-middleware.md)]
 
-## <a name="troubleshooting"></a>Устранение неполадок
+## <a name="troubleshooting"></a>Диагностика
 
 * **Только ASP.NET Core 2. x:** Если удостоверение не настроено путем вызова `services.AddIdentity` в `ConfigureServices`, попытка проверки подлинности приведет к появлению *исключения ArgumentException: необходимо указать параметр "сигнинсчеме"* . Шаблон проекта, используемый в этом руководстве гарантирует, что это будет сделано.
 * Если база данных сайта не была создана путем применения первоначальной миграции, то при обработке ошибки запроса возникнет *Ошибка операции с базой данных* . Выберите **Применить миграции** , чтобы создать базу данных и обновить, чтобы продолжить выполнение после ошибки.
 
-## <a name="next-steps"></a>Дальнейшие действия
+## <a name="next-steps"></a>Следующие шаги
 
 * В этой статье объясняется, как можно выполнить проверку подлинности с помощью Facebook. Аналогичный подход можно использовать для проверки подлинности с другими поставщиками, перечисленными на [предыдущей странице](xref:security/authentication/social/index).
 

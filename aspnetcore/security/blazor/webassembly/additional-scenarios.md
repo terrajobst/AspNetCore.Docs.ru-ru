@@ -5,17 +5,17 @@ description: ''
 monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 03/09/2020
+ms.date: 03/19/2020
 no-loc:
 - Blazor
 - SignalR
 uid: security/blazor/webassembly/additional-scenarios
-ms.openlocfilehash: fe87ce76d8e181de788188b021616f2a09833585
-ms.sourcegitcommit: 98bcf5fe210931e3eb70f82fd675d8679b33f5d6
+ms.openlocfilehash: ccb512392341e3eea33f4ab45740b7900f7b63f9
+ms.sourcegitcommit: 9b6e7f421c243963d5e419bdcfc5c4bde71499aa
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 03/11/2020
-ms.locfileid: "79083695"
+ms.lasthandoff: 03/21/2020
+ms.locfileid: "79989465"
 ---
 # <a name="aspnet-core-blazor-webassembly-additional-security-scenarios"></a>ASP.NET Core Блазор дополнительные сценарии безопасности для сборки
 
@@ -27,7 +27,7 @@ ms.locfileid: "79083695"
 
 ## <a name="handle-token-request-errors"></a>Обработку ошибок запросов маркера
 
-Когда одностраничное приложение (SPA) выполняет проверку подлинности пользователя с помощью Open ID Connect (OIDC), состояние проверки подлинности сохраняется локально в рамках SPA и в поставщике удостоверений (IP) в виде файла cookie сеанса, который задается в результате предоставления учетных данных пользователем.
+Когда одностраничное приложение (SPA) выполняет проверку подлинности пользователя с помощью Open ID Connect (OIDC), состояние проверки подлинности сохраняется локально в рамках SPA и в поставщике удостоверений (IP) в виде файла cookie сеанса, который задается в результате предоставления пользователю информации.
 
 Маркеры, которые IP-адрес выдает пользователю, обычно действительны в течение короткого периода времени, примерно один час, поэтому клиентское приложение должно регулярно получать новые токены. В противном случае пользователь будет зарегистрирован после истечения срока действия назначенных токенов. В большинстве случаев клиенты OIDC могут подготавливать новые маркеры, не требуя от пользователя повторной проверки подлинности благодаря состоянию аутентификации или сеансу, который хранится в IP-адресе.
 
@@ -180,7 +180,7 @@ var tokenResult = await AuthenticationService.RequestAccessToken(
 
 По умолчанию библиотека `Microsoft.AspNetCore.Components.WebAssembly.Authentication` использует маршруты, приведенные в следующей таблице, для представления различных состояний проверки подлинности.
 
-| Маршрут                            | Цель |
+| Маршрут                            | Назначение |
 | -------------------------------- | ------- |
 | `authentication/login`           | Активирует операцию входа. |
 | `authentication/login-callback`  | Обрабатывает результат любой операции входа. |
@@ -260,14 +260,14 @@ builder.Services.AddApiAuthorization(options => {
 
 В `RemoteAuthenticatorView` есть один фрагмент, который можно использовать для каждого маршрута проверки подлинности, как показано в следующей таблице.
 
-| Маршрут                            | Fragment             |
-| -------------------------------- | -------------------- |
-| `authentication/login`           | `<LoggingIn>`        |
-| `authentication/login-callback`  | `<CompletingLogIn>`  |
-| `authentication/login-failed`    | `<LogInFailed>`      |
-| `authentication/logout`          | `<LoggingOut>`       |
-| `authentication/logout-callback` | `<CompletingLogOut>` |
-| `authentication/logout-failed`   | `<LogOutFailed>`     |
-| `authentication/logged-out`      | `<LogOutSucceeded>`  |
-| `authentication/profile`         | `<UserProfile>`      |
-| `authentication/register`        | `<Registering>`      |
+| Маршрут                            | Fragment                |
+| -------------------------------- | ----------------------- |
+| `authentication/login`           | `<LoggingIn>`           |
+| `authentication/login-callback`  | `<CompletingLoggingIn>` |
+| `authentication/login-failed`    | `<LogInFailed>`         |
+| `authentication/logout`          | `<LogOut>`              |
+| `authentication/logout-callback` | `<CompletingLogOut>`    |
+| `authentication/logout-failed`   | `<LogOutFailed>`        |
+| `authentication/logged-out`      | `<LogOutSucceeded>`     |
+| `authentication/profile`         | `<UserProfile>`         |
+| `authentication/register`        | `<Registering>`         |

@@ -4,15 +4,15 @@ author: rick-anderson
 description: В этом руководстве демонстрируется интеграция аутентификации пользователя учетной записи Twitter с существующим ASP.NET Core приложением.
 ms.author: riande
 ms.custom: mvc
-ms.date: 12/06/2019
+ms.date: 03/19/2020
 monikerRange: '>= aspnetcore-3.0'
 uid: security/authentication/twitter-logins
-ms.openlocfilehash: 4710c033018710ce3620f8d7221ae2253b2c0b69
-ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
+ms.openlocfilehash: b848486415fd72ce6180b4cf8fc1ba00410d694a
+ms.sourcegitcommit: 9b6e7f421c243963d5e419bdcfc5c4bde71499aa
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78654304"
+ms.lasthandoff: 03/21/2020
+ms.locfileid: "79989738"
 ---
 # <a name="twitter-external-sign-in-setup-with-aspnet-core"></a>Настройка внешнего входа в Twitter с помощью ASP.NET Core
 
@@ -39,16 +39,19 @@ ms.locfileid: "78654304"
 
 * Заполните оставшуюся часть формы и выберите **создать**. Отобразятся сведения о новом приложении:
 
-## <a name="storing-twitter-consumer-api-key-and-secret"></a>Хранение ключа и секрета API потребителя Twitter
+## <a name="store-the-twitter-consumer-api-key-and-secret"></a>Хранение ключа и секрета API потребителя Twitter
 
-Выполните следующие команды для безопасного хранения `ClientId` и `ClientSecret` с помощью [диспетчера секретов](xref:security/app-secrets):
+Храните конфиденциальные параметры, такие как ключ API потребителя Twitter и секретный код, с помощью [диспетчера секретов](xref:security/app-secrets). Для этого примера выполните следующие действия.
 
-```dotnetcli
-dotnet user-secrets set Authentication:Twitter:ConsumerAPIKey <Key>
-dotnet user-secrets set Authentication:Twitter:ConsumerSecret <Secret>
-```
+1. Инициализируйте проект для хранения секретных данных согласно инструкциям в разделе [Включение секретного хранилища](xref:security/app-secrets#enable-secret-storage).
+1. Храните конфиденциальные параметры в локальном хранилище секретов с помощью ключей секретов `Authentication:Twitter:ConsumerKey` и `Authentication:Twitter:ConsumerSecret`:
 
-Свяжите конфиденциальные параметры, такие как Twitter `Consumer Key` и `Consumer Secret` в конфигурации приложения с помощью [диспетчера секретов](xref:security/app-secrets). Для целей этого примера назовите маркеры `Authentication:Twitter:ConsumerKey` и `Authentication:Twitter:ConsumerSecret`.
+    ```dotnetcli
+    dotnet user-secrets set "Authentication:Twitter:ConsumerAPIKey" "<consumer-api-key>"
+    dotnet user-secrets set "Authentication:Twitter:ConsumerSecret" "<consumer-secret>"
+    ```
+
+[!INCLUDE[](~/includes/environmentVarableColon.md)]
 
 Эти маркеры можно найти на вкладке **ключи и маркеры доступа** после создания нового приложения Twitter.
 
@@ -76,12 +79,12 @@ dotnet user-secrets set Authentication:Twitter:ConsumerSecret <Secret>
 
 [!INCLUDE[Forward request information when behind a proxy or load balancer section](includes/forwarded-headers-middleware.md)]
 
-## <a name="troubleshooting"></a>Устранение неполадок
+## <a name="troubleshooting"></a>Диагностика
 
 * **Только ASP.NET Core 2. x:** Если удостоверение не настроено путем вызова `services.AddIdentity` в `ConfigureServices`, попытка проверки подлинности приведет к появлению *исключения ArgumentException: необходимо указать параметр "сигнинсчеме"* . Шаблон проекта, используемый в этом образце, гарантирует, что это будет сделано.
 * Если база данных сайта не была создана с применением первоначальной миграции, то при обработке ошибки запроса возникнет *Ошибка операции с базой данных* . Выберите **Применить миграции** , чтобы создать базу данных и обновить, чтобы продолжить выполнение после ошибки.
 
-## <a name="next-steps"></a>Дальнейшие действия
+## <a name="next-steps"></a>Следующие шаги
 
 * В этой статье показано, как можно пройти проверку подлинности в Twitter. Аналогичный подход можно использовать для проверки подлинности с другими поставщиками, перечисленными на [предыдущей странице](xref:security/authentication/social/index).
 

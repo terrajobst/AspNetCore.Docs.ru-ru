@@ -4,15 +4,15 @@ author: rick-anderson
 description: В этом примере демонстрируется интеграция учетная запись Майкрософт проверки подлинности пользователей в существующее приложение ASP.NET Core.
 ms.author: riande
 ms.custom: mvc
-ms.date: 12/4/2019
+ms.date: 03/19/2020
 monikerRange: '>= aspnetcore-3.0'
 uid: security/authentication/microsoft-logins
-ms.openlocfilehash: ddaae1a25a1dcf167ffae0f24b480e2cde6aca5b
-ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
+ms.openlocfilehash: bd75efb1d7ce08538d1a67be74d2f40f3964614f
+ms.sourcegitcommit: 9b6e7f421c243963d5e419bdcfc5c4bde71499aa
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78652072"
+ms.lasthandoff: 03/21/2020
+ms.locfileid: "79989758"
 ---
 # <a name="microsoft-account-external-login-setup-with-aspnet-core"></a>Настройка внешнего входа учетной записи Майкрософт с ASP.NET Core
 
@@ -46,16 +46,17 @@ ms.locfileid: "78652072"
 > [!NOTE]
 > Сегмент URI `/signin-microsoft` задается в качестве обратного вызова по умолчанию для поставщика проверки подлинности Майкрософт. URI обратного вызова по умолчанию можно изменить при настройке по промежуточного слоя проверки подлинности Майкрософт с помощью унаследованного свойства [ремотеаусентикатионоптионс. каллбаккпас](/dotnet/api/microsoft.aspnetcore.authentication.remoteauthenticationoptions.callbackpath) класса [микрософтаккаунтоптионс](/dotnet/api/microsoft.aspnetcore.authentication.microsoftaccount.microsoftaccountoptions) .
 
-## <a name="store-the-microsoft-client-id-and-client-secret"></a>Хранение идентификатора клиента и секрета клиента Майкрософт
+## <a name="store-the-microsoft-client-id-and-secret"></a>Хранение идентификатора и секрета клиента Майкрософт
 
-Выполните следующие команды для безопасного хранения `ClientId` и `ClientSecret` с помощью [диспетчера секретов](xref:security/app-secrets):
+Храните конфиденциальные параметры, такие как идентификатор клиента (Майкрософт) и секретные значения, с помощью [диспетчера секретов](xref:security/app-secrets). Для этого примера выполните следующие действия.
 
-```dotnetcli
-dotnet user-secrets set Authentication:Microsoft:ClientId <Client-Id>
-dotnet user-secrets set Authentication:Microsoft:ClientSecret <Client-Secret>
-```
+1. Инициализируйте проект для хранения секретных данных согласно инструкциям в разделе [Включение секретного хранилища](xref:security/app-secrets#enable-secret-storage).
+1. Храните конфиденциальные параметры в локальном хранилище секретов с секретными ключами `Authentication:Microsoft:ClientId` и `Authentication:Microsoft:ClientSecret`:
 
-Свяжите конфиденциальные параметры, такие как Microsoft `ClientId` и `ClientSecret` с конфигурацией приложения с помощью [диспетчера секретов](xref:security/app-secrets). Для целей этого примера назовите маркеры `Authentication:Microsoft:ClientId` и `Authentication:Microsoft:ClientSecret`.
+    ```dotnetcli
+    dotnet user-secrets set "Authentication:Microsoft:ClientId" "<client-id>"
+    dotnet user-secrets set "Authentication:Microsoft:ClientSecret" "<client-secret>"
+    ```
 
 [!INCLUDE[](~/includes/environmentVarableColon.md)]
 
@@ -81,7 +82,7 @@ dotnet user-secrets set Authentication:Microsoft:ClientSecret <Client-Secret>
 
 [!INCLUDE[Forward request information when behind a proxy or load balancer section](includes/forwarded-headers-middleware.md)]
 
-## <a name="troubleshooting"></a>Устранение неполадок
+## <a name="troubleshooting"></a>Диагностика
 
 * Если поставщик учетных записей Майкрософт перенаправит вас на страницу ошибки входа, обратите внимание на заголовок ошибки и описание параметры строки запроса непосредственно после `#` (хэш-кода) в универсальном коде ресурса (URI).
 
@@ -89,7 +90,7 @@ dotnet user-secrets set Authentication:Microsoft:ClientSecret <Client-Secret>
 * Если удостоверение не настроено путем вызова `services.AddIdentity` в `ConfigureServices`, попытка проверки подлинности приведет к появлению *исключения ArgumentException: необходимо указать параметр "сигнинсчеме"* . Шаблон проекта, используемый в этом образце, гарантирует, что это будет сделано.
 * Если база данных сайта не была создана с применением первоначальной миграции, то при обработке ошибки запроса возникнет *Ошибка операции с базой данных* . Выберите **Применить миграции** , чтобы создать базу данных и обновить, чтобы продолжить выполнение после ошибки.
 
-## <a name="next-steps"></a>Дальнейшие действия
+## <a name="next-steps"></a>Следующие шаги
 
 * В этой статье показано, как можно пройти проверку подлинности в Майкрософт. Аналогичный подход можно использовать для проверки подлинности с другими поставщиками, перечисленными на [предыдущей странице](xref:security/authentication/social/index).
 
