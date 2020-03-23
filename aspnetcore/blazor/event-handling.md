@@ -1,27 +1,27 @@
 ---
 title: Обработка событий Blazor в ASP.NET Core
 author: guardrex
-description: Сведения о сценариях обработки событий Blazor, включая типы аргументов событий, обратные вызовы событий и управление событиями браузера по умолчанию.
+description: Сведения о функциях обработки событий Blazor, включая типы аргументов событий, обратные вызовы событий и управление событиями браузера по умолчанию.
 monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 02/12/2020
+ms.date: 03/16/2020
 no-loc:
 - Blazor
 - SignalR
 uid: blazor/event-handling
-ms.openlocfilehash: 25844ef39aee849072d16f3d73eda0a1c20ee788
-ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
+ms.openlocfilehash: c144841805e07a136f153c25a78c7f9af7c5801b
+ms.sourcegitcommit: d64ef143c64ee4fdade8f9ea0b753b16752c5998
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78648334"
+ms.lasthandoff: 03/18/2020
+ms.locfileid: "79511370"
 ---
 # <a name="aspnet-core-blazor-event-handling"></a>Обработка событий Blazor в ASP.NET Core
 
 Авторы: [Люк Латэм](https://github.com/guardrex) (Luke Latham) и [Дэниэл Рот](https://github.com/danroth27) (Daniel Roth)
 
-Компоненты Razor предоставляют функции обработки событий. Для атрибута HTML-элемента с именем `on{EVENT}` (например, `onclick` и `onsubmit`) со значением, вводимым с помощью делегата, компоненты Razor рассматривают значение атрибута как обработчик событий. Имя атрибута всегда имеет формат [`@on{EVENT}`](xref:mvc/views/razor#onevent).
+Компоненты Razor предоставляют функции обработки событий. Для атрибута HTML-элемента с именем [`@on{EVENT}`](xref:mvc/views/razor#onevent) (например, `@onclick`) и значением типа делегата компонент Razor рассматривает значение атрибута как обработчик событий.
 
 Следующий код вызывает метод `UpdateHeading`, когда в пользовательском интерфейсе выбрана кнопка:
 

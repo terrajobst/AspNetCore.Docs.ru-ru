@@ -7,12 +7,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 02/29/2020
 uid: fundamentals/configuration/index
-ms.openlocfilehash: e1237db2625a127bfa5c31ac29b4394be6941b2f
-ms.sourcegitcommit: 9e2b3aaccc9a41291eb23bf4561159e79cf6bc9d
+ms.openlocfilehash: b4fa082c5a53bc9ecb3c7b8ddcbf243ef0d94ba7
+ms.sourcegitcommit: 9b6e7f421c243963d5e419bdcfc5c4bde71499aa
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 03/19/2020
-ms.locfileid: "79546345"
+ms.lasthandoff: 03/21/2020
+ms.locfileid: "79989695"
 ---
 # <a name="configuration-in-aspnet-core"></a>Конфигурация в .NET Core
 
@@ -152,7 +152,7 @@ ms.locfileid: "79546345"
 * Задают ключи и значения среды в [предыдущем примере](#appsettingsjson) в Windows.
 * Проверяют параметры при использовании [примера загрузки](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/configuration/index/samples/3.x/ConfigSample). Команда `dotnet run` должна выполняться в каталоге проекта.
 
-```cmd
+```dotnetcli
 set MyKey="My key from Environment"
 set Position__Title=Environment_Editor
 set Position__Name=Environment_Rick
@@ -172,7 +172,7 @@ setx Position__Title Setx_Environment_Editor /M
 setx Position__Name Environment_Rick /M
 ```
 
-Чтобы проверить, что предыдущие команды переопределяют *apsettings.json* и *appsettings.* `Environment` *.json*, выполните следующие действия:
+Чтобы проверить, что предыдущие команды переопределяют *appsettings.json* и *appsettings.* `Environment` *.json*, выполните следующие действия:
 
 * В Visual Studio: Выйдите из среды Visual Studio и перезапустите ее.
 * В CLI: Откройте новое командное окно и введите `dotnet run`.
@@ -190,7 +190,7 @@ setx Position__Name Environment_Rick /M
 
 Следующие команды проверяют пользовательский префикс:
 
-```cmd
+```dotnetcli
 set MyCustomPrefix_MyKey="My key with MyCustomPrefix_ Environment"
 set MyCustomPrefix_Position__Title=Editor_with_customPrefix
 set MyCustomPrefix_Position__Name=Environment_Rick_cp
