@@ -7,12 +7,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 02/02/2020
 uid: fundamentals/middleware/index
-ms.openlocfilehash: afa71b2c2b75be2c000fadd9545ac3fb4587825a
-ms.sourcegitcommit: 51c86c003ab5436598dbc42f26ea4a83a795fd6e
+ms.openlocfilehash: 9dcd061d2807fb90884327916d0348af4593df9d
+ms.sourcegitcommit: 9b6e7f421c243963d5e419bdcfc5c4bde71499aa
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 03/10/2020
-ms.locfileid: "78964464"
+ms.lasthandoff: 03/21/2020
+ms.locfileid: "79989722"
 ---
 # <a name="aspnet-core-middleware"></a>ПО промежуточного слоя ASP.NET Core
 
@@ -163,12 +163,12 @@ public void Configure(IApplicationBuilder app)
 }
 ```
 
-Для одностраничных приложений ПО промежуточного слоя SPA <xref:Microsoft.Extensions.DependencyInjection.SpaStaticFilesExtensions.UseSpaStaticFiles*> обычно поступает в конвейер ПО промежуточного слоя последним. ПО промежуточного слоя SPA поступает последним:
+Для одностраничных приложений (SPA) ПО промежуточного слоя SPA <xref:Microsoft.Extensions.DependencyInjection.SpaStaticFilesExtensions.UseSpaStaticFiles*> обычно поступает в конвейер ПО промежуточного слоя последним. ПО промежуточного слоя SPA поступает последним:
 
 * Чтобы разрешить остальным ПО промежуточного слоя отвечать на запросы сопоставления в первую очередь.
 * Чтобы разрешить одностраничным приложениям с маршрутизацией на стороне клиента выполняться для всех маршрутов, не распознаваемых серверным приложением.
 
-Дополнительные сведения об одностраничных приложениях см. в руководствах по шаблонам проектов [React](xref:spa/react) и [Angular](xref:spa/angular).
+Дополнительные сведения об SPA см. в руководствах по шаблонам проектов [React](xref:spa/react) и [Angular](xref:spa/angular).
 
 ## <a name="branch-the-middleware-pipeline"></a>Ветвление конвейера ПО промежуточного слоя
 
