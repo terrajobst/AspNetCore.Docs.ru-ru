@@ -10,12 +10,12 @@ no-loc:
 - Blazor
 - SignalR
 uid: security/blazor/webassembly/standalone-with-azure-active-directory-b2c
-ms.openlocfilehash: b4d32e91b4013cbea37baecb972a535d2874d3d1
-ms.sourcegitcommit: 5bdc54162d7dea8d9fa54ac3055678db23586af1
+ms.openlocfilehash: bb03ef1e6d216cfc06e2b91919c64f92f2ef634e
+ms.sourcegitcommit: 91dc1dd3d055b4c7d7298420927b3fd161067c64
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 03/17/2020
-ms.locfileid: "79434464"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80219276"
 ---
 # <a name="secure-an-aspnet-core-opno-locblazor-webassembly-standalone-app-with-azure-active-directory-b2c"></a>Защита ASP.NET Core автономного приложения Blazor сборки с помощью Azure Active Directory B2C
 
@@ -31,14 +31,14 @@ ms.locfileid: "79434464"
 
    * [Создайте клиент AAD B2C](/azure/active-directory-b2c/tutorial-create-tenant) &ndash; запишите следующие сведения:
 
-     1 \. AAD B2C экземпляр (например, `https://contoso.b2clogin.com/`, который включает замыкающую косую черту)<br>
-     2 \. Домен клиента AAD B2C (например, `contoso.onmicrosoft.com`)
+     1\. AAD B2C экземпляр (например, `https://contoso.b2clogin.com/`, который включает замыкающую косую черту)<br>
+     2\. Домен клиента AAD B2C (например, `contoso.onmicrosoft.com`)
 
    * [Зарегистрируйте веб-приложение](/azure/active-directory-b2c/tutorial-register-applications) &ndash; сделайте следующее при регистрации приложения:
 
-     1 \. Задайте для параметра **веб-приложение или веб-API** значение **Да**.<br>
-     2 \. Установите для параметра **Разрешить неявный поток** значение **Да**.<br>
-     3 \. Добавьте **URL-адрес ответа** `https://localhost:5001/authentication/login-callback`.
+     1\. Задайте для параметра **веб-приложение или веб-API** значение **Да**.<br>
+     2\. Установите для параметра **Разрешить неявный поток** значение **Да**.<br>
+     3\. Добавьте **URL-адрес ответа** `https://localhost:5001/authentication/login-callback`.
 
      Запишите идентификатор приложения (идентификатор клиента) (например, `11111111-1111-1111-1111-111111111111`).
 
@@ -103,7 +103,7 @@ builder.Services.AddMsalAuthentication(options =>
 
 ## <a name="index-page"></a>Страница индексации
 
-[!INCLUDE[](~/includes/blazor-security/index-page.md)]
+[!INCLUDE[](~/includes/blazor-security/index-page-msal.md)]
 
 ## <a name="app-component"></a>Компонент приложения
 

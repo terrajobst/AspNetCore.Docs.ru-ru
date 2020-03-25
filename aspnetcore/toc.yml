@@ -424,6 +424,8 @@
               uid: mvc/views/tag-helpers/builtin-th/anchor-tag-helper
             - name: Кэш
               uid: mvc/views/tag-helpers/builtin-th/cache-tag-helper
+            - name: Компонент
+              uid: mvc/views/tag-helpers/builtin-th/component-tag-helper
             - name: Распределенный кэш
               uid: mvc/views/tag-helpers/builtin-th/distributed-cache-tag-helper
             - name: Среда

@@ -10,12 +10,12 @@ no-loc:
 - Blazor
 - SignalR
 uid: security/blazor/webassembly/standalone-with-azure-active-directory
-ms.openlocfilehash: 76bcac29d86a236e56c0eaea24a694c4845ecbcf
-ms.sourcegitcommit: 98bcf5fe210931e3eb70f82fd675d8679b33f5d6
+ms.openlocfilehash: e12c38ed42a4e2714d785ef8f03097246c40d36e
+ms.sourcegitcommit: 91dc1dd3d055b4c7d7298420927b3fd161067c64
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 03/11/2020
-ms.locfileid: "79083587"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80218987"
 ---
 # <a name="secure-an-aspnet-core-opno-locblazor-webassembly-standalone-app-with-azure-active-directory"></a>Защита ASP.NET Core автономного приложения Blazor сборки с помощью Azure Active Directory
 
@@ -103,9 +103,9 @@ builder.Services.AddMsalAuthentication(options =>
 > [!NOTE]
 > Область маркера доступа по умолчанию должна иметь формат `{SERVER API APP CLIENT ID}/{DEFAULT SCOPE}` (например, `11111111-1111-1111-1111-111111111111/API.Access`). Если для параметра области (как показано на портале Azure) предоставлена схема или схема и узел, то *клиентское приложение* создает необработанное исключение при получении от *приложения API сервера*ответа *401 с несанкционированным* доступом.
 
-## <a name="index-page"></a>Главная страница
+## <a name="index-page"></a>Страница индексации
 
-[!INCLUDE[](~/includes/blazor-security/index-page.md)]
+[!INCLUDE[](~/includes/blazor-security/index-page-msal.md)]
 
 ## <a name="app-component"></a>Компонент приложения
 

@@ -3,14 +3,14 @@ title: Перенесите проверку подлинности и удос�
 author: ardalis
 description: Узнайте, как перенести проверку подлинности и удостоверение из проекта ASP.NET MVC в проект ASP.NET Core MVC.
 ms.author: riande
-ms.date: 10/14/2016
+ms.date: 3/22/2020
 uid: migration/identity
-ms.openlocfilehash: f821930dbd36de18db31104cddf34c563009a506
-ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
+ms.openlocfilehash: c5727c974e455144d04e66fe14ea591e160cb963
+ms.sourcegitcommit: 91dc1dd3d055b4c7d7298420927b3fd161067c64
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78653014"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80219198"
 ---
 # <a name="migrate-authentication-and-identity-to-aspnet-core"></a>Перенесите проверку подлинности и удостоверение в ASP.NET Core
 
@@ -22,9 +22,13 @@ ms.locfileid: "78653014"
 
 В ASP.NET MVC функции проверки подлинности и идентификации настраиваются с помощью ASP.NET Identity в *Startup.auth.CS* и *IdentityConfig.CS*, расположенных в папке *App_Start* . В ASP.NET Core MVC эти функции настраиваются в *Startup.CS*.
 
-Установите `Microsoft.AspNetCore.Identity.EntityFrameworkCore` и `Microsoft.AspNetCore.Authentication.Cookies` пакеты NuGet.
+Установите следующие пакеты NuGet:
 
-Затем откройте *Startup.CS* и обновите метод `Startup.ConfigureServices`, чтобы использовать Entity Framework и службы удостоверений:
+* `Microsoft.AspNetCore.Identity.EntityFrameworkCore`
+* `Microsoft.AspNetCore.Authentication.Cookies`
+* `Microsoft.EntityFrameworkCore.SqlServer`
+
+В *Startup.CS*Обновите метод `Startup.ConfigureServices`, чтобы использовать Entity Framework и службы удостоверений:
 
 ```csharp
 public void ConfigureServices(IServiceCollection services)
