@@ -5,12 +5,12 @@ description: Узнайте, как работать с методами, пре
 ms.author: riande
 ms.date: 12/13/2018
 uid: tutorials/first-mvc-app/controller-methods-views
-ms.openlocfilehash: 2c442060872ab1d2d79a2e355ae257fdf1005914
-ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
+ms.openlocfilehash: 87b3cb2f4429157123d30274d1f12cd589c1cc99
+ms.sourcegitcommit: 99e71ae03319ab386baf2ebde956fc2d511df8b8
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78649150"
+ms.lasthandoff: 03/25/2020
+ms.locfileid: "80242514"
 ---
 # <a name="controller-methods-and-views-in-aspnet-core"></a>Методы и представления контроллера в приложении ASP.NET Core
 
@@ -53,6 +53,8 @@ ms.locfileid: "78649150"
 ASP.NET Core преобразует `https://localhost:5001/Movies/Edit/4` в запрос метода действия `Edit` контроллера `Movies` с параметром `Id`, равным 4. (Методы контроллера также называются методами действия.)
 
 [Вспомогательные функции тегов](xref:mvc/views/tag-helpers/intro) являются одной из самых популярных новых возможностей в ASP.NET Core. Подробнее см. в разделе [Дополнительные ресурсы](#additional-resources).
+
+<a name="get-post"></a>
 
 Откройте контроллер `Movies` и изучите два метода действия `Edit`. В следующем коде демонстрируется метод `HTTP GET Edit`, который выполняет выборку фильмов и заполняет форму редактирования, созданную файлом Razor *Edit.cshtml*.
 

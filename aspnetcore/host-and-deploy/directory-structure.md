@@ -5,14 +5,14 @@ description: Сведения о структуре каталогов опуб�
 monikerRange: '>= aspnetcore-2.2'
 ms.author: riande
 ms.custom: mvc
-ms.date: 02/07/2020
+ms.date: 03/20/2020
 uid: host-and-deploy/directory-structure
-ms.openlocfilehash: f7d6feec9961b7f6720d30d457fae5dcb6b34d6c
-ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
+ms.openlocfilehash: 0e7bf40520385b7719cb37120709e0a3fd2442e3
+ms.sourcegitcommit: 9b6e7f421c243963d5e419bdcfc5c4bde71499aa
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78649354"
+ms.lasthandoff: 03/21/2020
+ms.locfileid: "79989731"
 ---
 # <a name="aspnet-core-directory-structure"></a>Структура каталогов ASP.NET Core
 
@@ -58,9 +58,9 @@ ms.locfileid: "78649354"
 
 | Тип приложения | Структура каталогов |
 | -------- | ------------------- |
-| [Исполняемый файл, зависящий от платформы (FDE)](/dotnet/core/deploying/#framework-dependent-executables-fde) | <ul><li>publish&dagger;<ul><li>Views&dagger; в приложениях MVC, если представления не компилируются заранее</li><li>Pages&dagger; в приложениях MVC или Razor Pages, если страницы не компилируются заранее</li><li>wwwroot&dagger;</li><li>*.dll files</li><li>{ASSEMBLY NAME}.deps.json</li><li>{ASSEMBLY NAME}.dll</li><li>{ASSEMBLY NAME}{.EXTENSION} (расширение *EXE* на Windows, без расширения на macOS или Linux)</li><li>{ASSEMBLY NAME}.pdb</li><li>{ASSEMBLY NAME}.Views.dll</li><li>{ASSEMBLY NAME}.Views.pdb</li><li>{ASSEMBLY NAME}.runtimeconfig.json</li><li>web.config (IIS deployments)</li><li>createdump ([служебная программа createdump на Linux](https://github.com/dotnet/coreclr/blob/master/Documentation/botr/xplat-minidump-generation.md#configurationpolicy))</li><li>* .so (общая библиотека объектов Linux)</li><li>*.a (архив macOS)</li><li>* .dylib (динамическая библиотека macOS)</li></ul></li></ul> |
-| [Автономное развертывание (SCD)](/dotnet/core/deploying/#self-contained-deployments-scd) | <ul><li>publish&dagger;<ul><li>Views&dagger; в приложениях MVC, если представления не компилируются заранее</li><li>Pages&dagger; в приложениях MVC или Razor Pages, если страницы не компилируются заранее</li><li>wwwroot&dagger;</li><li>DLL-файлы</li><li>{имя_сборки}.deps.json</li><li>{имя_сборки}.dll</li><li>{имя_сборки}.exe</li><li>{имя_сборки}.pdb</li><li>{имя_сборки}.Views.dll</li><li>{имя_сборки}.Views.pdb</li><li>{имя_сборки}.runtimeconfig.json</li><li>web.config (в развертываниях IIS)</li></ul></li></ul> |
-
+| [Исполняемый файл, зависящий от платформы (FDE)](/dotnet/core/deploying/#framework-dependent-executables-fde) | <ul><li>publish&dagger;<ul><li>Views&dagger; в приложениях MVC, если представления не компилируются заранее</li><li>Pages&dagger; в приложениях MVC или Razor Pages, если страницы не компилируются заранее</li><li>wwwroot&dagger;</li><li>\*DLL-файлы</li><li>{имя_сборки}.deps.json</li><li>{имя_сборки}.dll</li><li>{имя_сборки}{.расширение} (расширение *EXE* в Windows, без расширения в macOS или Linux)</li><li>{имя_сборки}.pdb</li><li>{имя_сборки}.Views.dll</li><li>{имя_сборки}.Views.pdb</li><li>{имя_сборки}.runtimeconfig.json</li><li>web.config (в развертываниях IIS)</li><li>createdump ([служебная программа createdump в Linux](https://github.com/dotnet/coreclr/blob/master/Documentation/botr/xplat-minidump-generation.md#configurationpolicy))</li><li>\*.so (общая библиотека объектов Linux)</li><li>\*.а (архив macOS)</li><li>\*.dylib (динамическая библиотека macOS)</li></ul></li></ul> |
+| [Автономное развертывание (SCD)](/dotnet/core/deploying/#self-contained-deployments-scd) | <ul><li>publish&dagger;<ul><li>Views&dagger; в приложениях MVC, если представления не компилируются заранее</li><li>Pages&dagger; в приложениях MVC или Razor Pages, если страницы не компилируются заранее</li><li>wwwroot&dagger;</li><li>\*DLL-файлы</li><li>{имя_сборки}.deps.json</li><li>{имя_сборки}.dll</li><li>{имя_сборки}.exe</li><li>{имя_сборки}.pdb</li><li>{имя_сборки}.Views.dll</li><li>{имя_сборки}.Views.pdb</li><li>{имя_сборки}.runtimeconfig.json</li><li>web.config (в развертываниях IIS)</li></ul></li></ul> |
+-
 &dagger;Обозначает каталог
 
 Каталог *публикации* представляет *корневой путь содержимого* для развертывания, который также называется *путь к базовой папке приложения*. Независимо от того, какое имя присвоено каталогу *публикации*, развернутого на сервере приложения, именно это расположение обозначает физический путь к размещенному приложению на этом сервере.
