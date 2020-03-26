@@ -5,17 +5,17 @@ description: Сведения о проверке подлинности и ав
 monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 02/13/2020
+ms.date: 02/21/2020
 no-loc:
 - Blazor
 - SignalR
 uid: security/blazor/index
-ms.openlocfilehash: ba00c0370094df4e0ae0479aeb23eceea6ef04f0
-ms.sourcegitcommit: 98bcf5fe210931e3eb70f82fd675d8679b33f5d6
+ms.openlocfilehash: f7ffb4c3d5a05cb916b4f00cdfaf5898634a1a6d
+ms.sourcegitcommit: 91dc1dd3d055b4c7d7298420927b3fd161067c64
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 03/11/2020
-ms.locfileid: "79083347"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80219029"
 ---
 # <a name="aspnet-core-blazor-authentication-and-authorization"></a>Аутентификация и авторизация в ASP.NET Core Blazor
 
@@ -31,6 +31,8 @@ ASP.NET Core поддерживает настройку и администри
 * правила доступа для приложений и компонентов.
 
 Приложения Blazor WebAssembly выполняются на стороне клиента. В этом случае авторизация используется *только* для определения отображаемых вариантов пользовательского интерфейса. Так как пользователь может изменить или обойти проверки на стороне клиента, приложение Blazor WebAssembly не может применять правила авторизации доступа.
+
+[Соглашения об авторизации Razor Pages](xref:security/authorization/razor-pages-authorization) не применяются к маршрутизируемым компонентам Razor. Если компонент Razor, не поддерживающий маршрутизацию, [встроен в страницу](xref:blazor/integrate-components#render-components-from-a-page-or-view), соглашения об авторизации страницы оказывают косвенное влияние на компонент Razor, а также на остальную часть содержимого страницы.
 
 ## <a name="authentication"></a>Проверка подлинности
 

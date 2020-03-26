@@ -4,6 +4,8 @@
 
 **[Вспомогательная функция тега кэша](xref:mvc/views/tag-helpers/builtin-th/cache-tag-helper)**
 
+**[Вспомогательная функция тега компонента](xref:mvc/views/tag-helpers/builtin-th/component-tag-helper)**
+
 **[Вспомогательная функция тега распределенного кэша](xref:mvc/views/tag-helpers/builtin-th/distributed-cache-tag-helper)**
 
 **[Вспомогательная функция тега среды](xref:mvc/views/tag-helpers/builtin-th/environment-tag-helper)**

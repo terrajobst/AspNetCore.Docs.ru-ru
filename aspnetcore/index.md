@@ -9,12 +9,12 @@ no-loc:
 - Blazor
 - SignalR
 uid: index
-ms.openlocfilehash: f6e4a624186ccf0d7f6475819df7da9ef99f9bcc
-ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
+ms.openlocfilehash: fd7fa9dd70502f51222e457dd887ef668d377278
+ms.sourcegitcommit: 99e71ae03319ab386baf2ebde956fc2d511df8b8
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78644374"
+ms.lasthandoff: 03/25/2020
+ms.locfileid: "80242592"
 ---
 # <a name="introduction-to-aspnet-core"></a>Введение в ASP.NET Core
 
@@ -29,7 +29,7 @@ ASP.NET Core является кроссплатформенной, высоко
 
 ## <a name="why-choose-aspnet-core"></a>Преимущества, обеспечиваемые ASP.NET Core
 
-Миллионы разработчиков использовали и продолжают использовать [ASP.NET 4.x](/aspnet/overview) для создания веб-приложений. ASP.NET Core — это модификация ASP.NET 4.x с архитектурными изменениями, формирующими более рациональную и более модульную платформу.
+Миллионы разработчиков использовали и продолжают использовать [ASP.NET 4.x](/aspnet/overview) для создания веб-приложений. ASP.NET Core — это модификация ASP.NET 4.x с архитектурными изменениями, формирующими более рациональную и более модульную платформу.
 
 [!INCLUDE[](~/includes/benefits.md)]
 

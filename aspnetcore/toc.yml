@@ -1219,6 +1219,9 @@
       uid: fundamentals/middleware/extensibility-third-party-container
 - name: Миграция
   items:
+    - name: "С версии\_3.1 на\_5.0"
+      displayName: 'migrate, migration'
+      uid: migration/31-to-50
     - name: "С версии\_3.0 на\_3.1"
       displayName: 'migrate, migration'
       uid: migration/30-to-31
