@@ -5,12 +5,12 @@ description: Узнайте, как в MVC ASP.NET Core используется
 ms.author: riande
 ms.date: 3/25/2020
 uid: mvc/controllers/routing
-ms.openlocfilehash: be7da9eeaf64c2f52c095b5179ccc22db43d57c3
-ms.sourcegitcommit: 99e71ae03319ab386baf2ebde956fc2d511df8b8
+ms.openlocfilehash: c1c0d978714718af1de0f627e50a54f66ed391ed
+ms.sourcegitcommit: 4b166b49ec557a03f99f872dd069ca5e56faa524
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 03/25/2020
-ms.locfileid: "80242583"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80362649"
 ---
 # <a name="routing-to-controller-actions-in-aspnet-core"></a>Маршрутизация к действиям контроллера в ASP.NET Core
 
@@ -206,7 +206,7 @@ endpoints.MapControllerRoute("default", "{controller=Home}/{action=Index}/{id?}"
 * Выберите лучший кандидат.
 * Создание исключения.
 
-Пример:
+Например:
 
 [!code-csharp[](routing/samples/3.x/main/Controllers/ProductsController.cs?name=snippet9)]
 
@@ -416,7 +416,7 @@ ASP.NET Core имеет следующие шаблоны маршрутов:
 
 В следующей таблице описаны атрибуты `[Route]` в приведенном выше коде.
 
-| attribute               | Объединяет с `[Route("Home")]` | Определение шаблона маршрута |
+| Атрибут               | Объединяет с `[Route("Home")]` | Определение шаблона маршрута |
 | ----------------- | ------------ | --------- |
 | `[Route("")]` | Да | `"Home"` |
 | `[Route("Index")]` | Да | `"Home/Index"` |
@@ -847,6 +847,8 @@ result: /UrlGeneration/Destination
  * Метод [мидисплайраутеинфо](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/controllers/routing/samples/3.x/main/Extensions/ControllerContextExtensions.cs) включен в [Пример загрузки](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/controllers/routing/samples/3.x) и используется для вывода сведений о маршрутизации.
 * [Просмотреть или скачать образец кода](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/controllers/routing/samples/3.x) ([как скачивать](xref:index#how-to-download-a-sample))
 
+[!INCLUDE[](~/includes/dbg-route.md)]
+
 ::: moniker-end
 
 ::: moniker range="< aspnetcore-3.0"
@@ -998,7 +1000,7 @@ app.UseMvc(routes =>
 
 ### <a name="disambiguating-actions"></a>Разрешение неоднозначности действий
 
-Если при маршрутизации найдены два соответствующих действия, платформа MVC должна устранить неоднозначность, выбрав наиболее подходящее из них, или создать исключение. Пример:
+Если при маршрутизации найдены два соответствующих действия, платформа MVC должна устранить неоднозначность, выбрав наиболее подходящее из них, или создать исключение. Например:
 
 ```csharp
 public class ProductsController : Controller
