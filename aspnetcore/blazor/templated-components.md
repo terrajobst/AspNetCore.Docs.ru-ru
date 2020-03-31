@@ -5,17 +5,17 @@ description: Сведения о шаблонных компонентах, ко
 monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 02/12/2020
+ms.date: 03/18/2020
 no-loc:
 - Blazor
 - SignalR
 uid: blazor/templated-components
-ms.openlocfilehash: b64d6a731e540b13c50b2c6108f75efd0ac9290c
-ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
+ms.openlocfilehash: b57e3fe186402723607e90b1628062f602c77632
+ms.sourcegitcommit: 9b6e7f421c243963d5e419bdcfc5c4bde71499aa
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78646534"
+ms.lasthandoff: 03/21/2020
+ms.locfileid: "79989498"
 ---
 # <a name="aspnet-core-opno-locblazor-templated-components"></a>Шаблонные компоненты Blazor в ASP.NET Core
 
@@ -48,6 +48,9 @@ ms.locfileid: "78646534"
     </RowTemplate>
 </TableTemplate>
 ```
+
+> [!NOTE]
+> Ограничения универсального типа будут поддерживаться в будущих выпусках. Дополнительные сведения см. в разделе [Разрешение ограничений универсального типа (dotnet/aspnetcore #8433)](https://github.com/dotnet/aspnetcore/issues/8433).
 
 ## <a name="template-context-parameters"></a>Параметры контекста шаблона
 

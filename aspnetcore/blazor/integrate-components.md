@@ -5,17 +5,17 @@ description: Сведения о сценариях привязки к данн
 monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 02/12/2020
+ms.date: 03/17/2020
 no-loc:
 - Blazor
 - SignalR
 uid: blazor/integrate-components
-ms.openlocfilehash: de1a37ffd9456c956e3d84fcc69431ecb794513c
-ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
+ms.openlocfilehash: cf6056e0985d5433bddecac8dd183ca3f4c2af5b
+ms.sourcegitcommit: 91dc1dd3d055b4c7d7298420927b3fd161067c64
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78649084"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80218938"
 ---
 # <a name="integrate-aspnet-core-razor-components-into-razor-pages-and-mvc-apps"></a>Интеграция компонентов Razor ASP.NET Core в приложения MVC и Razor Pages
 
@@ -60,13 +60,13 @@ ms.locfileid: "78649084"
    @using MyAppNamespace
    ```
 
-1. В `Startup.ConfigureServices` зарегистрируйте службу Blazor Server:
+1. В `Startup.ConfigureServices` зарегистрируйте службу Blazor Server.
 
    ```csharp
    services.AddServerSideBlazor();
    ```
 
-1. В `Startup.Configure` добавьте конечную точку Blazor Hub в `app.UseEndpoints`:
+1. В `Startup.Configure` добавьте конечную точку Blazor Hub в `app.UseEndpoints`.
 
    ```csharp
    endpoints.MapBlazorHub();
@@ -225,31 +225,10 @@ ms.locfileid: "78649084"
 
 *Этот раздел описывает добавление на страницы или в представления компонентов, не являющихся напрямую маршрутизируемыми из запросов пользователей.*
 
-Чтобы отрисовать компонент из страницы или представления, используйте вспомогательную функцию тегов `Component`:
-
-```cshtml
-<component type="typeof(Counter)" render-mode="ServerPrerendered" 
-    param-IncrementAmount="10" />
-```
-
-Тип параметра должен быть JSON-сериализуемым, что обычно означает, что тип должен иметь конструктор по умолчанию и устанавливаемые свойства. Например, можно указать значение для `IncrementAmount`, так как тип `IncrementAmount` является `int`, то есть примитивным типом, поддерживаемым сериализатором JSON.
-
-Параметр `RenderMode` настраивает одно из следующих поведений компонента:
-
-* компонент предварительно преобразуется в страницу;
-* компонент отображается как статический HTML на странице или включает необходимые сведения для начальной загрузки приложения Blazor из агента пользователя.
-
-| `RenderMode`        | Описание |
-| ------------------- | ----------- |
-| `ServerPrerendered` | Преобразует компонент в статический HTML и включает метку приложения Blazor Server. При запуске пользовательского агента эта метка используется для начальной загрузки приложения Blazor. |
-| `Server`            | Отображает метку приложения Blazor Server. Выходные данные компонента не включаются. При запуске пользовательского агента эта метка используется для начальной загрузки приложения Blazor. |
-| `Static`            | Преобразует компонент в статический HTML. |
-
-Хотя страницы и представления могут использовать компоненты, обратное неверно. Компоненты не могут использовать сценарии для конкретных представлений и страниц, например частичные представления и разделы. Чтобы использовать логику из частичного представления в компоненте, вынесите логику частичного представления в компонент.
-
-Отрисовка компонентов сервера из статической HTML-страницы не поддерживается.
+Чтобы отрисовать компонент из страницы или представления, используйте [вспомогательную функцию тега компонента](xref:mvc/views/tag-helpers/builtin-th/component-tag-helper).
 
 Дополнительные сведения об отрисовке компонентов, состоянии компонентов и вспомогательной функции тегов `Component` см. в следующих статьях:
 
 * <xref:blazor/hosting-models>
 * <xref:blazor/hosting-model-configuration>
+* <xref:mvc/views/tag-helpers/builtin-th/component-tag-helper>

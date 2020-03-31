@@ -5,12 +5,12 @@ description: Практическое руководство. Добавлени
 ms.author: riande
 ms.date: 04/13/2017
 uid: tutorials/first-mvc-app/validation
-ms.openlocfilehash: 2bb4ed173d154e3b7457ce3f8009f0f9406e36c4
-ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
+ms.openlocfilehash: ecf3d011b38347eb32020df00e44d93ca789443a
+ms.sourcegitcommit: 99e71ae03319ab386baf2ebde956fc2d511df8b8
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78648358"
+ms.lasthandoff: 03/25/2020
+ms.locfileid: "80242540"
 ---
 # <a name="add-validation-to-an-aspnet-core-mvc-app"></a>Добавление проверки в приложение MVC ASP.NET Core
 
@@ -55,7 +55,7 @@ ms.locfileid: "78648358"
 
 Вы можете установить точку останова в метод `[HttpPost] Create` и убедиться, что он не вызывается и данные формы не передаются, если на стороне клиента присутствуют ошибки проверки. Если отключить JavaScript в браузере и отправить форму с ошибками, будет достигнута точка останова. Без JavaScript вы по-прежнему будете получать полную проверку. 
 
-На следующем рисунке показано, как отключить JavaScript в браузере FireFox.
+На следующем рисунке показано, как отключить JavaScript в браузере Firefox.
 
 ![Firefox: на вкладке "Содержимое" в разделе "Настройки" снимите флажок "Включить JavaScript".](~/tutorials/first-mvc-app/validation/_static/ff.png)
 

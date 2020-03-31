@@ -5,17 +5,17 @@ description: Сведения о включении компонентов в п
 monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 01/23/2020
+ms.date: 03/23/2020
 no-loc:
 - Blazor
 - SignalR
 uid: blazor/class-libraries
-ms.openlocfilehash: 32088b43f91174596f6b9251d36782e806f966b9
-ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
+ms.openlocfilehash: f2cc57638922bd1f6ab036adb2ed37209d14c5b0
+ms.sourcegitcommit: 91dc1dd3d055b4c7d7298420927b3fd161067c64
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78647992"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80218770"
 ---
 # <a name="aspnet-core-razor-components-class-libraries"></a>Библиотеки классов компонентов Razor в ASP.NET Core
 
@@ -114,6 +114,10 @@ Welcome to your new app.
 
 Чтобы сделать компоненты библиотеки доступными для всего проекта, включите директиву `@using MyComponentLib1` в файл *_Import.razor* верхнего уровня. Чтобы применить пространство имен к одной странице или набору страниц в папке, добавьте директиву в файл *_Import.razor* на любом уровне.
 
+## <a name="create-a-razor-components-class-library-with-static-assets"></a>Создание библиотеки классов компонентов Razor со статическими ресурсами
+
+Библиотека RCL может включать в себя статические ресурсы. Такие ресурсы доступны любому приложению, использующему библиотеку. Для получения дополнительной информации см. <xref:razor-pages/ui-class#create-an-rcl-with-static-assets>.
+
 ## <a name="build-pack-and-ship-to-nuget"></a>Сборка, упаковка и отправка в NuGet
 
 Так как библиотеки компонентов являются стандартными библиотеками .NET, их упаковка и передача в NuGet не отличается от упаковки и передачи любых других библиотек. Упаковка выполняется с помощью команды [dotnet pack](/dotnet/core/tools/dotnet-pack) в командной оболочке:
@@ -124,10 +128,7 @@ dotnet pack
 
 Чтобы отправить пакет в NuGet, используйте команду [dotnet nuget push](/dotnet/core/tools/dotnet-nuget-push) в командной оболочке.
 
-## <a name="create-a-razor-components-class-library-with-static-assets"></a>Создание библиотеки классов компонентов Razor со статическими ресурсами
-
-Библиотека RCL может включать в себя статические ресурсы. Такие ресурсы доступны любому приложению, использующему библиотеку. Для получения дополнительной информации см. <xref:razor-pages/ui-class#create-an-rcl-with-static-assets>.
-
 ## <a name="additional-resources"></a>Дополнительные ресурсы
 
 * <xref:razor-pages/ui-class>
+* [Добавление файла конфигурации компоновщика XML в библиотеку](xref:host-and-deploy/blazor/configure-linker#add-an-xml-linker-configuration-file-to-a-library)
