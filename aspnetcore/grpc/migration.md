@@ -7,10 +7,10 @@ ms.author: johluo
 ms.date: 09/25/2019
 uid: grpc/migration
 ms.openlocfilehash: 451171a041f7bbb3711babd73d2fa2e245aadd28
-ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
+ms.sourcegitcommit: f7886fd2e219db9d7ce27b16c0dc5901e658d64e
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 04/06/2020
 ms.locfileid: "78649372"
 ---
 # <a name="migrating-grpc-services-from-c-core-to-aspnet-core"></a>Миграция служб gRPC из C-Core в ASP.NET Core
@@ -63,7 +63,7 @@ public void ConfigureServices(IServiceCollection services)
 
 Дополнительные сведения о настройке см. в разделе <xref:grpc/configuration>.
 
-## <a name="logging"></a>Ведение журнала
+## <a name="logging"></a>Logging
 
 Приложения на основе C-Core используют `GrpcEnvironment` для [настройки средства ведения журнала](https://grpc.io/grpc/csharp/api/Grpc.Core.GrpcEnvironment.html?q=size#Grpc_Core_GrpcEnvironment_SetLogger_Grpc_Core_Logging_ILogger_) в целях отладки. Стек ASP.NET Core обеспечивает эти функции с помощью [API ведения журнала](xref:fundamentals/logging/index). Например, средство ведения журнала можно добавить в службу gRPC посредством внедрения конструктора:
 

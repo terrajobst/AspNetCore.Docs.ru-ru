@@ -6,17 +6,17 @@ ms.author: riande
 ms.date: 04/13/2017
 uid: tutorials/first-mvc-app/validation
 ms.openlocfilehash: ecf3d011b38347eb32020df00e44d93ca789443a
-ms.sourcegitcommit: 99e71ae03319ab386baf2ebde956fc2d511df8b8
+ms.sourcegitcommit: f7886fd2e219db9d7ce27b16c0dc5901e658d64e
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 03/25/2020
+ms.lasthandoff: 04/06/2020
 ms.locfileid: "80242540"
 ---
 # <a name="add-validation-to-an-aspnet-core-mvc-app"></a>Добавление проверки в приложение MVC ASP.NET Core
 
-Автор: [Рик Андерсон](https://twitter.com/RickAndMSFT) (Rick Anderson)
+Автор: [Рик Андерсон](https://twitter.com/RickAndMSFT)
 
-Содержание
+В этом разделе рассматриваются следующие вопросы.
 
 * К модели `Movie` добавляется логика проверки.
 * Убедитесь, что правила проверки применяются каждый раз, когда пользователь создает или редактирует фильм.

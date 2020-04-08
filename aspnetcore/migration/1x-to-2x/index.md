@@ -7,10 +7,10 @@ ms.custom: mvc
 ms.date: 12/05/2019
 uid: migration/1x-to-2x/index
 ms.openlocfilehash: c46f50a418cf630980ac2ba94407e4370d36e7d5
-ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
+ms.sourcegitcommit: 72792e349458190b4158fcbacb87caf3fc605268
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 04/06/2020
 ms.locfileid: "78644770"
 ---
 # <a name="migrate-from-aspnet-core-1x-to-20"></a>Миграция с ASP.NET Core 1.x на 2.0
@@ -23,7 +23,7 @@ ms.locfileid: "78644770"
 
 <a name="prerequisites"></a>
 
-## <a name="prerequisites"></a>Предварительные требования
+## <a name="prerequisites"></a>предварительные требования
 
 См. [Начало работы с ASP.NET Core](xref:getting-started).
 
@@ -31,11 +31,11 @@ ms.locfileid: "78644770"
 
 ## <a name="update-target-framework-moniker-tfm"></a>Обновление моникера целевой платформы (TFM)
 
-Проекты, предназначенные для .NET Core, должны использовать [моникер целевой платформы](/dotnet/standard/frameworks) версии не ниже .NET Core 2.0. Найдите в файле *CSPROJ* узел `<TargetFramework>` и замените его содержимое на `netcoreapp2.0`:
+Проекты, предназначенные для .NET Core, должны использовать [моникер целевой платформы](/dotnet/standard/frameworks) версии не ниже .NET Core 2.0. Найдите в файле `<TargetFramework>`CSPROJ*узел* и замените его содержимое на `netcoreapp2.0`:
 
 [!code-xml[](../1x-to-2x/samples/AspNetCoreDotNetCore2App/AspNetCoreDotNetCore2App/AspNetCoreDotNetCore2App.csproj?range=3)]
 
-Проекты, предназначенные для .NET Framework, должны использовать моникер целевой платформы версии не ниже .NET Framework 4.6.1. Найдите в файле *CSPROJ* узел `<TargetFramework>` и замените его содержимое на `net461`:
+Проекты, предназначенные для .NET Framework, должны использовать моникер целевой платформы версии не ниже .NET Framework 4.6.1. Найдите в файле `<TargetFramework>`CSPROJ*узел* и замените его содержимое на `net461`:
 
 [!code-xml[](../1x-to-2x/samples/AspNetCoreDotNetFx2.0App/AspNetCoreDotNetFx2.0App/AspNetCoreDotNetFx2.0App.csproj?range=4)]
 
@@ -58,7 +58,7 @@ ms.locfileid: "78644770"
 
 В файле *CSPROJ* в проекте версии 1.x перечислены все проекты NuGet, используемые проектом.
 
-В проекте ASP.NET Core 2.0, предназначенном для .NET Core 2.0, коллекция пакетов в файле *CSPROJ* заменяется ссылкой на один [метапакет](xref:fundamentals/metapackage):
+В проекте ASP.NET Core 2.0, предназначенном для .NET Core 2.0, коллекция пакетов в файле [CSPROJ](xref:fundamentals/metapackage) заменяется ссылкой на один *метапакет*:
 
 [!code-xml[](../1x-to-2x/samples/AspNetCoreDotNetCore2App/AspNetCoreDotNetCore2App/AspNetCoreDotNetCore2App.csproj?range=8-10)]
 
@@ -174,7 +174,7 @@ Unable to create an object of type '<Context>'. Add an implementation of 'IDesig
 
 При создании проектов ASP.NET Core 1.1 в Visual Studio 2017 служба Application Insights добавлялась по умолчанию. Если вы не используете пакет SDK для Application Insights напрямую вне файлов *Program.cs* и *Startup.cs*, выполните указанные ниже действия.
 
-1. Для работы с .NET Core удалите из файла *CSPROJ* следующий узел `<PackageReference />`:
+1. Для работы с .NET Core удалите из файла `<PackageReference />`CSPROJ*следующий узел*:
 
     [!code-xml[](../1x-to-2x/samples/AspNetCoreDotNetCore1App/AspNetCoreDotNetCore1App/AspNetCoreDotNetCore1App.csproj?range=10)]
 

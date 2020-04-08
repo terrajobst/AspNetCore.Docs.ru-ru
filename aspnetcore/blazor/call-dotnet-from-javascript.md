@@ -11,10 +11,10 @@ no-loc:
 - SignalR
 uid: blazor/call-dotnet-from-javascript
 ms.openlocfilehash: dbf44fe7923998c65119e42d97c304890fa95523
-ms.sourcegitcommit: 91dc1dd3d055b4c7d7298420927b3fd161067c64
+ms.sourcegitcommit: f7886fd2e219db9d7ce27b16c0dc5901e658d64e
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/06/2020
 ms.locfileid: "80218795"
 ---
 # <a name="call-net-methods-from-javascript-functions-in-aspnet-core-opno-locblazor"></a>Вызов методов .NET из функций JavaScript в ASP.NET Core Blazor
@@ -270,11 +270,11 @@ function updateMessageCallerJS() {
 
 При наличии нескольких компонентов, каждый из которых содержит методы экземпляра, используйте вспомогательный класс для вызова методов экземпляра (как `Action`) для каждого компонента.
 
-В следующем примере:
+Рассмотрим следующий пример:
 
 * Компонент `JSInterop` содержит несколько компонентов `ListItem`.
 * Каждый компонент `ListItem` состоит из сообщения и кнопки.
-* При выборе кнопки компонента `ListItem` метод `UpdateMessage` `ListItem`изменяет текст элемента списка и скрывает кнопку.
+* При выборе кнопки компонента `ListItem` метод `ListItem` `UpdateMessage`изменяет текст элемента списка и скрывает кнопку.
 
 *MessageUpdateInvokeHelper.cs*:
 

@@ -8,10 +8,10 @@ ms.custom: mvc
 ms.date: 12/03/2019
 uid: fundamentals/httpcontext
 ms.openlocfilehash: 8a7ee180380c42ea745c91b8e6a18c1baa820220
-ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
+ms.sourcegitcommit: f7886fd2e219db9d7ce27b16c0dc5901e658d64e
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 04/06/2020
 ms.locfileid: "78647014"
 ---
 # <a name="access-httpcontext-in-aspnet-core"></a>Доступ к HttpContext в ASP.NET Core
@@ -109,7 +109,7 @@ public void ConfigureServices(IServiceCollection services)
 
 ::: moniker-end
 
-В следующем примере:
+Рассмотрим следующий пример:
 
 * `UserRepository` объявляет зависимость от `IHttpContextAccessor`.
 * Зависимость предоставляется, если внедрение зависимостей разрешает цепочку зависимостей и создает экземпляр класса `UserRepository`.

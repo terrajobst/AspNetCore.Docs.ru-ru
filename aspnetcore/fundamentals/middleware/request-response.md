@@ -8,10 +8,10 @@ ms.custom: mvc
 ms.date: 08/29/2019
 uid: fundamentals/middleware/request-response
 ms.openlocfilehash: b473fa02e1d23f02bc5d2e15fa54ab7b1dbbb17c
-ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
+ms.sourcegitcommit: f7886fd2e219db9d7ce27b16c0dc5901e658d64e
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 04/06/2020
 ms.locfileid: "78650836"
 ---
 # <a name="request-and-response-operations-in-aspnet-core"></a>Операции запросов и ответов в ASP.NET Core
@@ -22,7 +22,7 @@ ms.locfileid: "78650836"
 
 Существует две абстракции для текста запросов и ответов: <xref:System.IO.Stream> и <xref:System.IO.Pipelines.Pipe>. При чтении запроса [HttpRequest.Body](xref:Microsoft.AspNetCore.Http.HttpRequest.Body) — это <xref:System.IO.Stream>, а `HttpRequest.BodyReader` — это <xref:System.IO.Pipelines.PipeReader>. При записи ответа [HttpResponse.Body](xref:Microsoft.AspNetCore.Http.HttpResponse.Body) — это <xref:System.IO.Stream>, а `HttpResponse.BodyWriter` — это <xref:System.IO.Pipelines.PipeWriter>.
 
-Рекомендуется использовать [конвейеры](/dotnet/standard/io/pipelines), а не потоки. Потоки удобнее использовать для некоторых простых операций, но производительность конвейеров выше и с ними проще работать в большинстве сценариев. Начиная с ASP.NET Core преимущество отдается внутреннему использованию конвейеров вместо потоков. Примеры:
+Рекомендуется использовать [конвейеры](/dotnet/standard/io/pipelines), а не потоки. Потоки удобнее использовать для некоторых простых операций, но производительность конвейеров выше и с ними проще работать в большинстве сценариев. Начиная с ASP.NET Core преимущество отдается внутреннему использованию конвейеров вместо потоков. Примеры приведены ниже.
 
 * `FormReader`
 * `TextReader`

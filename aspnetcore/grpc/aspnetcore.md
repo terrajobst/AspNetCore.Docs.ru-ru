@@ -7,17 +7,17 @@ ms.author: johluo
 ms.date: 09/03/2019
 uid: grpc/aspnetcore
 ms.openlocfilehash: 6107704a4b4d9c629a7abe907efd5b1932019130
-ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
+ms.sourcegitcommit: f7886fd2e219db9d7ce27b16c0dc5901e658d64e
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 04/06/2020
 ms.locfileid: "78651004"
 ---
 # <a name="grpc-services-with-aspnet-core"></a>Службы gRPC в ASP.NET Core
 
 В этом документе показано, как приступить к работе со службами gRPC с помощью ASP.NET Core.
 
-## <a name="prerequisites"></a>Предварительные требования
+## <a name="prerequisites"></a>предварительные требования
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
@@ -53,7 +53,7 @@ ms.locfileid: "78651004"
 
 ### <a name="configure-grpc"></a>Настройка gRPC
 
-В файле *Startup.cs*:
+В *Startup.cs*:
 
 * gRPC включается с помощью метода `AddGrpc`.
 * Каждая служба gRPC добавляется в конвейер маршрутизации с помощью метода `MapGrpcService`.

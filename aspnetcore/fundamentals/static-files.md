@@ -7,10 +7,10 @@ ms.custom: mvc
 ms.date: 10/07/2019
 uid: fundamentals/static-files
 ms.openlocfilehash: 95a77defc7e98328e1f4e3615648b1d14485e51e
-ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
+ms.sourcegitcommit: f7886fd2e219db9d7ce27b16c0dc5901e658d64e
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 04/06/2020
 ms.locfileid: "78647716"
 ---
 # <a name="static-files-in-aspnet-core"></a>Статические файлы в ASP.NET Core
@@ -50,7 +50,7 @@ ms.locfileid: "78647716"
   * **images**
   * **js**
 
-Формат URI для доступа к файлу во вложенной папке *images* следующий: *http://\<адрес_сервера>/images/\<имя_файла_изображения>* . Например, *http://localhost:9189/images/banner3.svg* .
+Формат URI для доступа к файлу во вложенной папке *images* следующий: *http://\<адрес_сервера>/images/\<имя_файла_изображения>* . (например, *http://localhost:9189/images/banner3.svg* ).
 
 ::: moniker range=">= aspnetcore-2.1"
 
@@ -150,7 +150,7 @@ ms.locfileid: "78647716"
 
 ## <a name="serve-a-default-document"></a>Обслуживание документа по умолчанию
 
-Домашняя страница по умолчанию является для посетителей логической отправной точкой при посещении веб-сайта. Для обслуживания страницы по умолчанию без указания полного имени URI вызовите метод [UseDefaultFiles](/dotnet/api/microsoft.aspnetcore.builder.defaultfilesextensions.usedefaultfiles#Microsoft_AspNetCore_Builder_DefaultFilesExtensions_UseDefaultFiles_Microsoft_AspNetCore_Builder_IApplicationBuilder_) из `Startup.Configure`:
+Домашняя страница по умолчанию является для пользователей логической отправной точкой при посещении веб-сайта. Для обслуживания страницы по умолчанию без указания полного имени URI вызовите метод [UseDefaultFiles](/dotnet/api/microsoft.aspnetcore.builder.defaultfilesextensions.usedefaultfiles#Microsoft_AspNetCore_Builder_DefaultFilesExtensions_UseDefaultFiles_Microsoft_AspNetCore_Builder_IApplicationBuilder_) из `Startup.Configure`:
 
 [!code-csharp[](static-files/samples/1x/StartupEmpty.cs?name=snippet_ConfigureMethod&highlight=3)]
 
@@ -201,7 +201,7 @@ app.UseFileServer(enableDirectoryBrowsing: true);
 
 [!code-csharp[](static-files/samples/1x/StartupUseFileServer.cs?name=snippet_ConfigureMethod&highlight=5-11)]
 
-Метод `AddDirectoryBrowser` должен вызываться при значении `true` свойства `EnableDirectoryBrowsing`:
+Метод `AddDirectoryBrowser` должен вызываться при значении `EnableDirectoryBrowsing` свойства `true`:
 
 [!code-csharp[](static-files/samples/1x/StartupUseFileServer.cs?name=snippet_ConfigureServicesMethod)]
 
@@ -242,9 +242,9 @@ app.UseFileServer(enableDirectoryBrowsing: true);
 
 ## <a name="serve-files-from-multiple-locations"></a>Предоставление файлов из нескольких расположений
 
-В качестве значений `UseStaticFiles` и `UseFileServer` по умолчанию используется поставщик файлов, указывающий на *wwwroot*. Вы можете предоставить дополнительные экземпляры `UseStaticFiles` и `UseFileServer` с другими поставщиками файлов для предоставления файлов из других расположений. Дополнительные сведения см. в [этой статье об ошибке на GitHub](https://github.com/dotnet/AspNetCore.Docs/issues/15578).
+В качестве значений `UseStaticFiles` и `UseFileServer` по умолчанию используется поставщик файлов, указывающий на *wwwroot*. Вы можете предоставить дополнительные экземпляры `UseStaticFiles` и `UseFileServer` с другими поставщиками файлов для предоставления файлов из других расположений. См. дополнительные сведения на [сайте GitHub](https://github.com/dotnet/AspNetCore.Docs/issues/15578).
 
-### <a name="considerations"></a>Особенности
+### <a name="considerations"></a>Рекомендации
 
 > [!WARNING]
 > Использование `UseDirectoryBrowser` и `UseStaticFiles` может привести к утечке конфиденциальной информации. Настоятельно рекомендуется отключать просмотр каталогов в рабочей среде. Тщательно проверьте, просмотр каких каталогов разрешен посредством `UseStaticFiles` или `UseDirectoryBrowser`. Весь каталог и его подкаталоги становятся общедоступными. Храните файлы, предназначенные для общего доступа, в выделенных каталогах, таких как *\<корневой_каталог_содержимого>/wwwroot*. Отделите эти файлы от представлений MVC, страниц Razor (только для версии 2.x), файлов конфигурации и т.д.

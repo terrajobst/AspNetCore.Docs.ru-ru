@@ -7,10 +7,10 @@ ms.date: 08/07/2018
 ms.custom: mvc, seodec18
 uid: azure/devops/index
 ms.openlocfilehash: f45bb2a5dd4b3d1a820085ede7ce3219045ed80b
-ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
+ms.sourcegitcommit: 72792e349458190b4158fcbacb87caf3fc605268
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 04/06/2020
 ms.locfileid: "78644248"
 ---
 # <a name="devops-with-aspnet-core-and-azure"></a>DevOps с ASP.NET Core и Azure
@@ -21,7 +21,7 @@ ms.locfileid: "78644248"
 
 Это руководство доступно как [загружаемая электронная книга в формате PDF](https://aka.ms/devopsbook).
 
-## <a name="welcome"></a>Приветствие 
+## <a name="welcome"></a>Экран приветствия 
 
 Руководство по жизненному циклу разработки Azure для .NET В этом руководстве предоставляются основные сведения по созданию жизненного цикла разработки в Azure с помощью инструментов и процессов .NET. После его прохождения вы сможете наиболее эффективно использовать цепочку инструментов DevOps.
 
@@ -53,7 +53,7 @@ ms.locfileid: "78644248"
 
 Мониторинг, устранение неполадок и настройка приложения с помощью инструментов Azure.
 
-### <a name="next-steps"></a>[Следующие шаги](xref:azure/devops/next-steps)
+### <a name="next-steps"></a>[Дальнейшие действия](xref:azure/devops/next-steps)
 
 Другие способы изучения Azure для разработчиков ASP.NET Core.
 

@@ -6,10 +6,10 @@ ms.author: riande
 ms.date: 07/22/2019
 uid: data/ef-rp/update-related-data
 ms.openlocfilehash: fdfdb14ff8414b8bf30f9b95be7ba0a6bcbd2995
-ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
+ms.sourcegitcommit: f7886fd2e219db9d7ce27b16c0dc5901e658d64e
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 04/06/2020
 ms.locfileid: "78645460"
 ---
 # <a name="razor-pages-with-ef-core-in-aspnet-core---update-related-data---7-of-8"></a>Razor Pages с EF Core в ASP.NET Core — обновление связанных данных — 7 из 8
@@ -227,7 +227,7 @@ ms.locfileid: "78645460"
 
 Запустите приложение и протестируйте страницу удаления.
 
-## <a name="next-steps"></a>Следующие шаги
+## <a name="next-steps"></a>Дальнейшие действия
 
 > [!div class="step-by-step"]
 > [Предыдущий учебник](xref:data/ef-rp/read-related-data)

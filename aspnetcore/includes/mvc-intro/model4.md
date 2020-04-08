@@ -1,15 +1,15 @@
 В следующей таблице представлены параметры генератора кода ASP.NET Core.
 
-| Параметр               | Описание|
+| Параметр               | Description|
 | ----------------- | ------------ |
-| -m  | Имя модели |
+| -M  | Имя модели. |
 | -dc  | Контекст данных |
 | -udl | Использование макета по умолчанию |
 | --relativeFolderPath | Относительный путь к папке выходных данных для создания файлов |
 | --useDefaultLayout | Макет по умолчанию следует использовать для представлений. |
 | --referenceScriptLibraries | Добавляет `_ValidationScriptsPartial` для страниц редактирования и создания |
 
-Чтобы получить справку по команде `aspnet-codegenerator controller`, используйте коммутатор `h`.
+Чтобы получить справку по команде `h`, используйте коммутатор `aspnet-codegenerator controller`.
 
 ```dotnetcli
 dotnet aspnet-codegenerator controller -h

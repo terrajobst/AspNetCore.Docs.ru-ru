@@ -7,25 +7,25 @@
 ## <a name="examples-in-this-sample"></a>Включенные примеры
 
 * `AddRedirect("redirect-rule/(.*)", "redirected/$1")`
-  - Код состояния успеха: 302 — объект найден
+  - Код состояния успеха: "302 (объект найден)"
   - Пример (перенаправление): **/redirect-rule/{группа_записи}** в **/redirected/{группа_записи}**
 * `AddRewrite(@"^rewrite-rule/(\d+)/(\d+)", "rewritten?var1=$1&var2=$2", skipRemainingRules: true)`
-  - Код состояния успеха: 200 OK;
+  - Код состояния успеха: "200 (OK)"
   - Пример (переопределение): **/rewrite-rule/{группа_записи_1}/{группа_записи_2}** в **/rewritten?var1={группа_записи_1}&var2={группа_записи_2}**
 * `AddApacheModRewrite(env.ContentRootFileProvider, "ApacheModRewrite.txt")`
-  - Код состояния успеха: 302 — объект найден
+  - Код состояния успеха: "302 (объект найден)"
   - Пример (перенаправление): **/apache-mod-rules-redirect/{группа_записи}** в **/redirected?id={группа_записи}**
 * `AddIISUrlRewrite(env.ContentRootFileProvider, "IISUrlRewrite.xml")`
-  - Код состояния успеха: 200 OK;
+  - Код состояния успеха: "200 (OK)"
   - Пример (переопределение): **/iis-rules-rewrite/{группа_записи}** в **/rewritten?id={группа_записи}**
 * `Add(RedirectXmlFileRequests)`
-  - Код состояния успеха: 301 — перемещено навсегда
+  - Код состояния успеха: 301 (перемещен окончательно)
   - Пример (перенаправление): **/file.xml** в **/xmlfiles/file.xml**
 * `Add(RewriteTextFileRequests)`
-  - Код состояния успеха: 200 OK;
+  - Код состояния успеха: "200 (OK)"
   - Пример (переопределение): **/some_file.txt** в **/file.txt**
 * `Add(new RedirectImageRequests(".png", "/png-images")))`<br>`Add(new RedirectImageRequests(".jpg", "/jpg-images")))`
-  - Код состояния успеха: 301 — перемещено навсегда
+  - Код состояния успеха: 301 (перемещен окончательно)
   - Пример (перенаправление): **/image.png** в **/png-images/image.png**
   - Пример (перенаправление): **/image.jpg** в **/jpg-images/image.jpg**
 

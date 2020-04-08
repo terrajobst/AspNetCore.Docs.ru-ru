@@ -11,10 +11,10 @@ no-loc:
 - SignalR
 uid: blazor/class-libraries
 ms.openlocfilehash: f2cc57638922bd1f6ab036adb2ed37209d14c5b0
-ms.sourcegitcommit: 91dc1dd3d055b4c7d7298420927b3fd161067c64
+ms.sourcegitcommit: f7886fd2e219db9d7ce27b16c0dc5901e658d64e
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/06/2020
 ms.locfileid: "80218770"
 ---
 # <a name="aspnet-core-razor-components-class-libraries"></a>Библиотеки классов компонентов Razor в ASP.NET Core
@@ -38,7 +38,7 @@ ms.locfileid: "80218770"
 1. Создайте новый проект.
 1. Выберите **Библиотека классов Razor**. Выберите **Далее**.
 1. В диалоговом окне **Создать библиотеку классов Razor** выберите **Создать**.
-1. В поле **Имя проекта** укажите имя проекта или оставьте имя по умолчанию. В примерах в этой статье используется имя проекта `MyComponentLib1`. Выберите **Создать**.
+1. В поле **Имя проекта** укажите имя проекта или оставьте имя по умолчанию. В примерах в этой статье используется имя проекта `MyComponentLib1`. Нажмите кнопку **Создать**.
 1. Добавьте библиотеку RCL в решение.
    1. Щелкните решение правой кнопкой мыши. Выберите **Добавить** > **Существующий проект**.
    1. Перейдите к файлу проекта RCL.
@@ -116,7 +116,7 @@ Welcome to your new app.
 
 ## <a name="create-a-razor-components-class-library-with-static-assets"></a>Создание библиотеки классов компонентов Razor со статическими ресурсами
 
-Библиотека RCL может включать в себя статические ресурсы. Такие ресурсы доступны любому приложению, использующему библиотеку. Для получения дополнительной информации см. <xref:razor-pages/ui-class#create-an-rcl-with-static-assets>.
+Библиотека RCL может включать в себя статические ресурсы. Такие ресурсы доступны любому приложению, использующему библиотеку. Дополнительные сведения см. в разделе <xref:razor-pages/ui-class#create-an-rcl-with-static-assets>.
 
 ## <a name="build-pack-and-ship-to-nuget"></a>Сборка, упаковка и отправка в NuGet
 

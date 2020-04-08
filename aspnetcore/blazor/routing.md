@@ -11,10 +11,10 @@ no-loc:
 - SignalR
 uid: blazor/routing
 ms.openlocfilehash: 87579c88a37e0258921e199db2b5d8c7627f5499
-ms.sourcegitcommit: 91dc1dd3d055b4c7d7298420927b3fd161067c64
+ms.sourcegitcommit: f7886fd2e219db9d7ce27b16c0dc5901e658d64e
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/06/2020
 ms.locfileid: "80218899"
 ---
 # <a name="aspnet-core-blazor-routing"></a>Маршрутизация ASP.NET Core Blazor
@@ -67,7 +67,7 @@ Blazor Server интегрирован в [маршрутизацию конеч
 ```
 
 > [!IMPORTANT]
-> Для правильного разрешения URL-адресов приложение должно включать тег `<base>` в файл *wwwroot/index.html* (Blazor WebAssembly) или файл *Pages/_Host.cshtml* (Blazor Server) с базовым путем к приложению, указанным в атрибуте `href` (`<base href="/">`). Для получения дополнительной информации см. <xref:host-and-deploy/blazor/index#app-base-path>.
+> Для правильного разрешения URL-адресов приложение должно включать тег `<base>` в файл *wwwroot/index.html* (Blazor WebAssembly) или файл *Pages/_Host.cshtml* (Blazor Server) с базовым путем к приложению, указанным в атрибуте `href` (`<base href="/">`). Дополнительные сведения см. в разделе <xref:host-and-deploy/blazor/index#app-base-path>.
 
 ## <a name="provide-custom-content-when-content-isnt-found"></a>Предоставление пользовательского содержимого, когда содержимое не найдено
 
@@ -137,14 +137,14 @@ Blazor Server интегрирован в [маршрутизацию конеч
 
 Доступны ограничения маршрутов, приведенные в следующей таблице. Сведения об ограничениях маршрута, соответствующих инвариантному языку и региональным параметрам, см. в предупреждении внизу таблицы.
 
-| Ограничение | Пример           | Примеры совпадений                                                                  | Инвариант<br>язык и региональные параметры<br>соответствие |
+| Ограничение | Пример           | Примеры совпадений                                                                  | Инвариант<br>culture<br>соответствие |
 | ---------- | ----------------- | -------------------------------------------------------------------------------- | :------------------------------: |
-| `bool`     | `{active:bool}`   | `true`, `FALSE`                                                                  | Нет                               |
+| `bool`     | `{active:bool}`   | `true`, `FALSE`                                                                  | нет                               |
 | `datetime` | `{dob:datetime}`  | `2016-12-31`, `2016-12-31 7:32pm`                                                | Да                              |
 | `decimal`  | `{price:decimal}` | `49.99`, `-1,000.01`                                                             | Да                              |
 | `double`   | `{weight:double}` | `1.234`, `-1,001.01e8`                                                           | Да                              |
 | `float`    | `{weight:float}`  | `1.234`, `-1,001.01e8`                                                           | Да                              |
-| `guid`     | `{id:guid}`       | `CD2C1638-1638-72D5-1638-DEADBEEF1638`, `{CD2C1638-1638-72D5-1638-DEADBEEF1638}` | Нет                               |
+| `guid`     | `{id:guid}`       | `CD2C1638-1638-72D5-1638-DEADBEEF1638`, `{CD2C1638-1638-72D5-1638-DEADBEEF1638}` | нет                               |
 | `int`      | `{id:int}`        | `123456789`, `-123456789`                                                        | Да                              |
 | `long`     | `{ticks:long}`    | `123456789`, `-123456789`                                                        | Да                              |
 
@@ -167,7 +167,7 @@ Blazor Server интегрирован в [маршрутизацию конеч
 > [!NOTE]
 > *Универсальный* параметр синтаксиса (`*`/`**`) **не** поддерживается в компонентах Razor ( *.razor*).
 
-Для получения дополнительной информации см. <xref:fundamentals/routing>.
+Дополнительные сведения см. в разделе <xref:fundamentals/routing>.
 
 ## <a name="navlink-component"></a>Компонент NavLink
 
@@ -200,7 +200,7 @@ Blazor Server интегрирован в [маршрутизацию конеч
 
 Используйте <xref:Microsoft.AspNetCore.Components.NavigationManager> для работы с URI и навигацией в коде C#. `NavigationManager` предоставляет события и методы, приведенные в следующей таблице.
 
-| Член | Описание |
+| Участник | Description |
 | ------ | ----------- |
 | URI | Возвращает текущий абсолютный URI. |
 | BaseUri | Получает базовый URI (с завершающей косой чертой), который можно добавить в начало относительных путей URI для получения абсолютного URI. Как правило, `BaseUri` соответствует атрибуту `href` элемента документа `<base>` в *wwwroot/index.html* (Blazor WebAssembly) или *Pages/_Host.cshtml* (Blazor Server). |
@@ -229,7 +229,7 @@ Blazor Server интегрирован в [маршрутизацию конеч
 }
 ```
 
-Следующий компонент обрабатывает событие изменения расположения. При вызове `Dispose` платформой метод `HandleLocationChanged` отсоединяется. После отсоединения метода становится возможной сборка мусора для компонента.
+Следующий компонент обрабатывает событие изменения расположения. При вызове `HandleLocationChanged` платформой метод `Dispose` отсоединяется. После отсоединения метода становится возможной сборка мусора для компонента.
 
 ```razor
 @implement IDisposable

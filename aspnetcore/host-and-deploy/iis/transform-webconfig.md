@@ -8,10 +8,10 @@ ms.custom: mvc
 ms.date: 01/13/2020
 uid: host-and-deploy/iis/transform-webconfig
 ms.openlocfilehash: 069b9bb516644a1a722235b33d4916460488ebf2
-ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
+ms.sourcegitcommit: f7886fd2e219db9d7ce27b16c0dc5901e658d64e
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 04/06/2020
 ms.locfileid: "78646660"
 ---
 # <a name="transform-webconfig"></a>Преобразование web.config
@@ -21,9 +21,9 @@ ms.locfileid: "78646660"
 Преобразования файла *web.config* можно применять автоматически при публикации приложения на основе следующих данных:
 
 * [Конфигурация сборки](#build-configuration).
-* [Profile](#profile)
+* [Профиль](#profile)
 * [Среда](#environment)
-* [Пользовательский](#custom)
+* [Custom](#custom)
 
 Такие преобразования выполняются в любом из следующих сценариев создания *web.config*:
 
@@ -164,7 +164,7 @@ dotnet publish --configuration Release /p:EnvironmentName=Production
 </configuration>
 ```
 
-Это преобразование применяется, если в команду [dotnet publish](/dotnet/core/tools/dotnet-publish) передано свойство `CustomTransformFileName`.
+Это преобразование применяется, если в команду `CustomTransformFileName`dotnet publish[ передано свойство ](/dotnet/core/tools/dotnet-publish).
 
 ```dotnetcli
 dotnet publish --configuration Release /p:CustomTransformFileName=custom.transform

@@ -8,10 +8,10 @@ ms.custom: mvc
 ms.date: 02/10/2020
 uid: fundamentals/host/hosted-services
 ms.openlocfilehash: d3f409170eedd281fd7608c4b9835bf9443c49b0
-ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
+ms.sourcegitcommit: f7886fd2e219db9d7ce27b16c0dc5901e658d64e
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 04/06/2020
 ms.locfileid: "78650416"
 ---
 # <a name="background-tasks-with-hosted-services-in-aspnet-core"></a>Фоновые задачи с размещенными службами в ASP.NET Core
@@ -50,7 +50,7 @@ ms.locfileid: "78650416"
 
 Интерфейс <xref:Microsoft.Extensions.Hosting.IHostedService> определяет два метода для объектов, которые управляются узлом:
 
-* [StartAsync(CancellationToken)](xref:Microsoft.Extensions.Hosting.IHostedService.StartAsync*) &ndash; `StartAsync` содержит логику для запуска фоновой задачи. *Первым* вызывается `StartAsync`:
+* [StartAsync(CancellationToken)](xref:Microsoft.Extensions.Hosting.IHostedService.StartAsync*) &ndash; `StartAsync` содержит логику для запуска фоновой задачи. `StartAsync`Первым*вызывается*:
 
   * Настраивается конвейер обработки запросов приложения (`Startup.Configure`).
   * Запускается сервер и активируется [IApplicationLifetime.ApplicationStarted](xref:Microsoft.AspNetCore.Hosting.IApplicationLifetime.ApplicationStarted*).
@@ -95,8 +95,8 @@ ms.locfileid: "78650416"
 
   Чтобы увеличить время ожидания завершения работы по умолчанию (пять секунд), установите следующие значения:
 
-  * <xref:Microsoft.Extensions.Hosting.HostOptions.ShutdownTimeout*> при использовании универсального узла. Для получения дополнительной информации см. <xref:fundamentals/host/generic-host#shutdown-timeout>.
-  * Параметр конфигурации узла для времени ожидания завершения работы при использовании веб-узла. Для получения дополнительной информации см. <xref:fundamentals/host/web-host#shutdown-timeout>.
+  * <xref:Microsoft.Extensions.Hosting.HostOptions.ShutdownTimeout*> при использовании универсального узла. Дополнительные сведения см. в разделе <xref:fundamentals/host/generic-host#shutdown-timeout>.
+  * Параметр конфигурации узла для времени ожидания завершения работы при использовании веб-узла. Дополнительные сведения см. в разделе <xref:fundamentals/host/web-host#shutdown-timeout>.
 
 Размещенная служба активируется при запуске приложения и нормально завершает работу при завершении работы приложения. Если во время выполнения задачи в фоновом режиме возникает ошибка, необходимо вызвать `Dispose`, даже если `StopAsync` не вызывается.
 
@@ -124,9 +124,9 @@ ms.locfileid: "78650416"
 
 Чтобы использовать [службы с заданной областью](xref:fundamentals/dependency-injection#service-lifetimes) в [BackgroundService](#backgroundservice-base-class), создайте область. Для размещенной службы по умолчанию не создается область.
 
-Служба фоновой задачи с заданной областью содержит логику фоновой задачи. В следующем примере:
+Служба фоновой задачи с заданной областью содержит логику фоновой задачи. Рассмотрим следующий пример:
 
-* Служба является асинхронной. Метод `DoWork` возвращает значение `Task`. В демонстрационных целях в методе `DoWork` ожидается задержка в десять секунд.
+* Служба является асинхронной. Метод `DoWork` возвращает `Task`. В демонстрационных целях в методе `DoWork` ожидается задержка в десять секунд.
 * В службу вставляется <xref:Microsoft.Extensions.Logging.ILogger>.
 
 [!code-csharp[](hosted-services/samples/3.x/BackgroundTasksSample/Services/ScopedProcessingService.cs?name=snippet1)]
@@ -155,7 +155,7 @@ ms.locfileid: "78650416"
 
 Служба `MonitorLoop` обрабатывает задачи постановки в очередь для размещенной службы при выборе на устройстве ввода ключа `w`:
 
-* В службу `MonitorLoop` внедряется `IBackgroundTaskQueue`.
+* В службу `IBackgroundTaskQueue` внедряется `MonitorLoop`.
 * `IBackgroundTaskQueue.QueueBackgroundWorkItem` вызывается для постановки рабочего элемента в очередь:
 * Рабочий элемент имитирует долго выполняющуюся фоновую задачу:
   * Выполняется три 5-секундных задержки (`Task.Delay`).
@@ -206,8 +206,8 @@ ms.locfileid: "78650416"
 
   Чтобы увеличить время ожидания завершения работы по умолчанию (пять секунд), установите следующие значения:
 
-  * <xref:Microsoft.Extensions.Hosting.HostOptions.ShutdownTimeout*> при использовании универсального узла. Для получения дополнительной информации см. <xref:fundamentals/host/generic-host#shutdown-timeout>.
-  * Параметр конфигурации узла для времени ожидания завершения работы при использовании веб-узла. Для получения дополнительной информации см. <xref:fundamentals/host/web-host#shutdown-timeout>.
+  * <xref:Microsoft.Extensions.Hosting.HostOptions.ShutdownTimeout*> при использовании универсального узла. Дополнительные сведения см. в разделе <xref:fundamentals/host/generic-host#shutdown-timeout>.
+  * Параметр конфигурации узла для времени ожидания завершения работы при использовании веб-узла. Дополнительные сведения см. в разделе <xref:fundamentals/host/web-host#shutdown-timeout>.
 
 Размещенная служба активируется при запуске приложения и нормально завершает работу при завершении работы приложения. Если во время выполнения задачи в фоновом режиме возникает ошибка, необходимо вызвать `Dispose`, даже если `StopAsync` не вызывается.
 

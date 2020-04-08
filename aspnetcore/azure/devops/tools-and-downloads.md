@@ -7,17 +7,17 @@ ms.custom: mvc, seodec18
 ms.date: 10/24/2018
 uid: azure/devops/tools-and-downloads
 ms.openlocfilehash: 9c1042dd48b9167209b46e97a09e011b80e2609c
-ms.sourcegitcommit: d64ef143c64ee4fdade8f9ea0b753b16752c5998
+ms.sourcegitcommit: f7886fd2e219db9d7ce27b16c0dc5901e658d64e
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 03/18/2020
+ms.lasthandoff: 04/06/2020
 ms.locfileid: "79511149"
 ---
 # <a name="tools-and-downloads"></a>Инструменты и файлы для скачивания
 
 В Azure имеется несколько интерфейсов для подготовки ресурсов и управления ими, например [портал Azure](https://portal.azure.com), [Azure CLI](/cli/azure/), [Azure PowerShell](/powershell/azure/overview), [Azure Cloud Shell](https://shell.azure.com/bash), а также Visual Studio. В данном руководстве применяется минимальный подход и по возможности используется Azure Cloud Shell, чтобы сократить количество необходимых действий. Однако для некоторых действий требуется использовать портал Azure.
 
-## <a name="prerequisites"></a>Предварительные требования
+## <a name="prerequisites"></a>предварительные требования
 
 Требуются следующие подписки:
 
@@ -42,6 +42,6 @@ ms.locfileid: "79511149"
 
   Убедитесь, что в Visual Studio установлены следующие [рабочие нагрузки](/visualstudio/install/modify-visual-studio):
 
-  * ASP.NET и веб-разработка
-  * Разработка для Azure
-  * Кроссплатформенная разработка .NET Core
+  * ASP.NET и веб-разработка.
+  * разработка Azure;
+  * Кроссплатформенная разработка .NET Core.

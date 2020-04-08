@@ -8,10 +8,10 @@ ms.custom: H1Hack27Feb2017
 ms.date: 09/06/2019
 uid: client-side/spa-services
 ms.openlocfilehash: c0c73882afd579510ad9cdf5b485c1d6fbeadd1c
-ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
+ms.sourcegitcommit: f7886fd2e219db9d7ce27b16c0dc5901e658d64e
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 04/06/2020
 ms.locfileid: "78649222"
 ---
 # <a name="use-javascript-services-to-create-single-page-applications-in-aspnet-core"></a>Создание одностраничных приложений в ASP.NET Core с помощью служб JavaScript
@@ -149,13 +149,13 @@ npm i -D aspnet-webpack
 
 ### <a name="webpack-dev-middleware-configuration"></a>Настройка ПО промежуточного слоя Webpack для разработки
 
-ПО промежуточного слоя Webpack для разработки регистрируется в конвейере HTTP-запросов с помощью следующего кода в методе `Configure` в файле *Startup.cs*:
+ПО промежуточного слоя Webpack для разработки регистрируется в конвейере HTTP-запросов с помощью следующего кода в методе *в файле*Startup.cs`Configure`:
 
 [!code-csharp[](../client-side/spa-services/sample/SpaServicesSampleApp/Startup.cs?name=snippet_WebpackMiddlewareRegistration&highlight=4)]
 
 Метод расширения `UseWebpackDevMiddleware` должен вызываться перед [регистрацией размещения статического файла](xref:fundamentals/static-files) с помощью метода расширения `UseStaticFiles`. В целях безопасности регистрировать ПО промежуточного слоя следует только при запуске приложения в режиме разработки.
 
-Свойство `output.publicPath` в файле *webpack.config.js* предписывает ПО промежуточного слоя отслеживать изменения в папке `dist`:
+Свойство *в файле*webpack.config.js`output.publicPath` предписывает ПО промежуточного слоя отслеживать изменения в папке `dist`:
 
 [!code-javascript[](../client-side/spa-services/sample/SpaServicesSampleApp/webpack.config.js?range=6,13-16)]
 
@@ -207,7 +207,7 @@ npm i -S @angular/router
 
 ### <a name="routing-helpers-configuration"></a>Настройка вспомогательных методов маршрутизации
 
-В методе `Configure` используется метод расширения `MapSpaFallbackRoute`:
+В методе `MapSpaFallbackRoute` используется метод расширения `Configure`:
 
 [!code-csharp[](../client-side/spa-services/sample/SpaServicesSampleApp/Startup.cs?name=snippet_MvcRoutingTable&highlight=7-9)]
 
@@ -225,7 +225,7 @@ dotnet new --install Microsoft.AspNetCore.SpaTemplates::*
 
 Отобразится список доступных шаблонов SPA.
 
-| Шаблоны                                 | Краткое имя | Язык | Tags        |
+| Шаблоны                                 | Краткое имя | Язык | Теги        |
 | ------------------------------------------| :--------: | :------: | :---------: |
 | MVC ASP.NET Core с Angular             | angular    | [C#]     | MVC/Веб/SPA |
 | MVC ASP.NET Core с React.js            | react      | [C#]     | MVC/Веб/SPA |
@@ -241,10 +241,10 @@ dotnet new angular
 
 Существует два основных режима конфигурации среды выполнения:
 
-* **Разработка**:
+* **Development**.
   * включает сопоставители с исходным кодом для упрощения отладки;
   * не оптимизирует производительность кода на стороне клиента.
-* **Рабочая среда**:
+* **Production**.
   * исключает сопоставители с исходным кодом;
   * оптимизирует код на стороне клиента посредством объединения и минификации.
 
@@ -274,7 +274,7 @@ dotnet run
 
 В шаблонах SpaServices предварительно настроено выполнение тестов на стороне клиента с помощью [Karma](https://karma-runner.github.io/1.0/index.html) и [Jasmine](https://jasmine.github.io/). Jasmine — это популярная платформа модульного тестирования для JavaScript, а Karma — это средство запуска тестов. Средство Karma настроено для работы с [ПО промежуточного слоя Webpack для разработки](#webpack-dev-middleware), так что разработчику не нужно останавливать и снова запускать тест каждый раз, когда вносится изменение. Независимо от того, выполняется ли сам тестовый случай или код для тестового случая, тест проводится автоматически.
 
-Возьмем в качестве примера приложение Angular. В файле *counter.component.spec.ts* уже имеется два тестовых случая Jasmine для `CounterComponent`:
+Возьмем в качестве примера приложение Angular. В файле `CounterComponent`counter.component.spec.ts*уже имеется два тестовых случая Jasmine для*:
 
 [!code-typescript[](../client-side/spa-services/sample/SpaServicesSampleApp/ClientApp/app/components/counter/counter.component.spec.ts?range=15-28)]
 

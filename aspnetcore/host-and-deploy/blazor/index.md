@@ -11,10 +11,10 @@ no-loc:
 - SignalR
 uid: host-and-deploy/blazor/index
 ms.openlocfilehash: ddf70da29a82d462422c1bdf74ff45b92bb10b56
-ms.sourcegitcommit: 5bdc54162d7dea8d9fa54ac3055678db23586af1
+ms.sourcegitcommit: 72792e349458190b4158fcbacb87caf3fc605268
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 03/17/2020
+ms.lasthandoff: 04/06/2020
 ms.locfileid: "79434269"
 ---
 # <a name="host-and-deploy-aspnet-core-blazor"></a>Размещение и развертывание ASP.NET Core Blazor

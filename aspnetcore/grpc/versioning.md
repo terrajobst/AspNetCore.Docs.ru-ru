@@ -7,15 +7,15 @@ ms.author: jamesnk
 ms.date: 01/09/2020
 uid: grpc/versioning
 ms.openlocfilehash: 9bd76009ba28a1abef25a98686afea6753d4a8f4
-ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
+ms.sourcegitcommit: f7886fd2e219db9d7ce27b16c0dc5901e658d64e
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 04/06/2020
 ms.locfileid: "78649360"
 ---
 # <a name="versioning-grpc-services"></a>Управление версиями gRPC Services
 
-Автор: [Джеймс Ньютон-Кинг (James Newton-King)](https://twitter.com/jamesnk)
+Автор: [Джеймс Ньютон-Кинг](https://twitter.com/jamesnk) (James Newton-King)
 
 Новые функции, добавленные в приложение, могут требовать изменения служб gRPC, предоставляемых клиентам, и иногда это может приводить к непредвиденному поведению и сбоям. При изменении служб gRPC:
 

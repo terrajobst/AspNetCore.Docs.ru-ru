@@ -11,10 +11,10 @@ no-loc:
 - SignalR
 uid: blazor/call-javascript-from-dotnet
 ms.openlocfilehash: 7a27b6f1be2ef296d5b2b2a4f566e0cdedbe6480
-ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
+ms.sourcegitcommit: f7886fd2e219db9d7ce27b16c0dc5901e658d64e
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 04/06/2020
 ms.locfileid: "78647524"
 ---
 # <a name="call-javascript-functions-from-net-methods-in-aspnet-core-opno-locblazor"></a>Вызов функций JavaScript из методов .NET в ASP.NET Core Blazor
@@ -175,7 +175,7 @@ ms.locfileid: "78647524"
 > [!WARNING]
 > Ссылку на элемент следует использовать только для изменения содержимого пустого элемента, который не взаимодействует с Blazor. Этот сценарий полезен, если сторонний интерфейс API предоставляет содержимое элементу. Так как Blazor не взаимодействует с элементом, риск конфликта между представлением Blazor элемента и моделью DOM отсутствует.
 >
-> В следующем примере изменять содержимое неупорядоченного списка (`ul`) *опасно*, так как Blazor взаимодействует с моделью DOM для заполнения элементов этого списка (`<li>`):
+> В следующем примере изменять содержимое неупорядоченного списка ( *)* опасно`ul`, так как Blazor взаимодействует с моделью DOM для заполнения элементов этого списка (`<li>`):
 >
 > ```razor
 > <ul ref="MyList">

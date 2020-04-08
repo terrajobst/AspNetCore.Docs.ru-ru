@@ -11,10 +11,10 @@ no-loc:
 - SignalR
 uid: blazor/layouts
 ms.openlocfilehash: 5b6e1c7ceb4a6e41230e31bbe379bde1bb0a8286
-ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
+ms.sourcegitcommit: f7886fd2e219db9d7ce27b16c0dc5901e658d64e
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 04/06/2020
 ms.locfileid: "78647926"
 ---
 # <a name="aspnet-core-opno-locblazor-layouts"></a>Макеты Blazor в ASP.NET Core
@@ -68,7 +68,7 @@ ms.locfileid: "78647926"
 
 * `MyCoolLayout`.
 * Все компоненты Razor в одной и той же папке и во всех вложенных папках.
-* Пространство имен `BlazorApp1.Data` .
+* Пространство имен `BlazorApp1.Data`.
  
 [!code-razor[](layouts/sample_snapshot/3.x/_Imports.razor)]
 
@@ -94,7 +94,7 @@ ms.locfileid: "78647926"
 
 ## <a name="share-a-razor-pages-layout-with-integrated-components"></a>Совместное использование макета Razor Pages с интегрированными компонентами
 
-Если маршрутизируемые компоненты интегрированы в приложение Razor Pages, общий макет приложения можно использовать с компонентами. Для получения дополнительной информации см. <xref:blazor/integrate-components>.
+Если маршрутизируемые компоненты интегрированы в приложение Razor Pages, общий макет приложения можно использовать с компонентами. Дополнительные сведения см. в разделе <xref:blazor/integrate-components>.
 
 ## <a name="additional-resources"></a>Дополнительные ресурсы
 

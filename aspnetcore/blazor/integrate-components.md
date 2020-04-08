@@ -11,10 +11,10 @@ no-loc:
 - SignalR
 uid: blazor/integrate-components
 ms.openlocfilehash: cf6056e0985d5433bddecac8dd183ca3f4c2af5b
-ms.sourcegitcommit: 91dc1dd3d055b4c7d7298420927b3fd161067c64
+ms.sourcegitcommit: f7886fd2e219db9d7ce27b16c0dc5901e658d64e
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/06/2020
 ms.locfileid: "80218938"
 ---
 # <a name="integrate-aspnet-core-razor-components-into-razor-pages-and-mvc-apps"></a>Интеграция компонентов Razor ASP.NET Core в приложения MVC и Razor Pages
@@ -208,7 +208,7 @@ ms.locfileid: "80218938"
 
 ## <a name="component-namespaces"></a>Пространства имен компонентов
 
-При использовании настраиваемой папки для хранения компонентов приложения добавьте пространство имен, представляющее эту папку, на страницу или в представление либо в файл *_ViewImports.cshtml*. В следующем примере:
+При использовании настраиваемой папки для хранения компонентов приложения добавьте пространство имен, представляющее эту папку, на страницу или в представление либо в файл *_ViewImports.cshtml*. Рассмотрим следующий пример:
 
 * Измените `MyAppNamespace` на пространство имен приложения.
 * Если папка с именем *Components* не используется для хранения компонентов, измените `Components` на папку, где находятся компоненты.
@@ -219,7 +219,7 @@ ms.locfileid: "80218938"
 
 Файл *_ViewImports.cshtml* находится в папке *Pages* приложения Razor Pages или папке *Views* приложения MVC.
 
-Для получения дополнительной информации см. <xref:blazor/components#import-components>.
+Дополнительные сведения см. в разделе <xref:blazor/components#import-components>.
 
 ## <a name="render-components-from-a-page-or-view"></a>Отрисовка компонентов со страницы или представления
 

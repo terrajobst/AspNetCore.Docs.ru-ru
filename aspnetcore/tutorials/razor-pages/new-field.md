@@ -7,15 +7,15 @@ ms.custom: mvc
 ms.date: 7/23/2019
 uid: tutorials/razor-pages/new-field
 ms.openlocfilehash: d34b938dbd1b512ddb167cac0c035837889cd38f
-ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
+ms.sourcegitcommit: f7886fd2e219db9d7ce27b16c0dc5901e658d64e
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 04/06/2020
 ms.locfileid: "78646606"
 ---
 # <a name="add-a-new-field-to-a-razor-page-in-aspnet-core"></a>Добавление нового поля на страницу Razor в ASP.NET Core
 
-Автор: [Рик Андерсон](https://twitter.com/RickAndMSFT) (Rick Anderson)
+Автор: [Рик Андерсон](https://twitter.com/RickAndMSFT)
 
 ::: moniker range=">= aspnetcore-3.0"
 
@@ -75,7 +75,7 @@ ms.locfileid: "78646606"
 
 См. [готовый файл SeedData.cs](https://github.com/dotnet/AspNetCore.Docs/blob/master/aspnetcore/tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie30/Models/SeedDataRating.cs).
 
-Постройте решение.
+Создайте решение.
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
@@ -84,7 +84,7 @@ ms.locfileid: "78646606"
 ### <a name="add-a-migration-for-the-rating-field"></a>Добавление миграции для поля Rating
 
 В меню **Сервис** последовательно выберите пункты **Диспетчер пакетов NuGet > Консоль диспетчера пакетов**.
-В PMC введите следующие команды:
+В PMC введите следующие команды.
 
 ```powershell
 Add-Migration Rating
@@ -139,8 +139,8 @@ dotnet ef database update
 * [Версия руководства на YouTube](https://youtu.be/3i7uMxiGGR8)
 
 > [!div class="step-by-step"]
-> [Предыдущая статья. Добавление поиска](xref:tutorials/razor-pages/search)
-> [Следующая статья. Добавление проверки](xref:tutorials/razor-pages/validation)
+> [Предыдущая тема — "Добавление поиска"](xref:tutorials/razor-pages/search)
+> [Следующая тема — "Добавление проверки"](xref:tutorials/razor-pages/validation)
 
 ::: moniker-end
 
@@ -200,7 +200,7 @@ dotnet ef database update
 
 См. [готовый файл SeedData.cs](https://github.com/dotnet/AspNetCore.Docs/blob/master/aspnetcore/tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie22/Models/SeedDataRating.cs).
 
-Постройте решение.
+Создайте решение.
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
@@ -209,7 +209,7 @@ dotnet ef database update
 ### <a name="add-a-migration-for-the-rating-field"></a>Добавление миграции для поля Rating
 
 В меню **Сервис** последовательно выберите пункты **Диспетчер пакетов NuGet > Консоль диспетчера пакетов**.
-В PMC введите следующие команды:
+В PMC введите следующие команды.
 
 ```powershell
 Add-Migration Rating
@@ -247,7 +247,7 @@ Update-Database
 
 [!INCLUDE[](~/includes/RP-mvc-shared/sqlite-warn.md)]
 
-Удалите базу данных и используйте миграции для повторного создания базы данных. Чтобы удалить базу данных, удалите файл базы данных (*MvcMovie.db*). Затем выполните команду `ef database update`:
+Удалите базу данных и используйте миграции для повторного создания базы данных. Чтобы удалить базу данных, удалите файл базы данных (*MvcMovie.db*). Затем выполните следующую команду `ef database update`:
 
 ```dotnetcli
 dotnet ef database update
@@ -262,7 +262,7 @@ dotnet ef database update
 * [Версия руководства на YouTube](https://youtu.be/3i7uMxiGGR8)
 
 > [!div class="step-by-step"]
-> [Предыдущая статья. Добавление поиска](xref:tutorials/razor-pages/search)
-> [Следующая статья. Добавление проверки](xref:tutorials/razor-pages/validation)
+> [Предыдущая тема — "Добавление поиска"](xref:tutorials/razor-pages/search)
+> [Следующая тема — "Добавление проверки"](xref:tutorials/razor-pages/validation)
 
 ::: moniker-end

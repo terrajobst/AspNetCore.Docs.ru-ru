@@ -9,10 +9,10 @@ no-loc:
 - SignalR
 uid: client-side/libman/libman-cli
 ms.openlocfilehash: 02d88d09805bd23a86ef924766373245fec7ff52
-ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
+ms.sourcegitcommit: f7886fd2e219db9d7ce27b16c0dc5901e658d64e
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 04/06/2020
 ms.locfileid: "78649606"
 ---
 # <a name="use-the-libman-cli-with-aspnet-core"></a>Использование интерфейса командной строки LibMan с ASP.NET Core
@@ -21,7 +21,7 @@ ms.locfileid: "78649606"
 
 Интерфейс командной строки [LibMan](xref:client-side/libman/index) (LibMan CLI) — это кроссплатформенная программа, которая поддерживается везде, где поддерживается .NET Core.
 
-## <a name="prerequisites"></a>Предварительные требования
+## <a name="prerequisites"></a>предварительные требования
 
 * [!INCLUDE [2.1-SDK](../../includes/2.1-SDK.md)]
 
@@ -109,7 +109,7 @@ libman init [-h|--help]
 
 * `-d|--default-destination <PATH>`
 
-  Путь относительно текущей папки. Файлы библиотеки устанавливаются в этом расположении, если в файле *libman.json* свойство `destination` для библиотеки не задано. Значение `<PATH>` записывается в свойство `defaultDestination` в файле *libman.json*.
+  Путь относительно текущей папки. Файлы библиотеки устанавливаются в этом расположении, если в файле `destination`libman.json*свойство* для библиотеки не задано. Значение `<PATH>` записывается в свойство `defaultDestination` в файле *libman.json*.
 
 * `-p|--default-provider <PROVIDER>`
 
@@ -130,7 +130,7 @@ libman init [-h|--help]
   libman init
   ```
 
-* Введите имя поставщика по умолчанию или нажмите клавишу `Enter`, чтобы использовать поставщик CDNJS по умолчанию. Допустимы следующие значения:
+* Введите имя поставщика по умолчанию или нажмите клавишу `Enter`, чтобы использовать поставщик CDNJS по умолчанию. Допустимые значения:
 
   [!INCLUDE [LibMan provider names](../../includes/libman-cli/provider-names.md)]
 
@@ -169,11 +169,11 @@ libman install [-h|--help]
 
 * `-d|--destination <PATH>`
 
-  Расположение для установки библиотеки. Если не указано, используется расположение по умолчанию. Если в файле *libman.json* свойство `defaultDestination` не указано, этот параметр является обязательным.
+  Расположение для установки библиотеки. Если не указано, используется расположение по умолчанию. Если в файле `defaultDestination`libman.json*свойство* не указано, этот параметр является обязательным.
 
 * `--files <FILE>`
 
-  Укажите имя файла, который необходимо установить из библиотеки. Если не указано, устанавливаются все файлы из библиотеки. Для каждого устанавливаемого файла необходимо задать один параметр `--files`. Также поддерживаются относительные пути. Например, `--files dist/browser/signalr.js`.
+  Укажите имя файла, который необходимо установить из библиотеки. Если не указано, устанавливаются все файлы из библиотеки. Для каждого устанавливаемого файла необходимо задать один параметр `--files`. Также поддерживаются относительные пути. Например: `--files dist/browser/signalr.js`.
 
 * `-p|--provider <PROVIDER>`
 
@@ -181,7 +181,7 @@ libman install [-h|--help]
   
   [!INCLUDE [LibMan provider names](../../includes/libman-cli/provider-names.md)]
 
-  Если значение не указано, используется свойство `defaultProvider` из файла *libman.json*. Если в файле *libman.json* свойство `defaultProvider` не указано, этот параметр является обязательным.
+  Если значение не указано, используется свойство `defaultProvider` из файла *libman.json*. Если в файле `defaultProvider`libman.json*свойство* не указано, этот параметр является обязательным.
 
 [!INCLUDE [standard-cli-options](../../includes/libman-cli/standard-cli-options.md)]
 
@@ -263,7 +263,7 @@ libman install jquery@3.2.1 --provider cdnjs --destination wwwroot/scripts/jquer
 
 ## <a name="restore-library-files"></a>Восстановление файлов библиотек
 
-Команда `libman restore` устанавливает файлы библиотеки, определенные в файле *libman.json*. Действуют следующие правила.
+Команда `libman restore` устанавливает файлы библиотеки, определенные в файле *libman.json*. Применяются следующие правила.
 
 * Если файла *libman.json* нет в корневом каталоге проекта, возвращается ошибка.
 * Если для библиотеки указан поставщик, свойство `defaultProvider` в файле *libman.json* игнорируется.
@@ -444,7 +444,7 @@ libman cache [-h|--help]
 
 `PROVIDER`
 
-Используется только с командой `clean`. Указывает кэш поставщика, который нужно очистить. Допустимы следующие значения:
+Используется только с командой `clean`. Указывает кэш поставщика, который нужно очистить. Допустимые значения:
 
 [!INCLUDE [LibMan provider names](../../includes/libman-cli/provider-names.md)]
 

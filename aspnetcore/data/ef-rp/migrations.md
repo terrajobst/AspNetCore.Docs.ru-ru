@@ -6,10 +6,10 @@ ms.author: riande
 ms.date: 07/22/2019
 uid: data/ef-rp/migrations
 ms.openlocfilehash: 86fd83c898fce8e121e4d259aaca12c59591e606
-ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
+ms.sourcegitcommit: f7886fd2e219db9d7ce27b16c0dc5901e658d64e
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 04/06/2020
 ms.locfileid: "78645556"
 ---
 # <a name="razor-pages-with-ef-core-in-aspnet-core---migrations---4-of-8"></a>Razor Pages с EF Core в ASP.NET Core — миграции — 4 из 8
@@ -145,7 +145,7 @@ Login failed for user 'user name'.
 * [Интерфейс командной строки EF Core](/ef/core/miscellaneous/cli/dotnet).
 * [Консоль диспетчера пакетов (Visual Studio)](/ef/core/miscellaneous/cli/powershell)
 
-## <a name="next-steps"></a>Следующие шаги
+## <a name="next-steps"></a>Дальнейшие действия
 
 В следующем руководстве продолжается построение модели данных путем добавления свойств сущностей и новых сущностей.
 
@@ -306,7 +306,7 @@ The login failed.
 Login failed for user 'user name'.
 ```
 
-Решение: Выполнить `dotnet ef database update`
+Решение. Выполните `dotnet ef database update`
 
 ### <a name="additional-resources"></a>Дополнительные ресурсы
 

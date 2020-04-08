@@ -7,12 +7,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 03/23/2020
 uid: fundamentals/host/generic-host
-ms.openlocfilehash: 0f8f03dabf65f2cbfe4c41d36b02a25d7902cefb
-ms.sourcegitcommit: 91dc1dd3d055b4c7d7298420927b3fd161067c64
+ms.openlocfilehash: 454216cec72048217ede412f8ff6d4261f7353b1
+ms.sourcegitcommit: f7886fd2e219db9d7ce27b16c0dc5901e658d64e
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "80219224"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80417637"
 ---
 # <a name="net-generic-host"></a>Универсальный узел .NET
 
@@ -224,7 +224,7 @@ Host.CreateDefaultBuilder(args)
 
 [HostOptions.ShutdownTimeout](xref:Microsoft.Extensions.Hosting.HostOptions.ShutdownTimeout*) задает время ожидания для <xref:Microsoft.Extensions.Hosting.IHost.StopAsync*>. Значение по умолчанию — пять секунд.  Во время ожидания узел:
 
-* Активирует [IHostApplicationLifetime.ApplicationStopping](/dotnet/api/microsoft.aspnetcore.hosting.ihostapplicationlifetime.applicationstopping).
+* Активирует [IHostApplicationLifetime.ApplicationStopping](/dotnet/api/microsoft.extensions.hosting.ihostapplicationlifetime.applicationstopping).
 * Пытается остановить размещенные службы, записывая в журнал ошибки для служб, которые не удалось остановить.
 
 Если время ожидания истекает до остановки всех размещенных служб, активные службы останавливаются при завершении работы приложения. Службы останавливаются даже в том случае, если еще не завершили обработку. Если службе требуется дополнительное время для остановки, увеличьте время ожидания.
@@ -706,7 +706,7 @@ Host.CreateDefaultBuilder(args)
 
 [HostOptions.ShutdownTimeout](xref:Microsoft.Extensions.Hosting.HostOptions.ShutdownTimeout*) задает время ожидания для <xref:Microsoft.Extensions.Hosting.IHost.StopAsync*>. Значение по умолчанию — пять секунд.  Во время ожидания узел:
 
-* Активирует [IHostApplicationLifetime.ApplicationStopping](/dotnet/api/microsoft.aspnetcore.hosting.ihostapplicationlifetime.applicationstopping).
+* Активирует [IHostApplicationLifetime.ApplicationStopping](/dotnet/api/microsoft.extensions.hosting.ihostapplicationlifetime.applicationstopping).
 * Пытается остановить размещенные службы, записывая в журнал ошибки для служб, которые не удалось остановить.
 
 Если время ожидания истекает до остановки всех размещенных служб, активные службы останавливаются при завершении работы приложения. Службы останавливаются даже в том случае, если еще не завершили обработку. Если службе требуется дополнительное время для остановки, увеличьте время ожидания.

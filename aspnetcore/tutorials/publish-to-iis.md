@@ -8,10 +8,10 @@ ms.custom: mvc
 ms.date: 10/03/2019
 uid: tutorials/publish-to-iis
 ms.openlocfilehash: 47f78ba78741a8e0175ce801c0c0e51f091273a8
-ms.sourcegitcommit: d64ef143c64ee4fdade8f9ea0b753b16752c5998
+ms.sourcegitcommit: f7886fd2e219db9d7ce27b16c0dc5901e658d64e
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 03/18/2020
+ms.lasthandoff: 04/06/2020
 ms.locfileid: "79511396"
 ---
 # <a name="publish-an-aspnet-core-app-to-iis"></a>Публикация приложения ASP.NET Core в службах IIS
@@ -25,7 +25,7 @@ ms.locfileid: "79511396"
 > * создание сайта служб IIS в диспетчере служб IIS;
 > * развертывание приложения ASP.NET Core.
 
-## <a name="prerequisites"></a>Предварительные требования
+## <a name="prerequisites"></a>предварительные требования
 
 * [Пакет SDK для .NET Core](/dotnet/core/sdk), установленный на компьютере разработки.
 * Сервер Windows Server с настроенной ролью **Веб-сервер (IIS)** . Если сервер не настроен для размещения веб-сайтов со службами IIS, следуйте указаниям в разделе *Настройка служб IIS* статьи <xref:host-and-deploy/iis/index#iis-configuration>, а затем вернитесь к этому руководству.
@@ -97,13 +97,13 @@ ms.locfileid: "79511396"
 
 ---
 
-## <a name="browse-the-website"></a>Обзор веб-сайта
+## <a name="browse-the-website"></a>Открытие веб-сайта в браузере
 
 Приложение будет доступно в браузере после получения первого запроса. Выполните запрос к приложению в привязке конечной точки, созданной в диспетчере служб IIS для сайта.
 
-## <a name="next-steps"></a>Следующие шаги
+## <a name="next-steps"></a>Дальнейшие действия
 
-В этом руководстве вы узнали, как:
+В этом руководстве вы узнали, как выполнять следующие задачи:
 
 > [!div class="checklist"]
 > * установка пакета размещения .NET Core в Windows Server;

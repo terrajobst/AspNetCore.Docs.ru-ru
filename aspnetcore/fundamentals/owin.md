@@ -7,10 +7,10 @@ ms.custom: H1Hack27Feb2017
 ms.date: 12/18/2018
 uid: fundamentals/owin
 ms.openlocfilehash: 14b23ba6d284413e20417bbd4142e19a656350ac
-ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
+ms.sourcegitcommit: f7886fd2e219db9d7ce27b16c0dc5901e658d64e
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 04/06/2020
 ms.locfileid: "78650566"
 ---
 # <a name="open-web-interface-for-net-owin-with-aspnet-core"></a>Открытый веб-интерфейс для .NET (OWIN) в ASP.NET Core
@@ -237,7 +237,7 @@ OWIN использует объект `IDictionary<string,object>` для пе�
 
 ### <a name="request-data-owin-v100"></a>Данные запроса (OWIN версии 1.0.0)
 
-| Ключ               | Значение (тип) | Описание |
+| Клавиши               | Значение (тип) | Description |
 | ----------------- | ------------ | ----------- |
 | owin.RequestScheme | `String` |  |
 | owin.RequestMethod  | `String` | |    
@@ -250,29 +250,29 @@ OWIN использует объект `IDictionary<string,object>` для пе�
 
 ### <a name="request-data-owin-v110"></a>Данные запроса (OWIN версии 1.1.0)
 
-| Ключ               | Значение (тип) | Описание |
+| Клавиши               | Значение (тип) | Description |
 | ----------------- | ------------ | ----------- |
-| owin.RequestId | `String` | Необязательный |
+| owin.RequestId | `String` | Необязательно |
 
 ### <a name="response-data-owin-v100"></a>Данные отклика (OWIN версии 1.0.0)
 
-| Ключ               | Значение (тип) | Описание |
+| Клавиши               | Значение (тип) | Description |
 | ----------------- | ------------ | ----------- |
-| owin.ResponseStatusCode | `int` | Необязательный |
-| owin.ResponseReasonPhrase | `String` | Необязательный |
+| owin.ResponseStatusCode | `int` | Необязательно |
+| owin.ResponseReasonPhrase | `String` | Необязательно |
 | owin.ResponseHeaders | `IDictionary<string,string[]>`  | |
 | owin.ResponseBody | `Stream`  | |
 
 ### <a name="other-data-owin-v100"></a>Другие данные (OWIN версии 1.0.0)
 
-| Ключ               | Значение (тип) | Описание |
+| Клавиши               | Значение (тип) | Description |
 | ----------------- | ------------ | ----------- |
 | owin.CallCancelled | `CancellationToken` |  |
 | owin.Version  | `String` | |   
 
 ### <a name="common-keys"></a>Общие ключи
 
-| Ключ               | Значение (тип) | Описание |
+| Клавиши               | Значение (тип) | Description |
 | ----------------- | ------------ | ----------- |
 | ssl.ClientCertificate | `X509Certificate` |  |
 | ssl.LoadClientCertAsync  | `Func<Task>` | |    
@@ -285,13 +285,13 @@ OWIN использует объект `IDictionary<string,object>` для пе�
 
 ### <a name="sendfiles-v030"></a>SendFiles версии 0.3.0
 
-| Ключ               | Значение (тип) | Описание |
+| Клавиши               | Значение (тип) | Description |
 | ----------------- | ------------ | ----------- |
 | sendfile.SendAsync | См. описание [сигнатуры делегата](https://owin.org/spec/extensions/owin-SendFile-Extension-v0.3.0.htm) | Для каждого запроса |
 
 ### <a name="opaque-v030"></a>Opaque версии 0.3.0
 
-| Ключ               | Значение (тип) | Описание |
+| Клавиши               | Значение (тип) | Description |
 | ----------------- | ------------ | ----------- |
 | opaque.Version | `String` |  |
 | opaque.Upgrade | `OpaqueUpgrade` | См. описание [сигнатуры делегата](https://owin.org/spec/extensions/owin-SendFile-Extension-v0.3.0.htm) |
@@ -300,7 +300,7 @@ OWIN использует объект `IDictionary<string,object>` для пе�
 
 ### <a name="websocket-v030"></a>WebSocket версии 0.3.0
 
-| Ключ               | Значение (тип) | Описание |
+| Клавиши               | Значение (тип) | Description |
 | ----------------- | ------------ | ----------- |
 | websocket.Version | `String` |  |
 | websocket.Accept | `WebSocketAccept` | См. описание [сигнатуры делегата](https://owin.org/spec/extensions/owin-SendFile-Extension-v0.3.0.htm) |
@@ -310,8 +310,8 @@ OWIN использует объект `IDictionary<string,object>` для пе�
 | websocket.ReceiveAsync | `WebSocketReceiveAsync` | См. описание [сигнатуры делегата](https://owin.org/spec/extensions/owin-SendFile-Extension-v0.3.0.htm)  |
 | websocket.CloseAsync | `WebSocketCloseAsync` | См. описание [сигнатуры делегата](https://owin.org/spec/extensions/owin-SendFile-Extension-v0.3.0.htm)  |
 | websocket.CallCancelled | `CancellationToken` |  |
-| websocket.ClientCloseStatus | `int` | Необязательный |
-| websocket.ClientCloseDescription | `String` | Необязательный |
+| websocket.ClientCloseStatus | `int` | Необязательно |
+| websocket.ClientCloseDescription | `String` | Необязательно |
 
 ## <a name="additional-resources"></a>Дополнительные ресурсы
 

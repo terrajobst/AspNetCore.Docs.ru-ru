@@ -7,10 +7,10 @@ ms.author: riande
 ms.date: 10/07/2019
 uid: fundamentals/change-tokens
 ms.openlocfilehash: 70451e219f1295b854e2f84aac55f0cfd1786b19
-ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
+ms.sourcegitcommit: f7886fd2e219db9d7ce27b16c0dc5901e658d64e
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 04/06/2020
 ms.locfileid: "78645400"
 ---
 # <a name="detect-changes-with-change-tokens-in-aspnet-core"></a>Обнаружение изменений с помощью токенов изменений в ASP.NET Core
@@ -49,7 +49,7 @@ ms.locfileid: "78645400"
 
 Токены изменений используются в ключевых областях ASP.NET Core для отслеживания изменений в объектах:
 
-* Чтобы отслеживать изменения в файлах, метод <xref:Microsoft.Extensions.FileProviders.IFileProvider.Watch*> интерфейса <xref:Microsoft.Extensions.FileProviders.IFileProvider> создает `IChangeToken` для указанных файлов или папки.
+* Чтобы отслеживать изменения в файлах, метод <xref:Microsoft.Extensions.FileProviders.IFileProvider> интерфейса <xref:Microsoft.Extensions.FileProviders.IFileProvider.Watch*> создает `IChangeToken` для указанных файлов или папки.
 * Токены `IChangeToken` можно добавлять в записи кэша, чтобы активировать вытеснения кэша при изменении.
 * Для изменений `TOptions` используемая по умолчанию реализация <xref:Microsoft.Extensions.Options.OptionsMonitor`1> интерфейса <xref:Microsoft.Extensions.Options.IOptionsMonitor`1> имеет перегрузку, которая принимает один или несколько экземпляров <xref:Microsoft.Extensions.Options.IOptionsChangeTokenSource`1>. Каждый экземпляр возвращает `IChangeToken`, чтобы зарегистрировать обратный вызов уведомления об изменении для отслеживания изменений параметров.
 
@@ -57,7 +57,7 @@ ms.locfileid: "78645400"
 
 По умолчанию шаблоны ASP.NET Core используют [файлы конфигурации JSON](xref:fundamentals/configuration/index#json-configuration-provider) (*appsettings.json*, *appsettings.Development.json* и *appsettings.Production.json*) для загрузки параметров конфигурации приложения.
 
-Эти файлы настраиваются с помощью метода расширения [AddJsonFile(IConfigurationBuilder, String, Boolean, Boolean)](xref:Microsoft.Extensions.Configuration.JsonConfigurationExtensions.AddJsonFile*) в <xref:Microsoft.Extensions.Configuration.ConfigurationBuilder>, который принимает параметр `reloadOnChange`. `reloadOnChange` указывает, нужно ли перезагружать конфигурацию при изменении файла. Этот параметр отображается в удобном методе <xref:Microsoft.Extensions.Hosting.Host.CreateDefaultBuilder*> класса <xref:Microsoft.Extensions.Hosting.Host>:
+Эти файлы настраиваются с помощью метода расширения [AddJsonFile(IConfigurationBuilder, String, Boolean, Boolean)](xref:Microsoft.Extensions.Configuration.JsonConfigurationExtensions.AddJsonFile*) в <xref:Microsoft.Extensions.Configuration.ConfigurationBuilder>, который принимает параметр `reloadOnChange`. `reloadOnChange` указывает, нужно ли перезагружать конфигурацию при изменении файла. Этот параметр отображается в удобном методе <xref:Microsoft.Extensions.Hosting.Host> класса <xref:Microsoft.Extensions.Hosting.Host.CreateDefaultBuilder*>:
 
 ```csharp
 config.AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
@@ -247,7 +247,7 @@ var compositeChangeToken =
 
 Токены изменений используются в ключевых областях ASP.NET Core для отслеживания изменений в объектах:
 
-* Чтобы отслеживать изменения в файлах, метод <xref:Microsoft.Extensions.FileProviders.IFileProvider.Watch*> интерфейса <xref:Microsoft.Extensions.FileProviders.IFileProvider> создает `IChangeToken` для указанных файлов или папки.
+* Чтобы отслеживать изменения в файлах, метод <xref:Microsoft.Extensions.FileProviders.IFileProvider> интерфейса <xref:Microsoft.Extensions.FileProviders.IFileProvider.Watch*> создает `IChangeToken` для указанных файлов или папки.
 * Токены `IChangeToken` можно добавлять в записи кэша, чтобы активировать вытеснения кэша при изменении.
 * Для изменений `TOptions` используемая по умолчанию реализация <xref:Microsoft.Extensions.Options.OptionsMonitor`1> интерфейса <xref:Microsoft.Extensions.Options.IOptionsMonitor`1> имеет перегрузку, которая принимает один или несколько экземпляров <xref:Microsoft.Extensions.Options.IOptionsChangeTokenSource`1>. Каждый экземпляр возвращает `IChangeToken`, чтобы зарегистрировать обратный вызов уведомления об изменении для отслеживания изменений параметров.
 
@@ -255,7 +255,7 @@ var compositeChangeToken =
 
 По умолчанию шаблоны ASP.NET Core используют [файлы конфигурации JSON](xref:fundamentals/configuration/index#json-configuration-provider) (*appsettings.json*, *appsettings.Development.json* и *appsettings.Production.json*) для загрузки параметров конфигурации приложения.
 
-Эти файлы настраиваются с помощью метода расширения [AddJsonFile(IConfigurationBuilder, String, Boolean, Boolean)](xref:Microsoft.Extensions.Configuration.JsonConfigurationExtensions.AddJsonFile*) в <xref:Microsoft.Extensions.Configuration.ConfigurationBuilder>, который принимает параметр `reloadOnChange`. `reloadOnChange` указывает, нужно ли перезагружать конфигурацию при изменении файла. Этот параметр отображается в удобном методе <xref:Microsoft.AspNetCore.WebHost.CreateDefaultBuilder*> класса <xref:Microsoft.AspNetCore.WebHost>:
+Эти файлы настраиваются с помощью метода расширения [AddJsonFile(IConfigurationBuilder, String, Boolean, Boolean)](xref:Microsoft.Extensions.Configuration.JsonConfigurationExtensions.AddJsonFile*) в <xref:Microsoft.Extensions.Configuration.ConfigurationBuilder>, который принимает параметр `reloadOnChange`. `reloadOnChange` указывает, нужно ли перезагружать конфигурацию при изменении файла. Этот параметр отображается в удобном методе <xref:Microsoft.AspNetCore.WebHost> класса <xref:Microsoft.AspNetCore.WebHost.CreateDefaultBuilder*>:
 
 ```csharp
 config.AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)

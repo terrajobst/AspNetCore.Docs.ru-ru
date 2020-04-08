@@ -6,10 +6,10 @@ ms.author: scaddie
 ms.date: 10/18/2019
 uid: migration/proper-to-2x/index
 ms.openlocfilehash: 68a45dc50e00bead564500a12509b62a4a193ec4
-ms.sourcegitcommit: d64ef143c64ee4fdade8f9ea0b753b16752c5998
+ms.sourcegitcommit: 72792e349458190b4158fcbacb87caf3fc605268
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 03/18/2020
+ms.lasthandoff: 04/06/2020
 ms.locfileid: "79511097"
 ---
 # <a name="migrate-from-aspnet-to-aspnet-core"></a>Миграция с ASP.NET на ASP.NET Core
@@ -18,7 +18,7 @@ ms.locfileid: "79511097"
 
 Данная статья служит руководством по миграции приложений ASP.NET на ASP.NET Core.
 
-## <a name="prerequisites"></a>Предварительные требования
+## <a name="prerequisites"></a>предварительные требования
 
 [Пакет SDK для .NET Core 2.2 или более поздней версии](https://dotnet.microsoft.com/download)
 

@@ -6,16 +6,16 @@ monikerRange: '>= aspnetcore-3.0'
 ms.author: jamesnk
 ms.date: 09/23/2019
 uid: grpc/diagnostics
-ms.openlocfilehash: 17607b734e6d777de9516aa14e81c97f87b61023
-ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
+ms.openlocfilehash: 131144bf7a2c637eb2c1a1d5c54990dd4d429502
+ms.sourcegitcommit: f7886fd2e219db9d7ce27b16c0dc5901e658d64e
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78650908"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80417520"
 ---
 # <a name="logging-and-diagnostics-in-grpc-on-net"></a>Ведение журнала и диагностика в gRPC на платформе .NET
 
-Автор: [Джеймс Ньютон-Кинг (James Newton-King)](https://twitter.com/jamesnk)
+Автор: [Джеймс Ньютон-Кинг](https://twitter.com/jamesnk) (James Newton-King)
 
 В этой статье приводятся рекомендации по сбору диагностических данных из приложения gRPC с целью устранения неполадок. Здесь рассматриваются такие темы:
 
@@ -23,7 +23,7 @@ ms.locfileid: "78650908"
 * **Трассировка** — события, которые связаны с операцией, записанной с помощью `DiaganosticSource` и `Activity`. Трассировки из источника диагностических данных обычно используются для сбора данных телеметрии приложений такими библиотеками, как [Application Insights](https://docs.microsoft.com/azure/azure-monitor/app/asp-net-core) и [OpenTelemetry](https://github.com/open-telemetry/opentelemetry-dotnet).
 * **Метрики** — представление мер данных за интервалы времени, например количество запросов в секунду. Метрики создаются с помощью `EventCounter` и могут отслеживаться с помощью программы командной строки [dotnet-counters](https://docs.microsoft.com/dotnet/core/diagnostics/dotnet-counters) или [Application Insights](https://docs.microsoft.com/azure/azure-monitor/app/eventcounters).
 
-## <a name="logging"></a>Ведение журнала
+## <a name="logging"></a>Logging
 
 Службы gRPC и клиент gRPC записывают журналы с помощью [системы ведения журналов .NET Core](xref:fundamentals/logging/index). Журналы являются хорошей отправной точкой, когда необходимо отладить код приложения, выполняющийся непредвиденным образом.
 
@@ -46,7 +46,7 @@ gRPC добавляет журналы в категорию `Grpc`. Чтобы 
 
 * `Logging:LogLevel:Grpc` = `Debug`
 
-Сведения о задании вложенных значений конфигурации см. в документации по своей системе конфигурации. Так, при использовании переменных среды вместо символа `:` применяются два символа `_` (например, `Logging__LogLevel__Grpc`).
+Сведения о задании вложенных значений конфигурации см. в документации по своей системе конфигурации. Так, при использовании переменных среды вместо символа `_` применяются два символа `:` (например, `Logging__LogLevel__Grpc`).
 
 При сборе подробных диагностических данных для приложения мы рекомендуем использовать уровень `Debug`. На уровне `Trace` создаются очень подробные диагностические данные, которые редко требуются для диагностики проблем в приложении.
 
@@ -100,7 +100,7 @@ info: Microsoft.AspNetCore.Hosting.Diagnostics[2]
 
 #### <a name="grpc-client-log-scopes"></a>Области журналов клиента gRPC
 
-Клиент gRPC добавляет [область ведения журналов](https://docs.microsoft.com/aspnet/core/fundamentals/logginglog-scopes) для журналов, создаваемых во время вызова gRPC. Область включает в себя метаданные, связанные с вызовом gRPC.
+Клиент gRPC добавляет [область ведения журналов](https://docs.microsoft.com/aspnet/core/fundamentals/logging#log-scopes) для журналов, создаваемых во время вызова gRPC. Область включает в себя метаданные, связанные с вызовом gRPC.
 
 * **GrpcMethodType** — тип метода gRPC. Возможными значениями являются имена из перечисления `Grpc.Core.MethodType`, например Unary.
 * **GrpcUri** — относительный универсальный код ресурса (URI) метода gRPC, например /greet.Greeter/SayHellos.
@@ -157,7 +157,7 @@ dbug: Grpc.Net.Client.Internal.GrpcCall[4]
 > [!NOTE]
 > В настоящее время библиотеки телеметрии не собирают данные телеметрии `Grpc.Net.Client.GrpcOut`, относящиеся к gRPC. Работа над реализацией сбора этих данных трассировки библиотеками телеметрии ведется.
 
-## <a name="metrics"></a>metrics
+## <a name="metrics"></a>Метрики
 
 Метрики — это представление мер данных за интервалы времени, например количество запросов в секунду. Метрики позволяют отслеживать общее состояние приложения. Метрики .NET gRPC создаются с помощью `EventCounter`.
 
@@ -165,7 +165,7 @@ dbug: Grpc.Net.Client.Internal.GrpcCall[4]
 
 Метрики сервера gRPC формируются в источнике событий `Grpc.AspNetCore.Server`.
 
-| name                      | Описание                   |
+| Имя                      | Description                   |
 | --------------------------|-------------------------------|
 | `total-calls`             | Total Calls                   |
 | `current-calls`           | Текущие вызовы                 |
@@ -181,7 +181,7 @@ ASP.NET Core также предоставляет собственные мет
 
 Метрики клиента gRPC формируются в источнике событий `Grpc.Net.Client`.
 
-| name                      | Описание                   |
+| Имя                      | Description                   |
 | --------------------------|-------------------------------|
 | `total-calls`             | Total Calls                   |
 | `current-calls`           | Текущие вызовы                 |

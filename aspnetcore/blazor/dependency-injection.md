@@ -11,10 +11,10 @@ no-loc:
 - SignalR
 uid: blazor/dependency-injection
 ms.openlocfilehash: 4cdde9ee8c9fd9adf00894a067d32965b180e5ec
-ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
+ms.sourcegitcommit: f7886fd2e219db9d7ce27b16c0dc5901e658d64e
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 04/06/2020
 ms.locfileid: "78646696"
 ---
 # <a name="aspnet-core-blazor-dependency-injection"></a>Внедрение зависимостей Blazor в ASP.NET Core
@@ -34,10 +34,10 @@ Blazor поддерживает [внедрение зависимостей](xr
 
 Службы по умолчанию автоматически добавляются в коллекцию служб приложения.
 
-| Служба | Время существования | Описание |
+| Служба | Срок действия | Description |
 | ------- | -------- | ----------- |
-| <xref:System.Net.Http.HttpClient> | Одноэлементный | Предоставляет методы для отправки HTTP-запросов и получения HTTP-ответов от ресурса с заданным URI.<br><br>Экземпляр `HttpClient` в приложении Blazor WebAssembly использует браузер для обработки HTTP-трафика в фоновом режиме.<br><br>Приложения Blazor Server не включают `HttpClient`, по умолчанию настроенный в качестве службы. Предоставьте `HttpClient` приложению Blazor Server.<br><br>Для получения дополнительной информации см. <xref:blazor/call-web-api>. |
-| `IJSRuntime` | Одноэлементный (Blazor WebAssembly)<br>С заданной областью (Blazor Server) | Представляет экземпляр среды выполнения JavaScript, в которую отправляются вызовы JavaScript. Для получения дополнительной информации см. <xref:blazor/call-javascript-from-dotnet>. |
+| <xref:System.Net.Http.HttpClient> | Одноэлементный | Предоставляет методы для отправки HTTP-запросов и получения HTTP-ответов от ресурса с заданным URI.<br><br>Экземпляр `HttpClient` в приложении Blazor WebAssembly использует браузер для обработки HTTP-трафика в фоновом режиме.<br><br>Приложения Blazor Server не включают `HttpClient`, по умолчанию настроенный в качестве службы. Предоставьте `HttpClient` приложению Blazor Server.<br><br>Дополнительные сведения см. в разделе <xref:blazor/call-web-api>. |
+| `IJSRuntime` | Одноэлементный (Blazor WebAssembly)<br>С заданной областью (Blazor Server) | Представляет экземпляр среды выполнения JavaScript, в которую отправляются вызовы JavaScript. Дополнительные сведения см. в разделе <xref:blazor/call-javascript-from-dotnet>. |
 | `NavigationManager` | Одноэлементный (Blazor WebAssembly)<br>С заданной областью (Blazor Server) | Содержит вспомогательные методы для работы с URI и состоянием навигации. Дополнительные сведения см. в разделе [URI и вспомогательные инструменты состояния навигации](xref:blazor/routing#uri-and-navigation-state-helpers). |
 
 Пользовательский поставщик услуг не предоставляет перечисленные в таблице службы по умолчанию автоматически. Если вы используете пользовательский поставщик услуг и нуждаетесь в какой-либо из служб, указанных в таблице, добавьте необходимые службы в новый поставщик услуг.
@@ -129,13 +129,13 @@ public void ConfigureServices(IServiceCollection services)
 
 Для служб можно настроить параметры времени существования, указанные в следующей таблице.
 
-| Время существования | Описание |
+| Срок действия | Description |
 | -------- | ----------- |
 | <xref:Microsoft.Extensions.DependencyInjection.ServiceDescriptor.Scoped*> | Сейчас в приложениях Blazor WebAssembly концепция областей внедрения зависимостей отсутствует. Службы, зарегистрированные как `Scoped`, работают аналогично службам `Singleton`. Однако модель размещения сервера Blazor поддерживает время существования `Scoped`. В приложениях Blazor Server регистрация службы с заданной областью ограничивается *соединением*. По этой причине использование служб с заданной областью предпочтительно для служб, которые должны быть ограничены текущим пользователем, даже если текущим намерением является запуск на стороне клиента в браузере. |
 | <xref:Microsoft.Extensions.DependencyInjection.ServiceDescriptor.Singleton*> | Система внедрения зависимостей создает *один экземпляр* службы. Все компоненты, для которых необходима служба `Singleton`, получают экземпляр той же службы. |
 | <xref:Microsoft.Extensions.DependencyInjection.ServiceDescriptor.Transient*> | Каждый раз, когда компонент получает экземпляр службы `Transient` из контейнера службы, он получает *новый экземпляр* этой службы. |
 
-Система внедрения зависимостей основана на системе внедрения зависимостей в ASP.NET Core. Для получения дополнительной информации см. <xref:fundamentals/dependency-injection>.
+Система внедрения зависимостей основана на системе внедрения зависимостей в ASP.NET Core. Дополнительные сведения см. в разделе <xref:fundamentals/dependency-injection>.
 
 ## <a name="request-a-service-in-a-component"></a>Запрос службы в компоненте
 
@@ -144,7 +144,7 @@ public void ConfigureServices(IServiceCollection services)
 * Тип &ndash; тип внедряемой службы.
 * Свойство &ndash; имя свойства, получающего внедренную службу приложений. Свойство не требуется создавать вручную. Его создает компилятор.
 
-Для получения дополнительной информации см. <xref:mvc/views/dependency-injection>.
+Дополнительные сведения см. в разделе <xref:mvc/views/dependency-injection>.
 
 Используйте несколько инструкций `@inject` для внедрения различных служб.
 

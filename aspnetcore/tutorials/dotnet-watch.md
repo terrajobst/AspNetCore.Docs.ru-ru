@@ -6,10 +6,10 @@ ms.author: riande
 ms.date: 05/31/2018
 uid: tutorials/dotnet-watch
 ms.openlocfilehash: bedb3e6a65839db915ca7bc821a267a14d34bf30
-ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
+ms.sourcegitcommit: f7886fd2e219db9d7ce27b16c0dc5901e658d64e
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 04/06/2020
 ms.locfileid: "78650962"
 ---
 # <a name="develop-aspnet-core-apps-using-a-file-watcher"></a>Разработка приложений ASP.NET Core с использованием наблюдателя файлов
@@ -41,7 +41,7 @@ Now listening on: http://localhost:5000
 Application started. Press Ctrl+C to shut down.
 ```
 
-В браузере перейдите на адрес `http://localhost:<port number>/api/math/sum?a=4&b=5`. Должен появиться результат `9`.
+Откройте браузер и перейдите по адресу `http://localhost:<port number>/api/math/sum?a=4&b=5`. Должен появиться результат `9`.
 
 Перейдите к API продукта (`http://localhost:<port number>/api/math/product?a=4&b=5`). Он возвращает `9`, а не `20`, как ожидалось. Эта проблема устраняется далее в этом руководстве.
 
@@ -71,7 +71,7 @@ Application started. Press Ctrl+C to shut down.
 
 Любую [команду .NET Core CLI](/dotnet/core/tools#cli-commands) можно запустить с `dotnet watch`. Пример:
 
-| Команда | Команда с контрольным значением |
+| Get-Help | Команда с контрольным значением |
 | ---- | ----- |
 | dotnet run | dotnet watch run |
 | dotnet run -f netcoreapp2.0 | dotnet watch run -f netcoreapp2.0 |
@@ -105,7 +105,7 @@ public static int Product(int a, int b)
 1. Снова измените метод `Product` для *MathController.cs* так, чтобы он возвращал сумму чисел. Сохраните файл.
 1. В командной оболочке перейдите в папку *WebAppTests*.
 1. Запустите [dotnet restore](/dotnet/core/tools/dotnet-restore).
-1. Запустите `dotnet watch test`. В выходных данных будет указано, что проверка не пройдена и наблюдатель ожидает изменений в файле:
+1. Выполните `dotnet watch test`. В выходных данных будет указано, что проверка не пройдена и наблюдатель ожидает изменений в файле:
 
      ```console
      Total tests: 2. Passed: 1. Failed: 1. Skipped: 0.

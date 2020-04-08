@@ -8,10 +8,10 @@ ms.custom: mvc
 ms.date: 02/09/2020
 uid: fundamentals/http-requests
 ms.openlocfilehash: 912be34ae0ee25837a94aab65443f15b17ab4556
-ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
+ms.sourcegitcommit: f7886fd2e219db9d7ce27b16c0dc5901e658d64e
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 04/06/2020
 ms.locfileid: "78648298"
 ---
 # <a name="make-http-requests-using-ihttpclientfactory-in-aspnet-core"></a>Выполнения HTTP-запросов с помощью IHttpClientFactory в ASP.NET Core
@@ -31,7 +31,7 @@ ms.locfileid: "78648298"
 
 Пример кода в этой версии раздела использует <xref:System.Text.Json> для десериализации содержимого JSON, возвращаемого в ответах HTTP. Для примеров, использующих `Json.NET` и `ReadAsAsync<T>`, воспользуйтесь средством выбора версии, чтобы выбрать версию 2.x этого раздела.
 
-## <a name="consumption-patterns"></a>Принципы использования
+## <a name="consumption-patterns"></a>Шаблоны потребления
 
 Существует несколько способов использования `IHttpClientFactory` в приложении:
 
@@ -112,7 +112,7 @@ ms.locfileid: "78648298"
 
 Типизированный клиент регистрируется во внедрении зависимостей как временный. В приведенном выше коде `AddHttpClient` регистрирует `GitHubService` как временную службу. Эта регистрация использует фабричный метод для следующих задач:
 
-1. Создание экземпляра `HttpClient`.
+1. Создайте экземпляр `HttpClient`.
 1. Создайте экземпляр `GitHubService`, передав его конструктору экземпляр `HttpClient`.
 
 Типизированный клиент можно внедрить и использовать напрямую:
@@ -186,7 +186,7 @@ public class ValuesController : ControllerBase
 
 ## <a name="outgoing-request-middleware"></a>ПО промежуточного слоя для исходящих запросов
 
-В `HttpClient` существует концепция делегирования обработчиков, которые можно связать друг с другом для исходящих HTTP-запросов. `IHttpClientFactory`.
+В `HttpClient` существует концепция делегирования обработчиков, которые можно связать друг с другом для исходящих HTTP-запросов. `IHttpClientFactory`:
 
 * Упрощает определение обработчиков для применения к каждому именованному клиенту.
 * Поддерживает регистрацию и объединение в цепочки нескольких обработчиков для создания конвейера ПО промежуточного слоя для исходящих запросов. Каждый из этих обработчиков может выполнять работу до и после исходящего запроса. Этот шаблон:
@@ -195,9 +195,9 @@ public class ValuesController : ControllerBase
   * предоставляет механизм управления сквозной функциональностью HTTP-запросов, включая:
 
     * кэширование
-    * обработку ошибок
-    * сериализацию
-    * Ведение журнала
+    * обработка ошибок
+    * последовательное упорядочение
+    * Ведение журналов
 
 Чтобы создать делегированный обработчик, сделайте следующее:
 
@@ -281,7 +281,7 @@ public class ValuesController : ControllerBase
 
 ## <a name="httpclient-and-lifetime-management"></a>Управление HttpClient и временем существования
 
-При каждом вызове `CreateClient` в `IHttpClientFactory` возвращается новый экземпляр `HttpClient`. <xref:System.Net.Http.HttpMessageHandler> создается для каждого именованного клиента. Фабрика обеспечивает управление временем существования экземпляров `HttpMessageHandler`.
+При каждом вызове `HttpClient` в `CreateClient` возвращается новый экземпляр `IHttpClientFactory`. <xref:System.Net.Http.HttpMessageHandler> создается для каждого именованного клиента. Фабрика обеспечивает управление временем существования экземпляров `HttpMessageHandler`.
 
 `IHttpClientFactory` объединяет в пул все экземпляры `HttpMessageHandler`, созданные фабрикой, чтобы уменьшить потребление ресурсов. Экземпляр `HttpMessageHandler` можно использовать повторно из пула при создании экземпляра `HttpClient`, если его время существования еще не истекло.
 
@@ -293,7 +293,7 @@ public class ValuesController : ControllerBase
 
 Экземпляры `HttpClient` обычно можно рассматривать как объекты .NET, **не** требующие освобождения. Высвобождение отменяет исходящие запросы и гарантирует, что указанный экземпляр `HttpClient` не может использоваться после вызова <xref:System.IDisposable.Dispose*>. `IHttpClientFactory` отслеживает и высвобождает ресурсы, используемые экземплярами `HttpClient`.
 
-До появления `IHttpClientFactory` один экземпляр `HttpClient` часто сохраняли в активном состоянии в течение длительного времени. После перехода на `IHttpClientFactory` это уже не нужно.
+До появления `HttpClient` один экземпляр `IHttpClientFactory` часто сохраняли в активном состоянии в течение длительного времени. После перехода на `IHttpClientFactory` это уже не нужно.
 
 ### <a name="alternatives-to-ihttpclientfactory"></a>Альтернативы интерфейсу IHttpClientFactory
 
@@ -324,7 +324,7 @@ public class ValuesController : ControllerBase
 
 [!code-csharp[](http-requests/samples/2.x/HttpClientFactorySample/Startup.cs?name=snippet13)]
 
-## <a name="logging"></a>Ведение журнала
+## <a name="logging"></a>Logging
 
 Клиенты, созданные через `IHttpClientFactory`, записывают сообщения журнала для всех запросов. Установите соответствующий уровень информации в конфигурации ведения журнала, чтобы просматривать сообщения журнала по умолчанию. Дополнительное ведение журнала, например запись заголовков запросов, включено только на уровне трассировки.
 
@@ -351,7 +351,7 @@ public class ValuesController : ControllerBase
 * [Microsoft.Extensions.Hosting](https://www.nuget.org/packages/Microsoft.Extensions.Hosting)
 * [Microsoft.Extensions.Http](https://www.nuget.org/packages/Microsoft.Extensions.Http)
 
-В следующем примере:
+Рассмотрим следующий пример:
 
 * <xref:System.Net.Http.IHttpClientFactory> регистрируется в контейнере службы [универсального узла](xref:fundamentals/host/generic-host):
 * `MyService` создает экземпляр фабрики клиента из службы, который используется для создания `HttpClient`. `HttpClient` используется для получения веб-страницы.
@@ -397,7 +397,7 @@ Header propagation — это ПО промежуточного слоя ASP.NE
 
 [Просмотреть или скачать образец кода](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/http-requests/samples) ([как скачивать](xref:index#how-to-download-a-sample))
 
-## <a name="consumption-patterns"></a>Принципы использования
+## <a name="consumption-patterns"></a>Шаблоны потребления
 
 Существует несколько способов использования `IHttpClientFactory` в приложении:
 
@@ -599,7 +599,7 @@ public class ValuesController : ControllerBase
 
 ## <a name="httpclient-and-lifetime-management"></a>Управление HttpClient и временем существования
 
-При каждом вызове `CreateClient` в `IHttpClientFactory` возвращается новый экземпляр `HttpClient`. Для каждого названного клиента существует <xref:System.Net.Http.HttpMessageHandler>. Фабрика обеспечивает управление временем существования экземпляров `HttpMessageHandler`.
+При каждом вызове `HttpClient` в `CreateClient` возвращается новый экземпляр `IHttpClientFactory`. Для каждого названного клиента существует <xref:System.Net.Http.HttpMessageHandler>. Фабрика обеспечивает управление временем существования экземпляров `HttpMessageHandler`.
 
 `IHttpClientFactory` объединяет в пул все экземпляры `HttpMessageHandler`, созданные фабрикой, чтобы уменьшить потребление ресурсов. Экземпляр `HttpMessageHandler` можно использовать повторно из пула при создании экземпляра `HttpClient`, если его время существования еще не истекло.
 
@@ -611,7 +611,7 @@ public class ValuesController : ControllerBase
 
 Высвобождать клиент не требуется. Высвобождение отменяет исходящие запросы и гарантирует, что указанный экземпляр `HttpClient` не может использоваться после вызова <xref:System.IDisposable.Dispose*>. `IHttpClientFactory` отслеживает и высвобождает ресурсы, используемые экземплярами `HttpClient`. Экземпляры `HttpClient` обычно можно рассматривать как объекты .NET, не требующие высвобождения.
 
-До появления `IHttpClientFactory` один экземпляр `HttpClient` часто сохраняли в активном состоянии в течение длительного времени. После перехода на `IHttpClientFactory` это уже не нужно.
+До появления `HttpClient` один экземпляр `IHttpClientFactory` часто сохраняли в активном состоянии в течение длительного времени. После перехода на `IHttpClientFactory` это уже не нужно.
 
 ### <a name="alternatives-to-ihttpclientfactory"></a>Альтернативы интерфейсу IHttpClientFactory
 
@@ -642,7 +642,7 @@ public class ValuesController : ControllerBase
 
 [!code-csharp[](http-requests/samples/2.x/HttpClientFactorySample/Startup.cs?name=snippet13)]
 
-## <a name="logging"></a>Ведение журнала
+## <a name="logging"></a>Logging
 
 Клиенты, созданные через `IHttpClientFactory`, записывают сообщения журнала для всех запросов. Установите соответствующий уровень информации в конфигурации ведения журнала, чтобы просматривать сообщения журнала по умолчанию. Дополнительное ведение журнала, например запись заголовков запросов, включено только на уровне трассировки.
 
@@ -669,7 +669,7 @@ public class ValuesController : ControllerBase
 * [Microsoft.Extensions.Hosting](https://www.nuget.org/packages/Microsoft.Extensions.Hosting)
 * [Microsoft.Extensions.Http](https://www.nuget.org/packages/Microsoft.Extensions.Http)
 
-В следующем примере:
+Рассмотрим следующий пример:
 
 * <xref:System.Net.Http.IHttpClientFactory> регистрируется в контейнере службы [универсального узла](xref:fundamentals/host/generic-host):
 * `MyService` создает экземпляр фабрики клиента из службы, который используется для создания `HttpClient`. `HttpClient` используется для получения веб-страницы.
@@ -698,11 +698,11 @@ public class ValuesController : ControllerBase
 
 [Просмотреть или скачать образец кода](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/http-requests/samples) ([как скачивать](xref:index#how-to-download-a-sample))
 
-## <a name="prerequisites"></a>Предварительные требования
+## <a name="prerequisites"></a>предварительные требования
 
-Для проектов, предназначенных для .NET Framework, необходимо установить пакет NuGet [Microsoft.Extensions.Http](https://www.nuget.org/packages/Microsoft.Extensions.Http/). Пакет `Microsoft.Extensions.Http` уже включен в проекты, предназначенные для .NET Core и ссылающиеся на [метапакет Microsoft.AspNetCore.App](xref:fundamentals/metapackage-app).
+Для проектов, предназначенных для .NET Framework, необходимо установить пакет NuGet [Microsoft.Extensions.Http](https://www.nuget.org/packages/Microsoft.Extensions.Http/). Пакет [ уже включен в проекты, предназначенные для .NET Core и ссылающиеся на ](xref:fundamentals/metapackage-app)метапакет Microsoft.AspNetCore.App`Microsoft.Extensions.Http`.
 
-## <a name="consumption-patterns"></a>Принципы использования
+## <a name="consumption-patterns"></a>Шаблоны потребления
 
 Существует несколько способов использования `IHttpClientFactory` в приложении:
 
@@ -907,7 +907,7 @@ public class ValuesController : ControllerBase
 
 ## <a name="httpclient-and-lifetime-management"></a>Управление HttpClient и временем существования
 
-При каждом вызове `CreateClient` в `IHttpClientFactory` возвращается новый экземпляр `HttpClient`. Для каждого названного клиента существует <xref:System.Net.Http.HttpMessageHandler>. Фабрика обеспечивает управление временем существования экземпляров `HttpMessageHandler`.
+При каждом вызове `HttpClient` в `CreateClient` возвращается новый экземпляр `IHttpClientFactory`. Для каждого названного клиента существует <xref:System.Net.Http.HttpMessageHandler>. Фабрика обеспечивает управление временем существования экземпляров `HttpMessageHandler`.
 
 `IHttpClientFactory` объединяет в пул все экземпляры `HttpMessageHandler`, созданные фабрикой, чтобы уменьшить потребление ресурсов. Экземпляр `HttpMessageHandler` можно использовать повторно из пула при создании экземпляра `HttpClient`, если его время существования еще не истекло.
 
@@ -919,7 +919,7 @@ public class ValuesController : ControllerBase
 
 Высвобождать клиент не требуется. Высвобождение отменяет исходящие запросы и гарантирует, что указанный экземпляр `HttpClient` не может использоваться после вызова <xref:System.IDisposable.Dispose*>. `IHttpClientFactory` отслеживает и высвобождает ресурсы, используемые экземплярами `HttpClient`. Экземпляры `HttpClient` обычно можно рассматривать как объекты .NET, не требующие высвобождения.
 
-До появления `IHttpClientFactory` один экземпляр `HttpClient` часто сохраняли в активном состоянии в течение длительного времени. После перехода на `IHttpClientFactory` это уже не нужно.
+До появления `HttpClient` один экземпляр `IHttpClientFactory` часто сохраняли в активном состоянии в течение длительного времени. После перехода на `IHttpClientFactory` это уже не нужно.
 
 ### <a name="alternatives-to-ihttpclientfactory"></a>Альтернативы интерфейсу IHttpClientFactory
 
@@ -950,7 +950,7 @@ public class ValuesController : ControllerBase
 
 [!code-csharp[](http-requests/samples/2.x/HttpClientFactorySample/Startup.cs?name=snippet13)]
 
-## <a name="logging"></a>Ведение журнала
+## <a name="logging"></a>Logging
 
 Клиенты, созданные через `IHttpClientFactory`, записывают сообщения журнала для всех запросов. Установите соответствующий уровень информации в конфигурации ведения журнала, чтобы просматривать сообщения журнала по умолчанию. Дополнительное ведение журнала, например запись заголовков запросов, включено только на уровне трассировки.
 
@@ -977,7 +977,7 @@ public class ValuesController : ControllerBase
 * [Microsoft.Extensions.Hosting](https://www.nuget.org/packages/Microsoft.Extensions.Hosting)
 * [Microsoft.Extensions.Http](https://www.nuget.org/packages/Microsoft.Extensions.Http)
 
-В следующем примере:
+Рассмотрим следующий пример:
 
 * <xref:System.Net.Http.IHttpClientFactory> регистрируется в контейнере службы [универсального узла](xref:fundamentals/host/generic-host):
 * `MyService` создает экземпляр фабрики клиента из службы, который используется для создания `HttpClient`. `HttpClient` используется для получения веб-страницы.

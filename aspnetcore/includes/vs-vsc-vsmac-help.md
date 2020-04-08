@@ -11,7 +11,7 @@
 
 * [Начало работы](https://code.visualstudio.com/docs)
 * [Отладка](https://code.visualstudio.com/docs/editor/debugging)
-* [Интегрированный терминал](https://code.visualstudio.com/docs/editor/integrated-terminal)
+* [Встроенный терминал](https://code.visualstudio.com/docs/editor/integrated-terminal)
 * [Сочетания клавиш](https://code.visualstudio.com/docs/getstarted/keybindings#_keyboard-shortcuts-reference)
 
   * [Сочетания клавиш для macOS](https://code.visualstudio.com/shortcuts/keyboard-shortcuts-macos.pdf)

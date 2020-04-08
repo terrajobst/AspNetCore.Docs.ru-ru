@@ -7,10 +7,10 @@ ms.custom: mvc
 ms.date: 07/10/2019
 uid: tutorials/publish-to-azure-webapp-using-vscode
 ms.openlocfilehash: 5f117cb2867a6e7b54269ef39abe819256b429ec
-ms.sourcegitcommit: 99e71ae03319ab386baf2ebde956fc2d511df8b8
+ms.sourcegitcommit: f7886fd2e219db9d7ce27b16c0dc5901e658d64e
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 03/25/2020
+ms.lasthandoff: 04/06/2020
 ms.locfileid: "80242682"
 ---
 # <a name="publish-an-aspnet-core-app-to-azure-with-visual-studio-code"></a>Публикация приложения ASP.NET Core в Azure с помощью Visual Studio Code
@@ -29,7 +29,7 @@ ms.locfileid: "80242682"
 
 - Создайте [бесплатную учетную запись Azure](https://azure.microsoft.com/free/dotnet/), если у вас ее нет.
 - Установите [пакет SDK для .NET Core](https://dotnet.microsoft.com/download).
-- Установка [Visual Studio Code](https://code.visualstudio.com/Download)
+- Установите [Visual Studio Code](https://code.visualstudio.com/Download).
   - Установите [расширение C#](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp) для Visual Studio Code.
   - Установите [расширение службы приложений Azure](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azureappservice) для Visual Studio Code и настройте его перед продолжением
 
@@ -90,11 +90,11 @@ tasks.json
 
 Это служебные файлы, которые помогут вам создать веб-приложение .NET Core и выполнить его отладку.
 
-## <a name="run-the-app"></a>Запуск приложения
+## <a name="run-the-app"></a>Запустите приложение
 
 Перед развертыванием приложения в Azure убедитесь, что оно работает правильно на локальном компьютере.
 
-- Нажмите клавишу F5, чтобы запустить проект.
+- Нажмите клавишу F5, чтобы запустить проект.
 
 Веб-приложение начнет выполняться на новой вкладке браузера по умолчанию. Сразу после его запуска может появиться предупреждение о конфиденциальности. Это происходит потому, что ваше приложение запускается с помощью HTTP или HTTPS и оно переходит к конечной точке HTTPS по умолчанию.
 
@@ -111,15 +111,15 @@ tasks.json
 
 ![Структура папки публикации](publish-to-azure-webapp-using-vscode/_static/publish-folder.jpg)
 
-## <a name="publish-to-azure-app-service"></a>Публикация в службу приложений Azure
+## <a name="publish-to-azure-app-service"></a>Опубликовать в Службе приложений Azure
 
 Используя расширение службы приложений Azure для Visual Studio Code, выполните следующие действия, чтобы опубликовать веб-сайт непосредственно в службе приложений Azure.
 
 ### <a name="if-youre-creating-a-new-web-app"></a>При создании нового веб-приложения
 
-- Щелкните папку `publish` правой кнопкой мыши и выберите `Deploy to Web App...`.
+- Щелкните правой кнопкой мыши папку `publish` и выберите `Deploy to Web App...`.
 - Выберите подписку, в которой нужно создать веб-приложение.
-- Выберите `Create New Web App`.
+- Выберите `Create New Web App`
 - Введите имя веб-приложения.
 
 Расширение создаст веб-приложение и автоматически начнет развертывание пакета для приложения. После завершения развертывания щелкните `Browse Website`, чтобы проверить развертывание.
@@ -132,7 +132,7 @@ tasks.json
 
 ### <a name="if-youre-deploying-to-an-existing-web-app"></a>При развертывании в существующее веб-приложение
 
-- Щелкните папку `publish` правой кнопкой мыши и выберите `Deploy to Web App...`.
+- Щелкните правой кнопкой мыши папку `publish` и выберите `Deploy to Web App...`.
 - Выберите подписку, в которой находится существующее веб-приложение.
 - Выберите веб-приложение в списке.
 - Visual Studio Code выдаст запрос на перезапись существующего содержимого. Щелкните `Deploy` для подтверждения.
@@ -141,11 +141,11 @@ tasks.json
 
 ![Существующее веб-приложение успешно развернуто](publish-to-azure-webapp-using-vscode/_static/existing-webapp-deployed.jpg)
 
-## <a name="next-steps"></a>Следующие шаги
+## <a name="next-steps"></a>Дальнейшие действия
 
 - [Создание первого конвейера DevOps в Azure](/azure/devops/pipelines/create-first-pipeline)
 
 ## <a name="additional-resources"></a>Дополнительные ресурсы
 
-- [служба приложений Azure](/azure/app-service/app-service-web-overview);
-- [Группа ресурсов Azure](/azure/azure-resource-manager/resource-group-overview#resource-groups)
+- [Служба приложений Azure](/azure/app-service/app-service-web-overview)
+- [группы ресурсов Azure](/azure/azure-resource-manager/resource-group-overview#resource-groups).

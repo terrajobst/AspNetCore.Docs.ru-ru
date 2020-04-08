@@ -13,7 +13,7 @@ ASP.NET Core предоставляет следующие преимущест�
 * Упрощенный [высокопроизводительный](https://github.com/aspnet/benchmarks) модульный конвейер HTTP-запросов.
 * Следующие возможности размещения:
   * [Kestrel](xref:fundamentals/servers/kestrel)
-  * [Службы IIS](xref:host-and-deploy/iis/index)
+  * [IIS](xref:host-and-deploy/iis/index)
   * [HTTP.sys](xref:fundamentals/servers/httpsys)
   * [Nginx](xref:host-and-deploy/linux-nginx)
   * [Apache](xref:host-and-deploy/linux-apache)

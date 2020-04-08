@@ -3,13 +3,13 @@ no-loc:
 - Blazor
 - SignalR
 ms.openlocfilehash: 5f3e22e04fe18149ec5a8acb42f42a8ef83a7664
-ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
+ms.sourcegitcommit: f7886fd2e219db9d7ce27b16c0dc5901e658d64e
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 04/06/2020
 ms.locfileid: "78647530"
 ---
-Когда приложение Blazor Server выполняет предварительную отрисовку, некоторые действия, такие как вызов в JavaScript, невозможны, так как подключение к браузеру не установлено. При предварительной отрисовке компоненты могут отрисовываться иначе.
+Когда приложение Blazor Server выполняет предварительную отрисовку, некоторые действия, такие как вызов JavaScript, невозможны, так как соединение с браузером не установлено. При предварительной отрисовке компоненты могут отрисовываться иначе.
 
 Чтобы отложить вызовы взаимодействия с JavaScript до установки подключения к браузеру, можно использовать [событие жизненного цикла компонента OnAfterRenderAsync](xref:blazor/lifecycle#after-component-render). Это событие вызывается только после полной отрисовки приложения и установки клиентского подключения.
 
@@ -33,7 +33,7 @@ ms.locfileid: "78647530"
 }
 ```
 
-Для предыдущего примера кода предоставьте функцию JavaScript `setElementText` внутри элемента `<head>` файла *wwwroot/index.html* (Blazor WebAssembly) или *Pages/_Host.cshtml* (Blazor Server). Функция вызывается с помощью метода `IJSRuntime.InvokeVoidAsync` и не возвращает значение:
+Для предыдущего примера кода предоставьте функцию JavaScript `setElementText` внутри элемента `<head>` файла *wwwroot/index.html* (Blazor WebAssembly) или *Pages/_Host.cshtml* (Blazor Server). Функция вызывается с помощью метода `IJSRuntime.InvokeVoidAsync` и не возвращает значения:
 
 ```html
 <script>

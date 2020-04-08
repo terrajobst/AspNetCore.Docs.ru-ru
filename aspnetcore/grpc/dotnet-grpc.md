@@ -7,10 +7,10 @@ ms.author: johluo
 ms.date: 10/17/2019
 uid: grpc/dotnet-grpc
 ms.openlocfilehash: 994597c854a95bb33de1686ab025cb3744cf6845
-ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
+ms.sourcegitcommit: f7886fd2e219db9d7ce27b16c0dc5901e658d64e
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 04/06/2020
 ms.locfileid: "78650902"
 ---
 # <a name="manage-protobuf-references-with-dotnet-grpc"></a>Управление ссылками protobuf с помощью .NET gRPC
