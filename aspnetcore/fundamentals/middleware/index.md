@@ -5,14 +5,14 @@ description: Сведения о ПО промежуточного слоя ASP.
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 02/02/2020
+ms.date: 04/06/2020
 uid: fundamentals/middleware/index
-ms.openlocfilehash: 9dcd061d2807fb90884327916d0348af4593df9d
-ms.sourcegitcommit: 9b6e7f421c243963d5e419bdcfc5c4bde71499aa
+ms.openlocfilehash: 6bf8ed823386ca4e1cf78982f7fba41fba429db8
+ms.sourcegitcommit: 72792e349458190b4158fcbacb87caf3fc605268
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 03/21/2020
-ms.locfileid: "79989722"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80751092"
 ---
 # <a name="aspnet-core-middleware"></a>ПО промежуточного слоя ASP.NET Core
 
@@ -67,6 +67,14 @@ ms.locfileid: "79989722"
 <a name="order"></a>
 
 ## <a name="middleware-order"></a>Порядок ПО промежуточного слоя
+
+На следующей схеме показан полный конвейер обработки запросов для приложений ASP.NET Core MVC и Razor Pages. Здесь демонстрируется порядок размещения ПО промежуточного слоя и этапы, на которых добавляется пользовательское ПО промежуточного слоя, в стандартном приложении. Вы можете полностью контролировать изменение порядка существующего ПО промежуточного слоя или внедрять новое пользовательское ПО промежуточного слоя для своих сценариев.
+
+![Конвейер ПО промежуточного слоя ASP.NET Core](index/_static/middleware-pipeline.svg)
+
+ПО промежуточного слоя **конечной точки** на предыдущей схеме выполняет конвейер фильтра для соответствующего типа приложения&mdash;MVC или Razor Pages.
+
+![Конвейер фильтра ASP.NET Core](index/_static/mvc-endpoint.svg)
 
 Порядок, в котором компоненты промежуточного слоя добавляются в метод `Startup.Configure`, определяет порядок их вызова при запросах и обратный порядок для отклика. Соблюдать этот порядок **крайне важно** для обеспечения безопасности, производительности и функциональности.
 

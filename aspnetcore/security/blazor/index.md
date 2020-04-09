@@ -5,23 +5,26 @@ description: Сведения о проверке подлинности и ав
 monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 02/21/2020
+ms.date: 03/26/2020
 no-loc:
 - Blazor
 - SignalR
 uid: security/blazor/index
-ms.openlocfilehash: f7ffb4c3d5a05cb916b4f00cdfaf5898634a1a6d
-ms.sourcegitcommit: 91dc1dd3d055b4c7d7298420927b3fd161067c64
+ms.openlocfilehash: 04bbf20d1d848edfa98e719f316b790c812bfd95
+ms.sourcegitcommit: 72792e349458190b4158fcbacb87caf3fc605268
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "80219029"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80501314"
 ---
-# <a name="aspnet-core-blazor-authentication-and-authorization"></a>Аутентификация и авторизация в ASP.NET Core Blazor
+# <a name="aspnet-core-opno-locblazor-authentication-and-authorization"></a>Проверка подлинности и авторизация в ASP.NET Core Blazor
 
-Автор: [Стив Сандерсон](https://github.com/SteveSandersonMS) (Steve Sanderson)
+Авторы: [Стив Сандерсон (Steve Sanderson)](https://github.com/SteveSandersonMS) и [Люк Лэтем (Luke Latham)](https://github.com/guardrex)
 
 [!INCLUDE[](~/includes/blazorwasm-preview-notice.md)]
+
+> [!NOTE]
+> Для реализации рекомендаций, приведенных в этой статье по Blazor WebAssembly, требуется шаблон ASP.NET Core Blazor WebAssembly версии 3.2 или более поздней. Если вы не используете предварительную версию 2 Visual Studio 16.6 или более позднюю и хотите получить последний шаблон Blazor WebAssembly, см. раздел <xref:blazor/get-started>.
 
 ASP.NET Core поддерживает настройку и администрирование средств безопасности в приложениях Blazor.
 
@@ -34,128 +37,86 @@ ASP.NET Core поддерживает настройку и администри
 
 [Соглашения об авторизации Razor Pages](xref:security/authorization/razor-pages-authorization) не применяются к маршрутизируемым компонентам Razor. Если компонент Razor, не поддерживающий маршрутизацию, [встроен в страницу](xref:blazor/integrate-components#render-components-from-a-page-or-view), соглашения об авторизации страницы оказывают косвенное влияние на компонент Razor, а также на остальную часть содержимого страницы.
 
+> [!NOTE]
+> <xref:Microsoft.AspNetCore.Identity.SignInManager%601> и <xref:Microsoft.AspNetCore.Identity.UserManager%601> не поддерживаются в компонентах Razor.
+
 ## <a name="authentication"></a>Проверка подлинности
 
-Blazor использует существующие механизмы аутентификации ASP.NET Core для установления личности пользователя. Конкретный механизм зависит от того, как размещается приложение Blazor (серверное приложение Blazor или приложение Blazor WebAssembly).
-
-### <a name="blazor-server-authentication"></a>Аутентификация в приложении Blazor Server
-
-Серверные приложения Blazor работают через подключение в реальном времени, созданное с помощью SignalR. [Аутентификация в приложениях на основе SignalR](xref:signalr/authn-and-authz) выполняется при установлении подключения. Аутентификация может выполняться на основе файлов cookie или других маркеров носителя.
-
-Шаблон серверного проекта Blazor позволяет автоматически настроить аутентификацию при создании проекта.
-
-# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
-
-Следуйте указаниям по работе с Visual Studio (<xref:blazor/get-started>), чтобы создать проект Blazor на стороне сервера с механизмом аутентификации.
-
-Выбрав шаблон **Серверное приложение Blazor** в диалоговом окне **Создать веб-приложение ASP.NET Core**, щелкните **Изменить** в разделе **Проверка подлинности**.
-
-Откроется диалоговое окно с тем же набором механизмов аутентификации, которые доступны для других проектов ASP.NET Core.
-
-* **Без аутентификации**.
-* **Учетные записи отдельных пользователей**, которые можно хранить следующим образом:
-  * в приложении с помощью системы [удостоверений](xref:security/authentication/identity) ASP.NET Core;
-  * в [Azure AD B2C](xref:security/authentication/azure-ad-b2c);
-* **рабочие или учебные учетные записи**.
-* **Проверка подлинности Windows**
-
-# <a name="visual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
-
-Следуйте указаниям по работе с Visual Studio Code (<xref:blazor/get-started>), чтобы создать проект Blazor на стороне сервера с механизмом аутентификации.
-
-```dotnetcli
-dotnet new blazorserver -o {APP NAME} -au {AUTHENTICATION}
-```
-
-Допустимые значения аутентификации (`{AUTHENTICATION}`) перечислены в следующей таблице.
-
-| Механизм аутентификации                                                                 | Значение`{AUTHENTICATION}` |
-| ---------------------------------------------------------------------------------------- | :----------------------: |
-| Без аутентификации                                                                        | `None`                   |
-| Индивидуальное лицо<br>Пользователи, сохраненные в приложении с помощью ASP.NET Core Identity                        | `Individual`             |
-| Индивидуальное лицо<br>Пользователи, сохраненные в [Azure AD B2C](xref:security/authentication/azure-ad-b2c). | `IndividualB2C`          |
-| Рабочие или учебные учетные записи<br>Корпоративная аутентификация для отдельного клиента.            | `SingleOrg`              |
-| Рабочие или учебные учетные записи<br>Корпоративная аутентификация для нескольких клиентов.           | `MultiOrg`               |
-| Проверка подлинности Windows                                                                   | `Windows`                |
-
-Эта команда создает папку, в качестве имени для которой берется значение, предоставленное вместо заполнителя `{APP NAME}`, а затем использует имя папки в качестве имени приложения. Подробнее см. статью о команде [dotnet new](/dotnet/core/tools/dotnet-new) в руководстве по .NET Core.
-
-<!--
-
-# [Visual Studio for Mac](#tab/visual-studio-mac)
-
-1. Follow the Visual Studio for Mac guidance in the <xref:blazor/get-started> article.
-
-1.
-
-1.
-
--->
-
-<!--
-# [.NET Core CLI](#tab/netcore-cli/)
-
-Follow the .NET Core CLI guidance in the <xref:blazor/get-started> article to create a new Blazor Server project with an authentication mechanism:
-
-```dotnetcli
-dotnet new blazorserver -o {APP NAME} -au {AUTHENTICATION}
-```
-
-Permissible authentication values (`{AUTHENTICATION}`) are shown in the following table.
-
-| Authentication mechanism                                                                 | `{AUTHENTICATION}` value |
-| ---------------------------------------------------------------------------------------- | :----------------------: |
-| No Authentication                                                                        | `None`                   |
-| Individual<br>Users stored in the app with ASP.NET Core Identity.                        | `Individual`             |
-| Individual<br>Users stored in [Azure AD B2C](xref:security/authentication/azure-ad-b2c). | `IndividualB2C`          |
-| Work or School Accounts<br>Organizational authentication for a single tenant.            | `SingleOrg`              |
-| Work or School Accounts<br>Organizational authentication for multiple tenants.           | `MultiOrg`               |
-| Windows Authentication                                                                   | `Windows`                |
-
-The command creates a folder named with the value provided for the `{APP NAME}` placeholder and uses the folder name as the app's name. For more information, see the [dotnet new](/dotnet/core/tools/dotnet-new) command in the .NET Core Guide.
-
--->
-
----
+Blazor использует существующие механизмы проверки подлинности ASP.NET Core для установления личности пользователя. Конкретный механизм зависит от того, как размещается приложение Blazor (приложение Blazor WebAssembly или серверное приложение Blazor).
 
 ### <a name="opno-locblazor-webassembly-authentication"></a>Проверка подлинности в Blazor WebAssembly
 
 В приложениях Blazor WebAssembly проверку подлинности можно обойти, так как пользователь может изменять весь код на стороне клиента. Это же справедливо для всех технологий на стороне клиента, включая платформы одностраничного приложения JavaScript или собственных приложений для любой операционной системы.
 
-Добавьте ссылку пакета для [Microsoft.AspNetCore.Components.Authorization](https://www.nuget.org/packages/Microsoft.AspNetCore.Components.Authorization/) в файл проекта приложения.
+Добавьте следующий код:
 
-Реализация пользовательской службы `AuthenticationStateProvider` для приложений Blazor WebAssembly рассматривается в следующих разделах.
+* Добавьте ссылку на пакет для [Microsoft.AspNetCore.Components.Authorization](https://www.nuget.org/packages/Microsoft.AspNetCore.Components.Authorization/) в файл проекта приложения.
+* Добавьте пространство имен `Microsoft.AspNetCore.Components.Authorization` в файл *_Imports.razor* приложения.
+
+Вопросы обработки проверки подлинности и реализации встроенной или настраиваемой службы `AuthenticationStateProvider` рассматриваются в следующих разделах.
+
+Дополнительные сведения о создании и настройке приложений см. в статье <xref:security/blazor/webassembly/index>.
+
+### <a name="opno-locblazor-server-authentication"></a>Проверка подлинности Blazor Server
+
+Серверные приложения Blazor работают через подключение в реальном времени, созданное с помощью SignalR. [Проверка подлинности в приложениях на основе SignalR](xref:signalr/authn-and-authz) выполняется при установлении подключения. Аутентификация может выполняться на основе файлов cookie или других маркеров носителя.
+
+Дополнительные сведения о создании и настройке приложений см. в статье <xref:security/blazor/server>.
 
 ## <a name="authenticationstateprovider-service"></a>Служба AuthenticationStateProvider
 
-Серверные приложения Blazor включают встроенную службу `AuthenticationStateProvider`, которая получает данные о состоянии проверки подлинности из `HttpContext.User` в ASP.NET Core. Так состояние аутентификации интегрируется с существующими соответствующими механизмами ASP.NET Core на стороне сервера.
+Встроенная служба `AuthenticationStateProvider` получает данные о состоянии проверки подлинности из `HttpContext.User` в ASP.NET Core. Так состояние проверки подлинности интегрируется с существующими соответствующими механизмами проверки подлинности ASP.NET Core.
 
 `AuthenticationStateProvider` является базовой службой, которую компоненты `AuthorizeView` и `CascadingAuthenticationState` используют для получения состояния аутентификации.
 
-Обычно вы не используете `AuthenticationStateProvider` напрямую. Выберите подход на основе [компонента AuthorizeView](#authorizeview-component) или [задачи<AuthenticationState>](#expose-the-authentication-state-as-a-cascading-parameter), которые описаны далее в этой статье. Основной недостаток при использовании `AuthenticationStateProvider` напрямую заключается в том, что компонент не получает автоматического уведомления при изменении базовых данных о состоянии аутентификации.
+Обычно вы не используете `AuthenticationStateProvider` напрямую. Выберите подход на основе [компонента AuthorizeView](#authorizeview-component) или [Task\<AuthenticationState>](#expose-the-authentication-state-as-a-cascading-parameter), которые описаны далее в этой статье. Основной недостаток при использовании `AuthenticationStateProvider` напрямую заключается в том, что компонент не получает автоматического уведомления при изменении базовых данных о состоянии аутентификации.
 
 Служба `AuthenticationStateProvider` может предоставить данные <xref:System.Security.Claims.ClaimsPrincipal> о текущем пользователе, как показано в следующем примере:
 
 ```razor
 @page "/"
+@using System.Security.Claims
 @using Microsoft.AspNetCore.Components.Authorization
 @inject AuthenticationStateProvider AuthenticationStateProvider
 
-<button @onclick="LogUsername">Write user info to console</button>
+<h3>ClaimsPrincipal Data</h3>
+
+<button @onclick="GetClaimsPrincipalData">Get ClaimsPrincipal Data</button>
+
+<p>@_authMessage</p>
+
+@if (_claims.Count() > 0)
+{
+    <ul>
+        @foreach (var claim in _claims)
+        {
+            <li>@claim.Type &ndash; @claim.Value</li>
+        }
+    </ul>
+}
+
+<p>@_surnameMessage</p>
 
 @code {
-    private async Task LogUsername()
+    private string _authMessage;
+    private string _surnameMessage;
+    private IEnumerable<Claim> _claims = Enumerable.Empty<Claim>();
+
+    private async Task GetClaimsPrincipalData()
     {
         var authState = await AuthenticationStateProvider.GetAuthenticationStateAsync();
         var user = authState.User;
 
         if (user.Identity.IsAuthenticated)
         {
-            Console.WriteLine($"{user.Identity.Name} is authenticated.");
+            _authMessage = $"{user.Identity.Name} is authenticated.";
+            _claims = user.Claims;
+            _surnameMessage = 
+                $"Surname: {user.FindFirst(c => c.Type == ClaimTypes.Surname)?.Value}";
         }
         else
         {
-            Console.WriteLine("The user is NOT authenticated.");
+            _authMessage = "The user is NOT authenticated.";
         }
     }
 }
@@ -167,28 +128,25 @@ The command creates a folder named with the value provided for the `{APP NAME}` 
 
 ## <a name="implement-a-custom-authenticationstateprovider"></a>Реализация пользовательского AuthenticationStateProvider
 
-Если вы создаете приложение Blazor WebAssembly или спецификация приложения предусматривает строгое требование включить пользовательский поставщик, создайте реализацию этого поставщика и переопределите `GetAuthenticationStateAsync` следующим образом:
+Если приложению требуется пользовательский поставщик, реализуйте `AuthenticationStateProvider` и переопределите `GetAuthenticationStateAsync`:
 
 ```csharp
 using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Components.Authorization;
 
-namespace BlazorSample.Services
+public class CustomAuthStateProvider : AuthenticationStateProvider
 {
-    public class CustomAuthStateProvider : AuthenticationStateProvider
+    public override Task<AuthenticationState> GetAuthenticationStateAsync()
     {
-        public override Task<AuthenticationState> GetAuthenticationStateAsync()
+        var identity = new ClaimsIdentity(new[]
         {
-            var identity = new ClaimsIdentity(new[]
-            {
-                new Claim(ClaimTypes.Name, "mrfibuli"),
-            }, "Fake authentication type");
+            new Claim(ClaimTypes.Name, "mrfibuli"),
+        }, "Fake authentication type");
 
-            var user = new ClaimsPrincipal(identity);
+        var user = new ClaimsPrincipal(identity);
 
-            return Task.FromResult(new AuthenticationState(user));
-        }
+        return Task.FromResult(new AuthenticationState(user));
     }
 }
 ```
@@ -196,26 +154,24 @@ namespace BlazorSample.Services
 В приложении WebAssembly Blazor служба `CustomAuthStateProvider` регистрируется в `Main` в файле *Program.cs*:
 
 ```csharp
-using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 using Microsoft.AspNetCore.Components.Authorization;
-using Microsoft.Extensions.DependencyInjection;
-using BlazorSample.Services;
 
-public class Program
-{
-    public static async Task Main(string[] args)
-    {
-        var builder = WebAssemblyHostBuilder.CreateDefault(args);
-        builder.Services.AddScoped<AuthenticationStateProvider, 
-            CustomAuthStateProvider>();
-        builder.RootComponents.Add<App>("app");
+...
 
-        await builder.Build().RunAsync();
-    }
-}
+builder.Services.AddScoped<AuthenticationStateProvider, CustomAuthStateProvider>();
 ```
 
-С помощью `CustomAuthStateProvider`, все пользователи проходят аутентификацию с использованием имени пользователя `mrfibuli`.
+В серверном приложении Blazor служба `CustomAuthStateProvider` регистрируется в `Startup.ConfigureServices`:
+
+```csharp
+using Microsoft.AspNetCore.Components.Authorization;
+
+...
+
+services.AddScoped<AuthenticationStateProvider, CustomAuthStateProvider>();
+```
+
+С помощью `CustomAuthStateProvider` в предыдущем примере все пользователи проходят проверку подлинности с использованием имени пользователя `mrfibuli`.
 
 ## <a name="expose-the-authentication-state-as-a-cascading-parameter"></a>Предоставление состояния аутентификации в качестве каскадного параметра
 
@@ -226,9 +182,13 @@ public class Program
 
 <button @onclick="LogUsername">Log username</button>
 
+<p>@_authMessage</p>
+
 @code {
     [CascadingParameter]
     private Task<AuthenticationState> authenticationStateTask { get; set; }
+
+    private string _authMessage;
 
     private async Task LogUsername()
     {
@@ -237,26 +197,21 @@ public class Program
 
         if (user.Identity.IsAuthenticated)
         {
-            Console.WriteLine($"{user.Identity.Name} is authenticated.");
+            _authMessage = $"{user.Identity.Name} is authenticated.";
         }
         else
         {
-            Console.WriteLine("The user is NOT authenticated.");
+            _authMessage = "The user is NOT authenticated.";
         }
     }
 }
 ```
 
-> [!NOTE]
-> В компоненте приложения Blazor WebAssembly добавьте пространство имен `Microsoft.AspNetCore.Components.Authorization` (`@using Microsoft.AspNetCore.Components.Authorization`).
-
 Если `user.Identity.IsAuthenticated` имеет значение `true`, можно перечислить утверждения и оценить членство в ролях.
 
-Настройте каскадный параметр `Task<AuthenticationState>` с помощью компонентов `AuthorizeRouteView` и `CascadingAuthenticationState` в файле *App.razor*:
+Настройте каскадный параметр `Task<AuthenticationState>` с помощью компонентов `AuthorizeRouteView` и `CascadingAuthenticationState` в компоненте `App` (*App.razor*):
 
 ```razor
-@using Microsoft.AspNetCore.Components.Authorization
-
 <Router AppAssembly="@typeof(Program).Assembly">
     <Found Context="routeData">
         <AuthorizeRouteView RouteData="@routeData" DefaultLayout="@typeof(MainLayout)" />
@@ -271,12 +226,14 @@ public class Program
 </Router>
 ```
 
-Добавьте службы для параметров и авторизации в `Program.Main`:
+В приложении Blazor WebAssembly добавьте службы для параметров и авторизации в `Program.Main`:
 
 ```csharp
 builder.Services.AddOptions();
 builder.Services.AddAuthorizationCore();
 ```
+
+В серверном приложении Blazor уже есть службы для параметров и авторизации, поэтому ничего делать не нужно.
 
 ## <a name="authorization"></a>Авторизация
 
@@ -318,6 +275,8 @@ builder.Services.AddAuthorizationCore();
     </NotAuthorized>
 </AuthorizeView>
 ```
+
+Компонент `AuthorizeView` можно использовать в компоненте `NavMenu` (*Shared/NavMenu.razor*) в целях отображения элемента списка (`<li>...</li>`) для `NavLink`, однако следует учитывать, что при использовании этого подхода удаляется только элемент списка из отображаемых выходных данных. Пользователь по-прежнему может переходить к компоненту.
 
 Содержимое тегов `<Authorized>` и `<NotAuthorized>` может включать произвольные элементы, например другие интерактивные компоненты.
 
@@ -388,9 +347,6 @@ Blazor позволяет *асинхронно* определять состо
 You can only see this if you're signed in.
 ```
 
-> [!NOTE]
-> В компоненте приложения Blazor WebAssembly добавьте пространство имен `Microsoft.AspNetCore.Authorization` (`@using Microsoft.AspNetCore.Authorization`) к примерам в этом разделе.
-
 > [!IMPORTANT]
 > Используйте `[Authorize]` только для компонентов `@page`, полученных через маршрутизатор Blazor. Авторизация выполняется только как аспект маршрутизации и *не* для дочерних компонентов, которые отображаются на странице. Чтобы разрешить отображение конкретных частей на странице, используйте вместо этого `AuthorizeView`.
 
@@ -425,7 +381,7 @@ You can only see this if you're signed in.
 * пользователь не удовлетворяет условию `[Authorize]`, которое применено к компоненту (атрибут `[Authorize]` описан в разделе [Атрибут `[Authorize]`](#authorize-attribute));
 * выполняется асинхронная аутентификация.
 
-В стандартном шаблоне проекта Blazor Server есть файл *App.razor* с примером пользовательского содержимого:
+В стандартном шаблоне проекта серверного приложения Blazor есть компонент `App` (*App.razor*) с примером пользовательского содержимого:
 
 ```razor
 <Router AppAssembly="@typeof(Program).Assembly">
@@ -463,7 +419,7 @@ Not authorized.
 
 ## <a name="notification-about-authentication-state-changes"></a>Уведомление об изменении состояния аутентификации
 
-Если приложение определяет, что изменились базовые данные о состоянии аутентификации (например, пользователь вышел из системы или другой пользователь изменил роль), `AuthenticationStateProvider` пользователя может вызвать необязательный метод `NotifyAuthenticationStateChanged` из базового класса `AuthenticationStateProvider`. Это действие информирует потребителей данных состояния аутентификации (таких, как `AuthorizeView`) о необходимости повторно отображения с учетом новых данных.
+Если приложение определяет, что изменились базовые данные о состоянии проверки подлинности (например, пользователь вышел из системы или другой пользователь изменил роль), [пользовательский AuthenticationStateProvider](#implement-a-custom-authenticationstateprovider) может вызвать необязательный метод `NotifyAuthenticationStateChanged` из базового класса `AuthenticationStateProvider`. Это действие информирует потребителей данных состояния аутентификации (таких, как `AuthorizeView`) о необходимости повторно отображения с учетом новых данных.
 
 ## <a name="procedural-logic"></a>Процедурная логика
 
@@ -509,6 +465,8 @@ Not authorized.
 > @using Microsoft.AspNetCore.Authorization
 > @using Microsoft.AspNetCore.Components.Authorization
 > ```
+>
+> Эти пространства имен можно предоставить глобально, добавив их в файл *_Imports.razor* приложения.
 
 ## <a name="authorization-in-opno-locblazor-webassembly-apps"></a>Авторизация в приложениях Blazor WebAssembly
 
@@ -526,7 +484,7 @@ Not authorized.
 
 * **Для `authenticationStateTask` возвращается значение `null`**
 
-Вполне вероятно, что проект не был создан на основе шаблона серверного приложения Blazor с включенной проверкой подлинности. Примените `<CascadingAuthenticationState>` в качестве оболочки некоторой части дерева пользовательского интерфейса, например в *App.razor*, следующим образом:
+Вполне вероятно, что проект не был создан на основе шаблона серверного приложения Blazor с включенной проверкой подлинности. Примените `<CascadingAuthenticationState>` в качестве оболочки некоторой части дерева пользовательского интерфейса, например в компоненте `App` (*App.razor*), следующим образом:
 
 ```razor
 <CascadingAuthenticationState>

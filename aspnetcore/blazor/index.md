@@ -5,17 +5,17 @@ description: Узнайте больше об использовании ASP.NET
 monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
 ms.custom: mvc, seoapril2019
-ms.date: 01/31/2020
+ms.date: 03/25/2020
 no-loc:
 - Blazor
 - SignalR
 uid: blazor/index
-ms.openlocfilehash: 038799564078c4d3e8a7aa3a9841c6303edf9d12
-ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
+ms.openlocfilehash: 6d2e95cd2ec92f97a97cb558fb39e4540450c766
+ms.sourcegitcommit: 72792e349458190b4158fcbacb87caf3fc605268
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78644266"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80405957"
 ---
 # <a name="introduction-to-aspnet-core-opno-locblazor"></a>Введение в ASP.NET Core Blazor
 
@@ -28,6 +28,7 @@ ms.locfileid: "78644266"
 * создание многофункциональных интерактивных пользовательских интерфейсов на C# вместо JavaScript;
 * совместное использование серверной и клиентской логик приложений, написанных с помощью .NET;
 * отображение пользовательского интерфейса в виде HTML-страницы с CSS для широкой поддержки браузеров, в том числе для мобильных устройств.
+* интеграция с современными платформами размещения, такими как [Docker](/dotnet/standard/microservices-architecture/container-docker-introduction/index).
 
 Использование .NET для разработки веб-приложений на стороне клиента предоставляет следующие преимущества:
 
