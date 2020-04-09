@@ -1,60 +1,99 @@
 ---
-title: ASP.NET Core Blazor дополнительные сценарии безопасности для сборки
+title: ASP.NET Blazor основных веб-сборки дополнительные сценарии безопасности
 author: guardrex
 description: ''
 monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 03/19/2020
+ms.date: 03/30/2020
 no-loc:
 - Blazor
 - SignalR
 uid: security/blazor/webassembly/additional-scenarios
-ms.openlocfilehash: ccb512392341e3eea33f4ab45740b7900f7b63f9
-ms.sourcegitcommit: 9b6e7f421c243963d5e419bdcfc5c4bde71499aa
+ms.openlocfilehash: 516132379ae20bd31c0f3b3261bb09b3f5b218f2
+ms.sourcegitcommit: 1d8f1396ccc66a0c3fcb5e5f36ea29b50db6d92a
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 03/21/2020
-ms.locfileid: "79989465"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80501126"
 ---
-# <a name="aspnet-core-blazor-webassembly-additional-security-scenarios"></a><span data-ttu-id="5710b-102">ASP.NET Core Блазор дополнительные сценарии безопасности для сборки</span><span class="sxs-lookup"><span data-stu-id="5710b-102">ASP.NET Core Blazor WebAssembly additional security scenarios</span></span>
+# <a name="aspnet-core-blazor-webassembly-additional-security-scenarios"></a><span data-ttu-id="90863-102">ASP.NET Core Blazor WebAssembly дополнительные сценарии безопасности</span><span class="sxs-lookup"><span data-stu-id="90863-102">ASP.NET Core Blazor WebAssembly additional security scenarios</span></span>
 
-<span data-ttu-id="5710b-103">[Хавьер Калварро Воронков](https://github.com/javiercn)</span><span class="sxs-lookup"><span data-stu-id="5710b-103">By [Javier Calvarro Nelson](https://github.com/javiercn)</span></span>
+<span data-ttu-id="90863-103">Хавьер [Кальварро Нельсон](https://github.com/javiercn)</span><span class="sxs-lookup"><span data-stu-id="90863-103">By [Javier Calvarro Nelson](https://github.com/javiercn)</span></span>
 
 [!INCLUDE[](~/includes/blazorwasm-preview-notice.md)]
 
 [!INCLUDE[](~/includes/blazorwasm-3.2-template-article-notice.md)]
 
-## <a name="handle-token-request-errors"></a><span data-ttu-id="5710b-104">Обработку ошибок запросов маркера</span><span class="sxs-lookup"><span data-stu-id="5710b-104">Handle token request errors</span></span>
+## <a name="request-additional-access-tokens"></a><span data-ttu-id="90863-104">Запрос дополнительных токенов доступа</span><span class="sxs-lookup"><span data-stu-id="90863-104">Request additional access tokens</span></span>
 
-<span data-ttu-id="5710b-105">Когда одностраничное приложение (SPA) выполняет проверку подлинности пользователя с помощью Open ID Connect (OIDC), состояние проверки подлинности сохраняется локально в рамках SPA и в поставщике удостоверений (IP) в виде файла cookie сеанса, который задается в результате предоставления пользователю информации.</span><span class="sxs-lookup"><span data-stu-id="5710b-105">When a Single Page Application (SPA) authenticates a user using Open ID Connect (OIDC), the authentication state is maintained locally within the SPA and in the Identity Provider (IP) in the form of a session cookie that's set as a result of the user providing their credentials.</span></span>
+<span data-ttu-id="90863-105">Большинству приложений требуется только токен доступа для взаимодействия с используемыми ими ресурсами.</span><span class="sxs-lookup"><span data-stu-id="90863-105">Most apps only require an access token to interact with the protected resources that they use.</span></span> <span data-ttu-id="90863-106">В некоторых сценариях для взаимодействия с двумя или более ресурсами приложению может потребоваться несколько токенов.</span><span class="sxs-lookup"><span data-stu-id="90863-106">In some scenarios, an app might require more than one token in order to interact with two or more resources.</span></span>
 
-<span data-ttu-id="5710b-106">Маркеры, которые IP-адрес выдает пользователю, обычно действительны в течение короткого периода времени, примерно один час, поэтому клиентское приложение должно регулярно получать новые токены.</span><span class="sxs-lookup"><span data-stu-id="5710b-106">The tokens that the IP emits for the user typically are valid for short periods of time, about one hour normally, so the client app must regularly fetch new tokens.</span></span> <span data-ttu-id="5710b-107">В противном случае пользователь будет зарегистрирован после истечения срока действия назначенных токенов.</span><span class="sxs-lookup"><span data-stu-id="5710b-107">Otherwise, the user would be logged-out after the granted tokens expire.</span></span> <span data-ttu-id="5710b-108">В большинстве случаев клиенты OIDC могут подготавливать новые маркеры, не требуя от пользователя повторной проверки подлинности благодаря состоянию аутентификации или сеансу, который хранится в IP-адресе.</span><span class="sxs-lookup"><span data-stu-id="5710b-108">In most cases, OIDC clients are able to provision new tokens without requiring the user to authenticate again thanks to the authentication state or "session" that is kept within the IP.</span></span>
+<span data-ttu-id="90863-107">В следующем примере приложение требует от приложения дополнительных областей API Active Directory (AAD) для чтения данных пользователей и отправки почты.</span><span class="sxs-lookup"><span data-stu-id="90863-107">In the following example, additional Azure Active Directory (AAD) Microsoft Graph API scopes are required by an app to read user data and send mail.</span></span> <span data-ttu-id="90863-108">После добавления разрешений Microsoft Graph API на портал Azure AAD дополнительные`Program.Main`области настраиваются в приложении Клиента (, *Program.cs):*</span><span class="sxs-lookup"><span data-stu-id="90863-108">After adding the Microsoft Graph API permissions in the Azure AAD portal, the additional scopes are configured in the Client app (`Program.Main`, *Program.cs*):</span></span>
 
-<span data-ttu-id="5710b-109">В некоторых случаях клиент не может получить маркер без взаимодействия с пользователем, например, когда по какой-либо причине пользователь явно выходит из IP.</span><span class="sxs-lookup"><span data-stu-id="5710b-109">There are some cases in which the client can't get a token without user interaction, for example, when for some reason the user explicitly logs out from the IP.</span></span> <span data-ttu-id="5710b-110">Эта ситуация возникает, если пользователь посещает `https://login.microsoftonline.com` и выполнит выход из нее. В этих сценариях приложение не знает о немедленном выходе пользователя из систему. Любой токен, который удерживает клиент, может быть недействительным.</span><span class="sxs-lookup"><span data-stu-id="5710b-110">This scenario occurs if a user visits `https://login.microsoftonline.com` and logs out. In these scenarios, the app doesn't know immediately that the user has logged out. Any token that the client holds might no longer be valid.</span></span> <span data-ttu-id="5710b-111">Кроме того, клиент не может подготавливать новый маркер без взаимодействия с пользователем после истечения срока действия текущего маркера.</span><span class="sxs-lookup"><span data-stu-id="5710b-111">Also, the client isn't able to provision a new token without user interaction after the current token expires.</span></span>
+```csharp
+builder.Services.AddMsalAuthentication(options =>
+{
+    ...
 
-<span data-ttu-id="5710b-112">Эти сценарии не относятся к проверке подлинности на основе маркеров.</span><span class="sxs-lookup"><span data-stu-id="5710b-112">These scenarios aren't specific to token-based authentication.</span></span> <span data-ttu-id="5710b-113">Они являются частью природы одностраничные приложения.</span><span class="sxs-lookup"><span data-stu-id="5710b-113">They are part of the nature of SPAs.</span></span> <span data-ttu-id="5710b-114">Проверка подлинности с помощью файлов cookie также не вызывает API сервера, если удаляется файл cookie для аутентификации.</span><span class="sxs-lookup"><span data-stu-id="5710b-114">An SPA using cookies also fails to call a server API if the authentication cookie is removed.</span></span>
+    options.ProviderOptions.AdditionalScopesToConsent.Add(
+        "https://graph.microsoft.com/Mail.Send");
+    options.ProviderOptions.AdditionalScopesToConsent.Add(
+        "https://graph.microsoft.com/User.Read");
+}
+```
 
-<span data-ttu-id="5710b-115">Когда приложение выполняет вызовы API к защищенным ресурсам, необходимо учитывать следующее:</span><span class="sxs-lookup"><span data-stu-id="5710b-115">When an app performs API calls to protected resources, you must be aware of the following:</span></span>
+<span data-ttu-id="90863-109">Метод `IAccessTokenProvider.RequestToken` обеспечивает перегрузку, которая позволяет приложению предоставить токен с данным набором областей, как видно в следующем примере:</span><span class="sxs-lookup"><span data-stu-id="90863-109">The `IAccessTokenProvider.RequestToken` method provides an overload that allows an app to provision a token with a given set of scopes, as seen in the following example:</span></span>
 
-* <span data-ttu-id="5710b-116">Чтобы создать новый маркер доступа для вызова API, пользователю может потребоваться выполнить повторную проверку подлинности.</span><span class="sxs-lookup"><span data-stu-id="5710b-116">To provision a new access token to call the API, the user might be required to authenticate again.</span></span>
-* <span data-ttu-id="5710b-117">Даже если у клиента есть токен, который кажется допустимым, вызов сервера может завершиться ошибкой, так как маркер был отозван пользователем.</span><span class="sxs-lookup"><span data-stu-id="5710b-117">Even if the client has a token that seems to be valid, the call to the server might fail because the token was revoked by the user.</span></span>
+```csharp
+var tokenResult = await AuthenticationService.RequestAccessToken(
+    new AccessTokenRequestOptions
+    {
+        Scopes = new[] { "https://graph.microsoft.com/Mail.Send", 
+            "https://graph.microsoft.com/User.Read" }
+    });
 
-<span data-ttu-id="5710b-118">Когда приложение запрашивает маркер, существует два возможных результата:</span><span class="sxs-lookup"><span data-stu-id="5710b-118">When the app requests a token, there are two possible outcomes:</span></span>
+if (tokenResult.TryGetToken(out var token))
+{
+    ...
+}
+```
 
-* <span data-ttu-id="5710b-119">Запрос выполнен успешно, и приложение имеет действительный токен.</span><span class="sxs-lookup"><span data-stu-id="5710b-119">The request succeeds, and the app has a valid token.</span></span>
-* <span data-ttu-id="5710b-120">Запрос завершается ошибкой, и приложение должно повторно пройти проверку подлинности пользователя, чтобы получить новый маркер.</span><span class="sxs-lookup"><span data-stu-id="5710b-120">The request fails, and the app must authenticate the user again to obtain a new token.</span></span>
+<span data-ttu-id="90863-110">`TryGetToken`Возвращает:</span><span class="sxs-lookup"><span data-stu-id="90863-110">`TryGetToken` returns:</span></span>
 
-<span data-ttu-id="5710b-121">При сбое запроса маркера необходимо решить, следует ли сохранить текущее состояние перед выполнением перенаправления.</span><span class="sxs-lookup"><span data-stu-id="5710b-121">When a token request fails, you need to decide whether you want to save any current state before you perform a redirection.</span></span> <span data-ttu-id="5710b-122">Существует несколько подходов, повышающих уровень сложности:</span><span class="sxs-lookup"><span data-stu-id="5710b-122">Several approaches exist with increasing levels of complexity:</span></span>
+* <span data-ttu-id="90863-111">`true`с `token` для использования.</span><span class="sxs-lookup"><span data-stu-id="90863-111">`true` with the `token` for use.</span></span>
+* <span data-ttu-id="90863-112">`false`если маркер не извлечен.</span><span class="sxs-lookup"><span data-stu-id="90863-112">`false` if the token isn't retrieved.</span></span>
 
-* <span data-ttu-id="5710b-123">Сохранение текущего состояния страницы в хранилище сеансов.</span><span class="sxs-lookup"><span data-stu-id="5710b-123">Store the current page state in session storage.</span></span> <span data-ttu-id="5710b-124">Во время `OnInitializeAsync`проверьте, можно ли восстановить состояние, прежде чем продолжить.</span><span class="sxs-lookup"><span data-stu-id="5710b-124">During `OnInitializeAsync`, check if state can be restored before continuing.</span></span>
-* <span data-ttu-id="5710b-125">Добавьте параметр строки запроса и используйте его в качестве способа сигнализации приложению о необходимости повторного расконсервации ранее сохраненного состояния.</span><span class="sxs-lookup"><span data-stu-id="5710b-125">Add a query string parameter and use that as a way to signal the app that it needs to re-hydrate the previously saved state.</span></span>
-* <span data-ttu-id="5710b-126">Добавьте параметр строки запроса с уникальным идентификатором для хранения данных в хранилище сеанса без риска конфликтов с другими элементами.</span><span class="sxs-lookup"><span data-stu-id="5710b-126">Add a query string parameter with a unique identifier to store data in session storage without risking collisions with other items.</span></span>
+## <a name="handle-token-request-errors"></a><span data-ttu-id="90863-113">Обработка ошибок запроса токенов</span><span class="sxs-lookup"><span data-stu-id="90863-113">Handle token request errors</span></span>
 
-<span data-ttu-id="5710b-127">В приведенном ниже примере показано, как выполнить следующие задачи.</span><span class="sxs-lookup"><span data-stu-id="5710b-127">The following example shows how to:</span></span>
+<span data-ttu-id="90863-114">Когда одностраничное приложение (SPA) проверяет подлинность пользователя с помощью Open ID Connect (OIDC), состояние аутентификации поддерживается локально в SPA и в поставщике идентификации (IP) в виде cookie-сеанса, установленного в результате предоставления пользователем своих учетных данных.</span><span class="sxs-lookup"><span data-stu-id="90863-114">When a Single Page Application (SPA) authenticates a user using Open ID Connect (OIDC), the authentication state is maintained locally within the SPA and in the Identity Provider (IP) in the form of a session cookie that's set as a result of the user providing their credentials.</span></span>
 
-* <span data-ttu-id="5710b-128">Сохраните состояние перед перенаправлением на страницу входа.</span><span class="sxs-lookup"><span data-stu-id="5710b-128">Preserve state before redirecting to the login page.</span></span>
-* <span data-ttu-id="5710b-129">Восстановите предыдущее состояние после проверки подлинности с помощью параметра строки запроса.</span><span class="sxs-lookup"><span data-stu-id="5710b-129">Recover the previous state afterward authentication using the query string parameter.</span></span>
+<span data-ttu-id="90863-115">Токены, которые IP испускает для пользователя, как правило, действительны в течение коротких периодов времени, около одного часа обычно, поэтому клиентское приложение должно регулярно получать новые токены.</span><span class="sxs-lookup"><span data-stu-id="90863-115">The tokens that the IP emits for the user typically are valid for short periods of time, about one hour normally, so the client app must regularly fetch new tokens.</span></span> <span data-ttu-id="90863-116">В противном случае пользователь будет зарегистрирован после истечения срока действия предоставленных токенов.</span><span class="sxs-lookup"><span data-stu-id="90863-116">Otherwise, the user would be logged-out after the granted tokens expire.</span></span> <span data-ttu-id="90863-117">В большинстве случаев клиенты OIDC могут предоставлять новые токены, не требуя от пользователя повторной аутентификации благодаря состоянию аутентификации или "сессии", которая хранится в IP.</span><span class="sxs-lookup"><span data-stu-id="90863-117">In most cases, OIDC clients are able to provision new tokens without requiring the user to authenticate again thanks to the authentication state or "session" that is kept within the IP.</span></span>
+
+<span data-ttu-id="90863-118">Есть случаи, когда клиент не может получить токен без взаимодействия с пользователем, например, когда по какой-то причине пользователь явно выходит из IP.</span><span class="sxs-lookup"><span data-stu-id="90863-118">There are some cases in which the client can't get a token without user interaction, for example, when for some reason the user explicitly logs out from the IP.</span></span> <span data-ttu-id="90863-119">Этот сценарий возникает, если пользователь посещает `https://login.microsoftonline.com` и регистрируется. В этих сценариях приложение не сразу знает, что пользователь вышел из системы. Любой маркер, который удерживает клиент, может быть недействительным.</span><span class="sxs-lookup"><span data-stu-id="90863-119">This scenario occurs if a user visits `https://login.microsoftonline.com` and logs out. In these scenarios, the app doesn't know immediately that the user has logged out. Any token that the client holds might no longer be valid.</span></span> <span data-ttu-id="90863-120">Кроме того, клиент не может предоставить новый маркер без взаимодействия с пользователем после истечения текущего токена.</span><span class="sxs-lookup"><span data-stu-id="90863-120">Also, the client isn't able to provision a new token without user interaction after the current token expires.</span></span>
+
+<span data-ttu-id="90863-121">Эти сценарии не специфичны для проверки подлинности на основе токенов.</span><span class="sxs-lookup"><span data-stu-id="90863-121">These scenarios aren't specific to token-based authentication.</span></span> <span data-ttu-id="90863-122">Они являются частью природы СПА.</span><span class="sxs-lookup"><span data-stu-id="90863-122">They are part of the nature of SPAs.</span></span> <span data-ttu-id="90863-123">SPA с помощью файлов cookie также не вызывает API сервера, если файл проверки подлинности удален.</span><span class="sxs-lookup"><span data-stu-id="90863-123">An SPA using cookies also fails to call a server API if the authentication cookie is removed.</span></span>
+
+<span data-ttu-id="90863-124">Когда приложение выполняет вызовы API на защищенные ресурсы, вы должны знать следующее:</span><span class="sxs-lookup"><span data-stu-id="90863-124">When an app performs API calls to protected resources, you must be aware of the following:</span></span>
+
+* <span data-ttu-id="90863-125">Для предоставления нового токена доступа для вызова API пользователю может потребоваться сновааутировать подлинность.</span><span class="sxs-lookup"><span data-stu-id="90863-125">To provision a new access token to call the API, the user might be required to authenticate again.</span></span>
+* <span data-ttu-id="90863-126">Даже если у клиента есть маркер, который кажется действительным, вызов на сервер может выйти из строя, поскольку маркер был отозван пользователем.</span><span class="sxs-lookup"><span data-stu-id="90863-126">Even if the client has a token that seems to be valid, the call to the server might fail because the token was revoked by the user.</span></span>
+
+<span data-ttu-id="90863-127">Когда приложение запрашивает токен, есть два возможных результата:</span><span class="sxs-lookup"><span data-stu-id="90863-127">When the app requests a token, there are two possible outcomes:</span></span>
+
+* <span data-ttu-id="90863-128">Запрос удался, и приложение имеет действительный маркер.</span><span class="sxs-lookup"><span data-stu-id="90863-128">The request succeeds, and the app has a valid token.</span></span>
+* <span data-ttu-id="90863-129">Запрос не удается, и приложение должно проверить подлинность пользователя снова, чтобы получить новый маркер.</span><span class="sxs-lookup"><span data-stu-id="90863-129">The request fails, and the app must authenticate the user again to obtain a new token.</span></span>
+
+<span data-ttu-id="90863-130">При стечении требования маркера необходимо решить, хотите ли вы сохранить текущее состояние перед выполнением перенаправления.</span><span class="sxs-lookup"><span data-stu-id="90863-130">When a token request fails, you need to decide whether you want to save any current state before you perform a redirection.</span></span> <span data-ttu-id="90863-131">Существует несколько подходов с возрастающими уровнями сложности:</span><span class="sxs-lookup"><span data-stu-id="90863-131">Several approaches exist with increasing levels of complexity:</span></span>
+
+* <span data-ttu-id="90863-132">Храните текущее состояние страницы в хранилище сеансов.</span><span class="sxs-lookup"><span data-stu-id="90863-132">Store the current page state in session storage.</span></span> <span data-ttu-id="90863-133">Во `OnInitializeAsync`время проверки, можно ли восстановить состояние до его продолжения.</span><span class="sxs-lookup"><span data-stu-id="90863-133">During `OnInitializeAsync`, check if state can be restored before continuing.</span></span>
+* <span data-ttu-id="90863-134">Добавьте параметр строки запроса и используйте его как способ сигнализировать приложению о необходимости повторного гидратации ранее сохраненного состояния.</span><span class="sxs-lookup"><span data-stu-id="90863-134">Add a query string parameter and use that as a way to signal the app that it needs to re-hydrate the previously saved state.</span></span>
+* <span data-ttu-id="90863-135">Добавьте параметр строки запроса с уникальным идентификатором для хранения данных в хранилище сеансов, не рискуя столкновениями с другими элементами.</span><span class="sxs-lookup"><span data-stu-id="90863-135">Add a query string parameter with a unique identifier to store data in session storage without risking collisions with other items.</span></span>
+
+<span data-ttu-id="90863-136">В приведенном ниже примере показано, как выполнить следующие задачи.</span><span class="sxs-lookup"><span data-stu-id="90863-136">The following example shows how to:</span></span>
+
+* <span data-ttu-id="90863-137">Сохранить состояние перед перенаправлением на страницу входа.</span><span class="sxs-lookup"><span data-stu-id="90863-137">Preserve state before redirecting to the login page.</span></span>
+* <span data-ttu-id="90863-138">Восстановление предыдущего состояния после проверки подлинности с помощью параметра строки запроса.</span><span class="sxs-lookup"><span data-stu-id="90863-138">Recover the previous state afterward authentication using the query string parameter.</span></span>
 
 ```razor
 <EditForm Model="User" @onsubmit="OnSaveAsync">
@@ -115,11 +154,11 @@ ms.locfileid: "79989465"
 }
 ```
 
-## <a name="save-app-state-before-an-authentication-operation"></a><span data-ttu-id="5710b-130">Сохранить состояние приложения перед операцией проверки подлинности</span><span class="sxs-lookup"><span data-stu-id="5710b-130">Save app state before an authentication operation</span></span>
+## <a name="save-app-state-before-an-authentication-operation"></a><span data-ttu-id="90863-139">Сохранить состояние приложения перед операцией проверки подлинности</span><span class="sxs-lookup"><span data-stu-id="90863-139">Save app state before an authentication operation</span></span>
 
-<span data-ttu-id="5710b-131">Во время операции аутентификации существуют случаи, когда необходимо сохранить состояние приложения, прежде чем браузер перенаправится на IP-адрес.</span><span class="sxs-lookup"><span data-stu-id="5710b-131">During an authentication operation, there are cases where you want to save the app state before the browser is redirected to the IP.</span></span> <span data-ttu-id="5710b-132">Это может быть так, если вы используете нечто вроде контейнера состояния и хотите восстановить состояние после завершения проверки подлинности.</span><span class="sxs-lookup"><span data-stu-id="5710b-132">This can be the case when you are using something like a state container and you want to restore the state after the authentication succeeds.</span></span> <span data-ttu-id="5710b-133">Можно использовать пользовательский объект состояния проверки подлинности, чтобы сохранить состояние конкретного приложения или ссылку на него, а затем восстановить это состояние после успешного завершения операции проверки подлинности.</span><span class="sxs-lookup"><span data-stu-id="5710b-133">You can use a custom authentication state object to preserve app-specific state or a reference to it and restore that state once the authentication operation successfully completes.</span></span>
+<span data-ttu-id="90863-140">Во время операции проверки подлинности есть случаи, когда требуется сохранить состояние приложения до того, как браузер будет перенаправлен на IP- ис.</span><span class="sxs-lookup"><span data-stu-id="90863-140">During an authentication operation, there are cases where you want to save the app state before the browser is redirected to the IP.</span></span> <span data-ttu-id="90863-141">Это может быть в случае, когда вы используете что-то вроде контейнера состояния, и вы хотите восстановить состояние после успешной проверки подлинности.</span><span class="sxs-lookup"><span data-stu-id="90863-141">This can be the case when you are using something like a state container and you want to restore the state after the authentication succeeds.</span></span> <span data-ttu-id="90863-142">Можно использовать пользовательский объект состояния аутентификации для сохранения состояния приложения или ссылки на него и восстановления этого состояния после успешного завершения операции проверки подлинности.</span><span class="sxs-lookup"><span data-stu-id="90863-142">You can use a custom authentication state object to preserve app-specific state or a reference to it and restore that state once the authentication operation successfully completes.</span></span>
 
-<span data-ttu-id="5710b-134">компонент `Authentication` (*pages/Authentication. Razor*):</span><span class="sxs-lookup"><span data-stu-id="5710b-134">`Authentication` component (*Pages/Authentication.razor*):</span></span>
+<span data-ttu-id="90863-143">`Authentication`компонент *(Страницы/Аутентификация.бритва):*</span><span class="sxs-lookup"><span data-stu-id="90863-143">`Authentication` component (*Pages/Authentication.razor*):</span></span>
 
 ```razor
 @page "/authentication/{action}"
@@ -163,40 +202,27 @@ ms.locfileid: "79989465"
 }
 ```
 
-## <a name="request-additional-access-tokens"></a><span data-ttu-id="5710b-135">Запрос дополнительных маркеров доступа</span><span class="sxs-lookup"><span data-stu-id="5710b-135">Request additional access tokens</span></span>
+## <a name="customize-app-routes"></a><span data-ttu-id="90863-144">Настройка маршрутов приложений</span><span class="sxs-lookup"><span data-stu-id="90863-144">Customize app routes</span></span>
 
-<span data-ttu-id="5710b-136">Большинству приложений требуется только маркер доступа для взаимодействия с защищенными ресурсами, которые они используют.</span><span class="sxs-lookup"><span data-stu-id="5710b-136">Most apps only require an access token to interact with the protected resources that they use.</span></span> <span data-ttu-id="5710b-137">В некоторых сценариях для взаимодействия с двумя и более ресурсами приложению может потребоваться несколько маркеров.</span><span class="sxs-lookup"><span data-stu-id="5710b-137">In some scenarios, an app might require more than one token in order to interact with two or more resources.</span></span> <span data-ttu-id="5710b-138">Метод `IAccessTokenProvider.RequestToken` предоставляет перегрузку, которая позволяет приложению подготавливать маркер с заданным набором областей, как показано в следующем примере:</span><span class="sxs-lookup"><span data-stu-id="5710b-138">The `IAccessTokenProvider.RequestToken` method provides an overload that allows an app to provision a token with a given set of scopes, as seen in the following example:</span></span>
+<span data-ttu-id="90863-145">По умолчанию `Microsoft.AspNetCore.Components.WebAssembly.Authentication` библиотека использует маршруты, указанные в следующей таблице, для представления различных состояний аутентификации.</span><span class="sxs-lookup"><span data-stu-id="90863-145">By default, the `Microsoft.AspNetCore.Components.WebAssembly.Authentication` library uses the routes shown in the following table for representing different authentication states.</span></span>
 
-```csharp
-var tokenResult = await AuthenticationService.RequestAccessToken(
-    new AccessTokenRequestOptions
-    {
-        Scopes = new[] { "https://graph.microsoft.com/Mail.Send", 
-            "https://graph.microsoft.com/User.Read" }
-    });
-```
-
-## <a name="customize-app-routes"></a><span data-ttu-id="5710b-139">Настройка маршрутов приложений</span><span class="sxs-lookup"><span data-stu-id="5710b-139">Customize app routes</span></span>
-
-<span data-ttu-id="5710b-140">По умолчанию библиотека `Microsoft.AspNetCore.Components.WebAssembly.Authentication` использует маршруты, приведенные в следующей таблице, для представления различных состояний проверки подлинности.</span><span class="sxs-lookup"><span data-stu-id="5710b-140">By default, the `Microsoft.AspNetCore.Components.WebAssembly.Authentication` library uses the routes shown in the following table for representing different authentication states.</span></span>
-
-| <span data-ttu-id="5710b-141">Маршрут</span><span class="sxs-lookup"><span data-stu-id="5710b-141">Route</span></span>                            | <span data-ttu-id="5710b-142">Назначение</span><span class="sxs-lookup"><span data-stu-id="5710b-142">Purpose</span></span> |
+| <span data-ttu-id="90863-146">Маршрут</span><span class="sxs-lookup"><span data-stu-id="90863-146">Route</span></span>                            | <span data-ttu-id="90863-147">Назначение</span><span class="sxs-lookup"><span data-stu-id="90863-147">Purpose</span></span> |
 | -------------------------------- | ------- |
-| `authentication/login`           | <span data-ttu-id="5710b-143">Активирует операцию входа.</span><span class="sxs-lookup"><span data-stu-id="5710b-143">Triggers a sign-in operation.</span></span> |
-| `authentication/login-callback`  | <span data-ttu-id="5710b-144">Обрабатывает результат любой операции входа.</span><span class="sxs-lookup"><span data-stu-id="5710b-144">Handles the result of any sign-in operation.</span></span> |
-| `authentication/login-failed`    | <span data-ttu-id="5710b-145">Отображает сообщения об ошибках при сбое операции входа по какой-либо причине.</span><span class="sxs-lookup"><span data-stu-id="5710b-145">Displays error messages when the sign-in operation fails for some reason.</span></span> |
-| `authentication/logout`          | <span data-ttu-id="5710b-146">Активирует операцию выхода.</span><span class="sxs-lookup"><span data-stu-id="5710b-146">Triggers a sign-out operation.</span></span> |
-| `authentication/logout-callback` | <span data-ttu-id="5710b-147">Обрабатывает результат операции выхода.</span><span class="sxs-lookup"><span data-stu-id="5710b-147">Handles the result of a sign-out operation.</span></span> |
-| `authentication/logout-failed`   | <span data-ttu-id="5710b-148">Отображает сообщения об ошибках при сбое операции выхода по какой-либо причине.</span><span class="sxs-lookup"><span data-stu-id="5710b-148">Displays error messages when the sign-out operation fails for some reason.</span></span> |
-| `authentication/logged-out`      | <span data-ttu-id="5710b-149">Указывает, что пользователь успешно выполнил выход.</span><span class="sxs-lookup"><span data-stu-id="5710b-149">Indicates that the user has successfully logout.</span></span> |
-| `authentication/profile`         | <span data-ttu-id="5710b-150">Активирует операцию для изменения профиля пользователя.</span><span class="sxs-lookup"><span data-stu-id="5710b-150">Triggers an operation to edit the user profile.</span></span> |
-| `authentication/register`        | <span data-ttu-id="5710b-151">Активирует операцию для регистрации нового пользователя.</span><span class="sxs-lookup"><span data-stu-id="5710b-151">Triggers an operation to register a new user.</span></span> |
+| `authentication/login`           | <span data-ttu-id="90863-148">Запускает операцию ввха.</span><span class="sxs-lookup"><span data-stu-id="90863-148">Triggers a sign-in operation.</span></span> |
+| `authentication/login-callback`  | <span data-ttu-id="90863-149">Обрабатывает результат любой операции ввместь.</span><span class="sxs-lookup"><span data-stu-id="90863-149">Handles the result of any sign-in operation.</span></span> |
+| `authentication/login-failed`    | <span data-ttu-id="90863-150">Отображает сообщения об ошибках, когда операция ввода по какой-либо причине не удается.</span><span class="sxs-lookup"><span data-stu-id="90863-150">Displays error messages when the sign-in operation fails for some reason.</span></span> |
+| `authentication/logout`          | <span data-ttu-id="90863-151">Запускает операцию по вывески.</span><span class="sxs-lookup"><span data-stu-id="90863-151">Triggers a sign-out operation.</span></span> |
+| `authentication/logout-callback` | <span data-ttu-id="90863-152">Обрабатывает результат операции выведения.</span><span class="sxs-lookup"><span data-stu-id="90863-152">Handles the result of a sign-out operation.</span></span> |
+| `authentication/logout-failed`   | <span data-ttu-id="90863-153">Отображает сообщения об ошибках, когда операция выхода по каким-то причинам завершается сбоем.</span><span class="sxs-lookup"><span data-stu-id="90863-153">Displays error messages when the sign-out operation fails for some reason.</span></span> |
+| `authentication/logged-out`      | <span data-ttu-id="90863-154">Означает, что пользователь успешно вышел из системы.</span><span class="sxs-lookup"><span data-stu-id="90863-154">Indicates that the user has successfully logout.</span></span> |
+| `authentication/profile`         | <span data-ttu-id="90863-155">Триггеры операции по отсваге профиля пользователя.</span><span class="sxs-lookup"><span data-stu-id="90863-155">Triggers an operation to edit the user profile.</span></span> |
+| `authentication/register`        | <span data-ttu-id="90863-156">Запускает операцию по регистрации нового пользователя.</span><span class="sxs-lookup"><span data-stu-id="90863-156">Triggers an operation to register a new user.</span></span> |
 
-<span data-ttu-id="5710b-152">Маршруты, показанные в предыдущей таблице, можно настроить с помощью `RemoteAuthenticationOptions<TProviderOptions>.AuthenticationPaths`.</span><span class="sxs-lookup"><span data-stu-id="5710b-152">The routes shown in the preceding table are configurable via `RemoteAuthenticationOptions<TProviderOptions>.AuthenticationPaths`.</span></span> <span data-ttu-id="5710b-153">При настройке параметров для предоставления настраиваемых маршрутов убедитесь, что у приложения есть маршрут, который обрабатывает каждый путь.</span><span class="sxs-lookup"><span data-stu-id="5710b-153">When setting options to provide custom routes, confirm that the app has a route that handles each path.</span></span>
+<span data-ttu-id="90863-157">Маршруты, указанные в предыдущей `RemoteAuthenticationOptions<TProviderOptions>.AuthenticationPaths`таблице, настраиваются через .</span><span class="sxs-lookup"><span data-stu-id="90863-157">The routes shown in the preceding table are configurable via `RemoteAuthenticationOptions<TProviderOptions>.AuthenticationPaths`.</span></span> <span data-ttu-id="90863-158">При настройке параметров для предоставления пользовательских маршрутов, подтвердите, что приложение имеет маршрут, который обрабатывает каждый путь.</span><span class="sxs-lookup"><span data-stu-id="90863-158">When setting options to provide custom routes, confirm that the app has a route that handles each path.</span></span>
 
-<span data-ttu-id="5710b-154">В следующем примере все пути имеют префикс `/security`.</span><span class="sxs-lookup"><span data-stu-id="5710b-154">In the following example, all the paths are prefixed with `/security`.</span></span>
+<span data-ttu-id="90863-159">В следующем примере все пути закреплены `/security`под .</span><span class="sxs-lookup"><span data-stu-id="90863-159">In the following example, all the paths are prefixed with `/security`.</span></span>
 
-<span data-ttu-id="5710b-155">компонент `Authentication` (*pages/Authentication. Razor*):</span><span class="sxs-lookup"><span data-stu-id="5710b-155">`Authentication` component (*Pages/Authentication.razor*):</span></span>
+<span data-ttu-id="90863-160">`Authentication`компонент *(Страницы/Аутентификация.бритва):*</span><span class="sxs-lookup"><span data-stu-id="90863-160">`Authentication` component (*Pages/Authentication.razor*):</span></span>
 
 ```razor
 @page "/security/{action}"
@@ -210,7 +236,7 @@ var tokenResult = await AuthenticationService.RequestAccessToken(
 }
 ```
 
-<span data-ttu-id="5710b-156">`Program.Main` (*Program.CS*):</span><span class="sxs-lookup"><span data-stu-id="5710b-156">`Program.Main` (*Program.cs*):</span></span>
+<span data-ttu-id="90863-161">`Program.Main`*(Program.cs):*</span><span class="sxs-lookup"><span data-stu-id="90863-161">`Program.Main` (*Program.cs*):</span></span>
 
 ```csharp
 builder.Services.AddApiAuthorization(options => { 
@@ -226,7 +252,7 @@ builder.Services.AddApiAuthorization(options => {
 });
 ```
 
-<span data-ttu-id="5710b-157">Если требование вызывается для совершенно разных путей, задайте маршруты, как описано выше, и отрисовываете `RemoteAuthenticatorView` с помощью явного параметра Action:</span><span class="sxs-lookup"><span data-stu-id="5710b-157">If the requirement calls for completely different paths, set the routes as described previously and render the `RemoteAuthenticatorView` with an explicit action parameter:</span></span>
+<span data-ttu-id="90863-162">Если требование требует совершенно разных путей, установите маршруты, как описано ранее, и свяжете `RemoteAuthenticatorView` с явным параметром действия:</span><span class="sxs-lookup"><span data-stu-id="90863-162">If the requirement calls for completely different paths, set the routes as described previously and render the `RemoteAuthenticatorView` with an explicit action parameter:</span></span>
 
 ```razor
 @page "/register"
@@ -234,13 +260,13 @@ builder.Services.AddApiAuthorization(options => {
 <RemoteAuthenticatorView Action="@RemoteAuthenticationActions.Register" />
 ```
 
-<span data-ttu-id="5710b-158">При необходимости вы можете разбить пользовательский интерфейс на разные страницы.</span><span class="sxs-lookup"><span data-stu-id="5710b-158">You're allowed to break the UI into different pages if you choose to do so.</span></span>
+<span data-ttu-id="90863-163">Вы можете разбить uI на разные страницы, если вы решите сделать это.</span><span class="sxs-lookup"><span data-stu-id="90863-163">You're allowed to break the UI into different pages if you choose to do so.</span></span>
 
-## <a name="customize-the-authentication-user-interface"></a><span data-ttu-id="5710b-159">Настройка пользовательского интерфейса проверки подлинности</span><span class="sxs-lookup"><span data-stu-id="5710b-159">Customize the authentication user interface</span></span>
+## <a name="customize-the-authentication-user-interface"></a><span data-ttu-id="90863-164">Настройка пользовательского интерфейса проверки подлинности</span><span class="sxs-lookup"><span data-stu-id="90863-164">Customize the authentication user interface</span></span>
 
-<span data-ttu-id="5710b-160">`RemoteAuthenticatorView` включает набор элементов пользовательского интерфейса по умолчанию для каждого состояния проверки подлинности.</span><span class="sxs-lookup"><span data-stu-id="5710b-160">`RemoteAuthenticatorView` includes a default set of UI pieces for each authentication state.</span></span> <span data-ttu-id="5710b-161">Каждое состояние можно настроить, передав пользовательский `RenderFragment`.</span><span class="sxs-lookup"><span data-stu-id="5710b-161">Each state can be customized by passing in a custom `RenderFragment`.</span></span> <span data-ttu-id="5710b-162">Чтобы настроить отображаемый текст во время первоначального входа в систему, можно изменить `RemoteAuthenticatorView` следующим образом.</span><span class="sxs-lookup"><span data-stu-id="5710b-162">To customize the displayed text during the initial login process, can change the `RemoteAuthenticatorView` as follows.</span></span>
+<span data-ttu-id="90863-165">`RemoteAuthenticatorView`включает набор элементов uI по умолчанию для каждого состояния проверки подлинности.</span><span class="sxs-lookup"><span data-stu-id="90863-165">`RemoteAuthenticatorView` includes a default set of UI pieces for each authentication state.</span></span> <span data-ttu-id="90863-166">Каждое состояние может быть настроено `RenderFragment`путем передачи в пользовательском .</span><span class="sxs-lookup"><span data-stu-id="90863-166">Each state can be customized by passing in a custom `RenderFragment`.</span></span> <span data-ttu-id="90863-167">Для настройки отображаемого текста во время `RemoteAuthenticatorView` первоначального процесса входа можно изменить следующее.</span><span class="sxs-lookup"><span data-stu-id="90863-167">To customize the displayed text during the initial login process, can change the `RemoteAuthenticatorView` as follows.</span></span>
 
-<span data-ttu-id="5710b-163">компонент `Authentication` (*pages/Authentication. Razor*):</span><span class="sxs-lookup"><span data-stu-id="5710b-163">`Authentication` component (*Pages/Authentication.razor*):</span></span>
+<span data-ttu-id="90863-168">`Authentication`компонент *(Страницы/Аутентификация.бритва):*</span><span class="sxs-lookup"><span data-stu-id="90863-168">`Authentication` component (*Pages/Authentication.razor*):</span></span>
 
 ```razor
 @page "/security/{action}"
@@ -258,9 +284,9 @@ builder.Services.AddApiAuthorization(options => {
 }
 ```
 
-<span data-ttu-id="5710b-164">В `RemoteAuthenticatorView` есть один фрагмент, который можно использовать для каждого маршрута проверки подлинности, как показано в следующей таблице.</span><span class="sxs-lookup"><span data-stu-id="5710b-164">The `RemoteAuthenticatorView` has one fragment that can be used per authentication route shown in the following table.</span></span>
+<span data-ttu-id="90863-169">Имеет `RemoteAuthenticatorView` один фрагмент, который может быть использован по маршруту проверки подлинности, показанному в следующей таблице.</span><span class="sxs-lookup"><span data-stu-id="90863-169">The `RemoteAuthenticatorView` has one fragment that can be used per authentication route shown in the following table.</span></span>
 
-| <span data-ttu-id="5710b-165">Маршрут</span><span class="sxs-lookup"><span data-stu-id="5710b-165">Route</span></span>                            | <span data-ttu-id="5710b-166">Fragment</span><span class="sxs-lookup"><span data-stu-id="5710b-166">Fragment</span></span>                |
+| <span data-ttu-id="90863-170">Маршрут</span><span class="sxs-lookup"><span data-stu-id="90863-170">Route</span></span>                            | <span data-ttu-id="90863-171">Fragment (Фрагмент)</span><span class="sxs-lookup"><span data-stu-id="90863-171">Fragment</span></span>                |
 | -------------------------------- | ----------------------- |
 | `authentication/login`           | `<LoggingIn>`           |
 | `authentication/login-callback`  | `<CompletingLoggingIn>` |
